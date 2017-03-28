@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475A31E8ABEE600B56D9B /* AppDelegate.swift */; };
+		6DA475A61E8ABEE600B56D9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475A51E8ABEE600B56D9B /* ViewController.swift */; };
+		6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475A71E8ABEE600B56D9B /* Main.storyboard */; };
+		6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AA1E8ABEE600B56D9B /* Assets.xcassets */; };
+		6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AC1E8ABEE600B56D9B /* LaunchScreen.storyboard */; };
+		6DA475B91E8ABEE600B56D9B /* TeambrellaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475B81E8ABEE600B56D9B /* TeambrellaTests.swift */; };
+		6DA475C41E8ABEE600B56D9B /* TeambrellaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475C31E8ABEE600B56D9B /* TeambrellaUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6DA475B51E8ABEE600B56D9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DA475981E8ABEE600B56D9B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DA4759F1E8ABEE600B56D9B;
+			remoteInfo = Teambrella;
+		};
+		6DA475C01E8ABEE600B56D9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DA475981E8ABEE600B56D9B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DA4759F1E8ABEE600B56D9B;
+			remoteInfo = Teambrella;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6DA475A01E8ABEE600B56D9B /* Teambrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teambrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DA475A31E8ABEE600B56D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6DA475A51E8ABEE600B56D9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6DA475A81E8ABEE600B56D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6DA475AA1E8ABEE600B56D9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6DA475AD1E8ABEE600B56D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6DA475AF1E8ABEE600B56D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeambrellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DA475B81E8ABEE600B56D9B /* TeambrellaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeambrellaTests.swift; sourceTree = "<group>"; };
+		6DA475BA1E8ABEE600B56D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DA475BF1E8ABEE600B56D9B /* TeambrellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeambrellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DA475C31E8ABEE600B56D9B /* TeambrellaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeambrellaUITests.swift; sourceTree = "<group>"; };
+		6DA475C51E8ABEE600B56D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6DA4759D1E8ABEE600B56D9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA475B11E8ABEE600B56D9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA475BC1E8ABEE600B56D9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6DA475971E8ABEE600B56D9B = {
+			isa = PBXGroup;
+			children = (
+				6DA475A21E8ABEE600B56D9B /* Teambrella */,
+				6DA475B71E8ABEE600B56D9B /* TeambrellaTests */,
+				6DA475C21E8ABEE600B56D9B /* TeambrellaUITests */,
+				6DA475A11E8ABEE600B56D9B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6DA475A11E8ABEE600B56D9B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DA475A01E8ABEE600B56D9B /* Teambrella.app */,
+				6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */,
+				6DA475BF1E8ABEE600B56D9B /* TeambrellaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6DA475A21E8ABEE600B56D9B /* Teambrella */ = {
+			isa = PBXGroup;
+			children = (
+				6DA475A31E8ABEE600B56D9B /* AppDelegate.swift */,
+				6DA475A51E8ABEE600B56D9B /* ViewController.swift */,
+				6DA475A71E8ABEE600B56D9B /* Main.storyboard */,
+				6DA475AA1E8ABEE600B56D9B /* Assets.xcassets */,
+				6DA475AC1E8ABEE600B56D9B /* LaunchScreen.storyboard */,
+				6DA475AF1E8ABEE600B56D9B /* Info.plist */,
+			);
+			path = Teambrella;
+			sourceTree = "<group>";
+		};
+		6DA475B71E8ABEE600B56D9B /* TeambrellaTests */ = {
+			isa = PBXGroup;
+			children = (
+				6DA475B81E8ABEE600B56D9B /* TeambrellaTests.swift */,
+				6DA475BA1E8ABEE600B56D9B /* Info.plist */,
+			);
+			path = TeambrellaTests;
+			sourceTree = "<group>";
+		};
+		6DA475C21E8ABEE600B56D9B /* TeambrellaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6DA475C31E8ABEE600B56D9B /* TeambrellaUITests.swift */,
+				6DA475C51E8ABEE600B56D9B /* Info.plist */,
+			);
+			path = TeambrellaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6DA4759F1E8ABEE600B56D9B /* Teambrella */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DA475C81E8ABEE600B56D9B /* Build configuration list for PBXNativeTarget "Teambrella" */;
+			buildPhases = (
+				6DA4759C1E8ABEE600B56D9B /* Sources */,
+				6DA4759D1E8ABEE600B56D9B /* Frameworks */,
+				6DA4759E1E8ABEE600B56D9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Teambrella;
+			productName = Teambrella;
+			productReference = 6DA475A01E8ABEE600B56D9B /* Teambrella.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6DA475B31E8ABEE600B56D9B /* TeambrellaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DA475CB1E8ABEE600B56D9B /* Build configuration list for PBXNativeTarget "TeambrellaTests" */;
+			buildPhases = (
+				6DA475B01E8ABEE600B56D9B /* Sources */,
+				6DA475B11E8ABEE600B56D9B /* Frameworks */,
+				6DA475B21E8ABEE600B56D9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6DA475B61E8ABEE600B56D9B /* PBXTargetDependency */,
+			);
+			name = TeambrellaTests;
+			productName = TeambrellaTests;
+			productReference = 6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6DA475BE1E8ABEE600B56D9B /* TeambrellaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DA475CE1E8ABEE600B56D9B /* Build configuration list for PBXNativeTarget "TeambrellaUITests" */;
+			buildPhases = (
+				6DA475BB1E8ABEE600B56D9B /* Sources */,
+				6DA475BC1E8ABEE600B56D9B /* Frameworks */,
+				6DA475BD1E8ABEE600B56D9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6DA475C11E8ABEE600B56D9B /* PBXTargetDependency */,
+			);
+			name = TeambrellaUITests;
+			productName = TeambrellaUITests;
+			productReference = 6DA475BF1E8ABEE600B56D9B /* TeambrellaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6DA475981E8ABEE600B56D9B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Yaroslav Pasternak";
+				TargetAttributes = {
+					6DA4759F1E8ABEE600B56D9B = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+					};
+					6DA475B31E8ABEE600B56D9B = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6DA4759F1E8ABEE600B56D9B;
+					};
+					6DA475BE1E8ABEE600B56D9B = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6DA4759F1E8ABEE600B56D9B;
+					};
+				};
+			};
+			buildConfigurationList = 6DA4759B1E8ABEE600B56D9B /* Build configuration list for PBXProject "Teambrella" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6DA475971E8ABEE600B56D9B;
+			productRefGroup = 6DA475A11E8ABEE600B56D9B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6DA4759F1E8ABEE600B56D9B /* Teambrella */,
+				6DA475B31E8ABEE600B56D9B /* TeambrellaTests */,
+				6DA475BE1E8ABEE600B56D9B /* TeambrellaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6DA4759E1E8ABEE600B56D9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */,
+				6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */,
+				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA475B21E8ABEE600B56D9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA475BD1E8ABEE600B56D9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6DA4759C1E8ABEE600B56D9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA475A61E8ABEE600B56D9B /* ViewController.swift in Sources */,
+				6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA475B01E8ABEE600B56D9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA475B91E8ABEE600B56D9B /* TeambrellaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA475BB1E8ABEE600B56D9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA475C41E8ABEE600B56D9B /* TeambrellaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6DA475B61E8ABEE600B56D9B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DA4759F1E8ABEE600B56D9B /* Teambrella */;
+			targetProxy = 6DA475B51E8ABEE600B56D9B /* PBXContainerItemProxy */;
+		};
+		6DA475C11E8ABEE600B56D9B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DA4759F1E8ABEE600B56D9B /* Teambrella */;
+			targetProxy = 6DA475C01E8ABEE600B56D9B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6DA475A71E8ABEE600B56D9B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DA475A81E8ABEE600B56D9B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6DA475AC1E8ABEE600B56D9B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DA475AD1E8ABEE600B56D9B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6DA475C61E8ABEE600B56D9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6DA475C71E8ABEE600B56D9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6DA475C91E8ABEE600B56D9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Teambrella/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.Teambrella;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		6DA475CA1E8ABEE600B56D9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Teambrella/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.Teambrella;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		6DA475CC1E8ABEE600B56D9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TeambrellaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Teambrella.app/Teambrella";
+			};
+			name = Debug;
+		};
+		6DA475CD1E8ABEE600B56D9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TeambrellaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Teambrella.app/Teambrella";
+			};
+			name = Release;
+		};
+		6DA475CF1E8ABEE600B56D9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = TeambrellaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Teambrella;
+			};
+			name = Debug;
+		};
+		6DA475D01E8ABEE600B56D9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = TeambrellaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Teambrella;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6DA4759B1E8ABEE600B56D9B /* Build configuration list for PBXProject "Teambrella" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA475C61E8ABEE600B56D9B /* Debug */,
+				6DA475C71E8ABEE600B56D9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DA475C81E8ABEE600B56D9B /* Build configuration list for PBXNativeTarget "Teambrella" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA475C91E8ABEE600B56D9B /* Debug */,
+				6DA475CA1E8ABEE600B56D9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6DA475CB1E8ABEE600B56D9B /* Build configuration list for PBXNativeTarget "TeambrellaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA475CC1E8ABEE600B56D9B /* Debug */,
+				6DA475CD1E8ABEE600B56D9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6DA475CE1E8ABEE600B56D9B /* Build configuration list for PBXNativeTarget "TeambrellaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA475CF1E8ABEE600B56D9B /* Debug */,
+				6DA475D01E8ABEE600B56D9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6DA475981E8ABEE600B56D9B /* Project object */;
+}
