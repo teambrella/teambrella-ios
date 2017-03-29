@@ -6,8 +6,8 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 import SwiftyJSON
 
 struct ServerService {

@@ -235,6 +235,7 @@
 				6DA4759E1E8ABEE600B56D9B /* Resources */,
 				E02813D464CF735903FDEC9D /* [CP] Embed Pods Frameworks */,
 				8CD7C238ED8CE72CDAECD7D2 /* [CP] Copy Pods Resources */,
+				6DA475DD1E8BCDB000B56D9B /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -435,6 +436,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6DA475DD1E8BCDB000B56D9B /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		8CD7C238ED8CE72CDAECD7D2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

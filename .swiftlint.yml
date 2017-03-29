@@ -1,0 +1,129 @@
+disabled_rules:
+  - unused_closure_parameter
+  - closure_parameter_position
+  - discarded_notification_center_observer
+  - notification_center_detachment
+opt_in_rules:
+#  - conditional_returns_on_newline
+#  - closure_end_indentation
+#  - nimble_operator
+#  - operator_usage_whitespace
+#  - private_outlet
+#  - attributes
+#  - number_separator
+  - sorted_imports
+  - closure_spacing
+  - missing_docs
+  - empty_count
+  - force_unwrapping
+  - vertical_whitespace
+  - overridden_super_call
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - object_literal
+
+excluded: # paths to ignore during linting.
+  - Carthage
+  - Pods
+  - TeambrellaTests
+  - TeambrellaUITests
+
+missing_docs:
+  - public
+
+file_length:
+  - 1000
+  - 1000
+
+# уменьшить до 300/400
+type_body_length:
+  - 300
+  - 400
+
+type_name:
+  min_length: 3
+  max_length:
+    - 50
+    - 50
+  excluded:
+    - iPhone
+
+variable_name:
+  min_length: 3
+  max_length:
+    - 40
+    - 40
+  excluded:
+    - i
+    - x
+    - y
+    - z
+    - id
+    - nc
+    - to
+    - vc
+
+function_parameter_count:
+  - 4
+  - 5
+
+cyclomatic_complexity:
+  - 10
+  - 13
+
+function_body_length:
+  - 40
+  - 50
+
+line_length:
+  - 120
+  - 125
+
+trailing_whitespace:
+  ignores_empty_lines: true
+
+colon:
+  flexible_right_spacing: false
+  severity: error
+
+force_unwrapping:
+  severity: error
+
+empty_parentheses_with_trailing_closure:
+  severity: error
+
+empty_count:
+  severity: error
+
+vertical_whitespace:
+  severity: error
+
+prohibited_super_call:
+  severity: error
+
+overridden_super_call:
+  severity: error
+
+large_tuple:
+  - 3
+  - 3
+
+statement_position:
+  statement_mode: default #uncuddled_else
+
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle)
+
+warning_threshold: 10
+
+# самодельные правила
+custom_rules:
+
+  comma_space_rule:
+    regex: ",[ ]{2,}"
+    message: "Expected only one space after ',"
+
+  empty_line_after_guard:
+      name: "Empty Line After Guard"
+      regex: "(^ *guard[ a-zA-Z0-9=?.\(\),><!]*\{[ a-zA-Z0-9=?.\(\),><!]*\}\n *(?!(?:return|guard))\S+)"
+      message: "There should be an empty line after a guard"
+      severity: error

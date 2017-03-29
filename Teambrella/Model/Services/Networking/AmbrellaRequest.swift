@@ -8,7 +8,6 @@
 
 import Foundation
 import SwiftyJSON
-import Alamofire
 
 enum AmbrellaRequestType: String {
     case timestamp = "me/GetTimestamp"
