@@ -11,10 +11,14 @@ import SwiftyJSON
 
 enum AmbrellaRequestType: String {
     case timestamp = "me/GetTimestamp"
+    case initClient = "me/InitClient"
+    case teammatesList = "teammate/getList"
 }
 
 enum AmbrellaResponseType {
     case timestamp(Int64)
+    case initClient
+    case teammatesList
 }
 
 typealias AmbrellaRequestSuccess = (_ result: AmbrellaResponseType) -> Void
@@ -24,19 +28,22 @@ struct AmbrellaRequest {
     var parameters: [String: String]?
     let success: AmbrellaRequestSuccess
     var failure: AmbrellaRequestFailure?
+    var body: RequestBody?
     
     init (type: AmbrellaRequestType,
           parameters: [String: String]? = nil,
+          body: RequestBody? = nil,
           success: @escaping AmbrellaRequestSuccess,
           failure: AmbrellaRequestFailure? = nil) {
         self.type = type
         self.parameters = parameters
         self.success = success
         self.failure = failure
+        self.body = body
     }
     
     func start() {
-        ServerService.askServer(for: type.rawValue, parameters: parameters, success: { json in
+        ServerService.askServer(for: type.rawValue, parameters: parameters, body: body, success: { json in
             self.parseReply(reply: json)
         }, failure: { error in
             print(error)
@@ -48,6 +55,10 @@ struct AmbrellaRequest {
         switch type {
         case .timestamp:
             success(AmbrellaResponseType.timestamp(reply["Timestamp"].int64Value))
+        case .teammatesList:
+            success(AmbrellaResponseType.teammatesList)
+        default:
+            break
         }
     }
     

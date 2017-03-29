@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,10 +31,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WZ0-fH-T9H">
+                                <rect key="frame" x="113" y="617" width="149" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Med-EN-7jO">
+                                        <rect key="frame" x="0.0" y="0.0" width="61" height="30"/>
+                                        <state key="normal" title="initClient"/>
+                                        <connections>
+                                            <action selector="tapInitClient" destination="BYZ-38-t0r" eventType="touchUpInside" id="XrM-Z9-dtN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lrf-90-kO2">
+                                        <rect key="frame" x="69" y="0.0" width="80" height="30"/>
+                                        <state key="normal" title="Teammates"/>
+                                        <connections>
+                                            <action selector="tapTeammates" destination="BYZ-38-t0r" eventType="touchUpInside" id="dcg-lm-p1h"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WZ0-fH-T9H" secondAttribute="bottom" constant="20" id="gnU-NO-oCc"/>
+                            <constraint firstItem="WZ0-fH-T9H" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hNw-8I-847"/>
                             <constraint firstItem="Tsn-On-viD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="j6f-ts-Vgv"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="WZ0-fH-T9H" secondAttribute="trailing" id="pGQ-Q2-NLC"/>
+                            <constraint firstItem="WZ0-fH-T9H" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qHr-tP-rpR"/>
                             <constraint firstItem="Tsn-On-viD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sHc-we-JDn"/>
                         </constraints>
                     </view>
