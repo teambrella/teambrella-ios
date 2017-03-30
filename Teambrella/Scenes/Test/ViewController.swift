@@ -39,7 +39,7 @@ let server = ServerService()
         requestTimestamp {
             
         }
-        /*          
+        /*
          if (TryInitTimestamp())
          {
          var modelIn = new ApiQuery();
