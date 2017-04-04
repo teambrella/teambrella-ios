@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+extension Data {
+    var base58String: String {
+        return BTCBase58StringWithData(self)
+    }
+    
+    var hexString: String {
+        let bytes = [UInt8](self)
+        var hexString = ""
+        for byte in bytes {
+            hexString += String(format:"%02x", UInt8(byte))
+        }
+        return hexString
+    }
+}

@@ -4,3 +4,9 @@
 //
 
 import Foundation
+
+extension String {
+    var base58Data: Data {
+        return BTCDataFromBase58(self) as Data
+    }
+}

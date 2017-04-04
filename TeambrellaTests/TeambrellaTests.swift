@@ -10,27 +10,30 @@ import XCTest
 @testable import Teambrella
 
 class TeambrellaTests: XCTestCase {
+    var key: Key!
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let privateKey = ServerService.Constant.fakePrivateKey
+        let key = Key(base58String: privateKey, timestamp: 636262630000116200)
+        self.key = key!
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAddress() {
+        XCTAssertEqual(key.address, ServerService.Constant.fakePrivateKey)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testPublicKey() {
+        XCTAssertEqual(key.publicKey, "0203ca066905e668d1232a33bf5cce76ee1754b0a24ae9c28d20e13b069274742c")
+    }
+    
+    func testSignature() {
+        let signature = key.signature
+        XCTAssertEqual(signature, "H1TpwvZo2nOgXg0XAk/HB30r3mBwnLqz9zGPHel87x1SKhMP6QmzEhDiuSe3uEhF6VXfLnJeliyUP3CtZrrEF5Y=")
     }
     
 }

@@ -13,16 +13,19 @@ enum AmbrellaRequestType: String {
     case timestamp = "me/GetTimestamp"
     case initClient = "me/InitClient"
     case teammatesList = "teammate/getList"
+    case teammate = "teammate/getOne"
 }
 
 enum AmbrellaResponseType {
     case timestamp(Int64)
     case initClient
-    case teammatesList
+    case teammatesList(String)
+    case teammate
 }
 
 typealias AmbrellaRequestSuccess = (_ result: AmbrellaResponseType) -> Void
 typealias AmbrellaRequestFailure = (_ error: Error) -> Void
+
 struct AmbrellaRequest {
     let type: AmbrellaRequestType
     var parameters: [String: String]?
@@ -43,7 +46,7 @@ struct AmbrellaRequest {
     }
     
     func start() {
-        ServerService.askServer(for: type.rawValue, parameters: parameters, body: body, success: { json in
+        service.server.ask(for: type.rawValue, parameters: parameters, body: body, success: { json in
             self.parseReply(reply: json)
         }, failure: { error in
             print(error)
@@ -56,7 +59,9 @@ struct AmbrellaRequest {
         case .timestamp:
             success(AmbrellaResponseType.timestamp(reply["Timestamp"].int64Value))
         case .teammatesList:
-            success(AmbrellaResponseType.teammatesList)
+            success(AmbrellaResponseType.teammatesList(reply.stringValue))
+        case .teammate:
+        success(AmbrellaResponseType.teammate)
         default:
             break
         }
