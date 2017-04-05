@@ -15,7 +15,7 @@ class TeambrellaTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let privateKey = ServerService.Constant.fakePrivateKey
-        let key = Key(base58String: privateKey, timestamp: 636262630000116200)
+        let key = Key(base58String: privateKey, timestamp: 636269125689610106)
         self.key = key!
     }
     
@@ -33,7 +33,7 @@ class TeambrellaTests: XCTestCase {
     
     func testSignature() {
         let signature = key.signature
-        XCTAssertEqual(signature, "H1TpwvZo2nOgXg0XAk/HB30r3mBwnLqz9zGPHel87x1SKhMP6QmzEhDiuSe3uEhF6VXfLnJeliyUP3CtZrrEF5Y=")
+        XCTAssertEqual(signature, "H1nEOvey+WLcE2ImM+6lqUwpOqYxnjFcnqAMqM7YsOZ4JVMri8FK2T+PoyuBZ+cXLsshvHUlDZhWhMRgjFoEHUQ=")//"H1TpwvZo2nOgXg0XAk/HB30r3mBwnLqz9zGPHel87x1SKhMP6QmzEhDiuSe3uEhF6VXfLnJeliyUP3CtZrrEF5Y=")
     }
     
 }

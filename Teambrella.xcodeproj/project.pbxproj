@@ -24,6 +24,8 @@
 		6DA475D91E8BBD2A00B56D9B /* AmbrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* AmbrellaError.swift */; };
 		6DA475DF1E8BE30000B56D9B /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475DE1E8BE30000B56D9B /* RequestBody.swift */; };
 		6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC31E93A6920092D3F2 /* Services.swift */; };
+		6DCC7AC61E9537760092D3F2 /* Teammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC51E9537760092D3F2 /* Teammate.swift */; };
+		6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */; };
 		80F21A7C34B08754FB74C0D3 /* libPods-TeambrellaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */; };
 		CBDFE3B8E39275922CDCC041 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE16BB5E7B5B758559237 /* String.swift */; };
 		CBDFE767664CC051784BF271 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA3415104DFFD0D751C7 /* ServerService.swift */; };
@@ -78,6 +80,8 @@
 		6DA475D81E8BBD2A00B56D9B /* AmbrellaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmbrellaError.swift; path = Model/AmbrellaError.swift; sourceTree = "<group>"; };
 		6DA475DE1E8BE30000B56D9B /* RequestBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestBody.swift; path = Model/Services/Networking/RequestBody.swift; sourceTree = "<group>"; };
 		6DCC7AC31E93A6920092D3F2 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Model/Services/Services.swift; sourceTree = "<group>"; };
+		6DCC7AC51E9537760092D3F2 /* Teammate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Teammate.swift; path = Model/Entities/Teammate.swift; sourceTree = "<group>"; };
+		6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateEntity.swift; path = Model/Entities/TeammateEntity.swift; sourceTree = "<group>"; };
 		86EB091347EC7E27BBAD1C82 /* Pods-Teambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.debug.xcconfig"; sourceTree = "<group>"; };
 		BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDFE16BB5E7B5B758559237 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Helpers/Extensions/String.swift; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 			children = (
 				6DA475D61E8BB9F000B56D9B /* Services */,
 				6DA475D81E8BBD2A00B56D9B /* AmbrellaError.swift */,
+				6DCC7AC51E9537760092D3F2 /* Teammate.swift */,
+				6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -602,8 +608,10 @@
 				6D1C238A1E905010009B05A3 /* MockNetherlandsSliderController.swift in Sources */,
 				6DA475D41E8BB95200B56D9B /* AmbrellaRequest.swift in Sources */,
 				6D1C23841E8E97CF009B05A3 /* Key.swift in Sources */,
+				6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */,
 				6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */,
 				CBDFE767664CC051784BF271 /* ServerService.swift in Sources */,
+				6DCC7AC61E9537760092D3F2 /* Teammate.swift in Sources */,
 				CBDFEBF8E6B7F6BC0422AE92 /* ViewController.swift in Sources */,
 				6DA475DF1E8BE30000B56D9B /* RequestBody.swift in Sources */,
 				6D8F971C1E8D4488008DC62E /* BitcoinService.swift in Sources */,
@@ -771,7 +779,7 @@
 				);
 				INFOPLIST_FILE = Teambrella/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.Teambrella;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Teambrella-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -793,7 +801,7 @@
 				);
 				INFOPLIST_FILE = Teambrella/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.Teambrella;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Teambrella-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

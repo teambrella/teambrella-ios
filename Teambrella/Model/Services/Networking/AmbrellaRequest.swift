@@ -19,7 +19,7 @@ enum AmbrellaRequestType: String {
 enum AmbrellaResponseType {
     case timestamp(Int64)
     case initClient
-    case teammatesList(String)
+    case teammatesList([Teammate])
     case teammate
 }
 
@@ -59,7 +59,11 @@ struct AmbrellaRequest {
         case .timestamp:
             success(AmbrellaResponseType.timestamp(reply["Timestamp"].int64Value))
         case .teammatesList:
-            success(AmbrellaResponseType.teammatesList(reply.stringValue))
+            if let teammates = TeammateEntityFactory.teammates(from: reply) {
+                 success(AmbrellaResponseType.teammatesList(teammates))
+            } else {
+                failure?(AmbrellaErrorFactory.unknownError())
+            }
         case .teammate:
         success(AmbrellaResponseType.teammate)
         default:

@@ -16,7 +16,7 @@ struct Key {
         return (key.privateKey as Data).base58String
     }
     var publicKey: String {
-        return (key.publicKey as Data).hexString//base58String
+        return (key.publicKey as Data).hexString
     }
     var address: String {
         return key.privateKeyAddress.string
@@ -26,9 +26,8 @@ struct Key {
         guard let data = key.signature(forMessage: String(timestamp)) else {
             fatalError("Couldn't create signature data")
         }
-        guard let hash = BTCHash256(data) else { fatalError("Couldn't create hash256") }
         
-        return hash.base64EncodedString()
+        return data.base64EncodedString()
     }
     
     init?(base58String: String, timestamp: Int64) {

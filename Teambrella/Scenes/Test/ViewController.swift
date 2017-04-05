@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-let server = ServerService()
+let server = service.server
     
     @IBOutlet var textField: UITextField!
     @IBOutlet var console: UITextView!
@@ -50,11 +50,15 @@ let server = ServerService()
 //        guard let timestamp = timestamp else { return }
         
         textField.text = "Getting teammates"
-        let body = RequestBodyFactory.fakeTeammatesBody()
+        guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp) else {
+            return
+        }
+        
+        let body = RequestBodyFactory.teammatesBody(key: key)
         let request = AmbrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
-            if case .teammatesList(let replyString) = response {
+            if case .teammatesList(let teammates) = response {
                 self?.textField.text = "got teammates"
-                self?.consoleAdd(text: replyString)
+                teammates.forEach { self?.consoleAdd(text: $0.description) }
             }
         })
         request.start()

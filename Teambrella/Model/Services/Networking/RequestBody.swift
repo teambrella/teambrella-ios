@@ -20,18 +20,18 @@ struct RequestBodyFactory {
                            payload: payload)
     }
     
-    static func fakeTeammatesBody() -> RequestBody {
-        let payload: [String: Any] = ["TeamId": 1,
-                                      "P": 0,
-                                      "Search": NSNull()]
-        let signature = "H+/Nxat2YJCxuQdWY2Sgf0Cn3I1K7u6lVABIxe5lSiEcFzuruOPv5oJ6AsNEfKusPB8ADEjBIdYgqZkA+hERQLU="
-        let publicKey = "0203ca066905e668d1232a33bf5cce76ee1754b0a24ae9c28d20e13b069274742c"
-        let tmpTimestamp: Int64 = 636263727164345142
-        return RequestBody(timestamp: tmpTimestamp,
-                           signature: signature,
-                           publicKey: publicKey,
-                           payload: payload)
-    }
+//    static func fakeTeammatesBody() -> RequestBody {
+//        let payload: [String: Any] = ["TeamId": 1,
+//                                      "P": 0,
+//                                      "Search": NSNull()]
+//        let signature = "H+/Nxat2YJCxuQdWY2Sgf0Cn3I1K7u6lVABIxe5lSiEcFzuruOPv5oJ6AsNEfKusPB8ADEjBIdYgqZkA+hERQLU="
+//        let publicKey = "0203ca066905e668d1232a33bf5cce76ee1754b0a24ae9c28d20e13b069274742c"
+//        let tmpTimestamp: Int64 = 636263727164345142
+//        return RequestBody(timestamp: tmpTimestamp,
+//                           signature: signature,
+//                           publicKey: publicKey,
+//                           payload: payload)
+//    }
 
     static func teammatesBody(key: Key, teamID: Int = 1) -> RequestBody {
         let payload: [String: Any] = ["TeamId": teamID,
