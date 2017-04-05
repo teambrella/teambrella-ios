@@ -10,29 +10,6 @@ import Foundation
 import SwiftyJSON
 
 struct RequestBodyFactory {
-    static func fakeRequestBody(with payload: [String: Any]?) -> RequestBody {
-        let signature = "H1TpwvZo2nOgXg0XAk/HB30r3mBwnLqz9zGPHel87x1SKhMP6QmzEhDiuSe3uEhF6VXfLnJeliyUP3CtZrrEF5Y="
-        let publicKey = "0203ca066905e668d1232a33bf5cce76ee1754b0a24ae9c28d20e13b069274742c"
-        let timestamp: Int64 = 636262630000116200
-        return RequestBody(timestamp: timestamp,
-                           signature: signature,
-                           publicKey: publicKey,
-                           payload: payload)
-    }
-    
-//    static func fakeTeammatesBody() -> RequestBody {
-//        let payload: [String: Any] = ["TeamId": 1,
-//                                      "P": 0,
-//                                      "Search": NSNull()]
-//        let signature = "H+/Nxat2YJCxuQdWY2Sgf0Cn3I1K7u6lVABIxe5lSiEcFzuruOPv5oJ6AsNEfKusPB8ADEjBIdYgqZkA+hERQLU="
-//        let publicKey = "0203ca066905e668d1232a33bf5cce76ee1754b0a24ae9c28d20e13b069274742c"
-//        let tmpTimestamp: Int64 = 636263727164345142
-//        return RequestBody(timestamp: tmpTimestamp,
-//                           signature: signature,
-//                           publicKey: publicKey,
-//                           payload: payload)
-//    }
-
     static func teammatesBody(key: Key, teamID: Int = 1) -> RequestBody {
         let payload: [String: Any] = ["TeamId": teamID,
                                       "P": 0,

@@ -227,7 +227,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WZ0-fH-T9H">
-                                <rect key="frame" x="113" y="568" width="149" height="30"/>
+                                <rect key="frame" x="73" y="568" width="229" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Med-EN-7jO">
                                         <rect key="frame" x="0.0" y="0.0" width="61" height="30"/>
@@ -243,9 +243,16 @@
                                             <action selector="tapTeammates" destination="BYZ-38-t0r" eventType="touchUpInside" id="dcg-lm-p1h"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCD-ue-kdU" userLabel="Teammate">
+                                        <rect key="frame" x="157" y="0.0" width="72" height="30"/>
+                                        <state key="normal" title="Teammate"/>
+                                        <connections>
+                                            <action selector="tapTeammate" destination="BYZ-38-t0r" eventType="touchUpInside" id="e2T-pg-fqe"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EMZ-Qe-NET">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EMZ-Qe-NET">
                                 <rect key="frame" x="16" y="78" width="343" height="470"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -330,7 +337,7 @@
                                         <size key="customSize" width="310" height="249"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="info" id="Gvh-jg-NNj" customClass="InfoCell" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="63" y="259" width="292" height="180"/>
+                                        <rect key="frame" x="41.5" y="259" width="292" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="292" height="180"/>

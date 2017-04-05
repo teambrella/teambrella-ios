@@ -20,7 +20,7 @@ struct TeammateEntity: Teammate {
     let risk: Double
     let riskVoted: Double
     let totallyPaid: Double
-    let unread: Int
+    let hasUnread: Bool
     let userID: String
     let ver: Int
     let year: Int
@@ -40,7 +40,7 @@ struct TeammateEntity: Teammate {
         risk = json["Risk"].doubleValue
         riskVoted = json["RiskVoted"].doubleValue
         totallyPaid = json["TotallyPaid"].doubleValue
-        unread = json["Unread"].intValue
+        hasUnread = json["Unread"].boolValue
         userID = json["UserId"].stringValue
         ver = json["Ver"].intValue
         year = json["Year"].intValue
@@ -53,5 +53,9 @@ struct TeammateEntityFactory {
         guard let teammates = json["Teammates"].array else { return nil }
         
         return teammates.map { TeammateEntity(json: $0) }
+    }
+    
+    static func teammate(from json: JSON) -> TeammateEntity? {
+        return TeammateEntity(json: json)
     }
 }

@@ -47,8 +47,6 @@ let server = service.server
     }
     
     @IBAction func tapTeammates() {
-//        guard let timestamp = timestamp else { return }
-        
         textField.text = "Getting teammates"
         guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp) else {
             return
@@ -59,6 +57,21 @@ let server = service.server
             if case .teammatesList(let teammates) = response {
                 self?.textField.text = "got teammates"
                 teammates.forEach { self?.consoleAdd(text: $0.description) }
+            }
+        })
+        request.start()
+    }
+    
+    @IBAction func tapTeammate() {
+        textField.text = "Getting teammate #11"
+        guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp) else {
+            return
+        }
+        
+        let body = RequestBodyFactory.teammateBody(key: key, id: "00000000-0000-0000-0000-000000000005")
+        let request = AmbrellaRequest(type: .teammate, body: body, success: { [weak self] response in
+            if case .teammatesList(let teammate) = response {
+                self?.textField.text = teammate.description
             }
         })
         request.start()
