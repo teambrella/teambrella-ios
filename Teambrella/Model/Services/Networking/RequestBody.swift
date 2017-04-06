@@ -26,6 +26,12 @@ struct RequestBodyFactory {
                                       "AfterVer": 0]
         return RequestBody(key: key, payload: payload)
     }
+
+    static func newPostBody(key: Key, topicID: String, text: String) -> RequestBody? {
+        let payload: [String: Any] = ["TopicId": topicID,
+        "Text": text]
+        return RequestBody(key: key, payload: payload)
+    }
     
 }
 

@@ -227,27 +227,27 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WZ0-fH-T9H">
-                                <rect key="frame" x="73" y="568" width="229" height="30"/>
+                                <rect key="frame" x="72.5" y="568" width="230" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Med-EN-7jO">
-                                        <rect key="frame" x="0.0" y="0.0" width="61" height="30"/>
-                                        <state key="normal" title="initClient"/>
-                                        <connections>
-                                            <action selector="tapInitClient" destination="BYZ-38-t0r" eventType="touchUpInside" id="XrM-Z9-dtN"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lrf-90-kO2">
-                                        <rect key="frame" x="69" y="0.0" width="80" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                                         <state key="normal" title="Teammates"/>
                                         <connections>
                                             <action selector="tapTeammates" destination="BYZ-38-t0r" eventType="touchUpInside" id="dcg-lm-p1h"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCD-ue-kdU" userLabel="Teammate">
-                                        <rect key="frame" x="157" y="0.0" width="72" height="30"/>
+                                        <rect key="frame" x="88" y="0.0" width="72" height="30"/>
                                         <state key="normal" title="Teammate"/>
                                         <connections>
                                             <action selector="tapTeammate" destination="BYZ-38-t0r" eventType="touchUpInside" id="e2T-pg-fqe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8g3-Wg-CTG">
+                                        <rect key="frame" x="168" y="0.0" width="62" height="30"/>
+                                        <state key="normal" title="NewPost"/>
+                                        <connections>
+                                            <action selector="tapNewPost" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pud-aw-wiq"/>
                                         </connections>
                                     </button>
                                 </subviews>

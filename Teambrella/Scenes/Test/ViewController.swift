@@ -40,12 +40,6 @@ let server = service.server
         console.text = text
     }
     
-    @IBAction func tapInitClient() {
-        requestTimestamp {
-            
-        }
-    }
-    
     @IBAction func tapTeammates() {
         textField.text = "Getting teammates"
         guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp) else {
@@ -72,6 +66,24 @@ let server = service.server
         let request = AmbrellaRequest(type: .teammate, body: body, success: { [weak self] response in
             if case .teammatesList(let teammate) = response {
                 self?.textField.text = teammate.description
+            }
+        })
+        request.start()
+    }
+    
+    @IBAction func tapNewPost() {
+        let postText = textField.text ?? "new post"
+        textField.text = "Posting"
+        guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp) else {
+            return
+        }
+        
+        let body = RequestBodyFactory.newPostBody(key: key,
+                                                  topicID: "00000000-0000-0000-0000-00000000000a",
+                                                  text: postText)
+        let request = AmbrellaRequest(type: .newPost, body: body, success: { [weak self] response in
+            if case .newPost(let post) = response {
+                self?.consoleAdd(text: post.description)
             }
         })
         request.start()

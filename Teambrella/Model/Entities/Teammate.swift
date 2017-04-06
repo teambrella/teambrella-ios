@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-protocol Teammate: CustomStringConvertible {
+protocol Teammate: EntityLike {
     // personal properties
 
     /// global user id
@@ -19,8 +19,6 @@ protocol Teammate: CustomStringConvertible {
 
     // group properties
 
-    /// user id in this group
-    var id: Int { get }
     /// claim ceiling
     var claimLimit: Int { get }
     var claimsCount: Int { get }
@@ -38,8 +36,4 @@ protocol Teammate: CustomStringConvertible {
 
     /// are there any unread messages from this user
     var hasUnread: Bool { get }
-    /// entity version (every change of this entity on server increments this)
-    var ver: Int { get }
-
-    init(json: JSON)
 }

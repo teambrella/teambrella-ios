@@ -14,6 +14,7 @@ enum AmbrellaRequestType: String {
     case initClient = "me/InitClient"
     case teammatesList = "teammate/getList"
     case teammate = "teammate/getOne"
+    case newPost = "post/newPost"
 }
 
 enum AmbrellaResponseType {
@@ -21,6 +22,7 @@ enum AmbrellaResponseType {
     case initClient
     case teammatesList([Teammate])
     case teammate(Teammate)
+    case newPost(Post)
 }
 
 typealias AmbrellaRequestSuccess = (_ result: AmbrellaResponseType) -> Void
@@ -69,6 +71,10 @@ struct AmbrellaRequest {
                 success(AmbrellaResponseType.teammate(teammate))
             } else {
                 failure?(AmbrellaErrorFactory.unknownError())
+            }
+        case .newPost:
+            if let post = PostEntityFactory.post(with: reply) {
+                success(AmbrellaResponseType.newPost(post))
             }
         default:
             break

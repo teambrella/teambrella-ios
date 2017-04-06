@@ -10,9 +10,11 @@ import Foundation
 import SwiftyJSON
 
 struct TeammateEntity: Teammate {
+    var ver: Int64
+    let id: String
+
     let claimLimit: Int
     let claimsCount: Int
-    let id: Int
     let isJoining: Bool
     let isVoting: Bool
     let model: String
@@ -22,7 +24,6 @@ struct TeammateEntity: Teammate {
     let totallyPaid: Double
     let hasUnread: Bool
     let userID: String
-    let ver: Int
     let year: Int
     
     var description: String {
@@ -32,7 +33,7 @@ struct TeammateEntity: Teammate {
     init(json: JSON) {
         claimLimit = json["ClaimLimit"].intValue
         claimsCount = json["ClaimsCount"].intValue
-        id = json["Id"].intValue
+        id = json["Id"].stringValue
         isJoining = json["IsJoining"].boolValue
         isVoting = json["IsVoting"].boolValue
         model = json["Model"].stringValue
@@ -42,7 +43,7 @@ struct TeammateEntity: Teammate {
         totallyPaid = json["TotallyPaid"].doubleValue
         hasUnread = json["Unread"].boolValue
         userID = json["UserId"].stringValue
-        ver = json["Ver"].intValue
+        ver = json["Ver"].int64Value
         year = json["Year"].intValue
     }
     
