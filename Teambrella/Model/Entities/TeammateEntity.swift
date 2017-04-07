@@ -26,6 +26,32 @@ struct TeammateEntity: Teammate {
     let userID: String
     let year: Int
     
+    var posts: [Post]?
+    var couldVoteCount: Int?
+    var coverageReduceInterval: Int?
+    var coverageReduceTime: Int?
+    var coverageReduceTimePrevious: Int?
+    var dateCreated: Date?
+    var dateJoined: Date?
+    var dateUpdated: Date?
+    var dateVotingFinished: Date?
+    var isMyProxyVoter: Bool?
+    var keywords: [String]?
+    var maritalStatus: MaritalStatus?
+    var maxPaymentLimitFiat: Int?
+    var maxPaymentFiat: Int?
+    
+    var price: Int?
+    var role: Int?
+    var spayed: Int?
+    var state: Int?
+    var subType: Int?
+    var timestamp: TimeInterval?
+    var topicID: String?
+    var totallyPaidFiat: Double?
+    var votedByProxyTimes: Int?
+    var weight: Double?
+    
     var description: String {
         return "Teammate \(name) id: \(id); ver: \(ver)"
     }

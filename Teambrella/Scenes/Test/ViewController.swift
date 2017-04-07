@@ -36,12 +36,12 @@ let server = service.server
     }
 
     private func consoleAdd(text: String) {
-        let text = console.text + text + "\n\n"
+        let text = text + "\n" + console.text
         console.text = text
     }
     
     @IBAction func tapTeammates() {
-        textField.text = "Getting teammates"
+        consoleAdd(text: "Getting teammates")
         guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp) else {
             return
         }
@@ -49,7 +49,7 @@ let server = service.server
         let body = RequestBodyFactory.teammatesBody(key: key)
         let request = AmbrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
             if case .teammatesList(let teammates) = response {
-                self?.textField.text = "got teammates"
+                self?.consoleAdd(text: "Got teammates")
                 teammates.forEach { self?.consoleAdd(text: $0.description) }
             }
         })
@@ -57,7 +57,7 @@ let server = service.server
     }
     
     @IBAction func tapTeammate() {
-        textField.text = "Getting teammate #11"
+        self.consoleAdd(text: "Getting teammate #11")
         guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp) else {
             return
         }
@@ -65,7 +65,7 @@ let server = service.server
         let body = RequestBodyFactory.teammateBody(key: key, id: "00000000-0000-0000-0000-000000000005")
         let request = AmbrellaRequest(type: .teammate, body: body, success: { [weak self] response in
             if case .teammatesList(let teammate) = response {
-                self?.textField.text = teammate.description
+                self?.consoleAdd(text: teammate.description)
             }
         })
         request.start()
@@ -73,7 +73,7 @@ let server = service.server
     
     @IBAction func tapNewPost() {
         let postText = textField.text ?? "new post"
-        textField.text = "Posting"
+        consoleAdd(text: "Posting")
         guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp) else {
             return
         }

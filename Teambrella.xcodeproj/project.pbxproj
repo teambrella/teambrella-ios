@@ -32,7 +32,10 @@
 		80F21A7C34B08754FB74C0D3 /* libPods-TeambrellaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */; };
 		CBDFE00DB06001B8DB766097 /* Teammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEE452041D08B61C13CF8 /* Teammate.swift */; };
 		CBDFE3B8E39275922CDCC041 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE16BB5E7B5B758559237 /* String.swift */; };
+		CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */; };
+		CBDFE6700D1A91F94AB38BFB /* ClaimState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEEF5ABDD5262F4C37D6A /* ClaimState.swift */; };
 		CBDFE767664CC051784BF271 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA3415104DFFD0D751C7 /* ServerService.swift */; };
+		CBDFE97618AD26B31955B86A /* Nameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE7A4EFFFCEBF82332386 /* Nameable.swift */; };
 		CBDFEBF8E6B7F6BC0422AE92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE17963037A77339EB5F7 /* ViewController.swift */; };
 		E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */; };
 		E8C2DC7B371EF1F64A49B53A /* libPods-TeambrellaUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */; };
@@ -93,8 +96,11 @@
 		BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDFE16BB5E7B5B758559237 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Helpers/Extensions/String.swift; sourceTree = "<group>"; };
 		CBDFE17963037A77339EB5F7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Scenes/Test/ViewController.swift; sourceTree = "<group>"; };
+		CBDFE7A4EFFFCEBF82332386 /* Nameable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nameable.swift; sourceTree = "<group>"; };
 		CBDFEA3415104DFFD0D751C7 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerService.swift; path = Model/Services/Networking/ServerService.swift; sourceTree = "<group>"; };
+		CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaritalStatus.swift; path = Model/Enums/MaritalStatus.swift; sourceTree = "<group>"; };
 		CBDFEE452041D08B61C13CF8 /* Teammate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Teammate.swift; path = Model/Entities/Teammate.swift; sourceTree = "<group>"; };
+		CBDFEEF5ABDD5262F4C37D6A /* ClaimState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimState.swift; sourceTree = "<group>"; };
 		EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA9DEFD913DBBA749086C64 /* Pods-TeambrellaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Teambrella.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,10 +230,11 @@
 		6DA475D51E8BB9DF00B56D9B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6DCC7AC91E9551B40092D3F2 /* Entities */,
+				CBDFEB55A4BBBA3AFFA3CB9C /* Enums */,
+				6DCC7ACA1E9551BD0092D3F2 /* Protocols */,
 				6DA475D61E8BB9F000B56D9B /* Services */,
 				6DA475D81E8BBD2A00B56D9B /* AmbrellaError.swift */,
-				6DCC7ACA1E9551BD0092D3F2 /* Protocols */,
-				6DCC7AC91E9551B40092D3F2 /* Entities */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -297,6 +304,7 @@
 				6DEC6DF61E96690B00ACC119 /* EntityLike.swift */,
 				6DEC6DF21E96670D00ACC119 /* Post.swift */,
 				CBDFEE452041D08B61C13CF8 /* Teammate.swift */,
+				CBDFE7A4EFFFCEBF82332386 /* Nameable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -328,6 +336,15 @@
 				BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CBDFEB55A4BBBA3AFFA3CB9C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */,
+				CBDFEEF5ABDD5262F4C37D6A /* ClaimState.swift */,
+			);
+			name = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -664,6 +681,9 @@
 				6D8F971C1E8D4488008DC62E /* BitcoinService.swift in Sources */,
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
 				CBDFE00DB06001B8DB766097 /* Teammate.swift in Sources */,
+				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,
+				CBDFE97618AD26B31955B86A /* Nameable.swift in Sources */,
+				CBDFE6700D1A91F94AB38BFB /* ClaimState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
