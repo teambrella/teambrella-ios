@@ -19,11 +19,16 @@ class TeammateVC: UIViewController {
     @IBOutlet var riskLabel: UILabel!
     @IBOutlet var weightLabel: UILabel!
     
+    @IBOutlet var modelLabel: UILabel!
+    @IBOutlet var modelYearLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
         avatarImageView.kf.setImage(with: url)
         nameLabel.text = teammate.name
+        modelLabel.text = teammate.model
+        modelYearLabel.text = String(teammate.year)
         loadEntireTeammate()
     }
     
@@ -35,8 +40,8 @@ class TeammateVC: UIViewController {
         
         let body = RequestBodyFactory.teammateBody(key: key, id: teammate.userID)
         let request = AmbrellaRequest(type: .teammate, body: body, success: { [weak self] response in
-            if case .teammate(let teammate) = response {
-                self?.teammate = teammate
+            if case .teammate(let extendedTeammate) = response {
+                self?.teammate.extended = extendedTeammate
                 self?.presentEntireTeammate()
             }
         })
@@ -44,9 +49,10 @@ class TeammateVC: UIViewController {
     }
     
     private func presentEntireTeammate() {
-        teammate.price.map { self.priceLabel.text = String($0) }
+        teammate.extended?.price.map { self.priceLabel.text = String($0) }
         riskLabel.text = String(teammate.risk)
-        teammate.weight.map { self.weightLabel.text = String($0) }
+        teammate.extended?.weight.map { self.weightLabel.text = String($0) }
+       
     }
 
     override func didReceiveMemoryWarning() {

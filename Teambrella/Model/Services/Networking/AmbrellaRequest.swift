@@ -12,6 +12,7 @@ import SwiftyJSON
 enum AmbrellaRequestType: String {
     case timestamp = "me/GetTimestamp"
     case initClient = "me/InitClient"
+    case updates = "me/GetUpdates"
     case teammatesList = "teammate/getList"
     case teammate = "teammate/getOne"
     case newPost = "post/newPost"
@@ -21,8 +22,9 @@ enum AmbrellaResponseType {
     case timestamp(Int64)
     case initClient
     case teammatesList([Teammate])
-    case teammate(Teammate)
+    case teammate(ExtendedTeammate)
     case newPost(Post)
+    case updates
 }
 
 typealias AmbrellaRequestSuccess = (_ result: AmbrellaResponseType) -> Void
@@ -67,7 +69,7 @@ struct AmbrellaRequest {
                 failure?(AmbrellaErrorFactory.unknownError())
             }
         case .teammate:
-            if let teammate = TeammateEntityFactory.teammate(from: reply) {
+            if let teammate = TeammateEntityFactory.extendedTeammate(from: reply) {
                 success(AmbrellaResponseType.teammate(teammate))
             } else {
                 failure?(AmbrellaErrorFactory.unknownError())
@@ -76,6 +78,8 @@ struct AmbrellaRequest {
             if let post = PostEntityFactory.post(with: reply) {
                 success(AmbrellaResponseType.newPost(post))
             }
+        case .updates:
+            break
         default:
             break
         }

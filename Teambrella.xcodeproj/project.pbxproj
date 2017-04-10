@@ -27,6 +27,8 @@
 		6DEC074E1E9BD1DB0078F40E /* TeammatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC074D1E9BD1DB0078F40E /* TeammatesCell.swift */; };
 		6DEC07501E9BD59D0078F40E /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */; };
 		6DEC07521E9BDA310078F40E /* TeammateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC07511E9BDA310078F40E /* TeammateVC.swift */; };
+		6DEC07541E9BF6600078F40E /* ExtendedTeammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC07531E9BF6600078F40E /* ExtendedTeammate.swift */; };
+		6DEC07561E9BF7170078F40E /* ExtendedTeammateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC07551E9BF7170078F40E /* ExtendedTeammateEntity.swift */; };
 		6DEC6DF31E96670D00ACC119 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF21E96670D00ACC119 /* Post.swift */; };
 		6DEC6DF51E96673600ACC119 /* PostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF41E96673600ACC119 /* PostEntity.swift */; };
 		6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF61E96690B00ACC119 /* EntityLike.swift */; };
@@ -94,6 +96,8 @@
 		6DEC074D1E9BD1DB0078F40E /* TeammatesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammatesCell.swift; path = Scenes/Sample/TeammatesCell.swift; sourceTree = "<group>"; };
 		6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		6DEC07511E9BDA310078F40E /* TeammateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateVC.swift; path = Scenes/Sample/TeammateVC.swift; sourceTree = "<group>"; };
+		6DEC07531E9BF6600078F40E /* ExtendedTeammate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtendedTeammate.swift; path = Model/Protocols/ExtendedTeammate.swift; sourceTree = "<group>"; };
+		6DEC07551E9BF7170078F40E /* ExtendedTeammateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtendedTeammateEntity.swift; path = Model/Entities/ExtendedTeammateEntity/ExtendedTeammateEntity.swift; sourceTree = "<group>"; };
 		6DEC6DF21E96670D00ACC119 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Model/Protocols/Post.swift; sourceTree = "<group>"; };
 		6DEC6DF41E96673600ACC119 /* PostEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostEntity.swift; path = Model/Entities/PostEntity.swift; sourceTree = "<group>"; };
 		6DEC6DF61E96690B00ACC119 /* EntityLike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityLike.swift; path = Model/Protocols/EntityLike.swift; sourceTree = "<group>"; };
@@ -303,6 +307,7 @@
 			children = (
 				6DEC6DF41E96673600ACC119 /* PostEntity.swift */,
 				6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */,
+				6DEC07551E9BF7170078F40E /* ExtendedTeammateEntity.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 				6DEC6DF21E96670D00ACC119 /* Post.swift */,
 				CBDFEE452041D08B61C13CF8 /* Teammate.swift */,
 				CBDFE7A4EFFFCEBF82332386 /* Nameable.swift */,
+				6DEC07531E9BF6600078F40E /* ExtendedTeammate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -695,9 +701,11 @@
 				6DEC074E1E9BD1DB0078F40E /* TeammatesCell.swift in Sources */,
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
 				CBDFE00DB06001B8DB766097 /* Teammate.swift in Sources */,
+				6DEC07561E9BF7170078F40E /* ExtendedTeammateEntity.swift in Sources */,
 				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,
 				6DEC074C1E9BCF700078F40E /* SelectSampleTVC.swift in Sources */,
 				CBDFE97618AD26B31955B86A /* Nameable.swift in Sources */,
+				6DEC07541E9BF6600078F40E /* ExtendedTeammate.swift in Sources */,
 				CBDFE6700D1A91F94AB38BFB /* ClaimState.swift in Sources */,
 				CBDFEF53695144591939207D /* TeammateState.swift in Sources */,
 				CBDFE7942FBBF2641687D55D /* TeammateType.swift in Sources */,

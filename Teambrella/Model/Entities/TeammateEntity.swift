@@ -27,37 +27,13 @@ struct TeammateEntity: Teammate {
     let year: Int
     let avatar: String
     
-    var posts: [Post]?
-    var couldVoteCount: Int?
-    var coverageReduceInterval: Int?
-    var coverageReduceTime: Int?
-    var coverageReduceTimePrevious: Int?
-    var dateCreated: Date?
-    var dateJoined: Date?
-    var dateUpdated: Date?
-    var dateVotingFinished: Date?
-    var isMyProxyVoter: Bool?
-    var keywords: [String]?
-    var maritalStatus: MaritalStatus?
-    var maxPaymentLimitFiat: Int?
-    var maxPaymentFiat: Int?
-    
-    var price: Int?
-    var role: Int?
-    var spayed: Int?
-    var state: Int?
-    var subType: Int?
-    var topicID: String?
-    var totallyPaidFiat: Double?
-    var votedByProxyTimes: Int?
-    var weight: Double?
-    
+    var extended: ExtendedTeammate?
+        
     var description: String {
         return "Teammate \(name) id: \(id); ver: \(ver)"
     }
     
-    // topic id is loaded only with the complete model and it is always not nil then
-    var isComplete: Bool { return topicID != nil }
+    var isComplete: Bool { return extended != nil }
     
     init(json: JSON) {
         claimLimit = json["ClaimLimit"].intValue
@@ -75,18 +51,6 @@ struct TeammateEntity: Teammate {
         ver = json["Ver"].int64Value
         year = json["Year"].intValue
         avatar = json["Avatar"].stringValue
-        
-        // optional properties
-        price = json["Price"].int
-        role = json["Role"].int
-        spayed = json["Spayed"].int
-        state = json["State"].int
-        subType = json["SubType"].int
-        topicID = json["TopicId"].string
-        totallyPaidFiat = json["TotallyPaid_Fiat"].double
-        votedByProxyTimes = json["VotedByProxyTimes"].int
-        weight = json["Weight"].double
-        
     }
     
 }
@@ -98,7 +62,7 @@ struct TeammateEntityFactory {
         return teammates.map { TeammateEntity(json: $0) }
     }
     
-    static func teammate(from json: JSON) -> TeammateEntity? {
-        return TeammateEntity(json: json)
+    static func extendedTeammate(from json: JSON) -> ExtendedTeammateEntity? {
+        return ExtendedTeammateEntity(json: json)
     }
 }
