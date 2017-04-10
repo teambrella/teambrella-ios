@@ -59,7 +59,6 @@ struct TeammateEntity: Teammate {
     // topic id is loaded only with the complete model and it is always not nil then
     var isComplete: Bool { return topicID != nil }
     
-    
     init(json: JSON) {
         claimLimit = json["ClaimLimit"].intValue
         claimsCount = json["ClaimsCount"].intValue
