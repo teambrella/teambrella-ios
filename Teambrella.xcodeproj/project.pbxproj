@@ -35,8 +35,10 @@
 		CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */; };
 		CBDFE6700D1A91F94AB38BFB /* ClaimState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEEF5ABDD5262F4C37D6A /* ClaimState.swift */; };
 		CBDFE767664CC051784BF271 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA3415104DFFD0D751C7 /* ServerService.swift */; };
+		CBDFE7942FBBF2641687D55D /* TeammateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE401C75A54E12119F26E /* TeammateType.swift */; };
 		CBDFE97618AD26B31955B86A /* Nameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE7A4EFFFCEBF82332386 /* Nameable.swift */; };
 		CBDFEBF8E6B7F6BC0422AE92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE17963037A77339EB5F7 /* ViewController.swift */; };
+		CBDFEF53695144591939207D /* TeammateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE14B2340739AD6B231DF /* TeammateState.swift */; };
 		E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */; };
 		E8C2DC7B371EF1F64A49B53A /* libPods-TeambrellaUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */; };
 /* End PBXBuildFile section */
@@ -94,8 +96,10 @@
 		6DEC6DF81E966AA900ACC119 /* TransformerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransformerService.swift; path = Model/Services/Transformers/TransformerService.swift; sourceTree = "<group>"; };
 		86EB091347EC7E27BBAD1C82 /* Pods-Teambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.debug.xcconfig"; sourceTree = "<group>"; };
 		BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBDFE14B2340739AD6B231DF /* TeammateState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeammateState.swift; sourceTree = "<group>"; };
 		CBDFE16BB5E7B5B758559237 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Helpers/Extensions/String.swift; sourceTree = "<group>"; };
 		CBDFE17963037A77339EB5F7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Scenes/Test/ViewController.swift; sourceTree = "<group>"; };
+		CBDFE401C75A54E12119F26E /* TeammateType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeammateType.swift; sourceTree = "<group>"; };
 		CBDFE7A4EFFFCEBF82332386 /* Nameable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nameable.swift; sourceTree = "<group>"; };
 		CBDFEA3415104DFFD0D751C7 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerService.swift; path = Model/Services/Networking/ServerService.swift; sourceTree = "<group>"; };
 		CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaritalStatus.swift; path = Model/Enums/MaritalStatus.swift; sourceTree = "<group>"; };
@@ -343,6 +347,8 @@
 			children = (
 				CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */,
 				CBDFEEF5ABDD5262F4C37D6A /* ClaimState.swift */,
+				CBDFE14B2340739AD6B231DF /* TeammateState.swift */,
+				CBDFE401C75A54E12119F26E /* TeammateType.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -684,6 +690,8 @@
 				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,
 				CBDFE97618AD26B31955B86A /* Nameable.swift in Sources */,
 				CBDFE6700D1A91F94AB38BFB /* ClaimState.swift in Sources */,
+				CBDFEF53695144591939207D /* TeammateState.swift in Sources */,
+				CBDFE7942FBBF2641687D55D /* TeammateType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
