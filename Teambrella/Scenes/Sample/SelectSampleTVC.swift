@@ -62,7 +62,7 @@ class SelectSampleTVC: UITableViewController {
         }
         let teammate = teammatesData[indexPath.row]
         cell.nameLabel.text = teammate.name
-        let url = URL(string: ServerService.avatarURLstring(for: teammate.avatar))
+        let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
         cell.avatarImageView.kf.setImage(with: url)
         return cell
     }
@@ -70,5 +70,21 @@ class SelectSampleTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "to teammate", sender: indexPath)
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "to teammate" {
+            guard let vc = segue.destination as? TeammateVC else {
+                fatalError("wrong destination for Teammate segue")
+            }
+            guard let indexPath = sender as? IndexPath else {
+                fatalError("wrong sender for Teammate segue")
+            }
+            
+            vc.teammate = teammatesData[indexPath.row]
+        }
+    }
 }

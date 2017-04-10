@@ -73,6 +73,9 @@ struct TeammateEntity: Teammate {
         ver = json["Ver"].int64Value
         year = json["Year"].intValue
         avatar = json["Avatar"].stringValue
+        
+        price = json["Price"].int
+        weight = json["Weight"].double
     }
     
 }

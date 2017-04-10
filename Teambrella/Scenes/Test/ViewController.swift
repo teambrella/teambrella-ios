@@ -64,7 +64,7 @@ let server = service.server
         
         let body = RequestBodyFactory.teammateBody(key: key, id: "00000000-0000-0000-0000-000000000005")
         let request = AmbrellaRequest(type: .teammate, body: body, success: { [weak self] response in
-            if case .teammatesList(let teammate) = response {
+            if case .teammate(let teammate) = response {
                 self?.consoleAdd(text: teammate.description)
             }
         })
