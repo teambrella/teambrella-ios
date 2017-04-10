@@ -39,6 +39,9 @@ protocol Teammate: EntityLike {
     
     /// url string to get avatar image from
     var avatar: String { get }
+    
+    /// entire model is loaded
+    var isComplete: Bool { get }
 
     // optional items
 
@@ -62,7 +65,6 @@ protocol Teammate: EntityLike {
     var spayed: Int? { get }
     var state: Int? { get }
     var subType: Int? { get }
-    var timestamp: TimeInterval? { get }
     var topicID: String? { get }
     var totallyPaidFiat: Double? { get }
     var votedByProxyTimes: Int? { get }

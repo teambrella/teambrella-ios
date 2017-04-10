@@ -47,7 +47,6 @@ struct TeammateEntity: Teammate {
     var spayed: Int?
     var state: Int?
     var subType: Int?
-    var timestamp: TimeInterval?
     var topicID: String?
     var totallyPaidFiat: Double?
     var votedByProxyTimes: Int?
@@ -56,6 +55,10 @@ struct TeammateEntity: Teammate {
     var description: String {
         return "Teammate \(name) id: \(id); ver: \(ver)"
     }
+    
+    // topic id is loaded only with the complete model and it is always not nil then
+    var isComplete: Bool { return topicID != nil }
+    
     
     init(json: JSON) {
         claimLimit = json["ClaimLimit"].intValue
@@ -74,8 +77,17 @@ struct TeammateEntity: Teammate {
         year = json["Year"].intValue
         avatar = json["Avatar"].stringValue
         
+        // optional properties
         price = json["Price"].int
+        role = json["Role"].int
+        spayed = json["Spayed"].int
+        state = json["State"].int
+        subType = json["SubType"].int
+        topicID = json["TopicId"].string
+        totallyPaidFiat = json["TotallyPaid_Fiat"].double
+        votedByProxyTimes = json["VotedByProxyTimes"].int
         weight = json["Weight"].double
+        
     }
     
 }
