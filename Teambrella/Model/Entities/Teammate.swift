@@ -36,6 +36,9 @@ protocol Teammate: EntityLike {
 
     /// are there any unread messages from this user
     var hasUnread: Bool { get }
+    
+    /// url string to get avatar image from
+    var avatar: String { get }
 
     // optional items
 

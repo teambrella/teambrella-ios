@@ -27,6 +27,15 @@ class ServerService {
         
     }
     
+    static func avatarURLstring(for string: String, width: CGFloat? = nil, crop rect: CGRect? = nil) -> String {
+        var urlString = Constant.siteURL + string
+        if let width = width {
+            let rect = rect ?? CGRect(x: 0, y: 0, width: width, height: width)
+            urlString += "?width=\(width)&crop=\(rect.origin.x),\(rect.origin.y),\(rect.size.width),\(rect.size.height)"
+        }
+        return urlString
+    }
+    
     func ask(for string: String,
              parameters: [String: String]? = nil,
              body: RequestBody? = nil,

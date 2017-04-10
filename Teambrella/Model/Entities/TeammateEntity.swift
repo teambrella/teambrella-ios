@@ -25,6 +25,7 @@ struct TeammateEntity: Teammate {
     let hasUnread: Bool
     let userID: String
     let year: Int
+    let avatar: String
     
     var posts: [Post]?
     var couldVoteCount: Int?
@@ -71,6 +72,7 @@ struct TeammateEntity: Teammate {
         userID = json["UserId"].stringValue
         ver = json["Ver"].int64Value
         year = json["Year"].intValue
+        avatar = json["Avatar"].stringValue
     }
     
 }
