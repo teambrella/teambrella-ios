@@ -27,6 +27,6 @@ extension MaritalStatus: Nameable {
     }
 
     var localizableName: String {
-        return "general.maritalStatus." + name
+        return "General.maritalStatus." + name
     }
 }

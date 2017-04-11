@@ -1,0 +1,19 @@
+/* 
+  General.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 11.04.17.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"General.maritalStatus.divorced" = "divorciado";
+"General.maritalStatus.single" = "suelto";
+"General.maritalStatus.widowed" = "viudo";
+"General.maritalStatus.married" = "casado";
+"General.maritalStatus.unknown" = "ignoto";
+
+"General.claimState.voting" = "voting";
+"General.claimState.revoting" = "revoting";
+"General.claimState.declined" = "declined"";
+"General.claimState.inPayment" = "in payment";
+"General.claimState.processed" = "processed";

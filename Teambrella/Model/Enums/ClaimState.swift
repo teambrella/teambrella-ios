@@ -27,6 +27,6 @@ extension ClamState: Nameable {
     }
 
     var localizableName: String {
-        return "general.claimState." + name
+        return "General.claimState." + name
     }
 }
