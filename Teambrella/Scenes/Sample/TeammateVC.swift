@@ -40,9 +40,12 @@ class TeammateVC: UIViewController {
         
         let body = RequestBodyFactory.teammateBody(key: key, id: teammate.userID)
         let request = AmbrellaRequest(type: .teammate, body: body, success: { [weak self] response in
+            guard let me = self else { return }
+            
             if case .teammate(let extendedTeammate) = response {
-                self?.teammate.extended = extendedTeammate
-                self?.presentEntireTeammate()
+                me.teammate.extended = extendedTeammate
+                print("topic: \(extendedTeammate.topic)")
+                me.presentEntireTeammate()
             }
         })
         request.start()

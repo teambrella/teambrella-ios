@@ -17,9 +17,8 @@ protocol Post: EntityLike {
     var dateEdited: Date { get }
     var isSolution: Bool { get }
     var isTopicStarter: Bool { get }
-    var hasSpamFlag: Bool { get }
+    var isSpam: Bool { get }
     var ipAddress: String { get }
     var isPending: Bool { get }
     var userID: String { get }
-
 }

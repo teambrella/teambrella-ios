@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ExtendedTeammate: EntityLike {
-    var posts: [Post]? { get }
+    var topic: Topic { get set }
     var couldVoteCount: Int? { get }
     var coverageReduceInterval: Int? { get }
     var coverageReduceTime: Int? { get }

@@ -13,7 +13,8 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
     let id: String
     let ver: Int64
     
-    var posts: [Post]?
+    var topic: Topic
+    
     var couldVoteCount: Int?
     var coverageReduceInterval: Int?
     var coverageReduceTime: Int?
@@ -55,5 +56,7 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
         totallyPaidFiat = json["TotallyPaid_Fiat"].double
         votedByProxyTimes = json["VotedByProxyTimes"].int
         weight = json["Weight"].double
+        
+        topic = TopicFactory.topic(with: json)
     }
 }

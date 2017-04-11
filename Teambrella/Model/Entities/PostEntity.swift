@@ -10,8 +10,9 @@ import Foundation
 import SwiftyJSON
 
 struct PostEntity: Post {
-let id: String
+    let id: String
     let ver: Int64
+    
     let postContent: String
     let dateCreated: Date
     let upvotesCount: Int
@@ -20,7 +21,7 @@ let id: String
     let dateEdited: Date
     let isSolution: Bool
     let isTopicStarter: Bool
-    let hasSpamFlag: Bool
+    let isSpam: Bool
     let ipAddress: String
     let isPending: Bool
     let userID: String
@@ -40,7 +41,7 @@ let id: String
         dateEdited = service.transformer.dateFromServer(string: json["DateEdited"].stringValue)
         isSolution = json["IsSolution"].boolValue
         isTopicStarter = json["IsTopicStarter"].boolValue
-        hasSpamFlag = json["FlaggedAsSpam"].boolValue
+        isSpam = json["FlaggedAsSpam"].boolValue
         ipAddress = json["IpAddress"].stringValue
         isPending = json["Pending"].boolValue
         userID = json["UserId"].stringValue
@@ -48,14 +49,14 @@ let id: String
 
 }
 
-struct PostEntityFactory {
-    static func posts(with json: JSON) -> [PostEntity]? {
+struct PostFactory {
+    static func posts(with json: JSON) -> [Post]? {
         guard let posts = json["Posts"].array else { return nil }
 
         return posts.map { PostEntity(json: $0) }
     }
 
-    static func post(with json: JSON) -> PostEntity? {
+    static func post(with json: JSON) -> Post? {
         return PostEntity(json: json)
     }
 

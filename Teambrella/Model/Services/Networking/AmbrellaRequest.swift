@@ -75,7 +75,7 @@ struct AmbrellaRequest {
                 failure?(AmbrellaErrorFactory.unknownError())
             }
         case .newPost:
-            if let post = PostEntityFactory.post(with: reply) {
+            if let post = PostFactory.post(with: reply) {
                 success(.newPost(post))
             }
         case .updates:
