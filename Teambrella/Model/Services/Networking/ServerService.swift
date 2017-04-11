@@ -60,15 +60,13 @@ class ServerService {
                 if let value = response.result.value {
                     print(value)
                     let result = JSON(value)
-                    if let newTimestamp = result["Timestamp"].int64 {
-                        self.timestamp = newTimestamp
-                    }
-                    
-                    switch result["ResultCode"].intValue {
+                    let status = result["Status"]
+                    self.timestamp = status["Timestamp"].int64Value
+                    switch status["ResultCode"].intValue {
                     case 0:
-                        success(result)
+                        success(result["Data"])
                     default:
-                        let error = AmbrellaErrorFactory.error(with: result.rawValue as? [String: Any])
+                        let error = AmbrellaErrorFactory.error(with: status.rawValue as? [String: Any])
                         failure(error)
                     }
                 } else {

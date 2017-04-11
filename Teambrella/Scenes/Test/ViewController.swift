@@ -26,9 +26,12 @@ let server = service.server
         }
         
         let request = AmbrellaRequest(type: .timestamp, success: { [weak self] response in
-            if case .timestamp(let timestamp) = response {
-                self?.textField.text = String(timestamp)
-                self?.consoleAdd(text: String(timestamp))
+            guard let me = self else { return }
+            
+            if case .timestamp = response {
+                let stampString = String(me.server.timestamp)
+                me.textField.text = stampString
+                me.consoleAdd(text: stampString)
                 completion()
             }
         })

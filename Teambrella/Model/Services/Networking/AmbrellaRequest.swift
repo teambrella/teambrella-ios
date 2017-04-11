@@ -19,7 +19,7 @@ enum AmbrellaRequestType: String {
 }
 
 enum AmbrellaResponseType {
-    case timestamp(Int64)
+    case timestamp
     case initClient
     case teammatesList([Teammate])
     case teammate(ExtendedTeammate)
@@ -61,22 +61,22 @@ struct AmbrellaRequest {
     private func parseReply(reply: JSON) {
         switch type {
         case .timestamp:
-            success(AmbrellaResponseType.timestamp(reply["Timestamp"].int64Value))
+            success(.timestamp)
         case .teammatesList:
             if let teammates = TeammateEntityFactory.teammates(from: reply) {
-                success(AmbrellaResponseType.teammatesList(teammates))
+                success(.teammatesList(teammates))
             } else {
                 failure?(AmbrellaErrorFactory.unknownError())
             }
         case .teammate:
             if let teammate = TeammateEntityFactory.extendedTeammate(from: reply) {
-                success(AmbrellaResponseType.teammate(teammate))
+                success(.teammate(teammate))
             } else {
                 failure?(AmbrellaErrorFactory.unknownError())
             }
         case .newPost:
             if let post = PostEntityFactory.post(with: reply) {
-                success(AmbrellaResponseType.newPost(post))
+                success(.newPost(post))
             }
         case .updates:
             break
