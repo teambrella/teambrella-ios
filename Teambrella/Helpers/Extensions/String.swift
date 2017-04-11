@@ -11,7 +11,7 @@ extension String {
     }
     
     var localized: String {
-        guard let range = self.range(of: ".") else  { return self }
+        guard let range = self.range(of: ".") else { return self }
         
         return NSLocalizedString(self,
                                  tableName: self.substring(to: range.lowerBound),

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Test.stringsdict
+   Teambrella
+
+   Created by Yaroslav Pasternak on 11.04.17.
+   Copyright (c) 2017 Yaroslav Pasternak. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+        <key>Test.console.got_teammates</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>Got %#@teammates@</string>
+            <key>teammates</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>one teammate</string>
+                <key>other</key>
+                <string>%d teammates</string>
+            </dict>
+        </dict>
+    </dict>
+</plist>

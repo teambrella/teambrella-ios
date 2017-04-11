@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D097E971E9D19F400E77DAB /* Test.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D097E951E9D19F400E77DAB /* Test.strings */; };
+		6D097E9C1E9D1AD200E77DAB /* Test.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 6D097E9A1E9D1AD200E77DAB /* Test.stringsdict */; };
 		6D1C23841E8E97CF009B05A3 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C23831E8E97CF009B05A3 /* Key.swift */; };
 		6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C23871E8EA99F009B05A3 /* Data.swift */; };
 		6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
@@ -69,6 +71,11 @@
 		38D8148D9413F43D44EA5AFF /* Pods-Teambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.release.xcconfig"; sourceTree = "<group>"; };
 		5A31D4B51EC413D689755DD8 /* Pods-TeambrellaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		63613F4D9AC88C9CBF2AB08E /* Pods-TeambrellaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6D097E931E9D181A00E77DAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		6D097E961E9D19F400E77DAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Test.strings; sourceTree = "<group>"; };
+		6D097E981E9D19FC00E77DAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Test.strings; sourceTree = "<group>"; };
+		6D097E9B1E9D1AD200E77DAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Test.stringsdict; sourceTree = "<group>"; };
+		6D097E9D1E9D1BBF00E77DAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Test.stringsdict; sourceTree = "<group>"; };
 		6D1C23831E8E97CF009B05A3 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Key.swift; path = Model/Services/Bitcoin/Key.swift; sourceTree = "<group>"; };
 		6D1C23871E8EA99F009B05A3 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Helpers/Extensions/Data.swift; sourceTree = "<group>"; };
 		6D8F97111E8D1529008DC62E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -162,6 +169,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6D097E991E9D1A0000E77DAB /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				6D097E951E9D19F400E77DAB /* Test.strings */,
+				6D097E9A1E9D1AD200E77DAB /* Test.stringsdict */,
+			);
+			name = Localizations;
+			sourceTree = "<group>";
+		};
 		6D1C23851E8EA45A009B05A3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +234,7 @@
 				6DA475D51E8BB9DF00B56D9B /* Model */,
 				6DA475DA1E8BC8EF00B56D9B /* Scenes */,
 				6DA475DC1E8BCAA000B56D9B /* SupportingFiles */,
+				6D097E991E9D1A0000E77DAB /* Localizations */,
 			);
 			path = Teambrella;
 			sourceTree = "<group>";
@@ -468,6 +485,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 6DA475971E8ABEE600B56D9B;
 			productRefGroup = 6DA475A11E8ABEE600B56D9B /* Products */;
@@ -486,8 +504,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D097E971E9D19F400E77DAB /* Test.strings in Resources */,
 				6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */,
 				6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */,
+				6D097E9C1E9D1AD200E77DAB /* Test.stringsdict in Resources */,
 				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -744,10 +764,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6D097E951E9D19F400E77DAB /* Test.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D097E961E9D19F400E77DAB /* en */,
+				6D097E981E9D19FC00E77DAB /* es */,
+			);
+			name = Test.strings;
+			sourceTree = "<group>";
+		};
+		6D097E9A1E9D1AD200E77DAB /* Test.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D097E9B1E9D1AD200E77DAB /* en */,
+				6D097E9D1E9D1BBF00E77DAB /* es */,
+			);
+			name = Test.stringsdict;
+			sourceTree = "<group>";
+		};
 		6DA475A71E8ABEE600B56D9B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6DA475A81E8ABEE600B56D9B /* Base */,
+				6D097E931E9D181A00E77DAB /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -767,6 +806,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -818,6 +858,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

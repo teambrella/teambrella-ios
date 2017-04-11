@@ -1,0 +1,54 @@
+
+/* Class = "UILabel"; text = "year"; ObjectID = "0H3-49-hGs"; */
+"0H3-49-hGs.text" = "ano";
+
+/* Class = "UILabel"; text = "Weight:"; ObjectID = "0IY-eq-6ql"; */
+"0IY-eq-6ql.text" = "Peso:";
+
+/* Class = "UITabBarItem"; title = "Примеры"; ObjectID = "2OF-2d-9c3"; */
+"2OF-2d-9c3.title" = "Examplo:";
+
+/* Class = "UILabel"; text = "Model"; ObjectID = "3LO-eJ-lwp"; */
+"3LO-eJ-lwp.text" = "Modelo";
+
+/* Class = "UIButton"; normalTitle = "NewPost"; ObjectID = "8g3-Wg-CTG"; */
+"8g3-Wg-CTG.normalTitle" = "Nuevo puesto";
+
+/* Class = "UILabel"; text = "?"; ObjectID = "93X-00-qJB"; */
+"93X-00-qJB.text" = "?";
+
+/* Class = "UILabel"; text = "model"; ObjectID = "9le-45-say"; */
+"9le-45-say.text" = "modelo";
+
+/* Class = "UILabel"; text = "?"; ObjectID = "Dqd-3x-nSi"; */
+"Dqd-3x-nSi.text" = "?";
+
+/* Class = "UIButton"; normalTitle = "Teammates"; ObjectID = "Lrf-90-kO2"; */
+"Lrf-90-kO2.normalTitle" = "Compaños";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "MDx-d0-ks0"; */
+"MDx-d0-ks0.text" = "Nombre";
+
+/* Class = "UITabBarItem"; title = "Тесты"; ObjectID = "RTA-yB-u0G"; */
+"RTA-yB-u0G.title" = "Probas";
+
+/* Class = "UITextField"; text = "No timestamp"; ObjectID = "Tsn-On-viD"; */
+"Tsn-On-viD.text" = "No marca de tiempo";
+
+/* Class = "UILabel"; text = "Model Year"; ObjectID = "W9p-0b-6Xp"; */
+"W9p-0b-6Xp.text" = "Ano de modelo";
+
+/* Class = "UILabel"; text = "Risk:"; ObjectID = "ZcF-5r-KHc"; */
+"ZcF-5r-KHc.text" = "Risco:";
+
+/* Class = "UILabel"; text = "?"; ObjectID = "gHu-Zj-gM9"; */
+"gHu-Zj-gM9.text" = "?";
+
+/* Class = "UIButton"; normalTitle = "Teammate"; ObjectID = "iCD-ue-kdU"; */
+"iCD-ue-kdU.normalTitle" = "Compaño";
+
+/* Class = "UILabel"; text = "Price:"; ObjectID = "p3w-V4-FZ0"; */
+"p3w-V4-FZ0.text" = "Precio:";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "sPU-nn-Mnt"; */
+"sPU-nn-Mnt.text" = "Nombre:";
