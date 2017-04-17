@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="KeychainAddress" representedClassName="KeychainAddress" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attribute" optional="YES" syncable="YES"/>
+        <attribute name="attribute1" optional="YES" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="rawStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="teammateID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="cosigners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KeychainCosigner" inverseName="address" inverseEntity="KeychainCosigner" syncable="YES"/>
+        <relationship name="moveFundsTransactions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTransaction" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" syncable="YES"/>
+    </entity>
+    <entity name="KeychainCosigner" representedClassName="KeychainCosigner" syncable="YES" codeGenerationType="class">
+        <attribute name="addressID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="keyOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="teammateID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainAddress" inverseName="cosigners" inverseEntity="KeychainAddress" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" syncable="YES"/>
+    </entity>
+    <entity name="KeychainInpit" representedClassName="KeychainInpit" syncable="YES" codeGenerationType="class">
+        <attribute name="ammount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="previousTransactionID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="previousTransactionIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="transacrionID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTransaction" syncable="YES"/>
+    </entity>
+    <entity name="KeychainOutput" representedClassName="KeychainOutput" syncable="YES" codeGenerationType="class">
+        <attribute name="ammount" optional="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" syncable="YES"/>
+        <attribute name="payToID" optional="YES" syncable="YES"/>
+        <attribute name="transactionID" optional="YES" syncable="YES"/>
+        <relationship name="payTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainPayTo" syncable="YES"/>
+        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTransaction" syncable="YES"/>
+    </entity>
+    <entity name="KeychainPayTo" representedClassName="KeychainPayTo" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attribute" optional="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isDefault" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="knownSince" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="teammateID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="payTo" inverseEntity="KeychainTeammate" syncable="YES"/>
+    </entity>
+    <entity name="KeychainSignature" representedClassName="KeychainSignature" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inputID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isServerUpdateNeeded" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="signature" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="teammateID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="input" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainInpit" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" syncable="YES"/>
+    </entity>
+    <entity name="KeychainTeam" representedClassName="KeychainTeam" syncable="YES" codeGenerationType="class">
+        <attribute name="autoApprovalCosignGoodAddress" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="autoApprovalCosignNewAddress" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="autoApprovalMyGoodAddress" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="autoApprovalMyNewAddress" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="autoApprovalOff" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isTestnet" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="okAge" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="teammates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="team" inverseEntity="KeychainTeammate" syncable="YES"/>
+    </entity>
+    <entity name="KeychainTeammate" representedClassName="KeychainTeammate" syncable="YES" codeGenerationType="class">
+        <attribute name="fbName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publicKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="payTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainPayTo" inverseName="teammate" inverseEntity="KeychainPayTo" syncable="YES"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeam" inverseName="teammates" inverseEntity="KeychainTeam" syncable="YES"/>
+    </entity>
+    <entity name="KeychainTransaction" representedClassName="KeychainTransaction" syncable="YES" codeGenerationType="class">
+        <attribute name="amountBTC" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="claimID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="claimTeammateID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="clientResolutionTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="feeBTC" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="initiatedTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isServerUpdateNeeded" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="moveToAddressID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="processedTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="rawKind" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rawResolution" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rawState" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="receivedTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="teammateID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updateTIme" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="withdrawReqID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="claimTeammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="KeychainAddress" positionX="-227" positionY="-225" width="128" height="178"/>
+        <element name="KeychainCosigner" positionX="16" positionY="-174" width="128" height="120"/>
+        <element name="KeychainPayTo" positionX="351" positionY="117" width="128" height="150"/>
+        <element name="KeychainTeammate" positionX="16" positionY="-24" width="128" height="150"/>
+        <element name="KeychainTransaction" positionX="-234" positionY="180" width="128" height="330"/>
+        <element name="KeychainInpit" positionX="-468" positionY="207" width="128" height="135"/>
+        <element name="KeychainOutput" positionX="349" positionY="378" width="128" height="135"/>
+        <element name="KeychainSignature" positionX="-470" positionY="3" width="128" height="150"/>
+        <element name="KeychainTeam" positionX="-470" positionY="-225" width="128" height="193"/>
+    </elements>
+</model>

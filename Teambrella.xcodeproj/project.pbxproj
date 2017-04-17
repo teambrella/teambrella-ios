@@ -21,6 +21,8 @@
 		6D5988831EA4BDEE0046237F /* TransactionsServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5988821EA4BDEE0046237F /* TransactionsServer.swift */; };
 		6D7186E71EA4FC3600257463 /* TransactionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7186E61EA4FC3600257463 /* TransactionsVC.swift */; };
 		6D7186E91EA5009A00257463 /* TransactionsServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7186E81EA5009A00257463 /* TransactionsServerResponse.swift */; };
+		6D7186EB1EA513D700257463 /* TransactionsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7186EA1EA513D700257463 /* TransactionsStorage.swift */; };
+		6D7186EE1EA515F400257463 /* TransactionsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D7186EC1EA515F400257463 /* TransactionsModel.xcdatamodeld */; };
 		6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
 		6D8F97141E8D1532008DC62E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */; };
 		6D8F971C1E8D4488008DC62E /* BitcoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F971B1E8D4488008DC62E /* BitcoinService.swift */; };
@@ -105,6 +107,8 @@
 		6D5988821EA4BDEE0046237F /* TransactionsServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsServer.swift; path = Transactions/Services/TransactionsServer.swift; sourceTree = SOURCE_ROOT; };
 		6D7186E61EA4FC3600257463 /* TransactionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsVC.swift; path = Scenes/TransactionsVC.swift; sourceTree = "<group>"; };
 		6D7186E81EA5009A00257463 /* TransactionsServerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsServerResponse.swift; path = Transactions/Services/TransactionsServerResponse.swift; sourceTree = SOURCE_ROOT; };
+		6D7186EA1EA513D700257463 /* TransactionsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsStorage.swift; path = Transactions/Services/TransactionsStorage.swift; sourceTree = SOURCE_ROOT; };
+		6D7186ED1EA515F400257463 /* TransactionsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TransactionsModel.xcdatamodel; sourceTree = "<group>"; };
 		6D8F97111E8D1529008DC62E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teambrella-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -234,8 +238,18 @@
 			children = (
 				6D5988821EA4BDEE0046237F /* TransactionsServer.swift */,
 				6D7186E81EA5009A00257463 /* TransactionsServerResponse.swift */,
+				6D7186EF1EA5160600257463 /* Storage */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		6D7186EF1EA5160600257463 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				6D7186EA1EA513D700257463 /* TransactionsStorage.swift */,
+				6D7186EC1EA515F400257463 /* TransactionsModel.xcdatamodeld */,
+			);
+			name = Storage;
 			sourceTree = "<group>";
 		};
 		6D8F971D1E8D6548008DC62E /* Bitcoin */ = {
@@ -797,6 +811,7 @@
 				6DDC65271E9FEF8300529A60 /* BitcoinTransactionInput.swift in Sources */,
 				6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */,
 				6DDC652D1E9FF25E00529A60 /* BitcoinTransaction.swift in Sources */,
+				6D7186EE1EA515F400257463 /* TransactionsModel.xcdatamodeld in Sources */,
 				6D097EA51E9D219A00E77DAB /* Nameable.swift in Sources */,
 				6DDC65251E9FEE1500529A60 /* BitcoinUser.swift in Sources */,
 				6DEC6DF91E966AA900ACC119 /* TransformerService.swift in Sources */,
@@ -808,6 +823,7 @@
 				6D7186E71EA4FC3600257463 /* TransactionsVC.swift in Sources */,
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
 				CBDFEBF8E6B7F6BC0422AE92 /* ViewController.swift in Sources */,
+				6D7186EB1EA513D700257463 /* TransactionsStorage.swift in Sources */,
 				6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */,
 				6DA475DF1E8BE30000B56D9B /* RequestBody.swift in Sources */,
 				6D8F971C1E8D4488008DC62E /* BitcoinService.swift in Sources */,
@@ -1139,6 +1155,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6D7186EC1EA515F400257463 /* TransactionsModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6D7186ED1EA515F400257463 /* TransactionsModel.xcdatamodel */,
+			);
+			currentVersion = 6D7186ED1EA515F400257463 /* TransactionsModel.xcdatamodel */;
+			name = TransactionsModel.xcdatamodeld;
+			path = ../Transactions/Services/Storage/TransactionsModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6DA475981E8ABEE600B56D9B /* Project object */;
 }
