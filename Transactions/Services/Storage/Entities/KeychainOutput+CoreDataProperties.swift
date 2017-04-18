@@ -15,7 +15,7 @@ extension KeychainOutput {
         return NSFetchRequest<KeychainOutput>(entityName: "KeychainOutput")
     }
 
-    @NSManaged public var ammount: Int64
+    @NSManaged public var ammount: NSDecimalNumber?
     @NSManaged public var id: String?
     @NSManaged public var payToID: String?
     @NSManaged public var transactionID: String?

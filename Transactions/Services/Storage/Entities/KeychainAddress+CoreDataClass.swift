@@ -11,5 +11,8 @@ import Foundation
 
 @objc(KeychainAddress)
 public class KeychainAddress: NSManagedObject {
-
+    var status: UserAddressStatus {
+        return UserAddressStatus(rawValue: Int(rawStatus)) ?? .invalid
+    }
+    
 }

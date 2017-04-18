@@ -21,6 +21,7 @@ public class TransactionsServer {
     struct Constant {
         static let siteURL = "http://192.168.0.254" //"http://surilla.com"
         static let fakePrivateKey = "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
+        static let timestampKey = "TransactionsServer.timestampKey"
         
     }
     
@@ -34,7 +35,8 @@ public class TransactionsServer {
     }
     
     init() {
-        
+        timestamp = Int64(UserDefaults.standard.value(forKey: Constant.timestampKey) as? Int64 ?? 0)
+        print("Init transactions server with stored timestamp: \(timestamp)")
     }
     
     func initTimestamp(completion:@escaping (Int64) -> Void) {
@@ -114,10 +116,11 @@ public class TransactionsServer {
                 if let value = response.result.value {
                     print(value)
                     let result = JSON(value)
-                    if let timestamp = result["Timestamp"].int64 {
+                    if let timestamp = result["Status"]["Timestamp"].int64 {
                         me.timestamp = timestamp
+                        UserDefaults.standard.set(timestamp, forKey: Constant.timestampKey)
                     }
-                    me.delegate?.server(server: me, didReceiveUpdates: result)
+                    me.delegate?.server(server: me, didReceiveUpdates: result["Data"])
                 }
             case .failure(let error):
                 me.delegate?.server(server: me, failedWithError: error)

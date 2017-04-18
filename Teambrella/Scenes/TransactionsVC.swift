@@ -11,6 +11,7 @@ import UIKit
 
 class TransactionsVC: UIViewController {
     let server = TransactionsServer()
+    let storage = TransactionsStorage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,8 @@ extension TransactionsVC: TransactionsServerDelegate {
     
     func server(server: TransactionsServer, didReceiveUpdates updates: JSON) {
         print("server received updates: \(updates)")
+        storage.update(with: updates)
+        
     }
     
     func server(server: TransactionsServer, didUpdateTimestamp timestamp: Int64) {
