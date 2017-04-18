@@ -20,7 +20,7 @@ public struct BitcoinTransactionInput {
     
 }
 
-public struct BitcoinTransactionInputFactory {    
+public struct BitcoinTransactionInputFactory {
     func items(from json: JSON) -> [BitcoinTransactionInput] {
         return json.arrayValue.map { self.item(json: $0) }
     }

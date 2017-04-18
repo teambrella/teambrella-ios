@@ -57,8 +57,7 @@ public enum TransactionClientResolution: Int {
 /// 1) Incoming DTO (Data Transfer Object) from teambrella server.
 /// 2) Local DB entity for that server DTO.
 /// </summary>
-public struct BitcoinTransaction
-{
+public struct BitcoinTransaction {
     public let id: UUID
     public let teammateID: Int
     public let amountBTC: Decimal?

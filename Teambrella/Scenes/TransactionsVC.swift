@@ -6,8 +6,8 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
+import UIKit
 
 class TransactionsVC: UIViewController {
     let server = TransactionsServer()
