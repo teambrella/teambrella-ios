@@ -7,7 +7,7 @@
 //
 
 import CoreData
-import Foundation
+import SwiftyJSON
 
 class TransactionsStorage {
     lazy var container: NSPersistentContainer = {
@@ -21,8 +21,37 @@ class TransactionsStorage {
         return container
     }()
     
-    init() {
-        
+    var context: NSManagedObjectContext {
+        return container.viewContext
+    }
+    
+    func update(with json: JSON) {
+        saveInBackground { context in
+            
+        }
+    }
+    
+    func save(block: (_ context: NSManagedObjectContext) -> Void) {
+        block(context)
+        save(context: context)
+    }
+    
+    func saveInBackground(block: @escaping (_ context: NSManagedObjectContext) -> Void) {
+        container.performBackgroundTask { [weak self] context in
+            block(context)
+            self?.save(context: context)
+        }
+    }
+    
+    private func save(context: NSManagedObjectContext) {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
     
 }
