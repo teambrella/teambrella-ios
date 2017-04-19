@@ -21,10 +21,10 @@ struct EntityFactory {
     func addresses(json: JSON) -> [KeychainAddress] {
         return json.arrayValue.map { item in
             let address = KeychainAddress(context: context)
-            address.address = item["Address"].stringValue
-            address.dateCreated = formatter.date(from: item["DateCreated"].stringValue) as NSDate?
-            address.rawStatus = item["Status"].int16Value
-            address.teammateID = item["TeammateId"].int64Value
+            address.addressValue = item["Address"].stringValue
+            address.dateCreatedValue = formatter.date(from: item["DateCreated"].stringValue) as NSDate?
+            address.statusValue = item["Status"].int16Value
+            address.teammateIDValue = item["TeammateId"].int64Value
             return address
         }
     }
@@ -32,9 +32,9 @@ struct EntityFactory {
     func cosigners(json: JSON) -> [KeychainCosigner] {
         return json.arrayValue.map { item in
             let cosigner = KeychainCosigner(context: context)
-            cosigner.addressID = item["Address"].stringValue
-            cosigner.keyOrder = item["KeyOrder"].int16Value
-            cosigner.teammateID = item["TeammateId"].int64Value
+            cosigner.addressIDValue = item["Address"].stringValue
+            cosigner.keyOrderValue = item["KeyOrder"].int16Value
+            cosigner.teammateIDValue = item["TeammateId"].int64Value
             return cosigner
         }
     }
@@ -42,11 +42,11 @@ struct EntityFactory {
     func payTos(json: JSON) -> [KeychainPayTo] {
         return json.arrayValue.map { item in
             let payTo = KeychainPayTo(context: context)
-            payTo.address = item["Address"].stringValue
-            payTo.id = item["Id"].stringValue
-            payTo.isDefault = item["IsDefault"].boolValue
-            payTo.knownSince = formatter.date(from: json["KnownSince"].stringValue) as NSDate?
-            payTo.teammateID = item["TeammateId"].int64Value
+            payTo.addressValue = item["Address"].stringValue
+            payTo.idValue = item["Id"].stringValue
+            payTo.isDefaultValue = item["IsDefault"].boolValue
+            payTo.knownSinceValue = formatter.date(from: json["KnownSince"].stringValue) as NSDate?
+            payTo.teammateIDValue = item["TeammateId"].int64Value
             return payTo
         }
     }
@@ -62,11 +62,11 @@ struct EntityFactory {
          */
         return json.arrayValue.map { item in
             let teammate = KeychainTeammate(context: context)
-            teammate.fbName = item["FBName"].stringValue
-            teammate.id = item["Id"].int64Value
-            teammate.name = item["Name"].stringValue
-            teammate.publicKey = item["PublicKey"].string
-            teammate.teamID = item["TeamId"].int64Value
+            teammate.fbNameValue = item["FBName"].stringValue
+            teammate.idValue = item["Id"].int64Value
+            teammate.nameValue = item["Name"].stringValue
+            teammate.publicKeyValue = item["PublicKey"].string
+            teammate.teamIDValue = item["TeamId"].int64Value
             return teammate
         }
     }
@@ -81,9 +81,9 @@ struct EntityFactory {
  */
         return json.arrayValue.map { item in
             let team = KeychainTeam(context: context)
-            team.id = item["Id"].int64Value
-            team.name = item["Name"].stringValue
-            team.isTestnet = item["Testnet"].boolValue
+            team.idValue = item["Id"].int64Value
+            team.nameValue = item["Name"].stringValue
+            team.isTestnetValue = item["Testnet"].boolValue
             return team
         }
     }
@@ -104,10 +104,10 @@ struct EntityFactory {
  */
         return json.arrayValue.map { item in
             let output = KeychainOutput(context: context)
-            output.ammount = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
-            output.id = item["Id"].stringValue
-            output.payToID = item["PayToId"].stringValue
-            output.transactionID = item["TxId"].stringValue
+            output.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
+            output.idValue = item["Id"].stringValue
+            output.payToIDValue = item["PayToId"].stringValue
+            output.transactionIDValue = item["TxId"].stringValue
             return output
         }
     }
@@ -133,17 +133,17 @@ struct EntityFactory {
  */
         return json.arrayValue.map { item in
             let transaction = KeychainTransaction(context: context)
-            transaction.amountBTC = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
-            transaction.claimID = item["ClaimId"].int64Value
-            transaction.claimTeammateID = item["ClaimTeammateId"].int64Value
-            transaction.id = item["Id"].stringValue
+            transaction.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
+            transaction.claimIDValue = item["ClaimId"].int64Value
+            transaction.claimTeammateIDValue = item["ClaimTeammateId"].int64Value
+            transaction.idValue = item["Id"].stringValue
             if let initiatedTime = formatter.date(from: json["InitiatedTime"].stringValue) as? NSDate {
-            transaction.initiatedTime = initiatedTime
+            transaction.initiatedTimeValue = initiatedTime
             }
-            transaction.rawKind = item["Kind"].int16Value
-            transaction.rawState = item["State"].int16Value
-            transaction.teammateID = item["TeammateId"].int64Value
-            transaction.withdrawReqID = item["WithdrawReqId"].int64Value
+            transaction.kindValue = item["Kind"].int16Value
+            transaction.stateValue = item["State"].int16Value
+            transaction.teammateIDValue = item["TeammateId"].int64Value
+            transaction.withdrawReqIDValue = item["WithdrawReqId"].int64Value
             return transaction
         }
     }

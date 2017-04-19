@@ -9,5 +9,9 @@
 import CoreData
 
 class KeychainTeammate: NSManagedObject {
-
+    var id: Int { return Int(idValue) }
+    var teamID: Int { return Int(teamIDValue) }
+    var fbName: String? { return fbNameValue }
+    var name: String { return nameValue! }
+    var publicKey: String? { return publicKeyValue }
 }

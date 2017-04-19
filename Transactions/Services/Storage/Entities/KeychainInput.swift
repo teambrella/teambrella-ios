@@ -9,5 +9,9 @@
 import CoreData
 
 class KeychainInput: NSManagedObject {
-
+    var previousTransactionIndex: Int { return Int(previousTransactionIndexValue) }
+    var ammount: Decimal { return ammountValue! as Decimal }
+    var id: String { return idValue! }
+    var previousTransactionID: String? { return previousTransactionIDValue }
+    var transactionID: String { return transactionIDValue! }
 }

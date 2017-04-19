@@ -9,7 +9,8 @@
 import CoreData
 
 class KeychainAddress: NSManagedObject {
-    var status: UserAddressStatus {
-        return UserAddressStatus(rawValue: Int(rawStatus)) ?? .invalid
-    }
+    var status: UserAddressStatus { return UserAddressStatus(rawValue: Int(statusValue)) ?? .invalid }
+    var teammateID: Int { return Int(teammateIDValue) }
+    var address: String { return addressValue! }
+    var dateCreated: Date { return dateCreatedValue! as Date }
 }

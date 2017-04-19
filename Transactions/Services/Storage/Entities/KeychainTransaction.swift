@@ -9,13 +9,22 @@
 import CoreData
 
 class KeychainTransaction: NSManagedObject {
-    var kind: TransactionKind? {
-        return TransactionKind(rawValue: Int(rawKind))
-    }
+    var kind: TransactionKind? { return TransactionKind(rawValue: Int(kindValue)) }
     var resolution: TransactionClientResolution? {
-        return TransactionClientResolution(rawValue: Int(rawResolution))
+        return TransactionClientResolution(rawValue: Int(resolutionValue))
     }
-    var state: TransactionState? {
-        return TransactionState(rawValue: Int(rawState))
-    }
+    var state: TransactionState? { return TransactionState(rawValue: Int(stateValue)) }
+    var claimID: Int { return Int(claimIDValue) }
+    var claimTeammateID: Int { return Int(claimTeammateIDValue) }
+    var withdrawReqID: Int { return Int(withdrawReqIDValue) }
+    var amount: Decimal { return amountValue! as Decimal }
+    var fee: Decimal? { return feeValue as Decimal? }
+    var id: String { return idValue! }
+    var moveToAddressID: String? { return moveToAddressIDValue }
+    var isServerUpdateNeeded: Bool { return isServerUpdateNeededValue }
+    var clientResolutionTime: Date? { return clientResolutionTimeValue as Date? }
+    var initiatedTime: Date? { return initiatedTimeValue as Date? }
+    var processedTime: Date? { return processedTimeValue as Date? }
+    var receivedTime: Date? { return receivedTimeValue as Date? }
+    var updateTime: Date? { return updateTimeValue as Date? }
 }

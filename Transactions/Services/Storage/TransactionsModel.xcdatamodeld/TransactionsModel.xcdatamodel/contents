@@ -1,104 +1,104 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="KeychainAddress" representedClassName=".KeychainAddress" syncable="YES" codeGenerationType="category">
-        <attribute name="address" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="rawStatus" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="teammateID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="addressValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="dateCreatedValue" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statusValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="cosigners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KeychainCosigner" inverseName="address" inverseEntity="KeychainCosigner" syncable="YES"/>
         <relationship name="moveFundsTransactions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTransaction" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="address" inverseEntity="KeychainTeammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="address"/>
+                <constraint value="addressValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <entity name="KeychainCosigner" representedClassName=".KeychainCosigner" syncable="YES" codeGenerationType="category">
-        <attribute name="addressID" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="keyOrder" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="teammateID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="addressIDValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="keyOrderValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainAddress" inverseName="cosigners" inverseEntity="KeychainAddress" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="cosigners" inverseEntity="KeychainTeammate" syncable="YES"/>
     </entity>
     <entity name="KeychainInput" representedClassName=".KeychainInput" syncable="YES" codeGenerationType="category">
-        <attribute name="ammount" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="previousTransactionID" attributeType="String" syncable="YES"/>
-        <attribute name="previousTransactionIndex" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="transacrionID" attributeType="String" syncable="YES"/>
+        <attribute name="ammountValue" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="previousTransactionIDValue" attributeType="String" syncable="YES"/>
+        <attribute name="previousTransactionIndexValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
         <relationship name="signature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainSignature" inverseName="input" inverseEntity="KeychainSignature" syncable="YES"/>
         <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTransaction" inverseName="input" inverseEntity="KeychainTransaction" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="id"/>
+                <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <entity name="KeychainOutput" representedClassName=".KeychainOutput" syncable="YES" codeGenerationType="category">
-        <attribute name="ammount" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
-        <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="payToID" attributeType="String" syncable="YES"/>
-        <attribute name="transactionID" attributeType="String" syncable="YES"/>
+        <attribute name="amountValue" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="payToIDValue" attributeType="String" syncable="YES"/>
+        <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
         <relationship name="payTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainPayTo" inverseName="output" inverseEntity="KeychainPayTo" syncable="YES"/>
         <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTransaction" inverseName="output" inverseEntity="KeychainTransaction" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="id"/>
+                <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <entity name="KeychainPayTo" representedClassName=".KeychainPayTo" syncable="YES" codeGenerationType="category">
-        <attribute name="address" attributeType="String" syncable="YES"/>
-        <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="isDefault" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="knownSince" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="teammateID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="addressValue" attributeType="String" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="isDefaultValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="knownSinceValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="output" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainOutput" inverseName="payTo" inverseEntity="KeychainOutput" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="payTo" inverseEntity="KeychainTeammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="id"/>
+                <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <entity name="KeychainSignature" representedClassName=".KeychainSignature" syncable="YES" codeGenerationType="category">
-        <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="inputID" attributeType="String" syncable="YES"/>
-        <attribute name="isServerUpdateNeeded" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="signature" attributeType="Binary" syncable="YES"/>
-        <attribute name="teammateID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="inputIDValue" attributeType="String" syncable="YES"/>
+        <attribute name="isServerUpdateNeededValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="signatureValue" attributeType="Binary" syncable="YES"/>
+        <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="input" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainInput" inverseName="signature" inverseEntity="KeychainInput" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="signature" inverseEntity="KeychainTeammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="id"/>
+                <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <entity name="KeychainTeam" representedClassName=".KeychainTeam" syncable="YES" codeGenerationType="category">
-        <attribute name="autoApprovalCosignGoodAddress" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="autoApprovalCosignNewAddress" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="autoApprovalMyGoodAddress" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="autoApprovalMyNewAddress" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="autoApprovalOff" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
-        <attribute name="isTestnet" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="okAge" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="autoApprovalCosignGoodAddressValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="autoApprovalCosignNewAddressValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="autoApprovalMyGoodAddressValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="autoApprovalMyNewAddressValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="autoApprovalOffValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="isTestnetValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="nameValue" attributeType="String" syncable="YES"/>
+        <attribute name="okAgeValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="teammates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="team" inverseEntity="KeychainTeammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="id"/>
+                <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <entity name="KeychainTeammate" representedClassName=".KeychainTeammate" syncable="YES" codeGenerationType="category">
-        <attribute name="fbName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="publicKey" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="teamID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fbNameValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="nameValue" attributeType="String" syncable="YES"/>
+        <attribute name="publicKeyValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainAddress" inverseName="teammate" inverseEntity="KeychainAddress" syncable="YES"/>
         <relationship name="cosigners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KeychainCosigner" inverseName="teammate" inverseEntity="KeychainCosigner" syncable="YES"/>
         <relationship name="payTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainPayTo" inverseName="teammate" inverseEntity="KeychainPayTo" syncable="YES"/>
@@ -107,35 +107,35 @@
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KeychainTransaction" inverseName="teammate" inverseEntity="KeychainTransaction" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="id"/>
+                <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <entity name="KeychainTransaction" representedClassName=".KeychainTransaction" syncable="YES" codeGenerationType="category">
-        <attribute name="amountBTC" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="claimID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="claimTeammateID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="clientResolutionTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="feeBTC" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="initiatedTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="isServerUpdateNeeded" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="moveToAddressID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="processedTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="rawKind" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="rawResolution" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="rawState" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="receivedTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="teammateID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="updateTIme" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="withdrawReqID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="amountValue" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="claimIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="claimTeammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="clientResolutionTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="feeValue" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="initiatedTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isServerUpdateNeededValue" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="kindValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="moveToAddressIDValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="processedTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="receivedTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="resolutionValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stateValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updateTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="withdrawReqIDValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="claimTeammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" syncable="YES"/>
         <relationship name="input" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainInput" inverseName="transaction" inverseEntity="KeychainInput" syncable="YES"/>
         <relationship name="output" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainOutput" inverseName="transaction" inverseEntity="KeychainOutput" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="transactions" inverseEntity="KeychainTeammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="id"/>
+                <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>

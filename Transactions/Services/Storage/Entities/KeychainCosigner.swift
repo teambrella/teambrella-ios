@@ -9,5 +9,7 @@
 import CoreData
 
 class KeychainCosigner: NSManagedObject {
-
+    var keyOrder: Int { return Int(keyOrderValue) }
+    var teammateID: Int { return Int(teammateIDValue) }
+    var addressID: String { return addressIDValue! }
 }

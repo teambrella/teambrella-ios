@@ -48,16 +48,6 @@
 		6DC60B7D1EA74F3D007D285C /* KeychainTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B7C1EA74F3D007D285C /* KeychainTransaction.swift */; };
 		6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC31E93A6920092D3F2 /* Services.swift */; };
 		6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */; };
-		6DDC651B1E9FCFF600529A60 /* BitcoinAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC651A1E9FCFF600529A60 /* BitcoinAddress.swift */; };
-		6DDC651D1E9FD22400529A60 /* BitcoinCosigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC651C1E9FD22400529A60 /* BitcoinCosigner.swift */; };
-		6DDC651F1E9FE13300529A60 /* BitcoinTeammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC651E1E9FE13300529A60 /* BitcoinTeammate.swift */; };
-		6DDC65211E9FE41F00529A60 /* BitcoinPayTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC65201E9FE41F00529A60 /* BitcoinPayTo.swift */; };
-		6DDC65231E9FE52700529A60 /* BitcoinTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC65221E9FE52700529A60 /* BitcoinTeam.swift */; };
-		6DDC65251E9FEE1500529A60 /* BitcoinUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC65241E9FEE1500529A60 /* BitcoinUser.swift */; };
-		6DDC65271E9FEF8300529A60 /* BitcoinTransactionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC65261E9FEF8300529A60 /* BitcoinTransactionInput.swift */; };
-		6DDC65291E9FF01900529A60 /* BitcoinTransactionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC65281E9FF01900529A60 /* BitcoinTransactionOutput.swift */; };
-		6DDC652B1E9FF0E600529A60 /* BitcoinTransactionSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC652A1E9FF0E600529A60 /* BitcoinTransactionSignature.swift */; };
-		6DDC652D1E9FF25E00529A60 /* BitcoinTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC652C1E9FF25E00529A60 /* BitcoinTransaction.swift */; };
 		6DEC074C1E9BCF700078F40E /* SelectSampleTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC074B1E9BCF700078F40E /* SelectSampleTVC.swift */; };
 		6DEC074E1E9BD1DB0078F40E /* TeammatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC074D1E9BD1DB0078F40E /* TeammatesCell.swift */; };
 		6DEC07501E9BD59D0078F40E /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */; };
@@ -152,16 +142,6 @@
 		6DC60B7C1EA74F3D007D285C /* KeychainTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainTransaction.swift; path = Transactions/Services/Storage/Entities/KeychainTransaction.swift; sourceTree = "<group>"; };
 		6DCC7AC31E93A6920092D3F2 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Model/Services/Services.swift; sourceTree = "<group>"; };
 		6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateEntity.swift; path = Model/Entities/TeammateEntity.swift; sourceTree = "<group>"; };
-		6DDC651A1E9FCFF600529A60 /* BitcoinAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitcoinAddress.swift; path = Transactions/Entities/BitcoinAddress.swift; sourceTree = SOURCE_ROOT; };
-		6DDC651C1E9FD22400529A60 /* BitcoinCosigner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitcoinCosigner.swift; path = Transactions/Entities/BitcoinCosigner.swift; sourceTree = SOURCE_ROOT; };
-		6DDC651E1E9FE13300529A60 /* BitcoinTeammate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitcoinTeammate.swift; path = Transactions/Entities/BitcoinTeammate.swift; sourceTree = SOURCE_ROOT; };
-		6DDC65201E9FE41F00529A60 /* BitcoinPayTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitcoinPayTo.swift; path = Transactions/Entities/BitcoinPayTo.swift; sourceTree = SOURCE_ROOT; };
-		6DDC65221E9FE52700529A60 /* BitcoinTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitcoinTeam.swift; path = Transactions/Entities/BitcoinTeam.swift; sourceTree = SOURCE_ROOT; };
-		6DDC65241E9FEE1500529A60 /* BitcoinUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitcoinUser.swift; path = Transactions/Entities/BitcoinUser.swift; sourceTree = SOURCE_ROOT; };
-		6DDC65261E9FEF8300529A60 /* BitcoinTransactionInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitcoinTransactionInput.swift; path = Transactions/Entities/BitcoinTransactionInput.swift; sourceTree = SOURCE_ROOT; };
-		6DDC65281E9FF01900529A60 /* BitcoinTransactionOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitcoinTransactionOutput.swift; path = Transactions/Entities/BitcoinTransactionOutput.swift; sourceTree = SOURCE_ROOT; };
-		6DDC652A1E9FF0E600529A60 /* BitcoinTransactionSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitcoinTransactionSignature.swift; path = Transactions/Entities/BitcoinTransactionSignature.swift; sourceTree = SOURCE_ROOT; };
-		6DDC652C1E9FF25E00529A60 /* BitcoinTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitcoinTransaction.swift; path = Transactions/Entities/BitcoinTransaction.swift; sourceTree = SOURCE_ROOT; };
 		6DEC074B1E9BCF700078F40E /* SelectSampleTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectSampleTVC.swift; path = Scenes/Sample/SelectSampleTVC.swift; sourceTree = "<group>"; };
 		6DEC074D1E9BD1DB0078F40E /* TeammatesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammatesCell.swift; path = Scenes/Sample/TeammatesCell.swift; sourceTree = "<group>"; };
 		6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -447,28 +427,10 @@
 		6DDC65181E9FCEAA00529A60 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
-				6DDC65191E9FCECB00529A60 /* Entities */,
 				6D5988841EA4BDF60046237F /* Services */,
 			);
 			name = Transactions;
 			path = Teambrella;
-			sourceTree = "<group>";
-		};
-		6DDC65191E9FCECB00529A60 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				6DDC651A1E9FCFF600529A60 /* BitcoinAddress.swift */,
-				6DDC651C1E9FD22400529A60 /* BitcoinCosigner.swift */,
-				6DDC65201E9FE41F00529A60 /* BitcoinPayTo.swift */,
-				6DDC65221E9FE52700529A60 /* BitcoinTeam.swift */,
-				6DDC651E1E9FE13300529A60 /* BitcoinTeammate.swift */,
-				6DDC652C1E9FF25E00529A60 /* BitcoinTransaction.swift */,
-				6DDC65261E9FEF8300529A60 /* BitcoinTransactionInput.swift */,
-				6DDC65281E9FF01900529A60 /* BitcoinTransactionOutput.swift */,
-				6DDC652A1E9FF0E600529A60 /* BitcoinTransactionSignature.swift */,
-				6DDC65241E9FEE1500529A60 /* BitcoinUser.swift */,
-			);
-			name = Entities;
 			sourceTree = "<group>";
 		};
 		6DEC074A1E9BCF330078F40E /* Samples */ = {
@@ -837,39 +799,30 @@
 				6DA475D91E8BBD2A00B56D9B /* AmbrellaError.swift in Sources */,
 				6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */,
 				6D5988831EA4BDEE0046237F /* TransactionsServer.swift in Sources */,
-				6DDC652B1E9FF0E600529A60 /* BitcoinTransactionSignature.swift in Sources */,
 				6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */,
-				6DDC65291E9FF01900529A60 /* BitcoinTransactionOutput.swift in Sources */,
 				6D48BC7C1EA64EC500235324 /* EntityFactory.swift in Sources */,
-				6DDC65211E9FE41F00529A60 /* BitcoinPayTo.swift in Sources */,
 				6D7186E91EA5009A00257463 /* TransactionsServerResponse.swift in Sources */,
 				6D097EA31E9D215500E77DAB /* TeammateType.swift in Sources */,
-				6DDC651B1E9FCFF600529A60 /* BitcoinAddress.swift in Sources */,
 				6DEC6DF51E96673600ACC119 /* PostEntity.swift in Sources */,
 				6DA475D41E8BB95200B56D9B /* AmbrellaRequest.swift in Sources */,
 				6D1C23841E8E97CF009B05A3 /* Key.swift in Sources */,
 				6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */,
 				6DC60B6D1EA74996007D285C /* KeychainAddress.swift in Sources */,
-				6DDC651F1E9FE13300529A60 /* BitcoinTeammate.swift in Sources */,
 				6DEC07521E9BDA310078F40E /* TeammateVC.swift in Sources */,
 				6DC60B7D1EA74F3D007D285C /* KeychainTransaction.swift in Sources */,
 				6DC60B7B1EA74F24007D285C /* KeychainTeammate.swift in Sources */,
-				6DDC65271E9FEF8300529A60 /* BitcoinTransactionInput.swift in Sources */,
 				6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */,
-				6DDC652D1E9FF25E00529A60 /* BitcoinTransaction.swift in Sources */,
 				6DC60B731EA749F1007D285C /* KeychainOutput.swift in Sources */,
 				6D7186EE1EA515F400257463 /* TransactionsModel.xcdatamodeld in Sources */,
 				6DC60B771EA74A9B007D285C /* KeychainSignature.swift in Sources */,
 				6DC60B751EA74A08007D285C /* KeychainPayTo.swift in Sources */,
 				6DC60B6F1EA749B5007D285C /* KeychainCosigner.swift in Sources */,
 				6D097EA51E9D219A00E77DAB /* Nameable.swift in Sources */,
-				6DDC65251E9FEE1500529A60 /* BitcoinUser.swift in Sources */,
 				6DEC6DF91E966AA900ACC119 /* TransformerService.swift in Sources */,
 				CBDFE767664CC051784BF271 /* ServerService.swift in Sources */,
 				6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */,
 				6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */,
 				6DC60B711EA749D4007D285C /* KeychainInput.swift in Sources */,
-				6DDC651D1E9FD22400529A60 /* BitcoinCosigner.swift in Sources */,
 				6DEC6DF31E96670D00ACC119 /* Post.swift in Sources */,
 				6D7186E71EA4FC3600257463 /* TransactionsVC.swift in Sources */,
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
@@ -884,7 +837,6 @@
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
 				CBDFE00DB06001B8DB766097 /* Teammate.swift in Sources */,
 				6DEC07561E9BF7170078F40E /* ExtendedTeammateEntity.swift in Sources */,
-				6DDC65231E9FE52700529A60 /* BitcoinTeam.swift in Sources */,
 				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,
 				6DEC074C1E9BCF700078F40E /* SelectSampleTVC.swift in Sources */,
 				6DEC07541E9BF6600078F40E /* ExtendedTeammate.swift in Sources */,

@@ -93,17 +93,18 @@ public class TransactionsServer {
     
     func getUpdates(privateKey: String,
                     lastUpdated: Int64,
-                    transactions: [BitcoinTransaction],
-                    signatures: [BitcoinTransactionSignature]) {
+                    transactions: [KeychainTransaction],
+                    signatures: [KeychainSignature]) {
         guard let key = Key(base58String: privateKey, timestamp: timestamp) else { return }
         
         let txInfos = transactions.map { ["Id": $0.id,
                                           "ResolutionTime": $0.clientResolutionTime?.timeIntervalSince1970 ?? 0,
                                           "Resolution": $0.resolution] }
+        
         let txSignatures = signatures.map {
             ["Signature": $0.signature.base64EncodedString(),
-             "TeammateId": $0.teammate.id,
-             "TxInputId": $0.transactionInput.id]
+             "TeammateId": $0.teammateID,
+             "TxInputId": $0.inputID]
         }
         let payload = ["TxInfos": txInfos,
                        "TxSignatures": txSignatures]
