@@ -490,6 +490,7 @@
 				E02813D464CF735903FDEC9D /* [CP] Embed Pods Frameworks */,
 				8CD7C238ED8CE72CDAECD7D2 /* [CP] Copy Pods Resources */,
 				6DA475DD1E8BCDB000B56D9B /* SwiftLint */,
+				6DC60B7E1EA7B805007D285C /* CPD */,
 			);
 			buildRules = (
 			);
@@ -727,6 +728,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		6DC60B7E1EA7B805007D285C /* CPD */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = CPD;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Running CPD\npmd cpd --files ${EXECUTABLE_NAME} --minimum-tokens 50 --language swift --encoding UTF-8 --format net.sourceforge.pmd.cpd.XMLRenderer > cpd-output.xml --failOnViolation false\n# Running script\nphp ./cpd_script.php -cpd-xml cpd-output.xml";
 		};
 		8CD7C238ED8CE72CDAECD7D2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
