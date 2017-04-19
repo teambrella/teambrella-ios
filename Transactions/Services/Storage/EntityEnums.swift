@@ -20,3 +20,47 @@ public enum UserAddressStatus: Int {
     case serverCurrent = 11
     case serverNext = 12
 }
+
+public enum TransactionKind: Int {
+    /// voting compensation or reimbursement
+    case payout = 0
+    case withdraw = 1
+    case moveToNextWallet = 2
+    case saveFromPreviousWallet = 3
+}
+
+public enum TransactionState: Int {
+    case created = 0
+    case approvedMaster = 1
+    case approvedCosigners = 2
+    // =?>  SelectedForCosigning (select by date)
+    case approvedAll = 3
+    case blockedMaster = 4
+    case blockedCosigners = 5
+    // => BeingCosigned (after at least half co-signers got signature tasks)
+    case selectedForCosigning = 6
+    case beingCosigned = 7
+    case cosigned = 8
+    case published = 9
+    case confirmed = 10
+    case errorCosignersTimeout = 100
+    case errorSubmitToBlockchain = 101
+    // bad id, kind or amounts
+    case errorBadRequest = 102
+    case errorOutOfFunds = 103
+    case errorTooManyUtxos = 104
+}
+
+public enum TransactionClientResolution: Int {
+    case none = 0
+    case received = 1
+    case approved = 2
+    case blocked = 3
+    case signed = 4
+    case published = 5
+    case errorCosignersTimeout = 100
+    case errorSubmitToBlockchain = 101
+    // bad id, kind or amounts
+    case errorBadRequest = 102
+    case errorOutOfFunds = 103
+}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="KeychainAddress" representedClassName="KeychainAddress" syncable="YES">
+    <entity name="KeychainAddress" representedClassName=".KeychainAddress" syncable="YES" codeGenerationType="category">
         <attribute name="address" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="rawStatus" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -14,19 +14,14 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="KeychainCosigner" representedClassName="KeychainCosigner" syncable="YES">
+    <entity name="KeychainCosigner" representedClassName=".KeychainCosigner" syncable="YES" codeGenerationType="category">
         <attribute name="addressID" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="keyOrder" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="teammateID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainAddress" inverseName="cosigners" inverseEntity="KeychainAddress" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="cosigners" inverseEntity="KeychainTeammate" syncable="YES"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="addressID"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
     </entity>
-    <entity name="KeychainInput" representedClassName="KeychainInput" syncable="YES">
+    <entity name="KeychainInput" representedClassName=".KeychainInput" syncable="YES" codeGenerationType="category">
         <attribute name="ammount" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="previousTransactionID" attributeType="String" syncable="YES"/>
@@ -40,7 +35,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="KeychainOutput" representedClassName="KeychainOutput" syncable="YES">
+    <entity name="KeychainOutput" representedClassName=".KeychainOutput" syncable="YES" codeGenerationType="category">
         <attribute name="ammount" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
         <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="payToID" attributeType="String" syncable="YES"/>
@@ -53,7 +48,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="KeychainPayTo" representedClassName="KeychainPayTo" syncable="YES">
+    <entity name="KeychainPayTo" representedClassName=".KeychainPayTo" syncable="YES" codeGenerationType="category">
         <attribute name="address" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="isDefault" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -67,7 +62,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="KeychainSignature" representedClassName="KeychainSignature" syncable="YES">
+    <entity name="KeychainSignature" representedClassName=".KeychainSignature" syncable="YES" codeGenerationType="category">
         <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="inputID" attributeType="String" syncable="YES"/>
         <attribute name="isServerUpdateNeeded" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -81,7 +76,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="KeychainTeam" representedClassName="KeychainTeam" syncable="YES">
+    <entity name="KeychainTeam" representedClassName=".KeychainTeam" syncable="YES" codeGenerationType="category">
         <attribute name="autoApprovalCosignGoodAddress" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="autoApprovalCosignNewAddress" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="autoApprovalMyGoodAddress" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
@@ -98,7 +93,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="KeychainTeammate" representedClassName="KeychainTeammate" syncable="YES">
+    <entity name="KeychainTeammate" representedClassName=".KeychainTeammate" syncable="YES" codeGenerationType="category">
         <attribute name="fbName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -116,7 +111,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="KeychainTransaction" representedClassName="KeychainTransaction" syncable="YES">
+    <entity name="KeychainTransaction" representedClassName=".KeychainTransaction" syncable="YES" codeGenerationType="category">
         <attribute name="amountBTC" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="claimID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="claimTeammateID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -145,10 +140,10 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="KeychainAddress" positionX="-227" positionY="-225" width="128" height="148"/>
+        <element name="KeychainAddress" positionX="-227" positionY="-225" width="128" height="150"/>
         <element name="KeychainCosigner" positionX="16" positionY="-174" width="128" height="120"/>
         <element name="KeychainInput" positionX="-468" positionY="207" width="128" height="150"/>
-        <element name="KeychainOutput" positionX="349" positionY="378" width="128" height="133"/>
+        <element name="KeychainOutput" positionX="349" positionY="378" width="128" height="135"/>
         <element name="KeychainPayTo" positionX="351" positionY="117" width="128" height="150"/>
         <element name="KeychainSignature" positionX="-470" positionY="3" width="128" height="150"/>
         <element name="KeychainTeam" positionX="-470" positionY="-225" width="128" height="195"/>
