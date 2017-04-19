@@ -42,11 +42,29 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lv-63-hYq">
+                                <rect key="frame" x="16" y="568" width="343" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0i8-Gk-gnY">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <state key="normal" title="cosigners"/>
+                                        <connections>
+                                            <action selector="tapCosigners:" destination="Xib-uD-Vgx" eventType="touchUpInside" id="mmz-pb-CvK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nrT-1h-aqq"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Biu-tH-Rzy" firstAttribute="centerX" secondItem="oht-rl-3iG" secondAttribute="centerX" id="C2c-bp-nM9"/>
                             <constraint firstItem="Biu-tH-Rzy" firstAttribute="centerY" secondItem="oht-rl-3iG" secondAttribute="centerY" id="S9M-RJ-rHd"/>
+                            <constraint firstItem="0lv-63-hYq" firstAttribute="leading" secondItem="oht-rl-3iG" secondAttribute="leadingMargin" id="bXb-dh-SEf"/>
+                            <constraint firstItem="sHd-L7-8U5" firstAttribute="top" secondItem="0lv-63-hYq" secondAttribute="bottom" id="pxp-dQ-1es"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0lv-63-hYq" secondAttribute="trailing" id="xSN-ak-gaf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Transactions" id="Aen-FL-CX3"/>

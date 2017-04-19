@@ -99,7 +99,7 @@ public class TransactionsServer {
         
         let txInfos = transactions.map { ["Id": $0.id,
                                           "ResolutionTime": $0.clientResolutionTime?.timeIntervalSince1970 ?? 0,
-                                          "Resolution": $0.resolution] }
+                                          "Resolution": $0.resolution?.rawValue ?? 0 as Any] }
         
         let txSignatures = signatures.map {
             ["Signature": $0.signature.base64EncodedString(),

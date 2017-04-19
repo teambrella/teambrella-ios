@@ -44,19 +44,19 @@ let server = service.server
     }
     
     @IBAction func tapTeammates() {
-        consoleAdd(text: "Test.console.getting_teammates".localized)
-        guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp) else {
-            return
-        }
+//        consoleAdd(text: "Test.console.getting_teammates".localized)
+//        guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp) else {
+//            return
+//        }
         
-        let body = RequestBodyFactory.teammatesBody(key: key)
-        let request = AmbrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
-            if case .teammatesList(let teammates) = response {
-                self?.consoleAdd(text: "Test.console.got_teammates".localized(teammates.count))
-                teammates.forEach { self?.consoleAdd(text: $0.description) }
-            }
-        })
-        request.start()
+//        let body = RequestBodyFactory.teammatesBody(key: key)
+//        let request = AmbrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
+//            if case .teammatesList(let teammates) = response {
+//                self?.consoleAdd(text: "Test.console.got_teammates".localized(teammates.count))
+//                teammates.forEach { self?.consoleAdd(text: $0.description) }
+//            }
+//        })
+//        request.start()
     }
     
     @IBAction func tapTeammate() {

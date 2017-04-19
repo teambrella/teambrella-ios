@@ -6,6 +6,7 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
+import CoreData
 import SwiftyJSON
 import UIKit
 
@@ -34,6 +35,16 @@ class TransactionsVC: UIViewController {
                           signatures: [])
     }
     
+    @IBAction func tapCosigners(_ sender: Any) {
+        let request: NSFetchRequest<KeychainCosigner> = KeychainCosigner.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "address.addressValue", ascending: true),
+                                   NSSortDescriptor(key: "keyOrderValue", ascending: true)]
+        let results = try? storage.context.fetch(request)
+        results?.forEach { item in
+            print(item.description)
+        }
+    }
+    
 }
 
 extension TransactionsVC: TransactionsServerDelegate {
@@ -42,7 +53,7 @@ extension TransactionsVC: TransactionsServerDelegate {
     }
     
     func server(server: TransactionsServer, didReceiveUpdates updates: JSON) {
-        print("server received updates: \(updates)")
+//        print("server received updates: \(updates)")
         storage.update(with: updates)
         
     }
@@ -52,6 +63,6 @@ extension TransactionsVC: TransactionsServerDelegate {
     }
     
     func server(server: TransactionsServer, failedWithError error: Error?) {
-        print("Error: \(error)")
+        error.map { print("server request failed with error: \($0)") }
     }
 }

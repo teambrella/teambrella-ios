@@ -18,73 +18,72 @@ struct EntityFactory {
         return formatter
     }()
     
-    func addresses(json: JSON) -> [KeychainAddress] {
-        return json.arrayValue.map { item in
-            let address = KeychainAddress(context: context)
-            address.addressValue = item["Address"].stringValue
-            address.dateCreatedValue = formatter.date(from: item["DateCreated"].stringValue) as NSDate?
-            address.statusValue = item["Status"].int16Value
-            address.teammateIDValue = item["TeammateId"].int64Value
-            return address
+    // Teams
+    func teams(json: JSON) -> [Int64: KeychainTeam] {
+        var result: [Int64: KeychainTeam] = [:]
+         json.arrayValue.forEach { item in
+            let team = KeychainTeam(context: context)
+            let id = item["Id"].int64Value
+            team.idValue = id
+            team.nameValue = item["Name"].stringValue
+            team.isTestnetValue = item["Testnet"].boolValue
+            result[id] = team
         }
+        return result
     }
     
-    func cosigners(json: JSON) -> [KeychainCosigner] {
+    // Teammates
+    func teammates(json: JSON, teams: [Int64: KeychainTeam]) -> [Int64: KeychainTeammate] {
+        var result: [Int64: KeychainTeammate] = [:]
+        json.arrayValue.forEach { item in
+            let teammate = KeychainTeammate(context: context)
+            let id = item["Id"].int64Value
+            teammate.idValue = id
+            teammate.fbNameValue = item["FBName"].stringValue
+            teammate.nameValue = item["Name"].stringValue
+            teammate.publicKeyValue = item["PublicKey"].string
+            teammate.team = teams[item["TeamId"].int64Value]
+            result[id] = teammate
+        }
+        return result
+    }
+    
+    func addresses(json: JSON, teammates: [Int64: KeychainTeammate]) -> [String: KeychainAddress] {
+        var result: [String: KeychainAddress] = [:]
+        json.arrayValue.forEach { item in
+            let address = KeychainAddress(context: context)
+            let id = item["Address"].stringValue
+            address.addressValue = id
+            address.dateCreatedValue = formatter.date(from: item["DateCreated"].stringValue) as NSDate?
+            address.statusValue = item["Status"].int16Value
+            address.teammate = teammates[item["TeammateId"].int64Value]
+            result[id] = address
+        }
+        return result
+    }
+    
+    func cosigners(json: JSON,
+                   addresses: [String: KeychainAddress],
+                   teammates: [Int64: KeychainTeammate]) -> [KeychainCosigner] {
         return json.arrayValue.map { item in
             let cosigner = KeychainCosigner(context: context)
-            cosigner.addressIDValue = item["Address"].stringValue
+            let address = item["AddressId"].stringValue
+            cosigner.address = addresses[address]
             cosigner.keyOrderValue = item["KeyOrder"].int16Value
-            cosigner.teammateIDValue = item["TeammateId"].int64Value
+            cosigner.teammate = teammates[item["TeammateId"].int64Value]
             return cosigner
         }
     }
     
-    func payTos(json: JSON) -> [KeychainPayTo] {
+    func payTos(json: JSON, teammates: [Int64: KeychainTeammate]) -> [KeychainPayTo] {
         return json.arrayValue.map { item in
             let payTo = KeychainPayTo(context: context)
             payTo.addressValue = item["Address"].stringValue
             payTo.idValue = item["Id"].stringValue
             payTo.isDefaultValue = item["IsDefault"].boolValue
             payTo.knownSinceValue = formatter.date(from: json["KnownSince"].stringValue) as NSDate?
-            payTo.teammateIDValue = item["TeammateId"].int64Value
+            payTo.teammate = teammates[item["TeammateId"].int64Value]
             return payTo
-        }
-    }
-    
-    // Teammates
-    func teammates(json: JSON) -> [KeychainTeammate] {
-        /*
-         FBName = "";
-         Id = 237;
-         Name = "August Macke";
-         PublicKey = "<null>";
-         TeamId = 2;
-         */
-        return json.arrayValue.map { item in
-            let teammate = KeychainTeammate(context: context)
-            teammate.fbNameValue = item["FBName"].stringValue
-            teammate.idValue = item["Id"].int64Value
-            teammate.nameValue = item["Name"].stringValue
-            teammate.publicKeyValue = item["PublicKey"].string
-            teammate.teamIDValue = item["TeamId"].int64Value
-            return teammate
-        }
-    }
-    
-    // Teams
-    func teams(json: JSON) -> [KeychainTeam] {
-        /*
-         Id = 2;
-         Name = "4 legged friend";
-         Testnet = 1;
-         
- */
-        return json.arrayValue.map { item in
-            let team = KeychainTeam(context: context)
-            team.idValue = item["Id"].int64Value
-            team.nameValue = item["Name"].stringValue
-            team.isTestnetValue = item["Testnet"].boolValue
-            return team
         }
     }
     
@@ -96,12 +95,6 @@ struct EntityFactory {
     
     // TxOutputs
     func outputs(json: JSON) -> [KeychainOutput] {
-        /*
-         AmountBTC = "0.03869702";
-         Id = "00000000-0000-0000-0000-000000000036";
-         PayToId = "00000000-0000-0000-0000-00000000000a";
-         TxId = "00000000-0000-0000-0000-000000000036";
- */
         return json.arrayValue.map { item in
             let output = KeychainOutput(context: context)
             output.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
@@ -119,31 +112,20 @@ struct EntityFactory {
     }
     
     // Txs
-    func transactions(json: JSON) -> [KeychainTransaction] {
-        /*
-         AmountBTC = "0.01107533";
-         ClaimId = 1;
-         ClaimTeammateId = 16;
-         Id = "00000000-0000-0000-0000-000000000042";
-         InitiatedTime = "2016-07-02 19:09:16";
-         Kind = 0;
-         State = 10;
-         TeammateId = 16;
-         WithdrawReqId = "<null>";
- */
+    func transactions(json: JSON, teammates: [Int64: KeychainTeammate]) -> [KeychainTransaction] {
         return json.arrayValue.map { item in
             let transaction = KeychainTransaction(context: context)
             transaction.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
             transaction.claimIDValue = item["ClaimId"].int64Value
-            transaction.claimTeammateIDValue = item["ClaimTeammateId"].int64Value
             transaction.idValue = item["Id"].stringValue
-            if let initiatedTime = formatter.date(from: json["InitiatedTime"].stringValue) as? NSDate {
+            if let initiatedTime = formatter.date(from: json["InitiatedTime"].stringValue) as NSDate? {
             transaction.initiatedTimeValue = initiatedTime
             }
             transaction.kindValue = item["Kind"].int16Value
             transaction.stateValue = item["State"].int16Value
-            transaction.teammateIDValue = item["TeammateId"].int64Value
             transaction.withdrawReqIDValue = item["WithdrawReqId"].int64Value
+            transaction.teammate = teammates[item["TeammateId"].int64Value]
+            transaction.claimTeammate = teammates[item["ClaimTeammateId"].int64Value]
             return transaction
         }
     }

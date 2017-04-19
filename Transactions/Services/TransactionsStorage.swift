@@ -33,43 +33,59 @@ class TransactionsStorage {
     }
     
     func update(with json: JSON) {
-        save { context in
-            print("Trying to save json to SQLite\n\n")
+        let start = DispatchTime.now()
+        saveInBackground(block: { context in
+            print("Trying to save json to context\n\n")
             let factory = EntityFactory(context: context)
-            let addresses = factory.addresses(json: json["BTCAddresses"])
-            let cosigners = factory.cosigners(json: json["Cosigners"])
-            let payTos = factory.payTos(json: json["PayTos"])
-            let teammates = factory.teammates(json: json["Teammates"])
             let teams = factory.teams(json: json["Teams"])
-            let inputs = factory.inputs(json: json["TxInputs"])
-            let outputs = factory.outputs(json: json["TxOutputs"])
-            let signatures = factory.signatures(json: json["TxSignatures"])
-            let transactions = factory.transactions(json: json["Txs"])
+            let teammates = factory.teammates(json: json["Teammates"], teams: teams)
+            let addresses = factory.addresses(json: json["BTCAddresses"], teammates: teammates)
+            _ = factory.cosigners(json: json["Cosigners"],
+                                              addresses: addresses,
+                                              teammates: teammates)
+            _ = factory.payTos(json: json["PayTos"], teammates: teammates)
+            _ = factory.inputs(json: json["TxInputs"])
+            _ = factory.outputs(json: json["TxOutputs"])
+            _ = factory.signatures(json: json["TxSignatures"])
+            _ = factory.transactions(json: json["Txs"], teammates: teammates)
+            let fetch = DispatchTime.now()
+            print("Parsing time: \(Double(fetch.uptimeNanoseconds - start.uptimeNanoseconds) / 1000000000) sec")
+        }) {
+            let end = DispatchTime.now()
+            print("Total execution time: \(Double(end.uptimeNanoseconds - start.uptimeNanoseconds) / 1000000000) sec")
         }
     }
     
     func save(block: (_ context: NSManagedObjectContext) -> Void) {
         block(context)
         save(context: context)
-        print("saved")
     }
     
-    func saveInBackground(block: @escaping (_ context: NSManagedObjectContext) -> Void) {
+    func saveInBackground(block: @escaping (_ context: NSManagedObjectContext) -> Void,
+                          completion: (() -> Void)? = nil) {
         container.performBackgroundTask { [weak self] context in
+            guard let me = self else { return }
+            
             block(context)
-            self?.save(context: context)
+            let isSaved = me.save(context: context)
+            print(isSaved ? "saved context" : "failed to save context")
+            completion?()
         }
     }
     
-    private func save(context: NSManagedObjectContext) {
+    @discardableResult
+    private func save(context: NSManagedObjectContext) -> Bool {
         if context.hasChanges {
             do {
                 try context.save()
             } catch {
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                print("Unresolved error \(nserror), \(nserror.userInfo)")
+                return false
             }
+            return true
         }
+        return false
     }
     
 }

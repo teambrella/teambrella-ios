@@ -4,9 +4,8 @@
         <attribute name="addressValue" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="dateCreatedValue" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="statusValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="cosigners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KeychainCosigner" inverseName="address" inverseEntity="KeychainCosigner" syncable="YES"/>
-        <relationship name="moveFundsTransactions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTransaction" syncable="YES"/>
+        <relationship name="moveFundsTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KeychainTransaction" inverseName="address" inverseEntity="KeychainTransaction" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="address" inverseEntity="KeychainTeammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -15,9 +14,7 @@
         </uniquenessConstraints>
     </entity>
     <entity name="KeychainCosigner" representedClassName=".KeychainCosigner" syncable="YES" codeGenerationType="category">
-        <attribute name="addressIDValue" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="keyOrderValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainAddress" inverseName="cosigners" inverseEntity="KeychainAddress" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="cosigners" inverseEntity="KeychainTeammate" syncable="YES"/>
     </entity>
@@ -53,7 +50,6 @@
         <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="isDefaultValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="knownSinceValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="output" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainOutput" inverseName="payTo" inverseEntity="KeychainOutput" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="payTo" inverseEntity="KeychainTeammate" syncable="YES"/>
         <uniquenessConstraints>
@@ -98,8 +94,8 @@
         <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
         <attribute name="nameValue" attributeType="String" syncable="YES"/>
         <attribute name="publicKeyValue" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="teamIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainAddress" inverseName="teammate" inverseEntity="KeychainAddress" syncable="YES"/>
+        <relationship name="claimTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KeychainTransaction" inverseName="claimTeammate" inverseEntity="KeychainTransaction" syncable="YES"/>
         <relationship name="cosigners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KeychainCosigner" inverseName="teammate" inverseEntity="KeychainCosigner" syncable="YES"/>
         <relationship name="payTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainPayTo" inverseName="teammate" inverseEntity="KeychainPayTo" syncable="YES"/>
         <relationship name="signature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainSignature" inverseName="teammate" inverseEntity="KeychainSignature" syncable="YES"/>
@@ -114,7 +110,6 @@
     <entity name="KeychainTransaction" representedClassName=".KeychainTransaction" syncable="YES" codeGenerationType="category">
         <attribute name="amountValue" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="claimIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="claimTeammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="clientResolutionTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="feeValue" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
@@ -126,10 +121,10 @@
         <attribute name="receivedTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="resolutionValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="stateValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="updateTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="withdrawReqIDValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="claimTeammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainAddress" inverseName="moveFundsTransactions" inverseEntity="KeychainAddress" syncable="YES"/>
+        <relationship name="claimTeammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="claimTransactions" inverseEntity="KeychainTeammate" syncable="YES"/>
         <relationship name="input" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainInput" inverseName="transaction" inverseEntity="KeychainInput" syncable="YES"/>
         <relationship name="output" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainOutput" inverseName="transaction" inverseEntity="KeychainOutput" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeychainTeammate" inverseName="transactions" inverseEntity="KeychainTeammate" syncable="YES"/>
@@ -140,14 +135,14 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="KeychainAddress" positionX="-227" positionY="-225" width="128" height="150"/>
-        <element name="KeychainCosigner" positionX="16" positionY="-174" width="128" height="120"/>
+        <element name="KeychainAddress" positionX="-227" positionY="-225" width="128" height="135"/>
+        <element name="KeychainCosigner" positionX="16" positionY="-174" width="128" height="90"/>
         <element name="KeychainInput" positionX="-468" positionY="207" width="128" height="150"/>
         <element name="KeychainOutput" positionX="349" positionY="378" width="128" height="135"/>
-        <element name="KeychainPayTo" positionX="351" positionY="117" width="128" height="150"/>
+        <element name="KeychainPayTo" positionX="351" positionY="117" width="128" height="135"/>
         <element name="KeychainSignature" positionX="-470" positionY="3" width="128" height="150"/>
         <element name="KeychainTeam" positionX="-470" positionY="-225" width="128" height="195"/>
         <element name="KeychainTeammate" positionX="16" positionY="-24" width="128" height="210"/>
-        <element name="KeychainTransaction" positionX="-234" positionY="180" width="128" height="360"/>
+        <element name="KeychainTransaction" positionX="-234" positionY="180" width="128" height="345"/>
     </elements>
 </model>

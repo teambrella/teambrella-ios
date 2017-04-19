@@ -15,7 +15,6 @@ class KeychainTransaction: NSManagedObject {
     }
     var state: TransactionState? { return TransactionState(rawValue: Int(stateValue)) }
     var claimID: Int { return Int(claimIDValue) }
-    var claimTeammateID: Int { return Int(claimTeammateIDValue) }
     var withdrawReqID: Int { return Int(withdrawReqIDValue) }
     var amount: Decimal { return amountValue! as Decimal }
     var fee: Decimal? { return feeValue as Decimal? }
