@@ -125,6 +125,6 @@ custom_rules:
 
   empty_line_after_guard:
       name: "Empty Line After Guard"
-      regex: "(^ *guard[ a-zA-Z0-9=?.\(\),><!]*\{[ a-zA-Z0-9=?.\(\),><!]*\}\n *(?!(?:return|guard))\S+)"
+      regex: '(^ *guard[ a-zA-Z0-9=?.\(\),><!]*\{[ a-zA-Z0-9=?.\(\),><!]*\}\n *(?!(?:return|guard))\S+)'
       message: "There should be an empty line after a guard"
       severity: error
