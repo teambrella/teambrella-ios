@@ -19,10 +19,10 @@ struct EntityFactory {
     }()
     
     // Teams
-    func teams(json: JSON) -> [Int64: KeychainTeam] {
-        var result: [Int64: KeychainTeam] = [:]
+    func teams(json: JSON) -> [Int64: BlockchainTeam] {
+        var result: [Int64: BlockchainTeam] = [:]
          json.arrayValue.forEach { item in
-            let team = KeychainTeam(context: context)
+            let team = BlockchainTeam(context: context)
             let id = item["Id"].int64Value
             team.idValue = id
             team.nameValue = item["Name"].stringValue
@@ -33,10 +33,10 @@ struct EntityFactory {
     }
     
     // Teammates
-    func teammates(json: JSON, teams: [Int64: KeychainTeam]) -> [Int64: KeychainTeammate] {
-        var result: [Int64: KeychainTeammate] = [:]
+    func teammates(json: JSON, teams: [Int64: BlockchainTeam]) -> [Int64: BlockchainTeammate] {
+        var result: [Int64: BlockchainTeammate] = [:]
         json.arrayValue.forEach { item in
-            let teammate = KeychainTeammate(context: context)
+            let teammate = BlockchainTeammate(context: context)
             let id = item["Id"].int64Value
             teammate.idValue = id
             teammate.fbNameValue = item["FBName"].stringValue
@@ -48,10 +48,10 @@ struct EntityFactory {
         return result
     }
     
-    func addresses(json: JSON, teammates: [Int64: KeychainTeammate]) -> [String: KeychainAddress] {
-        var result: [String: KeychainAddress] = [:]
+    func addresses(json: JSON, teammates: [Int64: BlockchainTeammate]) -> [String: BlockchainAddress] {
+        var result: [String: BlockchainAddress] = [:]
         json.arrayValue.forEach { item in
-            let address = KeychainAddress(context: context)
+            let address = BlockchainAddress(context: context)
             let id = item["Address"].stringValue
             address.addressValue = id
             address.dateCreatedValue = formatter.date(from: item["DateCreated"].stringValue) as NSDate?
@@ -63,21 +63,26 @@ struct EntityFactory {
     }
     
     func cosigners(json: JSON,
-                   addresses: [String: KeychainAddress],
-                   teammates: [Int64: KeychainTeammate]) -> [KeychainCosigner] {
-        return json.arrayValue.map { item in
-            let cosigner = KeychainCosigner(context: context)
-            let address = item["AddressId"].stringValue
-            cosigner.address = addresses[address]
+                   addresses: [String: BlockchainAddress],
+                   teammates: [Int64: BlockchainTeammate]) -> [BlockchainCosigner] {
+        var cosigners: [BlockchainCosigner] = []
+        for item in json.arrayValue {
+            guard let address = addresses[item["AddressId"].stringValue],
+                let storedCosigners = address.cosigners,
+                storedCosigners.count < 8 else { continue }
+            
+            let cosigner = BlockchainCosigner(context: context)
+            cosigner.address = address
             cosigner.keyOrderValue = item["KeyOrder"].int16Value
             cosigner.teammate = teammates[item["TeammateId"].int64Value]
-            return cosigner
+            cosigners.append(cosigner)
         }
+        return cosigners
     }
     
-    func payTos(json: JSON, teammates: [Int64: KeychainTeammate]) -> [KeychainPayTo] {
+    func payTos(json: JSON, teammates: [Int64: BlockchainTeammate]) -> [BlockchainPayTo] {
         return json.arrayValue.map { item in
-            let payTo = KeychainPayTo(context: context)
+            let payTo = BlockchainPayTo(context: context)
             payTo.addressValue = item["Address"].stringValue
             payTo.idValue = item["Id"].stringValue
             payTo.isDefaultValue = item["IsDefault"].boolValue
@@ -88,15 +93,15 @@ struct EntityFactory {
     }
     
     // TxInputs
-    func inputs(json: JSON) -> [KeychainInput] {
+    func inputs(json: JSON) -> [BlockchainInput] {
         /* */
         return []
     }
     
     // TxOutputs
-    func outputs(json: JSON) -> [KeychainOutput] {
+    func outputs(json: JSON) -> [BlockchainOutput] {
         return json.arrayValue.map { item in
-            let output = KeychainOutput(context: context)
+            let output = BlockchainOutput(context: context)
             output.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
             output.idValue = item["Id"].stringValue
             output.payToIDValue = item["PayToId"].stringValue
@@ -106,15 +111,15 @@ struct EntityFactory {
     }
     
     // TxSignatures
-    func signatures(json: JSON) -> [KeychainSignature] {
+    func signatures(json: JSON) -> [BlockchainSignature] {
         /* */
         return []
     }
     
     // Txs
-    func transactions(json: JSON, teammates: [Int64: KeychainTeammate]) -> [KeychainTransaction] {
+    func transactions(json: JSON, teammates: [Int64: BlockchainTeammate]) -> [BlockchainTransaction] {
         return json.arrayValue.map { item in
-            let transaction = KeychainTransaction(context: context)
+            let transaction = BlockchainTransaction(context: context)
             transaction.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
             transaction.claimIDValue = item["ClaimId"].int64Value
             transaction.idValue = item["Id"].stringValue

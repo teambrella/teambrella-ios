@@ -1,5 +1,5 @@
 //
-//  KeychainSignature.swift
+//  BlockchainSignature.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 19.04.17.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-class KeychainSignature: NSManagedObject {
+class BlockchainSignature: NSManagedObject {
     var teammateID: Int { return Int(teammateIDValue) }
     var id: String { return idValue! }
     var inputID: String { return inputIDValue! }

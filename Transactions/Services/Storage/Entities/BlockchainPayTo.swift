@@ -1,5 +1,5 @@
 //
-//  KeychainPayTo.swift
+//  BlockchainPayTo.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 19.04.17.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-class KeychainPayTo: NSManagedObject {
+class BlockchainPayTo: NSManagedObject {
     var address: String { return addressValue! }
     var id: String { return idValue! }
     var isDefault: Bool { return isDefaultValue }

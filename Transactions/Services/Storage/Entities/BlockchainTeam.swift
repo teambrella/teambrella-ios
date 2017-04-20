@@ -1,5 +1,5 @@
 //
-//  KeychainTeam.swift
+//  BlockchainTeam.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 19.04.17.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-class KeychainTeam: NSManagedObject {
+class BlockchainTeam: NSManagedObject {
     var id: Int { return Int(idValue) }
     var name: String { return nameValue! }
     var isTestnet: Bool { return isTestnetValue }

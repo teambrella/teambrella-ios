@@ -1,5 +1,5 @@
 //
-//  KeychainOutput.swift
+//  BlockchainOutput.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 19.04.17.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-class KeychainOutput: NSManagedObject {
+class BlockchainOutput: NSManagedObject {
     var amount: Decimal { return amountValue! as Decimal }
     var id: String { return idValue! }
     var payToID: String { return payToIDValue! }

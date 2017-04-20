@@ -1,5 +1,5 @@
 //
-//  KeychainTransaction.swift
+//  BlockchainTransaction.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 19.04.17.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-class KeychainTransaction: NSManagedObject {
+class BlockchainTransaction: NSManagedObject {
     var kind: TransactionKind? { return TransactionKind(rawValue: Int(kindValue)) }
     var resolution: TransactionClientResolution? {
         return TransactionClientResolution(rawValue: Int(resolutionValue))

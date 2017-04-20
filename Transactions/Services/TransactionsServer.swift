@@ -13,7 +13,7 @@ import SwiftyJSON
 public protocol TransactionsServerDelegate: class {
     func server(server: TransactionsServer, didUpdateTimestamp timestamp: Int64)
     func serverInitialized(server: TransactionsServer)
-    func server(server: TransactionsServer, didReceiveUpdates updates: JSON)
+    func server(server: TransactionsServer, didReceiveUpdates updates: JSON, updateTime: Int64)
     func server(server: TransactionsServer, failedWithError error: Error?)
 }
 
@@ -21,8 +21,6 @@ public class TransactionsServer {
     struct Constant {
         static let siteURL = "http://192.168.0.254" //"http://surilla.com"
         static let fakePrivateKey = "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
-        static let timestampKey = "TransactionsServer.timestampKey"
-        
     }
     
     weak var delegate: TransactionsServerDelegate?
@@ -35,8 +33,6 @@ public class TransactionsServer {
     }
     
     init() {
-        timestamp = Int64(UserDefaults.standard.value(forKey: Constant.timestampKey) as? Int64 ?? 0)
-        print("Init transactions server with stored timestamp: \(timestamp)")
     }
     
     func initTimestamp(completion:@escaping (Int64) -> Void) {
@@ -93,8 +89,8 @@ public class TransactionsServer {
     
     func getUpdates(privateKey: String,
                     lastUpdated: Int64,
-                    transactions: [KeychainTransaction],
-                    signatures: [KeychainSignature]) {
+                    transactions: [BlockchainTransaction],
+                    signatures: [BlockchainSignature]) {
         guard let key = Key(base58String: privateKey, timestamp: timestamp) else { return }
         
         let txInfos = transactions.map { ["Id": $0.id,
@@ -106,8 +102,9 @@ public class TransactionsServer {
              "TeammateId": $0.teammateID,
              "TxInputId": $0.inputID]
         }
-        let payload = ["TxInfos": txInfos,
-                       "TxSignatures": txSignatures]
+        let payload: [String: Any] = ["TxInfos": txInfos,
+                                      "TxSignatures": txSignatures,
+                                      "LastUpdated": lastUpdated]
         let request = self.request(string: "me/GetUpdates", key: key, payload: payload)
         Alamofire.request(request).responseJSON { [weak self] response in
             guard let me = self else { return }
@@ -117,11 +114,9 @@ public class TransactionsServer {
                 if let value = response.result.value {
                     print(value)
                     let result = JSON(value)
-                    if let timestamp = result["Status"]["Timestamp"].int64 {
-                        me.timestamp = timestamp
-                        UserDefaults.standard.set(timestamp, forKey: Constant.timestampKey)
-                    }
-                    me.delegate?.server(server: me, didReceiveUpdates: result["Data"])
+                    let timestamp = result["Status"]["Timestamp"].int64Value
+                    me.timestamp = timestamp
+                    me.delegate?.server(server: me, didReceiveUpdates: result["Data"], updateTime: timestamp)
                 }
             case .failure(let error):
                 me.delegate?.server(server: me, failedWithError: error)
@@ -148,8 +143,9 @@ public class TransactionsServer {
         if let data = try? JSONSerialization.data(withJSONObject: body, options: []) {
             request.httpBody = data
         } else {
-            print("colud not create data from payload: \(body)")
+            print("could not create data from payload: \(body)")
         }
+        print("Request: \(url.absoluteURL) body: \(body)")
         return request
     }
     

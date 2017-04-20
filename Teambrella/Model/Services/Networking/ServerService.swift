@@ -17,11 +17,7 @@ class ServerService {
         
     }
     
-    private(set)var timestamp: Int64 = 0 {
-        didSet {
-            print("timestamp updated from \(oldValue) to \(timestamp)")
-        }
-    }
+    private(set)var timestamp: Int64 = 0
     
     init() {
         

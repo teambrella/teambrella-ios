@@ -29,14 +29,15 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapUpdates(_ sender: Any) {
+     let lastUpdated = storage.lastUpdated
         server.getUpdates(privateKey: TransactionsServer.Constant.fakePrivateKey,
-                          lastUpdated: 0,
+                          lastUpdated: lastUpdated,
                           transactions: [],
                           signatures: [])
     }
     
     @IBAction func tapCosigners(_ sender: Any) {
-        let request: NSFetchRequest<KeychainCosigner> = KeychainCosigner.fetchRequest()
+        let request: NSFetchRequest<BlockchainCosigner> = BlockchainCosigner.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "address.addressValue", ascending: true),
                                    NSSortDescriptor(key: "keyOrderValue", ascending: true)]
         let results = try? storage.context.fetch(request)
@@ -52,9 +53,9 @@ extension TransactionsVC: TransactionsServerDelegate {
         print("server initialized")
     }
     
-    func server(server: TransactionsServer, didReceiveUpdates updates: JSON) {
+    func server(server: TransactionsServer, didReceiveUpdates updates: JSON, updateTime: Int64) {
 //        print("server received updates: \(updates)")
-        storage.update(with: updates)
+        storage.update(with: updates, updateTime: updateTime)
         
     }
     

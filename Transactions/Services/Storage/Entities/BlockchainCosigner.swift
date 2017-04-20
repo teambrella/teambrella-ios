@@ -1,5 +1,5 @@
 //
-//  KeychainCosigner.swift
+//  BlockchainCosigner.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 19.04.17.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-class KeychainCosigner: NSManagedObject {
+class BlockchainCosigner: NSManagedObject {
     var keyOrder: Int { return Int(keyOrderValue) }
     
     override var description: String {

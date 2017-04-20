@@ -1,5 +1,5 @@
 //
-//  KeychainTeammate.swift
+//  BlockchainTeammate.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 19.04.17.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-class KeychainTeammate: NSManagedObject {
+class BlockchainTeammate: NSManagedObject {
     var id: Int { return Int(idValue) }
     var fbName: String? { return fbNameValue }
     var name: String { return nameValue! }
