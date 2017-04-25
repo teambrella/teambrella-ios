@@ -24,6 +24,7 @@ class BlockchainStorageFetcher {
     
     var teammates: [BlockchainTeammate]? {
         let request: NSFetchRequest<BlockchainTeammate> = BlockchainTeammate.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "nameValue", ascending: true)]
         let items = try? storage.context.fetch(request)
         return items
     }
