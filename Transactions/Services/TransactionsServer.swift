@@ -17,10 +17,15 @@ public protocol TransactionsServerDelegate: class {
     func server(server: TransactionsServer, failedWithError error: Error?)
 }
 
+/**
+ Service to interoperate with the server that would provide all transactions related information
+ No UI related information should be received with those calls
+ */
 public class TransactionsServer {
     struct Constant {
-        static let siteURL = "http://192.168.0.254" //"http://surilla.com"
-        static let fakePrivateKey = "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
+        static let siteURL = "http://192.168.0.222"//"http://94.72.4.72"
+        static let fakePrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
+        //"2uGEcr6rkwBBi26NMcuALZSJGZ353ZdgExwbGGXL4xe8"//"Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
     }
     
     weak var delegate: TransactionsServerDelegate?
@@ -66,7 +71,7 @@ public class TransactionsServer {
     func initClient(privateKey: String) {
         initTimestamp { [weak self] timestamp in
             guard let me = self else { return }
-            guard let key = Key(base58String: privateKey, timestamp: timestamp) else { return }
+           let key = Key(base58String: privateKey, timestamp: timestamp)
             
             let request = me.request(string: "me/InitClient", key: key)
             Alamofire.request(request).responseJSON { response in
@@ -91,7 +96,7 @@ public class TransactionsServer {
                     lastUpdated: Int64,
                     transactions: [BlockchainTransaction],
                     signatures: [BlockchainSignature]) {
-        guard let key = Key(base58String: privateKey, timestamp: timestamp) else { return }
+         let key = Key(base58String: privateKey, timestamp: timestamp) 
         
         let txInfos = transactions.map { ["Id": $0.id,
                                           "ResolutionTime": $0.clientResolutionTime?.timeIntervalSince1970 ?? 0,

@@ -79,6 +79,10 @@ class TransactionsStorage {
         save(context: context)
     }
     
+    func dispose() {
+        context.rollback()
+    }
+    
     func saveInBackground(block: @escaping (_ context: NSManagedObjectContext) -> Void,
                           completion: (() -> Void)? = nil) {
         container.performBackgroundTask { [weak self] context in

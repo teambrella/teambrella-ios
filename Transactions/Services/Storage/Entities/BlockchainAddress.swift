@@ -14,7 +14,3 @@ class BlockchainAddress: NSManagedObject {
     var dateCreated: Date { return dateCreatedValue! as Date }
     
 }
-
-class BlockchainMergePolicy: NSMergePolicy {
-    
-}

@@ -10,9 +10,12 @@ import Alamofire
 import Foundation
 import SwiftyJSON
 
+/**
+ Service to interoperate with the server fetching all UI related information
+ */
 class ServerService {
     struct Constant {
-        static let siteURL = "http://192.168.0.254" //"http://surilla.com"
+        static let siteURL = "http://192.168.0.254" //"http://surilla.com" "http://192.168.0.222"
         static let fakePrivateKey = "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
         
     }

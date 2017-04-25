@@ -259,9 +259,9 @@
 		6D5988841EA4BDF60046237F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				6D7186EF1EA5160600257463 /* Storage */,
 				6D5988821EA4BDEE0046237F /* TransactionsServer.swift */,
 				6D7186E81EA5009A00257463 /* TransactionsServerResponse.swift */,
-				6D7186EF1EA5160600257463 /* Storage */,
 				6D7EB77D1EA8E0560070AFB7 /* BlockchainService.swift */,
 				6D7EB77F1EA8E06B0070AFB7 /* AccountService.swift */,
 			);

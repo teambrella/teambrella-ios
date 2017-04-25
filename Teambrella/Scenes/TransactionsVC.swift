@@ -45,6 +45,25 @@ class TransactionsVC: UIViewController {
             print(item.description)
         }
     }
+    @IBAction func tapGenPrivate(_ sender: Any) {
+        var key = Key(base58String: TransactionsServer.Constant.fakePrivateKey, timestamp: server.timestamp)
+//        key.timestamp = server.timestamp
+        print("timestamp: \(key.timestamp)\nprivate key: \(key.privateKey)\npublic key: \(key.publicKey)")
+        print("signature: \(key.signature)")
+        let link = "https://surilla.com/me/ClientLogin?data="
+        let data = "{\"Timestamp\":\"\(key.timestamp)\","
+            + "\"Signature\":\"\(key.signature)\","
+            + "\"PublicKey\":\"\(key.publicKey)\"}"
+        print(link + data)
+        print("\n\n")
+        // urlQueryAllowed doesn't conform to what server is waiting for
+        // use https://www.w3schools.com/tags/ref_urlencode.asp
+        guard let urlSafeData = data.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            fatalError("Can't create string")
+        }
+        
+        print(link + urlSafeData)
+    }
     
 }
 

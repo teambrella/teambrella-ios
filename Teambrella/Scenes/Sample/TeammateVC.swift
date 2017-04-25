@@ -33,10 +33,7 @@ class TeammateVC: UIViewController {
     }
     
     private func loadEntireTeammate() {
-        guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: service.server.timestamp)
-            else {
-            return
-        }
+        let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: service.server.timestamp)
         
         let body = RequestBodyFactory.teammateBody(key: key, id: teammate.userID)
         let request = AmbrellaRequest(type: .teammate, body: body, success: { [weak self] response in
