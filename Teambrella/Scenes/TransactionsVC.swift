@@ -65,6 +65,12 @@ class TransactionsVC: UIViewController {
         print(link + urlSafeData)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? TransactionsresultTVC {
+            vc.storage = storage
+        }
+    }
+    
 }
 
 extension TransactionsVC: TransactionsServerDelegate {
@@ -75,6 +81,7 @@ extension TransactionsVC: TransactionsServerDelegate {
     func server(server: TransactionsServer, didReceiveUpdates updates: JSON, updateTime: Int64) {
 //        print("server received updates: \(updates)")
         storage.update(with: updates, updateTime: updateTime)
+        performSegue(withIdentifier: "to transactions result", sender: nil)
         
     }
     
