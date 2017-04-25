@@ -12,8 +12,8 @@ import SwiftyJSON
 struct TransactionsServerResponse {
     let json: JSON
     
-    var payTos: [BitcoinPayTo] { return BitcoinPayToFactory().payTos(from: json["PayTos"]) }
-    var inputs: [BitcoinTransactionInput] { return BitcoinTransactionInputFactory().items(from: json["TxInputs"]) }
+//    var payTos: [BitcoinPayTo] { return BitcoinPayToFactory().payTos(from: json["PayTos"]) }
+//    var inputs: [BitcoinTransactionInput] { return BitcoinTransactionInputFactory().items(from: json["TxInputs"]) }
 //    var outputs: [BitcoinTransactionOutput]
 //    var addresses: [BitcoinAddress]
 //    var signatures: [BitcoinTransactionSignature]

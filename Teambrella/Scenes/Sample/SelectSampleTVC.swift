@@ -27,10 +27,8 @@ class SelectSampleTVC: UITableViewController {
     }
     
     private func loadTeammates() {
-        guard let key = Key(base58String: ServerService.Constant.fakePrivateKey,
-                            timestamp: service.server.timestamp) else {
-            return
-        }
+       let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+                            timestamp: service.server.timestamp)
         
         let body = RequestBodyFactory.teammatesBody(key: key)
         let request = AmbrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in

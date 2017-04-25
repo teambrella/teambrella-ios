@@ -10,8 +10,8 @@ import Foundation
 
 struct Key {
     private let key: BTCKey
-    let timestamp: Int64
-    
+    let isTestnet: Bool
+    var timestamp: Int64
     var privateKey: String {
         return (key.privateKey as Data).base58String
     }
@@ -21,7 +21,6 @@ struct Key {
     var address: String {
         return key.privateKeyAddress.string
     }
-    
     var signature: String {
         guard let data = key.signature(forMessage: String(timestamp)) else {
             fatalError("Couldn't create signature data")
@@ -30,13 +29,24 @@ struct Key {
         return data.base64EncodedString()
     }
     
-    init?(base58String: String, timestamp: Int64) {
-        guard base58String.characters.count == 52,
-            (base58String.hasPrefix("K") || base58String.hasPrefix("L")) else { return nil }
-        
+    init(base58String: String, timestamp: Int64) {
         self.timestamp = timestamp
-        let address = BTCPrivateKeyAddress(string: base58String)
-        key = BTCKey(privateKeyAddress: address)
+        if base58String.characters.count == 52,
+            (base58String.hasPrefix("K") || base58String.hasPrefix("L")) {
+            let address = BTCPrivateKeyAddress(string: base58String)
+            key = BTCKey(privateKeyAddress: address)
+            isTestnet = false
+        } else {
+            let address = BTCPrivateKeyAddressTestnet(string: base58String)
+            key = BTCKey(privateKeyAddress: address)
+            isTestnet = true
+        }
+    }
+    
+    init() {
+        key = BTCKey()
+        timestamp = 0
+        isTestnet = true
     }
     
 }

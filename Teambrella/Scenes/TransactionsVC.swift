@@ -6,11 +6,13 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import UIKit
+import CoreData
 import SwiftyJSON
+import UIKit
 
 class TransactionsVC: UIViewController {
     let server = TransactionsServer()
+    let storage = TransactionsStorage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +29,40 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapUpdates(_ sender: Any) {
+     let lastUpdated = storage.lastUpdated
         server.getUpdates(privateKey: TransactionsServer.Constant.fakePrivateKey,
-                          lastUpdated: 0,
+                          lastUpdated: lastUpdated,
                           transactions: [],
                           signatures: [])
+    }
+    
+    @IBAction func tapCosigners(_ sender: Any) {
+        let request: NSFetchRequest<BlockchainCosigner> = BlockchainCosigner.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "address.addressValue", ascending: true),
+                                   NSSortDescriptor(key: "keyOrderValue", ascending: true)]
+        let results = try? storage.context.fetch(request)
+        results?.forEach { item in
+            print(item.description)
+        }
+    }
+    @IBAction func tapGenPrivate(_ sender: Any) {
+        var key = Key(base58String: TransactionsServer.Constant.fakePrivateKey, timestamp: server.timestamp)
+//        key.timestamp = server.timestamp
+        print("timestamp: \(key.timestamp)\nprivate key: \(key.privateKey)\npublic key: \(key.publicKey)")
+        print("signature: \(key.signature)")
+        let link = "https://surilla.com/me/ClientLogin?data="
+        let data = "{\"Timestamp\":\"\(key.timestamp)\","
+            + "\"Signature\":\"\(key.signature)\","
+            + "\"PublicKey\":\"\(key.publicKey)\"}"
+        print(link + data)
+        print("\n\n")
+        // urlQueryAllowed doesn't conform to what server is waiting for
+        // use https://www.w3schools.com/tags/ref_urlencode.asp
+        guard let urlSafeData = data.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            fatalError("Can't create string")
+        }
+        
+        print(link + urlSafeData)
     }
     
 }
@@ -40,8 +72,10 @@ extension TransactionsVC: TransactionsServerDelegate {
         print("server initialized")
     }
     
-    func server(server: TransactionsServer, didReceiveUpdates updates: JSON) {
-        print("server received updates: \(updates)")
+    func server(server: TransactionsServer, didReceiveUpdates updates: JSON, updateTime: Int64) {
+//        print("server received updates: \(updates)")
+        storage.update(with: updates, updateTime: updateTime)
+        
     }
     
     func server(server: TransactionsServer, didUpdateTimestamp timestamp: Int64) {
@@ -49,6 +83,6 @@ extension TransactionsVC: TransactionsServerDelegate {
     }
     
     func server(server: TransactionsServer, failedWithError error: Error?) {
-        print("Error: \(error)")
+        error.map { print("server request failed with error: \($0)") }
     }
 }

@@ -1,12 +1,25 @@
 //
-//  Transaction.swift
+//  EntityEnums.swift
 //  Teambrella
 //
-//  Created by Yaroslav Pasternak on 13.04.17.
+//  Created by Yaroslav Pasternak on 18.04.17.
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
 import Foundation
+
+public enum UserAddressStatus: Int {
+    case previous = 0
+    case current = 1
+    case next = 2
+    case archive = 3
+    
+    // extra values, that are valid for local DB only
+    case invalid = 4
+    case serverPrevious = 10
+    case serverCurrent = 11
+    case serverNext = 12
+}
 
 public enum TransactionKind: Int {
     /// voting compensation or reimbursement
@@ -50,39 +63,4 @@ public enum TransactionClientResolution: Int {
     // bad id, kind or amounts
     case errorBadRequest = 102
     case errorOutOfFunds = 103
-}
-
-/// <summary>
-/// Dual responsibility entity:
-/// 1) Incoming DTO (Data Transfer Object) from teambrella server.
-/// 2) Local DB entity for that server DTO.
-/// </summary>
-public struct BitcoinTransaction
-{
-    public let id: UUID
-    public let teammateID: Int
-    public let amountBTC: Decimal?
-    public let claimID: Int?
-    public let claimTeammateID: Int?
-    public let withdrawReqID: Int?
-    public let kind: TransactionKind
-    public let state: TransactionState
-    public let initiatedTime: Date
-    
-    public let feeBTC: Decimal?
-    public let moveToAddressID: String
-    public let updateTime: Date
-    public let receivedTime: Date
-    public let processedTime: Date
-    
-    public let clientResolutionTime: Date?
-    public let resolution: TransactionClientResolution
-    public let isUpdateServerNeeded: Bool
-    
-    public let teammate: BitcoinTeammate
-    public let claimTeammate: BitcoinTeammate
-    public let moveToAddress: BitcoinAddress
-    public let inputs: [BitcoinTransactionInput]
-    public let outputs: [BitcoinTransactionOutput]
-    
 }
