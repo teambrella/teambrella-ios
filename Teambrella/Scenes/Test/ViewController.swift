@@ -15,6 +15,7 @@ let server = service.server
     @IBOutlet var console: UITextView!
     
     var teammates: [Teammate] = []
+    var myUser: ExtendedTeammate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,7 @@ let server = service.server
                 self?.consoleAdd(text: "Test.console.got_teammates".localized(teammates.count))
                 teammates.forEach { self?.consoleAdd(text: $0.description) }
                 self?.teammates = teammates
+                self?.getMyself()
             }
         })
         request.start()
@@ -64,9 +66,9 @@ let server = service.server
         guard teammates.isEmpty == false else { return }
         
         let teammate = teammates[Random.range(to: teammates.count)]
-        self.consoleAdd(text: "Getting teammate \(teammate.name)")
+        self.consoleAdd(text: "Getting teammate \(teammate.name), id: \(teammate.userID)")
         let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp)
-        let body = RequestBodyFactory.teammateBody(key: key, id: teammate.id)
+        let body = RequestBodyFactory.teammateBody(key: key, id: teammate.userID)
         let request = AmbrellaRequest(type: .teammate, body: body, success: { [weak self] response in
             if case .teammate(let teammate) = response {
                 self?.consoleAdd(text: teammate.description)
@@ -76,15 +78,32 @@ let server = service.server
     }
     
     @IBAction func tapNewPost() {
-        let postText = textField.text ?? "new post"
+        guard let me = myUser, let topic = me.topicID else {
+            consoleAdd(text: "Can't find topic where to post to")
+            return
+        }
+        
+        let postText = "Posted from iOS app"
         consoleAdd(text: "Test.console.posting".localized)
         let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp)
         let body = RequestBodyFactory.newPostBody(key: key,
-                                                  topicID: "00000000-0000-0000-0000-00000000000a",
+                                                  topicID: topic,
                                                   text: postText)
         let request = AmbrellaRequest(type: .newPost, body: body, success: { [weak self] response in
             if case .newPost(let post) = response {
                 self?.consoleAdd(text: post.description)
+            }
+        })
+        request.start()
+    }
+    
+    func getMyself() {
+        let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp)
+        let body = RequestBodyFactory.teammateBody(key: key, id: ServerService.Constant.myUserID)
+        let request = AmbrellaRequest(type: .teammate, body: body, success: { [weak self] response in
+            if case .teammate(let teammate) = response {
+                self?.consoleAdd(text: "Received my extended user")
+                self?.myUser = teammate
             }
         })
         request.start()

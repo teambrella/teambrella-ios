@@ -19,6 +19,8 @@ class ServerService {
         //"http://surilla.com"//"http://192.168.0.254" // "http://192.168.0.222"
         static let fakePrivateKey = TransactionsServer.Constant.fakePrivateKey
         // "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
+        static let myID = 2274
+        static let myUserID = "1dbd099a-6cc2-4c45-a7df-a75c00e58621"
         
     }
     
