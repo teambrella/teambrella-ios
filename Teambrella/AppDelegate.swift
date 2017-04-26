@@ -14,8 +14,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        style()
         return true
+    }
+    
+    func style() {
+       let view = UIView.appearance(whenContainedInInstancesOf: [UIWindow.self])
+        view.backgroundColor = .teambrellaBlue
+        
+        let label = UILabel.appearance()
+        label.textColor = .white
+        label.backgroundColor = .clear
+        
+        let button = UIButton.appearance()
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .clear
+        
+        let navigationBar = UINavigationBar.appearance()
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.barTintColor = .teambrellaBlue
+        navigationBar.tintColor = .white
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        let tabBar = UITabBar.appearance()
+        tabBar.backgroundColor = .clear
+        tabBar.barTintColor = .teambrellaBlue
+        tabBar.tintColor = .white
+        tabBar.backgroundImage = UIImage()
+        tabBar.shadowImage = UIImage()
     }
 
 }

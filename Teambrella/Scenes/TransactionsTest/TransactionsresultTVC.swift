@@ -25,7 +25,7 @@ class TransactionsresultTVC: UITableViewController {
         let button =  UIButton(type: .custom)
         button.setTitle(team?.name, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 250, height: 40)
-        button.setTitleColor(.blue, for: .normal)
+       // button.setTitleColor(.blue, for: .normal)
         button.addTarget(self, action: #selector(tapTitle), for: .touchUpInside)
         self.navigationItem.titleView = button
     }
