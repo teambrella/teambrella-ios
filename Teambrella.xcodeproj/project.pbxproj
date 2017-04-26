@@ -32,6 +32,7 @@
 		6D7EB77E1EA8E0560070AFB7 /* BlockchainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7EB77D1EA8E0560070AFB7 /* BlockchainService.swift */; };
 		6D7EB7801EA8E06B0070AFB7 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7EB77F1EA8E06B0070AFB7 /* AccountService.swift */; };
 		6D829AA31EB0BE1A0051F43A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA21EB0BE1A0051F43A /* UIColor.swift */; };
+		6D829AA51EB0D6860051F43A /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA41EB0D6860051F43A /* Random.swift */; };
 		6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
 		6D8F97141E8D1532008DC62E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */; };
 		6D8F971C1E8D4488008DC62E /* BitcoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F971B1E8D4488008DC62E /* BitcoinService.swift */; };
@@ -126,6 +127,7 @@
 		6D7EB77D1EA8E0560070AFB7 /* BlockchainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainService.swift; path = Transactions/Services/BlockchainService.swift; sourceTree = SOURCE_ROOT; };
 		6D7EB77F1EA8E06B0070AFB7 /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountService.swift; path = Transactions/Services/AccountService.swift; sourceTree = SOURCE_ROOT; };
 		6D829AA21EB0BE1A0051F43A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Helpers/Extensions/UIColor.swift; sourceTree = "<group>"; };
+		6D829AA41EB0D6860051F43A /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = Helpers/Extensions/Random.swift; sourceTree = "<group>"; };
 		6D8F97111E8D1529008DC62E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teambrella-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				CBDFE16BB5E7B5B758559237 /* String.swift */,
 				6D1C23871E8EA99F009B05A3 /* Data.swift */,
 				6D829AA21EB0BE1A0051F43A /* UIColor.swift */,
+				6D829AA41EB0D6860051F43A /* Random.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -304,8 +307,8 @@
 		6DA475971E8ABEE600B56D9B = {
 			isa = PBXGroup;
 			children = (
-				6DDC65181E9FCEAA00529A60 /* Transactions */,
 				6DA475A21E8ABEE600B56D9B /* Teambrella */,
+				6DDC65181E9FCEAA00529A60 /* Transactions */,
 				6DA475B71E8ABEE600B56D9B /* TeambrellaTests */,
 				6DA475C21E8ABEE600B56D9B /* TeambrellaUITests */,
 				6DA475A11E8ABEE600B56D9B /* Products */,
@@ -879,6 +882,7 @@
 				6DEC074E1E9BD1DB0078F40E /* TeammatesCell.swift in Sources */,
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
 				CBDFE00DB06001B8DB766097 /* Teammate.swift in Sources */,
+				6D829AA51EB0D6860051F43A /* Random.swift in Sources */,
 				6DEC07561E9BF7170078F40E /* ExtendedTeammateEntity.swift in Sources */,
 				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,
 				6DEC074C1E9BCF700078F40E /* SelectSampleTVC.swift in Sources */,

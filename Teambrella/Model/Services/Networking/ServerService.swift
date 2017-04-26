@@ -15,8 +15,10 @@ import SwiftyJSON
  */
 class ServerService {
     struct Constant {
-        static let siteURL = "http://192.168.0.254" //"http://surilla.com" "http://192.168.0.222"
-        static let fakePrivateKey = "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
+        static let siteURL = TransactionsServer.Constant.siteURL
+        //"http://surilla.com"//"http://192.168.0.254" // "http://192.168.0.222"
+        static let fakePrivateKey = TransactionsServer.Constant.fakePrivateKey
+        // "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
         
     }
     

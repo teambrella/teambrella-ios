@@ -14,6 +14,8 @@ let server = service.server
     @IBOutlet var textField: UITextField!
     @IBOutlet var console: UITextView!
     
+    var teammates: [Teammate] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         requestTimestamp {}
@@ -44,25 +46,27 @@ let server = service.server
     }
     
     @IBAction func tapTeammates() {
-//        consoleAdd(text: "Test.console.getting_teammates".localized)
-//        guard let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp) else {
-//            return
-//        }
+        consoleAdd(text: "Test.console.getting_teammates".localized)
+        let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp)
         
-//        let body = RequestBodyFactory.teammatesBody(key: key)
-//        let request = AmbrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
-//            if case .teammatesList(let teammates) = response {
-//                self?.consoleAdd(text: "Test.console.got_teammates".localized(teammates.count))
-//                teammates.forEach { self?.consoleAdd(text: $0.description) }
-//            }
-//        })
-//        request.start()
+        let body = RequestBodyFactory.teammatesBody(key: key)
+        let request = AmbrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
+            if case .teammatesList(let teammates) = response {
+                self?.consoleAdd(text: "Test.console.got_teammates".localized(teammates.count))
+                teammates.forEach { self?.consoleAdd(text: $0.description) }
+                self?.teammates = teammates
+            }
+        })
+        request.start()
     }
     
     @IBAction func tapTeammate() {
-        self.consoleAdd(text: "Getting teammate #11")
+        guard teammates.isEmpty == false else { return }
+        
+        let teammate = teammates[Random.range(to: teammates.count)]
+        self.consoleAdd(text: "Getting teammate \(teammate.name)")
         let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: server.timestamp)
-        let body = RequestBodyFactory.teammateBody(key: key, id: "00000000-0000-0000-0000-000000000005")
+        let body = RequestBodyFactory.teammateBody(key: key, id: teammate.id)
         let request = AmbrellaRequest(type: .teammate, body: body, success: { [weak self] response in
             if case .teammate(let teammate) = response {
                 self?.consoleAdd(text: teammate.description)

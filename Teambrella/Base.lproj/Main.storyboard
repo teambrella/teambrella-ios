@@ -453,6 +453,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="1" alpha="0.20272367294520549" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="teammates cell" id="Mey-H5-kl5" customClass="TeammatesCell" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>

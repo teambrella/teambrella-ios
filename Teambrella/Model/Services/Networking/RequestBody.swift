@@ -10,7 +10,10 @@ import Foundation
 import SwiftyJSON
 
 struct RequestBodyFactory {
-    static func teammatesBody(key: Key, teamID: Int = 1) -> RequestBody {
+    struct Constant {
+        static let teamID = 2006
+    }
+    static func teammatesBody(key: Key, teamID: Int = Constant.teamID) -> RequestBody {
         let payload: [String: Any] = ["TeamId": teamID,
                                       "P": 0,
                                       "Search": NSNull()]
@@ -22,7 +25,7 @@ struct RequestBodyFactory {
     
     static func teammateBody(key: Key, id: String) -> RequestBody? {
         let payload: [String: Any] = ["UserId": id,
-                                      "TeamId": 1,
+                                      "TeamId": Constant.teamID,
                                       "AfterVer": 0]
         return RequestBody(key: key, payload: payload)
     }
