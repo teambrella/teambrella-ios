@@ -87,7 +87,7 @@
         <scene sceneID="4hb-A3-rgN">
             <objects>
                 <tableViewController id="c5W-i8-KjB" customClass="TransactionsresultTVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EBS-7o-ZDc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EBS-7o-ZDc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -613,14 +613,34 @@
                                     <constraint firstAttribute="height" constant="110" id="r1t-YF-tBB"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTY-rb-Qxo">
+                                <rect key="frame" x="16" y="382" width="100" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="20x-vq-wyg"/>
+                                    <constraint firstAttribute="height" constant="30" id="V5x-go-XIP"/>
+                                </constraints>
+                                <state key="normal" title="Discussion"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="iyA-bP-MC4" kind="show" identifier="to discussion" id="0RR-A9-Kai"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0IY-eq-6ql" firstAttribute="top" secondItem="ZcF-5r-KHc" secondAttribute="bottom" constant="8" id="14d-h2-EcG"/>
                             <constraint firstItem="93X-00-qJB" firstAttribute="leading" secondItem="gHu-Zj-gM9" secondAttribute="leading" id="7sw-qy-cOv"/>
                             <constraint firstItem="Dqd-3x-nSi" firstAttribute="leading" secondItem="93X-00-qJB" secondAttribute="leading" id="8Sp-PL-12D"/>
+                            <constraint firstItem="cPP-V7-ucE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JTY-rb-Qxo" secondAttribute="bottom" id="9BH-n9-O6r"/>
+                            <constraint firstItem="JTY-rb-Qxo" firstAttribute="top" secondItem="0IY-eq-6ql" secondAttribute="bottom" constant="22" id="HTt-ip-kgH"/>
                             <constraint firstItem="p3w-V4-FZ0" firstAttribute="top" secondItem="rJz-ZW-Qc1" secondAttribute="bottom" constant="33" id="Hdm-zj-4ve"/>
                             <constraint firstAttribute="leadingMargin" secondItem="p3w-V4-FZ0" secondAttribute="leading" id="Hqh-kZ-I9o"/>
+                            <constraint firstItem="JTY-rb-Qxo" firstAttribute="leading" secondItem="8Bl-Fg-BU6" secondAttribute="leadingMargin" id="MVv-7B-XkA"/>
                             <constraint firstItem="93X-00-qJB" firstAttribute="centerY" secondItem="ZcF-5r-KHc" secondAttribute="centerY" id="Qgy-WT-DFT"/>
                             <constraint firstItem="3a4-PY-Kb1" firstAttribute="top" secondItem="7zN-e4-yWT" secondAttribute="bottom" id="R1c-zw-I0w"/>
                             <constraint firstItem="0IY-eq-6ql" firstAttribute="leading" secondItem="ZcF-5r-KHc" secondAttribute="leading" id="R4B-sm-jKV"/>
@@ -638,6 +658,7 @@
                     </view>
                     <connections>
                         <outlet property="avatarImageView" destination="rJz-ZW-Qc1" id="vk5-GX-8Ic"/>
+                        <outlet property="discussionButton" destination="JTY-rb-Qxo" id="rSZ-lY-o6g"/>
                         <outlet property="modelLabel" destination="9le-45-say" id="Y0g-6l-Rbf"/>
                         <outlet property="modelYearLabel" destination="0H3-49-hGs" id="YMn-0h-GWC"/>
                         <outlet property="nameLabel" destination="sPU-nn-Mnt" id="BDb-VE-Zk6"/>
@@ -650,13 +671,67 @@
             </objects>
             <point key="canvasLocation" x="2905" y="1101"/>
         </scene>
+        <!--ThreadTVC-->
+        <scene sceneID="bsp-xn-u0O">
+            <objects>
+                <tableViewController id="iyA-bP-MC4" customClass="ThreadTVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="146" sectionHeaderHeight="28" sectionFooterHeight="28" id="SRO-CQ-JAG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="post cell" rowHeight="146" id="daa-l3-xU7" customClass="ThreadPostCell" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="146"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="daa-l3-xU7" id="No8-kD-pLr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="145.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3q-0R-7K7">
+                                            <rect key="frame" x="8" y="8" width="359" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXw-Sc-YE3">
+                                            <rect key="frame" x="8" y="123" width="25.5" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="b3q-0R-7K7" firstAttribute="leading" secondItem="No8-kD-pLr" secondAttribute="leadingMargin" id="Ahp-dD-not"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="JXw-Sc-YE3" secondAttribute="bottom" id="Ifi-0K-9MN"/>
+                                        <constraint firstItem="JXw-Sc-YE3" firstAttribute="leading" secondItem="No8-kD-pLr" secondAttribute="leadingMargin" id="f46-vw-Vt0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="b3q-0R-7K7" secondAttribute="trailing" id="gBD-6y-bKl"/>
+                                        <constraint firstItem="JXw-Sc-YE3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="b3q-0R-7K7" secondAttribute="bottom" id="ign-Mz-P3s"/>
+                                        <constraint firstItem="b3q-0R-7K7" firstAttribute="top" secondItem="No8-kD-pLr" secondAttribute="topMargin" id="vLG-AU-5cp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="JXw-Sc-YE3" id="W0o-HS-4h7"/>
+                                    <outlet property="postLabel" destination="b3q-0R-7K7" id="6qs-f7-UGZ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iyA-bP-MC4" id="cdA-Ar-C6h"/>
+                            <outlet property="delegate" destination="iyA-bP-MC4" id="Y3p-FC-bbh"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FbP-pc-J6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3823.1999999999998" y="1097.9010494752624"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="DCa-Ub-szD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f1Q-al-94A" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="Aen-FL-CX3"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WsV-bv-OqI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WsV-bv-OqI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

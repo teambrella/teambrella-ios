@@ -51,7 +51,8 @@ struct PostEntity: Post {
 
 struct PostFactory {
     static func posts(with json: JSON) -> [Post]? {
-        guard let posts = json["Posts"].array else { return nil }
+        let posts = json.arrayValue
+      //  guard let posts = json["Posts"].array else { return nil }
 
         return posts.map { PostEntity(json: $0) }
     }

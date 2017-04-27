@@ -21,6 +21,7 @@ class ServerService {
         // "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
         static let myID = 2274
         static let myUserID = "1dbd099a-6cc2-4c45-a7df-a75c00e58621"
+        static let timestampURL = "me/GetTimestamp"
         
     }
     
@@ -37,6 +38,29 @@ class ServerService {
             urlString += "?width=\(width)&crop=\(rect.origin.x),\(rect.origin.y),\(rect.size.width),\(rect.size.height)"
         }
         return urlString
+    }
+    
+    func updateTimestamp(completion: @escaping (Int64, Error?) -> Void) {
+        guard let url = url(string: "me/GetTimestamp") else {
+            fatalError("Couldn't create URL")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        Alamofire.request(request).responseJSON { response in
+            switch response.result {
+            case .success:
+                if let value = response.result.value {
+                    let result = JSON(value)
+                    self.timestamp = result["Status"]["Timestamp"].int64Value
+                }
+                completion(self.timestamp, nil)
+            case .failure(let error):
+                completion(0, error)
+            }
+        }
     }
     
     func ask(for string: String,

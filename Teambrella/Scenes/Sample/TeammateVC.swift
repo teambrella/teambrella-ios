@@ -22,6 +22,8 @@ class TeammateVC: UIViewController {
     @IBOutlet var modelLabel: UILabel!
     @IBOutlet var modelYearLabel: UILabel!
     
+    @IBOutlet var discussionButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
@@ -30,6 +32,9 @@ class TeammateVC: UIViewController {
         modelLabel.text = teammate.model
         modelYearLabel.text = String(teammate.year)
         loadEntireTeammate()
+        
+        discussionButton.backgroundColor = .orange
+        
     }
     
     private func loadEntireTeammate() {
@@ -58,6 +63,12 @@ class TeammateVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "to discussion", let vc = segue.destination as? ThreadTVC {
+            vc.teammate = teammate
+        }
     }
 
 }

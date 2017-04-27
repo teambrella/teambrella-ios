@@ -2,3 +2,5 @@ github "Alamofire/Alamofire" ~> 4.4
 github "SwiftyJSON/SwiftyJSON"
 github "onevcat/Kingfisher" ~> 3.0
 #github "facebook/Facebook-SDK-Swift"
+github "MortimerGoro/MGSwipeTableCell"
+github "scinfu/SwiftSoup"

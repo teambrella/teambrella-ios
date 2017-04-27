@@ -23,7 +23,9 @@ class SelectSampleTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadTeammates()
+        service.server.updateTimestamp { [weak self] timestamp, error in
+            self?.loadTeammates()
+        }
     }
     
     private func loadTeammates() {
@@ -71,6 +73,28 @@ class SelectSampleTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "to teammate", sender: indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let action1 = UITableViewRowAction(style: .normal, title: "Test") { action, indexPath -> Void in
+            self.isEditing = false
+            print("Rate button pressed")
+        }
+        action1.backgroundColor = .orange
+        
+        let action2 = UITableViewRowAction(style: .normal, title: "Guest") { action, indexPath -> Void in
+            self.isEditing = false
+            print("Share button pressed")
+        }
+        action2.backgroundColor = .magenta
+        return [action2, action1]
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
