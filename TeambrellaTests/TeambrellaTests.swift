@@ -16,7 +16,7 @@ class TeambrellaTests: XCTestCase {
         super.setUp()
         let privateKey = ServerService.Constant.fakePrivateKey
         let key = Key(base58String: privateKey, timestamp: 636269125689610106)
-        self.key = key!
+        self.key = key
     }
     
     override func tearDown() {
