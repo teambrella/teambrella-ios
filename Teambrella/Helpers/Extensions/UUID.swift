@@ -16,11 +16,11 @@ extension UUID {
 }
 
 extension UUID: Comparable {
-    public static func <(lhs: UUID, rhs: UUID) -> Bool {
+    public static func < (lhs: UUID, rhs: UUID) -> Bool {
         let lBytes = lhs.bytes
         let rBytes = rhs.bytes
-        for (idx, l) in lBytes.enumerated() {
-            if l < rBytes[idx] { return true }
+        for (idx, l) in lBytes.enumerated() where l < rBytes[idx] {
+            return true
         }
         return false
     }

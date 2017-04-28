@@ -46,8 +46,7 @@ class TransactionsVC: UIViewController {
         }
     }
     @IBAction func tapGenPrivate(_ sender: Any) {
-        var key = Key(base58String: TransactionsServer.Constant.fakePrivateKey, timestamp: server.timestamp)
-//        key.timestamp = server.timestamp
+        let key = Key(base58String: TransactionsServer.Constant.fakePrivateKey, timestamp: server.timestamp)
         print("timestamp: \(key.timestamp)\nprivate key: \(key.privateKey)\npublic key: \(key.publicKey)")
         print("signature: \(key.signature)")
         let link = "https://surilla.com/me/ClientLogin?data="

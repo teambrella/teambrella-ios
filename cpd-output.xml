@@ -1,15 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd-cpd>
-   <duplication lines="6" tokens="52">
-      <file line="33"
-            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Sample/SelectSampleTVC.swift"/>
-      <file line="51"
-            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Test/ViewController.swift"/>
-      <codefragment><![CDATA[                            timestamp: service.server.timestamp)
-        
-        let body = RequestBodyFactory.teammatesBody(key: key)
-        let request = AmbrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
-            if case .teammatesList(let teammates) = response {
-              self?.teammatesData = teammates]]></codefragment>
-   </duplication>
-</pmd-cpd>
+<pmd-cpd/>

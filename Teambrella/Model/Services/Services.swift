@@ -13,7 +13,7 @@ fileprivate(set)var service = ServicesHandler.i
 class ServicesHandler {
     static let i = ServicesHandler()
     
-    lazy var bitcoin = BitcoinService()
+//    lazy var bitcoin = BitcoinService()
     lazy var server = ServerService()
     lazy var transformer = TransformerService()
     

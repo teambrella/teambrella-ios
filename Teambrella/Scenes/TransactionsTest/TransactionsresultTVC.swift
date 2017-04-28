@@ -6,8 +6,8 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 class TransactionsresultTVC: UITableViewController {
     var storage: TransactionsStorage!
