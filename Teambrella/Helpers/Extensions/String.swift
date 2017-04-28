@@ -22,4 +22,12 @@ extension String {
         let template = localized
         return String(format: template, arguments: arguments)
     }
+    
+    func split(by count: Int) -> [String] {
+        return stride(from: 0, to: characters.count, by: count).map { i -> String in
+            let startIndex = self.index(self.startIndex, offsetBy: i)
+            let endIndex   = self.index(startIndex, offsetBy: count, limitedBy: self.endIndex) ?? self.endIndex
+            return self[startIndex..<endIndex]
+        }
+    }
 }
