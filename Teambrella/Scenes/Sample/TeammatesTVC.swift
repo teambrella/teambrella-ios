@@ -14,51 +14,53 @@ struct SelectSampleCellData {
     let segue: String
 }
 
-class SelectSampleTVC: UITableViewController {
+class TeammatesTVC: UITableViewController {
     var teammatesData: [Teammate] = [] {
         didSet {
             tableView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.indicator.startAnimating()
         service.server.updateTimestamp { [weak self] timestamp, error in
             self?.loadTeammates()
         }
     }
     
     private func loadTeammates() {
-       let key = Key(base58String: ServerService.Constant.fakePrivateKey,
-                            timestamp: service.server.timestamp)
+        let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+                      timestamp: service.server.timestamp)
         
         let body = RequestBodyFactory.teammatesBody(key: key)
         let request = AmbrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
             if case .teammatesList(let teammates) = response {
-              self?.teammatesData = teammates
+                self?.teammatesData = teammates
+                self?.tableView.indicator.stopAnimating()
             }
         })
         request.start()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return teammatesData.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "teammates cell", for: indexPath)
             as? TeammatesCell else {
-            fatalError("Wrong cell type")
+                fatalError("Wrong cell type")
         }
         let teammate = teammatesData[indexPath.row]
         cell.nameLabel.text = teammate.name
@@ -66,7 +68,7 @@ class SelectSampleTVC: UITableViewController {
         cell.avatarImageView.kf.setImage(with: url)
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
@@ -96,7 +98,7 @@ class SelectSampleTVC: UITableViewController {
         action2.backgroundColor = .magenta
         return [action2, action1]
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "to teammate" {
             guard let vc = segue.destination as? TeammateVC else {

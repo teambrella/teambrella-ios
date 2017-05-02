@@ -17,6 +17,9 @@
 		6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAA1E9D390200E77DAB /* Topic.swift */; };
 		6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */; };
 		6D1454F21EA679E60054A547 /* EntityEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1454F11EA679E60054A547 /* EntityEnums.swift */; };
+		6D1C039F1EB8D37D004AED30 /* Sample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C039E1EB8D37D004AED30 /* Sample.storyboard */; };
+		6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A01EB8D4A2004AED30 /* UIView.swift */; };
+		6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A21EB8D4D6004AED30 /* NSObject.swift */; };
 		6D1C23841E8E97CF009B05A3 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C23831E8E97CF009B05A3 /* Key.swift */; };
 		6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C23871E8EA99F009B05A3 /* Data.swift */; };
 		6D35EFC51EAF8AB700696B42 /* TransactionsresultTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFC41EAF8AB700696B42 /* TransactionsresultTVC.swift */; };
@@ -24,7 +27,7 @@
 		6D35EFC91EAF931000696B42 /* TransactionsTeammateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFC81EAF931000696B42 /* TransactionsTeammateVC.swift */; };
 		6D35EFCB1EAF982A00696B42 /* TeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFCA1EAF982A00696B42 /* TeamDetailsVC.swift */; };
 		6D48BC7C1EA64EC500235324 /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D48BC7B1EA64EC500235324 /* EntityFactory.swift */; };
-		6D5988831EA4BDEE0046237F /* TransactionsServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5988821EA4BDEE0046237F /* TransactionsServer.swift */; };
+		6D5988831EA4BDEE0046237F /* BlockchainServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5988821EA4BDEE0046237F /* BlockchainServer.swift */; };
 		6D7186E71EA4FC3600257463 /* TransactionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7186E61EA4FC3600257463 /* TransactionsVC.swift */; };
 		6D7186EB1EA513D700257463 /* TransactionsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7186EA1EA513D700257463 /* TransactionsStorage.swift */; };
 		6D7186EE1EA515F400257463 /* TransactionsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D7186EC1EA515F400257463 /* TransactionsModel.xcdatamodeld */; };
@@ -56,7 +59,7 @@
 		6DC60B7D1EA74F3D007D285C /* BlockchainTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B7C1EA74F3D007D285C /* BlockchainTransaction.swift */; };
 		6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC31E93A6920092D3F2 /* Services.swift */; };
 		6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */; };
-		6DEC074C1E9BCF700078F40E /* SelectSampleTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC074B1E9BCF700078F40E /* SelectSampleTVC.swift */; };
+		6DEC074C1E9BCF700078F40E /* TeammatesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC074B1E9BCF700078F40E /* TeammatesTVC.swift */; };
 		6DEC074E1E9BD1DB0078F40E /* TeammatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC074D1E9BD1DB0078F40E /* TeammatesCell.swift */; };
 		6DEC07501E9BD59D0078F40E /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */; };
 		6DEC07521E9BDA310078F40E /* TeammateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC07511E9BDA310078F40E /* TeammateVC.swift */; };
@@ -115,6 +118,9 @@
 		6D097EAA1E9D390200E77DAB /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Topic.swift; path = Model/Protocols/Topic.swift; sourceTree = "<group>"; };
 		6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicEntity.swift; path = Model/Entities/TopicEntity.swift; sourceTree = "<group>"; };
 		6D1454F11EA679E60054A547 /* EntityEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityEnums.swift; path = Transactions/Services/Storage/EntityEnums.swift; sourceTree = SOURCE_ROOT; };
+		6D1C039E1EB8D37D004AED30 /* Sample.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Sample.storyboard; path = Scenes/Sample/Sample.storyboard; sourceTree = "<group>"; };
+		6D1C03A01EB8D4A2004AED30 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = Helpers/Extensions/UIView.swift; sourceTree = "<group>"; };
+		6D1C03A21EB8D4D6004AED30 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSObject.swift; path = Helpers/Extensions/NSObject.swift; sourceTree = "<group>"; };
 		6D1C23831E8E97CF009B05A3 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Key.swift; path = Model/Services/Bitcoin/Key.swift; sourceTree = "<group>"; };
 		6D1C23871E8EA99F009B05A3 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Helpers/Extensions/Data.swift; sourceTree = "<group>"; };
 		6D35EFC41EAF8AB700696B42 /* TransactionsresultTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsresultTVC.swift; path = Scenes/TransactionsTest/TransactionsresultTVC.swift; sourceTree = "<group>"; };
@@ -122,7 +128,7 @@
 		6D35EFC81EAF931000696B42 /* TransactionsTeammateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsTeammateVC.swift; path = Scenes/TransactionsTest/TransactionsTeammateVC.swift; sourceTree = "<group>"; };
 		6D35EFCA1EAF982A00696B42 /* TeamDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamDetailsVC.swift; path = Scenes/TransactionsTest/TeamDetailsVC.swift; sourceTree = "<group>"; };
 		6D48BC7B1EA64EC500235324 /* EntityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityFactory.swift; path = Transactions/Services/Storage/EntityFactory.swift; sourceTree = SOURCE_ROOT; };
-		6D5988821EA4BDEE0046237F /* TransactionsServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsServer.swift; path = Transactions/Services/TransactionsServer.swift; sourceTree = SOURCE_ROOT; };
+		6D5988821EA4BDEE0046237F /* BlockchainServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainServer.swift; path = Transactions/Services/BlockchainServer.swift; sourceTree = SOURCE_ROOT; };
 		6D7186E61EA4FC3600257463 /* TransactionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsVC.swift; path = Scenes/TransactionsVC.swift; sourceTree = "<group>"; };
 		6D7186EA1EA513D700257463 /* TransactionsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsStorage.swift; path = Transactions/Services/TransactionsStorage.swift; sourceTree = SOURCE_ROOT; };
 		6D7186ED1EA515F400257463 /* TransactionsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TransactionsModel.xcdatamodel; sourceTree = "<group>"; };
@@ -161,7 +167,7 @@
 		6DC60B7C1EA74F3D007D285C /* BlockchainTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainTransaction.swift; path = Transactions/Services/Storage/Entities/BlockchainTransaction.swift; sourceTree = "<group>"; };
 		6DCC7AC31E93A6920092D3F2 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Model/Services/Services.swift; sourceTree = "<group>"; };
 		6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateEntity.swift; path = Model/Entities/TeammateEntity.swift; sourceTree = "<group>"; };
-		6DEC074B1E9BCF700078F40E /* SelectSampleTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectSampleTVC.swift; path = Scenes/Sample/SelectSampleTVC.swift; sourceTree = "<group>"; };
+		6DEC074B1E9BCF700078F40E /* TeammatesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammatesTVC.swift; path = Scenes/Sample/TeammatesTVC.swift; sourceTree = "<group>"; };
 		6DEC074D1E9BD1DB0078F40E /* TeammatesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammatesCell.swift; path = Scenes/Sample/TeammatesCell.swift; sourceTree = "<group>"; };
 		6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		6DEC07511E9BDA310078F40E /* TeammateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateVC.swift; path = Scenes/Sample/TeammateVC.swift; sourceTree = "<group>"; };
@@ -241,6 +247,13 @@
 			name = Localizations;
 			sourceTree = "<group>";
 		};
+		6D1C039D1EB8D173004AED30 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		6D1C23851E8EA45A009B05A3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +270,8 @@
 				6D829AA21EB0BE1A0051F43A /* UIColor.swift */,
 				6D829AA41EB0D6860051F43A /* Random.swift */,
 				6D91BC031EB3900700FDC332 /* UUID.swift */,
+				6D1C03A01EB8D4A2004AED30 /* UIView.swift */,
+				6D1C03A21EB8D4D6004AED30 /* NSObject.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -283,7 +298,7 @@
 			children = (
 				6D8F971D1E8D6548008DC62E /* Bitcoin */,
 				6D7186EF1EA5160600257463 /* Storage */,
-				6D5988821EA4BDEE0046237F /* TransactionsServer.swift */,
+				6D5988821EA4BDEE0046237F /* BlockchainServer.swift */,
 				6D7EB77D1EA8E0560070AFB7 /* BlockchainService.swift */,
 				6D7EB77F1EA8E06B0070AFB7 /* AccountService.swift */,
 			);
@@ -412,6 +427,7 @@
 		6DA475DA1E8BC8EF00B56D9B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				6D1C039D1EB8D173004AED30 /* Main */,
 				6D91BC051EB3966400FDC332 /* BlockchainTransactions */,
 				6DEC074A1E9BCF330078F40E /* Samples */,
 				6DA475DB1E8BC8FF00B56D9B /* Test */,
@@ -475,8 +491,9 @@
 		6DEC074A1E9BCF330078F40E /* Samples */ = {
 			isa = PBXGroup;
 			children = (
+				6D1C039E1EB8D37D004AED30 /* Sample.storyboard */,
 				6DEC074D1E9BD1DB0078F40E /* TeammatesCell.swift */,
-				6DEC074B1E9BCF700078F40E /* SelectSampleTVC.swift */,
+				6DEC074B1E9BCF700078F40E /* TeammatesTVC.swift */,
 				6DEC07511E9BDA310078F40E /* TeammateVC.swift */,
 				6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */,
 				6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */,
@@ -639,6 +656,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D1C039F1EB8D37D004AED30 /* Sample.storyboard in Resources */,
 				6D097E971E9D19F400E77DAB /* Test.strings in Resources */,
 				6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */,
 				6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */,
@@ -857,7 +875,7 @@
 				6D7EB77E1EA8E0560070AFB7 /* BlockchainService.swift in Sources */,
 				6DA475D91E8BBD2A00B56D9B /* AmbrellaError.swift in Sources */,
 				6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */,
-				6D5988831EA4BDEE0046237F /* TransactionsServer.swift in Sources */,
+				6D5988831EA4BDEE0046237F /* BlockchainServer.swift in Sources */,
 				6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */,
 				6D48BC7C1EA64EC500235324 /* EntityFactory.swift in Sources */,
 				6D097EA31E9D215500E77DAB /* TeammateType.swift in Sources */,
@@ -877,6 +895,7 @@
 				6D7EB7801EA8E06B0070AFB7 /* AccountService.swift in Sources */,
 				6DC60B7B1EA74F24007D285C /* BlockchainTeammate.swift in Sources */,
 				6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */,
+				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
 				6DC60B731EA749F1007D285C /* BlockchainOutput.swift in Sources */,
 				6D7186EE1EA515F400257463 /* TransactionsModel.xcdatamodeld in Sources */,
 				6DC60B771EA74A9B007D285C /* BlockchainSignature.swift in Sources */,
@@ -888,6 +907,7 @@
 				CBDFE767664CC051784BF271 /* ServerService.swift in Sources */,
 				6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */,
 				6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */,
+				6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */,
 				6DC60B711EA749D4007D285C /* BlockchainInput.swift in Sources */,
 				6DEC6DF31E96670D00ACC119 /* Post.swift in Sources */,
 				6D7186E71EA4FC3600257463 /* TransactionsVC.swift in Sources */,
@@ -906,7 +926,7 @@
 				6DEC07561E9BF7170078F40E /* ExtendedTeammateEntity.swift in Sources */,
 				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,
 				6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */,
-				6DEC074C1E9BCF700078F40E /* SelectSampleTVC.swift in Sources */,
+				6DEC074C1E9BCF700078F40E /* TeammatesTVC.swift in Sources */,
 				6DEC07541E9BF6600078F40E /* ExtendedTeammate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,7 @@ import SwiftyJSON
 import UIKit
 
 class TransactionsVC: UIViewController {
-    let server = TransactionsServer()
+    let server = BlockchainServer()
     let storage = TransactionsStorage()
     
     override func viewDidLoad() {
@@ -25,12 +25,12 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapInit(_ sender: Any) {
-        server.initClient(privateKey: TransactionsServer.Constant.fakePrivateKey)
+        server.initClient(privateKey: BlockchainServer.Constant.fakePrivateKey)
     }
     
     @IBAction func tapUpdates(_ sender: Any) {
      let lastUpdated = storage.lastUpdated
-        server.getUpdates(privateKey: TransactionsServer.Constant.fakePrivateKey,
+        server.getUpdates(privateKey: BlockchainServer.Constant.fakePrivateKey,
                           lastUpdated: lastUpdated,
                           transactions: [],
                           signatures: [])
@@ -46,7 +46,7 @@ class TransactionsVC: UIViewController {
         }
     }
     @IBAction func tapGenPrivate(_ sender: Any) {
-        let key = Key(base58String: TransactionsServer.Constant.fakePrivateKey, timestamp: server.timestamp)
+        let key = Key(base58String: BlockchainServer.Constant.fakePrivateKey, timestamp: server.timestamp)
         print("timestamp: \(key.timestamp)\nprivate key: \(key.privateKey)\npublic key: \(key.publicKey)")
         print("signature: \(key.signature)")
         let link = "https://surilla.com/me/ClientLogin?data="
@@ -72,23 +72,23 @@ class TransactionsVC: UIViewController {
     
 }
 
-extension TransactionsVC: TransactionsServerDelegate {
-    func serverInitialized(server: TransactionsServer) {
+extension TransactionsVC: BlockchainServerDelegate {
+    func serverInitialized(server: BlockchainServer) {
         print("server initialized")
     }
     
-    func server(server: TransactionsServer, didReceiveUpdates updates: JSON, updateTime: Int64) {
+    func server(server: BlockchainServer, didReceiveUpdates updates: JSON, updateTime: Int64) {
 //        print("server received updates: \(updates)")
         storage.update(with: updates, updateTime: updateTime)
         performSegue(withIdentifier: "to transactions result", sender: nil)
         
     }
     
-    func server(server: TransactionsServer, didUpdateTimestamp timestamp: Int64) {
+    func server(server: BlockchainServer, didUpdateTimestamp timestamp: Int64) {
         print("server updated timestamp: \(timestamp)")
     }
     
-    func server(server: TransactionsServer, failedWithError error: Error?) {
+    func server(server: BlockchainServer, failedWithError error: Error?) {
         error.map { print("server request failed with error: \($0)") }
     }
 }

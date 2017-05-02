@@ -21,15 +21,15 @@ class AccountService {
         static let noAutoApproval: Decimal = 1_000_000
     }
     
-    let server: TransactionsServer
+    let server: BlockchainServer
     let storage: TransactionsStorage
     var connected = false
     
     lazy var key: Key? = {
-        return Key(base58String: TransactionsServer.Constant.fakePrivateKey, timestamp: self.server.timestamp)
+        return Key(base58String: BlockchainServer.Constant.fakePrivateKey, timestamp: self.server.timestamp)
     }()
     
-    init(server: TransactionsServer, storage: TransactionsStorage) {
+    init(server: BlockchainServer, storage: TransactionsStorage) {
         self.server = server
         self.storage = storage
     }

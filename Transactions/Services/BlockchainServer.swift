@@ -10,25 +10,25 @@ import Alamofire
 import Foundation
 import SwiftyJSON
 
-public protocol TransactionsServerDelegate: class {
-    func server(server: TransactionsServer, didUpdateTimestamp timestamp: Int64)
-    func serverInitialized(server: TransactionsServer)
-    func server(server: TransactionsServer, didReceiveUpdates updates: JSON, updateTime: Int64)
-    func server(server: TransactionsServer, failedWithError error: Error?)
+public protocol BlockchainServerDelegate: class {
+    func server(server: BlockchainServer, didUpdateTimestamp timestamp: Int64)
+    func serverInitialized(server: BlockchainServer)
+    func server(server: BlockchainServer, didReceiveUpdates updates: JSON, updateTime: Int64)
+    func server(server: BlockchainServer, failedWithError error: Error?)
 }
 
 /**
  Service to interoperate with the server that would provide all transactions related information
  No UI related information should be received with those calls
  */
-public class TransactionsServer {
+public class BlockchainServer {
     struct Constant {
         static let siteURL = "http://192.168.0.222"// "https://surilla.com" ////"http://94.72.4.72"
         static let fakePrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
         //"2uGEcr6rkwBBi26NMcuALZSJGZ353ZdgExwbGGXL4xe8"//"Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
     }
     
-    weak var delegate: TransactionsServerDelegate?
+    weak var delegate: BlockchainServerDelegate?
     
     private(set)var timestamp: Int64 = 0 {
         didSet {
