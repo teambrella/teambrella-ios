@@ -66,6 +66,7 @@ class TeammatesTVC: UITableViewController {
         cell.nameLabel.text = teammate.name
         let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
         cell.avatarImageView.kf.setImage(with: url)
+        cell.avatarImageView.limbColor = .white
         return cell
     }
     

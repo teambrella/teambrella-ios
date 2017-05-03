@@ -49,28 +49,34 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDx-d0-ks0">
-                                            <rect key="frame" x="43.5" y="11.5" width="45" height="20.5"/>
+                                            <rect key="frame" x="44" y="11.5" width="45" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oJ9-NI-LuR">
-                                            <rect key="frame" x="8" y="8" width="27.5" height="27.5"/>
+                                        <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBh-9l-iPl" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="8" width="28" height="28"/>
+                                            <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="oJ9-NI-LuR" secondAttribute="height" multiplier="1:1" id="cPs-R4-tq6"/>
+                                                <constraint firstAttribute="width" secondItem="ZBh-9l-iPl" secondAttribute="height" multiplier="1:1" id="6ux-mT-kQD"/>
                                             </constraints>
-                                        </imageView>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="inset">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="MDx-d0-ks0" firstAttribute="leading" secondItem="oJ9-NI-LuR" secondAttribute="trailing" constant="8" id="8pr-e5-mJb"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="oJ9-NI-LuR" secondAttribute="bottom" id="EmY-Yk-XEI"/>
-                                        <constraint firstItem="oJ9-NI-LuR" firstAttribute="leading" secondItem="1sA-M9-Hsy" secondAttribute="leadingMargin" id="XDa-1X-pDI"/>
-                                        <constraint firstItem="MDx-d0-ks0" firstAttribute="centerY" secondItem="oJ9-NI-LuR" secondAttribute="centerY" id="Xcp-kT-iTf"/>
-                                        <constraint firstItem="oJ9-NI-LuR" firstAttribute="top" secondItem="1sA-M9-Hsy" secondAttribute="topMargin" id="g0p-Tw-iYk"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ZBh-9l-iPl" secondAttribute="bottom" id="6Mt-k9-mgR"/>
+                                        <constraint firstItem="MDx-d0-ks0" firstAttribute="leading" secondItem="ZBh-9l-iPl" secondAttribute="trailing" constant="8" id="egF-c2-ch8"/>
+                                        <constraint firstItem="MDx-d0-ks0" firstAttribute="centerY" secondItem="ZBh-9l-iPl" secondAttribute="centerY" id="iB3-E2-PYk"/>
+                                        <constraint firstItem="ZBh-9l-iPl" firstAttribute="top" secondItem="1sA-M9-Hsy" secondAttribute="topMargin" id="lG0-m8-cAF"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="ZBh-9l-iPl" secondAttribute="leading" id="sEG-iQ-l9U"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="avatarImageView" destination="oJ9-NI-LuR" id="oWW-iz-XrB"/>
+                                    <outlet property="avatarImageView" destination="ZBh-9l-iPl" id="OeW-Cj-4Z7"/>
                                     <outlet property="nameLabel" destination="MDx-d0-ks0" id="vGG-cn-8wG"/>
                                 </connections>
                             </tableViewCell>
@@ -87,7 +93,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jgm-Li-P2O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2004" y="1101"/>
+            <point key="canvasLocation" x="2004" y="1100.5997001499252"/>
         </scene>
         <!--TeammateVC-->
         <scene sceneID="JoG-2z-cu0">

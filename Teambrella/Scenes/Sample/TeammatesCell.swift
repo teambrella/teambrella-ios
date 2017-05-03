@@ -9,7 +9,7 @@
 import UIKit
 
 class TeammatesCell: UITableViewCell {
-    @IBOutlet var avatarImageView: UIImageView!
+    @IBOutlet var avatarImageView: RoundImageView!
     @IBOutlet var nameLabel: UILabel!
 
     override func awakeFromNib() {
