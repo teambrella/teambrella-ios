@@ -12,6 +12,7 @@ import UIKit
 class RoundImageView: UIImageView {
     private let imageView = UIImageView()
     private var limbView: UIView?
+    private var label: UILabel?
     @IBInspectable
     override var image: UIImage? {
         get {
@@ -21,7 +22,7 @@ class RoundImageView: UIImageView {
             imageView.image = newValue
         }
     }
-     var limbColor: UIColor? {
+    var limbColor: UIColor? {
         get {
             return limbView?.backgroundColor
         }
@@ -36,33 +37,49 @@ class RoundImageView: UIImageView {
             limbView?.backgroundColor = newValue
         }
     }
- 
+    var viewColor: UIColor? {
+        get {
+            return imageView.backgroundColor
+        }
+        set {
+            imageView.backgroundColor = newValue
+        }
+    }
+    var text: String? {
+        get {
+            return label?.text
+        }
+        set {
+            if label == nil {
+                let newLabel = UILabel()
+                newLabel.numberOfLines = 1
+                newLabel.textAlignment = .center
+                newLabel.adjustsFontSizeToFitWidth = true
+                label = newLabel
+                insertSubview(newLabel, aboveSubview: imageView)
+            }
+            label?.text = newValue
+        }
+    }
+    var textColor: UIColor?
+    var font: UIFont?
+    
     override var contentMode: UIViewContentMode {
         didSet {
             imageView.contentMode = contentMode
         }
     }
-    override var frame: CGRect {
-        didSet {
-            if frame.size.width != frame.size.height {
-                let side = frame.size.width > frame.size.height ? frame.size.height : frame.size.width
-                frame = CGRect(origin: frame.origin, size: CGSize(width: side, height: side))
-            }
-        }
-    }
-    override var bounds: CGRect {
-        didSet {
-            if bounds.size.width != bounds.size.height {
-                let side = bounds.size.width > bounds.size.height ? bounds.size.height : bounds.size.width
-                bounds = CGRect(origin: bounds.origin, size: CGSize(width: side, height: side))
-            }
-        }
-    }
+
     @IBInspectable
     var inset: CGFloat = 0.0 {
         didSet {
             setNeedsLayout()
         }
+    }
+    
+    init() {
+        super.init(frame: .zero)
+        setup()
     }
     
     override init(frame: CGRect) {
@@ -76,18 +93,27 @@ class RoundImageView: UIImageView {
     }
     
     func setup() {
+        backgroundColor = .clear
         addSubview(imageView)
         imageView.layer.masksToBounds = true
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let imageSide = bounds.width - inset * 2
+        let side = bounds.width > bounds.height ? bounds.height : bounds.width
+        let imageSide = side - inset * 2
         imageView.frame.size = CGSize(width: imageSide, height: imageSide)
         imageView.center = CGPoint(x: bounds.midX, y: bounds.midY)
         imageView.layer.cornerRadius = imageSide / 2
-        limbView?.frame = bounds
-        limbView?.layer.cornerRadius = bounds.midX
+        limbView?.frame.size = CGSize(width: side, height: side)
+        limbView?.center = imageView.center
+        limbView?.layer.cornerRadius = side / 2
+        if let label = label {
+            label.frame.size = imageView.bounds.size
+            label.center = imageView.center
+            font.map { label.font = $0 }
+            textColor.map { label.textColor = $0 }
+        }
     }
     
 }

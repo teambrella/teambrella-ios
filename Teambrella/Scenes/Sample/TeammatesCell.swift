@@ -24,3 +24,8 @@ class TeammatesCell: UITableViewCell {
     }
 
 }
+
+class TestCell: UITableViewCell {
+    @IBOutlet var roundImages: RoundImagesStack!
+    
+}

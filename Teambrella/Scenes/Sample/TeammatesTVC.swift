@@ -54,19 +54,29 @@ class TeammatesTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teammatesData.count
+        return teammatesData.count + 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "teammates cell", for: indexPath)
-            as? TeammatesCell else {
-                fatalError("Wrong cell type")
+        if indexPath.row < teammatesData.count {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "teammates cell", for: indexPath)
+                as? TeammatesCell else { fatalError() }
+            
+            let teammate = teammatesData[indexPath.row]
+            cell.nameLabel.text = teammate.name
+            let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
+            cell.avatarImageView.kf.setImage(with: url)
+            cell.avatarImageView.limbColor = .white
+            return cell
         }
-        let teammate = teammatesData[indexPath.row]
-        cell.nameLabel.text = teammate.name
-        let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
-        cell.avatarImageView.kf.setImage(with: url)
-        cell.avatarImageView.limbColor = .white
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "test cell", for: indexPath) as? TestCell else {
+            fatalError()
+        }
+        if !teammatesData.isEmpty && cell.roundImages.isEmpty {
+            let images = teammatesData[0..<3].flatMap { URL(string: service.server.avatarURLstring(for: $0.avatar)) }
+            let label: String? = teammatesData.count > 3 ? "\(teammatesData.count - 3)+" : nil
+            cell.roundImages.set(images: images, label: label)
+        }
         return cell
     }
     

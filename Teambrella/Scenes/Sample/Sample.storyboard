@@ -80,6 +80,31 @@
                                     <outlet property="nameLabel" destination="MDx-d0-ks0" id="vGG-cn-8wG"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="test cell" id="SYb-7n-SyG" customClass="TestCell" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SYb-7n-SyG" id="HEY-zi-Jh6">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8op-D6-xYk" customClass="RoundImagesStack" customModule="Teambrella" customModuleProvider="target">
+                                            <rect key="frame" x="137.5" y="8" width="100" height="27.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="RKv-he-4MV"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="8op-D6-xYk" firstAttribute="centerX" secondItem="HEY-zi-Jh6" secondAttribute="centerX" id="EUk-eF-Isw"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="8op-D6-xYk" secondAttribute="bottom" id="mMb-mL-n8J"/>
+                                        <constraint firstItem="8op-D6-xYk" firstAttribute="top" secondItem="HEY-zi-Jh6" secondAttribute="topMargin" id="pft-Oq-eNR"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="roundImages" destination="8op-D6-xYk" id="fvK-Z5-iYU"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="ik4-4g-JkU" id="xAq-1G-0gU"/>
