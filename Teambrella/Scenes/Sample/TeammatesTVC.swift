@@ -73,7 +73,8 @@ class TeammatesTVC: UITableViewController {
             fatalError()
         }
         if !teammatesData.isEmpty && cell.roundImages.isEmpty {
-            let images = teammatesData[0..<3].flatMap { URL(string: service.server.avatarURLstring(for: $0.avatar)) }
+            let max = teammatesData.count > 4 ? 4 : teammatesData.count
+            let images = teammatesData[0..<max].flatMap { URL(string: service.server.avatarURLstring(for: $0.avatar)) }
             let label: String? = teammatesData.count > 3 ? "\(teammatesData.count - 3)+" : nil
             cell.roundImages.set(images: images, label: label)
         }
