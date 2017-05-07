@@ -10,7 +10,7 @@ import CoreData
 
 class BlockchainPayTo: NSManagedObject {
     var address: String { return addressValue! }
-    var id: String { return idValue! }
+    var id: UUID { return UUID(uuidString: idValue!)! }
     var isDefault: Bool { return isDefaultValue }
     var knownSince: Date { return knownSinceValue! as Date }
 }

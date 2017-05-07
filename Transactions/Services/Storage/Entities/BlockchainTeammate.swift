@@ -13,4 +13,16 @@ class BlockchainTeammate: NSManagedObject {
     var fbName: String? { return fbNameValue }
     var name: String { return nameValue! }
     var publicKey: String? { return publicKeyValue }
+    
+    var addressPrevious: BlockchainAddress? {
+        return (addresses as? Set<BlockchainAddress>)?.filter { $0.status == UserAddressStatus.previous }.first
+    }
+    
+    var addressFirst: BlockchainAddress? {
+        return (addresses as? Set<BlockchainAddress>)?.filter { $0.status == UserAddressStatus.current }.first
+    }
+    
+    var addressNext: BlockchainAddress? {
+        return (addresses as? Set<BlockchainAddress>)?.filter { $0.status == UserAddressStatus.next }.first
+    }
 }

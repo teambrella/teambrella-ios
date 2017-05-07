@@ -14,3 +14,12 @@ class BlockchainAddress: NSManagedObject {
     var dateCreated: Date { return dateCreatedValue! as Date }
     
 }
+
+extension BlockchainAddress {
+    class func fetch(id: String, in context: NSManagedObjectContext) -> BlockchainAddress? {
+        let request: NSFetchRequest<BlockchainAddress> = BlockchainAddress.fetchRequest()
+        request.predicate = NSPredicate(format: "addressValue = %@", id)
+        let result = try? context.fetch(request)
+        return result?.first
+    }
+}

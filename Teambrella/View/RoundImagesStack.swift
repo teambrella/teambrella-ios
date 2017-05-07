@@ -23,7 +23,6 @@ class RoundImagesStack: UIView {
         return views.isEmpty
     }
     
-    
     /// Populate stack with images
     ///
     /// - Parameters:

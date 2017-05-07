@@ -54,7 +54,10 @@ struct EntityFactory {
             let address = BlockchainAddress(context: context)
             let id = item["Address"].stringValue
             address.addressValue = id
-            address.dateCreatedValue = formatter.date(from: item["DateCreated"].stringValue) as NSDate?
+            let dateString = item["DateCreated"].stringValue
+            if let date = formatter.date(from: dateString) {
+            address.dateCreatedValue = date  as NSDate
+            }
             address.statusValue = item["Status"].int16Value
             address.teammate = teammates[item["TeammateId"].int64Value]
             result[id] = address
@@ -63,18 +66,19 @@ struct EntityFactory {
     }
     
     func cosigners(json: JSON,
-                   addresses: [String: BlockchainAddress],
                    teammates: [Int64: BlockchainTeammate]) -> [BlockchainCosigner] {
         var cosigners: [BlockchainCosigner] = []
         for item in json.arrayValue {
-            guard let address = addresses[item["AddressId"].stringValue],
-                let storedCosigners = address.cosigners,
-                storedCosigners.count < 8 else { continue }
+            let addressID = item["AddressId"].stringValue
+            let address = BlockchainAddress.fetch(id: addressID, in: context)
             
             let cosigner = BlockchainCosigner(context: context)
+            let keyOrder = item["KeyOrder"].int16Value
+            let teammateID = item["TeammateId"].int64Value
+            cosigner.idValue = "\(keyOrder)-\(addressID)"
             cosigner.address = address
-            cosigner.keyOrderValue = item["KeyOrder"].int16Value
-            cosigner.teammate = teammates[item["TeammateId"].int64Value]
+            cosigner.keyOrderValue = keyOrder
+            cosigner.teammate = teammates[teammateID]
             cosigners.append(cosigner)
         }
         return cosigners
@@ -86,16 +90,48 @@ struct EntityFactory {
             payTo.addressValue = item["Address"].stringValue
             payTo.idValue = item["Id"].stringValue
             payTo.isDefaultValue = item["IsDefault"].boolValue
-            payTo.knownSinceValue = formatter.date(from: json["KnownSince"].stringValue) as NSDate?
+            formatter.date(from: json["KnownSince"].stringValue).map { payTo.knownSinceValue = $0 as NSDate }
             payTo.teammate = teammates[item["TeammateId"].int64Value]
             return payTo
         }
     }
     
+    // Txs
+    func transactions(json: JSON, teammates: [Int64: BlockchainTeammate]) -> [BlockchainTransaction] {
+        return json.arrayValue.map { item in
+            let transaction = BlockchainTransaction(context: context)
+            transaction.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
+            transaction.claimIDValue = item["ClaimId"].int64Value
+            transaction.idValue = item["Id"].stringValue
+            if let initiatedTime = formatter.date(from: json["InitiatedTime"].stringValue) as NSDate? {
+                transaction.initiatedTimeValue = initiatedTime
+            }
+            transaction.kindValue = item["Kind"].int16Value
+            transaction.stateValue = item["State"].int16Value
+            transaction.withdrawReqIDValue = item["WithdrawReqId"].int64Value
+            transaction.teammate = teammates[item["TeammateId"].int64Value]
+            transaction.claimTeammate = teammates[item["ClaimTeammateId"].int64Value]
+            return transaction
+        }
+    }
+
+    
     // TxInputs
     func inputs(json: JSON) -> [BlockchainInput] {
-        /* */
-        return []
+        return json.arrayValue.map { item in
+            let input = BlockchainInput(context: context)
+            input.ammountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
+            input.idValue = item["Id"].stringValue
+            input.previousTransactionIndexValue = item["PrevTxIndex"].int64Value
+            input.transactionIDValue = item["TxId"].stringValue
+            input.previousTransactionIDValue = item["PrevTxId"].stringValue
+            
+            let transactionID = item["TxId"].stringValue
+            input.transaction = BlockchainTransaction.fetch(id: transactionID, in: context)
+            //let previousTransactionID = item["PrevTxId"].stringValue
+            //input.previousTransaction = BlockchainTransaction.fetch(id: previousTransactionID, in: context)
+            return input
+        }
     }
     
     // TxOutputs
@@ -114,25 +150,6 @@ struct EntityFactory {
     func signatures(json: JSON) -> [BlockchainSignature] {
         /* */
         return []
-    }
-    
-    // Txs
-    func transactions(json: JSON, teammates: [Int64: BlockchainTeammate]) -> [BlockchainTransaction] {
-        return json.arrayValue.map { item in
-            let transaction = BlockchainTransaction(context: context)
-            transaction.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
-            transaction.claimIDValue = item["ClaimId"].int64Value
-            transaction.idValue = item["Id"].stringValue
-            if let initiatedTime = formatter.date(from: json["InitiatedTime"].stringValue) as NSDate? {
-            transaction.initiatedTimeValue = initiatedTime
-            }
-            transaction.kindValue = item["Kind"].int16Value
-            transaction.stateValue = item["State"].int16Value
-            transaction.withdrawReqIDValue = item["WithdrawReqId"].int64Value
-            transaction.teammate = teammates[item["TeammateId"].int64Value]
-            transaction.claimTeammate = teammates[item["ClaimTeammateId"].int64Value]
-            return transaction
-        }
     }
     
 }

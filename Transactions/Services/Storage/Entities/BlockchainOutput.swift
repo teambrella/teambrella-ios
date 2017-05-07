@@ -11,6 +11,6 @@ import CoreData
 class BlockchainOutput: NSManagedObject {
     var amount: Decimal { return amountValue! as Decimal }
     var id: String { return idValue! }
-    var payToID: String { return payToIDValue! }
-    var transactionID: String { return transactionIDValue! }
+//    var payToID: String { return payToIDValue! }
+//    var transactionID: String { return transactionIDValue! }
 }

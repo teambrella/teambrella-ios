@@ -109,7 +109,7 @@ public class BlockchainServer {
         }
         let payload: [String: Any] = ["TxInfos": txInfos,
                                       "TxSignatures": txSignatures,
-                                      "LastUpdated": lastUpdated]
+                                      "Since": lastUpdated]
         let request = self.request(string: "me/GetUpdates", key: key, payload: payload)
         Alamofire.request(request).responseJSON { [weak self] response in
             guard let me = self else { return }
@@ -121,7 +121,8 @@ public class BlockchainServer {
                     let result = JSON(value)
                     let timestamp = result["Status"]["Timestamp"].int64Value
                     me.timestamp = timestamp
-                    me.delegate?.server(server: me, didReceiveUpdates: result["Data"], updateTime: timestamp)
+                    let lastUpdated = result["Data"]["LastUpdated"].int64Value
+                    me.delegate?.server(server: me, didReceiveUpdates: result["Data"], updateTime: lastUpdated)
                 }
             case .failure(let error):
                 me.delegate?.server(server: me, failedWithError: error)

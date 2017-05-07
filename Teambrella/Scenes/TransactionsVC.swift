@@ -17,6 +17,12 @@ class TransactionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         server.delegate = self
+        server.initClient(privateKey: BlockchainServer.Constant.fakePrivateKey)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        server.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -25,7 +31,7 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapInit(_ sender: Any) {
-        server.initClient(privateKey: BlockchainServer.Constant.fakePrivateKey)
+        
     }
     
     @IBAction func tapUpdates(_ sender: Any) {
@@ -67,7 +73,11 @@ class TransactionsVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? TransactionsresultTVC {
             vc.storage = storage
+        } else if let vc = segue.destination as? PaymentsTVC {
+            vc.storage = storage
+            vc.server = server
         }
+        
     }
     
 }
@@ -78,7 +88,7 @@ extension TransactionsVC: BlockchainServerDelegate {
     }
     
     func server(server: BlockchainServer, didReceiveUpdates updates: JSON, updateTime: Int64) {
-//        print("server received updates: \(updates)")
+        print("server received updates: \(updates)")
         storage.update(with: updates, updateTime: updateTime)
         performSegue(withIdentifier: "to transactions result", sender: nil)
         

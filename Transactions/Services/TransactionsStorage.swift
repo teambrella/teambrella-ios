@@ -21,7 +21,7 @@ class TransactionsStorage {
                 fatalError(String(describing: error))
             }
             
-            self.container = container
+            //self.container = container
         }
         return container
     }()
@@ -57,14 +57,13 @@ class TransactionsStorage {
             let teams = factory.teams(json: json["Teams"])
             let teammates = factory.teammates(json: json["Teammates"], teams: teams)
             let addresses = factory.addresses(json: json["BTCAddresses"], teammates: teammates)
+            _ = factory.transactions(json: json["Txs"], teammates: teammates)
             _ = factory.cosigners(json: json["Cosigners"],
-                                  addresses: addresses,
                                   teammates: teammates)
             _ = factory.payTos(json: json["PayTos"], teammates: teammates)
             _ = factory.inputs(json: json["TxInputs"])
             _ = factory.outputs(json: json["TxOutputs"])
             _ = factory.signatures(json: json["TxSignatures"])
-            _ = factory.transactions(json: json["Txs"], teammates: teammates)
             let fetch = DispatchTime.now()
             print("Parsing time: \(Double(fetch.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000) sec")
         }) { [weak self] in

@@ -18,7 +18,7 @@ class BlockchainTransaction: NSManagedObject {
     var withdrawReqID: Int { return Int(withdrawReqIDValue) }
     var amount: Decimal { return amountValue! as Decimal }
     var fee: Decimal? { return feeValue as Decimal? }
-    var id: String { return idValue! }
+    var id: UUID { return  UUID(uuidString: idValue!)! }
     var moveToAddressID: String? { return moveToAddressIDValue }
     var isServerUpdateNeeded: Bool { return isServerUpdateNeededValue }
     var clientResolutionTime: Date? { return clientResolutionTimeValue as Date? }
@@ -26,4 +26,13 @@ class BlockchainTransaction: NSManagedObject {
     var processedTime: Date? { return processedTimeValue as Date? }
     var receivedTime: Date? { return receivedTimeValue as Date? }
     var updateTime: Date? { return updateTimeValue as Date? }
+}
+
+extension BlockchainTransaction {
+    class func fetch(id: String, in context: NSManagedObjectContext) -> BlockchainTransaction? {
+        let request: NSFetchRequest<BlockchainTransaction> = BlockchainTransaction.fetchRequest()
+        request.predicate = NSPredicate(format: "idValue = %@", id)
+        let result = try? context.fetch(request)
+        return result?.first
+    }
 }
