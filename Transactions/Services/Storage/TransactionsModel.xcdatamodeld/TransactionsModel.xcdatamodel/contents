@@ -1,84 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="BlockchainAddress" representedClassName=".BlockchainAddress" syncable="YES" codeGenerationType="category">
+    <entity name="BtcAddress" representedClassName=".BtcAddress" syncable="YES" codeGenerationType="category">
         <attribute name="addressValue" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="dateCreatedValue" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="statusValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="cosigners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlockchainCosigner" inverseName="address" inverseEntity="BlockchainCosigner" syncable="YES"/>
-        <relationship name="moveFundsTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlockchainTransaction" inverseName="moveToAddress" inverseEntity="BlockchainTransaction" syncable="YES"/>
-        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainTeammate" inverseName="addresses" inverseEntity="BlockchainTeammate" syncable="YES"/>
+        <relationship name="cosigners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cosigner" inverseName="address" inverseEntity="Cosigner" syncable="YES"/>
+        <relationship name="moveFundsTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="moveToAddress" inverseEntity="Tx" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="addresses" inverseEntity="Teammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="addressValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="BlockchainCosigner" representedClassName=".BlockchainCosigner" syncable="YES" codeGenerationType="category">
+    <entity name="Cosigner" representedClassName=".Cosigner" syncable="YES" codeGenerationType="category">
         <attribute name="idValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="keyOrderValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainAddress" inverseName="cosigners" inverseEntity="BlockchainAddress" syncable="YES"/>
-        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainTeammate" inverseName="cosignerOf" inverseEntity="BlockchainTeammate" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="cosigners" inverseEntity="BtcAddress" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="cosignerOf" inverseEntity="Teammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="BlockchainInput" representedClassName=".BlockchainInput" syncable="YES" codeGenerationType="category">
-        <attribute name="ammountValue" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="previousTransactionIDValue" attributeType="String" syncable="YES"/>
-        <attribute name="previousTransactionIndexValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
-        <relationship name="signature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainSignature" inverseName="input" inverseEntity="BlockchainSignature" syncable="YES"/>
-        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainTransaction" inverseName="input" inverseEntity="BlockchainTransaction" syncable="YES"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="idValue"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
-    <entity name="BlockchainOutput" representedClassName=".BlockchainOutput" syncable="YES" codeGenerationType="category">
-        <attribute name="amountValue" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
-        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="payToIDValue" attributeType="String" syncable="YES"/>
-        <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
-        <relationship name="payTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainPayTo" inverseName="output" inverseEntity="BlockchainPayTo" syncable="YES"/>
-        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainTransaction" inverseName="output" inverseEntity="BlockchainTransaction" syncable="YES"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="idValue"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
-    <entity name="BlockchainPayTo" representedClassName=".BlockchainPayTo" syncable="YES" codeGenerationType="category">
+    <entity name="PayTo" representedClassName=".PayTo" syncable="YES" codeGenerationType="category">
         <attribute name="addressValue" attributeType="String" syncable="YES"/>
         <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="isDefaultValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="knownSinceValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="output" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainOutput" inverseName="payTo" inverseEntity="BlockchainOutput" syncable="YES"/>
-        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainTeammate" inverseName="payTo" inverseEntity="BlockchainTeammate" syncable="YES"/>
+        <relationship name="output" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxOutput" inverseName="payTo" inverseEntity="TxOutput" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="payTo" inverseEntity="Teammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="BlockchainSignature" representedClassName=".BlockchainSignature" syncable="YES" codeGenerationType="category">
+    <entity name="Signature" representedClassName=".Signature" syncable="YES" codeGenerationType="category">
         <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="inputIDValue" attributeType="String" syncable="YES"/>
         <attribute name="isServerUpdateNeededValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="signatureValue" attributeType="Binary" syncable="YES"/>
         <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="input" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainInput" inverseName="signature" inverseEntity="BlockchainInput" syncable="YES"/>
-        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainTeammate" inverseName="signature" inverseEntity="BlockchainTeammate" syncable="YES"/>
+        <relationship name="input" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxInput" inverseName="signature" inverseEntity="TxInput" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="signature" inverseEntity="Teammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="BlockchainTeam" representedClassName=".BlockchainTeam" syncable="YES" codeGenerationType="category">
+    <entity name="Team" representedClassName=".Team" syncable="YES" codeGenerationType="category">
         <attribute name="autoApprovalCosignGoodAddressValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="autoApprovalCosignNewAddressValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="autoApprovalMyGoodAddressValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
@@ -88,32 +61,32 @@
         <attribute name="isTestnetValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nameValue" attributeType="String" syncable="YES"/>
         <attribute name="okAgeValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="teammates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlockchainTeammate" inverseName="team" inverseEntity="BlockchainTeammate" syncable="YES"/>
+        <relationship name="teammates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Teammate" inverseName="team" inverseEntity="Teammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="BlockchainTeammate" representedClassName=".BlockchainTeammate" syncable="YES" codeGenerationType="category">
+    <entity name="Teammate" representedClassName=".Teammate" syncable="YES" codeGenerationType="category">
         <attribute name="fbNameValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
         <attribute name="nameValue" attributeType="String" syncable="YES"/>
         <attribute name="publicKeyValue" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="addresses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlockchainAddress" inverseName="teammate" inverseEntity="BlockchainAddress" syncable="YES"/>
-        <relationship name="claimTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlockchainTransaction" inverseName="claimTeammate" inverseEntity="BlockchainTransaction" syncable="YES"/>
-        <relationship name="cosignerOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlockchainCosigner" inverseName="teammate" inverseEntity="BlockchainCosigner" syncable="YES"/>
-        <relationship name="payTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainPayTo" inverseName="teammate" inverseEntity="BlockchainPayTo" syncable="YES"/>
-        <relationship name="signature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainSignature" inverseName="teammate" inverseEntity="BlockchainSignature" syncable="YES"/>
-        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainTeam" inverseName="teammates" inverseEntity="BlockchainTeam" syncable="YES"/>
-        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlockchainTransaction" inverseName="teammate" inverseEntity="BlockchainTransaction" syncable="YES"/>
+        <relationship name="addresses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="teammate" inverseEntity="BtcAddress" syncable="YES"/>
+        <relationship name="claimTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="claimTeammate" inverseEntity="Tx" syncable="YES"/>
+        <relationship name="cosignerOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cosigner" inverseName="teammate" inverseEntity="Cosigner" syncable="YES"/>
+        <relationship name="payTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PayTo" inverseName="teammate" inverseEntity="PayTo" syncable="YES"/>
+        <relationship name="signature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Signature" inverseName="teammate" inverseEntity="Signature" syncable="YES"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="teammates" inverseEntity="Team" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="teammate" inverseEntity="Tx" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="BlockchainTransaction" representedClassName=".BlockchainTransaction" syncable="YES" codeGenerationType="category">
+    <entity name="Tx" representedClassName=".Tx" syncable="YES" codeGenerationType="category">
         <attribute name="amountValue" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="claimIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="clientResolutionTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -129,11 +102,38 @@
         <attribute name="stateValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="updateTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="withdrawReqIDValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="claimTeammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainTeammate" inverseName="claimTransactions" inverseEntity="BlockchainTeammate" syncable="YES"/>
-        <relationship name="input" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlockchainInput" inverseName="transaction" inverseEntity="BlockchainInput" syncable="YES"/>
-        <relationship name="moveToAddress" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainAddress" inverseName="moveFundsTransactions" inverseEntity="BlockchainAddress" syncable="YES"/>
-        <relationship name="output" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlockchainOutput" inverseName="transaction" inverseEntity="BlockchainOutput" syncable="YES"/>
-        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockchainTeammate" inverseName="transactions" inverseEntity="BlockchainTeammate" syncable="YES"/>
+        <relationship name="claimTeammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="claimTransactions" inverseEntity="Teammate" syncable="YES"/>
+        <relationship name="input" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxInput" inverseName="transaction" inverseEntity="TxInput" syncable="YES"/>
+        <relationship name="moveToAddress" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="moveFundsTransactions" inverseEntity="BtcAddress" syncable="YES"/>
+        <relationship name="output" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxOutput" inverseName="transaction" inverseEntity="TxOutput" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="transactions" inverseEntity="Teammate" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="idValue"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="TxInput" representedClassName=".TxInput" syncable="YES" codeGenerationType="category">
+        <attribute name="ammountValue" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="previousTransactionIDValue" attributeType="String" syncable="YES"/>
+        <attribute name="previousTransactionIndexValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
+        <relationship name="signature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Signature" inverseName="input" inverseEntity="Signature" syncable="YES"/>
+        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tx" inverseName="input" inverseEntity="Tx" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="idValue"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="TxOutput" representedClassName=".TxOutput" syncable="YES" codeGenerationType="category">
+        <attribute name="amountValue" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="payToIDValue" attributeType="String" syncable="YES"/>
+        <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
+        <relationship name="payTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PayTo" inverseName="output" inverseEntity="PayTo" syncable="YES"/>
+        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tx" inverseName="output" inverseEntity="Tx" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
@@ -141,14 +141,14 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="BlockchainAddress" positionX="-227" positionY="-225" width="128" height="135"/>
-        <element name="BlockchainCosigner" positionX="16" positionY="-174" width="128" height="103"/>
-        <element name="BlockchainInput" positionX="-468" positionY="207" width="128" height="150"/>
-        <element name="BlockchainOutput" positionX="349" positionY="378" width="128" height="135"/>
-        <element name="BlockchainPayTo" positionX="351" positionY="117" width="128" height="135"/>
-        <element name="BlockchainSignature" positionX="-470" positionY="3" width="128" height="150"/>
-        <element name="BlockchainTeam" positionX="-470" positionY="-225" width="128" height="195"/>
-        <element name="BlockchainTeammate" positionX="16" positionY="-24" width="128" height="208"/>
-        <element name="BlockchainTransaction" positionX="-234" positionY="180" width="128" height="343"/>
+        <element name="BtcAddress" positionX="-227" positionY="-225" width="128" height="133"/>
+        <element name="Cosigner" positionX="16" positionY="-174" width="128" height="103"/>
+        <element name="TxInput" positionX="-468" positionY="207" width="128" height="148"/>
+        <element name="TxOutput" positionX="349" positionY="378" width="128" height="133"/>
+        <element name="PayTo" positionX="351" positionY="117" width="128" height="133"/>
+        <element name="Signature" positionX="-470" positionY="3" width="128" height="148"/>
+        <element name="Team" positionX="-470" positionY="-225" width="128" height="193"/>
+        <element name="Teammate" positionX="16" positionY="-24" width="128" height="208"/>
+        <element name="Tx" positionX="-234" positionY="180" width="128" height="343"/>
     </elements>
 </model>

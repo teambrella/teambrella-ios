@@ -16,29 +16,29 @@ class BlockchainStorageFetcher {
         self.storage = storage
     }
     
-    var firstTeam: BlockchainTeam? {
-        let request: NSFetchRequest<BlockchainTeam> = BlockchainTeam.fetchRequest()
+    var firstTeam: Team? {
+        let request: NSFetchRequest<Team> = Team.fetchRequest()
         let items = try? storage.context.fetch(request)
         return items?.first
     }
     
-    var teammates: [BlockchainTeammate]? {
-        let request: NSFetchRequest<BlockchainTeammate> = BlockchainTeammate.fetchRequest()
+    var teammates: [Teammate]? {
+        let request: NSFetchRequest<Teammate> = Teammate.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "nameValue", ascending: true)]
         let items = try? storage.context.fetch(request)
         return items
     }
     
-    var resolvableTransactions: [BlockchainTransaction]? {
-        let request: NSFetchRequest<BlockchainTransaction> = BlockchainTransaction.fetchRequest()
+    var resolvableTransactions: [Tx]? {
+        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
         request.predicate = NSPredicate(format: "resolutionValue == \(TransactionClientResolution.received.rawValue)")
         //request.sortDescriptors = [NSSortDescriptor(key: "resolutionValue", ascending: true)]
         let items = try? storage.context.fetch(request)
         return items
     }
     
-    var cosignableTransactions: [BlockchainTransaction]? {
-        let request: NSFetchRequest<BlockchainTransaction> = BlockchainTransaction.fetchRequest()
+    var cosignableTransactions: [Tx]? {
+        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
         request.predicate = NSPredicate(format: "resolutionValue == \(TransactionClientResolution.approved.rawValue)" +
             " AND stateValue == \(TransactionState.selectedForCosigning.rawValue)"/* +
             " AND inputs.@count > 0"*/)

@@ -21,7 +21,7 @@ enum AmbrellaRequestType: String {
 enum AmbrellaResponseType {
     case timestamp
     case initClient
-    case teammatesList([Teammate])
+    case teammatesList([TeammateLike])
     case teammate(ExtendedTeammate)
     case newPost(Post)
     case updates

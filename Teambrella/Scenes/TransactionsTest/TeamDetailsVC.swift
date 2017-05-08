@@ -9,7 +9,7 @@
 import UIKit
 
 class TeamDetailsVC: UIViewController {
-    var team: BlockchainTeam!
+    var team: Team!
     
     @IBOutlet var teamLabel: UILabel!
     @IBOutlet var idLabel: UILabel!

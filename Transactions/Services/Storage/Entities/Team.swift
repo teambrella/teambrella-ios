@@ -8,7 +8,7 @@
 
 import CoreData
 
-class BlockchainTeam: NSManagedObject {
+class Team: NSManagedObject {
     var id: Int { return Int(idValue) }
     var name: String { return nameValue! }
     var isTestnet: Bool { return isTestnetValue }

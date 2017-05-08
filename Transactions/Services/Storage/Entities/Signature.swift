@@ -8,7 +8,7 @@
 
 import CoreData
 
-class BlockchainSignature: NSManagedObject {
+class Signature: NSManagedObject {
     var teammateID: Int { return Int(teammateIDValue) }
     var id: String { return idValue! }
     var inputID: String { return inputIDValue! }

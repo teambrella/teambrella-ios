@@ -16,8 +16,8 @@ class PaymentsTVC: UITableViewController {
         return BlockchainStorageFetcher(storage: self.storage)
     }()
     
-    var resolvable: [BlockchainTransaction] = []
-    var cosignable: [BlockchainTransaction] = []
+    var resolvable: [Tx] = []
+    var cosignable: [Tx] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ class PaymentsTVC: UITableViewController {
             fatalError()
         }
 
-        let transaction: BlockchainTransaction!
+        let transaction: Tx!
         switch indexPath.section {
         case 0: transaction = resolvable[indexPath.row]
         default: transaction = cosignable[indexPath.row]

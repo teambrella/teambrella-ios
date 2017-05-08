@@ -10,7 +10,7 @@ import Kingfisher
 import UIKit
 
 class TeammateVC: UIViewController {
-    var teammate: Teammate!
+    var teammate: TeammateLike!
     
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!

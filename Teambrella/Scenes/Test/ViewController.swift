@@ -14,7 +14,7 @@ let server = service.server
     @IBOutlet var textField: UITextField!
     @IBOutlet var console: UITextView!
     
-    var teammates: [Teammate] = []
+    var teammates: [TeammateLike] = []
     var myUser: ExtendedTeammate?
     
     override func viewDidLoad() {

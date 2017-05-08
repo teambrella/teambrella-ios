@@ -94,8 +94,8 @@ public class BlockchainServer {
     
     func getUpdates(privateKey: String,
                     lastUpdated: Int64,
-                    transactions: [BlockchainTransaction],
-                    signatures: [BlockchainSignature]) {
+                    transactions: [Tx],
+                    signatures: [Signature]) {
          let key = Key(base58String: privateKey, timestamp: timestamp) 
         
         let txInfos = transactions.map { ["Id": $0.id,

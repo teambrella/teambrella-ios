@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct TeammateEntity: Teammate {
+struct TeammateEntity: TeammateLike {
     var ver: Int64
     let id: String
 

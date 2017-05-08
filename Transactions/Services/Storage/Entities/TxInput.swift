@@ -1,5 +1,5 @@
 //
-//  BlockchainInput.swift
+//  TxInput.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 19.04.17.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-class BlockchainInput: NSManagedObject {
+class TxInput: NSManagedObject {
     var previousTransactionIndex: Int { return Int(previousTransactionIndexValue) }
     var ammount: Decimal { return ammountValue! as Decimal }
     var id: String { return idValue! }

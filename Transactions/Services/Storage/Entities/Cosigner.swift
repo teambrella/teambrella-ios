@@ -1,5 +1,5 @@
 //
-//  BlockchainCosigner.swift
+//  Cosigner.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 19.04.17.
@@ -8,18 +8,18 @@
 
 import CoreData
 
-class BlockchainCosigner: NSManagedObject {
+class Cosigner: NSManagedObject {
     var keyOrder: Int { return Int(keyOrderValue) }
     override var description: String {
         return "Cosigner for address: \(address?.address ?? "none"), order: \(keyOrder)"
     }
 }
 
-extension BlockchainCosigner {
-    static func cosigners(for teammate: BlockchainTeammate) -> [BlockchainCosigner] {
+extension Cosigner {
+    static func cosigners(for teammate: Teammate) -> [Cosigner] {
         guard let context = teammate.managedObjectContext else { return [] }
         
-        let request: NSFetchRequest<BlockchainCosigner> = BlockchainCosigner.fetchRequest()
+        let request: NSFetchRequest<Cosigner> = Cosigner.fetchRequest()
         request.predicate = NSPredicate(format: "teammate = %@", teammate)
         let result = try? context.fetch(request)
         return result ?? []
