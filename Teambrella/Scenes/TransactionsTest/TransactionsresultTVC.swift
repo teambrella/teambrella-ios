@@ -12,7 +12,7 @@ import UIKit
 class TransactionsresultTVC: UITableViewController {
     var storage: TransactionsStorage!
     var fetcher: BlockchainStorageFetcher!
-    var teammates: [BlockchainTeammate] = []
+    var teammates: [Teammate] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +62,9 @@ class TransactionsresultTVC: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? TransactionsTeammateVC, let teammate = sender as? BlockchainTeammate {
+        if let vc = segue.destination as? TransactionsTeammateVC, let teammate = sender as? Teammate {
             vc.teammate = teammate
-        } else if let vc = segue.destination as? TeamDetailsVC, let team = sender as? BlockchainTeam {
+        } else if let vc = segue.destination as? TeamDetailsVC, let team = sender as? Team {
             vc.team = team
         }
     }

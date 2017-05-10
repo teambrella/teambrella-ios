@@ -16,6 +16,8 @@
 		6D097EA81E9D220A00E77DAB /* General.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D097EA61E9D220A00E77DAB /* General.strings */; };
 		6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAA1E9D390200E77DAB /* Topic.swift */; };
 		6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */; };
+		6D113C991EC34B7600D5FE75 /* SignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D113C981EC34B7600D5FE75 /* SignHelper.swift */; };
+		6D113C9B1EC379E900D5FE75 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D113C9A1EC379E900D5FE75 /* User.swift */; };
 		6D1454F21EA679E60054A547 /* EntityEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1454F11EA679E60054A547 /* EntityEnums.swift */; };
 		6D1C039F1EB8D37D004AED30 /* Sample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C039E1EB8D37D004AED30 /* Sample.storyboard */; };
 		6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A01EB8D4A2004AED30 /* UIView.swift */; };
@@ -52,15 +54,15 @@
 		6DA475D41E8BB95200B56D9B /* AmbrellaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D31E8BB95200B56D9B /* AmbrellaRequest.swift */; };
 		6DA475D91E8BBD2A00B56D9B /* AmbrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* AmbrellaError.swift */; };
 		6DA475DF1E8BE30000B56D9B /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475DE1E8BE30000B56D9B /* RequestBody.swift */; };
-		6DC60B6D1EA74996007D285C /* BlockchainAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B6C1EA74996007D285C /* BlockchainAddress.swift */; };
-		6DC60B6F1EA749B5007D285C /* BlockchainCosigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B6E1EA749B5007D285C /* BlockchainCosigner.swift */; };
-		6DC60B711EA749D4007D285C /* BlockchainInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B701EA749D4007D285C /* BlockchainInput.swift */; };
-		6DC60B731EA749F1007D285C /* BlockchainOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B721EA749F1007D285C /* BlockchainOutput.swift */; };
-		6DC60B751EA74A08007D285C /* BlockchainPayTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B741EA74A08007D285C /* BlockchainPayTo.swift */; };
-		6DC60B771EA74A9B007D285C /* BlockchainSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B761EA74A9B007D285C /* BlockchainSignature.swift */; };
-		6DC60B791EA74F13007D285C /* BlockchainTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B781EA74F13007D285C /* BlockchainTeam.swift */; };
-		6DC60B7B1EA74F24007D285C /* BlockchainTeammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B7A1EA74F24007D285C /* BlockchainTeammate.swift */; };
-		6DC60B7D1EA74F3D007D285C /* BlockchainTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B7C1EA74F3D007D285C /* BlockchainTransaction.swift */; };
+		6DC60B6D1EA74996007D285C /* BtcAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B6C1EA74996007D285C /* BtcAddress.swift */; };
+		6DC60B6F1EA749B5007D285C /* Cosigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B6E1EA749B5007D285C /* Cosigner.swift */; };
+		6DC60B711EA749D4007D285C /* TxInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B701EA749D4007D285C /* TxInput.swift */; };
+		6DC60B731EA749F1007D285C /* TxOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B721EA749F1007D285C /* TxOutput.swift */; };
+		6DC60B751EA74A08007D285C /* PayTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B741EA74A08007D285C /* PayTo.swift */; };
+		6DC60B771EA74A9B007D285C /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B761EA74A9B007D285C /* Signature.swift */; };
+		6DC60B791EA74F13007D285C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B781EA74F13007D285C /* Team.swift */; };
+		6DC60B7B1EA74F24007D285C /* Teammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B7A1EA74F24007D285C /* Teammate.swift */; };
+		6DC60B7D1EA74F3D007D285C /* Tx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B7C1EA74F3D007D285C /* Tx.swift */; };
 		6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC31E93A6920092D3F2 /* Services.swift */; };
 		6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */; };
 		6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */; };
@@ -79,7 +81,7 @@
 		6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */; };
 		6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
 		80F21A7C34B08754FB74C0D3 /* libPods-TeambrellaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */; };
-		CBDFE00DB06001B8DB766097 /* Teammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEE452041D08B61C13CF8 /* Teammate.swift */; };
+		CBDFE00DB06001B8DB766097 /* TeammateLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEE452041D08B61C13CF8 /* TeammateLike.swift */; };
 		CBDFE3B8E39275922CDCC041 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE16BB5E7B5B758559237 /* String.swift */; };
 		CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */; };
 		CBDFE767664CC051784BF271 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA3415104DFFD0D751C7 /* ServerService.swift */; };
@@ -123,6 +125,8 @@
 		6D097EA91E9D230E00E77DAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/General.strings; sourceTree = "<group>"; };
 		6D097EAA1E9D390200E77DAB /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Topic.swift; path = Model/Protocols/Topic.swift; sourceTree = "<group>"; };
 		6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicEntity.swift; path = Model/Entities/TopicEntity.swift; sourceTree = "<group>"; };
+		6D113C981EC34B7600D5FE75 /* SignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignHelper.swift; path = Transactions/Services/SignHelper.swift; sourceTree = SOURCE_ROOT; };
+		6D113C9A1EC379E900D5FE75 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Transactions/Services/Storage/Entities/User.swift; sourceTree = "<group>"; };
 		6D1454F11EA679E60054A547 /* EntityEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityEnums.swift; path = Transactions/Services/Storage/EntityEnums.swift; sourceTree = SOURCE_ROOT; };
 		6D1C039E1EB8D37D004AED30 /* Sample.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Sample.storyboard; path = Scenes/Sample/Sample.storyboard; sourceTree = "<group>"; };
 		6D1C03A01EB8D4A2004AED30 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = Helpers/Extensions/UIView.swift; sourceTree = "<group>"; };
@@ -166,15 +170,15 @@
 		6DA475D31E8BB95200B56D9B /* AmbrellaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmbrellaRequest.swift; path = Model/Services/Networking/AmbrellaRequest.swift; sourceTree = "<group>"; };
 		6DA475D81E8BBD2A00B56D9B /* AmbrellaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmbrellaError.swift; path = Model/AmbrellaError.swift; sourceTree = "<group>"; };
 		6DA475DE1E8BE30000B56D9B /* RequestBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestBody.swift; path = Model/Services/Networking/RequestBody.swift; sourceTree = "<group>"; };
-		6DC60B6C1EA74996007D285C /* BlockchainAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainAddress.swift; path = Transactions/Services/Storage/Entities/BlockchainAddress.swift; sourceTree = "<group>"; };
-		6DC60B6E1EA749B5007D285C /* BlockchainCosigner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainCosigner.swift; path = Transactions/Services/Storage/Entities/BlockchainCosigner.swift; sourceTree = "<group>"; };
-		6DC60B701EA749D4007D285C /* BlockchainInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainInput.swift; path = Transactions/Services/Storage/Entities/BlockchainInput.swift; sourceTree = "<group>"; };
-		6DC60B721EA749F1007D285C /* BlockchainOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainOutput.swift; path = Transactions/Services/Storage/Entities/BlockchainOutput.swift; sourceTree = "<group>"; };
-		6DC60B741EA74A08007D285C /* BlockchainPayTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainPayTo.swift; path = Transactions/Services/Storage/Entities/BlockchainPayTo.swift; sourceTree = "<group>"; };
-		6DC60B761EA74A9B007D285C /* BlockchainSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainSignature.swift; path = Transactions/Services/Storage/Entities/BlockchainSignature.swift; sourceTree = "<group>"; };
-		6DC60B781EA74F13007D285C /* BlockchainTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainTeam.swift; path = Transactions/Services/Storage/Entities/BlockchainTeam.swift; sourceTree = "<group>"; };
-		6DC60B7A1EA74F24007D285C /* BlockchainTeammate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainTeammate.swift; path = Transactions/Services/Storage/Entities/BlockchainTeammate.swift; sourceTree = "<group>"; };
-		6DC60B7C1EA74F3D007D285C /* BlockchainTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainTransaction.swift; path = Transactions/Services/Storage/Entities/BlockchainTransaction.swift; sourceTree = "<group>"; };
+		6DC60B6C1EA74996007D285C /* BtcAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BtcAddress.swift; path = Transactions/Services/Storage/Entities/BtcAddress.swift; sourceTree = "<group>"; };
+		6DC60B6E1EA749B5007D285C /* Cosigner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cosigner.swift; path = Transactions/Services/Storage/Entities/Cosigner.swift; sourceTree = "<group>"; };
+		6DC60B701EA749D4007D285C /* TxInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxInput.swift; path = Transactions/Services/Storage/Entities/TxInput.swift; sourceTree = "<group>"; };
+		6DC60B721EA749F1007D285C /* TxOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxOutput.swift; path = Transactions/Services/Storage/Entities/TxOutput.swift; sourceTree = "<group>"; };
+		6DC60B741EA74A08007D285C /* PayTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayTo.swift; path = Transactions/Services/Storage/Entities/PayTo.swift; sourceTree = "<group>"; };
+		6DC60B761EA74A9B007D285C /* Signature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Signature.swift; path = Transactions/Services/Storage/Entities/Signature.swift; sourceTree = "<group>"; };
+		6DC60B781EA74F13007D285C /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Team.swift; path = Transactions/Services/Storage/Entities/Team.swift; sourceTree = "<group>"; };
+		6DC60B7A1EA74F24007D285C /* Teammate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Teammate.swift; path = Transactions/Services/Storage/Entities/Teammate.swift; sourceTree = "<group>"; };
+		6DC60B7C1EA74F3D007D285C /* Tx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tx.swift; path = Transactions/Services/Storage/Entities/Tx.swift; sourceTree = "<group>"; };
 		6DCC7AC31E93A6920092D3F2 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Model/Services/Services.swift; sourceTree = "<group>"; };
 		6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateEntity.swift; path = Model/Entities/TeammateEntity.swift; sourceTree = "<group>"; };
 		6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImageView.swift; path = View/RoundImageView.swift; sourceTree = "<group>"; };
@@ -198,7 +202,7 @@
 		CBDFE17963037A77339EB5F7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Scenes/Test/ViewController.swift; sourceTree = "<group>"; };
 		CBDFEA3415104DFFD0D751C7 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerService.swift; path = Model/Services/Networking/ServerService.swift; sourceTree = "<group>"; };
 		CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaritalStatus.swift; path = Model/Enums/MaritalStatus.swift; sourceTree = "<group>"; };
-		CBDFEE452041D08B61C13CF8 /* Teammate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Teammate.swift; path = Model/Entities/Teammate.swift; sourceTree = "<group>"; };
+		CBDFEE452041D08B61C13CF8 /* TeammateLike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateLike.swift; path = Model/Entities/TeammateLike.swift; sourceTree = "<group>"; };
 		EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA9DEFD913DBBA749086C64 /* Pods-TeambrellaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Teambrella.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,16 +295,17 @@
 		6D48BC7A1EA6492200235324 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				6DC60B6C1EA74996007D285C /* BlockchainAddress.swift */,
-				6DC60B6E1EA749B5007D285C /* BlockchainCosigner.swift */,
-				6DC60B701EA749D4007D285C /* BlockchainInput.swift */,
-				6DC60B721EA749F1007D285C /* BlockchainOutput.swift */,
-				6DC60B741EA74A08007D285C /* BlockchainPayTo.swift */,
-				6DC60B761EA74A9B007D285C /* BlockchainSignature.swift */,
-				6DC60B781EA74F13007D285C /* BlockchainTeam.swift */,
-				6DC60B7A1EA74F24007D285C /* BlockchainTeammate.swift */,
-				6DC60B7C1EA74F3D007D285C /* BlockchainTransaction.swift */,
+				6DC60B6C1EA74996007D285C /* BtcAddress.swift */,
+				6DC60B6E1EA749B5007D285C /* Cosigner.swift */,
+				6DC60B701EA749D4007D285C /* TxInput.swift */,
+				6DC60B721EA749F1007D285C /* TxOutput.swift */,
+				6DC60B741EA74A08007D285C /* PayTo.swift */,
+				6DC60B761EA74A9B007D285C /* Signature.swift */,
+				6DC60B781EA74F13007D285C /* Team.swift */,
+				6DC60B7A1EA74F24007D285C /* Teammate.swift */,
+				6DC60B7C1EA74F3D007D285C /* Tx.swift */,
 				6D73C6E51EBB939700A2C0F8 /* Managed.swift */,
+				6D113C9A1EC379E900D5FE75 /* User.swift */,
 			);
 			name = Entities;
 			path = ..;
@@ -336,6 +341,7 @@
 			children = (
 				6D8F971B1E8D4488008DC62E /* BitcoinService.swift */,
 				6D1C23831E8E97CF009B05A3 /* Key.swift */,
+				6D113C981EC34B7600D5FE75 /* SignHelper.swift */,
 			);
 			name = Bitcoin;
 			sourceTree = "<group>";
@@ -490,7 +496,7 @@
 				6DEC07531E9BF6600078F40E /* ExtendedTeammate.swift */,
 				6D097EA41E9D219A00E77DAB /* Nameable.swift */,
 				6DEC6DF21E96670D00ACC119 /* Post.swift */,
-				CBDFEE452041D08B61C13CF8 /* Teammate.swift */,
+				CBDFEE452041D08B61C13CF8 /* TeammateLike.swift */,
 				6D097EAA1E9D390200E77DAB /* Topic.swift */,
 			);
 			name = Protocols;
@@ -902,6 +908,7 @@
 				6D7EB77E1EA8E0560070AFB7 /* BlockchainService.swift in Sources */,
 				6DA475D91E8BBD2A00B56D9B /* AmbrellaError.swift in Sources */,
 				6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */,
+				6D113C9B1EC379E900D5FE75 /* User.swift in Sources */,
 				6D5988831EA4BDEE0046237F /* BlockchainServer.swift in Sources */,
 				6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */,
 				6D48BC7C1EA64EC500235324 /* EntityFactory.swift in Sources */,
@@ -914,21 +921,22 @@
 				6D35EFCB1EAF982A00696B42 /* TeamDetailsVC.swift in Sources */,
 				6D35EFC91EAF931000696B42 /* TransactionsTeammateVC.swift in Sources */,
 				6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */,
-				6DC60B6D1EA74996007D285C /* BlockchainAddress.swift in Sources */,
+				6DC60B6D1EA74996007D285C /* BtcAddress.swift in Sources */,
 				6D35EFC71EAF8B4900696B42 /* BlockchainStorageFetcher.swift in Sources */,
 				6DEC07521E9BDA310078F40E /* TeammateVC.swift in Sources */,
 				6D91BC041EB3900700FDC332 /* UUID.swift in Sources */,
 				6DD7F41D1EB9FD8A001E7733 /* RoundImagesStack.swift in Sources */,
-				6DC60B7D1EA74F3D007D285C /* BlockchainTransaction.swift in Sources */,
+				6DC60B7D1EA74F3D007D285C /* Tx.swift in Sources */,
 				6D7EB7801EA8E06B0070AFB7 /* AccountService.swift in Sources */,
-				6DC60B7B1EA74F24007D285C /* BlockchainTeammate.swift in Sources */,
+				6DC60B7B1EA74F24007D285C /* Teammate.swift in Sources */,
 				6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */,
 				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
-				6DC60B731EA749F1007D285C /* BlockchainOutput.swift in Sources */,
+				6DC60B731EA749F1007D285C /* TxOutput.swift in Sources */,
 				6D7186EE1EA515F400257463 /* TransactionsModel.xcdatamodeld in Sources */,
-				6DC60B771EA74A9B007D285C /* BlockchainSignature.swift in Sources */,
-				6DC60B751EA74A08007D285C /* BlockchainPayTo.swift in Sources */,
-				6DC60B6F1EA749B5007D285C /* BlockchainCosigner.swift in Sources */,
+				6DC60B771EA74A9B007D285C /* Signature.swift in Sources */,
+				6DC60B751EA74A08007D285C /* PayTo.swift in Sources */,
+				6D113C991EC34B7600D5FE75 /* SignHelper.swift in Sources */,
+				6DC60B6F1EA749B5007D285C /* Cosigner.swift in Sources */,
 				6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */,
 				6D097EA51E9D219A00E77DAB /* Nameable.swift in Sources */,
 				6DEC6DF91E966AA900ACC119 /* TransformerService.swift in Sources */,
@@ -937,14 +945,14 @@
 				6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */,
 				6D73C6E61EBB939700A2C0F8 /* Managed.swift in Sources */,
 				6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */,
-				6DC60B711EA749D4007D285C /* BlockchainInput.swift in Sources */,
+				6DC60B711EA749D4007D285C /* TxInput.swift in Sources */,
 				6DEC6DF31E96670D00ACC119 /* Post.swift in Sources */,
 				6D7186E71EA4FC3600257463 /* TransactionsVC.swift in Sources */,
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
 				CBDFEBF8E6B7F6BC0422AE92 /* ViewController.swift in Sources */,
 				6D7186EB1EA513D700257463 /* TransactionsStorage.swift in Sources */,
 				6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */,
-				6DC60B791EA74F13007D285C /* BlockchainTeam.swift in Sources */,
+				6DC60B791EA74F13007D285C /* Team.swift in Sources */,
 				6DA475DF1E8BE30000B56D9B /* RequestBody.swift in Sources */,
 				6D8F971C1E8D4488008DC62E /* BitcoinService.swift in Sources */,
 				6D1454F21EA679E60054A547 /* EntityEnums.swift in Sources */,
@@ -952,7 +960,7 @@
 				6D73C6E21EBB374D00A2C0F8 /* PaymentsTVC.swift in Sources */,
 				6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */,
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
-				CBDFE00DB06001B8DB766097 /* Teammate.swift in Sources */,
+				CBDFE00DB06001B8DB766097 /* TeammateLike.swift in Sources */,
 				6D829AA51EB0D6860051F43A /* Random.swift in Sources */,
 				6DEC07561E9BF7170078F40E /* ExtendedTeammateEntity.swift in Sources */,
 				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,

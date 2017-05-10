@@ -9,7 +9,7 @@
 import UIKit
 
 class TransactionsTeammateVC: UIViewController {
-    var teammate: BlockchainTeammate!
+    var teammate: Teammate!
 
     @IBOutlet var idLabel: UILabel!
     @IBOutlet var fbLabel: UILabel!
@@ -29,14 +29,14 @@ class TransactionsTeammateVC: UIViewController {
         addressLabel.text = teammate.addressFirst?.address
         signatureLabel.text = teammate.signature?.id
         var cosignerNames: [String] = []
-        if let cosigners = teammate.cosignerOf as? Set<BlockchainCosigner> {
+        if let cosigners = teammate.cosignerOf as? Set<Cosigner> {
         for cosigner in cosigners {
             cosigner.address?.teammate.map { cosignerNames.append($0.name) }
         }
             cosignersLabel.text = cosignerNames.description
         }
         
-        let hisCosigners = BlockchainCosigner.cosigners(for: teammate)
+        let hisCosigners = Cosigner.cosigners(for: teammate)
         var hisCosignerNames: [String] = []
         for cosigner in hisCosigners {
             cosigner.address?.teammate.map { hisCosignerNames.append($0.name) }

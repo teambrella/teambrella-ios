@@ -8,7 +8,7 @@
 
 import CoreData
 
-class BlockchainTransaction: NSManagedObject {
+class Tx: NSManagedObject {
     var kind: TransactionKind? { return TransactionKind(rawValue: Int(kindValue)) }
     var resolution: TransactionClientResolution? {
         return TransactionClientResolution(rawValue: Int(resolutionValue))
@@ -28,9 +28,9 @@ class BlockchainTransaction: NSManagedObject {
     var updateTime: Date? { return updateTimeValue as Date? }
 }
 
-extension BlockchainTransaction {
-    class func fetch(id: String, in context: NSManagedObjectContext) -> BlockchainTransaction? {
-        let request: NSFetchRequest<BlockchainTransaction> = BlockchainTransaction.fetchRequest()
+extension Tx {
+    class func fetch(id: String, in context: NSManagedObjectContext) -> Tx? {
+        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
         request.predicate = NSPredicate(format: "idValue = %@", id)
         let result = try? context.fetch(request)
         return result?.first

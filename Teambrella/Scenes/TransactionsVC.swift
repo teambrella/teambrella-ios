@@ -43,7 +43,7 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapCosigners(_ sender: Any) {
-        let request: NSFetchRequest<BlockchainCosigner> = BlockchainCosigner.fetchRequest()
+        let request: NSFetchRequest<Cosigner> = Cosigner.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "address.addressValue", ascending: true),
                                    NSSortDescriptor(key: "keyOrderValue", ascending: true)]
         let results = try? storage.context.fetch(request)

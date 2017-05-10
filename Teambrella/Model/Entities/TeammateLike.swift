@@ -1,5 +1,5 @@
 //
-//  Teammate.swift
+//  TeammateLike.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 05.04.17.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-protocol Teammate: EntityLike {
+protocol TeammateLike: EntityLike {
     // personal properties
 
     /// global user id
