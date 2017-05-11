@@ -14,12 +14,3 @@ class BtcAddress: NSManagedObject {
     var dateCreated: Date { return dateCreatedValue! as Date }
     
 }
-
-extension BtcAddress {
-    class func fetch(id: String, in context: NSManagedObjectContext) -> BtcAddress? {
-        let request: NSFetchRequest<BtcAddress> = BtcAddress.fetchRequest()
-        request.predicate = NSPredicate(format: "addressValue = %@", id)
-        let result = try? context.fetch(request)
-        return result?.first
-    }
-}

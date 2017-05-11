@@ -27,7 +27,7 @@ class TransactionsTeammateVC: UIViewController {
         fbLabel.text = teammate.fbName
         publicKeyLabel.text = teammate.publicKey
         addressLabel.text = teammate.addressFirst?.address
-        signatureLabel.text = teammate.signature?.id
+        signatureLabel.text = teammate.signature?.id.uuidString
         var cosignerNames: [String] = []
         if let cosigners = teammate.cosignerOf as? Set<Cosigner> {
         for cosigner in cosigners {
@@ -36,7 +36,10 @@ class TransactionsTeammateVC: UIViewController {
             cosignersLabel.text = cosignerNames.description
         }
         
-        let hisCosigners = Cosigner.cosigners(for: teammate)
+        guard let context = teammate.managedObjectContext else { return }
+        
+        let fetcher = BlockchainStorageFetcher(context: context)
+        let hisCosigners = fetcher.cosigners(for: teammate)
         var hisCosignerNames: [String] = []
         for cosigner in hisCosigners {
             cosigner.address?.teammate.map { hisCosignerNames.append($0.name) }

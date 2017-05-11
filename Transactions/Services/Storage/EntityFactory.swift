@@ -12,11 +12,13 @@ import SwiftyJSON
 
 struct EntityFactory {
     let context: NSManagedObjectContext
-    let formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return formatter
-    }()
+    let fetcher: BlockchainStorageFetcher
+    let formatter = BlockchainDateFormatter()
+    
+    init(context: NSManagedObjectContext) {
+        self.context = context
+        fetcher = BlockchainStorageFetcher(context: context)
+    }
     
     // Teams
     func teams(json: JSON) -> [Int64: Team] {
@@ -70,7 +72,7 @@ struct EntityFactory {
         var cosigners: [Cosigner] = []
         for item in json.arrayValue {
             let addressID = item["AddressId"].stringValue
-            let address = BtcAddress.fetch(id: addressID, in: context)
+            let address = fetcher.address(id: addressID)
             
             let cosigner = Cosigner(context: context)
             let keyOrder = item["KeyOrder"].int16Value
@@ -127,7 +129,7 @@ struct EntityFactory {
             input.previousTransactionIDValue = item["PrevTxId"].stringValue
             
             let transactionID = item["TxId"].stringValue
-            input.transaction = Tx.fetch(id: transactionID, in: context)
+            input.transaction = fetcher.transaction(id: transactionID)
             //let previousTransactionID = item["PrevTxId"].stringValue
             //input.previousTransaction = BlockchainTransaction.fetch(id: previousTransactionID, in: context)
             return input
@@ -147,7 +149,7 @@ struct EntityFactory {
     }
     
     // TxSignatures
-    func signatures(json: JSON) -> [Signature] {
+    func signatures(json: JSON) -> [TxSignature] {
         /* */
         return []
     }

@@ -23,27 +23,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Biu-tH-Rzy">
-                                <rect key="frame" x="146" y="288.5" width="82" height="90"/>
+                                <rect key="frame" x="103.5" y="273.5" width="167" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYJ-Av-DPn">
-                                        <rect key="frame" x="0.0" y="0.0" width="82" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                         <state key="normal" title="Payments"/>
                                         <connections>
                                             <segue destination="exg-Cv-Hq9" kind="show" identifier="to payments" id="m0L-Ve-UdM"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbp-cQ-YHf">
-                                        <rect key="frame" x="0.0" y="30" width="82" height="30"/>
+                                        <rect key="frame" x="0.0" y="30" width="167" height="30"/>
                                         <state key="normal" title="get updates"/>
                                         <connections>
                                             <action selector="tapUpdates:" destination="Xib-uD-Vgx" eventType="touchUpInside" id="a5C-ZX-mki"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uY9-Zg-ezK">
-                                        <rect key="frame" x="0.0" y="60" width="82" height="30"/>
+                                        <rect key="frame" x="0.0" y="60" width="167" height="30"/>
                                         <state key="normal" title="genPrivate"/>
                                         <connections>
                                             <action selector="tapGenPrivate:" destination="Xib-uD-Vgx" eventType="touchUpInside" id="EZZ-GA-qZa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2a-AM-YsH">
+                                        <rect key="frame" x="0.0" y="90" width="167" height="30"/>
+                                        <state key="normal" title="Approve All transactions"/>
+                                        <connections>
+                                            <action selector="tapApprove:" destination="Xib-uD-Vgx" eventType="touchUpInside" id="1Qi-Q2-5DO"/>
                                         </connections>
                                     </button>
                                 </subviews>

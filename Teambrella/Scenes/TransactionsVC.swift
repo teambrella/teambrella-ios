@@ -35,11 +35,29 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapUpdates(_ sender: Any) {
-     let lastUpdated = storage.lastUpdated
+        let lastUpdated = storage.lastUpdated
         server.getUpdates(privateKey: BlockchainServer.Constant.fakePrivateKey,
                           lastUpdated: lastUpdated,
                           transactions: [],
                           signatures: [])
+    }
+    
+    @IBAction func tapApprove(_ sender: Any) {
+        let lastUpdated = storage.lastUpdated
+        let fetcher = BlockchainStorageFetcher(context: storage.context)
+        guard let transactions = fetcher.resolvableTransactions else { fatalError() }
+        guard let signatures = fetcher.signaturesToUpdate else { fatalError() }
+        
+        print("transactions to approve: \(transactions.count)")
+        print("signatures to approve: \(signatures.count)")
+        transactions.forEach {
+            $0.resolve(when: Date())
+        }
+        
+        server.getUpdates(privateKey: BlockchainServer.Constant.fakePrivateKey,
+                          lastUpdated: lastUpdated,
+                          transactions: transactions,
+                          signatures: signatures)
     }
     
     @IBAction func tapCosigners(_ sender: Any) {

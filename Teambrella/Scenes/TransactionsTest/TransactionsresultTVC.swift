@@ -17,7 +17,7 @@ class TransactionsresultTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fetcher = BlockchainStorageFetcher(storage: storage)
+        fetcher = BlockchainStorageFetcher(context: storage.context)
         let team = fetcher.firstTeam
         
         fetcher.teammates.map { self.teammates = $0 }

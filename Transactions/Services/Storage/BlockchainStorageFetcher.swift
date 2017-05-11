@@ -10,30 +10,61 @@ import Foundation
 import CoreData
 
 class BlockchainStorageFetcher {
-    let storage: TransactionsStorage!
+    let context: NSManagedObjectContext!
     
-    init(storage: TransactionsStorage) {
-        self.storage = storage
+    init(context: NSManagedObjectContext) {
+        self.context = context
     }
+    
+    // MARK: Address
+    
+    func address(id: String) -> BtcAddress? {
+        let request: NSFetchRequest<BtcAddress> = BtcAddress.fetchRequest()
+        request.predicate = NSPredicate(format: "addressValue = %@", id)
+        let result = try? context.fetch(request)
+        return result?.first
+    }
+    
+    // MARK: Cosigner
+    
+    func cosigners(for teammate: Teammate) -> [Cosigner] {
+            let request: NSFetchRequest<Cosigner> = Cosigner.fetchRequest()
+            request.predicate = NSPredicate(format: "teammate = %@", teammate)
+            let result = try? context.fetch(request)
+            return result ?? []
+    }
+    
+    // MARK: Team
     
     var firstTeam: Team? {
         let request: NSFetchRequest<Team> = Team.fetchRequest()
-        let items = try? storage.context.fetch(request)
+        let items = try? context.fetch(request)
         return items?.first
     }
+    
+    // MARK: Teammate
     
     var teammates: [Teammate]? {
         let request: NSFetchRequest<Teammate> = Teammate.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "nameValue", ascending: true)]
-        let items = try? storage.context.fetch(request)
+        let items = try? context.fetch(request)
         return items
+    }
+    
+    // MARK: Transaction
+    
+     func transaction(id: String) -> Tx? {
+        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
+        request.predicate = NSPredicate(format: "idValue = %@", id)
+        let result = try? context.fetch(request)
+        return result?.first
     }
     
     var resolvableTransactions: [Tx]? {
         let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        request.predicate = NSPredicate(format: "resolutionValue == \(TransactionClientResolution.received.rawValue)")
+        request.predicate = NSPredicate(format: "resolutionValue <= \(TransactionClientResolution.received.rawValue)")
         //request.sortDescriptors = [NSSortDescriptor(key: "resolutionValue", ascending: true)]
-        let items = try? storage.context.fetch(request)
+        let items = try? context.fetch(request)
         return items
     }
     
@@ -43,9 +74,20 @@ class BlockchainStorageFetcher {
             " AND stateValue == \(TransactionState.selectedForCosigning.rawValue)"/* +
             " AND inputs.@count > 0"*/)
         //request.sortDescriptors = [NSSortDescriptor(key: "resolutionValue", ascending: true)]
-        let items = try? storage.context.fetch(request)
+        let items = try? context.fetch(request)
         return items
     }
+    
+    // MARK: Signatures
+    
+    var signaturesToUpdate: [TxSignature]? {
+        let request: NSFetchRequest<TxSignature> = TxSignature.fetchRequest()
+        request.predicate = NSPredicate(format: "isServerUpdateNeededValue == TRUE")
+
+        let items = try? context.fetch(request)
+        return items
+    }
+    
 
 //    var pendingPayments: [BlockchainPayTo]? {
 //        let request: NSFetchRequest<BlockchainTeammate> = BlockchainPayTo.fetchRequest()

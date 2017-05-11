@@ -37,6 +37,8 @@ public class BlockchainServer {
         }
     }
     
+    lazy var formatter = BlockchainDateFormatter()
+    
     init() {
     }
     
@@ -95,11 +97,11 @@ public class BlockchainServer {
     func getUpdates(privateKey: String,
                     lastUpdated: Int64,
                     transactions: [Tx],
-                    signatures: [Signature]) {
+                    signatures: [TxSignature]) {
          let key = Key(base58String: privateKey, timestamp: timestamp) 
         
-        let txInfos = transactions.map { ["Id": $0.id,
-                                          "ResolutionTime": $0.clientResolutionTime?.timeIntervalSince1970 ?? 0,
+        let txInfos = transactions.map { ["Id": $0.id.uuidString,
+                                          "ResolutionTime": formatter.string(from: $0.clientResolutionTime!),
                                           "Resolution": $0.resolution?.rawValue ?? 0 as Any] }
         
         let txSignatures = signatures.map {

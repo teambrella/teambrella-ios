@@ -36,7 +36,6 @@
 		6D73C6E01EBB36A700A2C0F8 /* Transactions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D73C6DF1EBB36A700A2C0F8 /* Transactions.storyboard */; };
 		6D73C6E21EBB374D00A2C0F8 /* PaymentsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D73C6E11EBB374D00A2C0F8 /* PaymentsTVC.swift */; };
 		6D73C6E41EBB3F0800A2C0F8 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D73C6E31EBB3F0800A2C0F8 /* TransactionCell.swift */; };
-		6D73C6E61EBB939700A2C0F8 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D73C6E51EBB939700A2C0F8 /* Managed.swift */; };
 		6D7EB77E1EA8E0560070AFB7 /* BlockchainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7EB77D1EA8E0560070AFB7 /* BlockchainService.swift */; };
 		6D7EB7801EA8E06B0070AFB7 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7EB77F1EA8E06B0070AFB7 /* AccountService.swift */; };
 		6D829AA31EB0BE1A0051F43A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA21EB0BE1A0051F43A /* UIColor.swift */; };
@@ -59,7 +58,7 @@
 		6DC60B711EA749D4007D285C /* TxInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B701EA749D4007D285C /* TxInput.swift */; };
 		6DC60B731EA749F1007D285C /* TxOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B721EA749F1007D285C /* TxOutput.swift */; };
 		6DC60B751EA74A08007D285C /* PayTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B741EA74A08007D285C /* PayTo.swift */; };
-		6DC60B771EA74A9B007D285C /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B761EA74A9B007D285C /* Signature.swift */; };
+		6DC60B771EA74A9B007D285C /* TxSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B761EA74A9B007D285C /* TxSignature.swift */; };
 		6DC60B791EA74F13007D285C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B781EA74F13007D285C /* Team.swift */; };
 		6DC60B7B1EA74F24007D285C /* Teammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B7A1EA74F24007D285C /* Teammate.swift */; };
 		6DC60B7D1EA74F3D007D285C /* Tx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B7C1EA74F3D007D285C /* Tx.swift */; };
@@ -77,6 +76,7 @@
 		6DEC6DF51E96673600ACC119 /* PostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF41E96673600ACC119 /* PostEntity.swift */; };
 		6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF61E96690B00ACC119 /* EntityLike.swift */; };
 		6DEC6DF91E966AA900ACC119 /* TransformerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF81E966AA900ACC119 /* TransformerService.swift */; };
+		6DF77A551EC471F2003C3A69 /* BlockchainDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF77A541EC471F2003C3A69 /* BlockchainDateFormatter.swift */; };
 		6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */; };
 		6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */; };
 		6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
@@ -145,7 +145,6 @@
 		6D73C6DF1EBB36A700A2C0F8 /* Transactions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Transactions.storyboard; path = Scenes/TransactionsTest/Transactions.storyboard; sourceTree = "<group>"; };
 		6D73C6E11EBB374D00A2C0F8 /* PaymentsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsTVC.swift; path = Scenes/TransactionsTest/PaymentsTVC.swift; sourceTree = "<group>"; };
 		6D73C6E31EBB3F0800A2C0F8 /* TransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionCell.swift; path = Scenes/TransactionsTest/TransactionCell.swift; sourceTree = "<group>"; };
-		6D73C6E51EBB939700A2C0F8 /* Managed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Managed.swift; path = Transactions/Services/Storage/Managed.swift; sourceTree = SOURCE_ROOT; };
 		6D7EB77D1EA8E0560070AFB7 /* BlockchainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainService.swift; path = Transactions/Services/BlockchainService.swift; sourceTree = SOURCE_ROOT; };
 		6D7EB77F1EA8E06B0070AFB7 /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountService.swift; path = Transactions/Services/AccountService.swift; sourceTree = SOURCE_ROOT; };
 		6D829AA21EB0BE1A0051F43A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Helpers/Extensions/UIColor.swift; sourceTree = "<group>"; };
@@ -175,7 +174,7 @@
 		6DC60B701EA749D4007D285C /* TxInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxInput.swift; path = Transactions/Services/Storage/Entities/TxInput.swift; sourceTree = "<group>"; };
 		6DC60B721EA749F1007D285C /* TxOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxOutput.swift; path = Transactions/Services/Storage/Entities/TxOutput.swift; sourceTree = "<group>"; };
 		6DC60B741EA74A08007D285C /* PayTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayTo.swift; path = Transactions/Services/Storage/Entities/PayTo.swift; sourceTree = "<group>"; };
-		6DC60B761EA74A9B007D285C /* Signature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Signature.swift; path = Transactions/Services/Storage/Entities/Signature.swift; sourceTree = "<group>"; };
+		6DC60B761EA74A9B007D285C /* TxSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxSignature.swift; path = Transactions/Services/Storage/Entities/TxSignature.swift; sourceTree = "<group>"; };
 		6DC60B781EA74F13007D285C /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Team.swift; path = Transactions/Services/Storage/Entities/Team.swift; sourceTree = "<group>"; };
 		6DC60B7A1EA74F24007D285C /* Teammate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Teammate.swift; path = Transactions/Services/Storage/Entities/Teammate.swift; sourceTree = "<group>"; };
 		6DC60B7C1EA74F3D007D285C /* Tx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tx.swift; path = Transactions/Services/Storage/Entities/Tx.swift; sourceTree = "<group>"; };
@@ -193,6 +192,7 @@
 		6DEC6DF41E96673600ACC119 /* PostEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostEntity.swift; path = Model/Entities/PostEntity.swift; sourceTree = "<group>"; };
 		6DEC6DF61E96690B00ACC119 /* EntityLike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityLike.swift; path = Model/Protocols/EntityLike.swift; sourceTree = "<group>"; };
 		6DEC6DF81E966AA900ACC119 /* TransformerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransformerService.swift; path = Model/Services/Transformers/TransformerService.swift; sourceTree = "<group>"; };
+		6DF77A541EC471F2003C3A69 /* BlockchainDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockchainDateFormatter.swift; path = Transactions/Services/BlockchainDateFormatter.swift; sourceTree = SOURCE_ROOT; };
 		6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadTVC.swift; path = Scenes/Sample/ThreadTVC.swift; sourceTree = "<group>"; };
 		6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadPostCell.swift; path = Scenes/Sample/ThreadPostCell.swift; sourceTree = "<group>"; };
 		6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -300,11 +300,10 @@
 				6DC60B701EA749D4007D285C /* TxInput.swift */,
 				6DC60B721EA749F1007D285C /* TxOutput.swift */,
 				6DC60B741EA74A08007D285C /* PayTo.swift */,
-				6DC60B761EA74A9B007D285C /* Signature.swift */,
+				6DC60B761EA74A9B007D285C /* TxSignature.swift */,
 				6DC60B781EA74F13007D285C /* Team.swift */,
 				6DC60B7A1EA74F24007D285C /* Teammate.swift */,
 				6DC60B7C1EA74F3D007D285C /* Tx.swift */,
-				6D73C6E51EBB939700A2C0F8 /* Managed.swift */,
 				6D113C9A1EC379E900D5FE75 /* User.swift */,
 			);
 			name = Entities;
@@ -319,6 +318,7 @@
 				6D5988821EA4BDEE0046237F /* BlockchainServer.swift */,
 				6D7EB77D1EA8E0560070AFB7 /* BlockchainService.swift */,
 				6D7EB77F1EA8E06B0070AFB7 /* AccountService.swift */,
+				6DF77A541EC471F2003C3A69 /* BlockchainDateFormatter.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -914,6 +914,7 @@
 				6D48BC7C1EA64EC500235324 /* EntityFactory.swift in Sources */,
 				6D097EA31E9D215500E77DAB /* TeammateType.swift in Sources */,
 				6D829AA31EB0BE1A0051F43A /* UIColor.swift in Sources */,
+				6DF77A551EC471F2003C3A69 /* BlockchainDateFormatter.swift in Sources */,
 				6DEC6DF51E96673600ACC119 /* PostEntity.swift in Sources */,
 				6DA475D41E8BB95200B56D9B /* AmbrellaRequest.swift in Sources */,
 				6D35EFC51EAF8AB700696B42 /* TransactionsresultTVC.swift in Sources */,
@@ -933,7 +934,7 @@
 				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
 				6DC60B731EA749F1007D285C /* TxOutput.swift in Sources */,
 				6D7186EE1EA515F400257463 /* TransactionsModel.xcdatamodeld in Sources */,
-				6DC60B771EA74A9B007D285C /* Signature.swift in Sources */,
+				6DC60B771EA74A9B007D285C /* TxSignature.swift in Sources */,
 				6DC60B751EA74A08007D285C /* PayTo.swift in Sources */,
 				6D113C991EC34B7600D5FE75 /* SignHelper.swift in Sources */,
 				6DC60B6F1EA749B5007D285C /* Cosigner.swift in Sources */,
@@ -943,7 +944,6 @@
 				CBDFE767664CC051784BF271 /* ServerService.swift in Sources */,
 				6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */,
 				6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */,
-				6D73C6E61EBB939700A2C0F8 /* Managed.swift in Sources */,
 				6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */,
 				6DC60B711EA749D4007D285C /* TxInput.swift in Sources */,
 				6DEC6DF31E96670D00ACC119 /* Post.swift in Sources */,

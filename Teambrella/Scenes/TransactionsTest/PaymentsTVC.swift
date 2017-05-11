@@ -13,7 +13,7 @@ class PaymentsTVC: UITableViewController {
     var server: BlockchainServer!
     var storage: TransactionsStorage!
     lazy var fetcher: BlockchainStorageFetcher = {
-        return BlockchainStorageFetcher(storage: self.storage)
+        return BlockchainStorageFetcher(context: self.storage.context)
     }()
     
     var resolvable: [Tx] = []

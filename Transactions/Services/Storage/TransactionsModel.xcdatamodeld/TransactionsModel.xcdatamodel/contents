@@ -37,20 +37,6 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="Signature" representedClassName=".Signature" syncable="YES" codeGenerationType="category">
-        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="inputIDValue" attributeType="String" syncable="YES"/>
-        <attribute name="isServerUpdateNeededValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="signatureValue" attributeType="Binary" syncable="YES"/>
-        <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="input" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxInput" inverseName="signature" inverseEntity="TxInput" syncable="YES"/>
-        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="signature" inverseEntity="Teammate" syncable="YES"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="idValue"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
     <entity name="Team" representedClassName=".Team" syncable="YES" codeGenerationType="category">
         <attribute name="autoApprovalCosignGoodAddressValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="autoApprovalCosignNewAddressValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
@@ -77,7 +63,7 @@
         <relationship name="claimTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="claimTeammate" inverseEntity="Tx" syncable="YES"/>
         <relationship name="cosignerOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cosigner" inverseName="teammate" inverseEntity="Cosigner" syncable="YES"/>
         <relationship name="payTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PayTo" inverseName="teammate" inverseEntity="PayTo" syncable="YES"/>
-        <relationship name="signature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Signature" inverseName="teammate" inverseEntity="Signature" syncable="YES"/>
+        <relationship name="signature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxSignature" inverseName="teammate" inverseEntity="TxSignature" syncable="YES"/>
         <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="teammates" inverseEntity="Team" syncable="YES"/>
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="teammate" inverseEntity="Tx" syncable="YES"/>
         <uniquenessConstraints>
@@ -119,7 +105,7 @@
         <attribute name="previousTransactionIDValue" attributeType="String" syncable="YES"/>
         <attribute name="previousTransactionIndexValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
-        <relationship name="signature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Signature" inverseName="input" inverseEntity="Signature" syncable="YES"/>
+        <relationship name="signature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxSignature" inverseName="input" inverseEntity="TxSignature" syncable="YES"/>
         <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tx" inverseName="input" inverseEntity="Tx" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -140,15 +126,29 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="TxSignature" representedClassName=".TxSignature" syncable="YES" codeGenerationType="category">
+        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="inputIDValue" attributeType="String" syncable="YES"/>
+        <attribute name="isServerUpdateNeededValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="signatureValue" attributeType="Binary" syncable="YES"/>
+        <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="input" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxInput" inverseName="signature" inverseEntity="TxInput" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="signature" inverseEntity="Teammate" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="idValue"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <elements>
         <element name="BtcAddress" positionX="-227" positionY="-225" width="128" height="133"/>
         <element name="Cosigner" positionX="16" positionY="-174" width="128" height="103"/>
-        <element name="TxInput" positionX="-468" positionY="207" width="128" height="148"/>
-        <element name="TxOutput" positionX="349" positionY="378" width="128" height="133"/>
         <element name="PayTo" positionX="351" positionY="117" width="128" height="133"/>
-        <element name="Signature" positionX="-470" positionY="3" width="128" height="148"/>
+        <element name="TxSignature" positionX="-470" positionY="3" width="128" height="150"/>
         <element name="Team" positionX="-470" positionY="-225" width="128" height="193"/>
         <element name="Teammate" positionX="16" positionY="-24" width="128" height="208"/>
         <element name="Tx" positionX="-234" positionY="180" width="128" height="343"/>
+        <element name="TxInput" positionX="-468" positionY="207" width="128" height="148"/>
+        <element name="TxOutput" positionX="349" positionY="378" width="128" height="133"/>
     </elements>
 </model>

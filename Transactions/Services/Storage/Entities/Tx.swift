@@ -26,13 +26,14 @@ class Tx: NSManagedObject {
     var processedTime: Date? { return processedTimeValue as Date? }
     var receivedTime: Date? { return receivedTimeValue as Date? }
     var updateTime: Date? { return updateTimeValue as Date? }
-}
-
-extension Tx {
-    class func fetch(id: String, in context: NSManagedObjectContext) -> Tx? {
-        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        request.predicate = NSPredicate(format: "idValue = %@", id)
-        let result = try? context.fetch(request)
-        return result?.first
+    
+    var fromAddress: BtcAddress {
+        return kind == .saveFromPreviousWallet ? teammate!.addressPrevious! : teammate!.addressNext!
+    }
+    
+    func resolve(when: Date) {
+        resolutionValue = Int16(TransactionClientResolution.approved.rawValue)
+        clientResolutionTimeValue = when as NSDate
+       try? managedObjectContext?.save()
     }
 }
