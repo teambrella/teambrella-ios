@@ -11,18 +11,18 @@ import SwiftyJSON
 import UIKit
 
 class TransactionsVC: UIViewController {
-    let server = BlockchainServer()
-    let storage = TransactionsStorage()
+    
+    let teambrella = TeambrellaService()
+    var isTransitionNeeded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        server.delegate = self
-        server.initClient(privateKey: BlockchainServer.Constant.fakePrivateKey)
+        teambrella.server.initClient(privateKey: BlockchainServer.Constant.fakePrivateKey)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        server.delegate = self
+        teambrella.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,18 +35,13 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapUpdates(_ sender: Any) {
-        let lastUpdated = storage.lastUpdated
-        server.getUpdates(privateKey: BlockchainServer.Constant.fakePrivateKey,
-                          lastUpdated: lastUpdated,
-                          transactions: [],
-                          signatures: [])
+        isTransitionNeeded = true
+        teambrella.update()
     }
     
     @IBAction func tapApprove(_ sender: Any) {
-        let lastUpdated = storage.lastUpdated
-        let fetcher = BlockchainStorageFetcher(context: storage.context)
-        guard let transactions = fetcher.resolvableTransactions else { fatalError() }
-        guard let signatures = fetcher.signaturesToUpdate else { fatalError() }
+        guard let transactions = teambrella.fetcher.resolvableTransactions else { fatalError() }
+        guard let signatures = teambrella.fetcher.signaturesToUpdate else { fatalError() }
         
         print("transactions to approve: \(transactions.count)")
         print("signatures to approve: \(signatures.count)")
@@ -54,23 +49,20 @@ class TransactionsVC: UIViewController {
             $0.resolve(when: Date())
         }
         
-        server.getUpdates(privateKey: BlockchainServer.Constant.fakePrivateKey,
-                          lastUpdated: lastUpdated,
-                          transactions: transactions,
-                          signatures: signatures)
+        teambrella.update()
     }
     
     @IBAction func tapCosigners(_ sender: Any) {
         let request: NSFetchRequest<Cosigner> = Cosigner.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "address.addressValue", ascending: true),
                                    NSSortDescriptor(key: "keyOrderValue", ascending: true)]
-        let results = try? storage.context.fetch(request)
+        let results = try? teambrella.storage.context.fetch(request)
         results?.forEach { item in
             print(item.description)
         }
     }
     @IBAction func tapGenPrivate(_ sender: Any) {
-        let key = Key(base58String: BlockchainServer.Constant.fakePrivateKey, timestamp: server.timestamp)
+        let key = Key(base58String: BlockchainServer.Constant.fakePrivateKey, timestamp: teambrella.server.timestamp)
         print("timestamp: \(key.timestamp)\nprivate key: \(key.privateKey)\npublic key: \(key.publicKey)")
         print("signature: \(key.signature)")
         let link = "https://surilla.com/me/ClientLogin?data="
@@ -90,33 +82,20 @@ class TransactionsVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? TransactionsresultTVC {
-            vc.storage = storage
+            vc.teambrella = teambrella
         } else if let vc = segue.destination as? PaymentsTVC {
-            vc.storage = storage
-            vc.server = server
+            vc.teambrella = teambrella
         }
         
     }
     
 }
 
-extension TransactionsVC: BlockchainServerDelegate {
-    func serverInitialized(server: BlockchainServer) {
-        print("server initialized")
-    }
-    
-    func server(server: BlockchainServer, didReceiveUpdates updates: JSON, updateTime: Int64) {
-        print("server received updates: \(updates)")
-        storage.update(with: updates, updateTime: updateTime)
-        performSegue(withIdentifier: "to transactions result", sender: nil)
-        
-    }
-    
-    func server(server: BlockchainServer, didUpdateTimestamp timestamp: Int64) {
-        print("server updated timestamp: \(timestamp)")
-    }
-    
-    func server(server: BlockchainServer, failedWithError error: Error?) {
-        error.map { print("server request failed with error: \($0)") }
+extension TransactionsVC: TeambrellaServiceDelegate {
+    func teambrellaDidUpdate(service: TeambrellaService) {
+        if isTransitionNeeded {
+            isTransitionNeeded = false
+            performSegue(withIdentifier: "to transactions result", sender: nil)
+        }
     }
 }

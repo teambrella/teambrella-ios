@@ -102,7 +102,7 @@ public class BlockchainServer {
         
         let txInfos = transactions.map { ["Id": $0.id.uuidString,
                                           "ResolutionTime": formatter.string(from: $0.clientResolutionTime!),
-                                          "Resolution": $0.resolution?.rawValue ?? 0 as Any] }
+                                          "Resolution": $0.resolution!.rawValue ] }
         
         let txSignatures = signatures.map {
             ["Signature": $0.signature.base64EncodedString(),

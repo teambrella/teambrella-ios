@@ -48,7 +48,7 @@ class TransactionsStorage {
         print("Documents path: \(documentsPath)")
     }
     
-    func update(with json: JSON, updateTime: Int64) {
+    func update(with json: JSON, updateTime: Int64, completion: @escaping () -> Void) {
         let start = DispatchTime.now()
         saveInBackground(block: { context in
             context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
@@ -70,6 +70,9 @@ class TransactionsStorage {
             let end = DispatchTime.now()
             print("Total execution time: \(Double(end.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000) sec")
             self?.lastUpdated = updateTime
+            DispatchQueue.main.async {
+                completion()
+            }
         }
     }
     

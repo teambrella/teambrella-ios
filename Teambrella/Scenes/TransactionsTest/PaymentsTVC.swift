@@ -10,11 +10,7 @@ import SwiftyJSON
 import UIKit
 
 class PaymentsTVC: UITableViewController {
-    var server: BlockchainServer!
-    var storage: TransactionsStorage!
-    lazy var fetcher: BlockchainStorageFetcher = {
-        return BlockchainStorageFetcher(context: self.storage.context)
-    }()
+    var teambrella: TeambrellaService!
     
     var resolvable: [Tx] = []
     var cosignable: [Tx] = []
@@ -22,9 +18,9 @@ class PaymentsTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        server.delegate = self
-        resolvable = fetcher.resolvableTransactions ?? []
-        cosignable = fetcher.cosignableTransactions ?? []
+        teambrella.delegate = self
+        resolvable = teambrella.fetcher.resolvableTransactions ?? []
+        cosignable = teambrella.fetcher.cosignableTransactions ?? []
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,21 +64,8 @@ class PaymentsTVC: UITableViewController {
 
 }
 
-extension PaymentsTVC: BlockchainServerDelegate {
-    func serverInitialized(server: BlockchainServer) {
-        print("server initialized")
-    }
-    
-    func server(server: BlockchainServer, didReceiveUpdates updates: JSON, updateTime: Int64) {
-        print("server received updates: \(updates)")
+extension PaymentsTVC: TeambrellaServiceDelegate {
+    func teambrellaDidUpdate(service: TeambrellaService) {
         
-    }
-    
-    func server(server: BlockchainServer, didUpdateTimestamp timestamp: Int64) {
-        print("server updated timestamp: \(timestamp)")
-    }
-    
-    func server(server: BlockchainServer, failedWithError error: Error?) {
-        error.map { print("server request failed with error: \($0)") }
     }
 }

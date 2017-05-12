@@ -10,17 +10,14 @@ import Kingfisher
 import UIKit
 
 class TransactionsresultTVC: UITableViewController {
-    var storage: TransactionsStorage!
-    var fetcher: BlockchainStorageFetcher!
+    var teambrella: TeambrellaService!
     var teammates: [Teammate] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        fetcher = BlockchainStorageFetcher(context: storage.context)
-        let team = fetcher.firstTeam
+        let team = teambrella.fetcher.firstTeam
         
-        fetcher.teammates.map { self.teammates = $0 }
+        teambrella.fetcher.teammates.map { self.teammates = $0 }
         
         let button =  UIButton(type: .custom)
         button.setTitle(team?.name, for: .normal)
@@ -31,7 +28,7 @@ class TransactionsresultTVC: UITableViewController {
     }
     
     func tapTitle() {
-        performSegue(withIdentifier: "to team details", sender: fetcher.firstTeam)
+        performSegue(withIdentifier: "to team details", sender: teambrella.fetcher.firstTeam)
     }
 
     // MARK: - Table view data source
