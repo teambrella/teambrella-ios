@@ -11,7 +11,7 @@ import CoreData
 class TxInput: NSManagedObject {
     var previousTransactionIndex: Int { return Int(previousTransactionIndexValue) }
     var ammount: Decimal { return ammountValue! as Decimal }
-    var id: String { return idValue! }
+    var id: UUID { return UUID(uuidString: idValue!)! }
     var previousTransactionID: String? { return previousTransactionIDValue }
-    var transactionID: String { return transactionIDValue! }
+    var transactionID: UUID { return UUID(uuidString: transactionIDValue!)! }
 }

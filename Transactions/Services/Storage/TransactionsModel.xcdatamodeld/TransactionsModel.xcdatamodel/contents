@@ -140,15 +140,27 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="User" representedClassName=".User" syncable="YES" codeGenerationType="category">
+        <attribute name="auxWalletAmountValue" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="auxWalletCheckedValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="privateKeyValue" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="idValue"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <elements>
         <element name="BtcAddress" positionX="-227" positionY="-225" width="128" height="133"/>
         <element name="Cosigner" positionX="16" positionY="-174" width="128" height="103"/>
         <element name="PayTo" positionX="351" positionY="117" width="128" height="133"/>
-        <element name="TxSignature" positionX="-470" positionY="3" width="128" height="150"/>
         <element name="Team" positionX="-470" positionY="-225" width="128" height="193"/>
         <element name="Teammate" positionX="16" positionY="-24" width="128" height="208"/>
         <element name="Tx" positionX="-234" positionY="180" width="128" height="343"/>
         <element name="TxInput" positionX="-468" positionY="207" width="128" height="148"/>
         <element name="TxOutput" positionX="349" positionY="378" width="128" height="133"/>
+        <element name="TxSignature" positionX="-470" positionY="3" width="128" height="150"/>
+        <element name="User" positionX="-261" positionY="-72" width="128" height="105"/>
     </elements>
 </model>

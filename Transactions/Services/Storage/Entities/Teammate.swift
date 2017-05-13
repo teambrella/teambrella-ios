@@ -18,7 +18,7 @@ class Teammate: NSManagedObject {
         return (addresses as? Set<BtcAddress>)?.filter { $0.status == UserAddressStatus.previous }.first
     }
     
-    var addressFirst: BtcAddress? {
+    var addressCurrent: BtcAddress? {
         return (addresses as? Set<BtcAddress>)?.filter { $0.status == UserAddressStatus.current }.first
     }
     

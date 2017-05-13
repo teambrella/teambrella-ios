@@ -26,7 +26,7 @@ class TransactionsTeammateVC: UIViewController {
         idLabel.text = String(teammate.id)
         fbLabel.text = teammate.fbName
         publicKeyLabel.text = teammate.publicKey
-        addressLabel.text = teammate.addressFirst?.address
+        addressLabel.text = teammate.addressCurrent?.address
         signatureLabel.text = teammate.signature?.id.uuidString
         var cosignerNames: [String] = []
         if let cosigners = teammate.cosignerOf as? Set<Cosigner> {

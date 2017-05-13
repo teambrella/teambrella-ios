@@ -24,7 +24,6 @@ public protocol BlockchainServerDelegate: class {
 public class BlockchainServer {
     struct Constant {
         static let siteURL =  "https://surilla.com" // "http://192.168.0.222"//////"http://94.72.4.72"
-        static let fakePrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
         //"2uGEcr6rkwBBi26NMcuALZSJGZ353ZdgExwbGGXL4xe8"//"Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
     }
     

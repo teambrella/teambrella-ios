@@ -16,6 +16,26 @@ class BlockchainStorageFetcher {
         self.context = context
     }
     
+    // MARK: User
+    var user: User {
+        let request: NSFetchRequest<User> = User.fetchRequest()
+       // request.predicate = NSPredicate(format: "addressValue = %@", id)
+        let result = try? context.fetch(request)
+        if let user = result?.first {
+            return user
+        } else {
+            return createUser()
+        }
+    }
+    
+    private func createUser() -> User {
+        let user = User(context: context)
+        //   PrivateKey = key.GetBitcoinSecret(Network.Main).ToString()
+        user.privateKeyValue =  User.Constant.tmpPrivateKey
+        try? context.save()
+        return user
+    }
+    
     // MARK: Address
     
     func address(id: String) -> BtcAddress? {
@@ -62,7 +82,7 @@ class BlockchainStorageFetcher {
     
     var resolvableTransactions: [Tx]? {
         let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        request.predicate = NSPredicate(format: "resolutionValue <= \(TransactionClientResolution.received.rawValue)")
+        request.predicate = NSPredicate(format: "resolutionValue <= \(TransactionClientResolution.published.rawValue)")
         //request.sortDescriptors = [NSSortDescriptor(key: "resolutionValue", ascending: true)]
         let items = try? context.fetch(request)
         return items

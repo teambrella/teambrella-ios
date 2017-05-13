@@ -17,7 +17,7 @@ class TransactionsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        teambrella.server.initClient(privateKey: BlockchainServer.Constant.fakePrivateKey)
+        teambrella.server.initClient(privateKey: User.Constant.tmpPrivateKey)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,7 +62,7 @@ class TransactionsVC: UIViewController {
         }
     }
     @IBAction func tapGenPrivate(_ sender: Any) {
-        let key = Key(base58String: BlockchainServer.Constant.fakePrivateKey, timestamp: teambrella.server.timestamp)
+        let key = Key(base58String: User.Constant.tmpPrivateKey, timestamp: teambrella.server.timestamp)
         print("timestamp: \(key.timestamp)\nprivate key: \(key.privateKey)\npublic key: \(key.publicKey)")
         print("signature: \(key.signature)")
         let link = "https://surilla.com/me/ClientLogin?data="

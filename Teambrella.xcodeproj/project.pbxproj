@@ -64,6 +64,7 @@
 		6DC60B7D1EA74F3D007D285C /* Tx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B7C1EA74F3D007D285C /* Tx.swift */; };
 		6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC31E93A6920092D3F2 /* Services.swift */; };
 		6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */; };
+		6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */; };
 		6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */; };
 		6DD7F41D1EB9FD8A001E7733 /* RoundImagesStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41C1EB9FD8A001E7733 /* RoundImagesStack.swift */; };
 		6DEC074C1E9BCF700078F40E /* TeammatesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC074B1E9BCF700078F40E /* TeammatesTVC.swift */; };
@@ -181,6 +182,7 @@
 		6DC60B7C1EA74F3D007D285C /* Tx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tx.swift; path = Transactions/Services/Storage/Entities/Tx.swift; sourceTree = "<group>"; };
 		6DCC7AC31E93A6920092D3F2 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Model/Services/Services.swift; sourceTree = "<group>"; };
 		6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateEntity.swift; path = Model/Entities/TeammateEntity.swift; sourceTree = "<group>"; };
+		6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mirror.swift; path = Helpers/Extensions/Mirror.swift; sourceTree = "<group>"; };
 		6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImageView.swift; path = View/RoundImageView.swift; sourceTree = "<group>"; };
 		6DD7F41C1EB9FD8A001E7733 /* RoundImagesStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImagesStack.swift; path = View/RoundImagesStack.swift; sourceTree = "<group>"; };
 		6DEC074B1E9BCF700078F40E /* TeammatesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammatesTVC.swift; path = Scenes/Sample/TeammatesTVC.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				6D91BC031EB3900700FDC332 /* UUID.swift */,
 				6D1C03A01EB8D4A2004AED30 /* UIView.swift */,
 				6D1C03A21EB8D4D6004AED30 /* NSObject.swift */,
+				6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -943,6 +946,7 @@
 				6DC60B6F1EA749B5007D285C /* Cosigner.swift in Sources */,
 				6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */,
 				6D097EA51E9D219A00E77DAB /* Nameable.swift in Sources */,
+				6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */,
 				6DEC6DF91E966AA900ACC119 /* TransformerService.swift in Sources */,
 				CBDFE767664CC051784BF271 /* ServerService.swift in Sources */,
 				6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */,

@@ -26,7 +26,7 @@ class AccountService {
     var connected = false
     
     lazy var key: Key? = {
-        return Key(base58String: BlockchainServer.Constant.fakePrivateKey, timestamp: self.server.timestamp)
+        return Key(base58String: User.Constant.tmpPrivateKey, timestamp: self.server.timestamp)
     }()
     
     init(server: BlockchainServer, storage: TransactionsStorage) {
