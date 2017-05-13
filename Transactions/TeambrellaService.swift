@@ -36,7 +36,7 @@ class TeambrellaService {
     
     func save() {
         let lastUpdated = storage.lastUpdated
-        guard let transactions = fetcher.transactionsResolvable else { fatalError() }
+        guard let transactions = fetcher.transactionsNeedServerUpdate else { fatalError() }
         guard let signatures = fetcher.signaturesToUpdate else { fatalError() }
         
         server.getUpdates(privateKey: User.Constant.tmpPrivateKey,

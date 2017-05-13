@@ -37,8 +37,6 @@ class TransactionsTeammateVC: UIViewController {
             cosignersLabel.text = cosignerNames.description
         }
         
-        guard let context = teammate.managedObjectContext else { return }
-        
         let fetcher = teambrella.fetcher
         let hisCosigners = fetcher.cosigners(for: teammate)
         var hisCosignerNames: [String] = []

@@ -22,20 +22,24 @@ struct EntityFactory {
     // Teams
     func teams(json: JSON) -> [Int64: Team] {
         var result: [Int64: Team] = [:]
-         json.arrayValue.forEach { item in
-            let team = Team(context: context)
+        json.arrayValue.forEach { item in
             let id = item["Id"].int64Value
-            team.idValue = id
-            team.nameValue = item["Name"].stringValue
-            team.isTestnetValue = item["Testnet"].boolValue
-            
-            team.okAgeValue = 14
-            team.autoApprovalMyGoodAddressValue = 3
-            team.autoApprovalMyNewAddressValue = 7
-            team.autoApprovalCosignGoodAddressValue = 3
-            team.autoApprovalCosignNewAddressValue = 7
-            
-            result[id] = team
+            if let team = fetcher.team(id: id) {
+                team.nameValue = item["Name"].stringValue
+                result[id] = team
+            } else {
+                let team = Team(context: context)
+                team.idValue = id
+                team.nameValue = item["Name"].stringValue
+                team.isTestnetValue = item["Testnet"].boolValue
+                
+                team.okAgeValue = 14
+                team.autoApprovalMyGoodAddressValue = 3
+                team.autoApprovalMyNewAddressValue = 7
+                team.autoApprovalCosignGoodAddressValue = 3
+                team.autoApprovalCosignNewAddressValue = 7
+                result[id] = team
+            }
         }
         return result
     }
@@ -44,14 +48,23 @@ struct EntityFactory {
     func teammates(json: JSON, teams: [Int64: Team]) -> [Int64: Teammate] {
         var result: [Int64: Teammate] = [:]
         json.arrayValue.forEach { item in
-            let teammate = Teammate(context: context)
             let id = item["Id"].int64Value
-            teammate.idValue = id
-            teammate.fbNameValue = item["FBName"].stringValue
-            teammate.nameValue = item["Name"].stringValue
-            teammate.publicKeyValue = item["PublicKey"].string
-            teammate.team = teams[item["TeamId"].int64Value]
-            result[id] = teammate
+            let name = item["Name"].stringValue
+            let publicKey = item["PublicKey"].string
+            let fbName = item["FBName"].stringValue
+            let teamID = item["TeamId"].int64Value
+            if let teammate = fetcher.teammate(id: id) {
+                teammate.nameValue = name
+                result[id] = teammate
+            } else {
+                let teammate = Teammate(context: context)
+                teammate.idValue = id
+                teammate.fbNameValue = fbName
+                teammate.nameValue = name
+                teammate.publicKeyValue = publicKey
+                teammate.team = fetcher.team(id: teamID)//teams[teamID]
+                result[id] = teammate
+            }
         }
         return result
     }
@@ -64,7 +77,7 @@ struct EntityFactory {
             address.addressValue = id
             let dateString = item["DateCreated"].stringValue
             if let date = formatter.date(from: dateString) {
-            address.dateCreatedValue = date  as NSDate
+                address.dateCreatedValue = date  as NSDate
             }
             address.statusValue = item["Status"].int16Value
             address.teammate = teammates[item["TeammateId"].int64Value]
@@ -94,12 +107,25 @@ struct EntityFactory {
     
     func payTos(json: JSON, teammates: [Int64: Teammate]) -> [PayTo] {
         return json.arrayValue.map { item in
-            let payTo = PayTo(context: context)
-            payTo.addressValue = item["Address"].stringValue
-            payTo.idValue = item["Id"].stringValue
-            payTo.isDefaultValue = item["IsDefault"].boolValue
-            formatter.date(from: json["KnownSince"].stringValue).map { payTo.knownSinceValue = $0 as NSDate }
-            payTo.teammate = teammates[item["TeammateId"].int64Value]
+            let id = item["Id"].stringValue
+            var payTo: PayTo!
+            if let existingPayTo = fetcher.payTo(id: id) {
+                payTo = existingPayTo
+            } else {
+                payTo = PayTo(context: context)
+                payTo.addressValue = item["Address"].stringValue
+                payTo.idValue = id
+                payTo.isDefaultValue = item["IsDefault"].boolValue
+                payTo.teammate = teammates[item["TeammateId"].int64Value]
+                payTo.knownSinceValue = Date() as NSDate
+            }
+            if payTo.isDefault {
+                (payTo.teammate?.payTos as? Set<PayTo>)?.forEach { otherPayTo in
+                    if otherPayTo.id != payTo.id {
+                        otherPayTo.isDefaultValue = false
+                    }
+                }
+            }
             return payTo
         }
     }
@@ -107,10 +133,11 @@ struct EntityFactory {
     // Txs
     func transactions(json: JSON, teammates: [Int64: Teammate]) -> [Tx] {
         return json.arrayValue.map { item in
+            let id = item["Id"].stringValue
             let transaction = Tx(context: context)
             transaction.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
             transaction.claimIDValue = item["ClaimId"].int64Value
-            transaction.idValue = item["Id"].stringValue
+            transaction.idValue = id
             if let initiatedTime = formatter.date(from: json["InitiatedTime"].stringValue) as NSDate? {
                 transaction.initiatedTimeValue = initiatedTime
             }
@@ -122,7 +149,7 @@ struct EntityFactory {
             return transaction
         }
     }
-
+    
     
     // TxInputs
     func inputs(json: JSON) -> [TxInput] {

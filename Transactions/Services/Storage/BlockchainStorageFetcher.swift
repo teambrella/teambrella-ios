@@ -71,6 +71,13 @@ class BlockchainStorageFetcher {
         return teams?.first
     }
     
+    func team(id: Int64) -> Team? {
+        let request: NSFetchRequest<Team> = Team.fetchRequest()
+        request.predicate = NSPredicate(format: "idValue == %i", id)
+        let result = try? context.fetch(request)
+        return result?.first
+    }
+
     // MARK: Teammate
     
     var teammates: [Teammate]? {
@@ -80,7 +87,7 @@ class BlockchainStorageFetcher {
         return items
     }
     
-    func teammate(id: Int) -> Teammate? {
+    func teammate(id: Int64) -> Teammate? {
         let request: NSFetchRequest<Teammate> = Teammate.fetchRequest()
         request.predicate = NSPredicate(format: "idValue = %i", id)
         let items = try? context.fetch(request)
@@ -94,6 +101,13 @@ class BlockchainStorageFetcher {
         request.predicate = NSPredicate(format: "idValue = %@", id)
         let result = try? context.fetch(request)
         return result?.first
+    }
+    
+    var transactionsNeedServerUpdate: [Tx]? {
+        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
+        request.predicate = NSPredicate(format: "isServerUpdateNeededValue == TRUE")
+        let items = try? context.fetch(request)
+        return items
     }
     
     var transactionsResolvable: [Tx]? {
@@ -180,6 +194,18 @@ class BlockchainStorageFetcher {
         return output.transaction!.teammate!.team!.okAge <= Date().interval(of: .day, since: output.payTo!.knownSince)
     }
     
+    // MARK: PayTo
+    
+    func payTo(id: UUID) -> PayTo? {
+        return payTo(id: id.uuidString)
+    }
+    
+    func payTo(id: String) -> PayTo? {
+        let request: NSFetchRequest<PayTo> = PayTo.fetchRequest()
+        request.predicate = NSPredicate(format: "idValue = %@", id)
+        let items = try? context.fetch(request)
+        return items?.first
+    }
     
     // MARK: Signatures
     
