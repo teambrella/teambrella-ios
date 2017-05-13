@@ -19,8 +19,8 @@ class PaymentsTVC: UITableViewController {
         super.viewDidLoad()
 
         teambrella.delegate = self
-        resolvable = teambrella.fetcher.resolvableTransactions ?? []
-        cosignable = teambrella.fetcher.cosignableTransactions ?? []
+        resolvable = teambrella.fetcher.transactionsResolvable ?? []
+        cosignable = teambrella.fetcher.transactionsCosignable ?? []
     }
 
     override func didReceiveMemoryWarning() {

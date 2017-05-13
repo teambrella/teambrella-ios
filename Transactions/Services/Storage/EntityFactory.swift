@@ -11,13 +11,12 @@ import Foundation
 import SwiftyJSON
 
 struct EntityFactory {
-    let context: NSManagedObjectContext
+    var context: NSManagedObjectContext { return fetcher.context }
     let fetcher: BlockchainStorageFetcher
     let formatter = BlockchainDateFormatter()
     
-    init(context: NSManagedObjectContext) {
-        self.context = context
-        fetcher = BlockchainStorageFetcher(context: context)
+    init(fetcher: BlockchainStorageFetcher) {
+        self.fetcher = fetcher
     }
     
     // Teams
@@ -29,6 +28,13 @@ struct EntityFactory {
             team.idValue = id
             team.nameValue = item["Name"].stringValue
             team.isTestnetValue = item["Testnet"].boolValue
+            
+            team.okAgeValue = 14
+            team.autoApprovalMyGoodAddressValue = 3
+            team.autoApprovalMyNewAddressValue = 7
+            team.autoApprovalCosignGoodAddressValue = 3
+            team.autoApprovalCosignNewAddressValue = 7
+            
             result[id] = team
         }
         return result

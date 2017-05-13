@@ -9,7 +9,7 @@
 import CoreData
 import SwiftyJSON
 
-class TransactionsStorage {
+class BlockchainStorage {
     struct Constant {
         static let lastUpdatedKey = "TransactionsServer.lastUpdatedKey"
     }
@@ -20,12 +20,12 @@ class TransactionsStorage {
             guard error == nil else {
                 fatalError(String(describing: error))
             }
-            
-            //self.container = container
         }
         return container
     }()
-    
+    lazy var fetcher: BlockchainStorageFetcher = {
+        return BlockchainStorageFetcher(storage: self)
+    }()
     var context: NSManagedObjectContext {
         return container.viewContext
     }
@@ -53,7 +53,7 @@ class TransactionsStorage {
         saveInBackground(block: { context in
             context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
             print("Trying to save json to context\n\n")
-            let factory = EntityFactory(context: context)
+            let factory = EntityFactory(fetcher: self.fetcher)
             let teams = factory.teams(json: json["Teams"])
             let teammates = factory.teammates(json: json["Teammates"], teams: teams)
             let addresses = factory.addresses(json: json["BTCAddresses"], teammates: teammates)
@@ -76,8 +76,8 @@ class TransactionsStorage {
         }
     }
     
-    func save(block: (_ context: NSManagedObjectContext) -> Void) {
-        block(context)
+    func save(block:((_ context: NSManagedObjectContext) -> Void)? = nil) {
+        block?(context)
         save(context: context)
     }
     

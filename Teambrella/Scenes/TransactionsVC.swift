@@ -40,15 +40,12 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapApprove(_ sender: Any) {
-        guard let transactions = teambrella.fetcher.resolvableTransactions else { fatalError() }
+        guard let transactions = teambrella.fetcher.transactionsResolvable else { fatalError() }
         guard let signatures = teambrella.fetcher.signaturesToUpdate else { fatalError() }
         
         print("transactions to approve: \(transactions.count)")
         print("signatures to approve: \(signatures.count)")
-        transactions.forEach {
-            $0.resolve(when: Date())
-        }
-        
+        teambrella.fetcher.transactionsChangeResolution(txs: transactions, to: .approved)
         teambrella.update()
     }
     

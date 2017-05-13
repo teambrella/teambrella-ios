@@ -16,34 +16,34 @@ import Foundation
  4. TxInputs and a TxOutput for change are obtained from the server
  5. Tx is signed/co-signed
  */
-class AccountService {
-    struct Constant {
-        static let noAutoApproval: Decimal = 1_000_000
-    }
-    
-    let server: BlockchainServer
-    let storage: TransactionsStorage
-    var connected = false
-    
-    lazy var key: Key? = {
-        return Key(base58String: User.Constant.tmpPrivateKey, timestamp: self.server.timestamp)
-    }()
-    
-    init(server: BlockchainServer, storage: TransactionsStorage) {
-        self.server = server
-        self.storage = storage
-    }
-    
-    func close() {
-        dispose()
-    }
-    
-    func dispose() {
-        connected = false
-        storage.dispose()
-    }
-    
-    func save() {
-        storage.save { _ in }
-    }
-}
+//class AccountService {
+//    struct Constant {
+//        static let noAutoApproval: Decimal = 1_000_000
+//    }
+//    
+//    let server: BlockchainServer
+//    let storage: TransactionsStorage
+//    var connected = false
+//    
+//    lazy var key: Key? = {
+//        return Key(base58String: User.Constant.tmpPrivateKey, timestamp: self.server.timestamp)
+//    }()
+//    
+//    init(server: BlockchainServer, storage: TransactionsStorage) {
+//        self.server = server
+//        self.storage = storage
+//    }
+//    
+//    func close() {
+//        dispose()
+//    }
+//    
+//    func dispose() {
+//        connected = false
+//        storage.dispose()
+//    }
+//    
+//    func save() {
+//        storage.save { _ in }
+//    }
+//}

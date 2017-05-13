@@ -31,9 +31,8 @@ class Tx: NSManagedObject {
         return kind == .saveFromPreviousWallet ? teammate!.addressPrevious! : teammate!.addressNext!
     }
     
-    func resolve(when: Date) {
-        resolutionValue = Int16(TransactionClientResolution.approved.rawValue)
+    func resolve(when: Date, resolution: TransactionClientResolution) {
+        resolutionValue = Int16(resolution.rawValue)
         clientResolutionTimeValue = when as NSDate
-       try? managedObjectContext?.save()
     }
 }

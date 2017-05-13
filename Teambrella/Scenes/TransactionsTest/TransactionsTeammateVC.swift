@@ -10,6 +10,7 @@ import UIKit
 
 class TransactionsTeammateVC: UIViewController {
     var teammate: Teammate!
+    var teambrella: TeambrellaService!
 
     @IBOutlet var idLabel: UILabel!
     @IBOutlet var fbLabel: UILabel!
@@ -38,7 +39,7 @@ class TransactionsTeammateVC: UIViewController {
         
         guard let context = teammate.managedObjectContext else { return }
         
-        let fetcher = BlockchainStorageFetcher(context: context)
+        let fetcher = teambrella.fetcher
         let hisCosigners = fetcher.cosigners(for: teammate)
         var hisCosignerNames: [String] = []
         for cosigner in hisCosigners {

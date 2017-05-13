@@ -15,14 +15,17 @@ protocol TeambrellaServiceDelegate: class {
 
 class TeambrellaService {
     let server = BlockchainServer()
-    let storage = TransactionsStorage()
+    let storage = BlockchainStorage()
+    lazy var service = BlockchainService()
     weak var delegate: TeambrellaServiceDelegate?
-    lazy var fetcher: BlockchainStorageFetcher = {
-        return BlockchainStorageFetcher(context: self.storage.context)
-    }()
+    var fetcher: BlockchainStorageFetcher { return storage.fetcher }
     
     init() {
         server.delegate = self
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func update() {
@@ -33,7 +36,7 @@ class TeambrellaService {
     
     func save() {
         let lastUpdated = storage.lastUpdated
-        guard let transactions = fetcher.resolvableTransactions else { fatalError() }
+        guard let transactions = fetcher.transactionsResolvable else { fatalError() }
         guard let signatures = fetcher.signaturesToUpdate else { fatalError() }
         
         server.getUpdates(privateKey: User.Constant.tmpPrivateKey,
@@ -46,7 +49,7 @@ class TeambrellaService {
     
     func cosignApprovedTxs() {
         let user = fetcher.user
-        guard let txs = fetcher.cosignableTransactions else { return }
+        guard let txs = fetcher.transactionsResolvable else { return }
         
         txs.forEach { tx in
         

@@ -61,6 +61,7 @@ class TransactionsresultTVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? TransactionsTeammateVC, let teammate = sender as? Teammate {
             vc.teammate = teammate
+            vc.teambrella = teambrella
         } else if let vc = segue.destination as? TeamDetailsVC, let team = sender as? Team {
             vc.team = team
         }

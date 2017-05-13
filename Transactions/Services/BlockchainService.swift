@@ -22,7 +22,7 @@ class BlockchainService {
         static let normalFeeBTC: Decimal = 0.0001
         static let topUtxosNum: Int = 10
         static let satoshisInBTC: Int = 100000000
-    
+        
         private let testingBlocktime: Int = 1445350680
         private let testNetServers: [String] = [ "https://test-insight.bitpay.com",
                                                  "https://testnet.blockexplorer.com"]
@@ -31,11 +31,11 @@ class BlockchainService {
                                                 "https://blockchain.info"]
     }
     
-    let accountService: AccountService
-    
-    init (accountService: AccountService) {
-        self.accountService = accountService
-    }
+//    let accountService: AccountService
+//    
+//    init (accountService: AccountService) {
+//        self.accountService = accountService
+//    }
     
     struct ExplorerUtxo {
         let address: String
