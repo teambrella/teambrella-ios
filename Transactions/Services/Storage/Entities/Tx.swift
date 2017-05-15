@@ -22,6 +22,7 @@ class Tx: NSManagedObject {
     var moveToAddressID: String? { return moveToAddressIDValue }
     var isServerUpdateNeeded: Bool { return isServerUpdateNeededValue }
     var clientResolutionTime: Date? { return clientResolutionTimeValue as Date? }
+    var resolutionTime: Date? { return resolutionTimeValue as Date? }
     var initiatedTime: Date? { return initiatedTimeValue as Date? }
     var processedTime: Date? { return processedTimeValue as Date? }
     var receivedTime: Date? { return receivedTimeValue as Date? }

@@ -84,6 +84,7 @@
         <attribute name="moveToAddressIDValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="processedTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="receivedTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="resolutionTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="resolutionValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="stateValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="updateTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -157,7 +158,7 @@
         <element name="PayTo" positionX="351" positionY="117" width="128" height="133"/>
         <element name="Team" positionX="-470" positionY="-225" width="128" height="193"/>
         <element name="Teammate" positionX="16" positionY="-24" width="128" height="210"/>
-        <element name="Tx" positionX="-234" positionY="180" width="128" height="343"/>
+        <element name="Tx" positionX="-234" positionY="180" width="128" height="360"/>
         <element name="TxInput" positionX="-468" positionY="207" width="128" height="148"/>
         <element name="TxOutput" positionX="349" positionY="378" width="128" height="133"/>
         <element name="TxSignature" positionX="-470" positionY="3" width="128" height="150"/>

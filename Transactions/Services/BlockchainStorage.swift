@@ -50,30 +50,17 @@ class BlockchainStorage {
     
     func update(with json: JSON, updateTime: Int64, completion: @escaping () -> Void) {
         let start = DispatchTime.now()
-        saveInBackground(block: { context in
-            context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
-            print("Trying to save json to context\n\n")
-            let factory = EntityFactory(fetcher: self.fetcher)
-            let teams = factory.teams(json: json["Teams"])
-            let teammates = factory.teammates(json: json["Teammates"], teams: teams)
-            let addresses = factory.addresses(json: json["BTCAddresses"], teammates: teammates)
-            _ = factory.transactions(json: json["Txs"], teammates: teammates)
-            _ = factory.cosigners(json: json["Cosigners"],
-                                  teammates: teammates)
-            _ = factory.payTos(json: json["PayTos"], teammates: teammates)
-            _ = factory.inputs(json: json["TxInputs"])
-            _ = factory.outputs(json: json["TxOutputs"])
-            _ = factory.signatures(json: json["TxSignatures"])
-            let fetch = DispatchTime.now()
-            print("Parsing time: \(Double(fetch.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000) sec")
-        }) { [weak self] in
-            let end = DispatchTime.now()
-            print("Total execution time: \(Double(end.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000) sec")
-            self?.lastUpdated = updateTime
-            DispatchQueue.main.async {
-                completion()
-            }
-        }
+        context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        print("Trying to save json to context\n\n")
+        let factory = EntityFactory(fetcher: self.fetcher)
+        factory.createOrUpdateEntities(json: json)
+        let fetch = DispatchTime.now()
+        print("Parsing time: \(Double(fetch.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000) sec")
+        save(context: context)
+        let end = DispatchTime.now()
+        print("Total execution time: \(Double(end.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000) sec")
+        lastUpdated = updateTime
+        completion()
     }
     
     func save(block:((_ context: NSManagedObjectContext) -> Void)? = nil) {

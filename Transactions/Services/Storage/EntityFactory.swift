@@ -19,14 +19,24 @@ struct EntityFactory {
         self.fetcher = fetcher
     }
     
+    func createOrUpdateEntities(json: JSON) {
+        teams(json: json["Teams"])
+        teammates(json: json["Teammates"])
+        addresses(json: json["BTCAddresses"])
+        transactions(json: json["Txs"])
+        cosigners(json: json["Cosigners"])
+        payTos(json: json["PayTos"])
+        inputs(json: json["TxInputs"])
+        outputs(json: json["TxOutputs"])
+        signatures(json: json["TxSignatures"])
+    }
+    
     // Teams
-    func teams(json: JSON) -> [Int64: Team] {
-        var result: [Int64: Team] = [:]
+    func teams(json: JSON) {
         json.arrayValue.forEach { item in
             let id = item["Id"].int64Value
             if let team = fetcher.team(id: id) {
                 team.nameValue = item["Name"].stringValue
-                result[id] = team
             } else {
                 let team = Team(context: context)
                 team.idValue = id
@@ -38,15 +48,12 @@ struct EntityFactory {
                 team.autoApprovalMyNewAddressValue = 7
                 team.autoApprovalCosignGoodAddressValue = 3
                 team.autoApprovalCosignNewAddressValue = 7
-                result[id] = team
             }
         }
-        return result
     }
     
     // Teammates
-    func teammates(json: JSON, teams: [Int64: Team]) -> [Int64: Teammate] {
-        var result: [Int64: Teammate] = [:]
+    func teammates(json: JSON) {
         json.arrayValue.forEach { item in
             let id = item["Id"].int64Value
             let name = item["Name"].stringValue
@@ -55,40 +62,46 @@ struct EntityFactory {
             let teamID = item["TeamId"].int64Value
             if let teammate = fetcher.teammate(id: id) {
                 teammate.nameValue = name
-                result[id] = teammate
             } else {
                 let teammate = Teammate(context: context)
                 teammate.idValue = id
                 teammate.fbNameValue = fbName
                 teammate.nameValue = name
                 teammate.publicKeyValue = publicKey
-                teammate.team = fetcher.team(id: teamID)//teams[teamID]
-                result[id] = teammate
+                teammate.team = fetcher.team(id: teamID)
             }
         }
-        return result
     }
     
-    func addresses(json: JSON, teammates: [Int64: Teammate]) -> [String: BtcAddress] {
-        var result: [String: BtcAddress] = [:]
+    func addresses(json: JSON) {
         json.arrayValue.forEach { item in
-            let address = BtcAddress(context: context)
-            let id = item["Address"].stringValue
-            address.addressValue = id
-            let dateString = item["DateCreated"].stringValue
-            if let date = formatter.date(from: dateString) {
-                address.dateCreatedValue = date  as NSDate
+            if let id = item["Address"].string, fetcher.address(id: id) == nil {
+                let address = BtcAddress(context: context)
+                address.addressValue = id
+                let dateString = item["DateCreated"].stringValue
+                if let date = formatter.date(from: dateString) {
+                    address.dateCreatedValue = date  as NSDate
+                }
+                if let status = UserAddressStatus(rawValue: item["Status"].intValue) {
+                    let newStatus: UserAddressStatus!
+                    switch status {
+                    case .previous:
+                        newStatus = .serverPrevious
+                    case .current:
+                        newStatus = .serverCurrent
+                    case .next:
+                        newStatus = .serverNext
+                    default:
+                        newStatus = status
+                    }
+                    address.statusValue = Int16(newStatus.rawValue)
+                }
+                address.teammate = fetcher.teammate(id: item["TeammateId"].int64Value)
             }
-            address.statusValue = item["Status"].int16Value
-            address.teammate = teammates[item["TeammateId"].int64Value]
-            result[id] = address
         }
-        return result
     }
     
-    func cosigners(json: JSON,
-                   teammates: [Int64: Teammate]) -> [Cosigner] {
-        var cosigners: [Cosigner] = []
+    func cosigners(json: JSON) {
         for item in json.arrayValue {
             let addressID = item["AddressId"].stringValue
             let address = fetcher.address(id: addressID)
@@ -99,14 +112,12 @@ struct EntityFactory {
             cosigner.idValue = "\(keyOrder)-\(addressID)"
             cosigner.address = address
             cosigner.keyOrderValue = keyOrder
-            cosigner.teammate = teammates[teammateID]
-            cosigners.append(cosigner)
+            cosigner.teammate = fetcher.teammate(id: teammateID)
         }
-        return cosigners
     }
     
-    func payTos(json: JSON, teammates: [Int64: Teammate]) -> [PayTo] {
-        return json.arrayValue.map { item in
+    func payTos(json: JSON)  {
+        json.arrayValue.forEach { item in
             let id = item["Id"].stringValue
             var payTo: PayTo!
             if let existingPayTo = fetcher.payTo(id: id) {
@@ -116,7 +127,7 @@ struct EntityFactory {
                 payTo.addressValue = item["Address"].stringValue
                 payTo.idValue = id
                 payTo.isDefaultValue = item["IsDefault"].boolValue
-                payTo.teammate = teammates[item["TeammateId"].int64Value]
+                payTo.teammate = fetcher.teammate(id: item["TeammateId"].int64Value)
                 payTo.knownSinceValue = Date() as NSDate
             }
             if payTo.isDefault {
@@ -126,65 +137,101 @@ struct EntityFactory {
                     }
                 }
             }
-            return payTo
         }
     }
     
     // Txs
-    func transactions(json: JSON, teammates: [Int64: Teammate]) -> [Tx] {
-        return json.arrayValue.map { item in
+    // Rules for setting new current address
+    // ok to set first address
+    // ok to change to next address if:
+    // -- no funds on existing current address
+    // -- or a real Tx from current to next occurred
+    func transactions(json: JSON) {
+       json.arrayValue.forEach { item in
             let id = item["Id"].stringValue
-            let transaction = Tx(context: context)
-            transaction.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
-            transaction.claimIDValue = item["ClaimId"].int64Value
-            transaction.idValue = id
-            if let initiatedTime = formatter.date(from: json["InitiatedTime"].stringValue) as NSDate? {
-                transaction.initiatedTimeValue = initiatedTime
+            if let existingTx = fetcher.transaction(id: id) {
+                existingTx.stateValue = item["State"].int16Value
+                existingTx.updateTimeValue = Date() as NSDate
+                existingTx.resolutionTimeValue = formatter.date(from: json["ResolutionTime"].stringValue) as NSDate?
+                existingTx.processedTimeValue = formatter.date(from: json["ProcessedTime"].stringValue) as NSDate?
+            } else {
+                let tx = Tx(context: context)
+                tx.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
+                tx.claimIDValue = item["ClaimId"].int64Value
+                tx.idValue = id
+                if let initiatedTime = formatter.date(from: json["InitiatedTime"].stringValue) as NSDate? {
+                    tx.initiatedTimeValue = initiatedTime
+                }
+                tx.kindValue = item["Kind"].int16Value
+                tx.stateValue = item["State"].int16Value
+                tx.withdrawReqIDValue = item["WithdrawReqId"].int64Value
+                tx.teammate = fetcher.teammate(id: item["TeammateId"].int64Value)
+                tx.claimTeammate = fetcher.teammate(id: item["ClaimTeammateId"].int64Value)
+                
+                tx.receivedTimeValue = Date() as NSDate
+                tx.updateTimeValue = Date() as NSDate
+                tx.resolutionValue = Int16(TransactionClientResolution.none.rawValue)
+                tx.isServerUpdateNeededValue = false
             }
-            transaction.kindValue = item["Kind"].int16Value
-            transaction.stateValue = item["State"].int16Value
-            transaction.withdrawReqIDValue = item["WithdrawReqId"].int64Value
-            transaction.teammate = teammates[item["TeammateId"].int64Value]
-            transaction.claimTeammate = teammates[item["ClaimTeammateId"].int64Value]
-            return transaction
         }
     }
     
     
     // TxInputs
-    func inputs(json: JSON) -> [TxInput] {
-        return json.arrayValue.map { item in
+    func inputs(json: JSON) {
+        for item in json.arrayValue {
+            let id = item["Id"].stringValue
+            let transactionID = item["TxId"].stringValue
+            // can't change inputs
+            guard fetcher.input(id: id) == nil else { continue }
+            guard let tx = fetcher.transaction(id: transactionID) else { continue } // malformed TX
+            
             let input = TxInput(context: context)
             input.ammountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
-            input.idValue = item["Id"].stringValue
+            input.idValue = id
             input.previousTransactionIndexValue = item["PrevTxIndex"].int64Value
             input.transactionIDValue = item["TxId"].stringValue
             input.previousTransactionIDValue = item["PrevTxId"].stringValue
             
-            let transactionID = item["TxId"].stringValue
-            input.transaction = fetcher.transaction(id: transactionID)
+            input.transaction = tx
             //let previousTransactionID = item["PrevTxId"].stringValue
             //input.previousTransaction = BlockchainTransaction.fetch(id: previousTransactionID, in: context)
-            return input
         }
     }
     
     // TxOutputs
-    func outputs(json: JSON) -> [TxOutput] {
-        return json.arrayValue.map { item in
+    func outputs(json: JSON) {
+        for item in json.arrayValue {
+            let txID = item["TxId"].stringValue
+            guard let tx = fetcher.transaction(id: txID) else { continue }
+            
             let output = TxOutput(context: context)
             output.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
             output.idValue = item["Id"].stringValue
             output.payToIDValue = item["PayToId"].stringValue
-            output.transactionIDValue = item["TxId"].stringValue
-            return output
+            output.transactionIDValue = txID
+            output.transaction = tx
         }
     }
     
     // TxSignatures
-    func signatures(json: JSON) -> [TxSignature] {
-        /* */
-        return []
+    func signatures(json: JSON) {
+        for item in json.arrayValue {
+            let txInputId = item["TxInputId"].stringValue
+            let teammateID = item["TeammateId"].int64Value
+             // can't change signatures
+            guard fetcher.signature(input: UUID(uuidString: txInputId)!,
+                                    teammateID: Int(teammateID)) == nil else { continue }
+            guard let txInput = fetcher.input(id: txInputId) else { continue } // malformed TX
+            
+            let signature = TxSignature(context: context)
+            signature.inputIDValue = txInputId
+            signature.teammateIDValue = teammateID
+            signature.signatureValue = item["Signature"].stringValue.base64data as NSData?
+            signature.isServerUpdateNeededValue = false
+            signature.input = txInput
+            
+        }
     }
     
 }

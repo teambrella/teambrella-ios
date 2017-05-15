@@ -188,6 +188,14 @@ class BlockchainStorageFetcher {
         return autoApproval == -1 ? Constant.noAutoApproval : autoApproval - daysPassed
     }
     
+    // MARK: Input
+    
+    func input(id: String) -> TxInput? {
+        let request: NSFetchRequest<TxInput> = TxInput.fetchRequest()
+        request.predicate = NSPredicate(format: "idValue = %@", id)
+        let result = try? context.fetch(request)
+        return result?.first
+    }
     // MARK: Output
     
     func isPayToAddressOkAge(output: TxOutput) -> Bool {

@@ -10,6 +10,22 @@ extension String {
         return BTCDataFromBase58(self) as Data
     }
     
+    var base64data: Data? {
+        return Data(base64Encoded: self)
+    }
+    
+    var fromBase64: String? {
+        guard let data = Data(base64Encoded: self) else {
+            return nil
+        }
+        
+        return String(data: data, encoding: .utf8)
+    }
+    
+    var toBase64: String {
+        return Data(self.utf8).base64EncodedString()
+    }
+    
     var localized: String {
         guard let range = self.range(of: ".") else { return self }
         
