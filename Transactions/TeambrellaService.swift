@@ -16,7 +16,7 @@ protocol TeambrellaServiceDelegate: class {
 class TeambrellaService {
     let server = BlockchainServer()
     let storage = BlockchainStorage()
-    lazy var service = BlockchainService()
+    lazy var service: BlockchainService = {  BlockchainService(fetcher: self.fetcher, server: self.server) }()
     weak var delegate: TeambrellaServiceDelegate?
     var fetcher: BlockchainStorageFetcher { return storage.fetcher }
     
@@ -29,9 +29,15 @@ class TeambrellaService {
     }
     
     func update() {
-        cosignApprovedTxs()
-        publishApprovedAndCosignedTxs()
-        save()
+        server.initClient(privateKey: fetcher.user.privateKey) { [unowned self] success in
+            if success {
+                self.storage.autoApproveTransactions()
+                self.service.updateData()
+                self.save()
+            }
+        }
+        
+        
     }
     
     func save() {
@@ -45,112 +51,6 @@ class TeambrellaService {
                           signatures: signatures)
     }
     
- 
-    
-    func cosignApprovedTxs() {
-        let user = fetcher.user
-        guard let txs = fetcher.transactionsResolvable else { return }
-        
-        txs.forEach { tx in
-        
-        }
-        /*
-         var user = _accountService.GetUser();
-         var txs = _accountService.GetCoSignableTxs();
-         foreach (var tx in txs)
-         {
-         var blockchainTx = GetTx(tx);
-         var redeemScript = SignHelper.GetRedeemScript(tx.FromAddress);
-         var txInputs = tx.Inputs.OrderBy(x => x.Id).ToList();
-         for (int input = 0; input < txInputs.Count; input++)
-         {
-         var txInput = txInputs[input];
-         var signature = SignHelper.Cosign(redeemScript, user.BitcoinPrivateKey, blockchainTx, input);
-         var txSignature = new TxSignature
-         {
-         TxInput = txInput,
-         Teammate = tx.Teammate.Team.GetMe(user),
-         NeedUpdateServer = true,
-         Signature = signature
-         };
-         _accountService.AddSignature(txSignature);
-         }
-         tx.Resolution = TxClientResolution.Signed;
-         _accountService.UpdateTx(tx);
-         }
-         _accountService.SaveChanges();
-         */
-
-    }
-    // add periodical sync with server
-    // add changes listener
-    
-    func publishApprovedAndCosignedTxs() {
-        /*
-         var user = _accountService.GetUser();
-         var txs = _accountService.GetApprovedAndCosignedTxs();
-         foreach (var tx in txs)
-         {
-         var blockchainTx = GetTx(tx);
-         var redeemScript = SignHelper.GetRedeemScript(tx.FromAddress);
-         var txInputs = tx.Inputs.OrderBy(x => x.Id).ToList();
-         
-         List<Op>[] ops = new List<Op>[tx.Inputs.Count];
-         foreach (var cosigner in tx.FromAddress.Cosigners.OrderBy(x => x.KeyOrder))
-         {
-         for (int input = 0; input < txInputs.Count; input++)
-         {
-         var txInput = txInputs[input];
-         var txSignature = _accountService.GetSignature(txInput.Id, cosigner.Teammate.Id);
-         if (txSignature == null)
-         {
-         break;
-         }
-         if (ops[input] == null)
-         {
-         ops[input] = new List<Op>();
-         }
-         if (ops[input].Count == 0)
-         {
-         ops[input].Add(OpcodeType.OP_0);
-         }
-         
-         var vchSig = txSignature.Signature.ToList();
-         vchSig.Add((byte)SigHash.All);
-         ops[input].Add(Op.GetPushOp(vchSig.ToArray()));
-         }
-         }
-         
-         for (int input = 0; input < txInputs.Count; input++)
-         {
-         // add self-signatures
-         var signature = SignHelper.Cosign(redeemScript, user.BitcoinPrivateKey, blockchainTx, input);
-         var vchSig = signature.ToList();
-         var txSignature = new TxSignature
-         {
-         TxInput = txInputs[input],
-         Teammate = tx.Teammate.Team.GetMe(user),
-         NeedUpdateServer = true,
-         Signature = signature
-         };
-         _accountService.AddSignature(txSignature);
-         
-         
-         vchSig.Add((byte)SigHash.All);
-         ops[input].Add(Op.GetPushOp(vchSig.ToArray()));
-         ops[input].Add(Op.GetPushOp(redeemScript.ToBytes()));
-         blockchainTx.Inputs[input].ScriptSig = new Script(ops[input].ToArray());
-         }
-         
-         string strTx = blockchainTx.ToHex();
-         
-         if (PostTx(strTx, tx.Teammate.Team.Network))
-         {
-         _accountService.ChangeTxResolution(tx, TxClientResolution.Published);
-         }
-         }
-         */
-    }
 }
 
 extension TeambrellaService: BlockchainServerDelegate {

@@ -14,15 +14,21 @@ class Teammate: NSManagedObject {
     var name: String { return nameValue! }
     var publicKey: String? { return publicKeyValue }
     
+    var addresses: [BtcAddress] {
+        guard let set = addressesValue as? Set<BtcAddress> else { fatalError() }
+        
+        return Array(set)
+    }
+    
     var addressPrevious: BtcAddress? {
-        return (addresses as? Set<BtcAddress>)?.filter { $0.status == UserAddressStatus.previous }.first
+        return addresses.filter { $0.status == UserAddressStatus.previous }.first
     }
     
     var addressCurrent: BtcAddress? {
-        return (addresses as? Set<BtcAddress>)?.filter { $0.status == UserAddressStatus.current }.first
+        return addresses.filter { $0.status == UserAddressStatus.current }.first
     }
     
     var addressNext: BtcAddress? {
-        return (addresses as? Set<BtcAddress>)?.filter { $0.status == UserAddressStatus.next }.first
+        return addresses.filter { $0.status == UserAddressStatus.next }.first
     }
 }

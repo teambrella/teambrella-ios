@@ -9,7 +9,7 @@
 import Foundation
 
 struct Key {
-    private let key: BTCKey
+    let key: BTCKey
     let isTestnet: Bool
     var timestamp: Int64
     var privateKey: String {

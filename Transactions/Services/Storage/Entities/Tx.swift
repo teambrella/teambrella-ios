@@ -10,8 +10,13 @@ import CoreData
 
 class Tx: NSManagedObject {
     var kind: TransactionKind? { return TransactionKind(rawValue: Int(kindValue)) }
-    var resolution: TransactionClientResolution? {
-        return TransactionClientResolution(rawValue: Int(resolutionValue))
+    var resolution: TransactionClientResolution {
+        get {
+        return TransactionClientResolution(rawValue: Int(resolutionValue)) ?? .none
+        }
+        set {
+            resolutionValue = Int16(newValue.rawValue)
+        }
     }
     var state: TransactionState? { return TransactionState(rawValue: Int(stateValue)) }
     var claimID: Int { return Int(claimIDValue) }
@@ -20,7 +25,14 @@ class Tx: NSManagedObject {
     var fee: Decimal? { return feeValue as Decimal? }
     var id: UUID { return  UUID(uuidString: idValue!)! }
     var moveToAddressID: String? { return moveToAddressIDValue }
-    var isServerUpdateNeeded: Bool { return isServerUpdateNeededValue }
+    var isServerUpdateNeeded: Bool {
+        get {
+            return isServerUpdateNeededValue
+        }
+        set {
+            isServerUpdateNeededValue = newValue
+        }
+    }
     var clientResolutionTime: Date? { return clientResolutionTimeValue as Date? }
     var resolutionTime: Date? { return resolutionTimeValue as Date? }
     var initiatedTime: Date? { return initiatedTimeValue as Date? }
@@ -29,11 +41,14 @@ class Tx: NSManagedObject {
     var updateTime: Date? { return updateTimeValue as Date? }
     
     var fromAddress: BtcAddress {
-        return kind == .saveFromPreviousWallet ? teammate!.addressPrevious! : teammate!.addressNext!
+        return kind == .saveFromPreviousWallet ? teammate!.addressPrevious! : teammate!.addressCurrent!
     }
     
-    func resolve(when: Date, resolution: TransactionClientResolution) {
-        resolutionValue = Int16(resolution.rawValue)
-        clientResolutionTimeValue = when as NSDate
+    /// TxInputs sorted by UUID id values
+    var inputs: [TxInput] {
+        guard let set = inputsValue as? Set<TxInput> else { return [] }
+        
+        return Array(set).sorted { $0.id < $1.id }
     }
+
 }

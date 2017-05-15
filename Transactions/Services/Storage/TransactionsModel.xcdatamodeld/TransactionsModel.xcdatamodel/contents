@@ -4,9 +4,9 @@
         <attribute name="addressValue" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="dateCreatedValue" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="statusValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="cosigners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cosigner" inverseName="address" inverseEntity="Cosigner" syncable="YES"/>
+        <relationship name="cosignersValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cosigner" inverseName="address" inverseEntity="Cosigner" syncable="YES"/>
         <relationship name="moveFundsTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="moveToAddress" inverseEntity="Tx" syncable="YES"/>
-        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="addresses" inverseEntity="Teammate" syncable="YES"/>
+        <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="addressesValue" inverseEntity="Teammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="addressValue"/>
@@ -14,9 +14,10 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Cosigner" representedClassName=".Cosigner" syncable="YES" codeGenerationType="category">
+        <attribute name="addressIDValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="keyOrderValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="cosigners" inverseEntity="BtcAddress" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="cosignersValue" inverseEntity="BtcAddress" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="cosignerOf" inverseEntity="Teammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -59,7 +60,7 @@
         <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
         <attribute name="nameValue" attributeType="String" syncable="YES"/>
         <attribute name="publicKeyValue" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="addresses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="teammate" inverseEntity="BtcAddress" syncable="YES"/>
+        <relationship name="addressesValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="teammate" inverseEntity="BtcAddress" syncable="YES"/>
         <relationship name="claimTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="claimTeammate" inverseEntity="Tx" syncable="YES"/>
         <relationship name="cosignerOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cosigner" inverseName="teammate" inverseEntity="Cosigner" syncable="YES"/>
         <relationship name="payTos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PayTo" inverseName="teammate" inverseEntity="PayTo" syncable="YES"/>
@@ -90,7 +91,7 @@
         <attribute name="updateTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="withdrawReqIDValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="claimTeammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="claimTransactions" inverseEntity="Teammate" syncable="YES"/>
-        <relationship name="input" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxInput" inverseName="transaction" inverseEntity="TxInput" syncable="YES"/>
+        <relationship name="inputsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxInput" inverseName="transaction" inverseEntity="TxInput" syncable="YES"/>
         <relationship name="moveToAddress" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="moveFundsTransactions" inverseEntity="BtcAddress" syncable="YES"/>
         <relationship name="output" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxOutput" inverseName="transaction" inverseEntity="TxOutput" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="transactions" inverseEntity="Teammate" syncable="YES"/>
@@ -107,7 +108,7 @@
         <attribute name="previousTransactionIndexValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
         <relationship name="signature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxSignature" inverseName="input" inverseEntity="TxSignature" syncable="YES"/>
-        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tx" inverseName="input" inverseEntity="Tx" syncable="YES"/>
+        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tx" inverseName="inputsValue" inverseEntity="Tx" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
@@ -153,8 +154,8 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="BtcAddress" positionX="-227" positionY="-225" width="128" height="133"/>
-        <element name="Cosigner" positionX="16" positionY="-174" width="128" height="103"/>
+        <element name="BtcAddress" positionX="-227" positionY="-225" width="128" height="135"/>
+        <element name="Cosigner" positionX="16" positionY="-174" width="128" height="120"/>
         <element name="PayTo" positionX="351" positionY="117" width="128" height="133"/>
         <element name="Team" positionX="-470" positionY="-225" width="128" height="193"/>
         <element name="Teammate" positionX="16" positionY="-24" width="128" height="210"/>

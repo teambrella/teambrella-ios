@@ -10,6 +10,8 @@ import CoreData
 
 class Cosigner: NSManagedObject {
     var keyOrder: Int { return Int(keyOrderValue) }
+    var addressID: String { return addressIDValue! }
+    
     override var description: String {
         return "Cosigner for address: \(address?.address ?? "none"), order: \(keyOrder)"
     }

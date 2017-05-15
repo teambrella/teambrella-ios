@@ -14,8 +14,7 @@ struct SignHelper {
     // public static Op GetPushOp(byte[] data)
     static func redeemScript(address: BtcAddress) -> BTCScript {
         let ownerPublicKey = BTCPublicKeyAddress(string: address.teammate?.publicKey)!.data!
-        let cosignersPublicKeys = (address.cosigners as! Set<Cosigner>)
-            .map { BTCPublicKeyAddress(string:$0.teammate?.publicKey)!.data } 
+        let cosignersPublicKeys = address.cosigners.map { BTCPublicKeyAddress(string:$0.teammate?.publicKey)!.data }
         let n = cosignersPublicKeys.count
         guard let script = BTCScript() else { fatalError("Couldn't initialize script") }
         

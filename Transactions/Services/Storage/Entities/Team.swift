@@ -23,7 +23,7 @@ class Team: NSManagedObject {
 
 extension Team {
     func me(user: User) -> Teammate? {
-        guard let pubKey = user.bitcoinPrivateKey?.publicKey else { return nil }
+        let pubKey = user.bitcoinPrivateKey.publicKey
         
         return (teammates as! Set<Teammate>).filter { $0.publicKey == pubKey }.first
     }

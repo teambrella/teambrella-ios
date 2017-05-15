@@ -9,8 +9,27 @@
 import CoreData
 
 class BtcAddress: NSManagedObject {
-    var status: UserAddressStatus { return UserAddressStatus(rawValue: Int(statusValue)) ?? .invalid }
+    var status: UserAddressStatus {
+        get {
+            return UserAddressStatus(rawValue: Int(statusValue)) ?? .invalid
+        }
+        set {
+            statusValue = Int16(newValue.rawValue)
+        }
+    }
     var address: String { return addressValue! }
     var dateCreated: Date { return dateCreatedValue! as Date }
-    
+ 
+    var cosigners: [Cosigner] {
+        guard let context = managedObjectContext else { return [] }
+        
+        let request: NSFetchRequest<Cosigner> = Cosigner.fetchRequest()
+        request.predicate = NSPredicate(format: "addressID == %@", address)
+        let result = try? context.fetch(request)
+        return result ?? []
+        
+//        guard let set = cosignersValue as? Set<Cosigner> else { return [] }
+//        
+//        return Array(set).sorted { $0.keyOrder < $1.keyOrder }
+    }
 }

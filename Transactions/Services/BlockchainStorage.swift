@@ -56,11 +56,37 @@ class BlockchainStorage {
         factory.createOrUpdateEntities(json: json)
         let fetch = DispatchTime.now()
         print("Parsing time: \(Double(fetch.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000) sec")
+        updateAddresses()
         save(context: context)
         let end = DispatchTime.now()
         print("Total execution time: \(Double(end.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000) sec")
         lastUpdated = updateTime
         completion()
+    }
+    
+    func autoApproveTransactions() {
+        let txs = fetcher.transactionsResolvable
+        for tx in txs {
+            let daysLeft = fetcher.daysToApproval(tx: tx, isMyTx: fetcher.isMy(tx: tx))
+            if daysLeft <= 0 {
+                tx.resolution = .approved
+                tx.isServerUpdateNeeded = true
+            }
+        }
+        save()
+    }
+    
+    private func updateAddresses() {
+        for teammate in fetcher.teammates {
+            guard teammate.addresses.isEmpty == false else { continue }
+            
+            if teammate.addressCurrent == nil {
+                let filtered = teammate.addresses.filter { $0.status == UserAddressStatus.current }
+                if let curServerAddress = filtered.first {
+                    curServerAddress.status = .current
+                }
+            }
+        }
     }
     
     func save(block:((_ context: NSManagedObjectContext) -> Void)? = nil) {

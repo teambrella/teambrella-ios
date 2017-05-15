@@ -12,7 +12,6 @@ import SwiftyJSON
 
 public protocol BlockchainServerDelegate: class {
     func server(server: BlockchainServer, didUpdateTimestamp timestamp: Int64)
-    func serverInitialized(server: BlockchainServer)
     func server(server: BlockchainServer, didReceiveUpdates updates: JSON, updateTime: Int64)
     func server(server: BlockchainServer, failedWithError error: Error?)
 }
@@ -28,6 +27,7 @@ public class BlockchainServer {
     }
     
     weak var delegate: BlockchainServerDelegate?
+    var isTestnet: Bool = true
     
     private(set)var timestamp: Int64 = 0 {
         didSet {
@@ -69,10 +69,10 @@ public class BlockchainServer {
         }
     }
     
-    func initClient(privateKey: String) {
+    func initClient(privateKey: String, completion: @escaping (_ success: Bool) -> Void) {
         initTimestamp { [weak self] timestamp in
             guard let me = self else { return }
-           let key = Key(base58String: privateKey, timestamp: timestamp)
+            let key = Key(base58String: privateKey, timestamp: timestamp)
             
             let request = me.request(string: "me/InitClient", key: key)
             Alamofire.request(request).responseJSON { response in
@@ -84,10 +84,11 @@ public class BlockchainServer {
                         if let timestamp = result["Timestamp"].int64 {
                             me.timestamp = timestamp
                         }
-                        me.delegate?.serverInitialized(server: me)
+                        completion(true)
                     }
                 case .failure(let error):
                     me.delegate?.server(server: me, failedWithError: error)
+                    completion(false)
                 }
             }
         }
@@ -97,11 +98,11 @@ public class BlockchainServer {
                     lastUpdated: Int64,
                     transactions: [Tx],
                     signatures: [TxSignature]) {
-         let key = Key(base58String: privateKey, timestamp: timestamp) 
+        let key = Key(base58String: privateKey, timestamp: timestamp)
         
         let txInfos = transactions.map { ["Id": $0.id.uuidString,
                                           "ResolutionTime": formatter.string(from: $0.clientResolutionTime!),
-                                          "Resolution": $0.resolution!.rawValue ] }
+                                          "Resolution": $0.resolution.rawValue ] }
         
         let txSignatures = signatures.map {
             ["Signature": $0.signature.base64EncodedString(),
@@ -129,6 +130,39 @@ public class BlockchainServer {
                 me.delegate?.server(server: me, failedWithError: error)
             }
         }
+    }
+    
+    func postTxExplorer(tx: String,
+                        urlString: String,
+                        success: @escaping (_ txid: String) -> Void,
+                        failure: @escaping () -> Void) {
+        let queryPath = "/api/tx/send"
+        guard let url = URL(string: urlString + queryPath) else { fatalError() }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue( "application/json, text/plain, * / *", forHTTPHeaderField: "Accept")
+        let body: [String: Any] = ["rawTx": tx]
+        if let data = try? JSONSerialization.data(withJSONObject: body, options: []) {
+            request.httpBody = data
+        }
+        
+        Alamofire.request(request).responseJSON { response in
+            switch response.result {
+            case.success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if let txid = json.string {
+                        success(txid)
+                        return
+                    }
+                }
+            default: break
+            }
+            failure()
+        }
+        
     }
     
     private func request(string: String, key: Key, payload: [String: Any]? = nil) -> URLRequest {

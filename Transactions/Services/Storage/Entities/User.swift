@@ -27,7 +27,7 @@ class User: NSManagedObject {
         return auxWalletCheckedValue as Date?
     }
     
-    var bitcoinPrivateKey: Key? {
+    var bitcoinPrivateKey: Key {
         let key = Key(base58String: privateKey, timestamp: 0)
         return key
     }

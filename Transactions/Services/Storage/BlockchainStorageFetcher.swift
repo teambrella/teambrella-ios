@@ -80,11 +80,11 @@ class BlockchainStorageFetcher {
 
     // MARK: Teammate
     
-    var teammates: [Teammate]? {
+    var teammates: [Teammate] {
         let request: NSFetchRequest<Teammate> = Teammate.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "nameValue", ascending: true)]
         let items = try? context.fetch(request)
-        return items
+        return items ?? []
     }
     
     func teammate(id: Int64) -> Teammate? {
@@ -110,26 +110,34 @@ class BlockchainStorageFetcher {
         return items
     }
     
-    var transactionsResolvable: [Tx]? {
+    var transactionsResolvable: [Tx] {
         let request: NSFetchRequest<Tx> = Tx.fetchRequest()
         request.predicate = NSPredicate(format: "resolutionValue <= \(TransactionClientResolution.published.rawValue)")
-        //request.sortDescriptors = [NSSortDescriptor(key: "resolutionValue", ascending: true)]
         let items = try? context.fetch(request)
-        return items
+        return items ?? []
     }
     
     var transactionsCosignable: [Tx]? {
         let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        request.predicate = NSPredicate(format: "resolutionValue == \(TransactionClientResolution.approved.rawValue)" +
-            " AND stateValue == \(TransactionState.selectedForCosigning.rawValue)"/* +
-             " AND inputs.@count > 0"*/)
-        //request.sortDescriptors = [NSSortDescriptor(key: "resolutionValue", ascending: true)]
+        let p1 = NSPredicate(format: "resolutionValue == %i", TransactionClientResolution.approved.rawValue)
+        let p2 = NSPredicate(format: "stateValue == %i", TransactionState.selectedForCosigning.rawValue)
+        let p3 = NSPredicate(format: "inputsValue.@count > 0")
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1, p2, p3])
         let items = try? context.fetch(request)
         return items
     }
     
-    var transactionsApprovedAndCosigned: [Tx]? {
-        return nil
+    var transactionsApprovedAndCosigned: [Tx] {
+        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
+        let p1 = NSPredicate(format: "resolutionValue == %i", TransactionClientResolution.approved.rawValue)
+        let p2 = NSPredicate(format: "stateValue == %i", TransactionState.cosigned.rawValue)
+        let p3 = NSPredicate(format: "inputsValue.@count > 0")
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1, p2, p3])
+        do {
+            return try context.fetch(request)
+        } catch {
+            return []
+        }
     }
     
     func transactionsChanged(since date: Date) -> [Tx]? {
@@ -165,9 +173,10 @@ class BlockchainStorageFetcher {
         return tx.resolution == .blocked && isInChangeableState(tx: tx)
     }
     
-    func transactionsChangeResolution(txs: [Tx], to resolution: TransactionClientResolution) {
+    func transactionsChangeResolution(txs: [Tx], to resolution: TransactionClientResolution, when: Date = Date()) {
         for tx in txs {
-            tx.resolve(when: Date(), resolution: resolution)
+            tx.resolution = resolution
+            tx.clientResolutionTimeValue = when as NSDate
         }
         storage.save()
     }
@@ -230,6 +239,18 @@ class BlockchainStorageFetcher {
         request.predicate = NSPredicate(format: "tx.input == %@ AND teammateID == %i", input.uuidString, teammateID)
         let items = try? context.fetch(request)
         return items?.first
+    }
+    
+    @discardableResult
+    func addNewSignature(input: TxInput, tx: Tx, signature: Data) -> TxSignature {
+        let txSignature = TxSignature.create(in: context)
+        txSignature.input = input
+        let me = tx.teammate?.team?.me(user: user)
+        txSignature.teammate = me
+        txSignature.isServerUpdateNeededValue = true
+        txSignature.signatureValue = signature as NSData
+        storage.save()
+        return txSignature
     }
     
     

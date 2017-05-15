@@ -17,7 +17,7 @@ class TransactionsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        teambrella.server.initClient(privateKey: User.Constant.tmpPrivateKey)
+//        teambrella.server.initClient(privateKey: User.Constant.tmpPrivateKey)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +40,7 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapApprove(_ sender: Any) {
-        guard let transactions = teambrella.fetcher.transactionsResolvable else { fatalError() }
+        let transactions = teambrella.fetcher.transactionsResolvable
         guard let signatures = teambrella.fetcher.signaturesToUpdate else { fatalError() }
         
         print("transactions to approve: \(transactions.count)")

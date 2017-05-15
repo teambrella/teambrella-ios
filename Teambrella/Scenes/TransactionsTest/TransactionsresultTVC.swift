@@ -17,7 +17,7 @@ class TransactionsresultTVC: UITableViewController {
         super.viewDidLoad()
         let team = teambrella.fetcher.firstTeam
         
-        teambrella.fetcher.teammates.map { self.teammates = $0 }
+        teammates = teambrella.fetcher.teammates
         
         let button =  UIButton(type: .custom)
         button.setTitle(team?.name, for: .normal)

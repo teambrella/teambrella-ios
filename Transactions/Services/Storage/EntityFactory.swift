@@ -80,7 +80,7 @@ struct EntityFactory {
                 address.addressValue = id
                 let dateString = item["DateCreated"].stringValue
                 if let date = formatter.date(from: dateString) {
-                    address.dateCreatedValue = date  as NSDate
+                    address.dateCreatedValue = date as NSDate
                 }
                 if let status = UserAddressStatus(rawValue: item["Status"].intValue) {
                     let newStatus: UserAddressStatus!
@@ -104,13 +104,13 @@ struct EntityFactory {
     func cosigners(json: JSON) {
         for item in json.arrayValue {
             let addressID = item["AddressId"].stringValue
-            let address = fetcher.address(id: addressID)
+            if  fetcher.address(id: addressID) != nil { continue }
             
             let cosigner = Cosigner(context: context)
             let keyOrder = item["KeyOrder"].int16Value
             let teammateID = item["TeammateId"].int64Value
             cosigner.idValue = "\(keyOrder)-\(addressID)"
-            cosigner.address = address
+            cosigner.addressIDValue = addressID
             cosigner.keyOrderValue = keyOrder
             cosigner.teammate = fetcher.teammate(id: teammateID)
         }

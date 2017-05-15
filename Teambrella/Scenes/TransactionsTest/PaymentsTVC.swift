@@ -19,7 +19,7 @@ class PaymentsTVC: UITableViewController {
         super.viewDidLoad()
 
         teambrella.delegate = self
-        resolvable = teambrella.fetcher.transactionsResolvable ?? []
+        resolvable = teambrella.fetcher.transactionsResolvable 
         cosignable = teambrella.fetcher.transactionsCosignable ?? []
     }
 
