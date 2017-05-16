@@ -9,6 +9,7 @@
 import CoreData
 
 class TxOutput: NSManagedObject {
+    /// amount in Bitcoins
     var amount: Decimal { return amountValue! as Decimal }
     var id: String { return idValue! }
 //    var payToID: String { return payToIDValue! }

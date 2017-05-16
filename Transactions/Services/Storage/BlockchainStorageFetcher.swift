@@ -183,7 +183,7 @@ class BlockchainStorageFetcher {
     
     func daysToApproval(tx: Tx, isMyTx: Bool) -> Int {
         var goodPayToAddresses = true
-        for txOutput in tx.output as! Set<TxOutput> {
+        for txOutput in tx.outputs {
             goodPayToAddresses = goodPayToAddresses && isPayToAddressOkAge(output: txOutput)
         }
         let daysPassed = Date().interval(of: .day, since: tx.receivedTime!)
@@ -208,7 +208,10 @@ class BlockchainStorageFetcher {
     // MARK: Output
     
     func isPayToAddressOkAge(output: TxOutput) -> Bool {
-        return output.transaction!.teammate!.team!.okAge <= Date().interval(of: .day, since: output.payTo!.knownSince)
+        guard let team = output.transaction?.teammate?.team else { fatalError() }
+        guard let payTo = output.payTo else { return false }
+        
+        return team.okAge <= Date().interval(of: .day, since: payTo.knownSince)
     }
     
     // MARK: PayTo
@@ -235,8 +238,12 @@ class BlockchainStorageFetcher {
     }
     
     func signature(input: UUID, teammateID: Int) -> TxSignature? {
+        return signature(input: input.uuidString, teammateID: teammateID)
+    }
+    
+    func signature(input: String, teammateID: Int) -> TxSignature? {
         let request: NSFetchRequest<TxSignature> = TxSignature.fetchRequest()
-        request.predicate = NSPredicate(format: "tx.input == %@ AND teammateID == %i", input.uuidString, teammateID)
+        request.predicate = NSPredicate(format: "input.idValue == %@ AND teammateIDValue == %i", input, teammateID)
         let items = try? context.fetch(request)
         return items?.first
     }

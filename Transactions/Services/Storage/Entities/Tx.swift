@@ -12,7 +12,7 @@ class Tx: NSManagedObject {
     var kind: TransactionKind? { return TransactionKind(rawValue: Int(kindValue)) }
     var resolution: TransactionClientResolution {
         get {
-        return TransactionClientResolution(rawValue: Int(resolutionValue)) ?? .none
+            return TransactionClientResolution(rawValue: Int(resolutionValue)) ?? .none
         }
         set {
             resolutionValue = Int16(newValue.rawValue)
@@ -40,8 +40,8 @@ class Tx: NSManagedObject {
     var receivedTime: Date? { return receivedTimeValue as Date? }
     var updateTime: Date? { return updateTimeValue as Date? }
     
-    var fromAddress: BtcAddress {
-        return kind == .saveFromPreviousWallet ? teammate!.addressPrevious! : teammate!.addressCurrent!
+    var fromAddress: BtcAddress? {
+        return kind == .saveFromPreviousWallet ? teammate?.addressPrevious : teammate?.addressCurrent
     }
     
     /// TxInputs sorted by UUID id values
@@ -50,5 +50,11 @@ class Tx: NSManagedObject {
         
         return Array(set).sorted { $0.id < $1.id }
     }
-
+    
+    var outputs: [TxOutput] {
+        guard let set = outputsValue as? Set<TxOutput> else { return [] }
+        
+        return Array(set).sorted { $0.id < $1.id }
+    }
+    
 }

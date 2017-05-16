@@ -93,7 +93,7 @@
         <relationship name="claimTeammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="claimTransactions" inverseEntity="Teammate" syncable="YES"/>
         <relationship name="inputsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxInput" inverseName="transaction" inverseEntity="TxInput" syncable="YES"/>
         <relationship name="moveToAddress" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="moveFundsTransactions" inverseEntity="BtcAddress" syncable="YES"/>
-        <relationship name="output" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxOutput" inverseName="transaction" inverseEntity="TxOutput" syncable="YES"/>
+        <relationship name="outputsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxOutput" inverseName="transaction" inverseEntity="TxOutput" syncable="YES"/>
         <relationship name="teammate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="transactions" inverseEntity="Teammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -121,7 +121,7 @@
         <attribute name="payToIDValue" attributeType="String" syncable="YES"/>
         <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
         <relationship name="payTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PayTo" inverseName="output" inverseEntity="PayTo" syncable="YES"/>
-        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tx" inverseName="output" inverseEntity="Tx" syncable="YES"/>
+        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tx" inverseName="outputsValue" inverseEntity="Tx" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>

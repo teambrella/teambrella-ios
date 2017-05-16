@@ -21,7 +21,7 @@ class User: NSManagedObject {
         return privateKeyValue!
     }
     var auxWalletAmount: Decimal {
-        return auxWalletAmountValue as! Decimal
+        return auxWalletAmountValue! as Decimal
     }
     var auxWalletChecked: Date? {
         return auxWalletCheckedValue as Date?

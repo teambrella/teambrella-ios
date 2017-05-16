@@ -104,7 +104,8 @@ struct EntityFactory {
     func cosigners(json: JSON) {
         for item in json.arrayValue {
             let addressID = item["AddressId"].stringValue
-            if  fetcher.address(id: addressID) != nil { continue }
+            // TODO: check that cosigners do not have address
+            //if  fetcher.address(id: addressID) != nil { continue }
             
             let cosigner = Cosigner(context: context)
             let keyOrder = item["KeyOrder"].int16Value
@@ -209,6 +210,7 @@ struct EntityFactory {
             output.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
             output.idValue = item["Id"].stringValue
             output.payToIDValue = item["PayToId"].stringValue
+            output.payTo = fetcher.payTo(id: item["PayToId"].stringValue)
             output.transactionIDValue = txID
             output.transaction = tx
         }
@@ -220,11 +222,11 @@ struct EntityFactory {
             let txInputId = item["TxInputId"].stringValue
             let teammateID = item["TeammateId"].int64Value
              // can't change signatures
-            guard fetcher.signature(input: UUID(uuidString: txInputId)!,
+            guard fetcher.signature(input: txInputId,
                                     teammateID: Int(teammateID)) == nil else { continue }
             guard let txInput = fetcher.input(id: txInputId) else { continue } // malformed TX
             
-            let signature = TxSignature(context: context)
+            let signature = TxSignature.create(in: context)
             signature.inputIDValue = txInputId
             signature.teammateIDValue = teammateID
             signature.signatureValue = item["Signature"].stringValue.base64data as NSData?

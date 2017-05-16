@@ -61,16 +61,20 @@ class BlockchainService {
         fetcher.storage.save()
     }
     
+    func btc(from decimal: Decimal) -> BTCAmount {
+        return BTCAmount(decimal.double * Double(BTCCoin))
+    }
+    
     // getTx
     func btcTransaction(tx: Tx) -> BTCTransaction? {
         var totalBTCAmount: Decimal = 0
         
         let address = tx.teammate?.addressCurrent
         
-        var resTx = BTCTransaction()
-        var txInputs = tx.inputs
+        let resTx = BTCTransaction()
+        let txInputs = tx.inputs
         
-        for (idx, txInput) in txInputs.enumerated() {
+        for  txInput in txInputs{
             totalBTCAmount += txInput.ammount
             let input = BTCTransactionInput()
             resTx.inputs.append(input)
@@ -80,49 +84,39 @@ class BlockchainService {
         
         totalBTCAmount -= tx.fee ?? Constants.normalFeeBTC
         guard totalBTCAmount >= tx.amount else { return nil }
-        
-        /*
-         if (tx.Kind == TxKind.Payout || tx.Kind == TxKind.Withdraw)
-         {
-         var txOutputs = tx.Outputs.OrderBy(x => x.Id).ToList();
-         var outputSum = 0M;
-         for (int output = 0; output < txOutputs.Count; output++)
-         {
-         var txOutput = txOutputs[output];
-         var bitcoinAddress = tx.Teammate.Team.Network.CreateBitcoinAddress(txOutput.PayTo.Address);
-         resTx.Outputs.Add(new TxOut(new Money(txOutput.AmountBTC, MoneyUnit.BTC), bitcoinAddress));
-         outputSum += txOutput.AmountBTC;
-         }
-         var changeAmount = totalBTCAmount - outputSum;
-         if (changeAmount > NormalFeeBTC)
-         {
-         var bitcoinAddressChange = tx.Teammate.Team.Network.CreateBitcoinAddress(tx.Teammate.BtcAddressCurrent.Address);
-         resTx.Outputs.Add(new TxOut(new Money(changeAmount, MoneyUnit.BTC), bitcoinAddressChange));
-         }
-         }
-         else if (tx.Kind == TxKind.MoveToNextWallet)
-         {
-         var bitcoinAddress = tx.Teammate.Team.Network.CreateBitcoinAddress(tx.Teammate.BtcAddressNext.Address);
-         resTx.Outputs.Add(new TxOut(new Money(totalBTCAmount, MoneyUnit.BTC), bitcoinAddress));
-         }
-         else if (tx.Kind == TxKind.SaveFromPrevWallet)
-         {
-         var bitcoinAddress = tx.Teammate.Team.Network.CreateBitcoinAddress(tx.Teammate.BtcAddressCurrent.Address);
-         resTx.Outputs.Add(new TxOut(new Money(totalBTCAmount, MoneyUnit.BTC), bitcoinAddress));
-         }
-         
-         return resTx;
-         */
+        let team = tx.teammate!.team!
+        switch tx.kind {
+        case .payout?,
+             .withdraw?:
+            let outputs = tx.outputs
+            var outputSum: Decimal = 0
+            for output in outputs {
+                let bitcoinAddress = btcAddress(team: team, address: output.payTo?.address)
+                resTx.addOutput(BTCTransactionOutput(value: btc(from: output.amount), address: bitcoinAddress))
+                outputSum += output.amount
+            }
+            let changeAmount = totalBTCAmount - outputSum
+            if changeAmount > Constants.normalFeeBTC {
+                let bitcoinAddressChange = btcAddress(team: team, address: tx.teammate?.addressCurrent?.address)
+                resTx.addOutput(BTCTransactionOutput(value: btc(from: changeAmount), address: bitcoinAddressChange))
+            }
+        case .moveToNextWallet?:
+            let bitcoinAddress = btcAddress(team: team, address: tx.teammate?.addressNext?.address)
+            resTx.addOutput(BTCTransactionOutput(value: btc(from: totalBTCAmount), address: bitcoinAddress))
+        case .saveFromPreviousWallet?:
+            let bitcoinAddress = btcAddress(team: team, address: tx.teammate?.addressCurrent?.address)
+            resTx.addOutput(BTCTransactionOutput(value: btc(from: totalBTCAmount), address: bitcoinAddress))
+        default: break
+        }
         return resTx
     }
     
-    //    func balance(for address: BlockchainAddress, completion: (Decimal?, Error?) -> Void) -> Decimal {
-    //        let query = "/api/addr/" + address.address + "/balance"
-    //
-    //        let serverList!
-    //        if let testnet =  address.teammate?.team?.isTestnet ?
-    //
-    //    }
+    func btcAddress(team: Team, address: String?) -> BTCAddress? {
+        guard let address = address else { return nil}
+        return team.isTestnet
+            ? BTCPublicKeyAddressTestnet(string: address)
+            : BTCPublicKeyAddress(string: address)
+    }
     
     func cosignApprovedTxs() {
         let user = fetcher.user
@@ -134,7 +128,12 @@ class BlockchainService {
                 continue
             }
             
-            let redeemScript = SignHelper.redeemScript(address: tx.fromAddress)
+            guard let fromAddress = tx.fromAddress else {
+                print("tx has no valid fromAddress")
+                continue
+            }
+            
+            let redeemScript = SignHelper.redeemScript(address: fromAddress)
             let txInputs = tx.inputs
             for (idx, input) in txInputs.enumerated() {
                 let signature = SignHelper.cosign(redeemScript: redeemScript,
@@ -154,14 +153,18 @@ class BlockchainService {
         
         for tx in txs {
             guard let blockchainTx = btcTransaction(tx: tx) else { fatalError() }
+            guard let fromAddress = tx.fromAddress else {
+                print("can't publish tx as it has no valid fromAddress")
+                continue
+            }
             
-            let redeemScript = SignHelper.redeemScript(address: tx.fromAddress)
+            let redeemScript = SignHelper.redeemScript(address: fromAddress)
             let txInputs = tx.inputs
             
             guard let ops = BTCScript() else { fatalError() }
             
             ops.append(.OP_0)
-            for cosigner in tx.fromAddress.cosigners {
+            for cosigner in fromAddress.cosigners {
                 for input in txInputs {
                     if let txSignature = fetcher.signature(input: input.id, teammateID: cosigner.teammate!.id) {
                         var vchSig = txSignature.signature
