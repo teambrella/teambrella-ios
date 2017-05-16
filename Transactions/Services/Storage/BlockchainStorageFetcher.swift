@@ -112,7 +112,7 @@ class BlockchainStorageFetcher {
     
     var transactionsResolvable: [Tx] {
         let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        request.predicate = NSPredicate(format: "resolutionValue <= \(TransactionClientResolution.published.rawValue)")
+        request.predicate = NSPredicate(format: "resolutionValue <= \(TransactionClientResolution.received.rawValue)")
         let items = try? context.fetch(request)
         return items ?? []
     }
@@ -205,6 +205,7 @@ class BlockchainStorageFetcher {
         let result = try? context.fetch(request)
         return result?.first
     }
+    
     // MARK: Output
     
     func isPayToAddressOkAge(output: TxOutput) -> Bool {

@@ -10,12 +10,6 @@ import Alamofire
 import Foundation
 import SwiftyJSON
 
-public protocol BlockchainServerDelegate: class {
-    func server(server: BlockchainServer, didUpdateTimestamp timestamp: Int64)
-    func server(server: BlockchainServer, didReceiveUpdates updates: JSON, updateTime: Int64)
-    func server(server: BlockchainServer, failedWithError error: Error?)
-}
-
 /**
  Service to interoperate with the server that would provide all transactions related information
  No UI related information should be received with those calls
@@ -26,13 +20,16 @@ public class BlockchainServer {
         //"2uGEcr6rkwBBi26NMcuALZSJGZ353ZdgExwbGGXL4xe8"//"Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
     }
     
-    weak var delegate: BlockchainServerDelegate?
+    enum Response {
+        case success(JSON, Int64)
+        case failure(Error)
+    }
+    
     var isTestnet: Bool = true
     
     private(set)var timestamp: Int64 = 0 {
         didSet {
             print("timestamp updated from \(oldValue) to \(timestamp)")
-            delegate?.server(server: self, didUpdateTimestamp: timestamp)
         }
     }
     
@@ -41,7 +38,7 @@ public class BlockchainServer {
     init() {
     }
     
-    func initTimestamp(completion:@escaping (Int64) -> Void) {
+    func initTimestamp(completion:@escaping (Response) -> Void) {
         guard let url = url(string: "me/GetTimestamp") else {
             fatalError("Couldn't create URL")
         }
@@ -59,45 +56,54 @@ public class BlockchainServer {
                     let status = result["Status"]
                     let timestamp = status["Timestamp"].int64Value
                     self.timestamp = timestamp
-                    completion(timestamp)
+                    completion(.success(result, timestamp))
                 } else {
-                    self.delegate?.server(server: self, failedWithError: nil)
+                    completion(.failure(AmbrellaErrorFactory.emptyReplyError()))
+                    //self.delegate?.server(server: self, failedWithError: nil)
                 }
             case .failure(let error):
-                self.delegate?.server(server: self, failedWithError: error)
+                completion(.failure(error))
+//                self.delegate?.server(server: self, failedWithError: error)
             }
         }
     }
     
     func initClient(privateKey: String, completion: @escaping (_ success: Bool) -> Void) {
-        initTimestamp { [weak self] timestamp in
+        initTimestamp { [weak self] reply in
             guard let me = self else { return }
-            let key = Key(base58String: privateKey, timestamp: timestamp)
-            
-            let request = me.request(string: "me/InitClient", key: key)
-            Alamofire.request(request).responseJSON { response in
-                switch response.result {
-                case .success:
-                    if let value = response.result.value {
-                        print(value)
-                        let result = JSON(value)
-                        if let timestamp = result["Timestamp"].int64 {
-                            me.timestamp = timestamp
+            switch reply {
+            case .success(_, let timestamp):
+                let key = Key(base58String: privateKey, timestamp: timestamp)
+                
+                let request = me.request(string: "me/InitClient", key: key)
+                Alamofire.request(request).responseJSON { response in
+                    switch response.result {
+                    case .success:
+                        if let value = response.result.value {
+                            print(value)
+                            let result = JSON(value)
+                            if let timestamp = result["Timestamp"].int64 {
+                                me.timestamp = timestamp
+                            }
+                            completion(true)
                         }
-                        completion(true)
+                    case .failure(let error):
+                        print("error initializing client: \(error)")
+//                        me.delegate?.server(server: me, failedWithError: error)
+                        completion(false)
                     }
-                case .failure(let error):
-                    me.delegate?.server(server: me, failedWithError: error)
-                    completion(false)
                 }
+
+            default: break
             }
-        }
+                    }
     }
     
     func getUpdates(privateKey: String,
                     lastUpdated: Int64,
                     transactions: [Tx],
-                    signatures: [TxSignature]) {
+                    signatures: [TxSignature],
+                    completion: @escaping (Response) -> Void) {
         let key = Key(base58String: privateKey, timestamp: timestamp)
         
         let txInfos = transactions.map { ["Id": $0.id.uuidString,
@@ -124,10 +130,12 @@ public class BlockchainServer {
                     let timestamp = result["Status"]["Timestamp"].int64Value
                     me.timestamp = timestamp
                     let lastUpdated = result["Data"]["LastUpdated"].int64Value
-                    me.delegate?.server(server: me, didReceiveUpdates: result["Data"], updateTime: lastUpdated)
+                    completion(.success( result["Data"], lastUpdated))
+//                    me.delegate?.server(server: me, didReceiveUpdates: result["Data"], updateTime: lastUpdated)
                 }
             case .failure(let error):
-                me.delegate?.server(server: me, failedWithError: error)
+                completion(.failure(error))
+//                me.delegate?.server(server: me, failedWithError: error)
             }
         }
     }

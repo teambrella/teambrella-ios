@@ -13,7 +13,6 @@ class BlockchainStorage {
     struct Constant {
         static let lastUpdatedKey = "TransactionsServer.lastUpdatedKey"
     }
-    
     lazy var container: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TransactionsModel")
         container.loadPersistentStores { description, error in
@@ -98,17 +97,17 @@ class BlockchainStorage {
         context.rollback()
     }
     
-    func saveInBackground(block: @escaping (_ context: NSManagedObjectContext) -> Void,
-                          completion: (() -> Void)? = nil) {
-        container.performBackgroundTask { [weak self] context in
-            guard let me = self else { return }
-            
-            block(context)
-            let isSaved = me.save(context: context)
-            print(isSaved ? "saved context" : "failed to save context")
-            completion?()
-        }
-    }
+//    func saveInBackground(block: @escaping (_ context: NSManagedObjectContext) -> Void,
+//                          completion: (() -> Void)? = nil) {
+//        container.performBackgroundTask { [weak self] context in
+//            guard let me = self else { return }
+//            
+//            block(context)
+//            let isSaved = me.save(context: context)
+//            print(isSaved ? "saved context" : "failed to save context")
+//            completion?()
+//        }
+//    }
     
     @discardableResult
     private func save(context: NSManagedObjectContext) -> Bool {

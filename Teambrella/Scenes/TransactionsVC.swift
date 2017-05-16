@@ -41,6 +41,8 @@ class TransactionsVC: UIViewController {
     
     @IBAction func tapApprove(_ sender: Any) {
         let transactions = teambrella.fetcher.transactionsResolvable
+        
+        print("Transactions cosignable: \(transactions.count)")
         guard let signatures = teambrella.fetcher.signaturesToUpdate else { fatalError() }
         
         print("transactions to approve: \(transactions.count)")
@@ -59,7 +61,7 @@ class TransactionsVC: UIViewController {
         }
     }
     @IBAction func tapGenPrivate(_ sender: Any) {
-        let key = Key(base58String: User.Constant.tmpPrivateKey, timestamp: teambrella.server.timestamp)
+        let key = teambrella.key
         print("timestamp: \(key.timestamp)\nprivate key: \(key.privateKey)\npublic key: \(key.publicKey)")
         print("signature: \(key.signature)")
         let link = "https://surilla.com/me/ClientLogin?data="
@@ -76,7 +78,24 @@ class TransactionsVC: UIViewController {
         
         print(link + urlSafeData)
     }
+    @IBAction func tapSign(_ sender: Any) {
+        teambrella.blockchain.cosignApprovedTxs()
+    }
     
+    @IBAction func tapCopsign(_ sender: Any) {
+        let transactions = teambrella.fetcher.transactionsResolvable 
+        
+        print("Transactions cosignable: \(transactions.count)")
+        guard let signatures = teambrella.fetcher.signaturesToUpdate else { fatalError() }
+        
+        print("transactions to approve: \(transactions.count)")
+        print("signatures to approve: \(signatures.count)")
+        teambrella.fetcher.transactionsChangeResolution(txs: transactions, to: .approved)
+        teambrella.update()
+        
+        teambrella.blockchain.publishApprovedAndCosignedTxs()
+    }
+  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? TransactionsresultTVC {
             vc.teambrella = teambrella

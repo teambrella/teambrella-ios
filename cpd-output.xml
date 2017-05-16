@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd-cpd/>
+<pmd-cpd>
+   <duplication lines="10" tokens="62">
+      <file line="42"
+            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/TransactionsVC.swift"/>
+      <file line="85"
+            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/TransactionsVC.swift"/>
+      <codefragment><![CDATA[    @IBAction func tapApprove(_ sender: Any) {
+        let transactions = teambrella.fetcher.transactionsResolvable
+        
+        print("Transactions cosignable: \(transactions.count)")
+        guard let signatures = teambrella.fetcher.signaturesToUpdate else { fatalError() }
+        
+        print("transactions to approve: \(transactions.count)")
+        print("signatures to approve: \(signatures.count)")
+        teambrella.fetcher.transactionsChangeResolution(txs: transactions, to: .approved)
+        teambrella.update()]]></codefragment>
+   </duplication>
+</pmd-cpd>

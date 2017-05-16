@@ -55,18 +55,15 @@ class BlockchainService {
         self.server = server
     }
     
-    func updateData() {
-        cosignApprovedTxs()
-        publishApprovedAndCosignedTxs()
-        fetcher.storage.save()
-    }
-    
+    /// returns Satoshis amount from BTC amount
     func btc(from decimal: Decimal) -> BTCAmount {
         return BTCAmount(decimal.double * Double(BTCCoin))
     }
     
     // getTx
     func btcTransaction(tx: Tx) -> BTCTransaction? {
+        let _id = tx.id.uuidString
+        print("btc transaction from tx id: \(_id)")
         var totalBTCAmount: Decimal = 0
         
         let address = tx.teammate?.addressCurrent
@@ -74,16 +71,22 @@ class BlockchainService {
         let resTx = BTCTransaction()
         let txInputs = tx.inputs
         
-        for  txInput in txInputs{
+        for  txInput in txInputs {
             totalBTCAmount += txInput.ammount
             let input = BTCTransactionInput()
             resTx.inputs.append(input)
             input.previousIndex = UInt32(txInput.previousTransactionIndex)
             input.previousHash = BTCHashFromID(txInput.previousTransactionID!)
         }
-        
+       
         totalBTCAmount -= tx.fee ?? Constants.normalFeeBTC
-        guard totalBTCAmount >= tx.amount else { return nil }
+        guard totalBTCAmount >= tx.amount else {
+            print("totalBTCAmount \(totalBTCAmount) is less than tx amount \(tx.amount)")
+            print("txInputs count: \(txInputs.count)")
+            
+            return nil
+        }
+        
         let team = tx.teammate!.team!
         switch tx.kind {
         case .payout?,
@@ -214,6 +217,12 @@ class BlockchainService {
                 replies += 1
             })
         }
+    }
+    
+    func updateData() {
+        cosignApprovedTxs()
+        publishApprovedAndCosignedTxs()
+        fetcher.storage.save()
     }
     
 }

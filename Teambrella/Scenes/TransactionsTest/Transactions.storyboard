@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f1Q-al-94A">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f1Q-al-94A">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Biu-tH-Rzy">
-                                <rect key="frame" x="103.5" y="273.5" width="167" height="120"/>
+                                <rect key="frame" x="103.5" y="243.5" width="167" height="180"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYJ-Av-DPn">
                                         <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
@@ -50,7 +50,21 @@
                                         <rect key="frame" x="0.0" y="90" width="167" height="30"/>
                                         <state key="normal" title="Approve All transactions"/>
                                         <connections>
-                                            <action selector="tapApprove:" destination="Xib-uD-Vgx" eventType="touchUpInside" id="1Qi-Q2-5DO"/>
+                                            <action selector="tapApprove:" destination="Xib-uD-Vgx" eventType="touchUpInside" id="Acm-pH-Fh1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pc5-CI-KLc">
+                                        <rect key="frame" x="0.0" y="120" width="167" height="30"/>
+                                        <state key="normal" title="Sign"/>
+                                        <connections>
+                                            <action selector="tapSign:" destination="Xib-uD-Vgx" eventType="touchUpInside" id="Yeu-Xm-6gB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggA-6G-Ug6">
+                                        <rect key="frame" x="0.0" y="150" width="167" height="30"/>
+                                        <state key="normal" title="CoSign"/>
+                                        <connections>
+                                            <action selector="tapCopsign:" destination="Xib-uD-Vgx" eventType="touchUpInside" id="Sos-Za-p63"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -105,14 +119,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="130.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ammount: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OwG-np-MTs">
-                                            <rect key="frame" x="8" y="8" width="83.5" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OwG-np-MTs">
+                                            <rect key="frame" x="8" y="8" width="69.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUs-n9-nYc">
-                                            <rect key="frame" x="99.5" y="8" width="33" height="21"/>
+                                            <rect key="frame" x="85.5" y="8" width="33" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -124,7 +138,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqD-b3-mlL">
-                                            <rect key="frame" x="99.5" y="37" width="36.5" height="21"/>
+                                            <rect key="frame" x="85.5" y="37" width="36.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

@@ -46,7 +46,10 @@ class Tx: NSManagedObject {
     
     /// TxInputs sorted by UUID id values
     var inputs: [TxInput] {
-        guard let set = inputsValue as? Set<TxInput> else { return [] }
+        guard let set = inputsValue as? Set<TxInput> else {
+            print("couldn't form array from set of TxInput")
+            return []
+        }
         
         return Array(set).sorted { $0.id < $1.id }
     }
