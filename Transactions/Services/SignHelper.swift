@@ -21,7 +21,7 @@ struct SignHelper {
         let ownersScript = BTCScript(data: ownerPublicKey)
         script.append(ownersScript)
         
-        script.append(BTCOpcode.OP_CHECKMULTISIGVERIFY)
+        script.append(BTCOpcode.OP_CHECKSIGVERIFY)
         if n > 6 {
             script.append(BTCOpcode.OP_3)
         } else if n > 3 {
