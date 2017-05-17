@@ -13,6 +13,7 @@ class TransactionCell: UITableViewCell {
     @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var claimNameLabel: UILabel!
     @IBOutlet var signButton: UIButton!
+    @IBOutlet var statusLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

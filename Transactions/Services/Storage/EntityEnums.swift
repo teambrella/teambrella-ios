@@ -49,6 +49,10 @@ public enum TransactionState: Int {
     case errorBadRequest = 102
     case errorOutOfFunds = 103
     case errorTooManyUtxos = 104
+    
+    var string: String {
+        return "\(self)".components(separatedBy: ".").last ?? ""
+    }
 }
 
 public enum TransactionClientResolution: Int {

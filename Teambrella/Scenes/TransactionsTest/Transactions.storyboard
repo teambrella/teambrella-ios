@@ -153,8 +153,21 @@
                                             <rect key="frame" x="336" y="4" width="31" height="30"/>
                                             <state key="normal" title="Sign"/>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSs-g5-pqA">
+                                            <rect key="frame" x="8" y="66" width="45" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ls-uz-WzN">
+                                            <rect key="frame" x="85" y="66" width="50" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="pSs-g5-pqA" firstAttribute="leading" secondItem="hjt-a0-09X" secondAttribute="leading" id="0zL-sh-lkV"/>
                                         <constraint firstItem="ZUs-n9-nYc" firstAttribute="leading" secondItem="OwG-np-MTs" secondAttribute="trailing" constant="8" id="6mn-BB-LHF"/>
                                         <constraint firstItem="gqD-b3-mlL" firstAttribute="centerY" secondItem="hjt-a0-09X" secondAttribute="centerY" id="COK-px-E1T"/>
                                         <constraint firstItem="hjt-a0-09X" firstAttribute="top" secondItem="OwG-np-MTs" secondAttribute="bottom" constant="8" id="JII-SP-Sca"/>
@@ -163,6 +176,9 @@
                                         <constraint firstItem="gqD-b3-mlL" firstAttribute="leading" secondItem="ZUs-n9-nYc" secondAttribute="leading" id="QW9-RQ-TP9"/>
                                         <constraint firstItem="OwG-np-MTs" firstAttribute="leading" secondItem="Ecx-wE-q5f" secondAttribute="leadingMargin" id="WI1-aa-3Tg"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="O6q-V9-Osq" secondAttribute="trailing" id="ac1-9Z-5ZW"/>
+                                        <constraint firstItem="2Ls-uz-WzN" firstAttribute="leading" secondItem="gqD-b3-mlL" secondAttribute="leading" id="big-Ea-TmO"/>
+                                        <constraint firstItem="pSs-g5-pqA" firstAttribute="top" secondItem="hjt-a0-09X" secondAttribute="bottom" constant="8" id="eON-U0-Qem"/>
+                                        <constraint firstItem="2Ls-uz-WzN" firstAttribute="centerY" secondItem="pSs-g5-pqA" secondAttribute="centerY" id="i4o-nJ-81g"/>
                                         <constraint firstAttribute="trailing" secondItem="Nmy-5y-KLy" secondAttribute="trailing" constant="8" id="leT-uF-wxX"/>
                                         <constraint firstItem="Nmy-5y-KLy" firstAttribute="centerY" secondItem="ZUs-n9-nYc" secondAttribute="centerY" id="m72-54-x1C"/>
                                         <constraint firstItem="ZUs-n9-nYc" firstAttribute="centerY" secondItem="OwG-np-MTs" secondAttribute="centerY" id="mWj-zE-BOd"/>
@@ -174,6 +190,7 @@
                                     <outlet property="amountLabel" destination="ZUs-n9-nYc" id="OG0-OA-8wa"/>
                                     <outlet property="claimNameLabel" destination="O6q-V9-Osq" id="gDh-gy-zLW"/>
                                     <outlet property="signButton" destination="Nmy-5y-KLy" id="6WU-eC-nWM"/>
+                                    <outlet property="statusLabel" destination="2Ls-uz-WzN" id="akY-a4-ljI"/>
                                     <outlet property="userNameLabel" destination="gqD-b3-mlL" id="OSu-G7-cwC"/>
                                 </connections>
                             </tableViewCell>

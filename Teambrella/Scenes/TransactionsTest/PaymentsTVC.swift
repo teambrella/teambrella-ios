@@ -57,6 +57,7 @@ class PaymentsTVC: UITableViewController {
         cell.amountLabel.text = String(describing: transaction.amount)
         cell.userNameLabel.text = transaction.claimTeammate?.name ?? "None"
         cell.claimNameLabel.text = String(transaction.claimID)
+        cell.statusLabel.text = transaction.state?.string ?? "none"
         // Configure the cell...
 
         return cell
