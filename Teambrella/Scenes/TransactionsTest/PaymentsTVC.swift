@@ -28,6 +28,20 @@ class PaymentsTVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func tapSign(sender: UIButton) {
+        let cells = tableView.visibleCells.flatMap { $0 as? TransactionCell }.filter { $0.signButton == sender }
+        if let cell = cells.first, let indexPath = tableView.indexPath(for: cell) {
+            let transaction = tx(indexPath: indexPath)
+            print("Tapped \(transaction.id)")
+        }
+    }
+    
+    func tx(indexPath: IndexPath) -> Tx {
+        switch indexPath.section {
+        case 0: return resolvable[indexPath.row]
+        default: return cosignable[indexPath.row]
+        }
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,16 +62,18 @@ class PaymentsTVC: UITableViewController {
             fatalError()
         }
 
-        let transaction: Tx!
-        switch indexPath.section {
-        case 0: transaction = resolvable[indexPath.row]
-        default: transaction = cosignable[indexPath.row]
-        }
+        let transaction = tx(indexPath: indexPath)
         
         cell.amountLabel.text = String(describing: transaction.amount)
         cell.userNameLabel.text = transaction.claimTeammate?.name ?? "None"
         cell.claimNameLabel.text = String(transaction.claimID)
-        cell.statusLabel.text = transaction.state?.string ?? "none"
+        cell.statusLabel.text = transaction.resolution.string
+        let title = transaction.resolution == .received
+            ? "Approve"
+            : transaction.state == TransactionState.selectedForCosigning ? "Cosign" :  transaction.state?.string
+        cell.signButton.setTitle(title, for: .normal)
+        cell.signButton.removeTarget(self, action: #selector(tapSign), for: .touchUpInside)
+        cell.signButton.addTarget(self, action: #selector(tapSign), for: .touchUpInside)
         // Configure the cell...
 
         return cell

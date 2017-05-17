@@ -11,24 +11,43 @@ import Foundation
 import SwiftyJSON
 
 struct EntityFactory {
-    var context: NSManagedObjectContext { return fetcher.context }
+    var context: NSManagedObjectContext
     let fetcher: BlockchainStorageFetcher
     let formatter = BlockchainDateFormatter()
     
     init(fetcher: BlockchainStorageFetcher) {
         self.fetcher = fetcher
+        self.context = fetcher.context
     }
     
-    func createOrUpdateEntities(json: JSON) {
+    func updateLocalDb(txs: [Tx], signatures: [TxSignature], json: JSON) {
+        txs.forEach { tx in tx.isServerUpdateNeeded = false }
+        signatures.forEach { signature in signature.isServerUpdateNeeded = false }
+        
+        createAndUpdate(with: json)
+        check(with: json)
+        connectEntities(with: json)
+    }
+    
+    private func createAndUpdate(with json: JSON) {
         teams(json: json["Teams"])
         teammates(json: json["Teammates"])
-        addresses(json: json["BTCAddresses"])
-        transactions(json: json["Txs"])
-        cosigners(json: json["Cosigners"])
         payTos(json: json["PayTos"])
+        addresses(json: json["BTCAddresses"])
+        cosigners(json: json["Cosigners"])
+        transactions(json: json["Txs"])
         inputs(json: json["TxInputs"])
         outputs(json: json["TxOutputs"])
         signatures(json: json["TxSignatures"])
+        fetcher.save()
+    }
+    
+    private func check(with json: JSON) {
+        
+    }
+    
+    private func connectEntities(with json: JSON) {
+        
     }
     
     // Teams
@@ -148,7 +167,7 @@ struct EntityFactory {
     // -- no funds on existing current address
     // -- or a real Tx from current to next occurred
     func transactions(json: JSON) {
-       json.arrayValue.forEach { item in
+        json.arrayValue.forEach { item in
             let id = item["Id"].stringValue
             if let existingTx = fetcher.transaction(id: id) {
                 existingTx.stateValue = item["State"].int16Value
@@ -221,7 +240,7 @@ struct EntityFactory {
         for item in json.arrayValue {
             let txInputId = item["TxInputId"].stringValue
             let teammateID = item["TeammateId"].int64Value
-             // can't change signatures
+            // can't change signatures
             guard fetcher.signature(input: txInputId,
                                     teammateID: Int(teammateID)) == nil else { continue }
             guard let txInput = fetcher.input(id: txInputId) else { continue } // malformed TX

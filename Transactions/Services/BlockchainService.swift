@@ -47,12 +47,10 @@ class BlockchainService {
         let confirmation: Int
     }
     
-    private unowned let fetcher: BlockchainStorageFetcher
-    private unowned let server: BlockchainServer
+    private unowned let storage: BlockchainStorage
     
-    init(fetcher: BlockchainStorageFetcher, server: BlockchainServer) {
-        self.fetcher = fetcher
-        self.server = server
+    init(storage: BlockchainStorage) {
+        self.storage = storage
     }
     
     /// returns Satoshis amount from BTC amount
@@ -122,8 +120,8 @@ class BlockchainService {
     }
     
     func cosignApprovedTxs() {
-        let user = fetcher.user
-        let txs = fetcher.transactionsResolvable 
+        let user = storage.fetcher.user
+        let txs = storage.fetcher.transactionsResolvable
         
         for tx in txs {
             guard let blockchainTx = btcTransaction(tx: tx) else {
@@ -143,16 +141,16 @@ class BlockchainService {
                                                   key: user.bitcoinPrivateKey.key,
                                                   transaction: blockchainTx,
                                                   inputNum: idx)
-                fetcher.addNewSignature(input: input, tx: tx, signature: signature)
+                storage.fetcher.addNewSignature(input: input, tx: tx, signature: signature)
             }
             tx.resolution = .signed
-            fetcher.storage.save()
+            storage.fetcher.save()
         }
     }
     
     func publishApprovedAndCosignedTxs() {
-        let user = fetcher.user
-        let txs = fetcher.transactionsApprovedAndCosigned
+        let user = storage.fetcher.user
+        let txs = storage.fetcher.transactionsApprovedAndCosigned
         
         for tx in txs {
             guard let blockchainTx = btcTransaction(tx: tx) else { fatalError() }
@@ -169,7 +167,7 @@ class BlockchainService {
             ops.append(.OP_0)
             for cosigner in fromAddress.cosigners {
                 for input in txInputs {
-                    if let txSignature = fetcher.signature(input: input.id, teammateID: cosigner.teammate!.id) {
+                    if let txSignature = storage.fetcher.signature(input: input.id, teammateID: cosigner.teammate!.id) {
                         var vchSig = txSignature.signature
                         vchSig.append(BTCSignatureHashType.BTCSignatureHashTypeAll.rawValue)
                         ops.appendData(vchSig)
@@ -184,7 +182,7 @@ class BlockchainService {
                                                   key: user.bitcoinPrivateKey.key,
                                                   transaction: blockchainTx,
                                                   inputNum: idx)
-                fetcher.addNewSignature(input: input, tx: tx, signature: signature)
+                storage.fetcher.addNewSignature(input: input, tx: tx, signature: signature)
                 
                 var vchSig = signature
                 vchSig.append(BTCSignatureHashType.BTCSignatureHashTypeAll.rawValue)
@@ -194,7 +192,7 @@ class BlockchainService {
             }
             let strTx = blockchainTx.hex!
             postTx(hexString: strTx) { success in
-                self.fetcher.transactionsChangeResolution(txs: [tx], to: .published)
+                self.storage.fetcher.transactionsChangeResolution(txs: [tx], to: .published)
             }
         }
         
@@ -203,9 +201,9 @@ class BlockchainService {
     private func postTx(hexString: String, completion: @escaping (_ success: Bool) -> Void) {
         var replies = 0
         var replied = false
-        let servers = server.isTestnet ? Constants.testNetServers : Constants.mainNetServers
+        let servers = storage.server.isTestnet ? Constants.testNetServers : Constants.mainNetServers
         for url in servers {
-            server.postTxExplorer(tx: hexString, urlString: url, success: { txID in
+            storage.server.postTxExplorer(tx: hexString, urlString: url, success: { txID in
                 if replied == false {
                     replied = true
                     completion(true)
@@ -222,7 +220,7 @@ class BlockchainService {
     func updateData() {
         cosignApprovedTxs()
         publishApprovedAndCosignedTxs()
-        fetcher.storage.save()
+        storage.save()
     }
     
 }

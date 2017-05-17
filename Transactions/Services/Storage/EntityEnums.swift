@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum UserAddressStatus: Int {
+public enum UserAddressStatus: Int, EnumStringConvertible {
     case previous = 0
     case current = 1
     case next = 2
@@ -21,7 +21,7 @@ public enum UserAddressStatus: Int {
     case serverNext = 12
 }
 
-public enum TransactionKind: Int {
+public enum TransactionKind: Int, EnumStringConvertible {
     /// voting compensation or reimbursement
     case payout = 0
     case withdraw = 1
@@ -29,7 +29,7 @@ public enum TransactionKind: Int {
     case saveFromPreviousWallet = 3
 }
 
-public enum TransactionState: Int {
+public enum TransactionState: Int, EnumStringConvertible {
     case created = 0
     case approvedMaster = 1
     case approvedCosigners = 2
@@ -49,13 +49,9 @@ public enum TransactionState: Int {
     case errorBadRequest = 102
     case errorOutOfFunds = 103
     case errorTooManyUtxos = 104
-    
-    var string: String {
-        return "\(self)".components(separatedBy: ".").last ?? ""
-    }
 }
 
-public enum TransactionClientResolution: Int {
+public enum TransactionClientResolution: Int, EnumStringConvertible {
     case none = 0
     case received = 1
     case approved = 2
@@ -67,4 +63,13 @@ public enum TransactionClientResolution: Int {
     // bad id, kind or amounts
     case errorBadRequest = 102
     case errorOutOfFunds = 103
+}
+
+
+protocol EnumStringConvertible {
+    var string: String { get }
+}
+
+extension EnumStringConvertible {
+    var string: String { return "\(self)".components(separatedBy: ".").last ?? "" }
 }

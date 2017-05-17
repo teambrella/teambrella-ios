@@ -19,7 +19,14 @@ class TxSignature: NSManagedObject {
         }
     }
     var inputID: UUID { return UUID(uuidString:inputIDValue!)! }
-    var isServerUpdateNeeded: Bool { return isServerUpdateNeededValue }
+    var isServerUpdateNeeded: Bool {
+        get {
+            return isServerUpdateNeededValue
+        }
+        set {
+            isServerUpdateNeededValue = newValue
+        }
+    }
     var signature: Data { return signatureValue! as Data }
     
     class func create(in context: NSManagedObjectContext) -> TxSignature {

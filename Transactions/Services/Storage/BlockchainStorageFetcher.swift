@@ -14,11 +14,15 @@ class BlockchainStorageFetcher {
         static let noAutoApproval = 1000000
     }
     
-    unowned var storage: BlockchainStorage
+    private unowned var storage: BlockchainStorage
     var context: NSManagedObjectContext { return storage.context }
     
     init(storage: BlockchainStorage) {
         self.storage = storage
+    }
+    
+    func save() {
+        storage.save()
     }
     
     // MARK: User
@@ -37,7 +41,7 @@ class BlockchainStorageFetcher {
         let user = User(context: context)
         //   PrivateKey = key.GetBitcoinSecret(Network.Main).ToString()
         user.privateKeyValue =  User.Constant.tmpPrivateKey
-        storage.save()
+        save()
         return user
     }
     
@@ -257,7 +261,7 @@ class BlockchainStorageFetcher {
         txSignature.teammate = me
         txSignature.isServerUpdateNeededValue = true
         txSignature.signatureValue = signature as NSData
-        storage.save()
+        save()
         return txSignature
     }
     

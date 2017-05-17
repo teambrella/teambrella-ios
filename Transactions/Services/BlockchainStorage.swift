@@ -13,6 +13,8 @@ class BlockchainStorage {
     struct Constant {
         static let lastUpdatedKey = "TransactionsServer.lastUpdatedKey"
     }
+    let server = BlockchainServer()
+    var key: Key { return Key(base58String: self.fetcher.user.privateKey, timestamp: self.server.timestamp) }
     lazy var container: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TransactionsModel")
         container.loadPersistentStores { description, error in
@@ -47,20 +49,45 @@ class BlockchainStorage {
         print("Documents path: \(documentsPath)")
     }
     
-    func update(with json: JSON, updateTime: Int64, completion: @escaping () -> Void) {
-        let start = DispatchTime.now()
-        context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
-        print("Trying to save json to context\n\n")
-        let factory = EntityFactory(fetcher: self.fetcher)
-        factory.createOrUpdateEntities(json: json)
-        let fetch = DispatchTime.now()
-        print("Parsing time: \(Double(fetch.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000) sec")
-        updateAddresses()
-        save(context: context)
-        let end = DispatchTime.now()
-        print("Total execution time: \(Double(end.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000) sec")
-        lastUpdated = updateTime
-        completion()
+    func updateData(completion: @escaping (Bool) -> Void) {
+        server.initClient(privateKey: fetcher.user.privateKey) { [unowned self] success in
+            if success {
+                self.autoApproveTransactions()
+                self.serverUpdateToLocalDb { success in
+                    if success {
+                        self.updateAddresses()
+                        completion(true)
+                    } else {
+                       completion(false)
+                    }
+                }
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func serverUpdateToLocalDb(completion: @escaping (Bool) -> Void) {
+        guard let txsToUpdate = fetcher.transactionsNeedServerUpdate else { fatalError() }
+        guard let signatures = fetcher.signaturesToUpdate else { fatalError() }
+        
+        server.getUpdates(privateKey: User.Constant.tmpPrivateKey,
+                          lastUpdated: lastUpdated,
+                          transactions: txsToUpdate,
+                          signatures: signatures) { [unowned self] reply in
+                            switch reply {
+                            case .success(let json, let timestamp):
+                                self.context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+                                let factory = EntityFactory(fetcher: self.fetcher)
+                                factory.updateLocalDb(txs: txsToUpdate, signatures: signatures, json: json)
+                                self.lastUpdated = timestamp
+                                completion(true)
+                                break
+                            case .failure(let error):
+                                print("server request failed with error: \(error)")
+                                completion(false)
+                            }
+        }
     }
     
     func autoApproveTransactions() {
