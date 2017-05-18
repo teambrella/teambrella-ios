@@ -126,14 +126,14 @@ class BlockchainStorageFetcher {
         return items ?? []
     }
     
-    var transactionsCosignable: [Tx]? {
+    var transactionsCosignable: [Tx] {
         let request: NSFetchRequest<Tx> = Tx.fetchRequest()
         let p1 = NSPredicate(format: "resolutionValue == %i", TransactionClientResolution.approved.rawValue)
         let p2 = NSPredicate(format: "stateValue == %i", TransactionState.selectedForCosigning.rawValue)
         let p3 = NSPredicate(format: "inputsValue.@count > 0")
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1, p2, p3])
         let items = try? context.fetch(request)
-        return items
+        return items ?? []
     }
     
     var transactionsApprovedAndCosigned: [Tx] {

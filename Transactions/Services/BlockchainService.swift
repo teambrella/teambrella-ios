@@ -157,20 +157,24 @@ class BlockchainService {
         print("btc transaction from tx id: \(_id)")
         var totalBTCAmount: Decimal = 0
         
-        let address = tx.teammate?.addressCurrent
-        
         let resTx = BTCTransaction()
         let txInputs = tx.inputs
+        
+        guard !txInputs.isEmpty else {
+            print("tx has no inputs")
+            return nil
+        }
         
         for  txInput in txInputs {
             totalBTCAmount += txInput.ammount
             let input = BTCTransactionInput()
             resTx.inputs.append(input)
             input.previousIndex = UInt32(txInput.previousTransactionIndex)
-            input.previousHash = BTCHashFromID(txInput.previousTransactionID!)
+            input.previousHash = BTCHashFromID(txInput.previousTransactionID)
         }
         
-        totalBTCAmount -= tx.fee ?? Constants.normalFeeBTC
+        //totalBTCAmount -= tx.fee ?? Constants.normalFeeBTC
+        
         guard totalBTCAmount >= tx.amount else {
             print("totalBTCAmount \(totalBTCAmount) is less than tx amount \(tx.amount)")
             print("txInputs count: \(txInputs.count)")
@@ -214,16 +218,16 @@ class BlockchainService {
     
     func cosignApprovedTxs() {
         let user = storage.fetcher.user
-        let txs = storage.fetcher.transactionsResolvable
+        let txs = storage.fetcher.transactionsCosignable
         
         for tx in txs {
             guard let blockchainTx = btcTransaction(tx: tx) else {
-                print("couldn't create blockchainTransaction from: \(tx)")
+                print("couldn't create blockchainTransaction from: \(tx.id.uuidString)")
                 continue
             }
             
             guard let fromAddress = tx.fromAddress else {
-                print("tx has no valid fromAddress")
+                print("tx \(tx.id.uuidString) has no valid fromAddress")
                 continue
             }
             
