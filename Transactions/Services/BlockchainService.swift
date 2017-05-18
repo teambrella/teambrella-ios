@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class BlockchainService {
     fileprivate struct OpCode: OptionSet {
@@ -45,12 +46,104 @@ class BlockchainService {
         let scriptPubKey: String
         let amount: Decimal
         let confirmation: Int
+        
+        init?(json: JSON) {
+            guard let address = json["address"].string,
+                let txid = json["txid"].string,
+                let vout = json["vout"].int,
+                let ts = json["ts"].int64,
+                let scriptPubKey = json["String"].string,
+                let amount = json["amount"].double,
+                let confirmation = json["confirmation"].int else { return nil }
+            
+            self.address = address
+            self.txid = txid
+            self.vout = vout
+            self.ts = ts
+            self.scriptPubKey = scriptPubKey
+            self.amount = Decimal(amount)
+            self.confirmation = confirmation
+        }
     }
+    
+    private struct ExplorerTxRes {
+        let txID: String
+    }
+    //
+    //    private struct ExplorerTxOuter {
+    //        let pagesTotal: Int
+    //        let txs: [ExplorerTx]
+    //    }
+    //
+    //    private struct ExplorerTxVout {
+    //        let scriptPubKey: Expl
+    //    }
     
     private unowned let storage: BlockchainStorage
     
     init(storage: BlockchainStorage) {
         self.storage = storage
+    }
+    
+    func fetchBalance(address: BtcAddress?, completion: @escaping (_ balance: Decimal) -> Void) {
+        guard let address = address else {
+            completion(-1)
+            return
+        }
+        
+        let query = "/api.addr/" + address.address + "/balance"
+        
+        let servers = storage.server.isTestnet ? Constants.testNetServers : Constants.mainNetServers
+        var isFetched = false
+        var attempts = servers.count
+        for serverURL in servers {
+            let urlString = serverURL + query
+            storage.server.fetch(urlString: urlString, success: { result in
+                attempts -= 1
+                guard isFetched == false, let value = result.double else {
+                    return
+                }
+                
+                isFetched = true
+                let balance = Decimal(value)
+                completion(balance >= 0 ? balance : -1)
+            }) {
+                attempts -= 1
+                if attempts <= 0 && isFetched == false {
+                    completion(-1)
+                }
+            }
+        }
+    }
+    
+   private func fetchUtxos(address: BtcAddress?, minAmount: Decimal, completion: @escaping (_ utxos: [ExplorerUtxo]?) -> Void) {
+        guard let address = address else {
+            completion([])
+            return
+        }
+        
+        let query = "/api.addr/" + address.address + "/utxo"
+        
+        let servers = storage.server.isTestnet ? Constants.testNetServers : Constants.mainNetServers
+        var isFetched = false
+        var attempts = servers.count
+        for serverURL in servers {
+            let urlString = serverURL + query
+            storage.server.fetch(urlString: urlString, success: { result in
+                attempts -= 1
+                guard isFetched == false, let value = result.array else { return }
+                
+                isFetched = true
+                
+                completion(value.flatMap { ExplorerUtxo(json: $0) }.filter { $0.amount >= minAmount })
+            }) {
+                attempts -= 1
+                if attempts <= 0 && isFetched == false {
+                     // utox may be null when no interenet connection.
+                    completion(nil)
+                }
+            }
+        }
     }
     
     /// returns Satoshis amount from BTC amount
@@ -76,7 +169,7 @@ class BlockchainService {
             input.previousIndex = UInt32(txInput.previousTransactionIndex)
             input.previousHash = BTCHashFromID(txInput.previousTransactionID!)
         }
-       
+        
         totalBTCAmount -= tx.fee ?? Constants.normalFeeBTC
         guard totalBTCAmount >= tx.amount else {
             print("totalBTCAmount \(totalBTCAmount) is less than tx amount \(tx.amount)")
@@ -223,4 +316,19 @@ class BlockchainService {
         storage.save()
     }
     
+    //    func userCosignatures(address: BtcAddress, transaction: BTCTransaction) -> [Data] {
+    //        let user = storage.fetcher.user
+    //        let redeemScript = SignHelper.redeemScript(address: address)
+    //        var cosignatures: [Data] = []
+    //        guard let inputs = transaction.inputs as? [BTCTransactionInput] else { fatalError() }
+    //
+    //        for (idx, input) in inputs.enumerated() {
+    //            let cosignature = SignHelper.cosign(redeemScript: redeemScript,
+    //                                                key: user.bitcoinPrivateKey.key,
+    //                                                transaction: transaction,
+    //                                                inputNum: idx)
+    //            cosignatures.append(cosignature)
+    //        }
+    //        return cosignatures
+    //    }
 }

@@ -43,6 +43,42 @@ struct EntityFactory {
     }
     
     private func check(with json: JSON) {
+        let txs = json["Txs"].arrayValue
+        for arrivingTx in txs {
+            guard let tx = self.fetcher.transaction(id: arrivingTx["Id"].stringValue) else { continue }
+            
+            let isWalletToMove = tx.kind == .moveToNextWallet || tx.kind == .saveFromPreviousWallet
+            // Outputs are required unless it's a wallet update
+                if isWalletToMove == false && tx.outputs.isEmpty {
+                    fetcher.transactionsChangeResolution(txs: [tx], to: .errorBadRequest)
+                    continue
+                }
+             // AmountBTC sum must match total unless it's a wallet update
+            if isWalletToMove == false {
+                let outputsSum = tx.outputs.reduce(0) { $0 + $1.amount }
+                if abs(outputsSum - tx.amount) > 0.000001 {
+                    fetcher.transactionsChangeResolution(txs: [tx], to: .errorBadRequest)
+                }
+                
+            }
+            
+            if tx.resolution == .none {
+                fetcher.transactionsChangeResolution(txs: [tx], to: .received)
+            }
+        }
+        
+        let addresses = json["BTCAddresses"].arrayValue
+        for address in addresses {
+            if let addressSaved = fetcher.address(id: address["Address"].stringValue) {
+                print("Comparing \(addressSaved.address)")
+                let generatedAddress = SignHelper.generateStringAddress(from: addressSaved)
+                if generatedAddress != addressSaved.address {
+                    print("Address mismatch gen: \(generatedAddress), received: \(addressSaved.address)")
+                    addressSaved.status = .invalid
+                }
+            }
+            
+        }
         
     }
     

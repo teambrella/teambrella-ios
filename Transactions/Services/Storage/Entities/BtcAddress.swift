@@ -24,7 +24,7 @@ class BtcAddress: NSManagedObject {
         guard let context = managedObjectContext else { return [] }
         
         let request: NSFetchRequest<Cosigner> = Cosigner.fetchRequest()
-        request.predicate = NSPredicate(format: "addressID == %@", address)
+        request.predicate = NSPredicate(format: "addressIDValue == %@", address)
         let result = try? context.fetch(request)
         return result ?? []
         

@@ -63,7 +63,7 @@ public class BlockchainServer {
                 }
             case .failure(let error):
                 completion(.failure(error))
-//                self.delegate?.server(server: self, failedWithError: error)
+                //                self.delegate?.server(server: self, failedWithError: error)
             }
         }
     }
@@ -89,14 +89,14 @@ public class BlockchainServer {
                         }
                     case .failure(let error):
                         print("error initializing client: \(error)")
-//                        me.delegate?.server(server: me, failedWithError: error)
+                        //                        me.delegate?.server(server: me, failedWithError: error)
                         completion(false)
                     }
                 }
-
+                
             default: break
             }
-                    }
+        }
     }
     
     func getUpdates(privateKey: String,
@@ -131,11 +131,11 @@ public class BlockchainServer {
                     me.timestamp = timestamp
                     let lastUpdated = result["Data"]["LastUpdated"].int64Value
                     completion(.success( result["Data"], lastUpdated))
-//                    me.delegate?.server(server: me, didReceiveUpdates: result["Data"], updateTime: lastUpdated)
+                    //                    me.delegate?.server(server: me, didReceiveUpdates: result["Data"], updateTime: lastUpdated)
                 }
             case .failure(let error):
                 completion(.failure(error))
-//                me.delegate?.server(server: me, failedWithError: error)
+                //                me.delegate?.server(server: me, failedWithError: error)
             }
         }
     }
@@ -170,7 +170,24 @@ public class BlockchainServer {
             }
             failure()
         }
+    }
+    
+    func fetch(urlString: String, success: @escaping (_ result: JSON) -> Void, failure: @escaping () -> Void) {
+        guard let url = URL(string: urlString) else { fatalError() }
         
+        let request = URLRequest(url: url)
+        Alamofire.request(request).responseJSON { response in
+            switch response.result {
+            case.success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    success(json)
+                    return
+                }
+            default: break
+            }
+            failure()
+        }
     }
     
     private func request(string: String, key: Key, payload: [String: Any]? = nil) -> URLRequest {

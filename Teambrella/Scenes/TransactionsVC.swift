@@ -83,7 +83,7 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapCopsign(_ sender: Any) {
-        let transactions = teambrella.fetcher.transactionsResolvable 
+        let transactions = teambrella.fetcher.transactionsResolvable
         
         print("Transactions cosignable: \(transactions.count)")
         guard let signatures = teambrella.fetcher.signaturesToUpdate else { fatalError() }

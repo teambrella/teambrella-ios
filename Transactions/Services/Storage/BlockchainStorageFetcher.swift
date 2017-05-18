@@ -99,6 +99,11 @@ class BlockchainStorageFetcher {
     }
     
     // MARK: Transaction
+    var transactions: [Tx] {
+        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
+        let result = try? context.fetch(request)
+        return result ?? []
+    }
     
     func transaction(id: String) -> Tx? {
         let request: NSFetchRequest<Tx> = Tx.fetchRequest()
@@ -181,6 +186,7 @@ class BlockchainStorageFetcher {
         for tx in txs {
             tx.resolution = resolution
             tx.clientResolutionTimeValue = when as NSDate
+            tx.isServerUpdateNeeded = true
         }
         storage.save()
     }
