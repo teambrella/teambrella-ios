@@ -230,10 +230,12 @@ class BlockchainService {
             let redeemScript = SignHelper.redeemScript(address: fromAddress)
             let txInputs = tx.inputs
             for (idx, input) in txInputs.enumerated() {
-                let signature = SignHelper.cosign(redeemScript: redeemScript,
+                guard let signature = SignHelper.cosign(redeemScript: redeemScript,
                                                   key: user.bitcoinPrivateKey.key,
                                                   transaction: blockchainTx,
-                                                  inputNum: idx)
+                                                  inputNum: idx) else {
+                                                    fatalError()
+                }
                 storage.fetcher.addNewSignature(input: input, tx: tx, signature: signature)
             }
             tx.resolution = .signed
@@ -271,10 +273,12 @@ class BlockchainService {
             }
             
             for (idx, input) in txInputs.enumerated() {
-                let signature = SignHelper.cosign(redeemScript: redeemScript,
+               guard let signature = SignHelper.cosign(redeemScript: redeemScript,
                                                   key: user.bitcoinPrivateKey.key,
                                                   transaction: blockchainTx,
-                                                  inputNum: idx)
+                                                  inputNum: idx) else {
+                                                    fatalError()
+                }
                 storage.fetcher.addNewSignature(input: input, tx: tx, signature: signature)
                 
                 var vchSig = signature

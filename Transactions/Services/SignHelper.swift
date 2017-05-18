@@ -19,7 +19,7 @@ struct SignHelper {
         
         print("creating BTCAddress with publicKey: \(publicKey)")
         let ownerPublicKey = Data(hex: publicKey)
-    
+        
         let cosignersPublicKeys = address.cosigners.flatMap { $0.teammate?.publicKey }.map { Data(hex:$0) }
         let n = cosignersPublicKeys.count
         guard let script = BTCScript() else { fatalError("Couldn't initialize script") }
@@ -44,17 +44,21 @@ struct SignHelper {
         
         script.appendData(bigInt.signedLittleEndian)
         script.append(BTCOpcode.OP_DROP)
-       return script
+        return script
     }
- 
+    
     
     static func generateStringAddress(from address: BtcAddress) -> String {
         let script = redeemScript(address: address)
-        guard let hash = script.scriptHashAddress else { fatalError() }
-        return hash.public.string
-        //return script.standardAddress.string
-//        guard let hash = script.scriptHashAddress else { fatalError("Can't create hash") }
-//        return hash.string
+        guard let team = address.teammate?.team else { fatalError() }
+        
+        let hashAddress: BTCAddress!
+        if team.isTestnet {
+            hashAddress = BTCScriptHashAddressTestnet(data: BTCHash160(script.data)! as Data)//script.scriptHashAddressTestnet
+        } else {
+            hashAddress = BTCScriptHashAddress(data: BTCHash160(script.data)! as Data)//script.scriptHashAddress
+        }
+        return hashAddress.string
     }
     
     static func pubKeyScript(from address: BtcAddress) -> BTCScript {
@@ -62,21 +66,26 @@ struct SignHelper {
         guard let pubScript = BTCScript() else { fatalError() }
         
         pubScript.append(BTCOpcode.OP_HASH160)
-       // Op.GetPushOp(redeemScript.GetScriptAddress(address.Teammate.Team.Network).ToBytes()),
+        // Op.GetPushOp(redeemScript.GetScriptAddress(address.Teammate.Team.Network).ToBytes()),
         let network = address.teammate!.team!.network
-       // let networkScript = script.pri
-//        pubScript.append(BTCScript(data: network)
+        // let networkScript = script.pri
+        //        pubScript.append(BTCScript(data: network)
         pubScript.append(BTCOpcode.OP_EQUAL)
         return pubScript
     }
     
-    static func cosign(redeemScript: BTCScript, key: BTCKey, transaction: BTCTransaction, inputNum: Int) -> Data {
-        let machine = BTCScriptMachine(transaction: transaction, inputIndex: UInt32(inputNum))
-//        let hash = machine.r
-        let data = Data()
-        return key.signature(forHash: data, hashType: BTCSignatureHashType.BTCSignatureHashTypeAll)
+    static func cosign(redeemScript: BTCScript, key: BTCKey, transaction: BTCTransaction, inputNum: Int) -> Data? {
+        do {
+            let hash = try transaction.signatureHash(for: redeemScript,
+                                                     inputIndex: UInt32(inputNum),
+                                                     hashType: .BTCSignatureHashTypeAll)
+            return key.signature(forHash: hash)
+        } catch {
+            print("Cosign error")
+            return nil
+        }
     }
-     /*
+    /*
      
      public static byte[] Cosign(Script redeemScript, Key key, Transaction transaction, int inputNum)
      {

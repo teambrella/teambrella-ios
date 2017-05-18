@@ -20,6 +20,12 @@ class Teammate: NSManagedObject {
         return Array(set)
     }
     
+    var signatures: [TxSignature] {
+        guard let set = signaturesValue as? Set<TxSignature> else { fatalError() }
+        
+        return Array(set)
+    }
+    
     var addressPrevious: BtcAddress? {
         return addresses.filter { $0.status == UserAddressStatus.previous }.first
     }

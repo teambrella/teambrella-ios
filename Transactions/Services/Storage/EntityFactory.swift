@@ -70,11 +70,12 @@ struct EntityFactory {
         let addresses = json["BTCAddresses"].arrayValue
         for address in addresses {
             if let addressSaved = fetcher.address(id: address["Address"].stringValue) {
-                print("Comparing \(addressSaved.address)")
                 let generatedAddress = SignHelper.generateStringAddress(from: addressSaved)
                 if generatedAddress != addressSaved.address {
                     print("Address mismatch gen: \(generatedAddress), received: \(addressSaved.address)")
                     addressSaved.status = .invalid
+                } else {
+                    print("Address OK! \(generatedAddress)")
                 }
             }
             
@@ -169,6 +170,7 @@ struct EntityFactory {
             cosigner.addressIDValue = addressID
             cosigner.keyOrderValue = keyOrder
             cosigner.teammate = fetcher.teammate(id: teammateID)
+            cosigner.address = fetcher.address(id: addressID)
         }
     }
     
@@ -287,7 +289,7 @@ struct EntityFactory {
             signature.signatureValue = item["Signature"].stringValue.base64data as NSData?
             signature.isServerUpdateNeededValue = false
             signature.input = txInput
-            
+            signature.teammate = fetcher.teammate(id: teammateID)
         }
     }
     
