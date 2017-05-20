@@ -13,14 +13,14 @@ struct SignHelper {
     // https://github.com/MetacoSA/NBitcoin/blob/7743174a1e746c4beaaf0bba0a435c3e960a9a41/NBitcoin/ScriptReader.cs
     // public static Op GetPushOp(byte[] data)
     static func redeemScript(address: BtcAddress) -> BTCScript {
-        guard let publicKey = address.teammate?.publicKey else {
+        guard let publicKey = address.teammate.publicKey else {
             fatalError("No public key")
         }
         
         print("creating BTCAddress with publicKey: \(publicKey)")
         let ownerPublicKey = Data(hex: publicKey)
         
-        let cosignersPublicKeys = address.cosigners.flatMap { $0.teammate?.publicKey }.map { Data(hex:$0) }
+        let cosignersPublicKeys = address.cosigners.flatMap { $0.teammate.publicKey }.map { Data(hex:$0) }
         let n = cosignersPublicKeys.count
         guard let script = BTCScript() else { fatalError("Couldn't initialize script") }
         
@@ -40,7 +40,7 @@ struct SignHelper {
         }
         script.append(BTCOpcode(rawValue: UInt8(80 + n))!)
         script.append(BTCOpcode.OP_CHECKMULTISIG)
-        guard let bigInt = BTCBigNumber(int64: Int64(address.teammate!.team!.id)) else { fatalError() }
+        guard let bigInt = BTCBigNumber(int64: Int64(address.teammate.team.id)) else { fatalError() }
         
         script.appendData(bigInt.signedLittleEndian)
         script.append(BTCOpcode.OP_DROP)
@@ -50,7 +50,7 @@ struct SignHelper {
     
     static func generateStringAddress(from address: BtcAddress) -> String {
         let script = redeemScript(address: address)
-        guard let team = address.teammate?.team else { fatalError() }
+        let team = address.teammate.team
         
         let hashAddress: BTCAddress!
         if team.isTestnet {

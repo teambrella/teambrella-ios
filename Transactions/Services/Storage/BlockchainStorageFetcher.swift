@@ -12,6 +12,7 @@ import CoreData
 class BlockchainStorageFetcher {
     struct Constant {
         static let noAutoApproval = 1000000
+        fileprivate static let tmpPrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
     }
     
     private unowned var storage: BlockchainStorage
@@ -40,7 +41,7 @@ class BlockchainStorageFetcher {
     private func createUser() -> User {
         let user = User(context: context)
         //   PrivateKey = key.GetBitcoinSecret(Network.Main).ToString()
-        user.privateKeyValue =  User.Constant.tmpPrivateKey
+        user.privateKeyValue =  Constant.tmpPrivateKey
         save()
         return user
     }
@@ -58,7 +59,7 @@ class BlockchainStorageFetcher {
     
     func cosigners(for teammate: Teammate) -> [Cosigner] {
         let request: NSFetchRequest<Cosigner> = Cosigner.fetchRequest()
-        request.predicate = NSPredicate(format: "teammate = %@", teammate)
+        request.predicate = NSPredicate(format: "teammateValue = %@", teammate)
         let result = try? context.fetch(request)
         return result ?? []
     }
@@ -81,7 +82,7 @@ class BlockchainStorageFetcher {
         let result = try? context.fetch(request)
         return result?.first
     }
-
+    
     // MARK: Teammate
     
     var teammates: [Teammate] {
@@ -157,21 +158,21 @@ class BlockchainStorageFetcher {
     }
     
     func isMy(tx: Tx) -> Bool {
-        return tx.teammate!.id == user.id
+        return tx.teammate.id == user.id
     }
     
     func isInChangeableState(tx: Tx) -> Bool {
         let unchangeableStates: Set<TransactionState> = [.errorBadRequest,
-                                                      .errorCosignersTimeout,
-                                                      .errorOutOfFunds,
-                                                      .errorSubmitToBlockchain,
-                                                      .published,
-                                                      .confirmed]
+                                                         .errorCosignersTimeout,
+                                                         .errorOutOfFunds,
+                                                         .errorSubmitToBlockchain,
+                                                         .published,
+                                                         .confirmed]
         return unchangeableStates.contains(tx.state!) == false
     }
     
     func canApprove(tx: Tx) -> Bool {
-       return tx.resolution == .received && isInChangeableState(tx: tx)
+        return tx.resolution == .received && isInChangeableState(tx: tx)
     }
     
     func canBlock(tx: Tx) -> Bool {
@@ -197,7 +198,7 @@ class BlockchainStorageFetcher {
             goodPayToAddresses = goodPayToAddresses && isPayToAddressOkAge(output: txOutput)
         }
         let daysPassed = Date().interval(of: .day, since: tx.receivedTime!)
-        let team = tx.teammate!.team!
+        let team = tx.teammate.team
         let autoApproval: Int!
         if isMyTx {
             autoApproval = goodPayToAddresses ? team.autoApprovalMyGoodAddress : team.autoApprovalMyNewAddress
@@ -219,8 +220,8 @@ class BlockchainStorageFetcher {
     // MARK: Output
     
     func isPayToAddressOkAge(output: TxOutput) -> Bool {
-        guard let team = output.transaction?.teammate?.team else { fatalError() }
-        guard let payTo = output.payTo else { return false }
+        let team = output.transaction.teammate.team
+        let payTo = output.payTo
         
         return team.okAge <= Date().interval(of: .day, since: payTo.knownSince)
     }
@@ -254,7 +255,7 @@ class BlockchainStorageFetcher {
     
     func signature(input: String, teammateID: Int) -> TxSignature? {
         let request: NSFetchRequest<TxSignature> = TxSignature.fetchRequest()
-        request.predicate = NSPredicate(format: "input.idValue == %@ AND teammateIDValue == %i", input, teammateID)
+        request.predicate = NSPredicate(format: "inputValue.idValue == %@ AND teammateIDValue == %i", input, teammateID)
         let items = try? context.fetch(request)
         return items?.first
     }
@@ -262,9 +263,9 @@ class BlockchainStorageFetcher {
     @discardableResult
     func addNewSignature(input: TxInput, tx: Tx, signature: Data) -> TxSignature {
         let txSignature = TxSignature.create(in: context)
-        txSignature.input = input
-        let me = tx.teammate?.team?.me(user: user)
-        txSignature.teammate = me
+        txSignature.inputValue = input
+        let me = tx.teammate.team.me(user: user)
+        txSignature.teammateValue = me
         txSignature.isServerUpdateNeededValue = true
         txSignature.signatureValue = signature as NSData
         save()

@@ -10,10 +10,6 @@ import CoreData
 import Foundation
 
 class User: NSManagedObject {
-    struct Constant {
-        static let tmpPrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
-    }
-    
     var id: Int {
         return Int(idValue)
     }
@@ -27,8 +23,26 @@ class User: NSManagedObject {
         return auxWalletCheckedValue as Date?
     }
     
-    var bitcoinPrivateKey: Key {
-        let key = Key(base58String: privateKey, timestamp: 0)
-        return key
+//    var bitcoinPrivateKey: Key {
+//        let key = Key(base58String: privateKey, timestamp: 0)
+//        return key
+//    }
+    
+    var lastUpdated: Int64 {
+        get {
+            return lastUpdatedValue
+        }
+        set {
+            let prev = lastUpdated
+            print("last updated changed from \(prev)")
+            print("last updated changed to \(newValue)")
+            print("updates delta = \(Double(newValue - prev) / 10_000_000) seconds")
+            lastUpdatedValue = newValue
+            try? managedObjectContext?.save()
+        }
+    }
+    
+    func key(timestamp: Int64 = 0) -> Key {
+        return Key(base58String: privateKey, timestamp: timestamp)
     }
 }

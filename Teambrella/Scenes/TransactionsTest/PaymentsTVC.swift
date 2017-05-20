@@ -73,7 +73,7 @@ class PaymentsTVC: UITableViewController {
         let transaction = tx(indexPath: indexPath)
         let isMy = teambrella.fetcher.isMy(tx: transaction)
         cell.amountLabel.text = String(describing: transaction.amount)
-        cell.userNameLabel.text = transaction.claimTeammate?.name ?? "None"
+        cell.userNameLabel.text = transaction.claimTeammate.name
         cell.userNameLabel.textColor = isMy ? .orange : .white
         
         cell.claimNameLabel.text = String(transaction.claimID)

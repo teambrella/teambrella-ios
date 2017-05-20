@@ -124,7 +124,7 @@ struct EntityFactory {
                 teammate.fbNameValue = fbName
                 teammate.nameValue = name
                 teammate.publicKeyValue = publicKey
-                teammate.team = fetcher.team(id: teamID)
+                teammate.teamValue = fetcher.team(id: teamID)
             }
         }
     }
@@ -152,7 +152,7 @@ struct EntityFactory {
                     }
                     address.statusValue = Int16(newStatus.rawValue)
                 }
-                address.teammate = fetcher.teammate(id: item["TeammateId"].int64Value)
+                address.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
             }
         }
     }
@@ -169,8 +169,8 @@ struct EntityFactory {
             cosigner.idValue = "\(keyOrder)-\(addressID)"
             cosigner.addressIDValue = addressID
             cosigner.keyOrderValue = keyOrder
-            cosigner.teammate = fetcher.teammate(id: teammateID)
-            cosigner.address = fetcher.address(id: addressID)
+            cosigner.teammateValue = fetcher.teammate(id: teammateID)
+            cosigner.addressValue = fetcher.address(id: addressID)
         }
     }
     
@@ -185,11 +185,11 @@ struct EntityFactory {
                 payTo.addressValue = item["Address"].stringValue
                 payTo.idValue = id
                 payTo.isDefaultValue = item["IsDefault"].boolValue
-                payTo.teammate = fetcher.teammate(id: item["TeammateId"].int64Value)
+                payTo.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
                 payTo.knownSinceValue = Date() as NSDate
             }
             if payTo.isDefault {
-                (payTo.teammate?.payTos as? Set<PayTo>)?.forEach { otherPayTo in
+                payTo.teammate.payTos.forEach { otherPayTo in
                     if otherPayTo.id != payTo.id {
                         otherPayTo.isDefaultValue = false
                     }
@@ -221,8 +221,8 @@ struct EntityFactory {
                 tx.kindValue = item["Kind"].int16Value
                 tx.stateValue = item["State"].int16Value
                 tx.withdrawReqIDValue = item["WithdrawReqId"].int64Value
-                tx.teammate = fetcher.teammate(id: item["TeammateId"].int64Value)
-                tx.claimTeammate = fetcher.teammate(id: item["ClaimTeammateId"].int64Value)
+                tx.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
+                tx.claimTeammateValue = fetcher.teammate(id: item["ClaimTeammateId"].int64Value)
                 
                 tx.receivedTimeValue = Date() as NSDate
                 tx.updateTimeValue = Date() as NSDate
@@ -249,7 +249,7 @@ struct EntityFactory {
             input.transactionIDValue = item["TxId"].stringValue
             input.previousTransactionIDValue = item["PrevTxId"].stringValue
             
-            input.transaction = tx
+            input.transactionValue = tx
             //let previousTransactionID = item["PrevTxId"].stringValue
             //input.previousTransaction = BlockchainTransaction.fetch(id: previousTransactionID, in: context)
         }
@@ -265,9 +265,9 @@ struct EntityFactory {
             output.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
             output.idValue = item["Id"].stringValue
             output.payToIDValue = item["PayToId"].stringValue
-            output.payTo = fetcher.payTo(id: item["PayToId"].stringValue)
+            output.payToValue = fetcher.payTo(id: item["PayToId"].stringValue)
             output.transactionIDValue = txID
-            output.transaction = tx
+            output.transactionValue = tx
         }
     }
     
@@ -286,8 +286,8 @@ struct EntityFactory {
             signature.teammateIDValue = teammateID
             signature.signatureValue = item["Signature"].stringValue.base64data as NSData?
             signature.isServerUpdateNeededValue = false
-            signature.input = txInput
-            signature.teammate = fetcher.teammate(id: teammateID)
+            signature.inputValue = txInput
+            signature.teammateValue = fetcher.teammate(id: teammateID)
         }
     }
     

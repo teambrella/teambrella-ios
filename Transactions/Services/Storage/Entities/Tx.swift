@@ -40,8 +40,20 @@ class Tx: NSManagedObject {
     var receivedTime: Date? { return receivedTimeValue as Date? }
     var updateTime: Date? { return updateTimeValue as Date? }
     
+    var teammate: Teammate {
+        guard let teammate = teammateValue else { fatalError() }
+        
+        return teammate
+    }
+    
+    var claimTeammate: Teammate {
+        guard let teammate = claimTeammateValue else { fatalError() }
+        
+        return teammate
+    }
+    
     var fromAddress: BtcAddress? {
-        return kind == .saveFromPreviousWallet ? teammate?.addressPrevious : teammate?.addressCurrent
+        return kind == .saveFromPreviousWallet ? teammate.addressPrevious : teammate.addressCurrent
     }
     
     /// TxInputs sorted by UUID id values

@@ -14,6 +14,22 @@ class Teammate: NSManagedObject {
     var name: String { return nameValue! }
     var publicKey: String? { return publicKeyValue }
     
+    var team: Team {
+        return teamValue!
+    }
+    
+    var cosignerOf: Set<Cosigner> {
+        return cosignerOfValue as? Set<Cosigner> ?? []
+    }
+    
+//    var cosigners: Set<Cosigner> {
+//        return cosignersValue as? Set<Cosigner> ?? []
+//    }
+    
+    var payTos: Set<PayTo> {
+        return payTosValue as? Set<PayTo> ?? []
+    }
+    
     var addresses: [BtcAddress] {
         guard let set = addressesValue as? Set<BtcAddress> else { fatalError() }
         

@@ -28,6 +28,8 @@ class TxSignature: NSManagedObject {
         }
     }
     var signature: Data { return signatureValue! as Data }
+    var teammate: Teammate? { return teammateValue }
+    var input: TxInput? { return inputValue }
     
     class func create(in context: NSManagedObjectContext) -> TxSignature {
         let signature = TxSignature(context: context)

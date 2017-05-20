@@ -14,4 +14,12 @@ class TxOutput: NSManagedObject {
     var id: String { return idValue! }
 //    var payToID: String { return payToIDValue! }
 //    var transactionID: String { return transactionIDValue! }
+    
+    var transaction: Tx {
+        return transactionValue!
+    }
+    
+    var payTo: PayTo {
+        return payToValue!
+    }
 }

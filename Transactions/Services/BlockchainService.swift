@@ -182,27 +182,27 @@ class BlockchainService {
             return nil
         }
         
-        let team = tx.teammate!.team!
+        let team = tx.teammate.team
         switch tx.kind {
         case .payout?,
              .withdraw?:
             let outputs = tx.outputs
             var outputSum: Decimal = 0
             for output in outputs {
-                let bitcoinAddress = btcAddress(team: team, address: output.payTo?.address)
+                let bitcoinAddress = btcAddress(team: team, address: output.payTo.address)
                 resTx.addOutput(BTCTransactionOutput(value: btc(from: output.amount), address: bitcoinAddress))
                 outputSum += output.amount
             }
             let changeAmount = totalBTCAmount - outputSum
             if changeAmount > Constants.normalFeeBTC {
-                let bitcoinAddressChange = btcAddress(team: team, address: tx.teammate?.addressCurrent?.address)
+                let bitcoinAddressChange = btcAddress(team: team, address: tx.teammate.addressCurrent?.address)
                 resTx.addOutput(BTCTransactionOutput(value: btc(from: changeAmount), address: bitcoinAddressChange))
             }
         case .moveToNextWallet?:
-            let bitcoinAddress = btcAddress(team: team, address: tx.teammate?.addressNext?.address)
+            let bitcoinAddress = btcAddress(team: team, address: tx.teammate.addressNext?.address)
             resTx.addOutput(BTCTransactionOutput(value: btc(from: totalBTCAmount), address: bitcoinAddress))
         case .saveFromPreviousWallet?:
-            let bitcoinAddress = btcAddress(team: team, address: tx.teammate?.addressCurrent?.address)
+            let bitcoinAddress = btcAddress(team: team, address: tx.teammate.addressCurrent?.address)
             resTx.addOutput(BTCTransactionOutput(value: btc(from: totalBTCAmount), address: bitcoinAddress))
         default: break
         }
@@ -235,7 +235,7 @@ class BlockchainService {
             let txInputs = tx.inputs
             for (idx, input) in txInputs.enumerated() {
                 guard let signature = SignHelper.cosign(redeemScript: redeemScript,
-                                                        key: user.bitcoinPrivateKey.key,
+                                                        key: user.key().key,
                                                         transaction: blockchainTx,
                                                         inputNum: idx) else {
                                                             fatalError()
@@ -267,7 +267,7 @@ class BlockchainService {
             ops.append(.OP_0)
             for cosigner in fromAddress.cosigners {
                 for input in txInputs {
-                    if let txSignature = storage.fetcher.signature(input: input.id, teammateID: cosigner.teammate!.id) {
+                    if let txSignature = storage.fetcher.signature(input: input.id, teammateID: cosigner.teammate.id) {
                         var vchSig = txSignature.signature
                         vchSig.append(BTCSignatureHashType.BTCSignatureHashTypeAll.rawValue)
                         ops.appendData(vchSig)
@@ -279,7 +279,7 @@ class BlockchainService {
             
             for (idx, input) in txInputs.enumerated() {
                 guard let signature = SignHelper.cosign(redeemScript: redeemScript,
-                                                        key: user.bitcoinPrivateKey.key,
+                                                        key: user.key().key,
                                                         transaction: blockchainTx,
                                                         inputNum: idx) else {
                                                             fatalError()

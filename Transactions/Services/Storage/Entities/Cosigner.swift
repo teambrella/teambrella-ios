@@ -12,8 +12,16 @@ class Cosigner: NSManagedObject {
     var keyOrder: Int { return Int(keyOrderValue) }
     var addressID: String { return addressIDValue! }
     
+    var teammate: Teammate {
+        return teammateValue!
+    }
+    
+    var address: BtcAddress {
+        return addressValue!
+    }
+    
     override var description: String {
-        return "Cosigner for address: \(address?.address ?? "none"), order: \(keyOrder)"
+        return "Cosigner for address: \(address.address), order: \(keyOrder)"
     }
 }
 

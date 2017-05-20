@@ -58,7 +58,7 @@ public class BlockchainServer {
                     self.timestamp = timestamp
                     completion(.success(result, timestamp))
                 } else {
-                    completion(.failure(AmbrellaErrorFactory.emptyReplyError()))
+                    completion(.failure(TeambrellaErrorFactory.emptyReplyError()))
                     //self.delegate?.server(server: self, failedWithError: nil)
                 }
             case .failure(let error):

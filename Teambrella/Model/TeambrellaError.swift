@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct AmbrellaError: Error {
-    let kind: AmbrellaErrorKind
+struct TeambrellaError: Error {
+    let kind: TeambrellaErrorKind
     let description: String
     
-    enum AmbrellaErrorKind: Int {
+    enum TeambrellaErrorKind: Int {
         case unknownError               = -666
         case emptyReply                 = -1
         
@@ -38,21 +38,21 @@ struct AmbrellaError: Error {
     
 }
 
-struct AmbrellaErrorFactory {
-    static func emptyReplyError() -> AmbrellaError {
-        return AmbrellaError(kind: .emptyReply, description: "No content in reply")
+struct TeambrellaErrorFactory {
+    static func emptyReplyError() -> TeambrellaError {
+        return TeambrellaError(kind: .emptyReply, description: "No content in reply")
     }
     
-    static func unknownError() -> AmbrellaError {
-        return AmbrellaError(kind: .unknownError, description: "Unknown error occured")
+    static func unknownError() -> TeambrellaError {
+        return TeambrellaError(kind: .unknownError, description: "Unknown error occured")
     }
     
-    static func error(with dict: [String: Any]?) -> AmbrellaError {
+    static func error(with dict: [String: Any]?) -> TeambrellaError {
         guard let dict = dict else { return unknownError() }
         guard let code = dict["ResultCode"] as? Int,
-            let errorKind =  AmbrellaError.AmbrellaErrorKind(rawValue: code) else { return unknownError() }
+            let errorKind =  TeambrellaError.TeambrellaErrorKind(rawValue: code) else { return unknownError() }
         
         let errorDescription = dict["ErrorMessage"] as? String ?? ""
-        return AmbrellaError(kind: errorKind, description: errorDescription)
+        return TeambrellaError(kind: errorKind, description: errorDescription)
     }
 }

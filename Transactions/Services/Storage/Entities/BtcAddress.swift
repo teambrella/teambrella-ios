@@ -17,6 +17,7 @@ class BtcAddress: NSManagedObject {
             statusValue = Int16(newValue.rawValue)
         }
     }
+    var teammate: Teammate { return teammateValue! }
     var address: String { return addressValue! }
     var dateCreated: Date { return dateCreatedValue! as Date }
  

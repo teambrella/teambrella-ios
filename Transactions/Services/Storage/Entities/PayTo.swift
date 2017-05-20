@@ -13,4 +13,6 @@ class PayTo: NSManagedObject {
     var id: UUID { return UUID(uuidString: idValue!)! }
     var isDefault: Bool { return isDefaultValue }
     var knownSince: Date { return knownSinceValue! as Date }
+    
+    var teammate: Teammate { return teammateValue! }
 }

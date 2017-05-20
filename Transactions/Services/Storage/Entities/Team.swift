@@ -19,13 +19,17 @@ class Team: NSManagedObject {
     var autoApprovalMyNewAddress: Int { return Int(autoApprovalMyNewAddressValue) }
     var autoApprovalOff: Int { return Int(autoApprovalOffValue) }
     var okAge: Int { return Int(okAgeValue) }
+    
+    var teammates: Set<Teammate> {
+        return teammatesValue as? Set<Teammate> ?? []
+    }
 }
 
 extension Team {
     func me(user: User) -> Teammate? {
-        let pubKey = user.bitcoinPrivateKey.publicKey
+        let pubKey = user.key().publicKey
         
-        return (teammates as! Set<Teammate>).filter { $0.publicKey == pubKey }.first
+        return teammates.filter { $0.publicKey == pubKey }.first
     }
     
     var network: BTCNetwork {

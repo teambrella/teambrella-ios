@@ -66,13 +66,13 @@ struct AmbrellaRequest {
             if let teammates = TeammateEntityFactory.teammates(from: reply) {
                 success(.teammatesList(teammates))
             } else {
-                failure?(AmbrellaErrorFactory.unknownError())
+                failure?(TeambrellaErrorFactory.unknownError())
             }
         case .teammate:
             if let teammate = TeammateEntityFactory.extendedTeammate(from: reply) {
                 success(.teammate(teammate))
             } else {
-                failure?(AmbrellaErrorFactory.unknownError())
+                failure?(TeambrellaErrorFactory.unknownError())
             }
         case .newPost:
             if let post = PostFactory.post(with: reply) {

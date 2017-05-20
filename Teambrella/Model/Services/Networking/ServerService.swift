@@ -17,7 +17,7 @@ class ServerService {
     struct Constant {
         static let siteURL = BlockchainServer.Constant.siteURL
         //"http://surilla.com"//"http://192.168.0.254" // "http://192.168.0.222"
-        static let fakePrivateKey = User.Constant.tmpPrivateKey
+        static let fakePrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
         // "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
         static let myID = 2274
         static let myUserID = "1dbd099a-6cc2-4c45-a7df-a75c00e58621"
@@ -92,11 +92,11 @@ class ServerService {
                     case 0:
                         success(result["Data"])
                     default:
-                        let error = AmbrellaErrorFactory.error(with: status.rawValue as? [String: Any])
+                        let error = TeambrellaErrorFactory.error(with: status.rawValue as? [String: Any])
                         failure(error)
                     }
                 } else {
-                    let error = AmbrellaErrorFactory.emptyReplyError()
+                    let error = TeambrellaErrorFactory.emptyReplyError()
                     failure(error)
                 }
             case .failure(let error):

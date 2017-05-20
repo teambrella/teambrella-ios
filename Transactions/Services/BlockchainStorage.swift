@@ -30,19 +30,19 @@ class BlockchainStorage {
     var context: NSManagedObjectContext {
         return container.viewContext
     }
-    private(set) var lastUpdated: Int64 {
-        get {
-            return UserDefaults.standard.value(forKey: Constant.lastUpdatedKey) as? Int64 ?? 0
-        }
-        set {
-            let prev = lastUpdated
-            print("last updated changed from \(prev)")
-            UserDefaults.standard.set(newValue, forKey: Constant.lastUpdatedKey)
-            UserDefaults.standard.synchronize()
-            print("last updated changed to \(newValue)")
-            print("updates delta = \(Double(newValue - prev) / 10_000_000) seconds")
-        }
-    }
+//    private(set) var lastUpdated: Int64 {
+//        get {
+//            return UserDefaults.standard.value(forKey: Constant.lastUpdatedKey) as? Int64 ?? 0
+//        }
+//        set {
+//            let prev = lastUpdated
+//            print("last updated changed from \(prev)")
+//            UserDefaults.standard.set(newValue, forKey: Constant.lastUpdatedKey)
+//            UserDefaults.standard.synchronize()
+//            print("last updated changed to \(newValue)")
+//            print("updates delta = \(Double(newValue - prev) / 10_000_000) seconds")
+//        }
+//    }
     
     init() {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
@@ -70,9 +70,9 @@ class BlockchainStorage {
     func serverUpdateToLocalDb(completion: @escaping (Bool) -> Void) {
         let txsToUpdate = fetcher.transactionsNeedServerUpdate
         let signatures = fetcher.signaturesToUpdate
-        
-        server.getUpdates(privateKey: User.Constant.tmpPrivateKey,
-                          lastUpdated: lastUpdated,
+        let user = fetcher.user
+        server.getUpdates(privateKey: user.privateKey,
+                          lastUpdated: user.lastUpdated,
                           transactions: txsToUpdate,
                           signatures: signatures) { [unowned self] reply in
                             switch reply {
@@ -80,7 +80,7 @@ class BlockchainStorage {
                                 self.context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
                                 let factory = EntityFactory(fetcher: self.fetcher)
                                 factory.updateLocalDb(txs: txsToUpdate, signatures: signatures, json: json)
-                                self.lastUpdated = timestamp
+                                user.lastUpdated = timestamp
                                 completion(true)
                                 break
                             case .failure(let error):
