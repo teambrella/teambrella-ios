@@ -292,13 +292,6 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		6D466A851ED07CC6001BC579 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		6D466A871ED07CF1001BC579 /* Blockchain */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,7 +377,6 @@
 		6DA475A21E8ABEE600B56D9B /* Teambrella */ = {
 			isa = PBXGroup;
 			children = (
-				6D466A851ED07CC6001BC579 /* New Group */,
 				6D1C23851E8EA45A009B05A3 /* Helpers */,
 				6D097E991E9D1A0000E77DAB /* Localizations */,
 				6DA475D51E8BB9DF00B56D9B /* Model */,
