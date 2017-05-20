@@ -112,16 +112,16 @@ class BlockchainStorageFetcher {
         return result?.first
     }
     
-    var transactionsNeedServerUpdate: [Tx]? {
+    var transactionsNeedServerUpdate: [Tx] {
         let request: NSFetchRequest<Tx> = Tx.fetchRequest()
         request.predicate = NSPredicate(format: "isServerUpdateNeededValue == TRUE")
         let items = try? context.fetch(request)
-        return items
+        return items ?? []
     }
     
     var transactionsResolvable: [Tx] {
         let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        request.predicate = NSPredicate(format: "resolutionValue <= \(TransactionClientResolution.received.rawValue)")
+        request.predicate = NSPredicate(format: "resolutionValue == \(TransactionClientResolution.received.rawValue)")
         let items = try? context.fetch(request)
         return items ?? []
     }
@@ -187,8 +187,8 @@ class BlockchainStorageFetcher {
             tx.resolution = resolution
             tx.clientResolutionTimeValue = when as NSDate
             tx.isServerUpdateNeeded = true
+            storage.save()
         }
-        storage.save()
     }
     
     func daysToApproval(tx: Tx, isMyTx: Bool) -> Int {
@@ -240,12 +240,12 @@ class BlockchainStorageFetcher {
     
     // MARK: Signatures
     
-    var signaturesToUpdate: [TxSignature]? {
+    var signaturesToUpdate: [TxSignature] {
         let request: NSFetchRequest<TxSignature> = TxSignature.fetchRequest()
         request.predicate = NSPredicate(format: "isServerUpdateNeededValue == TRUE")
         
         let items = try? context.fetch(request)
-        return items
+        return items ?? []
     }
     
     func signature(input: UUID, teammateID: Int) -> TxSignature? {

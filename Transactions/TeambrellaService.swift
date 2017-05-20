@@ -47,3 +47,13 @@ class TeambrellaService {
     }
     
 }
+
+// Helpers
+
+extension TeambrellaService {
+    func approve(tx: Tx) {
+        fetcher.transactionsChangeResolution(txs: [tx], to: .approved)
+        self.delegate?.teambrellaDidUpdate(service: self)
+        //update()
+    }
+}

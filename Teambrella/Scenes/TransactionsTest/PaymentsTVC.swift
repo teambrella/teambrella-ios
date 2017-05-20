@@ -20,7 +20,7 @@ class PaymentsTVC: UITableViewController {
 
         teambrella.delegate = self
         resolvable = teambrella.fetcher.transactionsResolvable
-        cosignable = teambrella.fetcher.transactionsCosignable ?? []
+        cosignable = teambrella.fetcher.transactionsCosignable
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +33,13 @@ class PaymentsTVC: UITableViewController {
         if let cell = cells.first, let indexPath = tableView.indexPath(for: cell) {
             let transaction = tx(indexPath: indexPath)
             print("Tapped \(transaction.id)")
+            if transaction.resolution == .received {
+                teambrella.approve(tx: transaction)
+            } else if transaction.state == .selectedForCosigning {
+                teambrella.blockchain.cosignApprovedTxs()
+            }
+           
+            //teambrella.blockchain.approve
         }
     }
     
@@ -42,6 +49,7 @@ class PaymentsTVC: UITableViewController {
         default: return cosignable[indexPath.row]
         }
     }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,9 +71,11 @@ class PaymentsTVC: UITableViewController {
         }
 
         let transaction = tx(indexPath: indexPath)
-        
+        let isMy = teambrella.fetcher.isMy(tx: transaction)
         cell.amountLabel.text = String(describing: transaction.amount)
         cell.userNameLabel.text = transaction.claimTeammate?.name ?? "None"
+        cell.userNameLabel.textColor = isMy ? .orange : .white
+        
         cell.claimNameLabel.text = String(transaction.claimID)
         cell.statusLabel.text = transaction.resolution.string
         let title = transaction.resolution == .received
@@ -95,6 +105,6 @@ class PaymentsTVC: UITableViewController {
 
 extension PaymentsTVC: TeambrellaServiceDelegate {
     func teambrellaDidUpdate(service: TeambrellaService) {
-        
+        tableView.reloadData()
     }
 }

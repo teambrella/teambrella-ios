@@ -210,16 +210,14 @@ struct EntityFactory {
             if let existingTx = fetcher.transaction(id: id) {
                 existingTx.stateValue = item["State"].int16Value
                 existingTx.updateTimeValue = Date() as NSDate
-                existingTx.resolutionTimeValue = formatter.date(from: json["ResolutionTime"].stringValue) as NSDate?
-                existingTx.processedTimeValue = formatter.date(from: json["ProcessedTime"].stringValue) as NSDate?
+                existingTx.resolutionTimeValue = formatter.nsDate(from: item, key: "ResolutionTime")
+                existingTx.processedTimeValue = formatter.nsDate(from: item, key: "ProcessedTime")
             } else {
                 let tx = Tx(context: context)
                 tx.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
                 tx.claimIDValue = item["ClaimId"].int64Value
                 tx.idValue = id
-                if let initiatedTime = formatter.date(from: json["InitiatedTime"].stringValue) as NSDate? {
-                    tx.initiatedTimeValue = initiatedTime
-                }
+                tx.initiatedTimeValue = formatter.nsDate(from: item, key: "InitiatedTime")
                 tx.kindValue = item["Kind"].int16Value
                 tx.stateValue = item["State"].int16Value
                 tx.withdrawReqIDValue = item["WithdrawReqId"].int64Value

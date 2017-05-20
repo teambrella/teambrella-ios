@@ -68,8 +68,8 @@ class BlockchainStorage {
     }
     
     func serverUpdateToLocalDb(completion: @escaping (Bool) -> Void) {
-        guard let txsToUpdate = fetcher.transactionsNeedServerUpdate else { fatalError() }
-        guard let signatures = fetcher.signaturesToUpdate else { fatalError() }
+        let txsToUpdate = fetcher.transactionsNeedServerUpdate
+        let signatures = fetcher.signaturesToUpdate
         
         server.getUpdates(privateKey: User.Constant.tmpPrivateKey,
                           lastUpdated: lastUpdated,

@@ -43,7 +43,7 @@ class TransactionsVC: UIViewController {
         let transactions = teambrella.fetcher.transactionsResolvable
         
         print("Transactions cosignable: \(transactions.count)")
-        guard let signatures = teambrella.fetcher.signaturesToUpdate else { fatalError() }
+        let signatures = teambrella.fetcher.signaturesToUpdate
         
         print("transactions to approve: \(transactions.count)")
         print("signatures to approve: \(signatures.count)")
@@ -83,17 +83,7 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapCopsign(_ sender: Any) {
-        let transactions = teambrella.fetcher.transactionsResolvable
-        
-        print("Transactions cosignable: \(transactions.count)")
-        guard let signatures = teambrella.fetcher.signaturesToUpdate else { fatalError() }
-        
-        print("transactions to approve: \(transactions.count)")
-        print("signatures to approve: \(signatures.count)")
-        teambrella.fetcher.transactionsChangeResolution(txs: transactions, to: .approved)
-        teambrella.update()
-        
-        teambrella.blockchain.publishApprovedAndCosignedTxs()
+ 
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

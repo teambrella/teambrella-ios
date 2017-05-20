@@ -116,7 +116,7 @@ class BlockchainService {
         }
     }
     
-   private func fetchUtxos(address: BtcAddress?, minAmount: Decimal, completion: @escaping (_ utxos: [ExplorerUtxo]?) -> Void) {
+    private func fetchUtxos(address: BtcAddress?, minAmount: Decimal, completion: @escaping (_ utxos: [ExplorerUtxo]?) -> Void) {
         guard let address = address else {
             completion([])
             return
@@ -139,7 +139,7 @@ class BlockchainService {
             }) {
                 attempts -= 1
                 if attempts <= 0 && isFetched == false {
-                     // utox may be null when no interenet connection.
+                    // utox may be null when no interenet connection.
                     completion(nil)
                 }
             }
@@ -235,18 +235,19 @@ class BlockchainService {
             let txInputs = tx.inputs
             for (idx, input) in txInputs.enumerated() {
                 guard let signature = SignHelper.cosign(redeemScript: redeemScript,
-                                                  key: user.bitcoinPrivateKey.key,
-                                                  transaction: blockchainTx,
-                                                  inputNum: idx) else {
-                                                    fatalError()
+                                                        key: user.bitcoinPrivateKey.key,
+                                                        transaction: blockchainTx,
+                                                        inputNum: idx) else {
+                                                            fatalError()
                 }
                 storage.fetcher.addNewSignature(input: input, tx: tx, signature: signature)
             }
             tx.resolution = .signed
-            storage.fetcher.save()
+            storage.save()
         }
     }
     
+    // master sign
     func publishApprovedAndCosignedTxs() {
         let user = storage.fetcher.user
         let txs = storage.fetcher.transactionsApprovedAndCosigned
@@ -277,11 +278,11 @@ class BlockchainService {
             }
             
             for (idx, input) in txInputs.enumerated() {
-               guard let signature = SignHelper.cosign(redeemScript: redeemScript,
-                                                  key: user.bitcoinPrivateKey.key,
-                                                  transaction: blockchainTx,
-                                                  inputNum: idx) else {
-                                                    fatalError()
+                guard let signature = SignHelper.cosign(redeemScript: redeemScript,
+                                                        key: user.bitcoinPrivateKey.key,
+                                                        transaction: blockchainTx,
+                                                        inputNum: idx) else {
+                                                            fatalError()
                 }
                 storage.fetcher.addNewSignature(input: input, tx: tx, signature: signature)
                 
@@ -324,19 +325,20 @@ class BlockchainService {
         storage.save()
     }
     
-    //    func userCosignatures(address: BtcAddress, transaction: BTCTransaction) -> [Data] {
-    //        let user = storage.fetcher.user
-    //        let redeemScript = SignHelper.redeemScript(address: address)
-    //        var cosignatures: [Data] = []
-    //        guard let inputs = transaction.inputs as? [BTCTransactionInput] else { fatalError() }
-    //
-    //        for (idx, input) in inputs.enumerated() {
-    //            let cosignature = SignHelper.cosign(redeemScript: redeemScript,
-    //                                                key: user.bitcoinPrivateKey.key,
-    //                                                transaction: transaction,
-    //                                                inputNum: idx)
-    //            cosignatures.append(cosignature)
-    //        }
-    //        return cosignatures
-    //    }
+//    func userCosignatures(address: BtcAddress, transaction: BTCTransaction) -> [Data] {
+//        let user = storage.fetcher.user
+//        let redeemScript = SignHelper.redeemScript(address: address)
+//        var cosignatures: [Data] = []
+//        guard let inputs = transaction.inputs as? [BTCTransactionInput] else { fatalError() }
+//        
+//        for (idx, input) in inputs.enumerated() {
+//            guard let cosignature = SignHelper.cosign(redeemScript: redeemScript,
+//                                                key: user.bitcoinPrivateKey.key,
+//                                                transaction: transaction,
+//                                                inputNum: idx) else { fatalError() }
+//            
+//            cosignatures.append(cosignature)
+//        }
+//        return cosignatures
+//    }
 }

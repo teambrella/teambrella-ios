@@ -61,18 +61,18 @@ struct SignHelper {
         return hashAddress.string
     }
     
-    static func pubKeyScript(from address: BtcAddress) -> BTCScript {
-        let script = redeemScript(address: address)
-        guard let pubScript = BTCScript() else { fatalError() }
-        
-        pubScript.append(BTCOpcode.OP_HASH160)
-        // Op.GetPushOp(redeemScript.GetScriptAddress(address.Teammate.Team.Network).ToBytes()),
-        let network = address.teammate!.team!.network
-        // let networkScript = script.pri
-        //        pubScript.append(BTCScript(data: network)
-        pubScript.append(BTCOpcode.OP_EQUAL)
-        return pubScript
-    }
+    //    static func pubKeyScript(from address: BtcAddress) -> BTCScript {
+    //        let script = redeemScript(address: address)
+    //        guard let pubScript = BTCScript() else { fatalError() }
+    //
+    //        pubScript.append(BTCOpcode.OP_HASH160)
+    //        // Op.GetPushOp(redeemScript.GetScriptAddress(address.Teammate.Team.Network).ToBytes()),
+    //        let network = address.teammate!.team!.network
+    //        // let networkScript = script.pri
+    //        //        pubScript.append(BTCScript(data: network)
+    //        pubScript.append(BTCOpcode.OP_EQUAL)
+    //        return pubScript
+    //    }
     
     static func cosign(redeemScript: BTCScript, key: BTCKey, transaction: BTCTransaction, inputNum: Int) -> Data? {
         do {
