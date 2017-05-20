@@ -34,7 +34,7 @@ class TeammatesTVC: UITableViewController {
                       timestamp: service.server.timestamp)
         
         let body = RequestBodyFactory.teammatesBody(key: key)
-        let request = AmbrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
+        let request = TeambrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
             if case .teammatesList(let teammates) = response {
                 self?.teammatesData = teammates
                 self?.tableView.indicator.stopAnimating()

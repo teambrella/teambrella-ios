@@ -1,5 +1,5 @@
 //
-//  AmbrellaRequest.swift
+//  TeambrellaRequest.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 29.03.17.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-enum AmbrellaRequestType: String {
+enum TeambrellaRequestType: String {
     case timestamp = "me/GetTimestamp"
     case initClient = "me/InitClient"
     case updates = "me/GetUpdates"
@@ -18,7 +18,7 @@ enum AmbrellaRequestType: String {
     case newPost = "post/newPost"
 }
 
-enum AmbrellaResponseType {
+enum TeambrellaResponseType {
     case timestamp
     case initClient
     case teammatesList([TeammateLike])
@@ -27,21 +27,21 @@ enum AmbrellaResponseType {
     case updates
 }
 
-typealias AmbrellaRequestSuccess = (_ result: AmbrellaResponseType) -> Void
-typealias AmbrellaRequestFailure = (_ error: Error) -> Void
+typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
+typealias TeambrellaRequestFailure = (_ error: Error) -> Void
 
-struct AmbrellaRequest {
-    let type: AmbrellaRequestType
+struct TeambrellaRequest {
+    let type: TeambrellaRequestType
     var parameters: [String: String]?
-    let success: AmbrellaRequestSuccess
-    var failure: AmbrellaRequestFailure?
+    let success: TeambrellaRequestSuccess
+    var failure: TeambrellaRequestFailure?
     var body: RequestBody?
     
-    init (type: AmbrellaRequestType,
+    init (type: TeambrellaRequestType,
           parameters: [String: String]? = nil,
           body: RequestBody? = nil,
-          success: @escaping AmbrellaRequestSuccess,
-          failure: AmbrellaRequestFailure? = nil) {
+          success: @escaping TeambrellaRequestSuccess,
+          failure: TeambrellaRequestFailure? = nil) {
         self.type = type
         self.parameters = parameters
         self.success = success
