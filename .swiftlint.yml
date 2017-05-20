@@ -27,7 +27,7 @@ excluded: # paths to ignore during linting.
   - Pods
   - TeambrellaTests
   - TeambrellaUITests
-  - Transactions
+  - Blockchain
 
 missing_docs:
   - public
