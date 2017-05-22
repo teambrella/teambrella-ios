@@ -19,6 +19,7 @@ struct TeambrellaError: Error {
         case fatalError                 = 1
         case brokenSignature            = 2
         case permissionDenied           = 3
+        case keyAlreadyRegistered       = 5
         
         case teamAlreadyJoined          = 5010
         case teamJoinedAndProxyExists   = 5011

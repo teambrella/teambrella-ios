@@ -14,7 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        style()
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        //style()
         return true
     }
     
@@ -43,6 +46,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBar.tintColor = .white
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
+    }
+    
+    func application(_ application: UIApplication,
+                     open url: URL,
+                     sourceApplication: String?,
+                     annotation: Any) -> Bool {
+            return FBSDKApplicationDelegate.sharedInstance().application(application,
+                                                                            open: url,
+                                                                            sourceApplication: sourceApplication,
+                                                                            annotation: annotation)
     }
 
 }

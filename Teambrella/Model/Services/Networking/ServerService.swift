@@ -86,6 +86,7 @@ class ServerService {
             case .success:
                 if let value = response.result.value {
                     let result = JSON(value)
+                     print("Result: \(result)")
                     let status = result["Status"]
                     self.timestamp = status["Timestamp"].int64Value
                     switch status["ResultCode"].intValue {

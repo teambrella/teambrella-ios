@@ -16,15 +16,17 @@ enum TeambrellaRequestType: String {
     case teammatesList = "teammate/getList"
     case teammate = "teammate/getOne"
     case newPost = "post/newPost"
+    case registerKey = "me/registerKey"
 }
 
 enum TeambrellaResponseType {
     case timestamp
     case initClient
+    case updates
     case teammatesList([TeammateLike])
     case teammate(ExtendedTeammate)
     case newPost(Post)
-    case updates
+    case registerKey
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -78,6 +80,8 @@ struct TeambrellaRequest {
             if let post = PostFactory.post(with: reply) {
                 success(.newPost(post))
             }
+        case .registerKey:
+            success(.registerKey)
         case .updates:
             break
         default:
