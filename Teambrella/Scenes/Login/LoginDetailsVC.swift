@@ -6,6 +6,7 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
+import Kingfisher
 import UIKit
 
 class LoginDetailsVC: UIViewController {
@@ -14,6 +15,7 @@ class LoginDetailsVC: UIViewController {
     @IBOutlet var codeTextField: UITextField!
     @IBOutlet var registerButton: UIButton!
     @IBOutlet var genderControl: UISegmentedControl!
+    @IBOutlet var avatarView: RoundImageView!
     
     var presenter: LoginDetailsPresenter?
     
@@ -25,6 +27,8 @@ class LoginDetailsVC: UIViewController {
                                                selector: #selector(textChanged),
                                                name: .UITextFieldTextDidChange,
                                                object: nil)
+        
+        setupForKeyboardResizing()
     }
     
     deinit {
@@ -60,5 +64,9 @@ extension LoginDetailsVC: LoginDetailsView {
     
     func changeGender(to gender: Gender) {
         genderControl.selectedSegmentIndex = gender == .male ? 0 : 1
+    }
+    
+    func showAvatar(url: URL) {
+        avatarView.kf.setImage(with: url)
     }
 }

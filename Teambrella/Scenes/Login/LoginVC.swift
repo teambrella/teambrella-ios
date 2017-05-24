@@ -58,7 +58,7 @@ class LoginVC: UIViewController {
     }
     
     func getMe() {
-        let fields = "email, birthday, age_range, name, first_name, last_name, gender, hometown"
+        let fields = "email, birthday, age_range, name, first_name, last_name, gender, picture.type(large)"
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": fields]).start { connection, object, error in
             guard let reply = object as? [String: Any], error == nil else {
                 self.handleFailure(error: error)
@@ -94,8 +94,10 @@ struct FacebookUser {
     let gender: Gender
     let email: String?
     let minAge: Int
+    let picture: String?
     
     init(dict: [String: Any]) {
+        print(dict)
         let json = JSON(dict)
         name = json["name"].stringValue
         firstName = json["first_name"].string
@@ -103,6 +105,7 @@ struct FacebookUser {
         gender = Gender.fromFacebook(string: json["gender"].stringValue)
         email = json["email"].string
         minAge = json["age_range"]["min"].intValue
+        picture = json["picture"]["data"]["url"].string
     }
 }
 

@@ -18,6 +18,11 @@ class TeamDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        guard let team = team else {
+            teamLabel.text = "No team"
+            return
+        }
+        
         teamLabel.text = team.name
         idLabel.text = "Id: \(team.id)"
         testnetLabel.text = team.isTestnet ? "Is Testnet" : "Is a Real Group"

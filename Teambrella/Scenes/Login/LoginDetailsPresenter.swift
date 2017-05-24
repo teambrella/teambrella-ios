@@ -13,7 +13,7 @@ protocol LoginDetailsView: class {
     func greeting(text: String)
     func changeDate(to date: Date)
     func changeGender(to gender: Gender)
-    
+    func showAvatar(url: URL)
     var code: String? { get }
     var gender: Gender { get }
     var date: Date { get }
@@ -49,6 +49,10 @@ class LoginDetailsPresenterImpl: LoginDetailsPresenter {
         let defaultDate = Calendar.current.date(byAdding: dateComponents, to: Date()) ?? Date()
         view.changeDate(to: defaultDate)
         view.changeGender(to: user.gender)
+        
+        if let avatar = user.picture, let url = URL(string: avatar) {
+            view.showAvatar(url: url)
+        }
     }
     
     func tapRegister() {

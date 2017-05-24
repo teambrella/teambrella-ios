@@ -16,6 +16,7 @@ enum SegueType: String {
     case login
     case main
     case payments
+    case teambrella
     case teamDetails
     case teammate
     case teammateDetails

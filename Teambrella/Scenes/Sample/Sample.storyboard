@@ -11,11 +11,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--UI-->
         <scene sceneID="JWm-eq-E61">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xqq-9K-42Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="2OF-2d-9c3"/>
+                    <tabBarItem key="tabBarItem" title="UI" image="iconWallet" id="2OF-2d-9c3"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qEl-Re-4uc">
@@ -343,4 +343,7 @@
             <point key="canvasLocation" x="3823.1999999999998" y="1097.9010494752624"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconWallet" width="30" height="26"/>
+    </resources>
 </document>

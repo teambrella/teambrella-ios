@@ -55,7 +55,7 @@ class TransactionsresultTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let teammate = teammates[indexPath.row]
-        performSegue(type: .teamDetails, sender: teammate)
+        performSegue(type: .teamDetails, sender: teammate.team)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

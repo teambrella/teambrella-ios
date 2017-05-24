@@ -19,18 +19,9 @@ class InitialVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let me = teambrella.fetcher.user
-        if me.isFbAuthorized {
-            performSegue(type: .main)
-        } else {
-            performSegue(type: .login)
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(segue.type)
-        print(type(of: segue.destination))
         if segue.type == .main {
             if let tabVc = segue.destination as? UITabBarController,
                 let nc = tabVc.viewControllers?.first as? UINavigationController,
@@ -41,10 +32,22 @@ class InitialVC: UIViewController {
     }
     
     @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
-        var me = teambrella.fetcher.user
-        me.isFbAuthorized = true
+        teambrella.fetcher.user.isFbAuthorized = true
         teambrella.fetcher.save()
         performSegue(type: .main)
+    }
+    
+    @IBAction func tapTeambrella(_ sender: Any) {
+        performSegue(type: .teambrella)
+    }
+    
+    @IBAction func tapTests(_ sender: Any) {
+        let me = teambrella.fetcher.user
+        if me.isFbAuthorized {
+            performSegue(type: .main)
+        } else {
+            performSegue(type: .login)
+        }
     }
     
 }

@@ -62,6 +62,11 @@
 		6D9CC61D1ED58382007F936E /* LoginDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC61C1ED58382007F936E /* LoginDetailsConfigurator.swift */; };
 		6D9CC61F1ED584E5007F936E /* LoginDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC61E1ED584E5007F936E /* LoginDetailsRouter.swift */; };
 		6D9CC6211ED5BB9C007F936E /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC6201ED5BB9C007F936E /* InitialVC.swift */; };
+		6D9CC6241ED5EA34007F936E /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC6231ED5EA34007F936E /* Home.storyboard */; };
+		6D9CC6271ED5EA81007F936E /* Team.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC6261ED5EA81007F936E /* Team.storyboard */; };
+		6D9CC62A1ED5EAD3007F936E /* Proxies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC6291ED5EAD3007F936E /* Proxies.storyboard */; };
+		6D9CC62D1ED5EB23007F936E /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC62C1ED5EB23007F936E /* Me.storyboard */; };
+		6D9CC6301ED5EBA8007F936E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC62F1ED5EBA8007F936E /* Login.storyboard */; };
 		6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475A31E8ABEE600B56D9B /* AppDelegate.swift */; };
 		6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475A71E8ABEE600B56D9B /* Main.storyboard */; };
 		6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AA1E8ABEE600B56D9B /* Assets.xcassets */; };
@@ -183,6 +188,11 @@
 		6D9CC61C1ED58382007F936E /* LoginDetailsConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDetailsConfigurator.swift; sourceTree = "<group>"; };
 		6D9CC61E1ED584E5007F936E /* LoginDetailsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDetailsRouter.swift; sourceTree = "<group>"; };
 		6D9CC6201ED5BB9C007F936E /* InitialVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitialVC.swift; path = Scenes/Initial/InitialVC.swift; sourceTree = "<group>"; };
+		6D9CC6231ED5EA34007F936E /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Home.storyboard; path = Scenes/Home/Home.storyboard; sourceTree = "<group>"; };
+		6D9CC6261ED5EA81007F936E /* Team.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Team.storyboard; path = Scenes/Team/Team.storyboard; sourceTree = "<group>"; };
+		6D9CC6291ED5EAD3007F936E /* Proxies.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Proxies.storyboard; path = Scenes/Proxies/Proxies.storyboard; sourceTree = "<group>"; };
+		6D9CC62C1ED5EB23007F936E /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Me.storyboard; path = Scenes/Me/Me.storyboard; sourceTree = "<group>"; };
+		6D9CC62F1ED5EBA8007F936E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Scenes/Login/Login.storyboard; sourceTree = "<group>"; };
 		6DA475A01E8ABEE600B56D9B /* Teambrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teambrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DA475A31E8ABEE600B56D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DA475A81E8ABEE600B56D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -373,6 +383,7 @@
 		6D9CC6111ED2E239007F936E /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				6D9CC62F1ED5EBA8007F936E /* Login.storyboard */,
 				6D9CC60F1ED2E230007F936E /* LoginVC.swift */,
 				6D9CC6121ED47C79007F936E /* LoginDetailsVC.swift */,
 				6D9CC61A1ED57B83007F936E /* LoginDetailsPresenter.swift */,
@@ -380,6 +391,38 @@
 				6D9CC61E1ED584E5007F936E /* LoginDetailsRouter.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		6D9CC6251ED5EA3F007F936E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6D9CC6231ED5EA34007F936E /* Home.storyboard */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		6D9CC6281ED5EA8C007F936E /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				6D9CC6261ED5EA81007F936E /* Team.storyboard */,
+			);
+			name = Team;
+			sourceTree = "<group>";
+		};
+		6D9CC62B1ED5EADD007F936E /* Proxies */ = {
+			isa = PBXGroup;
+			children = (
+				6D9CC6291ED5EAD3007F936E /* Proxies.storyboard */,
+			);
+			name = Proxies;
+			sourceTree = "<group>";
+		};
+		6D9CC62E1ED5EB2B007F936E /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				6D9CC62C1ED5EB23007F936E /* Me.storyboard */,
+			);
+			name = Me;
 			sourceTree = "<group>";
 		};
 		6DA475971E8ABEE600B56D9B = {
@@ -475,8 +518,12 @@
 			children = (
 				6D91BC051EB3966400FDC332 /* BlockchainTransactions */,
 				6DEC074A1E9BCF330078F40E /* Samples */,
-				6DA475A71E8ABEE600B56D9B /* Main.storyboard */,
+				6D9CC6281ED5EA8C007F936E /* Team */,
+				6D9CC6251ED5EA3F007F936E /* Home */,
 				6D9CC6111ED2E239007F936E /* Login */,
+				6D9CC62E1ED5EB2B007F936E /* Me */,
+				6D9CC62B1ED5EADD007F936E /* Proxies */,
+				6DA475A71E8ABEE600B56D9B /* Main.storyboard */,
 				6D9CC6201ED5BB9C007F936E /* InitialVC.swift */,
 			);
 			name = Scenes;
@@ -697,12 +744,17 @@
 			files = (
 				6D1C039F1EB8D37D004AED30 /* Sample.storyboard in Resources */,
 				6D097E971E9D19F400E77DAB /* Test.strings in Resources */,
+				6D9CC62D1ED5EB23007F936E /* Me.storyboard in Resources */,
 				6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */,
+				6D9CC62A1ED5EAD3007F936E /* Proxies.storyboard in Resources */,
+				6D9CC6241ED5EA34007F936E /* Home.storyboard in Resources */,
 				6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */,
 				6D097EA81E9D220A00E77DAB /* General.strings in Resources */,
 				6D097E9C1E9D1AD200E77DAB /* Test.stringsdict in Resources */,
 				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
 				6D73C6E01EBB36A700A2C0F8 /* Transactions.storyboard in Resources */,
+				6D9CC6271ED5EA81007F936E /* Team.storyboard in Resources */,
+				6D9CC6301ED5EBA8007F936E /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -71,15 +71,6 @@
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lv-63-hYq">
                                 <rect key="frame" x="16" y="568" width="343" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0i8-Gk-gnY">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
-                                        <state key="normal" title="cosigners"/>
-                                        <connections>
-                                            <action selector="tapCosigners:" destination="Xib-uD-Vgx" eventType="touchUpInside" id="mmz-pb-CvK"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="nrT-1h-aqq"/>
                                 </constraints>
@@ -467,11 +458,11 @@
             </objects>
             <point key="canvasLocation" x="3653.5999999999999" y="-565.36731634182911"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tests-->
         <scene sceneID="DCa-Ub-szD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f1Q-al-94A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Aen-FL-CX3"/>
+                    <tabBarItem key="tabBarItem" title="Tests" image="iconCoverage" id="Aen-FL-CX3"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WsV-bv-OqI">
@@ -488,4 +479,7 @@
             <point key="canvasLocation" x="1064.8" y="-561.76911544227892"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconCoverage" width="32" height="30"/>
+    </resources>
 </document>

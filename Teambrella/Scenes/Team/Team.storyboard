@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ApA-IG-JBa">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Team-->
+        <scene sceneID="jEa-bQ-tjH">
+            <objects>
+                <viewController id="bQX-e2-aFW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2nL-IR-D46"/>
+                        <viewControllerLayoutGuide type="bottom" id="ES5-Aw-06p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RNC-H5-FI4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Team" id="kWX-4a-xVs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xKw-2f-dKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3983" y="1442"/>
+        </scene>
+        <!--Team-->
+        <scene sceneID="yr4-WV-tyZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ApA-IG-JBa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Team" image="iconTeam" id="dXT-U8-WRM"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4_7.fullscreen"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5fO-Hd-Vf9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bQX-e2-aFW" kind="relationship" relationship="rootViewController" id="kA9-Oa-hJV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j6G-qV-mmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3103" y="1442"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="iconTeam" width="26" height="23"/>
+    </resources>
+</document>

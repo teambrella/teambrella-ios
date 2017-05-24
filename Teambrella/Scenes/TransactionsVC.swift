@@ -78,13 +78,6 @@ class TransactionsVC: UIViewController {
         
         print(link + urlSafeData)
     }
-    @IBAction func tapSign(_ sender: Any) {
-        teambrella.blockchain.cosignApprovedTxs()
-    }
-    
-    @IBAction func tapCopsign(_ sender: Any) {
- 
-    }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? TransactionsresultTVC {
