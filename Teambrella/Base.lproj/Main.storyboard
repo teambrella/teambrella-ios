@@ -6,10 +6,95 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Login DetailsVC-->
+        <scene sceneID="6wM-yn-nPB">
+            <objects>
+                <viewController id="2rH-zg-tvt" customClass="LoginDetailsVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nHZ-7J-o8y"/>
+                        <viewControllerLayoutGuide type="bottom" id="1kV-45-rBB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N5Y-Sd-UMI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFC-HD-Q47">
+                                <rect key="frame" x="16" y="50" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yg6-uF-O8K">
+                                <rect key="frame" x="27.5" y="141" width="320" height="385"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VfT-eE-xCt">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                        <segments>
+                                            <segment title="Male"/>
+                                            <segment title="Female"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your date of birth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm1-nt-I6T">
+                                        <rect key="frame" x="0.0" y="36" width="320" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="9eH-8U-8AA">
+                                        <rect key="frame" x="0.0" y="64.5" width="320" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="517241672.87509102">
+                                            <!--2017-05-23 14:14:32 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Redeem code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgN-ad-OhS">
+                                        <rect key="frame" x="0.0" y="288.5" width="320" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RNq-bW-Zlh">
+                                        <rect key="frame" x="0.0" y="317" width="320" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiJ-Jr-lfh">
+                                        <rect key="frame" x="0.0" y="355" width="320" height="30"/>
+                                        <state key="normal" title="Register"/>
+                                        <connections>
+                                            <action selector="tapRegister:" destination="2rH-zg-tvt" eventType="touchUpInside" id="Mo5-jc-ptO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="rFC-HD-Q47" secondAttribute="trailing" id="ILq-Tl-SLI"/>
+                            <constraint firstItem="yg6-uF-O8K" firstAttribute="centerY" secondItem="N5Y-Sd-UMI" secondAttribute="centerY" id="Xp0-wT-GGI"/>
+                            <constraint firstItem="rFC-HD-Q47" firstAttribute="leading" secondItem="N5Y-Sd-UMI" secondAttribute="leadingMargin" id="cMn-gN-QZp"/>
+                            <constraint firstItem="yg6-uF-O8K" firstAttribute="centerX" secondItem="N5Y-Sd-UMI" secondAttribute="centerX" id="cdQ-ei-59G"/>
+                            <constraint firstItem="rFC-HD-Q47" firstAttribute="top" secondItem="nHZ-7J-o8y" secondAttribute="bottom" constant="30" id="tFc-CY-6OY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="codeTextField" destination="RNq-bW-Zlh" id="INi-Zn-dwi"/>
+                        <outlet property="datePicker" destination="9eH-8U-8AA" id="Y75-oa-1Cn"/>
+                        <outlet property="genderControl" destination="VfT-eE-xCt" id="bko-4Z-pEl"/>
+                        <outlet property="greetingLabel" destination="rFC-HD-Q47" id="uUm-jS-gjM"/>
+                        <outlet property="registerButton" destination="wiJ-Jr-lfh" id="MDs-FE-1LY"/>
+                        <segue destination="xU6-5x-Qe4" kind="show" identifier="main" id="am5-o2-BcX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ylI-KZ-MnP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199" y="127"/>
+        </scene>
+        <!--LoginVC-->
         <scene sceneID="ZxD-dG-FaB">
             <objects>
                 <viewController id="yGY-yG-qGh" customClass="LoginVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,12 +110,12 @@
                                 <rect key="frame" x="169.5" y="315.5" width="37" height="37"/>
                                 <color key="color" red="0.20000000000000001" green="0.30980392159999998" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="amj-XR-gVd">
+                                <rect key="frame" x="138" y="265.5" width="99" height="20"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjg-Kt-fbi">
-                                <rect key="frame" x="152" y="382.5" width="70" height="30"/>
+                                <rect key="frame" x="137.5" y="382.5" width="99" height="30"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.30980392156862746" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="NJI-QW-idv"/>
-                                </constraints>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -42,20 +127,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cjg-Kt-fbi" firstAttribute="top" secondItem="RAC-TJ-x5S" secondAttribute="bottom" constant="30" id="BER-p3-OY6"/>
+                            <constraint firstItem="cjg-Kt-fbi" firstAttribute="width" secondItem="amj-XR-gVd" secondAttribute="width" id="Fnv-ZH-Q2c"/>
+                            <constraint firstItem="amj-XR-gVd" firstAttribute="centerX" secondItem="p3p-Ra-aCU" secondAttribute="centerX" id="Mot-zw-KC2"/>
                             <constraint firstItem="RAC-TJ-x5S" firstAttribute="centerY" secondItem="p3p-Ra-aCU" secondAttribute="centerY" id="aNJ-WR-bco"/>
                             <constraint firstItem="cjg-Kt-fbi" firstAttribute="centerX" secondItem="p3p-Ra-aCU" secondAttribute="centerX" id="oQx-9g-kwg"/>
+                            <constraint firstItem="RAC-TJ-x5S" firstAttribute="top" secondItem="amj-XR-gVd" secondAttribute="bottom" constant="30" id="szI-1p-arp"/>
                             <constraint firstItem="RAC-TJ-x5S" firstAttribute="centerX" secondItem="p3p-Ra-aCU" secondAttribute="centerX" id="uKp-Uc-9fp"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="7ms-7N-b0w"/>
+                    <navigationItem key="navigationItem" id="VBp-4j-3xJ"/>
                     <connections>
                         <outlet property="activityIndicator" destination="RAC-TJ-x5S" id="C4g-Px-ZyJ"/>
-                        <segue destination="xU6-5x-Qe4" kind="show" identifier="to main" id="XIk-M2-1JI"/>
+                        <segue destination="2rH-zg-tvt" kind="show" identifier="details" id="bb5-Uu-Z2d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QP9-ZP-jP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-772" y="133"/>
+            <point key="canvasLocation" x="-686" y="127"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Wen-en-Ay0">
@@ -75,7 +163,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fct-me-xac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="127.28635682158921"/>
+            <point key="canvasLocation" x="1076" y="127.28635682158921"/>
         </scene>
         <!--Sample-->
         <scene sceneID="Ek7-Mv-4ee">
@@ -85,7 +173,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGo-LW-k2E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="272"/>
+            <point key="canvasLocation" x="1944.8" y="271.664167916042"/>
         </scene>
         <!--Transactions-->
         <scene sceneID="661-Oa-4In">
@@ -95,7 +183,10 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ViG-7K-piE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="980" y="-65"/>
+            <point key="canvasLocation" x="1919.2" y="-65.667166416791616"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="99" height="20"/>
+    </resources>
 </document>

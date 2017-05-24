@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                         <state key="normal" title="Payments"/>
                                         <connections>
-                                            <segue destination="exg-Cv-Hq9" kind="show" identifier="to payments" id="m0L-Ve-UdM"/>
+                                            <segue destination="exg-Cv-Hq9" kind="show" identifier="payments" id="m0L-Ve-UdM"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbp-cQ-YHf">
@@ -96,7 +96,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Transactions tests" id="ktk-8X-dFd"/>
                     <connections>
-                        <segue destination="c5W-i8-KjB" kind="show" identifier="to transactions result" id="gTQ-cU-4WL"/>
+                        <segue destination="c5W-i8-KjB" kind="show" identifier="transactionsResult" id="gTQ-cU-4WL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qg5-Qk-DB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -246,8 +246,8 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="wzb-bn-B8L" kind="show" identifier="to teammate details" id="mgX-Jr-vAb"/>
-                        <segue destination="sSj-v0-n0s" kind="presentation" identifier="to team details" id="g4W-ki-7YK"/>
+                        <segue destination="wzb-bn-B8L" kind="show" identifier="teammateDetails" id="mgX-Jr-vAb"/>
+                        <segue destination="sSj-v0-n0s" kind="presentation" identifier="teamDetails" id="g4W-ki-7YK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hbB-y3-xKb" userLabel="First Responder" sceneMemberID="firstResponder"/>

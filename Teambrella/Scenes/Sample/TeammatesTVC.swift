@@ -86,7 +86,7 @@ class TeammatesTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "to teammate", sender: indexPath)
+        performSegue(type: .teammate, sender: indexPath)
     }
     
     override func tableView(_ tableView: UITableView,
@@ -112,7 +112,7 @@ class TeammatesTVC: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "to teammate" {
+        if segue.type == .teammate {
             guard let vc = segue.destination as? TeammateVC else {
                 fatalError("wrong destination for Teammate segue")
             }

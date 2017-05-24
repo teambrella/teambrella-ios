@@ -66,7 +66,7 @@ class TeammateVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "to discussion", let vc = segue.destination as? ThreadTVC {
+        if segue.type == .discussion, let vc = segue.destination as? ThreadTVC {
             vc.teammate = teammate
         }
     }

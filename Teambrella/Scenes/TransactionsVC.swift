@@ -101,7 +101,7 @@ extension TransactionsVC: TeambrellaServiceDelegate {
     func teambrellaDidUpdate(service: TeambrellaService) {
         if isTransitionNeeded {
             isTransitionNeeded = false
-            performSegue(withIdentifier: "to transactions result", sender: nil)
+            performSegue(type: .transactionsResult)
         }
     }
 }

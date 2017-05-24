@@ -80,7 +80,13 @@ class ServerService {
                                                                    options: []) {
             request.httpBody = data
             printAsString(data: data)
+            
+            request.setValue("\(body.timestamp)", forHTTPHeaderField: "t")
+            request.setValue(body.publicKey, forHTTPHeaderField: "key")
+            request.setValue(body.signature, forHTTPHeaderField: "sig")
         }
+        
+        print(request)
         Alamofire.request(request).responseJSON { response in
             switch response.result {
             case .success:

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class LoginVC: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -37,20 +38,36 @@ class LoginVC: UIViewController {
     }
     
     func register(token: String) {
-      //let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: service.server.timestamp)
-        let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": token],
-                                        body: nil,
-                                        success: { response in
-                         self.handleSuccess()
-        }) { error in
-            self.handleFailure(error: error)
+        service.server.updateTimestamp { timestamp, error in
+            let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: timestamp)
+            let body = RequestBody(key: key)
+            let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": token],
+                                            body: body,
+                                            success: { response in
+                                                self.getMe()
+                                                // self.handleSuccess()
+            }) { error in
+                self.handleFailure(error: error)
+            }
+            request.start()
         }
-        request.start()
     }
     
-    func handleSuccess() {
+    func getMe() {
+        let fields = "email, birthday, age_range, name, first_name, last_name, gender, hometown"
+        FBSDKGraphRequest(graphPath: "me", parameters: ["fields": fields]).start { connection, object, error in
+            guard let reply = object as? [String: Any], error == nil else {
+                self.handleFailure(error: error)
+                return
+            }
+            print(reply)
+            self.handleSuccess(facebookUser: FacebookUser(dict: reply))
+        }
+    }
+    
+    func handleSuccess(facebookUser: FacebookUser) {
         activityIndicator.stopAnimating()
-        performSegue(withIdentifier: "to main", sender: self)
+        performSegue(type: .details, sender: facebookUser)
     }
     
     func handleFailure(error: Error?) {
@@ -58,4 +75,38 @@ class LoginVC: UIViewController {
         print("Error \(error)")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? LoginDetailsVC, let user = sender as? FacebookUser {
+            vc.user = user
+        }
+    }
+    
+}
+
+struct FacebookUser {
+    let name: String
+    let firstName: String?
+    let lastName: String?
+    let gender: Gender
+    let email: String?
+    let minAge: Int
+    
+    init(dict: [String: Any]) {
+        let json = JSON(dict)
+        name = json["name"].stringValue
+        firstName = json["first_name"].string
+        lastName = json["last_name"].string
+        gender = Gender.fromFacebook(string: json["gender"].stringValue)
+        email = json["email"].string
+        minAge = json["age_range"]["min"].intValue
+    }
+}
+
+enum Gender {
+   case male
+    case female
+    
+    static func fromFacebook(string: String) -> Gender {
+        return string == "female" ? .female : .male
+    }
 }

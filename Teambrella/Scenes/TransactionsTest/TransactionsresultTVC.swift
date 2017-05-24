@@ -28,7 +28,7 @@ class TransactionsresultTVC: UITableViewController {
     }
     
     func tapTitle() {
-        performSegue(withIdentifier: "to team details", sender: teambrella.fetcher.firstTeam)
+        performSegue(type: .teamDetails, sender: teambrella.fetcher.firstTeam)
     }
 
     // MARK: - Table view data source
@@ -55,7 +55,7 @@ class TransactionsresultTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let teammate = teammates[indexPath.row]
-        performSegue(withIdentifier: "to teammate details", sender: teammate)
+        performSegue(type: .teamDetails, sender: teammate)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
