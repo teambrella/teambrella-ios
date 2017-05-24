@@ -34,7 +34,6 @@ class TeambrellaService {
             if success {
                 self.blockchain.updateData()
                 self.save()
-                self.delegate?.teambrellaDidUpdate(service: self)
             }
         }
         

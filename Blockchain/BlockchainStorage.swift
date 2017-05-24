@@ -30,19 +30,6 @@ class BlockchainStorage {
     var context: NSManagedObjectContext {
         return container.viewContext
     }
-//    private(set) var lastUpdated: Int64 {
-//        get {
-//            return UserDefaults.standard.value(forKey: Constant.lastUpdatedKey) as? Int64 ?? 0
-//        }
-//        set {
-//            let prev = lastUpdated
-//            print("last updated changed from \(prev)")
-//            UserDefaults.standard.set(newValue, forKey: Constant.lastUpdatedKey)
-//            UserDefaults.standard.synchronize()
-//            print("last updated changed to \(newValue)")
-//            print("updates delta = \(Double(newValue - prev) / 10_000_000) seconds")
-//        }
-//    }
     
     init() {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
@@ -123,18 +110,6 @@ class BlockchainStorage {
     func dispose() {
         context.rollback()
     }
-    
-//    func saveInBackground(block: @escaping (_ context: NSManagedObjectContext) -> Void,
-//                          completion: (() -> Void)? = nil) {
-//        container.performBackgroundTask { [weak self] context in
-//            guard let me = self else { return }
-//            
-//            block(context)
-//            let isSaved = me.save(context: context)
-//            print(isSaved ? "saved context" : "failed to save context")
-//            completion?()
-//        }
-//    }
     
     @discardableResult
     private func save(context: NSManagedObjectContext) -> Bool {

@@ -20,6 +20,6 @@ class LoginDetailsRouterImpl: LoginDetailsRouter {
     }
     
     func validate() {
-        vc?.performSegue(type: .main)
+        vc?.performSegue(type: .unwindToInitial)
     }
 }

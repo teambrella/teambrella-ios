@@ -32,12 +32,6 @@ class BlockchainService {
                                                            "https://blockchain.info"]
     }
     
-    //    let accountService: AccountService
-    //
-    //    init (accountService: AccountService) {
-    //        self.accountService = accountService
-    //    }
-    
     private struct ExplorerUtxo {
         let address: String
         let txid: String
@@ -69,15 +63,6 @@ class BlockchainService {
     private struct ExplorerTxRes {
         let txID: String
     }
-    //
-    //    private struct ExplorerTxOuter {
-    //        let pagesTotal: Int
-    //        let txs: [ExplorerTx]
-    //    }
-    //
-    //    private struct ExplorerTxVout {
-    //        let scriptPubKey: Expl
-    //    }
     
     private unowned let storage: BlockchainStorage
     

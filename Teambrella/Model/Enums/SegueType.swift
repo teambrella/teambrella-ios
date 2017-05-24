@@ -11,12 +11,15 @@ import Foundation
 enum SegueType: String {
     case unknown
     
-    case main
     case details
-    case transactionsResult
-    case teammateDetails
+    case discussion
+    case login
+    case main
     case payments
     case teamDetails
     case teammate
-    case discussion
+    case teammateDetails
+    case transactionsResult
+    
+    case unwindToInitial
 }

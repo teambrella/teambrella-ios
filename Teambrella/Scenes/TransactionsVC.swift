@@ -12,7 +12,7 @@ import UIKit
 
 class TransactionsVC: UIViewController {
     
-    let teambrella = TeambrellaService()
+    var teambrella: TeambrellaService!
     var isTransitionNeeded = false
     
     override func viewDidLoad() {

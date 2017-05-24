@@ -23,10 +23,14 @@ class User: NSManagedObject {
         return auxWalletCheckedValue as Date?
     }
     
-//    var bitcoinPrivateKey: Key {
-//        let key = Key(base58String: privateKey, timestamp: 0)
-//        return key
-//    }
+    var isFbAuthorized: Bool {
+        get {
+            return isFbAuthorizedValue
+        }
+        set {
+            isFbAuthorizedValue = newValue
+        }
+    }
     
     var lastUpdated: Int64 {
         get {
