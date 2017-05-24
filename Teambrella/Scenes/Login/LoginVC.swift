@@ -6,8 +6,8 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
+import UIKit
 
 class LoginVC: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -20,6 +20,10 @@ class LoginVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        print("LoginVC deinit")
     }
     
     @IBAction func tapLogin(_ sender: UIButton) {
@@ -77,7 +81,7 @@ class LoginVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? LoginDetailsVC, let user = sender as? FacebookUser {
-            vc.user = user
+            let configurator = LoginDetailsConfigurator(vc: vc, fbUser: user)
         }
     }
     

@@ -87,7 +87,7 @@
                         <outlet property="genderControl" destination="VfT-eE-xCt" id="bko-4Z-pEl"/>
                         <outlet property="greetingLabel" destination="rFC-HD-Q47" id="uUm-jS-gjM"/>
                         <outlet property="registerButton" destination="wiJ-Jr-lfh" id="MDs-FE-1LY"/>
-                        <segue destination="xU6-5x-Qe4" kind="show" identifier="main" id="am5-o2-BcX"/>
+                        <segue destination="xU6-5x-Qe4" kind="show" identifier="main" animates="NO" id="am5-o2-BcX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylI-KZ-MnP" userLabel="First Responder" sceneMemberID="firstResponder"/>

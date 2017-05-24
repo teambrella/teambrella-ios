@@ -15,46 +15,55 @@ class LoginDetailsVC: UIViewController {
     @IBOutlet var registerButton: UIButton!
     @IBOutlet var genderControl: UISegmentedControl!
     
-    var user: FacebookUser!
-    var isWaitingInput = true {
-        didSet {
-            registerButton.isEnabled = !isWaitingInput
-        }
-    }
-
+    var presenter: LoginDetailsPresenter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewDidLoad()
         
-        codeTextField.delegate = self
-        registerButton.isEnabled = false
-
-        greetingLabel.text = "Hello, \(user.name)"
-        var dateComponents = DateComponents()
-        dateComponents.year = -user.minAge
-        datePicker.date = Calendar.current.date(byAdding: dateComponents, to: Date()) ?? Date()
-        genderControl.selectedSegmentIndex = user.gender == .male ? 0 : 1
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(textChanged),
+                                               name: .UITextFieldTextDidChange,
+                                               object: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func tapRegister(_ sender: Any) {
-        performSegue(type: .main)
-    }
-
-}
-
-extension LoginDetailsVC: UITextFieldDelegate {
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
-        isWaitingInput = textField.text?.isEmpty ?? true
-        return true
+    deinit {
+        print("LoginDetailsVC deinit")
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        isWaitingInput = textField.text?.isEmpty ?? true
+    @IBAction func tapRegister(_ sender: Any) {
+        presenter?.tapRegister()
+    }
+    
+    func textChanged() {
+        presenter?.codeTextChanged(text: codeTextField.text)
+    }
+    
+}
+
+extension LoginDetailsVC: LoginDetailsView {
+    var code: String? { return codeTextField.text }
+    var gender: Gender { return genderControl.selectedSegmentIndex == 0 ? .male : .female }
+    var date: Date { return datePicker.date }
+    
+    func register(enable: Bool) {
+        registerButton.isEnabled = enable
+    }
+    
+    func greeting(text: String) {
+        greetingLabel.text = text
+    }
+    
+    func changeDate(to date: Date) {
+        datePicker.date = date
+    }
+    
+    func changeGender(to gender: Gender) {
+        genderControl.selectedSegmentIndex = gender == .male ? 0 : 1
     }
 }
