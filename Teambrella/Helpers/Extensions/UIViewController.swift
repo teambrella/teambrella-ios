@@ -43,4 +43,12 @@ extension UIViewController {
                                      height: viewHeight + keyboardSize.height)
         }
     }
+    
+    func setupTransparentNavigationBar() {
+        guard let bar = navigationController?.navigationBar else { return }
+        
+        bar.barTintColor = .clear
+        bar.setBackgroundImage(UIImage(), for: .default)
+        bar.shadowImage = UIImage()
+    }
 }

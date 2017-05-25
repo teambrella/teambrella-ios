@@ -15,7 +15,8 @@ class TeamVC: ButtonBarPagerTabStripViewController {
         setupTabLayout()
         super.viewDidLoad()
 
-        setupNavigationBar()
+        setupTransparentNavigationBar()
+        addTeamButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,16 +41,6 @@ class TeamVC: ButtonBarPagerTabStripViewController {
             oldCell?.label.textColor = .whiteHalfTransparent
             newCell?.label.textColor = .white
         }
-    }
-    
-    private func setupNavigationBar() {
-        guard let bar = navigationController?.navigationBar else { return }
-        
-        bar.barTintColor = .clear
-        bar.setBackgroundImage(UIImage(), for: .default)
-        bar.shadowImage = UIImage()
-        
-        addTeamButton()
     }
     
     private func addTeamButton() {
