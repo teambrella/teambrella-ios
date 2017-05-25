@@ -4,3 +4,4 @@ github "onevcat/Kingfisher" ~> 3.0
 #github "facebook/Facebook-SDK-Swift"
 github "MortimerGoro/MGSwipeTableCell"
 github "scinfu/SwiftSoup"
+github "xmartlabs/XLPagerTabStrip" ~> 7.0

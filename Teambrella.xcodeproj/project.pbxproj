@@ -67,6 +67,7 @@
 		6D9CC62A1ED5EAD3007F936E /* Proxies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC6291ED5EAD3007F936E /* Proxies.storyboard */; };
 		6D9CC62D1ED5EB23007F936E /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC62C1ED5EB23007F936E /* Me.storyboard */; };
 		6D9CC6301ED5EBA8007F936E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC62F1ED5EBA8007F936E /* Login.storyboard */; };
+		6D9CC6331ED7207E007F936E /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */; };
 		6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475A31E8ABEE600B56D9B /* AppDelegate.swift */; };
 		6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475A71E8ABEE600B56D9B /* Main.storyboard */; };
 		6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AA1E8ABEE600B56D9B /* Assets.xcassets */; };
@@ -193,6 +194,7 @@
 		6D9CC6291ED5EAD3007F936E /* Proxies.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Proxies.storyboard; path = Scenes/Proxies/Proxies.storyboard; sourceTree = "<group>"; };
 		6D9CC62C1ED5EB23007F936E /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Me.storyboard; path = Scenes/Me/Me.storyboard; sourceTree = "<group>"; };
 		6D9CC62F1ED5EBA8007F936E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Scenes/Login/Login.storyboard; sourceTree = "<group>"; };
+		6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLPagerTabStrip.framework; path = Carthage/Build/iOS/XLPagerTabStrip.framework; sourceTree = "<group>"; };
 		6DA475A01E8ABEE600B56D9B /* Teambrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teambrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DA475A31E8ABEE600B56D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DA475A81E8ABEE600B56D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */,
+				6D9CC6331ED7207E007F936E /* XLPagerTabStrip.framework in Frameworks */,
 				6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */,
 				6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */,
 				6DEC07501E9BD59D0078F40E /* Kingfisher.framework in Frameworks */,
@@ -597,6 +600,7 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */,
 				6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */,
 				6D8F97111E8D1529008DC62E /* Alamofire.framework */,
 				6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */,
@@ -860,6 +864,7 @@
 				"$(SRCROOT)//Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftSoup.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
 			);
 			name = Carthage;
 			outputPaths = (

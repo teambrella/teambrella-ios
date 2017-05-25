@@ -97,7 +97,6 @@ struct FacebookUser {
     let picture: String?
     
     init(dict: [String: Any]) {
-        print(dict)
         let json = JSON(dict)
         name = json["name"].stringValue
         firstName = json["first_name"].string
