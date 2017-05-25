@@ -10,7 +10,7 @@ import UIKit
 import XLPagerTabStrip
 
 class TeamVC: ButtonBarPagerTabStripViewController {
-
+    
     override func viewDidLoad() {
         setup()
         super.viewDidLoad()
