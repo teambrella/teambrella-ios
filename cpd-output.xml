@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd-cpd/>
+<pmd-cpd>
+   <duplication lines="5" tokens="56">
+      <file line="106"
+            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/View/BrickView.swift"/>
+      <file line="118"
+            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/View/BrickView.swift"/>
+      <codefragment><![CDATA[                + badgeLabel.frame.width
+            
+            let x = (bounds.width - wdt) / 2
+            amountLabel.frame.origin = CGPoint(x: x, y: titleLabel.frame.maxY)
+            currencyLabel.frame.origin = CGPoint(x: amountLabel.frame.maxX, y: 0)]]></codefragment>
+   </duplication>
+</pmd-cpd>
