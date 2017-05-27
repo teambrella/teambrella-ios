@@ -394,20 +394,40 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="24" bottom="8" right="24"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4b-GY-6BP" userLabel="Item container">
-                                <rect key="frame" x="16" y="436.5" width="343" height="168"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4b-GY-6BP" userLabel="Item card" customClass="ItemCard" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="24" y="452.5" width="327" height="72"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="168" id="bgW-LU-X3c"/>
+                                    <constraint firstAttribute="height" constant="72" id="bgW-LU-X3c"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb2-DR-8f0" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="16" y="540.5" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="EzE-d3-MH7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Submit Another Claim">
+                                    <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.56862745100000001" green="0.87843137250000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="e4b-GY-6BP" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leadingMargin" id="2XC-hP-iMB"/>
+                            <constraint firstItem="tb2-DR-8f0" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leadingMargin" id="0xj-LZ-IFc"/>
+                            <constraint firstItem="e4b-GY-6BP" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" constant="24" id="2XC-hP-iMB"/>
                             <constraint firstItem="V5d-hm-oOR" firstAttribute="top" secondItem="6dX-2w-nrX" secondAttribute="bottom" id="5hO-pt-ZVc"/>
                             <constraint firstItem="KiM-JO-zmq" firstAttribute="centerX" secondItem="EQb-ak-Vz0" secondAttribute="centerX" id="6BY-4f-exk"/>
                             <constraint firstAttribute="trailing" secondItem="C2W-oM-PML" secondAttribute="trailing" id="8aq-7p-OLa"/>
+                            <constraint firstItem="tb2-DR-8f0" firstAttribute="top" secondItem="e4b-GY-6BP" secondAttribute="bottom" constant="16" id="9OD-96-D6a"/>
                             <constraint firstItem="V5d-hm-oOR" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" id="EYt-Zk-OXE"/>
                             <constraint firstItem="6dX-2w-nrX" firstAttribute="centerX" secondItem="C2W-oM-PML" secondAttribute="centerX" id="JSq-zM-gnJ"/>
                             <constraint firstItem="C2W-oM-PML" firstAttribute="top" secondItem="11u-Xw-Wfu" secondAttribute="bottom" constant="-20" id="O6I-LG-Y1O"/>
@@ -418,12 +438,13 @@
                             <constraint firstItem="C2W-oM-PML" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" id="V2I-9j-3K8"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="trailing" secondItem="C2W-oM-PML" secondAttribute="trailing" id="VLk-JL-TE4"/>
                             <constraint firstItem="KiM-JO-zmq" firstAttribute="top" secondItem="4a4-Xz-swb" secondAttribute="bottom" id="Vf6-ld-D2g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tb2-DR-8f0" secondAttribute="trailing" id="Vqn-0C-e9Q"/>
                             <constraint firstItem="C2W-oM-PML" firstAttribute="bottom" secondItem="EQb-ak-Vz0" secondAttribute="centerY" id="bco-sR-Opi"/>
                             <constraint firstItem="6dX-2w-nrX" firstAttribute="bottom" secondItem="C2W-oM-PML" secondAttribute="bottom" id="eXD-ub-Tdp"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="leading" secondItem="C2W-oM-PML" secondAttribute="leading" id="gaE-R3-73D"/>
-                            <constraint firstItem="e4b-GY-6BP" firstAttribute="top" secondItem="V5d-hm-oOR" secondAttribute="bottom" id="hD9-7n-gzN"/>
+                            <constraint firstItem="e4b-GY-6BP" firstAttribute="top" secondItem="V5d-hm-oOR" secondAttribute="bottom" constant="16" id="hD9-7n-gzN"/>
                             <constraint firstItem="4a4-Xz-swb" firstAttribute="top" secondItem="11u-Xw-Wfu" secondAttribute="bottom" constant="25" id="jya-hV-Xyf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="e4b-GY-6BP" secondAttribute="trailing" id="kdu-i6-mcE"/>
+                            <constraint firstAttribute="trailing" secondItem="e4b-GY-6BP" secondAttribute="trailing" constant="24" id="kdu-i6-mcE"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="top" secondItem="KiM-JO-zmq" secondAttribute="bottom" constant="20" id="o0l-aA-tkP"/>
                             <constraint firstItem="4a4-Xz-swb" firstAttribute="centerX" secondItem="EQb-ak-Vz0" secondAttribute="centerX" id="s4Y-hU-sFa"/>
                             <constraint firstItem="cDk-QT-stB" firstAttribute="bottom" secondItem="C2W-oM-PML" secondAttribute="bottom" id="sC0-0b-clh"/>
@@ -436,6 +457,7 @@
                         <outlet property="gradientView" destination="C2W-oM-PML" id="rse-8A-FIw"/>
                         <outlet property="greetingsSubtitileLabel" destination="KiM-JO-zmq" id="9vy-vt-HNR"/>
                         <outlet property="greetingsTitleLabel" destination="4a4-Xz-swb" id="xEA-GF-4P5"/>
+                        <outlet property="itemCard" destination="e4b-GY-6BP" id="6ud-Y2-K0v"/>
                         <outlet property="leftBrickAmountLabel" destination="t7a-cU-E9r" id="Qbt-f0-nWY"/>
                         <outlet property="leftBrickAvatarView" destination="wIX-fM-EU9" id="wIT-DP-ucv"/>
                         <outlet property="leftBrickCurrencyLabel" destination="0WR-os-NZl" id="RHG-6e-Er7"/>

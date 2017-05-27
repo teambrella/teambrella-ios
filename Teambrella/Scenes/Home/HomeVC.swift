@@ -27,6 +27,8 @@ class HomeVC: UIViewController {
     
     @IBOutlet var pageControl: UIPageControl!
 
+    @IBOutlet var itemCard: ItemCard!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemCard" customModule="Teambrella" customModuleProvider="target">
+            <connections>
+                <outlet property="avatarView" destination="V3n-rk-6pA" id="VJC-QU-cCQ"/>
+                <outlet property="statusLabel" destination="pRW-vd-Z9W" id="7pZ-gM-9hq"/>
+                <outlet property="subtitleLabel" destination="SIJ-N2-jqV" id="4B7-hb-fzF"/>
+                <outlet property="titleLabel" destination="tYG-VS-gf2" id="y3M-AP-hSJ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="423" height="216"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tesla" translatesAutoresizingMaskIntoConstraints="NO" id="V3n-rk-6pA">
+                    <rect key="frame" x="0.0" y="72" width="72" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="V3n-rk-6pA" secondAttribute="height" multiplier="1:1" id="xdQ-Gn-d6D"/>
+                        <constraint firstAttribute="width" constant="72" id="xyl-zz-DV1"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mazda CX5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYG-VS-gf2">
+                    <rect key="frame" x="94" y="80" width="93.5" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="0.23529411764705882" green="0.27843137254901962" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collision Deductible" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIJ-N2-jqV">
+                    <rect key="frame" x="94" y="119" width="129" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVERED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRW-vd-Z9W">
+                    <rect key="frame" x="94" y="107" width="50" height="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                    <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="SIJ-N2-jqV" firstAttribute="leading" secondItem="tYG-VS-gf2" secondAttribute="leading" id="6bU-0N-zpB"/>
+                <constraint firstItem="pRW-vd-Z9W" firstAttribute="leading" secondItem="tYG-VS-gf2" secondAttribute="leading" id="7er-5e-sfy"/>
+                <constraint firstItem="SIJ-N2-jqV" firstAttribute="top" secondItem="pRW-vd-Z9W" secondAttribute="bottom" id="Phj-Th-iJn"/>
+                <constraint firstItem="SIJ-N2-jqV" firstAttribute="bottom" secondItem="V3n-rk-6pA" secondAttribute="bottom" constant="-8" id="UV9-cF-xo1"/>
+                <constraint firstItem="tYG-VS-gf2" firstAttribute="leading" secondItem="V3n-rk-6pA" secondAttribute="trailing" constant="22" id="dRn-9a-5FM"/>
+                <constraint firstItem="tYG-VS-gf2" firstAttribute="top" secondItem="V3n-rk-6pA" secondAttribute="top" constant="8" id="gJc-lK-Mrh"/>
+                <constraint firstItem="V3n-rk-6pA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="lrw-TO-6qw"/>
+                <constraint firstItem="V3n-rk-6pA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="w0S-bG-jg3"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="138.5" y="-171"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tesla" width="381" height="132"/>
+    </resources>
+</document>

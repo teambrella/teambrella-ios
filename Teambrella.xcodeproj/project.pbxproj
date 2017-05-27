@@ -109,6 +109,9 @@
 		6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF61E96690B00ACC119 /* EntityLike.swift */; };
 		6DEC6DF91E966AA900ACC119 /* TransformerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF81E966AA900ACC119 /* TransformerService.swift */; };
 		6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE678C1ED9B8E10098EDB3 /* XIBInitable.swift */; };
+		6DEE678F1ED9CF070098EDB3 /* ItemCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DEE678E1ED9CF060098EDB3 /* ItemCard.xib */; };
+		6DEE67911ED9CF160098EDB3 /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE67901ED9CF160098EDB3 /* ItemCard.swift */; };
+		6DEE67931ED9D3E60098EDB3 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE67921ED9D3E60098EDB3 /* BorderedButton.swift */; };
 		6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */; };
 		6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */; };
 		6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
@@ -256,6 +259,9 @@
 		6DEC6DF61E96690B00ACC119 /* EntityLike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityLike.swift; path = Model/Protocols/EntityLike.swift; sourceTree = "<group>"; };
 		6DEC6DF81E966AA900ACC119 /* TransformerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransformerService.swift; path = Model/Services/Transformers/TransformerService.swift; sourceTree = "<group>"; };
 		6DEE678C1ED9B8E10098EDB3 /* XIBInitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XIBInitable.swift; path = Model/Protocols/XIBInitable.swift; sourceTree = "<group>"; };
+		6DEE678E1ED9CF060098EDB3 /* ItemCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemCard.xib; path = View/ItemCard.xib; sourceTree = "<group>"; };
+		6DEE67901ED9CF160098EDB3 /* ItemCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCard.swift; path = View/ItemCard.swift; sourceTree = "<group>"; };
+		6DEE67921ED9D3E60098EDB3 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderedButton.swift; path = View/BorderedButton.swift; sourceTree = "<group>"; };
 		6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadTVC.swift; path = Scenes/Sample/ThreadTVC.swift; sourceTree = "<group>"; };
 		6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadPostCell.swift; path = Scenes/Sample/ThreadPostCell.swift; sourceTree = "<group>"; };
 		6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -646,6 +652,9 @@
 				6D9CC6521ED98A07007F936E /* NumberView.xib */,
 				6D9CC6541ED98E66007F936E /* NumberView.swift */,
 				6D9CC6561ED998D7007F936E /* Label.swift */,
+				6DEE678E1ED9CF060098EDB3 /* ItemCard.xib */,
+				6DEE67901ED9CF160098EDB3 /* ItemCard.swift */,
+				6DEE67921ED9D3E60098EDB3 /* BorderedButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -822,6 +831,7 @@
 			files = (
 				6D1C039F1EB8D37D004AED30 /* Sample.storyboard in Resources */,
 				6D097E971E9D19F400E77DAB /* Test.strings in Resources */,
+				6DEE678F1ED9CF070098EDB3 /* ItemCard.xib in Resources */,
 				6D9CC62D1ED5EB23007F936E /* Me.storyboard in Resources */,
 				6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */,
 				6D9CC62A1ED5EAD3007F936E /* Proxies.storyboard in Resources */,
@@ -1053,11 +1063,13 @@
 				6D466AA01ED07CF1001BC579 /* BlockchainServer.swift in Sources */,
 				6D9CC6401ED72E19007F936E /* RulesVC.swift in Sources */,
 				6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */,
+				6DEE67911ED9CF160098EDB3 /* ItemCard.swift in Sources */,
 				6D466AA61ED07CF1001BC579 /* Cosigner.swift in Sources */,
 				6D466AA81ED07CF1001BC579 /* Team.swift in Sources */,
 				6DD12ECC1EC75C2C00BE1CC4 /* Date.swift in Sources */,
 				6D097EA31E9D215500E77DAB /* TeammateType.swift in Sources */,
 				6D9CC6131ED47C79007F936E /* LoginDetailsVC.swift in Sources */,
+				6DEE67931ED9D3E60098EDB3 /* BorderedButton.swift in Sources */,
 				6D466AB01ED07CF1001BC579 /* EntityFactory.swift in Sources */,
 				6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */,
 				6D9CC6191ED484CF007F936E /* UIViewController.swift in Sources */,
