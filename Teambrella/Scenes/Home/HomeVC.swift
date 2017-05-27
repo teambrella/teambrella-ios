@@ -11,6 +11,21 @@ import UIKit
 class HomeVC: UIViewController {
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var collectionView: UICollectionView!
+    
+    @IBOutlet var greetingsTitleLabel: UILabel!
+    @IBOutlet var greetingsSubtitileLabel: UILabel!
+    
+    @IBOutlet var leftBrickTitleLabel: UILabel!
+    @IBOutlet var leftBrickAvatarView: UIImageView!
+    @IBOutlet var leftBrickAmountLabel: UILabel!
+    @IBOutlet var leftBrickCurrencyLabel: UILabel!
+    
+    @IBOutlet var rightBrickTitleLabel: UILabel!
+    @IBOutlet var rightBrickAvatarView: UIImageView!
+    @IBOutlet var rightBrickAmountLabel: UILabel!
+    @IBOutlet var rightBrickCurrencyLabel: UILabel!
+    
+    @IBOutlet var pageControl: UIPageControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +40,10 @@ class HomeVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func tapPageControl(_ sender: UIPageControl) {
+        let indexPath = IndexPath(row: sender.currentPage, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
     /*
     // MARK: - Navigation
 
@@ -51,16 +70,36 @@ extension HomeVC: UICollectionViewDataSource {
             cell.leftNumberView.amountLabel.text = "1000"
             cell.leftNumberView.titleLabel.text = "CLAIMED"
             cell.leftNumberView.currencyLabel.text = "USD"
-//            cell.leftNumberView.isBadgeVisible = false
             
             cell.rightNumberView.amountLabel.text = "85"
             cell.rightNumberView.titleLabel.text = "TEAM VOTE"
             cell.rightNumberView.currencyLabel.text = "%"
-//            cell.rightNumberView.isBadgeVisible = true
             cell.rightNumberView.badgeLabel.text = "VOTING"
-//            cell.rightNumberView.isCurrencyOnTop = false
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+       
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let center = view.bounds.midX
+        let cells = collectionView.visibleCells
+        var nearest = CGFloat.greatestFiniteMagnitude
+        var idx = 0
+        for cell in cells {
+            let cellCenter = collectionView.convert(cell.center, to: view)
+            let newNearest = abs(center - cellCenter.x)
+            if  newNearest < nearest {
+                nearest = newNearest
+                let index = collectionView.indexPath(for: cell)
+                idx = index?.row ?? 0
+            }
+        }
+         pageControl.currentPage = idx
     }
 }
 

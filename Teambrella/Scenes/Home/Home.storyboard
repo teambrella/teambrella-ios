@@ -118,10 +118,13 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xle-t4-lRz" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="162" height="54"/>
                                                                     <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0oW-X3-CUj">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0oW-X3-CUj" userLabel="Vertical separator">
                                                                     <rect key="frame" x="162" y="0.0" width="1" height="54"/>
-                                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <color key="backgroundColor" red="0.80784313725490198" green="0.84705882352941175" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="1" id="4OP-Co-AjU"/>
                                                                     </constraints>
@@ -129,6 +132,10 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d71-a1-tb0" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
                                                                     <rect key="frame" x="163" y="0.0" width="162" height="54"/>
                                                                     <color key="backgroundColor" red="0.36862745099999999" green="0.41568627450000001" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="YES"/>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCurrencyOnTop" value="NO"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </view>
                                                             </subviews>
                                                             <constraints>
@@ -219,6 +226,9 @@
                                 <rect key="frame" x="168" y="296.5" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" red="0.76078431372549016" green="0.81176470588235294" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.32156862749999998" green="0.36862745099999999" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="tapPageControl:" destination="dtc-T4-z44" eventType="valueChanged" id="Qd8-fR-4Hz"/>
+                                </connections>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5d-hm-oOR" userLabel="Wallet container">
                                 <rect key="frame" x="0.0" y="333.5" width="375" height="103"/>
@@ -321,7 +331,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCN-fH-yvY">
-                                                        <rect key="frame" x="50.5" y="0.0" width="91" height="12"/>
+                                                        <rect key="frame" x="51" y="0.0" width="91" height="12"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                         <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -424,6 +434,17 @@
                     <connections>
                         <outlet property="collectionView" destination="dWk-hB-e7I" id="vMm-7v-iEk"/>
                         <outlet property="gradientView" destination="C2W-oM-PML" id="rse-8A-FIw"/>
+                        <outlet property="greetingsSubtitileLabel" destination="KiM-JO-zmq" id="9vy-vt-HNR"/>
+                        <outlet property="greetingsTitleLabel" destination="4a4-Xz-swb" id="xEA-GF-4P5"/>
+                        <outlet property="leftBrickAmountLabel" destination="t7a-cU-E9r" id="Qbt-f0-nWY"/>
+                        <outlet property="leftBrickAvatarView" destination="wIX-fM-EU9" id="wIT-DP-ucv"/>
+                        <outlet property="leftBrickCurrencyLabel" destination="0WR-os-NZl" id="RHG-6e-Er7"/>
+                        <outlet property="leftBrickTitleLabel" destination="ym3-xx-jcx" id="4QC-UU-AEC"/>
+                        <outlet property="pageControl" destination="6dX-2w-nrX" id="6DW-fz-0Ts"/>
+                        <outlet property="rightBrickAmountLabel" destination="xL4-tL-WPQ" id="oqq-6z-Por"/>
+                        <outlet property="rightBrickAvatarView" destination="sHk-fD-QOV" id="5Uk-4s-OpS"/>
+                        <outlet property="rightBrickCurrencyLabel" destination="sjW-Hc-lVp" id="1ZL-Pd-vTY"/>
+                        <outlet property="rightBrickTitleLabel" destination="xCN-fH-yvY" id="7e9-7g-z2O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRD-AN-FqK" userLabel="First Responder" sceneMemberID="firstResponder"/>

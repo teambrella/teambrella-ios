@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,7 +13,10 @@
             <connections>
                 <outlet property="amountLabel" destination="3E2-y1-WiR" id="kNI-n4-eib"/>
                 <outlet property="badgeLabel" destination="9hk-vw-O9D" id="ZcL-Ly-df4"/>
+                <outlet property="currencyCenterConstraint" destination="4PY-JO-TvG" id="Wja-44-PR6"/>
                 <outlet property="currencyLabel" destination="ecV-sI-j40" id="g53-6b-K7m"/>
+                <outlet property="currencyToBadgeConstraint" destination="jBF-MS-YGO" id="G2P-wQ-Y6q"/>
+                <outlet property="currencyToContainerConstraint" destination="qRN-XD-rIO" id="yH6-rW-4hi"/>
                 <outlet property="titleLabel" destination="MLC-D6-CiE" id="Qqz-Bc-HQq"/>
             </connections>
         </placeholder>
@@ -39,7 +41,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mBTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecV-sI-j40">
-                            <rect key="frame" x="63.5" y="20" width="28" height="11"/>
+                            <rect key="frame" x="63.5" y="19" width="28" height="11"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                             <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -72,9 +74,9 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="ecV-sI-j40" firstAttribute="centerY" secondItem="3E2-y1-WiR" secondAttribute="centerY" constant="-7" id="4PY-JO-TvG"/>
                         <constraint firstItem="3E2-y1-WiR" firstAttribute="leading" secondItem="0J0-P7-9yQ" secondAttribute="leading" id="Bga-4V-bJ8"/>
                         <constraint firstItem="3E2-y1-WiR" firstAttribute="top" secondItem="MLC-D6-CiE" secondAttribute="bottom" id="DqO-9A-MgE"/>
-                        <constraint firstItem="ecV-sI-j40" firstAttribute="bottom" secondItem="3E2-y1-WiR" secondAttribute="centerY" id="LDa-2K-ZRD"/>
                         <constraint firstAttribute="bottom" secondItem="3E2-y1-WiR" secondAttribute="bottom" id="PSX-lo-06A"/>
                         <constraint firstAttribute="trailing" secondItem="9hk-vw-O9D" secondAttribute="trailing" id="RfK-Im-BT8"/>
                         <constraint firstItem="MLC-D6-CiE" firstAttribute="leading" secondItem="0J0-P7-9yQ" secondAttribute="leading" id="Tcl-ft-FlI"/>
@@ -82,6 +84,7 @@
                         <constraint firstItem="9hk-vw-O9D" firstAttribute="centerY" secondItem="3E2-y1-WiR" secondAttribute="centerY" id="btu-78-2go"/>
                         <constraint firstItem="MLC-D6-CiE" firstAttribute="top" secondItem="0J0-P7-9yQ" secondAttribute="top" id="dfQ-SE-bh6"/>
                         <constraint firstItem="9hk-vw-O9D" firstAttribute="leading" secondItem="ecV-sI-j40" secondAttribute="trailing" constant="8" id="jBF-MS-YGO"/>
+                        <constraint firstAttribute="trailing" secondItem="ecV-sI-j40" secondAttribute="trailing" priority="750" id="qRN-XD-rIO"/>
                         <constraint firstItem="ecV-sI-j40" firstAttribute="leading" secondItem="3E2-y1-WiR" secondAttribute="trailing" id="yGI-7r-BHT"/>
                     </constraints>
                 </view>
