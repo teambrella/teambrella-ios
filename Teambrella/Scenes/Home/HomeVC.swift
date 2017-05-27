@@ -18,7 +18,6 @@ class HomeVC: UIViewController {
         setupTransparentNavigationBar()
         gradientView.setup(colors: [#colorLiteral(red: 0.1803921569, green: 0.2392156863, blue: 0.7960784314, alpha: 1), #colorLiteral(red: 0.2156862745, green: 0.2705882353, blue: 0.8078431373, alpha: 1), #colorLiteral(red: 0.368627451, green: 0.4156862745, blue: 0.8588235294, alpha: 1)],
                            locations: [0.0, 0.5, 1.0])
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +44,22 @@ extension HomeVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "card", for: indexPath)
+        print(indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCollectionCell", for: indexPath)
+        if let cell = cell as? HomeCollectionCell {
+            cell.setupShadow()
+//            cell.leftNumberView.amountLabel.text = "1000"
+//            cell.leftNumberView.titleLabel.text = "CLAIMED"
+//            cell.leftNumberView.currencyLabel.text = "USD"
+//            cell.leftNumberView.isBadgeVisible = false
+//            
+//            cell.rightNumberView.amountLabel.text = "1000"
+//            cell.rightNumberView.titleLabel.text = "TEAM VOTE"
+//            cell.rightNumberView.currencyLabel.text = "%"
+//            cell.rightNumberView.isBadgeVisible = true
+//            cell.rightNumberView.badgeLabel.text = "VOTING"
+//            cell.rightNumberView.isCurrencyOnTop = false
+        }
         return cell
     }
 }

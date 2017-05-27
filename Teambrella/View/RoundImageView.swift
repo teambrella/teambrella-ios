@@ -22,6 +22,7 @@ class RoundImageView: UIImageView {
             imageView.image = newValue
         }
     }
+    @IBInspectable
     var limbColor: UIColor? {
         get {
             return limbView?.backgroundColor
@@ -37,6 +38,7 @@ class RoundImageView: UIImageView {
             limbView?.backgroundColor = newValue
         }
     }
+    @IBInspectable
     var viewColor: UIColor? {
         get {
             return imageView.backgroundColor
@@ -45,6 +47,7 @@ class RoundImageView: UIImageView {
             imageView.backgroundColor = newValue
         }
     }
+    @IBInspectable
     var text: String? {
         get {
             return label?.text
@@ -61,7 +64,9 @@ class RoundImageView: UIImageView {
             label?.text = newValue
         }
     }
+    @IBInspectable
     var textColor: UIColor?
+    @IBInspectable
     var font: UIFont?
     
     override var contentMode: UIViewContentMode {
