@@ -8,48 +8,22 @@
 
 import UIKit
 
-class NumberView: UIView {
+class NumberView: UIView, XIBInitable {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var amountLabel: UILabel!
     @IBOutlet var currencyLabel: UILabel!
     @IBOutlet var badgeLabel: Label!
     
-//    var isBadgeVisible: Bool = false {
-//        didSet {
-////            noBadgeConstraint.isActive = !isBadgeVisible
-////            badgeIntervalConstraint.isActive = isBadgeVisible
-//            badgeLabel.isHidden = !isBadgeVisible
-//        }
-//    }
-//    
-//    var isCurrencyOnTop: Bool = false {
-//        didSet {
-////            currencyOnTopConstraint.isActive = isCurrencyOnTop
-////            currencySameAsAmountConstraint.isActive = !isCurrencyOnTop
-//            
-//            currencyLabel.font = isCurrencyOnTop ? UIFont.boldSystemFont(ofSize: 9) : currencyLabel.font
-//        }
-//    }
+    var contentView: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        xibSetup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    override func awakeAfter(using aDecoder: NSCoder) -> Any? {
-        if tag == 676 { return self }
-        guard let view = Bundle.main.loadNibNamed("NumberView", owner: nil, options: nil)?.first as? UIView else {
-            return nil
-        }
-        
-        view.frame = self.frame
-        view.autoresizingMask = self.autoresizingMask
-        view.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints
-        view.tag = self.tag
-        return view
+        xibSetup()
     }
     
 }

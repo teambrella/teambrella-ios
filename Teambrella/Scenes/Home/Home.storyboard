@@ -115,7 +115,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OD5-cP-eZ5">
                                                             <rect key="frame" x="0.0" y="56" width="325" height="54"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xle-t4-lRz">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xle-t4-lRz" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="162" height="54"/>
                                                                     <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </view>
@@ -126,7 +126,7 @@
                                                                         <constraint firstAttribute="width" constant="1" id="4OP-Co-AjU"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d71-a1-tb0">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d71-a1-tb0" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
                                                                     <rect key="frame" x="163" y="0.0" width="162" height="54"/>
                                                                     <color key="backgroundColor" red="0.36862745099999999" green="0.41568627450000001" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </view>
@@ -201,6 +201,8 @@
                                         <connections>
                                             <outlet property="avatarView" destination="oDi-TS-IgV" id="VZN-nf-tbD"/>
                                             <outlet property="containerView" destination="I7o-eI-ssZ" id="6YA-Eo-inA"/>
+                                            <outlet property="leftNumberView" destination="xle-t4-lRz" id="qxV-ZX-bQS"/>
+                                            <outlet property="rightNumberView" destination="d71-a1-tb0" id="j5V-ai-VR7"/>
                                             <outlet property="subtitleLabel" destination="0dL-BQ-HD7" id="2sm-yA-cBg"/>
                                             <outlet property="textLabel" destination="fTU-MO-gZV" id="JZo-PG-KY0"/>
                                             <outlet property="titleLabel" destination="dOc-vE-rr1" id="hhc-h3-A1T"/>

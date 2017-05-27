@@ -19,8 +19,8 @@ class HomeCollectionCell: UICollectionViewCell {
     @IBOutlet var subtitleLabel: UILabel!
     @IBOutlet var avatarView: UIImageView!
     
-//    @IBOutlet var leftNumberView: NumberView!
-//    @IBOutlet var rightNumberView: NumberView!
+    @IBOutlet var leftNumberView: NumberView!
+    @IBOutlet var rightNumberView: NumberView!
     
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var unreadCountView: RoundImageView!
