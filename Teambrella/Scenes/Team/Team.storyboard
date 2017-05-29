@@ -125,7 +125,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tid-74-fKJ" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tid-74-fKJ" customClass="RoundBadgedView" customModule="Teambrella" customModuleProvider="target">
                                                     <rect key="frame" x="24" y="18.5" width="40" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Tid-74-fKJ" secondAttribute="height" multiplier="8:7" id="rPM-Ij-Lcq"/>
@@ -137,11 +137,97 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk5-Mq-84T" customClass="TitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="80" y="18.5" width="130" height="18"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vCL-5f-T9L">
+                                                    <rect key="frame" x="343" y="29.5" width="8" height="13"/>
+                                                    <color key="backgroundColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="13" id="35T-ib-Q7x"/>
+                                                        <constraint firstAttribute="width" constant="8" id="zDV-JS-5wp"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAk-dA-n6i" customClass="PieChartView" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="307" y="26" width="20" height="20"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="2kz-qi-Q1f"/>
+                                                        <constraint firstAttribute="width" secondItem="qAk-dA-n6i" secondAttribute="height" multiplier="1:1" id="PJR-br-Eq5"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                                            <real key="value" value="115"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 Days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSu-DT-TmB">
+                                                    <rect key="frame" x="247.5" y="27" width="47.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TESLA MODEL S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSm-tY-p3I">
+                                                    <rect key="frame" x="80" y="39" width="80" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTED (2.1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMa-g1-Uv2" customClass="Label" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="80" y="36.5" width="62" height="15"/>
+                                                    <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="oSm-tY-p3I" firstAttribute="leading" secondItem="gk5-Mq-84T" secondAttribute="leading" id="9Ub-4B-txG"/>
+                                            <constraint firstItem="QSu-DT-TmB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gk5-Mq-84T" secondAttribute="trailing" constant="8" id="Bss-lR-gi2"/>
+                                            <constraint firstItem="QSu-DT-TmB" firstAttribute="centerY" secondItem="foQ-UG-0tF" secondAttribute="centerY" id="EF4-PE-vBi"/>
+                                            <constraint firstItem="qAk-dA-n6i" firstAttribute="leading" secondItem="QSu-DT-TmB" secondAttribute="trailing" constant="12" id="IiS-hI-73J"/>
+                                            <constraint firstItem="gk5-Mq-84T" firstAttribute="leading" secondItem="Tid-74-fKJ" secondAttribute="trailing" constant="16" id="KmJ-3f-ZW1"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="vCL-5f-T9L" secondAttribute="trailing" constant="16" id="NT8-0d-onD"/>
                                             <constraint firstItem="Tid-74-fKJ" firstAttribute="leading" secondItem="foQ-UG-0tF" secondAttribute="leadingMargin" constant="16" id="RRR-9g-5Ya"/>
+                                            <constraint firstItem="PMa-g1-Uv2" firstAttribute="top" secondItem="gk5-Mq-84T" secondAttribute="bottom" id="ap2-Hm-W3P"/>
                                             <constraint firstItem="Tid-74-fKJ" firstAttribute="centerY" secondItem="foQ-UG-0tF" secondAttribute="centerY" id="b2N-g1-aY6"/>
+                                            <constraint firstItem="PMa-g1-Uv2" firstAttribute="leading" secondItem="gk5-Mq-84T" secondAttribute="leading" id="dTm-hy-o1O"/>
+                                            <constraint firstItem="vCL-5f-T9L" firstAttribute="leading" secondItem="qAk-dA-n6i" secondAttribute="trailing" constant="16" id="iec-Ad-OVm"/>
+                                            <constraint firstItem="gk5-Mq-84T" firstAttribute="top" secondItem="Tid-74-fKJ" secondAttribute="top" id="kTy-Ld-2eM"/>
+                                            <constraint firstItem="qAk-dA-n6i" firstAttribute="centerY" secondItem="foQ-UG-0tF" secondAttribute="centerY" id="mMh-bL-w1S"/>
+                                            <constraint firstItem="QSu-DT-TmB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oSm-tY-p3I" secondAttribute="trailing" constant="8" id="taK-Rf-thZ"/>
+                                            <constraint firstItem="vCL-5f-T9L" firstAttribute="centerY" secondItem="foQ-UG-0tF" secondAttribute="centerY" id="x6V-rW-Ihb"/>
+                                            <constraint firstItem="oSm-tY-p3I" firstAttribute="top" secondItem="gk5-Mq-84T" secondAttribute="bottom" constant="2.5" id="yos-G0-7Rq"/>
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>

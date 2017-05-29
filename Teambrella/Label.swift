@@ -31,6 +31,17 @@ class Label: UILabel {
         set { textInsets.right = newValue }
     }
     
+    @IBInspectable
+    var cornerRadius: CGFloat {
+        get { return layer.cornerRadius }
+        set {
+            if newValue != 0 {
+                layer.masksToBounds = true
+            }
+            layer.cornerRadius = newValue
+        }
+    }
+    
     var textInsets: UIEdgeInsets = .zero {
         didSet {
             invalidateIntrinsicContentSize()

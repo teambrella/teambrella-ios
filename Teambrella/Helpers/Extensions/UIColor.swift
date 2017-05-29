@@ -21,6 +21,13 @@ extension UIColor {
     // MARK: Green
     class var tealish: UIColor { return                 #colorLiteral(red: 0.1215686275, green: 0.7529411765, blue: 0.7098039216, alpha: 1) }
     
+    // MARK: Yellow
+    class var lightGold: UIColor { return               #colorLiteral(red: 1, green: 0.8196078431, blue: 0.3215686275, alpha: 1) }
+    
     // MARK: White
     class var whiteHalfTransparent: UIColor { return    #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0.5) }
+    
+    // MARK: Gray
+    class var dark: UIColor { return                    #colorLiteral(red: 0.1725490196, green: 0.2235294118, blue: 0.2823529412, alpha: 1) }
+    
 }
