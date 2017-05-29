@@ -36,6 +36,11 @@ class HomeVC: UIViewController {
         gradientView.setup(colors: [#colorLiteral(red: 0.1803921569, green: 0.2392156863, blue: 0.7960784314, alpha: 1), #colorLiteral(red: 0.2156862745, green: 0.2705882353, blue: 0.8078431373, alpha: 1), #colorLiteral(red: 0.368627451, green: 0.4156862745, blue: 0.8588235294, alpha: 1)],
                            locations: [0.0, 0.5, 1.0])
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollViewDidScroll(collectionView)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -84,7 +89,7 @@ extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-       
+    
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -100,6 +105,10 @@ extension HomeVC: UICollectionViewDataSource {
                 let index = collectionView.indexPath(for: cell)
                 idx = index?.row ?? 0
             }
+            
+            let scaleMultiplier = 1 - 0.07 * (newNearest / 100)
+            let scaleTransform = CATransform3DMakeScale(scaleMultiplier, scaleMultiplier, 1.0)
+            cell.layer.transform = scaleTransform
         }
          pageControl.currentPage = idx
     }
