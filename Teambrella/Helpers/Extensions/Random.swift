@@ -28,4 +28,5 @@ struct Random {
         return Int(mini + arc4random_uniform(maxi - mini)) - offset
     }
     
+    static var bool: Bool { return range(from: 0, to: 2) > 0 ? true : false }
 }

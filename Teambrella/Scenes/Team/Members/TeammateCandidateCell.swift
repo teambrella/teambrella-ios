@@ -8,11 +8,12 @@
 
 import UIKit
 
-class TeammateCell: UICollectionViewCell {
+class TeammateCandidateCell: UICollectionViewCell {
     @IBOutlet var avatarView: RoundBadgedView!
-    @IBOutlet var titleLabel: TitleLabel!
+    @IBOutlet var titleLabel: Label!
     @IBOutlet var detailsLabel: UILabel!
-    @IBOutlet var amountLabel: UILabel!
-    @IBOutlet var signLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var chartView: PieChartView!
+    @IBOutlet var badgeLabel: Label!
     
 }
