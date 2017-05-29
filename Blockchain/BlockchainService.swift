@@ -212,7 +212,7 @@ class BlockchainService {
             }
             
             guard let fromAddress = tx.fromAddress else {
-                print("tx \(tx.id.uuidString) kind: \(tx.kind) has no valid fromAddress")
+                print("tx \(tx.id.uuidString) kind: \(String(describing: tx.kind)) has no valid fromAddress")
                 continue
             }
             

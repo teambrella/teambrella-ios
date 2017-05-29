@@ -66,7 +66,7 @@ class RoundImageView: UIImageView {
     }
     @IBInspectable
     var textColor: UIColor?
-    @IBInspectable
+    
     var font: UIFont?
     
     override var contentMode: UIViewContentMode {

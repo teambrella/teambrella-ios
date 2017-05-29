@@ -76,12 +76,12 @@ class LoginVC: UIViewController {
     
     func handleFailure(error: Error?) {
         activityIndicator.stopAnimating()
-        print("Error \(error)")
+        print("Error \(String(describing: error))")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? LoginDetailsVC, let user = sender as? FacebookUser {
-            let configurator = LoginDetailsConfigurator(vc: vc, fbUser: user)
+            _ = LoginDetailsConfigurator(vc: vc, fbUser: user)
         }
     }
     

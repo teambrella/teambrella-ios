@@ -51,4 +51,14 @@ extension UIViewController {
         bar.setBackgroundImage(UIImage(), for: .default)
         bar.shadowImage = UIImage()
     }
+    
+    func setupDismissKeyboardOnTap() {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            view.addGestureRecognizer(tap)
+    }
+
+    func dismissKeyboard(gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
 }

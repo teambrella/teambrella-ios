@@ -13,17 +13,26 @@ import XLPagerTabStrip
 class MembersVC: UIViewController, IndicatorInfoProvider {
     @IBOutlet var collectionView: UICollectionView!
     let dataSource = MembersDatasource()
-
+    var searchController: UISearchController!
+    @IBOutlet var searchView: UIView!
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var searchViewTopConstraint: NSLayoutConstraint!
+    
+    fileprivate var previousScrollOffset: CGFloat = 0
+    fileprivate var searchbarIsShown = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureSearchController()
+        setupDismissKeyboardOnTap()
+        
         dataSource.onUpdate = {
             self.collectionView.reloadData()
         }
         dataSource.loadData()
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -32,17 +41,46 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "Members")
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    private func configureSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = "Search here..."
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        
+        searchBar.backgroundImage = UIImage()
+        
     }
-    */
-
+    
+    fileprivate func showSearchBar(show: Bool, animated: Bool) {
+        guard show != searchbarIsShown else { return }
+        
+        searchViewTopConstraint.constant = show
+            ? 0
+            : -searchView.frame.height
+        collectionView.contentInset.top = show ? searchView.frame.height : 0
+        searchbarIsShown = show
+        if animated {
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            view.layoutIfNeeded()
+        }
+    }
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension MembersVC: UICollectionViewDataSource {
@@ -60,7 +98,7 @@ extension MembersVC: UICollectionViewDataSource {
         switch dataSource.type(indexPath: indexPath) {
         case .new:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CandidateCell",
-                                                             for: indexPath)
+                                                      for: indexPath)
             if let cell = cell as? TeammateCandidateCell {
                 
             }
@@ -120,9 +158,34 @@ extension MembersVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension MembersVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+}
+
+extension MembersVC: UISearchBarDelegate {
+    
+}
+
+extension MembersVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        let velocity = currentOffset - previousScrollOffset
+        previousScrollOffset = currentOffset
+        
+        if velocity > 10 {
+            showSearchBar(show: false, animated: true)
+        }
+        if velocity < -10 {
+            showSearchBar(show: true, animated: true)
+        }
+    }
+}
+
 class MembersDatasource {
     enum TeammateSectionType {
-    case new, teammate
+        case new, teammate
     }
     
     var newTeammates: [TeammateLike] = []
@@ -130,8 +193,8 @@ class MembersDatasource {
     var onUpdate: (() -> Void)?
     
     var sections: Int {
-       var count = 2
-        if newTeammates.isEmpty  { count -= 1 }
+        var count = 2
+        if newTeammates.isEmpty { count -= 1 }
         if teammates.isEmpty { count -= 1 }
         return count
     }
