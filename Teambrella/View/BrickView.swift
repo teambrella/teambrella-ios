@@ -37,7 +37,7 @@ class BrickView: UIView {
     
     var currencyType: BrickViewCurrencyType = .normal
     var amountTextColor: UIColor = .black
-    var titleTextColor: UIColor = .whiteHalfTransparent
+    var titleTextColor: UIColor = .white50
     var currencyTextColor: UIColor = .darkSkyBlue
     var badgeBackgroundColor: UIColor = .darkSkyBlue
     var badgeTextColor: UIColor = .white

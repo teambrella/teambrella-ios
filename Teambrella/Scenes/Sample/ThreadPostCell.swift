@@ -15,7 +15,7 @@ class ThreadPostCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        dateLabel.textColor = .whiteHalfTransparent
+        dateLabel.textColor = .white50
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

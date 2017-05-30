@@ -87,6 +87,7 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     
 }
 
+// MARK: UICollectionViewDataSource
 extension MembersVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return dataSource.sections
@@ -124,6 +125,7 @@ extension MembersVC: UICollectionViewDataSource {
     
 }
 
+// MARK: UICollectionViewDelegate
 extension MembersVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
@@ -153,6 +155,7 @@ extension MembersVC: UICollectionViewDelegate {
     
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
 extension MembersVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -167,16 +170,19 @@ extension MembersVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: UISearchResultsUpdating
 extension MembersVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
     }
 }
 
+// MARK: UISearchBarDelegate
 extension MembersVC: UISearchBarDelegate {
     
 }
 
+// MARK: UIScrollViewDelegate
 extension MembersVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset.y

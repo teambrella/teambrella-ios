@@ -56,6 +56,7 @@
 		6D83EC8E1EDD7230000412DC /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC8D1EDD7230000412DC /* MainRouter.swift */; };
 		6D83EC901EDD765F000412DC /* TeamRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC8F1EDD765F000412DC /* TeamRouter.swift */; };
 		6D83EC921EDD76DC000412DC /* MembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC911EDD76DC000412DC /* MembersRouter.swift */; };
+		6D83EC941EDDA9DC000412DC /* TeammateProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */; };
 		6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
 		6D8F97141E8D1532008DC62E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */; };
 		6D91BC041EB3900700FDC332 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC031EB3900700FDC332 /* UUID.swift */; };
@@ -213,6 +214,7 @@
 		6D83EC8D1EDD7230000412DC /* MainRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainRouter.swift; path = Scenes/MainRouter.swift; sourceTree = "<group>"; };
 		6D83EC8F1EDD765F000412DC /* TeamRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamRouter.swift; path = Scenes/Team/TeamRouter.swift; sourceTree = "<group>"; };
 		6D83EC911EDD76DC000412DC /* MembersRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersRouter.swift; sourceTree = "<group>"; };
+		6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateProfileDataSource.swift; path = Scenes/Team/Members/TeammateProfileDataSource.swift; sourceTree = "<group>"; };
 		6D8F97111E8D1529008DC62E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teambrella-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 				6D83EC821EDD69E3000412DC /* MembersDataSource.swift */,
 				6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */,
 				6D83EC911EDD76DC000412DC /* MembersRouter.swift */,
+				6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */,
 			);
 			name = Members;
 			sourceTree = "<group>";
@@ -1163,6 +1166,7 @@
 				6D466AAC1ED07CF1001BC579 /* TxOutput.swift in Sources */,
 				6DEC6DF91E966AA900ACC119 /* TransformerService.swift in Sources */,
 				CBDFE767664CC051784BF271 /* ServerService.swift in Sources */,
+				6D83EC941EDDA9DC000412DC /* TeammateProfileDataSource.swift in Sources */,
 				6D466AA71ED07CF1001BC579 /* PayTo.swift in Sources */,
 				6D466AB21ED07CF1001BC579 /* TeambrellaService.swift in Sources */,
 				6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */,

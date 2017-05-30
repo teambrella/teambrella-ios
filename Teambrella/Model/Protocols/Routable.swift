@@ -17,7 +17,7 @@ protocol Routable: class {
 
 extension Routable where Self: UIViewController {
     static var storyboardName: String { return "Main" }
-    static var ibName: String { return String(describing: type(of: self)) }
+    static var ibName: String { return String(describing: self) }
     
     static func instantiate() -> UIViewController {
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)

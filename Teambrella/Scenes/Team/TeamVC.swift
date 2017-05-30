@@ -31,14 +31,14 @@ class TeamVC: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
         settings.style.selectedBarHeight = 4.0
         settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .whiteHalfTransparent
+        settings.style.buttonBarItemTitleColor = .white50
         settings.style.buttonBarItemsShouldFillAvailiableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
         changeCurrentIndexProgressive = { oldCell, newCell, progressPercentage, changeCurrentIndex, animated -> Void in
             guard changeCurrentIndex == true else { return }
             
-            oldCell?.label.textColor = .whiteHalfTransparent
+            oldCell?.label.textColor = .white50
             newCell?.label.textColor = .white
         }
     }
