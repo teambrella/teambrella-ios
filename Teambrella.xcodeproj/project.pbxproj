@@ -49,6 +49,13 @@
 		6D73C6E41EBB3F0800A2C0F8 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D73C6E31EBB3F0800A2C0F8 /* TransactionCell.swift */; };
 		6D829AA31EB0BE1A0051F43A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA21EB0BE1A0051F43A /* UIColor.swift */; };
 		6D829AA51EB0D6860051F43A /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA41EB0D6860051F43A /* Random.swift */; };
+		6D83EC831EDD69E3000412DC /* MembersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC821EDD69E3000412DC /* MembersDataSource.swift */; };
+		6D83EC851EDD6B80000412DC /* TeammateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */; };
+		6D83EC891EDD6CA6000412DC /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC881EDD6CA6000412DC /* Routable.swift */; };
+		6D83EC8B1EDD7083000412DC /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC8A1EDD7083000412DC /* Navigator.swift */; };
+		6D83EC8E1EDD7230000412DC /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC8D1EDD7230000412DC /* MainRouter.swift */; };
+		6D83EC901EDD765F000412DC /* TeamRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC8F1EDD765F000412DC /* TeamRouter.swift */; };
+		6D83EC921EDD76DC000412DC /* MembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC911EDD76DC000412DC /* MembersRouter.swift */; };
 		6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
 		6D8F97141E8D1532008DC62E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */; };
 		6D91BC041EB3900700FDC332 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC031EB3900700FDC332 /* UUID.swift */; };
@@ -199,6 +206,13 @@
 		6D73C6E31EBB3F0800A2C0F8 /* TransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionCell.swift; path = Scenes/TransactionsTest/TransactionCell.swift; sourceTree = "<group>"; };
 		6D829AA21EB0BE1A0051F43A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Helpers/Extensions/UIColor.swift; sourceTree = "<group>"; };
 		6D829AA41EB0D6860051F43A /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = Helpers/Extensions/Random.swift; sourceTree = "<group>"; };
+		6D83EC821EDD69E3000412DC /* MembersDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersDataSource.swift; sourceTree = "<group>"; };
+		6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateProfileVC.swift; path = Scenes/Team/Members/TeammateProfileVC.swift; sourceTree = "<group>"; };
+		6D83EC881EDD6CA6000412DC /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Routable.swift; path = Model/Protocols/Routable.swift; sourceTree = "<group>"; };
+		6D83EC8A1EDD7083000412DC /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Navigator.swift; path = Controller/Navigator.swift; sourceTree = "<group>"; };
+		6D83EC8D1EDD7230000412DC /* MainRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainRouter.swift; path = Scenes/MainRouter.swift; sourceTree = "<group>"; };
+		6D83EC8F1EDD765F000412DC /* TeamRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamRouter.swift; path = Scenes/Team/TeamRouter.swift; sourceTree = "<group>"; };
+		6D83EC911EDD76DC000412DC /* MembersRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersRouter.swift; sourceTree = "<group>"; };
 		6D8F97111E8D1529008DC62E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teambrella-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -418,6 +432,14 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		6D83EC8C1EDD708A000412DC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6D83EC8A1EDD7083000412DC /* Navigator.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		6D91BC051EB3966400FDC332 /* BlockchainTransactions */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,6 +486,7 @@
 				6D9CC6411ED72E21007F936E /* Rules */,
 				6D9CC6261ED5EA81007F936E /* Team.storyboard */,
 				6D9CC6341ED72252007F936E /* TeamVC.swift */,
+				6D83EC8F1EDD765F000412DC /* TeamRouter.swift */,
 			);
 			name = Team;
 			sourceTree = "<group>";
@@ -499,6 +522,9 @@
 				6DEE67941EDC12A70098EDB3 /* TeammateCandidateCell.swift */,
 				6DEE67A21EDC5C4D0098EDB3 /* TeammateCell.swift */,
 				6DEE67A41EDC75DA0098EDB3 /* TeammateHeaderView.swift */,
+				6D83EC821EDD69E3000412DC /* MembersDataSource.swift */,
+				6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */,
+				6D83EC911EDD76DC000412DC /* MembersRouter.swift */,
 			);
 			name = Members;
 			sourceTree = "<group>";
@@ -552,6 +578,7 @@
 				6DA475DA1E8BC8EF00B56D9B /* Scenes */,
 				6DA475DC1E8BCAA000B56D9B /* SupportingFiles */,
 				6DD7F4191EB9DAF4001E7733 /* View */,
+				6D83EC8C1EDD708A000412DC /* Controller */,
 			);
 			path = Teambrella;
 			sourceTree = "<group>";
@@ -619,6 +646,7 @@
 				6D9CC62B1ED5EADD007F936E /* Proxies */,
 				6DA475A71E8ABEE600B56D9B /* Main.storyboard */,
 				6D9CC6201ED5BB9C007F936E /* InitialVC.swift */,
+				6D83EC8D1EDD7230000412DC /* MainRouter.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -655,6 +683,7 @@
 				CBDFEE452041D08B61C13CF8 /* TeammateLike.swift */,
 				6D097EAA1E9D390200E77DAB /* Topic.swift */,
 				6DEE678C1ED9B8E10098EDB3 /* XIBInitable.swift */,
+				6D83EC881EDD6CA6000412DC /* Routable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1082,8 +1111,10 @@
 				6D466A9F1ED07CF1001BC579 /* BlockchainDateFormatter.swift in Sources */,
 				6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */,
 				6D466AA01ED07CF1001BC579 /* BlockchainServer.swift in Sources */,
+				6D83EC921EDD76DC000412DC /* MembersRouter.swift in Sources */,
 				6DEE67971EDC13D50098EDB3 /* RoundBadgedView.swift in Sources */,
 				6D9CC6401ED72E19007F936E /* RulesVC.swift in Sources */,
+				6D83EC831EDD69E3000412DC /* MembersDataSource.swift in Sources */,
 				6DEE67951EDC12A70098EDB3 /* TeammateCandidateCell.swift in Sources */,
 				6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */,
 				6DEE67911ED9CF160098EDB3 /* ItemCard.swift in Sources */,
@@ -1095,6 +1126,7 @@
 				6D9CC6131ED47C79007F936E /* LoginDetailsVC.swift in Sources */,
 				6DEE67931ED9D3E60098EDB3 /* BorderedButton.swift in Sources */,
 				6D466AB01ED07CF1001BC579 /* EntityFactory.swift in Sources */,
+				6D83EC8E1EDD7230000412DC /* MainRouter.swift in Sources */,
 				6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */,
 				6D9CC6191ED484CF007F936E /* UIViewController.swift in Sources */,
 				6D9CC61B1ED57B83007F936E /* LoginDetailsPresenter.swift in Sources */,
@@ -1135,6 +1167,7 @@
 				6D466AB21ED07CF1001BC579 /* TeambrellaService.swift in Sources */,
 				6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */,
 				6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */,
+				6D83EC901EDD765F000412DC /* TeamRouter.swift in Sources */,
 				6D9CC6171ED48416007F936E /* UIStoryboardSegue.swift in Sources */,
 				6D9CC6101ED2E230007F936E /* LoginVC.swift in Sources */,
 				6D9CC6571ED998D7007F936E /* Label.swift in Sources */,
@@ -1143,15 +1176,18 @@
 				6DEC6DF31E96670D00ACC119 /* Post.swift in Sources */,
 				6D7186E71EA4FC3600257463 /* TransactionsVC.swift in Sources */,
 				6D9CC64B1ED83111007F936E /* BrickView.swift in Sources */,
+				6D83EC891EDD6CA6000412DC /* Routable.swift in Sources */,
 				6DEE67A51EDC75DA0098EDB3 /* TeammateHeaderView.swift in Sources */,
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
 				6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */,
 				6D466AA31ED07CF1001BC579 /* SignHelper.swift in Sources */,
 				6DEE679D1EDC1D470098EDB3 /* PieChartView.swift in Sources */,
 				6DA475DF1E8BE30000B56D9B /* RequestBody.swift in Sources */,
+				6D83EC851EDD6B80000412DC /* TeammateProfileVC.swift in Sources */,
 				6D9CC6211ED5BB9C007F936E /* InitialVC.swift in Sources */,
 				6D466AAE1ED07CF1001BC579 /* User.swift in Sources */,
 				6DEE67A11EDC341A0098EDB3 /* Geometry.swift in Sources */,
+				6D83EC8B1EDD7083000412DC /* Navigator.swift in Sources */,
 				6D9CC6371ED72641007F936E /* FeedVC.swift in Sources */,
 				6DEC074E1E9BD1DB0078F40E /* TeammatesCell.swift in Sources */,
 				6D73C6E21EBB374D00A2C0F8 /* PaymentsTVC.swift in Sources */,

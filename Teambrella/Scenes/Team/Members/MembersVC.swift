@@ -6,7 +6,6 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import SwiftyJSON
 import UIKit
 import XLPagerTabStrip
 
@@ -21,10 +20,12 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     fileprivate var previousScrollOffset: CGFloat = 0
     fileprivate var searchbarIsShown = true
     
+    lazy var router: MembersRouter = MembersRouter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchController()
-        setupDismissKeyboardOnTap()
+//        setupDismissKeyboardOnTap()
         
         dataSource.onUpdate = {
             self.collectionView.reloadData()
@@ -62,6 +63,9 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
             : -searchView.frame.height
         collectionView.contentInset.top = show ? searchView.frame.height : 0
         searchbarIsShown = show
+        if !show {
+            view.endEditing(true)
+        }
         if animated {
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
@@ -142,6 +146,11 @@ extension MembersVC: UICollectionViewDelegate {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("tap item at \(indexPath)")
+        router.presentMemberProfile(teammate: dataSource[indexPath])
+    }
+    
 }
 
 extension MembersVC: UICollectionViewDelegateFlowLayout {
@@ -180,117 +189,5 @@ extension MembersVC: UIScrollViewDelegate {
         if velocity < -10 {
             showSearchBar(show: true, animated: true)
         }
-    }
-}
-
-class MembersDatasource {
-    enum TeammateSectionType {
-        case new, teammate
-    }
-    
-    var newTeammates: [TeammateLike] = []
-    var teammates: [TeammateLike] = []
-    var onUpdate: (() -> Void)?
-    
-    var sections: Int {
-        var count = 2
-        if newTeammates.isEmpty { count -= 1 }
-        if teammates.isEmpty { count -= 1 }
-        return count
-    }
-    
-    func type(indexPath: IndexPath) -> TeammateSectionType {
-        switch indexPath.section {
-        case 0:
-            return newTeammates.isEmpty ? .teammate : .new
-        default:
-            return .teammate
-        }
-    }
-    
-    func itemsInSection(section: Int) -> Int {
-        switch section {
-        case 0:
-            return newTeammates.isEmpty ? teammates.count : newTeammates.count
-        case 1:
-            return teammates.count
-        default:
-            break
-        }
-        return 0
-    }
-    
-    func headerTitle(indexPath: IndexPath) -> String {
-        switch type(indexPath: indexPath) {
-        case .new:
-            return "NEW TEAMMATES"
-        case .teammate:
-            return "TEAMMATES"
-        }
-    }
-    
-    func headerSubtitle(indexPath: IndexPath) -> String {
-        switch type(indexPath: indexPath) {
-        case .new:
-            return "VOTING ENDS IN"
-        case .teammate:
-            return "NET"
-        }
-    }
-    
-    func loadData() {
-        fakeLoadData()
-    }
-    
-    subscript(indexPath: IndexPath) -> TeammateLike {
-        switch type(indexPath: indexPath) {
-        case .new:
-            return newTeammates[indexPath.row]
-        case .teammate:
-            return teammates[indexPath.row]
-        }
-    }
-    
-    func fakeLoadData() {
-        for i in 0...20 {
-            let teammate = FakeTeammate(json: JSON(""))
-            if teammate.isJoining {
-                newTeammates.append(teammate)
-            } else {
-                teammates.append(teammate)
-            }
-        }
-        onUpdate?()
-    }
-    
-}
-
-final class FakeTeammate: TeammateLike {
-    var ver: Int64 = 0
-    let id: String = "666"
-    
-    let claimLimit: Int = 0
-    let claimsCount: Int = 0
-    let isJoining: Bool = Random.bool
-    let isVoting: Bool = false
-    let model: String = "Fake"
-    let name: String = "Fake"
-    let risk: Double = 0
-    let riskVoted: Double = 0
-    let totallyPaid: Double = 0
-    let hasUnread: Bool = Random.bool
-    let userID: String = "666"
-    let year: Int = 0
-    let avatar: String = ""
-    
-    var extended: ExtendedTeammate?
-    
-    var description: String {
-        return "Fake Teammate"
-    }
-    
-    var isComplete: Bool { return extended != nil }
-    
-    init(json: JSON) {
     }
 }

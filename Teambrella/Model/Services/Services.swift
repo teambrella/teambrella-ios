@@ -16,6 +16,7 @@ class ServicesHandler {
 //    lazy var bitcoin = BitcoinService()
     lazy var server = ServerService()
     lazy var transformer = TransformerService()
+    lazy var router = MainRouter()
     
     private init() {}
     
