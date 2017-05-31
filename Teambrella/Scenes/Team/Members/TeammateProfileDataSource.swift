@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum TeammateProfileCellType {
+enum TeammateProfileCellType: String {
     case summary, object, stats, contact, dialog
 }
 
@@ -26,7 +26,7 @@ class TeammateProfileDataSource {
         self.teammate = teammate
     }
     
-    var sections: Int = 0
+    var sections: Int = 1
     
     func rows(in section: Int) -> Int {
         return source.count

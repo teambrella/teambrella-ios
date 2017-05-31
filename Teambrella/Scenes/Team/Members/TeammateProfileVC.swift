@@ -15,6 +15,8 @@ class TeammateProfileVC: UIViewController, Routable {
     var teammate: TeammateLike!
     var dataSource: TeammateProfileDataSource!
 
+    @IBOutlet var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,14 +41,8 @@ extension TeammateProfileVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell!
-        switch dataSource.type(for: indexPath) {
-        case .object:
-            cell = UICollectionViewCell()
-        default:
-            cell = UICollectionViewCell()
-        }
-        return cell
+        let identifier = dataSource.type(for: indexPath).rawValue
+        return collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -86,12 +82,24 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 1)
+        let wdt = collectionView.bounds.width - 16 * 2
+        switch dataSource.type(for: indexPath) {
+        case .summary:
+            return CGSize(width: collectionView.bounds.width, height: 210)
+        case .object:
+            return CGSize(width: wdt, height: 296)
+        case .stats:
+            return CGSize(width: wdt, height: 368)
+        case .contact:
+            return CGSize(width: wdt, height: 244)
+        case .dialog:
+            return CGSize(width: wdt, height: 120)
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 1)
-    }
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: collectionView.bounds.width, height: 1)
+//    }
 }

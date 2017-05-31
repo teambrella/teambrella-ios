@@ -48,12 +48,11 @@ struct TeambrellaErrorFactory {
         return TeambrellaError(kind: .unknownError, description: "Unknown error occured")
     }
     
-    static func error(with dict: [String: Any]?) -> TeambrellaError {
-        guard let dict = dict else { return unknownError() }
-        guard let code = dict["ResultCode"] as? Int,
-            let errorKind =  TeambrellaError.TeambrellaErrorKind(rawValue: code) else { return unknownError() }
+    static func error(with status: ResponseStatus?) -> TeambrellaError {
+        guard let status = status else { return unknownError() }
+        guard let errorKind =  TeambrellaError.TeambrellaErrorKind(rawValue: status.code) else { return unknownError() }
         
-        let errorDescription = dict["ErrorMessage"] as? String ?? ""
-        return TeambrellaError(kind: errorKind, description: errorDescription)
+        return TeambrellaError(kind: errorKind, description: status.errorMessage)
     }
+    
 }

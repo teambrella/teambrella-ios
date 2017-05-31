@@ -17,6 +17,10 @@ class MembersDatasource {
     var newTeammates: [TeammateLike] = []
     var teammates: [TeammateLike] = []
     var onUpdate: (() -> Void)?
+    var onError: ((Error) -> Void)?
+    
+    var offset = 0
+    var isLoading = false
     
     var sections: Int {
         var count = 2
@@ -65,7 +69,40 @@ class MembersDatasource {
     }
     
     func loadData() {
-        fakeLoadData()
+        //fakeLoadData()
+        guard !isLoading else { return }
+        
+        isLoading = true
+        service.server.updateTimestamp { timestamp, error in
+            let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+                          timestamp: timestamp)
+            
+            let body = RequestBody(key: key, payload:["TeamId": 2006,
+                                                      "Offset": self.offset,
+                                                      "Limit": 10,
+                                                      "AvatarSize": 128])
+            let request = TeambrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
+                if case .teammatesList(let teammates) = response {
+                    guard let me = self else { return }
+                    
+                    for teammate in teammates {
+                        switch teammate.isJoining {
+                        case true:
+                            me.newTeammates.append(teammate)
+                        case false:
+                            me.teammates.append(teammate)
+                        }
+                    }
+                    me.offset += teammates.count
+                    me.onUpdate?()
+                    me.isLoading = false
+                }
+                }, failure: { [weak self] error in
+                    self?.onError?(error)
+            })
+            request.start()
+        }
+        
     }
     
     subscript(indexPath: IndexPath) -> TeammateLike {
@@ -78,7 +115,7 @@ class MembersDatasource {
     }
     
     func fakeLoadData() {
-        for i in 0...20 {
+        for _ in 0...20 {
             let teammate = FakeTeammate(json: JSON(""))
             if teammate.isJoining {
                 newTeammates.append(teammate)
@@ -107,7 +144,7 @@ final class FakeTeammate: TeammateLike {
     let hasUnread: Bool = Random.bool
     let userID: String = "666"
     let year: Int = 0
-    let avatar: String = ""
+    let avatar: String = "http://beauty-around.com/images/sampledata/SWEDEN_Women/15.jpg"
     
     var extended: ExtendedTeammate?
     

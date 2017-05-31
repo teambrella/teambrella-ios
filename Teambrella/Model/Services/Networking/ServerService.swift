@@ -10,6 +10,18 @@ import Alamofire
 import Foundation
 import SwiftyJSON
 
+struct ResponseStatus {
+    let timestamp: Int64
+    let code: Int
+    let errorMessage: String
+    
+    init(json: JSON) {
+        timestamp = json["Timestamp"].int64Value
+        code = json["ResultCode"].intValue
+        errorMessage = json["ErrorMessage"].stringValue
+    }
+}
+
 /**
  Service to interoperate with the server fetching all UI related information
  */
@@ -93,13 +105,13 @@ class ServerService {
                 if let value = response.result.value {
                     let result = JSON(value)
                      print("Result: \(result)")
-                    let status = result["Status"]
-                    self.timestamp = status["Timestamp"].int64Value
-                    switch status["ResultCode"].intValue {
+                    let status = ResponseStatus(json: result["Status"])
+                    self.timestamp = status.timestamp
+                    switch status.code {
                     case 0:
                         success(result["Data"])
                     default:
-                        let error = TeambrellaErrorFactory.error(with: status.rawValue as? [String: Any])
+                        let error = TeambrellaErrorFactory.error(with: status)
                         failure(error)
                     }
                 } else {

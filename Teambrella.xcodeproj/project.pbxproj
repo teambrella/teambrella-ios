@@ -20,6 +20,8 @@
 		6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A01EB8D4A2004AED30 /* UIView.swift */; };
 		6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A21EB8D4D6004AED30 /* NSObject.swift */; };
 		6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C23871E8EA99F009B05A3 /* Data.swift */; };
+		6D2A497A1EDEF78C00A1111C /* MembersCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */; };
+		6D2A497F1EDF116100A1111C /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = 6D2A497E1EDF116100A1111C /* Resources */; };
 		6D35EFC51EAF8AB700696B42 /* TransactionsresultTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFC41EAF8AB700696B42 /* TransactionsresultTVC.swift */; };
 		6D35EFC91EAF931000696B42 /* TransactionsTeammateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFC81EAF931000696B42 /* TransactionsTeammateVC.swift */; };
 		6D35EFCB1EAF982A00696B42 /* TeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFCA1EAF982A00696B42 /* TeamDetailsVC.swift */; };
@@ -178,6 +180,8 @@
 		6D1C03A01EB8D4A2004AED30 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = Helpers/Extensions/UIView.swift; sourceTree = "<group>"; };
 		6D1C03A21EB8D4D6004AED30 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSObject.swift; path = Helpers/Extensions/NSObject.swift; sourceTree = "<group>"; };
 		6D1C23871E8EA99F009B05A3 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Helpers/Extensions/Data.swift; sourceTree = "<group>"; };
+		6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersCellBuilder.swift; path = Scenes/Team/Members/MembersCellBuilder.swift; sourceTree = "<group>"; };
+		6D2A497E1EDF116100A1111C /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		6D35EFC41EAF8AB700696B42 /* TransactionsresultTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsresultTVC.swift; path = Scenes/TransactionsTest/TransactionsresultTVC.swift; sourceTree = "<group>"; };
 		6D35EFC81EAF931000696B42 /* TransactionsTeammateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsTeammateVC.swift; path = Scenes/TransactionsTest/TransactionsTeammateVC.swift; sourceTree = "<group>"; };
 		6D35EFCA1EAF982A00696B42 /* TeamDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamDetailsVC.swift; path = Scenes/TransactionsTest/TeamDetailsVC.swift; sourceTree = "<group>"; };
@@ -528,6 +532,7 @@
 				6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */,
 				6D83EC911EDD76DC000412DC /* MembersRouter.swift */,
 				6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */,
+				6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */,
 			);
 			name = Members;
 			sourceTree = "<group>";
@@ -575,6 +580,7 @@
 		6DA475A21E8ABEE600B56D9B /* Teambrella */ = {
 			isa = PBXGroup;
 			children = (
+				6D2A497E1EDF116100A1111C /* Resources */,
 				6D1C23851E8EA45A009B05A3 /* Helpers */,
 				6D097E991E9D1A0000E77DAB /* Localizations */,
 				6DA475D51E8BB9DF00B56D9B /* Model */,
@@ -886,6 +892,7 @@
 				6D097E971E9D19F400E77DAB /* Test.strings in Resources */,
 				6DEE678F1ED9CF070098EDB3 /* ItemCard.xib in Resources */,
 				6D9CC62D1ED5EB23007F936E /* Me.storyboard in Resources */,
+				6D2A497F1EDF116100A1111C /* Resources in Resources */,
 				6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */,
 				6D9CC62A1ED5EAD3007F936E /* Proxies.storyboard in Resources */,
 				6D9CC6531ED98A07007F936E /* NumberView.xib in Resources */,
@@ -1188,6 +1195,7 @@
 				6DEE679D1EDC1D470098EDB3 /* PieChartView.swift in Sources */,
 				6DA475DF1E8BE30000B56D9B /* RequestBody.swift in Sources */,
 				6D83EC851EDD6B80000412DC /* TeammateProfileVC.swift in Sources */,
+				6D2A497A1EDEF78C00A1111C /* MembersCellBuilder.swift in Sources */,
 				6D9CC6211ED5BB9C007F936E /* InitialVC.swift in Sources */,
 				6D466AAE1ED07CF1001BC579 /* User.swift in Sources */,
 				6DEE67A11EDC341A0098EDB3 /* Geometry.swift in Sources */,

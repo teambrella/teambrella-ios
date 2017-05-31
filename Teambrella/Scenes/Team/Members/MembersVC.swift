@@ -8,6 +8,7 @@
 
 import UIKit
 import XLPagerTabStrip
+import Kingfisher
 
 class MembersVC: UIViewController, IndicatorInfoProvider {
     @IBOutlet var collectionView: UICollectionView!
@@ -16,6 +17,7 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     @IBOutlet var searchView: UIView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var searchViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     fileprivate var previousScrollOffset: CGFloat = 0
     fileprivate var searchbarIsShown = true
@@ -25,11 +27,24 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchController()
-//        setupDismissKeyboardOnTap()
+        //        setupDismissKeyboardOnTap()
         
-        dataSource.onUpdate = {
-            self.collectionView.reloadData()
+        dataSource.onUpdate = { [weak self] in
+            self?.collectionView.reloadData()
+            self?.activityIndicator.stopAnimating()
         }
+        
+        dataSource.onError = { [weak self] error in
+            guard let error = error as? TeambrellaError else { return }
+            
+            let controller = UIAlertController(title: "Error", message: error.description, preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            controller.addAction(cancel)
+            self?.present(controller, animated: true, completion: nil)
+            self?.activityIndicator.stopAnimating()
+        }
+        
+        activityIndicator.startAnimating()
         dataSource.loadData()
         // Do any additional setup after loading the view.
     }
@@ -130,12 +145,8 @@ extension MembersVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        let item = dataSource[indexPath]
-        if let cell = cell as? TeammateCandidateCell {
-            cell.titleLabel.text = item.name
-        } else if let cell = cell as? TeammateCandidateCell {
-            
-        }
+        let teammate = dataSource[indexPath]
+        MembersCellBuilder.populate(cell: cell, with: teammate)
     }
     
     func collectionView(_ collectionView: UICollectionView,
