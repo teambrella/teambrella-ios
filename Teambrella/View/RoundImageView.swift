@@ -58,6 +58,7 @@ class RoundImageView: UIImageView {
                 newLabel.numberOfLines = 1
                 newLabel.textAlignment = .center
                 newLabel.adjustsFontSizeToFitWidth = true
+                newLabel.font = UIFont.teambrellaBold(size: 13)
                 label = newLabel
                 insertSubview(newLabel, aboveSubview: imageView)
             }

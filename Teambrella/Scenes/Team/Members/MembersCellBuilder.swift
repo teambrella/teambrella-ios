@@ -6,8 +6,8 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 struct MembersCellBuilder {
     static func populate(cell: UICollectionViewCell, with teammate: TeammateLike) {
@@ -21,12 +21,13 @@ struct MembersCellBuilder {
             if let url = URL(string: service.server.avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
-            cell.amountLabel.text = "\(UInt(teammate.totallyPaid))"
+            cell.amountLabel.text = "\(abs(Int(teammate.totallyPaid)))"
+            cell.signLabel.text = teammate.totallyPaid > 0 ? "+" : teammate.totallyPaid < 0 ? "-" : ""
+            cell.signLabel.textColor = teammate.totallyPaid > 0 ? .tealish : .lipstick
             cell.titleLabel.text = teammate.name
             cell.detailsLabel.text = teammate.model
             cell.avatarView.badge?.text = String(format: "%2f", teammate.risk)
         }
     }
     
-    static func construct
 }

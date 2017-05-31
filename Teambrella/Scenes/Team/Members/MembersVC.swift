@@ -8,7 +8,6 @@
 
 import UIKit
 import XLPagerTabStrip
-import Kingfisher
 
 class MembersVC: UIViewController, IndicatorInfoProvider {
     @IBOutlet var collectionView: UICollectionView!

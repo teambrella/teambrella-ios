@@ -17,37 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         service.router.applicationDidFinishLaunching(launchOptions: launchOptions)
-        style()
+        TeambrellaStyle.apply()
         return true
-    }
-    
-    func style() {
-        let navigationBar = UINavigationBar.appearance()
-//        navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        navigationBar.shadowImage = UIImage()
-        navigationBar.barTintColor = .teambrellaBlue
-        navigationBar.tintColor = .white
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        
-        /*
-         let view = UIView.appearance(whenContainedInInstancesOf: [UIWindow.self])
-         view.backgroundColor = .teambrellaBlue
-         
-         let label = UILabel.appearance()
-         label.textColor = .white
-         label.backgroundColor = .clear
-         
-         let button = UIButton.appearance()
-         button.setTitleColor(.white, for: .normal)
-         button.backgroundColor = .clear
-         
-         let tabBar = UITabBar.appearance()
-         tabBar.backgroundColor = .clear
-         tabBar.barTintColor = .teambrellaBlue
-         tabBar.tintColor = .white
-         tabBar.backgroundImage = UIImage()
-         tabBar.shadowImage = UIImage()
-         */
     }
     
     func application(_ application: UIApplication,
