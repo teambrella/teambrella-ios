@@ -477,7 +477,7 @@
         <scene sceneID="qEZ-ny-P0q">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FCe-0y-OxV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="5HA-2k-qhF"/>
+                    <tabBarItem key="tabBarItem" title="Home" selectedImage="iconHome" id="5HA-2k-qhF"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="seh-NB-2pa">
@@ -496,6 +496,7 @@
     </scenes>
     <resources>
         <image name="iconCoverage" width="32" height="30"/>
+        <image name="iconHome" width="17" height="19"/>
         <image name="iconWallet" width="30" height="26"/>
         <image name="tesla" width="381" height="132"/>
     </resources>

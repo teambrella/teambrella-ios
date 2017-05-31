@@ -102,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="2858.4000000000001" y="-66.566716641679164"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Master Tab Bar Controller-->
         <scene sceneID="0Jn-3W-J54">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="LDY-qk-qZO" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="LDY-qk-qZO" customClass="MasterTabBarController" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="YOe-VO-27H">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -176,7 +176,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xrQ-fg-9ck" customClass="Navigator" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q94-ny-2f7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="q94-ny-2f7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
