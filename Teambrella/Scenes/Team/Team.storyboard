@@ -458,7 +458,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="summary" id="rLk-u7-6iT">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="summary" id="rLk-u7-6iT" customClass="TeammateSummaryCell" customModule="Teambrella" customModuleProvider="target">
                                         <rect key="frame" x="1" y="0.0" width="373" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -472,9 +472,6 @@
                                                         <constraint firstAttribute="width" secondItem="dlw-4G-kxZ" secondAttribute="height" multiplier="1:1" id="Ig3-CF-RJx"/>
                                                         <constraint firstAttribute="width" constant="88" id="kWp-x1-TWu"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="tesla"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KqH-Lf-3HG" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
                                                     <rect key="frame" x="24" y="74" width="105" height="40"/>
@@ -525,8 +522,14 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJt-7g-pSD">
-                                                    <rect key="frame" x="165" y="152" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJt-7g-pSD" customClass="TitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="152" width="357" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8Z-zx-s9L" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="173" width="357" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -534,6 +537,7 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="j8Z-zx-s9L" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leadingMargin" id="87e-4D-8bn"/>
                                             <constraint firstItem="pZr-aY-aTt" firstAttribute="centerY" secondItem="dlw-4G-kxZ" secondAttribute="centerY" id="D2a-3D-ex8"/>
                                             <constraint firstItem="pZr-aY-aTt" firstAttribute="leading" secondItem="dlw-4G-kxZ" secondAttribute="trailing" constant="18" id="G6S-Xh-vHV"/>
                                             <constraint firstItem="qxQ-2I-53K" firstAttribute="centerX" secondItem="rLk-u7-6iT" secondAttribute="centerX" id="GMU-ex-gzu"/>
@@ -545,20 +549,130 @@
                                             <constraint firstItem="dlw-4G-kxZ" firstAttribute="top" secondItem="rLk-u7-6iT" secondAttribute="topMargin" constant="42" id="mfb-cT-I60"/>
                                             <constraint firstItem="KqH-Lf-3HG" firstAttribute="centerY" secondItem="dlw-4G-kxZ" secondAttribute="centerY" id="rQ3-k3-DA4"/>
                                             <constraint firstItem="PJt-7g-pSD" firstAttribute="centerX" secondItem="rLk-u7-6iT" secondAttribute="centerX" id="sGi-9L-azd"/>
+                                            <constraint firstItem="PJt-7g-pSD" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leadingMargin" id="tEn-Ad-cLK"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="j8Z-zx-s9L" secondAttribute="trailing" id="wR9-nT-oLX"/>
+                                            <constraint firstItem="j8Z-zx-s9L" firstAttribute="centerX" secondItem="PJt-7g-pSD" secondAttribute="centerX" id="wpr-dT-T0K"/>
+                                            <constraint firstItem="j8Z-zx-s9L" firstAttribute="top" secondItem="PJt-7g-pSD" secondAttribute="bottom" id="xWO-7t-9TR"/>
                                             <constraint firstItem="dlw-4G-kxZ" firstAttribute="leading" secondItem="KqH-Lf-3HG" secondAttribute="trailing" constant="13" id="zls-vA-k9C"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="avatarView" destination="dlw-4G-kxZ" id="oce-p9-Ma2"/>
+                                            <outlet property="infoLabel" destination="qxQ-2I-53K" id="4SC-k5-Ygp"/>
+                                            <outlet property="leftNumberView" destination="KqH-Lf-3HG" id="pZk-bm-tbc"/>
+                                            <outlet property="rightNumberView" destination="pZr-aY-aTt" id="TQ6-Vt-E74"/>
+                                            <outlet property="subtitle" destination="j8Z-zx-s9L" id="VT0-B1-GcP"/>
+                                            <outlet property="title" destination="PJt-7g-pSD" id="TWH-C4-bAC"/>
+                                        </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="object" id="THQ-y3-3Ql">
-                                        <rect key="frame" x="13" y="220" width="349" height="210"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="object" id="THQ-y3-3Ql" customClass="TeammateObjectCell" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="13" y="220" width="349" height="296"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="210"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="296"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbY-VY-xCl" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="16" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulW-Xb-t3c" customClass="TitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="136" y="59.5" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yuo-5i-zpX" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="136" y="98.5" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oqH-A9-lU0">
+                                                    <rect key="frame" x="16" y="59.5" width="96" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="CyY-XN-D6z"/>
+                                                        <constraint firstAttribute="width" constant="96" id="lRW-Mv-0rx"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAA-xo-vE9" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="240" width="317" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="563-Sl-2SN"/>
+                                                    </constraints>
+                                                    <state key="normal" title="See Claims (0)"/>
+                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XRz-Dm-gvq">
+                                                    <rect key="frame" x="16" y="142.5" width="317" height="92.5"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8E-VZ-k7Y" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="105.5" height="92.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ltp-bb-V7l" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="105.5" y="0.0" width="106" height="92.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjZ-4Q-1dC" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="211.5" y="0.0" width="105.5" height="92.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Ln-izq" customClass="ChatTextLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="136" y="119" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aih-WA-5ek">
+                                                    <rect key="frame" x="289" y="16" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="Pax-Gc-lrf"/>
+                                                        <constraint firstAttribute="width" secondItem="Aih-WA-5ek" secondAttribute="height" multiplier="1:1" id="ymR-OY-BeJ"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="forward"/>
+                                                </button>
+                                            </subviews>
                                         </view>
-                                        <size key="customSize" width="349" height="210"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="rAA-xo-vE9" secondAttribute="trailing" id="4rd-ws-WKE"/>
+                                            <constraint firstItem="rAA-xo-vE9" firstAttribute="top" secondItem="XRz-Dm-gvq" secondAttribute="bottom" constant="5" id="5s7-mu-vVc"/>
+                                            <constraint firstItem="rAA-xo-vE9" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leadingMargin" id="Cyg-Hj-kSL"/>
+                                            <constraint firstItem="XRz-Dm-gvq" firstAttribute="top" secondItem="oqH-A9-lU0" secondAttribute="bottom" constant="3" id="DNP-93-A5s"/>
+                                            <constraint firstItem="oqH-A9-lU0" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leadingMargin" id="Feb-82-Lt7"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Aih-WA-5ek" secondAttribute="trailing" id="IAy-FJ-RNg"/>
+                                            <constraint firstItem="ulW-Xb-t3c" firstAttribute="top" secondItem="oqH-A9-lU0" secondAttribute="top" id="Ked-b1-WnA"/>
+                                            <constraint firstItem="oqH-A9-lU0" firstAttribute="top" secondItem="kbY-VY-xCl" secondAttribute="bottom" constant="23" id="Oc2-od-itN"/>
+                                            <constraint firstItem="kbY-VY-xCl" firstAttribute="top" secondItem="THQ-y3-3Ql" secondAttribute="topMargin" id="Xwn-mo-Xa6"/>
+                                            <constraint firstItem="ulW-Xb-t3c" firstAttribute="leading" secondItem="oqH-A9-lU0" secondAttribute="trailing" constant="24" id="Ytz-a3-YWx"/>
+                                            <constraint firstItem="Aih-WA-5ek" firstAttribute="top" secondItem="THQ-y3-3Ql" secondAttribute="topMargin" id="bR2-Iu-tPS"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="XRz-Dm-gvq" secondAttribute="trailing" id="dCO-Pk-opi"/>
+                                            <constraint firstItem="wHf-Ln-izq" firstAttribute="leading" secondItem="ulW-Xb-t3c" secondAttribute="leading" id="ejq-D9-27F"/>
+                                            <constraint firstItem="Yuo-5i-zpX" firstAttribute="leading" secondItem="ulW-Xb-t3c" secondAttribute="leading" id="jfd-Hc-Qoj"/>
+                                            <constraint firstItem="XRz-Dm-gvq" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leadingMargin" id="kJs-HL-7Pn"/>
+                                            <constraint firstItem="wHf-Ln-izq" firstAttribute="bottom" secondItem="oqH-A9-lU0" secondAttribute="bottom" id="lku-ZP-1vg"/>
+                                            <constraint firstItem="kbY-VY-xCl" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leadingMargin" id="vAy-6I-Rja"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="rAA-xo-vE9" secondAttribute="bottom" id="wfL-K3-rop"/>
+                                            <constraint firstItem="wHf-Ln-izq" firstAttribute="top" secondItem="Yuo-5i-zpX" secondAttribute="bottom" id="wwN-dh-bhT"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
+                                        <size key="customSize" width="349" height="296"/>
+                                        <connections>
+                                            <outlet property="avatarView" destination="oqH-A9-lU0" id="D5c-bf-QIa"/>
+                                            <outlet property="button" destination="rAA-xo-vE9" id="Lhf-SU-Jqc"/>
+                                            <outlet property="centerNumberView" destination="Ltp-bb-V7l" id="qGo-ay-mM1"/>
+                                            <outlet property="detailsLabel" destination="wHf-Ln-izq" id="pcF-R9-597"/>
+                                            <outlet property="leftNumberView" destination="d8E-VZ-k7Y" id="aPr-Wq-izY"/>
+                                            <outlet property="nameLabel" destination="ulW-Xb-t3c" id="VdP-dV-AGS"/>
+                                            <outlet property="rightNumberView" destination="GjZ-4Q-1dC" id="rkg-pb-Yzd"/>
+                                            <outlet property="statusLabel" destination="Yuo-5i-zpX" id="f7y-l7-Iyf"/>
+                                            <outlet property="titleLabel" destination="kbY-VY-xCl" id="lrN-yX-VXL"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stats" id="X9L-3S-Mv2">
-                                        <rect key="frame" x="13" y="440" width="349" height="210"/>
+                                        <rect key="frame" x="13" y="526" width="349" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="210"/>
@@ -567,7 +681,7 @@
                                         <size key="customSize" width="349" height="210"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contact" id="1e9-iD-FHA">
-                                        <rect key="frame" x="13" y="660" width="349" height="210"/>
+                                        <rect key="frame" x="13" y="746" width="349" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="210"/>
@@ -576,7 +690,7 @@
                                         <size key="customSize" width="349" height="210"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dialog" id="Z8o-TQ-WL7">
-                                        <rect key="frame" x="13" y="880" width="349" height="210"/>
+                                        <rect key="frame" x="13" y="966" width="349" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="210"/>
@@ -669,6 +783,5 @@
     <resources>
         <image name="forward" width="17" height="32"/>
         <image name="iconTeam" width="26" height="23"/>
-        <image name="tesla" width="381" height="132"/>
     </resources>
 </document>

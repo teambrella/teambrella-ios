@@ -39,6 +39,9 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
     var votedByProxyTimes: Int?
     var weight: Double?
     
+    var smallPhotos: [String]?
+    var largePhotos: [String]?
+    
     var description: String {
         return "ExtendedTeammateEntity \(id)"
     }
@@ -56,6 +59,9 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
         totallyPaidFiat = json["TotallyPaid_Fiat"].double
         votedByProxyTimes = json["VotedByProxyTimes"].int
         weight = json["Weight"].double
+        
+        smallPhotos = json["SmallPhotos"].rawValue as? [String]
+        largePhotos = json["BigPhotos"].rawValue as? [String]
         
         topic = TopicFactory.topic(with: json)
     }

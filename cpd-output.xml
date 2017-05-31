@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
+   <duplication lines="9" tokens="90">
+      <file line="40"
+            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Sample/TeammateVC.swift"/>
+      <file line="39"
+            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Team/Members/TeammateProfileDataSource.swift"/>
+      <codefragment><![CDATA[    private func loadEntireTeammate() {
+        let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: service.server.timestamp)
+        
+        let body = RequestBodyFactory.teammateBody(key: key, id: teammate.userID)
+        let request = TeambrellaRequest(type: .teammate, body: body, success: { [weak self] response in
+            guard let me = self else { return }
+            
+            if case .teammate(let extendedTeammate) = response {
+                me.teammate.extended = extendedTeammate]]></codefragment>
+   </duplication>
    <duplication lines="5" tokens="56">
       <file line="106"
             path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/View/BrickView.swift"/>

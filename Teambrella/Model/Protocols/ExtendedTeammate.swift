@@ -33,4 +33,7 @@ protocol ExtendedTeammate: EntityLike {
     var totallyPaidFiat: Double? { get }
     var votedByProxyTimes: Int? { get }
     var weight: Double? { get }
+    
+    var smallPhotos: [String]? { get }
+    var largePhotos: [String]? { get }
 }
