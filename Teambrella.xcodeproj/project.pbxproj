@@ -108,6 +108,11 @@
 		6DA714ED1EDF49F500F39EBE /* MasterTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714EC1EDF49F500F39EBE /* MasterTabBarController.swift */; };
 		6DA714EF1EE00CFB00F39EBE /* NumberBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DA714EE1EE00CFB00F39EBE /* NumberBar.xib */; };
 		6DA714F11EE00D1800F39EBE /* NumberBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714F01EE00D1800F39EBE /* NumberBar.swift */; };
+		6DA714F61EE02BA000F39EBE /* TeammateContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714F51EE02BA000F39EBE /* TeammateContactCell.swift */; };
+		6DA714F81EE02BF100F39EBE /* TeammateDiscussionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714F71EE02BF100F39EBE /* TeammateDiscussionCell.swift */; };
+		6DA714FA1EE04D4900F39EBE /* ScaleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714F91EE04D4900F39EBE /* ScaleBar.swift */; };
+		6DA714FC1EE05E5900F39EBE /* TeammateStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714FB1EE05E5900F39EBE /* TeammateStatsCell.swift */; };
+		6DA714FE1EE0679500F39EBE /* ContactCellTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714FD1EE0679500F39EBE /* ContactCellTableCell.swift */; };
 		6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC230691ED07F0500FAC330 /* Key.swift */; };
 		6DCB9F551EC9FF20000B48C4 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */; };
 		6DCB9F571ECA0A45000B48C4 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F561ECA0A45000B48C4 /* Decimal.swift */; };
@@ -283,6 +288,11 @@
 		6DA714EC1EDF49F500F39EBE /* MasterTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterTabBarController.swift; path = Controller/MasterTabBarController.swift; sourceTree = "<group>"; };
 		6DA714EE1EE00CFB00F39EBE /* NumberBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NumberBar.xib; path = View/NumberBar.xib; sourceTree = "<group>"; };
 		6DA714F01EE00D1800F39EBE /* NumberBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberBar.swift; path = View/NumberBar.swift; sourceTree = "<group>"; };
+		6DA714F51EE02BA000F39EBE /* TeammateContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateContactCell.swift; path = Scenes/Team/Members/TeammateContactCell.swift; sourceTree = "<group>"; };
+		6DA714F71EE02BF100F39EBE /* TeammateDiscussionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateDiscussionCell.swift; path = Scenes/Team/Members/TeammateDiscussionCell.swift; sourceTree = "<group>"; };
+		6DA714F91EE04D4900F39EBE /* ScaleBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScaleBar.swift; path = View/ScaleBar.swift; sourceTree = "<group>"; };
+		6DA714FB1EE05E5900F39EBE /* TeammateStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateStatsCell.swift; path = Scenes/Team/Members/TeammateStatsCell.swift; sourceTree = "<group>"; };
+		6DA714FD1EE0679500F39EBE /* ContactCellTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactCellTableCell.swift; path = Scenes/Team/Members/ContactCellTableCell.swift; sourceTree = "<group>"; };
 		6DC230691ED07F0500FAC330 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		6DCB9F561ECA0A45000B48C4 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decimal.swift; path = Helpers/Extensions/Decimal.swift; sourceTree = "<group>"; };
@@ -543,17 +553,9 @@
 		6D9CC63B1ED7267C007F936E /* Members */ = {
 			isa = PBXGroup;
 			children = (
-				6D9CC6391ED72675007F936E /* MembersVC.swift */,
-				6DEE67941EDC12A70098EDB3 /* TeammateCandidateCell.swift */,
-				6DEE67A21EDC5C4D0098EDB3 /* TeammateCell.swift */,
-				6DEE67A41EDC75DA0098EDB3 /* TeammateHeaderView.swift */,
-				6D83EC821EDD69E3000412DC /* MembersDataSource.swift */,
-				6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */,
+				6DA714F31EE02B0200F39EBE /* Teammates */,
+				6DA714F41EE02B5900F39EBE /* TeammateProfile */,
 				6D83EC911EDD76DC000412DC /* MembersRouter.swift */,
-				6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */,
-				6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */,
-				6DA714E81EDF371300F39EBE /* TeammateSummaryCell.swift */,
-				6DA714EA1EDF433900F39EBE /* TeammateObjectCell.swift */,
 			);
 			name = Members;
 			sourceTree = "<group>";
@@ -701,6 +703,34 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		6DA714F31EE02B0200F39EBE /* Teammates */ = {
+			isa = PBXGroup;
+			children = (
+				6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */,
+				6D83EC821EDD69E3000412DC /* MembersDataSource.swift */,
+				6DEE67A41EDC75DA0098EDB3 /* TeammateHeaderView.swift */,
+				6D9CC6391ED72675007F936E /* MembersVC.swift */,
+				6DEE67941EDC12A70098EDB3 /* TeammateCandidateCell.swift */,
+				6DEE67A21EDC5C4D0098EDB3 /* TeammateCell.swift */,
+			);
+			name = Teammates;
+			sourceTree = "<group>";
+		};
+		6DA714F41EE02B5900F39EBE /* TeammateProfile */ = {
+			isa = PBXGroup;
+			children = (
+				6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */,
+				6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */,
+				6DA714E81EDF371300F39EBE /* TeammateSummaryCell.swift */,
+				6DA714EA1EDF433900F39EBE /* TeammateObjectCell.swift */,
+				6DA714F51EE02BA000F39EBE /* TeammateContactCell.swift */,
+				6DA714F71EE02BF100F39EBE /* TeammateDiscussionCell.swift */,
+				6DA714FB1EE05E5900F39EBE /* TeammateStatsCell.swift */,
+				6DA714FD1EE0679500F39EBE /* ContactCellTableCell.swift */,
+			);
+			name = TeammateProfile;
+			sourceTree = "<group>";
+		};
 		6DCC7AC91E9551B40092D3F2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +776,7 @@
 				6DA714E01EDF1C1C00F39EBE /* StyledLabels.swift */,
 				6DA714EE1EE00CFB00F39EBE /* NumberBar.xib */,
 				6DA714F01EE00D1800F39EBE /* NumberBar.swift */,
+				6DA714F91EE04D4900F39EBE /* ScaleBar.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1158,6 +1189,7 @@
 				6D466AA01ED07CF1001BC579 /* BlockchainServer.swift in Sources */,
 				6D83EC921EDD76DC000412DC /* MembersRouter.swift in Sources */,
 				6DEE67971EDC13D50098EDB3 /* RoundBadgedView.swift in Sources */,
+				6DA714FC1EE05E5900F39EBE /* TeammateStatsCell.swift in Sources */,
 				6D9CC6401ED72E19007F936E /* RulesVC.swift in Sources */,
 				6D83EC831EDD69E3000412DC /* MembersDataSource.swift in Sources */,
 				6DEE67951EDC12A70098EDB3 /* TeammateCandidateCell.swift in Sources */,
@@ -1172,6 +1204,7 @@
 				6DEE67931ED9D3E60098EDB3 /* BorderedButton.swift in Sources */,
 				6D466AB01ED07CF1001BC579 /* EntityFactory.swift in Sources */,
 				6D83EC8E1EDD7230000412DC /* MainRouter.swift in Sources */,
+				6DA714F81EE02BF100F39EBE /* TeammateDiscussionCell.swift in Sources */,
 				6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */,
 				6D9CC6191ED484CF007F936E /* UIViewController.swift in Sources */,
 				6D9CC61B1ED57B83007F936E /* LoginDetailsPresenter.swift in Sources */,
@@ -1193,12 +1226,14 @@
 				6D9CC6471ED746FF007F936E /* HomeVC.swift in Sources */,
 				6D466AAF1ED07CF1001BC579 /* EntityEnums.swift in Sources */,
 				6DEC07521E9BDA310078F40E /* TeammateVC.swift in Sources */,
+				6DA714F61EE02BA000F39EBE /* TeammateContactCell.swift in Sources */,
 				6D91BC041EB3900700FDC332 /* UUID.swift in Sources */,
 				6D466AA91ED07CF1001BC579 /* Teammate.swift in Sources */,
 				6DA714ED1EDF49F500F39EBE /* MasterTabBarController.swift in Sources */,
 				6DD7F41D1EB9FD8A001E7733 /* RoundImagesStack.swift in Sources */,
 				6D466AA41ED07CF1001BC579 /* BlockchainStorageFetcher.swift in Sources */,
 				6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */,
+				6DA714FA1EE04D4900F39EBE /* ScaleBar.swift in Sources */,
 				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
 				6D466AB11ED07CF1001BC579 /* TransactionsModel.xcdatamodeld in Sources */,
 				6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */,
@@ -1212,6 +1247,7 @@
 				CBDFE767664CC051784BF271 /* ServerService.swift in Sources */,
 				6D83EC941EDDA9DC000412DC /* TeammateProfileDataSource.swift in Sources */,
 				6D466AA71ED07CF1001BC579 /* PayTo.swift in Sources */,
+				6DA714FE1EE0679500F39EBE /* ContactCellTableCell.swift in Sources */,
 				6D466AB21ED07CF1001BC579 /* TeambrellaService.swift in Sources */,
 				6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */,
 				6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */,

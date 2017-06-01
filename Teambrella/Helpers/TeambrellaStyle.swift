@@ -97,8 +97,10 @@ struct TeambrellaStyle {
     
     static func buttonStyle() {
         let borderedButton = BorderedButton.appearance()
-        borderedButton.titleLabel?.textColor = .lightBlue
-        borderedButton.titleLabel?.font = UIFont.teambrellaBold(size: 15)
+        
+        let label = UILabel.appearance(whenContainedInInstancesOf: [BorderedButton.self])
+        label.textColor = .lightBlue
+        label.font = UIFont.teambrellaBold(size: 15)
     }
     
 }

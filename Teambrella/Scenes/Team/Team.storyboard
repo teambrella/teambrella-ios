@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -445,20 +446,20 @@
                         <viewControllerLayoutGuide type="bottom" id="JpN-j4-Hjl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KTz-Bt-B0f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DOV-3b-s1w">
-                                <rect key="frame" x="0.0" y="20" width="375" height="1180"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HZ6-22-Sdp">
+                                <rect key="frame" x="0.0" y="20" width="375" height="1480"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="10" id="HZ6-22-Sdp">
                                     <size key="itemSize" width="373" height="210"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="summary" id="rLk-u7-6iT" customClass="TeammateSummaryCell" customModule="Teambrella" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="summary" id="rLk-u7-6iT" customClass="TeammateSummaryCell" customModule="Teambrella" customModuleProvider="target">
                                         <rect key="frame" x="1" y="0.0" width="373" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -536,6 +537,7 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="j8Z-zx-s9L" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leadingMargin" id="87e-4D-8bn"/>
                                             <constraint firstItem="pZr-aY-aTt" firstAttribute="centerY" secondItem="dlw-4G-kxZ" secondAttribute="centerY" id="D2a-3D-ex8"/>
@@ -564,15 +566,15 @@
                                             <outlet property="title" destination="PJt-7g-pSD" id="TWH-C4-bAC"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="object" id="THQ-y3-3Ql" customClass="TeammateObjectCell" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="13" y="220" width="349" height="296"/>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="object" id="THQ-y3-3Ql" customClass="TeammateObjectCell" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="13" y="226" width="349" height="296"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="296"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbY-VY-xCl" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="16" width="42" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="OBJECT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbY-VY-xCl" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="16" width="64" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -632,6 +634,7 @@
                                                 </view>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailingMargin" secondItem="rAA-xo-vE9" secondAttribute="trailing" id="4rd-ws-WKE"/>
                                             <constraint firstItem="rAA-xo-vE9" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leadingMargin" id="Cyg-Hj-kSL"/>
@@ -665,27 +668,27 @@
                                             <outlet property="titleLabel" destination="kbY-VY-xCl" id="lrN-yX-VXL"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stats" id="X9L-3S-Mv2">
-                                        <rect key="frame" x="13" y="526" width="349" height="210"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stats" id="1e9-iD-FHA" userLabel="stats" customClass="TeammateStatsCell" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="13" y="538" width="349" height="368"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="210"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="368"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuW-Sw-h1z" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTING STATS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vT5-Lp-QYa" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="16" width="116.5" height="14"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="42" id="G3A-4H-wy7"/>
+                                                        <constraint firstAttribute="height" constant="14" id="GyN-Uo-d9J"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3d0-fl-aBf" customClass="NumberBar" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="45" width="333" height="64"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efK-pn-UrS" customClass="NumberBar" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="59" width="317" height="64"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="64" id="rU6-qn-LfW"/>
+                                                        <constraint firstAttribute="height" constant="64" id="pXK-ra-Rl2"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="count">
@@ -694,34 +697,353 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBottomLineVisible" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rLx-ry-aPq">
+                                                    <rect key="frame" x="16" y="123" width="317" height="189"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpZ-yG-4ju">
+                                                            <rect key="frame" x="0.0" y="0.0" width="317" height="63"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ik2-II-9DA" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
+                                                                    <rect key="frame" x="189" y="21" width="128" height="22"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="Pbf-RU-l5C"/>
+                                                                        <constraint firstAttribute="width" constant="128" id="bp1-ef-Cld"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="17%"/>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="MILD"/>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                            <real key="value" value="0.29999999999999999"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="valueColor">
+                                                                            <color key="value" red="0.14117647058823529" green="0.86274509803921573" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decisions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBi-1a-EOH" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="22" width="74.5" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="JBi-1a-EOH" firstAttribute="centerY" secondItem="cpZ-yG-4ju" secondAttribute="centerY" id="C5E-rD-Euc"/>
+                                                                <constraint firstItem="Ik2-II-9DA" firstAttribute="centerY" secondItem="cpZ-yG-4ju" secondAttribute="centerY" id="CXP-jY-v77"/>
+                                                                <constraint firstItem="JBi-1a-EOH" firstAttribute="leading" secondItem="cpZ-yG-4ju" secondAttribute="leading" id="LT6-KL-faT"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Ik2-II-9DA" secondAttribute="trailing" id="fgY-Bd-dIV"/>
+                                                                <constraint firstItem="Ik2-II-9DA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JBi-1a-EOH" secondAttribute="trailing" constant="8" id="yVy-CU-6h4"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UqW-mT-ypj">
+                                                            <rect key="frame" x="0.0" y="63" width="317" height="63"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-C1-32U" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
+                                                                    <rect key="frame" x="189" y="20.5" width="128" height="22"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="128" id="Zjj-Hf-jKg"/>
+                                                                        <constraint firstAttribute="height" constant="22" id="oF9-Sf-2mL"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="17%"/>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="MILD"/>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                            <real key="value" value="0.5"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="valueColor">
+                                                                            <color key="value" red="1" green="0.81960784313725488" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discussions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCy-lF-Ef5" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="22" width="91.5" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="pw4-C1-32U" secondAttribute="trailing" id="5sn-51-Y8m"/>
+                                                                <constraint firstItem="pw4-C1-32U" firstAttribute="centerY" secondItem="UqW-mT-ypj" secondAttribute="centerY" id="7X1-lI-Nlb"/>
+                                                                <constraint firstItem="pw4-C1-32U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OCy-lF-Ef5" secondAttribute="trailing" constant="8" id="MZ2-hG-8JO"/>
+                                                                <constraint firstItem="OCy-lF-Ef5" firstAttribute="centerY" secondItem="UqW-mT-ypj" secondAttribute="centerY" id="h7Z-up-l3E"/>
+                                                                <constraint firstItem="OCy-lF-Ef5" firstAttribute="leading" secondItem="UqW-mT-ypj" secondAttribute="leading" id="wQg-Oe-Xwj"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2m2-pw-1ay">
+                                                            <rect key="frame" x="0.0" y="126" width="317" height="63"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGi-HY-tI0" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
+                                                                    <rect key="frame" x="189" y="20.5" width="128" height="22"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="AVA-Hu-YPt"/>
+                                                                        <constraint firstAttribute="width" constant="128" id="PeR-4U-nX3"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="17%"/>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="OCCASIONALLY"/>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                            <real key="value" value="0.80000000000000004"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voting Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvP-Xn-0nI" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="22" width="134.5" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="pGi-HY-tI0" firstAttribute="centerY" secondItem="2m2-pw-1ay" secondAttribute="centerY" id="9cn-5F-64d"/>
+                                                                <constraint firstItem="pGi-HY-tI0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JvP-Xn-0nI" secondAttribute="trailing" constant="8" id="EEN-y8-jtd"/>
+                                                                <constraint firstAttribute="trailing" secondItem="pGi-HY-tI0" secondAttribute="trailing" id="YZw-bb-aVx"/>
+                                                                <constraint firstItem="JvP-Xn-0nI" firstAttribute="leading" secondItem="2m2-pw-1ay" secondAttribute="leading" id="paw-BN-tXv"/>
+                                                                <constraint firstItem="JvP-Xn-0nI" firstAttribute="centerY" secondItem="2m2-pw-1ay" secondAttribute="centerY" id="vdk-dc-yXW"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57V-LE-jol" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="312" width="317" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="BXS-5h-N9n"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Add to my Proxy Voters"/>
+                                                </button>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailingMargin" secondItem="3d0-fl-aBf" secondAttribute="trailing" id="2mu-EI-bbN"/>
-                                            <constraint firstItem="3d0-fl-aBf" firstAttribute="leading" secondItem="X9L-3S-Mv2" secondAttribute="leadingMargin" id="gfY-yS-1sv"/>
-                                            <constraint firstItem="iuW-Sw-h1z" firstAttribute="top" secondItem="X9L-3S-Mv2" secondAttribute="topMargin" id="pt7-Rv-HlL"/>
-                                            <constraint firstItem="3d0-fl-aBf" firstAttribute="top" secondItem="iuW-Sw-h1z" secondAttribute="bottom" constant="16" id="tiv-MM-lhQ"/>
-                                            <constraint firstItem="iuW-Sw-h1z" firstAttribute="leading" secondItem="X9L-3S-Mv2" secondAttribute="leadingMargin" id="vvx-iz-eqi"/>
+                                            <constraint firstItem="efK-pn-UrS" firstAttribute="leading" secondItem="1e9-iD-FHA" secondAttribute="leadingMargin" id="8gt-uv-6cJ"/>
+                                            <constraint firstItem="efK-pn-UrS" firstAttribute="top" secondItem="vT5-Lp-QYa" secondAttribute="bottom" constant="29" id="BnL-Nu-NXn"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="57V-LE-jol" secondAttribute="bottom" id="NTb-dI-hZK"/>
+                                            <constraint firstItem="vT5-Lp-QYa" firstAttribute="top" secondItem="1e9-iD-FHA" secondAttribute="topMargin" id="Prx-6F-LFi"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="57V-LE-jol" secondAttribute="trailing" id="SX9-ew-Ekd"/>
+                                            <constraint firstItem="rLx-ry-aPq" firstAttribute="top" secondItem="efK-pn-UrS" secondAttribute="bottom" id="XlY-GG-UZb"/>
+                                            <constraint firstItem="57V-LE-jol" firstAttribute="leading" secondItem="1e9-iD-FHA" secondAttribute="leadingMargin" id="dP0-t7-CfV"/>
+                                            <constraint firstItem="vT5-Lp-QYa" firstAttribute="leading" secondItem="1e9-iD-FHA" secondAttribute="leadingMargin" id="eXa-6t-uvh"/>
+                                            <constraint firstItem="rLx-ry-aPq" firstAttribute="leading" secondItem="1e9-iD-FHA" secondAttribute="leadingMargin" id="kjw-yE-tG0"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="rLx-ry-aPq" secondAttribute="trailing" id="qvK-po-vGN"/>
+                                            <constraint firstItem="57V-LE-jol" firstAttribute="top" secondItem="rLx-ry-aPq" secondAttribute="bottom" id="vk3-Ic-GFB"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="efK-pn-UrS" secondAttribute="trailing" id="yYi-02-r26"/>
                                         </constraints>
-                                        <size key="customSize" width="349" height="210"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contact" id="1e9-iD-FHA">
-                                        <rect key="frame" x="13" y="746" width="349" height="368"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="368"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
+                                        <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                                         <size key="customSize" width="349" height="368"/>
+                                        <connections>
+                                            <outlet property="addButton" destination="57V-LE-jol" id="72H-yC-6Co"/>
+                                            <outlet property="decisionsBar" destination="Ik2-II-9DA" id="e5L-wU-NVC"/>
+                                            <outlet property="decisionsLabel" destination="JBi-1a-EOH" id="dJz-za-1bT"/>
+                                            <outlet property="discussionsBar" destination="pw4-C1-32U" id="S74-XC-Bpt"/>
+                                            <outlet property="discussionsLabel" destination="OCy-lF-Ef5" id="dvY-kd-D5W"/>
+                                            <outlet property="frequencyBar" destination="pGi-HY-tI0" id="Hdf-Np-sHf"/>
+                                            <outlet property="frequencyLabel" destination="JvP-Xn-0nI" id="74T-Je-FxC"/>
+                                            <outlet property="headerLabel" destination="vT5-Lp-QYa" id="Xu9-z7-h0G"/>
+                                            <outlet property="numberBar" destination="efK-pn-UrS" id="5xa-fY-4zB"/>
+                                        </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dialog" id="Z8o-TQ-WL7">
-                                        <rect key="frame" x="13" y="1124" width="349" height="210"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contact" id="X9L-3S-Mv2" userLabel="contact" customClass="TeammateContactCell" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="13" y="922" width="349" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="210"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CONTACT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuW-Sw-h1z" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="8" width="104" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="42" id="G3A-4H-wy7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mte-E8-vXs">
+                                                    <rect key="frame" x="16" y="49" width="317" height="161"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <prototypes>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="66" id="Tvw-Eg-SjA" customClass="ContactCellTableCell" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="28" width="317" height="66"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tvw-Eg-SjA" id="cyg-GN-LRF">
+                                                                <rect key="frame" x="0.0" y="0.0" width="317" height="65.5"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="d7O-F7-70w">
+                                                                        <rect key="frame" x="7" y="21" width="24" height="24"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="d7O-F7-70w" secondAttribute="height" multiplier="1:1" id="XsG-DU-hM8"/>
+                                                                            <constraint firstAttribute="width" constant="24" id="jal-RK-v2G"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FACEBOOK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmO-nx-8VM" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                                        <rect key="frame" x="55" y="12" width="88" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="facebook.com/jimmywong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seq-A6-jmI" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
+                                                                        <rect key="frame" x="55" y="33" width="201" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="seq-A6-jmI" firstAttribute="top" secondItem="cyg-GN-LRF" secondAttribute="centerY" id="A8S-2e-I8B"/>
+                                                                    <constraint firstItem="d7O-F7-70w" firstAttribute="leading" secondItem="cyg-GN-LRF" secondAttribute="leadingMargin" constant="7" id="Hw7-Hb-k9R"/>
+                                                                    <constraint firstItem="wmO-nx-8VM" firstAttribute="leading" secondItem="d7O-F7-70w" secondAttribute="trailing" constant="24" id="Voa-ty-f3k"/>
+                                                                    <constraint firstItem="seq-A6-jmI" firstAttribute="leading" secondItem="wmO-nx-8VM" secondAttribute="leading" id="WYr-aB-xy2"/>
+                                                                    <constraint firstItem="d7O-F7-70w" firstAttribute="centerY" secondItem="cyg-GN-LRF" secondAttribute="centerY" id="jLE-PB-SQQ"/>
+                                                                    <constraint firstItem="wmO-nx-8VM" firstAttribute="bottom" secondItem="cyg-GN-LRF" secondAttribute="centerY" id="lT9-Vd-akd"/>
+                                                                </constraints>
+                                                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                                            </tableViewCellContentView>
+                                                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                                            <connections>
+                                                                <outlet property="avatarView" destination="d7O-F7-70w" id="rIV-pk-quO"/>
+                                                                <outlet property="bottomLabel" destination="seq-A6-jmI" id="Utv-oK-53n"/>
+                                                                <outlet property="topLabel" destination="wmO-nx-8VM" id="McQ-qR-Lmc"/>
+                                                            </connections>
+                                                        </tableViewCell>
+                                                    </prototypes>
+                                                </tableView>
+                                            </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Mte-E8-vXs" firstAttribute="top" secondItem="iuW-Sw-h1z" secondAttribute="bottom" constant="12" id="T4j-Ay-17b"/>
+                                            <constraint firstItem="Mte-E8-vXs" firstAttribute="leading" secondItem="X9L-3S-Mv2" secondAttribute="leadingMargin" id="UR6-Fn-9qt"/>
+                                            <constraint firstItem="iuW-Sw-h1z" firstAttribute="top" secondItem="X9L-3S-Mv2" secondAttribute="topMargin" id="pt7-Rv-HlL"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Mte-E8-vXs" secondAttribute="bottom" id="vGz-lc-TwI"/>
+                                            <constraint firstItem="iuW-Sw-h1z" firstAttribute="leading" secondItem="X9L-3S-Mv2" secondAttribute="leadingMargin" id="vvx-iz-eqi"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Mte-E8-vXs" secondAttribute="trailing" id="zwb-JP-1bc"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="16" left="16" bottom="0.0" right="16"/>
                                         <size key="customSize" width="349" height="210"/>
+                                        <connections>
+                                            <outlet property="headerLabel" destination="iuW-Sw-h1z" id="SDM-Nq-agj"/>
+                                            <outlet property="tableView" destination="Mte-E8-vXs" id="PfF-Si-3rb"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dialog" id="Z8o-TQ-WL7" customClass="TeammateDiscussionCell" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="1" y="1148" width="373" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="373" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DEX-e6-PI2" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="16" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="DEX-e6-PI2" secondAttribute="height" multiplier="1:1" id="FBy-XV-JBs"/>
+                                                        <constraint firstAttribute="width" constant="40" id="SGg-lu-e4a"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eSA-k8-b4n" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="306" y="49" width="22" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="eSA-k8-b4n" secondAttribute="height" multiplier="1:1" id="fsC-ie-Lga"/>
+                                                        <constraint firstAttribute="width" constant="22" id="nRb-gq-YOC"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="viewColor">
+                                                            <color key="value" red="0.1215686275" green="0.75294117650000003" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="text" value="4"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="zag-nY-lCb">
+                                                    <rect key="frame" x="344" y="53.5" width="13" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="zag-nY-lCb" secondAttribute="height" multiplier="1:1" id="BKo-fy-tjb"/>
+                                                        <constraint firstAttribute="width" constant="13" id="f1t-Fs-dYb"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvi-P5-uiV" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="72" y="15" width="173" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 MIN AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3j-DO-xi1" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="274" y="15.5" width="83" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCUSSION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvp-cq-SV7" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="196" y="86.5" width="101" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v79-CO-JK0" customClass="MessageTextLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="72" y="36" width="218" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OdX-Ct-muH" customClass="RoundImagesStack" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="72" y="87" width="80" height="20"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Y6p-3j-VoV"/>
+                                                        <constraint firstAttribute="width" constant="80" id="jmv-wY-xMg"/>
+                                                    </constraints>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discuss" translatesAutoresizingMaskIntoConstraints="NO" id="B0G-Vg-zfb">
+                                                    <rect key="frame" x="172" y="89.5" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="Ux1-Lf-ME6"/>
+                                                        <constraint firstAttribute="width" secondItem="B0G-Vg-zfb" secondAttribute="height" multiplier="1:1" id="pyH-5L-RaM"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="B0G-Vg-zfb" firstAttribute="centerY" secondItem="OdX-Ct-muH" secondAttribute="centerY" id="0eL-vq-2ZO"/>
+                                            <constraint firstItem="OdX-Ct-muH" firstAttribute="top" secondItem="v79-CO-JK0" secondAttribute="bottom" constant="10" id="2C0-W4-DpE"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="zag-nY-lCb" secondAttribute="trailing" id="7IC-Vl-45d"/>
+                                            <constraint firstItem="zag-nY-lCb" firstAttribute="centerY" secondItem="Z8o-TQ-WL7" secondAttribute="centerY" id="L0W-Iu-hpz"/>
+                                            <constraint firstItem="eSA-k8-b4n" firstAttribute="leading" secondItem="v79-CO-JK0" secondAttribute="trailing" constant="16" id="LHU-fD-ZBZ"/>
+                                            <constraint firstItem="DEX-e6-PI2" firstAttribute="leading" secondItem="Z8o-TQ-WL7" secondAttribute="leadingMargin" id="Ljt-EH-Por"/>
+                                            <constraint firstItem="Rvi-P5-uiV" firstAttribute="leading" secondItem="DEX-e6-PI2" secondAttribute="trailing" constant="16" id="QPm-5y-2Ka"/>
+                                            <constraint firstItem="eSA-k8-b4n" firstAttribute="centerY" secondItem="Z8o-TQ-WL7" secondAttribute="centerY" id="TAc-80-96B"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="s3j-DO-xi1" secondAttribute="trailing" id="WQu-tf-B2S"/>
+                                            <constraint firstItem="Pvp-cq-SV7" firstAttribute="leading" secondItem="B0G-Vg-zfb" secondAttribute="trailing" constant="9" id="ZuI-YK-bAV"/>
+                                            <constraint firstItem="Pvp-cq-SV7" firstAttribute="centerY" secondItem="B0G-Vg-zfb" secondAttribute="centerY" id="aBY-mm-Sg5"/>
+                                            <constraint firstItem="v79-CO-JK0" firstAttribute="leading" secondItem="Rvi-P5-uiV" secondAttribute="leading" id="cST-Be-Y6d"/>
+                                            <constraint firstItem="DEX-e6-PI2" firstAttribute="top" secondItem="Z8o-TQ-WL7" secondAttribute="topMargin" id="cYl-hT-UzE"/>
+                                            <constraint firstItem="Rvi-P5-uiV" firstAttribute="bottom" secondItem="DEX-e6-PI2" secondAttribute="centerY" id="dY2-IM-8SL"/>
+                                            <constraint firstItem="zag-nY-lCb" firstAttribute="leading" secondItem="eSA-k8-b4n" secondAttribute="trailing" constant="16" id="eQH-QF-lNQ"/>
+                                            <constraint firstItem="B0G-Vg-zfb" firstAttribute="leading" secondItem="OdX-Ct-muH" secondAttribute="trailing" constant="20" id="fvV-F6-O58"/>
+                                            <constraint firstItem="v79-CO-JK0" firstAttribute="top" secondItem="DEX-e6-PI2" secondAttribute="centerY" id="ijX-bf-kIf"/>
+                                            <constraint firstItem="s3j-DO-xi1" firstAttribute="centerY" secondItem="Rvi-P5-uiV" secondAttribute="centerY" id="kMR-zJ-Sx1"/>
+                                            <constraint firstItem="OdX-Ct-muH" firstAttribute="leading" secondItem="v79-CO-JK0" secondAttribute="leading" id="xMD-BE-cSy"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
+                                        <size key="customSize" width="373" height="120"/>
+                                        <connections>
+                                            <outlet property="avatarView" destination="DEX-e6-PI2" id="DZD-it-wQw"/>
+                                            <outlet property="discussionLabel" destination="Pvp-cq-SV7" id="qJ5-vB-6xv"/>
+                                            <outlet property="teammatesAvatarStack" destination="OdX-Ct-muH" id="g2Z-iL-tey"/>
+                                            <outlet property="textLabel" destination="v79-CO-JK0" id="7E1-AW-1dC"/>
+                                            <outlet property="timeLabel" destination="s3j-DO-xi1" id="4Iq-FA-bJx"/>
+                                            <outlet property="titleLabel" destination="Rvi-P5-uiV" id="BDQ-sF-DgO"/>
+                                            <outlet property="unreadCountView" destination="eSA-k8-b4n" id="IcK-z6-pBs"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -739,7 +1061,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1200"/>
+                    <size key="freeformSize" width="375" height="1500"/>
                     <connections>
                         <outlet property="collectionView" destination="DOV-3b-s1w" id="hhJ-SV-fqk"/>
                     </connections>
@@ -791,7 +1113,7 @@
                     <tabBarItem key="tabBarItem" title="Team" image="iconTeam" id="dXT-U8-WRM"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5fO-Hd-Vf9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5fO-Hd-Vf9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -806,6 +1128,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="discuss" width="46" height="44"/>
+        <image name="facebook" width="50" height="50"/>
         <image name="forward" width="17" height="32"/>
         <image name="iconTeam" width="22" height="21"/>
     </resources>
