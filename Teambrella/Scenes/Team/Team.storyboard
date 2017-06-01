@@ -467,7 +467,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmI-Jc-cL8" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="373" height="94"/>
+                                                    <rect key="frame" x="0.0" y="-200" width="373" height="294"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="segments">
@@ -555,7 +555,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="j8Z-zx-s9L" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leadingMargin" id="87e-4D-8bn"/>
-                                            <constraint firstItem="xmI-Jc-cL8" firstAttribute="top" secondItem="rLk-u7-6iT" secondAttribute="top" id="Agt-BQ-MoC"/>
+                                            <constraint firstItem="xmI-Jc-cL8" firstAttribute="top" secondItem="rLk-u7-6iT" secondAttribute="top" constant="-200" id="Agt-BQ-MoC"/>
                                             <constraint firstItem="pZr-aY-aTt" firstAttribute="centerY" secondItem="dlw-4G-kxZ" secondAttribute="centerY" id="D2a-3D-ex8"/>
                                             <constraint firstItem="pZr-aY-aTt" firstAttribute="leading" secondItem="dlw-4G-kxZ" secondAttribute="trailing" constant="18" id="G6S-Xh-vHV"/>
                                             <constraint firstItem="qxQ-2I-53K" firstAttribute="centerX" secondItem="rLk-u7-6iT" secondAttribute="centerX" id="GMU-ex-gzu"/>
@@ -1132,7 +1132,7 @@
                     <tabBarItem key="tabBarItem" title="Team" image="iconTeam" id="dXT-U8-WRM"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5fO-Hd-Vf9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5fO-Hd-Vf9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

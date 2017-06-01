@@ -26,7 +26,7 @@ class RadarView: UIView {
         var wdt = (bounds.midX - diameter / 2) / CGFloat(segments)
         var x = (diameter + wdt) / 2
         
-        for i in 0..<segments {
+        for i in 0...segments + 1 {
             context.setStrokeColor(colorFor(segment: i).cgColor)
             context.setLineWidth(wdt)
             context.addArc(center: CGPoint(x: bounds.midX, y: bounds.maxY),
