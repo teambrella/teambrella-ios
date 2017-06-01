@@ -440,7 +440,7 @@
         <!--Teammate ProfileVC-->
         <scene sceneID="9GJ-cE-bOX">
             <objects>
-                <viewController storyboardIdentifier="TeammateProfileVC" id="Gx7-ey-gPh" customClass="TeammateProfileVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeammateProfileVC" automaticallyAdjustsScrollViewInsets="NO" id="Gx7-ey-gPh" customClass="TeammateProfileVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yql-nn-JRw"/>
                         <viewControllerLayoutGuide type="bottom" id="JpN-j4-Hjl"/>
@@ -449,7 +449,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DOV-3b-s1w">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DOV-3b-s1w">
                                 <rect key="frame" x="0.0" y="20" width="375" height="1480"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="10" id="HZ6-22-Sdp">
@@ -467,7 +467,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmI-Jc-cL8" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="8" width="373" height="86"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="373" height="94"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="segments">
@@ -475,6 +475,9 @@
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="diameter">
                                                             <real key="value" value="136"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                            <color key="value" red="0.93827295241013076" green="0.94381031709558827" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -552,7 +555,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="j8Z-zx-s9L" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leadingMargin" id="87e-4D-8bn"/>
-                                            <constraint firstItem="xmI-Jc-cL8" firstAttribute="top" secondItem="rLk-u7-6iT" secondAttribute="topMargin" id="Agt-BQ-MoC"/>
+                                            <constraint firstItem="xmI-Jc-cL8" firstAttribute="top" secondItem="rLk-u7-6iT" secondAttribute="top" id="Agt-BQ-MoC"/>
                                             <constraint firstItem="pZr-aY-aTt" firstAttribute="centerY" secondItem="dlw-4G-kxZ" secondAttribute="centerY" id="D2a-3D-ex8"/>
                                             <constraint firstItem="pZr-aY-aTt" firstAttribute="leading" secondItem="dlw-4G-kxZ" secondAttribute="trailing" constant="18" id="G6S-Xh-vHV"/>
                                             <constraint firstItem="qxQ-2I-53K" firstAttribute="centerX" secondItem="rLk-u7-6iT" secondAttribute="centerX" id="GMU-ex-gzu"/>
