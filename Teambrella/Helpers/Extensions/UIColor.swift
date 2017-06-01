@@ -10,6 +10,7 @@ import UIKit
 
 extension UIColor {
     // MARK: Blue
+    class var paleLilac: UIColor { return               #colorLiteral(red: 0.8784313725, green: 0.8862745098, blue: 1, alpha: 1) }
     class var robinEggBlue: UIColor { return            #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) }
     class var lightBlue: UIColor { return               #colorLiteral(red: 0.3058823529, green: 0.768627451, blue: 0.9490196078, alpha: 1) }
     class var teambrellaLightBlue: UIColor { return     #colorLiteral(red: 0.3058823529, green: 0.768627451, blue: 0.9490196078, alpha: 1) }
@@ -37,5 +38,10 @@ extension UIColor {
     class var bluishGray: UIColor { return              #colorLiteral(red: 0.4823529412, green: 0.5529411765, blue: 0.6039215686, alpha: 1) }
     class var charcoalGray: UIColor { return            #colorLiteral(red: 0.2352941176, green: 0.2784313725, blue: 0.3254901961, alpha: 1) }
     class var dark: UIColor { return                    #colorLiteral(red: 0.1725490196, green: 0.2235294118, blue: 0.2823529412, alpha: 1) }
+    
+    var redValue: CGFloat { return CIColor(color: self).red }
+    var greenValue: CGFloat { return CIColor(color: self).green }
+    var blueValue: CGFloat { return CIColor(color: self).blue }
+    var alphaValue: CGFloat { return CIColor(color: self).alpha }
 
 }

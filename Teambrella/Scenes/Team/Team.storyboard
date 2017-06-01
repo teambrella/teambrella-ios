@@ -466,9 +466,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="373" height="210"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmI-Jc-cL8" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="8" width="373" height="86"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="segments">
+                                                            <integer key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="diameter">
+                                                            <real key="value" value="136"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlw-4G-kxZ" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
                                                     <rect key="frame" x="142" y="50" width="88" height="88"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="dlw-4G-kxZ" secondAttribute="height" multiplier="1:1" id="Ig3-CF-RJx"/>
                                                         <constraint firstAttribute="width" constant="88" id="kWp-x1-TWu"/>
@@ -476,7 +488,7 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KqH-Lf-3HG" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
                                                     <rect key="frame" x="24" y="74" width="105" height="40"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="tiy-GS-LVF"/>
                                                     </constraints>
@@ -487,7 +499,7 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZr-aY-aTt" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
                                                     <rect key="frame" x="248" y="74" width="105" height="40"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="meD-uT-IM0"/>
                                                     </constraints>
@@ -540,12 +552,16 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="j8Z-zx-s9L" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leadingMargin" id="87e-4D-8bn"/>
+                                            <constraint firstItem="xmI-Jc-cL8" firstAttribute="top" secondItem="rLk-u7-6iT" secondAttribute="topMargin" id="Agt-BQ-MoC"/>
                                             <constraint firstItem="pZr-aY-aTt" firstAttribute="centerY" secondItem="dlw-4G-kxZ" secondAttribute="centerY" id="D2a-3D-ex8"/>
                                             <constraint firstItem="pZr-aY-aTt" firstAttribute="leading" secondItem="dlw-4G-kxZ" secondAttribute="trailing" constant="18" id="G6S-Xh-vHV"/>
                                             <constraint firstItem="qxQ-2I-53K" firstAttribute="centerX" secondItem="rLk-u7-6iT" secondAttribute="centerX" id="GMU-ex-gzu"/>
                                             <constraint firstItem="PJt-7g-pSD" firstAttribute="top" secondItem="dlw-4G-kxZ" secondAttribute="bottom" constant="14" id="J1K-Sh-OdT"/>
+                                            <constraint firstAttribute="trailing" secondItem="xmI-Jc-cL8" secondAttribute="trailing" id="LvJ-7V-3mP"/>
+                                            <constraint firstItem="xmI-Jc-cL8" firstAttribute="bottom" secondItem="dlw-4G-kxZ" secondAttribute="centerY" id="O8I-z2-MB0"/>
                                             <constraint firstItem="KqH-Lf-3HG" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leadingMargin" constant="16" id="P5q-ui-TUr"/>
                                             <constraint firstItem="dlw-4G-kxZ" firstAttribute="top" secondItem="qxQ-2I-53K" secondAttribute="bottom" constant="9" id="Sg4-xQ-ewG"/>
+                                            <constraint firstItem="xmI-Jc-cL8" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leading" id="UhR-jR-qNw"/>
                                             <constraint firstItem="dlw-4G-kxZ" firstAttribute="centerX" secondItem="rLk-u7-6iT" secondAttribute="centerX" id="cdh-hJ-Wsz"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="pZr-aY-aTt" secondAttribute="trailing" constant="12" id="fhj-en-wir"/>
                                             <constraint firstItem="dlw-4G-kxZ" firstAttribute="top" secondItem="rLk-u7-6iT" secondAttribute="topMargin" constant="42" id="mfb-cT-I60"/>
@@ -855,8 +871,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="210"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CONTACT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuW-Sw-h1z" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="104" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTACT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuW-Sw-h1z" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="16" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="G3A-4H-wy7"/>
                                                     </constraints>
@@ -988,8 +1004,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v79-CO-JK0" customClass="MessageTextLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="36" width="218" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v79-CO-JK0" customClass="MessageTextLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="72" y="36" width="218" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
