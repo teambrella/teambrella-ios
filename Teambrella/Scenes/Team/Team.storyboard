@@ -603,23 +603,6 @@
                                                     </constraints>
                                                     <state key="normal" title="See Claims (0)"/>
                                                 </button>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XRz-Dm-gvq">
-                                                    <rect key="frame" x="16" y="142.5" width="317" height="92.5"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8E-VZ-k7Y" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="105.5" height="92.5"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ltp-bb-V7l" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
-                                                            <rect key="frame" x="105.5" y="0.0" width="106" height="92.5"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjZ-4Q-1dC" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
-                                                            <rect key="frame" x="211.5" y="0.0" width="105.5" height="92.5"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </view>
-                                                    </subviews>
-                                                </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Ln-izq" customClass="ChatTextLabel" customModule="Teambrella" customModuleProvider="target">
                                                     <rect key="frame" x="136" y="119" width="42" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -634,13 +617,25 @@
                                                     </constraints>
                                                     <state key="normal" title="Button" image="forward"/>
                                                 </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8EQ-Lc-N7f" customClass="NumberBar" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="163.5" width="317" height="48"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="YTA-xF-yq9"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBottomLineVisible" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="count">
+                                                            <integer key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="trailingMargin" secondItem="rAA-xo-vE9" secondAttribute="trailing" id="4rd-ws-WKE"/>
-                                            <constraint firstItem="rAA-xo-vE9" firstAttribute="top" secondItem="XRz-Dm-gvq" secondAttribute="bottom" constant="5" id="5s7-mu-vVc"/>
                                             <constraint firstItem="rAA-xo-vE9" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leadingMargin" id="Cyg-Hj-kSL"/>
-                                            <constraint firstItem="XRz-Dm-gvq" firstAttribute="top" secondItem="oqH-A9-lU0" secondAttribute="bottom" constant="3" id="DNP-93-A5s"/>
+                                            <constraint firstItem="8EQ-Lc-N7f" firstAttribute="top" secondItem="oqH-A9-lU0" secondAttribute="bottom" constant="24" id="FZ6-S7-8MS"/>
                                             <constraint firstItem="oqH-A9-lU0" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leadingMargin" id="Feb-82-Lt7"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Aih-WA-5ek" secondAttribute="trailing" id="IAy-FJ-RNg"/>
                                             <constraint firstItem="ulW-Xb-t3c" firstAttribute="top" secondItem="oqH-A9-lU0" secondAttribute="top" id="Ked-b1-WnA"/>
@@ -648,11 +643,12 @@
                                             <constraint firstItem="kbY-VY-xCl" firstAttribute="top" secondItem="THQ-y3-3Ql" secondAttribute="topMargin" id="Xwn-mo-Xa6"/>
                                             <constraint firstItem="ulW-Xb-t3c" firstAttribute="leading" secondItem="oqH-A9-lU0" secondAttribute="trailing" constant="24" id="Ytz-a3-YWx"/>
                                             <constraint firstItem="Aih-WA-5ek" firstAttribute="top" secondItem="THQ-y3-3Ql" secondAttribute="topMargin" id="bR2-Iu-tPS"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="XRz-Dm-gvq" secondAttribute="trailing" id="dCO-Pk-opi"/>
                                             <constraint firstItem="wHf-Ln-izq" firstAttribute="leading" secondItem="ulW-Xb-t3c" secondAttribute="leading" id="ejq-D9-27F"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="8EQ-Lc-N7f" secondAttribute="trailing" id="fpM-NS-YkI"/>
                                             <constraint firstItem="Yuo-5i-zpX" firstAttribute="leading" secondItem="ulW-Xb-t3c" secondAttribute="leading" id="jfd-Hc-Qoj"/>
-                                            <constraint firstItem="XRz-Dm-gvq" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leadingMargin" id="kJs-HL-7Pn"/>
+                                            <constraint firstItem="rAA-xo-vE9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8EQ-Lc-N7f" secondAttribute="bottom" constant="8" id="ka3-bk-aQW"/>
                                             <constraint firstItem="wHf-Ln-izq" firstAttribute="bottom" secondItem="oqH-A9-lU0" secondAttribute="bottom" id="lku-ZP-1vg"/>
+                                            <constraint firstItem="8EQ-Lc-N7f" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leadingMargin" id="ooJ-QF-NfD"/>
                                             <constraint firstItem="kbY-VY-xCl" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leadingMargin" id="vAy-6I-Rja"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="rAA-xo-vE9" secondAttribute="bottom" id="wfL-K3-rop"/>
                                             <constraint firstItem="wHf-Ln-izq" firstAttribute="top" secondItem="Yuo-5i-zpX" secondAttribute="bottom" id="wwN-dh-bhT"/>
@@ -662,11 +658,9 @@
                                         <connections>
                                             <outlet property="avatarView" destination="oqH-A9-lU0" id="D5c-bf-QIa"/>
                                             <outlet property="button" destination="rAA-xo-vE9" id="Lhf-SU-Jqc"/>
-                                            <outlet property="centerNumberView" destination="Ltp-bb-V7l" id="qGo-ay-mM1"/>
                                             <outlet property="detailsLabel" destination="wHf-Ln-izq" id="pcF-R9-597"/>
-                                            <outlet property="leftNumberView" destination="d8E-VZ-k7Y" id="aPr-Wq-izY"/>
                                             <outlet property="nameLabel" destination="ulW-Xb-t3c" id="VdP-dV-AGS"/>
-                                            <outlet property="rightNumberView" destination="GjZ-4Q-1dC" id="rkg-pb-Yzd"/>
+                                            <outlet property="numberBar" destination="8EQ-Lc-N7f" id="FBc-X9-Un8"/>
                                             <outlet property="statusLabel" destination="Yuo-5i-zpX" id="f7y-l7-Iyf"/>
                                             <outlet property="titleLabel" destination="kbY-VY-xCl" id="lrN-yX-VXL"/>
                                         </connections>
@@ -677,20 +671,51 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="210"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuW-Sw-h1z" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="42" id="G3A-4H-wy7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3d0-fl-aBf" customClass="NumberBar" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="45" width="333" height="64"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="64" id="rU6-qn-LfW"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="count">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBottomLineVisible" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="3d0-fl-aBf" secondAttribute="trailing" id="2mu-EI-bbN"/>
+                                            <constraint firstItem="3d0-fl-aBf" firstAttribute="leading" secondItem="X9L-3S-Mv2" secondAttribute="leadingMargin" id="gfY-yS-1sv"/>
+                                            <constraint firstItem="iuW-Sw-h1z" firstAttribute="top" secondItem="X9L-3S-Mv2" secondAttribute="topMargin" id="pt7-Rv-HlL"/>
+                                            <constraint firstItem="3d0-fl-aBf" firstAttribute="top" secondItem="iuW-Sw-h1z" secondAttribute="bottom" constant="16" id="tiv-MM-lhQ"/>
+                                            <constraint firstItem="iuW-Sw-h1z" firstAttribute="leading" secondItem="X9L-3S-Mv2" secondAttribute="leadingMargin" id="vvx-iz-eqi"/>
+                                        </constraints>
                                         <size key="customSize" width="349" height="210"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contact" id="1e9-iD-FHA">
-                                        <rect key="frame" x="13" y="746" width="349" height="210"/>
+                                        <rect key="frame" x="13" y="746" width="349" height="368"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="210"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="368"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
-                                        <size key="customSize" width="349" height="210"/>
+                                        <size key="customSize" width="349" height="368"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dialog" id="Z8o-TQ-WL7">
-                                        <rect key="frame" x="13" y="966" width="349" height="210"/>
+                                        <rect key="frame" x="13" y="1124" width="349" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="210"/>
@@ -766,7 +791,7 @@
                     <tabBarItem key="tabBarItem" title="Team" image="iconTeam" id="dXT-U8-WRM"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5fO-Hd-Vf9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5fO-Hd-Vf9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

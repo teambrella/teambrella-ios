@@ -89,9 +89,9 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             }
             cell.nameLabel.text = "\(teammate.model), \(teammate.year)"
             
-            cell.leftNumberView.titleLabel.text = "LIMIT"
-            cell.centerNumberView.titleLabel.text = "NET"
-            cell.rightNumberView.titleLabel.text = "RISK FACTOR"
+            cell.numberBar.left?.titleLabel.text = "LIMIT"
+            cell.numberBar.middle?.titleLabel.text = "NET"
+            cell.numberBar.right?.titleLabel.text = "RISK FACTOR"
         }
         
     }

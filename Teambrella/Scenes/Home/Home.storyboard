@@ -117,7 +117,7 @@
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xle-t4-lRz" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="162" height="54"/>
-                                                                    <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
                                                                     </userDefinedRuntimeAttributes>
@@ -131,7 +131,7 @@
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d71-a1-tb0" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
                                                                     <rect key="frame" x="163" y="0.0" width="162" height="54"/>
-                                                                    <color key="backgroundColor" red="0.36862745099999999" green="0.41568627450000001" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="YES"/>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isCurrencyOnTop" value="NO"/>

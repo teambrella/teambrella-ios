@@ -16,10 +16,8 @@ class TeammateObjectCell: UICollectionViewCell {
     @IBOutlet var statusLabel: Label!
     @IBOutlet var detailsLabel: Label!
     
-    @IBOutlet var leftNumberView: NumberView!
-    @IBOutlet var centerNumberView: NumberView!
-    @IBOutlet var rightNumberView: NumberView!
+    @IBOutlet var numberBar: NumberBar!
+
     @IBOutlet var button: BorderedButton!
     
 }
-

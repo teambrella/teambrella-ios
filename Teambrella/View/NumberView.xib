@@ -72,7 +72,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="ecV-sI-j40" firstAttribute="centerY" secondItem="3E2-y1-WiR" secondAttribute="centerY" constant="-7" id="4PY-JO-TvG"/>
                         <constraint firstItem="3E2-y1-WiR" firstAttribute="leading" secondItem="0J0-P7-9yQ" secondAttribute="leading" id="Bga-4V-bJ8"/>
@@ -89,7 +89,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="0J0-P7-9yQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" id="LFn-si-hus"/>
                 <constraint firstItem="0J0-P7-9yQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Nlv-9b-OdD"/>
