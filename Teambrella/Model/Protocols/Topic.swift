@@ -9,5 +9,11 @@
 import Foundation
 
 protocol Topic: EntityLike {
+    var originalPostText: String { get }
+    var topPosterAvatars: [String] { get }
+    var posterCount: Int { get }
+    var unreadCount: Int { get }
+    var minutesSinceLastPost: Int { get }
+    
     var posts: [Post] { get set }
 }

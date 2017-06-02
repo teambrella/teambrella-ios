@@ -54,9 +54,9 @@ class TeammateVC: UIViewController {
     }
     
     private func presentEntireTeammate() {
-        teammate.extended?.price.map { self.priceLabel.text = String($0) }
+       // teammate.extended?.price.map { self.priceLabel.text = String($0) }
         riskLabel.text = String(teammate.risk)
-        teammate.extended?.weight.map { self.weightLabel.text = String($0) }
+       // teammate.extended?.weight.map { self.weightLabel.text = String($0) }
        
     }
 

@@ -13,6 +13,12 @@ struct TopicEntity: Topic {
     let id: String
     let ver: Int64
     
+    let originalPostText: String
+    let topPosterAvatars: [String]
+    let posterCount: Int
+    let unreadCount: Int
+    let minutesSinceLastPost: Int
+    
     var posts: [Post]
     
     var description: String {
@@ -22,6 +28,13 @@ struct TopicEntity: Topic {
     init(json: JSON) {
         id = json["TopicId"].stringValue
         ver = json["Ver"].int64Value
+        
+        originalPostText = json["OriginalPostText"].stringValue
+        topPosterAvatars = json["TopPosterAvatars"].arrayObject as? [String] ?? []
+        posterCount = json["PosterCount"].intValue
+        unreadCount = json["UnreadCount"].intValue
+        minutesSinceLastPost = json["SinceLastPostMinutes"].intValue
+        
         posts = PostFactory.posts(with: json["Posts"]) ?? []
     }
 }

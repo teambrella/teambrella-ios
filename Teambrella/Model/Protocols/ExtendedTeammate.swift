@@ -9,7 +9,13 @@
 import Foundation
 
 protocol ExtendedTeammate: EntityLike {
+    var basic: TeammateBasicInfo { get }
     var topic: Topic { get set }
+    var voting: TeammateVotingInfo? { get }
+    var object: CoveredObject { get }
+    var stats: TeammateStats { get }
+    
+    /*
     var couldVoteCount: Int? { get }
     var coverageReduceInterval: Int? { get }
     var coverageReduceTime: Int? { get }
@@ -36,4 +42,5 @@ protocol ExtendedTeammate: EntityLike {
     
     var smallPhotos: [String]? { get }
     var largePhotos: [String]? { get }
+ */
 }
