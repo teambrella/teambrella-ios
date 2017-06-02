@@ -3,7 +3,7 @@
    <duplication lines="9" tokens="90">
       <file line="40"
             path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Sample/TeammateVC.swift"/>
-      <file line="39"
+      <file line="48"
             path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Team/Members/TeammateProfileDataSource.swift"/>
       <codefragment><![CDATA[    private func loadEntireTeammate() {
         let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: service.server.timestamp)

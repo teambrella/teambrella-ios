@@ -11,6 +11,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Team-->
         <scene sceneID="jEa-bQ-tjH">
@@ -627,7 +632,10 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="563-Sl-2SN"/>
                                                     </constraints>
-                                                    <state key="normal" title="See Claims (0)"/>
+                                                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
+                                                    <state key="normal" title="See Claims (0)">
+                                                        <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Ln-izq" customClass="ChatTextLabel" customModule="Teambrella" customModuleProvider="target">
                                                     <rect key="frame" x="136" y="119" width="42" height="20.5"/>
@@ -839,7 +847,10 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="BXS-5h-N9n"/>
                                                     </constraints>
-                                                    <state key="normal" title="Add to my Proxy Voters"/>
+                                                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
+                                                    <state key="normal" title="Add to my Proxy Voters">
+                                                        <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -880,10 +891,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTACT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuW-Sw-h1z" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="16" width="42" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="42" id="G3A-4H-wy7"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="16" y="16" width="78" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -893,7 +901,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="66" id="Tvw-Eg-SjA" customClass="ContactCellTableCell" customModule="Teambrella" customModuleProvider="target">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCellTableCell" rowHeight="66" id="Tvw-Eg-SjA" customClass="ContactCellTableCell" customModule="Teambrella" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="317" height="66"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tvw-Eg-SjA" id="cyg-GN-LRF">

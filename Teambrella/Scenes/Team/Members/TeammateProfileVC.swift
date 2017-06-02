@@ -10,6 +10,9 @@ import Kingfisher
 import UIKit
 
 class TeammateProfileVC: UIViewController, Routable {
+    struct Constant {
+        static let socialCellHeight: CGFloat = 44
+    }
     
     static var storyboardName: String = "Team"
     
@@ -72,7 +75,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-      TeammateCellBuilder.populate(cell: cell, with: teammate)
+      TeammateCellBuilder.populate(cell: cell, with: teammate, delegate: self)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -102,7 +105,9 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .stats:
             return CGSize(width: wdt, height: 368)
         case .contact:
-            return CGSize(width: wdt, height: 244)
+            let base: CGFloat = 44
+            let cellHeight: CGFloat = Constant.socialCellHeight
+            return CGSize(width: wdt, height: base + CGFloat(dataSource.socialItems.count) * cellHeight)
         case .dialog:
             return CGSize(width: wdt, height: 120)
         }
@@ -113,4 +118,37 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
     //                        referenceSizeForHeaderInSection section: Int) -> CGSize {
     //        return CGSize(width: collectionView.bounds.width, height: 1)
     //    }
+}
+
+extension TeammateProfileVC: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.socialItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(withIdentifier: "ContactCellTableCell", for: indexPath)
+    }
+}
+
+extension TeammateProfileVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? ContactCellTableCell else { return }
+        
+        let item = dataSource.socialItems[indexPath.row]
+        cell.avatarView.image = item.icon
+        cell.topLabel.text = item.name.uppercased()
+        cell.bottomLabel.text = item.address
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constant.socialCellHeight
+    }
 }

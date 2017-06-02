@@ -12,14 +12,23 @@ enum TeammateProfileCellType: String {
     case summary, object, stats, contact, dialog
 }
 
+enum SocialItemType: String {
+    case facebook, twitter, email
+}
+
+struct SocialItem {
+    var name: String {
+        return type.rawValue
+    }
+    let type: SocialItemType
+    let icon: UIImage?
+    let address: String
+}
+
 class TeammateProfileDataSource {
     var source: [TeammateProfileCellType] = [
         .summary,
-        .object,
-        .stats,
-        .contact,
-        .dialog
-    ]
+        ]
     var teammate: TeammateLike
     
     init(teammate: TeammateLike) {
@@ -45,9 +54,33 @@ class TeammateProfileDataSource {
             
             if case .teammate(let extendedTeammate) = response {
                 me.teammate.extended = extendedTeammate
+                me.modifySource()
                 completion()
             }
         })
         request.start()
+    }
+    
+    private func modifySource() {
+        if teammate.extended?.object != nil {
+            source.append(.object)
+        }
+        if teammate.extended?.stats != nil {
+            source.append(.stats)
+        }
+        if !socialItems.isEmpty {
+            source.append(.contact)
+        }
+        if teammate.extended?.topic != nil {
+            source.append(.dialog)
+        }
+    }
+    
+    var socialItems: [SocialItem] {
+        var items: [SocialItem] = []
+        if let facebook = teammate.extended?.basic.facebook {
+            items.append(SocialItem(type: .facebook, icon: #imageLiteral(resourceName: "facebook"), address: facebook))
+        }
+        return items
     }
 }

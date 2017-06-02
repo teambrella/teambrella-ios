@@ -480,7 +480,7 @@
                     <tabBarItem key="tabBarItem" title="Home" selectedImage="iconHome" id="5HA-2k-qhF"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="seh-NB-2pa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="seh-NB-2pa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

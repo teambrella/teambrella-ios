@@ -47,7 +47,7 @@ class ThreadTVC: UITableViewController {
         
         let post = messages[indexPath.row]
         
-        cell.postLabel.text = TextAdapter().parseHTML(string: post.postContent)
+        cell.postLabel.text = TextAdapter().parsedHTML(string: post.postContent)
         cell.dateLabel.text = dateFormatter.string(from: post.dateCreated)
         // Configure the cell...
         

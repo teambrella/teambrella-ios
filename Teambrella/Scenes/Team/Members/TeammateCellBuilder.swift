@@ -10,16 +10,16 @@ import Kingfisher
 import UIKit
 
 struct TeammateCellBuilder {
-    static func populate(cell: UICollectionViewCell, with teammate: TeammateLike) {
+    static func populate(cell: UICollectionViewCell, with teammate: TeammateLike, delegate: Any? = nil) {
         if let cell = cell as? TeammateSummaryCell {
             populateSummary(cell: cell, with: teammate)
         } else if let cell = cell as? TeammateObjectCell {
             populateObject(cell: cell, with: teammate)
         } else if let cell = cell as? TeammateContactCell {
-            
+            populateContact(cell: cell, with: teammate, delegate: delegate)
         } else if let cell = cell as? TeammateDiscussionCell, let topic = teammate.extended?.topic {
             populateDiscussion(cell: cell, with: topic, avatar: teammate.avatar)
-        } else if let cell = cell as? TeammateStatsCell , let stats = teammate.extended?.stats {
+        } else if let cell = cell as? TeammateStatsCell, let stats = teammate.extended?.stats {
             populateStats(cell: cell, with: stats)
         }
     }
@@ -75,7 +75,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateStats(cell: TeammateStatsCell, with stats: TeammateStats) {
-    cell.headerLabel.text = "VOTING STATS"
+        cell.headerLabel.text = "VOTING STATS"
         if let left = cell.numberBar.left {
             left.titleLabel.text = "WEIGHT"
             left.amountLabel.text = textFor(amount: stats.weight)
@@ -99,7 +99,16 @@ struct TeammateCellBuilder {
     private static func populateDiscussion(cell: TeammateDiscussionCell, with stats: Topic, avatar: String) {
         cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: avatar)))
         cell.titleLabel.text = "Application Discussion"
-        cell.timeLabel.text = "\(stats.minutesSinceLastPost) MIN AGO"
+        switch stats.minutesSinceLastPost {
+        case 0:
+            cell.timeLabel.text = "JUST NOW"
+        case 1..<60:
+            cell.timeLabel.text = "\(stats.minutesSinceLastPost) MIN AGO"
+        case 60...(60 * 24):
+            cell.timeLabel.text = "\(stats.minutesSinceLastPost / 60) HR AGO"
+        default:
+            cell.timeLabel.text = "LONG AGO"
+        }
         let message = TextAdapter().parsedHTML(string: stats.originalPostText)
         cell.textLabel.text = message
         cell.unreadCountView.text = String(stats.unreadCount)
@@ -108,6 +117,18 @@ struct TeammateCellBuilder {
         let morePersons = stats.posterCount - urls.count
         let text: String? = morePersons > 0 ? "+\(morePersons)" : nil
         cell.teammatesAvatarStack.set(images: urls, label: text, max: 4)
+    }
+    
+    private static func populateContact(cell: TeammateContactCell, with teammate: TeammateLike, delegate: Any?) {
+        guard let dataSource = delegate as? UITableViewDataSource else {
+            fatalError("TeammateContactCell should have table view data source")
+        }
+        
+        cell.headerLabel.text = "CONTACT"
+        let delegate = delegate as? UITableViewDelegate
+        cell.tableView.delegate = delegate
+        cell.tableView.dataSource = dataSource
+        cell.tableView.reloadData()
     }
     
     private static func decisionsText(from value: Double) -> String {
