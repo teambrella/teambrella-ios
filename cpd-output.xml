@@ -15,13 +15,12 @@
             if case .teammate(let extendedTeammate) = response {
                 me.teammate.extended = extendedTeammate]]></codefragment>
    </duplication>
-   <duplication lines="10" tokens="56">
-      <file line="71"
-            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/MembersDataSource.swift"/>
+   <duplication lines="9" tokens="56">
       <file line="25"
             path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Team/Claims/ClaimsDataSource.swift"/>
+      <file line="71"
+            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Team/Members/MembersDataSource.swift"/>
       <codefragment><![CDATA[    func loadData() {
-        //fakeLoadData()
         guard !isLoading else { return }
         
         isLoading = true
@@ -29,7 +28,7 @@
             let key = Key(base58String: ServerService.Constant.fakePrivateKey,
                           timestamp: timestamp)
             
-            let body = RequestBody(key: key, payload:["TeamId": 2006,]]></codefragment>
+            let body = RequestBody(key: key, payload:["TeamId": ServerService.Constant.teamID,]]></codefragment>
    </duplication>
    <duplication lines="5" tokens="56">
       <file line="106"
