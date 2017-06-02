@@ -72,28 +72,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        if let cell = cell as? TeammateSummaryCell {
-            cell.title.text = teammate.name
-            
-            let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
-            cell.avatarView.kf.setImage(with: url)
-            
-            cell.leftNumberView.titleLabel.text = "COVERS ME"
-            
-            cell.rightNumberView.titleLabel.text = "COVER THEM"
-            //teammate.extended?.maxPaymentFiat.map { cell.leftNumberView.amountLabel.text = "\($0)" }
-        } else if let cell = cell as? TeammateObjectCell {
-//            if let imageString = teammate.extended?.smallPhotos?.first {
-//                let url = URL(string: service.server.avatarURLstring(for: imageString))
-//                cell.avatarView.kf.setImage(with: url)
-//            }
-            cell.nameLabel.text = "\(teammate.model), \(teammate.year)"
-            
-            cell.numberBar.left?.titleLabel.text = "LIMIT"
-            cell.numberBar.middle?.titleLabel.text = "NET"
-            cell.numberBar.right?.titleLabel.text = "RISK FACTOR"
-        }
-        
+      TeammateCellBuilder.populate(cell: cell, with: teammate)
     }
     
     func collectionView(_ collectionView: UICollectionView,

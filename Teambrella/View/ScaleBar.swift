@@ -82,4 +82,9 @@ class ScaleBar: UIView {
         context.strokePath()
     }
     
+    func autoSet(value: Double) {
+        self.value = CGFloat(value)
+        leftText = "\(Int(self.value * 100))%"
+    }
+    
 }

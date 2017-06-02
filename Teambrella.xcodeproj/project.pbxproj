@@ -48,6 +48,8 @@
 		6D6DA2441EE165B100307C73 /* TeammateVotingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */; };
 		6D6DA2461EE167BD00307C73 /* CoveredObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2451EE167BD00307C73 /* CoveredObject.swift */; };
 		6D6DA2481EE16BBA00307C73 /* TeammateStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2471EE16BBA00307C73 /* TeammateStats.swift */; };
+		6D6DA24A1EE16E8300307C73 /* TeammateCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2491EE16E8300307C73 /* TeammateCellBuilder.swift */; };
+		6D6DA24C1EE18FCA00307C73 /* TextAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA24B1EE18FCA00307C73 /* TextAdapter.swift */; };
 		6D7186E71EA4FC3600257463 /* TransactionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7186E61EA4FC3600257463 /* TransactionsVC.swift */; };
 		6D73C6E01EBB36A700A2C0F8 /* Transactions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D73C6DF1EBB36A700A2C0F8 /* Transactions.storyboard */; };
 		6D73C6E21EBB374D00A2C0F8 /* PaymentsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D73C6E11EBB374D00A2C0F8 /* PaymentsTVC.swift */; };
@@ -226,6 +228,8 @@
 		6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateVotingInfo.swift; path = Model/Entities/TeammateVotingInfo.swift; sourceTree = "<group>"; };
 		6D6DA2451EE167BD00307C73 /* CoveredObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoveredObject.swift; path = Model/Entities/CoveredObject.swift; sourceTree = "<group>"; };
 		6D6DA2471EE16BBA00307C73 /* TeammateStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateStats.swift; path = Model/Entities/TeammateStats.swift; sourceTree = "<group>"; };
+		6D6DA2491EE16E8300307C73 /* TeammateCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateCellBuilder.swift; path = Scenes/Team/Members/TeammateCellBuilder.swift; sourceTree = "<group>"; };
+		6D6DA24B1EE18FCA00307C73 /* TextAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextAdapter.swift; path = Model/TextAdapter.swift; sourceTree = "<group>"; };
 		6D7186E61EA4FC3600257463 /* TransactionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsVC.swift; path = Scenes/TransactionsVC.swift; sourceTree = "<group>"; };
 		6D73C6DF1EBB36A700A2C0F8 /* Transactions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Transactions.storyboard; path = Scenes/TransactionsTest/Transactions.storyboard; sourceTree = "<group>"; };
 		6D73C6E11EBB374D00A2C0F8 /* PaymentsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsTVC.swift; path = Scenes/TransactionsTest/PaymentsTVC.swift; sourceTree = "<group>"; };
@@ -652,6 +656,7 @@
 				6DCC7ACA1E9551BD0092D3F2 /* Protocols */,
 				6DA475D61E8BB9F000B56D9B /* Services */,
 				6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */,
+				6D6DA24B1EE18FCA00307C73 /* TextAdapter.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -737,6 +742,7 @@
 				6DA714F71EE02BF100F39EBE /* TeammateDiscussionCell.swift */,
 				6DA714FB1EE05E5900F39EBE /* TeammateStatsCell.swift */,
 				6DA714FD1EE0679500F39EBE /* ContactCellTableCell.swift */,
+				6D6DA2491EE16E8300307C73 /* TeammateCellBuilder.swift */,
 			);
 			name = TeammateProfile;
 			sourceTree = "<group>";
@@ -1253,11 +1259,13 @@
 				6DA714FA1EE04D4900F39EBE /* ScaleBar.swift in Sources */,
 				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
 				6D466AB11ED07CF1001BC579 /* TransactionsModel.xcdatamodeld in Sources */,
+				6D6DA24C1EE18FCA00307C73 /* TextAdapter.swift in Sources */,
 				6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */,
 				6DA714E11EDF1C1C00F39EBE /* StyledLabels.swift in Sources */,
 				6D097EA51E9D219A00E77DAB /* Nameable.swift in Sources */,
 				6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */,
 				6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */,
+				6D6DA24A1EE16E8300307C73 /* TeammateCellBuilder.swift in Sources */,
 				6D9CC63A1ED72675007F936E /* MembersVC.swift in Sources */,
 				6D466AAC1ED07CF1001BC579 /* TxOutput.swift in Sources */,
 				6DEC6DF91E966AA900ACC119 /* TransformerService.swift in Sources */,

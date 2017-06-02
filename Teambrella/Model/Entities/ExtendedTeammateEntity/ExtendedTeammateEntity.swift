@@ -13,6 +13,8 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
     let id: String
     let ver: Int64
     
+    let lastUpdated: Int64
+    
     var topic: Topic
     let basic: TeammateBasicInfo
     let voting: TeammateVotingInfo?
@@ -54,6 +56,8 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
     init(json: JSON) {
         id = json["UserId"].stringValue
         ver = json["Ver"].int64Value
+        lastUpdated = json["LastUpdated"].int64Value
+        
         /*
         price = json["Price"].int
         role = json["Role"].int
@@ -68,10 +72,10 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
         smallPhotos = json["SmallPhotos"].rawValue as? [String]
         largePhotos = json["BigPhotos"].rawValue as? [String]
         */
-        topic = TopicFactory.topic(with: json)
-        basic = TeammateBasicInfo(json: json["Basic"])
-        voting = TeammateVotingInfo(json: json["Voting"])
-        object = CoveredObject(json: json["CoveredObject"])
-        stats = TeammateStats(json: json["Stats"])
+        topic = TopicFactory.topic(with: json["DiscussionPart"])
+        basic = TeammateBasicInfo(json: json["BasicPart"])
+        voting = TeammateVotingInfo(json: json["VotingPart"])
+        object = CoveredObject(json: json["ObjectPart"])
+        stats = TeammateStats(json: json["StatsPart"])
     }
 }

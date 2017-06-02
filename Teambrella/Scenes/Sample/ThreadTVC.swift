@@ -47,24 +47,11 @@ class ThreadTVC: UITableViewController {
         
         let post = messages[indexPath.row]
         
-        cell.postLabel.text = parsed(string: post.postContent)
+        cell.postLabel.text = TextAdapter().parseHTML(string: post.postContent)
         cell.dateLabel.text = dateFormatter.string(from: post.dateCreated)
         // Configure the cell...
         
         return cell
-    }
-    
-    func parsed(string: String) -> String {
-        do {
-            let doc: Document = try SwiftSoup.parse(string)
-            return try doc.text()
-        } catch Exception.Error(let type, let message) {
-            print("\(type) --> " + message)
-        } catch {
-            print("error")
-        }
-        print("Falling back to original message")
-        return string
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
