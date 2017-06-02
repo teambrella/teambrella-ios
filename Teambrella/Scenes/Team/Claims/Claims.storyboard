@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--ClaimsVC-->
+        <scene sceneID="5W8-BX-sq5">
+            <objects>
+                <viewController storyboardIdentifier="ClaimsVC" id="cCe-np-5xm" customClass="ClaimsVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EeS-ah-Y6t"/>
+                        <viewControllerLayoutGuide type="bottom" id="i00-M2-7MW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O2k-AB-n05">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HB3-6s-gf8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o5z-fr-1uL">
+                                    <size key="itemSize" width="351" height="140"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsOpenCell" id="tf0-bi-tUE" customClass="ClaimsOpenCell" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="0.0" width="351" height="156"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="351" height="156"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="71m-C5-Wtx">
+                                                    <rect key="frame" x="0.0" y="16" width="351" height="140"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BiH-9W-QY9">
+                                                            <rect key="frame" x="16" y="24" width="40" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="BiH-9W-QY9" secondAttribute="height" multiplier="1:1" id="4HK-y8-StD"/>
+                                                                <constraint firstAttribute="width" constant="40" id="RJV-y5-tn6"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SL-QM-JEG" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="72" y="24" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DS-qp-KPw" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="96" y="45.5" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nLW-4X-pQM" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="72" y="48" width="16" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="nLW-4X-pQM" secondAttribute="height" multiplier="1:1" id="LBz-me-hm6"/>
+                                                                <constraint firstAttribute="width" constant="16" id="mvb-xp-n7X"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="teammateF"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feS-Gu-bjP" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="293" y="23" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1x-lO-xeP" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="293" y="44" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MT-p8-cw4" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="16" y="84" width="319" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="LuH-gt-wxA"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                                            <state key="normal" title="Button">
+                                                                <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="nLW-4X-pQM" firstAttribute="bottom" secondItem="BiH-9W-QY9" secondAttribute="bottom" id="2tL-6u-Okp"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="v1x-lO-xeP" secondAttribute="trailing" id="4ci-wp-axL"/>
+                                                        <constraint firstItem="9MT-p8-cw4" firstAttribute="leading" secondItem="71m-C5-Wtx" secondAttribute="leadingMargin" id="Adp-Mc-qbG"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="9MT-p8-cw4" secondAttribute="trailing" id="HhZ-Gh-ZFM"/>
+                                                        <constraint firstItem="v1x-lO-xeP" firstAttribute="top" secondItem="BiH-9W-QY9" secondAttribute="centerY" id="Yd2-f6-XkN"/>
+                                                        <constraint firstItem="9SL-QM-JEG" firstAttribute="leading" secondItem="BiH-9W-QY9" secondAttribute="trailing" constant="16" id="ZVf-en-pTk"/>
+                                                        <constraint firstItem="feS-Gu-bjP" firstAttribute="bottom" secondItem="BiH-9W-QY9" secondAttribute="centerY" id="ack-Lo-byG"/>
+                                                        <constraint firstItem="BiH-9W-QY9" firstAttribute="leading" secondItem="71m-C5-Wtx" secondAttribute="leadingMargin" id="dBd-s9-8K2"/>
+                                                        <constraint firstItem="3DS-qp-KPw" firstAttribute="leading" secondItem="nLW-4X-pQM" secondAttribute="trailing" constant="8" id="dcy-p7-wGK"/>
+                                                        <constraint firstItem="9SL-QM-JEG" firstAttribute="top" secondItem="BiH-9W-QY9" secondAttribute="top" id="fR1-HV-22c"/>
+                                                        <constraint firstItem="3DS-qp-KPw" firstAttribute="centerY" secondItem="nLW-4X-pQM" secondAttribute="centerY" id="gcT-3g-GQb"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="9MT-p8-cw4" secondAttribute="bottom" id="kX8-d0-Bj6"/>
+                                                        <constraint firstItem="nLW-4X-pQM" firstAttribute="leading" secondItem="9SL-QM-JEG" secondAttribute="leading" id="mXW-5D-YXi"/>
+                                                        <constraint firstItem="BiH-9W-QY9" firstAttribute="top" secondItem="71m-C5-Wtx" secondAttribute="topMargin" id="rUL-iI-zXS"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="feS-Gu-bjP" secondAttribute="trailing" id="uUE-vT-TW6"/>
+                                                    </constraints>
+                                                    <edgeInsets key="layoutMargins" top="24" left="16" bottom="16" right="16"/>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="71m-C5-Wtx" firstAttribute="leading" secondItem="tf0-bi-tUE" secondAttribute="leading" id="FgF-7y-np8"/>
+                                            <constraint firstItem="71m-C5-Wtx" firstAttribute="top" secondItem="tf0-bi-tUE" secondAttribute="top" constant="16" id="Oi1-Pa-zKj"/>
+                                            <constraint firstAttribute="trailing" secondItem="71m-C5-Wtx" secondAttribute="trailing" id="apE-JS-dJm"/>
+                                            <constraint firstAttribute="bottom" secondItem="71m-C5-Wtx" secondAttribute="bottom" id="kpi-n8-c2F"/>
+                                        </constraints>
+                                        <size key="customSize" width="351" height="156"/>
+                                        <connections>
+                                            <outlet property="avatarView" destination="BiH-9W-QY9" id="EPf-Ai-U4W"/>
+                                            <outlet property="button" destination="9MT-p8-cw4" id="EuQ-ev-BMr"/>
+                                            <outlet property="claimedAmountLabel" destination="v1x-lO-xeP" id="Kbl-rz-jkX"/>
+                                            <outlet property="claimedTitleLabel" destination="feS-Gu-bjP" id="cPH-5k-vO9"/>
+                                            <outlet property="ownerAvatarView" destination="nLW-4X-pQM" id="2H5-cE-bOa"/>
+                                            <outlet property="ownerNameLabel" destination="3DS-qp-KPw" id="8U1-Rv-O23"/>
+                                            <outlet property="titleLabel" destination="9SL-QM-JEG" id="BDJ-06-pB9"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsVotedCell" id="Tra-Eo-bdx" customClass="ClaimsVotedCell" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="166" width="375" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vO9-KQ-q0o">
+                                                    <rect key="frame" x="16" y="16" width="282" height="40"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XNe-Ds-VYF">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="XNe-Ds-VYF" secondAttribute="height" multiplier="1:1" id="4vQ-Fz-GSK"/>
+                                                                <constraint firstAttribute="width" constant="40" id="gB7-fZ-Y59"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaw-VE-0nE" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="56" y="0.0" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-qd-b7g" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="80" y="21.5" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kAt-qk-Sp0" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="56" y="24" width="16" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="16" id="gLH-Lk-LsM"/>
+                                                                <constraint firstAttribute="width" secondItem="kAt-qk-Sp0" secondAttribute="height" multiplier="1:1" id="kEO-pI-P7l"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="teammateF"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnD-c5-vO8" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="240" y="-1" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxG-ol-cRO" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="240" y="20" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="lxG-ol-cRO" firstAttribute="top" secondItem="XNe-Ds-VYF" secondAttribute="centerY" id="2q9-cN-tZP"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="bnD-c5-vO8" secondAttribute="trailing" id="5QY-Bc-pIH"/>
+                                                        <constraint firstItem="XNe-Ds-VYF" firstAttribute="top" secondItem="vO9-KQ-q0o" secondAttribute="topMargin" id="AAD-AM-APx"/>
+                                                        <constraint firstItem="yJq-qd-b7g" firstAttribute="centerY" secondItem="kAt-qk-Sp0" secondAttribute="centerY" id="CxH-es-tgC"/>
+                                                        <constraint firstAttribute="height" constant="40" id="DsC-3g-bvG"/>
+                                                        <constraint firstItem="xaw-VE-0nE" firstAttribute="top" secondItem="XNe-Ds-VYF" secondAttribute="top" id="IKu-cv-tue"/>
+                                                        <constraint firstItem="xaw-VE-0nE" firstAttribute="leading" secondItem="XNe-Ds-VYF" secondAttribute="trailing" constant="16" id="QjA-Sf-Cbr"/>
+                                                        <constraint firstItem="kAt-qk-Sp0" firstAttribute="bottom" secondItem="XNe-Ds-VYF" secondAttribute="bottom" id="WYl-5K-YqJ"/>
+                                                        <constraint firstItem="kAt-qk-Sp0" firstAttribute="leading" secondItem="xaw-VE-0nE" secondAttribute="leading" id="atu-c9-s2U"/>
+                                                        <constraint firstItem="XNe-Ds-VYF" firstAttribute="leading" secondItem="vO9-KQ-q0o" secondAttribute="leadingMargin" id="nEQ-5T-F7I"/>
+                                                        <constraint firstItem="bnD-c5-vO8" firstAttribute="bottom" secondItem="XNe-Ds-VYF" secondAttribute="centerY" id="oau-Ba-Fkt"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="lxG-ol-cRO" secondAttribute="trailing" id="u2q-pz-TDf"/>
+                                                        <constraint firstItem="yJq-qd-b7g" firstAttribute="leading" secondItem="kAt-qk-Sp0" secondAttribute="trailing" constant="8" id="xdJ-Cl-mZH"/>
+                                                    </constraints>
+                                                    <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="kee-4E-5EA">
+                                                    <rect key="frame" x="351" y="49.5" width="8" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="13" id="iZg-tY-anl"/>
+                                                        <constraint firstAttribute="width" constant="8" id="pl7-Fn-Vf8"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fm-zF-TfT" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="69" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ey-O7-pHf" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="64" y="69" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="kee-4E-5EA" firstAttribute="leading" secondItem="vO9-KQ-q0o" secondAttribute="trailing" constant="53" id="4Kg-Ht-iiJ"/>
+                                            <constraint firstItem="vO9-KQ-q0o" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leadingMargin" id="4pL-lY-rGN"/>
+                                            <constraint firstItem="7Ey-O7-pHf" firstAttribute="leading" secondItem="1fm-zF-TfT" secondAttribute="trailing" constant="6" id="6m5-fw-k4c"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="kee-4E-5EA" secondAttribute="trailing" id="P0b-xP-sxq"/>
+                                            <constraint firstItem="1fm-zF-TfT" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leadingMargin" id="XXs-aV-bVr"/>
+                                            <constraint firstItem="1fm-zF-TfT" firstAttribute="top" secondItem="XNe-Ds-VYF" secondAttribute="bottom" constant="13" id="Zuv-NW-CZ6"/>
+                                            <constraint firstItem="vO9-KQ-q0o" firstAttribute="top" secondItem="Tra-Eo-bdx" secondAttribute="topMargin" id="nGc-L2-4ki"/>
+                                            <constraint firstItem="kee-4E-5EA" firstAttribute="centerY" secondItem="Tra-Eo-bdx" secondAttribute="centerY" id="rUX-LM-VqC"/>
+                                            <constraint firstItem="7Ey-O7-pHf" firstAttribute="centerY" secondItem="1fm-zF-TfT" secondAttribute="centerY" id="xCc-vg-eHP"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
+                                        <size key="customSize" width="375" height="112"/>
+                                        <connections>
+                                            <outlet property="avatarView" destination="XNe-Ds-VYF" id="07w-ap-NEv"/>
+                                            <outlet property="claimedAmountLabel" destination="lxG-ol-cRO" id="zPw-wk-oed"/>
+                                            <outlet property="claimedTitleLabel" destination="bnD-c5-vO8" id="aGc-dM-uhM"/>
+                                            <outlet property="ownerAvatarView" destination="kAt-qk-Sp0" id="SS6-St-dAX"/>
+                                            <outlet property="ownerNameLabel" destination="yJq-qd-b7g" id="EqY-gq-PHV"/>
+                                            <outlet property="titleLabel" destination="xaw-VE-0nE" id="dPB-mc-X6f"/>
+                                            <outlet property="votedLabel" destination="1fm-zF-TfT" id="1pM-Lw-JI5"/>
+                                            <outlet property="voterLabel" destination="7Ey-O7-pHf" id="SZD-qV-GcB"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsPaidCell" id="ybB-qd-hfW" customClass="ClaimsPaidCell" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="288" width="375" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvp-wZ-ehF">
+                                                    <rect key="frame" x="16" y="36" width="230" height="40"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="80E-3m-yXF">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="80E-3m-yXF" secondAttribute="height" multiplier="1:1" id="QTx-oV-JDF"/>
+                                                                <constraint firstAttribute="width" constant="40" id="rap-2B-BpN"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qe7-3f-eEx" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="56" y="0.0" width="42" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-bQ-aHd" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="80" y="22" width="42" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HgH-8d-lM4" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="56" y="24" width="16" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="HgH-8d-lM4" secondAttribute="height" multiplier="1:1" id="M54-nc-phC"/>
+                                                                <constraint firstAttribute="width" constant="16" id="gt5-YE-p54"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="teammateF"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="HgH-8d-lM4" firstAttribute="leading" secondItem="qe7-3f-eEx" secondAttribute="leading" id="EKc-Iz-Wzm"/>
+                                                        <constraint firstItem="qe7-3f-eEx" firstAttribute="leading" secondItem="80E-3m-yXF" secondAttribute="trailing" constant="16" id="G0R-KI-gvD"/>
+                                                        <constraint firstItem="Dd6-bQ-aHd" firstAttribute="centerY" secondItem="HgH-8d-lM4" secondAttribute="centerY" id="G5Q-6g-gys"/>
+                                                        <constraint firstItem="80E-3m-yXF" firstAttribute="leading" secondItem="uvp-wZ-ehF" secondAttribute="leadingMargin" id="NB2-ai-Vsd"/>
+                                                        <constraint firstItem="HgH-8d-lM4" firstAttribute="bottom" secondItem="80E-3m-yXF" secondAttribute="bottom" id="c3X-He-bXR"/>
+                                                        <constraint firstItem="Dd6-bQ-aHd" firstAttribute="leading" secondItem="HgH-8d-lM4" secondAttribute="trailing" constant="8" id="jMl-oA-n4H"/>
+                                                        <constraint firstItem="qe7-3f-eEx" firstAttribute="top" secondItem="80E-3m-yXF" secondAttribute="top" id="jx9-7P-o00"/>
+                                                        <constraint firstItem="80E-3m-yXF" firstAttribute="top" secondItem="uvp-wZ-ehF" secondAttribute="topMargin" id="wqg-Or-Wl5"/>
+                                                        <constraint firstAttribute="height" constant="40" id="zHr-Mm-nPZ"/>
+                                                    </constraints>
+                                                    <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="IcY-f3-Qvk">
+                                                    <rect key="frame" x="351" y="49.5" width="8" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="8" id="FcC-WW-kHQ"/>
+                                                        <constraint firstAttribute="height" constant="13" id="GkW-kI-DGO"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eiH-hO-EVe">
+                                                    <rect key="frame" x="246" y="16" width="97" height="80"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ej-gQ-vWi" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="97" height="44.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivr-LT-Ylg" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="44.5" width="97" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="5VG-8E-yP1" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="65" width="97" height="15"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="15" id="0Mi-q0-DLr"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="uvp-wZ-ehF" firstAttribute="centerY" secondItem="ybB-qd-hfW" secondAttribute="centerY" id="0Oc-iu-Oyb"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="IcY-f3-Qvk" secondAttribute="trailing" id="DbU-qe-ked"/>
+                                            <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" secondItem="uvp-wZ-ehF" secondAttribute="trailing" id="Nq8-Am-rAu"/>
+                                            <constraint firstItem="uvp-wZ-ehF" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leadingMargin" id="c0U-Xo-wUG"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="eiH-hO-EVe" secondAttribute="bottom" id="eCd-me-NKe"/>
+                                            <constraint firstAttribute="topMargin" secondItem="eiH-hO-EVe" secondAttribute="top" id="gad-2b-pAt"/>
+                                            <constraint firstItem="IcY-f3-Qvk" firstAttribute="leading" secondItem="eiH-hO-EVe" secondAttribute="trailing" constant="8" id="mxF-Jd-l5R"/>
+                                            <constraint firstItem="IcY-f3-Qvk" firstAttribute="centerY" secondItem="ybB-qd-hfW" secondAttribute="centerY" id="zdT-Rf-wXy"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
+                                        <size key="customSize" width="375" height="112"/>
+                                        <connections>
+                                            <outlet property="amountLabel" destination="8ej-gQ-vWi" id="0ta-GR-ayE"/>
+                                            <outlet property="avatarView" destination="80E-3m-yXF" id="xNQ-1G-V70"/>
+                                            <outlet property="ownerAvatarView" destination="HgH-8d-lM4" id="JDX-yl-KC6"/>
+                                            <outlet property="ownerNameLabel" destination="Dd6-bQ-aHd" id="lN3-wM-WCe"/>
+                                            <outlet property="scaleBar" destination="5VG-8E-yP1" id="Rnf-gh-e73"/>
+                                            <outlet property="statusLabel" destination="Ivr-LT-Ylg" id="3aS-Fk-nY3"/>
+                                            <outlet property="titleLabel" destination="qe7-3f-eEx" id="y7f-hq-UZF"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsViewAllCell" id="fMf-MF-LPf" customClass="ClaimsViewAllCell" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="410" width="375" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="ZiR-eo-EuH">
+                                                    <rect key="frame" x="351" y="49.5" width="8" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="13" id="3lJ-gC-fox"/>
+                                                        <constraint firstAttribute="width" constant="8" id="fxM-52-Pxp"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIo-tg-7Xi" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="45.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjd-EM-1DM" customClass="ItemValueLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="293" y="46" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="ZiR-eo-EuH" firstAttribute="centerY" secondItem="fMf-MF-LPf" secondAttribute="centerY" id="4PT-8w-br9"/>
+                                            <constraint firstItem="ZiR-eo-EuH" firstAttribute="leading" secondItem="Cjd-EM-1DM" secondAttribute="trailing" constant="16" id="G2G-CO-jbh"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="ZiR-eo-EuH" secondAttribute="trailing" id="HpJ-9k-aRx"/>
+                                            <constraint firstItem="Cjd-EM-1DM" firstAttribute="centerY" secondItem="fMf-MF-LPf" secondAttribute="centerY" id="Kx1-af-cLq"/>
+                                            <constraint firstItem="qIo-tg-7Xi" firstAttribute="centerY" secondItem="fMf-MF-LPf" secondAttribute="centerY" id="bCb-YB-dtt"/>
+                                            <constraint firstItem="qIo-tg-7Xi" firstAttribute="leading" secondItem="fMf-MF-LPf" secondAttribute="leadingMargin" id="dCj-ZG-afV"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
+                                        <size key="customSize" width="375" height="112"/>
+                                        <connections>
+                                            <outlet property="detailsLabel" destination="Cjd-EM-1DM" id="zEZ-d0-cEl"/>
+                                            <outlet property="titleLabel" destination="qIo-tg-7Xi" id="2AV-HW-KLK"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="cCe-np-5xm" id="KCM-pX-4mw"/>
+                                    <outlet property="delegate" destination="cCe-np-5xm" id="rli-XH-KJI"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1333333333" green="0.20000000000000001" blue="0.51764705879999995" alpha="0.50497645550000003" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="HB3-6s-gf8" secondAttribute="trailing" id="0Tj-Yc-Kf0"/>
+                            <constraint firstItem="HB3-6s-gf8" firstAttribute="top" secondItem="EeS-ah-Y6t" secondAttribute="bottom" id="IYn-N1-WFG"/>
+                            <constraint firstItem="HB3-6s-gf8" firstAttribute="leading" secondItem="O2k-AB-n05" secondAttribute="leading" id="iM5-l8-vmV"/>
+                            <constraint firstItem="i00-M2-7MW" firstAttribute="top" secondItem="HB3-6s-gf8" secondAttribute="bottom" id="nNk-rX-xMm"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="HB3-6s-gf8" id="17U-iA-RXS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PlQ-e5-3Pg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4869.6000000000004" y="2330.2848575712146"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="forward" width="17" height="32"/>
+        <image name="teammateF" width="1000" height="1499"/>
+    </resources>
+</document>
