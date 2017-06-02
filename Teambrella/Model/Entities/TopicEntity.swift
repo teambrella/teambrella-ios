@@ -11,7 +11,7 @@ import SwiftyJSON
 
 struct TopicEntity: Topic {
     let id: String
-    let ver: Int64
+    let lastUpdated: Int64
     
     let originalPostText: String
     let topPosterAvatars: [String]
@@ -27,7 +27,7 @@ struct TopicEntity: Topic {
     
     init(json: JSON) {
         id = json["TopicId"].stringValue
-        ver = json["Ver"].int64Value
+        lastUpdated = json["LastUpdated"].int64Value
         
         originalPostText = json["OriginalPostText"].stringValue
         topPosterAvatars = json["TopPosterAvatars"].arrayObject as? [String] ?? []

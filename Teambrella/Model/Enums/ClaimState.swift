@@ -5,20 +5,22 @@
 
 import Foundation
 
-enum ClamState: Int {
+enum ClaimState: Int {
     case voting     = 0
-    case revoting   = 1
-    case declined   = 2
-    case inPayment  = 3
-    case processed  = 4
+    case revoting   = 10
+    case voted      = 15
+    case declined   = 20
+    case inPayment  = 30
+    case processed  = 40
 }
 
-extension ClamState: Nameable {
+extension ClaimState: Nameable {
     var name: String {
         let text: String!
         switch self {
         case .voting:       text = "voting"
         case .revoting:     text = "revoting"
+        case .voted:        text = "voted"
         case .declined:     text = "declined"
         case .inPayment:    text = "inPayment"
         case .processed:    text = "processed"

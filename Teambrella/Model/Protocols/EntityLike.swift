@@ -13,7 +13,7 @@ protocol EntityLike: CustomStringConvertible {
     /// id of the item in the current context
     var id: String { get }
     /// entity version (every change of this entity on server increments this)
-    var ver: Int64 { get }
+    var lastUpdated: Int64 { get }
     
     init(json: JSON)
 }

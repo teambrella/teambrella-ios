@@ -17,6 +17,7 @@ enum TeambrellaRequestType: String {
     case teammate = "teammate/getOne"
     case newPost = "post/newPost"
     case registerKey = "me/registerKey"
+    case claimsList = "claim/getList"
 }
 
 enum TeambrellaResponseType {
@@ -27,6 +28,7 @@ enum TeambrellaResponseType {
     case teammate(ExtendedTeammate)
     case newPost(Post)
     case registerKey
+    case claimsList([ClaimLike])
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void

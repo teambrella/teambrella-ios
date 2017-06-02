@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 struct TeammateEntity: TeammateLike {
-    var ver: Int64
+    var lastUpdated: Int64
     let id: String
 
     let claimLimit: Int
@@ -30,7 +30,7 @@ struct TeammateEntity: TeammateLike {
     var extended: ExtendedTeammate?
         
     var description: String {
-        return "Teammate \(name) id: \(id); ver: \(ver)"
+        return "Teammate \(name) id: \(id); ver: \(lastUpdated)"
     }
     
     var isComplete: Bool { return extended != nil }
@@ -48,7 +48,7 @@ struct TeammateEntity: TeammateLike {
         totallyPaid = json["TotallyPaid"].doubleValue
         hasUnread = json["Unread"].boolValue
         userID = json["UserId"].stringValue
-        ver = json["Ver"].int64Value
+        lastUpdated = json["LastUpdated"].int64Value
         year = json["Year"].intValue
         avatar = json["Avatar"].stringValue
     }

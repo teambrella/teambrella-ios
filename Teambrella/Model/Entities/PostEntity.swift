@@ -11,7 +11,7 @@ import SwiftyJSON
 
 struct PostEntity: Post {
     let id: String
-    let ver: Int64
+    let lastUpdated: Int64
     
     let postContent: String
     let dateCreated: Date
@@ -32,7 +32,7 @@ struct PostEntity: Post {
     
     init(json: JSON) {
         id = json["Id"].stringValue
-        ver = json["Ver"].int64Value
+        lastUpdated = json["Ver"].int64Value
         postContent = json["PostContent"].stringValue
         dateCreated = service.transformer.dateFromServer(string: json["DateCreated"].stringValue)
         upvotesCount = json["UpVoteCount"].intValue
