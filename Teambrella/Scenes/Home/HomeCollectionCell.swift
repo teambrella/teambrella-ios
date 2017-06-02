@@ -37,4 +37,5 @@ class HomeCollectionCell: UICollectionViewCell {
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds,
                                              cornerRadius: containerView.layer.cornerRadius).cgPath
     }
+    
 }

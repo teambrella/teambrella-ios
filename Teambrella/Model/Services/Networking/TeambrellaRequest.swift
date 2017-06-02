@@ -62,6 +62,7 @@ struct TeambrellaRequest {
         })
     }
     
+    // swiftlint:disable:next cyclomatic_complexity
     private func parseReply(reply: JSON) {
         switch type {
         case .timestamp:
@@ -84,6 +85,9 @@ struct TeambrellaRequest {
             }
         case .registerKey:
             success(.registerKey)
+        case .claimsList:
+            let claims = ClaimFactory.claims(with: reply)
+            success(.claimsList(claims))
         case .updates:
             break
         default:

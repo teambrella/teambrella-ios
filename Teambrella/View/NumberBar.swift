@@ -104,4 +104,3 @@ class NumberBarDrawingView: UIView {
     }
     
 }
-

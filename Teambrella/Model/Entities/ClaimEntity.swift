@@ -51,4 +51,8 @@ struct ClaimFactory {
     static func claim(with json: JSON) -> ClaimLike {
         return ClaimEntity(json: json)
     }
+    
+    static func claims(with json: JSON) -> [ClaimLike] {
+        return json.arrayValue.map { self.claim(with: $0) }
+    }
 }

@@ -11,13 +11,17 @@ import XLPagerTabStrip
 
 class ClaimsVC: UIViewController, IndicatorInfoProvider {
     @IBOutlet var collectionView: UICollectionView!
-
+    var dataSource = ClaimsDataSource()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        dataSource.loadData()
+        dataSource.onUpdate = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -26,32 +30,23 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "Claims")
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
 
 // MARK: UICollectionViewDataSource
 extension ClaimsVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell!
-        
+       // let cell: UICollectionViewCell!
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClaimsVotedCell", for: indexPath)
         return cell
     }
 }
@@ -74,7 +69,7 @@ extension ClaimsVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 1)
+        return CGSize(width: collectionView.bounds.width - 32, height: 112)
     }
     
     func collectionView(_ collectionView: UICollectionView,

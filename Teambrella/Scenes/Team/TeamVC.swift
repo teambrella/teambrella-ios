@@ -10,20 +10,19 @@ import UIKit
 import XLPagerTabStrip
 
 class TeamVC: ButtonBarPagerTabStripViewController {
-    
     override func viewDidLoad() {
         setupTabLayout()
         super.viewDidLoad()
-
+        
         setupTransparentNavigationBar()
         addTeamButton()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     private func setupTabLayout() {
         settings.style.buttonBarBackgroundColor = .clear
         settings.style.buttonBarItemBackgroundColor = .clear
@@ -75,10 +74,10 @@ class TeamVC: ButtonBarPagerTabStripViewController {
                      "Wheel burners",
                      "From Husk till Dawn"]
         for team in teams {
-        let teamButton = UIAlertAction(title: team, style: .default) { action in
-            self.teamSelected(name: action.title)
-        }
-        alert.addAction(teamButton)
+            let teamButton = UIAlertAction(title: team, style: .default) { action in
+                self.teamSelected(name: action.title)
+            }
+            alert.addAction(teamButton)
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { action in
             print("Cancel pressed")
@@ -94,7 +93,7 @@ class TeamVC: ButtonBarPagerTabStripViewController {
         let name = name ?? ""
         let alert = UIAlertController(title: "Team change",
                                       message: "Are you sure you want to change your current team to \(name)?",
-                                      preferredStyle: .alert)
+            preferredStyle: .alert)
         let confirm = UIAlertAction(title: "Yes I do", style: .destructive) { action in
             print("Confirm pressed")
         }
@@ -115,4 +114,5 @@ class TeamVC: ButtonBarPagerTabStripViewController {
         let rules = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "RulesVC")
         return [feed, members, claims, rules]
     }
+    
 }

@@ -55,4 +55,5 @@ public class GradientView: UIView {
         updateGradient()
         super.layoutSubviews()
     }
+    
 }

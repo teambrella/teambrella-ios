@@ -3,7 +3,7 @@
    <duplication lines="9" tokens="90">
       <file line="40"
             path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Sample/TeammateVC.swift"/>
-      <file line="48"
+      <file line="46"
             path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Team/Members/TeammateProfileDataSource.swift"/>
       <codefragment><![CDATA[    private func loadEntireTeammate() {
         let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: service.server.timestamp)
@@ -14,6 +14,22 @@
             
             if case .teammate(let extendedTeammate) = response {
                 me.teammate.extended = extendedTeammate]]></codefragment>
+   </duplication>
+   <duplication lines="10" tokens="56">
+      <file line="71"
+            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/MembersDataSource.swift"/>
+      <file line="25"
+            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Team/Claims/ClaimsDataSource.swift"/>
+      <codefragment><![CDATA[    func loadData() {
+        //fakeLoadData()
+        guard !isLoading else { return }
+        
+        isLoading = true
+        service.server.updateTimestamp { timestamp, error in
+            let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+                          timestamp: timestamp)
+            
+            let body = RequestBody(key: key, payload:["TeamId": 2006,]]></codefragment>
    </duplication>
    <duplication lines="5" tokens="56">
       <file line="106"

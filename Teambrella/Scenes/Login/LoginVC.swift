@@ -86,33 +86,3 @@ class LoginVC: UIViewController {
     }
     
 }
-
-struct FacebookUser {
-    let name: String
-    let firstName: String?
-    let lastName: String?
-    let gender: Gender
-    let email: String?
-    let minAge: Int
-    let picture: String?
-    
-    init(dict: [String: Any]) {
-        let json = JSON(dict)
-        name = json["name"].stringValue
-        firstName = json["first_name"].string
-        lastName = json["last_name"].string
-        gender = Gender.fromFacebook(string: json["gender"].stringValue)
-        email = json["email"].string
-        minAge = json["age_range"]["min"].intValue
-        picture = json["picture"]["data"]["url"].string
-    }
-}
-
-enum Gender {
-   case male
-    case female
-    
-    static func fromFacebook(string: String) -> Gender {
-        return string == "female" ? .female : .male
-    }
-}

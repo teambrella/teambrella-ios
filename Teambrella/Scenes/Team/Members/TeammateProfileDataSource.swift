@@ -26,9 +26,7 @@ struct SocialItem {
 }
 
 class TeammateProfileDataSource {
-    var source: [TeammateProfileCellType] = [
-        .summary,
-        ]
+    var source: [TeammateProfileCellType] = [.summary]
     var teammate: TeammateLike
     
     init(teammate: TeammateLike) {

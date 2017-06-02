@@ -22,4 +22,5 @@ class LoginDetailsRouterImpl: LoginDetailsRouter {
     func validate() {
         vc?.performSegue(type: .unwindToInitial)
     }
+    
 }

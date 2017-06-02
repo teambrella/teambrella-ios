@@ -156,4 +156,5 @@ final class FakeTeammate: TeammateLike {
     
     init(json: JSON) {
     }
+    
 }

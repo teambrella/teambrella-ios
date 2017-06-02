@@ -11,13 +11,13 @@ import XLPagerTabStrip
 
 class MembersVC: UIViewController, IndicatorInfoProvider {
     @IBOutlet var collectionView: UICollectionView!
-    let dataSource = MembersDatasource()
-    var searchController: UISearchController!
     @IBOutlet var searchView: UIView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var searchViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
+    let dataSource = MembersDatasource()
+    var searchController: UISearchController!
     fileprivate var previousScrollOffset: CGFloat = 0
     fileprivate var searchbarIsShown = true
     

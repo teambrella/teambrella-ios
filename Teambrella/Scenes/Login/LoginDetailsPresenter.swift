@@ -17,7 +17,6 @@ protocol LoginDetailsView: class {
     var code: String? { get }
     var gender: Gender { get }
     var date: Date { get }
-    
 }
 
 protocol LoginDetailsPresenter {
@@ -25,7 +24,6 @@ protocol LoginDetailsPresenter {
     func viewDidLoad()
     func tapRegister()
     func codeTextChanged(text: String?)
-    
 }
 
 class LoginDetailsPresenterImpl: LoginDetailsPresenter {

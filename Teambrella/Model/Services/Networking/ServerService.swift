@@ -34,6 +34,7 @@ class ServerService {
         static let myID = 2274
         static let myUserID = "1dbd099a-6cc2-4c45-a7df-a75c00e58621"
         static let timestampURL = "me/GetTimestamp"
+        static let teamID = 2006
         
     }
     

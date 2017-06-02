@@ -18,4 +18,5 @@ class LoginDetailsConfigurator {
         presenter.view = vc as LoginDetailsView
         vc.presenter = presenter
     }
+    
 }
