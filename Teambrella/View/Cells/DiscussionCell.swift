@@ -1,15 +1,16 @@
 //
-//  TeammateDiscussionCell.swift
+//  DiscussionCell.swift
 //  Teambrella
 //
-//  Created by Yaroslav Pasternak on 01.06.17.
+//  Created by Yaroslav Pasternak on 06.06.17.
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
 import UIKit
 
-/*
-class TeammateDiscussionCell: UICollectionViewCell {
+class DiscussionCell: UICollectionViewCell {
+    static var nib: UINib { return UINib(nibName: "\(self)", bundle: nil) }
+    
     @IBOutlet var avatarView: RoundImageView!
     @IBOutlet var titleLabel: Label!
     @IBOutlet var textLabel: MessageTextLabel!
@@ -20,5 +21,9 @@ class TeammateDiscussionCell: UICollectionViewCell {
     @IBOutlet var unreadCountView: RoundImageView!
     @IBOutlet var teammatesAvatarStack: RoundImagesStack!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
 }
-*/

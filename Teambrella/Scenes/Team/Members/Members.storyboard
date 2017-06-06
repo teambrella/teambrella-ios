@@ -53,7 +53,7 @@
                                                         <constraint firstAttribute="width" constant="40" id="v5m-ej-zg2"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Sp-Vp1">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Sp-Vp1">
                                                     <rect key="frame" x="64" y="7" width="33" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,7 +184,7 @@
                                                         <constraint firstAttribute="width" secondItem="AC1-iQ-fvm" secondAttribute="height" multiplier="8:7" id="gX9-ru-IY6"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hoq-Od-Ce2">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hoq-Od-Ce2">
                                                     <rect key="frame" x="64" y="7" width="33" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -880,118 +880,6 @@
                                             <outlet property="tableView" destination="Mte-E8-vXs" id="PfF-Si-3rb"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dialog" id="Z8o-TQ-WL7" customClass="TeammateDiscussionCell" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="1" y="1148" width="373" height="120"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="373" height="120"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DEX-e6-PI2" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="16" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="DEX-e6-PI2" secondAttribute="height" multiplier="1:1" id="FBy-XV-JBs"/>
-                                                        <constraint firstAttribute="width" constant="40" id="SGg-lu-e4a"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eSA-k8-b4n" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="306" y="49" width="22" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="eSA-k8-b4n" secondAttribute="height" multiplier="1:1" id="fsC-ie-Lga"/>
-                                                        <constraint firstAttribute="width" constant="22" id="nRb-gq-YOC"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="viewColor">
-                                                            <color key="value" red="0.1215686275" green="0.75294117650000003" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="text" value="4"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="zag-nY-lCb">
-                                                    <rect key="frame" x="344" y="53.5" width="13" height="13"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="zag-nY-lCb" secondAttribute="height" multiplier="1:1" id="BKo-fy-tjb"/>
-                                                        <constraint firstAttribute="width" constant="13" id="f1t-Fs-dYb"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvi-P5-uiV" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="15" width="173" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 MIN AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3j-DO-xi1" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="274" y="15.5" width="83" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCUSSION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvp-cq-SV7" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="196" y="86.5" width="101" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v79-CO-JK0" customClass="MessageTextLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="36" width="218" height="41"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OdX-Ct-muH" customClass="RoundImagesStack" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="87" width="80" height="20"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="Y6p-3j-VoV"/>
-                                                        <constraint firstAttribute="width" constant="80" id="jmv-wY-xMg"/>
-                                                    </constraints>
-                                                </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discuss" translatesAutoresizingMaskIntoConstraints="NO" id="B0G-Vg-zfb">
-                                                    <rect key="frame" x="172" y="89.5" width="15" height="15"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="Ux1-Lf-ME6"/>
-                                                        <constraint firstAttribute="width" secondItem="B0G-Vg-zfb" secondAttribute="height" multiplier="1:1" id="pyH-5L-RaM"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="B0G-Vg-zfb" firstAttribute="centerY" secondItem="OdX-Ct-muH" secondAttribute="centerY" id="0eL-vq-2ZO"/>
-                                            <constraint firstItem="OdX-Ct-muH" firstAttribute="top" secondItem="v79-CO-JK0" secondAttribute="bottom" constant="10" id="2C0-W4-DpE"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="zag-nY-lCb" secondAttribute="trailing" id="7IC-Vl-45d"/>
-                                            <constraint firstItem="zag-nY-lCb" firstAttribute="centerY" secondItem="Z8o-TQ-WL7" secondAttribute="centerY" id="L0W-Iu-hpz"/>
-                                            <constraint firstItem="eSA-k8-b4n" firstAttribute="leading" secondItem="v79-CO-JK0" secondAttribute="trailing" constant="16" id="LHU-fD-ZBZ"/>
-                                            <constraint firstItem="DEX-e6-PI2" firstAttribute="leading" secondItem="Z8o-TQ-WL7" secondAttribute="leadingMargin" id="Ljt-EH-Por"/>
-                                            <constraint firstItem="Rvi-P5-uiV" firstAttribute="leading" secondItem="DEX-e6-PI2" secondAttribute="trailing" constant="16" id="QPm-5y-2Ka"/>
-                                            <constraint firstItem="eSA-k8-b4n" firstAttribute="centerY" secondItem="Z8o-TQ-WL7" secondAttribute="centerY" id="TAc-80-96B"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="s3j-DO-xi1" secondAttribute="trailing" id="WQu-tf-B2S"/>
-                                            <constraint firstItem="Pvp-cq-SV7" firstAttribute="leading" secondItem="B0G-Vg-zfb" secondAttribute="trailing" constant="9" id="ZuI-YK-bAV"/>
-                                            <constraint firstItem="Pvp-cq-SV7" firstAttribute="centerY" secondItem="B0G-Vg-zfb" secondAttribute="centerY" id="aBY-mm-Sg5"/>
-                                            <constraint firstItem="v79-CO-JK0" firstAttribute="leading" secondItem="Rvi-P5-uiV" secondAttribute="leading" id="cST-Be-Y6d"/>
-                                            <constraint firstItem="DEX-e6-PI2" firstAttribute="top" secondItem="Z8o-TQ-WL7" secondAttribute="topMargin" id="cYl-hT-UzE"/>
-                                            <constraint firstItem="Rvi-P5-uiV" firstAttribute="bottom" secondItem="DEX-e6-PI2" secondAttribute="centerY" id="dY2-IM-8SL"/>
-                                            <constraint firstItem="zag-nY-lCb" firstAttribute="leading" secondItem="eSA-k8-b4n" secondAttribute="trailing" constant="16" id="eQH-QF-lNQ"/>
-                                            <constraint firstItem="B0G-Vg-zfb" firstAttribute="leading" secondItem="OdX-Ct-muH" secondAttribute="trailing" constant="20" id="fvV-F6-O58"/>
-                                            <constraint firstItem="v79-CO-JK0" firstAttribute="top" secondItem="DEX-e6-PI2" secondAttribute="centerY" id="ijX-bf-kIf"/>
-                                            <constraint firstItem="s3j-DO-xi1" firstAttribute="centerY" secondItem="Rvi-P5-uiV" secondAttribute="centerY" id="kMR-zJ-Sx1"/>
-                                            <constraint firstItem="OdX-Ct-muH" firstAttribute="leading" secondItem="v79-CO-JK0" secondAttribute="leading" id="xMD-BE-cSy"/>
-                                        </constraints>
-                                        <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
-                                        <size key="customSize" width="373" height="120"/>
-                                        <connections>
-                                            <outlet property="avatarView" destination="DEX-e6-PI2" id="DZD-it-wQw"/>
-                                            <outlet property="discussionLabel" destination="Pvp-cq-SV7" id="qJ5-vB-6xv"/>
-                                            <outlet property="teammatesAvatarStack" destination="OdX-Ct-muH" id="g2Z-iL-tey"/>
-                                            <outlet property="textLabel" destination="v79-CO-JK0" id="7E1-AW-1dC"/>
-                                            <outlet property="timeLabel" destination="s3j-DO-xi1" id="4Iq-FA-bJx"/>
-                                            <outlet property="titleLabel" destination="Rvi-P5-uiV" id="BDQ-sF-DgO"/>
-                                            <outlet property="unreadCountView" destination="eSA-k8-b4n" id="IcK-z6-pBs"/>
-                                        </connections>
-                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="Gx7-ey-gPh" id="Aig-sr-2T2"/>
@@ -1019,7 +907,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="discuss" width="46" height="44"/>
         <image name="facebook" width="50" height="50"/>
         <image name="filter" width="18" height="15"/>
         <image name="forward" width="17" height="32"/>

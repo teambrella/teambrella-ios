@@ -30,7 +30,7 @@ class TeammateProfileVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        registerCells()
         dataSource.loadEntireTeammate { [weak self] in
             self?.collectionView.reloadData()
         }
@@ -43,6 +43,10 @@ class TeammateProfileVC: UIViewController, Routable {
     
     func showClaims(sender: UIButton) {
         MembersRouter().presentClaims(teammate: teammate)
+    }
+    
+    func registerCells() {
+        collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
     }
     
 }

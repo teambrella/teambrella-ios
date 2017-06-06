@@ -30,7 +30,7 @@ enum TeambrellaResponseType {
     case newPost(Post)
     case registerKey
     case claimsList([ClaimLike])
-    case claim
+    case claim(EnhancedClaimEntity)
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -91,7 +91,7 @@ struct TeambrellaRequest {
             let claims = ClaimFactory.claims(with: reply)
             success(.claimsList(claims))
         case .claim:
-            let claim = 
+            success(.claim(EnhancedClaimEntity(json: reply)))
         case .updates:
             break
         default:

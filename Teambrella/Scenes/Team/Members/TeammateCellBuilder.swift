@@ -17,7 +17,7 @@ struct TeammateCellBuilder {
             return populateObject(cell: cell, with: teammate)
         } else if let cell = cell as? TeammateContactCell {
             populateContact(cell: cell, with: teammate, delegate: delegate)
-        } else if let cell = cell as? TeammateDiscussionCell, let topic = teammate.extended?.topic {
+        } else if let cell = cell as? DiscussionCell, let topic = teammate.extended?.topic {
             populateDiscussion(cell: cell, with: topic, avatar: teammate.avatar)
         } else if let cell = cell as? TeammateStatsCell, let stats = teammate.extended?.stats {
             populateStats(cell: cell, with: stats)
@@ -98,7 +98,7 @@ struct TeammateCellBuilder {
         cell.frequencyBar.rightText = frequencyText(from: stats.votingFrequency).uppercased()
     }
     
-    private static func populateDiscussion(cell: TeammateDiscussionCell, with stats: Topic, avatar: String) {
+    private static func populateDiscussion(cell: DiscussionCell, with stats: Topic, avatar: String) {
         cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: avatar)))
         cell.titleLabel.text = "Application Discussion"
         switch stats.minutesSinceLastPost {

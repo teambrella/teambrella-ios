@@ -67,7 +67,8 @@ extension ClaimsVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let claim = dataSource[indexPath]
+        TeamRouter().presentClaim(claim: claim)
     }
 }
 

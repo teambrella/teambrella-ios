@@ -139,6 +139,9 @@
 		6DB812191EE6EBB800B202CE /* ChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB812181EE6EBB800B202CE /* ChatDataSource.swift */; };
 		6DB8121B1EE6F1B800B202CE /* EnhancedClaimEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8121A1EE6F1B800B202CE /* EnhancedClaimEntity.swift */; };
 		6DB8121D1EE6F78700B202CE /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8121C1EE6F78700B202CE /* Formatter.swift */; };
+		6DB812221EE6FD2E00B202CE /* ClaimVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB812211EE6FD2E00B202CE /* ClaimVC.swift */; };
+		6DB8122A1EE715DA00B202CE /* DiscussionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB812281EE715DA00B202CE /* DiscussionCell.swift */; };
+		6DB8122B1EE715DA00B202CE /* DiscussionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB812291EE715DA00B202CE /* DiscussionCell.xib */; };
 		6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC230691ED07F0500FAC330 /* Key.swift */; };
 		6DCB9F551EC9FF20000B48C4 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */; };
 		6DCB9F571ECA0A45000B48C4 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F561ECA0A45000B48C4 /* Decimal.swift */; };
@@ -345,6 +348,9 @@
 		6DB812181EE6EBB800B202CE /* ChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatDataSource.swift; path = Scenes/Team/Chat/ChatDataSource.swift; sourceTree = "<group>"; };
 		6DB8121A1EE6F1B800B202CE /* EnhancedClaimEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnhancedClaimEntity.swift; sourceTree = "<group>"; };
 		6DB8121C1EE6F78700B202CE /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Formatter.swift; path = Helpers/Extensions/Formatter.swift; sourceTree = "<group>"; };
+		6DB812211EE6FD2E00B202CE /* ClaimVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClaimVC.swift; path = Scenes/Team/Claims/ClaimVC.swift; sourceTree = "<group>"; };
+		6DB812281EE715DA00B202CE /* DiscussionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionCell.swift; path = View/Cells/DiscussionCell.swift; sourceTree = "<group>"; };
+		6DB812291EE715DA00B202CE /* DiscussionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscussionCell.xib; path = View/Cells/DiscussionCell.xib; sourceTree = "<group>"; };
 		6DC230691ED07F0500FAC330 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		6DCB9F561ECA0A45000B48C4 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decimal.swift; path = Helpers/Extensions/Decimal.swift; sourceTree = "<group>"; };
@@ -621,13 +627,8 @@
 			isa = PBXGroup;
 			children = (
 				6D6DA24D1EE1B65000307C73 /* Claims.storyboard */,
-				6D9CC63C1ED72DF2007F936E /* ClaimsVC.swift */,
-				6D6DA2511EE1C62E00307C73 /* ClaimsOpenCell.swift */,
-				6D6DA2531EE1C65800307C73 /* ClaimsVotedCell.swift */,
-				6D6DA2551EE1C67700307C73 /* ClaimsPaidCell.swift */,
-				6D6DA2571EE1C69400307C73 /* ClaimsViewAllCell.swift */,
-				6D6DA2591EE1CA9B00307C73 /* ClaimsDataSource.swift */,
-				6D6DA25F1EE1DAA400307C73 /* ClaimsCellBuilder.swift */,
+				6DB8121E1EE6FCDB00B202CE /* ClaimsList */,
+				6DB812211EE6FD2E00B202CE /* ClaimVC.swift */,
 			);
 			name = Claims;
 			sourceTree = "<group>";
@@ -807,6 +808,29 @@
 			name = Chat;
 			sourceTree = "<group>";
 		};
+		6DB8121E1EE6FCDB00B202CE /* ClaimsList */ = {
+			isa = PBXGroup;
+			children = (
+				6D9CC63C1ED72DF2007F936E /* ClaimsVC.swift */,
+				6D6DA2511EE1C62E00307C73 /* ClaimsOpenCell.swift */,
+				6D6DA2531EE1C65800307C73 /* ClaimsVotedCell.swift */,
+				6D6DA2551EE1C67700307C73 /* ClaimsPaidCell.swift */,
+				6D6DA2571EE1C69400307C73 /* ClaimsViewAllCell.swift */,
+				6D6DA2591EE1CA9B00307C73 /* ClaimsDataSource.swift */,
+				6D6DA25F1EE1DAA400307C73 /* ClaimsCellBuilder.swift */,
+			);
+			name = ClaimsList;
+			sourceTree = "<group>";
+		};
+		6DB812271EE7150700B202CE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6DB812281EE715DA00B202CE /* DiscussionCell.swift */,
+				6DB812291EE715DA00B202CE /* DiscussionCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		6DCC7AC91E9551B40092D3F2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -844,6 +868,7 @@
 		6DD7F4191EB9DAF4001E7733 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6DB812271EE7150700B202CE /* Cells */,
 				6D6DA26D1EE21F9800307C73 /* Label.swift */,
 				6D6DA26E1EE21F9800307C73 /* StyledLabels.swift */,
 				6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */,
@@ -1048,6 +1073,7 @@
 				6D6DA24E1EE1B65000307C73 /* Claims.storyboard in Resources */,
 				6D9CC62A1ED5EAD3007F936E /* Proxies.storyboard in Resources */,
 				6D9CC6531ED98A07007F936E /* NumberView.xib in Resources */,
+				6DB8122B1EE715DA00B202CE /* DiscussionCell.xib in Resources */,
 				6D9CC6241ED5EA34007F936E /* Home.storyboard in Resources */,
 				6DA714EF1EE00CFB00F39EBE /* NumberBar.xib in Resources */,
 				6D9C808F1EDF17D000FB8C2C /* AkkuratPro-Regular.otf in Resources */,
@@ -1288,6 +1314,7 @@
 				6DEE67951EDC12A70098EDB3 /* TeammateCandidateCell.swift in Sources */,
 				6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */,
 				6DEE67911ED9CF160098EDB3 /* ItemCard.swift in Sources */,
+				6DB812221EE6FD2E00B202CE /* ClaimVC.swift in Sources */,
 				6D466AA61ED07CF1001BC579 /* Cosigner.swift in Sources */,
 				6DEE67A31EDC5C4D0098EDB3 /* TeammateCell.swift in Sources */,
 				6D466AA81ED07CF1001BC579 /* Team.swift in Sources */,
@@ -1312,6 +1339,7 @@
 				6D9CC6431ED7375E007F936E /* GradientView.swift in Sources */,
 				6D6DA2671EE21F2D00307C73 /* MembersDataSource.swift in Sources */,
 				6DA475D41E8BB95200B56D9B /* TeambrellaRequest.swift in Sources */,
+				6DB8122A1EE715DA00B202CE /* DiscussionCell.swift in Sources */,
 				6DA714F11EE00D1800F39EBE /* NumberBar.swift in Sources */,
 				6D35EFC51EAF8AB700696B42 /* TransactionsresultTVC.swift in Sources */,
 				6D466AAA1ED07CF1001BC579 /* Tx.swift in Sources */,
