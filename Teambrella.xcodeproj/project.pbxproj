@@ -132,6 +132,11 @@
 		6DA714FC1EE05E5900F39EBE /* TeammateStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714FB1EE05E5900F39EBE /* TeammateStatsCell.swift */; };
 		6DA714FE1EE0679500F39EBE /* ContactCellTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714FD1EE0679500F39EBE /* ContactCellTableCell.swift */; };
 		6DA715001EE0786000F39EBE /* RadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714FF1EE0786000F39EBE /* RadarView.swift */; };
+		6DB812101EE6E4B800B202CE /* Chatto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB8120F1EE6E4B800B202CE /* Chatto.framework */; };
+		6DB812121EE6E4C200B202CE /* ChattoAdditions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB812111EE6E4C200B202CE /* ChattoAdditions.framework */; };
+		6DB812141EE6E68500B202CE /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB812131EE6E68500B202CE /* ChatVC.swift */; };
+		6DB812171EE6E6A900B202CE /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DB812161EE6E6A900B202CE /* Chat.storyboard */; };
+		6DB812191EE6EBB800B202CE /* ChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB812181EE6EBB800B202CE /* ChatDataSource.swift */; };
 		6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC230691ED07F0500FAC330 /* Key.swift */; };
 		6DCB9F551EC9FF20000B48C4 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */; };
 		6DCB9F571ECA0A45000B48C4 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F561ECA0A45000B48C4 /* Decimal.swift */; };
@@ -331,6 +336,11 @@
 		6DA714FB1EE05E5900F39EBE /* TeammateStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateStatsCell.swift; path = Scenes/Team/Members/TeammateStatsCell.swift; sourceTree = "<group>"; };
 		6DA714FD1EE0679500F39EBE /* ContactCellTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactCellTableCell.swift; path = Scenes/Team/Members/ContactCellTableCell.swift; sourceTree = "<group>"; };
 		6DA714FF1EE0786000F39EBE /* RadarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadarView.swift; path = View/RadarView.swift; sourceTree = "<group>"; };
+		6DB8120F1EE6E4B800B202CE /* Chatto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chatto.framework; path = Carthage/Build/iOS/Chatto.framework; sourceTree = "<group>"; };
+		6DB812111EE6E4C200B202CE /* ChattoAdditions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChattoAdditions.framework; path = Carthage/Build/iOS/ChattoAdditions.framework; sourceTree = "<group>"; };
+		6DB812131EE6E68500B202CE /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatVC.swift; path = Scenes/Team/Chat/ChatVC.swift; sourceTree = "<group>"; };
+		6DB812161EE6E6A900B202CE /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		6DB812181EE6EBB800B202CE /* ChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatDataSource.swift; path = Scenes/Team/Chat/ChatDataSource.swift; sourceTree = "<group>"; };
 		6DC230691ED07F0500FAC330 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		6DCB9F561ECA0A45000B48C4 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decimal.swift; path = Helpers/Extensions/Decimal.swift; sourceTree = "<group>"; };
@@ -385,6 +395,8 @@
 				6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */,
 				6DEC07501E9BD59D0078F40E /* Kingfisher.framework in Frameworks */,
 				6D8F97141E8D1532008DC62E /* SwiftyJSON.framework in Frameworks */,
+				6DB812101EE6E4B800B202CE /* Chatto.framework in Frameworks */,
+				6DB812121EE6E4C200B202CE /* ChattoAdditions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,9 +568,8 @@
 				6D9CC63E1ED72DF9007F936E /* Claims */,
 				6D9CC6381ED72647007F936E /* Feed */,
 				6D9CC63B1ED7267C007F936E /* Members */,
-				6D6DA2661EE21F2D00307C73 /* MembersRouter.swift */,
-				6D6DA24F1EE1B68F00307C73 /* Members.storyboard */,
 				6D9CC6411ED72E21007F936E /* Rules */,
+				6DB812151EE6E68C00B202CE /* Chat */,
 				6D9CC6261ED5EA81007F936E /* Team.storyboard */,
 				6D9CC6341ED72252007F936E /* TeamVC.swift */,
 				6D83EC8F1EDD765F000412DC /* TeamRouter.swift */,
@@ -593,6 +604,8 @@
 		6D9CC63B1ED7267C007F936E /* Members */ = {
 			isa = PBXGroup;
 			children = (
+				6D6DA24F1EE1B68F00307C73 /* Members.storyboard */,
+				6D6DA2661EE21F2D00307C73 /* MembersRouter.swift */,
 				6DA714F31EE02B0200F39EBE /* Teammates */,
 				6DA714F41EE02B5900F39EBE /* TeammateProfile */,
 			);
@@ -779,6 +792,16 @@
 			name = TeammateProfile;
 			sourceTree = "<group>";
 		};
+		6DB812151EE6E68C00B202CE /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				6DB812131EE6E68500B202CE /* ChatVC.swift */,
+				6DB812161EE6E6A900B202CE /* Chat.storyboard */,
+				6DB812181EE6EBB800B202CE /* ChatDataSource.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
 		6DCC7AC91E9551B40092D3F2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -861,6 +884,8 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DB812111EE6E4C200B202CE /* ChattoAdditions.framework */,
+				6DB8120F1EE6E4B800B202CE /* Chatto.framework */,
 				6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */,
 				6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */,
 				6D8F97111E8D1529008DC62E /* Alamofire.framework */,
@@ -1008,6 +1033,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DB812171EE6E6A900B202CE /* Chat.storyboard in Resources */,
 				6D1C039F1EB8D37D004AED30 /* Sample.storyboard in Resources */,
 				6D097E971E9D19F400E77DAB /* Test.strings in Resources */,
 				6DEE678F1ED9CF070098EDB3 /* ItemCard.xib in Resources */,
@@ -1134,6 +1160,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftSoup.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ChattoAdditions.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Chatto.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -1301,12 +1329,14 @@
 				6DA714FA1EE04D4900F39EBE /* ScaleBar.swift in Sources */,
 				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
 				6D466AB11ED07CF1001BC579 /* TransactionsModel.xcdatamodeld in Sources */,
+				6DB812191EE6EBB800B202CE /* ChatDataSource.swift in Sources */,
 				6D6DA24C1EE18FCA00307C73 /* TextAdapter.swift in Sources */,
 				6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */,
 				6D6DA2561EE1C67700307C73 /* ClaimsPaidCell.swift in Sources */,
 				6D097EA51E9D219A00E77DAB /* Nameable.swift in Sources */,
 				6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */,
 				6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */,
+				6DB812141EE6E68500B202CE /* ChatVC.swift in Sources */,
 				6D6DA24A1EE16E8300307C73 /* TeammateCellBuilder.swift in Sources */,
 				6D9CC63A1ED72675007F936E /* MembersVC.swift in Sources */,
 				6D466AAC1ED07CF1001BC579 /* TxOutput.swift in Sources */,

@@ -5,3 +5,4 @@ github "onevcat/Kingfisher" ~> 3.0
 github "MortimerGoro/MGSwipeTableCell"
 github "scinfu/SwiftSoup"
 github "xmartlabs/XLPagerTabStrip" ~> 7.0
+github "badoo/Chatto"

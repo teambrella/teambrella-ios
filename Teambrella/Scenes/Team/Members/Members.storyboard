@@ -53,7 +53,7 @@
                                                         <constraint firstAttribute="width" constant="40" id="v5m-ej-zg2"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Sp-Vp1">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Sp-Vp1">
                                                     <rect key="frame" x="64" y="7" width="33" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,7 +184,7 @@
                                                         <constraint firstAttribute="width" secondItem="AC1-iQ-fvm" secondAttribute="height" multiplier="8:7" id="gX9-ru-IY6"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hoq-Od-Ce2">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hoq-Od-Ce2">
                                                     <rect key="frame" x="64" y="7" width="33" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
