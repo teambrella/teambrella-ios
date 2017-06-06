@@ -41,6 +41,10 @@ class TeammateProfileVC: UIViewController, Routable {
         super.didReceiveMemoryWarning()
     }
     
+    func showClaims(sender: UIButton) {
+        MembersRouter().presentClaims(teammate: teammate)
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -75,7 +79,11 @@ extension TeammateProfileVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-      TeammateCellBuilder.populate(cell: cell, with: teammate, delegate: self)
+      let responder = TeammateCellBuilder.populate(cell: cell, with: teammate, delegate: self)
+        if let button = responder as? BorderedButton {
+            button.removeTarget(nil, action: nil, for: .allEvents)
+            button.addTarget(self, action: #selector(showClaims), for: .touchUpInside)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,

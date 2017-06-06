@@ -9,13 +9,20 @@
 import UIKit
 import XLPagerTabStrip
 
-class ClaimsVC: UIViewController, IndicatorInfoProvider {
+/**
+ Shows the list of all claims or the list of claims created by a teammate if the teammate is given
+ */
+class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
+    static var storyboardName: String = "Claims"
+    
     @IBOutlet var collectionView: UICollectionView!
     var dataSource = ClaimsDataSource()
     
+    var teammate: TeammateLike?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        dataSource.teammate = teammate
         dataSource.loadData()
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
@@ -36,18 +43,18 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider {
 // MARK: UICollectionViewDataSource
 extension ClaimsVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return dataSource.sections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
+        return dataSource.cellsIn(section: section)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       // let cell: UICollectionViewCell!
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClaimsVotedCell", for: indexPath)
-        return cell
+        return collectionView.dequeueReusableCell(withReuseIdentifier: dataSource.cellIdentifier(for: indexPath),
+                                                  for: indexPath)
+
     }
 }
 
@@ -56,7 +63,7 @@ extension ClaimsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        
+        ClaimsCellBuilder.populate(cell: cell, with: dataSource[indexPath])
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -69,7 +76,13 @@ extension ClaimsVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 32, height: 112)
+        let size: CGSize!
+        switch dataSource.cellType(for: indexPath) {
+        case .open: size = CGSize(width: collectionView.bounds.width - 32, height: 156)
+        case .voted: size = CGSize(width: collectionView.bounds.width, height: 112)
+        case .paid, .fullyPaid: size = CGSize(width: collectionView.bounds.width, height: 79)
+        }
+        return size
     }
     
     func collectionView(_ collectionView: UICollectionView,

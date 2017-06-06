@@ -477,7 +477,7 @@
         <scene sceneID="qEZ-ny-P0q">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FCe-0y-OxV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" selectedImage="iconHome" id="5HA-2k-qhF"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="iconHome" id="5HA-2k-qhF"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="seh-NB-2pa">

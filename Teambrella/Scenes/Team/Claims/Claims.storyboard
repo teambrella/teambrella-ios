@@ -32,7 +32,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HB3-6s-gf8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o5z-fr-1uL">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="o5z-fr-1uL">
                                     <size key="itemSize" width="351" height="140"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -79,9 +79,6 @@
                                                                 <constraint firstAttribute="width" secondItem="nLW-4X-pQM" secondAttribute="height" multiplier="1:1" id="LBz-me-hm6"/>
                                                                 <constraint firstAttribute="width" constant="16" id="mvb-xp-n7X"/>
                                                             </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="teammateF"/>
-                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feS-Gu-bjP" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
                                                             <rect key="frame" x="293" y="23" width="42" height="21"/>
@@ -147,7 +144,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsVotedCell" id="Tra-Eo-bdx" customClass="ClaimsVotedCell" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="166" width="375" height="112"/>
+                                        <rect key="frame" x="0.0" y="156" width="375" height="112"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
@@ -186,9 +183,6 @@
                                                                 <constraint firstAttribute="width" constant="16" id="gLH-Lk-LsM"/>
                                                                 <constraint firstAttribute="width" secondItem="kAt-qk-Sp0" secondAttribute="height" multiplier="1:1" id="kEO-pI-P7l"/>
                                                             </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="teammateF"/>
-                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnD-c5-vO8" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
                                                             <rect key="frame" x="240" y="-1" width="42" height="21"/>
@@ -268,14 +262,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsPaidCell" id="ybB-qd-hfW" customClass="ClaimsPaidCell" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="288" width="375" height="112"/>
+                                        <rect key="frame" x="0.0" y="268" width="375" height="112"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvp-wZ-ehF">
-                                                    <rect key="frame" x="16" y="36" width="230" height="40"/>
+                                                    <rect key="frame" x="16" y="36" width="220" height="40"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="80E-3m-yXF">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -307,9 +301,6 @@
                                                                 <constraint firstAttribute="width" secondItem="HgH-8d-lM4" secondAttribute="height" multiplier="1:1" id="M54-nc-phC"/>
                                                                 <constraint firstAttribute="width" constant="16" id="gt5-YE-p54"/>
                                                             </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="teammateF"/>
-                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -334,36 +325,49 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eiH-hO-EVe">
-                                                    <rect key="frame" x="246" y="16" width="97" height="80"/>
+                                                    <rect key="frame" x="236" y="16" width="107" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ej-gQ-vWi" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="97" height="44.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="107" height="44.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivr-LT-Ylg" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="44.5" width="97" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="44.5" width="107" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="5VG-8E-yP1" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="65" width="97" height="15"/>
+                                                            <rect key="frame" x="0.0" y="65" width="107" height="15"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="0Mi-q0-DLr"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="107" id="t7D-iq-06d"/>
+                                                    </constraints>
                                                 </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lxf-Re-lOz">
+                                                    <rect key="frame" x="16" y="111" width="359" height="1"/>
+                                                    <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="C6d-pb-gRI"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="uvp-wZ-ehF" firstAttribute="centerY" secondItem="ybB-qd-hfW" secondAttribute="centerY" id="0Oc-iu-Oyb"/>
+                                            <constraint firstItem="Lxf-Re-lOz" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leadingMargin" id="0kp-Az-LgD"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="IcY-f3-Qvk" secondAttribute="trailing" id="DbU-qe-ked"/>
                                             <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" secondItem="uvp-wZ-ehF" secondAttribute="trailing" id="Nq8-Am-rAu"/>
+                                            <constraint firstAttribute="trailing" secondItem="Lxf-Re-lOz" secondAttribute="trailing" id="QOO-Zd-6fC"/>
+                                            <constraint firstAttribute="bottom" secondItem="Lxf-Re-lOz" secondAttribute="bottom" id="WIc-vT-iRf"/>
                                             <constraint firstItem="uvp-wZ-ehF" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leadingMargin" id="c0U-Xo-wUG"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="eiH-hO-EVe" secondAttribute="bottom" id="eCd-me-NKe"/>
                                             <constraint firstAttribute="topMargin" secondItem="eiH-hO-EVe" secondAttribute="top" id="gad-2b-pAt"/>
@@ -383,7 +387,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsViewAllCell" id="fMf-MF-LPf" customClass="ClaimsViewAllCell" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="410" width="375" height="112"/>
+                                        <rect key="frame" x="0.0" y="380" width="375" height="112"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
@@ -410,7 +414,7 @@
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="ZiR-eo-EuH" firstAttribute="centerY" secondItem="fMf-MF-LPf" secondAttribute="centerY" id="4PT-8w-br9"/>
                                             <constraint firstItem="ZiR-eo-EuH" firstAttribute="leading" secondItem="Cjd-EM-1DM" secondAttribute="trailing" constant="16" id="G2G-CO-jbh"/>
@@ -453,6 +457,5 @@
     </scenes>
     <resources>
         <image name="forward" width="17" height="32"/>
-        <image name="teammateF" width="1000" height="1499"/>
     </resources>
 </document>

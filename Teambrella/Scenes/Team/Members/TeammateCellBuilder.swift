@@ -10,11 +10,11 @@ import Kingfisher
 import UIKit
 
 struct TeammateCellBuilder {
-    static func populate(cell: UICollectionViewCell, with teammate: TeammateLike, delegate: Any? = nil) {
+    static func populate(cell: UICollectionViewCell, with teammate: TeammateLike, delegate: Any? = nil) -> Any? {
         if let cell = cell as? TeammateSummaryCell {
             populateSummary(cell: cell, with: teammate)
         } else if let cell = cell as? TeammateObjectCell {
-            populateObject(cell: cell, with: teammate)
+            return populateObject(cell: cell, with: teammate)
         } else if let cell = cell as? TeammateContactCell {
             populateContact(cell: cell, with: teammate, delegate: delegate)
         } else if let cell = cell as? TeammateDiscussionCell, let topic = teammate.extended?.topic {
@@ -22,6 +22,7 @@ struct TeammateCellBuilder {
         } else if let cell = cell as? TeammateStatsCell, let stats = teammate.extended?.stats {
             populateStats(cell: cell, with: stats)
         }
+        return nil
     }
     
     private static func populateSummary(cell: TeammateSummaryCell, with teammate: TeammateLike) {
@@ -47,7 +48,7 @@ struct TeammateCellBuilder {
         }
     }
     
-    private static func populateObject(cell: TeammateObjectCell, with teammate: TeammateLike) {
+    private static func populateObject(cell: TeammateObjectCell, with teammate: TeammateLike) -> Any? {
         cell.nameLabel.text = "\(teammate.model), \(teammate.year)"
         
         cell.statusLabel.text = "COVERED"
@@ -67,11 +68,12 @@ struct TeammateCellBuilder {
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
         }
-        guard let object = teammate.extended?.object else { return }
+        guard let object = teammate.extended?.object else { return cell.button}
         
         if let imageString = object.smallPhotos.first {
             cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: imageString)))
         }
+        return cell.button
     }
     
     private static func populateStats(cell: TeammateStatsCell, with stats: TeammateStats) {

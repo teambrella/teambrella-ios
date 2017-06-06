@@ -15,4 +15,11 @@ final class MembersRouter {
         service.router.push(vc: vc)
     }
     
+    func presentClaims(teammate: TeammateLike? = nil) {
+        guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
+        vc.teammate = teammate
+        vc.automaticallyAdjustsScrollViewInsets = false
+        service.router.push(vc: vc)
+    }
+    
 }
