@@ -18,6 +18,7 @@ enum TeambrellaRequestType: String {
     case newPost = "post/newPost"
     case registerKey = "me/registerKey"
     case claimsList = "claim/getList"
+    case claim = "claim/getOne"
 }
 
 enum TeambrellaResponseType {
@@ -29,6 +30,7 @@ enum TeambrellaResponseType {
     case newPost(Post)
     case registerKey
     case claimsList([ClaimLike])
+    case claim
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -88,6 +90,8 @@ struct TeambrellaRequest {
         case .claimsList:
             let claims = ClaimFactory.claims(with: reply)
             success(.claimsList(claims))
+        case .claim:
+            let claim = 
         case .updates:
             break
         default:
