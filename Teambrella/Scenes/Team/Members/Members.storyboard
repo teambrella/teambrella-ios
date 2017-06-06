@@ -299,14 +299,14 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="118"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="OUQ-Zh-QkO">
-                                        <rect key="frame" x="16" y="14" width="300" height="44"/>
+                                        <rect key="frame" x="16" y="14" width="312" height="44"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRq-x8-F1K" userLabel="E">
-                                        <rect key="frame" x="332" y="21" width="30" height="30"/>
-                                        <state key="normal" title="E"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRq-x8-F1K" userLabel="E">
+                                        <rect key="frame" x="344" y="25" width="18" height="22"/>
+                                        <state key="normal" image="filter"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxN-1F-D8t" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
                                         <rect key="frame" x="16" y="72" width="343" height="30"/>
@@ -1021,6 +1021,7 @@
     <resources>
         <image name="discuss" width="46" height="44"/>
         <image name="facebook" width="50" height="50"/>
+        <image name="filter" width="18" height="15"/>
         <image name="forward" width="17" height="32"/>
     </resources>
 </document>
