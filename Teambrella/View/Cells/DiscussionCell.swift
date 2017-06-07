@@ -8,8 +8,7 @@
 
 import UIKit
 
-class DiscussionCell: UICollectionViewCell {
-    static var nib: UINib { return UINib(nibName: "\(self)", bundle: nil) }
+class DiscussionCell: UICollectionViewCell, XIBInitableCell {
     
     @IBOutlet var avatarView: RoundImageView!
     @IBOutlet var titleLabel: Label!

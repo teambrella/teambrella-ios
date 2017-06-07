@@ -133,8 +133,18 @@ class ServerService {
         }
     }
     
-    private func url(string: String) -> URL? {
-        return URL(string: Constant.siteURL + "/" + string)
+    func urlString(string: String) -> String {
+        if string.hasPrefix(Constant.siteURL) {
+            return string
+        }
+        if string.hasPrefix("/") {
+            return Constant.siteURL + string
+        }
+        return Constant.siteURL + "/" + string
+    }
+    
+    func url(string: String) -> URL? {
+        return URL(string: urlString(string: string))
     }
     
 }

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ClaimDetailsCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="293"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="293"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="CLAIM DETAILS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhE-3B-gEJ" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                        <rect key="frame" x="16" y="16" width="121" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kj-0I-Hu9">
+                        <rect key="frame" x="281" y="16" width="46" height="30"/>
+                        <state key="normal" title="Button"/>
+                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="594-Fk-t4w">
+                        <rect key="frame" x="16" y="52" width="311" height="225"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vs3-d9-ZMU">
+                                <rect key="frame" x="0.0" y="0.0" width="311" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYa-Iq-hDy" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="12.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSp-Mx-qVy" customClass="ItemValueLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="269" y="12.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="zSp-Mx-qVy" firstAttribute="centerY" secondItem="RYa-Iq-hDy" secondAttribute="centerY" id="2Vi-48-laW"/>
+                                    <constraint firstItem="RYa-Iq-hDy" firstAttribute="centerY" secondItem="vs3-d9-ZMU" secondAttribute="centerY" id="Ree-zx-aO8"/>
+                                    <constraint firstItem="RYa-Iq-hDy" firstAttribute="leading" secondItem="vs3-d9-ZMU" secondAttribute="leading" id="z0G-Cq-sdq"/>
+                                    <constraint firstAttribute="trailing" secondItem="zSp-Mx-qVy" secondAttribute="trailing" id="zuk-Pd-2AX"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdj-YP-EEH">
+                                <rect key="frame" x="0.0" y="45" width="311" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TH7-uN-10z" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="12.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot9-Ob-4n4" customClass="ItemValueLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="269" y="12.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ot9-Ob-4n4" secondAttribute="trailing" id="2IZ-Va-aLf"/>
+                                    <constraint firstItem="TH7-uN-10z" firstAttribute="leading" secondItem="Vdj-YP-EEH" secondAttribute="leading" id="im3-80-aMG"/>
+                                    <constraint firstItem="TH7-uN-10z" firstAttribute="centerY" secondItem="Vdj-YP-EEH" secondAttribute="centerY" id="vDR-iO-8wg"/>
+                                    <constraint firstItem="ot9-Ob-4n4" firstAttribute="centerY" secondItem="TH7-uN-10z" secondAttribute="centerY" id="vuY-4y-B1W"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4g-qL-e49">
+                                <rect key="frame" x="0.0" y="90" width="311" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kti-fg-kdW" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="13" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osi-9w-2eL" customClass="ItemValueLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="269" y="13" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Osi-9w-2eL" firstAttribute="centerY" secondItem="kti-fg-kdW" secondAttribute="centerY" id="3fa-Hu-Gam"/>
+                                    <constraint firstItem="kti-fg-kdW" firstAttribute="centerY" secondItem="w4g-qL-e49" secondAttribute="centerY" id="N5d-S6-VZk"/>
+                                    <constraint firstAttribute="trailing" secondItem="Osi-9w-2eL" secondAttribute="trailing" id="iRx-PD-uiW"/>
+                                    <constraint firstItem="kti-fg-kdW" firstAttribute="leading" secondItem="w4g-qL-e49" secondAttribute="leading" id="nay-gN-pFv"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4d-s0-Bc9">
+                                <rect key="frame" x="0.0" y="135" width="311" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9p-to-FnA" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="12.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ji5-EH-Eyp" customClass="ItemValueLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="269" y="12.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ji5-EH-Eyp" firstAttribute="centerY" secondItem="W9p-to-FnA" secondAttribute="centerY" id="2cd-DN-v2M"/>
+                                    <constraint firstItem="W9p-to-FnA" firstAttribute="centerY" secondItem="Z4d-s0-Bc9" secondAttribute="centerY" id="CK8-by-Vwu"/>
+                                    <constraint firstAttribute="trailing" secondItem="ji5-EH-Eyp" secondAttribute="trailing" id="oKX-ch-KJE"/>
+                                    <constraint firstItem="W9p-to-FnA" firstAttribute="leading" secondItem="Z4d-s0-Bc9" secondAttribute="leading" id="zUc-TF-4lV"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxB-Gg-GRC">
+                                <rect key="frame" x="0.0" y="180" width="311" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvc-LS-tg2" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="12.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mi0-Og-TSq" customClass="ItemValueLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="269" y="12.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Kvc-LS-tg2" firstAttribute="leading" secondItem="fxB-Gg-GRC" secondAttribute="leading" id="5R4-KP-abT"/>
+                                    <constraint firstAttribute="trailing" secondItem="mi0-Og-TSq" secondAttribute="trailing" id="Zzo-Rw-vwQ"/>
+                                    <constraint firstItem="Kvc-LS-tg2" firstAttribute="centerY" secondItem="fxB-Gg-GRC" secondAttribute="centerY" id="imH-bx-i6q"/>
+                                    <constraint firstItem="mi0-Og-TSq" firstAttribute="centerY" secondItem="Kvc-LS-tg2" secondAttribute="centerY" id="x8t-D5-aSy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailingMargin" secondItem="594-Fk-t4w" secondAttribute="trailing" id="5Z7-3R-UXA"/>
+                <constraint firstItem="WhE-3B-gEJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="8Dt-Fg-LvL"/>
+                <constraint firstAttribute="bottomMargin" secondItem="594-Fk-t4w" secondAttribute="bottom" id="9Uy-5b-eHO"/>
+                <constraint firstItem="5kj-0I-Hu9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="RDZ-bR-vr6"/>
+                <constraint firstAttribute="trailingMargin" secondItem="5kj-0I-Hu9" secondAttribute="trailing" id="ZhM-bq-aGb"/>
+                <constraint firstItem="WhE-3B-gEJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="igh-mc-ZgH"/>
+                <constraint firstItem="594-Fk-t4w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="nXp-LG-cuw"/>
+                <constraint firstItem="594-Fk-t4w" firstAttribute="top" secondItem="WhE-3B-gEJ" secondAttribute="bottom" constant="16" id="sa5-ZF-Jxs"/>
+            </constraints>
+            <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
+            <connections>
+                <outlet property="claimAmountLabel" destination="RYa-Iq-hDy" id="2pO-7E-mhS"/>
+                <outlet property="claimAmountValueLabel" destination="zSp-Mx-qVy" id="xHx-fV-ngf"/>
+                <outlet property="coverageLabel" destination="W9p-to-FnA" id="NvK-b3-uZ4"/>
+                <outlet property="coverageValueLabel" destination="ji5-EH-Eyp" id="rw7-r0-giV"/>
+                <outlet property="deductibleLabel" destination="kti-fg-kdW" id="uO2-R3-lJF"/>
+                <outlet property="deductibleValueLabel" destination="Osi-9w-2eL" id="Rtu-xy-ozl"/>
+                <outlet property="estimatedExpencesLabel" destination="TH7-uN-10z" id="dFb-Gj-JmG"/>
+                <outlet property="estimatedExpensesValueLabel" destination="ot9-Ob-4n4" id="WBY-JZ-jLp"/>
+                <outlet property="incidentDateLabel" destination="Kvc-LS-tg2" id="KBE-Wj-V1l"/>
+                <outlet property="incidentDateValueLabel" destination="mi0-Og-TSq" id="X2X-oJ-Il5"/>
+                <outlet property="infoButton" destination="5kj-0I-Hu9" id="sNX-Cj-I6N"/>
+                <outlet property="titleLabel" destination="WhE-3B-gEJ" id="lze-CX-o8x"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>
