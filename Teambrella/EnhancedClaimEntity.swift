@@ -40,7 +40,7 @@ struct EnhancedClaimEntity: EntityLike {
     var year: Int { return basicPart["Year"].intValue }
     var smallPhotos: [String] { return basicPart["SmallPhotos"].arrayObject as? [String] ?? [] }
     var largePhotos: [String] { return basicPart["BigPhotos"].arrayObject as? [String] ?? [] }
-    var claimAmoiunt: Double { return basicPart["ClaimAmount"].doubleValue }
+    var claimAmount: Double { return basicPart["ClaimAmount"].doubleValue }
     var estimatedExpences: Double { return basicPart["EstimatedExpences"].doubleValue }
     var deductible: Double { return basicPart["Deductible"].doubleValue }
     var coverage: Double { return basicPart["Coverage"].doubleValue }
