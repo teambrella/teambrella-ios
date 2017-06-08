@@ -2,7 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "invalidName.pdf"
+      "filename" : "solid.pdf",
+      "scale" : "1x"
     }
   ],
   "info" : {

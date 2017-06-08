@@ -63,19 +63,43 @@ class ClaimDataSource {
     
     func updateVoteOnServer(vote: Float?) {
         let claimID = claim?.id ?? "0"
+        let lastUpdated = claim?.lastUpdated ?? 0
         service.server.updateTimestamp { timestamp, error in
             let key = Key(base58String: ServerService.Constant.fakePrivateKey,
                           timestamp: timestamp)
             
             let body = RequestBody(key: key, payload:["ClaimId": claimID,
                                                       "MyVote": vote ?? NSNull(),
-                                                      "Since": timestamp,
+                                                      "Since": lastUpdated,
                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
             let request = TeambrellaRequest(type: .setVote, body: body, success: { [weak self] response in
                 if case .setVote(let json) = response {
                     self?.claim?.update(with: json)
                     self?.onUpdate?()
                     print("Updated claim with \(json)")
+                }
+                }, failure: { [weak self] error in
+                    self?.onError?(error)
+            })
+            request.start()
+        }
+    }
+    
+    func getUpdates() {
+        let claimID = claim?.id ?? "0"
+        let lastUpdated = claim?.lastUpdated ?? 0
+        service.server.updateTimestamp { timestamp, error in
+            let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+                          timestamp: timestamp)
+            
+            let body = RequestBody(key: key, payload:["ClaimId": claimID,
+                                                      "Since": lastUpdated,
+                                                      "ProxyAvatarSize": Constant.proxyAvatarSize])
+            let request = TeambrellaRequest(type: .claimUpdates, body: body, success: { [weak self] response in
+                if case .claimUpdates(let json) = response {
+                    self?.claim?.update(with: json)
+                    self?.onUpdate?()
+                    print("updated claim \(json)")
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)

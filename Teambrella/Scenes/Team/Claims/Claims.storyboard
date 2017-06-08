@@ -509,6 +509,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="forward" width="17" height="32"/>
+        <image name="forward" width="8" height="13"/>
     </resources>
 </document>

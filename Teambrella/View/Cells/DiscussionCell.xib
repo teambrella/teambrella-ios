@@ -134,6 +134,6 @@
     </objects>
     <resources>
         <image name="discuss" width="46" height="44"/>
-        <image name="forward" width="17" height="32"/>
+        <image name="forward" width="8" height="13"/>
     </resources>
 </document>
