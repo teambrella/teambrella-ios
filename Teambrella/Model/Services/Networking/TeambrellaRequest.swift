@@ -19,6 +19,7 @@ enum TeambrellaRequestType: String {
     case registerKey = "me/registerKey"
     case claimsList = "claim/getList"
     case claim = "claim/getOne"
+    case setVote = "claim/setVote"
 }
 
 enum TeambrellaResponseType {
@@ -31,6 +32,7 @@ enum TeambrellaResponseType {
     case registerKey
     case claimsList([ClaimLike])
     case claim(EnhancedClaimEntity)
+    case setVote(JSON)
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -92,6 +94,8 @@ struct TeambrellaRequest {
             success(.claimsList(claims))
         case .claim:
             success(.claim(EnhancedClaimEntity(json: reply)))
+        case .setVote:
+            success(.setVote(reply))
         case .updates:
             break
         default:

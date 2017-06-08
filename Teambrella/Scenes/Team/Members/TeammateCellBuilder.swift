@@ -68,7 +68,7 @@ struct TeammateCellBuilder {
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
         }
-        guard let object = teammate.extended?.object else { return cell.button}
+        guard let object = teammate.extended?.object else { return cell.button }
         
         if let imageString = object.smallPhotos.first {
             cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: imageString)))

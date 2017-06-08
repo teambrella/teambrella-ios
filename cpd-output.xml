@@ -28,31 +28,4 @@
             if case .teammate(let extendedTeammate) = response {
                 me.teammate.extended = extendedTeammate]]></codefragment>
    </duplication>
-   <duplication lines="21" tokens="76">
-      <file line="12"
-            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/View/BorderedButton.swift"/>
-      <file line="12"
-            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/View/PlainButton.swift"/>
-      <codefragment><![CDATA[class BorderedButton: UIButton {
-    @IBInspectable
-    var borderColor: UIColor = .robinEggBlue {
-        didSet {
-            setup()
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    func setup() {
-        layer.masksToBounds = true
-        layer.cornerRadius = 5]]></codefragment>
-   </duplication>
 </pmd-cpd>

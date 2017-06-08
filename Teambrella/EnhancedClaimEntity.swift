@@ -15,7 +15,7 @@ import SwiftyJSON
  It is made so for faster development
  */
 struct EnhancedClaimEntity: EntityLike {
-    private let json: JSON
+    private var json: JSON
     
     var description: String { return "EnhancedClaimEntity id: \(id)" }
     
@@ -30,6 +30,8 @@ struct EnhancedClaimEntity: EntityLike {
     var basicPart: JSON { return json["BasicPart"] }
     var votingPart: JSON { return json["VotingPart"] }
     var discussionPart: JSON { return json["DiscussionPart"] }
+    
+    var hasVotingPart: Bool { return votingPart.dictionary != nil }
     
     // MARK: Basic part
     
@@ -63,5 +65,9 @@ struct EnhancedClaimEntity: EntityLike {
     var originalPostText: String { return discussionPart["OriginalPostText"].stringValue }
     var unreadCount: Int { return discussionPart["UnreadCount"].intValue }
     var minutesinceLastPost: Int { return discussionPart["SinceLastPostMinutes"].intValue }
+    
+    mutating func update(with json: JSON) {
+        try? self.json.merge(with: json)
+    }
     
 }

@@ -26,8 +26,11 @@ class ImageGalleryCell: UICollectionViewCell, XIBInitableCell {
     }
     
     func setupGallery(with imageURLs: [String], options: KingfisherOptionsInfo? = nil) {
+        guard slideshow.images.isEmpty else { return }
+        
         let inputs: [InputSource] = imageURLs.flatMap { KingfisherSource(urlString: $0, options: options) }
         slideshow.setImageInputs(inputs)
+        slideshow.contentScaleMode = .scaleAspectFill
     }
 
 }

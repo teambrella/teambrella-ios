@@ -10,13 +10,6 @@ import UIKit
 
 @IBDesignable
 class PlainButton: UIButton {
-    @IBInspectable
-    var borderColor: UIColor = .robinEggBlue {
-        didSet {
-            setup()
-        }
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()

@@ -6,8 +6,8 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import UIKit
 import ImageSlideshow
+import UIKit
 
 class ClaimVC: UIViewController, Routable {
     
@@ -15,6 +15,8 @@ class ClaimVC: UIViewController, Routable {
     
     var claim: ClaimLike?
     let dataSource = ClaimDataSource()
+    
+    var lastUpdatedVote: Date?
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -45,6 +47,32 @@ class ClaimVC: UIViewController, Routable {
         guard let gallery = sender.view as? ImageSlideshow else { return }
         
         gallery.presentFullScreenController(from: self)
+    }
+    
+    func sliderMoved(slider: UISlider) {
+        print("Value changed: \(slider.value)")
+        updateVotingCell()
+        lastUpdatedVote = Date()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
+            if let lastUpdate = self?.lastUpdatedVote {
+                let difference = Date().timeIntervalSince(lastUpdate)
+                if difference > 0.99 {
+                self?.lastUpdatedVote = nil
+                    self?.dataSource.updateVoteOnServer(vote: slider.value)
+                }
+            }
+            
+        })
+    }
+    
+    func updateVotingCell() {
+        let cells = collectionView.visibleCells.flatMap { $0 as? ClaimVoteCell }
+        guard let cell = cells.first else { return }
+        
+        cell.yourVotePercentValue.text = String(format: "%.1f", cell.slider.value * 100)
+        if let amount = dataSource.claim?.claimAmount {
+            cell.yourVoteAmount.text = String(format: "%.0f", cell.slider.value * Float(amount))
+        }
     }
     
 }
@@ -104,11 +132,11 @@ extension ClaimVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let offset: CGFloat = 16
-        switch indexPath.row {
-        case 0: return CGSize(width: collectionView.bounds.width, height: 111 + 184)
-        case 1: return CGSize(width: collectionView.bounds.width - offset * 2, height: 332)
-        case 2: return CGSize(width: collectionView.bounds.width - offset * 2, height: 293)
-        case 3: return CGSize(width: collectionView.bounds.width, height: 168)
+        switch dataSource.cellID(for: indexPath) {
+        case ImageGalleryCell.cellID: return CGSize(width: collectionView.bounds.width, height: 111 + 184)
+        case ClaimVoteCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 332)
+        case ClaimDetailsCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 293)
+        case ClaimOptionsCell.cellID: return CGSize(width: collectionView.bounds.width, height: 168)
         default: break
         }
         return CGSize(width: collectionView.bounds.width, height: 1)

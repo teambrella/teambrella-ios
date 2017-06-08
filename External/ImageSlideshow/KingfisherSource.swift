@@ -21,7 +21,7 @@ public class KingfisherSource: NSObject, InputSource {
 
     /// Initializes a new source with a URL
     /// - parameter url: a url to be loaded
-    /// - parameter placeholder: a placeholder used before image is loaded  
+    /// - parameter placeholder: a placeholder used before image is loaded
     public init(url: URL, placeholder: UIImage? = nil) {
         self.url = url
         self.placeholder = placeholder

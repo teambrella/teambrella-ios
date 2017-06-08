@@ -15,6 +15,7 @@ class ClaimDataSource {
     }
     
     var claim: EnhancedClaimEntity?
+    var cellIDs: [String] = []
     
     var sections: Int { return 1 }
     
@@ -22,18 +23,21 @@ class ClaimDataSource {
     var onError: ((Error) -> Void)?
     
     func rows(for section: Int) -> Int {
-        return claim == nil ? 0 : 4
+        return cellIDs.count
     }
     
     func cellID(for indexPath: IndexPath) -> String {
-        switch indexPath.row {
-        case 0:  return ImageGalleryCell.cellID
-        case 1: return ClaimVoteCell.cellID
-        case 2: return ClaimDetailsCell.cellID
-        case 3: return ClaimOptionsCell.cellID
-        default: return ""
+        return cellIDs[indexPath.row]
+    }
+    
+    private func setupClaim(claim: EnhancedClaimEntity) {
+        self.claim = claim
+        cellIDs.append(ImageGalleryCell.cellID)
+        if claim.hasVotingPart {
+            cellIDs.append(ClaimVoteCell.cellID)
         }
-       
+        cellIDs.append(ClaimDetailsCell.cellID)
+        cellIDs.append(ClaimOptionsCell.cellID)
     }
     
     func loadData(claimID: String) {
@@ -46,9 +50,32 @@ class ClaimDataSource {
                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
             let request = TeambrellaRequest(type: .claim, body: body, success: { [weak self] response in
                 if case .claim(let claim) = response {
-                    self?.claim = claim
+                    self?.setupClaim(claim: claim)
                     self?.onUpdate?()
                     print("Loaded enhanced claim \(claim)")
+                }
+                }, failure: { [weak self] error in
+                    self?.onError?(error)
+            })
+            request.start()
+        }
+    }
+    
+    func updateVoteOnServer(vote: Float?) {
+        let claimID = claim?.id ?? "0"
+        service.server.updateTimestamp { timestamp, error in
+            let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+                          timestamp: timestamp)
+            
+            let body = RequestBody(key: key, payload:["ClaimId": claimID,
+                                                      "MyVote": vote ?? NSNull(),
+                                                      "Since": timestamp,
+                                                      "ProxyAvatarSize": Constant.proxyAvatarSize])
+            let request = TeambrellaRequest(type: .setVote, body: body, success: { [weak self] response in
+                if case .setVote(let json) = response {
+                    self?.claim?.update(with: json)
+                    self?.onUpdate?()
+                    print("Updated claim with \(json)")
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)

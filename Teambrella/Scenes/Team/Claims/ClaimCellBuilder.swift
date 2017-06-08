@@ -16,6 +16,7 @@ struct ClaimCellBuilder {
             addObserversToImageGallery(cell: cell, delegate: delegate)
         } else if let cell = cell as? ClaimVoteCell {
             populateClaimVote(cell: cell, with: claim)
+            addObserversToClaimVote(cell: cell, delegate: delegate)
         } else if let cell = cell as? ClaimDetailsCell {
             populateClaimDetails(cell: cell, with: claim)
         } else if let cell = cell as? ClaimOptionsCell {
@@ -29,6 +30,11 @@ struct ClaimCellBuilder {
             cell.tapGalleryGesture = gestureRecognizer
             cell.slideshow.addGestureRecognizer(gestureRecognizer)
         }
+    }
+    
+    static func addObserversToClaimVote(cell: ClaimVoteCell, delegate: ClaimVC) {
+        cell.slider.removeTarget(delegate, action: nil, for: .valueChanged)
+        cell.slider.addTarget(delegate, action: #selector(ClaimVC.sliderMoved), for: .valueChanged)
     }
     
     static func populateImageGallery(cell: ImageGalleryCell, with claim: EnhancedClaimEntity) {
@@ -81,6 +87,10 @@ struct ClaimCellBuilder {
         let avatars = claim.otherAvatars.flatMap { URL(string: service.server.avatarURLstring(for: $0)) }
         let label: String?  =  claim.otherCount > 0 ? "\(claim.otherCount)" : nil
         cell.avatarsStack.set(images: avatars, label: label, max: 3)
+        
+        cell.slider.minimumValue = 0
+        cell.slider.maximumValue = 1
+        cell.slider.setValue(Float(claim.myVote), animated: true)
     }
     
     static func populateClaimDetails(cell: ClaimDetailsCell, with claim: EnhancedClaimEntity) {
