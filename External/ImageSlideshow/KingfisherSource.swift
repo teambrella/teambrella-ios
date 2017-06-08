@@ -16,10 +16,12 @@ public class KingfisherSource: NSObject, InputSource {
 
     /// placeholder used before image is loaded
     public var placeholder: UIImage?
+    
+    public var options: KingfisherOptionsInfo?
 
     /// Initializes a new source with a URL
     /// - parameter url: a url to be loaded
-    /// - parameter placeholder: a placeholder used before image is loaded    
+    /// - parameter placeholder: a placeholder used before image is loaded  
     public init(url: URL, placeholder: UIImage? = nil) {
         self.url = url
         self.placeholder = placeholder
@@ -38,11 +40,22 @@ public class KingfisherSource: NSObject, InputSource {
             return nil
         }
     }
+    
+    public init?(urlString: String, placeholder: UIImage? = nil, options: KingfisherOptionsInfo?) {
+        if let validUrl = URL(string: urlString) {
+            self.url = validUrl
+            self.placeholder = placeholder
+            self.options = options
+            super.init()
+        } else {
+            return nil
+        }
+    }
 
     @objc public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
         imageView.kf.setImage(with: self.url,
                               placeholder: self.placeholder,
-                              options: nil,
+                              options: options,
                               progressBlock: nil) { (image, _, _, _) in
             callback(image)
         }

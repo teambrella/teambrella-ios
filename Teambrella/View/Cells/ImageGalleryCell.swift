@@ -6,8 +6,9 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import UIKit
 import ImageSlideshow
+import Kingfisher
+import UIKit
 
 class ImageGalleryCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var slideshow: ImageSlideshow!
@@ -22,8 +23,8 @@ class ImageGalleryCell: UICollectionViewCell, XIBInitableCell {
         // Initialization code
     }
     
-    func setupGallery(with imageURLs: [String]) {
-        let inputs: [InputSource] = imageURLs.flatMap { KingfisherSource(urlString: $0) }
+    func setupGallery(with imageURLs: [String], options: KingfisherOptionsInfo? = nil) {
+        let inputs: [InputSource] = imageURLs.flatMap { KingfisherSource(urlString: $0, options: options) }
         slideshow.setImageInputs(inputs)
     }
 
