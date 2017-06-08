@@ -18,6 +18,8 @@ class ImageGalleryCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var timeLabel: InfoLabel!
     @IBOutlet var unreadCountLabel: RoundImageView!
     
+    var tapGalleryGesture: UITapGestureRecognizer?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

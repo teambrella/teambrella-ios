@@ -6,19 +6,28 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 struct ClaimCellBuilder {
-    static func populate(cell: UICollectionViewCell, with claim: EnhancedClaimEntity) {
+    static func populate(cell: UICollectionViewCell, with claim: EnhancedClaimEntity, delegate: ClaimVC) {
         if let cell = cell as? ImageGalleryCell {
             populateImageGallery(cell: cell, with: claim)
+            addObserversToImageGallery(cell: cell, delegate: delegate)
         } else if let cell = cell as? ClaimVoteCell {
             populateClaimVote(cell: cell, with: claim)
         } else if let cell = cell as? ClaimDetailsCell {
             populateClaimDetails(cell: cell, with: claim)
         } else if let cell = cell as? ClaimOptionsCell {
             populateClaimOptions(cell: cell, with: claim)
+        }
+    }
+    
+    static func addObserversToImageGallery(cell: ImageGalleryCell, delegate: ClaimVC) {
+        if cell.tapGalleryGesture == nil {
+            let gestureRecognizer = UITapGestureRecognizer(target: delegate, action: #selector(ClaimVC.tapGallery))
+            cell.tapGalleryGesture = gestureRecognizer
+            cell.slideshow.addGestureRecognizer(gestureRecognizer)
         }
     }
     

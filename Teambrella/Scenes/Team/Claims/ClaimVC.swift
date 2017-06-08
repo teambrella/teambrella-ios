@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageSlideshow
 
 class ClaimVC: UIViewController, Routable {
     
@@ -38,6 +39,12 @@ class ClaimVC: UIViewController, Routable {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tapGallery(sender: UITapGestureRecognizer) {
+        guard let gallery = sender.view as? ImageSlideshow else { return }
+        
+        gallery.presentFullScreenController(from: self)
     }
     
 }
@@ -75,7 +82,7 @@ extension ClaimVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         guard let claim = dataSource.claim else { return }
         
-        ClaimCellBuilder.populate(cell: cell, with: claim)
+        ClaimCellBuilder.populate(cell: cell, with: claim, delegate: self)
     }
     
     func collectionView(_ collectionView: UICollectionView,
