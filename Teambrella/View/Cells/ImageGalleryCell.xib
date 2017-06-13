@@ -34,13 +34,13 @@
                                     <constraint firstAttribute="width" secondItem="Jxe-aJ-RJr" secondAttribute="height" multiplier="1:1" id="eph-BF-KET"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7e-HQ-fhc" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="69" y="16" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7e-HQ-fhc" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="69" y="16" width="297" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fug-nW-qVc" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fug-nW-qVc" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="382" y="16" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -68,7 +68,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FHT-Ki-5VZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="FHT-Ki-5VZ">
                                 <rect key="frame" x="432" y="48.5" width="8" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="8" id="E6T-Dq-WAR"/>
@@ -94,7 +94,7 @@
                             <constraint firstItem="eeg-zL-8ga" firstAttribute="leading" secondItem="M7e-HQ-fhc" secondAttribute="leading" id="fou-9t-3O1"/>
                             <constraint firstItem="3DA-zh-MbS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eeg-zL-8ga" secondAttribute="trailing" constant="16" id="kIn-Wi-vOz"/>
                             <constraint firstItem="eeg-zL-8ga" firstAttribute="top" secondItem="M7e-HQ-fhc" secondAttribute="bottom" id="wp7-ft-JJv"/>
-                            <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="eeg-zL-8ga" secondAttribute="bottom" id="zZ3-VJ-NEY"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eeg-zL-8ga" secondAttribute="bottom" constant="17" id="zZ3-VJ-NEY"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                     </view>
@@ -121,4 +121,7 @@
             <point key="canvasLocation" x="104" y="93"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="forward" width="8" height="13"/>
+    </resources>
 </document>

@@ -132,6 +132,11 @@
                 <constraint firstItem="EqW-I1-iAG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="q4r-k5-TTe"/>
             </constraints>
             <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="8"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="4"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="allVotesLabel" destination="N0O-a7-bB7" id="Zgw-QT-U2H"/>
                 <outlet property="cashFlowLabel" destination="q5N-Bn-97W" id="fwk-y4-nnV"/>
@@ -140,6 +145,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="forward" width="17" height="32"/>
+        <image name="forward" width="8" height="13"/>
     </resources>
 </document>

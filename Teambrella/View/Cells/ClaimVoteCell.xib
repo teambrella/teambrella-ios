@@ -26,7 +26,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="343" height="332"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVa-WO-KTz">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVa-WO-KTz">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="332"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVp-Aa-10c" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
@@ -244,6 +244,11 @@
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="leading" secondItem="F2r-3b-RDy" secondAttribute="trailing" constant="8" id="xqz-DI-XEe"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>

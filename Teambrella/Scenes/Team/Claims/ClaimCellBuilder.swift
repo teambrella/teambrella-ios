@@ -53,7 +53,7 @@ struct ClaimCellBuilder {
             cell.setupGallery(with: imageURLStrings, options: [.requestModifier(modifier)])
         }
         cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: claim.avatar)))
-        cell.titleLabel.text = "Claim \(claim.topicID)"
+        cell.titleLabel.text = "Claim \(claim.id)"
         cell.textLabel.text = claim.originalPostText
         cell.unreadCountLabel.text = "\(claim.unreadCount)"
         cell.timeLabel.text = "\(claim.minutesinceLastPost) MIN AGO"
@@ -110,11 +110,11 @@ struct ClaimCellBuilder {
         cell.deductibleValueLabel.text = currency + deductible
         
         cell.coverageLabel.text = "Coverage"
-        let coverage = "\(Int(claim.coverage * 100))"
+        let coverage = "\(Int((claim.coverage * 100).rounded()))"
         cell.coverageValueLabel.text = coverage + "%"
         
         cell.incidentDateLabel.text = "Incident date"
-        claim.incidentDate.map { cell.incidentDateValueLabel.text = String(describing: $0) }
+        claim.incidentDate.map { cell.incidentDateValueLabel.text = DateFormatter.teambrellaShort.string(from: $0) }
     }
     
     static func populateClaimOptions(cell: ClaimOptionsCell, with claim: EnhancedClaimEntity) {

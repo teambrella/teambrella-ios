@@ -30,6 +30,8 @@ class ClaimDetailsCell: UICollectionViewCell, XIBInitableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        CellDecorator.roundedEdges(for: self)
+        CellDecorator.shadow(for: self)
     }
 
 }

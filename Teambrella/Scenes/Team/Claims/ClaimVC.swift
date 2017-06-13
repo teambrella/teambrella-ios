@@ -16,6 +16,9 @@ class ClaimVC: UIViewController, Routable {
     var claim: ClaimLike?
     let dataSource = ClaimDataSource()
     
+    var navigationTopLabel: UILabel?
+    var navigationBottomLabel: UILabel?
+    
     var lastUpdatedVote: Date?
     
     @IBOutlet var collectionView: UICollectionView!
@@ -26,9 +29,58 @@ class ClaimVC: UIViewController, Routable {
         
         setupCells()
         dataSource.onUpdate = { [weak self] in
-            self?.collectionView.reloadData()
+            self?.reloadData()
         }
         dataSource.loadData(claimID: claim.id)
+        manageNavigationBar()
+    }
+    
+    func reloadData() {
+        collectionView.reloadData()
+        manageNavigationBar()
+    }
+    
+    func manageNavigationBar() {
+        guard let claim = claim else { return }
+        
+        navigationTopLabel?.removeFromSuperview()
+        navigationTopLabel = nil
+        navigationBottomLabel?.removeFromSuperview()
+        navigationBottomLabel = nil
+        
+        if let navigationBar = self.navigationController?.navigationBar {
+            let firstFrame = CGRect(x: 0,
+                                    y: 0, width: navigationBar.frame.width,
+                                    height: navigationBar.frame.height / 2)
+            let secondFrame = CGRect(x: 0,
+                                     y: firstFrame.maxY,
+                                     width: navigationBar.frame.width,
+                                     height: navigationBar.frame.height / 2)
+            
+            let firstLabel = UILabel(frame: firstFrame)
+            firstLabel.textAlignment = .center
+            firstLabel.textColor = .white
+            firstLabel.font = UIFont.teambrellaBold(size: 17)
+            firstLabel.text = claim.model
+            firstLabel.sizeToFit()
+            firstLabel.center = CGPoint(x: navigationBar.bounds.midX,
+                                        y: navigationBar.bounds.midY - firstLabel.frame.height / 2)
+            navigationTopLabel = firstLabel
+            navigationBar.addSubview(firstLabel)
+            guard let enhancedClaim = dataSource.claim, let date = enhancedClaim.incidentDate else { return }
+            
+            let secondLabel = UILabel(frame: secondFrame)
+            secondLabel.textAlignment = .center
+            secondLabel.textColor = .white50
+            secondLabel.font = UIFont.teambrella(size: 12)
+            secondLabel.text = DateFormatter.teambrellaShort.string(from: date)
+            secondLabel.sizeToFit()
+            secondLabel.center = CGPoint(x: navigationBar.bounds.midX,
+                                        y: navigationBar.bounds.midY + secondLabel.frame.height / 2)
+            navigationBottomLabel = secondLabel
+            
+            navigationBar.addSubview(secondLabel)
+        }
     }
     
     private func setupCells() {
@@ -142,9 +194,9 @@ extension ClaimVC: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.bounds.width, height: 1)
     }
     
-    func collectionView(_ collectionView: UICollectionView, 
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 1)
-    }
+//    func collectionView(_ collectionView: UICollectionView, 
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: collectionView.bounds.width, height: 1)
+//    }
 }

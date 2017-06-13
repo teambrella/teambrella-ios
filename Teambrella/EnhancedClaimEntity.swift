@@ -46,7 +46,7 @@ struct EnhancedClaimEntity: EntityLike {
     var estimatedExpences: Double { return basicPart["EstimatedExpences"].doubleValue }
     var deductible: Double { return basicPart["Deductible"].doubleValue }
     var coverage: Double { return basicPart["Coverage"].doubleValue }
-    var incidentDate: Date? { return basicPart["IncidentData"].stringValue.cSharpDate }
+    var incidentDate: Date? { return DateFormatter.teambrella.date(from: basicPart["IncidentDate"].stringValue) }
     
     // MARK: Voting part
     

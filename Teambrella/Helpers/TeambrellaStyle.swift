@@ -62,9 +62,9 @@ struct TeambrellaStyle {
         itemName.font = UIFont.teambrella(size: 15)
         itemName.textColor = .charcoalGray
         
-        let itemValue = ItemNameLabel.appearance()
+        let itemValue = ItemValueLabel.appearance()
         itemValue.font = UIFont.teambrella(size: 15)
-        itemValue.textColor = .charcoalGray
+        itemValue.textColor = .battleshipGray
         
         let title = TitleLabel.appearance()
         title.font = UIFont.teambrellaBold(size: 20)
