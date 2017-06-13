@@ -1,0 +1,17 @@
+/* 
+  Team.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 13.06.17.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+// Claims
+
+"Team.ClaimsVC.indicatorTitle" = "Claimos";
+"Team.ClaimsCell.claimed" = "claimado";
+"Team.ClaimsCell.viewToVote" = "Mirar para votar";
+"Team.ClaimsCell.reimbursed" = "Recevudo";
+
+"Team.ClaimCell.claimID_format" = "Claimo %@";
+"Team.ClaimCell.timePassed_format" = "%d minutos passado";

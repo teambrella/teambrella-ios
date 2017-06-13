@@ -15,16 +15,16 @@ struct ClaimsCellBuilder {
             cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.smallPhoto)),
                                         placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
             cell.claimedAmountLabel.text = String(format: "%.2f", claim.claimAmount)
-            cell.claimedTitleLabel.text = "CLAIMED"
+            cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
             cell.titleLabel.text = claim.model
             cell.ownerAvatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.avatar)))
             cell.ownerNameLabel.text = claim.name
-            cell.button.setTitle("View to Vote", for: .normal)
+            cell.button.setTitle("Team.ClaimsCell.viewToVote".localized, for: .normal)
         } else if let cell = cell as? ClaimsVotedCell {
             cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.smallPhoto)),
                                         placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
             cell.claimedAmountLabel.text = String(format: "%.2f", claim.claimAmount)
-            cell.claimedTitleLabel.text = "CLAIMED"
+            cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
             cell.titleLabel.text = claim.model
             cell.ownerAvatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.avatar)),
                                              placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
@@ -37,7 +37,7 @@ struct ClaimsCellBuilder {
                                              placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
             cell.ownerNameLabel.text = claim.name
            cell.amountLabel.text =  String(format: "%.2f", claim.claimAmount)
-            cell.statusLabel.text = "REIMBURSED"
+            cell.statusLabel.text = "Team.ClaimsCell.reimbursed".localized.uppercased()
             cell.scaleBar.value = CGFloat(claim.reimbursement)
         }
     }

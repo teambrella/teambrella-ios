@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
-   <duplication lines="7" tokens="98">
+   <duplication lines="7" tokens="104">
       <file line="14"
             path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Team/Claims/ClaimsCellBuilder.swift"/>
       <file line="23"
@@ -9,7 +9,7 @@
             cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.smallPhoto)),
                                         placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
             cell.claimedAmountLabel.text = String(format: "%.2f", claim.claimAmount)
-            cell.claimedTitleLabel.text = "CLAIMED"
+            cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
             cell.titleLabel.text = claim.model
             cell.ownerAvatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.avatar)))]]></codefragment>
    </duplication>

@@ -53,36 +53,36 @@ struct ClaimCellBuilder {
             cell.setupGallery(with: imageURLStrings, options: [.requestModifier(modifier)])
         }
         cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: claim.avatar)))
-        cell.titleLabel.text = "Claim \(claim.id)"
+        cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)//"Claim \(claim.id)"
         cell.textLabel.text = claim.originalPostText
         cell.unreadCountLabel.text = "\(claim.unreadCount)"
-        cell.timeLabel.text = "\(claim.minutesinceLastPost) MIN AGO"
+        cell.timeLabel.text = "Team.ClaimCell.timePassed_format".localized(claim.minutesinceLastPost).uppercased()
     }
     
     static func populateClaimVote(cell: ClaimVoteCell, with claim: EnhancedClaimEntity) {
-        cell.titleLabel.text = "VOTING"
-        cell.remainingDaysLabel.text = "\(claim.minutesRemaining) MIN"
+        cell.titleLabel.text = "Team.ClaimCell.voting".localized
+        cell.remainingDaysLabel.text = "Team.ClaimCell.remainingMinutes_format".localized(claim.minutesRemaining)
         cell.pieChart.startAngle = 0
         cell.pieChart.endAngle = 130
         
-        cell.yourVoteLabel.text = "YOUR VOTE"
+        cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         let myVote = String(format: "%.2f", claim.myVote * 100)
         cell.yourVotePercentValue.text = myVote
         
         if let proxyAvatar = claim.proxyAvatar {
             cell.proxyAvatar.kf.setImage(with: URL(string: service.server.avatarURLstring(for: proxyAvatar)))
-            cell.byProxyLabel.text = "BY PROXY"
+            cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
         } else {
             cell.proxyAvatar.isHidden = true
             cell.byProxyLabel.isHidden = true
         }
         
-        cell.teamVoteLabel.text = "TEAM VOTE"
+        cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
         let teamVote = "?"
         cell.teamVotePercentValue.text = teamVote
         
-        cell.submitButton.setTitle("Vote Submitted", for: .normal)
-        cell.resetButton.setTitle("Reset vote", for: .normal)
+        cell.submitButton.setTitle("Team.ClaimCell.voteSubmitted", for: .normal)
+        cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
         
         let avatars = claim.otherAvatars.flatMap { URL(string: service.server.avatarURLstring(for: $0)) }
         let label: String?  =  claim.otherCount > 0 ? "\(claim.otherCount)" : nil
@@ -94,26 +94,26 @@ struct ClaimCellBuilder {
     }
     
     static func populateClaimDetails(cell: ClaimDetailsCell, with claim: EnhancedClaimEntity) {
-        cell.titleLabel.text = "CLAIM DETAILS"
+        cell.titleLabel.text = "Team.ClaimCell.claimDetails".localized
         
-        cell.claimAmountLabel.text = "Claim Amount"
+        cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
         let currency = "$"
         let claimAmount = String(format: "%.2f", claim.claimAmount)
         cell.claimAmountValueLabel.text = currency + claimAmount
         
-        cell.estimatedExpencesLabel.text = "Estimated expenses"
+        cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
         let estimatedExpenses = String(format: "%.2f", claim.estimatedExpences)
         cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses
         
-        cell.deductibleLabel.text = "Deductible"
+        cell.deductibleLabel.text = "Team.ClaimCell.deductible".localized
         let deductible = String(format: "%.2f", claim.deductible)
         cell.deductibleValueLabel.text = currency + deductible
         
-        cell.coverageLabel.text = "Coverage"
+        cell.coverageLabel.text = "Team.ClaimCell.coverage".localized
         let coverage = "\(Int((claim.coverage * 100).rounded()))"
         cell.coverageValueLabel.text = coverage + "%"
         
-        cell.incidentDateLabel.text = "Incident date"
+        cell.incidentDateLabel.text = "Team.ClaimCell.incidentDate".localized
         claim.incidentDate.map { cell.incidentDateValueLabel.text = DateFormatter.teambrellaShort.string(from: $0) }
     }
     

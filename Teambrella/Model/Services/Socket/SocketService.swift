@@ -42,11 +42,16 @@ class SocketService {
     func stop() {
         socket.disconnect()
     }
+    
+    func auth() {
+        socket.write(string: "0;1;16")
+    }
 }
 
 extension SocketService: WebSocketDelegate {
     func websocketDidConnect(socket: WebSocket) {
         print("Websocket connected")
+        auth()
     }
     
     func websocketDidReceiveData(socket: WebSocket, data: Data) {

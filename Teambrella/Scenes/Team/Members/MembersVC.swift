@@ -54,14 +54,14 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Members")
+        return IndicatorInfo(title: "Team.MembersVC.indicatorTitle".localized)
     }
     
     private func configureSearchController() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = true
-        searchController.searchBar.placeholder = "Search here..."
+        searchController.searchBar.placeholder = "Team.MembersVC.searchHere".localized
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
         

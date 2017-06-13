@@ -23,7 +23,7 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Feed")
+        return IndicatorInfo(title: "Team.FeedVC.indicatorTitle".localized)
     }
 
     /*

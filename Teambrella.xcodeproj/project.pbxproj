@@ -189,6 +189,7 @@
 		6DF2E8BC1EF0232700C8D60B /* CellDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8BB1EF0232700C8D60B /* CellDecorator.swift */; };
 		6DF2E8BE1EF02F8200C8D60B /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8BD1EF02F8200C8D60B /* SocketService.swift */; };
 		6DF2E8C11EF0346F00C8D60B /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF2E8C01EF0346F00C8D60B /* Starscream.framework */; };
+		6DF2E8C71EF057DB00C8D60B /* Team.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DF2E8C51EF057DB00C8D60B /* Team.strings */; };
 		6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */; };
 		6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */; };
 		6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
@@ -416,6 +417,8 @@
 		6DF2E8BB1EF0232700C8D60B /* CellDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellDecorator.swift; path = Helpers/CellDecorator.swift; sourceTree = "<group>"; };
 		6DF2E8BD1EF02F8200C8D60B /* SocketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketService.swift; path = Model/Services/Socket/SocketService.swift; sourceTree = "<group>"; };
 		6DF2E8C01EF0346F00C8D60B /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
+		6DF2E8C61EF057DB00C8D60B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Team.strings; sourceTree = "<group>"; };
+		6DF2E8C81EF05B2100C8D60B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Team.strings; sourceTree = "<group>"; };
 		6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadTVC.swift; path = Scenes/Sample/ThreadTVC.swift; sourceTree = "<group>"; };
 		6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadPostCell.swift; path = Scenes/Sample/ThreadPostCell.swift; sourceTree = "<group>"; };
 		6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -486,6 +489,7 @@
 				6D097E951E9D19F400E77DAB /* Test.strings */,
 				6D097E9A1E9D1AD200E77DAB /* Test.stringsdict */,
 				6D097EA61E9D220A00E77DAB /* General.strings */,
+				6DF2E8C51EF057DB00C8D60B /* Team.strings */,
 			);
 			name = Localizations;
 			sourceTree = "<group>";
@@ -1165,6 +1169,7 @@
 				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
 				6D9C808E1EDF17D000FB8C2C /* AkkuratPro-Bold.otf in Resources */,
 				6D73C6E01EBB36A700A2C0F8 /* Transactions.storyboard in Resources */,
+				6DF2E8C71EF057DB00C8D60B /* Team.strings in Resources */,
 				6DDE95851EE853550019DA47 /* ClaimOptionsCell.xib in Resources */,
 				6D9CC6271ED5EA81007F936E /* Team.storyboard in Resources */,
 				6D9CC6301ED5EBA8007F936E /* Login.storyboard in Resources */,
@@ -1612,6 +1617,15 @@
 				6DA475AD1E8ABEE600B56D9B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6DF2E8C51EF057DB00C8D60B /* Team.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DF2E8C61EF057DB00C8D60B /* en */,
+				6DF2E8C81EF05B2100C8D60B /* es */,
+			);
+			name = Team.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

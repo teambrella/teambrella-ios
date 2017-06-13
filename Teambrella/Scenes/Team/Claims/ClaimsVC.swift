@@ -35,7 +35,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Claims")
+        return IndicatorInfo(title: "Team.ClaimsVC.indicatorTitle".localized)
     }
     
 }

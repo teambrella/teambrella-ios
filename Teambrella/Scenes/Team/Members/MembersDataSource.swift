@@ -53,18 +53,18 @@ class MembersDatasource {
     func headerTitle(indexPath: IndexPath) -> String {
         switch type(indexPath: indexPath) {
         case .new:
-            return "NEW TEAMMATES"
+            return "Team.Teammates.newTeammates".localized
         case .teammate:
-            return "TEAMMATES"
+            return "Team.Teammates.teammates".localized
         }
     }
     
     func headerSubtitle(indexPath: IndexPath) -> String {
         switch type(indexPath: indexPath) {
         case .new:
-            return "VOTING ENDS IN"
+            return "Team.Teammates.votingEndsIn".localized
         case .teammate:
-            return "NET"
+            return "Team.Teammates.net".localized
         }
     }
     

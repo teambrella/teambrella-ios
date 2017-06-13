@@ -30,12 +30,12 @@ struct TeammateCellBuilder {
         let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
         cell.avatarView.kf.setImage(with: url)
         if let left = cell.leftNumberView {
-            left.titleLabel.text = "COVERS ME"
+            left.titleLabel.text = "Team.TeammateCell.coversMe".localized
             let amount = teammate.extended?.basic.coversMeAmount
             left.amountLabel.text = textFor(amount: amount)
         }
         if let right = cell.rightNumberView {
-            right.titleLabel.text = "COVER THEM"
+            right.titleLabel.text = "Team.TeammateCell.coverThem".localized
             let amount = teammate.extended?.basic.iCoverThemAmount
             right.amountLabel.text = textFor(amount: amount)
         }
@@ -44,25 +44,25 @@ struct TeammateCellBuilder {
         cell.subtitle.text = extended.basic.city
         if extended.basic.isProxiedByMe {
             cell.infoLabel.isHidden = false
-            cell.infoLabel.text = "You are proxy for \(extended.basic.name)"
+            cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(extended.basic.name)
         }
     }
     
     private static func populateObject(cell: TeammateObjectCell, with teammate: TeammateLike) -> Any? {
         cell.nameLabel.text = "\(teammate.model), \(teammate.year)"
         
-        cell.statusLabel.text = "COVERED"
-        cell.detailsLabel.text = "Collision Deductible"
+        cell.statusLabel.text = "Team.TeammateCell.covered".localized
+        cell.detailsLabel.text = "Team.TeammateCell.collisionDeductible".localized
         if let left = cell.numberBar.left {
-            left.titleLabel.text = "LIMIT"
+            left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = textFor(amount: teammate.extended?.object.claimLimit)
         }
         if let middle = cell.numberBar.middle {
-            middle.titleLabel.text = "NET"
+            middle.titleLabel.text = "Team.Teammates.net".localized
             middle.amountLabel.text = textFor(amount: teammate.extended?.basic.totallyPaidAmount)
         }
         if let right = cell.numberBar.right {
-            right.titleLabel.text = "RISK FACTOR"
+            right.titleLabel.text = "Team.TeammateCell.riskFactor"
             right.amountLabel.text = textFor(amount: teammate.risk)
             right.badgeLabel.text = "1x47xAVG"
             right.isBadgeVisible = true
@@ -77,39 +77,40 @@ struct TeammateCellBuilder {
     }
     
     private static func populateStats(cell: TeammateStatsCell, with stats: TeammateStats) {
-        cell.headerLabel.text = "VOTING STATS"
+        cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
         if let left = cell.numberBar.left {
-            left.titleLabel.text = "WEIGHT"
+            left.titleLabel.text = "Team.TeammateCell.weight".localized
             left.amountLabel.text = textFor(amount: stats.weight)
         }
         if let right = cell.numberBar.right {
-            right.titleLabel.text = "PROXY RANK"
+            right.titleLabel.text = "Team.TeammateCell.proxyRank".localized
             right.amountLabel.text = textFor(amount: stats.proxyRank)
             right.isBadgeVisible = false
         }
-        cell.decisionsLabel.text = "Decisions"
+        cell.decisionsLabel.text = "Team.TeammateCell.decisions".localized
         cell.decisionsBar.autoSet(value: stats.decisionFrequency)
         cell.decisionsBar.rightText = decisionsText(from: stats.decisionFrequency).uppercased()
-        cell.discussionsLabel.text = "Discussions"
+        cell.discussionsLabel.text = "Team.TeammateCell.discussions".localized
         cell.discussionsBar.autoSet(value: stats.discussionFrequency)
         cell.discussionsBar.rightText = discussionsText(from: stats.discussionFrequency).uppercased()
-        cell.frequencyLabel.text = "Voting Frequency"
+        cell.frequencyLabel.text = "Team.TeammateCell.votingFrequency".localized
         cell.frequencyBar.autoSet(value: stats.votingFrequency)
         cell.frequencyBar.rightText = frequencyText(from: stats.votingFrequency).uppercased()
     }
     
     private static func populateDiscussion(cell: DiscussionCell, with stats: Topic, avatar: String) {
         cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: avatar)))
-        cell.titleLabel.text = "Application Discussion"
+        cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
         switch stats.minutesSinceLastPost {
         case 0:
-            cell.timeLabel.text = "JUST NOW"
+            cell.timeLabel.text = "Team.TeammateCell.timeLabel.justNow".localized
         case 1..<60:
-            cell.timeLabel.text = "\(stats.minutesSinceLastPost) MIN AGO"
+            cell.timeLabel.text = "Team.TeammateCell.timeLabel.minutes_format_i".localized(stats.minutesSinceLastPost)
         case 60...(60 * 24):
-            cell.timeLabel.text = "\(stats.minutesSinceLastPost / 60) HR AGO"
+            let hours = stats.minutesSinceLastPost / 60
+            cell.timeLabel.text = "Team.TeammateCell.timeLabel.hours_format_i".localized(hours)
         default:
-            cell.timeLabel.text = "LONG AGO"
+            cell.timeLabel.text = "Team.TeammateCell.timeLabel.longAgo".localized
         }
         let message = TextAdapter().parsedHTML(string: stats.originalPostText)
         cell.textLabel.text = message
@@ -126,7 +127,7 @@ struct TeammateCellBuilder {
             fatalError("TeammateContactCell should have table view data source")
         }
         
-        cell.headerLabel.text = "CONTACT"
+        cell.headerLabel.text = "Team.TeammateCell.contact".localized
         let delegate = delegate as? UITableViewDelegate
         cell.tableView.delegate = delegate
         cell.tableView.dataSource = dataSource
@@ -136,38 +137,38 @@ struct TeammateCellBuilder {
     private static func decisionsText(from value: Double) -> String {
         let value = Int(value * 100)
         switch value {
-        case 0..<30: return "generous"
-        case 30..<45: return "mild"
-        case 45..<55: return "moderate"
-        case 55..<70: return "severe"
-        case 70...100: return "harsh"
-        default: return "unknown"
+        case 0..<30: return "Team.Decisions.generous".localized
+        case 30..<45: return "Team.Decisions.mild".localized
+        case 45..<55: return "Team.Decisions.moderate".localized
+        case 55..<70: return "Team.Decisions.severe".localized
+        case 70...100: return "Team.Decisions.harsh".localized
+        default: return "Team.unknown".localized
         }
     }
     
     private static func discussionsText(from value: Double) -> String {
         let value = Int(value * 100)
         switch value {
-        case 0..<3: return "quiet"
-        case 3..<10: return "reserved"
-        case 10..<25: return "moderate"
-        case 25..<50: return "sociable"
-        case 50...100: return "chatty"
-        default: return "unknown"
+        case 0..<3: return "Team.Discussions.quiet".localized
+        case 3..<10: return "Team.Discussions.reserved".localized
+        case 10..<25: return "Team.Discussions.moderate".localized
+        case 25..<50: return "Team.Discussions.sociable".localized
+        case 50...100: return "Team.Discussions.chatty".localized
+        default: return "Team.unknown".localized
         }
     }
     
     private static func frequencyText(from value: Double) -> String {
         let value = Int(value * 100)
         switch value {
-        case 0: return "never"
-        case 1..<5: return "rarely"
-        case 5..<15: return "occasionally"
-        case 15..<30: return "frequently"
-        case 30..<60: return "often"
-        case 60..<95: return "regularly"
-        case 95...100: return "always"
-        default: return "unknown"
+        case 0: return "Team.Frequency.never".localized
+        case 1..<5: return "Team.Frequency.rarely".localized
+        case 5..<15: return "Team.Frequency.occasionally".localized
+        case 15..<30: return "Team.Frequency.frequently".localized
+        case 30..<60: return "Team.Frequency.often".localized
+        case 60..<95: return "Team.Frequency.regularly".localized
+        case 95...100: return "Team.Frequency.always".localized
+        default: return "Team.unknown".localized
         }
     }
     

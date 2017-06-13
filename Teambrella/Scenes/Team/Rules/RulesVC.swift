@@ -23,7 +23,7 @@ class RulesVC: UIViewController, IndicatorInfoProvider {
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Rules")
+        return IndicatorInfo(title: "Team.RulesVC.indicatorTitle".localized)
     }
     /*
     // MARK: - Navigation
