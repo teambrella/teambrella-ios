@@ -17,6 +17,7 @@ class ServicesHandler {
     lazy var server = ServerService()
     lazy var transformer = TransformerService()
     lazy var router = MainRouter()
+    lazy var socket = SocketService()
     
     private init() {}
     

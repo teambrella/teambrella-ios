@@ -31,4 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                                      annotation: annotation)
     }
     
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        service.socket.start()
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        service.socket.stop()
+    }
+    
 }

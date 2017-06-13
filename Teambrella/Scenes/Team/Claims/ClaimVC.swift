@@ -33,6 +33,16 @@ class ClaimVC: UIViewController, Routable {
         }
         dataSource.loadData(claimID: claim.id)
         manageNavigationBar()
+        service.socket.add(listener: self) { [weak self] string in
+            let alert = UIAlertController(title: "Socket message", message: string, preferredStyle: .actionSheet)
+            let cancel = UIAlertAction(title: "Cool", style: .cancel, handler: nil)
+            alert.addAction(cancel)
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    deinit {
+        service.socket.remove(listener: self)
     }
     
     func reloadData() {
