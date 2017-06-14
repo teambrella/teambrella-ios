@@ -26,12 +26,18 @@ class HomeVC: UIViewController {
     @IBOutlet var rightBrickCurrencyLabel: UILabel!
     
     @IBOutlet var pageControl: UIPageControl!
-
+    
     @IBOutlet var itemCard: ItemCard!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        title = "Main.home".localized
+        tabBarItem.title = "Main.home".localized
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupTransparentNavigationBar()
         gradientView.setup(colors: [#colorLiteral(red: 0.1803921569, green: 0.2392156863, blue: 0.7960784314, alpha: 1), #colorLiteral(red: 0.2156862745, green: 0.2705882353, blue: 0.8078431373, alpha: 1), #colorLiteral(red: 0.368627451, green: 0.4156862745, blue: 0.8588235294, alpha: 1)],
                            locations: [0.0, 0.5, 1.0])
@@ -41,26 +47,26 @@ class HomeVC: UIViewController {
         super.viewDidAppear(animated)
         scrollViewDidScroll(collectionView)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func tapPageControl(_ sender: UIPageControl) {
         let indexPath = IndexPath(row: sender.currentPage, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension HomeVC: UICollectionViewDataSource {
@@ -89,7 +95,7 @@ extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-    
+        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -110,7 +116,7 @@ extension HomeVC: UICollectionViewDataSource {
             let scaleTransform = CATransform3DMakeScale(scaleMultiplier, scaleMultiplier, 1.0)
             cell.layer.transform = scaleTransform
         }
-         pageControl.currentPage = idx
+        pageControl.currentPage = idx
     }
 }
 

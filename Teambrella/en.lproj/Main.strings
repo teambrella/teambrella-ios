@@ -6,7 +6,7 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Main.home" = "Inicio";
-"Main.team" = "Equipo";
-"Main.proxies" = "Proxy";
+"Main.home" = "Home";
+"Main.team" = "Team";
+"Main.proxies" = "Proxies";
 "Main.me" = "me";

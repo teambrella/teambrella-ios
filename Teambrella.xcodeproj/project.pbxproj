@@ -190,6 +190,9 @@
 		6DF2E8BE1EF02F8200C8D60B /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8BD1EF02F8200C8D60B /* SocketService.swift */; };
 		6DF2E8C11EF0346F00C8D60B /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF2E8C01EF0346F00C8D60B /* Starscream.framework */; };
 		6DF2E8C71EF057DB00C8D60B /* Team.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DF2E8C51EF057DB00C8D60B /* Team.strings */; };
+		6DF2E8CB1EF194E400C8D60B /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DF2E8C91EF194E400C8D60B /* Main.strings */; };
+		6DF2E8CE1EF1979300C8D60B /* ProxiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */; };
+		6DF2E8D01EF197D100C8D60B /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8CF1EF197D100C8D60B /* MeVC.swift */; };
 		6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */; };
 		6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */; };
 		6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
@@ -419,6 +422,10 @@
 		6DF2E8C01EF0346F00C8D60B /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
 		6DF2E8C61EF057DB00C8D60B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Team.strings; sourceTree = "<group>"; };
 		6DF2E8C81EF05B2100C8D60B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Team.strings; sourceTree = "<group>"; };
+		6DF2E8CA1EF194E400C8D60B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		6DF2E8CC1EF1961C00C8D60B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxiesVC.swift; path = Scenes/Proxies/ProxiesVC.swift; sourceTree = "<group>"; };
+		6DF2E8CF1EF197D100C8D60B /* MeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeVC.swift; path = Scenes/Me/MeVC.swift; sourceTree = "<group>"; };
 		6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadTVC.swift; path = Scenes/Sample/ThreadTVC.swift; sourceTree = "<group>"; };
 		6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadPostCell.swift; path = Scenes/Sample/ThreadPostCell.swift; sourceTree = "<group>"; };
 		6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -490,6 +497,7 @@
 				6D097E9A1E9D1AD200E77DAB /* Test.stringsdict */,
 				6D097EA61E9D220A00E77DAB /* General.strings */,
 				6DF2E8C51EF057DB00C8D60B /* Team.strings */,
+				6DF2E8C91EF194E400C8D60B /* Main.strings */,
 			);
 			name = Localizations;
 			sourceTree = "<group>";
@@ -635,6 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				6D9CC6291ED5EAD3007F936E /* Proxies.storyboard */,
+				6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */,
 			);
 			name = Proxies;
 			sourceTree = "<group>";
@@ -643,6 +652,7 @@
 			isa = PBXGroup;
 			children = (
 				6D9CC62C1ED5EB23007F936E /* Me.storyboard */,
+				6DF2E8CF1EF197D100C8D60B /* MeVC.swift */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -1173,6 +1183,7 @@
 				6DDE95851EE853550019DA47 /* ClaimOptionsCell.xib in Resources */,
 				6D9CC6271ED5EA81007F936E /* Team.storyboard in Resources */,
 				6D9CC6301ED5EBA8007F936E /* Login.storyboard in Resources */,
+				6DF2E8CB1EF194E400C8D60B /* Main.strings in Resources */,
 				6DDE95791EE843540019DA47 /* ClaimVoteCell.xib in Resources */,
 				6DDE95691EE806F80019DA47 /* ImageGalleryCell.xib in Resources */,
 			);
@@ -1446,6 +1457,7 @@
 				6D9CC6471ED746FF007F936E /* HomeVC.swift in Sources */,
 				6D466AAF1ED07CF1001BC579 /* EntityEnums.swift in Sources */,
 				6DEC07521E9BDA310078F40E /* TeammateVC.swift in Sources */,
+				6DF2E8D01EF197D100C8D60B /* MeVC.swift in Sources */,
 				6DA714F61EE02BA000F39EBE /* TeammateContactCell.swift in Sources */,
 				6D6DA2581EE1C69400307C73 /* ClaimsViewAllCell.swift in Sources */,
 				6D91BC041EB3900700FDC332 /* UUID.swift in Sources */,
@@ -1481,6 +1493,7 @@
 				6D466AB21ED07CF1001BC579 /* TeambrellaService.swift in Sources */,
 				6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */,
 				6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */,
+				6DF2E8CE1EF1979300C8D60B /* ProxiesVC.swift in Sources */,
 				6D83EC901EDD765F000412DC /* TeamRouter.swift in Sources */,
 				6D9CC6171ED48416007F936E /* UIStoryboardSegue.swift in Sources */,
 				6DDE95801EE84FFD0019DA47 /* ClaimDetailsCell.swift in Sources */,
@@ -1626,6 +1639,15 @@
 				6DF2E8C81EF05B2100C8D60B /* es */,
 			);
 			name = Team.strings;
+			sourceTree = "<group>";
+		};
+		6DF2E8C91EF194E400C8D60B /* Main.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DF2E8CA1EF194E400C8D60B /* en */,
+				6DF2E8CC1EF1961C00C8D60B /* es */,
+			);
+			name = Main.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

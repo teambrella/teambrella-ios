@@ -48,6 +48,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateObject(cell: TeammateObjectCell, with teammate: TeammateLike) {
+        cell.titleLabel.text = "Team.TeammateCell.object".localized
         cell.nameLabel.text = "\(teammate.model), \(teammate.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
@@ -61,7 +62,7 @@ struct TeammateCellBuilder {
             middle.amountLabel.text = textFor(amount: teammate.extended?.basic.totallyPaidAmount)
         }
         if let right = cell.numberBar.right {
-            right.titleLabel.text = "Team.TeammateCell.riskFactor"
+            right.titleLabel.text = "Team.TeammateCell.riskFactor".localized
             right.amountLabel.text = textFor(amount: teammate.risk)
             right.badgeLabel.text = "1x47xAVG"
             right.isBadgeVisible = true
@@ -95,6 +96,7 @@ struct TeammateCellBuilder {
         cell.frequencyLabel.text = "Team.TeammateCell.votingFrequency".localized
         cell.frequencyBar.autoSet(value: stats.votingFrequency)
         cell.frequencyBar.rightText = frequencyText(from: stats.votingFrequency).uppercased()
+        cell.addButton.setTitle("Team.TeammateCell.addToMyProxyVoters".localized, for: .normal)
     }
     
     private static func populateDiscussion(cell: DiscussionCell, with stats: Topic, avatar: String) {
@@ -119,6 +121,7 @@ struct TeammateCellBuilder {
         let morePersons = stats.posterCount - urls.count
         let text: String? = morePersons > 0 ? "+\(morePersons)" : nil
         cell.teammatesAvatarStack.set(images: urls, label: text, max: 4)
+        cell.discussionLabel.text = "Team.TeammateCell.discussion".localized
     }
     
     private static func populateContact(cell: TeammateContactCell, with teammate: TeammateLike, delegate: Any?) {

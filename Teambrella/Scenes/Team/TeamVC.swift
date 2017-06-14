@@ -10,6 +10,13 @@ import UIKit
 import XLPagerTabStrip
 
 class TeamVC: ButtonBarPagerTabStripViewController {
+    
+    override func awakeFromNib() {
+    super.awakeFromNib()
+        title = "Main.team".localized
+        tabBarItem.title = "Main.team".localized
+    }
+    
     override func viewDidLoad() {
         setupTabLayout()
         super.viewDidLoad()

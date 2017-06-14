@@ -16,6 +16,8 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     @IBOutlet var searchViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet var inviteFriendButton: BorderedButton!
+    
     let dataSource = MembersDatasource()
     var searchController: UISearchController!
     fileprivate var previousScrollOffset: CGFloat = 0
@@ -45,7 +47,7 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
         
         activityIndicator.startAnimating()
         dataSource.loadData()
-        // Do any additional setup after loading the view.
+        title = "Team.team".localized
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,10 +64,13 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "Team.MembersVC.searchHere".localized
+        searchBar.placeholder = "Team.MembersVC.searchHere".localized
+            
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
         
         searchBar.backgroundImage = UIImage()
+        inviteFriendButton.setTitle("Team.MembersVC.inviteAFriend".localized, for: .normal)
         
     }
     

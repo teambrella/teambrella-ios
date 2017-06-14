@@ -118,7 +118,9 @@ struct ClaimCellBuilder {
     }
     
     static func populateClaimOptions(cell: ClaimOptionsCell, with claim: EnhancedClaimEntity) {
-        
+        cell.allVotesLabel.text = "Team.TeammateCell.allVotes".localized
+        cell.cashFlowLabel.text = "Team.TeammateCell.cashFlow".localized
+        cell.transactionsLabel.text = "Team.TeammateCell.transactions".localized
     }
     
 }

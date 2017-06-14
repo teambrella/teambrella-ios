@@ -348,6 +348,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="XVz-nE-TjQ" id="vEL-L4-Cli"/>
                         <outlet property="collectionView" destination="pBm-Fr-UWK" id="beJ-zC-0Xs"/>
+                        <outlet property="inviteFriendButton" destination="fxN-1F-D8t" id="Zhd-V4-7WC"/>
                         <outlet property="searchBar" destination="OUQ-Zh-QkO" id="fOl-94-tol"/>
                         <outlet property="searchView" destination="jvl-QB-fgG" id="hmc-dn-7OG"/>
                         <outlet property="searchViewTopConstraint" destination="5GA-Np-kuC" id="ReQ-xq-sab"/>
