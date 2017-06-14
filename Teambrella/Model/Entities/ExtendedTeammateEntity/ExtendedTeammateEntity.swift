@@ -20,35 +20,7 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
     let voting: TeammateVotingInfo?
     let object: CoveredObject
     let stats: TeammateStats
-    
-    /*
-    var couldVoteCount: Int?
-    var coverageReduceInterval: Int?
-    var coverageReduceTime: Int?
-    var coverageReduceTimePrevious: Int?
-    var dateCreated: Date?
-    var dateJoined: Date?
-    var dateUpdated: Date?
-    var dateVotingFinished: Date?
-    var isMyProxyVoter: Bool?
-    var keywords: [String]?
-    var maritalStatus: MaritalStatus?
-    var maxPaymentLimitFiat: Int?
-    var maxPaymentFiat: Int?
-    
-    var price: Int?
-    var role: Int?
-    var spayed: Int?
-    var state: Int?
-    var subType: Int?
-    var topicID: String?
-    var totallyPaidFiat: Double?
-    var votedByProxyTimes: Int?
-    var weight: Double?
-    
-    var smallPhotos: [String]?
-    var largePhotos: [String]?
-    */
+
     var description: String {
         return "ExtendedTeammateEntity \(id)"
     }
@@ -57,21 +29,6 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
         id = json["UserId"].stringValue
         ver = json["Ver"].int64Value
         lastUpdated = json["LastUpdated"].int64Value
-        
-        /*
-        price = json["Price"].int
-        role = json["Role"].int
-        spayed = json["Spayed"].int
-        state = json["State"].int
-        subType = json["SubType"].int
-        topicID = json["TopicId"].string
-        totallyPaidFiat = json["TotallyPaid_Fiat"].double
-        votedByProxyTimes = json["VotedByProxyTimes"].int
-        weight = json["Weight"].double
-        
-        smallPhotos = json["SmallPhotos"].rawValue as? [String]
-        largePhotos = json["BigPhotos"].rawValue as? [String]
-        */
         topic = TopicFactory.topic(with: json["DiscussionPart"])
         basic = TeammateBasicInfo(json: json["BasicPart"])
         voting = TeammateVotingInfo(json: json["VotingPart"])

@@ -1,4 +1,4 @@
-/* 
+/*
   Team.strings
   Teambrella
 
@@ -8,78 +8,79 @@
 
 // Claims
 
-"Team.ClaimsVC.indicatorTitle" = "Claims";
-"Team.ClaimsCell.claimed" = "claimed";
-"Team.ClaimsCell.viewToVote" = "View to vote";
-"Team.ClaimsCell.reimbursed" = "Reimbursed";
+"Team.ClaimsVC.indicatorTitle"                 = "Claims";
+"Team.ClaimsCell.claimed"                      = "claimed";
+"Team.ClaimsCell.viewToVote"                   = "View to vote";
+"Team.ClaimsCell.reimbursed"                   = "Reimbursed";
 
-"Team.ClaimCell.claimID_format" = "Claim %@";
-"Team.ClaimCell.timePassed_format" = "%d min ago";
+"Team.ClaimCell.claimID_format"                = "Claim %@";
+"Team.ClaimCell.timePassed_format"             = "%d min ago";
 
-"Team.ClaimCell.voting" = "Voting";
-"Team.ClaimCell.remainingMinutes_format" = "%d min";
-"Team.ClaimCell.yourVote" = "your vote";
-"Team.ClaimCell.byProxy" = "by proxy";
-"Team.ClaimCell.teamVote" = "team vote";
-"Team.ClaimCell.voteSubmitted" = "Vote Submitted";
-"Team.ClaimCell.resetVote" = "Reset vote";
-"Team.ClaimCell.claimDetails" = "CLAIM DETAILS";
-"Team.ClaimCell.claimAmount" = "Claim Amount";
-"Team.ClaimCell.estimatedExpences" = "Estimated expenses";
-"Team.ClaimCell.deductible" = "Deductible";
-"Team.ClaimCell.coverage" = "Coverage";
-"Team.ClaimCell.incidentDate" = "Incident date";
+"Team.ClaimCell.voting"                        = "Voting";
+"Team.ClaimCell.remainingMinutes_format"       = "%d min";
+"Team.ClaimCell.yourVote"                      = "your vote";
+"Team.ClaimCell.byProxy"                       = "by proxy";
+"Team.ClaimCell.teamVote"                      = "team vote";
+"Team.ClaimCell.voteSubmitted"                 = "Vote Submitted";
+"Team.ClaimCell.resetVote"                     = "Reset vote";
+"Team.ClaimCell.claimDetails"                  = "CLAIM DETAILS";
+"Team.ClaimCell.claimAmount"                   = "Claim Amount";
+"Team.ClaimCell.estimatedExpences"             = "Estimated expenses";
+"Team.ClaimCell.deductible"                    = "Deductible";
+"Team.ClaimCell.coverage"                      = "Coverage";
+"Team.ClaimCell.incidentDate"                  = "Incident date";
 
-"Team.FeedVC.indicatorTitle" = "Feed";
+"Team.FeedVC.indicatorTitle"                   = "Feed";
 
-"Team.Teammates.newTeammates" = "NEW TEAMMATES";
-"Team.Teammates.teammates" = "TEAMMATES";
-"Team.Teammates.votingEndsIn" = "VOTING ENDS IN";
-"Team.Teammates.net" = "NET";
-"Team.MembersVC.indicatorTitle" = "Members";
-"Team.MembersVC.searchHere" = "Search here...";
+"Team.Teammates.newTeammates"                  = "NEW TEAMMATES";
+"Team.Teammates.teammates"                     = "TEAMMATES";
+"Team.Teammates.votingEndsIn"                  = "VOTING ENDS IN";
+"Team.Teammates.net"                           = "NET";
+"Team.MembersVC.indicatorTitle"                = "Members";
+"Team.MembersVC.searchHere"                    = "Search here...";
 
-"Team.TeammateCell.coversMe" = "COVERS ME";
-"Team.TeammateCell.coverThem" = "COVER THEM";
-"Team.TeammateCell.youAreProxy_format_s" = "You are proxy for %@";
-"Team.TeammateCell.covered" = "COVERED";
-"Team.TeammateCell.collisionDeductible" = "Collision Deductible";
-"Team.TeammateCell.limit" = "LIMIT";
-"Team.TeammateCell.riskFactor" = "RISK FACTOR";
+"Team.TeammateCell.coversMe"                   = "COVERS ME";
+"Team.TeammateCell.coverThem"                  = "COVER THEM";
+"Team.TeammateCell.youAreProxy_format_s"       = "You are proxy for %@";
+"Team.TeammateCell.covered"                    = "COVERED";
+"Team.TeammateCell.collisionDeductible"        = "Collision Deductible";
+"Team.TeammateCell.limit"                      = "LIMIT";
+"Team.TeammateCell.riskFactor"                 = "RISK FACTOR";
 
-"Team.TeammateCell.votingStats" = "VOTING STATS";
-"Team.TeammateCell.weight" = "WEIGHT";
-"Team.TeammateCell.proxyRank" = "PROXY RANK";
-"Team.TeammateCell.decisions" = "Decisions";
-"Team.TeammateCell.discussions" = "Discussions";
-"Team.TeammateCell.votingFrequency" = "Voting Frequency";
-"Team.TeammateCell.applicationDiscussion" = "Application Discussion";
+"Team.TeammateCell.votingStats"                = "VOTING STATS";
+"Team.TeammateCell.weight"                     = "WEIGHT";
+"Team.TeammateCell.proxyRank"                  = "PROXY RANK";
+"Team.TeammateCell.decisions"                  = "Decisions";
+"Team.TeammateCell.discussions"                = "Discussions";
+"Team.TeammateCell.votingFrequency"            = "Voting Frequency";
+"Team.TeammateCell.applicationDiscussion"      = "Application Discussion";
 
-"Team.TeammateCell.timeLabel.justNow" = "JUST NOW";
+"Team.TeammateCell.timeLabel.justNow"          = "JUST NOW";
 "Team.TeammateCell.timeLabel.minutes_format_i" = "%d MIN AGO";
-"Team.TeammateCell.timeLabel.hours_format_i" = "%d HR AGO";
-"Team.TeammateCell.timeLabel.longAgo" = "LONG AGO";
-"Team.TeammateCell.contact" = "CONTACT";
+"Team.TeammateCell.timeLabel.hours_format_i"   = "%d HR AGO";
+"Team.TeammateCell.timeLabel.longAgo"          = "LONG AGO";
+"Team.TeammateCell.contact"                    = "CONTACT";
+"Team.TeammateCell.buttonTitle_format_i"       = "See Claims (%d)";
 
-"Team.Decisions.generous" = "generous";
-"Team.Decisions.mild" = "mild";
-"Team.Decisions.moderate" = "moderate";
-"Team.Decisions.severe" = "severe";
-"Team.Decisions.harsh" = "harsh";
-"Team.unknown" = "unknown";
+"Team.Decisions.generous"                      = "generous";
+"Team.Decisions.mild"                          = "mild";
+"Team.Decisions.moderate"                      = "moderate";
+"Team.Decisions.severe"                        = "severe";
+"Team.Decisions.harsh"                         = "harsh";
+"Team.unknown"                                 = "unknown";
 
-"Team.Discussions.quiet" = "quiet";
-"Team.Discussions.reserved" = "reserved";
-"Team.Discussions.moderate" = "moderate";
-"Team.Discussions.sociable" = "sociable";
-"Team.Discussions.chatty" = "chatty";
+"Team.Discussions.quiet"                       = "quiet";
+"Team.Discussions.reserved"                    = "reserved";
+"Team.Discussions.moderate"                    = "moderate";
+"Team.Discussions.sociable"                    = "sociable";
+"Team.Discussions.chatty"                      = "chatty";
 
-"Team.Frequency.never" = "never";
-"Team.Frequency.rarely" = "rarely";
-"Team.Frequency.occasionally" = "ocasionally";
-"Team.Frequency.frequently" = "frequently";
-"Team.Frequency.often" = "often";
-"Team.Frequency.regularly" = "regularly";
-"Team.Frequency.always" = "always";
+"Team.Frequency.never"                         = "never";
+"Team.Frequency.rarely"                        = "rarely";
+"Team.Frequency.occasionally"                  = "ocasionally";
+"Team.Frequency.frequently"                    = "frequently";
+"Team.Frequency.often"                         = "often";
+"Team.Frequency.regularly"                     = "regularly";
+"Team.Frequency.always"                        = "always";
 
-"Team.RulesVC.indicatorTitle" = "Rules";
+"Team.RulesVC.indicatorTitle"                  = "Rules";

@@ -10,11 +10,11 @@ import Kingfisher
 import UIKit
 
 struct TeammateCellBuilder {
-    static func populate(cell: UICollectionViewCell, with teammate: TeammateLike, delegate: Any? = nil) -> Any? {
+    static func populate(cell: UICollectionViewCell, with teammate: TeammateLike, delegate: Any? = nil) {
         if let cell = cell as? TeammateSummaryCell {
             populateSummary(cell: cell, with: teammate)
         } else if let cell = cell as? TeammateObjectCell {
-            return populateObject(cell: cell, with: teammate)
+          populateObject(cell: cell, with: teammate)
         } else if let cell = cell as? TeammateContactCell {
             populateContact(cell: cell, with: teammate, delegate: delegate)
         } else if let cell = cell as? DiscussionCell, let topic = teammate.extended?.topic {
@@ -22,7 +22,6 @@ struct TeammateCellBuilder {
         } else if let cell = cell as? TeammateStatsCell, let stats = teammate.extended?.stats {
             populateStats(cell: cell, with: stats)
         }
-        return nil
     }
     
     private static func populateSummary(cell: TeammateSummaryCell, with teammate: TeammateLike) {
@@ -48,7 +47,7 @@ struct TeammateCellBuilder {
         }
     }
     
-    private static func populateObject(cell: TeammateObjectCell, with teammate: TeammateLike) -> Any? {
+    private static func populateObject(cell: TeammateObjectCell, with teammate: TeammateLike) {
         cell.nameLabel.text = "\(teammate.model), \(teammate.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
@@ -68,12 +67,12 @@ struct TeammateCellBuilder {
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
         }
-        guard let object = teammate.extended?.object else { return cell.button }
+        guard let object = teammate.extended?.object else { return }
         
         if let imageString = object.smallPhotos.first {
             cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: imageString)))
         }
-        return cell.button
+        cell.button.setTitle("Team.TeammateCell.buttonTitle_format_i".localized(object.claimCount) , for: .normal)
     }
     
     private static func populateStats(cell: TeammateStatsCell, with stats: TeammateStats) {

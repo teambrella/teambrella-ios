@@ -61,10 +61,14 @@ class ClaimsDataSource {
             let key = Key(base58String: ServerService.Constant.fakePrivateKey,
                           timestamp: timestamp)
             
-            let body = RequestBody(key: key, payload:["TeamId": ServerService.Constant.teamID,
-                                                      "Offset": self.offset,
-                                                      "Limit": Constant.loadLimit,
-                                                      "AvatarSize": Constant.avatarSize])
+            var payload: [String: Any] = ["TeamId": ServerService.Constant.teamID,
+                           "Offset": self.offset,
+                           "Limit": Constant.loadLimit,
+                           "AvatarSize": Constant.avatarSize]
+            if let teammate = self.teammate {
+                payload["TeammateIdFilter"] = teammate.id
+            }
+            let body = RequestBody(key: key, payload: payload)
             let request = TeambrellaRequest(type: .claimsList, body: body, success: { [weak self] response in
                 if case .claimsList(let claims) = response {
                     guard let me = self else { return }
