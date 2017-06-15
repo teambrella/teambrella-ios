@@ -11,9 +11,9 @@ import Foundation
 struct CellDecorator {
     static func shadow(for cell: UICollectionViewCell) {
         cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 4)
-        cell.layer.shadowOpacity = 0.1
-        cell.layer.shadowRadius = 2.0
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.layer.shadowOpacity = 0.08
+        cell.layer.shadowRadius = 4.0
         cell.layer.masksToBounds = false
     }
     
