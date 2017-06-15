@@ -25,7 +25,15 @@ final class TeamRouter {
     func presentClaim(claim: ClaimLike) {
         guard let vc = ClaimVC.instantiate() as? ClaimVC else { fatalError("Error instantiating") }
         
-        vc.claim = claim
+        //vc.claim = claim
+        vc.claimID = claim.id
+        service.router.push(vc: vc)
+    }
+    
+    func presentClaim(claimID: String) {
+        guard let vc = ClaimVC.instantiate() as? ClaimVC else { fatalError("Error instantiating") }
+        
+        vc.claimID = claimID
         service.router.push(vc: vc)
     }
 }

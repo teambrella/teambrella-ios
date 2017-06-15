@@ -13,7 +13,7 @@ class ClaimVC: UIViewController, Routable {
     
     static var storyboardName = "Claims"
     
-    var claim: ClaimLike?
+    var claimID: String?
     let dataSource = ClaimDataSource()
     
     var navigationTopLabel: UILabel?
@@ -25,20 +25,24 @@ class ClaimVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let claim = claim else { return }
+        guard let claimID = claimID else { return }
         
         setupCells()
         dataSource.onUpdate = { [weak self] in
             self?.reloadData()
         }
-        dataSource.loadData(claimID: claim.id)
-        manageNavigationBar()
+        dataSource.loadData(claimID: claimID)
         service.socket.add(listener: self) { [weak self] string in
             let alert = UIAlertController(title: "Socket message", message: string, preferredStyle: .actionSheet)
             let cancel = UIAlertAction(title: "Cool", style: .cancel, handler: nil)
             alert.addAction(cancel)
             self?.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        clearNavigationBar()
     }
     
     deinit {
@@ -50,13 +54,15 @@ class ClaimVC: UIViewController, Routable {
         manageNavigationBar()
     }
     
-    func manageNavigationBar() {
-        guard let claim = claim else { return }
-        
+    func clearNavigationBar() {
         navigationTopLabel?.removeFromSuperview()
         navigationTopLabel = nil
         navigationBottomLabel?.removeFromSuperview()
         navigationBottomLabel = nil
+    }
+    
+    func manageNavigationBar() {
+        clearNavigationBar()
         
         if let navigationBar = self.navigationController?.navigationBar {
             let firstFrame = CGRect(x: 0,
@@ -71,7 +77,7 @@ class ClaimVC: UIViewController, Routable {
             firstLabel.textAlignment = .center
             firstLabel.textColor = .white
             firstLabel.font = UIFont.teambrellaBold(size: 17)
-            firstLabel.text = claim.model
+            firstLabel.text = dataSource.claim?.model ?? ""
             firstLabel.sizeToFit()
             firstLabel.center = CGPoint(x: navigationBar.bounds.midX,
                                         y: navigationBar.bounds.midY - firstLabel.frame.height / 2)

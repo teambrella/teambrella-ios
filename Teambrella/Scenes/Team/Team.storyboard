@@ -119,13 +119,13 @@
                     <tabBarItem key="tabBarItem" title="Team" image="iconTeam" id="dXT-U8-WRM"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5fO-Hd-Vf9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5fO-Hd-Vf9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="bQX-e2-aFW" kind="relationship" relationship="rootViewController" id="kA9-Oa-hJV"/>
+                        <segue destination="bQX-e2-aFW" kind="relationship" relationship="rootViewController" id="Q0c-Wa-zVZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j6G-qV-mmH" userLabel="First Responder" sceneMemberID="firstResponder"/>

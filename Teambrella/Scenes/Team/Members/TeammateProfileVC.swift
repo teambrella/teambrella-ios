@@ -42,7 +42,11 @@ class TeammateProfileVC: UIViewController, Routable {
     }
     
     func showClaims(sender: UIButton) {
-        MembersRouter().presentClaims(teammate: teammate)
+        if let claimID = teammate.extended?.object.singleClaimID {
+            TeamRouter().presentClaim(claimID: claimID)
+        } else {
+            MembersRouter().presentClaims(teammate: teammate)
+        }
     }
     
     func registerCells() {
