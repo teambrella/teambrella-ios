@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChatCell" id="gTV-IL-0wX" customClass="ChatCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="442" height="146"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="442" height="146"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFa-a3-Ytg">
+                        <rect key="frame" x="0.0" y="0.0" width="442" height="146"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AFM-Sg-feO">
+                                <rect key="frame" x="16" y="16" width="410" height="103"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frD-JY-pUj" customClass="ThinStatusSubtitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="119" width="427" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AFM-Sg-feO" firstAttribute="bottom" secondItem="frD-JY-pUj" secondAttribute="top" id="8RD-hD-ecS"/>
+                            <constraint firstAttribute="trailing" secondItem="frD-JY-pUj" secondAttribute="trailing" constant="15" id="8ec-kG-e8U"/>
+                            <constraint firstItem="AFM-Sg-feO" firstAttribute="leading" secondItem="tFa-a3-Ytg" secondAttribute="leading" constant="16" id="LcL-Ap-gKR"/>
+                            <constraint firstItem="frD-JY-pUj" firstAttribute="leading" secondItem="tFa-a3-Ytg" secondAttribute="leading" id="Qhx-ZM-qr5"/>
+                            <constraint firstAttribute="trailing" secondItem="AFM-Sg-feO" secondAttribute="trailing" constant="16" id="W8f-X1-9dp"/>
+                            <constraint firstItem="AFM-Sg-feO" firstAttribute="top" secondItem="tFa-a3-Ytg" secondAttribute="top" constant="16" id="Zuc-1A-7A1"/>
+                            <constraint firstAttribute="bottom" secondItem="frD-JY-pUj" secondAttribute="bottom" constant="6" id="oJJ-xf-eMj"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="tFa-a3-Ytg" secondAttribute="bottom" id="EmC-Zg-X3M"/>
+                <constraint firstItem="tFa-a3-Ytg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Tew-fB-qOB"/>
+                <constraint firstItem="tFa-a3-Ytg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="VyE-oI-2Es"/>
+                <constraint firstAttribute="trailing" secondItem="tFa-a3-Ytg" secondAttribute="trailing" id="i62-cq-8ov"/>
+            </constraints>
+            <size key="customSize" width="442" height="146"/>
+            <connections>
+                <outlet property="cloudLeadingConstraint" destination="VyE-oI-2Es" id="A74-81-R9j"/>
+                <outlet property="cloudTrailingConstraint" destination="i62-cq-8ov" id="md4-mp-BII"/>
+                <outlet property="cloudView" destination="tFa-a3-Ytg" id="0jQ-Gc-FKh"/>
+                <outlet property="dateLabel" destination="frD-JY-pUj" id="pet-cu-Gp2"/>
+                <outlet property="stackView" destination="AFM-Sg-feO" id="sa0-29-cEt"/>
+            </connections>
+            <point key="canvasLocation" x="94" y="64"/>
+        </collectionViewCell>
+    </objects>
+</document>

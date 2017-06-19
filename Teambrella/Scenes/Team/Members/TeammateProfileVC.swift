@@ -104,7 +104,10 @@ extension TeammateProfileVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let identifier = dataSource.type(for: indexPath)
+        if identifier == .dialog {
+            TeamRouter().presentChat(teammate: teammate)
+        }
     }
     
 }

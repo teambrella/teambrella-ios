@@ -16,9 +16,9 @@ final class TeamRouter {
     }
     
     func presentChat(topic: Topic) {
-        guard let vc = ChatVC.instantiate() as? ChatVC else { fatalError("Error instantiating") }
+        guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
         
-        vc.createDataSource(topic: topic)
+        //vc.createDataSource(topic: topic)
         service.router.push(vc: vc)
     }
     

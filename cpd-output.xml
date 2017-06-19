@@ -28,4 +28,17 @@
             if case .teammate(let extendedTeammate) = response {
                 me.teammate.extended = extendedTeammate]]></codefragment>
    </duplication>
+   <duplication lines="7" tokens="72">
+      <file line="53"
+            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Team/Chat/UniversalChatVC.swift"/>
+      <file line="61"
+            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Team/Chat/UniversalChatVC.swift"/>
+      <codefragment><![CDATA[    override func keyboardWillShow(notification: Notification) {
+        if let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
+            let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
+            moveInput(height: keyboardFrame.height, duration: duration, curve: curve)
+        }
+    }]]></codefragment>
+   </duplication>
 </pmd-cpd>

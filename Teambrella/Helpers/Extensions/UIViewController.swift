@@ -13,7 +13,7 @@ extension UIViewController {
         performSegue(withIdentifier: type.rawValue, sender: sender)
     }
     
-    func setupForKeyboardResizing() {
+    func listenForKeyboard() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(UIViewController.keyboardWillShow),
                                                name: Notification.Name.UIKeyboardWillShow,
@@ -21,6 +21,10 @@ extension UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(UIViewController.keyboardWillHide),
                                                name: Notification.Name.UIKeyboardWillHide,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(UIViewController.keyboardWillHide),
+                                               name: Notification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
     }
     
@@ -42,6 +46,10 @@ extension UIViewController {
                                      width: self.view.frame.width,
                                      height: viewHeight + keyboardSize.height)
         }
+    }
+    
+    func keyboardWillChangeFrame(notification: Notification) {
+        
     }
     
     func setupTransparentNavigationBar() {
