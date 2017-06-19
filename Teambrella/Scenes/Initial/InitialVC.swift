@@ -13,8 +13,9 @@ class InitialVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         teambrella = TeambrellaService()
+        // Instantly move to product version
+        performSegue(type: .teambrella)
     }
     
     override func viewDidAppear(_ animated: Bool) {
