@@ -12,20 +12,29 @@ final class TeamRouter {
     func presentChat(teammate: TeammateLike) {
         guard let topic = teammate.extended?.topic else { return }
         
-        presentChat(topic: topic)
+        presentChat(topic: topic, teammate: teammate)
     }
     
-    func presentChat(topic: Topic) {
+//    func presentChat(claimID: String?) {
+//        presentChat(topic: nil, claimID: claimID)
+//    }
+    
+    func presentChat(claim: EnhancedClaimEntity?) {
+        presentChat(topic: nil, claim: claim)
+    }
+    
+    func presentChat(topic: Topic?, teammate: TeammateLike? = nil, claim: EnhancedClaimEntity? = nil) {
         guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
         
-        //vc.createDataSource(topic: topic)
+        vc.topic = topic
+        vc.teammate = teammate
+        vc.claim = claim
         service.router.push(vc: vc)
     }
     
     func presentClaim(claim: ClaimLike) {
         guard let vc = ClaimVC.instantiate() as? ClaimVC else { fatalError("Error instantiating") }
         
-        //vc.claim = claim
         vc.claimID = claim.id
         service.router.push(vc: vc)
     }

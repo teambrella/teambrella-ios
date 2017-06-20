@@ -22,4 +22,13 @@ extension Date {
     var iso8601: String {
         return Formatter.iso8601.string(from: self)
     }
+    
+    // C# timestamp format
+    var ticks: UInt64 {
+        return UInt64((self.timeIntervalSince1970 + 62_135_596_800) * 10_000_000)
+    }
+    
+    init(ticks: UInt64) {
+        self.init(timeIntervalSince1970: Double(ticks)/10_000_000 - 62_135_596_800)
+    }
 }

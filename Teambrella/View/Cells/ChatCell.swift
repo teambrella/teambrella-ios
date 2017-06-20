@@ -18,21 +18,30 @@ class ChatCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var cloudLeadingConstraint: NSLayoutConstraint!
     @IBOutlet var cloudTrailingConstraint: NSLayoutConstraint!
     
+    @IBOutlet var widthConstraint: NSLayoutConstraint!
+    
     var isLeadingAlighed: Bool { return cloudLeadingConstraint.constant < 0.001 }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        let screen = UIScreen.main.bounds.width
+        widthConstraint.constant = screen - 16 * 2
     }
     
     func align(offset: CGFloat, toLeading: Bool) {
         cloudLeadingConstraint.constant = toLeading ? 0 : offset
         cloudTrailingConstraint.constant = toLeading ? offset : 0
         setNeedsLayout()
+        setNeedsDisplay()
     }
     
     func clearAll() {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        setNeedsLayout()
+        setNeedsDisplay()
+        layoutIfNeeded()
     }
     
     override func prepareForReuse() {
@@ -41,16 +50,39 @@ class ChatCell: UICollectionViewCell, XIBInitableCell {
     }
     
     func add(text: String) {
-        let label = ChatTextLabel()
+        let label = ChatTextLabel(frame: CGRect(x: 0,
+                                                y: 0,
+                                                width: widthConstraint.constant,
+                                                height: CGFloat.greatestFiniteMagnitude))
+        label.font = UIFont.teambrella(size: 14)
+        label.textColor = .charcoalGray
         label.numberOfLines = 0
         label.text = text
+        label.sizeToFit()
         stackView.addArrangedSubview(label)
     }
     
     func add(image: String) {
         let imageView = UIImageView()
-        imageView.kf.setImage(with: URL(string: image))
+        imageView.addConstraint(NSLayoutConstraint(item: imageView,
+                                                   attribute: .height,
+                                                   relatedBy: .equal,
+                                                   toItem: nil,
+                                                   attribute: .notAnAttribute,
+                                                   multiplier: 1,
+                                                   constant: 150))
+        let key = service.server.key
+        let modifier = AnyModifier { request in
+            var request = request
+            request.addValue("\(key.timestamp)", forHTTPHeaderField: "t")
+            request.addValue(key.publicKey, forHTTPHeaderField: "key")
+            request.addValue(key.signature, forHTTPHeaderField: "sig")
+            return request
+        }
+        imageView.kf.setImage(with: URL(string: image), options: [.requestModifier(modifier)])
+        //imageView.kf.setImage(with: URL(string: image))
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
         stackView.addArrangedSubview(imageView)
     }
     

@@ -16,19 +16,70 @@ class UniversalChatVC: UIViewController, Routable {
     @IBOutlet var input: ChatInputView!
     @IBOutlet var inputViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var inputViewBottomConstraint: NSLayoutConstraint!
+    
+    let dataSource = UniversalChatDatasource()
+    
+      public var endsEditingWhenTappingOnChatBackground = true
+    
+    var topic: Topic? {
+        get { return dataSource.topic }
+        set { dataSource.topic = newValue }
+    }
+    
+    var claim: EnhancedClaimEntity? {
+        get { return dataSource.claim }
+        set { dataSource.claim =  newValue }
+    }
+    
+    var teammate: TeammateLike?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCells()
+        setupCollectionView()
+        setupInput()
+        setupTapGestureRecognizer()
         listenForKeyboard()
-        input.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
-        input.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
+        dataSource.loadNext()
+        dataSource.onUpdate = { [weak self] in
+            self?.collectionView.reloadData()
+        }
+        title = claim?.name ?? "none"
+    }
+    
+//    override var inputAccessoryView: UIView? {
+//        return input
+//    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startListeningSockets()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-        //            layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 100)
-        //        }
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.estimatedItemSize = CGSize(width: 1, height: 1)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopListeningSockets()
+    }
+    
+    private func setupInput() {
+        input.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
+        input.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
+    }
+    
+    private func startListeningSockets() {
+        service.socket.add(listener: self) { message in
+            print("Socket received \(message)")
+        }
+    }
+    
+    private func stopListeningSockets() {
+        service.socket.remove(listener: self)
     }
     
     func tapLeftButton(sender: UIButton) {
@@ -36,7 +87,16 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func tapRightButton(sender: UIButton) {
-        view.endEditing(true)
+        dataSource.send(text: input.textView.text) { [weak self] success in
+            self?.collectionView.reloadData()
+            self?.input.textView.text = nil
+            self?.scrollToBottom(animated: true)
+        }
+    }
+    
+    func setupCollectionView() {
+        registerCells()
+        collectionView.keyboardDismissMode = .interactive
     }
     
     func registerCells() {
@@ -62,12 +122,15 @@ class UniversalChatVC: UIViewController, Routable {
         if let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
             let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
-            moveInput(height: keyboardFrame.height, duration: duration, curve: curve)
+            moveInput(height: view.bounds.height - keyboardFrame.minY, duration: duration, curve: curve)
         }
     }
     
     func moveInput(height: CGFloat, duration: TimeInterval, curve: UInt) {
         inputViewBottomConstraint.constant = height
+//        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
+//        collectionView.contentInset = contentInsets
+//        collectionView.scrollIndicatorInsets = contentInsets
         UIView.animate(withDuration: duration,
                        delay: 0,
                        options: [UIViewAnimationOptions(rawValue: curve)],
@@ -82,6 +145,36 @@ class UniversalChatVC: UIViewController, Routable {
         // Dispose of any resources that can be recreated.
     }
     
+    private func setupTapGestureRecognizer() {
+        collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                   action: #selector(userDidTapOnCollectionView)))
+    }
+    
+    @objc
+    open func userDidTapOnCollectionView() {
+        if self.endsEditingWhenTappingOnChatBackground {
+            self.view.endEditing(true)
+        }
+    }
+    
+    public func scrollToBottom(animated: Bool) {
+        // Cancel current scrolling
+        self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: false)
+ 
+        let offsetY = max(-collectionView.contentInset.top,
+                          collectionView.collectionViewLayout.collectionViewContentSize.height
+                            - collectionView.bounds.height
+                            + collectionView.contentInset.bottom)
+        
+        if animated {
+            UIView.animate(withDuration: 0.33, animations: { () -> Void in
+                self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
+            })
+        } else {
+            self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
+        }
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -91,7 +184,7 @@ extension UniversalChatVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -117,12 +210,11 @@ extension UniversalChatVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         if let cell = cell as? ChatCell {
-            cell.dateLabel.text = "Date"
-            for _ in 0...Random.range(to: 5) {
-                cell.add(text: "Ololo")
-            }
-            cell.align(offset: collectionView.bounds.width * 0.3, toLeading: indexPath.row % 2 == 0)
-            cell.setNeedsDisplay()
+            cell.clearAll()
+            let chatItem = dataSource.posts[indexPath.row]
+            ChatTextParser().populate(cell: cell, with: chatItem)
+            cell.align(offset: collectionView.bounds.width * 0.3, toLeading: chatItem.name != "Iaroslav Pasternak")
+            cell.dateLabel.text = Formatter.teambrellaShort.string(from: chatItem.created)
         }
     }
     
@@ -140,11 +232,13 @@ extension UniversalChatVC: UICollectionViewDelegate {
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
-extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 32, height: 100)
-    }
-    
-}
+//extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//       // let constraintRect = CGSize(width: collectionView.bounds.width, height: CGFloat.max)
+//       
+//        return CGSize(width: collectionView.bounds.width - 32, height: 100)
+//    }
+//    
+//}

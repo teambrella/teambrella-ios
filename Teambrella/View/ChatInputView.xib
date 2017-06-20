@@ -9,10 +9,16 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatInputView" customModule="Teambrella" customModuleProvider="target">
             <connections>
                 <outlet property="leftButton" destination="n63-J1-hZI" id="MT6-jm-fSd"/>
+                <outlet property="placeholderLabel" destination="df6-6a-Qil" id="15G-4a-Vyr"/>
                 <outlet property="rightButton" destination="Vjk-Qt-bsN" id="plu-Ue-kgr"/>
                 <outlet property="textView" destination="mrP-P3-MCz" id="bVd-LL-dw7"/>
             </connections>
@@ -34,10 +40,15 @@
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mrP-P3-MCz">
                     <rect key="frame" x="44" y="8" width="232" height="32"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="df6-6a-Qil">
+                    <rect key="frame" x="52" y="13.5" width="43.5" height="21"/>
+                    <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="17"/>
+                    <color key="textColor" red="0.80784313725490198" green="0.84705882352941175" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vjk-Qt-bsN">
                     <rect key="frame" x="276" y="-4" width="44" height="44"/>
                     <constraints>
@@ -52,11 +63,13 @@
             <constraints>
                 <constraint firstItem="mrP-P3-MCz" firstAttribute="leading" secondItem="n63-J1-hZI" secondAttribute="trailing" id="0iE-63-mJI"/>
                 <constraint firstItem="n63-J1-hZI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CeM-9q-L8O"/>
+                <constraint firstItem="df6-6a-Qil" firstAttribute="centerY" secondItem="mrP-P3-MCz" secondAttribute="centerY" id="ImB-9s-0oL"/>
                 <constraint firstAttribute="trailing" secondItem="Vjk-Qt-bsN" secondAttribute="trailing" id="Kmo-q8-5fd"/>
                 <constraint firstItem="mrP-P3-MCz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="NRf-gj-o4G"/>
                 <constraint firstAttribute="bottom" secondItem="mrP-P3-MCz" secondAttribute="bottom" constant="8" id="clK-wf-T5f"/>
                 <constraint firstItem="Vjk-Qt-bsN" firstAttribute="leading" secondItem="mrP-P3-MCz" secondAttribute="trailing" id="iJ5-9d-nrK"/>
                 <constraint firstItem="n63-J1-hZI" firstAttribute="bottom" secondItem="mrP-P3-MCz" secondAttribute="bottom" id="k9w-Wz-JES"/>
+                <constraint firstItem="df6-6a-Qil" firstAttribute="leading" secondItem="mrP-P3-MCz" secondAttribute="leading" constant="8" id="sJ6-um-5Wr"/>
                 <constraint firstItem="Vjk-Qt-bsN" firstAttribute="bottom" secondItem="mrP-P3-MCz" secondAttribute="bottom" id="yKV-MW-vK3"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

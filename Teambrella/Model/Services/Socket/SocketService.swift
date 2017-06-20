@@ -13,6 +13,8 @@ typealias SocketListenerAction = (String) -> Void
 class SocketService {
     var socket: WebSocket!
     var actions: [AnyHashable: SocketListenerAction] = [:]
+    var isConnected: Bool { return socket.isConnected }
+    var unsentMessage: String?
     
     init(url: URL?) {
         // swiftlint:disable:next force_unwrapping
@@ -28,6 +30,15 @@ class SocketService {
     
     func add(listener: AnyHashable, action: @escaping SocketListenerAction) {
         actions[listener] = action
+    }
+    
+    func send(string: String) {
+        if isConnected {
+            socket.write(string: string)
+        } else {
+            unsentMessage = string
+            start()
+        }
     }
     
     @discardableResult
@@ -51,7 +62,12 @@ class SocketService {
 extension SocketService: WebSocketDelegate {
     func websocketDidConnect(socket: WebSocket) {
         print("Websocket connected")
-        auth()
+        if let message = unsentMessage {
+            send(string: message)
+            unsentMessage = nil
+        } else {
+            auth()
+        }
     }
     
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
@@ -59,7 +75,7 @@ extension SocketService: WebSocketDelegate {
     }
     
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
-         print("Websocket disconnected with error: \(error)")
+        print("Websocket disconnected with error: \(error)")
     }
     
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
