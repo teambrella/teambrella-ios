@@ -55,10 +55,15 @@ class UniversalChatVC: UIViewController, Routable {
         startListeningSockets()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.reloadData()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.estimatedItemSize = CGSize(width: 1, height: 1)
+            layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 1)
         }
     }
     
@@ -91,6 +96,14 @@ class UniversalChatVC: UIViewController, Routable {
             self?.collectionView.reloadData()
             self?.input.textView.text = nil
             self?.scrollToBottom(animated: true)
+            guard let collectionView = self?.collectionView else { return }
+            
+            collectionView.performBatchUpdates({
+                collectionView.reloadSections([0])
+            }, completion: { success in
+                self?.input.textView.text = nil
+                self?.scrollToBottom(animated: true)
+            })
         }
     }
     
@@ -189,8 +202,8 @@ extension UniversalChatVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        return collectionView.dequeueReusableCell(withReuseIdentifier: ChatCell.cellID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatCell.cellID, for: indexPath)
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -210,7 +223,6 @@ extension UniversalChatVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         if let cell = cell as? ChatCell {
-            cell.clearAll()
             let chatItem = dataSource.posts[indexPath.row]
             ChatTextParser().populate(cell: cell, with: chatItem)
             cell.align(offset: collectionView.bounds.width * 0.3, toLeading: chatItem.name != "Iaroslav Pasternak")

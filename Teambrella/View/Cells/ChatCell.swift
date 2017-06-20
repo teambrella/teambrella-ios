@@ -35,13 +35,14 @@ class ChatCell: UICollectionViewCell, XIBInitableCell {
         cloudTrailingConstraint.constant = toLeading ? offset : 0
         setNeedsLayout()
         setNeedsDisplay()
+        layoutIfNeeded()
     }
     
     func clearAll() {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        setNeedsLayout()
-        setNeedsDisplay()
-        layoutIfNeeded()
+//        setNeedsLayout()
+//        setNeedsDisplay()
+//        layoutIfNeeded()
     }
     
     override func prepareForReuse() {
