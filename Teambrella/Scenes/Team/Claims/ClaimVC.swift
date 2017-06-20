@@ -189,7 +189,9 @@ extension ClaimVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if let cell = collectionView.cellForItem(at: indexPath) as?  ImageGalleryCell, let claim = dataSource.claim {
+            TeamRouter().presentChat(claim: claim)
+        }
     }
     
 }
@@ -213,6 +215,6 @@ extension ClaimVC: UICollectionViewDelegateFlowLayout {
 //    func collectionView(_ collectionView: UICollectionView, 
 //                        layout collectionViewLayout: UICollectionViewLayout,
 //                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: collectionView.bounds.width, height: 1)
+//        return CGSize(width: collectionView.bounds.width, height: 100)
 //    }
 }

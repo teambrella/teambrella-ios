@@ -166,6 +166,13 @@
 		6DDE95841EE853550019DA47 /* ClaimOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95821EE853550019DA47 /* ClaimOptionsCell.swift */; };
 		6DDE95851EE853550019DA47 /* ClaimOptionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */; };
 		6DDE95871EE9988D0019DA47 /* PiecewiseFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */; };
+		6DE793291EF80F11005F4508 /* UniversalChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE793281EF80F11005F4508 /* UniversalChatVC.swift */; };
+		6DE7932C1EF80F41005F4508 /* UniversalChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */; };
+		6DE7932F1EF810DB005F4508 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7932D1EF810DB005F4508 /* ChatCell.swift */; };
+		6DE793301EF810DB005F4508 /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DE7932E1EF810DB005F4508 /* ChatCell.xib */; };
+		6DE793321EF83ABA005F4508 /* ChatInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DE793311EF83ABA005F4508 /* ChatInputView.xib */; };
+		6DE793341EF83AD2005F4508 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE793331EF83AD2005F4508 /* ChatInputView.swift */; };
+		6DE793361EF92E34005F4508 /* ChatTextParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE793351EF92E34005F4508 /* ChatTextParser.swift */; };
 		6DEC074C1E9BCF700078F40E /* TeammatesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC074B1E9BCF700078F40E /* TeammatesTVC.swift */; };
 		6DEC074E1E9BD1DB0078F40E /* TeammatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC074D1E9BD1DB0078F40E /* TeammatesCell.swift */; };
 		6DEC07501E9BD59D0078F40E /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */; };
@@ -397,6 +404,13 @@
 		6DDE95821EE853550019DA47 /* ClaimOptionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClaimOptionsCell.swift; path = View/Cells/ClaimOptionsCell.swift; sourceTree = "<group>"; };
 		6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClaimOptionsCell.xib; path = View/Cells/ClaimOptionsCell.xib; sourceTree = "<group>"; };
 		6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PiecewiseFunction.swift; path = Model/PiecewiseFunction.swift; sourceTree = "<group>"; };
+		6DE793281EF80F11005F4508 /* UniversalChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatVC.swift; path = Scenes/Team/Chat/UniversalChatVC.swift; sourceTree = "<group>"; };
+		6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatDataSource.swift; path = Scenes/Team/Chat/UniversalChatDataSource.swift; sourceTree = "<group>"; };
+		6DE7932D1EF810DB005F4508 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatCell.swift; path = View/Cells/ChatCell.swift; sourceTree = "<group>"; };
+		6DE7932E1EF810DB005F4508 /* ChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChatCell.xib; path = View/Cells/ChatCell.xib; sourceTree = "<group>"; };
+		6DE793311EF83ABA005F4508 /* ChatInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChatInputView.xib; path = View/ChatInputView.xib; sourceTree = "<group>"; };
+		6DE793331EF83AD2005F4508 /* ChatInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatInputView.swift; path = View/ChatInputView.swift; sourceTree = "<group>"; };
+		6DE793351EF92E34005F4508 /* ChatTextParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatTextParser.swift; path = Scenes/Team/Chat/ChatTextParser.swift; sourceTree = "<group>"; };
 		6DEC074B1E9BCF700078F40E /* TeammatesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammatesTVC.swift; path = Scenes/Sample/TeammatesTVC.swift; sourceTree = "<group>"; };
 		6DEC074D1E9BD1DB0078F40E /* TeammatesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammatesCell.swift; path = Scenes/Sample/TeammatesCell.swift; sourceTree = "<group>"; };
 		6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -857,9 +871,11 @@
 		6DB812151EE6E68C00B202CE /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				6DB812131EE6E68500B202CE /* ChatVC.swift */,
+				6DE7932A1EF80F20005F4508 /* Suspended */,
 				6DB812161EE6E6A900B202CE /* Chat.storyboard */,
-				6DB812181EE6EBB800B202CE /* ChatDataSource.swift */,
+				6DE793281EF80F11005F4508 /* UniversalChatVC.swift */,
+				6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */,
+				6DE793351EF92E34005F4508 /* ChatTextParser.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -891,6 +907,8 @@
 				6DDE957F1EE84FFD0019DA47 /* ClaimDetailsCell.xib */,
 				6DDE95821EE853550019DA47 /* ClaimOptionsCell.swift */,
 				6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */,
+				6DE7932D1EF810DB005F4508 /* ChatCell.swift */,
+				6DE7932E1EF810DB005F4508 /* ChatCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -953,6 +971,8 @@
 				6DA714F91EE04D4900F39EBE /* ScaleBar.swift */,
 				6DA714FF1EE0786000F39EBE /* RadarView.swift */,
 				6DDE957A1EE84A2C0019DA47 /* PlainButton.swift */,
+				6DE793311EF83ABA005F4508 /* ChatInputView.xib */,
+				6DE793331EF83AD2005F4508 /* ChatInputView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -973,6 +993,15 @@
 				6DDE95741EE835360019DA47 /* ClaimCellBuilder.swift */,
 			);
 			name = Claim;
+			sourceTree = "<group>";
+		};
+		6DE7932A1EF80F20005F4508 /* Suspended */ = {
+			isa = PBXGroup;
+			children = (
+				6DB812131EE6E68500B202CE /* ChatVC.swift */,
+				6DB812181EE6EBB800B202CE /* ChatDataSource.swift */,
+			);
+			name = Suspended;
 			sourceTree = "<group>";
 		};
 		6DEC074A1E9BCF330078F40E /* Samples */ = {
@@ -1173,10 +1202,12 @@
 				6DA714EF1EE00CFB00F39EBE /* NumberBar.xib in Resources */,
 				6D9C808F1EDF17D000FB8C2C /* AkkuratPro-Regular.otf in Resources */,
 				6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */,
+				6DE793321EF83ABA005F4508 /* ChatInputView.xib in Resources */,
 				6D6DA2501EE1B68F00307C73 /* Members.storyboard in Resources */,
 				6D097EA81E9D220A00E77DAB /* General.strings in Resources */,
 				6D097E9C1E9D1AD200E77DAB /* Test.stringsdict in Resources */,
 				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
+				6DE793301EF810DB005F4508 /* ChatCell.xib in Resources */,
 				6D9C808E1EDF17D000FB8C2C /* AkkuratPro-Bold.otf in Resources */,
 				6D73C6E01EBB36A700A2C0F8 /* Transactions.storyboard in Resources */,
 				6DF2E8C71EF057DB00C8D60B /* Team.strings in Resources */,
@@ -1454,10 +1485,12 @@
 				6D35EFC91EAF931000696B42 /* TransactionsTeammateVC.swift in Sources */,
 				6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */,
 				6D466AA51ED07CF1001BC579 /* BtcAddress.swift in Sources */,
+				6DE793341EF83AD2005F4508 /* ChatInputView.swift in Sources */,
 				6D9CC6471ED746FF007F936E /* HomeVC.swift in Sources */,
 				6D466AAF1ED07CF1001BC579 /* EntityEnums.swift in Sources */,
 				6DEC07521E9BDA310078F40E /* TeammateVC.swift in Sources */,
 				6DF2E8D01EF197D100C8D60B /* MeVC.swift in Sources */,
+				6DE7932C1EF80F41005F4508 /* UniversalChatDataSource.swift in Sources */,
 				6DA714F61EE02BA000F39EBE /* TeammateContactCell.swift in Sources */,
 				6D6DA2581EE1C69400307C73 /* ClaimsViewAllCell.swift in Sources */,
 				6D91BC041EB3900700FDC332 /* UUID.swift in Sources */,
@@ -1470,11 +1503,13 @@
 				6DF2E8BC1EF0232700C8D60B /* CellDecorator.swift in Sources */,
 				6DA714FA1EE04D4900F39EBE /* ScaleBar.swift in Sources */,
 				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
+				6DE793361EF92E34005F4508 /* ChatTextParser.swift in Sources */,
 				6D466AB11ED07CF1001BC579 /* TransactionsModel.xcdatamodeld in Sources */,
 				6DB812191EE6EBB800B202CE /* ChatDataSource.swift in Sources */,
 				6D6DA24C1EE18FCA00307C73 /* TextAdapter.swift in Sources */,
 				6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */,
 				6D6DA2561EE1C67700307C73 /* ClaimsPaidCell.swift in Sources */,
+				6DE793291EF80F11005F4508 /* UniversalChatVC.swift in Sources */,
 				6D097EA51E9D219A00E77DAB /* Nameable.swift in Sources */,
 				6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */,
 				6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */,
@@ -1498,6 +1533,7 @@
 				6D9CC6171ED48416007F936E /* UIStoryboardSegue.swift in Sources */,
 				6DDE95801EE84FFD0019DA47 /* ClaimDetailsCell.swift in Sources */,
 				6D6DA25E1EE1D1BB00307C73 /* ClaimEntity.swift in Sources */,
+				6DE7932F1EF810DB005F4508 /* ChatCell.swift in Sources */,
 				6D9CC6101ED2E230007F936E /* LoginVC.swift in Sources */,
 				6DDE95751EE835360019DA47 /* ClaimCellBuilder.swift in Sources */,
 				6D6DA25A1EE1CA9B00307C73 /* ClaimsDataSource.swift in Sources */,

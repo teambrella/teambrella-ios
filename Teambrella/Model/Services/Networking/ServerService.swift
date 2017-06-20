@@ -39,6 +39,7 @@ class ServerService {
     }
     
     private(set)var timestamp: Int64 = 0
+    var key: Key { return Key(base58String: Constant.fakePrivateKey, timestamp: timestamp) }
     
     init() {
         

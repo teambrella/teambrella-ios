@@ -28,7 +28,7 @@ class LoginDetailsVC: UIViewController {
                                                name: .UITextFieldTextDidChange,
                                                object: nil)
         
-        setupForKeyboardResizing()
+        listenForKeyboard()
     }
     
     deinit {

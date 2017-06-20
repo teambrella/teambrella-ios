@@ -10,6 +10,8 @@ import UIKit
 
 extension UIColor {
     // MARK: Blue
+    class var veryLightBlue: UIColor  { return          #colorLiteral(red: 0.9137254902, green: 0.9490196078, blue: 1, alpha: 1) }
+    class var lightBlueGrayTwo: UIColor { return        #colorLiteral(red: 0.8039215686, green: 0.862745098, blue: 0.9529411765, alpha: 1) }
     class var paleLilac: UIColor { return               #colorLiteral(red: 0.8784313725, green: 0.8862745098, blue: 1, alpha: 1) }
     class var robinEggBlue: UIColor { return            #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) }
     class var lightBlue: UIColor { return               #colorLiteral(red: 0.3058823529, green: 0.768627451, blue: 0.9490196078, alpha: 1) }
@@ -34,6 +36,7 @@ extension UIColor {
     // MARK: Gray
     class var paleGray: UIColor { return                #colorLiteral(red: 0.9098039216, green: 0.9294117647, blue: 0.9490196078, alpha: 1) }
     class var lightBlueGray: UIColor { return           #colorLiteral(red: 0.8705882353, green: 0.9019607843, blue: 0.9529411765, alpha: 1) }
+    class var cloudyBlue: UIColor { return              #colorLiteral(red: 0.8078431373, green: 0.8470588235, blue: 0.8745098039, alpha: 1) }
     class var blueyGray: UIColor { return               #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1) }
     class var bluishGray: UIColor { return              #colorLiteral(red: 0.4823529412, green: 0.5529411765, blue: 0.6039215686, alpha: 1) }
     class var battleshipGray: UIColor { return          #colorLiteral(red: 0.4, green: 0.4549019608, blue: 0.4901960784, alpha: 1) }

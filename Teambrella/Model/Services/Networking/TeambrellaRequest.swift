@@ -21,6 +21,7 @@ enum TeambrellaRequestType: String {
     case claim = "claim/getOne"
     case setVote = "claim/setVote"
     case claimUpdates = "claim/getUpdates"
+    case claimChat = "claim/getChat"
 }
 
 enum TeambrellaResponseType {
@@ -29,12 +30,13 @@ enum TeambrellaResponseType {
     case updates
     case teammatesList([TeammateLike])
     case teammate(ExtendedTeammate)
-    case newPost(Post)
+    case newPost(ChatEntity)
     case registerKey
     case claimsList([ClaimLike])
     case claim(EnhancedClaimEntity)
     case setVote(JSON)
     case claimUpdates(JSON)
+    case claimChat(Int64, [ChatEntity], TeammateBasicInfo)
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -86,9 +88,7 @@ struct TeambrellaRequest {
                 failure?(TeambrellaErrorFactory.unknownError())
             }
         case .newPost:
-            if let post = PostFactory.post(with: reply) {
-                success(.newPost(post))
-            }
+            success(.newPost(ChatEntity(json: reply)))
         case .registerKey:
             success(.registerKey)
         case .claimsList:
@@ -100,6 +100,12 @@ struct TeambrellaRequest {
             success(.setVote(reply))
         case .claimUpdates:
             success(.claimUpdates(reply))
+        case .claimChat:
+            let discussion = reply["DiscussionPart"]
+            let lastRead = discussion["LastRead"].int64Value
+            let chat = ChatEntity.buildArray(from: discussion["Chat"])
+            let basicInfo = TeammateBasicInfo(json: discussion["BasicPart"])
+            success(.claimChat(lastRead, chat, basicInfo))
         case .updates:
             break
         default:

@@ -9,12 +9,11 @@
 import UIKit
 
 class InitialVC: UIViewController {
-    var teambrella: TeambrellaService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        teambrella = TeambrellaService()
+        // Instantly move to product version
+        performSegue(type: .teambrella)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -26,14 +25,14 @@ class InitialVC: UIViewController {
             if let tabVc = segue.destination as? UITabBarController,
                 let nc = tabVc.viewControllers?.first as? UINavigationController,
                 let first = nc.viewControllers.first as? TransactionsVC {
-                first.teambrella = teambrella
+                first.teambrella = service.teambrella
             }
         }
     }
     
     @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
-        teambrella.fetcher.user.isFbAuthorized = true
-        teambrella.fetcher.save()
+        service.teambrella.fetcher.user.isFbAuthorized = true
+        service.teambrella.fetcher.save()
         performSegue(type: .main)
     }
     
@@ -42,7 +41,7 @@ class InitialVC: UIViewController {
     }
     
     @IBAction func tapTests(_ sender: Any) {
-        let me = teambrella.fetcher.user
+        let me = service.teambrella.fetcher.user
         if me.isFbAuthorized {
             performSegue(type: .main)
         } else {

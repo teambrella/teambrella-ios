@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatInputView" customModule="Teambrella" customModuleProvider="target">
+            <connections>
+                <outlet property="leftButton" destination="n63-J1-hZI" id="MT6-jm-fSd"/>
+                <outlet property="placeholderLabel" destination="df6-6a-Qil" id="15G-4a-Vyr"/>
+                <outlet property="rightButton" destination="Vjk-Qt-bsN" id="plu-Ue-kgr"/>
+                <outlet property="textView" destination="mrP-P3-MCz" id="bVd-LL-dw7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n63-J1-hZI">
+                    <rect key="frame" x="0.0" y="-4" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="O4F-cQ-VXZ"/>
+                        <constraint firstAttribute="width" secondItem="n63-J1-hZI" secondAttribute="height" multiplier="1:1" id="yVB-R4-lnR"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" image="attachment"/>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mrP-P3-MCz">
+                    <rect key="frame" x="44" y="8" width="232" height="32"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="df6-6a-Qil">
+                    <rect key="frame" x="52" y="13.5" width="43.5" height="21"/>
+                    <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="17"/>
+                    <color key="textColor" red="0.80784313725490198" green="0.84705882352941175" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vjk-Qt-bsN">
+                    <rect key="frame" x="276" y="-4" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Vjk-Qt-bsN" secondAttribute="height" multiplier="1:1" id="D09-8Y-M1A"/>
+                        <constraint firstAttribute="width" constant="44" id="juw-nm-8uB"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" image="send"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.96862745098039216" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mrP-P3-MCz" firstAttribute="leading" secondItem="n63-J1-hZI" secondAttribute="trailing" id="0iE-63-mJI"/>
+                <constraint firstItem="n63-J1-hZI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CeM-9q-L8O"/>
+                <constraint firstItem="df6-6a-Qil" firstAttribute="centerY" secondItem="mrP-P3-MCz" secondAttribute="centerY" id="ImB-9s-0oL"/>
+                <constraint firstAttribute="trailing" secondItem="Vjk-Qt-bsN" secondAttribute="trailing" id="Kmo-q8-5fd"/>
+                <constraint firstItem="mrP-P3-MCz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="NRf-gj-o4G"/>
+                <constraint firstAttribute="bottom" secondItem="mrP-P3-MCz" secondAttribute="bottom" constant="8" id="clK-wf-T5f"/>
+                <constraint firstItem="Vjk-Qt-bsN" firstAttribute="leading" secondItem="mrP-P3-MCz" secondAttribute="trailing" id="iJ5-9d-nrK"/>
+                <constraint firstItem="n63-J1-hZI" firstAttribute="bottom" secondItem="mrP-P3-MCz" secondAttribute="bottom" id="k9w-Wz-JES"/>
+                <constraint firstItem="df6-6a-Qil" firstAttribute="leading" secondItem="mrP-P3-MCz" secondAttribute="leading" constant="8" id="sJ6-um-5Wr"/>
+                <constraint firstItem="Vjk-Qt-bsN" firstAttribute="bottom" secondItem="mrP-P3-MCz" secondAttribute="bottom" id="yKV-MW-vK3"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="1" y="-263"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="attachment" width="19" height="21"/>
+        <image name="send" width="30" height="30"/>
+    </resources>
+</document>

@@ -73,7 +73,7 @@ struct TeammateCellBuilder {
         if let imageString = object.smallPhotos.first {
             cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: imageString)))
         }
-        cell.button.setTitle("Team.TeammateCell.buttonTitle_format_i".localized(object.claimCount) , for: .normal)
+        cell.button.setTitle("Team.TeammateCell.buttonTitle_format_i".localized(object.claimCount), for: .normal)
     }
     
     private static func populateStats(cell: TeammateStatsCell, with stats: TeammateStats) {
