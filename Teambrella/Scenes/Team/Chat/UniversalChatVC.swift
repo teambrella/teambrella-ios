@@ -11,11 +11,11 @@ import UIKit
 class UniversalChatVC: UIViewController, Routable {
     static var storyboardName = "Chat"
     
+    @IBOutlet var input: ChatInputView!
     @IBOutlet var collectionView: UICollectionView!
     
-    @IBOutlet var input: ChatInputView!
-    @IBOutlet var inputViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var inputViewBottomConstraint: NSLayoutConstraint!
+//    @IBOutlet var inputViewHeightConstraint: NSLayoutConstraint!
+//    @IBOutlet var inputViewBottomConstraint: NSLayoutConstraint!
     
     let dataSource = UniversalChatDatasource()
     
@@ -35,6 +35,7 @@ class UniversalChatVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        input.removeFromSuperview()
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
@@ -46,9 +47,11 @@ class UniversalChatVC: UIViewController, Routable {
         title = claim?.name ?? "none"
     }
     
-//    override var inputAccessoryView: UIView? {
-//        return input
-//    }
+    override var inputAccessoryView: UIView? {
+        return input
+    }
+    
+    override var canBecomeFirstResponder: Bool { return true }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -73,8 +76,8 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     private func setupInput() {
-        input.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
-        input.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
+        input?.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
+        input?.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
     }
     
     private func startListeningSockets() {
@@ -92,16 +95,16 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func tapRightButton(sender: UIButton) {
-        dataSource.send(text: input.textView.text) { [weak self] success in
+        guard let text = input?.textView.text else { return }
+        
+        dataSource.send(text: text) { [weak self] success in
             self?.collectionView.reloadData()
-            self?.input.textView.text = nil
-            self?.scrollToBottom(animated: true)
             guard let collectionView = self?.collectionView else { return }
             
             collectionView.performBatchUpdates({
                 collectionView.reloadSections([0])
             }, completion: { success in
-                self?.input.textView.text = nil
+                self?.input?.textView.text = nil
                 self?.scrollToBottom(animated: true)
             })
         }
@@ -110,6 +113,12 @@ class UniversalChatVC: UIViewController, Routable {
     func setupCollectionView() {
         registerCells()
         collectionView.keyboardDismissMode = .interactive
+        collectionView.showsVerticalScrollIndicator = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.allowsSelection = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.autoresizingMask = UIViewAutoresizing()
+        automaticallyAdjustsScrollViewInsets = false
     }
     
     func registerCells() {
@@ -119,7 +128,10 @@ class UniversalChatVC: UIViewController, Routable {
     override func keyboardWillHide(notification: Notification) {
         if let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
             let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
-            moveInput(height: 0, duration: duration, curve: curve)
+            //moveInput(height: 48, duration: duration, curve: curve)
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: input.frame.height, right: 0)
+            collectionView.contentInset = contentInsets
+            collectionView.scrollIndicatorInsets = contentInsets
         }
     }
     
@@ -127,6 +139,9 @@ class UniversalChatVC: UIViewController, Routable {
         if let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
             let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
+            var offset =  collectionView.contentOffset
+            offset.y += keyboardFrame.height
+            collectionView.contentOffset = offset
             moveInput(height: keyboardFrame.height, duration: duration, curve: curve)
         }
     }
@@ -135,15 +150,15 @@ class UniversalChatVC: UIViewController, Routable {
         if let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
             let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
-            moveInput(height: view.bounds.height - keyboardFrame.minY, duration: duration, curve: curve)
+//            moveInput(height: view.bounds.height - keyboardFrame.minY, duration: duration, curve: curve)
         }
     }
     
     func moveInput(height: CGFloat, duration: TimeInterval, curve: UInt) {
-        inputViewBottomConstraint.constant = height
-//        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
-//        collectionView.contentInset = contentInsets
-//        collectionView.scrollIndicatorInsets = contentInsets
+//        inputViewBottomConstraint.constant = height
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
+        collectionView.contentInset = contentInsets
+        collectionView.scrollIndicatorInsets = contentInsets
         UIView.animate(withDuration: duration,
                        delay: 0,
                        options: [UIViewAnimationOptions(rawValue: curve)],
@@ -252,5 +267,5 @@ extension UniversalChatVC: UICollectionViewDelegate {
 //       
 //        return CGSize(width: collectionView.bounds.width - 32, height: 100)
 //    }
-//    
+//
 //}
