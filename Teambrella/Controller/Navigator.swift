@@ -12,8 +12,6 @@ class Navigator: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        service.router.navigator = self
-        
         delegate = self
     }
     
