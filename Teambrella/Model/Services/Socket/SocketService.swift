@@ -75,7 +75,10 @@ extension SocketService: WebSocketDelegate {
     }
     
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
-        print("Websocket disconnected with error: \(error)")
+        print("Websocket disconnected")
+        if let error = error {
+            print("with error: \(error)")
+        }
     }
     
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {

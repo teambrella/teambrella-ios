@@ -31,9 +31,9 @@ class TeammateProfileVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
-        dataSource.loadEntireTeammate { [weak self] in
-            self?.collectionView.reloadData()
-        }
+//        dataSource.loadEntireTeammate { [weak self] in
+//            self?.collectionView.reloadData()
+//        }
         
     }
     

@@ -25,8 +25,8 @@ struct PiecewiseFunction {
     }
     
     func value(at point: Double) -> Double? {
-        var lesser: Item?
-        var larger: Item?
+//        var lesser: Item?
+//        var larger: Item?
         return nil
     }
     

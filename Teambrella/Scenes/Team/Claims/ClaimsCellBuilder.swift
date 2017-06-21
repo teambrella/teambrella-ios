@@ -23,12 +23,13 @@ struct ClaimsCellBuilder {
         } else if let cell = cell as? ClaimsVotedCell {
             cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.smallPhoto)),
                                         placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
-            cell.claimedAmountLabel.text = String(format: "%.2f", claim.claimAmount)
-            cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
-            cell.titleLabel.text = claim.model
             cell.ownerAvatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.avatar)),
                                              placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
             cell.ownerNameLabel.text = claim.name
+            cell.claimedAmountLabel.text = String(format: "%.2f", claim.claimAmount)
+            cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
+            cell.titleLabel.text = claim.model
+         
         } else if let cell = cell as? ClaimsPaidCell {
             cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.smallPhoto)),
                                         placeholder: #imageLiteral(resourceName: "imagePlaceholder"))

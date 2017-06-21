@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     // MARK: Blue
-    class var veryLightBlue: UIColor  { return          #colorLiteral(red: 0.9137254902, green: 0.9490196078, blue: 1, alpha: 1) }
+    class var veryLightBlue: UIColor { return           #colorLiteral(red: 0.9137254902, green: 0.9490196078, blue: 1, alpha: 1) }
     class var lightBlueGrayTwo: UIColor { return        #colorLiteral(red: 0.8039215686, green: 0.862745098, blue: 0.9529411765, alpha: 1) }
     class var paleLilac: UIColor { return               #colorLiteral(red: 0.8784313725, green: 0.8862745098, blue: 1, alpha: 1) }
     class var robinEggBlue: UIColor { return            #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) }

@@ -43,22 +43,6 @@ class TeammateProfileDataSource {
         return source[indexPath.row]
     }
     
-    func loadEntireTeammate(completion: @escaping () -> Void) {
-        let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: service.server.timestamp)
-        
-        let body = RequestBodyFactory.teammateBody(key: key, id: teammate.userID)
-        let request = TeambrellaRequest(type: .teammate, body: body, success: { [weak self] response in
-            guard let me = self else { return }
-            
-            if case .teammate(let extendedTeammate) = response {
-                me.teammate.extended = extendedTeammate
-                me.modifySource()
-                completion()
-            }
-        })
-        request.start()
-    }
-    
     private func modifySource() {
         if teammate.extended?.object != nil {
             source.append(.object)

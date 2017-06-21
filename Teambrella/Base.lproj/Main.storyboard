@@ -151,7 +151,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hrb-qI-boz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2857" y="1219"/>
+            <point key="canvasLocation" x="3775" y="1307"/>
         </scene>
         <!--Me-->
         <scene sceneID="kOe-6s-4dZ">
@@ -161,7 +161,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBE-0J-9Xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2834" y="1396"/>
+            <point key="canvasLocation" x="3754" y="1427"/>
         </scene>
         <!--Login-->
         <scene sceneID="0Is-Ur-Car">
@@ -176,7 +176,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xrQ-fg-9ck" customClass="Navigator" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="q94-ny-2f7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q94-ny-2f7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

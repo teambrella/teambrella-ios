@@ -123,7 +123,7 @@ extension MembersVC: UICollectionViewDataSource {
         case .new:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CandidateCell",
                                                       for: indexPath)
-            if let cell = cell as? TeammateCandidateCell {
+            if cell is TeammateCandidateCell {
                 
             }
         case .teammate:

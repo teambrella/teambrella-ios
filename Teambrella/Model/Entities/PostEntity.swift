@@ -34,11 +34,11 @@ struct PostEntity: Post {
         id = json["Id"].stringValue
         lastUpdated = json["Ver"].int64Value
         postContent = json["PostContent"].stringValue
-        dateCreated = service.transformer.dateFromServer(string: json["DateCreated"].stringValue)
+        dateCreated = Date()//service.transformer.dateFromServer(string: json["DateCreated"].stringValue)
         upvotesCount = json["UpVoteCount"].intValue
         downvotesCount = json["DownVoteCount"].intValue
         myVote = json["MyVote"].intValue
-        dateEdited = service.transformer.dateFromServer(string: json["DateEdited"].stringValue)
+        dateEdited = Date()//service.transformer.dateFromServer(string: json["DateEdited"].stringValue)
         isSolution = json["IsSolution"].boolValue
         isTopicStarter = json["IsTopicStarter"].boolValue
         isSpam = json["FlaggedAsSpam"].boolValue

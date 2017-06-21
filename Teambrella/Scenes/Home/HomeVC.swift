@@ -128,6 +128,6 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width * 0.85, height: collectionView.bounds.height * 0.9)
+        return CGSize(width: collectionView.bounds.width - 20, height: collectionView.bounds.height)
     }
 }

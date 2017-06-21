@@ -157,13 +157,13 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     override func keyboardWillHide(notification: Notification) {
-        if let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
-            let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
+//        if let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
+//            let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
             //moveInput(height: 48, duration: duration, curve: curve)
             let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: input.frame.height, right: 0)
             collectionView.contentInset = contentInsets
             collectionView.scrollIndicatorInsets = contentInsets
-        }
+//        }
     }
     
     override func keyboardWillShow(notification: Notification) {
@@ -178,11 +178,11 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     override func keyboardWillChangeFrame(notification: Notification) {
-        if let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
-            let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
-//            moveInput(height: view.bounds.height - keyboardFrame.minY, duration: duration, curve: curve)
-        }
+//        if let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+//            let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
+//            let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
+////            moveInput(height: view.bounds.height - keyboardFrame.minY, duration: duration, curve: curve)
+//        }
     }
     
     func moveInput(height: CGFloat, duration: TimeInterval, curve: UInt) {
@@ -302,7 +302,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
 //                        layout collectionViewLayout: UICollectionViewLayout,
 //                        sizeForItemAt indexPath: IndexPath) -> CGSize {
 //       // let constraintRect = CGSize(width: collectionView.bounds.width, height: CGFloat.max)
-//       
+//
 //        return CGSize(width: collectionView.bounds.width - 32, height: 100)
 //    }
 //
