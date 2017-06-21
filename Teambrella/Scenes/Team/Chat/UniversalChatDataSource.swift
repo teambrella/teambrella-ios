@@ -10,13 +10,7 @@ import Foundation
 import SwiftyJSON
 
 class UniversalChatDatasource {
-    var topic: Topic? {
-        didSet {
-            if let topic = topic {
-               // posts.append(topic.posts)
-            }
-        }
-    }
+    var topic: Topic?
     
     var claim: EnhancedClaimEntity?
     var name: String? {
@@ -65,10 +59,11 @@ class UniversalChatDatasource {
                     if me.limit > chat.count {
                         me.hasMore = false
                     }
+                    print(basicInfo)
                 }
                me.isLoading = false
             })
-        } else if let topic = topic {
+        } else if topic != nil {
 //            body = RequestBody(key: key, payload: ["claimId": claim.id,
 //                                                   "since": since,
 //                                                   "limit": limit,
@@ -77,7 +72,7 @@ class UniversalChatDatasource {
 //                                                   "commentAvatarSize": commentAvatarSize])
 //            request = TeambrellaRequest(type: .claimChat, body: body, success: { [weak self] response in
 //                guard let me = self else { return }
-//                
+//
 //                if case .claimChat(let json) = response {
 //                    print(json)
 //                    me.onUpdate?()

@@ -31,27 +31,27 @@ class TeammateVC: UIViewController {
         nameLabel.text = teammate.name
         modelLabel.text = teammate.model
         modelYearLabel.text = String(teammate.year)
-        loadEntireTeammate()
+        //loadEntireTeammate()
         
         discussionButton.backgroundColor = .orange
         
     }
     
-    private func loadEntireTeammate() {
-        let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: service.server.timestamp)
-        
-        let body = RequestBodyFactory.teammateBody(key: key, id: teammate.userID)
-        let request = TeambrellaRequest(type: .teammate, body: body, success: { [weak self] response in
-            guard let me = self else { return }
-            
-            if case .teammate(let extendedTeammate) = response {
-                me.teammate.extended = extendedTeammate
-                print("topic: \(extendedTeammate.topic)")
-                me.presentEntireTeammate()
-            }
-        })
-        request.start()
-    }
+//    private func loadEntireTeammate() {
+//        let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: service.server.timestamp)
+//
+//        let body = RequestBodyFactory.teammateBody(key: key, id: teammate.userID)
+//        let request = TeambrellaRequest(type: .teammate, body: body, success: { [weak self] response in
+//            guard let me = self else { return }
+//
+//            if case .teammate(let extendedTeammate) = response {
+//                me.teammate.extended = extendedTeammate
+//                print("topic: \(extendedTeammate.topic)")
+//                me.presentEntireTeammate()
+//            }
+//        })
+//        request.start()
+//    }
     
     private func presentEntireTeammate() {
        // teammate.extended?.price.map { self.priceLabel.text = String($0) }
