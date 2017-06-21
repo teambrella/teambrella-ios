@@ -42,7 +42,12 @@ class UniversalChatVC: UIViewController, Routable {
         listenForKeyboard()
         dataSource.loadNext()
         dataSource.onUpdate = { [weak self] in
-            self?.collectionView.reloadData()
+            guard let me = self else { return }
+            
+            print("Datasource has \(me.dataSource.count) messages after update")
+            me.collectionView.reloadData()
+            me.collectionView.reloadData()
+//           me.collectionView.collectionViewLayout.invalidateLayout()
         }
         title = claim?.name ?? "none"
     }
@@ -66,7 +71,7 @@ class UniversalChatVC: UIViewController, Routable {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 1)
+            layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 30)
         }
     }
     
@@ -91,7 +96,27 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func tapLeftButton(sender: UIButton) {
-        
+        isPosting = true
+        automaticPoster()
+    }
+    
+    var posts = ["Egdhevdhd and the new year has will never be come to a good day and she is"
+        + " will never be have to wait to get back on to a good day she will be a good day for a good day good for a"
+        + " good day and good night good luck with your work and good luck for you",
+                 "Short post",
+                "😏😏😘😘😠😡😡🗝🇸🇽🇸🇽☂",
+                "Русский язык", "汉语/漢語", "C'est pas moi même îøó˚"]
+    var postsCount = 0
+    var isPosting = false
+    func automaticPoster() {
+        guard postsCount % 100 != 0 else {
+            postsCount += 1
+            return
+        }
+       
+        input.textView.text = "\(postsCount)" + posts[Random.range(to: posts.count)]
+         postsCount += 1
+        tapRightButton(sender: input.rightButton)
     }
     
     func tapRightButton(sender: UIButton) {
@@ -105,7 +130,13 @@ class UniversalChatVC: UIViewController, Routable {
                 collectionView.reloadSections([0])
             }, completion: { success in
                 self?.input?.textView.text = nil
-                self?.scrollToBottom(animated: true)
+                self?.scrollToBottom(animated: true) { [weak self] in
+                    self?.collectionView.reloadData()
+                    self?.collectionView.reloadData()
+                }
+                if let posting = self?.isPosting, posting == true {
+                    self?.automaticPoster()
+                }
             })
         }
     }
@@ -185,7 +216,7 @@ class UniversalChatVC: UIViewController, Routable {
         }
     }
     
-    public func scrollToBottom(animated: Bool) {
+    public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
         // Cancel current scrolling
         self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: false)
  
@@ -197,9 +228,12 @@ class UniversalChatVC: UIViewController, Routable {
         if animated {
             UIView.animate(withDuration: 0.33, animations: { () -> Void in
                 self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
-            })
+            }) { completed in
+                completion?()
+            }
         } else {
             self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
+            completion?()
         }
     }
     
@@ -212,7 +246,7 @@ extension UniversalChatVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
+        return dataSource.posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -237,6 +271,10 @@ extension UniversalChatVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
+        print("item \(indexPath.row + 1) \t\tout of \(dataSource.count)")
+        if indexPath.row > dataSource.count - 20 {
+            dataSource.loadNext()
+        }
         if let cell = cell as? ChatCell {
             let chatItem = dataSource.posts[indexPath.row]
             ChatTextParser().populate(cell: cell, with: chatItem)

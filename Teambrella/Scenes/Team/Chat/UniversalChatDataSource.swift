@@ -31,12 +31,17 @@ class UniversalChatDatasource {
     var offset = 0
     var avatarSize = 64
     var commentAvatarSize = 32
+    private(set) var isLoading = false
+    private(set) var hasMore = true
     
     var onUpdate: (() -> Void)?
     
     var count: Int { return posts.count }
     
     func loadNext() {
+        guard isLoading == false, hasMore == true else { return }
+        
+        isLoading = true
         let key = service.server.key
         
         var body: RequestBody?
@@ -52,10 +57,16 @@ class UniversalChatDatasource {
                 guard let me = self else { return }
                 
                 if case .claimChat(let lastRead, let chat, let basicInfo) = response {
+                    print("claimChat got \(chat.count) messages")
                     me.posts.append(contentsOf: chat)
                     me.since = lastRead
+                    me.offset += chat.count
                     me.onUpdate?()
+                    if me.limit > chat.count {
+                        me.hasMore = false
+                    }
                 }
+               me.isLoading = false
             })
         } else if let topic = topic {
 //            body = RequestBody(key: key, payload: ["claimId": claim.id,
@@ -94,6 +105,7 @@ class UniversalChatDatasource {
             } else {
                 completion(false)
             }
+            me.hasMore = true
         })
         request.start()
     }
