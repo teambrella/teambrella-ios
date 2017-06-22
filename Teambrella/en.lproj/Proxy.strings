@@ -1,0 +1,11 @@
+/* 
+  Proxy.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 22.06.17.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"Proxy.MyProxiesVC.indicatorTitle" = "My Proxies";
+"Proxy.ProxyForVC.indicatorTitle"  = "Proxy for";
+"Proxy.UserIndexVC.indicatorTitle" = "User index";

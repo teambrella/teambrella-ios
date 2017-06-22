@@ -22,17 +22,14 @@ class ProxiesVC: ButtonBarPagerTabStripViewController {
         setupTransparentNavigationBar()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let feed = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "FeedVC")
-        let members = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "MembersVC")
-        let claims = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "ClaimsVC")
-        let rules = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "RulesVC")
-        return [feed, members, claims, rules]
+        let my = UIStoryboard(name: "Proxies",
+                              bundle: nil).instantiateViewController(withIdentifier: "MyProxiesVC")
+        let proxyFor = UIStoryboard(name: "Proxies",
+                                    bundle: nil).instantiateViewController(withIdentifier: "ProxyForVC")
+        let index = UIStoryboard(name: "Proxies",
+                                 bundle: nil).instantiateViewController(withIdentifier: "UserIndexVC")
+        return [my, proxyFor, index]
     }
     
 }

@@ -1,20 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd-cpd>
-   <duplication lines="11" tokens="107">
-      <file line="28"
-            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Proxies/ProxiesVC.swift"/>
-      <file line="96"
-            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Team/TeamVC.swift"/>
-      <codefragment><![CDATA[    }
-    
-    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let feed = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "FeedVC")
-        let members = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "MembersVC")
-        let claims = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "ClaimsVC")
-        let rules = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "RulesVC")
-        return [feed, members, claims, rules]
-    }
-    
-}]]></codefragment>
-   </duplication>
-</pmd-cpd>
+<pmd-cpd/>

@@ -20,7 +20,6 @@ class TeamVC: ButtonBarPagerTabStripViewController {
     override func viewDidLoad() {
         setupTeambrellaTabLayout()
         super.viewDidLoad()
-        
         setupTransparentNavigationBar()
         addTeamButton()
     }

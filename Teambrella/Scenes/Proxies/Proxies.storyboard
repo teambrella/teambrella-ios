@@ -76,6 +76,60 @@
             </objects>
             <point key="canvasLocation" x="4879.1999999999998" y="2519.1904047976013"/>
         </scene>
+        <!--My ProxiesVC-->
+        <scene sceneID="EnK-sl-GQX">
+            <objects>
+                <viewController storyboardIdentifier="MyProxiesVC" id="Ngw-f6-tpo" customClass="MyProxiesVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D3L-Rk-2lC"/>
+                        <viewControllerLayoutGuide type="bottom" id="oiz-7k-htZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dje-VQ-bED">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdh-0a-LgK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5790" y="2190"/>
+        </scene>
+        <!--Proxy ForVC-->
+        <scene sceneID="aV2-LW-T32">
+            <objects>
+                <viewController storyboardIdentifier="ProxyForVC" id="GDK-yD-d3a" customClass="ProxyForVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lk6-uS-ISP"/>
+                        <viewControllerLayoutGuide type="bottom" id="yhD-ub-J9P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uyE-n8-o76">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ND-3y-dTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6890" y="2693"/>
+        </scene>
+        <!--User IndexVC-->
+        <scene sceneID="S5F-dh-qLn">
+            <objects>
+                <viewController storyboardIdentifier="UserIndexVC" id="7bW-lz-Yk2" customClass="UserIndexVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NmT-7g-vWr"/>
+                        <viewControllerLayoutGuide type="bottom" id="fa2-0b-2Wo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Oi2-II-owq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QI3-VK-CQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5897" y="3071"/>
+        </scene>
         <!--Proxies-->
         <scene sceneID="Umn-if-3XQ">
             <objects>
@@ -83,7 +137,7 @@
                     <tabBarItem key="tabBarItem" title="Proxies" image="iconProxy" id="TY9-uZ-Tv9"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6vV-Oq-RvH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6vV-Oq-RvH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
