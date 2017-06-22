@@ -18,6 +18,7 @@
 		6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */; };
 		6D0D2ADA1EFBB1B80095284C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D2AD91EFBB1B80095284C /* Array.swift */; };
 		6D0D2ADC1EFBB95E0095284C /* PiecewiseFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D2ADB1EFBB95E0095284C /* PiecewiseFunctionTests.swift */; };
+		6D0D2ADE1EFBC41D0095284C /* ButtonBarPagerTabStripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D2ADD1EFBC41D0095284C /* ButtonBarPagerTabStripViewController.swift */; };
 		6D1C039F1EB8D37D004AED30 /* Sample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C039E1EB8D37D004AED30 /* Sample.storyboard */; };
 		6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A01EB8D4A2004AED30 /* UIView.swift */; };
 		6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A21EB8D4D6004AED30 /* NSObject.swift */; };
@@ -250,6 +251,7 @@
 		6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicEntity.swift; path = Model/Entities/TopicEntity.swift; sourceTree = "<group>"; };
 		6D0D2AD91EFBB1B80095284C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = Helpers/Extensions/Array.swift; sourceTree = "<group>"; };
 		6D0D2ADB1EFBB95E0095284C /* PiecewiseFunctionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiecewiseFunctionTests.swift; sourceTree = "<group>"; };
+		6D0D2ADD1EFBC41D0095284C /* ButtonBarPagerTabStripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonBarPagerTabStripViewController.swift; path = Helpers/Extensions/ButtonBarPagerTabStripViewController.swift; sourceTree = "<group>"; };
 		6D1C039E1EB8D37D004AED30 /* Sample.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Sample.storyboard; path = Scenes/Sample/Sample.storyboard; sourceTree = "<group>"; };
 		6D1C03A01EB8D4A2004AED30 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = Helpers/Extensions/UIView.swift; sourceTree = "<group>"; };
 		6D1C03A21EB8D4D6004AED30 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSObject.swift; path = Helpers/Extensions/NSObject.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				6DA714DE1EDF19AE00F39EBE /* UIFont.swift */,
 				6DB8121C1EE6F78700B202CE /* Formatter.swift */,
 				6D0D2AD91EFBB1B80095284C /* Array.swift */,
+				6D0D2ADD1EFBC41D0095284C /* ButtonBarPagerTabStripViewController.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1537,6 +1540,7 @@
 				6D6DA25E1EE1D1BB00307C73 /* ClaimEntity.swift in Sources */,
 				6DE7932F1EF810DB005F4508 /* ChatCell.swift in Sources */,
 				6D9CC6101ED2E230007F936E /* LoginVC.swift in Sources */,
+				6D0D2ADE1EFBC41D0095284C /* ButtonBarPagerTabStripViewController.swift in Sources */,
 				6DDE95751EE835360019DA47 /* ClaimCellBuilder.swift in Sources */,
 				6D6DA25A1EE1CA9B00307C73 /* ClaimsDataSource.swift in Sources */,
 				6D6DA25C1EE1CE3100307C73 /* ClaimLike.swift in Sources */,

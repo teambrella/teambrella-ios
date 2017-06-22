@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class ProxiesVC: UIViewController {
-
+class ProxiesVC: ButtonBarPagerTabStripViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         title = "Main.proxies".localized
@@ -17,24 +17,22 @@ class ProxiesVC: UIViewController {
     }
     
     override func viewDidLoad() {
+        setupTeambrellaTabLayout()
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupTransparentNavigationBar()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        let feed = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "FeedVC")
+        let members = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "MembersVC")
+        let claims = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "ClaimsVC")
+        let rules = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "RulesVC")
+        return [feed, members, claims, rules]
     }
-    */
-
+    
 }

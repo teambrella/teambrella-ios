@@ -12,13 +12,13 @@ import XLPagerTabStrip
 class TeamVC: ButtonBarPagerTabStripViewController {
     
     override func awakeFromNib() {
-    super.awakeFromNib()
+        super.awakeFromNib()
         title = "Main.team".localized
         tabBarItem.title = "Main.team".localized
     }
     
     override func viewDidLoad() {
-        setupTabLayout()
+        setupTeambrellaTabLayout()
         super.viewDidLoad()
         
         setupTransparentNavigationBar()
@@ -28,25 +28,6 @@ class TeamVC: ButtonBarPagerTabStripViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    private func setupTabLayout() {
-        settings.style.buttonBarBackgroundColor = .clear
-        settings.style.buttonBarItemBackgroundColor = .clear
-        settings.style.selectedBarBackgroundColor = .teambrellaLightBlue
-        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
-        settings.style.selectedBarHeight = 4.0
-        settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .white50
-        settings.style.buttonBarItemsShouldFillAvailiableWidth = true
-        settings.style.buttonBarLeftContentInset = 0
-        settings.style.buttonBarRightContentInset = 0
-        changeCurrentIndexProgressive = { oldCell, newCell, progressPercentage, changeCurrentIndex, animated -> Void in
-            guard changeCurrentIndex == true else { return }
-            
-            oldCell?.label.textColor = .white50
-            newCell?.label.textColor = .white
-        }
     }
     
     private func addTeamButton() {

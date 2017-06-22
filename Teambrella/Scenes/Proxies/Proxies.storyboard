@@ -20,9 +20,57 @@
                     <view key="view" contentMode="scaleToFill" id="dg2-B5-4OS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65v-sn-GhQ" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.32156862749999998" green="0.36862745099999999" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="0.25882352939999997" green="0.30588235289999999" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2OK-OB-5g5">
+                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                            </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9IE-5H-M3H" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="EYa-dc-oXm"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dqh-5a-E3L">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2OK-OB-5g5" secondAttribute="trailing" id="0R4-c7-P40"/>
+                            <constraint firstItem="65v-sn-GhQ" firstAttribute="leading" secondItem="dg2-B5-4OS" secondAttribute="leading" id="4wX-Gq-g4P"/>
+                            <constraint firstItem="9IE-5H-M3H" firstAttribute="leading" secondItem="dg2-B5-4OS" secondAttribute="leading" id="5NA-xB-KqS"/>
+                            <constraint firstAttribute="trailing" secondItem="65v-sn-GhQ" secondAttribute="trailing" id="6nf-z1-qBq"/>
+                            <constraint firstItem="4mO-rZ-SB2" firstAttribute="top" secondItem="2OK-OB-5g5" secondAttribute="bottom" id="BFJ-7p-xWT"/>
+                            <constraint firstItem="2OK-OB-5g5" firstAttribute="leading" secondItem="dg2-B5-4OS" secondAttribute="leading" id="C6o-EY-dds"/>
+                            <constraint firstItem="2OK-OB-5g5" firstAttribute="top" secondItem="9IE-5H-M3H" secondAttribute="bottom" id="PNQ-XD-PX7"/>
+                            <constraint firstAttribute="trailing" secondItem="9IE-5H-M3H" secondAttribute="trailing" id="Tu2-2h-Afp"/>
+                            <constraint firstItem="65v-sn-GhQ" firstAttribute="top" secondItem="zMe-cz-T3j" secondAttribute="bottom" constant="-64" id="dna-pX-bni"/>
+                            <constraint firstItem="9IE-5H-M3H" firstAttribute="top" secondItem="zMe-cz-T3j" secondAttribute="bottom" id="i8o-GO-yQv"/>
+                            <constraint firstItem="65v-sn-GhQ" firstAttribute="bottom" secondItem="9IE-5H-M3H" secondAttribute="bottom" id="tIK-Dj-xA6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Proxies" id="K9s-ZF-RbM"/>
+                    <connections>
+                        <outlet property="buttonBarView" destination="9IE-5H-M3H" id="Trv-jI-ebX"/>
+                        <outlet property="containerView" destination="2OK-OB-5g5" id="a5M-Mk-JYP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNa-Tg-cTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
