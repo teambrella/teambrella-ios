@@ -16,6 +16,8 @@
 		6D097EA81E9D220A00E77DAB /* General.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D097EA61E9D220A00E77DAB /* General.strings */; };
 		6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAA1E9D390200E77DAB /* Topic.swift */; };
 		6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */; };
+		6D0D2ADA1EFBB1B80095284C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D2AD91EFBB1B80095284C /* Array.swift */; };
+		6D0D2ADC1EFBB95E0095284C /* PiecewiseFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D2ADB1EFBB95E0095284C /* PiecewiseFunctionTests.swift */; };
 		6D1C039F1EB8D37D004AED30 /* Sample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C039E1EB8D37D004AED30 /* Sample.storyboard */; };
 		6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A01EB8D4A2004AED30 /* UIView.swift */; };
 		6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A21EB8D4D6004AED30 /* NSObject.swift */; };
@@ -246,6 +248,8 @@
 		6D097EA91E9D230E00E77DAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/General.strings; sourceTree = "<group>"; };
 		6D097EAA1E9D390200E77DAB /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Topic.swift; path = Model/Protocols/Topic.swift; sourceTree = "<group>"; };
 		6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicEntity.swift; path = Model/Entities/TopicEntity.swift; sourceTree = "<group>"; };
+		6D0D2AD91EFBB1B80095284C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = Helpers/Extensions/Array.swift; sourceTree = "<group>"; };
+		6D0D2ADB1EFBB95E0095284C /* PiecewiseFunctionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiecewiseFunctionTests.swift; sourceTree = "<group>"; };
 		6D1C039E1EB8D37D004AED30 /* Sample.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Sample.storyboard; path = Scenes/Sample/Sample.storyboard; sourceTree = "<group>"; };
 		6D1C03A01EB8D4A2004AED30 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = Helpers/Extensions/UIView.swift; sourceTree = "<group>"; };
 		6D1C03A21EB8D4D6004AED30 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSObject.swift; path = Helpers/Extensions/NSObject.swift; sourceTree = "<group>"; };
@@ -542,6 +546,7 @@
 				6D9CC6181ED484CF007F936E /* UIViewController.swift */,
 				6DA714DE1EDF19AE00F39EBE /* UIFont.swift */,
 				6DB8121C1EE6F78700B202CE /* Formatter.swift */,
+				6D0D2AD91EFBB1B80095284C /* Array.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -752,6 +757,7 @@
 				6DA475BA1E8ABEE600B56D9B /* Info.plist */,
 				6D91BC061EB3A79100FDC332 /* UUIDTests.swift */,
 				6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */,
+				6D0D2ADB1EFBB95E0095284C /* PiecewiseFunctionTests.swift */,
 			);
 			path = TeambrellaTests;
 			sourceTree = "<group>";
@@ -1540,6 +1546,7 @@
 				6DA714E91EDF371300F39EBE /* TeammateSummaryCell.swift in Sources */,
 				6DEC6DF31E96670D00ACC119 /* Post.swift in Sources */,
 				6D7186E71EA4FC3600257463 /* TransactionsVC.swift in Sources */,
+				6D0D2ADA1EFBB1B80095284C /* Array.swift in Sources */,
 				6D9CC64B1ED83111007F936E /* BrickView.swift in Sources */,
 				6D83EC891EDD6CA6000412DC /* Routable.swift in Sources */,
 				6DEE67A51EDC75DA0098EDB3 /* TeammateHeaderView.swift in Sources */,
@@ -1591,6 +1598,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D0D2ADC1EFBB95E0095284C /* PiecewiseFunctionTests.swift in Sources */,
 				6DCB9F551EC9FF20000B48C4 /* FetchTests.swift in Sources */,
 				6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */,
 			);

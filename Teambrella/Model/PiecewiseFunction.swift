@@ -12,23 +12,41 @@ import Foundation
  Кусочно линейная функция
  */
 struct PiecewiseFunction {
-    struct Item {
+    struct Item: Comparable {
         let x: Double
         let value: Double
+        
+        static func == (lhs: Item, rhs: Item) -> Bool {
+        return lhs.x == rhs.x
+        }
+        
+        static func < (lhs: Item, rhs: Item) -> Bool {
+            return lhs.x < rhs.x
+        }
     }
     
     private var items: [Item] = []
-    var minValue: Double { return items.reduce(Double.greatestFiniteMagnitude) { $0 > $1.value ? $1.value : $0 } }
-    var maxValue: Double { return items.reduce(-Double.greatestFiniteMagnitude) { $0 < $1.value ? $1.value : $0 } }
+    var minValue: Double { return items.reduce(Double.greatestFiniteMagnitude) { min($0, $1.value) } }
+    var maxValue: Double { return items.reduce(-Double.greatestFiniteMagnitude) { max($0, $1.value) } }
     
-    init(_ args:(Double, Double)...) {
+    init?(_ args: (Double, Double)...) {
         items = args.map { Item(x: $0.0, value: $0.1) }
+        items.sort()
+        
+        // items entered should be unique
+        if !items.isEmpty {
+            var idx = items.count - 1
+            while idx > 0 {
+                if items[idx] == items[idx - 1] { return nil }
+                idx -= 1
+            }
+        }
     }
     
-    mutating func addPoint(x: Double, value: Double) {
-        let item = Item(x: x, value: value)
-        items.append(item)
-        items.sort { $0.x < $1.x }
+    mutating func addPoint(x: Double, value: Double) -> Bool {
+        for item in items where item.x == x { return false }
+        items.insertOrdered(Item(x: x, value: value))
+        return true
     }
     
     func value(at point: Double) -> Double? {
