@@ -13,7 +13,7 @@ protocol XIBInitableCell {
     static var cellID: String { get }
 }
 
-extension XIBInitableCell where Self: UICollectionViewCell {
+extension XIBInitableCell where Self: UICollectionReusableView {
     static var nib: UINib { return UINib(nibName: "\(self)", bundle: nil) }
     static var cellID: String { return "\(self)" }
 }

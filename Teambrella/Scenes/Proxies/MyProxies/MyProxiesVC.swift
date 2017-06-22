@@ -21,6 +21,9 @@ class MyProxiesVC: UIViewController {
     
     func setupCollectionView() {
         collectionView.register(ProxyCell.nib, forCellWithReuseIdentifier: ProxyCell.cellID)
+        collectionView.register(NeedHelpView.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: NeedHelpView.cellID)
         
         let longPressGesture = UILongPressGestureRecognizer(target: self,
                                                             action: #selector(handleLongGesture(gesture:)))
@@ -69,16 +72,14 @@ extension MyProxiesVC: UICollectionViewDataSource {
         return collectionView.dequeueReusableCell(withReuseIdentifier: ProxyCell.cellID, for: indexPath)
     }
     
-    /*
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                   withReuseIdentifier: "Header",
+                                                                   withReuseIdentifier: NeedHelpView.cellID,
                                                                    for: indexPath)
         return view
     }
- */
     
 }
 
@@ -117,11 +118,9 @@ extension MyProxiesVC: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.bounds.width - 16 * 2, height: 120)
     }
     
-    /*
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 1)
+        return CGSize(width: collectionView.bounds.width, height: 60)
     }
- */
 }
