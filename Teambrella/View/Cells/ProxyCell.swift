@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProxyCell: UICollectionViewCell {
+class ProxyCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var avatarView: RoundBadgedView!
     @IBOutlet var nameLabel: MessageTitleLabel!
     @IBOutlet var detailsLabel: InfoLabel!
@@ -20,7 +20,8 @@ class ProxyCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        CellDecorator.roundedEdges(for: self)
+        CellDecorator.shadow(for: self)
     }
 
 }

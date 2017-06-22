@@ -31,12 +31,12 @@ struct TeammateCellBuilder {
         if let left = cell.leftNumberView {
             left.titleLabel.text = "Team.TeammateCell.coversMe".localized
             let amount = teammate.extended?.basic.coversMeAmount
-            left.amountLabel.text = textFor(amount: amount)
+            left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
         }
         if let right = cell.rightNumberView {
             right.titleLabel.text = "Team.TeammateCell.coverThem".localized
             let amount = teammate.extended?.basic.iCoverThemAmount
-            right.amountLabel.text = textFor(amount: amount)
+            right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
         }
         guard let extended = teammate.extended else { return }
         
@@ -55,15 +55,15 @@ struct TeammateCellBuilder {
         cell.detailsLabel.text = "Team.TeammateCell.collisionDeductible".localized
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
-            left.amountLabel.text = textFor(amount: teammate.extended?.object.claimLimit)
+            left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.extended?.object.claimLimit)
         }
         if let middle = cell.numberBar.middle {
             middle.titleLabel.text = "Team.Teammates.net".localized
-            middle.amountLabel.text = textFor(amount: teammate.extended?.basic.totallyPaidAmount)
+            middle.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.extended?.basic.totallyPaidAmount)
         }
         if let right = cell.numberBar.right {
             right.titleLabel.text = "Team.TeammateCell.riskFactor".localized
-            right.amountLabel.text = textFor(amount: teammate.risk)
+            right.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.risk)
             right.badgeLabel.text = "1x47xAVG"
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
@@ -80,22 +80,23 @@ struct TeammateCellBuilder {
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.weight".localized
-            left.amountLabel.text = textFor(amount: stats.weight)
+            left.amountLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
         }
         if let right = cell.numberBar.right {
             right.titleLabel.text = "Team.TeammateCell.proxyRank".localized
-            right.amountLabel.text = textFor(amount: stats.proxyRank)
+            right.amountLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
             right.isBadgeVisible = false
         }
         cell.decisionsLabel.text = "Team.TeammateCell.decisions".localized
         cell.decisionsBar.autoSet(value: stats.decisionFrequency)
-        cell.decisionsBar.rightText = decisionsText(from: stats.decisionFrequency).uppercased()
+        cell.decisionsBar.rightText = ValueToTextConverter.decisionsText(from: stats.decisionFrequency).uppercased()
         cell.discussionsLabel.text = "Team.TeammateCell.discussions".localized
         cell.discussionsBar.autoSet(value: stats.discussionFrequency)
-        cell.discussionsBar.rightText = discussionsText(from: stats.discussionFrequency).uppercased()
+        cell.discussionsBar.rightText = ValueToTextConverter
+            .discussionsText(from: stats.discussionFrequency).uppercased()
         cell.frequencyLabel.text = "Team.TeammateCell.votingFrequency".localized
         cell.frequencyBar.autoSet(value: stats.votingFrequency)
-        cell.frequencyBar.rightText = frequencyText(from: stats.votingFrequency).uppercased()
+        cell.frequencyBar.rightText = ValueToTextConverter.frequencyText(from: stats.votingFrequency).uppercased()
         cell.addButton.setTitle("Team.TeammateCell.addToMyProxyVoters".localized, for: .normal)
     }
     
@@ -134,51 +135,6 @@ struct TeammateCellBuilder {
         cell.tableView.delegate = delegate
         cell.tableView.dataSource = dataSource
         cell.tableView.reloadData()
-    }
-    
-    private static func decisionsText(from value: Double) -> String {
-        let value = Int(value * 100)
-        switch value {
-        case 0..<30: return "Team.Decisions.generous".localized
-        case 30..<45: return "Team.Decisions.mild".localized
-        case 45..<55: return "Team.Decisions.moderate".localized
-        case 55..<70: return "Team.Decisions.severe".localized
-        case 70...100: return "Team.Decisions.harsh".localized
-        default: return "Team.unknown".localized
-        }
-    }
-    
-    private static func discussionsText(from value: Double) -> String {
-        let value = Int(value * 100)
-        switch value {
-        case 0..<3: return "Team.Discussions.quiet".localized
-        case 3..<10: return "Team.Discussions.reserved".localized
-        case 10..<25: return "Team.Discussions.moderate".localized
-        case 25..<50: return "Team.Discussions.sociable".localized
-        case 50...100: return "Team.Discussions.chatty".localized
-        default: return "Team.unknown".localized
-        }
-    }
-    
-    private static func frequencyText(from value: Double) -> String {
-        let value = Int(value * 100)
-        switch value {
-        case 0: return "Team.Frequency.never".localized
-        case 1..<5: return "Team.Frequency.rarely".localized
-        case 5..<15: return "Team.Frequency.occasionally".localized
-        case 15..<30: return "Team.Frequency.frequently".localized
-        case 30..<60: return "Team.Frequency.often".localized
-        case 60..<95: return "Team.Frequency.regularly".localized
-        case 95...100: return "Team.Frequency.always".localized
-        default: return "Team.unknown".localized
-        }
-    }
-    
-    private static func textFor(amount: Double?) -> String {
-        guard let amount = amount else { return "?" }
-        guard amount.truncatingRemainder(dividingBy: 1) > 0.01 else { return "\(Int(amount))" }
-        
-        return String(format: "%.2f", amount)
     }
     
 }
