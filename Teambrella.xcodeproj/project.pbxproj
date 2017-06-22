@@ -59,6 +59,13 @@
 		6D69D9E91EFBF49700DED5CE /* ValueToTextConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9E81EFBF49700DED5CE /* ValueToTextConverter.swift */; };
 		6D69D9EC1EFBFF2E00DED5CE /* NeedHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9EA1EFBFF2E00DED5CE /* NeedHelpView.swift */; };
 		6D69D9ED1EFBFF2E00DED5CE /* NeedHelpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69D9EB1EFBFF2E00DED5CE /* NeedHelpView.xib */; };
+		6D69D9F01EFC033300DED5CE /* ProxyForDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9EF1EFC033300DED5CE /* ProxyForDataSource.swift */; };
+		6D69D9F21EFC035400DED5CE /* ProxyForCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9F11EFC035400DED5CE /* ProxyForCellBuilder.swift */; };
+		6D69D9F41EFC03A600DED5CE /* ProxyForCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9F31EFC03A600DED5CE /* ProxyForCellModel.swift */; };
+		6D69D9F71EFC05BE00DED5CE /* ProxyForHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9F51EFC05BE00DED5CE /* ProxyForHeader.swift */; };
+		6D69D9F81EFC05BE00DED5CE /* ProxyForHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69D9F61EFC05BE00DED5CE /* ProxyForHeader.xib */; };
+		6D69D9FB1EFC07FF00DED5CE /* ProxyForCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9F91EFC07FF00DED5CE /* ProxyForCell.swift */; };
+		6D69D9FC1EFC07FF00DED5CE /* ProxyForCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69D9FA1EFC07FF00DED5CE /* ProxyForCell.xib */; };
 		6D6DA2421EE1650400307C73 /* TeammateBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */; };
 		6D6DA2441EE165B100307C73 /* TeammateVotingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */; };
 		6D6DA2461EE167BD00307C73 /* CoveredObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2451EE167BD00307C73 /* CoveredObject.swift */; };
@@ -304,6 +311,13 @@
 		6D69D9E81EFBF49700DED5CE /* ValueToTextConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueToTextConverter.swift; path = Model/ValueToTextConverter.swift; sourceTree = "<group>"; };
 		6D69D9EA1EFBFF2E00DED5CE /* NeedHelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NeedHelpView.swift; path = View/ReusableViews/NeedHelpView.swift; sourceTree = "<group>"; };
 		6D69D9EB1EFBFF2E00DED5CE /* NeedHelpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NeedHelpView.xib; path = View/ReusableViews/NeedHelpView.xib; sourceTree = "<group>"; };
+		6D69D9EF1EFC033300DED5CE /* ProxyForDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyForDataSource.swift; path = Scenes/Proxies/ProxyFor/ProxyForDataSource.swift; sourceTree = "<group>"; };
+		6D69D9F11EFC035400DED5CE /* ProxyForCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyForCellBuilder.swift; path = Scenes/Proxies/ProxyFor/ProxyForCellBuilder.swift; sourceTree = "<group>"; };
+		6D69D9F31EFC03A600DED5CE /* ProxyForCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyForCellModel.swift; path = Scenes/Proxies/ProxyFor/ProxyForCellModel.swift; sourceTree = "<group>"; };
+		6D69D9F51EFC05BE00DED5CE /* ProxyForHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyForHeader.swift; path = View/ReusableViews/ProxyForHeader.swift; sourceTree = "<group>"; };
+		6D69D9F61EFC05BE00DED5CE /* ProxyForHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProxyForHeader.xib; path = View/ReusableViews/ProxyForHeader.xib; sourceTree = "<group>"; };
+		6D69D9F91EFC07FF00DED5CE /* ProxyForCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyForCell.swift; path = View/Cells/ProxyForCell.swift; sourceTree = "<group>"; };
+		6D69D9FA1EFC07FF00DED5CE /* ProxyForCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProxyForCell.xib; path = View/Cells/ProxyForCell.xib; sourceTree = "<group>"; };
 		6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateBasicInfo.swift; path = Model/Entities/TeammateBasicInfo.swift; sourceTree = "<group>"; };
 		6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateVotingInfo.swift; path = Model/Entities/TeammateVotingInfo.swift; sourceTree = "<group>"; };
 		6D6DA2451EE167BD00307C73 /* CoveredObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoveredObject.swift; path = Model/Entities/CoveredObject.swift; sourceTree = "<group>"; };
@@ -560,6 +574,9 @@
 			isa = PBXGroup;
 			children = (
 				6D0D2AE21EFBD45F0095284C /* ProxyForVC.swift */,
+				6D69D9EF1EFC033300DED5CE /* ProxyForDataSource.swift */,
+				6D69D9F11EFC035400DED5CE /* ProxyForCellBuilder.swift */,
+				6D69D9F31EFC03A600DED5CE /* ProxyForCellModel.swift */,
 			);
 			name = ProxyFor;
 			sourceTree = "<group>";
@@ -655,6 +672,8 @@
 			children = (
 				6D69D9EA1EFBFF2E00DED5CE /* NeedHelpView.swift */,
 				6D69D9EB1EFBFF2E00DED5CE /* NeedHelpView.xib */,
+				6D69D9F51EFC05BE00DED5CE /* ProxyForHeader.swift */,
+				6D69D9F61EFC05BE00DED5CE /* ProxyForHeader.xib */,
 			);
 			name = ReusableViews;
 			sourceTree = "<group>";
@@ -983,6 +1002,8 @@
 				6DE7932E1EF810DB005F4508 /* ChatCell.xib */,
 				6D0D2AED1EFBDB7C0095284C /* ProxyCell.swift */,
 				6D0D2AEE1EFBDB7C0095284C /* ProxyCell.xib */,
+				6D69D9F91EFC07FF00DED5CE /* ProxyForCell.swift */,
+				6D69D9FA1EFC07FF00DED5CE /* ProxyForCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1268,6 +1289,7 @@
 				6DDE95811EE84FFD0019DA47 /* ClaimDetailsCell.xib in Resources */,
 				6D097E971E9D19F400E77DAB /* Test.strings in Resources */,
 				6DEE678F1ED9CF070098EDB3 /* ItemCard.xib in Resources */,
+				6D69D9FC1EFC07FF00DED5CE /* ProxyForCell.xib in Resources */,
 				6D9CC62D1ED5EB23007F936E /* Me.storyboard in Resources */,
 				6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */,
 				6D6DA24E1EE1B65000307C73 /* Claims.storyboard in Resources */,
@@ -1280,6 +1302,7 @@
 				6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */,
 				6DE793321EF83ABA005F4508 /* ChatInputView.xib in Resources */,
 				6D6DA2501EE1B68F00307C73 /* Members.storyboard in Resources */,
+				6D69D9F81EFC05BE00DED5CE /* ProxyForHeader.xib in Resources */,
 				6D097EA81E9D220A00E77DAB /* General.strings in Resources */,
 				6D097E9C1E9D1AD200E77DAB /* Test.stringsdict in Resources */,
 				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
@@ -1508,6 +1531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DDE957B1EE84A2D0019DA47 /* PlainButton.swift in Sources */,
+				6D69D9F01EFC033300DED5CE /* ProxyForDataSource.swift in Sources */,
 				6D466AAB1ED07CF1001BC579 /* TxInput.swift in Sources */,
 				6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */,
 				6D466AA11ED07CF1001BC579 /* BlockchainService.swift in Sources */,
@@ -1520,6 +1544,7 @@
 				6DEE67971EDC13D50098EDB3 /* RoundBadgedView.swift in Sources */,
 				6DA714FC1EE05E5900F39EBE /* TeammateStatsCell.swift in Sources */,
 				6D6DA2621EE21A9D00307C73 /* Gender.swift in Sources */,
+				6D69D9F21EFC035400DED5CE /* ProxyForCellBuilder.swift in Sources */,
 				6D9CC6401ED72E19007F936E /* RulesVC.swift in Sources */,
 				6D6DA2681EE21F2D00307C73 /* MembersRouter.swift in Sources */,
 				6DEE67951EDC12A70098EDB3 /* TeammateCandidateCell.swift in Sources */,
@@ -1530,6 +1555,7 @@
 				6D466AA61ED07CF1001BC579 /* Cosigner.swift in Sources */,
 				6DEE67A31EDC5C4D0098EDB3 /* TeammateCell.swift in Sources */,
 				6D466AA81ED07CF1001BC579 /* Team.swift in Sources */,
+				6D69D9F71EFC05BE00DED5CE /* ProxyForHeader.swift in Sources */,
 				6DDE95701EE814EE0019DA47 /* XIBInitableCell.swift in Sources */,
 				6DD12ECC1EC75C2C00BE1CC4 /* Date.swift in Sources */,
 				6D097EA31E9D215500E77DAB /* TeammateType.swift in Sources */,
@@ -1540,6 +1566,7 @@
 				6D6DA26F1EE21F9800307C73 /* Label.swift in Sources */,
 				6DA714F81EE02BF100F39EBE /* TeammateDiscussionCell.swift in Sources */,
 				6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */,
+				6D69D9F41EFC03A600DED5CE /* ProxyForCellModel.swift in Sources */,
 				6D6DA26C1EE21F7A00307C73 /* LoginDetailsRouter.swift in Sources */,
 				6D9CC6191ED484CF007F936E /* UIViewController.swift in Sources */,
 				6D9CC61B1ED57B83007F936E /* LoginDetailsPresenter.swift in Sources */,
@@ -1664,6 +1691,7 @@
 				6D9CC6511ED97C37007F936E /* HomeCollectionCell.swift in Sources */,
 				6D73C6E41EBB3F0800A2C0F8 /* TransactionCell.swift in Sources */,
 				6D6DA2641EE21ACA00307C73 /* FacebookUser.swift in Sources */,
+				6D69D9FB1EFC07FF00DED5CE /* ProxyForCell.swift in Sources */,
 				6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */,
 				6DEC074C1E9BCF700078F40E /* TeammatesTVC.swift in Sources */,
 				6D6DA2541EE1C65800307C73 /* ClaimsVotedCell.swift in Sources */,

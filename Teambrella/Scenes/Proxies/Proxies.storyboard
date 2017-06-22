@@ -131,8 +131,34 @@
                     <view key="view" contentMode="scaleToFill" id="uyE-n8-o76">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6vj-lL-qVD">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="ano-wV-7ip">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="GDK-yD-d3a" id="K0c-al-aTl"/>
+                                    <outlet property="delegate" destination="GDK-yD-d3a" id="qVI-yV-QdK"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6vj-lL-qVD" firstAttribute="top" secondItem="Lk6-uS-ISP" secondAttribute="bottom" id="3PR-dn-U5y"/>
+                            <constraint firstItem="yhD-ub-J9P" firstAttribute="top" secondItem="6vj-lL-qVD" secondAttribute="bottom" id="BAf-Yz-vQq"/>
+                            <constraint firstAttribute="trailing" secondItem="6vj-lL-qVD" secondAttribute="trailing" id="EKX-jy-8kM"/>
+                            <constraint firstItem="6vj-lL-qVD" firstAttribute="leading" secondItem="uyE-n8-o76" secondAttribute="leading" id="uSj-qS-5Ek"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="6vj-lL-qVD" id="akm-AN-eTD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ND-3y-dTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
