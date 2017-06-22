@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class MeVC: UIViewController {
-
+class MeVC: ButtonBarPagerTabStripViewController {
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         title = "Main.me".localized
@@ -17,24 +18,19 @@ class MeVC: UIViewController {
     }
     
     override func viewDidLoad() {
+        setupTeambrellaTabLayout()
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupTransparentNavigationBar()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        let my = UIStoryboard(name: "Me",
+                              bundle: nil).instantiateViewController(withIdentifier: "CoverageVC")
+        let proxyFor = UIStoryboard(name: "Me",
+                                    bundle: nil).instantiateViewController(withIdentifier: "ProfileVC")
+        let index = UIStoryboard(name: "Me",
+                                 bundle: nil).instantiateViewController(withIdentifier: "WalletVC")
+        return [my, proxyFor, index]
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

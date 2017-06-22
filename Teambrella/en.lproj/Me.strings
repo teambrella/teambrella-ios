@@ -1,0 +1,11 @@
+/* 
+  Me.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 22.06.17.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"Me.CoverageVC.indicatorTitle" = "Coverage";
+"Me.ProfileVC.indicatorTitle" = "Me";
+"Me.WalletVC.indicatorTitle" = "Wallet";

@@ -73,6 +73,10 @@
 		6D69DA061EFC34FE00DED5CE /* UserIndexCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA051EFC34FE00DED5CE /* UserIndexCellBuilder.swift */; };
 		6D69DA0B1EFC36C000DED5CE /* InfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA091EFC36C000DED5CE /* InfoHeader.swift */; };
 		6D69DA0C1EFC36C000DED5CE /* InfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA0A1EFC36C000DED5CE /* InfoHeader.xib */; };
+		6D69DA0F1EFC458C00DED5CE /* Me.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA0D1EFC458C00DED5CE /* Me.strings */; };
+		6D69DA111EFC45ED00DED5CE /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA101EFC45ED00DED5CE /* ProfileVC.swift */; };
+		6D69DA141EFC461700DED5CE /* CoverageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA131EFC461700DED5CE /* CoverageVC.swift */; };
+		6D69DA171EFC464000DED5CE /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA161EFC464000DED5CE /* WalletVC.swift */; };
 		6D6DA2421EE1650400307C73 /* TeammateBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */; };
 		6D6DA2441EE165B100307C73 /* TeammateVotingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */; };
 		6D6DA2461EE167BD00307C73 /* CoveredObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2451EE167BD00307C73 /* CoveredObject.swift */; };
@@ -332,6 +336,10 @@
 		6D69DA051EFC34FE00DED5CE /* UserIndexCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserIndexCellBuilder.swift; path = Scenes/Proxies/UserIndex/UserIndexCellBuilder.swift; sourceTree = "<group>"; };
 		6D69DA091EFC36C000DED5CE /* InfoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoHeader.swift; path = View/ReusableViews/InfoHeader.swift; sourceTree = "<group>"; };
 		6D69DA0A1EFC36C000DED5CE /* InfoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InfoHeader.xib; path = View/ReusableViews/InfoHeader.xib; sourceTree = "<group>"; };
+		6D69DA0E1EFC458C00DED5CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Me.strings; sourceTree = "<group>"; };
+		6D69DA101EFC45ED00DED5CE /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVC.swift; path = Scenes/Me/Profile/ProfileVC.swift; sourceTree = "<group>"; };
+		6D69DA131EFC461700DED5CE /* CoverageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoverageVC.swift; path = Scenes/Me/Coverage/CoverageVC.swift; sourceTree = "<group>"; };
+		6D69DA161EFC464000DED5CE /* WalletVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletVC.swift; path = Scenes/Me/Wallet/WalletVC.swift; sourceTree = "<group>"; };
 		6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateBasicInfo.swift; path = Model/Entities/TeammateBasicInfo.swift; sourceTree = "<group>"; };
 		6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateVotingInfo.swift; path = Model/Entities/TeammateVotingInfo.swift; sourceTree = "<group>"; };
 		6D6DA2451EE167BD00307C73 /* CoveredObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoveredObject.swift; path = Model/Entities/CoveredObject.swift; sourceTree = "<group>"; };
@@ -569,6 +577,7 @@
 				6DF2E8C51EF057DB00C8D60B /* Team.strings */,
 				6DF2E8C91EF194E400C8D60B /* Main.strings */,
 				6D0D2AEA1EFBD6820095284C /* Proxy.strings */,
+				6D69DA0D1EFC458C00DED5CE /* Me.strings */,
 			);
 			name = Localizations;
 			sourceTree = "<group>";
@@ -697,6 +706,30 @@
 			name = ReusableViews;
 			sourceTree = "<group>";
 		};
+		6D69DA121EFC45F400DED5CE /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				6D69DA101EFC45ED00DED5CE /* ProfileVC.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		6D69DA151EFC461D00DED5CE /* Coverage */ = {
+			isa = PBXGroup;
+			children = (
+				6D69DA131EFC461700DED5CE /* CoverageVC.swift */,
+			);
+			name = Coverage;
+			sourceTree = "<group>";
+		};
+		6D69DA181EFC464500DED5CE /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				6D69DA161EFC464000DED5CE /* WalletVC.swift */,
+			);
+			name = Wallet;
+			sourceTree = "<group>";
+		};
 		6D83EC8C1EDD708A000412DC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -773,6 +806,9 @@
 		6D9CC62E1ED5EB2B007F936E /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				6D69DA151EFC461D00DED5CE /* Coverage */,
+				6D69DA121EFC45F400DED5CE /* Profile */,
+				6D69DA181EFC464500DED5CE /* Wallet */,
 				6D9CC62C1ED5EB23007F936E /* Me.storyboard */,
 				6DF2E8CF1EF197D100C8D60B /* MeVC.swift */,
 			);
@@ -920,8 +956,8 @@
 				6D9CC6281ED5EA8C007F936E /* Team */,
 				6D9CC6251ED5EA3F007F936E /* Home */,
 				6D9CC6111ED2E239007F936E /* Login */,
-				6D9CC62E1ED5EB2B007F936E /* Me */,
 				6D9CC62B1ED5EADD007F936E /* Proxies */,
+				6D9CC62E1ED5EB2B007F936E /* Me */,
 				6DA475A71E8ABEE600B56D9B /* Main.storyboard */,
 				6D9CC6201ED5BB9C007F936E /* InitialVC.swift */,
 				6D83EC8D1EDD7230000412DC /* MainRouter.swift */,
@@ -1331,6 +1367,7 @@
 				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
 				6DE793301EF810DB005F4508 /* ChatCell.xib in Resources */,
 				6D9C808E1EDF17D000FB8C2C /* AkkuratPro-Bold.otf in Resources */,
+				6D69DA0F1EFC458C00DED5CE /* Me.strings in Resources */,
 				6D73C6E01EBB36A700A2C0F8 /* Transactions.storyboard in Resources */,
 				6DF2E8C71EF057DB00C8D60B /* Team.strings in Resources */,
 				6DDE95851EE853550019DA47 /* ClaimOptionsCell.xib in Resources */,
@@ -1649,6 +1686,7 @@
 				6DB812141EE6E68500B202CE /* ChatVC.swift in Sources */,
 				6D6DA24A1EE16E8300307C73 /* TeammateCellBuilder.swift in Sources */,
 				6D0D2AE01EFBD4260095284C /* MyProxiesVC.swift in Sources */,
+				6D69DA171EFC464000DED5CE /* WalletVC.swift in Sources */,
 				6D9CC63A1ED72675007F936E /* MembersVC.swift in Sources */,
 				6DB8121D1EE6F78700B202CE /* Formatter.swift in Sources */,
 				6D466AAC1ED07CF1001BC579 /* TxOutput.swift in Sources */,
@@ -1689,6 +1727,7 @@
 				6DEE67A51EDC75DA0098EDB3 /* TeammateHeaderView.swift in Sources */,
 				6D0D2AE61EFBD48D0095284C /* UserIndexVC.swift in Sources */,
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
+				6D69DA141EFC461700DED5CE /* CoverageVC.swift in Sources */,
 				6DDE95681EE806F80019DA47 /* ImageGalleryCell.swift in Sources */,
 				6DB8121B1EE6F1B800B202CE /* EnhancedClaimEntity.swift in Sources */,
 				6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */,
@@ -1726,6 +1765,7 @@
 				6D9CC6151ED48244007F936E /* SegueType.swift in Sources */,
 				6D466AAD1ED07CF1001BC579 /* TxSignature.swift in Sources */,
 				6D6DA2601EE1DAA400307C73 /* ClaimsCellBuilder.swift in Sources */,
+				6D69DA111EFC45ED00DED5CE /* ProfileVC.swift in Sources */,
 				6D69D9E91EFBF49700DED5CE /* ValueToTextConverter.swift in Sources */,
 				6DEC07541E9BF6600078F40E /* ExtendedTeammate.swift in Sources */,
 				6D9CC63D1ED72DF2007F936E /* ClaimsVC.swift in Sources */,
@@ -1801,6 +1841,14 @@
 				6D0D2AEB1EFBD6820095284C /* en */,
 			);
 			name = Proxy.strings;
+			sourceTree = "<group>";
+		};
+		6D69DA0D1EFC458C00DED5CE /* Me.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D69DA0E1EFC458C00DED5CE /* en */,
+			);
+			name = Me.strings;
 			sourceTree = "<group>";
 		};
 		6DA475A71E8ABEE600B56D9B /* Main.storyboard */ = {
