@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProxyCell" id="gTV-IL-0wX" customClass="ProxyCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="342" height="120"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ct4-fg-NvQ">
+                        <rect key="frame" x="0.0" y="0.0" width="342" height="120"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cxa-sc-7SP" customClass="RoundBadgedView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="20" y="24" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="NMU-Uc-y81"/>
+                                    <constraint firstAttribute="width" secondItem="Cxa-sc-7SP" secondAttribute="height" multiplier="1:1" id="XRv-zB-Lng"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Georgemaine Lourens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcl-pr-wpc" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="64" y="19.5" width="168.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ROTTERDAM, NL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4Y-sY-GaD" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="64" y="40" width="132" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9.23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHY-pu-55R" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="279.5" y="19.5" width="34.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROXY RANK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wII-ti-ph3" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="209" y="40" width="105" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="U2v-Li-0cg">
+                                <rect key="frame" x="20" y="60.5" width="294" height="59.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7J-Yy-zwq" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="14" width="98" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="E5c-tD-g0T"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="DECISIONS"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                <real key="value" value="0.69999999999999996"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="valueColor">
+                                                <color key="value" red="0.14117647058823529" green="0.86274509803921573" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b40-7r-rdV" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="98" y="14" width="98" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="3XA-it-XzM"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="DISCUSSIONS"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                <real key="value" value="0.29999999999999999"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="valueColor">
+                                                <color key="value" red="1" green="0.81960784313725488" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRe-k3-ECa" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="196" y="14" width="98" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="cnY-9G-c9Z"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="VOTING FREQ."/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Cxa-sc-7SP" firstAttribute="leading" secondItem="ct4-fg-NvQ" secondAttribute="leading" constant="20" id="1M4-ip-eTw"/>
+                            <constraint firstItem="U2v-Li-0cg" firstAttribute="top" secondItem="L4Y-sY-GaD" secondAttribute="bottom" id="4zK-64-JXn"/>
+                            <constraint firstItem="Cxa-sc-7SP" firstAttribute="top" secondItem="ct4-fg-NvQ" secondAttribute="top" constant="24" id="COR-JR-qjK"/>
+                            <constraint firstItem="L4Y-sY-GaD" firstAttribute="top" secondItem="Cxa-sc-7SP" secondAttribute="centerY" id="MT8-4m-BLY"/>
+                            <constraint firstAttribute="trailing" secondItem="fHY-pu-55R" secondAttribute="trailing" constant="28" id="Qry-31-qfG"/>
+                            <constraint firstItem="wII-ti-ph3" firstAttribute="top" secondItem="L4Y-sY-GaD" secondAttribute="top" id="SlM-9v-dJF"/>
+                            <constraint firstItem="Pcl-pr-wpc" firstAttribute="bottom" secondItem="Cxa-sc-7SP" secondAttribute="centerY" id="X8A-Kt-QE5"/>
+                            <constraint firstItem="U2v-Li-0cg" firstAttribute="trailing" secondItem="wII-ti-ph3" secondAttribute="trailing" id="bsW-R7-N73"/>
+                            <constraint firstItem="Pcl-pr-wpc" firstAttribute="leading" secondItem="Cxa-sc-7SP" secondAttribute="trailing" constant="12" id="ebz-Es-uC9"/>
+                            <constraint firstAttribute="bottom" secondItem="U2v-Li-0cg" secondAttribute="bottom" id="fHz-Wm-tld"/>
+                            <constraint firstItem="L4Y-sY-GaD" firstAttribute="leading" secondItem="Pcl-pr-wpc" secondAttribute="leading" id="nlW-DU-BnF"/>
+                            <constraint firstItem="fHY-pu-55R" firstAttribute="bottom" secondItem="Pcl-pr-wpc" secondAttribute="bottom" id="nqu-ly-gcT"/>
+                            <constraint firstItem="wII-ti-ph3" firstAttribute="trailing" secondItem="fHY-pu-55R" secondAttribute="trailing" id="vkj-AO-1OG"/>
+                            <constraint firstItem="U2v-Li-0cg" firstAttribute="leading" secondItem="Cxa-sc-7SP" secondAttribute="leading" id="wkP-aH-zru"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ct4-fg-NvQ" secondAttribute="trailing" id="BsI-kY-rYv"/>
+                <constraint firstItem="ct4-fg-NvQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="O7c-iT-cjF"/>
+                <constraint firstItem="ct4-fg-NvQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YcV-Lv-nrl"/>
+                <constraint firstAttribute="bottom" secondItem="ct4-fg-NvQ" secondAttribute="bottom" id="bYQ-8K-1VY"/>
+            </constraints>
+            <size key="customSize" width="539" height="199"/>
+            <connections>
+                <outlet property="avatarView" destination="Cxa-sc-7SP" id="sZt-IT-y0x"/>
+                <outlet property="detailsLabel" destination="L4Y-sY-GaD" id="f6f-Bo-w9F"/>
+                <outlet property="leftBar" destination="h7J-Yy-zwq" id="4vQ-OX-n5d"/>
+                <outlet property="middleBar" destination="b40-7r-rdV" id="T1j-hE-H2r"/>
+                <outlet property="nameLabel" destination="Pcl-pr-wpc" id="d8v-BQ-zbk"/>
+                <outlet property="rankLabel" destination="wII-ti-ph3" id="EfF-iV-zgu"/>
+                <outlet property="rightBar" destination="SRe-k3-ECa" id="45M-Xt-jde"/>
+                <outlet property="timeLabel" destination="fHY-pu-55R" id="Oak-9g-taO"/>
+            </connections>
+            <point key="canvasLocation" x="30" y="-69"/>
+        </collectionViewCell>
+    </objects>
+</document>
