@@ -43,6 +43,7 @@ struct PiecewiseFunction {
         }
     }
     
+    @discardableResult
     mutating func addPoint(x: Double, value: Double) -> Bool {
         for item in items where item.x == x { return false }
         items.insertOrdered(Item(x: x, value: value))

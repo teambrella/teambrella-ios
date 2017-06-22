@@ -33,11 +33,14 @@ class PiecewiseFunctionTests: XCTestCase {
     }
     
     func testResult() {
-        let function = PiecewiseFunction((5, 5), (1, 1), (7, 9))
+        var function = PiecewiseFunction((5, 5), (1, 1), (7, 9))
         XCTAssertNotNil(function)
         
         XCTAssertEqual(function?.value(at: 6), 7)
         XCTAssertEqual(function?.value(at: 4), 4)
+        
+        function?.addPoint(x: 3, value: 7)
+        XCTAssertEqual(function?.value(at: 4), 6)
     }
     
     func testOutOfBounds() {
