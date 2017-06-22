@@ -10,6 +10,16 @@ import UIKit
 import XLPagerTabStrip
 
 class UserIndexVC: UIViewController {
+    struct Constant {
+        static let containerHeightShrinked: CGFloat     = 65
+        static let containerHeightExpanded: CGFloat     = 214
+        static let avatarSizeShrinked: CGFloat          = 40
+        static let avatarSizeExpanded: CGFloat          = 56
+        static let cellHeight: CGFloat                  = 75
+        static let headerHeight: CGFloat                = 40
+        static let scrollingVelocityThreshold: CGFloat  = 10
+    }
+    
     var dataSource: UserIndexDataSource = UserIndexDataSource()
     
     @IBOutlet var topContainer: UIView!
@@ -21,15 +31,12 @@ class UserIndexVC: UIViewController {
     @IBOutlet var avatarWidthConstant: NSLayoutConstraint!
     
     var isTopContainerShrinked: Bool = false
+    fileprivate var previousScrollOffset: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         setupCollectionView()
-        autoshrink()
+        shrinkTopContainer(false)
     }
     
     private func setupCollectionView() {
@@ -39,16 +46,16 @@ class UserIndexVC: UIViewController {
                                 withReuseIdentifier: InfoHeader.cellID)
     }
     
-    private func autoshrink() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-            self.shrinkTopContainer(!self.isTopContainerShrinked)
-            self.autoshrink()
-        }
-    }
-    
-    private func shrinkTopContainer(_ shrink: Bool) {
-        topContainerHeightConstraint.constant = shrink ? 65 : 214
-        avatarWidthConstant.constant = shrink ? 40 : 56
+    fileprivate func shrinkTopContainer(_ shrink: Bool) {
+        topContainerHeightConstraint.constant = shrink
+            ? Constant.containerHeightShrinked
+            : Constant.containerHeightExpanded
+        collectionView.contentInset.top = shrink
+            ? Constant.containerHeightShrinked
+            : Constant.containerHeightExpanded
+        avatarWidthConstant.constant = shrink
+            ? Constant.avatarSizeShrinked
+            : Constant.avatarSizeExpanded
         isTopContainerShrinked = shrink
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
@@ -114,12 +121,27 @@ extension UserIndexVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 75)
+        return CGSize(width: collectionView.bounds.width, height: Constant.cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 40)
+        return CGSize(width: collectionView.bounds.width, height: Constant.headerHeight)
+    }
+}
+
+// MARK: UIScrollViewDelegate
+extension UserIndexVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        let velocity = currentOffset - previousScrollOffset
+        previousScrollOffset = currentOffset
+        if velocity > Constant.scrollingVelocityThreshold {
+            shrinkTopContainer(true)
+        }
+        if velocity < -Constant.scrollingVelocityThreshold {
+            shrinkTopContainer(false)
+        }
     }
 }

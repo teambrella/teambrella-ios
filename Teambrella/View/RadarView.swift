@@ -16,6 +16,8 @@ class RadarView: UIView {
     var segments: Int = 3
     @IBInspectable
     var diameter: CGFloat = 136
+    @IBInspectable
+    var rotated: Bool = false
     var coefficient: CGFloat = 1.3
     
     override func draw(_ rect: CGRect) {
@@ -23,17 +25,31 @@ class RadarView: UIView {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         guard segments > 0 else { return }
         
-        var wdt = (bounds.midX - diameter / 2) / CGFloat(segments)
-        var x = (diameter + wdt) / 2
+        let startAngle: CGFloat!
+        let endAngle: CGFloat!
+        var size: CGFloat = 0
+        let center: CGPoint!
+        if rotated {
+            startAngle = CGFloat.pi
+            endAngle = -CGFloat.pi
+            size = (bounds.midY - diameter / 2) / CGFloat(segments)
+            center = CGPoint(x: 0, y: bounds.midY)
+        } else {
+            startAngle = 0
+            endAngle = CGFloat.pi
+            size = (bounds.midX - diameter / 2) / CGFloat(segments)
+            center = CGPoint(x: bounds.midX, y: bounds.maxY)
+        }
+        var x = (diameter + size) / 2
         
         for i in 0...segments + 1 {
             context.setStrokeColor(colorFor(segment: i).cgColor)
-            context.setLineWidth(wdt)
-            context.addArc(center: CGPoint(x: bounds.midX, y: bounds.maxY),
-                           radius: x, startAngle: 0, endAngle: CGFloat.pi, clockwise: true)
+            context.setLineWidth(size)
+            context.addArc(center: center,
+                           radius: x, startAngle: startAngle, endAngle: endAngle, clockwise: true)
             context.strokePath()
-            x += wdt
-            wdt *= coefficient
+            x += size
+            size *= coefficient
         }
     }
     

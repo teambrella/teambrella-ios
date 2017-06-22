@@ -952,10 +952,10 @@
 		6DA714F31EE02B0200F39EBE /* Teammates */ = {
 			isa = PBXGroup;
 			children = (
+				6D9CC6391ED72675007F936E /* MembersVC.swift */,
 				6D6DA2651EE21F2D00307C73 /* MembersDataSource.swift */,
 				6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */,
 				6DEE67A41EDC75DA0098EDB3 /* TeammateHeaderView.swift */,
-				6D9CC6391ED72675007F936E /* MembersVC.swift */,
 				6DEE67941EDC12A70098EDB3 /* TeammateCandidateCell.swift */,
 				6DEE67A21EDC5C4D0098EDB3 /* TeammateCell.swift */,
 			);
