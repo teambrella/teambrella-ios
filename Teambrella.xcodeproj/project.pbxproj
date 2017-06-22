@@ -66,6 +66,13 @@
 		6D69D9F81EFC05BE00DED5CE /* ProxyForHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69D9F61EFC05BE00DED5CE /* ProxyForHeader.xib */; };
 		6D69D9FB1EFC07FF00DED5CE /* ProxyForCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9F91EFC07FF00DED5CE /* ProxyForCell.swift */; };
 		6D69D9FC1EFC07FF00DED5CE /* ProxyForCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69D9FA1EFC07FF00DED5CE /* ProxyForCell.xib */; };
+		6D69D9FF1EFC32CB00DED5CE /* UserIndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9FD1EFC32CB00DED5CE /* UserIndexCell.swift */; };
+		6D69DA001EFC32CB00DED5CE /* UserIndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69D9FE1EFC32CB00DED5CE /* UserIndexCell.xib */; };
+		6D69DA021EFC340300DED5CE /* UserIndexDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA011EFC340300DED5CE /* UserIndexDataSource.swift */; };
+		6D69DA041EFC343F00DED5CE /* UserIndexCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA031EFC343F00DED5CE /* UserIndexCellModel.swift */; };
+		6D69DA061EFC34FE00DED5CE /* UserIndexCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA051EFC34FE00DED5CE /* UserIndexCellBuilder.swift */; };
+		6D69DA0B1EFC36C000DED5CE /* InfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA091EFC36C000DED5CE /* InfoHeader.swift */; };
+		6D69DA0C1EFC36C000DED5CE /* InfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA0A1EFC36C000DED5CE /* InfoHeader.xib */; };
 		6D6DA2421EE1650400307C73 /* TeammateBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */; };
 		6D6DA2441EE165B100307C73 /* TeammateVotingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */; };
 		6D6DA2461EE167BD00307C73 /* CoveredObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2451EE167BD00307C73 /* CoveredObject.swift */; };
@@ -318,6 +325,13 @@
 		6D69D9F61EFC05BE00DED5CE /* ProxyForHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProxyForHeader.xib; path = View/ReusableViews/ProxyForHeader.xib; sourceTree = "<group>"; };
 		6D69D9F91EFC07FF00DED5CE /* ProxyForCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyForCell.swift; path = View/Cells/ProxyForCell.swift; sourceTree = "<group>"; };
 		6D69D9FA1EFC07FF00DED5CE /* ProxyForCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProxyForCell.xib; path = View/Cells/ProxyForCell.xib; sourceTree = "<group>"; };
+		6D69D9FD1EFC32CB00DED5CE /* UserIndexCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserIndexCell.swift; path = View/Cells/UserIndexCell.swift; sourceTree = "<group>"; };
+		6D69D9FE1EFC32CB00DED5CE /* UserIndexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserIndexCell.xib; path = View/Cells/UserIndexCell.xib; sourceTree = "<group>"; };
+		6D69DA011EFC340300DED5CE /* UserIndexDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserIndexDataSource.swift; path = Scenes/Proxies/UserIndex/UserIndexDataSource.swift; sourceTree = "<group>"; };
+		6D69DA031EFC343F00DED5CE /* UserIndexCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserIndexCellModel.swift; path = Scenes/Proxies/UserIndex/UserIndexCellModel.swift; sourceTree = "<group>"; };
+		6D69DA051EFC34FE00DED5CE /* UserIndexCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserIndexCellBuilder.swift; path = Scenes/Proxies/UserIndex/UserIndexCellBuilder.swift; sourceTree = "<group>"; };
+		6D69DA091EFC36C000DED5CE /* InfoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoHeader.swift; path = View/ReusableViews/InfoHeader.swift; sourceTree = "<group>"; };
+		6D69DA0A1EFC36C000DED5CE /* InfoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InfoHeader.xib; path = View/ReusableViews/InfoHeader.xib; sourceTree = "<group>"; };
 		6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateBasicInfo.swift; path = Model/Entities/TeammateBasicInfo.swift; sourceTree = "<group>"; };
 		6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateVotingInfo.swift; path = Model/Entities/TeammateVotingInfo.swift; sourceTree = "<group>"; };
 		6D6DA2451EE167BD00307C73 /* CoveredObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoveredObject.swift; path = Model/Entities/CoveredObject.swift; sourceTree = "<group>"; };
@@ -585,6 +599,9 @@
 			isa = PBXGroup;
 			children = (
 				6D0D2AE51EFBD48D0095284C /* UserIndexVC.swift */,
+				6D69DA011EFC340300DED5CE /* UserIndexDataSource.swift */,
+				6D69DA031EFC343F00DED5CE /* UserIndexCellModel.swift */,
+				6D69DA051EFC34FE00DED5CE /* UserIndexCellBuilder.swift */,
 			);
 			name = UserIndex;
 			sourceTree = "<group>";
@@ -674,6 +691,8 @@
 				6D69D9EB1EFBFF2E00DED5CE /* NeedHelpView.xib */,
 				6D69D9F51EFC05BE00DED5CE /* ProxyForHeader.swift */,
 				6D69D9F61EFC05BE00DED5CE /* ProxyForHeader.xib */,
+				6D69DA091EFC36C000DED5CE /* InfoHeader.swift */,
+				6D69DA0A1EFC36C000DED5CE /* InfoHeader.xib */,
 			);
 			name = ReusableViews;
 			sourceTree = "<group>";
@@ -1004,6 +1023,8 @@
 				6D0D2AEE1EFBDB7C0095284C /* ProxyCell.xib */,
 				6D69D9F91EFC07FF00DED5CE /* ProxyForCell.swift */,
 				6D69D9FA1EFC07FF00DED5CE /* ProxyForCell.xib */,
+				6D69D9FD1EFC32CB00DED5CE /* UserIndexCell.swift */,
+				6D69D9FE1EFC32CB00DED5CE /* UserIndexCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1303,6 +1324,8 @@
 				6DE793321EF83ABA005F4508 /* ChatInputView.xib in Resources */,
 				6D6DA2501EE1B68F00307C73 /* Members.storyboard in Resources */,
 				6D69D9F81EFC05BE00DED5CE /* ProxyForHeader.xib in Resources */,
+				6D69DA001EFC32CB00DED5CE /* UserIndexCell.xib in Resources */,
+				6D69DA0C1EFC36C000DED5CE /* InfoHeader.xib in Resources */,
 				6D097EA81E9D220A00E77DAB /* General.strings in Resources */,
 				6D097E9C1E9D1AD200E77DAB /* Test.stringsdict in Resources */,
 				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
@@ -1542,6 +1565,7 @@
 				6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */,
 				6D466AA01ED07CF1001BC579 /* BlockchainServer.swift in Sources */,
 				6DEE67971EDC13D50098EDB3 /* RoundBadgedView.swift in Sources */,
+				6D69DA0B1EFC36C000DED5CE /* InfoHeader.swift in Sources */,
 				6DA714FC1EE05E5900F39EBE /* TeammateStatsCell.swift in Sources */,
 				6D6DA2621EE21A9D00307C73 /* Gender.swift in Sources */,
 				6D69D9F21EFC035400DED5CE /* ProxyForCellBuilder.swift in Sources */,
@@ -1589,6 +1613,7 @@
 				6D69D9E71EFBF2C500DED5CE /* MyProxiesCellBuilder.swift in Sources */,
 				6D9CC6551ED98E66007F936E /* NumberView.swift in Sources */,
 				6D35EFC91EAF931000696B42 /* TransactionsTeammateVC.swift in Sources */,
+				6D69DA041EFC343F00DED5CE /* UserIndexCellModel.swift in Sources */,
 				6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */,
 				6D466AA51ED07CF1001BC579 /* BtcAddress.swift in Sources */,
 				6DE793341EF83AD2005F4508 /* ChatInputView.swift in Sources */,
@@ -1608,6 +1633,7 @@
 				6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */,
 				6DF2E8BC1EF0232700C8D60B /* CellDecorator.swift in Sources */,
 				6DA714FA1EE04D4900F39EBE /* ScaleBar.swift in Sources */,
+				6D69DA061EFC34FE00DED5CE /* UserIndexCellBuilder.swift in Sources */,
 				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
 				6DE793361EF92E34005F4508 /* ChatTextParser.swift in Sources */,
 				6D466AB11ED07CF1001BC579 /* TransactionsModel.xcdatamodeld in Sources */,
@@ -1615,6 +1641,7 @@
 				6D6DA24C1EE18FCA00307C73 /* TextAdapter.swift in Sources */,
 				6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */,
 				6D6DA2561EE1C67700307C73 /* ClaimsPaidCell.swift in Sources */,
+				6D69DA021EFC340300DED5CE /* UserIndexDataSource.swift in Sources */,
 				6DE793291EF80F11005F4508 /* UniversalChatVC.swift in Sources */,
 				6D097EA51E9D219A00E77DAB /* Nameable.swift in Sources */,
 				6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */,
@@ -1645,6 +1672,7 @@
 				6D9CC6101ED2E230007F936E /* LoginVC.swift in Sources */,
 				6D69D9E31EFBEE8D00DED5CE /* MyProxiesDataSource.swift in Sources */,
 				6D0D2ADE1EFBC41D0095284C /* ButtonBarPagerTabStripViewController.swift in Sources */,
+				6D69D9FF1EFC32CB00DED5CE /* UserIndexCell.swift in Sources */,
 				6DDE95751EE835360019DA47 /* ClaimCellBuilder.swift in Sources */,
 				6D6DA25A1EE1CA9B00307C73 /* ClaimsDataSource.swift in Sources */,
 				6D6DA25C1EE1CE3100307C73 /* ClaimLike.swift in Sources */,
