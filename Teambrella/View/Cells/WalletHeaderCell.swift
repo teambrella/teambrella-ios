@@ -8,8 +8,13 @@
 
 import UIKit
 
-class WalletHeaderCell: UICollectionViewCell {
-
+class WalletHeaderCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var amount: WalletAmountLabel!
+    @IBOutlet var auxillaryAmount: UILabel!
+    @IBOutlet var currencyLabel: UILabel!
+    @IBOutlet var numberBar: NumberBar!
+    @IBOutlet var button: BorderedButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
