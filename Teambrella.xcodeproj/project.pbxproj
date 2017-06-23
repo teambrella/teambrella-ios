@@ -87,6 +87,13 @@
 		6D69DA2D1EFD1A1E00DED5CE /* WalletButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA2B1EFD1A1E00DED5CE /* WalletButtonsCell.swift */; };
 		6D69DA2E1EFD1A1E00DED5CE /* WalletButtonsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */; };
 		6D69DA301EFD6A9F00DED5CE /* MeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA2F1EFD6A9F00DED5CE /* MeRouter.swift */; };
+		6D69DA331EFD6CB700DED5CE /* TeamFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA311EFD6CB700DED5CE /* TeamFeedCell.swift */; };
+		6D69DA341EFD6CB700DED5CE /* TeamFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA321EFD6CB700DED5CE /* TeamFeedCell.xib */; };
+		6D69DA371EFD6CED00DED5CE /* HeaderWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA351EFD6CED00DED5CE /* HeaderWithButton.swift */; };
+		6D69DA381EFD6CED00DED5CE /* HeaderWithButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA361EFD6CED00DED5CE /* HeaderWithButton.xib */; };
+		6D69DA3A1EFD6D1200DED5CE /* FeedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA391EFD6D1200DED5CE /* FeedDataSource.swift */; };
+		6D69DA3C1EFD6D3400DED5CE /* FeedCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA3B1EFD6D3400DED5CE /* FeedCellBuilder.swift */; };
+		6D69DA3E1EFD6D9100DED5CE /* FeedCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA3D1EFD6D9100DED5CE /* FeedCellModels.swift */; };
 		6D6DA2421EE1650400307C73 /* TeammateBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */; };
 		6D6DA2441EE165B100307C73 /* TeammateVotingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */; };
 		6D6DA2461EE167BD00307C73 /* CoveredObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2451EE167BD00307C73 /* CoveredObject.swift */; };
@@ -360,6 +367,13 @@
 		6D69DA2B1EFD1A1E00DED5CE /* WalletButtonsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletButtonsCell.swift; path = View/Cells/WalletButtonsCell.swift; sourceTree = "<group>"; };
 		6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WalletButtonsCell.xib; path = View/Cells/WalletButtonsCell.xib; sourceTree = "<group>"; };
 		6D69DA2F1EFD6A9F00DED5CE /* MeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeRouter.swift; path = Scenes/Me/MeRouter.swift; sourceTree = "<group>"; };
+		6D69DA311EFD6CB700DED5CE /* TeamFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamFeedCell.swift; path = View/Cells/TeamFeedCell.swift; sourceTree = "<group>"; };
+		6D69DA321EFD6CB700DED5CE /* TeamFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TeamFeedCell.xib; path = View/Cells/TeamFeedCell.xib; sourceTree = "<group>"; };
+		6D69DA351EFD6CED00DED5CE /* HeaderWithButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderWithButton.swift; path = View/ReusableViews/HeaderWithButton.swift; sourceTree = "<group>"; };
+		6D69DA361EFD6CED00DED5CE /* HeaderWithButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeaderWithButton.xib; path = View/ReusableViews/HeaderWithButton.xib; sourceTree = "<group>"; };
+		6D69DA391EFD6D1200DED5CE /* FeedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedDataSource.swift; path = Scenes/Team/Feed/FeedDataSource.swift; sourceTree = "<group>"; };
+		6D69DA3B1EFD6D3400DED5CE /* FeedCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedCellBuilder.swift; path = Scenes/Team/Feed/FeedCellBuilder.swift; sourceTree = "<group>"; };
+		6D69DA3D1EFD6D9100DED5CE /* FeedCellModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedCellModels.swift; path = Scenes/Team/Feed/FeedCellModels.swift; sourceTree = "<group>"; };
 		6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateBasicInfo.swift; path = Model/Entities/TeammateBasicInfo.swift; sourceTree = "<group>"; };
 		6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateVotingInfo.swift; path = Model/Entities/TeammateVotingInfo.swift; sourceTree = "<group>"; };
 		6D6DA2451EE167BD00307C73 /* CoveredObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoveredObject.swift; path = Model/Entities/CoveredObject.swift; sourceTree = "<group>"; };
@@ -722,6 +736,8 @@
 				6D69D9F61EFC05BE00DED5CE /* ProxyForHeader.xib */,
 				6D69DA091EFC36C000DED5CE /* InfoHeader.swift */,
 				6D69DA0A1EFC36C000DED5CE /* InfoHeader.xib */,
+				6D69DA351EFD6CED00DED5CE /* HeaderWithButton.swift */,
+				6D69DA361EFD6CED00DED5CE /* HeaderWithButton.xib */,
 			);
 			name = ReusableViews;
 			sourceTree = "<group>";
@@ -843,6 +859,9 @@
 			isa = PBXGroup;
 			children = (
 				6D9CC6361ED72641007F936E /* FeedVC.swift */,
+				6D69DA391EFD6D1200DED5CE /* FeedDataSource.swift */,
+				6D69DA3B1EFD6D3400DED5CE /* FeedCellBuilder.swift */,
+				6D69DA3D1EFD6D9100DED5CE /* FeedCellModels.swift */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -1091,6 +1110,8 @@
 				6D69DA281EFD1A0400DED5CE /* WalletFundingCell.xib */,
 				6D69DA2B1EFD1A1E00DED5CE /* WalletButtonsCell.swift */,
 				6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */,
+				6D69DA311EFD6CB700DED5CE /* TeamFeedCell.swift */,
+				6D69DA321EFD6CB700DED5CE /* TeamFeedCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1373,6 +1394,7 @@
 				6DB812171EE6E6A900B202CE /* Chat.storyboard in Resources */,
 				6D1C039F1EB8D37D004AED30 /* Sample.storyboard in Resources */,
 				6D69D9ED1EFBFF2E00DED5CE /* NeedHelpView.xib in Resources */,
+				6D69DA341EFD6CB700DED5CE /* TeamFeedCell.xib in Resources */,
 				6DDE95811EE84FFD0019DA47 /* ClaimDetailsCell.xib in Resources */,
 				6D097E971E9D19F400E77DAB /* Test.strings in Resources */,
 				6DEE678F1ED9CF070098EDB3 /* ItemCard.xib in Resources */,
@@ -1406,6 +1428,7 @@
 				6D9CC6271ED5EA81007F936E /* Team.storyboard in Resources */,
 				6D69DA2A1EFD1A0400DED5CE /* WalletFundingCell.xib in Resources */,
 				6D9CC6301ED5EBA8007F936E /* Login.storyboard in Resources */,
+				6D69DA381EFD6CED00DED5CE /* HeaderWithButton.xib in Resources */,
 				6DF2E8CB1EF194E400C8D60B /* Main.strings in Resources */,
 				6D0D2AEC1EFBD6820095284C /* Proxy.strings in Resources */,
 				6DDE95791EE843540019DA47 /* ClaimVoteCell.xib in Resources */,
@@ -1668,6 +1691,7 @@
 				6D9CC61B1ED57B83007F936E /* LoginDetailsPresenter.swift in Sources */,
 				6D9CC6491ED74DEF007F936E /* UmbrellaView.swift in Sources */,
 				6DA715001EE0786000F39EBE /* RadarView.swift in Sources */,
+				6D69DA3E1EFD6D9100DED5CE /* FeedCellModels.swift in Sources */,
 				6D829AA31EB0BE1A0051F43A /* UIColor.swift in Sources */,
 				6DCB9F571ECA0A45000B48C4 /* Decimal.swift in Sources */,
 				6DEC6DF51E96673600ACC119 /* PostEntity.swift in Sources */,
@@ -1730,6 +1754,7 @@
 				CBDFE767664CC051784BF271 /* ServerService.swift in Sources */,
 				6D69DA211EFD19BF00DED5CE /* WalletHeaderCell.swift in Sources */,
 				6D83EC941EDDA9DC000412DC /* TeammateProfileDataSource.swift in Sources */,
+				6D69DA3C1EFD6D3400DED5CE /* FeedCellBuilder.swift in Sources */,
 				6D0D2AEF1EFBDB7C0095284C /* ProxyCell.swift in Sources */,
 				6D466AA71ED07CF1001BC579 /* PayTo.swift in Sources */,
 				6D6DA2441EE165B100307C73 /* TeammateVotingInfo.swift in Sources */,
@@ -1767,6 +1792,7 @@
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
 				6D69DA141EFC461700DED5CE /* CoverageVC.swift in Sources */,
 				6DDE95681EE806F80019DA47 /* ImageGalleryCell.swift in Sources */,
+				6D69DA371EFD6CED00DED5CE /* HeaderWithButton.swift in Sources */,
 				6DB8121B1EE6F1B800B202CE /* EnhancedClaimEntity.swift in Sources */,
 				6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */,
 				6DF2E8BE1EF02F8200C8D60B /* SocketService.swift in Sources */,
@@ -1783,10 +1809,12 @@
 				6DEE67A11EDC341A0098EDB3 /* Geometry.swift in Sources */,
 				6D83EC8B1EDD7083000412DC /* Navigator.swift in Sources */,
 				6DDE956D1EE813D50019DA47 /* KingfisherSource.swift in Sources */,
+				6D69DA3A1EFD6D1200DED5CE /* FeedDataSource.swift in Sources */,
 				6D9CC6371ED72641007F936E /* FeedVC.swift in Sources */,
 				6DEC074E1E9BD1DB0078F40E /* TeammatesCell.swift in Sources */,
 				6D73C6E21EBB374D00A2C0F8 /* PaymentsTVC.swift in Sources */,
 				6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */,
+				6D69DA331EFD6CB700DED5CE /* TeamFeedCell.swift in Sources */,
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
 				CBDFE00DB06001B8DB766097 /* TeammateLike.swift in Sources */,
 				6D829AA51EB0D6860051F43A /* Random.swift in Sources */,
