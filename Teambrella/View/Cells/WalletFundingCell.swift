@@ -9,6 +9,14 @@
 import UIKit
 
 class WalletFundingCell: UICollectionViewCell {
+    @IBOutlet var headerLabel: Label!
+    @IBOutlet var infoButton: UIButton!
+    @IBOutlet var upperNumberView: NumberView!
+    @IBOutlet var upperCurrencyLabel: Label!
+    @IBOutlet var lowerNumberView: NumberView!
+    @IBOutlet var lowerCurrencyLabel: Label!
+    @IBOutlet var barcodeButton: BorderedButton!
+    @IBOutlet var fundWalletButton: BorderedButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

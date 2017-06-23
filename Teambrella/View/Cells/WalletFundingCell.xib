@@ -1,19 +1,129 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="WalletFundingCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="WalletFundingCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="279"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                <rect key="frame" x="0.0" y="0.0" width="343" height="279"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ft1-fn-QZU">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="279"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED FUNDING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-FN-MiT" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="20" y="16" width="209" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SS-e1-43y" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="16" y="101" width="61" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCv-7T-Tb4" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="16" y="184" width="59" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDf-9h-j00">
+                                <rect key="frame" x="303" y="16" width="20" height="22"/>
+                                <state key="normal" image="info"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lv4-qy-cUk" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="16" y="232" width="311" height="31"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xdm-tr-dKv" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="16" y="61" width="207" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1r-kO-PWW" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="16" y="144" width="207" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="F7H-Bn-nbY"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Vn-JM-9Dk" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="231" y="120" width="96" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2Vn-JM-9Dk" secondAttribute="height" multiplier="1:1" id="7pO-eA-JrZ"/>
+                                    <constraint firstAttribute="width" constant="96" id="ch3-Au-8KE"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="qrCode"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Lv4-qy-cUk" secondAttribute="trailing" constant="16" id="42Y-cf-eXP"/>
+                            <constraint firstItem="s1r-kO-PWW" firstAttribute="leading" secondItem="sCv-7T-Tb4" secondAttribute="leading" id="4He-zS-TNp"/>
+                            <constraint firstItem="Lv4-qy-cUk" firstAttribute="leading" secondItem="ft1-fn-QZU" secondAttribute="leading" constant="16" id="4mf-7x-Fhk"/>
+                            <constraint firstAttribute="trailing" secondItem="vDf-9h-j00" secondAttribute="trailing" constant="20" id="740-6A-7iv"/>
+                            <constraint firstItem="sCv-7T-Tb4" firstAttribute="top" secondItem="s1r-kO-PWW" secondAttribute="bottom" id="Awf-Vg-Klo"/>
+                            <constraint firstAttribute="bottom" secondItem="Lv4-qy-cUk" secondAttribute="bottom" constant="16" id="J2A-GT-QCQ"/>
+                            <constraint firstItem="dUM-FN-MiT" firstAttribute="top" secondItem="ft1-fn-QZU" secondAttribute="top" constant="16" id="Mn1-SD-vAT"/>
+                            <constraint firstItem="3SS-e1-43y" firstAttribute="leading" secondItem="s1r-kO-PWW" secondAttribute="leading" id="SUw-VM-qtH"/>
+                            <constraint firstItem="Lv4-qy-cUk" firstAttribute="top" secondItem="sCv-7T-Tb4" secondAttribute="bottom" constant="28" id="Yec-j9-oMd"/>
+                            <constraint firstItem="dUM-FN-MiT" firstAttribute="leading" secondItem="ft1-fn-QZU" secondAttribute="leading" constant="20" id="ZjA-Gi-fCi"/>
+                            <constraint firstItem="sCv-7T-Tb4" firstAttribute="leading" secondItem="Lv4-qy-cUk" secondAttribute="leading" id="dJX-C6-GJ2"/>
+                            <constraint firstItem="vDf-9h-j00" firstAttribute="top" secondItem="ft1-fn-QZU" secondAttribute="top" constant="16" id="eAp-mV-0ru"/>
+                            <constraint firstItem="Xdm-tr-dKv" firstAttribute="width" secondItem="s1r-kO-PWW" secondAttribute="width" id="evc-bg-WUK"/>
+                            <constraint firstItem="Xdm-tr-dKv" firstAttribute="height" secondItem="s1r-kO-PWW" secondAttribute="height" id="h8u-Ip-3Sx"/>
+                            <constraint firstItem="s1r-kO-PWW" firstAttribute="top" secondItem="3SS-e1-43y" secondAttribute="bottom" constant="22" id="ii6-oH-1Bc"/>
+                            <constraint firstItem="Lv4-qy-cUk" firstAttribute="top" secondItem="2Vn-JM-9Dk" secondAttribute="bottom" constant="16" id="jCi-rv-hih"/>
+                            <constraint firstItem="2Vn-JM-9Dk" firstAttribute="leading" secondItem="s1r-kO-PWW" secondAttribute="trailing" constant="8" id="qjf-dt-GUu"/>
+                            <constraint firstItem="Xdm-tr-dKv" firstAttribute="leading" secondItem="s1r-kO-PWW" secondAttribute="leading" id="rLF-jA-7n8"/>
+                            <constraint firstItem="3SS-e1-43y" firstAttribute="top" secondItem="Xdm-tr-dKv" secondAttribute="bottom" id="rr4-mP-6QY"/>
+                            <constraint firstItem="2Vn-JM-9Dk" firstAttribute="trailing" secondItem="Lv4-qy-cUk" secondAttribute="trailing" id="uwC-Et-LLc"/>
+                        </constraints>
+                    </view>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ft1-fn-QZU" secondAttribute="trailing" id="BIB-r1-vOl"/>
+                <constraint firstAttribute="bottom" secondItem="ft1-fn-QZU" secondAttribute="bottom" id="ZYp-4Y-Wqa"/>
+                <constraint firstItem="ft1-fn-QZU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rdm-0F-U6H"/>
+                <constraint firstItem="ft1-fn-QZU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xJ3-GW-lN1"/>
+            </constraints>
+            <connections>
+                <outlet property="barcodeButton" destination="2Vn-JM-9Dk" id="cyE-XR-S6A"/>
+                <outlet property="fundWalletButton" destination="Lv4-qy-cUk" id="Mrw-tE-rX3"/>
+                <outlet property="headerLabel" destination="dUM-FN-MiT" id="wzP-1b-Axi"/>
+                <outlet property="infoButton" destination="vDf-9h-j00" id="CDB-5p-PNQ"/>
+                <outlet property="lowerCurrencyLabel" destination="sCv-7T-Tb4" id="aVV-Ze-Gpw"/>
+                <outlet property="lowerNumberView" destination="s1r-kO-PWW" id="qSi-Yy-loH"/>
+                <outlet property="upperCurrencyLabel" destination="3SS-e1-43y" id="5Wd-an-IQg"/>
+                <outlet property="upperNumberView" destination="Xdm-tr-dKv" id="JNy-QQ-AvD"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="info" width="20" height="20"/>
+        <image name="qrCode" width="237" height="237"/>
+    </resources>
 </document>
