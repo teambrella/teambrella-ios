@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lGP-Uv-A7d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lGP-Uv-A7d">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Me-->
         <scene sceneID="Pry-RF-c4y">
@@ -138,6 +144,100 @@
             </objects>
             <point key="canvasLocation" x="6123" y="4210"/>
         </scene>
+        <!--Wallet DetailsVC-->
+        <scene sceneID="C9f-1O-4Lh">
+            <objects>
+                <viewController storyboardIdentifier="WalletDetailsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JhV-Xk-tp3" customClass="WalletDetailsVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kj6-or-uep"/>
+                        <viewControllerLayoutGuide type="bottom" id="s8P-w9-Xfi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fii-bz-8VW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrCode" translatesAutoresizingMaskIntoConstraints="NO" id="kLD-08-ZXq">
+                                <rect key="frame" x="37" y="54" width="301" height="301"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kLD-08-ZXq" secondAttribute="height" multiplier="1:1" id="eEb-c8-Tzb"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvj-xs-7a8">
+                                <rect key="frame" x="103" y="438" width="152" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="How ..."/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nr-ZE-zsd" customClass="UICollectionReusableView">
+                                <rect key="frame" x="16" y="488" width="343" height="163"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdR-Mj-MrM" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="20" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRq-pR-zwp" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="78" y="20.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7t-fn-5VH">
+                                        <rect key="frame" x="28" y="62" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgR-AT-FM0" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="83" y="111" width="177" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.30588235294117649" green="0.76862745098039209" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5R-Gm-xGr">
+                                        <rect key="frame" x="303" y="20" width="20" height="22"/>
+                                        <state key="normal" image="info"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="163" id="1ia-nY-aUL"/>
+                                    <constraint firstItem="kRq-pR-zwp" firstAttribute="leading" secondItem="MdR-Mj-MrM" secondAttribute="trailing" constant="16" id="33O-Pq-SE6"/>
+                                    <constraint firstItem="MdR-Mj-MrM" firstAttribute="top" secondItem="9nr-ZE-zsd" secondAttribute="top" constant="20" id="A6A-Tg-i8W"/>
+                                    <constraint firstItem="MdR-Mj-MrM" firstAttribute="leading" secondItem="9nr-ZE-zsd" secondAttribute="leading" constant="20" id="DPT-aS-FNH"/>
+                                    <constraint firstAttribute="trailing" secondItem="o5R-Gm-xGr" secondAttribute="trailing" constant="20" id="bcN-NP-nQ1"/>
+                                    <constraint firstItem="kRq-pR-zwp" firstAttribute="baseline" secondItem="MdR-Mj-MrM" secondAttribute="baseline" id="jNI-mW-1Sw"/>
+                                    <constraint firstItem="o5R-Gm-xGr" firstAttribute="top" secondItem="9nr-ZE-zsd" secondAttribute="top" constant="20" id="nj3-oT-o0j"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9nr-ZE-zsd" secondAttribute="trailing" constant="16" id="AUt-QC-vzX"/>
+                            <constraint firstItem="9nr-ZE-zsd" firstAttribute="leading" secondItem="fii-bz-8VW" secondAttribute="leading" constant="16" id="CcE-yK-Rvk"/>
+                            <constraint firstItem="s8P-w9-Xfi" firstAttribute="top" secondItem="9nr-ZE-zsd" secondAttribute="bottom" constant="16" id="HAF-ya-x3z"/>
+                            <constraint firstItem="kLD-08-ZXq" firstAttribute="top" secondItem="Kj6-or-uep" secondAttribute="bottom" constant="34" id="LNC-c1-bPu"/>
+                            <constraint firstAttribute="trailing" secondItem="zvj-xs-7a8" secondAttribute="trailing" constant="120.2" id="LaE-az-n1C"/>
+                            <constraint firstItem="kLD-08-ZXq" firstAttribute="leading" secondItem="fii-bz-8VW" secondAttribute="leading" constant="37" id="g61-0D-YfK"/>
+                            <constraint firstItem="zvj-xs-7a8" firstAttribute="leading" secondItem="fii-bz-8VW" secondAttribute="leading" constant="103" id="ihj-g8-vLd"/>
+                            <constraint firstItem="9nr-ZE-zsd" firstAttribute="top" secondItem="zvj-xs-7a8" secondAttribute="bottom" constant="21" id="qAh-o4-QGI"/>
+                            <constraint firstAttribute="trailing" secondItem="kLD-08-ZXq" secondAttribute="trailing" constant="37" id="xUW-MM-dwA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bitcoinAddressLabel" destination="MdR-Mj-MrM" id="lIh-xV-hC8"/>
+                        <outlet property="container" destination="9nr-ZE-zsd" id="CAl-4G-744"/>
+                        <outlet property="fundButton" destination="zvj-xs-7a8" id="cPG-NK-khw"/>
+                        <outlet property="qrCodeImageView" destination="kLD-08-ZXq" id="kBc-jD-xRa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="evp-9z-dXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7224.8000000000002" y="4208.5457271364321"/>
+        </scene>
         <!--ProfileVC-->
         <scene sceneID="4Hz-DU-Gs1">
             <objects>
@@ -177,4 +277,8 @@
             <point key="canvasLocation" x="3940" y="3256.8215892053977"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="info" width="20" height="20"/>
+        <image name="qrCode" width="237" height="237"/>
+    </resources>
 </document>
