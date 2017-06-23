@@ -9,16 +9,20 @@
 import Foundation
 
 struct WalletDataSource {
-    var items: [UserIndexCellModel] = []
+    var items: [WalletCellModel] = []
     var count: Int { return items.count }
     
     init() {
-        for _ in 1...25 {
-            items.append(UserIndexCellModel.fake())
-        }
+      items = fakeModels()
     }
     
-    subscript(indexPath: IndexPath) -> UserIndexCellModel {
+    subscript(indexPath: IndexPath) -> WalletCellModel {
         return items[indexPath.row]
+    }
+}
+
+extension WalletDataSource {
+    func fakeModels() -> [WalletCellModel] {
+        return [WalletHeaderCellModel.fake, WalletFundingCellModel.fake, WalletButtonsCellModel.fake]
     }
 }

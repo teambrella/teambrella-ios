@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WalletFundingCell: UICollectionViewCell {
+class WalletFundingCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var headerLabel: Label!
     @IBOutlet var infoButton: UIButton!
     @IBOutlet var upperNumberView: NumberView!

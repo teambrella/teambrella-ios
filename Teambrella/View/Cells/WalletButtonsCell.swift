@@ -8,17 +8,17 @@
 
 import UIKit
 
-class WalletButtonsCell: UICollectionViewCell {
+class WalletButtonsCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var topView: UIView!
-    @IBOutlet var topViewLabel: ItemNameLabel!
+    @IBOutlet var topViewLabel: Label!
     @IBOutlet var imagesStack: RoundImagesStack!
-    @IBOutlet var quantityLabel: InfoHelpLabel!
+    @IBOutlet var quantityLabel: Label!
 
     @IBOutlet var middleView: UIView!
-    @IBOutlet var middleViewLabel: ItemNameLabel!
+    @IBOutlet var middleViewLabel: Label!
     
     @IBOutlet var bottomView: UIView!
-    @IBOutlet var bottomViewLabel: ItemNameLabel!
+    @IBOutlet var bottomViewLabel: Label!
     
     override func awakeFromNib() {
         super.awakeFromNib()

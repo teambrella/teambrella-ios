@@ -115,16 +115,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="PmF-mw-x1X">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="FdS-eA-npS" id="PQF-qF-ekJ"/>
                                     <outlet property="delegate" destination="FdS-eA-npS" id="dw2-LN-OjF"/>
@@ -139,6 +130,9 @@
                             <constraint firstItem="EB9-y9-rte" firstAttribute="leading" secondItem="Iy7-7m-voQ" secondAttribute="leading" id="aTY-TS-SMf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="EB9-y9-rte" id="QPn-Uk-DSg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TuH-Pm-18U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

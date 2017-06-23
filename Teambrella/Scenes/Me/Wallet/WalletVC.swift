@@ -17,11 +17,30 @@ class WalletVC: UIViewController {
         static let horizontalCellPadding: CGFloat = 16
     }
     
+    var dataSource: WalletDataSource = WalletDataSource()
+    
+    @IBOutlet var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        WalletCellBuilder.registerCells(in: collectionView)
     }
     
+    func tapFund(sender: UIButton) {
+        print("tap Fund")
+    }
+    
+    func tapBarcode(sender: UIButton) {
+        print("tap Barcode")
+    }
+    
+    func tapInfo(sender: UIButton) {
+        print("tap Info")
+    }
+    
+    func tapWithdraw(sender: UIButton) {
+        print("tap Withdraw")
+    }
 }
 
 extension WalletVC: IndicatorInfoProvider {
@@ -33,18 +52,16 @@ extension WalletVC: IndicatorInfoProvider {
 // MARK: UICollectionViewDataSource
 extension WalletVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell!
-        
-        return cell
+        return WalletCellBuilder.dequeueCell(in: collectionView, indexPath: indexPath, for: dataSource[indexPath])
     }
     
 }
@@ -54,7 +71,14 @@ extension WalletVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        
+        WalletCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        if let cell = cell as? WalletHeaderCell {
+            cell.button.addTarget(self, action: #selector(tapWithdraw), for: .touchUpInside)
+        } else if let cell = cell as? WalletFundingCell {
+            cell.fundWalletButton.addTarget(self, action: #selector(tapFund), for: .touchUpInside)
+            cell.barcodeButton.addTarget(self, action: #selector(tapBarcode), for: .touchUpInside)
+            cell.infoButton.addTarget(self, action: #selector(tapInfo), for: .touchUpInside)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
