@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletHeaderCell" id="gTV-IL-0wX" customClass="WalletHeaderCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kw2-yj-Xiw" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ff-9F-8fr" customClass="WalletAmountLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="30" y="16" width="53.5" height="105.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="88"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mBTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6O-dA-TcK">
+                                <rect key="frame" x="83.5" y="83.5" width="47" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nka-jt-bBu">
+                                <rect key="frame" x="83.5" y="57" width="21" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJr-gM-eKI" customClass="NumberBar" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="30" y="121.5" width="223" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="5oY-O9-O0U"/>
+                                    <constraint firstAttribute="width" constant="223" id="sM6-yC-BUJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="count">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isBottomLineVisible" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="stackHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tge-af-isS" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="16" y="191" width="343" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LSv-qZ-Swc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                <state key="normal" title="Withdraw">
+                                    <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Nka-jt-bBu" firstAttribute="leading" secondItem="W6O-dA-TcK" secondAttribute="leading" id="4GT-yy-yTR"/>
+                            <constraint firstAttribute="bottom" secondItem="Tge-af-isS" secondAttribute="bottom" constant="16" id="4c2-eJ-5le"/>
+                            <constraint firstItem="JJr-gM-eKI" firstAttribute="top" secondItem="4Ff-9F-8fr" secondAttribute="bottom" id="7bN-SP-aJX"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W6O-dA-TcK" secondAttribute="trailing" constant="16" id="AQW-Nh-2Sr"/>
+                            <constraint firstItem="W6O-dA-TcK" firstAttribute="top" secondItem="Nka-jt-bBu" secondAttribute="bottom" constant="5" id="Est-8T-FdY"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Nka-jt-bBu" secondAttribute="trailing" constant="16" id="L3B-qz-k2C"/>
+                            <constraint firstItem="JJr-gM-eKI" firstAttribute="leading" secondItem="4Ff-9F-8fr" secondAttribute="leading" id="Ygg-cF-1Op"/>
+                            <constraint firstItem="W6O-dA-TcK" firstAttribute="leading" secondItem="4Ff-9F-8fr" secondAttribute="trailing" id="alt-c3-IiC"/>
+                            <constraint firstItem="4Ff-9F-8fr" firstAttribute="top" secondItem="Kw2-yj-Xiw" secondAttribute="top" constant="16" id="bi5-mE-LHX"/>
+                            <constraint firstItem="Tge-af-isS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JJr-gM-eKI" secondAttribute="bottom" id="cQj-hd-NZt"/>
+                            <constraint firstItem="4Ff-9F-8fr" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" constant="30" id="gOf-kR-0eT"/>
+                            <constraint firstItem="Tge-af-isS" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" constant="16" id="lAn-n6-30d"/>
+                            <constraint firstItem="W6O-dA-TcK" firstAttribute="baseline" secondItem="4Ff-9F-8fr" secondAttribute="baseline" id="yFh-aq-lhk"/>
+                            <constraint firstAttribute="trailing" secondItem="Tge-af-isS" secondAttribute="trailing" constant="16" id="yNb-1S-yqz"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="segments">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="diameter">
+                                <real key="value" value="200"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                <color key="value" red="0.85882352941176465" green="0.91764705882352937" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Kw2-yj-Xiw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0OY-Q4-txX"/>
+                <constraint firstItem="Kw2-yj-Xiw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8ZL-Qc-GDb"/>
+                <constraint firstAttribute="trailing" secondItem="Kw2-yj-Xiw" secondAttribute="trailing" id="RIs-vW-Y2h"/>
+                <constraint firstAttribute="bottom" secondItem="Kw2-yj-Xiw" secondAttribute="bottom" id="THO-D6-fOs"/>
+            </constraints>
+            <size key="customSize" width="317" height="217"/>
+            <connections>
+                <outlet property="amount" destination="4Ff-9F-8fr" id="Cqw-5n-nnd"/>
+                <outlet property="auxillaryAmount" destination="Nka-jt-bBu" id="JLX-iU-Ibu"/>
+                <outlet property="button" destination="Tge-af-isS" id="okx-Tp-qGU"/>
+                <outlet property="currencyLabel" destination="W6O-dA-TcK" id="Xbp-sI-LSg"/>
+                <outlet property="numberBar" destination="JJr-gM-eKI" id="6jF-dw-I6a"/>
+            </connections>
+            <point key="canvasLocation" x="-125.5" y="-91.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
