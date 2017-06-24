@@ -11,13 +11,13 @@ import XLPagerTabStrip
 
 class UserIndexVC: UIViewController {
     struct Constant {
-        static let containerHeightShrinked: CGFloat     = 65
-        static let containerHeightExpanded: CGFloat     = 214
-        static let avatarSizeShrinked: CGFloat          = 40
-        static let avatarSizeExpanded: CGFloat          = 56
-        static let cellHeight: CGFloat                  = 75
-        static let headerHeight: CGFloat                = 40
-        static let scrollingVelocityThreshold: CGFloat  = 10
+        static let containerHeightShrinked: CGFloat    = 65
+        static let containerHeightExpanded: CGFloat    = 214
+        static let avatarSizeShrinked: CGFloat         = 40
+        static let avatarSizeExpanded: CGFloat         = 56
+        static let userIndexCellHeight: CGFloat        = 75
+        static let headerHeight: CGFloat               = 40
+        static let scrollingVelocityThreshold: CGFloat = 10
     }
     
     var dataSource: UserIndexDataSource = UserIndexDataSource()
@@ -121,7 +121,7 @@ extension UserIndexVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: Constant.cellHeight)
+        return CGSize(width: collectionView.bounds.width, height: Constant.userIndexCellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView,

@@ -34,8 +34,8 @@
 "Team.Teammates.net"                           = "NET";
 "Team.MembersVC.indicatorTitle"                = "Miembros";
 "Team.MembersVC.searchHere"                    = "Buscar aquí...";
-"Team.TeammateCell.coversMe"                   = "ME CUBRO";
-"Team.TeammateCell.coverThem"                  = "ELLOS CUBRAN";
+"Team.TeammateCell.coversMe"                   = "ME CUBRE";
+"Team.TeammateCell.coverThem"                  = "ELLOS CUBRO";
 "Team.TeammateCell.youAreProxy_format_s"       = "Eres proxy para %@";
 "Team.TeammateCell.covered"                    = "CUBIERTO";
 "Team.TeammateCell.collisionDeductible"        = "Deducible por colisión";
