@@ -13,13 +13,17 @@ class WalletDetailsVC: UIViewController, Routable {
     static let storyboardName = "Me"
     @IBOutlet var qrCodeImageView: UIImageView!
     @IBOutlet var fundButton: UIButton!
+    @IBOutlet var headerLabel: BlockHeaderLabel!
     @IBOutlet var bitcoinAddressLabel: Label!
     @IBOutlet var container: UICollectionReusableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTransparentNavigationBar()
+        title = "QR-code"
         CellDecorator.shadow(for: container)
         CellDecorator.roundedEdges(for: container)
+        bitcoinAddressLabel.text = "13CAnApBYfERwCvpp4KSypHg7BQ5BXwg3x".uppercased()
         // Do any additional setup after loading the view.
     }
 

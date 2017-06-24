@@ -13,6 +13,9 @@
         <array key="AkkuratPro-Bold.otf">
             <string>AkkuratPro-Bold</string>
         </array>
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Me-->
@@ -156,83 +159,115 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSc-J0-AKa" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-44" width="375" height="64"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="3VB-3l-L96"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.32156862749999998" green="0.36862745099999999" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="0.25882352939999997" green="0.30588235289999999" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrCode" translatesAutoresizingMaskIntoConstraints="NO" id="kLD-08-ZXq">
                                 <rect key="frame" x="37" y="54" width="301" height="301"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kLD-08-ZXq" secondAttribute="height" multiplier="1:1" id="eEb-c8-Tzb"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvj-xs-7a8">
-                                <rect key="frame" x="103" y="438" width="152" height="29"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
-                                <state key="normal" title="How do I fund wallet?">
-                                    <color key="titleColor" red="0.25490196078431371" green="0.30588235294117649" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nr-ZE-zsd" customClass="UICollectionReusableView">
                                 <rect key="frame" x="16" y="488" width="343" height="163"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdR-Mj-MrM" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="20" width="118" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BITCOIN ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdR-Mj-MrM" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="22.5" width="123.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRq-pR-zwp" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="154" y="20.5" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid for 24 hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRq-pR-zwp" customClass="Label" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="149.5" y="23.5" width="96.5" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="OzN-6s-0Vc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
+                                        <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7t-fn-5VH">
-                                        <rect key="frame" x="28" y="62" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgR-AT-FM0" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="83" y="111" width="177" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgR-AT-FM0" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="103" width="303" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="eSZ-BL-z6d"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
-                                        <state key="normal" title="Button">
+                                        <state key="normal" title="Copy Address">
                                             <color key="titleColor" red="0.30588235294117649" green="0.76862745098039209" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5R-Gm-xGr">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="255" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5R-Gm-xGr">
                                         <rect key="frame" x="303" y="20" width="20" height="22"/>
                                         <state key="normal" image="info"/>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13CAnApBYfERwCvpp4KSypHg7BQ5BXwg3x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="u7t-fn-5VH" customClass="Label" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="47.5" width="303" height="47.5"/>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="lgR-AT-FM0" firstAttribute="leading" secondItem="9nr-ZE-zsd" secondAttribute="leading" constant="20" id="1CE-QL-4FD"/>
                                     <constraint firstAttribute="height" constant="163" id="1ia-nY-aUL"/>
-                                    <constraint firstItem="kRq-pR-zwp" firstAttribute="leading" secondItem="MdR-Mj-MrM" secondAttribute="trailing" constant="16" id="33O-Pq-SE6"/>
-                                    <constraint firstItem="MdR-Mj-MrM" firstAttribute="top" secondItem="9nr-ZE-zsd" secondAttribute="top" constant="20" id="A6A-Tg-i8W"/>
+                                    <constraint firstItem="kRq-pR-zwp" firstAttribute="leading" secondItem="MdR-Mj-MrM" secondAttribute="trailing" constant="6" id="33O-Pq-SE6"/>
+                                    <constraint firstItem="kRq-pR-zwp" firstAttribute="baseline" secondItem="MdR-Mj-MrM" secondAttribute="baseline" id="Avq-a4-yiv"/>
                                     <constraint firstItem="MdR-Mj-MrM" firstAttribute="leading" secondItem="9nr-ZE-zsd" secondAttribute="leading" constant="20" id="DPT-aS-FNH"/>
+                                    <constraint firstAttribute="trailing" secondItem="lgR-AT-FM0" secondAttribute="trailing" constant="20" id="QZ4-s1-1tu"/>
                                     <constraint firstAttribute="trailing" secondItem="o5R-Gm-xGr" secondAttribute="trailing" constant="20" id="bcN-NP-nQ1"/>
-                                    <constraint firstItem="kRq-pR-zwp" firstAttribute="baseline" secondItem="MdR-Mj-MrM" secondAttribute="baseline" id="jNI-mW-1Sw"/>
+                                    <constraint firstItem="MdR-Mj-MrM" firstAttribute="centerY" secondItem="o5R-Gm-xGr" secondAttribute="centerY" id="cSV-SK-NeS"/>
+                                    <constraint firstAttribute="trailing" secondItem="u7t-fn-5VH" secondAttribute="trailing" constant="20" id="cv1-pU-8zW"/>
+                                    <constraint firstItem="u7t-fn-5VH" firstAttribute="top" secondItem="MdR-Mj-MrM" secondAttribute="bottom" constant="8" id="g2X-jm-gfw"/>
+                                    <constraint firstItem="lgR-AT-FM0" firstAttribute="top" secondItem="u7t-fn-5VH" secondAttribute="bottom" constant="8" id="lxH-dZ-Pxs"/>
                                     <constraint firstItem="o5R-Gm-xGr" firstAttribute="top" secondItem="9nr-ZE-zsd" secondAttribute="top" constant="20" id="nj3-oT-o0j"/>
+                                    <constraint firstAttribute="bottom" secondItem="lgR-AT-FM0" secondAttribute="bottom" constant="20" id="ruB-pC-cUM"/>
+                                    <constraint firstItem="u7t-fn-5VH" firstAttribute="leading" secondItem="9nr-ZE-zsd" secondAttribute="leading" constant="20" id="s2b-9H-Ewa"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvj-xs-7a8">
+                                <rect key="frame" x="107.5" y="450" width="159" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="eED-6j-NkD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
+                                <state key="normal" title="How do I fund a wallet? &gt;">
+                                    <color key="titleColor" red="0.25490196078431371" green="0.30588235294117649" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="SSc-J0-AKa" secondAttribute="trailing" id="4mF-mx-NgM"/>
                             <constraint firstAttribute="trailing" secondItem="9nr-ZE-zsd" secondAttribute="trailing" constant="16" id="AUt-QC-vzX"/>
                             <constraint firstItem="9nr-ZE-zsd" firstAttribute="leading" secondItem="fii-bz-8VW" secondAttribute="leading" constant="16" id="CcE-yK-Rvk"/>
                             <constraint firstItem="s8P-w9-Xfi" firstAttribute="top" secondItem="9nr-ZE-zsd" secondAttribute="bottom" constant="16" id="HAF-ya-x3z"/>
                             <constraint firstItem="kLD-08-ZXq" firstAttribute="top" secondItem="Kj6-or-uep" secondAttribute="bottom" constant="34" id="LNC-c1-bPu"/>
-                            <constraint firstAttribute="trailing" secondItem="zvj-xs-7a8" secondAttribute="trailing" constant="120.2" id="LaE-az-n1C"/>
+                            <constraint firstItem="SSc-J0-AKa" firstAttribute="leading" secondItem="fii-bz-8VW" secondAttribute="leading" id="Qvo-MX-Pob"/>
                             <constraint firstItem="kLD-08-ZXq" firstAttribute="leading" secondItem="fii-bz-8VW" secondAttribute="leading" constant="37" id="g61-0D-YfK"/>
-                            <constraint firstItem="zvj-xs-7a8" firstAttribute="leading" secondItem="fii-bz-8VW" secondAttribute="leading" constant="103" id="ihj-g8-vLd"/>
+                            <constraint firstItem="SSc-J0-AKa" firstAttribute="bottom" secondItem="Kj6-or-uep" secondAttribute="bottom" id="lN6-za-cSb"/>
                             <constraint firstItem="9nr-ZE-zsd" firstAttribute="top" secondItem="zvj-xs-7a8" secondAttribute="bottom" constant="21" id="qAh-o4-QGI"/>
                             <constraint firstAttribute="trailing" secondItem="kLD-08-ZXq" secondAttribute="trailing" constant="37" id="xUW-MM-dwA"/>
+                            <constraint firstItem="zvj-xs-7a8" firstAttribute="centerX" secondItem="fii-bz-8VW" secondAttribute="centerX" id="xZP-oD-nof"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bitcoinAddressLabel" destination="MdR-Mj-MrM" id="lIh-xV-hC8"/>
+                        <outlet property="bitcoinAddressLabel" destination="u7t-fn-5VH" id="iwn-iz-huI"/>
                         <outlet property="container" destination="9nr-ZE-zsd" id="CAl-4G-744"/>
                         <outlet property="fundButton" destination="zvj-xs-7a8" id="cPG-NK-khw"/>
+                        <outlet property="headerLabel" destination="MdR-Mj-MrM" id="7W9-uN-02a"/>
                         <outlet property="qrCodeImageView" destination="kLD-08-ZXq" id="kBc-jD-xRa"/>
                     </connections>
                 </viewController>
@@ -265,7 +300,7 @@
                     <tabBarItem key="tabBarItem" title="Me" id="o2t-82-wdC"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gIR-mJ-Hhl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gIR-mJ-Hhl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
