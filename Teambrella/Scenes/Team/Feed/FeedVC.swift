@@ -11,8 +11,8 @@ import XLPagerTabStrip
 
 class FeedVC: UIViewController, IndicatorInfoProvider {
     struct Constant {
-        static let cellHeight: CGFloat = 100
-        static let headerHeight: CGFloat = 60
+        static let cellHeight: CGFloat   = 119
+        static let headerHeight: CGFloat = 70
     }
 
     var dataSource: FeedDataSource = FeedDataSource()
@@ -67,14 +67,16 @@ extension FeedVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        
+        FeedCellBuilder.populate(cell: cell, with: dataSource[indexPath])
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        
+        if let view = view as? HeaderWithButton {
+            view.button.setTitle("Start Discussion", for: .normal)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

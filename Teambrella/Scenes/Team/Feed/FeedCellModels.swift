@@ -8,34 +8,28 @@
 
 import Foundation
 
-protocol FeedCellModel {
-    
+enum FeedCellType {
+    case teammate, claim, topic
 }
 
-struct FeedTeammateCellModel: FeedCellModel {
+struct FeedCellModel {
     let title: String
     let text: String
     let avatar: String
     let teammatesAvatars: [String]
     let teammatesCount: Int
     let lastPostedMinutes: Int
-    let repliesCount: Int
+    let unreadCount: Int
+    let type: FeedCellType
     
-    static var fake: FeedTeammateCellModel {
-        return FeedTeammateCellModel(title: "Fake Discount Deals",
+    static var fake: FeedCellModel {
+        return FeedCellModel(title: "Fake Discount Deals",
                                      text: "Just discovered a new garage in my neigborhood that is really good and...",
                                      avatar: "",
                                      teammatesAvatars: [],
                                      teammatesCount: 3,
                                      lastPostedMinutes: 1,
-                                     repliesCount: 4)
+                                     unreadCount: 4,
+                                     type: .teammate)
     }
-}
-
-struct FeedClaimCellModel: FeedCellModel {
-    
-}
-
-struct FeedTopicCellModel: FeedCellModel {
-    
 }

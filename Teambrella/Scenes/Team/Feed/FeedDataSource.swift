@@ -24,6 +24,6 @@ struct FeedDataSource {
 
 extension FeedDataSource {
     func fakeModels() -> [FeedCellModel] {
-        return Array<FeedCellModel>(repeating: FeedTeammateCellModel.fake, count: 10)
+        return [FeedCellModel](repeating: FeedCellModel.fake, count: 10)
     }
 }

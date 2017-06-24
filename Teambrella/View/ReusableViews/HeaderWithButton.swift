@@ -9,6 +9,7 @@
 import UIKit
 
 class HeaderWithButton: UICollectionReusableView, XIBInitableCell {
+    @IBOutlet var button: BorderedButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

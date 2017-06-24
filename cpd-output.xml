@@ -1,22 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd-cpd>
-   <duplication lines="13" tokens="82">
-      <file line="120"
-            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Proxies/UserIndex/UserIndexVC.swift"/>
-      <file line="87"
-            path="/Users/thorax/Developer/Teambrella/Teambrella-iOS/Teambrella/Scenes/Team/Feed/FeedVC.swift"/>
-      <codefragment><![CDATA[extension UserIndexVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: Constant.cellHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: Constant.headerHeight)
-    }
-}]]></codefragment>
-   </duplication>
-</pmd-cpd>
+<pmd-cpd/>
