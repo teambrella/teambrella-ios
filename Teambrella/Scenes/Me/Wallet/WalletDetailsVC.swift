@@ -14,16 +14,24 @@ class WalletDetailsVC: UIViewController, Routable {
     @IBOutlet var qrCodeImageView: UIImageView!
     @IBOutlet var fundButton: UIButton!
     @IBOutlet var headerLabel: BlockHeaderLabel!
+    @IBOutlet var timeLabel: Label!
     @IBOutlet var bitcoinAddressLabel: Label!
     @IBOutlet var container: UICollectionReusableView!
+    @IBOutlet var copyAddressButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTransparentNavigationBar()
-        title = "QR-code"
+        title = "Me.WalletDetailsVC.title".localized
+        fundButton.setTitle("Me.WalletDetailsVC.fundButton".localized, for: .normal)
+        headerLabel.text = "Me.WalletDetailsVC.headerLabel".localized.uppercased()
+        timeLabel.text = "Me.WalletDetailsVC.timeLabel".localized
+        copyAddressButton.setTitle("Me.WalletDetailsVC.copyAddressButton".localized, for: .normal)
+        
         CellDecorator.shadow(for: container)
         CellDecorator.roundedEdges(for: container)
-        bitcoinAddressLabel.text = "13CAnApBYfERwCvpp4KSypHg7BQ5BXwg3x".uppercased()
+        
+        bitcoinAddressLabel.text = "13CAnApBYfERwCvpp4KSypHg7BQ5BXwg3x".uppercased() 
         // Do any additional setup after loading the view.
     }
 

@@ -190,7 +190,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid for 24 hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRq-pR-zwp" customClass="Label" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="149.5" y="23.5" width="96.5" height="16"/>
+                                        <rect key="frame" x="149.5" y="22.5" width="94" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="OzN-6s-0Vc"/>
                                         </constraints>
@@ -238,7 +238,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvj-xs-7a8">
-                                <rect key="frame" x="107.5" y="450" width="159" height="17"/>
+                                <rect key="frame" x="106.5" y="450" width="161" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="eED-6j-NkD"/>
                                 </constraints>
@@ -266,9 +266,11 @@
                     <connections>
                         <outlet property="bitcoinAddressLabel" destination="u7t-fn-5VH" id="iwn-iz-huI"/>
                         <outlet property="container" destination="9nr-ZE-zsd" id="CAl-4G-744"/>
+                        <outlet property="copyAddressButton" destination="lgR-AT-FM0" id="Gox-RA-FXM"/>
                         <outlet property="fundButton" destination="zvj-xs-7a8" id="cPG-NK-khw"/>
                         <outlet property="headerLabel" destination="MdR-Mj-MrM" id="7W9-uN-02a"/>
                         <outlet property="qrCodeImageView" destination="kLD-08-ZXq" id="kBc-jD-xRa"/>
+                        <outlet property="timeLabel" destination="kRq-pR-zwp" id="e5O-hR-y13"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evp-9z-dXb" userLabel="First Responder" sceneMemberID="firstResponder"/>

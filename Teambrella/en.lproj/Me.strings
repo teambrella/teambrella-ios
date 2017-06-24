@@ -9,3 +9,8 @@
 "Me.CoverageVC.indicatorTitle" = "Coverage";
 "Me.ProfileVC.indicatorTitle" = "Me";
 "Me.WalletVC.indicatorTitle" = "Wallet";
+"Me.WalletDetailsVC.title" = "QR-code";
+"Me.WalletDetailsVC.fundButton" = "How do I fund a wallet? >";
+"Me.WalletDetailsVC.headerLabel" = "Bitcoin address";
+"Me.WalletDetailsVC.timeLabel" = "Valid for 24 hours";
+"Me.WalletDetailsVC.copyAddressButton" = "Copy Address";
