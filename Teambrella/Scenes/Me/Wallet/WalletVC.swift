@@ -27,7 +27,7 @@ class WalletVC: UIViewController {
     }
     
     func tapFund(sender: UIButton) {
-        print("tap Fund")
+        MeRouter().presentWalletDetails()
     }
     
     func tapBarcode(sender: UIButton) {
