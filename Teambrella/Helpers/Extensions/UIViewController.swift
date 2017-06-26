@@ -52,12 +52,41 @@ extension UIViewController {
         
     }
     
+    /// simulates gradient on navigation bar
+    func addGradientNavBar() {
+        setupTransparentNavigationBar()
+        defaultGradientOnTop()
+    }
+    
     func setupTransparentNavigationBar() {
         guard let bar = navigationController?.navigationBar else { return }
         
         bar.barTintColor = .clear
         bar.setBackgroundImage(UIImage(), for: .default)
         bar.shadowImage = UIImage()
+    }
+    
+    func defaultGradientOnTop() {
+        let gradientView = GradientView(frame: view.frame)
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        gradientView.bottomColor = .warmBlue
+        gradientView.topColor = .frenchBlue
+        view.addSubview(gradientView)
+        var constraints: [NSLayoutConstraint] = []
+        let views = ["gradientView": gradientView]
+        let hConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-0-[gradientView]-0-|",
+            options: [],
+            metrics: nil,
+            views: views)
+        constraints += hConstraints
+        let vConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-(0)-[gradientView(64)]",
+            options: [],
+            metrics: nil,
+            views: views)
+        constraints += vConstraints
+        NSLayoutConstraint.activate(constraints)
     }
     
     func setupDismissKeyboardOnTap() {

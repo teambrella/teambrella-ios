@@ -16,4 +16,16 @@ final class MeRouter {
         service.router.push(vc: vc)
     }
     
+    func presentClaimReport(in parentViewController: UIViewController? = nil) {
+        guard let vc = ReportVC.instantiate() as? ReportVC else { fatalError("Error instantiating") }
+        guard let parentViewController = parentViewController else {
+        service.router.push(vc: vc)
+            return
+        }
+        
+        parentViewController.present(vc, animated: true) {
+            
+        }
+    }
+    
 }

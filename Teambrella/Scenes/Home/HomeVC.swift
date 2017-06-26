@@ -57,15 +57,12 @@ class HomeVC: UIViewController {
         let indexPath = IndexPath(row: sender.currentPage, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+   
+    @IBOutlet var submitClaimButton: BorderedButton!
+    
+    @IBAction func tapSubmitClaim(_ sender: UIButton) {
+        MeRouter().presentClaimReport()
+    }
     
 }
 
