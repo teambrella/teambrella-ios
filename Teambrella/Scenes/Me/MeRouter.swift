@@ -9,8 +9,10 @@
 import Foundation
 
 final class MeRouter {
-    func presentWalletDetails() {
+    func presentWalletDetails(walletID: String) {
         guard let vc = WalletDetailsVC.instantiate() as? WalletDetailsVC else { fatalError("Error instantiating") }
+        
+        vc.walletID = walletID
         service.router.push(vc: vc)
     }
     

@@ -6,6 +6,7 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
+import QRCode
 import UIKit
 
 class WalletDetailsVC: UIViewController, Routable {
@@ -19,6 +20,8 @@ class WalletDetailsVC: UIViewController, Routable {
     @IBOutlet var container: UICollectionReusableView!
     @IBOutlet var copyAddressButton: UIButton!
     
+    var walletID: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTransparentNavigationBar()
@@ -27,17 +30,31 @@ class WalletDetailsVC: UIViewController, Routable {
         headerLabel.text = "Me.WalletDetailsVC.headerLabel".localized.uppercased()
         timeLabel.text = "Me.WalletDetailsVC.timeLabel".localized
         copyAddressButton.setTitle("Me.WalletDetailsVC.copyAddressButton".localized, for: .normal)
-        
         CellDecorator.shadow(for: container)
         CellDecorator.roundedEdges(for: container)
-        
-        bitcoinAddressLabel.text = "13CAnApBYfERwCvpp4KSypHg7BQ5BXwg3x".uppercased() 
+        //let's say the server sends the walletID(string) into bitcoinAddressLabel
+        bitcoinAddressLabel.text = walletID
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        generateQRCode()
+    }
+    
+    func generateQRCode() {
+        guard var qrCode = QRCode(walletID) else { return }
+        
+        qrCode.size = CGSize(width: 250, height: 250) // Zeplin (04.2 wallet-dialog-1)
+        qrCode.color = CIColor(rgba: "2C3948")
+        qrCode.backgroundColor = CIColor(rgba: "F8FAFD")
+        let image = qrCode.image
+        qrCodeImageView.image = image
     }
     
     /*

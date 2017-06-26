@@ -6,6 +6,7 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
+import QRCode
 import UIKit
 import XLPagerTabStrip
 
@@ -17,20 +18,25 @@ class WalletVC: UIViewController {
         static let horizontalCellPadding: CGFloat = 16
     }
     
+    var qrCode: UIImage?
     var dataSource: WalletDataSource = WalletDataSource()
+    let walletID = "13CAnApBYfERwCvpp4KSypHg7BQ5BXwg3x".uppercased()
     
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         WalletCellBuilder.registerCells(in: collectionView)
+        qrCode = generateQRCode()
     }
     
     func tapFund(sender: UIButton) {
-        MeRouter().presentWalletDetails()
+        MeRouter().presentWalletDetails(walletID: walletID)
+        print("tap Fund")
     }
     
     func tapBarcode(sender: UIButton) {
+        MeRouter().presentWalletDetails(walletID: walletID)
         print("tap Barcode")
     }
     
@@ -40,6 +46,13 @@ class WalletVC: UIViewController {
     
     func tapWithdraw(sender: UIButton) {
         print("tap Withdraw")
+    }
+    
+    func generateQRCode() -> UIImage? {
+        guard var qrCode = QRCode(walletID) else { return nil }
+        
+        qrCode.size = CGSize(width: 79, height: 75) // Zeplin (04.2 wallet-1 & ...-1-a)
+        return qrCode.image
     }
 }
 
@@ -78,6 +91,7 @@ extension WalletVC: UICollectionViewDelegate {
             cell.fundWalletButton.addTarget(self, action: #selector(tapFund), for: .touchUpInside)
             cell.barcodeButton.addTarget(self, action: #selector(tapBarcode), for: .touchUpInside)
             cell.infoButton.addTarget(self, action: #selector(tapInfo), for: .touchUpInside)
+            cell.barcodeButton.setImage(qrCode, for: .normal)
         }
     }
     

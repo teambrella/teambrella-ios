@@ -219,7 +219,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="lgR-AT-FM0" firstAttribute="leading" secondItem="9nr-ZE-zsd" secondAttribute="leading" constant="20" id="1CE-QL-4FD"/>
                                     <constraint firstAttribute="height" constant="163" id="1ia-nY-aUL"/>
@@ -302,7 +302,7 @@
                     <tabBarItem key="tabBarItem" title="Me" id="o2t-82-wdC"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gIR-mJ-Hhl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gIR-mJ-Hhl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
