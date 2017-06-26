@@ -79,7 +79,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homeCollectionCell" id="XDl-au-9Mo" customClass="HomeCollectionCell" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="25" y="12" width="325" height="157"/>
+                                        <rect key="frame" x="10" y="12" width="325" height="157"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="157"/>
@@ -418,6 +418,9 @@
                                         <color key="value" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapSubmitClaim:" destination="dtc-T4-z44" eventType="touchUpInside" id="DBS-5h-AzN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -467,6 +470,7 @@
                         <outlet property="rightBrickAvatarView" destination="sHk-fD-QOV" id="5Uk-4s-OpS"/>
                         <outlet property="rightBrickCurrencyLabel" destination="sjW-Hc-lVp" id="1ZL-Pd-vTY"/>
                         <outlet property="rightBrickTitleLabel" destination="xCN-fH-yvY" id="7e9-7g-z2O"/>
+                        <outlet property="submitClaimButton" destination="tb2-DR-8f0" id="RsN-Sq-D5P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRD-AN-FqK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -480,7 +484,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="iconHome" id="5HA-2k-qhF"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="seh-NB-2pa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="seh-NB-2pa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

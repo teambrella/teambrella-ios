@@ -1,5 +1,5 @@
 //
-//  ReportWalletCell.swift
+//  ReportTextFieldCell.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 24.06.17.
@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ReportWalletCell: UICollectionViewCell {
+class ReportTextFieldCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var headerLabel: Label!
+    @IBOutlet var textField: UITextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,8 +8,11 @@
 
 import UIKit
 
-class ReportPhotoGalleryCell: UICollectionViewCell {
-
+class ReportPhotoGalleryCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var headerLabel: Label!
+    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var button: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

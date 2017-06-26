@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ReportDescriptionCell: UICollectionViewCell {
+class ReportDescriptionCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var headerLabel: Label!
+    @IBOutlet var textView: UITextView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

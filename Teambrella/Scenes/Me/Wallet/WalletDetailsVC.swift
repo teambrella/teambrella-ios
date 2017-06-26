@@ -31,7 +31,7 @@ class WalletDetailsVC: UIViewController, Routable {
         CellDecorator.shadow(for: container)
         CellDecorator.roundedEdges(for: container)
         
-        bitcoinAddressLabel.text = "13CAnApBYfERwCvpp4KSypHg7BQ5BXwg3x".uppercased() 
+        bitcoinAddressLabel.text = "13CAnApBYfERwCvpp4KSypHg7BQ5BXwg3x".uppercased()
         // Do any additional setup after loading the view.
     }
 

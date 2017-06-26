@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ReportExpensesCell: UICollectionViewCell {
+class ReportExpensesCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var headerLabel: InfoLabel!
+    @IBOutlet var expensesTextField: UITextField!
+    @IBOutlet var currencyTextField: UITextField!
+    @IBOutlet var numberBar: NumberBar!
 
     override func awakeFromNib() {
         super.awakeFromNib()

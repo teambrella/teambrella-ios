@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReportItemCell: UICollectionViewCell {
+class ReportItemCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var headerLabel: Label!
     @IBOutlet var itemLabel: Label!
     @IBOutlet var detailsLabel: Label!
