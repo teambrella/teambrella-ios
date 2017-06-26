@@ -17,39 +17,41 @@ class RadarView: UIView {
     @IBInspectable
     var diameter: CGFloat = 136
     @IBInspectable
-    var rotated: Bool = false
+    var startAngle: CGFloat = 0
+    @IBInspectable
+    var endAngle: CGFloat = 180
+    @IBInspectable
+    var centerX: CGFloat = 0
+    @IBInspectable
+    var centerY: CGFloat = 0
+    @IBInspectable
+    var startWidth: CGFloat = 20
+    @IBInspectable
     var coefficient: CGFloat = 1.3
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let context = UIGraphicsGetCurrentContext() else { return }
         guard segments > 0 else { return }
-        
-        let startAngle: CGFloat!
-        let endAngle: CGFloat!
-        var size: CGFloat = 0
+
         let center: CGPoint!
-        if rotated {
-            startAngle = CGFloat.pi
-            endAngle = -CGFloat.pi
-            size = (bounds.midY - diameter / 2) / CGFloat(segments)
-            center = CGPoint(x: 0, y: bounds.midY)
-        } else {
-            startAngle = 0
-            endAngle = CGFloat.pi
-            size = (bounds.midX - diameter / 2) / CGFloat(segments)
-            center = CGPoint(x: bounds.midX, y: bounds.maxY)
-        }
+        //size = (bounds.midX - diameter / 2) / CGFloat(segments)
+        center = CGPoint(x: centerX + bounds.midX, y: centerY + bounds.maxY)
+        //center = CGPoint(x: bounds.midX, y: bounds.maxY)
+        var size = startWidth
         var x = (diameter + size) / 2
         
-        for i in 0...segments + 1 {
+        for i in 0..<segments {
             context.setStrokeColor(colorFor(segment: i).cgColor)
             context.setLineWidth(size)
             context.addArc(center: center,
-                           radius: x, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+                           radius: x,
+                           startAngle: CGFloat.pi * 2 - radiansFrom(degrees: startAngle),
+                           endAngle: CGFloat.pi * 2 - radiansFrom(degrees: endAngle), clockwise: true)
             context.strokePath()
-            x += size
+            let oldSize = size
             size *= coefficient
+            x += (size + oldSize) / 2
         }
     }
     
