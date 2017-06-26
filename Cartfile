@@ -8,3 +8,4 @@ github "xmartlabs/XLPagerTabStrip" ~> 7.0
 github "badoo/Chatto"
 github "zvonicek/ImageSlideshow"
 github "daltoniam/Starscream" >= 2.0.3
+github "aschuch/QRCode"
