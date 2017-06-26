@@ -100,6 +100,9 @@
                             <userDefinedRuntimeAttribute type="color" keyPath="color">
                                 <color key="value" red="0.85882352941176465" green="0.91764705882352937" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startWidth">
+                                <real key="value" value="50"/>
+                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
