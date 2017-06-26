@@ -25,12 +25,12 @@ class ReportVC: UIViewController, Routable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        showSubmitButton(true)
+        showSubmitButton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        showSubmitButton(false)
+        showSubmitButton()
     }
     
     private func showSubmitButton() {
