@@ -21,6 +21,16 @@ final class MainRouter {
         navigator?.pushViewController(vc, animated: animated)
     }
     
+    func addRightNavigationButton(button: UIButton?) {
+        guard let button = button else {
+            navigator?.navigationItem.setRightBarButton(nil, animated: false)
+            return
+        }
+        
+        let barItem = UIBarButtonItem(customView: button)
+        navigator?.navigationItem.setRightBarButton(barItem, animated: false)
+    }
+    
     /*
      func pushOrReuse(vc: UIViewController,
      animated: Bool = true,
