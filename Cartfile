@@ -1,11 +1,20 @@
+# Network
 github "Alamofire/Alamofire" ~> 4.4
-github "SwiftyJSON/SwiftyJSON"
-github "onevcat/Kingfisher" ~> 3.0
-#github "facebook/Facebook-SDK-Swift"
-github "MortimerGoro/MGSwipeTableCell"
-github "scinfu/SwiftSoup"
-github "xmartlabs/XLPagerTabStrip" ~> 7.0
-github "badoo/Chatto"
-github "zvonicek/ImageSlideshow"
 github "daltoniam/Starscream" >= 2.0.3
+
+# Parsers
+github "SwiftyJSON/SwiftyJSON"
+github "scinfu/SwiftSoup"
+
+#Images
+github "onevcat/Kingfisher" ~> 3.0
+github "zvonicek/ImageSlideshow"
 github "aschuch/QRCode"
+
+#  Libraries
+#github "facebook/Facebook-SDK-Swift"
+github "badoo/Chatto"
+
+# Views
+github "MortimerGoro/MGSwipeTableCell"
+github "xmartlabs/XLPagerTabStrip" ~> 7.0
