@@ -29,7 +29,7 @@
                                 <integer key="value" value="4"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="diameter">
-                                <real key="value" value="135"/>
+                                <real key="value" value="140"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                                 <real key="value" value="0.0"/>
@@ -41,10 +41,10 @@
                                 <real key="value" value="0.0"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="centerY">
-                                <real key="value" value="-128"/>
+                                <real key="value" value="-172"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="startWidth">
-                                <real key="value" value="50"/>
+                                <real key="value" value="40"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="coefficient">
                                 <real key="value" value="1.3"/>
