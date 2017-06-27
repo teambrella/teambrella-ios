@@ -13,6 +13,7 @@ enum TeambrellaRequestType: String {
     case timestamp = "me/GetTimestamp"
     case initClient = "me/InitClient"
     case updates = "me/GetUpdates"
+    case teams = "me/getTeams"
     case teammatesList = "teammate/getList"
     case teammate = "teammate/getOne"
     case newPost = "post/newPost"
@@ -28,6 +29,7 @@ enum TeambrellaResponseType {
     case timestamp
     case initClient
     case updates
+    case teams([TeamEntity])
     case teammatesList([TeammateLike])
     case teammate(ExtendedTeammate)
     case newPost(ChatEntity)
