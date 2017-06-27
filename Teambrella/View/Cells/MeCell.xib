@@ -1,19 +1,118 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MeCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MeCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRF-xE-ojb" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                <color key="value" red="0.89411764709999997" green="0.90196078430000004" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="segments">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="diameter">
+                                <real key="value" value="135"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                <real key="value" value="360"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="centerX">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="centerY">
+                                <real key="value" value="-128"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startWidth">
+                                <real key="value" value="50"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="coefficient">
+                                <real key="value" value="1.3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B1h-LD-Hsm" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                        <rect key="frame" x="143" y="40" width="88" height="88"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="88" id="TCF-9J-mx9"/>
+                            <constraint firstAttribute="height" constant="88" id="sMg-jq-5BB"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRp-Jl-XTf">
+                        <rect key="frame" x="133" y="142" width="108.5" height="24"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                        <color key="textColor" red="0.23529411764705882" green="0.27843137254901962" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="InfoLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ez6-Uo-WbX">
+                        <rect key="frame" x="160.5" y="171" width="53.5" height="14.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjN-f3-z4X">
+                        <rect key="frame" x="113.5" y="185.5" width="147" height="50"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m03-6D-uo3">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <state key="normal" image="facebook"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4w7-bd-bsZ">
+                                <rect key="frame" x="50" y="0.0" width="47" height="50"/>
+                                <state key="normal" image="twitter"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTU-Tg-e8h">
+                                <rect key="frame" x="97" y="0.0" width="50" height="50"/>
+                                <state key="normal" image="email"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="i8t-h6-yNd"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstItem="B1h-LD-Hsm" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="5Q9-Pg-hg7"/>
+                <constraint firstItem="BRF-xE-ojb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="AUI-kq-dm6"/>
+                <constraint firstAttribute="trailing" secondItem="BRF-xE-ojb" secondAttribute="trailing" id="JFJ-Fz-lhf"/>
+                <constraint firstItem="qRp-Jl-XTf" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Vwh-wu-86K"/>
+                <constraint firstItem="Ez6-Uo-WbX" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="WHa-re-KUv"/>
+                <constraint firstItem="jjN-f3-z4X" firstAttribute="top" secondItem="Ez6-Uo-WbX" secondAttribute="bottom" id="Wic-cn-QHg"/>
+                <constraint firstItem="B1h-LD-Hsm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="40" id="Xcx-yV-MPY"/>
+                <constraint firstItem="jjN-f3-z4X" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="YpK-9D-xJg"/>
+                <constraint firstItem="qRp-Jl-XTf" firstAttribute="top" secondItem="B1h-LD-Hsm" secondAttribute="bottom" constant="14" id="fYy-GE-7pM"/>
+                <constraint firstItem="BRF-xE-ojb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="loA-Mz-RtY"/>
+                <constraint firstItem="Ez6-Uo-WbX" firstAttribute="top" secondItem="qRp-Jl-XTf" secondAttribute="bottom" constant="5" id="s1y-Ag-POq"/>
+                <constraint firstAttribute="bottom" secondItem="BRF-xE-ojb" secondAttribute="bottom" id="xGR-Iy-JKc"/>
+            </constraints>
+            <size key="customSize" width="238" height="212"/>
+            <point key="canvasLocation" x="87.5" y="150"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="email" width="50" height="50"/>
+        <image name="facebook" width="50" height="50"/>
+        <image name="twitter" width="47" height="46"/>
+    </resources>
 </document>
