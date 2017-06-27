@@ -16,10 +16,11 @@ class TeammateProfileVC: UIViewController, Routable {
     
     static var storyboardName: String = "Team"
     
+    var isMe: Bool = false
     var teammate: TeammateLike {
         get { return self.dataSource.teammate }
         set { if self.dataSource == nil {
-            self.dataSource = TeammateProfileDataSource(teammate: newValue)
+            self.dataSource = TeammateProfileDataSource(teammate: newValue, isMe: self.isMe)
             }
         }
     }
@@ -53,6 +54,7 @@ class TeammateProfileVC: UIViewController, Routable {
     
     func registerCells() {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
+        collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
     }
     
 }
@@ -133,6 +135,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: wdt, height: base + CGFloat(dataSource.socialItems.count) * cellHeight)
         case .dialog:
             return CGSize(width: wdt, height: 120)
+        case .me:
+           return CGSize(width: collectionView.bounds.width, height: 210)
         }
     }
     

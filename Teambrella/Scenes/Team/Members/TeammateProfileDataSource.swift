@@ -9,7 +9,7 @@
 import UIKit
 
 enum TeammateProfileCellType: String {
-    case summary, object, stats, contact, dialog
+    case me, summary, object, stats, contact, dialog
 }
 
 enum SocialItemType: String {
@@ -26,11 +26,12 @@ struct SocialItem {
 }
 
 class TeammateProfileDataSource {
-    var source: [TeammateProfileCellType] = [.summary]
+    var source: [TeammateProfileCellType] = []
     var teammate: TeammateLike
     
-    init(teammate: TeammateLike) {
+    init(teammate: TeammateLike, isMe: Bool) {
         self.teammate = teammate
+        source.append(isMe ? .me : .summary)
     }
     
     var sections: Int = 1
