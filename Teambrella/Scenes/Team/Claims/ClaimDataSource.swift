@@ -72,8 +72,8 @@ class ClaimDataSource {
                                                       "MyVote": vote ?? NSNull(),
                                                       "Since": lastUpdated,
                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
-            let request = TeambrellaRequest(type: .setVote, body: body, success: { [weak self] response in
-                if case .setVote(let json) = response {
+            let request = TeambrellaRequest(type: .claimVote, body: body, success: { [weak self] response in
+                if case .claimVote(let json) = response {
                     self?.claim?.update(with: json)
                     self?.onUpdate?()
                     print("Updated claim with \(json)")

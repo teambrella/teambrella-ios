@@ -19,7 +19,7 @@ enum TeambrellaRequestType: String {
     case registerKey = "me/registerKey"
     case claimsList = "claim/getList"
     case claim = "claim/getOne"
-    case setVote = "claim/setVote"
+    case claimVote = "claim/setVote"
     case claimUpdates = "claim/getUpdates"
     case claimChat = "claim/getChat"
 }
@@ -34,7 +34,7 @@ enum TeambrellaResponseType {
     case registerKey
     case claimsList([ClaimLike])
     case claim(EnhancedClaimEntity)
-    case setVote(JSON)
+    case claimVote(JSON)
     case claimUpdates(JSON)
     case claimChat(Int64, [ChatEntity], TeammateBasicInfo)
 }
@@ -96,8 +96,8 @@ struct TeambrellaRequest {
             success(.claimsList(claims))
         case .claim:
             success(.claim(EnhancedClaimEntity(json: reply)))
-        case .setVote:
-            success(.setVote(reply))
+        case .claimVote:
+            success(.claimVote(reply))
         case .claimUpdates:
             success(.claimUpdates(reply))
         case .claimChat:
