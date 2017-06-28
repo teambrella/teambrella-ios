@@ -29,17 +29,29 @@ class ServerService {
     struct Constant {
         static let siteURL = BlockchainServer.Constant.siteURL
         //"http://surilla.com"//"http://192.168.0.254" // "http://192.168.0.222"
-        static let fakePrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
+        //static let fakePrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
         // "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
         static let myID = 2274
         static let myUserID = "1dbd099a-6cc2-4c45-a7df-a75c00e58621"
         static let timestampURL = "me/GetTimestamp"
-        static let teamID = 2006
-        
+    }
+    
+    enum FakeKeyType: String {
+        case denis = "cNqQ7aZWitJCk1o9dNhr1o9k3UKdeW92CDYrvDHHLuwFuEnfcBXo"
+        case kate = "cUNX4HYHK3thsjDKEcB26qRYriw8uJLtt8UvDrM98GbUBn22HMrY"
+        case thorax = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
+        case testUser = "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
+    }
+    
+    static var currentKeyType: FakeKeyType = .testUser
+    static var teamID: Int { return service.session.currentTeam?.teamID ?? 0 }
+    
+    static var privateKey: String {
+        return currentKeyType.rawValue
     }
     
     private(set)var timestamp: Int64 = 0
-    var key: Key { return Key(base58String: Constant.fakePrivateKey, timestamp: timestamp) }
+    var key: Key { return Key(base58String: ServerService.privateKey, timestamp: timestamp) }
     
     init() {
         

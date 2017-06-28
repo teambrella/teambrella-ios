@@ -41,7 +41,7 @@ struct ClaimCellBuilder {
         let imageURLStrings = claim.largePhotos.flatMap { service.server.urlString(string: $0) }
         print(imageURLStrings)
         service.server.updateTimestamp { timestamp, error in
-            let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+            let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
             let modifier = AnyModifier { request in
                 var request = request

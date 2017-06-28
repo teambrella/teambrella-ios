@@ -42,7 +42,7 @@ class ClaimDataSource {
     
     func loadData(claimID: String) {
         service.server.updateTimestamp { timestamp, error in
-            let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+            let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
             
             let body = RequestBody(key: key, payload:["id": Int(claimID) ?? 0,
@@ -65,7 +65,7 @@ class ClaimDataSource {
         let claimID = claim?.id ?? "0"
         let lastUpdated = claim?.lastUpdated ?? 0
         service.server.updateTimestamp { timestamp, error in
-            let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+            let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
             
             let body = RequestBody(key: key, payload:["ClaimId": claimID,
@@ -89,7 +89,7 @@ class ClaimDataSource {
         let claimID = claim?.id ?? "0"
         let lastUpdated = claim?.lastUpdated ?? 0
         service.server.updateTimestamp { timestamp, error in
-            let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+            let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
             
             let body = RequestBody(key: key, payload:["ClaimId": claimID,

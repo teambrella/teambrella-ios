@@ -74,10 +74,10 @@ class MembersDatasource {
         
         isLoading = true
         service.server.updateTimestamp { timestamp, error in
-            let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+            let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
             
-            let body = RequestBody(key: key, payload:["TeamId": 2006,
+            let body = RequestBody(key: key, payload:["TeamId": ServerService.teamID,
                                                       "Offset": self.offset,
                                                       "Limit": 10,
                                                       "AvatarSize": 128])

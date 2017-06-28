@@ -18,6 +18,7 @@ class ServicesHandler {
     lazy var router = MainRouter()
     lazy var socket = SocketService()
     lazy var teambrella = TeambrellaService()
+    lazy var session = Session()
     
     private init() {}
     

@@ -58,10 +58,10 @@ class ClaimsDataSource {
         
         isLoading = true
         service.server.updateTimestamp { timestamp, error in
-            let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+            let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
             
-            var payload: [String: Any] = ["TeamId": ServerService.Constant.teamID,
+            var payload: [String: Any] = ["TeamId": ServerService.teamID,
                            "Offset": self.offset,
                            "Limit": Constant.loadLimit,
                            "AvatarSize": Constant.avatarSize]

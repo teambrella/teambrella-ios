@@ -38,7 +38,7 @@ class TeammateVC: UIViewController {
     }
     
 //    private func loadEntireTeammate() {
-//        let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: service.server.timestamp)
+//        let key = Key(base58String: ServerService.privateKey, timestamp: service.server.timestamp)
 //
 //        let body = RequestBodyFactory.teammateBody(key: key, id: teammate.userID)
 //        let request = TeambrellaRequest(type: .teammate, body: body, success: { [weak self] response in

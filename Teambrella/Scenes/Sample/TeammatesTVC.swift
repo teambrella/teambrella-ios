@@ -30,7 +30,7 @@ class TeammatesTVC: UITableViewController {
     }
     
     private func loadTeammates() {
-        let key = Key(base58String: ServerService.Constant.fakePrivateKey,
+        let key = Key(base58String: ServerService.privateKey,
                       timestamp: service.server.timestamp)
         
         let body = RequestBodyFactory.teammatesBody(key: key)

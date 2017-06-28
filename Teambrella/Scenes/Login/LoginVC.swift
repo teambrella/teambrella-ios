@@ -43,7 +43,7 @@ class LoginVC: UIViewController {
     
     func register(token: String) {
         service.server.updateTimestamp { timestamp, error in
-            let key = Key(base58String: ServerService.Constant.fakePrivateKey, timestamp: timestamp)
+            let key = Key(base58String: ServerService.privateKey, timestamp: timestamp)
             let body = RequestBody(key: key)
             let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": token],
                                             body: body,
