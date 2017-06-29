@@ -13,13 +13,11 @@ class MasterTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        guard let items = tabBar.items else { return }
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        for item in items {
+            item.image = item.image?.withRenderingMode(.alwaysOriginal)
+        }
     }
     
     func switchTo(tabType: TabType) -> UIViewController? {

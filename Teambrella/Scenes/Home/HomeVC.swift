@@ -48,6 +48,8 @@ class HomeVC: UIViewController, TabRoutable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         scrollViewDidScroll(collectionView)
+        
+        service.router.setMyTabImage(with: #imageLiteral(resourceName: "teammateF"))
     }
     
     override func didReceiveMemoryWarning() {

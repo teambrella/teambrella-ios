@@ -52,6 +52,12 @@ final class MainRouter {
         }
     }
     
+    func setMyTabImage(with image: UIImage) {
+        if let vc = masterTabBar?.viewControllers?.last {
+            vc.tabBarItem.image = ImageTransformer(image: image).tabBarImage
+        }
+    }
+    
     /*
      func pushOrReuse(vc: UIViewController,
      animated: Bool = true,
