@@ -28,11 +28,11 @@
 "Team.ClaimCell.coverage"                      = "Cobertura";
 "Team.ClaimCell.incidentDate"                  = "Fecha del incidente";
 "Team.FeedVC.indicatorTitle"                   = "Alimentador";
-"Team.Teammates.newTeammates"                  = "NUEVOS COMPAÑEROS DEL EQUIPO";
-"Team.Teammates.teammates"                     = "COMPAÑEROS DEL EQUIPO";
+"Team.Teammates.newTeammates"                  = "NUEVOS COMPAÑEROS";
+"Team.Teammates.teammates"                     = "COMPAÑEROS";
 "Team.Teammates.votingEndsIn"                  = "VOTACION TERMINA EN";
 "Team.Teammates.net"                           = "NET";
-"Team.MembersVC.indicatorTitle"                = "Miembros";
+"Team.MembersVC.indicatorTitle"                = "Compañeros";
 "Team.MembersVC.searchHere"                    = "Buscar aquí...";
 "Team.TeammateCell.coversMe"                   = "ME CUBRE";
 "Team.TeammateCell.coverThem"                  = "ELLOS CUBRO";
