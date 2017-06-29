@@ -8,7 +8,9 @@
 
 import UIKit
 
-class HomeVC: UIViewController {
+class HomeVC: UIViewController, TabRoutable {
+    let tabType: TabType = .home
+    
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var collectionView: UICollectionView!
     
@@ -64,6 +66,13 @@ class HomeVC: UIViewController {
         MeRouter().presentClaimReport()
     }
     
+    @IBAction func tapLeftBrick(_ sender: Any) {
+        service.router.showCoverage()
+    }
+    
+    @IBAction func tapRightBrick(_ sender: Any) {
+        service.router.showWallet()
+    }
 }
 
 extension HomeVC: UICollectionViewDataSource {

@@ -9,7 +9,8 @@
 import UIKit
 import XLPagerTabStrip
 
-class TeamVC: ButtonBarPagerTabStripViewController {
+class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
+    let tabType: TabType = .team
     
     override func awakeFromNib() {
         super.awakeFromNib()

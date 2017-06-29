@@ -304,10 +304,20 @@
                                                     <constraint firstItem="wIX-fM-EU9" firstAttribute="centerY" secondItem="KFF-bQ-Xeu" secondAttribute="centerY" id="xRh-sI-voA"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXS-UI-uax">
+                                                <rect key="frame" x="31" y="25.5" width="124.5" height="50.5"/>
+                                                <connections>
+                                                    <action selector="tapLeftBrick:" destination="dtc-T4-z44" eventType="touchUpInside" id="mvM-1h-jKk"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="NXS-UI-uax" firstAttribute="height" secondItem="Osa-1R-OFY" secondAttribute="height" id="0RS-9c-omS"/>
+                                            <constraint firstItem="NXS-UI-uax" firstAttribute="width" secondItem="Osa-1R-OFY" secondAttribute="width" id="Dzs-yG-JgB"/>
+                                            <constraint firstItem="NXS-UI-uax" firstAttribute="centerY" secondItem="Osa-1R-OFY" secondAttribute="centerY" id="PWc-fO-szx"/>
                                             <constraint firstItem="Osa-1R-OFY" firstAttribute="centerY" secondItem="M94-CA-2iA" secondAttribute="centerY" id="c2I-Bd-ezC"/>
+                                            <constraint firstItem="NXS-UI-uax" firstAttribute="centerX" secondItem="Osa-1R-OFY" secondAttribute="centerX" id="hxi-ub-rYM"/>
                                             <constraint firstItem="Osa-1R-OFY" firstAttribute="centerX" secondItem="M94-CA-2iA" secondAttribute="centerX" id="tUA-hk-4Wf"/>
                                         </constraints>
                                     </view>
@@ -367,10 +377,20 @@
                                                     <constraint firstItem="xL4-tL-WPQ" firstAttribute="bottom" secondItem="xhy-vW-mnp" secondAttribute="bottom" id="wdV-OH-foM"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mse-A7-u1j">
+                                                <rect key="frame" x="22" y="25.5" width="142" height="50.5"/>
+                                                <connections>
+                                                    <action selector="tapRightBrick:" destination="dtc-T4-z44" eventType="touchUpInside" id="BXx-6p-pkK"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="mse-A7-u1j" firstAttribute="centerX" secondItem="9ce-bs-ZRe" secondAttribute="centerX" id="GQX-2j-mej"/>
+                                            <constraint firstItem="mse-A7-u1j" firstAttribute="width" secondItem="9ce-bs-ZRe" secondAttribute="width" id="IFK-3d-ZfT"/>
                                             <constraint firstItem="9ce-bs-ZRe" firstAttribute="centerX" secondItem="e2p-vW-Me1" secondAttribute="centerX" id="J74-sq-tOa"/>
+                                            <constraint firstItem="mse-A7-u1j" firstAttribute="centerY" secondItem="9ce-bs-ZRe" secondAttribute="centerY" id="Of8-Ug-sDs"/>
+                                            <constraint firstItem="mse-A7-u1j" firstAttribute="height" secondItem="9ce-bs-ZRe" secondAttribute="height" id="eCw-9v-hC2"/>
                                             <constraint firstItem="9ce-bs-ZRe" firstAttribute="centerY" secondItem="e2p-vW-Me1" secondAttribute="centerY" id="v9Z-ms-LZn"/>
                                         </constraints>
                                     </view>

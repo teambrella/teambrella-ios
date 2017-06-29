@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
 final class MainRouter {
     let mainStoryboardName = "Main"
@@ -15,6 +16,10 @@ final class MainRouter {
         let appDelegate  = UIApplication.shared.delegate as? AppDelegate
         let viewController = appDelegate?.window?.rootViewController as? Navigator
         return viewController
+    }
+    
+    var masterTabBar: MasterTabBarController? {
+        return navigator?.viewControllers.filter { $0 is MasterTabBarController }.first as? MasterTabBarController
     }
     
     func push(vc: UIViewController, animated: Bool = true) {
@@ -29,6 +34,22 @@ final class MainRouter {
         
         let barItem = UIBarButtonItem(customView: button)
         navigator?.navigationItem.setRightBarButton(barItem, animated: false)
+    }
+    
+    func switchTab(to tab: TabType) -> UIViewController? {
+        return masterTabBar?.switchTo(tabType: tab)
+    }
+    
+    func showWallet() {
+        if let vc = switchTab(to: .me) as? ButtonBarPagerTabStripViewController {
+            vc.moveToViewController(at: 2, animated: false)
+        }
+    }
+    
+    func showCoverage() {
+        if let vc = switchTab(to: .me) as? ButtonBarPagerTabStripViewController {
+            vc.moveToViewController(at: 0, animated: false)
+        }
     }
     
     /*

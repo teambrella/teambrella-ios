@@ -9,7 +9,9 @@
 import UIKit
 import XLPagerTabStrip
 
-class ProxiesVC: ButtonBarPagerTabStripViewController {
+class ProxiesVC: ButtonBarPagerTabStripViewController, TabRoutable {
+    let tabType: TabType = .proxy
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         title = "Main.proxies".localized

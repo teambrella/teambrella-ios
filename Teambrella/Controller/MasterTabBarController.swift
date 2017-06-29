@@ -21,6 +21,21 @@ class MasterTabBarController: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func switchTo(tabType: TabType) -> UIViewController? {
+        guard let viewControllers = viewControllers else { return nil }
+        
+        for (idx, vc) in viewControllers.enumerated() {
+            if let nc = vc as? UINavigationController,
+                let firstVC = nc.viewControllers.first,
+                let tabRoutable = firstVC as? TabRoutable,
+                tabRoutable.tabType == tabType {
+                selectedIndex = idx
+                return firstVC
+            }
+        }
+        return nil
+    }
 
     /*
     // MARK: - Navigation

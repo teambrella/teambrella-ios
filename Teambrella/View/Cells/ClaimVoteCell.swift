@@ -27,8 +27,6 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var teamVoteCurrency: Label!
     @IBOutlet var avatarsStack: RoundImagesStack!
     
-    @IBOutlet var minusButton: BorderedButton!
-    @IBOutlet var plusButton: BorderedButton!
     @IBOutlet var slider: UISlider!
     
     @IBOutlet var submitButton: PlainButton!

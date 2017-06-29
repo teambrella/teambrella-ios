@@ -9,7 +9,8 @@
 import UIKit
 import XLPagerTabStrip
 
-class MeVC: ButtonBarPagerTabStripViewController {
+class MeVC: ButtonBarPagerTabStripViewController, TabRoutable {
+    let tabType: TabType = .me
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +23,7 @@ class MeVC: ButtonBarPagerTabStripViewController {
         super.viewDidLoad()
         setupTransparentNavigationBar()
     }
-
+    
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let my = UIStoryboard(name: "Me",
                               bundle: nil).instantiateViewController(withIdentifier: "CoverageVC")

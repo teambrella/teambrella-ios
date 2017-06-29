@@ -43,9 +43,12 @@
                                     <constraint firstAttribute="width" constant="20" id="j5L-8n-YxB"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-2g-vOp">
-                                <rect key="frame" x="281" y="16" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-2g-vOp">
+                                <rect key="frame" x="287" y="16" width="40" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="xkZ-mK-QQt"/>
+                                </constraints>
+                                <state key="normal" image="info"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2r-3b-RDy" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="93" y="16" width="42" height="20.5"/>
@@ -66,19 +69,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17,6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKd-qO-8F4">
-                                                <rect key="frame" x="8" y="17.5" width="70.5" height="42"/>
+                                                <rect key="frame" x="8" y="17.5" width="72.5" height="44"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="790" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuP-CI-MHk">
-                                                <rect key="frame" x="8" y="59.5" width="30.5" height="21"/>
+                                                <rect key="frame" x="8" y="61.5" width="31" height="22"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFg-Z6-zvn" customClass="CurrencyLabel" customModule="Teambrella" customModuleProvider="target">
-                                                <rect key="frame" x="40.5" y="58" width="21.5" height="12"/>
+                                                <rect key="frame" x="41" y="60.5" width="21.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -97,7 +100,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeT-xq-UKS">
-                                                <rect key="frame" x="78.5" y="17.5" width="36" height="42"/>
+                                                <rect key="frame" x="80.5" y="17.5" width="33" height="44"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -137,25 +140,25 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17,6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdR-JP-qTp">
-                                                <rect key="frame" x="8" y="17.5" width="70.5" height="42"/>
+                                                <rect key="frame" x="8" y="17.5" width="72.5" height="44"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="790" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdI-Ys-bOX">
-                                                <rect key="frame" x="8" y="59.5" width="30.5" height="21"/>
+                                                <rect key="frame" x="8" y="61.5" width="31" height="22"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQq-XY-4kI" customClass="CurrencyLabel" customModule="Teambrella" customModuleProvider="target">
-                                                <rect key="frame" x="40.5" y="58" width="21.5" height="12"/>
+                                                <rect key="frame" x="41" y="60.5" width="21.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnD-tB-IfF">
-                                                <rect key="frame" x="78.5" y="17.5" width="36" height="42"/>
+                                                <rect key="frame" x="80.5" y="17.5" width="33" height="44"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                                 <color key="textColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -192,25 +195,18 @@
                                 </constraints>
                             </stackView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lM2-I2-Jb9">
-                                <rect key="frame" x="60" y="178.5" width="223" height="31"/>
+                                <rect key="frame" x="18" y="178.5" width="307" height="31"/>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHC-HF-8TY" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="16" y="178.5" width="30" height="30"/>
-                                <state key="normal" title="-"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWg-AW-6TF" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="297" y="178.5" width="30" height="30"/>
-                                <state key="normal" title="+"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mM-fV-9mW" customClass="PlainButton" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="16" y="232.5" width="311" height="40"/>
+                                <rect key="frame" x="16" y="239" width="311" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="CqD-I7-HQb"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="vlN-SO-dBV"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xX-Pn-wVs">
-                                <rect key="frame" x="142.5" y="290" width="58" height="26"/>
+                                <rect key="frame" x="142" y="289" width="59" height="27"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
                                 <state key="normal" title="Reset vote">
                                     <color key="titleColor" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
@@ -220,27 +216,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="86k-pi-DIK" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leadingMargin" id="1Wm-UP-YbY"/>
-                            <constraint firstItem="JHC-HF-8TY" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leadingMargin" id="3bP-J1-EN4"/>
                             <constraint firstItem="KVp-Aa-10c" firstAttribute="top" secondItem="NVa-WO-KTz" secondAttribute="topMargin" id="7OL-RS-3bZ"/>
                             <constraint firstItem="6xX-Pn-wVs" firstAttribute="centerX" secondItem="NVa-WO-KTz" secondAttribute="centerX" id="Fo2-P3-tM1"/>
-                            <constraint firstItem="lM2-I2-Jb9" firstAttribute="leading" secondItem="JHC-HF-8TY" secondAttribute="trailing" constant="16" id="IxR-80-ci9"/>
-                            <constraint firstItem="JHC-HF-8TY" firstAttribute="centerY" secondItem="lM2-I2-Jb9" secondAttribute="centerY" id="Kg9-63-swQ"/>
-                            <constraint firstItem="3mM-fV-9mW" firstAttribute="top" secondItem="JHC-HF-8TY" secondAttribute="bottom" constant="24" id="LLA-rV-dce"/>
+                            <constraint firstAttribute="trailing" secondItem="lM2-I2-Jb9" secondAttribute="trailing" constant="20" id="Kei-Ap-LdC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3mM-fV-9mW" secondAttribute="trailing" id="MxN-9C-NYb"/>
                             <constraint firstItem="3mM-fV-9mW" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leadingMargin" id="OG4-1I-mvr"/>
+                            <constraint firstItem="lM2-I2-Jb9" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leading" constant="20" id="Pra-fy-568"/>
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="centerY" secondItem="KVp-Aa-10c" secondAttribute="centerY" id="RtA-AP-bVR"/>
-                            <constraint firstItem="ZWg-AW-6TF" firstAttribute="leading" secondItem="lM2-I2-Jb9" secondAttribute="trailing" constant="16" id="VrE-qn-T4p"/>
                             <constraint firstItem="0Iw-2g-vOp" firstAttribute="top" secondItem="NVa-WO-KTz" secondAttribute="topMargin" id="W17-G1-Olu"/>
                             <constraint firstItem="F2r-3b-RDy" firstAttribute="bottom" secondItem="KVp-Aa-10c" secondAttribute="bottom" id="XXG-y7-9NZ"/>
                             <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" secondItem="KVp-Aa-10c" secondAttribute="trailing" constant="15" id="YOe-GY-gdc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZWg-AW-6TF" secondAttribute="trailing" id="e1v-X4-OVw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Iw-2g-vOp" secondAttribute="trailing" id="f0m-P5-J2e"/>
-                            <constraint firstItem="ZWg-AW-6TF" firstAttribute="centerY" secondItem="lM2-I2-Jb9" secondAttribute="centerY" id="gAM-jk-RkN"/>
                             <constraint firstItem="lM2-I2-Jb9" firstAttribute="top" secondItem="86k-pi-DIK" secondAttribute="bottom" constant="16" id="hQw-KG-ddG"/>
                             <constraint firstItem="86k-pi-DIK" firstAttribute="top" secondItem="KVp-Aa-10c" secondAttribute="bottom" constant="16" id="kob-hj-XoC"/>
                             <constraint firstAttribute="bottomMargin" secondItem="6xX-Pn-wVs" secondAttribute="bottom" id="ltj-Gq-Abn"/>
                             <constraint firstItem="KVp-Aa-10c" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leadingMargin" id="mgl-28-cBY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="86k-pi-DIK" secondAttribute="trailing" id="olz-9N-wLe"/>
+                            <constraint firstItem="6xX-Pn-wVs" firstAttribute="top" secondItem="3mM-fV-9mW" secondAttribute="bottom" constant="10" id="stv-pq-kil"/>
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="leading" secondItem="F2r-3b-RDy" secondAttribute="trailing" constant="8" id="xqz-DI-XEe"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
@@ -263,9 +255,7 @@
                 <outlet property="avatarsStack" destination="TnD-mv-QdM" id="VuN-fI-77A"/>
                 <outlet property="byProxyLabel" destination="gEt-FD-2iD" id="LUg-eZ-Xrl"/>
                 <outlet property="infoButton" destination="0Iw-2g-vOp" id="2EI-ti-CA5"/>
-                <outlet property="minusButton" destination="JHC-HF-8TY" id="faM-D7-UrX"/>
                 <outlet property="pieChart" destination="y0E-WH-DMy" id="aru-OB-1OQ"/>
-                <outlet property="plusButton" destination="ZWg-AW-6TF" id="UH8-fY-8vS"/>
                 <outlet property="proxyAvatar" destination="uEe-ff-t9r" id="tmF-HM-uv8"/>
                 <outlet property="remainingDaysLabel" destination="F2r-3b-RDy" id="0SQ-ja-Nvn"/>
                 <outlet property="resetButton" destination="6xX-Pn-wVs" id="nGL-b5-P5Z"/>
@@ -284,4 +274,7 @@
             <point key="canvasLocation" x="53.5" y="23"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="info" width="20" height="20"/>
+    </resources>
 </document>
