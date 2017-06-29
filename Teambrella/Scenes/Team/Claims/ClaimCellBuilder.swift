@@ -68,6 +68,9 @@ struct ClaimCellBuilder {
         cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         let myVote = String(format: "%.2f", claim.myVote * 100)
         cell.yourVotePercentValue.text = myVote
+        cell.yourVotePercentValue.alpha = 1
+        cell.yourVoteAmount.text = String(format: "%.0f", claim.myVote * claim.claimAmount)
+        cell.yourVoteAmount.alpha = 1
         
         if let proxyAvatar = claim.proxyAvatar {
             cell.proxyAvatar.kf.setImage(with: URL(string: service.server.avatarURLstring(for: proxyAvatar)))
@@ -78,10 +81,10 @@ struct ClaimCellBuilder {
         }
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
-        let teamVote = "?"
-        cell.teamVotePercentValue.text = teamVote
+        cell.teamVotePercentValue.text = String(format: "%.2f", claim.ratioVoted * 100)
+        cell.teamVoteAmount.text = String(format: "%.0f", claim.ratioVoted * claim.claimAmount)
         
-        cell.submitButton.setTitle("Team.ClaimCell.voteSubmitted", for: .normal)
+        cell.submitButton.setTitle("Team.ClaimCell.voteSubmitted".localized, for: .normal)
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
         
         let avatars = claim.otherAvatars.flatMap { URL(string: service.server.avatarURLstring(for: $0)) }

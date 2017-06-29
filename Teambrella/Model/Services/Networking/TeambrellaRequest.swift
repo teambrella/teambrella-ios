@@ -46,6 +46,7 @@ enum TeambrellaResponseType {
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
 typealias TeambrellaRequestFailure = (_ error: Error) -> Void
 
+// swiftlint:disable function_body_length
 struct TeambrellaRequest {
     let type: TeambrellaRequestType
     var parameters: [String: String]?

@@ -21,23 +21,27 @@ class InitialVC: UIViewController {
         service.server.updateTimestamp { _ in
             let key = service.server.key
             let body = RequestBody(key: key, payload: [:])
-            let request = TeambrellaRequest(type: .teams, parameters: nil, body: body, success: { [weak self] response in
-                
-                if case .teams(let teams, let potentialTeams, let recentTeamID) = response {
-                    print("Teams: \(teams)")
-                    print("Potential Teams: \(potentialTeams)")
-                    print("Recent: \(recentTeamID)")
-                    if !teams.isEmpty {
-                        service.session.currentTeam = teams.first
-                        self?.performSegue(type: .teambrella)
-                    }
-                }
+            let request = TeambrellaRequest(type: .teams,
+                                            parameters: nil,
+                                            body: body,
+                                            success: { [weak self] response in
+                                                if case .teams(let teams,
+                                                               let potentialTeams,
+                                                               let recentTeamID) = response {
+                                                    print("Teams: \(teams)")
+                                                    print("Potential Teams: \(potentialTeams)")
+                                                    print("Recent: \(String(describing: recentTeamID))")
+                                                    if !teams.isEmpty {
+                                                        service.session.currentTeam = teams.first
+                                                        self?.performSegue(type: .teambrella)
+                                                    }
+                                                }
             }) { error in
                 
             }
             request.start()
         }
-      
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

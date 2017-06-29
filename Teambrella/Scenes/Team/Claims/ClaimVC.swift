@@ -137,10 +137,12 @@ class ClaimVC: UIViewController, Routable {
         let cells = collectionView.visibleCells.flatMap { $0 as? ClaimVoteCell }
         guard let cell = cells.first else { return }
         
-        cell.yourVotePercentValue.text = String(format: "%.1f", cell.slider.value * 100)
+        cell.yourVotePercentValue.text = String(format: "%.2f", cell.slider.value * 100)
         if let amount = dataSource.claim?.claimAmount {
             cell.yourVoteAmount.text = String(format: "%.0f", cell.slider.value * Float(amount))
         }
+        cell.yourVotePercentValue.alpha = 0.5
+        cell.yourVoteAmount.alpha = 0.5
     }
     
 }
