@@ -48,6 +48,8 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
         activityIndicator.startAnimating()
         dataSource.loadData()
         title = "Team.team".localized
+        
+        collectionView.contentInset.top = searchView.frame.height
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,7 +92,7 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
                 self.view.layoutIfNeeded()
             }
         } else {
-            view.layoutIfNeeded()
+            view.setNeedsLayout()
         }
     }
     

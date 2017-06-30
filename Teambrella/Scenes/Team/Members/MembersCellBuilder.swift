@@ -17,6 +17,7 @@ struct MembersCellBuilder {
                 cell.avatarView.kf.setImage(with: url)
             }
             cell.titleLabel.text = teammate.name
+            cell.detailsLabel.text = teammate.model
         } else if let cell = cell as? TeammateCell {
             if let url = URL(string: service.server.avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
