@@ -27,7 +27,7 @@
 "Team.ClaimCell.deductible"                    = "Deducible";
 "Team.ClaimCell.coverage"                      = "Cobertura";
 "Team.ClaimCell.incidentDate"                  = "Fecha del incidente";
-"Team.FeedVC.indicatorTitle"                   = "Alimentador";
+"Team.FeedVC.indicatorTitle"                   = "Noticias";
 "Team.Teammates.newTeammates"                  = "NUEVOS COMPAÑEROS";
 "Team.Teammates.teammates"                     = "COMPAÑEROS";
 "Team.Teammates.votingEndsIn"                  = "VOTACION TERMINA EN";
