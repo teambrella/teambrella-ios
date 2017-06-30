@@ -96,8 +96,8 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func tapLeftButton(sender: UIButton) {
-        isPosting = true
-        automaticPoster()
+       // isPosting = true
+        //automaticPoster()
     }
     
     var posts = ["Egdhevdhd and the new year has will never be come to a good day and she is"
@@ -135,7 +135,7 @@ class UniversalChatVC: UIViewController, Routable {
                     self?.collectionView.reloadData()
                 }
                 if let posting = self?.isPosting, posting == true {
-                    self?.automaticPoster()
+//                    self?.automaticPoster()
                 }
             })
         }
