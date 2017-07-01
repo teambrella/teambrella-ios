@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JoinTeamInfoCell: UICollectionViewCell {
+class JoinTeamInfoCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var numberBar: NumberBar!
     @IBOutlet var rulesButton: UIButton!

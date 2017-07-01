@@ -8,8 +8,11 @@
 
 import UIKit
 
+@IBDesignable
 class LabeledTextField: UIView, XIBInitable {
-
+    @IBOutlet var headerLabel: UILabel!
+    @IBOutlet var textField: UITextField!
+    
     var contentView: UIView!
     
     /*

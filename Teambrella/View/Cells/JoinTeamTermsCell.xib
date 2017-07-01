@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="JoinTeamTermsCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vjV-ze-TP4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="headerLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anr-8I-Q61">
+                                <rect key="frame" x="20" y="20" width="82" height="16"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
+                                <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1b4-2s-Wsy">
+                                <rect key="frame" x="0.0" y="56" width="375" height="224"/>
+                                <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odE-se-57y">
+                                <rect key="frame" x="0.0" y="55" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.70588235290000001" green="0.74901960779999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="mBR-z5-omO"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMA-SJ-rCt" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="250" width="375" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BRT-RA-s8W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.01" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iAcceptLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfQ-1c-CvM">
+                                <rect key="frame" x="45" y="315" width="285" height="38"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
+                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1b4-2s-Wsy" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" id="2zS-8U-mWb"/>
+                            <constraint firstItem="anr-8I-Q61" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" constant="20" id="5MR-3v-fgS"/>
+                            <constraint firstItem="fMA-SJ-rCt" firstAttribute="bottom" secondItem="1b4-2s-Wsy" secondAttribute="bottom" id="9sY-Mz-ipQ"/>
+                            <constraint firstAttribute="trailing" secondItem="1b4-2s-Wsy" secondAttribute="trailing" id="BIN-1m-IXd"/>
+                            <constraint firstItem="pfQ-1c-CvM" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" constant="45" id="H6I-Se-ta6"/>
+                            <constraint firstItem="anr-8I-Q61" firstAttribute="top" secondItem="vjV-ze-TP4" secondAttribute="top" constant="20" id="NrS-ke-rP3"/>
+                            <constraint firstAttribute="bottom" secondItem="pfQ-1c-CvM" secondAttribute="bottom" constant="20" id="NzZ-CY-x2u"/>
+                            <constraint firstItem="odE-se-57y" firstAttribute="top" secondItem="vjV-ze-TP4" secondAttribute="top" constant="55" id="P41-6E-ixX"/>
+                            <constraint firstItem="pfQ-1c-CvM" firstAttribute="top" secondItem="1b4-2s-Wsy" secondAttribute="bottom" constant="35" id="RvS-xb-Eb0"/>
+                            <constraint firstItem="pfQ-1c-CvM" firstAttribute="centerX" secondItem="vjV-ze-TP4" secondAttribute="centerX" id="SCK-kT-II8"/>
+                            <constraint firstAttribute="trailing" secondItem="pfQ-1c-CvM" secondAttribute="trailing" constant="45" id="UJh-yK-wTR"/>
+                            <constraint firstItem="fMA-SJ-rCt" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" id="ULM-iG-bxp"/>
+                            <constraint firstAttribute="trailing" secondItem="odE-se-57y" secondAttribute="trailing" id="Vj1-cR-ww8"/>
+                            <constraint firstItem="1b4-2s-Wsy" firstAttribute="top" secondItem="anr-8I-Q61" secondAttribute="bottom" constant="20" id="bng-4Z-6Ir"/>
+                            <constraint firstAttribute="bottom" secondItem="1b4-2s-Wsy" secondAttribute="bottom" constant="93" id="dSg-BP-HgX"/>
+                            <constraint firstItem="odE-se-57y" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" id="h32-Os-rMu"/>
+                            <constraint firstItem="odE-se-57y" firstAttribute="bottom" secondItem="1b4-2s-Wsy" secondAttribute="top" id="jNi-Fk-x50"/>
+                            <constraint firstAttribute="trailing" secondItem="fMA-SJ-rCt" secondAttribute="trailing" id="zBk-HB-uRe"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="vjV-ze-TP4" secondAttribute="trailing" id="77Q-ON-A9l"/>
+                <constraint firstItem="vjV-ze-TP4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DGv-W9-6Gz"/>
+                <constraint firstAttribute="bottom" secondItem="vjV-ze-TP4" secondAttribute="bottom" id="Jg8-K5-W1I"/>
+                <constraint firstItem="vjV-ze-TP4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Oiw-Oq-vOG"/>
+            </constraints>
+            <connections>
+                <outlet property="bottomLabel" destination="pfQ-1c-CvM" id="hmx-2q-Ues"/>
+                <outlet property="headerLabel" destination="anr-8I-Q61" id="k4G-va-5wP"/>
+                <outlet property="textBox" destination="1b4-2s-Wsy" id="q0I-tm-aHr"/>
+                <outlet property="textField" destination="1b4-2s-Wsy" id="ipt-nf-Kx1"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </collectionViewCell>
+        <view contentMode="scaleToFill" id="KJS-YT-tdt">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <point key="canvasLocation" x="213" y="59"/>
+        </view>
+    </objects>
+</document>
