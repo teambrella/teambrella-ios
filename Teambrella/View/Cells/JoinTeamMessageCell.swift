@@ -16,6 +16,7 @@ class JoinTeamMessageCell: UICollectionViewCell, XIBInitableCell {
         super.awakeFromNib()
         headerLabel.text = "Team".uppercased()
         message.headerLabel.text = "Message to teammates".uppercased()
+        // swiftlint:disable:next line_length
         message.textField.placeholder = "Introduce yourself to your future team mates by telling them a bit more about yourself. Note that this will help them approve of decline your application"
     }
 

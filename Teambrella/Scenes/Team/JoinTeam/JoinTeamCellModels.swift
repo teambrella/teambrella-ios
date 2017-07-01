@@ -13,25 +13,25 @@ protocol JoinTeamCellModel {
 }
 
 struct JoinTeamGreetingCellModel: JoinTeamCellModel {
-    static var cellID = "JoinTeamGreetingCell"
+    static var cellID = JoinTeamGreetingCell.cellID
 }
 
 struct JoinTeamInfoCellModel: JoinTeamCellModel {
-    static var cellID = "JoinTeamGreetingCell"
+    static var cellID = JoinTeamInfoCell.cellID
 }
 
 struct JoinTeamPersonalCellModel: JoinTeamCellModel {
-    static var cellID = "JoinTeamGreetingCell"
+    static var cellID = JoinTeamPersonalCell.cellID
 }
 
 struct JoinTeamItemCellModel: JoinTeamCellModel {
-    static var cellID = "JoinTeamGreetingCell"
+    static var cellID = JoinTeamItemCell.cellID
 }
 
 struct JoinTeamMessageCellModel: JoinTeamCellModel {
-    static var cellID = "JoinTeamGreetingCell"
+    static var cellID = JoinTeamMessageCell.cellID
 }
 
 struct JoinTeamTermsCellModel: JoinTeamCellModel {
-    static var cellID = "JoinTeamGreetingCell"
+    static var cellID = JoinTeamTermsCell.cellID
 }

@@ -103,16 +103,9 @@
             <connections>
                 <outlet property="bottomLabel" destination="pfQ-1c-CvM" id="hmx-2q-Ues"/>
                 <outlet property="headerLabel" destination="anr-8I-Q61" id="k4G-va-5wP"/>
-                <outlet property="textBox" destination="1b4-2s-Wsy" id="q0I-tm-aHr"/>
                 <outlet property="textField" destination="1b4-2s-Wsy" id="ipt-nf-Kx1"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </collectionViewCell>
-        <view contentMode="scaleToFill" id="KJS-YT-tdt">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="213" y="59"/>
-        </view>
     </objects>
 </document>
