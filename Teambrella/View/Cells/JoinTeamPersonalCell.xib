@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="JoinTeamPersonalCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="326" height="368"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="326" height="368"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZg-aP-0CY">
+                        <rect key="frame" x="0.0" y="0.0" width="326" height="368"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="headerLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="en8-6I-ojH">
+                                <rect key="frame" x="20" y="20" width="82" height="17"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
+                                <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4A3-xX-7pE">
+                                <rect key="frame" x="20" y="73" width="286" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="286" id="AFB-cH-Xr0"/>
+                                    <constraint firstAttribute="height" constant="39" id="gj0-qY-c7i"/>
+                                </constraints>
+                                <color key="textColor" red="0.23529411764705882" green="0.27843137254901962" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dUx-Nf-I3B">
+                                <rect key="frame" x="20" y="148" width="286" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="286" id="Loy-1l-Kzn"/>
+                                    <constraint firstAttribute="height" constant="39" id="OnG-g7-cZc"/>
+                                </constraints>
+                                <color key="textColor" red="0.23529411764705882" green="0.27843137254901962" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kkf-l9-WA4">
+                                <rect key="frame" x="20" y="307" width="286" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="286" id="JW3-IR-90C"/>
+                                    <constraint firstAttribute="height" constant="39" id="z21-sG-m71"/>
+                                </constraints>
+                                <color key="textColor" red="0.23529411764705882" green="0.27843137254901962" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u9O-BC-dc0">
+                                <rect key="frame" x="20" y="228" width="286" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="gFf-TB-8Xo"/>
+                                    <constraint firstAttribute="width" constant="286" id="kLU-LB-RJA"/>
+                                </constraints>
+                                <color key="textColor" red="0.23529411764705882" green="0.27843137254901962" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GsW-Zl-wL7">
+                                <rect key="frame" x="286" y="18.5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="M2m-7H-4Lo"/>
+                                    <constraint firstAttribute="width" constant="20" id="osF-rZ-uR0"/>
+                                </constraints>
+                                <state key="normal" image="info"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mk-S9-Wft">
+                                <rect key="frame" x="20" y="53.5" width="26" height="12.5"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
+                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dUx-Nf-I3B" firstAttribute="leading" secondItem="4A3-xX-7pE" secondAttribute="leading" id="0Qp-rz-wRQ"/>
+                            <constraint firstItem="Kkf-l9-WA4" firstAttribute="leading" secondItem="u9O-BC-dc0" secondAttribute="leading" id="5G8-Ts-fwl"/>
+                            <constraint firstAttribute="trailing" secondItem="GsW-Zl-wL7" secondAttribute="trailing" constant="20" id="T8H-QK-kts"/>
+                            <constraint firstItem="Kkf-l9-WA4" firstAttribute="top" secondItem="u9O-BC-dc0" secondAttribute="bottom" constant="40" id="WFc-67-ood"/>
+                            <constraint firstItem="GsW-Zl-wL7" firstAttribute="centerY" secondItem="en8-6I-ojH" secondAttribute="centerY" id="Y2s-eo-fb1"/>
+                            <constraint firstItem="1mk-S9-Wft" firstAttribute="leading" secondItem="en8-6I-ojH" secondAttribute="leading" id="YwF-5x-jdb"/>
+                            <constraint firstItem="4A3-xX-7pE" firstAttribute="top" secondItem="1mk-S9-Wft" secondAttribute="bottom" constant="7" id="aA6-Io-Pck"/>
+                            <constraint firstItem="u9O-BC-dc0" firstAttribute="top" secondItem="dUx-Nf-I3B" secondAttribute="bottom" constant="41" id="bEw-6T-k2E"/>
+                            <constraint firstItem="en8-6I-ojH" firstAttribute="top" secondItem="bZg-aP-0CY" secondAttribute="top" constant="20" id="gYH-GO-GdO"/>
+                            <constraint firstItem="4A3-xX-7pE" firstAttribute="leading" secondItem="en8-6I-ojH" secondAttribute="leading" id="kRI-UN-Y33"/>
+                            <constraint firstItem="4A3-xX-7pE" firstAttribute="top" secondItem="en8-6I-ojH" secondAttribute="bottom" constant="36" id="nY7-ZZ-Lfs"/>
+                            <constraint firstItem="en8-6I-ojH" firstAttribute="leading" secondItem="bZg-aP-0CY" secondAttribute="leading" constant="20" id="r4N-VH-Vci"/>
+                            <constraint firstItem="dUx-Nf-I3B" firstAttribute="top" secondItem="4A3-xX-7pE" secondAttribute="bottom" constant="36" id="ud3-nj-YDz"/>
+                            <constraint firstItem="u9O-BC-dc0" firstAttribute="leading" secondItem="dUx-Nf-I3B" secondAttribute="leading" id="wAT-BN-1nC"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="bZg-aP-0CY" secondAttribute="bottom" id="Fos-yb-nad"/>
+                <constraint firstItem="bZg-aP-0CY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="N6z-Bx-Vcg"/>
+                <constraint firstItem="bZg-aP-0CY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tfe-LS-6qS"/>
+                <constraint firstAttribute="trailing" secondItem="bZg-aP-0CY" secondAttribute="trailing" id="xJf-ig-gT3"/>
+            </constraints>
+        </collectionViewCell>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="343-eb-Yjr">
+            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <nil key="textColor"/>
+            <nil key="highlightedColor"/>
+        </label>
+    </objects>
+    <resources>
+        <image name="info" width="20" height="20"/>
+    </resources>
+</document>
