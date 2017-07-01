@@ -10,11 +10,13 @@ import Foundation
 
 struct JoinTeamCellBuilder {
     static func registerCells(in collectionView: UICollectionView) {
-        
+        collectionView.register(JoinTeamGreetingCell.nib, forCellWithReuseIdentifier: JoinTeamGreetingCell.cellID)
     }
     
     static func populate(cell: UICollectionViewCell, with model: JoinTeamCellModel) {
-    
+        if let cell = cell as? JoinTeamGreetingCell {
+            cell.avatar.image = #imageLiteral(resourceName: "teammateF")
+        }
     }
     
 }

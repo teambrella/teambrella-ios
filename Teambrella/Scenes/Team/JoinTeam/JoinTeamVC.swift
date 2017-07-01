@@ -27,15 +27,17 @@ class JoinTeamVC: UIViewController, Routable {
     var dataSource: JoinTeamDataSource = JoinTeamDataSource()
     
     var isAvatarSmall: Bool = false
+    var currentItem: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         JoinTeamCellBuilder.registerCells(in: collectionView)
         dataSource.createFakeCells()
+        teamImageView.layer.cornerRadius = 32
     }
 
     @IBAction func tapClose(_ sender: UIButton) {
-        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func tapInfo(_ sender: UIButton) {
@@ -43,7 +45,11 @@ class JoinTeamVC: UIViewController, Routable {
     }
     
     @IBAction func tapGetStarted(_ sender: UIButton) {
-        
+        currentItem = currentItem < dataSource.count - 1 ? currentItem + 1 : 0
+        collectionView.scrollToItem(at: IndexPath(row: currentItem, section: 0),
+                                    at: .centeredHorizontally,
+                                    animated: true)
+        pageControl.currentPage = currentItem
     }
     
     func setAvatarSizeToSmall(_ small: Bool) {
@@ -60,9 +66,18 @@ class JoinTeamVC: UIViewController, Routable {
         teamImageWidthConstraint.constant = size
         teamImageTopOffsetConstraint.constant = offset
         if animated {
-            UIView.animate(withDuration: 0.3, animations: { 
+            UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
+            let animation = CABasicAnimation(keyPath: "cornerRadius")
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            animation.fromValue = teamImageView.layer.cornerRadius
+            animation.toValue = size / 2
+            animation.duration = 0.3
+            teamImageView.layer.cornerRadius = size / 2
+            teamImageView.layer.add(animation, forKey: "cornerRadius")
+        } else {
+            teamImageView.layer.cornerRadius = size / 2
         }
     }
     
@@ -85,6 +100,7 @@ extension JoinTeamVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        pageControl.numberOfPages = dataSource.count
         return dataSource.count
     }
     
@@ -102,13 +118,13 @@ extension JoinTeamVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         JoinTeamCellBuilder.populate(cell: cell, with: dataSource[indexPath])
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplaySupplementaryView view: UICollectionReusableView,
-                        forElementKind elementKind: String,
-                        at indexPath: IndexPath) {
         
+        if let cell = cell as? JoinTeamGreetingCell {
+            let size = self.collectionView(collectionView,
+                                      layout: collectionView.collectionViewLayout,
+                                      sizeForItemAt: indexPath)
+            cell.radarView.centerY = 85 - size.height
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

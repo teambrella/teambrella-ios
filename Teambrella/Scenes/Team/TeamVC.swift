@@ -43,7 +43,8 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
     }
     
     func tapTeam(button: UIButton) {
-        service.router.presentJoinTeam()
+        service.router.showJoinTeam(in: self)
+        //service.router.presentJoinTeam()
         /*
         let alert = UIAlertController(title: "Select your team",
                                       message: "Please select your team",
