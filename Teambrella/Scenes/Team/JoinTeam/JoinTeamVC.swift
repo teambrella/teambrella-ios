@@ -20,7 +20,7 @@ class JoinTeamVC: UIViewController, Routable {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var getStartedButton: PlainButton!
-
+    
     @IBOutlet var teamImageWidthConstraint: NSLayoutConstraint!
     @IBOutlet var teamImageTopOffsetConstraint: NSLayoutConstraint!
     
@@ -33,9 +33,9 @@ class JoinTeamVC: UIViewController, Routable {
         super.viewDidLoad()
         JoinTeamCellBuilder.registerCells(in: collectionView)
         dataSource.createFakeCells()
-        teamImageView.layer.cornerRadius = 32
+        teamImageView.layer.cornerRadius = 10
     }
-
+    
     @IBAction func tapClose(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -54,43 +54,49 @@ class JoinTeamVC: UIViewController, Routable {
     
     func setAvatarSizeToSmall(_ small: Bool) {
         if small {
-            resizeAvatar(to: 32, offset: 27, animated: true)
+            resizeAvatar(to: 32, offset: 27, cornerRadius: 4, animated: true)
             isAvatarSmall = true
         } else {
-            resizeAvatar(to: 64, offset: 23, animated: true)
+            resizeAvatar(to: 64, offset: 23, cornerRadius: 10, animated: true)
             isAvatarSmall = false
         }
     }
     
-    func resizeAvatar(to size: CGFloat, offset: CGFloat, animated: Bool) {
+    func resizeAvatar(to size: CGFloat, offset: CGFloat, cornerRadius: CGFloat, animated: Bool) {
         teamImageWidthConstraint.constant = size
         teamImageTopOffsetConstraint.constant = offset
         if animated {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
+            
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 0.5,
+                           initialSpringVelocity: 15,
+                           options: [],
+                           animations: {
+                            self.view.layoutIfNeeded()
             })
             let animation = CABasicAnimation(keyPath: "cornerRadius")
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
             animation.fromValue = teamImageView.layer.cornerRadius
-            animation.toValue = size / 2
-            animation.duration = 0.3
-            teamImageView.layer.cornerRadius = size / 2
+            animation.toValue = cornerRadius
+            animation.duration = 0.5
+            teamImageView.layer.cornerRadius = cornerRadius
             teamImageView.layer.add(animation, forKey: "cornerRadius")
         } else {
-            teamImageView.layer.cornerRadius = size / 2
+            teamImageView.layer.cornerRadius = cornerRadius
         }
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -121,8 +127,8 @@ extension JoinTeamVC: UICollectionViewDelegate {
         
         if let cell = cell as? JoinTeamGreetingCell {
             let size = self.collectionView(collectionView,
-                                      layout: collectionView.collectionViewLayout,
-                                      sizeForItemAt: indexPath)
+                                           layout: collectionView.collectionViewLayout,
+                                           sizeForItemAt: indexPath)
             cell.radarView.centerY = 85 - size.height
         }
     }

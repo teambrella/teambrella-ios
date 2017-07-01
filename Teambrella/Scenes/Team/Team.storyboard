@@ -250,7 +250,7 @@
                                             <action selector="tapInfo:" destination="8PG-Ou-fsI" eventType="touchUpInside" id="VK3-gy-ZQ9"/>
                                         </connections>
                                     </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mIr-Xs-Sdi">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mIr-Xs-Sdi">
                                         <rect key="frame" x="0.0" y="220" width="375" height="343"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lA3-EL-YQS">
@@ -270,14 +270,14 @@
                                         <color key="pageIndicatorTintColor" red="0.80784313730000001" green="0.84705882349999995" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="currentPageIndicatorTintColor" red="0.28627450980000002" green="0.34901960780000002" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </pageControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deductable Savers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nV3-Tr-loV">
-                                        <rect key="frame" x="100" y="158" width="175" height="24.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deductible Savers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nV3-Tr-loV">
+                                        <rect key="frame" x="103" y="136" width="169.5" height="25"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ST. PETERSBURG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQL-6r-Q4A">
-                                        <rect key="frame" x="140.5" y="187" width="95.5" height="15"/>
+                                        <rect key="frame" x="140.5" y="165" width="95.5" height="15"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="0.80431292808219179" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -285,7 +285,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="nV3-Tr-loV" firstAttribute="top" secondItem="Yyz-9p-QeW" secondAttribute="bottom" constant="34" id="1Vy-we-KCO"/>
+                                    <constraint firstItem="nV3-Tr-loV" firstAttribute="top" secondItem="Yyz-9p-QeW" secondAttribute="bottom" constant="12" id="1Vy-we-KCO"/>
                                     <constraint firstItem="HQL-6r-Q4A" firstAttribute="centerX" secondItem="XEQ-jQ-Qk5" secondAttribute="centerX" id="1gT-SC-0dy"/>
                                     <constraint firstAttribute="trailing" secondItem="mIr-Xs-Sdi" secondAttribute="trailing" id="2qn-Nc-qCz"/>
                                     <constraint firstItem="CTM-9x-rKy" firstAttribute="top" secondItem="XEQ-jQ-Qk5" secondAttribute="top" constant="16" id="6Dd-ST-qHh"/>
