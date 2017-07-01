@@ -16,6 +16,7 @@ class JoinTeamGreetingCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        greetingLabel.text = "Hi Frank!"
         let boldString = "Deductable Savers "
         let nonBoldString = "team are the best team for insuring olders cars. We’re just going to need a few details."
         let resultString = boldString + nonBoldString

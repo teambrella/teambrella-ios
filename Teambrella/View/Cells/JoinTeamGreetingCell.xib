@@ -13,6 +13,9 @@
         <array key="AkkuratPro-Bold.otf">
             <string>AkkuratPro-Bold</string>
         </array>
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -28,9 +31,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="326" height="313"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Frank!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18L-nK-8KS">
-                                <rect key="frame" x="123" y="159" width="80" height="23.5"/>
+                                <rect key="frame" x="120.5" y="159" width="85" height="24.5"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="20"/>
                                 <color key="textColor" red="0.23529411764705882" green="0.27843137254901962" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CwX-fv-5kb" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="183.5" width="326" height="129.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oz-DO-n8Y">
+                                <rect key="frame" x="31" y="196.5" width="264" height="17"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
+                                <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nY6-xN-rHy" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
@@ -40,26 +61,6 @@
                                     <constraint firstAttribute="width" secondItem="nY6-xN-rHy" secondAttribute="height" multiplier="1:1" id="tNL-tS-I7u"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oz-DO-n8Y">
-                                <rect key="frame" x="31" y="195.5" width="264" height="50.5"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Deductable Savers">
-                                        <attributes>
-                                            <color key="NSColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="14" name=".SFNSText"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" team are the best team for insuring olders cars. We’re just going to need a few details.">
-                                        <attributes>
-                                            <color key="NSColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -67,7 +68,11 @@
                             <constraint firstItem="8oz-DO-n8Y" firstAttribute="leading" secondItem="MYb-Is-3hV" secondAttribute="leading" constant="31" id="9DI-es-IlX"/>
                             <constraint firstItem="nY6-xN-rHy" firstAttribute="top" secondItem="MYb-Is-3hV" secondAttribute="top" constant="41" id="MeU-2V-7jJ"/>
                             <constraint firstItem="18L-nK-8KS" firstAttribute="centerX" secondItem="MYb-Is-3hV" secondAttribute="centerX" id="Oyh-NM-YgR"/>
+                            <constraint firstAttribute="bottom" secondItem="CwX-fv-5kb" secondAttribute="bottom" id="PH8-Ni-uFo"/>
                             <constraint firstItem="nY6-xN-rHy" firstAttribute="centerX" secondItem="MYb-Is-3hV" secondAttribute="centerX" id="Shu-zg-l25"/>
+                            <constraint firstItem="CwX-fv-5kb" firstAttribute="leading" secondItem="MYb-Is-3hV" secondAttribute="leading" id="Vml-zB-dR4"/>
+                            <constraint firstItem="CwX-fv-5kb" firstAttribute="top" secondItem="18L-nK-8KS" secondAttribute="bottom" id="kpD-hr-3Ay"/>
+                            <constraint firstAttribute="trailing" secondItem="CwX-fv-5kb" secondAttribute="trailing" id="l0b-mY-Nkz"/>
                             <constraint firstAttribute="trailing" secondItem="8oz-DO-n8Y" secondAttribute="trailing" constant="31" id="n3e-Cz-nuP"/>
                             <constraint firstItem="8oz-DO-n8Y" firstAttribute="top" secondItem="18L-nK-8KS" secondAttribute="bottom" constant="13" id="umA-6w-Isd"/>
                             <constraint firstItem="18L-nK-8KS" firstAttribute="top" secondItem="nY6-xN-rHy" secondAttribute="bottom" constant="30" id="xGA-nl-0SC"/>

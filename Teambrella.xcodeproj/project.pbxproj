@@ -287,6 +287,12 @@
 		94C89AFD1F0278FB00C6D8F7 /* MeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C89AFB1F0278FB00C6D8F7 /* MeCell.swift */; };
 		94C89AFE1F0278FB00C6D8F7 /* MeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C89AFC1F0278FB00C6D8F7 /* MeCell.xib */; };
 		94C89B001F02AA8100C6D8F7 /* TeamEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C89AFF1F02AA8100C6D8F7 /* TeamEntity.swift */; };
+		94E325B91F07DA9400B2D8C8 /* JoinTeamInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E325B71F07DA9400B2D8C8 /* JoinTeamInfoCell.swift */; };
+		94E325BA1F07DA9400B2D8C8 /* JoinTeamInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E325B81F07DA9400B2D8C8 /* JoinTeamInfoCell.xib */; };
+		94E325BD1F07E36E00B2D8C8 /* JoinTeamPersonalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E325BB1F07E36E00B2D8C8 /* JoinTeamPersonalCell.swift */; };
+		94E325BE1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E325BC1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib */; };
+		94E325C01F07E76300B2D8C8 /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E325BF1F07E76300B2D8C8 /* LabeledTextField.swift */; };
+		94E325C21F07E78E00B2D8C8 /* LabeledTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E325C11F07E78E00B2D8C8 /* LabeledTextField.xib */; };
 		CBDFE00DB06001B8DB766097 /* TeammateLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEE452041D08B61C13CF8 /* TeammateLike.swift */; };
 		CBDFE3B8E39275922CDCC041 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE16BB5E7B5B758559237 /* String.swift */; };
 		CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */; };
@@ -610,6 +616,12 @@
 		94C89AFB1F0278FB00C6D8F7 /* MeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeCell.swift; path = View/Cells/MeCell.swift; sourceTree = "<group>"; };
 		94C89AFC1F0278FB00C6D8F7 /* MeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MeCell.xib; path = View/Cells/MeCell.xib; sourceTree = "<group>"; };
 		94C89AFF1F02AA8100C6D8F7 /* TeamEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamEntity.swift; path = Model/Entities/TeamEntity.swift; sourceTree = "<group>"; };
+		94E325B71F07DA9400B2D8C8 /* JoinTeamInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamInfoCell.swift; path = View/Cells/JoinTeamInfoCell.swift; sourceTree = "<group>"; };
+		94E325B81F07DA9400B2D8C8 /* JoinTeamInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinTeamInfoCell.xib; path = View/Cells/JoinTeamInfoCell.xib; sourceTree = "<group>"; };
+		94E325BB1F07E36E00B2D8C8 /* JoinTeamPersonalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamPersonalCell.swift; path = View/Cells/JoinTeamPersonalCell.swift; sourceTree = "<group>"; };
+		94E325BC1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinTeamPersonalCell.xib; path = View/Cells/JoinTeamPersonalCell.xib; sourceTree = "<group>"; };
+		94E325BF1F07E76300B2D8C8 /* LabeledTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabeledTextField.swift; path = View/LabeledTextField.swift; sourceTree = "<group>"; };
+		94E325C11F07E78E00B2D8C8 /* LabeledTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LabeledTextField.xib; path = View/LabeledTextField.xib; sourceTree = "<group>"; };
 		BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDFE16BB5E7B5B758559237 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Helpers/Extensions/String.swift; sourceTree = "<group>"; };
 		CBDFEA3415104DFFD0D751C7 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerService.swift; path = Model/Services/Networking/ServerService.swift; sourceTree = "<group>"; };
@@ -1233,6 +1245,12 @@
 				6D69DA321EFD6CB700DED5CE /* TeamFeedCell.xib */,
 				944504C11F07CFAE00CF443F /* JoinTeamGreetingCell.swift */,
 				944504C21F07CFAE00CF443F /* JoinTeamGreetingCell.xib */,
+				94E325B71F07DA9400B2D8C8 /* JoinTeamInfoCell.swift */,
+				94E325B81F07DA9400B2D8C8 /* JoinTeamInfoCell.xib */,
+				94E325BB1F07E36E00B2D8C8 /* JoinTeamPersonalCell.swift */,
+				94E325BC1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib */,
+				94E325BF1F07E76300B2D8C8 /* LabeledTextField.swift */,
+				94E325C11F07E78E00B2D8C8 /* LabeledTextField.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1523,6 +1541,7 @@
 				6D1C039F1EB8D37D004AED30 /* Sample.storyboard in Resources */,
 				6D69D9ED1EFBFF2E00DED5CE /* NeedHelpView.xib in Resources */,
 				6D69DA341EFD6CB700DED5CE /* TeamFeedCell.xib in Resources */,
+				94E325BA1F07DA9400B2D8C8 /* JoinTeamInfoCell.xib in Resources */,
 				6DDE95811EE84FFD0019DA47 /* ClaimDetailsCell.xib in Resources */,
 				6D097E971E9D19F400E77DAB /* Test.strings in Resources */,
 				6DEE678F1ED9CF070098EDB3 /* ItemCard.xib in Resources */,
@@ -1538,6 +1557,7 @@
 				6DB8122B1EE715DA00B202CE /* DiscussionCell.xib in Resources */,
 				6D9CC6241ED5EA34007F936E /* Home.storyboard in Resources */,
 				6D0E056E1EFEC24D00604981 /* ReportDescriptionCell.xib in Resources */,
+				94E325C21F07E78E00B2D8C8 /* LabeledTextField.xib in Resources */,
 				6DA714EF1EE00CFB00F39EBE /* NumberBar.xib in Resources */,
 				6D9C808F1EDF17D000FB8C2C /* AkkuratPro-Regular.otf in Resources */,
 				6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */,
@@ -1552,6 +1572,7 @@
 				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
 				6DE793301EF810DB005F4508 /* ChatCell.xib in Resources */,
 				6D0E057A1EFEC7A400604981 /* ReportTextFieldCell.xib in Resources */,
+				94E325BE1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib in Resources */,
 				6D9C808E1EDF17D000FB8C2C /* AkkuratPro-Bold.otf in Resources */,
 				6D69DA0F1EFC458C00DED5CE /* Me.strings in Resources */,
 				6D73C6E01EBB36A700A2C0F8 /* Transactions.storyboard in Resources */,
@@ -1825,6 +1846,7 @@
 				6D83EC8E1EDD7230000412DC /* MainRouter.swift in Sources */,
 				6D6DA26F1EE21F9800307C73 /* Label.swift in Sources */,
 				6DA714F81EE02BF100F39EBE /* TeammateDiscussionCell.swift in Sources */,
+				94E325B91F07DA9400B2D8C8 /* JoinTeamInfoCell.swift in Sources */,
 				6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */,
 				6D69D9F41EFC03A600DED5CE /* ProxyForCellModel.swift in Sources */,
 				6D6DA26C1EE21F7A00307C73 /* LoginDetailsRouter.swift in Sources */,
@@ -1840,6 +1862,7 @@
 				6D466AA21ED07CF1001BC579 /* BlockchainStorage.swift in Sources */,
 				6D9CC6431ED7375E007F936E /* GradientView.swift in Sources */,
 				6D6DA2671EE21F2D00307C73 /* MembersDataSource.swift in Sources */,
+				94E325BD1F07E36E00B2D8C8 /* JoinTeamPersonalCell.swift in Sources */,
 				6D69DA1E1EFD185E00DED5CE /* WalletCellBulider.swift in Sources */,
 				94C89AD41EFD728000C6D8F7 /* WalletDetailsVC.swift in Sources */,
 				6DA475D41E8BB95200B56D9B /* TeambrellaRequest.swift in Sources */,
@@ -1922,6 +1945,7 @@
 				6D0D2AE31EFBD45F0095284C /* ProxyForVC.swift in Sources */,
 				6D9CC6101ED2E230007F936E /* LoginVC.swift in Sources */,
 				6D69D9E31EFBEE8D00DED5CE /* MyProxiesDataSource.swift in Sources */,
+				94E325C01F07E76300B2D8C8 /* LabeledTextField.swift in Sources */,
 				6D0D2ADE1EFBC41D0095284C /* ButtonBarPagerTabStripViewController.swift in Sources */,
 				6D69D9FF1EFC32CB00DED5CE /* UserIndexCell.swift in Sources */,
 				6DDE95751EE835360019DA47 /* ClaimCellBuilder.swift in Sources */,
