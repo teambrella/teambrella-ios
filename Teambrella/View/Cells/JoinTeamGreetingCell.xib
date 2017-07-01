@@ -31,13 +31,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="326" height="313"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Frank!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18L-nK-8KS">
-                                <rect key="frame" x="123" y="159" width="80" height="23.5"/>
+                                <rect key="frame" x="120.5" y="159" width="85" height="24.5"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="20"/>
                                 <color key="textColor" red="0.23529411764705882" green="0.27843137254901962" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CwX-fv-5kb" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="182.5" width="326" height="130.5"/>
+                                <rect key="frame" x="0.0" y="183.5" width="326" height="129.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -49,7 +49,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oz-DO-n8Y">
-                                <rect key="frame" x="31" y="195.5" width="264" height="17"/>
+                                <rect key="frame" x="31" y="196.5" width="264" height="17"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                 <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
