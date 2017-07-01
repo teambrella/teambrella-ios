@@ -58,6 +58,12 @@ final class MainRouter {
         }
     }
     
+    func presentJoinTeam() {
+        guard let vc = JoinTeamVC.instantiate() as? JoinTeamVC else { fatalError("Error instantiating") }
+        
+        service.router.push(vc: vc)
+    }
+    
     /*
      func pushOrReuse(vc: UIViewController,
      animated: Bool = true,

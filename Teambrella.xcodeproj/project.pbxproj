@@ -16,6 +16,7 @@
 		6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC9A1F06A6F800B01AAF /* SlashView.swift */; };
 		6D02AC9E1F06A70800B01AAF /* VotingScrollerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC9D1F06A70800B01AAF /* VotingScrollerCell.swift */; };
 		6D02ACA01F06A98F00B01AAF /* TeammateVoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC9F1F06A98F00B01AAF /* TeammateVoteCell.swift */; };
+		6D02ACA21F07D3A400B01AAF /* JoinTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02ACA11F07D3A400B01AAF /* JoinTeamVC.swift */; };
 		6D097E971E9D19F400E77DAB /* Test.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D097E951E9D19F400E77DAB /* Test.strings */; };
 		6D097E9C1E9D1AD200E77DAB /* Test.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 6D097E9A1E9D1AD200E77DAB /* Test.stringsdict */; };
 		6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097E9E1E9D215500E77DAB /* ClaimState.swift */; };
@@ -52,6 +53,10 @@
 		6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A21EB8D4D6004AED30 /* NSObject.swift */; };
 		6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C23871E8EA99F009B05A3 /* Data.swift */; };
 		6D2A497A1EDEF78C00A1111C /* MembersCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */; };
+		6D3141CC1F07DD7400C285DA /* JoinTeamDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141CB1F07DD7400C285DA /* JoinTeamDataSource.swift */; };
+		6D3141CE1F07DDEF00C285DA /* JoinTeamCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141CD1F07DDEF00C285DA /* JoinTeamCellModels.swift */; };
+		6D3141D01F07DF7000C285DA /* JoinTeamValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141CF1F07DF7000C285DA /* JoinTeamValidator.swift */; };
+		6D3141D21F07DF9D00C285DA /* JoinTeamCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */; };
 		6D35EFC51EAF8AB700696B42 /* TransactionsresultTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFC41EAF8AB700696B42 /* TransactionsresultTVC.swift */; };
 		6D35EFC91EAF931000696B42 /* TransactionsTeammateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFC81EAF931000696B42 /* TransactionsTeammateVC.swift */; };
 		6D35EFCB1EAF982A00696B42 /* TeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFCA1EAF982A00696B42 /* TeamDetailsVC.swift */; };
@@ -324,6 +329,7 @@
 		6D02AC9A1F06A6F800B01AAF /* SlashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlashView.swift; path = View/SlashView.swift; sourceTree = "<group>"; };
 		6D02AC9D1F06A70800B01AAF /* VotingScrollerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingScrollerCell.swift; path = View/Cells/VotingScrollerCell.swift; sourceTree = "<group>"; };
 		6D02AC9F1F06A98F00B01AAF /* TeammateVoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateVoteCell.swift; path = Scenes/Team/Members/TeammateVoteCell.swift; sourceTree = "<group>"; };
+		6D02ACA11F07D3A400B01AAF /* JoinTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamVC.swift; path = Scenes/Team/JoinTeam/JoinTeamVC.swift; sourceTree = "<group>"; };
 		6D097E931E9D181A00E77DAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		6D097E961E9D19F400E77DAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Test.strings; sourceTree = "<group>"; };
 		6D097E981E9D19FC00E77DAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Test.strings; sourceTree = "<group>"; };
@@ -364,6 +370,10 @@
 		6D1C03A21EB8D4D6004AED30 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSObject.swift; path = Helpers/Extensions/NSObject.swift; sourceTree = "<group>"; };
 		6D1C23871E8EA99F009B05A3 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Helpers/Extensions/Data.swift; sourceTree = "<group>"; };
 		6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersCellBuilder.swift; path = Scenes/Team/Members/MembersCellBuilder.swift; sourceTree = "<group>"; };
+		6D3141CB1F07DD7400C285DA /* JoinTeamDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamDataSource.swift; path = Scenes/Team/JoinTeam/JoinTeamDataSource.swift; sourceTree = "<group>"; };
+		6D3141CD1F07DDEF00C285DA /* JoinTeamCellModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamCellModels.swift; path = Scenes/Team/JoinTeam/JoinTeamCellModels.swift; sourceTree = "<group>"; };
+		6D3141CF1F07DF7000C285DA /* JoinTeamValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamValidator.swift; path = Scenes/Team/JoinTeam/JoinTeamValidator.swift; sourceTree = "<group>"; };
+		6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamCellBuilder.swift; path = Scenes/Team/JoinTeam/JoinTeamCellBuilder.swift; sourceTree = "<group>"; };
 		6D35EFC41EAF8AB700696B42 /* TransactionsresultTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsresultTVC.swift; path = Scenes/TransactionsTest/TransactionsresultTVC.swift; sourceTree = "<group>"; };
 		6D35EFC81EAF931000696B42 /* TransactionsTeammateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsTeammateVC.swift; path = Scenes/TransactionsTest/TransactionsTeammateVC.swift; sourceTree = "<group>"; };
 		6D35EFCA1EAF982A00696B42 /* TeamDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamDetailsVC.swift; path = Scenes/TransactionsTest/TeamDetailsVC.swift; sourceTree = "<group>"; };
@@ -679,6 +689,18 @@
 			name = VotingCell;
 			sourceTree = "<group>";
 		};
+		6D02ACA31F07D3AC00B01AAF /* JoinTeam */ = {
+			isa = PBXGroup;
+			children = (
+				6D02ACA11F07D3A400B01AAF /* JoinTeamVC.swift */,
+				6D3141CB1F07DD7400C285DA /* JoinTeamDataSource.swift */,
+				6D3141CD1F07DDEF00C285DA /* JoinTeamCellModels.swift */,
+				6D3141CF1F07DF7000C285DA /* JoinTeamValidator.swift */,
+				6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */,
+			);
+			name = JoinTeam;
+			sourceTree = "<group>";
+		};
 		6D097E991E9D1A0000E77DAB /* Localizations */ = {
 			isa = PBXGroup;
 			children = (
@@ -933,6 +955,7 @@
 				6D9CC6261ED5EA81007F936E /* Team.storyboard */,
 				6D9CC6341ED72252007F936E /* TeamVC.swift */,
 				6D83EC8F1EDD765F000412DC /* TeamRouter.swift */,
+				6D02ACA31F07D3AC00B01AAF /* JoinTeam */,
 			);
 			name = Team;
 			sourceTree = "<group>";
@@ -1795,6 +1818,7 @@
 				6D9CC6401ED72E19007F936E /* RulesVC.swift in Sources */,
 				6D6DA2681EE21F2D00307C73 /* MembersRouter.swift in Sources */,
 				6DEE67951EDC12A70098EDB3 /* TeammateCandidateCell.swift in Sources */,
+				6D3141CC1F07DD7400C285DA /* JoinTeamDataSource.swift in Sources */,
 				6D02AC971F06A6B800B01AAF /* VotingScrollerVC.swift in Sources */,
 				6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */,
 				6DEE67911ED9CF160098EDB3 /* ItemCard.swift in Sources */,
@@ -1842,10 +1866,12 @@
 				6D466AAA1ED07CF1001BC579 /* Tx.swift in Sources */,
 				6D35EFCB1EAF982A00696B42 /* TeamDetailsVC.swift in Sources */,
 				6D69D9E71EFBF2C500DED5CE /* MyProxiesCellBuilder.swift in Sources */,
+				6D3141D01F07DF7000C285DA /* JoinTeamValidator.swift in Sources */,
 				6D9CC6551ED98E66007F936E /* NumberView.swift in Sources */,
 				6D35EFC91EAF931000696B42 /* TransactionsTeammateVC.swift in Sources */,
 				6D69DA041EFC343F00DED5CE /* UserIndexCellModel.swift in Sources */,
 				6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */,
+				6D3141CE1F07DDEF00C285DA /* JoinTeamCellModels.swift in Sources */,
 				6D466AA51ED07CF1001BC579 /* BtcAddress.swift in Sources */,
 				6D0E05801F01033700604981 /* ReportCellBuilder.swift in Sources */,
 				6DE793341EF83AD2005F4508 /* ChatInputView.swift in Sources */,
@@ -1918,6 +1944,7 @@
 				6D69D9FF1EFC32CB00DED5CE /* UserIndexCell.swift in Sources */,
 				6DDE95751EE835360019DA47 /* ClaimCellBuilder.swift in Sources */,
 				6D6DA25A1EE1CA9B00307C73 /* ClaimsDataSource.swift in Sources */,
+				6D02ACA21F07D3A400B01AAF /* JoinTeamVC.swift in Sources */,
 				6D02AC9E1F06A70800B01AAF /* VotingScrollerCell.swift in Sources */,
 				6D6DA25C1EE1CE3100307C73 /* ClaimLike.swift in Sources */,
 				6DA714E71EDF224A00F39EBE /* TeambrellaStyle.swift in Sources */,
@@ -1968,6 +1995,7 @@
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
 				CBDFE00DB06001B8DB766097 /* TeammateLike.swift in Sources */,
 				6D829AA51EB0D6860051F43A /* Random.swift in Sources */,
+				6D3141D21F07DF9D00C285DA /* JoinTeamCellBuilder.swift in Sources */,
 				6D6DA2461EE167BD00307C73 /* CoveredObject.swift in Sources */,
 				6DEC07561E9BF7170078F40E /* ExtendedTeammateEntity.swift in Sources */,
 				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,
