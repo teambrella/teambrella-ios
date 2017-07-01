@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D02AC931F06A6B800B01AAF /* VotingCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC8E1F06A6B800B01AAF /* VotingCellVC.swift */; };
+		6D02AC941F06A6B800B01AAF /* VotingRiskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC8F1F06A6B800B01AAF /* VotingRiskVC.swift */; };
+		6D02AC951F06A6B800B01AAF /* VotingScrollerCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC901F06A6B800B01AAF /* VotingScrollerCellModel.swift */; };
+		6D02AC961F06A6B800B01AAF /* VotingScrollerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC911F06A6B800B01AAF /* VotingScrollerDataSource.swift */; };
+		6D02AC971F06A6B800B01AAF /* VotingScrollerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC921F06A6B800B01AAF /* VotingScrollerVC.swift */; };
+		6D02AC9B1F06A6F800B01AAF /* LabeledRoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC991F06A6F800B01AAF /* LabeledRoundImageView.swift */; };
+		6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC9A1F06A6F800B01AAF /* SlashView.swift */; };
+		6D02AC9E1F06A70800B01AAF /* VotingScrollerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC9D1F06A70800B01AAF /* VotingScrollerCell.swift */; };
+		6D02ACA01F06A98F00B01AAF /* TeammateVoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC9F1F06A98F00B01AAF /* TeammateVoteCell.swift */; };
 		6D097E971E9D19F400E77DAB /* Test.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D097E951E9D19F400E77DAB /* Test.strings */; };
 		6D097E9C1E9D1AD200E77DAB /* Test.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 6D097E9A1E9D1AD200E77DAB /* Test.stringsdict */; };
 		6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097E9E1E9D215500E77DAB /* ClaimState.swift */; };
@@ -306,6 +315,15 @@
 		38D8148D9413F43D44EA5AFF /* Pods-Teambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.release.xcconfig"; sourceTree = "<group>"; };
 		5A31D4B51EC413D689755DD8 /* Pods-TeambrellaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		63613F4D9AC88C9CBF2AB08E /* Pods-TeambrellaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6D02AC8E1F06A6B800B01AAF /* VotingCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingCellVC.swift; path = Scenes/Team/Members/VotingCellVC.swift; sourceTree = "<group>"; };
+		6D02AC8F1F06A6B800B01AAF /* VotingRiskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingRiskVC.swift; path = Scenes/Team/Members/VotingRiskVC.swift; sourceTree = "<group>"; };
+		6D02AC901F06A6B800B01AAF /* VotingScrollerCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingScrollerCellModel.swift; path = Scenes/Team/Members/VotingScrollerCellModel.swift; sourceTree = "<group>"; };
+		6D02AC911F06A6B800B01AAF /* VotingScrollerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingScrollerDataSource.swift; path = Scenes/Team/Members/VotingScrollerDataSource.swift; sourceTree = "<group>"; };
+		6D02AC921F06A6B800B01AAF /* VotingScrollerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingScrollerVC.swift; path = Scenes/Team/Members/VotingScrollerVC.swift; sourceTree = "<group>"; };
+		6D02AC991F06A6F800B01AAF /* LabeledRoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabeledRoundImageView.swift; path = View/LabeledRoundImageView.swift; sourceTree = "<group>"; };
+		6D02AC9A1F06A6F800B01AAF /* SlashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlashView.swift; path = View/SlashView.swift; sourceTree = "<group>"; };
+		6D02AC9D1F06A70800B01AAF /* VotingScrollerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingScrollerCell.swift; path = View/Cells/VotingScrollerCell.swift; sourceTree = "<group>"; };
+		6D02AC9F1F06A98F00B01AAF /* TeammateVoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateVoteCell.swift; path = Scenes/Team/Members/TeammateVoteCell.swift; sourceTree = "<group>"; };
 		6D097E931E9D181A00E77DAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		6D097E961E9D19F400E77DAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Test.strings; sourceTree = "<group>"; };
 		6D097E981E9D19FC00E77DAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Test.strings; sourceTree = "<group>"; };
@@ -647,6 +665,18 @@
 				EFA9DEFD913DBBA749086C64 /* Pods-TeambrellaUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6D02AC981F06A6BF00B01AAF /* VotingCell */ = {
+			isa = PBXGroup;
+			children = (
+				6D02AC8E1F06A6B800B01AAF /* VotingCellVC.swift */,
+				6D02AC8F1F06A6B800B01AAF /* VotingRiskVC.swift */,
+				6D02AC901F06A6B800B01AAF /* VotingScrollerCellModel.swift */,
+				6D02AC911F06A6B800B01AAF /* VotingScrollerDataSource.swift */,
+				6D02AC921F06A6B800B01AAF /* VotingScrollerVC.swift */,
+			);
+			name = VotingCell;
 			sourceTree = "<group>";
 		};
 		6D097E991E9D1A0000E77DAB /* Localizations */ = {
@@ -1123,6 +1153,7 @@
 		6DA714F41EE02B5900F39EBE /* TeammateProfile */ = {
 			isa = PBXGroup;
 			children = (
+				6D02AC981F06A6BF00B01AAF /* VotingCell */,
 				6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */,
 				6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */,
 				6DA714E81EDF371300F39EBE /* TeammateSummaryCell.swift */,
@@ -1132,6 +1163,7 @@
 				6DA714FB1EE05E5900F39EBE /* TeammateStatsCell.swift */,
 				6DA714FD1EE0679500F39EBE /* ContactCellTableCell.swift */,
 				6D6DA2491EE16E8300307C73 /* TeammateCellBuilder.swift */,
+				6D02AC9F1F06A98F00B01AAF /* TeammateVoteCell.swift */,
 			);
 			name = TeammateProfile;
 			sourceTree = "<group>";
@@ -1166,6 +1198,7 @@
 			isa = PBXGroup;
 			children = (
 				6D0E05621EFEBF4800604981 /* Report */,
+				6D02AC9D1F06A70800B01AAF /* VotingScrollerCell.swift */,
 				94C89AFB1F0278FB00C6D8F7 /* MeCell.swift */,
 				94C89AFC1F0278FB00C6D8F7 /* MeCell.xib */,
 				6DB812281EE715DA00B202CE /* DiscussionCell.swift */,
@@ -1241,6 +1274,8 @@
 				6DB812271EE7150700B202CE /* Cells */,
 				6D69D9EE1EFBFF3700DED5CE /* ReusableViews */,
 				6D6DA26D1EE21F9800307C73 /* Label.swift */,
+				6D02AC991F06A6F800B01AAF /* LabeledRoundImageView.swift */,
+				6D02AC9A1F06A6F800B01AAF /* SlashView.swift */,
 				6D6DA26E1EE21F9800307C73 /* StyledLabels.swift */,
 				6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */,
 				6DD7F41C1EB9FD8A001E7733 /* RoundImagesStack.swift */,
@@ -1760,6 +1795,7 @@
 				6D9CC6401ED72E19007F936E /* RulesVC.swift in Sources */,
 				6D6DA2681EE21F2D00307C73 /* MembersRouter.swift in Sources */,
 				6DEE67951EDC12A70098EDB3 /* TeammateCandidateCell.swift in Sources */,
+				6D02AC971F06A6B800B01AAF /* VotingScrollerVC.swift in Sources */,
 				6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */,
 				6DEE67911ED9CF160098EDB3 /* ItemCard.swift in Sources */,
 				6DDE95731EE832170019DA47 /* ClaimDataSource.swift in Sources */,
@@ -1815,6 +1851,7 @@
 				6DE793341EF83AD2005F4508 /* ChatInputView.swift in Sources */,
 				6D9CC6471ED746FF007F936E /* HomeVC.swift in Sources */,
 				6D466AAF1ED07CF1001BC579 /* EntityEnums.swift in Sources */,
+				6D02ACA01F06A98F00B01AAF /* TeammateVoteCell.swift in Sources */,
 				6DEC07521E9BDA310078F40E /* TeammateVC.swift in Sources */,
 				6DF2E8D01EF197D100C8D60B /* MeVC.swift in Sources */,
 				6DE7932C1EF80F41005F4508 /* UniversalChatDataSource.swift in Sources */,
@@ -1827,6 +1864,7 @@
 				6DD7F41D1EB9FD8A001E7733 /* RoundImagesStack.swift in Sources */,
 				6D466AA41ED07CF1001BC579 /* BlockchainStorageFetcher.swift in Sources */,
 				6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */,
+				6D02AC961F06A6B800B01AAF /* VotingScrollerDataSource.swift in Sources */,
 				6DF2E8BC1EF0232700C8D60B /* CellDecorator.swift in Sources */,
 				6DA714FA1EE04D4900F39EBE /* ScaleBar.swift in Sources */,
 				6D69DA061EFC34FE00DED5CE /* UserIndexCellBuilder.swift in Sources */,
@@ -1848,6 +1886,8 @@
 				6D69DA171EFC464000DED5CE /* WalletVC.swift in Sources */,
 				6D9CC63A1ED72675007F936E /* MembersVC.swift in Sources */,
 				6DB8121D1EE6F78700B202CE /* Formatter.swift in Sources */,
+				6D02AC931F06A6B800B01AAF /* VotingCellVC.swift in Sources */,
+				6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */,
 				6D466AAC1ED07CF1001BC579 /* TxOutput.swift in Sources */,
 				6D6DA2521EE1C62E00307C73 /* ClaimsOpenCell.swift in Sources */,
 				6DA1D1031F056DF900F9DE87 /* UIImage.swift in Sources */,
@@ -1878,6 +1918,7 @@
 				6D69D9FF1EFC32CB00DED5CE /* UserIndexCell.swift in Sources */,
 				6DDE95751EE835360019DA47 /* ClaimCellBuilder.swift in Sources */,
 				6D6DA25A1EE1CA9B00307C73 /* ClaimsDataSource.swift in Sources */,
+				6D02AC9E1F06A70800B01AAF /* VotingScrollerCell.swift in Sources */,
 				6D6DA25C1EE1CE3100307C73 /* ClaimLike.swift in Sources */,
 				6DA714E71EDF224A00F39EBE /* TeambrellaStyle.swift in Sources */,
 				6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */,
@@ -1890,16 +1931,19 @@
 				94C89AFD1F0278FB00C6D8F7 /* MeCell.swift in Sources */,
 				6D0D2ADA1EFBB1B80095284C /* Array.swift in Sources */,
 				6D9CC64B1ED83111007F936E /* BrickView.swift in Sources */,
+				6D02AC9B1F06A6F800B01AAF /* LabeledRoundImageView.swift in Sources */,
 				6D83EC891EDD6CA6000412DC /* Routable.swift in Sources */,
 				6D0E05791EFEC7A400604981 /* ReportTextFieldCell.swift in Sources */,
 				6DEE67A51EDC75DA0098EDB3 /* TeammateHeaderView.swift in Sources */,
 				6D0D2AE61EFBD48D0095284C /* UserIndexVC.swift in Sources */,
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
 				6D69DA141EFC461700DED5CE /* CoverageVC.swift in Sources */,
+				6D02AC951F06A6B800B01AAF /* VotingScrollerCellModel.swift in Sources */,
 				6DDE95681EE806F80019DA47 /* ImageGalleryCell.swift in Sources */,
 				6D69DA371EFD6CED00DED5CE /* HeaderWithButton.swift in Sources */,
 				6DB8121B1EE6F1B800B202CE /* EnhancedClaimEntity.swift in Sources */,
 				6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */,
+				6D02AC941F06A6B800B01AAF /* VotingRiskVC.swift in Sources */,
 				6DF2E8BE1EF02F8200C8D60B /* SocketService.swift in Sources */,
 				6DDE95871EE9988D0019DA47 /* PiecewiseFunction.swift in Sources */,
 				6D466AA31ED07CF1001BC579 /* SignHelper.swift in Sources */,

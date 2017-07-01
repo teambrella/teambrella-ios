@@ -21,6 +21,8 @@ struct TeammateCellBuilder {
             populateDiscussion(cell: cell, with: topic, avatar: teammate.avatar)
         } else if let cell = cell as? TeammateStatsCell, let stats = teammate.extended?.stats {
             populateStats(cell: cell, with: stats)
+        } else if let cell = cell as? TeammateVoteCell, let delegate = delegate as? TeammateProfileVC {
+           populateVote(cell: cell, with: teammate, delegate: delegate)
         }
     }
     
@@ -44,6 +46,24 @@ struct TeammateCellBuilder {
         if extended.basic.isProxiedByMe {
             cell.infoLabel.isHidden = false
             cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(extended.basic.name)
+        }
+    }
+    
+    private static func populateVote(cell: TeammateVoteCell, with teammate: TeammateLike, delegate: TeammateProfileVC) {
+        if delegate.riskController == nil {
+            let board = UIStoryboard(name: "Members", bundle: nil)
+            if let vc = board.instantiateViewController(withIdentifier: "VotingRiskVC") as? VotingRiskVC {
+            delegate.riskController = vc
+            }
+        }
+        if let vc = delegate.riskController {
+            vc.view.removeFromSuperview()
+            vc.willMove(toParentViewController: delegate)
+            cell.container.addSubview(vc.view)
+            vc.view.frame = cell.container.bounds
+            vc.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            delegate.addChildViewController(vc)
+            vc.didMove(toParentViewController: delegate)
         }
     }
     

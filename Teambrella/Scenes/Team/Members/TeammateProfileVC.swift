@@ -26,6 +26,7 @@ class TeammateProfileVC: UIViewController, Routable {
     }
     
     var dataSource: TeammateProfileDataSource!
+    var riskController: VotingRiskVC?
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -55,6 +56,13 @@ class TeammateProfileVC: UIViewController, Routable {
     func registerCells() {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
         collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToVotingRisk",
+            let vc = segue.destination as? VotingRiskVC {
+            riskController = vc
+        }
     }
     
 }
@@ -137,6 +145,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: wdt, height: 120)
         case .me:
            return CGSize(width: collectionView.bounds.width, height: 210)
+        case .voting:
+            return CGSize(width: wdt, height: 350)
         }
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 enum TeammateProfileCellType: String {
-    case me, summary, object, stats, contact, dialog
+    case me, summary, object, stats, contact, dialog, voting
 }
 
 enum SocialItemType: String {
@@ -61,6 +61,9 @@ class TeammateProfileDataSource {
     }
     
     private func modifySource() {
+        if teammate.isVoting == true {
+            source.append(.voting)
+        }
         if teammate.extended?.object != nil {
             source.append(.object)
         }
