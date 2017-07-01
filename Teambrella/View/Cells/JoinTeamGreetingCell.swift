@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JoinTeamGreetingCell: UICollectionViewCell {
+class JoinTeamGreetingCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var avatar: RoundImageView!
     @IBOutlet var greetingLabel: UILabel!
     @IBOutlet var textLabel: UILabel!
