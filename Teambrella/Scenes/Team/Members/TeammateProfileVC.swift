@@ -35,6 +35,7 @@ class TeammateProfileVC: UIViewController, Routable {
         registerCells()
         dataSource.loadEntireTeammate { [weak self] in
             self?.collectionView.reloadData()
+            
         }
         
     }
@@ -173,12 +174,12 @@ extension TeammateProfileVC: UITableViewDataSource {
 
 extension TeammateProfileVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? ContactCellTableCell else { return }
-        
+        if let cell = cell as? ContactCellTableCell {
         let item = dataSource.socialItems[indexPath.row]
         cell.avatarView.image = item.icon
         cell.topLabel.text = item.name.uppercased()
         cell.bottomLabel.text = item.address
+        } 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

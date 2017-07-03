@@ -14,4 +14,5 @@ protocol ExtendedTeammate: EntityLike {
     var voting: TeammateVotingInfo? { get }
     var object: CoveredObject { get }
     var stats: TeammateStats { get }
+    var riskScale: RiskScaleEntity? { get }
 }

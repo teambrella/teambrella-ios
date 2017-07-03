@@ -20,6 +20,7 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
     let voting: TeammateVotingInfo?
     let object: CoveredObject
     let stats: TeammateStats
+    let riskScale: RiskScaleEntity?
 
     var description: String {
         return "ExtendedTeammateEntity \(id)"
@@ -34,5 +35,7 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
         voting = TeammateVotingInfo(json: json["VotingPart"])
         object = CoveredObject(json: json["ObjectPart"])
         stats = TeammateStats(json: json["StatsPart"])
+        riskScale = RiskScaleEntity(json: json["RiskScalePart"])
     }
+    
 }

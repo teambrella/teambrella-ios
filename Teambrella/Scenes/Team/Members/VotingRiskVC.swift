@@ -28,6 +28,11 @@ class VotingRiskVC: UIViewController {
     @IBOutlet var mainLabeledView: LabeledRoundImageView!
     
     @IBOutlet var yourVoteOffsetConstraint: NSLayoutConstraint!
+    var riskScale: RiskScaleEntity? {
+        didSet {
+        updateWithRisk()
+        }
+    }
     
     var votingScroller: VotingScrollerVC!
     
@@ -41,6 +46,13 @@ class VotingRiskVC: UIViewController {
         if let url = URL(string: "http://testimage.jpg") {
             avatarsStackView.set(images: [url], label: nil, max: 4)
         }
+        
+    }
+    
+    func updateWithRisk() {
+        guard let riskScale = riskScale else { return }
+        
+        
         
     }
     
