@@ -58,6 +58,19 @@ final class MainRouter {
         }
     }
     
+    func presentJoinTeam() {
+        guard let vc = JoinTeamVC.instantiate() as? JoinTeamVC else { fatalError("Error instantiating") }
+        
+        service.router.push(vc: vc)
+    }
+    
+    func showJoinTeam(in viewController: UIViewController, completion: (() -> Void)? = nil) {
+        guard let vc = JoinTeamVC.instantiate() as? JoinTeamVC else { fatalError("Error instantiating") }
+       // guard let vc = PoopyVC.instantiate() as? PoopyVC else { fatalError("Error instantiating") }
+        
+        viewController.present(vc, animated: true, completion: completion)
+    }
+    
     /*
      func pushOrReuse(vc: UIViewController,
      animated: Bool = true,
