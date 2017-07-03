@@ -41,52 +41,53 @@
                                 <state key="normal" image="info"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5R-8z-JNB" customClass="LabeledTextField" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="56" width="286" height="56"/>
+                                <rect key="frame" x="20" y="57" width="286" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="286" id="HuE-WL-dvM"/>
                                     <constraint firstAttribute="height" constant="56" id="hMs-zY-h8d"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BaI-SL-s09" customClass="LabeledTextField" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="211" width="286" height="56"/>
+                                <rect key="frame" x="20" y="207" width="286" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="286" id="30j-kS-YYT"/>
                                     <constraint firstAttribute="height" constant="56" id="uNq-1Z-Rfq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLY-Pb-ckk" customClass="LabeledTextField" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="290" width="286" height="56"/>
+                                <rect key="frame" x="20" y="282" width="286" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="2Oi-AF-hP9"/>
-                                    <constraint firstAttribute="width" constant="286" id="aV8-cX-ID9"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taU-gM-fbt" customClass="LabeledTextField" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="131" width="286" height="56"/>
+                                <rect key="frame" x="20" y="132" width="286" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="D0E-tA-B1A"/>
-                                    <constraint firstAttribute="width" constant="286" id="eA4-pe-PdD"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BaI-SL-s09" firstAttribute="top" secondItem="taU-gM-fbt" secondAttribute="bottom" constant="24" id="0ZW-Qn-xjf"/>
+                            <constraint firstItem="BaI-SL-s09" firstAttribute="top" secondItem="taU-gM-fbt" secondAttribute="bottom" constant="19" id="0ZW-Qn-xjf"/>
                             <constraint firstItem="m5R-8z-JNB" firstAttribute="leading" secondItem="en8-6I-ojH" secondAttribute="leading" id="1Ic-po-lN5"/>
+                            <constraint firstAttribute="trailing" secondItem="m5R-8z-JNB" secondAttribute="trailing" constant="20" id="5MS-6c-ktE"/>
+                            <constraint firstAttribute="trailing" secondItem="BaI-SL-s09" secondAttribute="trailing" constant="20" id="B2S-HL-lMT"/>
                             <constraint firstItem="taU-gM-fbt" firstAttribute="top" secondItem="m5R-8z-JNB" secondAttribute="bottom" constant="19" id="DcR-Iw-m3k"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OLY-Pb-ckk" secondAttribute="bottom" constant="8" id="GhP-6o-am7"/>
                             <constraint firstAttribute="trailing" secondItem="GsW-Zl-wL7" secondAttribute="trailing" constant="20" id="T8H-QK-kts"/>
-                            <constraint firstItem="OLY-Pb-ckk" firstAttribute="top" secondItem="BaI-SL-s09" secondAttribute="bottom" constant="23" id="X7c-jN-4Rh"/>
+                            <constraint firstItem="OLY-Pb-ckk" firstAttribute="top" secondItem="BaI-SL-s09" secondAttribute="bottom" constant="19" id="X7c-jN-4Rh"/>
                             <constraint firstItem="GsW-Zl-wL7" firstAttribute="centerY" secondItem="en8-6I-ojH" secondAttribute="centerY" id="Y2s-eo-fb1"/>
                             <constraint firstItem="BaI-SL-s09" firstAttribute="leading" secondItem="en8-6I-ojH" secondAttribute="leading" id="Z4A-CH-oyv"/>
+                            <constraint firstAttribute="trailing" secondItem="OLY-Pb-ckk" secondAttribute="trailing" constant="20" id="eLw-gm-N6E"/>
                             <constraint firstItem="en8-6I-ojH" firstAttribute="top" secondItem="bZg-aP-0CY" secondAttribute="top" constant="20" id="gYH-GO-GdO"/>
+                            <constraint firstAttribute="trailing" secondItem="taU-gM-fbt" secondAttribute="trailing" constant="20" id="goF-yv-cNp"/>
                             <constraint firstItem="taU-gM-fbt" firstAttribute="leading" secondItem="en8-6I-ojH" secondAttribute="leading" id="ipN-Yh-LP2"/>
                             <constraint firstItem="OLY-Pb-ckk" firstAttribute="leading" secondItem="en8-6I-ojH" secondAttribute="leading" id="qvn-qs-Pux"/>
                             <constraint firstItem="en8-6I-ojH" firstAttribute="leading" secondItem="bZg-aP-0CY" secondAttribute="leading" constant="20" id="r4N-VH-Vci"/>
-                            <constraint firstItem="m5R-8z-JNB" firstAttribute="top" secondItem="en8-6I-ojH" secondAttribute="bottom" constant="19" id="yDA-5a-1j7"/>
+                            <constraint firstItem="m5R-8z-JNB" firstAttribute="top" secondItem="en8-6I-ojH" secondAttribute="bottom" constant="20" id="yDA-5a-1j7"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -104,6 +105,11 @@
                 <outlet property="location" destination="OLY-Pb-ckk" id="6Vc-fd-dfp"/>
                 <outlet property="name" destination="m5R-8z-JNB" id="v2d-Ti-Mx0"/>
                 <outlet property="status" destination="BaI-SL-s09" id="DEu-wL-sQS"/>
+                <outletCollection property="verticalSpacings" destination="DcR-Iw-m3k" collectionClass="NSMutableArray" id="cwd-78-9Gs"/>
+                <outletCollection property="verticalSpacings" destination="0ZW-Qn-xjf" collectionClass="NSMutableArray" id="dXl-ei-hM4"/>
+                <outletCollection property="verticalSpacings" destination="X7c-jN-4Rh" collectionClass="NSMutableArray" id="YTw-cZ-1Ya"/>
+                <outletCollection property="verticalSpacings" destination="yDA-5a-1j7" collectionClass="NSMutableArray" id="rkO-es-QaH"/>
+                <outletCollection property="verticalSpacings" destination="gYH-GO-GdO" collectionClass="NSMutableArray" id="8os-AI-shW"/>
             </connections>
         </collectionViewCell>
     </objects>

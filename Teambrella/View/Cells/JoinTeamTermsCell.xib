@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIc-jR-wKo">
-                                <rect key="frame" x="0.0" y="57" width="375" height="246"/>
+                                <rect key="frame" x="16" y="57" width="343" height="265"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -50,8 +50,8 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMA-SJ-rCt" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="273" width="375" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="292" width="375" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="BRT-RA-s8W"/>
                                 </constraints>
@@ -64,8 +64,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iAcceptLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfQ-1c-CvM">
-                                <rect key="frame" x="45" y="338" width="285" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iAcceptLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pfQ-1c-CvM">
+                                <rect key="frame" x="20" y="338" width="335" height="15"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -75,19 +75,19 @@
                         <constraints>
                             <constraint firstItem="LIc-jR-wKo" firstAttribute="top" secondItem="anr-8I-Q61" secondAttribute="bottom" constant="20" id="0bk-jk-rpb"/>
                             <constraint firstItem="anr-8I-Q61" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" constant="20" id="5MR-3v-fgS"/>
-                            <constraint firstAttribute="trailing" secondItem="LIc-jR-wKo" secondAttribute="trailing" id="C5Q-08-VhK"/>
-                            <constraint firstItem="pfQ-1c-CvM" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" constant="45" id="H6I-Se-ta6"/>
+                            <constraint firstItem="LIc-jR-wKo" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" constant="16" id="Blc-iz-M6Q"/>
+                            <constraint firstAttribute="trailing" secondItem="LIc-jR-wKo" secondAttribute="trailing" constant="16" id="C5Q-08-VhK"/>
+                            <constraint firstItem="pfQ-1c-CvM" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" constant="20" id="H6I-Se-ta6"/>
                             <constraint firstItem="anr-8I-Q61" firstAttribute="top" secondItem="vjV-ze-TP4" secondAttribute="top" constant="20" id="NrS-ke-rP3"/>
                             <constraint firstAttribute="bottom" secondItem="pfQ-1c-CvM" secondAttribute="bottom" constant="20" id="NzZ-CY-x2u"/>
                             <constraint firstItem="odE-se-57y" firstAttribute="top" secondItem="vjV-ze-TP4" secondAttribute="top" constant="55" id="P41-6E-ixX"/>
                             <constraint firstItem="pfQ-1c-CvM" firstAttribute="centerX" secondItem="vjV-ze-TP4" secondAttribute="centerX" id="SCK-kT-II8"/>
-                            <constraint firstAttribute="trailing" secondItem="pfQ-1c-CvM" secondAttribute="trailing" constant="45" id="UJh-yK-wTR"/>
+                            <constraint firstAttribute="trailing" secondItem="pfQ-1c-CvM" secondAttribute="trailing" constant="20" id="UJh-yK-wTR"/>
                             <constraint firstItem="fMA-SJ-rCt" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" id="ULM-iG-bxp"/>
                             <constraint firstAttribute="trailing" secondItem="odE-se-57y" secondAttribute="trailing" id="Vj1-cR-ww8"/>
-                            <constraint firstItem="LIc-jR-wKo" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" id="ddl-KT-CSK"/>
                             <constraint firstItem="fMA-SJ-rCt" firstAttribute="bottom" secondItem="LIc-jR-wKo" secondAttribute="bottom" id="fj7-nK-1VG"/>
                             <constraint firstItem="odE-se-57y" firstAttribute="leading" secondItem="vjV-ze-TP4" secondAttribute="leading" id="h32-Os-rMu"/>
-                            <constraint firstItem="pfQ-1c-CvM" firstAttribute="top" secondItem="LIc-jR-wKo" secondAttribute="bottom" constant="35" id="yOl-vj-vjy"/>
+                            <constraint firstItem="pfQ-1c-CvM" firstAttribute="top" secondItem="LIc-jR-wKo" secondAttribute="bottom" constant="16" id="yOl-vj-vjy"/>
                             <constraint firstAttribute="trailing" secondItem="fMA-SJ-rCt" secondAttribute="trailing" id="zBk-HB-uRe"/>
                         </constraints>
                     </view>

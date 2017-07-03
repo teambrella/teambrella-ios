@@ -145,6 +145,7 @@ extension JoinTeamVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let offset: CGFloat = 16 * 2
-        return CGSize(width: collectionView.bounds.width - offset, height: collectionView.bounds.height - 30)
+        let verticalOffset: CGFloat = isSmallIPhone ? 0 : 30
+        return CGSize(width: collectionView.bounds.width - offset, height: collectionView.bounds.height - verticalOffset)
     }
 }

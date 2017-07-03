@@ -9,6 +9,9 @@
 import UIKit
 
 class JoinTeamPersonalCell: UICollectionViewCell, XIBInitableCell {
+    
+    @IBOutlet var verticalSpacings: [NSLayoutConstraint]!
+    
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var infoButton: UIButton!
     @IBOutlet var name: LabeledTextField!
@@ -30,6 +33,9 @@ class JoinTeamPersonalCell: UICollectionViewCell, XIBInitableCell {
         
         location.headerLabel.text = "Location".uppercased()
         location.textField.text = "Amsterdam, The Netherlands"
+
+        let verticalOffset: CGFloat = isSmallIPhone ? 8 : 19
+        verticalSpacings.forEach { $0.constant = verticalOffset }
     }
 
 }
