@@ -28,6 +28,21 @@ struct RiskScaleEntity {
         let count: Int
         let teammates: [Teammate]
         
+        var minRiskTeammate: Teammate? {
+            var risk: Double = Double.greatestFiniteMagnitude
+            var teammate: Teammate?
+            teammates.forEach { if $0.risk < risk { teammate = $0; risk = $0.risk } }
+            return teammate
+        }
+        
+        var maxRiskTeammate: Teammate? {
+            var risk: Double = 0
+            var teammate: Teammate?
+            teammates.forEach { if $0.risk > risk { teammate = $0; risk = $0.risk } }
+            return teammate
+        }
+        
+        
         init(json: JSON) {
             left = json["LeftRange"].doubleValue
             right = json["RightRange"].doubleValue
@@ -42,6 +57,17 @@ struct RiskScaleEntity {
     let coversIf1: Double
     let coversIfMax: Double
     let myRisk: Double
+    
+    var averageRange: Range? {
+       return rangeContaining(risk: averageRisk)
+    }
+    
+    func rangeContaining(risk: Double) -> Range? {
+        for range in ranges where isInRange(item: risk, min: range.left, max: range.right) {
+            return range
+        }
+        return nil
+    }
     
     init?(json: JSON) {
         guard json.exists() else { return nil }

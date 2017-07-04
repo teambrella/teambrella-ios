@@ -12,6 +12,23 @@ struct VotingScrollerDataSource {
     var count: Int { return models.count }
     var models: [VotingScrollerCellModel] = []
     
+    var onUpdate: (() -> Void)?
+    
+    mutating func createModels(with riskScale: RiskScaleEntity) {
+        let max: Double = Double(riskScale.ranges.map { $0.count }.max() ?? 0)
+        var models: [VotingScrollerCellModel] = []
+        let avg = riskScale.averageRisk
+        for range in riskScale.ranges {
+            let isTeamAverage = isInRange(item: avg, min: range.left, max: range.right)
+            let model = VotingScrollerCellModel(heightCoefficient: Double(range.count) / max,
+                                                riskCoefficient: (range.right + range.left) / 2,
+                                                isTeamAverage: isTeamAverage)
+            models.append(model)
+        }
+        self.models = models
+        onUpdate?()
+    }
+    
     mutating func createFakeModels() {
         models = [VotingScrollerCellModel(heightCoefficient: 0.7, riskCoefficient: 0.7, isTeamAverage: false),
                   VotingScrollerCellModel(heightCoefficient: 0.8, riskCoefficient: 0.8, isTeamAverage: false),

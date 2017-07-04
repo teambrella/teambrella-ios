@@ -28,6 +28,7 @@ struct SocialItem {
 class TeammateProfileDataSource {
     var source: [TeammateProfileCellType] = []
     var teammate: TeammateLike
+    var riskScale: RiskScaleEntity? { return teammate.extended?.riskScale }
     
     init(teammate: TeammateLike, isMe: Bool) {
         self.teammate = teammate

@@ -25,6 +25,13 @@ class VotingScrollerVC: UIViewController {
     
     weak var delegate: VotingScrollerDelegate?
     
+    func updateWithRiskScale(riskScale: RiskScaleEntity) {
+        dataSource.onUpdate = { [weak self] in
+            self?.collectionView.reloadData()
+        }
+        dataSource.createModels(with: riskScale)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.createFakeModels()

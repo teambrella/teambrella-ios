@@ -154,7 +154,7 @@
                     <tabBarItem key="tabBarItem" title="Team" image="iconTeam" id="dXT-U8-WRM"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5fO-Hd-Vf9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5fO-Hd-Vf9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -341,24 +341,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrs-VF-tV9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3786.4000000000001" y="2465.217391304348"/>
-        </scene>
-        <!--PoopyVC-->
-        <scene sceneID="geA-h6-Vva">
-            <objects>
-                <viewController storyboardIdentifier="PoopyVC" id="0Qw-1h-JPc" customClass="PoopyVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Uy8-OO-cw0"/>
-                        <viewControllerLayoutGuide type="bottom" id="CuF-aF-8Gh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hwv-7J-Z2j">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.91372549020000005" green="0.94901960780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oyc-Xa-tAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4776" y="2513"/>
         </scene>
         <!--TeammateProfileVC-->
         <scene sceneID="JsS-KI-E5c">

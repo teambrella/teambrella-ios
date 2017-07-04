@@ -28,11 +28,15 @@ class VotingRiskVC: UIViewController {
     @IBOutlet var mainLabeledView: LabeledRoundImageView!
     
     @IBOutlet var yourVoteOffsetConstraint: NSLayoutConstraint!
+    
     var riskScale: RiskScaleEntity? {
         didSet {
-        updateWithRisk()
+            updateWithRiskScale()
         }
     }
+    
+    // Risk value changed
+    var onVoteUpdate: ((Double) -> Void)?
     
     var votingScroller: VotingScrollerVC!
     
@@ -49,11 +53,30 @@ class VotingRiskVC: UIViewController {
         
     }
     
-    func updateWithRisk() {
+    func updateWithRiskScale() {
         guard let riskScale = riskScale else { return }
         
+        votingScroller.updateWithRiskScale(riskScale: riskScale)
+        mainLabeledView.riskLabelText = String(format:"%.2f", riskScale.myRisk)
         
+        if let teammate = riskScale.averageRange?.teammates.first {
+            mainLabeledView.avatar.showAvatar(string: teammate.avatar)
+        }
+    }
+    
+    func updateRiskDeltas(risk: Double) {
+        guard let riskScale = riskScale else { return }
         
+        let delta = riskScale.averageRisk - risk
+        var text = "AVG\n"
+        text += delta > 0 ? "+" : ""
+        let percent = delta / riskScale.averageRisk * 100
+        let amount = String(format: "%.0f", percent)
+        yourAverage.text =  text + amount + "%"
+    }
+    
+    func updateAvatars(risk: Double) {
+        if let
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,8 +95,11 @@ class VotingRiskVC: UIViewController {
 
 extension VotingRiskVC: VotingScrollerDelegate {
     func votingScroller(controller: VotingScrollerVC, didChange value: CGFloat) {
-        let risk = pow(25, value / controller.maxValue) / 5
+        let risk = Double(pow(25, value / controller.maxValue) / 5)
         yourRiskValue.text = String(format: "%.2f", risk)
+        updateRiskDeltas(risk: risk)
+        updateAvatars(risk: risk)
+        onVoteUpdate?(risk)
         print("new value \(value)")
     }
 }
