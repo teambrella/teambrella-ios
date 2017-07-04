@@ -76,7 +76,7 @@ class VotingRiskVC: UIViewController {
     }
     
     func updateAvatars(risk: Double) {
-        if let
+        
     }
     
     override func didReceiveMemoryWarning() {

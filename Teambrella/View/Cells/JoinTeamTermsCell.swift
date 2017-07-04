@@ -23,8 +23,8 @@ class JoinTeamTermsCell: UICollectionViewCell, XIBInitableCell {
         let nonBoldString = "By pressing on ‘Send Application’\nI accept the Teambrella’s "
         let boldString = "Terms & Conditions"
         let resultString = nonBoldString + boldString
-        let range = NSMakeRange(0, nonBoldString.characters.count)
-        bottomLabel.attributedText = attributedString(from: resultString, nonBoldRange: range)
+        let range = NSRange(location: 0, length: nonBoldString.characters.count)
+        bottomLabel.attributedText = resultString.attributedBoldString(nonBoldRange: range)
     }
 
 func attributedString(from string: String, nonBoldRange: NSRange?) -> NSAttributedString {

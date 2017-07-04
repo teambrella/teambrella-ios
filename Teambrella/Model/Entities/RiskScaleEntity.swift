@@ -42,7 +42,6 @@ struct RiskScaleEntity {
             return teammate
         }
         
-        
         init(json: JSON) {
             left = json["LeftRange"].doubleValue
             right = json["RightRange"].doubleValue

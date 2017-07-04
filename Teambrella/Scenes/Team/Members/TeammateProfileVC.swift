@@ -139,7 +139,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 self?.updateAmounts(with: risk)
             }
         }
-       // self.updateAmounts(with: risk)
+        // self.updateAmounts(with: risk)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -178,7 +178,7 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .dialog:
             return CGSize(width: wdt, height: 120)
         case .me:
-           return CGSize(width: collectionView.bounds.width, height: 210)
+            return CGSize(width: collectionView.bounds.width, height: 210)
         case .voting:
             return CGSize(width: wdt, height: 350)
         }
@@ -208,11 +208,11 @@ extension TeammateProfileVC: UITableViewDataSource {
 extension TeammateProfileVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? ContactCellTableCell {
-        let item = dataSource.socialItems[indexPath.row]
-        cell.avatarView.image = item.icon
-        cell.topLabel.text = item.name.uppercased()
-        cell.bottomLabel.text = item.address
-        } 
+            let item = dataSource.socialItems[indexPath.row]
+            cell.avatarView.image = item.icon
+            cell.topLabel.text = item.name.uppercased()
+            cell.bottomLabel.text = item.address
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

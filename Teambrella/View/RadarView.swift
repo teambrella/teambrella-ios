@@ -21,8 +21,7 @@ class RadarView: UIView {
     @IBInspectable
     var endAngle: CGFloat = 180
     @IBInspectable
-    var centerX: CGFloat = 0
-    {
+    var centerX: CGFloat = 0 {
         didSet {
             setNeedsDisplay()
         }
