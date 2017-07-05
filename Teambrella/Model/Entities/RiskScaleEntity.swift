@@ -57,6 +57,10 @@ struct RiskScaleEntity {
     let coversIfMax: Double
     let myRisk: Double
     
+    lazy var sortedTeammates: [Teammate] = {
+        return self.ranges.flatMap { $0.teammates }.sorted { $0.risk < $1.risk }
+    }()
+    
     var averageRange: Range? {
        return rangeContaining(risk: averageRisk)
     }
@@ -66,6 +70,29 @@ struct RiskScaleEntity {
             return range
         }
         return nil
+    }
+    
+    mutating func teammates(with risk: Double) -> (Teammate, Teammate, Teammate)? {
+        var delta: Double = Double.greatestFiniteMagnitude
+        var index = -1
+        for (idx, teammate) in sortedTeammates.enumerated() {
+            let newDelta = fabs(teammate.risk - risk)
+            if  newDelta < delta {
+                delta = newDelta
+                index = idx
+            }
+        }
+        guard index < sortedTeammates.count && index >= 0 && sortedTeammates.count > 2 else { return nil }
+        
+        if index > 0 {
+            if index < sortedTeammates.count - 1 {
+                return (sortedTeammates[index - 1], sortedTeammates[index], sortedTeammates[index + 1])
+            } else {
+                return (sortedTeammates[index - 2], sortedTeammates[index - 1], sortedTeammates[index])
+            }
+        } else {
+            return (sortedTeammates[index], sortedTeammates[index + 1], sortedTeammates[index + 2])
+        }
     }
     
     init?(json: JSON) {

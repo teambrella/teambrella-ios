@@ -10,6 +10,8 @@ import Foundation
 
 struct VotingScrollerCellModel {
     var heightCoefficient: Double
-    var riskCoefficient: Double
+    var riskCoefficient: Double { return (right + left) / 2 }
     var isTeamAverage: Bool
+    var right: Double
+    var left: Double
 }

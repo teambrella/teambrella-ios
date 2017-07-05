@@ -66,4 +66,19 @@ extension String {
         }
         return attrStr
     }
+    
+    static func formattedNumber(double: Double) -> String {
+        return double.truncatingRemainder(dividingBy: 1) < 0.01
+            ? String(format: "%.0f", double)
+            : String(format: "%.2f", double)
+    }
+    
+    static func formattedNumber(float: Float) -> String {
+        return formattedNumber(double: Double(float))
+    }
+    
+    static func formattedNumber(cgFloat: CGFloat) -> String {
+        return formattedNumber(double: Double(cgFloat))
+    }
+    
 }

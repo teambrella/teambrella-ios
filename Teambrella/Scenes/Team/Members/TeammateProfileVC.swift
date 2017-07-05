@@ -134,7 +134,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             if let voting = teammate.extended?.voting {
                 riskController.timeLabel.text = "\(voting.remainingMinutes) MIN"
             }
-            riskController.riskScale = teammate.extended?.riskScale
+            riskController.teammate = teammate
             riskController.onVoteUpdate = { [weak self] risk in
                 self?.updateAmounts(with: risk)
             }

@@ -23,6 +23,12 @@ class RoundImagesStack: UIView {
         return views.isEmpty
     }
     
+    func  setAvatars(images: [String], label: String? = nil, max: Int? = nil) {
+        let images = images.flatMap { service.server.avatarURLstring(for: $0) }
+        let urls = images.flatMap { URL(string: $0) }
+        set(images: urls, label: label, max: max)
+    }
+    
     /// Populate stack with images
     ///
     /// - Parameters:
@@ -42,7 +48,7 @@ class RoundImagesStack: UIView {
         views.removeAll()
         images.forEach { url in
             let view = RoundImageView()
-            view.kf.setImage(with: url)
+            view.showAvatar(url: url)
             self.add(view: view)
         }
         if let label = label {
