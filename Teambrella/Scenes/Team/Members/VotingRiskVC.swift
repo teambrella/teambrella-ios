@@ -28,11 +28,11 @@ class VotingRiskVC: UIViewController {
     
     @IBOutlet var yourVoteOffsetConstraint: NSLayoutConstraint!
     
-//    var riskScale: RiskScaleEntity? {
-//        didSet {
-//            updateWithRiskScale()
-//        }
-//    }
+    //    var riskScale: RiskScaleEntity? {
+    //        didSet {
+    //            updateWithRiskScale()
+    //        }
+    //    }
     var teammate: TeammateLike? {
         didSet {
             updateWithTeammate()
@@ -75,8 +75,8 @@ class VotingRiskVC: UIViewController {
         
         let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
         avatarsStackView.setAvatars(images: voting.votersAvatars,
-                             label: label,
-                             max: 3)
+                                    label: label,
+                                    max: 3)
         
         if let risk = voting.riskVoted {
             teamRiskValue.text = String.formattedNumber(double: risk)
@@ -104,16 +104,38 @@ class VotingRiskVC: UIViewController {
         func setview(labeledView: LabeledRoundImageView, with teammate: RiskScaleEntity.Teammate?) {
             guard let teammate = teammate else {
                 labeledView.isHidden = true
-                return }
+                labeledView.avatar.image = nil
+                return
+            }
             
-            labeledView.isHidden = false
-            labeledView.avatar.showAvatar(string: teammate.avatar)
+            if labeledView.avatar.image != nil {
+                let oldImageView = RoundImageView(frame: labeledView.avatar.frame)
+                oldImageView.contentMode = labeledView.avatar.contentMode
+                oldImageView.image = labeledView.avatar.image
+                labeledView.insertSubview(oldImageView, belowSubview: labeledView.riskLabel)
+                labeledView.isHidden = false
+                labeledView.avatar.alpha = 0
+                labeledView.avatar.showAvatar(string: teammate.avatar) { image, error in
+                    //                guard let image = image else { return }
+                    labeledView.avatar.image = image
+                    UIView.animate(withDuration: 0.3, animations: {
+                        oldImageView.alpha = 0
+                        labeledView.avatar.alpha = 1
+                    }, completion: { completed in
+                        oldImageView.removeFromSuperview()
+                    })
+                    
+                }
+            } else {
+                labeledView.isHidden = false
+                labeledView.avatar.showAvatar(string: teammate.avatar)
+            }
             labeledView.riskLabelText = String(format: "%.2f", teammate.risk)
             labeledView.labelBackgroundColor = .blueWithAHintOfPurple
         }
         
         if range.teammates.count > 1 {
-        setview(labeledView: rightLabeledView, with: range.teammates.last)
+            setview(labeledView: rightLabeledView, with: range.teammates.last)
         } else {
             rightLabeledView.isHidden = true
         }

@@ -10,15 +10,21 @@ import Foundation
 import Kingfisher
 
 extension UIImageView {
-    func showAvatar(string: String) {
+    func showAvatar(string: String, completion: ((UIImage?, NSError?) -> Void)? = nil) {
         let modified = service.server.avatarURLstring(for: string)
         guard let url = URL(string: modified) else { return }
         
-        showAvatar(url: url)
+        showAvatar(url: url, completion: completion)
     }
     
-    func showAvatar(url: URL) {
-        kf.setImage(with: url)
+    func showAvatar(url: URL, completion: ((UIImage?, NSError?) -> Void)? = nil) {
+        kf.setImage(with: url,
+                    placeholder: nil,
+                    options: nil,
+                    progressBlock: nil,
+                    completionHandler: { image, error, _, _ in
+            completion?(image, error)
+        })
     }
     
     func showImage(url: URL, completion: ((UIImage?, NSError?) -> Void)? = nil) {
