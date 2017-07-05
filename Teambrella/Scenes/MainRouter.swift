@@ -71,6 +71,12 @@ final class MainRouter {
         viewController.present(vc, animated: true, completion: completion)
     }
     
+    func showFilter(in viewController: UIViewController) {
+        guard let vc = SortVC.instantiate() as? SortVC else { fatalError("Error instantiating") }
+        
+        viewController.present(vc, animated: true, completion: nil)
+    }
+    
     /*
      func pushOrReuse(vc: UIViewController,
      animated: Bool = true,
