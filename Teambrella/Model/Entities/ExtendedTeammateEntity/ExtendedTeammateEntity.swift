@@ -17,7 +17,7 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
     
     var topic: Topic
     let basic: TeammateBasicInfo
-    let voting: TeammateVotingInfo?
+    var voting: TeammateVotingInfo?
     let object: CoveredObject
     let stats: TeammateStats
     let riskScale: RiskScaleEntity?

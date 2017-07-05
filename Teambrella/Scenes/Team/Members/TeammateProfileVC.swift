@@ -136,7 +136,18 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             }
             riskController.teammate = teammate
             riskController.onVoteUpdate = { [weak self] risk in
-                self?.updateAmounts(with: risk)
+                guard let me = self else { return }
+                
+                me.updateAmounts(with: risk)
+            }
+            
+            riskController.onVoteConfirmed = { [weak self] risk in
+                guard let me = self else { return }
+                
+                me.riskController?.yourRiskValue.alpha = 0.5
+                me.dataSource.sendRisk(teammateID: me.teammate.id, risk: risk, completion: {
+                    me.riskController?.yourRiskValue.alpha = 1
+                })
             }
         }
         // self.updateAmounts(with: risk)

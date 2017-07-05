@@ -41,6 +41,7 @@ class VotingRiskVC: UIViewController {
     
     // Risk value changed
     var onVoteUpdate: ((Double) -> Void)?
+    var onVoteConfirmed: ((Double) -> Void)?
     
     var votingScroller: VotingScrollerVC!
     
@@ -57,6 +58,14 @@ class VotingRiskVC: UIViewController {
         leftLabeledView.isHidden = true
         rightLabeledView.isHidden = true
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //votingScroller.scrollToTeamAverage()
+        guard let vote = teammate?.extended?.voting?.myVote, let scroller = votingScroller else { return }
+        
+        //votingScroller.scrollTo(offset: offsetFrom(risk: vote, in: scroller))
     }
     
     func updateWithTeammate() {
@@ -93,7 +102,7 @@ class VotingRiskVC: UIViewController {
             text += delta > 0 ? "+" : ""
             let percent = delta / riskScale.averageRisk * 100
             let amount = String(format: "%.0f", percent)
-            yourAverage.text =  text + amount + "%"
+            label.text =  text + amount + "%"
         }
         
         text(for: yourAverage, risk: risk)
@@ -154,11 +163,20 @@ class VotingRiskVC: UIViewController {
         }
     }
     
+    func riskFrom(controller: VotingScrollerVC, offset: CGFloat) -> Double {
+        return min(Double(pow(25, offset / controller.maxValue) / 5), 5)
+    }
+    
+    func offsetFrom(risk: Double, in controller: VotingScrollerVC) -> CGFloat {
+        return CGFloat(log(base: 25, value: pow(risk * 5, Double(controller.maxValue))))
+    }
+    
 }
 
 extension VotingRiskVC: VotingScrollerDelegate {
+    
     func votingScroller(controller: VotingScrollerVC, didChange value: CGFloat) {
-        let risk = Double(pow(25, value / controller.maxValue) / 5)
+        let risk = riskFrom(controller: controller, offset: value)
         yourRiskValue.text = String(format: "%.2f", risk)
         updateRiskDeltas(risk: risk)
         onVoteUpdate?(risk)
@@ -170,5 +188,9 @@ extension VotingRiskVC: VotingScrollerDelegate {
         
         print("voting scroller middle cell row is now: \(middleCellRow)")
         updateAvatars(range: range)
+    }
+    
+    func votingScroller(controller: VotingScrollerVC, didSelect value: CGFloat) {
+        onVoteConfirmed?(riskFrom(controller: controller, offset: value))
     }
 }

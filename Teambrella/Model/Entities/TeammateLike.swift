@@ -46,4 +46,6 @@ protocol TeammateLike: EntityLike {
     // optional items
 
     var extended: ExtendedTeammate? { get set }
+    
+    mutating func updateWithVote(json: JSON)
 }

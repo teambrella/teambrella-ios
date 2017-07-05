@@ -11,12 +11,18 @@ import UIKit
 protocol VotingScrollerDelegate: class {
     func votingScroller(controller: VotingScrollerVC, didChange value: CGFloat)
     func votingScroller(controller: VotingScrollerVC, middleCellRow: Int)
+    func votingScroller(controller: VotingScrollerVC, didSelect value: CGFloat)
 }
 
 class VotingScrollerVC: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     fileprivate var dataSource = VotingScrollerDataSource()
-    var maxValue: CGFloat { return collectionView.contentSize.width - collectionLeftInset - collectionRightInset }
+    var maxValue: CGFloat {
+        let itemWidth = collectionView(collectionView,
+                                       layout: collectionView.collectionViewLayout,
+                                       sizeForItemAt: IndexPath(row: 0, section: 0)).width
+        return collectionView.contentSize.width - collectionLeftInset - collectionRightInset -  itemWidth
+    }
     var collectionLeftInset: CGFloat {
         return (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset.left ?? 0
     }
@@ -72,6 +78,23 @@ class VotingScrollerVC: UIViewController {
         }
     }
     
+    func scrollToTeamAverage() {
+        for (idx, model) in dataSource.models.enumerated() where model.isTeamAverage {
+                collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
+                                            at: .centeredHorizontally,
+                                            animated: true)
+                break
+        }
+    }
+    
+    func scrollToCenter() {
+       scrollTo(offset: maxValue / 2)
+    }
+    
+    func scrollTo(offset: CGFloat) {
+         collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.layer.cornerRadius = 4
@@ -99,6 +122,10 @@ class VotingScrollerVC: UIViewController {
             path.row != middleCellRow {
             middleCellRow = path.row
         }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        delegate?.votingScroller(controller: self, didSelect: scrollView.contentOffset.x)
     }
     
 }

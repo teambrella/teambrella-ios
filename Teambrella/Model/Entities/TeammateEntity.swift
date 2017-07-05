@@ -53,6 +53,12 @@ struct TeammateEntity: TeammateLike {
         avatar = json["Avatar"].stringValue
     }
     
+    mutating func updateWithVote(json: JSON) {
+        extended?.voting = TeammateVotingInfo(json: json["VotingPart"])
+        extended?.topic.minutesSinceLastPost = json["DiscussionPart"]["SinceLastPostMinutes"].intValue
+        extended?.topic.unreadCount = json["DiscussionPart"]["UnreadCount"].intValue
+    }
+    
 }
 
 struct TeammateEntityFactory {
