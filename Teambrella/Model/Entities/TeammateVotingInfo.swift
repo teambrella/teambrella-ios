@@ -19,6 +19,9 @@ struct TeammateVotingInfo {
     
     let remainingMinutes: Int
     
+    let votersCount: Int
+    let votersAvatars: [String]
+    
     init?(json: JSON) {
         guard json.dictionary != nil else { return nil }
         
@@ -28,6 +31,8 @@ struct TeammateVotingInfo {
         proxyAvatar = json["ProxyAvatar"].string
         proxyName = json["ProxyName"].string
         remainingMinutes = json["RemainedMinutes"].intValue
+        votersCount = json["OtherCount"].intValue
+        votersAvatars = json["OtherAvatars"].arrayObject as? [String] ?? []
     }
     
 }

@@ -27,6 +27,8 @@ class TeammateProfileVC: UIViewController, Routable {
     
     var dataSource: TeammateProfileDataSource!
     var riskController: VotingRiskVC?
+    var linearFunction: PiecewiseFunction?
+    var chosenRisk: Double?
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -34,9 +36,17 @@ class TeammateProfileVC: UIViewController, Routable {
         super.viewDidLoad()
         registerCells()
         dataSource.loadEntireTeammate { [weak self] in
+            self?.prepareLinearFunction()
             self?.collectionView.reloadData()
         }
         
+    }
+    
+    func prepareLinearFunction() {
+        guard let risk = teammate.extended?.riskScale else { return }
+        
+        let function = PiecewiseFunction((0.2, risk.coversIfMin), (1, risk.coversIf1), (5, risk.coversIfMax))
+        linearFunction = function
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,6 +72,21 @@ class TeammateProfileVC: UIViewController, Routable {
         if segue.identifier == "ToVotingRisk",
             let vc = segue.destination as? VotingRiskVC {
             riskController = vc
+        }
+    }
+    
+    func updateAmounts(with risk: Double) {
+        chosenRisk = risk
+        let cells = collectionView.visibleCells.filter { $0 is TeammateSummaryCell }
+        guard let cell = cells.first as? TeammateSummaryCell else { return }
+        guard let myRisk = teammate.extended?.riskScale?.myRisk,
+            let theirRisk = teammate.extended?.basic.risk else { return }
+        
+        if let theirAmount = linearFunction?.value(at: risk / theirRisk * myRisk) {
+            cell.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
+        }
+        if let myAmount = linearFunction?.value(at: risk / myRisk * theirRisk) {
+            cell.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
         }
     }
     
@@ -105,7 +130,27 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         if let cell = cell as? TeammateObjectCell {
             cell.button.removeTarget(nil, action: nil, for: .allEvents)
             cell.button.addTarget(self, action: #selector(showClaims), for: .touchUpInside)
+        } else if let cell = cell as? TeammateVoteCell, let riskController = riskController {
+            if let voting = teammate.extended?.voting {
+                riskController.timeLabel.text = "\(voting.remainingMinutes) MIN"
+            }
+            riskController.teammate = teammate
+            riskController.onVoteUpdate = { [weak self] risk in
+                guard let me = self else { return }
+                
+                me.updateAmounts(with: risk)
+            }
+            
+            riskController.onVoteConfirmed = { [weak self] risk in
+                guard let me = self else { return }
+                
+                me.riskController?.yourRiskValue.alpha = 0.5
+                me.dataSource.sendRisk(teammateID: me.teammate.id, risk: risk, completion: {
+                    me.riskController?.yourRiskValue.alpha = 1
+                })
+            }
         }
+        // self.updateAmounts(with: risk)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -144,7 +189,7 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .dialog:
             return CGSize(width: wdt, height: 120)
         case .me:
-           return CGSize(width: collectionView.bounds.width, height: 210)
+            return CGSize(width: collectionView.bounds.width, height: 210)
         case .voting:
             return CGSize(width: wdt, height: 350)
         }
@@ -173,12 +218,12 @@ extension TeammateProfileVC: UITableViewDataSource {
 
 extension TeammateProfileVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? ContactCellTableCell else { return }
-        
-        let item = dataSource.socialItems[indexPath.row]
-        cell.avatarView.image = item.icon
-        cell.topLabel.text = item.name.uppercased()
-        cell.bottomLabel.text = item.address
+        if let cell = cell as? ContactCellTableCell {
+            let item = dataSource.socialItems[indexPath.row]
+            cell.avatarView.image = item.icon
+            cell.topLabel.text = item.name.uppercased()
+            cell.bottomLabel.text = item.address
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -15,7 +15,11 @@ class LabeledRoundImageView: UIView {
     @IBInspectable
     var labelBackgroundColor: UIColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
     @IBInspectable
-    var riskLabelText: String = ""
+    var riskLabelText: String = "" {
+        didSet {
+            riskLabel.text = riskLabelText
+        }
+    }
     
     lazy var avatar: RoundImageView = {
         let ava = RoundImageView()

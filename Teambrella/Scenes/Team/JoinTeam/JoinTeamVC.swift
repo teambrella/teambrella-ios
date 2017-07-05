@@ -9,6 +9,10 @@
 import UIKit
 
 class JoinTeamVC: UIViewController, Routable {
+    struct Constant {
+        static var cellSpacing: CGFloat = 16
+    }
+    
     static let storyboardName = "Team"
     
     @IBOutlet var closeButton: UIButton!
@@ -28,6 +32,10 @@ class JoinTeamVC: UIViewController, Routable {
     
     var isAvatarSmall: Bool = false
     var currentItem: Int = 0
+    
+    fileprivate var itemWidth: CGFloat {
+        return collectionView.bounds.width - Constant.cellSpacing * 2
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +105,28 @@ class JoinTeamVC: UIViewController, Routable {
      }
      */
     
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                   withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        let pageWidth = Float(itemWidth + Constant.cellSpacing)
+        let targetXContentOffset = Float(targetContentOffset.pointee.x)
+        let contentWidth = Float(collectionView.contentSize.width  )
+        var newPage = Float(self.pageControl.currentPage)
+        
+        if velocity.x == 0 {
+            newPage = floor( (targetXContentOffset - Float(pageWidth) / 2) / Float(pageWidth)) + 1.0
+        } else {
+            newPage = Float(velocity.x > 0 ? self.pageControl.currentPage + 1 : self.pageControl.currentPage - 1)
+            if newPage  > contentWidth / pageWidth {
+                newPage = ceil(contentWidth / pageWidth) - 1.0
+            }
+        }
+        self.pageControl.currentPage = Int(newPage)
+        let point = CGPoint (x: CGFloat(newPage * pageWidth), y: targetContentOffset.pointee.y)
+        targetContentOffset.pointee = point
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -144,8 +174,6 @@ extension JoinTeamVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let offset: CGFloat = 16 * 2
-        let verticalOffset: CGFloat = isSmallIPhone ? 0 : 30
-        return CGSize(width: collectionView.bounds.width - offset, height: collectionView.bounds.height - verticalOffset)
+        return CGSize(width: itemWidth, height: collectionView.bounds.height - 30)
     }
 }

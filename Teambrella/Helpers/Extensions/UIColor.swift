@@ -13,10 +13,14 @@ extension UIColor {
     class var veryLightBlue: UIColor { return           #colorLiteral(red: 0.9137254902, green: 0.9490196078, blue: 1, alpha: 1) }
     class var lightBlueGrayTwo: UIColor { return        #colorLiteral(red: 0.8039215686, green: 0.862745098, blue: 0.9529411765, alpha: 1) }
     class var paleLilac: UIColor { return               #colorLiteral(red: 0.8784313725, green: 0.8862745098, blue: 1, alpha: 1) }
+    class var lightPeriwinkleTwo: UIColor { return      #colorLiteral(red: 0.8039215686, green: 0.8235294118, blue: 0.9960784314, alpha: 1) }
+    class var lavender: UIColor { return                #colorLiteral(red: 0.737254902, green: 0.7568627451, blue: 0.9490196078, alpha: 1) }
     class var robinEggBlue: UIColor { return            #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) }
     class var lightBlue: UIColor { return               #colorLiteral(red: 0.3058823529, green: 0.768627451, blue: 0.9490196078, alpha: 1) }
     class var teambrellaLightBlue: UIColor { return     #colorLiteral(red: 0.3058823529, green: 0.768627451, blue: 0.9490196078, alpha: 1) }
     class var darkSkyBlue: UIColor { return             #colorLiteral(red: 0.2078431373, green: 0.6705882353, blue: 0.8470588235, alpha: 1) }
+    class var perrywinkle: UIColor { return             #colorLiteral(red: 0.4705882353, green: 0.5098039216, blue: 0.8980392157, alpha: 1) }
+    class var blueWithAHintOfPurple: UIColor { return   #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1) }
     class var warmBlue: UIColor { return                #colorLiteral(red: 0.3215686275, green: 0.368627451, blue: 0.8666666667, alpha: 1) }
     class var frenchBlue: UIColor { return              #colorLiteral(red: 0.2588235294, green: 0.3058823529, blue: 0.7098039216, alpha: 1) }
     class var teambrellaBlue: UIColor { return          #colorLiteral(red: 0.1333333333, green: 0.2, blue: 0.5176470588, alpha: 1) }

@@ -129,6 +129,10 @@ class MembersDatasource {
 }
 
 final class FakeTeammate: TeammateLike {
+    func updateWithVote(json: JSON) {
+        
+    }
+
     var lastUpdated: Int64 = 0
     let id: String = "666"
     

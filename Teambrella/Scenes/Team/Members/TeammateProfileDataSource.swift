@@ -28,6 +28,7 @@ struct SocialItem {
 class TeammateProfileDataSource {
     var source: [TeammateProfileCellType] = []
     var teammate: TeammateLike
+    var riskScale: RiskScaleEntity? { return teammate.extended?.riskScale }
     
     init(teammate: TeammateLike, isMe: Bool) {
         self.teammate = teammate
@@ -58,6 +59,28 @@ class TeammateProfileDataSource {
             }
         })
         request.start()
+    }
+    
+    func sendRisk(teammateID: String, risk: Double, completion: @escaping () -> Void) {
+        service.server.updateTimestamp { timestamp, error in
+        let key = service.server.key
+            let body = RequestBody(payload: ["TeammateId": teammateID,
+                                             "MyVote": risk,
+                                             "Since": key.timestamp,
+                                             "ProxyAvatarSize": 32])
+            let request = TeambrellaRequest(type: .teammateVote, body: body, success: { [weak self] response in
+                guard let me = self else { return }
+                
+                if case .teammateVote(let json) = response {
+                    print("************************************")
+                    print("\n\n\n")
+                    print(json)
+                    completion()
+                }
+            })
+            request.start()
+        }
+    
     }
     
     private func modifySource() {

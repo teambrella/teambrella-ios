@@ -250,14 +250,14 @@
                                             <action selector="tapInfo:" destination="8PG-Ou-fsI" eventType="touchUpInside" id="VK3-gy-ZQ9"/>
                                         </connections>
                                     </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mIr-Xs-Sdi">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mIr-Xs-Sdi">
                                         <rect key="frame" x="0.0" y="220" width="375" height="343"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lA3-EL-YQS">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="16" minimumInteritemSpacing="16" id="lA3-EL-YQS">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells/>
                                         <connections>
@@ -271,13 +271,13 @@
                                         <color key="currentPageIndicatorTintColor" red="0.28627450980000002" green="0.34901960780000002" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </pageControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deductible Savers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nV3-Tr-loV">
-                                        <rect key="frame" x="103" y="136" width="169.5" height="25"/>
+                                        <rect key="frame" x="103" y="136" width="169.5" height="24.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ST. PETERSBURG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQL-6r-Q4A">
-                                        <rect key="frame" x="140.5" y="165" width="95.5" height="15"/>
+                                        <rect key="frame" x="140.5" y="164.5" width="95.5" height="15"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="0.80431292808219179" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -341,24 +341,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrs-VF-tV9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3786.4000000000001" y="2465.217391304348"/>
-        </scene>
-        <!--PoopyVC-->
-        <scene sceneID="geA-h6-Vva">
-            <objects>
-                <viewController storyboardIdentifier="PoopyVC" id="0Qw-1h-JPc" customClass="PoopyVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Uy8-OO-cw0"/>
-                        <viewControllerLayoutGuide type="bottom" id="CuF-aF-8Gh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hwv-7J-Z2j">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.91372549020000005" green="0.94901960780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oyc-Xa-tAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4776" y="2513"/>
         </scene>
         <!--TeammateProfileVC-->
         <scene sceneID="JsS-KI-E5c">

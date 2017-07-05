@@ -23,22 +23,8 @@ class JoinTeamGreetingCell: UICollectionViewCell, XIBInitableCell {
         let boldString = "Deductable Savers "
         let nonBoldString = "team are the best team for insuring olders cars. We’re just going to need a few details."
         let resultString = boldString + nonBoldString
-        let range = NSMakeRange(boldString.characters.count, nonBoldString.characters.count)
-        textLabel.attributedText = attributedString(from: resultString, nonBoldRange: range)
-    }
-    
-    func attributedString(from string: String, nonBoldRange: NSRange?) -> NSAttributedString {
-        let fontSize = UIFont.systemFontSize
-        let attrs = [
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: fontSize),
-            NSForegroundColorAttributeName: UIColor.black
-        ]
-        let nonBoldAttribute = [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)]
-        let attrStr = NSMutableAttributedString(string: string, attributes: attrs)
-        if let range = nonBoldRange {
-            attrStr.setAttributes(nonBoldAttribute, range: range)
-        }
-        return attrStr
+        let range = NSRange(location: boldString.characters.count, length: nonBoldString.characters.count)
+        textLabel.attributedText =  resultString.attributedBoldString(nonBoldRange: range)
     }
 
 }

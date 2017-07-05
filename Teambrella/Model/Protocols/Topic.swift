@@ -12,8 +12,8 @@ protocol Topic: EntityLike {
     var originalPostText: String { get }
     var topPosterAvatars: [String] { get }
     var posterCount: Int { get }
-    var unreadCount: Int { get }
-    var minutesSinceLastPost: Int { get }
+    var unreadCount: Int { get set }
+    var minutesSinceLastPost: Int { get set }
     
     var posts: [Post] { get set }
 }

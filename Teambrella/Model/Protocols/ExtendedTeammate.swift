@@ -11,7 +11,8 @@ import Foundation
 protocol ExtendedTeammate: EntityLike {
     var basic: TeammateBasicInfo { get }
     var topic: Topic { get set }
-    var voting: TeammateVotingInfo? { get }
+    var voting: TeammateVotingInfo? { get set }
     var object: CoveredObject { get }
     var stats: TeammateStats { get }
+    var riskScale: RiskScaleEntity? { get }
 }

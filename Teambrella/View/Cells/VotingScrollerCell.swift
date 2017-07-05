@@ -13,6 +13,8 @@ class VotingScrollerCell: UICollectionViewCell {
     @IBOutlet var heightConstraint: NSLayoutConstraint!
     @IBOutlet var topLabel: UILabel!
     @IBOutlet var centerLabel: UILabel!
-    @IBOutlet var column: UIView!
+    @IBOutlet var column: RoundedCornersView!
     @IBOutlet var columnHeightConstraint: NSLayoutConstraint!
+    
+    var isCentered: Bool = false
 }

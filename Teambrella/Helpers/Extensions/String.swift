@@ -52,4 +52,33 @@ extension String {
     var dateFromISO8601: Date? {
         return Formatter.iso8601.date(from: self)   // "Mar 22, 2017, 10:22 AM"
     }
+    
+    func attributedBoldString(nonBoldRange: NSRange?) -> NSAttributedString {
+        let fontSize = UIFont.systemFontSize
+        let attrs = [
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: fontSize),
+            NSForegroundColorAttributeName: UIColor.black
+        ]
+        let nonBoldAttribute = [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)]
+        let attrStr = NSMutableAttributedString(string: self, attributes: attrs)
+        if let range = nonBoldRange {
+            attrStr.setAttributes(nonBoldAttribute, range: range)
+        }
+        return attrStr
+    }
+    
+    static func formattedNumber(double: Double) -> String {
+        return double.truncatingRemainder(dividingBy: 1) < 0.01
+            ? String(format: "%.0f", double)
+            : String(format: "%.2f", double)
+    }
+    
+    static func formattedNumber(float: Float) -> String {
+        return formattedNumber(double: Double(float))
+    }
+    
+    static func formattedNumber(cgFloat: CGFloat) -> String {
+        return formattedNumber(double: Double(cgFloat))
+    }
+    
 }

@@ -16,8 +16,8 @@ struct TopicEntity: Topic {
     let originalPostText: String
     let topPosterAvatars: [String]
     let posterCount: Int
-    let unreadCount: Int
-    let minutesSinceLastPost: Int
+    var unreadCount: Int
+    var minutesSinceLastPost: Int
     
     var posts: [Post]
     
