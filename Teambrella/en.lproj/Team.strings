@@ -96,6 +96,7 @@
 
 "Team.JoinTeamVC.closeButton" = "Close";
 "Team.JoinTeamVC.getStartedButton" = "Get Started";
+
 "Team.JoinTeamVC.GreetingCell.greeting" = "Hi %@!";
 
 "Team.JoinTeamVC.InfoCell.headerLabel" = "TEAM INFO";

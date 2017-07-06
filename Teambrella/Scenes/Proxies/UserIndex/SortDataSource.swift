@@ -11,12 +11,16 @@ import Foundation
 struct SortDataSource {
     var count: Int { return models.count }
     var models: [SortCellModel] = []
-    
+
     mutating func createFakeModels() {
-        models = [SortCellModel(topText: "Proxy.SortVC.Cell.Rating".localized, bottomText: "Proxy.SortVC.Cell.Rating.HighLow".localized),
-                  SortCellModel(topText: "Proxy.SortVC.Cell.Rating".localized, bottomText: "Proxy.SortVC.Cell.Rating.LowHigh".localized),
-                  SortCellModel(topText: "Proxy.SortVC.Cell.Alphabetical".localized, bottomText: "Proxy.SortVC.Cell.Alphabetical.AZ".localized),
-                  SortCellModel(topText: "Proxy.SortVC.Cell.Alphabetical".localized, bottomText: "Proxy.SortVC.Cell.Alphabetical.ZA".localized)]
+        models = [SortCellModel(topText: "Proxy.SortVC.Cell.Rating".localized,
+                                bottomText: "Proxy.SortVC.Cell.Rating.HighLow".localized),
+                  SortCellModel(topText: "Proxy.SortVC.Cell.Rating".localized,
+                                bottomText: "Proxy.SortVC.Cell.Rating.LowHigh".localized),
+                  SortCellModel(topText: "Proxy.SortVC.Cell.Alphabetical".localized,
+                                bottomText: "Proxy.SortVC.Cell.Alphabetical.AZ".localized),
+                  SortCellModel(topText: "Proxy.SortVC.Cell.Alphabetical".localized,
+                                bottomText: "Proxy.SortVC.Cell.Alphabetical.ZA".localized)]
     }
     
     subscript(indexPath: IndexPath) -> SortCellModel {
