@@ -52,6 +52,12 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
         collectionView.contentInset.top = searchView.frame.height
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        service.router.showFilter(in: self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
