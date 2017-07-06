@@ -19,7 +19,7 @@ class JoinTeamGreetingCell: UICollectionViewCell, XIBInitableCell {
 
         CellDecorator.roundedEdges(for: self)
         CellDecorator.shadow(for: self)
-        greetingLabel.text = "Hi Frank!"
+        greetingLabel.text = "Team.JoinTeamVC.GreetingCell.greeting".localized("Frank")
         let boldString = "Deductable Savers "
         let nonBoldString = "team are the best team for insuring olders cars. We’re just going to need a few details."
         let resultString = boldString + nonBoldString

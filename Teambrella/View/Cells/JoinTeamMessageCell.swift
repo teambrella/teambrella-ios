@@ -17,13 +17,13 @@ class JoinTeamMessageCell: UICollectionViewCell, XIBInitableCell, UITextViewDele
     override func awakeFromNib() {
         super.awakeFromNib()
         message.delegate = self
-        headerLabel.text = "Team".uppercased()
-        secondLabel.text = "Message to teammates".uppercased()
+        headerLabel.text = "Team.JoinTeamVC.MessageCell.headerLabel".localized
+        secondLabel.text = "Team.JoinTeamVC.MessageCell.messageTitle".localized
         message.layer.borderWidth = 1
         message.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
         message.layer.cornerRadius = 3
         // swiftlint:disable:next line_length
-        placeholder.text = "Introduce yourself to your future team mates by telling them a bit more about yourself. Note that this will help them approve or decline your application"
+        placeholder.text = "Team.JoinTeamVC.MessageCell.placeholder".localized
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {

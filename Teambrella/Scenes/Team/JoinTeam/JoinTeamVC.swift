@@ -42,6 +42,8 @@ class JoinTeamVC: UIViewController, Routable {
         JoinTeamCellBuilder.registerCells(in: collectionView)
         dataSource.createFakeCells()
         teamImageView.layer.cornerRadius = 10
+        closeButton.setTitle("Team.JoinTeamVC.closeButton".localized, for: .normal)
+        getStartedButton.setTitle("Team.JoinTeamVC.getStartedButton".localized, for: .normal)
     }
     
     @IBAction func tapClose(_ sender: UIButton) {

@@ -9,3 +9,11 @@
 "Proxy.MyProxiesVC.indicatorTitle" = "My Proxies";
 "Proxy.ProxyForVC.indicatorTitle"  = "Proxy for";
 "Proxy.UserIndexVC.indicatorTitle" = "User index";
+
+"Proxy.SortVC.SortByHeader" = "SORT BY";
+"Proxy.SortVC.Cell.Rating" = "Rating";
+"Proxy.SortVC.Cell.Rating.HighLow" = "HIGH-LOW";
+"Proxy.SortVC.Cell.Rating.LowHigh" = "LOW-HIGH";
+"Proxy.SortVC.Cell.Alphabetical" = "Alphabetical";
+"Proxy.SortVC.Cell.Alphabetical.AZ" = "A-Z";
+"Proxy.SortVC.Cell.Alphabetical.ZA" = "Z-A";
