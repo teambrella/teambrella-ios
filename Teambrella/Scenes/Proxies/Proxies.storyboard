@@ -385,6 +385,13 @@
                                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vbl-jU-ypK">
+                                                <rect key="frame" x="0.0" y="54" width="359" height="1"/>
+                                                <color key="backgroundColor" red="0.80392158030000005" green="0.80392158030000005" blue="0.80392158030000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="67w-Kx-v5f"/>
+                                                </constraints>
+                                            </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gWX-XP-5h9">
                                                 <rect key="frame" x="0.0" y="55" width="359" height="284"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -400,13 +407,13 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TopLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwo-Tg-suh">
                                                                     <rect key="frame" x="17" y="19" width="63.5" height="18.5"/>
                                                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BottomLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPo-aB-r6l">
                                                                     <rect key="frame" x="17" y="43" width="71.5" height="15"/>
                                                                     <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCs-aE-7Bb">
@@ -459,8 +466,11 @@
                                             <constraint firstItem="Vmx-QX-Cf5" firstAttribute="top" secondItem="b7y-jN-kph" secondAttribute="top" constant="17" id="3ui-wq-chB"/>
                                             <constraint firstAttribute="trailing" secondItem="ZfC-7x-bAz" secondAttribute="trailing" constant="17" id="7DE-UH-1Le"/>
                                             <constraint firstItem="Vmx-QX-Cf5" firstAttribute="leading" secondItem="b7y-jN-kph" secondAttribute="leading" constant="17" id="F7i-BP-6RE"/>
+                                            <constraint firstItem="Vbl-jU-ypK" firstAttribute="leading" secondItem="b7y-jN-kph" secondAttribute="leading" id="QX7-Eo-PyN"/>
                                             <constraint firstAttribute="height" constant="339" id="Uxy-yT-vyK"/>
+                                            <constraint firstItem="Vbl-jU-ypK" firstAttribute="top" secondItem="b7y-jN-kph" secondAttribute="top" constant="54" id="WVj-po-ofS"/>
                                             <constraint firstAttribute="trailing" secondItem="gWX-XP-5h9" secondAttribute="trailing" id="XPb-oJ-0kH"/>
+                                            <constraint firstAttribute="trailing" secondItem="Vbl-jU-ypK" secondAttribute="trailing" id="Y9k-NU-jYm"/>
                                             <constraint firstItem="gWX-XP-5h9" firstAttribute="leading" secondItem="b7y-jN-kph" secondAttribute="leading" id="cda-Oh-E7N"/>
                                             <constraint firstItem="ZfC-7x-bAz" firstAttribute="centerY" secondItem="Vmx-QX-Cf5" secondAttribute="centerY" id="kL3-09-6Lx"/>
                                             <constraint firstItem="gWX-XP-5h9" firstAttribute="top" secondItem="b7y-jN-kph" secondAttribute="top" constant="55" id="uSM-Sv-eNY"/>
@@ -502,7 +512,7 @@
                     <tabBarItem key="tabBarItem" title="Proxies" image="iconProxy" id="TY9-uZ-Tv9"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6vV-Oq-RvH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6vV-Oq-RvH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
