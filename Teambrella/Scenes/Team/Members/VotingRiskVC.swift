@@ -52,9 +52,6 @@ class VotingRiskVC: UIViewController {
         votingRisksView.layer.borderWidth = 1
         //yourVoteOffsetConstraint.constant = votingRisksView.bounds.midX
         // Do any additional setup after loading the view.
-        if let url = URL(string: "http://testimage.jpg") {
-            avatarsStackView.set(images: [url], label: nil, max: 4)
-        }
         leftLabeledView.isHidden = true
         rightLabeledView.isHidden = true
         
@@ -85,7 +82,7 @@ class VotingRiskVC: UIViewController {
         let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
         avatarsStackView.setAvatars(images: voting.votersAvatars,
                                     label: label,
-                                    max: 3)
+                                    max: nil)
         
         if let risk = voting.riskVoted {
             teamRiskValue.text = String.formattedNumber(double: risk)
