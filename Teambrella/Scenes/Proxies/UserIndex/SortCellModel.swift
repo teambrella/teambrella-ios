@@ -11,5 +11,4 @@ import Foundation
 struct SortCellModel {
     var topText: String
     var bottomText: String
-    var isChecked: Bool
 }

@@ -16,18 +16,56 @@ class SortVC: UIViewController, Routable {
     static let storyboardName = "Proxies"
     
     @IBOutlet var backView: UIView!
+    @IBOutlet var container: UIView!
     @IBOutlet var sortView: UIView!
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var closeButton: UIButton!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
     
     fileprivate var dataSource = SortDataSource()
     weak var delegate: SortTableDelegate?
+    var rowIndex: Int = -1
     
+    deinit {
+        print("I am now officially dead")
+    }
+    
+    @IBAction func tapClose(_ sender: Any) {
+        disappear {
+            self.view.removeFromSuperview()
+            self.dismiss(animated: false, completion: nil)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         headerLabel.text = "Sort by".uppercased()
         dataSource.createFakeModels()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        appear()
+    }
+    
+    func appear() {
+        self.bottomConstraint.constant = 0
+        UIView.animate(withDuration: 1, animations: {
+            self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            self.view.layoutIfNeeded()
+        }) { finished in
+            
+        }
+    }
+    
+    func disappear(completion: @escaping () -> Void) {
+        self.bottomConstraint.constant = -self.sortView.frame.height
+        UIView.animate(withDuration: 1, animations: {
+            self.backView.backgroundColor = .clear
+            self.view.layoutIfNeeded()
+        }) { finished in
+            completion()
+        }
     }
     
 }
@@ -52,11 +90,28 @@ extension SortVC: UITableViewDelegate {
             
             cell.topLabel.text = model.topText
             cell.bottomLabel.text = model.bottomText
-            cell.checker.isHidden = !model.isChecked
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.bounds.height / CGFloat(dataSource.count)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? SortCell {
+            if  rowIndex != indexPath.row {
+                if rowIndex >= 0,
+                    let otherCell = tableView.cellForRow(at: IndexPath(row: rowIndex, section: 0)) as? SortCell {
+                    otherCell.checker.isHidden = true
+                }
+                cell.checker.isHidden = false
+                rowIndex = indexPath.row
+            } else {
+                cell.checker.isHidden = true
+                rowIndex = -1
+            }
+        }
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
 }

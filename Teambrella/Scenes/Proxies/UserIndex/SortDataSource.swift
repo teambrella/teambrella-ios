@@ -13,10 +13,10 @@ struct SortDataSource {
     var models: [SortCellModel] = []
     
     mutating func createFakeModels() {
-        models = [SortCellModel(topText: "Rating", bottomText: "High-low".uppercased(), isChecked: true),
-                  SortCellModel(topText: "Rating", bottomText: "Low-high".uppercased(), isChecked: false),
-                  SortCellModel(topText: "Alphabetical", bottomText: "A-Z", isChecked: false),
-                  SortCellModel(topText: "Alphabetical", bottomText: "Z-A", isChecked: false)]
+        models = [SortCellModel(topText: "Rating", bottomText: "High-low".uppercased()),
+                  SortCellModel(topText: "Rating", bottomText: "Low-high".uppercased()),
+                  SortCellModel(topText: "Alphabetical", bottomText: "A-Z"),
+                  SortCellModel(topText: "Alphabetical", bottomText: "Z-A")]
     }
     
     subscript(indexPath: IndexPath) -> SortCellModel {
