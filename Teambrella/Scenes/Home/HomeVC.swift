@@ -62,7 +62,7 @@ class HomeVC: UIViewController, TabRoutable {
         
         guard let model = dataSource.model else { return }
         
-        leftBrickAmountLabel.text = String.formattedNumber(double: model.coverage * 100)
+        leftBrickAmountLabel.text = String(format: "%.0f", model.coverage * 100)
         rightBrickAmountLabel.text = String.formattedNumber(double: model.balance)
         rightBrickCurrencyLabel.text = dataSource.currency
         
