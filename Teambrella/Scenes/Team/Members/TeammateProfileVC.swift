@@ -7,6 +7,7 @@
 //
 
 import Kingfisher
+import PKHUD
 import UIKit
 
 class TeammateProfileVC: UIViewController, Routable {
@@ -144,8 +145,10 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             riskController.onVoteConfirmed = { [weak self] risk in
                 guard let me = self else { return }
                 
+                HUD.show(.progress)
                 me.riskController?.yourRiskValue.alpha = 0.5
                 me.dataSource.sendRisk(teammateID: me.teammate.id, risk: risk, completion: {
+                    HUD.hide()
                     me.riskController?.yourRiskValue.alpha = 1
                 })
             }

@@ -125,6 +125,12 @@ class VotingScrollerVC: UIViewController {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+        delegate?.votingScroller(controller: self, didSelect: scrollView.contentOffset.x)
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         delegate?.votingScroller(controller: self, didSelect: scrollView.contentOffset.x)
     }
     
