@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol SortTableDelegate: class {
-    func sortTable(controller: SortVC, didSelect row: Int)
+protocol SortControllerDelegate: class {
+    func sort(controller: SortVC, didSelect row: Int)
 }
 
 class SortVC: UIViewController, Routable {
@@ -24,11 +24,12 @@ class SortVC: UIViewController, Routable {
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
     
     fileprivate var dataSource = SortDataSource()
-    weak var delegate: SortTableDelegate?
-    var rowIndex: Int = -1
+    weak var delegate: SortControllerDelegate?
     
-    deinit {
-        print("I am now officially dead")
+    var rowIndex: Int = -1 {
+        didSet {
+            delegate?.sort(controller: self, didSelect: rowIndex)
+        }
     }
     
     @IBAction func tapClose(_ sender: Any) {
@@ -112,5 +113,4 @@ extension SortVC: UITableViewDelegate {
         }
         tableView.deselectRow(at: indexPath, animated: false)
     }
-    
 }

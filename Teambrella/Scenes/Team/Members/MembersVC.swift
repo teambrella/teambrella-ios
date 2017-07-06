@@ -24,7 +24,7 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     fileprivate var searchbarIsShown = true
     
     lazy var router: MembersRouter = MembersRouter()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchController()
@@ -96,15 +96,9 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    @IBAction func tapSort(_ sender: UIButton) {
+        service.router.showFilter(in: self, delegate: self)
+    }
     
 }
 
@@ -212,5 +206,12 @@ extension MembersVC: UIScrollViewDelegate {
         if velocity < -10 {
             showSearchBar(show: true, animated: true)
         }
+    }
+}
+
+// MARK: SortControllerDelegate
+extension MembersVC: SortControllerDelegate {
+    func sort(controller: SortVC, didSelect row: Int) {
+        dataSource.sort(type: row)
     }
 }

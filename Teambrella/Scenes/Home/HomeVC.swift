@@ -62,7 +62,7 @@ class HomeVC: UIViewController, TabRoutable {
     }
     
     func tapItem() {
-    service.router.showFilter(in: self)
+
     }
     
     func setup() {

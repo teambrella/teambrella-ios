@@ -38,6 +38,20 @@ class MembersDatasource {
         }
     }
     
+    func sort(type: Int) {
+        switch type {
+        case 2:
+            newTeammates.sort { $0.name < $1.name }
+            teammates.sort { $0.name < $1.name }
+        case 3:
+            newTeammates.sort { $0.name > $1.name }
+            teammates.sort { $0.name > $1.name }
+        default:
+            break
+        }
+        onUpdate?()
+    }
+    
     func itemsInSection(section: Int) -> Int {
         switch section {
         case 0:
