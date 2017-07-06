@@ -95,7 +95,7 @@ class MembersDatasource {
             
             let body = RequestBody(key: key, payload:["TeamId": ServerService.teamID,
                                                       "Offset": self.offset,
-                                                      "Limit": 10,
+                                                      "Limit": 1000,
                                                       "AvatarSize": 128])
             let request = TeambrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
                 if case .teammatesList(let teammates) = response {

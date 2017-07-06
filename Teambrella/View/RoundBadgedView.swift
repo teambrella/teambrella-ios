@@ -10,10 +10,21 @@ import UIKit
 
 @IBDesignable
 class RoundBadgedView: RoundImageView {
-    var badge: Label?
+    lazy var badge: Label = {
+        let badge = Label(frame: self.bounds)
+        badge.textInsets = UIEdgeInsets(top: 1, left: 3, bottom: 1, right: 3)
+        badge.textColor = self.badgeTextColor
+        badge.layer.masksToBounds = true
+        badge.layer.cornerRadius = 3
+        badge.layer.borderWidth = 1
+        badge.layer.borderColor = self.badgeTextColor.cgColor
+        badge.backgroundColor = UIColor.blueyGray
+        self.addSubview(badge)
+        return badge
+    }()
     
-    var badgeFont: UIFont?
-    var badgeTextColor: UIColor?
+    var badgeFont: UIFont = UIFont.teambrella(size: 10)
+    var badgeTextColor: UIColor = .white
     var badgeText: String? {
         didSet {
             setNeedsLayout()
@@ -24,19 +35,12 @@ class RoundBadgedView: RoundImageView {
         super.layoutSubviews()
         
         if badgeText != nil {
-            if badge == nil {
-                let badge = Label(frame: .zero)
-                addSubview(badge)
-            }
-            guard let badge = badge else { fatalError("Badge should be instantiated") }
-            
+            badge.frame = self.bounds
             badge.font = badgeFont
             badge.textColor = badgeTextColor
             badge.text = badgeText
-            badge.center = CGPoint(x: bounds.maxX, y: badge.frame.height / 2)
-        } else {
-            badge?.removeFromSuperview()
-            badge = nil
+            badge.sizeToFit()
+            badge.center = CGPoint(x: bounds.maxX, y: 0)
         }
     }
 
