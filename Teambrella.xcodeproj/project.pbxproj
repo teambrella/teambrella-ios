@@ -806,10 +806,6 @@
 				6D69DA011EFC340300DED5CE /* UserIndexDataSource.swift */,
 				6D69DA031EFC343F00DED5CE /* UserIndexCellModel.swift */,
 				6D69DA051EFC34FE00DED5CE /* UserIndexCellBuilder.swift */,
-				9440EDF41F0CED5A00E5A6E7 /* SortVC.swift */,
-				94793A861F0D120700696B90 /* SortCellModel.swift */,
-				94793A881F0D126600696B90 /* SortDataSource.swift */,
-				94793A8A1F0D146400696B90 /* SortCell.swift */,
 			);
 			name = UserIndex;
 			sourceTree = "<group>";
@@ -1035,6 +1031,7 @@
 			children = (
 				6D0D2AE11EFBD42D0095284C /* My */,
 				6D0D2AE41EFBD4630095284C /* ProxyFor */,
+				6DCB19411F0EA2ED00AC9969 /* Sort */,
 				6D0D2AE71EFBD4940095284C /* UserIndex */,
 				6D9CC6291ED5EAD3007F936E /* Proxies.storyboard */,
 				6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */,
@@ -1345,6 +1342,17 @@
 				94E325C11F07E78E00B2D8C8 /* LabeledTextField.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		6DCB19411F0EA2ED00AC9969 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				9440EDF41F0CED5A00E5A6E7 /* SortVC.swift */,
+				94793A861F0D120700696B90 /* SortCellModel.swift */,
+				94793A881F0D126600696B90 /* SortDataSource.swift */,
+				94793A8A1F0D146400696B90 /* SortCell.swift */,
+			);
+			name = Sort;
 			sourceTree = "<group>";
 		};
 		6DCC7AC91E9551B40092D3F2 /* Entities */ = {

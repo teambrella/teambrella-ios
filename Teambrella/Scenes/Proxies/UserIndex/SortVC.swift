@@ -33,7 +33,6 @@ class SortVC: UIViewController, Routable {
     
     @IBAction func tapClose(_ sender: Any) {
         disappear {
-            self.view.removeFromSuperview()
             self.dismiss(animated: false, completion: nil)
         }
     }
@@ -50,9 +49,7 @@ class SortVC: UIViewController, Routable {
     
     func appear() {
         self.bottomConstraint.constant = 0
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5,
-                       initialSpringVelocity: 15, options: [], animations: {
-//        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
             self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             self.view.layoutIfNeeded()
         }) { finished in
