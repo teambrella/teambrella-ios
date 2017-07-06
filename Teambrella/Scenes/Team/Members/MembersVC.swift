@@ -97,7 +97,7 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     }
     
     @IBAction func tapSort(_ sender: UIButton) {
-        service.router.showFilter(in: self, delegate: self)
+        service.router.showFilter(in: self, delegate: self, currentSort: dataSource.sortType)
     }
     
 }

@@ -71,10 +71,13 @@ final class MainRouter {
         viewController.present(vc, animated: true, completion: completion)
     }
     
-    func showFilter(in viewController: UIViewController, delegate: SortControllerDelegate) {
+    func showFilter(in viewController: UIViewController,
+                    delegate: SortControllerDelegate,
+                    currentSort type: SortVC.SortType) {
         guard let vc = SortVC.instantiate() as? SortVC else { fatalError("Error instantiating") }
         
         vc.delegate = delegate
+        vc.type = type
         viewController.present(vc, animated: false, completion: nil)
     }
     

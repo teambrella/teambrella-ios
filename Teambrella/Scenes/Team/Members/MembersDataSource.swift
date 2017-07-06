@@ -18,6 +18,7 @@ class MembersDatasource {
     var teammates: [TeammateLike] = []
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
+    var sortType: SortVC.SortType = .none
     
     var offset = 0
     var isLoading = false
@@ -49,6 +50,7 @@ class MembersDatasource {
         default:
             break
         }
+        sortType = type
         onUpdate?()
     }
     

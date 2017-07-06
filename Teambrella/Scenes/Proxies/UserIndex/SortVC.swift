@@ -34,11 +34,7 @@ class SortVC: UIViewController, Routable {
     fileprivate var dataSource = SortDataSource()
     weak var delegate: SortControllerDelegate?
     
-    var type: SortType = .none {
-        didSet {
-            delegate?.sort(controller: self, didSelect: type)
-        }
-    }
+    var type: SortType = .none
     
     @IBAction func tapClose(_ sender: Any) {
         disappear {
@@ -98,6 +94,7 @@ extension SortVC: UITableViewDelegate {
             
             cell.topLabel.text = model.topText
             cell.bottomLabel.text = model.bottomText
+            cell.checker.isHidden = indexPath.row != type.rawValue
         }
     }
     
@@ -114,6 +111,7 @@ extension SortVC: UITableViewDelegate {
                 }
                 cell.checker.isHidden = false
                 type = SortType(rawValue: indexPath.row) ?? .none
+                delegate?.sort(controller: self, didSelect: type)
             } else {
                 cell.checker.isHidden = true
                 type = .none
