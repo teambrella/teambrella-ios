@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RCI-Dd-d0f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RCI-Dd-d0f">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -364,7 +364,7 @@
         <!--SortVC-->
         <scene sceneID="mvc-Dc-Vmm">
             <objects>
-                <viewController storyboardIdentifier="SortVC" modalPresentationStyle="overCurrentContext" id="M0q-Ir-Oas" customClass="SortVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SortVC" modalPresentationStyle="overFullScreen" id="M0q-Ir-Oas" customClass="SortVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hfS-cG-Lvw"/>
                         <viewControllerLayoutGuide type="bottom" id="JVY-22-r9T"/>
@@ -375,7 +375,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxZ-xK-XGE">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7T-eu-kOI">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
@@ -420,9 +420,8 @@
                                                                     <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCs-aE-7Bb">
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="hCs-aE-7Bb">
                                                                     <rect key="frame" x="327" y="33" width="15" height="11"/>
-                                                                    <color key="backgroundColor" red="0.55686277149999996" green="0.35294118520000001" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="11" id="7qK-93-dUS"/>
                                                                         <constraint firstAttribute="width" constant="15" id="cwU-yh-K0L"/>
@@ -495,7 +494,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ZxZ-xK-XGE" secondAttribute="trailing" id="Pcp-oo-NPJ"/>
-                            <constraint firstItem="ZxZ-xK-XGE" firstAttribute="top" secondItem="hfS-cG-Lvw" secondAttribute="bottom" id="UQO-f7-sKI"/>
+                            <constraint firstItem="ZxZ-xK-XGE" firstAttribute="top" secondItem="hfS-cG-Lvw" secondAttribute="bottom" constant="-20" id="UQO-f7-sKI"/>
                             <constraint firstItem="JVY-22-r9T" firstAttribute="top" secondItem="O7T-eu-kOI" secondAttribute="bottom" id="UzL-h1-poL"/>
                             <constraint firstItem="JVY-22-r9T" firstAttribute="top" secondItem="ZxZ-xK-XGE" secondAttribute="bottom" id="dEb-LQ-j9l"/>
                             <constraint firstAttribute="trailing" secondItem="O7T-eu-kOI" secondAttribute="trailing" id="iXa-3Q-VV6"/>
@@ -525,7 +524,7 @@
                     <tabBarItem key="tabBarItem" title="Proxies" image="iconProxy" id="TY9-uZ-Tv9"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6vV-Oq-RvH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6vV-Oq-RvH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -541,6 +540,7 @@
     </scenes>
     <resources>
         <image name="filter" width="18" height="15"/>
-        <image name="iconProxy" width="24" height="18"/>
+        <image name="iconProxy" width="23" height="18"/>
+        <image name="tick" width="15" height="12"/>
     </resources>
 </document>

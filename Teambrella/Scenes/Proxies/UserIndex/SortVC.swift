@@ -50,7 +50,9 @@ class SortVC: UIViewController, Routable {
     
     func appear() {
         self.bottomConstraint.constant = 0
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 15, options: [], animations: {
+//        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
             self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             self.view.layoutIfNeeded()
         }) { finished in
@@ -60,7 +62,7 @@ class SortVC: UIViewController, Routable {
     
     func disappear(completion: @escaping () -> Void) {
         self.bottomConstraint.constant = -self.sortView.frame.height
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
             self.backView.backgroundColor = .clear
             self.view.layoutIfNeeded()
         }) { finished in

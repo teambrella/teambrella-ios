@@ -55,6 +55,14 @@ class HomeVC: UIViewController, TabRoutable {
         } else {
             print("This session has no team!")
         }
+        
+        let touch = UITapGestureRecognizer(target: self, action: #selector(tapItem))
+        itemCard.avatarView.isUserInteractionEnabled = true
+        itemCard.avatarView.addGestureRecognizer(touch)
+    }
+    
+    func tapItem() {
+    service.router.showFilter(in: self)
     }
     
     func setup() {
