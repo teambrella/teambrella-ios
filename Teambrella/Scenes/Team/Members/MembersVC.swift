@@ -211,7 +211,7 @@ extension MembersVC: UIScrollViewDelegate {
 
 // MARK: SortControllerDelegate
 extension MembersVC: SortControllerDelegate {
-    func sort(controller: SortVC, didSelect row: Int) {
-        dataSource.sort(type: row)
+    func sort(controller: SortVC, didSelect type: SortVC.SortType) {
+        dataSource.sort(type: type)
     }
 }

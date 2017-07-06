@@ -9,10 +9,18 @@
 import UIKit
 
 protocol SortControllerDelegate: class {
-    func sort(controller: SortVC, didSelect row: Int)
+    func sort(controller: SortVC, didSelect type: SortVC.SortType)
 }
 
 class SortVC: UIViewController, Routable {
+    enum SortType: Int {
+        case none = -1
+        case ratingHiLo = 0
+        case ratingLoHi = 1
+        case alphabeticalAtoZ = 2
+        case alphabeticalZtoA = 3
+    }
+    
     static let storyboardName = "Proxies"
     
     @IBOutlet var backView: UIView!
@@ -26,9 +34,9 @@ class SortVC: UIViewController, Routable {
     fileprivate var dataSource = SortDataSource()
     weak var delegate: SortControllerDelegate?
     
-    var rowIndex: Int = -1 {
+    var type: SortType = .none {
         didSet {
-            delegate?.sort(controller: self, didSelect: rowIndex)
+            delegate?.sort(controller: self, didSelect: type)
         }
     }
     
@@ -99,16 +107,16 @@ extension SortVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? SortCell {
-            if  rowIndex != indexPath.row {
-                if rowIndex >= 0,
-                    let otherCell = tableView.cellForRow(at: IndexPath(row: rowIndex, section: 0)) as? SortCell {
+            if  type.rawValue != indexPath.row {
+                if type != .none,
+                    let otherCell = tableView.cellForRow(at: IndexPath(row: type.rawValue, section: 0)) as? SortCell {
                     otherCell.checker.isHidden = true
                 }
                 cell.checker.isHidden = false
-                rowIndex = indexPath.row
+                type = SortType(rawValue: indexPath.row) ?? .none
             } else {
                 cell.checker.isHidden = true
-                rowIndex = -1
+                type = .none
             }
         }
         tableView.deselectRow(at: indexPath, animated: false)

@@ -38,12 +38,12 @@ class MembersDatasource {
         }
     }
     
-    func sort(type: Int) {
+    func sort(type: SortVC.SortType) {
         switch type {
-        case 2:
+        case .alphabeticalAtoZ:
             newTeammates.sort { $0.name < $1.name }
             teammates.sort { $0.name < $1.name }
-        case 3:
+        case .alphabeticalZtoA:
             newTeammates.sort { $0.name > $1.name }
             teammates.sort { $0.name > $1.name }
         default:
