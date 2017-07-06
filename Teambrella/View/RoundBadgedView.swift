@@ -40,7 +40,7 @@ class RoundBadgedView: RoundImageView {
             badge.textColor = badgeTextColor
             badge.text = badgeText
             badge.sizeToFit()
-            badge.center = CGPoint(x: bounds.maxX, y: 0)
+            badge.center = CGPoint(x: bounds.maxX - 3, y: 3)
         }
     }
 

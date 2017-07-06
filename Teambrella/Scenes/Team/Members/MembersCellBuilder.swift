@@ -27,7 +27,7 @@ struct MembersCellBuilder {
             cell.signLabel.textColor = teammate.totallyPaid > 0 ? .tealish : .lipstick
             cell.titleLabel.text = teammate.name
             cell.detailsLabel.text = teammate.model
-            cell.avatarView.badgeText = String.formattedNumber(double: teammate.risk)
+            cell.avatarView.badgeText = String(format: "%.1f", teammate.risk)
         }
     }
     
