@@ -28,8 +28,6 @@ class NumberView: UIView, XIBInitable {
     @IBOutlet var leadingXConstraint: NSLayoutConstraint!
     @IBOutlet var trailingXConstraint: NSLayoutConstraint!
     
-    
-    
     var contentView: UIView!
     
     var alignmentType: AlignmentType = .middle {
