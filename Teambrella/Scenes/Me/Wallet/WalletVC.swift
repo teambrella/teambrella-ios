@@ -28,6 +28,7 @@ class WalletVC: UIViewController {
         super.viewDidLoad()
         WalletCellBuilder.registerCells(in: collectionView)
         qrCode = generateQRCode()
+        
     }
     
     func tapFund(sender: UIButton) {

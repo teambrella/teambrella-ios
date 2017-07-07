@@ -54,7 +54,13 @@ class VotingRiskVC: UIViewController {
         // Do any additional setup after loading the view.
         leftLabeledView.isHidden = true
         rightLabeledView.isHidden = true
-        
+        votingRiskLabel.text = "Team.VotingRiskVC.headerLabel".localized
+        teamVoteLabel.text = "Team.VotingRiskVC.numberBar.left".localized
+        yourVoteLabel.text = "Team.VotingRiskVC.numberBar.right".localized
+        teamAverage.text = "Team.VotingRiskVC.avgLabel".localized("-60") //
+        yourAverage.text = "Team.VotingRiskVC.avgLabel".localized("+14") //
+        resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
+        seeOthersButton.setTitle("Team.VotingRiskVC.othersButton", for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
