@@ -27,7 +27,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="328" height="198"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ChB-8d-Aue">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ChB-8d-Aue">
                         <rect key="frame" x="0.0" y="0.0" width="328" height="198"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKq-2E-FSv">
@@ -61,7 +61,7 @@
                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="374-PJ-fPQ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="374-PJ-fPQ">
                                 <rect key="frame" x="72" y="113.5" width="23.5" height="11"/>
                                 <color key="backgroundColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="9"/>
@@ -93,9 +93,43 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcJ-7m-A2v">
                                 <rect key="frame" x="0.0" y="146" width="328" height="52"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yY-td-Cnb">
+                                        <rect key="frame" x="16" y="9" width="272" height="27"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
+                                        <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="ccf-4d-gEV">
+                                        <rect key="frame" x="304" y="16" width="8" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="dKW-4s-Ux9"/>
+                                            <constraint firstAttribute="height" constant="13" id="hJS-Bs-Lwq"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJe-dF-Ewp">
+                                        <rect key="frame" x="271" y="11.5" width="22" height="22"/>
+                                        <color key="backgroundColor" red="0.12156862745098039" green="0.75294117647058822" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="SJe-dF-Ewp" secondAttribute="height" multiplier="1:1" id="34z-a0-h8V"/>
+                                            <constraint firstAttribute="width" constant="22" id="azy-2X-0Tp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="ccf-4d-gEV" firstAttribute="leading" secondItem="SJe-dF-Ewp" secondAttribute="trailing" constant="11" id="3uX-8a-Squ"/>
+                                    <constraint firstItem="SJe-dF-Ewp" firstAttribute="centerY" secondItem="2yY-td-Cnb" secondAttribute="centerY" id="DMr-mr-cnl"/>
                                     <constraint firstAttribute="height" constant="52" id="KLC-XQ-NVr"/>
+                                    <constraint firstAttribute="trailing" secondItem="2yY-td-Cnb" secondAttribute="trailing" constant="40" id="TVP-oh-bPz"/>
+                                    <constraint firstAttribute="bottom" secondItem="2yY-td-Cnb" secondAttribute="bottom" constant="16" id="auC-dh-ssf"/>
+                                    <constraint firstItem="2yY-td-Cnb" firstAttribute="leading" secondItem="xcJ-7m-A2v" secondAttribute="leading" constant="16" id="h4b-A0-rwg"/>
+                                    <constraint firstAttribute="bottom" secondItem="ccf-4d-gEV" secondAttribute="bottom" constant="23" id="n7B-ca-QkX"/>
+                                    <constraint firstAttribute="trailing" secondItem="ccf-4d-gEV" secondAttribute="trailing" constant="16" id="sv8-5L-meb"/>
+                                    <constraint firstItem="SJe-dF-Ewp" firstAttribute="centerY" secondItem="ccf-4d-gEV" secondAttribute="centerY" id="vLi-Vu-6Hb"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -131,5 +165,6 @@
     </objects>
     <resources>
         <image name="RoundImageView" width="16" height="16"/>
+        <image name="forward" width="8" height="13"/>
     </resources>
 </document>

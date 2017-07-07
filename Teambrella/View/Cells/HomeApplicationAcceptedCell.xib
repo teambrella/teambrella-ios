@@ -25,7 +25,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="328" height="206"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHb-ff-Jnb" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHb-ff-Jnb" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="328" height="206"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sketchconfettiCopy2" translatesAutoresizingMaskIntoConstraints="NO" id="Tnd-f0-YOk">
