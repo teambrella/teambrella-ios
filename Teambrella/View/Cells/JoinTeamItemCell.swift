@@ -16,19 +16,4 @@ class JoinTeamItemCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var estimatedPrice: LabeledTextField!
     @IBOutlet var objectPhotosLabel: UILabel!
     @IBOutlet var photos: UICollectionView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        headerLabel.text = "Your car".uppercased()
-        makeAndModel.headerLabel.text = "Make and model".uppercased()
-        makeAndModel.textField.text = "Ford Focus S"
-        year.headerLabel.text = "Year".uppercased()
-        year.textField.text = "2016"
-        currency.headerLabel.text = "Currency".uppercased()
-        currency.textField.text = "usd".uppercased()
-        estimatedPrice.headerLabel.text = "Estimated price".uppercased()
-        estimatedPrice.textField.text = "$17000"
-        objectPhotosLabel.text = "Object photos".uppercased()
-    }
-
 }

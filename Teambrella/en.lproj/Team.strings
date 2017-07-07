@@ -94,3 +94,42 @@
 "Team.TeammateCell.transactions"               = "Transactions";
 "Team.team"                                    = "Team";
 
+// -------------------- waiting for translation :) -------------------- //
+"Team.JoinTeamVC.closeButton" = "Close";
+"Team.JoinTeamVC.getStartedButton" = "Get Started";
+
+"Team.JoinTeamVC.GreetingCell.greeting" = "Hi %@!";
+
+"Team.JoinTeamVC.InfoCell.headerLabel" = "TEAM INFO";
+"Team.JoinTeamVC.InfoCell.numberBar.left" = "Members";
+"Team.JoinTeamVC.InfoCell.numberBar.right" = "Discussions";
+"Team.JoinTeamVC.InfoCell.rulesButton" = "Read Team Rules";
+
+"Team.JoinTeamVC.PersonalCell.headerLabel" = "PERSONAL INFO";
+"Team.JoinTeamVC.PersonalCell.name" = "WHAT'S YOUR NAME";
+"Team.JoinTeamVC.PersonalCell.birthday" = "DATE OF BIRTH";
+"Team.JoinTeamVC.PersonalCell.status" = "STATUS";
+"Team.JoinTeamVC.PersonalCell.location" = "WHAT'S YOUR LOCATION";
+
+"Team.JoinTeamVC.ItemCell.headerLabel" = "YOUR CAR";
+"Team.JoinTeamVC.ItemCell.makeModel" = "MAKE AND MODEL";
+"Team.JoinTeamVC.ItemCell.year" = "YEAR";
+"Team.JoinTeamVC.ItemCell.currency" = "CURRENCY";
+"Team.JoinTeamVC.ItemCell.price" = "ESTIMATED PRICE";
+"Team.JoinTeamVC.ItemCell.objectPhotos" = "OBJECT PHOTOS";
+
+"Team.JoinTeamVC.MessageCell.headerLabel" = "TEAM";
+"Team.JoinTeamVC.MessageCell.messageTitle" = "MESSAGE TO TEAMMATES";
+"Team.JoinTeamVC.MessageCell.placeholder" = "Introduce yourself to your future team mates by telling them a bit more about yourself. Note that this will help them approve or decline your application";
+
+"Team.JoinTeamVC.TermsCell.headerLabel" = "TERMS $ CONDITIONS";
+"Team.JoinTeamVC.TermsCell.nonBold" = "By pressing on ‘Send Application’\nI accept the Teambrella’s ";
+"Team.JoinTeamVC.TermsCell.bold" = "Terms & Conditions";
+
+"Team.VotingRiskVC.headerLabel" = "VOTING: RISK";
+"Team.VotingRiskVC.numberBar.left" = "TEAM VOTE";
+"Team.VotingRiskVC.numberBar.right" = "YOUR VOTE";
+"Team.VotingRiskVC.avgLabel" = "AVG\n%d\%";
+"Team.VotingRiskVC.resetVoteButton" = "Reset Vote";
+"Team.VotingRiskVC.othersButton" = "Others";
+

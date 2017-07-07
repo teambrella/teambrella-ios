@@ -43,7 +43,7 @@ class SortVC: UIViewController, Routable {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        headerLabel.text = "Sort by".uppercased()
+        headerLabel.text = "Proxy.SortVC.SortByHeader".localized
         dataSource.createFakeModels()
     }
     
