@@ -10,6 +10,7 @@
 "Proxy.ProxyForVC.indicatorTitle"  = "Proxy for";
 "Proxy.UserIndexVC.indicatorTitle" = "User index";
 
+// -------------------- waiting for translation :) -------------------- //
 "Proxy.SortVC.SortByHeader" = "SORT BY";
 "Proxy.SortVC.Cell.Rating" = "Rating";
 "Proxy.SortVC.Cell.Rating.HighLow" = "HIGH-LOW";

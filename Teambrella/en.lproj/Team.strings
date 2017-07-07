@@ -94,6 +94,7 @@
 "Team.TeammateCell.transactions"               = "Transactions";
 "Team.team"                                    = "Team";
 
+// -------------------- waiting for translation :) -------------------- //
 "Team.JoinTeamVC.closeButton" = "Close";
 "Team.JoinTeamVC.getStartedButton" = "Get Started";
 
