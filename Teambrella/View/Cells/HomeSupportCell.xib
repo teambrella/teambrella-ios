@@ -50,13 +50,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jj-my-DjP">
-                                <rect key="frame" x="60" y="14.5" width="37" height="17.5"/>
+                                <rect key="frame" x="60" y="13.5" width="39" height="18.5"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                 <color key="textColor" red="0.17254901960784313" green="0.22352941176470587" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3b-4e-h0v">
-                                <rect key="frame" x="76" y="33" width="24.5" height="12"/>
+                                <rect key="frame" x="73" y="33" width="26" height="12.5"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -67,11 +67,20 @@
                                 <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h36-GT-vbe">
+                                <rect key="frame" x="60" y="36" width="7" height="7"/>
+                                <color key="backgroundColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="h36-GT-vbe" secondAttribute="height" multiplier="1:1" id="Hhe-fu-wWg"/>
+                                    <constraint firstAttribute="width" constant="7" id="SaV-dH-oFA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ibe-tf-PeM" secondAttribute="trailing" constant="16" id="A6g-Bx-b2n"/>
                             <constraint firstItem="VXr-cm-2gg" firstAttribute="leading" secondItem="F6U-lg-7J1" secondAttribute="leading" constant="16" id="D2M-Pb-j7r"/>
+                            <constraint firstItem="h36-GT-vbe" firstAttribute="leading" secondItem="9jj-my-DjP" secondAttribute="leading" id="Sye-e2-L1r"/>
                             <constraint firstAttribute="bottom" secondItem="ibe-tf-PeM" secondAttribute="bottom" constant="16" id="WjG-cC-7Xb"/>
                             <constraint firstItem="9jj-my-DjP" firstAttribute="bottom" secondItem="VXr-cm-2gg" secondAttribute="centerY" id="X5z-g5-3TA"/>
                             <constraint firstItem="9jj-my-DjP" firstAttribute="leading" secondItem="VXr-cm-2gg" secondAttribute="trailing" constant="12" id="ZyC-AV-Gbb"/>
@@ -79,7 +88,8 @@
                             <constraint firstAttribute="trailing" secondItem="X30-OO-rRz" secondAttribute="trailing" constant="16" id="bpI-XD-w6Z"/>
                             <constraint firstItem="N3b-4e-h0v" firstAttribute="top" secondItem="9jj-my-DjP" secondAttribute="bottom" constant="1" id="dKp-oZ-dow"/>
                             <constraint firstItem="X30-OO-rRz" firstAttribute="top" secondItem="VXr-cm-2gg" secondAttribute="bottom" constant="14" id="iik-9r-crN"/>
-                            <constraint firstItem="N3b-4e-h0v" firstAttribute="leading" secondItem="VXr-cm-2gg" secondAttribute="trailing" constant="28" id="o8b-KF-m2k"/>
+                            <constraint firstItem="h36-GT-vbe" firstAttribute="centerY" secondItem="N3b-4e-h0v" secondAttribute="centerY" id="rcb-y0-pJg"/>
+                            <constraint firstItem="N3b-4e-h0v" firstAttribute="leading" secondItem="h36-GT-vbe" secondAttribute="trailing" constant="6" id="tQe-O3-a1Z"/>
                             <constraint firstItem="VXr-cm-2gg" firstAttribute="top" secondItem="F6U-lg-7J1" secondAttribute="top" constant="16" id="vV7-S0-upZ"/>
                             <constraint firstItem="X30-OO-rRz" firstAttribute="leading" secondItem="F6U-lg-7J1" secondAttribute="leading" constant="18" id="zdf-SQ-By5"/>
                         </constraints>
@@ -100,9 +110,10 @@
                 <outlet property="centerLabel" destination="N3b-4e-h0v" id="aIC-5g-tKB"/>
                 <outlet property="headerLabel" destination="9jj-my-DjP" id="h36-nJ-7Ob"/>
                 <outlet property="imageView" destination="VXr-cm-2gg" id="cjW-Hd-064"/>
+                <outlet property="onlineIndicator" destination="h36-GT-vbe" id="pdW-pe-oi5"/>
                 <outlet property="onlineLabel" destination="N3b-4e-h0v" id="Csq-AY-ynq"/>
             </connections>
-            <point key="canvasLocation" x="146.5" y="96.5"/>
+            <point key="canvasLocation" x="134" y="84"/>
         </collectionViewCell>
     </objects>
 </document>

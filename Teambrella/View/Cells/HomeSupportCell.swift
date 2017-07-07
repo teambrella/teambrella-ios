@@ -15,4 +15,5 @@ class HomeSupportCell: UICollectionViewCell {
     @IBOutlet var centerLabel: UILabel!
     @IBOutlet var bottomLabel: UILabel!
     @IBOutlet var button: BorderedButton!
+    @IBOutlet var onlineIndicator: UIView!
 }

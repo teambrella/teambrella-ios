@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeApplicationStatusCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="198"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="328" height="198"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ChB-8d-Aue">
+                        <rect key="frame" x="0.0" y="0.0" width="328" height="198"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKq-2E-FSv">
+                                <rect key="frame" x="0.0" y="0.0" width="328" height="66"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mf-cP-iou">
+                                        <rect key="frame" x="16" y="12" width="296" height="42"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
+                                        <color key="textColor" red="0.94901960784313721" green="0.95686274509803915" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7Mf-cP-iou" secondAttribute="trailing" constant="16" id="Die-qU-G1U"/>
+                                    <constraint firstAttribute="height" constant="66" id="JYZ-Zy-eDn"/>
+                                    <constraint firstItem="7Mf-cP-iou" firstAttribute="leading" secondItem="UKq-2E-FSv" secondAttribute="leading" constant="16" id="WIu-Rc-MI6"/>
+                                    <constraint firstItem="7Mf-cP-iou" firstAttribute="top" secondItem="UKq-2E-FSv" secondAttribute="top" constant="12" id="XWm-zl-fbe"/>
+                                    <constraint firstAttribute="bottom" secondItem="7Mf-cP-iou" secondAttribute="bottom" constant="12" id="xWk-na-EVO"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKJ-2z-yj0">
+                                <rect key="frame" x="72" y="90" width="39" height="18.5"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cim-ve-rMZ">
+                                <rect key="frame" x="253.5" y="103.5" width="30.5" height="15"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
+                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="374-PJ-fPQ">
+                                <rect key="frame" x="72" y="113.5" width="23.5" height="11"/>
+                                <color key="backgroundColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="9"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOZ-Rd-5N4" customClass="PieChartView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="292" y="101" width="20" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rOZ-Rd-5N4" secondAttribute="height" multiplier="1:1" id="DAr-ns-56C"/>
+                                    <constraint firstAttribute="width" constant="20" id="V5D-g3-RjJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                        <real key="value" value="135"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RoundImageView" translatesAutoresizingMaskIntoConstraints="NO" id="eae-qI-IuF">
+                                <rect key="frame" x="16" y="88" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eae-qI-IuF" secondAttribute="height" multiplier="1:1" id="T1h-NC-3Xn"/>
+                                    <constraint firstAttribute="width" constant="40" id="nPg-rQ-Z3t"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcJ-7m-A2v">
+                                <rect key="frame" x="0.0" y="146" width="328" height="52"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="KLC-XQ-NVr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UKq-2E-FSv" firstAttribute="leading" secondItem="ChB-8d-Aue" secondAttribute="leading" id="3Dp-fj-Vkk"/>
+                            <constraint firstItem="eae-qI-IuF" firstAttribute="leading" secondItem="ChB-8d-Aue" secondAttribute="leading" constant="16" id="B9B-ha-Lay"/>
+                            <constraint firstItem="374-PJ-fPQ" firstAttribute="top" secondItem="bKJ-2z-yj0" secondAttribute="bottom" constant="5" id="Hsk-oQ-5W2"/>
+                            <constraint firstAttribute="trailing" secondItem="xcJ-7m-A2v" secondAttribute="trailing" id="L2r-04-g5p"/>
+                            <constraint firstItem="eae-qI-IuF" firstAttribute="top" secondItem="UKq-2E-FSv" secondAttribute="bottom" constant="22" id="QeN-6Y-RyS"/>
+                            <constraint firstAttribute="bottom" secondItem="xcJ-7m-A2v" secondAttribute="bottom" id="T5b-1Z-FVl"/>
+                            <constraint firstItem="xcJ-7m-A2v" firstAttribute="leading" secondItem="ChB-8d-Aue" secondAttribute="leading" id="TTB-oH-0gR"/>
+                            <constraint firstItem="rOZ-Rd-5N4" firstAttribute="leading" secondItem="cim-ve-rMZ" secondAttribute="trailing" constant="8" id="VFU-Q7-IiH"/>
+                            <constraint firstItem="UKq-2E-FSv" firstAttribute="top" secondItem="ChB-8d-Aue" secondAttribute="top" id="e4a-xn-RTA"/>
+                            <constraint firstItem="bKJ-2z-yj0" firstAttribute="top" secondItem="UKq-2E-FSv" secondAttribute="bottom" constant="24" id="fBz-lF-6VA"/>
+                            <constraint firstItem="374-PJ-fPQ" firstAttribute="leading" secondItem="bKJ-2z-yj0" secondAttribute="leading" id="hmn-oE-2kb"/>
+                            <constraint firstItem="bKJ-2z-yj0" firstAttribute="leading" secondItem="eae-qI-IuF" secondAttribute="trailing" constant="16" id="oAw-Mj-eai"/>
+                            <constraint firstItem="rOZ-Rd-5N4" firstAttribute="top" secondItem="UKq-2E-FSv" secondAttribute="bottom" constant="35" id="pbL-eD-qPB"/>
+                            <constraint firstItem="cim-ve-rMZ" firstAttribute="centerY" secondItem="rOZ-Rd-5N4" secondAttribute="centerY" id="rKr-ux-gw8"/>
+                            <constraint firstAttribute="trailing" secondItem="UKq-2E-FSv" secondAttribute="trailing" id="wC5-Wb-FEX"/>
+                            <constraint firstAttribute="trailing" secondItem="rOZ-Rd-5N4" secondAttribute="trailing" constant="16" id="wuf-fh-k3R"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="ChB-8d-Aue" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Awu-fo-fQ6"/>
+                <constraint firstItem="ChB-8d-Aue" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TQC-Np-8iA"/>
+                <constraint firstAttribute="bottom" secondItem="ChB-8d-Aue" secondAttribute="bottom" id="uBB-Zu-MUW"/>
+                <constraint firstAttribute="trailing" secondItem="ChB-8d-Aue" secondAttribute="trailing" id="zUi-T4-wOb"/>
+            </constraints>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="RoundImageView" width="16" height="16"/>
+    </resources>
+</document>
