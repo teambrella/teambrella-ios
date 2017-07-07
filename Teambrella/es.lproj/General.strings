@@ -11,4 +11,8 @@
 "General.maritalStatus.widowed" = "viudo";
 "General.maritalStatus.married" = "casado";
 "General.maritalStatus.unknown" = "ignoto";
-
+"General.claimState.voting"      = "votación";
+"General.claimState.revoting"    = "revotación";
+"General.claimState.declined"    = "declinado";
+"General.claimState.inPayment"   = "pagando";
+"General.claimState.processed"   = "procesado";

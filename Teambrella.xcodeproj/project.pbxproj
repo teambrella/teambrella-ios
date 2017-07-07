@@ -598,6 +598,7 @@
 		6DCB19451F0FD33400AC9969 /* Fill.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Fill.sks; path = Effects/Fill.sks; sourceTree = "<group>"; };
 		6DCB19461F0FD33400AC9969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Effects/Assets.xcassets; sourceTree = "<group>"; };
 		6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		6DCB19561F0FF21000AC9969 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Proxy.strings; sourceTree = "<group>"; };
 		6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		6DCB9F561ECA0A45000B48C4 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decimal.swift; path = Helpers/Extensions/Decimal.swift; sourceTree = "<group>"; };
 		6DCC7AC31E93A6920092D3F2 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Model/Services/Services.swift; sourceTree = "<group>"; };
@@ -2249,6 +2250,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6D0D2AEB1EFBD6820095284C /* en */,
+				6DCB19561F0FF21000AC9969 /* es */,
 			);
 			name = Proxy.strings;
 			sourceTree = "<group>";

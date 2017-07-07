@@ -6,15 +6,15 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-// -------------------- waiting for translation :) -------------------- //
 "Proxy.MyProxiesVC.indicatorTitle"  = "My Proxies";
 "Proxy.ProxyForVC.indicatorTitle"   = "Proxy for";
 "Proxy.UserIndexVC.indicatorTitle"  = "User index";
 
-"Proxy.SortVC.SortByHeader"         = "SORT BY";
-"Proxy.SortVC.Cell.Rating"          = "Rating";
-"Proxy.SortVC.Cell.Rating.HighLow"  = "HIGH-LOW";
-"Proxy.SortVC.Cell.Rating.LowHigh"  = "LOW-HIGH";
-"Proxy.SortVC.Cell.Alphabetical"    = "Alphabetical";
+// -------------------- waiting for translation :) -------------------- //
+"Proxy.SortVC.SortByHeader"         = "ORDENAR POR";
+"Proxy.SortVC.Cell.Rating"          = "Clasificación";
+"Proxy.SortVC.Cell.Rating.HighLow"  = "ALTO-BAJO";
+"Proxy.SortVC.Cell.Rating.LowHigh"  = "BAJO-ALTO";
+"Proxy.SortVC.Cell.Alphabetical"    = "Alfabético";
 "Proxy.SortVC.Cell.Alphabetical.AZ" = "A-Z";
 "Proxy.SortVC.Cell.Alphabetical.ZA" = "Z-A";

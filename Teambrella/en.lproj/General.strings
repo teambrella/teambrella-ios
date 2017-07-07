@@ -11,8 +11,6 @@
 "General.maritalStatus.widowed"  = "widowed";
 "General.maritalStatus.married"  = "married";
 "General.maritalStatus.unknown"  = "unknown";
-
-// -------------------- waiting for translation :) -------------------- //
 "General.claimState.voting"      = "voting";
 "General.claimState.revoting"    = "revoting";
 "General.claimState.declined"    = "declined";
