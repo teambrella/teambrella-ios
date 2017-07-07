@@ -7,23 +7,23 @@
 */
 
 // -------------------- waiting for translation :) -------------------- //
-"Me.CoverageVC.indicatorTitle" = "Coverage";
-"Me.ProfileVC.indicatorTitle" = "Me";
-"Me.WalletVC.indicatorTitle" = "Wallet";
+"Me.CoverageVC.indicatorTitle"            = "Coverage";
+"Me.ProfileVC.indicatorTitle"             = "Me";
+"Me.WalletVC.indicatorTitle"              = "Wallet";
 
-"Me.WalletVC.leftBrick.title" = "RESERVED";
-"Me.WalletVC.rightBrick.title" = "AVAILABLE";
-"Me.WalletVC.withdrawButton" = "Withdraw";
-"Me.WalletVC.fundingCell.title" = "RECOMMENDED FUNDING";
-"Me.WalletVC.upperBrick.title" = "FOR MAX COVERAGE (100%)";
-"Me.WalletVC.lowerBrick.title" = "FOR UNINTERRUPTED COVERAGE";
-"Me.WalletVC.fundButton" = "Fund wallet";
-"Me.WalletVC.actionsCell.cosigners" = "Co-signers";
-"Me.WalletVC.actionsCell.transactions" = "Transactions";
+"Me.WalletVC.leftBrick.title"             = "RESERVED";
+"Me.WalletVC.rightBrick.title"            = "AVAILABLE";
+"Me.WalletVC.withdrawButton"              = "Withdraw";
+"Me.WalletVC.fundingCell.title"           = "RECOMMENDED FUNDING";
+"Me.WalletVC.upperBrick.title"            = "FOR MAX COVERAGE (100%)";
+"Me.WalletVC.lowerBrick.title"            = "FOR UNINTERRUPTED COVERAGE";
+"Me.WalletVC.fundButton"                  = "Fund wallet";
+"Me.WalletVC.actionsCell.cosigners"       = "Co-signers";
+"Me.WalletVC.actionsCell.transactions"    = "Transactions";
 "Me.WalletVC.actionsCell.withdrawAddress" = "Default withdraw address";
 
-"Me.WalletDetailsVC.title" = "QR-code";
-"Me.WalletDetailsVC.fundButton" = "How do I fund a wallet? >";
-"Me.WalletDetailsVC.headerLabel" = "Bitcoin address";
-"Me.WalletDetailsVC.timeLabel" = "Valid for 24 hours";
-"Me.WalletDetailsVC.copyAddressButton" = "Copy Address";
+"Me.WalletDetailsVC.title"                = "QR-code";
+"Me.WalletDetailsVC.fundButton"           = "How do I fund a wallet? >";
+"Me.WalletDetailsVC.headerLabel"          = "Bitcoin address";
+"Me.WalletDetailsVC.timeLabel"            = "Valid for 24 hours";
+"Me.WalletDetailsVC.copyAddressButton"    = "Copy Address";

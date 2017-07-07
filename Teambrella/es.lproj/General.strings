@@ -12,9 +12,3 @@
 "General.maritalStatus.married" = "casado";
 "General.maritalStatus.unknown" = "ignoto";
 
-// -------------------- waiting for translation :) -------------------- //
-"General.claimState.voting" = "voting";
-"General.claimState.revoting" = "revoting";
-"General.claimState.declined" = "declined";
-"General.claimState.inPayment" = "in payment";
-"General.claimState.processed" = "processed";

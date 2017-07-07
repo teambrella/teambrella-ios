@@ -1,4 +1,4 @@
-/* 
+/*
   Home.strings
   Teambrella
 
@@ -7,11 +7,11 @@
 */
 
 // -------------------- waiting for translation :) -------------------- //
-"Home.salutation" = "Hi, %@!";
-"Home.subtitle" = "Here's what's new for you";
+"Home.salutation"                = "Hi, %@!";
+"Home.subtitle"                  = "Here's what's new for you";
 "Home.submitButton.anotherClaim" = "Submit Another Claim";
-"Home.submitButton.claim" = "Submit Claim";
-"Home.leftBrick.title" = "COVERAGE";
-"Home.rightBrick.title" = "WALLET";
-"Home.itemCard.status" = "COVERED";
-"Home.itemCard.coverageType" = "Collision Deductable";
+"Home.submitButton.claim"        = "Submit Claim";
+"Home.leftBrick.title"           = "COVERAGE";
+"Home.rightBrick.title"          = "WALLET";
+"Home.itemCard.status"           = "COVERED";
+"Home.itemCard.coverageType"     = "Collision Deductable";

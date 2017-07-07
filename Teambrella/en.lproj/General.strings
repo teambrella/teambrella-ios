@@ -1,4 +1,4 @@
-/* 
+/*
   General.strings
   Teambrella
 
@@ -7,13 +7,14 @@
 */
 
 "General.maritalStatus.divorced" = "divorced";
-"General.maritalStatus.single" = "single";
-"General.maritalStatus.widowed" = "widowed";
-"General.maritalStatus.married" = "married";
-"General.maritalStatus.unknown" = "unknown";
+"General.maritalStatus.single"   = "single";
+"General.maritalStatus.widowed"  = "widowed";
+"General.maritalStatus.married"  = "married";
+"General.maritalStatus.unknown"  = "unknown";
 
-"General.claimState.voting" = "voting";
-"General.claimState.revoting" = "revoting";
-"General.claimState.declined" = "declined";
-"General.claimState.inPayment" = "in payment";
-"General.claimState.processed" = "processed";
+// -------------------- waiting for translation :) -------------------- //
+"General.claimState.voting"      = "voting";
+"General.claimState.revoting"    = "revoting";
+"General.claimState.declined"    = "declined";
+"General.claimState.inPayment"   = "in payment";
+"General.claimState.processed"   = "processed";
