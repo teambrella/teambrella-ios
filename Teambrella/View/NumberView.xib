@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,11 +13,14 @@
             <connections>
                 <outlet property="amountLabel" destination="3E2-y1-WiR" id="kNI-n4-eib"/>
                 <outlet property="badgeLabel" destination="9hk-vw-O9D" id="ZcL-Ly-df4"/>
+                <outlet property="centerXConstraint" destination="lLd-tV-20l" id="Ih3-2r-9Xu"/>
                 <outlet property="currencyCenterConstraint" destination="4PY-JO-TvG" id="Wja-44-PR6"/>
                 <outlet property="currencyLabel" destination="ecV-sI-j40" id="g53-6b-K7m"/>
                 <outlet property="currencyToBadgeConstraint" destination="jBF-MS-YGO" id="G2P-wQ-Y6q"/>
                 <outlet property="currencyToContainerConstraint" destination="qRN-XD-rIO" id="yH6-rW-4hi"/>
+                <outlet property="leadingXConstraint" destination="fYY-88-h6h" id="NOl-NK-Qq0"/>
                 <outlet property="titleLabel" destination="MLC-D6-CiE" id="Qqz-Bc-HQq"/>
+                <outlet property="trailingXConstraint" destination="GEg-8g-tXx" id="EZQ-24-PeO"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -26,10 +29,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0J0-P7-9yQ" userLabel="Centering container">
-                    <rect key="frame" x="135" y="75.5" width="109.5" height="32.5"/>
+                    <rect key="frame" x="139" y="75.5" width="101.5" height="32.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLC-D6-CiE" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="109" height="12"/>
+                            <rect key="frame" x="0.0" y="0.0" width="101" height="12"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                             <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -47,7 +50,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hk-vw-O9D" customClass="BadgeLabel" customModule="Teambrella" customModuleProvider="target">
-                            <rect key="frame" x="64.5" y="15" width="45" height="15"/>
+                            <rect key="frame" x="64.5" y="17" width="37" height="11"/>
                             <color key="backgroundColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -91,12 +94,20 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="0J0-P7-9yQ" secondAttribute="trailing" id="GEg-8g-tXx"/>
                 <constraint firstItem="0J0-P7-9yQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" id="LFn-si-hus"/>
                 <constraint firstItem="0J0-P7-9yQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Nlv-9b-OdD"/>
+                <constraint firstItem="0J0-P7-9yQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fYY-88-h6h"/>
                 <constraint firstItem="0J0-P7-9yQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lLd-tV-20l"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0J0-P7-9yQ" secondAttribute="trailing" id="vZP-Kd-wMK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="GEg-8g-tXx"/>
+                    <exclude reference="fYY-88-h6h"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="-21.5" y="-235.5"/>
         </view>
     </objects>
