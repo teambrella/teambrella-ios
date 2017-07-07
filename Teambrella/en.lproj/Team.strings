@@ -125,3 +125,11 @@
 "Team.JoinTeamVC.TermsCell.headerLabel" = "TERMS $ CONDITIONS";
 "Team.JoinTeamVC.TermsCell.nonBold" = "By pressing on ‘Send Application’\nI accept the Teambrella’s ";
 "Team.JoinTeamVC.TermsCell.bold" = "Terms & Conditions";
+
+"Team.VotingRiskVC.headerLabel" = "VOTING: RISK";
+"Team.VotingRiskVC.numberBar.left" = "TEAM VOTE";
+"Team.VotingRiskVC.numberBar.right" = "YOUR VOTE";
+"Team.VotingRiskVC.avgLabel" = "AVG\n%d\%";
+"Team.VotingRiskVC.resetVoteButton" = "Reset Vote";
+"Team.VotingRiskVC.othersButton" = "Others";
+
