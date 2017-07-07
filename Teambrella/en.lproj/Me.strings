@@ -18,6 +18,7 @@
 "Me.WalletVC.upperBrick.title"            = "FOR MAX COVERAGE (100%)";
 "Me.WalletVC.lowerBrick.title"            = "FOR UNINTERRUPTED COVERAGE";
 "Me.WalletVC.fundButton"                  = "Fund wallet";
+
 "Me.WalletVC.actionsCell.cosigners"       = "Co-signers";
 "Me.WalletVC.actionsCell.transactions"    = "Transactions";
 "Me.WalletVC.actionsCell.withdrawAddress" = "Default withdraw address";
