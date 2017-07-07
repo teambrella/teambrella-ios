@@ -84,7 +84,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RoundImageView" translatesAutoresizingMaskIntoConstraints="NO" id="eae-qI-IuF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RoundImageView" translatesAutoresizingMaskIntoConstraints="NO" id="eae-qI-IuF" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="16" y="88" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eae-qI-IuF" secondAttribute="height" multiplier="1:1" id="T1h-NC-3Xn"/>
@@ -161,6 +161,15 @@
                 <constraint firstAttribute="bottom" secondItem="ChB-8d-Aue" secondAttribute="bottom" id="uBB-Zu-MUW"/>
                 <constraint firstAttribute="trailing" secondItem="ChB-8d-Aue" secondAttribute="trailing" id="zUi-T4-wOb"/>
             </constraints>
+            <connections>
+                <outlet property="avatar" destination="eae-qI-IuF" id="xS7-a5-rKy"/>
+                <outlet property="bottomLabel" destination="2yY-td-Cnb" id="76I-Gx-tqf"/>
+                <outlet property="centerLabel" destination="374-PJ-fPQ" id="ZGd-f7-Qou"/>
+                <outlet property="headerLabel" destination="7Mf-cP-iou" id="NTi-Lt-gX4"/>
+                <outlet property="messageCountLabel" destination="SJe-dF-Ewp" id="vWK-fE-Xia"/>
+                <outlet property="timeLabel" destination="cim-ve-rMZ" id="gTH-NG-YFk"/>
+                <outlet property="titleLabel" destination="bKJ-2z-yj0" id="VlD-1d-sIk"/>
+            </connections>
         </collectionViewCell>
     </objects>
     <resources>

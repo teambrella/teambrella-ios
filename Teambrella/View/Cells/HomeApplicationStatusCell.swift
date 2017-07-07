@@ -9,10 +9,12 @@
 import UIKit
 
 class HomeApplicationStatusCell: UICollectionViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet var headerLabel: UILabel!
+    @IBOutlet var avatar: RoundImageView!
+    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var centerLabel: UILabel!
+    @IBOutlet var bottomLabel: UILabel!
+    @IBOutlet var messageCountLabel: UILabel!
 
 }
