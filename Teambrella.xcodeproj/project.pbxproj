@@ -237,6 +237,9 @@
 		6DB8122B1EE715DA00B202CE /* DiscussionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB812291EE715DA00B202CE /* DiscussionCell.xib */; };
 		6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC230691ED07F0500FAC330 /* Key.swift */; };
 		6DCB19441F0F878500AC9969 /* Home.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19421F0F878500AC9969 /* Home.strings */; };
+		6DCB19471F0FD33400AC9969 /* Fill.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19451F0FD33400AC9969 /* Fill.sks */; };
+		6DCB19481F0FD33400AC9969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19461F0FD33400AC9969 /* Assets.xcassets */; };
+		6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */; };
 		6DCB9F551EC9FF20000B48C4 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */; };
 		6DCB9F571ECA0A45000B48C4 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F561ECA0A45000B48C4 /* Decimal.swift */; };
 		6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC31E93A6920092D3F2 /* Services.swift */; };
@@ -592,6 +595,9 @@
 		6DB812291EE715DA00B202CE /* DiscussionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscussionCell.xib; path = View/Cells/DiscussionCell.xib; sourceTree = "<group>"; };
 		6DC230691ED07F0500FAC330 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		6DCB19431F0F878500AC9969 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
+		6DCB19451F0FD33400AC9969 /* Fill.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Fill.sks; path = Effects/Fill.sks; sourceTree = "<group>"; };
+		6DCB19461F0FD33400AC9969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Effects/Assets.xcassets; sourceTree = "<group>"; };
+		6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		6DCB9F561ECA0A45000B48C4 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decimal.swift; path = Helpers/Extensions/Decimal.swift; sourceTree = "<group>"; };
 		6DCC7AC31E93A6920092D3F2 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Model/Services/Services.swift; sourceTree = "<group>"; };
@@ -693,6 +699,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */,
 				E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */,
 				6D9CC6331ED7207E007F936E /* XLPagerTabStrip.framework in Frameworks */,
 				6DDE956B1EE80FE40019DA47 /* ImageSlideshow.framework in Frameworks */,
@@ -1132,6 +1139,7 @@
 				6DA475DC1E8BCAA000B56D9B /* SupportingFiles */,
 				6DD7F4191EB9DAF4001E7733 /* View */,
 				6D83EC8C1EDD708A000412DC /* Controller */,
+				6DCB19491F0FD96E00AC9969 /* Effects */,
 			);
 			path = Teambrella;
 			sourceTree = "<group>";
@@ -1358,6 +1366,15 @@
 			name = Sort;
 			sourceTree = "<group>";
 		};
+		6DCB19491F0FD96E00AC9969 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				6DCB19451F0FD33400AC9969 /* Fill.sks */,
+				6DCB19461F0FD33400AC9969 /* Assets.xcassets */,
+			);
+			name = Effects;
+			sourceTree = "<group>";
+		};
 		6DCC7AC91E9551B40092D3F2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -1490,6 +1507,7 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				6DA8D54E1F0E43B7000A4DB7 /* PKHUD.framework */,
 				94C89AD51F0104CC00C6D8F7 /* QRCode.framework */,
 				6DF2E8C01EF0346F00C8D60B /* Starscream.framework */,
@@ -1678,9 +1696,11 @@
 				6D69DA221EFD19BF00DED5CE /* WalletHeaderCell.xib in Resources */,
 				6D69DA001EFC32CB00DED5CE /* UserIndexCell.xib in Resources */,
 				6D69DA0C1EFC36C000DED5CE /* InfoHeader.xib in Resources */,
+				6DCB19471F0FD33400AC9969 /* Fill.sks in Resources */,
 				6D097EA81E9D220A00E77DAB /* General.strings in Resources */,
 				6D097E9C1E9D1AD200E77DAB /* Test.stringsdict in Resources */,
 				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
+				6DCB19481F0FD33400AC9969 /* Assets.xcassets in Resources */,
 				6DE793301EF810DB005F4508 /* ChatCell.xib in Resources */,
 				6D0E057A1EFEC7A400604981 /* ReportTextFieldCell.xib in Resources */,
 				94E325BE1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib in Resources */,

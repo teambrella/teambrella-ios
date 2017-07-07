@@ -7,6 +7,7 @@
 //
 
 import PKHUD
+import SpriteKit
 import UIKit
 
 class HomeVC: UIViewController, TabRoutable {
@@ -27,11 +28,13 @@ class HomeVC: UIViewController, TabRoutable {
     @IBOutlet var rightBrickAvatarView: UIImageView!
     @IBOutlet var rightBrickAmountLabel: UILabel!
     @IBOutlet var rightBrickCurrencyLabel: UILabel!
+    @IBOutlet var confettiView: UIImageView!
     
     @IBOutlet var pageControl: UIPageControl!
     
     @IBOutlet var itemCard: ItemCard!
     
+    @IBOutlet var emitterScene: SKView!
     var dataSource: HomeDataSource = HomeDataSource()
     
     override func awakeFromNib() {
@@ -61,8 +64,28 @@ class HomeVC: UIViewController, TabRoutable {
         itemCard.avatarView.addGestureRecognizer(touch)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollViewDidScroll(collectionView)
+        
+        service.router.setMyTabImage(with: #imageLiteral(resourceName: "teammateF"))
+        addEmitter()
+    }
+    
+    func addEmitter() {
+        let skScene: SKScene = SKScene(size: emitterScene.frame.size)
+        skScene.scaleMode = .aspectFit
+        skScene.backgroundColor = .clear
+        if let emitter: SKEmitterNode = SKEmitterNode(fileNamed: "Fill.sks") {
+            emitter.position = CGPoint(x: emitterScene.center.x, y: emitterScene.frame.maxY)
+            skScene.addChild(emitter)
+            emitterScene.presentScene(skScene)
+            emitterScene.allowsTransparency = true
+        }
+    }
+    
     func tapItem() {
-
+        
     }
     
     func setup() {
@@ -95,13 +118,6 @@ class HomeVC: UIViewController, TabRoutable {
         pageControl.numberOfPages = dataSource.cardsCount
         
         HUD.hide()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        scrollViewDidScroll(collectionView)
-        
-        service.router.setMyTabImage(with: #imageLiteral(resourceName: "teammateF"))
     }
     
     override func didReceiveMemoryWarning() {

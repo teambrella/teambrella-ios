@@ -20,7 +20,8 @@ class WalletFundingCell: UICollectionViewCell, XIBInitableCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        upperNumberView.alignmentType = .leading
+        lowerNumberView.alignmentType = .leading
     }
 
 }

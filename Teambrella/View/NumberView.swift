@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class NumberView: UIView, XIBInitable {
     enum AlignmentType {
-        case left, middle, right
+        case leading, middle, trailing
     }
     
     @IBOutlet var titleLabel: UILabel!
@@ -28,8 +28,6 @@ class NumberView: UIView, XIBInitable {
     @IBOutlet var leadingXConstraint: NSLayoutConstraint!
     @IBOutlet var trailingXConstraint: NSLayoutConstraint!
     
-    
-    
     var contentView: UIView!
     
     var alignmentType: AlignmentType = .middle {
@@ -37,16 +35,19 @@ class NumberView: UIView, XIBInitable {
             let constraints: [NSLayoutConstraint] = [leadingXConstraint, centerXConstraint, trailingXConstraint]
             let idx: Int!
             switch alignmentType {
-            case .left:
+            case .leading:
                 idx = 0
+                titleLabel.textAlignment = .left
             case .middle:
                 idx = 1
-            case .right:
+                titleLabel.textAlignment = .center
+            case .trailing:
                 idx = 2
+                titleLabel.textAlignment = .right
             }
-            for (i, constraint) in constraints.enumerated() {
-                constraint.isActive = i == idx
-            }
+           NSLayoutConstraint.deactivate(constraints)
+            NSLayoutConstraint.activate([constraints[idx]])
+            setNeedsLayout()
         }
     }
     

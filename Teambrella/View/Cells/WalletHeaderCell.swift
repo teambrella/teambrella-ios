@@ -18,6 +18,7 @@ class WalletHeaderCell: UICollectionViewCell, XIBInitableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        numberBar.left?.alignmentType = .leading
     }
 
 }

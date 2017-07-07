@@ -52,13 +52,20 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Frank!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4a4-Xz-swb" customClass="HeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti-home" translatesAutoresizingMaskIntoConstraints="NO" id="5dq-54-aqk">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                            </imageView>
+                            <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5X-w5-AtE" customClass="SKView">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Frank!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4a4-Xz-swb" customClass="HeaderLabel" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="134.5" y="45" width="106" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here's what's new for you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiM-JO-zmq" customClass="SubheaderLabel" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here's what's new for you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiM-JO-zmq" customClass="SubheaderLabel" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="82" y="75" width="211" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
@@ -112,25 +119,25 @@
                                                             <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OD5-cP-eZ5">
-                                                            <rect key="frame" x="0.0" y="56" width="854" height="54"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OD5-cP-eZ5">
+                                                            <rect key="frame" x="0.0" y="56" width="325" height="54"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xle-t4-lRz" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="402" height="54"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="162" height="54"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oW-X3-CUj" userLabel="Vertical separator">
-                                                                    <rect key="frame" x="402" y="0.0" width="50" height="54"/>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0oW-X3-CUj" userLabel="Vertical separator">
+                                                                    <rect key="frame" x="162" y="0.0" width="1" height="54"/>
                                                                     <color key="backgroundColor" red="0.80784313725490198" green="0.84705882352941175" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="1" id="4OP-Co-AjU"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d71-a1-tb0" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
-                                                                    <rect key="frame" x="452" y="0.0" width="402" height="54"/>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d71-a1-tb0" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
+                                                                    <rect key="frame" x="163" y="0.0" width="162" height="54"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="YES"/>
@@ -446,17 +453,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="j5X-w5-AtE" firstAttribute="height" secondItem="C2W-oM-PML" secondAttribute="height" id="06Z-p7-ACe"/>
                             <constraint firstItem="tb2-DR-8f0" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leadingMargin" id="0xj-LZ-IFc"/>
                             <constraint firstItem="e4b-GY-6BP" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" constant="24" id="2XC-hP-iMB"/>
+                            <constraint firstItem="5dq-54-aqk" firstAttribute="centerX" secondItem="C2W-oM-PML" secondAttribute="centerX" id="4tc-yX-BCw"/>
                             <constraint firstItem="V5d-hm-oOR" firstAttribute="top" secondItem="6dX-2w-nrX" secondAttribute="bottom" id="5hO-pt-ZVc"/>
                             <constraint firstItem="KiM-JO-zmq" firstAttribute="centerX" secondItem="EQb-ak-Vz0" secondAttribute="centerX" id="6BY-4f-exk"/>
                             <constraint firstAttribute="trailing" secondItem="C2W-oM-PML" secondAttribute="trailing" id="8aq-7p-OLa"/>
                             <constraint firstItem="tb2-DR-8f0" firstAttribute="top" secondItem="e4b-GY-6BP" secondAttribute="bottom" constant="16" id="9OD-96-D6a"/>
                             <constraint firstItem="V5d-hm-oOR" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" id="EYt-Zk-OXE"/>
+                            <constraint firstItem="5dq-54-aqk" firstAttribute="width" secondItem="C2W-oM-PML" secondAttribute="width" id="EgH-9g-XY4"/>
+                            <constraint firstItem="j5X-w5-AtE" firstAttribute="centerX" secondItem="C2W-oM-PML" secondAttribute="centerX" id="F5k-Uw-8Kf"/>
                             <constraint firstItem="6dX-2w-nrX" firstAttribute="centerX" secondItem="C2W-oM-PML" secondAttribute="centerX" id="JSq-zM-gnJ"/>
+                            <constraint firstItem="j5X-w5-AtE" firstAttribute="centerY" secondItem="C2W-oM-PML" secondAttribute="centerY" id="MNG-IX-dlI"/>
                             <constraint firstItem="C2W-oM-PML" firstAttribute="top" secondItem="11u-Xw-Wfu" secondAttribute="bottom" constant="-20" id="O6I-LG-Y1O"/>
                             <constraint firstAttribute="trailing" secondItem="V5d-hm-oOR" secondAttribute="trailing" id="OER-6M-MZA"/>
                             <constraint firstItem="cDk-QT-stB" firstAttribute="height" secondItem="C2W-oM-PML" secondAttribute="height" multiplier="0.3" id="PZM-9A-8Rv"/>
+                            <constraint firstItem="4a4-Xz-swb" firstAttribute="width" secondItem="C2W-oM-PML" secondAttribute="width" id="QGU-ma-qgK"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="bottom" secondItem="6dX-2w-nrX" secondAttribute="top" id="QKZ-AE-Tly"/>
                             <constraint firstItem="cDk-QT-stB" firstAttribute="centerX" secondItem="C2W-oM-PML" secondAttribute="centerX" id="SEd-yk-Efh"/>
                             <constraint firstItem="C2W-oM-PML" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" id="V2I-9j-3K8"/>
@@ -464,21 +477,26 @@
                             <constraint firstItem="KiM-JO-zmq" firstAttribute="top" secondItem="4a4-Xz-swb" secondAttribute="bottom" id="Vf6-ld-D2g"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tb2-DR-8f0" secondAttribute="trailing" id="Vqn-0C-e9Q"/>
                             <constraint firstItem="C2W-oM-PML" firstAttribute="bottom" secondItem="EQb-ak-Vz0" secondAttribute="centerY" id="bco-sR-Opi"/>
+                            <constraint firstItem="5dq-54-aqk" firstAttribute="height" secondItem="C2W-oM-PML" secondAttribute="height" id="cGY-jJ-WyR"/>
                             <constraint firstItem="6dX-2w-nrX" firstAttribute="bottom" secondItem="C2W-oM-PML" secondAttribute="bottom" id="eXD-ub-Tdp"/>
                             <constraint firstItem="5YU-fw-qBY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tb2-DR-8f0" secondAttribute="bottom" constant="16" id="gPm-Zg-h8a"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="leading" secondItem="C2W-oM-PML" secondAttribute="leading" id="gaE-R3-73D"/>
                             <constraint firstItem="e4b-GY-6BP" firstAttribute="top" secondItem="V5d-hm-oOR" secondAttribute="bottom" constant="16" id="hD9-7n-gzN"/>
                             <constraint firstItem="4a4-Xz-swb" firstAttribute="top" secondItem="11u-Xw-Wfu" secondAttribute="bottom" constant="25" id="jya-hV-Xyf"/>
                             <constraint firstAttribute="trailing" secondItem="e4b-GY-6BP" secondAttribute="trailing" constant="24" id="kdu-i6-mcE"/>
+                            <constraint firstItem="j5X-w5-AtE" firstAttribute="width" secondItem="C2W-oM-PML" secondAttribute="width" id="nVd-yK-Q88"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="top" secondItem="KiM-JO-zmq" secondAttribute="bottom" constant="20" id="o0l-aA-tkP"/>
                             <constraint firstItem="4a4-Xz-swb" firstAttribute="centerX" secondItem="EQb-ak-Vz0" secondAttribute="centerX" id="s4Y-hU-sFa"/>
                             <constraint firstItem="cDk-QT-stB" firstAttribute="bottom" secondItem="C2W-oM-PML" secondAttribute="bottom" id="sC0-0b-clh"/>
                             <constraint firstItem="cDk-QT-stB" firstAttribute="width" secondItem="C2W-oM-PML" secondAttribute="width" id="tRC-9G-5Em"/>
+                            <constraint firstItem="5dq-54-aqk" firstAttribute="centerY" secondItem="C2W-oM-PML" secondAttribute="centerY" id="vax-H4-BtU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="dag-aB-Trr"/>
                     <connections>
                         <outlet property="collectionView" destination="dWk-hB-e7I" id="vMm-7v-iEk"/>
+                        <outlet property="confettiView" destination="5dq-54-aqk" id="9Qd-pU-RQ5"/>
+                        <outlet property="emitterScene" destination="j5X-w5-AtE" id="QRn-By-l2T"/>
                         <outlet property="gradientView" destination="C2W-oM-PML" id="rse-8A-FIw"/>
                         <outlet property="greetingsSubtitileLabel" destination="KiM-JO-zmq" id="9vy-vt-HNR"/>
                         <outlet property="greetingsTitleLabel" destination="4a4-Xz-swb" id="xEA-GF-4P5"/>
@@ -521,6 +539,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="confetti-home" width="375" height="219"/>
         <image name="iconCoverage" width="32" height="30"/>
         <image name="iconHome" width="17" height="19"/>
         <image name="iconWallet" width="30" height="26"/>

@@ -590,7 +590,7 @@
                                                     <state key="normal" image="info"/>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8EQ-Lc-N7f" customClass="NumberBar" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="163.5" width="1138.5" height="48"/>
+                                                    <rect key="frame" x="16" y="163.5" width="317" height="48"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="YTA-xF-yq9"/>
@@ -655,7 +655,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efK-pn-UrS" customClass="NumberBar" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="59" width="759" height="64"/>
+                                                    <rect key="frame" x="16" y="59" width="317" height="64"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="64" id="pXK-ra-Rl2"/>
