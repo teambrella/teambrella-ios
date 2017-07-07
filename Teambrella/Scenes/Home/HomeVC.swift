@@ -75,13 +75,21 @@ class HomeVC: UIViewController, TabRoutable {
         rightBrickCurrencyLabel.text = dataSource.currency
         
         if let name = model.name.components(separatedBy: " ").first {
-            greetingsTitleLabel.text = "Hi " + name + "!"
+            greetingsTitleLabel.text = "Home.salutation".localized(name)
         }
+        greetingsSubtitileLabel.text = "Home.subtitle".localized
+        
+        leftBrickTitleLabel.text = "Home.leftBrick.title".localized
+        rightBrickTitleLabel.text = "Home.rightBrick.title".localized
         
         itemCard.avatarView.showImage(string: model.smallPhoto)
         itemCard.titleLabel.text = model.objectName
+        itemCard.statusLabel.text = "Home.itemCard.status".localized
+        itemCard.subtitleLabel.text = "Home.itemCard.coverageType".localized
         
-        let buttonTitle = model.haveVotingClaims ? "Submit Another Claim" : "Submit Claim"
+        let buttonTitle = model.haveVotingClaims
+            ? "Home.submitButton.anotherClaim".localized
+            : "Home.submitButton.claim".localized
         submitClaimButton.setTitle(buttonTitle, for: .normal)
         
         pageControl.numberOfPages = dataSource.cardsCount
