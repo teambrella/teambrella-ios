@@ -91,7 +91,7 @@ struct TeammateCellBuilder {
         guard let object = teammate.extended?.object else { return }
         
         if let imageString = object.smallPhotos.first {
-            cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: imageString)))
+            cell.avatarView.showImage(string: imageString)
         }
         cell.button.setTitle("Team.TeammateCell.buttonTitle_format_i".localized(object.claimCount), for: .normal)
     }

@@ -1197,6 +1197,9 @@
                                         <state key="normal" title="Reset Vote">
                                             <color key="titleColor" red="0.2784313725" green="0.34509803919999998" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tapResetVote:" destination="STV-3g-kde" eventType="touchUpInside" id="RAk-kB-7zu"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N08-ij-grF" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
                                         <rect key="frame" x="8" y="16" width="60.5" height="12"/>

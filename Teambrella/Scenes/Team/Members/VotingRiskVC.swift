@@ -41,7 +41,7 @@ class VotingRiskVC: UIViewController {
     
     // Risk value changed
     var onVoteUpdate: ((Double) -> Void)?
-    var onVoteConfirmed: ((Double) -> Void)?
+    var onVoteConfirmed: ((Double?) -> Void)?
     
     var votingScroller: VotingScrollerVC!
     
@@ -166,6 +166,17 @@ class VotingRiskVC: UIViewController {
     
     func offsetFrom(risk: Double, in controller: VotingScrollerVC) -> CGFloat {
         return CGFloat(log(base: 25, value: pow(risk * 5, Double(controller.maxValue))))
+    }
+    
+    @IBAction func tapResetVote(_ sender: UIButton) {
+        onVoteConfirmed?(nil)
+        teamVoteLabel.text = "..."
+        if let proxyVote = teammate?.extended?.voting?.proxyVote {
+            let offset = offsetFrom(risk: proxyVote, in: votingScroller)
+            votingScroller.scrollTo(offset: offset)
+        } else {
+            votingScroller.scrollToTeamAverage()
+        }
     }
     
 }
