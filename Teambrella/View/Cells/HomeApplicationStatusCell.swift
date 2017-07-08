@@ -17,4 +17,6 @@ class HomeApplicationStatusCell: UICollectionViewCell {
     @IBOutlet var bottomLabel: UILabel!
     @IBOutlet var messageCountLabel: UILabel!
 
+    @IBAction func tapButton(_ sender: Any) {
+    }    
 }

@@ -94,6 +94,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcJ-7m-A2v">
                                 <rect key="frame" x="0.0" y="146" width="328" height="52"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reY-M1-Hcp">
+                                        <rect key="frame" x="0.0" y="0.0" width="328" height="52"/>
+                                        <connections>
+                                            <action selector="tapButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="OI1-lj-Cwi"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yY-td-Cnb">
                                         <rect key="frame" x="16" y="9" width="272" height="27"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
@@ -122,14 +128,18 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="ccf-4d-gEV" firstAttribute="leading" secondItem="SJe-dF-Ewp" secondAttribute="trailing" constant="11" id="3uX-8a-Squ"/>
+                                    <constraint firstAttribute="trailing" secondItem="reY-M1-Hcp" secondAttribute="trailing" id="Brj-MI-TZD"/>
                                     <constraint firstItem="SJe-dF-Ewp" firstAttribute="centerY" secondItem="2yY-td-Cnb" secondAttribute="centerY" id="DMr-mr-cnl"/>
                                     <constraint firstAttribute="height" constant="52" id="KLC-XQ-NVr"/>
                                     <constraint firstAttribute="trailing" secondItem="2yY-td-Cnb" secondAttribute="trailing" constant="40" id="TVP-oh-bPz"/>
                                     <constraint firstAttribute="bottom" secondItem="2yY-td-Cnb" secondAttribute="bottom" constant="16" id="auC-dh-ssf"/>
+                                    <constraint firstItem="reY-M1-Hcp" firstAttribute="leading" secondItem="xcJ-7m-A2v" secondAttribute="leading" id="dfE-W9-zjJ"/>
                                     <constraint firstItem="2yY-td-Cnb" firstAttribute="leading" secondItem="xcJ-7m-A2v" secondAttribute="leading" constant="16" id="h4b-A0-rwg"/>
+                                    <constraint firstAttribute="bottom" secondItem="reY-M1-Hcp" secondAttribute="bottom" id="jRt-cm-r4G"/>
                                     <constraint firstAttribute="bottom" secondItem="ccf-4d-gEV" secondAttribute="bottom" constant="23" id="n7B-ca-QkX"/>
                                     <constraint firstAttribute="trailing" secondItem="ccf-4d-gEV" secondAttribute="trailing" constant="16" id="sv8-5L-meb"/>
                                     <constraint firstItem="SJe-dF-Ewp" firstAttribute="centerY" secondItem="ccf-4d-gEV" secondAttribute="centerY" id="vLi-Vu-6Hb"/>
+                                    <constraint firstItem="reY-M1-Hcp" firstAttribute="top" secondItem="xcJ-7m-A2v" secondAttribute="top" id="wrF-4E-pE8"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -29,3 +29,7 @@
 "Home.ApplicationAcceptedCell.headerLabel" = "Congratulations";
 "Home.ApplicationAcceptedCell.centerLabel" = "Team application approved";
 "Home.ApplicationAcceptedCell.learnAboutCoverageButton" = "Learn about Coverage";
+
+"Home.ApplicationStatusCell.headerLabel" = "Yummygum team members have %d %s left to review your applications.";
+"Home.ApplicationStatusCell.titleLabel" = "Your application";
+"Home.ApplicationStatusCell.centerLabel" = "VOTE ( PENDING )";
