@@ -99,8 +99,8 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         guard let model = dataSource.model else { return }
         
         leftBrickAmountLabel.text = String(format: "%.0f", model.coverage * 100)
-        rightBrickAmountLabel.text = String.formattedNumber(double: model.balance)
-        rightBrickCurrencyLabel.text = dataSource.currency
+        rightBrickAmountLabel.text = String.formattedNumber(model.balance * 1000)
+        rightBrickCurrencyLabel.text = "mBTC"
         
         if let name = model.name.components(separatedBy: " ").first {
             greetingsTitleLabel.text = "Home.salutation".localized(name)
@@ -177,7 +177,7 @@ extension HomeVC: UICollectionViewDataSource {
             
             guard let model = dataSource[indexPath] else { return }
             
-            cell.leftNumberView.amountLabel.text = String.formattedNumber(double: model.amount)
+            cell.leftNumberView.amountLabel.text = String.formattedNumber(model.amount)
             cell.leftNumberView.titleLabel.text = "CLAIMED"
             cell.leftNumberView.currencyLabel.text = dataSource.currency
             

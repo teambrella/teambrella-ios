@@ -44,8 +44,8 @@ struct JoinTeamCellBuilder {
         cell.greetingLabel.text = "Team.JoinTeamVC.GreetingCell.greeting".localized("Frank")
         CellDecorator.roundedEdges(for: cell)
         CellDecorator.shadow(for: cell)
-        let boldString = "Deductable Savers " //
-        let nonBoldString = "team are the best team for insuring olders cars. We’re just going to need a few details." //
+        let boldString = "Deductable Savers "
+        let nonBoldString = "team are the best team for insuring olders cars. We’re just going to need a few details."
         let resultString = boldString + nonBoldString
         let range = NSRange(location: boldString.characters.count, length: nonBoldString.characters.count)
         cell.textLabel.attributedText =  resultString.attributedBoldString(nonBoldRange: range)

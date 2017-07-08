@@ -67,18 +67,20 @@ extension String {
         return attrStr
     }
     
-    static func formattedNumber(double: Double) -> String {
+    static func formattedNumber(_ double: Double) -> String {
+        guard double < 1000 else { return String(format: "%.0f", double) }
+        
         return double.truncatingRemainder(dividingBy: 1) < 0.01
             ? String(format: "%.0f", double)
             : String(format: "%.2f", double)
     }
     
-    static func formattedNumber(float: Float) -> String {
-        return formattedNumber(double: Double(float))
+    static func formattedNumber(_ float: Float) -> String {
+        return formattedNumber(Double(float))
     }
     
-    static func formattedNumber(cgFloat: CGFloat) -> String {
-        return formattedNumber(double: Double(cgFloat))
+    static func formattedNumber(_ cgFloat: CGFloat) -> String {
+        return formattedNumber(Double(cgFloat))
     }
     
 }

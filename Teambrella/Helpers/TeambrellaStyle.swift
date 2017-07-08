@@ -46,6 +46,10 @@ struct TeambrellaStyle {
         currency.font = UIFont.teambrellaBold(size: 9)
         currency.textColor = .darkSkyBlue
         
+        let currencyNormal = CurrencyNormalLabel.appearance()
+        currencyNormal.font = UIFont.teambrellaBold(size: 23)
+        currencyNormal.textColor = .darkSkyBlue
+        
         let badge = BadgeLabel.appearance()
         badge.font = UIFont.teambrella(size: 9)
         badge.textColor = .white

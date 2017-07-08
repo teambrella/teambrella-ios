@@ -91,7 +91,7 @@ class VotingRiskVC: UIViewController {
                                     max: nil)
         
         if let risk = voting.riskVoted {
-            teamRiskValue.text = String.formattedNumber(double: risk)
+            teamRiskValue.text = String.formattedNumber(risk)
         }
     }
     

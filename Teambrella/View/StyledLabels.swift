@@ -28,6 +28,10 @@ class CurrencyLabel: Label {
     
 }
 
+class CurrencyNormalLabel: Label {
+    
+}
+
 class BadgeLabel: Label {
     
 }

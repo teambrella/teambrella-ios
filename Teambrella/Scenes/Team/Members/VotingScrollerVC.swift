@@ -161,7 +161,7 @@ extension VotingScrollerVC: UICollectionViewDelegate {
             //cell.heightConstraint = cell.heightConstraint.setMultiplier(multiplier: multiplier)
             cell.columnHeightConstraint.constant = (cell.bounds.height - cell.topLabel.frame.height)
                 * multiplier + cell.topLabel.frame.height / 2
-            cell.topLabel.text = String.formattedNumber(double: model.riskCoefficient)
+            cell.topLabel.text = String.formattedNumber(model.riskCoefficient)
             cell.centerLabel.text = model.isTeamAverage ? "TEAM\nAVG" : ""
             cell.topLabel.clipsToBounds = true
             cell.topLabel.layer.cornerRadius = 3
