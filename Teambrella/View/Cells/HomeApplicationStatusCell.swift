@@ -19,4 +19,10 @@ class HomeApplicationStatusCell: UICollectionViewCell, XIBInitableCell {
 
     @IBAction func tapButton(_ sender: Any) {
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        CellDecorator.roundedEdges(for: self)
+        CellDecorator.shadow(for: self)
+    }
 }

@@ -15,4 +15,10 @@ class HomeApplicationAcceptedCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var centerLabel: UILabel!
     @IBOutlet var button: BorderedButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        CellDecorator.roundedEdges(for: self)
+        CellDecorator.shadow(for: self)
+    }
 }
