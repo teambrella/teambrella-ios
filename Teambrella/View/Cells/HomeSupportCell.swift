@@ -8,10 +8,10 @@
 
 import UIKit
 
-class HomeSupportCell: UICollectionViewCell {
+class HomeSupportCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var backView: UIView!
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet var headerLabel: UILabel!   
+    @IBOutlet var headerLabel: UILabel!
     @IBOutlet var centerLabel: UILabel!
     @IBOutlet var bottomLabel: UILabel!
     @IBOutlet var button: BorderedButton!

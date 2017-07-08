@@ -9,6 +9,9 @@
 import Foundation
 
 class HomeDataSource {
+    var cellModels: [HomeCellModel] = []
+    var count: Int { return cellModels.count }
+    
     var model: HomeScreenModel?
     var cardsCount: Int { return model?.cards.count ?? 0 }
     var onUpdate: (() -> Void)?
@@ -30,5 +33,19 @@ class HomeDataSource {
         
         return model.cards[indexPath.row]
     }
+    /*
+     subscript(indexPath: IndexPath) -> HomeCellModel {
+     return cellModels[indexPath.row]
+     }
+     */
     
+}
+
+extension HomeDataSource {
+    func createFakeCells() {
+        cellModels = [HomeSupportCellModel(),
+                      HomeApplicationDeniedCellModel(),
+                      HomeApplicationAcceptedCellModel(),
+                      HomeApplicationStatusCellModel()]
+    }
 }

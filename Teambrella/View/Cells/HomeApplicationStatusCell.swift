@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeApplicationStatusCell: UICollectionViewCell {
+class HomeApplicationStatusCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var avatar: RoundImageView!
     @IBOutlet var timeLabel: UILabel!
@@ -18,5 +18,5 @@ class HomeApplicationStatusCell: UICollectionViewCell {
     @IBOutlet var messageCountLabel: UILabel!
 
     @IBAction func tapButton(_ sender: Any) {
-    }    
+    }
 }

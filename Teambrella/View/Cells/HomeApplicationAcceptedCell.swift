@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeApplicationAcceptedCell: UICollectionViewCell {
+class HomeApplicationAcceptedCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var backView: RadarView!
     @IBOutlet var avatar: RoundImageView!
     @IBOutlet var yummigum: UIImageView!
