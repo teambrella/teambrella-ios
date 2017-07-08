@@ -6,11 +6,9 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-// -------------------- waiting for translation :) -------------------- //
 "Proxy.MyProxiesVC.indicatorTitle"  = "My Proxies";
 "Proxy.ProxyForVC.indicatorTitle"   = "Proxy for";
 "Proxy.UserIndexVC.indicatorTitle"  = "User index";
-
 "Proxy.SortVC.SortByHeader"         = "SORT BY";
 "Proxy.SortVC.Cell.Rating"          = "Rating";
 "Proxy.SortVC.Cell.Rating.HighLow"  = "HIGH-LOW";
