@@ -20,10 +20,17 @@ class ItemCard: UIView, XIBInitable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         xibSetup()
+        setup()
+    }
+    
+    func setup() {
+        avatarView.layer.cornerRadius = 2
+        avatarView.layer.masksToBounds = true
     }
 }

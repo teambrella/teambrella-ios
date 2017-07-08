@@ -10,7 +10,10 @@ import PKHUD
 import SpriteKit
 import UIKit
 
-class HomeVC: UIViewController, TabRoutable {
+class HomeVC: UIViewController, TabRoutable, PagingDraggable {
+    struct Constant {
+        static let cardInterval: CGFloat = 24
+    }
     let tabType: TabType = .home
     
     @IBOutlet var gradientView: GradientView!
@@ -31,6 +34,8 @@ class HomeVC: UIViewController, TabRoutable {
     @IBOutlet var confettiView: UIImageView!
     
     @IBOutlet var pageControl: UIPageControl!
+    var draggablePageWidth: Float { return Float(cardWidth) }
+    var cardWidth: CGFloat { return collectionView.bounds.width - Constant.cardInterval * 2 }
     
     @IBOutlet var itemCard: ItemCard!
     
@@ -143,6 +148,13 @@ class HomeVC: UIViewController, TabRoutable {
     @IBAction func tapRightBrick(_ sender: Any) {
         service.router.showWallet()
     }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                   withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        pagerWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+    }
+    
 }
 
 extension HomeVC: UICollectionViewDataSource {
@@ -161,7 +173,7 @@ extension HomeVC: UICollectionViewDataSource {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         if let cell = cell as? HomeCollectionCell {
-            cell.setupShadow()
+           // cell.setupShadow()
             
             guard let model = dataSource[indexPath] else { return }
             
@@ -186,21 +198,17 @@ extension HomeVC: UICollectionViewDataSource {
         let center = view.bounds.midX
         let cells = collectionView.visibleCells
         var nearest = CGFloat.greatestFiniteMagnitude
-        var idx = 0
         for cell in cells {
             let cellCenter = collectionView.convert(cell.center, to: view)
             let newNearest = abs(center - cellCenter.x)
             if  newNearest < nearest {
                 nearest = newNearest
-                let index = collectionView.indexPath(for: cell)
-                idx = index?.row ?? 0
             }
             
             let scaleMultiplier = 1 - 0.07 * (newNearest / 100)
             let scaleTransform = CATransform3DMakeScale(scaleMultiplier, scaleMultiplier, 1.0)
             cell.layer.transform = scaleTransform
         }
-        pageControl.currentPage = idx
     }
 }
 
@@ -212,6 +220,6 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 20, height: collectionView.bounds.height)
+        return CGSize(width: cardWidth, height: collectionView.bounds.height)
     }
 }

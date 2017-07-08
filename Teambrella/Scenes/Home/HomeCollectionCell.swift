@@ -25,17 +25,23 @@ class HomeCollectionCell: UICollectionViewCell {
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var unreadCountView: RoundImageView!
     
-    func setupShadow() {
-       containerView.layer.cornerRadius = Constant.cornerRadius
-       containerView.layer.masksToBounds = true
-        
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.layer.shadowRadius = Constant.shadowRadius
-        self.layer.shadowOpacity = 0.5
-        self.layer.masksToBounds = false
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds,
-                                             cornerRadius: containerView.layer.cornerRadius).cgPath
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        CellDecorator.roundedEdges(for: self)
+        CellDecorator.shadow(for: self)
     }
+    
+//    func setupShadow() {
+//       containerView.layer.cornerRadius = Constant.cornerRadius
+//       containerView.layer.masksToBounds = true
+//        
+//        self.layer.shadowColor = UIColor.black.cgColor
+//        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        self.layer.shadowRadius = Constant.shadowRadius
+//        self.layer.shadowOpacity = 0.5
+//        self.layer.masksToBounds = false
+//        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds,
+//                                             cornerRadius: containerView.layer.cornerRadius).cgPath
+//    }
     
 }

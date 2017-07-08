@@ -240,6 +240,7 @@
 		6DCB19471F0FD33400AC9969 /* Fill.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19451F0FD33400AC9969 /* Fill.sks */; };
 		6DCB19481F0FD33400AC9969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19461F0FD33400AC9969 /* Assets.xcassets */; };
 		6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */; };
+		6DCB19581F11163900AC9969 /* PagingDraggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB19571F11163900AC9969 /* PagingDraggable.swift */; };
 		6DCB9F551EC9FF20000B48C4 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */; };
 		6DCB9F571ECA0A45000B48C4 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F561ECA0A45000B48C4 /* Decimal.swift */; };
 		6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC31E93A6920092D3F2 /* Services.swift */; };
@@ -599,6 +600,7 @@
 		6DCB19461F0FD33400AC9969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Effects/Assets.xcassets; sourceTree = "<group>"; };
 		6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		6DCB19561F0FF21000AC9969 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Proxy.strings; sourceTree = "<group>"; };
+		6DCB19571F11163900AC9969 /* PagingDraggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingDraggable.swift; path = Model/Protocols/PagingDraggable.swift; sourceTree = "<group>"; };
 		6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		6DCB9F561ECA0A45000B48C4 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decimal.swift; path = Helpers/Extensions/Decimal.swift; sourceTree = "<group>"; };
 		6DCC7AC31E93A6920092D3F2 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Model/Services/Services.swift; sourceTree = "<group>"; };
@@ -1412,6 +1414,7 @@
 				6DDE956F1EE814EE0019DA47 /* XIBInitableCell.swift */,
 				6DA1D0FE1F0552FF00F9DE87 /* TabRoutable.swift */,
 				6DA8D5521F0E74C9000A4DB7 /* Storage.swift */,
+				6DCB19571F11163900AC9969 /* PagingDraggable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1948,6 +1951,7 @@
 				6D9CC6351ED72252007F936E /* TeamVC.swift in Sources */,
 				6D466A9F1ED07CF1001BC579 /* BlockchainDateFormatter.swift in Sources */,
 				6DA714EB1EDF433900F39EBE /* TeammateObjectCell.swift in Sources */,
+				6DCB19581F11163900AC9969 /* PagingDraggable.swift in Sources */,
 				6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */,
 				6D466AA01ED07CF1001BC579 /* BlockchainServer.swift in Sources */,
 				6DEE67971EDC13D50098EDB3 /* RoundBadgedView.swift in Sources */,

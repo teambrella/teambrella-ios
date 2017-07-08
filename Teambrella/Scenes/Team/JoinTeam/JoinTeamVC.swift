@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JoinTeamVC: UIViewController, Routable {
+class JoinTeamVC: UIViewController, Routable, PagingDraggable {
     struct Constant {
         static var cellSpacing: CGFloat = 16
     }
@@ -32,6 +32,8 @@ class JoinTeamVC: UIViewController, Routable {
     
     var isAvatarSmall: Bool = false
     var currentItem: Int = 0
+    
+    var draggablePageWidth: Float { return Float(itemWidth + Constant.cellSpacing) }
     
     fileprivate var itemWidth: CGFloat {
         return collectionView.bounds.width - Constant.cellSpacing * 2
@@ -97,36 +99,10 @@ class JoinTeamVC: UIViewController, Routable {
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,
                                    withVelocity velocity: CGPoint,
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        let pageWidth = Float(itemWidth + Constant.cellSpacing)
-        let targetXContentOffset = Float(targetContentOffset.pointee.x)
-        let contentWidth = Float(collectionView.contentSize.width  )
-        var newPage = Float(self.pageControl.currentPage)
-        
-        if velocity.x == 0 {
-            newPage = floor( (targetXContentOffset - Float(pageWidth) / 2) / Float(pageWidth)) + 1.0
-        } else {
-            newPage = Float(velocity.x > 0 ? self.pageControl.currentPage + 1 : self.pageControl.currentPage - 1)
-            if newPage  > contentWidth / pageWidth {
-                newPage = ceil(contentWidth / pageWidth) - 1.0
-            }
-        }
-        self.pageControl.currentPage = Int(newPage)
-        let point = CGPoint (x: CGFloat(newPage * pageWidth), y: targetContentOffset.pointee.y)
-        targetContentOffset.pointee = point
+        pagerWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
     
 }
