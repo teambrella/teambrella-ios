@@ -10,10 +10,18 @@ import Foundation
 import SwiftyJSON
 
 struct HomeScreenModel {
+    enum ItemType: Int {
+        case teammate = 0
+        case claim = 1
+        case rule = 2
+        case teamChat = 3
+        case teamNotification = 100
+    }
+    
     struct Card {
         let json: JSON
         
-        var itemType: Int { return json["ItemType"].intValue }
+        var itemType: ItemType { return ItemType(rawValue: json["ItemType"].intValue) ?? .teammate }
         var itemId: Int { return json["ItemId"].intValue }
         var itemDate: Date? { return json["ItemDate"].stringValue.dateFromISO8601 }
         var smallPhoto: String { return json["SmallPhotoOrAvatar"].stringValue }
@@ -36,7 +44,7 @@ struct HomeScreenModel {
     var coverage: Double { return json["Coverage"].doubleValue }
     var objectName: String { return json["ObjectName"].stringValue }
     var smallPhoto: String { return json["SmallPhoto"].stringValue }
-    var coverageType: Int { return json["CoverageType"].intValue }
+    var coverageType: Int { return json["CoverageType"].intValue } //
     var haveVotingClaims: Bool { return json["HaveVotingClaims"].boolValue }
     
     init(json: JSON) {
