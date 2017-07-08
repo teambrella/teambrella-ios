@@ -10,10 +10,37 @@ import Foundation
 import SwiftyJSON
 
 struct HomeScreenModel {
+    enum ItemType: Int {
+        case teammate = 0
+        case claim = 1
+        case rule = 2
+        case teamChat = 3
+        case teamNotification = 100
+    }
+    
+    enum CoverageType: Int {
+        case other = 0
+        case carCollisionDeductible = 100
+        case carCollision = 101
+        case carComprehensive = 102
+        case carCollisionAndComprehensive = 104
+        case thirdParty = 103
+        case drone = 140
+        case mobile = 200
+        case homeAppliances = 220
+        case pet = 240
+        case unemployment = 260
+        case healthDental = 280
+        case healthOther = 290
+        case businessBees = 400
+        case businessCrime = 440
+        case businessLiability = 460
+    }
+    
     struct Card {
         let json: JSON
         
-        var itemType: Int { return json["ItemType"].intValue }
+        var itemType: ItemType { return ItemType(rawValue: json["ItemType"].intValue) ?? .teammate }
         var itemId: Int { return json["ItemId"].intValue }
         var itemDate: Date? { return json["ItemDate"].stringValue.dateFromISO8601 }
         var smallPhoto: String { return json["SmallPhotoOrAvatar"].stringValue }
@@ -36,7 +63,7 @@ struct HomeScreenModel {
     var coverage: Double { return json["Coverage"].doubleValue }
     var objectName: String { return json["ObjectName"].stringValue }
     var smallPhoto: String { return json["SmallPhoto"].stringValue }
-    var coverageType: Int { return json["CoverageType"].intValue }
+    var coverageType: CoverageType { return CoverageType(rawValue: json["CoverageType"].intValue) ?? .pet }
     var haveVotingClaims: Bool { return json["HaveVotingClaims"].boolValue }
     
     init(json: JSON) {

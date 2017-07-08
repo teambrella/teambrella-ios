@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeApplicationAcceptedCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="206"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="328" height="206"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHb-ff-Jnb" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="328" height="206"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sketchconfettiCopy2" translatesAutoresizingMaskIntoConstraints="NO" id="Tnd-f0-YOk">
+                                <rect key="frame" x="20" y="26" width="144" height="80.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFX-yw-yGM">
+                                <rect key="frame" x="144.5" y="88" width="39" height="18.5"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMl-Xp-lVn" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="106" width="328" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHw-iB-ftC">
+                                <rect key="frame" x="148.5" y="108.5" width="31" height="15"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
+                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfQ-nq-KVU" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="16" y="150" width="296" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hwu-yF-WaB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NEF-CU-4gO" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="140" y="24" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NEF-CU-4gO" secondAttribute="height" multiplier="1:1" id="h0D-we-wG5"/>
+                                    <constraint firstAttribute="width" constant="48" id="mvC-3d-Rh5"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iTU-xi-WRb">
+                                <rect key="frame" x="176" y="56" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iTU-xi-WRb" secondAttribute="height" multiplier="1:1" id="qgU-Be-fXx"/>
+                                    <constraint firstAttribute="width" constant="16" id="zh2-pi-iSA"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sketchconfettiCopy" translatesAutoresizingMaskIntoConstraints="NO" id="ChW-pz-iMQ">
+                                <rect key="frame" x="164" y="26" width="144" height="80.5"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lMl-Xp-lVn" firstAttribute="top" secondItem="DFX-yw-yGM" secondAttribute="bottom" id="25g-oR-exb"/>
+                            <constraint firstAttribute="bottom" secondItem="yfQ-nq-KVU" secondAttribute="bottom" constant="16" id="7Rj-GE-6vS"/>
+                            <constraint firstItem="ChW-pz-iMQ" firstAttribute="leading" secondItem="NEF-CU-4gO" secondAttribute="centerX" id="86Z-h2-NTr"/>
+                            <constraint firstItem="DFX-yw-yGM" firstAttribute="centerX" secondItem="bHb-ff-Jnb" secondAttribute="centerX" id="8hF-75-NEl"/>
+                            <constraint firstItem="dHw-iB-ftC" firstAttribute="centerX" secondItem="bHb-ff-Jnb" secondAttribute="centerX" id="9rQ-WX-55S"/>
+                            <constraint firstItem="iTU-xi-WRb" firstAttribute="bottom" secondItem="NEF-CU-4gO" secondAttribute="bottom" id="GHj-Mc-aHZ"/>
+                            <constraint firstItem="NEF-CU-4gO" firstAttribute="top" secondItem="bHb-ff-Jnb" secondAttribute="top" constant="24" id="Jj6-hr-qWn"/>
+                            <constraint firstItem="Tnd-f0-YOk" firstAttribute="bottom" secondItem="DFX-yw-yGM" secondAttribute="bottom" id="KgR-2D-hVB"/>
+                            <constraint firstAttribute="trailing" secondItem="iTU-xi-WRb" secondAttribute="trailing" constant="136" id="Lbq-CX-LZN"/>
+                            <constraint firstItem="Tnd-f0-YOk" firstAttribute="trailing" secondItem="NEF-CU-4gO" secondAttribute="centerX" id="M1C-Ok-QEJ"/>
+                            <constraint firstItem="Tnd-f0-YOk" firstAttribute="top" secondItem="bHb-ff-Jnb" secondAttribute="top" constant="26" id="Py5-ga-3MR"/>
+                            <constraint firstItem="NEF-CU-4gO" firstAttribute="centerX" secondItem="bHb-ff-Jnb" secondAttribute="centerX" id="Q70-k5-OnD"/>
+                            <constraint firstAttribute="trailing" secondItem="yfQ-nq-KVU" secondAttribute="trailing" constant="16" id="c2v-aI-SmG"/>
+                            <constraint firstItem="ChW-pz-iMQ" firstAttribute="top" secondItem="bHb-ff-Jnb" secondAttribute="top" constant="26" id="cae-Dc-oEb"/>
+                            <constraint firstItem="ChW-pz-iMQ" firstAttribute="bottom" secondItem="DFX-yw-yGM" secondAttribute="bottom" id="dj3-PV-FGi"/>
+                            <constraint firstItem="DFX-yw-yGM" firstAttribute="top" secondItem="iTU-xi-WRb" secondAttribute="bottom" constant="16" id="f2u-1M-2PU"/>
+                            <constraint firstItem="Tnd-f0-YOk" firstAttribute="leading" secondItem="bHb-ff-Jnb" secondAttribute="leading" constant="20" id="hyt-Y0-EkR"/>
+                            <constraint firstAttribute="bottom" secondItem="lMl-Xp-lVn" secondAttribute="bottom" id="jp9-AH-Lp3"/>
+                            <constraint firstItem="yfQ-nq-KVU" firstAttribute="leading" secondItem="bHb-ff-Jnb" secondAttribute="leading" constant="16" id="pY7-yL-7OR"/>
+                            <constraint firstAttribute="trailing" secondItem="ChW-pz-iMQ" secondAttribute="trailing" constant="20" id="q27-6d-PDv"/>
+                            <constraint firstItem="dHw-iB-ftC" firstAttribute="top" secondItem="DFX-yw-yGM" secondAttribute="bottom" constant="2" id="rIv-Md-OCH"/>
+                            <constraint firstAttribute="trailing" secondItem="lMl-Xp-lVn" secondAttribute="trailing" id="uE5-2d-807"/>
+                            <constraint firstItem="lMl-Xp-lVn" firstAttribute="leading" secondItem="bHb-ff-Jnb" secondAttribute="leading" id="uzr-lF-E7e"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="segments">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="diameter">
+                                <real key="value" value="130"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startWidth">
+                                <real key="value" value="40"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="coefficient">
+                                <real key="value" value="1.3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="centerY">
+                                <real key="value" value="-160"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                <real key="value" value="360"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="bHb-ff-Jnb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1XS-cZ-DzS"/>
+                <constraint firstAttribute="bottom" secondItem="bHb-ff-Jnb" secondAttribute="bottom" id="BHJ-lB-9B2"/>
+                <constraint firstItem="bHb-ff-Jnb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CnH-zc-xqa"/>
+                <constraint firstAttribute="trailing" secondItem="bHb-ff-Jnb" secondAttribute="trailing" id="SN0-u9-2y1"/>
+            </constraints>
+            <connections>
+                <outlet property="avatar" destination="NEF-CU-4gO" id="WNd-fG-cum"/>
+                <outlet property="backView" destination="bHb-ff-Jnb" id="Mb1-Uq-Erh"/>
+                <outlet property="button" destination="yfQ-nq-KVU" id="sfY-g5-Nyr"/>
+                <outlet property="centerLabel" destination="dHw-iB-ftC" id="EyS-VQ-EbW"/>
+                <outlet property="headerLabel" destination="DFX-yw-yGM" id="3Kr-wE-Tvv"/>
+                <outlet property="yummigum" destination="iTU-xi-WRb" id="zv3-iK-9Vc"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="sketchconfettiCopy" width="143" height="76"/>
+        <image name="sketchconfettiCopy2" width="143" height="76"/>
+    </resources>
+</document>

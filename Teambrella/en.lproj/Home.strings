@@ -15,3 +15,21 @@
 "Home.rightBrick.title"          = "WALLET";
 "Home.itemCard.status"           = "COVERED";
 "Home.itemCard.coverageType"     = "Collision Deductable";
+
+//
+"Home.SupportCell.headerLabel" = "Chat with Support";
+"Home.SupportCell.onlineLabel" = "ONLINE";
+"Home.SupportCell.textLabel" = "Hi %@!  Need help? We’re online during office hours (PST) for any questions.";
+"Home.SupportCell.chatButton" = "Chat with Support";
+
+"Home.ApplicationDeniedCell.headerLabel" = "Unfortunately";
+"Home.ApplicationDeniedCell.centerLabel" = "Team application was denied";
+"Home.ApplicationDeniedCell.viewAppButton" = "View Application";
+
+"Home.ApplicationAcceptedCell.headerLabel" = "Congratulations";
+"Home.ApplicationAcceptedCell.centerLabel" = "Team application approved";
+"Home.ApplicationAcceptedCell.learnAboutCoverageButton" = "Learn about Coverage";
+
+"Home.ApplicationStatusCell.headerLabel" = "%@ team members have %@ left to review your applications.";
+"Home.ApplicationStatusCell.titleLabel" = "Your application";
+"Home.ApplicationStatusCell.centerLabel" = "VOTE ( PENDING )";
