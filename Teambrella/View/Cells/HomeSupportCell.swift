@@ -16,4 +16,10 @@ class HomeSupportCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var bottomLabel: UILabel!
     @IBOutlet var button: BorderedButton!
     @IBOutlet var onlineIndicator: UIView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        CellDecorator.roundedEdges(for: self)
+        CellDecorator.shadow(for: self)
+    }
 }

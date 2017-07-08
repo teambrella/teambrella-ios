@@ -67,6 +67,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         let touch = UITapGestureRecognizer(target: self, action: #selector(tapItem))
         itemCard.avatarView.isUserInteractionEnabled = true
         itemCard.avatarView.addGestureRecognizer(touch)
+        HomeCellBuilder.registerCells(in: collectionView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -164,34 +165,14 @@ extension HomeVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print(indexPath)
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCollectionCell", for: indexPath)
-        return cell
+        return  collectionView.dequeueReusableCell(withReuseIdentifier: dataSource.cellID(for: indexPath),
+                                                   for: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        if let cell = cell as? HomeCollectionCell {
-           // cell.setupShadow()
-            
-            guard let model = dataSource[indexPath] else { return }
-            
-            cell.leftNumberView.amountLabel.text = String.formattedNumber(model.amount)
-            cell.leftNumberView.titleLabel.text = "CLAIMED"
-            cell.leftNumberView.currencyLabel.text = dataSource.currency
-            
-            cell.rightNumberView.amountLabel.text = String(format: "%.0f", model.teamVote * 100)
-            cell.rightNumberView.titleLabel.text = "TEAM VOTE"
-            cell.rightNumberView.currencyLabel.text = "%"
-            cell.rightNumberView.badgeLabel.text = "VOTING"
-            
-            cell.avatarView.showAvatar(string: model.smallPhoto)
-            if let date = model.itemDate {
-                cell.subtitleLabel.text = Formatter.teambrella.string(from: date)
-            }
-        }
-        
+        HomeCellBuilder.populate(cell: cell, with: dataSource[indexPath])
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

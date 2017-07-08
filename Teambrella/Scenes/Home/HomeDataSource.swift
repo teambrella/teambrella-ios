@@ -9,11 +9,13 @@
 import Foundation
 
 class HomeDataSource {
-    var cellModels: [HomeCellModel] = []
-    var count: Int { return cellModels.count }
-    
     var model: HomeScreenModel?
-    var cardsCount: Int { return model?.cards.count ?? 0 }
+    var cardsCount: Int {
+        guard let count = model?.cards.count else { return 0 }
+        
+        return count + 1
+    }
+    
     var onUpdate: (() -> Void)?
     
     var currency: String { return model?.currency ?? "?" }
@@ -28,24 +30,25 @@ class HomeDataSource {
         }
     }
     
+    func cellID(for indexPath: IndexPath) -> String {
+        guard let model = self[indexPath] else { return HomeSupportCell.cellID }
+        
+        return cellID(with: model)
+    }
+    
+    func cellID(with cardModel: HomeScreenModel.Card) -> String {
+        switch cardModel.itemType {
+        case .teammate:
+            return "HomeCollectionCell"
+        default:
+            return HomeSupportCell.cellID
+        }
+    }
+    
     subscript(indexPath: IndexPath) -> HomeScreenModel.Card? {
         guard let model = model, indexPath.row < model.cards.count else { return nil }
         
         return model.cards[indexPath.row]
     }
-    /*
-     subscript(indexPath: IndexPath) -> HomeCellModel {
-     return cellModels[indexPath.row]
-     }
-     */
     
-}
-
-extension HomeDataSource {
-    func createFakeCells() {
-        cellModels = [HomeSupportCellModel(),
-                      HomeApplicationDeniedCellModel(),
-                      HomeApplicationAcceptedCellModel(),
-                      HomeApplicationStatusCellModel()]
-    }
 }
