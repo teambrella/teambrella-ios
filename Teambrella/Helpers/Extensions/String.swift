@@ -53,6 +53,10 @@ extension String {
         return Formatter.iso8601.date(from: self)   // "Mar 22, 2017, 10:22 AM"
     }
     
+    var dateFromTeambrella: Date? {
+        return Formatter.teambrella.date(from: self)
+    }
+    
     func attributedBoldString(nonBoldRange: NSRange?) -> NSAttributedString {
         let fontSize = UIFont.systemFontSize
         let attrs = [

@@ -6,7 +6,6 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-// -------------------- waiting for translation :) -------------------- //
 "Home.salutation"                = "Hi, %@!";
 "Home.subtitle"                  = "Here's what's new for you";
 "Home.submitButton.anotherClaim" = "Submit Another Claim";
@@ -16,7 +15,7 @@
 "Home.itemCard.status"           = "COVERED";
 "Home.itemCard.coverageType"     = "Collision Deductable";
 
-//
+// -------------------- waiting for translation :) -------------------- //
 "Home.SupportCell.headerLabel" = "Chat with Support";
 "Home.SupportCell.onlineLabel" = "ONLINE";
 "Home.SupportCell.textLabel" = "Hi %@!  Need help? We’re online during office hours (PST) for any questions.";
@@ -33,3 +32,6 @@
 "Home.ApplicationStatusCell.headerLabel" = "%@ team members have %@ left to review your applications.";
 "Home.ApplicationStatusCell.titleLabel" = "Your application";
 "Home.ApplicationStatusCell.centerLabel" = "VOTE ( PENDING )";
+
+"Home.CoverageType.carCollisionDeductible" = "Collision Deductible";
+"Home.CoverageType.pet" = "Pet";

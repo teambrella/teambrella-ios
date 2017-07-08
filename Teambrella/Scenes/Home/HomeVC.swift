@@ -103,9 +103,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         rightBrickAmountLabel.text = String.formattedNumber(model.balance * 1000)
         rightBrickCurrencyLabel.text = "mBTC"
         
-        if let name = model.name.components(separatedBy: " ").first {
-            greetingsTitleLabel.text = "Home.salutation".localized(name)
-        }
+        greetingsTitleLabel.text = "Home.salutation".localized(dataSource.name)
         greetingsSubtitileLabel.text = "Home.subtitle".localized
         
         leftBrickTitleLabel.text = "Home.leftBrick.title".localized
@@ -114,7 +112,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         itemCard.avatarView.showImage(string: model.smallPhoto)
         itemCard.titleLabel.text = model.objectName
         itemCard.statusLabel.text = "Home.itemCard.status".localized
-        itemCard.subtitleLabel.text = "Home.itemCard.coverageType".localized
+        itemCard.subtitleLabel.text = model.coverageType.localizedName
         
         let buttonTitle = model.haveVotingClaims
             ? "Home.submitButton.anotherClaim".localized
@@ -172,7 +170,7 @@ extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        HomeCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        HomeCellBuilder.populate(cell: cell, dataSource: dataSource, model: dataSource[indexPath])
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

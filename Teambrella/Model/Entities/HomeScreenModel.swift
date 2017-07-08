@@ -35,6 +35,17 @@ struct HomeScreenModel {
         case businessBees = 400
         case businessCrime = 440
         case businessLiability = 460
+        
+        var localizedName: String {
+            var key = ""
+            switch self {
+            case .carCollisionDeductible: key = "Home.CoverageType.carCollisionDeductible"
+            case .pet: key = "Home.CoverageType.pet"
+            default:
+                break
+            }
+            return key.localized
+        }
     }
     
     struct Card {
@@ -42,13 +53,16 @@ struct HomeScreenModel {
         
         var itemType: ItemType { return ItemType(rawValue: json["ItemType"].intValue) ?? .teammate }
         var itemId: Int { return json["ItemId"].intValue }
-        var itemDate: Date? { return json["ItemDate"].stringValue.dateFromISO8601 }
+        var itemDate: Date? { return json["ItemDate"].stringValue.dateFromTeambrella }
         var smallPhoto: String { return json["SmallPhotoOrAvatar"].stringValue }
         var amount: Double { return json["Amount"].doubleValue }
         var teamVote: Double { return json["TeamVote"].doubleValue }
         var isVoting: Bool { return json["IsVoting"].boolValue }
         var text: String { return json["Text"].stringValue }
         var unreadCount: Int { return json["UnreadCount"].intValue }
+        var isMine: Bool { return json["IsMine"].boolValue }
+        var chatTitle: String? { return json["ChatTitle"].string }
+        var payProgress: Double { return json["PayProgress"].doubleValue }
     }
     
     let json: JSON

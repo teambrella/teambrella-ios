@@ -19,6 +19,7 @@ class HomeDataSource {
     var onUpdate: (() -> Void)?
     
     var currency: String { return model?.currency ?? "?" }
+    var name: String { return model?.name.components(separatedBy: " ").first ?? "" }
     
     func loadData(teamID: Int) {
         service.storage.requestHome(teamID: teamID,
@@ -38,10 +39,10 @@ class HomeDataSource {
     
     func cellID(with cardModel: HomeScreenModel.Card) -> String {
         switch cardModel.itemType {
-        case .teammate:
+        case .teammate, .claim:
             return "HomeCollectionCell"
         default:
-            return HomeSupportCell.cellID
+            return "HomeCollectionCell"
         }
     }
     

@@ -32,3 +32,6 @@
 "Home.ApplicationStatusCell.headerLabel" = "%@ team members have %@ left to review your applications.";
 "Home.ApplicationStatusCell.titleLabel" = "Your application";
 "Home.ApplicationStatusCell.centerLabel" = "VOTE ( PENDING )";
+
+"Home.CoverageType.carCollisionDeductible" = "Deducible por Colisión";
+"Home.CoverageType.pet" = "Mascota";
