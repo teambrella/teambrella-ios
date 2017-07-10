@@ -42,6 +42,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var emitterScene: SKView!
     var dataSource: HomeDataSource = HomeDataSource()
     
+    @IBOutlet var inboxButton: LabeledButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         title = "Main.home".localized
@@ -120,7 +121,9 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         submitClaimButton.setTitle(buttonTitle, for: .normal)
         
         pageControl.numberOfPages = dataSource.cardsCount
-        
+        if model.unreadCount > 0 {
+        inboxButton.cornerText = String(model.unreadCount)
+        }
         HUD.hide()
     }
     
@@ -146,6 +149,10 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     @IBAction func tapRightBrick(_ sender: Any) {
         service.router.showWallet()
+    }
+    
+    @IBAction func tapInbox(_ sender: UIButton) {
+        DeveloperTools.notSupportedAlert(in: self)
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,
