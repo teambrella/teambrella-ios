@@ -14,7 +14,7 @@ class InitialVC: UIViewController {
         super.viewDidLoad()
         // Instantly move to product version
         //performSegue(type: .teambrella)
-        getTeams()
+        performSegue(type: .login)//getTeams()
     }
     
     func getTeams() {
