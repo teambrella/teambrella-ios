@@ -43,7 +43,18 @@ class VotingRiskVC: UIViewController {
     var onVoteUpdate: ((Double) -> Void)?
     var onVoteConfirmed: ((Double?) -> Void)?
     
-    var votingScroller: VotingScrollerVC!
+    var votingScroller: VotingScrollerVC? {
+        didSet {
+            guard let votingScroller = votingScroller else { return }
+            
+            guard let vote = teammate?.extended?.voting?.myVote else {
+                votingScroller.scrollToTeamAverage()
+                return
+            }
+            
+            votingScroller.scrollTo(offset: offsetFrom(risk: vote, in: votingScroller))
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,15 +71,13 @@ class VotingRiskVC: UIViewController {
         teamAverage.text = "Team.VotingRiskVC.avgLabel".localized("-60") //
         yourAverage.text = "Team.VotingRiskVC.avgLabel".localized("+14") //
         resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
-        seeOthersButton.setTitle("Team.VotingRiskVC.othersButton", for: .normal)
+        seeOthersButton.setTitle("Team.VotingRiskVC.othersButton".localized, for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //votingScroller.scrollToTeamAverage()
-        guard let vote = teammate?.extended?.voting?.myVote, let scroller = votingScroller else { return }
-        
-        //votingScroller.scrollTo(offset: offsetFrom(risk: vote, in: scroller))
+     
     }
     
     func updateWithTeammate() {
@@ -78,7 +87,7 @@ class VotingRiskVC: UIViewController {
         update(voting: teammate.extended?.voting)
         guard let riskScale = teammate.extended?.riskScale else { return }
         
-        votingScroller.updateWithRiskScale(riskScale: riskScale)
+        votingScroller?.updateWithRiskScale(riskScale: riskScale)
         mainLabeledView.riskLabelText = String(format:"%.2f", riskScale.myRisk)
     }
     
@@ -100,7 +109,7 @@ class VotingRiskVC: UIViewController {
             guard let riskScale = teammate?.extended?.riskScale else { return }
             guard let risk = risk else { return }
             
-            let delta = riskScale.averageRisk - risk
+            let delta = risk - riskScale.averageRisk
             var text = "AVG\n"
             text += delta > 0 ? "+" : ""
             let percent = delta / riskScale.averageRisk * 100
@@ -175,6 +184,8 @@ class VotingRiskVC: UIViewController {
     }
     
     @IBAction func tapResetVote(_ sender: UIButton) {
+        guard let votingScroller = votingScroller else { return }
+        
         onVoteConfirmed?(nil)
         teamVoteLabel.text = "..."
         if let proxyVote = teammate?.extended?.voting?.proxyVote {
@@ -183,6 +194,10 @@ class VotingRiskVC: UIViewController {
         } else {
             votingScroller.scrollToTeamAverage()
         }
+    }
+    
+    @IBAction func tapOthers(_ sender: UIButton) {
+        DeveloperTools.notSupportedAlert(in: self)
     }
     
 }

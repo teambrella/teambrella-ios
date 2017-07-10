@@ -50,7 +50,7 @@ struct HomeScreenModel {
     
     struct Card {
         let json: JSON
-        
+        let text: String
         var itemType: ItemType { return ItemType(rawValue: json["ItemType"].intValue) ?? .teammate }
         var itemId: Int { return json["ItemId"].intValue }
         var itemDate: Date? { return json["ItemDate"].stringValue.dateFromTeambrella }
@@ -58,11 +58,16 @@ struct HomeScreenModel {
         var amount: Double { return json["Amount"].doubleValue }
         var teamVote: Double { return json["TeamVote"].doubleValue }
         var isVoting: Bool { return json["IsVoting"].boolValue }
-        var text: String { return json["Text"].stringValue }
+        //var text: String { return json["Text"].stringValue }
         var unreadCount: Int { return json["UnreadCount"].intValue }
         var isMine: Bool { return json["IsMine"].boolValue }
         var chatTitle: String? { return json["ChatTitle"].string }
         var payProgress: Double { return json["PayProgress"].doubleValue }
+        
+        init(json: JSON) {
+            self.json = json
+            self.text = TextAdapter().parsedHTML(string: json["Text"].stringValue)
+        }
     }
     
     let json: JSON
