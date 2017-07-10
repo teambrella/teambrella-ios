@@ -21,7 +21,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="MXU-2E-8IL">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imF-3C-Sdp" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="0.18039215689999999" green="0.23529411759999999" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.36078431370000003" green="0.4039215686" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti-color" translatesAutoresizingMaskIntoConstraints="NO" id="aNj-ZE-j1Y">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="MXU-2E-8IL">
                                 <rect key="frame" x="150" y="291" width="75" height="85"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdm-uI-Dwd">
@@ -47,14 +62,22 @@
                         </subviews>
                         <color key="backgroundColor" red="0.13333333333333333" green="0.20000000000000001" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="pEm-wK-1of" firstAttribute="top" secondItem="imF-3C-Sdp" secondAttribute="bottom" id="7yo-5G-rbG"/>
+                            <constraint firstAttribute="trailing" secondItem="imF-3C-Sdp" secondAttribute="trailing" id="Ipp-aM-ULn"/>
                             <constraint firstItem="MXU-2E-8IL" firstAttribute="centerY" secondItem="XNb-Tt-LFR" secondAttribute="centerY" id="Nwx-0P-w6n"/>
+                            <constraint firstItem="imF-3C-Sdp" firstAttribute="top" secondItem="XNb-Tt-LFR" secondAttribute="top" id="c8c-CE-DpR"/>
+                            <constraint firstAttribute="trailing" secondItem="aNj-ZE-j1Y" secondAttribute="trailing" id="krh-F6-gvn"/>
                             <constraint firstItem="MXU-2E-8IL" firstAttribute="centerX" secondItem="XNb-Tt-LFR" secondAttribute="centerX" id="lV8-d4-vhc"/>
+                            <constraint firstItem="imF-3C-Sdp" firstAttribute="leading" secondItem="XNb-Tt-LFR" secondAttribute="leading" id="lid-zh-LiB"/>
+                            <constraint firstItem="aNj-ZE-j1Y" firstAttribute="leading" secondItem="XNb-Tt-LFR" secondAttribute="leading" id="pCE-4J-1U5"/>
+                            <constraint firstItem="pEm-wK-1of" firstAttribute="top" secondItem="aNj-ZE-j1Y" secondAttribute="bottom" id="sJG-xW-u3b"/>
+                            <constraint firstItem="aNj-ZE-j1Y" firstAttribute="top" secondItem="XNb-Tt-LFR" secondAttribute="top" id="tP6-2g-qpi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7C3-LL-H6d"/>
                     <connections>
-                        <segue destination="Ncn-5L-LbE" kind="presentation" identifier="login" id="OTa-lG-lZY"/>
-                        <segue destination="xU6-5x-Qe4" kind="show" identifier="main" animates="NO" id="o17-8O-uqc"/>
+                        <segue destination="Ncn-5L-LbE" kind="presentation" identifier="login" animates="NO" id="OTa-lG-lZY"/>
+                        <segue destination="xU6-5x-Qe4" kind="show" identifier="main" id="o17-8O-uqc"/>
                         <segue destination="LDY-qk-qZO" kind="show" identifier="teambrella" animates="NO" id="WLE-fZ-f3z"/>
                     </connections>
                 </viewController>
@@ -176,7 +199,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xrQ-fg-9ck" customClass="Navigator" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q94-ny-2f7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="q94-ny-2f7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -190,4 +213,7 @@
             <point key="canvasLocation" x="197.59999999999999" y="875.71214392803608"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="confetti-color" width="1024" height="1024"/>
+    </resources>
 </document>

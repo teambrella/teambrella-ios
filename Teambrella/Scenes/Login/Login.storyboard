@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RMx-MO-EDz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RMx-MO-EDz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -131,57 +131,6 @@
             </objects>
             <point key="canvasLocation" x="908" y="60"/>
         </scene>
-        <!--LoginVC-->
-        <scene sceneID="ZxD-dG-FaB">
-            <objects>
-                <viewController id="yGY-yG-qGh" customClass="LoginVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5wr-HO-1IZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="guu-5M-kMI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="p3p-Ra-aCU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="iTR-kY-XUB">
-                                <rect key="frame" x="137.5" y="289" width="100" height="89"/>
-                                <subviews>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="RAC-TJ-x5S">
-                                        <rect key="frame" x="31.5" y="0.0" width="37" height="37"/>
-                                        <color key="color" red="0.20000000000000001" green="0.30980392159999998" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    </activityIndicatorView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjg-Kt-fbi">
-                                        <rect key="frame" x="0.0" y="59" width="100" height="30"/>
-                                        <color key="backgroundColor" red="0.20000000000000001" green="0.30980392156862746" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="MUa-Q0-4LL"/>
-                                        </constraints>
-                                        <state key="normal" title="Login">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="tapLogin:" destination="yGY-yG-qGh" eventType="touchUpInside" id="aJd-8x-2G8"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="iTR-kY-XUB" firstAttribute="centerX" secondItem="p3p-Ra-aCU" secondAttribute="centerX" id="Iew-HY-pee"/>
-                            <constraint firstItem="iTR-kY-XUB" firstAttribute="centerY" secondItem="p3p-Ra-aCU" secondAttribute="centerY" id="kh3-TN-j6M"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="VBp-4j-3xJ"/>
-                    <connections>
-                        <outlet property="activityIndicator" destination="RAC-TJ-x5S" id="C4g-Px-ZyJ"/>
-                        <segue destination="2rH-zg-tvt" kind="show" identifier="details" id="bb5-Uu-Z2d"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QP9-ZP-jP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="135" y="60"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="MD2-5B-YMw">
             <objects>
@@ -250,7 +199,7 @@
                                     <color key="titleColor" red="0.25490196078431371" green="0.30588235294117649" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="yGY-yG-qGh" kind="show" id="Eqj-cg-vTQ"/>
+                                    <action selector="tapContinueWithFBButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="i4x-5F-Upl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-0s-mhl">
@@ -300,6 +249,7 @@
                         <outlet property="centerLabel" destination="O3C-eL-D90" id="fUT-tK-k1u"/>
                         <outlet property="continueWithFBButton" destination="TKO-fV-G5k" id="1sv-DM-awS"/>
                         <outlet property="tryDemoButton" destination="n5y-0s-mhl" id="tWI-xH-yix"/>
+                        <segue destination="2rH-zg-tvt" kind="show" identifier="details" id="FQW-rT-WO6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P38-XV-jDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,7 +322,7 @@
                                         </state>
                                         <connections>
                                             <action selector="tapTryDemoButton:" destination="RUg-4M-8iQ" eventType="touchUpInside" id="tE9-uE-v4Y"/>
-                                            <segue destination="DcY-20-aah" kind="unwind" unwindAction="unwindToInitialWithSegue:" id="hvt-qs-CeP"/>
+                                            <segue destination="DcY-20-aah" kind="unwind" animates="NO" unwindAction="unwindToInitialWithSegue:" id="hvt-qs-CeP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -429,7 +379,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91f-fL-9Tr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DcY-20-aah" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="134" y="868"/>
+            <point key="canvasLocation" x="908" y="868"/>
         </scene>
     </scenes>
     <resources>

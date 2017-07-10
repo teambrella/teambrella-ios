@@ -25,7 +25,7 @@ extension Navigator: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController,
                               willShow viewController: UIViewController,
                               animated: Bool) {
-        let hide = viewController is UITabBarController
-        setNavigationBarHidden(hide, animated: true)
+        let hide = true //viewController is UITabBarController
+        setNavigationBarHidden(hide, animated: animated)
     }
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
+import PKHUD
 import UIKit
 
 class InitialVC: UIViewController {
@@ -49,6 +50,7 @@ class InitialVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        HUD.hide()
         if segue.type == .main {
             if let tabVc = segue.destination as? UITabBarController,
                 let nc = tabVc.viewControllers?.first as? UINavigationController,
@@ -59,9 +61,11 @@ class InitialVC: UIViewController {
     }
     
     @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
-        service.teambrella.fetcher.user.isFbAuthorized = true
-        service.teambrella.fetcher.save()
-        performSegue(type: .main)
+//        service.teambrella.fetcher.user.isFbAuthorized = true
+//        service.teambrella.fetcher.save()
+//        performSegue(type: .main)
+        HUD.show(.progress)
+        getTeams()
     }
     
     @IBAction func tapTeambrella(_ sender: Any) {
