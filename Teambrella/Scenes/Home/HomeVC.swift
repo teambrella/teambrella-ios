@@ -42,6 +42,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var emitterScene: SKView!
     var dataSource: HomeDataSource = HomeDataSource()
     
+    @IBOutlet var teamsButton: DropDownButton!
     @IBOutlet var inboxButton: LabeledButton!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -92,7 +93,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     func tapItem() {
-        
+        DeveloperTools.notSupportedAlert(in: self)
     }
     
     func setup() {
@@ -149,6 +150,10 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     @IBAction func tapRightBrick(_ sender: Any) {
         service.router.showWallet()
+    }
+    
+    @IBAction func tapTeams(_ sender: UIButton) {
+          DeveloperTools.notSupportedAlert(in: self)
     }
     
     @IBAction func tapInbox(_ sender: UIButton) {

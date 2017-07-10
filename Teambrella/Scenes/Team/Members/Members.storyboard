@@ -54,7 +54,7 @@
                                                         <constraint firstAttribute="width" constant="40" id="v5m-ej-zg2"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Sp-Vp1">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Sp-Vp1">
                                                     <rect key="frame" x="64" y="7" width="33" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -185,7 +185,7 @@
                                                         <constraint firstAttribute="width" secondItem="AC1-iQ-fvm" secondAttribute="height" multiplier="8:7" id="gX9-ru-IY6"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hoq-Od-Ce2">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hoq-Od-Ce2">
                                                     <rect key="frame" x="64" y="7" width="33" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1134,7 +1134,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eV6-Tb-8BL">
-                                <rect key="frame" x="297" y="633" width="46" height="30"/>
+                                <rect key="frame" x="296" y="632.5" width="47" height="31"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                 <state key="normal" title="Others">
                                     <color key="titleColor" red="0.22352941179999999" green="0.26274509800000001" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1192,7 +1192,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClL-mC-3du">
-                                        <rect key="frame" x="199" y="63" width="68" height="29"/>
+                                        <rect key="frame" x="199" y="63" width="70" height="29"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                         <state key="normal" title="Reset Vote">
                                             <color key="titleColor" red="0.2784313725" green="0.34509803919999998" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

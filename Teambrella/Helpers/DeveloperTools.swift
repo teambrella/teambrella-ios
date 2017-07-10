@@ -9,9 +9,12 @@
 import UIKit
 
 struct DeveloperTools {
-    static func notSupportedAlert(in controller: UIViewController) {
-        let alert = UIAlertController(title: "Not supported yet",
-                                      message: "This feature is not supported in current build. Please come back later",
+    static func notSupportedAlert(in controller: UIViewController,
+                                  title: String = "Not supported yet",
+                                  message: String = "This feature is not supported in the current build."
+        + " Please come back later") {
+        let alert = UIAlertController(title: title,
+                                      message: message,
                                       preferredStyle: .alert)
         let okay = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okay)

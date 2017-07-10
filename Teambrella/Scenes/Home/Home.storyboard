@@ -71,6 +71,18 @@
                                 <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbC-Sb-FLW" customClass="DropDownButton" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="12" y="20" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="aer-Qq-OZ0"/>
+                                    <constraint firstAttribute="height" constant="44" id="e43-Lg-CJJ"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="yummy"/>
+                                <connections>
+                                    <action selector="tapTeams:" destination="dtc-T4-z44" eventType="touchUpInside" id="zWS-SN-GDh"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HqI-iY-38d" customClass="LabeledButton" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="327" y="35" width="32" height="23"/>
                                 <constraints>
@@ -308,9 +320,11 @@
                                                 <constraints>
                                                     <constraint firstItem="wIX-fM-EU9" firstAttribute="centerX" secondItem="KFF-bQ-Xeu" secondAttribute="centerX" id="DmF-zH-1C5"/>
                                                     <constraint firstItem="t7a-cU-E9r" firstAttribute="leading" secondItem="KFF-bQ-Xeu" secondAttribute="trailing" id="LDV-6w-7F5"/>
+                                                    <constraint firstItem="ym3-xx-jcx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wIX-fM-EU9" secondAttribute="trailing" constant="9" id="MoY-PO-RPI"/>
                                                     <constraint firstItem="ym3-xx-jcx" firstAttribute="top" secondItem="Osa-1R-OFY" secondAttribute="top" id="X9N-Bq-tQj"/>
                                                     <constraint firstItem="0WR-os-NZl" firstAttribute="leading" secondItem="t7a-cU-E9r" secondAttribute="trailing" constant="6" id="boO-cS-ELc"/>
                                                     <constraint firstItem="t7a-cU-E9r" firstAttribute="top" secondItem="ym3-xx-jcx" secondAttribute="bottom" id="cXG-a0-viz"/>
+                                                    <constraint firstItem="ym3-xx-jcx" firstAttribute="leading" secondItem="wIX-fM-EU9" secondAttribute="trailing" constant="9" id="f1i-oP-y4e"/>
                                                     <constraint firstAttribute="bottom" secondItem="t7a-cU-E9r" secondAttribute="bottom" id="mrP-8t-Xm5"/>
                                                     <constraint firstAttribute="trailing" secondItem="0WR-os-NZl" secondAttribute="trailing" id="no3-0V-ce2"/>
                                                     <constraint firstItem="KFF-bQ-Xeu" firstAttribute="top" secondItem="Osa-1R-OFY" secondAttribute="top" id="o2X-4o-UmK"/>
@@ -497,12 +511,14 @@
                             <constraint firstItem="e4b-GY-6BP" firstAttribute="top" secondItem="V5d-hm-oOR" secondAttribute="bottom" constant="16" id="hD9-7n-gzN"/>
                             <constraint firstItem="4a4-Xz-swb" firstAttribute="top" secondItem="11u-Xw-Wfu" secondAttribute="bottom" constant="14" id="jya-hV-Xyf"/>
                             <constraint firstAttribute="trailing" secondItem="e4b-GY-6BP" secondAttribute="trailing" constant="24" id="kdu-i6-mcE"/>
+                            <constraint firstItem="NbC-Sb-FLW" firstAttribute="top" secondItem="11u-Xw-Wfu" secondAttribute="bottom" id="lnX-Jq-vgK"/>
                             <constraint firstItem="j5X-w5-AtE" firstAttribute="width" secondItem="C2W-oM-PML" secondAttribute="width" id="nVd-yK-Q88"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="top" secondItem="KiM-JO-zmq" secondAttribute="bottom" priority="750" constant="20" id="o0l-aA-tkP"/>
                             <constraint firstItem="4a4-Xz-swb" firstAttribute="centerX" secondItem="EQb-ak-Vz0" secondAttribute="centerX" id="s4Y-hU-sFa"/>
                             <constraint firstItem="cDk-QT-stB" firstAttribute="bottom" secondItem="C2W-oM-PML" secondAttribute="bottom" id="sC0-0b-clh"/>
                             <constraint firstItem="cDk-QT-stB" firstAttribute="width" secondItem="C2W-oM-PML" secondAttribute="width" id="tRC-9G-5Em"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KiM-JO-zmq" secondAttribute="bottom" constant="8" id="tdF-Ap-CfA"/>
+                            <constraint firstItem="NbC-Sb-FLW" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" constant="12" id="uep-Kx-HLw"/>
                             <constraint firstItem="5dq-54-aqk" firstAttribute="centerY" secondItem="C2W-oM-PML" secondAttribute="centerY" id="vax-H4-BtU"/>
                         </constraints>
                     </view>
@@ -526,6 +542,7 @@
                         <outlet property="rightBrickCurrencyLabel" destination="sjW-Hc-lVp" id="1ZL-Pd-vTY"/>
                         <outlet property="rightBrickTitleLabel" destination="xCN-fH-yvY" id="7e9-7g-z2O"/>
                         <outlet property="submitClaimButton" destination="tb2-DR-8f0" id="RsN-Sq-D5P"/>
+                        <outlet property="teamsButton" destination="NbC-Sb-FLW" id="8ka-JO-w9K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRD-AN-FqK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -562,5 +579,6 @@
         <image name="iconWallet" width="30" height="26"/>
         <image name="inbox" width="22" height="17"/>
         <image name="tesla" width="381" height="132"/>
+        <image name="yummy" width="24" height="24"/>
     </resources>
 </document>
