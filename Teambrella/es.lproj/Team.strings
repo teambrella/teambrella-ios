@@ -82,3 +82,41 @@
 "Team.TeammateCell.cashFlow"                   = "Flujo de fondos";
 "Team.TeammateCell.transactions"               = "Actas";
 "Team.team"                                    = "El grupo";
+
+"Team.JoinTeamVC.closeButton"                  = "Cerrar";
+"Team.JoinTeamVC.getStartedButton"             = "Para empezar";
+
+"Team.JoinTeamVC.GreetingCell.greeting"        = "¡Hola %@!";
+
+"Team.JoinTeamVC.InfoCell.headerLabel"         = "INFORMACIÓN DEL EQUIPO";
+"Team.JoinTeamVC.InfoCell.numberBar.left"      = "Compañeros";
+"Team.JoinTeamVC.InfoCell.numberBar.right"     = "Discusiones";
+"Team.JoinTeamVC.InfoCell.rulesButton"         = "Leer las Reglas deL Equipo";
+
+"Team.JoinTeamVC.PersonalCell.headerLabel"     = "INFORMACIÓN PERSONAL";
+"Team.JoinTeamVC.PersonalCell.name"            = "¿CÓMO TE LLAMAS?";
+"Team.JoinTeamVC.PersonalCell.birthday"        = "FECHA DE NACIMIENTO";
+"Team.JoinTeamVC.PersonalCell.status"          = "STATUS";
+"Team.JoinTeamVC.PersonalCell.location"        = "¿DE DÓNDE ERES?";
+
+"Team.JoinTeamVC.ItemCell.headerLabel"         = "TU AUTO";
+"Team.JoinTeamVC.ItemCell.makeModel"           = "MARCA Y MODELO";
+"Team.JoinTeamVC.ItemCell.year"                = "AÑO";
+"Team.JoinTeamVC.ItemCell.currency"            = "MONEDA";
+"Team.JoinTeamVC.ItemCell.price"               = "ESTIMACIÓN DEL PRECIO ";
+"Team.JoinTeamVC.ItemCell.objectPhotos"        = "FOTOS DEL OBJECTO";
+
+"Team.JoinTeamVC.MessageCell.headerLabel"      = "EQUIPO";
+"Team.JoinTeamVC.MessageCell.messageTitle"     = "MENSAJE PARA COMPAÑEROS";
+"Team.JoinTeamVC.MessageCell.placeholder"      = "Introdúcete a sus futuros compañeros del equipo dándoles mas información sobre ti. Nota que esta información les ayudara hacer una decision sobre tu aplicación.";
+
+"Team.JoinTeamVC.TermsCell.headerLabel"        = "CONDICIONES";
+"Team.JoinTeamVC.TermsCell.nonBold"            = "Pulsando ‘Enviar Aplicación’\n aceptas ";
+"Team.JoinTeamVC.TermsCell.bold"               = " las condiciones de Teambrella";
+
+"Team.VotingRiskVC.headerLabel"                = "VOTACIÓN: RIESGO";
+"Team.VotingRiskVC.numberBar.left"             = "VOTO DEL EQUIPO";
+"Team.VotingRiskVC.numberBar.right"            = "TU VOTO";
+"Team.VotingRiskVC.avgLabel"                   = "PROM\n%d\%";
+"Team.VotingRiskVC.resetVoteButton"            = "Reiniciar Votación";
+"Team.VotingRiskVC.othersButton"               = "Los demás";
