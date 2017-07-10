@@ -143,14 +143,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="iTR-kY-XUB">
-                                <rect key="frame" x="137.5" y="318.5" width="100" height="30"/>
+                                <rect key="frame" x="137.5" y="289" width="100" height="89"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="RAC-TJ-x5S">
-                                        <rect key="frame" x="31.5" y="0.0" width="37" height="0.0"/>
+                                        <rect key="frame" x="31.5" y="0.0" width="37" height="37"/>
                                         <color key="color" red="0.20000000000000001" green="0.30980392159999998" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjg-Kt-fbi">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                        <rect key="frame" x="0.0" y="59" width="100" height="30"/>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.30980392156862746" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="MUa-Q0-4LL"/>
@@ -186,7 +186,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="RMx-MO-EDz" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4iG-3o-NWE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4iG-3o-NWE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -199,18 +199,30 @@
             </objects>
             <point key="canvasLocation" x="-695" y="60"/>
         </scene>
-        <!--View Controller-->
+        <!--Login BlueVC-->
         <scene sceneID="8Ed-dU-CCq">
             <objects>
-                <viewController id="Fpj-WI-Qkt" sceneMemberID="viewController">
+                <viewController id="Fpj-WI-Qkt" customClass="LoginBlueVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AXE-yd-bGw"/>
                         <viewControllerLayoutGuide type="bottom" id="9OY-K3-xqs"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7DX-bd-hFW" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="7DX-bd-hFW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJj-TS-F5o" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="0.18039215689999999" green="0.23529411759999999" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.36078431370000003" green="0.4039215686" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sketchconfetti" translatesAutoresizingMaskIntoConstraints="NO" id="ZSJ-w0-Tqs">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
@@ -236,6 +248,10 @@
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="0.25490196078431371" green="0.30588235294117649" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="tabContinueWithFBButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="vaP-Yt-lq0"/>
+                                    <action selector="tapContinueWithFBButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="Y2c-wx-Op5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-0s-mhl">
                                 <rect key="frame" x="150" y="622" width="75" height="27"/>
@@ -243,23 +259,30 @@
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapTryDemoButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="yWz-Z2-4TB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TKO-fV-G5k" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" constant="28" id="017-G7-ZZt"/>
                             <constraint firstItem="ZSJ-w0-Tqs" firstAttribute="top" secondItem="AXE-yd-bGw" secondAttribute="bottom" id="0Cd-Zl-y34"/>
+                            <constraint firstItem="9OY-K3-xqs" firstAttribute="top" secondItem="JJj-TS-F5o" secondAttribute="bottom" id="1HE-Uw-sI5"/>
                             <constraint firstItem="O3C-eL-D90" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" constant="16" id="6NY-MS-fpM"/>
                             <constraint firstItem="9OY-K3-xqs" firstAttribute="top" secondItem="n5y-0s-mhl" secondAttribute="bottom" constant="18" id="6Wt-Vh-lKS"/>
                             <constraint firstItem="HaE-vq-3bd" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" constant="80" id="8KC-g5-FVQ"/>
+                            <constraint firstItem="JJj-TS-F5o" firstAttribute="top" secondItem="AXE-yd-bGw" secondAttribute="bottom" id="9Q6-iD-Cb7"/>
                             <constraint firstItem="HaE-vq-3bd" firstAttribute="top" secondItem="AXE-yd-bGw" secondAttribute="bottom" constant="217" id="KUU-q9-hj8"/>
                             <constraint firstAttribute="trailing" secondItem="TKO-fV-G5k" secondAttribute="trailing" constant="28" id="Npf-Vr-QUO"/>
                             <constraint firstAttribute="trailing" secondItem="HaE-vq-3bd" secondAttribute="trailing" constant="80" id="TH6-xm-IUa"/>
                             <constraint firstAttribute="trailing" secondItem="n5y-0s-mhl" secondAttribute="trailing" constant="150" id="Uwx-gI-ezK"/>
                             <constraint firstItem="9OY-K3-xqs" firstAttribute="top" secondItem="ZSJ-w0-Tqs" secondAttribute="bottom" id="ZqR-B6-bqg"/>
+                            <constraint firstItem="JJj-TS-F5o" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" id="bxK-vK-XUz"/>
                             <constraint firstItem="n5y-0s-mhl" firstAttribute="top" secondItem="TKO-fV-G5k" secondAttribute="bottom" constant="17" id="duw-6D-IME"/>
                             <constraint firstItem="ZSJ-w0-Tqs" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" id="eDc-ZW-LEv"/>
                             <constraint firstItem="n5y-0s-mhl" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" constant="150" id="kM6-vd-oRR"/>
+                            <constraint firstAttribute="trailing" secondItem="JJj-TS-F5o" secondAttribute="trailing" id="uF6-qb-zrv"/>
                             <constraint firstItem="O3C-eL-D90" firstAttribute="top" secondItem="HaE-vq-3bd" secondAttribute="bottom" constant="15" id="ze3-Bb-ytg"/>
                             <constraint firstAttribute="trailing" secondItem="O3C-eL-D90" secondAttribute="trailing" constant="16" id="zhM-Nj-VV8"/>
                             <constraint firstAttribute="trailing" secondItem="ZSJ-w0-Tqs" secondAttribute="trailing" id="zkY-oK-mjR"/>
@@ -273,23 +296,41 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="centerLabel" destination="O3C-eL-D90" id="fUT-tK-k1u"/>
+                        <outlet property="continueWithFBButton" destination="TKO-fV-G5k" id="1sv-DM-awS"/>
+                        <outlet property="tapTryDemoButton" destination="n5y-0s-mhl" id="gn8-Ah-gRS"/>
+                        <outlet property="tryDemoButton" destination="n5y-0s-mhl" id="tWI-xH-yix"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P38-XV-jDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="134" y="864"/>
         </scene>
-        <!--View Controller-->
+        <!--Login No InviteVC-->
         <scene sceneID="I3K-ZA-arv">
             <objects>
-                <viewController id="RUg-4M-8iQ" sceneMemberID="viewController">
+                <viewController id="RUg-4M-8iQ" customClass="LoginNoInviteVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F9b-yH-y27"/>
                         <viewControllerLayoutGuide type="bottom" id="XeN-1F-Jo6"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Pgs-eW-4as" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Pgs-eW-4as">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2x-hK-Kml" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="0.18039215689999999" green="0.23529411759999999" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.36078431370000003" green="0.4039215686" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sketchconfetti" translatesAutoresizingMaskIntoConstraints="NO" id="1Sf-LV-D1X">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
@@ -329,6 +370,9 @@
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tapTryDemoButton:" destination="RUg-4M-8iQ" eventType="touchUpInside" id="tE9-uE-v4Y"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -349,14 +393,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="2Jk-qJ-3a4" secondAttribute="trailing" constant="80" id="42w-Ck-doK"/>
+                            <constraint firstAttribute="trailing" secondItem="E2x-hK-Kml" secondAttribute="trailing" id="7cG-xh-BO4"/>
                             <constraint firstItem="2Jk-qJ-3a4" firstAttribute="leading" secondItem="Pgs-eW-4as" secondAttribute="leading" constant="80" id="7tf-4i-UN5"/>
                             <constraint firstItem="4QV-T4-WRb" firstAttribute="leading" secondItem="Pgs-eW-4as" secondAttribute="leading" constant="24" id="8sN-xk-toO"/>
                             <constraint firstAttribute="trailing" secondItem="4QV-T4-WRb" secondAttribute="trailing" constant="24" id="9jG-2A-fyd"/>
                             <constraint firstItem="XeN-1F-Jo6" firstAttribute="top" secondItem="4QV-T4-WRb" secondAttribute="bottom" constant="197" id="EmR-dW-p2F"/>
                             <constraint firstItem="1Sf-LV-D1X" firstAttribute="top" secondItem="F9b-yH-y27" secondAttribute="bottom" id="FYz-Lu-cb0"/>
+                            <constraint firstItem="E2x-hK-Kml" firstAttribute="top" secondItem="F9b-yH-y27" secondAttribute="bottom" id="HHk-Pn-xgy"/>
                             <constraint firstItem="ilg-bB-Wml" firstAttribute="top" secondItem="2Jk-qJ-3a4" secondAttribute="bottom" constant="15" id="Hv2-Dw-AyX"/>
+                            <constraint firstItem="XeN-1F-Jo6" firstAttribute="top" secondItem="E2x-hK-Kml" secondAttribute="bottom" id="JLY-nY-7pu"/>
                             <constraint firstItem="XeN-1F-Jo6" firstAttribute="top" secondItem="1Sf-LV-D1X" secondAttribute="bottom" id="U0u-aK-fbS"/>
                             <constraint firstItem="2Jk-qJ-3a4" firstAttribute="top" secondItem="F9b-yH-y27" secondAttribute="bottom" constant="181" id="WIt-Ox-Fj7"/>
+                            <constraint firstItem="E2x-hK-Kml" firstAttribute="leading" secondItem="Pgs-eW-4as" secondAttribute="leading" id="YOp-Lx-MAg"/>
                             <constraint firstItem="4QV-T4-WRb" firstAttribute="top" secondItem="ilg-bB-Wml" secondAttribute="bottom" constant="59" id="ee7-Az-mPu"/>
                             <constraint firstAttribute="trailing" secondItem="ilg-bB-Wml" secondAttribute="trailing" constant="16" id="mXL-f7-8y9"/>
                             <constraint firstAttribute="trailing" secondItem="1Sf-LV-D1X" secondAttribute="trailing" id="qG3-Vv-P8o"/>
@@ -372,6 +420,13 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="centerLabel" destination="ilg-bB-Wml" id="4t2-jb-CTZ"/>
+                        <outlet property="lowerLabel" destination="YCR-qq-z2B" id="1g3-5L-x8A"/>
+                        <outlet property="subcontainer" destination="4QV-T4-WRb" id="UMk-dY-DdI"/>
+                        <outlet property="tryDemoButton" destination="DwP-oK-zAv" id="bjD-JX-MDh"/>
+                        <outlet property="upperLabel" destination="ooX-xL-xb7" id="jLE-TO-BDj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91f-fL-9Tr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
