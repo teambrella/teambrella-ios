@@ -20,11 +20,11 @@ class LoginNoInviteVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subcontainer.layer.cornerRadius = 5
-        centerLabel.text = ""
-        upperLabel.text = ""
-        lowerLabel.text = ""
-        tryDemoButton.setTitle("", for: .normal)
+        subcontainer.layer.cornerRadius = 4
+        centerLabel.text = "Login.LoginNoInviteVC.centerLabel".localized
+        upperLabel.text = "Login.LoginNoInviteVC.upperLabel".localized
+        lowerLabel.text = "Login.LoginNoInviteVC.lowerLabel".localized
+        tryDemoButton.setTitle("Login.LoginNoInviteVC.tryDemoButton".localized, for: .normal)
     }
 
     override func didReceiveMemoryWarning() {

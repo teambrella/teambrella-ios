@@ -15,13 +15,17 @@ class LoginBlueVC: UIViewController {
     @IBOutlet var tryDemoButton: UIButton!
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
+        
     }
     @IBAction func tapTryDemoButton(_ sender: Any) {
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        centerLabel.text = "Login.LoginBlueVC.centerLabel".localized
+        continueWithFBButton.setTitle("Login.LoginBlueVC.continueWithFBButton".localized, for: .normal)
+        tryDemoButton.setTitle("Login.LoginBlueVC.tryDemoButton".localized, for: .normal)
+        continueWithFBButton.layer.cornerRadius = 2
     }
 
     override func didReceiveMemoryWarning() {
