@@ -63,7 +63,7 @@ class NumberView: UIView, XIBInitable {
     @IBInspectable
     var isCurrencyOnTop: Bool = true {
         didSet {
-            currencyLabel.font = isCurrencyOnTop ? UIFont.boldSystemFont(ofSize: 9) : amountLabel.font
+            currencyLabel.font = isCurrencyOnTop ? UIFont.teambrellaBold(size: 9) : UIFont.teambrellaBold(size: 23)
             if isCurrencyOnTop {
                 currencyCenterConstraint.constant = -7
             } else {

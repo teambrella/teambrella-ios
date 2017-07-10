@@ -29,6 +29,7 @@ class HomeCollectionCell: UICollectionViewCell {
         super.awakeFromNib()
         CellDecorator.roundedEdges(for: self)
         CellDecorator.shadow(for: self)
+        rightNumberView.isCurrencyOnTop = false
     }
     
 }
