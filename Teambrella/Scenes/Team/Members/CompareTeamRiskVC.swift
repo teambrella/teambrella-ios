@@ -10,10 +10,13 @@ import UIKit
 
 class CompareTeamRiskVC: UIViewController {
 
+    @IBOutlet var collectionView: UICollectionView!
+    
+    let dataSource = MembersDatasource()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        registerCells()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,6 +24,12 @@ class CompareTeamRiskVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func registerCells() {
+        collectionView.register(InfoHeader.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: InfoHeader.cellID)
+        collectionView.register(RiskCell.nib, forCellWithReuseIdentifier: RiskCell.cellID)
+    }
     /*
     // MARK: - Navigation
 
@@ -31,4 +40,44 @@ class CompareTeamRiskVC: UIViewController {
     }
     */
 
+}
+
+extension CompareTeamRiskVC: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                               withReuseIdentifier: InfoHeader.cellID,
+                                                               for: indexPath)
+    }
+}
+
+extension CompareTeamRiskVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let model = dataSource.models[indexPath.row]
+        if let cell = cell as? VotingScrollerCell {
+            let multiplier: CGFloat = CGFloat(model.heightCoefficient)
+            cell.heightConstraint = cell.heightConstraint.setMultiplier(multiplier: multiplier)
+            cell.topLabel.text = String(model.riskCoefficient)
+            cell.centerLabel.text = model.isTeamAverage ? "TEAM AVG" : ""
+        }
+    }
+}
+
+extension CompareTeamRiskVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: <#width#>, height: <#height#>)
+    }
 }
