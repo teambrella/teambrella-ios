@@ -101,6 +101,9 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dWk-hB-e7I">
                                 <rect key="frame" x="0.0" y="104.5" width="375" height="192"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="170" id="GSi-9C-tfC"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="24" minimumInteritemSpacing="24" id="S9y-Zs-4hp">
                                     <size key="itemSize" width="325" height="157"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -491,15 +494,16 @@
                             <constraint firstItem="5YU-fw-qBY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tb2-DR-8f0" secondAttribute="bottom" constant="16" id="gPm-Zg-h8a"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="leading" secondItem="C2W-oM-PML" secondAttribute="leading" id="gaE-R3-73D"/>
                             <constraint firstItem="e4b-GY-6BP" firstAttribute="top" secondItem="V5d-hm-oOR" secondAttribute="bottom" constant="16" id="hD9-7n-gzN"/>
-                            <constraint firstItem="4a4-Xz-swb" firstAttribute="top" secondItem="11u-Xw-Wfu" secondAttribute="bottom" constant="14" id="jya-hV-Xyf"/>
+                            <constraint firstItem="4a4-Xz-swb" firstAttribute="top" secondItem="11u-Xw-Wfu" secondAttribute="bottom" priority="750" constant="14" id="jya-hV-Xyf"/>
                             <constraint firstAttribute="trailing" secondItem="e4b-GY-6BP" secondAttribute="trailing" constant="24" id="kdu-i6-mcE"/>
                             <constraint firstItem="NbC-Sb-FLW" firstAttribute="top" secondItem="11u-Xw-Wfu" secondAttribute="bottom" id="lnX-Jq-vgK"/>
                             <constraint firstItem="j5X-w5-AtE" firstAttribute="width" secondItem="C2W-oM-PML" secondAttribute="width" id="nVd-yK-Q88"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="top" secondItem="KiM-JO-zmq" secondAttribute="bottom" priority="750" constant="20" id="o0l-aA-tkP"/>
                             <constraint firstItem="4a4-Xz-swb" firstAttribute="centerX" secondItem="EQb-ak-Vz0" secondAttribute="centerX" id="s4Y-hU-sFa"/>
                             <constraint firstItem="cDk-QT-stB" firstAttribute="bottom" secondItem="C2W-oM-PML" secondAttribute="bottom" id="sC0-0b-clh"/>
+                            <constraint firstItem="4a4-Xz-swb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="11u-Xw-Wfu" secondAttribute="bottom" id="tMW-09-cko"/>
                             <constraint firstItem="cDk-QT-stB" firstAttribute="width" secondItem="C2W-oM-PML" secondAttribute="width" id="tRC-9G-5Em"/>
-                            <constraint firstItem="dWk-hB-e7I" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KiM-JO-zmq" secondAttribute="bottom" constant="8" id="tdF-Ap-CfA"/>
+                            <constraint firstItem="dWk-hB-e7I" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KiM-JO-zmq" secondAttribute="bottom" id="tdF-Ap-CfA"/>
                             <constraint firstItem="NbC-Sb-FLW" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" constant="12" id="uep-Kx-HLw"/>
                             <constraint firstItem="5dq-54-aqk" firstAttribute="centerY" secondItem="C2W-oM-PML" secondAttribute="centerY" id="vax-H4-BtU"/>
                         </constraints>
@@ -540,7 +544,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="seh-NB-2pa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="seh-NB-2pa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

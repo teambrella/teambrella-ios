@@ -76,7 +76,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         super.viewDidAppear(animated)
         scrollViewDidScroll(collectionView)
         
-        service.router.setMyTabImage(with: #imageLiteral(resourceName: "teammateF"))
+        //service.router.setMyTabImage(with: #imageLiteral(resourceName: "teammateF"))
         addEmitter()
     }
     
