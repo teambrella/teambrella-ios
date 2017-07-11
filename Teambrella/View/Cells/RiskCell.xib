@@ -37,7 +37,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fn0-U0-oqQ">
-                                <rect key="frame" x="71" y="40.5" width="25.5" height="12.5"/>
+                                <rect key="frame" x="71" y="40.5" width="25.5" height="12"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
                                 <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -54,15 +54,24 @@
                                 <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="yYP-6w-S4C">
+                                <rect key="frame" x="351" y="29" width="8" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="8" id="CE5-fl-46d"/>
+                                    <constraint firstAttribute="height" constant="13" id="oGk-4h-Jsm"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yYP-6w-S4C" secondAttribute="trailing" constant="16" id="42e-B2-sSK"/>
                             <constraint firstItem="ySx-uL-6WA" firstAttribute="top" secondItem="pDJ-U9-KTw" secondAttribute="top" constant="18" id="BGk-cI-NGt"/>
                             <constraint firstItem="HES-WN-5rG" firstAttribute="top" secondItem="pDJ-U9-KTw" secondAttribute="top" constant="16" id="Ua0-e0-5Zc"/>
                             <constraint firstItem="ySx-uL-6WA" firstAttribute="leading" secondItem="HES-WN-5rG" secondAttribute="trailing" constant="16" id="WMm-Pn-NF4"/>
                             <constraint firstAttribute="bottom" secondItem="HES-WN-5rG" secondAttribute="bottom" constant="16" id="XlY-D4-Rlp"/>
                             <constraint firstItem="Fn0-U0-oqQ" firstAttribute="top" secondItem="ySx-uL-6WA" secondAttribute="bottom" constant="4" id="frT-j3-SQz"/>
                             <constraint firstAttribute="trailing" secondItem="LxY-fN-SvB" secondAttribute="trailing" constant="40" id="jgb-1y-6xt"/>
+                            <constraint firstItem="yYP-6w-S4C" firstAttribute="centerY" secondItem="pDJ-U9-KTw" secondAttribute="centerY" id="nbe-yD-8Vc"/>
                             <constraint firstItem="Fn0-U0-oqQ" firstAttribute="leading" secondItem="ySx-uL-6WA" secondAttribute="leading" id="rWw-Yy-JEQ"/>
                             <constraint firstItem="HES-WN-5rG" firstAttribute="leading" secondItem="pDJ-U9-KTw" secondAttribute="leading" constant="16" id="vOM-cs-J9n"/>
                             <constraint firstItem="LxY-fN-SvB" firstAttribute="centerY" secondItem="pDJ-U9-KTw" secondAttribute="centerY" id="wvX-gp-kxh"/>
@@ -79,6 +88,7 @@
             <size key="customSize" width="232" height="65"/>
             <connections>
                 <outlet property="avatar" destination="HES-WN-5rG" id="Ty7-2e-Ots"/>
+                <outlet property="forwardView" destination="yYP-6w-S4C" id="zeU-eM-ZzO"/>
                 <outlet property="itemLabel" destination="Fn0-U0-oqQ" id="dCh-fj-mm3"/>
                 <outlet property="nameLabel" destination="ySx-uL-6WA" id="zO7-8e-qtq"/>
                 <outlet property="riskLabel" destination="LxY-fN-SvB" id="K3F-H7-S7q"/>
@@ -86,4 +96,7 @@
             <point key="canvasLocation" x="124.5" y="61.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="forward" width="8" height="13"/>
+    </resources>
 </document>

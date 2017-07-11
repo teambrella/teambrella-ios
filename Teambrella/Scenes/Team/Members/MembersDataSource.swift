@@ -19,6 +19,8 @@ class MembersDatasource {
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     var sortType: SortVC.SortType = .none
+    let orderByRisk: Bool
+    var ranges: [RiskScaleEntity.Range] = []
     
     var offset = 0
     var isLoading = false
@@ -28,6 +30,10 @@ class MembersDatasource {
         if newTeammates.isEmpty { count -= 1 }
         if teammates.isEmpty { count -= 1 }
         return count
+    }
+    
+    init(orderByRisk: Bool) {
+        self.orderByRisk = orderByRisk
     }
     
     func type(indexPath: IndexPath) -> TeammateSectionType {
@@ -96,18 +102,16 @@ class MembersDatasource {
             let body = RequestBody(key: key, payload:["TeamId": ServerService.teamID,
                                                       "Offset": self.offset,
                                                       "Limit": 1000,
-                                                      "AvatarSize": 128])
+                                                      "AvatarSize": 128,
+                                                      "OrderByRisk": self.orderByRisk])
             let request = TeambrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
                 if case .teammatesList(let teammates) = response {
                     guard let me = self else { return }
                     
-                    for teammate in teammates {
-                        switch teammate.isJoining {
-                        case true:
-                            me.newTeammates.append(teammate)
-                        case false:
-                            me.teammates.append(teammate)
-                        }
+                    if me.orderByRisk {
+                        me.sortByRisk(teammates)
+                    } else {
+                        me.sortByNewTeammates(teammates)
                     }
                     me.offset += teammates.count
                     me.onUpdate?()
@@ -119,6 +123,30 @@ class MembersDatasource {
             request.start()
         }
         
+    }
+    
+    func sortByRisk(_ teammates: [TeammateLike]) {
+        var arrayOfRanges: [[TeammateLike]] = []
+        for range in ranges {
+            var arrayOfTeammatesInRange: [TeammateLike] = []
+            for teammate in teammates {
+                if teammate.risk >= range.left && teammate.risk <= range.right {
+                    arrayOfTeammatesInRange.append(teammate)
+                }
+            }
+            arrayOfRanges.append(arrayOfTeammatesInRange)
+        }
+    }
+    
+    func sortByNewTeammates(_ teammates: [TeammateLike]) {
+        for teammate in teammates {
+            switch teammate.isJoining {
+            case true:
+                newTeammates.append(teammate)
+            case false:
+                self.teammates.append(teammate)
+            }
+        }
     }
     
     subscript(indexPath: IndexPath) -> TeammateLike {
@@ -148,7 +176,7 @@ final class FakeTeammate: TeammateLike {
     func updateWithVote(json: JSON) {
         
     }
-
+    
     var lastUpdated: Int64 = 0
     let id: String = "666"
     

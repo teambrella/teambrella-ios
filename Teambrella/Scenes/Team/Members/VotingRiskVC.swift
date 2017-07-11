@@ -77,7 +77,7 @@ class VotingRiskVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //votingScroller.scrollToTeamAverage()
-     
+        
     }
     
     func updateWithTeammate() {
@@ -172,6 +172,11 @@ class VotingRiskVC: UIViewController {
         if segue.identifier == "ToVotingScroller", let vc = segue.destination as? VotingScrollerVC {
             votingScroller = vc
             vc.delegate = self
+        }
+        if segue.identifier == "ToCompareTeamRisk", let vc = segue.destination as? CompareTeamRiskVC {
+            guard let riskScale = teammate?.extended?.riskScale else { return }
+            
+            vc.ranges = riskScale.ranges
         }
     }
     

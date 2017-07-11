@@ -13,6 +13,7 @@ class RiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var itemLabel: UILabel!
     @IBOutlet var riskLabel: UILabel!
+    @IBOutlet var forwardView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -12,16 +12,22 @@ class CompareTeamRiskVC: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
     
-    let dataSource = MembersDatasource()
+    let dataSource = MembersDatasource(orderByRisk: true)
+    lazy var router: MembersRouter = MembersRouter()
+    var ranges: [RiskScaleEntity.Range] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
+        
+        dataSource.loadData()
+        dataSource.onUpdate = {
+            self.collectionView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func registerCells() {
@@ -30,29 +36,20 @@ class CompareTeamRiskVC: UIViewController {
                                 withReuseIdentifier: InfoHeader.cellID)
         collectionView.register(RiskCell.nib, forCellWithReuseIdentifier: RiskCell.cellID)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension CompareTeamRiskVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
+        return dataSource.sections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return dataSource.itemsInSection(section: section)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: RiskCell.cellID, for: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -65,19 +62,29 @@ extension CompareTeamRiskVC: UICollectionViewDataSource {
 }
 
 extension CompareTeamRiskVC: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let model = dataSource.models[indexPath.row]
-        if let cell = cell as? VotingScrollerCell {
-            let multiplier: CGFloat = CGFloat(model.heightCoefficient)
-            cell.heightConstraint = cell.heightConstraint.setMultiplier(multiplier: multiplier)
-            cell.topLabel.text = String(model.riskCoefficient)
-            cell.centerLabel.text = model.isTeamAverage ? "TEAM AVG" : ""
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        let model = dataSource[indexPath]
+        if let cell = cell as? RiskCell {
+            cell.nameLabel.text = model.name
+            cell.avatar.showAvatar(string: model.avatar)
+            cell.itemLabel.text = model.model
+            cell.riskLabel.text = String(model.risk)
         }
     }
 }
 
 extension CompareTeamRiskVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: <#width#>, height: <#height#>)
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 375, height: 71)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+       return CGSize(width: 375, height: 40)
     }
 }

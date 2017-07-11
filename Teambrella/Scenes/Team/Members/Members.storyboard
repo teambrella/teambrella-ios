@@ -365,7 +365,7 @@
         <!--Compare Team RiskVC-->
         <scene sceneID="gLz-3L-nTZ">
             <objects>
-                <viewController id="N1d-Jk-J0l" customClass="CompareTeamRiskVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="N1d-Jk-J0l" customClass="CompareTeamRiskVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BTz-ee-BWP"/>
                         <viewControllerLayoutGuide type="bottom" id="iyw-32-SC4"/>
@@ -375,24 +375,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2E1-c2-Jtr">
-                                <rect key="frame" x="0.0" y="135" width="375" height="532"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vdy-5a-4Ch">
+                                <rect key="frame" x="0.0" y="94" width="375" height="573"/>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="vdy-5a-4Ch">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7fG-3V-rXG">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="N1d-Jk-J0l" id="5b7-Dv-EZP"/>
                                     <outlet property="delegate" destination="N1d-Jk-J0l" id="h9O-VW-oGH"/>
@@ -421,11 +412,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2E1-c2-Jtr" firstAttribute="top" secondItem="BTz-ee-BWP" secondAttribute="bottom" constant="115" id="5ti-Vt-4kv"/>
                             <constraint firstItem="2E1-c2-Jtr" firstAttribute="leading" secondItem="yr0-Xb-HLZ" secondAttribute="leading" id="8Za-ze-aiD"/>
                             <constraint firstAttribute="trailing" secondItem="j4r-q4-jOL" secondAttribute="trailing" id="9Kr-p5-qUn"/>
                             <constraint firstAttribute="trailing" secondItem="2E1-c2-Jtr" secondAttribute="trailing" id="GrN-vK-AnW"/>
                             <constraint firstItem="j4r-q4-jOL" firstAttribute="top" secondItem="BTz-ee-BWP" secondAttribute="bottom" constant="-20" id="HLN-Vb-ya0"/>
+                            <constraint firstItem="2E1-c2-Jtr" firstAttribute="top" secondItem="j4r-q4-jOL" secondAttribute="bottom" constant="30" id="LKb-mR-dns"/>
                             <constraint firstItem="iyw-32-SC4" firstAttribute="top" secondItem="2E1-c2-Jtr" secondAttribute="bottom" id="luc-lQ-wTK"/>
                             <constraint firstItem="j4r-q4-jOL" firstAttribute="leading" secondItem="yr0-Xb-HLZ" secondAttribute="leading" id="vLE-sJ-1hk"/>
                         </constraints>
@@ -436,7 +427,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R64-iy-Skq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4864.8000000000002" y="2323.9880059970019"/>
+            <point key="canvasLocation" x="7038" y="2878"/>
         </scene>
         <!--Teammate ProfileVC-->
         <scene sceneID="9GJ-cE-bOX">
@@ -1217,6 +1208,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tapOthers:" destination="STV-3g-kde" eventType="touchUpInside" id="d5z-wx-HAU"/>
+                                    <segue destination="N1d-Jk-J0l" kind="show" identifier="ToCompareTeamRisk" id="VaT-O3-NsN"/>
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xls-Cr-weR" customClass="SlashView" customModule="Teambrella" customModuleProvider="target">
