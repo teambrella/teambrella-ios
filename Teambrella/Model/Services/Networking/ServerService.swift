@@ -22,13 +22,15 @@ struct ResponseStatus {
     }
 }
 
+let isLocalServer = true
+
 /**
  Service to interoperate with the server fetching all UI related information
  */
 class ServerService {
     struct Constant {
-        static let siteURL = BlockchainServer.Constant.siteURL
-        //"http://surilla.com"//"http://192.168.0.254" // "http://192.168.0.222"
+       static var siteURL: String { return isLocalServer ? BlockchainServer.Constant.siteURL : "http://94.72.4.72/" }
+        //""//"http://192.168.0.254" // "http://192.168.0.222"
         //static let fakePrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
         // "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
         static let myID = 2274

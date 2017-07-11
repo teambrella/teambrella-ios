@@ -11,8 +11,11 @@ import SwiftDate
 
 struct DateProcessor {
     
-    func stringInterval(from: Date) -> String {
-        return ""
+    // swiftlint:disable force_try
+    func stringInterval(from date: Date) -> String {
+//        let dateInRegion = DateInRegion(absolute: date)
+        let (colloquial, relevant) = try! date.colloquial(to: Date())
+        return colloquial
     }
     
     // swiftlint:disable force_try

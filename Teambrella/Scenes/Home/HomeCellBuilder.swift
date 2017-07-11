@@ -56,7 +56,7 @@ struct HomeCellBuilder {
             }
            
             if let date = model.itemDate {
-                cell.subtitleLabel.text = Formatter.teambrella.string(from: date)
+                cell.subtitleLabel.text = DateProcessor().stringInterval(from: date)//Formatter.teambrella.string(from: date)
             }
         }
         if let cell = cell as? HomeApplicationDeniedCell {
