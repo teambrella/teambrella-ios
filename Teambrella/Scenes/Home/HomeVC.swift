@@ -101,6 +101,12 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         guard let model = dataSource.model else { return }
         
+        UIImage.fetchAvatar(string: model.avatar) { image, error in
+            guard let image = image else { return }
+            
+            service.router.setMyTabImage(with: image)
+        }
+        
         leftBrickAmountLabel.text = String(format: "%.0f", model.coverage * 100)
         rightBrickAmountLabel.text = String.formattedNumber(model.balance * 1000)
         rightBrickCurrencyLabel.text = "mBTC"

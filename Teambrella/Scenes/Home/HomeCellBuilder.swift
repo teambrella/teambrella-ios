@@ -100,7 +100,7 @@ struct HomeCellBuilder {
         cell.centerLabel.text = "Home.ApplicationStatusCell.centerLabel".localized
         //for tests
         cell.timeLabel.text = "6 DAYS" //
-        cell.bottomLabel.text = "I think it’s a great idea to let Frank in, he seems trustworthy and his application …" //
+        cell.bottomLabel.text = "I think it’s a great idea to let Frank in, he seems trustworthy and his application …"
         cell.messageCountLabel.text = "4" //
     }
     
