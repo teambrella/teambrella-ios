@@ -20,7 +20,7 @@ class CompareTeamRiskVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
-        
+        title = "Team.Members.Teammates.CompareTeamRisk.title".localized
         dataSource.setRanges(ranges: ranges)
         dataSource.loadData()
         dataSource.onUpdate = {
@@ -75,10 +75,13 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
             cell.riskLabel.text = String(model.risk)
             let maxRow = dataSource.itemsInSection(section: indexPath.section)
             cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
-            if indexPath.row == 0 {
-                CellDecorator.shadow(for: cell, opacity: 0.08, radius: 4, offset: CGSize.init(width: 0, height: -1))
+            
+            if indexPath.row == 0 && indexPath.row == maxRow - 1 {
+                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 8, offset: CGSize.init(width: 0, height: 0))
+            } else if indexPath.row == 0 {
+                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: -4))
             } else if indexPath.row == maxRow - 1 {
-                CellDecorator.shadow(for: cell, opacity: 0.08, radius: 4, offset: CGSize.init(width: 0, height: 1))
+                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: 4))
             } else {
                 CellDecorator.removeShadow(for: cell)
             }
@@ -93,6 +96,9 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
             header.leftLabel.text = dataSource.headerTitle(indexPath: indexPath)
             header.rightLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
         }
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        MembersRouter().presentMemberProfile(teammate: dataSource[indexPath]    )
     }
 }
 
@@ -109,7 +115,7 @@ extension CompareTeamRiskVC: UICollectionViewDelegateFlowLayout {
         if dataSource.itemsInSection(section: section) == 0 {
             return CGSize(width: 375, height: 0)
         } else {
-            return CGSize(width: 375, height: 40)
+            return CGSize(width: 375, height: 50)
         }
     }
 }
