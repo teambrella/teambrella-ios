@@ -16,4 +16,6 @@ protocol Topic: EntityLike {
     var minutesSinceLastPost: Int { get set }
     
     var posts: [Post] { get set }
+    
+    init(id: String)
 }

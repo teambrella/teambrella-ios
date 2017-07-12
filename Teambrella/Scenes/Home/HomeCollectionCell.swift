@@ -28,7 +28,7 @@ class HomeCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         CellDecorator.roundedEdges(for: self)
-        CellDecorator.shadow(for: self)
+        CellDecorator.heavyShadow(for: self)
         rightNumberView.isCurrencyOnTop = false
     }
     

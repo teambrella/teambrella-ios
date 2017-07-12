@@ -131,7 +131,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         if let cell = cell as? TeammateObjectCell {
             cell.button.removeTarget(nil, action: nil, for: .allEvents)
             cell.button.addTarget(self, action: #selector(showClaims), for: .touchUpInside)
-        } else if let cell = cell as? TeammateVoteCell, let riskController = riskController {
+        } else if cell is TeammateVoteCell, let riskController = riskController {
             if let voting = teammate.extended?.voting {
                 riskController.timeLabel.text = "\(voting.remainingMinutes) MIN"
             }
@@ -147,8 +147,9 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 
                 //HUD.show(.progress)
                 me.riskController?.yourRiskValue.alpha = 0.5
-                me.dataSource.sendRisk(teammateID: me.teammate.id, risk: risk, completion: {
+                me.dataSource.sendRisk(teammateID: me.teammate.id, risk: risk, completion: { json in
                    // HUD.hide()
+                    print("risk sent: received json: \(json)")
                     me.riskController?.yourRiskValue.alpha = 1
                 })
             }
