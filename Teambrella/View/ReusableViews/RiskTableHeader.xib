@@ -33,13 +33,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fce-Qu-f8B">
-                            <rect key="frame" x="309.5" y="30" width="25.5" height="12.5"/>
+                            <rect key="frame" x="309.5" y="29.5" width="25.5" height="12"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
                             <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="ZuS-RJ-qEs" secondAttribute="bottom" constant="7" id="FNT-CG-7Sg"/>
                         <constraint firstItem="ZuS-RJ-qEs" firstAttribute="leading" secondItem="qeo-2L-z7K" secondAttribute="leading" constant="16" id="LwD-Pv-kXY"/>

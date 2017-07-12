@@ -19,7 +19,7 @@ class RiskCell: UICollectionViewCell, XIBInitableCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        CellDecorator.shadow(for: self)
     }
 
 }
