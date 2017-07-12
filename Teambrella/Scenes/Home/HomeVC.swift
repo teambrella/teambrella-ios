@@ -19,6 +19,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet var walletContainer: UIView!
     @IBOutlet var greetingsTitleLabel: UILabel!
     @IBOutlet var greetingsSubtitileLabel: UILabel!
     
@@ -70,6 +71,11 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         itemCard.avatarView.isUserInteractionEnabled = true
         itemCard.avatarView.addGestureRecognizer(touch)
         HomeCellBuilder.registerCells(in: collectionView)
+        setupWalletContainer()
+    }
+    
+    func setupWalletContainer() {
+        CellDecorator.shadow(for: walletContainer, opacity: 0.08, radius: 3, offset: CGSize(width: 0, height: -3))
     }
     
     override func viewDidAppear(_ animated: Bool) {

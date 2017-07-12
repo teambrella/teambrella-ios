@@ -98,7 +98,7 @@
                                 <rect key="frame" x="-0.5" y="233.5" width="375" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dWk-hB-e7I">
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dWk-hB-e7I">
                                 <rect key="frame" x="0.0" y="104.5" width="375" height="192"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -529,6 +529,7 @@
                         <outlet property="rightBrickTitleLabel" destination="xCN-fH-yvY" id="7e9-7g-z2O"/>
                         <outlet property="submitClaimButton" destination="tb2-DR-8f0" id="RsN-Sq-D5P"/>
                         <outlet property="teamsButton" destination="NbC-Sb-FLW" id="8ka-JO-w9K"/>
+                        <outlet property="walletContainer" destination="V5d-hm-oOR" id="K2j-lZ-uhf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRD-AN-FqK" userLabel="First Responder" sceneMemberID="firstResponder"/>

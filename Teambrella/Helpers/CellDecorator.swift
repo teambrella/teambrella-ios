@@ -17,15 +17,15 @@ struct CellDecorator {
         shadow(for: cell, opacity: 0.2, radius: 5, offset: CGSize(width: 0, height: 1))
     }
     
-    static func shadow(for cell: UICollectionReusableView,
+    static func shadow(for view: UIView,
                        opacity: Float,
                        radius: Float,
                        offset: CGSize = CGSize.zero) {
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = offset
-        cell.layer.shadowOpacity = opacity
-        cell.layer.shadowRadius = CGFloat(radius)
-        cell.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = offset
+        view.layer.shadowOpacity = opacity
+        view.layer.shadowRadius = CGFloat(radius)
+        view.layer.masksToBounds = false
         
     }
     
