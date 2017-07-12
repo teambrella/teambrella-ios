@@ -75,6 +75,13 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
             cell.riskLabel.text = String(model.risk)
             let maxRow = dataSource.itemsInSection(section: indexPath.section)
             cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
+            if indexPath.row == 0 {
+                CellDecorator.shadow(for: cell, opacity: 0.08, radius: 4, offset: CGSize.init(width: 0, height: -1))
+            } else if indexPath.row == maxRow - 1 {
+                CellDecorator.shadow(for: cell, opacity: 0.08, radius: 4, offset: CGSize.init(width: 0, height: 1))
+            } else {
+                CellDecorator.removeShadow(for: cell)
+            }
         }
     }
     
