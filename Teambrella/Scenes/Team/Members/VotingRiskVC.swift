@@ -68,8 +68,8 @@ class VotingRiskVC: UIViewController {
         votingRiskLabel.text = "Team.VotingRiskVC.headerLabel".localized
         teamVoteLabel.text = "Team.VotingRiskVC.numberBar.left".localized
         yourVoteLabel.text = "Team.VotingRiskVC.numberBar.right".localized
-        teamAverage.text = "Team.VotingRiskVC.avgLabel".localized("-60") //
-        yourAverage.text = "Team.VotingRiskVC.avgLabel".localized("+14") //
+        teamAverage.text = "Team.VotingRiskVC.avgLabel".localized(-60) //
+        yourAverage.text = "Team.VotingRiskVC.avgLabel".localized(14) //
         resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
         seeOthersButton.setTitle("Team.VotingRiskVC.othersButton".localized, for: .normal)
     }
@@ -101,6 +101,8 @@ class VotingRiskVC: UIViewController {
         
         if let risk = voting.riskVoted {
             teamRiskValue.text = String.formattedNumber(risk)
+            updateRiskDeltas(risk: risk)
+            votingScroller.map { $0.scrollTo(offset: offsetFrom(risk: risk, in: $0)) }
         }
     }
     

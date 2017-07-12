@@ -136,7 +136,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="RMx-MO-EDz" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4iG-3o-NWE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4iG-3o-NWE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -200,6 +200,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tapContinueWithFBButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="i4x-5F-Upl"/>
+                                    <segue destination="RUg-4M-8iQ" kind="show" id="UBc-5z-yuG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-0s-mhl">
@@ -210,7 +211,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tapTryDemoButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="yWz-Z2-4TB"/>
-                                    <segue destination="RUg-4M-8iQ" kind="show" id="Sk7-7F-wTK"/>
+                                    <segue destination="Mpw-oG-9Tx" kind="unwind" unwindAction="unwindToInitialWithSegue:" id="OIX-Re-QHu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -249,12 +250,12 @@
                         <outlet property="centerLabel" destination="O3C-eL-D90" id="fUT-tK-k1u"/>
                         <outlet property="continueWithFBButton" destination="TKO-fV-G5k" id="1sv-DM-awS"/>
                         <outlet property="tryDemoButton" destination="n5y-0s-mhl" id="tWI-xH-yix"/>
-                        <segue destination="2rH-zg-tvt" kind="show" identifier="details" id="FQW-rT-WO6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P38-XV-jDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Mpw-oG-9Tx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-695" y="868"/>
+            <point key="canvasLocation" x="-695.20000000000005" y="867.61619190404804"/>
         </scene>
         <!--Login No InviteVC-->
         <scene sceneID="I3K-ZA-arv">

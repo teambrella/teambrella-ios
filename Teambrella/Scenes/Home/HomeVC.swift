@@ -76,7 +76,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         super.viewDidAppear(animated)
         scrollViewDidScroll(collectionView)
         
-        service.router.setMyTabImage(with: #imageLiteral(resourceName: "teammateF"))
+        //service.router.setMyTabImage(with: #imageLiteral(resourceName: "teammateF"))
         addEmitter()
     }
     
@@ -100,6 +100,12 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         collectionView.reloadData()
         
         guard let model = dataSource.model else { return }
+        
+        UIImage.fetchAvatar(string: model.avatar) { image, error in
+            guard let image = image else { return }
+            
+            service.router.setMyTabImage(with: image)
+        }
         
         leftBrickAmountLabel.text = String(format: "%.0f", model.coverage * 100)
         rightBrickAmountLabel.text = String.formattedNumber(model.balance * 1000)
@@ -191,6 +197,10 @@ extension HomeVC: UICollectionViewDataSource {
             cell.button.removeTarget(nil, action: nil, for: .allEvents)
             cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = dataSource[indexPath]
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -145,10 +145,10 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             riskController.onVoteConfirmed = { [weak self] risk in
                 guard let me = self else { return }
                 
-                HUD.show(.progress)
+                //HUD.show(.progress)
                 me.riskController?.yourRiskValue.alpha = 0.5
                 me.dataSource.sendRisk(teammateID: me.teammate.id, risk: risk, completion: {
-                    HUD.hide()
+                   // HUD.hide()
                     me.riskController?.yourRiskValue.alpha = 1
                 })
             }
