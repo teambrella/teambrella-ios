@@ -37,6 +37,17 @@ struct TopicEntity: Topic {
         
         posts = PostFactory.posts(with: json["Posts"]) ?? []
     }
+    
+    init(id: String) {
+        self.id = id
+        lastUpdated = 0
+        originalPostText = ""
+        topPosterAvatars = []
+        posterCount = 0
+        unreadCount = 0
+        minutesSinceLastPost = 0
+        posts = []
+    }
 }
 
 struct TopicFactory {

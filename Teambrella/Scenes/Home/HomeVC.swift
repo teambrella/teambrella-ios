@@ -200,7 +200,9 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let model = dataSource[indexPath]
+        //let model = dataSource[indexPath]
+        
+      DeveloperTools.notSupportedAlert(in: self)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
