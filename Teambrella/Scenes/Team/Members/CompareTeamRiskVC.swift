@@ -11,6 +11,7 @@ import UIKit
 class CompareTeamRiskVC: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var searchBar: UISearchBar!
     
     let dataSource = MembersDatasource(orderByRisk: true)
     lazy var router: MembersRouter = MembersRouter()
