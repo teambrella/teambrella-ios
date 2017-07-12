@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,13 +31,13 @@
                             <imageView userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti-color" translatesAutoresizingMaskIntoConstraints="NO" id="273-Iy-hCT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Q2-WM-DHB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Q2-WM-DHB">
                                 <rect key="frame" x="80.5" y="253.5" width="215" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9Q2-WM-DHB" secondAttribute="height" multiplier="5:1" id="8kw-bT-bZK"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpr-22-1Jp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpr-22-1Jp">
                                 <rect key="frame" x="16" y="311.5" width="343" height="22"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                 <color key="textColor" red="0.74117647060000003" green="0.76470588240000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,6 +55,7 @@
                             <constraint firstItem="9Q2-WM-DHB" firstAttribute="centerX" secondItem="273-Iy-hCT" secondAttribute="centerX" id="cfd-da-7dR"/>
                             <constraint firstAttribute="trailing" secondItem="fpr-22-1Jp" secondAttribute="trailing" constant="16" id="fl7-wy-Qbh"/>
                             <constraint firstItem="273-Iy-hCT" firstAttribute="leading" secondItem="M9w-1E-1gH" secondAttribute="leading" id="lru-dj-vEh"/>
+                            <constraint firstItem="fpr-22-1Jp" firstAttribute="bottom" secondItem="M9w-1E-1gH" secondAttribute="centerY" id="qry-0s-U4J"/>
                             <constraint firstItem="fpr-22-1Jp" firstAttribute="top" secondItem="9Q2-WM-DHB" secondAttribute="bottom" constant="15" id="z72-3x-mQn"/>
                         </constraints>
                     </view>

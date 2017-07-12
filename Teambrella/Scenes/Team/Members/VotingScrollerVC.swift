@@ -82,7 +82,7 @@ class VotingScrollerVC: UIViewController {
     }
     
     func scrollToTeamAverage(animated: Bool = true) {
-        shouldSilenceScrollDelegate = !animated
+        shouldSilenceScroll = !animated
         for (idx, model) in dataSource.models.enumerated() where model.isTeamAverage {
                 collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
                                             at: .centeredHorizontally,
@@ -125,12 +125,12 @@ class VotingScrollerVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    var shouldSilenceScrollDelegate: Bool = false
+    var shouldSilenceScroll: Bool = false
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if shouldSilenceScrollDelegate == false {
+        if shouldSilenceScroll == false {
         delegate?.votingScroller(controller: self, didChange: scrollView.contentOffset.x)
         } else {
-            shouldSilenceScrollDelegate = false
+            shouldSilenceScroll = false
         }
         if let path = collectionView.indexPathForItem(at: CGPoint(x: collectionView.bounds.midX,
                                                                   y: collectionView.bounds.midY)),
