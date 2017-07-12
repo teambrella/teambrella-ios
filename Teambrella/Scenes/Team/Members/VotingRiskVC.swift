@@ -42,17 +42,20 @@ class VotingRiskVC: UIViewController {
     // Risk value changed
     var onVoteUpdate: ((Double) -> Void)?
     var onVoteConfirmed: ((Double?) -> Void)?
+    var isScrollerSet: Bool = false
     
     var votingScroller: VotingScrollerVC? {
         didSet {
             guard let votingScroller = votingScroller else { return }
             
-            guard let vote = teammate?.extended?.voting?.myVote else {
-                votingScroller.scrollToTeamAverage()
-                return
-            }
-            
-            votingScroller.scrollTo(offset: offsetFrom(risk: vote, in: votingScroller))
+            /*
+             guard let vote = teammate?.extended?.voting?.myVote else {
+             votingScroller.scrollToTeamAverage()
+             return
+             }
+             
+             votingScroller.scrollTo(offset: offsetFrom(risk: vote, in: votingScroller))
+             */
         }
     }
     
@@ -224,5 +227,12 @@ extension VotingRiskVC: VotingScrollerDelegate {
     
     func votingScroller(controller: VotingScrollerVC, didSelect value: CGFloat) {
         onVoteConfirmed?(riskFrom(controller: controller, offset: value))
+    }
+    
+    func votingScrollerViewDidAppear(controller: VotingScrollerVC) {
+        if isScrollerSet == false {
+            controller.scrollToTeamAverage(animated: false)
+            isScrollerSet = true
+        }
     }
 }

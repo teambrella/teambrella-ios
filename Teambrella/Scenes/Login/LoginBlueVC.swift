@@ -16,6 +16,7 @@ class LoginBlueVC: UIViewController {
     @IBOutlet var tryDemoButton: UIButton!
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
+        /*
         let manager = FBSDKLoginManager()
         let permissions = ["public_profile", "email", "user_friends"]
         HUD.show(.progress)
@@ -28,6 +29,7 @@ class LoginBlueVC: UIViewController {
             
             me.register(token: token.tokenString)
         }
+ */
     }
     
     @IBAction func tapTryDemoButton(_ sender: Any) {

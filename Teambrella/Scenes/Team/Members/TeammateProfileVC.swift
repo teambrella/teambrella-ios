@@ -36,7 +36,9 @@ class TeammateProfileVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
+        HUD.show(.progress, onView: view)
         dataSource.loadEntireTeammate { [weak self] in
+            HUD.hide()
             self?.prepareLinearFunction()
             self?.collectionView.reloadData()
         }
@@ -148,7 +150,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 //HUD.show(.progress)
                 me.riskController?.yourRiskValue.alpha = 0.5
                 me.dataSource.sendRisk(teammateID: me.teammate.id, risk: risk, completion: { json in
-                   // HUD.hide()
+                    // HUD.hide()
                     print("risk sent: received json: \(json)")
                     me.riskController?.yourRiskValue.alpha = 1
                 })

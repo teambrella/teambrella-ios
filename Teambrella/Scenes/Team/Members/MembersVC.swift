@@ -6,6 +6,7 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
+import PKHUD
 import UIKit
 import XLPagerTabStrip
 
@@ -31,11 +32,13 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
         //        setupDismissKeyboardOnTap()
         
         dataSource.onUpdate = { [weak self] in
+            HUD.hide()
             self?.collectionView.reloadData()
             self?.activityIndicator.stopAnimating()
         }
         
         dataSource.onError = { [weak self] error in
+            HUD.hide()
             guard let error = error as? TeambrellaError else { return }
             
             let controller = UIAlertController(title: "Error", message: error.description, preferredStyle: .alert)
@@ -46,6 +49,8 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
         }
         
         activityIndicator.startAnimating()
+        
+        HUD.show(.progress, onView: view)
         dataSource.loadData()
         title = "Team.team".localized
         

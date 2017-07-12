@@ -81,17 +81,19 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         scrollViewDidScroll(collectionView)
-        
-        //service.router.setMyTabImage(with: #imageLiteral(resourceName: "teammateF"))
         addEmitter()
     }
     
+    var isEmitterAdded: Bool = false
     func addEmitter() {
+        guard !isEmitterAdded else { return }
+        
+        isEmitterAdded = true
         let skScene: SKScene = SKScene(size: emitterScene.frame.size)
         skScene.scaleMode = .aspectFit
         skScene.backgroundColor = .clear
         if let emitter: SKEmitterNode = SKEmitterNode(fileNamed: "Fill.sks") {
-            emitter.position = CGPoint(x: emitterScene.center.x, y: emitterScene.frame.maxY)
+            emitter.position = CGPoint(x: emitterScene.center.x, y: 0)
             skScene.addChild(emitter)
             emitterScene.presentScene(skScene)
             emitterScene.allowsTransparency = true

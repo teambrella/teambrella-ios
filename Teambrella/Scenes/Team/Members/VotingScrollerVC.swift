@@ -12,6 +12,7 @@ protocol VotingScrollerDelegate: class {
     func votingScroller(controller: VotingScrollerVC, didChange value: CGFloat)
     func votingScroller(controller: VotingScrollerVC, middleCellRow: Int)
     func votingScroller(controller: VotingScrollerVC, didSelect value: CGFloat)
+    func votingScrollerViewDidAppear(controller: VotingScrollerVC)
 }
 
 class VotingScrollerVC: UIViewController {
@@ -46,6 +47,8 @@ class VotingScrollerVC: UIViewController {
     }
     
     func colorizeCenterCell() {
+        guard middleCellRow >= 0 else { return }
+        
         let indexPath = IndexPath(row: middleCellRow, section: 0)
         guard let cell = collectionView.cellForItem(at: indexPath) as? VotingScrollerCell else { return }
         
@@ -78,11 +81,12 @@ class VotingScrollerVC: UIViewController {
         }
     }
     
-    func scrollToTeamAverage() {
+    func scrollToTeamAverage(animated: Bool = true) {
+        shouldSilenceScrollDelegate = !animated
         for (idx, model) in dataSource.models.enumerated() where model.isTeamAverage {
                 collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
                                             at: .centeredHorizontally,
-                                            animated: true)
+                                            animated: animated)
                 break
         }
     }
@@ -110,13 +114,24 @@ class VotingScrollerVC: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        colorizeCenterCell()
+        delegate?.votingScrollerViewDidAppear(controller: self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    var shouldSilenceScrollDelegate: Bool = false
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if shouldSilenceScrollDelegate == false {
         delegate?.votingScroller(controller: self, didChange: scrollView.contentOffset.x)
+        } else {
+            shouldSilenceScrollDelegate = false
+        }
         if let path = collectionView.indexPathForItem(at: CGPoint(x: collectionView.bounds.midX,
                                                                   y: collectionView.bounds.midY)),
             path.row != middleCellRow {
