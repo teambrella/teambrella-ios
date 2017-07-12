@@ -77,17 +77,29 @@
                             <constraint firstItem="LxY-fN-SvB" firstAttribute="centerY" secondItem="pDJ-U9-KTw" secondAttribute="centerY" id="wvX-gp-kxh"/>
                         </constraints>
                     </view>
+                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHs-zb-imT">
+                        <rect key="frame" x="16" y="70" width="359" height="1"/>
+                        <color key="backgroundColor" red="0.76078431369999999" green="0.81176470590000005" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="y6s-dP-EYn"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="gHs-zb-imT" firstAttribute="bottom" secondItem="pDJ-U9-KTw" secondAttribute="bottom" id="05m-2J-mc6"/>
                 <constraint firstAttribute="trailing" secondItem="pDJ-U9-KTw" secondAttribute="trailing" id="GNX-3c-XjT"/>
                 <constraint firstItem="pDJ-U9-KTw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="HUY-jF-hfW"/>
+                <constraint firstItem="gHs-zb-imT" firstAttribute="leading" secondItem="pDJ-U9-KTw" secondAttribute="leading" constant="16" id="QWo-a1-1ST"/>
                 <constraint firstAttribute="bottom" secondItem="pDJ-U9-KTw" secondAttribute="bottom" id="l2P-zp-SQH"/>
+                <constraint firstItem="gHs-zb-imT" firstAttribute="trailing" secondItem="pDJ-U9-KTw" secondAttribute="trailing" id="pHl-gb-ds9"/>
                 <constraint firstItem="pDJ-U9-KTw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rd6-7Q-6n2"/>
             </constraints>
             <size key="customSize" width="232" height="65"/>
             <connections>
                 <outlet property="avatar" destination="HES-WN-5rG" id="Ty7-2e-Ots"/>
+                <outlet property="cellSeparator" destination="gHs-zb-imT" id="7PF-ZU-UHv"/>
+                <outlet property="cellSeparatorLeading" destination="QWo-a1-1ST" id="fvb-2e-jXR"/>
                 <outlet property="forwardView" destination="yYP-6w-S4C" id="zeU-eM-ZzO"/>
                 <outlet property="itemLabel" destination="Fn0-U0-oqQ" id="dCh-fj-mm3"/>
                 <outlet property="nameLabel" destination="ySx-uL-6WA" id="zO7-8e-qtq"/>

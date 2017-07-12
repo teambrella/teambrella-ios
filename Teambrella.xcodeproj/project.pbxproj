@@ -315,6 +315,8 @@
 		94793A8B1F0D146400696B90 /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94793A8A1F0D146400696B90 /* SortCell.swift */; };
 		9480EA141F15246E008A7A3F /* RiskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480EA121F15246E008A7A3F /* RiskCell.swift */; };
 		9480EA151F15246E008A7A3F /* RiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480EA131F15246E008A7A3F /* RiskCell.xib */; };
+		9480EA181F16466D008A7A3F /* RiskTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480EA161F16466D008A7A3F /* RiskTableHeader.swift */; };
+		9480EA191F16466D008A7A3F /* RiskTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480EA171F16466D008A7A3F /* RiskTableHeader.xib */; };
 		94C89AD41EFD728000C6D8F7 /* WalletDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C89AD31EFD728000C6D8F7 /* WalletDetailsVC.swift */; };
 		94C89AD61F0104CC00C6D8F7 /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C89AD51F0104CC00C6D8F7 /* QRCode.framework */; };
 		94C89AFD1F0278FB00C6D8F7 /* MeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C89AFB1F0278FB00C6D8F7 /* MeCell.swift */; };
@@ -695,6 +697,8 @@
 		94793A8A1F0D146400696B90 /* SortCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortCell.swift; path = Scenes/Proxies/UserIndex/SortCell.swift; sourceTree = "<group>"; };
 		9480EA121F15246E008A7A3F /* RiskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RiskCell.swift; path = View/Cells/RiskCell.swift; sourceTree = "<group>"; };
 		9480EA131F15246E008A7A3F /* RiskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiskCell.xib; path = View/Cells/RiskCell.xib; sourceTree = "<group>"; };
+		9480EA161F16466D008A7A3F /* RiskTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RiskTableHeader.swift; path = View/ReusableViews/RiskTableHeader.swift; sourceTree = "<group>"; };
+		9480EA171F16466D008A7A3F /* RiskTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiskTableHeader.xib; path = View/ReusableViews/RiskTableHeader.xib; sourceTree = "<group>"; };
 		94C89AD31EFD728000C6D8F7 /* WalletDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletDetailsVC.swift; path = Scenes/Me/Wallet/WalletDetailsVC.swift; sourceTree = "<group>"; };
 		94C89AD51F0104CC00C6D8F7 /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		94C89AFB1F0278FB00C6D8F7 /* MeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeCell.swift; path = View/Cells/MeCell.swift; sourceTree = "<group>"; };
@@ -1035,6 +1039,8 @@
 				6D69DA0A1EFC36C000DED5CE /* InfoHeader.xib */,
 				6D69DA351EFD6CED00DED5CE /* HeaderWithButton.swift */,
 				6D69DA361EFD6CED00DED5CE /* HeaderWithButton.xib */,
+				9480EA161F16466D008A7A3F /* RiskTableHeader.swift */,
+				9480EA171F16466D008A7A3F /* RiskTableHeader.xib */,
 			);
 			name = ReusableViews;
 			sourceTree = "<group>";
@@ -1771,6 +1777,7 @@
 				6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */,
 				6DE793321EF83ABA005F4508 /* ChatInputView.xib in Resources */,
 				6D6DA2501EE1B68F00307C73 /* Members.storyboard in Resources */,
+				9480EA191F16466D008A7A3F /* RiskTableHeader.xib in Resources */,
 				6D69D9F81EFC05BE00DED5CE /* ProxyForHeader.xib in Resources */,
 				6D69DA221EFD19BF00DED5CE /* WalletHeaderCell.xib in Resources */,
 				6D69DA001EFC32CB00DED5CE /* UserIndexCell.xib in Resources */,
@@ -2034,6 +2041,7 @@
 				6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */,
 				6D466AA01ED07CF1001BC579 /* BlockchainServer.swift in Sources */,
 				6DEE67971EDC13D50098EDB3 /* RoundBadgedView.swift in Sources */,
+				9480EA181F16466D008A7A3F /* RiskTableHeader.swift in Sources */,
 				6D69DA0B1EFC36C000DED5CE /* InfoHeader.swift in Sources */,
 				6DA714FC1EE05E5900F39EBE /* TeammateStatsCell.swift in Sources */,
 				6D6DA2621EE21A9D00307C73 /* Gender.swift in Sources */,

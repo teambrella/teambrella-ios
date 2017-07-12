@@ -14,6 +14,8 @@ class RiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var itemLabel: UILabel!
     @IBOutlet var riskLabel: UILabel!
     @IBOutlet var forwardView: UIImageView!
+    @IBOutlet var cellSeparator: UIView!
+    @IBOutlet var cellSeparatorLeading: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()

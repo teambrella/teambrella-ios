@@ -33,9 +33,9 @@ class CompareTeamRiskVC: UIViewController {
     }
     
     func registerCells() {
-        collectionView.register(InfoHeader.nib,
+        collectionView.register(RiskTableHeader.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                withReuseIdentifier: InfoHeader.cellID)
+                                withReuseIdentifier: RiskTableHeader.cellID)
         collectionView.register(RiskCell.nib, forCellWithReuseIdentifier: RiskCell.cellID)
     }
 }
@@ -58,7 +58,7 @@ extension CompareTeamRiskVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                               withReuseIdentifier: InfoHeader.cellID,
+                                                               withReuseIdentifier: RiskTableHeader.cellID,
                                                                for: indexPath)
     }
 }
@@ -80,9 +80,9 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        if let header = view as? InfoHeader {
-            header.leadingLabel.text = dataSource.headerTitle(indexPath: indexPath)
-            header.trailingLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
+        if let header = view as? RiskTableHeader {
+            header.leftLabel.text = dataSource.headerTitle(indexPath: indexPath)
+            header.rightLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
         }
     }
 }

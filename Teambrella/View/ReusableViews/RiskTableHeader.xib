@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="RiskTableHeader" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qeo-2L-z7K">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuS-RJ-qEs">
+                            <rect key="frame" x="16" y="28" width="31" height="15"/>
+                            <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
+                            <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fce-Qu-f8B">
+                            <rect key="frame" x="309.5" y="30" width="25.5" height="12.5"/>
+                            <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
+                            <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="ZuS-RJ-qEs" secondAttribute="bottom" constant="7" id="FNT-CG-7Sg"/>
+                        <constraint firstItem="ZuS-RJ-qEs" firstAttribute="leading" secondItem="qeo-2L-z7K" secondAttribute="leading" constant="16" id="LwD-Pv-kXY"/>
+                        <constraint firstItem="ZuS-RJ-qEs" firstAttribute="centerY" secondItem="fce-Qu-f8B" secondAttribute="centerY" id="UpX-Af-YOW"/>
+                        <constraint firstAttribute="trailing" secondItem="fce-Qu-f8B" secondAttribute="trailing" constant="40" id="lDY-Pw-wKh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="qeo-2L-z7K" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="PWE-Yg-8l7"/>
+                <constraint firstItem="qeo-2L-z7K" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="UHh-xt-Gra"/>
+                <constraint firstAttribute="bottom" secondItem="qeo-2L-z7K" secondAttribute="bottom" id="bKg-tb-lPw"/>
+                <constraint firstAttribute="trailing" secondItem="qeo-2L-z7K" secondAttribute="trailing" id="g3r-ZZ-LT1"/>
+            </constraints>
+            <connections>
+                <outlet property="leftLabel" destination="ZuS-RJ-qEs" id="9n5-tf-GCV"/>
+                <outlet property="rightLabel" destination="fce-Qu-f8B" id="sJT-S6-iCs"/>
+            </connections>
+        </collectionReusableView>
+    </objects>
+</document>
