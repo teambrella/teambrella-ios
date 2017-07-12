@@ -9,7 +9,7 @@
 import UIKit
 
 class CompareTeamRiskVC: UIViewController {
-
+    
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var searchBar: UISearchBar!
     
@@ -27,7 +27,7 @@ class CompareTeamRiskVC: UIViewController {
             self.collectionView.reloadData()
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -97,6 +97,10 @@ extension CompareTeamRiskVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-       return CGSize(width: 375, height: 40)
+        if dataSource.itemsInSection(section: section) == 0 {
+            return CGSize(width: 375, height: 0)
+        } else {
+            return CGSize(width: 375, height: 40)
+        }
     }
 }

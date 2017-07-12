@@ -148,8 +148,9 @@ class MembersRiskStrategy: MembersFetchStrategy {
                 }
             }
         }
-        print("ranges: \(arrayOfRanges.count), items: \(arrayOfRanges.flatMap { $0 }.count)")
+       // print("ranges: \(arrayOfRanges.count), items: \(arrayOfRanges.flatMap { $0 }.count)")
     }
+    
     func sort(type: SortVC.SortType) {
         
     }
