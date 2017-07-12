@@ -14,21 +14,12 @@ enum TeammateSectionType {
 }
 
 class MembersDatasource {
-    
-    var strategy: MembersFetchStrategy
+    private var strategy: MembersFetchStrategy
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     
     let orderByRisk: Bool
-    var ranges: [RiskScaleEntity.Range] {
-        get {
-           return strategy.ranges
-        }
-        set {
-            strategy.ranges = ranges
-        }
-    }
     
     var offset = 0
     var isLoading = false
@@ -46,6 +37,10 @@ class MembersDatasource {
     init(orderByRisk: Bool) {
         self.orderByRisk = orderByRisk
         self.strategy = orderByRisk ? MembersRiskStrategy() : MembersListStrategy()
+    }
+    
+    func setRanges(ranges: [RiskScaleEntity.Range]) {
+        strategy.ranges = ranges
     }
    
     func loadData() {
