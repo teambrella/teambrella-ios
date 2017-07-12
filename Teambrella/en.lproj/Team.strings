@@ -133,3 +133,5 @@
 "Team.VotingRiskVC.resetVoteButton"            = "Reset Vote";
 "Team.VotingRiskVC.othersButton"               = "Others";
 
+"Team.Members.Teammates.Strategy.headerTitle" = "RISK: %.2f TO %.2f";
+"Team.Members.Teammates.Strategy.headerSubtitle" = "RISK";

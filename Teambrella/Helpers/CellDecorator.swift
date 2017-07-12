@@ -29,6 +29,10 @@ struct CellDecorator {
         
     }
     
+    static func removeShadow(for cell: UICollectionReusableView) {
+        cell.layer.shadowOpacity = 0
+    }
+    
     static func roundedEdges(for cell: UICollectionReusableView) {
         if let cell = cell as? UICollectionViewCell {
             cell.contentView.layer.masksToBounds = true

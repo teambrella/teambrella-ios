@@ -18,7 +18,7 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     
     @IBOutlet var inviteFriendButton: BorderedButton!
     
-    let dataSource = MembersDatasource()
+    let dataSource = MembersDatasource(orderByRisk: false)
     var searchController: UISearchController!
     fileprivate var previousScrollOffset: CGFloat = 0
     fileprivate var searchbarIsShown = true
