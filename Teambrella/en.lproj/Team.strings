@@ -135,3 +135,5 @@
 
 "Team.Members.Teammates.Strategy.headerTitle" = "RISK: %.2f TO %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle" = "RISK";
+
+"Team.Members.Teammates.CompareTeamRisk.title" = "Compare Team Risk";
