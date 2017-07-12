@@ -199,6 +199,10 @@ extension HomeVC: UICollectionViewDataSource {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = dataSource[indexPath]
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let center = view.bounds.midX
         let cells = collectionView.visibleCells

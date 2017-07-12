@@ -52,7 +52,7 @@ struct HomeScreenModel {
         let json: JSON
         let text: String
         var itemType: ItemType { return ItemType(rawValue: json["ItemType"].intValue) ?? .teammate }
-        var itemId: Int { return json["ItemId"].intValue }
+        var itemID: Int { return json["ItemId"].intValue }
         var itemDate: Date? { return json["ItemDate"].stringValue.dateFromTeambrella }
         var smallPhoto: String { return json["SmallPhotoOrAvatar"].stringValue }
         var amount: Double { return json["Amount"].doubleValue }
@@ -63,6 +63,8 @@ struct HomeScreenModel {
         var isMine: Bool { return json["IsMine"].boolValue }
         var chatTitle: String? { return json["ChatTitle"].string }
         var payProgress: Double { return json["PayProgress"].doubleValue }
+        var name: String { return json["ModelOrName"].stringValue }
+        var userID: String { return json["ItemUserId"].stringValue }
         
         init(json: JSON) {
             self.json = json
