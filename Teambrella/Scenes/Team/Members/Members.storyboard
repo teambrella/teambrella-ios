@@ -496,12 +496,12 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsF-Jx-hUP" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="94" width="373" height="116"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsF-Jx-hUP" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="94" width="373" height="58"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="topColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="value" white="1" alpha="0.0097923801369863006" colorSpace="calibratedWhite"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
                                                             <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -594,6 +594,7 @@
                                             <constraint firstItem="xmI-Jc-cL8" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leading" id="UhR-jR-qNw"/>
                                             <constraint firstItem="dlw-4G-kxZ" firstAttribute="centerX" secondItem="rLk-u7-6iT" secondAttribute="centerX" id="cdh-hJ-Wsz"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="pZr-aY-aTt" secondAttribute="trailing" constant="12" id="fhj-en-wir"/>
+                                            <constraint firstItem="YsF-Jx-hUP" firstAttribute="bottom" secondItem="PJt-7g-pSD" secondAttribute="top" id="isP-tZ-O4b"/>
                                             <constraint firstItem="YsF-Jx-hUP" firstAttribute="leading" secondItem="xmI-Jc-cL8" secondAttribute="leading" id="lR2-jb-r8q"/>
                                             <constraint firstItem="dlw-4G-kxZ" firstAttribute="top" secondItem="rLk-u7-6iT" secondAttribute="topMargin" constant="42" id="mfb-cT-I60"/>
                                             <constraint firstItem="YsF-Jx-hUP" firstAttribute="top" secondItem="KqH-Lf-3HG" secondAttribute="centerY" id="mwx-ic-IsT"/>
@@ -601,7 +602,6 @@
                                             <constraint firstItem="PJt-7g-pSD" firstAttribute="centerX" secondItem="rLk-u7-6iT" secondAttribute="centerX" id="sGi-9L-azd"/>
                                             <constraint firstItem="PJt-7g-pSD" firstAttribute="top" secondItem="xmI-Jc-cL8" secondAttribute="bottom" id="t6d-kA-J7g"/>
                                             <constraint firstItem="PJt-7g-pSD" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leadingMargin" id="tEn-Ad-cLK"/>
-                                            <constraint firstAttribute="bottom" secondItem="YsF-Jx-hUP" secondAttribute="bottom" id="v7O-hZ-xiC"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="j8Z-zx-s9L" secondAttribute="trailing" id="wR9-nT-oLX"/>
                                             <constraint firstItem="j8Z-zx-s9L" firstAttribute="centerX" secondItem="PJt-7g-pSD" secondAttribute="centerX" id="wpr-dT-T0K"/>
                                             <constraint firstItem="j8Z-zx-s9L" firstAttribute="top" secondItem="PJt-7g-pSD" secondAttribute="bottom" id="xWO-7t-9TR"/>
