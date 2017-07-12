@@ -1222,7 +1222,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eV6-Tb-8BL">
-                                <rect key="frame" x="296" y="632.5" width="47" height="31"/>
+                                <rect key="frame" x="296" y="622" width="47" height="31"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                 <state key="normal" title="Others">
                                     <color key="titleColor" red="0.22352941179999999" green="0.26274509800000001" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1367,16 +1367,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pear" translatesAutoresizingMaskIntoConstraints="NO" id="FWC-G0-HbW">
-                                <rect key="frame" x="162" y="493" width="50" height="155"/>
+                                <rect key="frame" x="162" y="493" width="50" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="R7f-Qs-6u7"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ksd-0P-aFr" customClass="LabeledRoundImageView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="170.5" y="613" width="35" height="35"/>
+                                <rect key="frame" x="171.5" y="613" width="33" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ksd-0P-aFr" secondAttribute="height" multiplier="1:1" id="DZJ-ST-Gni"/>
-                                    <constraint firstAttribute="width" constant="35" id="KEN-BW-06b"/>
+                                    <constraint firstAttribute="width" constant="33" id="KEN-BW-06b"/>
+                                    <constraint firstAttribute="height" constant="40" id="Ubl-Ln-eJC"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="labelBackgroundColor">
@@ -1386,22 +1386,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="26W-A2-e6F">
-                                <rect key="frame" x="351" y="642.5" width="8" height="13"/>
+                                <rect key="frame" x="351" y="632" width="8" height="13"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8a-vx-0Vc" customClass="LabeledRoundImageView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="137.5" y="620" width="28" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="B8a-vx-0Vc" secondAttribute="height" multiplier="1:1" id="FVD-1w-a1o"/>
-                                </constraints>
+                                <rect key="frame" x="140" y="621" width="26.5" height="32"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="riskLabelText" value="1.60"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuk-lM-yLH" customClass="LabeledRoundImageView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="210.5" y="620" width="28" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="xuk-lM-yLH" secondAttribute="height" multiplier="1:1" id="Xyb-WO-rZl"/>
-                                </constraints>
+                                <rect key="frame" x="209.5" y="621" width="26.5" height="32"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="riskLabelText" value="1.59"/>
                                 </userDefinedRuntimeAttributes>
@@ -1431,15 +1425,17 @@
                             <constraint firstItem="B8a-vx-0Vc" firstAttribute="bottom" secondItem="ksd-0P-aFr" secondAttribute="bottom" id="WSr-Rc-IzQ"/>
                             <constraint firstItem="FWC-G0-HbW" firstAttribute="centerX" secondItem="5lP-Fn-Zdl" secondAttribute="centerX" id="XDt-Fg-wsW"/>
                             <constraint firstItem="ZYO-9l-gFb" firstAttribute="leading" secondItem="5lP-Fn-Zdl" secondAttribute="leading" constant="16" id="Xta-9I-8AE"/>
+                            <constraint firstItem="B8a-vx-0Vc" firstAttribute="height" secondItem="ksd-0P-aFr" secondAttribute="height" multiplier="0.8" id="YU8-kO-YFs"/>
                             <constraint firstItem="J9T-BH-Avc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Xls-Cr-weR" secondAttribute="bottom" id="Zbc-Jx-uvA"/>
                             <constraint firstItem="lB1-kh-RD5" firstAttribute="leading" secondItem="ZYO-9l-gFb" secondAttribute="trailing" constant="10" id="bO5-xp-DKy"/>
                             <constraint firstItem="B8a-vx-0Vc" firstAttribute="width" secondItem="ksd-0P-aFr" secondAttribute="width" multiplier="0.8" id="bV3-bn-oV7"/>
                             <constraint firstAttribute="trailing" secondItem="J9T-BH-Avc" secondAttribute="trailing" constant="16" id="baz-Pm-TTF"/>
-                            <constraint firstItem="eV6-Tb-8BL" firstAttribute="centerY" secondItem="ksd-0P-aFr" secondAttribute="bottom" id="c84-gV-fO6"/>
+                            <constraint firstItem="eV6-Tb-8BL" firstAttribute="bottom" secondItem="ksd-0P-aFr" secondAttribute="bottom" id="c84-gV-fO6"/>
                             <constraint firstItem="jR6-0S-J75" firstAttribute="bottom" secondItem="BYY-B7-ciP" secondAttribute="bottom" id="clC-ZH-f3F"/>
                             <constraint firstItem="gJH-Ap-3xC" firstAttribute="centerY" secondItem="ZYO-9l-gFb" secondAttribute="centerY" id="eD6-YM-FL6"/>
                             <constraint firstItem="jR6-0S-J75" firstAttribute="centerX" secondItem="BYY-B7-ciP" secondAttribute="centerX" id="iHI-rx-saj"/>
                             <constraint firstItem="ksd-0P-aFr" firstAttribute="leading" secondItem="B8a-vx-0Vc" secondAttribute="trailing" constant="5" id="iJD-Q0-tvE"/>
+                            <constraint firstItem="xuk-lM-yLH" firstAttribute="height" secondItem="B8a-vx-0Vc" secondAttribute="height" id="ix0-nT-1oT"/>
                             <constraint firstItem="k0b-gJ-Ybu" firstAttribute="top" secondItem="J9T-BH-Avc" secondAttribute="bottom" constant="54" id="mUM-F0-96Z"/>
                             <constraint firstItem="ZYO-9l-gFb" firstAttribute="top" secondItem="SDx-uD-zwb" secondAttribute="bottom" constant="20" id="tb3-cM-7kG"/>
                             <constraint firstItem="26W-A2-e6F" firstAttribute="trailing" secondItem="J9T-BH-Avc" secondAttribute="trailing" id="ul2-UI-Wb9"/>
