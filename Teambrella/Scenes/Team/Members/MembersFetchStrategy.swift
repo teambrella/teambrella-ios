@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 protocol MembersFetchStrategy {
     var sections: Int { get }
     var sortType: SortVC.SortType { get }
@@ -47,6 +46,15 @@ class MembersListStrategy: MembersFetchStrategy {
         return 0
     }
     
+    func type(indexPath: IndexPath) -> TeammateSectionType {
+        switch indexPath.section {
+        case 0:
+            return newTeammates.isEmpty ? .teammate : .new
+        default:
+            return .teammate
+        }
+    }
+    
     func sort(type: SortVC.SortType) {
         switch type {
         case .alphabeticalAtoZ:
@@ -79,7 +87,7 @@ class MembersListStrategy: MembersFetchStrategy {
         }
     }
     
-    func arrange(_ teammates: [TeammateLike]) {
+    func arrange(teammates: [TeammateLike]) {
         for teammate in teammates {
             switch teammate.isJoining {
             case true:
@@ -90,7 +98,7 @@ class MembersListStrategy: MembersFetchStrategy {
         }
     }
     
-    subscript(indexPAth: IndexPath) -> TeammateLike {
+    subscript(indexPath: IndexPath) -> TeammateLike {
         switch type(indexPath: indexPath) {
         case .new:
             return newTeammates[indexPath.row]

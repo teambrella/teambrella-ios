@@ -9,10 +9,11 @@
 import Foundation
 import SwiftyJSON
 
+enum TeammateSectionType {
+    case new, teammate
+}
+
 class MembersDatasource {
-    enum TeammateSectionType {
-        case new, teammate
-    }
     
     var strategy: MembersFetchStrategy = MembersListStrategy()
     
@@ -25,6 +26,7 @@ class MembersDatasource {
     var offset = 0
     var isLoading = false
     var sections: Int { return strategy.sections }
+    var sortType: SortVC.SortType { return strategy.sortType }
     func itemsInSection(section: Int) -> Int { return strategy.itemsInSection(section: section) }
     func type(indexPath: IndexPath) -> TeammateSectionType { return strategy.type(indexPath: indexPath) }
     func headerTitle(indexPath: IndexPath) -> String { return strategy.headerTitle(indexPath: indexPath) }
@@ -37,7 +39,6 @@ class MembersDatasource {
     init(orderByRisk: Bool) {
         self.orderByRisk = orderByRisk
     }
-    
    
     func loadData() {
         //fakeLoadData()
@@ -57,7 +58,7 @@ class MembersDatasource {
                 if case .teammatesList(let teammates) = response {
                     guard let me = self else { return }
                     
-                    strategy.arrange(teammates: teammates)
+                    me.strategy.arrange(teammates: teammates)
                     me.offset += teammates.count
                     me.onUpdate?()
                     me.isLoading = false
@@ -85,9 +86,8 @@ class MembersDatasource {
     }
     */
     
-    
     subscript(indexPath: IndexPath) -> TeammateLike {
-        strategy[indexPath]
+        return strategy[indexPath]
     }
     
 }
