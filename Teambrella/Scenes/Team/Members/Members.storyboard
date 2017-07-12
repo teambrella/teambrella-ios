@@ -1242,7 +1242,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taG-uF-kLp">
-                                        <rect key="frame" x="199" y="28" width="26.5" height="36"/>
+                                        <rect key="frame" x="187.5" y="28" width="26.5" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1278,13 +1278,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR VOTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nph-Yy-mz3" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="199" y="16" width="60.5" height="12"/>
+                                        <rect key="frame" x="187.5" y="16" width="60.5" height="12"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                         <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClL-mC-3du">
-                                        <rect key="frame" x="199" y="63" width="70" height="29"/>
+                                        <rect key="frame" x="187.5" y="63" width="70" height="29"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                         <state key="normal" title="Reset Vote">
                                             <color key="titleColor" red="0.2784313725" green="0.34509803919999998" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1294,7 +1294,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N08-ij-grF" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="16" width="60.5" height="12"/>
+                                        <rect key="frame" x="8" y="16" width="163.5" height="12"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                         <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1321,8 +1321,10 @@
                                     <constraint firstItem="N08-ij-grF" firstAttribute="top" secondItem="Xls-Cr-weR" secondAttribute="top" constant="16" id="Jry-PE-0Hu"/>
                                     <constraint firstItem="Bga-SX-rjF" firstAttribute="top" secondItem="N08-ij-grF" secondAttribute="bottom" id="QdI-Cr-aD0"/>
                                     <constraint firstItem="Rx0-4k-VPZ" firstAttribute="trailing" secondItem="Xls-Cr-weR" secondAttribute="centerX" constant="-17" id="R3z-Hf-eFi"/>
+                                    <constraint firstAttribute="centerX" secondItem="N08-ij-grF" secondAttribute="trailing" id="XzD-9a-BIp"/>
                                     <constraint firstItem="taG-uF-kLp" firstAttribute="centerY" secondItem="Rx0-4k-VPZ" secondAttribute="centerY" id="YI3-SO-vPe"/>
                                     <constraint firstAttribute="trailing" secondItem="MPn-DG-n6C" secondAttribute="trailing" constant="17" id="j0t-AQ-U1c"/>
+                                    <constraint firstItem="Nph-Yy-mz3" firstAttribute="leading" secondItem="Xls-Cr-weR" secondAttribute="centerX" constant="16" id="k7s-Ba-2W7"/>
                                     <constraint firstItem="Rx0-4k-VPZ" firstAttribute="centerY" secondItem="Bga-SX-rjF" secondAttribute="centerY" id="la7-85-TT8"/>
                                     <constraint firstItem="ClL-mC-3du" firstAttribute="leading" secondItem="taG-uF-kLp" secondAttribute="leading" id="oxG-TH-qfc"/>
                                 </constraints>
@@ -1424,7 +1426,6 @@
                             <constraint firstItem="ksd-0P-aFr" firstAttribute="centerX" secondItem="BYY-B7-ciP" secondAttribute="centerX" id="NZS-xK-BOi"/>
                             <constraint firstItem="Xls-Cr-weR" firstAttribute="top" secondItem="ZYO-9l-gFb" secondAttribute="bottom" constant="16" id="Ne4-vd-hul"/>
                             <constraint firstItem="cb6-O3-tHu" firstAttribute="centerY" secondItem="lB1-kh-RD5" secondAttribute="centerY" id="PCs-8X-8pO"/>
-                            <constraint firstItem="Nph-Yy-mz3" firstAttribute="leading" secondItem="5lP-Fn-Zdl" secondAttribute="leading" constant="215" id="Pq1-H0-vgS"/>
                             <constraint firstItem="cb6-O3-tHu" firstAttribute="leading" secondItem="lB1-kh-RD5" secondAttribute="trailing" constant="8" id="RVg-8J-bX8"/>
                             <constraint firstItem="Xls-Cr-weR" firstAttribute="leading" secondItem="5lP-Fn-Zdl" secondAttribute="leading" constant="16" id="Voj-Rl-qjQ"/>
                             <constraint firstItem="B8a-vx-0Vc" firstAttribute="bottom" secondItem="ksd-0P-aFr" secondAttribute="bottom" id="WSr-Rc-IzQ"/>

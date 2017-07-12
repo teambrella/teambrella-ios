@@ -120,3 +120,5 @@
 "Team.VotingRiskVC.avgLabel"                   = "PROM\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"            = "Reiniciar Votación";
 "Team.VotingRiskVC.othersButton"               = "Los demás";
+
+"Team.VotingRiskVC.ends"                        = "TERMINA %@";

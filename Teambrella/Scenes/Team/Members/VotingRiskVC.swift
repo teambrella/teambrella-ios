@@ -105,6 +105,8 @@ class VotingRiskVC: UIViewController {
             updateRiskDeltas(risk: risk)
             //votingScroller.map { $0.scrollTo(offset: offsetFrom(risk: risk, in: $0)) }
         }
+        let timeString = DateProcessor().stringFromNow(minutes: voting.remainingMinutes).uppercased()
+        timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
     }
     
     func updateRiskDeltas(risk: Double) {
@@ -122,6 +124,7 @@ class VotingRiskVC: UIViewController {
         
         text(for: yourAverage, risk: risk)
         text(for: teamAverage, risk: teammate?.extended?.voting?.riskVoted)
+        mainLabeledView.riskLabelText = String.formattedNumber(risk)
     }
     
     func updateAvatars(range: RiskScaleEntity.Range) {
