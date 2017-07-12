@@ -15,7 +15,7 @@ enum TeammateSectionType {
 
 class MembersDatasource {
     
-    var strategy: MembersFetchStrategy = MembersListStrategy()
+    let strategy: MembersFetchStrategy
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
@@ -38,6 +38,7 @@ class MembersDatasource {
     
     init(orderByRisk: Bool) {
         self.orderByRisk = orderByRisk
+        self.strategy = orderByRisk ? MembersListStrategy() : MembersListStrategy()
     }
    
     func loadData() {
@@ -70,22 +71,7 @@ class MembersDatasource {
         }
         
     }
-    
-    /*
-    func sortByRisk(_ teammates: [TeammateLike]) {
-        var arrayOfRanges: [[TeammateLike]] = []
-        for range in ranges {
-            var arrayOfTeammatesInRange: [TeammateLike] = []
-            for teammate in teammates {
-                if teammate.risk >= range.left && teammate.risk <= range.right {
-                    arrayOfTeammatesInRange.append(teammate)
-                }
-            }
-            arrayOfRanges.append(arrayOfTeammatesInRange)
-        }
-    }
-    */
-    
+        
     subscript(indexPath: IndexPath) -> TeammateLike {
         return strategy[indexPath]
     }

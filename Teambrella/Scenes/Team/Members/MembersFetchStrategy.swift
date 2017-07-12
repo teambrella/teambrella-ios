@@ -11,6 +11,7 @@ import Foundation
 protocol MembersFetchStrategy {
     var sections: Int { get }
     var sortType: SortVC.SortType { get }
+    var ranges: [RiskScaleEntity.Range] { get set }
     
     func type(indexPath: IndexPath) -> TeammateSectionType
     func itemsInSection(section: Int) -> Int
@@ -23,6 +24,7 @@ protocol MembersFetchStrategy {
 }
 
 class MembersListStrategy: MembersFetchStrategy {
+    var ranges: [RiskScaleEntity.Range] = []
     var newTeammates: [TeammateLike] = []
     var teammates: [TeammateLike] = []
     var sortType: SortVC.SortType = .none
@@ -107,4 +109,46 @@ class MembersListStrategy: MembersFetchStrategy {
         }
     }
     
+}
+
+class MembersRiskStrategy: MembersFetchStrategy {
+    var arrayOfRanges: [[TeammateLike]] = []
+    var ranges: [RiskScaleEntity.Range] = []
+    var sections: Int { return arrayOfRanges.count }
+    var sortType: SortVC.SortType = .none
+    
+    func type(indexPath: IndexPath) -> TeammateSectionType {
+        return .teammate
+    }
+    
+    func itemsInSection(section: Int) -> Int {
+        return arrayOfRanges[section].count
+    }
+    
+    func headerTitle(indexPath: IndexPath) -> String {
+        return "Team.Members.Teammates.Strategy.headerTitle"//.localized(ranges[indexPath].left, ranges[indexPath].right)
+    }
+    
+    func headerSubtitle(indexPath: IndexPath) -> String {
+        return "Team.Members.Teammates.Strategy.headerSubtitle".localized
+    }
+    
+    func arrange(teammates: [TeammateLike]) {
+        for range in ranges {
+            var arrayOfTeammatesInRange: [TeammateLike] = []
+            for teammate in teammates {
+                if teammate.risk >= range.left && teammate.risk <= range.right {
+                    arrayOfTeammatesInRange.append(teammate)
+                }
+            }
+            arrayOfRanges.append(arrayOfTeammatesInRange)
+        }
+    }
+    func sort(type: SortVC.SortType) {
+        
+    }
+    
+    subscript(indexPath: IndexPath) -> TeammateLike {
+        return arrayOfRanges[indexPath.section][indexPath.row]
+    }
 }

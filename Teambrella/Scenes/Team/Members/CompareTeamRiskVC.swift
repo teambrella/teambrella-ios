@@ -74,6 +74,16 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
             cell.riskLabel.text = String(model.risk)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplaySupplementaryView view: UICollectionReusableView,
+                        forElementKind elementKind: String,
+                        at indexPath: IndexPath) {
+        if let header = view as? InfoHeader {
+            header.leadingLabel.text = dataSource.headerTitle(indexPath: indexPath)
+            header.trailingLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
+        }
+    }
 }
 
 extension CompareTeamRiskVC: UICollectionViewDelegateFlowLayout {
