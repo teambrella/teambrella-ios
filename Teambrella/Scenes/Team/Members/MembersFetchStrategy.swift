@@ -126,7 +126,8 @@ class MembersRiskStrategy: MembersFetchStrategy {
     }
     
     func headerTitle(indexPath: IndexPath) -> String {
-        return "Team.Members.Teammates.Strategy.headerTitle"//.localized(ranges[indexPath].left, ranges[indexPath].right)
+        return "Team.Members.Teammates.Strategy.headerTitle".localized(ranges[indexPath.section].left,
+                                                                       ranges[indexPath.section].right)
     }
     
     func headerSubtitle(indexPath: IndexPath) -> String {
@@ -134,15 +135,20 @@ class MembersRiskStrategy: MembersFetchStrategy {
     }
     
     func arrange(teammates: [TeammateLike]) {
-        for range in ranges {
-            var arrayOfTeammatesInRange: [TeammateLike] = []
+        if arrayOfRanges.isEmpty {
+            for range in ranges {
+                arrayOfRanges.append([TeammateLike]())
+            }
+        }
+        
+        for (idx, range) in ranges.enumerated() {
             for teammate in teammates {
                 if teammate.risk >= range.left && teammate.risk <= range.right {
-                    arrayOfTeammatesInRange.append(teammate)
+                    arrayOfRanges[idx].append(teammate)
                 }
             }
-            arrayOfRanges.append(arrayOfTeammatesInRange)
         }
+        print("ranges: \(arrayOfRanges.count), items: \(arrayOfRanges.flatMap { $0 }.count)")
     }
     func sort(type: SortVC.SortType) {
         

@@ -76,8 +76,6 @@ class VotingRiskVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //votingScroller.scrollToTeamAverage()
-        
     }
     
     func updateWithTeammate() {
@@ -102,7 +100,7 @@ class VotingRiskVC: UIViewController {
         if let risk = voting.riskVoted {
             teamRiskValue.text = String.formattedNumber(risk)
             updateRiskDeltas(risk: risk)
-            votingScroller.map { $0.scrollTo(offset: offsetFrom(risk: risk, in: $0)) }
+            //votingScroller.map { $0.scrollTo(offset: offsetFrom(risk: risk, in: $0)) }
         }
     }
     
@@ -165,11 +163,6 @@ class VotingRiskVC: UIViewController {
         setview(labeledView: leftLabeledView, with: range.teammates.first)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToVotingScroller", let vc = segue.destination as? VotingScrollerVC {
             votingScroller = vc
@@ -178,6 +171,7 @@ class VotingRiskVC: UIViewController {
         if segue.identifier == "ToCompareTeamRisk", let vc = segue.destination as? CompareTeamRiskVC {
             guard let riskScale = teammate?.extended?.riskScale else { return }
             
+            print(riskScale.ranges.count)
             vc.ranges = riskScale.ranges
         }
     }
@@ -187,7 +181,8 @@ class VotingRiskVC: UIViewController {
     }
     
     func offsetFrom(risk: Double, in controller: VotingScrollerVC) -> CGFloat {
-        return CGFloat(log(base: 25, value: pow(risk * 5, Double(controller.maxValue))))
+        let risk = CGFloat(log(base: 25.0, value: pow(risk * 5.0, Double(controller.maxValue))))
+        return risk
     }
     
     @IBAction func tapResetVote(_ sender: UIButton) {
@@ -204,7 +199,8 @@ class VotingRiskVC: UIViewController {
     }
     
     @IBAction func tapOthers(_ sender: UIButton) {
-        DeveloperTools.notSupportedAlert(in: self)
+        // segue
+        //DeveloperTools.notSupportedAlert(in: self)
     }
     
 }

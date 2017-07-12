@@ -21,6 +21,7 @@ class CompareTeamRiskVC: UIViewController {
         super.viewDidLoad()
         registerCells()
         
+        dataSource.strategy.ranges = ranges
         dataSource.loadData()
         dataSource.onUpdate = {
             self.collectionView.reloadData()
