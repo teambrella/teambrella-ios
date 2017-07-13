@@ -13,5 +13,5 @@ struct ChooseYourTeamCellModel {
     var incomingCount: Int
     var teamName: String
     var itemName: String
-    var coverage: String
+    var coverage: Double
 }

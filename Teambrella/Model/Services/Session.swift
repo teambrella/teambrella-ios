@@ -14,5 +14,5 @@ struct Session {
     
     // TMP: my user properties
     var currentUserID: String?
-    var currentUserName: String
+    var currentUserName: String?
 }
