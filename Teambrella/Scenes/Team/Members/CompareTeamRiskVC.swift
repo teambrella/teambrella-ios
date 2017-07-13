@@ -6,6 +6,7 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
+import PKHUD
 import UIKit
 
 class CompareTeamRiskVC: UIViewController {
@@ -22,8 +23,10 @@ class CompareTeamRiskVC: UIViewController {
         registerCells()
         title = "Team.Members.Teammates.CompareTeamRisk.title".localized
         dataSource.setRanges(ranges: ranges)
+        HUD.show(.progress, onView: view)
         dataSource.loadData()
         dataSource.onUpdate = {
+            HUD.hide()
             self.collectionView.reloadData()
         }
     }
