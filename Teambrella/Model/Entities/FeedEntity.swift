@@ -16,7 +16,7 @@ struct FeedEntity {
     var teamVote: Double { return json["TeamVote"].doubleValue }
     var isVoting: Bool { return json["IsVoting"].boolValue }
     var payProgress: Double { return json["PayProgress"].doubleValue }
-    var itemType: Int { return json["ItemType"].intValue }
+    var itemType: ItemType { return ItemType(rawValue: json["ItemType"].intValue) ?? .teammate }
     var itemID: Int { return json["ItemId"].intValue }
     var itemUserID: String { return json["ItemUserId"].stringValue }
     var itemDate: Date? { return DateFormatter.teambrella.date(from: json["ItemDate"].stringValue) }

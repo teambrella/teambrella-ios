@@ -19,7 +19,6 @@ class FeedDataSource {
     
     var onLoad: (() -> Void)?
     
-    
     init(teamID: Int) {
         self.teamID = teamID
     }
