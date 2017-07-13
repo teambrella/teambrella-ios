@@ -22,7 +22,7 @@ struct ResponseStatus {
     }
 }
 
-let isLocalServer = false
+let isLocalServer = true
 
 /**
  Service to interoperate with the server fetching all UI related information

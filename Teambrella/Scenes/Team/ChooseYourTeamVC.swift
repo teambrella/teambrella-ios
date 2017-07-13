@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ChooseYourTeamVC: UIViewController {
+protocol ChooseYourTeamControllerDelegate: class {
+}
+
+class ChooseYourTeamVC: UIViewController, Routable {
     @IBOutlet var backView: UIView!
     @IBOutlet var container: UIView!
     @IBOutlet var header: UILabel!
@@ -16,6 +19,7 @@ class ChooseYourTeamVC: UIViewController {
     @IBOutlet var containerHeight: NSLayoutConstraint!
     
     fileprivate var dataSource = ChooseYourTeamDataSource()
+    weak var delegate: ChooseYourTeamControllerDelegate?
     
     var currentTeam = service.session.currentTeam
     
@@ -57,18 +61,18 @@ extension ChooseYourTeamVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? TeamCell {
-            if  current.rawValue != indexPath.row {
-                if type != .none,
-                    let otherCell = tableView.cellForRow(at: IndexPath(row: type.rawValue, section: 0)) as? SortCell {
-                    otherCell.checker.isHidden = true
-                }
-                cell.tick.isHidden = false
-                //type = SortType(rawValue: indexPath.row) ?? .none
-                delegate?.sort(controller: self, didSelect: type)
-            } else {
-                cell.tick.isHidden = true
-                //type = .none
-            }
+//            if  current.rawValue != indexPath.row {
+//                if type != .none,
+//                    let otherCell = tableView.cellForRow(at: IndexPath(row: type.rawValue, section: 0)) as? SortCell {
+//                    otherCell.checker.isHidden = true
+//                }
+//                cell.tick.isHidden = false
+//                //type = SortType(rawValue: indexPath.row) ?? .none
+//                delegate?.sort(controller: self, didSelect: type)
+//            } else {
+//                cell.tick.isHidden = true
+//                //type = .none
+//            }
         }
         tableView.deselectRow(at: indexPath, animated: false)
     }
