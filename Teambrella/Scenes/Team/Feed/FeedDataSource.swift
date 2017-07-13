@@ -8,15 +8,33 @@
 
 import Foundation
 
-struct FeedDataSource {
-    private var items: [FeedCellModel] = []
+class FeedDataSource {
+    let teamID: Int
+    private var items: [FeedEntity] = []
     var count: Int { return items.count }
     
-    init() {
-        items = fakeModels()
+    var offset = 0
+    var since: UInt64 = 0
+    let limit = 100
+    
+    var onLoad: (() -> Void)?
+    
+    init(teamID: Int) {
+        self.teamID = teamID
     }
     
-    subscript(indexPath: IndexPath) -> FeedCellModel {
+    func loadData() {
+        let context = FeedRequestContext(teamID: teamID, since: since, offset: offset, limit: limit)
+        service.storage.requestTeamFeed(context: context,
+                                        success: { [weak self] feed in
+                                            self?.items.append(contentsOf: feed)
+                                            self?.onLoad?()
+        }) { error in
+            
+        }
+    }
+    
+    subscript(indexPath: IndexPath) -> FeedEntity {
         return items[indexPath.row]
     }
     

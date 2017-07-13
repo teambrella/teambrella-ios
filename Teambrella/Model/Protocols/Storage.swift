@@ -8,8 +8,14 @@
 
 import Foundation
 
+typealias ErrorHandler = (Error?) -> Void
+
 protocol Storage {
     mutating func requestHome(teamID: Int,
                               success: @escaping (HomeScreenModel) -> Void,
                               failure: @escaping (Error?) -> Void)
+    
+    mutating func requestTeamFeed(context: FeedRequestContext,
+                                  success: @escaping([FeedEntity]) -> Void,
+                                  failure: @escaping ErrorHandler)
 }
