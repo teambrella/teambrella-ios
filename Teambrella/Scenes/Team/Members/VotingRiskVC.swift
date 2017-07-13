@@ -135,28 +135,9 @@ class VotingRiskVC: UIViewController {
                 return
             }
             
-            if labeledView.avatar.image != nil {
-                let oldImageView = RoundImageView(frame: labeledView.avatar.frame)
-                oldImageView.contentMode = labeledView.avatar.contentMode
-                oldImageView.image = labeledView.avatar.image
-                labeledView.insertSubview(oldImageView, belowSubview: labeledView.riskLabel)
-                labeledView.isHidden = false
-                labeledView.avatar.alpha = 0
-                labeledView.avatar.showAvatar(string: teammate.avatar) { image, error in
-                    //                guard let image = image else { return }
-                    labeledView.avatar.image = image
-                    UIView.animate(withDuration: 0.3, animations: {
-                        oldImageView.alpha = 0
-                        labeledView.avatar.alpha = 1
-                    }, completion: { completed in
-                        oldImageView.removeFromSuperview()
-                    })
-                    
-                }
-            } else {
-                labeledView.isHidden = false
-                labeledView.avatar.showAvatar(string: teammate.avatar)
-            }
+            labeledView.isHidden = false
+            labeledView.avatar.showAvatar(string: teammate.avatar,
+                                          options: [.transition(.fade(0.5)), .forceTransition])
             labeledView.riskLabelText = String(format: "%.2f", teammate.risk)
             labeledView.labelBackgroundColor = .blueWithAHintOfPurple
         }

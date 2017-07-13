@@ -34,6 +34,7 @@ class InitialVC: UIViewController {
                                                     print("Recent: \(String(describing: recentTeamID))")
                                                     if !teams.isEmpty {
                                                         service.session.currentTeam = teams.first
+                                                        service.session.teams = teams
                                                         self?.performSegue(type: .teambrella)
                                                     }
                                                 }

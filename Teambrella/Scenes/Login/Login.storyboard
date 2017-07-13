@@ -136,7 +136,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="RMx-MO-EDz" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4iG-3o-NWE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4iG-3o-NWE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -211,7 +211,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tapTryDemoButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="yWz-Z2-4TB"/>
-                                    <segue destination="Mpw-oG-9Tx" kind="unwind" unwindAction="unwindToInitialWithSegue:" id="OIX-Re-QHu"/>
+                                    <segue destination="Mpw-oG-9Tx" kind="unwind" animates="NO" unwindAction="unwindToInitialWithSegue:" id="OIX-Re-QHu"/>
                                 </connections>
                             </button>
                         </subviews>
