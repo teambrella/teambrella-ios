@@ -18,7 +18,7 @@ class ChooseYourTeamVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        header.text = "Team.Subviews.ChooseYourTeamVC.header".localized
+        header.text = "Team.ChooseYourTeamVC.header".localized
         //contH = tableView.countOfCells + 65
         // Do any additional setup after loading the view.
     }
