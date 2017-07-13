@@ -25,6 +25,7 @@ enum TeambrellaRequestType: String {
     case claimUpdates = "claim/getUpdates"
     case claimChat = "claim/getChat"
     case home = "feed/getHome"
+    case teamFeed = "feed/getList"
 }
 
 enum TeambrellaResponseType {
@@ -43,6 +44,7 @@ enum TeambrellaResponseType {
     case claimUpdates(JSON)
     case claimChat(Int64, [ChatEntity], TeammateBasicInfo)
     case home(HomeScreenModel)
+    case teamFeed
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void

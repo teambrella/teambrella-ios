@@ -15,13 +15,17 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         static let headerHeight: CGFloat = 70
     }
 
-    var dataSource: FeedDataSource = FeedDataSource()
+    var dataSource: FeedDataSource = FeedDataSource(teamID: service.session.currentTeam?.teamID ?? 0)
     
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        dataSource.loadData()
+        dataSource.onLoad = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     func setupCollectionView() {

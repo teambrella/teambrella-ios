@@ -27,6 +27,34 @@ struct LocalStorage: Storage {
         }
     }
     
+    mutating func requestTeamFeed(teamID: Int,
+                                  since: UInt64 = 0,
+                                  offset: Int = 0,
+                                  limit: Int = 100,
+                                  success: @escaping() -> Void,
+                                  failure: @escaping ErrorHandler) {
+        freshKey { key in
+            let body = RequestBody(key: key, payload:["teamid": teamID,
+                                                      "since": since,
+                                                      "offset": offset,
+                                                      "limit": limit,
+                                                      "commentAvatarSize": 32,
+                                                      "search": NSNull()])
+            let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in
+                /*
+                if case .claim(let claim) = response {
+                    self?.setupClaim(claim: claim)
+                    self?.onUpdate?()
+                    print("Loaded enhanced claim \(claim)")
+                }
+ */
+                }, failure: { error in
+                    failure(error)
+            })
+            request.start()
+        }
+    }
+    
     mutating func freshKey(completion: @escaping (Key) -> Void) {
         if let time = lastKeyTime, Date().timeIntervalSince(time) < 60 * 10 {
             completion(service.server.key)
