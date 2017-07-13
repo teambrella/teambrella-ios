@@ -308,6 +308,7 @@
 		9407A5871F13D81D00E0DD74 /* Login.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9407A5851F13D81D00E0DD74 /* Login.strings */; };
 		9407A58A1F15105E00E0DD74 /* CompareTeamRiskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A5891F15105E00E0DD74 /* CompareTeamRiskVC.swift */; };
 		9440EDF51F0CED5A00E5A6E7 /* SortVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9440EDF41F0CED5A00E5A6E7 /* SortVC.swift */; };
+		9441A3C71F177A0A00C4060D /* ChooseYourTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9441A3C61F177A0A00C4060D /* ChooseYourTeamVC.swift */; };
 		944504C31F07CFAE00CF443F /* JoinTeamGreetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944504C11F07CFAE00CF443F /* JoinTeamGreetingCell.swift */; };
 		944504C41F07CFAE00CF443F /* JoinTeamGreetingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944504C21F07CFAE00CF443F /* JoinTeamGreetingCell.xib */; };
 		94793A871F0D120700696B90 /* SortCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94793A861F0D120700696B90 /* SortCellModel.swift */; };
@@ -690,6 +691,7 @@
 		9407A5881F13D8D300E0DD74 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Login.strings; sourceTree = "<group>"; };
 		9407A5891F15105E00E0DD74 /* CompareTeamRiskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompareTeamRiskVC.swift; path = Scenes/Team/Members/CompareTeamRiskVC.swift; sourceTree = "<group>"; };
 		9440EDF41F0CED5A00E5A6E7 /* SortVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortVC.swift; path = Scenes/Proxies/UserIndex/SortVC.swift; sourceTree = "<group>"; };
+		9441A3C61F177A0A00C4060D /* ChooseYourTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseYourTeamVC.swift; path = Scenes/Team/ChooseYourTeamVC.swift; sourceTree = "<group>"; };
 		944504C11F07CFAE00CF443F /* JoinTeamGreetingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamGreetingCell.swift; path = View/Cells/JoinTeamGreetingCell.swift; sourceTree = "<group>"; };
 		944504C21F07CFAE00CF443F /* JoinTeamGreetingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinTeamGreetingCell.xib; path = View/Cells/JoinTeamGreetingCell.xib; sourceTree = "<group>"; };
 		94793A861F0D120700696B90 /* SortCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortCellModel.swift; path = Scenes/Proxies/UserIndex/SortCellModel.swift; sourceTree = "<group>"; };
@@ -1134,6 +1136,7 @@
 				6D9CC6341ED72252007F936E /* TeamVC.swift */,
 				6D83EC8F1EDD765F000412DC /* TeamRouter.swift */,
 				6D02ACA31F07D3AC00B01AAF /* JoinTeam */,
+				9441A3C61F177A0A00C4060D /* ChooseYourTeamVC.swift */,
 			);
 			name = Team;
 			sourceTree = "<group>";
@@ -2184,6 +2187,7 @@
 				6D69DA1C1EFD178800DED5CE /* WalletCellModels.swift in Sources */,
 				9407A57E1F111A5300E0DD74 /* HomeCellBuilder.swift in Sources */,
 				6D9CC6171ED48416007F936E /* UIStoryboardSegue.swift in Sources */,
+				9441A3C71F177A0A00C4060D /* ChooseYourTeamVC.swift in Sources */,
 				6D0E056D1EFEC24D00604981 /* ReportDescriptionCell.swift in Sources */,
 				6DDE95801EE84FFD0019DA47 /* ClaimDetailsCell.swift in Sources */,
 				6D6DA25E1EE1D1BB00307C73 /* ClaimEntity.swift in Sources */,
