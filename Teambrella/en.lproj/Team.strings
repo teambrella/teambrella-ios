@@ -120,7 +120,7 @@
 "Team.JoinTeamVC.MessageCell.messageTitle"     = "MESSAGE TO TEAMMATES";
 "Team.JoinTeamVC.MessageCell.placeholder"      = "Introduce yourself to your future team mates by telling them a bit more about yourself. Note that this will help them approve or decline your application";
 
-"Team.JoinTeamVC.TermsCell.headerLabel"        = "TERMS $ CONDITIONS";
+"Team.JoinTeamVC.TermsCell.headerLabel"        = "TERMS & CONDITIONS";
 "Team.JoinTeamVC.TermsCell.nonBold"            = "By pressing on ‘Send Application’\nI accept the Teambrella’s ";
 "Team.JoinTeamVC.TermsCell.bold"               = "Terms & Conditions";
 
