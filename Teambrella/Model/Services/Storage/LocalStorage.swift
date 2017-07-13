@@ -27,17 +27,14 @@ struct LocalStorage: Storage {
         }
     }
     
-    mutating func requestTeamFeed(teamID: Int,
-                                  since: UInt64 = 0,
-                                  offset: Int = 0,
-                                  limit: Int = 100,
+    mutating func requestTeamFeed(context: FeedRequestContext,
                                   success: @escaping([FeedEntity]) -> Void,
                                   failure: @escaping ErrorHandler) {
         freshKey { key in
-            let body = RequestBody(key: key, payload:["teamid": teamID,
-                                                      "since": since,
-                                                      "offset": offset,
-                                                      "limit": limit,
+            let body = RequestBody(key: key, payload:["teamid": context.teamID,
+                                                      "since": context.since,
+                                                      "offset": context.offset,
+                                                      "limit": context.limit,
                                                       "commentAvatarSize": 32,
                                                       "search": NSNull()])
             let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in

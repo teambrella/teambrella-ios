@@ -6,6 +6,7 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
+import PKHUD
 import UIKit
 import XLPagerTabStrip
 
@@ -22,8 +23,10 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        HUD.show(.progress, onView: view)
         dataSource.loadData()
         dataSource.onLoad = { [weak self] in
+            HUD.hide()
             self?.collectionView.reloadData()
         }
     }

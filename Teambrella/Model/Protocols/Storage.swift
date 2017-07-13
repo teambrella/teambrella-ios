@@ -15,10 +15,7 @@ protocol Storage {
                               success: @escaping (HomeScreenModel) -> Void,
                               failure: @escaping (Error?) -> Void)
     
-    mutating func requestTeamFeed(teamID: Int,
-                                  since: UInt64,
-                                  offset: Int,
-                                  limit: Int,
+    mutating func requestTeamFeed(context: FeedRequestContext,
                                   success: @escaping([FeedEntity]) -> Void,
                                   failure: @escaping ErrorHandler)
 }

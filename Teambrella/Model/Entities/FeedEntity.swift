@@ -11,6 +11,7 @@ import SwiftyJSON
 
 struct FeedEntity {
     let json: JSON
+    let text: String
     
     var amount: Double { return json["Amount"].doubleValue }
     var teamVote: Double { return json["TeamVote"].doubleValue }
@@ -23,9 +24,13 @@ struct FeedEntity {
     var smallPhotoOrAvatar: String { return json["SmallPhotoOrAvatar"].stringValue }
     var modelOrName: String { return json["ModelOrName"].stringValue }
     var chatTitle: String? { return json["ChatTitle"].string }
-    var text: String { return json["Text"].stringValue }
     var unreadCount: Int { return json["UnreadCount"].intValue }
     var posterCount: Int { return json["PosterCount"].intValue }
     var topPosterAvatars: [String] { return json["TopPosterAvatars"].arrayObject as? [String] ?? [] }
+    
+    init(json: JSON) {
+        self.json = json
+        self.text = TextAdapter().parsedHTML(string: json["Text"].stringValue)
+    }
     
 }

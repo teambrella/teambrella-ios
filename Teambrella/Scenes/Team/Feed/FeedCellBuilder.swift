@@ -14,17 +14,22 @@ struct FeedCellBuilder {
         if let cell = cell as? TeamFeedCell {
             if model.itemType == .teammate {
                 cell.avatarView.showAvatar(string: model.smallPhotoOrAvatar)
+                cell.avatarView.layer.masksToBounds = true
+                cell.avatarView.layer.cornerRadius = cell.avatarView.frame.height / 2
             } else {
                 cell.avatarView.showImage(string: model.smallPhotoOrAvatar)
+                cell.avatarView.layer.masksToBounds = true
+                cell.avatarView.layer.cornerRadius = 4
             }
             cell.titleLabel.text = model.chatTitle
             cell.textLabel.text = model.text
-            let urls = model.topPosterAvatars.flatMap { URL(string: $0) }
-            cell.facesStack.set(images: urls, label: nil, max: 4)
+            cell.facesStack.setAvatars(images: model.topPosterAvatars, label: nil, max: 4)
+         
             if let date = model.itemDate {
             cell.timeLabel.text = DateProcessor().stringInterval(from: date)
             }
-            cell.unreadLabel.text = model.unreadCount > 0 ? String(model.unreadCount) : nil
+            cell.unreadLabel.text = String(model.unreadCount)
+            cell.unreadLabel.isHidden = model.unreadCount == 0
             
             switch model.itemType {
             case .claim:

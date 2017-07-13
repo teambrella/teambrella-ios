@@ -24,14 +24,13 @@ class FeedDataSource {
     }
     
     func loadData() {
-        service.storage.requestTeamFeed(teamID: teamID,
-                                         since: since,
-                                         offset: offset,
-                                         limit: limit,
-                                         success: { [weak self] feed in
-                self?.items.append(contentsOf: feed)
+        let context = FeedRequestContext(teamID: teamID, since: since, offset: offset, limit: limit)
+        service.storage.requestTeamFeed(context: context,
+                                        success: { [weak self] feed in
+                                            self?.items.append(contentsOf: feed)
+                                            self?.onLoad?()
         }) { error in
-        
+            
         }
     }
     
