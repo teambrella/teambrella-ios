@@ -10,4 +10,9 @@ import Foundation
 
 struct Session {
     var currentTeam: TeamEntity?
+    var teams: [TeamEntity] = []
+    
+    // TMP: my user properties
+    var currentUserID: String?
+    var currentUserName: String
 }
