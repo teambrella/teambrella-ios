@@ -137,3 +137,4 @@
 "Team.Members.Teammates.CompareTeamRisk.title" = "Compare Team Risk";
 
 "Team.VotingRiskVC.ends"                        = "ENDS %@";
+"Team.Subviews.ChooseYourTeamVC.header" = "CHOOSE YOUR TEAM";
