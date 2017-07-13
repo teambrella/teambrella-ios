@@ -31,6 +31,8 @@ struct FeedCellBuilder {
             cell.unreadLabel.text = String(model.unreadCount)
             cell.unreadLabel.isHidden = model.unreadCount == 0
             
+            cell.titleLabel.text = model.chatTitle ?? model.modelOrName
+            
             switch model.itemType {
             case .claim:
                 cell.iconView.image = #imageLiteral(resourceName: "claim")
