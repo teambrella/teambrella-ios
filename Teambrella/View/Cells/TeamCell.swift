@@ -9,6 +9,14 @@
 import UIKit
 
 class TeamCell: UITableViewCell {
+    @IBOutlet var container: UIView!
+    @IBOutlet var teamIcon: UIImageView!
+    @IBOutlet var incomingCount: Label!
+    @IBOutlet var teamName: UILabel!
+    @IBOutlet var itemName: UILabel!
+    @IBOutlet var coverage: UILabel!
+    @IBOutlet var tick: UIImageView!
+    @IBOutlet var iconCoverage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

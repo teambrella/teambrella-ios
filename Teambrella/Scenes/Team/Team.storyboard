@@ -370,7 +370,7 @@
                                                 <rect key="frame" x="0.0" y="65" width="295" height="215"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SZj-MP-ccm">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SZj-MP-ccm" customClass="TeamCell" customModule="Teambrella" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="295" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SZj-MP-ccm" id="4s4-IE-0mN">
@@ -416,6 +416,7 @@
                         <outlet property="containerHeight" destination="54x-zw-FwF" id="QGg-ZS-zDd"/>
                         <outlet property="header" destination="UXP-cN-yNh" id="cOh-oD-Mzs"/>
                         <outlet property="tableView" destination="RPP-4G-Nrn" id="N4C-oX-d9b"/>
+                        <outlet property="teamCell" destination="SZj-MP-ccm" id="OQV-JD-pz8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piB-2G-dpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
