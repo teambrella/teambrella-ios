@@ -31,7 +31,7 @@ struct LocalStorage: Storage {
                                   since: UInt64 = 0,
                                   offset: Int = 0,
                                   limit: Int = 100,
-                                  success: @escaping() -> Void,
+                                  success: @escaping([FeedEntity]) -> Void,
                                   failure: @escaping ErrorHandler) {
         freshKey { key in
             let body = RequestBody(key: key, payload:["teamid": teamID,
@@ -41,13 +41,11 @@ struct LocalStorage: Storage {
                                                       "commentAvatarSize": 32,
                                                       "search": NSNull()])
             let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in
-                /*
-                if case .claim(let claim) = response {
-                    self?.setupClaim(claim: claim)
-                    self?.onUpdate?()
-                    print("Loaded enhanced claim \(claim)")
+                if case .teamFeed(let feed) = response {
+                    success(feed)
+                } else {
+                    failure(nil)
                 }
- */
                 }, failure: { error in
                     failure(error)
             })

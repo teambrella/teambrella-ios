@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct FeedDataSource {
+class FeedDataSource {
     let teamID: Int
-    private var items: [FeedCellModel] = []
+    private var items: [FeedEntity] = []
     var count: Int { return items.count }
     
     var offset = 0
@@ -22,7 +22,6 @@ struct FeedDataSource {
     
     init(teamID: Int) {
         self.teamID = teamID
-        items = fakeModels()
     }
     
     func loadData() {
@@ -30,14 +29,14 @@ struct FeedDataSource {
                                          since: since,
                                          offset: offset,
                                          limit: limit,
-                                         success: {
-                                            
+                                         success: { [weak self] feed in
+                self?.items.append(contentsOf: feed)
         }) { error in
         
         }
     }
     
-    subscript(indexPath: IndexPath) -> FeedCellModel {
+    subscript(indexPath: IndexPath) -> FeedEntity {
         return items[indexPath.row]
     }
     

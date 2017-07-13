@@ -19,6 +19,6 @@ protocol Storage {
                                   since: UInt64,
                                   offset: Int,
                                   limit: Int,
-                                  success: @escaping() -> Void,
+                                  success: @escaping([FeedEntity]) -> Void,
                                   failure: @escaping ErrorHandler)
 }

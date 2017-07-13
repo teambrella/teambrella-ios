@@ -10,8 +10,9 @@ import Foundation
 import Kingfisher
 
 struct FeedCellBuilder {
-    static func populate(cell: UICollectionViewCell, with model: FeedCellModel) {
+    static func populate(cell: UICollectionViewCell, with model: FeedEntity) {
         if let cell = cell as? TeamFeedCell {
+            /*
             cell.avatarView.kf.setImage(with: URL(string: model.avatar))
             cell.titleLabel.text = model.title
             cell.textLabel.text = model.text
@@ -31,6 +32,7 @@ struct FeedCellBuilder {
                 cell.typeLabel.text = "RULES"
             }
             
+             */
         }
     }
 
