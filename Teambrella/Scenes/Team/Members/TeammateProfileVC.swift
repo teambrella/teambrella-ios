@@ -35,6 +35,8 @@ class TeammateProfileVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addGradientNavBar()
         registerCells()
         HUD.show(.progress, onView: view)
         dataSource.loadEntireTeammate { [weak self] in

@@ -35,6 +35,7 @@ class UniversalChatVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addGradientNavBar()
         input.removeFromSuperview()
         setupCollectionView()
         setupInput()
