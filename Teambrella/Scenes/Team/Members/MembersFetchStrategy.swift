@@ -136,7 +136,7 @@ class MembersRiskStrategy: MembersFetchStrategy {
     
     func arrange(teammates: [TeammateLike]) {
         if arrayOfRanges.isEmpty {
-            for range in ranges {
+            for _ in ranges {
                 arrayOfRanges.append([TeammateLike]())
             }
         }

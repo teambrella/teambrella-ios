@@ -106,7 +106,7 @@ extension ChooseYourTeamVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? TeamCell {
+//        if let cell = tableView.cellForRow(at: indexPath) as? TeamCell {
 //            if  current.rawValue != indexPath.row {
 //                if type != .none,
 //                    let otherCell = tableView.cellForRow(at: IndexPath(row: type.rawValue, section: 0)) as? SortCell {
@@ -119,7 +119,7 @@ extension ChooseYourTeamVC: UITableViewDelegate {
 //                cell.tick.isHidden = true
 //                //type = .none
 //            }
-        }
+//        }
         tableView.deselectRow(at: indexPath, animated: false)
     }
 }

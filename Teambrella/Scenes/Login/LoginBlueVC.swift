@@ -78,14 +78,25 @@ class LoginBlueVC: UIViewController {
         skScene.scaleMode = .aspectFit
         skScene.backgroundColor = .clear
         if let emitter: SKEmitterNode = SKEmitterNode(fileNamed: "Fill.sks") {
+            emitter.particleBirthRate = 0.3
             emitter.position = CGPoint(x: confetti.center.x, y: 0)
             emitter.particleRotationRange = CGFloat.pi * 2
             emitter.particleRotation = 0
-            emitter.particleRotationSpeed = 0
+            emitter.particleRotationSpeed = CGFloat.pi / 2
             skScene.addChild(emitter)
-            confetti.allowsTransparency = true
-            confetti.presentScene(skScene)
+            
         }
+        if let emitter: SKEmitterNode = SKEmitterNode(fileNamed: "Fill.sks") {
+            emitter.particleBirthRate = 0.4
+            emitter.position = CGPoint(x: confetti.center.x, y: 0)
+            emitter.particleRotationRange = CGFloat.pi * 2
+            emitter.particleRotation = 0
+            emitter.particleRotationSpeed = -CGFloat.pi / 2
+            skScene.addChild(emitter)
+        }
+        
+        confetti.allowsTransparency = true
+        confetti.presentScene(skScene)
     }
     
     func animateCenterLabel() {

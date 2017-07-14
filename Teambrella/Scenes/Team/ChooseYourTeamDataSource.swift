@@ -24,6 +24,8 @@ struct ChooseYourTeamDataSource {
             }
         }
     }
+    
+    // swiftlint:disable:next function_body_length
     mutating func createFakeModels() {
         models = [ChooseYourTeamCellModel(teamIcon: #imageLiteral(resourceName: "yummy"),
                                           incomingCount: 12,
