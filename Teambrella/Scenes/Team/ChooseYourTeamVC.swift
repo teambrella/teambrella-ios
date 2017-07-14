@@ -33,6 +33,8 @@ class ChooseYourTeamVC: UIViewController, Routable {
         container.layer.cornerRadius = 4
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapCancel))
         view.addGestureRecognizer(recognizer)
+        backView.alpha = 0
+        self.container.alpha = 0
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,7 +51,8 @@ class ChooseYourTeamVC: UIViewController, Routable {
     func appear() {
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
             self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            self.view.layoutIfNeeded()
+            self.backView.alpha = 1
+            self.container.alpha = 1
         }) { finished in
             
         }
@@ -57,8 +60,8 @@ class ChooseYourTeamVC: UIViewController, Routable {
     
     func disappear(completion: @escaping () -> Void) {
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+            self.container.alpha = 0
             self.backView.backgroundColor = .clear
-            self.view.layoutIfNeeded()
         }) { finished in
             completion()
         }

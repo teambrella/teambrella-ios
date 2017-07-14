@@ -1612,9 +1612,9 @@
 		94C2D3971F191F7700D203C2 /* ChooseTeam */ = {
 			isa = PBXGroup;
 			children = (
+				94C2D3931F191F7100D203C2 /* ChooseYourTeamVC.swift */,
 				94C2D3911F191F7100D203C2 /* ChooseYourTeamCellModel.swift */,
 				94C2D3921F191F7100D203C2 /* ChooseYourTeamDataSource.swift */,
-				94C2D3931F191F7100D203C2 /* ChooseYourTeamVC.swift */,
 			);
 			name = ChooseTeam;
 			sourceTree = "<group>";
