@@ -320,6 +320,11 @@
 		9480EA151F15246E008A7A3F /* RiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480EA131F15246E008A7A3F /* RiskCell.xib */; };
 		9480EA181F16466D008A7A3F /* RiskTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480EA161F16466D008A7A3F /* RiskTableHeader.swift */; };
 		9480EA191F16466D008A7A3F /* RiskTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480EA171F16466D008A7A3F /* RiskTableHeader.xib */; };
+		94C2D3941F191F7100D203C2 /* ChooseYourTeamCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3911F191F7100D203C2 /* ChooseYourTeamCellModel.swift */; };
+		94C2D3951F191F7100D203C2 /* ChooseYourTeamDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3921F191F7100D203C2 /* ChooseYourTeamDataSource.swift */; };
+		94C2D3961F191F7100D203C2 /* ChooseYourTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3931F191F7100D203C2 /* ChooseYourTeamVC.swift */; };
+		94C2D39A1F191FA600D203C2 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3981F191FA600D203C2 /* TeamCell.swift */; };
+		94C2D39B1F191FA600D203C2 /* TeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C2D3991F191FA600D203C2 /* TeamCell.xib */; };
 		94C89AD41EFD728000C6D8F7 /* WalletDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C89AD31EFD728000C6D8F7 /* WalletDetailsVC.swift */; };
 		94C89AD61F0104CC00C6D8F7 /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C89AD51F0104CC00C6D8F7 /* QRCode.framework */; };
 		94C89AFD1F0278FB00C6D8F7 /* MeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C89AFB1F0278FB00C6D8F7 /* MeCell.swift */; };
@@ -705,6 +710,11 @@
 		9480EA131F15246E008A7A3F /* RiskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiskCell.xib; path = View/Cells/RiskCell.xib; sourceTree = "<group>"; };
 		9480EA161F16466D008A7A3F /* RiskTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RiskTableHeader.swift; path = View/ReusableViews/RiskTableHeader.swift; sourceTree = "<group>"; };
 		9480EA171F16466D008A7A3F /* RiskTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiskTableHeader.xib; path = View/ReusableViews/RiskTableHeader.xib; sourceTree = "<group>"; };
+		94C2D3911F191F7100D203C2 /* ChooseYourTeamCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseYourTeamCellModel.swift; path = Scenes/Team/ChooseYourTeamCellModel.swift; sourceTree = "<group>"; };
+		94C2D3921F191F7100D203C2 /* ChooseYourTeamDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseYourTeamDataSource.swift; path = Scenes/Team/ChooseYourTeamDataSource.swift; sourceTree = "<group>"; };
+		94C2D3931F191F7100D203C2 /* ChooseYourTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseYourTeamVC.swift; path = Scenes/Team/ChooseYourTeamVC.swift; sourceTree = "<group>"; };
+		94C2D3981F191FA600D203C2 /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamCell.swift; path = View/Cells/TeamCell.swift; sourceTree = "<group>"; };
+		94C2D3991F191FA600D203C2 /* TeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TeamCell.xib; path = View/Cells/TeamCell.xib; sourceTree = "<group>"; };
 		94C89AD31EFD728000C6D8F7 /* WalletDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletDetailsVC.swift; path = Scenes/Me/Wallet/WalletDetailsVC.swift; sourceTree = "<group>"; };
 		94C89AD51F0104CC00C6D8F7 /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		94C89AFB1F0278FB00C6D8F7 /* MeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeCell.swift; path = View/Cells/MeCell.swift; sourceTree = "<group>"; };
@@ -1131,6 +1141,7 @@
 		6D9CC6281ED5EA8C007F936E /* Team */ = {
 			isa = PBXGroup;
 			children = (
+				94C2D3971F191F7700D203C2 /* ChooseTeam */,
 				6D9CC63E1ED72DF9007F936E /* Claims */,
 				6D9CC6381ED72647007F936E /* Feed */,
 				6D9CC63B1ED7267C007F936E /* Members */,
@@ -1470,6 +1481,8 @@
 				94E80E571F0FE33500DE1A0A /* HomeApplicationStatusCell.xib */,
 				9480EA121F15246E008A7A3F /* RiskCell.swift */,
 				9480EA131F15246E008A7A3F /* RiskCell.xib */,
+				94C2D3981F191FA600D203C2 /* TeamCell.swift */,
+				94C2D3991F191FA600D203C2 /* TeamCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1594,6 +1607,16 @@
 				6DF2E8BD1EF02F8200C8D60B /* SocketService.swift */,
 			);
 			name = Socket;
+			sourceTree = "<group>";
+		};
+		94C2D3971F191F7700D203C2 /* ChooseTeam */ = {
+			isa = PBXGroup;
+			children = (
+				94C2D3931F191F7100D203C2 /* ChooseYourTeamVC.swift */,
+				94C2D3911F191F7100D203C2 /* ChooseYourTeamCellModel.swift */,
+				94C2D3921F191F7100D203C2 /* ChooseYourTeamDataSource.swift */,
+			);
+			name = ChooseTeam;
 			sourceTree = "<group>";
 		};
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
@@ -1813,6 +1836,7 @@
 				6D69DA2A1EFD1A0400DED5CE /* WalletFundingCell.xib in Resources */,
 				6D9CC6301ED5EBA8007F936E /* Login.storyboard in Resources */,
 				6D0E05611EFEBF4000604981 /* ReportItemCell.xib in Resources */,
+				94C2D39B1F191FA600D203C2 /* TeamCell.xib in Resources */,
 				6D69DA381EFD6CED00DED5CE /* HeaderWithButton.xib in Resources */,
 				6DF2E8CB1EF194E400C8D60B /* Main.strings in Resources */,
 				94E325CA1F07F77A00B2D8C8 /* JoinTeamMessageCell.xib in Resources */,
@@ -2172,6 +2196,7 @@
 				6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */,
 				6D481F771F0BAA080023C781 /* Math.swift in Sources */,
 				6D466AAC1ED07CF1001BC579 /* TxOutput.swift in Sources */,
+				94C2D3951F191F7100D203C2 /* ChooseYourTeamDataSource.swift in Sources */,
 				6D6DA2521EE1C62E00307C73 /* ClaimsOpenCell.swift in Sources */,
 				9407A5821F13C30800E0DD74 /* LoginNoInviteVC.swift in Sources */,
 				6DA1D1031F056DF900F9DE87 /* UIImage.swift in Sources */,
@@ -2210,6 +2235,7 @@
 				6D02ACA21F07D3A400B01AAF /* JoinTeamVC.swift in Sources */,
 				6D02AC9E1F06A70800B01AAF /* VotingScrollerCell.swift in Sources */,
 				6D6DA25C1EE1CE3100307C73 /* ClaimLike.swift in Sources */,
+				94C2D3941F191F7100D203C2 /* ChooseYourTeamCellModel.swift in Sources */,
 				6DA714E71EDF224A00F39EBE /* TeambrellaStyle.swift in Sources */,
 				6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */,
 				6DA1D0FB1F040AEF00F9DE87 /* Session.swift in Sources */,
@@ -2217,6 +2243,7 @@
 				6D69D9EC1EFBFF2E00DED5CE /* NeedHelpView.swift in Sources */,
 				6DA714E91EDF371300F39EBE /* TeammateSummaryCell.swift in Sources */,
 				6DA8D5571F0E756B000A4DB7 /* HomeScreenModel.swift in Sources */,
+				94C2D3961F191F7100D203C2 /* ChooseYourTeamVC.swift in Sources */,
 				94E80E4C1F0FABFF00DE1A0A /* HomeSupportCell.swift in Sources */,
 				6DEC6DF31E96670D00ACC119 /* Post.swift in Sources */,
 				6D7186E71EA4FC3600257463 /* TransactionsVC.swift in Sources */,
@@ -2273,6 +2300,7 @@
 				6D9CC6511ED97C37007F936E /* HomeCollectionCell.swift in Sources */,
 				6D73C6E41EBB3F0800A2C0F8 /* TransactionCell.swift in Sources */,
 				6D6DA2641EE21ACA00307C73 /* FacebookUser.swift in Sources */,
+				94C2D39A1F191FA600D203C2 /* TeamCell.swift in Sources */,
 				6D69D9FB1EFC07FF00DED5CE /* ProxyForCell.swift in Sources */,
 				6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */,
 				6D0E05601EFEBF4000604981 /* ReportItemCell.swift in Sources */,

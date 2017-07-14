@@ -17,3 +17,8 @@ extension XIBInitableCell where Self: UICollectionReusableView {
     static var nib: UINib { return UINib(nibName: "\(self)", bundle: nil) }
     static var cellID: String { return "\(self)" }
 }
+
+extension XIBInitableCell where Self: UITableViewCell {
+    static var nib: UINib { return UINib(nibName: "\(self)", bundle: nil) }
+    static var cellID: String { return "\(self)" }
+}

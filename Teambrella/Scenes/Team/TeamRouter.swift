@@ -45,4 +45,13 @@ final class TeamRouter {
         vc.claimID = claimID
         service.router.push(vc: vc)
     }
+    
+    func presentChooseTeam(in viewController: UIViewController) {
+        //delegate: ChooseYourTeamControllerDelegate
+            guard let vc = ChooseYourTeamVC.instantiate()
+                as? ChooseYourTeamVC else { fatalError("Error instantiating") }
+            
+            //vc.delegate = delegate
+            viewController.present(vc, animated: false, completion: nil)
+    }
 }
