@@ -7,29 +7,32 @@
 //
 
 import PKHUD
+import SpriteKit
 import UIKit
 
 class LoginBlueVC: UIViewController {
-
+    
     @IBOutlet var centerLabel: UILabel!
     @IBOutlet var continueWithFBButton: UIButton!
     @IBOutlet var tryDemoButton: UIButton!
+    @IBOutlet var gradientView: GradientView!
+    @IBOutlet var confetti: SKView!
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
         /*
-        let manager = FBSDKLoginManager()
-        let permissions = ["public_profile", "email", "user_friends"]
-        HUD.show(.progress)
-        manager.logIn(withReadPermissions: permissions, from: self) { [weak self] result, error in
-            guard let me = self else { return }
-            guard error == nil, let result = result, let token = result.token else {
-                me.handleFailure(error: error)
-                return
-            }
-            
-            me.register(token: token.tokenString)
-        }
- */
+         let manager = FBSDKLoginManager()
+         let permissions = ["public_profile", "email", "user_friends"]
+         HUD.show(.progress)
+         manager.logIn(withReadPermissions: permissions, from: self) { [weak self] result, error in
+         guard let me = self else { return }
+         guard error == nil, let result = result, let token = result.token else {
+         me.handleFailure(error: error)
+         return
+         }
+         
+         me.register(token: token.tokenString)
+         }
+         */
     }
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
@@ -42,10 +45,64 @@ class LoginBlueVC: UIViewController {
         tryDemoButton.setTitle("Login.LoginBlueVC.tryDemoButton".localized, for: .normal)
         continueWithFBButton.layer.cornerRadius = 2
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        centerLabel.alpha = 0
+        gradientView.alpha = 0
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 1) { [weak self] in
+            self?.gradientView.alpha = 1
+        }
+        animateCenterLabel()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        addEmitter()
+    }
+    
+    var isEmitterAdded: Bool = false
+    func addEmitter() {
+        guard !isEmitterAdded else { return }
+        
+        isEmitterAdded = true
+        let skScene: SKScene = SKScene(size: confetti.frame.size)
+        skScene.scaleMode = .aspectFit
+        skScene.backgroundColor = .clear
+        if let emitter: SKEmitterNode = SKEmitterNode(fileNamed: "Fill.sks") {
+            emitter.position = CGPoint(x: confetti.center.x, y: 0)
+            emitter.particleRotationRange = CGFloat.pi * 2
+            emitter.particleRotation = 0
+            emitter.particleRotationSpeed = 0
+            skScene.addChild(emitter)
+            confetti.allowsTransparency = true
+            confetti.presentScene(skScene)
+        }
+    }
+    
+    func animateCenterLabel() {
+        let offset: CGFloat = view.bounds.height / 2 - 50
+        let offsetTransform = CGAffineTransform(translationX: 0, y: offset)
+        let scaleTransform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        centerLabel.transform = offsetTransform.concatenating(scaleTransform)
+        UIView.animate(withDuration: 3,
+                       delay: 0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0,
+                       options: [.curveEaseIn],
+                       animations: { [weak self] in
+                        self?.centerLabel.alpha = 1
+                        self?.centerLabel.transform = .identity
+            },
+                       completion: nil)
     }
     
     func register(token: String) {
@@ -91,5 +148,5 @@ class LoginBlueVC: UIViewController {
             _ = LoginDetailsConfigurator(vc: vc, fbUser: user)
         }
     }
-
+    
 }

@@ -53,6 +53,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearScreen()
         HUD.show(.progress)
         setupTransparentNavigationBar()
         gradientView.setup(colors: [#colorLiteral(red: 0.1803921569, green: 0.2392156863, blue: 0.7960784314, alpha: 1), #colorLiteral(red: 0.2156862745, green: 0.2705882353, blue: 0.8078431373, alpha: 1), #colorLiteral(red: 0.368627451, green: 0.4156862745, blue: 0.8588235294, alpha: 1)],
@@ -72,6 +73,18 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         itemCard.avatarView.addGestureRecognizer(touch)
         HomeCellBuilder.registerCells(in: collectionView)
         setupWalletContainer()
+    }
+    
+    func clearScreen() {
+        greetingsTitleLabel.text = nil
+        greetingsSubtitileLabel.text = nil
+        
+        leftBrickAmountLabel.text = "..."
+        rightBrickAmountLabel.text = "..."
+        
+        itemCard.avatarView.image = #imageLiteral(resourceName: "imagePlaceholder")
+        itemCard.subtitleLabel.text = nil
+        itemCard.titleLabel.text = nil
     }
     
     func setupWalletContainer() {

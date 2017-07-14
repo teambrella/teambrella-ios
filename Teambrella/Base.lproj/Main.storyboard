@@ -6,8 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--InitialVC-->
         <scene sceneID="cEj-gd-iOt">
@@ -21,7 +28,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imF-3C-Sdp" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imF-3C-Sdp" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -36,38 +43,30 @@
                             <imageView userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti-color" translatesAutoresizingMaskIntoConstraints="NO" id="aNj-ZE-j1Y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="MXU-2E-8IL">
-                                <rect key="frame" x="150" y="291" width="75" height="85"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdm-uI-Dwd">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
-                                        <state key="normal" title="Teambrella">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="tapTeambrella:" destination="BKZ-Pn-qVe" eventType="touchUpInside" id="U57-t8-i8Z"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DS-cC-f6s">
-                                        <rect key="frame" x="0.0" y="55" width="75" height="30"/>
-                                        <state key="normal" title="Tests">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="tapTests:" destination="BKZ-Pn-qVe" eventType="touchUpInside" id="eW8-0m-Ojm"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emU-7T-Nip">
+                                <rect key="frame" x="186" y="311.5" width="4" height="22"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
+                                <color key="textColor" red="0.74117647060000003" green="0.76470588240000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-n1-x7D">
+                                <rect key="frame" x="80" y="253.5" width="215" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cBm-n1-x7D" secondAttribute="height" multiplier="5:1" id="enG-6g-6PF"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.13333333333333333" green="0.20000000000000001" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pEm-wK-1of" firstAttribute="top" secondItem="imF-3C-Sdp" secondAttribute="bottom" id="7yo-5G-rbG"/>
                             <constraint firstAttribute="trailing" secondItem="imF-3C-Sdp" secondAttribute="trailing" id="Ipp-aM-ULn"/>
-                            <constraint firstItem="MXU-2E-8IL" firstAttribute="centerY" secondItem="XNb-Tt-LFR" secondAttribute="centerY" id="Nwx-0P-w6n"/>
+                            <constraint firstItem="emU-7T-Nip" firstAttribute="top" secondItem="cBm-n1-x7D" secondAttribute="bottom" constant="15" id="OqJ-ml-iEi"/>
+                            <constraint firstItem="cBm-n1-x7D" firstAttribute="width" secondItem="cBm-n1-x7D" secondAttribute="height" multiplier="5:1" id="TrJ-k0-vGE"/>
+                            <constraint firstItem="emU-7T-Nip" firstAttribute="centerX" secondItem="aNj-ZE-j1Y" secondAttribute="centerX" id="V4a-IN-dfD"/>
+                            <constraint firstItem="cBm-n1-x7D" firstAttribute="centerX" secondItem="aNj-ZE-j1Y" secondAttribute="centerX" id="XFU-2n-ufu"/>
                             <constraint firstItem="imF-3C-Sdp" firstAttribute="top" secondItem="XNb-Tt-LFR" secondAttribute="top" id="c8c-CE-DpR"/>
                             <constraint firstAttribute="trailing" secondItem="aNj-ZE-j1Y" secondAttribute="trailing" id="krh-F6-gvn"/>
-                            <constraint firstItem="MXU-2E-8IL" firstAttribute="centerX" secondItem="XNb-Tt-LFR" secondAttribute="centerX" id="lV8-d4-vhc"/>
+                            <constraint firstItem="emU-7T-Nip" firstAttribute="bottom" secondItem="aNj-ZE-j1Y" secondAttribute="centerY" id="l0j-m3-dYQ"/>
                             <constraint firstItem="imF-3C-Sdp" firstAttribute="leading" secondItem="XNb-Tt-LFR" secondAttribute="leading" id="lid-zh-LiB"/>
                             <constraint firstItem="aNj-ZE-j1Y" firstAttribute="leading" secondItem="XNb-Tt-LFR" secondAttribute="leading" id="pCE-4J-1U5"/>
                             <constraint firstItem="pEm-wK-1of" firstAttribute="top" secondItem="aNj-ZE-j1Y" secondAttribute="bottom" id="sJG-xW-u3b"/>
@@ -215,5 +214,6 @@
     </scenes>
     <resources>
         <image name="confetti-color" width="1024" height="1024"/>
+        <image name="logo-1" width="215" height="43"/>
     </resources>
 </document>
