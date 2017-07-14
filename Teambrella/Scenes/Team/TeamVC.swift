@@ -22,7 +22,7 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         setupTeambrellaTabLayout()
         super.viewDidLoad()
         setupTransparentNavigationBar()
-        addTeamButton()
+//        addTeamButton()
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,21 +30,20 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         // Dispose of any resources that can be recreated.
     }
     
-    private func addTeamButton() {
-        let button = UIButton(type: .custom)
-        let image = #imageLiteral(resourceName: "iconCoverage")
-        button.tintColor = .teambrellaBlue
-        button.setImage(image, for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        button.addTarget(self, action: #selector(tapTeam(button:)), for: .touchUpInside)
-        let barItem = UIBarButtonItem(customView: button)
-        
-        navigationItem.setLeftBarButton(barItem, animated: false)
-    }
+//    private func addTeamButton() {
+//        let button = UIButton(type: .custom)
+//        let image = #imageLiteral(resourceName: "iconCoverage")
+//        button.tintColor = .teambrellaBlue
+//        button.setImage(image, for: .normal)
+//        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+//        button.addTarget(self, action: #selector(tapTeam(button:)), for: .touchUpInside)
+//        let barItem = UIBarButtonItem(customView: button)
+//        navigationItem.setLeftBarButton(barItem, animated: false)
+//    }
     
     func tapTeam(button: UIButton) {
-        TeamRouter().presentChooseTeam(in: self)
-        //  service.router.showJoinTeam(in: self)
+       // TeamRouter().presentChooseTeam(in: self)
+          service.router.showJoinTeam(in: self)
         //service.router.presentJoinTeam()
         /*
         let alert = UIAlertController(title: "Select your team",

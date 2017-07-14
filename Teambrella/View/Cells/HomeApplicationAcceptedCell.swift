@@ -11,9 +11,9 @@ import UIKit
 class HomeApplicationAcceptedCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var backView: RadarView!
     @IBOutlet var avatar: RoundImageView!
-    @IBOutlet var yummigum: UIImageView!
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var centerLabel: UILabel!
+    @IBOutlet var yummigum: UIImageView!
     @IBOutlet var button: BorderedButton!
     
     override func awakeFromNib() {

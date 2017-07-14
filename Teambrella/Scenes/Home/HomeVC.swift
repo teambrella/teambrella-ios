@@ -183,7 +183,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     @IBAction func tapTeams(_ sender: UIButton) {
-          DeveloperTools.notSupportedAlert(in: self)
+        TeamRouter().showChooseTeam(in: self)
     }
     
     @IBAction func tapInbox(_ sender: UIButton) {

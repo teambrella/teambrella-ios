@@ -44,7 +44,7 @@ class VotingRiskVC: UIViewController {
     var onVoteConfirmed: ((Double?) -> Void)?
     var isScrollerSet: Bool = false
     
-    var votingScroller: VotingScrollerVC? 
+    var votingScroller: VotingScrollerVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()

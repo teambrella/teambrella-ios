@@ -46,7 +46,7 @@ final class TeamRouter {
         service.router.push(vc: vc)
     }
     
-    func presentChooseTeam(in viewController: UIViewController) {
+    func showChooseTeam(in viewController: UIViewController) {
         //delegate: ChooseYourTeamControllerDelegate
             guard let vc = ChooseYourTeamVC.instantiate()
                 as? ChooseYourTeamVC else { fatalError("Error instantiating") }
