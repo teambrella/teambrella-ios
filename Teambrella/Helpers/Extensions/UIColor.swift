@@ -39,6 +39,7 @@ extension UIColor {
     
     // MARK: Gray
     class var paleGray: UIColor { return                #colorLiteral(red: 0.9098039216, green: 0.9294117647, blue: 0.9490196078, alpha: 1) }
+    class var paleGray40: UIColor { return              #colorLiteral(red: 0.9098039216, green: 0.9294117647, blue: 0.9490196078, alpha: 0.3983572346) }
     class var lightBlueGray: UIColor { return           #colorLiteral(red: 0.8705882353, green: 0.9019607843, blue: 0.9529411765, alpha: 1) }
     class var cloudyBlue: UIColor { return              #colorLiteral(red: 0.8078431373, green: 0.8470588235, blue: 0.8745098039, alpha: 1) }
     class var blueyGray: UIColor { return               #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1) }
