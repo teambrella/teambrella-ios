@@ -10,25 +10,39 @@ import Foundation
 import Kingfisher
 
 struct FeedCellBuilder {
-    static func populate(cell: UICollectionViewCell, with model: FeedCellModel) {
+    static func populate(cell: UICollectionViewCell, with model: FeedEntity) {
         if let cell = cell as? TeamFeedCell {
-            cell.avatarView.kf.setImage(with: URL(string: model.avatar))
-            cell.titleLabel.text = model.title
+            if model.itemType == .teammate {
+                cell.avatarView.showAvatar(string: model.smallPhotoOrAvatar)
+                cell.avatarView.layer.masksToBounds = true
+                cell.avatarView.layer.cornerRadius = cell.avatarView.frame.height / 2
+            } else {
+                cell.avatarView.showImage(string: model.smallPhotoOrAvatar)
+                cell.avatarView.layer.masksToBounds = true
+                cell.avatarView.layer.cornerRadius = 4
+            }
+            cell.titleLabel.text = model.chatTitle
             cell.textLabel.text = model.text
-            let urls = model.teammatesAvatars.flatMap { URL(string: $0) }
-            cell.facesStack.set(images: urls, label: nil, max: 4)
-            cell.timeLabel.text = "\(model.lastPostedMinutes) MIN AGO"
+            cell.facesStack.setAvatars(images: model.topPosterAvatars, label: nil, max: 4)
+         
+            if let date = model.itemDate {
+            cell.timeLabel.text = DateProcessor().stringInterval(from: date)
+            }
             cell.unreadLabel.text = String(model.unreadCount)
-            switch model.type {
+            cell.unreadLabel.isHidden = model.unreadCount == 0
+            
+            cell.titleLabel.text = model.chatTitle ?? model.modelOrName
+            
+            switch model.itemType {
             case .claim:
                 cell.iconView.image = #imageLiteral(resourceName: "claim")
                 cell.typeLabel.text = "CLAIM"
             case .teammate:
                 cell.iconView.image = #imageLiteral(resourceName: "application")
                 cell.typeLabel.text = "APPLICATION"
-            case .topic:
-                cell.iconView.image = #imageLiteral(resourceName: "rules")
-                cell.typeLabel.text = "RULES"
+            default:
+                cell.iconView.image = nil
+                cell.typeLabel.text = "UNKNOWN"
             }
             
         }

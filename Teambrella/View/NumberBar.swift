@@ -22,7 +22,7 @@ class NumberBar: UIView, XIBInitable {
     @IBInspectable
     var isBottomLineVisible: Bool = false
     @IBInspectable
-    var lineColor: UIColor = .paleGray {
+    var lineColor: UIColor = .paleGray40 {
         didSet { drawingView.redraw(master: self) }
     }
     @IBInspectable

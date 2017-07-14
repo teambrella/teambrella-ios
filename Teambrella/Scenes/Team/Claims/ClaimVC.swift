@@ -27,6 +27,7 @@ class ClaimVC: UIViewController, Routable {
         super.viewDidLoad()
         guard let claimID = claimID else { return }
         
+        addGradientNavBar()
         setupCells()
         dataSource.onUpdate = { [weak self] in
             self?.reloadData()

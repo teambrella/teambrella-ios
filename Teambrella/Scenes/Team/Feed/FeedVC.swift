@@ -6,6 +6,7 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
+import PKHUD
 import UIKit
 import XLPagerTabStrip
 
@@ -15,13 +16,19 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         static let headerHeight: CGFloat = 70
     }
 
-    var dataSource: FeedDataSource = FeedDataSource()
+    var dataSource: FeedDataSource = FeedDataSource(teamID: service.session.currentTeam?.teamID ?? 0)
     
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        HUD.show(.progress, onView: view)
+        dataSource.loadData()
+        dataSource.onLoad = { [weak self] in
+            HUD.hide()
+            self?.collectionView.reloadData()
+        }
     }
     
     func setupCollectionView() {

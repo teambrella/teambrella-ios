@@ -27,6 +27,29 @@ struct LocalStorage: Storage {
         }
     }
     
+    mutating func requestTeamFeed(context: FeedRequestContext,
+                                  success: @escaping([FeedEntity]) -> Void,
+                                  failure: @escaping ErrorHandler) {
+        freshKey { key in
+            let body = RequestBody(key: key, payload:["teamid": context.teamID,
+                                                      "since": context.since,
+                                                      "offset": context.offset,
+                                                      "limit": context.limit,
+                                                      "commentAvatarSize": 32,
+                                                      "search": NSNull()])
+            let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in
+                if case .teamFeed(let feed) = response {
+                    success(feed)
+                } else {
+                    failure(nil)
+                }
+                }, failure: { error in
+                    failure(error)
+            })
+            request.start()
+        }
+    }
+    
     mutating func freshKey(completion: @escaping (Key) -> Void) {
         if let time = lastKeyTime, Date().timeIntervalSince(time) < 60 * 10 {
             completion(service.server.key)
