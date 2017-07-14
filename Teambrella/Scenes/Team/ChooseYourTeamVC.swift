@@ -12,11 +12,13 @@ protocol ChooseYourTeamControllerDelegate: class {
 }
 
 class ChooseYourTeamVC: UIViewController, Routable {
+    static let storyboardName = "Team"
+
     @IBOutlet var backView: UIView!
     @IBOutlet var container: UIView!
     @IBOutlet var header: UILabel!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var containerHeight: NSLayoutConstraint!
+    @IBOutlet var tableViewHeight: NSLayoutConstraint!
     
     fileprivate var dataSource = ChooseYourTeamDataSource()
     weak var delegate: ChooseYourTeamControllerDelegate?
@@ -28,6 +30,8 @@ class ChooseYourTeamVC: UIViewController, Routable {
         header.text = "Team.ChooseYourTeamVC.header".localized
         dataSource.createModels()
         //contH = tableView.countOfCells + 65
+        tableView.register(TeamCell.nib, forCellReuseIdentifier: TeamCell.cellID)
+        container.layer.cornerRadius = 5
     }
     
 }
@@ -57,6 +61,10 @@ extension ChooseYourTeamVC: UITableViewDelegate {
             cell.itemName.text = model.itemName
             cell.coverage.text = String(model.coverage) + "%"
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(72)//tableView.bounds.height / CGFloat(4)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

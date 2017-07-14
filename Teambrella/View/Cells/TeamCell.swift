@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeamCell: UITableViewCell {
+class TeamCell: UITableViewCell, XIBInitableCell {
     @IBOutlet var container: UIView!
     @IBOutlet var teamIcon: UIImageView!
     @IBOutlet var incomingCount: Label!

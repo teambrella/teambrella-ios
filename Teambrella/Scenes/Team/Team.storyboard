@@ -154,7 +154,7 @@
                     <tabBarItem key="tabBarItem" title="Team" image="iconTeam" id="dXT-U8-WRM"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5fO-Hd-Vf9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5fO-Hd-Vf9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -345,7 +345,7 @@
         <!--Choose Your TeamVC-->
         <scene sceneID="0QU-Sj-nqi">
             <objects>
-                <viewController id="b8C-KD-R4b" customClass="ChooseYourTeamVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseYourTeamVC" id="b8C-KD-R4b" customClass="ChooseYourTeamVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dtp-el-RVZ"/>
                         <viewControllerLayoutGuide type="bottom" id="dz4-mJ-EeV"/>
@@ -354,11 +354,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GwS-1m-dT0">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GwS-1m-dT0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAg-o9-mRp">
-                                        <rect key="frame" x="40" y="183" width="295" height="280"/>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAg-o9-mRp">
+                                        <rect key="frame" x="40" y="193" width="295" height="280"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXP-cN-yNh">
                                                 <rect key="frame" x="24" y="24" width="247" height="17"/>
@@ -366,9 +366,13 @@
                                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RPP-4G-Nrn">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RPP-4G-Nrn">
                                                 <rect key="frame" x="0.0" y="65" width="295" height="215"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="215" id="zbq-eL-Sgf"/>
+                                                </constraints>
+                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="b8C-KD-R4b" id="rK4-m2-7jS"/>
                                                     <outlet property="delegate" destination="b8C-KD-R4b" id="KPB-Qm-sM2"/>
@@ -401,15 +405,15 @@
                             <constraint firstAttribute="trailing" secondItem="GwS-1m-dT0" secondAttribute="trailing" id="Ggr-7P-g2D"/>
                             <constraint firstItem="GwS-1m-dT0" firstAttribute="leading" secondItem="ebb-FE-DJp" secondAttribute="leading" id="ddH-HC-vMI"/>
                             <constraint firstItem="dz4-mJ-EeV" firstAttribute="top" secondItem="GwS-1m-dT0" secondAttribute="bottom" id="dgk-A0-Kqw"/>
-                            <constraint firstItem="GwS-1m-dT0" firstAttribute="top" secondItem="dtp-el-RVZ" secondAttribute="bottom" id="hTw-a9-v9P"/>
+                            <constraint firstItem="GwS-1m-dT0" firstAttribute="top" secondItem="dtp-el-RVZ" secondAttribute="bottom" constant="-20" id="hTw-a9-v9P"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backView" destination="GwS-1m-dT0" id="UQL-ws-ZCE"/>
                         <outlet property="container" destination="fAg-o9-mRp" id="U1j-Vt-qDf"/>
-                        <outlet property="containerHeight" destination="54x-zw-FwF" id="QGg-ZS-zDd"/>
                         <outlet property="header" destination="UXP-cN-yNh" id="cOh-oD-Mzs"/>
                         <outlet property="tableView" destination="RPP-4G-Nrn" id="N4C-oX-d9b"/>
+                        <outlet property="tableViewHeight" destination="zbq-eL-Sgf" id="lM9-4i-Asu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piB-2G-dpY" userLabel="First Responder" sceneMemberID="firstResponder"/>

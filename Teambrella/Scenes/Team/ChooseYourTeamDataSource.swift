@@ -20,7 +20,7 @@ struct ChooseYourTeamDataSource {
                                                       incomingCount: inc,
                                                       teamName: card.teamName,
                                                       itemName: item,
-                                                      coverage: cvg))
+                                                      coverage: Int(cvg)))
             }
         }
     }
