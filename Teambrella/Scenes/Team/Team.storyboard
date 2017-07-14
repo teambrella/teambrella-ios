@@ -345,7 +345,7 @@
         <!--Choose Your TeamVC-->
         <scene sceneID="0QU-Sj-nqi">
             <objects>
-                <viewController storyboardIdentifier="ChooseYourTeamVC" id="b8C-KD-R4b" customClass="ChooseYourTeamVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseYourTeamVC" modalPresentationStyle="overFullScreen" id="b8C-KD-R4b" customClass="ChooseYourTeamVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dtp-el-RVZ"/>
                         <viewControllerLayoutGuide type="bottom" id="dz4-mJ-EeV"/>
@@ -366,7 +366,14 @@
                                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RPP-4G-Nrn">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NaN-k1-dQM">
+                                                <rect key="frame" x="0.0" y="64" width="295" height="1"/>
+                                                <color key="backgroundColor" red="0.89411764709999997" green="0.89019607840000003" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="4Ql-0y-yXS"/>
+                                                </constraints>
+                                            </view>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RPP-4G-Nrn">
                                                 <rect key="frame" x="0.0" y="65" width="295" height="215"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -381,18 +388,20 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="280" id="54x-zw-FwF"/>
+                                            <constraint firstItem="NaN-k1-dQM" firstAttribute="leading" secondItem="fAg-o9-mRp" secondAttribute="leading" id="75f-Dg-agG"/>
                                             <constraint firstItem="RPP-4G-Nrn" firstAttribute="leading" secondItem="fAg-o9-mRp" secondAttribute="leading" id="AIP-hc-sGV"/>
                                             <constraint firstItem="RPP-4G-Nrn" firstAttribute="top" secondItem="UXP-cN-yNh" secondAttribute="bottom" constant="24" id="BOi-vo-zxn"/>
+                                            <constraint firstAttribute="trailing" secondItem="NaN-k1-dQM" secondAttribute="trailing" id="J89-Cn-r9w"/>
                                             <constraint firstAttribute="trailing" secondItem="UXP-cN-yNh" secondAttribute="trailing" constant="24" id="LT9-7e-Td4"/>
                                             <constraint firstItem="UXP-cN-yNh" firstAttribute="leading" secondItem="fAg-o9-mRp" secondAttribute="leading" constant="24" id="bW3-cI-QtN"/>
                                             <constraint firstAttribute="trailing" secondItem="RPP-4G-Nrn" secondAttribute="trailing" id="cbw-tC-3pO"/>
+                                            <constraint firstItem="NaN-k1-dQM" firstAttribute="bottom" secondItem="RPP-4G-Nrn" secondAttribute="top" id="cuw-9V-yc6"/>
                                             <constraint firstAttribute="bottom" secondItem="RPP-4G-Nrn" secondAttribute="bottom" id="mJw-vM-eGa"/>
                                             <constraint firstItem="UXP-cN-yNh" firstAttribute="top" secondItem="fAg-o9-mRp" secondAttribute="top" constant="24" id="tXn-XM-Ejh"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="0.71174015410958891" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="fAg-o9-mRp" firstAttribute="leading" secondItem="GwS-1m-dT0" secondAttribute="leading" constant="40" id="5zk-jJ-tIo"/>
                                     <constraint firstAttribute="trailing" secondItem="fAg-o9-mRp" secondAttribute="trailing" constant="40" id="XdG-2D-CYg"/>
@@ -400,7 +409,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="GwS-1m-dT0" secondAttribute="trailing" id="Ggr-7P-g2D"/>
                             <constraint firstItem="GwS-1m-dT0" firstAttribute="leading" secondItem="ebb-FE-DJp" secondAttribute="leading" id="ddH-HC-vMI"/>

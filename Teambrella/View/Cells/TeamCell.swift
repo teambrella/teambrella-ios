@@ -20,6 +20,9 @@ class TeamCell: UITableViewCell, XIBInitableCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        teamIcon.layer.cornerRadius = 3
+        incomingCount.layer.borderWidth = 1.5
+        incomingCount.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
     }
     
 }

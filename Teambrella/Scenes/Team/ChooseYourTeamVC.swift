@@ -28,12 +28,47 @@ class ChooseYourTeamVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         header.text = "Team.ChooseYourTeamVC.header".localized
-        dataSource.createModels()
-        //contH = tableView.countOfCells + 65
+        dataSource.createFakeModels()
         tableView.register(TeamCell.nib, forCellReuseIdentifier: TeamCell.cellID)
-        container.layer.cornerRadius = 5
+        container.layer.cornerRadius = 4
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapCancel))
+        view.addGestureRecognizer(recognizer)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableViewHeight.constant = min(tableView.contentSize.height, 300)
+        tableView.isScrollEnabled = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        appear()
+    }
+    
+    func appear() {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
+            self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            self.view.layoutIfNeeded()
+        }) { finished in
+            
+        }
+    }
+    
+    func disappear(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+            self.backView.backgroundColor = .clear
+            self.view.layoutIfNeeded()
+        }) { finished in
+            completion()
+        }
+    }
+    
+    func tapCancel() {
+        disappear {
+            self.dismiss(animated: false, completion: nil)
+        }
+    }
 }
 
 extension ChooseYourTeamVC: UITableViewDataSource {
@@ -56,7 +91,7 @@ extension ChooseYourTeamVC: UITableViewDelegate {
             let model = dataSource[indexPath]
             cell.teamIcon.image = model.teamIcon
             cell.incomingCount.text = String(model.incomingCount)
-            cell.incomingCount.isHidden = !(model.incomingCount > 0)
+            cell.incomingCount.isHidden = model.incomingCount == 0
             cell.teamName.text = model.teamName
             cell.itemName.text = model.itemName
             cell.coverage.text = String(model.coverage) + "%"
@@ -64,7 +99,7 @@ extension ChooseYourTeamVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(72)//tableView.bounds.height / CGFloat(4)
+        return 72
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
