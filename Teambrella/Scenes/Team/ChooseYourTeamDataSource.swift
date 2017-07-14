@@ -52,7 +52,7 @@ struct ChooseYourTeamDataSource {
                                           coverage: 70),
                   ChooseYourTeamCellModel(teamIcon: #imageLiteral(resourceName: "yummy"),
                                           incomingCount: 1,
-                                          teamName: "Trolleybuses detected",
+                                          teamName: "Trolleybuses detectedddd",
                                           itemName: "Mazda CX5",
                                           coverage: 80),
                   ChooseYourTeamCellModel(teamIcon: #imageLiteral(resourceName: "yummy"),
