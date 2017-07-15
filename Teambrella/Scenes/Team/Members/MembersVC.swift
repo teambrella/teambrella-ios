@@ -29,8 +29,6 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchController()
-        //        setupDismissKeyboardOnTap()
-        
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
             self?.collectionView.reloadData()
@@ -53,8 +51,6 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
         HUD.show(.progress, onView: view)
         dataSource.loadData()
         title = "Team.team".localized
-        
-        collectionView.contentInset.top = searchView.frame.height
     }
     
     override func didReceiveMemoryWarning() {
