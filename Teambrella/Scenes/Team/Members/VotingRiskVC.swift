@@ -163,7 +163,8 @@ class VotingRiskVC: UIViewController {
         guard let votingScroller = votingScroller else { return }
         
         onVoteConfirmed?(nil)
-        teamVoteLabel.text = "..."
+        //teamVoteLabel.text = "..."
+        yourRiskValue.text = "..."
         if let proxyVote = teammate?.extended?.voting?.proxyVote {
             let offset = offsetFrom(risk: proxyVote, in: votingScroller)
             votingScroller.scrollTo(offset: offset)
