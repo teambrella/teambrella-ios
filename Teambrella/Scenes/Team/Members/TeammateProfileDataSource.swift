@@ -10,7 +10,7 @@ import SwiftyJSON
 import UIKit
 
 enum TeammateProfileCellType: String {
-    case me, summary, object, stats, contact, dialog, voting
+    case me, summary, object, stats, contact, dialog, dialogCompact, voting
 }
 
 enum SocialItemType: String {
@@ -30,10 +30,12 @@ class TeammateProfileDataSource {
     var source: [TeammateProfileCellType] = []
     var teammate: TeammateLike
     var riskScale: RiskScaleEntity? { return teammate.extended?.riskScale }
+    var isNewTeammate = false
+    let isMe: Bool
     
     init(teammate: TeammateLike, isMe: Bool) {
         self.teammate = teammate
-        source.append(isMe ? .me : .summary)
+        self.isMe = isMe
     }
     
     var sections: Int = 1
@@ -81,7 +83,14 @@ class TeammateProfileDataSource {
     
     private func modifySource() {
         if teammate.isVoting == true {
+            //source = source.filter { $0 != .summary }
+            isNewTeammate = true
+            source.append(.dialogCompact)
             source.append(.voting)
+            //if teammate.extended?.topic != nil {
+           // }
+        } else {
+             source.append(isMe ? .me : .summary)
         }
         if teammate.extended?.object != nil {
             source.append(.object)
@@ -92,7 +101,7 @@ class TeammateProfileDataSource {
         if !socialItems.isEmpty {
             source.append(.contact)
         }
-        if teammate.extended?.topic != nil {
+        if !isNewTeammate  && teammate.extended?.topic != nil {
             source.append(.dialog)
         }
     }

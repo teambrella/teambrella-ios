@@ -42,9 +42,12 @@ class TeammateProfileVC: UIViewController, Routable {
         dataSource.loadEntireTeammate { [weak self] in
             HUD.hide()
             self?.prepareLinearFunction()
+            self?.title = self?.teammate.extended?.basic.name
             self?.collectionView.reloadData()
         }
-        
+        if let flow = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flow.sectionHeadersPinToVisibleBounds = true
+        }
     }
     
     func prepareLinearFunction() {
@@ -71,6 +74,9 @@ class TeammateProfileVC: UIViewController, Routable {
     func registerCells() {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
         collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
+        collectionView.register(CompactUserInfoHeader.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: CompactUserInfoHeader.cellID)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,16 +88,18 @@ class TeammateProfileVC: UIViewController, Routable {
     
     func updateAmounts(with risk: Double) {
         chosenRisk = risk
-        let cells = collectionView.visibleCells.filter { $0 is TeammateSummaryCell }
-        guard let cell = cells.first as? TeammateSummaryCell else { return }
+        let kind = UICollectionElementKindSectionHeader
+        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
+            return
+        }
         guard let myRisk = teammate.extended?.riskScale?.myRisk,
             let theirRisk = teammate.extended?.basic.risk else { return }
         
         if let theirAmount = linearFunction?.value(at: risk / theirRisk * myRisk) {
-            cell.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
+            view.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
         }
         if let myAmount = linearFunction?.value(at: risk / myRisk * theirRisk) {
-            cell.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
+            view.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
         }
     }
     
@@ -116,10 +124,9 @@ extension TeammateProfileVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                   withReuseIdentifier: "Header",
-                                                                   for: indexPath)
-        return view
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                               withReuseIdentifier: CompactUserInfoHeader.cellID,
+                                                               for: indexPath)
     }
     
 }
@@ -165,6 +172,23 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
+        if let view = view as? CompactUserInfoHeader {
+            view.avatarView.showAvatar(string: teammate.avatar)
+            
+            if let left = view.leftNumberView {
+                left.titleLabel.text = "Team.TeammateCell.coversMe".localized
+                let amount = teammate.extended?.basic.coversMeAmount
+                left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+                left.currencyLabel.text = "USD"
+            }
+            
+            if let right = view.rightNumberView {
+                right.titleLabel.text = "Team.TeammateCell.coverThem".localized
+                let amount = teammate.extended?.basic.iCoverThemAmount
+                right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+                right.currencyLabel.text = "USD"
+            }
+        }
         
     }
     
@@ -200,14 +224,16 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: 210)
         case .voting:
             return CGSize(width: wdt, height: 350)
+        case .dialogCompact:
+            return  CGSize(width: collectionView.bounds.width, height: 98)
         }
     }
     
-    //    func collectionView(_ collectionView: UICollectionView,
-    //                        layout collectionViewLayout: UICollectionViewLayout,
-    //                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-    //        return CGSize(width: collectionView.bounds.width, height: 1)
-    //    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return dataSource.isNewTeammate ? CGSize(width: collectionView.bounds.width, height: 60) : CGSize.zero
+    }
 }
 
 extension TeammateProfileVC: UITableViewDataSource {

@@ -23,6 +23,8 @@ struct TeammateCellBuilder {
             populateStats(cell: cell, with: stats)
         } else if let cell = cell as? TeammateVoteCell, let delegate = delegate as? TeammateProfileVC {
            populateVote(cell: cell, with: teammate, delegate: delegate)
+        } else if let cell = cell as? DiscussionCompactCell, let topic = teammate.extended?.topic {
+            populateCompactDiscussion(cell: cell, with: topic, avatar: teammate.avatar)
         }
     }
     
@@ -143,6 +145,16 @@ struct TeammateCellBuilder {
         let text: String? = morePersons > 0 ? "+\(morePersons)" : nil
         cell.teammatesAvatarStack.set(images: urls, label: text, max: 4)
         cell.discussionLabel.text = "Team.TeammateCell.discussion".localized
+    }
+    
+    private static func populateCompactDiscussion(cell: DiscussionCompactCell, with stats: Topic, avatar: String) {
+        cell.avatarView.showAvatar(string: avatar)
+        cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
+        cell.timeLabel.text = DateProcessor().stringFromNow(seconds: stats.minutesSinceLastPost).uppercased()
+        let message = TextAdapter().parsedHTML(string: stats.originalPostText)
+        cell.textLabel.text = message
+        cell.unreadCountView.text = String(stats.unreadCount)
+        cell.unreadCountView.isHidden = stats.unreadCount == 0
     }
     
     private static func populateContact(cell: TeammateContactCell, with teammate: TeammateLike, delegate: Any?) {
