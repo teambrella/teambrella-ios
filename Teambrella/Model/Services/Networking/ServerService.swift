@@ -22,14 +22,14 @@ struct ResponseStatus {
     }
 }
 
-let isLocalServer = false
+let isLocalServer = true
 
 /**
  Service to interoperate with the server fetching all UI related information
  */
 class ServerService {
     struct Constant {
-       static var siteURL: String { return isLocalServer ? BlockchainServer.Constant.siteURL : "http://94.72.4.72/" }
+        static var siteURL: String { return isLocalServer ? BlockchainServer.Constant.siteURL : "http://94.72.4.72/" }
         //""//"http://192.168.0.254" // "http://192.168.0.222"
         //static let fakePrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
         // "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
@@ -59,7 +59,9 @@ class ServerService {
         
     }
     
-    func avatarURLstring(for string: String, width: CGFloat? = nil, crop rect: CGRect? = nil) -> String {
+    func avatarURLstring(for string: String,
+                         width: CGFloat? = 128,
+                         crop rect: CGRect? = CGRect(x: 0, y: 0, width: 128, height: 128)) -> String {
         var urlString = Constant.siteURL + string
         if let width = width {
             let rect = rect ?? CGRect(x: 0, y: 0, width: width, height: width)
@@ -120,7 +122,7 @@ class ServerService {
             case .success:
                 if let value = response.result.value {
                     let result = JSON(value)
-                     print("Result: \(result)")
+                    print("Result: \(result)")
                     let status = ResponseStatus(json: result["Status"])
                     self.timestamp = status.timestamp
                     switch status.code {

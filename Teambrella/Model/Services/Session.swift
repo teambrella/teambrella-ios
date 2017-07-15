@@ -15,4 +15,6 @@ struct Session {
     // TMP: my user properties
     var currentUserID: String?
     var currentUserName: String?
+    var myAvatarString: String { return "me/avatar" }
+    var myAvatarStringSmall: String { return myAvatarString + "/128" }
 }

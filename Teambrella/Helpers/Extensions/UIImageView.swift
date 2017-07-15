@@ -12,8 +12,11 @@ import Kingfisher
 extension UIImageView {
     func showAvatar(string: String,
                     options: KingfisherOptionsInfo? = nil,
+                    isFullSize: Bool = false,
                     completion: ((UIImage?, NSError?) -> Void)? = nil) {
-        let modified = service.server.avatarURLstring(for: string)
+        let modified = isFullSize
+            ? service.server.avatarURLstring(for: string, width: nil, crop: nil)
+            : service.server.avatarURLstring(for: string)
         guard let url = URL(string: modified) else { return }
         
         showAvatar(url: url, options: options, completion: completion)
