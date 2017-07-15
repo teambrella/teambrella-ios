@@ -109,16 +109,16 @@ extension CompareTeamRiskVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 375, height: 71)
+        return CGSize(width: collectionView.bounds.width, height: 71)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         if dataSource.itemsInSection(section: section) == 0 {
-            return CGSize(width: 375, height: 0)
+            return CGSize(width: collectionView.bounds.width, height: 0)
         } else {
-            return CGSize(width: 375, height: 50)
+            return CGSize(width: collectionView.bounds.width, height: 50)
         }
     }
 }
