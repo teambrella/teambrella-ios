@@ -9,11 +9,12 @@
 import UIKit
 
 protocol ChooseYourTeamControllerDelegate: class {
+    func chooseTeam(controller: ChooseYourTeamVC, didSelectTeamID: Int)
 }
 
 class ChooseYourTeamVC: UIViewController, Routable {
     static let storyboardName = "Team"
-
+    
     @IBOutlet var backView: UIView!
     @IBOutlet var container: UIView!
     @IBOutlet var header: UILabel!
@@ -23,11 +24,12 @@ class ChooseYourTeamVC: UIViewController, Routable {
     fileprivate var dataSource = ChooseYourTeamDataSource()
     weak var delegate: ChooseYourTeamControllerDelegate?
     
-    var currentTeam = service.session.currentTeam
+    var currentTeam: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         header.text = "Team.ChooseYourTeamVC.header".localized
+        //dataSource.createModels()
         dataSource.createFakeModels()
         tableView.register(TeamCell.nib, forCellReuseIdentifier: TeamCell.cellID)
         container.layer.cornerRadius = 4
@@ -92,12 +94,14 @@ extension ChooseYourTeamVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? TeamCell {
             let model = dataSource[indexPath]
+            
             cell.teamIcon.image = model.teamIcon
             cell.incomingCount.text = String(model.incomingCount)
             cell.incomingCount.isHidden = model.incomingCount == 0
             cell.teamName.text = model.teamName
             cell.itemName.text = model.itemName
             cell.coverage.text = String(model.coverage) + "%"
+            cell.tick.isHidden = indexPath.row != currentTeam
         }
     }
     
@@ -106,20 +110,8 @@ extension ChooseYourTeamVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let cell = tableView.cellForRow(at: indexPath) as? TeamCell {
-//            if  current.rawValue != indexPath.row {
-//                if type != .none,
-//                    let otherCell = tableView.cellForRow(at: IndexPath(row: type.rawValue, section: 0)) as? SortCell {
-//                    otherCell.checker.isHidden = true
-//                }
-//                cell.tick.isHidden = false
-//                //type = SortType(rawValue: indexPath.row) ?? .none
-//                delegate?.sort(controller: self, didSelect: type)
-//            } else {
-//                cell.tick.isHidden = true
-//                //type = .none
-//            }
-//        }
-        tableView.deselectRow(at: indexPath, animated: false)
+        currentTeam = indexPath.row
+        tableView.reloadData()
+        delegate?.chooseTeam(controller: self, didSelectTeamID: currentTeam)
     }
 }

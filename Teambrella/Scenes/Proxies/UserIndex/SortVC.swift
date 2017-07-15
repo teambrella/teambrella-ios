@@ -104,7 +104,7 @@ extension SortVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? SortCell {
-            if  type.rawValue != indexPath.row {
+            if type.rawValue != indexPath.row {
                 if type != .none,
                     let otherCell = tableView.cellForRow(at: IndexPath(row: type.rawValue, section: 0)) as? SortCell {
                     otherCell.checker.isHidden = true

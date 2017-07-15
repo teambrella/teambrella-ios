@@ -14,4 +14,5 @@ struct ChooseYourTeamCellModel {
     var teamName: String
     var itemName: String
     var coverage: Int
+    var teamID: Int
 }
