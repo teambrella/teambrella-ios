@@ -104,7 +104,7 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         let members = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "MembersVC")
         let claims = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "ClaimsVC")
         //let rules = UIStoryboard(name: "Team", bundle: nil).instantiateViewController(withIdentifier: "RulesVC")
-        return [feed, members, claims, /* rules */]
+        return [feed, members, claims /* , rules */]
     }
     
 }

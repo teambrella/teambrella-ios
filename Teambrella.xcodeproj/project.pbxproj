@@ -232,6 +232,8 @@
 		6DA8D5531F0E74C9000A4DB7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA8D5521F0E74C9000A4DB7 /* Storage.swift */; };
 		6DA8D5571F0E756B000A4DB7 /* HomeScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA8D5561F0E756B000A4DB7 /* HomeScreenModel.swift */; };
 		6DA8D55A1F0E8B99000A4DB7 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA8D5591F0E8B99000A4DB7 /* HomeDataSource.swift */; };
+		6DB309F71F1D169D007DFF40 /* ChatDatasourceStrategies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB309F61F1D169D007DFF40 /* ChatDatasourceStrategies.swift */; };
+		6DB309F91F1D2093007DFF40 /* ChatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB309F81F1D2093007DFF40 /* ChatEntity.swift */; };
 		6DB812171EE6E6A900B202CE /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DB812161EE6E6A900B202CE /* Chat.storyboard */; };
 		6DB8121B1EE6F1B800B202CE /* EnhancedClaimEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8121A1EE6F1B800B202CE /* EnhancedClaimEntity.swift */; };
 		6DB8121D1EE6F78700B202CE /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8121C1EE6F78700B202CE /* Formatter.swift */; };
@@ -620,6 +622,8 @@
 		6DA8D5521F0E74C9000A4DB7 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Storage.swift; path = Model/Protocols/Storage.swift; sourceTree = "<group>"; };
 		6DA8D5561F0E756B000A4DB7 /* HomeScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenModel.swift; path = Model/Entities/HomeScreenModel.swift; sourceTree = "<group>"; };
 		6DA8D5591F0E8B99000A4DB7 /* HomeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeDataSource.swift; path = Scenes/Home/HomeDataSource.swift; sourceTree = "<group>"; };
+		6DB309F61F1D169D007DFF40 /* ChatDatasourceStrategies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatDatasourceStrategies.swift; path = Scenes/Team/Chat/ChatDatasourceStrategies.swift; sourceTree = "<group>"; };
+		6DB309F81F1D2093007DFF40 /* ChatEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatEntity.swift; path = Model/Entities/ChatEntity.swift; sourceTree = "<group>"; };
 		6DB812161EE6E6A900B202CE /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		6DB8121A1EE6F1B800B202CE /* EnhancedClaimEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnhancedClaimEntity.swift; sourceTree = "<group>"; };
 		6DB8121C1EE6F78700B202CE /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Formatter.swift; path = Helpers/Extensions/Formatter.swift; sourceTree = "<group>"; };
@@ -1415,6 +1419,7 @@
 				6DE793281EF80F11005F4508 /* UniversalChatVC.swift */,
 				6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */,
 				6DE793351EF92E34005F4508 /* ChatTextParser.swift */,
+				6DB309F61F1D169D007DFF40 /* ChatDatasourceStrategies.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -1535,6 +1540,7 @@
 				6DA8D5561F0E756B000A4DB7 /* HomeScreenModel.swift */,
 				6DCDEB6F1F17DC5900C6D38C /* FeedEntity.swift */,
 				6DCDEB731F17E76A00C6D38C /* FeedRequestContext.swift */,
+				6DB309F81F1D2093007DFF40 /* ChatEntity.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -2187,6 +2193,7 @@
 				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
 				6DE793361EF92E34005F4508 /* ChatTextParser.swift in Sources */,
 				6DCDEB741F17E76A00C6D38C /* FeedRequestContext.swift in Sources */,
+				6DB309F71F1D169D007DFF40 /* ChatDatasourceStrategies.swift in Sources */,
 				6D466AB11ED07CF1001BC579 /* TransactionsModel.xcdatamodeld in Sources */,
 				6D6DA24C1EE18FCA00307C73 /* TextAdapter.swift in Sources */,
 				6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */,
@@ -2207,6 +2214,7 @@
 				6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */,
 				6D481F771F0BAA080023C781 /* Math.swift in Sources */,
 				6D466AAC1ED07CF1001BC579 /* TxOutput.swift in Sources */,
+				6DB309F91F1D2093007DFF40 /* ChatEntity.swift in Sources */,
 				94C2D3951F191F7100D203C2 /* ChooseYourTeamDataSource.swift in Sources */,
 				6D6DA2521EE1C62E00307C73 /* ClaimsOpenCell.swift in Sources */,
 				9407A5821F13C30800E0DD74 /* LoginNoInviteVC.swift in Sources */,

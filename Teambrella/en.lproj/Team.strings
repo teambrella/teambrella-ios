@@ -130,11 +130,11 @@
 "Team.VotingRiskVC.avgLabel"                   = "AVG\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"            = "Reset Vote";
 "Team.VotingRiskVC.othersButton"               = "Others";
+"Team.VotingRiskVC.ends"                        = "ENDS %@";
 
 // -------------------- waiting for translation :) -------------------- //
 "Team.Members.Teammates.Strategy.headerTitle" = "RISK: %.2f TO %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle" = "RISK";
 "Team.Members.Teammates.CompareTeamRisk.title" = "Compare Team Risk";
 
-"Team.VotingRiskVC.ends"                        = "ENDS %@";
 "Team.ChooseYourTeamVC.header" = "CHOOSE YOUR TEAM";
