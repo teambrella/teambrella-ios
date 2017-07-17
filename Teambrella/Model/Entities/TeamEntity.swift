@@ -19,6 +19,7 @@ struct TeamEntity {
     var teamID: Int { return json["TeamId"].intValue }
     var teamType: Int { return json["TeamType"].intValue }
     var teamName: String { return json["TeamName"].stringValue }
+    var teamLogo: String { return json["TeamLogo"].stringValue }
     var objectName: String? { return json["ObjectName"].stringValue }
     var objectCoverage: Double? { return json["ObjectCoverage"].doubleValue }
     var unreadCount: Int? { return json["UnreadCount"].intValue }

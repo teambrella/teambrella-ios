@@ -9,7 +9,7 @@
 import Foundation
 
 struct ChooseYourTeamCellModel {
-    var teamIcon: UIImage
+    var teamIcon: String
     var incomingCount: Int
     var teamName: String
     var itemName: String
