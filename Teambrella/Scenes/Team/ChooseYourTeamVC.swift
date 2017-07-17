@@ -29,8 +29,8 @@ class ChooseYourTeamVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         header.text = "Team.ChooseYourTeamVC.header".localized
-        //dataSource.createModels()
-        dataSource.createFakeModels()
+        dataSource.createModels()
+        //dataSource.createFakeModels()
         tableView.register(TeamCell.nib, forCellReuseIdentifier: TeamCell.cellID)
         container.layer.cornerRadius = 4
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapCancel))
@@ -94,8 +94,8 @@ extension ChooseYourTeamVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? TeamCell {
             let model = dataSource[indexPath]
-            
-            cell.teamIcon.image = model.teamIcon
+//            cell.teamIcon.showAvatar(string: model.teamIcon)
+            cell.teamIcon.showImage(string: model.teamIcon)
             cell.incomingCount.text = String(model.incomingCount)
             cell.incomingCount.isHidden = model.incomingCount == 0
             cell.teamName.text = model.teamName
