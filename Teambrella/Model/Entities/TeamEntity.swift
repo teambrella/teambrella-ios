@@ -20,10 +20,10 @@ struct TeamEntity {
     var teamType: Int { return json["TeamType"].intValue }
     var teamName: String { return json["TeamName"].stringValue }
     var teamLogo: String { return json["TeamLogo"].stringValue }
-    var objectName: String? { return json["ObjectName"].stringValue }
-    var objectCoverage: Double? { return json["ObjectCoverage"].doubleValue }
-    var unreadCount: Int? { return json["UnreadCount"].intValue }
-    var teamCoverage: Double? { return json["TeamCoverage"].doubleValue }
+    var objectName: String? { return json["ObjectName"].string }
+    var objectCoverage: Double? { return json["ObjectCoverage"].double }
+    var unreadCount: Int? { return json["UnreadCount"].int }
+    var teamCoverage: Double? { return json["TeamCoverage"].double }
     
     var isInvitation: Bool { return teamCoverage != nil }
     
