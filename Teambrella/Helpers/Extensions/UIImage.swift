@@ -18,20 +18,36 @@ extension UIImage {
 }
 
 extension UIImage {
-    static func fetchAvatar(string: String, completion: @escaping (UIImage?, NSError?) -> Void) {
-        let modified = service.server.avatarURLstring(for: string)
+    
+    static func fetchAvatar(string: String,
+                            width: CGFloat? = nil,
+                            cornerRadius: CGFloat? = nil,
+                            completion: @escaping (UIImage?, NSError?) -> Void) {
+        let modified: String!
+        if let width = width {
+            modified = service.server.avatarURLstring(for: string, width: width)
+        } else {
+            modified = service.server.avatarURLstring(for: string)
+        }
         guard let url = URL(string: modified) else { return }
         
-        fetchAvatar(url: url, completion: completion)
+        var options: KingfisherOptionsInfo? = []
+        if let cornerRadius = cornerRadius {
+            let processor = RoundCornerImageProcessor(cornerRadius: cornerRadius)
+            options?.append(.processor(processor))
+        }
+        fetchAvatar(url: url, options: options, completion: completion)
     }
     
-   static func fetchAvatar(url: URL, completion: @escaping (UIImage?, NSError?) -> Void) {
-        ImageDownloader.default.downloadImage(with: url) { image, error, url, data in
+    static func fetchAvatar(url: URL,
+                            options: KingfisherOptionsInfo? = nil,
+                            completion: @escaping (UIImage?, NSError?) -> Void) {
+        ImageDownloader.default.downloadImage(with: url, options: options) { image, error, url, data in
             completion(image, error)
         }
     }
     
-   static func fetchImage(url: URL, completion: @escaping (UIImage?, NSError?) -> Void) {
+    static func fetchImage(url: URL, completion: @escaping (UIImage?, NSError?) -> Void) {
         service.server.updateTimestamp { timestamp, error in
             let key = service.server.key
             let modifier = AnyModifier { request in
@@ -52,7 +68,7 @@ extension UIImage {
         }
     }
     
-   static func fetchImage(string: String, completion: @escaping (UIImage?, NSError?) -> Void) {
+    static func fetchImage(string: String, completion: @escaping (UIImage?, NSError?) -> Void) {
         guard let url = service.server.url(string: string) else { return }
         
         fetchImage(url: url, completion: completion)

@@ -13,6 +13,9 @@ import UIKit
 class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     struct Constant {
         static let cardInterval: CGFloat = 24
+        
+        static let teamIconWidth: CGFloat = 24
+        static let teamIconCornerRadius: CGFloat = 4
     }
     
     let tabType: TabType = .home
@@ -82,7 +85,9 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         setupWalletContainer()
         guard let source = service.session.currentTeam?.teamLogo else { return }
         
-        UIImage.fetchImage(string: source) { image, error in
+        UIImage.fetchAvatar(string: source,
+                            width: Constant.teamIconWidth,
+                            cornerRadius: Constant.teamIconCornerRadius) { image, error  in
             guard error == nil else { return }
             guard let image = image else { return }
 
