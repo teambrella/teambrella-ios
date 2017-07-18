@@ -140,6 +140,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         
         // add handlers
         if let cell = cell as? TeammateObjectCell {
+            cell.button.isHidden = teammate.claimsCount == 0
             cell.button.removeTarget(nil, action: nil, for: .allEvents)
             cell.button.addTarget(self, action: #selector(showClaims), for: .touchUpInside)
         } else if cell is TeammateVoteCell, let riskController = riskController {
@@ -212,6 +213,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .summary:
             return CGSize(width: collectionView.bounds.width, height: 210)
         case .object:
+            guard teammate.claimsCount > 0 else { return CGSize(width: wdt, height: 206) }
+            
             return CGSize(width: wdt, height: 296)
         case .stats:
             return CGSize(width: wdt, height: 368)
