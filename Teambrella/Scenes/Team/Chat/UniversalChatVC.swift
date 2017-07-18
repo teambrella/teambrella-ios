@@ -21,17 +21,25 @@ class UniversalChatVC: UIViewController, Routable {
     
       public var endsEditingWhenTappingOnChatBackground = true
     
-    var topic: Topic? {
-        get { return dataSource.topic }
-        set { dataSource.topic = newValue }
-    }
+    //var topic: Topic?
     
     var claim: EnhancedClaimEntity? {
-        get { return dataSource.claim }
-        set { dataSource.claim =  newValue }
+        didSet {
+            dataSource.addContext(context: claim)
+        }
     }
     
-    var teammate: TeammateLike?
+    var teammate: ExtendedTeammate? {
+        didSet {
+            dataSource.addContext(context: teammate)
+        }
+    }
+    
+    var feedEntity: FeedEntity? {
+        didSet {
+            dataSource.addContext(context: feedEntity)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +58,7 @@ class UniversalChatVC: UIViewController, Routable {
             me.collectionView.reloadData()
 //           me.collectionView.collectionViewLayout.invalidateLayout()
         }
-        title = claim?.name ?? "none"
+        title = dataSource.title
     }
     
     override var inputAccessoryView: UIView? {

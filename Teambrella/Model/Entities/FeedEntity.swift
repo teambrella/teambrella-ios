@@ -15,6 +15,7 @@ struct FeedEntity {
     
     var amount: Double { return json["Amount"].doubleValue }
     var teamVote: Double { return json["TeamVote"].doubleValue }
+    var topicID: String { return json["TopicId"].stringValue }
     var isVoting: Bool { return json["IsVoting"].boolValue }
     var payProgress: Double { return json["PayProgress"].doubleValue }
     var itemType: ItemType { return ItemType(rawValue: json["ItemType"].intValue) ?? .teammate }

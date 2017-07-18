@@ -28,6 +28,8 @@ enum TeambrellaRequestType: String {
     case teamFeed = "feed/getList"
     case teammateChat = "teammate/getChat"
     case wallet = "wallet/getOne"
+    case feedChat = "feed/getChat"
+    case feedCreateChat = "feed/newChat"
 }
 
 enum TeambrellaResponseType {
@@ -44,11 +46,10 @@ enum TeambrellaResponseType {
     case claim(EnhancedClaimEntity)
     case claimVote(JSON)
     case claimUpdates(JSON)
-    case claimChat(Int64, [ChatEntity], TeammateBasicInfo)
     case home(HomeScreenModel)
     case teamFeed([FeedEntity])
-    case teammateChat(Int64, [ChatEntity], TeammateBasicInfo)
     case wallet(WalletEntity)
+    case chat(Int64, [ChatEntity], TeammateBasicInfo)
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -120,16 +121,15 @@ struct TeambrellaRequest {
             success(.claimVote(reply))
         case .claimUpdates:
             success(.claimUpdates(reply))
-        case .claimChat, .teammateChat:
+        case .claimChat,
+             .teammateChat,
+             .feedChat,
+             .feedCreateChat:
             let discussion = reply["DiscussionPart"]
             let lastRead = discussion["LastRead"].int64Value
             let chat = ChatEntity.buildArray(from: discussion["Chat"])
             let basicInfo = TeammateBasicInfo(json: discussion["BasicPart"])
-            if type == .claimChat {
-            success(.claimChat(lastRead, chat, basicInfo))
-            } else {
-                success(.teammateChat(lastRead, chat, basicInfo))
-            }
+            success(.chat(lastRead, chat, basicInfo))
         case .teamFeed:
             success(.teamFeed(reply.arrayValue.flatMap { FeedEntity(json: $0) }))
         case .home:
