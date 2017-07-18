@@ -124,9 +124,17 @@ extension TeammateProfileVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                               withReuseIdentifier: CompactUserInfoHeader.cellID,
-                                                               for: indexPath)
+        if kind == UICollectionElementKindSectionHeader {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                   withReuseIdentifier: CompactUserInfoHeader.cellID,
+                                                                   for: indexPath)
+        }
+        if kind == UICollectionElementKindSectionFooter {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
+                                                                   withReuseIdentifier: "footer",
+                                                                   for: indexPath)
+        }
+        fatalError("Unknown supplementary view of kind: \(kind)")
     }
     
 }
@@ -188,6 +196,14 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 let amount = teammate.extended?.basic.iCoverThemAmount
                 right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
                 right.currencyLabel.text = "USD"
+            }
+        }
+        if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
+            if let date = teammate.extended?.basic.dateJoined {
+                let dateString = Formatter.teambrellaShort.string(from: date)
+                footer.label.text = "Team.Teammate.Footer.MemberSince".localized(dateString)
+            } else {
+                footer.label.text = "..."
             }
         }
         

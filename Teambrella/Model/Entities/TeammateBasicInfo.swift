@@ -51,7 +51,6 @@ struct TeammateBasicInfo {
         coversMeAmount = json["TheyCoverMeAmount"].doubleValue
         iCoverThemAmount = json["ICoverThemAmount"].doubleValue
         
-        let formatter = DateFormatter()
-        dateJoined = formatter.date(from: json["DateJoined"].stringValue)
+        dateJoined = Formatter.teambrella.date(from: json["DateJoined"].stringValue)
     }
 }

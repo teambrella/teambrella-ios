@@ -138,3 +138,4 @@
 "Team.Members.Teammates.CompareTeamRisk.title" = "Compare Team Risk";
 
 "Team.ChooseYourTeamVC.header" = "CHOOSE YOUR TEAM";
+"Team.Teammate.Footer.MemberSince" = "Member since %@";
