@@ -54,16 +54,7 @@ class UniversalChatDatasource {
         let request = TeambrellaRequest(type: strategy.requestType, body: body, success: { [weak self] response in
             guard let me = self else { return }
             
-            if case .chat(let lastRead, let chat, let basicInfo) = response {
-                me.posts.append(contentsOf: chat)
-                me.since = lastRead
-                me.offset += chat.count
-                me.onUpdate?()
-                if me.limit > chat.count {
-                    me.hasMore = false
-                }
-                print(basicInfo)
-            }
+            me.process(response: response)
             me.isLoading = false
         })
         request.start()
@@ -96,19 +87,23 @@ class UniversalChatDatasource {
         let request = TeambrellaRequest(type: strategy.createChatType, body: body, success: { [weak self] response in
             guard let me = self else { return }
             
-            if case .chat(let lastRead, let chat, let basicInfo) = response {
-                me.posts.append(contentsOf: chat)
-                me.since = lastRead
-                me.offset += chat.count
-                me.onUpdate?()
-                if me.limit > chat.count {
-                    me.hasMore = false
-                }
-                print(basicInfo)
-            }
+           me.process(response: response)
             me.isLoading = false
         })
         request.start()
+    }
+    
+    private func process(response: TeambrellaResponseType) {
+        if case .chat(let lastRead, let chat, let basicInfo) = response {
+            posts.append(contentsOf: chat)
+            claim?.update(with: basicInfo)
+            since = lastRead
+            offset += chat.count
+            onUpdate?()
+            if limit > chat.count {
+                hasMore = false
+            }
+        }
     }
     
 }
