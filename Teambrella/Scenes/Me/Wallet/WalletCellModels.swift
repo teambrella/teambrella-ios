@@ -22,10 +22,10 @@ struct WalletHeaderCellModel: WalletCellModel {
 
 struct WalletFundingCellModel: WalletCellModel {
     let maxCoverageFunding: Double
-    let uninterruptedCoverageFundingh: Double
+    let uninterruptedCoverageFunding: Double
     
     static var fake: WalletCellModel {
-        return WalletFundingCellModel(maxCoverageFunding: 0, uninterruptedCoverageFundingh: 0)
+        return WalletFundingCellModel(maxCoverageFunding: 0, uninterruptedCoverageFunding: 0)
     }
 }
 

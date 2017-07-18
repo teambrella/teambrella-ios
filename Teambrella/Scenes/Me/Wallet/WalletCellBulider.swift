@@ -31,22 +31,30 @@ struct WalletCellBuilder {
     }
     
     static func populate(cell: UICollectionViewCell, with model: WalletCellModel) {
-        if let cell = cell as? WalletHeaderCell {
-            cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
-            cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
-            cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
-        }
-        if let cell = cell as? WalletButtonsCell {
-            cell.topViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
-            cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
-            cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
-        }
-        if let cell = cell as? WalletFundingCell {
-            cell.headerLabel.text = "Me.WalletVC.fundingCell.title".localized
-            cell.upperNumberView.titleLabel.text = "Me.WalletVC.upperBrick.title".localized
-            cell.lowerNumberView.titleLabel.text = "Me.WalletVC.lowerBrick.title".localized
-            cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)
-        }
+//        if let cell = cell as? WalletHeaderCell {
+//            cell.amount.text = String.formattedNumber(model.amount)
+//            //cell.currencyLabel.text = String.formattedNumber(model.)
+//            cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
+//            cell.numberBar.left?.amountLabel.text = String.formattedNumber(model.reserved)
+//            cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
+//            cell.numberBar.right?.amountLabel.text = String.formattedNumber(model.available)
+//            cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
+//        }
+//        if let cell = cell as? WalletFundingCell {
+//            cell.headerLabel.text = "Me.WalletVC.fundingCell.title".localized
+//            cell.upperNumberView.titleLabel.text = "Me.WalletVC.upperBrick.title".localized
+//            cell.upperNumberView.amountLabel.text = String.formattedNumber(model.maxCoverageFunding)
+//            cell.upperCurrencyLabel.text = String.formattedNumber(model.maxCoverageFunding)
+//            cell.lowerNumberView.titleLabel.text = "Me.WalletVC.lowerBrick.title".localized
+//            cell.lowerCurrencyLabel.text = String.formattedNumber(model.uninterruptedCoverageFunding)
+//            cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)
+//        }
+//        if let cell = cell as? WalletButtonsCell {
+//            cell.topViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
+//            cell.imagesStack = model.avatars
+//            cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
+//            cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
+//        }
     }
     
 }
