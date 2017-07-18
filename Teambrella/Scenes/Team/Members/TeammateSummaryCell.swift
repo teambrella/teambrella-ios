@@ -16,4 +16,9 @@ class TeammateSummaryCell: UICollectionViewCell {
     @IBOutlet var title: Label!
     @IBOutlet var subtitle: Label!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        CellDecorator.shadow(for: self)
+    }
+    
 }

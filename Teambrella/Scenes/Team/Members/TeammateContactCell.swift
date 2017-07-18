@@ -11,5 +11,16 @@ import UIKit
 class TeammateContactCell: UICollectionViewCell {
     @IBOutlet var headerLabel: Label!
     @IBOutlet var tableView: UITableView!
+ 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        CellDecorator.shadow(for: self)
+        CellDecorator.roundedEdges(for: self)
+    }
+    
+    override func layoutMarginsDidChange() {
+        super.layoutMarginsDidChange()
+        contentView.layoutMargins = layoutMargins
+    }
     
 }

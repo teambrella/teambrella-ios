@@ -23,4 +23,15 @@ class TeammateStatsCell: UICollectionViewCell {
     
     @IBOutlet var addButton: BorderedButton!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        CellDecorator.shadow(for: self)
+        CellDecorator.roundedEdges(for: self)
+    }
+    
+    override func layoutMarginsDidChange() {
+        super.layoutMarginsDidChange()
+        contentView.layoutMargins = layoutMargins
+    }
+    
 }

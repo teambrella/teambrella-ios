@@ -15,4 +15,14 @@ class DiscussionCompactCell: UICollectionViewCell {
     @IBOutlet var titleLabel: MessageTitleLabel!
     @IBOutlet var textLabel: MessageTextLabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        CellDecorator.shadow(for: self)
+    }
+    
+    override func layoutMarginsDidChange() {
+        super.layoutMarginsDidChange()
+        contentView.layoutMargins = layoutMargins
+    }
+    
 }

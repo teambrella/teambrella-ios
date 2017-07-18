@@ -10,4 +10,16 @@ import UIKit
 
 class TeammateVoteCell: UICollectionViewCell {
     @IBOutlet var container: UIView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        CellDecorator.shadow(for: self)
+        CellDecorator.roundedEdges(for: self)
+    }
+    
+    override func layoutMarginsDidChange() {
+        super.layoutMarginsDidChange()
+        contentView.layoutMargins = layoutMargins
+    }
+    
 }

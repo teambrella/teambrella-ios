@@ -12,7 +12,7 @@ import UIKit
 
 class TeammateProfileVC: UIViewController, Routable {
     struct Constant {
-        static let socialCellHeight: CGFloat = 44
+        static let socialCellHeight: CGFloat = 68
     }
     
     static var storyboardName: String = "Team"
@@ -213,17 +213,17 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .summary:
             return CGSize(width: collectionView.bounds.width, height: 210)
         case .object:
-            guard teammate.claimsCount > 0 else { return CGSize(width: wdt, height: 206) }
+            guard teammate.claimsCount > 0 else { return CGSize(width: wdt, height: 216) }
             
             return CGSize(width: wdt, height: 296)
         case .stats:
             return CGSize(width: wdt, height: 368)
         case .contact:
-            let base: CGFloat = 44
+            let base: CGFloat = 38
             let cellHeight: CGFloat = Constant.socialCellHeight
             return CGSize(width: wdt, height: base + CGFloat(dataSource.socialItems.count) * cellHeight)
         case .dialog:
-            return CGSize(width: wdt, height: 120)
+            return CGSize(width: collectionView.bounds.width, height: 120)
         case .me:
             return CGSize(width: collectionView.bounds.width, height: 210)
         case .voting:
@@ -238,8 +238,15 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         return dataSource.isNewTeammate ? CGSize(width: collectionView.bounds.width, height: 60) : CGSize.zero
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForFooterInSection section: Int) -> CGSize {
+        return dataSource.isNewTeammate ?  CGSize.zero : CGSize(width: collectionView.bounds.width, height: 81)
+    }
 }
 
+// MARK: UITableViewDataSource
 extension TeammateProfileVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -254,6 +261,7 @@ extension TeammateProfileVC: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate
 extension TeammateProfileVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? ContactCellTableCell {
@@ -270,5 +278,9 @@ extension TeammateProfileVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.socialCellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.001
     }
 }
