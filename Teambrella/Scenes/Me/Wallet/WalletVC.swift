@@ -31,6 +31,9 @@ class WalletVC: UIViewController {
         
     }
     
+    var isLoading = false
+    var onUpdate: (() -> Void)?
+    var onError: ((Error) -> Void)?
     
 //    func loadData() {
 //        guard !isLoading else { return }
@@ -40,31 +43,30 @@ class WalletVC: UIViewController {
 //            let key = Key(base58String: ServerService.privateKey,
 //                          timestamp: timestamp)
 //            
-//            var payload: [String: Any] = ["TeamId": ServerService.teamID,
-//                                          "Offset": self.offset,
-//                                          "Limit": Constant.loadLimit,
-//                                          "AvatarSize": Constant.avatarSize]
-//            if let teammate = self.teammate {
-//                payload["TeammateIdFilter"] = teammate.id
-//            }
+//            var payload: [String: Any] = ["Currency": ]
 //            let body = RequestBody(key: key, payload: payload)
-//            let request = TeambrellaRequest(type: .claimsList, body: body, success: { [weak self] response in
-//                if case .claimsList(let claims) = response {
-//                    guard let me = self else { return }
-//                    
-//                    me.offset += claims.count
-//                    
-//                    me.process(claims: claims)
-//                    me.onUpdate?()
-//                    me.isLoading = false
+//            
+//            let request = TeambrellaRequest(type: .wallet, body: body, success: { [weak self] response in
+//                if case .wallet(let oneWallet) = response {
+//
 //                }
 //                }, failure: { [weak self] error in
 //                    self?.onError?(error)
 //            })
 //            request.start()
 //        }
-//        
 //    }
+    
+//    var currency: String { return json["Currency"].stringValue }
+//    var currencyRate: Double { return json["CurrencyRate"].doubleValue }
+//    var btcBalance: Double { return json["BtcBalance"].doubleValue }
+//    var btcReserved: Double { return json["BtcReserved"].doubleValue }
+//    var needBtc: Double { return json["NeedBtc"].doubleValue }
+//    var recommendedBtc: Double { return json["RecommendedBtc"].doubleValue }
+//    var fundAddress: String { return json["FundAddress"].stringValue }
+//    var defaultWithdrawAddress: String? { return json["DefaultWithdrawAddress"].string }
+//    var cosigners: [CosignerEntity]
+//    var coveragePart: CoverageEntity
     
     func tapFund(sender: UIButton) {
         MeRouter().presentWalletDetails(walletID: walletID)
