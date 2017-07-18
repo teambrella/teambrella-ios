@@ -9,8 +9,10 @@
 import UIKit
 import XLPagerTabStrip
 
-class CoverageVC: UIViewController {
+class CoverageVC: UIViewController, Routable {
 
+    static var storyboardName = "Me"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

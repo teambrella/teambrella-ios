@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lGP-Uv-A7d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lGP-Uv-A7d">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -96,12 +98,180 @@
                     <view key="view" contentMode="scaleToFill" id="geE-RI-RJq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmV-yc-E7V">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rtL-Dg-TqT">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="215.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytR-oK-Uh1" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="195.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-A5-JrL">
+                                                        <rect key="frame" x="24" y="14" width="46" height="107"/>
+                                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="88"/>
+                                                        <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztJ-BE-YAX">
+                                                        <rect key="frame" x="73" y="83.5" width="14.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
+                                                        <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DDL-Sr-nJy">
+                                                        <rect key="frame" x="92.5" y="8" width="0.0" height="161.5"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="FAb-A5-JrL" firstAttribute="top" secondItem="ytR-oK-Uh1" secondAttribute="top" constant="14" id="229-mx-BS1"/>
+                                                    <constraint firstItem="FAb-A5-JrL" firstAttribute="leading" secondItem="ytR-oK-Uh1" secondAttribute="leading" constant="24" id="HKl-Te-k08"/>
+                                                    <constraint firstItem="DDL-Sr-nJy" firstAttribute="top" secondItem="ytR-oK-Uh1" secondAttribute="top" constant="8" id="HQN-ZU-Zay"/>
+                                                    <constraint firstItem="DDL-Sr-nJy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ztJ-BE-YAX" secondAttribute="trailing" constant="5" id="RnO-jl-N5a"/>
+                                                    <constraint firstItem="FAb-A5-JrL" firstAttribute="baseline" secondItem="ztJ-BE-YAX" secondAttribute="baseline" id="fbx-XN-OaA"/>
+                                                    <constraint firstItem="ztJ-BE-YAX" firstAttribute="leading" secondItem="FAb-A5-JrL" secondAttribute="trailing" constant="3" id="kL0-0G-ili"/>
+                                                    <constraint firstAttribute="trailing" secondItem="DDL-Sr-nJy" secondAttribute="trailing" constant="16" id="oDD-tQ-b17"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="segments">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="diameter">
+                                                        <real key="value" value="200"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                                        <real key="value" value="360"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="startWidth">
+                                                        <real key="value" value="100"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="coefficient">
+                                                        <real key="value" value="2.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="centerX">
+                                                        <real key="value" value="180"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="centerY">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-sm-Jvx" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="98" width="375" height="97.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="0.01" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAH-4g-Hs4" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="155.5" width="343" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="V9i-9H-hTl"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="ytR-oK-Uh1" secondAttribute="trailing" id="32x-q6-U5e"/>
+                                            <constraint firstAttribute="trailing" secondItem="xdw-sm-Jvx" secondAttribute="trailing" id="6zd-cs-ka1"/>
+                                            <constraint firstItem="xdw-sm-Jvx" firstAttribute="bottom" secondItem="gAH-4g-Hs4" secondAttribute="bottom" id="CwY-hC-j0T"/>
+                                            <constraint firstItem="gAH-4g-Hs4" firstAttribute="leading" secondItem="rtL-Dg-TqT" secondAttribute="leading" constant="16" id="D84-tS-cPD"/>
+                                            <constraint firstAttribute="trailing" secondItem="gAH-4g-Hs4" secondAttribute="trailing" constant="16" id="Ogt-ZD-1hJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="gAH-4g-Hs4" secondAttribute="bottom" constant="20" id="UgP-yv-IzP"/>
+                                            <constraint firstItem="xdw-sm-Jvx" firstAttribute="leading" secondItem="rtL-Dg-TqT" secondAttribute="leading" id="atP-12-caa"/>
+                                            <constraint firstItem="ytR-oK-Uh1" firstAttribute="leading" secondItem="rtL-Dg-TqT" secondAttribute="leading" id="bfC-Nw-i7Z"/>
+                                            <constraint firstItem="ytR-oK-Uh1" firstAttribute="bottom" secondItem="gAH-4g-Hs4" secondAttribute="bottom" id="dlU-yE-EI1"/>
+                                            <constraint firstItem="xdw-sm-Jvx" firstAttribute="top" secondItem="ytR-oK-Uh1" secondAttribute="centerY" id="kXQ-8P-yso"/>
+                                            <constraint firstItem="ytR-oK-Uh1" firstAttribute="top" secondItem="rtL-Dg-TqT" secondAttribute="top" id="tYv-gk-ILw"/>
+                                        </constraints>
+                                    </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ByT-Mp-bxm">
+                                        <rect key="frame" x="16" y="275" width="343" height="356"/>
+                                        <subviews>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hIB-Df-BKn" customClass="UmbrellaView" customModule="Teambrella" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="118.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U5-XL-AmS">
+                                                        <rect key="frame" x="20" y="16" width="303" height="17"/>
+                                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBa-YD-YON">
+                                                        <rect key="frame" x="20" y="43" width="303" height="17"/>
+                                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
+                                                        <color key="textColor" red="0.94901960784313721" green="0.95686274509803915" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="cBa-YD-YON" firstAttribute="leading" secondItem="7U5-XL-AmS" secondAttribute="leading" id="5gd-It-e3x"/>
+                                                    <constraint firstItem="cBa-YD-YON" firstAttribute="trailing" secondItem="7U5-XL-AmS" secondAttribute="trailing" id="Tid-Nh-bo8"/>
+                                                    <constraint firstItem="7U5-XL-AmS" firstAttribute="leading" secondItem="hIB-Df-BKn" secondAttribute="leading" constant="20" id="Ucb-nr-qn2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="7U5-XL-AmS" secondAttribute="trailing" constant="20" id="Wcw-nq-IOl"/>
+                                                    <constraint firstItem="7U5-XL-AmS" firstAttribute="top" secondItem="hIB-Df-BKn" secondAttribute="top" constant="16" id="myW-sL-bRl"/>
+                                                    <constraint firstItem="cBa-YD-YON" firstAttribute="top" secondItem="7U5-XL-AmS" secondAttribute="bottom" constant="10" id="ost-VS-DVz"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="hIB-Df-BKn" firstAttribute="top" secondItem="ByT-Mp-bxm" secondAttribute="top" id="HQA-Gc-azo"/>
+                                            <constraint firstItem="hIB-Df-BKn" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" id="XUx-5t-XT0"/>
+                                            <constraint firstItem="hIB-Df-BKn" firstAttribute="height" secondItem="ByT-Mp-bxm" secondAttribute="height" multiplier="1:3" id="aPw-N3-d3t"/>
+                                            <constraint firstAttribute="trailing" secondItem="hIB-Df-BKn" secondAttribute="trailing" id="pdd-9j-bOv"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="rtL-Dg-TqT" firstAttribute="leading" secondItem="VmV-yc-E7V" secondAttribute="leading" id="6Nj-cB-O3t"/>
+                                    <constraint firstAttribute="trailing" secondItem="rtL-Dg-TqT" secondAttribute="trailing" id="Lh4-fG-0AC"/>
+                                    <constraint firstItem="ByT-Mp-bxm" firstAttribute="leading" secondItem="VmV-yc-E7V" secondAttribute="leading" constant="16" id="MHv-sG-0gd"/>
+                                    <constraint firstAttribute="trailing" secondItem="ByT-Mp-bxm" secondAttribute="trailing" constant="16" id="MTB-vh-gXn"/>
+                                    <constraint firstAttribute="bottom" secondItem="ByT-Mp-bxm" secondAttribute="bottom" constant="16" id="MWc-f8-2tP"/>
+                                    <constraint firstItem="rtL-Dg-TqT" firstAttribute="top" secondItem="VmV-yc-E7V" secondAttribute="top" id="m6k-es-MYh"/>
+                                    <constraint firstItem="rtL-Dg-TqT" firstAttribute="height" secondItem="VmV-yc-E7V" secondAttribute="height" multiplier="1:3" id="ubi-tv-cgk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VmV-yc-E7V" firstAttribute="leading" secondItem="geE-RI-RJq" secondAttribute="leading" id="0X8-Qf-Tk4"/>
+                            <constraint firstAttribute="trailing" secondItem="VmV-yc-E7V" secondAttribute="trailing" id="GSd-mf-HeN"/>
+                            <constraint firstItem="Z5I-L9-fKf" firstAttribute="top" secondItem="VmV-yc-E7V" secondAttribute="bottom" id="byp-zS-PJW"/>
+                            <constraint firstItem="VmV-yc-E7V" firstAttribute="top" secondItem="EWm-62-vkt" secondAttribute="bottom" id="mtO-44-gva"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skY-Lo-QR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6130" y="3454"/>
+            <point key="canvasLocation" x="6128.8000000000002" y="3453.8230884557724"/>
         </scene>
         <!--ReportVC-->
         <scene sceneID="KDT-Lg-9U7">
@@ -346,7 +516,7 @@
                     <tabBarItem key="tabBarItem" title="Me" id="o2t-82-wdC"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gIR-mJ-Hhl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gIR-mJ-Hhl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
