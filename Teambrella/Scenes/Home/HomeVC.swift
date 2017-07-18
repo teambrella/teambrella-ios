@@ -14,6 +14,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     struct Constant {
         static let cardInterval: CGFloat = 24
     }
+    
     let tabType: TabType = .home
     
     @IBOutlet var gradientView: GradientView!
@@ -41,10 +42,16 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var itemCard: ItemCard!
     
     @IBOutlet var emitterScene: SKView!
-    var dataSource: HomeDataSource = HomeDataSource()
     
     @IBOutlet var teamsButton: DropDownButton!
     @IBOutlet var inboxButton: LabeledButton!
+    
+    var dataSource: HomeDataSource = HomeDataSource()
+    
+    var isEmitterAdded: Bool = false
+    
+    // MARK: Lifecycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         title = "Main.home".localized
@@ -75,7 +82,23 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         setupWalletContainer()
     }
     
-    func clearScreen() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Should fix an unwanted slide of the card to the left after returning to this vc from tap
+        guard collectionView(collectionView, numberOfItemsInSection: 0) > pageControl.currentPage else { return }
+        
+        collectionView.scrollToItem(at: IndexPath(row: pageControl.currentPage, section: 0),
+                                    at: .centeredHorizontally,
+                                    animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //scrollViewDidScroll(collectionView)
+        addEmitter()
+    }
+    
+    private func clearScreen() {
         greetingsTitleLabel.text = nil
         greetingsSubtitileLabel.text = nil
         
@@ -87,18 +110,11 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         itemCard.titleLabel.text = nil
     }
     
-    func setupWalletContainer() {
+    private func setupWalletContainer() {
         CellDecorator.shadow(for: walletContainer, opacity: 0.08, radius: 3, offset: CGSize(width: 0, height: -3))
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        scrollViewDidScroll(collectionView)
-        addEmitter()
-    }
-    
-    var isEmitterAdded: Bool = false
-    func addEmitter() {
+    private func addEmitter() {
         guard !isEmitterAdded else { return }
         
         isEmitterAdded = true
@@ -113,11 +129,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         }
     }
     
-    func tapItem() {
-        DeveloperTools.notSupportedAlert(in: self)
-    }
-    
-    func setup() {
+    private func setup() {
         collectionView.reloadData()
         
         guard let model = dataSource.model else { return }
@@ -158,9 +170,10 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         HUD.hide()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: User interaction handling
+
+    func tapItem() {
+        DeveloperTools.notSupportedAlert(in: self)
     }
     
     @IBAction func tapPageControl(_ sender: UIPageControl) {
@@ -194,14 +207,9 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         DeveloperTools.notSupportedAlert(in: self)
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
-                                   withVelocity velocity: CGPoint,
-                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        pagerWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
-    }
-    
 }
 
+// MARK: UICollectionViewDataSource
 extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.cardsCount
@@ -224,7 +232,36 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard indexPath.row < dataSource.cardsCount - 1 else {
+            // handle Chat with support tap
+            DeveloperTools.notSupportedAlert(in: self)
+            return
+        }
+        
         dataSource[indexPath].map { TeamRouter().presentChat(context: ChatContext.home($0)) }
+    }
+}
+
+// MARK: UICollectionViewDelegate
+extension HomeVC: UICollectionViewDelegate {
+    
+}
+
+// MARK: UICollectionViewDelegateFlowLayout
+extension HomeVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: cardWidth, height: collectionView.bounds.height)
+    }
+}
+
+// MARK: UIScrollViewDelegate
+extension HomeVC: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                   withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        pagerWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -242,17 +279,5 @@ extension HomeVC: UICollectionViewDataSource {
             let scaleTransform = CATransform3DMakeScale(scaleMultiplier, scaleMultiplier, 1.0)
             cell.layer.transform = scaleTransform
         }
-    }
-}
-
-extension HomeVC: UICollectionViewDelegate {
-    
-}
-
-extension HomeVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: cardWidth, height: collectionView.bounds.height)
     }
 }
