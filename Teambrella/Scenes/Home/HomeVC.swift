@@ -153,7 +153,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         pageControl.numberOfPages = dataSource.cardsCount
         if model.unreadCount > 0 {
-        inboxButton.cornerText = String(model.unreadCount)
+            inboxButton.cornerText = String(model.unreadCount)
         }
         HUD.hide()
     }
@@ -224,9 +224,7 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //let model = dataSource[indexPath]
-        
-      DeveloperTools.notSupportedAlert(in: self)
+        dataSource[indexPath].map { TeamRouter().presentChat(context: ChatContext.home($0)) }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -8,37 +8,31 @@
 
 import UIKit
 
+enum ChatContext {
+    case claim(EnhancedClaimEntity)
+    case teammate(ExtendedTeammate)
+    case feed(FeedEntity)
+    case home(HomeScreenModel.Card)
+    case none
+}
+
 class UniversalChatVC: UIViewController, Routable {
     static var storyboardName = "Chat"
     
     @IBOutlet var input: ChatInputView!
     @IBOutlet var collectionView: UICollectionView!
     
-//    @IBOutlet var inputViewHeightConstraint: NSLayoutConstraint!
-//    @IBOutlet var inputViewBottomConstraint: NSLayoutConstraint!
+    //    @IBOutlet var inputViewHeightConstraint: NSLayoutConstraint!
+    //    @IBOutlet var inputViewBottomConstraint: NSLayoutConstraint!
     
     let dataSource = UniversalChatDatasource()
     
-      public var endsEditingWhenTappingOnChatBackground = true
+    public var endsEditingWhenTappingOnChatBackground = true
     
     //var topic: Topic?
     
-    var claim: EnhancedClaimEntity? {
-        didSet {
-            dataSource.addContext(context: claim)
-        }
-    }
-    
-    var teammate: ExtendedTeammate? {
-        didSet {
-            dataSource.addContext(context: teammate)
-        }
-    }
-    
-    var feedEntity: FeedEntity? {
-        didSet {
-            dataSource.addContext(context: feedEntity)
-        }
+    func setContext(context: ChatContext) {
+        dataSource.addContext(context: context)
     }
     
     override func viewDidLoad() {
@@ -56,7 +50,7 @@ class UniversalChatVC: UIViewController, Routable {
             print("Datasource has \(me.dataSource.count) messages after update")
             me.collectionView.reloadData()
             me.collectionView.reloadData()
-//           me.collectionView.collectionViewLayout.invalidateLayout()
+            //           me.collectionView.collectionViewLayout.invalidateLayout()
         }
         title = dataSource.title
     }
@@ -105,7 +99,7 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func tapLeftButton(sender: UIButton) {
-       // isPosting = true
+        // isPosting = true
         //automaticPoster()
     }
     
@@ -113,8 +107,8 @@ class UniversalChatVC: UIViewController, Routable {
         + " will never be have to wait to get back on to a good day she will be a good day for a good day good for a"
         + " good day and good night good luck with your work and good luck for you",
                  "Short post",
-                "😏😏😘😘😠😡😡🗝🇸🇽🇸🇽☂",
-                "Русский язык", "汉语/漢語", "C'est pas moi même îøó˚"]
+                 "😏😏😘😘😠😡😡🗝🇸🇽🇸🇽☂",
+                 "Русский язык", "汉语/漢語", "C'est pas moi même îøó˚"]
     var postsCount = 0
     var isPosting = false
     func automaticPoster() {
@@ -122,9 +116,9 @@ class UniversalChatVC: UIViewController, Routable {
             postsCount += 1
             return
         }
-       
+        
         input.textView.text = "\(postsCount)" + posts[Random.range(to: posts.count)]
-         postsCount += 1
+        postsCount += 1
         tapRightButton(sender: input.rightButton)
     }
     
@@ -144,7 +138,7 @@ class UniversalChatVC: UIViewController, Routable {
                     self?.collectionView.reloadData()
                 }
                 if let posting = self?.isPosting, posting == true {
-//                    self?.automaticPoster()
+                    //                    self?.automaticPoster()
                 }
             })
         }
@@ -166,13 +160,13 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     override func keyboardWillHide(notification: Notification) {
-//        if let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
-//            let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
-            //moveInput(height: 48, duration: duration, curve: curve)
-            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: input.frame.height, right: 0)
-            collectionView.contentInset = contentInsets
-            collectionView.scrollIndicatorInsets = contentInsets
-//        }
+        //        if let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
+        //            let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
+        //moveInput(height: 48, duration: duration, curve: curve)
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: input.frame.height, right: 0)
+        collectionView.contentInset = contentInsets
+        collectionView.scrollIndicatorInsets = contentInsets
+        //        }
     }
     
     override func keyboardWillShow(notification: Notification) {
@@ -186,16 +180,8 @@ class UniversalChatVC: UIViewController, Routable {
         }
     }
     
-    override func keyboardWillChangeFrame(notification: Notification) {
-//        if let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-//            let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
-//            let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
-////            moveInput(height: view.bounds.height - keyboardFrame.minY, duration: duration, curve: curve)
-//        }
-    }
-    
     func moveInput(height: CGFloat, duration: TimeInterval, curve: UInt) {
-//        inputViewBottomConstraint.constant = height
+        //        inputViewBottomConstraint.constant = height
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
         collectionView.contentInset = contentInsets
         collectionView.scrollIndicatorInsets = contentInsets
@@ -228,7 +214,7 @@ class UniversalChatVC: UIViewController, Routable {
     public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
         // Cancel current scrolling
         self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: false)
- 
+        
         let offsetY = max(-collectionView.contentInset.top,
                           collectionView.collectionViewLayout.collectionViewContentSize.height
                             - collectionView.bounds.height

@@ -57,6 +57,7 @@ struct HomeScreenModel {
         var payProgress: Double { return json["PayProgress"].doubleValue }
         var name: String { return json["ModelOrName"].stringValue }
         var userID: String { return json["ItemUserId"].stringValue }
+        var topicID: String { return json["TopicId"].stringValue }
         
         init(json: JSON) {
             self.json = json

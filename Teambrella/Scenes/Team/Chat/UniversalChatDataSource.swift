@@ -35,7 +35,7 @@ class UniversalChatDatasource {
     
     var count: Int { return posts.count }
     
-    func addContext(context: Any?) {
+    func addContext(context: ChatContext) {
         strategy = ChatStrategyFactory.strategy(with: context)
     }
     

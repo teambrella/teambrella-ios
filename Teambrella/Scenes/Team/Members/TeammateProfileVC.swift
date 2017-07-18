@@ -195,7 +195,8 @@ extension TeammateProfileVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let identifier = dataSource.type(for: indexPath)
         if identifier == .dialog || identifier == .dialogCompact, let extendedTeammate = teammate.extended {
-            TeamRouter().presentChat(teammate: extendedTeammate)
+            let context = ChatContext.teammate(extendedTeammate)
+            TeamRouter().presentChat(context: context)
         }
     }
     

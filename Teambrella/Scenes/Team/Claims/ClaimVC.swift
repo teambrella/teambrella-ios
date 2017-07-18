@@ -193,7 +193,8 @@ extension ClaimVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.cellForItem(at: indexPath) is ImageGalleryCell, let claim = dataSource.claim {
-            TeamRouter().presentChat(claim: claim)
+            let context = ChatContext.claim(claim)
+            TeamRouter().presentChat(context: context)
         }
     }
     

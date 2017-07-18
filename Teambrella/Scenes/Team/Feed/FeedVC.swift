@@ -87,8 +87,9 @@ extension FeedVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = dataSource[indexPath]
-        TeamRouter().presentChat(feedEntity: item)
+        let feedEntity = dataSource[indexPath]
+        let context = ChatContext.feed(feedEntity)
+        TeamRouter().presentChat(context: context)
     }
     
 }
