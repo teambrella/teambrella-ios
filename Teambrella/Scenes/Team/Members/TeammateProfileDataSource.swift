@@ -66,7 +66,7 @@ class TeammateProfileDataSource {
     
     func sendRisk(teammateID: String, risk: Double?, completion: @escaping (JSON) -> Void) {
         service.server.updateTimestamp { timestamp, error in
-        let key = service.server.key
+            let key = service.server.key
             let body = RequestBody(payload: ["TeammateId": teammateID,
                                              "MyVote": risk ?? NSNull(),
                                              "Since": key.timestamp,
@@ -78,7 +78,7 @@ class TeammateProfileDataSource {
             })
             request.start()
         }
-    
+        
     }
     
     private func modifySource() {
@@ -88,21 +88,22 @@ class TeammateProfileDataSource {
             source.append(.dialogCompact)
             source.append(.voting)
             //if teammate.extended?.topic != nil {
-           // }
+            // }
         } else {
-             source.append(isMe ? .me : .summary)
-        }
-        if teammate.extended?.object != nil {
-            source.append(.object)
-        }
-        if teammate.extended?.stats != nil {
-            source.append(.stats)
-        }
-        if !socialItems.isEmpty {
-            source.append(.contact)
-        }
-        if !isNewTeammate  && teammate.extended?.topic != nil {
-            source.append(.dialog)
+            source.append(isMe ? .me : .summary)
+            
+            if teammate.extended?.object != nil {
+                source.append(.object)
+            }
+            if teammate.extended?.stats != nil {
+                source.append(.stats)
+            }
+            if !socialItems.isEmpty {
+                source.append(.contact)
+            }
+            if !isNewTeammate  && teammate.extended?.topic != nil {
+                source.append(.dialog)
+            }
         }
     }
     
