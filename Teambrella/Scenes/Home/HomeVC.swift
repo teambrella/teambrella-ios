@@ -73,6 +73,14 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         itemCard.avatarView.addGestureRecognizer(touch)
         HomeCellBuilder.registerCells(in: collectionView)
         setupWalletContainer()
+        guard let source = service.session.currentTeam?.teamLogo else { return }
+        
+        UIImage.fetchImage(string: source) { image, error in
+            guard error == nil else { return }
+            guard let image = image else { return }
+
+            self.teamsButton.setImage(image, for: .normal)
+        }
     }
     
     func clearScreen() {
