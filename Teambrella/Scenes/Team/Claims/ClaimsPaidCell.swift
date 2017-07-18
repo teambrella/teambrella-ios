@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ClaimsPaidCell: UICollectionViewCell {
+class ClaimsPaidCell: UICollectionViewCell, ClaimsCell {
     @IBOutlet var avatarView: UIImageView!
-    @IBOutlet var titleLabel: MessageTitleLabel!
+    @IBOutlet var titleLabel: Label!
     @IBOutlet var ownerAvatarView: RoundImageView!
     @IBOutlet var ownerNameLabel: Label!
     @IBOutlet var amountLabel: Label!

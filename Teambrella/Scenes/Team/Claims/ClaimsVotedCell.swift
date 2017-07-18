@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClaimsVotedCell: UICollectionViewCell {
+class ClaimsVotedCell: UICollectionViewCell, ClaimsCell {
     @IBOutlet var avatarView: UIImageView!
     @IBOutlet var titleLabel: Label!
     @IBOutlet var ownerAvatarView: RoundImageView!

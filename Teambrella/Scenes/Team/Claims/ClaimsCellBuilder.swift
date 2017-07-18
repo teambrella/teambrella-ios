@@ -9,35 +9,32 @@
 import Kingfisher
 import UIKit
 
+protocol ClaimsCell {
+    var avatarView: UIImageView! { get }
+    var titleLabel: Label! { get }
+    var ownerAvatarView: RoundImageView! { get }
+    var ownerNameLabel: Label! { get }
+}
+
 struct ClaimsCellBuilder {
-     static func populate(cell: UICollectionViewCell, with claim: ClaimLike) {
+    static func populate(cell: UICollectionViewCell, with claim: ClaimLike) {
+        guard let cell = cell as? ClaimsCell else { return }
+        
+        cell.ownerAvatarView.showAvatar(string: claim.avatar)
+        cell.ownerNameLabel.text = claim.name
+        cell.titleLabel.text = claim.model
+        
         if let cell = cell as? ClaimsOpenCell {
-            cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.smallPhoto)),
-                                        placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
-            cell.claimedAmountLabel.text = String(format: "%.2f", claim.claimAmount)
-            cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
-            cell.titleLabel.text = claim.model
-            cell.ownerAvatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.avatar)))
-            cell.ownerNameLabel.text = claim.name
+            cell.avatarView.showAvatar(string: claim.smallPhoto)
             cell.button.setTitle("Team.ClaimsCell.viewToVote".localized, for: .normal)
-        } else if let cell = cell as? ClaimsVotedCell {
-            cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.smallPhoto)),
-                                        placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
-            cell.ownerAvatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.avatar)),
-                                             placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
-            cell.ownerNameLabel.text = claim.name
             cell.claimedAmountLabel.text = String(format: "%.2f", claim.claimAmount)
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
-            cell.titleLabel.text = claim.model
-         
+        } else if let cell = cell as? ClaimsVotedCell {
+            cell.avatarView.showAvatar(string: claim.smallPhoto)
+            cell.claimedAmountLabel.text = String(format: "%.2f", claim.claimAmount)
+            cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
         } else if let cell = cell as? ClaimsPaidCell {
-            cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.smallPhoto)),
-                                        placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
-            cell.titleLabel.text = claim.model
-            cell.ownerAvatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for:claim.avatar)),
-                                             placeholder: #imageLiteral(resourceName: "imagePlaceholder"))
-            cell.ownerNameLabel.text = claim.name
-           cell.amountLabel.text =  String(format: "%.2f", claim.claimAmount)
+            cell.avatarView.showImage(string: claim.smallPhoto)
             cell.statusLabel.text = "Team.ClaimsCell.reimbursed".localized.uppercased()
             cell.scaleBar.value = CGFloat(claim.reimbursement)
         }
