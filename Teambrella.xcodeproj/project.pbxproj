@@ -325,6 +325,9 @@
 		9480EA151F15246E008A7A3F /* RiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480EA131F15246E008A7A3F /* RiskCell.xib */; };
 		9480EA181F16466D008A7A3F /* RiskTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480EA161F16466D008A7A3F /* RiskTableHeader.swift */; };
 		9480EA191F16466D008A7A3F /* RiskTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480EA171F16466D008A7A3F /* RiskTableHeader.xib */; };
+		94B4C37E1F1E18AC00AED4CE /* CosignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C37B1F1E18AC00AED4CE /* CosignerEntity.swift */; };
+		94B4C37F1F1E18AC00AED4CE /* CoverageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C37C1F1E18AC00AED4CE /* CoverageEntity.swift */; };
+		94B4C3801F1E18AC00AED4CE /* WalletEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C37D1F1E18AC00AED4CE /* WalletEntity.swift */; };
 		94C2D3941F191F7100D203C2 /* ChooseYourTeamCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3911F191F7100D203C2 /* ChooseYourTeamCellModel.swift */; };
 		94C2D3951F191F7100D203C2 /* ChooseYourTeamDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3921F191F7100D203C2 /* ChooseYourTeamDataSource.swift */; };
 		94C2D3961F191F7100D203C2 /* ChooseYourTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3931F191F7100D203C2 /* ChooseYourTeamVC.swift */; };
@@ -720,6 +723,9 @@
 		9480EA131F15246E008A7A3F /* RiskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiskCell.xib; path = View/Cells/RiskCell.xib; sourceTree = "<group>"; };
 		9480EA161F16466D008A7A3F /* RiskTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RiskTableHeader.swift; path = View/ReusableViews/RiskTableHeader.swift; sourceTree = "<group>"; };
 		9480EA171F16466D008A7A3F /* RiskTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiskTableHeader.xib; path = View/ReusableViews/RiskTableHeader.xib; sourceTree = "<group>"; };
+		94B4C37B1F1E18AC00AED4CE /* CosignerEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CosignerEntity.swift; path = Model/Entities/CosignerEntity.swift; sourceTree = "<group>"; };
+		94B4C37C1F1E18AC00AED4CE /* CoverageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoverageEntity.swift; path = Model/Entities/CoverageEntity.swift; sourceTree = "<group>"; };
+		94B4C37D1F1E18AC00AED4CE /* WalletEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletEntity.swift; path = Model/Entities/WalletEntity.swift; sourceTree = "<group>"; };
 		94C2D3911F191F7100D203C2 /* ChooseYourTeamCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseYourTeamCellModel.swift; path = Scenes/Team/ChooseYourTeamCellModel.swift; sourceTree = "<group>"; };
 		94C2D3921F191F7100D203C2 /* ChooseYourTeamDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseYourTeamDataSource.swift; path = Scenes/Team/ChooseYourTeamDataSource.swift; sourceTree = "<group>"; };
 		94C2D3931F191F7100D203C2 /* ChooseYourTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseYourTeamVC.swift; path = Scenes/Team/ChooseYourTeamVC.swift; sourceTree = "<group>"; };
@@ -1524,6 +1530,9 @@
 		6DCC7AC91E9551B40092D3F2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				94B4C37B1F1E18AC00AED4CE /* CosignerEntity.swift */,
+				94B4C37C1F1E18AC00AED4CE /* CoverageEntity.swift */,
+				94B4C37D1F1E18AC00AED4CE /* WalletEntity.swift */,
 				6D481F781F0BAA600023C781 /* RiskScaleEntity.swift */,
 				6DEC07551E9BF7170078F40E /* ExtendedTeammateEntity.swift */,
 				6DEC6DF41E96673600ACC119 /* PostEntity.swift */,
@@ -2213,6 +2222,7 @@
 				6D02AC931F06A6B800B01AAF /* VotingCellVC.swift in Sources */,
 				6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */,
 				6D481F771F0BAA080023C781 /* Math.swift in Sources */,
+				94B4C37F1F1E18AC00AED4CE /* CoverageEntity.swift in Sources */,
 				6D466AAC1ED07CF1001BC579 /* TxOutput.swift in Sources */,
 				6DB309F91F1D2093007DFF40 /* ChatEntity.swift in Sources */,
 				94C2D3951F191F7100D203C2 /* ChooseYourTeamDataSource.swift in Sources */,
@@ -2316,8 +2326,10 @@
 				6DEC07561E9BF7170078F40E /* ExtendedTeammateEntity.swift in Sources */,
 				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,
 				94E80E501F0FD30400DE1A0A /* HomeApplicationDeniedCell.swift in Sources */,
+				94B4C3801F1E18AC00AED4CE /* WalletEntity.swift in Sources */,
 				6D0E742D1F13C0D70055BF1E /* LabeledButton.swift in Sources */,
 				6D9CC6511ED97C37007F936E /* HomeCollectionCell.swift in Sources */,
+				94B4C37E1F1E18AC00AED4CE /* CosignerEntity.swift in Sources */,
 				6D73C6E41EBB3F0800A2C0F8 /* TransactionCell.swift in Sources */,
 				6D6DA2641EE21ACA00307C73 /* FacebookUser.swift in Sources */,
 				94C2D39A1F191FA600D203C2 /* TeamCell.swift in Sources */,

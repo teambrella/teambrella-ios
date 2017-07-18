@@ -28,6 +28,10 @@ class WalletVC: UIViewController {
         super.viewDidLoad()
         WalletCellBuilder.registerCells(in: collectionView)
         qrCode = generateQRCode()
+        dataSource.onUpdate = { [weak self] in
+            self?.collectionView.reloadData()
+        }
+        dataSource.loadData()
         
     }
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FCe-0y-OxV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FCe-0y-OxV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -78,7 +78,6 @@
                                     <constraint firstAttribute="height" constant="44" id="e43-Lg-CJJ"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="yummy"/>
                                 <connections>
                                     <action selector="tapTeams:" destination="dtc-T4-z44" eventType="touchUpInside" id="zWS-SN-GDh"/>
                                 </connections>
@@ -566,6 +565,5 @@
         <image name="iconWallet" width="30" height="26"/>
         <image name="inbox" width="22" height="17"/>
         <image name="tesla" width="381" height="132"/>
-        <image name="yummy" width="24" height="24"/>
     </resources>
 </document>
