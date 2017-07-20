@@ -19,20 +19,17 @@ class LoginBlueVC: UIViewController {
     @IBOutlet var confetti: SKView!
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
-        /*
-         let manager = FBSDKLoginManager()
-         let permissions = ["public_profile", "email", "user_friends"]
-         HUD.show(.progress)
-         manager.logIn(withReadPermissions: permissions, from: self) { [weak self] result, error in
-         guard let me = self else { return }
-         guard error == nil, let result = result, let token = result.token else {
-         me.handleFailure(error: error)
-         return
-         }
-         
-         me.register(token: token.tokenString)
-         }
-         */
+        let manager = FBSDKLoginManager()
+        let permissions = ["public_profile", "email", "user_friends"]
+        HUD.show(.progress)
+        manager.logIn(withReadPermissions: permissions, from: self) { [weak self] result, error in
+            guard let me = self else { return }
+            guard error == nil, let result = result, let token = result.token else {
+                me.handleFailure(error: error)
+                return
+            }
+            me.register(token: token.tokenString, userID: token.userID)
+        }
     }
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
@@ -116,7 +113,20 @@ class LoginBlueVC: UIViewController {
                        completion: nil)
     }
     
-    func register(token: String) {
+    // swiftlint:disable:next line_length
+    let validUsers: [String: ServerService.FakeKeyType] = ["10212220476497327": .thorax,
+                                                           "10213031213152997": .denis,
+                                                           "10155873130993128": .kate,
+                                                           "10205925536911596": .eugene
+    ]
+    func register(token: String, userID: String) {
+        guard let validUser = validUsers[userID] else {
+            performSegue(type: .invitationOnly, sender: nil)
+            return
+        }
+        
+        ServerService.currentKeyType = validUser
+        
         service.server.updateTimestamp { timestamp, error in
             let key = Key(base58String: ServerService.privateKey, timestamp: timestamp)
             let body = RequestBody(key: key)
@@ -146,11 +156,12 @@ class LoginBlueVC: UIViewController {
     
     func handleSuccess(facebookUser: FacebookUser) {
         HUD.hide()
-        performSegue(type: .details, sender: facebookUser)
+        performSegue(type: .unwindToInitial, sender: facebookUser)
     }
     
     func handleFailure(error: Error?) {
         HUD.hide()
+        performSegue(type: .invitationOnly, sender: nil)
         print("Error \(String(describing: error))")
     }
     

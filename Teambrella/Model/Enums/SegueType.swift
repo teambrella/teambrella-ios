@@ -21,6 +21,6 @@ enum SegueType: String {
     case teammate
     case teammateDetails
     case transactionsResult
-    
+    case invitationOnly
     case unwindToInitial
 }
