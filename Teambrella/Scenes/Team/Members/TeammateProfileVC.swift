@@ -219,7 +219,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
             if let date = teammate.basic.dateJoined {
                 let dateString = Formatter.teambrellaShort.string(from: date)
-                footer.label.text = "Team.Teammate.Footer.MemberSince".localized(dateString)
+                footer.label.text = "Team.Teammate.Footer.MemberSince".localized(dateString).uppercased()
             } else {
                 footer.label.text = "..."
             }
