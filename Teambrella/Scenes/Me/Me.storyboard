@@ -108,32 +108,11 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytR-oK-Uh1" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="195.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-A5-JrL">
-                                                        <rect key="frame" x="24" y="14" width="46" height="107"/>
-                                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="88"/>
-                                                        <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztJ-BE-YAX">
-                                                        <rect key="frame" x="73" y="83.5" width="14.5" height="19.5"/>
-                                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
-                                                        <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DDL-Sr-nJy">
-                                                        <rect key="frame" x="92.5" y="8" width="0.0" height="161.5"/>
+                                                        <rect key="frame" x="196" y="8" width="163" height="139.5"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="FAb-A5-JrL" firstAttribute="top" secondItem="ytR-oK-Uh1" secondAttribute="top" constant="14" id="229-mx-BS1"/>
-                                                    <constraint firstItem="FAb-A5-JrL" firstAttribute="leading" secondItem="ytR-oK-Uh1" secondAttribute="leading" constant="24" id="HKl-Te-k08"/>
-                                                    <constraint firstItem="DDL-Sr-nJy" firstAttribute="top" secondItem="ytR-oK-Uh1" secondAttribute="top" constant="8" id="HQN-ZU-Zay"/>
-                                                    <constraint firstItem="DDL-Sr-nJy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ztJ-BE-YAX" secondAttribute="trailing" constant="5" id="RnO-jl-N5a"/>
-                                                    <constraint firstItem="FAb-A5-JrL" firstAttribute="baseline" secondItem="ztJ-BE-YAX" secondAttribute="baseline" id="fbx-XN-OaA"/>
-                                                    <constraint firstItem="ztJ-BE-YAX" firstAttribute="leading" secondItem="FAb-A5-JrL" secondAttribute="trailing" constant="3" id="kL0-0G-ili"/>
-                                                    <constraint firstAttribute="trailing" secondItem="DDL-Sr-nJy" secondAttribute="trailing" constant="16" id="oDD-tQ-b17"/>
-                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="segments">
                                                         <integer key="value" value="3"/>
@@ -173,6 +152,18 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-A5-JrL">
+                                                <rect key="frame" x="24" y="14" width="46" height="125.5"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="88"/>
+                                                <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztJ-BE-YAX">
+                                                <rect key="frame" x="73" y="102.5" width="14.5" height="19"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
+                                                <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAH-4g-Hs4" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="155.5" width="343" height="40"/>
                                                 <constraints>
@@ -187,59 +178,146 @@
                                                         <integer key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="tapFundWalletButton:" destination="1FN-Av-DAK" eventType="touchUpInside" id="0ei-cc-ltG"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="ytR-oK-Uh1" secondAttribute="trailing" id="32x-q6-U5e"/>
+                                            <constraint firstItem="gAH-4g-Hs4" firstAttribute="top" secondItem="DDL-Sr-nJy" secondAttribute="bottom" constant="8" id="3L2-cC-pap"/>
                                             <constraint firstAttribute="trailing" secondItem="xdw-sm-Jvx" secondAttribute="trailing" id="6zd-cs-ka1"/>
+                                            <constraint firstItem="ztJ-BE-YAX" firstAttribute="baseline" secondItem="FAb-A5-JrL" secondAttribute="baseline" id="7Jn-46-JBx"/>
+                                            <constraint firstItem="DDL-Sr-nJy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ztJ-BE-YAX" secondAttribute="trailing" constant="5" id="CWb-kB-9WT"/>
                                             <constraint firstItem="xdw-sm-Jvx" firstAttribute="bottom" secondItem="gAH-4g-Hs4" secondAttribute="bottom" id="CwY-hC-j0T"/>
+                                            <constraint firstItem="gAH-4g-Hs4" firstAttribute="top" secondItem="FAb-A5-JrL" secondAttribute="bottom" constant="16" id="Czx-v7-fpy"/>
                                             <constraint firstItem="gAH-4g-Hs4" firstAttribute="leading" secondItem="rtL-Dg-TqT" secondAttribute="leading" constant="16" id="D84-tS-cPD"/>
+                                            <constraint firstItem="ztJ-BE-YAX" firstAttribute="leading" secondItem="FAb-A5-JrL" secondAttribute="trailing" constant="3" id="GxC-sH-iC6"/>
+                                            <constraint firstItem="FAb-A5-JrL" firstAttribute="leading" secondItem="rtL-Dg-TqT" secondAttribute="leading" constant="24" id="Kmp-6D-KwN"/>
+                                            <constraint firstAttribute="trailing" secondItem="DDL-Sr-nJy" secondAttribute="trailing" constant="16" id="MdD-pK-eUN"/>
                                             <constraint firstAttribute="trailing" secondItem="gAH-4g-Hs4" secondAttribute="trailing" constant="16" id="Ogt-ZD-1hJ"/>
                                             <constraint firstAttribute="bottom" secondItem="gAH-4g-Hs4" secondAttribute="bottom" constant="20" id="UgP-yv-IzP"/>
                                             <constraint firstItem="xdw-sm-Jvx" firstAttribute="leading" secondItem="rtL-Dg-TqT" secondAttribute="leading" id="atP-12-caa"/>
                                             <constraint firstItem="ytR-oK-Uh1" firstAttribute="leading" secondItem="rtL-Dg-TqT" secondAttribute="leading" id="bfC-Nw-i7Z"/>
                                             <constraint firstItem="ytR-oK-Uh1" firstAttribute="bottom" secondItem="gAH-4g-Hs4" secondAttribute="bottom" id="dlU-yE-EI1"/>
+                                            <constraint firstItem="DDL-Sr-nJy" firstAttribute="top" secondItem="rtL-Dg-TqT" secondAttribute="top" constant="8" id="ej4-6v-TkS"/>
                                             <constraint firstItem="xdw-sm-Jvx" firstAttribute="top" secondItem="ytR-oK-Uh1" secondAttribute="centerY" id="kXQ-8P-yso"/>
                                             <constraint firstItem="ytR-oK-Uh1" firstAttribute="top" secondItem="rtL-Dg-TqT" secondAttribute="top" id="tYv-gk-ILw"/>
+                                            <constraint firstItem="FAb-A5-JrL" firstAttribute="top" secondItem="rtL-Dg-TqT" secondAttribute="top" constant="14" id="vCd-rE-M3A"/>
                                         </constraints>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ByT-Mp-bxm">
-                                        <rect key="frame" x="16" y="275" width="343" height="356"/>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ByT-Mp-bxm">
+                                        <rect key="frame" x="16" y="231.5" width="343" height="399.5"/>
                                         <subviews>
-                                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hIB-Df-BKn" customClass="UmbrellaView" customModule="Teambrella" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="118.5"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRm-0v-r5N">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U5-XL-AmS">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U5-XL-AmS">
                                                         <rect key="frame" x="20" y="16" width="303" height="17"/>
                                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBa-YD-YON">
-                                                        <rect key="frame" x="20" y="43" width="303" height="17"/>
-                                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
-                                                        <color key="textColor" red="0.94901960784313721" green="0.95686274509803915" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="cBa-YD-YON" firstAttribute="leading" secondItem="7U5-XL-AmS" secondAttribute="leading" id="5gd-It-e3x"/>
-                                                    <constraint firstItem="cBa-YD-YON" firstAttribute="trailing" secondItem="7U5-XL-AmS" secondAttribute="trailing" id="Tid-Nh-bo8"/>
-                                                    <constraint firstItem="7U5-XL-AmS" firstAttribute="leading" secondItem="hIB-Df-BKn" secondAttribute="leading" constant="20" id="Ucb-nr-qn2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="7U5-XL-AmS" secondAttribute="trailing" constant="20" id="Wcw-nq-IOl"/>
-                                                    <constraint firstItem="7U5-XL-AmS" firstAttribute="top" secondItem="hIB-Df-BKn" secondAttribute="top" constant="16" id="myW-sL-bRl"/>
-                                                    <constraint firstItem="cBa-YD-YON" firstAttribute="top" secondItem="7U5-XL-AmS" secondAttribute="bottom" constant="10" id="ost-VS-DVz"/>
+                                                    <constraint firstItem="7U5-XL-AmS" firstAttribute="top" secondItem="eRm-0v-r5N" secondAttribute="top" constant="16" id="VCU-EI-cN7"/>
+                                                    <constraint firstItem="7U5-XL-AmS" firstAttribute="leading" secondItem="eRm-0v-r5N" secondAttribute="leading" constant="20" id="mDQ-7C-YYf"/>
+                                                    <constraint firstAttribute="trailing" secondItem="7U5-XL-AmS" secondAttribute="trailing" constant="20" id="uST-Se-jwL"/>
+                                                </constraints>
+                                            </view>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIB-Df-BKn" customClass="UmbrellaView" customModule="Teambrella" customModuleProvider="target">
+                                                <rect key="frame" x="-20" y="52" width="383" height="40"/>
+                                                <color key="backgroundColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBa-YD-YON">
+                                                <rect key="frame" x="20" y="35" width="303" height="17"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.94901960784313721" green="0.95686274509803915" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="YVO-7G-QQT">
+                                                <rect key="frame" x="20" y="121" width="36" height="17"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="0ys-a7-OWw">
+                                                <rect key="frame" x="20" y="159" width="226.5" height="17"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="RWV-cl-zkc">
+                                                <rect key="frame" x="20" y="358.5" width="227" height="17"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="OuM-mH-Dzn">
+                                                <rect key="frame" x="18" y="297.5" width="307" height="33"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="BQf-Db-4bX"/>
+                                                </constraints>
+                                                <color key="minimumTrackTintColor" red="0.94901960780000005" green="0.95686274510000002" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="maximumTrackTintColor" red="0.94901960784313721" green="0.95686274509803915" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="thumbTintColor" red="0.25490196079999999" green="0.30588235289999999" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </slider>
+                                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="vKC-XX-fUK" customClass="AmountWithCurrency" customModule="Teambrella" customModuleProvider="target">
+                                                <rect key="frame" x="254.5" y="108" width="68.5" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="f6M-ci-5xT"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="r4l-Uj-f8d" customClass="AmountWithCurrency" customModule="Teambrella" customModuleProvider="target">
+                                                <rect key="frame" x="254.5" y="146" width="68.5" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="PGi-2Y-dUy"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="oGn-Vb-oa8" customClass="AmountWithCurrency" customModule="Teambrella" customModuleProvider="target">
+                                                <rect key="frame" x="254.5" y="345.5" width="68.5" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="uyY-JK-cXp"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="hIB-Df-BKn" firstAttribute="top" secondItem="ByT-Mp-bxm" secondAttribute="top" id="HQA-Gc-azo"/>
-                                            <constraint firstItem="hIB-Df-BKn" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" id="XUx-5t-XT0"/>
-                                            <constraint firstItem="hIB-Df-BKn" firstAttribute="height" secondItem="ByT-Mp-bxm" secondAttribute="height" multiplier="1:3" id="aPw-N3-d3t"/>
-                                            <constraint firstAttribute="trailing" secondItem="hIB-Df-BKn" secondAttribute="trailing" id="pdd-9j-bOv"/>
+                                            <constraint firstItem="oGn-Vb-oa8" firstAttribute="top" secondItem="OuM-mH-Dzn" secondAttribute="bottom" constant="16" id="0AU-6F-lM4"/>
+                                            <constraint firstItem="hIB-Df-BKn" firstAttribute="height" secondItem="eRm-0v-r5N" secondAttribute="height" multiplier="2:5" id="0ZB-sb-hcO"/>
+                                            <constraint firstItem="r4l-Uj-f8d" firstAttribute="leading" secondItem="0ys-a7-OWw" secondAttribute="trailing" constant="8" id="2bu-Nj-0eO"/>
+                                            <constraint firstItem="eRm-0v-r5N" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" id="6t8-I5-ZxU"/>
+                                            <constraint firstItem="hIB-Df-BKn" firstAttribute="top" secondItem="cBa-YD-YON" secondAttribute="bottom" id="9kv-rq-cJj"/>
+                                            <constraint firstItem="oGn-Vb-oa8" firstAttribute="leading" secondItem="RWV-cl-zkc" secondAttribute="trailing" constant="8" id="BUS-bQ-EDt"/>
+                                            <constraint firstAttribute="trailing" secondItem="eRm-0v-r5N" secondAttribute="trailing" id="HU8-Vj-cxT"/>
+                                            <constraint firstAttribute="trailing" secondItem="vKC-XX-fUK" secondAttribute="trailing" constant="20" id="Jee-10-u39"/>
+                                            <constraint firstItem="eRm-0v-r5N" firstAttribute="top" secondItem="ByT-Mp-bxm" secondAttribute="top" id="LZC-Zj-qL5"/>
+                                            <constraint firstItem="cBa-YD-YON" firstAttribute="trailing" secondItem="eRm-0v-r5N" secondAttribute="trailing" constant="-20" id="LeF-4X-Uxr"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="oGn-Vb-oa8" secondAttribute="bottom" constant="24" id="Lv5-zw-QyO"/>
+                                            <constraint firstItem="oGn-Vb-oa8" firstAttribute="width" secondItem="ByT-Mp-bxm" secondAttribute="width" multiplier="1:5" id="Q7h-0h-nAG"/>
+                                            <constraint firstItem="r4l-Uj-f8d" firstAttribute="trailing" secondItem="vKC-XX-fUK" secondAttribute="trailing" id="Tzf-Df-GDH"/>
+                                            <constraint firstItem="vKC-XX-fUK" firstAttribute="width" secondItem="ByT-Mp-bxm" secondAttribute="width" multiplier="1:5" id="UOJ-WB-XbD"/>
+                                            <constraint firstItem="eRm-0v-r5N" firstAttribute="height" secondItem="ByT-Mp-bxm" secondAttribute="height" multiplier="1:4" id="VW2-xt-YOG"/>
+                                            <constraint firstItem="hIB-Df-BKn" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" constant="-20" id="XUx-5t-XT0"/>
+                                            <constraint firstAttribute="trailing" secondItem="OuM-mH-Dzn" secondAttribute="trailing" constant="20" id="XbY-xs-Ddh"/>
+                                            <constraint firstItem="vKC-XX-fUK" firstAttribute="top" secondItem="hIB-Df-BKn" secondAttribute="bottom" constant="16" id="abk-hL-Udl"/>
+                                            <constraint firstItem="OuM-mH-Dzn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="r4l-Uj-f8d" secondAttribute="bottom" constant="14" id="fxF-em-TO4"/>
+                                            <constraint firstItem="r4l-Uj-f8d" firstAttribute="width" secondItem="ByT-Mp-bxm" secondAttribute="width" multiplier="1:5" id="gUk-9H-7eT"/>
+                                            <constraint firstItem="OuM-mH-Dzn" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" constant="20" id="hHG-GW-kg6"/>
+                                            <constraint firstItem="cBa-YD-YON" firstAttribute="leading" secondItem="eRm-0v-r5N" secondAttribute="leading" constant="20" id="hU2-rJ-YOC"/>
+                                            <constraint firstItem="r4l-Uj-f8d" firstAttribute="top" secondItem="vKC-XX-fUK" secondAttribute="bottom" constant="8" id="iFD-8p-lGe"/>
+                                            <constraint firstItem="r4l-Uj-f8d" firstAttribute="bottom" secondItem="0ys-a7-OWw" secondAttribute="bottom" id="jTu-j0-xIp"/>
+                                            <constraint firstItem="cBa-YD-YON" firstAttribute="top" secondItem="7U5-XL-AmS" secondAttribute="bottom" constant="2" id="ntx-PW-Krn"/>
+                                            <constraint firstAttribute="trailing" secondItem="hIB-Df-BKn" secondAttribute="trailing" constant="-20" id="pdd-9j-bOv"/>
+                                            <constraint firstItem="oGn-Vb-oa8" firstAttribute="bottom" secondItem="RWV-cl-zkc" secondAttribute="bottom" id="rDZ-go-0Qw"/>
+                                            <constraint firstItem="YVO-7G-QQT" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" constant="20" id="tbF-vC-jPk"/>
+                                            <constraint firstItem="oGn-Vb-oa8" firstAttribute="trailing" secondItem="r4l-Uj-f8d" secondAttribute="trailing" id="ue9-0W-Vri"/>
+                                            <constraint firstItem="vKC-XX-fUK" firstAttribute="bottom" secondItem="YVO-7G-QQT" secondAttribute="bottom" id="vBz-IQ-8mw"/>
+                                            <constraint firstItem="vKC-XX-fUK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YVO-7G-QQT" secondAttribute="trailing" constant="8" id="xO6-jJ-xK8"/>
+                                            <constraint firstItem="RWV-cl-zkc" firstAttribute="leading" secondItem="YVO-7G-QQT" secondAttribute="leading" id="xtb-Se-flG"/>
+                                            <constraint firstItem="0ys-a7-OWw" firstAttribute="leading" secondItem="YVO-7G-QQT" secondAttribute="leading" id="ziV-RT-BFP"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -256,6 +334,8 @@
                                     <constraint firstAttribute="trailing" secondItem="ByT-Mp-bxm" secondAttribute="trailing" constant="16" id="MTB-vh-gXn"/>
                                     <constraint firstAttribute="bottom" secondItem="ByT-Mp-bxm" secondAttribute="bottom" constant="16" id="MWc-f8-2tP"/>
                                     <constraint firstItem="rtL-Dg-TqT" firstAttribute="top" secondItem="VmV-yc-E7V" secondAttribute="top" id="m6k-es-MYh"/>
+                                    <constraint firstItem="ByT-Mp-bxm" firstAttribute="top" secondItem="rtL-Dg-TqT" secondAttribute="bottom" constant="16" id="mof-QV-AU4"/>
+                                    <constraint firstAttribute="bottom" secondItem="oGn-Vb-oa8" secondAttribute="bottom" constant="40" id="uWB-RY-c9R"/>
                                     <constraint firstItem="rtL-Dg-TqT" firstAttribute="height" secondItem="VmV-yc-E7V" secondAttribute="height" multiplier="1:3" id="ubi-tv-cgk"/>
                                 </constraints>
                             </view>
@@ -268,6 +348,24 @@
                             <constraint firstItem="VmV-yc-E7V" firstAttribute="top" secondItem="EWm-62-vkt" secondAttribute="bottom" id="mtO-44-gva"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="centerAmount" destination="r4l-Uj-f8d" id="9jS-W6-cam"/>
+                        <outlet property="centerLabel" destination="0ys-a7-OWw" id="Pa2-ZJ-68S"/>
+                        <outlet property="coverage" destination="FAb-A5-JrL" id="AhN-BM-zg5"/>
+                        <outlet property="fundWalletButton" destination="gAH-4g-Hs4" id="v8n-9M-HbH"/>
+                        <outlet property="gradientView" destination="xdw-sm-Jvx" id="OjE-ub-bWC"/>
+                        <outlet property="lowerAmount" destination="oGn-Vb-oa8" id="izy-vF-LmI"/>
+                        <outlet property="lowerLabel" destination="RWV-cl-zkc" id="YZU-nH-oRf"/>
+                        <outlet property="radarView" destination="ytR-oK-Uh1" id="2aT-t0-CLA"/>
+                        <outlet property="slider" destination="OuM-mH-Dzn" id="cxS-IZ-EBP"/>
+                        <outlet property="subcontainer" destination="ByT-Mp-bxm" id="YoH-vi-TgV"/>
+                        <outlet property="subtitleLabel" destination="cBa-YD-YON" id="GDf-Hm-Frr"/>
+                        <outlet property="titleLabel" destination="7U5-XL-AmS" id="w1D-bV-1W1"/>
+                        <outlet property="umbrellaView" destination="hIB-Df-BKn" id="1c1-D2-uDc"/>
+                        <outlet property="upperAmount" destination="vKC-XX-fUK" id="YgU-cU-jf9"/>
+                        <outlet property="upperLabel" destination="YVO-7G-QQT" id="hz2-Nh-rzv"/>
+                        <outlet property="weatherImage" destination="DDL-Sr-nJy" id="QWJ-FJ-EAP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skY-Lo-QR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
