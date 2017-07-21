@@ -34,7 +34,7 @@ struct TeammateEntity: TeammateLike {
     }
     
     var isComplete: Bool { return extended != nil }
-    
+
     init(json: JSON) {
         claimLimit = json["ClaimLimit"].intValue
         claimsCount = json["ClaimsCount"].intValue

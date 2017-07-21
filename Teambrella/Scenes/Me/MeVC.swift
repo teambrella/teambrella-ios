@@ -25,13 +25,15 @@ class MeVC: ButtonBarPagerTabStripViewController, TabRoutable {
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let my = UIStoryboard(name: "Me",
+        let profile = UIStoryboard(name: "Team",
+                                   bundle: nil).instantiateViewController(withIdentifier: "TeammateProfileVC")
+//        let profile = UIStoryboard(name: "Me",
+//                                    bundle: nil).instantiateViewController(withIdentifier: "ProfileVC")
+        let coverage = UIStoryboard(name: "Me",
                               bundle: nil).instantiateViewController(withIdentifier: "CoverageVC")
-        let proxyFor = UIStoryboard(name: "Me",
-                                    bundle: nil).instantiateViewController(withIdentifier: "ProfileVC")
-        let index = UIStoryboard(name: "Me",
+        let wallet = UIStoryboard(name: "Me",
                                  bundle: nil).instantiateViewController(withIdentifier: "WalletVC")
-        return [my, proxyFor, index]
+        return [profile, coverage, wallet]
     }
     
 }

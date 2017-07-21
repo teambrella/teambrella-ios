@@ -27,14 +27,18 @@ struct SocialItem {
 }
 
 class TeammateProfileDataSource {
-    var source: [TeammateProfileCellType] = []
-    var teammate: TeammateLike
-    var riskScale: RiskScaleEntity? { return teammate.extended?.riskScale }
-    var isNewTeammate = false
+    let id: String
     let isMe: Bool
+    let isVoting: Bool
     
-    init(teammate: TeammateLike, isMe: Bool) {
-        self.teammate = teammate
+    var source: [TeammateProfileCellType] = []
+    var extendedTeammate: ExtendedTeammate?
+    var riskScale: RiskScaleEntity? { return extendedTeammate?.riskScale }
+    var isNewTeammate = false
+    
+    init(id: String, isVoting: Bool, isMe: Bool) {
+        self.id = id
+        self.isVoting = isVoting
         self.isMe = isMe
     }
     
@@ -51,12 +55,12 @@ class TeammateProfileDataSource {
     func loadEntireTeammate(completion: @escaping () -> Void) {
         let key = Key(base58String: ServerService.privateKey, timestamp: service.server.timestamp)
         
-        let body = RequestBodyFactory.teammateBody(key: key, id: teammate.userID)
+        let body = RequestBodyFactory.teammateBody(key: key, id: id)
         let request = TeambrellaRequest(type: .teammate, body: body, success: { [weak self] response in
             guard let me = self else { return }
             
             if case .teammate(let extendedTeammate) = response {
-                me.teammate.extended = extendedTeammate
+                me.extendedTeammate = extendedTeammate
                 me.modifySource()
                 completion()
             }
@@ -64,10 +68,10 @@ class TeammateProfileDataSource {
         request.start()
     }
     
-    func sendRisk(teammateID: String, risk: Double?, completion: @escaping (JSON) -> Void) {
+    func sendRisk(userID: String, risk: Double?, completion: @escaping (JSON) -> Void) {
         service.server.updateTimestamp { timestamp, error in
             let key = service.server.key
-            let body = RequestBody(payload: ["TeammateId": teammateID,
+            let body = RequestBody(payload: ["TeammateId": userID,
                                              "MyVote": risk ?? NSNull(),
                                              "Since": key.timestamp,
                                              "ProxyAvatarSize": 32])
@@ -82,26 +86,20 @@ class TeammateProfileDataSource {
     }
     
     private func modifySource() {
-        if teammate.isVoting == true {
-            //source = source.filter { $0 != .summary }
+        guard extendedTeammate != nil else { return }
+        
+        if isVoting {
             isNewTeammate = true
             source.append(.dialogCompact)
             source.append(.voting)
-            //if teammate.extended?.topic != nil {
-            // }
         } else {
             source.append(isMe ? .me : .summary)
-            
-            if teammate.extended?.object != nil {
                 source.append(.object)
-            }
-            if teammate.extended?.stats != nil {
                 source.append(.stats)
-            }
             if !socialItems.isEmpty {
                 source.append(.contact)
             }
-            if !isNewTeammate  && teammate.extended?.topic != nil {
+            if !isNewTeammate {
                 source.append(.dialog)
             }
         }
@@ -109,7 +107,7 @@ class TeammateProfileDataSource {
     
     var socialItems: [SocialItem] {
         var items: [SocialItem] = []
-        if let facebook = teammate.extended?.basic.facebook {
+        if let facebook = extendedTeammate?.basic.facebook {
             items.append(SocialItem(type: .facebook, icon: #imageLiteral(resourceName: "facebook"), address: facebook))
         }
         return items

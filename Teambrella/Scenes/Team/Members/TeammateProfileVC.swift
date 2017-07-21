@@ -9,6 +9,7 @@
 import Kingfisher
 import PKHUD
 import UIKit
+import XLPagerTabStrip
 
 class TeammateProfileVC: UIViewController, Routable {
     struct Constant {
@@ -17,14 +18,7 @@ class TeammateProfileVC: UIViewController, Routable {
     
     static var storyboardName: String = "Team"
     
-    var isMe: Bool = false
-    var teammate: TeammateLike {
-        get { return self.dataSource.teammate }
-        set { if self.dataSource == nil {
-            self.dataSource = TeammateProfileDataSource(teammate: newValue, isMe: self.isMe)
-            }
-        }
-    }
+    var teammate: TeammateLike?
     
     var dataSource: TeammateProfileDataSource!
     var riskController: VotingRiskVC?
@@ -36,13 +30,21 @@ class TeammateProfileVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addGradientNavBar()
+        if let teammate = teammate {
+            dataSource = TeammateProfileDataSource(id: teammate.userID, isVoting: teammate.isVoting, isMe: false)
+            addGradientNavBar()
+        } else if let myID = service.session.currentUserID {
+            dataSource = TeammateProfileDataSource(id: myID, isVoting: false, isMe: true)
+        } else {
+            fatalError("No valid info about teammate")
+        }
+        
         registerCells()
         HUD.show(.progress, onView: view)
         dataSource.loadEntireTeammate { [weak self] in
             HUD.hide()
             self?.prepareLinearFunction()
-            self?.title = self?.teammate.extended?.basic.name
+            self?.title = self?.dataSource.extendedTeammate?.basic.name
             self?.collectionView.reloadData()
         }
         if let flow = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -51,7 +53,7 @@ class TeammateProfileVC: UIViewController, Routable {
     }
     
     func prepareLinearFunction() {
-        guard let risk = teammate.extended?.riskScale else { return }
+        guard let risk = dataSource.extendedTeammate?.riskScale else { return }
         
         let function = PiecewiseFunction((0.2, risk.coversIfMin), (1, risk.coversIf1), (5, risk.coversIfMax))
         linearFunction = function
@@ -62,9 +64,9 @@ class TeammateProfileVC: UIViewController, Routable {
     }
     
     func showClaims(sender: UIButton) {
-        if let claimCount = teammate.extended?.object.claimCount,
+        if let claimCount = dataSource.extendedTeammate?.object.claimCount,
             claimCount == 1,
-            let claimID = teammate.extended?.object.singleClaimID {
+            let claimID = dataSource.extendedTeammate?.object.singleClaimID {
             TeamRouter().presentClaim(claimID: claimID)
         } else {
             MembersRouter().presentClaims(teammate: teammate)
@@ -92,8 +94,8 @@ class TeammateProfileVC: UIViewController, Routable {
         guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
             return
         }
-        guard let myRisk = teammate.extended?.riskScale?.myRisk,
-            let theirRisk = teammate.extended?.basic.risk else { return }
+        guard let myRisk = dataSource.extendedTeammate?.riskScale?.myRisk,
+            let theirRisk = dataSource.extendedTeammate?.basic.risk else { return }
         
         if let theirAmount = linearFunction?.value(at: risk / theirRisk * myRisk) {
             view.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
@@ -101,6 +103,18 @@ class TeammateProfileVC: UIViewController, Routable {
         if let myAmount = linearFunction?.value(at: risk / myRisk * theirRisk) {
             view.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
         }
+    }
+    
+    func tapFacebook() {
+        DeveloperTools.notSupportedAlert(in: self)
+    }
+    
+    func tapTwitter() {
+        DeveloperTools.notSupportedAlert(in: self)
+    }
+    
+    func tapEmail() {
+        DeveloperTools.notSupportedAlert(in: self)
     }
     
 }
@@ -144,15 +158,19 @@ extension TeammateProfileVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
+        guard let teammate = dataSource.extendedTeammate else { return }
+        
         TeammateCellBuilder.populate(cell: cell, with: teammate, delegate: self)
         
         // add handlers
         if let cell = cell as? TeammateObjectCell {
-            cell.button.isHidden = teammate.claimsCount == 0
+            if let claimsCount = dataSource.extendedTeammate?.object.claimCount {
+                cell.button.isHidden = claimsCount == 0
+            }
             cell.button.removeTarget(nil, action: nil, for: .allEvents)
             cell.button.addTarget(self, action: #selector(showClaims), for: .touchUpInside)
         } else if cell is TeammateVoteCell, let riskController = riskController {
-            if let voting = teammate.extended?.voting {
+            if let voting = teammate.voting {
                 riskController.timeLabel.text = "\(voting.remainingMinutes) MIN"
             }
             riskController.teammate = teammate
@@ -164,42 +182,42 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             
             riskController.onVoteConfirmed = { [weak self] risk in
                 guard let me = self else { return }
+                guard let id = me.teammate?.id else { return }
                 
-                //HUD.show(.progress)
                 me.riskController?.yourRiskValue.alpha = 0.5
-                me.dataSource.sendRisk(teammateID: me.teammate.id, risk: risk, completion: { json in
-                    // HUD.hide()
+                me.dataSource.sendRisk(userID: id, risk: risk, completion: { json in
                     print("risk sent: received json: \(json)")
                     me.riskController?.yourRiskValue.alpha = 1
                 })
             }
         }
-        // self.updateAmounts(with: risk)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
+        guard let teammate = dataSource.extendedTeammate else { return }
+        
         if let view = view as? CompactUserInfoHeader {
-            view.avatarView.showAvatar(string: teammate.avatar)
+            view.avatarView.showAvatar(string: teammate.basic.avatar)
             
             if let left = view.leftNumberView {
                 left.titleLabel.text = "Team.TeammateCell.coversMe".localized
-                let amount = teammate.extended?.basic.coversMeAmount
+                let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
                 left.currencyLabel.text = "USD"
             }
             
             if let right = view.rightNumberView {
                 right.titleLabel.text = "Team.TeammateCell.coverThem".localized
-                let amount = teammate.extended?.basic.iCoverThemAmount
+                let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
                 right.currencyLabel.text = "USD"
             }
         }
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
-            if let date = teammate.extended?.basic.dateJoined {
+            if let date = teammate.basic.dateJoined {
                 let dateString = Formatter.teambrellaShort.string(from: date)
                 footer.label.text = "Team.Teammate.Footer.MemberSince".localized(dateString)
             } else {
@@ -211,7 +229,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let identifier = dataSource.type(for: indexPath)
-        if identifier == .dialog || identifier == .dialogCompact, let extendedTeammate = teammate.extended {
+        if identifier == .dialog || identifier == .dialogCompact, let extendedTeammate = dataSource.extendedTeammate {
             let context = ChatContext.teammate(extendedTeammate)
             TeamRouter().presentChat(context: context)
         }
@@ -229,7 +247,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .summary:
             return CGSize(width: collectionView.bounds.width, height: 210)
         case .object:
-            guard teammate.claimsCount > 0 else { return CGSize(width: wdt, height: 216) }
+            guard let teammate = dataSource.extendedTeammate,
+                teammate.object.claimCount > 0 else { return CGSize(width: wdt, height: 216) }
             
             return CGSize(width: wdt, height: 296)
         case .stats:
@@ -241,7 +260,7 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .dialog:
             return CGSize(width: collectionView.bounds.width, height: 120)
         case .me:
-            return CGSize(width: collectionView.bounds.width, height: 210)
+            return CGSize(width: collectionView.bounds.width, height: 256)
         case .voting:
             return CGSize(width: wdt, height: 350)
         case .dialogCompact:
@@ -298,5 +317,12 @@ extension TeammateProfileVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.001
+    }
+}
+
+// MARK: IndicatorInfoProvider
+extension TeammateProfileVC: IndicatorInfoProvider {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "Me.ProfileVC.indicatorTitle".localized)
     }
 }

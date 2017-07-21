@@ -18,7 +18,7 @@ class SocketService {
     
     init(url: URL?) {
         // swiftlint:disable:next force_unwrapping
-        let url = url ?? URL(string: "wss://" + "teambrella.com" + "/echo2.ashx")!
+        let url = url ?? URL(string: "wss://" + "surilla.com" + "/echo2.ashx")!
         print("trying to connect to socket: \(url.absoluteString)")
         socket = WebSocket(url: url)
         socket.delegate = self

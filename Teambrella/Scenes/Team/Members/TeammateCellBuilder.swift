@@ -10,48 +10,67 @@ import Kingfisher
 import UIKit
 
 struct TeammateCellBuilder {
-    static func populate(cell: UICollectionViewCell, with teammate: TeammateLike, delegate: Any? = nil) {
+    static func populate(cell: UICollectionViewCell, with teammate: ExtendedTeammate, delegate: Any? = nil) {
         if let cell = cell as? TeammateSummaryCell {
             populateSummary(cell: cell, with: teammate)
         } else if let cell = cell as? TeammateObjectCell {
           populateObject(cell: cell, with: teammate)
         } else if let cell = cell as? TeammateContactCell {
             populateContact(cell: cell, with: teammate, delegate: delegate)
-        } else if let cell = cell as? DiscussionCell, let topic = teammate.extended?.topic {
-            populateDiscussion(cell: cell, with: topic, avatar: teammate.avatar)
-        } else if let cell = cell as? TeammateStatsCell, let stats = teammate.extended?.stats {
-            populateStats(cell: cell, with: stats)
+        } else if let cell = cell as? DiscussionCell {
+            populateDiscussion(cell: cell, with: teammate.topic, avatar: teammate.basic.avatar)
+        } else if let cell = cell as? TeammateStatsCell {
+            populateStats(cell: cell, with: teammate.stats)
         } else if let cell = cell as? TeammateVoteCell, let delegate = delegate as? TeammateProfileVC {
            populateVote(cell: cell, with: teammate, delegate: delegate)
-        } else if let cell = cell as? DiscussionCompactCell, let topic = teammate.extended?.topic {
-            populateCompactDiscussion(cell: cell, with: topic, avatar: teammate.avatar)
+        } else if let cell = cell as? DiscussionCompactCell {
+            populateCompactDiscussion(cell: cell, with: teammate.topic, avatar: teammate.basic.avatar)
+        } else if let cell = cell as? MeCell {
+            populateMeCell(cell: cell, with: teammate, delegate: delegate)
         }
     }
     
-    private static func populateSummary(cell: TeammateSummaryCell, with teammate: TeammateLike) {
-        cell.title.text = teammate.name
-        let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
+    private static func populateMeCell(cell: MeCell, with teammate: ExtendedTeammate, delegate: Any?) {
+        cell.avatar.showAvatar(string: teammate.basic.avatar)
+        cell.nameLabel.text = teammate.basic.name
+        cell.infoLabel.text = teammate.basic.city
+        if let vc = delegate as? TeammateProfileVC {
+            cell.facebookButton.removeTarget(vc, action: nil, for: .allEvents)
+            cell.facebookButton.addTarget(vc, action: #selector(TeammateProfileVC.tapFacebook), for: .touchUpInside)
+            
+            cell.twitterButton.removeTarget(vc, action: nil, for: .allEvents)
+            cell.twitterButton.addTarget(vc, action: #selector(TeammateProfileVC.tapTwitter), for: .touchUpInside)
+            
+            cell.emailButton.removeTarget(vc, action: nil, for: .allEvents)
+            cell.emailButton.addTarget(vc, action: #selector(TeammateProfileVC.tapEmail), for: .touchUpInside)
+        }
+    }
+    
+    private static func populateSummary(cell: TeammateSummaryCell, with teammate: ExtendedTeammate) {
+        cell.title.text = teammate.basic.name
+        let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
         cell.avatarView.kf.setImage(with: url)
         if let left = cell.leftNumberView {
             left.titleLabel.text = "Team.TeammateCell.coversMe".localized
-            let amount = teammate.extended?.basic.coversMeAmount
+            let amount = teammate.basic.coversMeAmount
             left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
         }
         if let right = cell.rightNumberView {
             right.titleLabel.text = "Team.TeammateCell.coverThem".localized
-            let amount = teammate.extended?.basic.iCoverThemAmount
+            let amount = teammate.basic.iCoverThemAmount
             right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
         }
-        guard let extended = teammate.extended else { return }
         
-        cell.subtitle.text = extended.basic.city
-        if extended.basic.isProxiedByMe {
+        cell.subtitle.text = teammate.basic.city
+        if teammate.basic.isProxiedByMe {
             cell.infoLabel.isHidden = false
-            cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(extended.basic.name)
+            cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name)
         }
     }
     
-    private static func populateVote(cell: TeammateVoteCell, with teammate: TeammateLike, delegate: TeammateProfileVC) {
+    private static func populateVote(cell: TeammateVoteCell,
+                                     with teammate: ExtendedTeammate,
+                                     delegate: TeammateProfileVC) {
         if delegate.riskController == nil {
             let board = UIStoryboard(name: "Members", bundle: nil)
             if let vc = board.instantiateViewController(withIdentifier: "VotingRiskVC") as? VotingRiskVC {
@@ -69,33 +88,33 @@ struct TeammateCellBuilder {
         }
     }
     
-    private static func populateObject(cell: TeammateObjectCell, with teammate: TeammateLike) {
+    private static func populateObject(cell: TeammateObjectCell, with teammate: ExtendedTeammate) {
         cell.titleLabel.text = "Team.TeammateCell.object".localized
-        cell.nameLabel.text = "\(teammate.model), \(teammate.year)"
+        cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
         cell.detailsLabel.text = "Team.TeammateCell.collisionDeductible".localized
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
-            left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.extended?.object.claimLimit)
+            left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
         }
         if let middle = cell.numberBar.middle {
             middle.titleLabel.text = "Team.Teammates.net".localized
-            middle.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.extended?.basic.totallyPaidAmount)
+            middle.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.totallyPaidAmount)
         }
         if let right = cell.numberBar.right {
             right.titleLabel.text = "Team.TeammateCell.riskFactor".localized
-            right.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.risk)
+            right.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.risk)
             right.badgeLabel.text = "1x47xAVG"
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
         }
-        guard let object = teammate.extended?.object else { return }
         
-        if let imageString = object.smallPhotos.first {
+        if let imageString = teammate.object.smallPhotos.first {
             cell.avatarView.showImage(string: imageString)
         }
-        cell.button.setTitle("Team.TeammateCell.buttonTitle_format_i".localized(object.claimCount), for: .normal)
+        cell.button.setTitle("Team.TeammateCell.buttonTitle_format_i".localized(teammate.object.claimCount),
+                             for: .normal)
     }
     
     private static func populateStats(cell: TeammateStatsCell, with stats: TeammateStats) {
@@ -157,7 +176,7 @@ struct TeammateCellBuilder {
         cell.unreadCountView.isHidden = stats.unreadCount == 0
     }
     
-    private static func populateContact(cell: TeammateContactCell, with teammate: TeammateLike, delegate: Any?) {
+    private static func populateContact(cell: TeammateContactCell, with teammate: ExtendedTeammate, delegate: Any?) {
         guard let dataSource = delegate as? UITableViewDataSource else {
             fatalError("TeammateContactCell should have table view data source")
         }

@@ -33,7 +33,7 @@ class VotingRiskVC: UIViewController {
     //            updateWithRiskScale()
     //        }
     //    }
-    var teammate: TeammateLike? {
+    var teammate: ExtendedTeammate? {
         didSet {
             updateWithTeammate()
         }
@@ -71,9 +71,9 @@ class VotingRiskVC: UIViewController {
     func updateWithTeammate() {
         guard let teammate = teammate else { return }
         
-        mainLabeledView.avatar.showAvatar(string: teammate.avatar)
-        update(voting: teammate.extended?.voting)
-        guard let riskScale = teammate.extended?.riskScale else { return }
+        mainLabeledView.avatar.showAvatar(string: teammate.basic.avatar)
+        update(voting: teammate.voting)
+        guard let riskScale = teammate.riskScale else { return }
         
         votingScroller?.updateWithRiskScale(riskScale: riskScale)
         mainLabeledView.riskLabelText = String(format:"%.2f", riskScale.myRisk)
@@ -98,7 +98,7 @@ class VotingRiskVC: UIViewController {
     
     func updateRiskDeltas(risk: Double) {
         func text(for label: UILabel, risk: Double?) {
-            guard let riskScale = teammate?.extended?.riskScale else { return }
+            guard let riskScale = teammate?.riskScale else { return }
             guard let risk = risk else { return }
             
             let delta = risk - riskScale.averageRisk
@@ -110,7 +110,7 @@ class VotingRiskVC: UIViewController {
         }
         
         text(for: yourAverage, risk: risk)
-        text(for: teamAverage, risk: teammate?.extended?.voting?.riskVoted)
+        text(for: teamAverage, risk: teammate?.voting?.riskVoted)
         mainLabeledView.riskLabelText = String.formattedNumber(risk)
     }
     
@@ -143,7 +143,7 @@ class VotingRiskVC: UIViewController {
             vc.delegate = self
         }
         if segue.identifier == "ToCompareTeamRisk", let vc = segue.destination as? CompareTeamRiskVC {
-            guard let riskScale = teammate?.extended?.riskScale else { return }
+            guard let riskScale = teammate?.riskScale else { return }
             
             print(riskScale.ranges.count)
             vc.ranges = riskScale.ranges
@@ -165,7 +165,7 @@ class VotingRiskVC: UIViewController {
         onVoteConfirmed?(nil)
         //teamVoteLabel.text = "..."
         yourRiskValue.text = "..."
-        if let proxyVote = teammate?.extended?.voting?.proxyVote {
+        if let proxyVote = teammate?.voting?.proxyVote {
             let offset = offsetFrom(risk: proxyVote, in: votingScroller)
             votingScroller.scrollTo(offset: offset)
         } else {
@@ -191,7 +191,7 @@ extension VotingRiskVC: VotingScrollerDelegate {
     }
     
     func votingScroller(controller: VotingScrollerVC, middleCellRow: Int) {
-        guard let range = teammate?.extended?.riskScale?.ranges[middleCellRow] else { return }
+        guard let range = teammate?.riskScale?.ranges[middleCellRow] else { return }
         
         print("voting scroller middle cell row is now: \(middleCellRow)")
         updateAvatars(range: range)
