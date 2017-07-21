@@ -37,24 +37,26 @@ class CoverageVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         umbrellaView.startCurveCoeff = 1.1
-        let cov = 60
+        let cov = 100 //
+        upperAmount.amountLabel.text = "1200" //
+        upperAmount.currencyLabel.text = "USD" //
+        centerAmount.amountLabel.text = "750" //
+        centerAmount.currencyLabel.text = "USD" //
+        lowerAmount.amountLabel.text = "375" //
+        lowerAmount.currencyLabel.text = "USD" //
+
         coverage.text = String(cov)
         setImage(for: cov)
         fundWalletButton.isEnabled = cov == 100
-        fundWalletButton.alpha = (cov == 100) ? 30 : 100
-        fundWalletButton.setTitle("Fund the wallet to increase", for: .normal)
-        titleLabel.text = "HOW IT WORKS"
-        subtitleLabel.text = "Use the slider to understand how Expenses impact your maximum reimbursement."
-        upperLabel.text = "Max Expenses covered"
-        upperAmount.amountLabel.text = "1200"
-        upperAmount.currencyLabel.text = "USD"
-        centerLabel.text = "In case your Expenses are"
-        centerAmount.amountLabel.text = "750"
-        centerAmount.currencyLabel.text = "USD"
+        fundWalletButton.alpha = (cov == 100) ? 0.3 : 1
+        fundWalletButton.setTitle("Me.CoverageVC.fundButton".localized, for: .normal)
+        titleLabel.text = "Me.CoverageVC.title".localized
+        subtitleLabel.text = "Me.CoverageVC.subtitle".localized
+        upperLabel.text = "Me.CoverageVC.maxExpenses".localized
+        centerLabel.text = "Me.CoverageVC.yourExpenses".localized
         centerAmount.contentView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        lowerLabel.text = "The team would pay you up to"
-        lowerAmount.amountLabel.text = "375"
-        lowerAmount.currencyLabel.text = "USD"
+        lowerLabel.text = "Me.CoverageVC.teamPay".localized
+        
     }
     
     func setImage(for percentage: Int) {
