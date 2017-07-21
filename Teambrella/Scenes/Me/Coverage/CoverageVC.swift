@@ -30,6 +30,7 @@ class CoverageVC: UIViewController, Routable {
     @IBOutlet var lowerAmount: AmountWithCurrency!
     
     @IBAction func tapFundWalletButton(_ sender: Any) {
+    service.router.showWallet()
     }
     
     static var storyboardName = "Me"
@@ -37,7 +38,7 @@ class CoverageVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         umbrellaView.startCurveCoeff = 1.1
-        let cov = 100 //
+        let cov = 10 //
         upperAmount.amountLabel.text = "1200" //
         upperAmount.currencyLabel.text = "USD" //
         centerAmount.amountLabel.text = "750" //
@@ -47,7 +48,7 @@ class CoverageVC: UIViewController, Routable {
 
         coverage.text = String(cov)
         setImage(for: cov)
-        fundWalletButton.isEnabled = cov == 100
+        fundWalletButton.isEnabled = cov != 100
         fundWalletButton.alpha = (cov == 100) ? 0.3 : 1
         fundWalletButton.setTitle("Me.CoverageVC.fundButton".localized, for: .normal)
         titleLabel.text = "Me.CoverageVC.title".localized
