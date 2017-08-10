@@ -30,6 +30,7 @@ enum TeambrellaRequestType: String {
     case wallet = "wallet/getOne"
     case feedChat = "feed/getChat"
     case feedCreateChat = "feed/newChat"
+    case uploadPhoto = "post/newUpload"
 }
 
 enum TeambrellaResponseType {
@@ -50,6 +51,7 @@ enum TeambrellaResponseType {
     case teamFeed([FeedEntity])
     case chat(Int64, [ChatEntity], JSON)
     case wallet(WalletEntity)
+    case uploadPhoto(String)
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -138,6 +140,8 @@ struct TeambrellaRequest {
             success(.wallet(WalletEntity(json: reply)))
         case .updates:
             break
+        case .uploadPhoto:
+            success(.uploadPhoto(reply.arrayValue.first?.string ?? ""))
         default:
             break
         }

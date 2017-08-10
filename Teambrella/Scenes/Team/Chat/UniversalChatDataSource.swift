@@ -60,8 +60,9 @@ class UniversalChatDatasource {
         request.start()
     }
     
-    func send(text: String, completion: @escaping (Bool) -> Void) {
-        let body = strategy.updatedMessageBody(body: RequestBody(key: service.server.key, payload: ["Text": text]))
+    func send(text: String, images: [String], completion: @escaping (Bool) -> Void) {
+        let body = strategy.updatedMessageBody(body: RequestBody(key: service.server.key, payload: ["text": text,
+                                                                                                    "images": images]))
         
         let request = TeambrellaRequest(type: .newPost, body: body, success: { [weak self] response in
             guard let me = self else { return }
