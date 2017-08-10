@@ -38,7 +38,7 @@ class CoverageVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         umbrellaView.startCurveCoeff = 1.1
-        let cov = 10 //
+        let cov = 100 //
         upperAmount.amountLabel.text = "1200" //
         upperAmount.currencyLabel.text = "USD" //
         centerAmount.amountLabel.text = "750" //
@@ -49,7 +49,7 @@ class CoverageVC: UIViewController, Routable {
         coverage.text = String(cov)
         setImage(for: cov)
         fundWalletButton.isEnabled = cov != 100
-        fundWalletButton.alpha = (cov == 100) ? 0.3 : 1
+        fundWalletButton.alpha = (cov == 100) ? 0.5 : 1
         fundWalletButton.setTitle("Me.CoverageVC.fundButton".localized, for: .normal)
         titleLabel.text = "Me.CoverageVC.title".localized
         subtitleLabel.text = "Me.CoverageVC.subtitle".localized
@@ -66,6 +66,10 @@ class CoverageVC: UIViewController, Routable {
         case 96...99: weatherImage.image = #imageLiteral(resourceName: "rain-1")
         default: weatherImage.image = #imageLiteral(resourceName: "rain")
         }
+    }
+    
+    func changeValues() {
+        
     }
 }
 
