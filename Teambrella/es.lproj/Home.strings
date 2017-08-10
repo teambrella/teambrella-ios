@@ -7,7 +7,7 @@
 */
 
 "Home.salutation"                = "¡Hola, %@!";
-"Home.subtitle"                  = "Veas las novedades para ti";
+"Home.subtitle"                  = "¿Qué hay de nuevo?";
 "Home.submitButton.anotherClaim" = "Enviar Otra Reclamación";
 "Home.submitButton.claim"        = "Enviar Reclamación";
 "Home.leftBrick.title"           = "COBERTURA";
