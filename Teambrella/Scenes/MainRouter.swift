@@ -70,48 +70,50 @@ final class MainRouter {
     func presentJoinTeam() {
         guard let vc = JoinTeamVC.instantiate() as? JoinTeamVC else { fatalError("Error instantiating") }
         
-        service.router.push(vc: vc)
+        push(vc: vc)
     }
     
     func presentChat(context: ChatContext) {
         guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
         
         vc.setContext(context: context)
-        service.router.push(vc: vc)
+        push(vc: vc)
     }
     
     func presentClaim(claim: ClaimLike) {
         guard let vc = ClaimVC.instantiate() as? ClaimVC else { fatalError("Error instantiating") }
         
         vc.claimID = claim.id
-        service.router.push(vc: vc)
+        push(vc: vc)
     }
     
     func presentClaim(claimID: String) {
         guard let vc = ClaimVC.instantiate() as? ClaimVC else { fatalError("Error instantiating") }
         
         vc.claimID = claimID
-        service.router.push(vc: vc)
+        push(vc: vc)
     }
     
     func presentMemberProfile(teammate: TeammateLike) {
         guard let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC else { fatalError("Error instantiating") }
+        
         vc.teammate = teammate
-        service.router.push(vc: vc)
+        push(vc: vc)
     }
     
     func presentClaims(teammate: TeammateLike? = nil) {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
+        
         vc.teammate = teammate
         vc.automaticallyAdjustsScrollViewInsets = false
-        service.router.push(vc: vc)
+        push(vc: vc)
     }
     
     func presentWalletDetails(walletID: String) {
         guard let vc = WalletDetailsVC.instantiate() as? WalletDetailsVC else { fatalError("Error instantiating") }
         
         vc.walletID = walletID
-        service.router.push(vc: vc)
+        push(vc: vc)
     }
     
     func presentClaimReport(in parentViewController: UIViewController? = nil) {
