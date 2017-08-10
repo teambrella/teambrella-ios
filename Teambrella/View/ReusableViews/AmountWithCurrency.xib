@@ -31,13 +31,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="145" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QPb-gy-s5x">
-                            <rect key="frame" x="8" y="0.0" width="81" height="40"/>
+                            <rect key="frame" x="2" y="0.0" width="85" height="40"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="23"/>
                             <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CURRENCY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIX-II-UOc">
-                            <rect key="frame" x="91" y="11.5" width="50" height="11"/>
+                            <rect key="frame" x="89" y="11.5" width="47" height="11"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="9"/>
                             <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -45,7 +45,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="QPb-gy-s5x" firstAttribute="leading" secondItem="0Gh-3R-zz9" secondAttribute="leading" constant="8" id="1Vz-mc-QSY"/>
+                        <constraint firstItem="QPb-gy-s5x" firstAttribute="leading" secondItem="0Gh-3R-zz9" secondAttribute="leading" constant="2" id="1Vz-mc-QSY"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CIX-II-UOc" secondAttribute="trailing" constant="2" id="G3m-jW-Zsn"/>
                         <constraint firstItem="QPb-gy-s5x" firstAttribute="top" secondItem="0Gh-3R-zz9" secondAttribute="top" id="MXd-gH-tN4"/>
                         <constraint firstItem="CIX-II-UOc" firstAttribute="baseline" secondItem="QPb-gy-s5x" secondAttribute="centerY" id="aCo-2q-0qp"/>

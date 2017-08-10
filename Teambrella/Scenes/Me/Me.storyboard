@@ -162,7 +162,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztJ-BE-YAX">
-                                                <rect key="frame" x="76" y="132.5" width="16" height="19"/>
+                                                <rect key="frame" x="76" y="128.5" width="16" height="19"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
                                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -191,7 +191,7 @@
                                             <constraint firstAttribute="trailing" secondItem="ytR-oK-Uh1" secondAttribute="trailing" id="32x-q6-U5e"/>
                                             <constraint firstItem="gAH-4g-Hs4" firstAttribute="top" secondItem="DDL-Sr-nJy" secondAttribute="bottom" constant="8" id="3L2-cC-pap"/>
                                             <constraint firstAttribute="trailing" secondItem="xdw-sm-Jvx" secondAttribute="trailing" id="6zd-cs-ka1"/>
-                                            <constraint firstItem="ztJ-BE-YAX" firstAttribute="baseline" secondItem="FAb-A5-JrL" secondAttribute="baseline" id="7Jn-46-JBx"/>
+                                            <constraint firstItem="ztJ-BE-YAX" firstAttribute="bottom" secondItem="FAb-A5-JrL" secondAttribute="baseline" id="7Jn-46-JBx"/>
                                             <constraint firstItem="DDL-Sr-nJy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ztJ-BE-YAX" secondAttribute="trailing" constant="5" id="CWb-kB-9WT"/>
                                             <constraint firstItem="xdw-sm-Jvx" firstAttribute="bottom" secondItem="gAH-4g-Hs4" secondAttribute="bottom" id="CwY-hC-j0T"/>
                                             <constraint firstItem="gAH-4g-Hs4" firstAttribute="top" secondItem="FAb-A5-JrL" secondAttribute="bottom" constant="16" id="Czx-v7-fpy"/>
@@ -238,7 +238,7 @@
                                                         <color key="backgroundColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="cBa-YD-YON">
-                                                        <rect key="frame" x="20" y="35" width="303" height="16.5"/>
+                                                        <rect key="frame" x="20" y="35" width="303" height="17"/>
                                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                                         <color key="textColor" red="0.94901960784313721" green="0.95686274509803915" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -630,7 +630,7 @@
                     <tabBarItem key="tabBarItem" title="Me" id="o2t-82-wdC"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gIR-mJ-Hhl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gIR-mJ-Hhl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
