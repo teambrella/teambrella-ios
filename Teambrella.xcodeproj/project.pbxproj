@@ -127,7 +127,6 @@
 		6D69DA2A1EFD1A0400DED5CE /* WalletFundingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA281EFD1A0400DED5CE /* WalletFundingCell.xib */; };
 		6D69DA2D1EFD1A1E00DED5CE /* WalletButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA2B1EFD1A1E00DED5CE /* WalletButtonsCell.swift */; };
 		6D69DA2E1EFD1A1E00DED5CE /* WalletButtonsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */; };
-		6D69DA301EFD6A9F00DED5CE /* MeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA2F1EFD6A9F00DED5CE /* MeRouter.swift */; };
 		6D69DA331EFD6CB700DED5CE /* TeamFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA311EFD6CB700DED5CE /* TeamFeedCell.swift */; };
 		6D69DA341EFD6CB700DED5CE /* TeamFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA321EFD6CB700DED5CE /* TeamFeedCell.xib */; };
 		6D69DA371EFD6CED00DED5CE /* HeaderWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA351EFD6CED00DED5CE /* HeaderWithButton.swift */; };
@@ -154,7 +153,6 @@
 		6D6DA2621EE21A9D00307C73 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2611EE21A9D00307C73 /* Gender.swift */; };
 		6D6DA2641EE21ACA00307C73 /* FacebookUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2631EE21ACA00307C73 /* FacebookUser.swift */; };
 		6D6DA2671EE21F2D00307C73 /* MembersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2651EE21F2D00307C73 /* MembersDataSource.swift */; };
-		6D6DA2681EE21F2D00307C73 /* MembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2661EE21F2D00307C73 /* MembersRouter.swift */; };
 		6D6DA26B1EE21F7A00307C73 /* LoginDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2691EE21F7A00307C73 /* LoginDetailsConfigurator.swift */; };
 		6D6DA26C1EE21F7A00307C73 /* LoginDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA26A1EE21F7A00307C73 /* LoginDetailsRouter.swift */; };
 		6D6DA26F1EE21F9800307C73 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA26D1EE21F9800307C73 /* Label.swift */; };
@@ -169,7 +167,6 @@
 		6D83EC891EDD6CA6000412DC /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC881EDD6CA6000412DC /* Routable.swift */; };
 		6D83EC8B1EDD7083000412DC /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC8A1EDD7083000412DC /* Navigator.swift */; };
 		6D83EC8E1EDD7230000412DC /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC8D1EDD7230000412DC /* MainRouter.swift */; };
-		6D83EC901EDD765F000412DC /* TeamRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC8F1EDD765F000412DC /* TeamRouter.swift */; };
 		6D83EC941EDDA9DC000412DC /* TeammateProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */; };
 		6D862F6B1F1E639A00988D5C /* TeammateFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */; };
 		6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
@@ -515,7 +512,6 @@
 		6D69DA281EFD1A0400DED5CE /* WalletFundingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WalletFundingCell.xib; path = View/Cells/WalletFundingCell.xib; sourceTree = "<group>"; };
 		6D69DA2B1EFD1A1E00DED5CE /* WalletButtonsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletButtonsCell.swift; path = View/Cells/WalletButtonsCell.swift; sourceTree = "<group>"; };
 		6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WalletButtonsCell.xib; path = View/Cells/WalletButtonsCell.xib; sourceTree = "<group>"; };
-		6D69DA2F1EFD6A9F00DED5CE /* MeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeRouter.swift; path = Scenes/Me/MeRouter.swift; sourceTree = "<group>"; };
 		6D69DA311EFD6CB700DED5CE /* TeamFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamFeedCell.swift; path = View/Cells/TeamFeedCell.swift; sourceTree = "<group>"; };
 		6D69DA321EFD6CB700DED5CE /* TeamFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TeamFeedCell.xib; path = View/Cells/TeamFeedCell.xib; sourceTree = "<group>"; };
 		6D69DA351EFD6CED00DED5CE /* HeaderWithButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderWithButton.swift; path = View/ReusableViews/HeaderWithButton.swift; sourceTree = "<group>"; };
@@ -542,7 +538,6 @@
 		6D6DA2611EE21A9D00307C73 /* Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gender.swift; path = Model/Enums/Gender.swift; sourceTree = "<group>"; };
 		6D6DA2631EE21ACA00307C73 /* FacebookUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookUser.swift; path = Model/Entities/FacebookUser.swift; sourceTree = "<group>"; };
 		6D6DA2651EE21F2D00307C73 /* MembersDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersDataSource.swift; path = Scenes/Team/Members/MembersDataSource.swift; sourceTree = "<group>"; };
-		6D6DA2661EE21F2D00307C73 /* MembersRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersRouter.swift; path = Scenes/Team/Members/MembersRouter.swift; sourceTree = "<group>"; };
 		6D6DA2691EE21F7A00307C73 /* LoginDetailsConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginDetailsConfigurator.swift; path = Scenes/Login/LoginDetailsConfigurator.swift; sourceTree = "<group>"; };
 		6D6DA26A1EE21F7A00307C73 /* LoginDetailsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginDetailsRouter.swift; path = Scenes/Login/LoginDetailsRouter.swift; sourceTree = "<group>"; };
 		6D6DA26D1EE21F9800307C73 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Label.swift; path = View/Label.swift; sourceTree = "<group>"; };
@@ -557,7 +552,6 @@
 		6D83EC881EDD6CA6000412DC /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Routable.swift; path = Model/Protocols/Routable.swift; sourceTree = "<group>"; };
 		6D83EC8A1EDD7083000412DC /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Navigator.swift; path = Controller/Navigator.swift; sourceTree = "<group>"; };
 		6D83EC8D1EDD7230000412DC /* MainRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainRouter.swift; path = Scenes/MainRouter.swift; sourceTree = "<group>"; };
-		6D83EC8F1EDD765F000412DC /* TeamRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamRouter.swift; path = Scenes/Team/TeamRouter.swift; sourceTree = "<group>"; };
 		6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateProfileDataSource.swift; path = Scenes/Team/Members/TeammateProfileDataSource.swift; sourceTree = "<group>"; };
 		6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateFooter.swift; path = Scenes/Team/Members/TeammateFooter.swift; sourceTree = "<group>"; };
 		6D8F97111E8D1529008DC62E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -1173,7 +1167,6 @@
 				6DB812151EE6E68C00B202CE /* Chat */,
 				6D9CC6261ED5EA81007F936E /* Team.storyboard */,
 				6D9CC6341ED72252007F936E /* TeamVC.swift */,
-				6D83EC8F1EDD765F000412DC /* TeamRouter.swift */,
 				6D02ACA31F07D3AC00B01AAF /* JoinTeam */,
 			);
 			name = Team;
@@ -1201,7 +1194,6 @@
 				6D69DA181EFC464500DED5CE /* Wallet */,
 				6D9CC62C1ED5EB23007F936E /* Me.storyboard */,
 				6DF2E8CF1EF197D100C8D60B /* MeVC.swift */,
-				6D69DA2F1EFD6A9F00DED5CE /* MeRouter.swift */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -1221,7 +1213,6 @@
 			isa = PBXGroup;
 			children = (
 				6D6DA24F1EE1B68F00307C73 /* Members.storyboard */,
-				6D6DA2661EE21F2D00307C73 /* MembersRouter.swift */,
 				6DA714F31EE02B0200F39EBE /* Teammates */,
 				6DA714F41EE02B5900F39EBE /* TeammateProfile */,
 			);
@@ -2096,7 +2087,6 @@
 				6D466AAB1ED07CF1001BC579 /* TxInput.swift in Sources */,
 				6D481F7D1F0BD0DD0023C781 /* RoundedCornersView.swift in Sources */,
 				6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */,
-				6D69DA301EFD6A9F00DED5CE /* MeRouter.swift in Sources */,
 				6D466AA11ED07CF1001BC579 /* BlockchainService.swift in Sources */,
 				6DA475D91E8BBD2A00B56D9B /* TeambrellaError.swift in Sources */,
 				6D9CC6351ED72252007F936E /* TeamVC.swift in Sources */,
@@ -2116,7 +2106,6 @@
 				6D69D9F21EFC035400DED5CE /* ProxyForCellBuilder.swift in Sources */,
 				94E325C51F07EF0D00B2D8C8 /* JoinTeamItemCell.swift in Sources */,
 				6D9CC6401ED72E19007F936E /* RulesVC.swift in Sources */,
-				6D6DA2681EE21F2D00307C73 /* MembersRouter.swift in Sources */,
 				6DEE67951EDC12A70098EDB3 /* TeammateCandidateCell.swift in Sources */,
 				6D3141CC1F07DD7400C285DA /* JoinTeamDataSource.swift in Sources */,
 				6D02AC971F06A6B800B01AAF /* VotingScrollerVC.swift in Sources */,
@@ -2251,7 +2240,6 @@
 				6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */,
 				6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */,
 				6DF2E8CE1EF1979300C8D60B /* ProxiesVC.swift in Sources */,
-				6D83EC901EDD765F000412DC /* TeamRouter.swift in Sources */,
 				94793A871F0D120700696B90 /* SortCellModel.swift in Sources */,
 				94C89B001F02AA8100C6D8F7 /* TeamEntity.swift in Sources */,
 				6D69DA1C1EFD178800DED5CE /* WalletCellModels.swift in Sources */,

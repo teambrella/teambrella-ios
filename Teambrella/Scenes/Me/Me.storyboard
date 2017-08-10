@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lGP-Uv-A7d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lGP-Uv-A7d">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -153,13 +153,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-A5-JrL">
-                                                <rect key="frame" x="24" y="14" width="46" height="152.5"/>
+                                                <rect key="frame" x="24" y="14" width="49" height="152.5"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="88"/>
                                                 <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztJ-BE-YAX">
-                                                <rect key="frame" x="73" y="129.5" width="14.5" height="19"/>
+                                                <rect key="frame" x="76" y="132.5" width="16" height="19"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
                                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -258,19 +258,19 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="YVO-7G-QQT">
-                                                <rect key="frame" x="20" y="145" width="36" height="17"/>
+                                                <rect key="frame" x="20" y="145" width="34.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="0ys-a7-OWw">
-                                                <rect key="frame" x="20" y="183" width="36" height="17"/>
+                                                <rect key="frame" x="20" y="183" width="34.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="RWV-cl-zkc">
-                                                <rect key="frame" x="20" y="331.5" width="36" height="17"/>
+                                                <rect key="frame" x="20" y="331.5" width="34.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -360,7 +360,7 @@
                     <connections>
                         <outlet property="centerAmount" destination="r4l-Uj-f8d" id="9jS-W6-cam"/>
                         <outlet property="centerLabel" destination="0ys-a7-OWw" id="Pa2-ZJ-68S"/>
-                        <outlet property="coverage" destination="FAb-A5-JrL" id="AhN-BM-zg5"/>
+                        <outlet property="coverageLabel" destination="FAb-A5-JrL" id="yB7-GE-8Yu"/>
                         <outlet property="fundWalletButton" destination="gAH-4g-Hs4" id="v8n-9M-HbH"/>
                         <outlet property="gradientView" destination="xdw-sm-Jvx" id="OjE-ub-bWC"/>
                         <outlet property="lowerAmount" destination="oGn-Vb-oa8" id="izy-vF-LmI"/>

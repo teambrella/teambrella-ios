@@ -15,7 +15,6 @@ class CompareTeamRiskVC: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     
     let dataSource = MembersDatasource(orderByRisk: true)
-    lazy var router: MembersRouter = MembersRouter()
     var ranges: [RiskScaleEntity.Range] = []
     
     override func viewDidLoad() {
@@ -101,7 +100,7 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        MembersRouter().presentMemberProfile(teammate: dataSource[indexPath]    )
+        service.router.presentMemberProfile(teammate: dataSource[indexPath]    )
     }
 }
 

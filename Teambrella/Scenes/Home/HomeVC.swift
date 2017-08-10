@@ -197,19 +197,19 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var submitClaimButton: BorderedButton!
     
     @IBAction func tapSubmitClaim(_ sender: UIButton) {
-        MeRouter().presentClaimReport()
+        service.router.presentClaimReport()
     }
     
     @IBAction func tapLeftBrick(_ sender: Any) {
-        service.router.showCoverage()
+        service.router.switchToCoverage()
     }
     
     @IBAction func tapRightBrick(_ sender: Any) {
-        service.router.showWallet()
+        service.router.switchToWallet()
     }
     
     @IBAction func tapTeams(_ sender: UIButton) {
-        TeamRouter().showChooseTeam(in: self)
+        service.router.showChooseTeam(in: self)
     }
     
     @IBAction func tapInbox(_ sender: UIButton) {
@@ -251,7 +251,7 @@ extension HomeVC: UICollectionViewDataSource {
             return
         }
         
-        dataSource[indexPath].map { TeamRouter().presentChat(context: ChatContext.home($0)) }
+        dataSource[indexPath].map { service.router.presentChat(context: ChatContext.home($0)) }
     }
 }
 

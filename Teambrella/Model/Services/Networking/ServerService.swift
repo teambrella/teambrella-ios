@@ -29,7 +29,7 @@ let isLocalServer = false
  */
 class ServerService {
     struct Constant {
-        static var siteURL: String { return isLocalServer ? BlockchainServer.Constant.siteURL : "http://94.72.4.72/" }
+        static var siteURL: String { return isLocalServer ? BlockchainServer.Constant.siteURL : "https://surilla.com/" }
         //""//"http://192.168.0.254" // "http://192.168.0.222"
         //static let fakePrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
         // "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"

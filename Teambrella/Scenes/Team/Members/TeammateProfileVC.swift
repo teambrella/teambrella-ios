@@ -67,9 +67,9 @@ class TeammateProfileVC: UIViewController, Routable {
         if let claimCount = dataSource.extendedTeammate?.object.claimCount,
             claimCount == 1,
             let claimID = dataSource.extendedTeammate?.object.singleClaimID {
-            TeamRouter().presentClaim(claimID: claimID)
+            service.router.presentClaim(claimID: claimID)
         } else {
-            MembersRouter().presentClaims(teammate: teammate)
+            service.router.presentClaims(teammate: teammate)
         }
     }
     
@@ -231,7 +231,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         let identifier = dataSource.type(for: indexPath)
         if identifier == .dialog || identifier == .dialogCompact, let extendedTeammate = dataSource.extendedTeammate {
             let context = ChatContext.teammate(extendedTeammate)
-            TeamRouter().presentChat(context: context)
+            service.router.presentChat(context: context)
         }
     }
     
