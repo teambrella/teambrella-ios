@@ -32,4 +32,11 @@ extension Formatter {
         formatter.locale = Locale.current
         return formatter
     }()
+    
+    static let teambrellaShortDashed: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale.current
+        return formatter
+    }()
 }

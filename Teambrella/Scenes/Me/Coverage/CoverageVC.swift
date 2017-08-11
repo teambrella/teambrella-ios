@@ -29,11 +29,19 @@ class CoverageVC: UIViewController, Routable {
     @IBOutlet var centerAmount: AmountWithCurrency!
     @IBOutlet var lowerAmount: AmountWithCurrency!
     
-    var isLoading = false
-    var onUpdate: (() -> Void)?
-    var onError: ((Error) -> Void)?
-    var coverageAmount: Double = 0
-    var limitAmount: Double = 0
+    var coverageAmount: Int = 0 {
+        didSet {
+            coverage.text = String(coverageAmount)
+            fundWalletButton.isEnabled = coverageAmount != 100
+            fundWalletButton.alpha = (coverageAmount == 100) ? 0.5 : 1
+            setImage(for: coverageAmount)
+        }
+    }
+    var limitAmount: Double = 0 {
+        didSet {
+            upperAmount.amountLabel.text = String(limitAmount)
+        }
+    }
     
     @IBAction func tapFundWalletButton(_ sender: Any) {
         service.router.showWallet()
@@ -45,18 +53,13 @@ class CoverageVC: UIViewController, Routable {
         super.viewDidLoad()
         umbrellaView.startCurveCoeff = 1.1
         loadData()
-        var cov = coverageAmount //
-        upperAmount.amountLabel.text = "1200" //
+        
         upperAmount.currencyLabel.text = "USD" //
         centerAmount.amountLabel.text = "750" //
         centerAmount.currencyLabel.text = "USD" //
         lowerAmount.amountLabel.text = "375" //
         lowerAmount.currencyLabel.text = "USD" //
-        
-        coverage.text = String(cov)
-        //setImage(for: Int(cov))
-        fundWalletButton.isEnabled = cov != 100
-        fundWalletButton.alpha = (cov == 100) ? 0.5 : 1
+
         fundWalletButton.setTitle("Me.CoverageVC.fundButton".localized, for: .normal)
         titleLabel.text = "Me.CoverageVC.title".localized
         subtitleLabel.text = "Me.CoverageVC.subtitle".localized
@@ -75,21 +78,18 @@ class CoverageVC: UIViewController, Routable {
     }
     
     func loadData() {
-        guard !isLoading else { return }
-        
-        isLoading = true
+        let dateString = Formatter.teambrellaShortDashed.string(from: Date())
         service.server.updateTimestamp { timestamp, error in
             let key = service.server.key
-            let body = RequestBody(key: key, payload: ["TeamId": service.session.currentTeam?.teamID ?? 0])
-            let request = TeambrellaRequest(type: .wallet, body: body, success: { [weak self] response in
-                if case .coverageForDate(let cov, let lim) = response {
-                    self?.coverageAmount = cov
-                    self?.limitAmount = lim
-                    self?.onUpdate?()
+            let body = RequestBody(key: key, payload: ["TeamId": service.session.currentTeam?.teamID ?? 0,
+                                                       "Date": dateString])
+            let request = TeambrellaRequest(type: .coverageForDate, body: body, success: { [weak self] response in
+                if case .coverageForDate(let coverage, let limit) = response {
+                    self?.coverageAmount = Int(coverage * 100)
+                    self?.limitAmount = limit
+                    
                 }
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
-            })
+                })
             request.start()
         }
     }
