@@ -19,7 +19,7 @@ struct TeammateBasicInfo {
     let facebook: String
     
     let isProxiedByMe: Bool
-    let isMyProxy: Bool
+    var isMyProxy: Bool
     let role: TeammateType
     let state: TeammateState
     

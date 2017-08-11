@@ -118,10 +118,16 @@ class TeammateProfileVC: UIViewController, Routable {
     }
     
     func tapAddToProxy(sender: UIButton) {
-        dataSource.addToProxy { isProxy in
-            sender.isEnabled = !isProxy
-            if isProxy {
-                sender.setTitle("Added to proxy", for: .normal)
+        dataSource.addToProxy { [weak self] in
+            guard let me = self else { return }
+            
+            let cells = me.collectionView.visibleCells
+            let statCells = cells.flatMap { $0 as? TeammateStatsCell }
+            if let cell = statCells.first {
+                let title = me.dataSource.isMyProxy
+                    ? "Team.TeammateCell.removeFromMyProxyVoters".localized
+                    : "Team.TeammateCell.addToMyProxyVoters".localized
+                cell.addButton.setTitle(title, for: .normal)
             }
         }
     }

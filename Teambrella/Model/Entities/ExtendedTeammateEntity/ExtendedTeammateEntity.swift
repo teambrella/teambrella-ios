@@ -16,7 +16,7 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
     let lastUpdated: Int64
     
     var topic: Topic
-    let basic: TeammateBasicInfo
+    var basic: TeammateBasicInfo
     var voting: TeammateVotingInfo?
     let object: CoveredObject
     let stats: TeammateStats
@@ -36,6 +36,10 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
         object = CoveredObject(json: json["ObjectPart"])
         stats = TeammateStats(json: json["StatsPart"])
         riskScale = RiskScaleEntity(json: json["RiskScalePart"])
+    }
+    
+    mutating func myProxy(set: Bool) {
+        basic.isMyProxy = set
     }
     
 }

@@ -87,6 +87,7 @@
 
 "Team.TeammateCell.object"                     = "OBJECT";
 "Team.TeammateCell.addToMyProxyVoters"         = "Add to my Proxy Voters";
+"Team.TeammateCell.removeFromMyProxyVoters"    = "Remove from my Proxy Voters";
 "Team.TeammateCell.discussion"                 = "DISCUSSION";
 "Team.MembersVC.inviteAFriend"                 = "Invite a Friend";
 "Team.TeammateCell.allVotes"                   = "All Votes";

@@ -20,7 +20,7 @@ struct TeammateCellBuilder {
         } else if let cell = cell as? DiscussionCell {
             populateDiscussion(cell: cell, with: teammate.topic, avatar: teammate.basic.avatar)
         } else if let cell = cell as? TeammateStatsCell {
-            populateStats(cell: cell, with: teammate.stats)
+            populateStats(cell: cell, with: teammate)
         } else if let cell = cell as? TeammateVoteCell, let delegate = delegate as? TeammateProfileVC {
            populateVote(cell: cell, with: teammate, delegate: delegate)
         } else if let cell = cell as? DiscussionCompactCell {
@@ -117,7 +117,8 @@ struct TeammateCellBuilder {
                              for: .normal)
     }
     
-    private static func populateStats(cell: TeammateStatsCell, with stats: TeammateStats) {
+    private static func populateStats(cell: TeammateStatsCell, with teammate: ExtendedTeammate) {
+        let stats = teammate.stats
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.weight".localized
@@ -138,7 +139,10 @@ struct TeammateCellBuilder {
         cell.frequencyLabel.text = "Team.TeammateCell.votingFrequency".localized
         cell.frequencyBar.autoSet(value: stats.votingFrequency)
         cell.frequencyBar.rightText = ValueToTextConverter.frequencyText(from: stats.votingFrequency).uppercased()
-        cell.addButton.setTitle("Team.TeammateCell.addToMyProxyVoters".localized, for: .normal)
+        let buttonTitle = teammate.basic.isMyProxy
+            ? "Team.TeammateCell.removeFromMyProxyVoters".localized
+            : "Team.TeammateCell.addToMyProxyVoters".localized
+        cell.addButton.setTitle(buttonTitle, for: .normal)
     }
     
     private static func populateDiscussion(cell: DiscussionCell, with stats: Topic, avatar: String) {

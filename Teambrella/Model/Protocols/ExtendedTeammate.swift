@@ -15,4 +15,6 @@ protocol ExtendedTeammate: EntityLike {
     var object: CoveredObject { get }
     var stats: TeammateStats { get }
     var riskScale: RiskScaleEntity? { get }
+    
+    mutating func myProxy(set: Bool)
 }

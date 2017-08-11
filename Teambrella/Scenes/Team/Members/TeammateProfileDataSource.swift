@@ -30,7 +30,14 @@ class TeammateProfileDataSource {
     let id: String
     let isMe: Bool
     let isVoting: Bool
-    var isMyProxy: Bool = false
+    var isMyProxy: Bool {
+        get {
+            return extendedTeammate?.basic.isMyProxy ?? false
+        }
+        set {
+            extendedTeammate?.myProxy(set: newValue)
+        }
+    }
     
     var source: [TeammateProfileCellType] = []
     var extendedTeammate: ExtendedTeammate?
@@ -69,16 +76,16 @@ class TeammateProfileDataSource {
         request.start()
     }
     
-    func addToProxy(completion: @escaping (Bool) -> Void) {
+    func addToProxy(completion: @escaping () -> Void) {
         service.storage.myProxy(userID: id, add: !isMyProxy, success: { [weak self] in
             guard let me = self else { return }
             
             me.isMyProxy = !me.isMyProxy
-            completion(me.isMyProxy)
+            completion()
         }) { [weak self] error in
             guard let me = self else { return }
             
-            completion(me.isMyProxy)
+            completion()
         }
     }
     
