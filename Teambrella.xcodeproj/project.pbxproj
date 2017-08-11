@@ -479,6 +479,7 @@
 		6D481F7A1F0BAA960023C781 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageView.swift; path = Helpers/Extensions/UIImageView.swift; sourceTree = "<group>"; };
 		6D481F7C1F0BD0DD0023C781 /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedCornersView.swift; path = View/RoundedCornersView.swift; sourceTree = "<group>"; };
 		6D481F7E1F0BDEF30023C781 /* EggView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EggView.swift; path = View/EggView.swift; sourceTree = "<group>"; };
+		6D66EDE41F3E13A800AC4B53 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Me.strings; sourceTree = "<group>"; };
 		6D69D9E21EFBEE8D00DED5CE /* MyProxiesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProxiesDataSource.swift; path = Scenes/Proxies/MyProxies/MyProxiesDataSource.swift; sourceTree = "<group>"; };
 		6D69D9E41EFBEECB00DED5CE /* ProxyCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyCellModel.swift; path = Scenes/Proxies/MyProxies/ProxyCellModel.swift; sourceTree = "<group>"; };
 		6D69D9E61EFBF2C500DED5CE /* MyProxiesCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProxiesCellBuilder.swift; path = Scenes/Proxies/MyProxies/MyProxiesCellBuilder.swift; sourceTree = "<group>"; };
@@ -2428,6 +2429,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6D69DA0E1EFC458C00DED5CE /* en */,
+				6D66EDE41F3E13A800AC4B53 /* es */,
 			);
 			name = Me.strings;
 			sourceTree = "<group>";

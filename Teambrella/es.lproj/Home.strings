@@ -17,21 +17,21 @@
 
 "Home.CoverageType.pet"                                 = "Mascota";
 "Home.CoverageType.carCollisionDeductible"              = "Deducible por Colisión";
-// -------------------- waiting for translation :) -------------------- //
-"Home.SupportCell.headerLabel"                          = "Chat with Support";
-"Home.SupportCell.onlineLabel"                          = "ONLINE";
-"Home.SupportCell.textLabel"                            = "Hi %@!  Need help? We’re online during office hours (PST) for any questions.";
-"Home.SupportCell.chatButton"                           = "Chat with Support";
 
-"Home.ApplicationDeniedCell.headerLabel"                = "Unfortunately";
-"Home.ApplicationDeniedCell.centerLabel"                = "Team application was denied";
-"Home.ApplicationDeniedCell.viewAppButton"              = "View Application";
+"Home.SupportCell.headerLabel"                          = "Chatear con el apoyo";
+"Home.SupportCell.onlineLabel"                          = "EN LIÍNEA";
+"Home.SupportCell.textLabel"                            = "¡Hola %@!  si tiene alguna pregunta, somos aqui para ayudarle durante horas de oficina";
+"Home.SupportCell.chatButton"                           = "Chatear con el apoyo";
 
-"Home.ApplicationAcceptedCell.headerLabel"              = "Congratulations";
-"Home.ApplicationAcceptedCell.centerLabel"              = "Team application approved";
-"Home.ApplicationAcceptedCell.learnAboutCoverageButton" = "Learn about Coverage";
+"Home.ApplicationDeniedCell.headerLabel"                = "Por desgracia";
+"Home.ApplicationDeniedCell.centerLabel"                = "Solicitud al equipo fue denegada";
+"Home.ApplicationDeniedCell.viewAppButton"              = "Ver Solicitud";
 
-"Home.ApplicationStatusCell.headerLabel"                = "%@ team members have %@ left to review your applications.";
-"Home.ApplicationStatusCell.titleLabel"                 = "Your application";
-"Home.ApplicationStatusCell.centerLabel"                = "VOTE ( PENDING )";
+"Home.ApplicationAcceptedCell.headerLabel"              = "Felicitaciones";
+"Home.ApplicationAcceptedCell.centerLabel"              = "Solicitud al equipo fue aprobado";
+"Home.ApplicationAcceptedCell.learnAboutCoverageButton" = "Saber mas de Cobertura";
+
+"Home.ApplicationStatusCell.headerLabel"                = "%@ Compañeros del equipo han %@ para revisar tu solicitud.";
+"Home.ApplicationStatusCell.titleLabel"                 = "Tu solicitud";
+"Home.ApplicationStatusCell.centerLabel"                = "Votación (pendiente)";
 
