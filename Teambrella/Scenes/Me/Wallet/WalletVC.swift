@@ -36,12 +36,12 @@ class WalletVC: UIViewController {
     }
     
     func tapFund(sender: UIButton) {
-        MeRouter().presentWalletDetails(walletID: walletID)
+        service.router.presentWalletDetails(walletID: walletID)
         print("tap Fund")
     }
     
     func tapBarcode(sender: UIButton) {
-        MeRouter().presentWalletDetails(walletID: walletID)
+        service.router.presentWalletDetails(walletID: walletID)
         print("tap Barcode")
     }
     

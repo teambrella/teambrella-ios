@@ -9,6 +9,11 @@
 import UIKit
 import XLPagerTabStrip
 
+/**
+ To push new controller use 'present' methods
+ To present controller modally use 'show' methods
+ To switch between tabs use 'switch' methods
+ */
 final class MainRouter {
     let mainStoryboardName = "Main"
     
@@ -22,8 +27,12 @@ final class MainRouter {
         return navigator?.viewControllers.filter { $0 is MasterTabBarController }.first as? MasterTabBarController
     }
     
-    func push(vc: UIViewController, animated: Bool = true) {
+    private func push(vc: UIViewController, animated: Bool = true) {
         navigator?.pushViewController(vc, animated: animated)
+    }
+    
+    private func switchTab(to tab: TabType) -> UIViewController? {
+        return masterTabBar?.switchTo(tabType: tab)
     }
     
     func addRightNavigationButton(button: UIButton?) {
@@ -36,37 +45,103 @@ final class MainRouter {
         navigator?.navigationItem.setRightBarButton(barItem, animated: false)
     }
     
-    func switchTab(to tab: TabType) -> UIViewController? {
-        return masterTabBar?.switchTo(tabType: tab)
-    }
-    
-    func showWallet() {
-        if let vc = switchTab(to: .me) as? ButtonBarPagerTabStripViewController {
-            vc.moveToViewController(at: 2, animated: false)
-        }
-    }
-    
-    func showCoverage() {
-        if let vc = switchTab(to: .me) as? ButtonBarPagerTabStripViewController {
-            vc.moveToViewController(at: 0, animated: false)
-        }
-    }
-    
     func setMyTabImage(with image: UIImage) {
         if let vc = masterTabBar?.viewControllers?.last {
             vc.tabBarItem.image = ImageTransformer(image: image).tabBarImage
         }
     }
     
+    // MARK: Switch
+    
+    func switchToWallet() {
+        if let vc = switchTab(to: .me) as? ButtonBarPagerTabStripViewController {
+            vc.moveToViewController(at: 2, animated: false)
+        }
+    }
+    
+    func switchToCoverage() {
+        if let vc = switchTab(to: .me) as? ButtonBarPagerTabStripViewController {
+            vc.moveToViewController(at: 0, animated: false)
+        }
+    }
+    
+    // MARK: Push
+    
     func presentJoinTeam() {
         guard let vc = JoinTeamVC.instantiate() as? JoinTeamVC else { fatalError("Error instantiating") }
         
-        service.router.push(vc: vc)
+        push(vc: vc)
+    }
+    
+    func presentChat(context: ChatContext) {
+        guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
+        
+        vc.setContext(context: context)
+        push(vc: vc)
+    }
+    
+    func presentClaim(claim: ClaimLike) {
+        guard let vc = ClaimVC.instantiate() as? ClaimVC else { fatalError("Error instantiating") }
+        
+        vc.claimID = claim.id
+        push(vc: vc)
+    }
+    
+    func presentClaim(claimID: String) {
+        guard let vc = ClaimVC.instantiate() as? ClaimVC else { fatalError("Error instantiating") }
+        
+        vc.claimID = claimID
+        push(vc: vc)
+    }
+    
+    func presentMemberProfile(teammate: TeammateLike) {
+        guard let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC else { fatalError("Error instantiating") }
+        
+        vc.teammate = teammate
+        push(vc: vc)
+    }
+    
+    func presentClaims(teammate: TeammateLike? = nil) {
+        guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
+        
+        vc.teammate = teammate
+        vc.automaticallyAdjustsScrollViewInsets = false
+        push(vc: vc)
+    }
+    
+    func presentWalletDetails(walletID: String) {
+        guard let vc = WalletDetailsVC.instantiate() as? WalletDetailsVC else { fatalError("Error instantiating") }
+        
+        vc.walletID = walletID
+        push(vc: vc)
+    }
+    
+    func presentClaimReport(in parentViewController: UIViewController? = nil) {
+        guard let vc = ReportVC.instantiate() as? ReportVC else { fatalError("Error instantiating") }
+        guard let parentViewController = parentViewController else {
+            service.router.push(vc: vc)
+            return
+        }
+        
+        parentViewController.present(vc, animated: true) {
+            
+        }
+    }
+    
+    // MARK: Present Modally
+    
+    func showChooseTeam(in viewController: UIViewController) {
+        //delegate: ChooseYourTeamControllerDelegate
+        guard let vc = ChooseYourTeamVC.instantiate()
+            as? ChooseYourTeamVC else { fatalError("Error instantiating") }
+        
+        //vc.delegate = delegate
+        viewController.present(vc, animated: false, completion: nil)
     }
     
     func showJoinTeam(in viewController: UIViewController, completion: (() -> Void)? = nil) {
         guard let vc = JoinTeamVC.instantiate() as? JoinTeamVC else { fatalError("Error instantiating") }
-       // guard let vc = PoopyVC.instantiate() as? PoopyVC else { fatalError("Error instantiating") }
+        // guard let vc = PoopyVC.instantiate() as? PoopyVC else { fatalError("Error instantiating") }
         
         viewController.present(vc, animated: true, completion: completion)
     }

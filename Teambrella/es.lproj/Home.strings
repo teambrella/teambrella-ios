@@ -6,32 +6,32 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Home.salutation"                = "¡Hola, %@!";
-"Home.subtitle"                  = "Veas las novedades para ti";
-"Home.submitButton.anotherClaim" = "Enviar Otra Reclamación";
-"Home.submitButton.claim"        = "Enviar Reclamación";
-"Home.leftBrick.title"           = "COBERTURA";
-"Home.rightBrick.title"          = "MONEDERO";
-"Home.itemCard.status"           = "CUBIERTO";
-"Home.itemCard.coverageType"     = "Deducible por Colisión";
+"Home.salutation"                                       = "¡Hola, %@!";
+"Home.subtitle"                                         = "¿Qué hay de nuevo?";
+"Home.submitButton.anotherClaim"                        = "Enviar Otra Reclamación";
+"Home.submitButton.claim"                               = "Enviar Reclamación";
+"Home.leftBrick.title"                                  = "COBERTURA";
+"Home.rightBrick.title"                                 = "MONEDERO";
+"Home.itemCard.status"                                  = "CUBIERTO";
+"Home.itemCard.coverageType"                            = "Deducible por Colisión";
 
-"Home.CoverageType.pet" = "Mascota";
-"Home.CoverageType.carCollisionDeductible" = "Deducible por Colisión";
+"Home.CoverageType.pet"                                 = "Mascota";
+"Home.CoverageType.carCollisionDeductible"              = "Deducible por Colisión";
 // -------------------- waiting for translation :) -------------------- //
-"Home.SupportCell.headerLabel" = "Chat with Support";
-"Home.SupportCell.onlineLabel" = "ONLINE";
-"Home.SupportCell.textLabel" = "Hi %@!  Need help? We’re online during office hours (PST) for any questions.";
-"Home.SupportCell.chatButton" = "Chat with Support";
+"Home.SupportCell.headerLabel"                          = "Chat with Support";
+"Home.SupportCell.onlineLabel"                          = "ONLINE";
+"Home.SupportCell.textLabel"                            = "Hi %@!  Need help? We’re online during office hours (PST) for any questions.";
+"Home.SupportCell.chatButton"                           = "Chat with Support";
 
-"Home.ApplicationDeniedCell.headerLabel" = "Unfortunately";
-"Home.ApplicationDeniedCell.centerLabel" = "Team application was denied";
-"Home.ApplicationDeniedCell.viewAppButton" = "View Application";
+"Home.ApplicationDeniedCell.headerLabel"                = "Unfortunately";
+"Home.ApplicationDeniedCell.centerLabel"                = "Team application was denied";
+"Home.ApplicationDeniedCell.viewAppButton"              = "View Application";
 
-"Home.ApplicationAcceptedCell.headerLabel" = "Congratulations";
-"Home.ApplicationAcceptedCell.centerLabel" = "Team application approved";
+"Home.ApplicationAcceptedCell.headerLabel"              = "Congratulations";
+"Home.ApplicationAcceptedCell.centerLabel"              = "Team application approved";
 "Home.ApplicationAcceptedCell.learnAboutCoverageButton" = "Learn about Coverage";
 
-"Home.ApplicationStatusCell.headerLabel" = "%@ team members have %@ left to review your applications.";
-"Home.ApplicationStatusCell.titleLabel" = "Your application";
-"Home.ApplicationStatusCell.centerLabel" = "VOTE ( PENDING )";
+"Home.ApplicationStatusCell.headerLabel"                = "%@ team members have %@ left to review your applications.";
+"Home.ApplicationStatusCell.titleLabel"                 = "Your application";
+"Home.ApplicationStatusCell.centerLabel"                = "VOTE ( PENDING )";
 

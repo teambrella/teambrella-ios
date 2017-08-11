@@ -29,7 +29,7 @@ let isLocalServer = true
  */
 class ServerService {
     struct Constant {
-        static var siteURL: String { return isLocalServer ? BlockchainServer.Constant.siteURL : "http://94.72.4.72/" }
+        static var siteURL: String { return isLocalServer ? BlockchainServer.Constant.siteURL : "https://surilla.com/" }
         //""//"http://192.168.0.254" // "http://192.168.0.222"
         //static let fakePrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
         // "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
@@ -106,13 +106,17 @@ class ServerService {
         
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let contentType = body?.contentType ?? "application/json"
+        request.setValue(contentType, forHTTPHeaderField: "Content-Type")
         
-        if let body = body, let data = try? JSONSerialization.data(withJSONObject: body.dictionary,
-                                                                   options: []) {
-            request.httpBody = data
-            printAsString(data: data)
-            
+        if let body = body {
+            if let data = body.data {
+                request.httpBody = data
+            } else if let data = try? JSONSerialization.data(withJSONObject: body.dictionary,
+                                                             options: []) {
+                request.httpBody = data
+                printAsString(data: data)
+            }
             request.setValue("\(body.timestamp)", forHTTPHeaderField: "t")
             request.setValue(body.publicKey, forHTTPHeaderField: "key")
             request.setValue(body.signature, forHTTPHeaderField: "sig")

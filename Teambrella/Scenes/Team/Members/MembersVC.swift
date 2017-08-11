@@ -23,8 +23,6 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     var searchController: UISearchController!
     fileprivate var previousScrollOffset: CGFloat = 0
     fileprivate var searchbarIsShown = true
-    
-    lazy var router: MembersRouter = MembersRouter()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,8 +159,7 @@ extension MembersVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("tap item at \(indexPath)")
-        router.presentMemberProfile(teammate: dataSource[indexPath])
+        service.router.presentMemberProfile(teammate: dataSource[indexPath])
     }
     
 }

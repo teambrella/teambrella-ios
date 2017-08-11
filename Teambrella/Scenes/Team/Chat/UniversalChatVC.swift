@@ -99,33 +99,28 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func tapLeftButton(sender: UIButton) {
-        // isPosting = true
-        //automaticPoster()
+        showImagePicker(controller: self) { image in
+            guard let image = image else { return }
+            
+        }
     }
     
-    var posts = ["Egdhevdhd and the new year has will never be come to a good day and she is"
-        + " will never be have to wait to get back on to a good day she will be a good day for a good day good for a"
-        + " good day and good night good luck with your work and good luck for you",
-                 "Short post",
-                 "😏😏😘😘😠😡😡🗝🇸🇽🇸🇽☂",
-                 "Русский язык", "汉语/漢語", "C'est pas moi même îøó˚"]
-    var postsCount = 0
-    var isPosting = false
-    func automaticPoster() {
-        guard postsCount % 100 != 0 else {
-            postsCount += 1
-            return
-        }
-        
-        input.textView.text = "\(postsCount)" + posts[Random.range(to: posts.count)]
-        postsCount += 1
-        tapRightButton(sender: input.rightButton)
+    func showImagePicker(controller: UIViewController, completion: (UIImage?) -> Void) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        controller.present(picker, animated: true, completion: nil)
     }
     
     func tapRightButton(sender: UIButton) {
         guard let text = input?.textView.text else { return }
         
-        dataSource.send(text: text) { [weak self] success in
+        send(text: text, images: [])
+    }
+    
+    func send(text: String, images: [String]) {
+        dataSource.send(text: text, images: images) { [weak self] success in
             self?.collectionView.reloadData()
             guard let collectionView = self?.collectionView else { return }
             
@@ -136,9 +131,6 @@ class UniversalChatVC: UIViewController, Routable {
                 self?.scrollToBottom(animated: true) { [weak self] in
                     self?.collectionView.reloadData()
                     self?.collectionView.reloadData()
-                }
-                if let posting = self?.isPosting, posting == true {
-                    //                    self?.automaticPoster()
                 }
             })
         }
@@ -232,6 +224,28 @@ class UniversalChatVC: UIViewController, Routable {
         }
     }
     
+    func send(image: UIImage) {
+        service.server.updateTimestamp { [weak self] timestamp, error in
+            guard error == nil else { return }
+            
+            let imageData = UIImageJPEGRepresentation(image, 0.3)
+            var body = RequestBody(key: service.server.key, payload: nil)
+            body.contentType = "image/jpeg"
+            body.data = imageData
+            let request = TeambrellaRequest(type: .uploadPhoto, body: body, success: { [weak self] response in
+                  if case .uploadPhoto(let name) = response {
+                    print("Photo uploaded name: \(name)")
+                    self?.linkImage(name: name)
+                }
+            })
+            request.start()
+        }
+    }
+    
+    func linkImage(name: String) {
+        send(text: input?.textView.text ?? "", images: [name])
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -266,7 +280,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        print("item \(indexPath.row + 1) \t\tout of \(dataSource.count)")
+        //print("item \(indexPath.row + 1) \t\tout of \(dataSource.count)")
         if indexPath.row > dataSource.count - 20 {
             dataSource.loadNext()
         }
@@ -291,6 +305,25 @@ extension UniversalChatVC: UICollectionViewDelegate {
     
 }
 
+// MARK: UIImagePickerControllerDelegate
+extension UniversalChatVC: UIImagePickerControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            print("Image received: \(pickedImage)")
+            send(image: pickedImage)
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension UniversalChatVC: UINavigationControllerDelegate {
+    
+}
 // MARK: UICollectionViewDelegateFlowLayout
 //extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
 //    func collectionView(_ collectionView: UICollectionView,

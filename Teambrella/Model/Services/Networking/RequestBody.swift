@@ -40,6 +40,8 @@ struct RequestBody {
     let timestamp: Int64
     let signature: String
     let publicKey: String
+    var contentType: String?
+    var data: Data?
     
     init(timestamp: Int64, signature: String, publicKey: String, payload: [String: Any]?) {
         self.payload = payload

@@ -1,4 +1,4 @@
-/* 
+/*
   Me.strings
   Teambrella
 
@@ -29,9 +29,9 @@
 "Me.WalletDetailsVC.timeLabel"            = "Valid for 24 hours";
 "Me.WalletDetailsVC.copyAddressButton"    = "Copy Address";
 
-"Me.CoverageVC.fundButton" = "Fund the wallet to increase";
-"Me.CoverageVC.title" = "HOW IT WORKS";
-"Me.CoverageVC.subtitle" = "Use the slider to understand how Expenses impact your maximum reimbursement.";
-"Me.CoverageVC.maxExpenses" = "Max Expenses covered";
-"Me.CoverageVC.yourExpenses" = "In case your Expenses are";
-"Me.CoverageVC.teamPay" = "The team would pay you up to";
+"Me.CoverageVC.fundButton"                = "Fund the wallet to increase";
+"Me.CoverageVC.title"                     = "HOW IT WORKS";
+"Me.CoverageVC.subtitle"                  = "Use the slider to understand how Expenses impact your maximum reimbursement.";
+"Me.CoverageVC.maxExpenses"               = "Max Expenses covered";
+"Me.CoverageVC.yourExpenses"              = "In case your Expenses are";
+"Me.CoverageVC.teamPay"                   = "The team would pay you up to";
