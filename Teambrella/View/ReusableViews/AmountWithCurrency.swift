@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class AmountWithCurrency: UIView, XIBInitable {
     @IBOutlet var contentView: UIView!
     @IBOutlet var amountLabel: UILabel!

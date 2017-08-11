@@ -19,6 +19,7 @@ enum TeambrellaRequestType: String {
     case teammateVote = "teammate/setVote"
     case newPost = "post/newPost"
     case registerKey = "me/registerKey"
+    case coverageForDate = "me/getCoverageForDate"
     case claimsList = "claim/getList"
     case claim = "claim/getOne"
     case claimVote = "claim/setVote"
@@ -45,6 +46,7 @@ enum TeambrellaResponseType {
     case teammateVote(JSON)
     case newPost(ChatEntity)
     case registerKey
+    case coverageForDate(Double, Double)
     case claimsList([ClaimLike])
     case claim(EnhancedClaimEntity)
     case claimVote(JSON)
@@ -117,6 +119,8 @@ struct TeambrellaRequest {
             success(.teammateVote(reply))
         case .registerKey:
             success(.registerKey)
+        case .coverageForDate:
+            success(.coverageForDate(reply["Coverage"].doubleValue, reply["LimitAmount"].doubleValue))
         case .claimsList:
             let claims = ClaimFactory.claims(with: reply)
             success(.claimsList(claims))
