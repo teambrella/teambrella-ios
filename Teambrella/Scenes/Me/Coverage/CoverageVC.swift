@@ -44,7 +44,7 @@ class CoverageVC: UIViewController, Routable {
     }
     
     @IBAction func tapFundWalletButton(_ sender: Any) {
-        service.router.showWallet()
+        service.router.switchToWallet()
     }
     
     static var storyboardName = "Me"
@@ -67,6 +67,8 @@ class CoverageVC: UIViewController, Routable {
         centerLabel.text = "Me.CoverageVC.yourExpenses".localized
         centerAmount.contentView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         lowerLabel.text = "Me.CoverageVC.teamPay".localized
+        
+        slider.addTarget(self, action: #selector(changeValues), for: .valueChanged)
     }
     
     func setImage(for percentage: Int) {
