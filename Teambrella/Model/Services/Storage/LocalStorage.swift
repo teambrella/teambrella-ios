@@ -50,6 +50,27 @@ struct LocalStorage: Storage {
         }
     }
     
+    mutating func myProxy(userID: String,
+                          add: Bool,
+                          success: @escaping () -> Void,
+                          failure: @escaping ErrorHandler) {
+        freshKey { key in
+            let body = RequestBody(key: key, payload:["UserId": userID,
+                                                      "add": add])
+            let request = TeambrellaRequest(type: .myProxy, body: body, success: { response in
+                if case .myProxy(let isProxy) = response {
+                    success()
+                } else {
+                    failure(nil)
+                }
+            }, failure: { error in
+                failure(error)
+            })
+            request.start()
+
+        }
+    }
+    
     mutating func freshKey(completion: @escaping (Key) -> Void) {
         if let time = lastKeyTime, Date().timeIntervalSince(time) < 60 * 10 {
             completion(service.server.key)

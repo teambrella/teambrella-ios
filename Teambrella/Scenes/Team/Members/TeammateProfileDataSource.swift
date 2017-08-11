@@ -30,6 +30,7 @@ class TeammateProfileDataSource {
     let id: String
     let isMe: Bool
     let isVoting: Bool
+    var isMyProxy: Bool = false
     
     var source: [TeammateProfileCellType] = []
     var extendedTeammate: ExtendedTeammate?
@@ -68,6 +69,19 @@ class TeammateProfileDataSource {
         request.start()
     }
     
+    func addToProxy(completion: @escaping (Bool) -> Void) {
+        service.storage.myProxy(userID: id, add: !isMyProxy, success: { [weak self] in
+            guard let me = self else { return }
+            
+            me.isMyProxy = !me.isMyProxy
+            completion(me.isMyProxy)
+        }) { [weak self] error in
+            guard let me = self else { return }
+            
+            completion(me.isMyProxy)
+        }
+    }
+    
     func sendRisk(userID: String, risk: Double?, completion: @escaping (JSON) -> Void) {
         service.server.updateTimestamp { timestamp, error in
             let key = service.server.key
@@ -86,8 +100,9 @@ class TeammateProfileDataSource {
     }
     
     private func modifySource() {
-        guard extendedTeammate != nil else { return }
+        guard let teammate = extendedTeammate else { return }
         
+        isMyProxy = teammate.basic.isMyProxy
         if isVoting {
             isNewTeammate = true
             source.append(.dialogCompact)

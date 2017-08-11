@@ -18,4 +18,9 @@ protocol Storage {
     mutating func requestTeamFeed(context: FeedRequestContext,
                                   success: @escaping([FeedEntity]) -> Void,
                                   failure: @escaping ErrorHandler)
+    
+    mutating func myProxy(userID: String,
+                          add: Bool,
+                          success: @escaping () -> Void,
+                          failure: @escaping ErrorHandler)
 }

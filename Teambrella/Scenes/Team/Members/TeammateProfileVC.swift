@@ -117,6 +117,15 @@ class TeammateProfileVC: UIViewController, Routable {
         DeveloperTools.notSupportedAlert(in: self)
     }
     
+    func tapAddToProxy(sender: UIButton) {
+        dataSource.addToProxy { isProxy in
+            sender.isEnabled = !isProxy
+            if isProxy {
+                sender.setTitle("Added to proxy", for: .normal)
+            }
+        }
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -190,6 +199,9 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                     me.riskController?.yourRiskValue.alpha = 1
                 })
             }
+        } else if let cell = cell as? TeammateStatsCell {
+            cell.addButton.removeTarget(self, action: nil, for: .allEvents)
+            cell.addButton.addTarget(self, action: #selector(tapAddToProxy), for: .touchUpInside)
         }
     }
     

@@ -31,6 +31,8 @@ enum TeambrellaRequestType: String {
     case feedChat = "feed/getChat"
     case feedCreateChat = "feed/newChat"
     case uploadPhoto = "post/newUpload"
+    case myProxy = "proxy/setMyProxy"
+    
 }
 
 enum TeambrellaResponseType {
@@ -52,6 +54,7 @@ enum TeambrellaResponseType {
     case chat(Int64, [ChatEntity], JSON)
     case wallet(WalletEntity)
     case uploadPhoto(String)
+    case myProxy(Bool)
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -142,6 +145,8 @@ struct TeambrellaRequest {
             break
         case .uploadPhoto:
             success(.uploadPhoto(reply.arrayValue.first?.string ?? ""))
+        case .myProxy:
+            success(.myProxy(reply.stringValue == "set"))
         default:
             break
         }
