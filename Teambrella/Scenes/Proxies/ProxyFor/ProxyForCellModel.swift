@@ -7,20 +7,20 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct ProxyForCellModel {
+    let userID: String
     let avatarString: String
     let name: String
-    let lastVoted: Date
-    let amount: Double
-    
-}
-
-extension ProxyForCellModel {
-    static func fake() -> ProxyForCellModel {
-        return ProxyForCellModel(avatarString: "",
-                                 name: "Fake Name",
-                                 lastVoted: Date(),
-                                 amount: 13)
+    let lastVoted: Date?
+    let amount: Double // commission?
+ 
+    init(json: JSON) {
+        userID = json["UserId"].stringValue
+        avatarString = json["Avatar"].stringValue
+        name = json["Name"].stringValue
+        lastVoted = Formatter.teambrella.date(from: json["LastVoted"].stringValue)
+        amount = json["Commission"].doubleValue
     }
 }

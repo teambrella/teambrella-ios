@@ -33,6 +33,8 @@ enum TeambrellaRequestType: String {
     case feedCreateChat = "feed/newChat"
     case uploadPhoto = "post/newUpload"
     case myProxy = "proxy/setMyProxy"
+    case myProxies = "proxy/getMyProxiesList"
+    case proxyFor = "proxy/getIAmProxyForList"
     
 }
 
@@ -57,6 +59,8 @@ enum TeambrellaResponseType {
     case wallet(WalletEntity)
     case uploadPhoto(String)
     case myProxy(Bool)
+    case myProxies([ProxyCellModel])
+    case proxyFor([ProxyForCellModel], Double)
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -151,6 +155,12 @@ struct TeambrellaRequest {
             success(.uploadPhoto(reply.arrayValue.first?.string ?? ""))
         case .myProxy:
             success(.myProxy(reply.stringValue == "set"))
+        case .myProxies:
+            let models = reply.arrayValue.map { ProxyCellModel(json: $0) }
+            success(.myProxies(models))
+        case .proxyFor:
+            let models = reply.arrayValue.map { ProxyForCellModel(json: $0) }
+            success(.proxyFor(models, reply["TotalCommission"].doubleValue))
         default:
             break
         }

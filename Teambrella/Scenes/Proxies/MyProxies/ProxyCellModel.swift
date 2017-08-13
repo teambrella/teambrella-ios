@@ -7,26 +7,30 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct ProxyCellModel {
-    let avatarString: String?
+    let isMyTeammate: Bool
+    let userID: String
+    let avatarString: String
     let name: String
     let address: String
-    let time: Date?
-    let decisionsCoeff: Double
-    let discussionCoeff: Double
-    let frequencyCoeff: Double
+    let time: Date? // ?
+    let proxyRank: Double?
+    let decisionsCoeff: Double?
+    let discussionCoeff: Double?
+    let frequencyCoeff: Double? // voting freq
 
-}
-
-extension ProxyCellModel {
-    static func fake(name: String) -> ProxyCellModel {
-    return ProxyCellModel(avatarString: nil,
-                          name: name,
-                          address: "Bruxelles",
-                          time: Date(),
-                          decisionsCoeff: 0.1,
-                          discussionCoeff: 0.2,
-                          frequencyCoeff: 0.5)
+    init(json: JSON) {
+        isMyTeammate = json["IsMyTeammate"].boolValue
+        userID = json["UserId"].stringValue
+        avatarString = json["Avatar"].stringValue
+        name = json["Name"].stringValue
+        address = json["Location"].stringValue
+        proxyRank = json["ProxyRank"].double
+        decisionsCoeff = json["DecisionFreq"].double
+        discussionCoeff = json["DiscussionFreq"].double
+        frequencyCoeff = json["VotingFreq"].double
+        time = nil
     }
 }
