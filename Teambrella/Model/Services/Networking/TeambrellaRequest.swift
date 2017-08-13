@@ -25,6 +25,7 @@ enum TeambrellaRequestType: String {
     case claimVote = "claim/setVote"
     case claimUpdates = "claim/getUpdates"
     case claimChat = "claim/getChat"
+    case claimTransactionsList = "claim/getTransactionsList"
     case home = "feed/getHome"
     case teamFeed = "feed/getList"
     case teammateChat = "teammate/getChat"
@@ -51,6 +52,7 @@ enum TeambrellaResponseType {
     case claim(EnhancedClaimEntity)
     case claimVote(JSON)
     case claimUpdates(JSON)
+    case claimTransactionsList
     case home(HomeScreenModel)
     case teamFeed([FeedEntity])
     case chat(Int64, [ChatEntity], JSON)
@@ -141,6 +143,8 @@ struct TeambrellaRequest {
             success(.chat(lastRead, chat, basicInfo))
         case .teamFeed:
             success(.teamFeed(reply.arrayValue.flatMap { FeedEntity(json: $0) }))
+        case .claimTransactionsList:
+            //success(.claimTransactionsList)
         case .home:
             success(.home(HomeScreenModel(json: reply)))
         case .wallet:
