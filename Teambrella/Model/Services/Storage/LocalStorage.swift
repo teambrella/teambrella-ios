@@ -16,7 +16,7 @@ class LocalStorage: Storage {
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
             let request = TeambrellaRequest(type: .home, body: body, success: { response in
-                if case .home(let homeModel) = response {
+                if case let .home(homeModel) = response {
                     promise.resolve(with: homeModel)
                 } else {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,

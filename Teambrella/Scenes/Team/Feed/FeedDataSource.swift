@@ -27,10 +27,10 @@ class FeedDataSource {
         let context = FeedRequestContext(teamID: teamID, since: since, offset: offset, limit: limit)
         service.storage.requestTeamFeed(context: context).observe { [weak self] result in
             switch result {
-            case .value(let feed):
+            case let .value(feed):
                 self?.items.append(contentsOf: feed)
                 self?.onLoad?()
-            case .error(let error):
+            case let .error(error):
                 print(error)
             }
         }
