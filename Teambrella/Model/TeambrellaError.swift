@@ -14,6 +14,7 @@ struct TeambrellaError: Error {
     
     enum TeambrellaErrorKind: Int {
         case unknownError               = -666
+        case wrongReply                 = -665
         case emptyReply                 = -1
         
         case fatalError                 = 1

@@ -8,28 +8,28 @@
 
 import Foundation
 
-struct LocalStorage: Storage {
+class LocalStorage: Storage {
     var lastKeyTime: Date?
-    /// request data for home screen
-    mutating func requestHome(teamID: Int,
-                              success: @escaping (HomeScreenModel) -> Void,
-                              failure: @escaping (Error?) -> Void) {
+    
+    func requestHome(teamID: Int) -> Future<HomeScreenModel> {
+        let promise = Promise<HomeScreenModel>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
             let request = TeambrellaRequest(type: .home, body: body, success: { response in
                 if case .home(let homeModel) = response {
-                  success(homeModel)
+                    promise.resolve(with: homeModel)
                 } else {
-                    failure(nil)
+                    promise.reject(with: TeambrellaError(kind: .wrongReply,
+                                                         description: "Was waiting .home got \(response)"))
                 }
             })
             request.start()
         }
+        return promise
     }
     
-    mutating func requestTeamFeed(context: FeedRequestContext,
-                                  success: @escaping([FeedEntity]) -> Void,
-                                  failure: @escaping ErrorHandler) {
+    func requestTeamFeed(context: FeedRequestContext) -> Future<[FeedEntity]> {
+        let promise = Promise<[FeedEntity]>()
         freshKey { key in
             let body = RequestBody(key: key, payload:["teamid": context.teamID,
                                                       "since": context.since,
@@ -39,39 +39,40 @@ struct LocalStorage: Storage {
                                                       "search": NSNull()])
             let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in
                 if case .teamFeed(let feed) = response {
-                    success(feed)
+                    promise.resolve(with: feed)
                 } else {
-                    failure(nil)
+                    promise.reject(with: TeambrellaError(kind: .wrongReply,
+                                                         description: "Was waiting .teamFeed, got \(response)"))
                 }
-                }, failure: { error in
-                    failure(error)
+            }, failure: { error in
+                promise.reject(with: error)
             })
             request.start()
         }
+        return promise
     }
     
-    mutating func myProxy(userID: String,
-                          add: Bool,
-                          success: @escaping () -> Void,
-                          failure: @escaping ErrorHandler) {
+    func myProxy(userID: String, add: Bool) -> Future<Bool> {
+        let promise = Promise<Bool>()
         freshKey { key in
             let body = RequestBody(key: key, payload:["UserId": userID,
                                                       "add": add])
             let request = TeambrellaRequest(type: .myProxy, body: body, success: { response in
                 if case .myProxy(let isProxy) = response {
-                    success()
+                    promise.resolve(with: isProxy)
                 } else {
-                    failure(nil)
+                    promise.reject(with: TeambrellaError(kind: .wrongReply,
+                                                         description: "Was waiting .myProxy, got \(response)"))
                 }
             }, failure: { error in
-                failure(error)
+                promise.reject(with: error)
             })
             request.start()
-
         }
+        return promise
     }
     
-    mutating func freshKey(completion: @escaping (Key) -> Void) {
+    func freshKey(completion: @escaping (Key) -> Void) {
         if let time = lastKeyTime, Date().timeIntervalSince(time) < 60 * 10 {
             completion(service.server.key)
         } else {

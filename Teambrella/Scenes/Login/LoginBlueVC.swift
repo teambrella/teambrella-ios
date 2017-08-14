@@ -113,7 +113,6 @@ class LoginBlueVC: UIViewController {
                        completion: nil)
     }
     
-    // swiftlint:disable:next line_length
     let validUsers: [String: ServerService.FakeKeyType] = ["10212220476497327": .thorax,
                                                            "10213031213152997": .denis,
                                                            "10155873130993128": .kate,
@@ -128,8 +127,7 @@ class LoginBlueVC: UIViewController {
         ServerService.currentKeyType = validUser
         
         service.server.updateTimestamp { timestamp, error in
-            let key = Key(base58String: ServerService.privateKey, timestamp: timestamp)
-            let body = RequestBody(key: key)
+            let body = RequestBody(key: service.server.key)
             let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": token],
                                             body: body,
                                             success: { response in

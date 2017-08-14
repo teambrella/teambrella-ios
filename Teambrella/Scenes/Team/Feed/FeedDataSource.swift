@@ -25,12 +25,14 @@ class FeedDataSource {
     
     func loadData() {
         let context = FeedRequestContext(teamID: teamID, since: since, offset: offset, limit: limit)
-        service.storage.requestTeamFeed(context: context,
-                                        success: { [weak self] feed in
-                                            self?.items.append(contentsOf: feed)
-                                            self?.onLoad?()
-        }) { error in
-            
+        service.storage.requestTeamFeed(context: context).observe { [weak self] result in
+            switch result {
+            case .value(let feed):
+                self?.items.append(contentsOf: feed)
+                self?.onLoad?()
+            case .error(let error):
+                print(error)
+            }
         }
     }
     

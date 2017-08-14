@@ -11,16 +11,8 @@ import Foundation
 typealias ErrorHandler = (Error?) -> Void
 
 protocol Storage {
-    mutating func requestHome(teamID: Int,
-                              success: @escaping (HomeScreenModel) -> Void,
-                              failure: @escaping (Error?) -> Void)
+    func requestHome(teamID: Int) -> Future<HomeScreenModel>
+    func requestTeamFeed(context: FeedRequestContext) -> Future<[FeedEntity]>
     
-    mutating func requestTeamFeed(context: FeedRequestContext,
-                                  success: @escaping([FeedEntity]) -> Void,
-                                  failure: @escaping ErrorHandler)
-    
-    mutating func myProxy(userID: String,
-                          add: Bool,
-                          success: @escaping () -> Void,
-                          failure: @escaping ErrorHandler)
+    func myProxy(userID: String, add: Bool) -> Future<Bool>
 }

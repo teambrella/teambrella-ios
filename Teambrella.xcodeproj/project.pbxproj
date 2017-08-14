@@ -303,6 +303,7 @@
 		6DF2E8CB1EF194E400C8D60B /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DF2E8C91EF194E400C8D60B /* Main.strings */; };
 		6DF2E8CE1EF1979300C8D60B /* ProxiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */; };
 		6DF2E8D01EF197D100C8D60B /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8CF1EF197D100C8D60B /* MeVC.swift */; };
+		6DF479121F41E4300025F489 /* PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479111F41E4300025F489 /* PromiseKit.swift */; };
 		6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */; };
 		6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */; };
 		6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
@@ -700,6 +701,7 @@
 		6DF2E8CC1EF1961C00C8D60B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxiesVC.swift; path = Scenes/Proxies/ProxiesVC.swift; sourceTree = "<group>"; };
 		6DF2E8CF1EF197D100C8D60B /* MeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeVC.swift; path = Scenes/Me/MeVC.swift; sourceTree = "<group>"; };
+		6DF479111F41E4300025F489 /* PromiseKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromiseKit.swift; path = Model/PromiseKit.swift; sourceTree = "<group>"; };
 		6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadTVC.swift; path = Scenes/Sample/ThreadTVC.swift; sourceTree = "<group>"; };
 		6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadPostCell.swift; path = Scenes/Sample/ThreadPostCell.swift; sourceTree = "<group>"; };
 		6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -1310,6 +1312,7 @@
 				6D6DA24B1EE18FCA00307C73 /* TextAdapter.swift */,
 				6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */,
 				6D69D9E81EFBF49700DED5CE /* ValueToTextConverter.swift */,
+				6DF479111F41E4300025F489 /* PromiseKit.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2095,6 +2098,7 @@
 				6DA714EB1EDF433900F39EBE /* TeammateObjectCell.swift in Sources */,
 				6D1683881F13BE3E002B52EE /* DropDownButton.swift in Sources */,
 				6D862F6B1F1E639A00988D5C /* TeammateFooter.swift in Sources */,
+				6DF479121F41E4300025F489 /* PromiseKit.swift in Sources */,
 				6DCB19581F11163900AC9969 /* PagingDraggable.swift in Sources */,
 				6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */,
 				6D466AA01ED07CF1001BC579 /* BlockchainServer.swift in Sources */,

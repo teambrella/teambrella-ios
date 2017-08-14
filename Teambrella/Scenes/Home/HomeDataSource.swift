@@ -22,12 +22,14 @@ class HomeDataSource {
     var name: String { return model?.name.components(separatedBy: " ").first ?? "" }
     
     func loadData(teamID: Int) {
-        service.storage.requestHome(teamID: teamID,
-                                    success: { [weak self] model in
-                                        self?.model = model
-                                        self?.onUpdate?()
-        }) { error in
-            print("Couldn't get data for Home screen")
+        service.storage.requestHome(teamID: teamID).observe { [weak self] result in
+            switch result {
+            case .value(let value):
+                self?.model = value
+                self?.onUpdate?()
+            case .error(let error):
+                print(error)
+            }
         }
     }
     

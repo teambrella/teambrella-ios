@@ -77,15 +77,17 @@ class TeammateProfileDataSource {
     }
     
     func addToProxy(completion: @escaping () -> Void) {
-        service.storage.myProxy(userID: id, add: !isMyProxy, success: { [weak self] in
-            guard let me = self else { return }
-            
-            me.isMyProxy = !me.isMyProxy
-            completion()
-        }) { [weak self] error in
-            guard let me = self else { return }
-            
-            completion()
+        service.storage.myProxy(userID: id, add: !isMyProxy).observe { [weak self] result in
+            switch result {
+            case .value:
+                guard let me = self else { return }
+                
+                me.isMyProxy = !me.isMyProxy
+                completion()
+            case .error(let error):
+                print(error)
+                completion()
+            }
         }
     }
     
