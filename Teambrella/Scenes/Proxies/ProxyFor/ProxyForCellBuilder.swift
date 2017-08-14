@@ -13,7 +13,7 @@ struct ProxyForCellBuilder {
         if let cell = cell as? ProxyForCell {
             cell.avatarView.showAvatar(string: model.avatarString)
             cell.nameLabel.text = model.name
-            cell.amountLabel.text = "$" + String(model.amount)
+            cell.amountLabel.text = "$" + String(Int(model.amount))
             
             guard let lastVoted = model.lastVoted else { return }
             
