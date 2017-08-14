@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -55,13 +55,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="U2v-Li-0cg">
-                                <rect key="frame" x="20" y="76.5" width="294" height="43.5"/>
+                                <rect key="frame" x="20" y="74" width="294" height="22"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7J-Yy-zwq" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="6" width="84.5" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="84.5" height="22"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="E5c-tD-g0T"/>
+                                            <constraint firstAttribute="height" constant="22" id="E5c-tD-g0T"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="DECISIONS"/>
@@ -77,10 +77,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b40-7r-rdV" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="104.5" y="6" width="85" height="32"/>
+                                        <rect key="frame" x="104.5" y="0.0" width="85" height="22"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="3XA-it-XzM"/>
+                                            <constraint firstAttribute="height" constant="22" id="3XA-it-XzM"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="DISCUSSIONS"/>
@@ -96,10 +96,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRe-k3-ECa" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="209.5" y="6" width="84.5" height="32"/>
+                                        <rect key="frame" x="209.5" y="0.0" width="84.5" height="22"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="cnY-9G-c9Z"/>
+                                            <constraint firstAttribute="height" constant="22" id="cnY-9G-c9Z"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="VOTING FREQ."/>
@@ -117,15 +117,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Cxa-sc-7SP" firstAttribute="leading" secondItem="ct4-fg-NvQ" secondAttribute="leading" constant="20" id="1M4-ip-eTw"/>
-                            <constraint firstItem="U2v-Li-0cg" firstAttribute="top" secondItem="L4Y-sY-GaD" secondAttribute="bottom" constant="16" id="4zK-64-JXn"/>
                             <constraint firstItem="Cxa-sc-7SP" firstAttribute="top" secondItem="ct4-fg-NvQ" secondAttribute="top" constant="24" id="COR-JR-qjK"/>
                             <constraint firstItem="L4Y-sY-GaD" firstAttribute="top" secondItem="Cxa-sc-7SP" secondAttribute="centerY" id="MT8-4m-BLY"/>
                             <constraint firstAttribute="trailing" secondItem="fHY-pu-55R" secondAttribute="trailing" constant="28" id="Qry-31-qfG"/>
                             <constraint firstItem="wII-ti-ph3" firstAttribute="top" secondItem="L4Y-sY-GaD" secondAttribute="top" id="SlM-9v-dJF"/>
                             <constraint firstItem="Pcl-pr-wpc" firstAttribute="bottom" secondItem="Cxa-sc-7SP" secondAttribute="centerY" id="X8A-Kt-QE5"/>
                             <constraint firstItem="U2v-Li-0cg" firstAttribute="trailing" secondItem="wII-ti-ph3" secondAttribute="trailing" id="bsW-R7-N73"/>
+                            <constraint firstItem="U2v-Li-0cg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Cxa-sc-7SP" secondAttribute="bottom" constant="8" id="eDb-E3-ZrR"/>
                             <constraint firstItem="Pcl-pr-wpc" firstAttribute="leading" secondItem="Cxa-sc-7SP" secondAttribute="trailing" constant="12" id="ebz-Es-uC9"/>
-                            <constraint firstAttribute="bottom" secondItem="U2v-Li-0cg" secondAttribute="bottom" id="fHz-Wm-tld"/>
+                            <constraint firstAttribute="bottom" secondItem="U2v-Li-0cg" secondAttribute="bottom" constant="24" id="fHz-Wm-tld"/>
                             <constraint firstItem="L4Y-sY-GaD" firstAttribute="leading" secondItem="Pcl-pr-wpc" secondAttribute="leading" id="nlW-DU-BnF"/>
                             <constraint firstItem="fHY-pu-55R" firstAttribute="bottom" secondItem="Pcl-pr-wpc" secondAttribute="bottom" id="nqu-ly-gcT"/>
                             <constraint firstItem="wII-ti-ph3" firstAttribute="trailing" secondItem="fHY-pu-55R" secondAttribute="trailing" id="vkj-AO-1OG"/>

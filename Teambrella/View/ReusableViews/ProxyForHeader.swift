@@ -17,7 +17,7 @@ class ProxyForHeader: UICollectionReusableView, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.shadow(for: containerView)
+        CellDecorator.shadow(for: self)
         CellDecorator.roundedEdges(for: containerView)
     }
     

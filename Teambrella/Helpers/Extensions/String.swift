@@ -74,9 +74,10 @@ extension String {
     static func formattedNumber(_ double: Double) -> String {
         guard double < 1000 else { return String(format: "%.0f", double) }
         
-        return double.truncatingRemainder(dividingBy: 1) < 0.01
-            ? String(format: "%.0f", double)
-            : String(format: "%.2f", double)
+        let truncatedNumber = round(double * 100) / 100
+        return truncatedNumber.truncatingRemainder(dividingBy: 1) < 0.01
+        ? String(format: "%.0f", truncatedNumber)
+        : String(truncatedNumber)
     }
     
     static func formattedNumber(_ float: Float) -> String {
