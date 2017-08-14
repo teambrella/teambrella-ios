@@ -11,7 +11,7 @@ import Foundation
 struct ProxyForCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: ProxyForCellModel) {
         if let cell = cell as? ProxyForCell {
-            cell.avatarView.kf.setImage(with: URL(string: model.avatarString))
+            cell.avatarView.showAvatar(string: model.avatarString)
             cell.nameLabel.text = model.name
             cell.amountLabel.text = "$" + String(model.amount)
             
