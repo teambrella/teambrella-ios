@@ -16,20 +16,20 @@ struct MyProxiesCellBuilder {
             cell.detailsLabel.text = model.address
             model.time.map { cell.timeLabel.text = Formatter.teambrellaShort.string(from: $0) }
             
-            guard let des = model.decisionsCoeff,
-                let dis = model.discussionCoeff,
-                let freq = model.frequencyCoeff else {
+            guard let decisionsCoeff = model.decisionsCoeff,
+                let discussionCoeff = model.discussionCoeff,
+                let frequencyCoeff = model.frequencyCoeff else {
                     return
             }
             
-            cell.leftBar.value = CGFloat(des)
-            cell.leftBar.leftText = ValueToTextConverter.decisionsText(from: des)
+            cell.leftBar.value = CGFloat(decisionsCoeff)
+            cell.leftBar.leftText = ValueToTextConverter.decisionsText(from: decisionsCoeff)
             
-            cell.middleBar.value = CGFloat(dis)
-            cell.leftBar.leftText = ValueToTextConverter.discussionsText(from: dis)
+            cell.middleBar.value = CGFloat(discussionCoeff)
+            cell.leftBar.leftText = ValueToTextConverter.discussionsText(from: discussionCoeff)
             
-            cell.rightBar.value = CGFloat(freq)
-            cell.leftBar.leftText = ValueToTextConverter.frequencyText(from: freq)
+            cell.rightBar.value = CGFloat(frequencyCoeff)
+            cell.leftBar.leftText = ValueToTextConverter.frequencyText(from: frequencyCoeff)
             
         }
     }

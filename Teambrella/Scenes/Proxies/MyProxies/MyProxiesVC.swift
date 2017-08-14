@@ -20,7 +20,7 @@ class MyProxiesVC: UIViewController {
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
         }
-        dataSource.loadData()        
+        dataSource.loadData()
     }
     
     func setupCollectionView() {
@@ -33,31 +33,31 @@ class MyProxiesVC: UIViewController {
                                                             action: #selector(handleLongGesture(gesture:)))
         self.collectionView.addGestureRecognizer(longPressGesture)
     }
-
-func handleLongGesture(gesture: UILongPressGestureRecognizer) {
-    switch gesture.state {
-    case .began:
-        let point = gesture.location(in: collectionView)
-        guard let selectedIndexPath = self.collectionView.indexPathForItem(at: point) else {
-            break
+    
+    func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            let point = gesture.location(in: collectionView)
+            guard let selectedIndexPath = self.collectionView.indexPathForItem(at: point) else {
+                break
+            }
+            collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case UIGestureRecognizerState.changed:
+            guard let view = gesture.view else { break }
+            
+            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: view))
+        case UIGestureRecognizerState.ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
         }
-        collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-    case UIGestureRecognizerState.changed:
-        guard let view = gesture.view else { break }
-        
-        collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: view))
-    case UIGestureRecognizerState.ended:
-        collectionView.endInteractiveMovement()
-    default:
-        collectionView.cancelInteractiveMovement()
     }
-}
-
+    
 }
 
 extension MyProxiesVC: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-         return IndicatorInfo(title: "Proxy.MyProxiesVC.indicatorTitle".localized)
+        return IndicatorInfo(title: "Proxy.MyProxiesVC.indicatorTitle".localized)
     }
 }
 

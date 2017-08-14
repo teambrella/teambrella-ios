@@ -10,13 +10,17 @@ import UIKit
 import XLPagerTabStrip
 
 class ProxyForVC: UIViewController {
-    var dataSource: ProxyForDataSource = ProxyForDataSource()
+    var dataSource: ProxyForDataSource = ProxyForDataSource(teamID: service.session.currentTeam?.teamID ?? 0)
     
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        dataSource.onUpdate = { [weak self] in
+            self?.collectionView.reloadData()
+        }
+        dataSource.loadData()
     }
     
     private func setupCollectionView() {
