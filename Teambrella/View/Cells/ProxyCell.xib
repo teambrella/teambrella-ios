@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -55,10 +55,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="U2v-Li-0cg">
-                                <rect key="frame" x="20" y="60.5" width="294" height="59.5"/>
+                                <rect key="frame" x="20" y="76.5" width="294" height="43.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7J-Yy-zwq" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14" width="84.5" height="32"/>
+                                        <rect key="frame" x="0.0" y="6" width="84.5" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="E5c-tD-g0T"/>
@@ -77,7 +77,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b40-7r-rdV" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="104.5" y="14" width="85" height="32"/>
+                                        <rect key="frame" x="104.5" y="6" width="85" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="3XA-it-XzM"/>
@@ -96,7 +96,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRe-k3-ECa" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="209.5" y="14" width="84.5" height="32"/>
+                                        <rect key="frame" x="209.5" y="6" width="84.5" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="cnY-9G-c9Z"/>
@@ -117,7 +117,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Cxa-sc-7SP" firstAttribute="leading" secondItem="ct4-fg-NvQ" secondAttribute="leading" constant="20" id="1M4-ip-eTw"/>
-                            <constraint firstItem="U2v-Li-0cg" firstAttribute="top" secondItem="L4Y-sY-GaD" secondAttribute="bottom" id="4zK-64-JXn"/>
+                            <constraint firstItem="U2v-Li-0cg" firstAttribute="top" secondItem="L4Y-sY-GaD" secondAttribute="bottom" constant="16" id="4zK-64-JXn"/>
                             <constraint firstItem="Cxa-sc-7SP" firstAttribute="top" secondItem="ct4-fg-NvQ" secondAttribute="top" constant="24" id="COR-JR-qjK"/>
                             <constraint firstItem="L4Y-sY-GaD" firstAttribute="top" secondItem="Cxa-sc-7SP" secondAttribute="centerY" id="MT8-4m-BLY"/>
                             <constraint firstAttribute="trailing" secondItem="fHY-pu-55R" secondAttribute="trailing" constant="28" id="Qry-31-qfG"/>
