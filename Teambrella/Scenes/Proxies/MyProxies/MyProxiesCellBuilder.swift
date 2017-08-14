@@ -27,7 +27,7 @@ struct MyProxiesCellBuilder {
             cell.middleBar.value = CGFloat(discussionCoeff)
             cell.rightBar.leftLabel.text = "Proxy.MyProxiesVC.votingFreq".localized
             cell.rightBar.value = CGFloat(frequencyCoeff)
-            cell.rankLabel = "Proxy.MyProxiesVC.proxyRank".localized
+            cell.rankLabel.text = "Proxy.MyProxiesVC.proxyRank".localized
         }
     }
 }
