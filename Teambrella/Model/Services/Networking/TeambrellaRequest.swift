@@ -159,7 +159,7 @@ struct TeambrellaRequest {
             let models = reply.arrayValue.map { ProxyCellModel(json: $0) }
             success(.myProxies(models))
         case .proxyFor:
-            let models = reply.arrayValue.map { ProxyForCellModel(json: $0) }
+            let models = reply["Members"].arrayValue.map { ProxyForCellModel(json: $0) }
             success(.proxyFor(models, reply["TotalCommission"].doubleValue))
         default:
             break
