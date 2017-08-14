@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -64,7 +64,11 @@
                 <constraint firstItem="w7T-Z0-7X3" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="28" id="nuB-q7-ud3"/>
             </constraints>
             <connections>
+                <outlet property="amountLabel" destination="gOS-d0-bGS" id="OJd-8f-HpU"/>
                 <outlet property="containerView" destination="w7T-Z0-7X3" id="o5J-SO-jz5"/>
+                <outlet property="currencyLabel" destination="Ndt-E7-5r0" id="fjZ-DY-dY1"/>
+                <outlet property="detailsLabel" destination="Vrm-dY-dAF" id="RH7-IB-Qwm"/>
+                <outlet property="headerLabel" destination="MuT-Us-68H" id="K5K-6x-rGB"/>
             </connections>
             <point key="canvasLocation" x="103" y="129.5"/>
         </collectionReusableView>

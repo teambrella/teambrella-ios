@@ -99,7 +99,9 @@ extension MyProxiesVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        
+        if let cell = view as? NeedHelpView {
+            cell.label.text = "Do you need some help?" //
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

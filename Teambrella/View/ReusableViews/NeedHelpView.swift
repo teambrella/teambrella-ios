@@ -9,7 +9,9 @@
 import UIKit
 
 class NeedHelpView: UICollectionReusableView, XIBInitableCell {
-
+    @IBOutlet var label: InfoLabel!
+    @IBOutlet var infoButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

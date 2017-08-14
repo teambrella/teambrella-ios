@@ -10,7 +10,11 @@ import UIKit
 
 class ProxyForHeader: UICollectionReusableView, XIBInitableCell {
     @IBOutlet var containerView: UICollectionReusableView!
-
+    @IBOutlet var headerLabel: BlockHeaderLabel!
+    @IBOutlet var amountLabel: AmountLabel!
+    @IBOutlet var currencyLabel: CurrencyLabel!
+    @IBOutlet var detailsLabel: StatusSubtitleLabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         CellDecorator.shadow(for: containerView)
