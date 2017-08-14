@@ -13,9 +13,9 @@ struct ProxyForDataSource {
     var count: Int { return items.count }
     
     init() {
-        for _ in 1...10 {
-            items.append(ProxyForCellModel.fake())
-        }
+//        for _ in 1...10 {
+//            items.append(ProxyForCellModel.fake())
+//        }
     }
     
     subscript(indexPath: IndexPath) -> ProxyForCellModel {
