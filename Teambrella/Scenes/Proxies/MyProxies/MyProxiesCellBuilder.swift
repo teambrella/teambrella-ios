@@ -21,13 +21,13 @@ struct MyProxiesCellBuilder {
                 let frequencyCoeff = model.frequencyCoeff else {
                     return
             }
-            
+            cell.leftBar.leftLabel.text = "Proxy.MyProxiesVC.decisions".localized
             cell.leftBar.value = CGFloat(decisionsCoeff)
-            
+            cell.middleBar.leftLabel.text = "Proxy.MyProxiesVC.discussions".localized
             cell.middleBar.value = CGFloat(discussionCoeff)
-            
+            cell.rightBar.leftLabel.text = "Proxy.MyProxiesVC.votingFreq".localized
             cell.rightBar.value = CGFloat(frequencyCoeff)
-            
+            cell.rankLabel.text = "Proxy.MyProxiesVC.proxyRank".localized
         }
     }
 }

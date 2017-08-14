@@ -76,9 +76,9 @@ extension ProxyForVC: UICollectionViewDelegate {
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
         if let cell = view as? ProxyForHeader {
-            cell.headerLabel.text = "TOTAL COMMISSION" //
+            cell.headerLabel.text = "Proxy.ProxyForVC.header".localized
             cell.amountLabel.text = "$" + String(dataSource.commission)
-            cell.detailsLabel.text = "WHO YOU'RE A PROXY FOR" //
+            cell.detailsLabel.text = "Proxy.ProxyForVC.subtitle".localized
         }
         
     }

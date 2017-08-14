@@ -18,7 +18,7 @@ struct ProxyForCellBuilder {
             guard let lastVoted = model.lastVoted else { return }
             
             let dateString = DateProcessor().stringInterval(from: lastVoted)
-            cell.detailsLabel.text = "LAST VOTED: " + dateString //
+            cell.detailsLabel.text = "Proxy.ProxyForCellBuilder.lastVoted".localized + dateString
             
         }
     }
