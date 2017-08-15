@@ -27,29 +27,29 @@ enum TeambrellaRequestType: String {
     case initClient = "me/InitClient"
     case updates = "me/GetUpdates"
     case teams = "me/getTeams"
+    case registerKey = "me/registerKey"
+    case coverageForDate = "me/getCoverageForDate"
     case teammatesList = "teammate/getList"
     case teammate = "teammate/getOne"
     case teammateVote = "teammate/setVote"
+    case teammateChat = "teammate/getChat"
     case newPost = "post/newPost"
-    case registerKey = "me/registerKey"
-    case coverageForDate = "me/getCoverageForDate"
     case claimsList = "claim/getList"
     case claim = "claim/getOne"
     case claimVote = "claim/setVote"
     case claimUpdates = "claim/getUpdates"
     case claimChat = "claim/getChat"
     case home = "feed/getHome"
+    case feedDeleteCard = "feed/delCard"
     case teamFeed = "feed/getList"
-    case teammateChat = "teammate/getChat"
-    case wallet = "wallet/getOne"
     case feedChat = "feed/getChat"
     case feedCreateChat = "feed/newChat"
+    case wallet = "wallet/getOne"
     case uploadPhoto = "post/newUpload"
     case myProxy = "proxy/setMyProxy"
     case myProxies = "proxy/getMyProxiesList"
     case proxyFor = "proxy/getIAmProxyForList"
     case proxyPosition = "proxy/setMyProxyPosition"
-    
 }
 
 enum TeambrellaResponseType {
@@ -68,6 +68,7 @@ enum TeambrellaResponseType {
     case claimVote(JSON)
     case claimUpdates(JSON)
     case home(HomeScreenModel)
+    case feedDeleteCard(HomeScreenModel)
     case teamFeed([FeedEntity])
     case chat(Int64, [ChatEntity], JSON)
     case wallet(WalletEntity)
@@ -163,6 +164,8 @@ struct TeambrellaRequest {
             success(.teamFeed(reply.arrayValue.flatMap { FeedEntity(json: $0) }))
         case .home:
             success(.home(HomeScreenModel(json: reply)))
+        case .feedDeleteCard:
+            success(.feedDeleteCard(HomeScreenModel(json: reply)))
         case .wallet:
             success(.wallet(WalletEntity(json: reply)))
         case .updates:

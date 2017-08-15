@@ -131,7 +131,7 @@ extension MyProxiesVC: UICollectionViewDelegate {
         collectionView.reloadData()
         collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
     }
-    
+
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
