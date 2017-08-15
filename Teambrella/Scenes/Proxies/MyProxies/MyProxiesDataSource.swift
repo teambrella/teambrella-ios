@@ -37,6 +37,7 @@ class MyProxiesDataSource {
     func move(from indexPath: IndexPath, to: IndexPath) {
         let item = items.remove(at: indexPath.row)
         items.insert(item, at: to.row)
+        refreshDataFor(userID: items[to.row].userID, at: to.row)
     }
     
     subscript(indexPath: IndexPath) -> ProxyCellModel {
@@ -56,6 +57,26 @@ class MyProxiesDataSource {
                 if case .myProxies(let proxies) = response {
                     self?.items += proxies
                     self?.onUpdate?()
+                }
+                }, failure: { [weak self] error in
+                    self?.onError?(error)
+            })
+            request.start()
+        }
+    }
+    
+    func refreshDataFor(userID: String, at position: Int) {
+        service.server.updateTimestamp { [weak self] timestamp, error in
+            let key = Key(base58String: ServerService.privateKey,
+                          timestamp: timestamp)
+            guard let id = self?.teamID else { return }
+            
+            let body = RequestBody(key: key, payload:["TeamId": id,
+                                                      "UserId": userID,
+                                                      "Position": position])
+            let request = TeambrellaRequest(type: .proxyPosition, body: body, success: { [weak self] response in
+                if case .proxyPosition = response {
+                    print("Position saved to server")
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)

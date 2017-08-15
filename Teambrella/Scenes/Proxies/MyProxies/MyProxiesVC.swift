@@ -129,6 +129,7 @@ extension MyProxiesVC: UICollectionViewDelegate {
                         to destinationIndexPath: IndexPath) {
         dataSource.move(from: sourceIndexPath, to: destinationIndexPath)
         collectionView.reloadData()
+        collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
     }
     
 }
