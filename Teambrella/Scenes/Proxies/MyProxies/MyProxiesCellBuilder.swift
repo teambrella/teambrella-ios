@@ -25,7 +25,7 @@ struct MyProxiesCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: ProxyCellModel) {
         if let cell = cell as? ProxyCell {
             cell.avatarView.showAvatar(string: model.avatarString)
-            cell.nameLabel.text = model.name 
+            cell.nameLabel.text = model.name
             cell.detailsLabel.text = model.address
             //model.time.map { cell.timeLabel.text = Formatter.teambrellaShort.string(from: $0) }
             cell.timeLabel.text = String.formattedNumber(model.proxyRank ?? 1)
