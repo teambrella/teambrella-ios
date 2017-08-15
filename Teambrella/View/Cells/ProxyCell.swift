@@ -23,7 +23,7 @@ import UIKit
 
 class ProxyCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var avatarView: RoundBadgedView!
-    @IBOutlet var numberLabel: UILabel!
+    @IBOutlet var numberLabel: Label!
     @IBOutlet var nameLabel: MessageTitleLabel!
     @IBOutlet var detailsLabel: InfoLabel!
     @IBOutlet var timeLabel: MessageTitleLabel!
