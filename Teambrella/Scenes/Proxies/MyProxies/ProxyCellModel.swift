@@ -26,6 +26,7 @@ struct ProxyCellModel {
     let isMyTeammate: Bool
     let userID: String
     let avatarString: String
+    let number: Int
     let name: String
     let address: String
     let time: Date? // ?
@@ -38,6 +39,7 @@ struct ProxyCellModel {
         isMyTeammate = json["IsMyTeammate"].boolValue
         userID = json["UserId"].stringValue
         avatarString = json["Avatar"].stringValue
+        number = 0
         name = json["Name"].stringValue
         address = json["Location"].stringValue
         proxyRank = json["ProxyRank"].double
