@@ -23,6 +23,7 @@ import UIKit
 
 class ProxyCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var avatarView: RoundBadgedView!
+    @IBOutlet var numberLabel: UILabel!
     @IBOutlet var nameLabel: MessageTitleLabel!
     @IBOutlet var detailsLabel: InfoLabel!
     @IBOutlet var timeLabel: MessageTitleLabel!
@@ -35,6 +36,10 @@ class ProxyCell: UICollectionViewCell, XIBInitableCell {
         super.awakeFromNib()
         CellDecorator.roundedEdges(for: self)
         CellDecorator.shadow(for: self)
+        numberLabel.layer.borderWidth = 1
+        numberLabel.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        numberLabel.layer.cornerRadius = 7.5
+        
     }
 
 }

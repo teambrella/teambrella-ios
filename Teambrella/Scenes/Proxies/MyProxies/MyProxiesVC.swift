@@ -106,6 +106,9 @@ extension MyProxiesVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         MyProxiesCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        if let cell = cell as? ProxyCell {
+            cell.numberLabel.text = String(Int(indexPath.row) + 1)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -125,6 +128,7 @@ extension MyProxiesVC: UICollectionViewDelegate {
                         moveItemAt sourceIndexPath: IndexPath,
                         to destinationIndexPath: IndexPath) {
         dataSource.move(from: sourceIndexPath, to: destinationIndexPath)
+        collectionView.reloadData()
     }
     
 }
