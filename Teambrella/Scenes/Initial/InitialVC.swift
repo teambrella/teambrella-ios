@@ -28,15 +28,21 @@ class InitialVC: UIViewController {
                                             success: { [weak self] response in
                                                 if case .teams(let teams,
                                                                let potentialTeams,
+                                                               let userID,
                                                                let recentTeamID) = response {
                                                     print("Teams: \(teams)")
                                                     print("Potential Teams: \(potentialTeams)")
                                                     print("Recent: \(String(describing: recentTeamID))")
-                                                    if !teams.isEmpty {
+                                                    print("User id: \(userID)")
+                                                    let lastTeam = recentTeamID.map { id in
+                                                        return teams.filter { team in team.teamID == id } }?.first
+                                                    if let lastTeam = lastTeam {
+                                                        service.session.currentTeam = lastTeam
+                                                    } else if !teams.isEmpty {
                                                         service.session.currentTeam = teams.first
-                                                        service.session.teams = teams
-                                                        self?.performSegue(type: .teambrella)
                                                     }
+                                                    service.session.teams = teams
+                                                    self?.performSegue(type: .teambrella)
                                                 }
             }) { error in
                 
@@ -62,9 +68,9 @@ class InitialVC: UIViewController {
     }
     
     @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
-//        service.teambrella.fetcher.user.isFbAuthorized = true
-//        service.teambrella.fetcher.save()
-//        performSegue(type: .main)
+        //        service.teambrella.fetcher.user.isFbAuthorized = true
+        //        service.teambrella.fetcher.save()
+        //        performSegue(type: .main)
         HUD.show(.progress)
         getTeams()
     }

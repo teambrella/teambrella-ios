@@ -304,6 +304,8 @@
 		6DF2E8CE1EF1979300C8D60B /* ProxiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */; };
 		6DF2E8D01EF197D100C8D60B /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8CF1EF197D100C8D60B /* MeVC.swift */; };
 		6DF479121F41E4300025F489 /* PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479111F41E4300025F489 /* PromiseKit.swift */; };
+		6DF479161F42F0570025F489 /* CoverageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479151F42F0570025F489 /* CoverageType.swift */; };
+		6DF479181F42F0740025F489 /* TeamAccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479171F42F0740025F489 /* TeamAccessLevel.swift */; };
 		6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */; };
 		6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */; };
 		6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
@@ -702,6 +704,8 @@
 		6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxiesVC.swift; path = Scenes/Proxies/ProxiesVC.swift; sourceTree = "<group>"; };
 		6DF2E8CF1EF197D100C8D60B /* MeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeVC.swift; path = Scenes/Me/MeVC.swift; sourceTree = "<group>"; };
 		6DF479111F41E4300025F489 /* PromiseKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromiseKit.swift; path = Model/PromiseKit.swift; sourceTree = "<group>"; };
+		6DF479151F42F0570025F489 /* CoverageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoverageType.swift; path = Model/Enums/CoverageType.swift; sourceTree = "<group>"; };
+		6DF479171F42F0740025F489 /* TeamAccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamAccessLevel.swift; path = Model/Enums/TeamAccessLevel.swift; sourceTree = "<group>"; };
 		6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadTVC.swift; path = Scenes/Sample/ThreadTVC.swift; sourceTree = "<group>"; };
 		6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadPostCell.swift; path = Scenes/Sample/ThreadPostCell.swift; sourceTree = "<group>"; };
 		6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -1676,6 +1680,8 @@
 				6D6DA2611EE21A9D00307C73 /* Gender.swift */,
 				6DA1D0FC1F054E6D00F9DE87 /* TabType.swift */,
 				6DCDEB711F17E2F100C6D38C /* ItemType.swift */,
+				6DF479151F42F0570025F489 /* CoverageType.swift */,
+				6DF479171F42F0740025F489 /* TeamAccessLevel.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -2315,6 +2321,7 @@
 				6DEC074E1E9BD1DB0078F40E /* TeammatesCell.swift in Sources */,
 				6D73C6E21EBB374D00A2C0F8 /* PaymentsTVC.swift in Sources */,
 				6DCDEB721F17E2F100C6D38C /* ItemType.swift in Sources */,
+				6DF479181F42F0740025F489 /* TeamAccessLevel.swift in Sources */,
 				6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */,
 				6D69DA331EFD6CB700DED5CE /* TeamFeedCell.swift in Sources */,
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
@@ -2352,6 +2359,7 @@
 				6D69D9E91EFBF49700DED5CE /* ValueToTextConverter.swift in Sources */,
 				6DEC07541E9BF6600078F40E /* ExtendedTeammate.swift in Sources */,
 				6D9CC63D1ED72DF2007F936E /* ClaimsVC.swift in Sources */,
+				6DF479161F42F0570025F489 /* CoverageType.swift in Sources */,
 				6D6DA26B1EE21F7A00307C73 /* LoginDetailsConfigurator.swift in Sources */,
 				94793A8B1F0D146400696B90 /* SortCell.swift in Sources */,
 				6D69DA291EFD1A0400DED5CE /* WalletFundingCell.swift in Sources */,

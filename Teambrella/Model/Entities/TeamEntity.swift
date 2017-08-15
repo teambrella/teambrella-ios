@@ -24,6 +24,11 @@ struct TeamEntity {
     var objectCoverage: Double? { return json["ObjectCoverage"].doubleValue }
     var unreadCount: Int? { return json["UnreadCount"].intValue }
     var teamCoverage: Double? { return json["TeamCoverage"].doubleValue }
+    var coverageType: CoverageType { return CoverageType(rawValue: json["CoverageType"].intValue) ?? .other }
+    var teamAccessLevel: TeamAccessLevel {
+        return TeamAccessLevel(rawValue: json["TeamAccessLevel"].intValue) ?? .noAccess
+    }
+    var currency: String { return json["Currency"].stringValue }
     
     var isInvitation: Bool { return teamCoverage != nil }
     
