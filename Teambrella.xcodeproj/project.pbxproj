@@ -306,6 +306,8 @@
 		6DF479121F41E4300025F489 /* PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479111F41E4300025F489 /* PromiseKit.swift */; };
 		6DF479161F42F0570025F489 /* CoverageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479151F42F0570025F489 /* CoverageType.swift */; };
 		6DF479181F42F0740025F489 /* TeamAccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479171F42F0740025F489 /* TeamAccessLevel.swift */; };
+		6DF4791A1F432D230025F489 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479191F432D230025F489 /* Keychain.swift */; };
+		6DF4791C1F43326A0025F489 /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF4791B1F43326A0025F489 /* SwiftKeychainWrapper.framework */; };
 		6DFB8ABB1EB20709008FC8D9 /* ThreadTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */; };
 		6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */; };
 		6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
@@ -706,6 +708,8 @@
 		6DF479111F41E4300025F489 /* PromiseKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromiseKit.swift; path = Model/PromiseKit.swift; sourceTree = "<group>"; };
 		6DF479151F42F0570025F489 /* CoverageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoverageType.swift; path = Model/Enums/CoverageType.swift; sourceTree = "<group>"; };
 		6DF479171F42F0740025F489 /* TeamAccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamAccessLevel.swift; path = Model/Enums/TeamAccessLevel.swift; sourceTree = "<group>"; };
+		6DF479191F432D230025F489 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = Model/Services/Keychain/Keychain.swift; sourceTree = "<group>"; };
+		6DF4791B1F43326A0025F489 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftKeychainWrapper.framework; path = Carthage/Build/iOS/SwiftKeychainWrapper.framework; sourceTree = "<group>"; };
 		6DFB8ABA1EB20709008FC8D9 /* ThreadTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadTVC.swift; path = Scenes/Sample/ThreadTVC.swift; sourceTree = "<group>"; };
 		6DFB8ABE1EB21CFD008FC8D9 /* ThreadPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadPostCell.swift; path = Scenes/Sample/ThreadPostCell.swift; sourceTree = "<group>"; };
 		6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -777,6 +781,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DF4791C1F43326A0025F489 /* SwiftKeychainWrapper.framework in Frameworks */,
 				6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */,
 				E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */,
 				6D9CC6331ED7207E007F936E /* XLPagerTabStrip.framework in Frameworks */,
@@ -1330,6 +1335,7 @@
 				6DEC6DFA1E966AB400ACC119 /* Transformers */,
 				6DCC7AC31E93A6920092D3F2 /* Services.swift */,
 				6DA1D0FA1F040AEF00F9DE87 /* Session.swift */,
+				6DF479191F432D230025F489 /* Keychain.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1651,6 +1657,7 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DF4791B1F43326A0025F489 /* SwiftKeychainWrapper.framework */,
 				6D0BA5B01F14F83000055E74 /* SwiftDate.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				6DA8D54E1F0E43B7000A4DB7 /* PKHUD.framework */,
@@ -1988,6 +1995,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftDate.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeychainWrapper.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -2022,7 +2030,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Running CPD\npmd cpd --files ${EXECUTABLE_NAME} --minimum-tokens 70 --language swift --encoding UTF-8 --format net.sourceforge.pmd.cpd.XMLRenderer > cpd-output.xml --failOnViolation false\n# Running script\nphp ./cpd_script.php -cpd-xml cpd-output.xml";
+			shellScript = "# Running CPD\npmd cpd --files ${EXECUTABLE_NAME} --minimum-tokens 100 --language swift --encoding UTF-8 --format net.sourceforge.pmd.cpd.XMLRenderer > cpd-output.xml --failOnViolation false\n# Running script\nphp ./cpd_script.php -cpd-xml cpd-output.xml";
 		};
 		8CD7C238ED8CE72CDAECD7D2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2266,6 +2274,7 @@
 				94E325C01F07E76300B2D8C8 /* LabeledTextField.swift in Sources */,
 				6D0D2ADE1EFBC41D0095284C /* ButtonBarPagerTabStripViewController.swift in Sources */,
 				6D69D9FF1EFC32CB00DED5CE /* UserIndexCell.swift in Sources */,
+				6DF4791A1F432D230025F489 /* Keychain.swift in Sources */,
 				6DDE95751EE835360019DA47 /* ClaimCellBuilder.swift in Sources */,
 				6D6DA25A1EE1CA9B00307C73 /* ClaimsDataSource.swift in Sources */,
 				6D02ACA21F07D3A400B01AAF /* JoinTeamVC.swift in Sources */,

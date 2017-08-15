@@ -112,13 +112,10 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func tapLeftButton(sender: UIButton) {
-        showImagePicker(controller: self) { image in
-            guard let image = image else { return }
-            
-        }
+        showImagePicker(controller: self)
     }
     
-    func showImagePicker(controller: UIViewController, completion: (UIImage?) -> Void) {
+    func showImagePicker(controller: UIViewController) {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true

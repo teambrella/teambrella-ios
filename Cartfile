@@ -21,3 +21,6 @@ github "badoo/Chatto"
 github "MortimerGoro/MGSwipeTableCell"
 github "xmartlabs/XLPagerTabStrip" ~> 7.0
 github "pkluz/PKHUD" ~> 4.0
+
+# Security
+github "jrendel/SwiftKeychainWrapper"
