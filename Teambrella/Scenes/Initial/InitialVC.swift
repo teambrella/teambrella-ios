@@ -42,6 +42,7 @@ class InitialVC: UIViewController {
                                                         service.session.currentTeam = teams.first
                                                     }
                                                     service.session.teams = teams
+                                                    service.session.currentUserID = userID
                                                     self?.performSegue(type: .teambrella)
                                                 }
             }) { error in
