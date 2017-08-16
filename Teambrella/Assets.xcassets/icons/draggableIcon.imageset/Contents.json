@@ -2,8 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "draggableIcon.pdf",
-      "scale" : "1x"
+      "filename" : "draggableIcon.pdf"
     }
   ],
   "info" : {

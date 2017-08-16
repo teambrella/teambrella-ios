@@ -2,8 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "crossIcon.pdf",
-      "scale" : "1x"
+      "filename" : "crossIcon.pdf"
     }
   ],
   "info" : {
