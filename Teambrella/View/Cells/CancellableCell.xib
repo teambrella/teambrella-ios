@@ -36,6 +36,9 @@
                 <constraint firstAttribute="trailing" secondItem="s9j-Hb-7H5" secondAttribute="trailing" constant="16" id="pMQ-vw-nrr"/>
             </constraints>
             <size key="customSize" width="417" height="194"/>
+            <connections>
+                <outlet property="closeButton" destination="s9j-Hb-7H5" id="rQH-YU-qoO"/>
+            </connections>
             <point key="canvasLocation" x="-38.5" y="53"/>
         </collectionViewCell>
     </objects>

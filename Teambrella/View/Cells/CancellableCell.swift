@@ -9,10 +9,12 @@
 import UIKit
 
 class CancellableCell: UICollectionViewCell, XIBInitableCell {
-
+    @IBOutlet var closeButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        bringSubview(toFront: closeButton)
     }
 
 }

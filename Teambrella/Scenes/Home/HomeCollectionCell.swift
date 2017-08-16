@@ -21,7 +21,7 @@
 
 import UIKit
 
-class HomeCollectionCell: UICollectionViewCell {
+class HomeCollectionCell: CancellableCell {
     struct Constant {
         static let cornerRadius: CGFloat = 5.0
         static let shadowRadius: CGFloat = 2.0
