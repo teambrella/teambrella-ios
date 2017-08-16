@@ -61,9 +61,9 @@ class HomeDataSource {
         }
     }
     
-    func deleteCard(at indexPath: IndexPath) {
-        let card = model?.cards.remove(at: indexPath.row)
-        
+    func deleteCard(at index: Int) {
+        let card = model?.cards.remove(at: index)
+        //еще удалить на сервере!
     }
     
     subscript(indexPath: IndexPath) -> HomeScreenModel.Card? {

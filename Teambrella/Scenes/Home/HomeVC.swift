@@ -235,7 +235,9 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     func closeCard(_ sender: UIButton) {
         print("Tap close!!!!!!!")
-        //dataSource.
+        dataSource.deleteCard(at: sender.tag)
+        collectionView.reloadData()
+        pageControl.numberOfPages = dataSource.cardsCount
     }
     
 }
@@ -263,6 +265,7 @@ extension HomeVC: UICollectionViewDataSource {
         if let cell = cell as? ClosableCell {
         cell.closeButton.removeTarget(self, action: nil, for: .allEvents)
             cell.closeButton.addTarget(self, action: #selector(closeCard), for: .touchUpInside)
+            cell.closeButton.tag = indexPath.row
         }
     }
     
