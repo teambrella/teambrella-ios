@@ -41,7 +41,8 @@ class MyProxiesDataSource {
     }
     
     subscript(indexPath: IndexPath) -> ProxyCellModel {
-        return items[indexPath.row]
+        let model = items[indexPath.row]
+        return model
     }
     
     func loadData() {
@@ -74,7 +75,7 @@ class MyProxiesDataSource {
             let body = RequestBody(key: key, payload:["TeamId": id,
                                                       "UserId": userID,
                                                       "Position": position])
-            let request = TeambrellaRequest(type: .proxyPosition, body: body, success: { [weak self] response in
+            let request = TeambrellaRequest(type: .proxyPosition, body: body, success: { response in
                 if case .proxyPosition = response {
                     print("Position saved to server")
                 }

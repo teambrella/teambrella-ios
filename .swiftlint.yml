@@ -4,6 +4,7 @@ disabled_rules:
   - discarded_notification_center_observer
   - notification_center_detachment
   - missing_docs
+  - private_over_fileprivate
 opt_in_rules:
 #  - conditional_returns_on_newline
 #  - closure_end_indentation
