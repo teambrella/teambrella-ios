@@ -21,7 +21,7 @@
 
 import UIKit
 
-class HomeCollectionCell: UICollectionViewCell, XIBInitableCell {
+class HomeCollectionCell: UICollectionViewCell, XIBInitableCell, ClosableCell {
     struct Constant {
         static let cornerRadius: CGFloat = 5.0
         static let shadowRadius: CGFloat = 2.0
@@ -38,10 +38,13 @@ class HomeCollectionCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var unreadCountView: RoundImageView!
     
+    var closeButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         CellDecorator.roundedEdges(for: self)
         CellDecorator.heavyShadow(for: self)
+        CellDecorator.addCloseButton(for: self)
         rightNumberView.isCurrencyOnTop = false
     }
     

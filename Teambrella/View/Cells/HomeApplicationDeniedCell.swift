@@ -21,7 +21,7 @@
 
 import UIKit
 
-class HomeApplicationDeniedCell: UICollectionViewCell, XIBInitableCell {
+class HomeApplicationDeniedCell: UICollectionViewCell, XIBInitableCell, ClosableCell {
     @IBOutlet var backView: RadarView!
     @IBOutlet var avatar: RoundImageView!
     @IBOutlet var yummigum: UIImageView!
@@ -29,9 +29,12 @@ class HomeApplicationDeniedCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var centerLabel: UILabel!
     @IBOutlet var button: BorderedButton!
     
+    var closeButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         CellDecorator.roundedEdges(for: self)
         CellDecorator.shadow(for: self)
+        CellDecorator.addCloseButton(for: self)
     }
 }
