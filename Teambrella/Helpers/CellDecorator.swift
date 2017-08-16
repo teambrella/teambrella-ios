@@ -55,4 +55,16 @@ struct CellDecorator {
             cell.layer.cornerRadius = 4
         }
     }
+    
+    static func addCloseButton(for cell: UICollectionReusableView) {
+        guard let closableCell = cell as? ClosableCell else { return }
+        
+        let closeButton = UIButton()
+        cell.addSubview(closeButton)
+        
+    }
+}
+
+protocol ClosableCell {
+    var closeButton: UIButton! { get set }
 }
