@@ -57,8 +57,6 @@ class SortVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         headerLabel.text = "Proxy.SortVC.SortByHeader".localized
-        closeButton.setTitle("", for: .normal)
-        closeButton.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
         dataSource.createFakeModels()
     }
     
