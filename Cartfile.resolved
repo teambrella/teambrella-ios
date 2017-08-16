@@ -1,5 +1,6 @@
 github "Alamofire/Alamofire" "4.5.0"
 github "MortimerGoro/MGSwipeTableCell" "1.6.0"
+github "SnapKit/SnapKit" "3.2.0"
 github "SwiftyJSON/SwiftyJSON" "3.1.4"
 github "aschuch/QRCode" "2.0"
 github "badoo/Chatto" "3.1.0"
