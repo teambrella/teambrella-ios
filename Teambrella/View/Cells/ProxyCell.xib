@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -137,11 +137,19 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="draggableIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qxy-N1-7aX">
+                                <rect key="frame" x="334" y="54" width="8" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="8" id="gK2-2I-fdr"/>
+                                    <constraint firstAttribute="height" constant="12" id="okU-Sn-2iq"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Cxa-sc-7SP" firstAttribute="leading" secondItem="ct4-fg-NvQ" secondAttribute="leading" constant="20" id="1M4-ip-eTw"/>
                             <constraint firstItem="Cxa-sc-7SP" firstAttribute="top" secondItem="ct4-fg-NvQ" secondAttribute="top" constant="24" id="COR-JR-qjK"/>
+                            <constraint firstItem="qxy-N1-7aX" firstAttribute="centerY" secondItem="ct4-fg-NvQ" secondAttribute="centerY" id="Ees-aR-3hI"/>
                             <constraint firstItem="Cxa-sc-7SP" firstAttribute="leading" secondItem="Sel-l8-IBh" secondAttribute="trailing" constant="-12" id="IFd-9O-qbV"/>
                             <constraint firstItem="L4Y-sY-GaD" firstAttribute="top" secondItem="Cxa-sc-7SP" secondAttribute="centerY" id="MT8-4m-BLY"/>
                             <constraint firstAttribute="trailing" secondItem="fHY-pu-55R" secondAttribute="trailing" constant="28" id="Qry-31-qfG"/>
@@ -155,6 +163,7 @@
                             <constraint firstItem="L4Y-sY-GaD" firstAttribute="leading" secondItem="Pcl-pr-wpc" secondAttribute="leading" id="nlW-DU-BnF"/>
                             <constraint firstItem="fHY-pu-55R" firstAttribute="bottom" secondItem="Pcl-pr-wpc" secondAttribute="bottom" id="nqu-ly-gcT"/>
                             <constraint firstItem="wII-ti-ph3" firstAttribute="trailing" secondItem="fHY-pu-55R" secondAttribute="trailing" id="vkj-AO-1OG"/>
+                            <constraint firstAttribute="trailing" secondItem="qxy-N1-7aX" secondAttribute="trailing" id="wNb-Nu-XNV"/>
                             <constraint firstItem="U2v-Li-0cg" firstAttribute="leading" secondItem="Cxa-sc-7SP" secondAttribute="leading" id="wkP-aH-zru"/>
                         </constraints>
                     </view>
@@ -181,4 +190,7 @@
             <point key="canvasLocation" x="30" y="-69"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="draggableIcon" width="8" height="12"/>
+    </resources>
 </document>

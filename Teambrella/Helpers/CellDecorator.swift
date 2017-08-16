@@ -20,6 +20,7 @@
  */
 
 import Foundation
+import SnapKit
 
 struct CellDecorator {
     static func shadow(for cell: UICollectionReusableView) {
@@ -55,4 +56,22 @@ struct CellDecorator {
             cell.layer.cornerRadius = 4
         }
     }
+    
+    static func addCloseButton(for cell: UICollectionReusableView) {
+        guard var closableCell = cell as? ClosableCell, closableCell.closeButton == nil else { return }
+        
+        let closeButton = UIButton()
+        closeButton.setImage(#imageLiteral(resourceName: "closeIcon"), for: .normal)
+        cell.addSubview(closeButton)
+        closeButton.snp.makeConstraints { make in
+            make.right.equalTo(cell)
+            make.top.equalTo(cell)
+            make.width.height.equalTo(40)
+        }
+        closableCell.closeButton = closeButton
+    }
+}
+
+protocol ClosableCell {
+    var closeButton: UIButton! { get set }
 }

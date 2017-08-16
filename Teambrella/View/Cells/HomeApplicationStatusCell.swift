@@ -21,7 +21,7 @@
 
 import UIKit
 
-class HomeApplicationStatusCell: UICollectionViewCell, XIBInitableCell {
+class HomeApplicationStatusCell: UICollectionViewCell, XIBInitableCell, ClosableCell {
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var avatar: RoundImageView!
     @IBOutlet var timeLabel: UILabel!
@@ -29,6 +29,8 @@ class HomeApplicationStatusCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var centerLabel: UILabel!
     @IBOutlet var bottomLabel: UILabel!
     @IBOutlet var messageCountLabel: UILabel!
+    
+    var closeButton: UIButton!
 
     @IBAction func tapButton(_ sender: Any) {
     }
@@ -37,5 +39,6 @@ class HomeApplicationStatusCell: UICollectionViewCell, XIBInitableCell {
         super.awakeFromNib()
         CellDecorator.roundedEdges(for: self)
         CellDecorator.shadow(for: self)
+        CellDecorator.addCloseButton(for: self)
     }
 }

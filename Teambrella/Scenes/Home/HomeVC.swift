@@ -233,6 +233,13 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         DeveloperTools.notSupportedAlert(in: self)
     }
     
+    func closeCard(_ sender: UIButton) {
+        print("Tap close!!!!!!!")
+        dataSource.deleteCard(at: sender.tag)
+        collectionView.reloadData()
+        pageControl.numberOfPages = dataSource.cardsCount
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -254,6 +261,11 @@ extension HomeVC: UICollectionViewDataSource {
         if let cell = cell as? HomeSupportCell {
             cell.button.removeTarget(nil, action: nil, for: .allEvents)
             cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
+        }
+        if let cell = cell as? ClosableCell {
+        cell.closeButton.removeTarget(self, action: nil, for: .allEvents)
+            cell.closeButton.addTarget(self, action: #selector(closeCard), for: .touchUpInside)
+            cell.closeButton.tag = indexPath.row
         }
     }
     
