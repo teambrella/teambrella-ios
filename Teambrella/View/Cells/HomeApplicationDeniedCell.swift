@@ -21,7 +21,7 @@
 
 import UIKit
 
-class HomeApplicationDeniedCell: UICollectionViewCell, XIBInitableCell, CancellableCell {
+class HomeApplicationDeniedCell: CancellableCell {
     @IBOutlet var backView: RadarView!
     @IBOutlet var avatar: RoundImageView!
     @IBOutlet var yummigum: UIImageView!

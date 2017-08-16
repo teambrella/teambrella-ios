@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -48,25 +48,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tid-74-fKJ" customClass="RoundBadgedView" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="18.5" width="40" height="35"/>
+                                                    <rect key="frame" x="16" y="19" width="40" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Tid-74-fKJ" secondAttribute="height" multiplier="8:7" id="rPM-Ij-Lcq"/>
                                                         <constraint firstAttribute="width" constant="40" id="v5m-ej-zg2"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Sp-Vp1">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Sp-Vp1">
                                                     <rect key="frame" x="64" y="7" width="33" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk5-Mq-84T" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="18.5" width="130" height="18"/>
+                                                    <rect key="frame" x="72" y="19" width="130" height="18"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="vCL-5f-T9L">
-                                                    <rect key="frame" x="351" y="29.5" width="8" height="13"/>
+                                                    <rect key="frame" x="351" y="30" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="35T-ib-Q7x"/>
                                                         <constraint firstAttribute="width" constant="8" id="zDV-JS-5wp"/>
@@ -95,7 +95,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 Days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSu-DT-TmB">
-                                                    <rect key="frame" x="255.5" y="27" width="47.5" height="18"/>
+                                                    <rect key="frame" x="255" y="27" width="48" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -107,7 +107,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTED (2.1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMa-g1-Uv2" customClass="BadgeLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="36.5" width="62" height="15"/>
+                                                    <rect key="frame" x="72" y="37" width="62" height="15"/>
                                                     <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -179,25 +179,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AC1-iQ-fvm" customClass="RoundBadgedView" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="18.5" width="40" height="35"/>
+                                                    <rect key="frame" x="16" y="19" width="40" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="9Rv-pv-yvR"/>
                                                         <constraint firstAttribute="width" secondItem="AC1-iQ-fvm" secondAttribute="height" multiplier="8:7" id="gX9-ru-IY6"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hoq-Od-Ce2">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hoq-Od-Ce2">
                                                     <rect key="frame" x="64" y="7" width="33" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIU-d2-vBN" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="18.5" width="130" height="18"/>
+                                                    <rect key="frame" x="72" y="19" width="130" height="18"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="v4A-ji-fL2">
-                                                    <rect key="frame" x="351" y="29.5" width="8" height="13"/>
+                                                    <rect key="frame" x="351" y="30" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="PDl-vc-scq"/>
                                                         <constraint firstAttribute="width" constant="8" id="glw-TJ-OxI"/>
@@ -217,13 +217,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMB-N1-lwa" customClass="TitleLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="277" y="17" width="58" height="38.5"/>
+                                                    <rect key="frame" x="277" y="17" width="58" height="39"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbc-3j-1Xu" customClass="TitleLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="250.5" y="17" width="21.5" height="39"/>
+                                                    <rect key="frame" x="250" y="17" width="22" height="39"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -263,13 +263,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW TEAMMATES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8O-Ym-0bL">
-                                            <rect key="frame" x="16" y="70.5" width="110" height="15"/>
+                                            <rect key="frame" x="16" y="70" width="110" height="15"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                             <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTING ENDS IN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOb-lr-zAX">
-                                            <rect key="frame" x="262" y="70.5" width="97" height="15"/>
+                                            <rect key="frame" x="262" y="70" width="97" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -634,19 +634,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulW-Xb-t3c" customClass="TitleLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="136" y="59.5" width="42" height="20.5"/>
+                                                    <rect key="frame" x="136" y="60" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yuo-5i-zpX" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="136" y="98.5" width="42" height="20.5"/>
+                                                    <rect key="frame" x="136" y="98" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oqH-A9-lU0">
-                                                    <rect key="frame" x="16" y="59.5" width="96" height="80"/>
+                                                    <rect key="frame" x="16" y="60" width="96" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="CyY-XN-D6z"/>
                                                         <constraint firstAttribute="width" constant="96" id="lRW-Mv-0rx"/>
@@ -668,7 +668,7 @@
                                                     </state>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Ln-izq" customClass="ChatTextLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="136" y="119" width="42" height="20.5"/>
+                                                    <rect key="frame" x="136" y="119" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -682,7 +682,7 @@
                                                     <state key="normal" image="info"/>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8EQ-Lc-N7f" customClass="NumberBar" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="163.5" width="317" height="48"/>
+                                                    <rect key="frame" x="16" y="164" width="317" height="48"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="YTA-xF-yq9"/>
@@ -791,7 +791,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decisions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBi-1a-EOH" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="22" width="74.5" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="21.5" width="74.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -810,7 +810,7 @@
                                                             <rect key="frame" x="0.0" y="63" width="317" height="63"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-C1-32U" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
-                                                                    <rect key="frame" x="189" y="20.5" width="128" height="22"/>
+                                                                    <rect key="frame" x="189" y="21" width="128" height="22"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="128" id="Zjj-Hf-jKg"/>
@@ -828,7 +828,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discussions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCy-lF-Ef5" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="22" width="91.5" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="21.5" width="91.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -847,7 +847,7 @@
                                                             <rect key="frame" x="0.0" y="126" width="317" height="63"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGi-HY-tI0" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
-                                                                    <rect key="frame" x="189" y="20.5" width="128" height="22"/>
+                                                                    <rect key="frame" x="189" y="21" width="128" height="22"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="AVA-Hu-YPt"/>
@@ -862,7 +862,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voting Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvP-Xn-0nI" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="22" width="134.5" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="21.5" width="134.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -961,7 +961,7 @@
                                                             <rect key="frame" x="0.0" y="28" width="317" height="66"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tvw-Eg-SjA" id="cyg-GN-LRF">
-                                                                <rect key="frame" x="0.0" y="0.0" width="317" height="65.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="317" height="65"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="d7O-F7-70w">
@@ -1054,7 +1054,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dialogCompact" id="AkA-1v-1B0" userLabel="dialogCompact" customClass="DiscussionCompactCell" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="27.5" y="1514" width="320" height="140"/>
+                                        <rect key="frame" x="28" y="1514" width="320" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
@@ -1088,7 +1088,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="tZa-1m-Frv">
-                                                    <rect key="frame" x="291" y="63.5" width="13" height="13"/>
+                                                    <rect key="frame" x="291" y="64" width="13" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tZa-1m-Frv" secondAttribute="height" multiplier="1:1" id="HCX-BK-6oy"/>
                                                         <constraint firstAttribute="width" constant="13" id="q0z-lf-Tda"/>
@@ -1107,7 +1107,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFH-Ag-NFC" customClass="MessageTextLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="36" width="165" height="20.5"/>
+                                                    <rect key="frame" x="72" y="36" width="165" height="80"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1154,7 +1154,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vj1-EA-kdL" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                            <rect key="frame" x="166.5" y="45" width="42" height="21"/>
+                                            <rect key="frame" x="167" y="45" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1257,7 +1257,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olO-YY-KfB">
-                                                    <rect key="frame" x="18" y="0.5" width="45" height="15"/>
+                                                    <rect key="frame" x="18" y="1" width="45" height="15"/>
                                                     <color key="backgroundColor" red="0.48627450979999998" green="0.53333333329999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="UFD-6W-6aj"/>
@@ -1347,14 +1347,14 @@
                                 </connections>
                             </containerView>
                             <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYY-B7-ciP" userLabel="Meter">
-                                <rect key="frame" x="184.5" y="493" width="7" height="120"/>
+                                <rect key="frame" x="184" y="493" width="7" height="120"/>
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="0.40349422089041098" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="7" id="09Z-wo-fUe"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jR6-0S-J75">
-                                <rect key="frame" x="187" y="493" width="2" height="120"/>
+                                <rect key="frame" x="186" y="493" width="2" height="120"/>
                                 <color key="backgroundColor" red="0.35294117650000001" green="0.77647058820000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="2" id="sDn-Di-E56"/>
@@ -1372,22 +1372,22 @@
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xls-Cr-weR" customClass="SlashView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="16" y="70.5" width="343" height="105"/>
+                                <rect key="frame" x="16" y="71" width="343" height="105"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bga-SX-rjF">
-                                        <rect key="frame" x="8" y="28" width="26.5" height="36"/>
+                                        <rect key="frame" x="8" y="28" width="27" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taG-uF-kLp">
-                                        <rect key="frame" x="187.5" y="28" width="26.5" height="36"/>
+                                        <rect key="frame" x="188" y="28" width="27" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVG -143%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rx0-4k-VPZ">
-                                        <rect key="frame" x="114.5" y="34" width="40" height="24"/>
+                                        <rect key="frame" x="115" y="34" width="40" height="24"/>
                                         <color key="backgroundColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="aQH-sV-L6I"/>
@@ -1402,7 +1402,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVG +14%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPn-DG-n6C">
-                                        <rect key="frame" x="285.5" y="34" width="40" height="24"/>
+                                        <rect key="frame" x="286" y="34" width="40" height="24"/>
                                         <color key="backgroundColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="3Qv-Ud-aWJ"/>
@@ -1417,13 +1417,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR VOTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nph-Yy-mz3" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="187.5" y="16" width="60.5" height="12"/>
+                                        <rect key="frame" x="188" y="16" width="61" height="12"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                         <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClL-mC-3du">
-                                        <rect key="frame" x="187.5" y="63" width="70" height="29"/>
+                                        <rect key="frame" x="188" y="63" width="70" height="29"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                         <state key="normal" title="Reset Vote">
                                             <color key="titleColor" red="0.2784313725" green="0.34509803919999998" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1433,13 +1433,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N08-ij-grF" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="16" width="163.5" height="12"/>
+                                        <rect key="frame" x="8" y="16" width="164" height="12"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                         <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWy-Kq-ODx" customClass="RoundImagesStack" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="67.5" width="70" height="20"/>
+                                        <rect key="frame" x="8" y="68" width="70" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="7qD-VT-JNZ"/>
                                             <constraint firstAttribute="width" constant="70" id="95w-gT-xKa"/>
@@ -1482,19 +1482,19 @@
                                 <state key="normal" image="info"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" text="VOTING: RISK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYO-9l-gFb" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="16" y="40" width="84" height="14.5"/>
+                                <rect key="frame" x="16" y="40" width="84" height="15"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" red="0.2470588235" green="0.67450980390000004" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 DAYS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lB1-kh-RD5">
-                                <rect key="frame" x="110" y="40" width="42" height="14.5"/>
+                                <rect key="frame" x="110" y="40" width="42" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.70588235290000001" green="0.74901960779999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cb6-O3-tHu" customClass="PieChartView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="160" y="37.5" width="20" height="20"/>
+                                <rect key="frame" x="160" y="38" width="20" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="OIO-5c-V0J"/>
@@ -1516,7 +1516,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ksd-0P-aFr" customClass="LabeledRoundImageView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="171.5" y="613" width="33" height="40"/>
+                                <rect key="frame" x="171" y="613" width="33" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="33" id="KEN-BW-06b"/>
                                     <constraint firstAttribute="height" constant="40" id="Ubl-Ln-eJC"/>
@@ -1532,13 +1532,13 @@
                                 <rect key="frame" x="351" y="632" width="8" height="13"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8a-vx-0Vc" customClass="LabeledRoundImageView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="140" y="621" width="26.5" height="32"/>
+                                <rect key="frame" x="139" y="621" width="27" height="32"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="riskLabelText" value="1.60"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuk-lM-yLH" customClass="LabeledRoundImageView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="209.5" y="621" width="26.5" height="32"/>
+                                <rect key="frame" x="209" y="621" width="27" height="32"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="riskLabelText" value="1.59"/>
                                 </userDefinedRuntimeAttributes>
@@ -1638,7 +1638,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="azS-dI-0sc">
-                                <rect key="frame" x="533" y="63.5" width="13" height="13"/>
+                                <rect key="frame" x="533" y="64" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="13" id="HKo-ZF-Yc9"/>
                                     <constraint firstAttribute="width" secondItem="azS-dI-0sc" secondAttribute="height" multiplier="1:1" id="gK1-Wa-lOy"/>
@@ -1657,19 +1657,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCUSSION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWn-TE-NFF" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="196" y="65.5" width="101" height="21"/>
+                                <rect key="frame" x="196" y="86" width="101" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KM5-TU-JLa" customClass="MessageTextLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="72" y="36" width="407" height="20.5"/>
+                                <rect key="frame" x="72" y="36" width="407" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iae-Ta-wTR" customClass="RoundImagesStack" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="72" y="66.5" width="80" height="20"/>
+                                <rect key="frame" x="72" y="87" width="80" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="TKW-YM-Kbn"/>
@@ -1677,7 +1677,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discussion" translatesAutoresizingMaskIntoConstraints="NO" id="Sz5-KH-oEP">
-                                <rect key="frame" x="172" y="68.5" width="15" height="15"/>
+                                <rect key="frame" x="172" y="89" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Sz5-KH-oEP" secondAttribute="height" multiplier="1:1" id="Cey-6d-wN2"/>
                                     <constraint firstAttribute="width" constant="15" id="sm3-cx-yh9"/>
@@ -1754,7 +1754,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="vJB-F6-djs">
-                                <rect key="frame" x="533" y="63.5" width="13" height="13"/>
+                                <rect key="frame" x="533" y="64" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vJB-F6-djs" secondAttribute="height" multiplier="1:1" id="Ge0-IF-Yjq"/>
                                     <constraint firstAttribute="width" constant="13" id="qen-lX-8zx"/>
@@ -1773,19 +1773,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCUSSION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uk-0A-d9a" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="196" y="65.5" width="101" height="21"/>
+                                <rect key="frame" x="196" y="86" width="101" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvm-zp-Eyx" customClass="MessageTextLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="72" y="36" width="407" height="20.5"/>
+                                <rect key="frame" x="72" y="36" width="407" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Rh-qW-0EC" customClass="RoundImagesStack" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="72" y="66.5" width="80" height="20"/>
+                                <rect key="frame" x="72" y="87" width="80" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="feB-PO-tMs"/>
@@ -1793,7 +1793,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discussion" translatesAutoresizingMaskIntoConstraints="NO" id="UEn-E8-s96">
-                                <rect key="frame" x="172" y="68.5" width="15" height="15"/>
+                                <rect key="frame" x="172" y="89" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="a6B-nh-eVb"/>
                                     <constraint firstAttribute="width" secondItem="UEn-E8-s96" secondAttribute="height" multiplier="1:1" id="g1m-H0-GZg"/>

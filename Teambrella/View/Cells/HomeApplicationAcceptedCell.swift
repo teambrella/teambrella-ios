@@ -21,7 +21,7 @@
 
 import UIKit
 
-class HomeApplicationAcceptedCell: UICollectionViewCell, XIBInitableCell, CancellableCell {
+class HomeApplicationAcceptedCell: CancellableCell {
     @IBOutlet var backView: RadarView!
     @IBOutlet var avatar: RoundImageView!
     @IBOutlet var headerLabel: UILabel!

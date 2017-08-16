@@ -21,7 +21,7 @@
 
 import UIKit
 
-class HomeApplicationStatusCell: UICollectionViewCell, XIBInitableCell, CancellableCell {
+class HomeApplicationStatusCell: CancellableCell {
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var avatar: RoundImageView!
     @IBOutlet var timeLabel: UILabel!
