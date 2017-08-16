@@ -174,6 +174,7 @@
 		6D91BC041EB3900700FDC332 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC031EB3900700FDC332 /* UUID.swift */; };
 		6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC061EB3A79100FDC332 /* UUIDTests.swift */; };
 		6D9ACA261F434C7700A9B6C8 /* CurrencyProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */; };
+		6D9ACA281F4466C500A9B6C8 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */; };
 		6D9C808E1EDF17D000FB8C2C /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */; };
 		6D9C808F1EDF17D000FB8C2C /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9C808D1EDF17D000FB8C2C /* AkkuratPro-Regular.otf */; };
 		6D9CC6131ED47C79007F936E /* LoginDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC6121ED47C79007F936E /* LoginDetailsVC.swift */; };
@@ -567,6 +568,7 @@
 		6D91BC031EB3900700FDC332 /* UUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UUID.swift; path = Helpers/Extensions/UUID.swift; sourceTree = "<group>"; };
 		6D91BC061EB3A79100FDC332 /* UUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDTests.swift; sourceTree = "<group>"; };
 		6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyProcessor.swift; path = Helpers/CurrencyProcessor.swift; sourceTree = "<group>"; };
+		6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Bold.otf"; path = "Resources/AkkuratPro-Bold.otf"; sourceTree = "<group>"; };
 		6D9C808D1EDF17D000FB8C2C /* AkkuratPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Regular.otf"; path = "Resources/AkkuratPro-Regular.otf"; sourceTree = "<group>"; };
 		6D9CC6121ED47C79007F936E /* LoginDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginDetailsVC.swift; path = Scenes/Login/LoginDetailsVC.swift; sourceTree = "<group>"; };
@@ -786,6 +788,7 @@
 				6DF4791C1F43326A0025F489 /* SwiftKeychainWrapper.framework in Frameworks */,
 				6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */,
 				E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */,
+				6D9ACA281F4466C500A9B6C8 /* SnapKit.framework in Frameworks */,
 				6D9CC6331ED7207E007F936E /* XLPagerTabStrip.framework in Frameworks */,
 				6DDE956B1EE80FE40019DA47 /* ImageSlideshow.framework in Frameworks */,
 				6DA8D54F1F0E43B7000A4DB7 /* PKHUD.framework in Frameworks */,
@@ -1660,6 +1663,7 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */,
 				6DF4791B1F43326A0025F489 /* SwiftKeychainWrapper.framework */,
 				6D0BA5B01F14F83000055E74 /* SwiftDate.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
@@ -1999,6 +2003,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftDate.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeychainWrapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			name = Carthage;
 			outputPaths = (
