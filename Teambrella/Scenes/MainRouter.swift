@@ -143,12 +143,12 @@ final class MainRouter {
     
     // MARK: Present Modally
     
-    func showChooseTeam(in viewController: UIViewController) {
+    func showChooseTeam(in viewController: UIViewController, delegate: ChooseYourTeamControllerDelegate) {
         //delegate: ChooseYourTeamControllerDelegate
         guard let vc = ChooseYourTeamVC.instantiate()
             as? ChooseYourTeamVC else { fatalError("Error instantiating") }
         
-        //vc.delegate = delegate
+        vc.delegate = delegate
         viewController.present(vc, animated: false, completion: nil)
     }
     
@@ -183,6 +183,15 @@ final class MainRouter {
      }
      }
      */
+    
+    func switchTeam() {
+        let initial = navigator?.viewControllers.filter { $0 is InitialVC }.first
+        if let initial = initial {
+            navigator?.popToViewController(initial, animated: false)
+            initial.performSegue(type: .teambrella)
+        }
+        
+    }
     
     func applicationDidFinishLaunching(launchOptions: [UIApplicationLaunchOptionsKey : Any]?) {
         //presentRootViewController(window: window)

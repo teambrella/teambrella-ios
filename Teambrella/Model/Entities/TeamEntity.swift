@@ -53,3 +53,9 @@ struct TeamEntity {
         return json.arrayValue.map { self.team(with: $0) }
     }
 }
+
+extension TeamEntity: Equatable {
+    static func ==(lhs: TeamEntity, rhs: TeamEntity) -> Bool {
+        return lhs.teamID == rhs.teamID
+    }
+}

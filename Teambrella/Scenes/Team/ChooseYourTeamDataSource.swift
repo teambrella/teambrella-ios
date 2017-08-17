@@ -24,6 +24,12 @@ import Foundation
 struct ChooseYourTeamDataSource {
     var count: Int { return models.count }
     var models: [ChooseYourTeamCellModel] = []
+    var currentTeamIndex: Int {
+        if let currentTeam = service.session.currentTeam, let idx = service.session.teams.index(of: currentTeam) {
+            return idx
+        }
+        return 0
+    }
     
     mutating func createModels() {
         let model = service.session.teams
@@ -37,70 +43,6 @@ struct ChooseYourTeamDataSource {
                                                       teamID: card.teamID))
             }
         }
-    }
-    
-    // swiftlint:disable:next function_body_length
-    mutating func createFakeModels() {
-        models = [ChooseYourTeamCellModel(teamIcon: " ",
-                                          incomingCount: 12,
-                                          teamName: "Deductable Savers",
-                                          itemName: "Mazda CX5",
-                                          coverage: 95,
-                                          teamID: 0),
-                  ChooseYourTeamCellModel(teamIcon: " ",
-                                          incomingCount: 3,
-                                          teamName: "Animal Protection",
-                                          itemName: "BENGAaaaaaaaa CATS",
-                                          coverage: 100,
-                                          teamID: 1),
-                  ChooseYourTeamCellModel(teamIcon: " ",
-                                          incomingCount: 0,
-                                          teamName: "Dogs",
-                                          itemName: "Mazda CX5",
-                                          coverage: 30,
-                                          teamID: 2),
-                  ChooseYourTeamCellModel(teamIcon: " ",
-                                          incomingCount: 12,
-                                          teamName: "Cats",
-                                          itemName: "Mazda CX5",
-                                          coverage: 40,
-                                          teamID: 3),
-                  ChooseYourTeamCellModel(teamIcon: " ",
-                                          incomingCount: 15,
-                                          teamName: "Cars",
-                                          itemName: "Mazda CX5",
-                                          coverage: 70,
-                                          teamID: 4),
-                  ChooseYourTeamCellModel(teamIcon: " ",
-                                          incomingCount: 1,
-                                          teamName: "Trolleybuses detectedddd",
-                                          itemName: "Mazda CX5",
-                                          coverage: 80,
-                                          teamID: 5),
-                  ChooseYourTeamCellModel(teamIcon: " ",
-                                          incomingCount: 7,
-                                          teamName: "Deductable Savers",
-                                          itemName: "Mazda CX5",
-                                          coverage: 20,
-                                          teamID: 6),
-                  ChooseYourTeamCellModel(teamIcon: " ",
-                                          incomingCount: 123,
-                                          teamName: "Washmachines",
-                                          itemName: "Mazda CX5",
-                                          coverage: 50,
-                                          teamID: 7),
-                  ChooseYourTeamCellModel(teamIcon: " ",
-                                          incomingCount: 0,
-                                          teamName: "Refregerators",
-                                          itemName: "Mazda CX5",
-                                          coverage: 60,
-                                          teamID: 8),
-                  ChooseYourTeamCellModel(teamIcon: " ",
-                                          incomingCount: 5,
-                                          teamName: "Insurance",
-                                          itemName: "Mazda CX5",
-                                          coverage: 10,
-                                          teamID: 9)]
     }
     
     subscript(indexPath: IndexPath) -> ChooseYourTeamCellModel {
