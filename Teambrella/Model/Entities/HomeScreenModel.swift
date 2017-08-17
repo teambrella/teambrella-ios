@@ -86,7 +86,7 @@ struct HomeScreenModel {
     var avatar: String { return json["Avatar"].stringValue }
     var unreadCount: Int { return json["UnreadCount"].intValue }
     var currency: String { return json["Currency"].stringValue }
-    var balance: Double { return json["BtcBalance"].doubleValue }
+    var balance: Double { return json["CryptoBalance"].doubleValue }
     var coverage: Double { return json["Coverage"].doubleValue }
     var objectName: String { return json["ObjectName"].stringValue }
     var smallPhoto: String { return json["SmallPhoto"].stringValue }

@@ -21,7 +21,7 @@
 
 import UIKit
 
-class HomeApplicationAcceptedCell: UICollectionViewCell, XIBInitableCell, ClosableCell  {
+class HomeApplicationAcceptedCell: UICollectionViewCell, XIBInitableCell, ClosableCell {
     @IBOutlet var backView: RadarView!
     @IBOutlet var avatar: RoundImageView!
     @IBOutlet var headerLabel: UILabel!
