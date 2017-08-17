@@ -28,6 +28,20 @@ struct Session {
     // TMP: my user properties
     var currentUserID: String?
     var currentUserName: String?
+    var currentUserAvatar: String = ""
+    
     var myAvatarString: String { return "me/avatar" }
     var myAvatarStringSmall: String { return myAvatarString + "/128" }
+    
+    @discardableResult
+    mutating func switchToTeam(id: Int) -> Bool {
+        guard let currentTeam = currentTeam, currentTeam.teamID != id else { return false }
+        
+        let filtered = teams.filter { $0.teamID == id }
+        if let team = filtered.first {
+            self.currentTeam = team
+            return true
+        }
+        return false
+    }
 }

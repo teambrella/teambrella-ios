@@ -77,34 +77,37 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     override func viewDidLoad() {
         super.viewDidLoad()
         clearScreen()
-        HUD.show(.progress)
         setupTransparentNavigationBar()
         gradientView.setup(colors: [#colorLiteral(red: 0.1803921569, green: 0.2392156863, blue: 0.7960784314, alpha: 1), #colorLiteral(red: 0.2156862745, green: 0.2705882353, blue: 0.8078431373, alpha: 1), #colorLiteral(red: 0.368627451, green: 0.4156862745, blue: 0.8588235294, alpha: 1)],
                            locations: [0.0, 0.5, 1.0])
-        
-        if let teamID = service.session.currentTeam?.teamID {
-            dataSource.loadData(teamID: teamID)
-            dataSource.onUpdate = { [weak self] in
-                self?.setup()
-            }
-        } else {
-            print("This session has no team!")
-        }
-        
+        HomeCellBuilder.registerCells(in: collectionView)
+        setupWalletContainer()
         let touch = UITapGestureRecognizer(target: self, action: #selector(tapItem))
         itemCard.avatarView.isUserInteractionEnabled = true
         itemCard.avatarView.addGestureRecognizer(touch)
-        HomeCellBuilder.registerCells(in: collectionView)
-        setupWalletContainer()
+        
+        switchToCurrentTeam()
+    }
+    
+    func switchToCurrentTeam() {
+        HUD.show(.progress)
+        dataSource = HomeDataSource()
+        if let teamID = service.session.currentTeam?.teamID {
+            dataSource.loadData(teamID: teamID)
+        }
+        
+        dataSource.onUpdate = { [weak self] in
+            self?.setup()
+        }
         guard let source = service.session.currentTeam?.teamLogo else { return }
         
         UIImage.fetchAvatar(string: source,
                             width: Constant.teamIconWidth,
                             cornerRadius: Constant.teamIconCornerRadius) { image, error  in
-            guard error == nil else { return }
-            guard let image = image else { return }
-
-            self.teamsButton.setImage(image, for: .normal)
+                                guard error == nil else { return }
+                                guard let image = image else { return }
+                                
+                                self.teamsButton.setImage(image, for: .normal)
         }
     }
     
@@ -162,6 +165,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         service.session.currentUserID = model.userID
         service.session.currentUserName = model.name
+        service.session.currentUserAvatar = model.avatar
         
         UIImage.fetchAvatar(string: model.avatar) { image, error in
             guard let image = image else { return }
@@ -197,7 +201,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     // MARK: User interaction handling
-
+    
     func tapItem() {
         DeveloperTools.notSupportedAlert(in: self)
     }
@@ -222,7 +226,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     @IBAction func tapTeams(_ sender: UIButton) {
-        service.router.showChooseTeam(in: self)
+        service.router.showChooseTeam(in: self, delegate: self)
     }
     
     @IBAction func tapInbox(_ sender: UIButton) {
@@ -263,7 +267,7 @@ extension HomeVC: UICollectionViewDataSource {
             cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
         }
         if let cell = cell as? ClosableCell {
-        cell.closeButton.removeTarget(self, action: nil, for: .allEvents)
+            cell.closeButton.removeTarget(self, action: nil, for: .allEvents)
             cell.closeButton.addTarget(self, action: #selector(closeCard), for: .touchUpInside)
             cell.closeButton.tag = indexPath.row
         }
@@ -317,5 +321,11 @@ extension HomeVC: UIScrollViewDelegate {
             let scaleTransform = CATransform3DMakeScale(scaleMultiplier, scaleMultiplier, 1.0)
             cell.layer.transform = scaleTransform
         }
+    }
+}
+
+extension HomeVC: ChooseYourTeamControllerDelegate {
+    func chooseTeam(controller: ChooseYourTeamVC, didSelectTeamID: Int) {
+        service.router.switchTeam()
     }
 }
