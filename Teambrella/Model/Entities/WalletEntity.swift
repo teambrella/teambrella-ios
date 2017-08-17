@@ -33,10 +33,10 @@ struct WalletEntity {
     
     var currency: String { return json["Currency"].stringValue }
     var currencyRate: Double { return json["CurrencyRate"].doubleValue }
-    var btcBalance: Double { return json["BtcBalance"].doubleValue }
-    var btcReserved: Double { return json["BtcReserved"].doubleValue }
-    var needBtc: Double { return json["NeedBtc"].doubleValue }
-    var recommendedBtc: Double { return json["RecommendedBtc"].doubleValue }
+    var cryptoBalance: Double { return json["CryptoBalance"].doubleValue }
+    var cryptoReserved: Double { return json["CryptoReserved"].doubleValue }
+    var needCrypto: Double { return json["NeedCrypto"].doubleValue }
+    var recommendedCrypto: Double { return json["RecommendedCrypto"].doubleValue }
     var fundAddress: String { return json["FundAddress"].stringValue }
     var defaultWithdrawAddress: String? { return json["DefaultWithdrawAddress"].string }
     var cosigners: [CosignerEntity]

@@ -54,9 +54,9 @@ class WalletDataSource {
     }
     
     func createCellModels(with wallet: WalletEntity) {
-        items.append(WalletHeaderCellModel(amount: wallet.btcBalance,
-                                           reserved: wallet.btcReserved,
-                                           available: wallet.btcBalance - wallet.btcReserved))
+        items.append(WalletHeaderCellModel(amount: wallet.cryptoBalance,
+                                           reserved: wallet.cryptoReserved,
+                                           available: wallet.cryptoBalance - wallet.cryptoReserved))
         items.append(WalletFundingCellModel(maxCoverageFunding: wallet.coveragePart.nextCoverage,
                                             uninterruptedCoverageFunding: wallet.coveragePart.coverage))
         let avatars = wallet.cosigners.map { $0.avatar }
