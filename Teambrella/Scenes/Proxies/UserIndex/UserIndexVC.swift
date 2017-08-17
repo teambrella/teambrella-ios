@@ -39,20 +39,31 @@ class UserIndexVC: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     
     @IBOutlet var avatarView: RoundBadgedView!
+    @IBOutlet var detailsLabel: InfoLabel!
+    @IBOutlet var rankLabel: AmountLabel!
+    @IBOutlet var sortButton: UIButton!
     
     @IBOutlet var topContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet var avatarWidthConstant: NSLayoutConstraint!
+
+    @IBAction func tapSort(_ sender: Any) {
+        service.router.showFilter(in: self, delegate: self, currentSort: dataSource.sortType)
+    }
     
     var isTopContainerShrinked: Bool = false
     fileprivate var previousScrollOffset: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        avatarView.showAvatar(string: service.session.myAvatarString)
         setupCollectionView()
         shrinkTopContainer(false)
         dataSource.loadData()
         dataSource.onUpdate = { [weak self] in
+            guard let dataSource = self?.dataSource, let me = dataSource.meModel else { return }
+            
+            self?.avatarView.showAvatar(string: me.avatarString)
+            self?.detailsLabel.text = me.location
+            self?.rankLabel.text = String(me.proxyRank)
             self?.collectionView.reloadData()
         }
     }
@@ -128,7 +139,7 @@ extension UserIndexVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        if let cell = view as? InfoHeader { 
+        if let cell = view as? InfoHeader {
             cell.leadingLabel.text = "Proxy.UserIndexVC.members".localized
             cell.trailingLabel.text = "Proxy.UserIndexVC.proxyRank".localized
         }
@@ -167,5 +178,13 @@ extension UserIndexVC: UIScrollViewDelegate {
         if velocity < -Constant.scrollingVelocityThreshold {
             shrinkTopContainer(false)
         }
+    }
+}
+
+// MARK: SortControllerDelegate
+extension UserIndexVC: SortControllerDelegate {
+    func sort(controller: SortVC, didSelect type: SortVC.SortType) {
+        dataSource.sortType = type
+        dataSource.loadData()
     }
 }

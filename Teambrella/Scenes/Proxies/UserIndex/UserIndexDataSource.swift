@@ -25,9 +25,14 @@ class UserIndexDataSource {
     var items: [UserIndexCellModel] = []
     var count: Int { return items.count }
     let teamID: Int
-    let limit: Int = 10
+    let limit: Int = 100
     let search: String = ""
-    let sortBy: Int = 0
+    var meModel: UserIndexCellModel?
+    var sortType: SortVC.SortType = .ratingHiLo {
+        didSet {
+            items.removeAll()
+        }
+    }
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
@@ -40,20 +45,30 @@ class UserIndexDataSource {
         return items[indexPath.row]
     }
     
+    subscript(index: Int) -> UserIndexCellModel {
+        return items[index]
+    }
+    
     func loadData() {
         service.server.updateTimestamp { [weak self] timestamp, error in
             let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
             guard let id = self?.teamID, let offset = self?.count, let limit = self?.limit,
-                let search = self?.search, let sort = self?.sortBy else { return }
+                let search = self?.search, let sort = self?.sortType else { return }
             
             let body = RequestBody(key: key, payload:["TeamId": id,
                                                       "Offset": offset,
                                                       "Limit": limit,
                                                       "Search": search,
-                                                      "SortBy": sort])
+                                                      "SortBy": sort.rawValue])
             let request = TeambrellaRequest(type: .proxyRatingList, body: body, success: { [weak self] response in
-                if case .proxyRatingList(let proxies, _) = response {
+                if case .proxyRatingList(var proxies, _) = response {
+                    let myID = service.session.currentUserID
+                    for (idx, proxy) in proxies.enumerated().reversed() where proxy.userID == myID {
+                        self?.meModel = proxy
+                        proxies.remove(at: idx)
+                        break
+                    }
                     self?.items += proxies
                     self?.onUpdate?()
                 }
