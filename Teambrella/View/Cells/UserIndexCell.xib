@@ -10,6 +10,11 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -58,20 +63,51 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DXV-oU-4bY">
+                                <rect key="frame" x="16" y="120" width="380" height="1"/>
+                                <color key="backgroundColor" red="0.90980392156862744" green="0.92941176470588238" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="PXa-6j-9Y5"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pJ-1b-AQm" customClass="Label" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="12" y="37" width="16" height="16"/>
+                                <color key="backgroundColor" red="0.47058823529999999" green="0.50980392159999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="4R5-g7-V76"/>
+                                    <constraint firstAttribute="height" constant="16" id="pXb-dC-oIR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="RpD-3o-fgi" firstAttribute="leading" secondItem="kNR-zH-x9t" secondAttribute="leading" constant="16" id="0PC-aG-43q"/>
+                            <constraint firstAttribute="bottom" secondItem="DXV-oU-4bY" secondAttribute="bottom" id="0iX-Sq-Pre"/>
                             <constraint firstItem="00i-59-BAm" firstAttribute="leading" secondItem="RpD-3o-fgi" secondAttribute="trailing" constant="16" id="3HV-28-AFg"/>
                             <constraint firstItem="RpD-3o-fgi" firstAttribute="centerY" secondItem="kNR-zH-x9t" secondAttribute="centerY" id="Bah-rv-1rm"/>
                             <constraint firstItem="nJB-UG-OHk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eMU-rn-v4T" secondAttribute="trailing" constant="8" id="Dgx-cf-S6L"/>
                             <constraint firstItem="tjo-Cf-cEW" firstAttribute="leading" secondItem="nJB-UG-OHk" secondAttribute="trailing" constant="22" id="Eeq-oC-Ecn"/>
                             <constraint firstItem="tjo-Cf-cEW" firstAttribute="centerY" secondItem="kNR-zH-x9t" secondAttribute="centerY" id="Ehn-XQ-AsP"/>
                             <constraint firstAttribute="trailing" secondItem="tjo-Cf-cEW" secondAttribute="trailing" constant="16" id="N0r-Qe-PGc"/>
+                            <constraint firstItem="9pJ-1b-AQm" firstAttribute="leading" secondItem="RpD-3o-fgi" secondAttribute="leading" constant="-4" id="ZhG-3d-5TK"/>
                             <constraint firstItem="eMU-rn-v4T" firstAttribute="top" secondItem="RpD-3o-fgi" secondAttribute="centerY" id="bp2-o2-a3C"/>
                             <constraint firstItem="nJB-UG-OHk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="00i-59-BAm" secondAttribute="trailing" constant="8" id="eMi-ou-z9z"/>
                             <constraint firstItem="eMU-rn-v4T" firstAttribute="leading" secondItem="00i-59-BAm" secondAttribute="leading" id="jIe-gJ-PvG"/>
+                            <constraint firstItem="9pJ-1b-AQm" firstAttribute="top" secondItem="RpD-3o-fgi" secondAttribute="top" constant="-4" id="kYW-Mh-a2v"/>
                             <constraint firstAttribute="bottom" secondItem="vsN-3n-E4M" secondAttribute="bottom" id="l8k-ef-sUp"/>
+                            <constraint firstItem="DXV-oU-4bY" firstAttribute="leading" secondItem="kNR-zH-x9t" secondAttribute="leading" constant="16" id="let-Pz-Rsy"/>
+                            <constraint firstAttribute="trailing" secondItem="DXV-oU-4bY" secondAttribute="trailing" id="qFj-rH-es5"/>
                             <constraint firstItem="00i-59-BAm" firstAttribute="bottom" secondItem="RpD-3o-fgi" secondAttribute="centerY" id="qe2-SF-wNf"/>
                             <constraint firstItem="vsN-3n-E4M" firstAttribute="leading" secondItem="kNR-zH-x9t" secondAttribute="leading" constant="16" id="tQA-7h-tfB"/>
                             <constraint firstAttribute="trailing" secondItem="vsN-3n-E4M" secondAttribute="trailing" id="tUY-7g-yig"/>
@@ -90,8 +126,10 @@
             <connections>
                 <outlet property="amountLabel" destination="nJB-UG-OHk" id="Xm8-yI-VcC"/>
                 <outlet property="avatarView" destination="RpD-3o-fgi" id="AhG-qv-fiH"/>
+                <outlet property="cellSeparator" destination="DXV-oU-4bY" id="VnS-6c-wg1"/>
                 <outlet property="detailsLabel" destination="eMU-rn-v4T" id="Q3U-vb-L23"/>
                 <outlet property="nameLabel" destination="00i-59-BAm" id="ehl-aO-dle"/>
+                <outlet property="numberLabel" destination="9pJ-1b-AQm" id="Xss-Jf-n69"/>
             </connections>
             <point key="canvasLocation" x="-7" y="2"/>
         </collectionViewCell>

@@ -221,11 +221,6 @@
                                                     <constraint firstAttribute="width" constant="56" id="hQA-as-URW"/>
                                                     <constraint firstAttribute="width" secondItem="KSQ-J5-PyT" secondAttribute="height" multiplier="1:1" id="xAV-6s-8Cz"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="limbColor">
-                                                        <color key="value" red="0.14117647059999999" green="0.86274509799999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUP-Nl-L65" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
                                                 <rect key="frame" x="88" y="86" width="29" height="21"/>

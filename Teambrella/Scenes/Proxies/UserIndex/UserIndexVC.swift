@@ -48,9 +48,9 @@ class UserIndexVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        avatarView.showAvatar(string: service.session.myAvatarString)
         setupCollectionView()
         shrinkTopContainer(false)
-        //dataSource.loadData()
         dataSource.loadData()
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
@@ -119,17 +119,23 @@ extension UserIndexVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         UserIndexCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        if let cell = cell as? UserIndexCell {
+            cell.numberLabel.text = String(indexPath.row + 1)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        
+        if let cell = view as? InfoHeader { 
+            cell.leadingLabel.text = "Proxy.UserIndexVC.members".localized
+            cell.trailingLabel.text = "Proxy.UserIndexVC.proxyRank".localized
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        //service.router.presentMemberProfile(teammate: dataSource[indexPath])
     }
     
 }
