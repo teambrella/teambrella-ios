@@ -25,10 +25,10 @@ import Kingfisher
 struct UserIndexCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: UserIndexCellModel) {
         if let cell = cell as? UserIndexCell {
-            cell.avatarView.kf.setImage(with: URL(string: model.avatarString))
+            cell.avatarView.showAvatar(string: model.avatarString)
             cell.nameLabel.text = model.name
-            cell.detailsLabel.text = model.city
-            cell.amountLabel.text = String(format: "%.2d", model.amount)
+            cell.detailsLabel.text = model.location
+            cell.amountLabel.text = String(/*format: "%.2d", */model.proxyRank)
         }
     }
     

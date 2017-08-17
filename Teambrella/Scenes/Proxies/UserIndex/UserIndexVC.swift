@@ -33,7 +33,7 @@ class UserIndexVC: UIViewController {
         static let scrollingVelocityThreshold: CGFloat = 10
     }
     
-    var dataSource: UserIndexDataSource = UserIndexDataSource()
+    var dataSource: UserIndexDataSource = UserIndexDataSource(teamID: service.session.currentTeam?.teamID ?? 0)
     
     @IBOutlet var topContainer: UIView!
     @IBOutlet var collectionView: UICollectionView!
@@ -50,6 +50,11 @@ class UserIndexVC: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         shrinkTopContainer(false)
+        //dataSource.loadData()
+        dataSource.loadData()
+        dataSource.onUpdate = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     private func setupCollectionView() {
@@ -113,7 +118,7 @@ extension UserIndexVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        
+        UserIndexCellBuilder.populate(cell: cell, with: dataSource[indexPath])
     }
     
     func collectionView(_ collectionView: UICollectionView,

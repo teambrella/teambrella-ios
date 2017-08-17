@@ -20,20 +20,28 @@
  */
 
 import Foundation
+import SwiftyJSON
 
 struct UserIndexCellModel {
+    let userID: String
     let avatarString: String
+    let proxyRank: Double
+    let discussionFreq: Double?
+    let decisionFreq: Double?
+    let location: String
+    let position: Int?
     let name: String
-    let city: String
-    let amount: Double
+    let votingFreq: Int?
     
-}
-
-extension UserIndexCellModel {
-    static func fake() -> UserIndexCellModel {
-        return UserIndexCellModel(avatarString: "",
-                                  name: "Fake",
-                                  city: "Fakeville",
-                                  amount: 13.45)
+    init(json: JSON) {
+        userID = json["UserId"].stringValue
+        avatarString = json["Avatar"].stringValue
+        proxyRank = json["Commission"].doubleValue
+        discussionFreq = json["DiscussionFreq"].double
+        decisionFreq = json["DecisionFreq"].double
+        location = json["Location"].stringValue
+        position = json["Position"].int
+        name = json["Name"].stringValue
+        votingFreq = json["VotingFreq"].int
     }
 }

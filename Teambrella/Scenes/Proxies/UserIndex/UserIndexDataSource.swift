@@ -21,18 +21,46 @@
 
 import Foundation
 
-struct UserIndexDataSource {
+class UserIndexDataSource {
     var items: [UserIndexCellModel] = []
     var count: Int { return items.count }
+    let teamID: Int
+    let limit: Int = 10
+    let search: String = ""
+    let sortBy: Int = 0
     
-    init() {
-        for _ in 1...25 {
-            items.append(UserIndexCellModel.fake())
-        }
+    var onUpdate: (() -> Void)?
+    var onError: ((Error) -> Void)?
+    
+    init(teamID: Int) {
+        self.teamID = teamID
     }
     
     subscript(indexPath: IndexPath) -> UserIndexCellModel {
         return items[indexPath.row]
     }
     
+    func loadData() {
+        service.server.updateTimestamp { [weak self] timestamp, error in
+            let key = Key(base58String: ServerService.privateKey,
+                          timestamp: timestamp)
+            guard let id = self?.teamID, let offset = self?.count, let limit = self?.limit,
+                let search = self?.search, let sort = self?.sortBy else { return }
+            
+            let body = RequestBody(key: key, payload:["TeamId": id,
+                                                      "Offset": offset,
+                                                      "Limit": limit,
+                                                      "Search": search,
+                                                      "SortBy": sort])
+            let request = TeambrellaRequest(type: .proxyRatingList, body: body, success: { [weak self] response in
+                if case .proxyRatingList(let proxies, _) = response {
+                    self?.items += proxies
+                    self?.onUpdate?()
+                }
+                }, failure: { [weak self] error in
+                    self?.onError?(error)
+            })
+            request.start()
+        }
+    }
 }
