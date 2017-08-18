@@ -34,3 +34,18 @@
 "Me.CoverageVC.maxExpenses"               = "Max Expenses covered";
 "Me.CoverageVC.yourExpenses"              = "In case your Expenses are";
 "Me.CoverageVC.teamPay"                   = "The team would pay you up to";
+
+
+// Need translation
+"Me.Report.ItemCell.title" = "REPORT";
+"Me.Report.DateCell.title" = "INCIDENT DATE";
+"Me.Report.ExpensesCell.title" = "EXPENSES";
+"Me.Report.DescriptionCell.title" = "DESCRIBE YOUR CASE";
+"Me.Report.PhotosCell.title" = "PHOTOS";
+"Me.Report.WalletCell.title" = "REIMBURSE TO";
+
+"Me.Report.ExpensesCell.deductibleTitle" = "DEDUCTIBLE";
+"Me.Report.ExpensesCell.coverageTitle" = "COVERAGE";
+"Me.Report.ExpensesCell.amountTitle" = "AMOUNT";
+
+"Me.Report.PhotosCell.buttonTitle" = "Add Photos";

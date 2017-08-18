@@ -214,7 +214,11 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var submitClaimButton: BorderedButton!
     
     @IBAction func tapSubmitClaim(_ sender: UIButton) {
-        service.router.presentClaimReport()
+        guard let model = dataSource.model else { return }
+        
+        let item = ClaimItem(name: model.objectName, photo: model.smallPhoto, location: "")
+        let context = ReportContext.claim(item: item, coverage: model.coverage, balance: model.balance)
+        service.router.presentReport(context: context)
     }
     
     @IBAction func tapLeftBrick(_ sender: Any) {

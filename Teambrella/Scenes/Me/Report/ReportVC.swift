@@ -25,13 +25,15 @@ class ReportVC: UIViewController, Routable {
     static let storyboardName: String = "Me"
     
     @IBOutlet var collectionView: UICollectionView!
-    let dataSource: ReportDataSource = ReportDataSource(reportType: .claim)
+    var reportContext: ReportContext!
+    var dataSource: ReportDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTransparentNavigationBar()
         defaultGradientOnTop()
         automaticallyAdjustsScrollViewInsets = false
+        dataSource = ReportDataSource(context: reportContext)
         ReportCellBuilder.registerCells(in: collectionView)
         title = "Report a Claim"
     }
@@ -72,7 +74,8 @@ extension ReportVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return ReportCellBuilder.dequeueCell(in: collectionView, indexPath: indexPath, type: dataSource[indexPath])
+        return collectionView.dequeueReusableCell(withReuseIdentifier: dataSource[indexPath].cellReusableIdentifier,
+                                                  for: indexPath)
     }
     
 }
@@ -82,7 +85,7 @@ extension ReportVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        
+        ReportCellBuilder.populate(cell: cell, with: dataSource[indexPath])
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -96,19 +99,7 @@ extension ReportVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height: CGFloat!
-        switch dataSource[indexPath] {
-        case .item:
-            height = 120
-        case .date, .wallet:
-            height = 80
-        case .expenses:
-            height = 160
-        case .description:
-            height = 170
-        case .photos:
-            height = 145
-        }
-        return CGSize(width: collectionView.bounds.width - 16 * 2, height: height)
+        return CGSize(width: collectionView.bounds.width - 16 * 2,
+                      height: CGFloat(dataSource[indexPath].preferredHeight))
     }
 }

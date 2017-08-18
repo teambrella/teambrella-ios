@@ -30,26 +30,32 @@ struct ReportCellBuilder {
         collectionView.register(ReportTextFieldCell.nib, forCellWithReuseIdentifier: ReportTextFieldCell.cellID)
     }
     
-    static func dequeueCell(in collectionView: UICollectionView,
-                            indexPath: IndexPath,
-                            type: ReportDataSource.ReportCellType) -> UICollectionViewCell {
-        let id: String!
-        switch type {
-        case .item:
-           id = ReportItemCell.cellID
-        case .date, .wallet:
-            id = ReportTextFieldCell.cellID
-        case .expenses:
-            id = ReportExpensesCell.cellID
-        case .description:
-            id = ReportDescriptionCell.cellID
-        case .photos:
-           id = ReportPhotoGalleryCell.cellID
+    static func populate(cell: UICollectionViewCell, with model: ReportCellModel) {
+        if let cell = cell as? ReportItemCell, let model = model as? ItemReportCellModel {
+            cell.avatarView.showImage(string: model.photo)
+            cell.itemLabel.text = model.name
+            cell.detailsLabel.text = model.location
+            cell.headerLabel.text = model.title
+        } else if let cell = cell as? ReportExpensesCell, let model = model as? ExpensesReportCellModel {
+            cell.headerLabel.text = model.title
+            cell.numberBar.left?.titleLabel.text = model.deductibleTitle
+            cell.numberBar.middle?.titleLabel.text = model.coverageTitle
+            cell.numberBar.right?.titleLabel.text = model.amountTitle
+            
+            cell.numberBar.left?.amountLabel.text = model.deductibleString
+            cell.numberBar.middle?.amountLabel.text = model.coverageString
+            cell.numberBar.right?.amountLabel.text = model.expensesString
+        } else if let cell = cell as? ReportDescriptionCell, let model = model as? DescriptionReportCellModel {
+            cell.headerLabel.text = model.title
+            cell.textView.text = model.text
+        } else if let cell = cell as? ReportPhotoGalleryCell, let model = model as? PhotosReportCellModel {
+            cell.headerLabel.text = model.title
+            cell.button.setTitle(model.buttonTitle, for: .normal)
+        } else if let cell = cell as? ReportTextFieldCell, let model = model as?  DateReportCellModel {
+            cell.headerLabel.text = model.title
+        } else if let cell = cell as? ReportTextFieldCell, let model = model as? WalletReportCellModel {
+            cell.headerLabel.text = model.title
         }
-        return collectionView.dequeueReusableCell(withReuseIdentifier: id, for: indexPath)
     }
     
-    static func populate(cell: UICollectionViewCell, with type: ReportDataSource.ReportCellType) {
-
-    }
 }

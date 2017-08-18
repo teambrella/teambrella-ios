@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+enum ReportContext {
+    // ClaimItem Coverage, Balance
+    case claim(item: ClaimItem, coverage: Double, balance: Double)
+}
+
+struct ClaimItem {
+    let name: String
+    let photo: String
+    let location: String
+}

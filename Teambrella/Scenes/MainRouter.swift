@@ -129,8 +129,10 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentClaimReport(in parentViewController: UIViewController? = nil) {
+    func presentReport(context: ReportContext, in parentViewController: UIViewController? = nil) {
         guard let vc = ReportVC.instantiate() as? ReportVC else { fatalError("Error instantiating") }
+        
+        vc.reportContext = context
         guard let parentViewController = parentViewController else {
             service.router.push(vc: vc)
             return
