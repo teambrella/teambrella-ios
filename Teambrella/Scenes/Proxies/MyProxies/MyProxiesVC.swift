@@ -107,7 +107,7 @@ extension MyProxiesVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         MyProxiesCellBuilder.populate(cell: cell, with: dataSource[indexPath])
         if let cell = cell as? ProxyCell {
-            cell.numberLabel.text = String(Int(indexPath.row) + 1)
+            cell.numberLabel.text = String(indexPath.row + 1)
         }
     }
     

@@ -26,10 +26,14 @@ class UserIndexCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var nameLabel: Label!
     @IBOutlet var detailsLabel: Label!
     @IBOutlet var amountLabel: Label!
+    @IBOutlet var numberLabel: Label!
+    @IBOutlet var cellSeparator: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        numberLabel.layer.cornerRadius = 7.5
+        numberLabel.layer.borderWidth = 1
+        numberLabel.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
     }
 
 }
