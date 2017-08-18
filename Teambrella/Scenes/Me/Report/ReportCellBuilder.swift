@@ -30,7 +30,7 @@ struct ReportCellBuilder {
         collectionView.register(ReportTextFieldCell.nib, forCellWithReuseIdentifier: ReportTextFieldCell.cellID)
     }
     
-    static func populate(cell: UICollectionViewCell, with model: ReportCellModel) {
+    static func populate(cell: UICollectionViewCell, with model: ReportCellModel, reportVC: ReportVC) {
         if let cell = cell as? ReportItemCell, let model = model as? ItemReportCellModel {
             cell.avatarView.showImage(string: model.photo)
             cell.itemLabel.text = model.name
@@ -53,6 +53,7 @@ struct ReportCellBuilder {
             cell.button.setTitle(model.buttonTitle, for: .normal)
         } else if let cell = cell as? ReportTextFieldCell, let model = model as?  DateReportCellModel {
             cell.headerLabel.text = model.title
+            cell.textField.inputView = reportVC.datePicker
         } else if let cell = cell as? ReportTextFieldCell, let model = model as? WalletReportCellModel {
             cell.headerLabel.text = model.title
         }

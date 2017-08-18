@@ -28,14 +28,62 @@ class ReportVC: UIViewController, Routable {
     var reportContext: ReportContext!
     var dataSource: ReportDataSource!
     
+    lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.date = Date()
+        datePicker.datePickerMode = .dateAndTime
+        datePicker.minuteInterval = 5
+        return datePicker
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTransparentNavigationBar()
         defaultGradientOnTop()
+        addKeyboardObservers()
         automaticallyAdjustsScrollViewInsets = false
         dataSource = ReportDataSource(context: reportContext)
         ReportCellBuilder.registerCells(in: collectionView)
         title = "Report a Claim"
+    }
+    
+    func addKeyboardObservers() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapView))
+        view.addGestureRecognizer(tap)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(adjustForKeyboard),
+                           name: Notification.Name.UIKeyboardWillHide,
+                           object: nil)
+        center.addObserver(self, selector: #selector(adjustForKeyboard),
+                           name: Notification.Name.UIKeyboardWillChangeFrame,
+                           object: nil)
+    }
+    
+    func adjustForKeyboard(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        let keyboardScreenEndFrame = value.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == Notification.Name.UIKeyboardWillHide {
+            collectionView.contentInset = UIEdgeInsets.zero
+        } else {
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+        }
+        
+        collectionView.scrollIndicatorInsets = collectionView.contentInset
+        if let responder = collectionView.currentFirstResponder() as? UIView {
+            for cell in collectionView.visibleCells where responder.isDescendant(of: cell) {
+                if let indexPath = collectionView.indexPath(for: cell) {
+                    collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                }
+            }
+        }
+    }
+    
+    func tapView(sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +133,7 @@ extension ReportVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        ReportCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        ReportCellBuilder.populate(cell: cell, with: dataSource[indexPath], reportVC: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

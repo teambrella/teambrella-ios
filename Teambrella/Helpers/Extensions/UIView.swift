@@ -50,4 +50,26 @@ public extension UIView {
                                 policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
+    
+    func currentFirstResponder() -> UIResponder? {
+        if self.isFirstResponder {
+            return self
+        }
+        for view in self.subviews {
+            if let responder = view.currentFirstResponder() {
+                return responder
+            }
+        }
+        return nil
+    }
+    
+    func contains(view: UIView) -> Bool {
+        for subview in subviews {
+            if subview.contains(view: view) {
+                return true
+            }
+        }
+        return false
+    }
+    
 }
