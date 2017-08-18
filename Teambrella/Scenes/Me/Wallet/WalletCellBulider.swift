@@ -46,7 +46,6 @@ struct WalletCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: WalletCellModel) {
         if let cell = cell as? WalletHeaderCell, let model = model as? WalletHeaderCellModel {
             cell.amount.text = String.formattedNumber(model.amount * 1000)
-            //cell.currencyLabel.text = String.formattedNumber(model.)
             cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
             cell.numberBar.left?.amountLabel.text = String.formattedNumber(model.reserved * 1000)
             cell.numberBar.left?.isBadgeVisible = false
@@ -54,6 +53,11 @@ struct WalletCellBuilder {
             cell.numberBar.right?.amountLabel.text = String.formattedNumber(model.available * 1000)
             cell.numberBar.right?.isBadgeVisible = false
             cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
+            cell.currencyLabel.text = service.session.cryptoCurrency.coinCode
+            if let team = service.session.currentTeam {
+            cell.auxillaryAmount.text = team.currency + "?"
+                
+            }
         }
         if let cell = cell as? WalletFundingCell, let model = model as? WalletFundingCellModel {
             cell.headerLabel.text = "Me.WalletVC.fundingCell.title".localized

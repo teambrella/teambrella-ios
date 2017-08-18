@@ -34,6 +34,7 @@ struct FeedCellBuilder {
                 cell.avatarView.layer.masksToBounds = true
                 cell.avatarView.layer.cornerRadius = 4
             }
+            cell.avatarView.contentMode = .scaleToFill
             cell.titleLabel.text = model.chatTitle
             cell.textLabel.text = model.text
             cell.facesStack.setAvatars(images: model.topPosterAvatars, label: nil, max: 4)

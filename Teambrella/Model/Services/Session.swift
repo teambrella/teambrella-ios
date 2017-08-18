@@ -30,6 +30,8 @@ struct Session {
     var currentUserName: String?
     var currentUserAvatar: String = ""
     
+    var cryptoCurrency: CryptoCurrency = Ethereum()
+    
     var myAvatarString: String { return "me/avatar" }
     var myAvatarStringSmall: String { return myAvatarString + "/128" }
     

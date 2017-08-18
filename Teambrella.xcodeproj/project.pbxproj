@@ -26,6 +26,7 @@
 		6D097EA81E9D220A00E77DAB /* General.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D097EA61E9D220A00E77DAB /* General.strings */; };
 		6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAA1E9D390200E77DAB /* Topic.swift */; };
 		6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */; };
+		6D0B783D1F45EEAE00847FFF /* CryptoCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B783C1F45EEAE00847FFF /* CryptoCurrency.swift */; };
 		6D0BA5B11F14F83000055E74 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0BA5B01F14F83000055E74 /* SwiftDate.framework */; };
 		6D0BA5B31F14F88100055E74 /* DateProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0BA5B21F14F88100055E74 /* DateProcessor.swift */; };
 		6D0D2ADA1EFBB1B80095284C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D2AD91EFBB1B80095284C /* Array.swift */; };
@@ -418,6 +419,7 @@
 		6D097EA91E9D230E00E77DAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/General.strings; sourceTree = "<group>"; };
 		6D097EAA1E9D390200E77DAB /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Topic.swift; path = Model/Protocols/Topic.swift; sourceTree = "<group>"; };
 		6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicEntity.swift; path = Model/Entities/TopicEntity.swift; sourceTree = "<group>"; };
+		6D0B783C1F45EEAE00847FFF /* CryptoCurrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CryptoCurrency.swift; path = Model/Entities/CryptoCurrency.swift; sourceTree = "<group>"; };
 		6D0BA5B01F14F83000055E74 /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftDate.framework; path = Carthage/Build/iOS/SwiftDate.framework; sourceTree = "<group>"; };
 		6D0BA5B21F14F88100055E74 /* DateProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateProcessor.swift; path = Helpers/DateProcessor.swift; sourceTree = "<group>"; };
 		6D0D2AD91EFBB1B80095284C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = Helpers/Extensions/Array.swift; sourceTree = "<group>"; };
@@ -1328,6 +1330,7 @@
 				6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */,
 				6D69D9E81EFBF49700DED5CE /* ValueToTextConverter.swift */,
 				6DF479111F41E4300025F489 /* PromiseKit.swift */,
+				6D0B783C1F45EEAE00847FFF /* CryptoCurrency.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2112,6 +2115,7 @@
 				6D69D9F01EFC033300DED5CE /* ProxyForDataSource.swift in Sources */,
 				6D466AAB1ED07CF1001BC579 /* TxInput.swift in Sources */,
 				6D481F7D1F0BD0DD0023C781 /* RoundedCornersView.swift in Sources */,
+				6D0B783D1F45EEAE00847FFF /* CryptoCurrency.swift in Sources */,
 				6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */,
 				6D466AA11ED07CF1001BC579 /* BlockchainService.swift in Sources */,
 				6DA475D91E8BBD2A00B56D9B /* TeambrellaError.swift in Sources */,

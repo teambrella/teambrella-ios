@@ -55,7 +55,7 @@ struct TeamEntity {
 }
 
 extension TeamEntity: Equatable {
-    static func ==(lhs: TeamEntity, rhs: TeamEntity) -> Bool {
+    static func == (lhs: TeamEntity, rhs: TeamEntity) -> Bool {
         return lhs.teamID == rhs.teamID
     }
 }

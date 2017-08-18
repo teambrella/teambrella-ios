@@ -85,14 +85,20 @@ class NumberView: UIView, XIBInitable {
         }
     }
     
+    func tmpSetup() {
+        currencyLabel.text = service.session.cryptoCurrency.coinCode
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
+        tmpSetup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         xibSetup()
+        tmpSetup()
     }
     
 }
