@@ -60,9 +60,10 @@ class UserIndexDataSource {
         service.server.updateTimestamp { [weak self] timestamp, error in
             let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
-            guard let id = self?.teamID, let offset = self?.count, let limit = self?.limit,
+            guard let id = self?.teamID, var offset = self?.count, let limit = self?.limit,
                 let search = self?.search, let sort = self?.sortType else { return }
             
+            if self?.meModel != nil { offset += 1 }
             let body = RequestBody(key: key, payload:["TeamId": id,
                                                       "Offset": offset,
                                                       "Limit": limit,

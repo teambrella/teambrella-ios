@@ -32,6 +32,7 @@ class TeammateProfileVC: UIViewController, Routable {
     static var storyboardName: String = "Team"
     
     var teammate: TeammateLike?
+    var teammateID: String?
     
     var dataSource: TeammateProfileDataSource!
     var riskController: VotingRiskVC?
@@ -46,9 +47,11 @@ class TeammateProfileVC: UIViewController, Routable {
         if let teammate = teammate {
             dataSource = TeammateProfileDataSource(id: teammate.userID, isVoting: teammate.isVoting, isMe: false)
             addGradientNavBar()
+        } else if let teammateID = teammateID {
+            dataSource = TeammateProfileDataSource(id: teammateID, isVoting: false, isMe: false)
         } else if let myID = service.session.currentUserID {
             dataSource = TeammateProfileDataSource(id: myID, isVoting: false, isMe: true)
-        } else {
+        }  else {
             fatalError("No valid info about teammate")
         }
         
