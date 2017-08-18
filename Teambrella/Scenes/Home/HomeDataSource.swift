@@ -62,8 +62,18 @@ class HomeDataSource {
     }
     
     func deleteCard(at index: Int) {
-        let card = model?.cards.remove(at: index)
-        //еще удалить на сервере!
+        guard let card = model?.cards.remove(at: index) else { return }
+        
+        service.storage.deleteCard(topicID: card.topicID).observe { [weak self] result in
+            switch result {
+            case .value(let homeModel):
+                self?.model = homeModel
+                self?.onUpdate?()
+            case .error(let error):
+                print(error)
+            }
+        }
+       
     }
     
     subscript(indexPath: IndexPath) -> HomeScreenModel.Card? {

@@ -41,6 +41,23 @@ class LocalStorage: Storage {
         return promise
     }
     
+    func deleteCard(topicID: String) -> Future<HomeScreenModel> {
+    let promise = Promise<HomeScreenModel>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["topicId": topicID])
+            let request = TeambrellaRequest(type: .feedDeleteCard, body: body, success: { response in
+                if case let .feedDeleteCard(homeModel) = response {
+                    promise.resolve(with: homeModel)
+                } else {
+                    promise.reject(with: TeambrellaError(kind: .wrongReply,
+                                                         description: "Was waiting .deleteCard got \(response)"))
+                }
+            })
+            request.start()
+        }
+        return promise
+    }
+    
     func requestTeamFeed(context: FeedRequestContext) -> Future<[FeedEntity]> {
         let promise = Promise<[FeedEntity]>()
         freshKey { key in

@@ -83,6 +83,7 @@ class UserIndexDataSource {
                     self?.onUpdate?()
                 }
                 }, failure: { [weak self] error in
+                    self?.isLoading = false
                     self?.onError?(error)
             })
             request.start()

@@ -26,12 +26,14 @@ struct Ethereum: CryptoCurrency {
     var coin: CryptoCurrency? { return Finney() }
     let coinRate = 1000
     
+    /*
     let finneyRate = 1000
     let szaboRate = 1000_000
     let gweiRate = 1000_000_000
     let mweiRate = 1000_000_000_000
     let kweiRate = 1000_000_000_000_000
     let weiRate = 1000_000_000_000_000_000
+ */
 }
 
 struct Finney: CryptoCurrency {

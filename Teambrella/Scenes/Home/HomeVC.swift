@@ -238,7 +238,6 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     func closeCard(_ sender: UIButton) {
-        print("Tap close!!!!!!!")
         dataSource.deleteCard(at: sender.tag)
         collectionView.reloadData()
         pageControl.numberOfPages = dataSource.cardsCount
