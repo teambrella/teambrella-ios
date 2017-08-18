@@ -25,12 +25,16 @@ class UserIndexDataSource {
     var items: [UserIndexCellModel] = []
     var count: Int { return items.count }
     let teamID: Int
-    let limit: Int = 100
+    let limit: Int = 10
     let search: String = ""
     var meModel: UserIndexCellModel?
+    var isLoading: Bool = false
+    var hasMore: Bool = true
+    var canLoad: Bool { return hasMore && !isLoading }
     var sortType: SortVC.SortType = .ratingHiLo {
         didSet {
             items.removeAll()
+            hasMore = true
         }
     }
     
@@ -50,6 +54,9 @@ class UserIndexDataSource {
     }
     
     func loadData() {
+        guard canLoad else { return }
+        
+        isLoading = true
         service.server.updateTimestamp { [weak self] timestamp, error in
             let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
@@ -63,6 +70,7 @@ class UserIndexDataSource {
                                                       "SortBy": sort.rawValue])
             let request = TeambrellaRequest(type: .proxyRatingList, body: body, success: { [weak self] response in
                 if case .proxyRatingList(var proxies, _) = response {
+                    self?.hasMore = (proxies.count == limit)
                     let myID = service.session.currentUserID
                     for (idx, proxy) in proxies.enumerated().reversed() where proxy.userID == myID {
                         self?.meModel = proxy
@@ -70,6 +78,7 @@ class UserIndexDataSource {
                         break
                     }
                     self?.items += proxies
+                    self?.isLoading = false
                     self?.onUpdate?()
                 }
                 }, failure: { [weak self] error in

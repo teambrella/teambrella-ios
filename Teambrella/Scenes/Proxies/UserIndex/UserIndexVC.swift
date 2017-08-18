@@ -133,6 +133,9 @@ extension UserIndexVC: UICollectionViewDelegate {
         if let cell = cell as? UserIndexCell {
             cell.numberLabel.text = String(indexPath.row + 1)
         }
+        if indexPath.row == (dataSource.count - dataSource.limit/2) {
+            dataSource.loadData()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
