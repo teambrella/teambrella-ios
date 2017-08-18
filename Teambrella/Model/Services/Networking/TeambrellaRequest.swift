@@ -50,6 +50,7 @@ enum TeambrellaRequestType: String {
     case myProxies = "proxy/getMyProxiesList"
     case proxyFor = "proxy/getIAmProxyForList"
     case proxyPosition = "proxy/setMyProxyPosition"
+    case proxyRatingList = "proxy/getRatingList"
 }
 
 enum TeambrellaResponseType {
@@ -77,6 +78,7 @@ enum TeambrellaResponseType {
     case myProxies([ProxyCellModel])
     case proxyFor([ProxyForCellModel], Double)
     case proxyPosition
+    case proxyRatingList([UserIndexCellModel], Int)
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -182,6 +184,9 @@ struct TeambrellaRequest {
             success(.proxyFor(models, reply["TotalCommission"].doubleValue))
         case .proxyPosition:
             success(.proxyPosition)
+        case .proxyRatingList:
+            let models = reply["Members"].arrayValue.map { UserIndexCellModel(json: $0) }
+            success(.proxyRatingList(models, reply["TotalCount"].intValue))
         default:
             break
         }

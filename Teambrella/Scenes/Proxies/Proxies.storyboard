@@ -214,6 +214,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8l-Eu-bWi">
                                                 <rect key="frame" x="341" y="19" width="18" height="22"/>
                                                 <state key="normal" image="filter"/>
+                                                <connections>
+                                                    <action selector="tapSort:" destination="7bW-lz-Yk2" eventType="touchUpInside" id="lYl-8u-coF"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KSQ-J5-PyT" customClass="RoundBadgedView" customModule="Teambrella" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="79" width="56" height="56"/>
@@ -221,11 +224,6 @@
                                                     <constraint firstAttribute="width" constant="56" id="hQA-as-URW"/>
                                                     <constraint firstAttribute="width" secondItem="KSQ-J5-PyT" secondAttribute="height" multiplier="1:1" id="xAV-6s-8Cz"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="limbColor">
-                                                        <color key="value" red="0.14117647059999999" green="0.86274509799999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUP-Nl-L65" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
                                                 <rect key="frame" x="88" y="86" width="29" height="21"/>
@@ -353,6 +351,9 @@
                         <outlet property="avatarView" destination="KSQ-J5-PyT" id="elK-Xz-sK5"/>
                         <outlet property="avatarWidthConstant" destination="hQA-as-URW" id="eUY-TY-zHh"/>
                         <outlet property="collectionView" destination="AlL-Qh-U17" id="CmS-pL-cUp"/>
+                        <outlet property="detailsLabel" destination="pn0-6n-rVi" id="mnP-zu-hXA"/>
+                        <outlet property="rankLabel" destination="jor-Dp-OpJ" id="e5Y-57-mFT"/>
+                        <outlet property="sortButton" destination="G8l-Eu-bWi" id="aO9-Gk-6Dx"/>
                         <outlet property="topContainer" destination="Xag-fb-NUG" id="3Pe-JW-1Vj"/>
                         <outlet property="topContainerHeightConstraint" destination="uOp-je-QDa" id="HVp-HO-jsx"/>
                     </connections>
@@ -405,17 +406,17 @@
                                                         <rect key="frame" x="0.0" y="28" width="359" height="77"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gsw-a9-QAg" id="Gvs-a5-PIl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="76"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="76.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TopLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwo-Tg-suh">
-                                                                    <rect key="frame" x="17" y="19" width="64" height="19"/>
+                                                                    <rect key="frame" x="17" y="19" width="63.5" height="18.5"/>
                                                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                                                     <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BottomLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPo-aB-r6l">
-                                                                    <rect key="frame" x="17" y="43" width="72" height="15"/>
+                                                                    <rect key="frame" x="17" y="43" width="71.5" height="15"/>
                                                                     <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
                                                                     <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>

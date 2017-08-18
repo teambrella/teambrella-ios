@@ -114,6 +114,13 @@ final class MainRouter {
         push(vc: vc)
     }
     
+    func presentMemberProfile(teammateID: String) {
+        guard let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC else { fatalError("Error instantiating") }
+        
+        vc.teammateID = teammateID
+        push(vc: vc)
+    }
+    
     func presentClaims(teammate: TeammateLike? = nil) {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
         
