@@ -56,7 +56,9 @@ class InitialVC: UIViewController {
                                                     }
                                                     service.session.teams = teams
                                                     service.session.currentUserID = userID
-                                                    self?.performSegue(type: .teambrella)
+                                                    service.storage.setLanguage().observe { _ in
+                                                        self?.performSegue(type: .teambrella)
+                                                    }
                                                 }
             }) { error in
                 

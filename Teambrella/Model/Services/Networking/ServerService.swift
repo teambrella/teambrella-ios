@@ -130,13 +130,13 @@ class ServerService {
             request.setValue(body.signature, forHTTPHeaderField: "sig")
         }
         
-        print(request)
+        print("👉 \(request)")
         Alamofire.request(request).responseJSON { response in
             switch response.result {
             case .success:
                 if let value = response.result.value {
                     let result = JSON(value)
-                    print("Result: \(result)")
+                    print("👍 \(result)")
                     let status = ResponseStatus(json: result["Status"])
                     self.timestamp = status.timestamp
                     switch status.code {

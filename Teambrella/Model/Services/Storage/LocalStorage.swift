@@ -42,23 +42,34 @@ class LocalStorage: Storage {
         return promise
     }
     
-//    func setLanguage() -> Future<Bool> {
-//        let promise = Promise<Bool>()
-//        freshKey { key in
-//            let body = RequestBody(key: key)
-//            let request = TeambrellaRequest(type: let lang = Locale.current.languageCode == "es" ? .setUILangEs : .setUILangEn,
-//                                            body: body,
-//                                            success: { response in
-//                                                    promise.resolve(with: true) // ?
-//                                                } else {
-//                                                    promise.reject(with: TeambrellaError(kind: .wrongReply,
-//                                                                                         description: "Was waiting .setUILangEs got \(response)"))
-//                                                }
-//            })
-//            request.start()
-//        }
-//        return promise
-//    }
+    func setLanguage() -> Future<String> {
+        let promise = Promise<String>()
+        freshKey { key in
+            let body = RequestBody(key: key)
+            let requestType: TeambrellaRequestType
+            if let locale = Locale.current.languageCode, locale == "es" {
+                requestType = .setLanguageEs
+            } else {
+                requestType = .setLanguageEn
+            }
+            let request = TeambrellaRequest(type: requestType,
+                                            body: body,
+                                            success: { response in
+                                                if case let .setLanguage(language) = response {
+                                                    print("Language is set to \(language)")
+                                                    promise.resolve(with: language)
+                                                } else {
+                                                    let errorMessage = "Was waiting .setLanguage got \(response)"
+                                                    promise.reject(with: TeambrellaError(kind: .wrongReply,
+                                                                                         description: errorMessage))
+                                                }
+            }, failure: { error in
+                promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
     
     func deleteCard(topicID: String) -> Future<HomeScreenModel> {
         let promise = Promise<HomeScreenModel>()

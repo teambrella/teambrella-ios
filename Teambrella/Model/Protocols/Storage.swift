@@ -27,7 +27,7 @@ protocol Storage {
     func requestHome(teamID: Int) -> Future<HomeScreenModel>
     func requestTeamFeed(context: FeedRequestContext) -> Future<[FeedEntity]>
     func deleteCard(topicID: String) -> Future<HomeScreenModel>
-    func setLanguage() -> Future<Bool>
+    func setLanguage() -> Future<String>
     
     func myProxy(userID: String, add: Bool) -> Future<Bool>
 }

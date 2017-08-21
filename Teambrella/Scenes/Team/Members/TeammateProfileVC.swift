@@ -51,7 +51,7 @@ class TeammateProfileVC: UIViewController, Routable {
             dataSource = TeammateProfileDataSource(id: teammateID, isVoting: false, isMe: false)
         } else if let myID = service.session.currentUserID {
             dataSource = TeammateProfileDataSource(id: myID, isVoting: false, isMe: true)
-        }  else {
+        } else {
             fatalError("No valid info about teammate")
         }
         
