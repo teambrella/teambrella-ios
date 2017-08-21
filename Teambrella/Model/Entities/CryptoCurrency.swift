@@ -95,12 +95,3 @@ struct Wei: CryptoCurrency {
     let coin: CryptoCurrency? = nil
     let coinRate = 1
 }
-
-struct Currency {
-    let code: String
-    let symbol: String
-    
-    init(code: String) {
-        
-    }
-}
