@@ -256,6 +256,10 @@
 		6DCDEB701F17DC5900C6D38C /* FeedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDEB6F1F17DC5900C6D38C /* FeedEntity.swift */; };
 		6DCDEB721F17E2F100C6D38C /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDEB711F17E2F100C6D38C /* ItemType.swift */; };
 		6DCDEB741F17E76A00C6D38C /* FeedRequestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDEB731F17E76A00C6D38C /* FeedRequestContext.swift */; };
+		6DCF62531F4B30E200E8F500 /* PhotoPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF62521F4B30E200E8F500 /* PhotoPreviewVC.swift */; };
+		6DCF62571F4B319F00E8F500 /* PhotoPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */; };
+		6DCF62581F4B319F00E8F500 /* PhotoPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DCF62561F4B319F00E8F500 /* PhotoPreviewCell.xib */; };
+		6DCF625A1F4B31EB00E8F500 /* PhotoPreviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF62591F4B31EB00E8F500 /* PhotoPreviewDelegate.swift */; };
 		6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */; };
 		6DD12ECC1EC75C2C00BE1CC4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */; };
 		6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */; };
@@ -662,6 +666,10 @@
 		6DCDEB6F1F17DC5900C6D38C /* FeedEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedEntity.swift; path = Model/Entities/FeedEntity.swift; sourceTree = "<group>"; };
 		6DCDEB711F17E2F100C6D38C /* ItemType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemType.swift; path = Model/Enums/ItemType.swift; sourceTree = "<group>"; };
 		6DCDEB731F17E76A00C6D38C /* FeedRequestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedRequestContext.swift; path = Model/Entities/FeedRequestContext.swift; sourceTree = "<group>"; };
+		6DCF62521F4B30E200E8F500 /* PhotoPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewVC.swift; path = Controller/PhotosPreviewVC/PhotoPreviewVC.swift; sourceTree = "<group>"; };
+		6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewCell.swift; path = View/Cells/PhotoPreviewCell.swift; sourceTree = "<group>"; };
+		6DCF62561F4B319F00E8F500 /* PhotoPreviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewCell.xib; path = View/Cells/PhotoPreviewCell.xib; sourceTree = "<group>"; };
+		6DCF62591F4B31EB00E8F500 /* PhotoPreviewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewDelegate.swift; path = Controller/PhotosPreviewVC/PhotoPreviewDelegate.swift; sourceTree = "<group>"; };
 		6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mirror.swift; path = Helpers/Extensions/Mirror.swift; sourceTree = "<group>"; };
 		6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Helpers/Extensions/Date.swift; sourceTree = "<group>"; };
 		6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImageView.swift; path = View/RoundImageView.swift; sourceTree = "<group>"; };
@@ -1141,6 +1149,7 @@
 			children = (
 				6D83EC8A1EDD7083000412DC /* Navigator.swift */,
 				6DA714EC1EDF49F500F39EBE /* MasterTabBarController.swift */,
+				6DCF62541F4B314300E8F500 /* PhotosPreview */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1532,6 +1541,8 @@
 				9480EA131F15246E008A7A3F /* RiskCell.xib */,
 				94C2D3981F191FA600D203C2 /* TeamCell.swift */,
 				94C2D3991F191FA600D203C2 /* TeamCell.xib */,
+				6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */,
+				6DCF62561F4B319F00E8F500 /* PhotoPreviewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1601,6 +1612,15 @@
 				6DCB19571F11163900AC9969 /* PagingDraggable.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		6DCF62541F4B314300E8F500 /* PhotosPreview */ = {
+			isa = PBXGroup;
+			children = (
+				6DCF62521F4B30E200E8F500 /* PhotoPreviewVC.swift */,
+				6DCF62591F4B31EB00E8F500 /* PhotoPreviewDelegate.swift */,
+			);
+			name = PhotosPreview;
 			sourceTree = "<group>";
 		};
 		6DD7F4191EB9DAF4001E7733 /* View */ = {
@@ -1855,6 +1875,7 @@
 				6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */,
 				6D69DA2E1EFD1A1E00DED5CE /* WalletButtonsCell.xib in Resources */,
 				6D6DA24E1EE1B65000307C73 /* Claims.storyboard in Resources */,
+				6DCF62581F4B319F00E8F500 /* PhotoPreviewCell.xib in Resources */,
 				6D9CC62A1ED5EAD3007F936E /* Proxies.storyboard in Resources */,
 				6D9CC6531ED98A07007F936E /* NumberView.xib in Resources */,
 				6DB8122B1EE715DA00B202CE /* DiscussionCell.xib in Resources */,
@@ -2327,9 +2348,11 @@
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
 				6D69DA141EFC461700DED5CE /* CoverageVC.swift in Sources */,
 				6D02AC951F06A6B800B01AAF /* VotingScrollerCellModel.swift in Sources */,
+				6DCF62531F4B30E200E8F500 /* PhotoPreviewVC.swift in Sources */,
 				6DDE95681EE806F80019DA47 /* ImageGalleryCell.swift in Sources */,
 				6D69DA371EFD6CED00DED5CE /* HeaderWithButton.swift in Sources */,
 				6DB8121B1EE6F1B800B202CE /* EnhancedClaimEntity.swift in Sources */,
+				6DCF62571F4B319F00E8F500 /* PhotoPreviewCell.swift in Sources */,
 				6D465F301F46E85C007AC28F /* ReportStrategy.swift in Sources */,
 				6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */,
 				6D02AC941F06A6B800B01AAF /* VotingRiskVC.swift in Sources */,
@@ -2373,6 +2396,7 @@
 				6D9CC6511ED97C37007F936E /* HomeCollectionCell.swift in Sources */,
 				94B4C37E1F1E18AC00AED4CE /* CosignerEntity.swift in Sources */,
 				6D73C6E41EBB3F0800A2C0F8 /* TransactionCell.swift in Sources */,
+				6DCF625A1F4B31EB00E8F500 /* PhotoPreviewDelegate.swift in Sources */,
 				6D6DA2641EE21ACA00307C73 /* FacebookUser.swift in Sources */,
 				94C2D39A1F191FA600D203C2 /* TeamCell.swift in Sources */,
 				6D69D9FB1EFC07FF00DED5CE /* ProxyForCell.swift in Sources */,
