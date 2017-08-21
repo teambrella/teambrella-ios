@@ -42,6 +42,7 @@ struct TeamEntity {
         return TeamAccessLevel(rawValue: json["TeamAccessLevel"].intValue) ?? .noAccess
     }
     var currency: String { return json["Currency"].stringValue }
+    var currencySymbol: String { return ["USD": "$", "EUR": "€", "PEN": "S/."][currency] ?? currency }
     
     var isInvitation: Bool { return teamCoverage != nil }
     
