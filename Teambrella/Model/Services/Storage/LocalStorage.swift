@@ -25,6 +25,7 @@ class LocalStorage: Storage {
     var lastKeyTime: Date?
     
     func requestHome(teamID: Int) -> Future<HomeScreenModel> {
+        //let language = setLanguage()
         let promise = Promise<HomeScreenModel>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
@@ -41,8 +42,26 @@ class LocalStorage: Storage {
         return promise
     }
     
+//    func setLanguage() -> Future<Bool> {
+//        let promise = Promise<Bool>()
+//        freshKey { key in
+//            let body = RequestBody(key: key)
+//            let request = TeambrellaRequest(type: let lang = Locale.current.languageCode == "es" ? .setUILangEs : .setUILangEn,
+//                                            body: body,
+//                                            success: { response in
+//                                                    promise.resolve(with: true) // ?
+//                                                } else {
+//                                                    promise.reject(with: TeambrellaError(kind: .wrongReply,
+//                                                                                         description: "Was waiting .setUILangEs got \(response)"))
+//                                                }
+//            })
+//            request.start()
+//        }
+//        return promise
+//    }
+    
     func deleteCard(topicID: String) -> Future<HomeScreenModel> {
-    let promise = Promise<HomeScreenModel>()
+        let promise = Promise<HomeScreenModel>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["topicId": topicID])
             let request = TeambrellaRequest(type: .feedDeleteCard, body: body, success: { response in
