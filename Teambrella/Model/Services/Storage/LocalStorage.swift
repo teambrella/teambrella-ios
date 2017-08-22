@@ -24,6 +24,25 @@ import Foundation
 class LocalStorage: Storage {
     var lastKeyTime: Date?
     
+    func requestTeams() -> Future<TeamsEntity> {
+        let promise = Promise<TeamsEntity>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: [:])
+            let request = TeambrellaRequest(type: .teams,
+                                            parameters: nil,
+                                            body: body,
+                                            success: { response in
+                                                if case .teams(let teamsEntity) = response {
+                                                    promise.resolve(with: teamsEntity)
+                                                }
+            }) { error in
+                promise.reject(with: error)
+            }
+            request.start()
+        }
+        return promise
+    }
+    
     func requestHome(teamID: Int) -> Future<HomeScreenModel> {
         //let language = setLanguage()
         let promise = Promise<HomeScreenModel>()
@@ -126,6 +145,46 @@ class LocalStorage: Storage {
                 }
             }, failure: { error in
                 promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
+    func sendPhoto(data: Data) -> Future<String> {
+        let promise = Promise<String>()
+        freshKey { key in
+            var body = RequestBody(key: service.server.key, payload: nil)
+            body.contentType = "image/jpeg"
+            body.data = data
+            let request = TeambrellaRequest(type: .uploadPhoto, body: body, success: { response in
+                if case .uploadPhoto(let name) = response {
+                    promise.resolve(with: name)
+                }
+            }, failure: { error in
+                promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
+    func createNewClaim(model: NewClaimModel) -> Future<EnhancedClaimEntity> {
+        let promise = Promise<EnhancedClaimEntity>()
+        freshKey { key in
+            let dateString = Formatter.teambrellaShortDashed.string(from: model.incidentDate)
+            let body = RequestBody(key: key, payload:["TeamId": model.teamID,
+                                                      "IncidentDate": dateString,
+                                                      "Expenses": model.expenses,
+                                                      "Message": model.message,
+                                                      "Images": model.images,
+                                                      "Address": model.address])
+            let request = TeambrellaRequest(type: .newClaim, body: body, success: { response in
+                if case .claim(let claim) = response {
+                    promise.resolve(with: claim)
+                }
+                }, failure: { error in
+                    promise.reject(with: error)
             })
             request.start()
         }

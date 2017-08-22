@@ -43,19 +43,19 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUA-ee-GUr">
-                                <rect key="frame" x="20" y="27" width="304" height="63"/>
+                                <rect key="frame" x="20" y="21" width="304" height="77"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TUA-ee-GUr" firstAttribute="top" secondItem="evf-4T-bjg" secondAttribute="bottom" constant="6" id="Bzg-E2-3Lb"/>
+                            <constraint firstItem="TUA-ee-GUr" firstAttribute="top" secondItem="evf-4T-bjg" secondAttribute="bottom" id="Bzg-E2-3Lb"/>
                             <constraint firstItem="evf-4T-bjg" firstAttribute="leading" secondItem="vkd-ON-rlE" secondAttribute="leading" constant="20" id="Czw-uW-w7H"/>
                             <constraint firstAttribute="trailing" secondItem="TUA-ee-GUr" secondAttribute="trailing" constant="20" id="LSq-Qa-NHn"/>
                             <constraint firstItem="evf-4T-bjg" firstAttribute="top" secondItem="vkd-ON-rlE" secondAttribute="top" id="WRd-FS-ela"/>
                             <constraint firstItem="bGh-M8-cSB" firstAttribute="leading" secondItem="vkd-ON-rlE" secondAttribute="leading" constant="20" id="Y5n-Cu-ofS"/>
                             <constraint firstItem="TUA-ee-GUr" firstAttribute="leading" secondItem="vkd-ON-rlE" secondAttribute="leading" constant="20" id="eUA-2K-ydt"/>
-                            <constraint firstItem="bGh-M8-cSB" firstAttribute="top" secondItem="TUA-ee-GUr" secondAttribute="bottom" constant="16" id="jEJ-r2-p2i"/>
+                            <constraint firstItem="bGh-M8-cSB" firstAttribute="top" secondItem="TUA-ee-GUr" secondAttribute="bottom" constant="8" id="jEJ-r2-p2i"/>
                             <constraint firstAttribute="trailing" secondItem="bGh-M8-cSB" secondAttribute="trailing" constant="20" id="voi-89-Mqh"/>
                             <constraint firstAttribute="bottom" secondItem="bGh-M8-cSB" secondAttribute="bottom" constant="20" id="xmt-wH-0al"/>
                         </constraints>

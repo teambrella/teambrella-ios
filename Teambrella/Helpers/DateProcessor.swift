@@ -41,4 +41,19 @@ struct DateProcessor {
         let (colloquial, relevant) = try! date.colloquialSinceNow()
         return isColloquial ? colloquial : relevant ?? ""
     }
+    
+    func stringIntervalOrDate(from date: Date) -> String {
+        let days = Date().interval(of: .day, since: date)
+        if  days >= 7 {
+            let formatter = DateFormatter()
+            let locale = Locale.current
+            formatter.locale = locale
+            formatter.dateStyle = .short
+            return formatter.string(from: date)
+        } else if days <= 1 {
+            return "General.today".localized.capitalized
+        } else {
+            return stringInterval(from: date)
+        }
+    }
 }

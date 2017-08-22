@@ -136,15 +136,19 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentReport(context: ReportContext, in parentViewController: UIViewController? = nil) {
+    func presentReport(context: ReportContext,
+                       in parentViewController: UIViewController? = nil,
+                       delegate: ReportDelegate?) {
         guard let vc = ReportVC.instantiate() as? ReportVC else { fatalError("Error instantiating") }
         
         vc.reportContext = context
+        vc.delegate = delegate
         guard let parentViewController = parentViewController else {
             service.router.push(vc: vc)
             return
         }
         
+        vc.isModal = true
         parentViewController.present(vc, animated: true) {
             
         }

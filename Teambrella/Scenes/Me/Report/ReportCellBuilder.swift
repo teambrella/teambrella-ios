@@ -30,7 +30,10 @@ struct ReportCellBuilder {
         collectionView.register(ReportTextFieldCell.nib, forCellWithReuseIdentifier: ReportTextFieldCell.cellID)
     }
     
-    static func populate(cell: UICollectionViewCell, with model: ReportCellModel, reportVC: ReportVC) {
+    static func populate(cell: UICollectionViewCell,
+                         with model: ReportCellModel,
+                         reportVC: ReportVC,
+                         indexPath: IndexPath) {
         if let cell = cell as? ReportItemCell, let model = model as? ItemReportCellModel {
             cell.avatarView.showImage(string: model.photo)
             cell.itemLabel.text = model.name
@@ -45,17 +48,42 @@ struct ReportCellBuilder {
             cell.numberBar.left?.amountLabel.text = model.deductibleString
             cell.numberBar.middle?.amountLabel.text = model.coverageString
             cell.numberBar.right?.amountLabel.text = model.expensesString
+            
+            cell.expensesTextField.text = String(model.expenses)
+            cell.expensesTextField.keyboardType = .decimalPad
+            
+            cell.currencyTextField.isUserInteractionEnabled = false
+            
+            cell.expensesTextField.tag = indexPath.row
+            cell.expensesTextField.removeTarget(reportVC, action: nil, for: .allEvents)
+            cell.expensesTextField.addTarget(reportVC,
+                                             action: #selector(ReportVC.textFieldDidChange),
+                                             for: .editingChanged)
+            if let team = service.session.currentTeam {
+                cell.currencyTextField.text = team.currencySymbol
+            }
         } else if let cell = cell as? ReportDescriptionCell, let model = model as? DescriptionReportCellModel {
             cell.headerLabel.text = model.title
             cell.textView.text = model.text
+            cell.textView.tag = indexPath.row
+            cell.textView.delegate = reportVC
         } else if let cell = cell as? ReportPhotoGalleryCell, let model = model as? PhotosReportCellModel {
             cell.headerLabel.text = model.title
             cell.button.setTitle(model.buttonTitle, for: .normal)
+            cell.button.removeTarget(reportVC, action: nil, for: .allEvents)
+            cell.button.addTarget(reportVC, action: #selector(ReportVC.tapAddPhoto), for: .touchUpInside)
         } else if let cell = cell as? ReportTextFieldCell, let model = model as?  DateReportCellModel {
             cell.headerLabel.text = model.title
             cell.textField.inputView = reportVC.datePicker
+            cell.textField.text = DateProcessor().stringIntervalOrDate(from: model.date)
+            cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(0)
         } else if let cell = cell as? ReportTextFieldCell, let model = model as? WalletReportCellModel {
             cell.headerLabel.text = model.title
+            cell.textField.text = model.text
+            cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
+            cell.textField.tag = indexPath.row
+            cell.textField.removeTarget(reportVC, action: nil, for: .allEvents)
+            cell.textField.addTarget(reportVC, action: #selector(ReportVC.textFieldDidChange), for: .editingChanged)
         }
     }
     

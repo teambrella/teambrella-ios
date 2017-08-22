@@ -218,7 +218,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         let item = ClaimItem(name: model.objectName, photo: model.smallPhoto, location: "")
         let context = ReportContext.claim(item: item, coverage: model.coverage, balance: model.balance)
-        service.router.presentReport(context: context)
+        service.router.presentReport(context: context, delegate: self)
     }
     
     @IBAction func tapLeftBrick(_ sender: Any) {
@@ -330,5 +330,14 @@ extension HomeVC: UIScrollViewDelegate {
 extension HomeVC: ChooseYourTeamControllerDelegate {
     func chooseTeam(controller: ChooseYourTeamVC, didSelectTeamID: Int) {
         service.router.switchTeam()
+    }
+}
+
+extension HomeVC: ReportDelegate {
+    func report(controller: ReportVC, didSendReport data: Any) {
+        service.router.navigator?.popViewController(animated: false)
+        if let claim = data as? EnhancedClaimEntity {
+            service.router.presentClaim(claimID: claim.id)
+        }
     }
 }
