@@ -59,7 +59,7 @@ enum TeambrellaResponseType {
     case timestamp
     case initClient
     case updates
-    case teams([TeamEntity], [TeamEntity], String, Int?)
+    case teams(TeamsEntity)
     case teammatesList([TeammateLike])
     case teammate(ExtendedTeammate)
     case teammateVote(JSON)
@@ -138,7 +138,11 @@ struct TeambrellaRequest {
             let invitations = TeamEntity.teams(with: reply["MyInvitations"])
             let lastSelectedTeam = reply["LastSelectedTeam"].int
             let userID = reply["UserId"].stringValue
-            success(.teams(teams, invitations, userID, lastSelectedTeam))
+            let teamsEntity = TeamsEntity(teams: teams,
+                                          invitations: invitations,
+                                          lastTeamID: lastSelectedTeam,
+                                          userID: userID)
+            success(.teams(teamsEntity))
         case .newPost:
             success(.newPost(ChatEntity(json: reply)))
         case .teammateVote:

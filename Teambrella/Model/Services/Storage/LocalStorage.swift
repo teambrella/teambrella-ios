@@ -24,6 +24,25 @@ import Foundation
 class LocalStorage: Storage {
     var lastKeyTime: Date?
     
+    func requestTeams() -> Future<TeamsEntity> {
+        let promise = Promise<TeamsEntity>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: [:])
+            let request = TeambrellaRequest(type: .teams,
+                                            parameters: nil,
+                                            body: body,
+                                            success: { response in
+                                                if case .teams(let teamsEntity) = response {
+                                                    promise.resolve(with: teamsEntity)
+                                                }
+            }) { error in
+                promise.reject(with: error)
+            }
+            request.start()
+        }
+        return promise
+    }
+    
     func requestHome(teamID: Int) -> Future<HomeScreenModel> {
         //let language = setLanguage()
         let promise = Promise<HomeScreenModel>()
@@ -142,8 +161,8 @@ class LocalStorage: Storage {
                 if case .uploadPhoto(let name) = response {
                     promise.resolve(with: name)
                 }
-                }, failure: { error in
-                   promise.reject(with: error)
+            }, failure: { error in
+                promise.reject(with: error)
             })
             request.start()
         }

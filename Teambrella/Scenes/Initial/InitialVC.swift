@@ -32,40 +32,25 @@ class InitialVC: UIViewController {
     }
     
     func getTeams() {
-        service.server.updateTimestamp { _ in
-            let key = service.server.key
-            let body = RequestBody(key: key, payload: [:])
-            let request = TeambrellaRequest(type: .teams,
-                                            parameters: nil,
-                                            body: body,
-                                            success: { [weak self] response in
-                                                if case .teams(let teams,
-                                                               let potentialTeams,
-                                                               let userID,
-                                                               let recentTeamID) = response {
-                                                    print("Teams: \(teams)")
-                                                    print("Potential Teams: \(potentialTeams)")
-                                                    print("Recent: \(String(describing: recentTeamID))")
-                                                    print("User id: \(userID)")
-                                                    let lastTeam = recentTeamID.map { id in
-                                                        return teams.filter { team in team.teamID == id } }?.first
-                                                    if let lastTeam = lastTeam {
-                                                        service.session.currentTeam = lastTeam
-                                                    } else if !teams.isEmpty {
-                                                        service.session.currentTeam = teams.first
-                                                    }
-                                                    service.session.teams = teams
-                                                    service.session.currentUserID = userID
-                                                    service.storage.setLanguage().observe { _ in
-                                                        self?.performSegue(type: .teambrella)
-                                                    }
-                                                }
-            }) { error in
-                
+        service.storage.setLanguage().observe { _ in
+            service.storage.requestTeams().observe { [weak self] result in
+                switch result {
+                case let .value(teamsEntity):
+                    let lastTeam = teamsEntity.lastTeamID.map { id in
+                        return teamsEntity.teams.filter { team in team.teamID == id } }?.first
+                    if let lastTeam = lastTeam {
+                        service.session.currentTeam = lastTeam
+                    } else if !teamsEntity.teams.isEmpty {
+                        service.session.currentTeam = teamsEntity.teams.first
+                    }
+                    service.session.teams = teamsEntity.teams
+                    service.session.currentUserID = teamsEntity.userID
+                    self?.performSegue(type: .teambrella)
+                case let .error(error):
+                    break
+                }
             }
-            request.start()
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

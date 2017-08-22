@@ -26,9 +26,18 @@ typealias ErrorHandler = (Error?) -> Void
 protocol Storage {
     func requestHome(teamID: Int) -> Future<HomeScreenModel>
     func requestTeamFeed(context: FeedRequestContext) -> Future<[FeedEntity]>
+    // actual and potential teams
+    func requestTeams() -> Future<TeamsEntity>
     func deleteCard(topicID: String) -> Future<HomeScreenModel>
     func setLanguage() -> Future<String>
     
     func sendPhoto(data: Data) -> Future<String>
     func myProxy(userID: String, add: Bool) -> Future<Bool>
+}
+
+struct TeamsEntity {
+    let teams: [TeamEntity]
+    let invitations: [TeamEntity]
+    let lastTeamID: Int?
+    let userID: String
 }

@@ -45,6 +45,14 @@ struct ReportCellBuilder {
             cell.numberBar.left?.amountLabel.text = model.deductibleString
             cell.numberBar.middle?.amountLabel.text = model.coverageString
             cell.numberBar.right?.amountLabel.text = model.expensesString
+            
+            cell.expensesTextField.text = String(model.expenses)
+            cell.expensesTextField.keyboardType = .decimalPad
+            
+            cell.currencyTextField.isUserInteractionEnabled = false
+            if let team = service.session.currentTeam {
+                cell.currencyTextField.text = team.currencySymbol
+            }
         } else if let cell = cell as? ReportDescriptionCell, let model = model as? DescriptionReportCellModel {
             cell.headerLabel.text = model.title
             cell.textView.text = model.text
