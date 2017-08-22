@@ -31,7 +31,6 @@ struct WalletEntity {
         cosigners = json["Cosigners"].arrayValue.flatMap { CosignerEntity(json: $0) }
     }
     
-    var currency: String { return json["Currency"].stringValue }
     var currencyRate: Double { return json["CurrencyRate"].doubleValue }
     var cryptoBalance: Double { return json["CryptoBalance"].doubleValue }
     var cryptoReserved: Double { return json["CryptoReserved"].doubleValue }
@@ -41,6 +40,10 @@ struct WalletEntity {
     var defaultWithdrawAddress: String? { return json["DefaultWithdrawAddress"].string }
     var cosigners: [CosignerEntity]
     var coveragePart: CoverageEntity
+    var teamPart: JSON { return json["TeamPart"] }
+    var currency: String { return teamPart["Currency"].stringValue }
+    var coverageType: Int { return teamPart["CoverageType"].intValue }
+    var teamAccessLevel: Int { return teamPart["TeamAccessLevel"].intValue }
     
     static func wallet(with json: JSON) -> WalletEntity {
         return WalletEntity(json: json)
