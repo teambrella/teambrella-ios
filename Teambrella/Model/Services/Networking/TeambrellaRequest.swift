@@ -41,6 +41,7 @@ enum TeambrellaRequestType: String {
     case claimVote = "claim/setVote"
     case claimUpdates = "claim/getUpdates"
     case claimChat = "claim/getChat"
+    case newClaim = "claim/newClaim"
     case home = "feed/getHome"
     case feedDeleteCard = "feed/delCard"
     case teamFeed = "feed/getList"
@@ -157,7 +158,8 @@ struct TeambrellaRequest {
         case .claimsList:
             let claims = ClaimFactory.claims(with: reply)
             success(.claimsList(claims))
-        case .claim:
+        case .claim,
+             .newClaim:
             success(.claim(EnhancedClaimEntity(json: reply)))
         case .claimVote:
             success(.claimVote(reply))

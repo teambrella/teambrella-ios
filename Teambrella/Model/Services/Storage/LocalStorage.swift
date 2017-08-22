@@ -169,6 +169,28 @@ class LocalStorage: Storage {
         return promise
     }
     
+    func createNewClaim(model: NewClaimModel) -> Future<EnhancedClaimEntity> {
+        let promise = Promise<EnhancedClaimEntity>()
+        freshKey { key in
+            let dateString = Formatter.teambrellaShortDashed.string(from: model.incidentDate)
+            let body = RequestBody(key: key, payload:["TeamId": model.teamID,
+                                                      "IncidentDate": dateString,
+                                                      "Expenses": model.expenses,
+                                                      "Message": model.message,
+                                                      "Images": model.images,
+                                                      "Address": model.address])
+            let request = TeambrellaRequest(type: .newClaim, body: body, success: { response in
+                if case .claim(let claim) = response {
+                    promise.resolve(with: claim)
+                }
+                }, failure: { error in
+                    promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
     func freshKey(completion: @escaping (Key) -> Void) {
         if let time = lastKeyTime, Date().timeIntervalSince(time) < 60 * 10 {
             completion(service.server.key)

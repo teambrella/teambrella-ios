@@ -32,6 +32,9 @@ protocol Storage {
     func setLanguage() -> Future<String>
     
     func sendPhoto(data: Data) -> Future<String>
+    
+    func createNewClaim(model: NewClaimModel) -> Future<EnhancedClaimEntity>
+    
     func myProxy(userID: String, add: Bool) -> Future<Bool>
 }
 
@@ -40,4 +43,13 @@ struct TeamsEntity {
     let invitations: [TeamEntity]
     let lastTeamID: Int?
     let userID: String
+}
+
+struct NewClaimModel {
+    let teamID: Int
+    let incidentDate: Date
+    let expenses: Double
+    let message: String
+    let images: [String]
+    let address: String
 }

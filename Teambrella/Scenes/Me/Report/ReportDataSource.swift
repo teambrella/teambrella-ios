@@ -50,6 +50,17 @@ struct ReportDataSource {
         
     }
     
+    func send(model: NewClaimModel, completion: @escaping (Any) -> Void) {
+        service.storage.createNewClaim(model: model).observe { result in
+            switch result {
+            case let .value(claim):
+                completion(claim)
+            case let .error(error):
+                completion(error)
+            }
+        }
+    }
+    
     subscript(indexPath: IndexPath) -> ReportCellModel {
         get {
         return items[indexPath.row]

@@ -21,12 +21,19 @@
 
 import UIKit
 
+protocol ReportDelegate: class {
+    func report(controller: ReportVC, didSendReport data: Any)
+}
+
 class ReportVC: UIViewController, Routable {
     static let storyboardName: String = "Me"
     
     @IBOutlet var collectionView: UICollectionView!
     var reportContext: ReportContext!
     var dataSource: ReportDataSource!
+    var isModal: Bool = false
+    
+    weak var delegate: ReportDelegate?
     
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
@@ -46,13 +53,19 @@ class ReportVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTransparentNavigationBar()
-        defaultGradientOnTop()
+        if isModal {
+            
+        } else {
+            setupTransparentNavigationBar()
+            defaultGradientOnTop()
+            automaticallyAdjustsScrollViewInsets = false
+            title = "Report a Claim"
+        }
         addKeyboardObservers()
-        automaticallyAdjustsScrollViewInsets = false
+        
         dataSource = ReportDataSource(context: reportContext)
         ReportCellBuilder.registerCells(in: collectionView)
-        title = "Report a Claim"
+        
     }
     
     func addKeyboardObservers() {
@@ -135,6 +148,55 @@ class ReportVC: UIViewController, Routable {
     
     func tapSubmit(_ sender: UIButton) {
         print("tap Submit")
+        validateAndSendData()
+    }
+    
+    func validateAndSendData() {
+        var date: Date?
+        var expenses: Double?
+        var message: String?
+        let images = photoController.photos
+        var address: String?
+        
+        for model in dataSource.items {
+            if let model = model as? DateReportCellModel {
+                date = model.date
+            } else if let model = model as? ExpensesReportCellModel {
+                expenses = model.expenses
+            } else if let model = model as? DescriptionReportCellModel {
+                message = model.text
+            } else if let model = model as? WalletReportCellModel {
+                address = model.text
+            }
+        }
+        guard let teamID = service.session.currentTeam?.teamID else { fatalError("No current team") }
+        
+        if let date = date, let expenses = expenses, let message = message, let address = address {
+            let model = NewClaimModel(teamID: teamID,
+                                      incidentDate: date,
+                                      expenses: expenses,
+                                      message: message,
+                                      images: images,
+                                      address: address)
+            dataSource.send(model: model) { [weak self] result in
+                guard let me = self else { return }
+                
+                me.delegate?.report(controller: me, didSendReport: result)
+            }
+        }
+    }
+    
+    func textFieldDidChange(textField: UITextField) {
+        let indexPath = IndexPath(row: textField.tag, section: 0)
+        if var model = dataSource[indexPath] as? WalletReportCellModel {
+            model.text = textField.text ?? ""
+            dataSource.items[indexPath.row] = model
+        } else if var model = dataSource[indexPath] as? ExpensesReportCellModel,
+            let text = textField.text,
+            let expenses = Double(text) {
+            model.expenses = expenses
+            dataSource.items[indexPath.row] = model
+        }
     }
     
     func addPhotoController(to view: UIView) {
@@ -180,7 +242,7 @@ extension ReportVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        ReportCellBuilder.populate(cell: cell, with: dataSource[indexPath], reportVC: self)
+        ReportCellBuilder.populate(cell: cell, with: dataSource[indexPath], reportVC: self, indexPath: indexPath)
         if let cell = cell as? ReportPhotoGalleryCell {
             addPhotoController(to: cell.container)
             
@@ -214,5 +276,15 @@ extension ReportVC: ImagePickerControllerDelegate {
     
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
         
+    }
+}
+
+extension ReportVC: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        let indexPath = IndexPath(row: textView.tag, section: 0)
+        if var model = dataSource[indexPath] as? DescriptionReportCellModel {
+            model.text = textView.text
+            dataSource.items[indexPath.row] = model
+        }
     }
 }
