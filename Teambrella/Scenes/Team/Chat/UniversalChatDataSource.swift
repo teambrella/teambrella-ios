@@ -108,9 +108,10 @@ class UniversalChatDatasource {
     }
     
     private func process(response: TeambrellaResponseType) {
-        if case .chat(let lastRead, let chat, let basicInfo) = response {
+        if case .chat(lastRead: let lastRead, chat: let chat, basicPart: let basic, teamPart: let teamPart) = response {
             posts.append(contentsOf: chat)
-            claim?.update(with: basicInfo)
+            claim?.update(with: basic)
+            //claim?.update(with: teamPart)
             since = lastRead
             offset += chat.count
             onUpdate?()
