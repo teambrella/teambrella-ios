@@ -51,7 +51,17 @@ struct ReportDataSource {
     }
     
     subscript(indexPath: IndexPath) -> ReportCellModel {
+        get {
         return items[indexPath.row]
+        }
+        set {
+            guard indexPath.row < items.count else {
+                items.insert(newValue, at: indexPath.row)
+                return
+            }
+            
+            items[indexPath.row] = newValue
+        }
     }
 }
 

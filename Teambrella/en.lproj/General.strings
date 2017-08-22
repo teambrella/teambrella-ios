@@ -16,3 +16,5 @@
 "General.claimState.declined"    = "declined";
 "General.claimState.inPayment"   = "in payment";
 "General.claimState.processed"   = "processed";
+
+"General.today" = "today";

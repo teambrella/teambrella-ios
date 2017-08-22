@@ -31,8 +31,9 @@ class ReportVC: UIViewController, Routable {
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.date = Date()
-        datePicker.datePickerMode = .dateAndTime
-        datePicker.minuteInterval = 5
+        datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date()
+        datePicker.addTarget(self, action: #selector(datePickerChangedValue), for: .valueChanged)
         return datePicker
     }()
     
@@ -95,6 +96,23 @@ class ReportVC: UIViewController, Routable {
     
     func tapAddPhoto(sender: UIButton) {
         photoPicker.show()
+    }
+    
+    func datePickerChangedValue(sender: UIDatePicker) {
+        var idx = 0
+        for i in 0 ..< dataSource.items.count where dataSource.items[i] is DateReportCellModel {
+            idx = i
+            break
+        }
+        
+        let indexPath = IndexPath(row: idx, section: 0)
+        if var dateReportCellModel = dataSource[indexPath] as? DateReportCellModel {
+            dateReportCellModel.date = sender.date
+            dataSource.items[idx] = dateReportCellModel
+            if let cell = collectionView.cellForItem(at: indexPath) as? ReportTextFieldCell {
+                cell.textField.text = DateProcessor().stringIntervalOrDate(from: dateReportCellModel.date)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

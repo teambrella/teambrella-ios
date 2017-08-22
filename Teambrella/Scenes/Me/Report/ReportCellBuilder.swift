@@ -56,8 +56,12 @@ struct ReportCellBuilder {
         } else if let cell = cell as? ReportTextFieldCell, let model = model as?  DateReportCellModel {
             cell.headerLabel.text = model.title
             cell.textField.inputView = reportVC.datePicker
+            cell.textField.text = DateProcessor().stringIntervalOrDate(from: model.date)
+            cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(0)
         } else if let cell = cell as? ReportTextFieldCell, let model = model as? WalletReportCellModel {
             cell.headerLabel.text = model.title
+            cell.textField.text = model.text
+            cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
         }
     }
     
