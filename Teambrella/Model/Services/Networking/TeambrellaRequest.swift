@@ -40,8 +40,8 @@ enum TeambrellaRequestType: String {
     case claim = "claim/getOne"
     case claimVote = "claim/setVote"
     case claimUpdates = "claim/getUpdates"
-    case claimChat = "claim/getChat"            ///
-    case home = "feed/getHome"                  ///////
+    case claimChat = "claim/getChat"
+    case home = "feed/getHome"
     case feedDeleteCard = "feed/delCard"
     case teamFeed = "feed/getList"
     case feedChat = "feed/getChat"
@@ -71,10 +71,10 @@ enum TeambrellaResponseType {
     case claim(EnhancedClaimEntity)
     case claimVote(JSON)
     case claimUpdates(JSON)
-    case home(HomeScreenModel) //
+    case home(HomeScreenModel)
     case feedDeleteCard(HomeScreenModel)
     case teamFeed([FeedEntity])
-    case chat(lastRead: Int64, chat: [ChatEntity], basicPart: JSON, teamPart: JSON) //
+    case chat(lastRead: Int64, chat: [ChatEntity], basicPart: JSON, teamPart: JSON)
     case wallet(WalletEntity)
     case uploadPhoto(String)
     case myProxy(Bool)
