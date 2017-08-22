@@ -32,7 +32,7 @@ enum TeambrellaRequestType: String {
     case setLanguageEn = "me/setUiLang/en"
     case setLanguageEs = "me/setUiLang/es"
     case teammatesList = "teammate/getList"
-    case teammate = "teammate/getOne"           //
+    case teammate = "teammate/getOne"
     case teammateVote = "teammate/setVote"
     case teammateChat = "teammate/getChat"      ///
     case newPost = "post/newPost"
@@ -61,7 +61,7 @@ enum TeambrellaResponseType {
     case updates
     case teams([TeamEntity], [TeamEntity], String, Int?)
     case teammatesList([TeammateLike])
-    case teammate(ExtendedTeammate) //
+    case teammate(ExtendedTeammate)
     case teammateVote(JSON)
     case newPost(ChatEntity)
     case registerKey
@@ -74,7 +74,7 @@ enum TeambrellaResponseType {
     case home(HomeScreenModel) //
     case feedDeleteCard(HomeScreenModel)
     case teamFeed([FeedEntity])
-    case chat(Int64, [ChatEntity], JSON) //
+    case chat(lastRead: Int64, chat: [ChatEntity], basicPart: JSON, teamPart: JSON) //
     case wallet(WalletEntity)
     case uploadPhoto(String)
     case myProxy(Bool)
@@ -167,7 +167,8 @@ struct TeambrellaRequest {
             let lastRead = discussion["LastRead"].int64Value
             let chat = ChatEntity.buildArray(from: discussion["Chat"])
             let basicInfo = discussion["BasicPart"]
-            success(.chat(lastRead, chat, basicInfo))
+            let teamPart = discussion["TeamPart"]
+            success(.chat(lastRead: lastRead, chat: chat, basicPart: basicInfo, teamPart: teamPart))
         case .teamFeed:
             success(.teamFeed(reply.arrayValue.flatMap { FeedEntity(json: $0) }))
         case .home:
