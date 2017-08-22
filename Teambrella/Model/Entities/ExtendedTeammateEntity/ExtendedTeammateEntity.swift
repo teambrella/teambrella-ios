@@ -34,12 +34,20 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
     let object: CoveredObject
     let stats: TeammateStats
     let riskScale: RiskScaleEntity?
+    var team: JSON
+    
+    // MARK: Team Part
+    
+    var coverageType: Int { return team["CoverageType"].intValue }
+    var currency: String { return team["Currency"].stringValue }
+    var teamAccessLevel: Int { return team["TeamAccessLevel"].intValue }
 
     var description: String {
         return "ExtendedTeammateEntity \(id)"
     }
     
     init(json: JSON) {
+        team = json["TeamPart"]
         id = json["UserId"].stringValue
         ver = json["Ver"].int64Value
         lastUpdated = json["LastUpdated"].int64Value

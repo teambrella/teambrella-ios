@@ -68,14 +68,14 @@ enum TeambrellaResponseType {
     case coverageForDate(Double, Double)
     case setLanguage(String)
     case claimsList([ClaimLike])
-    case claim(EnhancedClaimEntity) //
+    case claim(EnhancedClaimEntity)
     case claimVote(JSON)
     case claimUpdates(JSON)
     case home(HomeScreenModel) //
     case feedDeleteCard(HomeScreenModel)
     case teamFeed([FeedEntity])
     case chat(Int64, [ChatEntity], JSON) //
-    case wallet(WalletEntity) //
+    case wallet(WalletEntity)
     case uploadPhoto(String)
     case myProxy(Bool)
     case myProxies([ProxyCellModel])

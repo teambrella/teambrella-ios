@@ -43,7 +43,7 @@ struct EnhancedClaimEntity: EntityLike {
     var basicPart: JSON { return json["BasicPart"] }
     var votingPart: JSON { return json["VotingPart"] }
     var discussionPart: JSON { return json["DiscussionPart"] }
-    var teamPart: JSON { return json["TeamPart"]}
+    var teamPart: JSON { return json["TeamPart"] }
     
     var hasVotingPart: Bool { return votingPart.dictionary != nil }
     
