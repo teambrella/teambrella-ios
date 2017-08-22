@@ -51,6 +51,8 @@ struct ReportCellBuilder {
         } else if let cell = cell as? ReportPhotoGalleryCell, let model = model as? PhotosReportCellModel {
             cell.headerLabel.text = model.title
             cell.button.setTitle(model.buttonTitle, for: .normal)
+            cell.button.removeTarget(reportVC, action: nil, for: .allEvents)
+            cell.button.addTarget(reportVC, action: #selector(ReportVC.tapAddPhoto), for: .touchUpInside)
         } else if let cell = cell as? ReportTextFieldCell, let model = model as?  DateReportCellModel {
             cell.headerLabel.text = model.title
             cell.textField.inputView = reportVC.datePicker

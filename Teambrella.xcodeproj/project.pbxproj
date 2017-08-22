@@ -98,6 +98,7 @@
 		6D481F7B1F0BAA960023C781 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D481F7A1F0BAA960023C781 /* UIImageView.swift */; };
 		6D481F7D1F0BD0DD0023C781 /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D481F7C1F0BD0DD0023C781 /* RoundedCornersView.swift */; };
 		6D481F7F1F0BDEF30023C781 /* EggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D481F7E1F0BDEF30023C781 /* EggView.swift */; };
+		6D66B49A1F4C461A00672583 /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B4991F4C461A00672583 /* ImagePickerController.swift */; };
 		6D69D9E31EFBEE8D00DED5CE /* MyProxiesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9E21EFBEE8D00DED5CE /* MyProxiesDataSource.swift */; };
 		6D69D9E51EFBEECB00DED5CE /* ProxyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9E41EFBEECB00DED5CE /* ProxyCellModel.swift */; };
 		6D69D9E71EFBF2C500DED5CE /* MyProxiesCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9E61EFBF2C500DED5CE /* MyProxiesCellBuilder.swift */; };
@@ -498,6 +499,7 @@
 		6D481F7A1F0BAA960023C781 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageView.swift; path = Helpers/Extensions/UIImageView.swift; sourceTree = "<group>"; };
 		6D481F7C1F0BD0DD0023C781 /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedCornersView.swift; path = View/RoundedCornersView.swift; sourceTree = "<group>"; };
 		6D481F7E1F0BDEF30023C781 /* EggView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EggView.swift; path = View/EggView.swift; sourceTree = "<group>"; };
+		6D66B4991F4C461A00672583 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickerController.swift; path = Controller/ImagePickerController.swift; sourceTree = "<group>"; };
 		6D66EDE41F3E13A800AC4B53 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Me.strings; sourceTree = "<group>"; };
 		6D69D9E21EFBEE8D00DED5CE /* MyProxiesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProxiesDataSource.swift; path = Scenes/Proxies/MyProxies/MyProxiesDataSource.swift; sourceTree = "<group>"; };
 		6D69D9E41EFBEECB00DED5CE /* ProxyCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyCellModel.swift; path = Scenes/Proxies/MyProxies/ProxyCellModel.swift; sourceTree = "<group>"; };
@@ -1150,6 +1152,7 @@
 				6D83EC8A1EDD7083000412DC /* Navigator.swift */,
 				6DA714EC1EDF49F500F39EBE /* MasterTabBarController.swift */,
 				6DCF62541F4B314300E8F500 /* PhotosPreview */,
+				6D66B4991F4C461A00672583 /* ImagePickerController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -2357,6 +2360,7 @@
 				6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */,
 				6D02AC941F06A6B800B01AAF /* VotingRiskVC.swift in Sources */,
 				6DF2E8BE1EF02F8200C8D60B /* SocketService.swift in Sources */,
+				6D66B49A1F4C461A00672583 /* ImagePickerController.swift in Sources */,
 				6DDE95871EE9988D0019DA47 /* PiecewiseFunction.swift in Sources */,
 				6D466AA31ED07CF1001BC579 /* SignHelper.swift in Sources */,
 				6DEE679D1EDC1D470098EDB3 /* PieChartView.swift in Sources */,

@@ -15,24 +15,20 @@ class PhotoPreviewVC: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        modalPresentationStyle = .overCurrentContext
         view.backgroundColor = .white
-        collectionView?.clipsToBounds = false
+        collectionView?.backgroundColor = .white
+        // collectionView?.clipsToBounds = false
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
         }
         registerCells()
-        fake()
-    }
-    
-    private func fake() {
-        for _ in 0...5 {
-            photos.append("/content/uploads/ad0627f4-ec2f-43b6-bbdf-a7d20156d3b8/a.jpg")
-            photos.append("/ImageHandler.ashx?t=m&file=sm54722_1.jpg")
-        }
     }
     
     func addPhotos(_ photos: [String]) {
-        self.photos += photos
+        for (idx, photo) in photos.enumerated() {
+        self.photos.insert(photo, at: idx)
+        }
         collectionView?.reloadData()
     }
     

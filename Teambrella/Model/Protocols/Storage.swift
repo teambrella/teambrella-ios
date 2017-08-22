@@ -29,5 +29,6 @@ protocol Storage {
     func deleteCard(topicID: String) -> Future<HomeScreenModel>
     func setLanguage() -> Future<String>
     
+    func sendPhoto(data: Data) -> Future<String>
     func myProxy(userID: String, add: Bool) -> Future<Bool>
 }

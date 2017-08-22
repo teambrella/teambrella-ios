@@ -132,6 +132,24 @@ class LocalStorage: Storage {
         return promise
     }
     
+    func sendPhoto(data: Data) -> Future<String> {
+        let promise = Promise<String>()
+        freshKey { key in
+            var body = RequestBody(key: service.server.key, payload: nil)
+            body.contentType = "image/jpeg"
+            body.data = data
+            let request = TeambrellaRequest(type: .uploadPhoto, body: body, success: { response in
+                if case .uploadPhoto(let name) = response {
+                    promise.resolve(with: name)
+                }
+                }, failure: { error in
+                   promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
     func freshKey(completion: @escaping (Key) -> Void) {
         if let time = lastKeyTime, Date().timeIntervalSince(time) < 60 * 10 {
             completion(service.server.key)

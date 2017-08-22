@@ -36,6 +36,13 @@ class ReportVC: UIViewController, Routable {
         return datePicker
     }()
     
+    lazy var photoPicker: ImagePickerController = {
+        let imagePicker = ImagePickerController(parent: self, delegate: self)
+        return imagePicker
+    }()
+    
+    var photoController: PhotoPreviewVC = PhotoPreviewVC(collectionViewLayout: UICollectionViewFlowLayout())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTransparentNavigationBar()
@@ -86,6 +93,10 @@ class ReportVC: UIViewController, Routable {
         view.endEditing(true)
     }
     
+    func tapAddPhoto(sender: UIButton) {
+        photoPicker.show()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showSubmitButton()
@@ -107,8 +118,6 @@ class ReportVC: UIViewController, Routable {
     func tapSubmit(_ sender: UIButton) {
         print("tap Submit")
     }
-    
-    var photoController: PhotoPreviewVC = PhotoPreviewVC(collectionViewLayout: UICollectionViewFlowLayout())
     
     func addPhotoController(to view: UIView) {
         photoController.loadViewIfNeeded()
@@ -156,6 +165,7 @@ extension ReportVC: UICollectionViewDelegate {
         ReportCellBuilder.populate(cell: cell, with: dataSource[indexPath], reportVC: self)
         if let cell = cell as? ReportPhotoGalleryCell {
             addPhotoController(to: cell.container)
+            
         }
     }
     
@@ -172,5 +182,19 @@ extension ReportVC: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width - 16 * 2,
                       height: CGFloat(dataSource[indexPath].preferredHeight))
+    }
+}
+
+extension ReportVC: ImagePickerControllerDelegate {
+    func imagePicker(controller: ImagePickerController, didSendPhoto photo: String) {
+        photoController.addPhotos([photo])
+    }
+    
+    func imagePicker(controller: ImagePickerController, didSelectPhoto photp: UIImage) {
+        
+    }
+    
+    func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
+        
     }
 }
