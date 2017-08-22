@@ -32,19 +32,19 @@ enum TeambrellaRequestType: String {
     case setLanguageEn = "me/setUiLang/en"
     case setLanguageEs = "me/setUiLang/es"
     case teammatesList = "teammate/getList"
-    case teammate = "teammate/getOne"
+    case teammate = "teammate/getOne"           //
     case teammateVote = "teammate/setVote"
-    case teammateChat = "teammate/getChat"
+    case teammateChat = "teammate/getChat"      ///
     case newPost = "post/newPost"
     case claimsList = "claim/getList"
     case claim = "claim/getOne"
     case claimVote = "claim/setVote"
     case claimUpdates = "claim/getUpdates"
-    case claimChat = "claim/getChat"
-    case home = "feed/getHome"
+    case claimChat = "claim/getChat"            ///
+    case home = "feed/getHome"                  ///////
     case feedDeleteCard = "feed/delCard"
     case teamFeed = "feed/getList"
-    case feedChat = "feed/getChat"
+    case feedChat = "feed/getChat"              ///
     case feedCreateChat = "feed/newChat"
     case wallet = "wallet/getOne"
     case uploadPhoto = "post/newUpload"
@@ -61,21 +61,21 @@ enum TeambrellaResponseType {
     case updates
     case teams([TeamEntity], [TeamEntity], String, Int?)
     case teammatesList([TeammateLike])
-    case teammate(ExtendedTeammate)
+    case teammate(ExtendedTeammate) //
     case teammateVote(JSON)
     case newPost(ChatEntity)
     case registerKey
     case coverageForDate(Double, Double)
     case setLanguage(String)
     case claimsList([ClaimLike])
-    case claim(EnhancedClaimEntity)
+    case claim(EnhancedClaimEntity) //
     case claimVote(JSON)
     case claimUpdates(JSON)
-    case home(HomeScreenModel)
+    case home(HomeScreenModel) //
     case feedDeleteCard(HomeScreenModel)
     case teamFeed([FeedEntity])
-    case chat(Int64, [ChatEntity], JSON)
-    case wallet(WalletEntity)
+    case chat(Int64, [ChatEntity], JSON) //
+    case wallet(WalletEntity) //
     case uploadPhoto(String)
     case myProxy(Bool)
     case myProxies([ProxyCellModel])

@@ -43,6 +43,7 @@ struct EnhancedClaimEntity: EntityLike {
     var basicPart: JSON { return json["BasicPart"] }
     var votingPart: JSON { return json["VotingPart"] }
     var discussionPart: JSON { return json["DiscussionPart"] }
+    var teamPart: JSON { return json["TeamPart"]}
     
     var hasVotingPart: Bool { return votingPart.dictionary != nil }
     
@@ -78,6 +79,15 @@ struct EnhancedClaimEntity: EntityLike {
     var originalPostText: String { return discussionPart["OriginalPostText"].stringValue }
     var unreadCount: Int { return discussionPart["UnreadCount"].intValue }
     var minutesinceLastPost: Int { return discussionPart["SinceLastPostMinutes"].intValue }
+    var smallPhoto: String { return discussionPart["SmallPhoto"].stringValue }
+    var topPosterAvatars: [String] { return discussionPart["TopPosterAvatars"].arrayObject as? [String] ?? [] }
+    var posterCount: Int { return discussionPart["PosterCount"].intValue }
+    
+    // MARK: Team Part
+    
+    var coverageType: Int { return teamPart["CoverageType"].intValue }
+    var currency: String { return teamPart["Currency"].stringValue }
+    var teamAccessLevel: Int { return teamPart["TeamAccessLevel"].intValue }
     
     mutating func update(with json: JSON) {
         try? self.json.merge(with: json)
