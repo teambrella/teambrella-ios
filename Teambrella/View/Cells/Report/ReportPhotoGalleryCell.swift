@@ -23,7 +23,7 @@ import UIKit
 
 class ReportPhotoGalleryCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var headerLabel: Label!
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var container: UIView!
     @IBOutlet var button: UIButton!
     
     override func awakeFromNib() {

@@ -108,6 +108,24 @@ class ReportVC: UIViewController, Routable {
         print("tap Submit")
     }
     
+    var photoController: PhotoPreviewVC = PhotoPreviewVC(collectionViewLayout: UICollectionViewFlowLayout())
+    
+    func addPhotoController(to view: UIView) {
+        photoController.loadViewIfNeeded()
+        if let superview = photoController.view.superview, superview == view {
+            return
+        }
+        photoController.view.removeFromSuperview()
+        photoController.removeFromParentViewController()
+        photoController.didMove(toParentViewController: nil)
+        photoController.willMove(toParentViewController: self)
+        view.addSubview(photoController.view)
+        photoController.view.frame = view.bounds
+        photoController.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        self.addChildViewController(photoController)
+        photoController.didMove(toParentViewController: self)
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -122,7 +140,9 @@ extension ReportVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: dataSource[indexPath].cellReusableIdentifier,
+        let identifier = dataSource[indexPath].cellReusableIdentifier
+        print(identifier + " at: \(indexPath)")
+        return collectionView.dequeueReusableCell(withReuseIdentifier: identifier,
                                                   for: indexPath)
     }
     
@@ -134,6 +154,9 @@ extension ReportVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         ReportCellBuilder.populate(cell: cell, with: dataSource[indexPath], reportVC: self)
+        if let cell = cell as? ReportPhotoGalleryCell {
+            addPhotoController(to: cell.container)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

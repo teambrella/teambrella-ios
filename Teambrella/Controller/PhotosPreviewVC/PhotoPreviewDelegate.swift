@@ -6,4 +6,9 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol PhotoPreviewDelegate: class {
+    func photoPreview(controller: PhotoPreviewVC, didDeleteItemAt indexPath: IndexPath)
+    
+}
