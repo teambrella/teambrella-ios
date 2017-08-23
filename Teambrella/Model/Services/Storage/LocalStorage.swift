@@ -24,8 +24,8 @@ import Foundation
 class LocalStorage: Storage {
     var lastKeyTime: Date?
     
-    func requestTeams() -> Future<TeamsEntity> {
-        let promise = Promise<TeamsEntity>()
+    func requestTeams() -> Future<TeamsModel> {
+        let promise = Promise<TeamsModel>()
         freshKey { key in
             let body = RequestBody(key: key, payload: [:])
             let request = TeambrellaRequest(type: .teams,
@@ -185,6 +185,24 @@ class LocalStorage: Storage {
                 }
                 }, failure: { error in
                     promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
+    func createNewChat(model: NewChatModel) -> Future<ChatModel> {
+        let promise = Promise<ChatModel>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload:["TeamId": model.teamID,
+                                                      "Text": model.text,
+                                                      "Title": model.title])
+            let request = TeambrellaRequest(type: .newChat, body: body, success: { response in
+                if case .chat(let chat) = response {
+                    promise.resolve(with: chat)
+                }
+            }, failure: { error in
+                promise.reject(with: error)
             })
             request.start()
         }

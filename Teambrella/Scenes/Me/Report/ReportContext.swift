@@ -11,6 +11,7 @@ import Foundation
 enum ReportContext {
     // ClaimItem Coverage, Balance
     case claim(item: ClaimItem, coverage: Double, balance: Double)
+    case newChat
 }
 
 struct ClaimItem {

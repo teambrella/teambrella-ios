@@ -128,3 +128,6 @@
 "Team.Members.Teammates.CompareTeamRisk.title" = "COMPARAR RIESG0 DEL EQUIPO";
 
 "Team.ChooseYourTeamVC.header" = "ELEGIR TU EQUIPO";
+
+// Need translation
+"Team.FeedVC.startDiscussionButton.title" = "Start Discussion";

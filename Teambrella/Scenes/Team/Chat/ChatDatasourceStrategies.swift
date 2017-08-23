@@ -49,7 +49,7 @@ struct ChatStrategyFactory {
 class EmptyChatStrategy: ChatDatasourceStrategy {
      var title: String = "Empty"
     var requestType: TeambrellaRequestType = .claimChat
-    var createChatType: TeambrellaRequestType = .feedCreateChat
+    var createChatType: TeambrellaRequestType = .newChat
     
     func updatedChatBody(body: RequestBody) -> RequestBody { return body }
     func updatedMessageBody(body: RequestBody) -> RequestBody { return body }
@@ -59,7 +59,7 @@ class EmptyChatStrategy: ChatDatasourceStrategy {
 class ClaimChatStrategy: ChatDatasourceStrategy {
     var title: String { return claim.name }
     var requestType: TeambrellaRequestType = .claimChat
-    var createChatType: TeambrellaRequestType = .feedCreateChat
+    var createChatType: TeambrellaRequestType = .newChat
     
     var claim: EnhancedClaimEntity
     
@@ -84,7 +84,7 @@ class ClaimChatStrategy: ChatDatasourceStrategy {
 class TeammateChatStrategy: ChatDatasourceStrategy {
     var title: String { return teammate.basic.name }
     var requestType: TeambrellaRequestType = .teammateChat
-    var createChatType: TeambrellaRequestType = .feedCreateChat
+    var createChatType: TeambrellaRequestType = .newChat
     
     var teammate: ExtendedTeammate
     
@@ -119,7 +119,7 @@ class FeedChatStrategy: ChatDatasourceStrategy {
             return .feedChat
         }
     }
-    var createChatType: TeambrellaRequestType = .feedCreateChat
+    var createChatType: TeambrellaRequestType = .newChat
     
     var feedEntity: FeedEntity
     
@@ -162,7 +162,7 @@ class HomeChatStrategy: ChatDatasourceStrategy {
             return .feedChat
         }
     }
-    var createChatType: TeambrellaRequestType = .feedCreateChat
+    var createChatType: TeambrellaRequestType = .newChat
     
     var card: HomeScreenModel.Card
     

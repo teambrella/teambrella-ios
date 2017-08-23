@@ -45,12 +45,18 @@ struct ReportDataSource {
                      DescriptionReportCellModel(text: ""),
                      PhotosReportCellModel(photos: []),
                      WalletReportCellModel(text: "")]
-            break
+        case .newChat:
+            items = [TitleReportCellModel(text: ""),
+                     DescriptionReportCellModel(text: "")]
         }
         
     }
     
-    func send(model: NewClaimModel, completion: @escaping (Any) -> Void) {
+    func sendNewChat(completion: @escaping (Any) -> Void) {
+        
+    }
+    
+    func sendClaim(model: NewClaimModel, completion: @escaping (Any) -> Void) {
         service.storage.createNewClaim(model: model).observe { result in
             switch result {
             case let .value(claim):
@@ -63,82 +69,7 @@ struct ReportDataSource {
     
     subscript(indexPath: IndexPath) -> ReportCellModel {
         get {
-        return items[indexPath.row]
-        }
-        set {
-            guard indexPath.row < items.count else {
-                items.insert(newValue, at: indexPath.row)
-                return
-            }
-            
-            items[indexPath.row] = newValue
+            return items[indexPath.row]
         }
     }
-}
-
-protocol ReportCellModel {
-    var cellReusableIdentifier: String { get }
-    var preferredHeight: Float { get }
-    var title: String { get }
-}
-
-struct ItemReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportItemCell.cellID }
-    var preferredHeight: Float { return 120 }
-    let title = "Me.Report.ItemCell.title".localized
-    
-    let name: String
-    let photo: String
-    let location: String
-    
-}
-
-struct DateReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportTextFieldCell.cellID }
-    var preferredHeight: Float { return 80 }
-    let title = "Me.Report.DateCell.title".localized
-    var date: Date
-}
-
-struct ExpensesReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportExpensesCell.cellID }
-    var preferredHeight: Float { return 160 }
-    let title = "Me.Report.ExpensesCell.title".localized
-    let deductibleTitle = "Me.Report.ExpensesCell.deductibleTitle".localized
-    let coverageTitle = "Me.Report.ExpensesCell.coverageTitle".localized
-    let amountTitle = "Me.Report.ExpensesCell.amountTitle".localized
-    var expenses: Double
-    var expensesString: String { return cryptoCoinsString(amount: expenses) }
-    var deductible: Double
-    var deductibleString: String { return cryptoCoinsString(amount: deductible) }
-    var coverage: Double
-    var coverageString: String { return cryptoCoinsString(amount: coverage) }
-    
-    private func cryptoCoinsString(amount: Double) -> String {
-        return String.formattedNumber(amount * 1000)
-    }
-}
-
-struct DescriptionReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportDescriptionCell.cellID }
-    var preferredHeight: Float { return 170 }
-    let title = "Me.Report.DescriptionCell.title".localized
-    var text: String
-    
-}
-
-struct PhotosReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportPhotoGalleryCell.cellID }
-    var preferredHeight: Float { return 145 }
-    let title = "Me.Report.PhotosCell.title".localized
-    let buttonTitle = "Me.Report.PhotosCell.buttonTitle".localized
-    var photos: [String]
-    
-}
-
-struct WalletReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportTextFieldCell.cellID }
-    var preferredHeight: Float { return 80 }
-    let title = "Me.Report.WalletCell.title".localized
-    var text: String
 }

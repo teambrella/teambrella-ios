@@ -46,7 +46,7 @@ enum TeambrellaRequestType: String {
     case feedDeleteCard = "feed/delCard"
     case teamFeed = "feed/getList"
     case feedChat = "feed/getChat"
-    case feedCreateChat = "feed/newChat"
+    case newChat = "feed/newChat"
     case wallet = "wallet/getOne"
     case uploadPhoto = "post/newUpload"
     case myProxy = "proxy/setMyProxy"
@@ -60,7 +60,7 @@ enum TeambrellaResponseType {
     case timestamp
     case initClient
     case updates
-    case teams(TeamsEntity)
+    case teams(TeamsModel)
     case teammatesList([TeammateLike])
     case teammate(ExtendedTeammate)
     case teammateVote(JSON)
@@ -75,7 +75,7 @@ enum TeambrellaResponseType {
     case home(HomeScreenModel)
     case feedDeleteCard(HomeScreenModel)
     case teamFeed([FeedEntity])
-    case chat(lastRead: Int64, chat: [ChatEntity], basicPart: JSON, teamPart: JSON)
+    case chat(ChatModel)
     case wallet(WalletEntity)
     case uploadPhoto(String)
     case myProxy(Bool)
@@ -139,11 +139,11 @@ struct TeambrellaRequest {
             let invitations = TeamEntity.teams(with: reply["MyInvitations"])
             let lastSelectedTeam = reply["LastSelectedTeam"].int
             let userID = reply["UserId"].stringValue
-            let teamsEntity = TeamsEntity(teams: teams,
+            let teamsModel = TeamsModel(teams: teams,
                                           invitations: invitations,
                                           lastTeamID: lastSelectedTeam,
                                           userID: userID)
-            success(.teams(teamsEntity))
+            success(.teams(teamsModel))
         case .newPost:
             success(.newPost(ChatEntity(json: reply)))
         case .teammateVote:
@@ -168,13 +168,14 @@ struct TeambrellaRequest {
         case .claimChat,
              .teammateChat,
              .feedChat,
-             .feedCreateChat:
+             .newChat:
             let discussion = reply["DiscussionPart"]
-            let lastRead = discussion["LastRead"].int64Value
-            let chat = ChatEntity.buildArray(from: discussion["Chat"])
-            let basicInfo = discussion["BasicPart"]
-            let teamPart = discussion["TeamPart"]
-            success(.chat(lastRead: lastRead, chat: chat, basicPart: basicInfo, teamPart: teamPart))
+            let model = ChatModel(discussion: discussion,
+                                  lastRead: discussion["LastRead"].int64Value,
+                                  chat: ChatEntity.buildArray(from: discussion["Chat"]),
+                                  basicPart: discussion["BasicPart"],
+                                  teamPart: discussion["TeamPart"])
+            success(.chat(model))
         case .teamFeed:
             success(.teamFeed(reply.arrayValue.flatMap { FeedEntity(json: $0) }))
         case .home:

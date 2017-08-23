@@ -178,7 +178,7 @@ class ReportVC: UIViewController, Routable {
                                       message: message,
                                       images: images,
                                       address: address)
-            dataSource.send(model: model) { [weak self] result in
+            dataSource.sendClaim(model: model) { [weak self] result in
                 guard let me = self else { return }
                 
                 me.delegate?.report(controller: me, didSendReport: result)

@@ -55,6 +55,9 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         return IndicatorInfo(title: "Team.FeedVC.indicatorTitle".localized)
     }
 
+    func tapStartDiscussion(sender: UIButton) {
+        service.router.presentReport(context: .newChat, delegate: self)
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -95,7 +98,9 @@ extension FeedVC: UICollectionViewDelegate {
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
         if let view = view as? HeaderWithButton {
-            view.button.setTitle("Start Discussion", for: .normal)
+            view.button.setTitle("Team.FeedVC.startDiscussionButton.title".localized, for: .normal)
+            view.button.removeTarget(self, action: nil, for: .allEvents)
+            view.button.addTarget(self, action: #selector(tapStartDiscussion), for: .touchUpInside)
         }
     }
     
@@ -119,5 +124,12 @@ extension FeedVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: Constant.headerHeight)
+    }
+}
+
+extension FeedVC: ReportDelegate {
+    func report(controller: ReportVC, didSendReport data: Any) {
+        print(data)
+        service.router.navigator?.popViewController(animated: false)
     }
 }

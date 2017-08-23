@@ -108,14 +108,14 @@ class UniversalChatDatasource {
     }
     
     private func process(response: TeambrellaResponseType) {
-        if case .chat(lastRead: let lastRead, chat: let chat, basicPart: let basic, teamPart: let teamPart) = response {
-            posts.append(contentsOf: chat)
-            claim?.update(with: basic)
+        if case let .chat(model) = response {
+            posts.append(contentsOf: model.chat)
+            claim?.update(with: model.basicPart)
             //claim?.update(with: teamPart)
-            since = lastRead
-            offset += chat.count
+            since = model.lastRead
+            offset += model.chat.count
             onUpdate?()
-            if limit > chat.count {
+            if limit > model.chat.count {
                 hasMore = false
             }
         }
