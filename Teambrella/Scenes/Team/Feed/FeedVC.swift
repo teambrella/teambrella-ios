@@ -129,7 +129,10 @@ extension FeedVC: UICollectionViewDelegateFlowLayout {
 
 extension FeedVC: ReportDelegate {
     func report(controller: ReportVC, didSendReport data: Any) {
-        print(data)
-        service.router.navigator?.popViewController(animated: false)
+        if let data = data as? ChatModel {
+            service.router.navigator?.popViewController(animated: false)
+            let context = ChatContext.chat(data)
+            service.router.presentChat(context: context)
+        }
     }
 }

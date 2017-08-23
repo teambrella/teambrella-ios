@@ -176,7 +176,7 @@ class LocalStorage: Storage {
             let body = RequestBody(key: key, payload:["TeamId": model.teamID,
                                                       "IncidentDate": dateString,
                                                       "Expenses": model.expenses,
-                                                      "Message": model.message,
+                                                      "Message": model.text,
                                                       "Images": model.images,
                                                       "Address": model.address])
             let request = TeambrellaRequest(type: .newClaim, body: body, success: { response in

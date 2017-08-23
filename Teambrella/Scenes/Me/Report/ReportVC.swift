@@ -152,37 +152,12 @@ class ReportVC: UIViewController, Routable {
     }
     
     func validateAndSendData() {
-        var date: Date?
-        var expenses: Double?
-        var message: String?
-        let images = photoController.photos
-        var address: String?
+        guard let model = dataSource.reportModel(imageStrings: photoController.photos) else { return }
         
-        for model in dataSource.items {
-            if let model = model as? DateReportCellModel {
-                date = model.date
-            } else if let model = model as? ExpensesReportCellModel {
-                expenses = model.expenses
-            } else if let model = model as? DescriptionReportCellModel {
-                message = model.text
-            } else if let model = model as? WalletReportCellModel {
-                address = model.text
-            }
-        }
-        guard let teamID = service.session.currentTeam?.teamID else { fatalError("No current team") }
-        
-        if let date = date, let expenses = expenses, let message = message, let address = address {
-            let model = NewClaimModel(teamID: teamID,
-                                      incidentDate: date,
-                                      expenses: expenses,
-                                      message: message,
-                                      images: images,
-                                      address: address)
-            dataSource.sendClaim(model: model) { [weak self] result in
-                guard let me = self else { return }
-                
-                me.delegate?.report(controller: me, didSendReport: result)
-            }
+        dataSource.send(model: model) { [weak self] result in
+            guard let me = self else { return }
+            
+            me.delegate?.report(controller: me, didSendReport: result)
         }
     }
     
@@ -195,6 +170,9 @@ class ReportVC: UIViewController, Routable {
             let text = textField.text,
             let expenses = Double(text) {
             model.expenses = expenses
+            dataSource.items[indexPath.row] = model
+        } else if var model = dataSource[indexPath] as? TitleReportCellModel {
+            model.text = textField.text ?? ""
             dataSource.items[indexPath.row] = model
         }
     }

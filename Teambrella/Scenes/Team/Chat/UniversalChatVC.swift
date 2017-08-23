@@ -26,6 +26,7 @@ enum ChatContext {
     case teammate(ExtendedTeammate)
     case feed(FeedEntity)
     case home(HomeScreenModel.Card)
+    case chat(ChatModel)
     case none
 }
 
@@ -34,9 +35,6 @@ class UniversalChatVC: UIViewController, Routable {
     
     @IBOutlet var input: ChatInputView!
     @IBOutlet var collectionView: UICollectionView!
-    
-    //    @IBOutlet var inputViewHeightConstraint: NSLayoutConstraint!
-    //    @IBOutlet var inputViewBottomConstraint: NSLayoutConstraint!
     
     let dataSource = UniversalChatDatasource()
     

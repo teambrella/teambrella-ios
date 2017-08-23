@@ -30,6 +30,7 @@ struct ReportCellBuilder {
         collectionView.register(ReportTextFieldCell.nib, forCellWithReuseIdentifier: ReportTextFieldCell.cellID)
     }
     
+    // swiftlint:disable:next function_body_length
     static func populate(cell: UICollectionViewCell,
                          with model: ReportCellModel,
                          reportVC: ReportVC,
@@ -78,6 +79,13 @@ struct ReportCellBuilder {
             cell.textField.text = DateProcessor().stringIntervalOrDate(from: model.date)
             cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(0)
         } else if let cell = cell as? ReportTextFieldCell, let model = model as? WalletReportCellModel {
+            cell.headerLabel.text = model.title
+            cell.textField.text = model.text
+            cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
+            cell.textField.tag = indexPath.row
+            cell.textField.removeTarget(reportVC, action: nil, for: .allEvents)
+            cell.textField.addTarget(reportVC, action: #selector(ReportVC.textFieldDidChange), for: .editingChanged)
+        } else if let cell = cell as? ReportTextFieldCell, let model = model as? TitleReportCellModel {
             cell.headerLabel.text = model.title
             cell.textField.text = model.text
             cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)

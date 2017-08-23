@@ -32,14 +32,16 @@ protocol ChatDatasourceStrategy {
 struct ChatStrategyFactory {
     static func strategy(with context: ChatContext) -> ChatDatasourceStrategy {
         switch context {
-        case .claim(let claim):
+        case let .claim(claim):
             return ClaimChatStrategy(context: claim)
-        case .teammate(let teammate):
+        case let .teammate(teammate):
             return TeammateChatStrategy(context: teammate)
-        case .feed(let feedEntity):
+        case let .feed(feedEntity):
             return FeedChatStrategy(context: feedEntity)
-        case .home(let card):
+        case let .home(card):
             return HomeChatStrategy(context: card)
+        case let .chat(chatModel):
+            return ChatStrategy(context: chatModel)
         case .none:
             return EmptyChatStrategy()
         }
@@ -188,6 +190,32 @@ class HomeChatStrategy: ChatDatasourceStrategy {
     func updatedMessageBody(body: RequestBody) -> RequestBody {
         var body = body
         body.payload?["TopicId"] = card.topicID
+        return body
+    }
+    
+}
+
+class ChatStrategy: ChatDatasourceStrategy {
+    var title: String { return chatModel.title }
+    var requestType: TeambrellaRequestType { return .feedChat }
+    var createChatType: TeambrellaRequestType = .newChat
+    
+    var chatModel: ChatModel
+    
+    init(context: ChatModel) {
+        chatModel = context
+    }
+    
+    func updatedChatBody(body: RequestBody) -> RequestBody {
+        var body = body
+            body.payload?["TopicId"] = chatModel.topicID
+        
+        return body
+    }
+    
+    func updatedMessageBody(body: RequestBody) -> RequestBody {
+        var body = body
+        body.payload?["TopicId"] = chatModel.topicID
         return body
     }
     

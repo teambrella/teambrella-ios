@@ -16,16 +16,21 @@ struct TeamsModel {
     let userID: String
 }
 
-struct NewClaimModel {
+protocol ReportModel {
+    var teamID: Int { get }
+    var text: String { get }
+}
+
+struct NewClaimModel: ReportModel {
     let teamID: Int
     let incidentDate: Date
     let expenses: Double
-    let message: String
+    let text: String
     let images: [String]
     let address: String
 }
 
-struct NewChatModel {
+struct NewChatModel: ReportModel {
     let teamID: Int
     let title: String
     let text: String
@@ -37,4 +42,8 @@ struct ChatModel {
     let chat: [ChatEntity]
     let basicPart: JSON
     let teamPart: JSON
+    
+    var topicID: String { return discussion["TopicId"].stringValue }
+    var title: String { return basicPart["Title"].stringValue }
+    var userID: String { return basicPart["UserId"].stringValue }
 }

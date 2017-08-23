@@ -52,11 +52,74 @@ struct ReportDataSource {
         
     }
     
-    func sendNewChat(completion: @escaping (Any) -> Void) {
+    func reportModel(imageStrings: [String]) -> ReportModel? {
+        guard let teamID = service.session.currentTeam?.teamID else { fatalError("No current team") }
         
+        switch context {
+        case .claim(item: _, coverage: _, balance: _):
+            var date: Date?
+            var expenses: Double?
+            var message: String?
+            var address: String?
+            for model in items {
+                if let model = model as? DateReportCellModel {
+                    date = model.date
+                } else if let model = model as? ExpensesReportCellModel {
+                    expenses = model.expenses
+                } else if let model = model as? DescriptionReportCellModel {
+                    message = model.text
+                } else if let model = model as? WalletReportCellModel {
+                    address = model.text
+                }
+            }
+            
+            if let date = date, let expenses = expenses, let message = message, let address = address {
+                let model = NewClaimModel(teamID: teamID,
+                                          incidentDate: date,
+                                          expenses: expenses,
+                                          text: message,
+                                          images: imageStrings,
+                                          address: address)
+                return model
+            }
+        case .newChat:
+            var title: String?
+            var text: String?
+            for model in items {
+                if let model = model as? TitleReportCellModel {
+                    title = model.text
+                } else if let model = model as? DescriptionReportCellModel {
+                    text = model.text
+                }
+            }
+            
+            if let text = text, let title = title {
+                return NewChatModel(teamID: teamID, title: title, text: text)
+            }
+        }
+        return nil
     }
     
-    func sendClaim(model: NewClaimModel, completion: @escaping (Any) -> Void) {
+    func send(model: ReportModel,completion: @escaping (Any) -> Void) {
+        if let model = model as? NewChatModel {
+            sendNewChat(model: model, completion: completion)
+        } else if let model = model as? NewClaimModel {
+            sendClaim(model: model, completion: completion)
+        }
+    }
+    
+    private func sendNewChat(model: NewChatModel, completion: @escaping (Any) -> Void) {
+        service.storage.createNewChat(model: model).observe { result in
+            switch result {
+            case let .value(claim):
+                completion(claim)
+            case let .error(error):
+                completion(error)
+            }
+        }
+    }
+    
+    private func sendClaim(model: NewClaimModel, completion: @escaping (Any) -> Void) {
         service.storage.createNewClaim(model: model).observe { result in
             switch result {
             case let .value(claim):
