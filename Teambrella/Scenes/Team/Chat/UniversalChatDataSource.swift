@@ -122,3 +122,35 @@ class UniversalChatDatasource {
     }
     
 }
+
+struct ChatModelBuilder {
+    let fragmentParser = ChatFragmentParser()
+    
+    func cellModelsFrom(chatItems: [ChatEntity]) -> [ChatCellModel] {
+        var result: [ChatCellModel] = []
+        for item in chatItems {
+            let fragments = fragmentParser.parse(item: item)
+            var isMy = false
+            server.session.currentUserID.map { isMy = item.userID == $0 }
+            let model = ChatTextCellModel(fragments: fragments,
+                                          isMy: isMy, userName: <#T##String#>, userAvatar: <#T##String#>, voteRate: <#T##Double#>, date: <#T##Date#>)
+        }
+    }
+}
+
+protocol ChatCellModel {
+    
+}
+
+struct ChatTextCellModel: ChatCellModel {
+    let fragments: [ChatFragment]
+    let fragmentHeights: [CGFloat]
+    
+    let isMy: Bool
+    let userName: String
+    let userAvatar: String
+    let voteRate: Double
+    let date: Date
+    
+    var fragmentsHeight: CGFloat { return fragmentHeights.reduce(0, +) }
+}

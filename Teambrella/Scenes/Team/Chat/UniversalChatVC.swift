@@ -157,6 +157,7 @@ class UniversalChatVC: UIViewController, Routable {
     
     func registerCells() {
         collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
+        collectionView.register(ChatTextCell.self, forCellWithReuseIdentifier: "Test")
     }
     
     override func keyboardWillHide(notification: Notification) {
@@ -268,7 +269,7 @@ extension UniversalChatVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatCell.cellID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Test", for: indexPath)
         return cell
     }
     
@@ -292,11 +293,14 @@ extension UniversalChatVC: UICollectionViewDelegate {
         if indexPath.row > dataSource.count - 20 {
             dataSource.loadNext()
         }
+        let chatItem = dataSource.posts[indexPath.row]
         if let cell = cell as? ChatCell {
-            let chatItem = dataSource.posts[indexPath.row]
             ChatTextParser().populate(cell: cell, with: chatItem)
             cell.align(offset: collectionView.bounds.width * 0.3, toLeading: chatItem.name != "Iaroslav Pasternak")
             cell.dateLabel.text = Formatter.teambrellaShort.string(from: chatItem.created)
+        } else if let cell = cell as? ChatTextCell {
+            cell.isMy = chatItem.userID == service.session.currentUserID ?? "0"
+            cell.avatarView.showAvatar(string: chatItem.avatar)
         }
     }
     
@@ -332,14 +336,15 @@ extension UniversalChatVC: UIImagePickerControllerDelegate {
 extension UniversalChatVC: UINavigationControllerDelegate {
     
 }
+
 // MARK: UICollectionViewDelegateFlowLayout
-//extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//       // let constraintRect = CGSize(width: collectionView.bounds.width, height: CGFloat.max)
-//
-//        return CGSize(width: collectionView.bounds.width - 32, height: 100)
-//    }
-//
-//}
+extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+       // let constraintRect = CGSize(width: collectionView.bounds.width, height: CGFloat.max)
+
+        return CGSize(width: collectionView.bounds.width - 32, height: 100)
+    }
+
+}
