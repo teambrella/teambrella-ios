@@ -38,8 +38,10 @@ struct ChatFragmentParser {
                 } else {
                     aspect = defaultAspect
                 }
-                result.append(ChatFragment.image(urlString: img as String, aspect: aspect))
-                imagesCount += 1
+                if let idx = Int(img as String), idx < item.images.count {
+                    result.append(ChatFragment.image(urlString: item.images[idx], aspect: aspect))
+                    imagesCount += 1
+                }
             }
             text = nil
             img = nil

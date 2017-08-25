@@ -100,7 +100,7 @@ struct ReportDataSource {
         return nil
     }
     
-    func send(model: ReportModel,completion: @escaping (Any) -> Void) {
+    func send(model: ReportModel, completion: @escaping (Any) -> Void) {
         if let model = model as? NewChatModel {
             sendNewChat(model: model, completion: completion)
         } else if let model = model as? NewClaimModel {

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftSoup
+//import SwiftSoup
 
 class ChatTextCell: UICollectionViewCell {
     struct Constant {
@@ -21,24 +21,37 @@ class ChatTextCell: UICollectionViewCell {
     
     lazy var avatarView: RoundImageView = {
         let imageView = RoundImageView()
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(self.avatarTap)
         self.contentView.addSubview(imageView)
         return imageView
     }()
     
+    lazy var avatarTap: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        return gesture
+    }()
+    
     lazy var leftLabel: Label = {
         let label = Label()
+        label.font = UIFont.teambrella(size: 12)
+        label.textColor = .perrywinkle
         self.contentView.addSubview(label)
         return label
     }()
     
     lazy var rightLabel: Label = {
         let label = Label()
+        label.font = UIFont.teambrella(size: 12)
+        label.textColor = .bluishGray
         self.contentView.addSubview(label)
         return label
     }()
     
     lazy var bottomLabel: Label = {
         let label = Label()
+        label.font = UIFont.teambrella(size: 10)
+        label.textColor = .bluishGray
         self.contentView.addSubview(label)
         return label
     }()
@@ -57,13 +70,9 @@ class ChatTextCell: UICollectionViewCell {
         }
     }
     
-    var cloudHeight: CGFloat {
-        return 80
-    }
-    
-    var cloudWidth: CGFloat {
-        return 250
-    }
+    var cloudHeight: CGFloat = 80
+    var cloudWidth: CGFloat = 250
+    var id: String = ""
     
     var cloudInsetX: CGFloat {
         return Constant.avatarContainerInset + Constant.avatarWidth + Constant.avatarCloudInset
@@ -86,11 +95,7 @@ class ChatTextCell: UICollectionViewCell {
     
     var isMy: Bool = false {
         didSet {
-            let x = isMy ? width - Constant.avatarContainerInset - Constant.avatarWidth : Constant.avatarContainerInset
-            avatarView.frame = CGRect(x: x,
-                                      y: cloudHeight - Constant.avatarWidth,
-                                      width: Constant.avatarWidth,
-                                      height: Constant.avatarWidth)
+            avatarView.isUserInteractionEnabled = !isMy
         }
     }
     
@@ -118,148 +123,157 @@ class ChatTextCell: UICollectionViewCell {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         
         if isMy {
-            //
-            //
-            //
-            //             \
             var pen: CGPoint = cloudStartPoint
             context.move(to: pen)
             pen.x -= Constant.tailWidth
             pen.y -= Constant.tailHeight
             context.addLine(to: pen)
             
-            //
-            //            |
-            //            |
-            //             \
             pen.y = Constant.cloudCornerRadius
             context.addLine(to: pen)
             
-            //           \
-            //            |
-            //            |
-            //             \
             var controlP = CGPoint(x: pen.x, y: 0)
             pen.x -= Constant.cloudCornerRadius
             pen.y = 0
             context.addQuadCurve(to: pen, control:controlP)
             
-            //  _________
-            //           \
-            //            |
-            //            |
-            //             \
             pen.x = cloudBodyMinX + Constant.cloudCornerRadius
             context.addLine(to: pen)
             
-            //  _________
-            // /         \
-            //            |
-            //            |
-            //             \
             pen.x = cloudBodyMinX
             pen.y = Constant.cloudCornerRadius
             controlP = CGPoint(x: cloudBodyMinX, y: 0)
             context.addQuadCurve(to: pen,
                                  control: controlP)
             
-            //  _________
-            // /         \
-            // |          |
-            // |          |
-            //             \
             pen.y = cloudHeight - Constant.cloudCornerRadius
             context.addLine(to: pen)
             
-            //  _________
-            // /         \
-            // |          |
-            // |          |
-            // \           \
             pen.x += Constant.cloudCornerRadius
             pen.y = cloudHeight
             controlP = CGPoint(x: cloudBodyMinX, y: cloudHeight)
             context.addQuadCurve(to: pen,
                                  control: controlP)
             
-            //  _________
-            // /         \
-            // |          |
-            // |          |
-            // \___________\
             context.closePath()
         } else {
-            // /
             var pen: CGPoint = cloudStartPoint
             context.move(to: pen)
             pen.x += Constant.tailWidth
             pen.y -= Constant.tailHeight
             context.addLine(to: pen)
             
-            //  |
-            //  |
-            // /
             pen.y = Constant.cloudCornerRadius
             context.addLine(to: pen)
             
-            //   /
-            //  |
-            //  |
-            // /
             var controlP = CGPoint(x: pen.x, y: 0)
             pen.x += Constant.cloudCornerRadius
             pen.y = 0
             context.addQuadCurve(to: pen, control:controlP)
             
-            //    ________
-            //   /
-            //  |
-            //  |
-            // /
             pen.x = cloudBodyMaxX - Constant.cloudCornerRadius
             context.addLine(to: pen)
             
-            //    ________
-            //   /        \
-            //  |
-            //  |
-            // /
             pen.x = cloudBodyMaxX
             pen.y = Constant.cloudCornerRadius
             controlP = CGPoint(x: cloudBodyMaxX, y: 0)
             context.addQuadCurve(to: pen,
                                  control: controlP)
             
-            //    ________
-            //   /        \
-            //  |          |
-            //  |          |
-            // /
             pen.y = cloudHeight - Constant.cloudCornerRadius
             context.addLine(to: pen)
             
-            //    ________
-            //   /        \
-            //  |          |
-            //  |          |
-            // /          /
             pen.x -= Constant.cloudCornerRadius
             pen.y = cloudHeight
             controlP = CGPoint(x: cloudBodyMaxX, y: cloudHeight)
             context.addQuadCurve(to: pen,
                                  control: controlP)
             
-            //    ________
-            //   /        \
-            //  |          |
-            //  |          |
-            // /__________/
             context.closePath()
         }
         context.setStrokeColor(UIColor.lightBlueGray.cgColor)
         context.setLineWidth(1)
         context.setFillColor(UIColor.veryLightBlue.cgColor)
         context.drawPath(using: .fillStroke)
+    }
+    
+    func prepare(with model: ChatCellModel, cloudWidth: CGFloat, cloudHeight: CGFloat) {
+        guard let model = model as? ChatTextCellModel, model.id != id else { return }
+        
+        id = model.id
+        isMy = model.isMy
+        self.cloudWidth = cloudWidth
+        self.cloudHeight = cloudHeight
+        setNeedsDisplay()
+        
+        let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: 20)
+        leftLabel.frame = baseFrame
+        leftLabel.text = model.userName
+        leftLabel.sizeToFit()
+        leftLabel.center = CGPoint(x: cloudBodyMinX + leftLabel.frame.width / 2 + 8,
+                                   y: leftLabel.frame.height / 2 + 8)
+        
+        rightLabel.frame = baseFrame
+        rightLabel.text = String.formattedNumber(model.voteRate)
+        rightLabel.sizeToFit()
+        rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - 8,
+                                    y: rightLabel.frame.height / 2 + 8)
+        bottomLabel.frame = baseFrame
+        bottomLabel.text = DateProcessor().stringInterval(from: model.date)
+        bottomLabel.sizeToFit()
+        bottomLabel.center = CGPoint(x: cloudBodyMaxX - bottomLabel.frame.width / 2 - 8,
+                                     y: cloudHeight - bottomLabel.frame.height / 2 - 8)
+        
+        avatarView.showAvatar(string: model.userAvatar)
+        
+        views.forEach { $0.removeFromSuperview() }
+        views.removeAll()
+        
+        for (idx, fragment) in model.fragments.enumerated() {
+            switch fragment {
+            case let .text(text):
+                let label: UILabel = createLabel(for: text, height: model.fragmentHeights[idx])
+                contentView.addSubview(label)
+                views.append(label)
+            case let .image(urlString: urlString, aspect: _):
+                let imageView = createImageView(for: urlString, height: model.fragmentHeights[idx])
+                contentView.addSubview(imageView)
+                views.append(imageView)
+            }
+        }
+        
+        let x = isMy ? width - Constant.avatarContainerInset - Constant.avatarWidth : Constant.avatarContainerInset
+        avatarView.frame = CGRect(x: x,
+                                  y: cloudHeight - Constant.avatarWidth,
+                                  width: Constant.avatarWidth,
+                                  height: Constant.avatarWidth)
+    }
+    
+    func createLabel(for text: String, height: CGFloat) -> UILabel {
+        let verticalOffset = views.last?.frame.maxY ?? leftLabel.frame.maxY + 8
+        let label = UILabel(frame: CGRect(x: cloudBodyMinX + 8,
+                                          y: verticalOffset,
+                                          width: cloudWidth - 16,
+                                          height: height))
+        label.text = text
+        label.font = UIFont.teambrella(size: 14)
+        label.numberOfLines = 0
+        return label
+    }
+    
+    func createImageView(for urlString: String, height: CGFloat) -> UIImageView {
+        let verticalOffset = views.last?.frame.maxY ?? leftLabel.frame.maxY + 8
+        let separator: CGFloat = 2.0
+        
+        let imageView = UIImageView(frame: CGRect(x: cloudBodyMinX + separator,
+                                                   y: verticalOffset + separator,
+                                                   width: cloudWidth - separator * 2,
+                                                   height: height))
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        print("string|: \(urlString)")
+        imageView.showImage(string: urlString)
+        return imageView
     }
     
 }

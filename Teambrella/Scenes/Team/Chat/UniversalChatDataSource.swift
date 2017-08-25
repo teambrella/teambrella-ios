@@ -33,11 +33,18 @@ class UniversalChatDatasource {
     }
     
     var posts: [ChatEntity] = []
-    var limit = 100
-    var since: Int64 = 0
-    var offset = 0
-    var avatarSize = 64
-    var commentAvatarSize = 32
+    var cellModels: [ChatCellModel] = []
+    var count: Int { return cellModels.count }
+    
+    var limit                         = 100
+    var since: Int64                  = 0
+    var offset                        = 0
+    var avatarSize                    = 64
+    var commentAvatarSize             = 32
+    var cloudWidth: CGFloat           = 0
+    var labelHorizontalInset: CGFloat = 8
+    var font: UIFont                  = UIFont.teambrella(size: 14)
+    
     private(set) var isLoading = false
     private(set) var hasMore = true
     var title: String { return strategy.title }
@@ -46,7 +53,7 @@ class UniversalChatDatasource {
     
     var onUpdate: (() -> Void)?
     
-    var count: Int { return posts.count }
+    let cellModelBuilder = ChatModelBuilder()
     
     func addContext(context: ChatContext) {
         strategy = ChatStrategyFactory.strategy(with: context)
@@ -110,6 +117,10 @@ class UniversalChatDatasource {
     private func process(response: TeambrellaResponseType) {
         if case let .chat(model) = response {
             posts.append(contentsOf: model.chat)
+            let models = cellModelBuilder.cellModels(from: model.chat,
+                                                     width: cloudWidth - labelHorizontalInset * 2,
+                                                     font: font)
+            cellModels.append(contentsOf: models)
             claim?.update(with: model.basicPart)
             //claim?.update(with: teamPart)
             since = model.lastRead
@@ -121,36 +132,7 @@ class UniversalChatDatasource {
         }
     }
     
-}
-
-struct ChatModelBuilder {
-    let fragmentParser = ChatFragmentParser()
-    
-    func cellModelsFrom(chatItems: [ChatEntity]) -> [ChatCellModel] {
-        var result: [ChatCellModel] = []
-        for item in chatItems {
-            let fragments = fragmentParser.parse(item: item)
-            var isMy = false
-            server.session.currentUserID.map { isMy = item.userID == $0 }
-            let model = ChatTextCellModel(fragments: fragments,
-                                          isMy: isMy, userName: <#T##String#>, userAvatar: <#T##String#>, voteRate: <#T##Double#>, date: <#T##Date#>)
-        }
+    subscript(indexPath: IndexPath) -> ChatCellModel {
+        return cellModels[indexPath.row]
     }
-}
-
-protocol ChatCellModel {
-    
-}
-
-struct ChatTextCellModel: ChatCellModel {
-    let fragments: [ChatFragment]
-    let fragmentHeights: [CGFloat]
-    
-    let isMy: Bool
-    let userName: String
-    let userAvatar: String
-    let voteRate: Double
-    let date: Date
-    
-    var fragmentsHeight: CGFloat { return fragmentHeights.reduce(0, +) }
 }

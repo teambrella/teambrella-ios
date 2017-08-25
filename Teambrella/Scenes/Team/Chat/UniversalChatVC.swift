@@ -41,6 +41,14 @@ class UniversalChatVC: UIViewController, Routable {
     public var endsEditingWhenTappingOnChatBackground = true
     
     //var topic: Topic?
+    func cloudSize(for indexPath: IndexPath) -> CGSize {
+        guard let model = dataSource[indexPath] as? ChatTextCellModel else { return .zero }
+        
+        return CGSize(width: cloudWidth,
+                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + 50 )
+    }
+    
+    var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
     
     func setContext(context: ChatContext) {
         dataSource.addContext(context: context)
@@ -87,6 +95,7 @@ class UniversalChatVC: UIViewController, Routable {
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 30)
         }
+        dataSource.cloudWidth = cloudWidth
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -161,9 +170,6 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     override func keyboardWillHide(notification: Notification) {
-        //        if let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
-        //            let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
-        //moveInput(height: 48, duration: duration, curve: curve)
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: input.frame.height, right: 0)
         collectionView.contentInset = contentInsets
         collectionView.scrollIndicatorInsets = contentInsets
@@ -182,7 +188,6 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func moveInput(height: CGFloat, duration: TimeInterval, curve: UInt) {
-        //        inputViewBottomConstraint.constant = height
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
         collectionView.contentInset = contentInsets
         collectionView.scrollIndicatorInsets = contentInsets
@@ -193,11 +198,6 @@ class UniversalChatVC: UIViewController, Routable {
                         self.view.layoutIfNeeded()
         }, completion: nil)
         
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func setupTapGestureRecognizer() {
@@ -255,6 +255,15 @@ class UniversalChatVC: UIViewController, Routable {
         send(text: input?.textView.text ?? "", images: [name])
     }
     
+    func tapAvatar(sender: UITapGestureRecognizer) {
+        guard let view = sender.view else { return }
+        
+        let indexPath = IndexPath(row: view.tag, section: 0)
+        if let model = dataSource[indexPath] as? ChatTextCellModel {
+            let userID = model.entity.userID
+            service.router.presentMemberProfile(teammateID: userID)
+        }
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -264,7 +273,7 @@ extension UniversalChatVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.posts.count
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -289,18 +298,16 @@ extension UniversalChatVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        //print("item \(indexPath.row + 1) \t\tout of \(dataSource.count)")
         if indexPath.row > dataSource.count - 20 {
             dataSource.loadNext()
         }
-        let chatItem = dataSource.posts[indexPath.row]
-        if let cell = cell as? ChatCell {
-            ChatTextParser().populate(cell: cell, with: chatItem)
-            cell.align(offset: collectionView.bounds.width * 0.3, toLeading: chatItem.name != "Iaroslav Pasternak")
-            cell.dateLabel.text = Formatter.teambrellaShort.string(from: chatItem.created)
-        } else if let cell = cell as? ChatTextCell {
-            cell.isMy = chatItem.userID == service.session.currentUserID ?? "0"
-            cell.avatarView.showAvatar(string: chatItem.avatar)
+        let model = dataSource[indexPath]
+        if let cell = cell as? ChatTextCell, let model = model as? ChatTextCellModel {
+            let size = cloudSize(for: indexPath)
+            cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
+            cell.avatarView.tag = indexPath.row
+            cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
+            cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
         }
     }
     
@@ -344,6 +351,11 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
        // let constraintRect = CGSize(width: collectionView.bounds.width, height: CGFloat.max)
 
+        let model = dataSource[indexPath]
+        if let model = model as? ChatTextCellModel {
+            let size = cloudSize(for: indexPath)
+            return CGSize(width: collectionView.bounds.width, height: size.height)
+        }
         return CGSize(width: collectionView.bounds.width - 32, height: 100)
     }
 
