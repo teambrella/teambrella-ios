@@ -49,6 +49,7 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
+    var isSending: Bool = false
     
     func setContext(context: ChatContext) {
         dataSource.addContext(context: context)
@@ -69,6 +70,11 @@ class UniversalChatVC: UIViewController, Routable {
             print("Datasource has \(me.dataSource.count) messages after update")
             me.collectionView.reloadData()
             me.collectionView.reloadData()
+            if me.isSending {
+            let lastIndexPath = IndexPath(row: me.dataSource.count - 1, section: 0)
+            me.collectionView.scrollToItem(at: lastIndexPath, at: .bottom, animated: true)
+                me.isSending = false
+            }
             //           me.collectionView.collectionViewLayout.invalidateLayout()
         }
         title = dataSource.title
@@ -137,18 +143,19 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func send(text: String, images: [String]) {
+        self.isSending = true
         dataSource.send(text: text, images: images) { [weak self] success in
-            self?.collectionView.reloadData()
+           // self?.collectionView.reloadData()
             guard let collectionView = self?.collectionView else { return }
             
             collectionView.performBatchUpdates({
                 collectionView.reloadSections([0])
             }, completion: { success in
                 self?.input?.textView.text = nil
-                self?.scrollToBottom(animated: true) { [weak self] in
-                    self?.collectionView.reloadData()
-                    self?.collectionView.reloadData()
-                }
+//                self?.scrollToBottom(animated: true) { [weak self] in
+//                    self?.collectionView.reloadData()
+//                    self?.collectionView.reloadData()
+//                }
             })
         }
     }
@@ -349,10 +356,7 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-       // let constraintRect = CGSize(width: collectionView.bounds.width, height: CGFloat.max)
-
-        let model = dataSource[indexPath]
-        if let model = model as? ChatTextCellModel {
+        if let model = dataSource[indexPath] as? ChatTextCellModel {
             let size = cloudSize(for: indexPath)
             return CGSize(width: collectionView.bounds.width, height: size.height)
         }

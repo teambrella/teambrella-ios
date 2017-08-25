@@ -156,6 +156,9 @@ class ChatTextCell: UICollectionViewCell {
                                  control: controlP)
             
             context.closePath()
+            
+            context.setFillColor(UIColor.veryLightBlue.cgColor)
+            context.setStrokeColor(UIColor.paleGray.cgColor)
         } else {
             var pen: CGPoint = cloudStartPoint
             context.move(to: pen)
@@ -190,10 +193,12 @@ class ChatTextCell: UICollectionViewCell {
                                  control: controlP)
             
             context.closePath()
+            
+            context.setFillColor(UIColor.white.cgColor)
+            context.setStrokeColor(UIColor.lightBlueGray.cgColor)
         }
-        context.setStrokeColor(UIColor.lightBlueGray.cgColor)
+        
         context.setLineWidth(1)
-        context.setFillColor(UIColor.veryLightBlue.cgColor)
         context.drawPath(using: .fillStroke)
     }
     
@@ -255,6 +260,7 @@ class ChatTextCell: UICollectionViewCell {
                                           y: verticalOffset,
                                           width: cloudWidth - 16,
                                           height: height))
+        label.textColor = .charcoalGray
         label.text = text
         label.font = UIFont.teambrella(size: 14)
         label.numberOfLines = 0
@@ -266,9 +272,9 @@ class ChatTextCell: UICollectionViewCell {
         let separator: CGFloat = 2.0
         
         let imageView = UIImageView(frame: CGRect(x: cloudBodyMinX + separator,
-                                                   y: verticalOffset + separator,
-                                                   width: cloudWidth - separator * 2,
-                                                   height: height))
+                                                  y: verticalOffset + separator,
+                                                  width: cloudWidth - separator * 2,
+                                                  height: height))
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         print("string|: \(urlString)")
