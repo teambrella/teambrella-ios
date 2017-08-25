@@ -36,9 +36,10 @@ class UniversalChatDatasource {
     var cellModels: [ChatCellModel] = []
     var count: Int { return cellModels.count }
     
-    var limit                         = 100
+    var limit                         = 10
     var since: Int64                  = 0
-    var offset                        = 0
+    var offset: Int { return posts.count }
+    var backwardOffset: Int = 0
     var avatarSize                    = 64
     var commentAvatarSize             = 32
     var cloudWidth: CGFloat           = 0
@@ -46,12 +47,32 @@ class UniversalChatDatasource {
     var font: UIFont                  = UIFont.teambrella(size: 14)
     
     private(set) var isLoading = false
-    private(set) var hasMore = true
+    private(set) var hasNext = true
+    private(set) var hasPrevious = true
     var title: String { return strategy.title }
+    var lastIndexPath: IndexPath { return IndexPath(row: count - 1, section: 0) }
+    var previousCount: Int = 0
+    
+    var isLoadNextNeeded: Bool = false {
+        didSet {
+            if !isLoading && hasNext {
+                loadNext()
+            }
+        }
+    }
+    
+    var isLoadPreviousNeeded: Bool = false {
+        didSet {
+            if !isLoading && hasPrevious {
+                loadPrevious()
+            }
+        }
+    }
     
     private var strategy: ChatDatasourceStrategy = EmptyChatStrategy()
     
-    var onUpdate: (() -> Void)?
+    var onUpdate: ((Bool) -> Void)?
+    var onMessageSend: (() -> Void)?
     
     let cellModelBuilder = ChatModelBuilder()
     
@@ -60,9 +81,10 @@ class UniversalChatDatasource {
     }
     
     func loadNext() {
-        guard isLoading == false, hasMore == true else { return }
+        guard isLoading == false, hasNext == true else { return }
         
         isLoading = true
+        isLoadNextNeeded = false
         let key = service.server.key
         
         let body = strategy.updatedChatBody(body: RequestBody(key: key,
@@ -74,65 +96,97 @@ class UniversalChatDatasource {
         let request = TeambrellaRequest(type: strategy.requestType, body: body, success: { [weak self] response in
             guard let me = self else { return }
             
-            me.process(response: response)
+            me.process(response: response, isPrevious: false)
             me.isLoading = false
         })
         request.start()
     }
     
-    func send(text: String, images: [String], completion: @escaping (Bool) -> Void) {
+    func loadPrevious() {
+        guard isLoading == false, hasPrevious == true else { return }
+        
+        isLoading = true
+        isLoadPreviousNeeded = false
+        let key = service.server.key
+        
+        let body = strategy.updatedChatBody(body: RequestBody(key: key,
+                                                              payload: ["since": since,
+                                                                        "limit": -limit,
+                                                                        "offset": backwardOffset,
+                                                                        "avatarSize": avatarSize,
+                                                                        "commentAvatarSize": commentAvatarSize]))
+        let request = TeambrellaRequest(type: strategy.requestType, body: body, success: { [weak self] response in
+            guard let me = self else { return }
+            
+            me.process(response: response, isPrevious: true)
+            me.isLoading = false
+        })
+        request.start()
+    }
+    
+    func send(text: String, images: [String]) {
+        isLoading = true
         let body = strategy.updatedMessageBody(body: RequestBody(key: service.server.key, payload: ["text": text,
                                                                                                     "images": images]))
         
         let request = TeambrellaRequest(type: .newPost, body: body, success: { [weak self] response in
             guard let me = self else { return }
             
-            if case .newPost(let post) = response {
-                me.posts.append(post)
-                completion(true)
-            } else {
-                completion(false)
-            }
-            me.hasMore = true
-        })
-        request.start()
-    }
-    
-    func createChat(teamID: Int, title: String, text: String) {
-        guard isLoading == false else { return }
-        
-        isLoading = true
-        let body = RequestBody(key: service.server.key, payload: ["TeamId": teamID,
-                                                                  "Title": title,
-                                                                  "Text": text])
-        let request = TeambrellaRequest(type: strategy.createChatType, body: body, success: { [weak self] response in
-            guard let me = self else { return }
-            
-           me.process(response: response)
+            me.hasNext = true
             me.isLoading = false
+            me.onMessageSend?()
+            me.process(response: response, isPrevious: false)
         })
         request.start()
     }
     
-    private func process(response: TeambrellaResponseType) {
-        if case let .chat(model) = response {
-            posts.append(contentsOf: model.chat)
-            let models = cellModelBuilder.cellModels(from: model.chat,
-                                                     width: cloudWidth - labelHorizontalInset * 2,
-                                                     font: font)
-            cellModels.append(contentsOf: models)
-            claim?.update(with: model.basicPart)
-            //claim?.update(with: teamPart)
-            since = model.lastRead
-            offset += model.chat.count
-            onUpdate?()
-            if limit > model.chat.count {
-                hasMore = false
+    private func process(response: TeambrellaResponseType, isPrevious: Bool) {
+        switch response {
+        case let .chat(model):
+            previousCount = posts.count
+            if isPrevious {
+                posts.insert(contentsOf: model.chat, at: 0)
+                backwardOffset += model.chat.count
+            } else {
+                posts.append(contentsOf: model.chat)
             }
+            createCellModels(from: model.chat, isPrevious: isPrevious)
+            claim?.update(with: model.basicPart)
+            since = model.lastRead
+            if limit > model.chat.count {
+                if isPrevious {
+                    hasPrevious = false
+                } else {
+                    hasNext = false
+                }
+            }
+        case let .newPost(post):
+            posts.append(post)
+            createCellModels(from: [post], isPrevious: false)
+        default:
+            return
+        }
+        onUpdate?(isPrevious)
+    }
+    
+    private func createCellModels(from entities: [ChatEntity], isPrevious: Bool) {
+        let models = cellModelBuilder.cellModels(from: entities,
+                                                 width: cloudWidth - labelHorizontalInset * 2,
+                                                 font: font)
+        if isPrevious {
+            cellModels.insert(contentsOf: models, at: 0)
+        } else {
+            cellModels.append(contentsOf: models)
         }
     }
     
     subscript(indexPath: IndexPath) -> ChatCellModel {
+        if indexPath.row > posts.count - limit / 2 {
+            isLoadNextNeeded = true
+        }
+        if indexPath.row == 0 {
+            isLoadPreviousNeeded = true
+        }
         return cellModels[indexPath.row]
     }
 }

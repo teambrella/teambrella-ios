@@ -37,6 +37,7 @@ struct NewChatModel: ReportModel {
 }
 
 struct ChatModel {
+    let lastUpdated: Int64
     let discussion: JSON
     let lastRead: Int64
     let chat: [ChatEntity]

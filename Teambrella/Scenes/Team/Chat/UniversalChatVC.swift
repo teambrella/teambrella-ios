@@ -49,7 +49,10 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
-    var isSending: Bool = false
+    var shouldScrollToBottom: Bool = true
+    var isFirstRefresh: Bool = true
+    
+    private var lastTypingDate: Date = Date()
     
     func setContext(context: ChatContext) {
         dataSource.addContext(context: context)
@@ -63,21 +66,42 @@ class UniversalChatVC: UIViewController, Routable {
         setupInput()
         setupTapGestureRecognizer()
         listenForKeyboard()
-        dataSource.loadNext()
-        dataSource.onUpdate = { [weak self] in
+        dataSource.onUpdate = { [weak self] backward in
             guard let me = self else { return }
             
             print("Datasource has \(me.dataSource.count) messages after update")
-            me.collectionView.reloadData()
-            me.collectionView.reloadData()
-            if me.isSending {
-            let lastIndexPath = IndexPath(row: me.dataSource.count - 1, section: 0)
-            me.collectionView.scrollToItem(at: lastIndexPath, at: .bottom, animated: true)
-                me.isSending = false
-            }
-            //           me.collectionView.collectionViewLayout.invalidateLayout()
+            me.refresh(backward: backward)
         }
+        dataSource.isLoadNextNeeded = true
         title = dataSource.title
+        
+        service.socket?.add(listener: self, action: { action in
+            print("Received socket action: \(action)")
+        })
+    }
+    
+    deinit {
+        service.socket?.remove(listener: self)
+    }
+    
+    func refresh(backward: Bool) {
+        // not using reloadData() to avoid blinking of cells
+        collectionView.dataSource = nil
+        collectionView.dataSource = self
+        
+        if self.shouldScrollToBottom {
+            self.collectionView.scrollToItem(at: self.dataSource.lastIndexPath,
+                                             at: .bottom,
+                                             animated: !isFirstRefresh)
+            self.shouldScrollToBottom = false
+            self.isFirstRefresh = false
+        }
+        if backward {
+            let indexPath = IndexPath(row: dataSource.count - dataSource.previousCount, section: 0)
+            self.collectionView.scrollToItem(at: indexPath,
+                                             at: .top,
+                                             animated: false)
+        }
     }
     
     override var inputAccessoryView: UIView? {
@@ -112,16 +136,29 @@ class UniversalChatVC: UIViewController, Routable {
     private func setupInput() {
         input?.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
         input?.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
+        if let socket = service.socket,
+            let teamID = service.session.currentTeam?.teamID,
+            let myID = service.session.currentUserID {
+            input?.onTextChange = { [weak socket, weak self] in
+                guard let me = self else { return }
+                
+                let interval = me.lastTypingDate.timeIntervalSinceNow
+                if interval < -2 {
+                    socket?.typing(teamID: teamID, teammateID: myID)
+                    self?.lastTypingDate = Date()
+                }
+            }
+        }
     }
     
     private func startListeningSockets() {
-        service.socket.add(listener: self) { message in
+        service.socket?.add(listener: self) { message in
             print("Socket received \(message)")
         }
     }
     
     private func stopListeningSockets() {
-        service.socket.remove(listener: self)
+        service.socket?.remove(listener: self)
     }
     
     func tapLeftButton(sender: UIButton) {
@@ -143,21 +180,11 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func send(text: String, images: [String]) {
-        self.isSending = true
-        dataSource.send(text: text, images: images) { [weak self] success in
-           // self?.collectionView.reloadData()
-            guard let collectionView = self?.collectionView else { return }
-            
-            collectionView.performBatchUpdates({
-                collectionView.reloadSections([0])
-            }, completion: { success in
-                self?.input?.textView.text = nil
-//                self?.scrollToBottom(animated: true) { [weak self] in
-//                    self?.collectionView.reloadData()
-//                    self?.collectionView.reloadData()
-//                }
-            })
-        }
+        guard dataSource.isLoading == false else { return }
+        
+        self.shouldScrollToBottom = true
+        dataSource.send(text: text, images: images)
+        input.textView.text = nil
     }
     
     func setupCollectionView() {
@@ -249,7 +276,7 @@ class UniversalChatVC: UIViewController, Routable {
             body.contentType = "image/jpeg"
             body.data = imageData
             let request = TeambrellaRequest(type: .uploadPhoto, body: body, success: { [weak self] response in
-                  if case .uploadPhoto(let name) = response {
+                if case .uploadPhoto(let name) = response {
                     print("Photo uploaded name: \(name)")
                     self?.linkImage(name: name)
                 }
@@ -362,5 +389,5 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
         }
         return CGSize(width: collectionView.bounds.width - 32, height: 100)
     }
-
+    
 }

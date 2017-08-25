@@ -21,7 +21,42 @@
 
 import Starscream
 
-typealias SocketListenerAction = (String) -> Void
+typealias SocketListenerAction = (SocketAction) -> Void
+
+struct SocketAction: CustomStringConvertible {
+    let command: SocketCommand
+    let teamID: Int
+    let teammateID: String
+    
+    var description: String { return "Socket action: \(command); team: \(teamID); teammate: \(teammateID)" }
+    var socketString: String { return "\(command.rawValue);\(teamID);\(teammateID)" }
+    
+    init?(string: String) {
+        let array = string.components(separatedBy: ";")
+        guard array.count >= 3,
+            let command = SocketCommand(rawValue: Int(array[0]) ?? -1),
+            let teamID = Int(array[1]) else {
+            return nil
+        }
+        
+        self.command = command
+        self.teamID = teamID
+        self.teammateID = array[2]
+    }
+    
+    init(command: SocketCommand, teamID: Int, teammateID: String) {
+        self.command = command
+        self.teamID = teamID
+        self.teammateID = teammateID
+    }
+    
+}
+
+enum SocketCommand: Int {
+    case auth = 1
+    case post = 2
+    case typing = 3
+}
 
 class SocketService {
     var socket: WebSocket!
@@ -31,9 +66,15 @@ class SocketService {
     
     init(url: URL?) {
         // swiftlint:disable:next force_unwrapping
-        let url = url ?? URL(string: "wss://" + "surilla.com" + "/echo2.ashx")!
-        print("trying to connect to socket: \(url.absoluteString)")
+        let url = url ?? URL(string: "wss://" + "surilla.com" + "/wshandler.ashx")!
+        print("🔄 trying to connect to socket: \(url.absoluteString)")
         socket = WebSocket(url: url)
+        service.storage.freshKey { key in
+            self.socket.headers["t"] = String(key.timestamp)
+            self.socket.headers["key"] = key.publicKey
+            self.socket.headers["sig"] = key.signature
+            self.socket.connect()
+        }
         socket.delegate = self
     }
     
@@ -43,6 +84,7 @@ class SocketService {
     
     func add(listener: AnyHashable, action: @escaping SocketListenerAction) {
         actions[listener] = action
+        print("🔄 added listener. ListenersCount: \(actions.count)")
     }
     
     func send(string: String) {
@@ -52,6 +94,11 @@ class SocketService {
             unsentMessage = string
             start()
         }
+    }
+    
+    func send(action: SocketAction) {
+        print("🔄 sending action: \(action)")
+        send(string: action.socketString)
     }
     
     @discardableResult
@@ -67,37 +114,47 @@ class SocketService {
         socket.disconnect()
     }
     
-    func auth() {
-        socket.write(string: "0;1;16")
+    func auth(teamID: Int, teammateID: String) {
+        let action = SocketAction(command: .auth, teamID: teamID, teammateID: teammateID)
+        send(action: action)
     }
+    
+    func typing(teamID: Int, teammateID: String) {
+        let action = SocketAction(command: .typing, teamID: teamID, teammateID: teammateID)
+        send(action: action)
+    }
+    
 }
 
 extension SocketService: WebSocketDelegate {
     func websocketDidConnect(socket: WebSocket) {
-        print("Websocket connected")
+        print("🔄 connected")
         if let message = unsentMessage {
             send(string: message)
             unsentMessage = nil
-        } else {
-            auth()
+        } else if let teamID = service.session.currentTeam?.teamID,
+            let teammateID = service.session.currentUserID {
+            auth(teamID: teamID, teammateID: teammateID)
         }
     }
     
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
-        print("Websocket received data: \(data)")
+        print("🔄 received data: \(data)")
     }
     
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
-        print("Websocket disconnected")
+        print("🔄 disconnected")
         if let error = error {
             print("with error: \(error)")
         }
     }
     
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-        print("Websocket received string: \(text)")
+        print("🔄 received: \(text)")
+        guard let socketAction = SocketAction(string: text) else { return }
+        
         for action in actions.values {
-            action(text)
+            action(socketAction)
         }
     }
 }

@@ -140,9 +140,9 @@ struct TeambrellaRequest {
             let lastSelectedTeam = reply["LastSelectedTeam"].int
             let userID = reply["UserId"].stringValue
             let teamsModel = TeamsModel(teams: teams,
-                                          invitations: invitations,
-                                          lastTeamID: lastSelectedTeam,
-                                          userID: userID)
+                                        invitations: invitations,
+                                        lastTeamID: lastSelectedTeam,
+                                        userID: userID)
             success(.teams(teamsModel))
         case .newPost:
             success(.newPost(ChatEntity(json: reply)))
@@ -170,7 +170,8 @@ struct TeambrellaRequest {
              .feedChat,
              .newChat:
             let discussion = reply["DiscussionPart"]
-            let model = ChatModel(discussion: discussion,
+            let model = ChatModel(lastUpdated: reply["LastUpdated"].int64Value,
+                                  discussion: discussion,
                                   lastRead: discussion["LastRead"].int64Value,
                                   chat: ChatEntity.buildArray(from: discussion["Chat"]),
                                   basicPart: discussion["BasicPart"],

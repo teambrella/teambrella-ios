@@ -87,6 +87,8 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         itemCard.avatarView.addGestureRecognizer(touch)
         
         switchToCurrentTeam()
+        
+        service.socket = SocketService()
     }
     
     func switchToCurrentTeam() {

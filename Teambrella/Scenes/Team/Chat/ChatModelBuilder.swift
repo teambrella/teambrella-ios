@@ -18,12 +18,23 @@ struct ChatModelBuilder {
             let fragments = fragmentParser.parse(item: item)
             var isMy = false
             service.session.currentUserID.map { isMy = item.userID == $0 }
+            
+            let name: String
+            let avatar: String
+            if isMy == true {
+                name = "General.you".localized
+                avatar = service.session.currentUserAvatar
+            } else {
+                name = item.name
+                avatar = item.avatar
+            }
+            
             let model = ChatTextCellModel(entity: item,
                                           fragments: fragments,
                                           fragmentHeights: heightCalculator.heights(for: fragments),
                                           isMy: isMy,
-                                          userName: item.name,
-                                          userAvatar: item.avatar,
+                                          userName: name,
+                                          userAvatar: avatar,
                                           voteRate: item.vote,
                                           date: item.created)
             result.append(model)

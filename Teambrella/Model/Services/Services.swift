@@ -29,7 +29,7 @@ class ServicesHandler {
 //    lazy var bitcoin = BitcoinService()
     lazy var server = ServerService()
     lazy var router = MainRouter()
-    lazy var socket = SocketService()
+    var socket: SocketService? 
     lazy var teambrella = TeambrellaService()
     lazy var session = Session()
     lazy var storage: Storage = LocalStorage()
