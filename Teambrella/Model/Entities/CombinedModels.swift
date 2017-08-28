@@ -37,8 +37,9 @@ struct NewChatModel: ReportModel {
 }
 
 struct ChatModel {
+    let lastUpdated: Int64
     let discussion: JSON
-    let lastRead: Int64
+    //let lastRead: Int64
     let chat: [ChatEntity]
     let basicPart: JSON
     let teamPart: JSON
@@ -46,4 +47,5 @@ struct ChatModel {
     var topicID: String { return discussion["TopicId"].stringValue }
     var title: String { return basicPart["Title"].stringValue }
     var userID: String { return basicPart["UserId"].stringValue }
+    var lastRead: Int64 { return discussion["LastRead"].int64Value }
 }

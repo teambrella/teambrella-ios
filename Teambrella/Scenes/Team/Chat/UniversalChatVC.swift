@@ -41,6 +41,18 @@ class UniversalChatVC: UIViewController, Routable {
     public var endsEditingWhenTappingOnChatBackground = true
     
     //var topic: Topic?
+    func cloudSize(for indexPath: IndexPath) -> CGSize {
+        guard let model = dataSource[indexPath] as? ChatTextCellModel else { return .zero }
+        
+        return CGSize(width: cloudWidth,
+                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + 50 )
+    }
+    
+    var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
+    var shouldScrollToBottom: Bool = true
+    var isFirstRefresh: Bool = true
+    
+    private var lastTypingDate: Date = Date()
     
     func setContext(context: ChatContext) {
         dataSource.addContext(context: context)
@@ -54,16 +66,41 @@ class UniversalChatVC: UIViewController, Routable {
         setupInput()
         setupTapGestureRecognizer()
         listenForKeyboard()
-        dataSource.loadNext()
-        dataSource.onUpdate = { [weak self] in
+        dataSource.onUpdate = { [weak self] backward in
             guard let me = self else { return }
             
             print("Datasource has \(me.dataSource.count) messages after update")
-            me.collectionView.reloadData()
-            me.collectionView.reloadData()
-            //           me.collectionView.collectionViewLayout.invalidateLayout()
+            me.refresh(backward: backward)
         }
+        dataSource.isLoadNextNeeded = true
         title = dataSource.title
+        
+        service.socket?.add(listener: self, action: { [weak self] action in
+            print("Received socket action: \(action)")
+            self?.dataSource.hasNext = true
+            self?.dataSource.loadNext()
+        })
+    }
+    
+    deinit {
+        service.socket?.remove(listener: self)
+    }
+    
+    func refresh(backward: Bool) {
+        // not using reloadData() to avoid blinking of cells
+        collectionView.dataSource = nil
+        collectionView.dataSource = self
+        
+        if self.shouldScrollToBottom, let lastIndex = self.dataSource.lastIndexPath {
+            self.collectionView.scrollToItem(at: lastIndex,
+                                             at: .bottom,
+                                             animated: !isFirstRefresh)
+            self.shouldScrollToBottom = false
+            self.isFirstRefresh = false
+        } else if backward, let indexPath = dataSource.currentTopCell {
+            self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
+        }
+        collectionView.refreshControl?.endRefreshing()
     }
     
     override var inputAccessoryView: UIView? {
@@ -87,6 +124,7 @@ class UniversalChatVC: UIViewController, Routable {
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 30)
         }
+        dataSource.cloudWidth = cloudWidth
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,16 +135,29 @@ class UniversalChatVC: UIViewController, Routable {
     private func setupInput() {
         input?.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
         input?.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
+        if let socket = service.socket,
+            let teamID = service.session.currentTeam?.teamID,
+            let myID = service.session.currentUserID {
+            input?.onTextChange = { [weak socket, weak self] in
+                guard let me = self else { return }
+                
+                let interval = me.lastTypingDate.timeIntervalSinceNow
+                if interval < -2 {
+                    socket?.typing(teamID: teamID, teammateID: myID)
+                    self?.lastTypingDate = Date()
+                }
+            }
+        }
     }
     
     private func startListeningSockets() {
-        service.socket.add(listener: self) { message in
+        service.socket?.add(listener: self) { message in
             print("Socket received \(message)")
         }
     }
     
     private func stopListeningSockets() {
-        service.socket.remove(listener: self)
+        service.socket?.remove(listener: self)
     }
     
     func tapLeftButton(sender: UIButton) {
@@ -128,20 +179,11 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func send(text: String, images: [String]) {
-        dataSource.send(text: text, images: images) { [weak self] success in
-            self?.collectionView.reloadData()
-            guard let collectionView = self?.collectionView else { return }
-            
-            collectionView.performBatchUpdates({
-                collectionView.reloadSections([0])
-            }, completion: { success in
-                self?.input?.textView.text = nil
-                self?.scrollToBottom(animated: true) { [weak self] in
-                    self?.collectionView.reloadData()
-                    self?.collectionView.reloadData()
-                }
-            })
-        }
+        guard dataSource.isLoading == false else { return }
+        
+        self.shouldScrollToBottom = true
+        dataSource.send(text: text, images: images)
+        input.textView.text = nil
     }
     
     func setupCollectionView() {
@@ -153,16 +195,21 @@ class UniversalChatVC: UIViewController, Routable {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.autoresizingMask = UIViewAutoresizing()
         automaticallyAdjustsScrollViewInsets = false
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(refreshNeeded), for: .valueChanged)
+        collectionView.refreshControl = refresh
+    }
+    
+    func refreshNeeded() {
+        dataSource.loadPrevious()
     }
     
     func registerCells() {
         collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
+        collectionView.register(ChatTextCell.self, forCellWithReuseIdentifier: "Test")
     }
     
     override func keyboardWillHide(notification: Notification) {
-        //        if let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
-        //            let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
-        //moveInput(height: 48, duration: duration, curve: curve)
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: input.frame.height, right: 0)
         collectionView.contentInset = contentInsets
         collectionView.scrollIndicatorInsets = contentInsets
@@ -181,7 +228,6 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     func moveInput(height: CGFloat, duration: TimeInterval, curve: UInt) {
-        //        inputViewBottomConstraint.constant = height
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
         collectionView.contentInset = contentInsets
         collectionView.scrollIndicatorInsets = contentInsets
@@ -192,11 +238,6 @@ class UniversalChatVC: UIViewController, Routable {
                         self.view.layoutIfNeeded()
         }, completion: nil)
         
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func setupTapGestureRecognizer() {
@@ -241,7 +282,7 @@ class UniversalChatVC: UIViewController, Routable {
             body.contentType = "image/jpeg"
             body.data = imageData
             let request = TeambrellaRequest(type: .uploadPhoto, body: body, success: { [weak self] response in
-                  if case .uploadPhoto(let name) = response {
+                if case .uploadPhoto(let name) = response {
                     print("Photo uploaded name: \(name)")
                     self?.linkImage(name: name)
                 }
@@ -254,6 +295,15 @@ class UniversalChatVC: UIViewController, Routable {
         send(text: input?.textView.text ?? "", images: [name])
     }
     
+    func tapAvatar(sender: UITapGestureRecognizer) {
+        guard let view = sender.view else { return }
+        
+        let indexPath = IndexPath(row: view.tag, section: 0)
+        if let model = dataSource[indexPath] as? ChatTextCellModel {
+            let userID = model.entity.userID
+            service.router.presentMemberProfile(teammateID: userID)
+        }
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -263,12 +313,12 @@ extension UniversalChatVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.posts.count
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatCell.cellID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Test", for: indexPath)
         return cell
     }
     
@@ -288,15 +338,19 @@ extension UniversalChatVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        //print("item \(indexPath.row + 1) \t\tout of \(dataSource.count)")
-        if indexPath.row > dataSource.count - 20 {
-            dataSource.loadNext()
+        if indexPath.row > dataSource.count - dataSource.limit / 2 {
+            dataSource.isLoadNextNeeded = true
         }
-        if let cell = cell as? ChatCell {
-            let chatItem = dataSource.posts[indexPath.row]
-            ChatTextParser().populate(cell: cell, with: chatItem)
-            cell.align(offset: collectionView.bounds.width * 0.3, toLeading: chatItem.name != "Iaroslav Pasternak")
-            cell.dateLabel.text = Formatter.teambrellaShort.string(from: chatItem.created)
+//        if indexPath.row == 0 {
+//            dataSource.isLoadPreviousNeeded = true
+//        }
+        let model = dataSource[indexPath]
+        if let cell = cell as? ChatTextCell, let model = model as? ChatTextCellModel {
+            let size = cloudSize(for: indexPath)
+            cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
+            cell.avatarView.tag = indexPath.row
+            cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
+            cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
         }
     }
     
@@ -332,14 +386,17 @@ extension UniversalChatVC: UIImagePickerControllerDelegate {
 extension UniversalChatVC: UINavigationControllerDelegate {
     
 }
+
 // MARK: UICollectionViewDelegateFlowLayout
-//extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//       // let constraintRect = CGSize(width: collectionView.bounds.width, height: CGFloat.max)
-//
-//        return CGSize(width: collectionView.bounds.width - 32, height: 100)
-//    }
-//
-//}
+extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if let model = dataSource[indexPath] as? ChatTextCellModel {
+            let size = cloudSize(for: indexPath)
+            return CGSize(width: collectionView.bounds.width, height: size.height)
+        }
+        return CGSize(width: collectionView.bounds.width - 32, height: 100)
+    }
+    
+}

@@ -29,6 +29,8 @@ class ChatInputView: UIView, XIBInitable {
     @IBOutlet var rightButton: UIButton!
     @IBOutlet var placeholderLabel: UILabel!
     
+    var onTextChange: (() -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
@@ -45,6 +47,7 @@ class ChatInputView: UIView, XIBInitable {
         textView.layer.cornerRadius = 5
         textView.layer.borderColor = UIColor.cloudyBlue.cgColor
         textView.layer.borderWidth = 1
+        textView.delegate = self
         placeholderLabel.text = ""
     }
 }
@@ -61,6 +64,7 @@ extension ChatInputView: UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        onTextChange?()
         return true
     }
 }

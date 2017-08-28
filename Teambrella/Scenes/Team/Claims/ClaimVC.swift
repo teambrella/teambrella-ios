@@ -46,8 +46,10 @@ class ClaimVC: UIViewController, Routable {
             self?.reloadData()
         }
         dataSource.loadData(claimID: claimID)
-        service.socket.add(listener: self) { [weak self] string in
-            let alert = UIAlertController(title: "Socket message", message: string, preferredStyle: .actionSheet)
+        service.socket?.add(listener: self) { [weak self] action in
+            let alert = UIAlertController(title: "Socket message",
+                                          message: action.description,
+                                          preferredStyle: .actionSheet)
             let cancel = UIAlertAction(title: "Cool", style: .cancel, handler: nil)
             alert.addAction(cancel)
             self?.present(alert, animated: true, completion: nil)
@@ -60,7 +62,7 @@ class ClaimVC: UIViewController, Routable {
     }
     
     deinit {
-        service.socket.remove(listener: self)
+        service.socket?.remove(listener: self)
     }
     
     func reloadData() {

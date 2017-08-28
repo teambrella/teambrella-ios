@@ -45,11 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        service.socket.start()
+        service.socket?.start()
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        service.socket.stop()
+        service.socket?.stop()
     }
     
 }

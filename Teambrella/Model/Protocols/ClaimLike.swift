@@ -29,8 +29,9 @@ protocol ClaimLike: EntityLike {
     var state: ClaimState { get }
     var claimAmount: Double { get }
     var reimbursement: Double { get }
-    var votingResBTC: Double { get }
-    var paymentResBTC: Double { get }
+    var votingRes: Double { get }
+    var paymentRes: Double { get }
+    var myVote: Double { get }
     
     var proxyAvatar: String? { get }
     var proxyName: String? { get }

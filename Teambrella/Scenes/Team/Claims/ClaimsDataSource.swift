@@ -55,9 +55,9 @@ class ClaimsDataSource {
     // if teammate is set all results will be filtered
     var teammate: TeammateLike?
     private var order: [ClaimsCellType] = [.open,
-                                   .voted,
-                                   .paid,
-                                   .fullyPaid]
+                                           .voted,
+                                           .paid,
+                                           .fullyPaid]
     
     var count: Int { return claims.flatMap { $0 }.count }
     var sections: Int { return claims.count }
@@ -75,9 +75,9 @@ class ClaimsDataSource {
                           timestamp: timestamp)
             
             var payload: [String: Any] = ["TeamId": ServerService.teamID,
-                           "Offset": self.offset,
-                           "Limit": Constant.loadLimit,
-                           "AvatarSize": Constant.avatarSize]
+                                          "Offset": self.offset,
+                                          "Limit": Constant.loadLimit,
+                                          "AvatarSize": Constant.avatarSize]
             if let teammate = self.teammate {
                 payload["TeammateIdFilter"] = teammate.id
             }
@@ -98,6 +98,19 @@ class ClaimsDataSource {
             request.start()
         }
         
+    }
+    
+    func headerText(for indexPath: IndexPath) -> String {
+        switch cellType(for: indexPath) {
+        case .fullyPaid: return "FULLY PAID"
+        case .open: return ""
+        case .paid: return "BEING PAID"
+        case .voted: return "VOTED"
+        }
+    }
+    
+    func showHeader(for section: Int) -> Bool {
+        return claims[section].isEmpty == false
     }
     
     private func process(claims: [ClaimLike]) {
