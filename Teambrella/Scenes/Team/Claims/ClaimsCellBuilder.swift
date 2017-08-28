@@ -34,8 +34,8 @@ struct ClaimsCellBuilder {
         guard let cell = cell as? ClaimsCell else { return }
         
         cell.ownerAvatarView.showAvatar(string: claim.avatar)
-        cell.ownerNameLabel.text = claim.name
         cell.titleLabel.text = claim.model
+        cell.ownerNameLabel.text = claim.name.uppercased()
         
         if let cell = cell as? ClaimsOpenCell {
             cell.avatarView.showAvatar(string: claim.smallPhoto)
@@ -46,9 +46,17 @@ struct ClaimsCellBuilder {
             cell.avatarView.showAvatar(string: claim.smallPhoto)
             cell.claimedAmountLabel.text = String(format: "%.2f", claim.claimAmount)
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
+            cell.votedLabel.text = "Voted: " + String(format: "%.2f", claim.myVote)
+            if let name = claim.proxyName {
+                cell.voterLabel.isHidden = true
+                cell.voterLabel.text = "By " + name
+            } else {
+                cell.voterLabel.isHidden = true
+            }
         } else if let cell = cell as? ClaimsPaidCell {
             cell.avatarView.showImage(string: claim.smallPhoto)
             cell.statusLabel.text = "Team.ClaimsCell.reimbursed".localized.uppercased()
+            cell.amountLabel.text = String(format: "%.2f", claim.claimAmount)
             cell.scaleBar.value = CGFloat(claim.reimbursement)
         }
     }

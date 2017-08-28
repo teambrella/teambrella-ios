@@ -76,6 +76,7 @@ class UniversalChatDatasource {
     
     var onUpdate: ((Bool) -> Void)?
     var onMessageSend: (() -> Void)?
+    var onLoadPrevious: ((Int) -> Void)?
     
     let cellModelBuilder = ChatModelBuilder()
     
@@ -184,11 +185,9 @@ class UniversalChatDatasource {
     private func addChunk(chunk: ChatChunk?) {
         guard let chunk = chunk else { return }
         
-        for (idx, storedChunk) in chunks.enumerated() {
-            if chunk < storedChunk {
+        for (idx, storedChunk) in chunks.enumerated() where chunk < storedChunk {
                 chunks.insert(chunk, at: idx)
                 return
-            }
         }
         chunks.append(chunk)
     }
@@ -220,29 +219,5 @@ class UniversalChatDatasource {
         
         let offset = indexPath.row - idx
         return chunk.cellModels[offset]
-    }
-}
-
-struct ChatChunk: Comparable {
-    let cellModels: [ChatCellModel]
-    let minTime: Date
-    let maxTime: Date
-    var count: Int { return cellModels.count }
-    
-    init?(cellModels: [ChatCellModel]) {
-        self.cellModels = cellModels
-        let dates = cellModels.map { $0.date }
-        guard let minTime = dates.min(), let maxTime = dates.max() else { return nil }
-        
-        self.minTime = minTime
-        self.maxTime = maxTime
-    }
-    
-    static func == (lhs: ChatChunk, rhs: ChatChunk) -> Bool {
-        return lhs.minTime == rhs.minTime && lhs.maxTime == rhs.maxTime
-    }
-    
-    static func < (lhs: ChatChunk, rhs: ChatChunk) -> Bool {
-        return lhs.maxTime < rhs.maxTime
     }
 }

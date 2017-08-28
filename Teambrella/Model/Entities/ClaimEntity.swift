@@ -33,8 +33,9 @@ struct ClaimEntity: ClaimLike {
     var state: ClaimState
     var claimAmount: Double
     var reimbursement: Double
-    var votingResBTC: Double
-    var paymentResBTC: Double
+    var votingRes: Double
+    var paymentRes: Double
+    var myVote: Double
     
     var proxyAvatar: String?
     var proxyName: String?
@@ -53,10 +54,12 @@ struct ClaimEntity: ClaimLike {
         state = ClaimState(rawValue: json["State"].intValue) ?? .voting
         claimAmount = json["ClaimAmount"].doubleValue
         reimbursement = json["Reimbursement"].doubleValue
-        votingResBTC = json["VotingRes_BTC"].doubleValue
-        paymentResBTC = json["PaymentRes_BTC"].doubleValue
+        votingRes = json["VotingRes_Crypto"].doubleValue
+        paymentRes = json["PaymentRes_Crypto"].doubleValue
         proxyAvatar = json["ProxyAvatar"].string
         proxyName = json["ProxyName"].string
+        myVote = json["MyVote"].doubleValue
+        
     }
 }
 
