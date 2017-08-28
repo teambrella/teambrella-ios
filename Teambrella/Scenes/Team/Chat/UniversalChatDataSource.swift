@@ -32,14 +32,16 @@ class UniversalChatDatasource {
         }
     }
     
-    var posts: [ChatEntity] = []
     var cellModels: [ChatCellModel] = []
-    var count: Int { return cellModels.count }
+    var chunks: [ChatChunk] = []
+    
+    var count: Int { return chunks.reduce(0) { $0 + $1.count } }
     
     var limit                         = 10
     var since: Int64                  = 0
-    var offset: Int { return posts.count }
+    var forwardOffset: Int = 0
     var backwardOffset: Int = 0
+    var postsCount: Int = 0
     var avatarSize                    = 64
     var commentAvatarSize             = 32
     var cloudWidth: CGFloat           = 0
@@ -51,6 +53,7 @@ class UniversalChatDatasource {
     private(set) var hasPrevious = true
     var title: String { return strategy.title }
     var lastIndexPath: IndexPath { return IndexPath(row: count - 1, section: 0) }
+    
     var previousCount: Int = 0
     
     var isLoadNextNeeded: Bool = false {
@@ -90,7 +93,7 @@ class UniversalChatDatasource {
         let body = strategy.updatedChatBody(body: RequestBody(key: key,
                                                               payload: ["since": since,
                                                                         "limit": limit,
-                                                                        "offset": offset,
+                                                                        "offset": forwardOffset,
                                                                         "avatarSize": avatarSize,
                                                                         "commentAvatarSize": commentAvatarSize]))
         let request = TeambrellaRequest(type: strategy.requestType, body: body, success: { [weak self] response in
@@ -143,16 +146,22 @@ class UniversalChatDatasource {
     private func process(response: TeambrellaResponseType, isPrevious: Bool) {
         switch response {
         case let .chat(model):
-            previousCount = posts.count
+            previousCount = postsCount
+            let currentPostsCount = model.chat.count
+            postsCount += currentPostsCount
             if isPrevious {
-                posts.insert(contentsOf: model.chat, at: 0)
-                backwardOffset += model.chat.count
+                backwardOffset += currentPostsCount
             } else {
-                posts.append(contentsOf: model.chat)
+                forwardOffset += currentPostsCount
             }
-            createCellModels(from: model.chat, isPrevious: isPrevious)
+            
+            let models = createCellModels(from: model.chat)
+            let chunk = ChatChunk(cellModels: models)
+            addChunk(chunk: chunk)
+            
             claim?.update(with: model.basicPart)
             since = model.lastRead
+            
             if limit > model.chat.count {
                 if isPrevious {
                     hasPrevious = false
@@ -161,32 +170,79 @@ class UniversalChatDatasource {
                 }
             }
         case let .newPost(post):
-            posts.append(post)
-            createCellModels(from: [post], isPrevious: false)
+            let models = createCellModels(from: [post])
+            let chunk = ChatChunk(cellModels: models)
+            addChunk(chunk: chunk)
+            postsCount += 1
+            forwardOffset += 1
         default:
             return
         }
         onUpdate?(isPrevious)
     }
     
-    private func createCellModels(from entities: [ChatEntity], isPrevious: Bool) {
+    private func addChunk(chunk: ChatChunk?) {
+        guard let chunk = chunk else { return }
+        
+        for (idx, storedChunk) in chunks.enumerated() {
+            if chunk < storedChunk {
+                chunks.insert(chunk, at: idx)
+                return
+            }
+        }
+        chunks.append(chunk)
+    }
+    
+    private func createCellModels(from entities: [ChatEntity]) -> [ChatCellModel] {
         let models = cellModelBuilder.cellModels(from: entities,
                                                  width: cloudWidth - labelHorizontalInset * 2,
                                                  font: font)
-        if isPrevious {
-            cellModels.insert(contentsOf: models, at: 0)
-        } else {
-            cellModels.append(contentsOf: models)
-        }
+        return models
     }
     
     subscript(indexPath: IndexPath) -> ChatCellModel {
-        if indexPath.row > posts.count - limit / 2 {
+        if indexPath.row > count - limit / 2 {
             isLoadNextNeeded = true
         }
         if indexPath.row == 0 {
             isLoadPreviousNeeded = true
         }
-        return cellModels[indexPath.row]
+        var idx = 0
+        var rightChunk: ChatChunk?
+        for chunk in chunks {
+            if idx + chunk.count > indexPath.row {
+                rightChunk = chunk
+                break
+            }
+            idx += chunk.count
+        }
+        guard let chunk = rightChunk else { fatalError("Wrong indexing") }
+        
+        let offset = indexPath.row - idx
+        return chunk.cellModels[offset]
+    }
+}
+
+struct ChatChunk: Comparable {
+    let cellModels: [ChatCellModel]
+    let minTime: Date
+    let maxTime: Date
+    var count: Int { return cellModels.count }
+    
+    init?(cellModels: [ChatCellModel]) {
+        self.cellModels = cellModels
+        let dates = cellModels.map { $0.date }
+        guard let minTime = dates.min(), let maxTime = dates.max() else { return nil }
+        
+        self.minTime = minTime
+        self.maxTime = maxTime
+    }
+    
+    static func == (lhs: ChatChunk, rhs: ChatChunk) -> Bool {
+        return lhs.minTime == rhs.minTime && lhs.maxTime == rhs.maxTime
+    }
+    
+    static func < (lhs: ChatChunk, rhs: ChatChunk) -> Bool {
+        return lhs.maxTime < rhs.maxTime
     }
 }

@@ -28,6 +28,7 @@ struct ChatModelBuilder {
                 name = item.name
                 avatar = item.avatar
             }
+            let date = item.created
             
             let model = ChatTextCellModel(entity: item,
                                           fragments: fragments,
@@ -36,7 +37,7 @@ struct ChatModelBuilder {
                                           userName: name,
                                           userAvatar: avatar,
                                           voteRate: item.vote,
-                                          date: item.created)
+                                          date: date)
             result.append(model)
         }
         return result

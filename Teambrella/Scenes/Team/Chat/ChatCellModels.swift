@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ChatCellModel {
-    
+    var date: Date { get }
 }
 
 struct ChatTextCellModel: ChatCellModel {
