@@ -172,10 +172,9 @@ struct TeambrellaRequest {
             let discussion = reply["DiscussionPart"]
             let model = ChatModel(lastUpdated: reply["LastUpdated"].int64Value,
                                   discussion: discussion,
-                                  lastRead: discussion["LastRead"].int64Value,
                                   chat: ChatEntity.buildArray(from: discussion["Chat"]),
-                                  basicPart: discussion["BasicPart"],
-                                  teamPart: discussion["TeamPart"])
+                                  basicPart: reply["BasicPart"],
+                                  teamPart: reply["TeamPart"])
             success(.chat(model))
         case .teamFeed:
             success(.teamFeed(reply.arrayValue.flatMap { FeedEntity(json: $0) }))

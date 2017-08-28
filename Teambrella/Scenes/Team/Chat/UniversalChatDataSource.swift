@@ -38,10 +38,16 @@ class UniversalChatDatasource {
     var count: Int { return chunks.reduce(0) { $0 + $1.count } }
     
     var limit                         = 10
-    var since: Int64                  = 0
-    var forwardOffset: Int = 0
-    var backwardOffset: Int = 0
-    var postsCount: Int = 0
+    var lastRead: Int64               = 0 {
+        didSet {
+            if oldValue == 0 {
+                loadPrevious()
+            }
+        }
+    }
+    var forwardOffset: Int            = 0
+    var backwardOffset: Int           = 0
+    var postsCount: Int               = 0
     var avatarSize                    = 64
     var commentAvatarSize             = 32
     var cloudWidth: CGFloat           = 0
@@ -49,15 +55,22 @@ class UniversalChatDatasource {
     var font: UIFont                  = UIFont.teambrella(size: 14)
     
     private(set) var isLoading = false
-    private(set) var hasNext = true
-    private(set) var hasPrevious = true
+    var hasNext = true
+    var hasPrevious = true
     var title: String { return strategy.title }
-    var lastIndexPath: IndexPath { return IndexPath(row: count - 1, section: 0) }
+    var lastIndexPath: IndexPath? { return count >= 1 ? IndexPath(row: count - 1, section: 0) : nil }
+    var currentTopCell: IndexPath? {
+        guard chunks.count > 1, let chunk = chunks.first else { return nil }
+        
+        return IndexPath(row: chunk.count + 1, section: 0)
+    }
     
     var previousCount: Int = 0
     
     var isLoadNextNeeded: Bool = false {
         didSet {
+            guard isLoadNextNeeded else { return }
+            
             if !isLoading && hasNext {
                 loadNext()
             }
@@ -66,6 +79,8 @@ class UniversalChatDatasource {
     
     var isLoadPreviousNeeded: Bool = false {
         didSet {
+            guard isLoadPreviousNeeded else { return }
+            
             if !isLoading && hasPrevious {
                 loadPrevious()
             }
@@ -85,47 +100,48 @@ class UniversalChatDatasource {
     }
     
     func loadNext() {
-        guard isLoading == false, hasNext == true else { return }
-        
-        isLoading = true
-        isLoadNextNeeded = false
-        let key = service.server.key
-        
-        let body = strategy.updatedChatBody(body: RequestBody(key: key,
-                                                              payload: ["since": since,
-                                                                        "limit": limit,
-                                                                        "offset": forwardOffset,
-                                                                        "avatarSize": avatarSize,
-                                                                        "commentAvatarSize": commentAvatarSize]))
-        let request = TeambrellaRequest(type: strategy.requestType, body: body, success: { [weak self] response in
-            guard let me = self else { return }
-            
-            me.process(response: response, isPrevious: false)
-            me.isLoading = false
-        })
-        request.start()
+        load(previous: false)
     }
     
     func loadPrevious() {
-        guard isLoading == false, hasPrevious == true else { return }
+        backwardOffset -= limit
+        load(previous: true)
+    }
+    
+    private func load(previous: Bool) {
+        let canLoadMore = previous ? hasPrevious : hasNext
+        guard isLoading == false, canLoadMore else { return }
         
         isLoading = true
-        isLoadPreviousNeeded = false
-        let key = service.server.key
+        if previous {
+            isLoadPreviousNeeded = false
+        } else {
+            isLoadNextNeeded = false
+        }
         
-        let body = strategy.updatedChatBody(body: RequestBody(key: key,
-                                                              payload: ["since": since,
-                                                                        "limit": -limit,
-                                                                        "offset": backwardOffset,
-                                                                        "avatarSize": avatarSize,
-                                                                        "commentAvatarSize": commentAvatarSize]))
-        let request = TeambrellaRequest(type: strategy.requestType, body: body, success: { [weak self] response in
+        service.storage.freshKey { [weak self] key in
             guard let me = self else { return }
             
-            me.process(response: response, isPrevious: true)
-            me.isLoading = false
-        })
-        request.start()
+            let limit = me.limit// previous ? -me.limit: me.limit
+            let offset = previous ? me.backwardOffset : me.forwardOffset
+            var payload: [String: Any] = ["limit": limit,
+                                          "offset": offset,
+                                          "avatarSize": me.avatarSize,
+                                          "commentAvatarSize": me.commentAvatarSize]
+            if me.lastRead > 0 {
+                payload["since"] = me.lastRead
+            }
+            let body = me.strategy.updatedChatBody(body: RequestBody(key: key, payload: payload))
+            let request = TeambrellaRequest(type: me.strategy.requestType,
+                                            body: body,
+                                            success: { [weak me] response in
+                                                guard let me = me else { return }
+                                                
+                                                me.isLoading = false
+                                                me.process(response: response, isPrevious: previous)
+            })
+            request.start()
+        }
     }
     
     func send(text: String, images: [String]) {
@@ -151,8 +167,10 @@ class UniversalChatDatasource {
             let currentPostsCount = model.chat.count
             postsCount += currentPostsCount
             if isPrevious {
-                backwardOffset += currentPostsCount
+                //backwardOffset += currentPostsCount
+                isLoadPreviousNeeded = false
             } else {
+                isLoadNextNeeded = false
                 forwardOffset += currentPostsCount
             }
             
@@ -161,13 +179,13 @@ class UniversalChatDatasource {
             addChunk(chunk: chunk)
             
             claim?.update(with: model.basicPart)
-            since = model.lastRead
             
             if limit > model.chat.count {
                 if isPrevious {
                     hasPrevious = false
                 } else {
                     hasNext = false
+                    lastRead = model.lastRead
                 }
             }
         case let .newPost(post):
@@ -186,8 +204,8 @@ class UniversalChatDatasource {
         guard let chunk = chunk else { return }
         
         for (idx, storedChunk) in chunks.enumerated() where chunk < storedChunk {
-                chunks.insert(chunk, at: idx)
-                return
+            chunks.insert(chunk, at: idx)
+            return
         }
         chunks.append(chunk)
     }
@@ -200,12 +218,6 @@ class UniversalChatDatasource {
     }
     
     subscript(indexPath: IndexPath) -> ChatCellModel {
-        if indexPath.row > count - limit / 2 {
-            isLoadNextNeeded = true
-        }
-        if indexPath.row == 0 {
-            isLoadPreviousNeeded = true
-        }
         var idx = 0
         var rightChunk: ChatChunk?
         for chunk in chunks {
@@ -220,4 +232,5 @@ class UniversalChatDatasource {
         let offset = indexPath.row - idx
         return chunk.cellModels[offset]
     }
+    
 }

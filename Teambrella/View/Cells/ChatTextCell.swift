@@ -35,7 +35,7 @@ class ChatTextCell: UICollectionViewCell {
     lazy var leftLabel: Label = {
         let label = Label()
         label.font = UIFont.teambrella(size: 12)
-        label.textColor = .perrywinkle
+        label.textColor = .darkSkyBlue
         self.contentView.addSubview(label)
         return label
     }()

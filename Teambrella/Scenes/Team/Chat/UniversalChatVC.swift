@@ -75,8 +75,10 @@ class UniversalChatVC: UIViewController, Routable {
         dataSource.isLoadNextNeeded = true
         title = dataSource.title
         
-        service.socket?.add(listener: self, action: { action in
+        service.socket?.add(listener: self, action: { [weak self] action in
             print("Received socket action: \(action)")
+            self?.dataSource.hasNext = true
+            self?.dataSource.loadNext()
         })
     }
     
@@ -89,19 +91,16 @@ class UniversalChatVC: UIViewController, Routable {
         collectionView.dataSource = nil
         collectionView.dataSource = self
         
-        if self.shouldScrollToBottom {
-            self.collectionView.scrollToItem(at: self.dataSource.lastIndexPath,
+        if self.shouldScrollToBottom, let lastIndex = self.dataSource.lastIndexPath {
+            self.collectionView.scrollToItem(at: lastIndex,
                                              at: .bottom,
                                              animated: !isFirstRefresh)
             self.shouldScrollToBottom = false
             self.isFirstRefresh = false
+        } else if backward, let indexPath = dataSource.currentTopCell {
+            self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
         }
-        if backward {
-            let indexPath = IndexPath(row: dataSource.count - dataSource.previousCount, section: 0)
-            self.collectionView.scrollToItem(at: indexPath,
-                                             at: .top,
-                                             animated: false)
-        }
+        collectionView.refreshControl?.endRefreshing()
     }
     
     override var inputAccessoryView: UIView? {
@@ -196,6 +195,13 @@ class UniversalChatVC: UIViewController, Routable {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.autoresizingMask = UIViewAutoresizing()
         automaticallyAdjustsScrollViewInsets = false
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(refreshNeeded), for: .valueChanged)
+        collectionView.refreshControl = refresh
+    }
+    
+    func refreshNeeded() {
+        dataSource.loadPrevious()
     }
     
     func registerCells() {
@@ -332,9 +338,12 @@ extension UniversalChatVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        if indexPath.row > dataSource.count - 20 {
-            dataSource.loadNext()
+        if indexPath.row > dataSource.count - dataSource.limit / 2 {
+            dataSource.isLoadNextNeeded = true
         }
+//        if indexPath.row == 0 {
+//            dataSource.isLoadPreviousNeeded = true
+//        }
         let model = dataSource[indexPath]
         if let cell = cell as? ChatTextCell, let model = model as? ChatTextCellModel {
             let size = cloudSize(for: indexPath)
