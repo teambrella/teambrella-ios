@@ -129,6 +129,16 @@ final class MainRouter {
         push(vc: vc)
     }
     
+    func presentClaimTransactionsList(teamID: Int, claimID: Int) {
+        guard let vc = ClaimTransactionsVC.instantiate() as? ClaimTransactionsVC
+            else { fatalError("Error instantiating") }
+        
+        vc.teamID = teamID
+        vc.claimID = claimID
+        vc.automaticallyAdjustsScrollViewInsets = false
+        push(vc: vc)
+    }
+    
     func presentWalletDetails(walletID: String) {
         guard let vc = WalletDetailsVC.instantiate() as? WalletDetailsVC else { fatalError("Error instantiating") }
         

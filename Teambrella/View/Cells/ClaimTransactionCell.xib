@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ClaimTransactionCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="408" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="408" height="140"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rX-dn-gaJ">
+                        <rect key="frame" x="0.0" y="0.0" width="408" height="140"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="waD-Tc-NwO" customClass="RoundBadgedView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="16" y="50" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bOP-Dt-F4a"/>
+                                    <constraint firstAttribute="width" secondItem="waD-Tc-NwO" secondAttribute="height" multiplier="1:1" id="tKn-9D-9Bk"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USS-jT-xxy">
+                                <rect key="frame" x="64" y="70" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
+                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSACTION #" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZ1-Aj-qJs">
+                                <rect key="frame" x="16" y="8" width="84.5" height="34"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
+                                <color key="textColor" red="0.4823529412" green="0.55294117649999996" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5GT-V5-0nT">
+                                <rect key="frame" x="16" y="98" width="376" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Crypto" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTH-lI-c1f">
+                                        <rect key="frame" x="0.0" y="0.0" width="62.5" height="40"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
+                                        <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5T-l8-Lzb">
+                                        <rect key="frame" x="62.5" y="0.0" width="63" height="40"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
+                                        <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Fiat" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svc-Cf-iAi">
+                                        <rect key="frame" x="125.5" y="0.0" width="62.5" height="40"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
+                                        <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AT7-WE-wu4">
+                                        <rect key="frame" x="188" y="0.0" width="62.5" height="40"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
+                                        <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StZ-05-Vd4">
+                                        <rect key="frame" x="250.5" y="0.0" width="63" height="40"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
+                                        <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF8-Sl-qBo">
+                                        <rect key="frame" x="313.5" y="0.0" width="62.5" height="40"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
+                                        <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czl-Vp-lmS">
+                                <rect key="frame" x="108.5" y="8" width="0.0" height="34"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
+                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5GT-V5-0nT" firstAttribute="leading" secondItem="1rX-dn-gaJ" secondAttribute="leading" constant="16" id="0RX-O4-VOT"/>
+                            <constraint firstItem="dZ1-Aj-qJs" firstAttribute="leading" secondItem="waD-Tc-NwO" secondAttribute="leading" id="2Tf-al-pKg"/>
+                            <constraint firstAttribute="trailing" secondItem="5GT-V5-0nT" secondAttribute="trailing" constant="16" id="4rG-uD-Yer"/>
+                            <constraint firstItem="czl-Vp-lmS" firstAttribute="leading" secondItem="dZ1-Aj-qJs" secondAttribute="trailing" constant="8" id="DtO-ap-Zl1"/>
+                            <constraint firstItem="waD-Tc-NwO" firstAttribute="centerY" secondItem="1rX-dn-gaJ" secondAttribute="centerY" id="Edt-Jd-1kU"/>
+                            <constraint firstItem="czl-Vp-lmS" firstAttribute="baseline" secondItem="dZ1-Aj-qJs" secondAttribute="baseline" id="HGH-lP-IUa"/>
+                            <constraint firstItem="waD-Tc-NwO" firstAttribute="leading" secondItem="1rX-dn-gaJ" secondAttribute="leading" constant="16" id="I8U-1R-OHq"/>
+                            <constraint firstItem="USS-jT-xxy" firstAttribute="leading" secondItem="waD-Tc-NwO" secondAttribute="trailing" constant="8" id="Iqf-aj-1Du"/>
+                            <constraint firstAttribute="bottom" secondItem="5GT-V5-0nT" secondAttribute="bottom" constant="2" id="PKs-rw-vDt"/>
+                            <constraint firstItem="czl-Vp-lmS" firstAttribute="top" secondItem="1rX-dn-gaJ" secondAttribute="top" constant="8" id="Xjp-yQ-tbR"/>
+                            <constraint firstItem="dZ1-Aj-qJs" firstAttribute="top" secondItem="1rX-dn-gaJ" secondAttribute="top" constant="8" id="YHD-ZX-02x"/>
+                            <constraint firstItem="USS-jT-xxy" firstAttribute="centerY" secondItem="waD-Tc-NwO" secondAttribute="centerY" id="emc-8S-sg7"/>
+                            <constraint firstItem="5GT-V5-0nT" firstAttribute="top" secondItem="waD-Tc-NwO" secondAttribute="bottom" constant="8" id="fxs-kx-MyD"/>
+                            <constraint firstItem="waD-Tc-NwO" firstAttribute="top" secondItem="dZ1-Aj-qJs" secondAttribute="bottom" constant="8" id="nO1-XK-f5P"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="1rX-dn-gaJ" secondAttribute="trailing" id="RzI-ie-Uaz"/>
+                <constraint firstAttribute="bottom" secondItem="1rX-dn-gaJ" secondAttribute="bottom" id="eFI-6m-atW"/>
+                <constraint firstItem="1rX-dn-gaJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="f7x-Sh-l5k"/>
+                <constraint firstItem="1rX-dn-gaJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="j7g-bB-sR3"/>
+            </constraints>
+            <size key="customSize" width="408" height="140"/>
+            <connections>
+                <outlet property="avatar" destination="waD-Tc-NwO" id="8uP-a7-yMW"/>
+                <outlet property="container" destination="1rX-dn-gaJ" id="MV7-qM-xiM"/>
+                <outlet property="cryptoAmountLabel" destination="S5T-l8-Lzb" id="9xg-nt-zSa"/>
+                <outlet property="fiatAmountLabel" destination="AT7-WE-wu4" id="vq6-Gw-nsr"/>
+                <outlet property="nameLabel" destination="USS-jT-xxy" id="b9H-tK-FcF"/>
+                <outlet property="txNumberLabel" destination="czl-Vp-lmS" id="3fo-j5-2ZG"/>
+            </connections>
+            <point key="canvasLocation" x="188" y="99"/>
+        </collectionViewCell>
+    </objects>
+</document>

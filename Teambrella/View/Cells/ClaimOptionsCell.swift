@@ -25,10 +25,12 @@ class ClaimOptionsCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var allVotesLabel: Label!
     @IBOutlet var cashFlowLabel: Label!
     @IBOutlet var transactionsLabel: Label!
+    
+    let tapRecognizer = UITapGestureRecognizer()
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
 }

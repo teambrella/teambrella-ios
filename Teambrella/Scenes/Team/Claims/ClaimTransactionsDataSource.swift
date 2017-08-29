@@ -9,12 +9,12 @@
 import Foundation
 
 class ClaimTransactionsDataSource {
-    var items: [TransactionCellModel] = []
+    var items: [ClaimTransactionsCellModel] = []
     var count: Int { return items.count }
     let teamID: Int
     let claimID: Int
     let limit: Int = 100
-    var search: String = ""
+    var search: String = "Cleopatra"
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
@@ -24,7 +24,7 @@ class ClaimTransactionsDataSource {
         self.claimID = claimID
     }
     
-    subscript(indexPath: IndexPath) -> TransactionCellModel {
+    subscript(indexPath: IndexPath) -> ClaimTransactionsCellModel {
         let model = items[indexPath.row]
         return model
     }
