@@ -40,13 +40,6 @@ class UniversalChatVC: UIViewController, Routable {
     
     public var endsEditingWhenTappingOnChatBackground = true
     
-    //var topic: Topic?
-    func cloudSize(for indexPath: IndexPath) -> CGSize {
-        guard let model = dataSource[indexPath] as? ChatTextCellModel else { return .zero }
-        
-        return CGSize(width: cloudWidth,
-                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + 50 )
-    }
     
     var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
     var shouldScrollToBottom: Bool = true
@@ -54,9 +47,7 @@ class UniversalChatVC: UIViewController, Routable {
     
     private var lastTypingDate: Date = Date()
     
-    func setContext(context: ChatContext) {
-        dataSource.addContext(context: context)
-    }
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,9 +73,36 @@ class UniversalChatVC: UIViewController, Routable {
         })
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startListeningSockets()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 30)
+        }
+        dataSource.cloudWidth = cloudWidth
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopListeningSockets()
+    }
+    
     deinit {
         service.socket?.remove(listener: self)
     }
+    
+    override var inputAccessoryView: UIView? { return input }
+    
+    override var canBecomeFirstResponder: Bool { return true }
     
     func refresh(backward: Bool) {
         // not using reloadData() to avoid blinking of cells
@@ -103,33 +121,16 @@ class UniversalChatVC: UIViewController, Routable {
         collectionView.refreshControl?.endRefreshing()
     }
     
-    override var inputAccessoryView: UIView? {
-        return input
+    //var topic: Topic?
+    func cloudSize(for indexPath: IndexPath) -> CGSize {
+        guard let model = dataSource[indexPath] as? ChatTextCellModel else { return .zero }
+        
+        return CGSize(width: cloudWidth,
+                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + 50 )
     }
     
-    override var canBecomeFirstResponder: Bool { return true }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        startListeningSockets()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        collectionView.reloadData()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 30)
-        }
-        dataSource.cloudWidth = cloudWidth
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        stopListeningSockets()
+    func setContext(context: ChatContext) {
+        dataSource.addContext(context: context)
     }
     
     private func setupInput() {
@@ -159,6 +160,8 @@ class UniversalChatVC: UIViewController, Routable {
     private func stopListeningSockets() {
         service.socket?.remove(listener: self)
     }
+    
+    // MARK: Callbacks
     
     func tapLeftButton(sender: UIButton) {
         showImagePicker(controller: self)
@@ -200,8 +203,14 @@ class UniversalChatVC: UIViewController, Routable {
         collectionView.refreshControl = refresh
     }
     
-    func refreshNeeded() {
+    func refreshNeeded(sender: UIRefreshControl) {
+        if dataSource.hasPrevious {
         dataSource.loadPrevious()
+        } else {
+            sender.endRefreshing()
+            sender.removeTarget(self, action: nil, for: .allEvents)
+            collectionView.refreshControl = nil
+        }
     }
     
     func registerCells() {
@@ -341,9 +350,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
         if indexPath.row > dataSource.count - dataSource.limit / 2 {
             dataSource.isLoadNextNeeded = true
         }
-//        if indexPath.row == 0 {
-//            dataSource.isLoadPreviousNeeded = true
-//        }
+
         let model = dataSource[indexPath]
         if let cell = cell as? ChatTextCell, let model = model as? ChatTextCellModel {
             let size = cloudSize(for: indexPath)
@@ -392,7 +399,7 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let model = dataSource[indexPath] as? ChatTextCellModel {
+        if dataSource[indexPath] is ChatTextCellModel {
             let size = cloudSize(for: indexPath)
             return CGSize(width: collectionView.bounds.width, height: size.height)
         }

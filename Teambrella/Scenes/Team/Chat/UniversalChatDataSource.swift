@@ -59,10 +59,14 @@ class UniversalChatDatasource {
     var hasPrevious = true
     var title: String { return strategy.title }
     var lastIndexPath: IndexPath? { return count >= 1 ? IndexPath(row: count - 1, section: 0) : nil }
+    private var isChunkAdded = false
     var currentTopCell: IndexPath? {
+        guard isChunkAdded else {
+            return chunks.isEmpty ? nil : IndexPath(row: 0, section: 0)
+        }
         guard chunks.count > 1, let chunk = chunks.first else { return nil }
         
-        return IndexPath(row: chunk.count + 1, section: 0)
+        return IndexPath(row: chunk.count, section: 0)
     }
     
     var previousCount: Int = 0
@@ -167,7 +171,6 @@ class UniversalChatDatasource {
             let currentPostsCount = model.chat.count
             postsCount += currentPostsCount
             if isPrevious {
-                //backwardOffset += currentPostsCount
                 isLoadPreviousNeeded = false
             } else {
                 isLoadNextNeeded = false
@@ -201,8 +204,12 @@ class UniversalChatDatasource {
     }
     
     private func addChunk(chunk: ChatChunk?) {
-        guard let chunk = chunk else { return }
+        guard let chunk = chunk else {
+            isChunkAdded = false
+            return
+        }
         
+        isChunkAdded = true
         for (idx, storedChunk) in chunks.enumerated() where chunk < storedChunk {
             chunks.insert(chunk, at: idx)
             return
