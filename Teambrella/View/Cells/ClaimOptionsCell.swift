@@ -26,11 +26,20 @@ class ClaimOptionsCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var cashFlowLabel: Label!
     @IBOutlet var transactionsLabel: Label!
     
-    let tapRecognizer = UITapGestureRecognizer()
-
+    var tapRecognizer = UITapGestureRecognizer()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        tapRecognizer = UITapGestureRecognizer(target: transactionsLabel,
+                                               action: #selector(showTransactions))
+        transactionsLabel.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func showTransactions() {
+        //if sender.state == .ended {
+            print("tap trnss")
+            //service.router.presentClaimTransactionsList(teamID: <#T##Int#>, claimID: <#T##Int#>)
+        //}
     }
 
 }
