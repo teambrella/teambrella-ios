@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -38,7 +38,7 @@
                                     <constraint firstAttribute="height" constant="1" id="cU0-IE-Kfr"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M6n-hd-Q8f">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M6n-hd-Q8f">
                                 <rect key="frame" x="16" y="16" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="M6n-hd-Q8f" secondAttribute="height" multiplier="1:1" id="U5P-ys-jcC"/>
@@ -63,7 +63,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 MIN AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejr-yO-pjp" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="1 MIN AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejr-yO-pjp" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="527" y="15" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -116,6 +116,7 @@
                         <constraints>
                             <constraint firstItem="JbY-Lf-BOo" firstAttribute="leading" secondItem="yqT-sY-ffe" secondAttribute="leading" id="0Ch-mC-Dc2"/>
                             <constraint firstItem="yqT-sY-ffe" firstAttribute="bottom" secondItem="M6n-hd-Q8f" secondAttribute="centerY" id="1x2-Bl-FyY"/>
+                            <constraint firstItem="Ejr-yO-pjp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yqT-sY-ffe" secondAttribute="trailing" constant="8" id="3zg-zE-1cC"/>
                             <constraint firstAttribute="trailing" secondItem="uev-dk-iCT" secondAttribute="trailing" id="4UY-pt-jAS"/>
                             <constraint firstItem="B6d-fE-Fmr" firstAttribute="trailing" secondItem="lEA-pj-5Rg" secondAttribute="trailing" constant="40" id="Arh-3m-KAh"/>
                             <constraint firstItem="m8U-ZJ-9yS" firstAttribute="centerY" secondItem="7wD-Sn-ye9" secondAttribute="centerY" id="IpG-hp-jmj"/>
