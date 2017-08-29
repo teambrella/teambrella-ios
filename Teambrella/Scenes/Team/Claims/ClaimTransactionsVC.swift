@@ -9,7 +9,9 @@
 import UIKit
 
 class ClaimTransactionsVC: UIViewController {
-
+    //var dataSource: ClaimTransactionsDataSource = ClaimTransactionsDataSource(
+      //  teamID: service.session.currentTeam?.teamID ?? 0),
+        //claimID: )
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +23,6 @@ class ClaimTransactionsVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

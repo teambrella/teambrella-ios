@@ -39,8 +39,7 @@ class UniversalChatVC: UIViewController, Routable {
     let dataSource = UniversalChatDatasource()
     
     public var endsEditingWhenTappingOnChatBackground = true
-    
-    
+        
     var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
     var shouldScrollToBottom: Bool = true
     var isFirstRefresh: Bool = true

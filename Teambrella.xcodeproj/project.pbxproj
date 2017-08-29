@@ -1287,8 +1287,8 @@
 				6DB8121E1EE6FCDB00B202CE /* ClaimsList */,
 				6DDE95711EE8310F0019DA47 /* Claim */,
 				94266A2F1F55770D0089543F /* ClaimTransactionsVC.swift */,
-				94266A2D1F55704A0089543F /* TransactionCellModel.swift */,
 				94266A311F5579800089543F /* ClaimTransactionsDataSource.swift */,
+				94266A2D1F55704A0089543F /* TransactionCellModel.swift */,
 			);
 			name = Claims;
 			sourceTree = "<group>";
