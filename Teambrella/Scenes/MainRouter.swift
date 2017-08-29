@@ -200,8 +200,17 @@ final class MainRouter {
     // MARK: Other
     
     func logout() {
-        navigator?.popToRootViewController(animated: true)
+        guard let navigator = navigator else { return }
+        
         service.session = nil
+        Keychain.removeValue(forKey: .ethPrivateAddress)
+        for vc in navigator.viewControllers {
+            if let vc = vc as? InitialVC {
+                navigator.popToViewController(vc, animated: true)
+                vc.isLoginNeeded = true
+                break
+            }
+        }
     }
     
     func switchTeam() {

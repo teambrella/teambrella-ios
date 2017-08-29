@@ -23,12 +23,20 @@ import PKHUD
 import UIKit
 
 class InitialVC: UIViewController {
+    var isLoginNeeded: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Instantly move to product version
         //performSegue(type: .teambrella)
-        performSegue(type: .login)//getTeams()
+        //getTeams()
+        
+        if let address = Keychain.value(forKey: .ethPrivateAddress),
+            let keyType = ServerService.FakeKeyType(rawValue: address) {
+            ServerService.currentKeyType = keyType
+            isLoginNeeded = false
+            startLoadingTeams()
+        }
     }
     
     func getTeams() {
@@ -56,6 +64,10 @@ class InitialVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if isLoginNeeded {
+            performSegue(type: .login)
+            isLoginNeeded = false
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,9 +81,13 @@ class InitialVC: UIViewController {
         }
     }
     
-    @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
+    func startLoadingTeams() {
         HUD.show(.progress)
         getTeams()
+    }
+    
+    @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
+        startLoadingTeams()
     }
     
     @IBAction func tapTeambrella(_ sender: Any) {

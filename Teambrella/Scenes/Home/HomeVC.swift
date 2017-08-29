@@ -95,10 +95,11 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     func addSwipeToLogout() {
         let gesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeToLogout))
         gesture.direction = UISwipeGestureRecognizerDirection.down
+        view.addGestureRecognizer(gesture)
     }
     
     func swipeToLogout(sender: UISwipeGestureRecognizer) {
-        
+        service.router.logout()
     }
     
     func switchToCurrentTeam() {

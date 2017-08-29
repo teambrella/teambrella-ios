@@ -111,7 +111,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCollectionCell" id="XDl-au-9Mo" customClass="HomeCollectionCell" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="18" width="325" height="157"/>
+                                        <rect key="frame" x="24" y="17.5" width="325" height="157"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="157"/>
@@ -544,7 +544,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="seh-NB-2pa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="seh-NB-2pa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -137,6 +137,7 @@ class LoginBlueVC: UIViewController {
             return
         }
         
+        Keychain.save(value: validUser.rawValue, forKey: .ethPrivateAddress)
         ServerService.currentKeyType = validUser
         
         service.server.updateTimestamp { timestamp, error in
