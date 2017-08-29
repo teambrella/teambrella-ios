@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 28.03.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import Alamofire
 import Foundation
@@ -22,7 +35,7 @@ struct ResponseStatus {
     }
 }
 
-let isLocalServer = true
+let isLocalServer = false
 
 /**
  Service to interoperate with the server fetching all UI related information
@@ -30,11 +43,6 @@ let isLocalServer = true
 class ServerService {
     struct Constant {
         static var siteURL: String { return isLocalServer ? BlockchainServer.Constant.siteURL : "https://surilla.com/" }
-        //""//"http://192.168.0.254" // "http://192.168.0.222"
-        //static let fakePrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
-        // "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
-        //static let myID = 2274
-        //static let myUserID = "1dbd099a-6cc2-4c45-a7df-a75c00e58621"
         static let timestampURL = "me/GetTimestamp"
     }
     
@@ -122,13 +130,13 @@ class ServerService {
             request.setValue(body.signature, forHTTPHeaderField: "sig")
         }
         
-        print(request)
+        print("👉 \(request)")
         Alamofire.request(request).responseJSON { response in
             switch response.result {
             case .success:
                 if let value = response.result.value {
                     let result = JSON(value)
-                    print("Result: \(result)")
+                    print("👍 \(result)")
                     let status = ResponseStatus(json: result["Status"])
                     self.timestamp = status.timestamp
                     switch status.code {

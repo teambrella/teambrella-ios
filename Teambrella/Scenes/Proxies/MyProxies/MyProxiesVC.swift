@@ -3,20 +3,37 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 22.06.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import UIKit
 import XLPagerTabStrip
 
 class MyProxiesVC: UIViewController {
-    var dataSource: MyProxiesDataSource = MyProxiesDataSource()
+    var dataSource: MyProxiesDataSource = MyProxiesDataSource(teamID: service.session.currentTeam?.teamID ?? 0)
     
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        dataSource.onUpdate = { [weak self] in
+            self?.collectionView.reloadData()
+        }
+        dataSource.loadData()
     }
     
     func setupCollectionView() {
@@ -29,31 +46,31 @@ class MyProxiesVC: UIViewController {
                                                             action: #selector(handleLongGesture(gesture:)))
         self.collectionView.addGestureRecognizer(longPressGesture)
     }
-
-func handleLongGesture(gesture: UILongPressGestureRecognizer) {
-    switch gesture.state {
-    case .began:
-        let point = gesture.location(in: collectionView)
-        guard let selectedIndexPath = self.collectionView.indexPathForItem(at: point) else {
-            break
+    
+    func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            let point = gesture.location(in: collectionView)
+            guard let selectedIndexPath = self.collectionView.indexPathForItem(at: point) else {
+                break
+            }
+            collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case UIGestureRecognizerState.changed:
+            guard let view = gesture.view else { break }
+            
+            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: view))
+        case UIGestureRecognizerState.ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
         }
-        collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-    case UIGestureRecognizerState.changed:
-        guard let view = gesture.view else { break }
-        
-        collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: view))
-    case UIGestureRecognizerState.ended:
-        collectionView.endInteractiveMovement()
-    default:
-        collectionView.cancelInteractiveMovement()
     }
-}
-
+    
 }
 
 extension MyProxiesVC: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-         return IndicatorInfo(title: "Proxy.MyProxiesVC.indicatorTitle".localized)
+        return IndicatorInfo(title: "Proxy.MyProxiesVC.indicatorTitle".localized)
     }
 }
 
@@ -89,13 +106,18 @@ extension MyProxiesVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         MyProxiesCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        if let cell = cell as? ProxyCell {
+            cell.numberLabel.text = String(indexPath.row + 1)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        
+        if let cell = view as? NeedHelpView {
+            cell.label.text = "Proxy.MyProxiesVC.infoButton".localized
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -106,8 +128,10 @@ extension MyProxiesVC: UICollectionViewDelegate {
                         moveItemAt sourceIndexPath: IndexPath,
                         to destinationIndexPath: IndexPath) {
         dataSource.move(from: sourceIndexPath, to: destinationIndexPath)
+        collectionView.reloadData()
+        collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
     }
-    
+
 }
 
 // MARK: UICollectionViewDelegateFlowLayout

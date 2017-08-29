@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -32,16 +32,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Yag-Xl-eEl">
-                                <rect key="frame" x="20" y="27" width="304" height="63"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="I1h-v5-0bT">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGh-M8-cSB" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="20" y="106" width="304" height="40"/>
                                 <constraints>
@@ -52,16 +42,20 @@
                                     <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUA-ee-GUr">
+                                <rect key="frame" x="20" y="21" width="304" height="77"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bGh-M8-cSB" firstAttribute="top" secondItem="Yag-Xl-eEl" secondAttribute="bottom" constant="16" id="CFS-iL-BqL"/>
+                            <constraint firstItem="TUA-ee-GUr" firstAttribute="top" secondItem="evf-4T-bjg" secondAttribute="bottom" id="Bzg-E2-3Lb"/>
                             <constraint firstItem="evf-4T-bjg" firstAttribute="leading" secondItem="vkd-ON-rlE" secondAttribute="leading" constant="20" id="Czw-uW-w7H"/>
-                            <constraint firstItem="Yag-Xl-eEl" firstAttribute="top" secondItem="evf-4T-bjg" secondAttribute="bottom" constant="6" id="L6g-1H-9Yv"/>
-                            <constraint firstItem="Yag-Xl-eEl" firstAttribute="leading" secondItem="vkd-ON-rlE" secondAttribute="leading" constant="20" id="PZW-32-aOn"/>
+                            <constraint firstAttribute="trailing" secondItem="TUA-ee-GUr" secondAttribute="trailing" constant="20" id="LSq-Qa-NHn"/>
                             <constraint firstItem="evf-4T-bjg" firstAttribute="top" secondItem="vkd-ON-rlE" secondAttribute="top" id="WRd-FS-ela"/>
                             <constraint firstItem="bGh-M8-cSB" firstAttribute="leading" secondItem="vkd-ON-rlE" secondAttribute="leading" constant="20" id="Y5n-Cu-ofS"/>
-                            <constraint firstAttribute="trailing" secondItem="Yag-Xl-eEl" secondAttribute="trailing" constant="20" id="dP7-O0-1tO"/>
+                            <constraint firstItem="TUA-ee-GUr" firstAttribute="leading" secondItem="vkd-ON-rlE" secondAttribute="leading" constant="20" id="eUA-2K-ydt"/>
+                            <constraint firstItem="bGh-M8-cSB" firstAttribute="top" secondItem="TUA-ee-GUr" secondAttribute="bottom" constant="8" id="jEJ-r2-p2i"/>
                             <constraint firstAttribute="trailing" secondItem="bGh-M8-cSB" secondAttribute="trailing" constant="20" id="voi-89-Mqh"/>
                             <constraint firstAttribute="bottom" secondItem="bGh-M8-cSB" secondAttribute="bottom" constant="20" id="xmt-wH-0al"/>
                         </constraints>
@@ -77,7 +71,7 @@
             <size key="customSize" width="344" height="166"/>
             <connections>
                 <outlet property="button" destination="bGh-M8-cSB" id="0Fb-du-6iN"/>
-                <outlet property="collectionView" destination="Yag-Xl-eEl" id="OgZ-pn-Ryq"/>
+                <outlet property="container" destination="TUA-ee-GUr" id="JaR-MS-7Up"/>
                 <outlet property="headerLabel" destination="evf-4T-bjg" id="wVv-oo-WWb"/>
             </connections>
             <point key="canvasLocation" x="74" y="-105"/>

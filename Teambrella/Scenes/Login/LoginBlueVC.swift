@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Екатерина Рыжова on 10.07.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import PKHUD
 import SpriteKit
@@ -113,7 +126,6 @@ class LoginBlueVC: UIViewController {
                        completion: nil)
     }
     
-    // swiftlint:disable:next line_length
     let validUsers: [String: ServerService.FakeKeyType] = ["10212220476497327": .thorax,
                                                            "10213031213152997": .denis,
                                                            "10155873130993128": .kate,
@@ -128,8 +140,7 @@ class LoginBlueVC: UIViewController {
         ServerService.currentKeyType = validUser
         
         service.server.updateTimestamp { timestamp, error in
-            let key = Key(base58String: ServerService.privateKey, timestamp: timestamp)
-            let body = RequestBody(key: key)
+            let body = RequestBody(key: service.server.key)
             let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": token],
                                             body: body,
                                             success: { response in

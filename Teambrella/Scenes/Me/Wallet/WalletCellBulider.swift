@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 23.06.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import Foundation
 import Kingfisher
@@ -33,7 +46,6 @@ struct WalletCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: WalletCellModel) {
         if let cell = cell as? WalletHeaderCell, let model = model as? WalletHeaderCellModel {
             cell.amount.text = String.formattedNumber(model.amount * 1000)
-            //cell.currencyLabel.text = String.formattedNumber(model.)
             cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
             cell.numberBar.left?.amountLabel.text = String.formattedNumber(model.reserved * 1000)
             cell.numberBar.left?.isBadgeVisible = false
@@ -41,6 +53,11 @@ struct WalletCellBuilder {
             cell.numberBar.right?.amountLabel.text = String.formattedNumber(model.available * 1000)
             cell.numberBar.right?.isBadgeVisible = false
             cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
+            cell.currencyLabel.text = service.session.cryptoCurrency.coinCode
+            if let team = service.session.currentTeam {
+            cell.auxillaryAmount.text = team.currency + "?"
+                
+            }
         }
         if let cell = cell as? WalletFundingCell, let model = model as? WalletFundingCellModel {
             cell.headerLabel.text = "Me.WalletVC.fundingCell.title".localized

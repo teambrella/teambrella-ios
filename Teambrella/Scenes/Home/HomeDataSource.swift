@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 06.07.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import Foundation
 
@@ -22,12 +35,14 @@ class HomeDataSource {
     var name: String { return model?.name.components(separatedBy: " ").first ?? "" }
     
     func loadData(teamID: Int) {
-        service.storage.requestHome(teamID: teamID,
-                                    success: { [weak self] model in
-                                        self?.model = model
-                                        self?.onUpdate?()
-        }) { error in
-            print("Couldn't get data for Home screen")
+        service.storage.requestHome(teamID: teamID).observe { [weak self] result in
+            switch result {
+            case .value(let value):
+                self?.model = value
+                self?.onUpdate?()
+            case .error(let error):
+                print(error)
+            }
         }
     }
     
@@ -44,6 +59,21 @@ class HomeDataSource {
         default:
             return "HomeCollectionCell"
         }
+    }
+    
+    func deleteCard(at index: Int) {
+        guard let card = model?.cards.remove(at: index) else { return }
+        
+        service.storage.deleteCard(topicID: card.topicID).observe { [weak self] result in
+            switch result {
+            case .value(let homeModel):
+                self?.model = homeModel
+                self?.onUpdate?()
+            case .error(let error):
+                print(error)
+            }
+        }
+       
     }
     
     subscript(indexPath: IndexPath) -> HomeScreenModel.Card? {

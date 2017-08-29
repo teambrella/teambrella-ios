@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Екатерина Рыжова on 13.07.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import UIKit
 
@@ -24,16 +37,16 @@ class ChooseYourTeamVC: UIViewController, Routable {
     fileprivate var dataSource = ChooseYourTeamDataSource()
     weak var delegate: ChooseYourTeamControllerDelegate?
     
-    var currentTeam: Int = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         header.text = "Team.ChooseYourTeamVC.header".localized
         dataSource.createModels()
+        
         tableView.register(TeamCell.nib, forCellReuseIdentifier: TeamCell.cellID)
         container.layer.cornerRadius = 4
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapCancel))
-        view.addGestureRecognizer(recognizer)
+//        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapCancel))
+//        backView.addGestureRecognizer(recognizer)
+//        backView.isUserInteractionEnabled = true
         backView.alpha = 0
         self.container.alpha = 0
     }
@@ -99,7 +112,7 @@ extension ChooseYourTeamVC: UITableViewDelegate {
             cell.teamName.text = model.teamName
             cell.itemName.text = model.itemName
             cell.coverage.text = String(model.coverage) + "%"
-            cell.tick.isHidden = indexPath.row != currentTeam
+            cell.tick.isHidden = indexPath.row != dataSource.currentTeamIndex
         }
     }
     
@@ -108,8 +121,15 @@ extension ChooseYourTeamVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        currentTeam = indexPath.row
+        guard indexPath.row != dataSource.currentTeamIndex else {
+            tapCancel()
+            return
+        }
+        
+        let team = dataSource[indexPath]
+        service.session.switchToTeam(id: team.teamID)
         tableView.reloadData()
-        delegate?.chooseTeam(controller: self, didSelectTeamID: currentTeam)
+        delegate?.chooseTeam(controller: self, didSelectTeamID: team.teamID)
+        tapCancel()
     }
 }

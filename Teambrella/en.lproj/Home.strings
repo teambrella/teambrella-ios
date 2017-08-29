@@ -15,7 +15,6 @@
 "Home.itemCard.status"                                  = "COVERED";
 "Home.itemCard.coverageType"                            = "Collision Deductable";
 
-// -------------------- waiting for translation :) -------------------- //
 "Home.SupportCell.headerLabel"                          = "Chat with Support";
 "Home.SupportCell.onlineLabel"                          = "ONLINE";
 "Home.SupportCell.textLabel"                            = "Hi %@!  Need help? We’re online during office hours (PST) for any questions.";

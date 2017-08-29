@@ -87,6 +87,7 @@
 
 "Team.TeammateCell.object"                     = "OBJECT";
 "Team.TeammateCell.addToMyProxyVoters"         = "Add to my Proxy Voters";
+"Team.TeammateCell.removeFromMyProxyVoters"    = "Remove from my Proxy Voters";
 "Team.TeammateCell.discussion"                 = "DISCUSSION";
 "Team.MembersVC.inviteAFriend"                 = "Invite a Friend";
 "Team.TeammateCell.allVotes"                   = "All Votes";
@@ -132,10 +133,12 @@
 "Team.VotingRiskVC.othersButton"               = "Others";
 "Team.VotingRiskVC.ends"                        = "ENDS %@";
 
-// -------------------- waiting for translation :) -------------------- //
 "Team.Members.Teammates.Strategy.headerTitle" = "RISK: %.2f TO %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle" = "RISK";
 "Team.Members.Teammates.CompareTeamRisk.title" = "Compare Team Risk";
 
 "Team.ChooseYourTeamVC.header" = "CHOOSE YOUR TEAM";
 "Team.Teammate.Footer.MemberSince" = "Member since %@";
+
+// Need translation
+"Team.FeedVC.startDiscussionButton.title" = "Start Discussion";

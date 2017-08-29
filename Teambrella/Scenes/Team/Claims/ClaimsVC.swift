@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 25.05.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import UIKit
 import XLPagerTabStrip
@@ -22,11 +35,19 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerCells()
+        
         dataSource.teammate = teammate
         dataSource.loadData()
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
         }
+    }
+    
+    func registerCells() {
+        collectionView.register(InfoHeader.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: InfoHeader.cellID)
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,6 +77,13 @@ extension ClaimsVC: UICollectionViewDataSource {
                                                   for: indexPath)
 
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                               withReuseIdentifier: InfoHeader.cellID, for: indexPath)
+    }
 }
 
 // MARK: UICollectionViewDelegate
@@ -64,6 +92,16 @@ extension ClaimsVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         ClaimsCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplaySupplementaryView view: UICollectionReusableView,
+                        forElementKind elementKind: String,
+                        at indexPath: IndexPath) {
+        if let view = view as? InfoHeader {
+            view.leadingLabel.text = dataSource.headerText(for: indexPath)
+            view.trailingLabel.text = ""
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -89,6 +127,6 @@ extension ClaimsVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 1)
+        return CGSize(width: collectionView.bounds.width, height: dataSource.showHeader(for: section) ? 50 : 0.01)
     }
 }

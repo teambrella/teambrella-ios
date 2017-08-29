@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 06.07.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import Foundation
 import SwiftyJSON
@@ -67,18 +80,20 @@ struct HomeScreenModel {
     
     let json: JSON
     var cards: [Card]
+    var teamPart: JSON { return json["TeamPart"] }
     
     var userID: String { return json["UserId"].stringValue }
     var name: String { return json["Name"].stringValue }
     var avatar: String { return json["Avatar"].stringValue }
     var unreadCount: Int { return json["UnreadCount"].intValue }
-    var currency: String { return json["Currency"].stringValue }
-    var balance: Double { return json["BtcBalance"].doubleValue }
+    var balance: Double { return json["CryptoBalance"].doubleValue }
     var coverage: Double { return json["Coverage"].doubleValue }
     var objectName: String { return json["ObjectName"].stringValue }
     var smallPhoto: String { return json["SmallPhoto"].stringValue }
-    var coverageType: CoverageType { return CoverageType(rawValue: json["CoverageType"].intValue) ?? .pet }
     var haveVotingClaims: Bool { return json["HaveVotingClaims"].boolValue }
+    var currency: String { return teamPart["Currency"].stringValue }
+    var coverageType: CoverageType { return CoverageType(rawValue: teamPart["CoverageType"].intValue) ?? .pet }
+    var teamAccessLevel: Int { return teamPart["TeamAccessLevel"].intValue }
     
     init(json: JSON) {
         self.json = json

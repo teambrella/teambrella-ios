@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 30.05.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import UIKit
 import XLPagerTabStrip
@@ -101,6 +114,13 @@ final class MainRouter {
         push(vc: vc)
     }
     
+    func presentMemberProfile(teammateID: String) {
+        guard let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC else { fatalError("Error instantiating") }
+        
+        vc.teammateID = teammateID
+        push(vc: vc)
+    }
+    
     func presentClaims(teammate: TeammateLike? = nil) {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
         
@@ -116,13 +136,19 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentClaimReport(in parentViewController: UIViewController? = nil) {
+    func presentReport(context: ReportContext,
+                       in parentViewController: UIViewController? = nil,
+                       delegate: ReportDelegate?) {
         guard let vc = ReportVC.instantiate() as? ReportVC else { fatalError("Error instantiating") }
+        
+        vc.reportContext = context
+        vc.delegate = delegate
         guard let parentViewController = parentViewController else {
             service.router.push(vc: vc)
             return
         }
         
+        vc.isModal = true
         parentViewController.present(vc, animated: true) {
             
         }
@@ -130,12 +156,12 @@ final class MainRouter {
     
     // MARK: Present Modally
     
-    func showChooseTeam(in viewController: UIViewController) {
+    func showChooseTeam(in viewController: UIViewController, delegate: ChooseYourTeamControllerDelegate) {
         //delegate: ChooseYourTeamControllerDelegate
         guard let vc = ChooseYourTeamVC.instantiate()
             as? ChooseYourTeamVC else { fatalError("Error instantiating") }
         
-        //vc.delegate = delegate
+        vc.delegate = delegate
         viewController.present(vc, animated: false, completion: nil)
     }
     
@@ -170,6 +196,15 @@ final class MainRouter {
      }
      }
      */
+    
+    func switchTeam() {
+        let initial = navigator?.viewControllers.filter { $0 is InitialVC }.first
+        if let initial = initial {
+            navigator?.popToViewController(initial, animated: false)
+            initial.performSegue(type: .teambrella)
+        }
+        
+    }
     
     func applicationDidFinishLaunching(launchOptions: [UIApplicationLaunchOptionsKey : Any]?) {
         //presentRootViewController(window: window)

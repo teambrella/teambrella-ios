@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 06.06.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import Foundation
 import SwiftyJSON
@@ -30,6 +43,7 @@ struct EnhancedClaimEntity: EntityLike {
     var basicPart: JSON { return json["BasicPart"] }
     var votingPart: JSON { return json["VotingPart"] }
     var discussionPart: JSON { return json["DiscussionPart"] }
+    var teamPart: JSON { return json["TeamPart"] }
     
     var hasVotingPart: Bool { return votingPart.dictionary != nil }
     
@@ -65,6 +79,15 @@ struct EnhancedClaimEntity: EntityLike {
     var originalPostText: String { return discussionPart["OriginalPostText"].stringValue }
     var unreadCount: Int { return discussionPart["UnreadCount"].intValue }
     var minutesinceLastPost: Int { return discussionPart["SinceLastPostMinutes"].intValue }
+    var smallPhoto: String { return discussionPart["SmallPhoto"].stringValue }
+    var topPosterAvatars: [String] { return discussionPart["TopPosterAvatars"].arrayObject as? [String] ?? [] }
+    var posterCount: Int { return discussionPart["PosterCount"].intValue }
+    
+    // MARK: Team Part
+    
+    var coverageType: Int { return teamPart["CoverageType"].intValue }
+    var currency: String { return teamPart["Currency"].stringValue }
+    var teamAccessLevel: Int { return teamPart["TeamAccessLevel"].intValue }
     
     mutating func update(with json: JSON) {
         try? self.json.merge(with: json)

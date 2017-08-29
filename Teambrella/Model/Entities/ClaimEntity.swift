@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 02.06.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import Foundation
 import SwiftyJSON
@@ -20,8 +33,9 @@ struct ClaimEntity: ClaimLike {
     var state: ClaimState
     var claimAmount: Double
     var reimbursement: Double
-    var votingResBTC: Double
-    var paymentResBTC: Double
+    var votingRes: Double
+    var paymentRes: Double
+    var myVote: Double
     
     var proxyAvatar: String?
     var proxyName: String?
@@ -40,10 +54,12 @@ struct ClaimEntity: ClaimLike {
         state = ClaimState(rawValue: json["State"].intValue) ?? .voting
         claimAmount = json["ClaimAmount"].doubleValue
         reimbursement = json["Reimbursement"].doubleValue
-        votingResBTC = json["VotingRes_BTC"].doubleValue
-        paymentResBTC = json["PaymentRes_BTC"].doubleValue
+        votingRes = json["VotingRes_Crypto"].doubleValue
+        paymentRes = json["PaymentRes_Crypto"].doubleValue
         proxyAvatar = json["ProxyAvatar"].string
         proxyName = json["ProxyName"].string
+        myVote = json["MyVote"].doubleValue
+        
     }
 }
 

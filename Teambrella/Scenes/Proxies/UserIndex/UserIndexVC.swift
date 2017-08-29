@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 22.06.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import UIKit
 import XLPagerTabStrip
@@ -20,15 +33,22 @@ class UserIndexVC: UIViewController {
         static let scrollingVelocityThreshold: CGFloat = 10
     }
     
-    var dataSource: UserIndexDataSource = UserIndexDataSource()
+    var dataSource: UserIndexDataSource = UserIndexDataSource(teamID: service.session.currentTeam?.teamID ?? 0)
     
     @IBOutlet var topContainer: UIView!
     @IBOutlet var collectionView: UICollectionView!
     
     @IBOutlet var avatarView: RoundBadgedView!
+    @IBOutlet var detailsLabel: InfoLabel!
+    @IBOutlet var rankLabel: AmountLabel!
+    @IBOutlet var sortButton: UIButton!
     
     @IBOutlet var topContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet var avatarWidthConstant: NSLayoutConstraint!
+
+    @IBAction func tapSort(_ sender: Any) {
+        service.router.showFilter(in: self, delegate: self, currentSort: dataSource.sortType)
+    }
     
     var isTopContainerShrinked: Bool = false
     fileprivate var previousScrollOffset: CGFloat = 0
@@ -37,6 +57,15 @@ class UserIndexVC: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         shrinkTopContainer(false)
+        dataSource.loadData()
+        dataSource.onUpdate = { [weak self] in
+            guard let dataSource = self?.dataSource, let me = dataSource.meModel else { return }
+            
+            self?.avatarView.showAvatar(string: me.avatarString)
+            self?.detailsLabel.text = me.location
+            self?.rankLabel.text = String(me.proxyRank)
+            self?.collectionView.reloadData()
+        }
     }
     
     private func setupCollectionView() {
@@ -100,18 +129,27 @@ extension UserIndexVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        
+        UserIndexCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        if let cell = cell as? UserIndexCell {
+            cell.numberLabel.text = String(indexPath.row + 1)
+        }
+        if indexPath.row == (dataSource.count - dataSource.limit/2) {
+            dataSource.loadData()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        
+        if let cell = view as? InfoHeader {
+            cell.leadingLabel.text = "Proxy.UserIndexVC.members".localized
+            cell.trailingLabel.text = "Proxy.UserIndexVC.proxyRank".localized
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        service.router.presentMemberProfile(teammateID: dataSource[indexPath].userID)
     }
     
 }
@@ -143,5 +181,13 @@ extension UserIndexVC: UIScrollViewDelegate {
         if velocity < -Constant.scrollingVelocityThreshold {
             shrinkTopContainer(false)
         }
+    }
+}
+
+// MARK: SortControllerDelegate
+extension UserIndexVC: SortControllerDelegate {
+    func sort(controller: SortVC, didSelect type: SortVC.SortType) {
+        dataSource.sortType = type
+        dataSource.loadData()
     }
 }

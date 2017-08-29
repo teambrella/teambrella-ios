@@ -7,8 +7,8 @@
 */
 
 "Proxy.MyProxiesVC.indicatorTitle"  = "My Proxies";
-"Proxy.ProxyForVC.indicatorTitle"   = "Proxy for";
-"Proxy.UserIndexVC.indicatorTitle"  = "User index";
+"Proxy.ProxyForVC.indicatorTitle"   = "Proxy For";
+"Proxy.UserIndexVC.indicatorTitle"  = "User Index";
 "Proxy.SortVC.SortByHeader"         = "SORT BY";
 "Proxy.SortVC.Cell.Rating"          = "Rating";
 "Proxy.SortVC.Cell.Rating.HighLow"  = "HIGH-LOW";
@@ -16,3 +16,15 @@
 "Proxy.SortVC.Cell.Alphabetical"    = "Alphabetical";
 "Proxy.SortVC.Cell.Alphabetical.AZ" = "A-Z";
 "Proxy.SortVC.Cell.Alphabetical.ZA" = "Z-A";
+
+//--waiting--
+"Proxy.ProxyForVC.header" = "TOTAL COMMISSION";
+"Proxy.ProxyForVC.subtitle" = "WHO YOU'RE A PROXY FOR";
+"Proxy.ProxyForCellBuilder.lastVoted" = "LAST VOTED: ";
+"Proxy.MyProxiesVC.infoButton" = "Do you need some help?";
+"Proxy.MyProxiesVC.decisions" = "DECISIONS";
+"Proxy.MyProxiesVC.discussions" = "DISCUSSIONS";
+"Proxy.MyProxiesVC.votingFreq" = "VOTING FREQ.";
+"Proxy.MyProxiesVC.proxyRank" = "PROXY RANK";
+"Proxy.UserIndexVC.members" = "MEMBERS";
+"Proxy.UserIndexVC.proxyRank" = "PROXY RANK";

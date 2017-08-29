@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 17.07.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import Foundation
 
@@ -19,14 +32,16 @@ protocol ChatDatasourceStrategy {
 struct ChatStrategyFactory {
     static func strategy(with context: ChatContext) -> ChatDatasourceStrategy {
         switch context {
-        case .claim(let claim):
+        case let .claim(claim):
             return ClaimChatStrategy(context: claim)
-        case .teammate(let teammate):
+        case let .teammate(teammate):
             return TeammateChatStrategy(context: teammate)
-        case .feed(let feedEntity):
+        case let .feed(feedEntity):
             return FeedChatStrategy(context: feedEntity)
-        case .home(let card):
+        case let .home(card):
             return HomeChatStrategy(context: card)
+        case let .chat(chatModel):
+            return ChatStrategy(context: chatModel)
         case .none:
             return EmptyChatStrategy()
         }
@@ -36,7 +51,7 @@ struct ChatStrategyFactory {
 class EmptyChatStrategy: ChatDatasourceStrategy {
      var title: String = "Empty"
     var requestType: TeambrellaRequestType = .claimChat
-    var createChatType: TeambrellaRequestType = .feedCreateChat
+    var createChatType: TeambrellaRequestType = .newChat
     
     func updatedChatBody(body: RequestBody) -> RequestBody { return body }
     func updatedMessageBody(body: RequestBody) -> RequestBody { return body }
@@ -46,7 +61,7 @@ class EmptyChatStrategy: ChatDatasourceStrategy {
 class ClaimChatStrategy: ChatDatasourceStrategy {
     var title: String { return claim.name }
     var requestType: TeambrellaRequestType = .claimChat
-    var createChatType: TeambrellaRequestType = .feedCreateChat
+    var createChatType: TeambrellaRequestType = .newChat
     
     var claim: EnhancedClaimEntity
     
@@ -71,7 +86,7 @@ class ClaimChatStrategy: ChatDatasourceStrategy {
 class TeammateChatStrategy: ChatDatasourceStrategy {
     var title: String { return teammate.basic.name }
     var requestType: TeambrellaRequestType = .teammateChat
-    var createChatType: TeambrellaRequestType = .feedCreateChat
+    var createChatType: TeambrellaRequestType = .newChat
     
     var teammate: ExtendedTeammate
     
@@ -106,7 +121,7 @@ class FeedChatStrategy: ChatDatasourceStrategy {
             return .feedChat
         }
     }
-    var createChatType: TeambrellaRequestType = .feedCreateChat
+    var createChatType: TeambrellaRequestType = .newChat
     
     var feedEntity: FeedEntity
     
@@ -149,7 +164,7 @@ class HomeChatStrategy: ChatDatasourceStrategy {
             return .feedChat
         }
     }
-    var createChatType: TeambrellaRequestType = .feedCreateChat
+    var createChatType: TeambrellaRequestType = .newChat
     
     var card: HomeScreenModel.Card
     
@@ -175,6 +190,32 @@ class HomeChatStrategy: ChatDatasourceStrategy {
     func updatedMessageBody(body: RequestBody) -> RequestBody {
         var body = body
         body.payload?["TopicId"] = card.topicID
+        return body
+    }
+    
+}
+
+class ChatStrategy: ChatDatasourceStrategy {
+    var title: String { return chatModel.title }
+    var requestType: TeambrellaRequestType { return .feedChat }
+    var createChatType: TeambrellaRequestType = .newChat
+    
+    var chatModel: ChatModel
+    
+    init(context: ChatModel) {
+        chatModel = context
+    }
+    
+    func updatedChatBody(body: RequestBody) -> RequestBody {
+        var body = body
+            body.payload?["TopicId"] = chatModel.topicID
+        
+        return body
+    }
+    
+    func updatedMessageBody(body: RequestBody) -> RequestBody {
+        var body = body
+        body.payload?["TopicId"] = chatModel.topicID
         return body
     }
     

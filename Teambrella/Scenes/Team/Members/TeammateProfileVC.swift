@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 30.05.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import Kingfisher
 import PKHUD
@@ -19,6 +32,7 @@ class TeammateProfileVC: UIViewController, Routable {
     static var storyboardName: String = "Team"
     
     var teammate: TeammateLike?
+    var teammateID: String?
     
     var dataSource: TeammateProfileDataSource!
     var riskController: VotingRiskVC?
@@ -32,6 +46,9 @@ class TeammateProfileVC: UIViewController, Routable {
         
         if let teammate = teammate {
             dataSource = TeammateProfileDataSource(id: teammate.userID, isVoting: teammate.isVoting, isMe: false)
+         addGradientNavBar()
+        } else if let teammateID = teammateID {
+            dataSource = TeammateProfileDataSource(id: teammateID, isVoting: false, isMe: false)
             addGradientNavBar()
         } else if let myID = service.session.currentUserID {
             dataSource = TeammateProfileDataSource(id: myID, isVoting: false, isMe: true)
@@ -118,10 +135,16 @@ class TeammateProfileVC: UIViewController, Routable {
     }
     
     func tapAddToProxy(sender: UIButton) {
-        dataSource.addToProxy { isProxy in
-            sender.isEnabled = !isProxy
-            if isProxy {
-                sender.setTitle("Added to proxy", for: .normal)
+        dataSource.addToProxy { [weak self] in
+            guard let me = self else { return }
+            
+            let cells = me.collectionView.visibleCells
+            let statCells = cells.flatMap { $0 as? TeammateStatsCell }
+            if let cell = statCells.first {
+                let title = me.dataSource.isMyProxy
+                    ? "Team.TeammateCell.removeFromMyProxyVoters".localized
+                    : "Team.TeammateCell.addToMyProxyVoters".localized
+                cell.addButton.setTitle(title, for: .normal)
             }
         }
     }

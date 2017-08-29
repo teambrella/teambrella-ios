@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -67,8 +67,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DS-qp-KPw" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
-                                                            <rect key="frame" x="96" y="45.5" width="42" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DS-qp-KPw" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="96" y="46" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -171,8 +171,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-qd-b7g" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
-                                                            <rect key="frame" x="80" y="21.5" width="42" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-qd-b7g" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="80" y="22" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -216,7 +216,7 @@
                                                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="kee-4E-5EA">
-                                                    <rect key="frame" x="351" y="49.5" width="8" height="13"/>
+                                                    <rect key="frame" x="351" y="50" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="iZg-tY-anl"/>
                                                         <constraint firstAttribute="width" constant="8" id="pl7-Fn-Vf8"/>
@@ -234,18 +234,28 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHA-3k-TcH">
+                                                    <rect key="frame" x="16" y="111" width="359" height="1"/>
+                                                    <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="45h-aF-1HA"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="rHA-3k-TcH" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leadingMargin" id="2Tq-q0-aD6"/>
                                             <constraint firstItem="kee-4E-5EA" firstAttribute="leading" secondItem="vO9-KQ-q0o" secondAttribute="trailing" constant="53" id="4Kg-Ht-iiJ"/>
                                             <constraint firstItem="vO9-KQ-q0o" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leadingMargin" id="4pL-lY-rGN"/>
                                             <constraint firstItem="7Ey-O7-pHf" firstAttribute="leading" secondItem="1fm-zF-TfT" secondAttribute="trailing" constant="6" id="6m5-fw-k4c"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="kee-4E-5EA" secondAttribute="trailing" id="P0b-xP-sxq"/>
                                             <constraint firstItem="1fm-zF-TfT" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leadingMargin" id="XXs-aV-bVr"/>
+                                            <constraint firstAttribute="bottom" secondItem="rHA-3k-TcH" secondAttribute="bottom" id="YQA-xF-xGO"/>
                                             <constraint firstItem="1fm-zF-TfT" firstAttribute="top" secondItem="XNe-Ds-VYF" secondAttribute="bottom" constant="13" id="Zuv-NW-CZ6"/>
                                             <constraint firstItem="vO9-KQ-q0o" firstAttribute="top" secondItem="Tra-Eo-bdx" secondAttribute="topMargin" id="nGc-L2-4ki"/>
                                             <constraint firstItem="kee-4E-5EA" firstAttribute="centerY" secondItem="Tra-Eo-bdx" secondAttribute="centerY" id="rUX-LM-VqC"/>
+                                            <constraint firstAttribute="trailing" secondItem="rHA-3k-TcH" secondAttribute="trailing" id="rpL-cr-8PH"/>
                                             <constraint firstItem="7Ey-O7-pHf" firstAttribute="centerY" secondItem="1fm-zF-TfT" secondAttribute="centerY" id="xCc-vg-eHP"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
@@ -289,8 +299,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-bQ-aHd" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
-                                                            <rect key="frame" x="80" y="22" width="42" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-bQ-aHd" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                            <rect key="frame" x="80" y="22.5" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -318,7 +328,7 @@
                                                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="IcY-f3-Qvk">
-                                                    <rect key="frame" x="351" y="49.5" width="8" height="13"/>
+                                                    <rect key="frame" x="351" y="50" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="8" id="FcC-WW-kHQ"/>
                                                         <constraint firstAttribute="height" constant="13" id="GkW-kI-DGO"/>
@@ -394,14 +404,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="ZiR-eo-EuH">
-                                                    <rect key="frame" x="351" y="49.5" width="8" height="13"/>
+                                                    <rect key="frame" x="351" y="50" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="3lJ-gC-fox"/>
                                                         <constraint firstAttribute="width" constant="8" id="fxM-52-Pxp"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIo-tg-7Xi" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="45.5" width="42" height="21"/>
+                                                    <rect key="frame" x="16" y="46" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 30.05.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import SwiftyJSON
 import UIKit
@@ -30,7 +43,14 @@ class TeammateProfileDataSource {
     let id: String
     let isMe: Bool
     let isVoting: Bool
-    var isMyProxy: Bool = false
+    var isMyProxy: Bool {
+        get {
+            return extendedTeammate?.basic.isMyProxy ?? false
+        }
+        set {
+            extendedTeammate?.myProxy(set: newValue)
+        }
+    }
     
     var source: [TeammateProfileCellType] = []
     var extendedTeammate: ExtendedTeammate?
@@ -69,16 +89,18 @@ class TeammateProfileDataSource {
         request.start()
     }
     
-    func addToProxy(completion: @escaping (Bool) -> Void) {
-        service.storage.myProxy(userID: id, add: !isMyProxy, success: { [weak self] in
-            guard let me = self else { return }
-            
-            me.isMyProxy = !me.isMyProxy
-            completion(me.isMyProxy)
-        }) { [weak self] error in
-            guard let me = self else { return }
-            
-            completion(me.isMyProxy)
+    func addToProxy(completion: @escaping () -> Void) {
+        service.storage.myProxy(userID: id, add: !isMyProxy).observe { [weak self] result in
+            switch result {
+            case .value:
+                guard let me = self else { return }
+                
+                me.isMyProxy = !me.isMyProxy
+                completion()
+            case let .error(error):
+                print(error)
+                completion()
+            }
         }
     }
     

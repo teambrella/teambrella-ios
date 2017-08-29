@@ -3,6 +3,8 @@ disabled_rules:
   - closure_parameter_position
   - discarded_notification_center_observer
   - notification_center_detachment
+  - missing_docs
+  - private_over_fileprivate
 opt_in_rules:
 #  - conditional_returns_on_newline
 #  - closure_end_indentation
@@ -13,7 +15,6 @@ opt_in_rules:
 #  - number_separator
   - sorted_imports
   - closure_spacing
-  - missing_docs
   - empty_count
   - force_unwrapping
   - vertical_whitespace

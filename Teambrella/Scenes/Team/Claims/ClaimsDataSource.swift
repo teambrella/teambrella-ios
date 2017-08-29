@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 02.06.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import Foundation
 
@@ -42,9 +55,9 @@ class ClaimsDataSource {
     // if teammate is set all results will be filtered
     var teammate: TeammateLike?
     private var order: [ClaimsCellType] = [.open,
-                                   .voted,
-                                   .paid,
-                                   .fullyPaid]
+                                           .voted,
+                                           .paid,
+                                           .fullyPaid]
     
     var count: Int { return claims.flatMap { $0 }.count }
     var sections: Int { return claims.count }
@@ -62,9 +75,9 @@ class ClaimsDataSource {
                           timestamp: timestamp)
             
             var payload: [String: Any] = ["TeamId": ServerService.teamID,
-                           "Offset": self.offset,
-                           "Limit": Constant.loadLimit,
-                           "AvatarSize": Constant.avatarSize]
+                                          "Offset": self.offset,
+                                          "Limit": Constant.loadLimit,
+                                          "AvatarSize": Constant.avatarSize]
             if let teammate = self.teammate {
                 payload["TeammateIdFilter"] = teammate.id
             }
@@ -85,6 +98,19 @@ class ClaimsDataSource {
             request.start()
         }
         
+    }
+    
+    func headerText(for indexPath: IndexPath) -> String {
+        switch cellType(for: indexPath) {
+        case .fullyPaid: return "FULLY PAID"
+        case .open: return ""
+        case .paid: return "BEING PAID"
+        case .voted: return "VOTED"
+        }
+    }
+    
+    func showHeader(for section: Int) -> Bool {
+        return claims[section].isEmpty == false
     }
     
     private func process(claims: [ClaimLike]) {

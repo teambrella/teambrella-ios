@@ -1,0 +1,51 @@
+/*
+  Me.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 22.06.17.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"Me.CoverageVC.indicatorTitle"            = "Cobertura";
+"Me.ProfileVC.indicatorTitle"             = "Yo";
+"Me.WalletVC.indicatorTitle"              = "Monedero";
+
+"Me.WalletVC.leftBrick.title"             = "RESERVADO";
+"Me.WalletVC.rightBrick.title"            = "DISPONIBLE";
+"Me.WalletVC.withdrawButton"              = "RETIRAR";
+"Me.WalletVC.fundingCell.title"           = "FINANCIAMENTO RECOMENDADO";
+"Me.WalletVC.upperBrick.title"            = "PARA COBERTURA MAXIMA(100%)";
+"Me.WalletVC.lowerBrick.title"            = "PARA COBERTURA ININTERRUMPIADA";
+"Me.WalletVC.fundButton"                  = "Financiar monedero";
+
+"Me.WalletVC.actionsCell.cosigners"       = "Co-firmantes";
+"Me.WalletVC.actionsCell.transactions"    = "Transacciones";
+"Me.WalletVC.actionsCell.withdrawAddress" = "Dirección para retirar por defectos";
+
+"Me.WalletDetailsVC.title"                = "QR-code";
+"Me.WalletDetailsVC.fundButton"           = "Como financiar mi monedero>";
+"Me.WalletDetailsVC.headerLabel"          = "Dirección de Bitcoin";
+"Me.WalletDetailsVC.timeLabel"            = "Válido por 24 horas";
+"Me.WalletDetailsVC.copyAddressButton"    = "Copiar Dirección";
+
+// -------------------- waiting for translation :) -------------------- //
+"Me.CoverageVC.fundButton"                = "Fund the wallet to increase";
+"Me.CoverageVC.title"                     = "HOW IT WORKS";
+"Me.CoverageVC.subtitle"                  = "Use the slider to understand how Expenses impact your maximum reimbursement.";
+"Me.CoverageVC.maxExpenses"               = "Max Expenses covered";
+"Me.CoverageVC.yourExpenses"              = "In case your Expenses are";
+"Me.CoverageVC.teamPay"                   = "The team would pay you up to";
+
+"Me.Report.ItemCell.title" = "REPORT";
+"Me.Report.DateCell.title" = "INCIDENT DATE";
+"Me.Report.ExpensesCell.title" = "EXPENSES";
+"Me.Report.DescriptionCell.title" = "DESCRIBE YOUR CASE";
+"Me.Report.PhotosCell.title" = "PHOTOS";
+"Me.Report.WalletCell.title" = "REIMBURSE TO";
+
+"Me.Report.ExpensesCell.deductibleTitle" = "DEDUCTIBLE";
+"Me.Report.ExpensesCell.coverageTitle" = "COVERAGE";
+"Me.Report.ExpensesCell.amountTitle" = "AMOUNT";
+
+"Me.Report.PhotosCell.buttonTitle" = "Add Photos";
+"Me.Report.TitleCell.title" = "Title";

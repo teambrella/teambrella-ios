@@ -3,8 +3,21 @@
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 25.05.17.
-//  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
-//
+
+/* Copyright(C) 2017  Teambrella, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License(version 3) as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ */
 
 import PKHUD
 import SpriteKit
@@ -64,34 +77,39 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     override func viewDidLoad() {
         super.viewDidLoad()
         clearScreen()
-        HUD.show(.progress)
         setupTransparentNavigationBar()
         gradientView.setup(colors: [#colorLiteral(red: 0.1803921569, green: 0.2392156863, blue: 0.7960784314, alpha: 1), #colorLiteral(red: 0.2156862745, green: 0.2705882353, blue: 0.8078431373, alpha: 1), #colorLiteral(red: 0.368627451, green: 0.4156862745, blue: 0.8588235294, alpha: 1)],
                            locations: [0.0, 0.5, 1.0])
-        
-        if let teamID = service.session.currentTeam?.teamID {
-            dataSource.loadData(teamID: teamID)
-            dataSource.onUpdate = { [weak self] in
-                self?.setup()
-            }
-        } else {
-            print("This session has no team!")
-        }
-        
+        HomeCellBuilder.registerCells(in: collectionView)
+        setupWalletContainer()
         let touch = UITapGestureRecognizer(target: self, action: #selector(tapItem))
         itemCard.avatarView.isUserInteractionEnabled = true
         itemCard.avatarView.addGestureRecognizer(touch)
-        HomeCellBuilder.registerCells(in: collectionView)
-        setupWalletContainer()
+        
+        switchToCurrentTeam()
+        
+        service.socket = SocketService()
+    }
+    
+    func switchToCurrentTeam() {
+        HUD.show(.progress)
+        dataSource = HomeDataSource()
+        if let teamID = service.session.currentTeam?.teamID {
+            dataSource.loadData(teamID: teamID)
+        }
+        
+        dataSource.onUpdate = { [weak self] in
+            self?.setup()
+        }
         guard let source = service.session.currentTeam?.teamLogo else { return }
         
         UIImage.fetchAvatar(string: source,
                             width: Constant.teamIconWidth,
                             cornerRadius: Constant.teamIconCornerRadius) { image, error  in
-            guard error == nil else { return }
-            guard let image = image else { return }
-
-            self.teamsButton.setImage(image, for: .normal)
+                                guard error == nil else { return }
+                                guard let image = image else { return }
+                                
+                                self.teamsButton.setImage(image, for: .normal)
         }
     }
     
@@ -149,6 +167,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         service.session.currentUserID = model.userID
         service.session.currentUserName = model.name
+        service.session.currentUserAvatar = model.avatar
         
         UIImage.fetchAvatar(string: model.avatar) { image, error in
             guard let image = image else { return }
@@ -158,7 +177,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         leftBrickAmountLabel.text = String(format: "%.0f", model.coverage * 100)
         rightBrickAmountLabel.text = String.formattedNumber(model.balance * 1000)
-        rightBrickCurrencyLabel.text = "mBTC"
+        rightBrickCurrencyLabel.text = service.session.cryptoCurrency.coinCode
         
         greetingsTitleLabel.text = "Home.salutation".localized(dataSource.name)
         greetingsSubtitileLabel.text = "Home.subtitle".localized
@@ -184,7 +203,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     // MARK: User interaction handling
-
+    
     func tapItem() {
         DeveloperTools.notSupportedAlert(in: self)
     }
@@ -197,7 +216,11 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var submitClaimButton: BorderedButton!
     
     @IBAction func tapSubmitClaim(_ sender: UIButton) {
-        service.router.presentClaimReport()
+        guard let model = dataSource.model else { return }
+        
+        let item = ClaimItem(name: model.objectName, photo: model.smallPhoto, location: "")
+        let context = ReportContext.claim(item: item, coverage: model.coverage, balance: model.balance)
+        service.router.presentReport(context: context, delegate: self)
     }
     
     @IBAction func tapLeftBrick(_ sender: Any) {
@@ -209,7 +232,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     @IBAction func tapTeams(_ sender: UIButton) {
-        service.router.showChooseTeam(in: self)
+        service.router.showChooseTeam(in: self, delegate: self)
     }
     
     @IBAction func tapInbox(_ sender: UIButton) {
@@ -218,6 +241,12 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     func tapChatWithSupport(_ sender: UIButton) {
         DeveloperTools.notSupportedAlert(in: self)
+    }
+    
+    func closeCard(_ sender: UIButton) {
+        dataSource.deleteCard(at: sender.tag)
+        collectionView.reloadData()
+        pageControl.numberOfPages = dataSource.cardsCount
     }
     
 }
@@ -241,6 +270,11 @@ extension HomeVC: UICollectionViewDataSource {
         if let cell = cell as? HomeSupportCell {
             cell.button.removeTarget(nil, action: nil, for: .allEvents)
             cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
+        }
+        if let cell = cell as? ClosableCell {
+            cell.closeButton.removeTarget(self, action: nil, for: .allEvents)
+            cell.closeButton.addTarget(self, action: #selector(closeCard), for: .touchUpInside)
+            cell.closeButton.tag = indexPath.row
         }
     }
     
@@ -291,6 +325,21 @@ extension HomeVC: UIScrollViewDelegate {
             let scaleMultiplier = 1 - 0.07 * (newNearest / 100)
             let scaleTransform = CATransform3DMakeScale(scaleMultiplier, scaleMultiplier, 1.0)
             cell.layer.transform = scaleTransform
+        }
+    }
+}
+
+extension HomeVC: ChooseYourTeamControllerDelegate {
+    func chooseTeam(controller: ChooseYourTeamVC, didSelectTeamID: Int) {
+        service.router.switchTeam()
+    }
+}
+
+extension HomeVC: ReportDelegate {
+    func report(controller: ReportVC, didSendReport data: Any) {
+        service.router.navigator?.popViewController(animated: false)
+        if let claim = data as? EnhancedClaimEntity {
+            service.router.presentClaim(claimID: claim.id)
         }
     }
 }
