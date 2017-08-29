@@ -39,7 +39,7 @@ class WalletDataSource {
         isLoading = true
         service.server.updateTimestamp { timestamp, error in
             let key = service.server.key
-            let body = RequestBody(key: key, payload: ["TeamId": service.session.currentTeam?.teamID ?? 0])
+            let body = RequestBody(key: key, payload: ["TeamId": service.session?.currentTeam?.teamID ?? 0])
             let request = TeambrellaRequest(type: .wallet, body: body, success: { [weak self] response in
                 if case .wallet(let wallet) = response {
                     self?.wallet = wallet

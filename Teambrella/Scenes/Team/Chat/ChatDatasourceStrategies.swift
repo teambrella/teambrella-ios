@@ -135,7 +135,7 @@ class FeedChatStrategy: ChatDatasourceStrategy {
         case .claim:
             body.payload?["claimId"] = feedEntity.itemID
         case .teammate:
-            body.payload?["teamid"] = service.session.currentTeam?.teamID ?? 0
+            body.payload?["teamid"] = service.session?.currentTeam?.teamID ?? 0
             body.payload?["userid"] = feedEntity.itemUserID
         default:
              body.payload?["TopicId"] = feedEntity.topicID
@@ -178,7 +178,7 @@ class HomeChatStrategy: ChatDatasourceStrategy {
         case .claim:
             body.payload?["claimId"] = card.itemID
         case .teammate:
-            body.payload?["teamid"] = service.session.currentTeam?.teamID ?? 0
+            body.payload?["teamid"] = service.session?.currentTeam?.teamID ?? 0
             body.payload?["userid"] = card.userID
         default:
             body.payload?["TopicId"] = card.topicID

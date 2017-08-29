@@ -197,6 +197,13 @@ final class MainRouter {
      }
      */
     
+    // MARK: Other
+    
+    func logout() {
+        navigator?.popToRootViewController(animated: true)
+        service.session = nil
+    }
+    
     func switchTeam() {
         let initial = navigator?.viewControllers.filter { $0 is InitialVC }.first
         if let initial = initial {

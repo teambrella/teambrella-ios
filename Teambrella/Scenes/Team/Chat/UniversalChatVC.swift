@@ -40,7 +40,6 @@ class UniversalChatVC: UIViewController, Routable {
     
     public var endsEditingWhenTappingOnChatBackground = true
     
-    
     var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
     var shouldScrollToBottom: Bool = true
     var isFirstRefresh: Bool = true
@@ -137,8 +136,8 @@ class UniversalChatVC: UIViewController, Routable {
         input?.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
         input?.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
         if let socket = service.socket,
-            let teamID = service.session.currentTeam?.teamID,
-            let myID = service.session.currentUserID {
+            let teamID = service.session?.currentTeam?.teamID,
+            let myID = service.session?.currentUserID {
             input?.onTextChange = { [weak socket, weak self] in
                 guard let me = self else { return }
                 

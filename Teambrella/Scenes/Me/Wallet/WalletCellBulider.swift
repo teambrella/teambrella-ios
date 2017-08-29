@@ -53,8 +53,8 @@ struct WalletCellBuilder {
             cell.numberBar.right?.amountLabel.text = String.formattedNumber(model.available * 1000)
             cell.numberBar.right?.isBadgeVisible = false
             cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
-            cell.currencyLabel.text = service.session.cryptoCurrency.coinCode
-            if let team = service.session.currentTeam {
+            cell.currencyLabel.text = service.session?.cryptoCurrency.coinCode
+            if let team = service.session?.currentTeam {
             cell.auxillaryAmount.text = team.currency + "?"
                 
             }

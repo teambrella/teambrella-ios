@@ -33,7 +33,7 @@ class UserIndexVC: UIViewController {
         static let scrollingVelocityThreshold: CGFloat = 10
     }
     
-    var dataSource: UserIndexDataSource = UserIndexDataSource(teamID: service.session.currentTeam?.teamID ?? 0)
+    var dataSource: UserIndexDataSource = UserIndexDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
     
     @IBOutlet var topContainer: UIView!
     @IBOutlet var collectionView: UICollectionView!

@@ -23,7 +23,7 @@ import UIKit
 import XLPagerTabStrip
 
 class ProxyForVC: UIViewController {
-    var dataSource: ProxyForDataSource = ProxyForDataSource(teamID: service.session.currentTeam?.teamID ?? 0)
+    var dataSource: ProxyForDataSource = ProxyForDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
     
     @IBOutlet var collectionView: UICollectionView!
     

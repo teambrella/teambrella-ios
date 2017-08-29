@@ -132,8 +132,8 @@ extension SocketService: WebSocketDelegate {
         if let message = unsentMessage {
             send(string: message)
             unsentMessage = nil
-        } else if let teamID = service.session.currentTeam?.teamID,
-            let teammateID = service.session.currentUserID {
+        } else if let teamID = service.session?.currentTeam?.teamID,
+            let teammateID = service.session?.currentUserID {
             auth(teamID: teamID, teammateID: teammateID)
         }
     }

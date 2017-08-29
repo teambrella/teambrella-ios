@@ -25,14 +25,15 @@ struct ChooseYourTeamDataSource {
     var count: Int { return models.count }
     var models: [ChooseYourTeamCellModel] = []
     var currentTeamIndex: Int {
-        if let currentTeam = service.session.currentTeam, let idx = service.session.teams.index(of: currentTeam) {
+        if let currentTeam = service.session?.currentTeam, let idx = service.session?.teams.index(of: currentTeam) {
             return idx
         }
         return 0
     }
     
     mutating func createModels() {
-        let model = service.session.teams
+        guard let model = service.session?.teams else { return }
+        
         for card in model {
             if let inc = card.unreadCount, let item = card.objectName, let cvg = card.teamCoverage {
                 models.append(ChooseYourTeamCellModel(teamIcon: card.teamLogo,

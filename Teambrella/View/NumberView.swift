@@ -86,7 +86,7 @@ class NumberView: UIView, XIBInitable {
     }
     
     func tmpSetup() {
-        currencyLabel.text = service.session.cryptoCurrency.coinCode
+        currencyLabel.text = service.session?.cryptoCurrency.coinCode
     }
     
     override init(frame: CGRect) {

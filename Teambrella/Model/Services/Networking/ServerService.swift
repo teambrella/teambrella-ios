@@ -56,7 +56,7 @@ class ServerService {
     }
     
     static var currentKeyType: FakeKeyType = .testUser
-    static var teamID: Int { return service.session.currentTeam?.teamID ?? 0 }
+    static var teamID: Int { return service.session?.currentTeam?.teamID ?? 0 }
     
     static var privateKey: String {
         return currentKeyType.rawValue

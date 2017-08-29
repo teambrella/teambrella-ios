@@ -96,7 +96,7 @@ class CoverageVC: UIViewController, Routable {
         let dateString = Formatter.teambrellaShortDashed.string(from: Date())
         service.server.updateTimestamp { timestamp, error in
             let key = service.server.key
-            let body = RequestBody(key: key, payload: ["TeamId": service.session.currentTeam?.teamID ?? 0,
+            let body = RequestBody(key: key, payload: ["TeamId": service.session?.currentTeam?.teamID ?? 0,
                                                        "Date": dateString])
             let request = TeambrellaRequest(type: .coverageForDate, body: body, success: { [weak self] response in
                 if case .coverageForDate(let coverage, let limit) = response {
