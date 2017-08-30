@@ -183,8 +183,8 @@ class LocalStorage: Storage {
                 if case .claim(let claim) = response {
                     promise.resolve(with: claim)
                 }
-                }, failure: { error in
-                    promise.reject(with: error)
+            }, failure: { error in
+                promise.reject(with: error)
             })
             request.start()
         }
@@ -200,6 +200,25 @@ class LocalStorage: Storage {
             let request = TeambrellaRequest(type: .newChat, body: body, success: { response in
                 if case .chat(let chat) = response {
                     promise.resolve(with: chat)
+                }
+            }, failure: { error in
+                promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
+    func requestPrivateList(offset: Int, limit: Int, filter: String?) -> Future<[PrivateChatUser]> {
+        let promise = Promise<[PrivateChatUser]>()
+        freshKey { key in
+            var payload: [String: Any] = ["Offset": offset,
+                                          "Limit": limit]
+            filter.map { payload["Search"] = $0 }
+            let body = RequestBody(key: key, payload: payload)
+            let request = TeambrellaRequest(type: .privateList, body: body, success: { response in
+                if case .privateList(let users) = response {
+                    promise.resolve(with: users)
                 }
             }, failure: { error in
                 promise.reject(with: error)

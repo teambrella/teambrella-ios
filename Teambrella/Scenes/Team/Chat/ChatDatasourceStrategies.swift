@@ -220,3 +220,30 @@ class ChatStrategy: ChatDatasourceStrategy {
     }
     
 }
+
+/*
+class PrivateChatStrategy: ChatDatasourceStrategy {
+    var title: String { return chatModel.title }
+    var requestType: TeambrellaRequestType { return .feedChat }
+    var createChatType: TeambrellaRequestType = .newChat
+    
+    var context: PrivateChatUser
+    
+    init(context: PrivateChatUser) {
+        self.context = context
+    }
+    
+    func updatedChatBody(body: RequestBody) -> RequestBody {
+        var body = body
+        body.payload?["TopicId"] = chatModel.topicID
+        
+        return body
+    }
+    
+    func updatedMessageBody(body: RequestBody) -> RequestBody {
+        var body = body
+        body.payload?["TopicId"] = chatModel.topicID
+        return body
+    }
+}
+ */

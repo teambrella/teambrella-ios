@@ -154,6 +154,12 @@ final class MainRouter {
         }
     }
     
+    func presentPrivateMessages() {
+        guard let vc = PrivateMessagesVC.instantiate() as? PrivateMessagesVC else { fatalError("Error instantiating") }
+        
+        push(vc: vc)
+    }
+    
     // MARK: Present Modally
     
     func showChooseTeam(in viewController: UIViewController, delegate: ChooseYourTeamControllerDelegate) {

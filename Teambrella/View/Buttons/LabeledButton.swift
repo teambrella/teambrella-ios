@@ -24,7 +24,9 @@ import UIKit
 class LabeledButton: UIButton {
     var cornerText: String? {
         didSet {
+            cornerLabel.frame = CGRect(x: 0, y: 0, width: 50, height: 15)
             cornerLabel.text = cornerText
+            cornerLabel.sizeToFit()
             cornerLabel.isHidden = cornerText == nil
         }
     }

@@ -247,7 +247,8 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     @IBAction func tapInbox(_ sender: UIButton) {
-        DeveloperTools.notSupportedAlert(in: self)
+        service.router.presentPrivateMessages()
+//        DeveloperTools.notSupportedAlert(in: self)
     }
     
     func tapChatWithSupport(_ sender: UIButton) {
