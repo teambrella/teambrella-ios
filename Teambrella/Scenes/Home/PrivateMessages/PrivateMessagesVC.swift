@@ -17,7 +17,7 @@ class PrivateMessagesVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
-        title = "Inbox"
+        title = "Home.PrivateMessages.title".localized
         collectionView.dataSource = self
         collectionView.delegate = self
         PrivateMessagesCellBuilder.registerCells(in: collectionView)
@@ -52,6 +52,11 @@ extension PrivateMessagesVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         let user = dataSource.items[indexPath.row]
         PrivateMessagesCellBuilder.populate(cell: cell, with: user)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let user = dataSource.items[indexPath.row]
+        service.router.presentChat(context: .privateChat(user))
     }
 }
 

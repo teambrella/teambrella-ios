@@ -49,3 +49,17 @@ struct ChatEntity {
         return array.flatMap { ChatEntity(json: $0) }
     }
 }
+
+struct PrivateChatEntity {
+    let json: JSON
+    
+    var userID: String { return json["UserId"].stringValue }
+    var lastUpdated: Date { return Date(ticks: json["LastUpdated"].uInt64Value) }
+    var id: String { return json["Id"].stringValue }
+    var created: Date { return Date(ticks: json["Created"].uInt64Value) }
+    var points: Int { return json["Points"].intValue }
+    var text: String { return json["Text"].stringValue }
+    var images: [String] { return json["Images"].arrayObject as? [String] ?? [] }
+    var imageRatios: [CGFloat] { return json["ImageRatios"].arrayObject as? [CGFloat] ?? [] }
+    
+}

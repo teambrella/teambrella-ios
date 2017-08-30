@@ -210,6 +210,7 @@ final class MainRouter {
         
         service.session = nil
         Keychain.removeValue(forKey: .ethPrivateAddress)
+        ServerService.currentKeyType = .testUser
         for vc in navigator.viewControllers {
             if let vc = vc as? InitialVC {
                 navigator.popToViewController(vc, animated: true)

@@ -27,6 +27,7 @@ enum ChatContext {
     case feed(FeedEntity)
     case home(HomeScreenModel.Card)
     case chat(ChatModel)
+    case privateChat(PrivateChatUser)
     case none
 }
 

@@ -34,5 +34,5 @@
 "Home.ApplicationStatusCell.headerLabel"                = "%@ Compañeros del equipo han %@ para revisar tu solicitud.";
 "Home.ApplicationStatusCell.titleLabel"                 = "Tu solicitud";
 "Home.ApplicationStatusCell.centerLabel"                = "Votación (pendiente)";
-"Home.PrivateMessages.title"                            = "Recibido";
+"Home.PrivateMessages.title"                            = "Mensajes privados";
 

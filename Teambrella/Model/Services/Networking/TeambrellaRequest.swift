@@ -58,6 +58,7 @@ enum TeambrellaRequestType: String {
     
     case privateChat = "privatemessage/getChat"
     case privateList = "privatemessage/getList"
+    case newPrivatePost = "privatemessage/newMessage"
 }
 
 enum TeambrellaResponseType {
@@ -90,6 +91,7 @@ enum TeambrellaResponseType {
     case proxyRatingList([UserIndexCellModel], Int)
     
     case privateList([PrivateChatUser])
+    case privateChat([ChatEntity])
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -213,6 +215,9 @@ struct TeambrellaRequest {
         case .privateList:
             let users = reply.arrayValue.map { PrivateChatUser(json: $0) }
             success(.privateList(users))
+        case .privateChat,
+             .newPrivatePost:
+            success(.privateChat(PrivateChatAdaptor(json: reply).adaptedMessages))
         default:
             break
         }
