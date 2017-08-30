@@ -77,6 +77,7 @@ struct WalletCellBuilder {
             cell.imagesStack.setAvatars(images:  model.avatars)
             cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
             cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
+            cell.quantityLabel.text = String(model.avatars.count)
         }
     }
     
