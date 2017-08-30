@@ -42,12 +42,14 @@ struct ReportDataSource {
             items = [ItemReportCellModel(name: item.name, photo: item.photo, location: item.location),
                      DateReportCellModel(date: Date()),
                      ExpensesReportCellModel(expenses: 0, deductible: balance, coverage: coverage),
-                     DescriptionReportCellModel(text: ""),
+                     DescriptionReportCellModel(title: "Me.Report.DescriptionCell.title".localized, text: ""),
                      PhotosReportCellModel(photos: []),
                      WalletReportCellModel(text: "")]
         case .newChat:
-            items = [TitleReportCellModel(text: ""),
-                     DescriptionReportCellModel(text: "")]
+            items = [HeaderTitleReportCellModel(),
+                     TitleReportCellModel(text: ""),
+                     DescriptionReportCellModel(title: "Me.Report.DescriptionCell.title-discussion".localized,
+                                                text: "")]
         }
         
     }

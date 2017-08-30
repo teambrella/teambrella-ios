@@ -28,6 +28,7 @@ struct ReportCellBuilder {
         collectionView.register(ReportDescriptionCell.nib, forCellWithReuseIdentifier: ReportDescriptionCell.cellID)
         collectionView.register(ReportPhotoGalleryCell.nib, forCellWithReuseIdentifier: ReportPhotoGalleryCell.cellID)
         collectionView.register(ReportTextFieldCell.nib, forCellWithReuseIdentifier: ReportTextFieldCell.cellID)
+        collectionView.register(ReportTitleCell.nib, forCellWithReuseIdentifier: ReportTitleCell.cellID)
     }
     
     // swiftlint:disable:next function_body_length
@@ -92,6 +93,8 @@ struct ReportCellBuilder {
             cell.textField.tag = indexPath.row
             cell.textField.removeTarget(reportVC, action: nil, for: .allEvents)
             cell.textField.addTarget(reportVC, action: #selector(ReportVC.textFieldDidChange), for: .editingChanged)
+        } else if let cell = cell as? ReportTitleCell {
+            cell.titleLabel.text = model.title
         }
     }
     

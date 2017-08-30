@@ -37,7 +37,7 @@ class UniversalChatDatasource {
     
     var count: Int { return chunks.reduce(0) { $0 + $1.count } }
     
-    var limit                         = 10
+    var limit                         = 100
     var lastRead: Int64               = 0 {
         didSet {
             if oldValue == 0 {

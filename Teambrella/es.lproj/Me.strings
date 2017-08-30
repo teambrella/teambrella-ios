@@ -29,23 +29,26 @@
 "Me.WalletDetailsVC.copyAddressButton"    = "Copiar Dirección";
 
 // -------------------- waiting for translation :) -------------------- //
-"Me.CoverageVC.fundButton"                = "Fund the wallet to increase";
-"Me.CoverageVC.title"                     = "HOW IT WORKS";
-"Me.CoverageVC.subtitle"                  = "Use the slider to understand how Expenses impact your maximum reimbursement.";
-"Me.CoverageVC.maxExpenses"               = "Max Expenses covered";
-"Me.CoverageVC.yourExpenses"              = "In case your Expenses are";
-"Me.CoverageVC.teamPay"                   = "The team would pay you up to";
 
-"Me.Report.ItemCell.title" = "REPORT";
-"Me.Report.DateCell.title" = "INCIDENT DATE";
-"Me.Report.ExpensesCell.title" = "EXPENSES";
-"Me.Report.DescriptionCell.title" = "DESCRIBE YOUR CASE";
-"Me.Report.PhotosCell.title" = "PHOTOS";
-"Me.Report.WalletCell.title" = "REIMBURSE TO";
+"Me.CoverageVC.fundButton"                = "Financie tu monedero para aumentar";
+"Me.CoverageVC.title"                     = "¿CÓMO FUNCIONA?";
+"Me.CoverageVC.subtitle"                  = "Utilice el control deslizante para ver cómo los gastos afectan su reembolso máximo";
+"Me.CoverageVC.maxExpenses"               = "Cantidad máxima de los gastos cubiertos";
+"Me.CoverageVC.yourExpenses"              = "Si tus gastos son";
+"Me.CoverageVC.teamPay"                   = "El equipo te pagaria hasta";
 
-"Me.Report.ExpensesCell.deductibleTitle" = "DEDUCTIBLE";
-"Me.Report.ExpensesCell.coverageTitle" = "COVERAGE";
-"Me.Report.ExpensesCell.amountTitle" = "AMOUNT";
+"Me.Report.ItemCell.title" = "INFORME";
+"Me.Report.DateCell.title" = "FECHA DEL INCIDENTE";
+"Me.Report.ExpensesCell.title" = "GASTOS";
+"Me.Report.DescriptionCell.title" = "DESCRIBE TU CASO";
+"Me.Report.DescriptionCell.title-discussion" = "POST";
+"Me.Report.PhotosCell.title" = "FOTOS";
+"Me.Report.WalletCell.title" = "REEMBOLSO A";
 
-"Me.Report.PhotosCell.buttonTitle" = "Add Photos";
-"Me.Report.TitleCell.title" = "Title";
+"Me.Report.ExpensesCell.deductibleTitle" = "DEDUCIBLE";
+"Me.Report.ExpensesCell.coverageTitle" = "COBERTURA";
+"Me.Report.ExpensesCell.amountTitle" = "CANTIDAD";
+
+"Me.Report.PhotosCell.buttonTitle" = "Cargar las fotos";
+"Me.Report.TitleCell.title" = "Titulo";
+"Me.Report.HeaderTitleCell.title" = "DISCUSION";

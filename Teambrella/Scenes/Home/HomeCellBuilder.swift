@@ -68,6 +68,7 @@ struct HomeCellBuilder {
             } else {
                 cell.unreadCountView.isHidden = true
             }
+            cell.rightNumberView.isBadgeVisible = model.isVoting
            
             if let date = model.itemDate {
                 cell.subtitleLabel.text = DateProcessor().stringInterval(from: date)
