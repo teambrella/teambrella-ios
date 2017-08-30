@@ -40,7 +40,7 @@ struct FeedCellBuilder {
             cell.facesStack.setAvatars(images: model.topPosterAvatars, label: nil, max: 4)
          
             if let date = model.itemDate {
-            cell.timeLabel.text = DateProcessor().stringInterval(from: date)
+            cell.timeLabel.text = DateProcessor().stringInterval(from: date).uppercased()
             }
             cell.unreadLabel.text = String(model.unreadCount)
             cell.unreadLabel.isHidden = model.unreadCount == 0

@@ -30,7 +30,7 @@ struct MembersCellBuilder {
                 cell.avatarView.kf.setImage(with: url)
             }
             cell.titleLabel.text = teammate.name
-            cell.detailsLabel.text = teammate.model
+            cell.detailsLabel.text = "\(teammate.model), \(teammate.year)".uppercased()
         } else if let cell = cell as? TeammateCell {
             if let url = URL(string: service.server.avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
@@ -39,7 +39,7 @@ struct MembersCellBuilder {
             cell.signLabel.text = teammate.totallyPaid > 0 ? "+" : teammate.totallyPaid < 0 ? "-" : ""
             cell.signLabel.textColor = teammate.totallyPaid > 0 ? .tealish : .lipstick
             cell.titleLabel.text = teammate.name
-            cell.detailsLabel.text = teammate.model
+            cell.detailsLabel.text = "\(teammate.model), \(teammate.year)".uppercased()
             cell.avatarView.badgeText = String(format: "%.1f", teammate.risk)
         }
     }

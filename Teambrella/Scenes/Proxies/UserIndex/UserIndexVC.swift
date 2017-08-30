@@ -76,6 +76,7 @@ class UserIndexVC: UIViewController {
     }
     
     fileprivate func shrinkTopContainer(_ shrink: Bool) {
+        view.layoutIfNeeded()
         topContainerHeightConstraint.constant = shrink
             ? Constant.containerHeightShrinked
             : Constant.containerHeightExpanded
@@ -86,7 +87,7 @@ class UserIndexVC: UIViewController {
             ? Constant.avatarSizeShrinked
             : Constant.avatarSizeExpanded
         isTopContainerShrinked = shrink
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }

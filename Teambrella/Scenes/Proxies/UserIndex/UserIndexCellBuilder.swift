@@ -28,7 +28,7 @@ struct UserIndexCellBuilder {
             cell.avatarView.showAvatar(string: model.avatarString)
             cell.nameLabel.text = model.name
             cell.detailsLabel.text = model.location
-            cell.amountLabel.text = String(format: "%.2d", model.proxyRank)
+            cell.amountLabel.text = String.formattedNumber(model.proxyRank)
         }
     }
     

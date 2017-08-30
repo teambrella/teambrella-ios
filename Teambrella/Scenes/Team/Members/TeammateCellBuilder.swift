@@ -136,11 +136,13 @@ struct TeammateCellBuilder {
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.weight".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
+            left.currencyLabel.text = nil
         }
         if let right = cell.numberBar.right {
             right.titleLabel.text = "Team.TeammateCell.proxyRank".localized
             right.amountLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
             right.isBadgeVisible = false
+            right.currencyLabel.text = nil
         }
         cell.decisionsLabel.text = "Team.TeammateCell.decisions".localized
         cell.decisionsBar.autoSet(value: stats.decisionFrequency)
@@ -152,10 +154,16 @@ struct TeammateCellBuilder {
         cell.frequencyLabel.text = "Team.TeammateCell.votingFrequency".localized
         cell.frequencyBar.autoSet(value: stats.votingFrequency)
         cell.frequencyBar.rightText = ValueToTextConverter.frequencyText(from: stats.votingFrequency).uppercased()
+        
         let buttonTitle = teammate.basic.isMyProxy
             ? "Team.TeammateCell.removeFromMyProxyVoters".localized
             : "Team.TeammateCell.addToMyProxyVoters".localized
         cell.addButton.setTitle(buttonTitle, for: .normal)
+        if let me = service.session?.currentUserID, me == teammate.basic.id {
+            cell.addButton.isHidden = true
+        } else {
+            cell.addButton.isHidden = false
+        }
     }
     
     private static func populateDiscussion(cell: DiscussionCell, with stats: Topic, avatar: String) {
