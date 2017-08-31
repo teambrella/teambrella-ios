@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         service.router.applicationDidFinishLaunching(launchOptions: launchOptions)
+        service.push.askPermissionsForRemoteNotifications(application: application)
         TeambrellaStyle.apply()
         return true
     }
@@ -50,6 +51,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         service.socket?.stop()
+    }
+    
+    // MARK: Push
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        service.push.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        service.push.application(application, didFailToRegisterForRemoteNotificationsWithError: error)
     }
     
 }

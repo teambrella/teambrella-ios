@@ -254,6 +254,7 @@
 		6DA8D55A1F0E8B99000A4DB7 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA8D5591F0E8B99000A4DB7 /* HomeDataSource.swift */; };
 		6DAF1CB51F571F4A00421C5A /* ReportTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB31F571F4A00421C5A /* ReportTitleCell.swift */; };
 		6DAF1CB61F571F4A00421C5A /* ReportTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB41F571F4A00421C5A /* ReportTitleCell.xib */; };
+		6DAF1CB81F58562900421C5A /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB71F58562900421C5A /* PushService.swift */; };
 		6DB309F71F1D169D007DFF40 /* ChatDatasourceStrategies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB309F61F1D169D007DFF40 /* ChatDatasourceStrategies.swift */; };
 		6DB309F91F1D2093007DFF40 /* ChatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB309F81F1D2093007DFF40 /* ChatEntity.swift */; };
 		6DB812171EE6E6A900B202CE /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DB812161EE6E6A900B202CE /* Chat.storyboard */; };
@@ -613,6 +614,7 @@
 		6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateProfileDataSource.swift; path = Scenes/Team/Members/TeammateProfileDataSource.swift; sourceTree = "<group>"; };
 		6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateFooter.swift; path = Scenes/Team/Members/TeammateFooter.swift; sourceTree = "<group>"; };
 		6D8950A61F542815002DB34D /* ChatChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatChunk.swift; path = Scenes/Team/Chat/ChatChunk.swift; sourceTree = "<group>"; };
+		6D8CB40E1F5865B200C72AC3 /* Teambrella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Teambrella.entitlements; sourceTree = "<group>"; };
 		6D8F97111E8D1529008DC62E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teambrella-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 		6DA8D5591F0E8B99000A4DB7 /* HomeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeDataSource.swift; path = Scenes/Home/HomeDataSource.swift; sourceTree = "<group>"; };
 		6DAF1CB31F571F4A00421C5A /* ReportTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportTitleCell.swift; path = View/Cells/Report/ReportTitleCell.swift; sourceTree = "<group>"; };
 		6DAF1CB41F571F4A00421C5A /* ReportTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportTitleCell.xib; path = View/Cells/Report/ReportTitleCell.xib; sourceTree = "<group>"; };
+		6DAF1CB71F58562900421C5A /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushService.swift; path = Model/Services/Push/PushService.swift; sourceTree = "<group>"; };
 		6DB309F61F1D169D007DFF40 /* ChatDatasourceStrategies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatDatasourceStrategies.swift; path = Scenes/Team/Chat/ChatDatasourceStrategies.swift; sourceTree = "<group>"; };
 		6DB309F81F1D2093007DFF40 /* ChatEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatEntity.swift; path = Model/Entities/ChatEntity.swift; sourceTree = "<group>"; };
 		6DB812161EE6E6A900B202CE /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -1367,6 +1370,7 @@
 		6DA475A21E8ABEE600B56D9B /* Teambrella */ = {
 			isa = PBXGroup;
 			children = (
+				6D8CB40E1F5865B200C72AC3 /* Teambrella.entitlements */,
 				6DA714F21EE00EC100F39EBE /* Resources */,
 				6D1C23851E8EA45A009B05A3 /* Helpers */,
 				6D097E991E9D1A0000E77DAB /* Localizations */,
@@ -1421,6 +1425,7 @@
 			isa = PBXGroup;
 			children = (
 				6DA475D71E8BBA0800B56D9B /* Networking */,
+				6DAF1CB91F58562E00421C5A /* PushService */,
 				6DF2E8BF1EF02F8C00C8D60B /* Socket */,
 				6DA8D5581F0E75FB000A4DB7 /* Storage */,
 				6DEC6DFA1E966AB400ACC119 /* Transformers */,
@@ -1518,6 +1523,14 @@
 				6DA8D5501F0E74B1000A4DB7 /* LocalStorage.swift */,
 			);
 			name = Storage;
+			sourceTree = "<group>";
+		};
+		6DAF1CB91F58562E00421C5A /* PushService */ = {
+			isa = PBXGroup;
+			children = (
+				6DAF1CB71F58562900421C5A /* PushService.swift */,
+			);
+			name = PushService;
 			sourceTree = "<group>";
 		};
 		6DB812151EE6E68C00B202CE /* Chat */ = {
@@ -1889,6 +1902,11 @@
 						DevelopmentTeam = Y6A22RLVJG;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					6DA475B31E8ABEE600B56D9B = {
 						CreatedOnToolsVersion = 8.3;
@@ -2478,6 +2496,7 @@
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
 				9440EDF51F0CED5A00E5A6E7 /* SortVC.swift in Sources */,
 				6D66B49E1F4DD70F00672583 /* ChatTextCell.swift in Sources */,
+				6DAF1CB81F58562900421C5A /* PushService.swift in Sources */,
 				6D2808C81F1A563A00EBBE3D /* DiscussionCompactCell.swift in Sources */,
 				CBDFE00DB06001B8DB766097 /* TeammateLike.swift in Sources */,
 				6D829AA51EB0D6860051F43A /* Random.swift in Sources */,
@@ -2761,6 +2780,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				CODE_SIGN_ENTITLEMENTS = Teambrella/Teambrella.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				ENABLE_BITCODE = NO;
@@ -2789,6 +2809,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				CODE_SIGN_ENTITLEMENTS = Teambrella/Teambrella.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				ENABLE_BITCODE = NO;

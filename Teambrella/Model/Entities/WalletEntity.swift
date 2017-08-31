@@ -43,7 +43,9 @@ struct WalletEntity {
     var teamPart: JSON { return json["TeamPart"] }
     var currency: String { return teamPart["Currency"].stringValue }
     var coverageType: Int { return teamPart["CoverageType"].intValue }
-    var teamAccessLevel: Int { return teamPart["TeamAccessLevel"].intValue }
+    var teamAccessLevel: TeamAccessLevel {
+        return TeamAccessLevel(rawValue: teamPart["TeamAccessLevel"].intValue) ?? .noAccess
+    }
     
     static func wallet(with json: JSON) -> WalletEntity {
         return WalletEntity(json: json)

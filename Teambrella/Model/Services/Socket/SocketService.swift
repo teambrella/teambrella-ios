@@ -27,6 +27,7 @@ struct SocketAction: CustomStringConvertible {
     let command: SocketCommand
     let teamID: Int
     let teammateID: String
+    let topicID: String?
     
     var description: String { return "Socket action: \(command); team: \(teamID); teammate: \(teammateID)" }
     var socketString: String { return "\(command.rawValue);\(teamID);\(teammateID)" }
@@ -36,25 +37,28 @@ struct SocketAction: CustomStringConvertible {
         guard array.count >= 3,
             let command = SocketCommand(rawValue: Int(array[0]) ?? -1),
             let teamID = Int(array[1]) else {
-            return nil
+                return nil
         }
         
         self.command = command
         self.teamID = teamID
         self.teammateID = array[2]
+        self.topicID = array.count > 3 ? array[3] : nil
     }
     
-    init(command: SocketCommand, teamID: Int, teammateID: String) {
+    init(command: SocketCommand, teamID: Int, teammateID: String, topicID: String? = nil) {
         self.command = command
         self.teamID = teamID
         self.teammateID = teammateID
+        self.topicID = topicID
     }
     
 }
 
 enum SocketCommand: Int {
-    case auth = 1
-    case post = 2
+    case auth = 0
+    case post = 1
+    case deletePost = 2
     case typing = 3
 }
 
