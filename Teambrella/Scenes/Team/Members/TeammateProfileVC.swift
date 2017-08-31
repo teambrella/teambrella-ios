@@ -50,7 +50,7 @@ class TeammateProfileVC: UIViewController, Routable {
         } else if let teammateID = teammateID {
             dataSource = TeammateProfileDataSource(id: teammateID, isVoting: false, isMe: false)
             addGradientNavBar()
-        } else if let myID = service.session.currentUserID {
+        } else if let myID = service.session?.currentUserID {
             dataSource = TeammateProfileDataSource(id: myID, isVoting: false, isMe: true)
         } else {
             fatalError("No valid info about teammate")

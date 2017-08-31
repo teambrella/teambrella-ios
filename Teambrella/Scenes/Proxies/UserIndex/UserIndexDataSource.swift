@@ -72,7 +72,7 @@ class UserIndexDataSource {
             let request = TeambrellaRequest(type: .proxyRatingList, body: body, success: { [weak self] response in
                 if case .proxyRatingList(var proxies, _) = response {
                     self?.hasMore = (proxies.count == limit)
-                    let myID = service.session.currentUserID
+                    let myID = service.session?.currentUserID
                     for (idx, proxy) in proxies.enumerated().reversed() where proxy.userID == myID {
                         self?.meModel = proxy
                         proxies.remove(at: idx)

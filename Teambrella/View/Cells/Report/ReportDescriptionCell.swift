@@ -27,7 +27,10 @@ class ReportDescriptionCell: UICollectionViewCell, XIBInitableCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        textView.layer.masksToBounds = true
+        textView.layer.cornerRadius = 3
+        textView.layer.borderColor = UIColor.cloudyBlue.cgColor
+        textView.layer.borderWidth = 0.5
     }
 
 }

@@ -16,3 +16,15 @@
 "Proxy.SortVC.Cell.Alphabetical"    = "Alfabético";
 "Proxy.SortVC.Cell.Alphabetical.AZ" = "A-Z";
 "Proxy.SortVC.Cell.Alphabetical.ZA" = "Z-A";
+
+//--waiting--
+"Proxy.ProxyForVC.header" = "COMISIÓN TOTAL";
+"Proxy.ProxyForVC.subtitle" = "ERES PROXIE PARA";
+"Proxy.ProxyForCellBuilder.lastVoted" = "VOTÓ POR ÚLTIMA VEZ: ";
+"Proxy.MyProxiesVC.infoButton" = "¿Necesita ayuda?";
+"Proxy.MyProxiesVC.decisions" = "DECISIONES";
+"Proxy.MyProxiesVC.discussions" = "DISCUSIONES";
+"Proxy.MyProxiesVC.votingFreq" = "FREC. DE VOTACIÓN";
+"Proxy.MyProxiesVC.proxyRank" = "RANGO DE PROXY";
+"Proxy.UserIndexVC.members" = "MIEMBROS";
+"Proxy.UserIndexVC.proxyRank" = "RANGO DE PROXY";

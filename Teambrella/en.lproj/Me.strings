@@ -41,12 +41,14 @@
 "Me.Report.DateCell.title" = "INCIDENT DATE";
 "Me.Report.ExpensesCell.title" = "EXPENSES";
 "Me.Report.DescriptionCell.title" = "DESCRIBE YOUR CASE";
+"Me.Report.DescriptionCell.title-discussion" = "POST";
 "Me.Report.PhotosCell.title" = "PHOTOS";
 "Me.Report.WalletCell.title" = "REIMBURSE TO";
+"Me.Report.TitleCell.title" = "Title";
+"Me.Report.HeaderTitleCell.title" = "DISCUSSION";
 
 "Me.Report.ExpensesCell.deductibleTitle" = "DEDUCTIBLE";
 "Me.Report.ExpensesCell.coverageTitle" = "COVERAGE";
 "Me.Report.ExpensesCell.amountTitle" = "AMOUNT";
 
 "Me.Report.PhotosCell.buttonTitle" = "Add Photos";
-"Me.Report.TitleCell.title" = "Title";

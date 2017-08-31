@@ -17,13 +17,13 @@ struct ChatModelBuilder {
         for item in chatItems {
             let fragments = fragmentParser.parse(item: item)
             var isMy = false
-            service.session.currentUserID.map { isMy = item.userID == $0 }
+            service.session?.currentUserID.map { isMy = item.userID == $0 }
             
             let name: String
             let avatar: String
             if isMy == true {
                 name = "General.you".localized
-                avatar = service.session.currentUserAvatar
+                avatar = service.session?.currentUserAvatar ?? ""
             } else {
                 name = item.name
                 avatar = item.avatar

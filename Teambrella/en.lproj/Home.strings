@@ -34,3 +34,4 @@
 
 "Home.CoverageType.carCollisionDeductible"              = "Collision Deductible";
 "Home.CoverageType.pet"                                 = "Pet health";
+"Home.PrivateMessages.title"                            = "Inbox";

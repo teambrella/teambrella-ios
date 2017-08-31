@@ -36,7 +36,7 @@ struct UserIndexCellModel {
     init(json: JSON) {
         userID = json["UserId"].stringValue
         avatarString = json["Avatar"].stringValue
-        proxyRank = json["Commission"].doubleValue
+        proxyRank = json["ProxyRank"].doubleValue
         discussionFreq = json["DiscussionFreq"].double
         decisionFreq = json["DecisionFreq"].double
         location = json["Location"].stringValue

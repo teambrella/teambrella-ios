@@ -43,7 +43,7 @@ struct HomeCellBuilder {
             case .claim:
                 cell.avatarView.showImage(string: model.smallPhoto)
                 cell.leftNumberView.titleLabel.text = "CLAIMED"
-                cell.leftNumberView.currencyLabel.text = service.session.currentTeam?.currencySymbol ?? "?"
+                cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
                 cell.titleLabel.text = model.isMine ? "Your Claim": "Claim"
                 cell.rightNumberView.amountLabel.text = String(format: "%.0f", model.teamVote * 100)
                 cell.rightNumberView.currencyLabel.text = "%"
@@ -68,6 +68,7 @@ struct HomeCellBuilder {
             } else {
                 cell.unreadCountView.isHidden = true
             }
+            cell.rightNumberView.isBadgeVisible = model.isVoting
            
             if let date = model.itemDate {
                 cell.subtitleLabel.text = DateProcessor().stringInterval(from: date)

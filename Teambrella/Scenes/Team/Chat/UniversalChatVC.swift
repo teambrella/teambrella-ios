@@ -27,6 +27,7 @@ enum ChatContext {
     case feed(FeedEntity)
     case home(HomeScreenModel.Card)
     case chat(ChatModel)
+    case privateChat(PrivateChatUser)
     case none
 }
 
@@ -39,7 +40,7 @@ class UniversalChatVC: UIViewController, Routable {
     let dataSource = UniversalChatDatasource()
     
     public var endsEditingWhenTappingOnChatBackground = true
-        
+    
     var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
     var shouldScrollToBottom: Bool = true
     var isFirstRefresh: Bool = true
@@ -81,6 +82,7 @@ class UniversalChatVC: UIViewController, Routable {
         super.viewDidLayoutSubviews()
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 30)
+            layout.footerReferenceSize = CGSize(width: collectionView.bounds.width, height: 30)
         }
         dataSource.cloudWidth = cloudWidth
     }
@@ -136,8 +138,8 @@ class UniversalChatVC: UIViewController, Routable {
         input?.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
         input?.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
         if let socket = service.socket,
-            let teamID = service.session.currentTeam?.teamID,
-            let myID = service.session.currentUserID {
+            let teamID = service.session?.currentTeam?.teamID,
+            let myID = service.session?.currentUserID {
             input?.onTextChange = { [weak socket, weak self] in
                 guard let me = self else { return }
                 
@@ -204,7 +206,7 @@ class UniversalChatVC: UIViewController, Routable {
     
     func refreshNeeded(sender: UIRefreshControl) {
         if dataSource.hasPrevious {
-        dataSource.loadPrevious()
+            dataSource.loadPrevious()
         } else {
             sender.endRefreshing()
             sender.removeTarget(self, action: nil, for: .allEvents)
@@ -215,6 +217,9 @@ class UniversalChatVC: UIViewController, Routable {
     func registerCells() {
         collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
         collectionView.register(ChatTextCell.self, forCellWithReuseIdentifier: "Test")
+        collectionView.register(ChatFooter.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
+                                withReuseIdentifier: ChatFooter.cellID)
     }
     
     override func keyboardWillHide(notification: Notification) {
@@ -333,9 +338,16 @@ extension UniversalChatVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+        let view: UICollectionReusableView
+        if kind == UICollectionElementKindSectionHeader {
+            view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
                                                                    withReuseIdentifier: "Header",
                                                                    for: indexPath)
+        } else {
+            view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
+                                                                   withReuseIdentifier: ChatFooter.cellID,
+                                                                   for: indexPath)
+        }
         return view
     }
     
@@ -349,7 +361,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
         if indexPath.row > dataSource.count - dataSource.limit / 2 {
             dataSource.isLoadNextNeeded = true
         }
-
+        
         let model = dataSource[indexPath]
         if let cell = cell as? ChatTextCell, let model = model as? ChatTextCellModel {
             let size = cloudSize(for: indexPath)
@@ -364,6 +376,9 @@ extension UniversalChatVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
+        if let view = view as? ChatFooter {
+            view.label.text = "IS TYPING"
+        }
         
     }
     
@@ -403,6 +418,12 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: size.height)
         }
         return CGSize(width: collectionView.bounds.width - 32, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 30)
     }
     
 }

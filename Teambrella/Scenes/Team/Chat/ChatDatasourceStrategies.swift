@@ -24,7 +24,10 @@ import Foundation
 protocol ChatDatasourceStrategy {
     var title: String { get }
     var requestType: TeambrellaRequestType { get }
-    var createChatType: TeambrellaRequestType { get }
+//    var createChatType: TeambrellaRequestType { get }
+    var postType: TeambrellaRequestType { get }
+    var canLoadBackward: Bool { get }
+    
     func updatedChatBody(body: RequestBody) -> RequestBody
     func updatedMessageBody(body: RequestBody) -> RequestBody
 }
@@ -42,6 +45,8 @@ struct ChatStrategyFactory {
             return HomeChatStrategy(context: card)
         case let .chat(chatModel):
             return ChatStrategy(context: chatModel)
+        case let .privateChat(user):
+            return PrivateChatStrategy(context: user)
         case .none:
             return EmptyChatStrategy()
         }
@@ -51,7 +56,9 @@ struct ChatStrategyFactory {
 class EmptyChatStrategy: ChatDatasourceStrategy {
      var title: String = "Empty"
     var requestType: TeambrellaRequestType = .claimChat
-    var createChatType: TeambrellaRequestType = .newChat
+//    var createChatType: TeambrellaRequestType = .newChat
+    var postType: TeambrellaRequestType = .newPost
+    var canLoadBackward: Bool = false
     
     func updatedChatBody(body: RequestBody) -> RequestBody { return body }
     func updatedMessageBody(body: RequestBody) -> RequestBody { return body }
@@ -61,7 +68,9 @@ class EmptyChatStrategy: ChatDatasourceStrategy {
 class ClaimChatStrategy: ChatDatasourceStrategy {
     var title: String { return claim.name }
     var requestType: TeambrellaRequestType = .claimChat
-    var createChatType: TeambrellaRequestType = .newChat
+//    var createChatType: TeambrellaRequestType = .newChat
+    var postType: TeambrellaRequestType = .newPost
+    var canLoadBackward: Bool = true
     
     var claim: EnhancedClaimEntity
     
@@ -86,7 +95,9 @@ class ClaimChatStrategy: ChatDatasourceStrategy {
 class TeammateChatStrategy: ChatDatasourceStrategy {
     var title: String { return teammate.basic.name }
     var requestType: TeambrellaRequestType = .teammateChat
-    var createChatType: TeambrellaRequestType = .newChat
+//    var createChatType: TeambrellaRequestType = .newChat
+    var postType: TeambrellaRequestType = .newPost
+    var canLoadBackward: Bool = true
     
     var teammate: ExtendedTeammate
     
@@ -121,9 +132,11 @@ class FeedChatStrategy: ChatDatasourceStrategy {
             return .feedChat
         }
     }
-    var createChatType: TeambrellaRequestType = .newChat
+//    var createChatType: TeambrellaRequestType = .newChat
+    var postType: TeambrellaRequestType = .newPost
     
     var feedEntity: FeedEntity
+    var canLoadBackward: Bool = true
     
     init(context: FeedEntity) {
         feedEntity = context
@@ -135,7 +148,7 @@ class FeedChatStrategy: ChatDatasourceStrategy {
         case .claim:
             body.payload?["claimId"] = feedEntity.itemID
         case .teammate:
-            body.payload?["teamid"] = service.session.currentTeam?.teamID ?? 0
+            body.payload?["teamid"] = service.session?.currentTeam?.teamID ?? 0
             body.payload?["userid"] = feedEntity.itemUserID
         default:
              body.payload?["TopicId"] = feedEntity.topicID
@@ -164,7 +177,9 @@ class HomeChatStrategy: ChatDatasourceStrategy {
             return .feedChat
         }
     }
-    var createChatType: TeambrellaRequestType = .newChat
+//    var createChatType: TeambrellaRequestType = .newChat
+    var postType: TeambrellaRequestType = .newPost
+    var canLoadBackward: Bool = true
     
     var card: HomeScreenModel.Card
     
@@ -178,7 +193,7 @@ class HomeChatStrategy: ChatDatasourceStrategy {
         case .claim:
             body.payload?["claimId"] = card.itemID
         case .teammate:
-            body.payload?["teamid"] = service.session.currentTeam?.teamID ?? 0
+            body.payload?["teamid"] = service.session?.currentTeam?.teamID ?? 0
             body.payload?["userid"] = card.userID
         default:
             body.payload?["TopicId"] = card.topicID
@@ -198,7 +213,9 @@ class HomeChatStrategy: ChatDatasourceStrategy {
 class ChatStrategy: ChatDatasourceStrategy {
     var title: String { return chatModel.title }
     var requestType: TeambrellaRequestType { return .feedChat }
-    var createChatType: TeambrellaRequestType = .newChat
+//    var createChatType: TeambrellaRequestType = .newChat
+    var postType: TeambrellaRequestType = .newPost
+    var canLoadBackward: Bool = true
     
     var chatModel: ChatModel
     
@@ -219,4 +236,32 @@ class ChatStrategy: ChatDatasourceStrategy {
         return body
     }
     
+}
+
+class PrivateChatStrategy: ChatDatasourceStrategy {
+    var title: String { return user.name }
+    var requestType: TeambrellaRequestType { return .privateChat }
+//    var createChatType: TeambrellaRequestType = .newChat
+    var postType: TeambrellaRequestType = .newPrivatePost
+    var canLoadBackward: Bool = false
+    
+    var user: PrivateChatUser
+    
+    init(context: PrivateChatUser) {
+        user = context
+    }
+    
+    func updatedChatBody(body: RequestBody) -> RequestBody {
+        var body = body
+        body.payload?["UserId"] = user.id
+        body.payload?["avatarSize"] = nil
+        body.payload?["commentAvatarSize"] = nil
+        return body
+    }
+    
+    func updatedMessageBody(body: RequestBody) -> RequestBody {
+        var body = body
+        body.payload?["ToUserId"] = user.id
+        return body
+    }
 }

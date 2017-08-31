@@ -45,23 +45,27 @@ class NumberView: UIView, XIBInitable {
     
     var alignmentType: AlignmentType = .middle {
         didSet {
-            let constraints: [NSLayoutConstraint] = [leadingXConstraint, centerXConstraint, trailingXConstraint]
-            let idx: Int!
-            switch alignmentType {
-            case .leading:
-                idx = 0
-                titleLabel.textAlignment = .left
-            case .middle:
-                idx = 1
-                titleLabel.textAlignment = .center
-            case .trailing:
-                idx = 2
-                titleLabel.textAlignment = .right
-            }
-           NSLayoutConstraint.deactivate(constraints)
-            NSLayoutConstraint.activate([constraints[idx]])
-            setNeedsLayout()
+            activateAlignmentType()
         }
+    }
+    
+    func activateAlignmentType() {
+        let constraints: [NSLayoutConstraint] = [leadingXConstraint, centerXConstraint, trailingXConstraint]
+        let idx: Int!
+        switch alignmentType {
+        case .leading:
+            idx = 0
+            titleLabel.textAlignment = .left
+        case .middle:
+            idx = 1
+            titleLabel.textAlignment = .center
+        case .trailing:
+            idx = 2
+            titleLabel.textAlignment = .right
+        }
+        NSLayoutConstraint.deactivate(constraints)
+        NSLayoutConstraint.activate([constraints[idx]])
+        setNeedsLayout()
     }
     
     @IBInspectable
@@ -86,7 +90,8 @@ class NumberView: UIView, XIBInitable {
     }
     
     func tmpSetup() {
-        currencyLabel.text = service.session.cryptoCurrency.coinCode
+        currencyLabel.text = service.session?.cryptoCurrency.coinCode
+        activateAlignmentType()
     }
     
     override init(frame: CGRect) {

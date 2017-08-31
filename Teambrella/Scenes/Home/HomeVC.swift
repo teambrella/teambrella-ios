@@ -89,19 +89,30 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         switchToCurrentTeam()
         
         service.socket = SocketService()
+        addSwipeToLogout()
+    }
+    
+    func addSwipeToLogout() {
+        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeToLogout))
+        gesture.direction = UISwipeGestureRecognizerDirection.down
+        view.addGestureRecognizer(gesture)
+    }
+    
+    func swipeToLogout(sender: UISwipeGestureRecognizer) {
+        service.router.logout()
     }
     
     func switchToCurrentTeam() {
         HUD.show(.progress)
         dataSource = HomeDataSource()
-        if let teamID = service.session.currentTeam?.teamID {
+        if let teamID = service.session?.currentTeam?.teamID {
             dataSource.loadData(teamID: teamID)
         }
         
         dataSource.onUpdate = { [weak self] in
             self?.setup()
         }
-        guard let source = service.session.currentTeam?.teamLogo else { return }
+        guard let source = service.session?.currentTeam?.teamLogo else { return }
         
         UIImage.fetchAvatar(string: source,
                             width: Constant.teamIconWidth,
@@ -165,9 +176,9 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         guard let model = dataSource.model else { return }
         
-        service.session.currentUserID = model.userID
-        service.session.currentUserName = model.name
-        service.session.currentUserAvatar = model.avatar
+        service.session?.currentUserID = model.userID
+        service.session?.currentUserName = model.name
+        service.session?.currentUserAvatar = model.avatar
         
         UIImage.fetchAvatar(string: model.avatar) { image, error in
             guard let image = image else { return }
@@ -177,7 +188,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         leftBrickAmountLabel.text = String(format: "%.0f", model.coverage * 100)
         rightBrickAmountLabel.text = String.formattedNumber(model.balance * 1000)
-        rightBrickCurrencyLabel.text = service.session.cryptoCurrency.coinCode
+        rightBrickCurrencyLabel.text = service.session?.cryptoCurrency.coinCode
         
         greetingsTitleLabel.text = "Home.salutation".localized(dataSource.name)
         greetingsSubtitileLabel.text = "Home.subtitle".localized
@@ -236,7 +247,8 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     @IBAction func tapInbox(_ sender: UIButton) {
-        DeveloperTools.notSupportedAlert(in: self)
+        service.router.presentPrivateMessages()
+//        DeveloperTools.notSupportedAlert(in: self)
     }
     
     func tapChatWithSupport(_ sender: UIButton) {

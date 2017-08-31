@@ -30,7 +30,7 @@ class ReportItemCell: UICollectionViewCell, XIBInitableCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        avatarView.layer.cornerRadius = 3
     }
 
 }

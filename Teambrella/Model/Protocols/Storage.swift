@@ -29,9 +29,12 @@ protocol Storage {
     func requestTeamFeed(context: FeedRequestContext) -> Future<[FeedEntity]>
     // actual and potential teams
     func requestTeams() -> Future<TeamsModel>
+    func requestPrivateList(offset: Int, limit: Int, filter: String?) -> Future<[PrivateChatUser]>
+    
+    // MARK: Send data
+    
     func deleteCard(topicID: String) -> Future<HomeScreenModel>
     func setLanguage() -> Future<String>
-    
     func sendPhoto(data: Data) -> Future<String>
     
     func createNewClaim(model: NewClaimModel) -> Future<EnhancedClaimEntity>

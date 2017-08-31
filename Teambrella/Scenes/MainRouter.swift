@@ -164,6 +164,12 @@ final class MainRouter {
         }
     }
     
+    func presentPrivateMessages() {
+        guard let vc = PrivateMessagesVC.instantiate() as? PrivateMessagesVC else { fatalError("Error instantiating") }
+        
+        push(vc: vc)
+    }
+    
     // MARK: Present Modally
     
     func showChooseTeam(in viewController: UIViewController, delegate: ChooseYourTeamControllerDelegate) {
@@ -206,6 +212,23 @@ final class MainRouter {
      }
      }
      */
+    
+    // MARK: Other
+    
+    func logout() {
+        guard let navigator = navigator else { return }
+        
+        service.session = nil
+        Keychain.removeValue(forKey: .ethPrivateAddress)
+        ServerService.currentKeyType = .testUser
+        for vc in navigator.viewControllers {
+            if let vc = vc as? InitialVC {
+                navigator.popToViewController(vc, animated: true)
+                vc.isLoginNeeded = true
+                break
+            }
+        }
+    }
     
     func switchTeam() {
         let initial = navigator?.viewControllers.filter { $0 is InitialVC }.first

@@ -31,7 +31,7 @@ class ServicesHandler {
     lazy var router = MainRouter()
     var socket: SocketService?
     lazy var teambrella = TeambrellaService()
-    lazy var session = Session()
+    var session: Session?
     lazy var storage: Storage = LocalStorage()
     
     private init() {}

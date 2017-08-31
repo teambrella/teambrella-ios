@@ -130,10 +130,14 @@ class TeammateProfileDataSource {
             source.append(.dialogCompact)
             source.append(.voting)
         } else {
-            source.append(isMe ? .me : .summary)
+            if isMe {
+                source.append(.me)
+            } else {
+                source.append(.summary)
+            }
                 source.append(.object)
                 source.append(.stats)
-            if !socialItems.isEmpty {
+            if !socialItems.isEmpty && !isMe {
                 source.append(.contact)
             }
             if !isNewTeammate {

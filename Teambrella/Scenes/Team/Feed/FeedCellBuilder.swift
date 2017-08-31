@@ -34,13 +34,13 @@ struct FeedCellBuilder {
                 cell.avatarView.layer.masksToBounds = true
                 cell.avatarView.layer.cornerRadius = 4
             }
-            cell.avatarView.contentMode = .scaleToFill
+            cell.avatarView.contentMode = .scaleAspectFill
             cell.titleLabel.text = model.chatTitle
             cell.textLabel.text = model.text
             cell.facesStack.setAvatars(images: model.topPosterAvatars, label: nil, max: 4)
          
             if let date = model.itemDate {
-            cell.timeLabel.text = DateProcessor().stringInterval(from: date)
+            cell.timeLabel.text = DateProcessor().stringInterval(from: date).uppercased()
             }
             cell.unreadLabel.text = String(model.unreadCount)
             cell.unreadLabel.isHidden = model.unreadCount == 0

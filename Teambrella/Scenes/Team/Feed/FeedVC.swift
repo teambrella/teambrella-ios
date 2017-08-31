@@ -29,7 +29,7 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         static let headerHeight: CGFloat = 70
     }
 
-    var dataSource: FeedDataSource = FeedDataSource(teamID: service.session.currentTeam?.teamID ?? 0)
+    var dataSource: FeedDataSource = FeedDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
     
     @IBOutlet var collectionView: UICollectionView!
     

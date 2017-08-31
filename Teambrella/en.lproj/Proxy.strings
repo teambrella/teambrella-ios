@@ -17,7 +17,6 @@
 "Proxy.SortVC.Cell.Alphabetical.AZ" = "A-Z";
 "Proxy.SortVC.Cell.Alphabetical.ZA" = "Z-A";
 
-//--waiting--
 "Proxy.ProxyForVC.header" = "TOTAL COMMISSION";
 "Proxy.ProxyForVC.subtitle" = "WHO YOU'RE A PROXY FOR";
 "Proxy.ProxyForCellBuilder.lastVoted" = "LAST VOTED: ";

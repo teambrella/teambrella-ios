@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,13 +22,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="539" height="234"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNJ-eG-8Kn" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="0.0" width="42" height="21"/>
+                                <rect key="frame" x="20" y="0.0" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xYo-cw-Uez">
-                                <rect key="frame" x="20" y="27" width="373" height="45"/>
+                                <rect key="frame" x="20" y="26.5" width="373" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="gDN-vh-cht"/>
                                 </constraints>
@@ -37,7 +37,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9IJ-Kw-1v0">
-                                <rect key="frame" x="409" y="27" width="110" height="45"/>
+                                <rect key="frame" x="409" y="26.5" width="110" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="w3o-e9-AQj"/>
                                     <constraint firstAttribute="width" constant="110" id="wZA-n2-8ku"/>
@@ -47,8 +47,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sV-sB-xvS" customClass="NumberBar" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="539" height="140"/>
+                                <rect key="frame" x="0.0" y="93.5" width="539" height="65"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="65" id="XFX-eh-Rmz"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="count">
                                         <integer key="value" value="3"/>
@@ -62,7 +65,7 @@
                             <constraint firstItem="9IJ-Kw-1v0" firstAttribute="leading" secondItem="xYo-cw-Uez" secondAttribute="trailing" constant="16" id="0PC-8Q-9aH"/>
                             <constraint firstAttribute="trailing" secondItem="9IJ-Kw-1v0" secondAttribute="trailing" constant="20" id="111-q8-hxs"/>
                             <constraint firstAttribute="trailing" secondItem="0sV-sB-xvS" secondAttribute="trailing" id="2xM-3T-DJO"/>
-                            <constraint firstAttribute="bottom" secondItem="0sV-sB-xvS" secondAttribute="bottom" id="8Ux-ux-cz0"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0sV-sB-xvS" secondAttribute="bottom" id="8Ux-ux-cz0"/>
                             <constraint firstItem="aNJ-eG-8Kn" firstAttribute="top" secondItem="qAF-Qt-kZq" secondAttribute="top" id="PAL-0U-yAe"/>
                             <constraint firstItem="9IJ-Kw-1v0" firstAttribute="centerY" secondItem="xYo-cw-Uez" secondAttribute="centerY" id="RPs-xx-LO4"/>
                             <constraint firstItem="aNJ-eG-8Kn" firstAttribute="leading" secondItem="qAF-Qt-kZq" secondAttribute="leading" constant="20" id="cNc-cK-O3H"/>

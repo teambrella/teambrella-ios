@@ -23,12 +23,20 @@ import PKHUD
 import UIKit
 
 class InitialVC: UIViewController {
+    var isLoginNeeded: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Instantly move to product version
         //performSegue(type: .teambrella)
-        performSegue(type: .login)//getTeams()
+        //getTeams()
+        
+        if let address = Keychain.value(forKey: .ethPrivateAddress),
+            let keyType = ServerService.FakeKeyType(rawValue: address) {
+            ServerService.currentKeyType = keyType
+            isLoginNeeded = false
+            startLoadingTeams()
+        }
     }
     
     func getTeams() {
@@ -36,17 +44,18 @@ class InitialVC: UIViewController {
             service.storage.requestTeams().observe { [weak self] result in
                 switch result {
                 case let .value(teamsEntity):
+                    service.session = Session()
                     let lastTeam = teamsEntity.lastTeamID.map { id in
                         return teamsEntity.teams.filter { team in team.teamID == id } }?.first
                     if let lastTeam = lastTeam {
-                        service.session.currentTeam = lastTeam
+                        service.session?.currentTeam = lastTeam
                     } else if !teamsEntity.teams.isEmpty {
-                        service.session.currentTeam = teamsEntity.teams.first
+                        service.session?.currentTeam = teamsEntity.teams.first
                     }
-                    service.session.teams = teamsEntity.teams
-                    service.session.currentUserID = teamsEntity.userID
+                    service.session?.teams = teamsEntity.teams
+                    service.session?.currentUserID = teamsEntity.userID
                     self?.performSegue(type: .teambrella)
-                case let .error(error):
+                case .error:
                     break
                 }
             }
@@ -55,6 +64,10 @@ class InitialVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if isLoginNeeded {
+            performSegue(type: .login)
+            isLoginNeeded = false
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,12 +81,13 @@ class InitialVC: UIViewController {
         }
     }
     
-    @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
-        //        service.teambrella.fetcher.user.isFbAuthorized = true
-        //        service.teambrella.fetcher.save()
-        //        performSegue(type: .main)
+    func startLoadingTeams() {
         HUD.show(.progress)
         getTeams()
+    }
+    
+    @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
+        startLoadingTeams()
     }
     
     @IBAction func tapTeambrella(_ sender: Any) {

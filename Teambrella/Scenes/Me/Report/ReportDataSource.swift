@@ -42,60 +42,71 @@ struct ReportDataSource {
             items = [ItemReportCellModel(name: item.name, photo: item.photo, location: item.location),
                      DateReportCellModel(date: Date()),
                      ExpensesReportCellModel(expenses: 0, deductible: balance, coverage: coverage),
-                     DescriptionReportCellModel(text: ""),
+                     DescriptionReportCellModel(title: "Me.Report.DescriptionCell.title".localized, text: ""),
                      PhotosReportCellModel(photos: []),
                      WalletReportCellModel(text: "")]
         case .newChat:
-            items = [TitleReportCellModel(text: ""),
-                     DescriptionReportCellModel(text: "")]
+            items = [HeaderTitleReportCellModel(),
+                     TitleReportCellModel(text: ""),
+                     DescriptionReportCellModel(title: "Me.Report.DescriptionCell.title-discussion".localized,
+                                                text: "")]
         }
         
     }
     
     func reportModel(imageStrings: [String]) -> ReportModel? {
-        guard let teamID = service.session.currentTeam?.teamID else { fatalError("No current team") }
+        guard let teamID = service.session?.currentTeam?.teamID else { fatalError("No current team") }
         
         switch context {
         case .claim(item: _, coverage: _, balance: _):
-            var date: Date?
-            var expenses: Double?
-            var message: String?
-            var address: String?
-            for model in items {
-                if let model = model as? DateReportCellModel {
-                    date = model.date
-                } else if let model = model as? ExpensesReportCellModel {
-                    expenses = model.expenses
-                } else if let model = model as? DescriptionReportCellModel {
-                    message = model.text
-                } else if let model = model as? WalletReportCellModel {
-                    address = model.text
-                }
-            }
-            
-            if let date = date, let expenses = expenses, let message = message, let address = address {
-                let model = NewClaimModel(teamID: teamID,
-                                          incidentDate: date,
-                                          expenses: expenses,
-                                          text: message,
-                                          images: imageStrings,
-                                          address: address)
-                return model
-            }
+            return claimModel(imageStrings: imageStrings, teamID: teamID)
         case .newChat:
-            var title: String?
-            var text: String?
-            for model in items {
-                if let model = model as? TitleReportCellModel {
-                    title = model.text
-                } else if let model = model as? DescriptionReportCellModel {
-                    text = model.text
-                }
+            return newChatModel(teamID: teamID)
+        }
+    }
+    
+    func claimModel(imageStrings: [String], teamID: Int) -> NewClaimModel? {
+        var date: Date?
+        var expenses: Double?
+        var message: String?
+        var address: String?
+        for model in items {
+            if let model = model as? DateReportCellModel {
+                date = model.date
+            } else if let model = model as? ExpensesReportCellModel {
+                expenses = model.expenses
+            } else if let model = model as? DescriptionReportCellModel {
+                message = model.text
+            } else if let model = model as? WalletReportCellModel {
+                address = model.text
             }
-            
-            if let text = text, let title = title {
-                return NewChatModel(teamID: teamID, title: title, text: text)
+        }
+        
+        if let date = date, let expenses = expenses, let message = message, let address = address {
+            let model = NewClaimModel(teamID: teamID,
+                                      incidentDate: date,
+                                      expenses: expenses,
+                                      text: message,
+                                      images: imageStrings,
+                                      address: address)
+            return model
+        }
+        return nil
+    }
+    
+    func newChatModel(teamID: Int) -> NewChatModel? {
+        var title: String?
+        var text: String?
+        for model in items {
+            if let model = model as? TitleReportCellModel {
+                title = model.text
+            } else if let model = model as? DescriptionReportCellModel {
+                text = model.text
             }
+        }
+        
+        if let text = text, let title = title {
+            return NewChatModel(teamID: teamID, title: title, text: text)
         }
         return nil
     }

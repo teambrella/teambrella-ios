@@ -55,6 +55,10 @@ enum TeambrellaRequestType: String {
     case proxyFor = "proxy/getIAmProxyForList"
     case proxyPosition = "proxy/setMyProxyPosition"
     case proxyRatingList = "proxy/getRatingList"
+    
+    case privateChat = "privatemessage/getChat"
+    case privateList = "privatemessage/getList"
+    case newPrivatePost = "privatemessage/newMessage"
 }
 
 enum TeambrellaResponseType {
@@ -85,6 +89,9 @@ enum TeambrellaResponseType {
     case proxyFor([ProxyForCellModel], Double)
     case proxyPosition
     case proxyRatingList([UserIndexCellModel], Int)
+    
+    case privateList([PrivateChatUser])
+    case privateChat([ChatEntity])
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -205,6 +212,12 @@ struct TeambrellaRequest {
         case .proxyRatingList:
             let models = reply["Members"].arrayValue.map { UserIndexCellModel(json: $0) }
             success(.proxyRatingList(models, reply["TotalCount"].intValue))
+        case .privateList:
+            let users = reply.arrayValue.map { PrivateChatUser(json: $0) }
+            success(.privateList(users))
+        case .privateChat,
+             .newPrivatePost:
+            success(.privateChat(PrivateChatAdaptor(json: reply).adaptedMessages))
         default:
             break
         }

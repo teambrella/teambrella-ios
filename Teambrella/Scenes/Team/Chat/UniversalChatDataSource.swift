@@ -37,7 +37,7 @@ class UniversalChatDatasource {
     
     var count: Int { return chunks.reduce(0) { $0 + $1.count } }
     
-    var limit                         = 10
+    var limit                         = 100
     var lastRead: Int64               = 0 {
         didSet {
             if oldValue == 0 {
@@ -101,6 +101,7 @@ class UniversalChatDatasource {
     
     func addContext(context: ChatContext) {
         strategy = ChatStrategyFactory.strategy(with: context)
+        hasPrevious = strategy.canLoadBackward
     }
     
     func loadNext() {
@@ -142,10 +143,21 @@ class UniversalChatDatasource {
                                                 guard let me = me else { return }
                                                 
                                                 me.isLoading = false
-                                                me.process(response: response, isPrevious: previous)
+                                                me.process(response: response,
+                                                           isPrevious: previous,
+                                                           isMyNewMessage: false)
             })
             request.start()
         }
+    }
+    
+    func clear() {
+        cellModels.removeAll()
+        chunks.removeAll()
+        forwardOffset = 0
+        backwardOffset = 0
+        postsCount = 0
+        hasNext = true
     }
     
     func send(text: String, images: [String]) {
@@ -153,42 +165,57 @@ class UniversalChatDatasource {
         let body = strategy.updatedMessageBody(body: RequestBody(key: service.server.key, payload: ["text": text,
                                                                                                     "images": images]))
         
-        let request = TeambrellaRequest(type: .newPost, body: body, success: { [weak self] response in
+        let request = TeambrellaRequest(type: strategy.postType, body: body, success: { [weak self] response in
             guard let me = self else { return }
             
             me.hasNext = true
             me.isLoading = false
             me.onMessageSend?()
-            me.process(response: response, isPrevious: false)
+            me.process(response: response, isPrevious: false, isMyNewMessage: true)
         })
         request.start()
     }
     
-    private func process(response: TeambrellaResponseType, isPrevious: Bool) {
+    private func addModels(models: [ChatEntity], isPrevious: Bool) {
+        previousCount = postsCount
+        let currentPostsCount = models.count
+        postsCount += currentPostsCount
+        if isPrevious {
+            isLoadPreviousNeeded = false
+        } else {
+            isLoadNextNeeded = false
+            forwardOffset += currentPostsCount
+        }
+        
+        let models = createCellModels(from: models)
+        let chunk = ChatChunk(cellModels: models)
+        addChunk(chunk: chunk)
+    }
+    
+    private func process(response: TeambrellaResponseType, isPrevious: Bool, isMyNewMessage: Bool) {
         switch response {
         case let .chat(model):
-            previousCount = postsCount
-            let currentPostsCount = model.chat.count
-            postsCount += currentPostsCount
-            if isPrevious {
-                isLoadPreviousNeeded = false
-            } else {
-                isLoadNextNeeded = false
-                forwardOffset += currentPostsCount
-            }
-            
-            let models = createCellModels(from: model.chat)
-            let chunk = ChatChunk(cellModels: models)
-            addChunk(chunk: chunk)
-            
+            addModels(models: model.chat, isPrevious: isPrevious)
             claim?.update(with: model.basicPart)
-            
             if limit > model.chat.count {
                 if isPrevious {
                     hasPrevious = false
                 } else {
                     hasNext = false
                     lastRead = model.lastRead
+                }
+            }
+        case let .privateChat(messages):
+            if isMyNewMessage {
+                clear()
+            }
+            addModels(models: messages, isPrevious: isPrevious)
+            if limit > messages.count {
+                if isPrevious {
+                    hasPrevious = false
+                } else {
+                    hasNext = false
+                   // lastRead = model.lastRead
                 }
             }
         case let .newPost(post):

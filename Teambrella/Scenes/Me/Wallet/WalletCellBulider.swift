@@ -53,8 +53,8 @@ struct WalletCellBuilder {
             cell.numberBar.right?.amountLabel.text = String.formattedNumber(model.available * 1000)
             cell.numberBar.right?.isBadgeVisible = false
             cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
-            cell.currencyLabel.text = service.session.cryptoCurrency.coinCode
-            if let team = service.session.currentTeam {
+            cell.currencyLabel.text = service.session?.cryptoCurrency.coinCode
+            if let team = service.session?.currentTeam {
             cell.auxillaryAmount.text = team.currency + "?"
                 
             }
@@ -77,6 +77,7 @@ struct WalletCellBuilder {
             cell.imagesStack.setAvatars(images:  model.avatars)
             cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
             cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
+            cell.quantityLabel.text = String(model.avatars.count)
         }
     }
     

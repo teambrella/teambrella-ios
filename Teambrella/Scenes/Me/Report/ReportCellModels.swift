@@ -54,7 +54,7 @@ struct ExpensesReportCellModel: ReportCellModel {
 struct DescriptionReportCellModel: ReportCellModel {
     var cellReusableIdentifier: String { return ReportDescriptionCell.cellID }
     var preferredHeight: Float { return 170 }
-    let title = "Me.Report.DescriptionCell.title".localized
+    let title: String
     var text: String
     
 }
@@ -80,4 +80,10 @@ struct TitleReportCellModel: ReportCellModel {
     var preferredHeight: Float { return 80 }
     let title = "Me.Report.TitleCell.title".localized
     var text: String
+}
+
+struct HeaderTitleReportCellModel: ReportCellModel {
+    var cellReusableIdentifier: String { return ReportTitleCell.cellID }
+    var preferredHeight: Float { return 70 }
+    let title = "Me.Report.HeaderTitleCell.title".localized
 }

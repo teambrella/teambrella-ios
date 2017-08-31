@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PrivateChatUserCell" customModule="Teambrella" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="521" height="131"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="521" height="131"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7g-Pu-dk3">
+                        <rect key="frame" x="0.0" y="0.0" width="521" height="131"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Sa-p0-Xsq" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="16" y="16" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7Sa-p0-Xsq" secondAttribute="height" multiplier="1:1" id="ifp-Xg-VPm"/>
+                                    <constraint firstAttribute="width" constant="40" id="npg-MR-3Vu"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yG5-JP-yHd" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="72" y="20" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJz-n5-4W3" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="463" y="20" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="xit-9n-7Yg">
+                                <rect key="frame" x="497" y="98" width="8" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="D1e-Yh-8QT"/>
+                                    <constraint firstAttribute="width" constant="8" id="n3y-77-YSN"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rdo-pu-srj" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="459" y="93.5" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="3Oq-dm-Hlh"/>
+                                    <constraint firstAttribute="width" secondItem="Rdo-pu-srj" secondAttribute="height" multiplier="1:1" id="qRp-Cy-Y08"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="viewColor">
+                                        <color key="value" red="0.12156862745098039" green="0.75294117647058822" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9e-wx-iS9" customClass="MessageTextLabel" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="72" y="45" width="379" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBk-4h-eGc">
+                                <rect key="frame" x="16" y="130" width="505" height="1"/>
+                                <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="flz-eg-LPY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w9e-wx-iS9" firstAttribute="top" secondItem="yG5-JP-yHd" secondAttribute="bottom" constant="4" id="039-Jp-J5s"/>
+                            <constraint firstAttribute="trailing" secondItem="HJz-n5-4W3" secondAttribute="trailing" constant="16" id="8Db-Ff-c72"/>
+                            <constraint firstItem="7Sa-p0-Xsq" firstAttribute="top" secondItem="b7g-Pu-dk3" secondAttribute="top" constant="16" id="8fy-UP-TMo"/>
+                            <constraint firstItem="Rdo-pu-srj" firstAttribute="centerY" secondItem="xit-9n-7Yg" secondAttribute="centerY" id="AJE-tf-AXd"/>
+                            <constraint firstItem="w9e-wx-iS9" firstAttribute="leading" secondItem="yG5-JP-yHd" secondAttribute="leading" id="B6Y-nx-Nvw"/>
+                            <constraint firstItem="HJz-n5-4W3" firstAttribute="baseline" secondItem="yG5-JP-yHd" secondAttribute="baseline" id="BmP-Fb-3hT"/>
+                            <constraint firstItem="Rdo-pu-srj" firstAttribute="leading" secondItem="w9e-wx-iS9" secondAttribute="trailing" constant="8" id="Glb-rF-G78"/>
+                            <constraint firstItem="yG5-JP-yHd" firstAttribute="leading" secondItem="7Sa-p0-Xsq" secondAttribute="trailing" constant="16" id="KSG-xE-4vk"/>
+                            <constraint firstAttribute="bottom" secondItem="xit-9n-7Yg" secondAttribute="bottom" constant="20" id="Rby-gc-8IU"/>
+                            <constraint firstAttribute="bottom" secondItem="lBk-4h-eGc" secondAttribute="bottom" id="Wdd-Vg-UA5"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="w9e-wx-iS9" secondAttribute="bottom" constant="8" id="aLo-7w-bna"/>
+                            <constraint firstItem="7Sa-p0-Xsq" firstAttribute="leading" secondItem="b7g-Pu-dk3" secondAttribute="leading" constant="16" id="dlb-kG-Pm6"/>
+                            <constraint firstItem="lBk-4h-eGc" firstAttribute="leading" secondItem="b7g-Pu-dk3" secondAttribute="leading" constant="16" id="eFG-W6-UJW"/>
+                            <constraint firstItem="xit-9n-7Yg" firstAttribute="leading" secondItem="Rdo-pu-srj" secondAttribute="trailing" constant="16" id="fRt-Sq-o4x"/>
+                            <constraint firstItem="yG5-JP-yHd" firstAttribute="top" secondItem="b7g-Pu-dk3" secondAttribute="top" constant="20" id="gUK-Uq-dG8"/>
+                            <constraint firstAttribute="trailing" secondItem="lBk-4h-eGc" secondAttribute="trailing" id="i95-CG-GKT"/>
+                            <constraint firstAttribute="trailing" secondItem="xit-9n-7Yg" secondAttribute="trailing" constant="16" id="s3H-h9-P7E"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="b7g-Pu-dk3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5qR-Ch-i7F"/>
+                <constraint firstAttribute="trailing" secondItem="b7g-Pu-dk3" secondAttribute="trailing" id="isk-u6-fRT"/>
+                <constraint firstItem="b7g-Pu-dk3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="pYh-y4-i9E"/>
+                <constraint firstAttribute="bottom" secondItem="b7g-Pu-dk3" secondAttribute="bottom" id="xUa-Q6-DsB"/>
+            </constraints>
+            <size key="customSize" width="521" height="131"/>
+            <connections>
+                <outlet property="avatarView" destination="7Sa-p0-Xsq" id="20Y-B1-Eyq"/>
+                <outlet property="messageLabel" destination="w9e-wx-iS9" id="iPM-RY-d5Q"/>
+                <outlet property="nameLabel" destination="yG5-JP-yHd" id="LDs-jg-chI"/>
+                <outlet property="timeLabel" destination="HJz-n5-4W3" id="Lp8-GQ-fHV"/>
+                <outlet property="unreadCountView" destination="Rdo-pu-srj" id="fjF-31-oWn"/>
+            </connections>
+            <point key="canvasLocation" x="371.5" y="94.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="forward" width="8" height="13"/>
+    </resources>
+</document>
