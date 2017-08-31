@@ -139,8 +139,11 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="allVotesContainer" destination="NrW-VP-GwY" id="vqJ-9n-gpp"/>
                 <outlet property="allVotesLabel" destination="N0O-a7-bB7" id="Zgw-QT-U2H"/>
+                <outlet property="cashFlowContainer" destination="MZ6-FO-fBc" id="eYV-ch-cnz"/>
                 <outlet property="cashFlowLabel" destination="q5N-Bn-97W" id="fwk-y4-nnV"/>
+                <outlet property="transactionsContainer" destination="FDR-bi-3TH" id="pkQ-ph-PJf"/>
                 <outlet property="transactionsLabel" destination="As0-MQ-PyZ" id="4BW-SI-iZW"/>
             </connections>
         </collectionViewCell>

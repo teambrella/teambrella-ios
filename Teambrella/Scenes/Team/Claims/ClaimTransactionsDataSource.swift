@@ -14,7 +14,7 @@ class ClaimTransactionsDataSource {
     let teamID: Int
     let claimID: Int
     let limit: Int = 100
-    var search: String = "Cleopatra"
+    var search: String = ""
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
@@ -39,8 +39,8 @@ class ClaimTransactionsDataSource {
             let body = RequestBody(key: key, payload:["TeamId": teamId,
                                                       "ClaimId": claimId,
                                                       "Limit": limit,
-                                                      "Offset": offset,
-                                                      "Search": search])
+                                                      "Offset": offset
+                                                      /*"Search": search*/])
             let request = TeambrellaRequest(type: .claimTransactions, body: body, success: { [weak self] response in
                 if case .claimTransactions(let transactions) = response {
                     self?.items += transactions

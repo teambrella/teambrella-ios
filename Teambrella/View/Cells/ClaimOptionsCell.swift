@@ -23,15 +23,24 @@ import UIKit
 
 class ClaimOptionsCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var allVotesLabel: Label!
+    @IBOutlet var allVotesContainer: UIView!
     @IBOutlet var cashFlowLabel: Label!
+    @IBOutlet var cashFlowContainer: UIView!
     @IBOutlet var transactionsLabel: Label!
+    @IBOutlet var transactionsContainer: UIView!
     
-    var tapRecognizer = UITapGestureRecognizer()
-    
+    var tapAllVotesRecognizer = UITapGestureRecognizer()
+    var tapCashFlowRecognizer = UITapGestureRecognizer()
+    var tapTransactionsRecognizer = UITapGestureRecognizer()
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        transactionsLabel.addGestureRecognizer(tapRecognizer)
-        transactionsLabel.isUserInteractionEnabled = true
+        allVotesContainer.addGestureRecognizer(tapAllVotesRecognizer)
+        allVotesContainer.isUserInteractionEnabled = true
+        cashFlowContainer.addGestureRecognizer(tapCashFlowRecognizer)
+        cashFlowContainer.isUserInteractionEnabled = true
+        transactionsContainer.addGestureRecognizer(tapTransactionsRecognizer)
+        transactionsContainer.isUserInteractionEnabled = true
     }
 
 }

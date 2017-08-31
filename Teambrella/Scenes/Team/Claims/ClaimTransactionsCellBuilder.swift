@@ -16,6 +16,7 @@ struct ClaimTransactionsCellBuilder {
             cell.txNumberLabel.text = model.txID
             cell.cryptoAmountLabel.text = String(model.amountCrypto)
             cell.fiatAmountLabel.text = String(model.amountFiat)
+            cell.container.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         }
     }
 

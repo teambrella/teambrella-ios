@@ -137,8 +137,8 @@ struct ClaimCellBuilder {
         cell.allVotesLabel.text = "Team.TeammateCell.allVotes".localized
         cell.cashFlowLabel.text = "Team.TeammateCell.cashFlow".localized
         cell.transactionsLabel.text = "Team.TeammateCell.transactions".localized
-        cell.tapRecognizer.removeTarget(delegate, action: nil)
-        cell.tapRecognizer.addTarget(delegate, action: #selector(ClaimVC.tapTransactions))
+        cell.tapTransactionsRecognizer.removeTarget(delegate, action: nil)
+        cell.tapTransactionsRecognizer.addTarget(delegate, action: #selector(ClaimVC.tapTransactions))
     }
     
 }

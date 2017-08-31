@@ -516,7 +516,7 @@
         <!--Claim TransactionsVC-->
         <scene sceneID="sZG-Pj-T15">
             <objects>
-                <viewController id="rcz-DF-KOM" customClass="ClaimTransactionsVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClaimTransactionsVC" id="rcz-DF-KOM" customClass="ClaimTransactionsVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wbl-xw-5gf"/>
                         <viewControllerLayoutGuide type="bottom" id="2zY-uh-Wxc"/>
