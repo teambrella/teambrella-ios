@@ -9,8 +9,8 @@
 import UIKit
 
 class ClaimTransactionsVC: UIViewController, Routable {
-    var teamID: Int = 0
-    var claimID: Int = 0
+    var teamID: Int?
+    var claimID: Int?
     var dataSource: ClaimTransactionsDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0
     
@@ -19,6 +19,8 @@ class ClaimTransactionsVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(ClaimTransactionCell.nib, forCellWithReuseIdentifier: ClaimTransactionCell.cellID)
+        guard let teamID = teamID, let claimID = claimID else { return }
+        
         dataSource = ClaimTransactionsDataSource(teamID: teamID, claimID: claimID)
 
     }

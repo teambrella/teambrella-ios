@@ -33,7 +33,7 @@ struct ClaimCellBuilder {
         } else if let cell = cell as? ClaimDetailsCell {
             populateClaimDetails(cell: cell, with: claim)
         } else if let cell = cell as? ClaimOptionsCell {
-            populateClaimOptions(cell: cell, with: claim)
+            populateClaimOptions(cell: cell, with: claim, delegate: delegate)
         }
     }
     
@@ -133,10 +133,12 @@ struct ClaimCellBuilder {
         claim.incidentDate.map { cell.incidentDateValueLabel.text = DateFormatter.teambrellaShort.string(from: $0) }
     }
     
-    static func populateClaimOptions(cell: ClaimOptionsCell, with claim: EnhancedClaimEntity) {
+    static func populateClaimOptions(cell: ClaimOptionsCell, with claim: EnhancedClaimEntity, delegate: ClaimVC) {
         cell.allVotesLabel.text = "Team.TeammateCell.allVotes".localized
         cell.cashFlowLabel.text = "Team.TeammateCell.cashFlow".localized
         cell.transactionsLabel.text = "Team.TeammateCell.transactions".localized
+        cell.tapRecognizer.removeTarget(delegate, action: nil)
+        cell.tapRecognizer.addTarget(delegate, action: #selector(ClaimVC.tapTransactions))
     }
     
 }

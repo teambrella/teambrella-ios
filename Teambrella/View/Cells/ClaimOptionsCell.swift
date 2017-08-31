@@ -30,16 +30,8 @@ class ClaimOptionsCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        tapRecognizer = UITapGestureRecognizer(target: transactionsLabel,
-                                               action: #selector(showTransactions))
         transactionsLabel.addGestureRecognizer(tapRecognizer)
-    }
-    
-    func showTransactions() {
-        //if sender.state == .ended {
-            print("tap trnss")
-            //service.router.presentClaimTransactionsList(teamID: <#T##Int#>, claimID: <#T##Int#>)
-        //}
+        transactionsLabel.isUserInteractionEnabled = true
     }
 
 }
