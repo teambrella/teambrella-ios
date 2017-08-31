@@ -11,6 +11,7 @@ import UIKit
 class ClaimTransactionsVC: UIViewController, Routable {
     
     static let storyboardName = "Claims"
+    var navigationLabel: UILabel?
     
     var teamID: Int?
     var claimID: Int?
@@ -21,13 +22,16 @@ class ClaimTransactionsVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTransparentNavigationBar()
-        defaultGradientOnTop()
+        addGradientNavBar()
+        title = "Team.Claims.ClaimTransactionsVC.title".localized
         automaticallyAdjustsScrollViewInsets = false
         collectionView.register(ClaimTransactionCell.nib, forCellWithReuseIdentifier: ClaimTransactionCell.cellID)
         guard let teamID = teamID, let claimID = claimID else { return }
         
         dataSource = ClaimTransactionsDataSource(teamID: teamID, claimID: claimID)
+        dataSource.onUpdate = { [weak self] in
+            self?.collectionView.reloadData()
+        }
         dataSource.loadData()
     }
 }

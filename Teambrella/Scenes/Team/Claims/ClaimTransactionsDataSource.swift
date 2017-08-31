@@ -15,6 +15,9 @@ class ClaimTransactionsDataSource {
     let claimID: Int
     let limit: Int = 100
     var search: String = ""
+    var isLoading: Bool = false
+    var hasMore: Bool = true
+    var canLoad: Bool { return hasMore && !isLoading }
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
@@ -30,6 +33,9 @@ class ClaimTransactionsDataSource {
     }
     
     func loadData() {
+        guard canLoad else { return }
+        
+        isLoading = true
         service.server.updateTimestamp { [weak self] timestamp, error in
             let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
@@ -43,10 +49,13 @@ class ClaimTransactionsDataSource {
                                                       /*"Search": search*/])
             let request = TeambrellaRequest(type: .claimTransactions, body: body, success: { [weak self] response in
                 if case .claimTransactions(let transactions) = response {
+                    self?.hasMore = (transactions.count == limit)
                     self?.items += transactions
+                    self?.isLoading = false
                     self?.onUpdate?()
                 }
                 }, failure: { [weak self] error in
+                    self?.isLoading = false
                     self?.onError?(error)
             })
             request.start()

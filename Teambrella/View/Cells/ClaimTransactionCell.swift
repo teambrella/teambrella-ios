@@ -12,13 +12,15 @@ class ClaimTransactionCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var container: UIView!
     @IBOutlet var avatar: RoundBadgedView!
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var txNumberLabel: UILabel!
+    @IBOutlet var amountCrypto: UILabel!
     @IBOutlet var cryptoAmountLabel: UILabel!
+    @IBOutlet var amountFiat: UILabel!
     @IBOutlet var fiatAmountLabel: UILabel!
+    @IBOutlet var status: UILabel!
+    @IBOutlet var statusLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
     }
 
 }

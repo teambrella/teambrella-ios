@@ -13,11 +13,14 @@ struct ClaimTransactionsCellBuilder {
         if let cell = cell as? ClaimTransactionCell {
             cell.avatar.showAvatar(string: model.avatarString)
             cell.nameLabel.text = model.name
-            cell.txNumberLabel.text = model.txID
-            cell.cryptoAmountLabel.text = String(model.amountCrypto)
+            cell.amountCrypto.text = "Team.Claims.ClaimTransactionsVC.amountCrypto".localized
+            guard let session = service.session else { return }
+            
+            cell.cryptoAmountLabel.text = String(model.amountCrypto * 1000) + " " + session.coinName
+            cell.amountFiat.text = "Team.Claims.ClaimTransactionsVC.amountFiat".localized
             cell.fiatAmountLabel.text = String(model.amountFiat)
-            cell.container.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+            cell.status.text = "Team.Claims.ClaimTransactionsVC.status".localized
+            cell.statusLabel.text = String(model.status)
         }
     }
-
 }
