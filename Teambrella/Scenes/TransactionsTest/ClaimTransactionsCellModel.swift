@@ -1,5 +1,5 @@
 //
-//  TransactionCellModel.swift
+//  ClaimTransactionCellModel.swift
 //  Teambrella
 //
 //  Created by Екатерина Рыжова on 29.08.17.
@@ -9,12 +9,12 @@
 import Foundation
 import SwiftyJSON
 
-struct TransactionCellModel {
+struct ClaimTransactionsCellModel {
     let txID: String
     let userID: String
     let avatarString: String
     let name: String
-    let amountBtc: Double
+    let amountCrypto: Double
     let amountFiat: Double
     let status: Int
     
@@ -23,7 +23,7 @@ struct TransactionCellModel {
         userID = json["UserId"].stringValue
         avatarString = json["Avatar"].stringValue
         name = json["Name"].stringValue
-        amountBtc = json["AmountBtc"].doubleValue
+        amountCrypto = json["AmountBtc"].doubleValue
         amountFiat = json["AmountFiat"].doubleValue
         status = json["Status"].intValue
     }
