@@ -108,7 +108,7 @@ class ClaimVC: UIViewController, Routable {
             secondLabel.text = DateFormatter.teambrellaShort.string(from: date)
             secondLabel.sizeToFit()
             secondLabel.center = CGPoint(x: navigationBar.bounds.midX,
-                                        y: navigationBar.bounds.midY + secondLabel.frame.height / 2)
+                                         y: navigationBar.bounds.midY + secondLabel.frame.height / 2)
             navigationBottomLabel = secondLabel
             
             navigationBar.addSubview(secondLabel)
@@ -141,7 +141,7 @@ class ClaimVC: UIViewController, Routable {
             if let lastUpdate = self?.lastUpdatedVote {
                 let difference = Date().timeIntervalSince(lastUpdate)
                 if difference > 0.99 {
-                self?.lastUpdatedVote = nil
+                    self?.lastUpdatedVote = nil
                     self?.dataSource.updateVoteOnServer(vote: slider.value)
                 }
             }
@@ -159,6 +159,15 @@ class ClaimVC: UIViewController, Routable {
         }
         cell.yourVotePercentValue.alpha = 0.5
         cell.yourVoteAmount.alpha = 0.5
+    }
+    
+    func tapTransactions(sender: UITapGestureRecognizer) {
+        print("\ntap Transactions\n")
+        guard let session = service.session?.currentTeam?.teamID, let claimID = self.claimID else { return }
+        
+        guard let id = Int(claimID) else { return }
+        
+        service.router.presentClaimTransactionsList(teamID: session, claimID: id)
     }
     
 }
@@ -231,9 +240,9 @@ extension ClaimVC: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.bounds.width, height: 1)
     }
     
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: collectionView.bounds.width, height: 100)
-//    }
+    //    func collectionView(_ collectionView: UICollectionView,
+    //                        layout collectionViewLayout: UICollectionViewLayout,
+    //                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+    //        return CGSize(width: collectionView.bounds.width, height: 100)
+    //    }
 }

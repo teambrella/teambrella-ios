@@ -141,3 +141,8 @@
 "Team.Teammate.Footer.MemberSince" = "Member since %@";
 
 "Team.FeedVC.startDiscussionButton.title" = "Start Discussion";
+
+"Team.Claims.ClaimTransactionsVC.title" = "Transactions";
+"Team.Claims.ClaimTransactionsVC.amountCrypto" = "Amount Crypto";
+"Team.Claims.ClaimTransactionsVC.amountFiat" = "Amount Fiat";
+"Team.Claims.ClaimTransactionsVC.status" = "Status";
