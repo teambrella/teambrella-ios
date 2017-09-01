@@ -38,6 +38,7 @@ class UniversalChatVC: UIViewController, Routable {
     @IBOutlet var collectionView: UICollectionView!
     
     let dataSource = UniversalChatDatasource()
+    var socketToken = "UniversalChat"
     
     public var endsEditingWhenTappingOnChatBackground = true
     
@@ -45,7 +46,13 @@ class UniversalChatVC: UIViewController, Routable {
     var shouldScrollToBottom: Bool = true
     var isFirstRefresh: Bool = true
     
+    var showIsTyping: Bool = false {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     private var lastTypingDate: Date = Date()
+    var typingUsers: [String: Date] = [:]
     
     // MARK: Lifecycle
     
@@ -66,11 +73,34 @@ class UniversalChatVC: UIViewController, Routable {
         dataSource.isLoadNextNeeded = true
         title = dataSource.title
         
-        service.socket?.add(listener: self, action: { [weak self] action in
-            print("Received socket action: \(action)")
-            self?.dataSource.hasNext = true
-            self?.dataSource.loadNext()
+        service.socket?.add(listener: socketToken, action: { [weak self] action in
+            switch action.command {
+            case .typing:
+                self?.receivedIsTyping(action: action)
+            case .post:
+                self?.showIsTyping = false
+                self?.dataSource.hasNext = true
+                self?.dataSource.loadNext()
+            default:
+                break
+            }
         })
+    }
+    
+    func receivedIsTyping(action: SocketAction) {
+        print("Received socket action: \(action)")
+        guard let name = action.name else { return }
+        
+        showIsTyping = true
+        typingUsers[name] = Date()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            guard let `self` = self else { return }
+            
+            if Date().timeIntervalSince(self.lastTypingDate) > 3 {
+                self.showIsTyping = false
+                self.typingUsers.removeAll()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,7 +128,7 @@ class UniversalChatVC: UIViewController, Routable {
     }
     
     deinit {
-        service.socket?.remove(listener: self)
+        service.socket?.remove(listener: socketToken)
     }
     
     override var inputAccessoryView: UIView? { return input }
@@ -145,7 +175,7 @@ class UniversalChatVC: UIViewController, Routable {
                 
                 let interval = me.lastTypingDate.timeIntervalSinceNow
                 if interval < -2 {
-                    socket?.typing(teamID: teamID, teammateID: myID)
+                    socket?.typing(teamID: teamID, teammateID: myID, name: service.session?.currentUserName)
                     self?.lastTypingDate = Date()
                 }
             }
@@ -377,7 +407,21 @@ extension UniversalChatVC: UICollectionViewDelegate {
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
         if let view = view as? ChatFooter {
-            view.label.text = "IS TYPING"
+            var text = ""
+            for user in typingUsers.keys {
+                guard let date = typingUsers[user] else { continue }
+                
+                if Date().timeIntervalSince(date) < 3 {
+                    if text != "" { text += ", " }
+                    text += user
+                } else {
+                    typingUsers[user] = nil
+                }
+            }
+            text += typingUsers.count > 1 ? " ARE" :" IS"
+            text += " TYPING"
+            view.label.text =  text
+            view.hide(!showIsTyping)
         }
         
     }

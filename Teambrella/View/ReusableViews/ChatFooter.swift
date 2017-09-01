@@ -10,10 +10,16 @@ import UIKit
 
 class ChatFooter: UICollectionReusableView, XIBInitableCell {
     @IBOutlet var label: Label!
+    @IBOutlet var isTypingView: IsTypingView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func hide(_ hide: Bool) {
+        label.isHidden = hide
+        isTypingView.isHidden = hide
     }
     
 }

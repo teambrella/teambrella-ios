@@ -28,9 +28,11 @@ struct SocketAction: CustomStringConvertible {
     let teamID: Int
     let teammateID: Int
     let topicID: String?
+    let name: String?
     
-    var description: String { return "Socket action: \(command); team: \(teamID); teammate: \(teammateID)" }
-    var socketString: String { return "\(command.rawValue);\(teamID);\(teammateID)" }
+    var description: String { return "Socket action: \(command); team: \(teamID); teammate: \(teammateID)"
+    + "; \(topicID ?? "no topic"); \(name ?? "no name")"}
+    var socketString: String { return "\(command.rawValue);\(teamID);\(teammateID);\(topicID ?? "");\(name ?? "")" }
     
     init?(string: String) {
         let array = string.components(separatedBy: ";")
@@ -44,13 +46,15 @@ struct SocketAction: CustomStringConvertible {
         self.teamID = teamID
         self.teammateID = Int(array[2]) ?? 0
         self.topicID = array.count > 3 ? array[3] : nil
+        self.name = array.count > 4 ? array[4] : nil
     }
     
-    init(command: SocketCommand, teamID: Int, teammateID: Int, topicID: String? = nil) {
+    init(command: SocketCommand, teamID: Int, teammateID: Int, topicID: String? = nil, name: String? = nil) {
         self.command = command
         self.teamID = teamID
         self.teammateID = teammateID
         self.topicID = topicID
+        self.name = name
     }
     
 }
@@ -123,8 +127,8 @@ class SocketService {
         send(action: action)
     }
     
-    func typing(teamID: Int, teammateID: Int) {
-        let action = SocketAction(command: .typing, teamID: teamID, teammateID: teammateID)
+    func typing(teamID: Int, teammateID: Int, name: String?) {
+        let action = SocketAction(command: .typing, teamID: teamID, teammateID: teammateID, name: name)
         send(action: action)
     }
     
