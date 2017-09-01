@@ -30,6 +30,7 @@ struct TeamEntity {
     }
     
     var teamID: Int { return json["TeamId"].intValue }
+    var teammateID: Int { return json["MyTeammateId"].intValue }
     var teamType: Int { return json["TeamType"].intValue }
     var teamName: String { return json["TeamName"].stringValue }
     var teamLogo: String { return json["TeamLogo"].stringValue }

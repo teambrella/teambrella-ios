@@ -27,6 +27,7 @@ struct Session {
     
     // TMP: my user properties
     var currentUserID: String?
+    var currentUserTeammateID: Int? { return currentTeam?.teammateID }
     var currentUserName: String?
     var currentUserAvatar: String = ""
     

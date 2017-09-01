@@ -139,7 +139,7 @@ class UniversalChatVC: UIViewController, Routable {
         input?.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
         if let socket = service.socket,
             let teamID = service.session?.currentTeam?.teamID,
-            let myID = service.session?.currentUserID {
+            let myID = service.session?.currentUserTeammateID {
             input?.onTextChange = { [weak socket, weak self] in
                 guard let me = self else { return }
                 

@@ -26,7 +26,7 @@ typealias SocketListenerAction = (SocketAction) -> Void
 struct SocketAction: CustomStringConvertible {
     let command: SocketCommand
     let teamID: Int
-    let teammateID: String
+    let teammateID: Int
     let topicID: String?
     
     var description: String { return "Socket action: \(command); team: \(teamID); teammate: \(teammateID)" }
@@ -42,11 +42,11 @@ struct SocketAction: CustomStringConvertible {
         
         self.command = command
         self.teamID = teamID
-        self.teammateID = array[2]
+        self.teammateID = Int(array[2]) ?? 0
         self.topicID = array.count > 3 ? array[3] : nil
     }
     
-    init(command: SocketCommand, teamID: Int, teammateID: String, topicID: String? = nil) {
+    init(command: SocketCommand, teamID: Int, teammateID: Int, topicID: String? = nil) {
         self.command = command
         self.teamID = teamID
         self.teammateID = teammateID
@@ -118,12 +118,12 @@ class SocketService {
         socket.disconnect()
     }
     
-    func auth(teamID: Int, teammateID: String) {
+    func auth(teamID: Int, teammateID: Int) {
         let action = SocketAction(command: .auth, teamID: teamID, teammateID: teammateID)
         send(action: action)
     }
     
-    func typing(teamID: Int, teammateID: String) {
+    func typing(teamID: Int, teammateID: Int) {
         let action = SocketAction(command: .typing, teamID: teamID, teammateID: teammateID)
         send(action: action)
     }
@@ -137,7 +137,7 @@ extension SocketService: WebSocketDelegate {
             send(string: message)
             unsentMessage = nil
         } else if let teamID = service.session?.currentTeam?.teamID,
-            let teammateID = service.session?.currentUserID {
+            let teammateID = service.session?.currentUserTeammateID {
             auth(teamID: teamID, teammateID: teammateID)
         }
     }
