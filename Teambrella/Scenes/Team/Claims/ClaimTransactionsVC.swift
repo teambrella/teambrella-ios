@@ -23,7 +23,6 @@ class ClaimTransactionsVC: UIViewController, Routable {
         super.viewDidLoad()
         addGradientNavBar()
         title = "Team.Claims.ClaimTransactionsVC.title".localized
-        //automaticallyAdjustsScrollViewInsets = false
         collectionView.register(ClaimTransactionCell.nib, forCellWithReuseIdentifier: ClaimTransactionCell.cellID)
         guard let teamID = teamID, let claimID = claimID else { return }
         

@@ -22,7 +22,6 @@ class WalletTransactionsVC: UIViewController, Routable {
         super.viewDidLoad()
         addGradientNavBar()
         title = "Me.WalletVC.WalletTransactionsVC.title".localized
-       // automaticallyAdjustsScrollViewInsets = false
         collectionView.register(WalletTransactionCell.nib, forCellWithReuseIdentifier: WalletTransactionCell.cellID)
         guard let teamID = teamID else { return }
         

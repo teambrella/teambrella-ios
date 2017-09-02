@@ -505,6 +505,10 @@
                                         </view>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="YU6-WL-eTk" id="gq8-JW-VVd"/>
+                                    <outlet property="delegate" destination="YU6-WL-eTk" id="h49-72-qRB"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
