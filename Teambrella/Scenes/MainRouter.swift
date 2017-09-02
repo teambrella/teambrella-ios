@@ -74,7 +74,7 @@ final class MainRouter {
     
     func switchToCoverage() {
         if let vc = switchTab(to: .me) as? ButtonBarPagerTabStripViewController {
-            vc.moveToViewController(at: 0, animated: false)
+            vc.moveToViewController(at: 1, animated: false)
         }
     }
     
