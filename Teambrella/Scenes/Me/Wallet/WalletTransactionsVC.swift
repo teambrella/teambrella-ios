@@ -13,7 +13,6 @@ class WalletTransactionsVC: UIViewController, Routable {
     static let storyboardName = "Me"
     
     var teamID: Int?
-    var claimID: Int?
     var dataSource: WalletTransactionsDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0
 
@@ -22,12 +21,12 @@ class WalletTransactionsVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
-        title = "Me.Wallet.WalletTransactionsVC.title".localized
-        automaticallyAdjustsScrollViewInsets = false
+        title = "Me.WalletVC.WalletTransactionsVC.title".localized
+       // automaticallyAdjustsScrollViewInsets = false
         collectionView.register(WalletTransactionCell.nib, forCellWithReuseIdentifier: WalletTransactionCell.cellID)
-        guard let teamID = teamID, let claimID = claimID else { return }
+        guard let teamID = teamID else { return }
         
-        dataSource = WalletTransactionsDataSource(teamID: teamID, claimID: claimID)
+        dataSource = WalletTransactionsDataSource(teamID: teamID)
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
         }

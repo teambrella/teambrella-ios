@@ -33,17 +33,17 @@ struct WalletCellBuilder {
                             indexPath: IndexPath,
                             for model: WalletCellModel) -> UICollectionViewCell {
         if model is WalletHeaderCellModel {
-           return collectionView.dequeueReusableCell(withReuseIdentifier: WalletHeaderCell.cellID, for: indexPath)
+            return collectionView.dequeueReusableCell(withReuseIdentifier: WalletHeaderCell.cellID, for: indexPath)
         } else if model is WalletButtonsCellModel {
             return collectionView.dequeueReusableCell(withReuseIdentifier: WalletButtonsCell.cellID, for: indexPath)
         } else if model is WalletFundingCellModel {
-           return collectionView.dequeueReusableCell(withReuseIdentifier: WalletFundingCell.cellID, for: indexPath)
+            return collectionView.dequeueReusableCell(withReuseIdentifier: WalletFundingCell.cellID, for: indexPath)
         } else {
             fatalError("Unknown model type for Wallet Cell")
         }
     }
     
-    static func populate(cell: UICollectionViewCell, with model: WalletCellModel) {
+    static func populate(cell: UICollectionViewCell, with model: WalletCellModel, delegate: WalletVC) {
         if let cell = cell as? WalletHeaderCell, let model = model as? WalletHeaderCellModel {
             cell.amount.text = String.formattedNumber(model.amount * 1000)
             cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
@@ -55,7 +55,7 @@ struct WalletCellBuilder {
             cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
             cell.currencyLabel.text = service.session?.cryptoCurrency.coinCode
             if let team = service.session?.currentTeam {
-            cell.auxillaryAmount.text = team.currency + "?"
+                cell.auxillaryAmount.text = team.currency + "?"
                 
             }
         }
@@ -78,6 +78,8 @@ struct WalletCellBuilder {
             cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
             cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
             cell.quantityLabel.text = String(model.avatars.count)
+            cell.tapMiddleViewRecognizer.removeTarget(delegate, action: nil)
+            cell.tapMiddleViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapTransactions))
         }
     }
     

@@ -84,7 +84,7 @@ enum TeambrellaResponseType {
     case teamFeed([FeedEntity])
     case chat(ChatModel)
     case wallet(WalletEntity)
-    case walletTransactions         //
+    case walletTransactions([WalletTransactionsCellModel])
     case uploadPhoto(String)
     case myProxy(Bool)
     case myProxies([ProxyCellModel])
@@ -198,7 +198,7 @@ struct TeambrellaRequest {
         case .wallet:
             success(.wallet(WalletEntity(json: reply)))
         case .walletTransactions:
-            success(.walletTransactions)
+            success(.walletTransactions(reply.arrayValue.flatMap { WalletTransactionsCellModel(json: $0) }))
         case .updates:
             break
         case .uploadPhoto:

@@ -52,3 +52,5 @@
 "Me.Report.ExpensesCell.amountTitle" = "AMOUNT";
 
 "Me.Report.PhotosCell.buttonTitle" = "Add Photos";
+
+"Me.WalletVC.WalletTransactionsVC.title" = "Transactions";

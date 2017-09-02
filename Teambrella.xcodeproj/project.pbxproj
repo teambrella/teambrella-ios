@@ -372,6 +372,7 @@
 		94C186AB1F59B95E00F1BE51 /* WalletTransactionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C186AA1F59B95E00F1BE51 /* WalletTransactionsVC.swift */; };
 		94C186AE1F59B9A200F1BE51 /* WalletTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C186AC1F59B9A200F1BE51 /* WalletTransactionCell.swift */; };
 		94C186AF1F59B9A200F1BE51 /* WalletTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C186AD1F59B9A200F1BE51 /* WalletTransactionCell.xib */; };
+		94C186B11F5AD29F00F1BE51 /* WalletTransactionsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C186B01F5AD29F00F1BE51 /* WalletTransactionsCellModel.swift */; };
 		94C2D3941F191F7100D203C2 /* ChooseYourTeamCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3911F191F7100D203C2 /* ChooseYourTeamCellModel.swift */; };
 		94C2D3951F191F7100D203C2 /* ChooseYourTeamDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3921F191F7100D203C2 /* ChooseYourTeamDataSource.swift */; };
 		94C2D3961F191F7100D203C2 /* ChooseYourTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3931F191F7100D203C2 /* ChooseYourTeamVC.swift */; };
@@ -818,6 +819,7 @@
 		94C186AA1F59B95E00F1BE51 /* WalletTransactionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletTransactionsVC.swift; path = Scenes/Me/Wallet/WalletTransactionsVC.swift; sourceTree = "<group>"; };
 		94C186AC1F59B9A200F1BE51 /* WalletTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletTransactionCell.swift; path = View/Cells/WalletTransactionCell.swift; sourceTree = "<group>"; };
 		94C186AD1F59B9A200F1BE51 /* WalletTransactionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WalletTransactionCell.xib; path = View/Cells/WalletTransactionCell.xib; sourceTree = "<group>"; };
+		94C186B01F5AD29F00F1BE51 /* WalletTransactionsCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletTransactionsCellModel.swift; path = Scenes/Me/Wallet/WalletTransactionsCellModel.swift; sourceTree = "<group>"; };
 		94C2D3911F191F7100D203C2 /* ChooseYourTeamCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseYourTeamCellModel.swift; path = Scenes/Team/ChooseYourTeamCellModel.swift; sourceTree = "<group>"; };
 		94C2D3921F191F7100D203C2 /* ChooseYourTeamDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseYourTeamDataSource.swift; path = Scenes/Team/ChooseYourTeamDataSource.swift; sourceTree = "<group>"; };
 		94C2D3931F191F7100D203C2 /* ChooseYourTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseYourTeamVC.swift; path = Scenes/Team/ChooseYourTeamVC.swift; sourceTree = "<group>"; };
@@ -1223,6 +1225,7 @@
 				94C89AD31EFD728000C6D8F7 /* WalletDetailsVC.swift */,
 				94C186AA1F59B95E00F1BE51 /* WalletTransactionsVC.swift */,
 				94C186A61F59B91A00F1BE51 /* WalletTransactionsDataSource.swift */,
+				94C186B01F5AD29F00F1BE51 /* WalletTransactionsCellModel.swift */,
 				94C186A81F59B93100F1BE51 /* WalletTransactionsCellBuilder.swift */,
 			);
 			name = Wallet;
@@ -2449,6 +2452,7 @@
 				9407A57E1F111A5300E0DD74 /* HomeCellBuilder.swift in Sources */,
 				6D9CC6171ED48416007F936E /* UIStoryboardSegue.swift in Sources */,
 				6D0E056D1EFEC24D00604981 /* ReportDescriptionCell.swift in Sources */,
+				94C186B11F5AD29F00F1BE51 /* WalletTransactionsCellModel.swift in Sources */,
 				6DDE95801EE84FFD0019DA47 /* ClaimDetailsCell.swift in Sources */,
 				6D6DA25E1EE1D1BB00307C73 /* ClaimEntity.swift in Sources */,
 				6DE7932F1EF810DB005F4508 /* ChatCell.swift in Sources */,
