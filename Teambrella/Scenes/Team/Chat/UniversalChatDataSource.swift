@@ -81,6 +81,22 @@ class UniversalChatDatasource {
         }
     }
     
+    var allImages: [String] {
+        let models = chunks.flatMap { $0.cellModels }
+        let textCellModels = models.flatMap { $0 as? ChatTextCellModel }
+        let fragments = textCellModels.flatMap { $0.fragments }
+        var images: [String] = []
+        for fragment in fragments {
+            switch fragment {
+            case let .image(string, _):
+                images.append(string)
+            default:
+                break
+            }
+        }
+        return images
+    }
+    
     var isLoadPreviousNeeded: Bool = false {
         didSet {
             guard isLoadPreviousNeeded else { return }

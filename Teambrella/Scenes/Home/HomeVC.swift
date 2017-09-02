@@ -82,9 +82,9 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
                            locations: [0.0, 0.5, 1.0])
         HomeCellBuilder.registerCells(in: collectionView)
         setupWalletContainer()
-        let touch = UITapGestureRecognizer(target: self, action: #selector(tapItem))
-        itemCard.avatarView.isUserInteractionEnabled = true
-        itemCard.avatarView.addGestureRecognizer(touch)
+//        let touch = UITapGestureRecognizer(target: self, action: #selector(tapItem))
+//        itemCard.avatarView.isUserInteractionEnabled = true
+//        itemCard.avatarView.addGestureRecognizer(touch)
         
         switchToCurrentTeam()
         
@@ -147,7 +147,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         leftBrickAmountLabel.text = "..."
         rightBrickAmountLabel.text = "..."
         
-        itemCard.avatarView.image = #imageLiteral(resourceName: "imagePlaceholder")
+        //itemCard.avatarView.image = #imageLiteral(resourceName: "imagePlaceholder")
         itemCard.subtitleLabel.text = nil
         itemCard.titleLabel.text = nil
     }
@@ -197,6 +197,9 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         rightBrickTitleLabel.text = "Home.rightBrick.title".localized
         
         itemCard.avatarView.showImage(string: model.smallPhoto)
+        itemCard.avatarView.onTap = { [weak self] sender in
+            sender.fullscreen(in: self, imageStrings: nil)
+        }
         itemCard.titleLabel.text = model.objectName
         itemCard.statusLabel.text = "Home.itemCard.status".localized
         itemCard.subtitleLabel.text = model.coverageType.localizedName

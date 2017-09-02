@@ -23,7 +23,7 @@ import UIKit
 
 @IBDesignable
 class ItemCard: UIView, XIBInitable {
-    @IBOutlet var avatarView: UIImageView!
+    @IBOutlet var avatarView: GalleryView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var subtitleLabel: UILabel!

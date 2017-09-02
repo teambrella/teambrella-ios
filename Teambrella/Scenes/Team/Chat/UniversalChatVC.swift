@@ -399,6 +399,11 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.avatarView.tag = indexPath.row
             cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
             cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
+            cell.onTapImage = { [weak self] cell, galleryView in
+                guard let `self` = self else { return }
+                
+                galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
+            }
         }
     }
     

@@ -99,6 +99,8 @@ class ChatTextCell: UICollectionViewCell {
         }
     }
     
+    var onTapImage: ((ChatTextCell, GalleryView) -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -241,7 +243,7 @@ class ChatTextCell: UICollectionViewCell {
                 contentView.addSubview(label)
                 views.append(label)
             case let .image(urlString: urlString, aspect: _):
-                let imageView = createImageView(for: urlString, height: model.fragmentHeights[idx])
+                let imageView = createGalleryView(for: urlString, height: model.fragmentHeights[idx])
                 contentView.addSubview(imageView)
                 views.append(imageView)
             }
@@ -267,11 +269,11 @@ class ChatTextCell: UICollectionViewCell {
         return label
     }
     
-    func createImageView(for urlString: String, height: CGFloat) -> UIImageView {
+    func createGalleryView(for urlString: String, height: CGFloat) -> GalleryView {
         let verticalOffset = views.last?.frame.maxY ?? leftLabel.frame.maxY + 8
         let separator: CGFloat = 2.0
         
-        let imageView = UIImageView(frame: CGRect(x: cloudBodyMinX + separator,
+        let imageView = GalleryView(frame: CGRect(x: cloudBodyMinX + separator,
                                                   y: verticalOffset + separator,
                                                   width: cloudWidth - separator * 2,
                                                   height: height))
@@ -279,7 +281,14 @@ class ChatTextCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         print("string|: \(urlString)")
         imageView.showImage(string: urlString)
+        imageView.onTap = { [weak self] sender in
+            self?.onTap(galleryView: sender)
+        }
         return imageView
+    }
+    
+    func onTap(galleryView: GalleryView) {
+        onTapImage?(self, galleryView)
     }
     
 }
