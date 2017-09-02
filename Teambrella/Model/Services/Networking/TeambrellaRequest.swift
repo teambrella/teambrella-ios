@@ -49,6 +49,7 @@ enum TeambrellaRequestType: String {
     case feedChat = "feed/getChat"
     case newChat = "feed/newChat"
     case wallet = "wallet/getOne"
+    case walletTransactions = "wallet/getMyTxList"
     case uploadPhoto = "post/newUpload"
     case myProxy = "proxy/setMyProxy"
     case myProxies = "proxy/getMyProxiesList"
@@ -83,6 +84,7 @@ enum TeambrellaResponseType {
     case teamFeed([FeedEntity])
     case chat(ChatModel)
     case wallet(WalletEntity)
+    case walletTransactions         //
     case uploadPhoto(String)
     case myProxy(Bool)
     case myProxies([ProxyCellModel])
@@ -195,6 +197,8 @@ struct TeambrellaRequest {
             success(.feedDeleteCard(HomeScreenModel(json: reply)))
         case .wallet:
             success(.wallet(WalletEntity(json: reply)))
+        case .walletTransactions:
+            success(.walletTransactions)
         case .updates:
             break
         case .uploadPhoto:

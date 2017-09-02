@@ -11,7 +11,6 @@ import UIKit
 class ClaimTransactionsVC: UIViewController, Routable {
     
     static let storyboardName = "Claims"
-    var navigationLabel: UILabel?
     
     var teamID: Int?
     var claimID: Int?
