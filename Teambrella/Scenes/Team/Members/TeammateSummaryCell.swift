@@ -22,7 +22,7 @@
 import UIKit
 
 class TeammateSummaryCell: UICollectionViewCell {
-    @IBOutlet var avatarView: RoundImageView!
+    @IBOutlet var avatarView: GalleryView!
     @IBOutlet var infoLabel: Label!
     @IBOutlet var leftNumberView: NumberView!
     @IBOutlet var rightNumberView: NumberView!
@@ -32,6 +32,12 @@ class TeammateSummaryCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         CellDecorator.shadow(for: self)
+        avatarView.layer.masksToBounds = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        avatarView.layer.cornerRadius = avatarView.frame.width / 2
     }
     
 }

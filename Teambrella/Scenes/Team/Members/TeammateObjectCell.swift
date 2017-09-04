@@ -23,7 +23,7 @@ import UIKit
 
 class TeammateObjectCell: UICollectionViewCell {
     @IBOutlet var titleLabel: Label!
-    @IBOutlet var avatarView: UIImageView!
+    @IBOutlet var avatarView: GalleryView!
     
     @IBOutlet var nameLabel: Label!
     @IBOutlet var statusLabel: Label!

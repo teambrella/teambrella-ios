@@ -39,6 +39,14 @@ class GalleryView: ImageSlideshow {
         }
     }
     
+    func present(avatarString: String) {
+        mainImageString = avatarString
+        inputs(from: [avatarString]) { [weak self] inputs in
+            self?.setImageInputs(inputs)
+            self?.contentScaleMode = .scaleAspectFill
+        }
+    }
+    
     func inputs(from imageStrings: [String], completion: @escaping ([InputSource]) -> Void) {
         let imageStrings = imageStrings.flatMap { service.server.urlString(string: $0) }
         service.storage.freshKey { [weak self] key in

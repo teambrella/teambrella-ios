@@ -24,10 +24,10 @@ import UIKit
 
 struct TeammateCellBuilder {
     static func populate(cell: UICollectionViewCell, with teammate: ExtendedTeammate, delegate: Any? = nil) {
-        if let cell = cell as? TeammateSummaryCell {
-            populateSummary(cell: cell, with: teammate)
-        } else if let cell = cell as? TeammateObjectCell {
-          populateObject(cell: cell, with: teammate)
+        if let cell = cell as? TeammateSummaryCell, let vc = delegate as? UIViewController {
+            populateSummary(cell: cell, with: teammate, controller: vc)
+        } else if let cell = cell as? TeammateObjectCell, let vc = delegate as? TeammateProfileVC {
+            populateObject(cell: cell, with: teammate, controller: vc)
         } else if let cell = cell as? TeammateContactCell {
             populateContact(cell: cell, with: teammate, delegate: delegate)
         } else if let cell = cell as? DiscussionCell {
@@ -44,7 +44,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateMeCell(cell: MeCell, with teammate: ExtendedTeammate, delegate: Any?) {
-        cell.avatar.showAvatar(string: teammate.basic.avatar)
+       cell.avatar.showAvatar(string: teammate.basic.avatar)
         cell.nameLabel.text = teammate.basic.name
         cell.infoLabel.text = teammate.basic.city
         if let vc = delegate as? TeammateProfileVC {
@@ -56,13 +56,22 @@ struct TeammateCellBuilder {
             
             cell.emailButton.removeTarget(vc, action: nil, for: .allEvents)
             cell.emailButton.addTarget(vc, action: #selector(TeammateProfileVC.tapEmail), for: .touchUpInside)
+            
         }
     }
     
-    private static func populateSummary(cell: TeammateSummaryCell, with teammate: ExtendedTeammate) {
+    private static func populateSummary(cell: TeammateSummaryCell,
+                                        with teammate: ExtendedTeammate,
+                                        controller: UIViewController) {
         cell.title.text = teammate.basic.name
-        let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
-        cell.avatarView.kf.setImage(with: url)
+        //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
+        cell.avatarView.present(avatarString: teammate.basic.avatar)
+        cell.avatarView.onTap = { [weak controller] view in
+            guard let vc = controller else { return }
+            
+            view.fullscreen(in: vc, imageStrings: nil)
+        }
+        //cell.avatarView.kf.setImage(with: url)
         if let left = cell.leftNumberView {
             left.titleLabel.text = "Team.TeammateCell.coversMe".localized
             let amount = teammate.basic.coversMeAmount
@@ -101,7 +110,9 @@ struct TeammateCellBuilder {
         }
     }
     
-    private static func populateObject(cell: TeammateObjectCell, with teammate: ExtendedTeammate) {
+    private static func populateObject(cell: TeammateObjectCell,
+                                       with teammate: ExtendedTeammate,
+                                       controller: TeammateProfileVC) {
         cell.titleLabel.text = "Team.TeammateCell.object".localized
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
@@ -124,7 +135,13 @@ struct TeammateCellBuilder {
         }
         
         if let imageString = teammate.object.smallPhotos.first {
-            cell.avatarView.showImage(string: imageString)
+            cell.avatarView.present(imageString: imageString)
+            cell.avatarView.onTap = { [weak controller] view in
+                guard let vc = controller else { return }
+                
+                view.fullscreen(in: vc, imageStrings: nil)
+            }
+            //cell.avatarView.showImage(string: imageString)
         }
         cell.button.setTitle("Team.TeammateCell.buttonTitle_format_i".localized(teammate.object.claimCount),
                              for: .normal)
