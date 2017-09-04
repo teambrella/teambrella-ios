@@ -69,12 +69,15 @@ struct ClaimCellBuilder {
         cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)//"Claim \(claim.id)"
         cell.textLabel.text = claim.originalPostText
         cell.unreadCountLabel.text = "\(claim.unreadCount)"
-        cell.timeLabel.text = "Team.ClaimCell.timePassed_format".localized(claim.minutesinceLastPost).uppercased()
+        let dateProcessor = DateProcessor()
+        cell.timeLabel.text = dateProcessor.stringFromNow(minutes: claim.minutesinceLastPost)
     }
     
     static func populateClaimVote(cell: ClaimVoteCell, with claim: EnhancedClaimEntity) {
         cell.titleLabel.text = "Team.ClaimCell.voting".localized
-        cell.remainingDaysLabel.text = "Team.ClaimCell.remainingMinutes_format".localized(claim.minutesRemaining)
+        let dateProcessor = DateProcessor()
+        cell.remainingDaysLabel.text = /*"Team.ClaimCell.remainingMinutes_format".localized(claim.minutesRemaining)*/
+        dateProcessor.stringFromNow(minutes: claim.minutesRemaining)
         cell.pieChart.startAngle = 0
         cell.pieChart.endAngle = 130
         
