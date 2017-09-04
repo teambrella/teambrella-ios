@@ -146,3 +146,5 @@
 "Team.Claims.ClaimTransactionsVC.amountCrypto" = "Amount Crypto";
 "Team.Claims.ClaimTransactionsVC.amountFiat" = "Amount Fiat";
 "Team.Claims.ClaimTransactionsVC.status" = "Status";
+
+"Team.Claims.ClaimVC.VotingCell.endsTitle" = "Ends ";

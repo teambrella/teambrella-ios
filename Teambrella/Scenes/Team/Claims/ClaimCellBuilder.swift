@@ -76,8 +76,8 @@ struct ClaimCellBuilder {
     static func populateClaimVote(cell: ClaimVoteCell, with claim: EnhancedClaimEntity) {
         cell.titleLabel.text = "Team.ClaimCell.voting".localized
         let dateProcessor = DateProcessor()
-        cell.remainingDaysLabel.text = /*"Team.ClaimCell.remainingMinutes_format".localized(claim.minutesRemaining)*/
-        dateProcessor.stringFromNow(minutes: claim.minutesRemaining)
+        cell.remainingDaysLabel.text = "Team.Claims.ClaimVC.VotingCell.endsTitle".localized
+            + dateProcessor.stringFromNow(minutes: -claim.minutesRemaining)
         cell.pieChart.startAngle = 0
         cell.pieChart.endAngle = 130
         

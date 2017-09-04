@@ -42,6 +42,17 @@ struct DateProcessor {
         return isColloquial ? colloquial : relevant ?? ""
     }
     
+    func stringForMoment(seconds: Int = 0,
+                         minutes: Int = 0,
+                         hours: Int = 0,
+                         days: Int = 0,
+                         isColloquial: Bool = true) -> String {
+        let dateInRegion: DateInRegion = DateInRegion()
+        let date = dateInRegion + days.days + hours.hours + minutes.minutes + seconds.seconds
+        let (colloquial, relevant) = try! date.colloquialSinceNow()
+        return isColloquial ? colloquial : relevant ?? ""
+    }
+    
     func stringIntervalOrDate(from date: Date) -> String {
         let days = Date().interval(of: .day, since: date)
         if  days >= 7 {
