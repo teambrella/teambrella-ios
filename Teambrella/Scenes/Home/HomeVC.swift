@@ -90,6 +90,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         service.socket = SocketService()
         addSwipeToLogout()
+        service.push.executeCommand()
     }
     
     func addSwipeToLogout() {

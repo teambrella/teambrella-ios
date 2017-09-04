@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         service.router.applicationDidFinishLaunching(launchOptions: launchOptions)
         service.push.askPermissionsForRemoteNotifications(application: application)
         TeambrellaStyle.apply()
+        if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
+            service.push.remoteNotificationOnStart(in: application, userInfo: notification)
+        }
         return true
     }
     
@@ -61,6 +64,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         service.push.application(application, didFailToRegisterForRemoteNotificationsWithError: error)
+    }
+    
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        service.push.remoteNotification(in: application, userInfo: userInfo, completionHandler: completionHandler)
     }
     
 }
