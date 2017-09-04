@@ -243,7 +243,7 @@ class PrivateChatStrategy: ChatDatasourceStrategy {
     var requestType: TeambrellaRequestType { return .privateChat }
 //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPrivatePost
-    var canLoadBackward: Bool = false
+    var canLoadBackward: Bool = true
     
     var user: PrivateChatUser
     

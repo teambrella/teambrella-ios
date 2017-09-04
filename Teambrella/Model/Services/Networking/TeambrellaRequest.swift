@@ -179,11 +179,19 @@ struct TeambrellaRequest {
         case .claimChat,
              .teammateChat,
              .feedChat,
-             .newChat:
+             .newChat,
+             .privateChat,
+             .newPrivatePost:
             let discussion = reply["DiscussionPart"]
+            let chat: [ChatEntity]
+            if type == .privateChat || type == .newPrivatePost {
+                chat = PrivateChatAdaptor(json: reply).adaptedMessages
+            } else {
+                chat = ChatEntity.buildArray(from: discussion["Chat"])
+            }
             let model = ChatModel(lastUpdated: reply["LastUpdated"].int64Value,
                                   discussion: discussion,
-                                  chat: ChatEntity.buildArray(from: discussion["Chat"]),
+                                  chat: chat,
                                   basicPart: reply["BasicPart"],
                                   teamPart: reply["TeamPart"])
             success(.chat(model))
@@ -219,9 +227,10 @@ struct TeambrellaRequest {
         case .privateList:
             let users = reply.arrayValue.map { PrivateChatUser(json: $0) }
             success(.privateList(users))
-        case .privateChat,
-             .newPrivatePost:
-            success(.privateChat(PrivateChatAdaptor(json: reply).adaptedMessages))
+//        case .privateChat,
+//             .newPrivatePost:
+//            success(.privateChat(<#T##[ChatEntity]#>))
+//            success(.privateChat(PrivateChatAdaptor(json: reply).adaptedMessages))
         default:
             break
         }
