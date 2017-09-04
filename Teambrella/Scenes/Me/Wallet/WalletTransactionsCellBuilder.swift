@@ -11,7 +11,7 @@ import Foundation
 struct WalletTransactionsCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: WalletTransactionsCellModel) {
         if let cell = cell as? WalletTransactionCell {
-            cell.createdTitle.text = "Created:" ///
+            cell.createdTitle.text = "Me.WalletVC.WalletTransactionsVC.createdTitle".localized
             cell.createdLabel.text = String(describing: model.dateCreated)
             let names = model.to.map { $0.name }
             var namesString = ""
@@ -22,14 +22,14 @@ struct WalletTransactionsCellBuilder {
                 idx += 1
             }
             cell.nameLabel.text = namesString
-            cell.amountTitle.text = "Amount:"
+            cell.amountTitle.text = "Me.WalletVC.WalletTransactionsVC.amountTitle".localized
             guard let session = service.session else { return }
             
             let amounts = model.to.map { $0.amount * 1000 }
             cell.amountLabel.text = String(describing: amounts) + " " + session.coinName
-            cell.kindTitle.text = "Kind:"
+            cell.kindTitle.text = "Me.WalletVC.WalletTransactionsVC.kindTitle".localized
             let kinds = model.to.map { $0.kind }
-            var kindsString = ""
+            var kindsString = "" //.kind -> es???
             idx = 1
             for kind in kinds {
                 let separator = (idx != kinds.count) ? ", " : ""
@@ -37,8 +37,8 @@ struct WalletTransactionsCellBuilder {
                 idx += 1
             }
             cell.kindLabel.text = kindsString
-            cell.statusTitle.text = "Status:"
-            cell.statusLabel.text = String(describing: model.serverTxState)
+            cell.statusTitle.text = "Me.WalletVC.WalletTransactionsVC.statusTitle".localized
+            cell.statusLabel.text = String(describing: model.serverTxState) //.created -> es???
         }
     }
 }

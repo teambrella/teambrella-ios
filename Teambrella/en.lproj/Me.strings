@@ -54,3 +54,7 @@
 "Me.Report.PhotosCell.buttonTitle" = "Add Photos";
 
 "Me.WalletVC.WalletTransactionsVC.title" = "Transactions";
+"Me.WalletVC.WalletTransactionsVC.createdTitle" = "Created:";
+"Me.WalletVC.WalletTransactionsVC.amountTitle" = "Amount:";
+"Me.WalletVC.WalletTransactionsVC.kindTitle" = "Kind:";
+"Me.WalletVC.WalletTransactionsVC.statusTitle" = "Status:";

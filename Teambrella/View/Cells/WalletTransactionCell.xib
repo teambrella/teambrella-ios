@@ -63,7 +63,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm1-5n-QYG">
-                                <rect key="frame" x="16" y="52" width="0.0" height="0.0"/>
+                                <rect key="frame" x="8" y="52" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                 <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -98,7 +98,7 @@
                             <constraint firstItem="Tm1-5n-QYG" firstAttribute="centerY" secondItem="lqW-Ch-0YS" secondAttribute="centerY" id="DbW-PT-eTM"/>
                             <constraint firstAttribute="trailing" secondItem="3Mv-p4-WAS" secondAttribute="trailing" constant="8" id="Gdz-9x-ut5"/>
                             <constraint firstItem="oQp-IF-In1" firstAttribute="leading" secondItem="lqW-Ch-0YS" secondAttribute="leading" id="GfM-fx-2NO"/>
-                            <constraint firstItem="Tm1-5n-QYG" firstAttribute="leading" secondItem="lqW-Ch-0YS" secondAttribute="leading" constant="16" id="HEg-po-Hs2"/>
+                            <constraint firstItem="Tm1-5n-QYG" firstAttribute="leading" secondItem="lqW-Ch-0YS" secondAttribute="leading" constant="8" id="HEg-po-Hs2"/>
                             <constraint firstAttribute="bottom" secondItem="oQp-IF-In1" secondAttribute="bottom" id="IvK-DY-xAr"/>
                             <constraint firstItem="eoM-D8-796" firstAttribute="centerY" secondItem="lqW-Ch-0YS" secondAttribute="centerY" id="PAa-VC-6hh"/>
                             <constraint firstItem="al1-ic-pfr" firstAttribute="top" secondItem="lqW-Ch-0YS" secondAttribute="top" constant="8" id="RYw-xs-zyl"/>
