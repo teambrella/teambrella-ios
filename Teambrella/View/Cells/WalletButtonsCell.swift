@@ -33,9 +33,18 @@ class WalletButtonsCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var bottomView: UIView!
     @IBOutlet var bottomViewLabel: Label!
     
+    var tapTopViewRecognizer = UITapGestureRecognizer()
+    var tapMiddleViewRecognizer = UITapGestureRecognizer()
+    var tapBottomViewRecognizer = UITapGestureRecognizer()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        topView.addGestureRecognizer(tapTopViewRecognizer)
+        topView.isUserInteractionEnabled = true
+        middleView.addGestureRecognizer(tapMiddleViewRecognizer)
+        middleView.isUserInteractionEnabled = true
+        bottomView.addGestureRecognizer(tapBottomViewRecognizer)
+        bottomView.isUserInteractionEnabled = true
     }
 
 }

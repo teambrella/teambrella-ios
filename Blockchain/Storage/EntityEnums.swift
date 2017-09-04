@@ -36,10 +36,11 @@ public enum UserAddressStatus: Int, EnumStringConvertible {
 
 public enum TransactionKind: Int, EnumStringConvertible {
     /// voting compensation or reimbursement
-    case payout = 0
+    case payout = 0 //reimbursement payouts only
     case withdraw = 1
     case moveToNextWallet = 2
     case saveFromPreviousWallet = 3
+    case votingPayout = 100
 }
 
 public enum TransactionState: Int, EnumStringConvertible {

@@ -72,6 +72,13 @@ class WalletVC: UIViewController {
         qrCode.size = CGSize(width: 79, height: 75) // Zeplin (04.2 wallet-1 & ...-1-a)
         return qrCode.image
     }
+    
+    func tapTransactions(sender: UITapGestureRecognizer) {
+        print("\ntap Transactions\n")
+        guard let session = service.session?.currentTeam?.teamID else { return }
+        
+        service.router.presentWalletTransactionsList(teamID: session)
+    }
 }
 
 extension WalletVC: IndicatorInfoProvider {
@@ -102,7 +109,7 @@ extension WalletVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        WalletCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        WalletCellBuilder.populate(cell: cell, with: dataSource[indexPath], delegate: self)
         if let cell = cell as? WalletHeaderCell {
             cell.button.addTarget(self, action: #selector(tapWithdraw), for: .touchUpInside)
         } else if let cell = cell as? WalletFundingCell {

@@ -1,32 +1,31 @@
 //
-//  ClaimTransactionsVC.swift
+//  WalletTransactionsVC.swift
 //  Teambrella
 //
-//  Created by Екатерина Рыжова on 29.08.17.
+//  Created by Екатерина Рыжова on 01.09.17.
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
 import UIKit
 
-class ClaimTransactionsVC: UIViewController, Routable {
+class WalletTransactionsVC: UIViewController, Routable {
     
-    static let storyboardName = "Claims"
+    static let storyboardName = "Me"
     
     var teamID: Int?
-    var claimID: Int?
-    var dataSource: ClaimTransactionsDataSource!
+    var dataSource: WalletTransactionsDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0
-    
+
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
-        title = "Team.Claims.ClaimTransactionsVC.title".localized
-        collectionView.register(ClaimTransactionCell.nib, forCellWithReuseIdentifier: ClaimTransactionCell.cellID)
-        guard let teamID = teamID, let claimID = claimID else { return }
+        title = "Me.WalletVC.WalletTransactionsVC.title".localized
+        collectionView.register(WalletTransactionCell.nib, forCellWithReuseIdentifier: WalletTransactionCell.cellID)
+        guard let teamID = teamID else { return }
         
-        dataSource = ClaimTransactionsDataSource(teamID: teamID, claimID: claimID)
+        dataSource = WalletTransactionsDataSource(teamID: teamID)
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
         }
@@ -35,7 +34,7 @@ class ClaimTransactionsVC: UIViewController, Routable {
 }
 
 // MARK: UICollectionViewDataSource
-extension ClaimTransactionsVC: UICollectionViewDataSource {
+extension WalletTransactionsVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -46,16 +45,16 @@ extension ClaimTransactionsVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: ClaimTransactionCell.cellID, for: indexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: WalletTransactionCell.cellID, for: indexPath)
     }
 }
 
 // MARK: UICollectionViewDelegate
-extension ClaimTransactionsVC: UICollectionViewDelegate {
+extension WalletTransactionsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        ClaimTransactionsCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        WalletTransactionsCellBuilder.populate(cell: cell, with: dataSource[indexPath])
         if indexPath.row == (dataSource.count - dataSource.limit/2) {
             dataSource.loadData()
         }
@@ -63,7 +62,7 @@ extension ClaimTransactionsVC: UICollectionViewDelegate {
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
-extension ClaimTransactionsVC: UICollectionViewDelegateFlowLayout {
+extension WalletTransactionsVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -72,7 +71,7 @@ extension ClaimTransactionsVC: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: UIScrollViewDelegate
-extension ClaimTransactionsVC: UIScrollViewDelegate {
+extension WalletTransactionsVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset.y
         previousScrollOffset = currentOffset
