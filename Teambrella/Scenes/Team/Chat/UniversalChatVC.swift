@@ -175,7 +175,10 @@ class UniversalChatVC: UIViewController, Routable {
                 
                 let interval = me.lastTypingDate.timeIntervalSinceNow
                 if interval < -2 {
-                    socket?.typing(teamID: teamID, teammateID: myID, name: service.session?.currentUserName)
+                    socket?.typing(teamID: teamID,
+                                   teammateID: myID,
+                                   topicID: me.dataSource.topicID,
+                                   name: service.session?.currentUserName)
                     self?.lastTypingDate = Date()
                 }
             }
@@ -418,13 +421,13 @@ extension UniversalChatVC: UICollectionViewDelegate {
                 
                 if Date().timeIntervalSince(date) < 3 {
                     if text != "" { text += ", " }
-                    text += user
+                    text += user.uppercased()
                 } else {
                     typingUsers[user] = nil
                 }
             }
-            text += typingUsers.count > 1 ? " ARE" :" IS"
-            text += " TYPING"
+            text += " "
+            text += "Team.Chat.typing_format".localized(typingUsers.count).uppercased()
             view.label.text =  text
             view.hide(!showIsTyping)
         }

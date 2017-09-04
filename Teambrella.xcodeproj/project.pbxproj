@@ -265,6 +265,7 @@
 		6DB8122A1EE715DA00B202CE /* DiscussionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB812281EE715DA00B202CE /* DiscussionCell.swift */; };
 		6DB8122B1EE715DA00B202CE /* DiscussionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB812291EE715DA00B202CE /* DiscussionCell.xib */; };
 		6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC230691ED07F0500FAC330 /* Key.swift */; };
+		6DC2487C1F5D948E00D9396D /* Team.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2487A1F5D948E00D9396D /* Team.stringsdict */; };
 		6DCB19441F0F878500AC9969 /* Home.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19421F0F878500AC9969 /* Home.strings */; };
 		6DCB19471F0FD33400AC9969 /* Fill.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19451F0FD33400AC9969 /* Fill.sks */; };
 		6DCB19481F0FD33400AC9969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19461F0FD33400AC9969 /* Assets.xcassets */; };
@@ -708,6 +709,8 @@
 		6DB812281EE715DA00B202CE /* DiscussionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionCell.swift; path = View/Cells/DiscussionCell.swift; sourceTree = "<group>"; };
 		6DB812291EE715DA00B202CE /* DiscussionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscussionCell.xib; path = View/Cells/DiscussionCell.xib; sourceTree = "<group>"; };
 		6DC230691ED07F0500FAC330 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		6DC2487B1F5D948E00D9396D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Team.stringsdict; sourceTree = "<group>"; };
+		6DC2487D1F5D951600D9396D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Team.stringsdict; sourceTree = "<group>"; };
 		6DCB19431F0F878500AC9969 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
 		6DCB19451F0FD33400AC9969 /* Fill.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Fill.sks; path = Effects/Fill.sks; sourceTree = "<group>"; };
 		6DCB19461F0FD33400AC9969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Effects/Assets.xcassets; sourceTree = "<group>"; };
@@ -951,6 +954,7 @@
 				6D097E9A1E9D1AD200E77DAB /* Test.stringsdict */,
 				6D097EA61E9D220A00E77DAB /* General.strings */,
 				6DF2E8C51EF057DB00C8D60B /* Team.strings */,
+				6DC2487A1F5D948E00D9396D /* Team.stringsdict */,
 				6DF2E8C91EF194E400C8D60B /* Main.strings */,
 				6D0D2AEA1EFBD6820095284C /* Proxy.strings */,
 				6D69DA0D1EFC458C00DED5CE /* Me.strings */,
@@ -1989,6 +1993,7 @@
 				6D1C039F1EB8D37D004AED30 /* Sample.storyboard in Resources */,
 				6D69D9ED1EFBFF2E00DED5CE /* NeedHelpView.xib in Resources */,
 				6D69DA341EFD6CB700DED5CE /* TeamFeedCell.xib in Resources */,
+				6DC2487C1F5D948E00D9396D /* Team.stringsdict in Resources */,
 				94C186AF1F59B9A200F1BE51 /* WalletTransactionCell.xib in Resources */,
 				94E325BA1F07DA9400B2D8C8 /* JoinTeamInfoCell.xib in Resources */,
 				6DDE95811EE84FFD0019DA47 /* ClaimDetailsCell.xib in Resources */,
@@ -2681,6 +2686,15 @@
 				6DA475AD1E8ABEE600B56D9B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6DC2487A1F5D948E00D9396D /* Team.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DC2487B1F5D948E00D9396D /* en */,
+				6DC2487D1F5D951600D9396D /* es */,
+			);
+			name = Team.stringsdict;
 			sourceTree = "<group>";
 		};
 		6DCB19421F0F878500AC9969 /* Home.strings */ = {

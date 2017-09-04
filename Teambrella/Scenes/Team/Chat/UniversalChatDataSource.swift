@@ -32,6 +32,8 @@ class UniversalChatDatasource {
         }
     }
     
+    var topicID: String? { return claim?.topicID }
+    
     var cellModels: [ChatCellModel] = []
     var chunks: [ChatChunk] = []
     

@@ -182,7 +182,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="253" height="47"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neighborhood that is really good and i would like to buy it for sure" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTU-MO-gZV" customClass="MessageTextLabel" customModule="Teambrella" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="253" height="43"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="253" height="39"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -191,7 +191,7 @@
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="fTU-MO-gZV" secondAttribute="trailing" id="11P-QK-AiH"/>
-                                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fTU-MO-gZV" secondAttribute="bottom" id="AeF-sy-lAQ"/>
+                                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fTU-MO-gZV" secondAttribute="bottom" constant="8" id="AeF-sy-lAQ"/>
                                                                         <constraint firstItem="fTU-MO-gZV" firstAttribute="leading" secondItem="qLa-Rg-RZk" secondAttribute="leading" id="BRP-fb-8E7"/>
                                                                         <constraint firstItem="fTU-MO-gZV" firstAttribute="top" secondItem="qLa-Rg-RZk" secondAttribute="top" id="GLh-m1-y47"/>
                                                                     </constraints>

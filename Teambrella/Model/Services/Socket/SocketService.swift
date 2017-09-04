@@ -127,8 +127,12 @@ class SocketService {
         send(action: action)
     }
     
-    func typing(teamID: Int, teammateID: Int, name: String?) {
-        let action = SocketAction(command: .typing, teamID: teamID, teammateID: teammateID, name: name)
+    func typing(teamID: Int, teammateID: Int, topicID: String?, name: String?) {
+        let action = SocketAction(command: .typing,
+                                  teamID: teamID,
+                                  teammateID: teammateID,
+                                  topicID: topicID,
+                                  name: name)
         send(action: action)
     }
     
