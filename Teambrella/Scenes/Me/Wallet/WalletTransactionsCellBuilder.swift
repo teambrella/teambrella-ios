@@ -11,8 +11,9 @@ import Foundation
 struct WalletTransactionsCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: WalletTransactionsCellModel) {
         if let cell = cell as? WalletTransactionCell {
-            cell.createdTitle.text = "Me.WalletVC.WalletTransactionsVC.createdTitle".localized
-            cell.createdLabel.text = String(describing: model.dateCreated)
+            guard let date = model.dateCreated else { return }
+            
+            cell.createdLabel.text = DateFormatter.teambrellaShort.string(from: date)
             let names = model.to.map { $0.name }
             var namesString = ""
             var idx = 1
@@ -26,7 +27,15 @@ struct WalletTransactionsCellBuilder {
             guard let session = service.session else { return }
             
             let amounts = model.to.map { $0.amount * 1000 }
-            cell.amountLabel.text = String(describing: amounts) + " " + session.coinName
+            var amountString = ""
+            idx = 1
+            for amount in amounts {
+                let separator = (idx != amounts.count) ? ", " : ""
+                amountString += String(describing: amount) + separator
+                idx += 1
+            }
+            cell.amountLabel.text = amountString + " " + session.coinName
+            
             cell.kindTitle.text = "Me.WalletVC.WalletTransactionsVC.kindTitle".localized
             let kinds = model.to.map { $0.kind }
             var kindsString = "" //.kind -> es???

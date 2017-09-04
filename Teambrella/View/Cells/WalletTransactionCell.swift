@@ -11,7 +11,6 @@ import UIKit
 class WalletTransactionCell: UICollectionViewCell, XIBInitableCell {
 
     @IBOutlet var container: UIView!
-    @IBOutlet var createdTitle: UILabel!
     @IBOutlet var createdLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var kindTitle: UILabel!
