@@ -41,6 +41,8 @@ public enum TransactionKind: Int, EnumStringConvertible {
     case moveToNextWallet = 2
     case saveFromPreviousWallet = 3
     case votingPayout = 100
+    
+    var localizationKey: String { return "General.TransactionKind.\(self)" }
 }
 
 public enum TransactionState: Int, EnumStringConvertible {
@@ -63,6 +65,8 @@ public enum TransactionState: Int, EnumStringConvertible {
     case errorBadRequest = 102
     case errorOutOfFunds = 103
     case errorTooManyUtxos = 104
+    
+    var localizationKey: String { return "General.TransactionState.\(self)" }
 }
 
 public enum TransactionClientResolution: Int, EnumStringConvertible {
