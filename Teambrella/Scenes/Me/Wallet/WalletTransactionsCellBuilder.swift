@@ -38,16 +38,16 @@ struct WalletTransactionsCellBuilder {
             
             cell.kindTitle.text = "Me.WalletVC.WalletTransactionsVC.kindTitle".localized
             let kinds = model.to.map { $0.kind }
-            var kindsString = "" //.kind -> es???
+            var kindsString = ""
             idx = 1
             for kind in kinds {
                 let separator = (idx != kinds.count) ? ", " : ""
-                kindsString += String(describing: kind) + separator
+                kindsString += kind.localizationKey.localized + separator
                 idx += 1
             }
             cell.kindLabel.text = kindsString
             cell.statusTitle.text = "Me.WalletVC.WalletTransactionsVC.statusTitle".localized
-            cell.statusLabel.text = String(describing: model.serverTxState) //.created -> es???
+            cell.statusLabel.text = model.serverTxState.localizationKey.localized
         }
     }
 }
