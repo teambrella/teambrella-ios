@@ -20,7 +20,7 @@ struct PrivateMessagesCellBuilder {
             cell.messageLabel.text = model.text
             cell.timeLabel.text = DateProcessor().stringFromNow(minutes: model.minutesSinceLast)
             cell.unreadCountView.text = String(model.unreadCount)
-            cell.isHidden = model.unreadCount > 0
+            cell.unreadCountView.isHidden = model.unreadCount == 0
         }
     }
     

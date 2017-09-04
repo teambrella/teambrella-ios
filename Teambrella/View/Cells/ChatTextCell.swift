@@ -280,7 +280,7 @@ class ChatTextCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         print("string|: \(urlString)")
-        imageView.showImage(string: urlString)
+        imageView.present(imageString: urlString)
         imageView.onTap = { [weak self] sender in
             self?.onTap(galleryView: sender)
         }

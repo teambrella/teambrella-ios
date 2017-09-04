@@ -31,14 +31,15 @@ class GalleryView: ImageSlideshow {
         isUserInteractionEnabled = true
     }
     
-    func showImage(string: String) {
-        galleryWith(imageStrings: [string])
+    func present(imageString: String) {
+        mainImageString = imageString
+        inputs(from: [imageString]) { [weak self] inputs in
+            self?.setImageInputs(inputs)
+            self?.contentScaleMode = .scaleAspectFill
+        }
     }
     
-    func galleryWith(imageStrings: [String]) {
-        if imageStrings.count == 1 {
-            mainImageString = imageStrings.first
-        }
+    func inputs(from imageStrings: [String], completion: @escaping ([InputSource]) -> Void) {
         let imageStrings = imageStrings.flatMap { service.server.urlString(string: $0) }
         service.storage.freshKey { [weak self] key in
             let modifier = AnyModifier { request in
@@ -51,8 +52,7 @@ class GalleryView: ImageSlideshow {
             
             let inputs: [InputSource] = imageStrings.flatMap { KingfisherSource(urlString: $0,
                                                                                 options: [.requestModifier(modifier)]) }
-            self?.setImageInputs(inputs)
-            self?.contentScaleMode = .scaleAspectFill
+            completion(inputs)
         }
     }
     
@@ -62,15 +62,24 @@ class GalleryView: ImageSlideshow {
     
     func fullscreen(in controller: UIViewController?, imageStrings: [String]?) {
         guard let controller = controller else { return }
-        
-        if let imageStrings = imageStrings,
-            let mainImageString = mainImageString,
-            let page = imageStrings.index(of: mainImageString) {
-            galleryWith(imageStrings: imageStrings)
-            setCurrentPage(page, animated: false)
+        guard let imageStrings = imageStrings else {
+            self.presentFullScreenController(from: controller)
+            return
         }
         
-        presentFullScreenController(from: controller)
+        inputs(from: imageStrings, completion: { [weak self] inputs in
+            guard let `self` = self else { return }
+            
+            self.setImageInputs(inputs)
+            if let mainImageString = self.mainImageString,
+                let page = imageStrings.index(of: mainImageString) {
+                self.setCurrentPage(page, animated: false)
+                let vc = self.presentFullScreenController(from: controller)
+                vc.closeButton.frame = CGRect(x: controller.view.bounds.width - 44, y: 20, width: 44, height: 44)
+                vc.closeButton.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
+                vc.zoomEnabled = true
+            }
+        })
     }
     
 }

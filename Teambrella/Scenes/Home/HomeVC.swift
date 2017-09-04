@@ -197,7 +197,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         leftBrickTitleLabel.text = "Home.leftBrick.title".localized
         rightBrickTitleLabel.text = "Home.rightBrick.title".localized
         
-        itemCard.avatarView.showImage(string: model.smallPhoto)
+        itemCard.avatarView.present(imageString: model.smallPhoto)
         itemCard.avatarView.onTap = { [weak self] sender in
             sender.fullscreen(in: self, imageStrings: nil)
         }
