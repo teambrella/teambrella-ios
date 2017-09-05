@@ -29,6 +29,8 @@ class ProxyForDataSource {
     let limit: Int = 100
     var commission: Double = 0.0
     
+    var isSilentUpdate = false
+    
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     
@@ -40,20 +42,32 @@ class ProxyForDataSource {
         return items[indexPath.row]
     }
     
+    func updateSilently() {
+        isSilentUpdate = true
+        loadData()
+    }
+    
     func loadData() {
+        let offset = isSilentUpdate ? 0 : count
         service.server.updateTimestamp { [weak self] timestamp, error in
             let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
-            guard let id = self?.teamID, let offset = self?.count, let limit = self?.limit else { return }
+            guard let id = self?.teamID, let limit = self?.limit else { return }
             
             let body = RequestBody(key: key, payload:["TeamId": id,
                                                       "Offset": offset,
                                                       "Limit": limit])
             let request = TeambrellaRequest(type: .proxyFor, body: body, success: { [weak self] response in
+                guard let `self` = self else { return }
+                
                 if case .proxyFor(let proxies, let commission) = response {
-                    self?.items += proxies
-                    self?.commission = commission
-                    self?.onUpdate?()
+                    if self.isSilentUpdate {
+                        self.items.removeAll()
+                        self.isSilentUpdate = false
+                    }
+                    self.items += proxies
+                    self.commission = commission
+                    self.onUpdate?()
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)

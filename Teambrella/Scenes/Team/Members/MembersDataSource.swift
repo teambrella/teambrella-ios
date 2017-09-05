@@ -29,6 +29,8 @@ enum TeammateSectionType {
 class MembersDatasource {
     private var strategy: MembersFetchStrategy
     
+    var isSilentUpdate = false
+    
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     
@@ -55,9 +57,15 @@ class MembersDatasource {
     func setRanges(ranges: [RiskScaleEntity.Range]) {
         strategy.ranges = ranges
     }
+    
+    func updateSilently() {
+        isSilentUpdate = true
+        loadData()
+    }
    
     func loadData() {
         //fakeLoadData()
+        let offset = isSilentUpdate ? 0 : sections
         guard !isLoading else { return }
         
         isLoading = true
@@ -66,18 +74,22 @@ class MembersDatasource {
                           timestamp: timestamp)
             
             let body = RequestBody(key: key, payload:["TeamId": ServerService.teamID,
-                                                      "Offset": self.offset,
+                                                      "Offset": offset,
                                                       "Limit": 1000,
                                                       "AvatarSize": 128,
                                                       "OrderByRisk": self.orderByRisk])
             let request = TeambrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
+                guard let `self` = self else { return }
+                
                 if case .teammatesList(let teammates) = response {
-                    guard let me = self else { return }
-                    
-                    me.strategy.arrange(teammates: teammates)
-                    me.offset += teammates.count
-                    me.onUpdate?()
-                    me.isLoading = false
+                    if self.isSilentUpdate {
+                        //self.items.removeAll() // sections.remove???
+                        self.isSilentUpdate = false
+                    }                    
+                    self.strategy.arrange(teammates: teammates)
+                    self.offset += teammates.count
+                    self.onUpdate?()
+                    self.isLoading = false
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)
