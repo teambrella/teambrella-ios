@@ -55,7 +55,13 @@ struct ClaimsCellBuilder {
             }
         } else if let cell = cell as? ClaimsPaidCell {
             cell.avatarView.showImage(string: claim.smallPhoto)
-            cell.statusLabel.text = "Team.ClaimsCell.reimbursed".localized.uppercased()
+            if claim.state == .declined {
+                cell.statusLabel.text = "Team.ClaimsCell.declined".localized.uppercased()
+                cell.statusLabel.textColor = .red
+            } else {
+                cell.statusLabel.text = "Team.ClaimsCell.reimbursed".localized.uppercased()
+                cell.statusLabel.textColor = .blueyGray
+            }
             cell.amountLabel.text = String(format: "%.2f", claim.claimAmount)
             cell.scaleBar.value = CGFloat(claim.reimbursement)
         }

@@ -102,25 +102,25 @@ class ClaimsDataSource {
     
     func headerText(for indexPath: IndexPath) -> String {
         switch cellType(for: indexPath) {
-        case .fullyPaid: return "FULLY PAID"
+        case .fullyPaid: return "Team.Claims.State.Header.fullyPaid".localized
         case .open: return ""
-        case .paid: return "BEING PAID"
-        case .voted: return "VOTED"
+        case .paid: return "Team.Claims.State.Header.beingPaid".localized
+        case .voted: return "Team.Claims.State.Header.voted".localized
         }
     }
     
     func showHeader(for section: Int) -> Bool {
         return claims[section].isEmpty == false
     }
-    
+
     private func process(claims: [ClaimLike]) {
         for claim in claims {
             let idx: Int!
             switch claim.state {
             case .voting, .revoting: idx = 0
-            case .voted: idx = 1
-            case .inPayment: idx = 2
-            default: idx = 3
+            case .voted: idx             = 1
+            case .inPayment: idx         = 2
+            default: idx                 = 3
             }
             self.claims[idx].append(claim)
         }

@@ -130,4 +130,10 @@
 "Team.ChooseYourTeamVC.header" = "ELEGIR TU EQUIPO";
 
 "Team.FeedVC.startDiscussionButton.title" = "Iniciar Discusión";
+
 // Need translation
+"Team.Claims.State.Header.fullyPaid" = "FULLY PAID";
+"Team.Claims.State.Header.beingPaid" = "BEING PAID";
+"Team.Claims.State.Header.voted" = "VOTED";
+
+"Team.ClaimsCell.declined" = "DECLINED";

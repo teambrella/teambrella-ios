@@ -148,3 +148,9 @@
 "Team.Claims.ClaimTransactionsVC.status" = "Status";
 
 "Team.Claims.ClaimVC.VotingCell.endsTitle" = "Ends ";
+
+"Team.Claims.State.Header.fullyPaid" = "FULLY PAID";
+"Team.Claims.State.Header.beingPaid" = "BEING PAID";
+"Team.Claims.State.Header.voted" = "VOTED";
+
+"Team.ClaimsCell.declined" = "DECLINED";
