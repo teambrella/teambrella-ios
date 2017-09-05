@@ -23,9 +23,16 @@ import UIKit
 
 struct TeambrellaStyle {
     static func apply() {
+        switch deviceType {
+        case .small:
+            compactLabelStyle()
+            compactButtonStyle()
+        default:
+            baseLabelStyle()
+            baseButtonStyle()
+        }
         navigationStyle()
-        labelStyle()
-        buttonStyle()
+        
     }
     
     static func navigationStyle() {
@@ -37,8 +44,20 @@ struct TeambrellaStyle {
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
+    static func baseButtonStyle() {
+        let label = UILabel.appearance(whenContainedInInstancesOf: [BorderedButton.self])
+        label.textColor = .lightBlue
+        label.font = UIFont.teambrellaBold(size: 15)
+    }
+    
+    static func compactButtonStyle() {
+        let label = UILabel.appearance(whenContainedInInstancesOf: [BorderedButton.self])
+        label.textColor = .lightBlue
+        label.font = UIFont.teambrellaBold(size: 12)
+    }
+    
     // swiftlint:disable:next function_body_length
-    static func labelStyle() {
+    static func baseLabelStyle() {
         let header = HeaderLabel.appearance()
         header.font = UIFont.teambrellaBold(size: 25)
         header.textColor = .white
@@ -88,7 +107,7 @@ struct TeambrellaStyle {
         title.textColor = .charcoalGray
         
         let thinStatusSubtitle = ThinStatusSubtitleLabel.appearance()
-         thinStatusSubtitle.font = UIFont.teambrella(size: 10)
+        thinStatusSubtitle.font = UIFont.teambrella(size: 10)
         thinStatusSubtitle.textColor = .blueyGray
         
         let statusSubtitle = StatusSubtitleLabel.appearance()
@@ -112,10 +131,79 @@ struct TeambrellaStyle {
         chatText.textColor = .charcoalGray
     }
     
-    static func buttonStyle() {
-        let label = UILabel.appearance(whenContainedInInstancesOf: [BorderedButton.self])
-        label.textColor = .lightBlue
-        label.font = UIFont.teambrellaBold(size: 15)
+    // swiftlint:disable:next function_body_length
+    static func compactLabelStyle() {
+        let header = HeaderLabel.appearance()
+        header.font = UIFont.teambrellaBold(size: 20)
+        header.textColor = .white
+        
+        let subHeader = SubheaderLabel.appearance()
+        subHeader.font = UIFont.teambrellaBold(size: 11)
+        subHeader.textColor = .white50
+        
+        let amount = AmountLabel.appearance()
+        amount.font = UIFont.teambrellaBold(size: 19)
+        amount.textColor = .dark
+        
+        let walletAmount = WalletAmountLabel.appearance()
+        walletAmount.font = UIFont.teambrellaBold(size: 70)
+        walletAmount.textColor = .dark
+        
+        let currency = CurrencyLabel.appearance()
+        currency.font = UIFont.teambrellaBold(size: 8)
+        currency.textColor = .darkSkyBlue
+        
+        let currencyNormal = CurrencyNormalLabel.appearance()
+        currencyNormal.font = UIFont.teambrellaBold(size: 18)
+        currencyNormal.textColor = .darkSkyBlue
+        
+        let badge = BadgeLabel.appearance()
+        badge.font = UIFont.teambrella(size: 8)
+        badge.textColor = .white
+        badge.backgroundColor = .lightBlue
+        
+        let info = InfoLabel.appearance()
+        info.font = UIFont.teambrellaBold(size: 8)
+        info.textColor = .blueyGray
+        
+        let infoHelp = InfoHelpLabel.appearance()
+        infoHelp.font = UIFont.teambrellaBold(size: 8)
+        
+        let itemName = ItemNameLabel.appearance()
+        itemName.font = UIFont.teambrella(size: 12)
+        itemName.textColor = .charcoalGray
+        
+        let itemValue = ItemValueLabel.appearance()
+        itemValue.font = UIFont.teambrella(size: 12)
+        itemValue.textColor = .battleshipGray
+        
+        let title = TitleLabel.appearance()
+        title.font = UIFont.teambrellaBold(size: 16)
+        title.textColor = .charcoalGray
+        
+        let thinStatusSubtitle = ThinStatusSubtitleLabel.appearance()
+        thinStatusSubtitle.font = UIFont.teambrella(size: 8)
+        thinStatusSubtitle.textColor = .blueyGray
+        
+        let statusSubtitle = StatusSubtitleLabel.appearance()
+        statusSubtitle.font = UIFont.teambrellaBold(size: 10)
+        statusSubtitle.textColor = .blueyGray
+        
+        let blockHeader = BlockHeaderLabel.appearance()
+        blockHeader.font = UIFont.teambrellaBold(size: 11)
+        blockHeader.textColor = .darkSkyBlue
+        
+        let messageTitle = MessageTitleLabel.appearance()
+        messageTitle.font = UIFont.teambrellaBold(size: 12)
+        messageTitle.textColor = .dark
+        
+        let messageText = MessageTextLabel.appearance()
+        messageText.font = UIFont.teambrella(size: 10)
+        messageText.textColor = .bluishGray
+        
+        let chatText = ChatTextLabel.appearance()
+        chatText.font = UIFont.teambrella(size: 11)
+        chatText.textColor = .charcoalGray
     }
     
 }

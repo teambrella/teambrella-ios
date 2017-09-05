@@ -61,12 +61,26 @@ class TeammateProfileVC: UIViewController, Routable {
         dataSource.loadEntireTeammate { [weak self] in
             HUD.hide()
             self?.prepareLinearFunction()
-            self?.title = self?.dataSource.extendedTeammate?.basic.name
+            self?.setTitle()
             self?.collectionView.reloadData()
         }
         if let flow = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flow.sectionHeadersPinToVisibleBounds = true
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setTitle()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        title = "Main.back".localized
+    }
+    
+    func setTitle() {
+        title = dataSource.extendedTeammate?.basic.name
     }
     
     func prepareLinearFunction() {
