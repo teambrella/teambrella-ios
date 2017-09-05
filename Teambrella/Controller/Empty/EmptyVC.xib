@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -31,22 +32,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Mrc-sm-ptr">
-                    <rect key="frame" x="37.5" y="198" width="300" height="272"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mrc-sm-ptr">
+                    <rect key="frame" x="37.5" y="195" width="300" height="278"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unhappy_cat" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-sn-tLt">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unhappy_cat" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-sn-tLt">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="220"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ft-Ua-idu">
-                            <rect key="frame" x="0.0" y="225" width="300" height="21"/>
+                            <rect key="frame" x="0.0" y="228" width="300" height="21"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-Fo-70l">
-                            <rect key="frame" x="0.0" y="251" width="300" height="21"/>
+                            <rect key="frame" x="0.0" y="257" width="300" height="21"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="17"/>
-                            <color key="textColor" red="0.83043077256944442" green="0.82774522569444442" blue="0.843017578125" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -56,10 +56,9 @@
             <constraints>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Mrc-sm-ptr" secondAttribute="bottom" constant="8" id="3pz-cl-8vC"/>
                 <constraint firstItem="Mrc-sm-ptr" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6RM-rw-TV7"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Mrc-sm-ptr" secondAttribute="trailing" constant="8" id="Zt5-L3-h4A"/>
                 <constraint firstItem="Mrc-sm-ptr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aKi-io-rnp"/>
+                <constraint firstItem="Mrc-sm-ptr" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="h3A-3F-Fx8"/>
                 <constraint firstItem="Mrc-sm-ptr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="qkp-yZ-hEQ"/>
-                <constraint firstItem="Mrc-sm-ptr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="slr-ZN-ZXN"/>
             </constraints>
         </view>
     </objects>

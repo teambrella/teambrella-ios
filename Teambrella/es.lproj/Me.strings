@@ -28,7 +28,6 @@
 "Me.WalletDetailsVC.timeLabel"            = "Válido por 24 horas";
 "Me.WalletDetailsVC.copyAddressButton"    = "Copiar Dirección";
 
-// -------------------- waiting for translation :) -------------------- //
 
 "Me.CoverageVC.fundButton"                = "Financie tu monedero para aumentar";
 "Me.CoverageVC.title"                     = "¿CÓMO FUNCIONA?";
@@ -52,3 +51,4 @@
 "Me.Report.PhotosCell.buttonTitle" = "Cargar las fotos";
 "Me.Report.TitleCell.title" = "Titulo";
 "Me.Report.HeaderTitleCell.title" = "DISCUSION";
+// -------------------- waiting for translation :) -------------------- //

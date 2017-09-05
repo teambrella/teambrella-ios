@@ -24,6 +24,7 @@ import XLPagerTabStrip
 
 class ProxyForVC: UIViewController {
     var dataSource: ProxyForDataSource = ProxyForDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
+    weak var emptyVC: EmptyVC?
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -32,8 +33,18 @@ class ProxyForVC: UIViewController {
         setupCollectionView()
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
+            self?.showEmptyIfNeeded()
         }
         dataSource.loadData()
+    }
+    
+    func showEmptyIfNeeded() {
+        if dataSource.isEmpty && emptyVC == nil {
+            emptyVC = EmptyVC.show(in: self)
+            emptyVC?.setText(title: "Proxy.Empty.You.title".localized, subtitle: "Proxy.Empty.You.details".localized)
+        } else {
+            emptyVC?.remove()
+        }
     }
     
     private func setupCollectionView() {
@@ -97,7 +108,8 @@ extension ProxyForVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let item = dataSource.items[indexPath.row]
+        service.router.presentMemberProfile(teammateID: item.userID)
     }
     
 }

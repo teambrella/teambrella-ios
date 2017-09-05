@@ -24,6 +24,7 @@ import Foundation
 class ProxyForDataSource {
     var items: [ProxyForCellModel] = []
     var count: Int { return items.count }
+    var isEmpty: Bool { return items.isEmpty }
     let teamID: Int
     let limit: Int = 100
     var commission: Double = 0.0

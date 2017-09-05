@@ -26,14 +26,25 @@ class MyProxiesVC: UIViewController {
     var dataSource: MyProxiesDataSource = MyProxiesDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
     
     @IBOutlet var collectionView: UICollectionView!
+    weak var emptyVC: EmptyVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
+            self?.showEmptyIfNeeded()
         }
         dataSource.loadData()
+    }
+    
+    func showEmptyIfNeeded() {
+        if dataSource.isEmpty && emptyVC == nil {
+            emptyVC = EmptyVC.show(in: self)
+            emptyVC?.setText(title: "Proxy.Empty.title".localized, subtitle: "Proxy.Empty.details".localized)
+        }  else {
+            emptyVC?.remove()
+        }
     }
     
     func setupCollectionView() {
@@ -121,7 +132,8 @@ extension MyProxiesVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let item = dataSource.items[indexPath.row]
+        service.router.presentMemberProfile(teammateID: item.userID)
     }
     
     func collectionView(_ collectionView: UICollectionView,
