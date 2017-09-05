@@ -213,6 +213,8 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         pageControl.numberOfPages = dataSource.cardsCount
         if model.unreadCount > 0 {
             inboxButton.cornerText = String(model.unreadCount)
+        } else {
+            inboxButton.cornerText = nil
         }
         HUD.hide()
     }
