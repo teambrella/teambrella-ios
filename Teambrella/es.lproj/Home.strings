@@ -36,3 +36,5 @@
 "Home.ApplicationStatusCell.centerLabel"                = "Votación (pendiente)";
 "Home.PrivateMessages.title"                            = "Mensajes privados";
 
+// TRANSLATE
+"Home.Empty.Title.noPrivateMessages"                    = "There are no private messages yet";

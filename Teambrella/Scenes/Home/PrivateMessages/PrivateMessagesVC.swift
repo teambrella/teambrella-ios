@@ -13,6 +13,7 @@ class PrivateMessagesVC: UIViewController, Routable {
     
     @IBOutlet var collectionView: UICollectionView!
     let dataSource: PrivateMessagesDataSource = PrivateMessagesDataSource()
+    weak var emptyVC: EmptyVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,18 @@ class PrivateMessagesVC: UIViewController, Routable {
         
         dataSource.onLoad = { [weak self] in
             self?.collectionView.reloadData()
+            self?.showEmptyIfNeeded()
         }
         dataSource.loadNext()
+    }
+    
+    func showEmptyIfNeeded() {
+        if dataSource.isEmpty && emptyVC == nil {
+            emptyVC = EmptyVC.show(in: self)
+            emptyVC?.setText(title: "Home.Empty.Title.noPrivateMessages".localized, subtitle: nil)
+        } else {
+            emptyVC?.remove()
+        }
     }
     
 }

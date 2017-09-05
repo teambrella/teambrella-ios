@@ -266,6 +266,8 @@
 		6DB8122B1EE715DA00B202CE /* DiscussionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB812291EE715DA00B202CE /* DiscussionCell.xib */; };
 		6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC230691ED07F0500FAC330 /* Key.swift */; };
 		6DC2487C1F5D948E00D9396D /* Team.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2487A1F5D948E00D9396D /* Team.stringsdict */; };
+		6DC248801F5EAAF300D9396D /* EmptyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2487E1F5EAAF300D9396D /* EmptyVC.swift */; };
+		6DC248811F5EAAF300D9396D /* EmptyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2487F1F5EAAF300D9396D /* EmptyVC.xib */; };
 		6DCB19441F0F878500AC9969 /* Home.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19421F0F878500AC9969 /* Home.strings */; };
 		6DCB19471F0FD33400AC9969 /* Fill.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19451F0FD33400AC9969 /* Fill.sks */; };
 		6DCB19481F0FD33400AC9969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19461F0FD33400AC9969 /* Assets.xcassets */; };
@@ -711,6 +713,8 @@
 		6DC230691ED07F0500FAC330 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		6DC2487B1F5D948E00D9396D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Team.stringsdict; sourceTree = "<group>"; };
 		6DC2487D1F5D951600D9396D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Team.stringsdict; sourceTree = "<group>"; };
+		6DC2487E1F5EAAF300D9396D /* EmptyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyVC.swift; path = Controller/Empty/EmptyVC.swift; sourceTree = "<group>"; };
+		6DC2487F1F5EAAF300D9396D /* EmptyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyVC.xib; path = Controller/Empty/EmptyVC.xib; sourceTree = "<group>"; };
 		6DCB19431F0F878500AC9969 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
 		6DCB19451F0FD33400AC9969 /* Fill.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Fill.sks; path = Effects/Fill.sks; sourceTree = "<group>"; };
 		6DCB19461F0FD33400AC9969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Effects/Assets.xcassets; sourceTree = "<group>"; };
@@ -1241,9 +1245,10 @@
 		6D83EC8C1EDD708A000412DC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6DC248821F5EAAFF00D9396D /* Empty */,
+				6DCF62541F4B314300E8F500 /* PhotosPreview */,
 				6D83EC8A1EDD7083000412DC /* Navigator.swift */,
 				6DA714EC1EDF49F500F39EBE /* MasterTabBarController.swift */,
-				6DCF62541F4B314300E8F500 /* PhotosPreview */,
 				6D66B4991F4C461A00672583 /* ImagePickerController.swift */,
 			);
 			name = Controller;
@@ -1669,6 +1674,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		6DC248821F5EAAFF00D9396D /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				6DC2487E1F5EAAF300D9396D /* EmptyVC.swift */,
+				6DC2487F1F5EAAF300D9396D /* EmptyVC.xib */,
+			);
+			name = Empty;
+			sourceTree = "<group>";
+		};
 		6DCB19411F0EA2ED00AC9969 /* Sort */ = {
 			isa = PBXGroup;
 			children = (
@@ -2040,6 +2054,7 @@
 				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
 				6DCB19481F0FD33400AC9969 /* Assets.xcassets in Resources */,
 				6DE793301EF810DB005F4508 /* ChatCell.xib in Resources */,
+				6DC248811F5EAAF300D9396D /* EmptyVC.xib in Resources */,
 				6D0E057A1EFEC7A400604981 /* ReportTextFieldCell.xib in Resources */,
 				94E325BE1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib in Resources */,
 				6D1A9B291F55D306004192AC /* PrivateChatUserCell.xib in Resources */,
@@ -2294,6 +2309,7 @@
 				6D1683881F13BE3E002B52EE /* DropDownButton.swift in Sources */,
 				6D862F6B1F1E639A00988D5C /* TeammateFooter.swift in Sources */,
 				6DF479121F41E4300025F489 /* PromiseKit.swift in Sources */,
+				6DC248801F5EAAF300D9396D /* EmptyVC.swift in Sources */,
 				94C186AB1F59B95E00F1BE51 /* WalletTransactionsVC.swift in Sources */,
 				6DCB19581F11163900AC9969 /* PagingDraggable.swift in Sources */,
 				6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */,

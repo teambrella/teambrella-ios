@@ -15,6 +15,8 @@ class PrivateMessagesDataSource: NSObject {
     var previousFilter: String?
     
     var items: [PrivateChatUser] = []
+    
+    var isEmpty: Bool { return items.isEmpty }
   
     var onLoad: (() -> Void)?
     
