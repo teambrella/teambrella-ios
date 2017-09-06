@@ -35,6 +35,8 @@ class ServicesHandler {
     lazy var storage: Storage = LocalStorage()
     lazy var push: PushService = PushService()
     
+    var currencySymbol: String { return session?.currentTeam?.currencySymbol ?? "" }
+    
     private init() {}
     
 }

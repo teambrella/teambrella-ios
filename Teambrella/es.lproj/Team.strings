@@ -135,4 +135,5 @@
 "Team.Claims.State.Header.fullyPaid" = "COMPLETAMENTE PAGADO";
 "Team.Claims.State.Header.beingPaid" = "ESTÁ PAGANDO";
 "Team.Claims.State.Header.voted" = "VOTADO";
+"Team.Claims.VitedCell.voted" = "Votado: ";
 "Team.ClaimsCell.declined" = "RECHAZADO";
