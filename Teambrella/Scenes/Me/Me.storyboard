@@ -44,7 +44,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XPY-jy-Oo3">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPY-jy-Oo3">
                                 <rect key="frame" x="0.0" y="104" width="375" height="514"/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iTO-9F-uYG" customClass="ButtonBarView" customModule="XLPagerTabStrip">
@@ -99,11 +99,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sX-aq-UFl">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sX-aq-UFl">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmV-yc-E7V">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="524.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="524"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rtL-Dg-TqT">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
@@ -214,7 +214,7 @@
                                                 </constraints>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ByT-Mp-bxm">
-                                                <rect key="frame" x="16" y="213" width="343" height="295.5"/>
+                                                <rect key="frame" x="16" y="213" width="343" height="295"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jB-Sp-7uU">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="98.5"/>
@@ -276,13 +276,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="RWV-cl-zkc">
-                                                        <rect key="frame" x="20" y="254.5" width="36" height="17"/>
+                                                        <rect key="frame" x="20" y="254" width="36" height="17"/>
                                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                                         <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="OuM-mH-Dzn">
-                                                        <rect key="frame" x="18" y="193.5" width="307" height="33"/>
+                                                        <rect key="frame" x="18" y="193" width="307" height="33"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="BQf-Db-4bX"/>
                                                         </constraints>
@@ -303,7 +303,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="oGn-Vb-oa8" customClass="AmountWithCurrency" customModule="Teambrella" customModuleProvider="target">
-                                                        <rect key="frame" x="238" y="241.5" width="85" height="30"/>
+                                                        <rect key="frame" x="238" y="241" width="85" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="uyY-JK-cXp"/>
                                                         </constraints>
