@@ -90,7 +90,7 @@ class ClaimsDataSource {
                 
                 if case .claimsList(let claims) = response {
                     if self.isSilentUpdate {
-                        //self.claims.removeAll()
+                        self.claims.removeAll()
                         self.isSilentUpdate = false
                     }
                     self.offset += claims.count

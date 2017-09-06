@@ -82,7 +82,7 @@ class MembersDatasource {
                 
                 if case .teammatesList(let teammates) = response {
                     if self.isSilentUpdate {
-                        //self.items.removeAll()
+                        self.clearDataSource()
                         self.isSilentUpdate = false
                     }
                     self.strategy.arrange(teammates: teammates)
@@ -96,6 +96,10 @@ class MembersDatasource {
             request.start()
         }
         
+    }
+    
+    func clearDataSource() {
+        strategy.removeData()
     }
         
     subscript(indexPath: IndexPath) -> TeammateLike {

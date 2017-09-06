@@ -43,8 +43,7 @@ class HomeDataSource {
                 guard let `self` = self else { return }
                 
                 if self.isSilentUpdate {
-                    //self.items.removeAll()
-                    self.model = nil
+                    self.model?.cards.removeAll()
                     self.isSilentUpdate = false
                 }
                 self.model = value
