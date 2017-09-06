@@ -27,6 +27,8 @@ class LabeledButton: UIButton {
             cornerLabel.frame = CGRect(x: 0, y: 0, width: 50, height: 15)
             cornerLabel.text = cornerText
             cornerLabel.sizeToFit()
+            // to maintain round shape
+            cornerLabel.frame.size.width = max(cornerLabel.frame.width, cornerLabel.frame.height)
             cornerLabel.isHidden = cornerText == nil
         }
     }
