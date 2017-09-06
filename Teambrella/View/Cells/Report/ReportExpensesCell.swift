@@ -29,7 +29,9 @@ class ReportExpensesCell: UICollectionViewCell, XIBInitableCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        numberBar.left?.isBadgeVisible = false
+        numberBar.middle?.isBadgeVisible = false
+        numberBar.right?.isBadgeVisible = false
     }
 
 }

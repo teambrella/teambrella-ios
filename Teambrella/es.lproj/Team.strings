@@ -122,6 +122,7 @@
 "Team.VotingRiskVC.othersButton"               = "Los demás";
 
 "Team.VotingRiskVC.ends"                        = "TERMINA %@";
+"Team.Claims.ClaimVC.VotingCell.endsTitle" = "Termina ";
 
 "Team.Members.Teammates.Strategy.headerTitle" = "RIESGO: %.2f A %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle" = "RIESGO";
@@ -131,9 +132,16 @@
 
 "Team.FeedVC.startDiscussionButton.title" = "Iniciar Discusión";
 
-// Need translation
 "Team.Claims.State.Header.fullyPaid" = "COMPLETAMENTE PAGADO";
 "Team.Claims.State.Header.beingPaid" = "ESTÁ PAGANDO";
 "Team.Claims.State.Header.voted" = "VOTADO";
 "Team.Claims.VitedCell.voted" = "Votado: ";
 "Team.ClaimsCell.declined" = "RECHAZADO";
+
+// Need translation
+"Team.Teammate.Footer.MemberSince" = "Member since %@";
+
+"Team.Claims.ClaimTransactionsVC.title" = "Transactions";
+"Team.Claims.ClaimTransactionsVC.amountCrypto" = "Amount Crypto";
+"Team.Claims.ClaimTransactionsVC.amountFiat" = "Amount Fiat";
+"Team.Claims.ClaimTransactionsVC.status" = "Status";

@@ -108,7 +108,20 @@ class ReportVC: UIViewController, Routable {
     }
     
     func tapAddPhoto(sender: UIButton) {
-        photoPicker.show()
+        let alert = UIAlertController(title: "Me.Report.ImageSource.title".localized,
+                                      message: nil,
+                                      preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Me.Report.ImageSource.camera".localized, style: .default, handler: { _ in
+             self.photoPicker.showCamera()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Me.Report.ImageSource.gallery".localized, style: .default, handler: { _ in
+            self.photoPicker.showGallery()
+        }))
+        
+        alert.addAction(UIAlertAction.init(title: "Main.cancel".localized, style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func datePickerChangedValue(sender: UIDatePicker) {

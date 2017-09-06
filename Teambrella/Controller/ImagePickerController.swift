@@ -19,6 +19,7 @@ class ImagePickerController: NSObject {
     weak var delegate: ImagePickerControllerDelegate?
     
     var compressionRate: CGFloat = 0.3
+    var maxSide: CGFloat = 1800
     
     init(parent: UIViewController, delegate: ImagePickerControllerDelegate?) {
         self.parent = parent
@@ -26,18 +27,29 @@ class ImagePickerController: NSObject {
         super.init()
     }
     
-    func show() {
+    func showGallery() {
+        showSource(source: .photoLibrary)
+    }
+    
+    func showCamera() {
+       showSource(source: .camera)
+    }
+    
+    private func showSource(source: UIImagePickerControllerSourceType) {
         guard let controller = parent else { return }
         
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.allowsEditing = true
-        picker.sourceType = .photoLibrary
+        picker.allowsEditing = false
+        picker.sourceType = source
         controller.present(picker, animated: true, completion: nil)
     }
     
     func send(image: UIImage) {
-        guard let imageData = UIImageJPEGRepresentation(image, self.compressionRate) else {
+        guard let resizedImage = ImageTransformer(image: image).imageToFit(maxSide: maxSide) else {
+            fatalError("Can't resize image")
+        }
+        guard let imageData = UIImageJPEGRepresentation(resizedImage, self.compressionRate) else {
             fatalError("Can't process image")
         }
         
@@ -52,6 +64,7 @@ class ImagePickerController: NSObject {
             }
         }
     }
+    
 }
 
 extension ImagePickerController: UINavigationControllerDelegate {
@@ -66,7 +79,7 @@ extension ImagePickerController: UIImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             delegate?.imagePicker(controller: self, didSelectPhoto: pickedImage)
             send(image: pickedImage)
         }

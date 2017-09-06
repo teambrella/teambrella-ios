@@ -23,22 +23,43 @@ import UIKit
 
 struct ImageTransformer {
     let image: UIImage
+    var isPortrait: Bool { return image.size.width < image.size.height }
+    var isLandscape: Bool { return image.size.height < image.size.width }
+    var isSquare: Bool { return image.size.height == image.size.width }
     
     var tabBarImage: UIImage? {
         let width: CGFloat = 25
         guard let circleMasked = circleMasked(limbWidth: 1,
                                               limbColor: .white) else { return nil }
         
-        return ImageTransformer(image: circleMasked).resizeImage(newWidth: width)?.withRenderingMode(.alwaysOriginal)
+        return ImageTransformer(image: circleMasked).resizedImage(newWidth: width)?.withRenderingMode(.alwaysOriginal)
     }
     
-    func resizeImage(newWidth: CGFloat) -> UIImage? {
+    func imageToFit(maxSide: CGFloat) -> UIImage? {
+        if isPortrait {
+            return image.size.height <= maxSide ? image : resizedImage(newHeight: maxSide)
+        } else {
+            return image.size.width <= maxSide ? image : resizedImage(newWidth: maxSide)
+        }
+    }
+    
+    func resizedImage(newHeight: CGFloat) -> UIImage? {
+        let scale = newHeight / image.size.height
+        let newWidth = image.size.width * scale
+        return resizedImage(newSize: CGSize(width: newWidth, height: newHeight))
+    }
+    
+    func resizedImage(newWidth: CGFloat) -> UIImage? {
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: newHeight),
+        return resizedImage(newSize: CGSize(width: newWidth, height: newHeight))
+    }
+    
+    func resizedImage(newSize size: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: size.width, height: size.height),
                                                false,
                                                UIScreen.main.nativeScale)
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage
@@ -62,4 +83,5 @@ struct ImageTransformer {
         
         return UIGraphicsGetImageFromCurrentImageContext()
     }
+    
 }
