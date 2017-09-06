@@ -64,7 +64,6 @@ class MembersDatasource {
     }
    
     func loadData() {
-        //fakeLoadData()
         let offset = isSilentUpdate ? 0 : sections
         guard !isLoading else { return }
         
@@ -83,9 +82,9 @@ class MembersDatasource {
                 
                 if case .teammatesList(let teammates) = response {
                     if self.isSilentUpdate {
-                        //self.items.removeAll() // sections.remove???
+                        //self.items.removeAll()
                         self.isSilentUpdate = false
-                    }                    
+                    }
                     self.strategy.arrange(teammates: teammates)
                     self.offset += teammates.count
                     self.onUpdate?()

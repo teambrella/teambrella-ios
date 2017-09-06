@@ -66,6 +66,8 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     var isEmitterAdded: Bool = false
     
+    var isFirstLoading = true
+    
     // MARK: Lifecycle
     
     override func awakeFromNib() {
@@ -82,9 +84,9 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
                            locations: [0.0, 0.5, 1.0])
         HomeCellBuilder.registerCells(in: collectionView)
         setupWalletContainer()
-//        let touch = UITapGestureRecognizer(target: self, action: #selector(tapItem))
-//        itemCard.avatarView.isUserInteractionEnabled = true
-//        itemCard.avatarView.addGestureRecognizer(touch)
+        //        let touch = UITapGestureRecognizer(target: self, action: #selector(tapItem))
+        //        itemCard.avatarView.isUserInteractionEnabled = true
+        //        itemCard.avatarView.addGestureRecognizer(touch)
         
         switchToCurrentTeam()
         
@@ -139,6 +141,14 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         super.viewDidAppear(animated)
         //scrollViewDidScroll(collectionView)
         addEmitter()
+        guard isFirstLoading == false else {
+            isFirstLoading = false
+            return
+        }
+        
+        if let teamID = service.session?.currentTeam?.teamID {
+            dataSource.updateSilently(teamID: teamID)
+        }
     }
     
     private func clearScreen() {
@@ -254,7 +264,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     @IBAction func tapInbox(_ sender: UIButton) {
         service.router.presentPrivateMessages()
-//        DeveloperTools.notSupportedAlert(in: self)
+        //        DeveloperTools.notSupportedAlert(in: self)
     }
     
     func tapChatWithSupport(_ sender: UIButton) {
