@@ -52,7 +52,7 @@ class CoverageVC: UIViewController, Routable {
     }
     var limitAmount: Double = 0 {
         didSet {
-            upperAmount.amountLabel.text = String(limitAmount)
+            upperAmount.amountLabel.text = String.truncatedNumber(limitAmount)
         }
     }
     
@@ -67,11 +67,12 @@ class CoverageVC: UIViewController, Routable {
         umbrellaView.startCurveCoeff = 1.1
         loadData()
         
-        upperAmount.currencyLabel.text = "USD" //
+        let currency = service.currencySymbol
+        upperAmount.currencyLabel.text = currency //
         centerAmount.amountLabel.text = "750" //
-        centerAmount.currencyLabel.text = "USD" //
+        centerAmount.currencyLabel.text = currency //
         lowerAmount.amountLabel.text = "375" //
-        lowerAmount.currencyLabel.text = "USD" //
+        lowerAmount.currencyLabel.text = currency //
 
         fundWalletButton.setTitle("Me.CoverageVC.fundButton".localized, for: .normal)
         titleLabel.text = "Me.CoverageVC.title".localized
@@ -82,13 +83,14 @@ class CoverageVC: UIViewController, Routable {
         lowerLabel.text = "Me.CoverageVC.teamPay".localized
         
         slider.addTarget(self, action: #selector(changeValues), for: .valueChanged)
+        slider.isExclusiveTouch = true
     }
     
     func setImage(for percentage: Int) {
         switch percentage {
-        case 100: weatherImage.image = #imageLiteral(resourceName: "confetti-umbrella")
-        case 96...99: weatherImage.image = #imageLiteral(resourceName: "rain-1")
-        default: weatherImage.image = #imageLiteral(resourceName: "rain")
+        case 98...100: weatherImage.image = #imageLiteral(resourceName: "confetti-umbrella")
+        case 90...97: weatherImage.image  = #imageLiteral(resourceName: "rain-1")
+        default: weatherImage.image       = #imageLiteral(resourceName: "rain")
         }
     }
     
@@ -102,16 +104,21 @@ class CoverageVC: UIViewController, Routable {
                 if case .coverageForDate(let coverage, let limit) = response {
                     self?.coverageAmount = Int(coverage * 100)
                     self?.limitAmount = limit
-                    
+                    if let slider = self?.slider {
+                        self?.changeValues(slider: slider)
+                    }
                 }
                 })
             request.start()
         }
     }
     
-    func changeValues() {
-        
+    func changeValues(slider: UISlider) {
+        let expenses = Double(slider.value) * limitAmount
+        centerAmount.amountLabel.text = String.truncatedNumber(expenses)
+        lowerAmount.amountLabel.text = String.truncatedNumber(expenses * Double(coverageAmount / 100))
     }
+    
 }
 
 extension CoverageVC: IndicatorInfoProvider {
