@@ -125,15 +125,14 @@
 
 "Team.Members.Teammates.Strategy.headerTitle" = "RIESGO: %.2f A %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle" = "RIESGO";
-"Team.Members.Teammates.CompareTeamRisk.title" = "COMPARAR RIESG0 DEL EQUIPO";
+"Team.Members.Teammates.CompareTeamRisk.title" = "COMPARAR RIESGO DEL EQUIPO";
 
 "Team.ChooseYourTeamVC.header" = "ELEGIR TU EQUIPO";
 
 "Team.FeedVC.startDiscussionButton.title" = "Iniciar Discusión";
 
 // Need translation
-"Team.Claims.State.Header.fullyPaid" = "FULLY PAID";
-"Team.Claims.State.Header.beingPaid" = "BEING PAID";
-"Team.Claims.State.Header.voted" = "VOTED";
-
-"Team.ClaimsCell.declined" = "DECLINED";
+"Team.Claims.State.Header.fullyPaid" = "COMPLETAMENTE PAGADO";
+"Team.Claims.State.Header.beingPaid" = "ESTÁ PAGANDO";
+"Team.Claims.State.Header.voted" = "VOTADO";
+"Team.ClaimsCell.declined" = "RECHAZADO";
