@@ -33,6 +33,8 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     
     var teammate: TeammateLike?
     
+    var isFirstLoading = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
@@ -42,6 +44,16 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard isFirstLoading == false else {
+            isFirstLoading = false
+            return
+        }
+        
+        dataSource.updateSilently()
     }
     
     func registerCells() {

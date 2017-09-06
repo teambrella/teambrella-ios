@@ -29,6 +29,8 @@ class HomeDataSource {
         return count + 1
     }
     
+    var isSilentUpdate = false
+    
     var onUpdate: (() -> Void)?
     
     var currency: String { return model?.currency ?? "?" }
@@ -38,12 +40,23 @@ class HomeDataSource {
         service.storage.requestHome(teamID: teamID).observe { [weak self] result in
             switch result {
             case .value(let value):
-                self?.model = value
-                self?.onUpdate?()
+                guard let `self` = self else { return }
+                
+                if self.isSilentUpdate {
+                    self.model?.cards.removeAll()
+                    self.isSilentUpdate = false
+                }
+                self.model = value
+                self.onUpdate?()
             case .error(let error):
                 print(error)
             }
         }
+    }
+    
+    func updateSilently(teamID: Int) {
+        isSilentUpdate = true
+        loadData(teamID: teamID)
     }
     
     func cellID(for indexPath: IndexPath) -> String {

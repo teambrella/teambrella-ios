@@ -28,6 +28,8 @@ class MyProxiesVC: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     weak var emptyVC: EmptyVC?
     
+    var isFirstLoading = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -38,11 +40,21 @@ class MyProxiesVC: UIViewController {
         dataSource.loadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard isFirstLoading == false else {
+            isFirstLoading = false
+            return
+        }
+        
+        dataSource.updateSilently()
+    }
+    
     func showEmptyIfNeeded() {
         if dataSource.isEmpty && emptyVC == nil {
             emptyVC = EmptyVC.show(in: self)
             emptyVC?.setText(title: "Proxy.Empty.title".localized, subtitle: "Proxy.Empty.details".localized)
-        }  else {
+        } else {
             emptyVC?.remove()
         }
     }
@@ -143,7 +155,7 @@ extension MyProxiesVC: UICollectionViewDelegate {
         collectionView.reloadData()
         collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
     }
-
+    
 }
 
 // MARK: UICollectionViewDelegateFlowLayout

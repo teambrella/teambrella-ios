@@ -31,6 +31,8 @@ class MyProxiesDataSource {
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     
+    var isSilentUpdate = false
+    
     init(teamID: Int) {
         self.teamID = teamID
     }
@@ -46,19 +48,31 @@ class MyProxiesDataSource {
         return model
     }
     
+    func updateSilently() {
+        isSilentUpdate = true
+        loadData()
+    }
+    
     func loadData() {
+        let offset = isSilentUpdate ? 0 : count
         service.server.updateTimestamp { [weak self] timestamp, error in
             let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
-            guard let id = self?.teamID, let offset = self?.count, let limit = self?.limit else { return }
+            guard let id = self?.teamID, let limit = self?.limit else { return }
             
             let body = RequestBody(key: key, payload:["TeamId": id,
                                                       "Offset": offset,
                                                       "Limit": limit])
             let request = TeambrellaRequest(type: .myProxies, body: body, success: { [weak self] response in
+                guard let `self` = self else { return }
+                
                 if case .myProxies(let proxies) = response {
-                    self?.items += proxies
-                    self?.onUpdate?()
+                    if self.isSilentUpdate {
+                        self.items.removeAll()
+                        self.isSilentUpdate = false
+                    }
+                    self.items += proxies
+                    self.onUpdate?()
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)
@@ -80,8 +94,8 @@ class MyProxiesDataSource {
                 if case .proxyPosition = response {
                     print("Position saved to server")
                 }
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
+            }, failure: { [weak self] error in
+                self?.onError?(error)
             })
             request.start()
         }

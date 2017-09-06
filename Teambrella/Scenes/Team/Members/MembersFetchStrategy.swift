@@ -32,6 +32,7 @@ protocol MembersFetchStrategy {
     func headerSubtitle(indexPath: IndexPath) -> String
     func arrange(teammates: [TeammateLike])
     func sort(type: SortVC.SortType)
+    func removeData()
     
     subscript(indexPath: IndexPath) -> TeammateLike { get }
 }
@@ -41,6 +42,11 @@ class MembersListStrategy: MembersFetchStrategy {
     var newTeammates: [TeammateLike] = []
     var teammates: [TeammateLike] = []
     var sortType: SortVC.SortType = .none
+    
+    func removeData() {
+        teammates.removeAll()
+        newTeammates.removeAll()
+    }
     
     var sections: Int {
         var count = 2
@@ -129,6 +135,10 @@ class MembersRiskStrategy: MembersFetchStrategy {
     var ranges: [RiskScaleEntity.Range] = []
     var sections: Int { return arrayOfRanges.count }
     var sortType: SortVC.SortType = .none
+    
+    func removeData() {
+        arrayOfRanges.removeAll()
+    }
     
     func type(indexPath: IndexPath) -> TeammateSectionType {
         return .teammate

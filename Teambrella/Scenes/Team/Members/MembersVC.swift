@@ -37,6 +37,8 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
     fileprivate var previousScrollOffset: CGFloat = 0
     fileprivate var searchbarIsShown = true
    
+    var isFirstLoading = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchController()
@@ -62,6 +64,16 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
         HUD.show(.progress, onView: view)
         dataSource.loadData()
         title = "Team.team".localized
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard isFirstLoading == false else {
+            isFirstLoading = false
+            return
+        }
+        
+        dataSource.updateSilently()
     }
     
     override func didReceiveMemoryWarning() {
