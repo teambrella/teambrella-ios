@@ -28,6 +28,8 @@ class ProxyForVC: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
     
+    var isFirstLoading = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -36,6 +38,16 @@ class ProxyForVC: UIViewController {
             self?.showEmptyIfNeeded()
         }
         dataSource.loadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard isFirstLoading == false else {
+            isFirstLoading = false
+            return
+        }
+        
+        dataSource.updateSilently()
     }
     
     func showEmptyIfNeeded() {

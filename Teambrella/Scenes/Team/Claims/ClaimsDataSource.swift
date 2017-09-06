@@ -66,7 +66,10 @@ class ClaimsDataSource {
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     
+    var isSilentUpdate = false
+    
     func loadData() {
+        let offset = isSilentUpdate ? 0 : count
         guard !isLoading else { return }
         
         isLoading = true
@@ -75,7 +78,7 @@ class ClaimsDataSource {
                           timestamp: timestamp)
             
             var payload: [String: Any] = ["TeamId": ServerService.teamID,
-                                          "Offset": self.offset,
+                                          "Offset": offset,
                                           "Limit": Constant.loadLimit,
                                           "AvatarSize": Constant.avatarSize]
             if let teammate = self.teammate {
@@ -83,14 +86,20 @@ class ClaimsDataSource {
             }
             let body = RequestBody(key: key, payload: payload)
             let request = TeambrellaRequest(type: .claimsList, body: body, success: { [weak self] response in
+                guard let `self` = self else { return }
+                
                 if case .claimsList(let claims) = response {
-                    guard let me = self else { return }
+                    if self.isSilentUpdate {
+                        for idx in 0..<self.claims.count {
+                            self.claims[idx].removeAll()
+                        }
+                        self.isSilentUpdate = false
+                    }
+                    self.offset += claims.count
                     
-                    me.offset += claims.count
-                    
-                    me.process(claims: claims)
-                    me.onUpdate?()
-                    me.isLoading = false
+                    self.process(claims: claims)
+                    self.onUpdate?()
+                    self.isLoading = false
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)
@@ -98,6 +107,11 @@ class ClaimsDataSource {
             request.start()
         }
         
+    }
+    
+    func updateSilently() {
+        isSilentUpdate = true
+        loadData()
     }
     
     func headerText(for indexPath: IndexPath) -> String {
@@ -112,7 +126,7 @@ class ClaimsDataSource {
     func showHeader(for section: Int) -> Bool {
         return claims[section].isEmpty == false
     }
-
+    
     private func process(claims: [ClaimLike]) {
         for claim in claims {
             let idx: Int!

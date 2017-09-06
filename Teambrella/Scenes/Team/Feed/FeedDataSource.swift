@@ -30,6 +30,8 @@ class FeedDataSource {
     var since: UInt64 = 0
     let limit = 100
     
+    var isSilentUpdate = false
+    
     var onLoad: (() -> Void)?
     
     init(teamID: Int) {
@@ -37,16 +39,28 @@ class FeedDataSource {
     }
     
     func loadData() {
+        let offset = isSilentUpdate ? 0 : count
         let context = FeedRequestContext(teamID: teamID, since: since, offset: offset, limit: limit)
         service.storage.requestTeamFeed(context: context).observe { [weak self] result in
             switch result {
             case let .value(feed):
-                self?.items.append(contentsOf: feed)
-                self?.onLoad?()
+                guard let `self` = self else { return }
+                
+                if self.isSilentUpdate {
+                    self.items.removeAll()
+                    self.isSilentUpdate = false
+                }
+                self.items.append(contentsOf: feed)
+                self.onLoad?()
             case let .error(error):
                 print(error)
             }
         }
+    }
+    
+    func updateSilently() {
+        isSilentUpdate = true
+        loadData()
     }
     
     subscript(indexPath: IndexPath) -> FeedEntity {
