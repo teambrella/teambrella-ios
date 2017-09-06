@@ -88,4 +88,8 @@ extension String {
         return formattedNumber(Double(cgFloat))
     }
     
+    static func truncatedNumber(_ double: Double) -> String {
+        return String(Int(double + 0.5))
+    }
+    
 }

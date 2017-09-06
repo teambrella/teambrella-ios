@@ -66,6 +66,14 @@ class ScaleBar: UIView {
     var valueColor: UIColor = .lightBlue
     @IBInspectable
     var lineColor: UIColor = .paleGray
+    @IBInspectable
+    var isLineHidden: Bool = false {
+        didSet {
+            if oldValue != isLineHidden {
+                setNeedsDisplay()
+            }
+        }
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -79,6 +87,7 @@ class ScaleBar: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let context = UIGraphicsGetCurrentContext() else { return }
+        guard isLineHidden == false else { return }
         
         context.setStrokeColor(lineColor.cgColor)
         context.setLineWidth(1)

@@ -40,13 +40,13 @@ struct ClaimsCellBuilder {
         if let cell = cell as? ClaimsOpenCell {
             cell.avatarView.showAvatar(string: claim.smallPhoto)
             cell.button.setTitle("Team.ClaimsCell.viewToVote".localized, for: .normal)
-            cell.claimedAmountLabel.text = String(format: "%.2f", claim.claimAmount)
+            cell.claimedAmountLabel.text = service.currencySymbol + String.truncatedNumber(claim.claimAmount)
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
         } else if let cell = cell as? ClaimsVotedCell {
             cell.avatarView.showAvatar(string: claim.smallPhoto)
-            cell.claimedAmountLabel.text = String(format: "%.2f", claim.claimAmount)
+            cell.claimedAmountLabel.text = service.currencySymbol + String.truncatedNumber(claim.claimAmount)
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
-            cell.votedLabel.text = "Voted: " + String(format: "%.2f", claim.myVote)
+            cell.votedLabel.text = "Team.Claims.VitedCell.voted".localized + String.formattedNumber(claim.myVote)
             if let name = claim.proxyName {
                 cell.voterLabel.isHidden = true
                 cell.voterLabel.text = "By " + name
@@ -58,11 +58,13 @@ struct ClaimsCellBuilder {
             if claim.state == .declined {
                 cell.statusLabel.text = "Team.ClaimsCell.declined".localized.uppercased()
                 cell.statusLabel.textColor = .red
+                cell.scaleBar.isLineHidden = true
             } else {
                 cell.statusLabel.text = "Team.ClaimsCell.reimbursed".localized.uppercased()
                 cell.statusLabel.textColor = .blueyGray
+                cell.scaleBar.isLineHidden = true
             }
-            cell.amountLabel.text = String(format: "%.2f", claim.claimAmount)
+            cell.amountLabel.text = service.currencySymbol + String.truncatedNumber(claim.claimAmount)
             cell.scaleBar.value = CGFloat(claim.reimbursement)
         }
     }
