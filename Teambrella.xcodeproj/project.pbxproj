@@ -1195,6 +1195,81 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		6D56F09F1F61ADDA00C758C9 /* JoinTeam */ = {
+			isa = PBXGroup;
+			children = (
+				944504C11F07CFAE00CF443F /* JoinTeamGreetingCell.swift */,
+				944504C21F07CFAE00CF443F /* JoinTeamGreetingCell.xib */,
+				94E325B71F07DA9400B2D8C8 /* JoinTeamInfoCell.swift */,
+				94E325B81F07DA9400B2D8C8 /* JoinTeamInfoCell.xib */,
+				94E325BB1F07E36E00B2D8C8 /* JoinTeamPersonalCell.swift */,
+				94E325BC1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib */,
+				94E325C31F07EF0D00B2D8C8 /* JoinTeamItemCell.swift */,
+				94E325C41F07EF0D00B2D8C8 /* JoinTeamItemCell.xib */,
+				94E325C71F07F77A00B2D8C8 /* JoinTeamMessageCell.swift */,
+				94E325C81F07F77A00B2D8C8 /* JoinTeamMessageCell.xib */,
+				94E325CB1F07FA7E00B2D8C8 /* JoinTeamTermsCell.swift */,
+				94E325CC1F07FA7E00B2D8C8 /* JoinTeamTermsCell.xib */,
+			);
+			name = JoinTeam;
+			sourceTree = "<group>";
+		};
+		6D56F0A01F61ADF300C758C9 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				94C186AC1F59B9A200F1BE51 /* WalletTransactionCell.swift */,
+				94C186AD1F59B9A200F1BE51 /* WalletTransactionCell.xib */,
+				6D69DA1F1EFD19BF00DED5CE /* WalletHeaderCell.swift */,
+				6D69DA201EFD19BF00DED5CE /* WalletHeaderCell.xib */,
+				6D69DA271EFD1A0400DED5CE /* WalletFundingCell.swift */,
+				6D69DA281EFD1A0400DED5CE /* WalletFundingCell.xib */,
+				6D69DA2B1EFD1A1E00DED5CE /* WalletButtonsCell.swift */,
+				6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */,
+			);
+			name = Wallet;
+			sourceTree = "<group>";
+		};
+		6D56F0A11F61AE0C00C758C9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				94E80E4A1F0FABFF00DE1A0A /* HomeSupportCell.swift */,
+				94E80E4B1F0FABFF00DE1A0A /* HomeSupportCell.xib */,
+				94E80E4E1F0FD30400DE1A0A /* HomeApplicationDeniedCell.swift */,
+				94E80E4F1F0FD30400DE1A0A /* HomeApplicationDeniedCell.xib */,
+				94E80E521F0FDA3100DE1A0A /* HomeApplicationAcceptedCell.swift */,
+				94E80E531F0FDA3100DE1A0A /* HomeApplicationAcceptedCell.xib */,
+				94E80E561F0FE33500DE1A0A /* HomeApplicationStatusCell.swift */,
+				94E80E571F0FE33500DE1A0A /* HomeApplicationStatusCell.xib */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		6D56F0A21F61AE2E00C758C9 /* Claim */ = {
+			isa = PBXGroup;
+			children = (
+				6DDE95761EE843540019DA47 /* ClaimVoteCell.swift */,
+				6DDE95771EE843540019DA47 /* ClaimVoteCell.xib */,
+				6DDE957E1EE84FFD0019DA47 /* ClaimDetailsCell.swift */,
+				6DDE957F1EE84FFD0019DA47 /* ClaimDetailsCell.xib */,
+				6DDE95821EE853550019DA47 /* ClaimOptionsCell.swift */,
+				6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */,
+				94266A331F55AE0E0089543F /* ClaimTransactionCell.swift */,
+				94266A341F55AE0E0089543F /* ClaimTransactionCell.xib */,
+			);
+			name = Claim;
+			sourceTree = "<group>";
+		};
+		6D56F0A31F61AE5F00C758C9 /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				6D0D2AED1EFBDB7C0095284C /* ProxyCell.swift */,
+				6D0D2AEE1EFBDB7C0095284C /* ProxyCell.xib */,
+				6D69D9F91EFC07FF00DED5CE /* ProxyForCell.swift */,
+				6D69D9FA1EFC07FF00DED5CE /* ProxyForCell.xib */,
+			);
+			name = Proxy;
+			sourceTree = "<group>";
+		};
 		6D69D9EE1EFBFF3700DED5CE /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1612,7 +1687,12 @@
 		6DB812271EE7150700B202CE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6D56F0A21F61AE2E00C758C9 /* Claim */,
+				6D56F0A11F61AE0C00C758C9 /* Home */,
+				6D56F09F1F61ADDA00C758C9 /* JoinTeam */,
+				6D56F0A31F61AE5F00C758C9 /* Proxy */,
 				6D0E05621EFEBF4800604981 /* Report */,
+				6D56F0A01F61ADF300C758C9 /* Wallet */,
 				6D1A9B261F55D306004192AC /* PrivateChatUserCell.swift */,
 				6D1A9B271F55D306004192AC /* PrivateChatUserCell.xib */,
 				6D02AC9D1F06A70800B01AAF /* VotingScrollerCell.swift */,
@@ -1622,60 +1702,20 @@
 				6DB812291EE715DA00B202CE /* DiscussionCell.xib */,
 				6DDE95661EE806F80019DA47 /* ImageGalleryCell.swift */,
 				6DDE95671EE806F80019DA47 /* ImageGalleryCell.xib */,
-				6DDE95761EE843540019DA47 /* ClaimVoteCell.swift */,
-				6DDE95771EE843540019DA47 /* ClaimVoteCell.xib */,
-				6DDE957E1EE84FFD0019DA47 /* ClaimDetailsCell.swift */,
-				6DDE957F1EE84FFD0019DA47 /* ClaimDetailsCell.xib */,
-				6DDE95821EE853550019DA47 /* ClaimOptionsCell.swift */,
-				6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */,
 				6DE7932D1EF810DB005F4508 /* ChatCell.swift */,
 				6DE7932E1EF810DB005F4508 /* ChatCell.xib */,
-				6D0D2AED1EFBDB7C0095284C /* ProxyCell.swift */,
-				6D0D2AEE1EFBDB7C0095284C /* ProxyCell.xib */,
-				6D69D9F91EFC07FF00DED5CE /* ProxyForCell.swift */,
-				6D69D9FA1EFC07FF00DED5CE /* ProxyForCell.xib */,
 				6D69D9FD1EFC32CB00DED5CE /* UserIndexCell.swift */,
 				6D69D9FE1EFC32CB00DED5CE /* UserIndexCell.xib */,
-				6D69DA1F1EFD19BF00DED5CE /* WalletHeaderCell.swift */,
-				6D69DA201EFD19BF00DED5CE /* WalletHeaderCell.xib */,
-				6D69DA271EFD1A0400DED5CE /* WalletFundingCell.swift */,
-				6D69DA281EFD1A0400DED5CE /* WalletFundingCell.xib */,
-				6D69DA2B1EFD1A1E00DED5CE /* WalletButtonsCell.swift */,
-				6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */,
 				6D69DA311EFD6CB700DED5CE /* TeamFeedCell.swift */,
 				6D69DA321EFD6CB700DED5CE /* TeamFeedCell.xib */,
-				944504C11F07CFAE00CF443F /* JoinTeamGreetingCell.swift */,
-				944504C21F07CFAE00CF443F /* JoinTeamGreetingCell.xib */,
-				94E325B71F07DA9400B2D8C8 /* JoinTeamInfoCell.swift */,
-				94E325B81F07DA9400B2D8C8 /* JoinTeamInfoCell.xib */,
-				94E325BB1F07E36E00B2D8C8 /* JoinTeamPersonalCell.swift */,
-				94E325BC1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib */,
-				94E325C31F07EF0D00B2D8C8 /* JoinTeamItemCell.swift */,
-				94E325C41F07EF0D00B2D8C8 /* JoinTeamItemCell.xib */,
-				94E325C71F07F77A00B2D8C8 /* JoinTeamMessageCell.swift */,
-				94E325C81F07F77A00B2D8C8 /* JoinTeamMessageCell.xib */,
-				94E325CB1F07FA7E00B2D8C8 /* JoinTeamTermsCell.swift */,
-				94E325CC1F07FA7E00B2D8C8 /* JoinTeamTermsCell.xib */,
 				94E325BF1F07E76300B2D8C8 /* LabeledTextField.swift */,
 				94E325C11F07E78E00B2D8C8 /* LabeledTextField.xib */,
-				94E80E4A1F0FABFF00DE1A0A /* HomeSupportCell.swift */,
-				94E80E4B1F0FABFF00DE1A0A /* HomeSupportCell.xib */,
-				94E80E4E1F0FD30400DE1A0A /* HomeApplicationDeniedCell.swift */,
-				94E80E4F1F0FD30400DE1A0A /* HomeApplicationDeniedCell.xib */,
-				94E80E521F0FDA3100DE1A0A /* HomeApplicationAcceptedCell.swift */,
-				94E80E531F0FDA3100DE1A0A /* HomeApplicationAcceptedCell.xib */,
-				94E80E561F0FE33500DE1A0A /* HomeApplicationStatusCell.swift */,
-				94E80E571F0FE33500DE1A0A /* HomeApplicationStatusCell.xib */,
 				9480EA121F15246E008A7A3F /* RiskCell.swift */,
 				9480EA131F15246E008A7A3F /* RiskCell.xib */,
 				94C2D3981F191FA600D203C2 /* TeamCell.swift */,
 				94C2D3991F191FA600D203C2 /* TeamCell.xib */,
 				6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */,
 				6DCF62561F4B319F00E8F500 /* PhotoPreviewCell.xib */,
-				94266A331F55AE0E0089543F /* ClaimTransactionCell.swift */,
-				94266A341F55AE0E0089543F /* ClaimTransactionCell.xib */,
-				94C186AC1F59B9A200F1BE51 /* WalletTransactionCell.swift */,
-				94C186AD1F59B9A200F1BE51 /* WalletTransactionCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";

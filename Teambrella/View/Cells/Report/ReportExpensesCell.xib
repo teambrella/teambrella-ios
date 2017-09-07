@@ -27,7 +27,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xYo-cw-Uez">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xYo-cw-Uez" customClass="TextField" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="20" y="26.5" width="373" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="gDN-vh-cht"/>
@@ -36,7 +36,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9IJ-Kw-1v0">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9IJ-Kw-1v0" customClass="TextField" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="409" y="26.5" width="110" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="w3o-e9-AQj"/>

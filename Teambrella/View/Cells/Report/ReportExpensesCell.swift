@@ -23,8 +23,8 @@ import UIKit
 
 class ReportExpensesCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var headerLabel: InfoLabel!
-    @IBOutlet var expensesTextField: UITextField!
-    @IBOutlet var currencyTextField: UITextField!
+    @IBOutlet var expensesTextField: TextField!
+    @IBOutlet var currencyTextField: TextField!
     @IBOutlet var numberBar: NumberBar!
 
     override func awakeFromNib() {

@@ -286,3 +286,9 @@ extension ReportVC: UITextViewDelegate {
         }
     }
 }
+
+extension ReportVC: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        (textField as? TextField)?.isInAlertMode = false
+    }
+}

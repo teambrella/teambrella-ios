@@ -23,7 +23,7 @@ import UIKit
 
 class ReportTextFieldCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var headerLabel: Label!
-    @IBOutlet var textField: UITextField!
+    @IBOutlet var textField: TextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()

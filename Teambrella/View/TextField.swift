@@ -10,13 +10,13 @@ import UIKit
 
 class TextField: UITextField {
     var alertBorderColor: UIColor = .red
-    var normalBorderColor: UIColor = .lightGray
-    var isAlertMode: Bool = false {
+    var normalBorderColor: UIColor = .cloudyBlue
+    var isInAlertMode: Bool = false {
         didSet {
         layer.borderWidth = 1
             layer.cornerRadius = 5
             clipsToBounds = true
-            layer.borderColor = isAlertMode ? alertBorderColor.cgColor : normalBorderColor.cgColor
+            layer.borderColor = isInAlertMode ? alertBorderColor.cgColor : normalBorderColor.cgColor
         }
     }
 

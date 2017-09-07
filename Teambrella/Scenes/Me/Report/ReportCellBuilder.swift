@@ -44,28 +44,32 @@ struct ReportCellBuilder {
         } else if let cell = cell as? ReportExpensesCell, let model = model as? ExpensesReportCellModel {
             cell.headerLabel.text = model.title
             cell.numberBar.left?.titleLabel.text = model.deductibleTitle
-            cell.numberBar.middle?.titleLabel.text = model.coverageTitle
-            cell.numberBar.right?.titleLabel.text = model.amountTitle
-            
             cell.numberBar.left?.amountLabel.text = model.deductibleString
-            cell.numberBar.middle?.amountLabel.text = model.coverageString
-            cell.numberBar.right?.amountLabel.text = model.expensesString
+            cell.numberBar.left?.currencyLabel.text = service.currencySymbol
             
+            cell.numberBar.middle?.titleLabel.text = model.coverageTitle
+            cell.numberBar.middle?.amountLabel.text = model.coverageString
+            cell.numberBar.middle?.currencyLabel.text = service.currencySymbol
+            
+            cell.numberBar.right?.titleLabel.text = model.amountTitle
+            cell.numberBar.right?.amountLabel.text = model.expensesString
+            cell.numberBar.right?.currencyLabel.text = service.currencySymbol
+            
+            cell.expensesTextField.delegate = reportVC
             cell.expensesTextField.text = String(model.expenses)
             cell.expensesTextField.keyboardType = .decimalPad
-            cell.expensesTextField.rightView = model.isValid ? nil : UIImageView(image: #imageLiteral(resourceName: "closeIcon"))
+            //cell.expensesTextField.rightView = model.isValid ? nil : UIImageView(image: #imageLiteral(resourceName: "closeIcon"))
+            cell.expensesTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
             cell.expensesTextField.rightViewMode = .unlessEditing
             
             cell.currencyTextField.isUserInteractionEnabled = false
+            cell.currencyTextField.text = service.currencySymbol
             
             cell.expensesTextField.tag = indexPath.row
             cell.expensesTextField.removeTarget(reportVC, action: nil, for: .allEvents)
             cell.expensesTextField.addTarget(reportVC,
                                              action: #selector(ReportVC.textFieldDidChange),
                                              for: .editingChanged)
-            if let team = service.session?.currentTeam {
-                cell.currencyTextField.text = team.currencySymbol
-            }
         } else if let cell = cell as? ReportDescriptionCell, let model = model as? DescriptionReportCellModel {
             cell.headerLabel.text = model.title
             cell.textView.text = model.text
@@ -83,6 +87,8 @@ struct ReportCellBuilder {
             cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(0)
         } else if let cell = cell as? ReportTextFieldCell, let model = model as? WalletReportCellModel {
             cell.headerLabel.text = model.title
+            cell.textField.delegate = reportVC
+            cell.textField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
             cell.textField.text = model.text
             cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
             cell.textField.tag = indexPath.row
@@ -90,6 +96,8 @@ struct ReportCellBuilder {
             cell.textField.addTarget(reportVC, action: #selector(ReportVC.textFieldDidChange), for: .editingChanged)
         } else if let cell = cell as? ReportTextFieldCell, let model = model as? TitleReportCellModel {
             cell.headerLabel.text = model.title
+            cell.textField.delegate = reportVC
+            cell.textField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
             cell.textField.text = model.text
             cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
             cell.textField.tag = indexPath.row

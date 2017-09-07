@@ -37,14 +37,14 @@
                             <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="600" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3E2-y1-WiR" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="600" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3E2-y1-WiR" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="12" width="28.5" height="20.5"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="mBTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecV-sI-j40" customClass="CurrencyLabel" customModule="Teambrella" customModuleProvider="target">
-                            <rect key="frame" x="28.5" y="10" width="28" height="11"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mBTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecV-sI-j40" customClass="CurrencyLabel" customModule="Teambrella" customModuleProvider="target">
+                            <rect key="frame" x="28.5" y="10" width="297" height="11"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                             <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
