@@ -19,6 +19,8 @@ struct TeamsModel {
 protocol ReportModel {
     var teamID: Int { get }
     var text: String { get }
+    
+    var isValid: Bool { get }
 }
 
 struct NewClaimModel: ReportModel {
@@ -28,12 +30,16 @@ struct NewClaimModel: ReportModel {
     let text: String
     let images: [String]
     let address: String
+    
+    var isValid: Bool { return expenses > 0 && text != "" && address != "" }
 }
 
 struct NewChatModel: ReportModel {
     let teamID: Int
     let title: String
     let text: String
+    
+    var isValid: Bool { return title != "" && text != "" }
 }
 
 struct ChatModel {

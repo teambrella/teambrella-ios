@@ -12,6 +12,7 @@ protocol ReportCellModel {
     var cellReusableIdentifier: String { get }
     var preferredHeight: Float { get }
     var title: String { get }
+    var isValid: Bool { get }
 }
 
 struct ItemReportCellModel: ReportCellModel {
@@ -23,6 +24,7 @@ struct ItemReportCellModel: ReportCellModel {
     let photo: String
     let location: String
     
+    var isValid: Bool { return true }
 }
 
 struct DateReportCellModel: ReportCellModel {
@@ -30,6 +32,8 @@ struct DateReportCellModel: ReportCellModel {
     var preferredHeight: Float { return 80 }
     let title = "Me.Report.DateCell.title".localized
     var date: Date
+    
+    var isValid: Bool { return true }
 }
 
 struct ExpensesReportCellModel: ReportCellModel {
@@ -46,6 +50,8 @@ struct ExpensesReportCellModel: ReportCellModel {
     var coverage: Double
     var coverageString: String { return cryptoCoinsString(amount: coverage) }
     
+    var isValid: Bool { return expenses > 0 }
+    
     private func cryptoCoinsString(amount: Double) -> String {
         return String.formattedNumber(amount * 1000)
     }
@@ -57,6 +63,7 @@ struct DescriptionReportCellModel: ReportCellModel {
     let title: String
     var text: String
     
+    var isValid: Bool { return title != "" && text != "" }
 }
 
 struct PhotosReportCellModel: ReportCellModel {
@@ -66,6 +73,7 @@ struct PhotosReportCellModel: ReportCellModel {
     let buttonTitle = "Me.Report.PhotosCell.buttonTitle".localized
     var photos: [String]
     
+    var isValid: Bool { return true }
 }
 
 struct WalletReportCellModel: ReportCellModel {
@@ -73,6 +81,8 @@ struct WalletReportCellModel: ReportCellModel {
     var preferredHeight: Float { return 80 }
     let title = "Me.Report.WalletCell.title".localized
     var text: String
+    
+    var isValid: Bool { return text != "" }
 }
 
 struct TitleReportCellModel: ReportCellModel {
@@ -80,10 +90,14 @@ struct TitleReportCellModel: ReportCellModel {
     var preferredHeight: Float { return 80 }
     let title = "Me.Report.TitleCell.title".localized
     var text: String
+    
+    var isValid: Bool { return text != "" }
 }
 
 struct HeaderTitleReportCellModel: ReportCellModel {
     var cellReusableIdentifier: String { return ReportTitleCell.cellID }
     var preferredHeight: Float { return 70 }
     let title = "Me.Report.HeaderTitleCell.title".localized
+    
+    var isValid: Bool { return true }
 }

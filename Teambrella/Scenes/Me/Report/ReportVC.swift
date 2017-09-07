@@ -164,8 +164,15 @@ class ReportVC: UIViewController, Routable {
         validateAndSendData()
     }
     
+    var isInCorrectionMode: Bool = false
+    
     func validateAndSendData() {
         guard let model = dataSource.reportModel(imageStrings: photoController.photos) else { return }
+        guard model.isValid else {
+            isInCorrectionMode = true
+            collectionView.reloadData()
+            return
+        }
         
         dataSource.send(model: model) { [weak self] result in
             guard let me = self else { return }

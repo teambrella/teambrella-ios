@@ -91,6 +91,8 @@ struct EnhancedClaimEntity: EntityLike {
     
     mutating func update(with json: JSON) {
         try? self.json.merge(with: json)
+        // because merge of arrays (even if they are equal) adds one to another
+        self.json["VotingPart"]["OtherAvatars"] = json["VotingPart"]["OtherAvatars"]
     }
     
 }

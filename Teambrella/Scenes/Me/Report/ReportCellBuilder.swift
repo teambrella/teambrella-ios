@@ -53,6 +53,8 @@ struct ReportCellBuilder {
             
             cell.expensesTextField.text = String(model.expenses)
             cell.expensesTextField.keyboardType = .decimalPad
+            cell.expensesTextField.rightView = model.isValid ? nil : UIImageView(image: #imageLiteral(resourceName: "closeIcon"))
+            cell.expensesTextField.rightViewMode = .unlessEditing
             
             cell.currencyTextField.isUserInteractionEnabled = false
             
