@@ -122,7 +122,6 @@ class ClaimVC: UIViewController, Routable {
     }
     
     func sliderMoved(slider: UISlider) {
-        print("Value changed: \(slider.value)")
         updateVotingCell()
         lastUpdatedVote = Date()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
@@ -141,9 +140,9 @@ class ClaimVC: UIViewController, Routable {
         let cells = collectionView.visibleCells.flatMap { $0 as? ClaimVoteCell }
         guard let cell = cells.first else { return }
         
-        cell.yourVotePercentValue.text = String(format: "%.2f", cell.slider.value * 100)
+        cell.yourVotePercentValue.text = String.truncatedNumber(cell.slider.value * 100)
         if let amount = dataSource.claim?.claimAmount {
-            cell.yourVoteAmount.text = String(format: "%.0f", cell.slider.value * Float(amount))
+            cell.yourVoteAmount.text = String.truncatedNumber(cell.slider.value * Float(amount))
         }
         cell.yourVotePercentValue.alpha = 0.5
         cell.yourVoteAmount.alpha = 0.5

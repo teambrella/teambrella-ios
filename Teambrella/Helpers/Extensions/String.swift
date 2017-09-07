@@ -92,4 +92,12 @@ extension String {
         return String(Int(double + 0.5))
     }
     
+    static func truncatedNumber(_ float: Float) -> String {
+        return truncatedNumber(Double(float))
+    }
+    
+    static func truncatedNumber(_ cgFloat: CGFloat) -> String {
+        return truncatedNumber(Double(cgFloat))
+    }
+    
 }

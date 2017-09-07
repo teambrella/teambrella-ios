@@ -82,10 +82,10 @@ struct ClaimCellBuilder {
         cell.pieChart.endAngle = 130
         
         cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
-        let myVote = String(format: "%.2f", claim.myVote * 100)
+        let myVote = String.truncatedNumber(claim.myVote * 100)
         cell.yourVotePercentValue.text = myVote
         cell.yourVotePercentValue.alpha = 1
-        cell.yourVoteAmount.text = String(format: "%.0f", claim.myVote * claim.claimAmount)
+        cell.yourVoteAmount.text = String.truncatedNumber(claim.myVote * claim.claimAmount)
         cell.yourVoteAmount.alpha = 1
         
         if let proxyAvatar = claim.proxyAvatar {
@@ -97,8 +97,8 @@ struct ClaimCellBuilder {
         }
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
-        cell.teamVotePercentValue.text = String(format: "%.2f", claim.ratioVoted * 100)
-        cell.teamVoteAmount.text = String(format: "%.0f", claim.ratioVoted * claim.claimAmount)
+        cell.teamVotePercentValue.text = String.truncatedNumber(claim.ratioVoted * 100)
+        cell.teamVoteAmount.text = String.truncatedNumber(claim.ratioVoted * claim.claimAmount)
         
         cell.submitButton.setTitle("Team.ClaimCell.voteSubmitted".localized, for: .normal)
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
