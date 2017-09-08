@@ -23,29 +23,24 @@ import UIKit
 
 @IBDesignable
 class Label: UILabel {
-    @IBInspectable
-    var topInset: CGFloat {
+    @IBInspectable var topInset: CGFloat {
         get { return textInsets.top }
         set { textInsets.top = newValue }
     }
-    @IBInspectable
-    var leftInset: CGFloat {
+    @IBInspectable var leftInset: CGFloat {
         get { return textInsets.left }
         set { textInsets.left = newValue }
     }
-    @IBInspectable
-    var bottomInset: CGFloat {
+    @IBInspectable var bottomInset: CGFloat {
         get { return textInsets.bottom }
         set { textInsets.bottom = newValue }
     }
-    @IBInspectable
-    var rightInset: CGFloat {
+    @IBInspectable var rightInset: CGFloat {
         get { return textInsets.right }
         set { textInsets.right = newValue }
     }
     
-    @IBInspectable
-    var cornerRadius: CGFloat {
+    @IBInspectable var cornerRadius: CGFloat {
         get { return layer.cornerRadius }
         set {
             if newValue != 0 {

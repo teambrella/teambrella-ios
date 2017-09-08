@@ -27,10 +27,8 @@ import UIKit
 @IBDesignable
 public class GradientView: UIView {
     
-    @IBInspectable
-    public var topColor: UIColor? = UIColor.clear
-    @IBInspectable
-    public var bottomColor: UIColor? = UIColor.black
+    @IBInspectable public var topColor: UIColor? = UIColor.clear
+    @IBInspectable public var bottomColor: UIColor? = UIColor.black
     var colors: [UIColor]?
     var locations: [NSNumber] = [0.0, 1.0]
     

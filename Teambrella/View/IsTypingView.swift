@@ -32,8 +32,7 @@ class IsTypingView: UIView {
     
     var currentIdx: Int = 0
     
-    @IBInspectable
-    var dotColor: UIColor = .black {
+    @IBInspectable var dotColor: UIColor = .black {
         didSet {
             views.forEach { $0.backgroundColor = dotColor }
         }

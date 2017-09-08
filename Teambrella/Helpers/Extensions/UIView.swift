@@ -21,8 +21,9 @@
 
 import UIKit
 
-fileprivate var activityIndicatorViewAssociativeKey = "ActivityIndicatorViewAssociativeKey"
-public extension UIView {
+private var activityIndicatorViewAssociativeKey = "ActivityIndicatorViewAssociativeKey"
+
+extension UIView {
     var  indicator: UIActivityIndicatorView {
         get {
             if let activityIndicatorView = getAssociatedObject(&activityIndicatorViewAssociativeKey)

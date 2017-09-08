@@ -80,7 +80,8 @@ class ReportVC: UIViewController, Routable {
                            object: nil)
     }
     
-    @objc func adjustForKeyboard(notification: Notification) {
+    @objc
+    func adjustForKeyboard(notification: Notification) {
         guard let userInfo = notification.userInfo,
             let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else { return }
         

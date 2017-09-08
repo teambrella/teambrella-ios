@@ -68,8 +68,7 @@ class NumberView: UIView, XIBInitable {
         setNeedsLayout()
     }
     
-    @IBInspectable
-    var isBadgeVisible: Bool = true {
+    @IBInspectable var isBadgeVisible: Bool = true {
         didSet {
             badgeLabel.isHidden = !isBadgeVisible
             currencyToContainerConstraint.isActive = !isBadgeVisible
@@ -77,8 +76,7 @@ class NumberView: UIView, XIBInitable {
         }
     }
     
-    @IBInspectable
-    var isCurrencyOnTop: Bool = true {
+    @IBInspectable var isCurrencyOnTop: Bool = true {
         didSet {
             currencyLabel.font = isCurrencyOnTop ? UIFont.teambrellaBold(size: 9) : UIFont.teambrellaBold(size: 23)
             if isCurrencyOnTop {

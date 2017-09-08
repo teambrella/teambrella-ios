@@ -59,12 +59,15 @@ class GalleryView: ImageSlideshow {
             }
             
             let inputs: [InputSource] = imageStrings.flatMap { KingfisherSource(urlString: $0,
-                                                                            options: [.requestModifier(modifier)]) }
+                                                                                options: [.requestModifier(modifier)])
+                
+            }
             completion(inputs)
         }
     }
     
-    @objc func tap(sender: UITapGestureRecognizer ) {
+    @objc
+    func tap(sender: UITapGestureRecognizer ) {
         onTap?(self)
     }
     

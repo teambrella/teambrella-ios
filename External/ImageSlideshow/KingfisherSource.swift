@@ -52,7 +52,8 @@ public class KingfisherSource: NSObject, InputSource {
         }
     }
 
-    @objc public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
+    @objc
+    public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
         imageView.kf.setImage(with: self.url,
                               placeholder: self.placeholder,
                               options: options,

@@ -26,8 +26,7 @@ class RoundImageView: UIImageView {
     private let imageView = UIImageView()
     private var limbView: UIView?
     private var label: UILabel?
-    @IBInspectable
-    override var image: UIImage? {
+    @IBInspectable override var image: UIImage? {
         get {
             return imageView.image
         }
@@ -35,8 +34,7 @@ class RoundImageView: UIImageView {
             imageView.image = newValue
         }
     }
-    @IBInspectable
-    var limbColor: UIColor? {
+    @IBInspectable var limbColor: UIColor? {
         get {
             return limbView?.backgroundColor
         }
@@ -51,8 +49,7 @@ class RoundImageView: UIImageView {
             limbView?.backgroundColor = newValue
         }
     }
-    @IBInspectable
-    var viewColor: UIColor? {
+    @IBInspectable var viewColor: UIColor? {
         get {
             return imageView.backgroundColor
         }
@@ -60,8 +57,7 @@ class RoundImageView: UIImageView {
             imageView.backgroundColor = newValue
         }
     }
-    @IBInspectable
-    var text: String? {
+    @IBInspectable var text: String? {
         get {
             return label?.text
         }
@@ -78,8 +74,7 @@ class RoundImageView: UIImageView {
             label?.text = newValue
         }
     }
-    @IBInspectable
-    var textColor: UIColor?
+    @IBInspectable var textColor: UIColor?
     
     var font: UIFont?
     
@@ -89,8 +84,7 @@ class RoundImageView: UIImageView {
         }
     }
 
-    @IBInspectable
-    var inset: CGFloat = 0.0 {
+    @IBInspectable var inset: CGFloat = 0.0 {
         didSet {
             setNeedsLayout()
         }

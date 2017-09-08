@@ -23,8 +23,8 @@ import UIKit
 
 @IBDesignable
 class BorderedButton: UIButton {
-    @IBInspectable
-    var borderColor: UIColor = .robinEggBlue {
+    
+    @IBInspectable var borderColor: UIColor = .robinEggBlue {
         didSet {
             setup()
         }
@@ -39,7 +39,7 @@ class BorderedButton: UIButton {
         super.init(frame: frame)
         setup()
     }
-
+    
     func setup() {
         layer.masksToBounds = true
         layer.cornerRadius = 5

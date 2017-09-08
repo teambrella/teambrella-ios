@@ -36,17 +36,11 @@ class BrickView: UIView {
         case lower
     }
     
-    @IBInspectable
-    var icon: UIImage?
-    @IBInspectable
-    var title: String = ""
-    @IBInspectable
-    var amount: String = "0"
-    @IBInspectable
-    var currency: String = "USD"
-   
-    @IBInspectable
-    var badge: String?
+    @IBInspectable var icon: UIImage?
+    @IBInspectable var title: String = ""
+    @IBInspectable var amount: String = "0"
+    @IBInspectable var currency: String = "USD"
+    @IBInspectable var badge: String?
     
     var currencyType: BrickViewCurrencyType = .normal
     var amountTextColor: UIColor = .black

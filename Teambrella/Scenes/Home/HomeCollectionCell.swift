@@ -26,6 +26,7 @@ class HomeCollectionCell: UICollectionViewCell, XIBInitableCell, ClosableCell {
         static let cornerRadius: CGFloat = 5.0
         static let shadowRadius: CGFloat = 2.0
     }
+    
     @IBOutlet var containerView: UIView!
     
     @IBOutlet var titleLabel: UILabel!

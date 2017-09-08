@@ -48,21 +48,25 @@ class WalletVC: UIViewController {
         
     }
     
-    @objc func tapFund(sender: UIButton) {
+    @objc
+    func tapFund(sender: UIButton) {
         service.router.presentWalletDetails(walletID: walletID)
         print("tap Fund")
     }
     
-    @objc func tapBarcode(sender: UIButton) {
+    @objc
+    func tapBarcode(sender: UIButton) {
         service.router.presentWalletDetails(walletID: walletID)
         print("tap Barcode")
     }
     
-    @objc func tapInfo(sender: UIButton) {
+    @objc
+    func tapInfo(sender: UIButton) {
         print("tap Info")
     }
     
-    @objc func tapWithdraw(sender: UIButton) {
+    @objc
+    func tapWithdraw(sender: UIButton) {
         print("tap Withdraw")
     }
     

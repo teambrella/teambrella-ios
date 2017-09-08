@@ -26,20 +26,16 @@ class NumberBar: UIView, XIBInitable {
     
     var contentView: UIView!
     
-    @IBInspectable
-    var count: Int = 2 {
+    @IBInspectable var count: Int = 2 {
         didSet {
             populateNumberViews()
         }
     }
-    @IBInspectable
-    var isBottomLineVisible: Bool = false
-    @IBInspectable
-    var lineColor: UIColor = .paleGray40 {
+    @IBInspectable var isBottomLineVisible: Bool = false
+    @IBInspectable var lineColor: UIColor = .paleGray40 {
         didSet { drawingView.redraw(master: self) }
     }
-    @IBInspectable
-    var stackHeight: CGFloat {
+    @IBInspectable var stackHeight: CGFloat {
         get { return stackViewHeight.constant }
         set { stackViewHeight.constant = newValue }
     }

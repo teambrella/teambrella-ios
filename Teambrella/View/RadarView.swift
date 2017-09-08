@@ -23,32 +23,23 @@ import UIKit
 
 @IBDesignable
 class RadarView: UIView {
-    @IBInspectable
-    var color: UIColor = .paleLilac
-    @IBInspectable
-    var segments: Int = 3
-    @IBInspectable
-    var diameter: CGFloat = 136
-    @IBInspectable
-    var startAngle: CGFloat = 0
-    @IBInspectable
-    var endAngle: CGFloat = 180
-    @IBInspectable
-    var centerX: CGFloat = 0 {
+    @IBInspectable var color: UIColor = .paleLilac
+    @IBInspectable var segments: Int = 3
+    @IBInspectable var diameter: CGFloat = 136
+    @IBInspectable var startAngle: CGFloat = 0
+    @IBInspectable var endAngle: CGFloat = 180
+    @IBInspectable var centerX: CGFloat = 0 {
         didSet {
             setNeedsDisplay()
         }
     }
-    @IBInspectable
-    var centerY: CGFloat = 0 {
+    @IBInspectable var centerY: CGFloat = 0 {
         didSet {
             setNeedsDisplay()
         }
     }
-    @IBInspectable
-    var startWidth: CGFloat = 20
-    @IBInspectable
-    var coefficient: CGFloat = 1.3
+    @IBInspectable var startWidth: CGFloat = 20
+    @IBInspectable var coefficient: CGFloat = 1.3
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)

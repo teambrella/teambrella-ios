@@ -39,6 +39,8 @@ class VotingScrollerVC: UIViewController {
     
     weak var delegate: VotingScrollerDelegate?
     
+    var shouldSilenceScroll: Bool = false
+    
     func updateWithRiskScale(riskScale: RiskScaleEntity) {
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
@@ -67,7 +69,7 @@ class VotingScrollerVC: UIViewController {
                 cell.layoutIfNeeded()
             }
         }
-    
+        
         cell.topLabel.isHidden = false
         cell.isCentered = true
         
@@ -84,19 +86,19 @@ class VotingScrollerVC: UIViewController {
     func scrollToTeamAverage(animated: Bool = true) {
         shouldSilenceScroll = !animated
         for (idx, model) in dataSource.models.enumerated() where model.isTeamAverage {
-                collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
-                                            at: .centeredHorizontally,
-                                            animated: animated)
-                break
+            collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
+                                        at: .centeredHorizontally,
+                                        animated: animated)
+            break
         }
     }
     
     func scrollToCenter() {
-       scrollTo(offset: maxValue / 2)
+        scrollTo(offset: maxValue / 2)
     }
     
     func scrollTo(offset: CGFloat) {
-         collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)
+        collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)
     }
     
     override func viewDidLoad() {
@@ -125,10 +127,9 @@ class VotingScrollerVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    var shouldSilenceScroll: Bool = false
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if shouldSilenceScroll == false {
-        delegate?.votingScroller(controller: self, didChange: scrollView.contentOffset.x)
+            delegate?.votingScroller(controller: self, didChange: scrollView.contentOffset.x)
         } else {
             shouldSilenceScroll = false
         }
@@ -141,7 +142,7 @@ class VotingScrollerVC: UIViewController {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-        delegate?.votingScroller(controller: self, didSelect: scrollView.contentOffset.x)
+            delegate?.votingScroller(controller: self, didSelect: scrollView.contentOffset.x)
         }
     }
     

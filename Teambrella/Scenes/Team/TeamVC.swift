@@ -35,7 +35,7 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         setupTeambrellaTabLayout()
         super.viewDidLoad()
         setupTransparentNavigationBar()
-//        addTeamButton()
+        //        addTeamButton()
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,54 +43,54 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         // Dispose of any resources that can be recreated.
     }
     
-//    private func addTeamButton() {
-//        let button = UIButton(type: .custom)
-//        let image = #imageLiteral(resourceName: "iconCoverage")
-//        button.tintColor = .teambrellaBlue
-//        button.setImage(image, for: .normal)
-//        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//        button.addTarget(self, action: #selector(tapTeam(button:)), for: .touchUpInside)
-//        let barItem = UIBarButtonItem(customView: button)
-//        navigationItem.setLeftBarButton(barItem, animated: false)
-//    }
+    //    private func addTeamButton() {
+    //        let button = UIButton(type: .custom)
+    //        let image = #imageLiteral(resourceName: "iconCoverage")
+    //        button.tintColor = .teambrellaBlue
+    //        button.setImage(image, for: .normal)
+    //        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+    //        button.addTarget(self, action: #selector(tapTeam(button:)), for: .touchUpInside)
+    //        let barItem = UIBarButtonItem(customView: button)
+    //        navigationItem.setLeftBarButton(barItem, animated: false)
+    //    }
     
     func tapTeam(button: UIButton) {
-       // TeamRouter().presentChooseTeam(in: self)
-          service.router.showJoinTeam(in: self)
+        // TeamRouter().presentChooseTeam(in: self)
+        service.router.showJoinTeam(in: self)
         //service.router.presentJoinTeam()
         /*
-        let alert = UIAlertController(title: "Select your team",
-                                      message: "Please select your team",
-                                      preferredStyle: .actionSheet)
-        
-        let teams = ["Happy dogs team",
-                     "Muscle cars owners",
-                     "Private beta",
-                     "To live is to drive",
-                     "Honda Supra race team",
-                     "Toyota civic knights",
-                     "Pussycats",
-                     "Drive as you mean it",
-                     "My dog my rules",
-                     "Kittens are awesome",
-                     "Pet shop girls",
-                     "Straw dogs",
-                     "Wheel burners",
-                     "From Husk till Dawn"]
-        for team in teams {
-            let teamButton = UIAlertAction(title: team, style: .default) { action in
-                self.teamSelected(name: action.title)
-            }
-            alert.addAction(teamButton)
-        }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            print("Cancel pressed")
-        }
-        alert.addAction(cancel)
-        present(alert, animated: true) {
-            print("Alert presented")
-        }
- */
+         let alert = UIAlertController(title: "Select your team",
+         message: "Please select your team",
+         preferredStyle: .actionSheet)
+         
+         let teams = ["Happy dogs team",
+         "Muscle cars owners",
+         "Private beta",
+         "To live is to drive",
+         "Honda Supra race team",
+         "Toyota civic knights",
+         "Pussycats",
+         "Drive as you mean it",
+         "My dog my rules",
+         "Kittens are awesome",
+         "Pet shop girls",
+         "Straw dogs",
+         "Wheel burners",
+         "From Husk till Dawn"]
+         for team in teams {
+         let teamButton = UIAlertAction(title: team, style: .default) { action in
+         self.teamSelected(name: action.title)
+         }
+         alert.addAction(teamButton)
+         }
+         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { action in
+         print("Cancel pressed")
+         }
+         alert.addAction(cancel)
+         present(alert, animated: true) {
+         print("Alert presented")
+         }
+         */
         
     }
     
@@ -98,7 +98,7 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         let name = name ?? ""
         let alert = UIAlertController(title: "Team change",
                                       message: "Are you sure you want to change your current team to \(name)?",
-            preferredStyle: .alert)
+                                      preferredStyle: .alert)
         let confirm = UIAlertAction(title: "Yes I do", style: .destructive) { action in
             print("Confirm pressed")
         }

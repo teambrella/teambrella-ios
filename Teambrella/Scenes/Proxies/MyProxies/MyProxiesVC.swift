@@ -70,7 +70,8 @@ class MyProxiesVC: UIViewController {
         self.collectionView.addGestureRecognizer(longPressGesture)
     }
     
-    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+    @objc
+    func handleLongGesture(gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
             let point = gesture.location(in: collectionView)

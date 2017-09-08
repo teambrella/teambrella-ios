@@ -37,12 +37,12 @@ struct FeedCellModel {
     
     static var fake: FeedCellModel {
         return FeedCellModel(title: "Fake Discount Deals",
-                                     text: "Just discovered a new garage in my neigborhood that is really good and...",
-                                     avatar: "",
-                                     teammatesAvatars: [],
-                                     teammatesCount: 3,
-                                     lastPostedMinutes: 1,
-                                     unreadCount: 4,
-                                     type: .teammate)
+                             text: "Just discovered a new garage in my neigborhood that is really good and...",
+                             avatar: "",
+                             teammatesAvatars: [],
+                             teammatesCount: 3,
+                             lastPostedMinutes: 1,
+                             unreadCount: 4,
+                             type: .teammate)
     }
 }

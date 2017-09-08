@@ -27,7 +27,7 @@ extension Array {
         var lo = 0
         var hi = self.count - 1
         while lo <= hi {
-            let mid = (lo + hi)/2
+            let mid = (lo + hi) / 2
             if order(self[mid], element) {
                 lo = mid + 1
             } else if order(element, self[mid]) {

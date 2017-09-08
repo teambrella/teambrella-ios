@@ -23,8 +23,7 @@ import UIKit
 
 @IBDesignable
 class RoundedCornersView: GradientView {
-    @IBInspectable
-    var topLeft: Bool = false {
+    @IBInspectable var topLeft: Bool = false {
         didSet {
             if topLeft == true {
                 roundingCorners.insert(.topLeft)
@@ -33,8 +32,7 @@ class RoundedCornersView: GradientView {
             }
         }
     }
-    @IBInspectable
-    var topRight: Bool = false {
+    @IBInspectable var topRight: Bool = false {
         didSet {
             if topRight == true {
                 roundingCorners.insert(.topRight)
@@ -43,8 +41,7 @@ class RoundedCornersView: GradientView {
             }
         }
     }
-    @IBInspectable
-    var bottomLeft: Bool = false {
+    @IBInspectable var bottomLeft: Bool = false {
         didSet {
             if bottomLeft == true {
                 roundingCorners.insert(.bottomLeft)
@@ -53,8 +50,7 @@ class RoundedCornersView: GradientView {
             }
         }
     }
-    @IBInspectable
-    var bottomRight: Bool = false {
+    @IBInspectable var bottomRight: Bool = false {
         didSet {
             if bottomRight == true {
                 roundingCorners.insert(.bottomRight)
@@ -66,8 +62,7 @@ class RoundedCornersView: GradientView {
     
     var roundingCorners: UIRectCorner = []
     
-    @IBInspectable
-    var cornerRadius: CGFloat = 0
+    @IBInspectable var cornerRadius: CGFloat = 0
     
     override func layoutSubviews() {
         super.layoutSubviews()

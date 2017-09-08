@@ -31,6 +31,13 @@ class LoginBlueVC: UIViewController {
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var confetti: SKView!
     
+    var isEmitterAdded: Bool = false
+    let validUsers: [String: ServerService.FakeKeyType] = ["10212220476497327": .thorax,
+                                                           "10213031213152997": .denis,
+                                                           "10155873130993128": .kate,
+                                                           "10205925536911596": .eugene
+    ]
+    
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
         let manager = FBSDKLoginManager()
         let permissions = ["public_profile", "email", "user_friends"]
@@ -79,7 +86,6 @@ class LoginBlueVC: UIViewController {
         addEmitter()
     }
     
-    var isEmitterAdded: Bool = false
     func addEmitter() {
         guard !isEmitterAdded else { return }
         
@@ -126,11 +132,6 @@ class LoginBlueVC: UIViewController {
                        completion: nil)
     }
     
-    let validUsers: [String: ServerService.FakeKeyType] = ["10212220476497327": .thorax,
-                                                           "10213031213152997": .denis,
-                                                           "10155873130993128": .kate,
-                                                           "10205925536911596": .eugene
-    ]
     func register(token: String, userID: String) {
         guard let validUser = validUsers[userID] else {
             performSegue(type: .invitationOnly, sender: nil)

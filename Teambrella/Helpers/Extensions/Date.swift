@@ -42,6 +42,6 @@ extension Date {
     }
     
     init(ticks: UInt64) {
-        self.init(timeIntervalSince1970: Double(ticks)/10_000_000 - 62_135_596_800)
+        self.init(timeIntervalSince1970: Double(ticks) / 10_000_000 - 62_135_596_800)
     }
 }

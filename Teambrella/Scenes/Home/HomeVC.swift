@@ -101,7 +101,8 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         view.addGestureRecognizer(gesture)
     }
     
-    @objc func swipeToLogout(sender: UISwipeGestureRecognizer) {
+    @objc
+    func swipeToLogout(sender: UISwipeGestureRecognizer) {
         service.router.logout()
     }
     
@@ -267,11 +268,13 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         //        DeveloperTools.notSupportedAlert(in: self)
     }
     
-    @objc func tapChatWithSupport(_ sender: UIButton) {
+    @objc
+    func tapChatWithSupport(_ sender: UIButton) {
         DeveloperTools.notSupportedAlert(in: self)
     }
     
-    @objc func closeCard(_ sender: UIButton) {
+    @objc
+    func closeCard(_ sender: UIButton) {
         dataSource.deleteCard(at: sender.tag)
         collectionView.reloadData()
         pageControl.numberOfPages = dataSource.cardsCount

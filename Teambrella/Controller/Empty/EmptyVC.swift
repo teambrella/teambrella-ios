@@ -9,10 +9,10 @@
 import UIKit
 
 class EmptyVC: UIViewController {
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var mainLabel: UILabel!
-    @IBOutlet var detailsLabel: UILabel!
-    @IBOutlet var stackView: UIStackView!
+    @IBOutlet private var imageView: UIImageView!
+    @IBOutlet private var mainLabel: UILabel!
+    @IBOutlet private var detailsLabel: UILabel!
+    @IBOutlet private var stackView: UIStackView!
     
     class func show(in viewController: UIViewController,
                     inView: UIView? = nil,

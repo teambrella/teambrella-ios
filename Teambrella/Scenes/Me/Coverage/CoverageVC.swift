@@ -113,7 +113,8 @@ class CoverageVC: UIViewController, Routable {
         }
     }
     
-    @objc func changeValues(slider: UISlider) {
+    @objc
+    func changeValues(slider: UISlider) {
         let expenses = Double(slider.value) * limitAmount
         centerAmount.amountLabel.text = String.truncatedNumber(expenses)
         lowerAmount.amountLabel.text = String.truncatedNumber(expenses * Double(coverageAmount / 100))

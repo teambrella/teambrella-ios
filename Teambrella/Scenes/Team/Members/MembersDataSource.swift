@@ -40,6 +40,7 @@ class MembersDatasource {
     var isLoading = false
     var sections: Int { return strategy.sections }
     var sortType: SortVC.SortType { return strategy.sortType }
+    
     func itemsInSection(section: Int) -> Int { return strategy.itemsInSection(section: section) }
     func type(indexPath: IndexPath) -> TeammateSectionType { return strategy.type(indexPath: indexPath) }
     func headerTitle(indexPath: IndexPath) -> String { return strategy.headerTitle(indexPath: indexPath) }

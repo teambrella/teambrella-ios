@@ -35,16 +35,14 @@ class ScaleBar: UIView {
         return label
     }()
     
-    @IBInspectable
-    var leftText: String? {
+    @IBInspectable var leftText: String? {
         get { return leftLabel.text }
         set {
             leftLabel.text = newValue
             setNeedsLayout()
         }
     }
-    @IBInspectable
-    var rightText: String? {
+    @IBInspectable var rightText: String? {
         get { return rightLabel.text }
         set {
             rightLabel.text = newValue
@@ -52,22 +50,17 @@ class ScaleBar: UIView {
         }
     }
     
-    @IBInspectable
-    var value: CGFloat = 0 {
+    @IBInspectable var value: CGFloat = 0 {
         didSet {
             if value < 0 { value = 0 }
             if value > 1 { value = 1 }
             setNeedsDisplay()
         }
     }
-    @IBInspectable
-    var lineWidth: CGFloat = 4
-    @IBInspectable
-    var valueColor: UIColor = .lightBlue
-    @IBInspectable
-    var lineColor: UIColor = .paleGray
-    @IBInspectable
-    var isLineHidden: Bool = false {
+    @IBInspectable var lineWidth: CGFloat = 4
+    @IBInspectable var valueColor: UIColor = .lightBlue
+    @IBInspectable var lineColor: UIColor = .paleGray
+    @IBInspectable var isLineHidden: Bool = false {
         didSet {
             if oldValue != isLineHidden {
                 setNeedsDisplay()

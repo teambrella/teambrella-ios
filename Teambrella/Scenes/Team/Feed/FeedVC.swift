@@ -67,7 +67,8 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         return IndicatorInfo(title: "Team.FeedVC.indicatorTitle".localized)
     }
 
-    @objc func tapStartDiscussion(sender: UIButton) {
+    @objc
+    func tapStartDiscussion(sender: UIButton) {
         service.router.presentReport(context: .newChat, delegate: self)
     }
 }

@@ -38,7 +38,7 @@ class PushService {
     }
     
     func getNotificationSettings() {
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
             print("Notification settings: \(settings)")
         }
     }

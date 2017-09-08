@@ -10,12 +10,9 @@ import UIKit
 
 @IBDesignable
 class LabeledRoundImageView: UIView {
-    @IBInspectable
-    var textColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    @IBInspectable
-    var labelBackgroundColor: UIColor = .blueWithAHintOfPurple
-    @IBInspectable
-    var riskLabelText: String = "" {
+    @IBInspectable var textColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    @IBInspectable var labelBackgroundColor: UIColor = .blueWithAHintOfPurple
+    @IBInspectable var riskLabelText: String = "" {
         didSet {
             riskLabel.text = riskLabelText
         }

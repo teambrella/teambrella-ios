@@ -23,38 +23,32 @@ import UIKit
 
 @IBDesignable
 class PieChartView: UIView {
-    @IBInspectable
-    var startAngle: CGFloat = 0 {
+    @IBInspectable var startAngle: CGFloat = 0 {
         didSet {
             setNeedsDisplay()
         }
     }
-    @IBInspectable
-    var endAngle: CGFloat = 0 {
+    @IBInspectable var endAngle: CGFloat = 0 {
         didSet {
             setNeedsDisplay()
         }
     }
-    @IBInspectable
-    var lineWidth: CGFloat = 1 {
+    @IBInspectable var lineWidth: CGFloat = 1 {
         didSet {
             setNeedsDisplay()
         }
     }
-    @IBInspectable
-    var lineColor: UIColor = .white {
+    @IBInspectable var lineColor: UIColor = .white {
         didSet {
             setNeedsDisplay()
         }
     }
-    @IBInspectable
-    var pieColor: UIColor = .lightGold {
+    @IBInspectable var pieColor: UIColor = .lightGold {
         didSet {
             setNeedsDisplay()
         }
     }
-    @IBInspectable
-    var pieceAlpha: CGFloat = 0.4 {
+    @IBInspectable var pieceAlpha: CGFloat = 0.4 {
         didSet {
             setNeedsDisplay()
         }

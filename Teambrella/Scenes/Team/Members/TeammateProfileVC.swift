@@ -94,7 +94,8 @@ class TeammateProfileVC: UIViewController, Routable {
         super.didReceiveMemoryWarning()
     }
     
-    @objc func showClaims(sender: UIButton) {
+    @objc
+    func showClaims(sender: UIButton) {
         if let claimCount = dataSource.extendedTeammate?.object.claimCount,
             claimCount == 1,
             let claimID = dataSource.extendedTeammate?.object.singleClaimID {

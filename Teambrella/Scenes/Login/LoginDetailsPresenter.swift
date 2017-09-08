@@ -22,18 +22,20 @@
 import Foundation
 
 protocol LoginDetailsView: class {
+    var code: String? { get }
+    var gender: Gender { get }
+    var date: Date { get }
+    
     func register(enable: Bool)
     func greeting(text: String)
     func changeDate(to date: Date)
     func changeGender(to gender: Gender)
     func showAvatar(url: URL)
-    var code: String? { get }
-    var gender: Gender { get }
-    var date: Date { get }
 }
 
 protocol LoginDetailsPresenter {
     var router: LoginDetailsRouter { get set }
+    
     func viewDidLoad()
     func tapRegister()
     func codeTextChanged(text: String?)

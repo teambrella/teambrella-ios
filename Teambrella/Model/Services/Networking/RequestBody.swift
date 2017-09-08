@@ -28,9 +28,9 @@ struct RequestBodyFactory {
                                       "P": 0,
                                       "Search": NSNull()]
         return RequestBody(timestamp: key.timestamp,
-                signature: key.signature,
-                publicKey: key.publicKey,
-                payload: payload)
+                           signature: key.signature,
+                           publicKey: key.publicKey,
+                           payload: payload)
     }
     
     static func teammateBody(key: Key, id: String) -> RequestBody? {
@@ -39,10 +39,10 @@ struct RequestBodyFactory {
                                       "AfterVer": 0]
         return RequestBody(key: key, payload: payload)
     }
-
+    
     static func newPostBody(key: Key, topicID: String, text: String) -> RequestBody? {
         let payload: [String: Any] = ["TopicId": topicID,
-        "Text": text]
+                                      "Text": text]
         return RequestBody(key: key, payload: payload)
     }
     

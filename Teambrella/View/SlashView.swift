@@ -10,10 +10,8 @@ import UIKit
 
 @IBDesignable
 class SlashView: UIView {
-    @IBInspectable
-    var horizontallOffset: CGFloat = 15
-    @IBInspectable
-    var slashViewColor: UIColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+    @IBInspectable var horizontallOffset: CGFloat = 15
+    @IBInspectable var slashViewColor: UIColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
     
     override func draw(_ rect: CGRect) {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
