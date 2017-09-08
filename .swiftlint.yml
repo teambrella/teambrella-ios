@@ -28,7 +28,7 @@ opt_in_rules:
   - no_extension_access_modifier
   - quick_discouraged_call
   - unneeded_parentheses_in_closure_argument
-  - vertical_parameter_alignment_on_call
+  #- vertical_parameter_alignment_on_call
 
 excluded: # paths to ignore during linting.
   - Carthage
