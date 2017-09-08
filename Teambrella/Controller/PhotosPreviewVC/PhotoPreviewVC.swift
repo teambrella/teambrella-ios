@@ -36,7 +36,7 @@ class PhotoPreviewVC: UICollectionViewController {
         collectionView?.register(PhotoPreviewCell.nib, forCellWithReuseIdentifier: PhotoPreviewCell.cellID)
     }
     
-    func cellTapCancel(sender: UIButton) {
+    @objc func cellTapCancel(sender: UIButton) {
         let indexPath = IndexPath(row: sender.tag, section: 0)
         collectionView?.performBatchUpdates({
             self.photos.remove(at: indexPath.row)

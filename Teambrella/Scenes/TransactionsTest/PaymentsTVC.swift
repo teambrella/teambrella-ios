@@ -41,7 +41,7 @@ class PaymentsTVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func tapSign(sender: UIButton) {
+    @objc func tapSign(sender: UIButton) {
         let cells = tableView.visibleCells.flatMap { $0 as? TransactionCell }.filter { $0.signButton == sender }
         if let cell = cells.first, let indexPath = tableView.indexPath(for: cell) {
             let transaction = tx(indexPath: indexPath)

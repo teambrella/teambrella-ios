@@ -80,7 +80,7 @@ class ReportVC: UIViewController, Routable {
                            object: nil)
     }
     
-    func adjustForKeyboard(notification: Notification) {
+    @objc func adjustForKeyboard(notification: Notification) {
         guard let userInfo = notification.userInfo,
             let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else { return }
         
@@ -103,7 +103,7 @@ class ReportVC: UIViewController, Routable {
         }
     }
     
-    func tapView(sender: UITapGestureRecognizer) {
+    @objc func tapView(sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
@@ -124,7 +124,7 @@ class ReportVC: UIViewController, Routable {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func datePickerChangedValue(sender: UIDatePicker) {
+    @objc func datePickerChangedValue(sender: UIDatePicker) {
         var idx = 0
         for i in 0 ..< dataSource.items.count where dataSource.items[i] is DateReportCellModel {
             idx = i
@@ -159,7 +159,7 @@ class ReportVC: UIViewController, Routable {
                                          animated: false)
     }
     
-    func tapSubmit(_ sender: UIButton) {
+    @objc func tapSubmit(_ sender: UIButton) {
         print("tap Submit")
         validateAndSendData()
     }

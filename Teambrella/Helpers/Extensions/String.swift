@@ -43,7 +43,7 @@ extension String {
         return stride(from: 0, to: characters.count, by: count).map { i -> String in
             let startIndex = self.index(self.startIndex, offsetBy: i)
             let endIndex   = self.index(startIndex, offsetBy: count, limitedBy: self.endIndex) ?? self.endIndex
-            return self[startIndex..<endIndex]
+            return String(self[startIndex..<endIndex])
         }
     }
     
@@ -60,10 +60,10 @@ extension String {
     func attributedBoldString(nonBoldRange: NSRange?) -> NSAttributedString {
         let fontSize = UIFont.systemFontSize
         let attrs = [
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: fontSize),
-            NSForegroundColorAttributeName: UIColor.black
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: fontSize),
+            NSAttributedStringKey.foregroundColor: UIColor.black
         ]
-        let nonBoldAttribute = [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)]
+        let nonBoldAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)]
         let attrStr = NSMutableAttributedString(string: self, attributes: attrs)
         if let range = nonBoldRange {
             attrStr.setAttributes(nonBoldAttribute, range: range)

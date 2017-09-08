@@ -41,7 +41,7 @@ struct TeambrellaStyle {
         //        navigationBar.shadowImage = UIImage()
         navigationBar.barTintColor = .teambrellaBlue
         navigationBar.tintColor = .white
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
     
     static func baseButtonStyle() {

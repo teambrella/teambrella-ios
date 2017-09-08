@@ -40,7 +40,7 @@ class TransactionsresultTVC: UITableViewController {
         self.navigationItem.titleView = button
     }
     
-    func tapTitle() {
+    @objc func tapTitle() {
         performSegue(type: .teamDetails, sender: teambrella.fetcher.firstTeam)
     }
 

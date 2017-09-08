@@ -36,7 +36,7 @@ struct ChatFragmentHeightCalculator {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = text.boundingRect(with: constraintRect,
                                             options: .usesLineFragmentOrigin,
-                                            attributes: [NSFontAttributeName: font],
+                                            attributes: [NSAttributedStringKey.font: font],
                                             context: nil)
         return ceil(boundingBox.height)
     }

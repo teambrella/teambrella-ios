@@ -52,7 +52,7 @@ class LoginDetailsVC: UIViewController {
         presenter?.tapRegister()
     }
     
-    func textChanged() {
+    @objc func textChanged() {
         presenter?.codeTextChanged(text: codeTextField.text)
     }
     

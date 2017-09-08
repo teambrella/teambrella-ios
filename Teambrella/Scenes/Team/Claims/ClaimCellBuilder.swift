@@ -51,7 +51,7 @@ struct ClaimCellBuilder {
     }
     
     static func populateImageGallery(cell: ImageGalleryCell, with claim: EnhancedClaimEntity) {
-        let imageURLStrings = claim.largePhotos.flatMap { service.server.urlString(string: $0) }
+        let imageURLStrings = claim.largePhotos.map { service.server.urlString(string: $0) }
         print(imageURLStrings)
         service.server.updateTimestamp { timestamp, error in
             let key = Key(base58String: ServerService.privateKey,

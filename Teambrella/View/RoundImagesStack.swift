@@ -37,7 +37,7 @@ class RoundImagesStack: UIView {
     }
     
     func  setAvatars(images: [String], label: String? = nil, max: Int? = nil) {
-        let images = images.flatMap { service.server.avatarURLstring(for: $0) }
+        let images = images.map { service.server.avatarURLstring(for: $0) }
         let urls = images.flatMap { URL(string: $0) }
         set(images: urls, label: label, max: max)
     }

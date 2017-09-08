@@ -197,7 +197,7 @@ class UniversalChatVC: UIViewController, Routable {
     
     // MARK: Callbacks
     
-    func tapLeftButton(sender: UIButton) {
+    @objc func tapLeftButton(sender: UIButton) {
         showImagePicker(controller: self)
     }
     
@@ -209,7 +209,7 @@ class UniversalChatVC: UIViewController, Routable {
         controller.present(picker, animated: true, completion: nil)
     }
     
-    func tapRightButton(sender: UIButton) {
+    @objc func tapRightButton(sender: UIButton) {
         guard let text = input?.textView.text else { return }
         
         send(text: text, images: [])
@@ -237,7 +237,7 @@ class UniversalChatVC: UIViewController, Routable {
         collectionView.refreshControl = refresh
     }
     
-    func refreshNeeded(sender: UIRefreshControl) {
+    @objc func refreshNeeded(sender: UIRefreshControl) {
         if dataSource.hasPrevious {
             dataSource.loadPrevious()
         } else {
@@ -341,7 +341,7 @@ class UniversalChatVC: UIViewController, Routable {
         send(text: input?.textView.text ?? "", images: [name])
     }
     
-    func tapAvatar(sender: UITapGestureRecognizer) {
+    @objc func tapAvatar(sender: UITapGestureRecognizer) {
         guard let view = sender.view else { return }
         
         let indexPath = IndexPath(row: view.tag, section: 0)
