@@ -199,7 +199,7 @@ class BlockchainStorageFetcher {
     func transactionsChangeResolution(txs: [Tx], to resolution: TransactionClientResolution, when: Date = Date()) {
         for tx in txs {
             tx.resolution = resolution
-            tx.clientResolutionTimeValue = when as NSDate
+            tx.clientResolutionTimeValue = when
             tx.isServerUpdateNeeded = true
             storage.save()
         }
@@ -280,7 +280,7 @@ class BlockchainStorageFetcher {
         let me = tx.teammate.team.me(user: user)
         txSignature.teammateValue = me
         txSignature.isServerUpdateNeededValue = true
-        txSignature.signatureValue = signature as NSData
+        txSignature.signatureValue = signature
         save()
         return txSignature
     }

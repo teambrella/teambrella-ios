@@ -149,7 +149,7 @@ struct EntityFactory {
                 address.addressValue = id
                 let dateString = item["DateCreated"].stringValue
                 if let date = formatter.date(from: dateString) {
-                    address.dateCreatedValue = date as NSDate
+                    address.dateCreatedValue = date
                 }
                 if let status = UserAddressStatus(rawValue: item["Status"].intValue) {
                     let newStatus: UserAddressStatus!
@@ -199,7 +199,7 @@ struct EntityFactory {
                 payTo.idValue = id
                 payTo.isDefaultValue = item["IsDefault"].boolValue
                 payTo.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
-                payTo.knownSinceValue = Date() as NSDate
+                payTo.knownSinceValue = Date()
             }
             if payTo.isDefault {
                 payTo.teammate.payTos.forEach { otherPayTo in
@@ -222,23 +222,23 @@ struct EntityFactory {
             let id = item["Id"].stringValue
             if let existingTx = fetcher.transaction(id: id) {
                 existingTx.stateValue = item["State"].int16Value
-                existingTx.updateTimeValue = Date() as NSDate
-                existingTx.resolutionTimeValue = formatter.nsDate(from: item, key: "ResolutionTime")
-                existingTx.processedTimeValue = formatter.nsDate(from: item, key: "ProcessedTime")
+                existingTx.updateTimeValue = Date()
+                existingTx.resolutionTimeValue = formatter.date(from: item, key: "ResolutionTime")
+                existingTx.processedTimeValue = formatter.date(from: item, key: "ProcessedTime")
             } else {
                 let tx = Tx(context: context)
                 tx.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
                 tx.claimIDValue = item["ClaimId"].int64Value
                 tx.idValue = id
-                tx.initiatedTimeValue = formatter.nsDate(from: item, key: "InitiatedTime")
+                tx.initiatedTimeValue = formatter.date(from: item, key: "InitiatedTime")
                 tx.kindValue = item["Kind"].int16Value
                 tx.stateValue = item["State"].int16Value
                 tx.withdrawReqIDValue = item["WithdrawReqId"].int64Value
                 tx.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
                 tx.claimTeammateValue = fetcher.teammate(id: item["ClaimTeammateId"].int64Value)
                 
-                tx.receivedTimeValue = Date() as NSDate
-                tx.updateTimeValue = Date() as NSDate
+                tx.receivedTimeValue = Date()
+                tx.updateTimeValue = Date()
                 tx.resolutionValue = Int16(TransactionClientResolution.none.rawValue)
                 tx.isServerUpdateNeededValue = false
             }
@@ -297,7 +297,7 @@ struct EntityFactory {
             let signature = TxSignature.create(in: context)
             signature.inputIDValue = txInputId
             signature.teammateIDValue = teammateID
-            signature.signatureValue = item["Signature"].stringValue.base64data as NSData?
+            signature.signatureValue = item["Signature"].stringValue.base64data
             signature.isServerUpdateNeededValue = false
             signature.inputValue = txInput
             signature.teammateValue = fetcher.teammate(id: teammateID)
