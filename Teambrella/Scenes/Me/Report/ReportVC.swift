@@ -103,10 +103,12 @@ class ReportVC: UIViewController, Routable {
         }
     }
     
-    @objc func tapView(sender: UITapGestureRecognizer) {
+    @objc
+    func tapView(sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
+    @objc
     func tapAddPhoto(sender: UIButton) {
         let alert = UIAlertController(title: "Me.Report.ImageSource.title".localized,
                                       message: nil,
@@ -124,7 +126,8 @@ class ReportVC: UIViewController, Routable {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @objc func datePickerChangedValue(sender: UIDatePicker) {
+    @objc
+    func datePickerChangedValue(sender: UIDatePicker) {
         var idx = 0
         for i in 0 ..< dataSource.items.count where dataSource.items[i] is DateReportCellModel {
             idx = i
@@ -159,7 +162,8 @@ class ReportVC: UIViewController, Routable {
                                          animated: false)
     }
     
-    @objc func tapSubmit(_ sender: UIButton) {
+    @objc
+    func tapSubmit(_ sender: UIButton) {
         print("tap Submit")
         validateAndSendData()
     }
@@ -181,6 +185,7 @@ class ReportVC: UIViewController, Routable {
         }
     }
     
+    @objc
     func textFieldDidChange(textField: UITextField) {
         let indexPath = IndexPath(row: textField.tag, section: 0)
         if var model = dataSource[indexPath] as? WalletReportCellModel {

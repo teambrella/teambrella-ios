@@ -136,19 +136,23 @@ class TeammateProfileVC: UIViewController, Routable {
         }
     }
     
+    @objc
     func tapFacebook() {
         DeveloperTools.notSupportedAlert(in: self)
     }
     
+    @objc
     func tapTwitter() {
         DeveloperTools.notSupportedAlert(in: self)
     }
     
+    @objc
     func tapEmail() {
         DeveloperTools.notSupportedAlert(in: self)
     }
     
-    @objc func tapAddToProxy(sender: UIButton) {
+    @objc
+    func tapAddToProxy(sender: UIButton) {
         dataSource.addToProxy { [weak self] in
             guard let me = self else { return }
             

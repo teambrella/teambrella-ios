@@ -115,12 +115,14 @@ class ClaimVC: UIViewController, Routable {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc
     func tapGallery(sender: UITapGestureRecognizer) {
         guard let gallery = sender.view as? ImageSlideshow else { return }
         
         gallery.presentFullScreenController(from: self)
     }
     
+    @objc
     func sliderMoved(slider: UISlider) {
         updateVotingCell()
         lastUpdatedVote = Date()
@@ -148,6 +150,7 @@ class ClaimVC: UIViewController, Routable {
         cell.yourVoteAmount.alpha = 0.5
     }
     
+    @objc
     func tapTransactions(sender: UITapGestureRecognizer) {
         print("\ntap Transactions\n")
         guard let session = service.session?.currentTeam?.teamID, let claimID = self.claimID else { return }
