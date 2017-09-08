@@ -15,7 +15,7 @@ github "aschuch/QRCode"
 
 #  Libraries
 #github "facebook/Facebook-SDK-Swift"
-github "badoo/Chatto"
+#github "badoo/Chatto"
 
 # Views
 github "MortimerGoro/MGSwipeTableCell"
