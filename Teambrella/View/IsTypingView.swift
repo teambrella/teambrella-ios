@@ -28,9 +28,7 @@ class IsTypingView: UIView {
         return dot
     }()
     
-    lazy var views: [UIView] = {
-        return [self.left, self.middle, self.right]
-    }()
+    lazy var views: [UIView] = { [self.left, self.middle, self.right] }()
     
     var currentIdx: Int = 0
     

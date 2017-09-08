@@ -46,7 +46,7 @@ class InitialVC: UIViewController {
                 case let .value(teamsEntity):
                     service.session = Session()
                     let lastTeam = teamsEntity.lastTeamID.map { id in
-                        return teamsEntity.teams.filter { team in team.teamID == id } }?.first
+                        teamsEntity.teams.filter { team in team.teamID == id } }?.first
                     if let lastTeam = lastTeam {
                         service.session?.currentTeam = lastTeam
                     } else if !teamsEntity.teams.isEmpty {

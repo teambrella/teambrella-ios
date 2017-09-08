@@ -70,9 +70,7 @@ struct RiskScaleEntity {
     let coversIfMax: Double
     let myRisk: Double
     
-    lazy var sortedTeammates: [Teammate] = {
-        return self.ranges.flatMap { $0.teammates }.sorted { $0.risk < $1.risk }
-    }()
+    lazy var sortedTeammates: [Teammate] = { self.ranges.flatMap { $0.teammates }.sorted { $0.risk < $1.risk } }()
     
     var averageRange: Range? {
        return rangeContaining(risk: averageRisk)

@@ -24,6 +24,7 @@ opt_in_rules:
   - redundant_nil_coalescing
   - object_literal
   - pattern_matching_keywords
+  - implicit_return  
 
 excluded: # paths to ignore during linting.
   - Carthage
