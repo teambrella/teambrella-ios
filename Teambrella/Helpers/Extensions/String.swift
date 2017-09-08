@@ -30,7 +30,7 @@ extension String {
         guard let range = self.range(of: ".") else { return self }
         
         return NSLocalizedString(self,
-                                 tableName: self.substring(to: range.lowerBound),
+                                 tableName: String(self[..<range.lowerBound]),
                                  comment: self)
     }
     
