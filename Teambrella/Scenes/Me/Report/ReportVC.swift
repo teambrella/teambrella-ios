@@ -59,7 +59,14 @@ class ReportVC: UIViewController, Routable {
             setupTransparentNavigationBar()
             defaultGradientOnTop()
             automaticallyAdjustsScrollViewInsets = false
-            title = "Report a Claim"
+            guard let context = reportContext else { return }
+            
+            switch context {
+            case .newChat:
+                title = "Me.Report.NewDiscussion.title".localized
+            case .claim:
+                title = "Me.Report.ReportClaim.title".localized
+            }
         }
         addKeyboardObservers()
         
