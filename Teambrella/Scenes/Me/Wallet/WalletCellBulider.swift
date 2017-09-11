@@ -23,6 +23,8 @@ import Foundation
 import Kingfisher
 
 struct WalletCellBuilder {
+    var currencyRate: Double = 0.0
+    
     static func registerCells(in collectionView: UICollectionView) {
         collectionView.register(WalletHeaderCell.nib, forCellWithReuseIdentifier: WalletHeaderCell.cellID)
         collectionView.register(WalletButtonsCell.nib, forCellWithReuseIdentifier: WalletButtonsCell.cellID)
