@@ -34,6 +34,8 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     var teammate: TeammateLike?
     
     var isFirstLoading = true
+    // is pushed to navigation stack instead of being the first controller in XLPagerTabStrip
+    var isPresentedInStack = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,10 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         dataSource.loadData()
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
+        }
+        if isPresentedInStack {
+            addGradientNavBar()
+            automaticallyAdjustsScrollViewInsets = false
         }
     }
     
@@ -60,11 +66,6 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         collectionView.register(InfoHeader.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: InfoHeader.cellID)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -87,7 +88,7 @@ extension ClaimsVC: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCell(withReuseIdentifier: dataSource.cellIdentifier(for: indexPath),
                                                   for: indexPath)
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView,

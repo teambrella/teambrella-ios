@@ -74,6 +74,7 @@ class UniversalChatVC: UIViewController, Routable {
         title = dataSource.title
         
         service.socket?.add(listener: socketToken, action: { [weak self] action in
+            print(action.command)
             switch action.command {
             case .typing:
                 self?.receivedIsTyping(action: action)

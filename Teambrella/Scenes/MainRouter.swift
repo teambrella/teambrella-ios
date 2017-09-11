@@ -125,7 +125,7 @@ final class MainRouter {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
         
         vc.teammate = teammate
-        vc.automaticallyAdjustsScrollViewInsets = false
+        vc.isPresentedInStack = true
         push(vc: vc)
     }
     

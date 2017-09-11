@@ -76,11 +76,13 @@ struct TeammateCellBuilder {
             left.titleLabel.text = "Team.TeammateCell.coversMe".localized
             let amount = teammate.basic.coversMeAmount
             left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+            left.currencyLabel.text = service.currencySymbol
         }
         if let right = cell.rightNumberView {
             right.titleLabel.text = "Team.TeammateCell.coverThem".localized
             let amount = teammate.basic.iCoverThemAmount
             right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+            right.currencyLabel.text = service.currencySymbol
         }
         
         cell.subtitle.text = teammate.basic.city
@@ -121,15 +123,18 @@ struct TeammateCellBuilder {
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
+            left.currencyLabel.text = service.currencySymbol
         }
         if let middle = cell.numberBar.middle {
             middle.titleLabel.text = "Team.Teammates.net".localized
             middle.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.totallyPaidAmount)
+            middle.currencyLabel.text = service.currencySymbol
         }
         if let right = cell.numberBar.right {
             right.titleLabel.text = "Team.TeammateCell.riskFactor".localized
             right.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.risk)
-            right.badgeLabel.text = "1x47xAVG"
+            let avg = String.truncatedNumber(teammate.basic.averageRisk)
+            right.badgeLabel.text = avg + "AVG"
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
         }

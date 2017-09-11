@@ -40,6 +40,7 @@ class TeammateStatsCell: UICollectionViewCell {
         super.awakeFromNib()
         CellDecorator.shadow(for: self)
         CellDecorator.roundedEdges(for: self)
+        numberBar.left?.badgeLabel.isHidden = true
     }
     
     override func layoutMarginsDidChange() {
