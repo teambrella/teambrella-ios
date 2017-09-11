@@ -44,6 +44,12 @@ struct ChooseYourTeamDataSource {
                                                       teamID: card.teamID))
             }
         }
+        models.append(ChooseYourTeamCellModel(teamIcon: "",
+                                              incomingCount: 0,
+                                              teamName: "Log out",
+                                              itemName: "",
+                                              coverage: 0,
+                                              teamID: -1))
     }
     
     subscript(indexPath: IndexPath) -> ChooseYourTeamCellModel {

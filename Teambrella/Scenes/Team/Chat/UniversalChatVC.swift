@@ -76,9 +76,10 @@ class UniversalChatVC: UIViewController, Routable {
         service.socket?.add(listener: socketToken, action: { [weak self] action in
             print(action.command)
             switch action.command {
-            case .typing:
+            case .theyTyping:
                 self?.receivedIsTyping(action: action)
-            case .post:
+            case .privateMessage,
+                 .newPost:
                 self?.showIsTyping = false
                 self?.dataSource.hasNext = true
                 self?.dataSource.loadNext()
@@ -90,7 +91,7 @@ class UniversalChatVC: UIViewController, Routable {
     
     func receivedIsTyping(action: SocketAction) {
         print("Received socket action: \(action)")
-        guard let name = action.name else { return }
+        guard case let .theyTyping(_, _, _, name) = action.data else { return }
         
         showIsTyping = true
         typingUsers[name] = Date()
@@ -169,17 +170,14 @@ class UniversalChatVC: UIViewController, Routable {
         input?.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
         input?.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
         if let socket = service.socket,
-            let teamID = service.session?.currentTeam?.teamID,
-            let myID = service.session?.currentUserTeammateID {
+            let teamID = service.session?.currentTeam?.teamID {
             input?.onTextChange = { [weak socket, weak self] in
                 guard let me = self else { return }
                 
                 let interval = me.lastTypingDate.timeIntervalSinceNow
-                if interval < -2 {
-                    socket?.typing(teamID: teamID,
-                                   teammateID: myID,
-                                   topicID: me.dataSource.topicID,
-                                   name: service.session?.currentUserName)
+                if interval < -2, let topicID = me.dataSource.topicID,
+                    let name = service.session?.currentUserName {
+                    socket?.meTyping(teamID: teamID, topicID: topicID, name: name)
                     self?.lastTypingDate = Date()
                 }
             }

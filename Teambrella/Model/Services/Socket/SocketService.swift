@@ -23,49 +23,6 @@ import Starscream
 
 typealias SocketListenerAction = (SocketAction) -> Void
 
-struct SocketAction: CustomStringConvertible {
-    let command: SocketCommand
-    let teamID: Int
-    let teammateID: Int
-    let topicID: String?
-    let name: String?
-    
-    var description: String { return "Socket action: \(command); team: \(teamID); teammate: \(teammateID)"
-    + "; \(topicID ?? "no topic"); \(name ?? "no name")"}
-    var socketString: String { return "\(command.rawValue);\(teamID);\(teammateID);\(topicID ?? "");\(name ?? "")" }
-    
-    init?(string: String) {
-        let array = string.components(separatedBy: ";")
-        guard array.count >= 3,
-            let command = SocketCommand(rawValue: Int(array[0]) ?? -1),
-            let teamID = Int(array[1]) else {
-                return nil
-        }
-        
-        self.command = command
-        self.teamID = teamID
-        self.teammateID = Int(array[2]) ?? 0
-        self.topicID = array.count > 3 ? array[3] : nil
-        self.name = array.count > 4 ? array[4] : nil
-    }
-    
-    init(command: SocketCommand, teamID: Int, teammateID: Int, topicID: String? = nil, name: String? = nil) {
-        self.command = command
-        self.teamID = teamID
-        self.teammateID = teammateID
-        self.topicID = topicID
-        self.name = name
-    }
-    
-}
-
-enum SocketCommand: Int {
-    case auth = 0
-    case post = 1
-    case deletePost = 2
-    case typing = 3
-}
-
 class SocketService {
     var socket: WebSocket!
     var actions: [AnyHashable: SocketListenerAction] = [:]
@@ -122,17 +79,13 @@ class SocketService {
         socket.disconnect()
     }
     
-    func auth(teamID: Int, teammateID: Int) {
-        let action = SocketAction(command: .auth, teamID: teamID, teammateID: teammateID)
+    func auth() {
+        let action = SocketAction(data: .auth)
         send(action: action)
     }
     
-    func typing(teamID: Int, teammateID: Int, topicID: String?, name: String?) {
-        let action = SocketAction(command: .typing,
-                                  teamID: teamID,
-                                  teammateID: teammateID,
-                                  topicID: topicID,
-                                  name: name)
+    func meTyping(teamID: Int, topicID: String, name: String) {
+        let action = SocketAction(data: .meTyping(teamID: teamID, topicID: topicID, name: name))
         send(action: action)
     }
     
@@ -144,9 +97,8 @@ extension SocketService: WebSocketDelegate {
         if let message = unsentMessage {
             send(string: message)
             unsentMessage = nil
-        } else if let teamID = service.session?.currentTeam?.teamID,
-            let teammateID = service.session?.currentUserTeammateID {
-            auth(teamID: teamID, teammateID: teammateID)
+        } else {
+            auth()
         }
     }
     
