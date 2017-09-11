@@ -127,6 +127,12 @@ extension ChooseYourTeamVC: UITableViewDelegate {
         }
         
         let team = dataSource[indexPath]
+        guard team.teamID != -1 else {
+            service.router.logout()
+            tapCancel()
+            return
+        }
+        
         service.session?.switchToTeam(id: team.teamID)
         tableView.reloadData()
         delegate?.chooseTeam(controller: self, didSelectTeamID: team.teamID)

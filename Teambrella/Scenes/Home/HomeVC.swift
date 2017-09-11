@@ -91,19 +91,7 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         switchToCurrentTeam()
         
         service.socket = SocketService()
-        addSwipeToLogout()
         service.push.executeCommand()
-    }
-    
-    func addSwipeToLogout() {
-        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeToLogout))
-        gesture.direction = UISwipeGestureRecognizerDirection.down
-        view.addGestureRecognizer(gesture)
-    }
-    
-    @objc
-    func swipeToLogout(sender: UISwipeGestureRecognizer) {
-        service.router.logout()
     }
     
     func switchToCurrentTeam() {
