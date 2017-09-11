@@ -286,6 +286,10 @@
 		6DCF62571F4B319F00E8F500 /* PhotoPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */; };
 		6DCF62581F4B319F00E8F500 /* PhotoPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DCF62561F4B319F00E8F500 /* PhotoPreviewCell.xib */; };
 		6DCF625A1F4B31EB00E8F500 /* PhotoPreviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF62591F4B31EB00E8F500 /* PhotoPreviewDelegate.swift */; };
+		6DD051BB1F66F0D700532626 /* SocketAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BA1F66F0D700532626 /* SocketAction.swift */; };
+		6DD051BD1F66F10B00532626 /* SocketCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BC1F66F10B00532626 /* SocketCommand.swift */; };
+		6DD051BF1F66F14100532626 /* SocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BE1F66F14100532626 /* SocketData.swift */; };
+		6DD051C11F66F18200532626 /* SocketDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051C01F66F18200532626 /* SocketDataTests.swift */; };
 		6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */; };
 		6DD12ECC1EC75C2C00BE1CC4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */; };
 		6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */; };
@@ -737,6 +741,10 @@
 		6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewCell.swift; path = View/Cells/PhotoPreviewCell.swift; sourceTree = "<group>"; };
 		6DCF62561F4B319F00E8F500 /* PhotoPreviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewCell.xib; path = View/Cells/PhotoPreviewCell.xib; sourceTree = "<group>"; };
 		6DCF62591F4B31EB00E8F500 /* PhotoPreviewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewDelegate.swift; path = Controller/PhotosPreviewVC/PhotoPreviewDelegate.swift; sourceTree = "<group>"; };
+		6DD051BA1F66F0D700532626 /* SocketAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocketAction.swift; path = Model/Services/Socket/SocketAction.swift; sourceTree = "<group>"; };
+		6DD051BC1F66F10B00532626 /* SocketCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocketCommand.swift; path = Model/Services/Socket/SocketCommand.swift; sourceTree = "<group>"; };
+		6DD051BE1F66F14100532626 /* SocketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocketData.swift; path = Model/Services/Socket/SocketData.swift; sourceTree = "<group>"; };
+		6DD051C01F66F18200532626 /* SocketDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketDataTests.swift; sourceTree = "<group>"; };
 		6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mirror.swift; path = Helpers/Extensions/Mirror.swift; sourceTree = "<group>"; };
 		6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Helpers/Extensions/Date.swift; sourceTree = "<group>"; };
 		6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImageView.swift; path = View/RoundImageView.swift; sourceTree = "<group>"; };
@@ -1510,6 +1518,7 @@
 				6D91BC061EB3A79100FDC332 /* UUIDTests.swift */,
 				6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */,
 				6D0D2ADB1EFBB95E0095284C /* PiecewiseFunctionTests.swift */,
+				6DD051C01F66F18200532626 /* SocketDataTests.swift */,
 			);
 			path = TeambrellaTests;
 			sourceTree = "<group>";
@@ -1862,6 +1871,9 @@
 			isa = PBXGroup;
 			children = (
 				6DF2E8BD1EF02F8200C8D60B /* SocketService.swift */,
+				6DD051BA1F66F0D700532626 /* SocketAction.swift */,
+				6DD051BC1F66F10B00532626 /* SocketCommand.swift */,
+				6DD051BE1F66F14100532626 /* SocketData.swift */,
 			);
 			name = Socket;
 			sourceTree = "<group>";
@@ -2426,6 +2438,7 @@
 				6DA475D41E8BB95200B56D9B /* TeambrellaRequest.swift in Sources */,
 				6DB8122A1EE715DA00B202CE /* DiscussionCell.swift in Sources */,
 				6D0BA5B31F14F88100055E74 /* DateProcessor.swift in Sources */,
+				6DD051BB1F66F0D700532626 /* SocketAction.swift in Sources */,
 				6DA714F11EE00D1800F39EBE /* NumberBar.swift in Sources */,
 				6D69D9E51EFBEECB00DED5CE /* ProxyCellModel.swift in Sources */,
 				6D35EFC51EAF8AB700696B42 /* TransactionsresultTVC.swift in Sources */,
@@ -2438,6 +2451,7 @@
 				6D9CC6551ED98E66007F936E /* NumberView.swift in Sources */,
 				6D35EFC91EAF931000696B42 /* TransactionsTeammateVC.swift in Sources */,
 				6D69DA041EFC343F00DED5CE /* UserIndexCellModel.swift in Sources */,
+				6DD051BF1F66F14100532626 /* SocketData.swift in Sources */,
 				6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */,
 				6D3141CE1F07DDEF00C285DA /* JoinTeamCellModels.swift in Sources */,
 				6D466AA51ED07CF1001BC579 /* BtcAddress.swift in Sources */,
@@ -2634,6 +2648,7 @@
 				6D69D9FB1EFC07FF00DED5CE /* ProxyForCell.swift in Sources */,
 				6DFB8ABF1EB21CFD008FC8D9 /* ThreadPostCell.swift in Sources */,
 				6D0E05601EFEBF4000604981 /* ReportItemCell.swift in Sources */,
+				6DD051BD1F66F10B00532626 /* SocketCommand.swift in Sources */,
 				94CB11AA1F0A471A0012C4CB /* HelperGlobalFunctions.swift in Sources */,
 				6D0E05691EFEC21800604981 /* ReportExpensesCell.swift in Sources */,
 				6DEC074C1E9BCF700078F40E /* TeammatesTVC.swift in Sources */,
@@ -2664,6 +2679,7 @@
 			files = (
 				6D0D2ADC1EFBB95E0095284C /* PiecewiseFunctionTests.swift in Sources */,
 				6DCB9F551EC9FF20000B48C4 /* FetchTests.swift in Sources */,
+				6DD051C11F66F18200532626 /* SocketDataTests.swift in Sources */,
 				6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
