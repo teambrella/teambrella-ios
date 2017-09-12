@@ -27,6 +27,23 @@ class ImagePickerController: NSObject {
         super.init()
     }
     
+    func showOptions() {
+        let alert = UIAlertController(title: "Me.Report.ImageSource.title".localized,
+                                      message: nil,
+                                      preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Me.Report.ImageSource.camera".localized, style: .default, handler: { _ in
+            self.showCamera()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Me.Report.ImageSource.gallery".localized, style: .default, handler: { _ in
+            self.showGallery()
+        }))
+        
+        alert.addAction(UIAlertAction.init(title: "Main.cancel".localized, style: .cancel, handler: nil))
+        
+        parent?.present(alert, animated: true, completion: nil)
+    }
+    
     func showGallery() {
         showSource(source: .photoLibrary)
     }
@@ -81,7 +98,6 @@ extension ImagePickerController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             delegate?.imagePicker(controller: self, didSelectPhoto: pickedImage)
-            send(image: pickedImage)
         }
         
         delegate?.imagePicker(controller: self, willClosePickerByCancel: false)

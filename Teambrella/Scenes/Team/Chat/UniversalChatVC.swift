@@ -55,6 +55,8 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     private var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
     
+    lazy var picker: ImagePickerController = { ImagePickerController(parent: self, delegate: self) }()
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -115,13 +117,6 @@ final class UniversalChatVC: UIViewController, Routable {
         collectionView.refreshControl?.endRefreshing()
     }
     
-    func cloudSize(for indexPath: IndexPath) -> CGSize {
-        guard let model = dataSource[indexPath] as? ChatTextCellModel else { return .zero }
-        
-        return CGSize(width: cloudWidth,
-                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + 50 )
-    }
-    
     func setContext(context: ChatContext) {
         dataSource.addContext(context: context)
     }
@@ -130,7 +125,8 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     func tapLeftButton(sender: UIButton) {
-        showImagePicker(controller: self)
+        picker.showOptions()
+        input.isHidden = true
     }
     
     @objc
@@ -183,7 +179,14 @@ final class UniversalChatVC: UIViewController, Routable {
     
     // MARK: Private
     
-    func processIsTyping(action: SocketAction) {
+    private func cloudSize(for indexPath: IndexPath) -> CGSize {
+        guard let model = dataSource[indexPath] as? ChatTextCellModel else { return .zero }
+        
+        return CGSize(width: cloudWidth,
+                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + 50 )
+    }
+    
+    private func processIsTyping(action: SocketAction) {
         print("Received socket action: \(action)")
         guard case let .theyTyping(_, _, _, name) = action.data else { return }
         
@@ -306,34 +309,8 @@ final class UniversalChatVC: UIViewController, Routable {
         }
     }
     
-    private func send(image: UIImage) {
-        service.server.updateTimestamp { [weak self] timestamp, error in
-            guard error == nil else { return }
-            
-            let imageData = UIImageJPEGRepresentation(image, 0.3)
-            var body = RequestBody(key: service.server.key, payload: nil)
-            body.contentType = "image/jpeg"
-            body.data = imageData
-            let request = TeambrellaRequest(type: .uploadPhoto, body: body, success: { [weak self] response in
-                if case .uploadPhoto(let name) = response {
-                    print("Photo uploaded name: \(name)")
-                    self?.linkImage(name: name)
-                }
-            })
-            request.start()
-        }
-    }
-    
     private func linkImage(name: String) {
         send(text: input.textView.text ?? "", images: [name])
-    }
-    
-    private func showImagePicker(controller: UIViewController) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = true
-        picker.sourceType = .photoLibrary
-        controller.present(picker, animated: true, completion: nil)
     }
     
 }
@@ -426,26 +403,6 @@ extension UniversalChatVC: UICollectionViewDelegate {
     
 }
 
-// MARK: UIImagePickerControllerDelegate
-extension UniversalChatVC: UIImagePickerControllerDelegate {
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            print("Image received: \(pickedImage)")
-            send(image: pickedImage)
-        }
-        
-        picker.dismiss(animated: true, completion: nil)
-    }
-}
-
-extension UniversalChatVC: UINavigationControllerDelegate {
-    
-}
-
 // MARK: UICollectionViewDelegateFlowLayout
 extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
@@ -462,5 +419,20 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 30)
+    }
+}
+
+extension UniversalChatVC: ImagePickerControllerDelegate {
+    func imagePicker(controller: ImagePickerController, didSendPhoto photo: String) {
+        linkImage(name: photo)
+    }
+    
+    func imagePicker(controller: ImagePickerController, didSelectPhoto photo: UIImage) {
+        controller.send(image: photo)
+        input.isHidden = false
+    }
+    
+    func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
+        input.isHidden = false
     }
 }
