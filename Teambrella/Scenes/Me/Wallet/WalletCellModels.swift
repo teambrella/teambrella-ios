@@ -29,8 +29,9 @@ struct WalletHeaderCellModel: WalletCellModel {
     let amount: Double
     let reserved: Double
     let available: Double
+    let currencyRate: Double
     
-    static var fake: WalletCellModel { return WalletHeaderCellModel(amount: 0, reserved: 0, available: 0) }
+    static var fake: WalletCellModel { return WalletHeaderCellModel(amount: 0, reserved: 0, available: 0, currencyRate: 0) }
 }
 
 struct WalletFundingCellModel: WalletCellModel {

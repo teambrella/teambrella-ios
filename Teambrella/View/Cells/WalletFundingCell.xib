@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="AkkuratPro-Bold.otf">
             <string>AkkuratPro-Bold</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
         </array>
     </customFonts>
     <objects>
@@ -28,29 +31,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="343" height="279"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED FUNDING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-FN-MiT" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="16" width="209" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="16" width="255.5" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SS-e1-43y" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="16" y="92" width="61" height="21"/>
+                                <rect key="frame" x="20" y="92" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCv-7T-Tb4" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="16" y="175" width="59" height="20"/>
+                                <rect key="frame" x="20" y="175" width="59" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDf-9h-j00">
-                                <rect key="frame" x="303" y="16" width="20" height="22"/>
+                                <rect key="frame" x="303" y="16" width="20" height="25.5"/>
                                 <state key="normal" image="info"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lv4-qy-cUk" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="16" y="223" width="311" height="40"/>
+                                <rect key="frame" x="20" y="223" width="303" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="p9S-QN-qIM"/>
                                 </constraints>
@@ -60,18 +63,18 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xdm-tr-dKv" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="16" y="52" width="207" height="40"/>
+                                <rect key="frame" x="20" y="52" width="199" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1r-kO-PWW" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="16" y="135" width="207" height="40"/>
+                                <rect key="frame" x="20" y="135" width="199" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="F7H-Bn-nbY"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Vn-JM-9Dk" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="231" y="111" width="96" height="96"/>
+                                <rect key="frame" x="227" y="111" width="96" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2Vn-JM-9Dk" secondAttribute="height" multiplier="1:1" id="7pO-eA-JrZ"/>
                                     <constraint firstAttribute="width" constant="96" id="ch3-Au-8KE"/>
@@ -82,11 +85,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Lv4-qy-cUk" secondAttribute="trailing" constant="16" id="42Y-cf-eXP"/>
+                            <constraint firstAttribute="trailing" secondItem="Lv4-qy-cUk" secondAttribute="trailing" constant="20" id="42Y-cf-eXP"/>
                             <constraint firstItem="s1r-kO-PWW" firstAttribute="leading" secondItem="sCv-7T-Tb4" secondAttribute="leading" id="4He-zS-TNp"/>
-                            <constraint firstItem="Lv4-qy-cUk" firstAttribute="leading" secondItem="ft1-fn-QZU" secondAttribute="leading" constant="16" id="4mf-7x-Fhk"/>
+                            <constraint firstItem="Lv4-qy-cUk" firstAttribute="leading" secondItem="ft1-fn-QZU" secondAttribute="leading" constant="20" id="4mf-7x-Fhk"/>
                             <constraint firstAttribute="trailing" secondItem="vDf-9h-j00" secondAttribute="trailing" constant="20" id="740-6A-7iv"/>
                             <constraint firstItem="sCv-7T-Tb4" firstAttribute="top" secondItem="s1r-kO-PWW" secondAttribute="bottom" id="Awf-Vg-Klo"/>
+                            <constraint firstItem="dUM-FN-MiT" firstAttribute="centerY" secondItem="vDf-9h-j00" secondAttribute="centerY" id="Hbx-gd-c32"/>
                             <constraint firstAttribute="bottom" secondItem="Lv4-qy-cUk" secondAttribute="bottom" constant="16" id="J2A-GT-QCQ"/>
                             <constraint firstItem="dUM-FN-MiT" firstAttribute="top" secondItem="ft1-fn-QZU" secondAttribute="top" constant="16" id="Mn1-SD-vAT"/>
                             <constraint firstItem="3SS-e1-43y" firstAttribute="leading" secondItem="s1r-kO-PWW" secondAttribute="leading" id="SUw-VM-qtH"/>

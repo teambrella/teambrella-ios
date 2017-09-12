@@ -79,7 +79,6 @@ class WalletVC: UIViewController {
     
     @objc
     func tapTransactions(sender: UITapGestureRecognizer) {
-        print("\ntap Transactions\n")
         guard let session = service.session?.currentTeam?.teamID else { return }
         
         service.router.presentWalletTransactionsList(teamID: session)
