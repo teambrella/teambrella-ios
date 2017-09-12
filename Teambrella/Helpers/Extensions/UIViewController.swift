@@ -26,47 +26,6 @@ extension UIViewController {
         performSegue(withIdentifier: type.rawValue, sender: sender)
     }
     
-    func listenForKeyboard() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(UIViewController.keyboardWillShow),
-                                               name: Notification.Name.UIKeyboardWillShow,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(UIViewController.keyboardWillHide),
-                                               name: Notification.Name.UIKeyboardWillHide,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(UIViewController.keyboardWillHide),
-                                               name: Notification.Name.UIKeyboardWillChangeFrame,
-                                               object: nil)
-    }
-    
-    @objc
-    func keyboardWillShow(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            let window = self.view.window?.frame {
-            self.view.frame = CGRect(x: self.view.frame.origin.x,
-                                     y: self.view.frame.origin.y,
-                                     width: self.view.frame.width,
-                                     height: window.origin.y + window.height - keyboardSize.height)
-        }
-    }
-    
-    @objc
-    func keyboardWillHide(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let viewHeight = self.view.frame.height
-            self.view.frame = CGRect(x: self.view.frame.origin.x,
-                                     y: self.view.frame.origin.y,
-                                     width: self.view.frame.width,
-                                     height: viewHeight + keyboardSize.height)
-        }
-    }
-    
-    func keyboardWillChangeFrame(notification: Notification) {
-        
-    }
-    
     /// simulates gradient on navigation bar
     func addGradientNavBar() {
         setupTransparentNavigationBar()
