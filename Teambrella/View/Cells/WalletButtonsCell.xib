@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="592" height="71.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Co-signers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9f-sF-6gJ" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="27" width="74" height="17.5"/>
+                                        <rect key="frame" x="16" y="26.5" width="75" height="18.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="15"/>
                                         <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4sg-xG-VXv" customClass="RoundImagesStack" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="369" y="19.5" width="150" height="32"/>
+                                        <rect key="frame" x="368.5" y="19.5" width="150" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="b6Q-xr-9fD"/>
@@ -59,7 +59,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuV-Bt-tPv" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="535" y="26.5" width="17" height="17.5"/>
+                                        <rect key="frame" x="534.5" y="26" width="17.5" height="18.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="15"/>
                                         <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -69,6 +69,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="W6N-tS-Hn6" secondAttribute="trailing" id="3UB-tE-p19"/>
                                     <constraint firstAttribute="bottom" secondItem="W6N-tS-Hn6" secondAttribute="bottom" id="FAQ-V2-rCk"/>
+                                    <constraint firstItem="4sg-xG-VXv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h9f-sF-6gJ" secondAttribute="trailing" constant="8" id="Uru-FU-uNf"/>
                                     <constraint firstItem="h9f-sF-6gJ" firstAttribute="leading" secondItem="aUv-pz-bPk" secondAttribute="leadingMargin" id="ZOo-Dm-wAp"/>
                                     <constraint firstItem="dEN-dN-JCa" firstAttribute="leading" secondItem="VuV-Bt-tPv" secondAttribute="trailing" constant="16" id="Zdk-TN-6Dm"/>
                                     <constraint firstItem="VuV-Bt-tPv" firstAttribute="leading" secondItem="4sg-xG-VXv" secondAttribute="trailing" constant="16" id="gIT-3Y-YDX"/>
@@ -85,7 +86,7 @@
                                 <rect key="frame" x="0.0" y="71.5" width="592" height="71"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transactions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUV-s2-5wO" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="27.5" width="85" height="17.5"/>
+                                        <rect key="frame" x="16" y="27" width="89" height="18.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="15"/>
                                         <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -121,7 +122,7 @@
                                 <rect key="frame" x="0.0" y="142.5" width="592" height="71.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default withdraw address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4J-QX-DaL" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="27.5" width="171" height="17.5"/>
+                                        <rect key="frame" x="16" y="27" width="178.5" height="18.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="15"/>
                                         <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
