@@ -10,7 +10,7 @@ import UIKit
 
 struct ChatModelBuilder {
     let fragmentParser = ChatFragmentParser()
-    
+    var showRate = true
     func cellModels(from chatItems: [ChatEntity], width: CGFloat, font: UIFont) -> [ChatCellModel] {
         let heightCalculator = ChatFragmentHeightCalculator(width: width, font: font)
         var result: [ChatCellModel] = []
@@ -29,6 +29,16 @@ struct ChatModelBuilder {
                 avatar = item.avatar
             }
             let date = item.created
+            var rateString: String?
+            if showRate {
+                if let rate = item.vote {
+                rateString = "Team.Chat.TextCell.voted_format".localized(String.truncatedNumber(rate * 100))
+                } else {
+                    rateString = "Team.Chat.TextCell.notVoted".localized
+                }
+            } else {
+                rateString = nil
+            }
             
             let model = ChatTextCellModel(entity: item,
                                           fragments: fragments,
@@ -36,7 +46,7 @@ struct ChatModelBuilder {
                                           isMy: isMy,
                                           userName: name,
                                           userAvatar: avatar,
-                                          voteRate: item.vote,
+                                          rateText: rateString,
                                           date: date)
             result.append(model)
         }

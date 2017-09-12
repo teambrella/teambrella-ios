@@ -221,10 +221,16 @@ class ChatTextCell: UICollectionViewCell {
                                    y: leftLabel.frame.height / 2 + 8)
         
         rightLabel.frame = baseFrame
-        rightLabel.text = String.formattedNumber(model.voteRate)
-        rightLabel.sizeToFit()
-        rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - 8,
-                                    y: rightLabel.frame.height / 2 + 8)
+        if let rate = model.rateText {
+            rightLabel.isHidden = false
+            rightLabel.text = rate
+            rightLabel.sizeToFit()
+            rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - 8,
+                                        y: rightLabel.frame.height / 2 + 8)
+        } else {
+            rightLabel.isHidden = true
+        }
+       
         bottomLabel.frame = baseFrame
         bottomLabel.text = DateProcessor().stringInterval(from: model.date)
         bottomLabel.sizeToFit()

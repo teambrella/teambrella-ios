@@ -20,7 +20,7 @@ struct ChatTextCellModel: ChatCellModel {
     let isMy: Bool
     let userName: String
     let userAvatar: String
-    let voteRate: Double
+    let rateText: String?
     let date: Date
     
     var totalFragmentsHeight: CGFloat { return fragmentHeights.reduce(0, +) }

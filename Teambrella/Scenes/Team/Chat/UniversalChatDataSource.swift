@@ -109,17 +109,20 @@ class UniversalChatDatasource {
         }
     }
     
+    var isRateVisible: Bool { return strategy.isRateVisible }
+    
     private var strategy: ChatDatasourceStrategy = EmptyChatStrategy()
     
     var onUpdate: ((Bool) -> Void)?
     var onMessageSend: (() -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
     
-    let cellModelBuilder = ChatModelBuilder()
+    var cellModelBuilder = ChatModelBuilder()
     
     func addContext(context: ChatContext) {
         strategy = ChatStrategyFactory.strategy(with: context)
         hasPrevious = strategy.canLoadBackward
+        cellModelBuilder.showRate = isRateVisible
     }
     
     func loadNext() {

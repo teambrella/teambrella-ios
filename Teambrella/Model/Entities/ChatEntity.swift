@@ -37,7 +37,7 @@ struct ChatEntity {
     var isMyProxy: Bool { return json["TeammatePart"]["IsMyProxy"].boolValue }
     var name: String { return json["TeammatePart"]["Name"].stringValue }
     var avatar: String { return json["TeammatePart"]["Avatar"].stringValue }
-    var vote: Double { return json["TeammatePart"]["Vote"].doubleValue }
+    var vote: Double? { return json["TeammatePart"]["Vote"].double }
     
     init(json: JSON) {
         self.json = json
