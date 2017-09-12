@@ -29,26 +29,41 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kw2-yj-Xiw" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJo-dm-TTW">
+                                <rect key="frame" x="0.0" y="191" width="375" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vur-zE-tBc" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="160" width="375" height="31"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.0079730308219178089" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ff-9F-8fr" customClass="WalletAmountLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="30" y="16" width="49" height="104"/>
+                                <rect key="frame" x="32" y="16" width="50.5" height="104"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="88"/>
                                 <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mBTC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6O-dA-TcK">
-                                <rect key="frame" x="79" y="86" width="45.5" height="19"/>
+                                <rect key="frame" x="89.5" y="83" width="43.5" height="19"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nka-jt-bBu">
-                                <rect key="frame" x="79" y="72" width="11.5" height="12"/>
+                                <rect key="frame" x="89.5" y="69" width="11.5" height="12"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
                                 <color key="textColor" red="0.4823529412" green="0.55294117649999996" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJr-gM-eKI" customClass="NumberBar" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="30" y="120" width="190" height="40"/>
+                                <rect key="frame" x="35" y="120" width="190" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5oY-O9-O0U"/>
@@ -83,15 +98,23 @@
                             <constraint firstItem="JJr-gM-eKI" firstAttribute="top" secondItem="4Ff-9F-8fr" secondAttribute="bottom" id="7bN-SP-aJX"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W6O-dA-TcK" secondAttribute="trailing" constant="16" id="AQW-Nh-2Sr"/>
                             <constraint firstItem="W6O-dA-TcK" firstAttribute="top" secondItem="Nka-jt-bBu" secondAttribute="bottom" constant="2" id="Est-8T-FdY"/>
+                            <constraint firstAttribute="trailing" secondItem="rJo-dm-TTW" secondAttribute="trailing" id="Had-IS-0dY"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Nka-jt-bBu" secondAttribute="trailing" constant="16" id="L3B-qz-k2C"/>
-                            <constraint firstItem="JJr-gM-eKI" firstAttribute="leading" secondItem="4Ff-9F-8fr" secondAttribute="leading" id="Ygg-cF-1Op"/>
-                            <constraint firstItem="W6O-dA-TcK" firstAttribute="leading" secondItem="4Ff-9F-8fr" secondAttribute="trailing" id="alt-c3-IiC"/>
-                            <constraint firstItem="4Ff-9F-8fr" firstAttribute="top" secondItem="Kw2-yj-Xiw" secondAttribute="top" constant="16" id="bi5-mE-LHX"/>
+                            <constraint firstItem="rJo-dm-TTW" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" id="Tkr-Ph-fSc"/>
+                            <constraint firstItem="JJr-gM-eKI" firstAttribute="leading" secondItem="4Ff-9F-8fr" secondAttribute="leading" constant="3" id="Ygg-cF-1Op"/>
+                            <constraint firstItem="W6O-dA-TcK" firstAttribute="leading" secondItem="4Ff-9F-8fr" secondAttribute="trailing" constant="7" id="alt-c3-IiC"/>
+                            <constraint firstAttribute="bottom" secondItem="rJo-dm-TTW" secondAttribute="bottom" id="bgf-j3-B25"/>
+                            <constraint firstItem="4Ff-9F-8fr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Kw2-yj-Xiw" secondAttribute="top" constant="16" id="bi5-mE-LHX"/>
+                            <constraint firstItem="Vur-zE-tBc" firstAttribute="top" secondItem="JJr-gM-eKI" secondAttribute="bottom" id="bzO-t8-1eN"/>
                             <constraint firstItem="Tge-af-isS" firstAttribute="top" secondItem="JJr-gM-eKI" secondAttribute="bottom" constant="31" id="cQj-hd-NZt"/>
-                            <constraint firstItem="4Ff-9F-8fr" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" constant="30" id="gOf-kR-0eT"/>
+                            <constraint firstItem="4Ff-9F-8fr" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" constant="32" id="gOf-kR-0eT"/>
                             <constraint firstItem="Tge-af-isS" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" constant="16" id="lAn-n6-30d"/>
+                            <constraint firstAttribute="trailing" secondItem="Vur-zE-tBc" secondAttribute="trailing" id="uGY-Xd-Lsr"/>
+                            <constraint firstItem="Vur-zE-tBc" firstAttribute="bottom" secondItem="Tge-af-isS" secondAttribute="top" id="v3K-xe-BXt"/>
+                            <constraint firstItem="rJo-dm-TTW" firstAttribute="top" secondItem="Tge-af-isS" secondAttribute="top" id="xsy-nf-Q1d"/>
                             <constraint firstItem="W6O-dA-TcK" firstAttribute="baseline" secondItem="4Ff-9F-8fr" secondAttribute="baseline" id="yFh-aq-lhk"/>
                             <constraint firstAttribute="trailing" secondItem="Tge-af-isS" secondAttribute="trailing" constant="16" id="yNb-1S-yqz"/>
+                            <constraint firstItem="Vur-zE-tBc" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" id="znw-4d-zMw"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="segments">

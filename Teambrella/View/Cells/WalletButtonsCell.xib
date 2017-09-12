@@ -165,7 +165,7 @@
                 <outlet property="topView" destination="aUv-pz-bPk" id="eSW-1t-plg"/>
                 <outlet property="topViewLabel" destination="h9f-sF-6gJ" id="eYe-EM-6oW"/>
             </connections>
-            <point key="canvasLocation" x="96" y="77"/>
+            <point key="canvasLocation" x="98" y="4"/>
         </collectionViewCell>
     </objects>
     <resources>
