@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import SwiftSoup
 
 class ChatTextCell: UICollectionViewCell {
     struct Constant {

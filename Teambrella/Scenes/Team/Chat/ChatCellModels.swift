@@ -27,3 +27,8 @@ struct ChatTextCellModel: ChatCellModel {
     var id: String { return entity.id }
     
 }
+
+struct ChatSeparatorCellModel: ChatCellModel {
+    let date: Date
+    
+}
