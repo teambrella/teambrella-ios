@@ -154,3 +154,6 @@
 "Team.Claims.State.Header.voted" = "VOTED";
 "Team.Claims.VitedCell.voted" = "Voted: ";
 "Team.ClaimsCell.declined" = "DECLINED";
+
+"Team.Chat.TextCell.voted_format" = "VOTED:%@%%";
+"Team.Chat.TextCell.notVoted" = "NOT VOTED";
