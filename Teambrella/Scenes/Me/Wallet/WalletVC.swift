@@ -85,6 +85,14 @@ class WalletVC: UIViewController {
         
         service.router.presentWalletTransactionsList(teamID: session)
     }
+    
+    @objc
+    func tapCosigners(sender: UITapGestureRecognizer) {
+        print("tap co-signers")
+        guard let session = service.session?.currentTeam?.teamID else { return }
+        
+        service.router.presentWalletCosignersList(teamID: session)
+    }
 }
 
 extension WalletVC: IndicatorInfoProvider {

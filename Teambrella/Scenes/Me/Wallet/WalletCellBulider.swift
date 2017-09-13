@@ -89,6 +89,8 @@ struct WalletCellBuilder {
             cell.quantityLabel.text = String(model.avatars.count)
             cell.tapMiddleViewRecognizer.removeTarget(delegate, action: nil)
             cell.tapMiddleViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapTransactions))
+            cell.tapTopViewRecognizer.removeTarget(delegate, action: nil)
+            cell.tapTopViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapCosigners))
         }
     }
     
