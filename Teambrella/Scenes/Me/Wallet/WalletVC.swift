@@ -33,19 +33,21 @@ class WalletVC: UIViewController {
     
     var qrCode: UIImage?
     var dataSource: WalletDataSource = WalletDataSource()
-    let walletID = "13CAnApBYfERwCvpp4KSypHg7BQ5BXwg3x".uppercased()
+    var walletID = ""
     
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         WalletCellBuilder.registerCells(in: collectionView)
-        qrCode = generateQRCode()
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
+            guard let id = self?.dataSource.fundAddress else { return }
+            
+            self?.walletID = id.uppercased()
+            self?.qrCode = self?.generateQRCode()
         }
         dataSource.loadData()
-        
     }
     
     @objc
