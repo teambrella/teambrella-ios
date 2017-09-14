@@ -29,21 +29,17 @@ struct WalletHeaderCellModel: WalletCellModel {
     let amount: Double
     let reserved: Double
     let available: Double
-    
-    static var fake: WalletCellModel { return WalletHeaderCellModel(amount: 0, reserved: 0, available: 0) }
+    let currencyRate: Double
+
 }
 
 struct WalletFundingCellModel: WalletCellModel {
     let maxCoverageFunding: Double
     let uninterruptedCoverageFunding: Double
     
-    static var fake: WalletCellModel {
-        return WalletFundingCellModel(maxCoverageFunding: 0, uninterruptedCoverageFunding: 0)
-    }
 }
 
 struct WalletButtonsCellModel: WalletCellModel {
     let avatars: [String]
-    
-    static var fake: WalletCellModel { return WalletButtonsCellModel(avatars: []) }
+
 }

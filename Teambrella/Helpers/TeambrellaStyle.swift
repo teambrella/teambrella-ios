@@ -158,23 +158,23 @@ struct TeambrellaStyle {
         currencyNormal.textColor = .darkSkyBlue
         
         let badge = BadgeLabel.appearance()
-        badge.font = UIFont.teambrella(size: 8)
+        badge.font = UIFont.teambrella(size: 10)
         badge.textColor = .white
         badge.backgroundColor = .lightBlue
         
         let info = InfoLabel.appearance()
-        info.font = UIFont.teambrellaBold(size: 8)
+        info.font = UIFont.teambrellaBold(size: 10)
         info.textColor = .blueyGray
         
         let infoHelp = InfoHelpLabel.appearance()
-        infoHelp.font = UIFont.teambrellaBold(size: 8)
+        infoHelp.font = UIFont.teambrella(size: 10)
         
         let itemName = ItemNameLabel.appearance()
-        itemName.font = UIFont.teambrella(size: 12)
+        itemName.font = UIFont.teambrella(size: 14)
         itemName.textColor = .charcoalGray
         
         let itemValue = ItemValueLabel.appearance()
-        itemValue.font = UIFont.teambrella(size: 12)
+        itemValue.font = UIFont.teambrella(size: 14)
         itemValue.textColor = .battleshipGray
         
         let title = TitleLabel.appearance()
@@ -182,7 +182,7 @@ struct TeambrellaStyle {
         title.textColor = .charcoalGray
         
         let thinStatusSubtitle = ThinStatusSubtitleLabel.appearance()
-        thinStatusSubtitle.font = UIFont.teambrella(size: 8)
+        thinStatusSubtitle.font = UIFont.teambrella(size: 10)
         thinStatusSubtitle.textColor = .blueyGray
         
         let statusSubtitle = StatusSubtitleLabel.appearance()
@@ -190,7 +190,7 @@ struct TeambrellaStyle {
         statusSubtitle.textColor = .blueyGray
         
         let blockHeader = BlockHeaderLabel.appearance()
-        blockHeader.font = UIFont.teambrellaBold(size: 11)
+        blockHeader.font = UIFont.teambrellaBold(size: 12)
         blockHeader.textColor = .darkSkyBlue
         
         let messageTitle = MessageTitleLabel.appearance()
@@ -198,7 +198,7 @@ struct TeambrellaStyle {
         messageTitle.textColor = .dark
         
         let messageText = MessageTextLabel.appearance()
-        messageText.font = UIFont.teambrella(size: 10)
+        messageText.font = UIFont.teambrella(size: 11)
         messageText.textColor = .bluishGray
         
         let chatText = ChatTextLabel.appearance()

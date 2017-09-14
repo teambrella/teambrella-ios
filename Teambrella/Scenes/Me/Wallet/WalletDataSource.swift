@@ -24,13 +24,13 @@ import Foundation
 class WalletDataSource {
     var items: [WalletCellModel] = []
     var count: Int { return items.count }
+    var fundAddress: String = ""
     var isLoading = false
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     var wallet: WalletEntity?
     
     init() {
-      //items = fakeModels()
     }
     
     func loadData() {
@@ -44,6 +44,7 @@ class WalletDataSource {
                 if case .wallet(let wallet) = response {
                     self?.wallet = wallet
                     self?.createCellModels(with: wallet)
+                    self?.fundAddress = wallet.fundAddress
                     self?.onUpdate?()
                 }
                 }, failure: { [weak self] error in
@@ -56,7 +57,8 @@ class WalletDataSource {
     func createCellModels(with wallet: WalletEntity) {
         items.append(WalletHeaderCellModel(amount: wallet.cryptoBalance,
                                            reserved: wallet.cryptoReserved,
-                                           available: wallet.cryptoBalance - wallet.cryptoReserved))
+                                           available: wallet.cryptoBalance - wallet.cryptoReserved,
+                                           currencyRate: wallet.currencyRate))
         items.append(WalletFundingCellModel(maxCoverageFunding: wallet.coveragePart.nextCoverage,
                                             uninterruptedCoverageFunding: wallet.coveragePart.coverage))
         let avatars = wallet.cosigners.map { $0.avatar }
@@ -65,11 +67,5 @@ class WalletDataSource {
     
     subscript(indexPath: IndexPath) -> WalletCellModel {
         return items[indexPath.row]
-    }
-}
-
-extension WalletDataSource {
-    func fakeModels() -> [WalletCellModel] {
-        return [WalletHeaderCellModel.fake, WalletFundingCellModel.fake, WalletButtonsCellModel.fake]
     }
 }

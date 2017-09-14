@@ -36,7 +36,7 @@
                 <view contentMode="scaleToFill" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="0J0-P7-9yQ" userLabel="Centering container">
                     <rect key="frame" x="0.5" y="75.5" width="378.5" height="32.5"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLC-D6-CiE" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLC-D6-CiE" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="378" height="12"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                             <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
