@@ -177,6 +177,13 @@ final class UniversalChatVC: UIViewController, Routable {
         }
     }
     
+    @objc
+    func tapHeader(sender: UIButton) {
+        if let claimID = dataSource.claimID {
+            service.router.presentClaim(claimID: claimID)
+        }
+    }
+    
     // MARK: Private
     
     private func cloudSize(for indexPath: IndexPath) -> CGSize {
@@ -262,12 +269,17 @@ final class UniversalChatVC: UIViewController, Routable {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(refreshNeeded), for: .valueChanged)
         collectionView.refreshControl = refresh
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.sectionHeadersPinToVisibleBounds = true
     }
     
     private func registerCells() {
         collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
         collectionView.register(ChatTextCell.self, forCellWithReuseIdentifier: "com.chat.text.cell")
         collectionView.register(ChatSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.separator.cell")
+        collectionView.register(ChatHeader.self,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: "com.chat.header")
         collectionView.register(ChatFooter.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
                                 withReuseIdentifier: ChatFooter.cellID)
@@ -347,7 +359,7 @@ extension UniversalChatVC: UICollectionViewDataSource {
         let view: UICollectionReusableView
         if kind == UICollectionElementKindSectionHeader {
             view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                   withReuseIdentifier: "Header",
+                                                                   withReuseIdentifier: "com.chat.header",
                                                                    for: indexPath)
         } else {
             view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
@@ -405,6 +417,10 @@ extension UniversalChatVC: UICollectionViewDelegate {
             text += "Team.Chat.typing_format".localized(typingUsers.count).uppercased()
             view.label.text =  text
             view.hide(!showIsTyping)
+        } else if let view = view as? ChatHeader {
+            view.titleLabel.text = dataSource.chatHeader
+            view.button.removeTarget(self, action: nil, for: .allEvents)
+            view.button.addTarget(self, action: #selector(tapHeader), for: .touchUpInside)
         }
         
     }
@@ -427,6 +443,12 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: 30)
         }
         return CGSize(width: collectionView.bounds.width - 32, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView,

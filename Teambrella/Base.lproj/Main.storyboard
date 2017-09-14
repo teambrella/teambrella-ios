@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xrQ-fg-9ck">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xrQ-fg-9ck">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,8 +21,8 @@
             <objects>
                 <viewController id="BKZ-Pn-qVe" customClass="InitialVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="izF-4O-Tvk"/>
-                        <viewControllerLayoutGuide type="bottom" id="pEm-wK-1of"/>
+                        <viewControllerLayoutGuide type="top" id="vMT-N2-upV"/>
+                        <viewControllerLayoutGuide type="bottom" id="SpK-yL-8zu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XNb-Tt-LFR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -58,18 +58,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.13333333333333333" green="0.20000000000000001" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="pEm-wK-1of" firstAttribute="top" secondItem="imF-3C-Sdp" secondAttribute="bottom" id="7yo-5G-rbG"/>
+                            <constraint firstItem="SpK-yL-8zu" firstAttribute="top" secondItem="imF-3C-Sdp" secondAttribute="bottom" id="7yo-5G-rbG"/>
                             <constraint firstAttribute="trailing" secondItem="imF-3C-Sdp" secondAttribute="trailing" id="Ipp-aM-ULn"/>
                             <constraint firstItem="emU-7T-Nip" firstAttribute="top" secondItem="cBm-n1-x7D" secondAttribute="bottom" constant="15" id="OqJ-ml-iEi"/>
                             <constraint firstItem="cBm-n1-x7D" firstAttribute="width" secondItem="cBm-n1-x7D" secondAttribute="height" multiplier="5:1" id="TrJ-k0-vGE"/>
                             <constraint firstItem="emU-7T-Nip" firstAttribute="centerX" secondItem="aNj-ZE-j1Y" secondAttribute="centerX" id="V4a-IN-dfD"/>
                             <constraint firstItem="cBm-n1-x7D" firstAttribute="centerX" secondItem="aNj-ZE-j1Y" secondAttribute="centerX" id="XFU-2n-ufu"/>
-                            <constraint firstItem="imF-3C-Sdp" firstAttribute="top" secondItem="XNb-Tt-LFR" secondAttribute="top" id="c8c-CE-DpR"/>
+                            <constraint firstItem="imF-3C-Sdp" firstAttribute="top" secondItem="XNb-Tt-LFR" secondAttribute="top" constant="-20" id="c8c-CE-DpR"/>
                             <constraint firstAttribute="trailing" secondItem="aNj-ZE-j1Y" secondAttribute="trailing" id="krh-F6-gvn"/>
                             <constraint firstItem="emU-7T-Nip" firstAttribute="bottom" secondItem="aNj-ZE-j1Y" secondAttribute="centerY" id="l0j-m3-dYQ"/>
                             <constraint firstItem="imF-3C-Sdp" firstAttribute="leading" secondItem="XNb-Tt-LFR" secondAttribute="leading" id="lid-zh-LiB"/>
                             <constraint firstItem="aNj-ZE-j1Y" firstAttribute="leading" secondItem="XNb-Tt-LFR" secondAttribute="leading" id="pCE-4J-1U5"/>
-                            <constraint firstItem="pEm-wK-1of" firstAttribute="top" secondItem="aNj-ZE-j1Y" secondAttribute="bottom" id="sJG-xW-u3b"/>
+                            <constraint firstItem="SpK-yL-8zu" firstAttribute="top" secondItem="aNj-ZE-j1Y" secondAttribute="bottom" id="sJG-xW-u3b"/>
                             <constraint firstItem="aNj-ZE-j1Y" firstAttribute="top" secondItem="XNb-Tt-LFR" secondAttribute="top" id="tP6-2g-qpi"/>
                         </constraints>
                     </view>
@@ -199,7 +199,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xrQ-fg-9ck" customClass="Navigator" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q94-ny-2f7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

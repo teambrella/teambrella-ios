@@ -26,13 +26,26 @@ class UniversalChatDatasource {
     private var topic: Topic?
     
     private var claim: EnhancedClaimEntity?
-    var name: String? {
-        didSet {
-            
-        }
-    }
+    var name: String?
     
     var topicID: String? { return claim?.topicID }
+    var claimID: String? {
+        if let strategy = strategy as? ClaimChatStrategy {
+            return strategy.claim.id
+        }
+//        } else if let strategy = strategy as? HomeChatStrategy {
+//            return strategy.card.
+//        }
+        return nil
+    }
+    var chatHeader: String? {
+        if let strategy = strategy as? ClaimChatStrategy {
+            return strategy.claim.description
+        } else if let strategy = strategy as? HomeChatStrategy {
+            return strategy.card.chatTitle
+        }
+        return nil
+    }
     
     var cellModels: [ChatCellModel] = []
     var chunks: [ChatChunk] = []

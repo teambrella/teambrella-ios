@@ -110,9 +110,12 @@ class HomeVC: UIViewController, TabRoutable, PagingDraggable {
                             width: Constant.teamIconWidth,
                             cornerRadius: Constant.teamIconCornerRadius) { image, error  in
                                 guard error == nil else { return }
-                                guard let image = image else { return }
+                                guard let image = image, let cgImage = image.cgImage else { return }
                                 
-                                self.teamsButton.setImage(image, for: .normal)
+                                let scaled = UIImage(cgImage: cgImage,
+                                                     scale: UIScreen.main.nativeScale,
+                                                     orientation: image.imageOrientation)
+                                self.teamsButton.setImage(scaled, for: .normal)
         }
     }
     
