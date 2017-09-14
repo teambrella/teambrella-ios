@@ -53,7 +53,7 @@ class TeammateProfileDataSource {
     }
     
     var source: [TeammateProfileCellType] = []
-    var extendedTeammate: ExtendedTeammate?
+    var extendedTeammate: ExtendedTeammateEntity?
     var riskScale: RiskScaleEntity? { return extendedTeammate?.riskScale }
     var isNewTeammate = false
     

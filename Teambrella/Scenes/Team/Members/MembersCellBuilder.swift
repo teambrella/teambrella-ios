@@ -23,7 +23,7 @@ import Kingfisher
 import UIKit
 
 struct MembersCellBuilder {
-    static func populate(cell: UICollectionViewCell, with teammate: TeammateLike) {
+    static func populate(cell: UICollectionViewCell, with teammate: TeammateEntity) {
          if let cell = cell as? TeammateCandidateCell {
             cell.titleLabel.text = teammate.name
             if let url = URL(string: service.server.avatarURLstring(for:teammate.avatar)) {

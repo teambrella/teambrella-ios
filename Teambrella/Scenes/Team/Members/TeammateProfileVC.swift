@@ -31,7 +31,7 @@ class TeammateProfileVC: UIViewController, Routable {
     
     static var storyboardName: String = "Team"
     
-    var teammate: TeammateLike?
+    var teammate: TeammateEntity?
     var teammateID: String?
     
     var dataSource: TeammateProfileDataSource!
@@ -46,7 +46,7 @@ class TeammateProfileVC: UIViewController, Routable {
         
         if let teammate = teammate {
             dataSource = TeammateProfileDataSource(id: teammate.userID, isVoting: teammate.isVoting, isMe: false)
-         addGradientNavBar()
+            addGradientNavBar()
         } else if let teammateID = teammateID {
             dataSource = TeammateProfileDataSource(id: teammateID, isVoting: false, isMe: false)
             addGradientNavBar()
@@ -241,6 +241,11 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                     me.teammate?.updateWithVote(json: json)
                     me.riskController?.teammate = me.teammate?.extended
                     me.riskController?.yourRiskValue.alpha = 1
+                    if risk == nil {
+                        me.riskController?.resetVote()
+                    } else {
+                        me.riskController?.hideProxy()
+                    }
                 })
             }
         } else if let cell = cell as? TeammateStatsCell {

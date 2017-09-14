@@ -22,7 +22,7 @@
 import Foundation
 import SwiftyJSON
 
-struct TeammateEntity: TeammateLike {
+class TeammateEntity {
     var lastUpdated: Int64
     let id: String
 
@@ -40,7 +40,7 @@ struct TeammateEntity: TeammateLike {
     let year: Int
     let avatar: String
     
-    var extended: ExtendedTeammate?
+    var extended: ExtendedTeammateEntity?
         
     var description: String {
         return "Teammate \(name) id: \(id); ver: \(lastUpdated)"
@@ -66,7 +66,7 @@ struct TeammateEntity: TeammateLike {
         avatar = json["Avatar"].stringValue
     }
     
-    mutating func updateWithVote(json: JSON) {
+    func updateWithVote(json: JSON) {
         extended?.voting = TeammateVotingInfo(json: json["VotingPart"])
         extended?.topic.minutesSinceLastPost = json["DiscussionPart"]["SinceLastPostMinutes"].intValue
         extended?.topic.unreadCount = json["DiscussionPart"]["UnreadCount"].intValue

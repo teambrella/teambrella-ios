@@ -22,7 +22,7 @@
 import Foundation
 import SwiftyJSON
 
-struct ExtendedTeammateEntity: ExtendedTeammate {
+class ExtendedTeammateEntity {
     let id: String
     let ver: Int64
     
@@ -59,7 +59,7 @@ struct ExtendedTeammateEntity: ExtendedTeammate {
         riskScale = RiskScaleEntity(json: json["RiskScalePart"])
     }
     
-    mutating func myProxy(set: Bool) {
+    func myProxy(set: Bool) {
         basic.isMyProxy = set
     }
     

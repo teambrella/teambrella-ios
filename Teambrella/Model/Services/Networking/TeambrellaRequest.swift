@@ -67,8 +67,8 @@ enum TeambrellaResponseType {
     case initClient
     case updates
     case teams(TeamsModel)
-    case teammatesList([TeammateLike])
-    case teammate(ExtendedTeammate)
+    case teammatesList([TeammateEntity])
+    case teammate(ExtendedTeammateEntity)
     case teammateVote(JSON)
     case newPost(ChatEntity)
     case registerKey

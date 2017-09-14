@@ -23,7 +23,7 @@ import Kingfisher
 import UIKit
 
 struct TeammateCellBuilder {
-    static func populate(cell: UICollectionViewCell, with teammate: ExtendedTeammate, delegate: Any? = nil) {
+    static func populate(cell: UICollectionViewCell, with teammate: ExtendedTeammateEntity, delegate: Any? = nil) {
         if let cell = cell as? TeammateSummaryCell, let vc = delegate as? UIViewController {
             populateSummary(cell: cell, with: teammate, controller: vc)
         } else if let cell = cell as? TeammateObjectCell, let vc = delegate as? TeammateProfileVC {
@@ -43,7 +43,7 @@ struct TeammateCellBuilder {
         }
     }
     
-    private static func populateMeCell(cell: MeCell, with teammate: ExtendedTeammate, delegate: Any?) {
+    private static func populateMeCell(cell: MeCell, with teammate: ExtendedTeammateEntity, delegate: Any?) {
        cell.avatar.showAvatar(string: teammate.basic.avatar)
         cell.nameLabel.text = teammate.basic.name
         cell.infoLabel.text = teammate.basic.city
@@ -61,7 +61,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateSummary(cell: TeammateSummaryCell,
-                                        with teammate: ExtendedTeammate,
+                                        with teammate: ExtendedTeammateEntity,
                                         controller: UIViewController) {
         cell.title.text = teammate.basic.name
         //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
@@ -93,7 +93,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateVote(cell: TeammateVoteCell,
-                                     with teammate: ExtendedTeammate,
+                                     with teammate: ExtendedTeammateEntity,
                                      delegate: TeammateProfileVC) {
         if delegate.riskController == nil {
             let board = UIStoryboard(name: "Members", bundle: nil)
@@ -113,7 +113,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateObject(cell: TeammateObjectCell,
-                                       with teammate: ExtendedTeammate,
+                                       with teammate: ExtendedTeammateEntity,
                                        controller: TeammateProfileVC) {
         cell.titleLabel.text = "Team.TeammateCell.object".localized
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
@@ -152,7 +152,7 @@ struct TeammateCellBuilder {
                              for: .normal)
     }
     
-    private static func populateStats(cell: TeammateStatsCell, with teammate: ExtendedTeammate) {
+    private static func populateStats(cell: TeammateStatsCell, with teammate: ExtendedTeammateEntity) {
         let stats = teammate.stats
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
         if let left = cell.numberBar.left {
@@ -223,7 +223,9 @@ struct TeammateCellBuilder {
         cell.unreadCountView.isHidden = stats.unreadCount == 0
     }
     
-    private static func populateContact(cell: TeammateContactCell, with teammate: ExtendedTeammate, delegate: Any?) {
+    private static func populateContact(cell: TeammateContactCell,
+                                        with teammate: ExtendedTeammateEntity,
+                                        delegate: Any?) {
         guard let dataSource = delegate as? UITableViewDataSource else {
             fatalError("TeammateContactCell should have table view data source")
         }
