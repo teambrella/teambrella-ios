@@ -42,7 +42,7 @@ let isLocalServer = false
  */
 class ServerService {
     struct Constant {
-        static var siteURL: String { return isLocalServer ? BlockchainServer.Constant.siteURL : "https://surilla.com/" }
+        static var siteURL: String { return isLocalServer ? BlockchainServer.Constant.siteURL : "https://surilla.com" }
         static let timestampURL = "me/GetTimestamp"
     }
     
@@ -103,16 +103,35 @@ class ServerService {
         }
     }
     
+    func url(for string: String, parameters: [String: String]?) -> URL? {
+        var urlComponents = URLComponents(string: urlString(string: string))
+        if let parameters = parameters {
+            var queryItems: [URLQueryItem] = []
+            for (key, value) in parameters {
+                guard let key = key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                    let value = value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+                        continue
+                }
+                
+                queryItems.append(URLQueryItem(name: key, value: value))
+            }
+            urlComponents?.queryItems = queryItems
+        }
+        return urlComponents?.url
+    }
+    
     func ask(for string: String,
              parameters: [String: String]? = nil,
              body: RequestBody? = nil,
              success: @escaping (JSON) -> Void,
              failure: @escaping (Error) -> Void) {
-        guard let url = url(string: string) else {
-            fatalError("Couldn't create URL")
+        
+        guard let url = url(for: string, parameters: parameters) else {
+             fatalError("Couldn't create URL")
         }
         
         var request = URLRequest(url: url)
+        print(url.absoluteString)
         request.httpMethod = HTTPMethod.post.rawValue
         let contentType = body?.contentType ?? "application/json"
         request.setValue(contentType, forHTTPHeaderField: "Content-Type")
@@ -160,7 +179,7 @@ class ServerService {
         guard let data = data else { return }
         
         if let string = try? JSONSerialization.jsonObject(with: data, options: []) {
-            print(string)
+            print("🌕 \(string)")
         }
     }
     

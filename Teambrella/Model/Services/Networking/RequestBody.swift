@@ -78,9 +78,9 @@ struct RequestBody {
                 result[key] = value
             }
         }
-        result["Timestamp"] = timestamp
-        result["Signature"] = signature
-        result["PublicKey"] = publicKey
+//        result["Timestamp"] = timestamp
+//        result["Signature"] = signature
+//        result["PublicKey"] = publicKey
         return result
     }
     

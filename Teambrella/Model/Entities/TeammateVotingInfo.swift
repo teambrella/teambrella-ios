@@ -25,7 +25,7 @@ import SwiftyJSON
 struct TeammateVotingInfo {
     let riskVoted: Double?
     let myVote: Double?
-    let proxyVote: Double?
+    //let proxyVote: Double?
     
     let proxyAvatar: String?
     let proxyName: String?
@@ -40,7 +40,7 @@ struct TeammateVotingInfo {
         
         riskVoted = json["RiskVoted"].double
         myVote = json["MyVote"].double
-        proxyVote = json["ProxyVote"].double
+        //proxyVote = json["ProxyVote"].double
         proxyAvatar = json["ProxyAvatar"].string
         proxyName = json["ProxyName"].string
         remainingMinutes = json["RemainedMinutes"].intValue

@@ -20,10 +20,12 @@ class PushService {
     
     func askPermissionsForRemoteNotifications(application: UIApplication) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if granted {
-                application.registerForRemoteNotifications()
-            } else {
-                print("User Notification permission denied: \(String(describing: error))")
+            DispatchQueue.main.async {
+                if granted {
+                    application.registerForRemoteNotifications()
+                } else {
+                    print("User Notification permission denied: \(String(describing: error))")
+                }
             }
         }
     }

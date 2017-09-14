@@ -66,6 +66,7 @@ class VotingRiskVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        updateWithTeammate()
     }
     
     func updateWithTeammate() {
@@ -92,6 +93,13 @@ class VotingRiskVC: UIViewController {
             updateRiskDeltas(risk: risk)
             //votingScroller.map { $0.scrollTo(offset: offsetFrom(risk: risk, in: $0)) }
         }
+        
+        if let myVote = voting.myVote, let scroller = votingScroller {
+            yourRiskValue.text = String(format:"%.2f", myVote)
+            let offset = offsetFrom(risk: myVote, in: scroller)
+            votingScroller?.scrollTo(offset: offset)
+        }
+        
         let timeString = DateProcessor().stringFromNow(minutes: voting.remainingMinutes).uppercased()
         timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
     }
@@ -155,18 +163,19 @@ class VotingRiskVC: UIViewController {
     }
     
     func offsetFrom(risk: Double, in controller: VotingScrollerVC) -> CGFloat {
-        let risk = CGFloat(log(base: 25.0, value: pow(risk * 5.0, Double(controller.maxValue))))
-        return risk
+        return CGFloat(log(base: 25.0, value: risk * 5.0)) * controller.maxValue
     }
     
     @IBAction func tapResetVote(_ sender: UIButton) {
         guard let votingScroller = votingScroller else { return }
         
         onVoteConfirmed?(nil)
-        //teamVoteLabel.text = "..."
         yourRiskValue.text = "..."
-        if let proxyVote = teammate?.voting?.proxyVote {
-            let offset = offsetFrom(risk: proxyVote, in: votingScroller)
+        
+        if let vote = teammate?.voting?.myVote,
+            let proxyAvatar = teammate?.voting?.proxyAvatar,
+            let proxyName = teammate?.voting?.proxyName {
+            let offset = offsetFrom(risk: vote, in: votingScroller)
             votingScroller.scrollTo(offset: offset)
         } else {
             votingScroller.scrollToTeamAverage()
