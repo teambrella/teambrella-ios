@@ -6,13 +6,15 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import UIKit
 import PKHUD
-import XLPagerTabStrip
+import UIKit
 
-class WalletCosignersVC: UIViewController, IndicatorInfoProvider, Routable {
+class WalletCosignersVC: UIViewController, Routable {
+    @IBOutlet var collectionView: UICollectionView!
+    
     let dataSource: WalletCosignersDataSource = WalletCosignersDataSource()
     fileprivate var previousScrollOffset: CGFloat = 0
+    var cosigners: [CosignerEntity]!
     
     var isFirstLoading = true
     
@@ -20,7 +22,7 @@ class WalletCosignersVC: UIViewController, IndicatorInfoProvider, Routable {
         super.viewDidLoad()
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
-            //self?.collectionView.reloadData()
+            self?.collectionView.reloadData()
         }
         
         dataSource.onError = { [weak self] error in
@@ -52,10 +54,6 @@ class WalletCosignersVC: UIViewController, IndicatorInfoProvider, Routable {
         super.didReceiveMemoryWarning()
     }
     
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Team.MembersVC.indicatorTitle".localized)
-    }
-    
 }
 
 // MARK: UICollectionViewDataSource
@@ -71,17 +69,8 @@ extension WalletCosignersVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: UICollectionViewCell!
-        cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeammateCell", for: indexPath)
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WalletCosignerCell", for: indexPath)
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                   withReuseIdentifier: "TeammatesHeader",
-                                                                   for: indexPath)
-        return view
     }
     
 }
@@ -95,20 +84,10 @@ extension WalletCosignersVC: UICollectionViewDelegate {
         WalletCosignersCellBuilder.populate(cell: cell, with: teammate)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplaySupplementaryView view: UICollectionReusableView,
-                        forElementKind elementKind: String,
-                        at indexPath: IndexPath) {
-        if let view = view as? TeammateHeaderView {
-            //view.titleLabel.text = dataSource.headerTitle(indexPath: indexPath)
-            //view.subtitleLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //service.router.presentMemberProfile(teammate: dataSource[indexPath])
+        let item = dataSource.items[indexPath.row]
+        service.router.presentMemberProfile(teammateID: item.userId)
     }
-    
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
@@ -116,13 +95,7 @@ extension WalletCosignersVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 72)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 56)
+        return CGSize(width: collectionView.bounds.width, height: 60)
     }
 }
 

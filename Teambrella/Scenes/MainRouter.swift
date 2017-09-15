@@ -148,11 +148,11 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentWalletCosignersList(teamID: Int) {
+    func presentWalletCosignersList(cosigners: [WalletCosignersCellModel]) {
         guard let vc = WalletCosignersVC.instantiate() as? WalletCosignersVC
             else { fatalError("Error instantiating") }
         
-        //vc.teamID = teamID
+        vc.cosigners = cosigners
         vc.automaticallyAdjustsScrollViewInsets = false
         push(vc: vc)
     }
