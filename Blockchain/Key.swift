@@ -23,13 +23,13 @@ import Foundation
 
 struct Key {
     let key: BTCKey
-    let isTestnet: Bool
+    var isTestnet: Bool
     var timestamp: Int64
     var privateKey: String {
         return (key.privateKey as Data).base58String
     }
     var publicKey: String {
-        return (key.publicKey as Data).hexString
+        return (key.compressedPublicKey as Data).hexString
     }
     var address: String {
         return key.privateKeyAddress.string
@@ -59,7 +59,7 @@ struct Key {
     init() {
         key = BTCKey()
         timestamp = 0
-        isTestnet = true
+        isTestnet = false
     }
     
 }

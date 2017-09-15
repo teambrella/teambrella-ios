@@ -3,7 +3,7 @@ platform :ios, '10.3'
 
 def service_pods
   pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec'
-  pod 'Geth'
+  pod 'Geth', '~> 1.6'
 end
 
 def social_pods
