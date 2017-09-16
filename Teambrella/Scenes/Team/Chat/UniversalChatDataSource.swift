@@ -22,9 +22,8 @@
 import Foundation
 import SwiftyJSON
 
-class UniversalChatDatasource {
+final class UniversalChatDatasource {
     private var topic: Topic?
-    
     private var claim: EnhancedClaimEntity?
     var name: String?
     
@@ -33,11 +32,9 @@ class UniversalChatDatasource {
         if let strategy = strategy as? ClaimChatStrategy {
             return strategy.claim.id
         }
-//        } else if let strategy = strategy as? HomeChatStrategy {
-//            return strategy.card.
-//        }
         return nil
     }
+    
     var chatHeader: String? {
         if let strategy = strategy as? ClaimChatStrategy {
             return strategy.claim.description
@@ -47,34 +44,13 @@ class UniversalChatDatasource {
         return nil
     }
     
-    var cellModels: [ChatCellModel] = []
-    var chunks: [ChatChunk] = []
-    
     var count: Int { return chunks.reduce(0) { $0 + $1.count } }
-    
     var limit                         = 100
-    var lastRead: Int64               = 0 {
-        didSet {
-            if oldValue == 0 {
-                loadPrevious()
-            }
-        }
-    }
-    var forwardOffset: Int            = 0
-    var backwardOffset: Int           = 0
-    var postsCount: Int               = 0
-    var avatarSize                    = 64
-    var commentAvatarSize             = 32
-    var cloudWidth: CGFloat           = 0
-    var labelHorizontalInset: CGFloat = 8
-    var font: UIFont                  = UIFont.teambrella(size: 14)
     
-    private(set) var isLoading = false
     var hasNext = true
     var hasPrevious = true
     var title: String { return strategy.title }
     var lastIndexPath: IndexPath? { return count >= 1 ? IndexPath(row: count - 1, section: 0) : nil }
-    private var isChunkAdded = false
     var currentTopCell: IndexPath? {
         guard isChunkAdded else {
             return chunks.isEmpty ? nil : IndexPath(row: 0, section: 0)
@@ -124,13 +100,35 @@ class UniversalChatDatasource {
     
     var isRateVisible: Bool { return strategy.isRateVisible }
     
-    private var strategy: ChatDatasourceStrategy = EmptyChatStrategy()
-    
-    var onUpdate: ((Bool) -> Void)?
+    var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool) -> Void)?
     var onMessageSend: (() -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
     
-    var cellModelBuilder = ChatModelBuilder()
+    private var cellModels: [ChatCellModel] = []
+    private var chunks: [ChatChunk] = []
+    
+    private var lastRead: Int64               = 0 {
+        didSet {
+            if oldValue == 0 {
+                loadPrevious()
+            }
+        }
+    }
+    private var forwardOffset: Int            = 0
+    private var backwardOffset: Int           = 0
+    private var postsCount: Int               = 0
+    private var avatarSize                    = 64
+    private var commentAvatarSize             = 32
+    var cloudWidth: CGFloat           = 0
+    private var labelHorizontalInset: CGFloat = 8
+    private var font: UIFont                  = UIFont.teambrella(size: 14)
+    
+    private(set) var isLoading = false
+    private var isChunkAdded = false
+    
+    private var strategy: ChatDatasourceStrategy = EmptyChatStrategy()
+    
+    private var cellModelBuilder = ChatModelBuilder()
     
     func addContext(context: ChatContext) {
         strategy = ChatStrategyFactory.strategy(with: context)
@@ -227,6 +225,7 @@ class UniversalChatDatasource {
     }
     
     private func process(response: TeambrellaResponseType, isPrevious: Bool, isMyNewMessage: Bool) {
+        let count = self.count
         switch response {
         case let .chat(model):
             addModels(models: model.chat, isPrevious: isPrevious)
@@ -249,7 +248,7 @@ class UniversalChatDatasource {
                     hasPrevious = false
                 } else {
                     hasNext = false
-                   // lastRead = model.lastRead
+                    // lastRead = model.lastRead
                 }
             }
         case let .newPost(post):
@@ -261,7 +260,8 @@ class UniversalChatDatasource {
         default:
             return
         }
-        onUpdate?(isPrevious)
+        let hasNewModels = self.count > count
+        onUpdate?(isPrevious, hasNewModels)
     }
     
     private func addChunk(chunk: ChatChunk?) {

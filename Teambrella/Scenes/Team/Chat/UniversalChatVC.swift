@@ -39,6 +39,8 @@ final class UniversalChatVC: UIViewController, Routable {
     override var inputAccessoryView: UIView? { return input }
     override var canBecomeFirstResponder: Bool { return true }
     
+    lazy var picker: ImagePickerController = { ImagePickerController(parent: self, delegate: self) }()
+    
     private let input: InputAccessoryView = InputAccessoryView()
     private let dataSource = UniversalChatDatasource()
     private var socketToken = "UniversalChat"
@@ -55,8 +57,6 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     private var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
     
-    lazy var picker: ImagePickerController = { ImagePickerController(parent: self, delegate: self) }()
-    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -65,7 +65,9 @@ final class UniversalChatVC: UIViewController, Routable {
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
-        dataSource.onUpdate = { [weak self] backward in
+        dataSource.onUpdate = { [weak self] backward, hasNew in
+            guard hasNew else { return }
+            
             self?.refresh(backward: backward)
         }
         dataSource.isLoadNextNeeded = true
@@ -100,21 +102,6 @@ final class UniversalChatVC: UIViewController, Routable {
     
     deinit {
         service.socket?.remove(listener: socketToken)
-    }
-    
-    func refresh(backward: Bool) {
-        // not using reloadData() to avoid blinking of cells
-        collectionView.dataSource = nil
-        collectionView.dataSource = self
-        
-        if self.shouldScrollToBottom {
-            scrollToBottom(animated: true)
-            self.shouldScrollToBottom = false
-            self.isFirstRefresh = false
-        } else if backward, let indexPath = dataSource.currentTopCell {
-            self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
-        }
-        collectionView.refreshControl?.endRefreshing()
     }
     
     func setContext(context: ChatContext) {
@@ -185,6 +172,26 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     // MARK: Private
+    
+    /**
+     * Refresh controller after new data comes from the server
+     *
+     * - Parameter backward: if the chunk of data comes above existing cells or below them
+     */
+    private func refresh(backward: Bool) {
+        // not using reloadData() to avoid blinking of cells
+        collectionView.dataSource = nil
+        collectionView.dataSource = self
+        
+        if self.shouldScrollToBottom {
+            scrollToBottom(animated: true)
+            self.shouldScrollToBottom = false
+            self.isFirstRefresh = false
+        } else if backward, let indexPath = dataSource.currentTopCell {
+            self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
+        }
+        collectionView.refreshControl?.endRefreshing()
+    }
     
     private func cloudSize(for indexPath: IndexPath) -> CGSize {
         guard let model = dataSource[indexPath] as? ChatTextCellModel else { return .zero }
@@ -458,6 +465,7 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: ImagePickerControllerDelegate
 extension UniversalChatVC: ImagePickerControllerDelegate {
     func imagePicker(controller: ImagePickerController, didSendPhoto photo: String) {
         linkImage(name: photo)
