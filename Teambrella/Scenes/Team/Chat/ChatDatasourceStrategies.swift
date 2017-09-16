@@ -103,9 +103,9 @@ class TeammateChatStrategy: ChatDatasourceStrategy {
     var canLoadBackward: Bool = true
      var isRateVisible: Bool = true
     
-    var teammate: ExtendedTeammate
+    var teammate: ExtendedTeammateEntity
     
-    init(context: ExtendedTeammate) {
+    init(context: ExtendedTeammateEntity) {
         teammate = context
     }
     

@@ -31,7 +31,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     @IBOutlet var collectionView: UICollectionView!
     var dataSource = ClaimsDataSource()
     
-    var teammate: TeammateLike?
+    var teammate: TeammateEntity?
     
     var isFirstLoading = true
     // is pushed to navigation stack instead of being the first controller in XLPagerTabStrip

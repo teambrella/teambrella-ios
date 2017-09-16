@@ -22,6 +22,7 @@
 import Foundation
 import SwiftyJSON
 
+/*
 protocol TeammateLike: EntityLike {
     // personal properties
 
@@ -62,3 +63,4 @@ protocol TeammateLike: EntityLike {
     
     mutating func updateWithVote(json: JSON)
 }
+*/

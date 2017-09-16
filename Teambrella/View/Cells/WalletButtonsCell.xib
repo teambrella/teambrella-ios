@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,10 +51,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4sg-xG-VXv" customClass="RoundImagesStack" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="368.5" y="19.5" width="150" height="32"/>
+                                        <rect key="frame" x="438.5" y="19.5" width="80" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="b6Q-xr-9fD"/>
+                                            <constraint firstAttribute="width" constant="80" id="b6Q-xr-9fD"/>
                                             <constraint firstAttribute="height" constant="32" id="wWu-Tp-vny"/>
                                         </constraints>
                                     </view>
@@ -69,7 +69,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="W6N-tS-Hn6" secondAttribute="trailing" id="3UB-tE-p19"/>
                                     <constraint firstAttribute="bottom" secondItem="W6N-tS-Hn6" secondAttribute="bottom" id="FAQ-V2-rCk"/>
-                                    <constraint firstItem="4sg-xG-VXv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h9f-sF-6gJ" secondAttribute="trailing" constant="8" id="Uru-FU-uNf"/>
+                                    <constraint firstItem="4sg-xG-VXv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h9f-sF-6gJ" secondAttribute="trailing" constant="16" id="Uru-FU-uNf"/>
                                     <constraint firstItem="h9f-sF-6gJ" firstAttribute="leading" secondItem="aUv-pz-bPk" secondAttribute="leadingMargin" id="ZOo-Dm-wAp"/>
                                     <constraint firstItem="dEN-dN-JCa" firstAttribute="leading" secondItem="VuV-Bt-tPv" secondAttribute="trailing" constant="16" id="Zdk-TN-6Dm"/>
                                     <constraint firstItem="VuV-Bt-tPv" firstAttribute="leading" secondItem="4sg-xG-VXv" secondAttribute="trailing" constant="16" id="gIT-3Y-YDX"/>

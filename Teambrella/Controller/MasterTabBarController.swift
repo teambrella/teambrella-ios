@@ -25,7 +25,6 @@ class MasterTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         guard let items = tabBar.items else { return }
         
         for item in items {
