@@ -22,7 +22,7 @@ class WalletCosignersDataSource {
     init() {
     }
     
-    func loadData() {
+    func loadData(cosigners: [CosignerEntity]) {
         var offset = isSilentUpdate ? 0 : count
         guard !isLoading else { return }
         
@@ -31,18 +31,20 @@ class WalletCosignersDataSource {
             items.removeAll()
             isSilentUpdate = false
         }
-        items.append(WalletCosignersVC.cosigners)
+        for cosigner in cosigners {
+            items.append(cosigner)
+        }
         offset += items.count
         onUpdate?()
         isLoading = false
     }
     
-    func updateSilently() {
-        isSilentUpdate = true
-        loadData()
-    }
+//    func updateSilently() {
+//        isSilentUpdate = true
+//        loadData()
+//    }
     
-    subscript(indexPath: IndexPath) -> CosignerEntity/*TeammateLike*/ {
+    subscript(indexPath: IndexPath) -> CosignerEntity {
         let model = items[indexPath.row]
         return model
     }

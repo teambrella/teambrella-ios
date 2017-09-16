@@ -6,27 +6,32 @@
 //  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 //
 
-import PKHUD
 import UIKit
 
 class WalletCosignersVC: UIViewController, Routable {
-    @IBOutlet var collectionView: UICollectionView!
+    
+    static let storyboardName = "Me"
     
     let dataSource: WalletCosignersDataSource = WalletCosignersDataSource()
     fileprivate var previousScrollOffset: CGFloat = 0
-    var cosigners: [CosignerEntity]!
-    
+    var cosigners: [CosignerEntity]?
     var isFirstLoading = true
+    
+    @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addGradientNavBar()
+        WalletCosignersCellBuilder.registerCells(in: collectionView)
         dataSource.onUpdate = { [weak self] in
-            HUD.hide()
             self?.collectionView.reloadData()
         }
+        guard let cosigners = cosigners else { return }
+        
+        dataSource.loadData(cosigners: cosigners)
+        title = "Me.Wallet.WalletCosignersVC.title".localized
         
         dataSource.onError = { [weak self] error in
-            HUD.hide()
             guard let error = error as? TeambrellaError else { return }
             
             let controller = UIAlertController(title: "Error", message: error.description, preferredStyle: .alert)
@@ -34,10 +39,6 @@ class WalletCosignersVC: UIViewController, Routable {
             controller.addAction(cancel)
             self?.present(controller, animated: true, completion: nil)
         }
-        
-        HUD.show(.progress, onView: view)
-        dataSource.loadData()
-        title = "Me.Wallet.WalletCosignersVC.title".localized
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,7 +48,7 @@ class WalletCosignersVC: UIViewController, Routable {
             return
         }
         
-        dataSource.updateSilently()
+       // dataSource.updateSilently()
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,13 +81,13 @@ extension WalletCosignersVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        let teammate = dataSource[indexPath]
-        WalletCosignersCellBuilder.populate(cell: cell, with: teammate)
+        let cosigner = dataSource[indexPath]
+        WalletCosignersCellBuilder.populate(cell: cell, with: cosigner)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = dataSource.items[indexPath.row]
-        service.router.presentMemberProfile(teammateID: item.userId)
+        let cosigner = dataSource[indexPath]
+        service.router.presentMemberProfile(teammateID: cosigner.userId)
     }
 }
 

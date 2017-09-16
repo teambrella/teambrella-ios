@@ -34,7 +34,7 @@ class WalletVC: UIViewController {
     var qrCode: UIImage?
     var dataSource: WalletDataSource = WalletDataSource()
     var walletID = ""
-    var wallet: WalletEntity!
+    var wallet: WalletEntity?
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -91,9 +91,9 @@ class WalletVC: UIViewController {
     @objc
     func tapCosigners(sender: UITapGestureRecognizer) {
         print("tap co-signers")
-        guard let cosigners = wallet.cosigners else { return }
+        guard let wallet = wallet else { return }
         
-        service.router.presentWalletCosignersList(cosigners: cosigners)
+        service.router.presentWalletCosignersList(cosigners: wallet.cosigners)
     }
 }
 

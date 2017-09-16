@@ -148,7 +148,7 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentWalletCosignersList(cosigners: [WalletCosignersCellModel]) {
+    func presentWalletCosignersList(cosigners: [CosignerEntity]) {
         guard let vc = WalletCosignersVC.instantiate() as? WalletCosignersVC
             else { fatalError("Error instantiating") }
         

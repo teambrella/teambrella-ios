@@ -1241,6 +1241,8 @@
 				6D69DA281EFD1A0400DED5CE /* WalletFundingCell.xib */,
 				6D69DA2B1EFD1A1E00DED5CE /* WalletButtonsCell.swift */,
 				6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */,
+				944C66801F6C146200CCEB58 /* WalletCosignerCell.swift */,
+				944C66811F6C146200CCEB58 /* WalletCosignerCell.xib */,
 			);
 			name = Wallet;
 			sourceTree = "<group>";
@@ -1738,8 +1740,6 @@
 				94C2D3991F191FA600D203C2 /* TeamCell.xib */,
 				6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */,
 				6DCF62561F4B319F00E8F500 /* PhotoPreviewCell.xib */,
-				944C66801F6C146200CCEB58 /* WalletCosignerCell.swift */,
-				944C66811F6C146200CCEB58 /* WalletCosignerCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";

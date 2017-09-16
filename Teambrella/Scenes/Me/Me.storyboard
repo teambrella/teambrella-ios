@@ -161,14 +161,14 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-A5-JrL">
-                                                        <rect key="frame" x="24" y="14" width="46" height="107"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-A5-JrL">
+                                                        <rect key="frame" x="24" y="14" width="77.5" height="107"/>
                                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="88"/>
                                                         <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztJ-BE-YAX">
-                                                        <rect key="frame" x="73" y="80" width="14.5" height="19"/>
+                                                        <rect key="frame" x="104.5" y="80" width="14.5" height="19"/>
                                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
                                                         <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -545,7 +545,7 @@
         <!--Wallet CosignersVC-->
         <scene sceneID="nfj-jN-LD0">
             <objects>
-                <viewController id="jqY-qa-Ox7" customClass="WalletCosignersVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalletCosignersVC" id="jqY-qa-Ox7" customClass="WalletCosignersVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sxk-ec-kAJ"/>
                         <viewControllerLayoutGuide type="bottom" id="SoN-WT-Fel"/>
@@ -556,7 +556,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="odu-Ew-fCp">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="6bX-5s-Dhi">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -638,7 +638,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRq-pR-zwp" customClass="Label" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="109" y="23" width="56" height="16"/>
+                                        <rect key="frame" x="109" y="24" width="57.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="OzN-6s-0Vc"/>
                                         </constraints>
@@ -686,7 +686,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvj-xs-7a8">
-                                <rect key="frame" x="151" y="450" width="74" height="17"/>
+                                <rect key="frame" x="149" y="450" width="78" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="eED-6j-NkD"/>
                                 </constraints>

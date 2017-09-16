@@ -9,11 +9,14 @@
 import UIKit
 
 struct WalletCosignersCellBuilder {
+    
+    static func registerCells(in collectionView: UICollectionView) {
+        collectionView.register(WalletCosignerCell.nib, forCellWithReuseIdentifier: WalletCosignerCell.cellID)
+    }
+    
     static func populate(cell: UICollectionViewCell, with model: CosignerEntity) {
         if let cell = cell as? WalletCosignerCell {
-            if let url = URL(string: service.server.avatarURLstring(for: model.avatar)) {
-                cell.avatar.kf.setImage(with: url)
-            }
+            cell.avatar.showAvatar(string: model.avatar)
             cell.nameLabel.text = model.name
         }
     }
