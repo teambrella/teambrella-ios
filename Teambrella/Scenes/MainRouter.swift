@@ -107,7 +107,7 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentMemberProfile(teammate: TeammateLike) {
+    func presentMemberProfile(teammate: TeammateEntity) {
         guard let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC else { fatalError("Error instantiating") }
         
         vc.teammate = teammate
@@ -121,7 +121,7 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentClaims(teammate: TeammateLike? = nil) {
+    func presentClaims(teammate: TeammateEntity? = nil) {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
         
         vc.teammate = teammate

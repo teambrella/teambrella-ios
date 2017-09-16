@@ -38,7 +38,7 @@ extension UIImage {
                             completion: @escaping (UIImage?, NSError?) -> Void) {
         let modified: String!
         if let width = width {
-            modified = service.server.avatarURLstring(for: string, width: width)
+            modified = service.server.avatarURLstring(for: string, width: width * UIScreen.main.nativeScale)
         } else {
             modified = service.server.avatarURLstring(for: string)
         }
@@ -46,7 +46,7 @@ extension UIImage {
         
         var options: KingfisherOptionsInfo? = []
         if let cornerRadius = cornerRadius {
-            let processor = RoundCornerImageProcessor(cornerRadius: cornerRadius)
+            let processor = RoundCornerImageProcessor(cornerRadius: cornerRadius * UIScreen.main.nativeScale)
             options?.append(.processor(processor))
         }
         fetchAvatar(url: url, options: options, completion: completion)

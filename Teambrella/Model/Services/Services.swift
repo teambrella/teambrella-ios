@@ -36,6 +36,7 @@ class ServicesHandler {
     lazy var push: PushService = PushService()
     
     var currencySymbol: String { return session?.currentTeam?.currencySymbol ?? "" }
+    var currencyName: String { return session?.currentTeam?.currency ?? "" }
     
     private init() {}
     

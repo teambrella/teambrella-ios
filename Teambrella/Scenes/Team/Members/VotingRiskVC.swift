@@ -25,15 +25,13 @@ class VotingRiskVC: UIViewController {
     @IBOutlet var leftLabeledView: LabeledRoundImageView!
     @IBOutlet var rightLabeledView: LabeledRoundImageView!
     @IBOutlet var mainLabeledView: LabeledRoundImageView!
+    @IBOutlet var yourProxyContainer: UIStackView!
+    @IBOutlet var proxyAvatar: RoundImageView!
+    @IBOutlet var proxyName: InfoLabel!
     
     @IBOutlet var yourVoteOffsetConstraint: NSLayoutConstraint!
     
-    //    var riskScale: RiskScaleEntity? {
-    //        didSet {
-    //            updateWithRiskScale()
-    //        }
-    //    }
-    var teammate: ExtendedTeammate? {
+    var teammate: ExtendedTeammateEntity? {
         didSet {
             updateWithTeammate()
         }
@@ -51,8 +49,7 @@ class VotingRiskVC: UIViewController {
         votingRisksView.layer.cornerRadius = 4
         votingRisksView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9647058824, blue: 1, alpha: 1).cgColor
         votingRisksView.layer.borderWidth = 1
-        //yourVoteOffsetConstraint.constant = votingRisksView.bounds.midX
-        // Do any additional setup after loading the view.
+
         leftLabeledView.isHidden = true
         rightLabeledView.isHidden = true
         votingRiskLabel.text = "Team.VotingRiskVC.headerLabel".localized
@@ -66,6 +63,7 @@ class VotingRiskVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        updateWithTeammate()
     }
     
     func updateWithTeammate() {
@@ -90,8 +88,14 @@ class VotingRiskVC: UIViewController {
         if let risk = voting.riskVoted {
             teamRiskValue.text = String.formattedNumber(risk)
             updateRiskDeltas(risk: risk)
-            //votingScroller.map { $0.scrollTo(offset: offsetFrom(risk: risk, in: $0)) }
         }
+        
+        if let myVote = voting.myVote, let scroller = votingScroller {
+            yourRiskValue.text = String(format:"%.2f", myVote)
+            let offset = offsetFrom(risk: myVote, in: scroller)
+            votingScroller?.scrollTo(offset: offset)
+        }
+        
         let timeString = DateProcessor().stringFromNow(minutes: voting.remainingMinutes).uppercased()
         timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
     }
@@ -155,27 +159,40 @@ class VotingRiskVC: UIViewController {
     }
     
     func offsetFrom(risk: Double, in controller: VotingScrollerVC) -> CGFloat {
-        let risk = CGFloat(log(base: 25.0, value: pow(risk * 5.0, Double(controller.maxValue))))
-        return risk
+        return CGFloat(log(base: 25.0, value: risk * 5.0)) * controller.maxValue
     }
     
     @IBAction func tapResetVote(_ sender: UIButton) {
+        onVoteConfirmed?(nil)
+        yourRiskValue.text = "..."
+    }
+    
+    func resetVote() {
         guard let votingScroller = votingScroller else { return }
         
-        onVoteConfirmed?(nil)
-        //teamVoteLabel.text = "..."
-        yourRiskValue.text = "..."
-        if let proxyVote = teammate?.voting?.proxyVote {
-            let offset = offsetFrom(risk: proxyVote, in: votingScroller)
+        if let vote = teammate?.voting?.myVote,
+            let proxyAvatar = teammate?.voting?.proxyAvatar,
+            let proxyName = teammate?.voting?.proxyName {
+            yourProxyContainer.isHidden = false
+            resetVoteButton.isHidden = true
+            self.proxyAvatar.showAvatar(string: proxyAvatar)
+            self.proxyName.text = proxyName.uppercased()
+            let offset = offsetFrom(risk: vote, in: votingScroller)
             votingScroller.scrollTo(offset: offset)
         } else {
+            hideProxy()
+            yourRiskValue.text = "..."
             votingScroller.scrollToTeamAverage()
         }
     }
     
+    func hideProxy() {
+        yourProxyContainer.isHidden = true
+        resetVoteButton.isHidden = false
+    }
+    
     @IBAction func tapOthers(_ sender: UIButton) {
         // segue
-        //DeveloperTools.notSupportedAlert(in: self)
     }
     
 }

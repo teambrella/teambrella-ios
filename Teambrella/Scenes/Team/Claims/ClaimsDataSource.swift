@@ -53,7 +53,7 @@ class ClaimsDataSource {
     }()
     
     // if teammate is set all results will be filtered
-    var teammate: TeammateLike?
+    var teammate: TeammateEntity?
     private var order: [ClaimsCellType] = [.open,
                                            .voted,
                                            .paid,

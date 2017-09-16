@@ -31,7 +31,7 @@ class TeammateProfileVC: UIViewController, Routable {
     
     static var storyboardName: String = "Team"
     
-    var teammate: TeammateLike?
+    var teammate: TeammateEntity?
     var teammateID: String?
     
     var dataSource: TeammateProfileDataSource!
@@ -46,7 +46,7 @@ class TeammateProfileVC: UIViewController, Routable {
         
         if let teammate = teammate {
             dataSource = TeammateProfileDataSource(id: teammate.userID, isVoting: teammate.isVoting, isMe: false)
-         addGradientNavBar()
+            addGradientNavBar()
         } else if let teammateID = teammateID {
             dataSource = TeammateProfileDataSource(id: teammateID, isVoting: false, isMe: false)
             addGradientNavBar()
@@ -238,7 +238,14 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 me.riskController?.yourRiskValue.alpha = 0.5
                 me.dataSource.sendRisk(userID: id, risk: risk, completion: { json in
                     print("risk sent: received json: \(json)")
+                    me.teammate?.updateWithVote(json: json)
+                    me.riskController?.teammate = me.teammate?.extended
                     me.riskController?.yourRiskValue.alpha = 1
+                    if risk == nil {
+                        me.riskController?.resetVote()
+                    } else {
+                        me.riskController?.hideProxy()
+                    }
                 })
             }
         } else if let cell = cell as? TeammateStatsCell {
@@ -260,14 +267,14 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 left.titleLabel.text = "Team.TeammateCell.coversMe".localized
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
-                left.currencyLabel.text = "USD"
+                left.currencyLabel.text = service.currencyName
             }
             
             if let right = view.rightNumberView {
                 right.titleLabel.text = "Team.TeammateCell.coverThem".localized
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
-                right.currencyLabel.text = "USD"
+                right.currencyLabel.text = service.currencyName
             }
         }
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {

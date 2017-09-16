@@ -21,6 +21,7 @@
 
 import Foundation
 
+/*
 protocol ExtendedTeammate: EntityLike {
     var basic: TeammateBasicInfo { get }
     var topic: Topic { get set }
@@ -31,3 +32,4 @@ protocol ExtendedTeammate: EntityLike {
     
     mutating func myProxy(set: Bool)
 }
+*/

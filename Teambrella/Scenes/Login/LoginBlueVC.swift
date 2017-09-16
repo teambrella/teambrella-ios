@@ -133,17 +133,26 @@ class LoginBlueVC: UIViewController {
     }
     
     func register(token: String, userID: String) {
-        guard let validUser = validUsers[userID] else {
-            performSegue(type: .invitationOnly, sender: nil)
-            return
-        }
+//        guard let validUser = validUsers[userID] else {
+//            performSegue(type: .invitationOnly, sender: nil)
+//            return
+//        }
         
+        // WARNING: TMP validUser!
+        let validUser: ServerService.FakeKeyType = .thorax
         Keychain.save(value: validUser.rawValue, forKey: .ethPrivateAddress)
         ServerService.currentKeyType = validUser
         
+        guard let signature = EthereumProcessor.standard.publicKeySignature else {
+            fatalError("Malformed ETH signature")
+            
+        }
+        
         service.server.updateTimestamp { timestamp, error in
-            let body = RequestBody(key: service.server.key)
-            let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": token],
+            let body = RequestBody(key: service.server.key, payload: ["facebookToken": token,
+                                                                      "sigOfPublicKeyHash": signature])
+            let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": token,
+                                                                             "sigOfPublicKeyHash": signature],
                                             body: body,
                                             success: { response in
                                                 self.getMe()

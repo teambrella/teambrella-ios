@@ -40,7 +40,12 @@ class InitialVC: UIViewController {
     }
     
     func getTeams() {
-        service.storage.setLanguage().observe { _ in
+        service.storage.setLanguage().observe { [weak self] resultLang in
+            guard case .value = resultLang else {
+                 self?.failure()
+                return
+            }
+            
             service.storage.requestTeams().observe { [weak self] result in
                 switch result {
                 case let .value(teamsEntity):
@@ -62,6 +67,12 @@ class InitialVC: UIViewController {
                 }
             }
         }
+    }
+    
+    func failure() {
+        HUD.hide()
+        service.router.logout()
+        performSegue(type: .login)
     }
     
     override func viewDidAppear(_ animated: Bool) {
