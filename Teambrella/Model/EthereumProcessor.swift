@@ -9,7 +9,10 @@
 import Foundation
 import Geth
 
-struct EthereumProcessor {
+/**
+ * Interaction with Ethereum wallet
+ */
+ struct EthereumProcessor {
     /// creates a processor with the key that is stored for the current user
     static var standard: EthereumProcessor { return EthereumProcessor(key: service.server.key) }
     
