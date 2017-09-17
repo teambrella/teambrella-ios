@@ -64,3 +64,5 @@
 "Me.Report.ImageSource.camera" = "Camera";
 
 "Me.WalletVC.fundingCell.additionalTitle" = "RECOMMENDED ADDITIONAL FUNDING";
+"Me.Wallet.WalletCosignersVC.title" = "Co-signers";
+

@@ -83,12 +83,14 @@ struct WalletCellBuilder {
         }
         if let cell = cell as? WalletButtonsCell, let model = model as? WalletButtonsCellModel {
             cell.topViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
-            cell.imagesStack.setAvatars(images:  model.avatars)
+            cell.imagesStack.setAvatars(images: model.avatarsPreview)
             cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
             cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
             cell.quantityLabel.text = String(model.avatars.count)
             cell.tapMiddleViewRecognizer.removeTarget(delegate, action: nil)
             cell.tapMiddleViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapTransactions))
+            cell.tapTopViewRecognizer.removeTarget(delegate, action: nil)
+            cell.tapTopViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapCosigners))
         }
     }
     

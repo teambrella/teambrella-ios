@@ -62,7 +62,8 @@ class WalletDataSource {
         items.append(WalletFundingCellModel(maxCoverageFunding: wallet.coveragePart.nextCoverage,
                                             uninterruptedCoverageFunding: wallet.coveragePart.coverage))
         let avatars = wallet.cosigners.map { $0.avatar }
-        items.append(WalletButtonsCellModel(avatars: avatars))
+        let avatarsPreview = Array(avatars[..<3])
+        items.append(WalletButtonsCellModel(avatars: avatars, avatarsPreview: avatarsPreview))
     }
     
     subscript(indexPath: IndexPath) -> WalletCellModel {

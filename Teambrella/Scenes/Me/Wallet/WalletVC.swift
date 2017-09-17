@@ -34,6 +34,7 @@ class WalletVC: UIViewController {
     var qrCode: UIImage?
     var dataSource: WalletDataSource = WalletDataSource()
     var walletID = ""
+    var wallet: WalletEntity?
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -44,6 +45,7 @@ class WalletVC: UIViewController {
             self?.collectionView.reloadData()
             guard let id = self?.dataSource.fundAddress else { return }
             
+            self?.wallet = self?.dataSource.wallet
             self?.walletID = id.uppercased()
             self?.qrCode = self?.generateQRCode()
         }
@@ -84,6 +86,14 @@ class WalletVC: UIViewController {
         guard let session = service.session?.currentTeam?.teamID else { return }
         
         service.router.presentWalletTransactionsList(teamID: session)
+    }
+    
+    @objc
+    func tapCosigners(sender: UITapGestureRecognizer) {
+        print("tap co-signers")
+        guard let wallet = wallet else { return }
+        
+        service.router.presentWalletCosignersList(cosigners: wallet.cosigners)
     }
 }
 
