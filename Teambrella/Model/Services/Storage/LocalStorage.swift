@@ -131,6 +131,24 @@ class LocalStorage: Storage {
         return promise
     }
     
+    func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Double, limit: Double)> {
+        let promise = Promise<(coverage: Double, limit: Double)>()
+        let dateString = Formatter.teambrellaShortDashed.string(from: date)
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "Date": dateString])
+            let request = TeambrellaRequest(type: .coverageForDate, body: body, success: { response in
+                if case .coverageForDate(let coverage, let limit) = response {
+                    promise.resolve(with: (coverage: coverage, limit: limit))
+                }
+            }, failure: { error in
+                promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
     func myProxy(userID: String, add: Bool) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in

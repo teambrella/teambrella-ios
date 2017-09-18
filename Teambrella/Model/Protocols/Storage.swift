@@ -30,6 +30,7 @@ protocol Storage {
     // actual and potential teams
     func requestTeams() -> Future<TeamsModel>
     func requestPrivateList(offset: Int, limit: Int, filter: String?) -> Future<[PrivateChatUser]>
+    func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Double, limit: Double)>
     
     // MARK: Send data
     
