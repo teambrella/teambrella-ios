@@ -141,6 +141,10 @@ struct ReportDataSource {
         }
     }
     
+    func updateCell(coverage: Double, amount: Double) {
+        //let cell = ExpensesReportCellModel
+    }
+    
     subscript(indexPath: IndexPath) -> ReportCellModel {
         get {
             return items[indexPath.row]
