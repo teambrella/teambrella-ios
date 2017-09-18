@@ -68,11 +68,9 @@ class CoverageVC: UIViewController, Routable {
         loadData()
         
         let currency = service.currencySymbol
-        upperAmount.currencyLabel.text = currency //
-        centerAmount.amountLabel.text = "750" //
-        centerAmount.currencyLabel.text = currency //
-        lowerAmount.amountLabel.text = "375" //
-        lowerAmount.currencyLabel.text = currency //
+        upperAmount.currencyLabel.text = currency
+        centerAmount.currencyLabel.text = currency
+        lowerAmount.currencyLabel.text = currency
 
         fundWalletButton.setTitle("Me.CoverageVC.fundButton".localized, for: .normal)
         titleLabel.text = "Me.CoverageVC.title".localized
@@ -115,7 +113,7 @@ class CoverageVC: UIViewController, Routable {
     func changeValues(slider: UISlider) {
         let expenses = Double(slider.value) * limitAmount
         centerAmount.amountLabel.text = String.truncatedNumber(expenses)
-        lowerAmount.amountLabel.text = String.truncatedNumber(expenses * Double(coverageAmount / 100))
+        lowerAmount.amountLabel.text = String.truncatedNumber(expenses * Double(coverageAmount) / 100)
     }
     
 }
