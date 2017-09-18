@@ -31,8 +31,9 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var yourVotePercentValue: UILabel!
     @IBOutlet var yourVoteAmount: UILabel!
     @IBOutlet var yourVoteCurrency: Label!
+    
     @IBOutlet var byProxyLabel: Label!
-    @IBOutlet var proxyAvatar: UIImageView!
+    @IBOutlet var proxyAvatar: RoundImageView!
     
     @IBOutlet var teamVoteLabel: Label!
     @IBOutlet var teamVotePercentValue: UILabel!

@@ -160,6 +160,11 @@ class ClaimVC: UIViewController, Routable {
         service.router.presentClaimTransactionsList(teamID: session, claimID: id)
     }
     
+    @objc
+    func tapResetVote(sender: UIButton) {
+        self.dataSource.updateVoteOnServer(vote: nil)
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource

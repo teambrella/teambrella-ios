@@ -28,7 +28,7 @@ struct ClaimCellBuilder {
             populateImageGallery(cell: cell, with: claim)
             addObserversToImageGallery(cell: cell, delegate: delegate)
         } else if let cell = cell as? ClaimVoteCell {
-            populateClaimVote(cell: cell, with: claim)
+            populateClaimVote(cell: cell, with: claim, delegate: delegate)
             addObserversToClaimVote(cell: cell, delegate: delegate)
         } else if let cell = cell as? ClaimDetailsCell {
             populateClaimDetails(cell: cell, with: claim)
@@ -73,10 +73,10 @@ struct ClaimCellBuilder {
         cell.timeLabel.text = dateProcessor.stringFromNow(minutes: claim.minutesinceLastPost)
     }
     
-    static func populateClaimVote(cell: ClaimVoteCell, with claim: EnhancedClaimEntity) {
+    static func populateClaimVote(cell: ClaimVoteCell, with claim: EnhancedClaimEntity, delegate: ClaimVC) {
         cell.titleLabel.text = "Team.ClaimCell.voting".localized
         let dateProcessor = DateProcessor()
-        cell.remainingDaysLabel.text = "Team.Claims.ClaimVC.VotingCell.endsTitle".localized
+        cell.remainingDaysLabel.text = "Team.Claims.ClaimVC.VotingCell.endsTitle".localized.uppercased()
             + dateProcessor.stringFromNow(minutes: -claim.minutesRemaining)
         cell.pieChart.startAngle = 0
         cell.pieChart.endAngle = 130
@@ -88,12 +88,11 @@ struct ClaimCellBuilder {
         cell.yourVoteAmount.text = String.truncatedNumber(claim.myVote * claim.claimAmount)
         cell.yourVoteAmount.alpha = 1
         
+        cell.proxyAvatar.isHidden = claim.proxyAvatar == nil
+        cell.byProxyLabel.isHidden = claim.proxyName == nil
         if let proxyAvatar = claim.proxyAvatar {
             cell.proxyAvatar.kf.setImage(with: URL(string: service.server.avatarURLstring(for: proxyAvatar)))
             cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
-        } else {
-            cell.proxyAvatar.isHidden = true
-            cell.byProxyLabel.isHidden = true
         }
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
@@ -101,7 +100,10 @@ struct ClaimCellBuilder {
         cell.teamVoteAmount.text = String.truncatedNumber(claim.ratioVoted * claim.claimAmount)
         
         cell.submitButton.setTitle("Team.ClaimCell.voteSubmitted".localized, for: .normal)
+        
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
+        cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)
+        cell.resetButton.addTarget(delegate, action: #selector(ClaimVC.tapResetVote), for: .touchUpInside)
         
         let avatars = claim.otherAvatars.flatMap { URL(string: service.server.avatarURLstring(for: $0)) }
         let label: String?  =  claim.otherCount > 0 ? "\(claim.otherCount)" : nil
