@@ -25,12 +25,11 @@ protocol ReportDelegate: class {
     func report(controller: ReportVC, didSendReport data: Any)
 }
 
-class ReportVC: UIViewController, Routable {
+final class ReportVC: UIViewController, Routable {
     static let storyboardName: String = "Me"
     
     @IBOutlet var collectionView: UICollectionView!
     var reportContext: ReportContext!
-    var dataSource: ReportDataSource!
     var isModal: Bool = false
     
     weak var delegate: ReportDelegate?
@@ -44,17 +43,19 @@ class ReportVC: UIViewController, Routable {
         return datePicker
     }()
     
-    lazy var photoPicker: ImagePickerController = {
+    private lazy var photoPicker: ImagePickerController = {
         let imagePicker = ImagePickerController(parent: self, delegate: self)
         return imagePicker
     }()
     
-    var photoController: PhotoPreviewVC = PhotoPreviewVC(collectionViewLayout: UICollectionViewFlowLayout())
+    private(set) var isInCorrectionMode: Bool = false
+    private var photoController: PhotoPreviewVC = PhotoPreviewVC(collectionViewLayout: UICollectionViewFlowLayout())
+    private var dataSource: ReportDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if isModal {
-            
+            // not implemented yet
         } else {
             setupTransparentNavigationBar()
             defaultGradientOnTop()
@@ -146,7 +147,7 @@ class ReportVC: UIViewController, Routable {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        showSubmitButton()
+        //showSubmitButton()
     }
     
     private func showSubmitButton() {
@@ -162,8 +163,6 @@ class ReportVC: UIViewController, Routable {
         print("tap Submit")
         validateAndSendData()
     }
-    
-    var isInCorrectionMode: Bool = false
     
     func validateAndSendData() {
         guard let model = dataSource.reportModel(imageStrings: photoController.photos) else { return }
@@ -269,7 +268,7 @@ extension ReportVC: ImagePickerControllerDelegate {
     }
     
     func imagePicker(controller: ImagePickerController, didSelectPhoto photo: UIImage) {
-         controller.send(image: photo)
+        controller.send(image: photo)
     }
     
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
@@ -284,7 +283,7 @@ extension ReportVC: UITextViewDelegate {
             model.text = textView.text
             dataSource.items[indexPath.row] = model
         }
-           (textView as? TextView)?.isInAlertMode = false
+        (textView as? TextView)?.isInAlertMode = false
     }
 }
 
