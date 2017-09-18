@@ -161,13 +161,11 @@ final class ReportVC: UIViewController, Routable {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 let now = Date()
-//                if lastDate >= deadline {
-//                    getCoverageForDate(date: dateReportCellModel.date)
-//                }
+                //                if lastDate >= deadline {
+                //                    getCoverageForDate(date: dateReportCellModel.date)
+                //                }
             }
-            if dateReportCellModel.date == datePicker.date {
-                dataSource.updateCell(coverage: coverage, amount: limit)
-            }
+            dataSource.updateCell(coverage: coverage, amount: limit)
         }
         
         
