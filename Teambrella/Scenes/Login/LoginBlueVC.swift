@@ -150,9 +150,9 @@ class LoginBlueVC: UIViewController {
         
         service.server.updateTimestamp { timestamp, error in
             let body = RequestBody(key: service.server.key, payload: ["facebookToken": token,
-                                                                      "sigOfPublicKeyHash": signature])
+                                                                      "sigOfPublicKey": signature])
             let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": token,
-                                                                             "sigOfPublicKeyHash": signature],
+                                                                             "sigOfPublicKey": signature],
                                             body: body,
                                             success: { response in
                                                 self.getMe()
