@@ -12,7 +12,7 @@ struct ChatModelBuilder {
     let fragmentParser = ChatFragmentParser()
     var showRate = true
     
-    func cellModels(from chatItems: [ChatEntity], width: CGFloat, font: UIFont) -> [ChatCellModel] {
+    func cellModels(from chatItems: [ChatEntity], width: CGFloat, font: UIFont, isClaim: Bool) -> [ChatCellModel] {
         let heightCalculator = ChatFragmentHeightCalculator(width: width, font: font)
         var result: [ChatCellModel] = []
         var lastDate: Date = Date.distantPast
@@ -38,7 +38,9 @@ struct ChatModelBuilder {
             var rateString: String?
             if showRate {
                 if let rate = item.vote {
-                rateString = "Team.Chat.TextCell.voted_format".localized(String.truncatedNumber(rate * 100))
+                rateString = isClaim
+                    ? "Team.Chat.TextCell.voted_format".localized(String.truncatedNumber(rate * 100))
+                    : "Team.Chat.TextCell.Application.voted_format".localized(String.formattedNumber(rate))
                 } else {
                     rateString = "Team.Chat.TextCell.notVoted".localized
                 }

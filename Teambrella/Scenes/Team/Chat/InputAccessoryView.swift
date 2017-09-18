@@ -13,6 +13,7 @@ class InputAccessoryView: UIView {
     
     lazy var textView: UITextView = {
        let textView = UITextView()
+        textView.font = UIFont.teambrella(size: 14)
         textView.layer.cornerRadius = 5
         textView.layer.borderColor = UIColor.cloudyBlue.cgColor
         textView.layer.borderWidth = 1
@@ -40,7 +41,7 @@ class InputAccessoryView: UIView {
     lazy var placeholderLabel: Label = {
        let label = Label()
         label.font = UIFont.teambrella(size: 14)
-        label.textColor = .paleGray
+        label.textColor = .cloudyBlue
         label.text = "Your message here"
         self.addSubview(label)
         return label

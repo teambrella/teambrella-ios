@@ -281,7 +281,8 @@ final class UniversalChatDatasource {
     private func createCellModels(from entities: [ChatEntity]) -> [ChatCellModel] {
         let models = cellModelBuilder.cellModels(from: entities,
                                                  width: cloudWidth - labelHorizontalInset * 2,
-                                                 font: font)
+                                                 font: font,
+                                                 isClaim: strategy.requestType == .claimChat)
         return models
     }
     

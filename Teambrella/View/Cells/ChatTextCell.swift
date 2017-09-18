@@ -249,6 +249,9 @@ class ChatTextCell: UICollectionViewCell {
             rightLabel.sizeToFit()
             rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - 8,
                                         y: rightLabel.frame.height / 2 + 8)
+            if leftLabel.frame.maxX > rightLabel.frame.minX - 8 {
+                leftLabel.frame.size.width -= leftLabel.frame.maxX - (rightLabel.frame.minX - 8)
+            }
         } else {
             rightLabel.isHidden = true
         }

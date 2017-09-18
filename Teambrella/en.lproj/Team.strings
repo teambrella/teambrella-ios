@@ -156,4 +156,9 @@
 "Team.ClaimsCell.declined" = "DECLINED";
 
 "Team.Chat.TextCell.voted_format" = "VOTED:%@%%";
+"Team.Chat.TextCell.Application.voted_format" = "VOTED:%@";
 "Team.Chat.TextCell.notVoted" = "NOT VOTED";
+
+"Team.Chat.TypeLabel.claim" = "CLAIM";
+"Team.Chat.TypeLabel.application" = "APPLICATION";
+"Team.Chat.TypeLabel.other" = "DISCUSSION";

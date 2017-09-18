@@ -146,5 +146,10 @@
 "Team.Claims.ClaimTransactionsVC.amountFiat" = "Amount Fiat";
 "Team.Claims.ClaimTransactionsVC.status" = "Status";
 
-"Team.Chat.TextCell.voted_format" = "VOTED:%@%%";
-"Team.Chat.TextCell.notVoted" = "NOT VOTED";
+"Team.Chat.TextCell.voted_format" = "VOTADO:%@%%";
+"Team.Chat.TextCell.Application.voted_format" = "VOTADO:%@";
+"Team.Chat.TextCell.notVoted" = "NON VOTADO";
+
+"Team.Chat.TypeLabel.claim" = "RECLAMACION";
+"Team.Chat.TypeLabel.application" = "APPLICACION";
+"Team.Chat.TypeLabel.other" = "DISCUSION";

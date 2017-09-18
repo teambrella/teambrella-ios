@@ -50,13 +50,13 @@ struct FeedCellBuilder {
             switch model.itemType {
             case .claim:
                 cell.iconView.image = #imageLiteral(resourceName: "claim")
-                cell.typeLabel.text = "CLAIM"
+                cell.typeLabel.text = "Team.Chat.TypeLabel.claim".localized
             case .teammate:
                 cell.iconView.image = #imageLiteral(resourceName: "application")
-                cell.typeLabel.text = "APPLICATION"
+                cell.typeLabel.text = "Team.Chat.TypeLabel.application".localized
             default:
                 cell.iconView.image = nil
-                cell.typeLabel.text = "UNKNOWN"
+                cell.typeLabel.text = "Team.Chat.TypeLabel.other".localized
             }
             
         }
