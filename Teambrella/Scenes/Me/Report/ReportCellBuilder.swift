@@ -75,6 +75,7 @@ struct ReportCellBuilder {
             cell.textView.text = model.text
             cell.textView.tag = indexPath.row
             cell.textView.delegate = reportVC
+            cell.textView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
         } else if let cell = cell as? ReportPhotoGalleryCell, let model = model as? PhotosReportCellModel {
             cell.headerLabel.text = model.title
             cell.button.setTitle(model.buttonTitle, for: .normal)

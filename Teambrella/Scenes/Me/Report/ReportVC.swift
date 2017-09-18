@@ -284,6 +284,7 @@ extension ReportVC: UITextViewDelegate {
             model.text = textView.text
             dataSource.items[indexPath.row] = model
         }
+           (textView as? TextView)?.isInAlertMode = false
     }
 }
 
