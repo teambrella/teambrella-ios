@@ -70,7 +70,7 @@ import Geth
             let signed = try keyStore.signHashPassphrase(account, passphrase: secretWiF, hash: Data(last32bytes))
             return signed
         } catch {
-            print("Error signing: \(error)")
+            log("Error signing ethereum: \(error)", type: .error)
             return nil
         }
     }

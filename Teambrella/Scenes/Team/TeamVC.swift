@@ -100,15 +100,15 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
                                       message: "Are you sure you want to change your current team to \(name)?",
                                       preferredStyle: .alert)
         let confirm = UIAlertAction(title: "Yes I do", style: .destructive) { action in
-            print("Confirm pressed")
+            log("Confirm pressed", type: .userInteraction)
         }
         alert.addAction(confirm)
         let cancel = UIAlertAction(title: "No chance", style: .cancel) { action in
-            print("Cancel pressed")
+            log("Cancel pressed", type: .userInteraction)
         }
         alert.addAction(cancel)
         present(alert, animated: true) {
-            print("Alert presented")
+            log("Alert presented", type: .userInteraction)
         }
     }
     

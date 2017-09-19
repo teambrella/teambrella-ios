@@ -98,7 +98,7 @@ class TeammateProfileDataSource {
                 me.isMyProxy = !me.isMyProxy
                 completion()
             case let .error(error):
-                print(error)
+                log("\(#file) \(error)", type: .error)
                 completion()
             }
         }

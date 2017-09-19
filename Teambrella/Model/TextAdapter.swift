@@ -28,11 +28,11 @@ struct TextAdapter {
             let doc: Document = try SwiftSoup.parse(string)
             return try doc.text()
         } catch Exception.Error(let type, let message) {
-            print("\(type) --> " + message)
+            log("\(type) --> " + message, type: .error)
         } catch {
-            print("error")
+            log("error", type: .error)
         }
-        print("Falling back to original message")
+        log("Falling back to original message", type: .error)
         return string
     }
 }

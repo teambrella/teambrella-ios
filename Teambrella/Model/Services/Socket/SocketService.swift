@@ -32,7 +32,7 @@ class SocketService {
     init(url: URL?) {
         // swiftlint:disable:next force_unwrapping
         let url = url ?? URL(string: "wss://" + "surilla.com" + "/wshandler.ashx")!
-        print("🔄 trying to connect to socket: \(url.absoluteString)")
+        log("trying to connect to socket: \(url.absoluteString)", type: .socket)
         socket = WebSocket(url: url)
         service.storage.freshKey { key in
             self.socket.headers["t"] = String(key.timestamp)
@@ -49,7 +49,7 @@ class SocketService {
     
     func add(listener: AnyHashable, action: @escaping SocketListenerAction) {
         actions[listener] = action
-        print("🔄 added listener. ListenersCount: \(actions.count)")
+        log("added listener. ListenersCount: \(actions.count)", type: .socket)
     }
     
     func send(string: String) {
@@ -62,7 +62,7 @@ class SocketService {
     }
     
     func send(action: SocketAction) {
-        print("🔄 sending action: \(action)")
+        log("sending action: \(action)", type: .socket)
         send(string: action.socketString)
     }
     
@@ -93,7 +93,7 @@ class SocketService {
 
 extension SocketService: WebSocketDelegate {
     func websocketDidConnect(socket: WebSocket) {
-        print("🔄 connected")
+        log("connected", type: .socket)
         if let message = unsentMessage {
             send(string: message)
             unsentMessage = nil
@@ -103,18 +103,18 @@ extension SocketService: WebSocketDelegate {
     }
     
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
-        print("🔄 received data: \(data)")
+        log("received data: \(data)", type: .socket)
     }
     
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
-        print("🔄 disconnected")
+        log("disconnected", type: .socket)
         if let error = error {
-            print("with error: \(error)")
+            log("disconnected with error: \(error)", type: [.error, .socket])
         }
     }
     
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-        print("🔄 received: \(text)")
+        log("received: \(text)", type: .socket)
         guard let socketAction = SocketAction(string: text) else { return }
         
         for action in actions.values {

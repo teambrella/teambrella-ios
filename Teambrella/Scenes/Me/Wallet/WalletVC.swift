@@ -55,23 +55,22 @@ class WalletVC: UIViewController {
     @objc
     func tapFund(sender: UIButton) {
         service.router.presentWalletDetails(walletID: walletID)
-        print("tap Fund")
+        log("tap Fund", type: .userInteraction)
     }
     
     @objc
     func tapBarcode(sender: UIButton) {
         service.router.presentWalletDetails(walletID: walletID)
-        print("tap Barcode")
     }
     
     @objc
     func tapInfo(sender: UIButton) {
-        print("tap Info")
+        log("tap Info", type: .userInteraction)
     }
     
     @objc
     func tapWithdraw(sender: UIButton) {
-        print("tap Withdraw")
+        log("tap Withdraw", type: .userInteraction)
     }
     
     func generateQRCode() -> UIImage? {
@@ -90,7 +89,7 @@ class WalletVC: UIViewController {
     
     @objc
     func tapCosigners(sender: UITapGestureRecognizer) {
-        print("tap co-signers")
+        log("tap co-signers", type: .userInteraction)
         guard let wallet = wallet else { return }
         
         service.router.presentWalletCosignersList(cosigners: wallet.cosigners)

@@ -127,11 +127,13 @@ class ServerService {
              failure: @escaping (Error) -> Void) {
         
         guard let url = url(for: string, parameters: parameters) else {
-             fatalError("Couldn't create URL")
+            fatalError("Couldn't create URL")
         }
         
         var request = URLRequest(url: url)
-        print(url.absoluteString)
+        
+        log(url.absoluteString, type: .serverURL)
+        
         request.httpMethod = HTTPMethod.post.rawValue
         let contentType = body?.contentType ?? "application/json"
         request.setValue(contentType, forHTTPHeaderField: "Content-Type")
@@ -149,13 +151,12 @@ class ServerService {
             request.setValue(body.signature, forHTTPHeaderField: "sig")
         }
         
-        print("👉 \(request)")
         Alamofire.request(request).responseJSON { response in
             switch response.result {
             case .success:
                 if let value = response.result.value {
                     let result = JSON(value)
-                    print("👍 \(result)")
+                    log("\(result)", type: .serverReply)
                     let status = ResponseStatus(json: result["Status"])
                     self.timestamp = status.timestamp
                     switch status.code {
@@ -179,7 +180,7 @@ class ServerService {
         guard let data = data else { return }
         
         if let string = try? JSONSerialization.jsonObject(with: data, options: []) {
-            print("🌕 \(string)")
+            log("\(string)", type: .requestBody)
         }
     }
     

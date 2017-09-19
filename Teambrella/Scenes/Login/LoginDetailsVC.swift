@@ -44,10 +44,6 @@ class LoginDetailsVC: UIViewController {
 //        listenForKeyboard()
     }
     
-    deinit {
-        print("LoginDetailsVC deinit")
-    }
-    
     @IBAction func tapRegister(_ sender: Any) {
         presenter?.tapRegister()
     }

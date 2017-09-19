@@ -24,7 +24,7 @@ class PushService {
                 if granted {
                     application.registerForRemoteNotifications()
                 } else {
-                    print("User Notification permission denied: \(String(describing: error))")
+                    log("User Notification permission denied: \(String(describing: error))", type: [.error, .push])
                 }
             }
         }
@@ -32,16 +32,16 @@ class PushService {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         token = deviceToken
-        print("Did register for remote notifications with token \(tokenString ?? "nil")")
+        log("Did register for remote notifications with token \(tokenString ?? "nil")", type: .push)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register for remote notifications: \(error)")
+        log("Failed to register for remote notifications: \(error)", type: [.error, .push])
     }
     
     func getNotificationSettings() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
-            print("Notification settings: \(settings)")
+            log("Notification settings: \(settings)", type: [.push, .serviceInfo])
         }
     }
     
@@ -56,7 +56,7 @@ class PushService {
                             completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         guard command == nil else { return }
         
-        print(userInfo)
+        log("\(userInfo)", type: .push)
         let pushData = PushData(dict: userInfo)
         self.command = pushData.command
         executeCommand()

@@ -65,7 +65,6 @@ class ClaimDataSource {
                 if case .claim(let claim) = response {
                     self?.setupClaim(claim: claim)
                     self?.onUpdate?()
-                    print("Loaded enhanced claim \(claim)")
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)
@@ -89,7 +88,7 @@ class ClaimDataSource {
                 if case .claimVote(let json) = response {
                     self?.claim?.update(with: json)
                     self?.onUpdate?()
-                    print("Updated claim with \(json)")
+                    log("Updated claim with \(json)", type: .serviceInfo)
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)
@@ -112,7 +111,7 @@ class ClaimDataSource {
                 if case .claimUpdates(let json) = response {
                     self?.claim?.update(with: json)
                     self?.onUpdate?()
-                    print("updated claim \(json)")
+                    log("updated claim \(json)", type: .serviceInfo)
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)

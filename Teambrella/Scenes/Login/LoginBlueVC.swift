@@ -171,7 +171,7 @@ class LoginBlueVC: UIViewController {
                 self.handleFailure(error: error)
                 return
             }
-            print(reply)
+            log("Facebook reply: \(reply)", type: .social)
             self.handleSuccess(facebookUser: FacebookUser(dict: reply))
         }
     }
@@ -184,7 +184,7 @@ class LoginBlueVC: UIViewController {
     func handleFailure(error: Error?) {
         HUD.hide()
         performSegue(type: .invitationOnly, sender: nil)
-        print("Error \(String(describing: error))")
+        log("Error \(String(describing: error))", type: .error)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

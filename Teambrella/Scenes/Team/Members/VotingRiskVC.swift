@@ -149,7 +149,6 @@ class VotingRiskVC: UIViewController {
         if segue.identifier == "ToCompareTeamRisk", let vc = segue.destination as? CompareTeamRiskVC {
             guard let riskScale = teammate?.riskScale else { return }
             
-            print(riskScale.ranges.count)
             vc.ranges = riskScale.ranges
         }
     }
@@ -204,13 +203,11 @@ extension VotingRiskVC: VotingScrollerDelegate {
         yourRiskValue.text = String(format: "%.2f", risk)
         updateRiskDeltas(risk: risk)
         onVoteUpdate?(risk)
-        print("new value \(value)")
     }
     
     func votingScroller(controller: VotingScrollerVC, middleCellRow: Int) {
         guard let range = teammate?.riskScale?.ranges[middleCellRow] else { return }
         
-        print("voting scroller middle cell row is now: \(middleCellRow)")
         updateAvatars(range: range)
     }
     

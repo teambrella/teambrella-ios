@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -75,7 +75,7 @@
                             <constraint firstAttribute="height" constant="88" id="sMg-jq-5BB"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRp-Jl-XTf">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRp-Jl-XTf">
                         <rect key="frame" x="135" y="142" width="106.5" height="24.5"/>
                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="20"/>
                         <color key="textColor" red="0.23529411764705882" green="0.27843137254901962" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
@@ -110,9 +110,11 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qRp-Jl-XTf" secondAttribute="trailing" constant="8" id="2Sp-bT-uCN"/>
                 <constraint firstItem="B1h-LD-Hsm" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="5Q9-Pg-hg7"/>
                 <constraint firstItem="BRF-xE-ojb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="AUI-kq-dm6"/>
                 <constraint firstItem="lTg-qd-Xel" firstAttribute="top" secondItem="qRp-Jl-XTf" secondAttribute="top" id="D5g-sc-iy3"/>
+                <constraint firstItem="qRp-Jl-XTf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="EyR-Jl-V2y"/>
                 <constraint firstAttribute="trailing" secondItem="BRF-xE-ojb" secondAttribute="trailing" id="JFJ-Fz-lhf"/>
                 <constraint firstAttribute="bottom" secondItem="lTg-qd-Xel" secondAttribute="bottom" id="Lqz-CA-frC"/>
                 <constraint firstAttribute="trailing" secondItem="lTg-qd-Xel" secondAttribute="trailing" id="Odj-dn-ap3"/>

@@ -237,7 +237,6 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 
                 me.riskController?.yourRiskValue.alpha = 0.5
                 me.dataSource.sendRisk(userID: id, risk: risk, completion: { json in
-                    print("risk sent: received json: \(json)")
                     me.teammate?.updateWithVote(json: json)
                     me.riskController?.teammate = me.teammate?.extended
                     me.riskController?.yourRiskValue.alpha = 1

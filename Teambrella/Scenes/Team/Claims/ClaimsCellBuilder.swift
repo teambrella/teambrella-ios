@@ -43,7 +43,8 @@ struct ClaimsCellBuilder {
             cell.claimedAmountLabel.text = service.currencySymbol + String.truncatedNumber(claim.claimAmount)
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
         } else if let cell = cell as? ClaimsVotedCell {
-            cell.avatarView.showAvatar(string: claim.smallPhoto)
+            //cell.avatarView.showAvatar(string: claim.smallPhoto)
+            cell.avatarView.showImage(string: claim.smallPhoto)
             cell.claimedAmountLabel.text = service.currencySymbol + String.truncatedNumber(claim.claimAmount)
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
             cell.votedLabel.text = "Team.Claims.VitedCell.voted".localized + String.formattedNumber(claim.myVote)

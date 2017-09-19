@@ -201,7 +201,6 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     private func processIsTyping(action: SocketAction) {
-        print("Received socket action: \(action)")
         guard case let .theyTyping(_, _, _, name) = action.data else { return }
         
         showIsTyping = true
@@ -236,7 +235,7 @@ final class UniversalChatVC: UIViewController, Routable {
     
     private func startListeningSockets() {
         service.socket?.add(listener: socketToken, action: { [weak self] action in
-            print(action.command)
+            log("add command \(action.command)", type: .socket)
             switch action.command {
             case .theyTyping, .meTyping:
                 self?.processIsTyping(action: action)

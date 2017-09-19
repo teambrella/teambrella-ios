@@ -152,7 +152,7 @@ class ClaimVC: UIViewController, Routable {
     
     @objc
     func tapTransactions(sender: UITapGestureRecognizer) {
-        print("\ntap Transactions\n")
+        log("\ntap Transactions\n", type: .userInteraction)
         guard let session = service.session?.currentTeam?.teamID, let claimID = self.claimID else { return }
         
         guard let id = Int(claimID) else { return }

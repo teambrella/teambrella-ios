@@ -52,7 +52,7 @@ struct ClaimCellBuilder {
     
     static func populateImageGallery(cell: ImageGalleryCell, with claim: EnhancedClaimEntity) {
         let imageURLStrings = claim.largePhotos.map { service.server.urlString(string: $0) }
-        print(imageURLStrings)
+        log("\(imageURLStrings)", type: .serviceInfo)
         service.server.updateTimestamp { timestamp, error in
             let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
@@ -77,9 +77,9 @@ struct ClaimCellBuilder {
         cell.titleLabel.text = "Team.ClaimCell.voting".localized
         let dateProcessor = DateProcessor()
         cell.remainingDaysLabel.text = "Team.Claims.ClaimVC.VotingCell.endsTitle".localized.uppercased()
-            + dateProcessor.stringFromNow(minutes: -claim.minutesRemaining)
+            + dateProcessor.stringFromNow(minutes: -claim.minutesRemaining).uppercased()
         cell.pieChart.startAngle = 0
-        cell.pieChart.endAngle = 130
+        cell.pieChart.endAngle = 360 - 360 / 7 * CGFloat(claim.minutesRemaining) / 60 / 24
         
         cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         let myVote = String.truncatedNumber(claim.myVote * 100)

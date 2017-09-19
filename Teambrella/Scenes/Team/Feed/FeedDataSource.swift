@@ -53,7 +53,7 @@ class FeedDataSource {
                 self.items.append(contentsOf: feed)
                 self.onLoad?()
             case let .error(error):
-                print(error)
+                log("\(error)", type: .error)
             }
         }
     }

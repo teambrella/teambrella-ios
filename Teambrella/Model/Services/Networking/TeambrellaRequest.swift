@@ -123,7 +123,7 @@ struct TeambrellaRequest {
         service.server.ask(for: type.rawValue, parameters: parameters, body: body, success: { json in
             self.parseReply(reply: json)
         }, failure: { error in
-            print(error)
+            log("\(error)", type: [.error, .serverReply])
             self.failure?(error)
         })
     }

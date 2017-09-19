@@ -112,13 +112,13 @@ class TeammatesTVC: UITableViewController {
                             editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let action1 = UITableViewRowAction(style: .normal, title: "Test") { action, indexPath -> Void in
             self.isEditing = false
-            print("Rate button pressed")
+            log("Rate button pressed", type: .userInteraction)
         }
         action1.backgroundColor = .orange
         
         let action2 = UITableViewRowAction(style: .normal, title: "Guest") { action, indexPath -> Void in
             self.isEditing = false
-            print("Share button pressed")
+            log("Share button pressed", type: .userInteraction)
         }
         action2.backgroundColor = .magenta
         return [action2, action1]

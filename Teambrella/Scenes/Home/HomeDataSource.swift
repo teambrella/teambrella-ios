@@ -49,7 +49,7 @@ class HomeDataSource {
                 self.model = value
                 self.onUpdate?()
             case .error(let error):
-                print(error)
+                log("\(error)", type: .error)
             }
         }
     }
@@ -83,7 +83,7 @@ class HomeDataSource {
                 self?.model = homeModel
                 self?.onUpdate?()
             case .error(let error):
-                print(error)
+                log("can't delete card: \(error)", type: .error)
             }
         }
        

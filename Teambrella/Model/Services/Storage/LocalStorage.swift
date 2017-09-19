@@ -75,7 +75,7 @@ class LocalStorage: Storage {
                                             body: body,
                                             success: { response in
                                                 if case let .setLanguage(language) = response {
-                                                    print("Language is set to \(language)")
+                                                    log("Language is set to \(language)", type: .serviceInfo)
                                                     promise.resolve(with: language)
                                                 } else {
                                                     let errorMessage = "Was waiting .setLanguage got \(response)"

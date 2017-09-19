@@ -77,6 +77,7 @@
 		6D3141D01F07DF7000C285DA /* JoinTeamValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141CF1F07DF7000C285DA /* JoinTeamValidator.swift */; };
 		6D3141D21F07DF9D00C285DA /* JoinTeamCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */; };
 		6D3141D41F07ECC800C285DA /* PoopyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141D31F07ECC800C285DA /* PoopyVC.swift */; };
+		6D33E1541F715BB10052A58B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
 		6D35EFC51EAF8AB700696B42 /* TransactionsresultTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFC41EAF8AB700696B42 /* TransactionsresultTVC.swift */; };
 		6D35EFC91EAF931000696B42 /* TransactionsTeammateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFC81EAF931000696B42 /* TransactionsTeammateVC.swift */; };
 		6D35EFCB1EAF982A00696B42 /* TeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFCA1EAF982A00696B42 /* TeamDetailsVC.swift */; };
@@ -528,6 +529,7 @@
 		6D3141CF1F07DF7000C285DA /* JoinTeamValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamValidator.swift; path = Scenes/Team/JoinTeam/JoinTeamValidator.swift; sourceTree = "<group>"; };
 		6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamCellBuilder.swift; path = Scenes/Team/JoinTeam/JoinTeamCellBuilder.swift; sourceTree = "<group>"; };
 		6D3141D31F07ECC800C285DA /* PoopyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PoopyVC.swift; path = Scenes/Team/JoinTeam/PoopyVC.swift; sourceTree = "<group>"; };
+		6D33E1531F715BB10052A58B /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Log.swift; path = Model/Services/Log.swift; sourceTree = "<group>"; };
 		6D35EFC41EAF8AB700696B42 /* TransactionsresultTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsresultTVC.swift; path = Scenes/TransactionsTest/TransactionsresultTVC.swift; sourceTree = "<group>"; };
 		6D35EFC81EAF931000696B42 /* TransactionsTeammateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsTeammateVC.swift; path = Scenes/TransactionsTest/TransactionsTeammateVC.swift; sourceTree = "<group>"; };
 		6D35EFCA1EAF982A00696B42 /* TeamDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamDetailsVC.swift; path = Scenes/TransactionsTest/TeamDetailsVC.swift; sourceTree = "<group>"; };
@@ -1581,6 +1583,7 @@
 				6DCC7AC31E93A6920092D3F2 /* Services.swift */,
 				6DA1D0FA1F040AEF00F9DE87 /* Session.swift */,
 				6DF479191F432D230025F489 /* Keychain.swift */,
+				6D33E1531F715BB10052A58B /* Log.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -2452,6 +2455,7 @@
 				6D829AA31EB0BE1A0051F43A /* UIColor.swift in Sources */,
 				6DDF6D4C1F1623CE00F53B0B /* MembersFetchStrategy.swift in Sources */,
 				6DCB9F571ECA0A45000B48C4 /* Decimal.swift in Sources */,
+				6D33E1541F715BB10052A58B /* Log.swift in Sources */,
 				6DEC6DF51E96673600ACC119 /* PostEntity.swift in Sources */,
 				6DDE95781EE843540019DA47 /* ClaimVoteCell.swift in Sources */,
 				6DCDEB701F17DC5900C6D38C /* FeedEntity.swift in Sources */,

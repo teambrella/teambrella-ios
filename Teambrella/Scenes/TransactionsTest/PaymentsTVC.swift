@@ -46,7 +46,7 @@ class PaymentsTVC: UITableViewController {
         let cells = tableView.visibleCells.flatMap { $0 as? TransactionCell }.filter { $0.signButton == sender }
         if let cell = cells.first, let indexPath = tableView.indexPath(for: cell) {
             let transaction = tx(indexPath: indexPath)
-            print("Tapped \(transaction.id)")
+            log("Tapped \(transaction.id)", type: .userInteraction)
             if transaction.resolution == .received {
                 teambrella.approve(tx: transaction)
             } else if transaction.state == .selectedForCosigning {

@@ -110,7 +110,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTED (2.1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMa-g1-Uv2" customClass="BadgeLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="37" width="56.5" height="11"/>
+                                                    <rect key="frame" x="72" y="37" width="62.5" height="15"/>
                                                     <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -219,13 +219,13 @@
                                                         <constraint firstAttribute="height" constant="1" id="pQA-MX-ZhP"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMB-N1-lwa" customClass="TitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMB-N1-lwa" customClass="TitleLabel" customModule="Teambrella" customModuleProvider="target">
                                                     <rect key="frame" x="277" y="17" width="58" height="39"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbc-3j-1Xu" customClass="TitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbc-3j-1Xu" customClass="TitleLabel" customModule="Teambrella" customModuleProvider="target">
                                                     <rect key="frame" x="250" y="17" width="22" height="39"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                     <nil key="textColor"/>
@@ -248,6 +248,7 @@
                                             <constraint firstItem="AC1-iQ-fvm" firstAttribute="leading" secondItem="4aQ-0e-dvT" secondAttribute="leadingMargin" id="qTb-vC-cjK"/>
                                             <constraint firstItem="AC1-iQ-fvm" firstAttribute="centerY" secondItem="4aQ-0e-dvT" secondAttribute="centerY" id="rMW-qw-wRw"/>
                                             <constraint firstItem="wMB-N1-lwa" firstAttribute="centerY" secondItem="4aQ-0e-dvT" secondAttribute="centerY" id="tBG-2O-c8V"/>
+                                            <constraint firstItem="qbc-3j-1Xu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mIU-d2-vBN" secondAttribute="trailing" constant="8" id="uxl-5l-wie"/>
                                             <constraint firstItem="v4A-ji-fL2" firstAttribute="centerY" secondItem="4aQ-0e-dvT" secondAttribute="centerY" id="v3b-3S-1I8"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="v4A-ji-fL2" secondAttribute="trailing" id="y8Y-lT-Xqt"/>
                                         </constraints>
@@ -302,21 +303,24 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvl-QB-fgG">
                                 <rect key="frame" x="0.0" y="-98" width="375" height="118"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" ambiguous="YES" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="OUQ-Zh-QkO">
-                                        <rect key="frame" x="16" y="14" width="312" height="44"/>
+                                    <searchBar contentMode="redraw" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="OUQ-Zh-QkO">
+                                        <rect key="frame" x="16" y="34" width="312" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="c3S-qc-Msz"/>
+                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRq-x8-F1K" userLabel="E">
-                                        <rect key="frame" x="344" y="25" width="18" height="22"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRq-x8-F1K" userLabel="E">
+                                        <rect key="frame" x="344" y="45" width="18" height="22"/>
                                         <state key="normal" image="filter"/>
                                         <connections>
                                             <action selector="tapSort:" destination="KAD-Uk-Hr8" eventType="touchUpInside" id="rw5-OI-Mtq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxN-1F-D8t" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="72" width="343" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxN-1F-D8t" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="86" width="343" height="16"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Invite a Friend">
                                             <color key="titleColor" red="0.30588235294117649" green="0.76862745098039209" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -542,7 +546,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are proxy voter for Jimmy Wong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxQ-2I-53K" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="94.5" y="17" width="185.5" height="16"/>
+                                                    <rect key="frame" x="84.5" y="17" width="205.5" height="16"/>
                                                     <color key="backgroundColor" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="6V4-jV-Qqh"/>
@@ -1364,7 +1368,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eV6-Tb-8BL">
-                                <rect key="frame" x="297" y="623" width="46" height="30"/>
+                                <rect key="frame" x="296" y="622" width="47" height="31"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                 <state key="normal" title="Others">
                                     <color key="titleColor" red="0.22352941179999999" green="0.26274509800000001" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1426,7 +1430,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClL-mC-3du">
-                                        <rect key="frame" x="188" y="63" width="68" height="29"/>
+                                        <rect key="frame" x="188" y="63" width="70" height="29"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                         <state key="normal" title="Reset Vote">
                                             <color key="titleColor" red="0.2784313725" green="0.34509803919999998" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1554,7 +1558,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="26W-A2-e6F">
-                                <rect key="frame" x="351" y="632.5" width="8" height="13"/>
+                                <rect key="frame" x="351" y="632" width="8" height="13"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8a-vx-0Vc" customClass="LabeledRoundImageView" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="139" y="621" width="27" height="32"/>

@@ -160,7 +160,7 @@ final class ReportVC: UIViewController, Routable {
     
     @objc
     func tapSubmit(_ sender: UIButton) {
-        print("tap Submit")
+        log("tap Submit", type: .userInteraction)
         validateAndSendData()
     }
     
@@ -227,7 +227,6 @@ extension ReportVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = dataSource[indexPath].cellReusableIdentifier
-        print(identifier + " at: \(indexPath)")
         return collectionView.dequeueReusableCell(withReuseIdentifier: identifier,
                                                   for: indexPath)
     }
