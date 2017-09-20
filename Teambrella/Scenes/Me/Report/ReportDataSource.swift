@@ -21,7 +21,7 @@
 
 import Foundation
 
-struct ReportDataSource {
+class ReportDataSource {
     enum ReportCellType {
         case item
         case date
@@ -35,13 +35,15 @@ struct ReportDataSource {
     var items: [ReportCellModel] = []
     var count: Int { return items.count }
     
+    var onUpdateCoverage: (() -> Void)?
+    
     init(context: ReportContext) {
         self.context = context
         switch context {
         case let .claim(item: item, coverage: coverage, balance: balance):
             items = [ItemReportCellModel(name: item.name, photo: item.photo, location: item.location),
                      DateReportCellModel(date: Date()),
-                     ExpensesReportCellModel(expenses: 0, deductible: balance, coverage: coverage),
+                     ExpensesReportCellModel(expenses: nil, deductible: balance, coverage: coverage),
                      DescriptionReportCellModel(title: "Me.Report.DescriptionCell.title".localized, text: ""),
                      PhotosReportCellModel(photos: []),
                      WalletReportCellModel(text: "")]
@@ -141,8 +143,27 @@ struct ReportDataSource {
         }
     }
     
-    func updateCell(coverage: Double, amount: Double) {
-        //let cell = ExpensesReportCellModel
+    func getCoverageForDate(date: Date) {
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
+        
+        service.storage.requestCoverage(for: date, teamID: teamID).observe { [weak self] result in
+            guard let `self` = self else { return }
+            
+            switch result {
+            case let .value((coverage: coverage, limit: limit)):
+                for (idx, item) in self.items.enumerated()  {
+                    if var item = item as? ExpensesReportCellModel {
+                    item.coverage = coverage
+                        
+                        self.items[idx] = item
+                        self.onUpdateCoverage?()
+                        break
+                    }
+                }
+            case .error:
+                break
+            }
+        }
     }
     
     subscript(indexPath: IndexPath) -> ReportCellModel {

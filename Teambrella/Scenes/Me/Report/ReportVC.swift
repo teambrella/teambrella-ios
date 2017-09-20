@@ -76,24 +76,24 @@ final class ReportVC: UIViewController, Routable {
         addKeyboardObservers()
         
         dataSource = ReportDataSource(context: reportContext)
+        dataSource.onUpdateCoverage = { [weak self] in
+            self?.reloadExpencesCellIfNeeded()
+        }
         ReportCellBuilder.registerCells(in: collectionView)
         
-        getCoverageForDate(date: datePicker.date)
-        dataSource.updateCell(coverage: coverage, amount: limit)
+        dataSource.getCoverageForDate(date: datePicker.date)
     }
     
-    func getCoverageForDate(date: Date) {
-        guard let teamID = service.session?.currentTeam?.teamID else { return }
+    private func reloadExpencesCellIfNeeded() {
+        let visibleCells = collectionView.visibleCells
+        let expensesCells = visibleCells.filter { $0 is ReportExpensesCell }
+        guard let expensesCell = expensesCells.first else { return }
+        guard let indexPath = collectionView.indexPath(for: expensesCell) else { return }
         
-        service.storage.requestCoverage(for: date, teamID: teamID).observe { result in
-            switch result {
-            case let .value((coverage: coverage, limit: limit)):
-                self.coverage = coverage
-                self.limit = limit
-                break
-            case .error:
-                break
-            }
+        collectionView.performBatchUpdates({
+            collectionView.reloadItems(at: [indexPath])
+        }) { finished in
+            
         }
     }
     
@@ -159,15 +159,18 @@ final class ReportVC: UIViewController, Routable {
                 cell.textField.text = DateProcessor().stringIntervalOrDate(from: dateReportCellModel.date)
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            lastDate = Date()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+                guard let `self` = self else { return }
+                
                 let now = Date()
-                //                if lastDate >= deadline {
-                //                    getCoverageForDate(date: dateReportCellModel.date)
-                //                }
+                guard now.timeIntervalSince(self.lastDate) >= 2 else {
+                    return
+                }
+                
+                self.dataSource.getCoverageForDate(date: dateReportCellModel.date)
             }
-            dataSource.updateCell(coverage: coverage, amount: limit)
         }
-        
         
     }
     
@@ -196,8 +199,7 @@ final class ReportVC: UIViewController, Routable {
     }
     
     func validateAndSendData() {
-        guard let model = dataSource.reportModel(imageStrings: photoController.photos) else { return }
-        guard model.isValid else {
+        guard let model = dataSource.reportModel(imageStrings: photoController.photos), model.isValid else {
             isInCorrectionMode = true
             collectionView.reloadData()
             return
@@ -320,5 +322,12 @@ extension ReportVC: UITextViewDelegate {
 extension ReportVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         (textField as? TextField)?.isInAlertMode = false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let indexPath = IndexPath(row: textField.tag, section: 0)
+        if dataSource[indexPath] is ExpensesReportCellModel {
+            reloadExpencesCellIfNeeded()
+        }
     }
 }

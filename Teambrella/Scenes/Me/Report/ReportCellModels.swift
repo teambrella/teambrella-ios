@@ -43,18 +43,18 @@ struct ExpensesReportCellModel: ReportCellModel {
     let deductibleTitle = "Me.Report.ExpensesCell.deductibleTitle".localized
     let coverageTitle = "Me.Report.ExpensesCell.coverageTitle".localized
     let amountTitle = "Me.Report.ExpensesCell.amountTitle".localized
-    var expenses: Double
-    var expensesString: String { return cryptoCoinsString(amount: expenses) }
+    var expenses: Double?
+    var expensesString: String { return expenses.map { String.truncatedNumber($0) } ?? "" }
     var deductible: Double
-    var deductibleString: String { return cryptoCoinsString(amount: deductible) }
+    var deductibleString: String { return String.truncatedNumber(deductible) }
     var coverage: Double
-    var coverageString: String { return cryptoCoinsString(amount: coverage) }
-    
-    var isValid: Bool { return expenses > 0 }
-    
-    private func cryptoCoinsString(amount: Double) -> String {
-        return String.formattedNumber(amount * 1000)
+    var coverageString: String { return String.truncatedNumber(coverage * 100) }
+    var isValid: Bool {
+        guard let expenses = expenses else { return false }
+        
+        return expenses > 0
     }
+    var amountString: String { return String.truncatedNumber(expenses ?? 0 * coverage) }
 }
 
 struct DescriptionReportCellModel: ReportCellModel {
