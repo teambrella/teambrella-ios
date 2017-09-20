@@ -26,7 +26,7 @@ import XLPagerTabStrip
 class FeedVC: UIViewController, IndicatorInfoProvider {
     struct Constant {
         static let cellHeight: CGFloat   = 119
-        static let headerHeight: CGFloat = 70
+        static let headerHeight: CGFloat = 72
     }
 
     var dataSource: FeedDataSource = FeedDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
@@ -111,6 +111,8 @@ extension FeedVC: UICollectionViewDelegate {
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
         if let view = view as? HeaderWithButton {
+            view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            view.separator.isHidden = false
             view.button.setTitle("Team.FeedVC.startDiscussionButton.title".localized, for: .normal)
             view.button.removeTarget(self, action: nil, for: .allEvents)
             view.button.addTarget(self, action: #selector(tapStartDiscussion), for: .touchUpInside)

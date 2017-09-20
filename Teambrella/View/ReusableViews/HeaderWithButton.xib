@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -30,14 +30,25 @@
                         <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EYe-La-yUd">
+                    <rect key="frame" x="109" y="20" width="240" height="84"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="9lV-8K-REg"/>
+                    </constraints>
+                </view>
             </subviews>
             <constraints>
                 <constraint firstItem="MaW-NM-PIa" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="5ep-rm-n3H"/>
+                <constraint firstAttribute="trailing" secondItem="EYe-La-yUd" secondAttribute="trailing" id="9Uf-8b-CS2"/>
+                <constraint firstItem="EYe-La-yUd" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="Dfq-Yy-Rd2"/>
+                <constraint firstAttribute="bottom" secondItem="EYe-La-yUd" secondAttribute="bottom" id="eBH-d2-o36"/>
                 <constraint firstItem="MaW-NM-PIa" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="wrc-bX-fl8"/>
                 <constraint firstAttribute="trailing" secondItem="MaW-NM-PIa" secondAttribute="trailing" constant="16" id="zWf-Fw-qe3"/>
             </constraints>
             <connections>
                 <outlet property="button" destination="MaW-NM-PIa" id="ppw-Ky-Nia"/>
+                <outlet property="separator" destination="EYe-La-yUd" id="rrQ-EE-p1n"/>
             </connections>
             <point key="canvasLocation" x="142" y="100.5"/>
         </collectionReusableView>

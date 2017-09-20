@@ -23,10 +23,11 @@ import UIKit
 
 class HeaderWithButton: UICollectionReusableView, XIBInitableCell {
     @IBOutlet var button: BorderedButton!
-
+    @IBOutlet var separator: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        separator.isHidden = true
     }
     
 }

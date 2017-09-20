@@ -25,14 +25,14 @@ import Kingfisher
 struct FeedCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: FeedEntity) {
         if let cell = cell as? TeamFeedCell {
-            if model.itemType == .teammate {
-                cell.avatarView.showAvatar(string: model.smallPhotoOrAvatar)
-                cell.avatarView.layer.masksToBounds = true
-                cell.avatarView.layer.cornerRadius = cell.avatarView.frame.height / 2
-            } else {
+            if model.itemType == .claim {
                 cell.avatarView.showImage(string: model.smallPhotoOrAvatar)
                 cell.avatarView.layer.masksToBounds = true
                 cell.avatarView.layer.cornerRadius = 4
+            } else {
+                cell.avatarView.showAvatar(string: model.smallPhotoOrAvatar)
+                cell.avatarView.layer.masksToBounds = true
+                cell.avatarView.layer.cornerRadius = cell.avatarView.frame.height / 2
             }
             cell.avatarView.contentMode = .scaleAspectFill
             cell.titleLabel.text = model.chatTitle
@@ -54,11 +54,8 @@ struct FeedCellBuilder {
             case .teammate:
                 cell.iconView.image = #imageLiteral(resourceName: "application")
                 cell.typeLabel.text = "Team.Chat.TypeLabel.application".localized
-            case .teamChat:
-                cell.iconView.image = #imageLiteral(resourceName: "discussion")
-                cell.typeLabel.text = "Team.Chat.TypeLabel.discussion".localized
             default:
-                cell.iconView.image = nil
+                cell.iconView.image = #imageLiteral(resourceName: "discussion")
                 cell.typeLabel.text = "Team.Chat.TypeLabel.other".localized
             }
             

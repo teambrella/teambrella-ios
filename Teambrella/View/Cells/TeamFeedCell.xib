@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -33,7 +33,7 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uev-dk-iCT" userLabel="Separator">
                                 <rect key="frame" x="16" y="179" width="610" height="1"/>
-                                <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="cU0-IE-Kfr"/>
                                 </constraints>
@@ -57,13 +57,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLAIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8U-ZJ-9yS" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLAIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8U-ZJ-9yS" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="160" y="136.5" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="1 MIN AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejr-yO-pjp" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="1 MIN AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejr-yO-pjp" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="527" y="15" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -122,12 +122,12 @@
                             <constraint firstItem="m8U-ZJ-9yS" firstAttribute="centerY" secondItem="7wD-Sn-ye9" secondAttribute="centerY" id="IpG-hp-jmj"/>
                             <constraint firstItem="yqT-sY-ffe" firstAttribute="leading" secondItem="M6n-hd-Q8f" secondAttribute="trailing" constant="16" id="PTJ-Jf-zyS"/>
                             <constraint firstItem="Gex-0H-g7a" firstAttribute="leading" secondItem="B6d-fE-Fmr" secondAttribute="trailing" constant="16" id="Q2T-Db-rrg"/>
+                            <constraint firstAttribute="trailing" secondItem="Gex-0H-g7a" secondAttribute="trailing" constant="16" id="U49-VG-gw5"/>
                             <constraint firstItem="JbY-Lf-BOo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lEA-pj-5Rg" secondAttribute="bottom" constant="8" id="V9c-bj-AqW"/>
                             <constraint firstAttribute="bottom" secondItem="uev-dk-iCT" secondAttribute="bottom" id="XHz-Ol-L5e"/>
                             <constraint firstItem="Ejr-yO-pjp" firstAttribute="bottom" secondItem="yqT-sY-ffe" secondAttribute="bottom" id="Xhl-Ec-Mu5"/>
                             <constraint firstAttribute="bottom" secondItem="JbY-Lf-BOo" secondAttribute="bottom" constant="23" id="YVh-bO-qoi"/>
                             <constraint firstItem="Ejr-yO-pjp" firstAttribute="trailing" secondItem="Gex-0H-g7a" secondAttribute="trailing" id="bAe-XX-dwV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Gex-0H-g7a" secondAttribute="trailing" id="dRY-Dw-lwo"/>
                             <constraint firstItem="m8U-ZJ-9yS" firstAttribute="leading" secondItem="7wD-Sn-ye9" secondAttribute="trailing" constant="8" id="gfF-zg-8i1"/>
                             <constraint firstItem="M6n-hd-Q8f" firstAttribute="top" secondItem="BkT-eI-XLe" secondAttribute="top" constant="16" id="gmd-gr-23D"/>
                             <constraint firstItem="7wD-Sn-ye9" firstAttribute="centerY" secondItem="JbY-Lf-BOo" secondAttribute="centerY" id="hWt-dU-8Iq"/>
