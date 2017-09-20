@@ -168,6 +168,7 @@ struct TeambrellaStyle {
         
         let infoHelp = InfoHelpLabel.appearance()
         infoHelp.font = UIFont.teambrella(size: 10)
+        infoHelp.textColor = .bluishGray
         
         let itemName = ItemNameLabel.appearance()
         itemName.font = UIFont.teambrella(size: 14)

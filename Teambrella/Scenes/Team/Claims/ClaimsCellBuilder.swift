@@ -49,7 +49,7 @@ struct ClaimsCellBuilder {
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
             cell.votedLabel.text = "Team.Claims.VitedCell.voted".localized + String.formattedNumber(claim.myVote)
             if let name = claim.proxyName {
-                cell.voterLabel.isHidden = true
+                cell.voterLabel.isHidden = false
                 cell.voterLabel.text = "By " + name
             } else {
                 cell.voterLabel.isHidden = true
@@ -63,7 +63,7 @@ struct ClaimsCellBuilder {
             } else {
                 cell.statusLabel.text = "Team.ClaimsCell.reimbursed".localized.uppercased()
                 cell.statusLabel.textColor = .blueyGray
-                cell.scaleBar.isLineHidden = true
+                cell.scaleBar.isLineHidden = false
             }
             cell.amountLabel.text = service.currencySymbol + String.truncatedNumber(claim.claimAmount)
             cell.scaleBar.value = CGFloat(claim.reimbursement)
