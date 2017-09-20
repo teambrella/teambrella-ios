@@ -320,7 +320,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxN-1F-D8t" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="86" width="343" height="16"/>
+                                        <rect key="frame" x="16" y="94" width="343" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ft4-PC-vY2"/>
                                         </constraints>
