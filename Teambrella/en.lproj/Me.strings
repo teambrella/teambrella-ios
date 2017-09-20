@@ -27,6 +27,8 @@
 "Me.WalletDetailsVC.headerLabel"          = "Bitcoin address";
 "Me.WalletDetailsVC.timeLabel"            = "Valid for 24 hours";
 "Me.WalletDetailsVC.copyAddressButton"    = "Copy Address";
+"Me.WalletDetailsVC.copiedAddress"        = "Copied";
+
 
 "Me.CoverageVC.fundButton"                = "Fund the wallet to increase";
 "Me.CoverageVC.title"                     = "HOW IT WORKS";

@@ -23,7 +23,7 @@ import QRCode
 import UIKit
 
 class WalletDetailsVC: UIViewController, Routable {
-
+    
     static let storyboardName = "Me"
     @IBOutlet var qrCodeImageView: UIImageView!
     @IBOutlet var fundButton: UIButton!
@@ -49,7 +49,7 @@ class WalletDetailsVC: UIViewController, Routable {
         bitcoinAddressLabel.text = walletID
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,14 +70,10 @@ class WalletDetailsVC: UIViewController, Routable {
         qrCodeImageView.image = image
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func tapCopy(_ sender: UIButton) {
+        UIPasteboard.general.string = bitcoinAddressLabel.text
+        sender.setTitle("Me.WalletDetailsVC.copiedAddress".localized, for: .normal)
+        sender.isEnabled = false
     }
-    */
-
+    
 }
