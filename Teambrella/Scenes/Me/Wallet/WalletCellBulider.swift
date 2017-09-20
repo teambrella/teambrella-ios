@@ -48,50 +48,69 @@ struct WalletCellBuilder {
     
     static func populate(cell: UICollectionViewCell, with model: WalletCellModel, delegate: WalletVC) {
         if let cell = cell as? WalletHeaderCell, let model = model as? WalletHeaderCellModel {
-            cell.numberBar.isBottomLineVisible = false
-            cell.amount.text = String.formattedNumber(model.amount * 1000)
-            balance = model.amount * 1000
-            cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
-            cell.numberBar.left?.amountLabel.text = String.formattedNumber(model.reserved * 1000)
-            cell.numberBar.left?.isBadgeVisible = false
-            cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
-            cell.numberBar.right?.amountLabel.text = String.formattedNumber(model.available * 1000)
-            cell.numberBar.right?.isBadgeVisible = false
-            cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
-            cell.currencyLabel.text = service.session?.cryptoCurrency.coinCode
-            currencyRate = model.currencyRate
-            if let team = service.session?.currentTeam {
-                cell.auxillaryAmount.text = String.formattedNumber(model.amount * currencyRate) + " " + team.currency
-            }
+            populateHeader(cell: cell, model: model)
         }
         if let cell = cell as? WalletFundingCell, let model = model as? WalletFundingCellModel {
-            cell.headerLabel.text = balance > 0 ?
-                "Me.WalletVC.fundingCell.additionalTitle".localized : "Me.WalletVC.fundingCell.title".localized
-            cell.upperNumberView.titleLabel.text = "Me.WalletVC.upperBrick.title".localized
-            cell.upperNumberView.amountLabel.text = String.formattedNumber(model.maxCoverageFunding * 1000)
-            cell.upperNumberView.isBadgeVisible = false
-            if let team = service.session?.currentTeam {
-                cell.upperCurrencyLabel.text =
-                    String.formattedNumber(model.maxCoverageFunding * currencyRate) + " " + team.currency
-                cell.lowerCurrencyLabel.text =
-                    String.formattedNumber(model.uninterruptedCoverageFunding * currencyRate) + " " + team.currency
-            }
-            cell.lowerNumberView.titleLabel.text = "Me.WalletVC.lowerBrick.title".localized
-            cell.lowerNumberView.amountLabel.text = String.formattedNumber(model.uninterruptedCoverageFunding * 1000)
-            cell.lowerNumberView.isBadgeVisible = false
-            cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)
+            populateFunding(cell: cell, model: model)
         }
         if let cell = cell as? WalletButtonsCell, let model = model as? WalletButtonsCellModel {
-            cell.topViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
-            cell.imagesStack.setAvatars(images: model.avatarsPreview)
-            cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
-            cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
-            cell.quantityLabel.text = String(model.avatars.count)
-            cell.tapMiddleViewRecognizer.removeTarget(delegate, action: nil)
-            cell.tapMiddleViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapTransactions))
-            cell.tapTopViewRecognizer.removeTarget(delegate, action: nil)
-            cell.tapTopViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapCosigners))
+            populateButtons(cell: cell, model: model, delegate: delegate)
         }
+    }
+    
+    private static func populateHeader(cell: WalletHeaderCell, model: WalletHeaderCellModel) {
+        cell.numberBar.isBottomLineVisible = false
+        cell.amount.text = String.formattedNumber(model.amount * 1000)
+        balance = model.amount * 1000
+        
+        cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
+        cell.numberBar.left?.amountLabel.text = model.reserved < 0.1
+            ? String.formattedNumber(model.reserved * 1000)
+            : String.truncatedNumber(model.reserved * 1000)
+        cell.numberBar.left?.isBadgeVisible = false
+        
+        cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
+        cell.numberBar.right?.amountLabel.text = model.available < 0.1
+            ? String.formattedNumber(model.available * 1000)
+            : String.truncatedNumber(model.available * 1000)
+        cell.numberBar.right?.isBadgeVisible = false
+        
+        cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
+        cell.currencyLabel.text = service.session?.cryptoCurrency.coinCode
+        currencyRate = model.currencyRate
+        if let team = service.session?.currentTeam {
+            cell.auxillaryAmount.text = String.formattedNumber(model.amount * currencyRate) + " " + team.currency
+        }
+    }
+    
+    private static func populateFunding(cell: WalletFundingCell, model: WalletFundingCellModel) {
+        cell.headerLabel.text = balance > 0 ?
+            "Me.WalletVC.fundingCell.additionalTitle".localized : "Me.WalletVC.fundingCell.title".localized
+        cell.upperNumberView.titleLabel.text = "Me.WalletVC.upperBrick.title".localized
+        cell.upperNumberView.amountLabel.text = String.formattedNumber(model.maxCoverageFunding * 1000)
+        cell.upperNumberView.isBadgeVisible = false
+        if let team = service.session?.currentTeam {
+            cell.upperCurrencyLabel.text =
+                String.formattedNumber(model.maxCoverageFunding * currencyRate) + " " + team.currency
+            cell.lowerCurrencyLabel.text =
+                String.formattedNumber(model.uninterruptedCoverageFunding * currencyRate) + " " + team.currency
+        }
+        cell.lowerNumberView.titleLabel.text = "Me.WalletVC.lowerBrick.title".localized
+        cell.lowerNumberView.amountLabel.text = String.formattedNumber(model.uninterruptedCoverageFunding * 1000)
+        cell.lowerNumberView.isBadgeVisible = false
+        cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)
+    }
+    
+    private static func populateButtons(cell: WalletButtonsCell, model: WalletButtonsCellModel, delegate: WalletVC) {
+        cell.topViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
+        cell.imagesStack.setAvatars(images: model.avatarsPreview)
+        cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
+        cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
+        cell.quantityLabel.text = String(model.avatars.count)
+        cell.tapMiddleViewRecognizer.removeTarget(delegate, action: nil)
+        cell.tapMiddleViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapTransactions))
+        cell.tapTopViewRecognizer.removeTarget(delegate, action: nil)
+        cell.tapTopViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapCosigners))
     }
     
 }
