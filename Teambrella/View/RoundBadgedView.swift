@@ -25,11 +25,11 @@ import UIKit
 class RoundBadgedView: RoundImageView {
     lazy var badge: Label = {
         let badge = Label(frame: self.bounds)
-        badge.textInsets = UIEdgeInsets(top: 1, left: 3, bottom: 1, right: 3)
+        badge.textInsets = UIEdgeInsets(top: 1, left: 5, bottom: 1, right: 5)
         badge.textColor = self.badgeTextColor
         badge.layer.masksToBounds = true
-        badge.layer.cornerRadius = 3
-        badge.layer.borderWidth = 1
+        badge.layer.cornerRadius = 4
+        badge.layer.borderWidth = 1.5
         badge.layer.borderColor = self.badgeTextColor.cgColor
         badge.backgroundColor = UIColor.blueyGray
         self.addSubview(badge)

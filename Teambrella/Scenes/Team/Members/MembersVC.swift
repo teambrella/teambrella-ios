@@ -93,7 +93,7 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
         searchBar.placeholder = "Team.MembersVC.searchHere".localized
             
         searchController.searchBar.delegate = self
-        searchController.searchBar.sizeToFit()
+        //searchController.searchBar.sizeToFit()
         
         searchBar.backgroundImage = UIImage()
         inviteFriendButton.setTitle("Team.MembersVC.inviteAFriend".localized, for: .normal)

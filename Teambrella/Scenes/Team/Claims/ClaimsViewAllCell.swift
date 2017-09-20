@@ -25,4 +25,8 @@ class ClaimsViewAllCell: UICollectionViewCell {
     @IBOutlet var titleLabel: Label!
     @IBOutlet var detailsLabel: Label!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //CellDecorator.heavyShadow(for: self)
+    }
 }

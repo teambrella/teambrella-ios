@@ -30,4 +30,8 @@ class ClaimsOpenCell: UICollectionViewCell, ClaimsCell {
     @IBOutlet var claimedAmountLabel: Label!
     @IBOutlet var button: BorderedButton!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //CellDecorator.heavyShadow(for: self)
+    }
 }

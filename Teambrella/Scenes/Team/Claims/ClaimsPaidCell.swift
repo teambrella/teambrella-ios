@@ -30,4 +30,8 @@ class ClaimsPaidCell: UICollectionViewCell, ClaimsCell {
     @IBOutlet var statusLabel: Label!
     @IBOutlet var scaleBar: ScaleBar!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //CellDecorator.heavyShadow(for: self)
+    }
 }

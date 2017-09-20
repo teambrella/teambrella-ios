@@ -30,5 +30,9 @@ class ClaimsVotedCell: UICollectionViewCell, ClaimsCell {
     @IBOutlet var claimedAmountLabel: Label!
     @IBOutlet var votedLabel: Label!
     @IBOutlet var voterLabel: Label!
-    
+ 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //CellDecorator.heavyShadow(for: self)
+    }
 }

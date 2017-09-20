@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RCI-Dd-d0f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RCI-Dd-d0f">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -208,11 +208,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
                                         <subviews>
                                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qyr-m3-nkH">
-                                                <rect key="frame" x="16" y="8" width="317" height="44"/>
+                                                <rect key="frame" x="16" y="8" width="317" height="56"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8l-Eu-bWi">
-                                                <rect key="frame" x="341" y="19" width="18" height="22"/>
+                                                <rect key="frame" x="341" y="25" width="18" height="22"/>
                                                 <state key="normal" image="filter"/>
                                                 <connections>
                                                     <action selector="tapSort:" destination="7bW-lz-Yk2" eventType="touchUpInside" id="lYl-8u-coF"/>
@@ -381,18 +381,25 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7T-eu-kOI">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgI-ze-Jig">
+                                        <rect key="frame" x="8" y="597" width="359" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="y69-YT-qJq"/>
+                                        </constraints>
+                                    </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7y-jN-kph">
                                         <rect key="frame" x="8" y="647" width="359" height="339"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmx-QX-Cf5">
-                                                <rect key="frame" x="17" y="17" width="47" height="17"/>
+                                                <rect key="frame" x="17" y="17" width="45.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vbl-jU-ypK">
                                                 <rect key="frame" x="0.0" y="54" width="359" height="1"/>
-                                                <color key="backgroundColor" red="0.80392158030000005" green="0.80392158030000005" blue="0.80392158030000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="67w-Kx-v5f"/>
                                                 </constraints>
@@ -400,6 +407,7 @@
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gWX-XP-5h9">
                                                 <rect key="frame" x="0.0" y="55" width="359" height="284"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="separatorColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortCell" rowHeight="77" id="gsw-a9-QAg" customClass="SortCell" customModule="Teambrella" customModuleProvider="target">
@@ -410,13 +418,13 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TopLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwo-Tg-suh">
-                                                                    <rect key="frame" x="17" y="19" width="63.5" height="18.5"/>
+                                                                    <rect key="frame" x="17" y="19" width="61.5" height="17.5"/>
                                                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                                                     <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BottomLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPo-aB-r6l">
-                                                                    <rect key="frame" x="17" y="43" width="71.5" height="15"/>
+                                                                    <rect key="frame" x="17" y="44" width="69.5" height="14"/>
                                                                     <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
                                                                     <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -482,13 +490,21 @@
                                             <constraint firstItem="ZfC-7x-bAz" firstAttribute="centerY" secondItem="Vmx-QX-Cf5" secondAttribute="centerY" id="kL3-09-6Lx"/>
                                             <constraint firstItem="gWX-XP-5h9" firstAttribute="top" secondItem="b7y-jN-kph" secondAttribute="top" constant="55" id="uSM-Sv-eNY"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qgI-ze-Jig" secondAttribute="bottom" id="21i-ol-gws"/>
                                     <constraint firstItem="b7y-jN-kph" firstAttribute="leading" secondItem="O7T-eu-kOI" secondAttribute="leading" constant="8" id="Jjb-mu-aKh"/>
                                     <constraint firstAttribute="trailing" secondItem="b7y-jN-kph" secondAttribute="trailing" constant="8" id="KXo-ya-3HU"/>
                                     <constraint firstAttribute="bottom" secondItem="b7y-jN-kph" secondAttribute="bottom" constant="-339" id="hyK-Ei-CCb"/>
+                                    <constraint firstItem="qgI-ze-Jig" firstAttribute="leading" secondItem="O7T-eu-kOI" secondAttribute="leading" constant="8" id="nVT-EG-n25"/>
+                                    <constraint firstAttribute="trailing" secondItem="qgI-ze-Jig" secondAttribute="trailing" constant="8" id="pEe-lS-2kF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -526,7 +542,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6vV-Oq-RvH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
