@@ -52,6 +52,10 @@ final class ReportVC: UIViewController, Routable {
     private var photoController: PhotoPreviewVC = PhotoPreviewVC(collectionViewLayout: UICollectionViewFlowLayout())
     private var dataSource: ReportDataSource!
     
+    var coverage: Double = 0.0
+    var limit: Double = 0.0
+    var lastDate: Date = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if isModal {
@@ -74,6 +78,23 @@ final class ReportVC: UIViewController, Routable {
         dataSource = ReportDataSource(context: reportContext)
         ReportCellBuilder.registerCells(in: collectionView)
         
+        getCoverageForDate(date: datePicker.date)
+        dataSource.updateCell(coverage: coverage, amount: limit)
+    }
+    
+    func getCoverageForDate(date: Date) {
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
+        
+        service.storage.requestCoverage(for: date, teamID: teamID).observe { result in
+            switch result {
+            case let .value((coverage: coverage, limit: limit)):
+                self.coverage = coverage
+                self.limit = limit
+                break
+            case .error:
+                break
+            }
+        }
     }
     
     func addKeyboardObservers() {
@@ -137,7 +158,17 @@ final class ReportVC: UIViewController, Routable {
             if let cell = collectionView.cellForItem(at: indexPath) as? ReportTextFieldCell {
                 cell.textField.text = DateProcessor().stringIntervalOrDate(from: dateReportCellModel.date)
             }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                let now = Date()
+                //                if lastDate >= deadline {
+                //                    getCoverageForDate(date: dateReportCellModel.date)
+                //                }
+            }
+            dataSource.updateCell(coverage: coverage, amount: limit)
         }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
