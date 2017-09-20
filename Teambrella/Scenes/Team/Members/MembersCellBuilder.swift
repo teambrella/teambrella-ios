@@ -35,7 +35,9 @@ struct MembersCellBuilder {
             if let url = URL(string: service.server.avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
-            cell.amountLabel.text = "\(abs(Int(teammate.totallyPaid)))"
+            guard let currency = service.session?.currentTeam?.currencySymbol else { return }
+            
+            cell.amountLabel.text = currency + "\(abs(Int(teammate.totallyPaid)))"
             cell.signLabel.text = teammate.totallyPaid > 0 ? "+" : teammate.totallyPaid < 0 ? "-" : ""
             cell.signLabel.textColor = teammate.totallyPaid > 0 ? .tealish : .lipstick
             cell.titleLabel.text = teammate.name
