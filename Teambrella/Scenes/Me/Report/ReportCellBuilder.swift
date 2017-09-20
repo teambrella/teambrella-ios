@@ -75,14 +75,15 @@ struct ReportCellBuilder {
         
         cell.numberBar.middle?.titleLabel.text = model.coverageTitle
         cell.numberBar.middle?.amountLabel.text = model.coverageString
-        cell.numberBar.middle?.currencyLabel.text = service.currencySymbol
+        cell.numberBar.middle?.currencyLabel.text = "%"
+        cell.numberBar.middle?.isCurrencyOnTop = false
         
         cell.numberBar.right?.titleLabel.text = model.amountTitle
-        cell.numberBar.right?.amountLabel.text = model.expensesString
+        cell.numberBar.right?.amountLabel.text = model.amountString
         cell.numberBar.right?.currencyLabel.text = service.currencySymbol
         
         cell.expensesTextField.delegate = reportVC
-        cell.expensesTextField.text = String(model.expenses)
+        cell.expensesTextField.text = model.expensesString
         cell.expensesTextField.keyboardType = .decimalPad
         //cell.expensesTextField.rightView = model.isValid ? nil : UIImageView(image: #imageLiteral(resourceName: "closeIcon"))
         cell.expensesTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false

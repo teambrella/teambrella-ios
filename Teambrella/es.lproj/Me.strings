@@ -27,6 +27,7 @@
 "Me.WalletDetailsVC.headerLabel"          = "Dirección de Bitcoin";
 "Me.WalletDetailsVC.timeLabel"            = "Válido por 24 horas";
 "Me.WalletDetailsVC.copyAddressButton"    = "Copiar Dirección";
+"Me.WalletDetailsVC.copiedAddress"        = "Copiado";
 
 
 "Me.CoverageVC.fundButton"                = "Financie tu monedero para aumentar";
