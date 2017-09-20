@@ -66,7 +66,9 @@ class RoundImagesStack: UIView {
         }
         if let label = label {
             let lastView = RoundImageView()
-            lastView.viewColor = .gray
+            lastView.viewColor = .paleGray
+            lastView.textColor = #colorLiteral(red: 0.4, green: 0.4549019608, blue: 0.4901960784, alpha: 1)
+            lastView.font = UIFont.teambrellaBold(size: 10)
             lastView.text = label
             add(view: lastView)
         }

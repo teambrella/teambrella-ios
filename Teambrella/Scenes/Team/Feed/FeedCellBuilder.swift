@@ -37,7 +37,9 @@ struct FeedCellBuilder {
             cell.avatarView.contentMode = .scaleAspectFill
             cell.titleLabel.text = model.chatTitle
             cell.textLabel.text = model.text
-            cell.facesStack.setAvatars(images: model.topPosterAvatars, label: nil, max: 4)
+            let count = model.topPosterAvatars.count
+            let label: String? = count > 3 ? "+\(count - 3)" : nil
+            cell.facesStack.setAvatars(images: model.topPosterAvatars, label: label, max: count > 3 ? 4 : 3)
          
             if let date = model.itemDate {
             cell.timeLabel.text = DateProcessor().stringInterval(from: date).uppercased()
