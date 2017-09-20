@@ -167,8 +167,6 @@ final class ReportVC: UIViewController, Routable {
             }
             dataSource.updateCell(coverage: coverage, amount: limit)
         }
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
