@@ -54,6 +54,8 @@ class PieChartView: UIView {
         }
     }
     
+    @IBInspectable var daysInCircle: CGFloat = 7
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         isOpaque = false
@@ -98,7 +100,10 @@ class PieChartView: UIView {
         ctx.addLine(to: circle.circumferencePoint(radians: endAngle))
         ctx.setLineWidth(lineWidth)
         ctx.strokePath()
-        
+    }
+    
+    func setupWith(remainingMinutes: Int) {
+    endAngle = 360 - 360 / daysInCircle * CGFloat(remainingMinutes) / 60 / 24
     }
     
 }

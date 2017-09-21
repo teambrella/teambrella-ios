@@ -420,10 +420,8 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         if let teamRisk = teammate?.extended?.voting?.riskVoted {
             text(for: cell.teamVoteBadgeLabel, risk: teamRisk)
         }
-        
-        //cell.pearMiddleAvatar.riskLabelText =  String.formattedNumber(risk)
-        
         updateAmounts(with: risk)
+        cell.pieChart.setupWith(remainingMinutes: teammate?.extended?.voting?.remainingMinutes ?? 0)
     }
     
     func votingRisk(cell: VotingRiskCell, stoppedOnOffset: CGFloat) {
