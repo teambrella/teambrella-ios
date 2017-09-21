@@ -35,7 +35,6 @@ class TeammateProfileVC: UIViewController, Routable {
     var teammateID: String?
     
     var dataSource: TeammateProfileDataSource!
-    var riskController: VotingRiskVC?
     var linearFunction: PiecewiseFunction?
     var chosenRisk: Double?
     
@@ -108,16 +107,10 @@ class TeammateProfileVC: UIViewController, Routable {
     func registerCells() {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
         collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
+        collectionView.register(VotingRiskCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
         collectionView.register(CompactUserInfoHeader.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: CompactUserInfoHeader.cellID)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ToVotingRisk",
-            let vc = segue.destination as? VotingRiskVC {
-            riskController = vc
-        }
     }
     
     func updateAmounts(with risk: Double) {
@@ -211,42 +204,13 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         guard let teammate = dataSource.extendedTeammate else { return }
         
-        TeammateCellBuilder.populate(cell: cell, with: teammate, delegate: self)
+        TeammateCellBuilder.populate(cell: cell, with: teammate, controller: self)
         
         // add handlers
         if let cell = cell as? TeammateObjectCell {
-            if let claimsCount = dataSource.extendedTeammate?.object.claimCount {
-                cell.button.isHidden = claimsCount == 0
-            }
-            cell.button.removeTarget(nil, action: nil, for: .allEvents)
-            cell.button.addTarget(self, action: #selector(showClaims), for: .touchUpInside)
-        } else if cell is TeammateVoteCell, let riskController = riskController {
-            if let voting = teammate.voting {
-                riskController.timeLabel.text = "\(voting.remainingMinutes) MIN"
-            }
-            riskController.teammate = teammate
-            riskController.onVoteUpdate = { [weak self] risk in
-                guard let me = self else { return }
-                
-                me.updateAmounts(with: risk)
-            }
             
-            riskController.onVoteConfirmed = { [weak self] risk in
-                guard let me = self else { return }
-                guard let id = me.teammate?.id else { return }
-                
-                me.riskController?.yourRiskValue.alpha = 0.5
-                me.dataSource.sendRisk(userID: id, risk: risk, completion: { json in
-                    me.teammate?.updateWithVote(json: json)
-                    me.riskController?.teammate = me.teammate?.extended
-                    me.riskController?.yourRiskValue.alpha = 1
-                    if risk == nil {
-                        me.riskController?.resetVote()
-                    } else {
-                        me.riskController?.hideProxy()
-                    }
-                })
-            }
+        } else if cell is TeammateVoteCell, let riskController = riskController {
+            
         } else if let cell = cell as? TeammateStatsCell {
             cell.addButton.removeTarget(self, action: nil, for: .allEvents)
             cell.addButton.addTarget(self, action: #selector(tapAddToProxy), for: .touchUpInside)

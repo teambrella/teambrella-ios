@@ -23,23 +23,23 @@ import Kingfisher
 import UIKit
 
 struct TeammateCellBuilder {
-    static func populate(cell: UICollectionViewCell, with teammate: ExtendedTeammateEntity, delegate: Any? = nil) {
-        if let cell = cell as? TeammateSummaryCell, let vc = delegate as? UIViewController {
+    static func populate(cell: UICollectionViewCell, with teammate: ExtendedTeammateEntity, controller: Any? = nil) {
+        if let cell = cell as? TeammateSummaryCell, let vc = controller as? UIViewController {
             populateSummary(cell: cell, with: teammate, controller: vc)
-        } else if let cell = cell as? TeammateObjectCell, let vc = delegate as? TeammateProfileVC {
+        } else if let cell = cell as? TeammateObjectCell, let vc = controller as? TeammateProfileVC {
             populateObject(cell: cell, with: teammate, controller: vc)
         } else if let cell = cell as? TeammateContactCell {
-            populateContact(cell: cell, with: teammate, delegate: delegate)
+            populateContact(cell: cell, with: teammate, delegate: controller)
         } else if let cell = cell as? DiscussionCell {
             populateDiscussion(cell: cell, with: teammate.topic, avatar: teammate.basic.avatar)
         } else if let cell = cell as? TeammateStatsCell {
             populateStats(cell: cell, with: teammate)
-        } else if let cell = cell as? TeammateVoteCell, let delegate = delegate as? TeammateProfileVC {
+        } else if let cell = cell as? VotingRiskCell, let delegate = controller as? TeammateProfileVC {
            populateVote(cell: cell, with: teammate, delegate: delegate)
         } else if let cell = cell as? DiscussionCompactCell {
             populateCompactDiscussion(cell: cell, with: teammate.topic, avatar: teammate.basic.avatar)
         } else if let cell = cell as? MeCell {
-            populateMeCell(cell: cell, with: teammate, delegate: delegate)
+            populateMeCell(cell: cell, with: teammate, delegate: controller)
         }
     }
     
@@ -92,15 +92,9 @@ struct TeammateCellBuilder {
         }
     }
     
-    private static func populateVote(cell: TeammateVoteCell,
+    private static func populateVote(cell: VotingRiskCell,
                                      with teammate: ExtendedTeammateEntity,
                                      delegate: TeammateProfileVC) {
-        if delegate.riskController == nil {
-            let board = UIStoryboard(name: "Members", bundle: nil)
-            if let vc = board.instantiateViewController(withIdentifier: "VotingRiskVC") as? VotingRiskVC {
-            delegate.riskController = vc
-            }
-        }
         if let vc = delegate.riskController {
             vc.view.removeFromSuperview()
             vc.willMove(toParentViewController: delegate)
@@ -110,6 +104,36 @@ struct TeammateCellBuilder {
             delegate.addChildViewController(vc)
             vc.didMove(toParentViewController: delegate)
         }
+        
+        
+        /* NEW */
+        
+        if let voting = teammate.voting {
+            cell.timeLabel.text = "\(voting.remainingMinutes) MIN"
+        }
+        
+        cell.delegate = delegate
+        /*
+        cell.onChangeValue = { [weak delegate] risk in
+            delegate?.updateAmounts(with: risk)
+        }
+        cell.onSelectValue = { [weak delegate] risk in
+            guard let me = delegate else { return }
+            guard let id = me.teammate?.id else { return }
+            
+            me.riskController?.yourRiskValue.alpha = 0.5
+            me.dataSource.sendRisk(userID: id, risk: risk, completion: { json in
+                me.teammate?.updateWithVote(json: json)
+                me.riskController?.teammate = me.teammate?.extended
+                me.riskController?.yourRiskValue.alpha = 1
+                if risk == nil {
+                    me.riskController?.resetVote()
+                } else {
+                    me.riskController?.hideProxy()
+                }
+            })
+        }
+ */
     }
     
     private static func populateObject(cell: TeammateObjectCell,
@@ -150,6 +174,12 @@ struct TeammateCellBuilder {
         }
         cell.button.setTitle("Team.TeammateCell.buttonTitle_format_i".localized(teammate.object.claimCount),
                              for: .normal)
+        
+        if let claimsCount = dataSource.extendedTeammate?.object.claimCount {
+            cell.button.isHidden = claimsCount == 0
+        }
+        cell.button.removeTarget(nil, action: nil, for: .allEvents)
+        cell.button.addTarget(self, action: #selector(showClaims), for: .touchUpInside)
     }
     
     private static func populateStats(cell: TeammateStatsCell, with teammate: ExtendedTeammateEntity) {

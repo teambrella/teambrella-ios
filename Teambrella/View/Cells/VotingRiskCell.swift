@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol VotingRiskCellDelegate: class {
+    func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat)
+    func votingRisk(cell: VotingRiskCell, stoppedOnOffset: CGFloat)
+    func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int)
+}
+
 class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var titleLabel: BlockHeaderLabel!
     @IBOutlet var timeLabel: UILabel!
@@ -48,16 +54,14 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     }
     var middleCellRow: Int = -1 {
         didSet {
-            onMiddleRowChanged?(middleCellRow)
+            delegate?.votingRisk(cell: self, changedMiddleRowIndex: middleCellRow)
             colorizeCenterCell()
         }
     }
     
     private var dataSource: VotingScrollerDataSource = VotingScrollerDataSource()
     
-    var onChangeValue: ((CGFloat) -> Void)?
-    var onSelectValue: ((CGFloat) -> Void)?
-    var onMiddleRowChanged: ((Int) -> Void)?
+    weak var delegate: VotingRiskCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -91,10 +95,10 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         guard middleCellRow >= 0 else { return }
         
         let indexPath = IndexPath(row: middleCellRow, section: 0)
-        guard let cell = collectionView.cellForItem(at: indexPath) as? VotingScrollerCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? VotingChartCell else { return }
         
         collectionView.visibleCells.forEach { cell in
-            if let cell = cell as? VotingScrollerCell {
+            if let cell = cell as? VotingChartCell {
                 if cell.centerLabel.text == "" || cell.centerLabel.text == nil {
                     cell.topLabel.alpha = 0
                 }
@@ -162,7 +166,7 @@ extension VotingRiskCell: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         let model = dataSource.models[indexPath.row]
-        if let cell = cell as? VotingScrollerCell {
+        if let cell = cell as? VotingChartCell {
             let multiplier: CGFloat = CGFloat(model.heightCoefficient)
             //cell.heightConstraint = cell.heightConstraint.setMultiplier(multiplier: multiplier)
             cell.columnHeightConstraint.constant = (cell.bounds.height - cell.topLabel.frame.height)
@@ -202,7 +206,7 @@ extension VotingRiskCell: UICollectionViewDelegateFlowLayout {
 extension VotingRiskCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if shouldSilenceScroll == false {
-            onChangeValue?(scrollView.contentOffset.x)
+            delegate?.votingRisk(cell: self, changedOffset: scrollView.contentOffset.x)
         } else {
             shouldSilenceScroll = false
         }
@@ -215,11 +219,11 @@ extension VotingRiskCell: UIScrollViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            onSelectValue?(scrollView.contentOffset.x)
+            delegate?.votingRisk(cell: self, stoppedOnOffset: scrollView.contentOffset.x)
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        onSelectValue?(scrollView.contentOffset.x)
+         delegate?.votingRisk(cell: self, stoppedOnOffset: scrollView.contentOffset.x)
     }
 }
