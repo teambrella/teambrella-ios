@@ -55,6 +55,8 @@ final class ReportVC: UIViewController, Routable {
     var coverage: Double = 0.0
     var limit: Double = 0.0
     var lastDate: Date = Date()
+    var titleIsFilled: Bool = false
+    var descriptionIsfilled: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -201,8 +203,9 @@ final class ReportVC: UIViewController, Routable {
             let createButton = UIButton()
             createButton.addTarget(self, action: #selector(tapSubmit(_:)), for: .touchUpInside)
             createButton.setTitle("Me.Report.submitButtonTitle-create".localized, for: .normal)
-            createButton.setTitleColor(.white, for: .normal)
-            createButton.setTitleColor(.perrywinkle, for: .disabled)
+            //createButton.isUserInteractionEnabled = fieldsAreFull ? true : false
+            //let color = fieldsAreFull ? UIColor.white : UIColor.perrywinkle
+            //createButton.setTitleColor(color, for: .disabled)
             createButton.sizeToFit()
             guard let createTitle = createButton.titleLabel else { return }
             
