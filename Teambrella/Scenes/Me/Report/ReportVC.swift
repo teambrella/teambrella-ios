@@ -193,9 +193,9 @@ final class ReportVC: UIViewController, Routable {
             cancelButton.addTarget(self, action: #selector(tapCancel), for: .touchUpInside)
             cancelButton.setTitle("Me.Report.cancelButtonTitle".localized, for: .normal)
             cancelButton.sizeToFit()
-            guard let title1 = cancelButton.titleLabel else { return }
+            guard let cancelTitle = cancelButton.titleLabel else { return }
             
-            title1.font = UIFont.teambrella(size: 17)
+            cancelTitle.font = UIFont.teambrella(size: 17)
             navigationItem.setLeftBarButton(UIBarButtonItem(customView: cancelButton), animated: false)
             
             let createButton = UIButton()
@@ -204,18 +204,18 @@ final class ReportVC: UIViewController, Routable {
             createButton.setTitleColor(.white, for: .normal)
             createButton.setTitleColor(.perrywinkle, for: .disabled)
             createButton.sizeToFit()
-            guard let title2 = createButton.titleLabel else { return }
+            guard let createTitle = createButton.titleLabel else { return }
             
-            title2.font = UIFont.teambrella(size: 17)
+            createTitle.font = UIFont.teambrella(size: 17)
             navigationItem.setRightBarButton(UIBarButtonItem(customView: createButton), animated: false)
         case .claim:
             let submitButton = UIButton()
             submitButton.addTarget(self, action: #selector(tapSubmit(_:)), for: .touchUpInside)
             submitButton.setTitle("Me.Report.submitButtonTitle-submit".localized, for: .normal)
             submitButton.sizeToFit()
-            guard let title = submitButton.titleLabel else { return }
+            guard let submitTitle = submitButton.titleLabel else { return }
             
-            title.font = UIFont.teambrellaBold(size: 17)
+            submitTitle.font = UIFont.teambrellaBold(size: 17)
             navigationItem.setRightBarButton(UIBarButtonItem(customView: submitButton), animated: false)
         }
     }
@@ -350,15 +350,26 @@ extension ReportVC: UITextViewDelegate {
             dataSource.items[indexPath.row] = model
         }
         (textView as? TextView)?.isInAlertMode = false
+        (textView as? TextView)?.isInEditMode = true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        (textView as? TextView)?.isInEditMode = true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        (textView as? TextView)?.isInEditMode = false
     }
 }
 
 extension ReportVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         (textField as? TextField)?.isInAlertMode = false
+        (textField as? TextField)?.isInEditMode = true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        (textField as? TextField)?.isInEditMode = false
         let indexPath = IndexPath(row: textField.tag, section: 0)
         if dataSource[indexPath] is ExpensesReportCellModel {
             reloadExpencesCellIfNeeded()

@@ -57,10 +57,11 @@ class AlertDecorator {
     }
     
 }
+
 class EditDecorator {
     weak var view: UIView?
     var normalBorderColor: UIColor = .cloudyBlue
-    var editBorderColor: UIColor = .blueyGray
+    var editBorderColor: UIColor = .bluishGray
     
     var isInEditMode: Bool {
         didSet {
