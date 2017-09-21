@@ -100,19 +100,27 @@ struct TeammateCellBuilder {
     private static func populateVote(cell: VotingRiskCell,
                                      with teammate: ExtendedTeammateEntity,
                                      controller: TeammateProfileVC) {
+        if let riskScale = teammate.riskScale, controller.isRiskScaleUpdateNeeded == true {
+            cell.updateWithRiskScale(riskScale: riskScale)
+            controller.isRiskScaleUpdateNeeded = false
+        }
+        
         cell.pearMiddleAvatar.avatar.showAvatar(string: teammate.basic.avatar)
         
         if let voting = teammate.voting {
             let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
             cell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars,
-                                            label: label,
-                                            max: nil)
+                                                 label: label,
+                                                 max: nil)
             if let risk = voting.riskVoted {
                 cell.teamVoteValueLabel.text = String.formattedNumber(risk)
             }
             
             if let myVote = voting.myVote {
+                cell.layoutIfNeeded()
                 cell.yourVoteValueLabel.text = String(format:"%.2f", myVote)
+                let offset = controller.offsetFrom(risk: myVote, maxValue: cell.maxValue)
+                cell.scrollTo(offset: offset, silently: true)
             }
             
             let timeString = DateProcessor().stringFromNow(minutes: voting.remainingMinutes).uppercased()
@@ -120,14 +128,16 @@ struct TeammateCellBuilder {
         }
         
         cell.delegate = controller
-       
-        if let riskScale = teammate.riskScale, controller.isRiskScaleUpdateNeeded == true {
-            cell.updateWithRiskScale(riskScale: riskScale)
-            controller.isRiskScaleUpdateNeeded = false
-            
-//            let offset = controller.offsetFrom(risk: myVote, in: scroller)
-//            votingScroller?.scrollTo(offset: offset)
-        }
+        
+        cell.resetVoteButton.removeTarget(controller, action: nil, for: .allEvents)
+        cell.resetVoteButton.addTarget(controller,
+                                       action: #selector(TeammateProfileVC.tapResetVote),
+                                       for: .touchUpInside)
+        
+        cell.othersButton.removeTarget(controller, action: nil, for: .allEvents)
+        cell.othersButton.addTarget(controller,
+                                    action: #selector(TeammateProfileVC.tapShowOtherVoters),
+                                    for: .touchUpInside)
         
     }
     

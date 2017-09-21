@@ -67,9 +67,11 @@ class TeammateEntity {
     }
     
     func updateWithVote(json: JSON) {
+        log("before: \(extended?.voting?.riskVoted)", type: .error)
         extended?.voting = TeammateVotingInfo(json: json["VotingPart"])
         extended?.topic.minutesSinceLastPost = json["DiscussionPart"]["SinceLastPostMinutes"].intValue
         extended?.topic.unreadCount = json["DiscussionPart"]["UnreadCount"].intValue
+        log("after: \(extended?.voting?.riskVoted)", type: .error)
     }
     
 }

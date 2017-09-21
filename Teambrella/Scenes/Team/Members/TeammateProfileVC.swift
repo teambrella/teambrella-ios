@@ -59,8 +59,9 @@ class TeammateProfileVC: UIViewController, Routable {
         
         registerCells()
         HUD.show(.progress, onView: view)
-        dataSource.loadEntireTeammate { [weak self] in
+        dataSource.loadEntireTeammate { [weak self] extendedTeammate in
             HUD.hide()
+            self?.teammate?.extended = extendedTeammate
             self?.prepareLinearFunction()
             self?.setTitle()
             self?.collectionView.reloadData()
@@ -163,7 +164,28 @@ class TeammateProfileVC: UIViewController, Routable {
         }
     }
     
-    /* NEW */
+    @objc
+    func tapResetVote(sender: UIButton) {
+        guard let cell = votingRiskCell else { return }
+        guard let userID = teammate?.id else { return }
+        
+        cell.yourVoteValueLabel.alpha = 0.5
+        //sender.isEnabled = false
+        dataSource.sendRisk(userID: userID, risk: nil) { [weak self, weak cell] json in
+            guard let `self` = self else { return }
+            guard let cell = cell else { return }
+            
+            self.teammate?.updateWithVote(json: json)
+            cell.yourVoteValueLabel.alpha = 1
+            cell.isProxyHidden = false
+            self.resetVote(cell: cell)
+        }
+    }
+    
+    @objc
+    func tapShowOtherVoters(sender: UIButton) {
+        
+    }
     
     func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
         return min(Double(pow(25, offset / maxValue) / 5), 5)
@@ -173,12 +195,13 @@ class TeammateProfileVC: UIViewController, Routable {
         return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
     }
     
-    func resetVote() {
-        guard let cell = votingRiskCell else { return }
-        
-        if let vote = teammate?.extended?.voting?.myVote,
-            let proxyAvatar = teammate?.extended?.voting?.proxyAvatar,
-            let proxyName = teammate?.extended?.voting?.proxyName {
+    private func resetVote(cell: VotingRiskCell) {
+        let vote = teammate?.extended?.voting?.myVote
+        let proxyAvatar = teammate?.extended?.voting?.proxyAvatar
+        let proxyName = teammate?.extended?.voting?.proxyName
+        if let vote = vote,
+            let proxyAvatar = proxyAvatar,
+            let proxyName = proxyName {
             cell.isProxyHidden = false
             cell.proxyAvatarView.showAvatar(string: proxyAvatar)
             cell.proxyNameLabel.text = proxyName.uppercased()
@@ -379,9 +402,8 @@ extension TeammateProfileVC: IndicatorInfoProvider {
 // MARK: VotingRiskCellDelegate
 extension TeammateProfileVC: VotingRiskCellDelegate {
     func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat) {
-        func text(for label: UILabel, risk: Double?) {
+        func text(for label: UILabel, risk: Double) {
             guard let riskScale = teammate?.extended?.riskScale else { return }
-            guard let risk = risk else { return }
             
             let delta = risk - riskScale.averageRisk
             var text = "AVG\n"
@@ -395,9 +417,11 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         cell.yourVoteValueLabel.text = String(format: "%.2f", risk)
         
         text(for: cell.yourVoteBadgeLabel, risk: risk)
-        text(for: cell.teamVoteBadgeLabel, risk: teammate?.extended?.voting?.riskVoted)
+        if let teamRisk = teammate?.extended?.voting?.riskVoted {
+            text(for: cell.teamVoteBadgeLabel, risk: teamRisk)
+        }
         
-        cell.pearMiddleAvatar.riskLabelText =  String.formattedNumber(risk)
+        //cell.pearMiddleAvatar.riskLabelText =  String.formattedNumber(risk)
         
         updateAmounts(with: risk)
     }
