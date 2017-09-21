@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fF9-Ut-9AK" customClass="TextView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="27" width="312" height="153"/>
+                                <rect key="frame" x="20" y="28" width="312" height="152"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -37,7 +37,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fF9-Ut-9AK" firstAttribute="top" secondItem="3PA-sS-un9" secondAttribute="bottom" constant="6" id="GJQ-wr-rOg"/>
+                            <constraint firstItem="fF9-Ut-9AK" firstAttribute="top" secondItem="3PA-sS-un9" secondAttribute="bottom" constant="7" id="GJQ-wr-rOg"/>
                             <constraint firstItem="3PA-sS-un9" firstAttribute="leading" secondItem="0Or-0p-3KC" secondAttribute="leading" constant="20" id="cGu-F2-Gax"/>
                             <constraint firstAttribute="bottom" secondItem="fF9-Ut-9AK" secondAttribute="bottom" constant="20" id="eiV-6y-fhn"/>
                             <constraint firstAttribute="trailing" secondItem="fF9-Ut-9AK" secondAttribute="trailing" constant="20" id="jFP-j0-89X"/>

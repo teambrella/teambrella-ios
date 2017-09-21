@@ -30,7 +30,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ft1-fn-QZU">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="279"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED FUNDING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-FN-MiT" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED FUNDING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-FN-MiT" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="20" y="16" width="255.5" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
@@ -48,7 +48,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDf-9h-j00">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDf-9h-j00">
                                 <rect key="frame" x="303" y="16" width="20" height="25.5"/>
                                 <state key="normal" image="info"/>
                             </button>
@@ -96,6 +96,7 @@
                             <constraint firstItem="3SS-e1-43y" firstAttribute="leading" secondItem="s1r-kO-PWW" secondAttribute="leading" id="SUw-VM-qtH"/>
                             <constraint firstItem="Lv4-qy-cUk" firstAttribute="top" secondItem="sCv-7T-Tb4" secondAttribute="bottom" constant="28" id="Yec-j9-oMd"/>
                             <constraint firstItem="dUM-FN-MiT" firstAttribute="leading" secondItem="ft1-fn-QZU" secondAttribute="leading" constant="20" id="ZjA-Gi-fCi"/>
+                            <constraint firstItem="vDf-9h-j00" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dUM-FN-MiT" secondAttribute="trailing" constant="8" id="dH2-RC-Fki"/>
                             <constraint firstItem="sCv-7T-Tb4" firstAttribute="leading" secondItem="Lv4-qy-cUk" secondAttribute="leading" id="dJX-C6-GJ2"/>
                             <constraint firstItem="vDf-9h-j00" firstAttribute="top" secondItem="ft1-fn-QZU" secondAttribute="top" constant="16" id="eAp-mV-0ru"/>
                             <constraint firstItem="Xdm-tr-dKv" firstAttribute="width" secondItem="s1r-kO-PWW" secondAttribute="width" id="evc-bg-WUK"/>

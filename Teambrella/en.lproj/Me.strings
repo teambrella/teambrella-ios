@@ -44,7 +44,7 @@
 "Me.Report.DescriptionCell.title-discussion" = "POST";
 "Me.Report.PhotosCell.title" = "PHOTOS";
 "Me.Report.WalletCell.title" = "REIMBURSE TO";
-"Me.Report.TitleCell.title" = "Title";
+"Me.Report.TitleCell.title" = "TITLE";
 "Me.Report.HeaderTitleCell.title" = "DISCUSSION";
 
 "Me.Report.ExpensesCell.deductibleTitle" = "DEDUCTIBLE";
@@ -67,4 +67,8 @@
 
 "Me.WalletVC.fundingCell.additionalTitle" = "RECOMMENDED ADDITIONAL FUNDING";
 "Me.Wallet.WalletCosignersVC.title" = "Co-signers";
+
+"Me.Report.submitButtonTitle-submit" = "Submit";
+"Me.Report.submitButtonTitle-create" = "Create";
+"Me.Report.cancelButtonTitle" = "Cancel";
 

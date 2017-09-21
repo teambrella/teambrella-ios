@@ -50,7 +50,7 @@
 "Me.Report.ExpensesCell.amountTitle" = "CANTIDAD";
 
 "Me.Report.PhotosCell.buttonTitle" = "Cargar las fotos";
-"Me.Report.TitleCell.title" = "Titulo";
+"Me.Report.TitleCell.title" = "TITULO";
 "Me.Report.HeaderTitleCell.title" = "DISCUSION";
 // -------------------- waiting for translation :) -------------------- //
 
@@ -68,3 +68,7 @@
 "Me.Report.ImageSource.title" = "Image from";
 "Me.Report.ImageSource.gallery" = "Gallery";
 "Me.Report.ImageSource.camera" = "Camera";
+
+"Me.Report.submitButtonTitle-submit" = "Submit";
+"Me.Report.submitButtonTitle-create" = "Create";
+"Me.Report.cancelButtonTitle" = "Cancel";

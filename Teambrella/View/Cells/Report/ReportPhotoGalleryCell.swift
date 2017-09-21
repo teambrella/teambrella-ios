@@ -28,7 +28,6 @@ class ReportPhotoGalleryCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }

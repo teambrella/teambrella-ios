@@ -191,7 +191,7 @@ struct TeambrellaStyle {
         statusSubtitle.textColor = .blueyGray
         
         let blockHeader = BlockHeaderLabel.appearance()
-        blockHeader.font = UIFont.teambrellaBold(size: 12)
+        blockHeader.font = UIFont.teambrellaBold(size: 14)
         blockHeader.textColor = .darkSkyBlue
         
         let messageTitle = MessageTitleLabel.appearance()

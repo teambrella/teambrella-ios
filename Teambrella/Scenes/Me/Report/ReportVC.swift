@@ -176,25 +176,59 @@ final class ReportVC: UIViewController, Routable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        showSubmitButton()
+        showNavigationBarButtons()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //showSubmitButton()
+        //showNavigationBarButtons()
     }
     
-    private func showSubmitButton() {
-        navigationItem.setRightBarButton(UIBarButtonItem(title: "Submit",
-                                                         style: .done,
-                                                         target: self,
-                                                         action: #selector(tapSubmit(_:))),
-                                         animated: false)
+    private func showNavigationBarButtons() {
+        guard let context = reportContext else { return }
+        
+        switch context {
+        case .newChat:
+            let cancelButton = UIButton()
+            cancelButton.addTarget(self, action: #selector(tapCancel), for: .touchUpInside)
+            cancelButton.setTitle("Me.Report.cancelButtonTitle".localized, for: .normal)
+            cancelButton.sizeToFit()
+            guard let title1 = cancelButton.titleLabel else { return }
+            
+            title1.font = UIFont.teambrella(size: 17)
+            navigationItem.setLeftBarButton(UIBarButtonItem(customView: cancelButton), animated: false)
+            
+            let createButton = UIButton()
+            createButton.addTarget(self, action: #selector(tapSubmit(_:)), for: .touchUpInside)
+            createButton.setTitle("Me.Report.submitButtonTitle-create".localized, for: .normal)
+            createButton.setTitleColor(.white, for: .normal)
+            createButton.setTitleColor(.perrywinkle, for: .disabled)
+            createButton.sizeToFit()
+            guard let title2 = createButton.titleLabel else { return }
+            
+            title2.font = UIFont.teambrella(size: 17)
+            navigationItem.setRightBarButton(UIBarButtonItem(customView: createButton), animated: false)
+        case .claim:
+            let submitButton = UIButton()
+            submitButton.addTarget(self, action: #selector(tapSubmit(_:)), for: .touchUpInside)
+            submitButton.setTitle("Me.Report.submitButtonTitle-submit".localized, for: .normal)
+            submitButton.sizeToFit()
+            guard let title = submitButton.titleLabel else { return }
+            
+            title.font = UIFont.teambrellaBold(size: 17)
+            navigationItem.setRightBarButton(UIBarButtonItem(customView: submitButton), animated: false)
+        }
+    }
+    
+    @objc
+    func tapCancel(sender: UIButton) {
+        log("tap Cancel", type: .userInteraction)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc
     func tapSubmit(_ sender: UIButton) {
-        log("tap Submit", type: .userInteraction)
+        log("tap Submit/Create", type: .userInteraction)
         validateAndSendData()
     }
     
