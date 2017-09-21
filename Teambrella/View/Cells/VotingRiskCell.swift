@@ -19,9 +19,11 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var pieChart: PieChartView!
     
+    @IBOutlet var slashView: SlashView!
     @IBOutlet var teamVoteHeaderLabel: InfoLabel!
     @IBOutlet var teamVoteValueLabel: UILabel!
     @IBOutlet var teamVoteBadgeLabel: UILabel!
+    @IBOutlet var teammatesAvatarStack: RoundImagesStack!
     
     @IBOutlet var yourVoteHeaderLabel: InfoLabel!
     @IBOutlet var yourVoteValueLabel: UILabel!
@@ -29,7 +31,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     
     @IBOutlet var resetVoteButton: UIButton!
     
-    @IBOutlet var proxyAvatarView: UIStackView!
+    @IBOutlet var proxyAvatarView: RoundImageView!
     @IBOutlet var proxyNameLabel: InfoLabel!
     
     @IBOutlet var collectionView: UICollectionView!
@@ -46,12 +48,15 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
                                        sizeForItemAt: IndexPath(row: 0, section: 0)).width
         return collectionView.contentSize.width - collectionLeftInset - collectionRightInset -  itemWidth
     }
+    
     var collectionLeftInset: CGFloat {
         return (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset.left ?? 0
     }
+    
     var collectionRightInset: CGFloat {
         return (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset.right ?? 0
     }
+    
     var middleCellRow: Int = -1 {
         didSet {
             delegate?.votingRisk(cell: self, changedMiddleRowIndex: middleCellRow)
@@ -63,12 +68,42 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     
     weak var delegate: VotingRiskCellDelegate?
     
+    var shouldSilenceScroll: Bool = false
+    
+    var isProxyHidden: Bool = true {
+        didSet {
+            proxyAvatarView.isHidden = isProxyHidden
+            proxyNameLabel.isHidden = isProxyHidden
+            resetVoteButton.isHidden = !isProxyHidden
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.layer.cornerRadius = 4
         collectionView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9647058824, blue: 1, alpha: 1).cgColor
         collectionView.layer.borderWidth = 1
         
+        slashView.layer.cornerRadius = 4
+        slashView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9647058824, blue: 1, alpha: 1).cgColor
+        slashView.layer.borderWidth = 1
+        
+        pearLeftAvatar.isHidden = true
+        pearRightAvatar.isHidden = true
+      
+        titleLabel.text = "Team.VotingRiskVC.headerLabel".localized
+        teamVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.left".localized
+        teamVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
+        
+        yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right".localized
+        yourVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
+   
+        resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
+        othersButton.setTitle("Team.VotingRiskVC.othersButton".localized, for: .normal)
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(VotingChartCell.nib, forCellWithReuseIdentifier: VotingChartCell.cellID)
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
         }
@@ -81,8 +116,6 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
             layout.sectionInset.right = layout.sectionInset.left
         }
     }
-    
-    var shouldSilenceScroll: Bool = false
     
     func updateWithRiskScale(riskScale: RiskScaleEntity) {
         dataSource.onUpdate = { [weak self] in
@@ -126,24 +159,25 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         }
     }
     
-    func scrollToTeamAverage(animated: Bool = true) {
-        shouldSilenceScroll = !animated
+    func scrollToAverage(silently: Bool = true) {
+        shouldSilenceScroll = silently
         for (idx, model) in dataSource.models.enumerated() where model.isTeamAverage {
             collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
                                         at: .centeredHorizontally,
-                                        animated: animated)
+                                        animated: true)
             break
         }
     }
     
-    func scrollToCenter() {
-        scrollTo(offset: maxValue / 2)
+    func scrollToCenter(silently: Bool) {
+        scrollTo(offset: maxValue / 2, silently: silently)
     }
     
-    func scrollTo(offset: CGFloat) {
+    func scrollTo(offset: CGFloat, silently: Bool) {
+        shouldSilenceScroll = silently
         collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)
     }
-
+    
 }
 
 extension VotingRiskCell: UICollectionViewDataSource {
@@ -157,7 +191,7 @@ extension VotingRiskCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: VotingChartCell.cellID, for: indexPath)
     }
 }
 
@@ -224,6 +258,6 @@ extension VotingRiskCell: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-         delegate?.votingRisk(cell: self, stoppedOnOffset: scrollView.contentOffset.x)
+        delegate?.votingRisk(cell: self, stoppedOnOffset: scrollView.contentOffset.x)
     }
 }

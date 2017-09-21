@@ -38,6 +38,8 @@ class TeammateProfileVC: UIViewController, Routable {
     var linearFunction: PiecewiseFunction?
     var chosenRisk: Double?
     
+    var isRiskScaleUpdateNeeded = false
+    
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -161,6 +163,39 @@ class TeammateProfileVC: UIViewController, Routable {
         }
     }
     
+    /* NEW */
+    
+    func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
+        return min(Double(pow(25, offset / maxValue) / 5), 5)
+    }
+    
+    func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
+        return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
+    }
+    
+    func resetVote() {
+        guard let cell = votingRiskCell else { return }
+        
+        if let vote = teammate?.extended?.voting?.myVote,
+            let proxyAvatar = teammate?.extended?.voting?.proxyAvatar,
+            let proxyName = teammate?.extended?.voting?.proxyName {
+            cell.isProxyHidden = false
+            cell.proxyAvatarView.showAvatar(string: proxyAvatar)
+            cell.proxyNameLabel.text = proxyName.uppercased()
+            let offset = offsetFrom(risk: vote, maxValue: cell.maxValue)
+            cell.scrollTo(offset: offset, silently: true)
+        } else {
+            cell.isProxyHidden = true
+            cell.yourVoteValueLabel.text = "..."
+            cell.scrollToAverage(silently: true)
+        }
+    }
+    
+    var votingRiskCell: VotingRiskCell? {
+        let visibleCells = collectionView.visibleCells
+        return visibleCells.filter { $0 is VotingRiskCell }.first as? VotingRiskCell
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -205,16 +240,6 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         guard let teammate = dataSource.extendedTeammate else { return }
         
         TeammateCellBuilder.populate(cell: cell, with: teammate, controller: self)
-        
-        // add handlers
-        if let cell = cell as? TeammateObjectCell {
-            
-        } else if cell is TeammateVoteCell, let riskController = riskController {
-            
-        } else if let cell = cell as? TeammateStatsCell {
-            cell.addButton.removeTarget(self, action: nil, for: .allEvents)
-            cell.addButton.addTarget(self, action: #selector(tapAddToProxy), for: .touchUpInside)
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -348,5 +373,72 @@ extension TeammateProfileVC: UITableViewDelegate {
 extension TeammateProfileVC: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "Me.ProfileVC.indicatorTitle".localized)
+    }
+}
+
+// MARK: VotingRiskCellDelegate
+extension TeammateProfileVC: VotingRiskCellDelegate {
+    func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat) {
+        func text(for label: UILabel, risk: Double?) {
+            guard let riskScale = teammate?.extended?.riskScale else { return }
+            guard let risk = risk else { return }
+            
+            let delta = risk - riskScale.averageRisk
+            var text = "AVG\n"
+            text += delta > 0 ? "+" : ""
+            let percent = delta / riskScale.averageRisk * 100
+            let amount = String(format: "%.0f", percent)
+            label.text =  text + amount + "%"
+        }
+        
+        let risk = riskFrom(offset: changedOffset, maxValue: cell.maxValue)
+        cell.yourVoteValueLabel.text = String(format: "%.2f", risk)
+        
+        text(for: cell.yourVoteBadgeLabel, risk: risk)
+        text(for: cell.teamVoteBadgeLabel, risk: teammate?.extended?.voting?.riskVoted)
+        
+        cell.pearMiddleAvatar.riskLabelText =  String.formattedNumber(risk)
+        
+        updateAmounts(with: risk)
+    }
+    
+    func votingRisk(cell: VotingRiskCell, stoppedOnOffset: CGFloat) {
+        let risk = riskFrom(offset: stoppedOnOffset, maxValue: cell.maxValue)
+        
+        cell.yourVoteValueLabel.alpha = 0.5
+        guard let userID = teammate?.id else { return }
+        
+        dataSource.sendRisk(userID: userID, risk: risk) { [weak self, weak cell] json in
+            guard let `self` = self else { return }
+            
+            self.teammate?.updateWithVote(json: json)
+            cell?.yourVoteValueLabel.alpha = 1
+            cell?.isProxyHidden = true
+        }
+    }
+    
+    func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int) {
+        func setview(labeledView: LabeledRoundImageView, with teammate: RiskScaleEntity.Teammate?) {
+            guard let teammate = teammate else {
+                labeledView.isHidden = true
+                labeledView.avatar.image = nil
+                return
+            }
+            
+            labeledView.isHidden = false
+            labeledView.avatar.showAvatar(string: teammate.avatar,
+                                          options: [.transition(.fade(0.5)), .forceTransition])
+            labeledView.riskLabelText = String(format: "%.2f", teammate.risk)
+            labeledView.labelBackgroundColor = .blueWithAHintOfPurple
+        }
+        
+        guard let range = teammate?.extended?.riskScale?.ranges[changedMiddleRowIndex] else { return }
+        
+        if range.teammates.count > 1 {
+            setview(labeledView: cell.pearRightAvatar, with: range.teammates.last)
+        } else {
+            cell.pearRightAvatar.isHidden = true
+        }
+        setview(labeledView: cell.pearLeftAvatar, with: range.teammates.first)
     }
 }

@@ -95,7 +95,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufs-Z7-MdQ">
-                                        <rect key="frame" x="334" y="68" width="68" height="29"/>
+                                        <rect key="frame" x="334" y="68" width="70" height="29"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                         <state key="normal" title="Reset Vote">
                                             <color key="titleColor" red="0.2784313725" green="0.34509803919999998" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -221,7 +221,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="VDN-tt-rep">
-                                <rect key="frame" x="643" y="709.5" width="8" height="13"/>
+                                <rect key="frame" x="643" y="709" width="8" height="13"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydv-wm-DmZ" customClass="LabeledRoundImageView" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="285" y="686" width="27" height="32"/>
@@ -236,7 +236,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XY2-Tj-qf7">
-                                <rect key="frame" x="589" y="700" width="46" height="30"/>
+                                <rect key="frame" x="588" y="699" width="47" height="31"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                 <state key="normal" title="Others">
                                     <color key="titleColor" red="0.22352941179999999" green="0.26274509800000001" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -294,12 +294,14 @@
                 <outlet property="pearMiddleAvatar" destination="Pg9-sh-oZv" id="n6M-ad-DvN"/>
                 <outlet property="pearRightAvatar" destination="hJJ-3h-x7b" id="Wbn-8A-KkT"/>
                 <outlet property="pieChart" destination="1fO-Rr-g6b" id="Uxn-fZ-G4B"/>
-                <outlet property="proxyAvatarView" destination="K9q-SA-b4t" id="Djs-Ks-3Ga"/>
+                <outlet property="proxyAvatarView" destination="94E-S6-lnc" id="6EN-md-DQm"/>
                 <outlet property="proxyNameLabel" destination="p7M-Nv-AVa" id="jkb-eC-gk1"/>
                 <outlet property="resetVoteButton" destination="ufs-Z7-MdQ" id="dZO-ck-vWd"/>
+                <outlet property="slashView" destination="25q-2v-Cur" id="HCE-C0-8xh"/>
                 <outlet property="teamVoteBadgeLabel" destination="557-Va-QA6" id="DpY-x0-22E"/>
                 <outlet property="teamVoteHeaderLabel" destination="Nx1-Yq-BkA" id="st5-nI-Ezv"/>
                 <outlet property="teamVoteValueLabel" destination="D29-8w-VUD" id="iab-bF-fGN"/>
+                <outlet property="teammatesAvatarStack" destination="qFN-q5-gOq" id="PsN-sa-DBp"/>
                 <outlet property="timeLabel" destination="4uw-BF-uDk" id="l7c-SF-BeE"/>
                 <outlet property="titleLabel" destination="73P-Jh-cgD" id="RyO-9E-Aua"/>
                 <outlet property="yourVoteBadgeLabel" destination="UyJ-PS-yxB" id="OlN-O2-8ra"/>

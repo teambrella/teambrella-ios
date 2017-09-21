@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VotingChartCell: UICollectionViewCell {
+class VotingChartCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var heightConstraint: NSLayoutConstraint!
     @IBOutlet var topLabel: UILabel!
     @IBOutlet var centerLabel: UILabel!

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/*
 protocol VotingScrollerDelegate: class {
     func votingScroller(controller: VotingScrollerVC, didChange value: CGFloat)
     func votingScroller(controller: VotingScrollerVC, middleCellRow: Int)
@@ -208,3 +208,4 @@ extension VotingScrollerVC: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
+ */

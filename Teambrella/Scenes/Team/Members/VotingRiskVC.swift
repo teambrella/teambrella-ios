@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/*
 class VotingRiskVC: UIViewController {
     @IBOutlet var votingRiskLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
@@ -46,19 +46,7 @@ class VotingRiskVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        votingRisksView.layer.cornerRadius = 4
-        votingRisksView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9647058824, blue: 1, alpha: 1).cgColor
-        votingRisksView.layer.borderWidth = 1
-
-        leftLabeledView.isHidden = true
-        rightLabeledView.isHidden = true
-        votingRiskLabel.text = "Team.VotingRiskVC.headerLabel".localized
-        teamVoteLabel.text = "Team.VotingRiskVC.numberBar.left".localized
-        yourVoteLabel.text = "Team.VotingRiskVC.numberBar.right".localized
-        teamAverage.text = "Team.VotingRiskVC.avgLabel".localized(-60) //
-        yourAverage.text = "Team.VotingRiskVC.avgLabel".localized(14) //
-        resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
-        seeOthersButton.setTitle("Team.VotingRiskVC.othersButton".localized, for: .normal)
+     
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -100,46 +88,7 @@ class VotingRiskVC: UIViewController {
         timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
     }
     
-    func updateRiskDeltas(risk: Double) {
-        func text(for label: UILabel, risk: Double?) {
-            guard let riskScale = teammate?.riskScale else { return }
-            guard let risk = risk else { return }
-            
-            let delta = risk - riskScale.averageRisk
-            var text = "AVG\n"
-            text += delta > 0 ? "+" : ""
-            let percent = delta / riskScale.averageRisk * 100
-            let amount = String(format: "%.0f", percent)
-            label.text =  text + amount + "%"
-        }
-        
-        text(for: yourAverage, risk: risk)
-        text(for: teamAverage, risk: teammate?.voting?.riskVoted)
-        mainLabeledView.riskLabelText = String.formattedNumber(risk)
-    }
-    
-    func updateAvatars(range: RiskScaleEntity.Range) {
-        func setview(labeledView: LabeledRoundImageView, with teammate: RiskScaleEntity.Teammate?) {
-            guard let teammate = teammate else {
-                labeledView.isHidden = true
-                labeledView.avatar.image = nil
-                return
-            }
-            
-            labeledView.isHidden = false
-            labeledView.avatar.showAvatar(string: teammate.avatar,
-                                          options: [.transition(.fade(0.5)), .forceTransition])
-            labeledView.riskLabelText = String(format: "%.2f", teammate.risk)
-            labeledView.labelBackgroundColor = .blueWithAHintOfPurple
-        }
-        
-        if range.teammates.count > 1 {
-            setview(labeledView: rightLabeledView, with: range.teammates.last)
-        } else {
-            rightLabeledView.isHidden = true
-        }
-        setview(labeledView: leftLabeledView, with: range.teammates.first)
-    }
+ 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToVotingScroller", let vc = segue.destination as? VotingScrollerVC {
@@ -151,14 +100,6 @@ class VotingRiskVC: UIViewController {
             
             vc.ranges = riskScale.ranges
         }
-    }
-    
-    func riskFrom(controller: VotingScrollerVC, offset: CGFloat) -> Double {
-        return min(Double(pow(25, offset / controller.maxValue) / 5), 5)
-    }
-    
-    func offsetFrom(risk: Double, in controller: VotingScrollerVC) -> CGFloat {
-        return CGFloat(log(base: 25.0, value: risk * 5.0)) * controller.maxValue
     }
     
     @IBAction func tapResetVote(_ sender: UIButton) {
@@ -222,3 +163,4 @@ extension VotingRiskVC: VotingScrollerDelegate {
         }
     }
 }
+*/
