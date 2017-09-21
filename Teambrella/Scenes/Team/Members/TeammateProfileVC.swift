@@ -38,7 +38,7 @@ class TeammateProfileVC: UIViewController, Routable {
     var linearFunction: PiecewiseFunction?
     var chosenRisk: Double?
     
-    var isRiskScaleUpdateNeeded = false
+    var isRiskScaleUpdateNeeded = true
     
     @IBOutlet var collectionView: UICollectionView!
     

@@ -122,6 +122,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
             self?.collectionView.reloadData()
         }
         dataSource.createModels(with: riskScale)
+        collectionView.reloadData()
     }
     
     func colorizeCenterCell() {
