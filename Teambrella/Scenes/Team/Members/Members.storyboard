@@ -368,7 +368,7 @@
         <!--Compare Team RiskVC-->
         <scene sceneID="gLz-3L-nTZ">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="N1d-Jk-J0l" customClass="CompareTeamRiskVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompareTeamRiskVC" automaticallyAdjustsScrollViewInsets="NO" id="N1d-Jk-J0l" customClass="CompareTeamRiskVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BTz-ee-BWP"/>
                         <viewControllerLayoutGuide type="bottom" id="iyw-32-SC4"/>

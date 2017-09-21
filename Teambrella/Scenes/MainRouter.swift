@@ -188,6 +188,12 @@ final class MainRouter {
         push(vc: vc)
     }
     
+    func presentCompareTeamRisk() {
+        guard let vc = CompareTeamRiskVC.instantiate() as? CompareTeamRiskVC else { fatalError("Error instantiating") }
+        
+        push(vc: vc)
+    }
+    
     // MARK: Present Modally
     
     func showChooseTeam(in viewController: UIViewController, delegate: ChooseYourTeamControllerDelegate) {

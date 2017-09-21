@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D02AC931F06A6B800B01AAF /* VotingCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC8E1F06A6B800B01AAF /* VotingCellVC.swift */; };
-		6D02AC941F06A6B800B01AAF /* VotingRiskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC8F1F06A6B800B01AAF /* VotingRiskVC.swift */; };
 		6D02AC951F06A6B800B01AAF /* VotingScrollerCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC901F06A6B800B01AAF /* VotingScrollerCellModel.swift */; };
 		6D02AC961F06A6B800B01AAF /* VotingScrollerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC911F06A6B800B01AAF /* VotingScrollerDataSource.swift */; };
-		6D02AC971F06A6B800B01AAF /* VotingScrollerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC921F06A6B800B01AAF /* VotingScrollerVC.swift */; };
 		6D02AC9B1F06A6F800B01AAF /* LabeledRoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC991F06A6F800B01AAF /* LabeledRoundImageView.swift */; };
 		6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC9A1F06A6F800B01AAF /* SlashView.swift */; };
 		6D02ACA01F06A98F00B01AAF /* TeammateVoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC9F1F06A98F00B01AAF /* TeammateVoteCell.swift */; };
@@ -458,11 +455,8 @@
 		38D8148D9413F43D44EA5AFF /* Pods-Teambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.release.xcconfig"; sourceTree = "<group>"; };
 		5A31D4B51EC413D689755DD8 /* Pods-TeambrellaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		63613F4D9AC88C9CBF2AB08E /* Pods-TeambrellaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6D02AC8E1F06A6B800B01AAF /* VotingCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingCellVC.swift; path = Scenes/Team/Members/VotingCellVC.swift; sourceTree = "<group>"; };
-		6D02AC8F1F06A6B800B01AAF /* VotingRiskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingRiskVC.swift; path = Scenes/Team/Members/VotingRiskVC.swift; sourceTree = "<group>"; };
 		6D02AC901F06A6B800B01AAF /* VotingScrollerCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingScrollerCellModel.swift; path = Scenes/Team/Members/VotingScrollerCellModel.swift; sourceTree = "<group>"; };
 		6D02AC911F06A6B800B01AAF /* VotingScrollerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingScrollerDataSource.swift; path = Scenes/Team/Members/VotingScrollerDataSource.swift; sourceTree = "<group>"; };
-		6D02AC921F06A6B800B01AAF /* VotingScrollerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingScrollerVC.swift; path = Scenes/Team/Members/VotingScrollerVC.swift; sourceTree = "<group>"; };
 		6D02AC991F06A6F800B01AAF /* LabeledRoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabeledRoundImageView.swift; path = View/LabeledRoundImageView.swift; sourceTree = "<group>"; };
 		6D02AC9A1F06A6F800B01AAF /* SlashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlashView.swift; path = View/SlashView.swift; sourceTree = "<group>"; };
 		6D02AC9F1F06A98F00B01AAF /* TeammateVoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateVoteCell.swift; path = Scenes/Team/Members/TeammateVoteCell.swift; sourceTree = "<group>"; };
@@ -965,11 +959,8 @@
 		6D02AC981F06A6BF00B01AAF /* VotingCell */ = {
 			isa = PBXGroup;
 			children = (
-				6D02AC8F1F06A6B800B01AAF /* VotingRiskVC.swift */,
-				6D02AC921F06A6B800B01AAF /* VotingScrollerVC.swift */,
 				6D02AC901F06A6B800B01AAF /* VotingScrollerCellModel.swift */,
 				6D02AC911F06A6B800B01AAF /* VotingScrollerDataSource.swift */,
-				6D02AC8E1F06A6B800B01AAF /* VotingCellVC.swift */,
 			);
 			name = VotingCell;
 			sourceTree = "<group>";
@@ -2426,7 +2417,6 @@
 				6DEE67951EDC12A70098EDB3 /* TeammateCandidateCell.swift in Sources */,
 				94266A301F55770D0089543F /* ClaimTransactionsVC.swift in Sources */,
 				6D3141CC1F07DD7400C285DA /* JoinTeamDataSource.swift in Sources */,
-				6D02AC971F06A6B800B01AAF /* VotingScrollerVC.swift in Sources */,
 				6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */,
 				6DEE67911ED9CF160098EDB3 /* ItemCard.swift in Sources */,
 				6DDE95731EE832170019DA47 /* ClaimDataSource.swift in Sources */,
@@ -2553,7 +2543,6 @@
 				6D69DA171EFC464000DED5CE /* WalletVC.swift in Sources */,
 				6D9CC63A1ED72675007F936E /* MembersVC.swift in Sources */,
 				6DB8121D1EE6F78700B202CE /* Formatter.swift in Sources */,
-				6D02AC931F06A6B800B01AAF /* VotingCellVC.swift in Sources */,
 				6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */,
 				6D7987791F6827A80060A193 /* ChatSeparatorCell.swift in Sources */,
 				6D481F771F0BAA080023C781 /* Math.swift in Sources */,
@@ -2635,7 +2624,6 @@
 				6DCF62571F4B319F00E8F500 /* PhotoPreviewCell.swift in Sources */,
 				6D465F301F46E85C007AC28F /* ReportStrategy.swift in Sources */,
 				6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */,
-				6D02AC941F06A6B800B01AAF /* VotingRiskVC.swift in Sources */,
 				94C186A91F59B93100F1BE51 /* WalletTransactionsCellBuilder.swift in Sources */,
 				6DF2E8BE1EF02F8200C8D60B /* SocketService.swift in Sources */,
 				6D66B49A1F4C461A00672583 /* ImagePickerController.swift in Sources */,

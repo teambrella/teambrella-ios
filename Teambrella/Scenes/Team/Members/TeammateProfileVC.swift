@@ -184,7 +184,7 @@ class TeammateProfileVC: UIViewController, Routable {
     
     @objc
     func tapShowOtherVoters(sender: UIButton) {
-        
+        service.router.presentCompareTeamRisk()
     }
     
     func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {

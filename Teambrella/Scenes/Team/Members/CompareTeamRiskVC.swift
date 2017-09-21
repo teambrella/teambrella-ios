@@ -22,7 +22,8 @@
 import PKHUD
 import UIKit
 
-class CompareTeamRiskVC: UIViewController {
+class CompareTeamRiskVC: UIViewController, Routable {
+    static let storyboardName = "Members"
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var searchBar: UISearchBar!
@@ -41,10 +42,6 @@ class CompareTeamRiskVC: UIViewController {
             HUD.hide()
             self.collectionView.reloadData()
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func registerCells() {
