@@ -53,6 +53,8 @@
 		6D0E05801F01033700604981 /* ReportCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E057F1F01033700604981 /* ReportCellBuilder.swift */; };
 		6D0E742D1F13C0D70055BF1E /* LabeledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E742C1F13C0D70055BF1E /* LabeledButton.swift */; };
 		6D0E742F1F13C7810055BF1E /* DeveloperTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */; };
+		6D1425E21F73C2C300DCBF91 /* VotingRiskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */; };
+		6D1425E31F73C2C300DCBF91 /* VotingRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */; };
 		6D1653B51F56B7F00022D5EA /* PrivateMessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1653B41F56B7F00022D5EA /* PrivateMessagesDataSource.swift */; };
 		6D1653B71F56C08A0022D5EA /* PrivateMessagesCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1653B61F56C08A0022D5EA /* PrivateMessagesCellBuilder.swift */; };
 		6D1683881F13BE3E002B52EE /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1683871F13BE3E002B52EE /* DropDownButton.swift */; };
@@ -505,6 +507,8 @@
 		6D0E057F1F01033700604981 /* ReportCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCellBuilder.swift; path = Scenes/Me/Report/ReportCellBuilder.swift; sourceTree = "<group>"; };
 		6D0E742C1F13C0D70055BF1E /* LabeledButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabeledButton.swift; path = View/Buttons/LabeledButton.swift; sourceTree = "<group>"; };
 		6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeveloperTools.swift; path = Helpers/DeveloperTools.swift; sourceTree = "<group>"; };
+		6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingRiskCell.swift; path = View/Cells/VotingRiskCell.swift; sourceTree = "<group>"; };
+		6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = VotingRiskCell.xib; path = View/Cells/VotingRiskCell.xib; sourceTree = "<group>"; };
 		6D1653B41F56B7F00022D5EA /* PrivateMessagesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesDataSource.swift; path = Scenes/Home/PrivateMessages/PrivateMessagesDataSource.swift; sourceTree = "<group>"; };
 		6D1653B61F56C08A0022D5EA /* PrivateMessagesCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesCellBuilder.swift; path = Scenes/Home/PrivateMessages/PrivateMessagesCellBuilder.swift; sourceTree = "<group>"; };
 		6D1683871F13BE3E002B52EE /* DropDownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DropDownButton.swift; path = View/Buttons/DropDownButton.swift; sourceTree = "<group>"; };
@@ -1752,6 +1756,8 @@
 				94C2D3991F191FA600D203C2 /* TeamCell.xib */,
 				6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */,
 				6DCF62561F4B319F00E8F500 /* PhotoPreviewCell.xib */,
+				6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */,
+				6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2164,6 +2170,7 @@
 				6DDE95791EE843540019DA47 /* ClaimVoteCell.xib in Resources */,
 				9407A5871F13D81D00E0DD74 /* Login.strings in Resources */,
 				6DDE95691EE806F80019DA47 /* ImageGalleryCell.xib in Resources */,
+				6D1425E31F73C2C300DCBF91 /* VotingRiskCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2439,6 +2446,7 @@
 				6D466AB01ED07CF1001BC579 /* EntityFactory.swift in Sources */,
 				6D83EC8E1EDD7230000412DC /* MainRouter.swift in Sources */,
 				6D66B4A01F4ED66700672583 /* ChatFragmentParser.swift in Sources */,
+				6D1425E21F73C2C300DCBF91 /* VotingRiskCell.swift in Sources */,
 				6D6DA26F1EE21F9800307C73 /* Label.swift in Sources */,
 				94E80E541F0FDA3100DE1A0A /* HomeApplicationAcceptedCell.swift in Sources */,
 				94E325B91F07DA9400B2D8C8 /* JoinTeamInfoCell.swift in Sources */,
