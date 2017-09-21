@@ -408,7 +408,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             let delta = risk - riskScale.averageRisk
             var text = "AVG\n"
             text += delta > 0 ? "+" : ""
-            let percent = delta / riskScale.averageRisk * 100
+            let percent = 100 * delta / riskScale.averageRisk
             let amount = String(format: "%.0f", percent)
             label.text =  text + amount + "%"
         }

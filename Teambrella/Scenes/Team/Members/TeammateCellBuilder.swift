@@ -123,7 +123,7 @@ struct TeammateCellBuilder {
                 cell.scrollTo(offset: offset, silently: true)
             }
             
-            let timeString = DateProcessor().stringFromNow(minutes: voting.remainingMinutes).uppercased()
+            let timeString = DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
             cell.timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
         }
         
