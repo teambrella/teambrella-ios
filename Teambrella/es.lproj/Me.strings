@@ -52,19 +52,13 @@
 "Me.Report.PhotosCell.buttonTitle" = "Cargar las fotos";
 "Me.Report.TitleCell.title" = "Titulo";
 "Me.Report.HeaderTitleCell.title" = "DISCUSION";
+
+"Me.WalletVC.WalletTransactionsVC.title" = "Transacciones";
+"Me.WalletVC.WalletTransactionsVC.amountTitle" = "Cantidad:";
+"Me.WalletVC.WalletTransactionsVC.kindTitle" = "Tipo:";
+"Me.WalletVC.WalletTransactionsVC.statusTitle" = "Estado:";
+
+"Me.Report.ImageSource.title" = "Imagen de";
+"Me.Report.ImageSource.gallery" = "Galería";
+"Me.Report.ImageSource.camera" = "Cámara";
 // -------------------- waiting for translation :) -------------------- //
-
-"Me.Report.ExpensesCell.deductibleTitle" = "DEDUCTIBLE";
-"Me.Report.ExpensesCell.coverageTitle" = "COVERAGE";
-"Me.Report.ExpensesCell.amountTitle" = "AMOUNT";
-
-"Me.Report.PhotosCell.buttonTitle" = "Add Photos";
-
-"Me.WalletVC.WalletTransactionsVC.title" = "Transactions";
-"Me.WalletVC.WalletTransactionsVC.amountTitle" = "Amount:";
-"Me.WalletVC.WalletTransactionsVC.kindTitle" = "Kind:";
-"Me.WalletVC.WalletTransactionsVC.statusTitle" = "Status:";
-
-"Me.Report.ImageSource.title" = "Image from";
-"Me.Report.ImageSource.gallery" = "Gallery";
-"Me.Report.ImageSource.camera" = "Camera";

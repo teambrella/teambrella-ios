@@ -1,0 +1,9 @@
+/* 
+  Error.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 22.09.2017.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"Error.somethingWentWrong" = "Oops, no se puede conectar con Teambrella. Inténtalo más tarde";
