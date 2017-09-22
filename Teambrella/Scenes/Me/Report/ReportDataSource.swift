@@ -151,7 +151,7 @@ class ReportDataSource {
             
             switch result {
             case let .value((coverage: coverage, limit: limit)):
-                for (idx, item) in self.items.enumerated()  {
+                for (idx, item) in self.items.enumerated() {
                     if var item = item as? ExpensesReportCellModel {
                     item.coverage = coverage
                         

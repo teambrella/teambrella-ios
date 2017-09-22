@@ -23,7 +23,7 @@ import PKHUD
 import SpriteKit
 import UIKit
 
-class HomeVC: UIViewController, TabRoutable, PagingDraggable {
+final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     struct Constant {
         static let cardInterval: CGFloat = 24
         
