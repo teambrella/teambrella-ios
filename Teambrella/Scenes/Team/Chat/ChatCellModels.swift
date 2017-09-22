@@ -32,3 +32,8 @@ struct ChatSeparatorCellModel: ChatCellModel {
     let date: Date
     
 }
+
+struct ChatNewMessagesSeparatorModel: ChatCellModel {
+    let date: Date
+    let text: String = "Team.Chat.Separator.newMessages".localized
+}

@@ -318,6 +318,7 @@
 		6DDE95851EE853550019DA47 /* ClaimOptionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */; };
 		6DDE95871EE9988D0019DA47 /* PiecewiseFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */; };
 		6DDF6D4C1F1623CE00F53B0B /* MembersFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */; };
+		6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */; };
 		6DE793291EF80F11005F4508 /* UniversalChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE793281EF80F11005F4508 /* UniversalChatVC.swift */; };
 		6DE7932C1EF80F41005F4508 /* UniversalChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */; };
 		6DE7932F1EF810DB005F4508 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7932D1EF810DB005F4508 /* ChatCell.swift */; };
@@ -785,6 +786,7 @@
 		6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClaimOptionsCell.xib; path = View/Cells/ClaimOptionsCell.xib; sourceTree = "<group>"; };
 		6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PiecewiseFunction.swift; path = Model/PiecewiseFunction.swift; sourceTree = "<group>"; };
 		6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersFetchStrategy.swift; path = Scenes/Team/Members/MembersFetchStrategy.swift; sourceTree = "<group>"; };
+		6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatNewMessagesSeparatorCell.swift; path = Scenes/Team/Chat/ChatNewMessagesSeparatorCell.swift; sourceTree = "<group>"; };
 		6DE793281EF80F11005F4508 /* UniversalChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatVC.swift; path = Scenes/Team/Chat/UniversalChatVC.swift; sourceTree = "<group>"; };
 		6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatDataSource.swift; path = Scenes/Team/Chat/UniversalChatDataSource.swift; sourceTree = "<group>"; };
 		6DE7932D1EF810DB005F4508 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatCell.swift; path = View/Cells/ChatCell.swift; sourceTree = "<group>"; };
@@ -1706,6 +1708,7 @@
 				6DD051C21F67CC5E00532626 /* InputAccessoryView.swift */,
 				6D7987781F6827A80060A193 /* ChatSeparatorCell.swift */,
 				6D2A57AE1F69858900CE8841 /* ChatHeader.swift */,
+				6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -2431,6 +2434,7 @@
 				6D69DA2D1EFD1A1E00DED5CE /* WalletButtonsCell.swift in Sources */,
 				6DB812221EE6FD2E00B202CE /* ClaimVC.swift in Sources */,
 				6D466AA61ED07CF1001BC579 /* Cosigner.swift in Sources */,
+				6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */,
 				6D66B4A41F4F109E00672583 /* ChatFragmentHeightCalculator.swift in Sources */,
 				6D1A9B251F55CF92004192AC /* PrivateChatUser.swift in Sources */,
 				6DEE67A31EDC5C4D0098EDB3 /* TeammateCell.swift in Sources */,

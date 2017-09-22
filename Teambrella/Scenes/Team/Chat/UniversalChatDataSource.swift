@@ -49,6 +49,7 @@ final class UniversalChatDatasource {
     
     var hasNext = true
     var hasPrevious = true
+    var isFirstLoad = true
     var title: String { return strategy.title }
     var lastIndexPath: IndexPath? { return count >= 1 ? IndexPath(row: count - 1, section: 0) : nil }
     var currentTopCell: IndexPath? {
@@ -224,6 +225,16 @@ final class UniversalChatDatasource {
         addChunk(chunk: chunk)
     }
     
+    private func addNewSeparatorIfNeeded(isPrevious: Bool, isMyNewMessage: Bool) {
+        guard !isPrevious && !isMyNewMessage else { return }
+        guard let firstChunk = chunks.first else { return }
+        
+        let minTime = firstChunk.minTime
+        let model = ChatNewMessagesSeparatorModel(date: minTime.addingTimeInterval(-0.01))
+        let chunk = ChatChunk(cellModels: [model])
+        addChunk(chunk: chunk)
+    }
+    
     private func process(response: TeambrellaResponseType, isPrevious: Bool, isMyNewMessage: Bool) {
         let count = self.count
         switch response {
@@ -261,6 +272,10 @@ final class UniversalChatDatasource {
             return
         }
         let hasNewModels = self.count > count
+        if hasNewModels && isFirstLoad {
+            addNewSeparatorIfNeeded(isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
+            isFirstLoad = false
+        }
         onUpdate?(isPrevious, hasNewModels)
     }
     
