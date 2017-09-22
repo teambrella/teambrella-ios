@@ -24,23 +24,28 @@ import PKHUD
 import UIKit
 import XLPagerTabStrip
 
-class TeammateProfileVC: UIViewController, Routable {
+final class TeammateProfileVC: UIViewController, Routable {
     struct Constant {
         static let socialCellHeight: CGFloat = 68
     }
     
     static var storyboardName: String = "Team"
     
+    @IBOutlet var collectionView: UICollectionView!
+    
     var teammate: TeammateEntity?
     var teammateID: String?
-    
     var dataSource: TeammateProfileDataSource!
     var linearFunction: PiecewiseFunction?
     var chosenRisk: Double?
-    
     var isRiskScaleUpdateNeeded = true
     
-    @IBOutlet var collectionView: UICollectionView!
+    var votingRiskCell: VotingRiskCell? {
+        let visibleCells = collectionView.visibleCells
+        return visibleCells.filter { $0 is VotingRiskCell }.first as? VotingRiskCell
+    }
+    
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +53,11 @@ class TeammateProfileVC: UIViewController, Routable {
         if let teammate = teammate {
             dataSource = TeammateProfileDataSource(id: teammate.userID, isVoting: teammate.isVoting, isMe: false)
             addGradientNavBar()
+            addPrivateMessageButton()
         } else if let teammateID = teammateID {
             dataSource = TeammateProfileDataSource(id: teammateID, isVoting: false, isMe: false)
             addGradientNavBar()
+            addPrivateMessageButton()
         } else if let myID = service.session?.currentUserID {
             dataSource = TeammateProfileDataSource(id: myID, isVoting: false, isMe: true)
         } else {
@@ -81,20 +88,17 @@ class TeammateProfileVC: UIViewController, Routable {
         title = "Main.back".localized
     }
     
-    func setTitle() {
-        title = dataSource.extendedTeammate?.basic.name
+    // MARK: Public
+    
+    func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
+        return min(Double(pow(25, offset / maxValue) / 5), 5)
     }
     
-    func prepareLinearFunction() {
-        guard let risk = dataSource.extendedTeammate?.riskScale else { return }
-        
-        let function = PiecewiseFunction((0.2, risk.coversIfMin), (1, risk.coversIf1), (5, risk.coversIfMax))
-        linearFunction = function
+    func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
+        return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    // MARK: Callbacks
     
     @objc
     func showClaims(sender: UIButton) {
@@ -104,32 +108,6 @@ class TeammateProfileVC: UIViewController, Routable {
             service.router.presentClaim(claimID: claimID)
         } else {
             service.router.presentClaims(teammate: teammate)
-        }
-    }
-    
-    func registerCells() {
-        collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
-        collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
-        collectionView.register(VotingRiskCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
-        collectionView.register(CompactUserInfoHeader.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                withReuseIdentifier: CompactUserInfoHeader.cellID)
-    }
-    
-    func updateAmounts(with risk: Double) {
-        chosenRisk = risk
-        let kind = UICollectionElementKindSectionHeader
-        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
-            return
-        }
-        guard let myRisk = dataSource.extendedTeammate?.riskScale?.myRisk,
-            let theirRisk = dataSource.extendedTeammate?.basic.risk else { return }
-        
-        if let theirAmount = linearFunction?.value(at: risk / theirRisk * myRisk) {
-            view.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
-        }
-        if let myAmount = linearFunction?.value(at: risk / myRisk * theirRisk) {
-            view.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
         }
     }
     
@@ -187,12 +165,48 @@ class TeammateProfileVC: UIViewController, Routable {
         service.router.presentCompareTeamRisk()
     }
     
-    func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
-        return min(Double(pow(25, offset / maxValue) / 5), 5)
+    @objc
+    private func tapPrivateMessage(sender: UIButton) {
+        log("tapped private message", type: .userInteraction)
     }
     
-    func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
-        return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
+    // MARK: Private
+    
+    private func registerCells() {
+        collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
+        collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
+        collectionView.register(VotingRiskCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
+        collectionView.register(CompactUserInfoHeader.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: CompactUserInfoHeader.cellID)
+    }
+    
+    private func updateAmounts(with risk: Double) {
+        chosenRisk = risk
+        let kind = UICollectionElementKindSectionHeader
+        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
+            return
+        }
+        guard let myRisk = dataSource.extendedTeammate?.riskScale?.myRisk,
+            let theirRisk = dataSource.extendedTeammate?.basic.risk else { return }
+        
+        if let theirAmount = linearFunction?.value(at: risk / theirRisk * myRisk) {
+            view.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
+        }
+        if let myAmount = linearFunction?.value(at: risk / myRisk * theirRisk) {
+            view.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
+        }
+    }
+    
+    private func setTitle() {
+        title = dataSource.extendedTeammate?.basic.name
+    }
+    
+    private func prepareLinearFunction() {
+        guard let risk = dataSource.extendedTeammate?.riskScale else { return }
+        
+        let function = PiecewiseFunction((0.2, risk.coversIfMin), (1, risk.coversIf1), (5, risk.coversIfMax))
+        linearFunction = function
     }
     
     private func resetVote(cell: VotingRiskCell) {
@@ -214,9 +228,9 @@ class TeammateProfileVC: UIViewController, Routable {
         }
     }
     
-    var votingRiskCell: VotingRiskCell? {
-        let visibleCells = collectionView.visibleCells
-        return visibleCells.filter { $0 is VotingRiskCell }.first as? VotingRiskCell
+    private func addPrivateMessageButton() {
+        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "inbox"), style: .plain, target: self, action: #selector(tapPrivateMessage))
+        navigationItem.setRightBarButton(barItem, animated: true)
     }
     
 }
