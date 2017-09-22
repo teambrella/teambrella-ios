@@ -92,6 +92,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         service.socket = SocketService()
         service.push.executeCommand()
+        greetingsTitleLabel.text = " "
     }
     
     func switchToCurrentTeam() {

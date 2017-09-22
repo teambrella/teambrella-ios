@@ -198,6 +198,7 @@
 		6D862F6B1F1E639A00988D5C /* TeammateFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */; };
 		6D8950A71F542815002DB34D /* ChatChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8950A61F542815002DB34D /* ChatChunk.swift */; };
 		6D8C6FE41F75301000BF65B6 /* TeammateTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C6FE31F75301000BF65B6 /* TeammateTransformer.swift */; };
+		6D8C6FE71F754D7000BF65B6 /* Error.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D8C6FE51F754D7000BF65B6 /* Error.strings */; };
 		6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
 		6D8F97141E8D1532008DC62E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */; };
 		6D91BC041EB3900700FDC332 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC031EB3900700FDC332 /* UUID.swift */; };
@@ -652,6 +653,8 @@
 		6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateFooter.swift; path = Scenes/Team/Members/TeammateFooter.swift; sourceTree = "<group>"; };
 		6D8950A61F542815002DB34D /* ChatChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatChunk.swift; path = Scenes/Team/Chat/ChatChunk.swift; sourceTree = "<group>"; };
 		6D8C6FE31F75301000BF65B6 /* TeammateTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeammateTransformer.swift; path = Scenes/Team/Members/TeammateTransformer.swift; sourceTree = "<group>"; };
+		6D8C6FE61F754D7000BF65B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Error.strings; sourceTree = "<group>"; };
+		6D8C6FE81F754D8E00BF65B6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Error.strings; sourceTree = "<group>"; };
 		6D8CB40E1F5865B200C72AC3 /* Teambrella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Teambrella.entitlements; sourceTree = "<group>"; };
 		6D8F97111E8D1529008DC62E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -993,6 +996,7 @@
 				6D69DA0D1EFC458C00DED5CE /* Me.strings */,
 				6DCB19421F0F878500AC9969 /* Home.strings */,
 				9407A5851F13D81D00E0DD74 /* Login.strings */,
+				6D8C6FE51F754D7000BF65B6 /* Error.strings */,
 			);
 			name = Localizations;
 			sourceTree = "<group>";
@@ -2105,6 +2109,7 @@
 				9480EA151F15246E008A7A3F /* RiskCell.xib in Resources */,
 				94E325C61F07EF0D00B2D8C8 /* JoinTeamItemCell.xib in Resources */,
 				6DEE678F1ED9CF070098EDB3 /* ItemCard.xib in Resources */,
+				6D8C6FE71F754D7000BF65B6 /* Error.strings in Resources */,
 				94266A361F55AE0E0089543F /* ClaimTransactionCell.xib in Resources */,
 				6D69D9FC1EFC07FF00DED5CE /* ProxyForCell.xib in Resources */,
 				6D9CC62D1ED5EB23007F936E /* Me.storyboard in Resources */,
@@ -2791,6 +2796,15 @@
 				6D66EDE41F3E13A800AC4B53 /* es */,
 			);
 			name = Me.strings;
+			sourceTree = "<group>";
+		};
+		6D8C6FE51F754D7000BF65B6 /* Error.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D8C6FE61F754D7000BF65B6 /* en */,
+				6D8C6FE81F754D8E00BF65B6 /* es */,
+			);
+			name = Error.strings;
 			sourceTree = "<group>";
 		};
 		6DA475A71E8ABEE600B56D9B /* Main.storyboard */ = {
