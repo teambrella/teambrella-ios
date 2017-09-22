@@ -73,7 +73,7 @@ class TeammateProfileDataSource {
         return source[indexPath.row]
     }
     
-    func loadEntireTeammate(completion: @escaping () -> Void) {
+    func loadEntireTeammate(completion: @escaping (ExtendedTeammateEntity) -> Void) {
         let key = Key(base58String: ServerService.privateKey, timestamp: service.server.timestamp)
         
         let body = RequestBodyFactory.teammateBody(key: key, id: id)
@@ -83,7 +83,7 @@ class TeammateProfileDataSource {
             if case .teammate(let extendedTeammate) = response {
                 me.extendedTeammate = extendedTeammate
                 me.modifySource()
-                completion()
+                completion(extendedTeammate)
             }
         })
         request.start()
@@ -129,6 +129,11 @@ class TeammateProfileDataSource {
             isNewTeammate = true
             source.append(.dialogCompact)
             source.append(.voting)
+            source.append(.object)
+            source.append(.stats)
+            if !socialItems.isEmpty && !isMe {
+                source.append(.contact)
+            }
         } else {
             if isMe {
                 source.append(.me)

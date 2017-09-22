@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PrivateMessagesVC: UIViewController, Routable {
+final class PrivateMessagesVC: UIViewController, Routable {
     static let storyboardName = "Home"
     
     @IBOutlet var collectionView: UICollectionView!

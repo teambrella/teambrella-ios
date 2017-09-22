@@ -23,41 +23,48 @@ import Kingfisher
 import UIKit
 
 struct TeammateCellBuilder {
-    static func populate(cell: UICollectionViewCell, with teammate: ExtendedTeammateEntity, delegate: Any? = nil) {
-        if let cell = cell as? TeammateSummaryCell, let vc = delegate as? UIViewController {
-            populateSummary(cell: cell, with: teammate, controller: vc)
-        } else if let cell = cell as? TeammateObjectCell, let vc = delegate as? TeammateProfileVC {
-            populateObject(cell: cell, with: teammate, controller: vc)
-        } else if let cell = cell as? TeammateContactCell {
-            populateContact(cell: cell, with: teammate, delegate: delegate)
-        } else if let cell = cell as? DiscussionCell {
+    static func populate(cell: UICollectionViewCell,
+                         with teammate: ExtendedTeammateEntity,
+                         controller: TeammateProfileVC) {
+        switch cell {
+        case let cell as TeammateSummaryCell:
+            populateSummary(cell: cell, with: teammate, controller: controller)
+        case let cell as TeammateObjectCell:
+            populateObject(cell: cell, with: teammate, controller: controller)
+        case let cell as TeammateContactCell:
+            populateContact(cell: cell, with: teammate, controller: controller)
+        case let cell as DiscussionCell:
             populateDiscussion(cell: cell, with: teammate.topic, avatar: teammate.basic.avatar)
-        } else if let cell = cell as? TeammateStatsCell {
-            populateStats(cell: cell, with: teammate)
-        } else if let cell = cell as? TeammateVoteCell, let delegate = delegate as? TeammateProfileVC {
-           populateVote(cell: cell, with: teammate, delegate: delegate)
-        } else if let cell = cell as? DiscussionCompactCell {
+        case let cell as TeammateStatsCell:
+            populateStats(cell: cell, with: teammate, controller: controller)
+        case let cell as VotingRiskCell:
+            populateVote(cell: cell, with: teammate, controller: controller)
+        case let cell as DiscussionCompactCell:
             populateCompactDiscussion(cell: cell, with: teammate.topic, avatar: teammate.basic.avatar)
-        } else if let cell = cell as? MeCell {
-            populateMeCell(cell: cell, with: teammate, delegate: delegate)
+        case let cell as MeCell:
+            populateMeCell(cell: cell, with: teammate, controller: controller)
+        default:
+            break
         }
     }
     
-    private static func populateMeCell(cell: MeCell, with teammate: ExtendedTeammateEntity, delegate: Any?) {
-       cell.avatar.showAvatar(string: teammate.basic.avatar)
+    private static func populateMeCell(cell: MeCell,
+                                       with teammate: ExtendedTeammateEntity,
+                                       controller: TeammateProfileVC?) {
+        cell.avatar.showAvatar(string: teammate.basic.avatar)
         cell.nameLabel.text = teammate.basic.name
         cell.infoLabel.text = teammate.basic.city
-        if let vc = delegate as? TeammateProfileVC {
-            cell.facebookButton.removeTarget(vc, action: nil, for: .allEvents)
-            cell.facebookButton.addTarget(vc, action: #selector(TeammateProfileVC.tapFacebook), for: .touchUpInside)
-            
-            cell.twitterButton.removeTarget(vc, action: nil, for: .allEvents)
-            cell.twitterButton.addTarget(vc, action: #selector(TeammateProfileVC.tapTwitter), for: .touchUpInside)
-            
-            cell.emailButton.removeTarget(vc, action: nil, for: .allEvents)
-            cell.emailButton.addTarget(vc, action: #selector(TeammateProfileVC.tapEmail), for: .touchUpInside)
-            
-        }
+        guard let controller = controller else { return }
+        
+        cell.facebookButton.removeTarget(controller, action: nil, for: .allEvents)
+        cell.facebookButton.addTarget(controller, action: #selector(TeammateProfileVC.tapFacebook), for: .touchUpInside)
+        
+        cell.twitterButton.removeTarget(controller, action: nil, for: .allEvents)
+        cell.twitterButton.addTarget(controller, action: #selector(TeammateProfileVC.tapTwitter), for: .touchUpInside)
+        
+        cell.emailButton.removeTarget(controller, action: nil, for: .allEvents)
+        cell.emailButton.addTarget(controller, action: #selector(TeammateProfileVC.tapEmail), for: .touchUpInside)
+        
     }
     
     private static func populateSummary(cell: TeammateSummaryCell,
@@ -67,9 +74,7 @@ struct TeammateCellBuilder {
         //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
         cell.avatarView.present(avatarString: teammate.basic.avatar)
         cell.avatarView.onTap = { [weak controller] view in
-            guard let vc = controller else { return }
-            
-            view.fullscreen(in: vc, imageStrings: nil)
+            view.fullscreen(in: controller, imageStrings: nil)
         }
         //cell.avatarView.kf.setImage(with: url)
         if let left = cell.leftNumberView {
@@ -92,24 +97,48 @@ struct TeammateCellBuilder {
         }
     }
     
-    private static func populateVote(cell: TeammateVoteCell,
+    private static func populateVote(cell: VotingRiskCell,
                                      with teammate: ExtendedTeammateEntity,
-                                     delegate: TeammateProfileVC) {
-        if delegate.riskController == nil {
-            let board = UIStoryboard(name: "Members", bundle: nil)
-            if let vc = board.instantiateViewController(withIdentifier: "VotingRiskVC") as? VotingRiskVC {
-            delegate.riskController = vc
+                                     controller: TeammateProfileVC) {
+        if let riskScale = teammate.riskScale, controller.isRiskScaleUpdateNeeded == true {
+            cell.updateWithRiskScale(riskScale: riskScale)
+            controller.isRiskScaleUpdateNeeded = false
+        }
+        
+        cell.pearMiddleAvatar.avatar.showAvatar(string: teammate.basic.avatar)
+        
+        if let voting = teammate.voting {
+            let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
+            cell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars,
+                                                 label: label,
+                                                 max: nil)
+            if let risk = voting.riskVoted {
+                cell.teamVoteValueLabel.text = String.formattedNumber(risk)
             }
+            
+            if let myVote = voting.myVote {
+                cell.layoutIfNeeded()
+                cell.yourVoteValueLabel.text = String(format:"%.2f", myVote)
+                let offset = controller.offsetFrom(risk: myVote, maxValue: cell.maxValue)
+                cell.scrollTo(offset: offset, silently: true)
+            }
+            
+            let timeString = DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
+            cell.timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
         }
-        if let vc = delegate.riskController {
-            vc.view.removeFromSuperview()
-            vc.willMove(toParentViewController: delegate)
-            cell.container.addSubview(vc.view)
-            vc.view.frame = cell.container.bounds
-            vc.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-            delegate.addChildViewController(vc)
-            vc.didMove(toParentViewController: delegate)
-        }
+        
+        cell.delegate = controller
+        
+        cell.resetVoteButton.removeTarget(controller, action: nil, for: .allEvents)
+        cell.resetVoteButton.addTarget(controller,
+                                       action: #selector(TeammateProfileVC.tapResetVote),
+                                       for: .touchUpInside)
+        
+        cell.othersButton.removeTarget(controller, action: nil, for: .allEvents)
+        cell.othersButton.addTarget(controller,
+                                    action: #selector(TeammateProfileVC.tapShowOtherVoters),
+                                    for: .touchUpInside)
+        
     }
     
     private static func populateObject(cell: TeammateObjectCell,
@@ -150,9 +179,17 @@ struct TeammateCellBuilder {
         }
         cell.button.setTitle("Team.TeammateCell.buttonTitle_format_i".localized(teammate.object.claimCount),
                              for: .normal)
+        
+        if let claimsCount = controller.dataSource.extendedTeammate?.object.claimCount {
+            cell.button.isHidden = claimsCount == 0
+        }
+        cell.button.removeTarget(nil, action: nil, for: .allEvents)
+        cell.button.addTarget(controller, action: #selector(TeammateProfileVC.showClaims), for: .touchUpInside)
     }
     
-    private static func populateStats(cell: TeammateStatsCell, with teammate: ExtendedTeammateEntity) {
+    private static func populateStats(cell: TeammateStatsCell,
+                                      with teammate: ExtendedTeammateEntity,
+                                      controller: TeammateProfileVC) {
         let stats = teammate.stats
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
         if let left = cell.numberBar.left {
@@ -186,6 +223,9 @@ struct TeammateCellBuilder {
         } else {
             cell.addButton.isHidden = false
         }
+        
+        cell.addButton.removeTarget(controller, action: nil, for: .allEvents)
+        cell.addButton.addTarget(self, action: #selector(TeammateProfileVC.tapAddToProxy), for: .touchUpInside)
     }
     
     private static func populateDiscussion(cell: DiscussionCell, with stats: Topic, avatar: String) {
@@ -225,15 +265,10 @@ struct TeammateCellBuilder {
     
     private static func populateContact(cell: TeammateContactCell,
                                         with teammate: ExtendedTeammateEntity,
-                                        delegate: Any?) {
-        guard let dataSource = delegate as? UITableViewDataSource else {
-            fatalError("TeammateContactCell should have table view data source")
-        }
-        
+                                        controller: TeammateProfileVC) {
         cell.headerLabel.text = "Team.TeammateCell.contact".localized
-        let delegate = delegate as? UITableViewDelegate
-        cell.tableView.delegate = delegate
-        cell.tableView.dataSource = dataSource
+        cell.tableView.delegate = controller
+        cell.tableView.dataSource = controller
         cell.tableView.reloadData()
     }
     

@@ -79,7 +79,7 @@ struct ClaimCellBuilder {
         cell.remainingDaysLabel.text = "Team.Claims.ClaimVC.VotingCell.endsTitle".localized.uppercased()
             + dateProcessor.stringFromNow(minutes: -claim.minutesRemaining).uppercased()
         cell.pieChart.startAngle = 0
-        cell.pieChart.endAngle = 360 - 360 / 7 * CGFloat(claim.minutesRemaining) / 60 / 24
+        cell.pieChart.setupWith(remainingMinutes: claim.minutesRemaining)
         
         cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         let myVote = String.truncatedNumber(claim.myVote * 100)

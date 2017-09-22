@@ -39,6 +39,7 @@ class TeammateEntity {
     let userID: String
     let year: Int
     let avatar: String
+    let minutesRemaining: Int
     
     var extended: ExtendedTeammateEntity?
         
@@ -64,12 +65,15 @@ class TeammateEntity {
         lastUpdated = json["LastUpdated"].int64Value
         year = json["Year"].intValue
         avatar = json["Avatar"].stringValue
+        minutesRemaining = json["VotingEndsIn"].intValue
     }
     
     func updateWithVote(json: JSON) {
+        log("before: \(extended?.voting?.riskVoted)", type: .error)
         extended?.voting = TeammateVotingInfo(json: json["VotingPart"])
         extended?.topic.minutesSinceLastPost = json["DiscussionPart"]["SinceLastPostMinutes"].intValue
         extended?.topic.unreadCount = json["DiscussionPart"]["UnreadCount"].intValue
+        log("after: \(extended?.voting?.riskVoted)", type: .error)
     }
     
 }
