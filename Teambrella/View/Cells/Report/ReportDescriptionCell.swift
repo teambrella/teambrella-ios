@@ -28,7 +28,7 @@ class ReportDescriptionCell: UICollectionViewCell, XIBInitableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         textView.layer.masksToBounds = true
-        textView.layer.borderWidth = 0.5
+        textView.layer.borderWidth = 1
     }
 
 }

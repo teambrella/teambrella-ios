@@ -55,8 +55,6 @@ final class ReportVC: UIViewController, Routable {
     var coverage: Double = 0.0
     var limit: Double = 0.0
     var lastDate: Date = Date()
-    var titleIsFilled: Bool = false
-    var descriptionIsfilled: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,9 +201,12 @@ final class ReportVC: UIViewController, Routable {
             let createButton = UIButton()
             createButton.addTarget(self, action: #selector(tapSubmit(_:)), for: .touchUpInside)
             createButton.setTitle("Me.Report.submitButtonTitle-create".localized, for: .normal)
-            //createButton.isUserInteractionEnabled = fieldsAreFull ? true : false
-            //let color = fieldsAreFull ? UIColor.white : UIColor.perrywinkle
-            //createButton.setTitleColor(color, for: .disabled)
+//            createButton.isUserInteractionEnabled = isCreateButtonEnabled ? true : false
+//            if isCreateButtonEnabled {
+//                createButton.setTitleColor(UIColor.white, for: .normal)
+//            } else  {
+//                createButton.setTitleColor(UIColor.perrywinkle, for: .disabled)
+//            }
             createButton.sizeToFit()
             guard let createTitle = createButton.titleLabel else { return }
             
@@ -346,6 +347,10 @@ extension ReportVC: ImagePickerControllerDelegate {
 }
 
 extension ReportVC: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        (textView as? TextView)?.isInEditMode = true
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         let indexPath = IndexPath(row: textView.tag, section: 0)
         if var model = dataSource[indexPath] as? DescriptionReportCellModel {
@@ -353,10 +358,6 @@ extension ReportVC: UITextViewDelegate {
             dataSource.items[indexPath.row] = model
         }
         (textView as? TextView)?.isInAlertMode = false
-        (textView as? TextView)?.isInEditMode = true
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
         (textView as? TextView)?.isInEditMode = true
     }
     
