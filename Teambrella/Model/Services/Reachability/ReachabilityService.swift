@@ -42,8 +42,6 @@ final class ReachabilityService {
     }
     
     func hideUnreachable() {
-        guard let id = notification?.id else { return }
-        
         notification = nil
         SwiftMessages.hideAll()
     }

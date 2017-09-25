@@ -53,12 +53,6 @@ final class UniversalChatDatasource {
     var title: String { return strategy.title }
     var lastIndexPath: IndexPath? { return count >= 1 ? IndexPath(row: count - 1, section: 0) : nil }
     var currentTopCell: IndexPath? {
-//        guard isChunkAdded else {
-//            return chunks.isEmpty ? nil : IndexPath(row: 0, section: 0)
-//        }
-//        guard chunks.count > 1, let chunk = chunks.first else { return nil }
-//
-//        return IndexPath(row: chunk.count, section: 0)
         guard let topCellDate = topCellDate else { return nil }
         
         let models = chunks.flatMap { $0.cellModels }
@@ -67,6 +61,7 @@ final class UniversalChatDatasource {
         }
         return nil
     }
+    
     private var topCellDate: Date?
     
     var previousCount: Int = 0
@@ -234,16 +229,6 @@ final class UniversalChatDatasource {
         addChunk(chunk: chunk)
     }
     
-    private func addNewSeparatorIfNeeded(isPrevious: Bool, isMyNewMessage: Bool) {
-        guard !isPrevious && !isMyNewMessage else { return }
-        guard let firstChunk = chunks.first else { return }
-        
-        let minTime = firstChunk.minTime
-        let model = ChatNewMessagesSeparatorModel(date: minTime.addingTimeInterval(-0.01))
-        let chunk = ChatChunk(cellModels: [model])
-        addChunk(chunk: chunk)
-    }
-    
     private func process(response: TeambrellaResponseType, isPrevious: Bool, isMyNewMessage: Bool) {
         let count = self.count
         switch response {
@@ -281,10 +266,7 @@ final class UniversalChatDatasource {
             return
         }
         let hasNewModels = self.count > count
-        if hasNewModels && isFirstLoad {
-            addNewSeparatorIfNeeded(isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
-            isFirstLoad = false
-        }
+        handleNewSeparator(hasNewModels: hasNewModels, isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
         onUpdate?(isPrevious, hasNewModels)
     }
     
@@ -303,11 +285,36 @@ final class UniversalChatDatasource {
     }
     
     private func createCellModels(from entities: [ChatEntity]) -> [ChatCellModel] {
+        cellModelBuilder.font = font
+        cellModelBuilder.width = cloudWidth - labelHorizontalInset * 2
         let models = cellModelBuilder.cellModels(from: entities,
-                                                 width: cloudWidth - labelHorizontalInset * 2,
-                                                 font: font,
+                                                 lastChunk: chunks.last,
                                                  isClaim: strategy.requestType == .claimChat)
         return models
+    }
+    
+    private func handleNewSeparator(hasNewModels: Bool, isPrevious: Bool, isMyNewMessage: Bool) {
+        if hasNewModels && isFirstLoad {
+            addNewSeparatorIfNeeded(isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
+            isFirstLoad = false
+        } else if !hasNewModels {
+            removeNewSeparatorIfNeeded()
+        }
+    }
+    private func removeNewSeparatorIfNeeded() {
+        if let firstChunk = chunks.first, firstChunk.cellModels.first is ChatNewMessagesSeparatorModel {
+            chunks.removeFirst()
+        }
+    }
+    
+    private func addNewSeparatorIfNeeded(isPrevious: Bool, isMyNewMessage: Bool) {
+        guard !isPrevious && !isMyNewMessage else { return }
+        guard let firstChunk = chunks.first else { return }
+        
+        let minTime = firstChunk.minTime
+        let model = ChatNewMessagesSeparatorModel(date: minTime.addingTimeInterval(-0.01))
+        let chunk = ChatChunk(cellModels: [model])
+        addChunk(chunk: chunk)
     }
     
     subscript(indexPath: IndexPath) -> ChatCellModel {
