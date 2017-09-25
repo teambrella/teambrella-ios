@@ -642,6 +642,8 @@
 		6D73C6DF1EBB36A700A2C0F8 /* Transactions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Transactions.storyboard; path = Scenes/TransactionsTest/Transactions.storyboard; sourceTree = "<group>"; };
 		6D73C6E11EBB374D00A2C0F8 /* PaymentsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsTVC.swift; path = Scenes/TransactionsTest/PaymentsTVC.swift; sourceTree = "<group>"; };
 		6D73C6E31EBB3F0800A2C0F8 /* TransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionCell.swift; path = Scenes/TransactionsTest/TransactionCell.swift; sourceTree = "<group>"; };
+		6D74B2911F7904A5007F736E /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
+		6D74B2921F7904B0007F736E /* SwiftMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMessages.framework; path = Carthage/Build/iOS/SwiftMessages.framework; sourceTree = "<group>"; };
 		6D7987781F6827A80060A193 /* ChatSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatSeparatorCell.swift; path = Scenes/Team/Chat/ChatSeparatorCell.swift; sourceTree = "<group>"; };
 		6D7C1AD01F598CFF00A88987 /* IsTypingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IsTypingView.swift; path = View/IsTypingView.swift; sourceTree = "<group>"; };
 		6D829AA21EB0BE1A0051F43A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Helpers/Extensions/UIColor.swift; sourceTree = "<group>"; };
@@ -1928,19 +1930,21 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */,
-				6DF4791B1F43326A0025F489 /* SwiftKeychainWrapper.framework */,
-				6D0BA5B01F14F83000055E74 /* SwiftDate.framework */,
-				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
+				6D8F97111E8D1529008DC62E /* Alamofire.framework */,
+				6DDE956A1EE80FE40019DA47 /* ImageSlideshow.framework */,
+				6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */,
 				6DA8D54E1F0E43B7000A4DB7 /* PKHUD.framework */,
 				94C89AD51F0104CC00C6D8F7 /* QRCode.framework */,
+				6D74B2911F7904A5007F736E /* Reachability.framework */,
+				6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */,
+				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				6DF2E8C01EF0346F00C8D60B /* Starscream.framework */,
-				6DDE956A1EE80FE40019DA47 /* ImageSlideshow.framework */,
-				6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */,
+				6D0BA5B01F14F83000055E74 /* SwiftDate.framework */,
+				6DF4791B1F43326A0025F489 /* SwiftKeychainWrapper.framework */,
+				6D74B2921F7904B0007F736E /* SwiftMessages.framework */,
 				6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */,
-				6D8F97111E8D1529008DC62E /* Alamofire.framework */,
-				6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */,
 				6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */,
+				6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */,
 				F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */,
 				EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */,
 				BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */,
@@ -2290,6 +2294,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftDate.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeychainWrapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
 			);
 			name = Carthage;
 			outputPaths = (

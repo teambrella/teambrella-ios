@@ -45,7 +45,7 @@ final class UniversalChatDatasource {
     }
     
     var count: Int { return chunks.reduce(0) { $0 + $1.count } }
-    var limit                         = 100
+    var limit                         = 10
     
     var hasNext = true
     var hasPrevious = true
@@ -53,13 +53,21 @@ final class UniversalChatDatasource {
     var title: String { return strategy.title }
     var lastIndexPath: IndexPath? { return count >= 1 ? IndexPath(row: count - 1, section: 0) : nil }
     var currentTopCell: IndexPath? {
-        guard isChunkAdded else {
-            return chunks.isEmpty ? nil : IndexPath(row: 0, section: 0)
-        }
-        guard chunks.count > 1, let chunk = chunks.first else { return nil }
+//        guard isChunkAdded else {
+//            return chunks.isEmpty ? nil : IndexPath(row: 0, section: 0)
+//        }
+//        guard chunks.count > 1, let chunk = chunks.first else { return nil }
+//
+//        return IndexPath(row: chunk.count, section: 0)
+        guard let topCellDate = topCellDate else { return nil }
         
-        return IndexPath(row: chunk.count, section: 0)
+        let models = chunks.flatMap { $0.cellModels }
+        for (idx, model) in models.enumerated() where model.date == topCellDate {
+            return IndexPath(row: idx, section: 0)
+        }
+        return nil
     }
+    private var topCellDate: Date?
     
     var previousCount: Int = 0
     
@@ -153,6 +161,7 @@ final class UniversalChatDatasource {
         isLoading = true
         if previous {
             isLoadPreviousNeeded = false
+            topCellDate = chunks.first?.firstTextMessage?.date
         } else {
             isLoadNextNeeded = false
         }
@@ -264,7 +273,7 @@ final class UniversalChatDatasource {
             }
         case let .newPost(post):
             let models = createCellModels(from: [post])
-            let chunk = ChatChunk(cellModels: models)
+            let chunk = ChatChunk(cellModels: models, isTemporary: true)
             addChunk(chunk: chunk)
             postsCount += 1
             forwardOffset += 1
