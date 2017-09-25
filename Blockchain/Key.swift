@@ -26,7 +26,7 @@ struct Key {
     var isTestnet: Bool
     var timestamp: Int64
     var privateKey: String {
-        return (key.privateKey as Data).base58String
+        return key.wif//(key.privateKey as Data).base58String
     }
     var publicKey: String {
         return (key.compressedPublicKey as Data).hexString

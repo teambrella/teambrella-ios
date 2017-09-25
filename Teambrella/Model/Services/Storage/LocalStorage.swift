@@ -24,11 +24,12 @@ import Foundation
 class LocalStorage: Storage {
     var lastKeyTime: Date?
     
-    func requestTeams() -> Future<TeamsModel> {
+    func requestTeams(demo: Bool) -> Future<TeamsModel> {
         let promise = Promise<TeamsModel>()
         freshKey { key in
             let body = RequestBody(key: key, payload: [:])
-            let request = TeambrellaRequest(type: .teams,
+            let requestType: TeambrellaRequestType = demo ? .demoTeams : .teams
+            let request = TeambrellaRequest(type: requestType,
                                             parameters: nil,
                                             body: body,
                                             success: { response in

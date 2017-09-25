@@ -28,7 +28,7 @@ protocol Storage {
     func requestHome(teamID: Int) -> Future<HomeScreenModel>
     func requestTeamFeed(context: FeedRequestContext) -> Future<[FeedEntity]>
     // actual and potential teams
-    func requestTeams() -> Future<TeamsModel>
+    func requestTeams(demo: Bool) -> Future<TeamsModel>
     func requestPrivateList(offset: Int, limit: Int, filter: String?) -> Future<[PrivateChatUser]>
     func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Double, limit: Double)>
     

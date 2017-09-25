@@ -353,6 +353,7 @@
 		6DF2E8CB1EF194E400C8D60B /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DF2E8C91EF194E400C8D60B /* Main.strings */; };
 		6DF2E8CE1EF1979300C8D60B /* ProxiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */; };
 		6DF2E8D01EF197D100C8D60B /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8CF1EF197D100C8D60B /* MeVC.swift */; };
+		6DF3E7621F795ED6000C7885 /* CryptoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF3E7611F795ED6000C7885 /* CryptoUser.swift */; };
 		6DF479121F41E4300025F489 /* PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479111F41E4300025F489 /* PromiseKit.swift */; };
 		6DF479161F42F0570025F489 /* CoverageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479151F42F0570025F489 /* CoverageType.swift */; };
 		6DF479181F42F0740025F489 /* TeamAccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479171F42F0740025F489 /* TeamAccessLevel.swift */; };
@@ -827,6 +828,7 @@
 		6DF2E8CC1EF1961C00C8D60B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxiesVC.swift; path = Scenes/Proxies/ProxiesVC.swift; sourceTree = "<group>"; };
 		6DF2E8CF1EF197D100C8D60B /* MeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeVC.swift; path = Scenes/Me/MeVC.swift; sourceTree = "<group>"; };
+		6DF3E7611F795ED6000C7885 /* CryptoUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CryptoUser.swift; path = Model/Services/CryptoUser.swift; sourceTree = "<group>"; };
 		6DF479111F41E4300025F489 /* PromiseKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromiseKit.swift; path = Model/PromiseKit.swift; sourceTree = "<group>"; };
 		6DF479151F42F0570025F489 /* CoverageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoverageType.swift; path = Model/Enums/CoverageType.swift; sourceTree = "<group>"; };
 		6DF479171F42F0740025F489 /* TeamAccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamAccessLevel.swift; path = Model/Enums/TeamAccessLevel.swift; sourceTree = "<group>"; };
@@ -1597,6 +1599,7 @@
 				6DF479191F432D230025F489 /* Keychain.swift */,
 				6D33E1531F715BB10052A58B /* Log.swift */,
 				6DE3947F1F79284900784ECD /* ErrorPresenter.swift */,
+				6DF3E7611F795ED6000C7885 /* CryptoUser.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -2536,6 +2539,7 @@
 				6D91BC041EB3900700FDC332 /* UUID.swift in Sources */,
 				94E325CD1F07FA7E00B2D8C8 /* JoinTeamTermsCell.swift in Sources */,
 				6D466AA91ED07CF1001BC579 /* Teammate.swift in Sources */,
+				6DF3E7621F795ED6000C7885 /* CryptoUser.swift in Sources */,
 				6D6DA2421EE1650400307C73 /* TeammateBasicInfo.swift in Sources */,
 				6D2BD7C01F614EBF00C7F6A8 /* TextField.swift in Sources */,
 				6D59F0091F56E5D000C422EB /* PrivateChatAdaptor.swift in Sources */,
