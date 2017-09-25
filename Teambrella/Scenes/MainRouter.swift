@@ -243,8 +243,7 @@ final class MainRouter {
         guard let navigator = navigator else { return }
         
         service.session = nil
-        Keychain.removeValue(forKey: .ethPrivateAddress)
-        ServerService.currentKeyType = .testUser
+        service.crypto.clearLastUserType()
         for vc in navigator.viewControllers {
             if let vc = vc as? InitialVC {
                 navigator.popToViewController(vc, animated: true)

@@ -27,44 +27,32 @@ class InitialVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Instantly move to product version
-        //performSegue(type: .teambrella)
-        //getTeams()
-        
-        if let address = Keychain.value(forKey: .ethPrivateAddress),
-            let keyType = ServerService.FakeKeyType(rawValue: address) {
-            ServerService.currentKeyType = keyType
+        if service.crypto.lastUserType != .none {
             isLoginNeeded = false
             startLoadingTeams()
         }
     }
     
     func getTeams() {
-        service.storage.setLanguage().observe { [weak self] resultLang in
-            guard case .value = resultLang else {
-                 self?.failure()
-                return
-            }
-            
-            service.storage.requestTeams().observe { [weak self] result in
-                switch result {
-                case let .value(teamsEntity):
-                    service.session = Session()
-                    let lastTeam = teamsEntity.lastTeamID.map { id in
-                        teamsEntity.teams.filter { team in team.teamID == id }
+        let isDemo = service.crypto.isDemoUser
+        service.storage.requestTeams(demo: isDemo).observe { [weak self] result in
+            switch result {
+            case let .value(teamsEntity):
+                service.session = Session()
+                let lastTeam = teamsEntity.lastTeamID.map { id in
+                    teamsEntity.teams.filter { team in team.teamID == id }
                     }?.first
-                    
-                    if let lastTeam = lastTeam {
-                        service.session?.currentTeam = lastTeam
-                    } else if !teamsEntity.teams.isEmpty {
-                        service.session?.currentTeam = teamsEntity.teams.first
-                    }
-                    service.session?.teams = teamsEntity.teams
-                    service.session?.currentUserID = teamsEntity.userID
-                    self?.performSegue(type: .teambrella)
-                case .error:
-                    break
+                
+                if let lastTeam = lastTeam {
+                    service.session?.currentTeam = lastTeam
+                } else if !teamsEntity.teams.isEmpty {
+                    service.session?.currentTeam = teamsEntity.teams.first
                 }
+                service.session?.teams = teamsEntity.teams
+                service.session?.currentUserID = teamsEntity.userID
+                self?.performSegue(type: .teambrella)
+            case .error:
+                break
             }
         }
     }

@@ -11,6 +11,8 @@ import SwiftKeychainWrapper
 
 enum KeychainKey: String {
     case ethPrivateAddress
+    case ethPrivateAddressDemo
+    case lastUserType
 }
 
 class Keychain {
@@ -30,6 +32,7 @@ class Keychain {
     
     class func clear() {
         removeValue(forKey: .ethPrivateAddress)
+        removeValue(forKey: .ethPrivateAddressDemo)
     }
     
 }

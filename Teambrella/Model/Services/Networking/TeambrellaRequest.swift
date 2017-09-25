@@ -27,6 +27,7 @@ enum TeambrellaRequestType: String {
     case initClient = "me/InitClient"
     case updates = "me/GetUpdates"
     case teams = "me/getTeams"
+    case demoTeams = "demo/getPetTeams"
     case registerKey = "me/registerKey"
     case coverageForDate = "me/getCoverageForDate"
     case setLanguageEn = "me/setUiLang/en"
@@ -107,6 +108,18 @@ struct TeambrellaRequest {
     var failure: TeambrellaRequestFailure?
     var body: RequestBody?
     
+    private var requestString: String {
+        switch type {
+        case .demoTeams:
+            if let locale = Locale.current.languageCode {
+                return type.rawValue + "/" + locale
+            }
+        default:
+            break
+        }
+        return type.rawValue
+    }
+    
     init (type: TeambrellaRequestType,
           parameters: [String: String]? = nil,
           body: RequestBody? = nil,
@@ -120,7 +133,7 @@ struct TeambrellaRequest {
     }
     
     func start() {
-        service.server.ask(for: type.rawValue, parameters: parameters, body: body, success: { json in
+        service.server.ask(for: requestString, parameters: parameters, body: body, success: { json in
             self.parseReply(reply: json)
         }, failure: { error in
             log("\(error)", type: [.error, .serverReply])
@@ -150,7 +163,7 @@ struct TeambrellaRequest {
                 failure?(error)
                 service.error.present(error: error)
             }
-        case .teams:
+        case .teams, .demoTeams:
             let teams = TeamEntity.teams(with: reply["MyTeams"])
             let invitations = TeamEntity.teams(with: reply["MyInvitations"])
             let lastSelectedTeam = reply["LastSelectedTeam"].int
@@ -232,10 +245,10 @@ struct TeambrellaRequest {
         case .privateList:
             let users = reply.arrayValue.map { PrivateChatUser(json: $0) }
             success(.privateList(users))
-//        case .privateChat,
-//             .newPrivatePost:
-//            success(.privateChat(<#T##[ChatEntity]#>))
-//            success(.privateChat(PrivateChatAdaptor(json: reply).adaptedMessages))
+            //        case .privateChat,
+            //             .newPrivatePost:
+            //            success(.privateChat(<#T##[ChatEntity]#>))
+        //            success(.privateChat(PrivateChatAdaptor(json: reply).adaptedMessages))
         default:
             break
         }

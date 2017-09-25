@@ -55,11 +55,11 @@ class ServerService {
         
     }
     
-    static var currentKeyType: FakeKeyType = .testUser
+   // static var currentKeyType: FakeKeyType = .testUser
     static var teamID: Int { return service.session?.currentTeam?.teamID ?? 0 }
     
     static var privateKey: String {
-        return currentKeyType.rawValue
+        return service.crypto.privateKey
     }
     
     private(set)var timestamp: Int64 = 0

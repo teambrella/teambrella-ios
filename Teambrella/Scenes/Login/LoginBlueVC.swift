@@ -32,10 +32,10 @@ class LoginBlueVC: UIViewController {
     @IBOutlet var confetti: SKView!
     
     var isEmitterAdded: Bool = false
-    let validUsers: [String: ServerService.FakeKeyType] = ["10212220476497327": .thorax,
-                                                           "10213031213152997": .denis,
-                                                           "10155873130993128": .kate,
-                                                           "10205925536911596": .eugene
+    let validUsers: [String: ServerService.FakeKeyType] = ["10212220476497327": .thorax
+//                                                           "10213031213152997": .denis,
+//                                                           "10155873130993128": .kate,
+//                                                           "10205925536911596": .eugene
     ]
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
@@ -53,6 +53,7 @@ class LoginBlueVC: UIViewController {
     }
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
+        service.crypto.isDemoUser = true
     }
     
     override func viewDidLoad() {
@@ -138,14 +139,14 @@ class LoginBlueVC: UIViewController {
 //            return
 //        }
         
-        // WARNING: TMP validUser!
-        let validUser: ServerService.FakeKeyType = .thorax
-        Keychain.save(value: validUser.rawValue, forKey: .ethPrivateAddress)
-        ServerService.currentKeyType = validUser
+        if let validUser = validUsers[userID] {
+            Keychain.save(value: validUser.rawValue, forKey: .ethPrivateAddress)
+        }
+        
+        service.crypto.isDemoUser = false
         
         guard let signature = EthereumProcessor.standard.publicKeySignature else {
             fatalError("Malformed ETH signature")
-            
         }
         
         service.server.updateTimestamp { timestamp, error in
@@ -183,6 +184,7 @@ class LoginBlueVC: UIViewController {
     
     func handleFailure(error: Error?) {
         HUD.hide()
+         service.crypto.isDemoUser = true
         performSegue(type: .invitationOnly, sender: nil)
         log("Error \(String(describing: error))", type: .error)
     }
