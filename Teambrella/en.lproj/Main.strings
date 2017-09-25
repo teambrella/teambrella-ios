@@ -13,3 +13,5 @@
 
 "Main.back"    = "Back";
 "Main.cancel" = "Cancel";
+
+"Main.Notification.noInternet" = "No Internet connection";

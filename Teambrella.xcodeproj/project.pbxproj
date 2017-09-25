@@ -318,6 +318,7 @@
 		6DDE95851EE853550019DA47 /* ClaimOptionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */; };
 		6DDE95871EE9988D0019DA47 /* PiecewiseFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */; };
 		6DDF6D4C1F1623CE00F53B0B /* MembersFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */; };
+		6DE3947D1F7909E300784ECD /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3947C1F7909E300784ECD /* ReachabilityService.swift */; };
 		6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */; };
 		6DE793291EF80F11005F4508 /* UniversalChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE793281EF80F11005F4508 /* UniversalChatVC.swift */; };
 		6DE7932C1EF80F41005F4508 /* UniversalChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */; };
@@ -788,6 +789,7 @@
 		6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClaimOptionsCell.xib; path = View/Cells/ClaimOptionsCell.xib; sourceTree = "<group>"; };
 		6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PiecewiseFunction.swift; path = Model/PiecewiseFunction.swift; sourceTree = "<group>"; };
 		6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersFetchStrategy.swift; path = Scenes/Team/Members/MembersFetchStrategy.swift; sourceTree = "<group>"; };
+		6DE3947C1F7909E300784ECD /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReachabilityService.swift; path = Model/Services/Reachability/ReachabilityService.swift; sourceTree = "<group>"; };
 		6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatNewMessagesSeparatorCell.swift; path = Scenes/Team/Chat/ChatNewMessagesSeparatorCell.swift; sourceTree = "<group>"; };
 		6DE793281EF80F11005F4508 /* UniversalChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatVC.swift; path = Scenes/Team/Chat/UniversalChatVC.swift; sourceTree = "<group>"; };
 		6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatDataSource.swift; path = Scenes/Team/Chat/UniversalChatDataSource.swift; sourceTree = "<group>"; };
@@ -1584,6 +1586,7 @@
 			children = (
 				6DA475D71E8BBA0800B56D9B /* Networking */,
 				6DAF1CB91F58562E00421C5A /* PushService */,
+				6DE3947E1F790A0100784ECD /* Reachability */,
 				6DF2E8BF1EF02F8C00C8D60B /* Socket */,
 				6DA8D5581F0E75FB000A4DB7 /* Storage */,
 				6DEC6DFA1E966AB400ACC119 /* Transformers */,
@@ -1884,6 +1887,14 @@
 				6DDE95741EE835360019DA47 /* ClaimCellBuilder.swift */,
 			);
 			name = Claim;
+			sourceTree = "<group>";
+		};
+		6DE3947E1F790A0100784ECD /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				6DE3947C1F7909E300784ECD /* ReachabilityService.swift */,
+			);
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 		6DEC074A1E9BCF330078F40E /* Samples */ = {
@@ -2583,6 +2594,7 @@
 				6D0D2AEF1EFBDB7C0095284C /* ProxyCell.swift in Sources */,
 				6D466AA71ED07CF1001BC579 /* PayTo.swift in Sources */,
 				6D6DA2441EE165B100307C73 /* TeammateVotingInfo.swift in Sources */,
+				6DE3947D1F7909E300784ECD /* ReachabilityService.swift in Sources */,
 				94E80E581F0FE33500DE1A0A /* HomeApplicationStatusCell.swift in Sources */,
 				6DA714FE1EE0679500F39EBE /* ContactCellTableCell.swift in Sources */,
 				6D466AB21ED07CF1001BC579 /* TeambrellaService.swift in Sources */,

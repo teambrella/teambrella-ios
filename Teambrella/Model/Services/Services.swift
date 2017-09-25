@@ -26,15 +26,18 @@ fileprivate(set)var service = ServicesHandler.i
 class ServicesHandler {
     static let i = ServicesHandler()
     
-//    lazy var bitcoin = BitcoinService()
+    let router = MainRouter()
+    let reachability: ReachabilityService = ReachabilityService()
+    
+    //    lazy var bitcoin = BitcoinService()
     lazy var server = ServerService()
-    lazy var router = MainRouter()
-    var socket: SocketService?
     lazy var teambrella = TeambrellaService()
-    var session: Session?
     lazy var storage: Storage = LocalStorage()
     lazy var push: PushService = PushService()
     lazy var log: Log = Log(logLevel: .all)
+    
+    var socket: SocketService?
+    var session: Session?
     
     var currencySymbol: String { return session?.currentTeam?.currencySymbol ?? "" }
     var currencyName: String { return session?.currentTeam?.currency ?? "" }
