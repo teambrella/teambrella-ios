@@ -54,8 +54,9 @@ extension UIViewController {
             metrics: nil,
             views: views)
         constraints += hConstraints
+        let verticalVisualFormat = isIphoneX ? "V:|-(0)-[gradientView(84)]" : "V:|-(0)-[gradientView(64)]"
         let vConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-(0)-[gradientView(64)]",
+            withVisualFormat: verticalVisualFormat,
             options: [],
             metrics: nil,
             views: views)

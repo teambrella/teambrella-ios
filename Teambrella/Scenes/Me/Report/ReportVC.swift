@@ -61,8 +61,7 @@ final class ReportVC: UIViewController, Routable {
         if isModal {
             // not implemented yet
         } else {
-            setupTransparentNavigationBar()
-            defaultGradientOnTop()
+            addGradientNavBar()
             automaticallyAdjustsScrollViewInsets = false
             guard let context = reportContext else { return }
             

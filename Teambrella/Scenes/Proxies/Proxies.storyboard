@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RCI-Dd-d0f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RCI-Dd-d0f">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65v-sn-GhQ" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+                                <rect key="frame" x="0.0" y="-25" width="375" height="129"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
@@ -71,7 +71,7 @@
                             <constraint firstItem="2OK-OB-5g5" firstAttribute="leading" secondItem="dg2-B5-4OS" secondAttribute="leading" id="C6o-EY-dds"/>
                             <constraint firstItem="2OK-OB-5g5" firstAttribute="top" secondItem="9IE-5H-M3H" secondAttribute="bottom" id="PNQ-XD-PX7"/>
                             <constraint firstAttribute="trailing" secondItem="9IE-5H-M3H" secondAttribute="trailing" id="Tu2-2h-Afp"/>
-                            <constraint firstItem="65v-sn-GhQ" firstAttribute="top" secondItem="zMe-cz-T3j" secondAttribute="bottom" constant="-64" id="dna-pX-bni"/>
+                            <constraint firstItem="65v-sn-GhQ" firstAttribute="top" secondItem="zMe-cz-T3j" secondAttribute="bottom" constant="-88" id="dna-pX-bni"/>
                             <constraint firstItem="9IE-5H-M3H" firstAttribute="top" secondItem="zMe-cz-T3j" secondAttribute="bottom" id="i8o-GO-yQv"/>
                             <constraint firstItem="65v-sn-GhQ" firstAttribute="bottom" secondItem="9IE-5H-M3H" secondAttribute="bottom" id="tIK-Dj-xA6"/>
                         </constraints>
@@ -208,11 +208,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
                                         <subviews>
                                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qyr-m3-nkH">
-                                                <rect key="frame" x="16" y="8" width="317" height="44"/>
+                                                <rect key="frame" x="16" y="8" width="317" height="56"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8l-Eu-bWi">
-                                                <rect key="frame" x="341" y="19" width="18" height="22"/>
+                                                <rect key="frame" x="341" y="25" width="18" height="22"/>
                                                 <state key="normal" image="filter"/>
                                                 <connections>
                                                     <action selector="tapSort:" destination="7bW-lz-Yk2" eventType="touchUpInside" id="lYl-8u-coF"/>
@@ -385,7 +385,7 @@
                                         <rect key="frame" x="8" y="647" width="359" height="339"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmx-QX-Cf5">
-                                                <rect key="frame" x="17" y="17" width="47" height="17"/>
+                                                <rect key="frame" x="17" y="17" width="45.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -410,13 +410,13 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TopLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwo-Tg-suh">
-                                                                    <rect key="frame" x="17" y="19" width="63.5" height="18.5"/>
+                                                                    <rect key="frame" x="17" y="19" width="61.5" height="17.5"/>
                                                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                                                     <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BottomLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPo-aB-r6l">
-                                                                    <rect key="frame" x="17" y="43" width="71.5" height="15"/>
+                                                                    <rect key="frame" x="17" y="44" width="69.5" height="14"/>
                                                                     <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
                                                                     <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -526,7 +526,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6vV-Oq-RvH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
