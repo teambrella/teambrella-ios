@@ -19,6 +19,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import PKHUD
 import UIKit
 import XLPagerTabStrip
 
@@ -32,8 +33,10 @@ class MyProxiesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        HUD.show(.progress, onView: view)
         setupCollectionView()
         dataSource.onUpdate = { [weak self] in
+            HUD.hide()
             self?.collectionView.reloadData()
             self?.showEmptyIfNeeded()
         }

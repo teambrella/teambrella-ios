@@ -19,6 +19,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import PKHUD
 import UIKit
 import XLPagerTabStrip
 
@@ -65,7 +66,6 @@ class CoverageVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         umbrellaView.startCurveCoeff = 1.1
-        loadData()
         
         let currency = service.currencySymbol
         upperAmount.currencyLabel.text = currency
@@ -84,6 +84,11 @@ class CoverageVC: UIViewController, Routable {
         slider.isExclusiveTouch = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+    }
+    
     func setImage(for percentage: Int) {
         switch percentage {
         case 98...100: weatherImage.image = #imageLiteral(resourceName: "confetti-umbrella")
@@ -95,12 +100,14 @@ class CoverageVC: UIViewController, Routable {
     func loadData() {
         guard let teamID = service.session?.currentTeam?.teamID else { return }
         
+        HUD.show(.progress, onView: view)
         service.storage.requestCoverage(for: Date(), teamID: teamID).observe { [weak self] result in
             switch result {
             case let .value((coverage: coverage, limit: limit)):
                 self?.coverageAmount = Int(coverage * 100)
                 self?.limitAmount = limit
                 if let slider = self?.slider {
+                    HUD.hide()
                     self?.changeValues(slider: slider)
                 }
             case .error:

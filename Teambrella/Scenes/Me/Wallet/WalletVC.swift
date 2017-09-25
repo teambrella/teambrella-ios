@@ -19,6 +19,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import PKHUD
 import QRCode
 import UIKit
 import XLPagerTabStrip
@@ -40,8 +41,10 @@ class WalletVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        HUD.show(.progress, onView: view)
         WalletCellBuilder.registerCells(in: collectionView)
         dataSource.onUpdate = { [weak self] in
+            HUD.hide()
             self?.collectionView.reloadData()
             guard let id = self?.dataSource.fundAddress else { return }
             

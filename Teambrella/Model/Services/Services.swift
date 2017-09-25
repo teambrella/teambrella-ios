@@ -20,6 +20,7 @@
  */
 
 import Foundation
+import PKHUD
 
 fileprivate(set)var service = ServicesHandler.i
 
@@ -28,7 +29,6 @@ class ServicesHandler {
     
     let router = MainRouter()
     let reachability: ReachabilityService = ReachabilityService()
-    
     //    lazy var bitcoin = BitcoinService()
     lazy var server = ServerService()
     lazy var teambrella = TeambrellaService()
@@ -43,6 +43,8 @@ class ServicesHandler {
     var currencySymbol: String { return session?.currentTeam?.currencySymbol ?? "" }
     var currencyName: String { return session?.currentTeam?.currency ?? "" }
     
-    private init() {}
+    private init() {
+        PKHUD.sharedHUD.gracePeriod = 0.5
+    }
     
 }

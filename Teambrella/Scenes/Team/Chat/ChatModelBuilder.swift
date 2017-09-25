@@ -10,12 +10,17 @@ import UIKit
 
 struct ChatModelBuilder {
     let fragmentParser = ChatFragmentParser()
-    var showRate = true
     
-    func cellModels(from chatItems: [ChatEntity], width: CGFloat, font: UIFont, isClaim: Bool) -> [ChatCellModel] {
+    var showRate = true
+    var font: UIFont = UIFont.teambrella(size: 14)
+    var width: CGFloat = 0
+    
+    func cellModels(from chatItems: [ChatEntity],
+                    lastChunk: ChatChunk?,
+                    isClaim: Bool) -> [ChatCellModel] {
         let heightCalculator = ChatFragmentHeightCalculator(width: width, font: font)
         var result: [ChatCellModel] = []
-        var lastDate: Date = Date.distantPast
+        var lastDate: Date? = lastChunk?.cellModels.last?.date
         for item in chatItems {
             let fragments = fragmentParser.parse(item: item)
             var isMy = false
@@ -31,7 +36,7 @@ struct ChatModelBuilder {
                 avatar = item.avatar
             }
             let date = item.created
-            if date.interval(of: .day, since: lastDate) != 0 {
+            if let last = lastDate, date.interval(of: .day, since: last) != 0 {
                 result.append(ChatSeparatorCellModel(date: date))
                 lastDate = date
             }
