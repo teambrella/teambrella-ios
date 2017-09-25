@@ -318,6 +318,9 @@
 		6DDE95851EE853550019DA47 /* ClaimOptionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */; };
 		6DDE95871EE9988D0019DA47 /* PiecewiseFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */; };
 		6DDF6D4C1F1623CE00F53B0B /* MembersFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */; };
+		6DE3947D1F7909E300784ECD /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3947C1F7909E300784ECD /* ReachabilityService.swift */; };
+		6DE394801F79284900784ECD /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3947F1F79284900784ECD /* ErrorPresenter.swift */; };
+		6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */; };
 		6DE793291EF80F11005F4508 /* UniversalChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE793281EF80F11005F4508 /* UniversalChatVC.swift */; };
 		6DE7932C1EF80F41005F4508 /* UniversalChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */; };
 		6DE7932F1EF810DB005F4508 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7932D1EF810DB005F4508 /* ChatCell.swift */; };
@@ -641,6 +644,8 @@
 		6D73C6DF1EBB36A700A2C0F8 /* Transactions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Transactions.storyboard; path = Scenes/TransactionsTest/Transactions.storyboard; sourceTree = "<group>"; };
 		6D73C6E11EBB374D00A2C0F8 /* PaymentsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsTVC.swift; path = Scenes/TransactionsTest/PaymentsTVC.swift; sourceTree = "<group>"; };
 		6D73C6E31EBB3F0800A2C0F8 /* TransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionCell.swift; path = Scenes/TransactionsTest/TransactionCell.swift; sourceTree = "<group>"; };
+		6D74B2911F7904A5007F736E /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
+		6D74B2921F7904B0007F736E /* SwiftMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMessages.framework; path = Carthage/Build/iOS/SwiftMessages.framework; sourceTree = "<group>"; };
 		6D7987781F6827A80060A193 /* ChatSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatSeparatorCell.swift; path = Scenes/Team/Chat/ChatSeparatorCell.swift; sourceTree = "<group>"; };
 		6D7C1AD01F598CFF00A88987 /* IsTypingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IsTypingView.swift; path = View/IsTypingView.swift; sourceTree = "<group>"; };
 		6D829AA21EB0BE1A0051F43A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Helpers/Extensions/UIColor.swift; sourceTree = "<group>"; };
@@ -785,6 +790,9 @@
 		6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClaimOptionsCell.xib; path = View/Cells/ClaimOptionsCell.xib; sourceTree = "<group>"; };
 		6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PiecewiseFunction.swift; path = Model/PiecewiseFunction.swift; sourceTree = "<group>"; };
 		6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersFetchStrategy.swift; path = Scenes/Team/Members/MembersFetchStrategy.swift; sourceTree = "<group>"; };
+		6DE3947C1F7909E300784ECD /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReachabilityService.swift; path = Model/Services/Reachability/ReachabilityService.swift; sourceTree = "<group>"; };
+		6DE3947F1F79284900784ECD /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorPresenter.swift; path = Model/Services/ErrorPresenter.swift; sourceTree = "<group>"; };
+		6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatNewMessagesSeparatorCell.swift; path = Scenes/Team/Chat/ChatNewMessagesSeparatorCell.swift; sourceTree = "<group>"; };
 		6DE793281EF80F11005F4508 /* UniversalChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatVC.swift; path = Scenes/Team/Chat/UniversalChatVC.swift; sourceTree = "<group>"; };
 		6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatDataSource.swift; path = Scenes/Team/Chat/UniversalChatDataSource.swift; sourceTree = "<group>"; };
 		6DE7932D1EF810DB005F4508 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatCell.swift; path = View/Cells/ChatCell.swift; sourceTree = "<group>"; };
@@ -1580,6 +1588,7 @@
 			children = (
 				6DA475D71E8BBA0800B56D9B /* Networking */,
 				6DAF1CB91F58562E00421C5A /* PushService */,
+				6DE3947E1F790A0100784ECD /* Reachability */,
 				6DF2E8BF1EF02F8C00C8D60B /* Socket */,
 				6DA8D5581F0E75FB000A4DB7 /* Storage */,
 				6DEC6DFA1E966AB400ACC119 /* Transformers */,
@@ -1587,6 +1596,7 @@
 				6DA1D0FA1F040AEF00F9DE87 /* Session.swift */,
 				6DF479191F432D230025F489 /* Keychain.swift */,
 				6D33E1531F715BB10052A58B /* Log.swift */,
+				6DE3947F1F79284900784ECD /* ErrorPresenter.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1706,6 +1716,7 @@
 				6DD051C21F67CC5E00532626 /* InputAccessoryView.swift */,
 				6D7987781F6827A80060A193 /* ChatSeparatorCell.swift */,
 				6D2A57AE1F69858900CE8841 /* ChatHeader.swift */,
+				6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -1881,6 +1892,14 @@
 			name = Claim;
 			sourceTree = "<group>";
 		};
+		6DE3947E1F790A0100784ECD /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				6DE3947C1F7909E300784ECD /* ReachabilityService.swift */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
 		6DEC074A1E9BCF330078F40E /* Samples */ = {
 			isa = PBXGroup;
 			children = (
@@ -1925,19 +1944,21 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */,
-				6DF4791B1F43326A0025F489 /* SwiftKeychainWrapper.framework */,
-				6D0BA5B01F14F83000055E74 /* SwiftDate.framework */,
-				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
+				6D8F97111E8D1529008DC62E /* Alamofire.framework */,
+				6DDE956A1EE80FE40019DA47 /* ImageSlideshow.framework */,
+				6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */,
 				6DA8D54E1F0E43B7000A4DB7 /* PKHUD.framework */,
 				94C89AD51F0104CC00C6D8F7 /* QRCode.framework */,
+				6D74B2911F7904A5007F736E /* Reachability.framework */,
+				6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */,
+				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				6DF2E8C01EF0346F00C8D60B /* Starscream.framework */,
-				6DDE956A1EE80FE40019DA47 /* ImageSlideshow.framework */,
-				6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */,
+				6D0BA5B01F14F83000055E74 /* SwiftDate.framework */,
+				6DF4791B1F43326A0025F489 /* SwiftKeychainWrapper.framework */,
+				6D74B2921F7904B0007F736E /* SwiftMessages.framework */,
 				6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */,
-				6D8F97111E8D1529008DC62E /* Alamofire.framework */,
-				6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */,
 				6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */,
+				6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */,
 				F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */,
 				EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */,
 				BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */,
@@ -2287,6 +2308,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftDate.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeychainWrapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -2431,6 +2454,7 @@
 				6D69DA2D1EFD1A1E00DED5CE /* WalletButtonsCell.swift in Sources */,
 				6DB812221EE6FD2E00B202CE /* ClaimVC.swift in Sources */,
 				6D466AA61ED07CF1001BC579 /* Cosigner.swift in Sources */,
+				6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */,
 				6D66B4A41F4F109E00672583 /* ChatFragmentHeightCalculator.swift in Sources */,
 				6D1A9B251F55CF92004192AC /* PrivateChatUser.swift in Sources */,
 				6DEE67A31EDC5C4D0098EDB3 /* TeammateCell.swift in Sources */,
@@ -2573,6 +2597,7 @@
 				6D0D2AEF1EFBDB7C0095284C /* ProxyCell.swift in Sources */,
 				6D466AA71ED07CF1001BC579 /* PayTo.swift in Sources */,
 				6D6DA2441EE165B100307C73 /* TeammateVotingInfo.swift in Sources */,
+				6DE3947D1F7909E300784ECD /* ReachabilityService.swift in Sources */,
 				94E80E581F0FE33500DE1A0A /* HomeApplicationStatusCell.swift in Sources */,
 				6DA714FE1EE0679500F39EBE /* ContactCellTableCell.swift in Sources */,
 				6D466AB21ED07CF1001BC579 /* TeambrellaService.swift in Sources */,
@@ -2582,6 +2607,7 @@
 				94793A871F0D120700696B90 /* SortCellModel.swift in Sources */,
 				94C89B001F02AA8100C6D8F7 /* TeamEntity.swift in Sources */,
 				6D69DA1C1EFD178800DED5CE /* WalletCellModels.swift in Sources */,
+				6DE394801F79284900784ECD /* ErrorPresenter.swift in Sources */,
 				9407A57E1F111A5300E0DD74 /* HomeCellBuilder.swift in Sources */,
 				6D9CC6171ED48416007F936E /* UIStoryboardSegue.swift in Sources */,
 				6D0E056D1EFEC24D00604981 /* ReportDescriptionCell.swift in Sources */,

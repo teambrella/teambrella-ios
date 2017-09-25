@@ -283,6 +283,7 @@ final class UniversalChatVC: UIViewController, Routable {
         collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
         collectionView.register(ChatTextCell.self, forCellWithReuseIdentifier: "com.chat.text.cell")
         collectionView.register(ChatSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.separator.cell")
+        collectionView.register(ChatNewMessagesSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.new.cell")
         collectionView.register(ChatHeader.self,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: "com.chat.header")
@@ -352,6 +353,8 @@ extension UniversalChatVC: UICollectionViewDataSource {
             identifier = "com.chat.text.cell"
         case _ as ChatSeparatorCellModel:
             identifier = "com.chat.separator.cell"
+        case _ as ChatNewMessagesSeparatorModel:
+            identifier = "com.chat.new.cell"
         default:
             fatalError("Unknown cell")
         }
@@ -400,6 +403,10 @@ extension UniversalChatVC: UICollectionViewDelegate {
             }
         } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
             cell.text = Formatter.teambrellaShort.string(from: model.date)
+        } else if let cell = cell as? ChatNewMessagesSeparatorCell,
+            let model = model as? ChatNewMessagesSeparatorModel {
+            cell.label.text = model.text
+            //cell.setNeedsUpdateConstraints()
         }
     }
     
@@ -442,13 +449,17 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if dataSource[indexPath] is ChatTextCellModel {
+        switch dataSource[indexPath] {
+        case _ as ChatTextCellModel:
             let size = cloudSize(for: indexPath)
             return CGSize(width: collectionView.bounds.width, height: size.height)
-        } else if dataSource[indexPath] is ChatSeparatorCellModel {
+        case _ as ChatSeparatorCellModel:
+              return CGSize(width: collectionView.bounds.width, height: 30)
+        case _ as ChatNewMessagesSeparatorModel:
             return CGSize(width: collectionView.bounds.width, height: 30)
+        default:
+            return CGSize(width: collectionView.bounds.width - 32, height: 100)
         }
-        return CGSize(width: collectionView.bounds.width - 32, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView,

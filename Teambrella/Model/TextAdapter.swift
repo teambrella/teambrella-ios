@@ -31,6 +31,7 @@ struct TextAdapter {
             log("\(type) --> " + message, type: .error)
         } catch {
             log("error", type: .error)
+            service.error.present(error: error)
         }
         log("Falling back to original message", type: .error)
         return string

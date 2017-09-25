@@ -32,6 +32,7 @@ class ClaimTransactionsVC: UIViewController, Routable {
         }
         dataSource.loadData()
     }
+    
 }
 
 // MARK: UICollectionViewDataSource

@@ -153,3 +153,4 @@
 "Team.Chat.TypeLabel.claim" = "RECLAMACION";
 "Team.Chat.TypeLabel.application" = "APPLICACION";
 "Team.Chat.TypeLabel.other" = "DISCUSION";
+"Team.Chat.Separator.newMessages" = "NUEVOS MENSAJES";

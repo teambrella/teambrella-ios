@@ -1,6 +1,7 @@
 # Network
 github "Alamofire/Alamofire" ~> 4.4
 github "daltoniam/Starscream" >= 2.0.3
+github "ashleymills/Reachability.swift"
 
 # Parsers
 github "SwiftyJSON/SwiftyJSON"
@@ -21,6 +22,7 @@ github "aschuch/QRCode"
 github "MortimerGoro/MGSwipeTableCell"
 github "xmartlabs/XLPagerTabStrip" ~> 7.0
 github "pkluz/PKHUD" ~> 4.0
+github "SwiftKickMobile/SwiftMessages"
 
 # Security
 github "jrendel/SwiftKeychainWrapper"

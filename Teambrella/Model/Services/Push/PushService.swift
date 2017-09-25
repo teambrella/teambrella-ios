@@ -25,6 +25,7 @@ class PushService {
                     application.registerForRemoteNotifications()
                 } else {
                     log("User Notification permission denied: \(String(describing: error))", type: [.error, .push])
+                    service.error.present(error: error)
                 }
             }
         }
@@ -37,6 +38,7 @@ class PushService {
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         log("Failed to register for remote notifications: \(error)", type: [.error, .push])
+        service.error.present(error: error)
     }
     
     func getNotificationSettings() {
