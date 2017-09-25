@@ -12,7 +12,9 @@ import SwiftMessages
 final class ErrorPresenter {
     var ids: [String] = []
     
-    func present(error: Error) {
+    func present(error: Error?) {
+        guard let error = error else { return }
+        
         if let error = error as? TeambrellaError {
             presentTeambrella(error: error)
         } else {

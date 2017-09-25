@@ -124,6 +124,7 @@ struct TeambrellaRequest {
             self.parseReply(reply: json)
         }, failure: { error in
             log("\(error)", type: [.error, .serverReply])
+            service.error.present(error: error)
             self.failure?(error)
         })
     }
@@ -137,13 +138,17 @@ struct TeambrellaRequest {
             if let teammates = TeammateEntityFactory.teammates(from: reply) {
                 success(.teammatesList(teammates))
             } else {
-                failure?(TeambrellaErrorFactory.unknownError())
+                let error = TeambrellaErrorFactory.unknownError()
+                failure?(error)
+                service.error.present(error: error)
             }
         case .teammate:
             if let teammate = TeammateEntityFactory.extendedTeammate(from: reply) {
                 success(.teammate(teammate))
             } else {
-                failure?(TeambrellaErrorFactory.unknownError())
+                let error = TeambrellaErrorFactory.unknownError()
+                failure?(error)
+                service.error.present(error: error)
             }
         case .teams:
             let teams = TeamEntity.teams(with: reply["MyTeams"])

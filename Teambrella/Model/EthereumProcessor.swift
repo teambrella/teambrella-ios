@@ -71,6 +71,7 @@ import Geth
             return signed
         } catch {
             log("Error signing ethereum: \(error)", type: .error)
+            service.error.present(error: error)
             return nil
         }
     }

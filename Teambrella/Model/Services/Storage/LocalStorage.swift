@@ -158,8 +158,10 @@ class LocalStorage: Storage {
                 if case .myProxy(let isProxy) = response {
                     promise.resolve(with: isProxy)
                 } else {
-                    promise.reject(with: TeambrellaError(kind: .wrongReply,
-                                                         description: "Was waiting .myProxy, got \(response)"))
+                    let error = TeambrellaError(kind: .wrongReply,
+                                                description: "Was waiting .myProxy, got \(response)")
+                    promise.reject(with: error)
+                    service.error.present(error: error)
                 }
             }, failure: { error in
                 promise.reject(with: error)
