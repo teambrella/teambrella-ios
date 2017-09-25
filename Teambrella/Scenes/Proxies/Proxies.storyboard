@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65v-sn-GhQ" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+                                <rect key="frame" x="0.0" y="-25" width="375" height="129"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
@@ -71,7 +71,7 @@
                             <constraint firstItem="2OK-OB-5g5" firstAttribute="leading" secondItem="dg2-B5-4OS" secondAttribute="leading" id="C6o-EY-dds"/>
                             <constraint firstItem="2OK-OB-5g5" firstAttribute="top" secondItem="9IE-5H-M3H" secondAttribute="bottom" id="PNQ-XD-PX7"/>
                             <constraint firstAttribute="trailing" secondItem="9IE-5H-M3H" secondAttribute="trailing" id="Tu2-2h-Afp"/>
-                            <constraint firstItem="65v-sn-GhQ" firstAttribute="top" secondItem="zMe-cz-T3j" secondAttribute="bottom" constant="-64" id="dna-pX-bni"/>
+                            <constraint firstItem="65v-sn-GhQ" firstAttribute="top" secondItem="zMe-cz-T3j" secondAttribute="bottom" constant="-88" id="dna-pX-bni"/>
                             <constraint firstItem="9IE-5H-M3H" firstAttribute="top" secondItem="zMe-cz-T3j" secondAttribute="bottom" id="i8o-GO-yQv"/>
                             <constraint firstItem="65v-sn-GhQ" firstAttribute="bottom" secondItem="9IE-5H-M3H" secondAttribute="bottom" id="tIK-Dj-xA6"/>
                         </constraints>
