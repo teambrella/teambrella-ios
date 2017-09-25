@@ -23,7 +23,7 @@ import PKHUD
 import UIKit
 import XLPagerTabStrip
 
-class MembersVC: UIViewController, IndicatorInfoProvider {
+final class MembersVC: UIViewController, IndicatorInfoProvider {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var searchView: UIView!
     @IBOutlet var searchBar: UISearchBar!
@@ -74,11 +74,6 @@ class MembersVC: UIViewController, IndicatorInfoProvider {
         }
         
         dataSource.updateSilently()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {

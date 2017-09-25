@@ -34,6 +34,7 @@ class ServicesHandler {
     lazy var teambrella = TeambrellaService()
     lazy var storage: Storage = LocalStorage()
     lazy var push: PushService = PushService()
+    lazy var error: ErrorPresenter = ErrorPresenter()
     lazy var log: Log = Log(logLevel: .all)
     
     var socket: SocketService?

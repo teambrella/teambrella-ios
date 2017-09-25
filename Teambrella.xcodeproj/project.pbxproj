@@ -319,6 +319,7 @@
 		6DDE95871EE9988D0019DA47 /* PiecewiseFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */; };
 		6DDF6D4C1F1623CE00F53B0B /* MembersFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */; };
 		6DE3947D1F7909E300784ECD /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3947C1F7909E300784ECD /* ReachabilityService.swift */; };
+		6DE394801F79284900784ECD /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3947F1F79284900784ECD /* ErrorPresenter.swift */; };
 		6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */; };
 		6DE793291EF80F11005F4508 /* UniversalChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE793281EF80F11005F4508 /* UniversalChatVC.swift */; };
 		6DE7932C1EF80F41005F4508 /* UniversalChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */; };
@@ -790,6 +791,7 @@
 		6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PiecewiseFunction.swift; path = Model/PiecewiseFunction.swift; sourceTree = "<group>"; };
 		6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersFetchStrategy.swift; path = Scenes/Team/Members/MembersFetchStrategy.swift; sourceTree = "<group>"; };
 		6DE3947C1F7909E300784ECD /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReachabilityService.swift; path = Model/Services/Reachability/ReachabilityService.swift; sourceTree = "<group>"; };
+		6DE3947F1F79284900784ECD /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorPresenter.swift; path = Model/Services/ErrorPresenter.swift; sourceTree = "<group>"; };
 		6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatNewMessagesSeparatorCell.swift; path = Scenes/Team/Chat/ChatNewMessagesSeparatorCell.swift; sourceTree = "<group>"; };
 		6DE793281EF80F11005F4508 /* UniversalChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatVC.swift; path = Scenes/Team/Chat/UniversalChatVC.swift; sourceTree = "<group>"; };
 		6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatDataSource.swift; path = Scenes/Team/Chat/UniversalChatDataSource.swift; sourceTree = "<group>"; };
@@ -1594,6 +1596,7 @@
 				6DA1D0FA1F040AEF00F9DE87 /* Session.swift */,
 				6DF479191F432D230025F489 /* Keychain.swift */,
 				6D33E1531F715BB10052A58B /* Log.swift */,
+				6DE3947F1F79284900784ECD /* ErrorPresenter.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -2604,6 +2607,7 @@
 				94793A871F0D120700696B90 /* SortCellModel.swift in Sources */,
 				94C89B001F02AA8100C6D8F7 /* TeamEntity.swift in Sources */,
 				6D69DA1C1EFD178800DED5CE /* WalletCellModels.swift in Sources */,
+				6DE394801F79284900784ECD /* ErrorPresenter.swift in Sources */,
 				9407A57E1F111A5300E0DD74 /* HomeCellBuilder.swift in Sources */,
 				6D9CC6171ED48416007F936E /* UIStoryboardSegue.swift in Sources */,
 				6D0E056D1EFEC24D00604981 /* ReportDescriptionCell.swift in Sources */,

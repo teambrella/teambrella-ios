@@ -10,7 +10,7 @@ import Foundation
 import Reachability
 import SwiftMessages
 
-class ReachabilityService {
+final class ReachabilityService {
     //swiftlint:disable:next force_unwrapping
     let reachability = Reachability()!
     var notification: MessageView?
