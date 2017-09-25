@@ -28,7 +28,6 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     @IBOutlet var searchView: UIView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var searchViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet var inviteFriendButton: BorderedButton!
     
@@ -42,10 +41,10 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchController()
+        HUD.show(.progress, onView: view)
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
             self?.collectionView.reloadData()
-            self?.activityIndicator.stopAnimating()
         }
         
         dataSource.onError = { [weak self] error in
@@ -56,12 +55,8 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
             let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             controller.addAction(cancel)
             self?.present(controller, animated: true, completion: nil)
-            self?.activityIndicator.stopAnimating()
         }
         
-        activityIndicator.startAnimating()
-        
-        HUD.show(.progress, onView: view)
         dataSource.loadData()
         title = "Team.team".localized
     }

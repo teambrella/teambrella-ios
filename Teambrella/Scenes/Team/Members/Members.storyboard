@@ -106,7 +106,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTED (2.1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMa-g1-Uv2" customClass="BadgeLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="37" width="62.5" height="15"/>
+                                                    <rect key="frame" x="72" y="37" width="56.5" height="11"/>
                                                     <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -292,10 +292,6 @@
                                     <outlet property="delegate" destination="KAD-Uk-Hr8" id="P4p-xg-ShN"/>
                                 </connections>
                             </collectionView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XVz-nE-TjQ">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvl-QB-fgG">
                                 <rect key="frame" x="0.0" y="-98" width="375" height="118"/>
                                 <subviews>
@@ -349,15 +345,12 @@
                             <constraint firstItem="pBm-Fr-UWK" firstAttribute="leading" secondItem="4lh-SU-DtU" secondAttribute="leading" id="83N-el-DSd"/>
                             <constraint firstItem="pBm-Fr-UWK" firstAttribute="top" secondItem="1wC-vL-fzt" secondAttribute="bottom" id="8G6-S5-BnH"/>
                             <constraint firstAttribute="trailing" secondItem="pBm-Fr-UWK" secondAttribute="trailing" id="KHl-Eq-OEb"/>
-                            <constraint firstItem="XVz-nE-TjQ" firstAttribute="centerX" secondItem="4lh-SU-DtU" secondAttribute="centerX" id="VEc-yr-NIz"/>
                             <constraint firstItem="5Gj-56-9wc" firstAttribute="top" secondItem="pBm-Fr-UWK" secondAttribute="bottom" id="e5b-39-3O3"/>
-                            <constraint firstItem="XVz-nE-TjQ" firstAttribute="centerY" secondItem="4lh-SU-DtU" secondAttribute="centerY" id="mBP-KF-izb"/>
                             <constraint firstAttribute="trailing" secondItem="jvl-QB-fgG" secondAttribute="trailing" id="qFQ-3d-Uxp"/>
                             <constraint firstItem="jvl-QB-fgG" firstAttribute="leading" secondItem="4lh-SU-DtU" secondAttribute="leading" id="vdF-9D-TBZ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="XVz-nE-TjQ" id="vEL-L4-Cli"/>
                         <outlet property="collectionView" destination="pBm-Fr-UWK" id="beJ-zC-0Xs"/>
                         <outlet property="inviteFriendButton" destination="fxN-1F-D8t" id="Zhd-V4-7WC"/>
                         <outlet property="searchBar" destination="OUQ-Zh-QkO" id="fOl-94-tol"/>
@@ -546,7 +539,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are proxy voter for Jimmy Wong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxQ-2I-53K" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="84.5" y="17" width="205.5" height="16"/>
+                                                    <rect key="frame" x="94.5" y="17" width="185.5" height="16"/>
                                                     <color key="backgroundColor" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="6V4-jV-Qqh"/>
