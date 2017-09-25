@@ -19,6 +19,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import PKHUD
 import UIKit
 import XLPagerTabStrip
 
@@ -32,8 +33,10 @@ class ProxyForVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        HUD.show(.progress, onView: view)
         setupCollectionView()
         dataSource.onUpdate = { [weak self] in
+            HUD.hide()
             self?.collectionView.reloadData()
             self?.showEmptyIfNeeded()
         }
@@ -137,6 +140,6 @@ extension ProxyForVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 126)
+        return dataSource.isEmpty ? .zero : CGSize(width: collectionView.bounds.width, height: 126)
     }
 }

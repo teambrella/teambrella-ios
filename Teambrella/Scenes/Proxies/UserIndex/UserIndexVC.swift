@@ -19,6 +19,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import PKHUD
 import UIKit
 import XLPagerTabStrip
 
@@ -55,6 +56,7 @@ class UserIndexVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        HUD.show(.progress, onView: view)
         setupCollectionView()
         shrinkTopContainer(false)
         dataSource.loadData()
@@ -64,6 +66,7 @@ class UserIndexVC: UIViewController {
             self?.avatarView.showAvatar(string: me.avatarString)
             self?.detailsLabel.text = me.location
             self?.rankLabel.text = String(me.proxyRank)
+            HUD.hide()
             self?.collectionView.reloadData()
         }
     }

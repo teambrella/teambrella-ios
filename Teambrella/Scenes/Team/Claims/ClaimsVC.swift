@@ -19,6 +19,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import PKHUD
 import UIKit
 import XLPagerTabStrip
 
@@ -39,11 +40,12 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        HUD.show(.progress, onView: view)
         registerCells()
-        
         dataSource.teammate = teammate
         dataSource.loadData()
         dataSource.onUpdate = { [weak self] in
+            HUD.hide()
             self?.collectionView.reloadData()
         }
         if isPresentedInStack {
