@@ -37,6 +37,7 @@ final class ReachabilityService {
         var config = SwiftMessages.defaultConfig
         service.router.navigator.map { config.presentationContext = .view($0.view) }
         config.duration = .forever
+        SwiftMessages.hideAll()
         SwiftMessages.show(config: config, view: view)
     }
     
@@ -44,6 +45,6 @@ final class ReachabilityService {
         guard let id = notification?.id else { return }
         
         notification = nil
-        SwiftMessages.hide(id: id)
+        SwiftMessages.hideAll()
     }
 }
