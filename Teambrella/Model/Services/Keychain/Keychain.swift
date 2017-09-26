@@ -33,6 +33,7 @@ class Keychain {
     class func clear() {
         removeValue(forKey: .ethPrivateAddress)
         removeValue(forKey: .ethPrivateAddressDemo)
+        removeValue(forKey: .lastUserType)
     }
     
 }

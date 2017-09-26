@@ -53,7 +53,7 @@ class LoginBlueVC: UIViewController {
     }
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
-        service.crypto.isDemoUser = true
+        service.crypto.clearLastUserType()
     }
     
     override func viewDidLoad() {
@@ -143,7 +143,7 @@ class LoginBlueVC: UIViewController {
             Keychain.save(value: validUser.rawValue, forKey: .ethPrivateAddress)
         }
         
-        service.crypto.isDemoUser = false
+        service.crypto.setToRealUser()
         
         guard let signature = EthereumProcessor.standard.publicKeySignature else {
             fatalError("Malformed ETH signature")
@@ -184,7 +184,7 @@ class LoginBlueVC: UIViewController {
     
     func handleFailure(error: Error?) {
         HUD.hide()
-         service.crypto.isDemoUser = true
+         service.crypto.clearLastUserType()
         performSegue(type: .invitationOnly, sender: nil)
         log("Error \(String(describing: error))", type: .error)
     }

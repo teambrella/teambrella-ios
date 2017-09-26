@@ -26,7 +26,7 @@ struct Key {
     var isTestnet: Bool
     var timestamp: Int64
     var privateKey: String {
-        return key.wif//(key.privateKey as Data).base58String
+        return key.wif //(key.privateKey as Data).base58String
     }
     var publicKey: String {
         return (key.compressedPublicKey as Data).hexString
@@ -35,6 +35,8 @@ struct Key {
         return key.privateKeyAddress.string
     }
     var signature: String {
+        print(privateKey)
+        print(timestamp)
         guard let data = key.signature(forMessage: String(timestamp)) else {
             fatalError("Couldn't create signature data")
         }
@@ -44,6 +46,9 @@ struct Key {
     
     init(base58String: String, timestamp: Int64) {
         self.timestamp = timestamp
+        key = BTCKey(wif: base58String)
+        isTestnet = false
+        /*
         if base58String.characters.count == 52,
             (base58String.hasPrefix("K") || base58String.hasPrefix("L")) {
             let address = BTCPrivateKeyAddress(string: base58String)
@@ -54,11 +59,12 @@ struct Key {
             key = BTCKey(privateKeyAddress: address)
             isTestnet = true
         }
+ */
     }
     
-    init() {
+    init(timestamp: Int64) {
         key = BTCKey()
-        timestamp = 0
+        self.timestamp = timestamp
         isTestnet = false
     }
     

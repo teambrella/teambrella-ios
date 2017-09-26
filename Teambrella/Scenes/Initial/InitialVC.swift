@@ -27,13 +27,15 @@ class InitialVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        service.crypto.deleteStoredKeys()
         if service.crypto.lastUserType != .none {
             isLoginNeeded = false
             startLoadingTeams()
         }
     }
     
-    func getTeams() {
+    func getTeams(timestamp: Int64) {
+        service.crypto.timestamp = timestamp
         let isDemo = service.crypto.isDemoUser
         service.storage.requestTeams(demo: isDemo).observe { [weak self] result in
             switch result {
@@ -41,7 +43,7 @@ class InitialVC: UIViewController {
                 service.session = Session()
                 let lastTeam = teamsEntity.lastTeamID.map { id in
                     teamsEntity.teams.filter { team in team.teamID == id }
-                    }?.first
+                }?.first
                 
                 if let lastTeam = lastTeam {
                     service.session?.currentTeam = lastTeam
@@ -52,6 +54,7 @@ class InitialVC: UIViewController {
                 service.session?.currentUserID = teamsEntity.userID
                 self?.performSegue(type: .teambrella)
             case .error:
+                self?.failure()
                 break
             }
         }
@@ -84,7 +87,9 @@ class InitialVC: UIViewController {
     
     func startLoadingTeams() {
         HUD.show(.progress)
-        getTeams()
+        service.server.updateTimestamp { timestamp, error in
+           self.getTeams(timestamp: timestamp)
+        }
     }
     
     @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
