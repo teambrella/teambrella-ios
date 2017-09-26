@@ -110,7 +110,6 @@ extension SocketService: WebSocketDelegate {
         log("disconnected", type: .socket)
         if let error = error {
             log("disconnected with error: \(error)", type: [.error, .socket])
-            service.error.present(error: error)
         }
     }
     
