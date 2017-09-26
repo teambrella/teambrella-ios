@@ -266,7 +266,7 @@ final class UniversalChatDatasource {
             return
         }
         let hasNewModels = self.count > count
-        handleNewSeparator(hasNewModels: hasNewModels, isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
+       // handleNewSeparator(hasNewModels: hasNewModels, isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
         onUpdate?(isPrevious, hasNewModels)
     }
     

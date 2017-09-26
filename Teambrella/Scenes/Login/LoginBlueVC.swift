@@ -32,11 +32,11 @@ class LoginBlueVC: UIViewController {
     @IBOutlet var confetti: SKView!
     
     var isEmitterAdded: Bool = false
-    let validUsers: [String: ServerService.FakeKeyType] = ["10212220476497327": .thorax
-//                                                           "10213031213152997": .denis,
-//                                                           "10155873130993128": .kate,
-//                                                           "10205925536911596": .eugene
-    ]
+//    let validUsers: [String: ServerService.FakeKeyType] = ["10212220476497327": .thorax
+////                                                           "10213031213152997": .denis,
+////                                                           "10155873130993128": .kate,
+////                                                           "10205925536911596": .eugene
+//    ]
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
         let manager = FBSDKLoginManager()
@@ -139,14 +139,17 @@ class LoginBlueVC: UIViewController {
 //            return
 //        }
         
-        if let validUser = validUsers[userID] {
-            Keychain.save(value: validUser.rawValue, forKey: .ethPrivateAddress)
-        }
+//        if let validUser = validUsers[userID] {
+//            Keychain.save(value: validUser.rawValue, forKey: .ethPrivateAddress)
+//        }
         
         service.crypto.setToRealUser()
         
         guard let signature = EthereumProcessor.standard.publicKeySignature else {
-            fatalError("Malformed ETH signature")
+            let error = TeambrellaErrorFactory.malformedETCsignature()
+            service.error.present(error: error)
+            service.router.logout()
+            return
         }
         
         service.server.updateTimestamp { timestamp, error in

@@ -46,14 +46,14 @@ class ServerService {
         static let timestampURL = "me/GetTimestamp"
     }
     
-    enum FakeKeyType: String {
-        case denis = "cNqQ7aZWitJCk1o9dNhr1o9k3UKdeW92CDYrvDHHLuwFuEnfcBXo"
-        case kate = "cUNX4HYHK3thsjDKEcB26qRYriw8uJLtt8UvDrM98GbUBn22HMrY"
-        case thorax = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
-        case eugene = "L4TzGwABRFtqGBtrbKxK1ZHEByi3GczUhztEx9dtPvXkuAzGKGdo"
-        case testUser = "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
-        
-    }
+//    enum FakeKeyType: String {
+//        case denis = "cNqQ7aZWitJCk1o9dNhr1o9k3UKdeW92CDYrvDHHLuwFuEnfcBXo"
+//        case kate = "cUNX4HYHK3thsjDKEcB26qRYriw8uJLtt8UvDrM98GbUBn22HMrY"
+//        case thorax = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
+//        case eugene = "L4TzGwABRFtqGBtrbKxK1ZHEByi3GczUhztEx9dtPvXkuAzGKGdo"
+//        case testUser = "Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
+//
+//    }
     
    // static var currentKeyType: FakeKeyType = .testUser
     static var teamID: Int { return service.session?.currentTeam?.teamID ?? 0 }

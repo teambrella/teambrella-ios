@@ -43,6 +43,7 @@ class ChooseYourTeamVC: UIViewController, Routable {
         dataSource.createModels()
         
         tableView.register(TeamCell.nib, forCellReuseIdentifier: TeamCell.cellID)
+        tableView.register(SwitchUserCell.nib, forCellReuseIdentifier: SwitchUserCell.cellID)
         container.layer.cornerRadius = 4
 //        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapCancel))
 //        backView.addGestureRecognizer(recognizer)
@@ -98,14 +99,21 @@ extension ChooseYourTeamVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath)
+        let identifier: String
+        switch dataSource[indexPath] {
+        case _ as SwitchUserTeamCellModel:
+            identifier = SwitchUserCell.cellID
+        default:
+            identifier = TeamCell.cellID
+        }
+        return tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
     }
 }
 
 extension ChooseYourTeamVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let cell = cell as? TeamCell {
-            let model = dataSource[indexPath]
+         let model = dataSource[indexPath]
+        if let cell = cell as? TeamCell, let model = model as? ChooseYourTeamCellModel {
             cell.teamIcon.showImage(string: model.teamIcon)
             cell.incomingCount.text = String(model.incomingCount)
             cell.incomingCount.isHidden = model.incomingCount == 0
@@ -113,6 +121,8 @@ extension ChooseYourTeamVC: UITableViewDelegate {
             cell.itemName.text = model.itemName
             cell.coverage.text = String(model.coverage) + "%"
             cell.tick.isHidden = indexPath.row != dataSource.currentTeamIndex
+        } else if let cell = cell as? SwitchUserCell, let model = model as? SwitchUserTeamCellModel {
+            cell.infoLabel.text = model.name
         }
     }
     
@@ -126,8 +136,7 @@ extension ChooseYourTeamVC: UITableViewDelegate {
             return
         }
         
-        let team = dataSource[indexPath]
-        guard team.teamID != -1 else {
+        guard let team = dataSource[indexPath] as? ChooseYourTeamCellModel else {
             service.router.logout()
             tapCancel()
             return
