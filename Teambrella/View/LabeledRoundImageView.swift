@@ -24,8 +24,8 @@ class LabeledRoundImageView: UIView {
         ava.clipsToBounds = true
         return ava
     }()
-    lazy var riskLabel: UILabel = {
-        let lbl = UILabel()
+    lazy var riskLabel: Label = {
+        let lbl = Label()
         self.addSubview(lbl)
         lbl.textAlignment = NSTextAlignment.center
         lbl.font = UIFont.systemFont(ofSize: 8)
@@ -33,6 +33,7 @@ class LabeledRoundImageView: UIView {
         lbl.layer.cornerRadius = 3
         lbl.layer.borderWidth = 1
         lbl.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        lbl.textInsets = UIEdgeInsets(top: 1, left: 2, bottom: 1, right: 2)
         return lbl
     }()
     
@@ -46,15 +47,15 @@ class LabeledRoundImageView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        riskLabel.frame = CGRect(x: 1,
+        riskLabel.frame = CGRect(x: 0,
                                  y: bounds.midY + bounds.midY / 2,
-                                 width: bounds.width - 2,
+                                 width: bounds.width,
                                  height: bounds.height / 3)
         
         avatar.frame = CGRect(x: 0,
-                              y: 0,
+                              y: bounds.maxY - bounds.width - riskLabel.frame.height / 2,
                               width: bounds.width,
-                              height: riskLabel.frame.midY)
+                              height: bounds.width)
        // avatar.image = #imageLiteral(resourceName: "cat")
         
         riskLabel.backgroundColor = labelBackgroundColor

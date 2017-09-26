@@ -207,10 +207,10 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pg9-sh-oZv" customClass="LabeledRoundImageView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="317" y="678" width="33" height="40"/>
+                                <rect key="frame" x="319.5" y="683" width="28" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="33" id="c4z-2C-xRc"/>
-                                    <constraint firstAttribute="height" constant="40" id="kUs-WA-bdj"/>
+                                    <constraint firstAttribute="width" constant="28" id="c4z-2C-xRc"/>
+                                    <constraint firstAttribute="height" constant="35" id="kUs-WA-bdj"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="labelBackgroundColor">
@@ -223,13 +223,13 @@
                                 <rect key="frame" x="643" y="709.5" width="8" height="13"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydv-wm-DmZ" customClass="LabeledRoundImageView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="285" y="686" width="27" height="32"/>
+                                <rect key="frame" x="291.5" y="690" width="23" height="28"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="riskLabelText" value="1.60"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJJ-3h-x7b" customClass="LabeledRoundImageView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="355" y="686" width="27" height="32"/>
+                                <rect key="frame" x="352.5" y="690" width="23" height="28"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="riskLabelText" value="1.59"/>
                                 </userDefinedRuntimeAttributes>
