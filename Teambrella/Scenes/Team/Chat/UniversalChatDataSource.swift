@@ -45,7 +45,7 @@ final class UniversalChatDatasource {
     }
     
     var count: Int { return chunks.reduce(0) { $0 + $1.count } }
-    var limit                         = 10
+    var limit                         = 100
     
     var hasNext = true
     var hasPrevious = true

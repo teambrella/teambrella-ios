@@ -74,6 +74,7 @@ class LoginBlueVC: UIViewController {
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
         let manager = FBSDKLoginManager()
+        manager.logOut()
         let permissions = ["public_profile", "email", "user_friends"]
         HUD.show(.progress)
         manager.logIn(withReadPermissions: permissions, from: self) { [weak self] result, error in
@@ -170,15 +171,6 @@ class LoginBlueVC: UIViewController {
     }
     
     func register(token: String, userID: String) {
-//        guard let validUser = validUsers[userID] else {
-//            performSegue(type: .invitationOnly, sender: nil)
-//            return
-//        }
-        
-//        if let validUser = validUsers[userID] {
-//            Keychain.save(value: validUser.rawValue, forKey: .ethPrivateAddress)
-//        }
-        
         service.crypto.setToRealUser()
         
         guard let signature = EthereumProcessor.standard.publicKeySignature else {
