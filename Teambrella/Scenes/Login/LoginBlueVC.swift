@@ -32,11 +32,45 @@ class LoginBlueVC: UIViewController {
     @IBOutlet var confetti: SKView!
     
     var isEmitterAdded: Bool = false
-//    let validUsers: [String: ServerService.FakeKeyType] = ["10212220476497327": .thorax
-////                                                           "10213031213152997": .denis,
-////                                                           "10155873130993128": .kate,
-////                                                           "10205925536911596": .eugene
-//    ]
+
+    lazy var secretRecognizer: UILongPressGestureRecognizer = {
+        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(secretTap))
+        recognizer.minimumPressDuration = 8
+        return recognizer
+    }()
+    
+    @objc
+    private func secretTap(sender: UILongPressGestureRecognizer) {
+        let controller = UIAlertController(title: "Secret entrance",
+                                           message: "Insert secret BTC key",
+                                           preferredStyle: .alert)
+        controller.addTextField { textField in
+            textField.placeholder = "BTC private key"
+            textField.keyboardType = .default
+        }
+       
+        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] action in
+            if let textField = controller.textFields?.first,
+                let text = textField.text,
+                text.count > 10 {
+                self?.setupBTCsecretAddress(string: text)
+            }
+        }))
+        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+       
+        present(controller, animated: true, completion: nil)
+    }
+    
+    private func setupBTCsecretAddress(string: String) {
+        let demo = Keychain.value(forKey: .ethPrivateAddressDemo)
+        guard demo != string else {
+            return
+        }
+        
+        Keychain.save(value: string, forKey: .ethPrivateAddress)
+        service.crypto.setToRealUser()
+        performSegue(type: .unwindToInitial, sender: nil)
+    }
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
         let manager = FBSDKLoginManager()
@@ -62,6 +96,8 @@ class LoginBlueVC: UIViewController {
         continueWithFBButton.setTitle("Login.LoginBlueVC.continueWithFBButton".localized, for: .normal)
         tryDemoButton.setTitle("Login.LoginBlueVC.tryDemoButton".localized, for: .normal)
         continueWithFBButton.layer.cornerRadius = 2
+        centerLabel.isUserInteractionEnabled = true
+        centerLabel.addGestureRecognizer(secretRecognizer)
     }
     
     override func didReceiveMemoryWarning() {
