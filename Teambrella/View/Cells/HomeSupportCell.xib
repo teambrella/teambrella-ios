@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -84,6 +84,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ibe-tf-PeM" secondAttribute="trailing" constant="16" id="A6g-Bx-b2n"/>
                             <constraint firstItem="VXr-cm-2gg" firstAttribute="leading" secondItem="F6U-lg-7J1" secondAttribute="leading" constant="16" id="D2M-Pb-j7r"/>
+                            <constraint firstItem="ibe-tf-PeM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="X30-OO-rRz" secondAttribute="bottom" constant="8" id="Q1Q-9a-Qnv"/>
                             <constraint firstItem="h36-GT-vbe" firstAttribute="leading" secondItem="9jj-my-DjP" secondAttribute="leading" id="Sye-e2-L1r"/>
                             <constraint firstAttribute="bottom" secondItem="ibe-tf-PeM" secondAttribute="bottom" constant="16" id="WjG-cC-7Xb"/>
                             <constraint firstItem="9jj-my-DjP" firstAttribute="bottom" secondItem="VXr-cm-2gg" secondAttribute="centerY" id="X5z-g5-3TA"/>
@@ -91,7 +92,8 @@
                             <constraint firstItem="ibe-tf-PeM" firstAttribute="leading" secondItem="F6U-lg-7J1" secondAttribute="leading" constant="16" id="b8m-yr-REq"/>
                             <constraint firstAttribute="trailing" secondItem="X30-OO-rRz" secondAttribute="trailing" constant="16" id="bpI-XD-w6Z"/>
                             <constraint firstItem="N3b-4e-h0v" firstAttribute="top" secondItem="9jj-my-DjP" secondAttribute="bottom" constant="1" id="dKp-oZ-dow"/>
-                            <constraint firstItem="X30-OO-rRz" firstAttribute="top" secondItem="VXr-cm-2gg" secondAttribute="bottom" constant="14" id="iik-9r-crN"/>
+                            <constraint firstItem="X30-OO-rRz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="VXr-cm-2gg" secondAttribute="bottom" constant="8" id="fos-bn-Hbe"/>
+                            <constraint firstItem="X30-OO-rRz" firstAttribute="top" secondItem="VXr-cm-2gg" secondAttribute="bottom" priority="750" constant="14" id="iik-9r-crN"/>
                             <constraint firstItem="h36-GT-vbe" firstAttribute="centerY" secondItem="N3b-4e-h0v" secondAttribute="centerY" id="rcb-y0-pJg"/>
                             <constraint firstItem="N3b-4e-h0v" firstAttribute="leading" secondItem="h36-GT-vbe" secondAttribute="trailing" constant="6" id="tQe-O3-a1Z"/>
                             <constraint firstItem="VXr-cm-2gg" firstAttribute="top" secondItem="F6U-lg-7J1" secondAttribute="top" constant="16" id="vV7-S0-upZ"/>

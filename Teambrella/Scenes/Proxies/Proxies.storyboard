@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65v-sn-GhQ" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-25" width="375" height="129"/>
+                                <rect key="frame" x="0.0" y="-24" width="375" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
@@ -114,7 +114,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="oiz-7k-htZ" firstAttribute="top" secondItem="2Mr-eg-SUb" secondAttribute="bottom" id="AND-i1-0XR"/>
                             <constraint firstItem="2Mr-eg-SUb" firstAttribute="top" secondItem="D3L-Rk-2lC" secondAttribute="bottom" id="CUr-75-1gI"/>
@@ -158,7 +158,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6vj-lL-qVD" firstAttribute="top" secondItem="Lk6-uS-ISP" secondAttribute="bottom" id="3PR-dn-U5y"/>
                             <constraint firstItem="yhD-ub-J9P" firstAttribute="top" secondItem="6vj-lL-qVD" secondAttribute="bottom" id="BAf-Yz-vQq"/>
@@ -207,8 +207,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niI-CL-ghc" userLabel="Resizing View" customClass="RadarView" customModule="Teambrella" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
                                         <subviews>
-                                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qyr-m3-nkH">
+                                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="qyr-m3-nkH">
                                                 <rect key="frame" x="16" y="8" width="317" height="56"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8l-Eu-bWi">
@@ -231,7 +233,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW YORK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pn0-6n-rVi" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW YORK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pn0-6n-rVi" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
                                                 <rect key="frame" x="88" y="107" width="87" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -336,7 +338,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AlL-Qh-U17" secondAttribute="trailing" id="Dfu-TY-BFa"/>
                             <constraint firstItem="Xag-fb-NUG" firstAttribute="leading" secondItem="Oi2-II-owq" secondAttribute="leading" id="O89-hl-k4W"/>
@@ -392,7 +394,7 @@
                                         <rect key="frame" x="8" y="647" width="359" height="339"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmx-QX-Cf5">
-                                                <rect key="frame" x="17" y="17" width="45.5" height="17"/>
+                                                <rect key="frame" x="17" y="17" width="47" height="17"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -418,13 +420,13 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TopLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwo-Tg-suh">
-                                                                    <rect key="frame" x="17" y="19" width="61.5" height="17.5"/>
+                                                                    <rect key="frame" x="17" y="19" width="63.5" height="18.5"/>
                                                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                                                     <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BottomLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPo-aB-r6l">
-                                                                    <rect key="frame" x="17" y="44" width="69.5" height="14"/>
+                                                                    <rect key="frame" x="17" y="43" width="71.5" height="15"/>
                                                                     <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
                                                                     <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>

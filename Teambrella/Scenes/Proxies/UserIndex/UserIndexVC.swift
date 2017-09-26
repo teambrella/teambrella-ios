@@ -64,7 +64,7 @@ class UserIndexVC: UIViewController {
             guard let dataSource = self?.dataSource, let me = dataSource.meModel else { return }
             
             self?.avatarView.showAvatar(string: me.avatarString)
-            self?.detailsLabel.text = me.location
+            self?.detailsLabel.text = me.location.uppercased()
             self?.rankLabel.text = String(me.proxyRank)
             HUD.hide()
             self?.collectionView.reloadData()
@@ -76,6 +76,17 @@ class UserIndexVC: UIViewController {
         collectionView.register(InfoHeader.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: InfoHeader.cellID)
+    }
+    
+    func configureSearchContainer() {
+//        searchController = UISearchController(searchResultsController: nil)
+//        searchController.searchResultsUpdater = self
+//        searchController.dimsBackgroundDuringPresentation = true
+//        searchController.searchBar.placeholder = "Team.MembersVC.searchHere".localized
+//        searchBar.placeholder = "Team.MembersVC.searchHere".localized
+//
+//        searchController.searchBar.delegate = self
+//        searchController.searchBar.sizeToFit()
     }
     
     fileprivate func shrinkTopContainer(_ shrink: Bool) {

@@ -295,7 +295,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvl-QB-fgG">
                                 <rect key="frame" x="0.0" y="-98" width="375" height="118"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" barStyle="blackTranslucent" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="OUQ-Zh-QkO">
+                                    <searchBar contentMode="redraw" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="OUQ-Zh-QkO">
                                         <rect key="frame" x="16" y="34" width="309" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="c3S-qc-Msz"/>
