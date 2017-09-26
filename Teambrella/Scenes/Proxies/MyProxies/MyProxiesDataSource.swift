@@ -69,6 +69,7 @@ class MyProxiesDataSource {
                 if case .myProxies(let proxies) = response {
                     if self.isSilentUpdate {
                         self.items.removeAll()
+                        //print(isEmpty ? "datasource is empty" : "ERRORRRRR!!!")
                         self.isSilentUpdate = false
                     }
                     self.items += proxies

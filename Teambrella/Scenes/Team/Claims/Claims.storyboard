@@ -31,8 +31,8 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HB3-6s-gf8">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="o5z-fr-1uL">
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="o5z-fr-1uL">
                                     <size key="itemSize" width="351" height="140"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -67,7 +67,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DS-qp-KPw" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DS-qp-KPw" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
                                                             <rect key="frame" x="96" y="46" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -86,7 +86,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1x-lO-xeP" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="v1x-lO-xeP" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
                                                             <rect key="frame" x="293" y="44" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -106,7 +106,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="nLW-4X-pQM" firstAttribute="bottom" secondItem="BiH-9W-QY9" secondAttribute="bottom" id="2tL-6u-Okp"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="v1x-lO-xeP" secondAttribute="trailing" id="4ci-wp-axL"/>
+                                                        <constraint firstItem="v1x-lO-xeP" firstAttribute="trailing" secondItem="feS-Gu-bjP" secondAttribute="trailing" id="6yn-Rh-707"/>
                                                         <constraint firstItem="9MT-p8-cw4" firstAttribute="leading" secondItem="71m-C5-Wtx" secondAttribute="leadingMargin" id="Adp-Mc-qbG"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="9MT-p8-cw4" secondAttribute="trailing" id="HhZ-Gh-ZFM"/>
                                                         <constraint firstItem="v1x-lO-xeP" firstAttribute="top" secondItem="BiH-9W-QY9" secondAttribute="centerY" id="Yd2-f6-XkN"/>
@@ -116,10 +116,11 @@
                                                         <constraint firstItem="3DS-qp-KPw" firstAttribute="leading" secondItem="nLW-4X-pQM" secondAttribute="trailing" constant="8" id="dcy-p7-wGK"/>
                                                         <constraint firstItem="9SL-QM-JEG" firstAttribute="top" secondItem="BiH-9W-QY9" secondAttribute="top" id="fR1-HV-22c"/>
                                                         <constraint firstItem="3DS-qp-KPw" firstAttribute="centerY" secondItem="nLW-4X-pQM" secondAttribute="centerY" id="gcT-3g-GQb"/>
+                                                        <constraint firstAttribute="trailing" secondItem="feS-Gu-bjP" secondAttribute="trailing" constant="16" id="iuU-II-W6P"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="9MT-p8-cw4" secondAttribute="bottom" id="kX8-d0-Bj6"/>
                                                         <constraint firstItem="nLW-4X-pQM" firstAttribute="leading" secondItem="9SL-QM-JEG" secondAttribute="leading" id="mXW-5D-YXi"/>
                                                         <constraint firstItem="BiH-9W-QY9" firstAttribute="top" secondItem="71m-C5-Wtx" secondAttribute="topMargin" id="rUL-iI-zXS"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="feS-Gu-bjP" secondAttribute="trailing" id="uUE-vT-TW6"/>
+                                                        <constraint firstItem="v1x-lO-xeP" firstAttribute="leading" secondItem="feS-Gu-bjP" secondAttribute="leading" id="wRO-lh-pex"/>
                                                     </constraints>
                                                     <edgeInsets key="layoutMargins" top="24" left="16" bottom="16" right="16"/>
                                                 </view>
@@ -151,7 +152,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vO9-KQ-q0o">
-                                                    <rect key="frame" x="16" y="16" width="327" height="40"/>
+                                                    <rect key="frame" x="16" y="18" width="327" height="40"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XNe-Ds-VYF">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -171,7 +172,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-qd-b7g" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-qd-b7g" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
                                                             <rect key="frame" x="80" y="22" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -228,13 +229,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fm-zF-TfT" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="69" width="42" height="21"/>
+                                                    <rect key="frame" x="16" y="71" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ey-O7-pHf" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="64" y="69" width="42" height="21"/>
+                                                    <rect key="frame" x="64" y="71" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -252,13 +253,13 @@
                                         <constraints>
                                             <constraint firstItem="rHA-3k-TcH" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leadingMargin" id="2Tq-q0-aD6"/>
                                             <constraint firstItem="kee-4E-5EA" firstAttribute="leading" secondItem="vO9-KQ-q0o" secondAttribute="trailing" constant="8" id="4Kg-Ht-iiJ"/>
-                                            <constraint firstItem="vO9-KQ-q0o" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leadingMargin" id="4pL-lY-rGN"/>
+                                            <constraint firstItem="vO9-KQ-q0o" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leading" constant="16" id="6SD-4f-OE4"/>
                                             <constraint firstItem="7Ey-O7-pHf" firstAttribute="leading" secondItem="1fm-zF-TfT" secondAttribute="trailing" constant="6" id="6m5-fw-k4c"/>
                                             <constraint firstItem="1fm-zF-TfT" firstAttribute="leading" secondItem="XNe-Ds-VYF" secondAttribute="leading" id="6qb-IR-J4R"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="kee-4E-5EA" secondAttribute="trailing" id="P0b-xP-sxq"/>
                                             <constraint firstAttribute="bottom" secondItem="rHA-3k-TcH" secondAttribute="bottom" id="YQA-xF-xGO"/>
                                             <constraint firstItem="1fm-zF-TfT" firstAttribute="top" secondItem="XNe-Ds-VYF" secondAttribute="bottom" constant="13" id="Zuv-NW-CZ6"/>
-                                            <constraint firstItem="vO9-KQ-q0o" firstAttribute="top" secondItem="Tra-Eo-bdx" secondAttribute="topMargin" id="nGc-L2-4ki"/>
+                                            <constraint firstAttribute="trailing" secondItem="kee-4E-5EA" secondAttribute="trailing" constant="16" id="ex2-5j-Obn"/>
+                                            <constraint firstItem="vO9-KQ-q0o" firstAttribute="top" secondItem="Tra-Eo-bdx" secondAttribute="top" constant="18" id="pty-09-0y2"/>
                                             <constraint firstItem="kee-4E-5EA" firstAttribute="centerY" secondItem="Tra-Eo-bdx" secondAttribute="centerY" id="rUX-LM-VqC"/>
                                             <constraint firstAttribute="trailing" secondItem="rHA-3k-TcH" secondAttribute="trailing" id="rpL-cr-8PH"/>
                                             <constraint firstItem="7Ey-O7-pHf" firstAttribute="centerY" secondItem="1fm-zF-TfT" secondAttribute="centerY" id="xCc-vg-eHP"/>
@@ -304,7 +305,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-bQ-aHd" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-bQ-aHd" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
                                                             <rect key="frame" x="80" y="22.5" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -360,6 +361,11 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="0Mi-q0-DLr"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="valueColor">
+                                                                    <color key="value" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
                                                     <constraints>
@@ -379,14 +385,14 @@
                                         <constraints>
                                             <constraint firstItem="uvp-wZ-ehF" firstAttribute="centerY" secondItem="ybB-qd-hfW" secondAttribute="centerY" id="0Oc-iu-Oyb"/>
                                             <constraint firstItem="Lxf-Re-lOz" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leadingMargin" id="0kp-Az-LgD"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="IcY-f3-Qvk" secondAttribute="trailing" id="DbU-qe-ked"/>
                                             <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" secondItem="uvp-wZ-ehF" secondAttribute="trailing" id="Nq8-Am-rAu"/>
                                             <constraint firstAttribute="trailing" secondItem="Lxf-Re-lOz" secondAttribute="trailing" id="QOO-Zd-6fC"/>
                                             <constraint firstAttribute="bottom" secondItem="Lxf-Re-lOz" secondAttribute="bottom" id="WIc-vT-iRf"/>
-                                            <constraint firstItem="uvp-wZ-ehF" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leadingMargin" id="c0U-Xo-wUG"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="eiH-hO-EVe" secondAttribute="bottom" id="eCd-me-NKe"/>
                                             <constraint firstAttribute="topMargin" secondItem="eiH-hO-EVe" secondAttribute="top" id="gad-2b-pAt"/>
                                             <constraint firstItem="IcY-f3-Qvk" firstAttribute="leading" secondItem="eiH-hO-EVe" secondAttribute="trailing" constant="8" id="mxF-Jd-l5R"/>
+                                            <constraint firstItem="uvp-wZ-ehF" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leading" constant="16" id="oEp-Ub-5dy"/>
+                                            <constraint firstAttribute="trailing" secondItem="IcY-f3-Qvk" secondAttribute="trailing" constant="16" id="rlW-B6-Q1S"/>
                                             <constraint firstItem="IcY-f3-Qvk" firstAttribute="centerY" secondItem="ybB-qd-hfW" secondAttribute="centerY" id="zdT-Rf-wXy"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
@@ -422,7 +428,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjd-EM-1DM" customClass="ItemValueLabel" customModule="Teambrella" customModuleProvider="target">
-                                                    <rect key="frame" x="293" y="46" width="42" height="21"/>
+                                                    <rect key="frame" x="297" y="46" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -432,11 +438,11 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="ZiR-eo-EuH" firstAttribute="centerY" secondItem="fMf-MF-LPf" secondAttribute="centerY" id="4PT-8w-br9"/>
-                                            <constraint firstItem="ZiR-eo-EuH" firstAttribute="leading" secondItem="Cjd-EM-1DM" secondAttribute="trailing" constant="16" id="G2G-CO-jbh"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="ZiR-eo-EuH" secondAttribute="trailing" id="HpJ-9k-aRx"/>
+                                            <constraint firstItem="ZiR-eo-EuH" firstAttribute="leading" secondItem="Cjd-EM-1DM" secondAttribute="trailing" constant="12" id="G2G-CO-jbh"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZiR-eo-EuH" secondAttribute="trailing" constant="16" id="I6E-C8-n4A"/>
                                             <constraint firstItem="Cjd-EM-1DM" firstAttribute="centerY" secondItem="fMf-MF-LPf" secondAttribute="centerY" id="Kx1-af-cLq"/>
                                             <constraint firstItem="qIo-tg-7Xi" firstAttribute="centerY" secondItem="fMf-MF-LPf" secondAttribute="centerY" id="bCb-YB-dtt"/>
-                                            <constraint firstItem="qIo-tg-7Xi" firstAttribute="leading" secondItem="fMf-MF-LPf" secondAttribute="leadingMargin" id="dCj-ZG-afV"/>
+                                            <constraint firstItem="qIo-tg-7Xi" firstAttribute="leading" secondItem="fMf-MF-LPf" secondAttribute="leading" constant="16" id="dKS-es-gle"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                                         <size key="customSize" width="375" height="112"/>
