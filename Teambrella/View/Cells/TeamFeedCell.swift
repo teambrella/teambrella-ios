@@ -33,7 +33,7 @@ class TeamFeedCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var iconView: UIImageView!
     @IBOutlet var typeLabel: InfoLabel!
     @IBOutlet var timeLabel: InfoLabel!
-    @IBOutlet var unreadLabel: UILabel!
+    @IBOutlet var unreadLabel: Label!
    
     var avatarMode: AvatarMode = .circular {
         didSet {

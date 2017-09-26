@@ -44,6 +44,7 @@ struct FeedCellBuilder {
             if let date = model.itemDate {
             cell.timeLabel.text = DateProcessor().stringInterval(from: date).uppercased()
             }
+            cell.unreadLabel.font = UIFont.teambrellaBold(size: 13)
             cell.unreadLabel.text = String(model.unreadCount)
             cell.unreadLabel.isHidden = model.unreadCount == 0
             

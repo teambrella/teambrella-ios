@@ -78,7 +78,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6d-fE-Fmr" customClass="Label" customModule="Teambrella" customModuleProvider="target">
                                 <rect key="frame" x="564" y="79" width="22" height="22"/>
-                                <color key="backgroundColor" red="0.14117647059999999" green="0.86274509799999999" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.12156862745098039" green="0.75294117647058822" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="22" id="6eG-v4-Ylz"/>
                                     <constraint firstAttribute="height" constant="22" id="QP4-cV-zso"/>
