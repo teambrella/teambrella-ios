@@ -13,13 +13,14 @@ final class CryptoUser {
         case none, real, demo
     }
     
-    var isDemoUser: Bool = false
-    
     var lastUserType: LastUserType {
         guard let lastUserType = Keychain.value(forKey: .lastUserType) else { return .none }
         
         return LastUserType(rawValue: lastUserType) ?? .none
     }
+    
+    var timestamp: Int64 = 0
+    var isDemoUser: Bool { return lastUserType != .real }
     
     var privateKey: String {
         return isDemoUser ? demoPrivateKey : realPrivateKey
@@ -27,6 +28,10 @@ final class CryptoUser {
     
     func clearLastUserType() {
         storeLastUserType(type: .none)
+    }
+    
+    func setToRealUser() {
+        storeLastUserType(type: .real)
     }
     
     func deleteStoredKeys() {
@@ -52,7 +57,7 @@ final class CryptoUser {
     }
     
     private func createPrivateKey(for key: KeychainKey) -> String {
-        let newKey = Key()
+        let newKey = Key(timestamp: timestamp)
         let privateKey = newKey.privateKey
         log("New private key type \(key): \(privateKey)", type: .serviceInfo)
         Keychain.save(value: privateKey, forKey: key)

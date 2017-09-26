@@ -37,9 +37,13 @@ extension PagingDraggable where Self: UIViewController {
         var newPage = Float(self.pageControl.currentPage)
         
         if velocity.x == 0 {
-            newPage = floor( (targetXContentOffset - Float(pageWidth) / 2) / Float(pageWidth)) + 1.0
+            let floatWidth = Float(pageWidth)
+            let page = targetXContentOffset - floatWidth / 2
+            newPage = floor( page / floatWidth) + 1.0
         } else {
-            newPage = Float(velocity.x > 0 ? self.pageControl.currentPage + 1 : self.pageControl.currentPage - 1)
+            newPage = Float(velocity.x > 0
+                ? self.pageControl.currentPage + 1
+                : self.pageControl.currentPage - 1)
             if newPage  > contentWidth / pageWidth {
                 newPage = ceil(contentWidth / pageWidth) - 1.0
             }
