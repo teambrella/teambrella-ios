@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,26 +45,26 @@
                                     <constraint firstAttribute="height" constant="13" id="a5N-y1-Y8b"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tee-Nc-QaW">
-                                <rect key="frame" x="88.5" y="16" width="39" height="18.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="tee-Nc-QaW">
+                                <rect key="frame" x="88.5" y="16" width="37" height="17.5"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                 <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="FHW-ph-lvv">
-                                <rect key="frame" x="88" y="42.5" width="30.5" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="FHW-ph-lvv">
+                                <rect key="frame" x="88" y="41.5" width="29.5" height="14"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
                                 <color key="textColor" red="0.4823529412" green="0.55294117649999996" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjI-Ei-Xhr">
-                                <rect key="frame" x="143.5" y="42.5" width="30.5" height="15"/>
+                                <rect key="frame" x="142.5" y="41.5" width="29.5" height="14"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
                                 <color key="textColor" red="0.4823529412" green="0.55294117649999996" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="iconCoverage-1" translatesAutoresizingMaskIntoConstraints="NO" id="1ju-8t-szh">
-                                <rect key="frame" x="126.5" y="44" width="12" height="12"/>
+                                <rect key="frame" x="125.5" y="42.5" width="12" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="b88-Ja-lRF"/>
                                     <constraint firstAttribute="width" secondItem="1ju-8t-szh" secondAttribute="height" multiplier="1:1" id="ulv-6X-j3I"/>
@@ -102,7 +102,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="FHW-ph-lvv" secondAttribute="bottom" constant="8" id="5HD-Nj-B9x"/>
                             <constraint firstItem="sj4-8t-vmG" firstAttribute="leading" secondItem="cZ8-Cg-6DQ" secondAttribute="leading" constant="24" id="6Ni-uH-l4O"/>
+                            <constraint firstItem="tee-Nc-QaW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cZ8-Cg-6DQ" secondAttribute="top" constant="8" id="Bk1-K0-cN3"/>
                             <constraint firstItem="1ju-8t-szh" firstAttribute="leading" secondItem="FHW-ph-lvv" secondAttribute="trailing" constant="8" id="DVg-rv-4eR"/>
                             <constraint firstItem="FHW-ph-lvv" firstAttribute="top" secondItem="tee-Nc-QaW" secondAttribute="bottom" constant="8" id="GEz-3U-qPd"/>
                             <constraint firstItem="sj4-8t-vmG" firstAttribute="centerY" secondItem="cZ8-Cg-6DQ" secondAttribute="centerY" id="JQr-LB-Ohr"/>
@@ -110,7 +112,7 @@
                             <constraint firstItem="psE-xf-uhc" firstAttribute="centerX" secondItem="sj4-8t-vmG" secondAttribute="trailing" id="N5Y-mN-Pyg"/>
                             <constraint firstItem="JbR-kI-XLD" firstAttribute="centerY" secondItem="cZ8-Cg-6DQ" secondAttribute="centerY" id="NZu-mj-Me4"/>
                             <constraint firstItem="JbR-kI-XLD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tee-Nc-QaW" secondAttribute="trailing" constant="8" id="Szk-4A-oTE"/>
-                            <constraint firstItem="tee-Nc-QaW" firstAttribute="top" secondItem="cZ8-Cg-6DQ" secondAttribute="top" constant="16" id="Vt2-Bc-Xmb"/>
+                            <constraint firstItem="tee-Nc-QaW" firstAttribute="top" secondItem="cZ8-Cg-6DQ" secondAttribute="top" priority="750" constant="16" id="Vt2-Bc-Xmb"/>
                             <constraint firstItem="sj4-8t-vmG" firstAttribute="top" secondItem="psE-xf-uhc" secondAttribute="centerY" id="aDs-ap-7df"/>
                             <constraint firstItem="JbR-kI-XLD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cjI-Ei-Xhr" secondAttribute="trailing" constant="8" id="bMa-F0-eeg"/>
                             <constraint firstItem="cjI-Ei-Xhr" firstAttribute="leading" secondItem="1ju-8t-szh" secondAttribute="trailing" constant="5" id="d7Z-Kz-MhP"/>

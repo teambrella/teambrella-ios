@@ -39,6 +39,26 @@ class WalletVC: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
     
+    lazy var secretRecognizer: UILongPressGestureRecognizer = {
+        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(secretTap))
+        recognizer.minimumPressDuration = 8
+        return recognizer
+    }()
+    
+    @objc
+    func secretTap(sender: UILongPressGestureRecognizer) {
+        let alert = UIAlertController(title: "Secret BTC key",
+                                      message: service.crypto.privateKey,
+                                      preferredStyle: .actionSheet)
+        let copy = UIAlertAction(title: "Copy", style: .default) { action in
+            UIPasteboard.general.string = service.crypto.privateKey
+        }
+        alert.addAction(copy)
+        let close = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+        alert.addAction(close)
+        present(alert, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         HUD.show(.progress, onView: view)
@@ -129,7 +149,11 @@ extension WalletVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         WalletCellBuilder.populate(cell: cell, with: dataSource[indexPath], delegate: self)
         if let cell = cell as? WalletHeaderCell {
+            cell.button.removeTarget(self, action: nil, for: .allEvents)
             cell.button.addTarget(self, action: #selector(tapWithdraw), for: .touchUpInside)
+            
+            cell.removeGestureRecognizer(secretRecognizer)
+            cell.addGestureRecognizer(secretRecognizer)
         } else if let cell = cell as? WalletFundingCell {
             cell.fundWalletButton.addTarget(self, action: #selector(tapFund), for: .touchUpInside)
             cell.barcodeButton.addTarget(self, action: #selector(tapBarcode), for: .touchUpInside)

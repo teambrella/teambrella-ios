@@ -191,15 +191,15 @@ final class TeammateProfileVC: UIViewController, Routable {
         guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
             return
         }
-        guard let myRisk = dataSource.extendedTeammate?.riskScale?.myRisk,
-            let theirRisk = dataSource.extendedTeammate?.basic.risk else { return }
+        guard let myRisk = dataSource.extendedTeammate?.riskScale?.myRisk else { return }
+        guard let heCoversMe = linearFunction?.value(at: risk) else { return }
         
-        if let theirAmount = linearFunction?.value(at: risk / theirRisk * myRisk) {
-            view.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
-        }
-        if let myAmount = linearFunction?.value(at: risk / myRisk * theirRisk) {
-            view.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
-        }
+        let theirAmount = heCoversMe
+        view.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
+        
+        let myAmount = heCoversMe * myRisk / risk
+        view.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
+        
     }
     
     private func setTitle() {
@@ -433,6 +433,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         
         let risk = riskFrom(offset: changedOffset, maxValue: cell.maxValue)
         cell.yourVoteValueLabel.text = String(format: "%.2f", risk)
+        cell.pearMiddleAvatar.riskLabel.text = String(format: "%.2f", risk)
         
         text(for: cell.yourVoteBadgeLabel, risk: risk)
         if let teamRisk = teammate?.extended?.voting?.riskVoted {

@@ -1,4 +1,3 @@
-//
 //  InitialVC.swift
 //  Teambrella
 //
@@ -27,7 +26,7 @@ class InitialVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        service.crypto.deleteStoredKeys()
+       // service.crypto.deleteStoredKeys()
         if service.crypto.lastUserType != .none {
             isLoginNeeded = false
             startLoadingTeams()

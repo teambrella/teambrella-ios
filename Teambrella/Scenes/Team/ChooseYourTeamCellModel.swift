@@ -21,11 +21,19 @@
 
 import Foundation
 
-struct ChooseYourTeamCellModel {
+protocol TeamCellModel {
+    
+}
+
+struct ChooseYourTeamCellModel: TeamCellModel {
     var teamIcon: String
     var incomingCount: Int
     var teamName: String
     var itemName: String
     var coverage: Int
     var teamID: Int
+}
+
+struct SwitchUserTeamCellModel: TeamCellModel {
+    let name = "Switch user"
 }

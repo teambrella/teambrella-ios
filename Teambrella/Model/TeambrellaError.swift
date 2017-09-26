@@ -49,6 +49,8 @@ struct TeambrellaError: Error {
         
         case teammateNoAccess           = 702001
         case teammateNotExists          = 702011
+        
+        case malformedETCSignature      = -10001
     }
     
 }
@@ -67,6 +69,11 @@ struct TeambrellaErrorFactory {
         guard let errorKind =  TeambrellaError.TeambrellaErrorKind(rawValue: status.code) else { return unknownError() }
         
         return TeambrellaError(kind: errorKind, description: status.errorMessage)
+    }
+    
+    static func malformedETCsignature() -> TeambrellaError {
+        return TeambrellaError(kind: .malformedETCSignature,
+                               description: "Couldn't create ETH signature for the given public key")
     }
     
 }

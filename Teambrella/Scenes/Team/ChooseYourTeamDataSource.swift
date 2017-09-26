@@ -23,7 +23,7 @@ import Foundation
 
 struct ChooseYourTeamDataSource {
     var count: Int { return models.count }
-    var models: [ChooseYourTeamCellModel] = []
+    var models: [TeamCellModel] = []
     var currentTeamIndex: Int {
         if let currentTeam = service.session?.currentTeam, let idx = service.session?.teams.index(of: currentTeam) {
             return idx
@@ -44,15 +44,10 @@ struct ChooseYourTeamDataSource {
                                                       teamID: card.teamID))
             }
         }
-        models.append(ChooseYourTeamCellModel(teamIcon: "",
-                                              incomingCount: 0,
-                                              teamName: "Log out",
-                                              itemName: "",
-                                              coverage: 0,
-                                              teamID: -1))
+        models.append(SwitchUserTeamCellModel())
     }
     
-    subscript(indexPath: IndexPath) -> ChooseYourTeamCellModel {
+    subscript(indexPath: IndexPath) -> TeamCellModel {
         return models[indexPath.row]
     }
     

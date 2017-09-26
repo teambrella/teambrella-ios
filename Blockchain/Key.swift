@@ -35,8 +35,6 @@ struct Key {
         return key.privateKeyAddress.string
     }
     var signature: String {
-        print(privateKey)
-        print(timestamp)
         guard let data = key.signature(forMessage: String(timestamp)) else {
             fatalError("Couldn't create signature data")
         }
