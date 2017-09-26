@@ -21,16 +21,16 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1826256607597448</string>
+				<string>fb416598765047865</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>14</string>
 	<key>FacebookAppID</key>
-	<string>1826256607597448</string>
+	<string>416598765047865</string>
 	<key>FacebookDisplayName</key>
-	<string>Teambrella</string>
+	<string>enrider</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
