@@ -26,7 +26,7 @@ struct MyProxiesCellBuilder {
         if let cell = cell as? ProxyCell {
             cell.avatarView.showAvatar(string: model.avatarString)
             cell.nameLabel.text = model.name
-            cell.detailsLabel.text = model.address
+            cell.detailsLabel.text = model.address.uppercased()
             //model.time.map { cell.timeLabel.text = Formatter.teambrellaShort.string(from: $0) }
             cell.timeLabel.text = String.formattedNumber(model.proxyRank ?? 1)
             
