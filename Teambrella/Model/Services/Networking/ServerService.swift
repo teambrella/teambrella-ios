@@ -42,7 +42,7 @@ let isLocalServer = false
  */
 class ServerService {
     struct Constant {
-        static var siteURL: String { return isLocalServer ? BlockchainServer.Constant.siteURL : "https://surilla.com" }
+        static var siteURL: String { return isLocalServer ? "https://surilla.com" : "https://teambrella.com" }
         static let timestampURL = "me/GetTimestamp"
     }
     
