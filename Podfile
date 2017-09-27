@@ -31,3 +31,11 @@ target 'Teambrella' do
   end
 
 end
+
+target 'Surilla' do
+  inhibit_all_warnings!
+
+  service_pods
+  social_pods
+
+end
