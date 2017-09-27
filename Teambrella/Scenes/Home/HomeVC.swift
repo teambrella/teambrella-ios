@@ -308,7 +308,7 @@ extension HomeVC: UICollectionViewDataSource {
             return
         }
         
-        dataSource[indexPath].map { service.router.presentChat(context: ChatContext.home($0)) }
+        dataSource[indexPath].map { service.router.presentChat(context: ChatContext.home($0), itemType: $0.itemType) }
     }
 }
 

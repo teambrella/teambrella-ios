@@ -27,7 +27,7 @@ protocol ChatDatasourceStrategy {
 //    var createChatType: TeambrellaRequestType { get }
     var postType: TeambrellaRequestType { get }
     var canLoadBackward: Bool { get }
-    var isRateVisible: Bool { get }
+    //var isRateVisible: Bool { get }
     
     func updatedChatBody(body: RequestBody) -> RequestBody
     func updatedMessageBody(body: RequestBody) -> RequestBody
@@ -60,7 +60,7 @@ class EmptyChatStrategy: ChatDatasourceStrategy {
 //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPost
     var canLoadBackward: Bool = false
-    var isRateVisible: Bool = false
+  //  var isRateVisible: Bool = false
     
     func updatedChatBody(body: RequestBody) -> RequestBody { return body }
     func updatedMessageBody(body: RequestBody) -> RequestBody { return body }
@@ -73,7 +73,7 @@ class ClaimChatStrategy: ChatDatasourceStrategy {
 //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPost
     var canLoadBackward: Bool = true
-     var isRateVisible: Bool = true
+    // var isRateVisible: Bool = true
     
     var claim: EnhancedClaimEntity
     
@@ -101,7 +101,7 @@ class TeammateChatStrategy: ChatDatasourceStrategy {
 //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPost
     var canLoadBackward: Bool = true
-     var isRateVisible: Bool = true
+    // var isRateVisible: Bool = true
     
     var teammate: ExtendedTeammateEntity
     
@@ -185,7 +185,7 @@ class HomeChatStrategy: ChatDatasourceStrategy {
 //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPost
     var canLoadBackward: Bool = true
-     var isRateVisible: Bool = true
+    // var isRateVisible: Bool = true
     
     var card: HomeScreenModel.Card
     
@@ -222,7 +222,7 @@ class ChatStrategy: ChatDatasourceStrategy {
 //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPost
     var canLoadBackward: Bool = true
-     var isRateVisible: Bool = true
+    // var isRateVisible: Bool = true
     
     var chatModel: ChatModel
     
@@ -251,7 +251,7 @@ class PrivateChatStrategy: ChatDatasourceStrategy {
 //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPrivatePost
     var canLoadBackward: Bool = true
-     var isRateVisible: Bool = false
+     //var isRateVisible: Bool = false
     
     var user: PrivateChatUser
     

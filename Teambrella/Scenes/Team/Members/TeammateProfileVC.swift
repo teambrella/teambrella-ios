@@ -171,7 +171,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         let transformer = TeammateTransformer(teammate: teammate, extendedTeammate: dataSource.extendedTeammate)
         guard let user = transformer.privateChatUser else { return }
         
-        service.router.presentChat(context: .privateChat(user))
+        service.router.presentChat(context: .privateChat(user), itemType: .privateChat)
     }
     
     // MARK: Private
@@ -321,7 +321,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         let identifier = dataSource.type(for: indexPath)
         if identifier == .dialog || identifier == .dialogCompact, let extendedTeammate = dataSource.extendedTeammate {
             let context = ChatContext.teammate(extendedTeammate)
-            service.router.presentChat(context: context)
+            service.router.presentChat(context: context, itemType: .teammate)
         }
     }
     

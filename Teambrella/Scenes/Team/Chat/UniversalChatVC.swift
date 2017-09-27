@@ -104,8 +104,8 @@ final class UniversalChatVC: UIViewController, Routable {
         service.socket?.remove(listener: socketToken)
     }
     
-    func setContext(context: ChatContext) {
-        dataSource.addContext(context: context)
+    func setContext(context: ChatContext, itemType: ItemType) {
+        dataSource.addContext(context: context, itemType: itemType)
     }
     
     // MARK: Callbacks

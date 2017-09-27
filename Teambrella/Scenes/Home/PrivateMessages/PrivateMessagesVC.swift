@@ -67,7 +67,7 @@ extension PrivateMessagesVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let user = dataSource.items[indexPath.row]
-        service.router.presentChat(context: .privateChat(user))
+        service.router.presentChat(context: .privateChat(user), itemType: .privateChat)
     }
 }
 

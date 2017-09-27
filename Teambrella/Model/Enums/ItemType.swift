@@ -27,4 +27,6 @@ enum ItemType: Int {
     case rule = 2
     case teamChat = 3
     case teamNotification = 100
+    
+    case privateChat = -10
 }

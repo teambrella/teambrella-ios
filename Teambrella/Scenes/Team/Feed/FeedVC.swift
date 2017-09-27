@@ -122,7 +122,7 @@ extension FeedVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let feedEntity = dataSource[indexPath]
         let context = ChatContext.feed(feedEntity)
-        service.router.presentChat(context: context)
+        service.router.presentChat(context: context, itemType: feedEntity.itemType)
     }
     
 }
@@ -147,7 +147,7 @@ extension FeedVC: ReportDelegate {
         if let data = data as? ChatModel {
             service.router.navigator?.popViewController(animated: false)
             let context = ChatContext.chat(data)
-            service.router.presentChat(context: context)
+            service.router.presentChat(context: context, itemType: .claim)
         }
     }
 }

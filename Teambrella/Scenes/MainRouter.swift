@@ -86,10 +86,10 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentChat(context: ChatContext) {
+    func presentChat(context: ChatContext, itemType: ItemType) {
         guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
         
-        vc.setContext(context: context)
+        vc.setContext(context: context, itemType: itemType)
         push(vc: vc)
     }
     

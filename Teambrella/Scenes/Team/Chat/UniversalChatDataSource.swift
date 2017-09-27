@@ -102,7 +102,8 @@ final class UniversalChatDatasource {
         }
     }
     
-    var isRateVisible: Bool { return strategy.isRateVisible }
+//    var itemType: ItemType = .teamChat
+//    var isRateVisible: Bool { return itemType == .claim || itemType == .teammate }
     
     var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool) -> Void)?
     var onMessageSend: (() -> Void)?
@@ -134,10 +135,10 @@ final class UniversalChatDatasource {
     
     private var cellModelBuilder = ChatModelBuilder()
     
-    func addContext(context: ChatContext) {
+    func addContext(context: ChatContext, itemType: ItemType) {
         strategy = ChatStrategyFactory.strategy(with: context)
         hasPrevious = strategy.canLoadBackward
-        cellModelBuilder.showRate = isRateVisible
+        cellModelBuilder.showRate = itemType == .claim || itemType == .teammate
     }
     
     func loadNext() {
