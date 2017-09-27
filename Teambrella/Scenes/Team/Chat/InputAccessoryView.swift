@@ -86,6 +86,7 @@ class InputAccessoryView: UIView {
             make.right.equalTo(rightButton.snp.left)
             make.bottom.equalToSuperview().inset(7)
             make.top.greaterThanOrEqualToSuperview().offset(3)
+            make.top.equalToSuperview().offset(3).priority(750)
             make.height.lessThanOrEqualTo(maxHeight)
         }
         
