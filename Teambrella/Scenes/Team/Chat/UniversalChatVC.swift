@@ -113,7 +113,7 @@ final class UniversalChatVC: UIViewController, Routable {
     @objc
     func tapLeftButton(sender: UIButton) {
         picker.showOptions()
-        input.isHidden = true
+        //input.isHidden = true
     }
     
     @objc
