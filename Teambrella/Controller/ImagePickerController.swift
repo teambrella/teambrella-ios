@@ -39,7 +39,9 @@ class ImagePickerController: NSObject {
             self.showGallery()
         }))
         
-        alert.addAction(UIAlertAction.init(title: "Main.cancel".localized, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction.init(title: "Main.cancel".localized, style: .cancel, handler: { _ in
+            self.delegate?.imagePicker(controller: self, willClosePickerByCancel: true)
+        }))
         
         parent?.present(alert, animated: true, completion: nil)
     }
