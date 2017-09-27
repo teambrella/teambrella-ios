@@ -146,6 +146,8 @@ final class UniversalChatVC: UIViewController, Routable {
         if let finalFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let initialFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             var offset =  collectionView.contentOffset
+            guard finalFrame.minY < collectionView.contentSize.height else { return }
+            
             let diff = initialFrame.minY - finalFrame.minY
             offset.y += diff
             collectionView.contentOffset = offset
