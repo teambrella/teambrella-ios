@@ -53,7 +53,7 @@ struct TeammateCellBuilder {
                                        controller: TeammateProfileVC?) {
         cell.avatar.showAvatar(string: teammate.basic.avatar)
         cell.nameLabel.text = teammate.basic.name
-        cell.infoLabel.text = teammate.basic.city
+        cell.infoLabel.text = teammate.basic.city.uppercased()
         guard let controller = controller else { return }
         
         cell.facebookButton.removeTarget(controller, action: nil, for: .allEvents)

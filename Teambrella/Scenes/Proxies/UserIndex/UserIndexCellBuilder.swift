@@ -27,7 +27,7 @@ struct UserIndexCellBuilder {
         if let cell = cell as? UserIndexCell {
             cell.avatarView.showAvatar(string: model.avatarString)
             cell.nameLabel.text = model.name
-            cell.detailsLabel.text = model.location
+            cell.detailsLabel.text = model.location.uppercased()
             cell.amountLabel.text = String.formattedNumber(model.proxyRank)
         }
     }

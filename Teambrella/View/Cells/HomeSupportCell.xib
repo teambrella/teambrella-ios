@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -65,12 +65,6 @@
                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X30-OO-rRz">
-                                <rect key="frame" x="18" y="62" width="292" height="17"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
-                                <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h36-GT-vbe">
                                 <rect key="frame" x="60" y="36" width="7" height="7"/>
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,9 +73,30 @@
                                     <constraint firstAttribute="width" constant="7" id="SaV-dH-oFA"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ys0-TT-Ud4">
+                                <rect key="frame" x="16" y="48" width="294" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="X30-OO-rRz">
+                                        <rect key="frame" x="0.0" y="31" width="294" height="17"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
+                                        <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="X30-OO-rRz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ys0-TT-Ud4" secondAttribute="top" constant="4" id="2ra-eK-xSy"/>
+                                    <constraint firstAttribute="trailing" secondItem="X30-OO-rRz" secondAttribute="trailing" id="9iM-ln-SZh"/>
+                                    <constraint firstItem="X30-OO-rRz" firstAttribute="centerY" secondItem="Ys0-TT-Ud4" secondAttribute="centerY" id="Icb-Qb-kCe"/>
+                                    <constraint firstItem="X30-OO-rRz" firstAttribute="leading" secondItem="Ys0-TT-Ud4" secondAttribute="leading" id="JLz-G2-4do"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="X30-OO-rRz" secondAttribute="bottom" constant="4" id="rwB-6h-INh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ys0-TT-Ud4" firstAttribute="leading" secondItem="F6U-lg-7J1" secondAttribute="leading" constant="16" id="1iu-NK-5ek"/>
+                            <constraint firstItem="Ys0-TT-Ud4" firstAttribute="top" secondItem="VXr-cm-2gg" secondAttribute="bottom" id="2jM-4f-3Xn"/>
                             <constraint firstAttribute="trailing" secondItem="ibe-tf-PeM" secondAttribute="trailing" constant="16" id="A6g-Bx-b2n"/>
                             <constraint firstItem="VXr-cm-2gg" firstAttribute="leading" secondItem="F6U-lg-7J1" secondAttribute="leading" constant="16" id="D2M-Pb-j7r"/>
                             <constraint firstItem="h36-GT-vbe" firstAttribute="leading" secondItem="9jj-my-DjP" secondAttribute="leading" id="Sye-e2-L1r"/>
@@ -89,13 +104,12 @@
                             <constraint firstItem="9jj-my-DjP" firstAttribute="bottom" secondItem="VXr-cm-2gg" secondAttribute="centerY" id="X5z-g5-3TA"/>
                             <constraint firstItem="9jj-my-DjP" firstAttribute="leading" secondItem="VXr-cm-2gg" secondAttribute="trailing" constant="12" id="ZyC-AV-Gbb"/>
                             <constraint firstItem="ibe-tf-PeM" firstAttribute="leading" secondItem="F6U-lg-7J1" secondAttribute="leading" constant="16" id="b8m-yr-REq"/>
-                            <constraint firstAttribute="trailing" secondItem="X30-OO-rRz" secondAttribute="trailing" constant="16" id="bpI-XD-w6Z"/>
                             <constraint firstItem="N3b-4e-h0v" firstAttribute="top" secondItem="9jj-my-DjP" secondAttribute="bottom" constant="1" id="dKp-oZ-dow"/>
-                            <constraint firstItem="X30-OO-rRz" firstAttribute="top" secondItem="VXr-cm-2gg" secondAttribute="bottom" constant="14" id="iik-9r-crN"/>
                             <constraint firstItem="h36-GT-vbe" firstAttribute="centerY" secondItem="N3b-4e-h0v" secondAttribute="centerY" id="rcb-y0-pJg"/>
                             <constraint firstItem="N3b-4e-h0v" firstAttribute="leading" secondItem="h36-GT-vbe" secondAttribute="trailing" constant="6" id="tQe-O3-a1Z"/>
                             <constraint firstItem="VXr-cm-2gg" firstAttribute="top" secondItem="F6U-lg-7J1" secondAttribute="top" constant="16" id="vV7-S0-upZ"/>
-                            <constraint firstItem="X30-OO-rRz" firstAttribute="leading" secondItem="F6U-lg-7J1" secondAttribute="leading" constant="18" id="zdf-SQ-By5"/>
+                            <constraint firstItem="Ys0-TT-Ud4" firstAttribute="bottom" secondItem="ibe-tf-PeM" secondAttribute="top" id="wPm-kh-za7"/>
+                            <constraint firstAttribute="trailing" secondItem="Ys0-TT-Ud4" secondAttribute="trailing" constant="16" id="xaQ-Yz-tl6"/>
                         </constraints>
                     </view>
                 </subviews>
