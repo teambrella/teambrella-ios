@@ -138,6 +138,14 @@
 "Team.Claims.VitedCell.voted" = "Votado: ";
 "Team.ClaimsCell.declined" = "RECHAZADO";
 
+"Team.Home.Card.claimed" = "RECLAMADO";
+"Team.Home.Card.yourClaim" = "TU Reclamación";
+"Team.Home.Card.claim" = "Reclamación";
+"Team.Home.Card.coverage" = "COBERTURA";
+"Team.Home.Card.newTeammate" = "Nuevo compañero";
+"Team.Home.Card.teamVote" = "VOTO DEL EQUIPO";
+"Team.Home.Card.voting" = "VOTACIÓN";
+
 // Need translation
 "Team.Teammate.Footer.MemberSince" = "Member since %@";
 

@@ -163,3 +163,11 @@
 "Team.Chat.TypeLabel.application" = "APPLICATION";
 "Team.Chat.TypeLabel.other" = "DISCUSSION";
 "Team.Chat.Separator.newMessages" = "NEW MESSAGES";
+
+"Team.Home.Card.claimed" = "CLAIMED";
+"Team.Home.Card.yourClaim" = "Your Claim";
+"Team.Home.Card.claim" = "Claim";
+"Team.Home.Card.coverage" = "COVERAGE";
+"Team.Home.Card.newTeammate" = "New Teammate";
+"Team.Home.Card.teamVote" = "TEAM VOTE";
+"Team.Home.Card.voting" = "VOTING";

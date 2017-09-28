@@ -18,6 +18,10 @@ class ChatTextCell: UICollectionViewCell {
         static let avatarCloudInset: CGFloat = 5
     }
     
+    var cloudHeight: CGFloat = 90
+    var cloudWidth: CGFloat = 250
+    var id: String = ""
+    
     lazy var avatarView: RoundImageView = {
         let imageView = RoundImageView()
         imageView.isUserInteractionEnabled = true
@@ -68,10 +72,6 @@ class ChatTextCell: UICollectionViewCell {
             return CGPoint(x: cloudInsetX, y: cloudHeight)
         }
     }
-    
-    var cloudHeight: CGFloat = 80
-    var cloudWidth: CGFloat = 250
-    var id: String = ""
     
     var cloudInsetX: CGFloat {
         return Constant.avatarContainerInset + Constant.avatarWidth + Constant.avatarCloudInset

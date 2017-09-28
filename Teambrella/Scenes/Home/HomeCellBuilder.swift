@@ -42,15 +42,17 @@ struct HomeCellBuilder {
             switch model.itemType {
             case .claim:
                 cell.avatarView.showImage(string: model.smallPhoto)
-                cell.leftNumberView.titleLabel.text = "CLAIMED"
+                cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
                 cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
-                cell.titleLabel.text = model.isMine ? "Your Claim": "Claim"
+                cell.titleLabel.text = model.isMine
+                    ? "Team.Home.Card.yourClaim".localized
+                    : "Team.Home.Card.claim".localized
                 cell.rightNumberView.amountLabel.text = String(format: "%.0f", model.teamVote * 100)
                 cell.rightNumberView.currencyLabel.text = "%"
             case .teammate:
                 cell.avatarView.showAvatar(string: model.smallPhoto)
-                cell.leftNumberView.titleLabel.text = "COVERAGE"
-                cell.titleLabel.text = "New Teammate"
+                cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
+                cell.titleLabel.text = "Team.Home.Card.newTeammate".localized
                 cell.rightNumberView.amountLabel.text = String.formattedNumber(model.teamVote)
                 cell.rightNumberView.currencyLabel.text = nil
             default:
@@ -59,8 +61,8 @@ struct HomeCellBuilder {
             
             cell.leftNumberView.amountLabel.text = String.formattedNumber(model.amount)
             cell.leftNumberView.currencyLabel.text = dataSource.currency
-            cell.rightNumberView.titleLabel.text = "TEAM VOTE"
-            cell.rightNumberView.badgeLabel.text = "VOTING"
+            cell.rightNumberView.titleLabel.text = "Team.Home.Card.teamVote".localized
+            cell.rightNumberView.badgeLabel.text = "Team.Home.Card.voting".localized
             cell.textLabel.text = model.text
             if model.unreadCount > 0 {
                 cell.unreadCountView.isHidden = false

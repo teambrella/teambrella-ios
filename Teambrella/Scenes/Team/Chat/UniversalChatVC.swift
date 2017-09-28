@@ -87,6 +87,7 @@ final class UniversalChatVC: UIViewController, Routable {
             layout.footerReferenceSize = CGSize(width: collectionView.bounds.width, height: 30)
         }
         dataSource.cloudWidth = cloudWidth
+        collectionView.contentInset.bottom = input.frame.height
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -181,6 +182,7 @@ final class UniversalChatVC: UIViewController, Routable {
      * - Parameter backward: if the chunk of data comes above existing cells or below them
      */
     private func refresh(backward: Bool) {
+        self.isFirstRefresh = false
         // not using reloadData() to avoid blinking of cells
         collectionView.dataSource = nil
         collectionView.dataSource = self
@@ -188,7 +190,6 @@ final class UniversalChatVC: UIViewController, Routable {
         if self.shouldScrollToBottom {
             scrollToBottom(animated: true)
             self.shouldScrollToBottom = false
-            self.isFirstRefresh = false
         } else if backward, let indexPath = dataSource.currentTopCell {
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
         }
@@ -199,7 +200,7 @@ final class UniversalChatVC: UIViewController, Routable {
         guard let model = dataSource[indexPath] as? ChatTextCellModel else { return .zero }
         
         return CGSize(width: cloudWidth,
-                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + 50 )
+                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + 60 )
     }
     
     private func processIsTyping(action: SocketAction) {
@@ -313,7 +314,6 @@ final class UniversalChatVC: UIViewController, Routable {
     public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
         // Cancel current scrolling
         self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: false)
-        
         let offsetY = max(-collectionView.contentInset.top,
                           collectionView.collectionViewLayout.collectionViewContentSize.height
                             - collectionView.bounds.height
@@ -456,7 +456,7 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
             let size = cloudSize(for: indexPath)
             return CGSize(width: collectionView.bounds.width, height: size.height)
         case _ as ChatSeparatorCellModel:
-              return CGSize(width: collectionView.bounds.width, height: 30)
+            return CGSize(width: collectionView.bounds.width, height: 30)
         case _ as ChatNewMessagesSeparatorModel:
             return CGSize(width: collectionView.bounds.width, height: 30)
         default:
@@ -485,10 +485,10 @@ extension UniversalChatVC: ImagePickerControllerDelegate {
     
     func imagePicker(controller: ImagePickerController, didSelectPhoto photo: UIImage) {
         controller.send(image: photo)
-        input.isHidden = false
+        
     }
     
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
-        input.isHidden = false
+        
     }
 }
