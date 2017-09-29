@@ -25,10 +25,6 @@ import SwiftyJSON
 struct TeamEntity {
     private var json: JSON
     
-    init(json: JSON) {
-        self.json = json
-    }
-    
     var teamID: Int { return json["TeamId"].intValue }
     var teammateID: Int { return json["MyTeammateId"].intValue }
     var teamType: Int { return json["TeamType"].intValue }
@@ -43,9 +39,15 @@ struct TeamEntity {
         return TeamAccessLevel(rawValue: json["TeamAccessLevel"].intValue) ?? .noAccess
     }
     var currency: String { return json["Currency"].stringValue }
-    var currencySymbol: String { return ["USD": "$", "EUR": "€", "PEN": "S/."][currency] ?? currency }
-    
     var isInvitation: Bool { return teamCoverage != nil }
+
+    var currencySymbol: String {
+        return ["USD": "$",
+                "EUR": "€",
+                "PEN": "S/.",
+                "ARS": "$"][currency] ?? currency
+        
+    }
     
     static func team(with json: JSON) -> TeamEntity {
         return TeamEntity(json: json)

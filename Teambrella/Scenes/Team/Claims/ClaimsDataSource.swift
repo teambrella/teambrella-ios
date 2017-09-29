@@ -60,6 +60,9 @@ class ClaimsDataSource {
                                            .fullyPaid]
     
     var count: Int { return claims.flatMap { $0 }.count }
+    // swiftlint:disable:next empty_count
+    var isEmpty: Bool { return count == 0 }
+    
     var sections: Int { return claims.count }
     var offset = 0
     var isLoading = false

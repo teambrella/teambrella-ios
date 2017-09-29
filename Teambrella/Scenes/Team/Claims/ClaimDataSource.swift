@@ -31,7 +31,6 @@ class ClaimDataSource {
     var cellIDs: [String] = []
     
     var sections: Int { return 1 }
-    
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     

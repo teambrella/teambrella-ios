@@ -38,6 +38,8 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     // is pushed to navigation stack instead of being the first controller in XLPagerTabStrip
     var isPresentedInStack = false
     
+     weak var emptyVC: EmptyVC?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         HUD.show(.progress, onView: view)
@@ -46,7 +48,15 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         dataSource.loadData()
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
-            self?.collectionView.reloadData()
+            guard let `self` = self else { return }
+            
+            self.collectionView.reloadData()
+            if self.dataSource.isEmpty {
+                self.emptyVC = EmptyVC.show(in: self)
+                self.emptyVC?.setText(title: "Team.ClaimsList.empty".localized, subtitle: nil)
+            } else {
+                self.emptyVC?.remove()
+            }
         }
         if isPresentedInStack {
             addGradientNavBar()

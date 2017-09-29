@@ -171,3 +171,5 @@
 "Team.Home.Card.newTeammate" = "New Teammate";
 "Team.Home.Card.teamVote" = "TEAM VOTE";
 "Team.Home.Card.voting" = "VOTING";
+
+"Team.ClaimsList.empty" = "No claims in your team so far.";

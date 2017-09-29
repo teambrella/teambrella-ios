@@ -146,6 +146,8 @@
 "Team.Home.Card.teamVote" = "VOTO DEL EQUIPO";
 "Team.Home.Card.voting" = "VOTACIÓN";
 
+"Team.ClaimsList.empty" = "Hasta el momento no hay reclamaciones.";
+
 // Need translation
 "Team.Teammate.Footer.MemberSince" = "Member since %@";
 

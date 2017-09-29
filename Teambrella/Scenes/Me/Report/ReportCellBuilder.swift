@@ -85,7 +85,6 @@ struct ReportCellBuilder {
         cell.expensesTextField.delegate = reportVC
         cell.expensesTextField.text = model.expensesString
         cell.expensesTextField.keyboardType = .decimalPad
-        //cell.expensesTextField.rightView = model.isValid ? nil : UIImageView(image: #imageLiteral(resourceName: "closeIcon"))
         cell.expensesTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
         cell.expensesTextField.rightViewMode = .unlessEditing
         

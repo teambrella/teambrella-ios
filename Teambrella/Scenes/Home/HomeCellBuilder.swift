@@ -38,52 +38,57 @@ struct HomeCellBuilder {
             populateSupport(cell: cell, dataSource: dataSource)
             return
         }
-        if let cell = cell as? HomeCollectionCell {
-            switch model.itemType {
-            case .claim:
-                cell.avatarView.showImage(string: model.smallPhoto)
-                cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
-                cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
-                cell.titleLabel.text = model.isMine
-                    ? "Team.Home.Card.yourClaim".localized
-                    : "Team.Home.Card.claim".localized
-                cell.rightNumberView.amountLabel.text = String(format: "%.0f", model.teamVote * 100)
-                cell.rightNumberView.currencyLabel.text = "%"
-            case .teammate:
-                cell.avatarView.showAvatar(string: model.smallPhoto)
-                cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
-                cell.titleLabel.text = "Team.Home.Card.newTeammate".localized
-                cell.rightNumberView.amountLabel.text = String.formattedNumber(model.teamVote)
-                cell.rightNumberView.currencyLabel.text = nil
-            default:
-                break
-            }
-            
-            cell.leftNumberView.amountLabel.text = String.formattedNumber(model.amount)
-            cell.leftNumberView.currencyLabel.text = dataSource.currency
-            cell.rightNumberView.titleLabel.text = "Team.Home.Card.teamVote".localized
-            cell.rightNumberView.badgeLabel.text = "Team.Home.Card.voting".localized
-            cell.textLabel.text = model.text
-            if model.unreadCount > 0 {
-                cell.unreadCountView.isHidden = false
-                cell.unreadCountView.text = String(model.unreadCount)
-            } else {
-                cell.unreadCountView.isHidden = true
-            }
-            cell.rightNumberView.isBadgeVisible = model.isVoting
-           
-            if let date = model.itemDate {
-                cell.subtitleLabel.text = DateProcessor().stringInterval(from: date)
-            }
-        }
-        if let cell = cell as? HomeApplicationDeniedCell {
+        
+        switch cell {
+        case let cell as HomeCollectionCell:
+             populateHome(cell: cell, model: model)
+        case let cell as HomeApplicationDeniedCell:
             populate(cell: cell, with: model)
-        }
-        if let cell = cell as? HomeApplicationAcceptedCell {
+        case let cell as HomeApplicationAcceptedCell:
             populate(cell: cell, with: model)
-        }
-        if let cell = cell as? HomeApplicationStatusCell {
+        case let cell as HomeApplicationStatusCell:
             populate(cell: cell, with: model)
+        default:
+            break
+        }
+    }
+    
+    static func populateHome(cell: HomeCollectionCell, model: HomeScreenModel.Card) {
+        switch model.itemType {
+        case .claim:
+            cell.avatarView.showImage(string: model.smallPhoto)
+            cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
+            cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
+            cell.titleLabel.text = model.isMine
+                ? "Team.Home.Card.yourClaim".localized
+                : "Team.Home.Card.claim".localized
+            cell.rightNumberView.amountLabel.text = String(format: "%.0f", model.teamVote * 100)
+            cell.rightNumberView.currencyLabel.text = "%"
+        case .teammate:
+            cell.avatarView.showAvatar(string: model.smallPhoto)
+            cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
+            cell.titleLabel.text = "Team.Home.Card.newTeammate".localized
+            cell.rightNumberView.amountLabel.text = String.formattedNumber(model.teamVote)
+            cell.rightNumberView.currencyLabel.text = nil
+        default:
+            break
+        }
+        
+        cell.leftNumberView.amountLabel.text = String.formattedNumber(model.amount)
+        cell.leftNumberView.currencyLabel.text = service.currencyName
+        cell.rightNumberView.titleLabel.text = "Team.Home.Card.teamVote".localized
+        cell.rightNumberView.badgeLabel.text = "Team.Home.Card.voting".localized
+        cell.textLabel.text = model.text
+        if model.unreadCount > 0 {
+            cell.unreadCountView.isHidden = false
+            cell.unreadCountView.text = String(model.unreadCount)
+        } else {
+            cell.unreadCountView.isHidden = true
+        }
+        cell.rightNumberView.isBadgeVisible = model.isVoting
+        
+        if let date = model.itemDate {
+            cell.subtitleLabel.text = DateProcessor().stringInterval(from: date)
         }
     }
     

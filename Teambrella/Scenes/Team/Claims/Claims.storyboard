@@ -20,7 +20,7 @@
         <!--ClaimsVC-->
         <scene sceneID="5W8-BX-sq5">
             <objects>
-                <viewController storyboardIdentifier="ClaimsVC" id="cCe-np-5xm" customClass="ClaimsVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClaimsVC" id="cCe-np-5xm" customClass="ClaimsVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EeS-ah-Y6t"/>
                         <viewControllerLayoutGuide type="bottom" id="i00-M2-7MW"/>
@@ -39,7 +39,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsOpenCell" id="tf0-bi-tUE" customClass="ClaimsOpenCell" customModule="Teambrella" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsOpenCell" id="tf0-bi-tUE" customClass="ClaimsOpenCell" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="12" y="0.0" width="351" height="156"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -61,38 +61,38 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SL-QM-JEG" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SL-QM-JEG" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="72" y="24" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DS-qp-KPw" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DS-qp-KPw" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="96" y="46" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nLW-4X-pQM" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nLW-4X-pQM" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="72" y="48" width="16" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="nLW-4X-pQM" secondAttribute="height" multiplier="1:1" id="LBz-me-hm6"/>
                                                                 <constraint firstAttribute="width" constant="16" id="mvb-xp-n7X"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feS-Gu-bjP" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feS-Gu-bjP" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="293" y="23" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="v1x-lO-xeP" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="v1x-lO-xeP" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="293" y="44" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MT-p8-cw4" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MT-p8-cw4" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="16" y="84" width="319" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="LuH-gt-wxA"/>
@@ -106,9 +106,11 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="nLW-4X-pQM" firstAttribute="bottom" secondItem="BiH-9W-QY9" secondAttribute="bottom" id="2tL-6u-Okp"/>
+                                                        <constraint firstItem="feS-Gu-bjP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9SL-QM-JEG" secondAttribute="trailing" constant="8" id="67P-Zw-w9P"/>
                                                         <constraint firstItem="v1x-lO-xeP" firstAttribute="trailing" secondItem="feS-Gu-bjP" secondAttribute="trailing" id="6yn-Rh-707"/>
                                                         <constraint firstItem="9MT-p8-cw4" firstAttribute="leading" secondItem="71m-C5-Wtx" secondAttribute="leadingMargin" id="Adp-Mc-qbG"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="9MT-p8-cw4" secondAttribute="trailing" id="HhZ-Gh-ZFM"/>
+                                                        <constraint firstItem="v1x-lO-xeP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3DS-qp-KPw" secondAttribute="trailing" constant="8" id="LGf-13-gwY"/>
                                                         <constraint firstItem="v1x-lO-xeP" firstAttribute="top" secondItem="BiH-9W-QY9" secondAttribute="centerY" id="Yd2-f6-XkN"/>
                                                         <constraint firstItem="9SL-QM-JEG" firstAttribute="leading" secondItem="BiH-9W-QY9" secondAttribute="trailing" constant="16" id="ZVf-en-pTk"/>
                                                         <constraint firstItem="feS-Gu-bjP" firstAttribute="bottom" secondItem="BiH-9W-QY9" secondAttribute="centerY" id="ack-Lo-byG"/>
@@ -144,7 +146,7 @@
                                             <outlet property="titleLabel" destination="9SL-QM-JEG" id="BDJ-06-pB9"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsVotedCell" id="Tra-Eo-bdx" customClass="ClaimsVotedCell" customModule="Teambrella" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsVotedCell" id="Tra-Eo-bdx" customClass="ClaimsVotedCell" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="156" width="375" height="112"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -166,26 +168,26 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaw-VE-0nE" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaw-VE-0nE" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="56" y="0.0" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-qd-b7g" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-qd-b7g" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="80" y="22" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kAt-qk-Sp0" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kAt-qk-Sp0" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="56" y="24" width="16" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="16" id="gLH-Lk-LsM"/>
                                                                 <constraint firstAttribute="width" secondItem="kAt-qk-Sp0" secondAttribute="height" multiplier="1:1" id="kEO-pI-P7l"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnD-c5-vO8" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnD-c5-vO8" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="255" y="-1" width="72" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="72" id="xgA-1C-8g2"/>
@@ -194,7 +196,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxG-ol-cRO" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxG-ol-cRO" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="255" y="20" width="72" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -215,6 +217,8 @@
                                                         <constraint firstItem="kAt-qk-Sp0" firstAttribute="leading" secondItem="xaw-VE-0nE" secondAttribute="leading" id="atu-c9-s2U"/>
                                                         <constraint firstItem="XNe-Ds-VYF" firstAttribute="leading" secondItem="vO9-KQ-q0o" secondAttribute="leadingMargin" id="nEQ-5T-F7I"/>
                                                         <constraint firstItem="bnD-c5-vO8" firstAttribute="bottom" secondItem="XNe-Ds-VYF" secondAttribute="centerY" id="oau-Ba-Fkt"/>
+                                                        <constraint firstItem="lxG-ol-cRO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yJq-qd-b7g" secondAttribute="trailing" constant="8" id="pnN-gw-jkj"/>
+                                                        <constraint firstItem="bnD-c5-vO8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xaw-VE-0nE" secondAttribute="trailing" constant="8" id="shD-0e-f39"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="lxG-ol-cRO" secondAttribute="trailing" id="u2q-pz-TDf"/>
                                                         <constraint firstItem="lxG-ol-cRO" firstAttribute="leading" secondItem="bnD-c5-vO8" secondAttribute="leading" id="v9N-bx-VPx"/>
                                                         <constraint firstItem="yJq-qd-b7g" firstAttribute="leading" secondItem="kAt-qk-Sp0" secondAttribute="trailing" constant="8" id="xdJ-Cl-mZH"/>
@@ -228,13 +232,13 @@
                                                         <constraint firstAttribute="width" constant="8" id="pl7-Fn-Vf8"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fm-zF-TfT" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fm-zF-TfT" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="71" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ey-O7-pHf" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ey-O7-pHf" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="64" y="71" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -277,7 +281,7 @@
                                             <outlet property="voterLabel" destination="7Ey-O7-pHf" id="SZD-qV-GcB"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsPaidCell" id="ybB-qd-hfW" customClass="ClaimsPaidCell" customModule="Teambrella" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsPaidCell" id="ybB-qd-hfW" customClass="ClaimsPaidCell" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="268" width="375" height="112"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -299,19 +303,19 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qe7-3f-eEx" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qe7-3f-eEx" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="56" y="0.0" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-bQ-aHd" customClass="InfoHelpLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-bQ-aHd" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="80" y="22.5" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HgH-8d-lM4" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HgH-8d-lM4" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="56" y="24" width="16" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="HgH-8d-lM4" secondAttribute="height" multiplier="1:1" id="M54-nc-phC"/>
@@ -343,19 +347,19 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eiH-hO-EVe">
                                                     <rect key="frame" x="271" y="16" width="72" height="80"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ej-gQ-vWi" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ej-gQ-vWi" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="72" height="44.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivr-LT-Ylg" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivr-LT-Ylg" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="44.5" width="72" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="5VG-8E-yP1" customClass="ScaleBar" customModule="Teambrella" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="5VG-8E-yP1" customClass="ScaleBar" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="65" width="72" height="15"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -387,11 +391,13 @@
                                             <constraint firstItem="Lxf-Re-lOz" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leadingMargin" id="0kp-Az-LgD"/>
                                             <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" secondItem="uvp-wZ-ehF" secondAttribute="trailing" id="Nq8-Am-rAu"/>
                                             <constraint firstAttribute="trailing" secondItem="Lxf-Re-lOz" secondAttribute="trailing" id="QOO-Zd-6fC"/>
+                                            <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qe7-3f-eEx" secondAttribute="trailing" constant="8" id="QRP-6Y-Xhh"/>
                                             <constraint firstAttribute="bottom" secondItem="Lxf-Re-lOz" secondAttribute="bottom" id="WIc-vT-iRf"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="eiH-hO-EVe" secondAttribute="bottom" id="eCd-me-NKe"/>
                                             <constraint firstAttribute="topMargin" secondItem="eiH-hO-EVe" secondAttribute="top" id="gad-2b-pAt"/>
                                             <constraint firstItem="IcY-f3-Qvk" firstAttribute="leading" secondItem="eiH-hO-EVe" secondAttribute="trailing" constant="8" id="mxF-Jd-l5R"/>
                                             <constraint firstItem="uvp-wZ-ehF" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leading" constant="16" id="oEp-Ub-5dy"/>
+                                            <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dd6-bQ-aHd" secondAttribute="trailing" constant="8" id="r5A-h3-7S0"/>
                                             <constraint firstAttribute="trailing" secondItem="IcY-f3-Qvk" secondAttribute="trailing" constant="16" id="rlW-B6-Q1S"/>
                                             <constraint firstItem="IcY-f3-Qvk" firstAttribute="centerY" secondItem="ybB-qd-hfW" secondAttribute="centerY" id="zdT-Rf-wXy"/>
                                         </constraints>
@@ -407,7 +413,7 @@
                                             <outlet property="titleLabel" destination="qe7-3f-eEx" id="y7f-hq-UZF"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsViewAllCell" id="fMf-MF-LPf" customClass="ClaimsViewAllCell" customModule="Teambrella" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsViewAllCell" id="fMf-MF-LPf" customClass="ClaimsViewAllCell" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="380" width="375" height="112"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -421,13 +427,13 @@
                                                         <constraint firstAttribute="width" constant="8" id="fxM-52-Pxp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIo-tg-7Xi" customClass="ItemNameLabel" customModule="Teambrella" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIo-tg-7Xi" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="46" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjd-EM-1DM" customClass="ItemValueLabel" customModule="Teambrella" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjd-EM-1DM" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="297" y="46" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -443,6 +449,7 @@
                                             <constraint firstItem="Cjd-EM-1DM" firstAttribute="centerY" secondItem="fMf-MF-LPf" secondAttribute="centerY" id="Kx1-af-cLq"/>
                                             <constraint firstItem="qIo-tg-7Xi" firstAttribute="centerY" secondItem="fMf-MF-LPf" secondAttribute="centerY" id="bCb-YB-dtt"/>
                                             <constraint firstItem="qIo-tg-7Xi" firstAttribute="leading" secondItem="fMf-MF-LPf" secondAttribute="leading" constant="16" id="dKS-es-gle"/>
+                                            <constraint firstItem="Cjd-EM-1DM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qIo-tg-7Xi" secondAttribute="trailing" constant="8" id="jSZ-Af-74S"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                                         <size key="customSize" width="375" height="112"/>
@@ -478,7 +485,7 @@
         <!--ClaimVC-->
         <scene sceneID="e3f-rC-kK0">
             <objects>
-                <viewController storyboardIdentifier="ClaimVC" automaticallyAdjustsScrollViewInsets="NO" id="iy3-ve-FAU" customClass="ClaimVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClaimVC" automaticallyAdjustsScrollViewInsets="NO" id="iy3-ve-FAU" customClass="ClaimVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Ze-Io-gXN"/>
                         <viewControllerLayoutGuide type="bottom" id="le2-JB-c9j"/>
@@ -522,7 +529,7 @@
         <!--Claim TransactionsVC-->
         <scene sceneID="sZG-Pj-T15">
             <objects>
-                <viewController storyboardIdentifier="ClaimTransactionsVC" id="rcz-DF-KOM" customClass="ClaimTransactionsVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClaimTransactionsVC" id="rcz-DF-KOM" customClass="ClaimTransactionsVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wbl-xw-5gf"/>
                         <viewControllerLayoutGuide type="bottom" id="2zY-uh-Wxc"/>
@@ -541,7 +548,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimTransactionCell" id="oDE-Z2-tnd" customClass="ClaimTransactionCell" customModule="Teambrella" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimTransactionCell" id="oDE-Z2-tnd" customClass="ClaimTransactionCell" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
