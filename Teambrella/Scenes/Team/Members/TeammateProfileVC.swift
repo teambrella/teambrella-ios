@@ -164,7 +164,12 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     @objc
     func tapShowOtherVoters(sender: UIButton) {
-        service.router.presentCompareTeamRisk()
+        guard let ranges = dataSource.extendedTeammate?.riskScale?.ranges else {
+            log("Can't present CompareTeamRisk controller. No ranges in extendedTeammate.", type: .error)
+            return
+        }
+        
+        service.router.presentCompareTeamRisk(ranges: ranges)
     }
     
     @objc

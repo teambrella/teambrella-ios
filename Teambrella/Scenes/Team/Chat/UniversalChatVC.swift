@@ -120,7 +120,7 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     func tapLeftButton(sender: UIButton) {
-        if dataSource.isPrivateChat { return }
+        //if dataSource.isPrivateChat { return }
         
         picker.showOptions()
         //input.isHidden = true
@@ -228,6 +228,10 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     private func setupInput() {
+        if dataSource.isPrivateChat {
+            input.leftButton.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
+            input.leftButton.isEnabled = false
+        }
         input.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
         input.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
         if let socket = service.socket,
