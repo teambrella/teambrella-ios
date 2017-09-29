@@ -40,9 +40,9 @@ struct SocialItem {
 }
 
 class TeammateProfileDataSource {
-    let id: String
+    let teammateID: String
     let isMe: Bool
-    let isVoting: Bool
+   // let isVoting: Bool
     var isMyProxy: Bool {
         get {
             return extendedTeammate?.basic.isMyProxy ?? false
@@ -57,9 +57,8 @@ class TeammateProfileDataSource {
     var riskScale: RiskScaleEntity? { return extendedTeammate?.riskScale }
     var isNewTeammate = false
     
-    init(id: String, isVoting: Bool, isMe: Bool) {
-        self.id = id
-        self.isVoting = isVoting
+    init(id: String, isMe: Bool) {
+        self.teammateID = id
         self.isMe = isMe
     }
     
@@ -76,7 +75,7 @@ class TeammateProfileDataSource {
     func loadEntireTeammate(completion: @escaping (ExtendedTeammateEntity) -> Void) {
         let key = Key(base58String: ServerService.privateKey, timestamp: service.server.timestamp)
         
-        let body = RequestBodyFactory.teammateBody(key: key, id: id)
+        let body = RequestBodyFactory.teammateBody(key: key, id: teammateID)
         let request = TeambrellaRequest(type: .teammate, body: body, success: { [weak self] response in
             guard let me = self else { return }
             
@@ -90,7 +89,7 @@ class TeammateProfileDataSource {
     }
     
     func addToProxy(completion: @escaping () -> Void) {
-        service.storage.myProxy(userID: id, add: !isMyProxy).observe { [weak self] result in
+        service.storage.myProxy(userID: teammateID, add: !isMyProxy).observe { [weak self] result in
             switch result {
             case .value:
                 guard let me = self else { return }
@@ -111,8 +110,9 @@ class TeammateProfileDataSource {
                                              "MyVote": risk ?? NSNull(),
                                              "Since": key.timestamp,
                                              "ProxyAvatarSize": 32])
-            let request = TeambrellaRequest(type: .teammateVote, body: body, success: { response in
+            let request = TeambrellaRequest(type: .teammateVote, body: body, success: { [weak self] response in
                 if case .teammateVote(let json) = response {
+                    self?.extendedTeammate?.updateWithVote(json: json)
                     completion(json)
                 }
             })
@@ -125,6 +125,8 @@ class TeammateProfileDataSource {
         guard let teammate = extendedTeammate else { return }
         
         isMyProxy = teammate.basic.isMyProxy
+        let isVoting = teammate.voting != nil
+        
         if isVoting {
             isNewTeammate = true
             source.append(.dialogCompact)

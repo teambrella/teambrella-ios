@@ -52,8 +52,8 @@ class ClaimsDataSource {
         return array
     }()
     
-    // if teammate is set all results will be filtered
-    var teammate: TeammateEntity?
+    // if teammate id is set all results will be filtered
+    var teammateID: String?
     private var order: [ClaimsCellType] = [.open,
                                            .voted,
                                            .paid,
@@ -84,8 +84,8 @@ class ClaimsDataSource {
                                           "Offset": offset,
                                           "Limit": Constant.loadLimit,
                                           "AvatarSize": Constant.avatarSize]
-            if let teammate = self.teammate {
-                payload["TeammateIdFilter"] = teammate.id
+            if let teammateID = self.teammateID {
+                payload["TeammateIdFilter"] = teammateID
             }
             let body = RequestBody(key: key, payload: payload)
             let request = TeambrellaRequest(type: .claimsList, body: body, success: { [weak self] response in

@@ -32,11 +32,10 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     @IBOutlet var collectionView: UICollectionView!
     var dataSource = ClaimsDataSource()
     
-    var teammate: TeammateEntity?
-    
     var isFirstLoading = true
     // is pushed to navigation stack instead of being the first controller in XLPagerTabStrip
     var isPresentedInStack = false
+    var teammateID: String?
     
      weak var emptyVC: EmptyVC?
     
@@ -44,7 +43,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         super.viewDidLoad()
         HUD.show(.progress, onView: view)
         registerCells()
-        dataSource.teammate = teammate
+        dataSource.teammateID = teammateID
         dataSource.loadData()
         dataSource.onUpdate = { [weak self] in
             HUD.hide()

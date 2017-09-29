@@ -183,7 +183,7 @@ extension MembersVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        service.router.presentMemberProfile(teammate: dataSource[indexPath])
+        service.router.presentMemberProfile(teammateID: dataSource[indexPath].userID)
     }
     
 }

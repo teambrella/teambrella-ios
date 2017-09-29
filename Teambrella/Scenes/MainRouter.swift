@@ -118,24 +118,16 @@ final class MainRouter {
         return vc
     }
     
-    func presentMemberProfile(teammate: TeammateEntity) {
-        guard let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC else { fatalError("Error instantiating") }
-        
-        vc.teammate = teammate
-        push(vc: vc)
-    }
-    
     func presentMemberProfile(teammateID: String) {
-        guard let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC else { fatalError("Error instantiating") }
+        guard let vc = getControllerMemberProfile(teammateID: teammateID) else { fatalError("Error instantiating") }
         
-        vc.teammateID = teammateID
         push(vc: vc)
     }
     
-    func presentClaims(teammate: TeammateEntity? = nil) {
+    func presentClaims(teammateID: String? = nil) {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
         
-        vc.teammate = teammate
+        vc.teammateID = teammateID
         vc.isPresentedInStack = true
         push(vc: vc)
     }
