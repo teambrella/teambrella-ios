@@ -1097,13 +1097,13 @@
                                                         <constraint firstAttribute="width" constant="13" id="q0z-lf-Tda"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9M-xF-1Um" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="W9M-xF-1Um" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="72" y="15" width="173" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 MIN AGO" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBj-fe-5UM" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 MIN AGO" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="cBj-fe-5UM" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="221" y="15" width="83" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1126,6 +1126,7 @@
                                             <constraint firstItem="cBj-fe-5UM" firstAttribute="centerY" secondItem="W9M-xF-1Um" secondAttribute="centerY" id="Dph-u1-RJW"/>
                                             <constraint firstAttribute="trailing" secondItem="cBj-fe-5UM" secondAttribute="trailing" constant="16" id="I3f-Hi-COW"/>
                                             <constraint firstItem="OO2-bq-7Kd" firstAttribute="leading" secondItem="AkA-1v-1B0" secondAttribute="leading" constant="16" id="KGr-9s-GxK"/>
+                                            <constraint firstItem="cBj-fe-5UM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="W9M-xF-1Um" secondAttribute="trailing" constant="8" id="NDf-8m-evv"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KFH-Ag-NFC" secondAttribute="bottom" constant="8" id="Pe8-zN-a5E"/>
                                             <constraint firstAttribute="trailing" secondItem="tZa-1m-Frv" secondAttribute="trailing" constant="16" id="Pvo-yq-dy4"/>
                                             <constraint firstItem="W9M-xF-1Um" firstAttribute="bottom" secondItem="OO2-bq-7Kd" secondAttribute="centerY" id="RNt-3Q-fFw"/>

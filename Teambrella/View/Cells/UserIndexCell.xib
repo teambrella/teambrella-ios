@@ -18,7 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserIndexCell" id="gTV-IL-0wX" customClass="UserIndexCell" customModule="Teambrella" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserIndexCell" id="gTV-IL-0wX" customClass="UserIndexCell" customModule="Surilla" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="396" height="121"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -28,20 +28,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kNR-zH-x9t">
                         <rect key="frame" x="0.0" y="0.0" width="396" height="121"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RpD-3o-fgi" customClass="RoundBadgedView" customModule="Teambrella" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RpD-3o-fgi" customClass="RoundBadgedView" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="16" y="41" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="6NW-Ze-gcn"/>
                                     <constraint firstAttribute="width" secondItem="RpD-3o-fgi" secondAttribute="height" multiplier="1:1" id="x8a-5y-iTK"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Augusta Strokes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00i-59-BAm" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Augusta Strokes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00i-59-BAm" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="72" y="40" width="126" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST VOTED: 2 WEEKS AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMU-rn-v4T" customClass="ThinStatusSubtitleLabel" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST VOTED: 2 WEEKS AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMU-rn-v4T" customClass="ThinStatusSubtitleLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="72" y="61" width="221" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -57,7 +57,7 @@
                                     <constraint firstAttribute="height" constant="1" id="TzO-0f-LZB"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80.81" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJB-UG-OHk" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80.81" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJB-UG-OHk" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="307" y="50" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -70,7 +70,7 @@
                                     <constraint firstAttribute="height" constant="1" id="PXa-6j-9Y5"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pJ-1b-AQm" customClass="Label" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pJ-1b-AQm" customClass="Label" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="12" y="37" width="16" height="16"/>
                                 <color key="backgroundColor" red="0.47058823529999999" green="0.50980392159999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
