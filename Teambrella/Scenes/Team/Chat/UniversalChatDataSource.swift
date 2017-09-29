@@ -102,6 +102,8 @@ final class UniversalChatDatasource {
         }
     }
     
+    var isPrivateChat: Bool { return strategy is PrivateChatStrategy }
+    
 //    var itemType: ItemType = .teamChat
 //    var isRateVisible: Bool { return itemType == .claim || itemType == .teammate }
     

@@ -101,6 +101,13 @@ final class UniversalChatVC: UIViewController, Routable {
         stopListeningKeyboard()
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: view)
+        }
+    }
+    
     deinit {
         service.socket?.remove(listener: socketToken)
     }
@@ -113,6 +120,8 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     func tapLeftButton(sender: UIButton) {
+        if dataSource.isPrivateChat { return }
+        
         picker.showOptions()
         //input.isHidden = true
     }
@@ -490,5 +499,30 @@ extension UniversalChatVC: ImagePickerControllerDelegate {
     
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
         
+    }
+}
+
+// MARK: UIViewControllerPreviewingDelegate
+extension UniversalChatVC: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                           commit viewControllerToCommit: UIViewController) {
+        service.router.push(vc: viewControllerToCommit, animated: true)
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                           viewControllerForLocation location: CGPoint) -> UIViewController? {
+        let updatedLocation = view.convert(location, to: collectionView)
+        guard let indexPath = collectionView?.indexPathForItem(at: updatedLocation) else { return nil }
+        guard let cell = collectionView?.cellForItem(at: indexPath) as? ChatTextCell else { return nil }
+        
+        let cellLocation = collectionView.convert(updatedLocation, to: cell.avatarView)
+        guard cell.avatarView.point(inside: cellLocation, with: nil) else { return nil }
+        guard let model = dataSource[indexPath] as? ChatTextCellModel else { return nil }
+        guard let vc = service.router.getControllerMemberProfile(teammateID: model.entity.userID) else { return nil }
+        
+        vc.preferredContentSize = CGSize(width: view.bounds.width * 0.9, height: view.bounds.height * 0.9)
+        previewingContext.sourceRect = cell.frame
+        vc.isPeeking = true
+        return vc
     }
 }
