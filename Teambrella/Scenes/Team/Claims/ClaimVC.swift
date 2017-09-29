@@ -22,7 +22,7 @@
 import ImageSlideshow
 import UIKit
 
-class ClaimVC: UIViewController, Routable {
+final class ClaimVC: UIViewController, Routable {
     
     static var storyboardName = "Claims"
     
@@ -33,14 +33,18 @@ class ClaimVC: UIViewController, Routable {
     var navigationBottomLabel: UILabel?
     
     var lastUpdatedVote: Date?
+    var isPeeking: Bool = false
+    var isNavBarAdded: Bool = false
     
     @IBOutlet var collectionView: UICollectionView!
+    
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let claimID = claimID else { return }
         
-        addGradientNavBar()
+        addGradientNavBarIfNeeded()
         setupCells()
         dataSource.onUpdate = { [weak self] in
             guard let `self` = self else { return }
@@ -55,19 +59,102 @@ class ClaimVC: UIViewController, Routable {
         clearNavigationBar()
     }
     
-    func reloadData() {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if view.frame.width == UIScreen.main.bounds.width {
+            isPeeking = false
+        }
+        addGradientNavBarIfNeeded()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Callbacks
+    
+    @objc
+    func tapGallery(sender: UITapGestureRecognizer) {
+        guard let gallery = sender.view as? ImageSlideshow else { return }
+        
+        gallery.presentFullScreenController(from: self)
+    }
+    
+    @objc
+    func sliderMoved(slider: UISlider) {
+        updateVotingCell()
+        lastUpdatedVote = Date()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
+            if let lastUpdate = self?.lastUpdatedVote {
+                let difference = Date().timeIntervalSince(lastUpdate)
+                if difference > 0.99 {
+                    self?.lastUpdatedVote = nil
+                    self?.dataSource.updateVoteOnServer(vote: slider.value)
+                }
+            }
+            
+        })
+    }
+    
+    @objc
+    func tapTransactions(sender: UITapGestureRecognizer) {
+        log("\ntap Transactions\n", type: .userInteraction)
+        guard let session = service.session?.currentTeam?.teamID, let claimID = self.claimID else { return }
+        
+        guard let id = Int(claimID) else { return }
+        
+        service.router.presentClaimTransactionsList(teamID: session, claimID: id)
+    }
+    
+    @objc
+    func tapResetVote(sender: UIButton) {
+        self.dataSource.updateVoteOnServer(vote: nil)
+    }
+    
+    // MARK: Private
+    
+    private func updateVotingCell() {
+        let cells = collectionView.visibleCells.flatMap { $0 as? ClaimVoteCell }
+        guard let cell = cells.first else { return }
+        
+        cell.yourVotePercentValue.text = String.truncatedNumber(cell.slider.value * 100)
+        if let amount = dataSource.claim?.claimAmount {
+            cell.yourVoteAmount.text = String.truncatedNumber(cell.slider.value * Float(amount))
+        }
+        cell.yourVotePercentValue.alpha = 0.5
+        cell.yourVoteAmount.alpha = 0.5
+    }
+    
+    private func addGradientNavBarIfNeeded() {
+        if !isPeeking && !isNavBarAdded {
+            addGradientNavBar()
+            manageNavigationBar()
+            isNavBarAdded = true
+        }
+    }
+    
+    private func setupCells() {
+        collectionView.register(ImageGalleryCell.nib, forCellWithReuseIdentifier: ImageGalleryCell.cellID)
+        collectionView.register(ClaimVoteCell.nib, forCellWithReuseIdentifier: ClaimVoteCell.cellID)
+        collectionView.register(ClaimDetailsCell.nib, forCellWithReuseIdentifier: ClaimDetailsCell.cellID)
+        collectionView.register(ClaimOptionsCell.nib, forCellWithReuseIdentifier: ClaimOptionsCell.cellID)
+    }
+    
+    private func reloadData() {
         collectionView.reloadData()
         manageNavigationBar()
     }
     
-    func clearNavigationBar() {
+    private func clearNavigationBar() {
         navigationTopLabel?.removeFromSuperview()
         navigationTopLabel = nil
         navigationBottomLabel?.removeFromSuperview()
         navigationBottomLabel = nil
     }
     
-    func manageNavigationBar() {
+    private func manageNavigationBar() {
         clearNavigationBar()
         
         if let navigationBar = self.navigationController?.navigationBar {
@@ -103,68 +190,6 @@ class ClaimVC: UIViewController, Routable {
             
             navigationBar.addSubview(secondLabel)
         }
-    }
-    
-    private func setupCells() {
-        collectionView.register(ImageGalleryCell.nib, forCellWithReuseIdentifier: ImageGalleryCell.cellID)
-        collectionView.register(ClaimVoteCell.nib, forCellWithReuseIdentifier: ClaimVoteCell.cellID)
-        collectionView.register(ClaimDetailsCell.nib, forCellWithReuseIdentifier: ClaimDetailsCell.cellID)
-        collectionView.register(ClaimOptionsCell.nib, forCellWithReuseIdentifier: ClaimOptionsCell.cellID)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @objc
-    func tapGallery(sender: UITapGestureRecognizer) {
-        guard let gallery = sender.view as? ImageSlideshow else { return }
-        
-        gallery.presentFullScreenController(from: self)
-    }
-    
-    @objc
-    func sliderMoved(slider: UISlider) {
-        updateVotingCell()
-        lastUpdatedVote = Date()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
-            if let lastUpdate = self?.lastUpdatedVote {
-                let difference = Date().timeIntervalSince(lastUpdate)
-                if difference > 0.99 {
-                    self?.lastUpdatedVote = nil
-                    self?.dataSource.updateVoteOnServer(vote: slider.value)
-                }
-            }
-            
-        })
-    }
-    
-    func updateVotingCell() {
-        let cells = collectionView.visibleCells.flatMap { $0 as? ClaimVoteCell }
-        guard let cell = cells.first else { return }
-        
-        cell.yourVotePercentValue.text = String.truncatedNumber(cell.slider.value * 100)
-        if let amount = dataSource.claim?.claimAmount {
-            cell.yourVoteAmount.text = String.truncatedNumber(cell.slider.value * Float(amount))
-        }
-        cell.yourVotePercentValue.alpha = 0.5
-        cell.yourVoteAmount.alpha = 0.5
-    }
-    
-    @objc
-    func tapTransactions(sender: UITapGestureRecognizer) {
-        log("\ntap Transactions\n", type: .userInteraction)
-        guard let session = service.session?.currentTeam?.teamID, let claimID = self.claimID else { return }
-        
-        guard let id = Int(claimID) else { return }
-        
-        service.router.presentClaimTransactionsList(teamID: session, claimID: id)
-    }
-    
-    @objc
-    func tapResetVote(sender: UIButton) {
-        self.dataSource.updateVoteOnServer(vote: nil)
     }
     
 }

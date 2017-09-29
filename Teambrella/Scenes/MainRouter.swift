@@ -40,7 +40,7 @@ final class MainRouter {
         return navigator?.viewControllers.filter { $0 is MasterTabBarController }.first as? MasterTabBarController
     }
     
-    private func push(vc: UIViewController, animated: Bool = true) {
+   func push(vc: UIViewController, animated: Bool = true) {
         navigator?.pushViewController(vc, animated: animated)
     }
     
@@ -94,17 +94,22 @@ final class MainRouter {
     }
     
     func presentClaim(claim: ClaimLike) {
-        guard let vc = ClaimVC.instantiate() as? ClaimVC else { fatalError("Error instantiating") }
-        
-        vc.claimID = claim.id
+        guard let vc = getControllerClaim(claimID: claim.id) else { fatalError("Error instantiating") }
+     
         push(vc: vc)
     }
     
     func presentClaim(claimID: String) {
-        guard let vc = ClaimVC.instantiate() as? ClaimVC else { fatalError("Error instantiating") }
+        guard let vc = getControllerClaim(claimID: claimID) else { fatalError("Error instantiating") }
         
         vc.claimID = claimID
         push(vc: vc)
+    }
+    
+    func getControllerClaim(claimID: String) -> ClaimVC? {
+        let vc = ClaimVC.instantiate() as? ClaimVC
+        vc?.claimID = claimID
+        return vc
     }
     
     func presentMemberProfile(teammate: TeammateEntity) {
