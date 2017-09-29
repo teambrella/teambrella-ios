@@ -37,7 +37,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     var isPresentedInStack = false
     var teammateID: String?
     
-     weak var emptyVC: EmptyVC?
+    weak var emptyVC: EmptyVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -171,10 +171,11 @@ extension ClaimsVC: UIViewControllerPreviewingDelegate {
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                            viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard let indexPath = collectionView?.indexPathForItem(at: location) else { return nil }
+        let updatedLocation = view.convert(location, to: collectionView)
+        guard let indexPath = collectionView?.indexPathForItem(at: updatedLocation) else { return nil }
         guard let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
         
-         let claim = dataSource[indexPath]
+        let claim = dataSource[indexPath]
         guard let vc = service.router.getControllerClaim(claimID: claim.id) else { return nil }
         
         vc.preferredContentSize = CGSize(width: view.bounds.width * 0.8, height: view.bounds.height * 0.9)

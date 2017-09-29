@@ -247,7 +247,8 @@ extension MembersVC: UIViewControllerPreviewingDelegate {
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                            viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard let indexPath = collectionView?.indexPathForItem(at: location) else { return nil }
+        let updatedLocation = view.convert(location, to: collectionView)
+        guard let indexPath = collectionView?.indexPathForItem(at: updatedLocation) else { return nil }
         guard let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
         
         let teammate = dataSource[indexPath]
