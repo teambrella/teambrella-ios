@@ -31,7 +31,9 @@ struct NewClaimModel: ReportModel {
     let images: [String]
     let address: String
     
-    var isValid: Bool { return expenses > 0 && text != "" && address != "" }
+    var isValid: Bool { return expenses > 0
+        && text.count >= 30
+        && address != "" }
 }
 
 struct NewChatModel: ReportModel {
@@ -39,7 +41,8 @@ struct NewChatModel: ReportModel {
     let title: String
     let text: String
     
-    var isValid: Bool { return title != "" && text != "" }
+    var isValid: Bool { return title != ""
+        && text.count >= 30 }
 }
 
 struct ChatModel {
