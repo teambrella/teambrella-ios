@@ -31,7 +31,8 @@ struct MembersCellBuilder {
             }
             cell.titleLabel.text = teammate.name
             cell.detailsLabel.text = "\(teammate.model), \(teammate.year)".uppercased()
-            cell.dateLabel.text = DateProcessor().stringFromNow(seconds: -teammate.minutesRemaining)
+            let date =  Date().addingTimeInterval(-Double(teammate.minutesRemaining))
+            cell.dateLabel.text = DateProcessor().stringFromNow(minutes: -teammate.minutesRemaining).uppercased()
             cell.chartView.setupWith(remainingMinutes: teammate.minutesRemaining)
         } else if let cell = cell as? TeammateCell {
             if let url = URL(string: service.server.avatarURLstring(for: teammate.avatar)) {
