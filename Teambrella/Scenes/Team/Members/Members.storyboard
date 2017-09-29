@@ -106,7 +106,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTED (2.1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMa-g1-Uv2" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="37" width="62.5" height="15"/>
+                                                    <rect key="frame" x="72" y="37" width="56.5" height="11"/>
                                                     <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -539,7 +539,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are proxy voter for Jimmy Wong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxQ-2I-53K" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="84.5" y="17" width="205.5" height="16"/>
+                                                    <rect key="frame" x="94.5" y="17" width="185.5" height="16"/>
                                                     <color key="backgroundColor" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="6V4-jV-Qqh"/>
@@ -633,13 +633,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulW-Xb-t3c" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="ulW-Xb-t3c" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="136" y="60" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yuo-5i-zpX" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Yuo-5i-zpX" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="136" y="98" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -667,7 +667,7 @@
                                                         <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Ln-izq" customClass="ChatTextLabel" customModule="Surilla" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Ln-izq" customClass="ChatTextLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="136" y="119" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -698,6 +698,7 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wHf-Ln-izq" secondAttribute="trailing" constant="16" id="1GB-Jh-KaJ"/>
                                             <constraint firstAttribute="trailing" secondItem="XnH-wy-WNx" secondAttribute="trailing" id="4DQ-AT-w6d"/>
                                             <constraint firstAttribute="trailing" secondItem="rAA-xo-vE9" secondAttribute="trailing" constant="16" id="4rd-ws-WKE"/>
                                             <constraint firstItem="rAA-xo-vE9" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leading" constant="16" id="Cyg-Hj-kSL"/>
@@ -705,11 +706,13 @@
                                             <constraint firstItem="8EQ-Lc-N7f" firstAttribute="top" secondItem="oqH-A9-lU0" secondAttribute="bottom" constant="24" id="FZ6-S7-8MS"/>
                                             <constraint firstItem="oqH-A9-lU0" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leadingMargin" id="Feb-82-Lt7"/>
                                             <constraint firstAttribute="trailing" secondItem="Aih-WA-5ek" secondAttribute="trailing" id="IAy-FJ-RNg"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Yuo-5i-zpX" secondAttribute="trailing" constant="16" id="IMx-9I-YOc"/>
                                             <constraint firstItem="ulW-Xb-t3c" firstAttribute="top" secondItem="oqH-A9-lU0" secondAttribute="top" id="Ked-b1-WnA"/>
                                             <constraint firstAttribute="bottom" secondItem="XnH-wy-WNx" secondAttribute="bottom" id="Lav-Bs-2LY"/>
                                             <constraint firstItem="oqH-A9-lU0" firstAttribute="top" secondItem="kbY-VY-xCl" secondAttribute="bottom" constant="23" id="Oc2-od-itN"/>
                                             <constraint firstItem="kbY-VY-xCl" firstAttribute="top" secondItem="THQ-y3-3Ql" secondAttribute="top" constant="16" id="Xwn-mo-Xa6"/>
                                             <constraint firstItem="ulW-Xb-t3c" firstAttribute="leading" secondItem="oqH-A9-lU0" secondAttribute="trailing" constant="24" id="Ytz-a3-YWx"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ulW-Xb-t3c" secondAttribute="trailing" constant="16" id="Zc5-0z-fzP"/>
                                             <constraint firstItem="Aih-WA-5ek" firstAttribute="top" secondItem="THQ-y3-3Ql" secondAttribute="top" id="bR2-Iu-tPS"/>
                                             <constraint firstItem="wHf-Ln-izq" firstAttribute="leading" secondItem="ulW-Xb-t3c" secondAttribute="leading" id="ejq-D9-27F"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="8EQ-Lc-N7f" secondAttribute="trailing" id="fpM-NS-YkI"/>
@@ -977,7 +980,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="facebook.com/jimmywong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seq-A6-jmI" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="facebook.com/jimmywong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="seq-A6-jmI" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
                                                                         <rect key="frame" x="55" y="33" width="201" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>

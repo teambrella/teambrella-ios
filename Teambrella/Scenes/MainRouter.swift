@@ -112,6 +112,12 @@ final class MainRouter {
         return vc
     }
     
+    func getControllerMemberProfile(teammateID: String) -> TeammateProfileVC? {
+        let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC
+        vc?.teammateID = teammateID
+        return vc
+    }
+    
     func presentMemberProfile(teammate: TeammateEntity) {
         guard let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC else { fatalError("Error instantiating") }
         

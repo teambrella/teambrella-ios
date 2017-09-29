@@ -39,6 +39,8 @@ final class TeammateProfileVC: UIViewController, Routable {
     var linearFunction: PiecewiseFunction?
     var chosenRisk: Double?
     var isRiskScaleUpdateNeeded = true
+    var isPeeking: Bool = false
+    var shouldAddGradientNavBar: Bool { return teammate != nil || teammateID != nil }
     
     var votingRiskCell: VotingRiskCell? {
         let visibleCells = collectionView.visibleCells
@@ -56,14 +58,12 @@ final class TeammateProfileVC: UIViewController, Routable {
             addPrivateMessageButton()
         } else if let teammateID = teammateID {
             dataSource = TeammateProfileDataSource(id: teammateID, isVoting: false, isMe: false)
-            addGradientNavBar()
-            addPrivateMessageButton()
         } else if let myID = service.session?.currentUserID {
             dataSource = TeammateProfileDataSource(id: myID, isVoting: false, isMe: true)
         } else {
             fatalError("No valid info about teammate")
         }
-        
+        addGradientNavBarIfNeeded()
         registerCells()
         HUD.show(.progress, onView: view)
         dataSource.loadEntireTeammate { [weak self] extendedTeammate in
@@ -81,6 +81,15 @@ final class TeammateProfileVC: UIViewController, Routable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setTitle()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if view.frame.width == UIScreen.main.bounds.width {
+            isPeeking = false
+        }
+        addGradientNavBarIfNeeded()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -175,6 +184,14 @@ final class TeammateProfileVC: UIViewController, Routable {
     }
     
     // MARK: Private
+    
+    private func addGradientNavBarIfNeeded() {
+        if !isPeeking && shouldAddGradientNavBar {
+            addGradientNavBar()
+            addPrivateMessageButton()
+            setTitle()
+        }
+    }
     
     private func registerCells() {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)

@@ -38,6 +38,8 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
    
     var isFirstLoading = true
 
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchController()
@@ -69,6 +71,13 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
         }
         
         dataSource.updateSilently()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: view)
+        }
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -226,5 +235,27 @@ extension MembersVC: UIScrollViewDelegate {
 extension MembersVC: SortControllerDelegate {
     func sort(controller: SortVC, didSelect type: SortVC.SortType) {
         dataSource.sort(type: type)
+    }
+}
+
+// MARK: UIViewControllerPreviewingDelegate
+extension MembersVC: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                           commit viewControllerToCommit: UIViewController) {
+        service.router.push(vc: viewControllerToCommit, animated: true)
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                           viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collectionView?.indexPathForItem(at: location) else { return nil }
+        guard let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
+        
+        let teammate = dataSource[indexPath]
+        guard let vc = service.router.getControllerMemberProfile(teammateID: teammate.userID) else { return nil }
+        
+        vc.preferredContentSize = CGSize(width: view.bounds.width * 0.8, height: view.bounds.height * 0.9)
+        previewingContext.sourceRect = cell.frame
+        vc.isPeeking = true
+        return vc
     }
 }
