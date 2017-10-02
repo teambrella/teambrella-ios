@@ -23,8 +23,7 @@ import PKHUD
 import SpriteKit
 import UIKit
 
-class LoginBlueVC: UIViewController {
-    
+final class LoginBlueVC: UIViewController {
     @IBOutlet var centerLabel: UILabel!
     @IBOutlet var continueWithFBButton: UIButton!
     @IBOutlet var tryDemoButton: UIButton!
@@ -32,64 +31,16 @@ class LoginBlueVC: UIViewController {
     @IBOutlet var confetti: SKView!
     
     var isEmitterAdded: Bool = false
-
+    
     lazy var secretRecognizer: UILongPressGestureRecognizer = {
         let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(secretTap))
         recognizer.minimumPressDuration = 8
         return recognizer
     }()
     
-    @objc
-    private func secretTap(sender: UILongPressGestureRecognizer) {
-        let controller = UIAlertController(title: "Secret entrance",
-                                           message: "Insert secret BTC key",
-                                           preferredStyle: .alert)
-        controller.addTextField { textField in
-            textField.placeholder = "BTC private key"
-            textField.keyboardType = .default
-        }
-       
-        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] action in
-            if let textField = controller.textFields?.first,
-                let text = textField.text,
-                text.count > 10 {
-                self?.setupBTCsecretAddress(string: text)
-            }
-        }))
-        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-       
-        present(controller, animated: true, completion: nil)
-    }
+    var isRegisteredFacebookUser: Bool { return Keychain.value(forKey: .ethPrivateAddress) != nil }
     
-    private func setupBTCsecretAddress(string: String) {
-        let demo = Keychain.value(forKey: .ethPrivateAddressDemo)
-        guard demo != string else {
-            return
-        }
-        
-        Keychain.save(value: string, forKey: .ethPrivateAddress)
-        service.crypto.setToRealUser()
-        performSegue(type: .unwindToInitial, sender: nil)
-    }
-    
-    @IBAction func tapContinueWithFBButton(_ sender: Any) {
-        let manager = FBSDKLoginManager()
-        manager.logOut()
-        let permissions = ["public_profile", "email", "user_friends"]
-        HUD.show(.progress)
-        manager.logIn(withReadPermissions: permissions, from: self) { [weak self] result, error in
-            guard let me = self else { return }
-            guard error == nil, let result = result, let token = result.token else {
-                me.handleFailure(error: error)
-                return
-            }
-            me.register(token: token.tokenString, userID: token.userID)
-        }
-    }
-    
-    @IBAction func tapTryDemoButton(_ sender: Any) {
-        service.crypto.clearLastUserType()
-    }
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,11 +50,6 @@ class LoginBlueVC: UIViewController {
         continueWithFBButton.layer.cornerRadius = 2
         centerLabel.isUserInteractionEnabled = true
         centerLabel.addGestureRecognizer(secretRecognizer)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,7 +70,63 @@ class LoginBlueVC: UIViewController {
         addEmitter()
     }
     
-    func addEmitter() {
+    // MARK: Callbacks
+    
+    @IBAction func tapContinueWithFBButton(_ sender: Any) {
+        guard isRegisteredFacebookUser == false else {
+            logAsFacebookUser(user: nil)
+            return
+        }
+        
+        let manager = FBSDKLoginManager()
+        manager.logOut()
+        let permissions = ["public_profile", "email", "user_friends"]
+        HUD.show(.progress)
+        manager.logIn(withReadPermissions: permissions, from: self) { [weak self] result, error in
+            guard let me = self else { return }
+            guard error == nil, let result = result, let token = result.token else {
+                me.handleFailure(error: error)
+                return
+            }
+            me.register(token: token.tokenString, userID: token.userID)
+        }
+    }
+    
+    @IBAction func tapTryDemoButton(_ sender: Any) {
+        service.crypto.clearLastUserType()
+    }
+    
+    @objc
+    private func secretTap(sender: UILongPressGestureRecognizer) {
+        let controller = UIAlertController(title: "Secret entrance",
+                                           message: "Insert secret BTC key",
+                                           preferredStyle: .alert)
+        controller.addTextField { textField in
+            textField.placeholder = "BTC private key"
+            textField.keyboardType = .default
+        }
+        
+        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] action in
+            if let textField = controller.textFields?.first,
+                let text = textField.text,
+                text.count > 10 {
+                self?.setupBTCsecretAddress(string: text)
+            }
+        }))
+        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(controller, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? LoginDetailsVC, let user = sender as? FacebookUser {
+            _ = LoginDetailsConfigurator(vc: vc, fbUser: user)
+        }
+    }
+    
+    // MARK Private
+    
+    private func addEmitter() {
         guard !isEmitterAdded else { return }
         
         isEmitterAdded = true
@@ -153,7 +155,7 @@ class LoginBlueVC: UIViewController {
         confetti.presentScene(skScene)
     }
     
-    func animateCenterLabel() {
+    private func animateCenterLabel() {
         let offset: CGFloat = view.bounds.height / 2 - 50
         let offsetTransform = CGAffineTransform(translationX: 0, y: offset)
         let scaleTransform = CGAffineTransform(scaleX: 0.5, y: 0.5)
@@ -170,7 +172,7 @@ class LoginBlueVC: UIViewController {
                        completion: nil)
     }
     
-    func register(token: String, userID: String) {
+    private func register(token: String, userID: String) {
         service.crypto.setToRealUser()
         
         guard let signature = EthereumProcessor.standard.publicKeySignature else {
@@ -188,7 +190,6 @@ class LoginBlueVC: UIViewController {
                                             body: body,
                                             success: { response in
                                                 self.getMe()
-                                                // self.handleSuccess()
             }) { error in
                 self.handleFailure(error: error)
             }
@@ -196,7 +197,7 @@ class LoginBlueVC: UIViewController {
         }
     }
     
-    func getMe() {
+    private func getMe() {
         let fields = "email, birthday, age_range, name, first_name, last_name, gender, picture.type(large)"
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": fields]).start { connection, object, error in
             guard let reply = object as? [String: Any], error == nil else {
@@ -208,22 +209,31 @@ class LoginBlueVC: UIViewController {
         }
     }
     
-    func handleSuccess(facebookUser: FacebookUser) {
-        HUD.hide()
-        performSegue(type: .unwindToInitial, sender: facebookUser)
+   private func handleSuccess(facebookUser: FacebookUser) {
+      logAsFacebookUser(user: facebookUser)
     }
     
-    func handleFailure(error: Error?) {
+    private func handleFailure(error: Error?) {
         HUD.hide()
-         service.crypto.clearLastUserType()
+        service.crypto.clearLastUserType()
         performSegue(type: .invitationOnly, sender: nil)
         log("Error \(String(describing: error))", type: .error)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? LoginDetailsVC, let user = sender as? FacebookUser {
-            _ = LoginDetailsConfigurator(vc: vc, fbUser: user)
+    private func setupBTCsecretAddress(string: String) {
+        let demo = Keychain.value(forKey: .ethPrivateAddressDemo)
+        guard demo != string else {
+            return
         }
+        
+        Keychain.save(value: string, forKey: .ethPrivateAddress)
+        logAsFacebookUser(user: nil)
+    }
+    
+    private func logAsFacebookUser(user: FacebookUser?) {
+        HUD.hide()
+        service.crypto.setToRealUser()
+        performSegue(type: .unwindToInitial, sender: user)
     }
     
 }
