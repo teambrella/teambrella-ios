@@ -21,19 +21,43 @@
 import PKHUD
 import UIKit
 
-class InitialVC: UIViewController {
+final class InitialVC: UIViewController {
     var isLoginNeeded: Bool = true
+    
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // service.crypto.deleteStoredKeys()
         if service.crypto.lastUserType != .none {
             isLoginNeeded = false
             startLoadingTeams()
         }
     }
     
-    func getTeams(timestamp: Int64) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isLoginNeeded {
+            performSegue(type: .login)
+            isLoginNeeded = false
+        }
+    }
+    
+    // MARK: Callbacks
+    
+    @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
+        startLoadingTeams()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        HUD.hide()
+        if segue.type == .teambrella {
+            
+        }
+    }
+    
+    // MARK: Private
+    
+    private func getTeams(timestamp: Int64) {
         service.crypto.timestamp = timestamp
         let isDemo = service.crypto.isDemoUser
         service.storage.requestTeams(demo: isDemo).observe { [weak self] result in
@@ -60,55 +84,16 @@ class InitialVC: UIViewController {
         }
     }
     
-    func failure() {
+    private func failure() {
         HUD.hide()
         service.router.logout()
         performSegue(type: .login)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if isLoginNeeded {
-            performSegue(type: .login)
-            isLoginNeeded = false
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        HUD.hide()
-        if segue.type == .main {
-            if let tabVc = segue.destination as? UITabBarController,
-                let nc = tabVc.viewControllers?.first as? UINavigationController,
-                let first = nc.viewControllers.first as? TransactionsVC {
-                first.teambrella = service.teambrella
-            }
-        }
-        if segue.type == .teambrella {
-
-        }
-    }
-    
-    func startLoadingTeams() {
+    private func startLoadingTeams() {
         HUD.show(.progress)
         service.server.updateTimestamp { timestamp, error in
             self.getTeams(timestamp: timestamp)
-        }
-    }
-    
-    @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
-        startLoadingTeams()
-    }
-    
-    @IBAction func tapTeambrella(_ sender: Any) {
-        performSegue(type: .teambrella)
-    }
-    
-    @IBAction func tapTests(_ sender: Any) {
-        let me = service.teambrella.fetcher.user
-        if me.isFbAuthorized {
-            performSegue(type: .main)
-        } else {
-            performSegue(type: .login)
         }
     }
     
