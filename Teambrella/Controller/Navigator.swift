@@ -22,6 +22,7 @@
 import UIKit
 
 class Navigator: UINavigationController {
+    var isHomeAnimationNeeded = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,9 @@ class Navigator: UINavigationController {
         super.didReceiveMemoryWarning()
     }
     
+    func clear() {
+        isHomeAnimationNeeded = true
+    }
 }
 
 extension Navigator: UINavigationControllerDelegate {
@@ -40,5 +44,17 @@ extension Navigator: UINavigationControllerDelegate {
                               animated: Bool) {
         let hide = viewController is UITabBarController || viewController is InitialVC
         setNavigationBarHidden(hide, animated: animated)
+    }
+    
+    func navigationController(_ navigationController: UINavigationController,
+                              animationControllerFor operation: UINavigationControllerOperation,
+                              from fromVC: UIViewController,
+                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard toVC is MasterTabBarController && isHomeAnimationNeeded else {
+            return nil
+        }
+        
+        isHomeAnimationNeeded = false
+        return HomePresentationController()
     }
 }

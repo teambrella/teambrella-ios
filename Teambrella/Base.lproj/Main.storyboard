@@ -19,7 +19,7 @@
         <!--InitialVC-->
         <scene sceneID="cEj-gd-iOt">
             <objects>
-                <viewController id="BKZ-Pn-qVe" customClass="InitialVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BKZ-Pn-qVe" customClass="InitialVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vMT-N2-upV"/>
                         <viewControllerLayoutGuide type="bottom" id="SpK-yL-8zu"/>
@@ -28,8 +28,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imF-3C-Sdp" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imF-3C-Sdp" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -44,13 +44,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emU-7T-Nip">
-                                <rect key="frame" x="186" y="312" width="4" height="22"/>
+                                <rect key="frame" x="185.5" y="313" width="5.5" height="21"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                 <color key="textColor" red="0.74117647060000003" green="0.76470588240000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-n1-x7D">
-                                <rect key="frame" x="80" y="254" width="215" height="43"/>
+                                <rect key="frame" x="80" y="255" width="215" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cBm-n1-x7D" secondAttribute="height" multiplier="5:1" id="enG-6g-6PF"/>
                                 </constraints>
@@ -77,7 +77,7 @@
                     <connections>
                         <segue destination="Ncn-5L-LbE" kind="presentation" identifier="login" animates="NO" id="OTa-lG-lZY"/>
                         <segue destination="xU6-5x-Qe4" kind="show" identifier="main" id="o17-8O-uqc"/>
-                        <segue destination="LDY-qk-qZO" kind="show" identifier="teambrella" animates="NO" id="WLE-fZ-f3z"/>
+                        <segue destination="LDY-qk-qZO" kind="show" identifier="teambrella" id="WLE-fZ-f3z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ep4-ci-iap" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -127,7 +127,7 @@
         <!--Master Tab Bar Controller-->
         <scene sceneID="0Jn-3W-J54">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="LDY-qk-qZO" customClass="MasterTabBarController" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="LDY-qk-qZO" customClass="MasterTabBarController" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="YOe-VO-27H">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -196,7 +196,7 @@
         <!--Navigator-->
         <scene sceneID="oew-N5-y95">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xrQ-fg-9ck" customClass="Navigator" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xrQ-fg-9ck" customClass="Navigator" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q94-ny-2f7">
                         <autoresizingMask key="autoresizingMask"/>

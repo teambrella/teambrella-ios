@@ -96,7 +96,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     func switchToCurrentTeam() {
-        HUD.show(.progress)
+        HUD.show(.progress, onView: view)
         dataSource = HomeDataSource()
         if let teamID = service.session?.currentTeam?.teamID {
             dataSource.loadData(teamID: teamID)
@@ -130,10 +130,14 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
                                     animated: false)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        addEmitter()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //scrollViewDidScroll(collectionView)
-        addEmitter()
         guard isFirstLoading == false else {
             isFirstLoading = false
             return

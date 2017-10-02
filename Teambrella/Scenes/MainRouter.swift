@@ -248,6 +248,7 @@ final class MainRouter {
         
         service.session = nil
         service.crypto.clearLastUserType()
+        navigator.clear()
         for vc in navigator.viewControllers {
             if let vc = vc as? InitialVC {
                 navigator.popToViewController(vc, animated: true)

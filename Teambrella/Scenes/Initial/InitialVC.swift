@@ -26,7 +26,7 @@ class InitialVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // service.crypto.deleteStoredKeys()
+        // service.crypto.deleteStoredKeys()
         if service.crypto.lastUserType != .none {
             isLoginNeeded = false
             startLoadingTeams()
@@ -51,6 +51,7 @@ class InitialVC: UIViewController {
                 }
                 service.session?.teams = teamsEntity.teams
                 service.session?.currentUserID = teamsEntity.userID
+                HUD.hide()
                 self?.performSegue(type: .teambrella)
             case .error:
                 self?.failure()
@@ -82,12 +83,15 @@ class InitialVC: UIViewController {
                 first.teambrella = service.teambrella
             }
         }
+        if segue.type == .teambrella {
+
+        }
     }
     
     func startLoadingTeams() {
         HUD.show(.progress)
         service.server.updateTimestamp { timestamp, error in
-           self.getTeams(timestamp: timestamp)
+            self.getTeams(timestamp: timestamp)
         }
     }
     

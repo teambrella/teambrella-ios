@@ -16,7 +16,7 @@
         <!--Home-->
         <scene sceneID="aGe-4t-lId">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="dtc-T4-z44" customClass="HomeVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="dtc-T4-z44" customClass="HomeVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cNQ-z2-ZHp"/>
                         <viewControllerLayoutGuide type="bottom" id="84p-2X-Ap8"/>
@@ -25,8 +25,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2W-oM-PML" customClass="GradientView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2W-oM-PML" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="10" width="375" height="323.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQp-Ny-0yX">
                                         <rect key="frame" x="16" y="30" width="30" height="30"/>
@@ -53,26 +53,26 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti-home" translatesAutoresizingMaskIntoConstraints="NO" id="5dq-54-aqk">
-                                <rect key="frame" x="-0.5" y="0.0" width="375" height="333.5"/>
+                                <rect key="frame" x="-0.5" y="10" width="375" height="323.5"/>
                             </imageView>
                             <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5X-w5-AtE" customClass="SKView">
-                                <rect key="frame" x="-0.5" y="0.0" width="375" height="333.5"/>
+                                <rect key="frame" x="-0.5" y="10" width="375" height="323.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Frank!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4a4-Xz-swb" customClass="HeaderLabel" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hi Frank!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4a4-Xz-swb" customClass="HeaderLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="34" width="375" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Here's what's new for you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiM-JO-zmq" customClass="SubheaderLabel" customModule="Teambrella" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" text="Here's what's new for you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiM-JO-zmq" customClass="SubheaderLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="82" y="64" width="211" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbC-Sb-FLW" customClass="DropDownButton" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="12" y="20" width="44" height="44"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbC-Sb-FLW" customClass="DropDownButton" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="12" y="60" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="aer-Qq-OZ0"/>
                                     <constraint firstAttribute="height" constant="44" id="e43-Lg-CJJ"/>
@@ -82,7 +82,7 @@
                                     <action selector="tapTeams:" destination="dtc-T4-z44" eventType="touchUpInside" id="zWS-SN-GDh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HqI-iY-38d" customClass="LabeledButton" customModule="Teambrella" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HqI-iY-38d" customClass="LabeledButton" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="327" y="35" width="32" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="PLA-6k-QzN"/>
@@ -93,11 +93,11 @@
                                     <action selector="tapInbox:" destination="dtc-T4-z44" eventType="touchUpInside" id="6LX-7H-fPy"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDk-QT-stB" customClass="UmbrellaView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="-0.5" y="233.5" width="375" height="100"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDk-QT-stB" customClass="UmbrellaView" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="-0.5" y="236.5" width="375" height="97"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dWk-hB-e7I">
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dWk-hB-e7I">
                                 <rect key="frame" x="0.0" y="105" width="375" height="191.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -110,7 +110,7 @@
                                     <inset key="sectionInset" minX="24" minY="5" maxX="24" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCollectionCell" id="XDl-au-9Mo" customClass="HomeCollectionCell" customModule="Teambrella" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCollectionCell" id="XDl-au-9Mo" customClass="HomeCollectionCell" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="24" y="17.5" width="325" height="157"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -132,13 +132,13 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Claim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOc-vE-rr1" customClass="MessageTitleLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Claim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOc-vE-rr1" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="64" y="14" width="79" height="18"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <color key="textColor" red="0.17254901960784313" green="0.22352941176470587" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YESTERDAY AT 10:44AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dL-BQ-HD7" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YESTERDAY AT 10:44AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dL-BQ-HD7" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="64" y="32" width="127" height="12"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                             <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -147,7 +147,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OD5-cP-eZ5">
                                                             <rect key="frame" x="0.0" y="56" width="325" height="54"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xle-t4-lRz" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xle-t4-lRz" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="162" height="54"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <userDefinedRuntimeAttributes>
@@ -161,7 +161,7 @@
                                                                         <constraint firstAttribute="width" constant="1" id="4OP-Co-AjU"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d71-a1-tb0" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d71-a1-tb0" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
                                                                     <rect key="frame" x="163" y="0.0" width="162" height="54"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <userDefinedRuntimeAttributes>
@@ -181,7 +181,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLa-Rg-RZk">
                                                                     <rect key="frame" x="0.0" y="0.0" width="253" height="47"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neighborhood that is really good and i would like to buy it for sure" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTU-MO-gZV" customClass="MessageTextLabel" customModule="Teambrella" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neighborhood that is really good and i would like to buy it for sure" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTU-MO-gZV" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="253" height="39"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -196,7 +196,7 @@
                                                                         <constraint firstItem="fTU-MO-gZV" firstAttribute="top" secondItem="qLa-Rg-RZk" secondAttribute="top" id="GLh-m1-y47"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UyN-7e-WUG" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UyN-7e-WUG" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                                                                     <rect key="frame" x="258" y="12.5" width="22" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="22" id="H9v-Ou-kgr"/>
@@ -266,7 +266,7 @@
                                     <outlet property="delegate" destination="dtc-T4-z44" id="yTm-kw-DRE"/>
                                 </connections>
                             </collectionView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="6dX-2w-nrX">
+                            <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="6dX-2w-nrX">
                                 <rect key="frame" x="184" y="296.5" width="7" height="37"/>
                                 <color key="pageIndicatorTintColor" red="0.76078431372549016" green="0.81176470588235294" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.32156862749999998" green="0.36862745099999999" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -296,7 +296,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="102"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Osa-1R-OFY" userLabel="Left Brick">
-                                                <rect key="frame" x="31.5" y="25" width="125" height="51"/>
+                                                <rect key="frame" x="33.5" y="25" width="121" height="51"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCoverage" translatesAutoresizingMaskIntoConstraints="NO" id="wIX-fM-EU9">
                                                         <rect key="frame" x="0.0" y="10" width="32" height="32"/>
@@ -305,20 +305,20 @@
                                                             <constraint firstAttribute="width" constant="32" id="h67-uJ-XJR"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVERAGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ym3-xx-jcx" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                                        <rect key="frame" x="48" y="0.0" width="77" height="12"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVERAGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ym3-xx-jcx" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                                        <rect key="frame" x="48" y="0.0" width="73" height="12"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                         <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="95" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7a-cU-E9r" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="95" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7a-cU-E9r" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
                                                         <rect key="frame" x="48" y="12" width="42" height="39"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0WR-os-NZl" customClass="CurrencyNormalLabel" customModule="Teambrella" customModuleProvider="target">
-                                                        <rect key="frame" x="96" y="12" width="29" height="39"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0WR-os-NZl" customClass="CurrencyNormalLabel" customModule="Surilla" customModuleProvider="target">
+                                                        <rect key="frame" x="92" y="12" width="29" height="39"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                         <color key="textColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -341,7 +341,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXS-UI-uax">
-                                                <rect key="frame" x="31.5" y="25" width="125" height="51"/>
+                                                <rect key="frame" x="33.5" y="25" width="121" height="51"/>
                                                 <connections>
                                                     <action selector="tapLeftBrick:" destination="dtc-T4-z44" eventType="touchUpInside" id="mvM-1h-jKk"/>
                                                 </connections>
@@ -370,19 +370,19 @@
                                                             <constraint firstAttribute="width" secondItem="sHk-fD-QOV" secondAttribute="height" multiplier="1:1" id="3W0-lM-fnX"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCN-fH-yvY" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCN-fH-yvY" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                                         <rect key="frame" x="48" y="0.0" width="92" height="12"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                         <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="600" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xL4-tL-WPQ" customClass="AmountLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="600" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xL4-tL-WPQ" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
                                                         <rect key="frame" x="48" y="12" width="64" height="39"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mBTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjW-Hc-lVp" customClass="CurrencyLabel" customModule="Teambrella" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mBTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjW-Hc-lVp" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
                                                         <rect key="frame" x="112" y="20" width="28" height="11"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                                         <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -443,14 +443,14 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="24" bottom="8" right="24"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4b-GY-6BP" userLabel="Item card" customClass="ItemCard" customModule="Teambrella" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4b-GY-6BP" userLabel="Item card" customClass="ItemCard" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="24" y="452.5" width="327" height="72"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="bgW-LU-X3c"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb2-DR-8f0" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb2-DR-8f0" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="16" y="540.5" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EzE-d3-MH7"/>
@@ -550,7 +550,7 @@
         <!--Private MessagesVC-->
         <scene sceneID="0OZ-Te-t7K">
             <objects>
-                <viewController storyboardIdentifier="PrivateMessagesVC" automaticallyAdjustsScrollViewInsets="NO" id="ga0-oI-ho5" customClass="PrivateMessagesVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivateMessagesVC" automaticallyAdjustsScrollViewInsets="NO" id="ga0-oI-ho5" customClass="PrivateMessagesVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LbX-Si-kXz"/>
                         <viewControllerLayoutGuide type="bottom" id="CPg-ak-Z9w"/>
