@@ -121,6 +121,8 @@ struct TeammateCellBuilder {
                 cell.yourVoteValueLabel.text = String(format:"%.2f", myVote)
                 let offset = controller.offsetFrom(risk: myVote, maxValue: cell.maxValue)
                 cell.scrollTo(offset: offset, silently: true)
+            } else {
+                controller.resetVote(cell: cell)
             }
             
             let timeString = DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
