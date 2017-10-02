@@ -20,7 +20,7 @@
         <!--ClaimsVC-->
         <scene sceneID="5W8-BX-sq5">
             <objects>
-                <viewController storyboardIdentifier="ClaimsVC" id="cCe-np-5xm" customClass="ClaimsVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClaimsVC" automaticallyAdjustsScrollViewInsets="NO" id="cCe-np-5xm" customClass="ClaimsVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EeS-ah-Y6t"/>
                         <viewControllerLayoutGuide type="bottom" id="i00-M2-7MW"/>
@@ -39,18 +39,18 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsOpenCell" id="tf0-bi-tUE" customClass="ClaimsOpenCell" customModule="Surilla" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimsOpenCell" id="tf0-bi-tUE" customClass="ClaimsOpenCell" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="12" y="0.0" width="351" height="156"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="351" height="156"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="71m-C5-Wtx">
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="71m-C5-Wtx">
                                                     <rect key="frame" x="0.0" y="16" width="351" height="140"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BiH-9W-QY9">
-                                                            <rect key="frame" x="16" y="24" width="40" height="40"/>
+                                                            <rect key="frame" x="20" y="24" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="BiH-9W-QY9" secondAttribute="height" multiplier="1:1" id="4HK-y8-StD"/>
                                                                 <constraint firstAttribute="width" constant="40" id="RJV-y5-tn6"/>
@@ -62,38 +62,38 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SL-QM-JEG" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="72" y="24" width="42" height="21"/>
+                                                            <rect key="frame" x="76" y="24" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DS-qp-KPw" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="96" y="46" width="42" height="21"/>
+                                                            <rect key="frame" x="100" y="46" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nLW-4X-pQM" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="72" y="48" width="16" height="16"/>
+                                                            <rect key="frame" x="76" y="48" width="16" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="nLW-4X-pQM" secondAttribute="height" multiplier="1:1" id="LBz-me-hm6"/>
                                                                 <constraint firstAttribute="width" constant="16" id="mvb-xp-n7X"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feS-Gu-bjP" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="293" y="23" width="42" height="21"/>
+                                                            <rect key="frame" x="289" y="23" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="v1x-lO-xeP" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="293" y="44" width="42" height="21"/>
+                                                            <rect key="frame" x="289" y="44" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MT-p8-cw4" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="16" y="84" width="319" height="40"/>
+                                                            <rect key="frame" x="20" y="80" width="311" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="LuH-gt-wxA"/>
                                                             </constraints>
@@ -108,20 +108,20 @@
                                                         <constraint firstItem="nLW-4X-pQM" firstAttribute="bottom" secondItem="BiH-9W-QY9" secondAttribute="bottom" id="2tL-6u-Okp"/>
                                                         <constraint firstItem="feS-Gu-bjP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9SL-QM-JEG" secondAttribute="trailing" constant="8" id="67P-Zw-w9P"/>
                                                         <constraint firstItem="v1x-lO-xeP" firstAttribute="trailing" secondItem="feS-Gu-bjP" secondAttribute="trailing" id="6yn-Rh-707"/>
-                                                        <constraint firstItem="9MT-p8-cw4" firstAttribute="leading" secondItem="71m-C5-Wtx" secondAttribute="leadingMargin" id="Adp-Mc-qbG"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="9MT-p8-cw4" secondAttribute="trailing" id="HhZ-Gh-ZFM"/>
+                                                        <constraint firstItem="9MT-p8-cw4" firstAttribute="leading" secondItem="71m-C5-Wtx" secondAttribute="leading" constant="20" id="DTh-Y9-R5c"/>
+                                                        <constraint firstAttribute="bottom" secondItem="9MT-p8-cw4" secondAttribute="bottom" constant="20" id="Kql-Gs-8PG"/>
                                                         <constraint firstItem="v1x-lO-xeP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3DS-qp-KPw" secondAttribute="trailing" constant="8" id="LGf-13-gwY"/>
                                                         <constraint firstItem="v1x-lO-xeP" firstAttribute="top" secondItem="BiH-9W-QY9" secondAttribute="centerY" id="Yd2-f6-XkN"/>
                                                         <constraint firstItem="9SL-QM-JEG" firstAttribute="leading" secondItem="BiH-9W-QY9" secondAttribute="trailing" constant="16" id="ZVf-en-pTk"/>
                                                         <constraint firstItem="feS-Gu-bjP" firstAttribute="bottom" secondItem="BiH-9W-QY9" secondAttribute="centerY" id="ack-Lo-byG"/>
-                                                        <constraint firstItem="BiH-9W-QY9" firstAttribute="leading" secondItem="71m-C5-Wtx" secondAttribute="leadingMargin" id="dBd-s9-8K2"/>
                                                         <constraint firstItem="3DS-qp-KPw" firstAttribute="leading" secondItem="nLW-4X-pQM" secondAttribute="trailing" constant="8" id="dcy-p7-wGK"/>
                                                         <constraint firstItem="9SL-QM-JEG" firstAttribute="top" secondItem="BiH-9W-QY9" secondAttribute="top" id="fR1-HV-22c"/>
                                                         <constraint firstItem="3DS-qp-KPw" firstAttribute="centerY" secondItem="nLW-4X-pQM" secondAttribute="centerY" id="gcT-3g-GQb"/>
-                                                        <constraint firstAttribute="trailing" secondItem="feS-Gu-bjP" secondAttribute="trailing" constant="16" id="iuU-II-W6P"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="9MT-p8-cw4" secondAttribute="bottom" id="kX8-d0-Bj6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="feS-Gu-bjP" secondAttribute="trailing" constant="20" id="iuU-II-W6P"/>
                                                         <constraint firstItem="nLW-4X-pQM" firstAttribute="leading" secondItem="9SL-QM-JEG" secondAttribute="leading" id="mXW-5D-YXi"/>
                                                         <constraint firstItem="BiH-9W-QY9" firstAttribute="top" secondItem="71m-C5-Wtx" secondAttribute="topMargin" id="rUL-iI-zXS"/>
+                                                        <constraint firstItem="BiH-9W-QY9" firstAttribute="leading" secondItem="71m-C5-Wtx" secondAttribute="leading" constant="20" id="sEL-gN-gF5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="9MT-p8-cw4" secondAttribute="trailing" constant="20" id="vFf-VV-5bK"/>
                                                         <constraint firstItem="v1x-lO-xeP" firstAttribute="leading" secondItem="feS-Gu-bjP" secondAttribute="leading" id="wRO-lh-pex"/>
                                                     </constraints>
                                                     <edgeInsets key="layoutMargins" top="24" left="16" bottom="16" right="16"/>

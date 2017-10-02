@@ -58,10 +58,14 @@
 "Me.WalletVC.WalletTransactionsVC.kindTitle" = "Tipo:";
 "Me.WalletVC.WalletTransactionsVC.statusTitle" = "Estado:";
 
+"Me.WalletVC.WalletCosignersVC.title" = "Co-firmantes";
+
 "Me.Report.ImageSource.title" = "Imagen de";
 "Me.Report.ImageSource.gallery" = "Galería";
 "Me.Report.ImageSource.camera" = "Cámara";
 // -------------------- waiting for translation :) -------------------- //
+
+"Me.WalletVC.fundingCell.additionalTitle" = "RECOMMENDED ADDITIONAL FUNDING";
 
 "Me.Report.submitButtonTitle-submit" = "Submit";
 "Me.Report.submitButtonTitle-create" = "Create";

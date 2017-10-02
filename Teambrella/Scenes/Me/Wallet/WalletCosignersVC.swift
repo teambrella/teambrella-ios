@@ -29,7 +29,7 @@ class WalletCosignersVC: UIViewController, Routable {
         guard let cosigners = cosigners else { return }
         
         dataSource.loadData(cosigners: cosigners)
-        title = "Me.Wallet.WalletCosignersVC.title".localized
+        title = "Me.WalletVC.WalletCosignersVC.title".localized
         
         dataSource.onError = { [weak self] error in
             guard let error = error as? TeambrellaError else { return }
