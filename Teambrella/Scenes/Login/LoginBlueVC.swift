@@ -124,7 +124,7 @@ final class LoginBlueVC: UIViewController {
         }
     }
     
-    // MARK Private
+    // MARK: Private
     
     private func addEmitter() {
         guard !isEmitterAdded else { return }
