@@ -84,8 +84,9 @@ struct WalletCellBuilder {
     }
     
     private static func populateFunding(cell: WalletFundingCell, model: WalletFundingCellModel) {
-        cell.headerLabel.text = balance > 0 ?
-            "Me.WalletVC.fundingCell.additionalTitle".localized : "Me.WalletVC.fundingCell.title".localized
+        cell.headerLabel.text = balance > 0
+            ? "Me.WalletVC.fundingCell.additionalTitle".localized
+            : "Me.WalletVC.fundingCell.title".localized
         cell.upperNumberView.titleLabel.text = "Me.WalletVC.upperBrick.title".localized
         cell.upperNumberView.amountLabel.text = String.formattedNumber(model.maxCoverageFunding * 1000)
         cell.upperNumberView.isBadgeVisible = false

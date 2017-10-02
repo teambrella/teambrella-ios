@@ -27,7 +27,10 @@ extension String {
     }
     
     var localized: String {
-        guard let range = self.range(of: ".") else { return self }
+        guard let range = self.range(of: ".") else {
+            log("Unlocalizable \(self)", type: .error)
+            return self
+        }
         
         return NSLocalizedString(self,
                                  tableName: String(self[..<range.lowerBound]),

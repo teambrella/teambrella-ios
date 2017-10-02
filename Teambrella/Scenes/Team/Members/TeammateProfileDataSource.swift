@@ -127,7 +127,7 @@ class TeammateProfileDataSource {
         isMyProxy = teammate.basic.isMyProxy
         let isVoting = teammate.voting != nil
         
-        if isVoting {
+        if isVoting && !isMe {
             isNewTeammate = true
             source.append(.dialogCompact)
             source.append(.voting)

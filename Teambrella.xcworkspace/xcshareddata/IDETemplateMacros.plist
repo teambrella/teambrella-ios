@@ -1,9 +1,10 @@
-//
-//  PhotoPreviewDelegate.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 21.08.17.
-/* Copyright(C) 2017  Teambrella, Inc.
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FILEHEADER</key>
+	<string>
+/* Copyright(C) ___YEAR___ Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -15,13 +16,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see<http://www.gnu.org/licenses/>.
- */
-//
-
-import UIKit
-
-protocol PhotoPreviewDelegate: class {
-    func photoPreview(controller: PhotoPreviewVC, didDeleteItemAt indexPath: IndexPath)
-    
-}
+ * along with this program.  If not, see&lt;http://www.gnu.org/licenses/&gt;.
+ */</string>
+</dict>
+</plist>

@@ -61,14 +61,16 @@ final class TeammateProfileVC: UIViewController, Routable {
         addGradientNavBarIfNeeded()
         registerCells()
         HUD.show(.progress, onView: view)
+        
+        if let flow = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flow.sectionHeadersPinToVisibleBounds = true
+        }
+        
         dataSource.loadEntireTeammate { [weak self] extendedTeammate in
             HUD.hide()
             self?.prepareLinearFunction()
             self?.setTitle()
             self?.collectionView.reloadData()
-        }
-        if let flow = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flow.sectionHeadersPinToVisibleBounds = true
         }
     }
     
@@ -84,6 +86,10 @@ final class TeammateProfileVC: UIViewController, Routable {
             isPeeking = false
         }
         addGradientNavBarIfNeeded()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -228,7 +234,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         linearFunction = function
     }
     
-    private func resetVote(cell: VotingRiskCell) {
+   func resetVote(cell: VotingRiskCell) {
         let vote = dataSource.extendedTeammate?.voting?.myVote
         let proxyAvatar = dataSource.extendedTeammate?.voting?.proxyAvatar
         let proxyName = dataSource.extendedTeammate?.voting?.proxyName
