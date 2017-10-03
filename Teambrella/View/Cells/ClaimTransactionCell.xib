@@ -41,19 +41,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kRj-lT-ieT">
-                                <rect key="frame" x="250" y="8" width="150" height="66"/>
+                                <rect key="frame" x="280" y="8" width="120" height="66"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0p-WU-JRZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="22"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Crypto" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTH-lI-c1f">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="22"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Crypto" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTH-lI-c1f">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="22"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5T-l8-Lzb">
-                                                <rect key="frame" x="-72" y="0.0" width="0.0" height="22"/>
+                                                <rect key="frame" x="60" y="0.0" width="60" height="22"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -61,16 +61,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63j-u4-jYX">
-                                        <rect key="frame" x="0.0" y="22" width="150" height="22"/>
+                                        <rect key="frame" x="0.0" y="22" width="120" height="22"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Fiat" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svc-Cf-iAi">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Fiat" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svc-Cf-iAi">
                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="22"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AT7-WE-wu4">
-                                                <rect key="frame" x="150" y="0.0" width="0.0" height="22"/>
+                                                <rect key="frame" x="120" y="0.0" width="0.0" height="22"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -78,16 +78,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPa-Q6-GgJ">
-                                        <rect key="frame" x="0.0" y="44" width="150" height="22"/>
+                                        <rect key="frame" x="0.0" y="44" width="120" height="22"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StZ-05-Vd4">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StZ-05-Vd4">
                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="22"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF8-Sl-qBo">
-                                                <rect key="frame" x="150" y="0.0" width="0.0" height="22"/>
+                                                <rect key="frame" x="120" y="0.0" width="0.0" height="22"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -96,7 +96,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="FLR-Eb-fTM"/>
+                                    <constraint firstAttribute="width" constant="120" id="FLR-Eb-fTM"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgh-cG-Cak">
