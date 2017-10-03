@@ -273,12 +273,4 @@ final class MainRouter {
         
     }
     
-    func applicationDidFinishLaunching(launchOptions: [UIApplicationLaunchOptionsKey : Any]?) {
-        //presentRootViewController(window: window)
-        
-        //        if let remoteNotification = RemoteNotification(launchOptions: launchOptions) {
-        //            //Routing.notifications.handleRemoteNotification(remoteNotification)
-        //        }
-    }
-    
 }

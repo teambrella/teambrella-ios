@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        service.router.applicationDidFinishLaunching(launchOptions: launchOptions)
         service.push.askPermissionsForRemoteNotifications(application: application)
         TeambrellaStyle.apply()
         if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
