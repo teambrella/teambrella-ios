@@ -22,7 +22,23 @@
 import Foundation
 
 class LocalStorage: Storage {
+    struct Constant {
+        static let recentSceneKey: String = "storage.recentScene"
+    }
+    
     var lastKeyTime: Date?
+    var recentScene: SceneType {
+        get {
+            if let stored = UserDefaults.standard.object(forKey: Constant.recentSceneKey) as? String {
+                return SceneType(rawValue: stored) ?? .home
+            }
+            return .home
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: Constant.recentSceneKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
     
     func requestTeams(demo: Bool) -> Future<TeamsModel> {
         let promise = Promise<TeamsModel>()

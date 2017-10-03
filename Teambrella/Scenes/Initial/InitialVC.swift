@@ -66,7 +66,7 @@ final class InitialVC: UIViewController {
                 service.session = Session()
                 let lastTeam = teamsEntity.lastTeamID.map { id in
                     teamsEntity.teams.filter { team in team.teamID == id }
-                }?.first
+                    }?.first
                 
                 if let lastTeam = lastTeam {
                     service.session?.currentTeam = lastTeam
@@ -76,7 +76,7 @@ final class InitialVC: UIViewController {
                 service.session?.teams = teamsEntity.teams
                 service.session?.currentUserID = teamsEntity.userID
                 HUD.hide()
-                self?.performSegue(type: .teambrella)
+                self?.presentMasterTab()
             case .error:
                 self?.failure()
                 break
@@ -94,6 +94,15 @@ final class InitialVC: UIViewController {
         HUD.show(.progress)
         service.server.updateTimestamp { timestamp, error in
             self.getTeams(timestamp: timestamp)
+        }
+    }
+    
+    private func presentMasterTab() {
+        performSegue(type: .teambrella)
+        if service.storage.recentScene == .feed {
+            service.router.switchToFeed()
+        } else {
+            // present default .home screen
         }
     }
     

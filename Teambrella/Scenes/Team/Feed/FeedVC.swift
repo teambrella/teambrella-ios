@@ -54,6 +54,7 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         }
         
         dataSource.updateSilently()
+        service.storage.recentScene = .feed
     }
     
     func setupCollectionView() {

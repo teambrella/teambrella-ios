@@ -78,6 +78,12 @@ final class MainRouter {
         }
     }
     
+    func switchToFeed() {
+        if let vc = switchTab(to: .team) as? ButtonBarPagerTabStripViewController {
+            vc.moveToViewController(at: 0, animated: false)
+        }
+    }
+    
     // MARK: Push
     
     func presentJoinTeam() {

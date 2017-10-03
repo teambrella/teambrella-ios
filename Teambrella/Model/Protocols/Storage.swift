@@ -24,6 +24,8 @@ import Foundation
 typealias ErrorHandler = (Error?) -> Void
 
 protocol Storage {
+    var recentScene: SceneType { get set }
+    
     func freshKey(completion: @escaping (Key) -> Void)
     func requestHome(teamID: Int) -> Future<HomeScreenModel>
     func requestTeamFeed(context: FeedRequestContext) -> Future<[FeedEntity]>
