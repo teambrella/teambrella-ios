@@ -32,7 +32,7 @@ struct MembersCellBuilder {
             cell.titleLabel.text = teammate.name
             let detailsText: String = "\(teammate.model), \(teammate.year)".uppercased()
             cell.detailsLabel.text = detailsText
-            let dateText: String = DateProcessor().stringFromNow(minutes: -teammate.minutesRemaining).uppercased()
+            let dateText: String = DateProcessor().stringFromNow(minutes: -teammate.minutesRemaining)
             cell.dateLabel.text = dateText
             cell.chartView.setupWith(remainingMinutes: teammate.minutesRemaining)
         } else if let cell = cell as? TeammateCell {
