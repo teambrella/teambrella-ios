@@ -81,7 +81,7 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         let model = dataSource[indexPath]
         if let cell = cell as? RiskCell {
-            cell.nameLabel.text = model.name
+            cell.nameLabel.text = model.name.entire
             cell.avatar.showAvatar(string: model.avatar)
             cell.itemLabel.text = model.model
             cell.riskLabel.text = String(model.risk)

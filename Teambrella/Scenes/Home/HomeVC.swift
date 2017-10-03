@@ -95,31 +95,6 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         greetingsTitleLabel.text = " "
     }
     
-    func switchToCurrentTeam() {
-        HUD.show(.progress, onView: view)
-        dataSource = HomeDataSource()
-        if let teamID = service.session?.currentTeam?.teamID {
-            dataSource.loadData(teamID: teamID)
-        }
-        
-        dataSource.onUpdate = { [weak self] in
-            self?.setup()
-        }
-        guard let source = service.session?.currentTeam?.teamLogo else { return }
-        
-        UIImage.fetchAvatar(string: source,
-                            width: Constant.teamIconWidth,
-                            cornerRadius: Constant.teamIconCornerRadius) { image, error  in
-                                guard error == nil else { return }
-                                guard let image = image, let cgImage = image.cgImage else { return }
-                                
-                                let scaled = UIImage(cgImage: cgImage,
-                                                     scale: UIScreen.main.nativeScale,
-                                                     orientation: image.imageOrientation)
-                                self.teamsButton.setImage(scaled, for: .normal)
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Should fix an unwanted slide of the card to the left after returning to this vc from tap
@@ -145,6 +120,31 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         if let teamID = service.session?.currentTeam?.teamID {
             dataSource.updateSilently(teamID: teamID)
+        }
+    }
+    
+   private func switchToCurrentTeam() {
+        HUD.show(.progress, onView: view)
+        dataSource = HomeDataSource()
+        if let teamID = service.session?.currentTeam?.teamID {
+            dataSource.loadData(teamID: teamID)
+        }
+        
+        dataSource.onUpdate = { [weak self] in
+            self?.setup()
+        }
+        guard let source = service.session?.currentTeam?.teamLogo else { return }
+        
+        UIImage.fetchAvatar(string: source,
+                            width: Constant.teamIconWidth,
+                            cornerRadius: Constant.teamIconCornerRadius) { image, error  in
+                                guard error == nil else { return }
+                                guard let image = image, let cgImage = image.cgImage else { return }
+                                
+                                let scaled = UIImage(cgImage: cgImage,
+                                                     scale: UIScreen.main.nativeScale,
+                                                     orientation: image.imageOrientation)
+                                self.teamsButton.setImage(scaled, for: .normal)
         }
     }
     
@@ -185,7 +185,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         guard let model = dataSource.model else { return }
         
         service.session?.currentUserID = model.userID
-        service.session?.currentUserName = model.name
+        service.session?.currentUserName = dataSource.name
         service.session?.currentUserAvatar = model.avatar
         
         UIImage.fetchAvatar(string: model.avatar) { image, error in

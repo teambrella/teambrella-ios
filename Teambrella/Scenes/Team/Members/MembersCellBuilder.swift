@@ -25,11 +25,11 @@ import UIKit
 struct MembersCellBuilder {
     static func populate(cell: UICollectionViewCell, with teammate: TeammateEntity) {
          if let cell = cell as? TeammateCandidateCell {
-            cell.titleLabel.text = teammate.name
+            cell.titleLabel.text = teammate.name.entire
             if let url: URL = URL(string: service.server.avatarURLstring(for:teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
-            cell.titleLabel.text = teammate.name
+            cell.titleLabel.text = teammate.name.entire
             let detailsText: String = "\(teammate.model), \(teammate.year)".uppercased()
             cell.detailsLabel.text = detailsText
             let dateText: String = DateProcessor().stringFromNow(minutes: -teammate.minutesRemaining)
@@ -47,7 +47,7 @@ struct MembersCellBuilder {
             cell.signLabel.text = sign
             let signColor: UIColor = teammate.totallyPaid > 0 ? .tealish : .lipstick
             cell.signLabel.textColor = signColor
-            cell.titleLabel.text = teammate.name
+            cell.titleLabel.text = teammate.name.entire
             let detailsText: String = "\(teammate.model), \(teammate.year)".uppercased()
             cell.detailsLabel.text = detailsText
             cell.avatarView.badgeText = String(format: "%.1f", teammate.risk)

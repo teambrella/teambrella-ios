@@ -224,7 +224,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     }
     
     private func setTitle() {
-        title = dataSource.extendedTeammate?.basic.name
+        title = dataSource.extendedTeammate?.basic.name.short
     }
     
     private func prepareLinearFunction() {

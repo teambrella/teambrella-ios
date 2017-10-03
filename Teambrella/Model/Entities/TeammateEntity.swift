@@ -31,7 +31,7 @@ class TeammateEntity {
     let isJoining: Bool
     let isVoting: Bool
     let model: String
-    let name: String
+    let name: Name
     let risk: Double
     let riskVoted: Double
     let totallyPaid: Double
@@ -56,7 +56,7 @@ class TeammateEntity {
         isJoining = json["IsJoining"].boolValue
         isVoting = json["IsVoting"].boolValue
         model = json["Model"].stringValue
-        name = json["Name"].stringValue
+        name = Name(fullName: json["Name"].stringValue)
         risk = json["Risk"].doubleValue
         riskVoted = json["RiskVoted"].doubleValue
         totallyPaid = json["TotallyPaid"].doubleValue

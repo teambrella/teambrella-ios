@@ -27,7 +27,7 @@ struct TeammateBasicInfo {
     let teamID: Int
     
     let avatar: String
-    let name: String
+    let name: Name
     let city: String
     let facebook: String
     
@@ -50,7 +50,7 @@ struct TeammateBasicInfo {
         id = json["UserId"].stringValue
         teamID = json["TeamId"].intValue
         avatar = json["Avatar"].stringValue
-        name = json["Name"].stringValue
+        name = Name(fullName: json["Name"].stringValue)
         city = json["City"].stringValue
         facebook = json["FacebookUrl"].stringValue
         isProxiedByMe = json["AmIProxy"].boolValue

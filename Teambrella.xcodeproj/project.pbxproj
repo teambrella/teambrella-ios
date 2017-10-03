@@ -55,6 +55,9 @@
 		6D1292841F83CD2C001CCC31 /* PushData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292821F83CD2C001CCC31 /* PushData.swift */; };
 		6D1292861F83CD4B001CCC31 /* PushCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292851F83CD4B001CCC31 /* PushCommand.swift */; };
 		6D1292871F83CD4B001CCC31 /* PushCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292851F83CD4B001CCC31 /* PushCommand.swift */; };
+		6D1292891F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
+		6D12928A1F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
+		6D12928C1F83DE38001CCC31 /* NameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12928B1F83DE38001CCC31 /* NameTests.swift */; };
 		6D1425E21F73C2C300DCBF91 /* VotingRiskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */; };
 		6D1425E31F73C2C300DCBF91 /* VotingRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */; };
 		6D1425E61F73DD9B00DCBF91 /* VotingChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1425E41F73DD9A00DCBF91 /* VotingChartCell.swift */; };
@@ -668,7 +671,6 @@
 		6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475A71E8ABEE600B56D9B /* Main.storyboard */; };
 		6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AA1E8ABEE600B56D9B /* Assets.xcassets */; };
 		6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AC1E8ABEE600B56D9B /* LaunchScreen.storyboard */; };
-		6DA475C41E8ABEE600B56D9B /* TeambrellaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475C31E8ABEE600B56D9B /* TeambrellaUITests.swift */; };
 		6DA475D41E8BB95200B56D9B /* TeambrellaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D31E8BB95200B56D9B /* TeambrellaRequest.swift */; };
 		6DA475D91E8BBD2A00B56D9B /* TeambrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */; };
 		6DA475DF1E8BE30000B56D9B /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475DE1E8BE30000B56D9B /* RequestBody.swift */; };
@@ -713,7 +715,6 @@
 		6DCB19481F0FD33400AC9969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19461F0FD33400AC9969 /* Assets.xcassets */; };
 		6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */; };
 		6DCB19581F11163900AC9969 /* PagingDraggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB19571F11163900AC9969 /* PagingDraggable.swift */; };
-		6DCB9F551EC9FF20000B48C4 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */; };
 		6DCB9F571ECA0A45000B48C4 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F561ECA0A45000B48C4 /* Decimal.swift */; };
 		6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC31E93A6920092D3F2 /* Services.swift */; };
 		6DCC7AC81E95398D0092D3F2 /* TeammateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */; };
@@ -870,19 +871,11 @@
 		CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */; };
 		CBDFE767664CC051784BF271 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA3415104DFFD0D751C7 /* ServerService.swift */; };
 		E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */; };
-		E8C2DC7B371EF1F64A49B53A /* libPods-TeambrellaUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */; };
 		FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		6DA475B51E8ABEE600B56D9B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6DA475981E8ABEE600B56D9B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6DA4759F1E8ABEE600B56D9B;
-			remoteInfo = Teambrella;
-		};
-		6DA475C01E8ABEE600B56D9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6DA475981E8ABEE600B56D9B /* Project object */;
 			proxyType = 1;
@@ -947,6 +940,8 @@
 		6D12927C1F83BD6A001CCC31 /* SceneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneType.swift; path = Model/Enums/SceneType.swift; sourceTree = "<group>"; };
 		6D1292821F83CD2C001CCC31 /* PushData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushData.swift; path = Model/Services/Push/PushData.swift; sourceTree = "<group>"; };
 		6D1292851F83CD4B001CCC31 /* PushCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushCommand.swift; path = Model/Services/Push/PushCommand.swift; sourceTree = "<group>"; };
+		6D1292881F83DC46001CCC31 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Name.swift; path = Model/Entities/Name.swift; sourceTree = "<group>"; };
+		6D12928B1F83DE38001CCC31 /* NameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTests.swift; sourceTree = "<group>"; };
 		6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingRiskCell.swift; path = View/Cells/VotingRiskCell.swift; sourceTree = "<group>"; };
 		6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = VotingRiskCell.xib; path = View/Cells/VotingRiskCell.xib; sourceTree = "<group>"; };
 		6D1425E41F73DD9A00DCBF91 /* VotingChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingChartCell.swift; path = View/Cells/VotingChartCell.swift; sourceTree = "<group>"; };
@@ -1151,9 +1146,6 @@
 		6DA475AF1E8ABEE600B56D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeambrellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DA475BA1E8ABEE600B56D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DA475BF1E8ABEE600B56D9B /* TeambrellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeambrellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6DA475C31E8ABEE600B56D9B /* TeambrellaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeambrellaUITests.swift; sourceTree = "<group>"; };
-		6DA475C51E8ABEE600B56D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DA475D31E8BB95200B56D9B /* TeambrellaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeambrellaRequest.swift; path = Model/Services/Networking/TeambrellaRequest.swift; sourceTree = "<group>"; };
 		6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeambrellaError.swift; path = Model/TeambrellaError.swift; sourceTree = "<group>"; };
 		6DA475DE1E8BE30000B56D9B /* RequestBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestBody.swift; path = Model/Services/Networking/RequestBody.swift; sourceTree = "<group>"; };
@@ -1199,7 +1191,6 @@
 		6DCB19561F0FF21000AC9969 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Proxy.strings; sourceTree = "<group>"; };
 		6DCB19571F11163900AC9969 /* PagingDraggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingDraggable.swift; path = Model/Protocols/PagingDraggable.swift; sourceTree = "<group>"; };
 		6DCB19591F11312300AC9969 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Home.strings; sourceTree = "<group>"; };
-		6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		6DCB9F561ECA0A45000B48C4 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decimal.swift; path = Helpers/Extensions/Decimal.swift; sourceTree = "<group>"; };
 		6DCC7AC31E93A6920092D3F2 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Model/Services/Services.swift; sourceTree = "<group>"; };
 		6DCC7AC71E95398D0092D3F2 /* TeammateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateEntity.swift; path = Model/Entities/TeammateEntity.swift; sourceTree = "<group>"; };
@@ -1411,14 +1402,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				80F21A7C34B08754FB74C0D3 /* libPods-TeambrellaTests.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6DA475BC1E8ABEE600B56D9B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E8C2DC7B371EF1F64A49B53A /* libPods-TeambrellaUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1985,7 +1968,6 @@
 				6D466A871ED07CF1001BC579 /* Blockchain */,
 				6DA475A21E8ABEE600B56D9B /* Teambrella */,
 				6DA475B71E8ABEE600B56D9B /* TeambrellaTests */,
-				6DA475C21E8ABEE600B56D9B /* TeambrellaUITests */,
 				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
 				6DA475A11E8ABEE600B56D9B /* Products */,
 				5BD17B853E94E5AE1E9DCBE6 /* Pods */,
@@ -1999,7 +1981,6 @@
 			children = (
 				6DA475A01E8ABEE600B56D9B /* Teambrella.app */,
 				6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */,
-				6DA475BF1E8ABEE600B56D9B /* TeambrellaUITests.xctest */,
 				6D4E5DD91F7AB6870020DEE2 /* Surilla.app */,
 			);
 			name = Products;
@@ -2027,21 +2008,12 @@
 			children = (
 				6DA475BA1E8ABEE600B56D9B /* Info.plist */,
 				6D91BC061EB3A79100FDC332 /* UUIDTests.swift */,
-				6DCB9F541EC9FF20000B48C4 /* FetchTests.swift */,
 				6D0D2ADB1EFBB95E0095284C /* PiecewiseFunctionTests.swift */,
 				6DD051C01F66F18200532626 /* SocketDataTests.swift */,
 				6DCD8DBA1F6BD5E800BC6A49 /* EthereumTests.swift */,
+				6D12928B1F83DE38001CCC31 /* NameTests.swift */,
 			);
 			path = TeambrellaTests;
-			sourceTree = "<group>";
-		};
-		6DA475C21E8ABEE600B56D9B /* TeambrellaUITests */ = {
-			isa = PBXGroup;
-			children = (
-				6DA475C31E8ABEE600B56D9B /* TeambrellaUITests.swift */,
-				6DA475C51E8ABEE600B56D9B /* Info.plist */,
-			);
-			path = TeambrellaUITests;
 			sourceTree = "<group>";
 		};
 		6DA475D51E8BB9DF00B56D9B /* Model */ = {
@@ -2312,6 +2284,7 @@
 				6DB309F81F1D2093007DFF40 /* ChatEntity.swift */,
 				6D66B49B1F4D89F900672583 /* CombinedModels.swift */,
 				6D1A9B241F55CF92004192AC /* PrivateChatUser.swift */,
+				6D1292881F83DC46001CCC31 /* Name.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -2543,27 +2516,6 @@
 			productReference = 6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6DA475BE1E8ABEE600B56D9B /* TeambrellaUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6DA475CE1E8ABEE600B56D9B /* Build configuration list for PBXNativeTarget "TeambrellaUITests" */;
-			buildPhases = (
-				150C04EA9F8F1D59BEA3CD42 /* [CP] Check Pods Manifest.lock */,
-				6DA475BB1E8ABEE600B56D9B /* Sources */,
-				6DA475BC1E8ABEE600B56D9B /* Frameworks */,
-				6DA475BD1E8ABEE600B56D9B /* Resources */,
-				AEB55CFDE3978A0BADFC1663 /* [CP] Embed Pods Frameworks */,
-				09A7BA403CBC98EF04A1CC7C /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6DA475C11E8ABEE600B56D9B /* PBXTargetDependency */,
-			);
-			name = TeambrellaUITests;
-			productName = TeambrellaUITests;
-			productReference = 6DA475BF1E8ABEE600B56D9B /* TeambrellaUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2597,12 +2549,6 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6DA4759F1E8ABEE600B56D9B;
 					};
-					6DA475BE1E8ABEE600B56D9B = {
-						CreatedOnToolsVersion = 8.3;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 6DA4759F1E8ABEE600B56D9B;
-					};
 				};
 			};
 			buildConfigurationList = 6DA4759B1E8ABEE600B56D9B /* Build configuration list for PBXProject "Teambrella" */;
@@ -2621,7 +2567,6 @@
 			targets = (
 				6DA4759F1E8ABEE600B56D9B /* Teambrella */,
 				6DA475B31E8ABEE600B56D9B /* TeambrellaTests */,
-				6DA475BE1E8ABEE600B56D9B /* TeambrellaUITests */,
 				6D4E5C241F7AB6870020DEE2 /* Surilla */,
 			);
 		};
@@ -2811,49 +2756,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6DA475BD1E8ABEE600B56D9B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09A7BA403CBC98EF04A1CC7C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		150C04EA9F8F1D59BEA3CD42 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TeambrellaUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		5367BD3EC56B804CAF87F366 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3065,21 +2970,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Surilla/Pods-Surilla-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AEB55CFDE3978A0BADFC1663 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C57EED01CCD06144A330A0FF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3271,6 +3161,7 @@
 				6D4E5CAD1F7AB6870020DEE2 /* AppDelegate.swift in Sources */,
 				6D4E5CAE1F7AB6870020DEE2 /* VotingScrollerDataSource.swift in Sources */,
 				6D4E5CAF1F7AB6870020DEE2 /* TeammateTransformer.swift in Sources */,
+				6D12928A1F83DC46001CCC31 /* Name.swift in Sources */,
 				6D4E5CB01F7AB6870020DEE2 /* CellDecorator.swift in Sources */,
 				6D4E5CB11F7AB6870020DEE2 /* ScaleBar.swift in Sources */,
 				6D4E5CB21F7AB6870020DEE2 /* ChatModelBuilder.swift in Sources */,
@@ -3612,6 +3503,7 @@
 				6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */,
 				6D02AC961F06A6B800B01AAF /* VotingScrollerDataSource.swift in Sources */,
 				6D8C6FE41F75301000BF65B6 /* TeammateTransformer.swift in Sources */,
+				6D1292891F83DC46001CCC31 /* Name.swift in Sources */,
 				6DF2E8BC1EF0232700C8D60B /* CellDecorator.swift in Sources */,
 				6DA714FA1EE04D4900F39EBE /* ScaleBar.swift in Sources */,
 				6D66B4A21F4F106900672583 /* ChatModelBuilder.swift in Sources */,
@@ -3816,17 +3708,9 @@
 			files = (
 				6D0D2ADC1EFBB95E0095284C /* PiecewiseFunctionTests.swift in Sources */,
 				6DCD8DBB1F6BD5E800BC6A49 /* EthereumTests.swift in Sources */,
-				6DCB9F551EC9FF20000B48C4 /* FetchTests.swift in Sources */,
+				6D12928C1F83DE38001CCC31 /* NameTests.swift in Sources */,
 				6DD051C11F66F18200532626 /* SocketDataTests.swift in Sources */,
 				6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6DA475BB1E8ABEE600B56D9B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6DA475C41E8ABEE600B56D9B /* TeambrellaUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3837,11 +3721,6 @@
 			isa = PBXTargetDependency;
 			target = 6DA4759F1E8ABEE600B56D9B /* Teambrella */;
 			targetProxy = 6DA475B51E8ABEE600B56D9B /* PBXContainerItemProxy */;
-		};
-		6DA475C11E8ABEE600B56D9B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6DA4759F1E8ABEE600B56D9B /* Teambrella */;
-			targetProxy = 6DA475C01E8ABEE600B56D9B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4157,13 +4036,13 @@
 				);
 				INFOPLIST_FILE = Teambrella/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200 -Onone";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Teambrella-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4194,6 +4073,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Teambrella-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4232,36 +4112,6 @@
 			};
 			name = Release;
 		};
-		6DA475CF1E8ABEE600B56D9B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A31D4B51EC413D689755DD8 /* Pods-TeambrellaUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = TeambrellaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = Teambrella;
-			};
-			name = Debug;
-		};
-		6DA475D01E8ABEE600B56D9B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFA9DEFD913DBBA749086C64 /* Pods-TeambrellaUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = TeambrellaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = Teambrella;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -4297,15 +4147,6 @@
 			buildConfigurations = (
 				6DA475CC1E8ABEE600B56D9B /* Debug */,
 				6DA475CD1E8ABEE600B56D9B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6DA475CE1E8ABEE600B56D9B /* Build configuration list for PBXNativeTarget "TeambrellaUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6DA475CF1E8ABEE600B56D9B /* Debug */,
-				6DA475D01E8ABEE600B56D9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -83,7 +83,7 @@ struct HomeScreenModel {
     var teamPart: JSON { return json["TeamPart"] }
     
     var userID: String { return json["UserId"].stringValue }
-    var name: String { return json["Name"].stringValue }
+    var name: Name { return Name(fullName: json["Name"].stringValue) }
     var avatar: String { return json["Avatar"].stringValue }
     var unreadCount: Int { return json["UnreadCount"].intValue }
     var balance: Double { return json["CryptoBalance"].doubleValue }
