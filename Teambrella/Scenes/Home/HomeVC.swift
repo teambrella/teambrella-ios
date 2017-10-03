@@ -185,7 +185,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         guard let model = dataSource.model else { return }
         
         service.session?.currentUserID = model.userID
-        service.session?.currentUserName = model.name
+        service.session?.currentUserName = dataSource.name
         service.session?.currentUserAvatar = model.avatar
         
         UIImage.fetchAvatar(string: model.avatar) { image, error in

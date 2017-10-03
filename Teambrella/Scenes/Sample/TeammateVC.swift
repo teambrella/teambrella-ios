@@ -41,7 +41,7 @@ class TeammateVC: UIViewController {
         super.viewDidLoad()
         let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
         avatarImageView.kf.setImage(with: url)
-        nameLabel.text = teammate.name
+        nameLabel.text = teammate.name.entire
         modelLabel.text = teammate.model
         modelYearLabel.text = String(teammate.year)
         //loadEntireTeammate()

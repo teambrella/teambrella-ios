@@ -20,6 +20,7 @@
  */
 
 import XCTest
+
 @testable import Teambrella
 
 class PiecewiseFunctionTests: XCTestCase {

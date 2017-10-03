@@ -25,10 +25,10 @@ target 'Teambrella' do
     # Pods for testing
   end
 
-  target 'TeambrellaUITests' do
-    inherit! :search_paths
+  #target 'TeambrellaUITests' do
+  #  inherit! :search_paths
     # Pods for testing
-  end
+  #end
 
 end
 

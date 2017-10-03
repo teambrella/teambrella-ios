@@ -34,7 +34,7 @@ class HomeDataSource {
     var onUpdate: (() -> Void)?
     
     var currency: String { return model?.currency ?? "?" }
-    var name: String { return model?.name.components(separatedBy: " ").first ?? "" }
+    var name: String { return model?.name.first ?? "" }
     
     func loadData(teamID: Int) {
         service.storage.requestHome(teamID: teamID).observe { [weak self] result in

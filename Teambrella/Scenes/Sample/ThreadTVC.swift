@@ -36,7 +36,7 @@ class ThreadTVC: UITableViewController {
         if let posts = teammate.extended?.topic.posts {
             self.messages = posts.reversed()
         }
-        title = teammate.name
+        title = teammate.name.short
     }
     
     override func didReceiveMemoryWarning() {

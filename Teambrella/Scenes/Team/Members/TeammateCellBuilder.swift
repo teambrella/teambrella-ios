@@ -52,7 +52,7 @@ struct TeammateCellBuilder {
                                        with teammate: ExtendedTeammateEntity,
                                        controller: TeammateProfileVC?) {
         cell.avatar.showAvatar(string: teammate.basic.avatar)
-        cell.nameLabel.text = teammate.basic.name
+        cell.nameLabel.text = teammate.basic.name.entire
         cell.infoLabel.text = teammate.basic.city.uppercased()
         guard let controller = controller else { return }
         
@@ -70,7 +70,7 @@ struct TeammateCellBuilder {
     private static func populateSummary(cell: TeammateSummaryCell,
                                         with teammate: ExtendedTeammateEntity,
                                         controller: UIViewController) {
-        cell.title.text = teammate.basic.name
+        cell.title.text = teammate.basic.name.entire
         //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
         cell.avatarView.present(avatarString: teammate.basic.avatar)
         cell.avatarView.onTap = { [weak controller] view in
@@ -93,7 +93,7 @@ struct TeammateCellBuilder {
         cell.subtitle.text = teammate.basic.city
         if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
             cell.infoLabel.isHidden = false
-            cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name)
+            cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
         }
     }
     

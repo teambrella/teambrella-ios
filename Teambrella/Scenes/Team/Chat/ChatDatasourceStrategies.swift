@@ -96,7 +96,7 @@ class ClaimChatStrategy: ChatDatasourceStrategy {
 }
 
 class TeammateChatStrategy: ChatDatasourceStrategy {
-    var title: String { return teammate.basic.name }
+    var title: String { return teammate.basic.name.short }
     var requestType: TeambrellaRequestType = .teammateChat
 //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPost
