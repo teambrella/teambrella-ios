@@ -91,7 +91,7 @@ struct TeammateCellBuilder {
         }
         
         cell.subtitle.text = teammate.basic.city
-        if teammate.basic.isProxiedByMe {
+        if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
             cell.infoLabel.isHidden = false
             cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name)
         }

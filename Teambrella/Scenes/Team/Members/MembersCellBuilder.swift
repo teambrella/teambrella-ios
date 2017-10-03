@@ -26,25 +26,30 @@ struct MembersCellBuilder {
     static func populate(cell: UICollectionViewCell, with teammate: TeammateEntity) {
          if let cell = cell as? TeammateCandidateCell {
             cell.titleLabel.text = teammate.name
-            if let url = URL(string: service.server.avatarURLstring(for:teammate.avatar)) {
+            if let url: URL = URL(string: service.server.avatarURLstring(for:teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
             cell.titleLabel.text = teammate.name
-            cell.detailsLabel.text = "\(teammate.model), \(teammate.year)".uppercased()
-            let date =  Date().addingTimeInterval(-Double(teammate.minutesRemaining))
-            cell.dateLabel.text = DateProcessor().stringFromNow(minutes: -teammate.minutesRemaining).uppercased()
+            let detailsText: String = "\(teammate.model), \(teammate.year)".uppercased()
+            cell.detailsLabel.text = detailsText
+            let dateText: String = DateProcessor().stringFromNow(minutes: -teammate.minutesRemaining).uppercased()
+            cell.dateLabel.text = dateText
             cell.chartView.setupWith(remainingMinutes: teammate.minutesRemaining)
         } else if let cell = cell as? TeammateCell {
-            if let url = URL(string: service.server.avatarURLstring(for: teammate.avatar)) {
+            if let url: URL = URL(string: service.server.avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
-            guard let currency = service.session?.currentTeam?.currencySymbol else { return }
+            guard let currency: String = service.session?.currentTeam?.currencySymbol else { return }
             
-            cell.amountLabel.text = currency + "\(abs(Int(teammate.totallyPaid)))"
-            cell.signLabel.text = teammate.totallyPaid > 0 ? "+" : teammate.totallyPaid < 0 ? "-" : ""
-            cell.signLabel.textColor = teammate.totallyPaid > 0 ? .tealish : .lipstick
+            let amountText: String = currency + "\(abs(Int(teammate.totallyPaid)))"
+            cell.amountLabel.text = amountText
+            let sign: String = teammate.totallyPaid > 0 ? "+" : teammate.totallyPaid < 0 ? "-" : ""
+            cell.signLabel.text = sign
+            let signColor: UIColor = teammate.totallyPaid > 0 ? .tealish : .lipstick
+            cell.signLabel.textColor = signColor
             cell.titleLabel.text = teammate.name
-            cell.detailsLabel.text = "\(teammate.model), \(teammate.year)".uppercased()
+            let detailsText: String = "\(teammate.model), \(teammate.year)".uppercased()
+            cell.detailsLabel.text = detailsText
             cell.avatarView.badgeText = String(format: "%.1f", teammate.risk)
         }
     }

@@ -47,6 +47,8 @@ class HomeCollectionCell: UICollectionViewCell, XIBInitableCell, ClosableCell {
         CellDecorator.heavyShadow(for: self)
         CellDecorator.addCloseButton(for: self)
         rightNumberView.isCurrencyOnTop = false
+        // show 2 lines on shorter screens and 4 or 5 lines on larger ones
+        textLabel.numberOfLines = isSmallIPhone ? 2 : 5 - (3 - Int(UIScreen.main.nativeScale))
     }
     
 }

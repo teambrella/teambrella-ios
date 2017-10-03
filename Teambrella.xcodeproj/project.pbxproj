@@ -49,6 +49,12 @@
 		6D0E05801F01033700604981 /* ReportCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E057F1F01033700604981 /* ReportCellBuilder.swift */; };
 		6D0E742D1F13C0D70055BF1E /* LabeledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E742C1F13C0D70055BF1E /* LabeledButton.swift */; };
 		6D0E742F1F13C7810055BF1E /* DeveloperTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */; };
+		6D12927D1F83BD6A001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
+		6D12927E1F83BD6D001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
+		6D1292831F83CD2C001CCC31 /* PushData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292821F83CD2C001CCC31 /* PushData.swift */; };
+		6D1292841F83CD2C001CCC31 /* PushData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292821F83CD2C001CCC31 /* PushData.swift */; };
+		6D1292861F83CD4B001CCC31 /* PushCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292851F83CD4B001CCC31 /* PushCommand.swift */; };
+		6D1292871F83CD4B001CCC31 /* PushCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292851F83CD4B001CCC31 /* PushCommand.swift */; };
 		6D1425E21F73C2C300DCBF91 /* VotingRiskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */; };
 		6D1425E31F73C2C300DCBF91 /* VotingRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */; };
 		6D1425E61F73DD9B00DCBF91 /* VotingChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1425E41F73DD9A00DCBF91 /* VotingChartCell.swift */; };
@@ -938,6 +944,9 @@
 		6D0E057F1F01033700604981 /* ReportCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCellBuilder.swift; path = Scenes/Me/Report/ReportCellBuilder.swift; sourceTree = "<group>"; };
 		6D0E742C1F13C0D70055BF1E /* LabeledButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabeledButton.swift; path = View/Buttons/LabeledButton.swift; sourceTree = "<group>"; };
 		6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeveloperTools.swift; path = Helpers/DeveloperTools.swift; sourceTree = "<group>"; };
+		6D12927C1F83BD6A001CCC31 /* SceneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneType.swift; path = Model/Enums/SceneType.swift; sourceTree = "<group>"; };
+		6D1292821F83CD2C001CCC31 /* PushData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushData.swift; path = Model/Services/Push/PushData.swift; sourceTree = "<group>"; };
+		6D1292851F83CD4B001CCC31 /* PushCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushCommand.swift; path = Model/Services/Push/PushCommand.swift; sourceTree = "<group>"; };
 		6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingRiskCell.swift; path = View/Cells/VotingRiskCell.swift; sourceTree = "<group>"; };
 		6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = VotingRiskCell.xib; path = View/Cells/VotingRiskCell.xib; sourceTree = "<group>"; };
 		6D1425E41F73DD9A00DCBF91 /* VotingChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingChartCell.swift; path = View/Cells/VotingChartCell.swift; sourceTree = "<group>"; };
@@ -2166,6 +2175,8 @@
 			isa = PBXGroup;
 			children = (
 				6DAF1CB71F58562900421C5A /* PushService.swift */,
+				6D1292821F83CD2C001CCC31 /* PushData.swift */,
+				6D1292851F83CD4B001CCC31 /* PushCommand.swift */,
 			);
 			name = PushService;
 			sourceTree = "<group>";
@@ -2457,6 +2468,7 @@
 				6DCDEB711F17E2F100C6D38C /* ItemType.swift */,
 				6DF479151F42F0570025F489 /* CoverageType.swift */,
 				6DF479171F42F0740025F489 /* TeamAccessLevel.swift */,
+				6D12927C1F83BD6A001CCC31 /* SceneType.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -3185,6 +3197,7 @@
 				6D4E5C651F7AB6870020DEE2 /* JoinTeamInfoCell.swift in Sources */,
 				6D4E5C661F7AB6870020DEE2 /* XIBInitable.swift in Sources */,
 				6D4E5C671F7AB6870020DEE2 /* ProxyForCellModel.swift in Sources */,
+				6D1292871F83CD4B001CCC31 /* PushCommand.swift in Sources */,
 				6D4E5C681F7AB6870020DEE2 /* Storage.swift in Sources */,
 				6D4E5C691F7AB6870020DEE2 /* LoginDetailsRouter.swift in Sources */,
 				6D4E5C6A1F7AB6870020DEE2 /* UIViewController.swift in Sources */,
@@ -3239,6 +3252,7 @@
 				6D4E5C9B1F7AB6870020DEE2 /* UniversalChatDataSource.swift in Sources */,
 				6D4E5C9C1F7AB6870020DEE2 /* CompactUserInfoHeader.swift in Sources */,
 				6D4E5C9D1F7AB6870020DEE2 /* TeammateContactCell.swift in Sources */,
+				6D1292841F83CD2C001CCC31 /* PushData.swift in Sources */,
 				6D4E5C9E1F7AB6870020DEE2 /* ClaimsViewAllCell.swift in Sources */,
 				6D4E5C9F1F7AB6870020DEE2 /* EggView.swift in Sources */,
 				6D4E5CA01F7AB6870020DEE2 /* UUID.swift in Sources */,
@@ -3358,6 +3372,7 @@
 				6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */,
 				6D4E5D111F7AB6870020DEE2 /* Routable.swift in Sources */,
 				6D4E5D121F7AB6870020DEE2 /* ReportTextFieldCell.swift in Sources */,
+				6D12927E1F83BD6D001CCC31 /* SceneType.swift in Sources */,
 				6D4E5D131F7AB6870020DEE2 /* TeammateHeaderView.swift in Sources */,
 				6D4E5D141F7AB6870020DEE2 /* UserIndexVC.swift in Sources */,
 				6D4E5D151F7AB6870020DEE2 /* TeammateState.swift in Sources */,
@@ -3523,6 +3538,7 @@
 				94E325B91F07DA9400B2D8C8 /* JoinTeamInfoCell.swift in Sources */,
 				6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */,
 				6D69D9F41EFC03A600DED5CE /* ProxyForCellModel.swift in Sources */,
+				6D1292861F83CD4B001CCC31 /* PushCommand.swift in Sources */,
 				6DA8D5531F0E74C9000A4DB7 /* Storage.swift in Sources */,
 				6D6DA26C1EE21F7A00307C73 /* LoginDetailsRouter.swift in Sources */,
 				6D9CC6191ED484CF007F936E /* UIViewController.swift in Sources */,
@@ -3577,6 +3593,7 @@
 				6DE7932C1EF80F41005F4508 /* UniversalChatDataSource.swift in Sources */,
 				6D2808C51F1A450C00EBBE3D /* CompactUserInfoHeader.swift in Sources */,
 				6DA714F61EE02BA000F39EBE /* TeammateContactCell.swift in Sources */,
+				6D1292831F83CD2C001CCC31 /* PushData.swift in Sources */,
 				6D6DA2581EE1C69400307C73 /* ClaimsViewAllCell.swift in Sources */,
 				6D481F7F1F0BDEF30023C781 /* EggView.swift in Sources */,
 				6D91BC041EB3900700FDC332 /* UUID.swift in Sources */,
@@ -3696,6 +3713,7 @@
 				6DBF49291F80EF2600B236E2 /* HomePresentationController.swift in Sources */,
 				6D83EC891EDD6CA6000412DC /* Routable.swift in Sources */,
 				6D0E05791EFEC7A400604981 /* ReportTextFieldCell.swift in Sources */,
+				6D12927D1F83BD6A001CCC31 /* SceneType.swift in Sources */,
 				6DEE67A51EDC75DA0098EDB3 /* TeammateHeaderView.swift in Sources */,
 				6D0D2AE61EFBD48D0095284C /* UserIndexVC.swift in Sources */,
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
@@ -3966,14 +3984,14 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Surilla/Surilla.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200 -DSURILLA";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200 -DSURILLA -Onone";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Teambrella-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

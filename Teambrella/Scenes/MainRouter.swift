@@ -78,6 +78,12 @@ final class MainRouter {
         }
     }
     
+    func switchToFeed() {
+        if let vc = switchTab(to: .team) as? ButtonBarPagerTabStripViewController {
+            vc.moveToViewController(at: 0, animated: false)
+        }
+    }
+    
     // MARK: Push
     
     func presentJoinTeam() {
@@ -265,14 +271,6 @@ final class MainRouter {
             initial.performSegue(type: .teambrella)
         }
         
-    }
-    
-    func applicationDidFinishLaunching(launchOptions: [UIApplicationLaunchOptionsKey : Any]?) {
-        //presentRootViewController(window: window)
-        
-        //        if let remoteNotification = RemoteNotification(launchOptions: launchOptions) {
-        //            //Routing.notifications.handleRemoteNotification(remoteNotification)
-        //        }
     }
     
 }

@@ -165,6 +165,12 @@ enum SocketData {
                                    topicID: components[3],
                                    name: components[4])
             }
+        case .newTeammate:
+            // 8;<teamId>;<userId>;<teammateId>;<name>;<url>;<teamurl>;<teamname>
+            break
+        case .newTeammates:
+            // 9;<teamId>;<qty>;<teamurl>;<teamname>
+            break
         }
         return nil
     }
