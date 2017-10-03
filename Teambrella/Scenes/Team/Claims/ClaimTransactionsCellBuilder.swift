@@ -29,9 +29,29 @@ struct ClaimTransactionsCellBuilder {
             cell.amountCrypto.text = "Team.Claims.ClaimTransactionsVC.amountCrypto".localized
             guard let session = service.session else { return }
             
-            cell.cryptoAmountLabel.text = String(model.amountCrypto * 1000) + " " + session.coinName
+            var idx = 1
+            let cryptos = model.to.map { $0.amountCrypto * 1000 }
+            var cryptoString = ""
+            for amount in cryptos {
+                let isLast: Bool = idx == cryptos.count
+                let separator = isLast ? "" : ", "
+                cryptoString += String(describing: amount) + separator
+                idx += 1
+            }
+            cell.cryptoAmountLabel.text = cryptoString + " " + session.coinName
+
+            idx = 1
+            let fiats = model.to.map { $0.amountFiat }
+            var fiatString = ""
+            for amount in fiats {
+                let isLast: Bool = idx == fiats.count
+                let separator = isLast ? "" : ", "
+                fiatString += String(describing: amount) + separator
+                idx += 1
+            }
             cell.amountFiat.text = "Team.Claims.ClaimTransactionsVC.amountFiat".localized
-            cell.fiatAmountLabel.text = String(model.amountFiat)
+            cell.fiatAmountLabel.text = fiatString + " " + service.currencySymbol
+            
             cell.status.text = "Team.Claims.ClaimTransactionsVC.status".localized
             cell.statusLabel.text = String(model.status)
         }

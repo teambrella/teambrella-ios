@@ -23,21 +23,33 @@ import Foundation
 import SwiftyJSON
 
 struct ClaimTransactionsCellModel {
-    let txID: String
     let userID: String
     let avatarString: String
     let name: String
-    let amountCrypto: Double
-    let amountFiat: Double
     let status: Int
+    let to: [ClaimTransactionTo]
     
     init(json: JSON) {
-        txID = json["TxId"].stringValue
         userID = json["UserId"].stringValue
         avatarString = json["Avatar"].stringValue
         name = json["Name"].stringValue
-        amountCrypto = json["AmountBtc"].doubleValue
-        amountFiat = json["AmountFiat"].doubleValue
         status = json["Status"].intValue
+        to = json["To"].arrayValue.flatMap { ClaimTransactionTo(json: $0) }
+    }
+}
+
+struct ClaimTransactionTo {
+    let amountCrypto: Double
+    let userID: String
+    let name: String
+    let avatarString: String
+    let amountFiat: Double
+    
+    init(json: JSON) {
+        amountCrypto = json["AmountCrypto"].doubleValue
+        userID = json["UserId"].stringValue
+        name = json["Name"].stringValue
+        avatarString = json["Avatar"].stringValue
+        amountFiat = json["AmountFiat"].doubleValue
     }
 }

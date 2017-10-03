@@ -24,13 +24,13 @@ import UIKit
 class ClaimTransactionCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var container: UIView!
     @IBOutlet var avatar: RoundBadgedView!
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var amountCrypto: UILabel!
-    @IBOutlet var cryptoAmountLabel: UILabel!
-    @IBOutlet var amountFiat: UILabel!
-    @IBOutlet var fiatAmountLabel: UILabel!
-    @IBOutlet var status: UILabel!
-    @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var nameLabel: MessageTitleLabel!
+    @IBOutlet var amountCrypto: InfoHelpLabel!
+    @IBOutlet var cryptoAmountLabel: InfoHelpLabel!
+    @IBOutlet var amountFiat: InfoHelpLabel!
+    @IBOutlet var fiatAmountLabel: InfoHelpLabel!
+    @IBOutlet var status: InfoHelpLabel!
+    @IBOutlet var statusLabel: InfoHelpLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
