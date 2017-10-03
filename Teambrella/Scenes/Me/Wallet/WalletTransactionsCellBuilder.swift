@@ -43,7 +43,8 @@ struct WalletTransactionsCellBuilder {
             var amountString = ""
             idx = 1
             for amount in amounts {
-                let separator = (idx != amounts.count) ? ", " : ""
+                let isLast: Bool = idx == amounts.count
+                let separator = isLast ? "" : ", "
                 amountString += String(describing: amount) + separator
                 idx += 1
             }
@@ -54,7 +55,8 @@ struct WalletTransactionsCellBuilder {
             var kindsString = ""
             idx = 1
             for kind in kinds {
-                let separator = (idx != kinds.count) ? ", " : ""
+                let isLast: Bool = idx == kinds.count
+                let separator = isLast ? "" :  ", "
                 kindsString += kind.localizationKey.localized + separator
                 idx += 1
             }

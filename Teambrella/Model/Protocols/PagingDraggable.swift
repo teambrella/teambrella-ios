@@ -34,11 +34,11 @@ extension PagingDraggable where Self: UIViewController {
         let pageWidth = draggablePageWidth
         let targetXContentOffset = Float(targetContentOffset.pointee.x)
         let contentWidth = Float(scrollView.contentSize.width)
-        var newPage = Float(self.pageControl.currentPage)
+        var newPage: Float = Float(self.pageControl.currentPage)
         
         if velocity.x == 0 {
             let floatWidth = Float(pageWidth)
-            let page = targetXContentOffset - floatWidth / 2
+            let page: Float = targetXContentOffset - floatWidth / 2
             newPage = floor( page / floatWidth) + 1.0
         } else {
             newPage = Float(velocity.x > 0
@@ -50,7 +50,7 @@ extension PagingDraggable where Self: UIViewController {
         }
         self.pageControl.currentPage = Int(newPage)
         if let collection = scrollView as? UICollectionView, collection.numberOfSections == 1 {
-            let maxPage = Float(collection.numberOfItems(inSection: 0))
+            let maxPage: Float = Float(collection.numberOfItems(inSection: 0))
             if newPage < 0 { newPage = 0 }
             if newPage >= maxPage { newPage = Float(maxPage - 1) }
             
@@ -59,7 +59,7 @@ extension PagingDraggable where Self: UIViewController {
                                     at: .centeredHorizontally,
                                     animated: true)
         } else {
-            let point = CGPoint (x: CGFloat(newPage * pageWidth), y: targetContentOffset.pointee.y)
+            let point: CGPoint = CGPoint(x: CGFloat(newPage * pageWidth), y: targetContentOffset.pointee.y)
             targetContentOffset.pointee = point
         }
     }
