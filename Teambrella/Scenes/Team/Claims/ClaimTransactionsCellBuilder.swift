@@ -22,38 +22,24 @@
 import Foundation
 
 struct ClaimTransactionsCellBuilder {
-    static func populate(cell: UICollectionViewCell, with model: ClaimTransactionsCellModel) {
+    static func populate(cell: UICollectionViewCell, with model: ClaimTransactionsCellModel, userID: String) {
         if let cell = cell as? ClaimTransactionCell {
             cell.avatar.showAvatar(string: model.avatarString)
             cell.nameLabel.text = model.name
-            cell.amountCrypto.text = "Team.Claims.ClaimTransactionsVC.amountCrypto".localized
             guard let session = service.session else { return }
+        
+            let models = model.to.filter { $0.userID == userID }
             
-            var idx = 1
-            let cryptos = model.to.map { $0.amountCrypto * 1000 }
-            var cryptoString = ""
-            for amount in cryptos {
-                let isLast: Bool = idx == cryptos.count
-                let separator = isLast ? "" : ", "
-                cryptoString += String(describing: amount) + separator
-                idx += 1
-            }
-            cell.cryptoAmountLabel.text = cryptoString + " " + session.coinName
-
-            idx = 1
-            let fiats = model.to.map { $0.amountFiat }
-            var fiatString = ""
-            for amount in fiats {
-                let isLast: Bool = idx == fiats.count
-                let separator = isLast ? "" : ", "
-                fiatString += String(describing: amount) + separator
-                idx += 1
-            }
+            let cryptos = models.map { $0.amountCrypto * 1000 }.reduce(0, +)
+            let fiats = models.map { $0.amountFiat }.reduce(0, +)
+         
+            cell.amountCrypto.text = "Team.Claims.ClaimTransactionsVC.amountCrypto".localized
+            cell.cryptoAmountLabel.text = String.formattedNumber(cryptos) + " " + session.coinName
             cell.amountFiat.text = "Team.Claims.ClaimTransactionsVC.amountFiat".localized
-            cell.fiatAmountLabel.text = fiatString + " " + service.currencySymbol
+            cell.fiatAmountLabel.text = String.formattedNumber(fiats) + " " + service.currencySymbol
             
             cell.status.text = "Team.Claims.ClaimTransactionsVC.status".localized
-            cell.statusLabel.text = String(model.status)
+            cell.statusLabel.text = model.status.localizationKey.localized
         }
     }
 }

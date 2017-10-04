@@ -41,19 +41,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kRj-lT-ieT">
-                                <rect key="frame" x="300" y="8" width="100" height="66"/>
+                                <rect key="frame" x="308" y="8" width="100" height="74"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0p-WU-JRZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="24.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Amount Crypto" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTH-lI-c1f" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5T-l8-Lzb" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="-72" y="0.0" width="0.0" height="22"/>
+                                                <rect key="frame" x="-72" y="0.0" width="0.0" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -61,16 +61,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63j-u4-jYX">
-                                        <rect key="frame" x="0.0" y="22" width="100" height="22"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="100" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Amount Fiat" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svc-Cf-iAi" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="25"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AT7-WE-wu4" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="100" y="0.0" width="0.0" height="22"/>
+                                                <rect key="frame" x="100" y="0.0" width="0.0" height="25"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -78,16 +78,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPa-Q6-GgJ">
-                                        <rect key="frame" x="0.0" y="44" width="100" height="22"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="100" height="24.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Status" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StZ-05-Vd4" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF8-Sl-qBo" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="100" y="0.0" width="0.0" height="22"/>
+                                                <rect key="frame" x="100" y="0.0" width="0.0" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>

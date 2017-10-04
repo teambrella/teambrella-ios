@@ -26,56 +26,97 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqW-Ch-0YS">
                         <rect key="frame" x="0.0" y="0.0" width="388" height="104"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="al1-ic-pfr">
-                                <rect key="frame" x="380" y="8" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
-                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaw-SO-nM8">
-                                <rect key="frame" x="8" y="97" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
-                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJ7-XG-q8P">
-                                <rect key="frame" x="12" y="96" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
-                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Mv-p4-WAS">
-                                <rect key="frame" x="380" y="96" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
-                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAX-Ps-y1D">
-                                <rect key="frame" x="376" y="96" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
-                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm1-5n-QYG">
-                                <rect key="frame" x="8" y="52" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm1-5n-QYG" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="16" y="52" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                 <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKP-ob-gbp">
-                                <rect key="frame" x="372" y="52" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
-                                <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoM-D8-796">
-                                <rect key="frame" x="380" y="52.5" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
-                                <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="B6L-3R-WGZ">
+                                <rect key="frame" x="260" y="0.0" width="120" height="104"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="al1-ic-pfr" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="26"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
+                                        <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNK-n4-w4C">
+                                        <rect key="frame" x="0.0" y="26" width="120" height="26"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaw-SO-nM8" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="26"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
+                                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJ7-XG-q8P" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="60" y="0.0" width="60" height="26"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
+                                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="lJ7-XG-q8P" secondAttribute="trailing" id="8YA-Uw-V34"/>
+                                            <constraint firstItem="aaw-SO-nM8" firstAttribute="leading" secondItem="zNK-n4-w4C" secondAttribute="leading" id="8b6-ff-foi"/>
+                                            <constraint firstItem="aaw-SO-nM8" firstAttribute="centerY" secondItem="zNK-n4-w4C" secondAttribute="centerY" id="UuW-KA-BPu"/>
+                                            <constraint firstItem="lJ7-XG-q8P" firstAttribute="centerY" secondItem="zNK-n4-w4C" secondAttribute="centerY" id="xLq-i5-EiF"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8OP-F6-Ufu">
+                                        <rect key="frame" x="0.0" y="52" width="120" height="26"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAX-Ps-y1D" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="26"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
+                                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Mv-p4-WAS" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="120" y="0.0" width="0.0" height="26"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="11"/>
+                                                <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="3Mv-p4-WAS" secondAttribute="trailing" id="Ecy-8A-eK8"/>
+                                            <constraint firstItem="3Mv-p4-WAS" firstAttribute="centerY" secondItem="8OP-F6-Ufu" secondAttribute="centerY" id="cnJ-fQ-q1U"/>
+                                            <constraint firstItem="ZAX-Ps-y1D" firstAttribute="leading" secondItem="8OP-F6-Ufu" secondAttribute="leading" id="fwX-Tb-SE8"/>
+                                            <constraint firstItem="ZAX-Ps-y1D" firstAttribute="centerY" secondItem="8OP-F6-Ufu" secondAttribute="centerY" id="xYx-NN-7LC"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UP4-Xc-dPV">
+                                        <rect key="frame" x="0.0" y="78" width="120" height="26"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKP-ob-gbp" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="26"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoM-D8-796" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="26"/>
+                                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="JKP-ob-gbp" firstAttribute="centerY" secondItem="UP4-Xc-dPV" secondAttribute="centerY" id="SOC-fv-CNr"/>
+                                            <constraint firstItem="JKP-ob-gbp" firstAttribute="leading" secondItem="UP4-Xc-dPV" secondAttribute="leading" id="ddf-Wb-Tki"/>
+                                            <constraint firstItem="eoM-D8-796" firstAttribute="centerY" secondItem="UP4-Xc-dPV" secondAttribute="centerY" id="yI8-4o-b6Y"/>
+                                            <constraint firstAttribute="trailing" secondItem="eoM-D8-796" secondAttribute="trailing" id="zFy-Re-vWN"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="vse-2R-Qxw"/>
+                                </constraints>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQp-IF-In1">
-                                <rect key="frame" x="0.0" y="103" width="388" height="1"/>
+                                <rect key="frame" x="16" y="103" width="372" height="1"/>
                                 <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Mx5-45-RvF"/>
@@ -84,27 +125,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JKP-ob-gbp" firstAttribute="centerY" secondItem="lqW-Ch-0YS" secondAttribute="centerY" id="5iU-dV-f6x"/>
-                            <constraint firstItem="JKP-ob-gbp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Tm1-5n-QYG" secondAttribute="trailing" constant="8" id="78F-9G-YSt"/>
-                            <constraint firstAttribute="bottom" secondItem="3Mv-p4-WAS" secondAttribute="bottom" constant="8" id="8JJ-Z6-LIs"/>
+                            <constraint firstItem="B6L-3R-WGZ" firstAttribute="top" secondItem="lqW-Ch-0YS" secondAttribute="top" constant="8" id="5ym-F6-Ym3"/>
+                            <constraint firstAttribute="bottom" secondItem="B6L-3R-WGZ" secondAttribute="bottom" constant="8" id="8uC-G7-Jk6"/>
                             <constraint firstItem="Tm1-5n-QYG" firstAttribute="centerY" secondItem="lqW-Ch-0YS" secondAttribute="centerY" id="DbW-PT-eTM"/>
-                            <constraint firstAttribute="trailing" secondItem="3Mv-p4-WAS" secondAttribute="trailing" constant="8" id="Gdz-9x-ut5"/>
-                            <constraint firstItem="oQp-IF-In1" firstAttribute="leading" secondItem="lqW-Ch-0YS" secondAttribute="leading" id="GfM-fx-2NO"/>
-                            <constraint firstItem="Tm1-5n-QYG" firstAttribute="leading" secondItem="lqW-Ch-0YS" secondAttribute="leading" constant="8" id="HEg-po-Hs2"/>
+                            <constraint firstItem="oQp-IF-In1" firstAttribute="leading" secondItem="lqW-Ch-0YS" secondAttribute="leading" constant="16" id="GfM-fx-2NO"/>
+                            <constraint firstItem="Tm1-5n-QYG" firstAttribute="leading" secondItem="lqW-Ch-0YS" secondAttribute="leading" constant="16" id="HEg-po-Hs2"/>
                             <constraint firstAttribute="bottom" secondItem="oQp-IF-In1" secondAttribute="bottom" id="IvK-DY-xAr"/>
-                            <constraint firstItem="eoM-D8-796" firstAttribute="centerY" secondItem="lqW-Ch-0YS" secondAttribute="centerY" id="PAa-VC-6hh"/>
-                            <constraint firstItem="al1-ic-pfr" firstAttribute="top" secondItem="lqW-Ch-0YS" secondAttribute="top" constant="8" id="RYw-xs-zyl"/>
-                            <constraint firstItem="aaw-SO-nM8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Tm1-5n-QYG" secondAttribute="bottom" constant="8" id="S5j-QD-pEH"/>
-                            <constraint firstAttribute="bottom" secondItem="aaw-SO-nM8" secondAttribute="bottom" constant="7" id="T9G-7S-SGz"/>
-                            <constraint firstItem="lJ7-XG-q8P" firstAttribute="leading" secondItem="aaw-SO-nM8" secondAttribute="trailing" constant="4" id="V86-Kf-Szy"/>
-                            <constraint firstItem="eoM-D8-796" firstAttribute="leading" secondItem="JKP-ob-gbp" secondAttribute="trailing" constant="8" id="W2j-mn-9bg"/>
-                            <constraint firstItem="3Mv-p4-WAS" firstAttribute="leading" secondItem="ZAX-Ps-y1D" secondAttribute="trailing" constant="4" id="bNf-tM-zOG"/>
-                            <constraint firstAttribute="bottom" secondItem="lJ7-XG-q8P" secondAttribute="bottom" constant="8" id="co3-HD-bAc"/>
-                            <constraint firstAttribute="bottom" secondItem="ZAX-Ps-y1D" secondAttribute="bottom" constant="8" id="gK9-88-oqy"/>
+                            <constraint firstAttribute="trailing" secondItem="B6L-3R-WGZ" secondAttribute="trailing" constant="8" id="Lf3-o0-AH1"/>
                             <constraint firstAttribute="trailing" secondItem="oQp-IF-In1" secondAttribute="trailing" id="hLK-AG-u6z"/>
-                            <constraint firstItem="aaw-SO-nM8" firstAttribute="leading" secondItem="lqW-Ch-0YS" secondAttribute="leading" constant="8" id="oZE-pM-KqT"/>
-                            <constraint firstAttribute="trailing" secondItem="al1-ic-pfr" secondAttribute="trailing" constant="8" id="yOU-2k-mXD"/>
-                            <constraint firstAttribute="trailing" secondItem="eoM-D8-796" secondAttribute="trailing" constant="8" id="zWm-fj-IyW"/>
                         </constraints>
                     </view>
                 </subviews>

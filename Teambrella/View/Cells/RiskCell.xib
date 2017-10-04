@@ -20,7 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RiskCell" customModule="Teambrella" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RiskCell" customModule="Surilla" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="269" height="71"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -30,7 +30,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDJ-U9-KTw">
                         <rect key="frame" x="0.0" y="0.0" width="269" height="71"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HES-WN-5rG" customClass="RoundImageView" customModule="Teambrella" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HES-WN-5rG" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="16" y="16" width="39" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HES-WN-5rG" secondAttribute="height" multiplier="1:1" id="U6w-Ly-RUw"/>
@@ -69,6 +69,7 @@
                             <constraint firstItem="HES-WN-5rG" firstAttribute="top" secondItem="pDJ-U9-KTw" secondAttribute="top" constant="16" id="Ua0-e0-5Zc"/>
                             <constraint firstItem="ySx-uL-6WA" firstAttribute="leading" secondItem="HES-WN-5rG" secondAttribute="trailing" constant="16" id="WMm-Pn-NF4"/>
                             <constraint firstAttribute="bottom" secondItem="HES-WN-5rG" secondAttribute="bottom" constant="16" id="XlY-D4-Rlp"/>
+                            <constraint firstItem="LxY-fN-SvB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ySx-uL-6WA" secondAttribute="trailing" constant="8" id="Xwu-H2-16P"/>
                             <constraint firstItem="Fn0-U0-oqQ" firstAttribute="top" secondItem="ySx-uL-6WA" secondAttribute="bottom" constant="4" id="frT-j3-SQz"/>
                             <constraint firstAttribute="trailing" secondItem="LxY-fN-SvB" secondAttribute="trailing" constant="40" id="jgb-1y-6xt"/>
                             <constraint firstItem="yYP-6w-S4C" firstAttribute="centerY" secondItem="pDJ-U9-KTw" secondAttribute="centerY" id="nbe-yD-8Vc"/>

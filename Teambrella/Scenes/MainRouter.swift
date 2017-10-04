@@ -138,12 +138,13 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentClaimTransactionsList(teamID: Int, claimID: Int) {
+    func presentClaimTransactionsList(teamID: Int, claimID: Int, userID: String) {
         guard let vc = ClaimTransactionsVC.instantiate() as? ClaimTransactionsVC
             else { fatalError("Error instantiating") }
         
         vc.teamID = teamID
         vc.claimID = claimID
+        vc.userID = userID
         vc.automaticallyAdjustsScrollViewInsets = false
         push(vc: vc)
     }

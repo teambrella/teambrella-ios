@@ -27,6 +27,7 @@ class ClaimTransactionsVC: UIViewController, Routable {
     
     var teamID: Int?
     var claimID: Int?
+    var userID: String = ""
     var dataSource: ClaimTransactionsDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0
     
@@ -69,7 +70,7 @@ extension ClaimTransactionsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        ClaimTransactionsCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        ClaimTransactionsCellBuilder.populate(cell: cell, with: dataSource[indexPath], userID: userID)
         if indexPath.row == (dataSource.count - dataSource.limit/2) {
             dataSource.loadData()
         }

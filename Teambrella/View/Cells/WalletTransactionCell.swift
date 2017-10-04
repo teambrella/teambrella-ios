@@ -24,14 +24,14 @@ import UIKit
 class WalletTransactionCell: UICollectionViewCell, XIBInitableCell {
 
     @IBOutlet var container: UIView!
-    @IBOutlet var createdLabel: UILabel!
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var kindTitle: UILabel!
-    @IBOutlet var kindLabel: UILabel!
-    @IBOutlet var statusTitle: UILabel!
-    @IBOutlet var statusLabel: UILabel!
-    @IBOutlet var amountTitle: UILabel!
-    @IBOutlet var amountLabel: UILabel!
+    @IBOutlet var createdLabel: InfoHelpLabel!
+    @IBOutlet var nameLabel: MessageTitleLabel!
+    @IBOutlet var kindTitle: InfoHelpLabel!
+    @IBOutlet var kindLabel: InfoHelpLabel!
+    @IBOutlet var statusTitle: InfoHelpLabel!
+    @IBOutlet var statusLabel: InfoHelpLabel!
+    @IBOutlet var amountTitle: InfoHelpLabel!
+    @IBOutlet var amountLabel: InfoHelpLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

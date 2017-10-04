@@ -105,7 +105,7 @@ final class ClaimVC: UIViewController, Routable {
         
         guard let id = Int(claimID) else { return }
         
-        service.router.presentClaimTransactionsList(teamID: session, claimID: id)
+        service.router.presentClaimTransactionsList(teamID: session, claimID: id, userID: dataSource.userID)
     }
     
     @objc
