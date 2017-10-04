@@ -80,9 +80,9 @@ enum TeambrellaResponseType {
     case claimVote(JSON)
     case claimUpdates(JSON)
     case claimTransactions([ClaimTransactionsCellModel])
-    case home(HomeScreenModel)
+    case home(JSON)
     case feedDeleteCard(HomeScreenModel)
-    case teamFeed([FeedEntity])
+    case teamFeed(JSON)
     case chat(ChatModel)
     case wallet(WalletEntity)
     case walletTransactions([WalletTransactionsCellModel])
@@ -214,11 +214,11 @@ struct TeambrellaRequest {
                                   teamPart: reply["TeamPart"])
             success(.chat(model))
         case .teamFeed:
-            success(.teamFeed(reply.arrayValue.flatMap { FeedEntity(json: $0) }))
+            success(.teamFeed(reply))
         case .claimTransactions:
             success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
         case .home:
-            success(.home(HomeScreenModel(json: reply)))
+        success(.home(reply))
         case .feedDeleteCard:
             success(.feedDeleteCard(HomeScreenModel(json: reply)))
         case .wallet:

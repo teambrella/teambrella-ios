@@ -66,14 +66,21 @@ class LocalStorage: Storage {
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
             let request = TeambrellaRequest(type: .home, body: body, success: { response in
-                if case let .home(homeModel) = response {
-                    promise.resolve(with: homeModel)
+                if case let .home(json) = response {
+                    PlistStorage().store(json: json, for: .home, id: String(teamID))
+                    let model = HomeScreenModel(json: json)
+                    promise.resolve(with: model)
                 } else {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,
                                                          description: "Was waiting .home got \(response)"))
                 }
             })
             request.start()
+        }
+        if let storedJSON = PlistStorage().retreiveJSON(for: .home, id: String(teamID)) {
+            defer {
+                promise.temporaryResolve(with: HomeScreenModel(json: storedJSON))
+            }
         }
         return promise
     }
@@ -134,7 +141,9 @@ class LocalStorage: Storage {
                                                       "commentAvatarSize": 32,
                                                       "search": NSNull()])
             let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in
-                if case .teamFeed(let feed) = response {
+                if case .teamFeed(let json) = response {
+                    PlistStorage().store(json: json, for: .teamFeed, id: "")
+                    let feed = json.arrayValue.flatMap { FeedEntity(json: $0) }
                     promise.resolve(with: feed)
                 } else {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,
@@ -144,6 +153,12 @@ class LocalStorage: Storage {
                 promise.reject(with: error)
             })
             request.start()
+        }
+        if let storedJSON = PlistStorage().retreiveJSON(for: .teamFeed, id: "") {
+            defer {
+                let feed = storedJSON.arrayValue.flatMap { FeedEntity(json: $0) }
+                promise.temporaryResolve(with: feed)
+            }
         }
         return promise
     }

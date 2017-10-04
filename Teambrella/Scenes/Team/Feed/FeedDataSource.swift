@@ -42,16 +42,21 @@ class FeedDataSource {
         let offset = isSilentUpdate ? 0 : count
         let context = FeedRequestContext(teamID: teamID, since: since, offset: offset, limit: limit)
         service.storage.requestTeamFeed(context: context).observe { [weak self] result in
+             guard let `self` = self else { return }
+            
             switch result {
             case let .value(feed):
-                guard let `self` = self else { return }
-                
                 if self.isSilentUpdate {
                     self.items.removeAll()
                     self.isSilentUpdate = false
                 }
                 self.items.append(contentsOf: feed)
                 self.onLoad?()
+            case let .temporaryValue(feed):
+                if !self.isSilentUpdate {
+                    self.items.append(contentsOf: feed)
+                    self.onLoad?()
+                }
             case let .error(error):
                 log("\(error)", type: .error)
             }

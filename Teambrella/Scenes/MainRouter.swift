@@ -253,6 +253,7 @@ final class MainRouter {
     func logout() {
         guard let navigator = navigator else { return }
         
+        PlistStorage().removeCache()
         service.session = nil
         service.crypto.clearLastUserType()
         navigator.clear()

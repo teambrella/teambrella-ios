@@ -36,26 +36,31 @@
                                     <constraint firstAttribute="width" secondItem="HES-WN-5rG" secondAttribute="height" multiplier="1:1" id="U6w-Ly-RUw"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fn0-U0-oqQ">
-                                <rect key="frame" x="71" y="40.5" width="25.5" height="12"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
-                                <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Klf-uu-nlc">
+                                <rect key="frame" x="71" y="20.5" width="244" height="29.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySx-uL-6WA">
+                                        <rect key="frame" x="0.0" y="0.0" width="244" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                        <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fn0-U0-oqQ">
+                                        <rect key="frame" x="0.0" y="17.5" width="244" height="12"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
+                                        <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxY-fN-SvB">
-                                <rect key="frame" x="211" y="23.5" width="18" height="24.5"/>
+                                <rect key="frame" x="269" y="24" width="0.0" height="23.5"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="20"/>
                                 <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySx-uL-6WA">
-                                <rect key="frame" x="71" y="18" width="39" height="18.5"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
-                                <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="yYP-6w-S4C">
-                                <rect key="frame" x="245" y="29" width="8" height="13"/>
+                                <rect key="frame" x="269" y="29" width="8" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="8" id="CE5-fl-46d"/>
                                     <constraint firstAttribute="height" constant="13" id="oGk-4h-Jsm"/>
@@ -65,21 +70,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yYP-6w-S4C" secondAttribute="trailing" constant="16" id="42e-B2-sSK"/>
-                            <constraint firstItem="ySx-uL-6WA" firstAttribute="top" secondItem="pDJ-U9-KTw" secondAttribute="top" constant="18" id="BGk-cI-NGt"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Klf-uu-nlc" secondAttribute="bottom" constant="8" id="BVc-Dw-VW9"/>
+                            <constraint firstItem="Klf-uu-nlc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pDJ-U9-KTw" secondAttribute="top" constant="8" id="LtW-yk-WyJ"/>
+                            <constraint firstItem="LxY-fN-SvB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Klf-uu-nlc" secondAttribute="trailing" constant="8" id="NLd-hp-N2q"/>
                             <constraint firstItem="HES-WN-5rG" firstAttribute="top" secondItem="pDJ-U9-KTw" secondAttribute="top" constant="16" id="Ua0-e0-5Zc"/>
-                            <constraint firstItem="ySx-uL-6WA" firstAttribute="leading" secondItem="HES-WN-5rG" secondAttribute="trailing" constant="16" id="WMm-Pn-NF4"/>
                             <constraint firstAttribute="bottom" secondItem="HES-WN-5rG" secondAttribute="bottom" constant="16" id="XlY-D4-Rlp"/>
-                            <constraint firstItem="LxY-fN-SvB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ySx-uL-6WA" secondAttribute="trailing" constant="8" id="Xwu-H2-16P"/>
-                            <constraint firstItem="Fn0-U0-oqQ" firstAttribute="top" secondItem="ySx-uL-6WA" secondAttribute="bottom" constant="4" id="frT-j3-SQz"/>
                             <constraint firstAttribute="trailing" secondItem="LxY-fN-SvB" secondAttribute="trailing" constant="40" id="jgb-1y-6xt"/>
                             <constraint firstItem="yYP-6w-S4C" firstAttribute="centerY" secondItem="pDJ-U9-KTw" secondAttribute="centerY" id="nbe-yD-8Vc"/>
-                            <constraint firstItem="Fn0-U0-oqQ" firstAttribute="leading" secondItem="ySx-uL-6WA" secondAttribute="leading" id="rWw-Yy-JEQ"/>
+                            <constraint firstItem="Klf-uu-nlc" firstAttribute="centerY" secondItem="HES-WN-5rG" secondAttribute="centerY" id="rJr-5Q-1V9"/>
                             <constraint firstItem="HES-WN-5rG" firstAttribute="leading" secondItem="pDJ-U9-KTw" secondAttribute="leading" constant="16" id="vOM-cs-J9n"/>
                             <constraint firstItem="LxY-fN-SvB" firstAttribute="centerY" secondItem="pDJ-U9-KTw" secondAttribute="centerY" id="wvX-gp-kxh"/>
+                            <constraint firstItem="Klf-uu-nlc" firstAttribute="leading" secondItem="HES-WN-5rG" secondAttribute="trailing" constant="16" id="xxP-KZ-otM"/>
                         </constraints>
                     </view>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHs-zb-imT">
-                        <rect key="frame" x="16" y="70" width="253" height="1"/>
+                        <rect key="frame" x="16" y="70" width="269" height="1"/>
                         <color key="backgroundColor" red="0.76078431369999999" green="0.81176470590000005" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="y6s-dP-EYn"/>

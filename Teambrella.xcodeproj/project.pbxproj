@@ -543,6 +543,8 @@
 		6D59F0091F56E5D000C422EB /* PrivateChatAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */; };
 		6D59F00E1F56F47B00C422EB /* ChatFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59F00C1F56F47B00C422EB /* ChatFooter.swift */; };
 		6D59F00F1F56F47B00C422EB /* ChatFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D59F00D1F56F47B00C422EB /* ChatFooter.xib */; };
+		6D666B701F8512FA00812CBE /* PlistStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D666B6F1F8512FA00812CBE /* PlistStorage.swift */; };
+		6D666B711F8512FA00812CBE /* PlistStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D666B6F1F8512FA00812CBE /* PlistStorage.swift */; };
 		6D66B49A1F4C461A00672583 /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B4991F4C461A00672583 /* ImagePickerController.swift */; };
 		6D66B49C1F4D89F900672583 /* CombinedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B49B1F4D89F900672583 /* CombinedModels.swift */; };
 		6D66B49E1F4DD70F00672583 /* ChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B49D1F4DD70F00672583 /* ChatTextCell.swift */; };
@@ -1008,6 +1010,7 @@
 		6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatAdaptor.swift; path = Scenes/Home/PrivateMessages/PrivateChatAdaptor.swift; sourceTree = "<group>"; };
 		6D59F00C1F56F47B00C422EB /* ChatFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatFooter.swift; path = View/ReusableViews/ChatFooter.swift; sourceTree = "<group>"; };
 		6D59F00D1F56F47B00C422EB /* ChatFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChatFooter.xib; path = View/ReusableViews/ChatFooter.xib; sourceTree = "<group>"; };
+		6D666B6F1F8512FA00812CBE /* PlistStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlistStorage.swift; path = Model/Services/Storage/PlistStorage.swift; sourceTree = "<group>"; };
 		6D66B4991F4C461A00672583 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickerController.swift; path = Controller/ImagePickerController.swift; sourceTree = "<group>"; };
 		6D66B49B1F4D89F900672583 /* CombinedModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CombinedModels.swift; path = Model/Entities/CombinedModels.swift; sourceTree = "<group>"; };
 		6D66B49D1F4DD70F00672583 /* ChatTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatTextCell.swift; path = View/Cells/ChatTextCell.swift; sourceTree = "<group>"; };
@@ -2139,6 +2142,7 @@
 			isa = PBXGroup;
 			children = (
 				6DA8D5501F0E74B1000A4DB7 /* LocalStorage.swift */,
+				6D666B6F1F8512FA00812CBE /* PlistStorage.swift */,
 			);
 			name = Storage;
 			sourceTree = "<group>";
@@ -3244,6 +3248,7 @@
 				6D4E5CFE1F7AB6870020DEE2 /* ClaimLike.swift in Sources */,
 				6D4E5CFF1F7AB6870020DEE2 /* ChooseYourTeamCellModel.swift in Sources */,
 				6D4E5D001F7AB6870020DEE2 /* TeambrellaStyle.swift in Sources */,
+				6D666B711F8512FA00812CBE /* PlistStorage.swift in Sources */,
 				6D4E5D011F7AB6870020DEE2 /* NSObject.swift in Sources */,
 				6D4E5D021F7AB6870020DEE2 /* Session.swift in Sources */,
 				6D4E5D031F7AB6870020DEE2 /* TeammateStats.swift in Sources */,
@@ -3586,6 +3591,7 @@
 				6D6DA25C1EE1CE3100307C73 /* ClaimLike.swift in Sources */,
 				94C2D3941F191F7100D203C2 /* ChooseYourTeamCellModel.swift in Sources */,
 				6DA714E71EDF224A00F39EBE /* TeambrellaStyle.swift in Sources */,
+				6D666B701F8512FA00812CBE /* PlistStorage.swift in Sources */,
 				6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */,
 				6DA1D0FB1F040AEF00F9DE87 /* Session.swift in Sources */,
 				6D6DA2481EE16BBA00307C73 /* TeammateStats.swift in Sources */,

@@ -76,6 +76,8 @@ final class InitialVC: UIViewController {
                 service.session?.currentUserID = teamsEntity.userID
                 HUD.hide()
                 self?.presentMasterTab()
+            case .temporaryValue:
+                break
             case .error:
                 self?.failure()
                 break

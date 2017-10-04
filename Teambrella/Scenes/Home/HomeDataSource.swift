@@ -38,16 +38,21 @@ class HomeDataSource {
     
     func loadData(teamID: Int) {
         service.storage.requestHome(teamID: teamID).observe { [weak self] result in
+            guard let `self` = self else { return }
+            
             switch result {
             case .value(let value):
-                guard let `self` = self else { return }
-                
                 if self.isSilentUpdate {
                     self.model?.cards.removeAll()
                     self.isSilentUpdate = false
                 }
                 self.model = value
                 self.onUpdate?()
+            case let .temporaryValue(value):
+                if !(self.isSilentUpdate) {
+                    self.model = value
+                    self.onUpdate?()
+                }
             case .error(let error):
                 log("\(error)", type: .error)
             }
@@ -82,6 +87,8 @@ class HomeDataSource {
             case .value(let homeModel):
                 self?.model = homeModel
                 self?.onUpdate?()
+            case .temporaryValue:
+                return
             case .error(let error):
                 log("can't delete card: \(error)", type: .error)
             }
