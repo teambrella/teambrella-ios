@@ -84,12 +84,8 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
                            locations: [0.0, 0.5, 1.0])
         HomeCellBuilder.registerCells(in: collectionView)
         setupWalletContainer()
-        //        let touch = UITapGestureRecognizer(target: self, action: #selector(tapItem))
-        //        itemCard.avatarView.isUserInteractionEnabled = true
-        //        itemCard.avatarView.addGestureRecognizer(touch)
         
         switchToCurrentTeam()
-        
         service.socket = SocketService()
         service.push.executeCommand()
         greetingsTitleLabel.text = " "
@@ -123,16 +119,16 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         }
     }
     
-   private func switchToCurrentTeam() {
+    private func switchToCurrentTeam() {
         HUD.show(.progress, onView: view)
         dataSource = HomeDataSource()
+        dataSource.onUpdate = { [weak self] in
+            self?.setup()
+        }
         if let teamID = service.session?.currentTeam?.teamID {
             dataSource.loadData(teamID: teamID)
         }
         
-        dataSource.onUpdate = { [weak self] in
-            self?.setup()
-        }
         guard let source = service.session?.currentTeam?.teamLogo else { return }
         
         UIImage.fetchAvatar(string: source,

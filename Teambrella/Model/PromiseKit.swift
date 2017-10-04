@@ -23,6 +23,7 @@ import Foundation
 
 enum Result<Value> {
     case value(Value)
+    case temporaryValue(Value)
     case error(Error)
 }
 
@@ -30,6 +31,7 @@ class Future<Value> {
     fileprivate var result: Result<Value>? {
         didSet { result.map(report) }
     }
+    
     private lazy var callbacks = [(Result<Value>) -> Void]()
     
     func observe(with callback: @escaping (Result<Value>) -> Void) {
@@ -48,6 +50,10 @@ class Promise<Value>: Future<Value> {
     init(value: Value? = nil) {
         super.init()
         result = value.map(Result.value)
+    }
+    
+    func temporaryResolve(with value: Value) {
+        result = .temporaryValue(value)
     }
     
     func resolve(with value: Value) {
