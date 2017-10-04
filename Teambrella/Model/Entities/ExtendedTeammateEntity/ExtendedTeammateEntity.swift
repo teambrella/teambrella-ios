@@ -24,6 +24,7 @@ import SwiftyJSON
 
 class ExtendedTeammateEntity {
     let id: String
+    let teammateID: Int
     let ver: Int64
     
     let lastUpdated: Int64
@@ -49,6 +50,7 @@ class ExtendedTeammateEntity {
     init(json: JSON) {
         team = json["TeamPart"]
         id = json["UserId"].stringValue
+        teammateID = json["Id"].intValue
         ver = json["Ver"].int64Value
         lastUpdated = json["LastUpdated"].int64Value
         topic = TopicFactory.topic(with: json["DiscussionPart"])
