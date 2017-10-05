@@ -22,20 +22,24 @@
 import Foundation
 
 struct ChatChunk: Comparable {
+    enum ChunkType {
+        case temporary, messages, technical
+    }
+    
     let cellModels: [ChatCellModel]
     let minTime: Date
     let maxTime: Date
-    let isTemporary: Bool
+    let type: ChunkType
     var count: Int { return cellModels.count }
     
-    init?(cellModels: [ChatCellModel], isTemporary: Bool = false) {
+    init?(cellModels: [ChatCellModel], type: ChunkType) {
         self.cellModels = cellModels
         let dates = cellModels.map { $0.date }
         guard let minTime = dates.min(), let maxTime = dates.max() else { return nil }
         
         self.minTime = minTime
         self.maxTime = maxTime
-        self.isTemporary = isTemporary
+        self.type = type
     }
     
     var firstTextMessage: ChatTextCellModel? {

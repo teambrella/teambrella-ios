@@ -30,7 +30,8 @@ struct ChatModelBuilder {
     
     func cellModels(from chatItems: [ChatEntity],
                     lastChunk: ChatChunk?,
-                    isClaim: Bool) -> [ChatCellModel] {
+                    isClaim: Bool,
+                    isTemporary: Bool) -> [ChatCellModel] {
         let heightCalculator = ChatFragmentHeightCalculator(width: width, font: font)
         var result: [ChatCellModel] = []
         var lastDate: Date? = lastChunk?.cellModels.last?.date
@@ -73,7 +74,8 @@ struct ChatModelBuilder {
                                           userName: name,
                                           userAvatar: avatar,
                                           rateText: rateString,
-                                          date: date)
+                                          date: date,
+                                          isTemporary: isTemporary)
             result.append(model)
         }
         return result

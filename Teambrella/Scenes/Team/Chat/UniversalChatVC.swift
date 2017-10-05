@@ -416,6 +416,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
                 
                 galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
             }
+            cell.alpha = model.isTemporary ? 0.5 : 1
         } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
             cell.text = Formatter.teambrellaShort.string(from: model.date)
         } else if let cell = cell as? ChatNewMessagesSeparatorCell,
