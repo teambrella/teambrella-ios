@@ -74,6 +74,7 @@ final class InitialVC: UIViewController {
                 }
                 service.session?.teams = teamsEntity.teams
                 service.session?.currentUserID = teamsEntity.userID
+                 service.socket = SocketService()
                 HUD.hide()
                 self?.presentMasterTab()
             case .temporaryValue:

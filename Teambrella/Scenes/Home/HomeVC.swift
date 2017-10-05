@@ -86,7 +86,6 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         setupWalletContainer()
         
         switchToCurrentTeam()
-        service.socket = SocketService()
         service.push.executeCommand()
         greetingsTitleLabel.text = " "
     }
