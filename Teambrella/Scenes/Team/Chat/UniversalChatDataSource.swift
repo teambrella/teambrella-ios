@@ -271,21 +271,21 @@ final class UniversalChatDatasource {
             let filteredModel = removeChatDuplicates(chat: model.chat)
             addModels(models: filteredModel, isPrevious: isPrevious)
             claim?.update(with: model.basicPart)
-            if limit > model.chat.count {
+            if model.chat.isEmpty {
                 if isPrevious {
                     hasPrevious = false
                 } else {
                     hasNext = false
                     forwardOffset = 0
-                    lastRead = model.lastRead
                 }
             }
+            lastRead = model.lastRead
         case let .privateChat(messages):
             if isMyNewMessage {
                 clear()
             }
             addModels(models: messages, isPrevious: isPrevious)
-            if limit > messages.count {
+            if messages.isEmpty {
                 if isPrevious {
                     hasPrevious = false
                 } else {
