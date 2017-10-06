@@ -34,6 +34,7 @@ final class UniversalChatDatasource {
     var hasNext                                     = true
     var hasPrevious                                 = true
     var isFirstLoad                                 = true
+    var isSilentScrollToBottomNeeded                = false
     var isLoadNextNeeded: Bool                      = false {
         didSet {
             if isLoadNextNeeded && !isLoading && hasNext {
@@ -263,37 +264,46 @@ final class UniversalChatDatasource {
         return chat
     }
     
+    private func processCommonChat(model: ChatModel, isPrevious: Bool) {
+        let filteredModel = removeChatDuplicates(chat: model.chat)
+        addModels(models: filteredModel, isPrevious: isPrevious)
+        claim?.update(with: model.basicPart)
+        if model.chat.isEmpty {
+            if isPrevious {
+                hasPrevious = false
+            } else {
+                hasNext = false
+                forwardOffset = 0
+            }
+        }
+        lastRead = model.lastRead
+    }
+    
+    private func processPrivateChat(messages: [ChatEntity], isPrevious: Bool, isMyNewMessage: Bool) {
+        if isMyNewMessage {
+            clear()
+        }
+        addModels(models: messages, isPrevious: isPrevious)
+        if messages.isEmpty {
+            if isPrevious {
+                hasPrevious = false
+            } else {
+                hasNext = false
+                //forwardOffset = 0
+                //lastRead = model.lastRead + 1
+            }
+        }
+    }
+    
     private func process(response: TeambrellaResponseType, isPrevious: Bool, isMyNewMessage: Bool) {
         removeTemporaryChunksIfNeeded()
         let count = self.count
         switch response {
         case let .chat(model):
-            let filteredModel = removeChatDuplicates(chat: model.chat)
-            addModels(models: filteredModel, isPrevious: isPrevious)
-            claim?.update(with: model.basicPart)
-            if model.chat.isEmpty {
-                if isPrevious {
-                    hasPrevious = false
-                } else {
-                    hasNext = false
-                    forwardOffset = 0
-                }
-            }
-            lastRead = model.lastRead
+            processCommonChat(model: model, isPrevious: isPrevious)
         case let .privateChat(messages):
-            if isMyNewMessage {
-                clear()
-            }
-            addModels(models: messages, isPrevious: isPrevious)
-            if messages.isEmpty {
-                if isPrevious {
-                    hasPrevious = false
-                } else {
-                    hasNext = false
-                    //forwardOffset = 0
-                    //lastRead = model.lastRead + 1
-                }
-            }
+            processPrivateChat(messages: messages, isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
+          
         case let .newPost(post):
             let models = createCellModels(from: [post], isTemporary: true)
             let chunk = ChatChunk(cellModels: models, type: .temporary)

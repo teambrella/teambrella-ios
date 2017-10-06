@@ -34,6 +34,7 @@ class WalletCosignersVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.contentInsetAdjustmentBehavior = .never
         self.addGradientNavBar()
         WalletCosignersCellBuilder.registerCells(in: collectionView)
         dataSource.onUpdate = { [weak self] in
@@ -61,7 +62,7 @@ class WalletCosignersVC: UIViewController, Routable {
             return
         }
         
-       // dataSource.updateSilently()
+        // dataSource.updateSilently()
     }
     
     override func didReceiveMemoryWarning() {

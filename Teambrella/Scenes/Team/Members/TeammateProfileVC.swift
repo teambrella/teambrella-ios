@@ -419,7 +419,11 @@ extension TeammateProfileVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let cell = tableView.cellForRow(at: indexPath) as? ContactCellTableCell,
+            let string = cell.bottomLabel.text,
+            let url = URL(string: string) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

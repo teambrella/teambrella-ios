@@ -35,6 +35,7 @@ class ClaimTransactionsVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
+        collectionView.contentInsetAdjustmentBehavior = .never
         title = "Team.Claims.ClaimTransactionsVC.title".localized
         collectionView.register(ClaimTransactionCell.nib, forCellWithReuseIdentifier: ClaimTransactionCell.cellID)
         guard let teamID = teamID, let claimID = claimID else { return }
