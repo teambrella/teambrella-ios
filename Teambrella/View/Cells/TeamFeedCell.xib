@@ -51,8 +51,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEA-pj-5Rg" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="72" y="36" width="506" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEA-pj-5Rg" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="72" y="36" width="484" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -76,11 +76,11 @@
                                     <constraint firstAttribute="width" constant="10" id="uG6-Lh-kxL"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" ambiguous="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6d-fE-Fmr" customClass="Label" customModule="Surilla" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="1000" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6d-fE-Fmr" customClass="Label" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="564" y="79" width="22" height="22"/>
                                 <color key="backgroundColor" red="0.12156862745098039" green="0.75294117647058822" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="22" id="6eG-v4-Ylz"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="6eG-v4-Ylz"/>
                                     <constraint firstAttribute="height" constant="22" id="QP4-cV-zso"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>

@@ -110,7 +110,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCollectionCell" id="XDl-au-9Mo" customClass="HomeCollectionCell" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="20" width="325" height="150.5"/>
+                                        <rect key="frame" x="24" y="0.0" width="325" height="150.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="150.5"/>

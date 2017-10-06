@@ -47,8 +47,8 @@ final class UniversalChatVC: UIViewController, Routable {
     private var lastTypingDate: Date = Date()
     private var typingUsers: [String: Date] = [:]
     private var endsEditingWhenTappingOnChatBackground = true
-    private var shouldScrollToBottom: Bool = true
-    private var isFirstRefresh: Bool = true
+    private var shouldScrollToBottom: Bool = false
+    private var shouldScrollToBottomASilently: Bool = false
     
     private var showIsTyping: Bool = false {
         didSet {
@@ -65,10 +65,17 @@ final class UniversalChatVC: UIViewController, Routable {
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
-        dataSource.onUpdate = { [weak self] backward, hasNew in
-            guard hasNew else { return }
+        dataSource.onUpdate = { [weak self] backward, hasNew, isFirstLoad in
+            guard let `self` = self else { return }
+            guard hasNew else {
+                if isFirstLoad {
+                    self.shouldScrollToBottomASilently = true
+                }
+               self.dataSource.isLoadPreviousNeeded = true
+                return
+            }
             
-            self?.refresh(backward: backward)
+            self.refresh(backward: backward)
         }
         dataSource.isLoadNextNeeded = true
         title = dataSource.title
@@ -191,7 +198,6 @@ final class UniversalChatVC: UIViewController, Routable {
      * - Parameter backward: if the chunk of data comes above existing cells or below them
      */
     private func refresh(backward: Bool) {
-        self.isFirstRefresh = false
         // not using reloadData() to avoid blinking of cells
         collectionView.dataSource = nil
         collectionView.dataSource = self
@@ -199,6 +205,9 @@ final class UniversalChatVC: UIViewController, Routable {
         if self.shouldScrollToBottom {
             scrollToBottom(animated: true)
             self.shouldScrollToBottom = false
+        } else if self.shouldScrollToBottomASilently {
+            scrollToBottom(animated: false)
+            self.shouldScrollToBottomASilently = false
         } else if backward, let indexPath = dataSource.currentTopCell {
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
         }

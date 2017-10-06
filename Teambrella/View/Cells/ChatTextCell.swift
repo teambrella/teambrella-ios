@@ -130,7 +130,7 @@ class ChatTextCell: UICollectionViewCell {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let context = UIGraphicsGetCurrentContext() else { return }
-        
+
         if isMy {
             prepareMyCloud(in: context)
         } else {
