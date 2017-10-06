@@ -179,7 +179,7 @@ extension ClaimsVC: UIViewControllerPreviewingDelegate {
         guard let vc = service.router.getControllerClaim(claimID: claim.id) else { return nil }
         
         vc.preferredContentSize = CGSize(width: view.bounds.width * 0.8, height: view.bounds.height * 0.9)
-        previewingContext.sourceRect = cell.frame
+        previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)
         vc.isPeeking = true
         return vc
     }

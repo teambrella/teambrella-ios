@@ -527,7 +527,7 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
         guard let vc = service.router.getControllerMemberProfile(teammateID: model.entity.userID) else { return nil }
         
         vc.preferredContentSize = CGSize(width: view.bounds.width * 0.9, height: view.bounds.height * 0.9)
-        previewingContext.sourceRect = cell.frame
+        previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)
         vc.isPeeking = true
         return vc
     }
