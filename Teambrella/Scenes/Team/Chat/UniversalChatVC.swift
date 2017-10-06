@@ -287,7 +287,8 @@ final class UniversalChatVC: UIViewController, Routable {
         collectionView.allowsSelection = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.autoresizingMask = UIViewAutoresizing()
-        automaticallyAdjustsScrollViewInsets = false
+        collectionView.contentInsetAdjustmentBehavior = .never
+        
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(refreshNeeded), for: .valueChanged)
         collectionView.refreshControl = refresh
@@ -416,6 +417,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
                 
                 galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
             }
+            cell.alpha = model.isTemporary ? 0.5 : 1
         } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
             cell.text = Formatter.teambrellaShort.string(from: model.date)
         } else if let cell = cell as? ChatNewMessagesSeparatorCell,
@@ -525,7 +527,7 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
         guard let vc = service.router.getControllerMemberProfile(teammateID: model.entity.userID) else { return nil }
         
         vc.preferredContentSize = CGSize(width: view.bounds.width * 0.9, height: view.bounds.height * 0.9)
-        previewingContext.sourceRect = cell.frame
+        previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)
         vc.isPeeking = true
         return vc
     }

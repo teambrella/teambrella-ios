@@ -52,6 +52,9 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var confettiView: UIImageView!
     
     @IBOutlet var pageControl: UIPageControl!
+    
+    @IBOutlet var gradientViewBottomConstraint: NSLayoutConstraint!
+    
     var draggablePageWidth: Float { return Float(cardWidth) }
     var cardWidth: CGFloat { return collectionView.bounds.width - Constant.cardInterval * 2 }
     
@@ -78,6 +81,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        greetingsTitleLabel.text = " "
         clearScreen()
         setupTransparentNavigationBar()
         gradientView.setup(colors: [#colorLiteral(red: 0.1803921569, green: 0.2392156863, blue: 0.7960784314, alpha: 1), #colorLiteral(red: 0.2156862745, green: 0.2705882353, blue: 0.8078431373, alpha: 1), #colorLiteral(red: 0.368627451, green: 0.4156862745, blue: 0.8588235294, alpha: 1)],
@@ -86,9 +90,12 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         setupWalletContainer()
         
         switchToCurrentTeam()
-        service.socket = SocketService()
         service.push.executeCommand()
-        greetingsTitleLabel.text = " "
+        
+        if isIpadSimulatingPhone {
+            gradientViewBottomConstraint.constant = 20
+        }
+        collectionView.contentInsetAdjustmentBehavior = .never
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,6 +111,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         addEmitter()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -322,7 +330,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: cardWidth, height: collectionView.bounds.height)
+        return CGSize(width: cardWidth, height: floor(collectionView.bounds.height))
     }
 }
 

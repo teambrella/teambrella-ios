@@ -105,7 +105,7 @@ class TeammateProfileDataSource {
         }
     }
     
-    func sendRisk(userID: String, risk: Double?, completion: @escaping (JSON) -> Void) {
+    func sendRisk(userID: Int, risk: Double?, completion: @escaping (JSON) -> Void) {
         service.server.updateTimestamp { timestamp, error in
             let key = service.server.key
             let body = RequestBody(payload: ["TeammateId": userID,

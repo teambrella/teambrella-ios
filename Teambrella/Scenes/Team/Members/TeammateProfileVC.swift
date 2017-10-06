@@ -154,11 +154,11 @@ final class TeammateProfileVC: UIViewController, Routable {
     @objc
     func tapResetVote(sender: UIButton) {
         guard let cell = votingRiskCell else { return }
-        guard let userID = teammateID else { return }
+        guard let teammateID = dataSource.extendedTeammate?.teammateID else { return }
         
         cell.yourVoteValueLabel.alpha = 0.5
         //sender.isEnabled = false
-        dataSource.sendRisk(userID: userID, risk: nil) { [weak self, weak cell] json in
+        dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self, weak cell] json in
             guard let `self` = self else { return }
             guard let cell = cell else { return }
             
@@ -419,7 +419,11 @@ extension TeammateProfileVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let cell = tableView.cellForRow(at: indexPath) as? ContactCellTableCell,
+            let string = cell.bottomLabel.text,
+            let url = URL(string: string) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -468,9 +472,9 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         let risk = riskFrom(offset: stoppedOnOffset, maxValue: cell.maxValue)
         
         cell.yourVoteValueLabel.alpha = 0.5
-        guard let userID = teammateID else { return }
+        guard let teammateID = dataSource.extendedTeammate?.teammateID else { return }
         
-        dataSource.sendRisk(userID: userID, risk: risk) { [weak self, weak cell] json in
+        dataSource.sendRisk(userID: teammateID, risk: risk) { [weak self, weak cell] json in
             guard let `self` = self else { return }
             
             self.dataSource.extendedTeammate?.updateWithVote(json: json)

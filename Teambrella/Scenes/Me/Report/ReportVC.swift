@@ -62,7 +62,8 @@ final class ReportVC: UIViewController, Routable {
             // not implemented yet
         } else {
             addGradientNavBar()
-            automaticallyAdjustsScrollViewInsets = false
+            collectionView.contentInsetAdjustmentBehavior = .never
+//            automaticallyAdjustsScrollViewInsets = false
             guard let context = reportContext else { return }
             
             switch context {

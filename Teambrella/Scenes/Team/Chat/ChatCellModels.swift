@@ -35,6 +35,7 @@ struct ChatTextCellModel: ChatCellModel {
     let userAvatar: String
     let rateText: String?
     let date: Date
+    let isTemporary: Bool
     
     var totalFragmentsHeight: CGFloat { return fragmentHeights.reduce(0, +) }
     var id: String { return entity.id }

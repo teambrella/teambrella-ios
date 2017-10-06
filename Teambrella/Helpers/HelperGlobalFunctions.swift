@@ -33,4 +33,5 @@ var deviceType: DeviceType {
 }
 
 var isSmallIPhone: Bool { return deviceType == .small }
+var isIpadSimulatingPhone: Bool { return UIScreen.main.bounds.height <= 480 }
 var isIphoneX: Bool { return deviceType == .normal && UIScreen.main.bounds.height >= 812 }

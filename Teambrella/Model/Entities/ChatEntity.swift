@@ -26,7 +26,7 @@ struct ChatEntity {
     let json: JSON
     
     var userID: String { return json["UserId"].stringValue }
-    var lastUpdated: Date { return Date(ticks: json["LastUpdated"].uInt64Value) }
+    var lastUpdated: Int64 { return json["LastUpdated"].int64Value }//Date(ticks: json["LastUpdated"].uInt64Value) }
     var id: String { return json["Id"].stringValue }
     var created: Date { return Date(ticks: json["Created"].uInt64Value) }
     var points: Int { return json["Points"].intValue }

@@ -28,12 +28,13 @@ class WalletTransactionsVC: UIViewController, Routable {
     var teamID: Int?
     var dataSource: WalletTransactionsDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0
-
+    
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
+        collectionView.contentInsetAdjustmentBehavior = .never
         title = "Me.WalletVC.WalletTransactionsVC.title".localized
         collectionView.register(WalletTransactionCell.nib, forCellWithReuseIdentifier: WalletTransactionCell.cellID)
         guard let teamID = teamID else { return }
