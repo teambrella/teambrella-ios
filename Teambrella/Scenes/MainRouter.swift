@@ -144,7 +144,7 @@ final class MainRouter {
         
         vc.teamID = teamID
         vc.claimID = claimID
-        vc.automaticallyAdjustsScrollViewInsets = false
+        vc.collectionView.contentInsetAdjustmentBehavior = .never
         push(vc: vc)
     }
     
@@ -153,7 +153,7 @@ final class MainRouter {
             else { fatalError("Error instantiating") }
         
         vc.teamID = teamID
-        vc.automaticallyAdjustsScrollViewInsets = false
+        vc.collectionView.contentInsetAdjustmentBehavior = .never
         push(vc: vc)
     }
     
@@ -162,7 +162,7 @@ final class MainRouter {
             else { fatalError("Error instantiating") }
         
         vc.cosigners = cosigners
-        vc.automaticallyAdjustsScrollViewInsets = false
+        vc.collectionView.contentInsetAdjustmentBehavior = .never
         push(vc: vc)
     }
     

@@ -287,7 +287,8 @@ final class UniversalChatVC: UIViewController, Routable {
         collectionView.allowsSelection = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.autoresizingMask = UIViewAutoresizing()
-        automaticallyAdjustsScrollViewInsets = false
+        collectionView.contentInsetAdjustmentBehavior = .never
+        
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(refreshNeeded), for: .valueChanged)
         collectionView.refreshControl = refresh
