@@ -23,18 +23,18 @@ import Foundation
 import SwiftyJSON
 
 final class UniversalChatDatasource {
-    var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool) -> Void)?
+    var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool, _ isFirstLoad: Bool) -> Void)?
     var onMessageSend: (() -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
     
     var limit                                       = 10
     var cloudWidth: CGFloat                         = 0
     var previousCount: Int                          = 0
+    var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
     
     var hasNext                                     = true
     var hasPrevious                                 = true
     var isFirstLoad                                 = true
-    var isSilentScrollToBottomNeeded                = false
     var isLoadNextNeeded: Bool                      = false {
         didSet {
             if isLoadNextNeeded && !isLoading && hasNext {
@@ -264,37 +264,6 @@ final class UniversalChatDatasource {
         return chat
     }
     
-    private func processCommonChat(model: ChatModel, isPrevious: Bool) {
-        let filteredModel = removeChatDuplicates(chat: model.chat)
-        addModels(models: filteredModel, isPrevious: isPrevious)
-        claim?.update(with: model.basicPart)
-        if model.chat.isEmpty {
-            if isPrevious {
-                hasPrevious = false
-            } else {
-                hasNext = false
-                forwardOffset = 0
-            }
-        }
-        lastRead = model.lastRead
-    }
-    
-    private func processPrivateChat(messages: [ChatEntity], isPrevious: Bool, isMyNewMessage: Bool) {
-        if isMyNewMessage {
-            clear()
-        }
-        addModels(models: messages, isPrevious: isPrevious)
-        if messages.isEmpty {
-            if isPrevious {
-                hasPrevious = false
-            } else {
-                hasNext = false
-                //forwardOffset = 0
-                //lastRead = model.lastRead + 1
-            }
-        }
-    }
-    
     private func process(response: TeambrellaResponseType, isPrevious: Bool, isMyNewMessage: Bool) {
         removeTemporaryChunksIfNeeded()
         let count = self.count
@@ -316,13 +285,43 @@ final class UniversalChatDatasource {
         let hasNewModels = self.count > count
          //handleNewSeparator(hasNewModels: hasNewModels, isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
         
-        if  isFirstLoad {
-            if !hasNewModels && !isPrevious {
-                loadPrevious()
-            }
+        onUpdate?(isPrevious, hasNewModels, isFirstLoad)
+        
+        if  isFirstLoad && hasNewModels {
             isFirstLoad = false
         }
-        onUpdate?(isPrevious, hasNewModels)
+    }
+    
+    private func processCommonChat(model: ChatModel, isPrevious: Bool) {
+        let filteredModel = removeChatDuplicates(chat: model.chat)
+        addModels(models: filteredModel, isPrevious: isPrevious)
+        claim?.update(with: model.basicPart)
+        if model.chat.isEmpty {
+            if isPrevious {
+                hasPrevious = false
+            } else {
+                hasNext = false
+                forwardOffset = 0
+            }
+        }
+        lastRead = model.lastRead
+        teamAccessLevel = model.teamAccessLevel
+    }
+    
+    private func processPrivateChat(messages: [ChatEntity], isPrevious: Bool, isMyNewMessage: Bool) {
+        if isMyNewMessage {
+            clear()
+        }
+        addModels(models: messages, isPrevious: isPrevious)
+        if messages.isEmpty {
+            if isPrevious {
+                hasPrevious = false
+            } else {
+                hasNext = false
+                //forwardOffset = 0
+                //lastRead = model.lastRead + 1
+            }
+        }
     }
     
     private func addChunk(chunk: ChatChunk?) {

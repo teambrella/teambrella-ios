@@ -178,7 +178,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         for (idx, model) in dataSource.models.enumerated() where model.isTeamAverage {
             collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
                                         at: .centeredHorizontally,
-                                        animated: true)
+                                        animated: !silently)
             break
         }
     }

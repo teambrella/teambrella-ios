@@ -67,4 +67,7 @@ struct ChatModel {
     var title: String { return basicPart["Title"].stringValue }
     var userID: String { return basicPart["UserId"].stringValue }
     var lastRead: Int64 { return discussion["LastRead"].int64Value }
+    var teamAccessLevel: TeamAccessLevel {
+        return TeamAccessLevel(rawValue: teamPart["TeamAccessLevel"].intValue) ?? .noAccess
+    }
 }
