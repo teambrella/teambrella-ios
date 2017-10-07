@@ -43,8 +43,8 @@ class WalletDetailsVC: UIViewController, Routable {
         headerLabel.text = "Me.WalletDetailsVC.headerLabel".localized.uppercased()
         timeLabel.text = "Me.WalletDetailsVC.timeLabel".localized
         copyAddressButton.setTitle("Me.WalletDetailsVC.copyAddressButton".localized, for: .normal)
-        CellDecorator.shadow(for: container, opacity: 0.1, radius: 5)
         CellDecorator.roundedEdges(for: container)
+        CellDecorator.heavyShadow(for: container)
         //let's say the server sends the walletID(string) into bitcoinAddressLabel
         bitcoinAddressLabel.text = walletID
     }
