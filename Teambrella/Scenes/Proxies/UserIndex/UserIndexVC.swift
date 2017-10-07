@@ -45,9 +45,11 @@ class UserIndexVC: UIViewController {
     @IBOutlet var sortButton: UIButton!
     @IBOutlet var youLabel: Label!
     
+    @IBOutlet var buttonView: UIView!
+    
     @IBOutlet var topContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet var avatarWidthConstant: NSLayoutConstraint!
-
+    
     @IBAction func tapSort(_ sender: Any) {
         service.router.showFilter(in: self, delegate: self, currentSort: dataSource.sortType)
     }
@@ -83,14 +85,14 @@ class UserIndexVC: UIViewController {
     }
     
     func configureSearchContainer() {
-//        searchController = UISearchController(searchResultsController: nil)
-//        searchController.searchResultsUpdater = self
-//        searchController.dimsBackgroundDuringPresentation = true
-//        searchController.searchBar.placeholder = "Team.MembersVC.searchHere".localized
-//        searchBar.placeholder = "Team.MembersVC.searchHere".localized
-//
-//        searchController.searchBar.delegate = self
-//        searchController.searchBar.sizeToFit()
+        //        searchController = UISearchController(searchResultsController: nil)
+        //        searchController.searchResultsUpdater = self
+        //        searchController.dimsBackgroundDuringPresentation = true
+        //        searchController.searchBar.placeholder = "Team.MembersVC.searchHere".localized
+        //        searchBar.placeholder = "Team.MembersVC.searchHere".localized
+        //
+        //        searchController.searchBar.delegate = self
+        //        searchController.searchBar.sizeToFit()
     }
     
     fileprivate func shrinkTopContainer(_ shrink: Bool) {
@@ -107,6 +109,9 @@ class UserIndexVC: UIViewController {
         isTopContainerShrinked = shrink
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
+            self.buttonView.alpha = shrink
+                ? 0
+                : 1
         }
     }
     
