@@ -164,3 +164,4 @@
 "Team.Chat.TypeLabel.application" = "APPLICACION";
 "Team.Chat.TypeLabel.other" = "DISCUSION";
 "Team.Chat.Separator.newMessages" = "NUEVOS MENSAJES";
+"Team.ChooseTeam.switchUser" = "Cambiar usuario";

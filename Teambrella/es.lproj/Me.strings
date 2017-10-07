@@ -5,6 +5,21 @@
   Created by Yaroslav Pasternak on 22.06.17.
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
+// -------------------- waiting for translation :) -------------------- //
+
+"Me.WalletVC.fundingCell.additionalTitle" = "FINANCIAMENTOS RECOMENDADOS";
+
+"Me.Report.submitButtonTitle-submit" = "Enviar";
+"Me.Report.submitButtonTitle-create" = "Hacer";
+"Me.Report.cancelButtonTitle" = "Cancelar";
+"Me.Report.newDiscussion.title-placeholder" = "Titulo";
+
+"Me.Report.ReportClaim.title" = "Reportar una reclamación";
+"Me.Report.NewDiscussion.title" = "Nueva discusión";
+
+"Me.Report.ImageSource.title" = "Imagen de";
+"Me.Report.ImageSource.gallery" = "Galería";
+"Me.Report.ImageSource.camera" = "Cámara";
 
 "Me.CoverageVC.indicatorTitle"            = "Cobertura";
 "Me.ProfileVC.indicatorTitle"             = "Yo";
@@ -59,15 +74,3 @@
 "Me.WalletVC.WalletTransactionsVC.statusTitle" = "Estado:";
 
 "Me.WalletVC.WalletCosignersVC.title" = "Co-firmantes";
-
-"Me.Report.ImageSource.title" = "Imagen de";
-"Me.Report.ImageSource.gallery" = "Galería";
-"Me.Report.ImageSource.camera" = "Cámara";
-// -------------------- waiting for translation :) -------------------- //
-
-"Me.WalletVC.fundingCell.additionalTitle" = "RECOMMENDED ADDITIONAL FUNDING";
-
-"Me.Report.submitButtonTitle-submit" = "Submit";
-"Me.Report.submitButtonTitle-create" = "Create";
-"Me.Report.cancelButtonTitle" = "Cancel";
-"Me.Report.newDiscussion.title-placeholder" = "Titulo";

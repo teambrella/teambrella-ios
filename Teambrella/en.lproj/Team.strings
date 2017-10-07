@@ -173,3 +173,4 @@
 "Team.Home.Card.voting" = "VOTING";
 
 "Team.ClaimsList.empty" = "No claims in your team so far.";
+"Team.ChooseTeam.switchUser" = "Switch user";

@@ -43,6 +43,7 @@ class UserIndexVC: UIViewController {
     @IBOutlet var detailsLabel: InfoLabel!
     @IBOutlet var rankLabel: AmountLabel!
     @IBOutlet var sortButton: UIButton!
+    @IBOutlet var youLabel: Label!
     
     @IBOutlet var topContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet var avatarWidthConstant: NSLayoutConstraint!
@@ -69,6 +70,8 @@ class UserIndexVC: UIViewController {
             HUD.hide()
             self?.collectionView.reloadData()
         }
+        youLabel.text = "General.you".localized
+        detailsLabel.text = ""
     }
     
     private func setupCollectionView() {

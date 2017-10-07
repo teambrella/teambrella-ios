@@ -35,5 +35,5 @@ struct ChooseYourTeamCellModel: TeamCellModel {
 }
 
 struct SwitchUserTeamCellModel: TeamCellModel {
-    let name = "Switch user"
+    let name = "Team.ChooseTeam.switchUser".localized
 }
