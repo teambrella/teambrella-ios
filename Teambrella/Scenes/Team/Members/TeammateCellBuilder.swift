@@ -104,7 +104,8 @@ struct TeammateCellBuilder {
             cell.updateWithRiskScale(riskScale: riskScale)
             controller.isRiskScaleUpdateNeeded = false
         }
-        
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
         cell.pearMiddleAvatar.avatar.showAvatar(string: teammate.basic.avatar)
         
         if let voting = teammate.voting {
@@ -124,9 +125,14 @@ struct TeammateCellBuilder {
             } else {
                 controller.resetVote(cell: cell)
             }
+            let currentChosenRisk = controller.riskFrom(offset: cell.collectionView.contentOffset.x,
+                                                        maxValue: cell.maxValue)
+            controller.updateAverages(cell: cell,
+                                      risk: currentChosenRisk)
             
             let timeString = DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
             cell.timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
+          
         }
         
         cell.delegate = controller

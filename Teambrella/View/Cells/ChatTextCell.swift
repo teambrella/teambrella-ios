@@ -140,8 +140,8 @@ class ChatTextCell: UICollectionViewCell {
         context.drawPath(using: .fillStroke)
     }
     
-    func prepare(with model: ChatCellModel, cloudWidth: CGFloat, cloudHeight: CGFloat) {
-        guard let model = model as? ChatTextCellModel, model.id != id else { return }
+    func prepare(with model: ChatCellModel, cloudWidth: CGFloat, cloudHeight: CGFloat) -> [UIView] {
+        guard let model = model as? ChatTextCellModel, model.id != id else { return [] }
         
         id = model.id
         isMy = model.isMy
@@ -153,8 +153,8 @@ class ChatTextCell: UICollectionViewCell {
         setupLeftLabel(model: model, baseFrame: baseFrame)
         setupRightLabel(model: model, baseFrame: baseFrame)
         setupBottomLabel(model: model, baseFrame: baseFrame)
-        setupFragments(model: model)
         setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
+        return setupFragments(model: model)
     }
     
     // MARK: Private
@@ -278,22 +278,26 @@ class ChatTextCell: UICollectionViewCell {
                                      y: cloudHeight - bottomLabel.frame.height / 2 - 8)
     }
     
-    private func setupFragments(model: ChatTextCellModel) {
+    private func setupFragments(model: ChatTextCellModel) -> [UIView] {
         views.forEach { $0.removeFromSuperview() }
         views.removeAll()
         
+        var result: [UIView] = []
         for (idx, fragment) in model.fragments.enumerated() {
             switch fragment {
             case let .text(text):
                 let label: UILabel = createLabel(for: text, height: model.fragmentHeights[idx])
                 contentView.addSubview(label)
                 views.append(label)
+                result.append(label)
             case let .image(urlString: urlString, aspect: _):
                 let imageView = createGalleryView(for: urlString, height: model.fragmentHeights[idx])
                 contentView.addSubview(imageView)
                 views.append(imageView)
+                result.append(imageView)
             }
         }
+        return result
     }
     
    private func createLabel(for text: String, height: CGFloat) -> UILabel {

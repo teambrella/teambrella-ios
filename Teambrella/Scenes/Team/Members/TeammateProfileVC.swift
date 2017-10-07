@@ -107,6 +107,60 @@ final class TeammateProfileVC: UIViewController, Routable {
         return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
     }
     
+    func updateAmounts(with risk: Double) {
+        chosenRisk = risk
+        let kind = UICollectionElementKindSectionHeader
+        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
+            return
+        }
+        guard let myRisk = dataSource.extendedTeammate?.riskScale?.myRisk else { return }
+        guard let heCoversMe = linearFunction?.value(at: risk) else { return }
+        
+        let theirAmount = heCoversMe
+        view.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
+        
+        let myAmount = heCoversMe * myRisk / risk
+        view.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
+    }
+    
+    func resetVote(cell: VotingRiskCell) {
+        let vote = dataSource.extendedTeammate?.voting?.myVote
+        let proxyAvatar = dataSource.extendedTeammate?.voting?.proxyAvatar
+        let proxyName = dataSource.extendedTeammate?.voting?.proxyName
+        if let vote = vote,
+            let proxyAvatar = proxyAvatar,
+            let proxyName = proxyName {
+            cell.isProxyHidden = false
+            cell.proxyAvatarView.showAvatar(string: proxyAvatar)
+            cell.proxyNameLabel.text = proxyName.uppercased()
+            let offset = offsetFrom(risk: vote, maxValue: cell.maxValue)
+            cell.scrollTo(offset: offset, silently: true)
+        } else {
+            cell.isProxyHidden = true
+            cell.resetVoteButton.isHidden = true
+            cell.yourVoteValueLabel.text = "..."
+            cell.scrollToAverage(silently: true)
+        }
+    }
+    
+    func updateAverages(cell: VotingRiskCell, risk: Double) {
+        func text(for label: UILabel, risk: Double) {
+            guard let riskScale = dataSource.extendedTeammate?.riskScale else { return }
+            
+            let delta = risk - riskScale.averageRisk
+            var text = "AVG\n"
+            text += delta > 0 ? "+" : ""
+            let percent = 100 * delta / riskScale.averageRisk
+            let amount = String(format: "%.0f", percent)
+            label.text =  text + amount + "%"
+        }
+        
+        text(for: cell.yourVoteBadgeLabel, risk: risk)
+        if let teamRisk = dataSource.extendedTeammate?.voting?.riskVoted {
+            text(for: cell.teamVoteBadgeLabel, risk: teamRisk)
+        }
+    }
+    
     // MARK: Callbacks
     
     @objc
@@ -206,23 +260,6 @@ final class TeammateProfileVC: UIViewController, Routable {
                                 withReuseIdentifier: CompactUserInfoHeader.cellID)
     }
     
-    private func updateAmounts(with risk: Double) {
-        chosenRisk = risk
-        let kind = UICollectionElementKindSectionHeader
-        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
-            return
-        }
-        guard let myRisk = dataSource.extendedTeammate?.riskScale?.myRisk else { return }
-        guard let heCoversMe = linearFunction?.value(at: risk) else { return }
-        
-        let theirAmount = heCoversMe
-        view.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
-        
-        let myAmount = heCoversMe * myRisk / risk
-        view.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
-        
-    }
-    
     private func setTitle() {
         title = dataSource.extendedTeammate?.basic.name.short
     }
@@ -232,25 +269,6 @@ final class TeammateProfileVC: UIViewController, Routable {
         
         let function = PiecewiseFunction((0.2, risk.coversIfMin), (1, risk.coversIf1), (5, risk.coversIfMax))
         linearFunction = function
-    }
-    
-   func resetVote(cell: VotingRiskCell) {
-        let vote = dataSource.extendedTeammate?.voting?.myVote
-        let proxyAvatar = dataSource.extendedTeammate?.voting?.proxyAvatar
-        let proxyName = dataSource.extendedTeammate?.voting?.proxyName
-        if let vote = vote,
-            let proxyAvatar = proxyAvatar,
-            let proxyName = proxyName {
-            cell.isProxyHidden = false
-            cell.proxyAvatarView.showAvatar(string: proxyAvatar)
-            cell.proxyNameLabel.text = proxyName.uppercased()
-            let offset = offsetFrom(risk: vote, maxValue: cell.maxValue)
-            cell.scrollTo(offset: offset, silently: true)
-        } else {
-            cell.isProxyHidden = true
-            cell.yourVoteValueLabel.text = "..."
-            cell.scrollToAverage(silently: true)
-        }
     }
     
     private func addPrivateMessageButton() {
@@ -440,30 +458,17 @@ extension TeammateProfileVC: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "Me.ProfileVC.indicatorTitle".localized)
     }
+    
 }
 
 // MARK: VotingRiskCellDelegate
 extension TeammateProfileVC: VotingRiskCellDelegate {
     func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat) {
-        func text(for label: UILabel, risk: Double) {
-            guard let riskScale = dataSource.extendedTeammate?.riskScale else { return }
-            
-            let delta = risk - riskScale.averageRisk
-            var text = "AVG\n"
-            text += delta > 0 ? "+" : ""
-            let percent = 100 * delta / riskScale.averageRisk
-            let amount = String(format: "%.0f", percent)
-            label.text =  text + amount + "%"
-        }
-        
+      
         let risk = riskFrom(offset: changedOffset, maxValue: cell.maxValue)
         cell.yourVoteValueLabel.text = String(format: "%.2f", risk)
         cell.pearMiddleAvatar.riskLabel.text = String(format: "%.2f", risk)
-        
-        text(for: cell.yourVoteBadgeLabel, risk: risk)
-        if let teamRisk = dataSource.extendedTeammate?.voting?.riskVoted {
-            text(for: cell.teamVoteBadgeLabel, risk: teamRisk)
-        }
+        updateAverages(cell: cell, risk: risk)
         updateAmounts(with: risk)
         cell.pieChart.setupWith(remainingMinutes: dataSource.extendedTeammate?.voting?.remainingMinutes ?? 0)
     }
