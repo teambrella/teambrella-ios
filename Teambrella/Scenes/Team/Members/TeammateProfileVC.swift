@@ -51,7 +51,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      if let teammateID = teammateID {
+        if let teammateID = teammateID {
             dataSource = TeammateProfileDataSource(id: teammateID, isMe: false)
         } else if let myID = service.session?.currentUserID {
             dataSource = TeammateProfileDataSource(id: myID, isMe: true)
@@ -432,14 +432,18 @@ extension TeammateProfileVC: UITableViewDelegate {
             let item = dataSource.socialItems[indexPath.row]
             cell.avatarView.image = item.icon
             cell.topLabel.text = item.name.uppercased()
-            cell.bottomLabel.text = item.address
+            if item.type == .facebook,
+                let cutString = item.address.split(separator: "/").last {
+                cell.bottomLabel.text = String(cutString)
+            } else {
+                cell.bottomLabel.text = item.address
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? ContactCellTableCell,
-            let string = cell.bottomLabel.text,
-            let url = URL(string: string) {
+        let item = dataSource.socialItems[indexPath.row]
+        if let url = URL(string: item.address) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
@@ -464,7 +468,7 @@ extension TeammateProfileVC: IndicatorInfoProvider {
 // MARK: VotingRiskCellDelegate
 extension TeammateProfileVC: VotingRiskCellDelegate {
     func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat) {
-      
+        
         let risk = riskFrom(offset: changedOffset, maxValue: cell.maxValue)
         cell.yourVoteValueLabel.text = String(format: "%.2f", risk)
         cell.pearMiddleAvatar.riskLabel.text = String(format: "%.2f", risk)
