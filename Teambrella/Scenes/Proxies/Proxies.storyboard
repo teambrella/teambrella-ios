@@ -247,6 +247,22 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ank-lB-ThK" userLabel="Button View">
                                                 <rect key="frame" x="0.0" y="144" width="375" height="70"/>
                                                 <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cl9-fC-5Ro">
+                                                        <rect key="frame" x="0.0" y="16" width="375" height="54"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3v-Gk-sg3" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="16"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                                                <color key="value" red="1" green="1" blue="1" alpha="0.01" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XcQ-MF-QNo">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                                         <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -263,16 +279,24 @@
                                                         </state>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="N3v-Gk-sg3" firstAttribute="leading" secondItem="Ank-lB-ThK" secondAttribute="leading" id="0kP-s3-is1"/>
                                                     <constraint firstItem="XcQ-MF-QNo" firstAttribute="leading" secondItem="Ank-lB-ThK" secondAttribute="leading" id="2Dg-Gz-ESM"/>
                                                     <constraint firstAttribute="trailing" secondItem="XcQ-MF-QNo" secondAttribute="trailing" id="5Mi-f2-DMF"/>
                                                     <constraint firstAttribute="height" constant="70" id="6AD-Yt-G2U"/>
+                                                    <constraint firstItem="N3v-Gk-sg3" firstAttribute="bottom" secondItem="9AN-5n-for" secondAttribute="top" id="EyC-wh-vK5"/>
+                                                    <constraint firstItem="N3v-Gk-sg3" firstAttribute="top" secondItem="Ank-lB-ThK" secondAttribute="top" id="H6n-Ku-jno"/>
                                                     <constraint firstAttribute="trailing" secondItem="9AN-5n-for" secondAttribute="trailing" constant="16" id="JJW-n5-D9v"/>
+                                                    <constraint firstAttribute="bottom" secondItem="cl9-fC-5Ro" secondAttribute="bottom" id="JML-Yj-YwJ"/>
                                                     <constraint firstItem="XcQ-MF-QNo" firstAttribute="top" secondItem="Ank-lB-ThK" secondAttribute="top" id="bqs-1Y-VJT"/>
+                                                    <constraint firstItem="cl9-fC-5Ro" firstAttribute="top" secondItem="9AN-5n-for" secondAttribute="top" id="cY3-a2-Jpm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cl9-fC-5Ro" secondAttribute="trailing" id="ffc-tp-dGM"/>
                                                     <constraint firstItem="9AN-5n-for" firstAttribute="top" secondItem="Ank-lB-ThK" secondAttribute="top" constant="16" id="isa-7u-CLy"/>
                                                     <constraint firstAttribute="bottom" secondItem="9AN-5n-for" secondAttribute="bottom" constant="16" id="p4R-sp-R5a"/>
+                                                    <constraint firstItem="cl9-fC-5Ro" firstAttribute="leading" secondItem="Ank-lB-ThK" secondAttribute="leading" id="qG7-5U-r4t"/>
                                                     <constraint firstItem="9AN-5n-for" firstAttribute="leading" secondItem="Ank-lB-ThK" secondAttribute="leading" constant="16" id="syJ-Bv-uzC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="N3v-Gk-sg3" secondAttribute="trailing" id="ysH-Qk-5S1"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -362,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QI3-VK-CQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5897" y="3071"/>
+            <point key="canvasLocation" x="5896.8000000000002" y="3070.6146926536735"/>
         </scene>
         <!--SortVC-->
         <scene sceneID="mvc-Dc-Vmm">

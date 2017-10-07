@@ -57,6 +57,7 @@ class UserIndexVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        CellDecorator.shadow(for: topContainer, opacity: 0.1, radius: 5)
         HUD.show(.progress, onView: view)
         setupCollectionView()
         shrinkTopContainer(false)

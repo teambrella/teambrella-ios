@@ -26,14 +26,14 @@ struct ClaimTransactionsCellModel {
     let userID: String
     let avatarString: String
     let name: String
-    let status: Int
+    let status: TransactionState
     let to: [ClaimTransactionTo]
     
     init(json: JSON) {
         userID = json["UserId"].stringValue
         avatarString = json["Avatar"].stringValue
         name = json["Name"].stringValue
-        status = json["Status"].intValue
+        status = TransactionState(rawValue: json["Status"].intValue) ?? .created
         to = json["To"].arrayValue.flatMap { ClaimTransactionTo(json: $0) }
     }
 }

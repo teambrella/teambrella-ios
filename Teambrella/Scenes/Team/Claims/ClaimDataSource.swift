@@ -29,6 +29,7 @@ class ClaimDataSource {
     
     var claim: EnhancedClaimEntity?
     var cellIDs: [String] = []
+    var userID: String { return claim?.userID ?? "" }
     
     var sections: Int { return 1 }
     var onUpdate: (() -> Void)?

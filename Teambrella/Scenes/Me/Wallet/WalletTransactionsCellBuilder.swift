@@ -45,7 +45,7 @@ struct WalletTransactionsCellBuilder {
             for amount in amounts {
                 let isLast: Bool = idx == amounts.count
                 let separator = isLast ? "" : ", "
-                amountString += String(describing: amount) + separator
+                amountString += String.formattedNumber(amount) + separator
                 idx += 1
             }
             cell.amountLabel.text = amountString + " " + session.coinName
