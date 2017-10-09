@@ -99,8 +99,6 @@ struct ClaimCellBuilder {
         cell.teamVotePercentValue.text = String.truncatedNumber(claim.ratioVoted * 100)
         cell.teamVoteAmount.text = String.truncatedNumber(claim.ratioVoted * claim.claimAmount)
         
-        cell.submitButton.setTitle("Team.ClaimCell.voteSubmitted".localized, for: .normal)
-        
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
         cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.resetButton.addTarget(delegate, action: #selector(ClaimVC.tapResetVote), for: .touchUpInside)
