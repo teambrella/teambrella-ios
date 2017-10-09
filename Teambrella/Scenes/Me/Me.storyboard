@@ -113,7 +113,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytR-oK-Uh1" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DDL-Sr-nJy">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DDL-Sr-nJy">
                                                                 <rect key="frame" x="209" y="8" width="150" height="121"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="150" id="dAc-22-R7x"/>
@@ -298,11 +298,16 @@
                                                             <constraint firstAttribute="height" constant="30" id="f6M-ci-5xT"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="r4l-Uj-f8d" customClass="AmountWithCurrency" customModule="Surilla" customModuleProvider="target">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="r4l-Uj-f8d" customClass="AmountWithCurrency" customModule="Surilla" customModuleProvider="target">
                                                         <rect key="frame" x="238" y="144" width="85" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="PGi-2Y-dUy"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="oGn-Vb-oa8" customClass="AmountWithCurrency" customModule="Surilla" customModuleProvider="target">
                                                         <rect key="frame" x="238" y="242.5" width="85" height="30"/>
@@ -316,6 +321,9 @@
                                                     <constraint firstItem="oGn-Vb-oa8" firstAttribute="top" secondItem="OuM-mH-Dzn" secondAttribute="bottom" constant="16" id="0AU-6F-lM4"/>
                                                     <constraint firstItem="6jB-Sp-7uU" firstAttribute="top" secondItem="ByT-Mp-bxm" secondAttribute="top" id="1Gi-vp-Xng"/>
                                                     <constraint firstItem="r4l-Uj-f8d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0ys-a7-OWw" secondAttribute="trailing" constant="8" id="2bu-Nj-0eO"/>
+                                                    <constraint firstItem="oGn-Vb-oa8" firstAttribute="bottom" secondItem="RWV-cl-zkc" secondAttribute="bottom" id="427-Ju-eDU"/>
+                                                    <constraint firstItem="r4l-Uj-f8d" firstAttribute="bottom" secondItem="0ys-a7-OWw" secondAttribute="bottom" id="89G-Be-8Hk"/>
+                                                    <constraint firstItem="YVO-7G-QQT" firstAttribute="bottom" secondItem="vKC-XX-fUK" secondAttribute="bottom" id="8TH-Jp-zjR"/>
                                                     <constraint firstItem="vKC-XX-fUK" firstAttribute="width" secondItem="ByT-Mp-bxm" secondAttribute="width" multiplier="1:4" id="97Y-03-81j"/>
                                                     <constraint firstItem="oGn-Vb-oa8" firstAttribute="width" secondItem="ByT-Mp-bxm" secondAttribute="width" multiplier="1:4" id="Dvw-2T-zko"/>
                                                     <constraint firstItem="oGn-Vb-oa8" firstAttribute="trailing" secondItem="vKC-XX-fUK" secondAttribute="trailing" id="I21-Lp-5kf"/>
@@ -330,12 +338,9 @@
                                                     <constraint firstItem="6jB-Sp-7uU" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" id="e5k-eM-JUr"/>
                                                     <constraint firstItem="OuM-mH-Dzn" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" constant="20" id="hHG-GW-kg6"/>
                                                     <constraint firstItem="r4l-Uj-f8d" firstAttribute="top" secondItem="vKC-XX-fUK" secondAttribute="bottom" constant="8" id="iFD-8p-lGe"/>
-                                                    <constraint firstItem="r4l-Uj-f8d" firstAttribute="bottom" secondItem="0ys-a7-OWw" secondAttribute="bottom" id="jTu-j0-xIp"/>
                                                     <constraint firstItem="r4l-Uj-f8d" firstAttribute="width" secondItem="ByT-Mp-bxm" secondAttribute="width" multiplier="1:4" id="jmt-e8-QcT"/>
-                                                    <constraint firstItem="oGn-Vb-oa8" firstAttribute="bottom" secondItem="RWV-cl-zkc" secondAttribute="bottom" id="rDZ-go-0Qw"/>
                                                     <constraint firstItem="YVO-7G-QQT" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" constant="20" id="tbF-vC-jPk"/>
                                                     <constraint firstItem="OuM-mH-Dzn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="r4l-Uj-f8d" secondAttribute="bottom" constant="16" id="uQb-au-cjx"/>
-                                                    <constraint firstItem="vKC-XX-fUK" firstAttribute="bottom" secondItem="YVO-7G-QQT" secondAttribute="bottom" id="vBz-IQ-8mw"/>
                                                     <constraint firstItem="vKC-XX-fUK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YVO-7G-QQT" secondAttribute="trailing" constant="8" id="xO6-jJ-xK8"/>
                                                     <constraint firstItem="RWV-cl-zkc" firstAttribute="leading" secondItem="YVO-7G-QQT" secondAttribute="leading" id="xtb-Se-flG"/>
                                                     <constraint firstItem="0ys-a7-OWw" firstAttribute="leading" secondItem="YVO-7G-QQT" secondAttribute="leading" id="ziV-RT-BFP"/>
@@ -636,7 +641,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="kRq-pR-zwp" customClass="Label" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="109" y="23" width="56" height="16"/>
+                                        <rect key="frame" x="109" y="24" width="57.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="OzN-6s-0Vc"/>
                                         </constraints>
@@ -688,7 +693,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvj-xs-7a8">
-                                <rect key="frame" x="151" y="450" width="74" height="17"/>
+                                <rect key="frame" x="149" y="450" width="78" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="eED-6j-NkD"/>
                                 </constraints>

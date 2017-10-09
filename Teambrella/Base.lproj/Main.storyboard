@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -44,13 +43,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emU-7T-Nip">
-                                <rect key="frame" x="185" y="313" width="5.5" height="21"/>
+                                <rect key="frame" x="186" y="312" width="4" height="22"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                 <color key="textColor" red="0.74117647060000003" green="0.76470588240000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-n1-x7D">
-                                <rect key="frame" x="80" y="255" width="215" height="43"/>
+                                <rect key="frame" x="80" y="254" width="215" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cBm-n1-x7D" secondAttribute="height" multiplier="5:1" id="enG-6g-6PF"/>
                                 </constraints>

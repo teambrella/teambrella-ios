@@ -66,8 +66,9 @@ class CoverageVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         umbrellaView.startCurveCoeff = 1.1
+        umbrellaView.fillColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
-        let currency = service.currencySymbol
+        let currency = service.currencyName
         upperAmount.currencyLabel.text = currency
         centerAmount.currencyLabel.text = currency
         lowerAmount.currencyLabel.text = currency
@@ -77,7 +78,7 @@ class CoverageVC: UIViewController, Routable {
         subtitleLabel.text = "Me.CoverageVC.subtitle".localized
         upperLabel.text = "Me.CoverageVC.maxExpenses".localized
         centerLabel.text = "Me.CoverageVC.yourExpenses".localized
-        centerAmount.contentView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        centerAmount.backView.backgroundColor = #colorLiteral(red: 0.7411764706, green: 0.7647058824, blue: 1, alpha: 0.2)
         lowerLabel.text = "Me.CoverageVC.teamPay".localized
         
         slider.addTarget(self, action: #selector(changeValues), for: .valueChanged)

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -15,9 +13,10 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AmountWithCurrency" customModule="Teambrella" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AmountWithCurrency" customModule="Surilla" customModuleProvider="target">
             <connections>
                 <outlet property="amountLabel" destination="QPb-gy-s5x" id="dMl-pO-qiz"/>
+                <outlet property="backView" destination="sUG-VE-IXv" id="1Eh-nh-mvo"/>
                 <outlet property="contentView" destination="0Gh-3R-zz9" id="cXb-m1-nOk"/>
                 <outlet property="currencyLabel" destination="CIX-II-UOc" id="fBi-5v-0Je"/>
             </connections>
@@ -30,14 +29,18 @@
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Gh-3R-zz9">
                     <rect key="frame" x="0.0" y="0.0" width="145" height="40"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QPb-gy-s5x">
-                            <rect key="frame" x="2" y="0.0" width="85" height="40"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUG-VE-IXv">
+                            <rect key="frame" x="0.0" y="0.0" width="145" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QPb-gy-s5x">
+                            <rect key="frame" x="9" y="0.0" width="85" height="40"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="23"/>
                             <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CURRENCY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIX-II-UOc">
-                            <rect key="frame" x="89" y="11.5" width="47" height="11"/>
+                            <rect key="frame" x="96" y="11.5" width="47" height="11"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="9"/>
                             <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -45,9 +48,13 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="QPb-gy-s5x" firstAttribute="leading" secondItem="0Gh-3R-zz9" secondAttribute="leading" constant="2" id="1Vz-mc-QSY"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CIX-II-UOc" secondAttribute="trailing" constant="2" id="G3m-jW-Zsn"/>
+                        <constraint firstItem="QPb-gy-s5x" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0Gh-3R-zz9" secondAttribute="leading" constant="2" id="1Vz-mc-QSY"/>
+                        <constraint firstAttribute="trailing" secondItem="sUG-VE-IXv" secondAttribute="trailing" id="4rM-Ji-RHi"/>
+                        <constraint firstAttribute="trailing" secondItem="CIX-II-UOc" secondAttribute="trailing" constant="2" id="G3m-jW-Zsn"/>
                         <constraint firstItem="QPb-gy-s5x" firstAttribute="top" secondItem="0Gh-3R-zz9" secondAttribute="top" id="MXd-gH-tN4"/>
+                        <constraint firstItem="sUG-VE-IXv" firstAttribute="leading" secondItem="0Gh-3R-zz9" secondAttribute="leading" id="Nk7-8J-U4a"/>
+                        <constraint firstAttribute="bottom" secondItem="sUG-VE-IXv" secondAttribute="bottom" id="QZv-I6-0F4"/>
+                        <constraint firstItem="sUG-VE-IXv" firstAttribute="top" secondItem="0Gh-3R-zz9" secondAttribute="top" id="Suh-AX-R9r"/>
                         <constraint firstItem="CIX-II-UOc" firstAttribute="baseline" secondItem="QPb-gy-s5x" secondAttribute="centerY" id="aCo-2q-0qp"/>
                         <constraint firstAttribute="bottom" secondItem="QPb-gy-s5x" secondAttribute="bottom" id="ujs-07-d9c"/>
                         <constraint firstItem="CIX-II-UOc" firstAttribute="leading" secondItem="QPb-gy-s5x" secondAttribute="trailing" constant="2" id="yvG-MH-toL"/>
