@@ -65,7 +65,7 @@ struct EnhancedClaimEntity: EntityLike {
     // MARK: Voting part
     
     var ratioVoted: Double { return votingPart["RatioVoted"].doubleValue }
-    var myVote: Double { return votingPart["MyVote"].doubleValue }
+    var myVote: Double? { return votingPart["MyVote"].double }
     var proxyVote: Double? { return votingPart["ProxyVote"].double }
     var proxyAvatar: String? { return votingPart["ProxyAvatar"].string }
     var proxyName: String? { return votingPart["ProxyName"].string }

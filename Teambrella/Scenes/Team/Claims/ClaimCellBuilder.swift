@@ -74,7 +74,10 @@ struct ClaimCellBuilder {
     }
     
     static func populateClaimVote(cell: ClaimVoteCell, with claim: EnhancedClaimEntity, delegate: ClaimVC) {
-        cell.titleLabel.text = "Team.ClaimCell.voting".localized
+        cell.slider.minimumValue = 0
+        cell.slider.maximumValue = 1
+        
+        cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
         let dateProcessor = DateProcessor()
         cell.remainingDaysLabel.text = "Team.Claims.ClaimVC.VotingCell.endsTitle".localized.uppercased()
             + dateProcessor.stringFromNow(minutes: -claim.minutesRemaining).uppercased()
@@ -82,18 +85,30 @@ struct ClaimCellBuilder {
         cell.pieChart.setupWith(remainingMinutes: claim.minutesRemaining)
         
         cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
-        let myVote = String.truncatedNumber(claim.myVote * 100)
-        cell.yourVotePercentValue.text = myVote
-        cell.yourVotePercentValue.alpha = 1
-        cell.yourVoteAmount.text = String.truncatedNumber(claim.myVote * claim.claimAmount)
-        cell.yourVoteAmount.alpha = 1
-        
-        cell.proxyAvatar.isHidden = claim.proxyAvatar == nil
-        cell.byProxyLabel.isHidden = claim.proxyName == nil
-        if let proxyAvatar = claim.proxyAvatar {
-            cell.proxyAvatar.kf.setImage(with: URL(string: service.server.avatarURLstring(for: proxyAvatar)))
-            cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
+
+        if let myVote = claim.myVote {
+            cell.yourVotePercentValue.text = String.truncatedNumber(myVote * 100)
+            cell.yourVoteAmount.text = String.truncatedNumber(myVote * claim.claimAmount)
+            cell.slider.setValue(Float(myVote), animated: true)
+        } else if let proxyVote = claim.proxyVote {
+            cell.yourVotePercentValue.text = String.truncatedNumber(proxyVote * 100)
+            cell.yourVoteAmount.text = String.truncatedNumber(proxyVote * claim.claimAmount)
+            cell.slider.setValue(Float(proxyVote), animated: true)
+            if let proxyAvatar = claim.proxyAvatar {
+                cell.proxyAvatar.kf.setImage(with: URL(string: service.server.avatarURLstring(for: proxyAvatar)))
+                cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
+            }
+        } else {
+            cell.yourVotePercentValue.text = "..."
+            cell.yourVoteAmount.text = "..."
+            cell.slider.setValue(cell.slider.minimumValue, animated: true)
         }
+        cell.resetButton.isHidden = claim.myVote == nil
+        cell.proxyAvatar.isHidden = claim.proxyAvatar == nil || claim.myVote != nil
+        cell.byProxyLabel.isHidden = claim.proxyVote == nil || claim.myVote != nil
+        
+        cell.yourVotePercentValue.alpha = 1
+        cell.yourVoteAmount.alpha = 1
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
         cell.teamVotePercentValue.text = String.truncatedNumber(claim.ratioVoted * 100)
@@ -106,10 +121,6 @@ struct ClaimCellBuilder {
         let avatars = claim.otherAvatars.flatMap { URL(string: service.server.avatarURLstring(for: $0)) }
         let label: String?  =  claim.otherCount > 0 ? "\(claim.otherCount)" : nil
         cell.avatarsStack.set(images: avatars, label: label, max: 3)
-        
-        cell.slider.minimumValue = 0
-        cell.slider.maximumValue = 1
-        cell.slider.setValue(Float(claim.myVote), animated: true)
     }
     
     static func populateClaimDetails(cell: ClaimDetailsCell, with claim: EnhancedClaimEntity) {
