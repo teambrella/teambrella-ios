@@ -151,7 +151,7 @@ struct TeammateCellBuilder {
     
     private static func populateObject(cell: TeammateObjectCell,
                                        with teammate: ExtendedTeammateEntity,
-                                       controller: TeammateProfileVC) {        
+                                       controller: TeammateProfileVC) {
         cell.titleLabel.text = "Team.TeammateCell.object".localized
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         

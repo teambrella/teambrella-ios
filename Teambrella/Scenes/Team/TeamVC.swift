@@ -27,7 +27,7 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        title = "Main.team".localized
+        title = service.session?.currentTeam?.teamName ?? "Main.team".localized
         tabBarItem.title = "Main.team".localized
     }
     
