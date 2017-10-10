@@ -81,7 +81,6 @@ final class InitialVC: UIViewController {
                 break
             case .error:
                 self?.failure()
-                break
             }
         }
     }

@@ -55,7 +55,7 @@ class ClaimTransactionsDataSource {
             guard let teamId = self?.teamID, let claimId = self?.claimID,
                 let offset = self?.count, let limit = self?.limit/*, let search = self?.search */ else { return }
             
-            let body = RequestBody(key: key, payload:["TeamId": teamId,
+            let body = RequestBody(key: key, payload: ["TeamId": teamId,
                                                       "ClaimId": claimId,
                                                       "Limit": limit,
                                                       "Offset": offset

@@ -53,7 +53,7 @@ class WalletTransactionsDataSource {
             guard let teamId = self?.teamID, let offset = self?.count,
                 let limit = self?.limit, let search = self?.search else { return }
             
-            let body = RequestBody(key: key, payload:["TeamId": teamId,
+            let body = RequestBody(key: key, payload: ["TeamId": teamId,
                                                       "offset": offset,
                                                       "limit": limit,
                                                       "search": search])

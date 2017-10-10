@@ -15,13 +15,20 @@
  */
 
 import Foundation
+import Geth
 
-struct PushData {
-    let dict: [AnyHashable: Any]
-    var aps: [String: Any] { return dict["aps"] as? [String: Any] ?? [:] }
-    var body: String? { return (aps["alert"] as? [String: String])?["body"] }
-    var title: String? { return (aps["alert"] as? [String: String])?["title"] }
-    var badge: Int { return aps["badge"] as? Int ?? 0 }
-    var isContentAvailable: Bool { return aps["content-available"] as? Bool ?? false }
-    var command: PushCommand? { return PushCommand.with(dict: dict["cmd"] as? [String: Any]) }
+class EthereumWallet {
+    struct Constant {
+        static let methodIDtransfer = "91f34dbd"
+        static let txPrefix = "5452"
+        static let nsPrefix = "4E53"
+    }
+    
+    // TODO: private final EtherAccount mEtherAcc;
+    private var account: Any?
+    private var isTestNet: Bool
+    
+    init(privateKey: String, keyStorePath: String, keyStoreSecret: String, isTestNet: Bool) {
+     self.isTestNet = isTestNet
+    }
 }

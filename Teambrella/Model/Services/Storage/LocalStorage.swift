@@ -134,7 +134,7 @@ class LocalStorage: Storage {
     func requestTeamFeed(context: FeedRequestContext) -> Future<[FeedEntity]> {
         let promise = Promise<[FeedEntity]>()
         freshKey { key in
-            let body = RequestBody(key: key, payload:["teamid": context.teamID,
+            let body = RequestBody(key: key, payload: ["teamid": context.teamID,
                                                       "since": context.since,
                                                       "offset": context.offset,
                                                       "limit": context.limit,
@@ -184,7 +184,7 @@ class LocalStorage: Storage {
     func myProxy(userID: String, add: Bool) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in
-            let body = RequestBody(key: key, payload:["UserId": userID,
+            let body = RequestBody(key: key, payload: ["UserId": userID,
                                                       "add": add])
             let request = TeambrellaRequest(type: .myProxy, body: body, success: { response in
                 if case .myProxy(let isProxy) = response {
@@ -225,7 +225,7 @@ class LocalStorage: Storage {
         let promise = Promise<EnhancedClaimEntity>()
         freshKey { key in
             let dateString = Formatter.teambrellaShortDashed.string(from: model.incidentDate)
-            let body = RequestBody(key: key, payload:["TeamId": model.teamID,
+            let body = RequestBody(key: key, payload: ["TeamId": model.teamID,
                                                       "IncidentDate": dateString,
                                                       "Expenses": model.expenses,
                                                       "Message": model.text,
@@ -246,7 +246,7 @@ class LocalStorage: Storage {
     func createNewChat(model: NewChatModel) -> Future<ChatModel> {
         let promise = Promise<ChatModel>()
         freshKey { key in
-            let body = RequestBody(key: key, payload:["TeamId": model.teamID,
+            let body = RequestBody(key: key, payload: ["TeamId": model.teamID,
                                                       "Text": model.text,
                                                       "Title": model.title])
             let request = TeambrellaRequest(type: .newChat, body: body, success: { response in

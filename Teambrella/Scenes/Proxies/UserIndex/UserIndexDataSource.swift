@@ -64,7 +64,7 @@ class UserIndexDataSource {
                 let search = self?.search, let sort = self?.sortType else { return }
             
             if self?.meModel != nil { offset += 1 }
-            let body = RequestBody(key: key, payload:["TeamId": id,
+            let body = RequestBody(key: key, payload: ["TeamId": id,
                                                       "Offset": offset,
                                                       "Limit": limit,
                                                       "Search": search,

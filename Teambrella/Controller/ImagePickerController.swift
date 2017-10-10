@@ -112,7 +112,7 @@ extension ImagePickerController: UIImagePickerControllerDelegate {
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             delegate?.imagePicker(controller: self, didSelectPhoto: pickedImage)
         }

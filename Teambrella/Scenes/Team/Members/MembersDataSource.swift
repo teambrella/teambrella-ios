@@ -73,7 +73,7 @@ class MembersDatasource {
             let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
             
-            let body = RequestBody(key: key, payload:["TeamId": ServerService.teamID,
+            let body = RequestBody(key: key, payload: ["TeamId": ServerService.teamID,
                                                       "Offset": offset,
                                                       "Limit": 1000,
                                                       "AvatarSize": 128,

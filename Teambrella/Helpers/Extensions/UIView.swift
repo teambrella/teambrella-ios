@@ -47,7 +47,7 @@ extension UIView {
         set {
             addSubview(newValue)
             setAssociatedObject(newValue,
-                                associativeKey:&activityIndicatorViewAssociativeKey,
+                                associativeKey: &activityIndicatorViewAssociativeKey,
                                 policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }

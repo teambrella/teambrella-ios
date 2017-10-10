@@ -30,7 +30,7 @@ extension Data {
         let bytes = [UInt8](self)
         var hexString = ""
         for byte in bytes {
-            hexString += String(format:"%02x", UInt8(byte))
+            hexString += String(format: "%02x", UInt8(byte))
         }
         return hexString
     }

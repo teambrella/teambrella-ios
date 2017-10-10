@@ -172,7 +172,7 @@ class ChatTextCell: UICollectionViewCell {
         var controlP = CGPoint(x: pen.x, y: 0)
         pen.x -= Constant.cloudCornerRadius
         pen.y = 0
-        context.addQuadCurve(to: pen, control:controlP)
+        context.addQuadCurve(to: pen, control: controlP)
         
         pen.x = cloudBodyMinX + Constant.cloudCornerRadius
         context.addLine(to: pen)
@@ -211,7 +211,7 @@ class ChatTextCell: UICollectionViewCell {
         var controlP = CGPoint(x: pen.x, y: 0)
         pen.x += Constant.cloudCornerRadius
         pen.y = 0
-        context.addQuadCurve(to: pen, control:controlP)
+        context.addQuadCurve(to: pen, control: controlP)
         
         pen.x = cloudBodyMaxX - Constant.cloudCornerRadius
         context.addLine(to: pen)
