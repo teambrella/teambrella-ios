@@ -81,16 +81,16 @@ struct TeammateCellBuilder {
             left.titleLabel.text = "Team.TeammateCell.coversMe".localized
             let amount = teammate.basic.coversMeAmount
             left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
-            left.currencyLabel.text = service.currencySymbol
+            left.currencyLabel.text = service.currencyName
         }
         if let right = cell.rightNumberView {
             right.titleLabel.text = "Team.TeammateCell.coverThem".localized
             let amount = teammate.basic.iCoverThemAmount
             right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
-            right.currencyLabel.text = service.currencySymbol
+            right.currencyLabel.text = service.currencyName
         }
         
-        cell.subtitle.text = teammate.basic.city
+        cell.subtitle.text = teammate.basic.city.uppercased()
         if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
             cell.infoLabel.isHidden = false
             cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
@@ -151,7 +151,7 @@ struct TeammateCellBuilder {
     
     private static func populateObject(cell: TeammateObjectCell,
                                        with teammate: ExtendedTeammateEntity,
-                                       controller: TeammateProfileVC) {
+                                       controller: TeammateProfileVC) {        
         cell.titleLabel.text = "Team.TeammateCell.object".localized
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
@@ -160,12 +160,12 @@ struct TeammateCellBuilder {
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
-            left.currencyLabel.text = service.currencySymbol
+            left.currencyLabel.text = service.currencyName
         }
         if let middle = cell.numberBar.middle {
             middle.titleLabel.text = "Team.Teammates.net".localized
             middle.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.totallyPaidAmount)
-            middle.currencyLabel.text = service.currencySymbol
+            middle.currencyLabel.text = service.currencyName
         }
         if let right = cell.numberBar.right {
             right.titleLabel.text = "Team.TeammateCell.riskFactor".localized
@@ -201,11 +201,13 @@ struct TeammateCellBuilder {
         let stats = teammate.stats
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
         if let left = cell.numberBar.left {
+            left.amountLabel.textAlignment = .center
             left.titleLabel.text = "Team.TeammateCell.weight".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
             left.currencyLabel.text = nil
         }
         if let right = cell.numberBar.right {
+            right.amountLabel.textAlignment = .right
             right.titleLabel.text = "Team.TeammateCell.proxyRank".localized
             right.amountLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
             right.isBadgeVisible = false
