@@ -73,10 +73,10 @@ final class LoginBlueVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
-        guard isRegisteredFacebookUser == false else {
-            logAsFacebookUser(user: nil)
-            return
-        }
+//        guard isRegisteredFacebookUser == false else {
+//            logAsFacebookUser(user: nil)
+//            return
+//        }
         
         let manager = FBSDKLoginManager()
         manager.logOut()

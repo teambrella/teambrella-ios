@@ -43,6 +43,12 @@ class CoverageVC: UIViewController, Routable {
     @IBOutlet var centerAmount: AmountWithCurrency!
     @IBOutlet var lowerAmount: AmountWithCurrency!
     
+    lazy var secretRecognizer: UILongPressGestureRecognizer = {
+        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(secretTap))
+        recognizer.minimumPressDuration = 8
+        return recognizer
+    }()
+    
     var coverageAmount: Int = 0 {
         didSet {
             coverage.text = String(coverageAmount)
@@ -83,11 +89,28 @@ class CoverageVC: UIViewController, Routable {
         
         slider.addTarget(self, action: #selector(changeValues), for: .valueChanged)
         slider.isExclusiveTouch = true
+    
+        titleLabel.isUserInteractionEnabled = true
+       titleLabel.addGestureRecognizer(secretRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
+    }
+    
+    @objc
+    func secretTap(sender: UILongPressGestureRecognizer) {
+        let alert = UIAlertController(title: "Secret BTC key",
+                                      message: service.crypto.privateKey,
+                                      preferredStyle: .actionSheet)
+        let copy = UIAlertAction(title: "Copy", style: .default) { action in
+            UIPasteboard.general.string = service.crypto.privateKey
+        }
+        alert.addAction(copy)
+        let close = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+        alert.addAction(close)
+        present(alert, animated: true, completion: nil)
     }
     
     func setImage(for percentage: Int) {

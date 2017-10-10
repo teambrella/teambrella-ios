@@ -26,7 +26,9 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var remainingDaysLabel: Label!
     @IBOutlet var pieChart: PieChartView!
     @IBOutlet var infoButton: UIButton!
-
+    
+    @IBOutlet var slashView: SlashView!
+    
     @IBOutlet var yourVoteLabel: Label!
     @IBOutlet var yourVotePercentValue: UILabel!
     @IBOutlet var yourVoteAmount: UILabel!
@@ -48,7 +50,8 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        slashView.layer.cornerRadius = 5
+        slashView.layer.masksToBounds = true
     }
 
 }
