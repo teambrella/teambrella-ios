@@ -30,6 +30,18 @@ class MasterTabBarController: UITabBarController {
         for item in items {
             item.image = item.image?.withRenderingMode(.alwaysOriginal)
         }
+        
+        UIImage.fetchImage(string: service.session?.myAvatarStringSmall ?? "") { [weak self] image, error in
+            guard let image = image else { return }
+                
+                self?.setLastTabImage(image: image)
+        }
+    }
+    
+    func setLastTabImage(image: UIImage) {
+        if let vc = viewControllers?.last {
+            vc.tabBarItem.image = ImageTransformer(image: image).tabBarImage
+        }
     }
     
     func switchTo(tabType: TabType) -> UIViewController? {

@@ -136,7 +136,6 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         if let teamID = service.session?.currentTeam?.teamID {
             dataSource.loadData(teamID: teamID)
         }
-        
         guard let source = service.session?.currentTeam?.teamLogo else { return }
         
         UIImage.fetchAvatar(string: source,
@@ -191,12 +190,6 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         service.session?.currentUserID = model.userID
         service.session?.currentUserName = dataSource.name
         service.session?.currentUserAvatar = model.avatar
-        
-        UIImage.fetchAvatar(string: model.avatar) { image, error in
-            guard let image = image else { return }
-            
-            service.router.setMyTabImage(with: image)
-        }
         
         leftBrickAmountLabel.text = String(format: "%.0f", model.coverage * 100)
         rightBrickAmountLabel.text = String.formattedNumber(model.balance * 1000)
