@@ -44,6 +44,7 @@ import Geth
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         return GethNewKeyStore(documentsPath + "/keystore" + key.publicKey, GethLightScryptN, GethLightScryptP)
     }
+    
     var ethAccount: GethAccount? {
         guard let keyStore = ethKeyStore else { return nil }
         guard let accounts = keyStore.getAccounts() else { return nil }
@@ -53,6 +54,7 @@ import Geth
         ? try? keyStore.importECDSAKey(secretData, passphrase: secretString)
         : try? accounts.get(0)
     }
+    
     var ethAddress: GethAddress? {
         return ethAccount?.getAddress()
     }

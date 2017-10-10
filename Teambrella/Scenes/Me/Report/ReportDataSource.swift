@@ -156,7 +156,6 @@ class ReportDataSource {
             switch result {
             case let .value((coverage: coverage, limit: _)):
                 for (idx, item) in self.items.enumerated() {
-                    // swiftlint:disable:next for_where
                     if var item = item as? ExpensesReportCellModel {
                     item.coverage = coverage
                         

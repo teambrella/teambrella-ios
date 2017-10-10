@@ -57,7 +57,7 @@ extension UIImageView {
                 return request
             }
             
-            self?.kf.setImage(with:url, placeholder: nil, options: [.requestModifier(modifier)],
+            self?.kf.setImage(with: url, placeholder: nil, options: [.requestModifier(modifier)],
                               progressBlock: nil,
                               completionHandler: { image, error, _, _ in
                                 completion?(image, error)

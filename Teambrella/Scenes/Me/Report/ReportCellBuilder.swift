@@ -77,6 +77,13 @@ struct ReportCellBuilder {
         cell.numberBar.middle?.amountLabel.text = model.coverageString
         cell.numberBar.middle?.currencyLabel.text = "%"
         cell.numberBar.middle?.isCurrencyOnTop = false
+        if reportVC.isInCorrectionMode && model.coverage <= 0 {
+            cell.numberBar.middle?.titleLabel.textColor = .red
+            cell.numberBar.middle?.amountLabel.textColor = .red
+        } else if let left = cell.numberBar.left {
+            cell.numberBar.middle?.titleLabel.textColor = left.titleLabel.textColor
+            cell.numberBar.middle?.amountLabel.textColor = left.amountLabel.textColor
+        }
         
         cell.numberBar.right?.titleLabel.text = model.amountTitle
         cell.numberBar.right?.amountLabel.text = model.amountString

@@ -54,7 +54,7 @@ class ProxyForDataSource {
                           timestamp: timestamp)
             guard let id = self?.teamID, let limit = self?.limit else { return }
             
-            let body = RequestBody(key: key, payload:["TeamId": id,
+            let body = RequestBody(key: key, payload: ["TeamId": id,
                                                       "Offset": offset,
                                                       "Limit": limit])
             let request = TeambrellaRequest(type: .proxyFor, body: body, success: { [weak self] response in

@@ -61,13 +61,13 @@ class PushService {
     }
     
     func remoteNotificationOnStart(in application: UIApplication,
-                                   userInfo: [AnyHashable : Any]) {
+                                   userInfo: [AnyHashable: Any]) {
         let pushData = PushData(dict: userInfo)
         self.command = pushData.command
     }
     
     func remoteNotification(in application: UIApplication,
-                            userInfo: [AnyHashable : Any],
+                            userInfo: [AnyHashable: Any],
                             completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         guard command == nil else { return }
         

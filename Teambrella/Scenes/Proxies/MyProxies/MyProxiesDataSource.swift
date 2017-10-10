@@ -60,7 +60,7 @@ class MyProxiesDataSource {
                           timestamp: timestamp)
             guard let id = self?.teamID, let limit = self?.limit else { return }
             
-            let body = RequestBody(key: key, payload:["TeamId": id,
+            let body = RequestBody(key: key, payload: ["TeamId": id,
                                                       "Offset": offset,
                                                       "Limit": limit])
             let request = TeambrellaRequest(type: .myProxies, body: body, success: { [weak self] response in
@@ -87,7 +87,7 @@ class MyProxiesDataSource {
                           timestamp: timestamp)
             guard let id = self?.teamID else { return }
             
-            let body = RequestBody(key: key, payload:["TeamId": id,
+            let body = RequestBody(key: key, payload: ["TeamId": id,
                                                       "UserId": userID,
                                                       "Position": position])
             let request = TeambrellaRequest(type: .proxyPosition, body: body, success: { response in

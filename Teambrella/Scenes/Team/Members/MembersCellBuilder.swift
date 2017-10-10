@@ -26,7 +26,7 @@ struct MembersCellBuilder {
     static func populate(cell: UICollectionViewCell, with teammate: TeammateEntity) {
          if let cell = cell as? TeammateCandidateCell {
             cell.titleLabel.text = teammate.name.entire
-            if let url: URL = URL(string: service.server.avatarURLstring(for:teammate.avatar)) {
+            if let url: URL = URL(string: service.server.avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
             cell.titleLabel.text = teammate.name.entire

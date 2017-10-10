@@ -119,7 +119,7 @@ struct TeammateCellBuilder {
             
             if let myVote = voting.myVote {
                 cell.layoutIfNeeded()
-                cell.yourVoteValueLabel.text = String(format:"%.2f", myVote)
+                cell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
                 let offset = controller.offsetFrom(risk: myVote, maxValue: cell.maxValue)
                 cell.scrollTo(offset: offset, silently: true)
             } else {

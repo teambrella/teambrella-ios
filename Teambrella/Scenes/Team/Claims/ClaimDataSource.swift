@@ -58,7 +58,7 @@ class ClaimDataSource {
             let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
             
-            let body = RequestBody(key: key, payload:["id": Int(claimID) ?? 0,
+            let body = RequestBody(key: key, payload: ["id": Int(claimID) ?? 0,
                                                       "AvatarSize": Constant.avatarSize,
                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
             let request = TeambrellaRequest(type: .claim, body: body, success: { [weak self] response in
@@ -80,7 +80,7 @@ class ClaimDataSource {
             let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
             
-            let body = RequestBody(key: key, payload:["ClaimId": claimID,
+            let body = RequestBody(key: key, payload: ["ClaimId": claimID,
                                                       "MyVote": vote ?? NSNull(),
                                                       "Since": lastUpdated,
                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
@@ -104,7 +104,7 @@ class ClaimDataSource {
             let key = Key(base58String: ServerService.privateKey,
                           timestamp: timestamp)
             
-            let body = RequestBody(key: key, payload:["ClaimId": claimID,
+            let body = RequestBody(key: key, payload: ["ClaimId": claimID,
                                                       "Since": lastUpdated,
                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
             let request = TeambrellaRequest(type: .claimUpdates, body: body, success: { [weak self] response in
