@@ -753,6 +753,8 @@
 		6DDE95851EE853550019DA47 /* ClaimOptionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */; };
 		6DDE95871EE9988D0019DA47 /* PiecewiseFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */; };
 		6DDF6D4C1F1623CE00F53B0B /* MembersFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */; };
+		6DDFDAF31F8CD24400342696 /* Surilla.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DDFDAF21F8CD24400342696 /* Surilla.xcassets */; };
+		6DDFDAF51F8CD25600342696 /* Teambrella.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DDFDAF41F8CD25600342696 /* Teambrella.xcassets */; };
 		6DE3947D1F7909E300784ECD /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3947C1F7909E300784ECD /* ReachabilityService.swift */; };
 		6DE394801F79284900784ECD /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3947F1F79284900784ECD /* ErrorPresenter.swift */; };
 		6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */; };
@@ -1230,6 +1232,8 @@
 		6DDE95831EE853550019DA47 /* ClaimOptionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClaimOptionsCell.xib; path = View/Cells/ClaimOptionsCell.xib; sourceTree = "<group>"; };
 		6DDE95861EE9988D0019DA47 /* PiecewiseFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PiecewiseFunction.swift; path = Model/PiecewiseFunction.swift; sourceTree = "<group>"; };
 		6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersFetchStrategy.swift; path = Scenes/Team/Members/MembersFetchStrategy.swift; sourceTree = "<group>"; };
+		6DDFDAF21F8CD24400342696 /* Surilla.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Surilla.xcassets; sourceTree = "<group>"; };
+		6DDFDAF41F8CD25600342696 /* Teambrella.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Teambrella.xcassets; sourceTree = "<group>"; };
 		6DE3947C1F7909E300784ECD /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReachabilityService.swift; path = Model/Services/Reachability/ReachabilityService.swift; sourceTree = "<group>"; };
 		6DE3947F1F79284900784ECD /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorPresenter.swift; path = Model/Services/ErrorPresenter.swift; sourceTree = "<group>"; };
 		6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatNewMessagesSeparatorCell.swift; path = Scenes/Team/Chat/ChatNewMessagesSeparatorCell.swift; sourceTree = "<group>"; };
@@ -2090,6 +2094,8 @@
 				6DA475AA1E8ABEE600B56D9B /* Assets.xcassets */,
 				6DA475AF1E8ABEE600B56D9B /* Info.plist */,
 				6DA475AC1E8ABEE600B56D9B /* LaunchScreen.storyboard */,
+				6DDFDAF21F8CD24400342696 /* Surilla.xcassets */,
+				6DDFDAF41F8CD25600342696 /* Teambrella.xcassets */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -2587,6 +2593,7 @@
 				6D4E5D831F7AB6870020DEE2 /* Chat.storyboard in Resources */,
 				6D4E5D841F7AB6870020DEE2 /* Sample.storyboard in Resources */,
 				6D4E5D851F7AB6870020DEE2 /* SwitchUserCell.xib in Resources */,
+				6DDFDAF31F8CD24400342696 /* Surilla.xcassets in Resources */,
 				6D4E5D861F7AB6870020DEE2 /* NeedHelpView.xib in Resources */,
 				6D4E5D871F7AB6870020DEE2 /* TeamFeedCell.xib in Resources */,
 				6D4E5D881F7AB6870020DEE2 /* Team.stringsdict in Resources */,
@@ -2717,6 +2724,7 @@
 				6DCB19471F0FD33400AC9969 /* Fill.sks in Resources */,
 				6D097EA81E9D220A00E77DAB /* General.strings in Resources */,
 				94EA56511F20FE04003B46CC /* AmountWithCurrency.xib in Resources */,
+				6DDFDAF51F8CD25600342696 /* Teambrella.xcassets in Resources */,
 				6DAF1CB61F571F4A00421C5A /* ReportTitleCell.xib in Resources */,
 				944C66831F6C146200CCEB58 /* WalletCosignerCell.xib in Resources */,
 				6D097E9C1E9D1AD200E77DAB /* Test.stringsdict in Resources */,
@@ -3871,7 +3879,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200 -DSURILLA -Onone";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3905,7 +3913,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200 -DSURILLA";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";

@@ -22,11 +22,19 @@
 import Foundation
 import SwiftKeychainWrapper
 
-enum KeychainKey: String {
-    case ethPrivateAddress
-    case ethPrivateAddressDemo
-    case lastUserType
-}
+#if TEAMBRELLA
+    enum KeychainKey: String {
+        case ethPrivateAddress = "teambrella.ethPrivateAddress"
+        case ethPrivateAddressDemo = "teambrella.ethPrivateAddress.demo"
+        case lastUserType = "teambrella.lastUserType"
+    }
+#else
+    enum KeychainKey: String {
+        case ethPrivateAddress = "ethPrivateAddress"
+        case ethPrivateAddressDemo = "ethPrivateAddress.demo"
+        case lastUserType = "lastUserType"
+    }
+#endif
 
 class Keychain {
     @discardableResult
