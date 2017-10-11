@@ -76,6 +76,7 @@
 
 "Team.TeammateCell.object"                     = "OBJETO";
 "Team.TeammateCell.addToMyProxyVoters"         = "Añadir a mis Votantes de Proxy";
+"Team.TeammateCell.removeFromMyProxyVoters"    = "Eliminar de mis Votantes de Proxy";
 "Team.TeammateCell.discussion"                 = "DISCUSION";
 "Team.MembersVC.inviteAFriend"                 = "Invita a un amigo";
 "Team.TeammateCell.allVotes"                   = "Todos los votos";
@@ -149,7 +150,7 @@
 "Team.ClaimsList.empty" = "Hasta el momento no hay reclamaciones.";
 
 // Need translation
-"Team.Teammate.Footer.MemberSince" = "Member since %@";
+"Team.Teammate.Footer.MemberSince" = "Miembro desde %@";
 
 "Team.Claims.ClaimTransactionsVC.title" = "Transactions";
 "Team.Claims.ClaimTransactionsVC.amountCrypto" = "Amount Crypto";

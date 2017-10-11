@@ -27,7 +27,7 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        title = service.session?.currentTeam?.teamName ?? "Main.team".localized
+        title = "Main.team".localized
         tabBarItem.title = "Main.team".localized
     }
     
@@ -35,63 +35,11 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         setupTeambrellaTabLayout()
         super.viewDidLoad()
         setupTransparentNavigationBar()
-        //        addTeamButton()
+        navigationItem.title = service.session?.currentTeam?.teamName ?? "Main.team".localized
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //    private func addTeamButton() {
-    //        let button = UIButton(type: .custom)
-    //        let image = #imageLiteral(resourceName: "iconCoverage")
-    //        button.tintColor = .teambrellaBlue
-    //        button.setImage(image, for: .normal)
-    //        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-    //        button.addTarget(self, action: #selector(tapTeam(button:)), for: .touchUpInside)
-    //        let barItem = UIBarButtonItem(customView: button)
-    //        navigationItem.setLeftBarButton(barItem, animated: false)
-    //    }
     
     func tapTeam(button: UIButton) {
-        // TeamRouter().presentChooseTeam(in: self)
         service.router.showJoinTeam(in: self)
-        //service.router.presentJoinTeam()
-        /*
-         let alert = UIAlertController(title: "Select your team",
-         message: "Please select your team",
-         preferredStyle: .actionSheet)
-         
-         let teams = ["Happy dogs team",
-         "Muscle cars owners",
-         "Private beta",
-         "To live is to drive",
-         "Honda Supra race team",
-         "Toyota civic knights",
-         "Pussycats",
-         "Drive as you mean it",
-         "My dog my rules",
-         "Kittens are awesome",
-         "Pet shop girls",
-         "Straw dogs",
-         "Wheel burners",
-         "From Husk till Dawn"]
-         for team in teams {
-         let teamButton = UIAlertAction(title: team, style: .default) { action in
-         self.teamSelected(name: action.title)
-         }
-         alert.addAction(teamButton)
-         }
-         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { action in
-         print("Cancel pressed")
-         }
-         alert.addAction(cancel)
-         present(alert, animated: true) {
-         print("Alert presented")
-         }
-         */
-        
     }
     
     func teamSelected(name: String?) {
