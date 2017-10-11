@@ -30,7 +30,7 @@ class EthereumTests: XCTestCase {
     
     func testString() {
         let processor = EthereumProcessor.standard
-        let string = processor.ethAddress
+        let string = processor.ethAddressString
         print(string)
         XCTAssertNotNil(string)
     }
@@ -38,8 +38,20 @@ class EthereumTests: XCTestCase {
     func testSignature() {
         let processor = EthereumProcessor.standard
         let signature = processor.publicKeySignature
-        print("public signature: \(signature)")
         XCTAssertNotNil(signature)
+    }
+    
+    func testLength() {
+        let processor = EthereumProcessor.standard
+        let signature = processor.publicKeySignature!
+        let length = signature.count
+        XCTAssertEqual(65 * 2, length)
+    }
+    
+    func testInitialLetters() {
+        let processor = EthereumProcessor.standard
+        let signature = processor.publicKeySignature!
+         XCTAssertTrue(signature.hasPrefix("1b") || signature.hasPrefix("1c"))
     }
     
 }

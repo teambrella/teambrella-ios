@@ -62,7 +62,7 @@ import Geth
     var publicKeySignature: String? {
         guard let signature: Data = sign(publicKey: key.publicKey) else { return nil }
         
-        return "0x" + reverseAndCalculateV(data: signature).hexString
+        return reverseAndCalculateV(data: signature).hexString
     }
     
     init(key: Key) {
@@ -93,7 +93,8 @@ import Geth
     
     func reverseAndCalculateV(data: Data) -> Data {
         var bytes: [UInt8] = data.reversed()
-        bytes.insert(27, at: 0)
+        bytes[0] += 27
+        //bytes.insert(27, at: 0)
         return Data(bytes)
     }
     
