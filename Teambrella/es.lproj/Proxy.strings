@@ -6,30 +6,31 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Proxy.MyProxiesVC.indicatorTitle"  = "Mis Proxies";
-"Proxy.ProxyForVC.indicatorTitle"   = "Proxy para";
-"Proxy.UserIndexVC.indicatorTitle"  = "Indice del Usuario";
-"Proxy.SortVC.SortByHeader"         = "ORDENAR POR";
-"Proxy.SortVC.Cell.Rating"          = "Clasificación";
-"Proxy.SortVC.Cell.Rating.HighLow"  = "ALTO-BAJO";
-"Proxy.SortVC.Cell.Rating.LowHigh"  = "BAJO-ALTO";
-"Proxy.SortVC.Cell.Alphabetical"    = "Alfabético";
-"Proxy.SortVC.Cell.Alphabetical.AZ" = "A-Z";
-"Proxy.SortVC.Cell.Alphabetical.ZA" = "Z-A";
+"Proxy.MyProxiesVC.indicatorTitle"    = "Mis Proxies";
+"Proxy.ProxyForVC.indicatorTitle"     = "Proxy para";
+"Proxy.UserIndexVC.indicatorTitle"    = "Indice del Usuario";
+"Proxy.SortVC.SortByHeader"           = "ORDENAR POR";
+"Proxy.SortVC.Cell.Rating"            = "Clasificación";
+"Proxy.SortVC.Cell.Rating.HighLow"    = "ALTO-BAJO";
+"Proxy.SortVC.Cell.Rating.LowHigh"    = "BAJO-ALTO";
+"Proxy.SortVC.Cell.Alphabetical"      = "Alfabético";
+"Proxy.SortVC.Cell.Alphabetical.AZ"   = "A-Z";
+"Proxy.SortVC.Cell.Alphabetical.ZA"   = "Z-A";
 
-"Proxy.ProxyForVC.header" = "COMISIÓN TOTAL";
-"Proxy.ProxyForVC.subtitle" = "ERES PROXIE PARA";
+"Proxy.ProxyForVC.header"             = "COMISIÓN TOTAL";
+"Proxy.ProxyForVC.subtitle"           = "ERES PROXIE PARA";
 "Proxy.ProxyForCellBuilder.lastVoted" = "VOTÓ POR ÚLTIMA VEZ: ";
-"Proxy.MyProxiesVC.infoButton" = "¿Necesita ayuda?";
-"Proxy.MyProxiesVC.decisions" = "DECISIONES";
-"Proxy.MyProxiesVC.discussions" = "DISCUSIONES";
-"Proxy.MyProxiesVC.votingFreq" = "FREC. DE VOTACIÓN";
-"Proxy.MyProxiesVC.proxyRank" = "RANGO DE PROXY";
-"Proxy.UserIndexVC.members" = "MIEMBROS";
-"Proxy.UserIndexVC.proxyRank" = "RANGO DE PROXY";
+"Proxy.MyProxiesVC.infoButton"        = "¿Necesita ayuda?";
+"Proxy.MyProxiesVC.decisions"         = "DECISIONES";
+"Proxy.MyProxiesVC.discussions"       = "DISCUSIONES";
+"Proxy.MyProxiesVC.votingFreq"        = "FREC. DE VOTACIÓN";
+"Proxy.MyProxiesVC.proxyRank"         = "RANGO DE PROXY";
+"Proxy.UserIndexVC.members"           = "MIEMBROS";
+"Proxy.UserIndexVC.proxyRank"         = "RANGO DE PROXY";
 
-"Proxy.Empty.title" = "Todavía no tienes los Proxies.";
-"Proxy.Empty.details" = "Por favor, considera a alguien en quien confías para nombrar a tu primero Proxy.";
-"Proxy.Empty.You.title" = "No estas Proxy de cualquier compañero del equipo";
-"Proxy.Empty.You.details" = "Tu puedes llegar a estar Proxy por ganar la confianza de otros compañeros del equipo - publica tus ideas, opiniones e votos";
+"Proxy.Empty.title"                   = "Todavía no tienes los Proxies.";
+"Proxy.Empty.details"                 = "Por favor, considera a alguien en quien confías para nombrar a tu primero Proxy.";
+"Proxy.Empty.You.title"               = "No estas Proxy de cualquier compañero del equipo";
+"Proxy.Empty.You.details"             = "Tu puedes llegar a estar Proxy por ganar la confianza de otros compañeros del equipo - publica tus ideas, opiniones e votos";
 //--waiting--
+

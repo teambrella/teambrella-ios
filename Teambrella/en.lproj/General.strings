@@ -6,40 +6,41 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"General.maritalStatus.divorced" = "divorced";
-"General.maritalStatus.single"   = "single";
-"General.maritalStatus.widowed"  = "widowed";
-"General.maritalStatus.married"  = "married";
-"General.maritalStatus.unknown"  = "unknown";
-"General.claimState.voting"      = "voting";
-"General.claimState.revoting"    = "revoting";
-"General.claimState.declined"    = "declined";
-"General.claimState.inPayment"   = "in payment";
-"General.claimState.processed"   = "processed";
+"General.maritalStatus.divorced"                   = "divorced";
+"General.maritalStatus.single"                     = "single";
+"General.maritalStatus.widowed"                    = "widowed";
+"General.maritalStatus.married"                    = "married";
+"General.maritalStatus.unknown"                    = "unknown";
+"General.claimState.voting"                        = "voting";
+"General.claimState.revoting"                      = "revoting";
+"General.claimState.declined"                      = "declined";
+"General.claimState.inPayment"                     = "in payment";
+"General.claimState.processed"                     = "processed";
 
-"General.today" = "today";
+"General.today"                                    = "today";
 
-"General.you" = "You";
+"General.you"                                      = "You";
 
-"General.TransactionKind.payout" = "payout";
-"General.TransactionKind.withdraw" = "withdraw";
-"General.TransactionKind.moveToNextWallet" = "move to next wallet";
-"General.TransactionKind.saveFromPreviousWallet" = "save from previous wallet";
-"General.TransactionKind.votingPayout" = "voting payout";
+"General.TransactionKind.payout"                   = "payout";
+"General.TransactionKind.withdraw"                 = "withdraw";
+"General.TransactionKind.moveToNextWallet"         = "move to next wallet";
+"General.TransactionKind.saveFromPreviousWallet"   = "save from previous wallet";
+"General.TransactionKind.votingPayout"             = "voting payout";
 
-"General.TransactionState.created" = "created";
-"General.TransactionState.approvedMaster" = "approved by master";
-"General.TransactionState.approvedCosigners" = "approved by cosigners";
-"General.TransactionState.approvedAll" = "approved by all";
-"General.TransactionState.blockedMaster" = "blocked by master";
-"General.TransactionState.blockedCosigners" = "blocked by cosigners";
-"General.TransactionState.selectedForCosigning" = "selected for cosigning";
-"General.TransactionState.beingCosigned" = "being cosigned";
-"General.TransactionState.cosigned" = "cosigned";
-"General.TransactionState.published" = "published";
-"General.TransactionState.confirmed" = "confirmed";
-"General.TransactionState.errorCosignersTimeout" = "error: cosigners timeout";
+"General.TransactionState.created"                 = "created";
+"General.TransactionState.approvedMaster"          = "approved by master";
+"General.TransactionState.approvedCosigners"       = "approved by cosigners";
+"General.TransactionState.approvedAll"             = "approved by all";
+"General.TransactionState.blockedMaster"           = "blocked by master";
+"General.TransactionState.blockedCosigners"        = "blocked by cosigners";
+"General.TransactionState.selectedForCosigning"    = "selected for cosigning";
+"General.TransactionState.beingCosigned"           = "being cosigned";
+"General.TransactionState.cosigned"                = "cosigned";
+"General.TransactionState.published"               = "published";
+"General.TransactionState.confirmed"               = "confirmed";
+"General.TransactionState.errorCosignersTimeout"   = "error: cosigners timeout";
 "General.TransactionState.errorSubmitToBlockchain" = "error: submit to blockchain";
-"General.TransactionState.errorBadRequest" = "error: bad request";
-"General.TransactionState.errorOutOfFunds" = "error: out of funds";
-"General.TransactionState.errorTooManyUtxos" = "error: too many Utxos";
+"General.TransactionState.errorBadRequest"         = "error: bad request";
+"General.TransactionState.errorOutOfFunds"         = "error: out of funds";
+"General.TransactionState.errorTooManyUtxos"       = "error: too many Utxos";
+

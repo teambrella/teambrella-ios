@@ -1,4 +1,4 @@
-/* 
+/*
   Login.strings
   Teambrella
 
@@ -6,10 +6,11 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Login.LoginBlueVC.centerLabel" = "No es un seguro. Es mucho mejor.";
+"Login.LoginBlueVC.centerLabel"          = "No es un seguro. Es mucho mejor.";
 "Login.LoginBlueVC.continueWithFBButton" = "Continuar con Facebook";
-"Login.LoginBlueVC.tryDemoButton" = "Probar Demo";
-"Login.LoginNoInviteVC.centerLabel" = "No es un seguro. Es mucho mejor.";
-"Login.LoginNoInviteVC.upperLabel" = "¡Actualmente Teambrella funciona sólo con invitación!";
-"Login.LoginNoInviteVC.lowerLabel" = "¡Hola, actualmente Teambrella funciona sólo con invitación. Por favor, sigue un enlace de su invitacion para continuar, o prueba demo.";
-"Login.LoginNoInviteVC.tryDemoButton" = "Probar Demo";
+"Login.LoginBlueVC.tryDemoButton"        = "Probar Demo";
+"Login.LoginNoInviteVC.centerLabel"      = "No es un seguro. Es mucho mejor.";
+"Login.LoginNoInviteVC.upperLabel"       = "¡Actualmente Teambrella funciona sólo con invitación!";
+"Login.LoginNoInviteVC.lowerLabel"       = "¡Hola, actualmente Teambrella funciona sólo con invitación. Por favor, sigue un enlace de su invitacion para continuar, o prueba demo.";
+"Login.LoginNoInviteVC.tryDemoButton"    = "Probar Demo";
+

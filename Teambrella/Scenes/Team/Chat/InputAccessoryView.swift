@@ -55,7 +55,7 @@ class InputAccessoryView: UIView {
        let label = Label()
         label.font = UIFont.teambrella(size: 14)
         label.textColor = .cloudyBlue
-        label.text = "Your message here"
+        label.text = "Team.Chat.Input.yourMessageHere".localized
         self.addSubview(label)
         return label
     }()

@@ -1,4 +1,4 @@
-/* 
+/*
   Main.strings
   Teambrella
 
@@ -6,12 +6,13 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Main.home"    = "Home";
-"Main.team"    = "Team";
-"Main.proxies" = "Proxies";
-"Main.me"      = "Me";
+"Main.home"                    = "Home";
+"Main.team"                    = "Team";
+"Main.proxies"                 = "Proxies";
+"Main.me"                      = "Me";
 
-"Main.back"    = "Back";
-"Main.cancel" = "Cancel";
+"Main.back"                    = "Back";
+"Main.cancel"                  = "Cancel";
 
 "Main.Notification.noInternet" = "No Internet connection";
+

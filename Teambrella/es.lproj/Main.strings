@@ -6,12 +6,13 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Main.home" = "Inicio";
-"Main.team" = "Equipo";
-"Main.proxies" = "Proxy";
-"Main.me" = "Yo";
+"Main.home"                    = "Inicio";
+"Main.team"                    = "Equipo";
+"Main.proxies"                 = "Proxy";
+"Main.me"                      = "Yo";
 
-"Main.back"    = "Atrás";
-"Main.cancel" = "Cancellar";
+"Main.back"                    = "Atrás";
+"Main.cancel"                  = "Cancellar";
 
 "Main.Notification.noInternet" = "No hay conexión de Internet";
+
