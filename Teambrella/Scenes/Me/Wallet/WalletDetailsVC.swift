@@ -29,7 +29,7 @@ class WalletDetailsVC: UIViewController, Routable {
     @IBOutlet var fundButton: UIButton!
     @IBOutlet var headerLabel: BlockHeaderLabel!
     @IBOutlet var timeLabel: Label!
-    @IBOutlet var bitcoinAddressLabel: Label!
+    @IBOutlet var cryptoAddressLabel: Label!
     @IBOutlet var container: UICollectionReusableView!
     @IBOutlet var copyAddressButton: UIButton!
     
@@ -41,12 +41,12 @@ class WalletDetailsVC: UIViewController, Routable {
         title = "Me.WalletDetailsVC.title".localized
         fundButton.setTitle("Me.WalletDetailsVC.fundButton".localized, for: .normal)
         headerLabel.text = "Me.WalletDetailsVC.headerLabel".localized.uppercased()
-        timeLabel.text = "Me.WalletDetailsVC.timeLabel".localized
+        timeLabel.text = ""// "Me.WalletDetailsVC.timeLabel".localized
         copyAddressButton.setTitle("Me.WalletDetailsVC.copyAddressButton".localized, for: .normal)
         CellDecorator.roundedEdges(for: container)
         CellDecorator.heavyShadow(for: container)
         //let's say the server sends the walletID(string) into bitcoinAddressLabel
-        bitcoinAddressLabel.text = walletID
+        cryptoAddressLabel.text = walletID
     }
     
     override func viewDidLayoutSubviews() {
@@ -65,7 +65,7 @@ class WalletDetailsVC: UIViewController, Routable {
     }
     
     @IBAction func tapCopy(_ sender: UIButton) {
-        UIPasteboard.general.string = bitcoinAddressLabel.text
+        UIPasteboard.general.string = cryptoAddressLabel.text
         sender.setTitle("Me.WalletDetailsVC.copiedAddress".localized, for: .normal)
         sender.isEnabled = false
     }

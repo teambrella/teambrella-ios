@@ -45,14 +45,19 @@ class WalletVC: UIViewController {
         WalletCellBuilder.registerCells(in: collectionView)
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
-            self?.collectionView.reloadData()
-            guard let id = self?.dataSource.fundAddress else { return }
-            
             self?.wallet = self?.dataSource.wallet
-            self?.walletID = id.uppercased()
+            self?.collectionView.reloadData()
+        }
+        prepareWalletAddress()
+        dataSource.loadData()
+    }
+    
+    func prepareWalletAddress() {
+        service.storage.freshKey { [weak self] key in
+            let processor = EthereumProcessor(key: key)
+            self?.walletID = processor.ethAddressString ?? ""
             self?.qrCode = self?.generateQRCode()
         }
-        dataSource.loadData()
     }
     
     @objc

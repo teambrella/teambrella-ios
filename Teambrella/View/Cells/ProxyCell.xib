@@ -144,7 +144,7 @@
                                 </constraints>
                             </imageView>
                             <view tag="25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIi-G4-OJz">
-                                <rect key="frame" x="51" y="-4" width="240" height="128"/>
+                                <rect key="frame" x="298" y="38" width="44" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uIi-G4-OJz" secondAttribute="height" multiplier="1:1" id="3BB-xX-19O"/>
