@@ -35,7 +35,7 @@
 "Team.MembersVC.indicatorTitle"                  = "Compañeros";
 "Team.MembersVC.searchHere"                      = "Buscar aquí...";
 "Team.TeammateCell.coversMe"                     = "ME CUBRE";
-"Team.TeammateCell.coverThem"                    = "ELLOS CUBRO";
+"Team.TeammateCell.coverThem"                    = "LE CUBRO";
 "Team.TeammateCell.youAreProxy_format_s"         = "Eres proxy para %@";
 "Team.TeammateCell.covered"                      = "CUBIERTO";
 "Team.TeammateCell.collisionDeductible"          = "Deducible por colisión";
@@ -75,9 +75,9 @@
 "Team.RulesVC.indicatorTitle"                    = "Reglas";
 
 "Team.TeammateCell.object"                       = "OBJETO";
-"Team.TeammateCell.addToMyProxyVoters"           = "Añadir a mis Votantes de Proxy";
-"Team.TeammateCell.removeFromMyProxyVoters"      = "Eliminar de mis Votantes de Proxy";
-"Team.TeammateCell.discussion"                   = "DISCUSION";
+"Team.TeammateCell.addToMyProxyVoters"           = "Añadir a mis Proxies";
+"Team.TeammateCell.removeFromMyProxyVoters"      = "Eliminar de mis Proxies";
+"Team.TeammateCell.discussion"                   = "DISCUSIÓN";
 "Team.MembersVC.inviteAFriend"                   = "Invita a un amigo";
 "Team.TeammateCell.allVotes"                     = "Todos los votos";
 "Team.TeammateCell.cashFlow"                     = "Flujo de fondos";
@@ -108,19 +108,19 @@
 "Team.JoinTeamVC.ItemCell.objectPhotos"          = "FOTOS DEL OBJECTO";
 
 "Team.JoinTeamVC.MessageCell.headerLabel"        = "EQUIPO";
-"Team.JoinTeamVC.MessageCell.messageTitle"       = "MENSAJE PARA COMPAÑEROS";
-"Team.JoinTeamVC.MessageCell.placeholder"        = "Introdúcete a sus futuros compañeros del equipo dándoles mas información sobre ti. Nota que esta información les ayudara hacer una decision sobre tu aplicación.";
+"Team.JoinTeamVC.MessageCell.messageTitle"       = "MENSAJE A COMPAÑEROS";
+"Team.JoinTeamVC.MessageCell.placeholder"        = "Introdúcete a tus futuros compañeros del equipo dándoles más información sobre ti. Nota que esta información les ayudara hacer una decision sobre tu solicitud.";
 
-"Team.JoinTeamVC.TermsCell.headerLabel"          = "CONDICIONES";
+"Team.JoinTeamVC.TermsCell.headerLabel"          = "TÉRMINOS Y CONDICIONES";
 "Team.JoinTeamVC.TermsCell.nonBold"              = "Pulsando ‘Enviar Aplicación’\n aceptas ";
-"Team.JoinTeamVC.TermsCell.bold"                 = " las condiciones de Teambrella";
+"Team.JoinTeamVC.TermsCell.bold"                 = "Términos y condiciones de Teambrella";
 
 "Team.VotingRiskVC.headerLabel"                  = "VOTACIÓN: RIESGO";
 "Team.VotingRiskVC.numberBar.left"               = "VOTO DEL EQUIPO";
 "Team.VotingRiskVC.numberBar.right"              = "TU VOTO";
 "Team.VotingRiskVC.avgLabel"                     = "PROM\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"              = "Reiniciar Votación";
-"Team.VotingRiskVC.othersButton"                 = "Los demás";
+"Team.VotingRiskVC.othersButton"                 = "Otros";
 
 "Team.VotingRiskVC.ends"                         = "TERMINA %@";
 "Team.Claims.ClaimVC.VotingCell.endsTitle"       = "Termina ";
@@ -140,7 +140,7 @@
 "Team.ClaimsCell.declined"                       = "RECHAZADO";
 
 "Team.Home.Card.claimed"                         = "RECLAMADO";
-"Team.Home.Card.yourClaim"                       = "TU Reclamación";
+"Team.Home.Card.yourClaim"                       = "Tu Reclamación";
 "Team.Home.Card.claim"                           = "Reclamación";
 "Team.Home.Card.coverage"                        = "COBERTURA";
 "Team.Home.Card.newTeammate"                     = "Nuevo compañero";
@@ -153,20 +153,19 @@
 
 "Team.Teammate.Footer.MemberSince"               = "Miembro desde %@";
 
-"Team.Claims.ClaimTransactionsVC.title"          = "Transactions";
-"Team.Claims.ClaimTransactionsVC.amountCrypto"   = "Amount Crypto";
-"Team.Claims.ClaimTransactionsVC.amountFiat"     = "Amount Fiat";
-"Team.Claims.ClaimTransactionsVC.status"         = "Status";
+"Team.Claims.ClaimTransactionsVC.title"          = "Transacciones";
+"Team.Claims.ClaimTransactionsVC.amountCrypto"   = "Cantidad Crypto";
+"Team.Claims.ClaimTransactionsVC.amountFiat"     = "Cantidad Fiat";
+"Team.Claims.ClaimTransactionsVC.status"         = "Estado";
 
 "Team.Chat.TextCell.voted_format"                = "VOTADO:%@%%";
 "Team.Chat.TextCell.Application.voted_format"    = "VOTADO:%@";
-"Team.Chat.TextCell.notVoted"                    = "NON VOTADO";
+"Team.Chat.TextCell.notVoted"                    = "NO HA VOTADO ÁUN";
 
-"Team.Chat.TypeLabel.claim"                      = "RECLAMACION";
-"Team.Chat.TypeLabel.application"                = "APPLICACION";
+"Team.Chat.TypeLabel.claim"                      = "RECLAMACIÓN";
+"Team.Chat.TypeLabel.application"                = "SOLICITUD";
 "Team.Chat.TypeLabel.other"                      = "DISCUSION";
 "Team.Chat.Separator.newMessages"                = "NUEVOS MENSAJES";
-"Team.Chat.Input.yourMessageHere"                = "Tu mensaje aquí";
-
 "Team.ChooseTeam.switchUser"                     = "Cambiar usuario";
+"Team.Chat.Input.yourMessageHere"                = "Tu mensaje aquí";
 

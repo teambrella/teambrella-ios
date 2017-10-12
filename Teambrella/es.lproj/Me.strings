@@ -46,7 +46,7 @@
 "Me.Report.DateCell.title"                     = "FECHA DEL INCIDENTE";
 "Me.Report.ExpensesCell.title"                 = "GASTOS";
 "Me.Report.DescriptionCell.title"              = "DESCRIBE TU CASO";
-"Me.Report.DescriptionCell.title-discussion"   = "POST";
+"Me.Report.DescriptionCell.title-discussion"   = "PUBLICACIÓN";
 "Me.Report.PhotosCell.title"                   = "FOTOS";
 "Me.Report.WalletCell.title"                   = "REEMBOLSO A";
 "Me.Report.ExpensesCell.deductibleTitle"       = "DEDUCIBLE";
