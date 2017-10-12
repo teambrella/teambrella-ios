@@ -31,7 +31,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65v-sn-GhQ" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="16" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="-24" width="375" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
@@ -43,10 +43,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2OK-OB-5g5">
-                                <rect key="frame" x="0.0" y="144" width="375" height="474"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9IE-5H-M3H" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                                <rect key="frame" x="0.0" y="104" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EYa-dc-oXm"/>
@@ -206,56 +206,56 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns2-KQ-TAn">
                                         <rect key="frame" x="-0.5" y="0.0" width="375" height="214"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="niI-CL-ghc" userLabel="Resizing View" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-43" width="137" height="214"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niI-CL-ghc" userLabel="Resizing View" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
                                                 <subviews>
-                                                    <searchBar contentMode="redraw" ambiguous="YES" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="qyr-m3-nkH">
-                                                        <rect key="frame" x="16" y="8" width="79" height="56"/>
+                                                    <searchBar contentMode="redraw" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="qyr-m3-nkH">
+                                                        <rect key="frame" x="16" y="8" width="317" height="56"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </searchBar>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8l-Eu-bWi">
-                                                        <rect key="frame" x="103" y="25" width="18" height="22"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8l-Eu-bWi">
+                                                        <rect key="frame" x="341" y="25" width="18" height="22"/>
                                                         <state key="normal" image="filter"/>
                                                         <connections>
                                                             <action selector="tapSort:" destination="7bW-lz-Yk2" eventType="touchUpInside" id="lYl-8u-coF"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSQ-J5-PyT" customClass="RoundBadgedView" customModule="Surilla" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KSQ-J5-PyT" customClass="RoundBadgedView" customModule="Surilla" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="79" width="56" height="56"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="56" id="hQA-as-URW"/>
                                                             <constraint firstAttribute="width" secondItem="KSQ-J5-PyT" secondAttribute="height" multiplier="1:1" id="xAV-6s-8Cz"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUP-Nl-L65" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUP-Nl-L65" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                                         <rect key="frame" x="88" y="86" width="29" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="NEW YORK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pn0-6n-rVi" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW YORK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pn0-6n-rVi" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
                                                         <rect key="frame" x="88" y="107" width="87" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="3.23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jor-Dp-OpJ" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="66" y="96" width="35" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jor-Dp-OpJ" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
+                                                        <rect key="frame" x="304" y="96" width="35" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ank-lB-ThK" userLabel="Button View">
-                                                        <rect key="frame" x="0.0" y="144" width="137" height="70"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ank-lB-ThK" userLabel="Button View">
+                                                        <rect key="frame" x="0.0" y="144" width="375" height="70"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cl9-fC-5Ro">
-                                                                <rect key="frame" x="0.0" y="16" width="137" height="54"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cl9-fC-5Ro">
+                                                                <rect key="frame" x="0.0" y="16" width="375" height="54"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </view>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N3v-Gk-sg3" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="137" height="16"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3v-Gk-sg3" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="16"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -266,15 +266,15 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XcQ-MF-QNo">
-                                                                <rect key="frame" x="0.0" y="0.0" width="137" height="1"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XcQ-MF-QNo">
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                                                 <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="mSI-6w-hs9"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9AN-5n-for" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="16" width="105" height="38"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9AN-5n-for" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                                                <rect key="frame" x="16" y="16" width="343" height="38"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                                                 <state key="normal" title="Opt Into Rating">

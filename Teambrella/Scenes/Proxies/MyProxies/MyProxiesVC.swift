@@ -69,12 +69,27 @@ class MyProxiesVC: UIViewController {
                                 withReuseIdentifier: NeedHelpView.cellID)
         
         let longPressGesture = UILongPressGestureRecognizer(target: self,
-                                                            action: #selector(handleLongGesture(gesture:)))
+                                                            action: #selector(handleGesture(gesture:)))
+        longPressGesture.minimumPressDuration = 0.1
         self.collectionView.addGestureRecognizer(longPressGesture)
+        
+//        let shortPressGesture = UITapGestureRecognizer(target: self,
+//                                                            action: #selector(handleGesture(gesture:)))
+//        self.collectionView.addGestureRecognizer(shortPressGesture)
     }
     
     @objc
-    func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+    func handleGesture(gesture: UIGestureRecognizer) {
+//        if gesture is UITapGestureRecognizer {
+//            let view = gesture.view
+//            let location = gesture.location(in: view)
+//            if let subview = view?.hitTest(location, with: nil) {
+//                guard subview.tag == 25 else {
+//                    return
+//                }
+//            }
+//        }
+        
         switch gesture.state {
         case .began:
             let point = gesture.location(in: collectionView)

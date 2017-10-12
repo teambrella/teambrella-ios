@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -137,13 +136,21 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="draggableIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qxy-N1-7aX">
+                            <imageView userInteractionEnabled="NO" tag="25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="draggableIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qxy-N1-7aX">
                                 <rect key="frame" x="334" y="54" width="8" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="8" id="gK2-2I-fdr"/>
                                     <constraint firstAttribute="height" constant="12" id="okU-Sn-2iq"/>
                                 </constraints>
                             </imageView>
+                            <view tag="25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIi-G4-OJz">
+                                <rect key="frame" x="51" y="-4" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uIi-G4-OJz" secondAttribute="height" multiplier="1:1" id="3BB-xX-19O"/>
+                                    <constraint firstAttribute="width" constant="44" id="Cfl-vu-bh7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -155,9 +162,11 @@
                             <constraint firstItem="L4Y-sY-GaD" firstAttribute="top" secondItem="Cxa-sc-7SP" secondAttribute="centerY" id="MT8-4m-BLY"/>
                             <constraint firstAttribute="trailing" secondItem="fHY-pu-55R" secondAttribute="trailing" constant="28" id="Qry-31-qfG"/>
                             <constraint firstItem="wII-ti-ph3" firstAttribute="top" secondItem="L4Y-sY-GaD" secondAttribute="top" id="SlM-9v-dJF"/>
+                            <constraint firstItem="uIi-G4-OJz" firstAttribute="centerY" secondItem="qxy-N1-7aX" secondAttribute="centerY" id="V69-Pu-SgN"/>
                             <constraint firstItem="Pcl-pr-wpc" firstAttribute="bottom" secondItem="Cxa-sc-7SP" secondAttribute="centerY" id="X8A-Kt-QE5"/>
                             <constraint firstItem="Cxa-sc-7SP" firstAttribute="top" secondItem="Sel-l8-IBh" secondAttribute="bottom" constant="-12" id="a2i-BO-6Qo"/>
                             <constraint firstItem="U2v-Li-0cg" firstAttribute="trailing" secondItem="wII-ti-ph3" secondAttribute="trailing" id="bsW-R7-N73"/>
+                            <constraint firstItem="uIi-G4-OJz" firstAttribute="trailing" secondItem="qxy-N1-7aX" secondAttribute="trailing" id="dFh-j9-p15"/>
                             <constraint firstItem="U2v-Li-0cg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Cxa-sc-7SP" secondAttribute="bottom" constant="8" id="eDb-E3-ZrR"/>
                             <constraint firstItem="Pcl-pr-wpc" firstAttribute="leading" secondItem="Cxa-sc-7SP" secondAttribute="trailing" constant="12" id="ebz-Es-uC9"/>
                             <constraint firstAttribute="bottom" secondItem="U2v-Li-0cg" secondAttribute="bottom" constant="24" id="fHz-Wm-tld"/>

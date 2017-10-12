@@ -31,7 +31,8 @@ class ProxyCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var leftBar: ScaleBar!
     @IBOutlet var middleBar: ScaleBar!
     @IBOutlet var rightBar: ScaleBar!
-
+    @IBOutlet var dragHandleView: DragHandleView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         CellDecorator.roundedEdges(for: self)
@@ -42,4 +43,8 @@ class ProxyCell: UICollectionViewCell, XIBInitableCell {
         
     }
 
+}
+
+class DragHandleView: UIImageView {
+    
 }
