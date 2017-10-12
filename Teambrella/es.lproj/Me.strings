@@ -8,23 +8,18 @@
 // -------------------- waiting for translation :) -------------------- //
 
 "Me.WalletVC.fundingCell.additionalTitle"      = "FINANCIAMENTOS RECOMENDADOS";
-
 "Me.Report.submitButtonTitle-submit"           = "Enviar";
 "Me.Report.submitButtonTitle-create"           = "Hacer";
 "Me.Report.cancelButtonTitle"                  = "Cancelar";
 "Me.Report.newDiscussion.title-placeholder"    = "Titulo";
-
 "Me.Report.ReportClaim.title"                  = "Reportar una reclamación";
 "Me.Report.NewDiscussion.title"                = "Nueva discusión";
-
 "Me.Report.ImageSource.title"                  = "Imagen de";
 "Me.Report.ImageSource.gallery"                = "Galería";
 "Me.Report.ImageSource.camera"                 = "Cámara";
-
 "Me.CoverageVC.indicatorTitle"                 = "Cobertura";
 "Me.ProfileVC.indicatorTitle"                  = "Yo";
 "Me.WalletVC.indicatorTitle"                   = "Monedero";
-
 "Me.WalletVC.leftBrick.title"                  = "RESERVADO";
 "Me.WalletVC.rightBrick.title"                 = "DISPONIBLE";
 "Me.WalletVC.withdrawButton"                   = "RETIRAR";
@@ -32,26 +27,21 @@
 "Me.WalletVC.upperBrick.title"                 = "PARA COBERTURA MAXIMA(100%)";
 "Me.WalletVC.lowerBrick.title"                 = "PARA COBERTURA ININTERRUMPIADA";
 "Me.WalletVC.fundButton"                       = "Financiar monedero";
-
 "Me.WalletVC.actionsCell.cosigners"            = "Co-firmantes";
 "Me.WalletVC.actionsCell.transactions"         = "Transacciones";
 "Me.WalletVC.actionsCell.withdrawAddress"      = "Dirección para retirar por defectos";
-
 "Me.WalletDetailsVC.title"                     = "QR-code";
-"Me.WalletDetailsVC.fundButton"                = "Como financiar mi monedero>";
-"Me.WalletDetailsVC.headerLabel"               = "Dirección de Bitcoin";
+"Me.WalletDetailsVC.fundButton"                = "Como financiar mi monedero?";
+"Me.WalletDetailsVC.headerLabel"               = "Dirección de Ethereum";
 "Me.WalletDetailsVC.timeLabel"                 = "Válido por 24 horas";
 "Me.WalletDetailsVC.copyAddressButton"         = "Copiar Dirección";
 "Me.WalletDetailsVC.copiedAddress"             = "Copiado";
-
-
-"Me.CoverageVC.fundButton"                     = "Financie tu monedero para aumentar";
+"Me.CoverageVC.fundButton"                     = "Financiar tu monedero para aumentar";
 "Me.CoverageVC.title"                          = "¿CÓMO FUNCIONA?";
 "Me.CoverageVC.subtitle"                       = "Utilice el control deslizante para ver cómo los gastos afectan su reembolso máximo";
 "Me.CoverageVC.maxExpenses"                    = "Cantidad máxima de los gastos cubiertos";
 "Me.CoverageVC.yourExpenses"                   = "Si tus gastos son";
-"Me.CoverageVC.teamPay"                        = "El equipo te pagaria hasta";
-
+"Me.CoverageVC.teamPay"                        = "El equipo te pagaría hasta";
 "Me.Report.ItemCell.title"                     = "INFORME";
 "Me.Report.DateCell.title"                     = "FECHA DEL INCIDENTE";
 "Me.Report.ExpensesCell.title"                 = "GASTOS";
@@ -59,18 +49,15 @@
 "Me.Report.DescriptionCell.title-discussion"   = "POST";
 "Me.Report.PhotosCell.title"                   = "FOTOS";
 "Me.Report.WalletCell.title"                   = "REEMBOLSO A";
-
 "Me.Report.ExpensesCell.deductibleTitle"       = "DEDUCIBLE";
 "Me.Report.ExpensesCell.coverageTitle"         = "COBERTURA";
 "Me.Report.ExpensesCell.amountTitle"           = "CANTIDAD";
-
 "Me.Report.PhotosCell.buttonTitle"             = "Cargar las fotos";
-"Me.Report.TitleCell.title"                    = "TITULO";
-"Me.Report.HeaderTitleCell.title"              = "DISCUSION";
-
+"Me.Report.TitleCell.title"                    = "TÍTULO";
+"Me.Report.HeaderTitleCell.title"              = "DISCUSIÓN";
 "Me.WalletVC.WalletTransactionsVC.title"       = "Transacciones";
 "Me.WalletVC.WalletTransactionsVC.amountTitle" = "Cantidad:";
 "Me.WalletVC.WalletTransactionsVC.kindTitle"   = "Tipo:";
 "Me.WalletVC.WalletTransactionsVC.statusTitle" = "Estado:";
+"Me.WalletVC.WalletCosignersVC.title"          = "Co-firmantes";
 
-"Me.WalletVC.WalletCosignersVC.title" = "Co-firmantes";

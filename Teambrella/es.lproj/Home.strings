@@ -13,29 +13,22 @@
 "Home.leftBrick.title"                                  = "COBERTURA";
 "Home.rightBrick.title"                                 = "MONEDERO";
 "Home.itemCard.status"                                  = "CUBIERTO";
-"Home.itemCard.coverageType"                            = "Deducible por Colisión";
-
-"Home.CoverageType.pet"                                 = "Mascota";
+"Home.CoverageType.pet"                                 = "Salud de la Mascota";
 "Home.CoverageType.carCollisionDeductible"              = "Deducible por Colisión";
-
 "Home.SupportCell.headerLabel"                          = "Chatear con el apoyo";
 "Home.SupportCell.onlineLabel"                          = "EN LIÍNEA";
-"Home.SupportCell.textLabel"                            = "¡Hola %@!  si tiene alguna pregunta, somos aqui para ayudarle durante horas de oficina";
+"Home.SupportCell.textLabel"                            = "¡Hola %@! Si tienes alguna pregunta, somos aquí para ayudarte durante horas de oficina";
 "Home.SupportCell.chatButton"                           = "Chatear con el apoyo";
-
 "Home.ApplicationDeniedCell.headerLabel"                = "Por desgracia";
 "Home.ApplicationDeniedCell.centerLabel"                = "Solicitud al equipo fue denegada";
 "Home.ApplicationDeniedCell.viewAppButton"              = "Ver Solicitud";
-
 "Home.ApplicationAcceptedCell.headerLabel"              = "Felicitaciones";
 "Home.ApplicationAcceptedCell.centerLabel"              = "Solicitud al equipo fue aprobado";
-"Home.ApplicationAcceptedCell.learnAboutCoverageButton" = "Saber mas de Cobertura";
-
+"Home.ApplicationAcceptedCell.learnAboutCoverageButton" = "Saber más de Cobertura";
 "Home.ApplicationStatusCell.headerLabel"                = "%@ Compañeros del equipo han %@ para revisar tu solicitud.";
 "Home.ApplicationStatusCell.titleLabel"                 = "Tu solicitud";
 "Home.ApplicationStatusCell.centerLabel"                = "Votación (pendiente)";
 "Home.PrivateMessages.title"                            = "Mensajes privados";
-
 "Home.Empty.Title.noPrivateMessages"                    = "Todavía no hay mensajes privados";
 
 // TRANSLATE
