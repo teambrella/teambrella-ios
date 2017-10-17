@@ -503,12 +503,12 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
 
 // MARK: ImagePickerControllerDelegate
 extension UniversalChatVC: ImagePickerControllerDelegate {
-    func imagePicker(controller: ImagePickerController, didSendPhoto photo: String) {
-        linkImage(name: photo)
+    func imagePicker(controller: ImagePickerController, didSendImage image: UIImage, urlString: String) {
+        linkImage(name: urlString)
     }
     
-    func imagePicker(controller: ImagePickerController, didSelectPhoto photo: UIImage) {
-        controller.send(image: photo)
+    func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage) {
+        controller.send(image: image)
         
     }
     

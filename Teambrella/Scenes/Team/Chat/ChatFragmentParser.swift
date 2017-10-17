@@ -24,6 +24,15 @@ import UIKit
 enum ChatFragment {
     case text(String)
     case image(urlString: String, aspect: CGFloat)
+    
+    static func imageFragment(image: UIImage, urlString: String) -> ChatFragment {
+        let aspect = image.size.width / image.size.height
+        return ChatFragment.image(urlString: urlString, aspect: aspect)
+    }
+    
+    static func textFragment(string: String) -> ChatFragment {
+        return ChatFragment.text(string)
+    }
 }
 
 struct ChatFragmentParser {

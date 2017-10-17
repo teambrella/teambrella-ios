@@ -22,8 +22,8 @@
 import UIKit
 
 protocol ImagePickerControllerDelegate: class {
-    func imagePicker(controller: ImagePickerController, didSendPhoto photo: String)
-    func imagePicker(controller: ImagePickerController, didSelectPhoto photo: UIImage)
+    func imagePicker(controller: ImagePickerController, didSendImage image: UIImage, urlString: String)
+    func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage)
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool)
 }
 
@@ -90,7 +90,7 @@ class ImagePickerController: NSObject {
             
             switch result {
             case let .value(imageString):
-                me.delegate?.imagePicker(controller: me, didSendPhoto: imageString)
+                me.delegate?.imagePicker(controller: me, didSendImage: image, urlString: imageString)
             case .temporaryValue:
                 break
             case .error:
@@ -114,7 +114,7 @@ extension ImagePickerController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            delegate?.imagePicker(controller: self, didSelectPhoto: pickedImage)
+            delegate?.imagePicker(controller: self, didSelectImage: pickedImage)
         }
         
         delegate?.imagePicker(controller: self, willClosePickerByCancel: false)

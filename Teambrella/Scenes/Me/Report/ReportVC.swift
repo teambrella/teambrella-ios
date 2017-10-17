@@ -333,12 +333,12 @@ extension ReportVC: UICollectionViewDelegateFlowLayout {
 }
 
 extension ReportVC: ImagePickerControllerDelegate {
-    func imagePicker(controller: ImagePickerController, didSendPhoto photo: String) {
-        photoController.addPhotos([photo])
+    func imagePicker(controller: ImagePickerController, didSendImage image: UIImage, urlString: String) {
+        photoController.addPhotos([urlString])
     }
     
-    func imagePicker(controller: ImagePickerController, didSelectPhoto photo: UIImage) {
-        controller.send(image: photo)
+    func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage) {
+        controller.send(image: image)
     }
     
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
