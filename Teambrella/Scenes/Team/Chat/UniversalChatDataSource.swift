@@ -147,8 +147,20 @@ final class UniversalChatDatasource {
         hasNext = true
     }
     
-    func send(text: String, images: [String]) {
+    private func temporaryModel(chatFragments: [ChatFragment]) {
+        
+    }
+    
+    func send(text: String, imageFragments: [ChatFragment]) {
         isLoading = true
+        
+        let images = imageFragments.flatMap {
+            if case let .image(image, _) = $0 { return image }
+            else { return nil }
+        }
+        
+        temporaryModel(chatFragments: imageFragments + [ChatFragment.text(text)])
+        
         let body = strategy.updatedMessageBody(body: RequestBody(key: service.server.key, payload: ["text": text,
                                                                                                     "images": images]))
         
