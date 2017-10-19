@@ -42,6 +42,19 @@ struct ChatTextCellModel: ChatCellModel {
     
 }
 
+struct ChatTextUnsentCellModel: ChatCellModel {
+    let fragments: [ChatFragment]
+    let fragmentHeights: [CGFloat]
+    
+    let userName: String
+    let date: Date
+    
+    var totalFragmentsHeight: CGFloat { return fragmentHeights.reduce(0, +) }
+    var id: String
+    
+    var isFailed: Bool
+}
+
 struct ChatSeparatorCellModel: ChatCellModel {
     let date: Date
     

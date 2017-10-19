@@ -141,8 +141,7 @@ class ChatTextCell: UICollectionViewCell {
     }
     
     func prepare(with model: ChatCellModel, cloudWidth: CGFloat, cloudHeight: CGFloat) -> [UIView] {
-        guard let model = model as? ChatTextCellModel, model.id != id else { return [] }
-        
+        if let model = model as? ChatTextCellModel, model.id != id {
         id = model.id
         isMy = model.isMy
         self.cloudWidth = cloudWidth
@@ -150,11 +149,27 @@ class ChatTextCell: UICollectionViewCell {
         setNeedsDisplay()
         
         let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: 20)
-        setupLeftLabel(model: model, baseFrame: baseFrame)
-        setupRightLabel(model: model, baseFrame: baseFrame)
-        setupBottomLabel(model: model, baseFrame: baseFrame)
+        setupLeftLabel(name: model.userName, baseFrame: baseFrame)
+        setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
+        setupBottomLabel(date: model.date, baseFrame: baseFrame)
         setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
-        return setupFragments(model: model)
+        return setupFragments(fragments: model.fragments, heights: model.fragmentHeights)
+        } else if let model = model as? ChatTextUnsentCellModel {
+            id = model.id
+            isMy = true
+            self.cloudWidth = cloudWidth
+            self.cloudHeight = cloudHeight
+            setNeedsDisplay()
+            
+            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: 20)
+            setupLeftLabel(name: model.userName, baseFrame: baseFrame)
+            setupRightLabel(rateText: nil, baseFrame: baseFrame)
+            setupBottomLabel(date: model.date, baseFrame: baseFrame)
+            setupAvatar(avatar: nil, cloudHeight: cloudHeight)
+            return setupFragments(fragments: model.fragments, heights: model.fragmentHeights)
+        } else {
+             return []
+        }
     }
     
     // MARK: Private
@@ -237,7 +252,13 @@ class ChatTextCell: UICollectionViewCell {
         context.setStrokeColor(UIColor.lightBlueGray.cgColor)
     }
     
-    private func setupAvatar(avatar: String, cloudHeight: CGFloat) {
+    private func setupAvatar(avatar: String?, cloudHeight: CGFloat) {
+        guard let avatar = avatar else {
+            avatarView.isHidden = true
+            return
+        }
+        
+        avatarView.isHidden = false
         avatarView.showAvatar(string: avatar)
         let x = isMy ? width - Constant.avatarContainerInset - Constant.avatarWidth : Constant.avatarContainerInset
         avatarView.frame = CGRect(x: x,
@@ -246,17 +267,17 @@ class ChatTextCell: UICollectionViewCell {
                                   height: Constant.avatarWidth)
     }
     
-    private func setupLeftLabel(model: ChatTextCellModel, baseFrame: CGRect) {
+    private func setupLeftLabel(name: String, baseFrame: CGRect) {
         leftLabel.frame = baseFrame
-        leftLabel.text = model.userName
+        leftLabel.text = name
         leftLabel.sizeToFit()
         leftLabel.center = CGPoint(x: cloudBodyMinX + leftLabel.frame.width / 2 + 8,
                                    y: leftLabel.frame.height / 2 + 8)
     }
     
-    private func setupRightLabel(model: ChatTextCellModel, baseFrame: CGRect) {
+    private func setupRightLabel(rateText: String?, baseFrame: CGRect) {
         rightLabel.frame = baseFrame
-        if let rate = model.rateText {
+        if let rate = rateText {
             rightLabel.isHidden = false
             rightLabel.text = rate
             rightLabel.sizeToFit()
@@ -270,28 +291,28 @@ class ChatTextCell: UICollectionViewCell {
         }
     }
     
-    private func setupBottomLabel(model: ChatTextCellModel, baseFrame: CGRect) {
+    private func setupBottomLabel(date: Date, baseFrame: CGRect) {
         bottomLabel.frame = baseFrame
-        bottomLabel.text = DateProcessor().stringInterval(from: model.date)
+        bottomLabel.text = DateProcessor().stringInterval(from: date)
         bottomLabel.sizeToFit()
         bottomLabel.center = CGPoint(x: cloudBodyMaxX - bottomLabel.frame.width / 2 - 8,
                                      y: cloudHeight - bottomLabel.frame.height / 2 - 8)
     }
     
-    private func setupFragments(model: ChatTextCellModel) -> [UIView] {
+    private func setupFragments(fragments: [ChatFragment], heights: [CGFloat]) -> [UIView] {
         views.forEach { $0.removeFromSuperview() }
         views.removeAll()
         
         var result: [UIView] = []
-        for (idx, fragment) in model.fragments.enumerated() {
+        for (idx, fragment) in fragments.enumerated() {
             switch fragment {
             case let .text(text):
-                let label: UILabel = createLabel(for: text, height: model.fragmentHeights[idx])
+                let label: UILabel = createLabel(for: text, height: heights[idx])
                 contentView.addSubview(label)
                 views.append(label)
                 result.append(label)
             case let .image(urlString: urlString, aspect: _):
-                let imageView = createGalleryView(for: urlString, height: model.fragmentHeights[idx])
+                let imageView = createGalleryView(for: urlString, height: heights[idx])
                 contentView.addSubview(imageView)
                 views.append(imageView)
                 result.append(imageView)

@@ -37,6 +37,7 @@ class ServicesHandler {
     lazy var error: ErrorPresenter = ErrorPresenter()
     lazy var log: Log = Log(logLevel: .all)
     lazy var crypto: CryptoUser = CryptoUser()
+    lazy var cryptoWorker: CryptoWorker = EthereumWorker()
     
     var socket: SocketService?
     var session: Session?

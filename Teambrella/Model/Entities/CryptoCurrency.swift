@@ -1,5 +1,5 @@
 //
-//  CryptoCurrency.swift
+//  CurrencyTransformable.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 17.08.17.
@@ -21,90 +21,129 @@
 
 import Foundation
 
-protocol CryptoCurrency {
+protocol CurrencyLike {
     var name: String { get }
-    var code: String { get }
-    var coinCode: String { get }
     var symbol: String { get }
-    var coin: CryptoCurrency? { get }
-    var coinRate: Int { get }
+    var code: String { get }
+    var child: CurrencyLike? { get }
+    var childRate: Double { get }
+    var coinCode: String { get }
+    var parent: CurrencyLike? { get }
 }
 
-struct Ethereum: CryptoCurrency {
+protocol CurrencyTransformable {
+    func rate(to: CurrencyTransformable) -> Double?
+}
+
+extension CurrencyTransformable where Self: CurrencyLike {
+    func rate(to: CurrencyTransformable) -> Double? {
+        var rate: Double = 1
+        guard type(of: to) != type(of: self) else { return rate }
+        
+        var superCoin = parent
+        while let coin = superCoin {
+            rate /= coin.childRate
+            if let child = coin.child, type(of: child) == type(of: self) {
+                return rate
+            }
+            superCoin = coin.parent
+        }
+        
+        var childCoin = child
+        rate = 1
+        while let coin = childCoin {
+            rate *= coin.childRate
+            if let parent = coin.parent, type(of: parent) == type(of: self) {
+                return rate
+            }
+            childCoin = coin.child
+        }
+        return nil
+    }
+}
+
+struct Ethereum: CurrencyLike {
     let name = "Ethereum"
     let code = "ETH"
     let symbol = "Ξ"
     
-    var coinCode: String { return coin?.code ?? "" }
-    var coin: CryptoCurrency? { return Finney() }
-    let coinRate = 1000
+    var coinCode: String { return child?.code ?? "" }
+    var child: CurrencyLike? { return Finney() }
+    let parent: CurrencyLike? = nil
+    let childRate: Double = 1000
     
     /*
-    let finneyRate = 1000
-    let szaboRate = 1000_000
-    let gweiRate = 1000_000_000
-    let mweiRate = 1000_000_000_000
-    let kweiRate = 1000_000_000_000_000
-    let weiRate = 1000_000_000_000_000_000
- */
+     let finneyRate = 1000
+     let szaboRate = 1000_000
+     let gweiRate = 1000_000_000
+     let mweiRate = 1000_000_000_000
+     let kweiRate = 1000_000_000_000_000
+     let weiRate = 1000_000_000_000_000_000
+     */
 }
 
-struct Finney: CryptoCurrency {
+struct Finney: CurrencyLike {
     let name = "Finney"
     let code = "mETH"
     let symbol = "mΞ"
     
-    var coinCode: String { return coin?.code ?? "" }
-    var coin: CryptoCurrency? { return Szabo() }
-    let coinRate = 1000
+    var coinCode: String { return child?.code ?? "" }
+    var child: CurrencyLike? { return Szabo() }
+    var parent: CurrencyLike? { return Ethereum() }
+    let childRate: Double = 1000
 }
 
-struct Szabo: CryptoCurrency {
+struct Szabo: CurrencyLike {
     let name = "Szabo"
     let code = "µETH"
     let symbol = "µΞ"
     
-    var coinCode: String { return coin?.code ?? "" }
-     var coin: CryptoCurrency? { return Gwei() }
-    let coinRate = 1000
+    var coinCode: String { return child?.code ?? "" }
+    var child: CurrencyLike? { return Gwei() }
+    var parent: CurrencyLike? { return Finney() }
+    let childRate: Double = 1000
 }
 
-struct Gwei: CryptoCurrency {
+struct Gwei: CurrencyLike {
     let name = "Gwei"
     let code = "Gwei"
     let symbol = "Gwei"
     
-    var coinCode: String { return coin?.code ?? "" }
-    var coin: CryptoCurrency? { return Mwei() }
-    let coinRate = 1000
+    var coinCode: String { return child?.code ?? "" }
+    var child: CurrencyLike? { return Mwei() }
+    var parent: CurrencyLike? { return Szabo() }
+    let childRate: Double = 1000
 }
 
-struct Mwei: CryptoCurrency {
+struct Mwei: CurrencyLike {
     let name = "Mwei"
     let code = "Mwei"
     let symbol = "Mwei"
     
-    var coinCode: String { return coin?.code ?? "" }
-    var coin: CryptoCurrency? { return Kwei() }
-    let coinRate = 1000
+    var coinCode: String { return child?.code ?? "" }
+    var child: CurrencyLike? { return Kwei() }
+    var parent: CurrencyLike? { return Gwei() }
+    let childRate: Double = 1000
 }
 
-struct Kwei: CryptoCurrency {
+struct Kwei: CurrencyLike {
     let name = "Kwei"
     let code = "Kwei"
     let symbol = "Kwei"
     
-    var coinCode: String { return coin?.code ?? "" }
-    var coin: CryptoCurrency? { return Wei() }
-    let coinRate = 1000
+    var coinCode: String { return child?.code ?? "" }
+    var child: CurrencyLike? { return Wei() }
+    var parent: CurrencyLike? { return Mwei() }
+    let childRate: Double = 1000
 }
 
-struct Wei: CryptoCurrency {
+struct Wei: CurrencyLike {
     let name = "Wei"
     let code = "Wei"
     let symbol = "Wei"
     
-    var coinCode: String { return coin?.code ?? "" }
-    let coin: CryptoCurrency? = nil
-    let coinRate = 1
+    var coinCode: String { return child?.code ?? "" }
+    let child: CurrencyLike? = nil
+    var parent: CurrencyLike? { return Kwei() }
+    let childRate: Double = 1
 }

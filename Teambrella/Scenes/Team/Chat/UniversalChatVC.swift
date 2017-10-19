@@ -137,7 +137,7 @@ final class UniversalChatVC: UIViewController, Routable {
     func tapRightButton(sender: UIButton) {
         guard let text = input.textView.text else { return }
         
-        send(text: text, images: [])
+        send(text: text, imageFragments: [])
     }
     
     @objc
@@ -279,11 +279,11 @@ final class UniversalChatVC: UIViewController, Routable {
         service.socket?.remove(listener: self)
     }
     
-    private func send(text: String, images: [String]) {
+    private func send(text: String, imageFragments: [ChatFragment]) {
         guard dataSource.isLoading == false else { return }
         
         self.shouldScrollToBottom = true
-        dataSource.send(text: text, images: images)
+        dataSource.send(text: text, imageFragments: imageFragments)
         input.textView.text = nil
         input.adjustHeight()
     }
@@ -354,8 +354,9 @@ final class UniversalChatVC: UIViewController, Routable {
         }
     }
     
-    private func linkImage(name: String) {
-        send(text: input.textView.text ?? "", images: [name])
+    private func linkImage(image: UIImage, name: String) {
+        let fragment = ChatFragment.imageFragment(image: image, urlString: name)
+        send(text: input.textView.text ?? "", imageFragments: [fragment])
     }
     
 }
@@ -374,7 +375,8 @@ extension UniversalChatVC: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier: String
         switch dataSource[indexPath] {
-        case _ as ChatTextCellModel:
+        case _ as ChatTextCellModel,
+             _ as ChatTextUnsentCellModel:
             identifier = "com.chat.text.cell"
         case _ as ChatSeparatorCellModel:
             identifier = "com.chat.separator.cell"
@@ -415,7 +417,8 @@ extension UniversalChatVC: UICollectionViewDelegate {
         }
         
         let model = dataSource[indexPath]
-        if let cell = cell as? ChatTextCell, let model = model as? ChatTextCellModel {
+        if let cell = cell as? ChatTextCell {
+            if let model = model as? ChatTextCellModel {
             let size = cloudSize(for: indexPath)
             cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
             cell.avatarView.tag = indexPath.row
@@ -426,7 +429,20 @@ extension UniversalChatVC: UICollectionViewDelegate {
                 
                 galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
             }
-            cell.alpha = model.isTemporary ? 0.5 : 1
+                cell.alpha = model.isTemporary ? 0.5 : 1
+            } else if let model = model as? ChatTextUnsentCellModel {
+                let size = cloudSize(for: indexPath)
+                cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
+                cell.avatarView.tag = indexPath.row
+                cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
+                cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
+                cell.onTapImage = { [weak self] cell, galleryView in
+                    guard let `self` = self else { return }
+                    
+                    galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
+                }
+                cell.alpha = 0.5
+            }
         } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
             cell.text = Formatter.teambrellaShort.string(from: model.date)
         } else if let cell = cell as? ChatNewMessagesSeparatorCell,
@@ -504,7 +520,7 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
 // MARK: ImagePickerControllerDelegate
 extension UniversalChatVC: ImagePickerControllerDelegate {
     func imagePicker(controller: ImagePickerController, didSendImage image: UIImage, urlString: String) {
-        linkImage(name: urlString)
+        linkImage(image: image, name: urlString)
     }
     
     func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage) {

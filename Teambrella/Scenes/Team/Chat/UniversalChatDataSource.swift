@@ -147,30 +147,30 @@ final class UniversalChatDatasource {
         hasNext = true
     }
     
-    private func temporaryModel(chatFragments: [ChatFragment]) {
-        
-    }
+    var unsentStorage: UnsentMessagesStorage = UnsentMessagesStorage()
     
     func send(text: String, imageFragments: [ChatFragment]) {
         isLoading = true
+        let id = UUID().uuidString.lowercased()
+        let message = UnsentMessage(text: text, imageFragments: imageFragments, id: id)
+        unsentStorage.newSending(message: message)
         
-        let images = imageFragments.flatMap {
-            if case let .image(image, _) = $0 { return image }
-            else { return nil }
-        }
-        
-        temporaryModel(chatFragments: imageFragments + [ChatFragment.text(text)])
-        
-        let body = strategy.updatedMessageBody(body: RequestBody(key: service.server.key, payload: ["text": text,
-                                                                                                    "images": images]))
+        let temporaryModel = cellModelBuilder.unsentModel(fragments: imageFragments + [ChatFragment.text(text)],
+                                                          id: id)
+        let chunk = ChatChunk(cellModels: [temporaryModel], type: .temporary)
+        addChunk(chunk: chunk)
+        let body = strategy.updatedMessageBody(body: RequestBody(key: service.server.key, payload: message.dictionary))
         
         let request = TeambrellaRequest(type: strategy.postType, body: body, success: { [weak self] response in
             guard let me = self else { return }
             
             me.hasNext = true
             me.isLoading = false
+            me.unsentStorage.sent(message: message)
             me.onMessageSend?()
             me.process(response: response, isPrevious: false, isMyNewMessage: true)
+            }, failure: { [weak self] error in
+                self?.unsentStorage.failedToSend(message: message)
         })
         request.start()
     }
@@ -284,7 +284,7 @@ final class UniversalChatDatasource {
             processCommonChat(model: model, isPrevious: isPrevious)
         case let .privateChat(messages):
             processPrivateChat(messages: messages, isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
-          
+            
         case let .newPost(post):
             let models = createCellModels(from: [post], isTemporary: true)
             let chunk = ChatChunk(cellModels: models, type: .temporary)
@@ -295,7 +295,7 @@ final class UniversalChatDatasource {
             return
         }
         let hasNewModels = self.count > count
-         //handleNewSeparator(hasNewModels: hasNewModels, isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
+        //handleNewSeparator(hasNewModels: hasNewModels, isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
         
         onUpdate?(isPrevious, hasNewModels, isFirstLoad)
         
@@ -384,4 +384,57 @@ final class UniversalChatDatasource {
         addChunk(chunk: chunk)
     }
     
+}
+
+struct UnsentMessage: Hashable {
+    let text: String
+    let imageFragments: [ChatFragment]
+    var images: [String] {
+        return imageFragments.flatMap {
+            if case let .image(image, _) = $0 {
+                return image
+            } else {
+                return nil
+            }
+        }
+    }
+    let id: String
+    
+    var dictionary: [String: Any] {
+        return ["text": text,
+                "NewPostId": id,
+                "images": images]
+    }
+    
+    var hashValue: Int { return text.hashValue ^ images.reduce(0) { $0 ^ $1.hashValue } ^ id.hashValue }
+    
+    static func == (lhs: UnsentMessage, rhs: UnsentMessage) -> Bool {
+        return lhs.text == rhs.text && lhs.id == rhs.id && lhs.images == rhs.images
+    }
+    
+}
+
+class UnsentMessagesStorage {
+    var sendingMessages: [UnsentMessage] = []
+    var unsentMessages: [UnsentMessage] = []
+    
+    func newSending(message: UnsentMessage) {
+        sendingMessages.append(message)
+    }
+    
+    func failedToSend(message: UnsentMessage) {
+        if let index = sendingMessages.index(of: message) {
+            sendingMessages.remove(at: index)
+        }
+        unsentMessages.append(message)
+    }
+    
+    func sent(message: UnsentMessage) {
+        if let index = sendingMessages.index(of: message) {
+            sendingMessages.remove(at: index)
+        }
+        if let index = unsentMessages.index(of: message) {
+            unsentMessages.remove(at: index)
+        }
+    }
 }

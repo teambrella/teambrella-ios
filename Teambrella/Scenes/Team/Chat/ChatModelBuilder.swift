@@ -21,18 +21,29 @@
 
 import UIKit
 
-struct ChatModelBuilder {
+class ChatModelBuilder {
     let fragmentParser = ChatFragmentParser()
     
     var showRate = true
     var font: UIFont = UIFont.teambrella(size: 14)
     var width: CGFloat = 0
+    lazy var heightCalculator = ChatFragmentHeightCalculator(width: width, font: font)
+    
+    func unsentModel(fragments: [ChatFragment], id: String) -> ChatTextUnsentCellModel {
+        let heights = heightCalculator.heights(for: fragments)
+        let myName = service.session?.currentUserName ?? ""
+        return  ChatTextUnsentCellModel(fragments: fragments,
+                                                     fragmentHeights: heights,
+                                                     userName: myName,
+                                                     date: Date(),
+                                                     id: id,
+                                                     isFailed: false)
+    }
     
     func cellModels(from chatItems: [ChatEntity],
                     lastChunk: ChatChunk?,
                     isClaim: Bool,
                     isTemporary: Bool) -> [ChatCellModel] {
-        let heightCalculator = ChatFragmentHeightCalculator(width: width, font: font)
         var result: [ChatCellModel] = []
         var lastDate: Date? = lastChunk?.cellModels.last?.date
         for item in chatItems {
