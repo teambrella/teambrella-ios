@@ -29,7 +29,7 @@ public class GradientView: UIView {
     
     @IBInspectable public var topColor: UIColor? = UIColor.clear
     @IBInspectable public var bottomColor: UIColor? = UIColor.black
-    @IBInspectable public var horizontal: Bool = false
+    @IBInspectable public var isHorizontal: Bool = false
     var colors: [UIColor]?
     var locations: [NSNumber] = [0.0, 1.0]
     
@@ -59,7 +59,7 @@ public class GradientView: UIView {
         } else if let top = topColor, let bottom = bottomColor {
             gradientLayer.colors = [top.cgColor, bottom.cgColor]
         }
-        if horizontal {
+        if isHorizontal {
             gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
             gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         }

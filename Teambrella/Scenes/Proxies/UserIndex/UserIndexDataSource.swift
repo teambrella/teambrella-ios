@@ -38,6 +38,8 @@ class UserIndexDataSource {
         }
     }
     
+    var notInOpt: Bool = false
+    
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     
@@ -75,7 +77,11 @@ class UserIndexDataSource {
                     let myID = service.session?.currentUserID
                     for (idx, proxy) in proxies.enumerated().reversed() where proxy.userID == myID {
                         self?.meModel = proxy
-                        proxies.remove(at: idx)
+                        guard let n_opt = self?.notInOpt else { return }
+                        
+                        if n_opt {
+                            proxies.remove(at: idx)
+                        }
                         break
                     }
                     self?.items += proxies

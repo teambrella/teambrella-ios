@@ -47,6 +47,7 @@ class UserIndexVC: UIViewController {
     
     @IBOutlet var buttonView: UIView!
     
+    @IBOutlet var optIntoRatingButton: BorderedButton!
     @IBOutlet var topContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet var avatarWidthConstant: NSLayoutConstraint!
     
@@ -93,6 +94,14 @@ class UserIndexVC: UIViewController {
         //
         //        searchController.searchBar.delegate = self
         //        searchController.searchBar.sizeToFit()
+    }
+    
+    func configureOpt() {
+        if dataSource.notInOpt == true {
+            optIntoRatingButton.setTitle("Opt Into Rating", for: .normal)
+        } else {
+            optIntoRatingButton.setTitle("UnOpt", for: .selected)
+        }
     }
     
     fileprivate func shrinkTopContainer(_ shrink: Bool) {
