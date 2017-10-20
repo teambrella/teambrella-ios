@@ -29,6 +29,8 @@ func log(_ string: String, type: Log.LogType) {
 
 class Log {
     enum LogLevel {
+        case none
+        
         case critical
         case minimal
         case normal
@@ -38,6 +40,7 @@ class Log {
         case socket
         case push
         case facebook
+        case crypto
         
         case all
     }
@@ -55,6 +58,7 @@ class Log {
         static let serviceInfo =  LogType(rawValue: 1 << 7)
         static let push = LogType(rawValue: 1 << 8)
         static let social = LogType(rawValue: 1 << 9)
+        static let crypto = LogType(rawValue: 1 << 9)
         
         static var all: LogType { return LogType(rawValue: Int.max) }
     }
@@ -101,11 +105,15 @@ class Log {
         if type.contains(.social) {
             emojis.append("👥")
         }
+        if type.contains(.crypto) {
+            emojis.append("🔒")
+        }
         return emojis + " " + string
     }
     
     private func typesFor(level: LogLevel) -> LogType {
         switch level {
+        case .none: return []
         case .critical: return [.error]
         case .minimal: return [.error, .serverURL, .serviceInfo]
         case .normal: return [.error, .serverURL, .serviceInfo, .requestBody, .socket, .push]
@@ -114,6 +122,7 @@ class Log {
         case .socket: return [.socket, .error]
         case .push: return [.push, .error]
         case .facebook: return [.social, .error]
+        case .crypto: return [.error, .crypto]
         case .all: return LogType.all
         }
     }

@@ -25,7 +25,7 @@ import CoreData
 class BlockchainStorageFetcher {
     struct Constant {
         static let noAutoApproval = 1000000
-        fileprivate static let tmpPrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
+//fileprivate static let tmpPrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
     }
     
     private unowned var storage: BlockchainStorage
@@ -53,8 +53,6 @@ class BlockchainStorageFetcher {
     
     private func createUser() -> User {
         let user = User(context: context)
-        //   PrivateKey = key.GetBitcoinSecret(Network.Main).ToString()
-        user.privateKeyValue =  Constant.tmpPrivateKey
         save()
         return user
     }
