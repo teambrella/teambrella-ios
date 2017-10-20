@@ -55,6 +55,10 @@ class UserIndexVC: UIViewController {
         service.router.showFilter(in: self, delegate: self, currentSort: dataSource.sortType)
     }
     
+    @IBAction func tapOpt(_ sender: Any) {
+        configureOpt()
+    }
+    
     var isTopContainerShrinked: Bool = false
     fileprivate var previousScrollOffset: CGFloat = 0
     
@@ -62,6 +66,7 @@ class UserIndexVC: UIViewController {
         super.viewDidLoad()
         CellDecorator.shadow(for: topContainer, opacity: 0.1, radius: 5)
         HUD.show(.progress, onView: view)
+        configureOpt()
         setupCollectionView()
         shrinkTopContainer(false)
         dataSource.loadData()
@@ -97,11 +102,14 @@ class UserIndexVC: UIViewController {
     }
     
     func configureOpt() {
-        if dataSource.notInOpt == true {
-            optIntoRatingButton.setTitle("Opt Into Rating", for: .normal)
-        } else {
+        if optIntoRatingButton.state == .selected {
+            dataSource.notInOpt = false
             optIntoRatingButton.setTitle("UnOpt", for: .selected)
+        } else {
+            dataSource.notInOpt = true
+            optIntoRatingButton.setTitle("Opt Into Rating", for: .normal)
         }
+        dataSource.loadData()
     }
     
     fileprivate func shrinkTopContainer(_ shrink: Bool) {

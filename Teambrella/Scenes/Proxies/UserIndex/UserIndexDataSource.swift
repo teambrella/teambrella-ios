@@ -38,7 +38,7 @@ class UserIndexDataSource {
         }
     }
     
-    var notInOpt: Bool = false
+    var notInOpt: Bool = true
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?

@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65v-sn-GhQ" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="16" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="-24" width="375" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
@@ -44,10 +44,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2OK-OB-5g5">
-                                <rect key="frame" x="0.0" y="144" width="375" height="474"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9IE-5H-M3H" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                                <rect key="frame" x="0.0" y="104" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EYa-dc-oXm"/>
@@ -298,6 +298,9 @@
                                                                 <state key="normal" title="Opt Into Rating">
                                                                     <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="tapOpt:" destination="7bW-lz-Yk2" eventType="touchUpInside" id="Jh3-Jw-F6q"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
