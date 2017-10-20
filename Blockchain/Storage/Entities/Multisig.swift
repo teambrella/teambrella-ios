@@ -19,13 +19,13 @@ import Foundation
 
 class Multisig: NSManagedObject {
     var id: Int { return Int(idValue) }
-    var address: String { return addressValue }
-    var creationTx: String { return creationTxValue }
+    var address: String? { return addressValue }
+    var creationTx: String? { return creationTxValue }
     var teammateID: Int { return Int(teammateIdValue) }
     var status: Int { return Int(statusValue) }
-    var dateCreated: Date { return dateCreatedValue }
-    var teammateName: String { return teammateNameValue }
-    var teammatePublicKey: String { return teammatePublicKey }
+    var dateCreated: Date? { return dateCreatedValue }
+    var teammateName: String? { return teammateNameValue }
+    var teammatePublicKey: String? { return teammatePublicKey }
     var teamID: Int { return Int(teamIdValue) }
     
     var cosigners: Set<Cosigner> {

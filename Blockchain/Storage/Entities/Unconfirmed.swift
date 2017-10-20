@@ -19,11 +19,11 @@ import Foundation
 
 class Unconfirmed: NSManagedObject {
     var id: Int { return Int(idValue) }
-    var multisigID: Int { return multisigIdValue }
-    var txID: String { return txIdValue }
-    var cryptoTx: String { return cryptoTxValue }
-    var cryptoFee: Int { return cryptoFeeValue }
-    var cryptoNonce: Int { return cryptoNonceValue }
-    var dateCreated: Date { return dateCreatedValue }
+    var multisigID: Int { return Int(multisigIdValue) }
+    var txID: String? { return txIdValue }
+    var cryptoTx: String? { return cryptoTxValue }
+    var cryptoFee: Int { return Int(cryptoFeeValue) }
+    var cryptoNonce: Int { return Int(cryptoNonceValue) }
+    var dateCreated: Date? { return dateCreatedValue }
     
 }

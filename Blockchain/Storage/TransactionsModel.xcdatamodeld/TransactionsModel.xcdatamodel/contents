@@ -21,7 +21,7 @@
         <attribute name="idValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="keyOrderValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="addressValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="cosignersValue" inverseEntity="BtcAddress" syncable="YES"/>
-        <relationship name="multisigValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Multisig" inverseName="cosignersValue" inverseEntity="Multisig" syncable="YES"/>
+        <relationship name="multisigsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Multisig" inverseName="cosignersValue" inverseEntity="Multisig" syncable="YES"/>
         <relationship name="teammateValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="cosignerOfValue" inverseEntity="Teammate" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -29,17 +29,17 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="Multisig" representedClassName="Multisig" syncable="YES" codeGenerationType="class">
+    <entity name="Multisig" representedClassName="Multisig" syncable="YES" codeGenerationType="category">
         <attribute name="addressValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="creationTxValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateCreatedValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="idValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="statusValue" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="teamIdValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="teammateIdValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="teammateNameValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="teammatePublicKeyValue" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cosignersValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cosigner" inverseName="multisigValue" inverseEntity="Cosigner" syncable="YES"/>
+        <relationship name="cosignersValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cosigner" inverseName="multisigsValue" inverseEntity="Cosigner" syncable="YES"/>
         <relationship name="unconfirmedValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Unconfirmed" inverseName="multisigValue" inverseEntity="Unconfirmed" syncable="YES"/>
     </entity>
     <entity name="PayTo" representedClassName=".PayTo" syncable="YES" codeGenerationType="category">
@@ -180,12 +180,12 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="Unconfirmed" representedClassName="Unconfirmed" syncable="YES" codeGenerationType="class">
+    <entity name="Unconfirmed" representedClassName="Unconfirmed" syncable="YES" codeGenerationType="category">
         <attribute name="cryptoFeeValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="cryptoNonceValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="cryptoTxValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateCreatedValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="idValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="multisigIdValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="txIdValue" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="multisigValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Multisig" inverseName="unconfirmedValue" inverseEntity="Multisig" syncable="YES"/>
@@ -213,7 +213,7 @@
         <element name="TxOutput" positionX="349" positionY="378" width="128" height="135"/>
         <element name="TxSignature" positionX="-470" positionY="3" width="128" height="150"/>
         <element name="User" positionX="-261" positionY="-72" width="128" height="120"/>
-        <element name="Multisig" positionX="-261" positionY="-72" width="128" height="30"/>
-        <element name="Unconfirmed" positionX="-252" positionY="-54" width="128" height="30"/>
+        <element name="Multisig" positionX="-261" positionY="-72" width="128" height="210"/>
+        <element name="Unconfirmed" positionX="-252" positionY="-54" width="128" height="165"/>
     </elements>
 </model>
