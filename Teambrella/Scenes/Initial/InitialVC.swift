@@ -63,26 +63,33 @@ final class InitialVC: UIViewController {
         service.dao.requestTeams(demo: isDemo).observe { [weak self] result in
             switch result {
             case let .value(teamsEntity):
-                service.session = Session()
-                let lastTeam = teamsEntity.lastTeamID
-                    .map { id in teamsEntity.teams.filter { team in team.teamID == id } }?.first
-                
-                if let lastTeam = lastTeam {
-                    service.session?.currentTeam = lastTeam
-                } else if !teamsEntity.teams.isEmpty {
-                    service.session?.currentTeam = teamsEntity.teams.first
-                }
-                service.session?.teams = teamsEntity.teams
-                service.session?.currentUserID = teamsEntity.userID
-                 service.socket = SocketService()
-                HUD.hide()
-                self?.presentMasterTab()
+                self?.startSession(teamsEntity: teamsEntity)
             case .temporaryValue:
                 break
             case .error:
                 self?.failure()
             }
         }
+    }
+    
+    private func startSession(teamsEntity: TeamsModel) {
+        service.session = Session()
+        
+        service.teambrella.startUpdating()
+        
+        let lastTeam = teamsEntity.lastTeamID
+            .map { id in teamsEntity.teams.filter { team in team.teamID == id } }?.first
+        
+        if let lastTeam = lastTeam {
+            service.session?.currentTeam = lastTeam
+        } else if !teamsEntity.teams.isEmpty {
+            service.session?.currentTeam = teamsEntity.teams.first
+        }
+        service.session?.teams = teamsEntity.teams
+        service.session?.currentUserID = teamsEntity.userID
+        service.socket = SocketService()
+        HUD.hide()
+        presentMasterTab()
     }
     
     private func failure() {

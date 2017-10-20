@@ -29,8 +29,14 @@ import SwiftyJSON
  */
 public class BlockchainServer {
     struct Constant {
-        static let site = "192.168.0.222"
+        #if TEAMBRELLA
+        static let proto = "https://"
+        static let site = "teambrella.com"
+        #else
         static let proto = "http://"
+        static let site = "surilla.com"
+        #endif
+        
         static var siteURL: String { return proto + site } // "https://surilla.com"
         //"2uGEcr6rkwBBi26NMcuALZSJGZ353ZdgExwbGGXL4xe8"//"Kxv2gGGa2ZW85b1LXh1uJSP3HLMV6i6qRxxStRhnDsawXDuMJadB"
     }

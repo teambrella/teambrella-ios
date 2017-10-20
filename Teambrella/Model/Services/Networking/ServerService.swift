@@ -66,7 +66,7 @@ class ServerService: NSObject {
         return service.keyStorage.privateKey
     }
     
-    @objc dynamic private(set)var timestamp: Int64 = 0 
+    @objc dynamic private(set)var timestamp: Int64 = 0
     
     var key: Key { return Key(base58String: ServerService.privateKey, timestamp: timestamp) }
     

@@ -46,13 +46,14 @@ class ServicesHandler {
     lazy var error: ErrorPresenter = ErrorPresenter()
     
     /// logging service
-    lazy var log: Log = Log(logLevel: .all)
+    lazy var log: Log = Log(logLevel: .crypto)
     
     /// service to store private keys and last user logged in
     lazy var keyStorage: KeyStorage = KeyStorage()
+    
     // WIP!
     // old analogue of cryptoWorker. Should be merged and deleted
-   // lazy var teambrella = TeambrellaService()
+    lazy var teambrella = TeambrellaService()
     
     /// service to work with current Crypto currency and it's blockchain
     lazy var cryptoWorker: CryptoWorker = EthereumWorker()

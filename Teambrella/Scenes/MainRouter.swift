@@ -252,6 +252,7 @@ final class MainRouter {
         service.session = nil
         service.keyStorage.clearLastUserType()
         navigator.clear()
+        service.teambrella.clear()
         for vc in navigator.viewControllers {
             if let vc = vc as? InitialVC {
                 navigator.popToViewController(vc, animated: true)

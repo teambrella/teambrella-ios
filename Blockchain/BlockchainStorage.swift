@@ -28,15 +28,8 @@ class BlockchainStorage {
     }
     let server = BlockchainServer()
     var key: Key { return Key(base58String: self.fetcher.user.privateKey, timestamp: self.server.timestamp) }
-    lazy var container: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "TransactionsModel")
-        container.loadPersistentStores { description, error in
-            guard error == nil else {
-                fatalError(String(describing: error))
-            }
-        }
-        return container
-    }()
+    
+    lazy var container: NSPersistentContainer = { self.createPersistentContainer() }()
     lazy var fetcher: BlockchainStorageFetcher = {
         return BlockchainStorageFetcher(storage: self)
     }()
@@ -47,6 +40,38 @@ class BlockchainStorage {
     init() {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         print("Documents path: \(documentsPath)")
+    }
+    
+    func clear() {
+        context.reset()
+        let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask);
+        var dbUrl = urls[urls.count-1];
+        dbUrl = dbUrl.appendingPathComponent("Application Support/TransactionsModel.sqlite")
+        do {
+            try container.persistentStoreCoordinator.destroyPersistentStore(at: dbUrl,
+                                                                                      ofType: NSSQLiteStoreType,
+                                                                                      options: nil);
+        } catch {
+            print(error);
+        }
+        do {
+            try container.persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,
+                                                                                  configurationName: nil,
+                                                                                  at: dbUrl,
+                                                                                  options: nil);
+        } catch {
+            print(error);
+        }
+    }
+    
+    func createPersistentContainer() -> NSPersistentContainer {
+        let container = NSPersistentContainer(name: "TransactionsModel")
+        container.loadPersistentStores { description, error in
+            guard error == nil else {
+                fatalError(String(describing: error))
+            }
+        }
+        return container
     }
     
     func updateData(completion: @escaping (Bool) -> Void) {
@@ -77,6 +102,7 @@ class BlockchainStorage {
                           signatures: signatures) { [unowned self] reply in
                             switch reply {
                             case .success(let json, let timestamp):
+                                log("BlockchainStorage Server update to local db received json: \(json)", type: .crypto)
                                 self.context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
                                 let factory = EntityFactory(fetcher: self.fetcher)
                                 factory.updateLocalDb(txs: txsToUpdate, signatures: signatures, json: json)

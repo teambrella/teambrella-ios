@@ -42,7 +42,12 @@ class TeambrellaService {
         NotificationCenter.default.removeObserver(self)
     }
     
+    func startUpdating() {
+        update()
+    }
+    
     func update() {
+        log("Teambrella service begins updates", type: .crypto)
         storage.updateData { success in
             if success {
                 self.blockchain.updateData()
@@ -56,6 +61,10 @@ class TeambrellaService {
         storage.serverUpdateToLocalDb { success in
              self.delegate?.teambrellaDidUpdate(service: self)
         }
+    }
+    
+    func clear() {
+        storage.clear()
     }
     
 }
