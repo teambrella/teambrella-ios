@@ -26,9 +26,10 @@ class User: NSManagedObject {
     var id: Int {
         return Int(idValue)
     }
-    var privateKey: String {
-        return privateKeyValue!
-    }
+    
+    // stored in keychain
+    var privateKey: String { return service.keyStorage.privateKey }
+    
     var auxWalletAmount: Decimal {
         return auxWalletAmountValue! as Decimal
     }

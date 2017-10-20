@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13241" systemVersion="17B25c" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BtcAddress" representedClassName=".BtcAddress" syncable="YES" codeGenerationType="category">
-        <attribute name="addressValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="addressValue" attributeType="String" syncable="YES"/>
         <attribute name="dateCreatedValue" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="statusValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="cosignersValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cosigner" inverseName="addressValue" inverseEntity="Cosigner" syncable="YES"/>
         <relationship name="moveFundsTransactionsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="moveToAddressValue" inverseEntity="Tx" syncable="YES"/>
         <relationship name="teammateValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="addressesValue" inverseEntity="Teammate" syncable="YES"/>
+        <fetchIndex name="byAddressValueIndex">
+            <fetchIndexElement property="addressValue" type="Binary" order="ascending"/>
+        </fetchIndex>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="addressValue"/>
@@ -27,11 +30,14 @@
     </entity>
     <entity name="PayTo" representedClassName=".PayTo" syncable="YES" codeGenerationType="category">
         <attribute name="addressValue" attributeType="String" syncable="YES"/>
-        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" syncable="YES"/>
         <attribute name="isDefaultValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="knownSinceValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="outputValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxOutput" inverseName="payToValue" inverseEntity="TxOutput" syncable="YES"/>
         <relationship name="teammateValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="payTosValue" inverseEntity="Teammate" syncable="YES"/>
+        <fetchIndex name="byIdValueIndex">
+            <fetchIndexElement property="idValue" type="Binary" order="ascending"/>
+        </fetchIndex>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
@@ -44,11 +50,14 @@
         <attribute name="autoApprovalMyGoodAddressValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="autoApprovalMyNewAddressValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="autoApprovalOffValue" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isTestnetValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nameValue" attributeType="String" syncable="YES"/>
         <attribute name="okAgeValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="teammatesValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Teammate" inverseName="teamValue" inverseEntity="Teammate" syncable="YES"/>
+        <fetchIndex name="byIdValueIndex">
+            <fetchIndexElement property="idValue" type="Binary" order="ascending"/>
+        </fetchIndex>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
@@ -57,7 +66,7 @@
     </entity>
     <entity name="Teammate" representedClassName=".Teammate" syncable="YES" codeGenerationType="category">
         <attribute name="fbNameValue" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nameValue" attributeType="String" syncable="YES"/>
         <attribute name="publicKeyValue" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="addressesValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="teammateValue" inverseEntity="BtcAddress" syncable="YES"/>
@@ -67,6 +76,9 @@
         <relationship name="signaturesValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxSignature" inverseName="teammateValue" inverseEntity="TxSignature" syncable="YES"/>
         <relationship name="teamValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="teammatesValue" inverseEntity="Team" syncable="YES"/>
         <relationship name="transactionsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="teammateValue" inverseEntity="Tx" syncable="YES"/>
+        <fetchIndex name="byIdValueIndex">
+            <fetchIndexElement property="idValue" type="Binary" order="ascending"/>
+        </fetchIndex>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
@@ -78,7 +90,7 @@
         <attribute name="claimIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="clientResolutionTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="feeValue" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" syncable="YES"/>
         <attribute name="initiatedTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="isServerUpdateNeededValue" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="kindValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -95,6 +107,9 @@
         <relationship name="moveToAddressValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BtcAddress" inverseName="moveFundsTransactionsValue" inverseEntity="BtcAddress" syncable="YES"/>
         <relationship name="outputsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxOutput" inverseName="transactionValue" inverseEntity="TxOutput" syncable="YES"/>
         <relationship name="teammateValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="transactionsValue" inverseEntity="Teammate" syncable="YES"/>
+        <fetchIndex name="byIdValueIndex">
+            <fetchIndexElement property="idValue" type="Binary" order="ascending"/>
+        </fetchIndex>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
@@ -103,12 +118,15 @@
     </entity>
     <entity name="TxInput" representedClassName=".TxInput" syncable="YES" codeGenerationType="category">
         <attribute name="ammountValue" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" syncable="YES"/>
         <attribute name="previousTransactionIDValue" attributeType="String" syncable="YES"/>
         <attribute name="previousTransactionIndexValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
         <relationship name="signatureValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxSignature" inverseName="inputValue" inverseEntity="TxSignature" syncable="YES"/>
         <relationship name="transactionValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tx" inverseName="inputsValue" inverseEntity="Tx" syncable="YES"/>
+        <fetchIndex name="byIdValueIndex">
+            <fetchIndexElement property="idValue" type="Binary" order="ascending"/>
+        </fetchIndex>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
@@ -117,11 +135,14 @@
     </entity>
     <entity name="TxOutput" representedClassName=".TxOutput" syncable="YES" codeGenerationType="category">
         <attribute name="amountValue" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
-        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" syncable="YES"/>
         <attribute name="payToIDValue" attributeType="String" syncable="YES"/>
         <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
         <relationship name="payToValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PayTo" inverseName="outputValue" inverseEntity="PayTo" syncable="YES"/>
         <relationship name="transactionValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tx" inverseName="outputsValue" inverseEntity="Tx" syncable="YES"/>
+        <fetchIndex name="byIdValueIndex">
+            <fetchIndexElement property="idValue" type="Binary" order="ascending"/>
+        </fetchIndex>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
@@ -129,13 +150,16 @@
         </uniquenessConstraints>
     </entity>
     <entity name="TxSignature" representedClassName=".TxSignature" syncable="YES" codeGenerationType="category">
-        <attribute name="idValue" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="idValue" attributeType="String" syncable="YES"/>
         <attribute name="inputIDValue" attributeType="String" syncable="YES"/>
         <attribute name="isServerUpdateNeededValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="signatureValue" attributeType="Binary" syncable="YES"/>
         <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="inputValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxInput" inverseName="signatureValue" inverseEntity="TxInput" syncable="YES"/>
         <relationship name="teammateValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="signaturesValue" inverseEntity="Teammate" syncable="YES"/>
+        <fetchIndex name="byIdValueIndex">
+            <fetchIndexElement property="idValue" type="Binary" order="ascending"/>
+        </fetchIndex>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
@@ -148,7 +172,6 @@
         <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isFbAuthorizedValue" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastUpdatedValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="privateKeyValue" attributeType="String" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="idValue"/>
@@ -165,6 +188,6 @@
         <element name="TxInput" positionX="-468" positionY="207" width="128" height="150"/>
         <element name="TxOutput" positionX="349" positionY="378" width="128" height="135"/>
         <element name="TxSignature" positionX="-470" positionY="3" width="128" height="150"/>
-        <element name="User" positionX="-261" positionY="-72" width="128" height="135"/>
+        <element name="User" positionX="-261" positionY="-72" width="128" height="120"/>
     </elements>
 </model>
