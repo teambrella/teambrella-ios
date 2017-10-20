@@ -714,6 +714,10 @@
 		6DB812221EE6FD2E00B202CE /* ClaimVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB812211EE6FD2E00B202CE /* ClaimVC.swift */; };
 		6DB8122A1EE715DA00B202CE /* DiscussionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB812281EE715DA00B202CE /* DiscussionCell.swift */; };
 		6DB8122B1EE715DA00B202CE /* DiscussionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB812291EE715DA00B202CE /* DiscussionCell.xib */; };
+		6DBBF8001F9A561600524B1E /* Multisig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBF7FF1F9A561600524B1E /* Multisig.swift */; };
+		6DBBF8011F9A561600524B1E /* Multisig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBF7FF1F9A561600524B1E /* Multisig.swift */; };
+		6DBBF8031F9A5F6800524B1E /* Unconfirmed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBF8021F9A5F6800524B1E /* Unconfirmed.swift */; };
+		6DBBF8041F9A5F6800524B1E /* Unconfirmed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBF8021F9A5F6800524B1E /* Unconfirmed.swift */; };
 		6DBF49291F80EF2600B236E2 /* HomePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */; };
 		6DBF492B1F80F10B00B236E2 /* AnimationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */; };
 		6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */; };
@@ -1200,6 +1204,8 @@
 		6DB812211EE6FD2E00B202CE /* ClaimVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClaimVC.swift; path = Scenes/Team/Claims/ClaimVC.swift; sourceTree = "<group>"; };
 		6DB812281EE715DA00B202CE /* DiscussionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionCell.swift; path = View/Cells/DiscussionCell.swift; sourceTree = "<group>"; };
 		6DB812291EE715DA00B202CE /* DiscussionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscussionCell.xib; path = View/Cells/DiscussionCell.xib; sourceTree = "<group>"; };
+		6DBBF7FF1F9A561600524B1E /* Multisig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multisig.swift; sourceTree = "<group>"; };
+		6DBBF8021F9A5F6800524B1E /* Unconfirmed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unconfirmed.swift; sourceTree = "<group>"; };
 		6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomePresentationController.swift; path = Scenes/Home/HomePresentationController.swift; sourceTree = "<group>"; };
 		6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimationTools.swift; path = Helpers/AnimationTools.swift; sourceTree = "<group>"; };
 		6DC230691ED07F0500FAC330 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
@@ -1710,6 +1716,8 @@
 				6D466A971ED07CF1001BC579 /* TxOutput.swift */,
 				6D466A981ED07CF1001BC579 /* TxSignature.swift */,
 				6D466A991ED07CF1001BC579 /* User.swift */,
+				6DBBF7FF1F9A561600524B1E /* Multisig.swift */,
+				6DBBF8021F9A5F6800524B1E /* Unconfirmed.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -3297,6 +3305,7 @@
 				6D4E5CFF1F7AB6870020DEE2 /* ChooseYourTeamCellModel.swift in Sources */,
 				6D4E5D001F7AB6870020DEE2 /* TeambrellaStyle.swift in Sources */,
 				6D666B711F8512FA00812CBE /* PlistStorage.swift in Sources */,
+				6DBBF8041F9A5F6800524B1E /* Unconfirmed.swift in Sources */,
 				6D4E5D011F7AB6870020DEE2 /* NSObject.swift in Sources */,
 				6D4E5D021F7AB6870020DEE2 /* Session.swift in Sources */,
 				6D4E5D031F7AB6870020DEE2 /* TeammateStats.swift in Sources */,
@@ -3339,6 +3348,7 @@
 				6D4E5D241F7AB6870020DEE2 /* PieChartView.swift in Sources */,
 				6D4E5D251F7AB6870020DEE2 /* PrivateMessagesCellBuilder.swift in Sources */,
 				6D4E5D261F7AB6870020DEE2 /* PrivateChatUserCell.swift in Sources */,
+				6DBBF8011F9A561600524B1E /* Multisig.swift in Sources */,
 				6D4E5D271F7AB6870020DEE2 /* UIFont.swift in Sources */,
 				6D4E5D281F7AB6870020DEE2 /* RequestBody.swift in Sources */,
 				6D4E5D291F7AB6870020DEE2 /* TeammateProfileVC.swift in Sources */,
@@ -3514,6 +3524,7 @@
 				6D0BA5B31F14F88100055E74 /* DateProcessor.swift in Sources */,
 				6DD051BB1F66F0D700532626 /* SocketAction.swift in Sources */,
 				6DA714F11EE00D1800F39EBE /* NumberBar.swift in Sources */,
+				6DBBF8031F9A5F6800524B1E /* Unconfirmed.swift in Sources */,
 				6D69D9E51EFBEECB00DED5CE /* ProxyCellModel.swift in Sources */,
 				6D35EFC51EAF8AB700696B42 /* TransactionsresultTVC.swift in Sources */,
 				6D466AAA1ED07CF1001BC579 /* Tx.swift in Sources */,
@@ -3670,6 +3681,7 @@
 				6DEE67A51EDC75DA0098EDB3 /* TeammateHeaderView.swift in Sources */,
 				6D0D2AE61EFBD48D0095284C /* UserIndexVC.swift in Sources */,
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
+				6DBBF8001F9A561600524B1E /* Multisig.swift in Sources */,
 				6D69DA141EFC461700DED5CE /* CoverageVC.swift in Sources */,
 				6D02AC951F06A6B800B01AAF /* VotingScrollerCellModel.swift in Sources */,
 				6DCF62531F4B30E200E8F500 /* PhotoPreviewVC.swift in Sources */,
