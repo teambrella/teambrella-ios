@@ -93,7 +93,7 @@ final class LoginBlueVC: UIViewController {
     }
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
-        service.crypto.clearLastUserType()
+        service.keyStorage.clearLastUserType()
     }
     
     @objc
@@ -173,7 +173,7 @@ final class LoginBlueVC: UIViewController {
     }
     
     private func register(token: String, userID: String) {
-        service.crypto.setToRealUser()
+        service.keyStorage.setToRealUser()
         
         guard let signature = EthereumProcessor.standard.publicKeySignature else {
             let error = TeambrellaErrorFactory.malformedETCsignature()
@@ -215,7 +215,7 @@ final class LoginBlueVC: UIViewController {
     
     private func handleFailure(error: Error?) {
         HUD.hide()
-        service.crypto.clearLastUserType()
+        service.keyStorage.clearLastUserType()
         performSegue(type: .invitationOnly, sender: nil)
         log("Error \(String(describing: error))", type: .error)
     }
@@ -232,7 +232,7 @@ final class LoginBlueVC: UIViewController {
     
     private func logAsFacebookUser(user: FacebookUser?) {
         HUD.hide()
-        service.crypto.setToRealUser()
+        service.keyStorage.setToRealUser()
         performSegue(type: .unwindToInitial, sender: user)
     }
     

@@ -21,7 +21,7 @@
 
 import Foundation
 
-final class CryptoUser {
+final class KeyStorage {
     enum LastUserType: String {
         case none, real, demo
     }

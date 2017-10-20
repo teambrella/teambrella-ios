@@ -62,7 +62,7 @@ class GalleryView: ImageSlideshow {
     
     func inputs(from imageStrings: [String], completion: @escaping ([InputSource]) -> Void) {
         let imageStrings = imageStrings.map { service.server.urlString(string: $0) }
-        service.storage.freshKey { key in
+        service.dao.freshKey { key in
             let modifier = AnyModifier { request in
                 var request = request
                 request.addValue("\(key.timestamp)", forHTTPHeaderField: "t")

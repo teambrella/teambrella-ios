@@ -116,7 +116,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        service.storage.recentScene = .home
+        service.dao.recentScene = .home
         guard isFirstLoading == false else {
             isFirstLoading = false
             return

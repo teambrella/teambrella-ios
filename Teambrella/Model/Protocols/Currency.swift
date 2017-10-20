@@ -17,26 +17,27 @@
 import Foundation
 
 struct Currency {
-    let prototype: CurrencyLike
+    let prototype: CurrencyLike & CurrencyTransformable
     let value: Decimal
     
     func currencyAdding(_ other: Currency) -> Currency? {
-        guard let transformable = prototype as? CurrencyTransformable,
-            let otherTransformable = other.prototype as? CurrencyTransformable,
-            let rate = transformable.rate(to: otherTransformable) else { return nil }
+        guard let rate = other.prototype.rate(to: prototype) else { return nil }
         
-        return Currency(prototype: prototype, value: value * Decimal(rate))
+        let newValue = other.value * rate + value
+        return Currency(prototype: prototype, value: newValue)
     }
 }
 
 extension Currency: Comparable {
-    static func <(lhs: Currency, rhs: Currency) -> Bool {
-        guard type(of: lhs) == type(of: rhs) else { return false }
+    static func < (lhs: Currency, rhs: Currency) -> Bool {
+        guard let rate = lhs.prototype.rate(to: rhs.prototype) else { return false }
         
-        return lhs.value < rhs.value
+        return lhs.value * rate < rhs.value
     }
     
-    static func ==(lhs: Currency, rhs: Currency) -> Bool {
-        return type(of: lhs) == type(of: rhs) && lhs.value == rhs.value
+    static func == (lhs: Currency, rhs: Currency) -> Bool {
+        guard let rate = lhs.prototype.rate(to: rhs.prototype) else { return false }
+        
+        return abs(lhs.value * rate - rhs.value) < 0.0000000000000001
     }
 }

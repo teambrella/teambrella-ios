@@ -22,11 +22,20 @@ class EthereumWorker: CryptoWorker {
         static let gasLimit = 1300000
     }
     
-    var hasNews: Bool = false
     let queue = DispatchQueue(label: "com.teambrella.ethereumWorker.queue", qos: .background)
+    lazy var processor: EthereumProcessor = { EthereumProcessor.standard }()
+    var hasNews: Bool = false
+    
+    private var observerToken: NSKeyValueObservation?
+    
+    init() {
+        observerToken = service.server.observe(\.timestamp) { [weak self] object, change in
+            self?.processor.key = object.key
+        }
+    }
     
     func sync() {
-        queue.async { [unowned self] in
+        self.queue.async { [unowned self] in
             var attemptsLeft = Constant.maxAttempts
             while attemptsLeft > 0 && self.hasNews {
                 self.createWallets(gasLimit: Constant.gasLimit)
@@ -42,8 +51,11 @@ class EthereumWorker: CryptoWorker {
         }
     }
     
-    func createWallets(gasLimit: Int) {
-        
+    @discardableResult
+    func createWallets(gasLimit: Int) -> Bool {
+        let myPublicKey = processor.key.publicKey
+        // WIP!
+        return false
     }
     
     func verifyIfWalletIsCreated() {

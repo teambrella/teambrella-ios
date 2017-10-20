@@ -44,7 +44,7 @@ let isLocalServer = false
 /**
  Service to interoperate with the server fetching all UI related information
  */
-class ServerService {
+class ServerService: NSObject {
     struct Constant {
         static var siteURL: String { return isLocalServer ? "https://surilla.com" : "https://teambrella.com" }
         static let timestampURL = "me/GetTimestamp"
@@ -63,14 +63,15 @@ class ServerService {
     static var teamID: Int { return service.session?.currentTeam?.teamID ?? 0 }
     
     static var privateKey: String {
-        return service.crypto.privateKey
+        return service.keyStorage.privateKey
     }
     
-    private(set)var timestamp: Int64 = 0
+    @objc dynamic private(set)var timestamp: Int64 = 0 
+    
     var key: Key { return Key(base58String: ServerService.privateKey, timestamp: timestamp) }
     
-    init() {
-        
+    override init() {
+        super.init()
     }
     
     func avatarURLstring(for string: String,

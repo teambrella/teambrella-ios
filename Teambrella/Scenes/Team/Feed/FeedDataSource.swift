@@ -41,7 +41,7 @@ class FeedDataSource {
     func loadData() {
         let offset = isSilentUpdate ? 0 : count
         let context = FeedRequestContext(teamID: teamID, since: since, offset: offset, limit: limit)
-        service.storage.requestTeamFeed(context: context).observe { [weak self] result in
+        service.dao.requestTeamFeed(context: context).observe { [weak self] result in
              guard let `self` = self else { return }
             
             switch result {

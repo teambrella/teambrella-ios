@@ -28,7 +28,7 @@ final class InitialVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if service.crypto.lastUserType != .none {
+        if service.keyStorage.lastUserType != .none {
             isLoginNeeded = false
             startLoadingTeams()
         }
@@ -58,9 +58,9 @@ final class InitialVC: UIViewController {
     // MARK: Private
     
     private func getTeams(timestamp: Int64) {
-        service.crypto.timestamp = timestamp
-        let isDemo = service.crypto.isDemoUser
-        service.storage.requestTeams(demo: isDemo).observe { [weak self] result in
+        service.keyStorage.timestamp = timestamp
+        let isDemo = service.keyStorage.isDemoUser
+        service.dao.requestTeams(demo: isDemo).observe { [weak self] result in
             switch result {
             case let .value(teamsEntity):
                 service.session = Session()
@@ -100,7 +100,7 @@ final class InitialVC: UIViewController {
     
     private func presentMasterTab() {
         performSegue(type: .teambrella)
-        if service.storage.recentScene == .feed {
+        if service.dao.recentScene == .feed {
             service.router.switchToFeed()
         } else {
             // present default .home screen

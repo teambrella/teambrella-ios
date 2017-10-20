@@ -48,7 +48,7 @@ extension UIImageView {
     }
     
     func showImage(url: URL, completion: ((UIImage?, NSError?) -> Void)? = nil) {
-        service.storage.freshKey { [weak self] key in
+        service.dao.freshKey { [weak self] key in
             let modifier = AnyModifier { request in
                 var request = request
                 request.addValue("\(key.timestamp)", forHTTPHeaderField: "t")

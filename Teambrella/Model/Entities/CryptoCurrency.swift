@@ -26,43 +26,52 @@ protocol CurrencyLike {
     var symbol: String { get }
     var code: String { get }
     var child: CurrencyLike? { get }
-    var childRate: Double { get }
+    var childRate: Decimal { get }
     var coinCode: String { get }
     var parent: CurrencyLike? { get }
 }
 
 protocol CurrencyTransformable {
-    func rate(to: CurrencyTransformable) -> Double?
+    func rate(to: CurrencyTransformable) -> Decimal?
 }
 
 extension CurrencyTransformable where Self: CurrencyLike {
-    func rate(to: CurrencyTransformable) -> Double? {
-        var rate: Double = 1
+    func rate(to: CurrencyTransformable) -> Decimal? {
+        var rate: Decimal = 1
         guard type(of: to) != type(of: self) else { return rate }
         
         var superCoin = parent
         while let coin = superCoin {
             rate /= coin.childRate
-            if let child = coin.child, type(of: child) == type(of: self) {
+            if type(of: coin) == type(of: to) {
                 return rate
             }
             superCoin = coin.parent
         }
         
         var childCoin = child
-        rate = 1
+        rate = childRate
         while let coin = childCoin {
-            rate *= coin.childRate
-            if let parent = coin.parent, type(of: parent) == type(of: self) {
+            if type(of: coin) == type(of: to) {
                 return rate
             }
+            rate *= coin.childRate
             childCoin = coin.child
         }
         return nil
     }
 }
 
-struct Ethereum: CurrencyLike {
+/*
+ let finneyRate = 1000
+ let szaboRate = 1000_000
+ let gweiRate = 1000_000_000
+ let mweiRate = 1000_000_000_000
+ let kweiRate = 1000_000_000_000_000
+ let weiRate = 1000_000_000_000_000_000
+ */
+
+struct Ethereum: CurrencyLike, CurrencyTransformable {
     let name = "Ethereum"
     let code = "ETH"
     let symbol = "Ξ"
@@ -70,19 +79,10 @@ struct Ethereum: CurrencyLike {
     var coinCode: String { return child?.code ?? "" }
     var child: CurrencyLike? { return Finney() }
     let parent: CurrencyLike? = nil
-    let childRate: Double = 1000
-    
-    /*
-     let finneyRate = 1000
-     let szaboRate = 1000_000
-     let gweiRate = 1000_000_000
-     let mweiRate = 1000_000_000_000
-     let kweiRate = 1000_000_000_000_000
-     let weiRate = 1000_000_000_000_000_000
-     */
+    let childRate: Decimal = 1000
 }
 
-struct Finney: CurrencyLike {
+struct Finney: CurrencyLike, CurrencyTransformable {
     let name = "Finney"
     let code = "mETH"
     let symbol = "mΞ"
@@ -90,10 +90,10 @@ struct Finney: CurrencyLike {
     var coinCode: String { return child?.code ?? "" }
     var child: CurrencyLike? { return Szabo() }
     var parent: CurrencyLike? { return Ethereum() }
-    let childRate: Double = 1000
+    let childRate: Decimal = 1000
 }
 
-struct Szabo: CurrencyLike {
+struct Szabo: CurrencyLike, CurrencyTransformable {
     let name = "Szabo"
     let code = "µETH"
     let symbol = "µΞ"
@@ -101,10 +101,10 @@ struct Szabo: CurrencyLike {
     var coinCode: String { return child?.code ?? "" }
     var child: CurrencyLike? { return Gwei() }
     var parent: CurrencyLike? { return Finney() }
-    let childRate: Double = 1000
+    let childRate: Decimal = 1000
 }
 
-struct Gwei: CurrencyLike {
+struct Gwei: CurrencyLike, CurrencyTransformable {
     let name = "Gwei"
     let code = "Gwei"
     let symbol = "Gwei"
@@ -112,10 +112,10 @@ struct Gwei: CurrencyLike {
     var coinCode: String { return child?.code ?? "" }
     var child: CurrencyLike? { return Mwei() }
     var parent: CurrencyLike? { return Szabo() }
-    let childRate: Double = 1000
+    let childRate: Decimal = 1000
 }
 
-struct Mwei: CurrencyLike {
+struct Mwei: CurrencyLike, CurrencyTransformable {
     let name = "Mwei"
     let code = "Mwei"
     let symbol = "Mwei"
@@ -123,10 +123,10 @@ struct Mwei: CurrencyLike {
     var coinCode: String { return child?.code ?? "" }
     var child: CurrencyLike? { return Kwei() }
     var parent: CurrencyLike? { return Gwei() }
-    let childRate: Double = 1000
+    let childRate: Decimal = 1000
 }
 
-struct Kwei: CurrencyLike {
+struct Kwei: CurrencyLike, CurrencyTransformable {
     let name = "Kwei"
     let code = "Kwei"
     let symbol = "Kwei"
@@ -134,10 +134,10 @@ struct Kwei: CurrencyLike {
     var coinCode: String { return child?.code ?? "" }
     var child: CurrencyLike? { return Wei() }
     var parent: CurrencyLike? { return Mwei() }
-    let childRate: Double = 1000
+    let childRate: Decimal = 1000
 }
 
-struct Wei: CurrencyLike {
+struct Wei: CurrencyLike, CurrencyTransformable {
     let name = "Wei"
     let code = "Wei"
     let symbol = "Wei"
@@ -145,5 +145,5 @@ struct Wei: CurrencyLike {
     var coinCode: String { return child?.code ?? "" }
     let child: CurrencyLike? = nil
     var parent: CurrencyLike? { return Kwei() }
-    let childRate: Double = 1
+    let childRate: Decimal = 1
 }

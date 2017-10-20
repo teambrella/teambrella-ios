@@ -36,7 +36,7 @@ class PrivateMessagesDataSource: NSObject {
     func loadNext(filter: String? = nil) {
         if filter != previousFilter { items.removeAll() }
         previousFilter = filter
-        service.storage.requestPrivateList(offset: offset, limit: limit, filter: filter).observe { [weak self] result in
+        service.dao.requestPrivateList(offset: offset, limit: limit, filter: filter).observe { [weak self] result in
             guard let `self` = self else { return }
             
             switch result {

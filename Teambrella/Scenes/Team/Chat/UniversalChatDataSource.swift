@@ -205,7 +205,7 @@ final class UniversalChatDatasource {
             isLoadNextNeeded = false
         }
         
-        service.storage.freshKey { [weak self] key in
+        service.dao.freshKey { [weak self] key in
             guard let me = self else { return }
             
             let limit = me.limit// previous ? -me.limit: me.limit

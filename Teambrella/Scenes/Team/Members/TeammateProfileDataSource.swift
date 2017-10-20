@@ -89,7 +89,7 @@ class TeammateProfileDataSource {
     }
     
     func addToProxy(completion: @escaping () -> Void) {
-        service.storage.myProxy(userID: teammateID, add: !isMyProxy).observe { [weak self] result in
+        service.dao.myProxy(userID: teammateID, add: !isMyProxy).observe { [weak self] result in
             switch result {
             case .value:
                 guard let me = self else { return }

@@ -20,31 +20,29 @@ import XCTest
 
 class CurrencyTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
+    func testAddSmall() {
        let eth = Currency(prototype: Ethereum(), value: 5)
         let gwei = Currency(prototype: Gwei(), value: 123)
-        
         let added = eth.currencyAdding(gwei)
         XCTAssertNotNil(added)
-        print(added!.value)
-        XCTAssertGreaterThan(added!.value, 5)
+        XCTAssertLessThan(abs(added!.value - 5.000000123), 0.0000000001)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testAddLarge() {
+        let gwei = Currency(prototype: Gwei(), value: 123)
+        let eth = Currency(prototype: Ethereum(), value: 5)
+        let added = gwei.currencyAdding(eth)
+        XCTAssertNotNil(added)
+        XCTAssertLessThan(abs(added!.value - 5000000123), 0.1)
+    }
+    
+    func testAddSame() {
+        let gwei1 = Currency(prototype: Gwei(), value: 123)
+        let t = type(of: gwei1)
+        let gwei2 = Currency(prototype: Gwei(), value: 2)
+        let added = gwei1.currencyAdding(gwei2)
+        XCTAssertNotNil(added)
+        XCTAssertLessThan(abs(added!.value - 125), 0.1)
     }
     
 }
