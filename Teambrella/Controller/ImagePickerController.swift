@@ -85,7 +85,7 @@ class ImagePickerController: NSObject {
             fatalError("Can't process image")
         }
         
-        service.storage.sendPhoto(data: imageData).observe { [weak self] result in
+        service.dao.sendPhoto(data: imageData).observe { [weak self] result in
             guard let me = self else { return }
             
             switch result {

@@ -38,6 +38,7 @@ class CurrencyTests: XCTestCase {
     
     func testAddSame() {
         let gwei1 = Currency(prototype: Gwei(), value: 123)
+        let t = type(of: gwei1)
         let gwei2 = Currency(prototype: Gwei(), value: 2)
         let added = gwei1.currencyAdding(gwei2)
         XCTAssertNotNil(added)

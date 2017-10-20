@@ -53,7 +53,7 @@ class WalletVC: UIViewController {
     }
     
     func prepareWalletAddress() {
-        service.storage.freshKey { [weak self] key in
+        service.dao.freshKey { [weak self] key in
             let processor = EthereumProcessor(key: key)
             self?.walletID = processor.ethAddressString ?? ""
             self?.qrCode = self?.generateQRCode()

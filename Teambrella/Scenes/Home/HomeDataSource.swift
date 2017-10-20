@@ -37,7 +37,7 @@ class HomeDataSource {
     var name: String { return model?.name.first ?? "" }
     
     func loadData(teamID: Int) {
-        service.storage.requestHome(teamID: teamID).observe { [weak self] result in
+        service.dao.requestHome(teamID: teamID).observe { [weak self] result in
             guard let `self` = self else { return }
             
             switch result {
@@ -82,7 +82,7 @@ class HomeDataSource {
     func deleteCard(at index: Int) {
         guard let card = model?.cards.remove(at: index) else { return }
         
-        service.storage.deleteCard(topicID: card.topicID).observe { [weak self] result in
+        service.dao.deleteCard(topicID: card.topicID).observe { [weak self] result in
             switch result {
             case .value(let homeModel):
                 self?.model = homeModel

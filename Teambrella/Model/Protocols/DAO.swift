@@ -23,7 +23,8 @@ import Foundation
 
 typealias ErrorHandler = (Error?) -> Void
 
-protocol Storage {
+/// Data access object protocol
+protocol DAO {
     var recentScene: SceneType { get set }
     
     func freshKey(completion: @escaping (Key) -> Void)

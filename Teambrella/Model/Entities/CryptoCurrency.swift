@@ -62,6 +62,15 @@ extension CurrencyTransformable where Self: CurrencyLike {
     }
 }
 
+/*
+ let finneyRate = 1000
+ let szaboRate = 1000_000
+ let gweiRate = 1000_000_000
+ let mweiRate = 1000_000_000_000
+ let kweiRate = 1000_000_000_000_000
+ let weiRate = 1000_000_000_000_000_000
+ */
+
 struct Ethereum: CurrencyLike, CurrencyTransformable {
     let name = "Ethereum"
     let code = "ETH"
@@ -71,15 +80,6 @@ struct Ethereum: CurrencyLike, CurrencyTransformable {
     var child: CurrencyLike? { return Finney() }
     let parent: CurrencyLike? = nil
     let childRate: Decimal = 1000
-    
-    /*
-     let finneyRate = 1000
-     let szaboRate = 1000_000
-     let gweiRate = 1000_000_000
-     let mweiRate = 1000_000_000_000
-     let kweiRate = 1000_000_000_000_000
-     let weiRate = 1000_000_000_000_000_000
-     */
 }
 
 struct Finney: CurrencyLike, CurrencyTransformable {

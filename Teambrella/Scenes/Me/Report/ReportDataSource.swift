@@ -122,7 +122,7 @@ class ReportDataSource {
     }
     
     private func sendNewChat(model: NewChatModel, completion: @escaping (Any) -> Void) {
-        service.storage.createNewChat(model: model).observe { result in
+        service.dao.createNewChat(model: model).observe { result in
             switch result {
             case let .value(claim):
                 completion(claim)
@@ -135,7 +135,7 @@ class ReportDataSource {
     }
     
     private func sendClaim(model: NewClaimModel, completion: @escaping (Any) -> Void) {
-        service.storage.createNewClaim(model: model).observe { result in
+        service.dao.createNewClaim(model: model).observe { result in
             switch result {
             case let .value(claim):
                 completion(claim)
@@ -150,7 +150,7 @@ class ReportDataSource {
     func getCoverageForDate(date: Date) {
         guard let teamID = service.session?.currentTeam?.teamID else { return }
         
-        service.storage.requestCoverage(for: date, teamID: teamID).observe { [weak self] result in
+        service.dao.requestCoverage(for: date, teamID: teamID).observe { [weak self] result in
             guard let `self` = self else { return }
             
             switch result {

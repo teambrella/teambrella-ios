@@ -250,7 +250,7 @@ final class MainRouter {
         
         PlistStorage().removeCache()
         service.session = nil
-        service.crypto.clearLastUserType()
+        service.keyStorage.clearLastUserType()
         navigator.clear()
         for vc in navigator.viewControllers {
             if let vc = vc as? InitialVC {

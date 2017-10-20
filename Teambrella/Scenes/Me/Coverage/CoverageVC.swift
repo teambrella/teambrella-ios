@@ -102,10 +102,10 @@ class CoverageVC: UIViewController, Routable {
     @objc
     func secretTap(sender: UILongPressGestureRecognizer) {
         let alert = UIAlertController(title: "Secret BTC key",
-                                      message: service.crypto.privateKey,
+                                      message: service.keyStorage.privateKey,
                                       preferredStyle: .actionSheet)
         let copy = UIAlertAction(title: "Copy", style: .default) { action in
-            UIPasteboard.general.string = service.crypto.privateKey
+            UIPasteboard.general.string = service.keyStorage.privateKey
         }
         alert.addAction(copy)
         let close = UIAlertAction(title: "Close", style: .cancel, handler: nil)
@@ -125,7 +125,7 @@ class CoverageVC: UIViewController, Routable {
         guard let teamID = service.session?.currentTeam?.teamID else { return }
         
         HUD.show(.progress, onView: view)
-        service.storage.requestCoverage(for: Date(), teamID: teamID).observe { [weak self] result in
+        service.dao.requestCoverage(for: Date(), teamID: teamID).observe { [weak self] result in
             switch result {
             case let .value((coverage: coverage, limit: limit)):
                 self?.coverageAmount = Int(coverage * 100)

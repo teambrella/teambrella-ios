@@ -21,6 +21,7 @@
 
 import Foundation
 import Geth
+import SwiftKeccak
 
 /**
  * Interaction with Ethereum wallet
@@ -29,7 +30,7 @@ import Geth
     /// creates a processor with the key that is stored for the current user
     static var standard: EthereumProcessor { return EthereumProcessor(key: service.server.key) }
     
-    private var key: Key
+    var key: Key
     
     /// BTC key
     private var secretData: Data { return key.key.privateKey as Data }
@@ -96,6 +97,16 @@ import Geth
         bytes[0] += 27
         //bytes.insert(27, at: 0)
         return Data(bytes)
+    }
+    
+    /// returns hash made by Keccak algorithm
+    func sha3(_ string: String) -> Data {
+        return keccak256(string)
+    }
+    
+    /// returns hash made by Keccak algorithm
+    func sha3(_ data: Data) -> Data {
+        return keccak256(data)
     }
     
 }

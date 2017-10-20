@@ -21,7 +21,7 @@
 
 import Foundation
 
-class LocalStorage: Storage {
+class ServerDAO: DAO {
     struct Constant {
         static let recentSceneKey: String = "storage.recentScene"
     }

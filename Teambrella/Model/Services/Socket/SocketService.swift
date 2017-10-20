@@ -34,7 +34,7 @@ class SocketService {
         let url = url ?? URL(string: "wss://" + "surilla.com" + "/wshandler.ashx")!
         log("trying to connect to socket: \(url.absoluteString)", type: .socket)
         socket = WebSocket(url: url)
-        service.storage.freshKey { key in
+        service.dao.freshKey { key in
             self.socket.headers["t"] = String(key.timestamp)
             self.socket.headers["key"] = key.publicKey
             self.socket.headers["sig"] = key.signature
