@@ -25,7 +25,6 @@ import CoreData
 class BlockchainStorageFetcher {
     struct Constant {
         static let noAutoApproval = 1000000
-        //fileprivate static let tmpPrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
     }
     
     private unowned var storage: BlockchainStorage
@@ -42,7 +41,6 @@ class BlockchainStorageFetcher {
     // MARK: User
     var user: User {
         let request: NSFetchRequest<User> = User.fetchRequest()
-        // request.predicate = NSPredicate(format: "addressValue = %@", id)
         let result = try? context.fetch(request)
         if let user = result?.first {
             return user
@@ -111,61 +109,51 @@ class BlockchainStorageFetcher {
     }
     
     // MARK: Transaction
+    
     var transactions: [Tx] {
         let request: NSFetchRequest<Tx> = Tx.fetchRequest()
         let result = try? context.fetch(request)
         return result ?? []
     }
     
-    func transaction(id: String) -> Tx? {
+    func transactions(with predicate: NSPredicate) -> [Tx] {
         let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        request.predicate = NSPredicate(format: "idValue = %@", id)
+        request.predicate = predicate
         let result = try? context.fetch(request)
-        return result?.first
+        return result ?? []
+    }
+    
+    func transaction(id: String) -> Tx? {
+        return transactions(with: NSPredicate(format: "idValue = %@", id)).first
     }
     
     var transactionsNeedServerUpdate: [Tx] {
-        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        request.predicate = NSPredicate(format: "isServerUpdateNeededValue == TRUE")
-        let items = try? context.fetch(request)
-        return items ?? []
+        return transactions(with: NSPredicate(format: "isServerUpdateNeededValue == TRUE"))
     }
     
     var transactionsResolvable: [Tx] {
-        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        request.predicate = NSPredicate(format: "resolutionValue == \(TransactionClientResolution.received.rawValue)")
-        let items = try? context.fetch(request)
-        return items ?? []
+        let predicate = NSPredicate(format: "resolutionValue == \(TransactionClientResolution.received.rawValue)")
+        return transactions(with: predicate)
     }
     
     var transactionsCosignable: [Tx] {
-        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        let p1 = NSPredicate(format: "resolutionValue == %i", TransactionClientResolution.approved.rawValue)
-        let p2 = NSPredicate(format: "stateValue == %i", TransactionState.selectedForCosigning.rawValue)
-        let p3 = NSPredicate(format: "inputsValue.@count > 0")
-        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1, p2, p3])
-        let items = try? context.fetch(request)
-        return items ?? []
+        let predicates = [NSPredicate(format: "resolutionValue == %i", TransactionClientResolution.approved.rawValue),
+                          NSPredicate(format: "stateValue == %i", TransactionState.selectedForCosigning.rawValue),
+                          NSPredicate(format: "inputsValue.@count > 0")
+        ]
+        return transactions(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
     }
     
     var transactionsApprovedAndCosigned: [Tx] {
-        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        let p1 = NSPredicate(format: "resolutionValue == %i", TransactionClientResolution.approved.rawValue)
-        let p2 = NSPredicate(format: "stateValue == %i", TransactionState.cosigned.rawValue)
-        let p3 = NSPredicate(format: "inputsValue.@count > 0")
-        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1, p2, p3])
-        do {
-            return try context.fetch(request)
-        } catch {
-            return []
-        }
+        let predicates = [NSPredicate(format: "resolutionValue == %i", TransactionClientResolution.approved.rawValue),
+                          NSPredicate(format: "stateValue == %i", TransactionState.cosigned.rawValue),
+                          NSPredicate(format: "inputsValue.@count > 0")
+        ]
+        return transactions(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
     }
     
     func transactionsChanged(since date: Date) -> [Tx]? {
-        let request: NSFetchRequest<Tx> = Tx.fetchRequest()
-        request.predicate = NSPredicate(format: "updateTimeValue > %@", date as NSDate)
-        let items = try? context.fetch(request)
-        return items
+        return transactions(with: NSPredicate(format: "updateTimeValue > %@", date as NSDate))
     }
     
     func isMy(tx: Tx) -> Bool {
@@ -253,9 +241,12 @@ class BlockchainStorageFetcher {
     // MARK: Signatures
     
     var signaturesToUpdate: [TxSignature] {
+        return signatures(with: NSPredicate(format: "isServerUpdateNeededValue == TRUE"))
+    }
+    
+    func signatures(with predicate: NSPredicate) -> [TxSignature] {
         let request: NSFetchRequest<TxSignature> = TxSignature.fetchRequest()
-        request.predicate = NSPredicate(format: "isServerUpdateNeededValue == TRUE")
-        
+        request.predicate = predicate
         let items = try? context.fetch(request)
         return items ?? []
     }
@@ -265,10 +256,10 @@ class BlockchainStorageFetcher {
     }
     
     func signature(input: String, teammateID: Int) -> TxSignature? {
-        let request: NSFetchRequest<TxSignature> = TxSignature.fetchRequest()
-        request.predicate = NSPredicate(format: "inputValue.idValue == %@ AND teammateIDValue == %i", input, teammateID)
-        let items = try? context.fetch(request)
-        return items?.first
+        let predicates = [NSPredicate(format: "inputValue.idValue == %@", input),
+                          NSPredicate(format: "teammateIDValue == %i", teammateID)
+        ]
+        return signatures(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).first
     }
     
     @discardableResult
@@ -286,25 +277,49 @@ class BlockchainStorageFetcher {
     // MARK: Multisig
     
     func multisig(id: Int64) -> Multisig? {
-        let request: NSFetchRequest<Multisig> = Multisig.fetchRequest()
-        request.predicate = NSPredicate(format: "idValue = %i", id)
-        let items = try? context.fetch(request)
-        return items?.first
+        return multisigs(with: NSPredicate(format: "idValue = %i", id)).first
     }
     
     func multisigsToCreate(publicKey: String) -> [Multisig] {
+        let predicates = [NSPredicate(format: "addressValue = nil"),
+                          NSPredicate(format: "statusValue = %i", MultisigStatus.current.rawValue),
+                          NSPredicate(format: "publicKeyValue = %@", publicKey)
+        ]
+        return multisigs(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
+    }
+    
+    /// get multisigs with address by teammate id
+    func multisigs(publicKey: String, teammateID: Int64) -> [Multisig] {
+        let predicates = [NSPredicate(format: "publicKeyValue = %@", publicKey),
+                          NSPredicate(format: "teammateIdValue = %i", teammateID),
+                          NSPredicate(format: "addressValue != nil"),
+                          NSPredicate(format: "creationTxValue != nil")
+        ]
+        return multisigs(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
+    }
+    
+    func multisigsInCreation(publicKey: String) -> [Multisig] {
+        let predicates = [NSPredicate(format: "publicKeyValue = %@", publicKey),
+                          NSPredicate(format: "addressValue = nil"),
+                          NSPredicate(format: "creationTxValue != nil"),
+                          NSPredicate(format: "statusValue != %i", MultisigStatus.failed.rawValue)
+        ]
+        return multisigs(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
+    }
+    
+    func currentMultisigsWithAddress(publicKey: String) -> [Multisig] {
+        let predicates = [NSPredicate(format: "publicKeyValue = %@", publicKey),
+                          NSPredicate(format: "addressValue != nil"),
+                          NSPredicate(format: "statusValue != %i", MultisigStatus.current.rawValue)
+        ]
+        return multisigs(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
+    }
+    
+    func multisigs(with predicate: NSPredicate) -> [Multisig] {
         let request: NSFetchRequest<Multisig> = Multisig.fetchRequest()
-        request.predicate = NSPredicate(format: "idValue = %i", id)
+        request.predicate = predicate
         let items = try? context.fetch(request)
-        return items?.first
-    }
+        return items ?? []
     }
     
-    
-    //    var pendingPayments: [BlockchainPayTo]? {
-    //        let request: NSFetchRequest<BlockchainTeammate> = BlockchainPayTo.fetchRequest()
-    //        request.sortDescriptors = [NSSortDescriptor(key: "nameValue", ascending: true)]
-    //        let items = try? storage.context.fetch(request)
-    //        return items
-    //    }
 }

@@ -31,4 +31,5 @@ class Multisig: NSManagedObject {
     var cosigners: Set<Cosigner> {
         return cosignersValue as? Set<Cosigner> ?? []
     }
+    
 }

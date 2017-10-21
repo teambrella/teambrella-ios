@@ -312,13 +312,13 @@ struct EntityFactory {
             let isNew = existing == nil
             let multisig = existing ?? Multisig(context: context)
             multisig.idValue = id
-            multisig.addressValue = item["address"].stringValue
-            multisig.creationTxValue = item["creationTx"].stringValue
+            multisig.addressValue = item["address"].string
+            multisig.creationTxValue = item["creationTx"].string
             multisig.teammateIdValue = item["teammateId"].int64Value
             multisig.statusValue = item["status"].int32Value
             multisig.dateCreatedValue = formatter.date(from: item, key: "dateCreated")
             multisig.teammateNameValue = item["teammateName"].string
-            multisig.teammatePublicKeyValue = item["teammatePublicKey"].stringValue
+            multisig.teammatePublicKeyValue = item["teammatePublicKey"].string
             multisig.teamIdValue = item["teamId"].int64Value
         }
     }
