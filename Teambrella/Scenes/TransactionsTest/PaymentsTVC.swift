@@ -32,8 +32,8 @@ class PaymentsTVC: UITableViewController {
         super.viewDidLoad()
 
         teambrella.delegate = self
-        resolvable = teambrella.storage.contentProvider.transactionsResolvable
-        cosignable = teambrella.storage.contentProvider.transactionsCosignable
+        resolvable = teambrella.contentProvider.transactionsResolvable
+        cosignable = teambrella.contentProvider.transactionsCosignable
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +50,7 @@ class PaymentsTVC: UITableViewController {
             if transaction.resolution == .received {
                 teambrella.approve(tx: transaction)
             } else if transaction.state == .selectedForCosigning {
-                teambrella.blockchain.cosignApprovedTxs()
+//                teambrella.blockchain.cosignApprovedTxs()
             }
            
             //teambrella.blockchain.approve
@@ -85,7 +85,7 @@ class PaymentsTVC: UITableViewController {
         }
 
         let transaction = tx(indexPath: indexPath)
-        let isMy = teambrella.storage.contentProvider.isMy(tx: transaction)
+        let isMy = teambrella.contentProvider.isMy(tx: transaction)
         cell.amountLabel.text = String(describing: transaction.amount)
         cell.userNameLabel.text = transaction.claimTeammate.name
         cell.userNameLabel.textColor = isMy ? .orange : .white

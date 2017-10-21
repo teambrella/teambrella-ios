@@ -77,10 +77,13 @@ class BlockchainService {
         let txID: String
     }
     
-    private unowned let storage: BlockchainStorage
+    //private unowned let storage: BlockchainStorage
+    private unowned let contentProvider: TeambrellaContentProvider
+    private unowned let server: BlockchainServer
     
-    init(storage: BlockchainStorage) {
-        self.storage = storage
+    init(contentProvider: TeambrellaContentProvider, server: BlockchainServer) {
+        self.contentProvider = contentProvider
+        self.server = server
     }
     
     func fetchBalance(address: BtcAddress?, completion: @escaping (_ balance: Decimal) -> Void) {
@@ -91,12 +94,12 @@ class BlockchainService {
         
         let query = "/api.addr/" + address.address + "/balance"
         
-        let servers = storage.server.isTestnet ? Constants.testNetServers : Constants.mainNetServers
+        let servers = server.isTestnet ? Constants.testNetServers : Constants.mainNetServers
         var isFetched = false
         var attempts = servers.count
         for serverURL in servers {
             let urlString = serverURL + query
-            storage.server.fetch(urlString: urlString, success: { result in
+            server.fetch(urlString: urlString, success: { result in
                 attempts -= 1
                 guard isFetched == false, let value = result.double else {
                     return
@@ -122,12 +125,12 @@ class BlockchainService {
         
         let query = "/api.addr/" + address.address + "/utxo"
         
-        let servers = storage.server.isTestnet ? Constants.testNetServers : Constants.mainNetServers
+        let servers = server.isTestnet ? Constants.testNetServers : Constants.mainNetServers
         var isFetched = false
         var attempts = servers.count
         for serverURL in servers {
             let urlString = serverURL + query
-            storage.server.fetch(urlString: urlString, success: { result in
+            server.fetch(urlString: urlString, success: { result in
                 attempts -= 1
                 guard isFetched == false, let value = result.array else { return }
                 
@@ -215,8 +218,8 @@ class BlockchainService {
     }
     
     func cosignApprovedTxs() {
-        let user = storage.contentProvider.user
-        let txs = storage.contentProvider.transactionsCosignable
+        let user = contentProvider.user
+        let txs = contentProvider.transactionsCosignable
         
         for tx in txs {
             guard let blockchainTx = btcTransaction(tx: tx) else {
@@ -238,17 +241,16 @@ class BlockchainService {
                                                         inputNum: idx) else {
                                                             fatalError()
                 }
-                storage.contentProvider.addNewSignature(input: input, tx: tx, signature: signature)
+                contentProvider.addNewSignature(input: input, tx: tx, signature: signature)
             }
             tx.resolution = .signed
-            storage.save()
         }
     }
     
     // master sign
     func publishApprovedAndCosignedTxs() {
-        let user = storage.contentProvider.user
-        let txs = storage.contentProvider.transactionsApprovedAndCosigned
+        let user = contentProvider.user
+        let txs = contentProvider.transactionsApprovedAndCosigned
         
         for tx in txs {
             guard let blockchainTx = btcTransaction(tx: tx) else { fatalError() }
@@ -265,7 +267,7 @@ class BlockchainService {
             ops.append(.OP_0)
             for cosigner in fromAddress.cosigners {
                 for input in txInputs {
-                    if let txSignature = storage.contentProvider.signature(input: input.id, teammateID: cosigner.teammate.id) {
+                    if let txSignature = contentProvider.signature(input: input.id, teammateID: cosigner.teammate.id) {
                         var vchSig = txSignature.signature
                         vchSig.append(BTCSignatureHashType.BTCSignatureHashTypeAll.rawValue)
                         ops.appendData(vchSig)
@@ -282,7 +284,7 @@ class BlockchainService {
                                                         inputNum: idx) else {
                                                             fatalError()
                 }
-                storage.contentProvider.addNewSignature(input: input, tx: tx, signature: signature)
+                contentProvider.addNewSignature(input: input, tx: tx, signature: signature)
                 
                 var vchSig = signature
                 vchSig.append(BTCSignatureHashType.BTCSignatureHashTypeAll.rawValue)
@@ -292,7 +294,7 @@ class BlockchainService {
             }
             let strTx = blockchainTx.hex!
             postTx(hexString: strTx) { success in
-                self.storage.contentProvider.transactionsChangeResolution(txs: [tx], to: .published)
+                self.contentProvider.transactionsChangeResolution(txs: [tx], to: .published)
             }
         }
         
@@ -301,9 +303,9 @@ class BlockchainService {
     private func postTx(hexString: String, completion: @escaping (_ success: Bool) -> Void) {
         var replies = 0
         var replied = false
-        let servers = storage.server.isTestnet ? Constants.testNetServers : Constants.mainNetServers
+        let servers = server.isTestnet ? Constants.testNetServers : Constants.mainNetServers
         for url in servers {
-            storage.server.postTxExplorer(tx: hexString, urlString: url, success: { txID in
+            server.postTxExplorer(tx: hexString, urlString: url, success: { txID in
                 if replied == false {
                     replied = true
                     completion(true)
@@ -320,7 +322,6 @@ class BlockchainService {
     func updateData() {
         cosignApprovedTxs()
         publishApprovedAndCosignedTxs()
-        storage.save()
     }
     
 //    func userCosignatures(address: BtcAddress, transaction: BTCTransaction) -> [Data] {

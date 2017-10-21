@@ -23,6 +23,7 @@ import CoreData
 import SwiftyJSON
 import UIKit
 
+/*
 class TransactionsVC: UIViewController {
     
     var teambrella: TeambrellaService!
@@ -53,14 +54,14 @@ class TransactionsVC: UIViewController {
     }
     
     @IBAction func tapApprove(_ sender: Any) {
-        let transactions = teambrella.storage.contentProvider.transactionsResolvable
+        let transactions = teambrella.contentProvider.transactionsResolvable
         
         print("Transactions cosignable: \(transactions.count)")
-        let signatures = teambrella.storage.contentProvider.signaturesToUpdate
+        let signatures = teambrella.contentProvider.signaturesToUpdate
         
         print("transactions to approve: \(transactions.count)")
         print("signatures to approve: \(signatures.count)")
-        teambrella.storage.contentProvider.transactionsChangeResolution(txs: transactions, to: .approved)
+        teambrella.contentProvider.transactionsChangeResolution(txs: transactions, to: .approved)
         teambrella.update()
     }
     
@@ -111,3 +112,4 @@ extension TransactionsVC: TeambrellaServiceDelegate {
         }
     }
 }
+*/

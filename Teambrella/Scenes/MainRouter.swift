@@ -40,7 +40,7 @@ final class MainRouter {
         return navigator?.viewControllers.filter { $0 is MasterTabBarController }.first as? MasterTabBarController
     }
     
-   func push(vc: UIViewController, animated: Bool = true) {
+    func push(vc: UIViewController, animated: Bool = true) {
         navigator?.pushViewController(vc, animated: animated)
     }
     
@@ -99,7 +99,7 @@ final class MainRouter {
     
     func presentClaim(claim: ClaimLike) {
         guard let vc = getControllerClaim(claimID: claim.id) else { fatalError("Error instantiating") }
-     
+        
         push(vc: vc)
     }
     
@@ -252,7 +252,12 @@ final class MainRouter {
         service.session = nil
         service.keyStorage.clearLastUserType()
         navigator.clear()
-        service.teambrella.clear()
+        do {
+            try
+                service.teambrella.clear()
+        } catch {
+            log("\(error)", type: [.crypto, .error])
+        }
         for vc in navigator.viewControllers {
             if let vc = vc as? InitialVC {
                 navigator.popToViewController(vc, animated: true)

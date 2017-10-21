@@ -27,12 +27,8 @@ class TeambrellaContentProvider {
         static let noAutoApproval = 1000000
     }
     
-    private unowned var storage: BlockchainStorage
+    let storage = BlockchainStorage()
     var context: NSManagedObjectContext { return storage.context }
-    
-    init(storage: BlockchainStorage) {
-        self.storage = storage
-    }
     
     func save() {
         storage.save()
