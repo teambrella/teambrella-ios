@@ -1,5 +1,5 @@
 //
-//  TransactionsStorage.swift
+//  CoreDataStorage.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 17.04.17.
@@ -22,7 +22,7 @@
 import CoreData
 import SwiftyJSON
 
-class BlockchainStorage {
+class CoreDataStorage {
     struct Constant {
         static let lastUpdatedKey = "TransactionsServer.lastUpdatedKey"
     }

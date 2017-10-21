@@ -27,7 +27,7 @@ class TeambrellaContentProvider {
         static let noAutoApproval = 1000000
     }
     
-    private let storage = BlockchainStorage()
+    private let storage = CoreDataStorage()
     var context: NSManagedObjectContext { return storage.context }
     
     func save() {
@@ -39,6 +39,7 @@ class TeambrellaContentProvider {
     }
     
     // MARK: User
+    
     var user: User {
         let request: NSFetchRequest<User> = User.fetchRequest()
         let result = try? context.fetch(request)
