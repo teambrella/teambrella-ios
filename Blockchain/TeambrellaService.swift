@@ -48,19 +48,15 @@ class TeambrellaService {
         updateData { success in
             if success {
                 blockchain.updateData()
-                self.save()
+                self.contentProvider.save()
+                self.delegate?.teambrellaDidUpdate(service: self)
             }
         }
         
     }
     
-    func save() {
-        contentProvider.storage.save()
-        self.delegate?.teambrellaDidUpdate(service: self)
-    }
-    
     func clear() throws {
-        try contentProvider.storage.clear()
+        try contentProvider.clear()
     }
     
     func updateData(completion: @escaping (Bool) -> Void) {
@@ -95,7 +91,7 @@ class TeambrellaService {
                                 let factory = EntityFactory(fetcher: self.contentProvider)
                                 factory.updateLocalDb(txs: txsToUpdate, signatures: signatures, json: json)
                                 user.lastUpdated = timestamp
-                                self.contentProvider.storage.save()
+                                self.contentProvider.save()
                                 completion(true)
                                 break
                             case .failure(let error):
@@ -114,7 +110,7 @@ class TeambrellaService {
                 tx.isServerUpdateNeeded = true
             }
         }
-        save()
+        contentProvider.save()
     }
     
     private func updateAddresses() {
