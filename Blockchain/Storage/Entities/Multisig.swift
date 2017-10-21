@@ -25,7 +25,7 @@ class Multisig: NSManagedObject {
     var status: MultisigStatus { return MultisigStatus(rawValue: Int(statusValue)) ?? .failed }
     var dateCreated: Date? { return dateCreatedValue }
     var teammateName: String? { return teammateNameValue }
-    var teammatePublicKey: String? { return teammatePublicKey }
+    var teammatePublicKey: String? { return teammatePublicKeyValue }
     var teamID: Int { return Int(teamIdValue) }
     
     var cosigners: Set<Cosigner> {

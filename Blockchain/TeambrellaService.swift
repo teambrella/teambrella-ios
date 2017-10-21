@@ -30,7 +30,6 @@ class TeambrellaService {
     let storage = BlockchainStorage()
     lazy var blockchain: BlockchainService = {  BlockchainService(storage: self.storage) }()
     weak var delegate: TeambrellaServiceDelegate?
-    var fetcher: BlockchainStorageFetcher { return storage.fetcher }
     var key: Key { return storage.key }
 
     
@@ -73,7 +72,7 @@ class TeambrellaService {
 
 extension TeambrellaService {
     func approve(tx: Tx) {
-        fetcher.transactionsChangeResolution(txs: [tx], to: .approved)
+        storage.contentProvider.transactionsChangeResolution(txs: [tx], to: .approved)
         self.delegate?.teambrellaDidUpdate(service: self)
         //update()
     }

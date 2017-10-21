@@ -27,11 +27,11 @@ class BlockchainStorage {
         static let lastUpdatedKey = "TransactionsServer.lastUpdatedKey"
     }
     let server = BlockchainServer()
-    var key: Key { return Key(base58String: self.fetcher.user.privateKey, timestamp: self.server.timestamp) }
+    var key: Key { return Key(base58String: self.contentProvider.user.privateKey, timestamp: self.server.timestamp) }
     
     lazy var container: NSPersistentContainer = { self.createPersistentContainer() }()
-    lazy var fetcher: BlockchainStorageFetcher = {
-        return BlockchainStorageFetcher(storage: self)
+    lazy var contentProvider: TeambrellaContentProvider = {
+        return TeambrellaContentProvider(storage: self)
     }()
     var context: NSManagedObjectContext {
         return container.viewContext
@@ -75,7 +75,7 @@ class BlockchainStorage {
     }
     
     func updateData(completion: @escaping (Bool) -> Void) {
-        server.initClient(privateKey: fetcher.user.privateKey) { [unowned self] success in
+        server.initClient(privateKey: contentProvider.user.privateKey) { [unowned self] success in
             if success {
                 self.autoApproveTransactions()
                 self.serverUpdateToLocalDb { success in
@@ -93,9 +93,9 @@ class BlockchainStorage {
     }
     
     func serverUpdateToLocalDb(completion: @escaping (Bool) -> Void) {
-        let txsToUpdate = fetcher.transactionsNeedServerUpdate
-        let signatures = fetcher.signaturesToUpdate
-        let user = fetcher.user
+        let txsToUpdate = contentProvider.transactionsNeedServerUpdate
+        let signatures = contentProvider.signaturesToUpdate
+        let user = contentProvider.user
         server.getUpdates(privateKey: user.privateKey,
                           lastUpdated: user.lastUpdated,
                           transactions: txsToUpdate,
@@ -104,7 +104,7 @@ class BlockchainStorage {
                             case .success(let json, let timestamp):
                                 log("BlockchainStorage Server update to local db received json: \(json)", type: .crypto)
                                 self.context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
-                                let factory = EntityFactory(fetcher: self.fetcher)
+                                let factory = EntityFactory(fetcher: self.contentProvider)
                                 factory.updateLocalDb(txs: txsToUpdate, signatures: signatures, json: json)
                                 user.lastUpdated = timestamp
                                 completion(true)
@@ -117,9 +117,9 @@ class BlockchainStorage {
     }
     
     func autoApproveTransactions() {
-        let txs = fetcher.transactionsResolvable
+        let txs = contentProvider.transactionsResolvable
         for tx in txs {
-            let daysLeft = fetcher.daysToApproval(tx: tx, isMyTx: fetcher.isMy(tx: tx))
+            let daysLeft = contentProvider.daysToApproval(tx: tx, isMyTx: contentProvider.isMy(tx: tx))
             if daysLeft <= 0 {
                 tx.resolution = .approved
                 tx.isServerUpdateNeeded = true
@@ -129,7 +129,7 @@ class BlockchainStorage {
     }
     
     private func updateAddresses() {
-        for teammate in fetcher.teammates {
+        for teammate in contentProvider.teammates {
             guard teammate.addresses.isEmpty == false else { continue }
             
             if teammate.addressCurrent == nil {

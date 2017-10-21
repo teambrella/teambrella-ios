@@ -215,8 +215,8 @@ class BlockchainService {
     }
     
     func cosignApprovedTxs() {
-        let user = storage.fetcher.user
-        let txs = storage.fetcher.transactionsCosignable
+        let user = storage.contentProvider.user
+        let txs = storage.contentProvider.transactionsCosignable
         
         for tx in txs {
             guard let blockchainTx = btcTransaction(tx: tx) else {
@@ -238,7 +238,7 @@ class BlockchainService {
                                                         inputNum: idx) else {
                                                             fatalError()
                 }
-                storage.fetcher.addNewSignature(input: input, tx: tx, signature: signature)
+                storage.contentProvider.addNewSignature(input: input, tx: tx, signature: signature)
             }
             tx.resolution = .signed
             storage.save()
@@ -247,8 +247,8 @@ class BlockchainService {
     
     // master sign
     func publishApprovedAndCosignedTxs() {
-        let user = storage.fetcher.user
-        let txs = storage.fetcher.transactionsApprovedAndCosigned
+        let user = storage.contentProvider.user
+        let txs = storage.contentProvider.transactionsApprovedAndCosigned
         
         for tx in txs {
             guard let blockchainTx = btcTransaction(tx: tx) else { fatalError() }
@@ -265,7 +265,7 @@ class BlockchainService {
             ops.append(.OP_0)
             for cosigner in fromAddress.cosigners {
                 for input in txInputs {
-                    if let txSignature = storage.fetcher.signature(input: input.id, teammateID: cosigner.teammate.id) {
+                    if let txSignature = storage.contentProvider.signature(input: input.id, teammateID: cosigner.teammate.id) {
                         var vchSig = txSignature.signature
                         vchSig.append(BTCSignatureHashType.BTCSignatureHashTypeAll.rawValue)
                         ops.appendData(vchSig)
@@ -282,7 +282,7 @@ class BlockchainService {
                                                         inputNum: idx) else {
                                                             fatalError()
                 }
-                storage.fetcher.addNewSignature(input: input, tx: tx, signature: signature)
+                storage.contentProvider.addNewSignature(input: input, tx: tx, signature: signature)
                 
                 var vchSig = signature
                 vchSig.append(BTCSignatureHashType.BTCSignatureHashTypeAll.rawValue)
@@ -292,7 +292,7 @@ class BlockchainService {
             }
             let strTx = blockchainTx.hex!
             postTx(hexString: strTx) { success in
-                self.storage.fetcher.transactionsChangeResolution(txs: [tx], to: .published)
+                self.storage.contentProvider.transactionsChangeResolution(txs: [tx], to: .published)
             }
         }
         

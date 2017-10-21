@@ -28,9 +28,9 @@ class TransactionsresultTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let team = teambrella.fetcher.firstTeam
+        let team = teambrella.storage.contentProvider.firstTeam
         
-        teammates = teambrella.fetcher.teammates
+        teammates = teambrella.storage.contentProvider.teammates
         
         let button =  UIButton(type: .custom)
         button.setTitle(team?.name, for: .normal)
@@ -42,7 +42,7 @@ class TransactionsresultTVC: UITableViewController {
     
     @objc
     func tapTitle() {
-        performSegue(type: .teamDetails, sender: teambrella.fetcher.firstTeam)
+        performSegue(type: .teamDetails, sender: teambrella.storage.contentProvider.firstTeam)
     }
 
     // MARK: - Table view data source

@@ -32,8 +32,8 @@ class PaymentsTVC: UITableViewController {
         super.viewDidLoad()
 
         teambrella.delegate = self
-        resolvable = teambrella.fetcher.transactionsResolvable
-        cosignable = teambrella.fetcher.transactionsCosignable
+        resolvable = teambrella.storage.contentProvider.transactionsResolvable
+        cosignable = teambrella.storage.contentProvider.transactionsCosignable
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,7 +85,7 @@ class PaymentsTVC: UITableViewController {
         }
 
         let transaction = tx(indexPath: indexPath)
-        let isMy = teambrella.fetcher.isMy(tx: transaction)
+        let isMy = teambrella.storage.contentProvider.isMy(tx: transaction)
         cell.amountLabel.text = String(describing: transaction.amount)
         cell.userNameLabel.text = transaction.claimTeammate.name
         cell.userNameLabel.textColor = isMy ? .orange : .white

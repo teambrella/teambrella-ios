@@ -25,10 +25,10 @@ import SwiftyJSON
 
 struct EntityFactory {
     var context: NSManagedObjectContext
-    let fetcher: BlockchainStorageFetcher
+    let fetcher: TeambrellaContentProvider
     let formatter = BlockchainDateFormatter()
     
-    init(fetcher: BlockchainStorageFetcher) {
+    init(fetcher: TeambrellaContentProvider) {
         self.fetcher = fetcher
         self.context = fetcher.context
     }

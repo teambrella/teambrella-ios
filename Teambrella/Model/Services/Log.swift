@@ -111,6 +111,7 @@ class Log {
         return emojis + " " + string
     }
     
+    //swiftlint:disable:next cyclomatic_complexity
     private func typesFor(level: LogLevel) -> LogType {
         switch level {
         case .none: return []

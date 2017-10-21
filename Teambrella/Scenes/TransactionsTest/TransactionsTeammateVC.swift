@@ -49,7 +49,7 @@ class TransactionsTeammateVC: UIViewController {
         }
         cosignersLabel.text = cosignerNames.description
         
-        let fetcher = teambrella.fetcher
+        let fetcher = teambrella.storage.contentProvider
         let hisCosigners = fetcher.cosigners(for: teammate)
         var hisCosignerNames: [String] = []
         for cosigner in hisCosigners {

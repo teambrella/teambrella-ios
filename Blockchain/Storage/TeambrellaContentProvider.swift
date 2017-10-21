@@ -22,7 +22,7 @@
 import Foundation
 import CoreData
 
-class BlockchainStorageFetcher {
+class TeambrellaContentProvider {
     struct Constant {
         static let noAutoApproval = 1000000
     }
