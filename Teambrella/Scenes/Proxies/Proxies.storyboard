@@ -298,6 +298,9 @@
                                                                 <state key="normal" title="Opt Into Rating">
                                                                     <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="tapOpt:" destination="7bW-lz-Yk2" eventType="touchUpInside" id="Jh3-Jw-F6q"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -416,6 +419,7 @@
                         <outlet property="buttonView" destination="Ank-lB-ThK" id="3wR-5E-7fS"/>
                         <outlet property="collectionView" destination="AlL-Qh-U17" id="CmS-pL-cUp"/>
                         <outlet property="detailsLabel" destination="pn0-6n-rVi" id="mnP-zu-hXA"/>
+                        <outlet property="optIntoRatingButton" destination="9AN-5n-for" id="fRz-tH-fhz"/>
                         <outlet property="rankLabel" destination="jor-Dp-OpJ" id="e5Y-57-mFT"/>
                         <outlet property="sortButton" destination="G8l-Eu-bWi" id="aO9-Gk-6Dx"/>
                         <outlet property="topContainer" destination="Xag-fb-NUG" id="3Pe-JW-1Vj"/>

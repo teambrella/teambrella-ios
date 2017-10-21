@@ -33,3 +33,5 @@
 "Proxy.Empty.You.title"               = "You’re not a Proxy Voter for anyone in the team.";
 "Proxy.Empty.You.details"             = "You can become a Proxy Voter by gaining trust of other teammates - post your ideas, opinions and votes.";
 
+"Proxy.UserIndexVC.optButton.title.in" = "Opt Into Rating";
+"Proxy.UserIndexVC.optButton.title.out" = "Opt Out Of Rating";

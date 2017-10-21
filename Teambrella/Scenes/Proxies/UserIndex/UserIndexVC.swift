@@ -47,11 +47,16 @@ class UserIndexVC: UIViewController {
     
     @IBOutlet var buttonView: UIView!
     
+    @IBOutlet var optIntoRatingButton: BorderedButton!
     @IBOutlet var topContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet var avatarWidthConstant: NSLayoutConstraint!
     
     @IBAction func tapSort(_ sender: Any) {
         service.router.showFilter(in: self, delegate: self, currentSort: dataSource.sortType)
+    }
+    
+    @IBAction func tapOpt(_ sender: Any) {
+        changeOpting()
     }
     
     var isTopContainerShrinked: Bool = false
@@ -93,6 +98,15 @@ class UserIndexVC: UIViewController {
         //
         //        searchController.searchBar.delegate = self
         //        searchController.searchBar.sizeToFit()
+    }
+    
+    func changeOpting() {
+        dataSource.isInRating = !dataSource.isInRating
+        let title = dataSource.isInRating ?
+            "Proxy.UserIndexVC.optButton.title.out".localized :
+            "Proxy.UserIndexVC.optButton.title.in".localized
+        optIntoRatingButton.setTitle(title, for: .normal)
+        collectionView.reloadData()
     }
     
     fileprivate func shrinkTopContainer(_ shrink: Bool) {
@@ -157,7 +171,7 @@ extension UserIndexVC: UICollectionViewDelegate {
         if let cell = cell as? UserIndexCell {
             cell.numberLabel.text = String(indexPath.row + 1)
         }
-        if indexPath.row == (dataSource.count - dataSource.limit/2) {
+        if indexPath.row == (dataSource.count - dataSource.limit / 2) {
             dataSource.loadData()
         }
     }
