@@ -25,7 +25,7 @@ import CoreData
 class BlockchainStorageFetcher {
     struct Constant {
         static let noAutoApproval = 1000000
-//fileprivate static let tmpPrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
+        //fileprivate static let tmpPrivateKey = "93ProQDtA1PyttRz96fuUHKijV3v2NGnjPAxuzfDXwFbbLBYbxx"
     }
     
     private unowned var storage: BlockchainStorage
@@ -281,6 +281,23 @@ class BlockchainStorageFetcher {
         txSignature.signatureValue = signature
         save()
         return txSignature
+    }
+    
+    // MARK: Multisig
+    
+    func multisig(id: Int64) -> Multisig? {
+        let request: NSFetchRequest<Multisig> = Multisig.fetchRequest()
+        request.predicate = NSPredicate(format: "idValue = %i", id)
+        let items = try? context.fetch(request)
+        return items?.first
+    }
+    
+    func multisigsToCreate(publicKey: String) -> [Multisig] {
+        let request: NSFetchRequest<Multisig> = Multisig.fetchRequest()
+        request.predicate = NSPredicate(format: "idValue = %i", id)
+        let items = try? context.fetch(request)
+        return items?.first
+    }
     }
     
     

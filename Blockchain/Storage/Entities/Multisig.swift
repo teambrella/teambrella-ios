@@ -22,7 +22,7 @@ class Multisig: NSManagedObject {
     var address: String? { return addressValue }
     var creationTx: String? { return creationTxValue }
     var teammateID: Int { return Int(teammateIdValue) }
-    var status: Int { return Int(statusValue) }
+    var status: MultisigStatus { return MultisigStatus(rawValue: Int(statusValue)) ?? .failed }
     var dateCreated: Date? { return dateCreatedValue }
     var teammateName: String? { return teammateNameValue }
     var teammatePublicKey: String? { return teammatePublicKey }

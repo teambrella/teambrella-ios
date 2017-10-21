@@ -52,6 +52,7 @@ struct EntityFactory {
         inputs(json: json["TxInputs"])
         outputs(json: json["TxOutputs"])
         signatures(json: json["TxSignatures"])
+        multisig(json: json["Multisigs"])
         fetcher.save()
     }
     
@@ -301,6 +302,24 @@ struct EntityFactory {
             signature.isServerUpdateNeededValue = false
             signature.inputValue = txInput
             signature.teammateValue = fetcher.teammate(id: teammateID)
+        }
+    }
+    
+    func multisig(json: JSON) {
+        for item in json.arrayValue {
+            let id =  item["id"].int64Value
+            let existing = fetcher.multisig(id: id)
+            let isNew = existing == nil
+            let multisig = existing ?? Multisig(context: context)
+            multisig.idValue = id
+            multisig.addressValue = item["address"].stringValue
+            multisig.creationTxValue = item["creationTx"].stringValue
+            multisig.teammateIdValue = item["teammateId"].int64Value
+            multisig.statusValue = item["status"].int32Value
+            multisig.dateCreatedValue = formatter.date(from: item, key: "dateCreated")
+            multisig.teammateNameValue = item["teammateName"].string
+            multisig.teammatePublicKeyValue = item["teammatePublicKey"].stringValue
+            multisig.teamIdValue = item["teamId"].int64Value
         }
     }
     

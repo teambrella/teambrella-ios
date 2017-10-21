@@ -83,6 +83,15 @@ public enum TransactionClientResolution: Int, EnumStringConvertible {
     case errorOutOfFunds = 103
 }
 
+/// user multisig (address) status 
+public enum MultisigStatus: Int {
+    case previous = 0
+    case current = 1
+    case next = 3
+    case archive = 4
+    case failed = -400
+}
+
 
 protocol EnumStringConvertible {
     var string: String { get }
