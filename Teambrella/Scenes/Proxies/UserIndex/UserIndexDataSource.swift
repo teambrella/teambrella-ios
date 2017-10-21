@@ -28,6 +28,7 @@ class UserIndexDataSource {
     let limit: Int = 10
     let search: String = ""
     var meModel: UserIndexCellModel?
+    var meIdx: Int = 0
     var isLoading: Bool = false
     var hasMore: Bool = true
     var canLoad: Bool { return hasMore && !isLoading }
@@ -38,7 +39,17 @@ class UserIndexDataSource {
         }
     }
     
-    var notInOpt: Bool = true
+    var isInRating: Bool = false {
+        didSet {
+            guard let me = meModel else { return }
+            
+            if isInRating {
+                items.insert(me, at: meIdx)
+            } else {
+                items.remove(at: meIdx)
+            }
+        }
+    }
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
@@ -67,21 +78,18 @@ class UserIndexDataSource {
             
             if self?.meModel != nil { offset += 1 }
             let body = RequestBody(key: key, payload: ["TeamId": id,
-                                                      "Offset": offset,
-                                                      "Limit": limit,
-                                                      "Search": search,
-                                                      "SortBy": sort.rawValue])
+                                                       "Offset": offset,
+                                                       "Limit": limit,
+                                                       "Search": search,
+                                                       "SortBy": sort.rawValue])
             let request = TeambrellaRequest(type: .proxyRatingList, body: body, success: { [weak self] response in
                 if case .proxyRatingList(var proxies, _) = response {
                     self?.hasMore = (proxies.count == limit)
                     let myID = service.session?.currentUserID
                     for (idx, proxy) in proxies.enumerated().reversed() where proxy.userID == myID {
                         self?.meModel = proxy
-                        guard let n_opt = self?.notInOpt else { return }
-                        
-                        if n_opt {
-                            proxies.remove(at: idx)
-                        }
+                        self?.meIdx = idx
+                        proxies.remove(at: idx)
                         break
                     }
                     self?.items += proxies

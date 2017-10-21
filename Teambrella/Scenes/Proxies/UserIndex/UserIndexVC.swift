@@ -56,7 +56,7 @@ class UserIndexVC: UIViewController {
     }
     
     @IBAction func tapOpt(_ sender: Any) {
-        configureOpt()
+        changeOpting()
     }
     
     var isTopContainerShrinked: Bool = false
@@ -66,7 +66,6 @@ class UserIndexVC: UIViewController {
         super.viewDidLoad()
         CellDecorator.shadow(for: topContainer, opacity: 0.1, radius: 5)
         HUD.show(.progress, onView: view)
-        configureOpt()
         setupCollectionView()
         shrinkTopContainer(false)
         dataSource.loadData()
@@ -101,15 +100,13 @@ class UserIndexVC: UIViewController {
         //        searchController.searchBar.sizeToFit()
     }
     
-    func configureOpt() {
-        if optIntoRatingButton.state == .selected {
-            dataSource.notInOpt = false
-            optIntoRatingButton.setTitle("UnOpt", for: .selected)
-        } else {
-            dataSource.notInOpt = true
-            optIntoRatingButton.setTitle("Opt Into Rating", for: .normal)
-        }
-        dataSource.loadData()
+    func changeOpting() {
+        dataSource.isInRating = !dataSource.isInRating
+        let title = dataSource.isInRating ?
+            "Proxy.UserIndexVC.optButton.title.out".localized :
+            "Proxy.UserIndexVC.optButton.title.in".localized
+        optIntoRatingButton.setTitle(title, for: .normal)
+        collectionView.reloadData()
     }
     
     fileprivate func shrinkTopContainer(_ shrink: Bool) {
@@ -174,7 +171,7 @@ extension UserIndexVC: UICollectionViewDelegate {
         if let cell = cell as? UserIndexCell {
             cell.numberLabel.text = String(indexPath.row + 1)
         }
-        if indexPath.row == (dataSource.count - dataSource.limit/2) {
+        if indexPath.row == (dataSource.count - dataSource.limit / 2) {
             dataSource.loadData()
         }
     }

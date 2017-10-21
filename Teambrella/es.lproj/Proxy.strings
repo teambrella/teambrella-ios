@@ -31,3 +31,6 @@
 "Proxy.Empty.You.title"               = "No estás Proxy de cualquier compañero del equipo";
 "Proxy.Empty.You.details"             = "Tu puedes llegar a estar Proxy por ganar la confianza de otros compañeros del equipo - publica tus ideas, opiniones e votos";
 //--waiting--
+
+"Proxy.UserIndexVC.optButton.title.in" = "Opt Into Rating";
+"Proxy.UserIndexVC.optButton.title.out" = "Opt Out Of Rating";
