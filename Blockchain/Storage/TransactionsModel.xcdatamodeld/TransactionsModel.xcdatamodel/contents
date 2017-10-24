@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13241" systemVersion="17B25c" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="16G1033" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BtcAddress" representedClassName=".BtcAddress" syncable="YES" codeGenerationType="category">
         <attribute name="addressValue" attributeType="String" syncable="YES"/>
         <attribute name="dateCreatedValue" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -29,7 +29,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="Multisig" representedClassName="Multisig" syncable="YES" codeGenerationType="category">
+    <entity name="Multisig" representedClassName=".Multisig" syncable="YES" codeGenerationType="category">
         <attribute name="addressValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="creationTxValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateCreatedValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -205,6 +205,7 @@
     <elements>
         <element name="BtcAddress" positionX="-227" positionY="-225" width="128" height="135"/>
         <element name="Cosigner" positionX="16" positionY="-174" width="128" height="135"/>
+        <element name="Multisig" positionX="-261" positionY="-72" width="128" height="210"/>
         <element name="PayTo" positionX="351" positionY="117" width="128" height="135"/>
         <element name="Team" positionX="-470" positionY="-225" width="128" height="195"/>
         <element name="Teammate" positionX="16" positionY="-24" width="128" height="210"/>
@@ -212,8 +213,7 @@
         <element name="TxInput" positionX="-468" positionY="207" width="128" height="150"/>
         <element name="TxOutput" positionX="349" positionY="378" width="128" height="135"/>
         <element name="TxSignature" positionX="-470" positionY="3" width="128" height="150"/>
-        <element name="User" positionX="-261" positionY="-72" width="128" height="120"/>
-        <element name="Multisig" positionX="-261" positionY="-72" width="128" height="210"/>
         <element name="Unconfirmed" positionX="-252" positionY="-54" width="128" height="165"/>
+        <element name="User" positionX="-261" positionY="-72" width="128" height="120"/>
     </elements>
 </model>
