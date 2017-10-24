@@ -45,8 +45,8 @@ class AbiArguments {
             switch argument {
             case let argument as Int:
                 queue(int: argument)
-                 case let argument as String:
-                    queue(string: argument)
+            case let argument as String:
+                queue(string: argument)
             case let argument as [Int]:
                 queue(array: argument)
             case let argument as [String]:
@@ -60,7 +60,7 @@ class AbiArguments {
         return dequeueAll()
     }
     
-    static func encodeToHex(args: Any...) throws -> String {
+    static func encodeToHex(_ args: Any...) throws -> String {
         var abiArguments = AbiArguments()
         for argument in args {
             try abiArguments.add(argument)
@@ -80,25 +80,31 @@ class AbiArguments {
         switch argument {
         case _ as Int,
              _ as String,
-             _ as [String]:
+             _ as Data,
+             _ as [String],
+             _ as [Int]:
             isValid = true
         default:
             isValid = false
         }
-    return isValid
+        return isValid
     }
     
     private func queue(int: Int) {
-        argumentsQueue.append(Hex().formattedString(int, bytesCount: Constant.bytesInWord))
+        argumentsQueue.append(Hex().formattedString(integer: int, bytesCount: Constant.bytesInWord))
     }
     
     private func queue(string: String) {
         let hexUtility = Hex()
-        let truncated = hexUtility.truncatePrefix(string)
-        if truncated.count / 2 > Constant.bytesInWord {
-               try? queue(data: hexUtility.data(from: truncated))
+        let truncated = hexUtility.truncatePrefix(string: string)
+        if truncated.count > Constant.bytesInWord {
+            try? queue(data: hexUtility.data(from: truncated))
         } else {
-            queue(string: hexUtility.formattedString(truncated, bytesCount: Constant.bytesInWord) ?? "")
+            if let formattedString = hexUtility.formattedString(string: truncated, bytesCount: Constant.bytesInWord) {
+                queue(string: formattedString)
+            } else {
+                log("AbiArguments can not enqueue string \(string)", type: [.error, .crypto])
+            }
         }
     }
     
@@ -136,12 +142,12 @@ class AbiArguments {
     }
     
     private func queueToExtraPart(int: Int) {
-        extraQueue.append(Hex().formattedString(int, bytesCount: Constant.bytesInWord))
+        extraQueue.append(Hex().formattedString(integer: int, bytesCount: Constant.bytesInWord))
         extraOffset += Constant.bytesInWord
     }
     
     private func queueToExtraPart(string: String) {
-        extraQueue.append(Hex().formattedString(string, bytesCount: Constant.bytesInWord) ?? "");
+        extraQueue.append(Hex().formattedString(string: string, bytesCount: Constant.bytesInWord) ?? "");
         extraOffset += Constant.bytesInWord
     }
     
@@ -156,7 +162,7 @@ class AbiArguments {
         let rest = n % Constant.bytesInWord
         if rest > 0 {
             let suffixLength = Constant.bytesInWord - rest
-            extraQueue.append(Hex().formattedString("", bytesCount: suffixLength) ?? "")
+            extraQueue.append(Hex().formattedString(string: "", bytesCount: suffixLength) ?? "")
             extraOffset += suffixLength
         }
     }
@@ -164,5 +170,5 @@ class AbiArguments {
     private func dequeueAll() -> String {
         return argumentsQueue.joined() + extraQueue.joined()
     }
-
+    
 }

@@ -84,20 +84,20 @@ struct Hex {
     }
     
     // 777 to "00000000000000000777"
-    func formattedString(_ integer: Int, bytesCount: Int) -> String {
+    func formattedString(integer: Int, bytesCount: Int) -> String {
         let format = "%0\(bytesCount * 2)X"
         return String(format: format, integer)
     }
     
     // "0xABCDEF" to "00000000000000000ABCDEF"
-    func formattedString(_ string: String, bytesCount: Int) -> String? {
-        let string = truncatePrefix(string)
-        guard let data = string.data(using: .utf8) else { return nil }
+    func formattedString(string: String, bytesCount: Int) -> String? {
+        let truncated = truncatePrefix(string: string)
+        guard let data = truncated.data(using: .utf8) else { return nil }
         
-        return formattedString(data, bytesCount: bytesCount)
+        return formattedString(data: data, bytesCount: bytesCount)
     }
     
-    func formattedString(_ data: Data, bytesCount: Int) -> String? {
+    func formattedString(data: Data, bytesCount: Int) -> String? {
         guard data.count <= bytesCount else { return nil }
         
         let bytes = [UInt8](data)
@@ -112,7 +112,7 @@ struct Hex {
         return hexString
     }
     
-    func truncatePrefix(_ string: String) -> String {
+    func truncatePrefix(string: String) -> String {
         return string.lowercased().hasPrefix("0x")
             ? String(string[string.index(string.startIndex, offsetBy: 2)...])
             : string

@@ -96,6 +96,7 @@
 		6D35EFCB1EAF982A00696B42 /* TeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35EFCA1EAF982A00696B42 /* TeamDetailsVC.swift */; };
 		6D40248C1F9F357200A2F2CD /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248B1F9F357200A2F2CD /* Hex.swift */; };
 		6D40248D1F9F357300A2F2CD /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248B1F9F357200A2F2CD /* Hex.swift */; };
+		6D40248F1F9F782600A2F2CD /* AbiArgumentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248E1F9F782600A2F2CD /* AbiArgumentsTests.swift */; };
 		6D465F2E1F46E83B007AC28F /* ReportContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D465F2D1F46E83B007AC28F /* ReportContext.swift */; };
 		6D465F301F46E85C007AC28F /* ReportStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D465F2F1F46E85C007AC28F /* ReportStrategy.swift */; };
 		6D465F321F46E893007AC28F /* ReportCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D465F311F46E893007AC28F /* ReportCellModels.swift */; };
@@ -545,6 +546,7 @@
 		6D4E5DCE1F7AB6870020DEE2 /* Login.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9407A5851F13D81D00E0DD74 /* Login.strings */; };
 		6D4E5DCF1F7AB6870020DEE2 /* ImageGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE95671EE806F80019DA47 /* ImageGalleryCell.xib */; };
 		6D4E5DD01F7AB6870020DEE2 /* VotingRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */; };
+		6D5852C81F9F83A00079CA89 /* HexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5852C71F9F83A00079CA89 /* HexTests.swift */; };
 		6D59F0091F56E5D000C422EB /* PrivateChatAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */; };
 		6D59F00E1F56F47B00C422EB /* ChatFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59F00C1F56F47B00C422EB /* ChatFooter.swift */; };
 		6D59F00F1F56F47B00C422EB /* ChatFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D59F00D1F56F47B00C422EB /* ChatFooter.xib */; };
@@ -1005,6 +1007,7 @@
 		6D35EFC81EAF931000696B42 /* TransactionsTeammateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionsTeammateVC.swift; path = Scenes/TransactionsTest/TransactionsTeammateVC.swift; sourceTree = "<group>"; };
 		6D35EFCA1EAF982A00696B42 /* TeamDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamDetailsVC.swift; path = Scenes/TransactionsTest/TeamDetailsVC.swift; sourceTree = "<group>"; };
 		6D40248B1F9F357200A2F2CD /* Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hex.swift; sourceTree = "<group>"; };
+		6D40248E1F9F782600A2F2CD /* AbiArgumentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbiArgumentsTests.swift; sourceTree = "<group>"; };
 		6D465F2D1F46E83B007AC28F /* ReportContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportContext.swift; path = Scenes/Me/Report/ReportContext.swift; sourceTree = "<group>"; };
 		6D465F2F1F46E85C007AC28F /* ReportStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportStrategy.swift; path = Scenes/Me/Report/ReportStrategy.swift; sourceTree = "<group>"; };
 		6D465F311F46E893007AC28F /* ReportCellModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCellModels.swift; path = Scenes/Me/Report/ReportCellModels.swift; sourceTree = "<group>"; };
@@ -1036,6 +1039,7 @@
 		6D481F7E1F0BDEF30023C781 /* EggView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EggView.swift; path = View/EggView.swift; sourceTree = "<group>"; };
 		6D4E5DD91F7AB6870020DEE2 /* Surilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4E5DDA1F7AB6870020DEE2 /* Surilla.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Surilla.plist; path = "/Users/thorax/Developer/Teambrella/Teambrella-iOS/Surilla/Surilla.plist"; sourceTree = "<absolute>"; };
+		6D5852C71F9F83A00079CA89 /* HexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexTests.swift; sourceTree = "<group>"; };
 		6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatAdaptor.swift; path = Scenes/Home/PrivateMessages/PrivateChatAdaptor.swift; sourceTree = "<group>"; };
 		6D59F00C1F56F47B00C422EB /* ChatFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatFooter.swift; path = View/ReusableViews/ChatFooter.swift; sourceTree = "<group>"; };
 		6D59F00D1F56F47B00C422EB /* ChatFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChatFooter.xib; path = View/ReusableViews/ChatFooter.xib; sourceTree = "<group>"; };
@@ -2066,6 +2070,8 @@
 				6DCD8DBA1F6BD5E800BC6A49 /* EthereumTests.swift */,
 				6D12928B1F83DE38001CCC31 /* NameTests.swift */,
 				6DA5B4691F98FB7B00021E8E /* CurrencyTests.swift */,
+				6D40248E1F9F782600A2F2CD /* AbiArgumentsTests.swift */,
+				6D5852C71F9F83A00079CA89 /* HexTests.swift */,
 			);
 			path = TeambrellaTests;
 			sourceTree = "<group>";
@@ -3806,7 +3812,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D0D2ADC1EFBB95E0095284C /* PiecewiseFunctionTests.swift in Sources */,
+				6D5852C81F9F83A00079CA89 /* HexTests.swift in Sources */,
 				6DCD8DBB1F6BD5E800BC6A49 /* EthereumTests.swift in Sources */,
+				6D40248F1F9F782600A2F2CD /* AbiArgumentsTests.swift in Sources */,
 				6D12928C1F83DE38001CCC31 /* NameTests.swift in Sources */,
 				6DD051C11F66F18200532626 /* SocketDataTests.swift in Sources */,
 				6DA5B46A1F98FB7B00021E8E /* CurrencyTests.swift in Sources */,
