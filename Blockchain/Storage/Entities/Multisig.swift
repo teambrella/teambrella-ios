@@ -28,8 +28,10 @@ class Multisig: NSManagedObject {
     var teammatePublicKey: String? { return teammatePublicKeyValue }
     var teamID: Int { return Int(teamIdValue) }
     
-    var cosigners: Set<Cosigner> {
-        return cosignersValue as? Set<Cosigner> ?? []
+    var cosigners: [Cosigner] {
+        let cosignersSet = cosignersValue as? Set<Cosigner> ?? []
+        let cosigners = Array(cosignersSet).sorted { $0.addressID < $1.addressID }
+        return cosigners
     }
     
 }

@@ -56,7 +56,7 @@ class ServicesHandler {
     lazy var teambrella = TeambrellaService()
     
     /// service to work with current Crypto currency and it's blockchain
-    lazy var cryptoWorker: CryptoWorker = EthereumWorker()
+//    lazy var cryptoWorker: CryptoWorker = EthereumWorker()
     
     /// socket messaging service
     var socket: SocketService?

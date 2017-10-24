@@ -27,8 +27,18 @@ protocol TeambrellaServiceDelegate: class {
 }
 
 class TeambrellaService {
+    struct Constant {
+        static let maxAttempts = 3
+        static let gasLimit = 1300000
+    }
+    
+    let queue = DispatchQueue(label: "com.teambrella.ethereumWorker.queue", qos: .background)
+    var hasNews: Bool = false
+    
     let server = BlockchainServer()
     let contentProvider: TeambrellaContentProvider = TeambrellaContentProvider()
+    
+    lazy var processor: EthereumProcessor = { EthereumProcessor.standard }()
     
     weak var delegate: TeambrellaServiceDelegate?
     
@@ -125,6 +135,71 @@ class TeambrellaService {
             }
         }
     }
+    
+//    private var observerToken: NSKeyValueObservation?
+    
+//    init() {
+//        observerToken = service.server.observe(\.timestamp) { [weak self] object, change in
+//            self?.processor.key = object.key
+//        }
+//    }
+    
+    func sync() {
+        self.queue.async { [unowned self] in
+            var attemptsLeft = Constant.maxAttempts
+            while attemptsLeft > 0 && self.hasNews {
+                self.createWallets(gasLimit: Constant.gasLimit)
+                self.verifyIfWalletIsCreated()
+                self.depositWallet()
+                self.autoApproveTxs()
+                self.cosignApprovedTransactions()
+                self.masterSign()
+                self.publishApprovedAndCosignedTxs()
+                self.update()
+//                self.hasNews =
+                attemptsLeft -= 1
+            }
+        }
+    }
+    
+    @discardableResult
+    func createWallets(gasLimit: Int) -> Bool {
+        let myPublicKey = key.publicKey
+        let multisigsToCreate = contentProvider.multisigsToCreate(publicKey: myPublicKey)
+        guard !multisigsToCreate.isEmpty else { return false }
+        
+        //processor.
+        // WIP!
+        return false
+    }
+    
+    func verifyIfWalletIsCreated() {
+        
+    }
+    
+    func depositWallet() {
+        
+    }
+    
+    func autoApproveTxs() {
+        
+    }
+    
+    func cosignApprovedTransactions() {
+        
+    }
+    
+    func masterSign() {
+        
+    }
+    
+    func publishApprovedAndCosignedTxs() {
+        
+    }
+    
+//    func update() -> Bool {
+//        return false
+//    }
     
 }
 

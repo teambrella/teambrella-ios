@@ -99,6 +99,20 @@ import SwiftKeccak
         return Data(bytes)
     }
     
+    // MARK: Transaction
+    
+    func contractTx(nonce: Int, gasLimit: Int, gasPrice: Int, byteCode: String, object: [String: Any]) {
+        
+    }
+    
+    func depositTx(nonce: Int, gasLimit: Int, toAddress: String, gasPrice: Int, value: Decimal) {
+        let weis = value * 1_000_000_000_000_000_000
+        let dict = ["nonce": "0x\(nonce)",
+                    "gasPrice": "0x\(gasPrice)",
+                    "gasLimit": "0x\(gasLimit)",
+                    "bytecode": "%"]
+    }
+    
     /// returns hash made by Keccak algorithm
     func sha3(_ string: String) -> Data {
         return keccak256(string)
