@@ -27,5 +27,6 @@ class TeammateCell: UICollectionViewCell {
     @IBOutlet var detailsLabel: UILabel!
     @IBOutlet var amountLabel: UILabel!
     @IBOutlet var signLabel: UILabel!
+    @IBOutlet var cellSeparator: UIView!
     
 }

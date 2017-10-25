@@ -143,6 +143,8 @@ class ClaimsDataSource {
         }
     }
     
+    func itemsInSection(section: Int) -> Int { return sections }
+    
     func cellType(for indexPath: IndexPath) -> ClaimsCellType {
         return order[indexPath.section]
     }

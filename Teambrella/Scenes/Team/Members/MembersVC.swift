@@ -170,6 +170,36 @@ extension MembersVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         let teammate = dataSource[indexPath]
         MembersCellBuilder.populate(cell: cell, with: teammate)
+        let maxRow = dataSource.itemsInSection(section: indexPath.section)
+        if let cell = cell as? TeammateCell {
+            let isLastCell = indexPath.row == maxRow - 1
+            cell.cellSeparator.isHidden = isLastCell
+            //cell in list decorating
+            if indexPath.row == 0 && indexPath.row == maxRow - 1 {
+                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 8, offset: CGSize.init(width: 0, height: 0))
+            } else if indexPath.row == 0 {
+                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: -4))
+            } else if indexPath.row == maxRow - 1 {
+                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: 4))
+            } else {
+                CellDecorator.removeShadow(for: cell)
+            }
+        }
+        let maxRowCand = dataSource.itemsInSection(section: indexPath.section)
+        if let cell = cell as? TeammateCandidateCell {
+            let isLastCell = indexPath.row == maxRowCand - 1
+            cell.cellSeparator.isHidden = isLastCell
+            //cell in list decorating
+            if indexPath.row == 0 && indexPath.row == maxRowCand - 1 {
+                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 8, offset: CGSize.init(width: 0, height: 0))
+            } else if indexPath.row == 0 {
+                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: -4))
+            } else if indexPath.row == maxRowCand - 1 {
+                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: 4))
+            } else {
+                CellDecorator.removeShadow(for: cell)
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,

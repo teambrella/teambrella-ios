@@ -123,6 +123,10 @@ extension ClaimsVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         ClaimsCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        //let maxRow = dataSource.itemsInSection(section: indexPath.section)
+        if let cell = cell as? ClaimTransactionCell {
+            cell.cellSeparator.isHidden = indexPath.row == dataSource.sections - 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,

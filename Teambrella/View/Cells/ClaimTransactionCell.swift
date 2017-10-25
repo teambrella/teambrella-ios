@@ -31,6 +31,7 @@ class ClaimTransactionCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var fiatAmountLabel: InfoHelpLabel!
     @IBOutlet var status: InfoHelpLabel!
     @IBOutlet var statusLabel: InfoHelpLabel!
+    @IBOutlet var cellSeparator: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

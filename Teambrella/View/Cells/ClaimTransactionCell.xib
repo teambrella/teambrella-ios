@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -135,6 +134,7 @@
                 <outlet property="amountCrypto" destination="HTH-lI-c1f" id="Tun-Dt-BPH"/>
                 <outlet property="amountFiat" destination="svc-Cf-iAi" id="eaB-c4-5z5"/>
                 <outlet property="avatar" destination="waD-Tc-NwO" id="8uP-a7-yMW"/>
+                <outlet property="cellSeparator" destination="zgh-cG-Cak" id="5d4-6b-mC7"/>
                 <outlet property="container" destination="1rX-dn-gaJ" id="MV7-qM-xiM"/>
                 <outlet property="cryptoAmountLabel" destination="S5T-l8-Lzb" id="9xg-nt-zSa"/>
                 <outlet property="fiatAmountLabel" destination="AT7-WE-wu4" id="vq6-Gw-nsr"/>
