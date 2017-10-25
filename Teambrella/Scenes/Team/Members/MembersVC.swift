@@ -179,10 +179,10 @@ extension MembersVC: UICollectionViewDelegate {
         }
         let maxRowTeammate = dataSource.itemsInSection(section: indexPath.section)
         if let cell = cell as? TeammateCell {
-            cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
+            cell.cellSeparator.isHidden = indexPath.row == maxRowTeammate - 1
             CellDecorator.decorateCollectionView(cell: cell,
                                                  isFirst: indexPath.row == 0,
-                                                 isLast: indexPath.row == maxRow - 1)
+                                                 isLast: indexPath.row == maxRowTeammate - 1)
         }
     }
     
