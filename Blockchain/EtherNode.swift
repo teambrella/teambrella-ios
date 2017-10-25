@@ -16,8 +16,7 @@
 
 import Foundation
 
-/*
-class EthereumNode {
+class EtherNode {
     struct Constant {
         static let testAuthorities: [String] = ["https://ropsten.etherscan.io"]
         static let mainAuthorities: [String] = ["http://api.etherscan.io"]
@@ -47,12 +46,50 @@ class EthereumNode {
          .client(client)
          .build().create(EtherAPI.class));
          }
- */
+         */
     }
     
-    func checkTx(creationTx: String) -> Future<
-    func checkTx(creationTx: String, success: () -> Void, failure: (Error) -> Void) {
-        
+    func pushTx(hex: String) -> String {
+        return ""
+        /*
+         JsonObject result = null;
+         for (EtherAPI api : mEtherAPIs) {
+         try {
+         Response<JsonObject> response = api.pushTx(hex).execute();
+         if (response.isSuccessful()) {
+         result = response.body();
+         //        {
+         //            "jsonrpc": "2.0",
+         //                "error": {
+         //            "code": -32010,
+         //                    "message": "Transaction nonce is too low. Try incrementing the nonce.",
+         //                    "data": null
+         //        },
+         //            "id": 1
+         //        {
+         //              "jsonrpc": "2.0",
+         //              "result": "0x918a3313e6c1c5a0068b5234951c916aa64a8074fdbce0fecbb5c9797f7332f6",
+         //              "id": 1
+         //          }
+         
+         JsonElement r = result.get("result");
+         if (r != null)
+         return r.getAsString();
+         else
+         Log.e(LOG_TAG, "Could not publish eth multisig creation tx. The answer was: " + result.toString());
+         
+         }
+         } catch (IOException e) {
+         Log.e(LOG_TAG, e.toString());
+         }
+         }
+         return null;
+         */
     }
+    
+    //    func checkTx(creationTx: String) -> Future<
+    //    func checkTx(creationTx: String, success: () -> Void, failure: (Error) -> Void) {
+    //
+    //    }
 }
-*/
+

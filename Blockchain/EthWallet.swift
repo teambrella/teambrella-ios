@@ -15,6 +15,7 @@
  */
 
 import Foundation
+import Geth
 
 class EthWallet {
     struct Constant {
@@ -43,17 +44,41 @@ class EthWallet {
         self.isTestNet = isTestNet
     }
     
-    func createOneWallet(myNonce: Int, multisig: Multisig, gaslLimit: Int, gasPrice: Int) -> String? {
-        let cosigners = multisig.cosigners
-        guard !cosigners.isEmpty else { return nil }
-        
-        let addresses = cosigners.map { $0.addressID }
-        guard let contract = contract else { return nil }
-        
-        let cryptoTx = BTCTransaction()
-
-        return nil
+    enum EthWalletError: Error {
+        case multisigHasNoCosigners(Int)
+        case contractDoesNotExist
+        case multisigHasNoCreationTx(Int)
     }
     
+    func createOneWallet(myNonce: Int, multisig: Multisig, gaslLimit: Int, gasPrice: Int) throws -> String {
+        let cosigners = multisig.cosigners
+        guard !cosigners.isEmpty else {
+            log("Multisig address id: \(multisig.id) has no cosigners", type: [.error, .crypto])
+            throw EthWalletError.multisigHasNoCosigners(multisig.id)
+        }
+        guard let creationTx = multisig.creationTx else { throw EthWalletError.multisigHasNoCreationTx(multisig.id) }
+        
+        let addresses = cosigners.map { $0.addressID }
+        guard let contract = contract else { throw EthWalletError.contractDoesNotExist }
+        
+        var cryptoTx = try processor.contractTx(nonce: myNonce,
+                                            gasLimit: gaslLimit,
+                                            gasPrice: gasPrice,
+                                            byteCode: contract,
+                                            arguments: addresses,
+                                            multisig.teamID)
+        cryptoTx = try processor.signTx(unsignedTx: cryptoTx, isTestNet: isTestNet)
+        log("Multisig created teamID: \(multisig.teamID), tx: \(creationTx)", type: .crypto)
+        let txHex = try publish(cryptoTx: cryptoTx)
+        return txHex
+    }
+    
+    func publish(cryptoTx: GethTransaction) throws -> String {
+        let rlp = try cryptoTx.encodeRLP()
+        let hex = "0x" + Hex().hexStringFrom(data: rlp)
+        
+        let blockchain = EtherNode(isTestNet: isTestNet)
+        return blockchain.pushTx(hex: hex)
+    }
     
 }

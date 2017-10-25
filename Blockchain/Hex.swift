@@ -17,15 +17,6 @@
 import Foundation
 
 struct Hex {
-    //    func hexString(_ array: [String], bytesCount: Int) -> String {
-    //        var result = ""
-    //        for string in array {
-    //            if let item = formattedString(string, bytesCount: bytesCount) {
-    //                result.append(item)
-    //            }
-    //        }
-    //        return result
-    //    }
     enum HexError: Error {
         case stringUnconvertibleToData
         case unsupportedArgument(Any)
@@ -58,15 +49,15 @@ struct Hex {
         for item in from {
             switch item {
             case let item as String:
-                let data = try createData(from: item)
+                let data = createData(from: item)
                 result.append(data)
             case let item as [String]:
                 for string in item {
-                    let data = try createData(from: string)
+                    let data = createData(from: string)
                     result.append(data)
                 }
             case let item as Int:
-                let data = try createData(from: String(item))
+                let data = createData(from: String(item))
                 result.append(data)
             case let item as Data:
                 result.append(item)

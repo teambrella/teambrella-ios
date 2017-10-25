@@ -26,7 +26,14 @@ import SwiftKeccak
 /**
  * Interaction with Ethereum wallet
  */
- struct EthereumProcessor {
+struct EthereumProcessor {
+    enum EthereumProcessorError: Error {
+        case noKeyStore
+        case noAccount
+        case noWIF
+        case inconsistentTxData(String)
+    }
+    
     /// creates a processor with the key that is stored for the current user
     static var standard: EthereumProcessor { return EthereumProcessor(key: service.server.key) }
     
@@ -52,8 +59,8 @@ import SwiftKeccak
         guard let secretString = secretString else { return nil }
         
         return accounts.size() == 0
-        ? try? keyStore.importECDSAKey(secretData, passphrase: secretString)
-        : try? accounts.get(0)
+            ? try? keyStore.importECDSAKey(secretData, passphrase: secretString)
+            : try? accounts.get(0)
     }
     
     var ethAddress: GethAddress? {
@@ -101,16 +108,51 @@ import SwiftKeccak
     
     // MARK: Transaction
     
-    func contractTx(nonce: Int, gasLimit: Int, gasPrice: Int, byteCode: String, object: [String: Any]) {
-        
+    func contractTx(nonce: Int,
+                    gasLimit: Int,
+                    gasPrice: Int,
+                    byteCode: String,
+                    arguments: Any...) throws -> GethTransaction {
+        let input = try AbiArguments.encodeToHex(arguments)
+        let dict = ["nonce": "0x\(nonce)",
+            "gasPrice": "0x\(gasPrice)",
+            "gas": "0x\(gasLimit)",
+            "value": "0x0",
+            "input": "0x\(input)",
+            "v": "0x29",
+            "r": "0x29",
+            "s": "0x29"
+        ]
+        let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
+        let json = String(bytes: jsonData, encoding: .utf8) ?? ""
+        if let tx = GethTransaction(fromJSON: json) {
+            return tx
+        } else {
+            throw EthereumProcessorError.inconsistentTxData(json)
+        }
     }
     
     func depositTx(nonce: Int, gasLimit: Int, toAddress: String, gasPrice: Int, value: Decimal) {
         let weis = value * 1_000_000_000_000_000_000
         let dict = ["nonce": "0x\(nonce)",
-                    "gasPrice": "0x\(gasPrice)",
-                    "gasLimit": "0x\(gasLimit)",
-                    "bytecode": "%"]
+            "gasPrice": "0x\(gasPrice)",
+            "gasLimit": "0x\(gasLimit)",
+            "bytecode": "%"]
+    }
+    
+    func signTx(unsignedTx: GethTransaction, isTestNet: Bool) throws -> GethTransaction {
+        guard let keyStore = ethKeyStore else { throw EthereumProcessorError.noKeyStore }
+        guard let account = ethAccount else { throw EthereumProcessorError.noAccount }
+        guard let passphrase = secretString else { throw EthereumProcessorError.noWIF }
+        
+       return try keyStore.signTxPassphrase(account,
+                                            passphrase: passphrase,
+                                            tx: unsignedTx,
+                                            chainID: chainID(isTestNet: isTestNet))
+    }
+    
+    func chainID(isTestNet: Bool) -> GethBigInt {
+        return GethBigInt(isTestNet ? 3: 1)
     }
     
     /// returns hash made by Keccak algorithm
