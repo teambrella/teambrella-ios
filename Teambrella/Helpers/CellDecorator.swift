@@ -70,6 +70,18 @@ struct CellDecorator {
         }
         closableCell.closeButton = closeButton
     }
+    
+    static func decorateCollectionView(cell: UICollectionReusableView, isFirst: Bool, isLast: Bool) {
+        if isFirst && isLast {
+            shadow(for: cell, opacity: 0.05, radius: 8, offset: CGSize.init(width: 0, height: 0))
+        } else if isFirst {
+            shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: -4))
+        } else if isLast {
+            shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: 4))
+        } else {
+            removeShadow(for: cell)
+        }
+    }
 }
 
 protocol ClosableCell {
