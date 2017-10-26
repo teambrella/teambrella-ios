@@ -4,11 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -118,6 +116,7 @@
                             <constraint firstItem="Ejr-yO-pjp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yqT-sY-ffe" secondAttribute="trailing" constant="8" id="3zg-zE-1cC"/>
                             <constraint firstAttribute="trailing" secondItem="uev-dk-iCT" secondAttribute="trailing" id="4UY-pt-jAS"/>
                             <constraint firstItem="B6d-fE-Fmr" firstAttribute="leading" secondItem="lEA-pj-5Rg" secondAttribute="trailing" constant="8" id="Arh-3m-KAh"/>
+                            <constraint firstItem="uev-dk-iCT" firstAttribute="leading" secondItem="BkT-eI-XLe" secondAttribute="leading" constant="16" id="GPL-TR-cVD"/>
                             <constraint firstItem="m8U-ZJ-9yS" firstAttribute="centerY" secondItem="7wD-Sn-ye9" secondAttribute="centerY" id="IpG-hp-jmj"/>
                             <constraint firstItem="yqT-sY-ffe" firstAttribute="leading" secondItem="M6n-hd-Q8f" secondAttribute="trailing" constant="16" id="PTJ-Jf-zyS"/>
                             <constraint firstItem="Gex-0H-g7a" firstAttribute="leading" secondItem="B6d-fE-Fmr" secondAttribute="trailing" constant="16" id="Q2T-Db-rrg"/>
@@ -132,7 +131,6 @@
                             <constraint firstItem="M6n-hd-Q8f" firstAttribute="top" secondItem="BkT-eI-XLe" secondAttribute="top" constant="16" id="gmd-gr-23D"/>
                             <constraint firstItem="yqT-sY-ffe" firstAttribute="bottom" secondItem="M6n-hd-Q8f" secondAttribute="centerY" priority="250" id="hNr-St-Ajm"/>
                             <constraint firstItem="7wD-Sn-ye9" firstAttribute="centerY" secondItem="JbY-Lf-BOo" secondAttribute="centerY" id="hWt-dU-8Iq"/>
-                            <constraint firstItem="uev-dk-iCT" firstAttribute="leading" secondItem="BkT-eI-XLe" secondAttribute="leadingMargin" id="his-lB-eEl"/>
                             <constraint firstItem="Gex-0H-g7a" firstAttribute="centerY" secondItem="BkT-eI-XLe" secondAttribute="centerY" id="hoD-nA-wY6"/>
                             <constraint firstItem="7wD-Sn-ye9" firstAttribute="leading" secondItem="JbY-Lf-BOo" secondAttribute="trailing" constant="20" id="jLK-6K-x1Z"/>
                             <constraint firstItem="M6n-hd-Q8f" firstAttribute="leading" secondItem="BkT-eI-XLe" secondAttribute="leading" constant="16" id="kJL-Ex-GPM"/>
@@ -154,6 +152,7 @@
             <size key="customSize" width="626" height="180"/>
             <connections>
                 <outlet property="avatarView" destination="M6n-hd-Q8f" id="LqM-0Q-GCK"/>
+                <outlet property="cellSeparator" destination="uev-dk-iCT" id="xup-A6-yLV"/>
                 <outlet property="facesStack" destination="JbY-Lf-BOo" id="cCi-8h-bWV"/>
                 <outlet property="iconView" destination="7wD-Sn-ye9" id="dWe-5f-qxc"/>
                 <outlet property="textLabel" destination="lEA-pj-5Rg" id="3XS-Cu-SEt"/>
