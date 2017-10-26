@@ -170,19 +170,18 @@ extension MembersVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         let teammate = dataSource[indexPath]
         MembersCellBuilder.populate(cell: cell, with: teammate)
-        let maxRowCandidate = dataSource.itemsInSection(section: indexPath.section)
+        let maxRow = dataSource.itemsInSection(section: indexPath.section)
         if let cell = cell as? TeammateCandidateCell {
-            cell.cellSeparator.isHidden = indexPath.row == maxRowCandidate - 1
+            cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
             CellDecorator.decorateCollectionView(cell: cell,
                                                  isFirst: indexPath.row == 0,
-                                                 isLast: indexPath.row == maxRowCandidate - 1)
+                                                 isLast: indexPath.row == maxRow - 1)
         }
-        let maxRowTeammate = dataSource.itemsInSection(section: indexPath.section)
         if let cell = cell as? TeammateCell {
-            cell.cellSeparator.isHidden = indexPath.row == maxRowTeammate - 1
+            cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
             CellDecorator.decorateCollectionView(cell: cell,
                                                  isFirst: indexPath.row == 0,
-                                                 isLast: indexPath.row == maxRowTeammate - 1)
+                                                 isLast: indexPath.row == maxRow - 1)
         }
     }
     

@@ -29,6 +29,7 @@ class ClaimsPaidCell: UICollectionViewCell, ClaimsCell {
     @IBOutlet var amountLabel: Label!
     @IBOutlet var statusLabel: Label!
     @IBOutlet var scaleBar: ScaleBar!
+    @IBOutlet var cellSeparator: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

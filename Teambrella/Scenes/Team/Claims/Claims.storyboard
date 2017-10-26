@@ -254,11 +254,11 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="rHA-3k-TcH" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leadingMargin" id="2Tq-q0-aD6"/>
                                             <constraint firstItem="kee-4E-5EA" firstAttribute="leading" secondItem="vO9-KQ-q0o" secondAttribute="trailing" constant="8" id="4Kg-Ht-iiJ"/>
                                             <constraint firstItem="vO9-KQ-q0o" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leading" constant="16" id="6SD-4f-OE4"/>
                                             <constraint firstItem="7Ey-O7-pHf" firstAttribute="leading" secondItem="1fm-zF-TfT" secondAttribute="trailing" constant="6" id="6m5-fw-k4c"/>
                                             <constraint firstItem="1fm-zF-TfT" firstAttribute="leading" secondItem="XNe-Ds-VYF" secondAttribute="leading" id="6qb-IR-J4R"/>
+                                            <constraint firstItem="rHA-3k-TcH" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leading" constant="16" id="DhC-Mz-yaQ"/>
                                             <constraint firstAttribute="bottom" secondItem="rHA-3k-TcH" secondAttribute="bottom" id="YQA-xF-xGO"/>
                                             <constraint firstItem="1fm-zF-TfT" firstAttribute="top" secondItem="XNe-Ds-VYF" secondAttribute="bottom" constant="13" id="Zuv-NW-CZ6"/>
                                             <constraint firstAttribute="trailing" secondItem="kee-4E-5EA" secondAttribute="trailing" constant="16" id="ex2-5j-Obn"/>
@@ -271,6 +271,7 @@
                                         <size key="customSize" width="375" height="112"/>
                                         <connections>
                                             <outlet property="avatarView" destination="XNe-Ds-VYF" id="07w-ap-NEv"/>
+                                            <outlet property="cellSeparator" destination="rHA-3k-TcH" id="gZ1-E0-zpI"/>
                                             <outlet property="claimedAmountLabel" destination="lxG-ol-cRO" id="zPw-wk-oed"/>
                                             <outlet property="claimedTitleLabel" destination="bnD-c5-vO8" id="aGc-dM-uhM"/>
                                             <outlet property="ownerAvatarView" destination="kAt-qk-Sp0" id="SS6-St-dAX"/>
@@ -375,7 +376,7 @@
                                                         <constraint firstAttribute="width" constant="72" id="t7D-iq-06d"/>
                                                     </constraints>
                                                 </stackView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lxf-Re-lOz">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lxf-Re-lOz">
                                                     <rect key="frame" x="16" y="111" width="359" height="1"/>
                                                     <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -387,7 +388,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="uvp-wZ-ehF" firstAttribute="centerY" secondItem="ybB-qd-hfW" secondAttribute="centerY" id="0Oc-iu-Oyb"/>
-                                            <constraint firstItem="Lxf-Re-lOz" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leadingMargin" id="0kp-Az-LgD"/>
+                                            <constraint firstItem="Lxf-Re-lOz" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leading" constant="16" id="FWm-9v-Mhw"/>
                                             <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" secondItem="uvp-wZ-ehF" secondAttribute="trailing" id="Nq8-Am-rAu"/>
                                             <constraint firstAttribute="trailing" secondItem="Lxf-Re-lOz" secondAttribute="trailing" id="QOO-Zd-6fC"/>
                                             <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qe7-3f-eEx" secondAttribute="trailing" constant="8" id="QRP-6Y-Xhh"/>
@@ -405,6 +406,7 @@
                                         <connections>
                                             <outlet property="amountLabel" destination="8ej-gQ-vWi" id="0ta-GR-ayE"/>
                                             <outlet property="avatarView" destination="80E-3m-yXF" id="xNQ-1G-V70"/>
+                                            <outlet property="cellSeparator" destination="Lxf-Re-lOz" id="xGS-Tr-Xuy"/>
                                             <outlet property="ownerAvatarView" destination="HgH-8d-lM4" id="JDX-yl-KC6"/>
                                             <outlet property="ownerNameLabel" destination="Dd6-bQ-aHd" id="lN3-wM-WCe"/>
                                             <outlet property="scaleBar" destination="5VG-8E-yP1" id="Rnf-gh-e73"/>
