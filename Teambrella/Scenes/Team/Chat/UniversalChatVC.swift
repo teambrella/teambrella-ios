@@ -62,6 +62,7 @@ final class UniversalChatVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
+        addMuteButton()
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
@@ -190,6 +191,10 @@ final class UniversalChatVC: UIViewController, Routable {
         }
     }
     
+    @objc
+    private func tapMuteButton(sender: UIButton) {
+    }
+    
     // MARK: Private
     
     /**
@@ -303,6 +308,11 @@ final class UniversalChatVC: UIViewController, Routable {
         collectionView.refreshControl = refresh
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
+    }
+    
+    private func addMuteButton() {
+        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconCoverage"), style: .plain, target: self, action: #selector(tapMuteButton))
+        navigationItem.setRightBarButton(barItem, animated: true)
     }
     
     private func registerCells() {
