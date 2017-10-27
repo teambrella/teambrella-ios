@@ -22,6 +22,7 @@ class EtherAPI {
         case malformedURL
         case corruptedData
         case unknown
+        case etherscanError(Int, String)
     }
     
     typealias successClosure = (Data) -> Void
@@ -36,12 +37,33 @@ class EtherAPI {
     lazy var session = { URLSession.shared }()
     
     // https://api.etherscan.io/api?module=proxy&action=eth_sendRawTransaction&hex=0xf904808000831cfde080&apikey=YourApiKeyToken
-    func pushTx(hex: String) -> Future<JSON> {
-        let promise = Promise<JSON>()
+    func pushTx(hex: String) -> Future<String> {
+        /*
+         {
+         "jsonrpc": "2.0",
+         "error": {
+         "code": -32010,
+         "message": "Transaction nonce is too low. Try incrementing the nonce.",
+         "data": null
+         },
+         "id": 1
+         {
+         "jsonrpc": "2.0",
+         "result": "0x918a3313e6c1c5a0068b5234951c916aa64a8074fdbce0fecbb5c9797f7332f6",
+         "id": 1
+         }
+         */
+        let promise = Promise<String>()
         sendPostRequest(urlString: "api?module=proxy&action=eth_sendRawTransaction",
                         body: ["hex": hex],
                         success: { data in
-                            promise.resolve(with: JSON(data))
+                            let json = JSON(data)
+                            if let result = json["result"].string {
+                                promise.resolve(with: result)
+                            } else {
+                                promise.reject(with: EtherAPIError.etherscanError(json["error"]["code"].intValue,
+                                                                                  json["error"]["message"].stringValue))
+                            }
         }) { error in
             promise.reject(with: error)
         }

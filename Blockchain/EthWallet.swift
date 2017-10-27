@@ -50,35 +50,59 @@ class EthWallet {
         case multisigHasNoCreationTx(Int)
     }
     
-    func createOneWallet(myNonce: Int, multisig: Multisig, gaslLimit: Int, gasPrice: Int) throws -> String {
+    func createOneWallet(myNonce: Int,
+                         multisig: Multisig,
+                         gaslLimit: Int,
+                         gasPrice: Int,
+                         completion: @escaping (String) -> Void,
+                         failure: @escaping (Error?) -> Void) {
         let cosigners = multisig.cosigners
         guard !cosigners.isEmpty else {
             log("Multisig address id: \(multisig.id) has no cosigners", type: [.error, .crypto])
-            throw EthWalletError.multisigHasNoCosigners(multisig.id)
+             failure(EthWalletError.multisigHasNoCosigners(multisig.id))
+            return
         }
-        guard let creationTx = multisig.creationTx else { throw EthWalletError.multisigHasNoCreationTx(multisig.id) }
+        guard let creationTx = multisig.creationTx else {
+            failure(EthWalletError.multisigHasNoCreationTx(multisig.id))
+            return
+        }
         
         let addresses = cosigners.map { $0.addressID }
-        guard let contract = contract else { throw EthWalletError.contractDoesNotExist }
+        guard let contract = contract else {
+            failure(EthWalletError.contractDoesNotExist)
+            return
+             }
         
-        var cryptoTx = try processor.contractTx(nonce: myNonce,
-                                            gasLimit: gaslLimit,
-                                            gasPrice: gasPrice,
-                                            byteCode: contract,
-                                            arguments: addresses,
-                                            multisig.teamID)
-        cryptoTx = try processor.signTx(unsignedTx: cryptoTx, isTestNet: isTestNet)
-        log("Multisig created teamID: \(multisig.teamID), tx: \(creationTx)", type: .crypto)
-        let txHex = try publish(cryptoTx: cryptoTx)
-        return txHex
+        do {
+            var cryptoTx = try processor.contractTx(nonce: myNonce,
+                                                    gasLimit: gaslLimit,
+                                                    gasPrice: gasPrice,
+                                                    byteCode: contract,
+                                                    arguments: addresses,
+                                                    multisig.teamID)
+            cryptoTx = try processor.signTx(unsignedTx: cryptoTx, isTestNet: isTestNet)
+            log("Multisig created teamID: \(multisig.teamID), tx: \(creationTx)", type: .crypto)
+             publish(cryptoTx: cryptoTx, completion: completion, failure: failure)
+        } catch {
+            failure(error)
+        }
     }
     
-    func publish(cryptoTx: GethTransaction) throws -> String {
-        let rlp = try cryptoTx.encodeRLP()
-        let hex = "0x" + Hex().hexStringFrom(data: rlp)
-        
-        let blockchain = EtherNode(isTestNet: isTestNet)
-        return blockchain.pushTx(hex: hex)
+    func publish(cryptoTx: GethTransaction,
+                 completion: @escaping (String) -> Void,
+                 failure: @escaping (Error?) -> Void) {
+        do {
+            let rlp = try cryptoTx.encodeRLP()
+            let hex = "0x" + Hex().hexStringFrom(data: rlp)
+            let blockchain = EtherNode(isTestNet: isTestNet)
+            blockchain.pushTx(hex: hex, success: { string in
+                completion(string)
+            }, failure: { error in
+                failure(error)
+            })
+        } catch {
+            failure(error)
+        }
     }
     
 }
