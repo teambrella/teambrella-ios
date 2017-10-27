@@ -50,12 +50,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
             guard let `self` = self else { return }
             
             self.collectionView.reloadData()
-            if self.dataSource.isEmpty {
-                self.emptyVC = EmptyVC.show(in: self)
-                self.emptyVC?.setText(title: "Team.ClaimsList.empty".localized, subtitle: nil)
-            } else {
-                self.emptyVC?.remove()
-            }
+            self.showEmptyIfNeeded()
         }
         if isPresentedInStack {
             addGradientNavBar()
@@ -90,6 +85,16 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         return IndicatorInfo(title: "Team.ClaimsVC.indicatorTitle".localized)
     }
     
+    func showEmptyIfNeeded() {
+        if dataSource.isEmpty && emptyVC == nil {
+            emptyVC = EmptyVC.show(in: self)
+            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconTeam"))
+            emptyVC?.setText(title: "Team.Claims.Empty.title".localized,
+                             subtitle: "Team.Claims.Empty.details".localized)
+        } else {
+            emptyVC?.remove()
+        }
+    }
 }
 
 // MARK: UICollectionViewDataSource

@@ -173,6 +173,9 @@
 "Team.Home.Card.teamVote"                        = "TEAM VOTE";
 "Team.Home.Card.voting"                          = "VOTING";
 
-"Team.ClaimsList.empty"                          = "No claims in your team so far.";
 "Team.ChooseTeam.switchUser"                     = "Switch user";
+
+//---waiting---
+"Team.Claims.Empty.title" = "No claims in the team so far";
+"Team.Claims.Empty.details" = "We will notify you when a claim is submitted.";
 

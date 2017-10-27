@@ -56,6 +56,7 @@ class ProxyForVC: UIViewController {
     func showEmptyIfNeeded() {
         if dataSource.isEmpty && emptyVC == nil {
             emptyVC = EmptyVC.show(in: self)
+            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconProxy"))
             emptyVC?.setText(title: "Proxy.Empty.You.title".localized, subtitle: "Proxy.Empty.You.details".localized)
         } else {
             emptyVC?.remove()

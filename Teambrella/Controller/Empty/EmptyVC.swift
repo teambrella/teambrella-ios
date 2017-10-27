@@ -57,6 +57,10 @@ class EmptyVC: UIViewController {
         detailsLabel.text = subtitle
     }
     
+    func setImage(image: UIImage) {
+        imageView.image = image
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         modalPresentationStyle = .overCurrentContext

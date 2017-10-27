@@ -29,6 +29,7 @@
 "Home.ApplicationStatusCell.titleLabel"                 = "Tu solicitud";
 "Home.ApplicationStatusCell.centerLabel"                = "Votación (pendiente)";
 "Home.PrivateMessages.title"                            = "Mensajes privados";
-"Home.Empty.Title.noPrivateMessages"                    = "Todavía no hay mensajes privados";
 
 // TRANSLATE
+"Home.Empty.Title.noPrivateMessages"                    = "You have no messages";
+"Home.Empty.SubTitle.noPrivateMessages"                 = "Tap on the compose button to keep in touch with your teammates.";

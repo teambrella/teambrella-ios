@@ -26,10 +26,10 @@
 "Proxy.MyProxiesVC.proxyRank"         = "RANGO DE PROXY";
 "Proxy.UserIndexVC.members"           = "MIEMBROS";
 "Proxy.UserIndexVC.proxyRank"         = "RANGO DE PROXY";
-"Proxy.Empty.title"                   = "Todavía no tienes los Proxies.";
+"Proxy.Empty.title"                   = "Todavía no tienes los Proxies";
 "Proxy.Empty.details"                 = "Por favor, considera a alguien en quien confías para nombrar a tu primero Proxy.";
 "Proxy.Empty.You.title"               = "No estás Proxy de cualquier compañero del equipo";
-"Proxy.Empty.You.details"             = "Tu puedes llegar a estar Proxy por ganar la confianza de otros compañeros del equipo - publica tus ideas, opiniones e votos";
+"Proxy.Empty.You.details"             = "Tu puedes llegar a estar Proxy por ganar la confianza de otros compañeros del equipo. Publica tus ideas, opiniones e votos";
 //--waiting--
 
 "Proxy.UserIndexVC.optButton.title.in" = "Opt Into Rating";
