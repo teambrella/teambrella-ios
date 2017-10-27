@@ -105,6 +105,11 @@ extension FeedVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         FeedCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        let maxRow = dataSource.count
+        if let cell = cell as? TeamFeedCell {
+            cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
+            CellDecorator.decorateCollectionView(cell: cell, isFirst: false, isLast: indexPath.row == maxRow - 1)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
