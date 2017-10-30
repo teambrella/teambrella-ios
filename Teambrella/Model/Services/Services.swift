@@ -46,7 +46,7 @@ class ServicesHandler {
     lazy var error: ErrorPresenter = ErrorPresenter()
     
     /// logging service
-    lazy var log: Log = Log(logLevel: .crypto)
+    lazy var log: Log = Log(logLevel: .all)
     
     /// service to store private keys and last user logged in
     lazy var keyStorage: KeyStorage = KeyStorage()

@@ -42,7 +42,7 @@ struct EthereumProcessor {
     /// BTC key
     private var secretData: Data { return key.key.privateKey as Data }
     /// BTC WiF
-    private var secretString: String? { return key.isTestnet ? key.key.wifTestnet : key.key.wif }
+    private var secretString: String? { return /*key.isTestnet ? key.key.wifTestnet :*/ key.key.wif }
     
     var ethAddressString: String? {
         return ethAddress?.getHex()
@@ -90,6 +90,19 @@ struct EthereumProcessor {
         guard let secretWiF = secretString else { return nil }
         
         do {
+            let storedKeyString = KeyStorage().privateKey
+            print("stored private key string: \(storedKeyString)")
+            print("signing moment: \(account.getAddress().getHex())")
+            print("private key wif: \(secretWiF)")
+            print("private key \(key.privateKey)")
+            print("public key \(key.publicKey)")
+            print("alternative public key \(key.alternativePublicKey)")
+            
+            let testKey = BTCKey(wif: storedKeyString)
+            print("test key private: \(testKey?.wif)")
+            let address = BTCPrivateKeyAddress(string: storedKeyString)
+            let key2 = BTCKey(privateKeyAddress: address)
+            print("test key2 private: \(key2?.wif)")
             let signed = try keyStore.signHashPassphrase(account, passphrase: secretWiF, hash: Data(last32bytes))
             return signed
         } catch {
@@ -102,7 +115,6 @@ struct EthereumProcessor {
     func reverseAndCalculateV(data: Data) -> Data {
         var bytes: [UInt8] = data.reversed()
         bytes[0] += 27
-        //bytes.insert(27, at: 0)
         return Data(bytes)
     }
     

@@ -31,6 +31,10 @@ struct Key {
     var publicKey: String {
         return (key.compressedPublicKey as Data).hexString
     }
+    var alternativePublicKey: String {
+        return (key.publicKey as Data).hexString
+    }
+    
     var address: String {
         return key.privateKeyAddress.string
     }

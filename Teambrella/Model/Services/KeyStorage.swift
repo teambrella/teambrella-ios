@@ -53,6 +53,7 @@ final class KeyStorage {
     
    private var realPrivateKey: String {
        storeLastUserType(type: .real)
+    return "cUNX4HYHK3thsjDKEcB26qRYriw8uJLtt8UvDrM98GbUBn22HMrY"
         return privateKey(for: .ethPrivateAddress)
     }
     
@@ -74,7 +75,7 @@ final class KeyStorage {
         let privateKey = newKey.privateKey
         log("New private key type \(key): \(privateKey)", type: .serviceInfo)
         Keychain.save(value: privateKey, forKey: key)
-        return privateKey
+        return self.privateKey
     }
     
     private func storeLastUserType(type: LastUserType) {
