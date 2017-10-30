@@ -159,7 +159,7 @@ class ServerService: NSObject {
                 request.setValue(String(describing: value), forHTTPHeaderField: key)
             }
             
-            print("request fields: \(dict)")
+            print("request header fields: \(dict)")
         }
         
         Alamofire.request(request).responseJSON { response in

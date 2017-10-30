@@ -40,9 +40,9 @@ struct EthereumProcessor {
     var key: Key
     
     /// BTC key
-    private var secretData: Data { return key.key.privateKey as Data }
+    private var secretData: Data { return key.privateKeyData }
     /// BTC WiF
-    private var secretString: String? { return /*key.isTestnet ? key.key.wifTestnet :*/ key.key.wif }
+    private var secretString: String { return key.privateKey }
     
     var ethAddressString: String? {
         return ethAddress?.getHex()
@@ -56,7 +56,6 @@ struct EthereumProcessor {
     var ethAccount: GethAccount? {
         guard let keyStore = ethKeyStore else { return nil }
         guard let accounts = keyStore.getAccounts() else { return nil }
-        guard let secretString = secretString else { return nil }
         
         return accounts.size() == 0
             ? try? keyStore.importECDSAKey(secretData, passphrase: secretString)
@@ -70,7 +69,9 @@ struct EthereumProcessor {
     var publicKeySignature: String? {
         guard let signature: Data = sign(publicKey: key.publicKey) else { return nil }
         
-        return reverseAndCalculateV(data: signature).hexString
+        let publicKeySignature = reverseAndCalculateV(data: signature).hexString
+        print("Public key signature: \(publicKeySignature)")
+        return publicKeySignature
     }
     
     init(key: Key) {
@@ -81,29 +82,21 @@ struct EthereumProcessor {
         // signing last 32 bytes of a string
         guard let keyStore = ethKeyStore else { return nil }
         guard let account = ethAccount else { return nil }
-        guard let data = publicKey.data(using: .utf8) else { return nil }
+        let data = Data(hex: publicKey)
         
         var bytes: [UInt8] = Array(data)
         guard bytes.count >= 32 else { return nil }
         
         let last32bytes = bytes[(bytes.count - 32)...]
-        guard let secretWiF = secretString else { return nil }
         
         do {
             let storedKeyString = KeyStorage().privateKey
+            print(key.debugDescription)
             print("stored private key string: \(storedKeyString)")
-            print("signing moment: \(account.getAddress().getHex())")
-            print("private key wif: \(secretWiF)")
-            print("private key \(key.privateKey)")
-            print("public key \(key.publicKey)")
-            print("alternative public key \(key.alternativePublicKey)")
-            
-            let testKey = BTCKey(wif: storedKeyString)
-            print("test key private: \(testKey?.wif)")
-            let address = BTCPrivateKeyAddress(string: storedKeyString)
-            let key2 = BTCKey(privateKeyAddress: address)
-            print("test key2 private: \(key2?.wif)")
-            let signed = try keyStore.signHashPassphrase(account, passphrase: secretWiF, hash: Data(last32bytes))
+            print("ethereum address: \(account.getAddress().getHex())")
+            print("last 32 bytes: \(Data(last32bytes).hexString)")
+            let signed = try keyStore.signHashPassphrase(account, passphrase: secretString, hash: Data(last32bytes))
+            print("signature: \(signed.hexString)")
             return signed
         } catch {
             log("Error signing ethereum: \(error)", type: .error)
@@ -155,12 +148,11 @@ struct EthereumProcessor {
     func signTx(unsignedTx: GethTransaction, isTestNet: Bool) throws -> GethTransaction {
         guard let keyStore = ethKeyStore else { throw EthereumProcessorError.noKeyStore }
         guard let account = ethAccount else { throw EthereumProcessorError.noAccount }
-        guard let passphrase = secretString else { throw EthereumProcessorError.noWIF }
         
-       return try keyStore.signTxPassphrase(account,
-                                            passphrase: passphrase,
-                                            tx: unsignedTx,
-                                            chainID: chainID(isTestNet: isTestNet))
+        return try keyStore.signTxPassphrase(account,
+                                             passphrase: secretString,
+                                             tx: unsignedTx,
+                                             chainID: chainID(isTestNet: isTestNet))
     }
     
     func chainID(isTestNet: Bool) -> GethBigInt {

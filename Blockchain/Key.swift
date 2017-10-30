@@ -21,23 +21,26 @@
 
 import Foundation
 
-struct Key {
+struct Key: CustomDebugStringConvertible {
     let key: BTCKey
     var isTestnet: Bool
     var timestamp: Int64
     var privateKey: String {
-        return key.wif //(key.privateKey as Data).base58String
+        return isTestnet ? key.wifTestnet : key.wif //(key.privateKey as Data).base58String
     }
+    
+    var privateKeyData: Data {
+        return key.privateKey as Data
+    }
+    
     var publicKey: String {
-        return (key.compressedPublicKey as Data).hexString
-    }
-    var alternativePublicKey: String {
-        return (key.publicKey as Data).hexString
+        return key.publicKey.hex()
     }
     
     var address: String {
-        return key.privateKeyAddress.string
+        return isTestnet ? key.privateKeyAddressTestnet.string : key.privateKeyAddress.string 
     }
+    
     var signature: String {
         guard let data = key.signature(forMessage: String(timestamp)) else {
             fatalError("Couldn't create signature data")
@@ -46,13 +49,23 @@ struct Key {
         return data.base64EncodedString()
     }
     
+    var debugDescription: String {
+        return """
+        Teambrella.Key:
+        private key: \(privateKey)
+        private key testnet: \(key.wifTestnet)
+        address: \(address)
+        public key: \(publicKey)
+        signatire: \(signature)
+        compressed: \(key.isPublicKeyCompressed)
+        isTestnet" \(isTestnet)
+        """
+    }
+    
     init(base58String: String, timestamp: Int64) {
         self.timestamp = timestamp
-        key = BTCKey(wif: base58String)
-        isTestnet = false
-        /*
-        if base58String.characters.count == 52,
-            (base58String.hasPrefix("K") || base58String.hasPrefix("L")) {
+        //key = BTCKey(wif: base58String)
+        if (base58String.hasPrefix("K") || base58String.hasPrefix("L") || base58String.hasPrefix("5")) {
             let address = BTCPrivateKeyAddress(string: base58String)
             key = BTCKey(privateKeyAddress: address)
             isTestnet = false
@@ -61,7 +74,6 @@ struct Key {
             key = BTCKey(privateKeyAddress: address)
             isTestnet = true
         }
- */
     }
     
     init(timestamp: Int64) {
