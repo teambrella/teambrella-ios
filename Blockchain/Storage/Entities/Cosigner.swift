@@ -23,18 +23,18 @@ import CoreData
 
 class Cosigner: NSManagedObject {
     var keyOrder: Int { return Int(keyOrderValue) }
-    var addressID: String { return addressIDValue! }
+    var multisigID: Int64 { return multisigIDValue }
     
     var teammate: Teammate {
         return teammateValue!
     }
     
-    var address: BtcAddress {
-        return addressValue!
+    var multisig: Multisig {
+        return multisigValue!
     }
     
     override var description: String {
-        return "Cosigner for address: \(address.address), order: \(keyOrder)"
+        return "Cosigner for multisig: \(multisig.id), order: \(keyOrder)"
     }
 }
 

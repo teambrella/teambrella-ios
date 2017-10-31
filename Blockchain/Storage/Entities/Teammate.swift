@@ -43,8 +43,8 @@ class Teammate: NSManagedObject {
         return payTosValue as? Set<PayTo> ?? []
     }
     
-    var addresses: [BtcAddress] {
-        guard let set = addressesValue as? Set<BtcAddress> else { fatalError() }
+    var addresses: [CryptoAddress] {
+        guard let set = addressesValue as? Set<CryptoAddress> else { fatalError() }
         
         return Array(set)
     }
@@ -55,15 +55,15 @@ class Teammate: NSManagedObject {
         return Array(set)
     }
     
-    var addressPrevious: BtcAddress? {
+    var addressPrevious: CryptoAddress? {
         return addresses.filter { $0.status == UserAddressStatus.previous }.first
     }
     
-    var addressCurrent: BtcAddress? {
+    var addressCurrent: CryptoAddress? {
         return addresses.filter { $0.status == UserAddressStatus.current }.first
     }
     
-    var addressNext: BtcAddress? {
+    var addressNext: CryptoAddress? {
         return addresses.filter { $0.status == UserAddressStatus.next }.first
     }
 }

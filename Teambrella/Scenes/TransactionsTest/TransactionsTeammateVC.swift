@@ -21,6 +21,7 @@
 
 import UIKit
 
+/*
 class TransactionsTeammateVC: UIViewController {
     var teammate: Teammate!
     var teambrella: TeambrellaService!
@@ -64,3 +65,4 @@ class TransactionsTeammateVC: UIViewController {
     }
     
 }
+*/

@@ -22,6 +22,7 @@
 import Kingfisher
 import UIKit
 
+/*
 class TransactionsresultTVC: UITableViewController {
     var teambrella: TeambrellaService!
     var teammates: [Teammate] = []
@@ -82,3 +83,4 @@ class TransactionsresultTVC: UITableViewController {
     }
 
 }
+*/

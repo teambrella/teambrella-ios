@@ -67,7 +67,7 @@ class Tx: NSManagedObject {
         return teammate
     }
     
-    var fromAddress: BtcAddress? {
+    var fromAddress: CryptoAddress? {
         return kind == .saveFromPreviousWallet ? teammate.addressPrevious : teammate.addressCurrent
     }
     

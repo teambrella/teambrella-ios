@@ -1,10 +1,5 @@
 //
-//  BtcAddress.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 19.04.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2017 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,7 +16,7 @@
 
 import CoreData
 
-class BtcAddress: NSManagedObject {
+class CryptoAddress: NSManagedObject {
     var status: UserAddressStatus {
         get {
             return UserAddressStatus(rawValue: Int(statusValue)) ?? .invalid
@@ -33,7 +28,7 @@ class BtcAddress: NSManagedObject {
     var teammate: Teammate { return teammateValue! }
     var address: String { return addressValue! }
     var dateCreated: Date { return dateCreatedValue! as Date }
- 
+    
     var cosigners: [Cosigner] {
         guard let context = managedObjectContext else { return [] }
         
@@ -42,8 +37,9 @@ class BtcAddress: NSManagedObject {
         let result = try? context.fetch(request)
         return result ?? []
         
-//        guard let set = cosignersValue as? Set<Cosigner> else { return [] }
-//        
-//        return Array(set).sorted { $0.keyOrder < $1.keyOrder }
+        //        guard let set = cosignersValue as? Set<Cosigner> else { return [] }
+        //
+        //        return Array(set).sorted { $0.keyOrder < $1.keyOrder }
     }
+    
 }

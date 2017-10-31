@@ -86,7 +86,7 @@ class BlockchainService {
         self.server = server
     }
     
-    func fetchBalance(address: BtcAddress?, completion: @escaping (_ balance: Decimal) -> Void) {
+    func fetchBalance(address: CryptoAddress?, completion: @escaping (_ balance: Decimal) -> Void) {
         guard let address = address else {
             completion(-1)
             return
@@ -117,7 +117,7 @@ class BlockchainService {
         }
     }
     
-    private func fetchUtxos(address: BtcAddress?, minAmount: Decimal, completion: @escaping (_ utxos: [ExplorerUtxo]?) -> Void) {
+    private func fetchUtxos(address: CryptoAddress?, minAmount: Decimal, completion: @escaping (_ utxos: [ExplorerUtxo]?) -> Void) {
         guard let address = address else {
             completion([])
             return

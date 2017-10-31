@@ -67,7 +67,7 @@ class EthWallet {
             return
         }
         
-        let addresses = cosigners.map { $0.addressID }
+        let addresses = cosigners.map { $0.multisig.addressValue }
         guard let contract = contract else {
             failure(EthWalletError.contractDoesNotExist)
             return
