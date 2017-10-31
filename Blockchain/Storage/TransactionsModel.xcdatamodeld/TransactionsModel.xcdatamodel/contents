@@ -12,22 +12,6 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="CryptoAddress" representedClassName=".CryptoAddress" syncable="YES" codeGenerationType="category">
-        <attribute name="addressValue" attributeType="String" syncable="YES"/>
-        <attribute name="dateCreatedValue" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="statusValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="cosignersValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cosigner" syncable="YES"/>
-        <relationship name="moveFundsTransactionsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="moveToAddressValue" inverseEntity="Tx" syncable="YES"/>
-        <relationship name="teammateValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="addressesValue" inverseEntity="Teammate" syncable="YES"/>
-        <fetchIndex name="byAddressValueIndex">
-            <fetchIndexElement property="addressValue" type="Binary" order="ascending"/>
-        </fetchIndex>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="addressValue"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
     <entity name="Multisig" representedClassName=".Multisig" syncable="YES" codeGenerationType="category">
         <attribute name="addressValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="creationTxValue" optional="YES" attributeType="String" syncable="YES"/>
@@ -83,11 +67,11 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Teammate" representedClassName=".Teammate" syncable="YES" codeGenerationType="category">
+        <attribute name="cryptoAddressValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fbNameValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nameValue" attributeType="String" syncable="YES"/>
         <attribute name="publicKeyValue" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="addressesValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CryptoAddress" inverseName="teammateValue" inverseEntity="CryptoAddress" syncable="YES"/>
         <relationship name="claimTransactionsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="claimTeammateValue" inverseEntity="Tx" syncable="YES"/>
         <relationship name="cosignerOfValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cosigner" inverseName="teammateValue" inverseEntity="Cosigner" syncable="YES"/>
         <relationship name="payTosValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PayTo" inverseName="teammateValue" inverseEntity="PayTo" syncable="YES"/>
@@ -122,7 +106,6 @@
         <attribute name="withdrawReqIDValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="claimTeammateValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="claimTransactionsValue" inverseEntity="Teammate" syncable="YES"/>
         <relationship name="inputsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxInput" inverseName="transactionValue" inverseEntity="TxInput" syncable="YES"/>
-        <relationship name="moveToAddressValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CryptoAddress" inverseName="moveFundsTransactionsValue" inverseEntity="CryptoAddress" syncable="YES"/>
         <relationship name="outputsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxOutput" inverseName="transactionValue" inverseEntity="TxOutput" syncable="YES"/>
         <relationship name="teammateValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="transactionsValue" inverseEntity="Teammate" syncable="YES"/>
         <fetchIndex name="byIdValueIndex">
@@ -208,12 +191,11 @@
     </entity>
     <elements>
         <element name="Cosigner" positionX="16" positionY="-174" width="128" height="120"/>
-        <element name="CryptoAddress" positionX="-227" positionY="-225" width="128" height="30"/>
         <element name="Multisig" positionX="-261" positionY="-72" width="128" height="210"/>
         <element name="PayTo" positionX="351" positionY="117" width="128" height="135"/>
         <element name="Team" positionX="-470" positionY="-225" width="128" height="195"/>
         <element name="Teammate" positionX="16" positionY="-24" width="128" height="210"/>
-        <element name="Tx" positionX="-234" positionY="180" width="128" height="360"/>
+        <element name="Tx" positionX="-234" positionY="180" width="128" height="345"/>
         <element name="TxInput" positionX="-468" positionY="207" width="128" height="150"/>
         <element name="TxOutput" positionX="349" positionY="378" width="128" height="135"/>
         <element name="TxSignature" positionX="-470" positionY="3" width="128" height="150"/>

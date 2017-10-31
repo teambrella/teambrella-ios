@@ -75,7 +75,8 @@ class TeambrellaService {
                 self.autoApproveTransactions()
                 self.serverUpdateToLocalDb { success in
                     if success {
-                        self.updateAddresses()
+                        
+//                        self.updateAddresses()
                         completion(true)
                     } else {
                         completion(false)
@@ -123,6 +124,7 @@ class TeambrellaService {
         contentProvider.save()
     }
     
+    /*
     private func updateAddresses() {
         for teammate in contentProvider.teammates {
             guard teammate.addresses.isEmpty == false else { continue }
@@ -135,8 +137,9 @@ class TeambrellaService {
             }
         }
     }
+    */
     
-//    private var observerToken: NSKeyValueObservation?
+    //    private var observerToken: NSKeyValueObservation?
     
 //    init() {
 //        observerToken = service.server.observe(\.timestamp) { [weak self] object, change in

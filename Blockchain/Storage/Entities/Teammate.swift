@@ -26,6 +26,7 @@ class Teammate: NSManagedObject {
     var fbName: String? { return fbNameValue }
     var name: String { return nameValue! }
     var publicKey: String? { return publicKeyValue }
+    var address: String? { return cryptoAddressValue }
     
     var team: Team {
         return teamValue!
@@ -43,27 +44,21 @@ class Teammate: NSManagedObject {
         return payTosValue as? Set<PayTo> ?? []
     }
     
-    var addresses: [CryptoAddress] {
-        guard let set = addressesValue as? Set<CryptoAddress> else { fatalError() }
-        
-        return Array(set)
-    }
-    
     var signatures: [TxSignature] {
         guard let set = signaturesValue as? Set<TxSignature> else { fatalError() }
         
         return Array(set)
     }
     
-    var addressPrevious: CryptoAddress? {
-        return addresses.filter { $0.status == UserAddressStatus.previous }.first
-    }
-    
-    var addressCurrent: CryptoAddress? {
-        return addresses.filter { $0.status == UserAddressStatus.current }.first
-    }
-    
-    var addressNext: CryptoAddress? {
-        return addresses.filter { $0.status == UserAddressStatus.next }.first
-    }
+//    var addressPrevious: CryptoAddress? {
+//        return addresses.filter { $0.status == UserAddressStatus.previous }.first
+//    }
+//    
+//    var addressCurrent: CryptoAddress? {
+//        return addresses.filter { $0.status == UserAddressStatus.current }.first
+//    }
+//    
+//    var addressNext: CryptoAddress? {
+//        return addresses.filter { $0.status == UserAddressStatus.next }.first
+//    }
 }

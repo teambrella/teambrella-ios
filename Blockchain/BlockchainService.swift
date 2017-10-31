@@ -86,6 +86,7 @@ class BlockchainService {
         self.server = server
     }
     
+    /*
     func fetchBalance(address: CryptoAddress?, completion: @escaping (_ balance: Decimal) -> Void) {
         guard let address = address else {
             completion(-1)
@@ -146,6 +147,7 @@ class BlockchainService {
             }
         }
     }
+    */
     
     /// returns Satoshis amount from BTC amount
     func btc(from decimal: Decimal) -> BTCAmount {
@@ -153,6 +155,7 @@ class BlockchainService {
     }
     
     // getTx
+    /*
     func btcTransaction(tx: Tx) -> BTCTransaction? {
         let _id = tx.id.uuidString
         print("btc transaction from tx id: \(_id)")
@@ -209,6 +212,7 @@ class BlockchainService {
         }
         return resTx
     }
+    */
     
     func btcAddress(team: Team, address: String?) -> BTCAddress? {
         guard let address = address else { return nil}
@@ -218,6 +222,7 @@ class BlockchainService {
     }
     
     func cosignApprovedTxs() {
+        /*
         let user = contentProvider.user
         let txs = contentProvider.transactionsCosignable
         
@@ -245,10 +250,12 @@ class BlockchainService {
             }
             tx.resolution = .signed
         }
+ */
     }
     
     // master sign
     func publishApprovedAndCosignedTxs() {
+        /*
         let user = contentProvider.user
         let txs = contentProvider.transactionsApprovedAndCosigned
         
@@ -297,7 +304,7 @@ class BlockchainService {
                 self.contentProvider.transactionsChangeResolution(txs: [tx], to: .published)
             }
         }
-        
+        */
     }
     
     private func postTx(hexString: String, completion: @escaping (_ success: Bool) -> Void) {

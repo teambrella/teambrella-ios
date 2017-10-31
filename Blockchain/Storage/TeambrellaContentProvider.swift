@@ -58,12 +58,14 @@ class TeambrellaContentProvider {
     
     // MARK: Address
     
+    /*
     func address(id: String) -> CryptoAddress? {
         let request: NSFetchRequest<CryptoAddress> = CryptoAddress.fetchRequest()
         request.predicate = NSPredicate(format: "addressValue = %@", id)
         let result = try? context.fetch(request)
         return result?.first
     }
+    */
     
     // MARK: Cosigner
     

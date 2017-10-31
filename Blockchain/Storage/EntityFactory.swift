@@ -46,7 +46,7 @@ struct EntityFactory {
         teams(json: json["Teams"])
         teammates(json: json["Teammates"])
         payTos(json: json["PayTos"])
-        addresses(json: json["CryptoAddresses"])
+//        addresses(json: json["CryptoAddresses"])
         transactions(json: json["Txs"])
         inputs(json: json["TxInputs"])
         outputs(json: json["TxOutputs"])
@@ -81,6 +81,7 @@ struct EntityFactory {
             }
         }
         
+        /*
         let addresses = json["CryptoAddresses"].arrayValue
         for address in addresses {
             if let addressSaved = fetcher.address(id: address["Address"].stringValue) {
@@ -94,6 +95,7 @@ struct EntityFactory {
             }
             
         }
+ */
         
     }
     
@@ -130,6 +132,7 @@ struct EntityFactory {
             let publicKey = item["PublicKey"].string
             let fbName = item["FBName"].stringValue
             let teamID = item["TeamId"].int64Value
+            let cryptoAddress = item["CryptoAddress"].string
             if let teammate = fetcher.teammate(id: id) {
                 teammate.nameValue = name
             } else {
@@ -138,35 +141,9 @@ struct EntityFactory {
                 teammate.fbNameValue = fbName
                 teammate.nameValue = name
                 teammate.publicKeyValue = publicKey
+                teammate.cryptoAddressValue = cryptoAddress
+                
                 teammate.teamValue = fetcher.team(id: teamID)
-            }
-        }
-    }
-    
-    func addresses(json: JSON) {
-        json.arrayValue.forEach { item in
-            if let id = item["Address"].string, fetcher.address(id: id) == nil {
-                let address = CryptoAddress(context: context)
-                address.addressValue = id
-                let dateString = item["DateCreated"].stringValue
-                if let date = formatter.date(from: dateString) {
-                    address.dateCreatedValue = date
-                }
-                if let status = UserAddressStatus(rawValue: item["Status"].intValue) {
-                    let newStatus: UserAddressStatus!
-                    switch status {
-                    case .previous:
-                        newStatus = .serverPrevious
-                    case .current:
-                        newStatus = .serverCurrent
-                    case .next:
-                        newStatus = .serverNext
-                    default:
-                        newStatus = status
-                    }
-                    address.statusValue = Int16(newStatus.rawValue)
-                }
-                address.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
             }
         }
     }
@@ -181,6 +158,7 @@ struct EntityFactory {
             cosigner.idValue = "\(teammateID)-\(multisigID)-\(keyOrder)"
             cosigner.keyOrderValue = keyOrder
             cosigner.multisigIDValue = multisigID
+            
             cosigner.teammateValue = fetcher.teammate(id: teammateID)
             cosigner.multisigValue = fetcher.multisig(id: multisigID)
         }
@@ -197,8 +175,9 @@ struct EntityFactory {
                 payTo.addressValue = item["Address"].stringValue
                 payTo.idValue = id
                 payTo.isDefaultValue = item["IsDefault"].boolValue
-                payTo.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
                 payTo.knownSinceValue = Date()
+                
+                payTo.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
             }
             if payTo.isDefault {
                 payTo.teammate.payTos.forEach { otherPayTo in
@@ -233,6 +212,7 @@ struct EntityFactory {
                 tx.kindValue = item["Kind"].int16Value
                 tx.stateValue = item["State"].int16Value
                 tx.withdrawReqIDValue = item["WithdrawReqId"].int64Value
+                
                 tx.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
                 tx.claimTeammateValue = fetcher.teammate(id: item["ClaimTeammateId"].int64Value)
                 
@@ -299,6 +279,7 @@ struct EntityFactory {
             signature.signatureValue = item["Signature"].stringValue.base64data
             signature.isServerUpdateNeededValue = false
             signature.inputValue = txInput
+            
             signature.teammateValue = fetcher.teammate(id: teammateID)
         }
     }
