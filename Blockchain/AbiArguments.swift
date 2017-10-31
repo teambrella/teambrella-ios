@@ -97,11 +97,12 @@ class AbiArguments {
     private func queue(string: String) {
         let hexUtility = Hex()
         let truncated = hexUtility.truncatePrefix(string: string)
-        if truncated.count > Constant.bytesInWord {
+        if truncated.count / 2 > Constant.bytesInWord {
             try? queue(data: hexUtility.data(from: truncated))
         } else {
             if let formattedString = hexUtility.formattedString(string: truncated, bytesCount: Constant.bytesInWord) {
-                queue(string: formattedString)
+                try? queue(data: hexUtility.data(from: formattedString))
+               // queue(string: formattedString)
             } else {
                 log("AbiArguments can not enqueue string \(string)", type: [.error, .crypto])
             }

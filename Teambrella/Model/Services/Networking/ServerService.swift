@@ -151,9 +151,15 @@ class ServerService: NSObject {
                 request.httpBody = data
                 printAsString(data: data)
             }
-            request.setValue("\(body.timestamp)", forHTTPHeaderField: "t")
-            request.setValue(body.publicKey, forHTTPHeaderField: "key")
-            request.setValue(body.signature, forHTTPHeaderField: "sig")
+            let dict: [String: Any] = ["t": body.timestamp,
+                        "key": body.publicKey,
+                        "sig": body.signature,
+                        "clientVersion": Application().clientVersion ]
+            for (key, value) in dict {
+                request.setValue(String(describing: value), forHTTPHeaderField: key)
+            }
+            
+            print("request header fields: \(dict)")
         }
         
         Alamofire.request(request).responseJSON { response in

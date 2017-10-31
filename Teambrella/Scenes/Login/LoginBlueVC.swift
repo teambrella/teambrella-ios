@@ -38,6 +38,12 @@ final class LoginBlueVC: UIViewController {
         return recognizer
     }()
     
+    lazy var clearAllRecognizer: UILongPressGestureRecognizer = {
+        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(clearAllTap))
+        recognizer.minimumPressDuration = 8
+        return recognizer
+    }()
+    
     var isRegisteredFacebookUser: Bool { return Keychain.value(forKey: .ethPrivateAddress) != nil }
     
     // MARK: Lifecycle
@@ -50,6 +56,7 @@ final class LoginBlueVC: UIViewController {
         continueWithFBButton.layer.cornerRadius = 2
         centerLabel.isUserInteractionEnabled = true
         centerLabel.addGestureRecognizer(secretRecognizer)
+        continueWithFBButton.addGestureRecognizer(clearAllRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,10 +80,10 @@ final class LoginBlueVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
-//        guard isRegisteredFacebookUser == false else {
-//            logAsFacebookUser(user: nil)
-//            return
-//        }
+        //        guard isRegisteredFacebookUser == false else {
+        //            logAsFacebookUser(user: nil)
+        //            return
+        //        }
         
         let manager = FBSDKLoginManager()
         manager.logOut()
@@ -112,6 +119,22 @@ final class LoginBlueVC: UIViewController {
                 text.count > 10 {
                 self?.setupBTCsecretAddress(string: text)
             }
+        }))
+        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(controller, animated: true, completion: nil)
+    }
+    
+    @objc
+    private func clearAllTap(sender: UILongPressGestureRecognizer) {
+        let controller = UIAlertController(title: "Clear private keys",
+                                           message: """
+Are you sure you want to completely remove your private key from this device?
+""",
+                                           preferredStyle: .alert)
+        
+        controller.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] action in
+           service.keyStorage.deleteStoredKeys()
         }))
         controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
@@ -182,6 +205,7 @@ final class LoginBlueVC: UIViewController {
             return
         }
         
+        print("Eth address: \(EthereumProcessor.standard.ethAddressString)")
         service.server.updateTimestamp { timestamp, error in
             let body = RequestBody(key: service.server.key, payload: ["facebookToken": token,
                                                                       "sigOfPublicKey": signature])
@@ -209,8 +233,8 @@ final class LoginBlueVC: UIViewController {
         }
     }
     
-   private func handleSuccess(facebookUser: FacebookUser) {
-      logAsFacebookUser(user: facebookUser)
+    private func handleSuccess(facebookUser: FacebookUser) {
+        logAsFacebookUser(user: facebookUser)
     }
     
     private func handleFailure(error: Error?) {

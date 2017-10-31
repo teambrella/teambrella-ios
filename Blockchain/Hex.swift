@@ -17,15 +17,6 @@
 import Foundation
 
 struct Hex {
-    //    func hexString(_ array: [String], bytesCount: Int) -> String {
-    //        var result = ""
-    //        for string in array {
-    //            if let item = formattedString(string, bytesCount: bytesCount) {
-    //                result.append(item)
-    //            }
-    //        }
-    //        return result
-    //    }
     enum HexError: Error {
         case stringUnconvertibleToData
         case unsupportedArgument(Any)
@@ -46,7 +37,7 @@ struct Hex {
     }
     
     func hexStringFrom(byte: UInt8) -> String {
-        return String(format: "%02x", byte)
+        return String(format: "%02X", byte)
     }
     
     func hexStringFrom(data: Data) -> String {
@@ -58,15 +49,15 @@ struct Hex {
         for item in from {
             switch item {
             case let item as String:
-                let data = try createData(from: item)
+                let data = createData(from: item)
                 result.append(data)
             case let item as [String]:
                 for string in item {
-                    let data = try createData(from: string)
+                    let data = createData(from: string)
                     result.append(data)
                 }
             case let item as Int:
-                let data = try createData(from: String(item))
+                let data = createData(from: String(item))
                 result.append(data)
             case let item as Data:
                 result.append(item)
@@ -77,10 +68,8 @@ struct Hex {
         return result
     }
     
-    private func createData(from string: String) throws -> Data {
-        guard let data = string.data(using: .utf8) else { throw HexError.stringUnconvertibleToData }
-        
-        return data
+    private func createData(from string: String)  -> Data {
+        return Data(hex: string)
     }
     
     // 777 to "00000000000000000777"
@@ -92,7 +81,7 @@ struct Hex {
     // "0xABCDEF" to "00000000000000000ABCDEF"
     func formattedString(string: String, bytesCount: Int) -> String? {
         let truncated = truncatePrefix(string: string)
-        guard let data = truncated.data(using: .utf8) else { return nil }
+        let data =  createData(from: truncated)
         
         return formattedString(data: data, bytesCount: bytesCount)
     }
@@ -104,7 +93,9 @@ struct Hex {
         var hexString = ""
         for i in 0..<bytesCount {
             if bytesCount - i <= bytes.count {
-                hexString += hexStringFrom(byte: bytes[bytes.count - bytesCount + i])
+                let idx = bytes.count - bytesCount + i
+                let byte = bytes[idx]
+                hexString += hexStringFrom(byte: byte)
             } else {
                 hexString += "00"
             }

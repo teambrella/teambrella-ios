@@ -16,8 +16,12 @@
 
 import Foundation
 
-//class EthereumWorker: CryptoWorker {
-//  
-//    
-//}
+class Application {
+    var version: String { return Bundle.main
+        .object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "" }
+    
+    var build: String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "" }
+    /// version in format: "ios-0.2.3.64"
+    var clientVersion: String { return "ios-\(version).\(build)" }
 
+}

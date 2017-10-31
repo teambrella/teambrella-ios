@@ -14,21 +14,32 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import Foundation
-import Geth
+import XCTest
 
-class EthereumWallet {
-    struct Constant {
-        static let methodIDtransfer = "91f34dbd"
-        static let txPrefix = "5452"
-        static let nsPrefix = "4E53"
+@testable import Teambrella
+
+class CryptoTests: XCTestCase {
+    let privateKey: String = "cUNX4HYHK3thsjDKEcB26qRYriw8uJLtt8UvDrM98GbUBn22HMrY"
+    
+    override func setUp() {
+        super.setUp()
     }
     
-    // TODO: private final EtherAccount mEtherAcc;
-    private var account: Any?
-    private var isTestNet: Bool
-    
-    init(privateKey: String, keyStorePath: String, keyStoreSecret: String, isTestNet: Bool) {
-     self.isTestNet = isTestNet
+    func testKey() {
+        let key = Key(base58String: privateKey, timestamp: 0)
+        XCTAssertEqual(key.privateKey, privateKey)
     }
+    
+    func testBTCKey() {
+        let key = BTCKey(wif: privateKey)
+        
+        XCTAssertEqual(key?.wif, privateKey)
+    }
+    
+    func testBTCKey2() {
+        let key = BTCKey(wif: privateKey)
+        
+        XCTAssertEqual(key?.privateKey.base58CheckString(), privateKey)
+    }
+    
 }
