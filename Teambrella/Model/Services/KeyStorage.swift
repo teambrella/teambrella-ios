@@ -53,7 +53,7 @@ final class KeyStorage {
     
    private var realPrivateKey: String {
        storeLastUserType(type: .real)
-    return "cUNX4HYHK3thsjDKEcB26qRYriw8uJLtt8UvDrM98GbUBn22HMrY"
+//    return "cUNX4HYHK3thsjDKEcB26qRYriw8uJLtt8UvDrM98GbUBn22HMrY"
         return privateKey(for: .ethPrivateAddress)
     }
     
