@@ -140,6 +140,7 @@ class ChatTextCell: UICollectionViewCell {
         context.drawPath(using: .fillStroke)
     }
     
+    @discardableResult
     func prepare(with model: ChatCellModel, cloudWidth: CGFloat, cloudHeight: CGFloat) -> [UIView] {
         if let model = model as? ChatTextCellModel, model.id != id {
         id = model.id

@@ -60,7 +60,7 @@ struct JoinTeamCellBuilder {
         let boldString = "Deductable Savers "
         let nonBoldString = "team are the best team for insuring olders cars. We’re just going to need a few details."
         let resultString = boldString + nonBoldString
-        let range = NSRange(location: boldString.characters.count, length: nonBoldString.characters.count)
+        let range = NSRange(location: boldString.count, length: nonBoldString.count)
         cell.textLabel.attributedText =  resultString.attributedBoldString(nonBoldRange: range)
     }
     
@@ -121,7 +121,7 @@ struct JoinTeamCellBuilder {
         cell.nonBoldString = "Team.JoinTeamVC.TermsCell.nonBold".localized
         cell.boldString = "Team.JoinTeamVC.TermsCell.bold".localized
         let resultString = cell.nonBoldString + cell.boldString
-        let range = NSRange(location: 0, length: cell.nonBoldString.characters.count)
+        let range = NSRange(location: 0, length: cell.nonBoldString.count)
         cell.bottomLabel.attributedText = resultString.attributedBoldString(nonBoldRange: range)
     }
 }

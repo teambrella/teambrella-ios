@@ -21,11 +21,13 @@
 
 import Foundation
 
+/*
 struct SignHelper {
     
     // https://github.com/MetacoSA/NBitcoin/blob/7743174a1e746c4beaaf0bba0a435c3e960a9a41/NBitcoin/ScriptReader.cs
     // public static Op GetPushOp(byte[] data)
-    static func redeemScript(address: BtcAddress) -> BTCScript {
+    
+    static func redeemScript(address: CryptoAddress) -> BTCScript {
         guard let publicKey = address.teammate.publicKey else {
             fatalError("No public key")
         }
@@ -61,7 +63,7 @@ struct SignHelper {
     }
     
     
-    static func generateStringAddress(from address: BtcAddress) -> String {
+    static func generateStringAddress(from address: CryptoAddress) -> String {
         let script = redeemScript(address: address)
         let team = address.teammate.team
         
@@ -108,4 +110,4 @@ struct SignHelper {
      }
      */
 }
-
+*/

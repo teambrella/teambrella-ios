@@ -29,10 +29,10 @@ final class InitialVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if service.keyStorage.lastUserType != .none {
-//            isLoginNeeded = false
-//            startLoadingTeams()
-//        }
+        if service.keyStorage.lastUserType != .none {
+            isLoginNeeded = false
+            startLoadingTeams()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

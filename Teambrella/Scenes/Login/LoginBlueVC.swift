@@ -133,7 +133,7 @@ Are you sure you want to completely remove your private key from this device?
 """,
                                            preferredStyle: .alert)
         
-        controller.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] action in
+        controller.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
            service.keyStorage.deleteStoredKeys()
         }))
         controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -205,7 +205,7 @@ Are you sure you want to completely remove your private key from this device?
             return
         }
         
-        print("Eth address: \(EthereumProcessor.standard.ethAddressString)")
+        print("Eth address: \(EthereumProcessor.standard.ethAddressString ?? "none")")
         service.server.updateTimestamp { timestamp, error in
             let body = RequestBody(key: service.server.key, payload: ["facebookToken": token,
                                                                       "sigOfPublicKey": signature])

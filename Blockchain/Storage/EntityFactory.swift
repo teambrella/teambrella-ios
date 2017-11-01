@@ -46,13 +46,13 @@ struct EntityFactory {
         teams(json: json["Teams"])
         teammates(json: json["Teammates"])
         payTos(json: json["PayTos"])
-        addresses(json: json["BTCAddresses"])
-        cosigners(json: json["Cosigners"])
+//        addresses(json: json["CryptoAddresses"])
         transactions(json: json["Txs"])
         inputs(json: json["TxInputs"])
         outputs(json: json["TxOutputs"])
         signatures(json: json["TxSignatures"])
         multisig(json: json["Multisigs"])
+        cosigners(json: json["Cosigners"])
         fetcher.save()
     }
     
@@ -63,11 +63,11 @@ struct EntityFactory {
             
             let isWalletToMove = tx.kind == .moveToNextWallet || tx.kind == .saveFromPreviousWallet
             // Outputs are required unless it's a wallet update
-                if isWalletToMove == false && tx.outputs.isEmpty {
-                    fetcher.transactionsChangeResolution(txs: [tx], to: .errorBadRequest)
-                    continue
-                }
-             // AmountBTC sum must match total unless it's a wallet update
+            if isWalletToMove == false && tx.outputs.isEmpty {
+                fetcher.transactionsChangeResolution(txs: [tx], to: .errorBadRequest)
+                continue
+            }
+            // AmountCrypto sum must match total unless it's a wallet update
             if isWalletToMove == false {
                 let outputsSum = tx.outputs.reduce(0) { $0 + $1.amount }
                 if abs(outputsSum - tx.amount) > 0.000001 {
@@ -81,7 +81,8 @@ struct EntityFactory {
             }
         }
         
-        let addresses = json["BTCAddresses"].arrayValue
+        /*
+        let addresses = json["CryptoAddresses"].arrayValue
         for address in addresses {
             if let addressSaved = fetcher.address(id: address["Address"].stringValue) {
                 let generatedAddress = SignHelper.generateStringAddress(from: addressSaved)
@@ -94,6 +95,7 @@ struct EntityFactory {
             }
             
         }
+ */
         
     }
     
@@ -130,6 +132,7 @@ struct EntityFactory {
             let publicKey = item["PublicKey"].string
             let fbName = item["FBName"].stringValue
             let teamID = item["TeamId"].int64Value
+            let cryptoAddress = item["CryptoAddress"].string
             if let teammate = fetcher.teammate(id: id) {
                 teammate.nameValue = name
             } else {
@@ -138,53 +141,26 @@ struct EntityFactory {
                 teammate.fbNameValue = fbName
                 teammate.nameValue = name
                 teammate.publicKeyValue = publicKey
+                teammate.cryptoAddressValue = cryptoAddress
+                
                 teammate.teamValue = fetcher.team(id: teamID)
-            }
-        }
-    }
-    
-    func addresses(json: JSON) {
-        json.arrayValue.forEach { item in
-            if let id = item["Address"].string, fetcher.address(id: id) == nil {
-                let address = BtcAddress(context: context)
-                address.addressValue = id
-                let dateString = item["DateCreated"].stringValue
-                if let date = formatter.date(from: dateString) {
-                    address.dateCreatedValue = date
-                }
-                if let status = UserAddressStatus(rawValue: item["Status"].intValue) {
-                    let newStatus: UserAddressStatus!
-                    switch status {
-                    case .previous:
-                        newStatus = .serverPrevious
-                    case .current:
-                        newStatus = .serverCurrent
-                    case .next:
-                        newStatus = .serverNext
-                    default:
-                        newStatus = status
-                    }
-                    address.statusValue = Int16(newStatus.rawValue)
-                }
-                address.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
             }
         }
     }
     
     func cosigners(json: JSON) {
         for item in json.arrayValue {
-            let addressID = item["AddressId"].stringValue
-            // TODO: check that cosigners do not have address
-            //if  fetcher.address(id: addressID) != nil { continue }
             
             let cosigner = Cosigner(context: context)
             let keyOrder = item["KeyOrder"].int16Value
             let teammateID = item["TeammateId"].int64Value
-            cosigner.idValue = "\(keyOrder)-\(addressID)"
-            cosigner.addressIDValue = addressID
+            let multisigID = item["MultisigId"].int64Value
+            cosigner.idValue = "\(teammateID)-\(multisigID)-\(keyOrder)"
             cosigner.keyOrderValue = keyOrder
+            cosigner.multisigIDValue = multisigID
+            
             cosigner.teammateValue = fetcher.teammate(id: teammateID)
-            cosigner.addressValue = fetcher.address(id: addressID)
+            cosigner.multisigValue = fetcher.multisig(id: multisigID)
         }
     }
     
@@ -199,8 +175,9 @@ struct EntityFactory {
                 payTo.addressValue = item["Address"].stringValue
                 payTo.idValue = id
                 payTo.isDefaultValue = item["IsDefault"].boolValue
-                payTo.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
                 payTo.knownSinceValue = Date()
+                
+                payTo.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
             }
             if payTo.isDefault {
                 payTo.teammate.payTos.forEach { otherPayTo in
@@ -228,13 +205,14 @@ struct EntityFactory {
                 existingTx.processedTimeValue = formatter.date(from: item, key: "ProcessedTime")
             } else {
                 let tx = Tx(context: context)
-                tx.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
+                tx.amountValue = Decimal(item["AmountCrypto"].doubleValue) as NSDecimalNumber
                 tx.claimIDValue = item["ClaimId"].int64Value
                 tx.idValue = id
                 tx.initiatedTimeValue = formatter.date(from: item, key: "InitiatedTime")
                 tx.kindValue = item["Kind"].int16Value
                 tx.stateValue = item["State"].int16Value
                 tx.withdrawReqIDValue = item["WithdrawReqId"].int64Value
+                
                 tx.teammateValue = fetcher.teammate(id: item["TeammateId"].int64Value)
                 tx.claimTeammateValue = fetcher.teammate(id: item["ClaimTeammateId"].int64Value)
                 
@@ -257,7 +235,7 @@ struct EntityFactory {
             guard let tx = fetcher.transaction(id: transactionID) else { continue } // malformed TX
             
             let input = TxInput(context: context)
-            input.ammountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
+            input.ammountValue = Decimal(item["AmountCrypto"].doubleValue) as NSDecimalNumber
             input.idValue = id
             input.previousTransactionIndexValue = item["PrevTxIndex"].int64Value
             input.transactionIDValue = item["TxId"].stringValue
@@ -276,7 +254,7 @@ struct EntityFactory {
             guard let tx = fetcher.transaction(id: txID) else { continue }
             
             let output = TxOutput(context: context)
-            output.amountValue = Decimal(item["AmountBTC"].doubleValue) as NSDecimalNumber
+            output.amountValue = Decimal(item["AmountCrypto"].doubleValue) as NSDecimalNumber
             output.idValue = item["Id"].stringValue
             output.payToIDValue = item["PayToId"].stringValue
             output.payToValue = fetcher.payTo(id: item["PayToId"].stringValue)
@@ -301,25 +279,26 @@ struct EntityFactory {
             signature.signatureValue = item["Signature"].stringValue.base64data
             signature.isServerUpdateNeededValue = false
             signature.inputValue = txInput
+            
             signature.teammateValue = fetcher.teammate(id: teammateID)
         }
     }
     
     func multisig(json: JSON) {
         for item in json.arrayValue {
-            let id =  item["id"].int64Value
+            let id =  item["Id"].int64Value
             let existing = fetcher.multisig(id: id)
-            let isNew = existing == nil
+//            let isNew = existing == nil
             let multisig = existing ?? Multisig(context: context)
             multisig.idValue = id
-            multisig.addressValue = item["address"].string
-            multisig.creationTxValue = item["creationTx"].string
-            multisig.teammateIdValue = item["teammateId"].int64Value
-            multisig.statusValue = item["status"].int32Value
-            multisig.dateCreatedValue = formatter.date(from: item, key: "dateCreated")
-            multisig.teammateNameValue = item["teammateName"].string
-            multisig.teammatePublicKeyValue = item["teammatePublicKey"].string
-            multisig.teamIdValue = item["teamId"].int64Value
+            multisig.addressValue = item["Address"].string
+            multisig.creationTxValue = item[" CreationTx"].string
+            multisig.teammateIdValue = item["TeammateId"].int64Value
+            multisig.statusValue = item["Status"].int32Value
+            multisig.dateCreatedValue = formatter.date(from: item, key: "DateCreated")
+            multisig.teammateNameValue = item["TeammateName"].string
+            multisig.teammatePublicKeyValue = item["TeammatePublicKey"].string
+            multisig.teamIdValue = item["TeamId"].int64Value
         }
     }
     

@@ -26,7 +26,7 @@ class EthWallet {
         static let nsPrefix = "4E53"
     }
     
-    var processor: EthereumProcessor = EthereumProcessor.standard
+    let processor: EthereumProcessor
     let isTestNet: Bool
     
     var gasPrice = 100000001
@@ -40,8 +40,9 @@ class EthWallet {
         return try? String(contentsOfFile: fileURL, encoding: String.Encoding.utf8)
     }
     
-    init(isTestNet: Bool) {
+    init(isTestNet: Bool, processor: EthereumProcessor) {
         self.isTestNet = isTestNet
+        self.processor = processor
     }
     
     enum EthWalletError: Error {
@@ -59,7 +60,7 @@ class EthWallet {
         let cosigners = multisig.cosigners
         guard !cosigners.isEmpty else {
             log("Multisig address id: \(multisig.id) has no cosigners", type: [.error, .crypto])
-             failure(EthWalletError.multisigHasNoCosigners(multisig.id))
+            failure(EthWalletError.multisigHasNoCosigners(multisig.id))
             return
         }
         guard let creationTx = multisig.creationTx else {
@@ -67,11 +68,11 @@ class EthWallet {
             return
         }
         
-        let addresses = cosigners.map { $0.addressID }
+        let addresses = cosigners.map { $0.multisig.addressValue }
         guard let contract = contract else {
             failure(EthWalletError.contractDoesNotExist)
             return
-             }
+        }
         
         do {
             var cryptoTx = try processor.contractTx(nonce: myNonce,
@@ -82,7 +83,7 @@ class EthWallet {
                                                     multisig.teamID)
             cryptoTx = try processor.signTx(unsignedTx: cryptoTx, isTestNet: isTestNet)
             log("Multisig created teamID: \(multisig.teamID), tx: \(creationTx)", type: .crypto)
-             publish(cryptoTx: cryptoTx, completion: completion, failure: failure)
+            publish(cryptoTx: cryptoTx, completion: completion, failure: failure)
         } catch {
             failure(error)
         }
@@ -103,6 +104,12 @@ class EthWallet {
         } catch {
             failure(error)
         }
+    }
+    
+    func checkMyNonce() {
+    let blockchain = EtherNode(isTestNet: isTestNet)
+       
+        
     }
     
 }

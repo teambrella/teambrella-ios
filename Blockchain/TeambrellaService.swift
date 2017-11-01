@@ -52,7 +52,7 @@ class TeambrellaService {
         update()
     }
     
-    func update() {
+    private func update() {
         log("Teambrella service begins updates", type: .crypto)
         let blockchain = BlockchainService(contentProvider: contentProvider, server: server)
         updateData { success in
@@ -75,7 +75,8 @@ class TeambrellaService {
                 self.autoApproveTransactions()
                 self.serverUpdateToLocalDb { success in
                     if success {
-                        self.updateAddresses()
+                        
+//                        self.updateAddresses()
                         completion(true)
                     } else {
                         completion(false)
@@ -123,6 +124,7 @@ class TeambrellaService {
         contentProvider.save()
     }
     
+    /*
     private func updateAddresses() {
         for teammate in contentProvider.teammates {
             guard teammate.addresses.isEmpty == false else { continue }
@@ -135,8 +137,9 @@ class TeambrellaService {
             }
         }
     }
+    */
     
-//    private var observerToken: NSKeyValueObservation?
+    //    private var observerToken: NSKeyValueObservation?
     
 //    init() {
 //        observerToken = service.server.observe(\.timestamp) { [weak self] object, change in
@@ -167,6 +170,8 @@ class TeambrellaService {
         let myPublicKey = key.publicKey
         let multisigsToCreate = contentProvider.multisigsToCreate(publicKey: myPublicKey)
         guard !multisigsToCreate.isEmpty else { return false }
+        
+        let wallet = EthWallet(isTestNet: false, processor: processor)
         
         //processor.
         // WIP!

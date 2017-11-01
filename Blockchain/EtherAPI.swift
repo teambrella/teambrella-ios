@@ -70,13 +70,16 @@ class EtherAPI {
         return promise
     }
     
-    func checkNonce(address: String) -> Future<String> {
-        let promise = Promise<String>()
+    func checkNonce(address: String) -> Future<Int> {
+        let promise = Promise<Int>()
         sendGetRequest(urlString: "api?module=proxy&action=eth_getTransactionCount",
                        parameters: ["address": address],
                        success: { data in
-                        let string = String(data: data, encoding: .utf8)
-                        promise.resolve(with: string ?? "")
+                        if let int = JSON(data).int {
+                        promise.resolve(with: int)
+                        } else {
+                            promise.reject(with: EtherAPIError.corruptedData)
+                        }
         }) { error in
             promise.reject(with: error)
         }

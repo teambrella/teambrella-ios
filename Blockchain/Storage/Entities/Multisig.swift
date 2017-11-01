@@ -30,7 +30,7 @@ class Multisig: NSManagedObject {
     
     var cosigners: [Cosigner] {
         let cosignersSet = cosignersValue as? Set<Cosigner> ?? []
-        let cosigners = Array(cosignersSet).sorted { $0.addressID < $1.addressID }
+        let cosigners = Array(cosignersSet).sorted { $0.keyOrder < $1.keyOrder }
         return cosigners
     }
     
