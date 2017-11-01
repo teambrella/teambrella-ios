@@ -43,7 +43,7 @@ extension String {
     }
     
     func split(by count: Int) -> [String] {
-        return stride(from: 0, to: characters.count, by: count).map { i -> String in
+        return stride(from: 0, to: self.count, by: count).map { i -> String in
             let startIndex = self.index(self.startIndex, offsetBy: i)
             let endIndex = self.index(startIndex, offsetBy: count, limitedBy: self.endIndex) ?? self.endIndex
             return String(self[startIndex..<endIndex])

@@ -61,7 +61,7 @@ class AbiArguments {
     }
     
     static func encodeToHex(_ args: Any...) throws -> String {
-        var abiArguments = AbiArguments()
+        let abiArguments = AbiArguments()
         for argument in args {
             try abiArguments.add(argument)
         }

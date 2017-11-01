@@ -288,7 +288,7 @@ struct EntityFactory {
         for item in json.arrayValue {
             let id =  item["Id"].int64Value
             let existing = fetcher.multisig(id: id)
-            let isNew = existing == nil
+//            let isNew = existing == nil
             let multisig = existing ?? Multisig(context: context)
             multisig.idValue = id
             multisig.addressValue = item["Address"].string

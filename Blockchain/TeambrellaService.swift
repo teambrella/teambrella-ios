@@ -52,7 +52,7 @@ class TeambrellaService {
         update()
     }
     
-    func update() {
+    private func update() {
         log("Teambrella service begins updates", type: .crypto)
         let blockchain = BlockchainService(contentProvider: contentProvider, server: server)
         updateData { success in
@@ -170,6 +170,8 @@ class TeambrellaService {
         let myPublicKey = key.publicKey
         let multisigsToCreate = contentProvider.multisigsToCreate(publicKey: myPublicKey)
         guard !multisigsToCreate.isEmpty else { return false }
+        
+        let wallet = EthWallet(isTestNet: false, processor: processor)
         
         //processor.
         // WIP!

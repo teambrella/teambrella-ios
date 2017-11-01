@@ -62,6 +62,21 @@ class EtherNode {
 
     }
     
+    func checkNonce(addressHex: String, success: @escaping (Int) -> Void, failure: @escaping (Error?) -> Void) {
+        guard let api = ethereumAPIs.first else { return }
+        
+        api.checkNonce(address: addressHex).observe { result in
+            switch result {
+            case let .value(nonce):
+                success(nonce)
+            case let .error(error):
+                failure(error)
+            default:
+                break
+            }
+        }
+    }
+    
     //    func checkTx(creationTx: String) -> Future<
     //    func checkTx(creationTx: String, success: () -> Void, failure: (Error) -> Void) {
     //

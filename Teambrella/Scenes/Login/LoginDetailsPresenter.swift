@@ -76,7 +76,7 @@ class LoginDetailsPresenterImpl: LoginDetailsPresenter {
     }
     
     func codeTextChanged(text: String) {
-        view?.register(enable: text.characters.count > 2)
+        view?.register(enable: text.count > 2)
     }
     
     func codeTextChanged(text: String?) {
@@ -85,7 +85,7 @@ class LoginDetailsPresenterImpl: LoginDetailsPresenter {
             return
         }
         
-        view?.register(enable: text.characters.count > 2)
+        view?.register(enable: text.count > 2)
     }
     
 }

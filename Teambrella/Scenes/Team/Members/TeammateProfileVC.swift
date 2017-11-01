@@ -381,9 +381,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             
             return CGSize(width: wdt, height: 296)
         case .stats:
-            guard let teammate = dataSource.extendedTeammate,
-                dataSource.isMe == true/*,
-                teammate.id == dataSource.teammateID*/ else { return CGSize(width: wdt, height: 368) }
+            guard  dataSource.extendedTeammate != nil,
+                dataSource.isMe == true else { return CGSize(width: wdt, height: 368) }
             
             return CGSize(width: wdt, height: 311)
         case .contact:
