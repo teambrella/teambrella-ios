@@ -22,8 +22,8 @@ protocol MuteControllerDelegate: class {
 
 class MuteVC: UIViewController, Routable {
     enum NotificationsType: Int {
-        case subscribed = 1
-        case unsubscribed = 0
+        case subscribed = 0
+        case unsubscribed = 1
     }
     
     static let storyboardName = "Chat"
@@ -111,19 +111,20 @@ extension MuteVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? MuteCell {
-            if type.rawValue != indexPath.row {
-                if type != .subscribed,
-                    let otherCell = collectionView.cellForItem(at: indexPath) as? MuteCell {
-                    //row: type.rawValue
-                    otherCell.checker.isHidden = true
-                }
-                cell.checker.isHidden = false
-                type = NotificationsType(rawValue: indexPath.row) ?? .subscribed
-                //delegate?.mute(controller: self, didSelect: type)
-            } else {
-                cell.checker.isHidden = true
-                type = .subscribed
-            }
+            type = NotificationsType(rawValue: indexPath.row) ?? .subscribed
+            delegate?.mute(controller: self, didSelect: type)
+            collectionView.reloadData()
+//            if type.rawValue != indexPath.row {
+//                if type != .subscribed, let otherCell = collectionView.cellForItem(at: indexPath) as? MuteCell {
+//                    otherCell.checker.isHidden = true
+//                }
+//                cell.checker.isHidden = false
+//                type = NotificationsType(rawValue: indexPath.row) ?? .none
+//                delegate?.mute(controller: self, didSelect: type)
+//            } else {
+//                cell.checker.isHidden = true
+//                type = .subscribed
+//            }
         }
        // tableView.deselectRow(at: indexPath, animated: false)
     }
