@@ -228,6 +228,16 @@ final class MainRouter {
         viewController.present(vc, animated: false, completion: nil)
     }
     
+    func showNotificationFilter(in viewController: UIViewController,
+                                delegate: MuteControllerDelegate,
+                                currentState type: MuteVC.NotificationsType) {
+        guard let vc = MuteVC.instantiate() as? MuteVC else { fatalError("Error instantiating") }
+        
+        vc.delegate = delegate
+        vc.type = type
+        viewController.present(vc, animated: false, completion: nil)
+    }
+    
     /*
      func pushOrReuse(vc: UIViewController,
      animated: Bool = true,

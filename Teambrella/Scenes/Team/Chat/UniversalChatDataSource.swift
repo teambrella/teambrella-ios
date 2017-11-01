@@ -32,6 +32,7 @@ final class UniversalChatDatasource {
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
     
+    var notificationsType: MuteVC.NotificationsType { return .subscribed }
     var hasNext                                     = true
     var hasPrevious                                 = true
     var isFirstLoad                                 = true
@@ -123,6 +124,10 @@ final class UniversalChatDatasource {
     }
     
     var isPrivateChat: Bool { return strategy is PrivateChatStrategy }
+    
+    func mute(type: MuteVC.NotificationsType) {
+        //do sth
+    }
     
     func addContext(context: ChatContext, itemType: ItemType) {
         strategy = ChatStrategyFactory.strategy(with: context)

@@ -16,8 +16,13 @@
 
 import UIKit
 
-class MuteCell: UICollectionViewCell {
-
+class MuteCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var cellSeparator: UIView!
+    @IBOutlet var icon: UIImageView!
+    @IBOutlet var upperLabel: MessageTitleLabel!
+    @IBOutlet var lowerLabel: MessageTextLabel!
+    @IBOutlet var checker: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

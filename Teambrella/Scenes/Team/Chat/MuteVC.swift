@@ -16,37 +16,40 @@
 
 import UIKit
 
+protocol MuteControllerDelegate: class {
+    func mute(controller: MuteVC, didSelect type: MuteVC.NotificationsType)
+}
+
 class MuteVC: UIViewController, Routable {
-    enum SortType: Int {
-        case none = -1
-        case ratingHiLo = 0
-        case ratingLoHi = 1
-        case alphabeticalAtoZ = 2
-        case alphabeticalZtoA = 3
+    enum NotificationsType: Int {
+        case subscribed = 1
+        case unsubscribed = 0
     }
     
     static let storyboardName = "Chat"
     
     @IBOutlet var backView: UIView!
     @IBOutlet var muteView: UIView!
-//    @IBOutlet var headerLabel: UILabel!
-//    @IBOutlet var closeButton: UIButton!
-//    @IBOutlet var tableView: UITableView!
-//    @IBOutlet var bottomConstraint: NSLayoutConstraint!
-
+    @IBOutlet var headerLabel: BlockHeaderLabel!
+    @IBOutlet var closeButton: UIButton!
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet var collectionView: UICollectionView!
+    
     fileprivate var dataSource = MuteDataSource()
     weak var delegate: MuteControllerDelegate?
     
-    var type: SortType = .none
+    var type: NotificationsType = .subscribed
     
     @IBAction func tapClose(_ sender: Any) {
         disappear {
             self.dismiss(animated: false, completion: nil)
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        headerLabel.text = "Chat.NotificationSettings".localized
+        collectionView.register(MuteCell.nib, forCellWithReuseIdentifier: MuteCell.cellID)
+        headerLabel.text = "Team.Chat.NotificationSettings.title".localized
         dataSource.createModels()
     }
     
@@ -66,7 +69,7 @@ class MuteVC: UIViewController, Routable {
     }
     
     func disappear(completion: @escaping () -> Void) {
-        self.bottomConstraint.constant = -self.sortView.frame.height
+        self.bottomConstraint.constant = -self.muteView.frame.height
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
             self.backView.backgroundColor = .clear
             self.view.layoutIfNeeded()
@@ -77,49 +80,59 @@ class MuteVC: UIViewController, Routable {
     
 }
 
-extension MuteVC: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension MuteVC: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "SortCell", for: indexPath)
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "MuteCell", for: indexPath)
     }
 }
 
-extension MuteVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let cell = cell as? SortCell {
+extension MuteVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        if let cell = cell as? MuteCell {
             let model = dataSource[indexPath]
             
-            cell.topLabel.text = model.topText
-            cell.bottomLabel.text = model.bottomText
+            cell.icon.image = model.icon
+            cell.upperLabel.text = model.topText
+            cell.lowerLabel.text = model.bottomText
             cell.checker.isHidden = indexPath.row != type.rawValue
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.bounds.height / CGFloat(dataSource.count)
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? SortCell {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? MuteCell {
             if type.rawValue != indexPath.row {
-                if type != .none,
-                    let otherCell = tableView.cellForRow(at: IndexPath(row: type.rawValue, section: 0)) as? SortCell {
+                if type != .subscribed,
+                    let otherCell = collectionView.cellForItem(at: indexPath) as? MuteCell {
+                    //row: type.rawValue
                     otherCell.checker.isHidden = true
                 }
                 cell.checker.isHidden = false
-                type = SortType(rawValue: indexPath.row) ?? .none
-                delegate?.sort(controller: self, didSelect: type)
+                type = NotificationsType(rawValue: indexPath.row) ?? .subscribed
+                //delegate?.mute(controller: self, didSelect: type)
             } else {
                 cell.checker.isHidden = true
-                type = .none
+                type = .subscribed
             }
         }
-        tableView.deselectRow(at: indexPath, animated: false)
+       // tableView.deselectRow(at: indexPath, animated: false)
+    }
+}
+
+extension MuteVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height / 2)
     }
 }

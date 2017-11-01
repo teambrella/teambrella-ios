@@ -130,7 +130,7 @@ struct EthereumProcessor {
         ]
         let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
         let json = String(bytes: jsonData, encoding: .utf8) ?? ""
-        if let tx = GethTransaction(fromJSON: json) {
+        if let tx = GethTransaction(ref: json) {
             return tx
         } else {
             throw EthereumProcessorError.inconsistentTxData(json)
@@ -156,7 +156,7 @@ struct EthereumProcessor {
     }
     
     func chainID(isTestNet: Bool) -> GethBigInt {
-        return GethBigInt(isTestNet ? 3: 1)
+        return GethBigInt(ref: isTestNet ? 3: 1)
     }
     
     /// returns hash made by Keccak algorithm

@@ -193,6 +193,7 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     private func tapMuteButton(sender: UIButton) {
+        service.router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
     }
     
     // MARK: Private
@@ -565,5 +566,12 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
         previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)
         vc.isPeeking = true
         return vc
+    }
+}
+
+// MARK: MuteControllerDelegate
+extension UniversalChatVC: MuteControllerDelegate {
+    func mute(controller: MuteVC, didSelect type: MuteVC.NotificationsType) {
+        dataSource.mute(type: type)
     }
 }

@@ -16,20 +16,20 @@
 
 import Foundation
 
-struct MuteDatasource {
+struct MuteDataSource {
     var count: Int { return models.count }
     var models: [MuteCellModel] = []
     
     mutating func createModels() {
-        models = [MuteCellModel(icon: #imageLiteral(resourceName: "iconCoverage"),
-                                topText: "Proxy.SortVC.Cell.Rating".localized,
-                                bottomText: "Proxy.SortVC.Cell.Rating.HighLow".localized),
-                  MuteCellModel(icon: #imageLiteral(resourceName: "iconCoverage"),
-                                topText: "Proxy.SortVC.Cell.Rating".localized,
-                                bottomText: "Proxy.SortVC.Cell.Rating.LowHigh".localized)]
+        models = [MuteCellModel(icon: #imageLiteral(resourceName: "teambrella-round-logo"),
+                                topText: "Team.Chat.NotificationSettings.subscribed".localized,
+                                bottomText: "Team.Chat.NotificationSettings.subscribed.details".localized),
+                  MuteCellModel(icon: #imageLiteral(resourceName: "teambrella-round-logo"),
+                                topText: "Team.Chat.NotificationSettings.unsubscribed".localized,
+                                bottomText: "Team.Chat.NotificationSettings.unsubscribed.details".localized)]
     }
     
-    subscript(indexPath: IndexPath) -> SortCellModel {
+    subscript(indexPath: IndexPath) -> MuteCellModel {
         return models[indexPath.row]
     }
     
