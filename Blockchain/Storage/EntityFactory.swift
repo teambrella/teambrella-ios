@@ -287,18 +287,19 @@ struct EntityFactory {
     func multisig(json: JSON) {
         for item in json.arrayValue {
             let id =  item["Id"].int64Value
+            
             let existing = fetcher.multisig(id: id)
 //            let isNew = existing == nil
             let multisig = existing ?? Multisig(context: context)
             multisig.idValue = id
             multisig.addressValue = item["Address"].string
             multisig.creationTxValue = item[" CreationTx"].string
-            multisig.teammateIdValue = item["TeammateId"].int64Value
             multisig.statusValue = item["Status"].int32Value
             multisig.dateCreatedValue = formatter.date(from: item, key: "DateCreated")
-            multisig.teammateNameValue = item["TeammateName"].string
-            multisig.teammatePublicKeyValue = item["TeammatePublicKey"].string
             multisig.teamIdValue = item["TeamId"].int64Value
+            
+            let teammate = fetcher.teammate(id: item["TeammateId"].int64Value)
+            multisig.teammateValue = teammate
         }
     }
     

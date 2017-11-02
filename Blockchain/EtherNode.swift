@@ -15,11 +15,16 @@
  */
 
 import Foundation
+import SwiftyJSON
 
 class EtherNode {
     struct Constant {
-        static let testAuthorities: [String] = ["https://ropsten.etherscan.io"]
-        static let mainAuthorities: [String] = ["http://api.etherscan.io"]
+        static let testAuthorities: [String] = ["https://ropsten.etherscan.io/"]
+        static let mainAuthorities: [String] = ["http://api.etherscan.io/"]
+    }
+    
+    enum EtherNodeError: Error {
+        case malformedJSON(JSON)
     }
     
     private var ethereumAPIs: [EtherAPI] = []
@@ -36,7 +41,7 @@ class EtherNode {
     }
     
     func pushTx(hex: String, success: @escaping (String) -> Void, failure: @escaping (Error?) -> Void) {
-      let group = DispatchGroup()
+        let group = DispatchGroup()
         var isSuccessful = false
         var lastError: Error?
         for api in ethereumAPIs {
@@ -59,22 +64,35 @@ class EtherNode {
             }
         }
         failure(lastError)
-
+        
     }
     
     func checkNonce(addressHex: String, success: @escaping (Int) -> Void, failure: @escaping (Error?) -> Void) {
         guard let api = ethereumAPIs.first else { return }
         
-        api.checkNonce(address: addressHex).observe { result in
-            switch result {
-            case let .value(nonce):
-                success(nonce)
-            case let .error(error):
-                failure(error)
-            default:
-                break
+        api.checkNonce(address: addressHex, success: { json in
+            guard let string = json.string,
+                let nonce = Int(hexString: string) else { return }
+            
+            success(nonce)
+        }, failure: { error in
+            failure(error)
+        })
+    }
+    
+    func checkTx(creationTx: String, success: @escaping (TxReceipt) -> Void, failure: @escaping (Error?) -> Void) {
+        guard let api = ethereumAPIs.first else { return }
+        
+        api.checkTx(hash: creationTx, success: { json in
+            guard let txReceipt = TxReceipt(json: json) else {
+                failure(EtherNodeError.malformedJSON(json))
+                return
             }
-        }
+            
+            success(txReceipt)
+        }, failure: { error in
+            failure(error)
+        })
     }
     
     //    func checkTx(creationTx: String) -> Future<
@@ -83,3 +101,19 @@ class EtherNode {
     //    }
 }
 
+struct TxReceipt {
+    let blockNumber: String
+    let gasUsed: String
+    let contractAddress: String
+    
+    init?(json: JSON) {
+        guard let blockNumber = json["blockNumber"].string,
+            let gasUsed = json["gasUsed"].string,
+            let contractAddress = json["contractAddress"].string else { return nil }
+        
+        self.blockNumber = blockNumber
+        self.gasUsed = gasUsed
+        self.contractAddress  = contractAddress
+    }
+    
+}

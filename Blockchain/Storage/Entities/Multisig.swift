@@ -19,14 +19,39 @@ import Foundation
 
 class Multisig: NSManagedObject {
     var id: Int { return Int(idValue) }
-    var address: String? { return addressValue }
-    var creationTx: String? { return creationTxValue }
-    var teammateID: Int { return Int(teammateIdValue) }
+    // Can be set by EthWallet
+    var address: String? {
+        get {
+            return addressValue
+        }
+        set {
+            addressValue = newValue
+        }
+    }
+    
+    var creationTx: String? {
+        get {
+            return creationTxValue
+        }
+        set {
+            creationTxValue = newValue
+        }
+    }
+    
+    var needServerUpdate: Bool {
+        get {
+            return needServerUpdateValue
+        }
+        set {
+            needServerUpdateValue = newValue
+        }
+    }
+   
     var status: MultisigStatus { return MultisigStatus(rawValue: Int(statusValue)) ?? .failed }
     var dateCreated: Date? { return dateCreatedValue }
-    var teammateName: String? { return teammateNameValue }
-    var teammatePublicKey: String? { return teammatePublicKeyValue }
     var teamID: Int { return Int(teamIdValue) }
+    
+    var teammate: Teammate? { return teammateValue }
     
     var cosigners: [Cosigner] {
         let cosignersSet = cosignersValue as? Set<Cosigner> ?? []

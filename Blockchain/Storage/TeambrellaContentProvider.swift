@@ -56,6 +56,16 @@ class TeambrellaContentProvider {
         return user
     }
     
+    func createUnconfirmed(id: Int, tx: String, gasPrice: Int, nonce: Int, date: Date) {
+        let unconfirmed = Unconfirmed()
+        unconfirmed.idValue = Int64(id)
+        unconfirmed.cryptoTxValue = tx
+        unconfirmed.cryptoFeeValue = Int64(gasPrice)
+        unconfirmed.cryptoNonceValue = Int64(nonce)
+        unconfirmed.dateCreatedValue = date
+        save()
+    }
+    
     // MARK: Address
     
     /*
@@ -286,15 +296,15 @@ class TeambrellaContentProvider {
     func multisigsToCreate(publicKey: String) -> [Multisig] {
         let predicates = [NSPredicate(format: "addressValue = nil"),
                           NSPredicate(format: "statusValue = %i", MultisigStatus.current.rawValue),
-                          NSPredicate(format: "publicKeyValue = %@", publicKey)
+                          NSPredicate(format: "teammateValue.publicKeyValue = %@", publicKey)
         ]
         return multisigs(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
     }
     
     /// get multisigs with address by teammate id
-    func multisigs(publicKey: String, teammateID: Int64) -> [Multisig] {
-        let predicates = [NSPredicate(format: "publicKeyValue = %@", publicKey),
-                          NSPredicate(format: "teammateIdValue = %i", teammateID),
+    func multisigsWithAddress(publicKey: String, teammateID: Int) -> [Multisig] {
+        let predicates = [NSPredicate(format: "teammateValue.publicKeyValue = %@", publicKey),
+                          NSPredicate(format: "teammateValue.idValue = %i", teammateID),
                           NSPredicate(format: "addressValue != nil"),
                           NSPredicate(format: "creationTxValue != nil")
         ]
@@ -302,7 +312,7 @@ class TeambrellaContentProvider {
     }
     
     func multisigsInCreation(publicKey: String) -> [Multisig] {
-        let predicates = [NSPredicate(format: "publicKeyValue = %@", publicKey),
+        let predicates = [NSPredicate(format: "teammateValue.publicKeyValue = %@", publicKey),
                           NSPredicate(format: "addressValue = nil"),
                           NSPredicate(format: "creationTxValue != nil"),
                           NSPredicate(format: "statusValue != %i", MultisigStatus.failed.rawValue)
@@ -311,7 +321,7 @@ class TeambrellaContentProvider {
     }
     
     func currentMultisigsWithAddress(publicKey: String) -> [Multisig] {
-        let predicates = [NSPredicate(format: "publicKeyValue = %@", publicKey),
+        let predicates = [NSPredicate(format: "teammateValue.publicKeyValue = %@", publicKey),
                           NSPredicate(format: "addressValue != nil"),
                           NSPredicate(format: "statusValue != %i", MultisigStatus.current.rawValue)
         ]

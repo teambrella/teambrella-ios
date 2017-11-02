@@ -21,11 +21,11 @@ class EtherAPI {
     enum EtherAPIError: Error {
         case malformedURL
         case corruptedData
-        case unknown
+        case noData
         case etherscanError(Int, String)
     }
     
-    typealias successClosure = (Data) -> Void
+    typealias successClosure = (JSON) -> Void
     typealias failureClosure = (Error) -> Void
     
     let server: String
@@ -70,42 +70,42 @@ class EtherAPI {
         return promise
     }
     
-    func checkNonce(address: String) -> Future<Int> {
-        let promise = Promise<Int>()
-        sendGetRequest(urlString: "api?module=proxy&action=eth_getTransactionCount",
-                       parameters: ["address": address],
-                       success: { data in
-                        if let int = JSON(data).int {
-                        promise.resolve(with: int)
-                        } else {
-                            promise.reject(with: EtherAPIError.corruptedData)
-                        }
+    func checkNonce(address: String, success: @escaping successClosure, failure: @escaping failureClosure) {
+        sendGetRequest(urlString: "api",
+                       parameters: [
+                        "module": "proxy",
+                        "action": "eth_getTransactionCount",
+                        "address": address],
+                       success: { json in
+                        success(json)
         }) { error in
-            promise.reject(with: error)
+            failure(error)
         }
-        return promise
     }
     
-    func checkTx(hash: String) -> Future<JSON> {
-        let promise = Promise<JSON>()
-        sendGetRequest(urlString: "api?module=proxy&action=eth_getTransactionReceipt",
-                       parameters: ["txHash": hash],
-                       success: { data in
-                        let json = JSON(data)
-                        promise.resolve(with: json)
+    func checkTx(hash: String, success: @escaping successClosure, failure: @escaping failureClosure) {
+        sendGetRequest(urlString: "api",
+                       parameters: [
+                        "module": "proxy",
+                        "action": "eth_getTransactionReceipt",
+                        "txHash": hash],
+                       success: { json in
+                        success(json)
         }) { error in
-            promise.reject(with: error)
+            failure(error)
         }
-        return promise
     }
     
     func readContractString(to: String, callDataString: String) -> Future<String> {
         let promise = Promise<String>()
-        sendGetRequest(urlString: "api?module=proxy&action=eth_call",
-                       parameters: ["to": to, "data": callDataString],
-                       success: { data in
-                        let string = String(data: data, encoding: .utf8)
-                        promise.resolve(with: string ?? "")
+        sendGetRequest(urlString: "api",
+                       parameters: [
+                        "module": "proxy",
+                        "action": "eth_call",
+                        "to": to,
+                        "data": callDataString],
+                       success: { json in
+                        promise.resolve(with: json.string ?? "")
         }) { error in
             promise.reject(with: error)
         }
@@ -114,10 +114,13 @@ class EtherAPI {
     
     func checkBalance(address: String) -> Future<Decimal> {
         let promise = Promise<Decimal>()
-        sendGetRequest(urlString: "api?module=account&action=balance",
-                       parameters: ["address": address],
-                       success: { data in
-                        guard let string = String(data: data, encoding: .utf8),
+        sendGetRequest(urlString: "api",
+                       parameters: [
+                        "module": "account",
+                        "action": "balance",
+                        "address": address],
+                       success: { json in
+                        guard let string = json.string,
                             let balance = Decimal(string: string) else {
                                 promise.reject(with: EtherAPIError.corruptedData)
                                 return
@@ -175,11 +178,17 @@ class EtherAPI {
                              failure: @escaping failureClosure) {
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data else {
-                failure(error ?? EtherAPIError.unknown)
+                failure(error ?? EtherAPIError.noData)
                 return
             }
             
-            success(data)
+            let json = JSON(data)
+            if json["result"].exists() {
+                success(json["result"])
+            } else {
+                failure(EtherAPIError.etherscanError(json["error"]["code"].intValue,
+                                                     json["error"]["message"].stringValue))
+            }
         }
         task.resume()
     }

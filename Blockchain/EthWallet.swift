@@ -29,10 +29,8 @@ class EthWallet {
     let processor: EthereumProcessor
     let isTestNet: Bool
     
-    var gasPrice = 100000001
-    var contractGasPrice = 100000001
-    var testGasPrice = 100000001
-    var testContractGasPrice = 100000001
+    var gasPrice: Int { return isTestNet ? 100000001 : 100000001 }
+    var contractGasPrice: Int { return isTestNet ? 100000001 : 100000001 }
     
     var contract: String? {
         guard let fileURL = Bundle.main.path(forResource: "Contract", ofType: "txt") else { return nil }
@@ -49,6 +47,7 @@ class EthWallet {
         case multisigHasNoCosigners(Int)
         case contractDoesNotExist
         case multisigHasNoCreationTx(Int)
+        case allGasUsed
     }
     
     func createOneWallet(myNonce: Int,
@@ -106,10 +105,44 @@ class EthWallet {
         }
     }
     
-    func checkMyNonce() {
-    let blockchain = EtherNode(isTestNet: isTestNet)
-       
+    func checkMyNonce(success: @escaping (Int) -> Void, failure: @escaping (Error?) -> Void) {
+        guard let address = processor.ethAddressString else { return }
         
+        let blockchain = EtherNode(isTestNet: isTestNet)
+        blockchain.checkNonce(addressHex: address, success: { nonce in
+            success(nonce)
+        }) { error in
+            failure(error)
+        }
+    }
+    
+    /**
+     * Verfifies if a given contract creation TX has been mined in the blockchain.
+     *
+     * - Parameter gasLimit: original gas limit, that has been set to the original creation TX.
+     *  When a TX consumes all the gas up to the limit, that indicates an error.
+     *  - Parameter multisig: the given multisig object with original TX hash to check.
+     * - returns: original multisig object with updated address (when verified successfully), updated error status
+     * (if any), or new unconfirmed tx if original TX is outdated.
+     */
+    func validateCreationTx(multisig: Multisig,
+                            gasLimit: Int,
+                            success: @escaping (String) -> Void,
+                            failure: @escaping (Error?) -> Void) {
+        guard let creationTx = multisig.creationTx else { return }
+        
+        let blockchain = EtherNode(isTestNet: isTestNet)
+        blockchain.checkTx(creationTx: creationTx, success: { txReceipt in
+            let gasUsed = Int(hexString: txReceipt.gasUsed)
+            let isAllGasUsed = gasUsed == gasLimit
+            if !isAllGasUsed {
+                success(txReceipt.contractAddress)
+            } else {
+                failure(EthWalletError.allGasUsed)
+            }
+        }) { error in
+            failure(error)
+        }
     }
     
 }

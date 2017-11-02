@@ -110,3 +110,10 @@ struct Hex {
     }
     
 }
+
+extension Int {
+    init?(hexString: String) {
+        let hex = Hex().truncatePrefix(string: hexString)
+        self.init(hex, radix: 16)
+    }
+}
