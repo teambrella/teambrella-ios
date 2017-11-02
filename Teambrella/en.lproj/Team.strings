@@ -173,6 +173,13 @@
 "Team.Home.Card.teamVote"                        = "TEAM VOTE";
 "Team.Home.Card.voting"                          = "VOTING";
 
-"Team.ClaimsList.empty"                          = "No claims in your team so far.";
 "Team.ChooseTeam.switchUser"                     = "Switch user";
 
+//---waiting---
+"Team.Claims.Empty.title" = "No claims in the team so far";
+"Team.Claims.Empty.details" = "We will notify you when a claim is submitted.";
+"Team.Chat.NotificationSettings.title" = "NOTIFICATION SETTINGS";
+"Team.Chat.NotificationSettings.subscribed" = "Subscribed";
+"Team.Chat.NotificationSettings.subscribed.details" = "You will get a notification of each message.";
+"Team.Chat.NotificationSettings.unsubscribed" = "No Notifications";
+"Team.Chat.NotificationSettings.unsubscribed.details" = "Notifications will be disabled for this chat.";

@@ -147,8 +147,6 @@
 "Team.Home.Card.teamVote"                        = "VOTO DEL EQUIPO";
 "Team.Home.Card.voting"                          = "VOTACIÓN";
 
-"Team.ClaimsList.empty"                          = "Hasta el momento no hay reclamaciones.";
-
 // Need translation
 
 "Team.Teammate.Footer.MemberSince"               = "Miembro desde %@";
@@ -169,3 +167,11 @@
 "Team.ChooseTeam.switchUser"                     = "Cambiar usuario";
 "Team.Chat.Input.yourMessageHere"                = "Tu mensaje aquí";
 
+//---waiting---
+"Team.Claims.Empty.title" = "No claims in the team so far";
+"Team.Claims.Empty.details" = "We will notify you when a claim is submitted.";
+"Team.Chat.NotificationSettings.title" = "NOTIFICATION SETTINGS";
+"Team.Chat.NotificationSettings.subscribed" = "Subscribed";
+"Team.Chat.NotificationSettings.subscribed.details" = "You will get a notification of each message.";
+"Team.Chat.NotificationSettings.unsubscribed" = "No Notifications";
+"Team.Chat.NotificationSettings.unsubscribed.details" = "Notifications will be disabled for this chat.";

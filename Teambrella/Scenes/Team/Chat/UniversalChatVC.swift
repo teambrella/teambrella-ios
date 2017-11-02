@@ -62,6 +62,7 @@ final class UniversalChatVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
+        addMuteButton()
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
@@ -190,6 +191,11 @@ final class UniversalChatVC: UIViewController, Routable {
         }
     }
     
+    @objc
+    private func tapMuteButton(sender: UIButton) {
+        service.router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
+    }
+    
     // MARK: Private
     
     /**
@@ -303,6 +309,11 @@ final class UniversalChatVC: UIViewController, Routable {
         collectionView.refreshControl = refresh
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
+    }
+    
+    private func addMuteButton() {
+        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconCoverage"), style: .plain, target: self, action: #selector(tapMuteButton))
+        navigationItem.setRightBarButton(barItem, animated: true)
     }
     
     private func registerCells() {
@@ -555,5 +566,12 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
         previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)
         vc.isPeeking = true
         return vc
+    }
+}
+
+// MARK: MuteControllerDelegate
+extension UniversalChatVC: MuteControllerDelegate {
+    func mute(controller: MuteVC, didSelect type: MuteVC.NotificationsType) {
+        dataSource.mute(type: type)
     }
 }

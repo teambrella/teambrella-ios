@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xrQ-fg-9ck">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xrQ-fg-9ck">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -95,7 +95,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="TtZ-qz-x9w" kind="relationship" relationship="viewControllers" id="1We-si-tWv"/>
                         <segue destination="mvw-Gh-oAG" kind="relationship" relationship="viewControllers" id="OTe-Rb-avk"/>
                     </connections>
                 </tabBarController>
@@ -112,16 +111,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGo-LW-k2E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2884" y="271.664167916042"/>
-        </scene>
-        <!--Transactions-->
-        <scene sceneID="661-Oa-4In">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Transactions" id="TtZ-qz-x9w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="W3T-Ii-pWQ"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ViG-7K-piE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2858.4000000000001" y="-66.566716641679164"/>
         </scene>
         <!--Master Tab Bar Controller-->
         <scene sceneID="0Jn-3W-J54">

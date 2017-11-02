@@ -36,5 +36,6 @@
 "Home.CoverageType.pet"                                 = "Pet health";
 "Home.PrivateMessages.title"                            = "Inbox";
 
-"Home.Empty.Title.noPrivateMessages"                    = "There are no private messages yet";
-
+//---waiting--
+"Home.Empty.Title.noPrivateMessages"                    = "You have no messages";
+"Home.Empty.SubTitle.noPrivateMessages"                 = "Tap on the compose button to keep in touch with your teammates.";

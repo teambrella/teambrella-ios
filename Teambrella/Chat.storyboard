@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Universal ChatVC-->
         <scene sceneID="6PN-ib-ZQ0">
             <objects>
-                <viewController storyboardIdentifier="UniversalChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PAO-Ju-e4H" customClass="UniversalChatVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UniversalChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PAO-Ju-e4H" customClass="UniversalChatVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TBj-uJ-5LE"/>
                         <viewControllerLayoutGuide type="bottom" id="wjw-p9-By2"/>
@@ -58,12 +58,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KI2-CH-Jbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1285.5999999999999" y="141.67916041979012"/>
+            <point key="canvasLocation" x="-1383" y="119"/>
         </scene>
         <!--ChatVC-->
         <scene sceneID="3nU-hc-6h4">
             <objects>
-                <viewController storyboardIdentifier="ChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yTT-5r-fSD" customClass="ChatVC" customModule="Teambrella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yTT-5r-fSD" customClass="ChatVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QCG-h4-whs"/>
                         <viewControllerLayoutGuide type="bottom" id="QWd-YQ-DFt"/>
@@ -78,8 +78,122 @@
             </objects>
             <point key="canvasLocation" x="-430" y="120"/>
         </scene>
+        <!--MuteVC-->
+        <scene sceneID="NdT-BP-BHG">
+            <objects>
+                <viewController storyboardIdentifier="MuteVC" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yf4-wk-oE6" customClass="MuteVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Sv-mj-Guu"/>
+                        <viewControllerLayoutGuide type="bottom" id="cYZ-8x-crD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pQw-eJ-Aql">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIf-M7-juu">
+                                <rect key="frame" x="0.0" y="-24" width="375" height="691"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDV-JV-uai">
+                                        <rect key="frame" x="0.0" y="691" width="375" height="180"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXQ-la-7Xz" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="187" y="24.5" width="0.0" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NsN-2u-RdJ">
+                                                <rect key="frame" x="0.0" y="48" width="375" height="1"/>
+                                                <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="3Iw-G4-Br7"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIe-SB-0rt">
+                                                <rect key="frame" x="327" y="4" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="NjK-hp-uq2"/>
+                                                    <constraint firstAttribute="width" secondItem="zIe-SB-0rt" secondAttribute="height" multiplier="1:1" id="tmT-kd-gDW"/>
+                                                </constraints>
+                                                <state key="normal" image="crossIcon"/>
+                                                <connections>
+                                                    <action selector="tapClose:" destination="Yf4-wk-oE6" eventType="touchUpInside" id="5ks-cO-2aD"/>
+                                                </connections>
+                                            </button>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KHL-Q5-vb5">
+                                                <rect key="frame" x="0.0" y="49" width="375" height="131"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5Gt-pQ-LHN">
+                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MuteCell" id="nkv-t7-idF" customClass="MuteCell" customModule="Surilla" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </view>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="Yf4-wk-oE6" id="mle-aJ-zJW"/>
+                                                    <outlet property="delegate" destination="Yf4-wk-oE6" id="cmC-6O-tlg"/>
+                                                </connections>
+                                            </collectionView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="zIe-SB-0rt" secondAttribute="trailing" constant="8" id="4RF-rG-O6Q"/>
+                                            <constraint firstAttribute="trailing" secondItem="NsN-2u-RdJ" secondAttribute="trailing" id="7Qq-kS-ipi"/>
+                                            <constraint firstAttribute="trailing" secondItem="KHL-Q5-vb5" secondAttribute="trailing" id="B5K-II-RLn"/>
+                                            <constraint firstAttribute="height" constant="180" id="I8z-B7-cgu"/>
+                                            <constraint firstItem="KHL-Q5-vb5" firstAttribute="leading" secondItem="NDV-JV-uai" secondAttribute="leading" id="JPQ-Ay-NgS"/>
+                                            <constraint firstItem="jXQ-la-7Xz" firstAttribute="centerX" secondItem="NDV-JV-uai" secondAttribute="centerX" id="Q8C-wK-1WR"/>
+                                            <constraint firstItem="KHL-Q5-vb5" firstAttribute="top" secondItem="NsN-2u-RdJ" secondAttribute="bottom" id="VZC-ek-UFn"/>
+                                            <constraint firstItem="zIe-SB-0rt" firstAttribute="centerY" secondItem="jXQ-la-7Xz" secondAttribute="centerY" id="bMx-yq-M3R"/>
+                                            <constraint firstItem="NsN-2u-RdJ" firstAttribute="leading" secondItem="NDV-JV-uai" secondAttribute="leading" id="iBY-h6-a1D"/>
+                                            <constraint firstItem="zIe-SB-0rt" firstAttribute="top" secondItem="NDV-JV-uai" secondAttribute="top" constant="4" id="opD-Hn-cwZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="KHL-Q5-vb5" secondAttribute="bottom" id="rWb-Ns-A6O"/>
+                                            <constraint firstItem="NsN-2u-RdJ" firstAttribute="top" secondItem="zIe-SB-0rt" secondAttribute="bottom" constant="4" id="tnF-u3-BLr"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="NDV-JV-uai" secondAttribute="trailing" id="Ohs-A9-dbM"/>
+                                    <constraint firstItem="NDV-JV-uai" firstAttribute="leading" secondItem="JIf-M7-juu" secondAttribute="leading" id="RoE-Vj-NDf"/>
+                                    <constraint firstAttribute="bottom" secondItem="NDV-JV-uai" secondAttribute="bottom" constant="-180" id="hfk-HF-JDh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JIf-M7-juu" firstAttribute="leading" secondItem="pQw-eJ-Aql" secondAttribute="leading" id="S3E-nV-70n"/>
+                            <constraint firstAttribute="trailing" secondItem="JIf-M7-juu" secondAttribute="trailing" id="TxE-bL-aws"/>
+                            <constraint firstItem="JIf-M7-juu" firstAttribute="top" secondItem="2Sv-mj-Guu" secondAttribute="bottom" constant="-44" id="ZT4-zp-YGR"/>
+                            <constraint firstItem="cYZ-8x-crD" firstAttribute="top" secondItem="JIf-M7-juu" secondAttribute="bottom" id="snq-iT-Zzk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backView" destination="JIf-M7-juu" id="pTS-Ih-Hga"/>
+                        <outlet property="bottomConstraint" destination="hfk-HF-JDh" id="n2K-Yh-QSm"/>
+                        <outlet property="closeButton" destination="zIe-SB-0rt" id="krV-aj-ZmH"/>
+                        <outlet property="collectionView" destination="KHL-Q5-vb5" id="Mvv-La-mv0"/>
+                        <outlet property="headerLabel" destination="jXQ-la-7Xz" id="hMU-n7-QAY"/>
+                        <outlet property="muteView" destination="NDV-JV-uai" id="CUl-Uv-OX9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K9K-8O-024" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="494" y="119"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backgroundPattern" width="374" height="629"/>
+        <image name="crossIcon" width="18" height="18"/>
     </resources>
 </document>
