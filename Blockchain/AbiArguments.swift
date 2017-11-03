@@ -70,6 +70,7 @@ class AbiArguments {
     }
     
     func add(_ argument: Any) throws {
+        print("Abi adding argument: \(argument)")
         guard isValid(argument) else { throw AbiArgumentsError.unEncodableArgument(argument) }
         
         arguments.append(argument)

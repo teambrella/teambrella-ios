@@ -62,12 +62,13 @@ class EthWallet {
             failure(EthWalletError.multisigHasNoCosigners(multisig.id))
             return
         }
-        guard let creationTx = multisig.creationTx else {
-            failure(EthWalletError.multisigHasNoCreationTx(multisig.id))
-            return
-        }
+//        guard let creationTx = multisig.creationTx else {
+//            failure(EthWalletError.multisigHasNoCreationTx(multisig.id))
+//            return
+//        }
         
-        let addresses = cosigners.map { $0.multisig.addressValue }
+        let addresses = cosigners.flatMap { $0.teammate.address }
+        print("created addresses: \(addresses)")
         guard let contract = contract else {
             failure(EthWalletError.contractDoesNotExist)
             return
@@ -81,10 +82,12 @@ class EthWallet {
                                                     arguments: addresses,
                                                     multisig.teamID)
             cryptoTx = try processor.signTx(unsignedTx: cryptoTx, isTestNet: isTestNet)
-            log("Multisig created teamID: \(multisig.teamID), tx: \(creationTx)", type: .crypto)
+            log("CryptoTx created teamID: \(multisig.teamID), tx: \(cryptoTx)", type: .crypto)
             publish(cryptoTx: cryptoTx, completion: completion, failure: failure)
+        } catch let AbiArguments.AbiArgumentsError.unEncodableArgument(wrongArgument) {
+            print("AbiArguments failed to accept the wrong argument: \(wrongArgument)")
         } catch {
-            failure(error)
+             failure(error)
         }
     }
     

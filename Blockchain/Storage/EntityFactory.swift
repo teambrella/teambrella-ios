@@ -296,7 +296,6 @@ struct EntityFactory {
             multisig.creationTxValue = item[" CreationTx"].string
             multisig.statusValue = item["Status"].int32Value
             multisig.dateCreatedValue = formatter.date(from: item, key: "DateCreated")
-            multisig.teamIdValue = item["TeamId"].int64Value
             
             let teammate = fetcher.teammate(id: item["TeammateId"].int64Value)
             multisig.teammateValue = teammate

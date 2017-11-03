@@ -72,7 +72,10 @@ class EtherNode {
         
         api.checkNonce(address: addressHex, success: { json in
             guard let string = json.string,
-                let nonce = Int(hexString: string) else { return }
+                let nonce = Int(hexString: string) else {
+                    failure(EtherNodeError.malformedJSON(json))
+                    return
+            }
             
             success(nonce)
         }, failure: { error in

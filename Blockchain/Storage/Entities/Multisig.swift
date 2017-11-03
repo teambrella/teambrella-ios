@@ -49,7 +49,7 @@ class Multisig: NSManagedObject {
    
     var status: MultisigStatus { return MultisigStatus(rawValue: Int(statusValue)) ?? .failed }
     var dateCreated: Date? { return dateCreatedValue }
-    var teamID: Int { return Int(teamIdValue) }
+    var teamID: Int { return teammate?.team.id ?? 0 }
     
     var teammate: Teammate? { return teammateValue }
     
