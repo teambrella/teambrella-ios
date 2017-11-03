@@ -16,6 +16,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 class EtherAPI {
     enum EtherAPIError: Error {
@@ -53,15 +54,18 @@ class EtherAPI {
          "id": 1
          {
          "jsonrpc": "2.0",
-         "result": "0x918a3313e6c1c5a0068b5234951c916aa64a8074fdbce0fecbb5c9797f7332f6",
+         "result": "0x918a3313e6c1c5a0068b5234951c916aa64a8074fdbce0feOocbb5c9797f7332f6",
          "id": 1
          }
          */
         
-        sendPostRequest(urlString: "api?module=proxy&action=eth_sendRawTransaction",
+        sendPostRequest(urlString: "api",
+                        parameters:[
+                            "module": "proxy",
+                            "action": "eth_sendRawTransaction"
+            ],
                         body: ["hex": hex],
-                        success: { data in
-                            let json = JSON(data)
+                        success: { json in
                             if let result = json["result"].string {
                                 success(result)
                             } else {
@@ -139,36 +143,34 @@ class EtherAPI {
     // MARK: Private
     
     private func sendPostRequest(urlString: String,
-                                 body: [String: Any],
+                                 parameters: [String: String],
+                                 body: [String: String],
                                  success: @escaping successClosure,
                                  failure: @escaping failureClosure) {
-        guard let url = URL(string: server + urlString) else {
+        guard let url = urlWith(address: server + urlString, parameters: parameters) else {
             failure(EtherAPIError.malformedURL)
             return
         }
         
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpMethod = "POST"
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
-        sendRequest(request, success: success, failure: failure)
+        Alamofire.request(url, method: .post, parameters: body, encoding: URLEncoding.default).responseJSON { response in
+            switch response.result {
+            case .success:
+                if let value = response.value {
+                    let json = JSON(value)
+                    print("raw: \(json)")
+                    success(json)
+                }
+            case .failure(let error):
+                failure(error)
+            }
+        }
     }
     
     private func sendGetRequest(urlString: String,
                                 parameters: [String: String],
                                 success: @escaping successClosure,
                                 failure: @escaping failureClosure) {
-        let urlComponents = NSURLComponents(string: server + urlString)
-        
-        var queryItems: [URLQueryItem] = []
-        for (key, value) in parameters {
-            queryItems.append(URLQueryItem(name: key, value: value))
-        }
-        if !queryItems.isEmpty {
-            urlComponents?.queryItems = queryItems
-        }
-        guard let url = urlComponents?.url else {
+        guard let url = urlWith(address: server + urlString, parameters: parameters) else {
             failure(EtherAPIError.malformedURL)
             return
         }
@@ -196,6 +198,20 @@ class EtherAPI {
             }
         }
         task.resume()
+    }
+    
+    private func urlWith(address: String, parameters: [String: String]) -> URL? {
+        let urlComponents = NSURLComponents(string: address)
+        
+        var queryItems: [URLQueryItem] = []
+        for (key, value) in parameters {
+            queryItems.append(URLQueryItem(name: key, value: value))
+        }
+        if !queryItems.isEmpty {
+            urlComponents?.queryItems = queryItems
+        }
+        
+        return urlComponents?.url
     }
     
 }

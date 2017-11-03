@@ -49,7 +49,7 @@ class TeambrellaService {
     let contentProvider: TeambrellaContentProvider = TeambrellaContentProvider()
     
     lazy var processor: EthereumProcessor = { EthereumProcessor.standard }()
-    var wallet: EthWallet { return EthWallet(isTestNet: server.isTestnet, processor: processor) }
+    lazy var wallet: EthWallet = { EthWallet(isTestNet: server.isTestnet, processor: processor) }()
     
     weak var delegate: TeambrellaServiceDelegate?
     
@@ -215,7 +215,7 @@ class TeambrellaService {
             return
         }
         
-        let wallet = EthWallet(isTestNet: server.isTestnet, processor: processor)
+       // let wallet = EthWallet(isTestNet: server.isTestnet, processor: processor)
         wallet.checkMyNonce(success: { [weak self] nonce in
             guard let `self` = self else { return }
             var nonce = nonce
@@ -233,9 +233,9 @@ class TeambrellaService {
                     //                                                      sameTeammateMultisig.creationTx,
                     //                                                      needServerUpdate));
                 } else {
-                    let gasPrice = wallet.contractGasPrice
+                    let gasPrice = self.wallet.contractGasPrice
                     group.enter()
-                    wallet.createOneWallet(myNonce: nonce,
+                    self.wallet.createOneWallet(myNonce: nonce,
                                            multisig: multisig,
                                            gaslLimit: gasLimit,
                                            gasPrice: gasPrice,
@@ -245,12 +245,14 @@ class TeambrellaService {
                                             // for the same team.
                                             multisig.creationTx = txHex
                                             multisig.needServerUpdate = false
-                                            
+                                            self.contentProvider.save()
+                                            /*
                                             self.contentProvider.createUnconfirmed(id: multisig.id,
                                                                                    tx: txHex,
                                                                                    gasPrice: gasPrice,
                                                                                    nonce: nonce,
                                                                                    date: Date())
+ */
                                             nonce += 1
                                             success = true
                                             group.leave()

@@ -19,31 +19,26 @@ import SwiftyJSON
 
 class EtherNode {
     struct Constant {
-        static let testAuthorities: [String] = ["https://ropsten.etherscan.io/"]
-        static let mainAuthorities: [String] = ["http://api.etherscan.io/"]
+        static let testAuthority: String = "https://ropsten.etherscan.io/"
+        static let mainAuthority: String = "http://api.etherscan.io/"
     }
     
     enum EtherNodeError: Error {
         case malformedJSON(JSON)
     }
     
-    private var ethereumAPIs: [EtherAPI] = []
+    private let ethereumAPI: EtherAPI
     private var isTestNet: Bool
     
     init(isTestNet: Bool) {
         self.isTestNet = isTestNet
         
-        let authorities = isTestNet ? Constant.testAuthorities : Constant.mainAuthorities
-        for authority in authorities {
-            let api = EtherAPI(server: authority)
-            ethereumAPIs.append(api)
-        }
+        let authority = isTestNet ? Constant.testAuthority : Constant.mainAuthority
+            ethereumAPI = EtherAPI(server: authority)
     }
     
     func pushTx(hex: String, success: @escaping (String) -> Void, failure: @escaping (Error?) -> Void) {
-        guard let api = ethereumAPIs.first else { return }
-        
-        api.pushTx(hex: hex, success: { string in
+         ethereumAPI.pushTx(hex: hex, success: { string in
             success(string)
         }, failure: { error in
             failure(error)
@@ -51,9 +46,7 @@ class EtherNode {
     }
     
     func checkNonce(addressHex: String, success: @escaping (Int) -> Void, failure: @escaping (Error?) -> Void) {
-        guard let api = ethereumAPIs.first else { return }
-        
-        api.checkNonce(address: addressHex, success: { json in
+        ethereumAPI.checkNonce(address: addressHex, success: { json in
             guard let string = json.string,
                 let nonce = Int(hexString: string) else {
                     failure(EtherNodeError.malformedJSON(json))
@@ -67,9 +60,7 @@ class EtherNode {
     }
     
     func checkTx(creationTx: String, success: @escaping (TxReceipt) -> Void, failure: @escaping (Error?) -> Void) {
-        guard let api = ethereumAPIs.first else { return }
-        
-        api.checkTx(hash: creationTx, success: { json in
+         ethereumAPI.checkTx(hash: creationTx, success: { json in
             guard let txReceipt = TxReceipt(json: json) else {
                 failure(EtherNodeError.malformedJSON(json))
                 return

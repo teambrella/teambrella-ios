@@ -29,7 +29,7 @@ class EthWallet {
     let processor: EthereumProcessor
     let isTestNet: Bool
     
-    lazy var  blockchain = { EtherNode(isTestNet: self.isTestNet) }()
+    lazy var blockchain = { EtherNode(isTestNet: self.isTestNet) }()
     
     var gasPrice: Int { return isTestNet ? 100000001 : 100000001 }
     var contractGasPrice: Int { return isTestNet ? 100000001 : 100000001 }
@@ -116,8 +116,10 @@ class EthWallet {
         guard let address = processor.ethAddressString else { return }
         
         blockchain.checkNonce(addressHex: address, success: { nonce in
+            print("Nonce: \(nonce)")
             success(nonce)
         }) { error in
+            print(error)
             failure(error)
         }
     }
@@ -137,7 +139,7 @@ class EthWallet {
                             failure: @escaping (Error?) -> Void) {
         guard let creationTx = multisig.creationTx else { return }
         
-        let blockchain = EtherNode(isTestNet: isTestNet)
+        //let blockchain = EtherNode(isTestNet: isTestNet)
         blockchain.checkTx(creationTx: creationTx, success: { txReceipt in
             let gasUsed = Int(hexString: txReceipt.gasUsed)
             let isAllGasUsed = gasUsed == gasLimit
