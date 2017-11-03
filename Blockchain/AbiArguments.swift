@@ -60,7 +60,7 @@ class AbiArguments {
         return dequeueAll()
     }
     
-    static func encodeToHex(_ args: Any...) throws -> String {
+    static func encodeToHex(args: [Any]) throws -> String {
         let abiArguments = AbiArguments()
         for argument in args {
             try abiArguments.add(argument)
@@ -70,7 +70,6 @@ class AbiArguments {
     }
     
     func add(_ argument: Any) throws {
-        print("Abi adding argument: \(argument)")
         guard isValid(argument) else { throw AbiArgumentsError.unEncodableArgument(argument) }
         
         arguments.append(argument)

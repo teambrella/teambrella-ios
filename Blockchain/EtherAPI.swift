@@ -34,10 +34,14 @@ class EtherAPI {
         self.server = server ?? "https://api.etherscan.io/"
     }
     
+    deinit {
+        print("EtherAPI dies")
+    }
+    
     lazy var session = { URLSession.shared }()
     
     // https://api.etherscan.io/api?module=proxy&action=eth_sendRawTransaction&hex=0xf904808000831cfde080&apikey=YourApiKeyToken
-    func pushTx(hex: String) -> Future<String> {
+    func pushTx(hex: String, success: @escaping (String) -> Void, failure: @escaping failureClosure) {
         /*
          {
          "jsonrpc": "2.0",
@@ -53,21 +57,20 @@ class EtherAPI {
          "id": 1
          }
          */
-        let promise = Promise<String>()
+        
         sendPostRequest(urlString: "api?module=proxy&action=eth_sendRawTransaction",
                         body: ["hex": hex],
                         success: { data in
                             let json = JSON(data)
                             if let result = json["result"].string {
-                                promise.resolve(with: result)
+                                success(result)
                             } else {
-                                promise.reject(with: EtherAPIError.etherscanError(json["error"]["code"].intValue,
-                                                                                  json["error"]["message"].stringValue))
+                                failure(EtherAPIError.etherscanError(json["error"]["code"].intValue,
+                                                                     json["error"]["message"].stringValue))
                             }
         }) { error in
-            promise.reject(with: error)
+            failure(error)
         }
-        return promise
     }
     
     func checkNonce(address: String, success: @escaping successClosure, failure: @escaping failureClosure) {
@@ -145,6 +148,8 @@ class EtherAPI {
         }
         
         var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         sendRequest(request, success: success, failure: failure)

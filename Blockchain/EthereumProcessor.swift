@@ -71,7 +71,7 @@ struct EthereumProcessor {
         
         let publicKeySignature = reverseAndCalculateV(data: signature).hexString
         print("Public key signature: \(publicKeySignature)")
-        return publicKeySignature
+        return "0x" + publicKeySignature
     }
     
     init(key: Key) {
@@ -117,20 +117,20 @@ struct EthereumProcessor {
                     gasLimit: Int,
                     gasPrice: Int,
                     byteCode: String,
-                    arguments: Any...) throws -> GethTransaction {
-        let input = try AbiArguments.encodeToHex(arguments)
-        let dict = ["nonce": "0x\(nonce)",
-            "gasPrice": "0x\(gasPrice)",
-            "gas": "0x\(gasLimit)",
+                    arguments: [Any]) throws -> GethTransaction {
+        let input = try AbiArguments.encodeToHex(args: arguments)
+        let dict = ["nonce": "0x\(nonce.hexString)",
+            "gasPrice": "0x\(gasPrice.hexString)",
+            "gas": "0x\(gasLimit.hexString)",
             "value": "0x0",
-            "input": "0x\(input)",
+            "input": "0x\(byteCode + input)",
             "v": "0x29",
             "r": "0x29",
             "s": "0x29"
         ]
         let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
         let json = String(bytes: jsonData, encoding: .utf8) ?? ""
-        if let tx = GethTransaction(ref: json) {
+        if let tx = GethTransaction(fromJSON: json) {
             return tx
         } else {
             throw EthereumProcessorError.inconsistentTxData(json)
@@ -149,14 +149,17 @@ struct EthereumProcessor {
         guard let keyStore = ethKeyStore else { throw EthereumProcessorError.noKeyStore }
         guard let account = ethAccount else { throw EthereumProcessorError.noAccount }
         
-        return try keyStore.signTxPassphrase(account,
-                                             passphrase: secretString,
-                                             tx: unsignedTx,
-                                             chainID: chainID(isTestNet: isTestNet))
+        let chainID = self.chainID(isTestNet: isTestNet)
+        let passphrase = secretString
+        let signed = try keyStore.signTxPassphrase(account,
+                                                   passphrase: passphrase,
+                                                   tx: unsignedTx,
+                                                   chainID: chainID)
+        return signed 
     }
     
     func chainID(isTestNet: Bool) -> GethBigInt {
-        return GethBigInt(ref: isTestNet ? 3: 1)
+        return GethBigInt(isTestNet ? 3: 1)
     }
     
     /// returns hash made by Keccak algorithm

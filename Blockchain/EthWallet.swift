@@ -29,13 +29,20 @@ class EthWallet {
     let processor: EthereumProcessor
     let isTestNet: Bool
     
+    lazy var  blockchain = { EtherNode(isTestNet: self.isTestNet) }()
+    
     var gasPrice: Int { return isTestNet ? 100000001 : 100000001 }
     var contractGasPrice: Int { return isTestNet ? 100000001 : 100000001 }
+    
     
     var contract: String? {
         guard let fileURL = Bundle.main.path(forResource: "Contract", ofType: "txt") else { return nil }
         
-        return try? String(contentsOfFile: fileURL, encoding: String.Encoding.utf8)
+        var string = try? String(contentsOfFile: fileURL, encoding: String.Encoding.utf8)
+        if let index = string?.index(of: "\n") {
+            string?.remove(at: index)
+        }
+        return string
     }
     
     init(isTestNet: Bool, processor: EthereumProcessor) {
@@ -68,7 +75,6 @@ class EthWallet {
 //        }
         
         let addresses = cosigners.flatMap { $0.teammate.address }
-        print("created addresses: \(addresses)")
         guard let contract = contract else {
             failure(EthWalletError.contractDoesNotExist)
             return
@@ -79,8 +85,7 @@ class EthWallet {
                                                     gasLimit: gaslLimit,
                                                     gasPrice: gasPrice,
                                                     byteCode: contract,
-                                                    arguments: addresses,
-                                                    multisig.teamID)
+                                                    arguments: [addresses, multisig.teamID])
             cryptoTx = try processor.signTx(unsignedTx: cryptoTx, isTestNet: isTestNet)
             log("CryptoTx created teamID: \(multisig.teamID), tx: \(cryptoTx)", type: .crypto)
             publish(cryptoTx: cryptoTx, completion: completion, failure: failure)
@@ -97,7 +102,6 @@ class EthWallet {
         do {
             let rlp = try cryptoTx.encodeRLP()
             let hex = "0x" + Hex().hexStringFrom(data: rlp)
-            let blockchain = EtherNode(isTestNet: isTestNet)
             blockchain.pushTx(hex: hex, success: { string in
                 completion(string)
             }, failure: { error in
@@ -111,7 +115,6 @@ class EthWallet {
     func checkMyNonce(success: @escaping (Int) -> Void, failure: @escaping (Error?) -> Void) {
         guard let address = processor.ethAddressString else { return }
         
-        let blockchain = EtherNode(isTestNet: isTestNet)
         blockchain.checkNonce(addressHex: address, success: { nonce in
             success(nonce)
         }) { error in

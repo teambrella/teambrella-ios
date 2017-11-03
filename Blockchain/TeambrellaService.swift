@@ -49,7 +49,7 @@ class TeambrellaService {
     let contentProvider: TeambrellaContentProvider = TeambrellaContentProvider()
     
     lazy var processor: EthereumProcessor = { EthereumProcessor.standard }()
-    var wallet: EthWallet { return EthWallet(isTestNet: false, processor: processor) }
+    var wallet: EthWallet { return EthWallet(isTestNet: server.isTestnet, processor: processor) }
     
     weak var delegate: TeambrellaServiceDelegate?
     
@@ -215,7 +215,7 @@ class TeambrellaService {
             return
         }
         
-        let wallet = EthWallet(isTestNet: false, processor: processor)
+        let wallet = EthWallet(isTestNet: server.isTestnet, processor: processor)
         wallet.checkMyNonce(success: { [weak self] nonce in
             guard let `self` = self else { return }
             var nonce = nonce

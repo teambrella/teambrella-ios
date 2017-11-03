@@ -41,30 +41,13 @@ class EtherNode {
     }
     
     func pushTx(hex: String, success: @escaping (String) -> Void, failure: @escaping (Error?) -> Void) {
-        let group = DispatchGroup()
-        var isSuccessful = false
-        var lastError: Error?
-        for api in ethereumAPIs {
-            group.enter()
-            api.pushTx(hex: hex).observe { result in
-                switch result {
-                case let .value(string):
-                    success(string)
-                    isSuccessful = true
-                case let .error(error):
-                    lastError = error
-                default:
-                    break
-                }
-                group.leave()
-            }
-            group.wait()
-            if isSuccessful {
-                break
-            }
-        }
-        failure(lastError)
+        guard let api = ethereumAPIs.first else { return }
         
+        api.pushTx(hex: hex, success: { string in
+            success(string)
+        }, failure: { error in
+            failure(error)
+        })
     }
     
     func checkNonce(addressHex: String, success: @escaping (Int) -> Void, failure: @escaping (Error?) -> Void) {

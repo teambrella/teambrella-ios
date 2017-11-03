@@ -116,4 +116,8 @@ extension Int {
         let hex = Hex().truncatePrefix(string: hexString)
         self.init(hex, radix: 16)
     }
+    
+    var hexString: String {
+        return String(self, radix: 16)
+    }
 }
