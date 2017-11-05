@@ -18,6 +18,7 @@ import UIKit
 
 protocol MuteControllerDelegate: class {
     func mute(controller: MuteVC, didSelect type: MuteVC.NotificationsType)
+    func didCloseMuteController(controller: MuteVC)
 }
 
 class MuteVC: UIViewController, Routable {
@@ -42,6 +43,7 @@ class MuteVC: UIViewController, Routable {
     
     @IBAction func tapClose(_ sender: Any) {
         disappear {
+            self.delegate?.didCloseMuteController(controller: self)
             self.dismiss(animated: false, completion: nil)
         }
     }

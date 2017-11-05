@@ -32,7 +32,7 @@ extension UIColor {
     class var lightBlue: UIColor { return               #colorLiteral(red: 0.3058823529, green: 0.768627451, blue: 0.9490196078, alpha: 1) }
     class var teambrellaLightBlue: UIColor { return     #colorLiteral(red: 0.3058823529, green: 0.768627451, blue: 0.9490196078, alpha: 1) }
     class var darkSkyBlue: UIColor { return             #colorLiteral(red: 0.2078431373, green: 0.6705882353, blue: 0.8470588235, alpha: 1) }
-    class var perrywinkle: UIColor { return             #colorLiteral(red: 0.4705882353, green: 0.5098039216, blue: 0.8980392157, alpha: 1) }
+    class var perrywinkle: UIColor { return             #colorLiteral(red: 0.4705882353, green: 0.5098039216, blue: 0.8941176471, alpha: 1) }
     class var blueWithAHintOfPurple: UIColor { return   #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1) }
     class var warmBlue: UIColor { return                #colorLiteral(red: 0.3215686275, green: 0.368627451, blue: 0.8666666667, alpha: 1) }
     class var frenchBlue: UIColor { return              #colorLiteral(red: 0.2588235294, green: 0.3058823529, blue: 0.7098039216, alpha: 1) }

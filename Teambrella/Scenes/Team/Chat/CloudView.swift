@@ -14,9 +14,119 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import Foundation
 import UIKit
 
-class CloudView {
+@IBDesignable
+class CloudView: UIView {
+    struct Constant {
+        static let tailWidth: CGFloat = 10
+        static let tailHeight: CGFloat = 7
+        static let cloudCornerRadius: CGFloat = 5
+    }
+
+    @IBInspectable var rightTailOffset: CGFloat = 14
+    @IBInspectable var fillColor: UIColor = UIColor.perrywinkle
+    @IBInspectable var strokeColor: UIColor = UIColor.perrywinkle
+    @IBInspectable var textColor: UIColor = .white
+    var font: UIFont = UIFont.teambrellaBold(size: 10)
+    var textAlignment: NSTextAlignment = .center
+    
+    var title: String = "" {
+        didSet {
+            titleLabel.text = title
+            setNeedsDisplay()
+        }
+    }
+    
+    lazy var titleLabel: Label = {
+        let label = Label()
+        label.textAlignment = textAlignment
+        label.numberOfLines = 0
+        label.font = font
+        label.textColor = textColor
+        self.addSubview(label)
+        
+        // add constraints
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
+        label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
+        label.topAnchor.constraint(equalTo: self.topAnchor, constant: Constant.tailHeight).isActive = true
+        label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2).isActive = true
+        return label
+    }()
+    
+    //swiftlint:disable function_body_length
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        
+        var newPoint = CGPoint(x: titleLabel.frame.minX + Constant.cloudCornerRadius, y: titleLabel.frame.maxY)
+        context.move(to: newPoint)
+        newPoint.x = titleLabel.frame.minX
+        newPoint.y = titleLabel.frame.maxY - Constant.cloudCornerRadius
+        var controlP = CGPoint(x: titleLabel.frame.minX, y: titleLabel.frame.maxY)
+        context.addQuadCurve(to: newPoint, control: controlP)
+        
+        newPoint.y = titleLabel.frame.minY + Constant.cloudCornerRadius
+        context.addLine(to: newPoint)
+        newPoint.x = titleLabel.frame.minX + Constant.cloudCornerRadius
+        newPoint.y = titleLabel.frame.minY
+        controlP = CGPoint(x: titleLabel.frame.minX, y: titleLabel.frame.minY)
+        context.addQuadCurve(to: newPoint, control: controlP)
+        
+        newPoint.x = titleLabel.frame.maxX - Constant.tailWidth - rightTailOffset
+        context.addLine(to: newPoint)
+
+        newPoint.x += Constant.tailWidth / 2
+        newPoint.y -= Constant.tailHeight
+        context.addLine(to: newPoint)
+        
+        newPoint.x += Constant.tailWidth / 2
+        newPoint.y = titleLabel.frame.minY
+        context.addLine(to: newPoint)
+        
+        newPoint.x = titleLabel.frame.maxX - Constant.cloudCornerRadius
+        context.addLine(to: newPoint)
+        newPoint.x = titleLabel.frame.maxX
+        newPoint.y = titleLabel.frame.minY + Constant.cloudCornerRadius
+        
+        controlP = CGPoint(x: titleLabel.frame.maxX, y: titleLabel.frame.minY)
+        context.addQuadCurve(to: newPoint, control: controlP)
+        
+        newPoint.y = titleLabel.frame.maxY - Constant.cloudCornerRadius
+        context.addLine(to: newPoint)
+        newPoint.x = titleLabel.frame.maxX - Constant.cloudCornerRadius
+        newPoint.y = titleLabel.frame.maxY
+        
+        controlP = CGPoint(x: titleLabel.frame.maxX, y: titleLabel.frame.maxY)
+        context.addQuadCurve(to: newPoint, control: controlP)
+        
+        newPoint.x = titleLabel.frame.minX + Constant.cloudCornerRadius
+        context.addLine(to: newPoint)
+        
+        context.closePath()
+        
+        context.setFillColor(fillColor.cgColor)
+        context.setStrokeColor(strokeColor.cgColor)
+        
+        context.setLineWidth(1)
+        context.drawPath(using: .fillStroke)
+    }
+    
+    func appear() {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
+            self.alpha = 1
+        }) { finished in
+            
+        }
+    }
+    
+    func disappear(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+            self.alpha = 0
+        }) { finished in
+            completion()
+        }
+    }
     
 }
