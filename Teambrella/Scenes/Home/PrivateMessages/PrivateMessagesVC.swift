@@ -46,7 +46,7 @@ final class PrivateMessagesVC: UIViewController, Routable {
     func showEmptyIfNeeded() {
         if dataSource.isEmpty && emptyVC == nil {
             emptyVC = EmptyVC.show(in: self)
-            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconProxy"))
+            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconInbox"))
             emptyVC?.setText(title: "Home.Empty.Title.noPrivateMessages".localized,
                              subtitle: "Home.Empty.SubTitle.noPrivateMessages".localized)
         } else {

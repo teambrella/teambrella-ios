@@ -62,7 +62,7 @@ final class UniversalChatVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
-        addMuteButton()
+        addMuteButton(muteType: .subscribed) //fake
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
@@ -336,8 +336,9 @@ final class UniversalChatVC: UIViewController, Routable {
         layout?.sectionHeadersPinToVisibleBounds = true
     }
     
-    private func addMuteButton() {
-        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconCoverage"), style: .plain, target: self, action: #selector(tapMuteButton))
+    private func addMuteButton(muteType: MuteVC.NotificationsType) {
+        let image = muteType == .subscribed ? #imageLiteral(resourceName: "iconBell1") : #imageLiteral(resourceName: "iconBellMuted1")
+        let barItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(tapMuteButton))
         navigationItem.setRightBarButton(barItem, animated: true)
     }
     

@@ -116,19 +116,7 @@ extension MuteVC: UICollectionViewDelegate {
             type = NotificationsType(rawValue: indexPath.row) ?? .subscribed
             delegate?.mute(controller: self, didSelect: type)
             collectionView.reloadData()
-//            if type.rawValue != indexPath.row {
-//                if type != .subscribed, let otherCell = collectionView.cellForItem(at: indexPath) as? MuteCell {
-//                    otherCell.checker.isHidden = true
-//                }
-//                cell.checker.isHidden = false
-//                type = NotificationsType(rawValue: indexPath.row) ?? .none
-//                delegate?.mute(controller: self, didSelect: type)
-//            } else {
-//                cell.checker.isHidden = true
-//                type = .subscribed
-//            }
         }
-       // tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 
