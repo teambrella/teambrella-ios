@@ -62,7 +62,7 @@ final class UniversalChatVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
-        addMuteButton()
+        addMuteButton(muteType: .subscribed) //fake
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
@@ -122,6 +122,30 @@ final class UniversalChatVC: UIViewController, Routable {
     
     func setContext(context: ChatContext, itemType: ItemType) {
         dataSource.addContext(context: context, itemType: itemType)
+    }
+    
+    func showMuteInfo(muteType: MuteVC.NotificationsType) {
+        let cloudView = CloudView()
+        self.view.addSubview(cloudView)
+        // add constraints
+        cloudView.translatesAutoresizingMaskIntoConstraints = false
+        cloudView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16).isActive = true
+        cloudView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        cloudView.topAnchor.constraint(equalTo: self.view.topAnchor,
+                                       constant: 2 + collectionView.frame.minY).isActive = true
+        cloudView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 0, alpha: 0)
+        cloudView.alpha = 0
+        if muteType == .subscribed {
+            cloudView.title = "Team.Chat.Unmute".localized
+        } else {
+            cloudView.title = "Team.Chat.Mute".localized
+        }
+        cloudView.appear()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            cloudView.disappear {
+                cloudView.removeFromSuperview()
+            }
+        }
     }
     
     // MARK: Callbacks
@@ -194,6 +218,7 @@ final class UniversalChatVC: UIViewController, Routable {
     @objc
     private func tapMuteButton(sender: UIButton) {
         service.router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
+        
     }
     
     // MARK: Private
@@ -311,8 +336,9 @@ final class UniversalChatVC: UIViewController, Routable {
         layout?.sectionHeadersPinToVisibleBounds = true
     }
     
-    private func addMuteButton() {
-        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconCoverage"), style: .plain, target: self, action: #selector(tapMuteButton))
+    private func addMuteButton(muteType: MuteVC.NotificationsType) {
+        let image = muteType == .subscribed ? #imageLiteral(resourceName: "iconBell1") : #imageLiteral(resourceName: "iconBellMuted1")
+        let barItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(tapMuteButton))
         navigationItem.setRightBarButton(barItem, animated: true)
     }
     
@@ -573,5 +599,9 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
 extension UniversalChatVC: MuteControllerDelegate {
     func mute(controller: MuteVC, didSelect type: MuteVC.NotificationsType) {
         dataSource.mute(type: type)
+    }
+    
+    func didCloseMuteController(controller: MuteVC) {
+        showMuteInfo(muteType: .subscribed) //fake
     }
 }

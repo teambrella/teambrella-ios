@@ -21,10 +21,10 @@ struct MuteDataSource {
     var models: [MuteCellModel] = []
     
     mutating func createModels() {
-        models = [MuteCellModel(icon: #imageLiteral(resourceName: "teambrella-round-logo"),
+        models = [MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                                 topText: "Team.Chat.NotificationSettings.subscribed".localized,
                                 bottomText: "Team.Chat.NotificationSettings.subscribed.details".localized),
-                  MuteCellModel(icon: #imageLiteral(resourceName: "teambrella-round-logo"),
+                  MuteCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
                                 topText: "Team.Chat.NotificationSettings.unsubscribed".localized,
                                 bottomText: "Team.Chat.NotificationSettings.unsubscribed.details".localized)]
     }
