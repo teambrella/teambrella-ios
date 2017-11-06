@@ -137,7 +137,10 @@ class EthWallet {
                             gasLimit: Int,
                             success: @escaping (String) -> Void,
                             failure: @escaping (Error?) -> Void) {
-        guard let creationTx = multisig.creationTx else { return }
+        guard let creationTx = multisig.creationTx else {
+            failure(EthWalletError.multisigHasNoCreationTx(multisig.id))
+            return
+        }
         
         //let blockchain = EtherNode(isTestNet: isTestNet)
         blockchain.checkTx(creationTx: creationTx, success: { txReceipt in
@@ -151,6 +154,20 @@ class EthWallet {
         }) { error in
             failure(error)
         }
+    }
+    
+    func deposit(multisig: Multisig) {
+        guard let address = multisig.address else { return }
+        
+        let group = DispatchGroup()
+        group.wait()
+        blockchain.checkBalance(address: address, success: { balance in
+            print("balance is \(balance)")
+           // self.processor.depositTx(nonce: nonce, gasLimit: <#T##Int#>, toAddress: <#T##String#>, gasPrice: <#T##Int#>, value: <#T##Decimal#>)
+            
+        }, failure: { error in
+            group.leave()
+        })
     }
     
 }

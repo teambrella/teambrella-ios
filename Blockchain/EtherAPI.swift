@@ -119,8 +119,7 @@ class EtherAPI {
         return promise
     }
     
-    func checkBalance(address: String) -> Future<Decimal> {
-        let promise = Promise<Decimal>()
+    func checkBalance(address: String, success: @escaping (Decimal) -> Void, failure: @escaping failureClosure) {
         sendGetRequest(urlString: "api",
                        parameters: [
                         "module": "account",
@@ -129,15 +128,14 @@ class EtherAPI {
                        success: { json in
                         guard let string = json.string,
                             let balance = Decimal(string: string) else {
-                                promise.reject(with: EtherAPIError.corruptedData)
+                                failure(EtherAPIError.corruptedData)
                                 return
                         }
                         
-                        promise.resolve(with: balance)
+                        success(balance)
         }) { error in
-            promise.reject(with: error)
+            failure(error)
         }
-        return promise
     }
     
     // MARK: Private

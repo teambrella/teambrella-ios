@@ -170,7 +170,11 @@ class TeambrellaService {
         }
         
         queue.addOperation {
-            self.verifyIfWalletIsCreated(gasLimit: Constant.gasLimit)
+            self.queue.isSuspended = true
+            self.verifyIfWalletIsCreated(gasLimit: Constant.gasLimit) { success in
+                print("wallet creation verified: \(success)")
+                self.queue.isSuspended = false
+            }
         }
         
         queue.addOperation {
@@ -268,11 +272,11 @@ class TeambrellaService {
         }
     }
     
-    func verifyIfWalletIsCreated(gasLimit: Int) -> Bool {
+    func verifyIfWalletIsCreated(gasLimit: Int, completion: (Bool) -> Void) {
         print("Teambrella service start \(#function)")
         let publicKey = key.publicKey
         let creationTxs = contentProvider.multisigsInCreation(publicKey: publicKey)
-        var result = true
+        var success = !creationTxs.isEmpty
         let group = DispatchGroup()
         for multisig in creationTxs {
             group.enter()
@@ -282,16 +286,21 @@ class TeambrellaService {
                 self?.contentProvider.save()
                 group.leave()
             }, failure: { error in
-                result = false
+                success = false
                 group.leave()
             })
             group.wait()
         }
-        return result
+        completion(success)
     }
     
     func depositWallet() {
         print("Teambrella service start \(#function)")
+        let publicKey = key.publicKey
+        let myCurrentMultisigs = contentProvider.currentMultisigsWithAddress(publicKey: publicKey)
+        if let multisig = myCurrentMultisigs.first {
+            wallet.deposit(multisig: multisig)
+        }
         
     }
     
