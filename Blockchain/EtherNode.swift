@@ -75,11 +75,7 @@ class EtherNode {
     func checkBalance(address: String, success: @escaping (Decimal) -> Void, failure: @escaping (Error) -> Void) {
         ethereumAPI.checkBalance(address: address, success: success, failure: failure)
     }
-    
-    //    func checkTx(creationTx: String) -> Future<
-    //    func checkTx(creationTx: String, success: () -> Void, failure: (Error) -> Void) {
-    //
-    //    }
+
 }
 
 struct TxReceipt {

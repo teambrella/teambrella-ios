@@ -24,6 +24,9 @@ class EthWallet {
         static let methodIDtransfer = "91f34dbd"
         static let txPrefix = "5452"
         static let nsPrefix = "4E53"
+        
+        static let minGasWalletBalance: Decimal = 0.0075
+        static let maxGasWalletBalance: Decimal = 0.01
     }
     
     let processor: EthereumProcessor
@@ -31,6 +34,7 @@ class EthWallet {
     
     lazy var blockchain = { EtherNode(isTestNet: self.isTestNet) }()
     
+    // 0.1 Gwei is enough since October 16, 2017 (1 Gwei = 10^9 wei)
     var gasPrice: Int { return isTestNet ? 100000001 : 100000001 }
     var contractGasPrice: Int { return isTestNet ? 100000001 : 100000001 }
     
@@ -156,14 +160,27 @@ class EthWallet {
         }
     }
     
-    func deposit(multisig: Multisig) {
+    func deposit(multisig: Multisig, completion: @escaping (Bool) -> Void) {
         guard let address = multisig.address else { return }
         
         let group = DispatchGroup()
         group.wait()
-        blockchain.checkBalance(address: address, success: { balance in
-            print("balance is \(balance)")
-           // self.processor.depositTx(nonce: nonce, gasLimit: <#T##Int#>, toAddress: <#T##String#>, gasPrice: <#T##Int#>, value: <#T##Decimal#>)
+        blockchain.checkBalance(address: address, success: { gasWalletAmount in
+            print("balance is \(gasWalletAmount)")
+            if gasWalletAmount > Constant.maxGasWalletBalance {
+                self.blockchain.checkNonce(addressHex: address, success: { nonce in
+                    let value = gasWalletAmount - Constant.minGasWalletBalance
+                    self.processor.depositTx(nonce: nonce,
+                                             gasLimit: 50000,
+                                             toAddress: address,
+                                             gasPrice: self.gasPrice,
+                                             value: value)
+                }, failure: { error in
+                    print("Deposit failed with \(error)")
+                    completion(false)
+                })
+                
+            }
             
         }, failure: { error in
             group.leave()

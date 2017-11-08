@@ -170,7 +170,7 @@ class TeambrellaContentProvider {
     }
     
     func isMy(tx: Tx) -> Bool {
-        return tx.teammate.id == user.id
+        return tx.teammate?.id == user.id
     }
     
     func isInChangeableState(tx: Tx) -> Bool {
@@ -210,7 +210,8 @@ class TeambrellaContentProvider {
             goodPayToAddresses = goodPayToAddresses && isPayToAddressOkAge(output: txOutput)
         }
         let daysPassed = Date().interval(of: .day, since: tx.receivedTime!)
-        let team = tx.teammate.team
+        guard let team = tx.teammate?.team else { return 0 }
+        
         let autoApproval: Int!
         if isMyTx {
             autoApproval = goodPayToAddresses ? team.autoApprovalMyGoodAddress : team.autoApprovalMyNewAddress
@@ -232,7 +233,8 @@ class TeambrellaContentProvider {
     // MARK: Output
     
     func isPayToAddressOkAge(output: TxOutput) -> Bool {
-        let team = output.transaction.teammate.team
+        guard let team = output.transaction.teammate?.team else { return false }
+        
         let payTo = output.payTo
         
         return team.okAge <= Date().interval(of: .day, since: payTo.knownSince)
@@ -276,10 +278,10 @@ class TeambrellaContentProvider {
     }
     
     @discardableResult
-    func addNewSignature(input: TxInput, tx: Tx, signature: Data) -> TxSignature {
+    func addNewSignature(input: TxInput, tx: Tx, signature: Data) -> TxSignature? {
         let txSignature = TxSignature.create(in: context)
         txSignature.inputValue = input
-        let me = tx.teammate.team.me(user: user)
+        guard let me = tx.teammate?.team.me(user: user) else { return nil }
         txSignature.teammateValue = me
         txSignature.isServerUpdateNeededValue = true
         txSignature.signatureValue = signature
@@ -323,7 +325,7 @@ class TeambrellaContentProvider {
     func currentMultisigsWithAddress(publicKey: String) -> [Multisig] {
         let predicates = [NSPredicate(format: "teammateValue.publicKeyValue = %@", publicKey),
                           NSPredicate(format: "addressValue != nil"),
-                          NSPredicate(format: "statusValue != %i", MultisigStatus.current.rawValue)
+                          NSPredicate(format: "statusValue = %i", MultisigStatus.current.rawValue)
         ]
         return multisigs(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
     }

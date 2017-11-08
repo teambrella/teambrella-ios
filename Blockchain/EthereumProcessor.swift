@@ -137,12 +137,28 @@ struct EthereumProcessor {
         }
     }
     
-    func depositTx(nonce: Int, gasLimit: Int, toAddress: String, gasPrice: Int, value: Decimal) {
-        let weis = value * 1_000_000_000_000_000_000
-        let dict = ["nonce": "0x\(nonce)",
-            "gasPrice": "0x\(gasPrice)",
-            "gasLimit": "0x\(gasLimit)",
-            "bytecode": "%"]
+    func depositTx(nonce: Int,
+                   gasLimit: Int,
+                   toAddress: String,
+                   gasPrice: Int,
+                   value: Decimal) throws -> GethTransaction {
+       let weis = value * 1_000_000_000_000_000_000
+        let weisHex = BInt((weis as NSDecimalNumber).stringValue).asString(withBase: 16)
+        
+        let dict = ["nonce": "0x\(nonce.hexString)",
+            "gasPrice": "0x\(gasPrice.hexString)",
+            "gasLimit": "0x\(gasLimit.hexString)",
+            "to": "0x\(toAddress)",
+            "value": weisHex,
+            "input": "0x",
+            "v": "0x29",
+            "r": "0x29",
+            "s": "0x29"]
+        let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
+        let json = String(bytes: jsonData, encoding: .utf8) ?? ""
+        guard let tx = GethTransaction(fromJSON: json) else { throw EthereumProcessorError.inconsistentTxData(json) }
+        
+        return  tx
     }
     
     func signTx(unsignedTx: GethTransaction, isTestNet: Bool) throws -> GethTransaction {

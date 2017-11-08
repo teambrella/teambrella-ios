@@ -299,7 +299,9 @@ class TeambrellaService {
         let publicKey = key.publicKey
         let myCurrentMultisigs = contentProvider.currentMultisigsWithAddress(publicKey: publicKey)
         if let multisig = myCurrentMultisigs.first {
-            wallet.deposit(multisig: multisig)
+            wallet.deposit(multisig: multisig) { success in
+                
+            }
         }
         
     }
