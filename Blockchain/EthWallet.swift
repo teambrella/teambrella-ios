@@ -163,27 +163,37 @@ class EthWallet {
     func deposit(multisig: Multisig, completion: @escaping (Bool) -> Void) {
         guard let address = multisig.address else { return }
         
-        let group = DispatchGroup()
-        group.wait()
         blockchain.checkBalance(address: address, success: { gasWalletAmount in
             print("balance is \(gasWalletAmount)")
             if gasWalletAmount > Constant.maxGasWalletBalance {
                 self.blockchain.checkNonce(addressHex: address, success: { nonce in
                     let value = gasWalletAmount - Constant.minGasWalletBalance
-                    self.processor.depositTx(nonce: nonce,
-                                             gasLimit: 50000,
-                                             toAddress: address,
-                                             gasPrice: self.gasPrice,
-                                             value: value)
+                    do {
+                        var tx = try self.processor.depositTx(nonce: nonce,
+                                                 gasLimit: 50000,
+                                                 toAddress: address,
+                                                 gasPrice: self.gasPrice,
+                                                 value: value)
+                        try tx = self.processor.signTx(unsignedTx: tx, isTestNet: self.isTestNet)
+                        self.publish(cryptoTx: tx, completion: { txHash in
+                            print("Deposit tx published: \(txHash)")
+                            completion(true)
+                        }, failure: { error in
+                            print("Publish Tx failed with \(String(describing: error))")
+                            completion(false)
+                        })
+                    } catch {
+                        print("Deposit Tx creation failed with \(String(describing: error))")
+                        completion(false)
+                    }
                 }, failure: { error in
-                    print("Deposit failed with \(error)")
+                    print("Check nonce failed with \(String(describing: error))")
                     completion(false)
                 })
-                
             }
-            
         }, failure: { error in
-            group.leave()
+            print("Check balance failed with \(String(describing: error))")
+            completion(false)
         })
     }
     
