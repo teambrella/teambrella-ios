@@ -2223,13 +2223,13 @@ public struct BDouble:
         
         if let exp = nStr.index(of: "e")?.encodedOffset
         {
-            let beforeExp = String(Array(nStr.characters)[..<exp].filter{ $0 != "." })
-            var afterExp = String(Array(nStr.characters)[(exp + 1)...])
+            let beforeExp = String(Array(nStr)[..<exp].filter{ $0 != "." })
+            var afterExp = String(Array(nStr)[(exp + 1)...])
             var sign = false
             
             if let neg = afterExp.index(of: "-")?.encodedOffset
             {
-                afterExp = String(Array(afterExp.characters)[(neg + 1)...])
+                afterExp = String(Array(afterExp)[(neg + 1)...])
                 sign = true
             }
             
@@ -2250,8 +2250,8 @@ public struct BDouble:
         let i = nStr.index(of: ".")!.encodedOffset
         
         
-        let beforePoint = String(Array(nStr.characters)[..<i])
-        let afterPoint  = String(Array(nStr.characters)[(i + 1)...])
+        let beforePoint = String(Array(nStr)[..<i])
+        let afterPoint  = String(Array(nStr)[(i + 1)...])
         
         if afterPoint == "0"
         {
@@ -2259,7 +2259,7 @@ public struct BDouble:
         }
         else
         {
-            let den = ["1"] + [Character](repeating: "0", count: afterPoint.characters.count)
+            let den = ["1"] + [Character](repeating: "0", count: afterPoint.count)
             self.init(beforePoint + afterPoint, over: String(den))
         }
     }

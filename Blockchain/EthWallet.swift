@@ -123,7 +123,6 @@ class EthWallet {
             print("Nonce: \(nonce)")
             success(nonce)
         }) { error in
-            print(error)
             failure(error)
         }
     }
