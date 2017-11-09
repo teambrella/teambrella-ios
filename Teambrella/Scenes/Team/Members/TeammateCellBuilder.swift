@@ -171,7 +171,7 @@ struct TeammateCellBuilder {
             right.titleLabel.text = "Team.TeammateCell.riskFactor".localized
             right.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.risk)
             let avg = String.truncatedNumber(teammate.basic.averageRisk)
-            right.badgeLabel.text = avg + "AVG"
+            right.badgeLabel.text = avg + " AVG"
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
         }
