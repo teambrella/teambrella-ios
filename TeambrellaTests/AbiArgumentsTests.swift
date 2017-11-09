@@ -22,7 +22,7 @@ class AbiArgumentsTests: XCTestCase {
     
     func testExample() {
         do {
-            let string = try AbiArguments.encodeToHex(["7FAEA7BF543F36DAE9D379C67979EF10C824F3FC"], 2020)
+            let string = try AbiArguments.encodeToHex(args: [["7FAEA7BF543F36DAE9D379C67979EF10C824F3FC"], 2020])
             let sample = """
                         0000000000000000000000000000000000000000000000000000000000000040\
                         00000000000000000000000000000000000000000000000000000000000007E4\
@@ -39,7 +39,7 @@ class AbiArgumentsTests: XCTestCase {
     
     func testExampleShort() {
         do {
-            let string = try AbiArguments.encodeToHex([String](), 2020)
+            let string = try AbiArguments.encodeToHex(args: [[String](), 2020])
             let sample = """
                         0000000000000000000000000000000000000000000000000000000000000040\
                         00000000000000000000000000000000000000000000000000000000000007E4\
@@ -63,7 +63,7 @@ class AbiArgumentsTests: XCTestCase {
         }
   
         do {
-            let string = try AbiArguments.encodeToHex(data)
+            let string = try AbiArguments.encodeToHex(args: [data])
             let sample = """
                         0000000000000000000000000000000000000000000000000000000000000020\
                         0000000000000000000000000000000000000000000000000000000000000021\
