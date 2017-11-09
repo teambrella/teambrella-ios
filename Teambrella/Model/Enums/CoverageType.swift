@@ -24,7 +24,7 @@ import Foundation
 enum CoverageType: Int {
     case other                        = 0
     case bicycle                      = 40
-    case carCollisionDeductable       = 100
+    case carCollisionDeductible       = 100
     case carCollision                 = 101
     case carComprehensive             = 102
     case thirdParty                   = 103
@@ -39,4 +39,15 @@ enum CoverageType: Int {
     case businessBees                 = 400
     case businessCrime                = 440
     case businessLiability            = 460
+    
+    var localizedName: String {
+        var key = ""
+        switch self {
+        case .carCollisionDeductible: key = "Home.CoverageType.carCollisionDeductible"
+        case .pet: key = "Home.CoverageType.pet"
+        default:
+            break
+        }
+        return key.localized
+    }
 }
