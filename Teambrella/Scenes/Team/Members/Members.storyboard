@@ -955,7 +955,7 @@
                                                         </view>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="177" id="qCA-Hx-5Zi"/>
+                                                        <constraint firstAttribute="height" constant="155" id="qCA-Hx-5Zi"/>
                                                     </constraints>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57V-LE-jol" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
@@ -990,7 +990,7 @@
                                             <constraint firstItem="vT5-Lp-QYa" firstAttribute="top" secondItem="1e9-iD-FHA" secondAttribute="top" constant="20" id="Prx-6F-LFi"/>
                                             <constraint firstItem="DHW-82-MXd" firstAttribute="leading" secondItem="1e9-iD-FHA" secondAttribute="leading" id="V0m-A4-xS5"/>
                                             <constraint firstAttribute="trailing" secondItem="efK-pn-UrS" secondAttribute="trailing" constant="20" id="WLP-W9-gfQ"/>
-                                            <constraint firstItem="rLx-ry-aPq" firstAttribute="top" secondItem="efK-pn-UrS" secondAttribute="bottom" id="XlY-GG-UZb"/>
+                                            <constraint firstItem="rLx-ry-aPq" firstAttribute="top" secondItem="efK-pn-UrS" secondAttribute="bottom" constant="8" id="XlY-GG-UZb"/>
                                             <constraint firstAttribute="trailing" secondItem="57V-LE-jol" secondAttribute="trailing" constant="20" id="YxS-oL-QWh"/>
                                             <constraint firstItem="vT5-Lp-QYa" firstAttribute="leading" secondItem="1e9-iD-FHA" secondAttribute="leading" constant="20" id="eXa-6t-uvh"/>
                                             <constraint firstAttribute="bottom" secondItem="DHW-82-MXd" secondAttribute="bottom" id="fZj-QV-DgK"/>

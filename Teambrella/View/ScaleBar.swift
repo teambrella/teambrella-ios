@@ -93,7 +93,7 @@ class ScaleBar: UIView {
         context.setLineWidth(lineWidth)
         context.setLineCap(.round)
         context.move(to: CGPoint(x: lineWidth / 2, y: bounds.height - lineWidth / 2))
-        context.addLine(to: CGPoint(x: bounds.width * value, y: bounds.height - lineWidth / 2))
+        context.addLine(to: CGPoint(x: (bounds.width - lineWidth / 2) * value, y: bounds.height - lineWidth / 2))
         context.strokePath()
     }
     
