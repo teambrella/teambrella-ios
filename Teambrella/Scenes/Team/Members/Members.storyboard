@@ -475,7 +475,7 @@
                                                             <real key="value" value="136"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                                            <color key="value" red="0.89411764705882346" green="0.90196078431372551" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="value" red="0.81568627450980391" green="0.82352941176470584" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                                                             <real key="value" value="0.0"/>
