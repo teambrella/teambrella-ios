@@ -36,6 +36,7 @@ excluded: # paths to ignore during linting.
   - TeambrellaTests
   - TeambrellaUITests
   - Blockchain
+  - External
 
 file_length:
   - 1000

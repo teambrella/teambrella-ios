@@ -91,6 +91,7 @@
 		6D3141D21F07DF9D00C285DA /* JoinTeamCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */; };
 		6D3141D41F07ECC800C285DA /* PoopyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141D31F07ECC800C285DA /* PoopyVC.swift */; };
 		6D33E1541F715BB10052A58B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
+		6D3AE8851FB2015F00A027BB /* BigNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3AE8841FB2015F00A027BB /* BigNumberTests.swift */; };
 		6D40248C1F9F357200A2F2CD /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248B1F9F357200A2F2CD /* Hex.swift */; };
 		6D40248D1F9F357300A2F2CD /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248B1F9F357200A2F2CD /* Hex.swift */; };
 		6D40248F1F9F782600A2F2CD /* AbiArgumentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248E1F9F782600A2F2CD /* AbiArgumentsTests.swift */; };
@@ -540,6 +541,8 @@
 		6D59F0091F56E5D000C422EB /* PrivateChatAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */; };
 		6D59F00E1F56F47B00C422EB /* ChatFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59F00C1F56F47B00C422EB /* ChatFooter.swift */; };
 		6D59F00F1F56F47B00C422EB /* ChatFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D59F00D1F56F47B00C422EB /* ChatFooter.xib */; };
+		6D6001351FB21D4600F8D81F /* SMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6001341FB21D4600F8D81F /* SMP.swift */; };
+		6D6001361FB21D4600F8D81F /* SMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6001341FB21D4600F8D81F /* SMP.swift */; };
 		6D666B701F8512FA00812CBE /* PlistStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D666B6F1F8512FA00812CBE /* PlistStorage.swift */; };
 		6D666B711F8512FA00812CBE /* PlistStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D666B6F1F8512FA00812CBE /* PlistStorage.swift */; };
 		6D66B49A1F4C461A00672583 /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B4991F4C461A00672583 /* ImagePickerController.swift */; };
@@ -1002,6 +1005,7 @@
 		6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamCellBuilder.swift; path = Scenes/Team/JoinTeam/JoinTeamCellBuilder.swift; sourceTree = "<group>"; };
 		6D3141D31F07ECC800C285DA /* PoopyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PoopyVC.swift; path = Scenes/Team/JoinTeam/PoopyVC.swift; sourceTree = "<group>"; };
 		6D33E1531F715BB10052A58B /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Log.swift; path = Model/Services/Log.swift; sourceTree = "<group>"; };
+		6D3AE8841FB2015F00A027BB /* BigNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigNumberTests.swift; sourceTree = "<group>"; };
 		6D40248B1F9F357200A2F2CD /* Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hex.swift; sourceTree = "<group>"; };
 		6D40248E1F9F782600A2F2CD /* AbiArgumentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbiArgumentsTests.swift; sourceTree = "<group>"; };
 		6D465F2D1F46E83B007AC28F /* ReportContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportContext.swift; path = Scenes/Me/Report/ReportContext.swift; sourceTree = "<group>"; };
@@ -1039,6 +1043,7 @@
 		6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatAdaptor.swift; path = Scenes/Home/PrivateMessages/PrivateChatAdaptor.swift; sourceTree = "<group>"; };
 		6D59F00C1F56F47B00C422EB /* ChatFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatFooter.swift; path = View/ReusableViews/ChatFooter.swift; sourceTree = "<group>"; };
 		6D59F00D1F56F47B00C422EB /* ChatFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChatFooter.xib; path = View/ReusableViews/ChatFooter.xib; sourceTree = "<group>"; };
+		6D6001341FB21D4600F8D81F /* SMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMP.swift; path = External/SMP.swift; sourceTree = "<group>"; };
 		6D666B6F1F8512FA00812CBE /* PlistStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlistStorage.swift; path = Model/Services/Storage/PlistStorage.swift; sourceTree = "<group>"; };
 		6D66B4991F4C461A00672583 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickerController.swift; path = Controller/ImagePickerController.swift; sourceTree = "<group>"; };
 		6D66B49B1F4D89F900672583 /* CombinedModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CombinedModels.swift; path = Model/Entities/CombinedModels.swift; sourceTree = "<group>"; };
@@ -2060,6 +2065,7 @@
 				6D40248E1F9F782600A2F2CD /* AbiArgumentsTests.swift */,
 				6D5852C71F9F83A00079CA89 /* HexTests.swift */,
 				6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */,
+				6D3AE8841FB2015F00A027BB /* BigNumberTests.swift */,
 			);
 			path = TeambrellaTests;
 			sourceTree = "<group>";
@@ -2392,6 +2398,7 @@
 			isa = PBXGroup;
 			children = (
 				6DDE956C1EE813D50019DA47 /* KingfisherSource.swift */,
+				6D6001341FB21D4600F8D81F /* SMP.swift */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -3122,6 +3129,7 @@
 				6D4E5C461F7AB6870020DEE2 /* RulesVC.swift in Sources */,
 				6D4E5C471F7AB6870020DEE2 /* TeammateCandidateCell.swift in Sources */,
 				6D4E5C481F7AB6870020DEE2 /* ClaimTransactionsVC.swift in Sources */,
+				6D6001361FB21D4600F8D81F /* SMP.swift in Sources */,
 				6D4E5C491F7AB6870020DEE2 /* JoinTeamDataSource.swift in Sources */,
 				6D4E5C4A1F7AB6870020DEE2 /* Data.swift in Sources */,
 				6D4E5C4B1F7AB6870020DEE2 /* ItemCard.swift in Sources */,
@@ -3474,6 +3482,7 @@
 				94266A301F55770D0089543F /* ClaimTransactionsVC.swift in Sources */,
 				6D3141CC1F07DD7400C285DA /* JoinTeamDataSource.swift in Sources */,
 				6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */,
+				6D6001351FB21D4600F8D81F /* SMP.swift in Sources */,
 				6DEE67911ED9CF160098EDB3 /* ItemCard.swift in Sources */,
 				6DDE95731EE832170019DA47 /* ClaimDataSource.swift in Sources */,
 				6D69DA2D1EFD1A1E00DED5CE /* WalletButtonsCell.swift in Sources */,
@@ -3799,6 +3808,7 @@
 				6DD051C11F66F18200532626 /* SocketDataTests.swift in Sources */,
 				6DA5B46A1F98FB7B00021E8E /* CurrencyTests.swift in Sources */,
 				6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */,
+				6D3AE8851FB2015F00A027BB /* BigNumberTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3949,6 +3959,9 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Surilla/Surilla.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3957,6 +3970,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Teambrella-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -3983,6 +3997,9 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Surilla/Surilla.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3990,6 +4007,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Teambrella-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;

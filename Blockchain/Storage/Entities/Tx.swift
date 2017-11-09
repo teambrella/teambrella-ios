@@ -53,10 +53,10 @@ class Tx: NSManagedObject {
     var receivedTime: Date? { return receivedTimeValue as Date? }
     var updateTime: Date? { return updateTimeValue as Date? }
     
-    var teammate: Teammate {
-        guard let teammate = teammateValue else { fatalError("Teammate for transaction not set") }
+    var teammate: Teammate? {
+       // guard let teammate = teammateValue else { fatalError("Teammate for transaction not set") }
         
-        return teammate
+        return teammateValue
     }
     
     var claimTeammate: Teammate {

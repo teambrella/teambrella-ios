@@ -33,7 +33,7 @@ class ServicesHandler {
     /// internet connection monitoring
     let reachability: ReachabilityService = ReachabilityService()
     
-    /// server interoperability
+    /// server interoperability (should be removed from here when all requests will go through DAO)
     lazy var server = ServerService()
     
     /// data access object
@@ -46,7 +46,7 @@ class ServicesHandler {
     lazy var error: ErrorPresenter = ErrorPresenter()
     
     /// logging service
-    lazy var log: Log = Log(logLevel: .all)
+    lazy var log: Log = Log(logLevel: .crypto)
     
     /// service to store private keys and last user logged in
     lazy var keyStorage: KeyStorage = KeyStorage()
