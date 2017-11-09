@@ -332,14 +332,14 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             view.avatarView.showAvatar(string: teammate.basic.avatar)
             
             if let left = view.leftNumberView {
-                left.titleLabel.text = "Team.TeammateCell.coversMe".localized
+                left.titleLabel.text = "Team.TeammateCell.wouldCoverMe".localized
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
                 left.currencyLabel.text = service.currencyName
             }
             
             if let right = view.rightNumberView {
-                right.titleLabel.text = "Team.TeammateCell.coverThem".localized
+                right.titleLabel.text = "Team.TeammateCell.wouldCoverThem".localized
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
                 right.currencyLabel.text = service.currencyName

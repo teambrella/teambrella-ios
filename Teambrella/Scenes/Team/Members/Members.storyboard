@@ -780,7 +780,7 @@
                                                             <constraints>
                                                                 <constraint firstItem="PaP-Ng-23v" firstAttribute="centerX" secondItem="Uxc-xy-0ps" secondAttribute="centerX" id="Rcw-Vr-u0x"/>
                                                                 <constraint firstItem="H9E-aD-phF" firstAttribute="top" secondItem="PaP-Ng-23v" secondAttribute="bottom" id="WTx-ex-ZmR"/>
-                                                                <constraint firstItem="PaP-Ng-23v" firstAttribute="top" secondItem="Uxc-xy-0ps" secondAttribute="top" id="hYQ-VF-38g"/>
+                                                                <constraint firstItem="PaP-Ng-23v" firstAttribute="top" secondItem="Uxc-xy-0ps" secondAttribute="top" constant="6" id="hYQ-VF-38g"/>
                                                                 <constraint firstItem="H9E-aD-phF" firstAttribute="centerX" secondItem="Uxc-xy-0ps" secondAttribute="centerX" id="r17-P1-VNw"/>
                                                             </constraints>
                                                         </view>
@@ -813,7 +813,7 @@
                                                                 <constraint firstItem="9jM-jq-mew" firstAttribute="top" secondItem="Qrv-1z-cux" secondAttribute="bottom" id="0ae-Rf-5iw"/>
                                                                 <constraint firstItem="Qrv-1z-cux" firstAttribute="centerX" secondItem="0xE-MB-abu" secondAttribute="centerX" id="A6K-Kc-XD1"/>
                                                                 <constraint firstItem="9jM-jq-mew" firstAttribute="centerX" secondItem="0xE-MB-abu" secondAttribute="centerX" id="BoT-mF-Swi"/>
-                                                                <constraint firstItem="Qrv-1z-cux" firstAttribute="top" secondItem="0xE-MB-abu" secondAttribute="top" id="vz7-Z3-jYB"/>
+                                                                <constraint firstItem="Qrv-1z-cux" firstAttribute="top" secondItem="0xE-MB-abu" secondAttribute="top" constant="6" id="vz7-Z3-jYB"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDE-lS-nqm">
