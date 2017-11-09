@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -105,7 +105,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTED (2.1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMa-g1-Uv2" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="37" width="62.5" height="15"/>
+                                                    <rect key="frame" x="72" y="37" width="56.5" height="11"/>
                                                     <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -465,7 +465,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmI-Jc-cL8" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="-200" width="373" height="344"/>
+                                                    <rect key="frame" x="0.0" y="-200" width="373" height="352"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="segments">
@@ -498,7 +498,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsF-Jx-hUP" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="86" width="373" height="58"/>
+                                                    <rect key="frame" x="0.0" y="94" width="373" height="58"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -510,7 +510,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlw-4G-kxZ" customClass="GalleryView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="142" y="42" width="88" height="88"/>
+                                                    <rect key="frame" x="142" y="50" width="88" height="88"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="dlw-4G-kxZ" secondAttribute="height" multiplier="1:1" id="Ig3-CF-RJx"/>
@@ -518,7 +518,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KqH-Lf-3HG" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="66" width="113" height="40"/>
+                                                    <rect key="frame" x="24" y="74" width="105" height="40"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="tiy-GS-LVF"/>
@@ -529,7 +529,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZr-aY-aTt" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="248" y="66" width="113" height="40"/>
+                                                    <rect key="frame" x="248" y="74" width="105" height="40"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="meD-uT-IM0"/>
@@ -540,7 +540,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are proxy voter for Jimmy Wong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxQ-2I-53K" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="84.5" y="17" width="205.5" height="16"/>
+                                                    <rect key="frame" x="94.5" y="25" width="185.5" height="16"/>
                                                     <color key="backgroundColor" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="6V4-jV-Qqh"/>
@@ -567,13 +567,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJt-7g-pSD" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="144" width="373" height="21"/>
+                                                    <rect key="frame" x="8" y="152" width="357" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8Z-zx-s9L" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="165" width="373" height="21"/>
+                                                    <rect key="frame" x="8" y="173" width="357" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

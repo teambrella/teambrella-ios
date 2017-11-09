@@ -376,8 +376,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .summary:
             return CGSize(width: collectionView.bounds.width, height: 210)
         case .object:
-            guard let teammate = dataSource.extendedTeammate,
-                teammate.object.claimCount > 0 else { return CGSize(width: wdt, height: 216) }
+            /*guard let teammate = dataSource.extendedTeammate,
+                teammate.object.claimCount > 0 else { return CGSize(width: wdt, height: 216) } */
             
             return CGSize(width: wdt, height: 296)
         case .stats:

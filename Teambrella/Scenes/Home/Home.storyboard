@@ -452,7 +452,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb2-DR-8f0" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="16" y="540.5" width="343" height="40"/>
+                                <rect key="frame" x="24" y="540.5" width="327" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="760" constant="40" id="EzE-d3-MH7"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Wku-KT-eqF"/>

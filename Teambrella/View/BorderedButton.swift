@@ -23,6 +23,12 @@ import UIKit
 
 @IBDesignable
 class BorderedButton: UIButton {
+  
+    override var isEnabled: Bool {
+        didSet {
+            layer.borderColor = self.titleColor(for: state)?.cgColor
+        }
+    }
     
     @IBInspectable var borderColor: UIColor = .robinEggBlue {
         didSet {

@@ -132,7 +132,7 @@ struct TeammateCellBuilder {
             
             let timeString = DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
             cell.timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
-          
+            
         }
         
         cell.delegate = controller
@@ -188,9 +188,9 @@ struct TeammateCellBuilder {
         cell.button.setTitle("Team.TeammateCell.buttonTitle_format_i".localized(teammate.object.claimCount),
                              for: .normal)
         
-        if let claimsCount = controller.dataSource.extendedTeammate?.object.claimCount {
-            cell.button.isHidden = claimsCount == 0
-        }
+        let hasClaims = teammate.object.claimCount > 0
+        cell.button.isEnabled = hasClaims ? true : false
+        
         cell.button.removeTarget(nil, action: nil, for: .allEvents)
         cell.button.addTarget(controller, action: #selector(TeammateProfileVC.showClaims), for: .touchUpInside)
     }
