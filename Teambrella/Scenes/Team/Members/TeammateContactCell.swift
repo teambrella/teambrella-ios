@@ -27,8 +27,8 @@ class TeammateContactCell: UICollectionViewCell {
  
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.shadow(for: self)
-        CellDecorator.roundedEdges(for: self)
+        ViewDecorator.shadow(for: self)
+        ViewDecorator.roundedEdges(for: self)
     }
     
     override func layoutMarginsDidChange() {

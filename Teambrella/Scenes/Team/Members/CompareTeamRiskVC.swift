@@ -89,13 +89,13 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
             cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
             
             if indexPath.row == 0 && indexPath.row == maxRow - 1 {
-                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 8, offset: CGSize.init(width: 0, height: 0))
+                ViewDecorator.shadow(for: cell, opacity: 0.05, radius: 8, offset: CGSize.init(width: 0, height: 0))
             } else if indexPath.row == 0 {
-                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: -4))
+                ViewDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: -4))
             } else if indexPath.row == maxRow - 1 {
-                CellDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: 4))
+                ViewDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: 4))
             } else {
-                CellDecorator.removeShadow(for: cell)
+                ViewDecorator.removeShadow(for: cell)
             }
         }
     }

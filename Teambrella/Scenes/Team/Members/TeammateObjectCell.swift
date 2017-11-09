@@ -35,8 +35,8 @@ class TeammateObjectCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.roundedEdges(for: self)
-        CellDecorator.shadow(for: self)
+        ViewDecorator.roundedEdges(for: self)
+        ViewDecorator.shadow(for: self)
     }
     
     override func layoutMarginsDidChange() {

@@ -108,7 +108,7 @@ extension FeedVC: UICollectionViewDelegate {
         let maxRow = dataSource.count
         if let cell = cell as? TeamFeedCell {
             cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
-            CellDecorator.decorateCollectionView(cell: cell, isFirst: false, isLast: indexPath.row == maxRow - 1)
+            ViewDecorator.decorateCollectionView(cell: cell, isFirst: false, isLast: indexPath.row == maxRow - 1)
         }
     }
     

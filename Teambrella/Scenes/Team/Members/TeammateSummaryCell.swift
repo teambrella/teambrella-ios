@@ -31,7 +31,7 @@ class TeammateSummaryCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.shadow(for: self)
+        ViewDecorator.shadow(for: self)
         avatarView.layer.masksToBounds = true
     }
     

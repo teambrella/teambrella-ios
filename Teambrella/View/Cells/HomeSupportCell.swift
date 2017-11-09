@@ -32,7 +32,7 @@ class HomeSupportCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.roundedEdges(for: self)
-        CellDecorator.shadow(for: self)
+        ViewDecorator.roundedEdges(for: self)
+        ViewDecorator.homeCardShadow(for: self)
     }
 }

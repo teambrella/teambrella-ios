@@ -32,7 +32,7 @@ class ClaimsOpenCell: UICollectionViewCell, ClaimsCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.roundedEdges(for: self)
-        CellDecorator.heavyShadow(for: self)
+        ViewDecorator.roundedEdges(for: self)
+        ViewDecorator.heavyShadow(for: self)
     }
 }

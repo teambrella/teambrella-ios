@@ -27,6 +27,7 @@ class HomeCollectionCell: UICollectionViewCell, XIBInitableCell, ClosableCell {
         static let shadowRadius: CGFloat = 2.0
     }
     
+    @IBOutlet var shadowView: UIView!
     @IBOutlet var containerView: UIView!
     
     @IBOutlet var titleLabel: UILabel!
@@ -43,9 +44,9 @@ class HomeCollectionCell: UICollectionViewCell, XIBInitableCell, ClosableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.roundedEdges(for: self)
-        CellDecorator.heavyShadow(for: self)
-        CellDecorator.addCloseButton(for: self)
+        ViewDecorator.roundedEdges(for: self)
+        ViewDecorator.homeCardShadow(for: self)
+        ViewDecorator.addCloseButton(for: self)
         rightNumberView.isCurrencyOnTop = false
         // show 2 lines on shorter screens and 4 or 5 lines on larger ones
         textLabel.numberOfLines = isSmallIPhone ? 2 : 5 - (3 - Int(UIScreen.main.nativeScale))

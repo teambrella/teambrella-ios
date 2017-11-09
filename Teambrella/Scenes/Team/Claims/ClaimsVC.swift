@@ -130,19 +130,19 @@ extension ClaimsVC: UICollectionViewDelegate {
         ClaimsCellBuilder.populate(cell: cell, with: dataSource[indexPath])
         let maxRow = dataSource.itemsInSection(section: indexPath.section)
         if let cell = cell as? ClaimsOpenCell {
-            CellDecorator.decorateCollectionView(cell: cell,
+            ViewDecorator.decorateCollectionView(cell: cell,
                                                  isFirst: indexPath.row == 0,
                                                  isLast: indexPath.row == maxRow - 1)
         }
         if let cell = cell as? ClaimsVotedCell {
             cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
-            CellDecorator.decorateCollectionView(cell: cell,
+            ViewDecorator.decorateCollectionView(cell: cell,
                                                  isFirst: indexPath.row == 0,
                                                  isLast: indexPath.row == maxRow - 1)
         }
         if let cell = cell as? ClaimsPaidCell {
             cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
-            CellDecorator.decorateCollectionView(cell: cell,
+            ViewDecorator.decorateCollectionView(cell: cell,
                                                  isFirst: indexPath.row == 0,
                                                  isLast: indexPath.row == maxRow - 1)
         }

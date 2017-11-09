@@ -164,7 +164,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     private func setupWalletContainer() {
-        CellDecorator.shadow(for: walletContainer, opacity: 0.08, radius: 3, offset: CGSize(width: 0, height: -3))
+        ViewDecorator.shadow(for: walletContainer, opacity: 0.08, radius: 3, offset: CGSize(width: 0, height: -3))
     }
     
     private func addEmitter() {
