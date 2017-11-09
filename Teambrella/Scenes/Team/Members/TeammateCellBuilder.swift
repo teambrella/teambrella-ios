@@ -200,6 +200,13 @@ struct TeammateCellBuilder {
                                       controller: TeammateProfileVC) {
         let stats = teammate.stats
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
+        
+        cell.weightTitleLabel.text = "Team.TeammateCell.weight".localized
+        cell.weightValueLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
+        
+        cell.proxyRankTitleLabel.text = "Team.TeammateCell.proxyRank".localized
+        cell.proxyRankValueLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
+        /*
         if let left = cell.numberBar.left {
             left.amountLabel.textAlignment = .center
             left.titleLabel.text = "Team.TeammateCell.weight".localized
@@ -207,12 +214,13 @@ struct TeammateCellBuilder {
             left.currencyLabel.text = nil
         }
         if let right = cell.numberBar.right {
-            right.amountLabel.textAlignment = .right
+            right.amountLabel.textAlignment = .center
             right.titleLabel.text = "Team.TeammateCell.proxyRank".localized
             right.amountLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
             right.isBadgeVisible = false
             right.currencyLabel.text = nil
         }
+ */
         cell.decisionsLabel.text = "Team.TeammateCell.decisions".localized
         cell.decisionsBar.autoSet(value: stats.decisionFrequency)
         cell.decisionsBar.rightText = ValueToTextConverter.decisionsText(from: stats.decisionFrequency).uppercased()
