@@ -477,7 +477,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="j5X-w5-AtE" firstAttribute="height" secondItem="C2W-oM-PML" secondAttribute="height" id="06Z-p7-ACe"/>
-                            <constraint firstItem="tb2-DR-8f0" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leadingMargin" id="0xj-LZ-IFc"/>
+                            <constraint firstItem="tb2-DR-8f0" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leadingMargin" constant="8" id="0xj-LZ-IFc"/>
                             <constraint firstItem="e4b-GY-6BP" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" constant="24" id="2XC-hP-iMB"/>
                             <constraint firstItem="5dq-54-aqk" firstAttribute="centerX" secondItem="C2W-oM-PML" secondAttribute="centerX" id="4tc-yX-BCw"/>
                             <constraint firstItem="V5d-hm-oOR" firstAttribute="top" secondItem="6dX-2w-nrX" secondAttribute="bottom" id="5hO-pt-ZVc"/>
@@ -500,7 +500,7 @@
                             <constraint firstItem="C2W-oM-PML" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" id="V2I-9j-3K8"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="trailing" secondItem="C2W-oM-PML" secondAttribute="trailing" id="VLk-JL-TE4"/>
                             <constraint firstItem="KiM-JO-zmq" firstAttribute="top" secondItem="4a4-Xz-swb" secondAttribute="bottom" id="Vf6-ld-D2g"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="tb2-DR-8f0" secondAttribute="trailing" id="Vqn-0C-e9Q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tb2-DR-8f0" secondAttribute="trailing" constant="8" id="Vqn-0C-e9Q"/>
                             <constraint firstItem="C2W-oM-PML" firstAttribute="bottom" secondItem="EQb-ak-Vz0" secondAttribute="centerY" id="bco-sR-Opi"/>
                             <constraint firstItem="5dq-54-aqk" firstAttribute="height" secondItem="C2W-oM-PML" secondAttribute="height" id="cGY-jJ-WyR"/>
                             <constraint firstItem="tb2-DR-8f0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="e4b-GY-6BP" secondAttribute="bottom" constant="8" id="cQa-aI-kxv"/>
