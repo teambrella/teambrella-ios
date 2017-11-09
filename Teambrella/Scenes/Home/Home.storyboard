@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FCe-0y-OxV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FCe-0y-OxV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -487,9 +487,9 @@
                             <constraint firstItem="V5d-hm-oOR" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" id="EYt-Zk-OXE"/>
                             <constraint firstItem="5dq-54-aqk" firstAttribute="width" secondItem="C2W-oM-PML" secondAttribute="width" id="EgH-9g-XY4"/>
                             <constraint firstItem="j5X-w5-AtE" firstAttribute="centerX" secondItem="C2W-oM-PML" secondAttribute="centerX" id="F5k-Uw-8Kf"/>
-                            <constraint firstItem="HqI-iY-38d" firstAttribute="bottom" secondItem="4a4-Xz-swb" secondAttribute="baseline" constant="1" id="HIZ-5Y-E1k"/>
+                            <constraint firstItem="HqI-iY-38d" firstAttribute="centerY" secondItem="NbC-Sb-FLW" secondAttribute="centerY" id="HOG-nh-KYZ"/>
                             <constraint firstItem="6dX-2w-nrX" firstAttribute="centerX" secondItem="C2W-oM-PML" secondAttribute="centerX" id="JSq-zM-gnJ"/>
-                            <constraint firstAttribute="trailing" secondItem="HqI-iY-38d" secondAttribute="trailing" constant="16" id="MGM-S0-Of2"/>
+                            <constraint firstAttribute="trailing" secondItem="HqI-iY-38d" secondAttribute="trailing" constant="10" id="MGM-S0-Of2"/>
                             <constraint firstItem="j5X-w5-AtE" firstAttribute="centerY" secondItem="C2W-oM-PML" secondAttribute="centerY" id="MNG-IX-dlI"/>
                             <constraint firstItem="C2W-oM-PML" firstAttribute="top" secondItem="cNQ-z2-ZHp" secondAttribute="bottom" constant="-50" id="O6I-LG-Y1O"/>
                             <constraint firstAttribute="trailing" secondItem="V5d-hm-oOR" secondAttribute="trailing" id="OER-6M-MZA"/>
@@ -519,7 +519,7 @@
                             <constraint firstItem="cDk-QT-stB" firstAttribute="width" secondItem="C2W-oM-PML" secondAttribute="width" id="tRC-9G-5Em"/>
                             <constraint firstItem="dWk-hB-e7I" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KiM-JO-zmq" secondAttribute="bottom" id="tdF-Ap-CfA"/>
                             <constraint firstItem="e4b-GY-6BP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="V5d-hm-oOR" secondAttribute="bottom" constant="8" id="uCB-Jl-C8k"/>
-                            <constraint firstItem="NbC-Sb-FLW" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" constant="12" id="uep-Kx-HLw"/>
+                            <constraint firstItem="NbC-Sb-FLW" firstAttribute="leading" secondItem="EQb-ak-Vz0" secondAttribute="leading" constant="16" id="uep-Kx-HLw"/>
                             <constraint firstItem="5dq-54-aqk" firstAttribute="centerY" secondItem="C2W-oM-PML" secondAttribute="centerY" id="vax-H4-BtU"/>
                         </constraints>
                     </view>
