@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -58,7 +58,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVG -143%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="557-Va-QA6">
-                                        <rect key="frame" x="261" y="34" width="40" height="24"/>
+                                        <rect key="frame" x="42.5" y="34" width="40" height="24"/>
                                         <color key="backgroundColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="qM7-EE-wsH"/>
@@ -136,14 +136,15 @@
                                 <constraints>
                                     <constraint firstItem="qFN-q5-gOq" firstAttribute="top" secondItem="D29-8w-VUD" secondAttribute="bottom" constant="8" id="13t-6v-5zG"/>
                                     <constraint firstItem="557-Va-QA6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="D29-8w-VUD" secondAttribute="trailing" constant="1" id="3ZF-Sj-rtR"/>
+                                    <constraint firstItem="UyJ-PS-yxB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uwK-ph-5aq" secondAttribute="trailing" constant="1" id="4Yb-rP-N3E"/>
                                     <constraint firstAttribute="trailing" secondItem="K9q-SA-b4t" secondAttribute="trailing" constant="8" id="AhS-eZ-N6E"/>
                                     <constraint firstItem="K9q-SA-b4t" firstAttribute="leading" secondItem="ufs-Z7-MdQ" secondAttribute="leading" id="BJb-QE-N90"/>
                                     <constraint firstItem="ufs-Z7-MdQ" firstAttribute="leading" secondItem="uwK-ph-5aq" secondAttribute="leading" id="H9X-5j-Hji"/>
                                     <constraint firstItem="D29-8w-VUD" firstAttribute="leading" secondItem="Nx1-Yq-BkA" secondAttribute="leading" id="IWG-mf-fnr"/>
                                     <constraint firstItem="VE3-Bp-PEJ" firstAttribute="centerY" secondItem="Nx1-Yq-BkA" secondAttribute="centerY" id="JGi-Cu-SPO"/>
-                                    <constraint firstItem="557-Va-QA6" firstAttribute="trailing" secondItem="25q-2v-Cur" secondAttribute="centerX" priority="750" constant="-17" id="KfT-ms-zU0"/>
                                     <constraint firstItem="D29-8w-VUD" firstAttribute="top" secondItem="Nx1-Yq-BkA" secondAttribute="bottom" id="LWK-uN-oW5"/>
                                     <constraint firstItem="557-Va-QA6" firstAttribute="centerY" secondItem="D29-8w-VUD" secondAttribute="centerY" id="MXm-0C-tr4"/>
+                                    <constraint firstItem="557-Va-QA6" firstAttribute="leading" secondItem="D29-8w-VUD" secondAttribute="trailing" priority="750" constant="8" id="Nho-yr-Ngi"/>
                                     <constraint firstAttribute="height" constant="105" id="Piz-5C-SK1"/>
                                     <constraint firstItem="Nx1-Yq-BkA" firstAttribute="leading" secondItem="25q-2v-Cur" secondAttribute="leading" constant="8" id="QUQ-Cu-vlZ"/>
                                     <constraint firstItem="K9q-SA-b4t" firstAttribute="centerY" secondItem="ufs-Z7-MdQ" secondAttribute="centerY" id="RNl-A7-BeM"/>
@@ -155,11 +156,10 @@
                                     <constraint firstItem="qFN-q5-gOq" firstAttribute="centerY" secondItem="ufs-Z7-MdQ" secondAttribute="centerY" id="agB-I3-dwL"/>
                                     <constraint firstItem="uwK-ph-5aq" firstAttribute="centerY" secondItem="557-Va-QA6" secondAttribute="centerY" id="cHn-4r-JGv"/>
                                     <constraint firstItem="VE3-Bp-PEJ" firstAttribute="leading" secondItem="25q-2v-Cur" secondAttribute="centerX" constant="16" id="hEh-us-LYr"/>
+                                    <constraint firstItem="UyJ-PS-yxB" firstAttribute="leading" secondItem="uwK-ph-5aq" secondAttribute="trailing" priority="750" constant="8" id="hPF-XM-5QU"/>
                                     <constraint firstItem="UyJ-PS-yxB" firstAttribute="centerY" secondItem="uwK-ph-5aq" secondAttribute="centerY" id="hae-dk-Ind"/>
-                                    <constraint firstAttribute="trailing" secondItem="UyJ-PS-yxB" secondAttribute="trailing" priority="750" constant="17" id="k7z-3P-lNB"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UyJ-PS-yxB" secondAttribute="trailing" constant="1" id="lxk-kw-bJb"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ufs-Z7-MdQ" secondAttribute="bottom" constant="8" id="oS3-MN-anU"/>
-                                    <constraint firstItem="UyJ-PS-yxB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uwK-ph-5aq" secondAttribute="trailing" constant="1" id="okg-aK-ffm"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="slashViewColor">
