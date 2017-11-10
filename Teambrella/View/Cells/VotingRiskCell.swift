@@ -217,8 +217,11 @@ extension VotingRiskCell: UICollectionViewDelegate {
         if let cell = cell as? VotingChartCell {
             let multiplier: CGFloat = CGFloat(model.heightCoefficient)
             //cell.heightConstraint = cell.heightConstraint.setMultiplier(multiplier: multiplier)
-            cell.columnHeightConstraint.constant = (cell.bounds.height - cell.topLabel.frame.height)
-                * multiplier + cell.topLabel.frame.height / 2
+            let topInset: CGFloat = 8
+            let bottomInset: CGFloat = 8
+            let columnMaxHeight = cell.bounds.height - topInset - bottomInset - cell.topLabel.frame.height
+            let columnHeight = columnMaxHeight * multiplier
+            cell.columnHeightConstraint.constant = bottomInset + columnHeight + cell.topLabel.frame.height / 2
             cell.topLabel.text = String.formattedNumber(model.riskCoefficient)
             cell.centerLabel.text = model.isTeamAverage ? "TEAM\nAVG" : ""
             cell.topLabel.clipsToBounds = true
