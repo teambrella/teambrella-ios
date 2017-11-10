@@ -237,7 +237,7 @@
                                 <rect key="frame" x="588" y="699" width="47" height="31"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                 <state key="normal" title="Others">
-                                    <color key="titleColor" red="0.22352941179999999" green="0.26274509800000001" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.17254901960784313" green="0.22352941176470587" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                         </subviews>
