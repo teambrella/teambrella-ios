@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,14 +92,13 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="V29-0m-7wa" firstAttribute="leading" secondItem="H07-1A-61F" secondAttribute="trailing" constant="8" id="3x6-Eq-VDj"/>
-                <constraint firstItem="dIA-wA-dBI" firstAttribute="top" secondItem="Qcx-lN-iSa" secondAttribute="centerY" id="5XJ-T0-cEV"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="A2l-j8-o3j"/>
                 <constraint firstAttribute="trailing" secondItem="xeX-Mw-yoX" secondAttribute="trailing" constant="16" id="ACl-Dr-h7q"/>
                 <constraint firstItem="V29-0m-7wa" firstAttribute="width" secondItem="V29-0m-7wa" secondAttribute="height" multiplier="1:1" id="CBB-Sw-Go5"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="width" secondItem="Qcx-lN-iSa" secondAttribute="height" multiplier="1:1" id="CmI-hR-JSE"/>
                 <constraint firstItem="dIA-wA-dBI" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="leading" id="Gne-Fb-JeF"/>
+                <constraint firstItem="dIA-wA-dBI" firstAttribute="top" secondItem="QhF-iw-jcV" secondAttribute="bottom" constant="8" id="JuY-Hj-Hmv"/>
                 <constraint firstItem="qtc-Rp-2hk" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="MJr-0m-Rh2"/>
-                <constraint firstItem="QhF-iw-jcV" firstAttribute="bottom" secondItem="Qcx-lN-iSa" secondAttribute="centerY" id="N80-ey-pn1"/>
                 <constraint firstItem="z6p-Vb-wmZ" firstAttribute="centerY" secondItem="V29-0m-7wa" secondAttribute="centerY" id="QA1-C6-kz9"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="width" secondItem="vsD-oO-HJn" secondAttribute="height" multiplier="1:1" id="X5R-H4-Bmu"/>
                 <constraint firstItem="z6p-Vb-wmZ" firstAttribute="leading" secondItem="V29-0m-7wa" secondAttribute="trailing" constant="9" id="dIl-7W-vdT"/>
@@ -108,7 +106,7 @@
                 <constraint firstItem="V29-0m-7wa" firstAttribute="centerY" secondItem="H07-1A-61F" secondAttribute="centerY" id="ecG-w9-iCn"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="leading" secondItem="qtc-Rp-2hk" secondAttribute="trailing" constant="16" id="f6z-U3-WgJ"/>
                 <constraint firstItem="QhF-iw-jcV" firstAttribute="leading" secondItem="Qcx-lN-iSa" secondAttribute="trailing" constant="16" id="gC4-CX-1rg"/>
-                <constraint firstItem="xeX-Mw-yoX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QhF-iw-jcV" secondAttribute="trailing" constant="8" id="hEO-7g-OHn"/>
+                <constraint firstItem="xeX-Mw-yoX" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="trailing" constant="8" id="hEO-7g-OHn"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="kku-QK-gka"/>
                 <constraint firstItem="qtc-Rp-2hk" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="trailing" constant="16" id="mam-rN-AU5"/>
                 <constraint firstItem="H07-1A-61F" firstAttribute="top" secondItem="dIA-wA-dBI" secondAttribute="bottom" constant="10" id="nWZ-i8-GmI"/>
@@ -116,6 +114,7 @@
                 <constraint firstItem="H07-1A-61F" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="leading" id="vHJ-rZ-pXK"/>
                 <constraint firstAttribute="trailing" secondItem="vsD-oO-HJn" secondAttribute="trailing" constant="16" id="vqe-dZ-ozH"/>
                 <constraint firstItem="xeX-Mw-yoX" firstAttribute="centerY" secondItem="QhF-iw-jcV" secondAttribute="centerY" id="wTY-sb-XZY"/>
+                <constraint firstItem="QhF-iw-jcV" firstAttribute="top" secondItem="Qcx-lN-iSa" secondAttribute="top" id="zQZ-ZG-4bi"/>
             </constraints>
             <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
             <size key="customSize" width="562" height="108"/>

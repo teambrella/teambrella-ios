@@ -49,7 +49,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEA-pj-5Rg" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEA-pj-5Rg" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="72" y="36" width="484" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -116,17 +116,17 @@
                             <constraint firstItem="Ejr-yO-pjp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yqT-sY-ffe" secondAttribute="trailing" constant="8" id="3zg-zE-1cC"/>
                             <constraint firstAttribute="trailing" secondItem="uev-dk-iCT" secondAttribute="trailing" id="4UY-pt-jAS"/>
                             <constraint firstItem="B6d-fE-Fmr" firstAttribute="leading" secondItem="lEA-pj-5Rg" secondAttribute="trailing" constant="8" id="Arh-3m-KAh"/>
+                            <constraint firstItem="yqT-sY-ffe" firstAttribute="top" secondItem="M6n-hd-Q8f" secondAttribute="top" id="D7I-p0-BHs"/>
                             <constraint firstItem="uev-dk-iCT" firstAttribute="leading" secondItem="BkT-eI-XLe" secondAttribute="leading" constant="16" id="GPL-TR-cVD"/>
                             <constraint firstItem="m8U-ZJ-9yS" firstAttribute="centerY" secondItem="7wD-Sn-ye9" secondAttribute="centerY" id="IpG-hp-jmj"/>
                             <constraint firstItem="yqT-sY-ffe" firstAttribute="leading" secondItem="M6n-hd-Q8f" secondAttribute="trailing" constant="16" id="PTJ-Jf-zyS"/>
                             <constraint firstItem="Gex-0H-g7a" firstAttribute="leading" secondItem="B6d-fE-Fmr" secondAttribute="trailing" constant="16" id="Q2T-Db-rrg"/>
                             <constraint firstAttribute="trailing" secondItem="Gex-0H-g7a" secondAttribute="trailing" constant="16" id="U49-VG-gw5"/>
                             <constraint firstItem="JbY-Lf-BOo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lEA-pj-5Rg" secondAttribute="bottom" constant="8" id="V9c-bj-AqW"/>
-                            <constraint firstItem="Ejr-yO-pjp" firstAttribute="bottom" secondItem="M6n-hd-Q8f" secondAttribute="centerY" id="WQ9-nc-dbO"/>
                             <constraint firstAttribute="bottom" secondItem="uev-dk-iCT" secondAttribute="bottom" id="XHz-Ol-L5e"/>
                             <constraint firstAttribute="bottom" secondItem="JbY-Lf-BOo" secondAttribute="bottom" constant="16" id="YVh-bO-qoi"/>
+                            <constraint firstItem="Ejr-yO-pjp" firstAttribute="centerY" secondItem="yqT-sY-ffe" secondAttribute="centerY" id="Zfl-4s-iqc"/>
                             <constraint firstItem="Ejr-yO-pjp" firstAttribute="trailing" secondItem="Gex-0H-g7a" secondAttribute="trailing" id="bAe-XX-dwV"/>
-                            <constraint firstItem="yqT-sY-ffe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BkT-eI-XLe" secondAttribute="top" constant="8" id="cHo-w0-7qH"/>
                             <constraint firstItem="m8U-ZJ-9yS" firstAttribute="leading" secondItem="7wD-Sn-ye9" secondAttribute="trailing" constant="8" id="gfF-zg-8i1"/>
                             <constraint firstItem="M6n-hd-Q8f" firstAttribute="top" secondItem="BkT-eI-XLe" secondAttribute="top" constant="16" id="gmd-gr-23D"/>
                             <constraint firstItem="yqT-sY-ffe" firstAttribute="bottom" secondItem="M6n-hd-Q8f" secondAttribute="centerY" priority="250" id="hNr-St-Ajm"/>
@@ -136,7 +136,7 @@
                             <constraint firstItem="M6n-hd-Q8f" firstAttribute="leading" secondItem="BkT-eI-XLe" secondAttribute="leading" constant="16" id="kJL-Ex-GPM"/>
                             <constraint firstItem="lEA-pj-5Rg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ejr-yO-pjp" secondAttribute="bottom" id="kwj-va-Min"/>
                             <constraint firstItem="lEA-pj-5Rg" firstAttribute="leading" secondItem="yqT-sY-ffe" secondAttribute="leading" id="mXQ-QL-Fqo"/>
-                            <constraint firstItem="lEA-pj-5Rg" firstAttribute="top" secondItem="yqT-sY-ffe" secondAttribute="bottom" priority="750" id="oJN-ny-W39"/>
+                            <constraint firstItem="lEA-pj-5Rg" firstAttribute="top" secondItem="yqT-sY-ffe" secondAttribute="bottom" priority="750" constant="8" id="oJN-ny-W39"/>
                             <constraint firstItem="B6d-fE-Fmr" firstAttribute="centerY" secondItem="Gex-0H-g7a" secondAttribute="centerY" id="r3T-Fh-nzp"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
