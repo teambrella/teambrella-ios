@@ -49,9 +49,14 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     
     @IBOutlet var collectionView: UICollectionView!
     
-    @IBOutlet var pearLeftAvatar: LabeledRoundImageView!
-    @IBOutlet var pearMiddleAvatar: LabeledRoundImageView!
-    @IBOutlet var pearRightAvatar: LabeledRoundImageView!
+    @IBOutlet var leftAvatar: RoundImageView!
+    @IBOutlet var leftAvatarLabel: UILabel!
+    
+    @IBOutlet var middleAvatar: RoundImageView!
+    @IBOutlet var middleAvatarLabel: UILabel!
+    
+    @IBOutlet var rightAvatar: RoundImageView!
+    @IBOutlet var rightAvatarLabel: UILabel!
     
     @IBOutlet var othersButton: UIButton!
     
@@ -101,8 +106,16 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         slashView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9647058824, blue: 1, alpha: 1).cgColor
         slashView.layer.borderWidth = 1
         
-        pearLeftAvatar.isHidden = true
-        pearRightAvatar.isHidden = true
+        leftAvatar.isHidden = true
+        leftAvatarLabel.isHidden = true
+        leftAvatarLabel.layer.borderColor = UIColor.white.cgColor
+        leftAvatarLabel.layer.borderWidth = 1
+        rightAvatar.isHidden = true
+        rightAvatarLabel.isHidden = true
+        rightAvatarLabel.layer.borderColor = UIColor.white.cgColor
+        rightAvatarLabel.layer.borderWidth = 1
+        middleAvatarLabel.layer.borderColor = UIColor.white.cgColor
+        middleAvatarLabel.layer.borderWidth = 1
       
         titleLabel.text = "Team.VotingRiskVC.headerLabel".localized
         teamVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.left".localized

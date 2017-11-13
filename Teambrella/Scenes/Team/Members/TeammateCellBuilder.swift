@@ -106,7 +106,7 @@ struct TeammateCellBuilder {
         }
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
-        cell.pearMiddleAvatar.avatar.showAvatar(string: teammate.basic.avatar)
+        cell.middleAvatar.showAvatar(string: teammate.basic.avatar)
         
         if let voting = teammate.voting {
             let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil

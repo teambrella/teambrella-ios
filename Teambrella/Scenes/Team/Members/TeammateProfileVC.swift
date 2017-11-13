@@ -471,10 +471,9 @@ extension TeammateProfileVC: IndicatorInfoProvider {
 // MARK: VotingRiskCellDelegate
 extension TeammateProfileVC: VotingRiskCellDelegate {
     func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat) {
-        
         let risk = riskFrom(offset: changedOffset, maxValue: cell.maxValue)
         cell.yourVoteValueLabel.text = String(format: "%.2f", risk)
-        cell.pearMiddleAvatar.riskLabel.text = String(format: "%.2f", risk)
+        cell.middleAvatarLabel.text = String(format: "%.2f", risk)
         updateAverages(cell: cell, risk: risk)
         updateAmounts(with: risk)
         cell.pieChart.setupWith(remainingMinutes: dataSource.extendedTeammate?.voting?.remainingMinutes ?? 0)
@@ -496,26 +495,29 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
     }
     
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int) {
-        func setview(labeledView: LabeledRoundImageView, with teammate: RiskScaleEntity.Teammate?) {
+        func setAvatar(avatarView: RoundImageView, label: UILabel, with teammate: RiskScaleEntity.Teammate?) {
             guard let teammate = teammate else {
-                labeledView.isHidden = true
-                labeledView.avatar.image = nil
+                avatarView.isHidden = true
+                avatarView.image = nil
+                label.isHidden = true
                 return
             }
             
-            labeledView.isHidden = false
-            labeledView.avatar.showAvatar(string: teammate.avatar,
+            avatarView.isHidden = false
+            label.isHidden = false
+            avatarView.showAvatar(string: teammate.avatar,
                                           options: [.transition(.fade(0.5)), .forceTransition])
-            labeledView.riskLabelText = String(format: "%.2f", teammate.risk)
-            labeledView.labelBackgroundColor = .blueWithAHintOfPurple
+            label.text = String(format: "%.2f", teammate.risk)
+            label.backgroundColor = .blueWithAHintOfPurple
         }
         guard let range = dataSource.extendedTeammate?.riskScale?.ranges[changedMiddleRowIndex] else { return }
         
         if range.teammates.count > 1 {
-            setview(labeledView: cell.pearRightAvatar, with: range.teammates.last)
+            setAvatar(avatarView: cell.rightAvatar, label: cell.rightAvatarLabel, with: range.teammates.last)
         } else {
-            cell.pearRightAvatar.isHidden = true
+            cell.rightAvatar.isHidden = true
+            cell.rightAvatarLabel.isHidden = true
         }
-        setview(labeledView: cell.pearLeftAvatar, with: range.teammates.first)
+        setAvatar(avatarView: cell.leftAvatar, label: cell.leftAvatarLabel, with: range.teammates.first)
     }
 }
