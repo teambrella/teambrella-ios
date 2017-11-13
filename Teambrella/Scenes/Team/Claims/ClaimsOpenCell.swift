@@ -32,6 +32,7 @@ class ClaimsOpenCell: UICollectionViewCell, ClaimsCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        button.isUserInteractionEnabled = false
         CellDecorator.roundedEdges(for: self)
         CellDecorator.heavyShadow(for: self)
     }
