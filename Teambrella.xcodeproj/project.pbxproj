@@ -752,6 +752,10 @@
 		6DD12ECC1EC75C2C00BE1CC4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */; };
 		6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */; };
 		6DD7F41D1EB9FD8A001E7733 /* RoundImagesStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41C1EB9FD8A001E7733 /* RoundImagesStack.swift */; };
+		6DDC65541FB9F02400DE4E36 /* TeammateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */; };
+		6DDC65551FB9F02400DE4E36 /* TeammateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */; };
+		6DDC65561FB9F02400DE4E36 /* TeammateSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDC65531FB9F02400DE4E36 /* TeammateSummaryView.xib */; };
+		6DDC65571FB9F02400DE4E36 /* TeammateSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDC65531FB9F02400DE4E36 /* TeammateSummaryView.xib */; };
 		6DDE95681EE806F80019DA47 /* ImageGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95661EE806F80019DA47 /* ImageGalleryCell.swift */; };
 		6DDE95691EE806F80019DA47 /* ImageGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE95671EE806F80019DA47 /* ImageGalleryCell.xib */; };
 		6DDE956B1EE80FE40019DA47 /* ImageSlideshow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DDE956A1EE80FE40019DA47 /* ImageSlideshow.framework */; };
@@ -1255,6 +1259,8 @@
 		6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Helpers/Extensions/Date.swift; sourceTree = "<group>"; };
 		6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImageView.swift; path = View/RoundImageView.swift; sourceTree = "<group>"; };
 		6DD7F41C1EB9FD8A001E7733 /* RoundImagesStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImagesStack.swift; path = View/RoundImagesStack.swift; sourceTree = "<group>"; };
+		6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeammateSummaryView.swift; path = View/ReusableViews/TeammateSummaryView.swift; sourceTree = "<group>"; };
+		6DDC65531FB9F02400DE4E36 /* TeammateSummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TeammateSummaryView.xib; path = View/ReusableViews/TeammateSummaryView.xib; sourceTree = "<group>"; };
 		6DDE95661EE806F80019DA47 /* ImageGalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageGalleryCell.swift; path = View/Cells/ImageGalleryCell.swift; sourceTree = "<group>"; };
 		6DDE95671EE806F80019DA47 /* ImageGalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageGalleryCell.xib; path = View/Cells/ImageGalleryCell.xib; sourceTree = "<group>"; };
 		6DDE956A1EE80FE40019DA47 /* ImageSlideshow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageSlideshow.framework; path = Carthage/Build/iOS/ImageSlideshow.framework; sourceTree = "<group>"; };
@@ -1852,6 +1858,8 @@
 				6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */,
 				6D59F00C1F56F47B00C422EB /* ChatFooter.swift */,
 				6D59F00D1F56F47B00C422EB /* ChatFooter.xib */,
+				6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */,
+				6DDC65531FB9F02400DE4E36 /* TeammateSummaryView.xib */,
 			);
 			name = ReusableViews;
 			sourceTree = "<group>";
@@ -2716,6 +2724,7 @@
 				6D4E5DC21F7AB6870020DEE2 /* JoinTeamGreetingCell.xib in Resources */,
 				6D4E5DC31F7AB6870020DEE2 /* ClaimOptionsCell.xib in Resources */,
 				6D4E5DC41F7AB6870020DEE2 /* Team.storyboard in Resources */,
+				6DDC65571FB9F02400DE4E36 /* TeammateSummaryView.xib in Resources */,
 				6D4E5DC51F7AB6870020DEE2 /* WalletFundingCell.xib in Resources */,
 				6D4E5DC61F7AB6870020DEE2 /* Login.storyboard in Resources */,
 				6D4E5DC71F7AB6870020DEE2 /* ReportItemCell.xib in Resources */,
@@ -2806,6 +2815,7 @@
 				944504C41F07CFAE00CF443F /* JoinTeamGreetingCell.xib in Resources */,
 				6DDE95851EE853550019DA47 /* ClaimOptionsCell.xib in Resources */,
 				6D9CC6271ED5EA81007F936E /* Team.storyboard in Resources */,
+				6DDC65561FB9F02400DE4E36 /* TeammateSummaryView.xib in Resources */,
 				6D69DA2A1EFD1A0400DED5CE /* WalletFundingCell.xib in Resources */,
 				6D9CC6301ED5EBA8007F936E /* Login.storyboard in Resources */,
 				6D0E05611EFEBF4000604981 /* ReportItemCell.xib in Resources */,
@@ -3325,6 +3335,7 @@
 				6D4E5CFF1F7AB6870020DEE2 /* ChooseYourTeamCellModel.swift in Sources */,
 				6D4E5D001F7AB6870020DEE2 /* TeambrellaStyle.swift in Sources */,
 				6D666B711F8512FA00812CBE /* PlistStorage.swift in Sources */,
+				6DDC65551FB9F02400DE4E36 /* TeammateSummaryView.swift in Sources */,
 				6DBBF8041F9A5F6800524B1E /* Unconfirmed.swift in Sources */,
 				6D4E5D011F7AB6870020DEE2 /* NSObject.swift in Sources */,
 				6D4E5D021F7AB6870020DEE2 /* Session.swift in Sources */,
@@ -3678,6 +3689,7 @@
 				6D02ACA21F07D3A400B01AAF /* JoinTeamVC.swift in Sources */,
 				6D6DA25C1EE1CE3100307C73 /* ClaimLike.swift in Sources */,
 				94C2D3941F191F7100D203C2 /* ChooseYourTeamCellModel.swift in Sources */,
+				6DDC65541FB9F02400DE4E36 /* TeammateSummaryView.swift in Sources */,
 				6DA714E71EDF224A00F39EBE /* TeambrellaStyle.swift in Sources */,
 				6D666B701F8512FA00812CBE /* PlistStorage.swift in Sources */,
 				6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */,

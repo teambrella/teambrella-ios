@@ -70,6 +70,7 @@ struct TeammateCellBuilder {
     private static func populateSummary(cell: TeammateSummaryCell,
                                         with teammate: ExtendedTeammateEntity,
                                         controller: UIViewController) {
+        /*
         cell.title.text = teammate.basic.name.entire
         //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
         cell.avatarView.present(avatarString: teammate.basic.avatar)
@@ -95,6 +96,7 @@ struct TeammateCellBuilder {
             cell.infoLabel.isHidden = false
             cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
         }
+ */
     }
     
     private static func populateVote(cell: VotingRiskCell,

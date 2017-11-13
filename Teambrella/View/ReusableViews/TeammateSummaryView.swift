@@ -1,10 +1,5 @@
 //
-//  TeammateSummaryCell.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 31.05.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2017 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,7 +16,7 @@
 
 import UIKit
 
-class TeammateSummaryCell: UICollectionReusableView {
+class TeammateSummaryView: UICollectionReusableView, XIBInitableCell {
     @IBOutlet var avatarView: GalleryView!
     @IBOutlet var infoLabel: Label!
     @IBOutlet var leftNumberView: NumberView!
@@ -31,13 +26,7 @@ class TeammateSummaryCell: UICollectionReusableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //ViewDecorator.shadow(for: self)
-        avatarView.layer.masksToBounds = true
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        avatarView.layer.cornerRadius = avatarView.frame.width / 2
+         avatarView.layer.cornerRadius = avatarView.frame.width / 2
     }
     
 }

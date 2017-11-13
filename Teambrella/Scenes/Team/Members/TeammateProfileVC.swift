@@ -62,15 +62,16 @@ final class TeammateProfileVC: UIViewController, Routable {
         registerCells()
         HUD.show(.progress, onView: view)
         
-        if let flow = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flow.sectionHeadersPinToVisibleBounds = true
-        }
-        
         dataSource.loadEntireTeammate { [weak self] extendedTeammate in
             HUD.hide()
-            self?.prepareLinearFunction()
-            self?.setTitle()
-            self?.collectionView.reloadData()
+            guard let `self` = self else { return }
+            
+            self.prepareLinearFunction()
+            self.setTitle()
+            self.collectionView.reloadData()
+            if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate
+            }
         }
     }
     
@@ -258,6 +259,9 @@ final class TeammateProfileVC: UIViewController, Routable {
         collectionView.register(CompactUserInfoHeader.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: CompactUserInfoHeader.cellID)
+        collectionView.register(TeammateSummaryView.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: TeammateSummaryView.cellID)
     }
     
     private func setTitle() {
@@ -298,9 +302,13 @@ extension TeammateProfileVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+            return dataSource.isNewTeammate
+                ? collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
                                                                    withReuseIdentifier: CompactUserInfoHeader.cellID,
                                                                    for: indexPath)
+                : collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                  withReuseIdentifier: TeammateSummaryView.cellID,
+                                                                  for: indexPath)
         }
         if kind == UICollectionElementKindSectionFooter {
             return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
@@ -343,6 +351,36 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
                 right.currencyLabel.text = service.currencyName
+            }
+        } else if let view = view as? TeammateSummaryView {
+            view.title.text = teammate.basic.name.entire
+            //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
+            view.avatarView.present(avatarString: teammate.basic.avatar)
+            view.avatarView.onTap = { [weak self] view in
+                guard let `self` = self else { return }
+                
+                view.fullscreen(in: self, imageStrings: nil)
+            }
+            //cell.avatarView.kf.setImage(with: url)
+            if let left = view.leftNumberView {
+                left.isHidden = dataSource.isMe
+                left.titleLabel.text = "Team.TeammateCell.coversMe".localized
+                let amount = teammate.basic.coversMeAmount
+                left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+                left.currencyLabel.text = service.currencyName
+            }
+            if let right = view.rightNumberView {
+                right.isHidden = dataSource.isMe
+                right.titleLabel.text = "Team.TeammateCell.coverThem".localized
+                let amount = teammate.basic.iCoverThemAmount
+                right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+                right.currencyLabel.text = service.currencyName
+            }
+            
+            view.subtitle.text = teammate.basic.city.uppercased()
+            if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
+                view.infoLabel.isHidden = false
+                view.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
             }
         }
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
@@ -403,7 +441,11 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return dataSource.isNewTeammate ? CGSize(width: collectionView.bounds.width, height: 60) : CGSize.zero
+        guard dataSource.extendedTeammate != nil else { return CGSize.zero }
+        
+        return dataSource.isNewTeammate
+            ? CGSize(width: collectionView.bounds.width, height: 60)
+            : CGSize(width: collectionView.bounds.width, height: 210)
     }
     
     func collectionView(_ collectionView: UICollectionView,

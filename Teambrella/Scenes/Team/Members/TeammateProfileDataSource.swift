@@ -141,9 +141,9 @@ class TeammateProfileDataSource {
             }
         } else {
             if isMe {
-                source.append(.me)
+                //source.append(.me)
             } else {
-                source.append(.summary)
+                //source.append(.summary)
 
             }
 //            source.append(.me)
