@@ -133,6 +133,8 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
         }
+        
+        ViewDecorator.shadow(for: self)
     }
     
     override func layoutSubviews() {

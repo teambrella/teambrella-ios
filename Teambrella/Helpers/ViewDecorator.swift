@@ -24,7 +24,7 @@ import SnapKit
 
 struct ViewDecorator {
     static func shadow(for cell: UICollectionReusableView) {
-        shadow(for: cell, opacity: 0.08, radius: 4)
+        shadow(for: cell, color: #colorLiteral(red: 0.8705882353, green: 0.8901960784, blue: 0.9098039216, alpha: 1), opacity: 1, radius: 4, offset: CGSize(width: 0, height: 2))
     }
     
     static func heavyShadow(for cell: UICollectionReusableView) {
