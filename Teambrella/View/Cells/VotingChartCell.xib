@@ -58,7 +58,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGa-1s-aka">
-                        <rect key="frame" x="25.5" y="7" width="30" height="15"/>
+                        <rect key="frame" x="28" y="7.5" width="25" height="14"/>
                         <color key="backgroundColor" red="0.48627450979999998" green="0.53333333329999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="2aV-fe-OvZ"/>

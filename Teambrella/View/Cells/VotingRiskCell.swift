@@ -99,11 +99,11 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.layer.cornerRadius = 4
-        collectionView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9647058824, blue: 1, alpha: 1).cgColor
+        collectionView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1).cgColor
         collectionView.layer.borderWidth = 1
         
         slashView.layer.cornerRadius = 4
-        slashView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9647058824, blue: 1, alpha: 1).cgColor
+        slashView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1).cgColor
         slashView.layer.borderWidth = 1
         
         leftAvatar.isHidden = true
