@@ -25,5 +25,57 @@
                 <string>are typing</string>
             </dict>
         </dict>
+        
+        <key>Team.Members.days_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>one day</string>
+                <key>other</key>
+                <string>%d days</string>
+            </dict>
+        </dict>
+        
+        <key>Team.Members.hours_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>one hour</string>
+                <key>other</key>
+                <string>%d hours</string>
+            </dict>
+        </dict>
+        
+        <key>Team.Members.minutes_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>one minute</string>
+                <key>other</key>
+                <string>%d minutess</string>
+            </dict>
+        </dict>
+        
     </dict>
 </plist>

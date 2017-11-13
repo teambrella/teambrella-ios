@@ -25,5 +25,57 @@
                 <string>escriben</string>
             </dict>
         </dict>
+        
+        <key>Team.Members.days_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>un día</string>
+                <key>other</key>
+                <string>%d días</string>
+            </dict>
+        </dict>
+        
+        <key>Team.Members.hours_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>una hora</string>
+                <key>other</key>
+                <string>%d horas</string>
+            </dict>
+        </dict>
+        
+        <key>Team.Members.minutes_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>un minuto</string>
+                <key>other</key>
+                <string>%d minutos</string>
+            </dict>
+        </dict>
+        
     </dict>
 </plist>
