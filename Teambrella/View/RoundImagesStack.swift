@@ -88,17 +88,20 @@ class RoundImagesStack: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        translatesAutoresizingMaskIntoConstraints = true
         guard !views.isEmpty else { return }
         
         let side = bounds.height
         let quantity = CGFloat(maxImages)
-        let interval: CGFloat = quantity > 1 ? (bounds.width - side) / (quantity - 1) : 0
+        //let interval: CGFloat = quantity > 1 ? (bounds.width - side) / (quantity - 1) : 0
+        let interval = side * 0.8
         let size = CGSize(width: side, height: side)
         for (idx, view) in views.enumerated() {
             view.frame.origin = CGPoint(x: CGFloat(idx) * interval,
                                         y: 0)
             view.frame.size = size
         }
+        frame.size.width = views.last?.frame.maxX ?? 0
     }
     
 }

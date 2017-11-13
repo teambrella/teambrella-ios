@@ -62,7 +62,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCUSSION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6p-Vb-wmZ" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="196" y="65.5" width="101" height="21"/>
+                        <rect key="frame" x="104" y="65.5" width="101" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -74,15 +74,15 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H07-1A-61F" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="66.5" width="80" height="20"/>
+                        <rect key="frame" x="72" y="66.5" width="0.0" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="80" id="Cjy-Nc-jwU"/>
+                            <constraint firstAttribute="width" priority="250" id="Cjy-Nc-jwU"/>
                             <constraint firstAttribute="height" constant="20" id="ubL-SX-sLA"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discussion" translatesAutoresizingMaskIntoConstraints="NO" id="V29-0m-7wa">
-                        <rect key="frame" x="172" y="68.5" width="15" height="15"/>
+                        <rect key="frame" x="80" y="68.5" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="1TE-zI-fnj"/>
                             <constraint firstAttribute="width" secondItem="V29-0m-7wa" secondAttribute="height" multiplier="1:1" id="GHo-t7-Gf8"/>
@@ -92,7 +92,7 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="V29-0m-7wa" firstAttribute="leading" secondItem="H07-1A-61F" secondAttribute="trailing" constant="20" id="3x6-Eq-VDj"/>
+                <constraint firstItem="V29-0m-7wa" firstAttribute="leading" secondItem="H07-1A-61F" secondAttribute="trailing" constant="8" id="3x6-Eq-VDj"/>
                 <constraint firstItem="dIA-wA-dBI" firstAttribute="top" secondItem="Qcx-lN-iSa" secondAttribute="centerY" id="5XJ-T0-cEV"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="A2l-j8-o3j"/>
                 <constraint firstAttribute="trailing" secondItem="xeX-Mw-yoX" secondAttribute="trailing" constant="16" id="ACl-Dr-h7q"/>

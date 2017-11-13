@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -56,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLAIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8U-ZJ-9yS" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="160" y="143.5" width="51" height="21"/>
+                                <rect key="frame" x="99" y="143.5" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -68,7 +68,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="claim" translatesAutoresizingMaskIntoConstraints="NO" id="7wD-Sn-ye9">
-                                <rect key="frame" x="142" y="149" width="10" height="10"/>
+                                <rect key="frame" x="81" y="149" width="10" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7wD-Sn-ye9" secondAttribute="height" multiplier="1:1" id="4xE-HR-bgu"/>
                                     <constraint firstAttribute="width" constant="10" id="uG6-Lh-kxL"/>
@@ -102,11 +102,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbY-Lf-BOo" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="72" y="144" width="50" height="20"/>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbY-Lf-BOo" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="72" y="144" width="1" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="5jQ-k5-rNX"/>
-                                    <constraint firstAttribute="width" priority="250" constant="50" id="xM2-3w-dIg"/>
+                                    <constraint firstAttribute="width" priority="250" constant="1" id="idf-Y5-3vE"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -132,7 +132,7 @@
                             <constraint firstItem="yqT-sY-ffe" firstAttribute="bottom" secondItem="M6n-hd-Q8f" secondAttribute="centerY" priority="250" id="hNr-St-Ajm"/>
                             <constraint firstItem="7wD-Sn-ye9" firstAttribute="centerY" secondItem="JbY-Lf-BOo" secondAttribute="centerY" id="hWt-dU-8Iq"/>
                             <constraint firstItem="Gex-0H-g7a" firstAttribute="centerY" secondItem="BkT-eI-XLe" secondAttribute="centerY" id="hoD-nA-wY6"/>
-                            <constraint firstItem="7wD-Sn-ye9" firstAttribute="leading" secondItem="JbY-Lf-BOo" secondAttribute="trailing" constant="20" id="jLK-6K-x1Z"/>
+                            <constraint firstItem="7wD-Sn-ye9" firstAttribute="leading" secondItem="JbY-Lf-BOo" secondAttribute="trailing" constant="8" id="jLK-6K-x1Z"/>
                             <constraint firstItem="M6n-hd-Q8f" firstAttribute="leading" secondItem="BkT-eI-XLe" secondAttribute="leading" constant="16" id="kJL-Ex-GPM"/>
                             <constraint firstItem="lEA-pj-5Rg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ejr-yO-pjp" secondAttribute="bottom" id="kwj-va-Min"/>
                             <constraint firstItem="lEA-pj-5Rg" firstAttribute="leading" secondItem="yqT-sY-ffe" secondAttribute="leading" id="mXQ-QL-Fqo"/>
