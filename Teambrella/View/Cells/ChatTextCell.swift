@@ -325,7 +325,12 @@ class ChatTextCell: UICollectionViewCell {
     }
     
     private func createLabel(for text: String, height: CGFloat) -> UILabel {
-        let verticalOffset = views.last?.frame.maxY ?? leftLabel.frame.maxY + 8
+        let verticalOffset: CGFloat
+        if let lastMaxY = views.last?.frame.maxY {
+        verticalOffset = lastMaxY + 8
+        } else {
+            verticalOffset = leftLabel.frame.maxY + 8
+        }
         let label = UILabel(frame: CGRect(x: cloudBodyMinX + 8,
                                           y: verticalOffset,
                                           width: cloudWidth - 16,
