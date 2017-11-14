@@ -25,6 +25,9 @@ import XLPagerTabStrip
 class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
     let tabType: TabType = .team
     
+    @IBOutlet var topBarContainer: UIView!
+    var topBarVC: TopBarVC!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         title = "Main.team".localized
@@ -34,12 +37,31 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
     override func viewDidLoad() {
         setupTeambrellaTabLayout()
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupTransparentNavigationBar()
-        navigationItem.title = service.session?.currentTeam?.teamName ?? "Main.team".localized
+        navigationItem.title = "" //service.session?.currentTeam?.teamName ?? "Main.team".localized
+        addTopBar()
     }
     
-    func tapTeam(button: UIButton) {
-        service.router.showJoinTeam(in: self)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.layer.zPosition = -1
+       
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
+    private func addTopBar() {
+        guard let session = service.session else { return }
+        
+        topBarVC = TopBarVC.show(in: self, in: topBarContainer)
+        topBarVC.router = service.router
+        topBarVC.session = session
+        topBarVC.delegate = self
+        
+        topBarVC.setup()
     }
     
     func teamSelected(name: String?) {
@@ -68,4 +90,18 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         return [feed, members, claims /* , rules */]
     }
     
+}
+
+extension TeamVC: TopBarDelegate {
+    func topBar(vc: TopBarVC, didSwitchTeamToID: Int) {
+        
+    }
+}
+
+class TeamView: UIView {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let frame = self.bounds
+        
+        return super.hitTest(point, with: event)
+    }
 }
