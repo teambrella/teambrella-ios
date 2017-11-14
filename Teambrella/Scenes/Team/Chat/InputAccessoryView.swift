@@ -97,8 +97,8 @@ class InputAccessoryView: UIView {
         textView.snp.makeConstraints { make in
             make.left.equalTo(leftButton.snp.right)
             make.right.equalTo(rightButton.snp.left)
-            make.bottom.equalToSuperview().inset(7)
-            make.top.equalToSuperview().offset(3)
+            make.bottom.equalToSuperview().inset(5)
+            make.top.equalToSuperview().offset(5)
             make.height.lessThanOrEqualTo(maxHeight)
         }
         

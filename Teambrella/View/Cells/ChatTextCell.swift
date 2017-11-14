@@ -155,9 +155,7 @@ class ChatTextCell: UICollectionViewCell {
             setupLeftLabel(name: model.userName, baseFrame: baseFrame)
             setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
-            if !isMy {
                 setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
-            }
             return setupFragments(fragments: model.fragments, heights: model.fragmentHeights)
         } else if let model = model as? ChatTextUnsentCellModel {
             id = model.id
@@ -258,7 +256,7 @@ class ChatTextCell: UICollectionViewCell {
     }
     
     private func setupAvatar(avatar: String?, cloudHeight: CGFloat) {
-        guard let avatar = avatar else {
+        guard  isMy == false, let avatar = avatar else {
             avatarView.isHidden = true
             return
         }
