@@ -54,17 +54,6 @@ struct TeammateCellBuilder {
         cell.avatar.showAvatar(string: teammate.basic.avatar)
         cell.nameLabel.text = teammate.basic.name.entire
         cell.infoLabel.text = teammate.basic.city.uppercased()
-        guard let controller = controller else { return }
-        
-        cell.facebookButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.facebookButton.addTarget(controller, action: #selector(TeammateProfileVC.tapFacebook), for: .touchUpInside)
-        
-        cell.twitterButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.twitterButton.addTarget(controller, action: #selector(TeammateProfileVC.tapTwitter), for: .touchUpInside)
-        
-        cell.emailButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.emailButton.addTarget(controller, action: #selector(TeammateProfileVC.tapEmail), for: .touchUpInside)
-        
     }
     
     private static func populateSummary(cell: TeammateSummaryCell,

@@ -430,7 +430,7 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .dialog:
             return CGSize(width: collectionView.bounds.width, height: 120)
         case .me:
-            return CGSize(width: collectionView.bounds.width, height: 256)
+            return CGSize(width: collectionView.bounds.width, height: 215)
         case .voting:
             return CGSize(width: wdt, height: 360)
         case .dialogCompact:
