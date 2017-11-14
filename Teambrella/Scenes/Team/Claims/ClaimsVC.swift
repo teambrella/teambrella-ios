@@ -87,7 +87,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     
     func setupObjectView() {
         objectView.clipsToBounds = false
-        CellDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
+        ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
         objectImageView.layer.masksToBounds = true
         objectImageView.layer.cornerRadius = 4
         objectImageView.image = #imageLiteral(resourceName: "tesla")
