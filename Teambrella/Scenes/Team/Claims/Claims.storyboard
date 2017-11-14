@@ -32,11 +32,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="128"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6V-UU-Z0D">
-                                        <rect key="frame" x="67" y="0.0" width="240" height="128"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pso-K3-agA" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="36"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="20"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -48,16 +48,17 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vga-kX-rYF" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="119" y="72" width="240" height="40"/>
-                                        <color key="backgroundColor" red="0.40784313725490196" green="0.45490196078431372" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="162" y="72" width="197" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Iek-vg-Pat"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
-                                        <color key="tintColor" red="0.28627450980392155" green="0.34901960784313724" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasGradientBackground" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G0r-gu-lG2">
                                         <rect key="frame" x="18" y="0.0" width="136" height="98"/>
