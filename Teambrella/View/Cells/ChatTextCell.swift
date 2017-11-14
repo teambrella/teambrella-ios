@@ -58,7 +58,7 @@ class ChatTextCell: UICollectionViewCell {
     
     lazy var rightLabel: Label = {
         let label = Label()
-        label.font = UIFont.teambrella(size: 12)
+        label.font = UIFont.teambrella(size: 10)
         label.textColor = .bluishGray
         self.contentView.addSubview(label)
         return label
@@ -285,7 +285,7 @@ class ChatTextCell: UICollectionViewCell {
             rightLabel.text = rate
             rightLabel.sizeToFit()
             rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - 8,
-                                        y: rightLabel.frame.height / 2 + 8)
+                                        y: leftLabel.frame.minY + rightLabel.frame.height / 2)
             if leftLabel.frame.maxX > rightLabel.frame.minX - 8 {
                 leftLabel.frame.size.width -= leftLabel.frame.maxX - (rightLabel.frame.minX - 8)
             }
