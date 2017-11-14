@@ -33,6 +33,7 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var yourVotePercentValue: UILabel!
     @IBOutlet var yourVoteAmount: UILabel!
     @IBOutlet var yourVoteCurrency: Label!
+    @IBOutlet var yourVotePercentSign: UILabel!
     
     @IBOutlet var byProxyLabel: Label!
     @IBOutlet var proxyAvatar: RoundImageView!
@@ -47,6 +48,14 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
     
     @IBOutlet var submitButton: PlainButton!
     @IBOutlet var resetButton: UIButton!
+    
+    var isYourVoteHidden: Bool = false {
+        didSet {
+            yourVoteAmount.isHidden = isYourVoteHidden
+            yourVotePercentSign.isHidden = isYourVoteHidden
+            yourVoteCurrency.isHidden = isYourVoteHidden
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -285,6 +285,7 @@
                 <outlet property="yourVoteAmount" destination="wuP-CI-MHk" id="w7M-2W-6Dd"/>
                 <outlet property="yourVoteCurrency" destination="qFg-Z6-zvn" id="oIm-La-H3B"/>
                 <outlet property="yourVoteLabel" destination="khs-Zb-hW8" id="K61-0L-AjA"/>
+                <outlet property="yourVotePercentSign" destination="LeT-xq-UKS" id="FQj-BY-geu"/>
                 <outlet property="yourVotePercentValue" destination="UKd-qO-8F4" id="VNB-Te-fS1"/>
             </connections>
             <point key="canvasLocation" x="53.5" y="23"/>

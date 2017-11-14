@@ -119,6 +119,7 @@ final class ClaimVC: UIViewController, Routable {
         let cells = collectionView.visibleCells.flatMap { $0 as? ClaimVoteCell }
         guard let cell = cells.first else { return }
         
+        cell.isYourVoteHidden = false
         cell.yourVotePercentValue.text = String.truncatedNumber(cell.slider.value * 100)
         if let amount = dataSource.claim?.claimAmount {
             cell.yourVoteAmount.text = String.truncatedNumber(cell.slider.value * Float(amount))
