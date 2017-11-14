@@ -29,6 +29,12 @@ import XLPagerTabStrip
 class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     static var storyboardName: String = "Claims"
     
+    @IBOutlet var objectView: RadarView!
+    @IBOutlet var objectImageView: UIImageView!
+    @IBOutlet var objectTitle: TitleLabel!
+    @IBOutlet var objectSubtitle: StatusSubtitleLabel!
+    @IBOutlet var reportButton: BorderedButton!
+    
     @IBOutlet var collectionView: UICollectionView!
     var dataSource = ClaimsDataSource()
     
@@ -52,6 +58,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
             self.collectionView.reloadData()
             self.showEmptyIfNeeded()
         }
+        setupObjectView()
         if isPresentedInStack {
             addGradientNavBar()
             collectionView.contentInsetAdjustmentBehavior = .never
@@ -68,11 +75,25 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         dataSource.updateSilently()
     }
     
+    @IBAction func tapReportButton(_ sender: Any) {
+    }
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: view)
         }
+    }
+    
+    func setupObjectView() {
+        objectView.clipsToBounds = false
+        CellDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
+        objectImageView.layer.masksToBounds = true
+        objectImageView.layer.cornerRadius = 4
+        objectImageView.image = #imageLiteral(resourceName: "tesla")
+        objectTitle.text = "Ford-S Max"
+        objectSubtitle.text = "New York, NY, USA".uppercased()
+        reportButton.setTitle("Report a Claim", for: .normal)
     }
     
     func registerCells() {
