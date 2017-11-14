@@ -87,7 +87,9 @@ class ChatTextCell: UICollectionViewCell {
     }
     
     var cloudInsetX: CGFloat {
-        return Constant.avatarContainerInset + Constant.avatarWidth + Constant.avatarCloudInset
+        return isMy
+        ? Constant.avatarContainerInset + Constant.avatarCloudInset
+        : Constant.avatarContainerInset + Constant.avatarWidth + Constant.avatarCloudInset
     }
     
     var cloudBodyMinX: CGFloat {
@@ -211,7 +213,7 @@ class ChatTextCell: UICollectionViewCell {
         context.closePath()
         
         context.setFillColor(UIColor.veryLightBlue.cgColor)
-        context.setStrokeColor(UIColor.paleGray.cgColor)
+        context.setStrokeColor(#colorLiteral(red: 0.8039215686, green: 0.862745098, blue: 0.9529411765, alpha: 1).cgColor)
     }
     
      private func prepareTheirCloud(in context: CGContext) {
