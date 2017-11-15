@@ -55,8 +55,8 @@ struct JoinTeamCellBuilder {
     static func populate(cell: JoinTeamGreetingCell, with model: JoinTeamCellModel) {
         cell.avatar.image = #imageLiteral(resourceName: "teammateF")
         cell.greetingLabel.text = "Team.JoinTeamVC.GreetingCell.greeting".localized("Frank")
-        CellDecorator.roundedEdges(for: cell)
-        CellDecorator.shadow(for: cell)
+        ViewDecorator.roundedEdges(for: cell)
+        ViewDecorator.shadow(for: cell)
         let boldString = "Deductable Savers "
         let nonBoldString = "team are the best team for insuring olders cars. We’re just going to need a few details."
         let resultString = boldString + nonBoldString

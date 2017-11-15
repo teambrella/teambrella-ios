@@ -50,6 +50,8 @@ final class UniversalChatVC: UIViewController, Routable {
     private var shouldScrollToBottom: Bool = false
     private var shouldScrollToBottomASilently: Bool = false
     
+    var muteButton = UIButton()
+    
     private var showIsTyping: Bool = false {
         didSet {
             collectionView.reloadData()
@@ -127,12 +129,16 @@ final class UniversalChatVC: UIViewController, Routable {
     func showMuteInfo(muteType: MuteVC.NotificationsType) {
         let cloudView = CloudView()
         self.view.addSubview(cloudView)
+        let rightCloudOffset: CGFloat = 8
+        let peekX: CGFloat = muteButton.convert(self.muteButton.frame, to: nil).midX
+        cloudView.rightPeekOffset = self.view.bounds.maxX - peekX - rightCloudOffset
         // add constraints
         cloudView.translatesAutoresizingMaskIntoConstraints = false
-        cloudView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16).isActive = true
-        cloudView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        cloudView.leadingAnchor.constraint(greaterThanOrEqualTo: self.view.leadingAnchor, constant: 8).isActive = true
+        cloudView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,
+                                            constant: -rightCloudOffset).isActive = true
         cloudView.topAnchor.constraint(equalTo: self.view.topAnchor,
-                                       constant: 2 + collectionView.frame.minY).isActive = true
+                                       constant: 3 + collectionView.frame.minY).isActive = true
         cloudView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 0, alpha: 0)
         cloudView.alpha = 0
         if muteType == .subscribed {
@@ -338,7 +344,12 @@ final class UniversalChatVC: UIViewController, Routable {
     
     private func addMuteButton(muteType: MuteVC.NotificationsType) {
         let image = muteType == .subscribed ? #imageLiteral(resourceName: "iconBell1") : #imageLiteral(resourceName: "iconBellMuted1")
-        let barItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(tapMuteButton))
+        let button = UIButton()
+        button.setImage(image, for: .normal)
+        let barItem = UIBarButtonItem(customView: button)
+        button.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
+        self.muteButton = button
+        //let barItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(tapMuteButton))
         navigationItem.setRightBarButton(barItem, animated: true)
     }
     

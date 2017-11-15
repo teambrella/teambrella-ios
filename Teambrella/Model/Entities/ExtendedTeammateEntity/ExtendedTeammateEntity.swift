@@ -39,7 +39,7 @@ class ExtendedTeammateEntity {
     
     // MARK: Team Part
     
-    var coverageType: Int { return team["CoverageType"].intValue }
+    var coverageType: CoverageType { return CoverageType(rawValue: team["CoverageType"].intValue) ?? .other }
     var currency: String { return team["Currency"].stringValue }
     var teamAccessLevel: Int { return team["TeamAccessLevel"].intValue }
 

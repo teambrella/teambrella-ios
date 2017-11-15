@@ -71,7 +71,7 @@ struct EthereumProcessor {
         
         let publicKeySignature = reverseAndCalculateV(data: signature).hexString
         print("Public key signature: \(publicKeySignature)")
-        return publicKeySignature
+        return "0x" + publicKeySignature
     }
     
     init(key: Key) {
@@ -117,46 +117,65 @@ struct EthereumProcessor {
                     gasLimit: Int,
                     gasPrice: Int,
                     byteCode: String,
-                    arguments: Any...) throws -> GethTransaction {
-        let input = try AbiArguments.encodeToHex(arguments)
-        let dict = ["nonce": "0x\(nonce)",
-            "gasPrice": "0x\(gasPrice)",
-            "gas": "0x\(gasLimit)",
+                    arguments: [Any]) throws -> GethTransaction {
+        let input = try AbiArguments.encodeToHex(args: arguments)
+        let dict = ["nonce": "0x\(nonce.hexString)",
+            "gasPrice": "0x\(gasPrice.hexString)",
+            "gas": "0x\(gasLimit.hexString)",
             "value": "0x0",
-            "input": "0x\(input)",
+            "input": "0x\(byteCode + input)",
             "v": "0x29",
             "r": "0x29",
             "s": "0x29"
         ]
         let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
         let json = String(bytes: jsonData, encoding: .utf8) ?? ""
-        if let tx = GethTransaction(ref: json) {
+        if let tx = GethTransaction(fromJSON: json) {
             return tx
         } else {
             throw EthereumProcessorError.inconsistentTxData(json)
         }
     }
     
-    func depositTx(nonce: Int, gasLimit: Int, toAddress: String, gasPrice: Int, value: Decimal) {
-        let weis = value * 1_000_000_000_000_000_000
-        let dict = ["nonce": "0x\(nonce)",
-            "gasPrice": "0x\(gasPrice)",
-            "gasLimit": "0x\(gasLimit)",
-            "bytecode": "%"]
+    func depositTx(nonce: Int,
+                   gasLimit: Int,
+                   toAddress: String,
+                   gasPrice: Int,
+                   value: Decimal) throws -> GethTransaction {
+       let weis = value * 1_000_000_000_000_000_000
+        let weisHex = BInt((weis as NSDecimalNumber).stringValue).asString(withBase: 16)
+        
+        let dict = ["nonce": "0x\(nonce.hexString)",
+            "gasPrice": "0x\(gasPrice.hexString)",
+            "gasLimit": "0x\(gasLimit.hexString)",
+            "to": "0x\(toAddress)",
+            "value": weisHex,
+            "input": "0x",
+            "v": "0x29",
+            "r": "0x29",
+            "s": "0x29"]
+        let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
+        let json = String(bytes: jsonData, encoding: .utf8) ?? ""
+        guard let tx = GethTransaction(fromJSON: json) else { throw EthereumProcessorError.inconsistentTxData(json) }
+        
+        return  tx
     }
     
     func signTx(unsignedTx: GethTransaction, isTestNet: Bool) throws -> GethTransaction {
         guard let keyStore = ethKeyStore else { throw EthereumProcessorError.noKeyStore }
         guard let account = ethAccount else { throw EthereumProcessorError.noAccount }
         
-        return try keyStore.signTxPassphrase(account,
-                                             passphrase: secretString,
-                                             tx: unsignedTx,
-                                             chainID: chainID(isTestNet: isTestNet))
+        let chainID = self.chainID(isTestNet: isTestNet)
+        let passphrase = secretString
+        let signed = try keyStore.signTxPassphrase(account,
+                                                   passphrase: passphrase,
+                                                   tx: unsignedTx,
+                                                   chainID: chainID)
+        return signed 
     }
     
     func chainID(isTestNet: Bool) -> GethBigInt {
-        return GethBigInt(ref: isTestNet ? 3: 1)
+        return GethBigInt(isTestNet ? 3: 1)
     }
     
     /// returns hash made by Keccak algorithm

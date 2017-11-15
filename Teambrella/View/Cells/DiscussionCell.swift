@@ -35,7 +35,7 @@ class DiscussionCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.shadow(for: self)
+        ViewDecorator.shadow(for: self)
     }
     
     override func layoutMarginsDidChange() {

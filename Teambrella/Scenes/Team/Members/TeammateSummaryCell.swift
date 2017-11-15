@@ -21,7 +21,7 @@
 
 import UIKit
 
-class TeammateSummaryCell: UICollectionViewCell {
+class TeammateSummaryCell: UICollectionReusableView {
     @IBOutlet var avatarView: GalleryView!
     @IBOutlet var infoLabel: Label!
     @IBOutlet var leftNumberView: NumberView!
@@ -31,7 +31,7 @@ class TeammateSummaryCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.shadow(for: self)
+        //ViewDecorator.shadow(for: self)
         avatarView.layer.masksToBounds = true
     }
     

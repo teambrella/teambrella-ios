@@ -54,22 +54,12 @@ struct TeammateCellBuilder {
         cell.avatar.showAvatar(string: teammate.basic.avatar)
         cell.nameLabel.text = teammate.basic.name.entire
         cell.infoLabel.text = teammate.basic.city.uppercased()
-        guard let controller = controller else { return }
-        
-        cell.facebookButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.facebookButton.addTarget(controller, action: #selector(TeammateProfileVC.tapFacebook), for: .touchUpInside)
-        
-        cell.twitterButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.twitterButton.addTarget(controller, action: #selector(TeammateProfileVC.tapTwitter), for: .touchUpInside)
-        
-        cell.emailButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.emailButton.addTarget(controller, action: #selector(TeammateProfileVC.tapEmail), for: .touchUpInside)
-        
     }
     
     private static func populateSummary(cell: TeammateSummaryCell,
                                         with teammate: ExtendedTeammateEntity,
                                         controller: UIViewController) {
+        /*
         cell.title.text = teammate.basic.name.entire
         //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
         cell.avatarView.present(avatarString: teammate.basic.avatar)
@@ -95,6 +85,7 @@ struct TeammateCellBuilder {
             cell.infoLabel.isHidden = false
             cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
         }
+ */
     }
     
     private static func populateVote(cell: VotingRiskCell,
@@ -106,7 +97,7 @@ struct TeammateCellBuilder {
         }
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
-        cell.pearMiddleAvatar.avatar.showAvatar(string: teammate.basic.avatar)
+        cell.middleAvatar.showAvatar(string: teammate.basic.avatar)
         
         if let voting = teammate.voting {
             let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
@@ -132,7 +123,7 @@ struct TeammateCellBuilder {
             
             let timeString = DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
             cell.timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
-          
+            
         }
         
         cell.delegate = controller
@@ -152,11 +143,11 @@ struct TeammateCellBuilder {
     private static func populateObject(cell: TeammateObjectCell,
                                        with teammate: ExtendedTeammateEntity,
                                        controller: TeammateProfileVC) {
-        cell.titleLabel.text = "Team.TeammateCell.object".localized
+        cell.titleLabel.text = teammate.object.subType.uppercased() //"Team.TeammateCell.object".localized
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
-        cell.detailsLabel.text = teammate.object.subType
+        cell.detailsLabel.text = teammate.coverageType.localizedName
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
@@ -171,7 +162,7 @@ struct TeammateCellBuilder {
             right.titleLabel.text = "Team.TeammateCell.riskFactor".localized
             right.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.risk)
             let avg = String.truncatedNumber(teammate.basic.averageRisk)
-            right.badgeLabel.text = avg + "AVG"
+            right.badgeLabel.text = avg + " AVG"
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
         }
@@ -188,9 +179,9 @@ struct TeammateCellBuilder {
         cell.button.setTitle("Team.TeammateCell.buttonTitle_format_i".localized(teammate.object.claimCount),
                              for: .normal)
         
-        if let claimsCount = controller.dataSource.extendedTeammate?.object.claimCount {
-            cell.button.isHidden = claimsCount == 0
-        }
+        let hasClaims = teammate.object.claimCount > 0
+        cell.button.isEnabled = hasClaims ? true : false
+        
         cell.button.removeTarget(nil, action: nil, for: .allEvents)
         cell.button.addTarget(controller, action: #selector(TeammateProfileVC.showClaims), for: .touchUpInside)
     }
@@ -200,6 +191,13 @@ struct TeammateCellBuilder {
                                       controller: TeammateProfileVC) {
         let stats = teammate.stats
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
+        
+        cell.weightTitleLabel.text = "Team.TeammateCell.weight".localized
+        cell.weightValueLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
+        
+        cell.proxyRankTitleLabel.text = "Team.TeammateCell.proxyRank".localized
+        cell.proxyRankValueLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
+        /*
         if let left = cell.numberBar.left {
             left.amountLabel.textAlignment = .center
             left.titleLabel.text = "Team.TeammateCell.weight".localized
@@ -207,12 +205,13 @@ struct TeammateCellBuilder {
             left.currencyLabel.text = nil
         }
         if let right = cell.numberBar.right {
-            right.amountLabel.textAlignment = .right
+            right.amountLabel.textAlignment = .center
             right.titleLabel.text = "Team.TeammateCell.proxyRank".localized
             right.amountLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
             right.isBadgeVisible = false
             right.currencyLabel.text = nil
         }
+ */
         cell.decisionsLabel.text = "Team.TeammateCell.decisions".localized
         cell.decisionsBar.autoSet(value: stats.decisionFrequency)
         cell.decisionsBar.rightText = ValueToTextConverter.decisionsText(from: stats.decisionFrequency).uppercased()

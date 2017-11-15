@@ -51,7 +51,7 @@ struct ChatFragmentHeightCalculator {
                                             options: .usesLineFragmentOrigin,
                                             attributes: [NSAttributedStringKey.font: font],
                                             context: nil)
-        return ceil(boundingBox.height)
+        return ceil(boundingBox.height) + 8
     }
     
     func height(for imageRatio: CGFloat) -> CGFloat {

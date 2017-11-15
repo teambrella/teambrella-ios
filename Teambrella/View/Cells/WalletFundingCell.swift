@@ -33,8 +33,8 @@ class WalletFundingCell: UICollectionViewCell, XIBInitableCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.shadow(for: self, opacity: 0.1, radius: 5)
-        CellDecorator.roundedEdges(for: self)
+        ViewDecorator.shadow(for: self, opacity: 0.1, radius: 5)
+        ViewDecorator.roundedEdges(for: self)
         upperNumberView.alignmentType = .leading
         lowerNumberView.alignmentType = .leading
     }

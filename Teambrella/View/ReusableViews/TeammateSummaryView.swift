@@ -1,10 +1,5 @@
 //
-//  ClaimsOpenCell.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 02.06.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2017 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,19 +16,17 @@
 
 import UIKit
 
-class ClaimsOpenCell: UICollectionViewCell, ClaimsCell {
-    @IBOutlet var avatarView: UIImageView!
-    @IBOutlet var titleLabel: Label!
-    @IBOutlet var ownerAvatarView: RoundImageView!
-    @IBOutlet var ownerNameLabel: Label!
-    @IBOutlet var claimedTitleLabel: Label!
-    @IBOutlet var claimedAmountLabel: Label!
-    @IBOutlet var button: BorderedButton!
+class TeammateSummaryView: UICollectionReusableView, XIBInitableCell {
+    @IBOutlet var avatarView: GalleryView!
+    @IBOutlet var infoLabel: Label!
+    @IBOutlet var leftNumberView: NumberView!
+    @IBOutlet var rightNumberView: NumberView!
+    @IBOutlet var title: Label!
+    @IBOutlet var subtitle: Label!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        button.isUserInteractionEnabled = false
-        ViewDecorator.roundedEdges(for: self)
-        ViewDecorator.heavyShadow(for: self)
+         avatarView.layer.cornerRadius = avatarView.frame.width / 2
     }
+    
 }

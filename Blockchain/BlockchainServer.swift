@@ -32,9 +32,11 @@ public class BlockchainServer {
         #if TEAMBRELLA
         static let proto = "https://"
         static let site = "teambrella.com"
+        static let isTestNet = false
         #else
         static let proto = "http://"
         static let site = "surilla.com"
+        static let isTestNet = true
         #endif
         
         static var siteURL: String { return proto + site } // "https://surilla.com"
@@ -46,7 +48,7 @@ public class BlockchainServer {
         case failure(Error)
     }
     
-    var isTestnet: Bool = true
+    var isTestnet: Bool = Constant.isTestNet
     
     private(set)var timestamp: Int64 = 0 {
         didSet {

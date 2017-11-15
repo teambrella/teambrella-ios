@@ -33,8 +33,8 @@ class HomeApplicationDeniedCell: UICollectionViewCell, XIBInitableCell, Closable
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.roundedEdges(for: self)
-        CellDecorator.shadow(for: self)
-        CellDecorator.addCloseButton(for: self)
+        ViewDecorator.roundedEdges(for: self)
+        ViewDecorator.shadow(for: self)
+        ViewDecorator.addCloseButton(for: self)
     }
 }

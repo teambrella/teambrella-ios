@@ -36,10 +36,23 @@ struct DateProcessor {
                        hours: Int = 0,
                        days: Int = 0,
                        isColloquial: Bool = true) -> String {
-        let dateInRegion: DateInRegion = DateInRegion()
-        let date = dateInRegion - days.days - hours.hours - minutes.minutes - seconds.seconds
-        let (colloquial, relevant) = try! date.colloquialSinceNow()
-        return isColloquial ? colloquial : relevant ?? ""
+        let seconds = seconds + minutes * 60 + hours * 3600 + days * 3600 * 24
+        let fullDays = abs(seconds / 60 / 60 / 24)
+        let fullHours = abs(seconds / 3600)
+        let fullMinutes = abs(seconds / 60)
+        if fullDays > 0 {
+            return "Team.Members.days_format".localized(fullDays)
+        } else if fullHours > 0 {
+            return "Team.Members.hours_format".localized(fullHours)
+        } else if fullMinutes > 0 {
+            return "Team.Members.minutes_format".localized(fullMinutes)
+        } else {
+            // fall back to previous implementation
+            let dateInRegion: DateInRegion = DateInRegion()
+            let date = dateInRegion - days.days - hours.hours - minutes.minutes - seconds.seconds
+            let (colloquial, relevant) = try! date.colloquialSinceNow()
+            return isColloquial ? colloquial : relevant ?? ""
+        }
     }
     
     func stringIntervalOrDate(from date: Date) -> String {

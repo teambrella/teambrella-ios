@@ -32,13 +32,24 @@ class TeambrellaService {
         static let gasLimit = 1300000
     }
     
-    let queue = DispatchQueue(label: "com.teambrella.ethereumWorker.queue", qos: .background)
+    let dispatchQueue = DispatchQueue(label: "com.teambrella.teambrellaService.queue", qos: .background)
+    
+    lazy var queue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = "com.teambrella.teambrellaService.operationQueue"
+        // make this queue serial
+        queue.maxConcurrentOperationCount = 1
+        queue.underlyingQueue = dispatchQueue
+        return queue
+    }()
+    
     var hasNews: Bool = false
     
     let server = BlockchainServer()
     let contentProvider: TeambrellaContentProvider = TeambrellaContentProvider()
     
     lazy var processor: EthereumProcessor = { EthereumProcessor.standard }()
+    lazy var wallet: EthWallet = { EthWallet(isTestNet: server.isTestnet, processor: processor) }()
     
     weak var delegate: TeambrellaServiceDelegate?
     
@@ -49,18 +60,19 @@ class TeambrellaService {
     }
     
     func startUpdating() {
-        update()
+        sync()
     }
     
-    private func update() {
+    private func update(completion: @escaping (Bool) -> Void) {
         log("Teambrella service begins updates", type: .crypto)
-        let blockchain = BlockchainService(contentProvider: contentProvider, server: server)
+       // let blockchain = BlockchainService(contentProvider: contentProvider, server: server)
         updateData { success in
             if success {
-                blockchain.updateData()
+              //  blockchain.updateData()
                 self.contentProvider.save()
                 self.delegate?.teambrellaDidUpdate(service: self)
             }
+            completion(success)
         }
         
     }
@@ -76,7 +88,7 @@ class TeambrellaService {
                 self.serverUpdateToLocalDb { success in
                     if success {
                         
-//                        self.updateAddresses()
+                        //                        self.updateAddresses()
                         completion(true)
                     } else {
                         completion(false)
@@ -125,86 +137,208 @@ class TeambrellaService {
     }
     
     /*
-    private func updateAddresses() {
-        for teammate in contentProvider.teammates {
-            guard teammate.addresses.isEmpty == false else { continue }
-            
-            if teammate.addressCurrent == nil {
-                let filtered = teammate.addresses.filter { $0.status == UserAddressStatus.current }
-                if let curServerAddress = filtered.first {
-                    curServerAddress.status = .current
-                }
-            }
-        }
-    }
-    */
+     private func updateAddresses() {
+     for teammate in contentProvider.teammates {
+     guard teammate.addresses.isEmpty == false else { continue }
+     
+     if teammate.addressCurrent == nil {
+     let filtered = teammate.addresses.filter { $0.status == UserAddressStatus.current }
+     if let curServerAddress = filtered.first {
+     curServerAddress.status = .current
+     }
+     }
+     }
+     }
+     */
     
     //    private var observerToken: NSKeyValueObservation?
     
-//    init() {
-//        observerToken = service.server.observe(\.timestamp) { [weak self] object, change in
-//            self?.processor.key = object.key
-//        }
-//    }
+    //    init() {
+    //        observerToken = service.server.observe(\.timestamp) { [weak self] object, change in
+    //            self?.processor.key = object.key
+    //        }
+    //    }
     
     func sync() {
-        self.queue.async { [unowned self] in
-            var attemptsLeft = Constant.maxAttempts
-            while attemptsLeft > 0 && self.hasNews {
-                self.createWallets(gasLimit: Constant.gasLimit)
-                self.verifyIfWalletIsCreated()
-                self.depositWallet()
-                self.autoApproveTxs()
-                self.cosignApprovedTransactions()
-                self.masterSign()
-                self.publishApprovedAndCosignedTxs()
-                self.update()
-//                self.hasNews =
-                attemptsLeft -= 1
+        print("Teambrella service start sync")
+        queue.addOperation {
+            self.queue.isSuspended = true
+            self.createWallets(gasLimit: Constant.gasLimit, completion: { success in
+                print("wallet created \(success)")
+                self.queue.isSuspended = false
+            })
+        }
+        
+        queue.addOperation {
+            self.queue.isSuspended = true
+            self.verifyIfWalletIsCreated(gasLimit: Constant.gasLimit) { success in
+                print("wallet creation verified: \(success)")
+                self.queue.isSuspended = false
             }
+        }
+        
+        queue.addOperation {
+            self.depositWallet()
+        }
+        
+        queue.addOperation {
+            self.autoApproveTxs()
+        }
+        
+        queue.addOperation {
+            self.cosignApprovedTransactions()
+        }
+        
+        queue.addOperation {
+            self.masterSign()
+        }
+        
+        queue.addOperation {
+           self.publishApprovedAndCosignedTxs()
+        }
+        
+        queue.addOperation {
+            self.queue.isSuspended = true
+            self.update() { _ in
+                self.queue.isSuspended = false
+            }
+        }
+        
+        queue.addOperation {
+            print("Teambrella service executed all sync operations")
+        }
+        
+    }
+    
+    func createWallets(gasLimit: Int, completion: @escaping (Bool) -> Void) {
+        print("Teambrella service start \(#function)")
+        let myPublicKey = key.publicKey
+        let multisigsToCreate = contentProvider.multisigsToCreate(publicKey: myPublicKey)
+        guard !multisigsToCreate.isEmpty else {
+            completion(false)
+            return
+        }
+        
+       // let wallet = EthWallet(isTestNet: server.isTestnet, processor: processor)
+        wallet.checkMyNonce(success: { [weak self] nonce in
+            guard let `self` = self else { return }
+            var nonce = nonce
+            
+            let group = DispatchGroup()
+            var success = false
+            for multisig in multisigsToCreate {
+                if let sameMultisig = self.myTeamMultisigIfAny(publicKey: myPublicKey,
+                                                               myTeammateID: multisig.teammate?.id ?? 0,
+                                                               multisigs: multisigsToCreate) {
+                    // todo: move "cosigner list", and send to the server the move tx (not creation tx).
+                    ////boolean needServerUpdate = (sameTeammateMultisig.address != null);
+                    ////operations.add(mTeambrellaClient.setMutisigAddressTxAndNeedsServerUpdate(m,
+                    //                                                      sameTeammateMultisig.address,
+                    //                                                      sameTeammateMultisig.creationTx,
+                    //                                                      needServerUpdate));
+                } else {
+                    let gasPrice = self.wallet.contractGasPrice
+                    group.enter()
+                    self.wallet.createOneWallet(myNonce: nonce,
+                                           multisig: multisig,
+                                           gaslLimit: gasLimit,
+                                           gasPrice: gasPrice,
+                                           completion: { txHex in
+                                            // There could be 2 my pending mutisigs (Current and Next) for the same
+                                            // team. So we remember the first creation tx and don't create 2 contracts
+                                            // for the same team.
+                                            multisig.creationTx = txHex
+                                            multisig.needServerUpdate = false
+                                            self.contentProvider.save()
+                                            /*
+                                            self.contentProvider.createUnconfirmed(id: multisig.id,
+                                                                                   tx: txHex,
+                                                                                   gasPrice: gasPrice,
+                                                                                   nonce: nonce,
+                                                                                   date: Date())
+ */
+                                            nonce += 1
+                                            success = true
+                                            group.leave()
+                    }, failure: { error in
+                        completion(false)
+                    })
+                }
+                group.wait()
+            }
+            completion(success)
+        }) { error in
+            completion(false)
         }
     }
     
-    @discardableResult
-    func createWallets(gasLimit: Int) -> Bool {
-        let myPublicKey = key.publicKey
-        let multisigsToCreate = contentProvider.multisigsToCreate(publicKey: myPublicKey)
-        guard !multisigsToCreate.isEmpty else { return false }
-        
-        let wallet = EthWallet(isTestNet: false, processor: processor)
-        
-        //processor.
-        // WIP!
-        return false
-    }
-    
-    func verifyIfWalletIsCreated() {
-        
+    func verifyIfWalletIsCreated(gasLimit: Int, completion: (Bool) -> Void) {
+        print("Teambrella service start \(#function)")
+        let publicKey = key.publicKey
+        let creationTxs = contentProvider.multisigsInCreation(publicKey: publicKey)
+        var success = !creationTxs.isEmpty
+        let group = DispatchGroup()
+        for multisig in creationTxs {
+            group.enter()
+            wallet.validateCreationTx(multisig: multisig, gasLimit: gasLimit, success: { [weak self] address in
+                multisig.address = address
+                multisig.needServerUpdate = true
+                self?.contentProvider.save()
+                group.leave()
+            }, failure: { error in
+                success = false
+                group.leave()
+            })
+            group.wait()
+        }
+        completion(success)
     }
     
     func depositWallet() {
+        print("Teambrella service start \(#function)")
+        let publicKey = key.publicKey
+        let myCurrentMultisigs = contentProvider.currentMultisigsWithAddress(publicKey: publicKey)
+        if let multisig = myCurrentMultisigs.first {
+            wallet.deposit(multisig: multisig) { success in
+                
+            }
+        }
         
     }
     
     func autoApproveTxs() {
+        print("Teambrella service start \(#function)")
         
     }
     
     func cosignApprovedTransactions() {
+        print("Teambrella service start \(#function)")
         
     }
     
     func masterSign() {
+        print("Teambrella service start \(#function)")
         
     }
     
     func publishApprovedAndCosignedTxs() {
+        print("Teambrella service start \(#function)")
         
     }
     
-//    func update() -> Bool {
-//        return false
-//    }
+    // MARK: Private
+    
+    private func myTeamMultisigIfAny(publicKey: String, myTeammateID: Int, multisigs: [Multisig]) -> Multisig? {
+        for multisig in multisigs where multisig.teammate?.id == myTeammateID && multisig.creationTx != nil {
+            return multisig
+        }
+        let sameTeamMultisigs = contentProvider.multisigsWithAddress(publicKey: publicKey, teammateID: myTeammateID)
+        return sameTeamMultisigs.first
+    }
+    
+    //    func update() -> Bool {
+    //        return false
+    //    }
     
 }
 

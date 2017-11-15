@@ -16,16 +16,17 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 class EtherAPI {
     enum EtherAPIError: Error {
         case malformedURL
         case corruptedData
-        case unknown
+        case noData
         case etherscanError(Int, String)
     }
     
-    typealias successClosure = (Data) -> Void
+    typealias successClosure = (JSON) -> Void
     typealias failureClosure = (Error) -> Void
     
     let server: String
@@ -34,10 +35,14 @@ class EtherAPI {
         self.server = server ?? "https://api.etherscan.io/"
     }
     
+    deinit {
+        print("EtherAPI dies")
+    }
+    
     lazy var session = { URLSession.shared }()
     
     // https://api.etherscan.io/api?module=proxy&action=eth_sendRawTransaction&hex=0xf904808000831cfde080&apikey=YourApiKeyToken
-    func pushTx(hex: String) -> Future<String> {
+    func pushTx(hex: String, success: @escaping (String) -> Void, failure: @escaping failureClosure) {
         /*
          {
          "jsonrpc": "2.0",
@@ -49,118 +54,121 @@ class EtherAPI {
          "id": 1
          {
          "jsonrpc": "2.0",
-         "result": "0x918a3313e6c1c5a0068b5234951c916aa64a8074fdbce0fecbb5c9797f7332f6",
+         "result": "0x918a3313e6c1c5a0068b5234951c916aa64a8074fdbce0feOocbb5c9797f7332f6",
          "id": 1
          }
          */
-        let promise = Promise<String>()
-        sendPostRequest(urlString: "api?module=proxy&action=eth_sendRawTransaction",
+        
+        sendPostRequest(urlString: "api",
+                        parameters:[
+                            "module": "proxy",
+                            "action": "eth_sendRawTransaction"
+            ],
                         body: ["hex": hex],
-                        success: { data in
-                            let json = JSON(data)
+                        success: { json in
                             if let result = json["result"].string {
-                                promise.resolve(with: result)
+                                success(result)
                             } else {
-                                promise.reject(with: EtherAPIError.etherscanError(json["error"]["code"].intValue,
-                                                                                  json["error"]["message"].stringValue))
+                                failure(EtherAPIError.etherscanError(json["error"]["code"].intValue,
+                                                                     json["error"]["message"].stringValue))
                             }
         }) { error in
-            promise.reject(with: error)
+            failure(error)
         }
-        return promise
     }
     
-    func checkNonce(address: String) -> Future<Int> {
-        let promise = Promise<Int>()
-        sendGetRequest(urlString: "api?module=proxy&action=eth_getTransactionCount",
-                       parameters: ["address": address],
-                       success: { data in
-                        if let int = JSON(data).int {
-                        promise.resolve(with: int)
-                        } else {
-                            promise.reject(with: EtherAPIError.corruptedData)
-                        }
+    func checkNonce(address: String, success: @escaping successClosure, failure: @escaping failureClosure) {
+        sendGetRequest(urlString: "api",
+                       parameters: [
+                        "module": "proxy",
+                        "action": "eth_getTransactionCount",
+                        "address": address],
+                       success: { json in
+                        success(json)
         }) { error in
-            promise.reject(with: error)
+            failure(error)
         }
-        return promise
     }
     
-    func checkTx(hash: String) -> Future<JSON> {
-        let promise = Promise<JSON>()
-        sendGetRequest(urlString: "api?module=proxy&action=eth_getTransactionReceipt",
-                       parameters: ["txHash": hash],
-                       success: { data in
-                        let json = JSON(data)
-                        promise.resolve(with: json)
+    func checkTx(hash: String, success: @escaping successClosure, failure: @escaping failureClosure) {
+        sendGetRequest(urlString: "api",
+                       parameters: [
+                        "module": "proxy",
+                        "action": "eth_getTransactionReceipt",
+                        "txHash": hash],
+                       success: { json in
+                        success(json)
         }) { error in
-            promise.reject(with: error)
+            failure(error)
         }
-        return promise
     }
     
     func readContractString(to: String, callDataString: String) -> Future<String> {
         let promise = Promise<String>()
-        sendGetRequest(urlString: "api?module=proxy&action=eth_call",
-                       parameters: ["to": to, "data": callDataString],
-                       success: { data in
-                        let string = String(data: data, encoding: .utf8)
-                        promise.resolve(with: string ?? "")
+        sendGetRequest(urlString: "api",
+                       parameters: [
+                        "module": "proxy",
+                        "action": "eth_call",
+                        "to": to,
+                        "data": callDataString],
+                       success: { json in
+                        promise.resolve(with: json.string ?? "")
         }) { error in
             promise.reject(with: error)
         }
         return promise
     }
     
-    func checkBalance(address: String) -> Future<Decimal> {
-        let promise = Promise<Decimal>()
-        sendGetRequest(urlString: "api?module=account&action=balance",
-                       parameters: ["address": address],
-                       success: { data in
-                        guard let string = String(data: data, encoding: .utf8),
+    func checkBalance(address: String, success: @escaping (Decimal) -> Void, failure: @escaping failureClosure) {
+        sendGetRequest(urlString: "api",
+                       parameters: [
+                        "module": "account",
+                        "action": "balance",
+                        "address": address],
+                       success: { json in
+                        guard let string = json.string,
                             let balance = Decimal(string: string) else {
-                                promise.reject(with: EtherAPIError.corruptedData)
+                                failure(EtherAPIError.corruptedData)
                                 return
                         }
                         
-                        promise.resolve(with: balance)
+                        success(balance)
         }) { error in
-            promise.reject(with: error)
+            failure(error)
         }
-        return promise
     }
     
     // MARK: Private
     
     private func sendPostRequest(urlString: String,
-                                 body: [String: Any],
+                                 parameters: [String: String],
+                                 body: [String: String],
                                  success: @escaping successClosure,
                                  failure: @escaping failureClosure) {
-        guard let url = URL(string: server + urlString) else {
+        guard let url = urlWith(address: server + urlString, parameters: parameters) else {
             failure(EtherAPIError.malformedURL)
             return
         }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
-        sendRequest(request, success: success, failure: failure)
+        Alamofire.request(url, method: .post, parameters: body, encoding: URLEncoding.default).responseJSON { response in
+            switch response.result {
+            case .success:
+                if let value = response.value {
+                    let json = JSON(value)
+                    print("raw: \(json)")
+                    success(json)
+                }
+            case .failure(let error):
+                failure(error)
+            }
+        }
     }
     
     private func sendGetRequest(urlString: String,
                                 parameters: [String: String],
                                 success: @escaping successClosure,
                                 failure: @escaping failureClosure) {
-        let urlComponents = NSURLComponents(string: server + urlString)
-        
-        var queryItems: [URLQueryItem] = []
-        for (key, value) in parameters {
-            queryItems.append(URLQueryItem(name: key, value: value))
-        }
-        if !queryItems.isEmpty {
-            urlComponents?.queryItems = queryItems
-        }
-        guard let url = urlComponents?.url else {
+        guard let url = urlWith(address: server + urlString, parameters: parameters) else {
             failure(EtherAPIError.malformedURL)
             return
         }
@@ -175,13 +183,33 @@ class EtherAPI {
                              failure: @escaping failureClosure) {
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data else {
-                failure(error ?? EtherAPIError.unknown)
+                failure(error ?? EtherAPIError.noData)
                 return
             }
             
-            success(data)
+            let json = JSON(data)
+            if json["result"].exists() {
+                success(json["result"])
+            } else {
+                failure(EtherAPIError.etherscanError(json["error"]["code"].intValue,
+                                                     json["error"]["message"].stringValue))
+            }
         }
         task.resume()
+    }
+    
+    private func urlWith(address: String, parameters: [String: String]) -> URL? {
+        let urlComponents = NSURLComponents(string: address)
+        
+        var queryItems: [URLQueryItem] = []
+        for (key, value) in parameters {
+            queryItems.append(URLQueryItem(name: key, value: value))
+        }
+        if !queryItems.isEmpty {
+            urlComponents?.queryItems = queryItems
+        }
+        
+        return urlComponents?.url
     }
     
 }

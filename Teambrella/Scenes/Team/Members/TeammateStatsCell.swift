@@ -23,7 +23,12 @@ import UIKit
 
 class TeammateStatsCell: UICollectionViewCell {
     @IBOutlet var headerLabel: BlockHeaderLabel!
-    @IBOutlet var numberBar: NumberBar!
+    
+    @IBOutlet var weightTitleLabel: Label!
+    @IBOutlet var weightValueLabel: Label!
+    
+    @IBOutlet var proxyRankTitleLabel: Label!
+    @IBOutlet var proxyRankValueLabel: Label!
     
     @IBOutlet var decisionsLabel: Label!
     @IBOutlet var decisionsBar: ScaleBar!
@@ -38,9 +43,8 @@ class TeammateStatsCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.shadow(for: self)
-        CellDecorator.roundedEdges(for: self)
-        numberBar.left?.badgeLabel.isHidden = true
+        ViewDecorator.shadow(for: self)
+        ViewDecorator.roundedEdges(for: self)
     }
     
     override func layoutMarginsDidChange() {

@@ -49,9 +49,14 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     
     @IBOutlet var collectionView: UICollectionView!
     
-    @IBOutlet var pearLeftAvatar: LabeledRoundImageView!
-    @IBOutlet var pearMiddleAvatar: LabeledRoundImageView!
-    @IBOutlet var pearRightAvatar: LabeledRoundImageView!
+    @IBOutlet var leftAvatar: RoundImageView!
+    @IBOutlet var leftAvatarLabel: UILabel!
+    
+    @IBOutlet var middleAvatar: RoundImageView!
+    @IBOutlet var middleAvatarLabel: UILabel!
+    
+    @IBOutlet var rightAvatar: RoundImageView!
+    @IBOutlet var rightAvatarLabel: UILabel!
     
     @IBOutlet var othersButton: UIButton!
     
@@ -94,15 +99,23 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.layer.cornerRadius = 4
-        collectionView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9647058824, blue: 1, alpha: 1).cgColor
+        collectionView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1).cgColor
         collectionView.layer.borderWidth = 1
         
         slashView.layer.cornerRadius = 4
-        slashView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9647058824, blue: 1, alpha: 1).cgColor
+        slashView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1).cgColor
         slashView.layer.borderWidth = 1
         
-        pearLeftAvatar.isHidden = true
-        pearRightAvatar.isHidden = true
+        leftAvatar.isHidden = true
+        leftAvatarLabel.isHidden = true
+        leftAvatarLabel.layer.borderColor = UIColor.white.cgColor
+        leftAvatarLabel.layer.borderWidth = 1
+        rightAvatar.isHidden = true
+        rightAvatarLabel.isHidden = true
+        rightAvatarLabel.layer.borderColor = UIColor.white.cgColor
+        rightAvatarLabel.layer.borderWidth = 1
+        middleAvatarLabel.layer.borderColor = UIColor.white.cgColor
+        middleAvatarLabel.layer.borderWidth = 1
       
         titleLabel.text = "Team.VotingRiskVC.headerLabel".localized
         teamVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.left".localized
@@ -120,6 +133,8 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
         }
+        
+        ViewDecorator.shadow(for: self)
     }
     
     override func layoutSubviews() {
@@ -217,8 +232,11 @@ extension VotingRiskCell: UICollectionViewDelegate {
         if let cell = cell as? VotingChartCell {
             let multiplier: CGFloat = CGFloat(model.heightCoefficient)
             //cell.heightConstraint = cell.heightConstraint.setMultiplier(multiplier: multiplier)
-            cell.columnHeightConstraint.constant = (cell.bounds.height - cell.topLabel.frame.height)
-                * multiplier + cell.topLabel.frame.height / 2
+            let topInset: CGFloat = 8
+            let bottomInset: CGFloat = 8
+            let columnMaxHeight = cell.bounds.height - topInset - bottomInset - cell.topLabel.frame.height
+            let columnHeight = columnMaxHeight * multiplier
+            cell.columnHeightConstraint.constant = bottomInset + columnHeight + cell.topLabel.frame.height / 2
             cell.topLabel.text = String.formattedNumber(model.riskCoefficient)
             cell.centerLabel.text = model.isTeamAverage ? "TEAM\nAVG" : ""
             cell.topLabel.clipsToBounds = true

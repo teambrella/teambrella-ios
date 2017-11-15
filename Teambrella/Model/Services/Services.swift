@@ -33,7 +33,7 @@ class ServicesHandler {
     /// internet connection monitoring
     let reachability: ReachabilityService = ReachabilityService()
     
-    /// server interoperability
+    /// server interoperability (should be removed from here when all requests will go through DAO)
     lazy var server = ServerService()
     
     /// data access object

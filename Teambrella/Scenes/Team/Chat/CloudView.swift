@@ -20,11 +20,12 @@ import UIKit
 class CloudView: UIView {
     struct Constant {
         static let tailWidth: CGFloat = 10
-        static let tailHeight: CGFloat = 7
+        static let tailHeight: CGFloat = 5
         static let cloudCornerRadius: CGFloat = 5
     }
 
-    @IBInspectable var rightTailOffset: CGFloat = 14
+    var rightPeekOffset: CGFloat = 0
+    //@IBInspectable var rightTailOffset: CGFloat = 10
     @IBInspectable var fillColor: UIColor = UIColor.perrywinkle
     @IBInspectable var strokeColor: UIColor = UIColor.perrywinkle
     @IBInspectable var textColor: UIColor = .white
@@ -46,12 +47,17 @@ class CloudView: UIView {
         label.textColor = textColor
         self.addSubview(label)
         
+        label.leftInset = 12
+        label.rightInset = 12
+        label.topInset = 6
+        label.bottomInset = 6
+        
         // add constraints
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
-        label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
+        label.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        label.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         label.topAnchor.constraint(equalTo: self.topAnchor, constant: Constant.tailHeight).isActive = true
-        label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2).isActive = true
+        label.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         return label
     }()
     
@@ -74,7 +80,7 @@ class CloudView: UIView {
         controlP = CGPoint(x: titleLabel.frame.minX, y: titleLabel.frame.minY)
         context.addQuadCurve(to: newPoint, control: controlP)
         
-        newPoint.x = titleLabel.frame.maxX - Constant.tailWidth - rightTailOffset
+        newPoint.x = titleLabel.frame.maxX - rightPeekOffset - Constant.tailWidth / 2
         context.addLine(to: newPoint)
 
         newPoint.x += Constant.tailWidth / 2

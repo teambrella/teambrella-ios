@@ -23,35 +23,6 @@ import Foundation
 import SwiftyJSON
 
 struct HomeScreenModel {
-    enum CoverageType: Int {
-        case other = 0
-        case carCollisionDeductible = 100
-        case carCollision = 101
-        case carComprehensive = 102
-        case carCollisionAndComprehensive = 104
-        case thirdParty = 103
-        case drone = 140
-        case mobile = 200
-        case homeAppliances = 220
-        case pet = 240
-        case unemployment = 260
-        case healthDental = 280
-        case healthOther = 290
-        case businessBees = 400
-        case businessCrime = 440
-        case businessLiability = 460
-        
-        var localizedName: String {
-            var key = ""
-            switch self {
-            case .carCollisionDeductible: key = "Home.CoverageType.carCollisionDeductible"
-            case .pet: key = "Home.CoverageType.pet"
-            default:
-                break
-            }
-            return key.localized
-        }
-    }
     
     struct Card {
         let json: JSON

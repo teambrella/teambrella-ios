@@ -23,8 +23,20 @@ import UIKit
 
 @IBDesignable
 class BorderedButton: UIButton {
+  
+    override var isEnabled: Bool {
+        didSet {
+            layer.borderColor = self.titleColor(for: state)?.cgColor
+        }
+    }
     
     @IBInspectable var borderColor: UIColor = .robinEggBlue {
+        didSet {
+            setup()
+        }
+    }
+    
+    @IBInspectable var hasGradientBackground: Bool = false {
         didSet {
             setup()
         }
@@ -45,5 +57,13 @@ class BorderedButton: UIButton {
         layer.cornerRadius = 5
         layer.borderWidth = 1
         layer.borderColor = borderColor.cgColor
+        if hasGradientBackground {
+            let gradientView = GradientView(frame: self.bounds)
+            gradientView.topColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
+            gradientView.bottomColor = #colorLiteral(red: 0.4078431373, green: 0.4549019608, blue: 0.9058823529, alpha: 1)
+            layer.borderColor = #colorLiteral(red: 0.2862745098, green: 0.3490196078, blue: 0.9019607843, alpha: 1)
+            gradientView.isUserInteractionEnabled = false
+            insertSubview(gradientView, at: 0)
+        }
     }
 }

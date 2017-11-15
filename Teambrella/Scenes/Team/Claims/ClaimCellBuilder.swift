@@ -99,8 +99,8 @@ struct ClaimCellBuilder {
                 cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
             }
         } else {
-            cell.yourVotePercentValue.text = "..."
-            cell.yourVoteAmount.text = "..."
+            cell.yourVotePercentValue.text = ". . ."
+            cell.isYourVoteHidden = true
             cell.slider.setValue(cell.slider.minimumValue, animated: true)
         }
         cell.resetButton.isHidden = claim.myVote == nil

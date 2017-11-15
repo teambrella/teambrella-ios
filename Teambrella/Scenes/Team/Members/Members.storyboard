@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -105,7 +105,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTED (2.1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMa-g1-Uv2" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="37" width="62.5" height="15"/>
+                                                    <rect key="frame" x="72" y="37" width="56.5" height="11"/>
                                                     <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -465,7 +465,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmI-Jc-cL8" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="-200" width="373" height="344"/>
+                                                    <rect key="frame" x="0.0" y="-200" width="373" height="352"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="segments">
@@ -475,7 +475,7 @@
                                                             <real key="value" value="136"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                                            <color key="value" red="0.89411764705882346" green="0.90196078431372551" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="value" red="0.81568627450980391" green="0.82352941176470584" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                                                             <real key="value" value="0.0"/>
@@ -498,7 +498,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsF-Jx-hUP" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="86" width="373" height="58"/>
+                                                    <rect key="frame" x="0.0" y="94" width="373" height="58"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -510,7 +510,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlw-4G-kxZ" customClass="GalleryView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="142" y="42" width="88" height="88"/>
+                                                    <rect key="frame" x="142" y="50" width="88" height="88"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="dlw-4G-kxZ" secondAttribute="height" multiplier="1:1" id="Ig3-CF-RJx"/>
@@ -518,7 +518,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KqH-Lf-3HG" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="66" width="113" height="40"/>
+                                                    <rect key="frame" x="24" y="74" width="105" height="40"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="tiy-GS-LVF"/>
@@ -529,7 +529,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZr-aY-aTt" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="248" y="66" width="113" height="40"/>
+                                                    <rect key="frame" x="248" y="74" width="105" height="40"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="meD-uT-IM0"/>
@@ -540,7 +540,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are proxy voter for Jimmy Wong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxQ-2I-53K" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="84.5" y="17" width="205.5" height="16"/>
+                                                    <rect key="frame" x="94.5" y="25" width="185.5" height="16"/>
                                                     <color key="backgroundColor" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="6V4-jV-Qqh"/>
@@ -567,13 +567,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJt-7g-pSD" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="144" width="373" height="21"/>
+                                                    <rect key="frame" x="8" y="152" width="357" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8Z-zx-s9L" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="165" width="373" height="21"/>
+                                                    <rect key="frame" x="8" y="173" width="357" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -757,27 +757,99 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efK-pn-UrS" customClass="NumberBar" customModule="Surilla" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efK-pn-UrS">
                                                     <rect key="frame" x="20" y="63" width="309" height="64"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uxc-xy-0ps">
+                                                            <rect key="frame" x="0.0" y="0.0" width="154" height="64"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaP-Ng-23v" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                                                    <rect key="frame" x="55.5" y="6" width="42" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9E-aD-phF" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
+                                                                    <rect key="frame" x="55.5" y="26.5" width="42" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="PaP-Ng-23v" firstAttribute="centerX" secondItem="Uxc-xy-0ps" secondAttribute="centerX" id="Rcw-Vr-u0x"/>
+                                                                <constraint firstItem="H9E-aD-phF" firstAttribute="top" secondItem="PaP-Ng-23v" secondAttribute="bottom" id="WTx-ex-ZmR"/>
+                                                                <constraint firstItem="PaP-Ng-23v" firstAttribute="top" secondItem="Uxc-xy-0ps" secondAttribute="top" constant="6" id="hYQ-VF-38g"/>
+                                                                <constraint firstItem="H9E-aD-phF" firstAttribute="centerX" secondItem="Uxc-xy-0ps" secondAttribute="centerX" id="r17-P1-VNw"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Wb-Ao-QYi">
+                                                            <rect key="frame" x="154" y="0.0" width="1" height="48"/>
+                                                            <color key="backgroundColor" red="0.90980392156862744" green="0.92941176470588238" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="1" id="b5U-Ve-7RO"/>
+                                                                <constraint firstAttribute="height" constant="48" id="zFj-pN-Iqh"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xE-MB-abu">
+                                                            <rect key="frame" x="155" y="0.0" width="154" height="64"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qrv-1z-cux" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                                                    <rect key="frame" x="56" y="6" width="42" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jM-jq-mew" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
+                                                                    <rect key="frame" x="56" y="26.5" width="42" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="9jM-jq-mew" firstAttribute="top" secondItem="Qrv-1z-cux" secondAttribute="bottom" id="0ae-Rf-5iw"/>
+                                                                <constraint firstItem="Qrv-1z-cux" firstAttribute="centerX" secondItem="0xE-MB-abu" secondAttribute="centerX" id="A6K-Kc-XD1"/>
+                                                                <constraint firstItem="9jM-jq-mew" firstAttribute="centerX" secondItem="0xE-MB-abu" secondAttribute="centerX" id="BoT-mF-Swi"/>
+                                                                <constraint firstItem="Qrv-1z-cux" firstAttribute="top" secondItem="0xE-MB-abu" secondAttribute="top" constant="6" id="vz7-Z3-jYB"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDE-lS-nqm">
+                                                            <rect key="frame" x="0.0" y="63" width="309" height="1"/>
+                                                            <color key="backgroundColor" red="0.90980392156862744" green="0.92941176470588238" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1" id="mO9-bo-ZIC"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="dDE-lS-nqm" secondAttribute="trailing" id="5z0-pL-Hf6"/>
+                                                        <constraint firstItem="Uxc-xy-0ps" firstAttribute="top" secondItem="efK-pn-UrS" secondAttribute="top" id="6UZ-dF-dU7"/>
+                                                        <constraint firstItem="Uxc-xy-0ps" firstAttribute="leading" secondItem="efK-pn-UrS" secondAttribute="leading" id="7WH-BA-ZHb"/>
+                                                        <constraint firstItem="9Wb-Ao-QYi" firstAttribute="centerX" secondItem="efK-pn-UrS" secondAttribute="centerX" id="A2F-Zh-fi5"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Uxc-xy-0ps" secondAttribute="bottom" id="DEP-Py-2ib"/>
+                                                        <constraint firstAttribute="bottom" secondItem="dDE-lS-nqm" secondAttribute="bottom" id="Kfe-rj-oEg"/>
+                                                        <constraint firstItem="9Wb-Ao-QYi" firstAttribute="top" secondItem="efK-pn-UrS" secondAttribute="top" id="U9n-nA-zYy"/>
+                                                        <constraint firstAttribute="bottom" secondItem="0xE-MB-abu" secondAttribute="bottom" id="iHt-q3-dJk"/>
+                                                        <constraint firstItem="9Wb-Ao-QYi" firstAttribute="leading" secondItem="Uxc-xy-0ps" secondAttribute="trailing" id="ixt-hl-R6S"/>
+                                                        <constraint firstItem="dDE-lS-nqm" firstAttribute="leading" secondItem="efK-pn-UrS" secondAttribute="leading" id="oQg-sV-0OG"/>
                                                         <constraint firstAttribute="height" constant="64" id="pXK-ra-Rl2"/>
+                                                        <constraint firstItem="0xE-MB-abu" firstAttribute="top" secondItem="efK-pn-UrS" secondAttribute="top" id="tfS-0h-f8l"/>
+                                                        <constraint firstAttribute="trailing" secondItem="0xE-MB-abu" secondAttribute="trailing" id="wn0-K5-i0v"/>
+                                                        <constraint firstItem="0xE-MB-abu" firstAttribute="leading" secondItem="9Wb-Ao-QYi" secondAttribute="trailing" id="yTC-Tp-stW"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="count">
-                                                            <integer key="value" value="2"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBottomLineVisible" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rLx-ry-aPq">
-                                                    <rect key="frame" x="20" y="127" width="309" height="177"/>
+                                                    <rect key="frame" x="20" y="135" width="309" height="155"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpZ-yG-4ju">
-                                                            <rect key="frame" x="0.0" y="0.0" width="309" height="59"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="309" height="51.5"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ik2-II-9DA" customClass="ScaleBar" customModule="Surilla" customModuleProvider="target">
-                                                                    <rect key="frame" x="181" y="19" width="128" height="22"/>
+                                                                    <rect key="frame" x="181" y="15.5" width="128" height="22"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="Pbf-RU-l5C"/>
@@ -795,7 +867,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decisions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBi-1a-EOH" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="19.5" width="74.5" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="16" width="74.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -811,10 +883,10 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UqW-mT-ypj">
-                                                            <rect key="frame" x="0.0" y="59" width="309" height="59"/>
+                                                            <rect key="frame" x="0.0" y="51.5" width="309" height="52"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-C1-32U" customClass="ScaleBar" customModule="Surilla" customModuleProvider="target">
-                                                                    <rect key="frame" x="181" y="19" width="128" height="22"/>
+                                                                    <rect key="frame" x="181" y="15.5" width="128" height="22"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="128" id="Zjj-Hf-jKg"/>
@@ -832,7 +904,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discussions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCy-lF-Ef5" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="19.5" width="91.5" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="16" width="91.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -848,10 +920,10 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2m2-pw-1ay">
-                                                            <rect key="frame" x="0.0" y="118" width="309" height="59"/>
+                                                            <rect key="frame" x="0.0" y="103.5" width="309" height="51.5"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGi-HY-tI0" customClass="ScaleBar" customModule="Surilla" customModuleProvider="target">
-                                                                    <rect key="frame" x="181" y="19" width="128" height="22"/>
+                                                                    <rect key="frame" x="181" y="15" width="128" height="22"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="AVA-Hu-YPt"/>
@@ -866,7 +938,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voting Frequency" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvP-Xn-0nI" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="19.5" width="134.5" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="15.5" width="134.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -883,11 +955,11 @@
                                                         </view>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="177" id="qCA-Hx-5Zi"/>
+                                                        <constraint firstAttribute="height" constant="155" id="qCA-Hx-5Zi"/>
                                                     </constraints>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57V-LE-jol" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="304" width="309" height="40"/>
+                                                    <rect key="frame" x="20" y="312" width="309" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="BXS-5h-N9n"/>
                                                     </constraints>
@@ -913,12 +985,12 @@
                                             <constraint firstItem="DHW-82-MXd" firstAttribute="top" secondItem="1e9-iD-FHA" secondAttribute="top" id="Dg3-x0-2K0"/>
                                             <constraint firstItem="efK-pn-UrS" firstAttribute="leading" secondItem="1e9-iD-FHA" secondAttribute="leading" constant="20" id="Dwr-OR-dhn"/>
                                             <constraint firstAttribute="trailing" secondItem="YI2-Mm-ma6" secondAttribute="trailing" id="Hba-rX-CIt"/>
-                                            <constraint firstAttribute="bottom" secondItem="57V-LE-jol" secondAttribute="bottom" constant="24" id="M6G-jf-MPk"/>
+                                            <constraint firstAttribute="bottom" secondItem="57V-LE-jol" secondAttribute="bottom" constant="16" id="M6G-jf-MPk"/>
                                             <constraint firstItem="57V-LE-jol" firstAttribute="leading" secondItem="1e9-iD-FHA" secondAttribute="leading" constant="20" id="Pod-qL-5dR"/>
                                             <constraint firstItem="vT5-Lp-QYa" firstAttribute="top" secondItem="1e9-iD-FHA" secondAttribute="top" constant="20" id="Prx-6F-LFi"/>
                                             <constraint firstItem="DHW-82-MXd" firstAttribute="leading" secondItem="1e9-iD-FHA" secondAttribute="leading" id="V0m-A4-xS5"/>
                                             <constraint firstAttribute="trailing" secondItem="efK-pn-UrS" secondAttribute="trailing" constant="20" id="WLP-W9-gfQ"/>
-                                            <constraint firstItem="rLx-ry-aPq" firstAttribute="top" secondItem="efK-pn-UrS" secondAttribute="bottom" id="XlY-GG-UZb"/>
+                                            <constraint firstItem="rLx-ry-aPq" firstAttribute="top" secondItem="efK-pn-UrS" secondAttribute="bottom" constant="8" id="XlY-GG-UZb"/>
                                             <constraint firstAttribute="trailing" secondItem="57V-LE-jol" secondAttribute="trailing" constant="20" id="YxS-oL-QWh"/>
                                             <constraint firstItem="vT5-Lp-QYa" firstAttribute="leading" secondItem="1e9-iD-FHA" secondAttribute="leading" constant="20" id="eXa-6t-uvh"/>
                                             <constraint firstAttribute="bottom" secondItem="DHW-82-MXd" secondAttribute="bottom" id="fZj-QV-DgK"/>
@@ -938,7 +1010,10 @@
                                             <outlet property="frequencyBar" destination="pGi-HY-tI0" id="Hdf-Np-sHf"/>
                                             <outlet property="frequencyLabel" destination="JvP-Xn-0nI" id="74T-Je-FxC"/>
                                             <outlet property="headerLabel" destination="vT5-Lp-QYa" id="Xu9-z7-h0G"/>
-                                            <outlet property="numberBar" destination="efK-pn-UrS" id="5xa-fY-4zB"/>
+                                            <outlet property="proxyRankTitleLabel" destination="Qrv-1z-cux" id="oUS-g4-xML"/>
+                                            <outlet property="proxyRankValueLabel" destination="9jM-jq-mew" id="yGB-Wb-FjO"/>
+                                            <outlet property="weightTitleLabel" destination="PaP-Ng-23v" id="VNk-r3-hKH"/>
+                                            <outlet property="weightValueLabel" destination="H9E-aD-phF" id="nfs-G9-FZ3"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contact" id="X9L-3S-Mv2" userLabel="contact" customClass="TeammateContactCell" customModule="Surilla" customModuleProvider="target">
@@ -1067,17 +1142,18 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-PQ-F8I">
-                                                    <rect key="frame" x="26" y="0.0" width="268" height="140"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OO2-bq-7Kd" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="42" y="16" width="40" height="40"/>
+                                                    <rect key="frame" x="16" y="16" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="OO2-bq-7Kd" secondAttribute="height" multiplier="1:1" id="Kkl-h0-438"/>
                                                         <constraint firstAttribute="width" constant="40" id="Pdr-Q7-eGg"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Orq-HI-dCF" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="259" y="59" width="22" height="22"/>
+                                                    <rect key="frame" x="253" y="59" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="22" id="6t6-TJ-yfL"/>
                                                         <constraint firstAttribute="width" secondItem="Orq-HI-dCF" secondAttribute="height" multiplier="1:1" id="uLt-ZX-bhB"/>
@@ -1093,26 +1169,26 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="tZa-1m-Frv">
-                                                    <rect key="frame" x="297" y="64" width="13" height="13"/>
+                                                    <rect key="frame" x="291" y="64" width="13" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tZa-1m-Frv" secondAttribute="height" multiplier="1:1" id="HCX-BK-6oy"/>
                                                         <constraint firstAttribute="width" constant="13" id="q0z-lf-Tda"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="W9M-xF-1Um" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="98" y="15" width="121" height="21"/>
+                                                    <rect key="frame" x="72" y="15" width="141" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="1 MIN AGO" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="cBj-fe-5UM" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="227" y="15" width="83" height="21"/>
+                                                    <rect key="frame" x="221" y="15" width="83" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFH-Ag-NFC" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="98" y="36" width="145" height="96"/>
+                                                    <rect key="frame" x="72" y="36" width="165" height="81.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1129,14 +1205,14 @@
                                             <constraint firstItem="OO2-bq-7Kd" firstAttribute="leading" secondItem="zP1-PQ-F8I" secondAttribute="leading" constant="16" id="KSG-Y9-w6v"/>
                                             <constraint firstItem="cBj-fe-5UM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="W9M-xF-1Um" secondAttribute="trailing" constant="8" id="NDf-8m-evv"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KFH-Ag-NFC" secondAttribute="bottom" constant="8" id="Pe8-zN-a5E"/>
-                                            <constraint firstItem="cBj-fe-5UM" firstAttribute="trailing" secondItem="zP1-PQ-F8I" secondAttribute="trailing" constant="16" id="QLN-Bo-neU"/>
+                                            <constraint firstItem="zP1-PQ-F8I" firstAttribute="trailing" secondItem="cBj-fe-5UM" secondAttribute="trailing" constant="16" id="QLN-Bo-neU"/>
                                             <constraint firstItem="W9M-xF-1Um" firstAttribute="bottom" secondItem="OO2-bq-7Kd" secondAttribute="centerY" id="RNt-3Q-fFw"/>
-                                            <constraint firstItem="tZa-1m-Frv" firstAttribute="trailing" secondItem="zP1-PQ-F8I" secondAttribute="trailing" constant="16" id="Tkg-ma-ANZ"/>
+                                            <constraint firstItem="zP1-PQ-F8I" firstAttribute="trailing" secondItem="tZa-1m-Frv" secondAttribute="trailing" constant="16" id="Tkg-ma-ANZ"/>
                                             <constraint firstItem="W9M-xF-1Um" firstAttribute="leading" secondItem="OO2-bq-7Kd" secondAttribute="trailing" constant="16" id="Ux9-l1-xUT"/>
                                             <constraint firstItem="OO2-bq-7Kd" firstAttribute="width" secondItem="OO2-bq-7Kd" secondAttribute="height" multiplier="1:1" id="YKT-rL-KhG"/>
-                                            <constraint firstAttribute="trailing" secondItem="zP1-PQ-F8I" secondAttribute="trailing" constant="26" id="c0p-Go-t5Q"/>
+                                            <constraint firstAttribute="trailing" secondItem="zP1-PQ-F8I" secondAttribute="trailing" id="c0p-Go-t5Q"/>
                                             <constraint firstItem="tZa-1m-Frv" firstAttribute="width" secondItem="tZa-1m-Frv" secondAttribute="height" multiplier="1:1" id="eFh-Ko-VmC"/>
-                                            <constraint firstItem="zP1-PQ-F8I" firstAttribute="leading" secondItem="AkA-1v-1B0" secondAttribute="leading" constant="26" id="fGQ-SF-kCa"/>
+                                            <constraint firstItem="zP1-PQ-F8I" firstAttribute="leading" secondItem="AkA-1v-1B0" secondAttribute="leading" id="fGQ-SF-kCa"/>
                                             <constraint firstItem="Orq-HI-dCF" firstAttribute="centerY" secondItem="AkA-1v-1B0" secondAttribute="centerY" id="mA2-MD-O4h"/>
                                             <constraint firstItem="tZa-1m-Frv" firstAttribute="centerY" secondItem="AkA-1v-1B0" secondAttribute="centerY" id="nWH-6g-Vcq"/>
                                             <constraint firstAttribute="bottom" secondItem="zP1-PQ-F8I" secondAttribute="bottom" id="oTb-Zk-6jD"/>

@@ -36,6 +36,8 @@
 "Team.MembersVC.searchHere"                      = "Buscar aquí...";
 "Team.TeammateCell.coversMe"                     = "ME CUBRE";
 "Team.TeammateCell.coverThem"                    = "LE CUBRO";
+"Team.TeammateCell.wouldCoverMe"                 = "ME CUBRE";
+"Team.TeammateCell.wouldCoverThem"               = "LE CUBRO";
 "Team.TeammateCell.youAreProxy_format_s"         = "Eres proxy para %@";
 "Team.TeammateCell.covered"                      = "CUBIERTO";
 "Team.TeammateCell.collisionDeductible"          = "Deducible por colisión";

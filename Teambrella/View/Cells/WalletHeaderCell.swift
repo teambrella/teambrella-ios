@@ -30,7 +30,7 @@ class WalletHeaderCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.shadow(for: self, opacity: 0.1, radius: 5)
+        ViewDecorator.shadow(for: self, opacity: 0.1, radius: 5)
         numberBar.left?.alignmentType = .leading
         numberBar.right?.alignmentType = .leading
     }

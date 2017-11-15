@@ -62,15 +62,16 @@ final class TeammateProfileVC: UIViewController, Routable {
         registerCells()
         HUD.show(.progress, onView: view)
         
-        if let flow = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flow.sectionHeadersPinToVisibleBounds = true
-        }
-        
         dataSource.loadEntireTeammate { [weak self] extendedTeammate in
             HUD.hide()
-            self?.prepareLinearFunction()
-            self?.setTitle()
-            self?.collectionView.reloadData()
+            guard let `self` = self else { return }
+            
+            self.prepareLinearFunction()
+            self.setTitle()
+            self.collectionView.reloadData()
+            if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate
+            }
         }
     }
     
@@ -258,6 +259,9 @@ final class TeammateProfileVC: UIViewController, Routable {
         collectionView.register(CompactUserInfoHeader.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: CompactUserInfoHeader.cellID)
+        collectionView.register(TeammateSummaryView.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: TeammateSummaryView.cellID)
     }
     
     private func setTitle() {
@@ -298,9 +302,13 @@ extension TeammateProfileVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+            return dataSource.isNewTeammate
+                ? collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
                                                                    withReuseIdentifier: CompactUserInfoHeader.cellID,
                                                                    for: indexPath)
+                : collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                  withReuseIdentifier: TeammateSummaryView.cellID,
+                                                                  for: indexPath)
         }
         if kind == UICollectionElementKindSectionFooter {
             return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
@@ -332,17 +340,47 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             view.avatarView.showAvatar(string: teammate.basic.avatar)
             
             if let left = view.leftNumberView {
-                left.titleLabel.text = "Team.TeammateCell.coversMe".localized
+                left.titleLabel.text = "Team.TeammateCell.wouldCoverMe".localized
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
                 left.currencyLabel.text = service.currencyName
             }
             
             if let right = view.rightNumberView {
+                right.titleLabel.text = "Team.TeammateCell.wouldCoverThem".localized
+                let amount = teammate.basic.iCoverThemAmount
+                right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+                right.currencyLabel.text = service.currencyName
+            }
+        } else if let view = view as? TeammateSummaryView {
+            view.title.text = teammate.basic.name.entire
+            //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
+            view.avatarView.present(avatarString: teammate.basic.avatar)
+            view.avatarView.onTap = { [weak self] view in
+                guard let `self` = self else { return }
+                
+                view.fullscreen(in: self, imageStrings: nil)
+            }
+            //cell.avatarView.kf.setImage(with: url)
+            if let left = view.leftNumberView {
+                left.isHidden = dataSource.isMe
+                left.titleLabel.text = "Team.TeammateCell.coversMe".localized
+                let amount = teammate.basic.coversMeAmount
+                left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+                left.currencyLabel.text = service.currencyName
+            }
+            if let right = view.rightNumberView {
+                right.isHidden = dataSource.isMe
                 right.titleLabel.text = "Team.TeammateCell.coverThem".localized
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
                 right.currencyLabel.text = service.currencyName
+            }
+            
+            view.subtitle.text = teammate.basic.city.uppercased()
+            if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
+                view.infoLabel.isHidden = false
+                view.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
             }
         }
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
@@ -376,8 +414,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .summary:
             return CGSize(width: collectionView.bounds.width, height: 210)
         case .object:
-            guard let teammate = dataSource.extendedTeammate,
-                teammate.object.claimCount > 0 else { return CGSize(width: wdt, height: 216) }
+            /*guard let teammate = dataSource.extendedTeammate,
+                teammate.object.claimCount > 0 else { return CGSize(width: wdt, height: 216) } */
             
             return CGSize(width: wdt, height: 296)
         case .stats:
@@ -392,9 +430,9 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .dialog:
             return CGSize(width: collectionView.bounds.width, height: 120)
         case .me:
-            return CGSize(width: collectionView.bounds.width, height: 256)
+            return CGSize(width: collectionView.bounds.width, height: 215)
         case .voting:
-            return CGSize(width: wdt, height: 350)
+            return CGSize(width: wdt, height: 360)
         case .dialogCompact:
             return  CGSize(width: collectionView.bounds.width, height: 98)
         }
@@ -403,7 +441,11 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return dataSource.isNewTeammate ? CGSize(width: collectionView.bounds.width, height: 60) : CGSize.zero
+        guard dataSource.extendedTeammate != nil else { return CGSize.zero }
+        
+        return dataSource.isNewTeammate
+            ? CGSize(width: collectionView.bounds.width, height: 60)
+            : CGSize(width: collectionView.bounds.width, height: 210)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -471,10 +513,9 @@ extension TeammateProfileVC: IndicatorInfoProvider {
 // MARK: VotingRiskCellDelegate
 extension TeammateProfileVC: VotingRiskCellDelegate {
     func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat) {
-        
         let risk = riskFrom(offset: changedOffset, maxValue: cell.maxValue)
         cell.yourVoteValueLabel.text = String(format: "%.2f", risk)
-        cell.pearMiddleAvatar.riskLabel.text = String(format: "%.2f", risk)
+        cell.middleAvatarLabel.text = String(format: "%.2f", risk)
         updateAverages(cell: cell, risk: risk)
         updateAmounts(with: risk)
         cell.pieChart.setupWith(remainingMinutes: dataSource.extendedTeammate?.voting?.remainingMinutes ?? 0)
@@ -496,26 +537,29 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
     }
     
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int) {
-        func setview(labeledView: LabeledRoundImageView, with teammate: RiskScaleEntity.Teammate?) {
+        func setAvatar(avatarView: RoundImageView, label: UILabel, with teammate: RiskScaleEntity.Teammate?) {
             guard let teammate = teammate else {
-                labeledView.isHidden = true
-                labeledView.avatar.image = nil
+                avatarView.isHidden = true
+                avatarView.image = nil
+                label.isHidden = true
                 return
             }
             
-            labeledView.isHidden = false
-            labeledView.avatar.showAvatar(string: teammate.avatar,
+            avatarView.isHidden = false
+            label.isHidden = false
+            avatarView.showAvatar(string: teammate.avatar,
                                           options: [.transition(.fade(0.5)), .forceTransition])
-            labeledView.riskLabelText = String(format: "%.2f", teammate.risk)
-            labeledView.labelBackgroundColor = .blueWithAHintOfPurple
+            label.text = String(format: "%.2f", teammate.risk)
+            label.backgroundColor = .blueWithAHintOfPurple
         }
         guard let range = dataSource.extendedTeammate?.riskScale?.ranges[changedMiddleRowIndex] else { return }
         
         if range.teammates.count > 1 {
-            setview(labeledView: cell.pearRightAvatar, with: range.teammates.last)
+            setAvatar(avatarView: cell.rightAvatar, label: cell.rightAvatarLabel, with: range.teammates.last)
         } else {
-            cell.pearRightAvatar.isHidden = true
+            cell.rightAvatar.isHidden = true
+            cell.rightAvatarLabel.isHidden = true
         }
-        setview(labeledView: cell.pearLeftAvatar, with: range.teammates.first)
+        setAvatar(avatarView: cell.leftAvatar, label: cell.leftAvatarLabel, with: range.teammates.first)
     }
 }

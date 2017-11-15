@@ -119,6 +119,7 @@ final class ClaimVC: UIViewController, Routable {
         let cells = collectionView.visibleCells.flatMap { $0 as? ClaimVoteCell }
         guard let cell = cells.first else { return }
         
+        cell.isYourVoteHidden = false
         cell.yourVotePercentValue.text = String.truncatedNumber(cell.slider.value * 100)
         if let amount = dataSource.claim?.claimAmount {
             cell.yourVoteAmount.text = String.truncatedNumber(cell.slider.value * Float(amount))
@@ -255,7 +256,7 @@ extension ClaimVC: UICollectionViewDelegateFlowLayout {
         switch dataSource.cellID(for: indexPath) {
         case ImageGalleryCell.cellID: return CGSize(width: collectionView.bounds.width, height: 111 + 184)
         case ClaimVoteCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 250)
-        case ClaimDetailsCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 293)
+        case ClaimDetailsCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 283)
         case ClaimOptionsCell.cellID: return CGSize(width: collectionView.bounds.width, height: 168)
         default: break
         }

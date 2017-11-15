@@ -61,9 +61,8 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var itemCard: ItemCard!
     
     @IBOutlet var emitterScene: SKView!
-    
-    @IBOutlet var teamsButton: DropDownButton!
-    @IBOutlet var inboxButton: LabeledButton!
+    @IBOutlet var topBarContainer: UIView!
+    var topBarVC: TopBarVC!
     
     var dataSource: HomeDataSource = HomeDataSource()
     
@@ -87,6 +86,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         gradientView.setup(colors: [#colorLiteral(red: 0.1803921569, green: 0.2392156863, blue: 0.7960784314, alpha: 1), #colorLiteral(red: 0.2156862745, green: 0.2705882353, blue: 0.8078431373, alpha: 1), #colorLiteral(red: 0.368627451, green: 0.4156862745, blue: 0.8588235294, alpha: 1)],
                            locations: [0.0, 0.5, 1.0])
         HomeCellBuilder.registerCells(in: collectionView)
+        setupTopBar()
         setupWalletContainer()
         
         switchToCurrentTeam()
@@ -96,6 +96,13 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
             gradientViewBottomConstraint.constant = 20
         }
         collectionView.contentInsetAdjustmentBehavior = .never
+    }
+    
+    private func setupTopBar() {
+        topBarVC = TopBarVC.show(in: self, in: topBarContainer)
+        topBarVC.delegate = self
+        topBarVC.titleLabel.isHidden = true
+        topBarVC.setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,19 +143,6 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         if let teamID = service.session?.currentTeam?.teamID {
             dataSource.loadData(teamID: teamID)
         }
-        guard let source = service.session?.currentTeam?.teamLogo else { return }
-        
-        UIImage.fetchAvatar(string: source,
-                            width: Constant.teamIconWidth,
-                            cornerRadius: Constant.teamIconCornerRadius) { image, error  in
-                                guard error == nil else { return }
-                                guard let image = image, let cgImage = image.cgImage else { return }
-                                
-                                let scaled = UIImage(cgImage: cgImage,
-                                                     scale: UIScreen.main.nativeScale,
-                                                     orientation: image.imageOrientation)
-                                self.teamsButton.setImage(scaled, for: .normal)
-        }
     }
     
     private func clearScreen() {
@@ -164,7 +158,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     private func setupWalletContainer() {
-        CellDecorator.shadow(for: walletContainer, opacity: 0.08, radius: 3, offset: CGSize(width: 0, height: -3))
+        ViewDecorator.shadow(for: walletContainer, opacity: 0.08, radius: 3, offset: CGSize(width: 0, height: -3))
     }
     
     private func addEmitter() {
@@ -215,11 +209,8 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         submitClaimButton.setTitle(buttonTitle, for: .normal)
         
         pageControl.numberOfPages = dataSource.cardsCount
-        if model.unreadCount > 0 {
-            inboxButton.cornerText = String(model.unreadCount)
-        } else {
-            inboxButton.cornerText = nil
-        }
+        topBarVC.setPrivateMessages(unreadCount: model.unreadCount)
+        
         HUD.hide()
     }
     
@@ -250,15 +241,6 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     @IBAction func tapRightBrick(_ sender: Any) {
         service.router.switchToWallet()
-    }
-    
-    @IBAction func tapTeams(_ sender: UIButton) {
-        service.router.showChooseTeam(in: self, delegate: self)
-    }
-    
-    @IBAction func tapInbox(_ sender: UIButton) {
-        service.router.presentPrivateMessages()
-        //        DeveloperTools.notSupportedAlert(in: self)
     }
     
     @objc
@@ -353,17 +335,17 @@ extension HomeVC: UIScrollViewDelegate {
     }
 }
 
-extension HomeVC: ChooseYourTeamControllerDelegate {
-    func chooseTeam(controller: ChooseYourTeamVC, didSelectTeamID: Int) {
-        service.router.switchTeam()
-    }
-}
-
 extension HomeVC: ReportDelegate {
     func report(controller: ReportVC, didSendReport data: Any) {
         service.router.navigator?.popViewController(animated: false)
         if let claim = data as? EnhancedClaimEntity {
             service.router.presentClaim(claimID: claim.id)
         }
+    }
+}
+
+extension HomeVC: TopBarDelegate {
+    func topBar(vc: TopBarVC, didSwitchTeamToID: Int) {
+        
     }
 }

@@ -80,7 +80,7 @@ class NumberView: UIView, XIBInitable {
         didSet {
             currencyLabel.font = isCurrencyOnTop ? UIFont.teambrellaBold(size: 9) : UIFont.teambrellaBold(size: 23)
             if isCurrencyOnTop {
-                currencyCenterConstraint.constant = -7
+                currencyCenterConstraint.constant = -4
             } else {
                 currencyCenterConstraint.constant = 0
             }

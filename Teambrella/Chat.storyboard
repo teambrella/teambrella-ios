@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="6PN-ib-ZQ0">
             <objects>
                 <viewController storyboardIdentifier="UniversalChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PAO-Ju-e4H" customClass="UniversalChatVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TBj-uJ-5LE"/>
-                        <viewControllerLayoutGuide type="bottom" id="wjw-p9-By2"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ywR-bj-0zB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,15 +39,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1pK-Sm-stF" firstAttribute="top" secondItem="TBj-uJ-5LE" secondAttribute="bottom" id="1gH-NU-7Hi"/>
-                            <constraint firstItem="Eub-Xr-XUC" firstAttribute="leading" secondItem="ywR-bj-0zB" secondAttribute="leading" id="QrV-Vh-qTZ"/>
-                            <constraint firstItem="Eub-Xr-XUC" firstAttribute="top" secondItem="TBj-uJ-5LE" secondAttribute="bottom" id="Skz-ca-BiC"/>
-                            <constraint firstAttribute="trailing" secondItem="1pK-Sm-stF" secondAttribute="trailing" id="XPE-xe-0Rl"/>
-                            <constraint firstItem="1pK-Sm-stF" firstAttribute="leading" secondItem="ywR-bj-0zB" secondAttribute="leading" id="hLD-ez-i3S"/>
-                            <constraint firstItem="wjw-p9-By2" firstAttribute="top" secondItem="1pK-Sm-stF" secondAttribute="bottom" id="mGy-Rf-gGA"/>
-                            <constraint firstAttribute="trailing" secondItem="Eub-Xr-XUC" secondAttribute="trailing" id="pUp-8V-Z3O"/>
-                            <constraint firstItem="wjw-p9-By2" firstAttribute="top" secondItem="Eub-Xr-XUC" secondAttribute="bottom" id="yQs-WZ-348"/>
+                            <constraint firstItem="1pK-Sm-stF" firstAttribute="top" secondItem="PC1-t1-KTu" secondAttribute="top" id="1gH-NU-7Hi"/>
+                            <constraint firstItem="Eub-Xr-XUC" firstAttribute="leading" secondItem="PC1-t1-KTu" secondAttribute="leading" id="QrV-Vh-qTZ"/>
+                            <constraint firstItem="Eub-Xr-XUC" firstAttribute="top" secondItem="PC1-t1-KTu" secondAttribute="top" id="Skz-ca-BiC"/>
+                            <constraint firstItem="PC1-t1-KTu" firstAttribute="trailing" secondItem="1pK-Sm-stF" secondAttribute="trailing" id="XPE-xe-0Rl"/>
+                            <constraint firstItem="1pK-Sm-stF" firstAttribute="leading" secondItem="PC1-t1-KTu" secondAttribute="leading" id="hLD-ez-i3S"/>
+                            <constraint firstItem="PC1-t1-KTu" firstAttribute="bottom" secondItem="1pK-Sm-stF" secondAttribute="bottom" id="mGy-Rf-gGA"/>
+                            <constraint firstItem="PC1-t1-KTu" firstAttribute="trailing" secondItem="Eub-Xr-XUC" secondAttribute="trailing" id="pUp-8V-Z3O"/>
+                            <constraint firstItem="PC1-t1-KTu" firstAttribute="bottom" secondItem="Eub-Xr-XUC" secondAttribute="bottom" id="yQs-WZ-348"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="PC1-t1-KTu"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="1pK-Sm-stF" id="fsw-q0-b6R"/>
@@ -64,14 +62,11 @@
         <scene sceneID="3nU-hc-6h4">
             <objects>
                 <viewController storyboardIdentifier="ChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yTT-5r-fSD" customClass="ChatVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QCG-h4-whs"/>
-                        <viewControllerLayoutGuide type="bottom" id="QWd-YQ-DFt"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aOZ-YK-GOS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Lev-pS-Gyc"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xrJ-lg-sBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -82,10 +77,6 @@
         <scene sceneID="NdT-BP-BHG">
             <objects>
                 <viewController storyboardIdentifier="MuteVC" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yf4-wk-oE6" customClass="MuteVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2Sv-mj-Guu"/>
-                        <viewControllerLayoutGuide type="bottom" id="cYZ-8x-crD"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pQw-eJ-Aql">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,11 +163,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JIf-M7-juu" firstAttribute="leading" secondItem="pQw-eJ-Aql" secondAttribute="leading" id="S3E-nV-70n"/>
-                            <constraint firstAttribute="trailing" secondItem="JIf-M7-juu" secondAttribute="trailing" id="TxE-bL-aws"/>
-                            <constraint firstItem="JIf-M7-juu" firstAttribute="top" secondItem="2Sv-mj-Guu" secondAttribute="bottom" constant="-44" id="ZT4-zp-YGR"/>
-                            <constraint firstItem="cYZ-8x-crD" firstAttribute="top" secondItem="JIf-M7-juu" secondAttribute="bottom" id="snq-iT-Zzk"/>
+                            <constraint firstItem="JIf-M7-juu" firstAttribute="leading" secondItem="4p0-x4-V0e" secondAttribute="leading" id="S3E-nV-70n"/>
+                            <constraint firstItem="4p0-x4-V0e" firstAttribute="trailing" secondItem="JIf-M7-juu" secondAttribute="trailing" id="TxE-bL-aws"/>
+                            <constraint firstItem="JIf-M7-juu" firstAttribute="top" secondItem="4p0-x4-V0e" secondAttribute="top" constant="-44" id="ZT4-zp-YGR"/>
+                            <constraint firstItem="4p0-x4-V0e" firstAttribute="bottom" secondItem="JIf-M7-juu" secondAttribute="bottom" id="snq-iT-Zzk"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="4p0-x4-V0e"/>
                     </view>
                     <connections>
                         <outlet property="backView" destination="JIf-M7-juu" id="pTS-Ih-Hga"/>

@@ -43,7 +43,7 @@ struct MembersCellBuilder {
             
             let amountText: String = currency + "\(abs(Int(teammate.totallyPaid)))"
             cell.amountLabel.text = amountText
-            let sign: String = teammate.totallyPaid > 0 ? "+" : teammate.totallyPaid < 0 ? "-" : ""
+            let sign: String = teammate.totallyPaid >= 0.5 ? "+" : teammate.totallyPaid <= -0.5 ? "-" : ""
             cell.signLabel.text = sign
             let signColor: UIColor = teammate.totallyPaid > 0 ? .tealish : .lipstick
             cell.signLabel.textColor = signColor

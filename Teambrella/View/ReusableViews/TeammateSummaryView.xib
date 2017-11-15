@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="TeammateSummaryView" customModule="Surilla" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="373" height="210"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Azs-Fq-hiP" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="-200" width="373" height="344"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="segments">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="diameter">
+                            <real key="value" value="136"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                            <color key="value" red="0.81568627449999997" green="0.82352941180000006" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                            <real key="value" value="360"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="startWidth">
+                            <real key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="centerX">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="centerY">
+                            <real key="value" value="-55"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="coefficient">
+                            <real key="value" value="1.25"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfw-L4-nPI" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="86" width="373" height="58"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                            <color key="value" white="1" alpha="0.0097923801369999997" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="255" translatesAutoresizingMaskIntoConstraints="NO" id="TJg-Yb-uYZ" customClass="GalleryView" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="142.5" y="42" width="88" height="88"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="88" id="PHO-V4-nut"/>
+                        <constraint firstAttribute="width" secondItem="TJg-Yb-uYZ" secondAttribute="height" multiplier="1:1" id="Vis-hQ-Er0"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bT-rC-Gc1" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="16" y="66" width="113.5" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="YNa-nC-v1B"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCurrencyOnTop" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gy9-eL-jxq" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="244" y="66" width="113" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="bMk-SF-iaL"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCurrencyOnTop" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are proxy voter for Jimmy Wong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7E-xq-aLK" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="93" y="17" width="185.5" height="16"/>
+                    <color key="backgroundColor" red="0.47058823529999999" green="0.50980392159999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="GoS-06-IR5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7FZ-uv-HWs" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="165.5" y="144" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Foo-4P-xaS" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="165.5" y="165" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="TJg-Yb-uYZ" firstAttribute="top" secondItem="b7E-xq-aLK" secondAttribute="bottom" constant="9" id="8bQ-1q-Lfh"/>
+                <constraint firstItem="7FZ-uv-HWs" firstAttribute="centerX" secondItem="VXr-Tz-HHm" secondAttribute="centerX" id="AX8-S8-2lk"/>
+                <constraint firstItem="b7E-xq-aLK" firstAttribute="centerX" secondItem="VXr-Tz-HHm" secondAttribute="centerX" id="B2v-Bm-OU3"/>
+                <constraint firstItem="TJg-Yb-uYZ" firstAttribute="centerX" secondItem="VXr-Tz-HHm" secondAttribute="centerX" id="Doo-ca-1BV"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="leading" secondItem="Azs-Fq-hiP" secondAttribute="leading" id="Dzr-CU-mQ5"/>
+                <constraint firstItem="wfw-L4-nPI" firstAttribute="trailing" secondItem="Azs-Fq-hiP" secondAttribute="trailing" id="EQt-OW-Ibg"/>
+                <constraint firstItem="Azs-Fq-hiP" firstAttribute="trailing" secondItem="VXr-Tz-HHm" secondAttribute="trailing" id="FlA-mq-WRJ"/>
+                <constraint firstItem="6bT-rC-Gc1" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="16" id="Frt-wQ-rP5"/>
+                <constraint firstItem="Foo-4P-xaS" firstAttribute="centerX" secondItem="VXr-Tz-HHm" secondAttribute="centerX" id="LOp-hJ-L2h"/>
+                <constraint firstItem="7FZ-uv-HWs" firstAttribute="top" secondItem="TJg-Yb-uYZ" secondAttribute="bottom" constant="14" id="LS2-SA-crl"/>
+                <constraint firstItem="TJg-Yb-uYZ" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" constant="42" id="OF4-WB-9tq"/>
+                <constraint firstItem="TJg-Yb-uYZ" firstAttribute="width" secondItem="TJg-Yb-uYZ" secondAttribute="height" multiplier="1:1" id="Obh-d3-7P1"/>
+                <constraint firstItem="Gy9-eL-jxq" firstAttribute="leading" secondItem="TJg-Yb-uYZ" secondAttribute="trailing" constant="13" id="QBS-th-luc"/>
+                <constraint firstItem="Foo-4P-xaS" firstAttribute="top" secondItem="7FZ-uv-HWs" secondAttribute="bottom" id="UOw-dJ-Tyh"/>
+                <constraint firstItem="Foo-4P-xaS" firstAttribute="centerX" secondItem="7FZ-uv-HWs" secondAttribute="centerX" id="Z0t-gB-tDV"/>
+                <constraint firstItem="wfw-L4-nPI" firstAttribute="top" secondItem="6bT-rC-Gc1" secondAttribute="centerY" id="ebX-AS-0FF"/>
+                <constraint firstItem="Gy9-eL-jxq" firstAttribute="centerY" secondItem="TJg-Yb-uYZ" secondAttribute="centerY" id="euo-db-739"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="Gy9-eL-jxq" secondAttribute="trailing" constant="16" id="gNP-xB-BU4"/>
+                <constraint firstItem="Azs-Fq-hiP" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" constant="-200" id="gPH-sh-z9x"/>
+                <constraint firstItem="wfw-L4-nPI" firstAttribute="leading" secondItem="Azs-Fq-hiP" secondAttribute="leading" id="gqV-vd-1go"/>
+                <constraint firstItem="TJg-Yb-uYZ" firstAttribute="leading" secondItem="6bT-rC-Gc1" secondAttribute="trailing" constant="13" id="lvc-vC-RkN"/>
+                <constraint firstItem="Azs-Fq-hiP" firstAttribute="bottom" secondItem="7FZ-uv-HWs" secondAttribute="top" id="qix-pL-9VN"/>
+                <constraint firstItem="wfw-L4-nPI" firstAttribute="bottom" secondItem="7FZ-uv-HWs" secondAttribute="top" id="rCz-x2-E4V"/>
+                <constraint firstItem="6bT-rC-Gc1" firstAttribute="centerY" secondItem="TJg-Yb-uYZ" secondAttribute="centerY" id="rew-uq-he7"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="avatarView" destination="TJg-Yb-uYZ" id="SJ3-ha-Rhi"/>
+                <outlet property="infoLabel" destination="b7E-xq-aLK" id="Qor-eK-RJV"/>
+                <outlet property="leftNumberView" destination="6bT-rC-Gc1" id="vj6-s7-E6Y"/>
+                <outlet property="rightNumberView" destination="Gy9-eL-jxq" id="8hm-Zz-dfb"/>
+                <outlet property="subtitle" destination="Foo-4P-xaS" id="u7e-d2-k6M"/>
+                <outlet property="title" destination="7FZ-uv-HWs" id="gJY-tu-trf"/>
+            </connections>
+            <point key="canvasLocation" x="-64.5" y="145"/>
+        </collectionReusableView>
+    </objects>
+</document>

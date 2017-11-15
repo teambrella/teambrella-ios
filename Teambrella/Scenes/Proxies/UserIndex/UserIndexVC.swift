@@ -64,7 +64,7 @@ class UserIndexVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CellDecorator.shadow(for: topContainer, opacity: 0.1, radius: 5)
+        ViewDecorator.shadow(for: topContainer, opacity: 0.1, radius: 5)
         HUD.show(.progress, onView: view)
         setupCollectionView()
         shrinkTopContainer(false)
@@ -172,7 +172,7 @@ extension UserIndexVC: UICollectionViewDelegate {
         if let cell = cell as? UserIndexCell {
             cell.numberLabel.text = String(indexPath.row + 1)
             cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
-            CellDecorator.decorateCollectionView(cell: cell,
+            ViewDecorator.decorateCollectionView(cell: cell,
                                                  isFirst: indexPath.row == 0,
                                                  isLast: indexPath.row == maxRow - 1)
         }

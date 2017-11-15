@@ -35,8 +35,11 @@ class TeammateObjectCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        CellDecorator.roundedEdges(for: self)
-        CellDecorator.shadow(for: self)
+        ViewDecorator.roundedEdges(for: self)
+        ViewDecorator.shadow(for: self)
+        
+        button.setTitleColor(.robinEggBlue, for: .normal)
+        button.setTitleColor(.cloudyBlue, for: .disabled)
     }
     
     override func layoutMarginsDidChange() {

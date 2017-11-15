@@ -43,7 +43,7 @@ class ItemCard: UIView, XIBInitable {
     }
     
     func setup() {
-        avatarView.layer.cornerRadius = 2
+        avatarView.layer.cornerRadius = 5
         avatarView.layer.masksToBounds = true
     }
 }
