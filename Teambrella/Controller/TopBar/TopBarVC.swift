@@ -42,6 +42,10 @@ class TopBarVC: UIViewController {
         view.addSubview(vc.view)
         viewController.addChildViewController(vc)
         vc.didMove(toParentViewController: viewController)
+        
+        vc.router = service.router
+        vc.session = service.session
+        
         return vc
     }
     
@@ -54,6 +58,14 @@ class TopBarVC: UIViewController {
     func setup() {
         setupTeamButton()
         titleLabel.text = session?.currentTeam?.teamName
+    }
+    
+    func setPrivateMessages(unreadCount: Int) {
+        if unreadCount > 0 {
+            privateMessagesButton.cornerText = String(unreadCount)
+        } else {
+            privateMessagesButton.cornerText = nil
+        }
     }
     
     private func setupTeamButton() {
