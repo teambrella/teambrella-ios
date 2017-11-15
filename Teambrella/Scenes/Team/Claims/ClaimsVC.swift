@@ -76,6 +76,11 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     }
     
     @IBAction func tapReportButton(_ sender: Any) {
+//        guard let model = HomeDataSource.model else { return }
+//        
+//        let item = ClaimItem(name: model.objectName, photo: model.smallPhoto, location: "")
+//        let context = ReportContext.claim(item: item, coverage: model.coverage, balance: model.balance)
+//        service.router.presentReport(context: context, delegate: self)
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -90,10 +95,11 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
         objectImageView.layer.masksToBounds = true
         objectImageView.layer.cornerRadius = 4
+        reportButton.setTitle("Team.Claims.objectView.reportButton.title".localized, for: .normal)
+        
         objectImageView.image = #imageLiteral(resourceName: "tesla")
         objectTitle.text = "Ford-S Max"
         objectSubtitle.text = "New York, NY, USA".uppercased()
-        reportButton.setTitle("Report a Claim", for: .normal)
     }
     
     func registerCells() {

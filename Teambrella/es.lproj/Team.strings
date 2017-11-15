@@ -179,3 +179,5 @@
 "Team.Chat.NotificationSettings.unsubscribed.details" = "Notifications will be disabled for this chat.";
 "Team.Chat.Unmute" = "You now receive notifications for this conversation.";
 "Team.Chat.Mute" = "You now don't receive notifications for this conversation.";
+
+"Team.Claims.objectView.reportButton.title" = "Report a Claim";
