@@ -56,8 +56,7 @@ class MyProxiesDataSource {
     func loadData() {
         let offset = isSilentUpdate ? 0 : count
         service.server.updateTimestamp { [weak self] timestamp, error in
-            let key = Key(base58String: ServerService.privateKey,
-                          timestamp: timestamp)
+            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
             guard let id = self?.teamID, let limit = self?.limit else { return }
             
             let body = RequestBody(key: key, payload: ["TeamId": id,
@@ -83,8 +82,7 @@ class MyProxiesDataSource {
     
     func refreshDataFor(userID: String, at position: Int) {
         service.server.updateTimestamp { [weak self] timestamp, error in
-            let key = Key(base58String: ServerService.privateKey,
-                          timestamp: timestamp)
+            let key = Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
             guard let id = self?.teamID else { return }
             
             let body = RequestBody(key: key, payload: ["TeamId": id,

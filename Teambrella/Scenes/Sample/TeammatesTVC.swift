@@ -43,8 +43,7 @@ class TeammatesTVC: UITableViewController {
     }
     
     private func loadTeammates() {
-        let key = Key(base58String: ServerService.privateKey,
-                      timestamp: service.server.timestamp)
+        let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: service.server.timestamp)
         
         let body = RequestBodyFactory.teammatesBody(key: key)
         let request = TeambrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
@@ -77,7 +76,7 @@ class TeammatesTVC: UITableViewController {
             
             let teammate = teammatesData[indexPath.row]
             cell.nameLabel.text = teammate.name.entire
-            let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
+            let url = URL(string: URLBuilder().avatarURLstring(for: teammate.avatar))
             cell.avatarImageView.kf.setImage(with: url)
             cell.avatarImageView.limbColor = .white
             return cell
@@ -87,7 +86,7 @@ class TeammatesTVC: UITableViewController {
         }
         if !teammatesData.isEmpty && cell.roundImages.isEmpty {
             let max = teammatesData.count > 4 ? 4 : teammatesData.count
-            let images = teammatesData[0..<max].flatMap { URL(string: service.server.avatarURLstring(for: $0.avatar)) }
+            let images = teammatesData[0..<max].flatMap { URL(string: URLBuilder().avatarURLstring(for: $0.avatar)) }
             let label: String? = teammatesData.count > 3 ? "\(teammatesData.count - 3)+" : nil
             cell.roundImages.set(images: images, label: label)
         }

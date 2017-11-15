@@ -39,7 +39,7 @@ class TeammateVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = URL(string: service.server.avatarURLstring(for: teammate.avatar))
+        let url = URL(string: URLBuilder().avatarURLstring(for: teammate.avatar))
         avatarImageView.kf.setImage(with: url)
         nameLabel.text = teammate.name.entire
         modelLabel.text = teammate.model

@@ -73,7 +73,7 @@ class TeammateProfileDataSource {
     }
     
     func loadEntireTeammate(completion: @escaping (ExtendedTeammateEntity) -> Void) {
-        let key = Key(base58String: ServerService.privateKey, timestamp: service.server.timestamp)
+        let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: service.server.timestamp)
         
         let body = RequestBodyFactory.teammateBody(key: key, id: teammateID)
         let request = TeambrellaRequest(type: .teammate, body: body, success: { [weak self] response in
