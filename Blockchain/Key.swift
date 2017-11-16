@@ -74,10 +74,12 @@ struct Key: CustomDebugStringConvertible {
             key = BTCKey(privateKeyAddress: address)
             isTestnet = true
         }
+         key.isPublicKeyCompressed = true
     }
     
     init(timestamp: Int64) {
         key = BTCKey()
+        key.isPublicKeyCompressed = true
         self.timestamp = timestamp
         isTestnet = false
     }
