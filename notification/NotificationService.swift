@@ -26,6 +26,9 @@ class NotificationService: UNNotificationServiceExtension {
         self.contentHandler = contentHandler
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
         
+        let filename = ProcessInfo.processInfo.globallyUniqueString
+       // let path = try! URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("\(filename).\("png")")
+        
         if let bestAttemptContent = bestAttemptContent {
             // Modify the notification content here...
             bestAttemptContent.title = "\(bestAttemptContent.title) [modified]"
