@@ -26,10 +26,17 @@ class NotificationService: UNNotificationServiceExtension {
         self.contentHandler = contentHandler
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
         guard let content = request.content.mutableCopy() as? UNMutableNotificationContent else { return }
-        guard let payload = content.userInfo["Payload"] as? [String: Any] else { return }
+        guard let payloadDict = content.userInfo["Payload"] as? [AnyHashable: Any] else { return }
         
-        if let urlString = payload["Avatar"] as? String {
-            UIImage.fetchAvatar(string: urlString, completion: { image, error in
+        let payload = RemotePayload(dict: payloadDict)
+        
+        let message = RemoteMessage(payload: payload)
+        message.title.flatMap { content.title = $0 }
+        message.subtitle.flatMap { content.subtitle = $0 }
+        message.body.flatMap { content.body = $0 }
+        
+        if let avatarURL = message.avatar {
+            UIImage.fetchAvatar(string: avatarURL, completion: { image, error in
                 if let filePath = self.saveImage(image: image),
                     let attachment = try? UNNotificationAttachment(identifier: "image", url: filePath, options: nil) {
                     content.attachments = [attachment]
@@ -39,9 +46,8 @@ class NotificationService: UNNotificationServiceExtension {
                     contentHandler(content)
                 }
             })
- 
-        } else if let urlString = payload["Image"] as? String {
-            UIImage.fetchImage(string: urlString, completion: { image, error in
+        } else if let imageURL = message.image {
+            UIImage.fetchImage(string: imageURL, completion: { image, error in
                 if let filePath = self.saveImage(image: image),
                     let attachment = try? UNNotificationAttachment(identifier: "image", url: filePath, options: nil) {
                     content.attachments = [attachment]

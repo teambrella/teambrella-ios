@@ -55,10 +55,6 @@
 		6D0E742F1F13C7810055BF1E /* DeveloperTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */; };
 		6D12927D1F83BD6A001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
 		6D12927E1F83BD6D001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
-		6D1292831F83CD2C001CCC31 /* PushData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292821F83CD2C001CCC31 /* PushData.swift */; };
-		6D1292841F83CD2C001CCC31 /* PushData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292821F83CD2C001CCC31 /* PushData.swift */; };
-		6D1292861F83CD4B001CCC31 /* PushCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292851F83CD4B001CCC31 /* PushCommand.swift */; };
-		6D1292871F83CD4B001CCC31 /* PushCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292851F83CD4B001CCC31 /* PushCommand.swift */; };
 		6D1292891F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
 		6D12928A1F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
 		6D12928C1F83DE38001CCC31 /* NameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12928B1F83DE38001CCC31 /* NameTests.swift */; };
@@ -679,6 +675,9 @@
 		6DA1A5471FBF0CC1000FDECA /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */; };
 		6DA1A5481FBF0CCE000FDECA /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF4791B1F43326A0025F489 /* SwiftKeychainWrapper.framework */; };
 		6DA1A5491FBF0CF1000FDECA /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479191F432D230025F489 /* Keychain.swift */; };
+		6DA1A54B1FBF25ED000FDECA /* RemotePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1A54A1FBF25ED000FDECA /* RemotePayload.swift */; };
+		6DA1A54C1FBF40BD000FDECA /* RemotePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1A54A1FBF25ED000FDECA /* RemotePayload.swift */; };
+		6DA1A54D1FBF40BE000FDECA /* RemotePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1A54A1FBF25ED000FDECA /* RemotePayload.swift */; };
 		6DA1D0FB1F040AEF00F9DE87 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D0FA1F040AEF00F9DE87 /* Session.swift */; };
 		6DA1D0FD1F054E6D00F9DE87 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D0FC1F054E6D00F9DE87 /* TabType.swift */; };
 		6DA1D0FF1F0552FF00F9DE87 /* TabRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D0FE1F0552FF00F9DE87 /* TabRoutable.swift */; };
@@ -1020,8 +1019,6 @@
 		6D0E742C1F13C0D70055BF1E /* LabeledButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabeledButton.swift; path = View/Buttons/LabeledButton.swift; sourceTree = "<group>"; };
 		6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeveloperTools.swift; path = Helpers/DeveloperTools.swift; sourceTree = "<group>"; };
 		6D12927C1F83BD6A001CCC31 /* SceneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneType.swift; path = Model/Enums/SceneType.swift; sourceTree = "<group>"; };
-		6D1292821F83CD2C001CCC31 /* PushData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushData.swift; path = Model/Services/Push/PushData.swift; sourceTree = "<group>"; };
-		6D1292851F83CD4B001CCC31 /* PushCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushCommand.swift; path = Model/Services/Push/PushCommand.swift; sourceTree = "<group>"; };
 		6D1292881F83DC46001CCC31 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Name.swift; path = Model/Entities/Name.swift; sourceTree = "<group>"; };
 		6D12928B1F83DE38001CCC31 /* NameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTests.swift; sourceTree = "<group>"; };
 		6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingRiskCell.swift; path = View/Cells/VotingRiskCell.swift; sourceTree = "<group>"; };
@@ -1223,6 +1220,7 @@
 		6D9CC6521ED98A07007F936E /* NumberView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NumberView.xib; path = View/NumberView.xib; sourceTree = "<group>"; };
 		6D9CC6541ED98E66007F936E /* NumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberView.swift; path = View/NumberView.swift; sourceTree = "<group>"; };
 		6DA1A5421FBF0B42000FDECA /* Notification-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Notification-Bridging-Header.h"; sourceTree = "<group>"; };
+		6DA1A54A1FBF25ED000FDECA /* RemotePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePayload.swift; sourceTree = "<group>"; };
 		6DA1D0FA1F040AEF00F9DE87 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Model/Services/Session.swift; sourceTree = "<group>"; };
 		6DA1D0FC1F054E6D00F9DE87 /* TabType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabType.swift; path = Model/Enums/TabType.swift; sourceTree = "<group>"; };
 		6DA1D0FE1F0552FF00F9DE87 /* TabRoutable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabRoutable.swift; path = Model/Protocols/TabRoutable.swift; sourceTree = "<group>"; };
@@ -1913,6 +1911,7 @@
 				6D6245EE1FBEF25C00641D0A /* notification.entitlements */,
 				6D59FCF81FBC8407006C0A2B /* NotificationService.swift */,
 				6D59FCFA1FBC8407006C0A2B /* Info.plist */,
+				6DA1A54A1FBF25ED000FDECA /* RemotePayload.swift */,
 			);
 			path = notification;
 			sourceTree = "<group>";
@@ -2296,8 +2295,6 @@
 			isa = PBXGroup;
 			children = (
 				6DAF1CB71F58562900421C5A /* PushService.swift */,
-				6D1292821F83CD2C001CCC31 /* PushData.swift */,
-				6D1292851F83CD4B001CCC31 /* PushCommand.swift */,
 			);
 			name = PushService;
 			sourceTree = "<group>";
@@ -3338,7 +3335,6 @@
 				6D4E5C651F7AB6870020DEE2 /* JoinTeamInfoCell.swift in Sources */,
 				6D4E5C661F7AB6870020DEE2 /* XIBInitable.swift in Sources */,
 				6D4E5C671F7AB6870020DEE2 /* ProxyForCellModel.swift in Sources */,
-				6D1292871F83CD4B001CCC31 /* PushCommand.swift in Sources */,
 				6D4E5C681F7AB6870020DEE2 /* DAO.swift in Sources */,
 				6D4E5C691F7AB6870020DEE2 /* LoginDetailsRouter.swift in Sources */,
 				6D4E5C6A1F7AB6870020DEE2 /* UIViewController.swift in Sources */,
@@ -3394,7 +3390,6 @@
 				6D4E5C9B1F7AB6870020DEE2 /* UniversalChatDataSource.swift in Sources */,
 				6D4E5C9C1F7AB6870020DEE2 /* CompactUserInfoHeader.swift in Sources */,
 				6D4E5C9D1F7AB6870020DEE2 /* TeammateContactCell.swift in Sources */,
-				6D1292841F83CD2C001CCC31 /* PushData.swift in Sources */,
 				6D4E5C9E1F7AB6870020DEE2 /* ClaimsViewAllCell.swift in Sources */,
 				6D4E5C9F1F7AB6870020DEE2 /* EggView.swift in Sources */,
 				6D4E5CA01F7AB6870020DEE2 /* UUID.swift in Sources */,
@@ -3446,6 +3441,7 @@
 				6D4E5CCC1F7AB6870020DEE2 /* SlashView.swift in Sources */,
 				6D4E5CCD1F7AB6870020DEE2 /* ChatSeparatorCell.swift in Sources */,
 				6D4E5CCE1F7AB6870020DEE2 /* Math.swift in Sources */,
+				6DA1A54C1FBF40BD000FDECA /* RemotePayload.swift in Sources */,
 				6D4E5CCF1F7AB6870020DEE2 /* CoverageEntity.swift in Sources */,
 				6D4E5CD01F7AB6870020DEE2 /* ChatFooter.swift in Sources */,
 				6D4E5CD11F7AB6870020DEE2 /* TxOutput.swift in Sources */,
@@ -3632,6 +3628,7 @@
 				6DA1A5411FBF0B0E000FDECA /* URLBuilder.swift in Sources */,
 				6DA1A5441FBF0C7F000FDECA /* KeyStorage.swift in Sources */,
 				6DA1A5451FBF0C8B000FDECA /* Key.swift in Sources */,
+				6DA1A54B1FBF25ED000FDECA /* RemotePayload.swift in Sources */,
 				6DA1A5491FBF0CF1000FDECA /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3707,7 +3704,6 @@
 				94E325B91F07DA9400B2D8C8 /* JoinTeamInfoCell.swift in Sources */,
 				6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */,
 				6D69D9F41EFC03A600DED5CE /* ProxyForCellModel.swift in Sources */,
-				6D1292861F83CD4B001CCC31 /* PushCommand.swift in Sources */,
 				6DA8D5531F0E74C9000A4DB7 /* DAO.swift in Sources */,
 				6D6DA26C1EE21F7A00307C73 /* LoginDetailsRouter.swift in Sources */,
 				6D9CC6191ED484CF007F936E /* UIViewController.swift in Sources */,
@@ -3763,7 +3759,6 @@
 				6DE7932C1EF80F41005F4508 /* UniversalChatDataSource.swift in Sources */,
 				6D2808C51F1A450C00EBBE3D /* CompactUserInfoHeader.swift in Sources */,
 				6DA714F61EE02BA000F39EBE /* TeammateContactCell.swift in Sources */,
-				6D1292831F83CD2C001CCC31 /* PushData.swift in Sources */,
 				6D6DA2581EE1C69400307C73 /* ClaimsViewAllCell.swift in Sources */,
 				6D481F7F1F0BDEF30023C781 /* EggView.swift in Sources */,
 				6DB921EE1F9DEC27009D3937 /* EthWallet.swift in Sources */,
@@ -3817,6 +3812,7 @@
 				6DB8121D1EE6F78700B202CE /* Formatter.swift in Sources */,
 				6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */,
 				6D7987791F6827A80060A193 /* ChatSeparatorCell.swift in Sources */,
+				6DA1A54D1FBF40BE000FDECA /* RemotePayload.swift in Sources */,
 				6D481F771F0BAA080023C781 /* Math.swift in Sources */,
 				94B4C37F1F1E18AC00AED4CE /* CoverageEntity.swift in Sources */,
 				6D59F00E1F56F47B00C422EB /* ChatFooter.swift in Sources */,

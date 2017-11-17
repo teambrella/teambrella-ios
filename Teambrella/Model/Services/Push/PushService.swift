@@ -29,7 +29,7 @@ class PushService: NSObject {
         
         return [UInt8](token).reduce("") { $0 + String(format: "%02x", $1) }
     }
-    var command: PushCommand?
+    var command: RemoteCommand?
     
     override init() {
         super.init()
@@ -67,18 +67,21 @@ class PushService: NSObject {
     
     func remoteNotificationOnStart(in application: UIApplication,
                                    userInfo: [AnyHashable: Any]) {
-        let pushData = PushData(dict: userInfo)
-        self.command = pushData.command
+        guard let payloadDict = userInfo["Payload"] as? [AnyHashable: Any] else { return }
+        
+        let payload = RemotePayload(dict: payloadDict)
+        self.command = RemoteCommand.command(from: payload)
     }
     
     func remoteNotification(in application: UIApplication,
                             userInfo: [AnyHashable: Any],
                             completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         guard command == nil else { return }
+        guard let payloadDict = userInfo["Payload"] as? [AnyHashable: Any] else { return }
         
         log("\(userInfo)", type: .push)
-        let pushData = PushData(dict: userInfo)
-        self.command = pushData.command
+        let payload = RemotePayload(dict: payloadDict)
+        self.command = RemoteCommand.command(from: payload)
         executeCommand()
     }
     
@@ -86,8 +89,13 @@ class PushService: NSObject {
         guard let command = command else { return }
         
         switch command {
-        case let .openClaim(id: id):
-            service.router.presentClaim(claimID: id)
+        case let .newTeammate(teamID: _,
+                              userID: _,
+                              teammateID: teammateID,
+                              name: _,
+                              avatar: _,
+                              teamName: _):
+            service.router.presentMemberProfile(teammateID: String(teammateID))
         default:
             break
         }
