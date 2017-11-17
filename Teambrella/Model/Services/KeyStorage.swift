@@ -77,7 +77,7 @@ final class KeyStorage {
     private func createPrivateKey(for key: KeychainKey) -> String {
         let newKey = Key(timestamp: timestamp)
         let privateKey = newKey.privateKey
-        log("New private key type \(key): \(privateKey)", type: .serviceInfo)
+        //log("New private key type \(key): \(privateKey)", type: .serviceInfo)
         Keychain.save(value: privateKey, forKey: key)
         return self.privateKey
     }
