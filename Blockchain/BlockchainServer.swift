@@ -124,11 +124,16 @@ public class BlockchainServer {
     
     func getUpdates(privateKey: String,
                     lastUpdated: Int64,
+                    multisigs: [Multisig],
                     transactions: [Tx],
                     signatures: [TxSignature],
                     completion: @escaping (Response) -> Void) {
         let key = Key(base58String: privateKey, timestamp: timestamp)
-        
+
+        let multisigsInfo = multisigs.map { ["Id": $0.id,
+                                          "TeammateId": $0.teammate!.id,
+                                          "BlockchainTxId": $0.creationTx! ] }
+
         let txInfos = transactions.map { ["Id": $0.id.uuidString,
                                           "ResolutionTime": formatter.string(from: $0.clientResolutionTime!),
                                           "Resolution": $0.resolution.rawValue ] }
@@ -140,6 +145,7 @@ public class BlockchainServer {
         }
         let payload: [String: Any] = ["TxInfos": txInfos,
                                       "TxSignatures": txSignatures,
+                                      "CryptoContracts": multisigsInfo,
                                       "Since": lastUpdated]
         let request = self.request(string: "me/GetUpdates", key: key, payload: payload)
         Alamofire.request(request).responseJSON { [weak self] response in
