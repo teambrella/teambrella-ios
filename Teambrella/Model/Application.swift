@@ -17,11 +17,25 @@
 import Foundation
 
 class Application {
+    struct Constant {
+        static let uniqueIdentifier = "com.teambrella.application.uniqueIdentifier"
+    }
     var version: String { return Bundle.main
         .object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "" }
     
     var build: String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "" }
     /// version in format: "ios-0.2.3.64"
     var clientVersion: String { return "ios-\(version).\(build)" }
-
+    
+    var uniqueIdentifier: String {
+        if let stored = UserDefaults.standard.object(forKey: Constant.uniqueIdentifier) as? String {
+            return stored
+        } else {
+            let id = UUID()
+            UserDefaults.standard.set(id.uuidString, forKey: Constant.uniqueIdentifier)
+            UserDefaults.standard.synchronize()
+            return id.uuidString
+        }
+    }
+    
 }

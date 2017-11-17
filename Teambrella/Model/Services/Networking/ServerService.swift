@@ -83,10 +83,13 @@ class ServerService: NSObject {
                 request.httpBody = data
                 printAsString(data: data)
             }
+            let application = Application()
             let dict: [String: Any] = ["t": body.timestamp,
                         "key": body.publicKey,
                         "sig": body.signature,
-                        "clientVersion": Application().clientVersion ]
+                        "clientVersion": application.clientVersion,
+                        "deviceToken": service.push.tokenString ?? "",
+                        "deviceId": application.uniqueIdentifier]
             for (key, value) in dict {
                 request.setValue(String(describing: value), forHTTPHeaderField: key)
             }
