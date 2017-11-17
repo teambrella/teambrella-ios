@@ -28,8 +28,8 @@ extension UIImageView {
                     isFullSize: Bool = false,
                     completion: ((UIImage?, NSError?) -> Void)? = nil) {
         let modified = isFullSize
-            ? service.server.avatarURLstring(for: string, width: nil, crop: nil)
-            : service.server.avatarURLstring(for: string)
+            ? URLBuilder().avatarURLstring(for: string, width: nil, crop: nil)
+            : URLBuilder().avatarURLstring(for: string)
         guard let url = URL(string: modified) else { return }
         
         showAvatar(url: url, options: options, completion: completion)
@@ -66,7 +66,7 @@ extension UIImageView {
     }
     
     func showImage(string: String, completion: ((UIImage?, NSError?) -> Void)? = nil) {
-        guard let url = service.server.url(string: string) else { return }
+        guard let url = URLBuilder().url(string: string) else { return }
         
         showImage(url: url, completion: completion)
     }

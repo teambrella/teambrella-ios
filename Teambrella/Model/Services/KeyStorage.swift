@@ -26,6 +26,10 @@ final class KeyStorage {
         case none, real, demo
     }
     
+    static let shared = KeyStorage()
+    
+    private init() { }
+    
     var lastUserType: LastUserType {
         guard let lastUserType = Keychain.value(forKey: .lastUserType) else { return .none }
         

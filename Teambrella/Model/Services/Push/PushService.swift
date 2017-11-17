@@ -22,7 +22,7 @@
 import UIKit
 import UserNotifications
 
-class PushService {
+class PushService: NSObject {
     var token: Data?
     var tokenString: String? {
         guard let token = token else { return nil }
@@ -30,6 +30,11 @@ class PushService {
         return [UInt8](token).reduce("") { $0 + String(format: "%02x", $1) }
     }
     var command: PushCommand?
+    
+    override init() {
+        super.init()
+        UNUserNotificationCenter.current().delegate = self
+    }
     
     func askPermissionsForRemoteNotifications(application: UIApplication) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
@@ -87,5 +92,14 @@ class PushService {
             break
         }
         self.command = nil
+    }
+}
+
+extension PushService: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler:
+        @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound, .badge])
     }
 }

@@ -23,7 +23,7 @@ import Foundation
 
 func log(_ string: String, type: Log.LogType) {
     #if DEBUG
-    service.log.logPrint(string, type: type)
+    Log.shared.logPrint(string, type: type)
     #endif
 }
 
@@ -63,14 +63,14 @@ class Log {
         static var all: LogType { return LogType(rawValue: Int.max) }
     }
     
-    let logLevel: LogLevel
+    var logLevel: LogLevel = .all
     lazy var types: LogType = { self.typesFor(level: self.logLevel) }()
     
     var isEmojied: Bool = true
     
-    init(logLevel: LogLevel) {
-        self.logLevel = logLevel
-    }
+   static let shared = Log()
+    
+    init() { }
     
     func logPrint(_ string: String, type: LogType) {
         guard types.contains(type) else { return }

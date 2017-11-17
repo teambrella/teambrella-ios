@@ -39,3 +39,11 @@ target 'Surilla' do
   social_pods
 
 end
+
+#target 'notification' do
+#  inhibit_all_warnings!
+
+ # service_pods
+
+#
+#end

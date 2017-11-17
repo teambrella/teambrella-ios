@@ -23,7 +23,7 @@ import Foundation
 import SwiftyJSON
 
 struct RequestBodyFactory {
-    static func teammatesBody(key: Key, teamID: Int = ServerService.teamID) -> RequestBody {
+    static func teammatesBody(key: Key, teamID: Int = service.session?.currentTeam?.teamID ?? 0) -> RequestBody {
         let payload: [String: Any] = ["TeamId": teamID,
                                       "P": 0,
                                       "Search": NSNull()]
@@ -35,7 +35,7 @@ struct RequestBodyFactory {
     
     static func teammateBody(key: Key, id: String) -> RequestBody? {
         let payload: [String: Any] = ["UserId": id,
-                                      "TeamId": ServerService.teamID,
+                                      "TeamId": service.session?.currentTeam?.teamID ?? 0,
                                       "AfterVer": 0]
         return RequestBody(key: key, payload: payload)
     }
@@ -78,9 +78,6 @@ struct RequestBody {
                 result[key] = value
             }
         }
-//        result["Timestamp"] = timestamp
-//        result["Signature"] = signature
-//        result["PublicKey"] = publicKey
         return result
     }
     
