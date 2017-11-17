@@ -40,9 +40,10 @@ target 'Surilla' do
 
 end
 
-target 'notification' do
-  inhibit_all_warnings!
+#target 'notification' do
+#  inhibit_all_warnings!
 
-  service_pods
+ # service_pods
 
-end
+#
+#end
