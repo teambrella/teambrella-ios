@@ -37,5 +37,4 @@ class Application {
             return id.uuidString
         }
     }
-    
 }

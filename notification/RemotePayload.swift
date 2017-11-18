@@ -20,24 +20,72 @@ struct RemotePayload {
     let dict: [AnyHashable: Any]
     
     var type: RemoteCommandType { return (dict["Cmd"] as? Int).flatMap { RemoteCommandType(rawValue: $0) } ?? .unknown }
+    var timestamp: Int64 { return dict["Timestamp"] as? Int64 ?? 0 }
     
     var teamID: Int? { return dict["TeamId"] as? Int }
+    var teamName: String? { return dict["TeamName"] as? String }
+    var newTeammatesCount: Int? { return dict["NewTeammates"] as? Int }
+    
     var userID: String? { return dict["UserId"] as? String }
+    var userName: String? { return dict["UserName"] as? String }
+    var teammateID: Int? { return dict["TeammateId"] as? Int }
+    var message: String? { return dict["Message"] as? String }
+    
     var topicID: String? { return dict["TopicId"] as? String }
     var postID: String? { return dict["PostId"] as? String }
-    var name: String? { return dict["UserName"] as? String }
-    var text: String? { return dict["Text"] as? String }
-    var claimID: Int? { return dict["ClaimId"] as? Int }
-    var amount: String? { return dict["Count"] as? String }
-    var teamURL: String? { return dict["TeamUrl"] as? String }
-    var teamName: String? { return dict["TeamName"] as? String }
-    var cryptoAmount: String? { return dict["CryptoAmount"] as? String }
-    var currencyAmount: String? { return dict["CurrencyAmount"] as? String }
+    var topicName: String? { return dict["TopicName"] as? String }
+    //var text: String? { return dict["Text"] as? String }
     var postsCount: Int? { return dict["Count"] as? Int }
-    var teammateID: Int? { return dict["TeammateId"] as? Int }
+    
+    var claimID: Int? { return dict["ClaimId"] as? Int }
+    
+    var amount: String? { return dict["Count"] as? String }
+    var cryptoAmount: String? { return dict["BalanceCrypto"] as? String }
+    var currencyAmount: String? { return dict["BalanceFiat"] as? String }
     
     var avatar: String? { return dict["Avatar"] as? String }
-    var image: String? { return dict["TeamUrl"] as? String }
+    var teamURL: String? { return dict["TeamUrl"] as? String }
+    var teamLogo: String? { return dict["TeamLogo"] as? String }
+    
+    // MARK: Convenience getters
+    
+    var teamIDValue: Int { return value(from: teamID) }
+    var teamNameValue: String { return value(from: teamName) }
+    var newTeammatesCountValue: Int { return value(from: newTeammatesCount)}
+    var userIDValue: String { return value(from: userID) }
+    var userNameValue: String { return value(from: userName) }
+    var teammateIDValue: Int { return value(from: teammateID) }
+    var messageValue: String { return value(from: message) }
+    var topicIDValue: String { return value(from: topicID) }
+    var postIDValue: String { return value(from: postID) }
+    var topicNameValue: String { return value(from: topicName) }
+    var postsCountValue: Int { return value(from: postsCount) }
+    var claimIDValue: Int { return value(from: claimID) }
+    var amountValue: String { return value(from: amount) }
+    var cryptoAmountValue: String { return value(from: cryptoAmount) }
+    var currencyAmountValue: String { return value(from: currencyAmount) }
+    
+    // get the most relevant image
+    var image: String {
+        if let avatar = avatar {
+            return avatar
+        } else if let teamLogo = teamLogo {
+            return teamLogo
+        }
+        return ""
+    }
+    
+    private func value(from: String?) -> String {
+        return from ?? ""
+    }
+    
+    private func value(from: Int?) -> Int {
+        return from ?? 0
+    }
+    
+    private func value(from: Int64?) -> Int64 {
+        return from ?? 0
+    }
 }
 
 struct RemoteMessage {
@@ -53,6 +101,8 @@ struct RemoteMessage {
             return "New teammate"
         case .postsSinceInteracted:
             return "You have \(payload.postsCount ?? 0) unread messages"
+        case .walletFunded:
+            return "Wallet is funded"
         default:
             return nil
         }
@@ -63,9 +113,11 @@ struct RemoteMessage {
         case .createdPost:
             return nil
         case .topicMessageNotification:
-            return payload.name
+            return payload.userName
         case .newTeammate:
-            return payload.name
+            return payload.userName
+        case .walletFunded:
+            return "Team: \(payload.teamNameValue)"
         default:
             return nil
         }
@@ -73,33 +125,33 @@ struct RemoteMessage {
     
     var body: String? {
         switch payload.type {
-        case .createdPost:
-            return payload.text
+        case .createdPost,
+             .privateMessage:
+            return payload.message
+        case .walletFunded:
+            return """
+            Wallet for team \(payload.teamNameValue) is funded for \(payload.cryptoAmountValue)mETH \
+            (\(payload.currencyAmountValue))
+            """
         default:
             return nil
         }
     }
     
     var avatar: String? { return payload.avatar }
-    
-    var image: String? {
-        switch payload.type {
-        case .newClaim,
-             .walletFunded:
-            return payload.teamURL
-        default:
-            return nil
-        }
-    }
+    var image: String? { return payload.image }
 }
 
 enum RemoteCommandType: Int {
     case unknown = 0
     
+    // will come only from Sockets
     case createdPost = 1
     case deletedPost = 2
     case typing = 3
     case newClaim = 4
+    
+    // may come from Push
     case privateMessage = 5
     case walletFunded = 6
     case postsSinceInteracted = 7
@@ -132,17 +184,17 @@ enum RemoteCommand {
         name: String,
         avatar: String,
         amount: String,
-        teamURL: String,
         teamName: String)
+    
     case privateMessage(userID: String,
         name: String,
         avatar: String,
-        text: String)
+        message: String)
     case walletFunded(teamID: Int,
         userID: String,
         cryptoAmount: String,
         currencyAmount: String,
-        teamURL: String,
+        teamLogo: String,
         teamName: String)
     case postsSinceInteracted(count: Int)
     case newTeammate(teamID: Int,
@@ -157,62 +209,58 @@ enum RemoteCommand {
     
     // swiftlint:disable:next function_body_length
     static func command(from payload: RemotePayload) -> RemoteCommand {
-        let teamID = payload.teamID ?? 0
-        let userID = payload.userID ?? ""
-        let topicID = payload.topicID ?? ""
         
         switch payload.type {
         case .createdPost:
-            return .createdPost(teamID: teamID,
-                                userID: userID,
-                                topicID: topicID,
-                                postID: payload.postID ?? "",
-                                name: payload.name ?? "",
-                                avatar: payload.avatar ?? "",
-                                text: payload.text ?? "")
+            return .createdPost(teamID: payload.teamIDValue,
+                                userID: payload.userIDValue,
+                                topicID: payload.topicIDValue,
+                                postID: payload.postIDValue,
+                                name: payload.userNameValue,
+                                avatar: payload.image,
+                                text: payload.messageValue)
         case .deletedPost:
-            return .deletedPost(teamID: teamID,
-                                userID: userID,
-                                topicID: topicID,
-                                postID: payload.postID ?? "")
+            return .deletedPost(teamID: payload.teamIDValue,
+                                userID: payload.userIDValue,
+                                topicID: payload.topicIDValue,
+                                postID: payload.postIDValue)
         case .typing:
-            return .typing(teamID: teamID,
-                           userID: userID,
-                           topicID: topicID,
-                           name: payload.name ?? "")
+            return .typing(teamID: payload.teamIDValue,
+                           userID: payload.userIDValue,
+                           topicID: payload.topicIDValue,
+                           name: payload.userNameValue)
         case .newClaim:
-            return .newClaim(teamID: teamID,
-                             userID: userID,
-                             claimID: payload.claimID ?? 0,
-                             name: payload.name ?? "",
-                             avatar: payload.avatar ?? "",
-                             amount: payload.amount ?? "",
-                             teamURL: payload.teamURL ?? "",
-                             teamName: payload.teamName ?? ""
+            return .newClaim(teamID: payload.teamIDValue,
+                             userID: payload.userIDValue,
+                             claimID: payload.claimIDValue,
+                             name: payload.userNameValue,
+                             avatar: payload.image,
+                             amount: payload.amountValue,
+                             teamName: payload.teamNameValue
             )
         case .privateMessage:
-            return .privateMessage(userID: userID,
-                                   name: payload.name ?? "",
-                                   avatar: payload.avatar ?? "",
-                                   text: payload.text ?? "")
+            return .privateMessage(userID: payload.userIDValue,
+                                   name: payload.userNameValue,
+                                   avatar: payload.image,
+                                   message: payload.messageValue)
         case .walletFunded:
-            return .walletFunded(teamID: teamID,
-                                 userID: userID,
-                                 cryptoAmount: payload.cryptoAmount ?? "",
-                                 currencyAmount: payload.currencyAmount ?? "",
-                                 teamURL: payload.teamURL ?? "",
-                                 teamName: payload.teamName ?? "")
+            return .walletFunded(teamID: payload.teamIDValue,
+                                 userID: payload.userIDValue,
+                                 cryptoAmount: payload.cryptoAmountValue,
+                                 currencyAmount: payload.currencyAmountValue,
+                                 teamLogo: payload.image,
+                                 teamName: payload.teamNameValue)
         case .postsSinceInteracted:
-            return .postsSinceInteracted(count: payload.postsCount ?? 0)
+            return .postsSinceInteracted(count: payload.postsCountValue)
         case .topicMessageNotification:
             return .topicMessage
         case .newTeammate:
-            return .newTeammate(teamID: teamID,
-                                userID: userID,
-                                teammateID: payload.teammateID ?? 0,
-                                name: payload.name ?? "",
-                                avatar: payload.avatar ?? "",
-                                teamName: payload.teamName ?? "")
+            return .newTeammate(teamID: payload.teamIDValue,
+                                userID: payload.userIDValue,
+                                teammateID: payload.teammateIDValue,
+                                name: payload.userNameValue,
+                                avatar: payload.image,
+                                teamName: payload.teamNameValue)
         default:
             return .unknown(payload: payload)
         }

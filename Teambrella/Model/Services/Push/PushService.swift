@@ -96,6 +96,29 @@ class PushService: NSObject {
                               avatar: _,
                               teamName: _):
             service.router.presentMemberProfile(teammateID: String(teammateID))
+        case .privateMessage:
+            service.router.presentPrivateMessages()
+            if let user = PrivateChatUser(remoteCommand: command) {
+                let context = ChatContext.privateChat(user)
+                service.router.presentChat(context: context, itemType: .privateChat)
+            }
+        case let .walletFunded(teamID: teamID,
+                               userID: userID,
+                               cryptoAmount: cryptoAmount,
+                               currencyAmount: currencyAmount,
+                               teamLogo: teamLogo,
+                               teamName: teamName):
+            if let session = service.session {
+                if let team = session.currentTeam, team.teamID != teamID {
+                    for team in session.teams {
+                        if team.teamID == teamID {
+                            service.session?.switchToTeam(id: teamID)
+                            service.router.switchTeam()
+                        }
+                    }
+                }
+            }
+            service.router.switchToWallet()
         default:
             break
         }
