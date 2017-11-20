@@ -29,7 +29,7 @@ protocol TeambrellaServiceDelegate: class {
 class TeambrellaService {
     struct Constant {
         static let maxAttempts = 3
-        static let gasLimit = 1300000
+        static let gasLimit = 1300001
     }
     
     let dispatchQueue = DispatchQueue(label: "com.teambrella.teambrellaService.queue", qos: .background)
@@ -104,15 +104,18 @@ class TeambrellaService {
         let txsToUpdate = contentProvider.transactionsNeedServerUpdate
         let signatures = contentProvider.signaturesToUpdate
         let user = contentProvider.user
+        let multisigsToUpdate = contentProvider.multisigsNeedsServerUpdate
         server.getUpdates(privateKey: user.privateKey,
                           lastUpdated: user.lastUpdated,
+                          multisigs: multisigsToUpdate,
                           transactions: txsToUpdate,
-                          signatures: signatures) { [unowned self] reply in
+                          signatures: signatures
+                          ) { [unowned self] reply in
                             switch reply {
                             case .success(let json, let timestamp):
                                 log("BlockchainStorage Server update to local db received json: \(json)", type: .crypto)
                                 let factory = EntityFactory(fetcher: self.contentProvider)
-                                factory.updateLocalDb(txs: txsToUpdate, signatures: signatures, json: json)
+                                factory.updateLocalDb(txs: txsToUpdate, signatures: signatures, multisigs: multisigsToUpdate, json: json)
                                 user.lastUpdated = timestamp
                                 self.contentProvider.save()
                                 completion(true)
@@ -249,14 +252,13 @@ class TeambrellaService {
                                             // for the same team.
                                             multisig.creationTx = txHex
                                             multisig.needServerUpdate = false
-                                            self.contentProvider.save()
-                                            /*
-                                            self.contentProvider.createUnconfirmed(id: multisig.id,
+                                            multisig.address = nil
+                                            self.contentProvider.createUnconfirmed(multisigId: multisig.id,
                                                                                    tx: txHex,
                                                                                    gasPrice: gasPrice,
                                                                                    nonce: nonce,
                                                                                    date: Date())
- */
+                                            self.contentProvider.save()
                                             nonce += 1
                                             success = true
                                             group.leave()
@@ -278,13 +280,21 @@ class TeambrellaService {
         let creationTxs = contentProvider.multisigsInCreation(publicKey: publicKey)
         var success = !creationTxs.isEmpty
         let group = DispatchGroup()
+        
         for multisig in creationTxs {
+            let oldUnconfirmed = contentProvider.unconfirmed(multisigId: multisig.id, txHash: multisig.creationTx!)
+            multisig.unconfirmed = oldUnconfirmed
             group.enter()
             wallet.validateCreationTx(multisig: multisig, gasLimit: gasLimit, success: { [weak self] address in
                 multisig.address = address
                 multisig.needServerUpdate = true
                 self?.contentProvider.save()
                 group.leave()
+            }, notmined: { [weak self] gasLimit in
+                self?.recreateWalletIfTimedOut(multisig: multisig, gasLimit: gasLimit, completion: { [weak self] innerSuccees in
+                    success = false
+                    group.leave()
+                })
             }, failure: { error in
                 success = false
                 group.leave()
@@ -292,6 +302,43 @@ class TeambrellaService {
             group.wait()
         }
         completion(success)
+    }
+    
+    func recreateWalletIfTimedOut(multisig: Multisig, gasLimit: Int, completion: @escaping (Bool) -> Void) {
+        guard let unconfirmed = multisig.unconfirmed else {
+            completion(false)
+            return
+        }
+        guard let unconfirmedDate = unconfirmed.dateCreated else {
+            completion(false)
+            return
+        }
+        let timeout = NSCalendar.current.date(byAdding: .hour, value: -12, to: NSDate() as Date)!
+        if unconfirmedDate >= timeout  {
+            completion(false)
+            return
+        }
+        
+        let betterGasPrice = getBetterGasPriceForContractCreation(oldPrice: unconfirmed.cryptoFee)
+        
+        self.wallet.createOneWallet(myNonce: unconfirmed.cryptoNonce,
+                                    multisig: multisig,
+                                    gaslLimit: gasLimit,
+                                    gasPrice: betterGasPrice,
+                                    completion: { recreatedTxHash in
+                                        let newUnconfirmed = self.contentProvider.createUnconfirmed(multisigId: multisig.id,
+                                                                                                    tx: recreatedTxHash,
+                                                                                                    gasPrice: betterGasPrice,
+                                                                                                    nonce: unconfirmed.cryptoNonce,
+                                                                                                    date: Date())
+                                        multisig.creationTx = recreatedTxHash
+                                        multisig.unconfirmed = newUnconfirmed
+                                        multisig.needServerUpdate = false
+                                        self.contentProvider.save()
+                                        completion(true)
+        }, failure: { error in
+            completion(false)
+        })
     }
     
     func depositWallet() {
@@ -335,6 +382,17 @@ class TeambrellaService {
         let sameTeamMultisigs = contentProvider.multisigsWithAddress(publicKey: publicKey, teammateID: myTeammateID)
         return sameTeamMultisigs.first
     }
+    
+    
+    private func getBetterGasPriceForContractCreation(oldPrice: Int) -> Int {
+        var betterPrice = oldPrice + 1;
+        let recommendedPrice = 0 //refreshContractCreateGasPrice()
+        if (recommendedPrice > betterPrice) {
+            betterPrice = recommendedPrice;
+        }
+        return betterPrice
+    }
+    
     
     //    func update() -> Bool {
     //        return false

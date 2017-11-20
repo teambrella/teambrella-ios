@@ -18,8 +18,14 @@ import CoreData
 import Foundation
 
 class Unconfirmed: NSManagedObject {
-    var id: Int { return Int(idValue) }
-    var multisigID: Int { return Int(multisigIdValue) }
+    var multisigId: Int {
+        get {
+            return Int(multisigIdValue)
+        }
+        set {
+            multisigIdValue = Int64(newValue)
+        }
+    }
     var txID: String? { return txIdValue }
     var cryptoTx: String? { return cryptoTxValue }
     var cryptoFee: Int { return Int(cryptoFeeValue) }

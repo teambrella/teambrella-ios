@@ -127,11 +127,11 @@ class EtherAPI {
                         "address": address],
                        success: { json in
                         guard let string = json.string,
-                            let balance = Decimal(string: string) else {
+                            var balance = Decimal(string: string) else {
                                 failure(EtherAPIError.corruptedData)
                                 return
                         }
-                        
+                        balance = balance / 1_000_000_000_000_000_000
                         success(balance)
         }) { error in
             failure(error)
