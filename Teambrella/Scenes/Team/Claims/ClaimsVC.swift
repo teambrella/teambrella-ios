@@ -76,11 +76,11 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     }
     
     @IBAction func tapReportButton(_ sender: Any) {
-        guard let model = HomeDataSource.model else { return }
-        
-        let item = ClaimItem(name: model.objectName, photo: model.smallPhoto, location: "")
-        let context = ReportContext.claim(item: item, coverage: model.coverage, balance: model.balance)
-        service.router.presentReport(context: context, delegate: self)
+//        guard let model = HomeDataSource.model else { return }
+//        
+//        let item = ClaimItem(name: model.objectName, photo: model.smallPhoto, location: "")
+//        let context = ReportContext.claim(item: item, coverage: model.coverage, balance: model.balance)
+//        service.router.presentReport(context: context, delegate: self)
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
