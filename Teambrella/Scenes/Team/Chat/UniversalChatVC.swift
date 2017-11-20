@@ -28,6 +28,7 @@ enum ChatContext {
     case home(HomeScreenModel.Card)
     case chat(ChatModel)
     case privateChat(PrivateChatUser)
+    case remote(RemoteTopicDetails)
     case none
 }
 

@@ -85,6 +85,7 @@ class PushService: NSObject {
         executeCommand()
     }
     
+    // swiftlint:disable:next cyclomatic_complexity
     func executeCommand() {
         guard let command = command else { return }
         
@@ -119,11 +120,26 @@ class PushService: NSObject {
                 }
             }
             service.router.switchToWallet()
+            case let .topicMessage(topicID: topicID,
+                               topicName: topicName,
+                               userName: userName,
+                               avatar: avatar, details: details):
+                if let details = details as? RemotePayload.Claim {
+                    service.router.presentClaims()
+                    service.router.presentClaim(claimID: details.claimID)
+                    service.router.presentChat(context: ChatContext.remote(details), itemType: .claim)
+                } else if let details = details as? RemotePayload.Teammate {
+                    service.router.presentMemberProfile(teammateID: details.userID)
+                    service.router.presentChat(context: ChatContext.remote(details), itemType: .teammate)
+                } else if let details = details as? RemotePayload.Discussion {
+                    service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat)
+                }
         default:
             break
         }
         self.command = nil
     }
+    
 }
 
 extension PushService: UNUserNotificationCenterDelegate {
