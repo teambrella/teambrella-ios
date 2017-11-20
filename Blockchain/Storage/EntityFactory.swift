@@ -33,10 +33,11 @@ struct EntityFactory {
         self.context = fetcher.context
     }
     
-    func updateLocalDb(txs: [Tx], signatures: [TxSignature], json: JSON) {
+    func updateLocalDb(txs: [Tx], signatures: [TxSignature], multisigs: [Multisig], json: JSON) {
         txs.forEach { tx in tx.isServerUpdateNeeded = false }
         signatures.forEach { signature in signature.isServerUpdateNeeded = false }
-        
+        multisigs.forEach { multisig in multisig.needServerUpdate = false }
+
         createAndUpdate(with: json)
         check(with: json)
         connectEntities(with: json)

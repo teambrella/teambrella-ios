@@ -59,4 +59,14 @@ class Multisig: NSManagedObject {
         return cosigners
     }
     
+    var unconfirmed: Unconfirmed? {
+        get {
+            return unconfirmedValue
+        }
+        set {
+            unconfirmedValue = newValue
+        }
+        
+    }
+    
 }

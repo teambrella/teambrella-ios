@@ -56,14 +56,15 @@ class TeambrellaContentProvider {
         return user
     }
     
-    func createUnconfirmed(id: Int, tx: String, gasPrice: Int, nonce: Int, date: Date) {
-        let unconfirmed = Unconfirmed()
-        unconfirmed.idValue = Int64(id)
+    func createUnconfirmed(multisigId: Int, tx: String, gasPrice: Int, nonce: Int, date: Date) -> Unconfirmed {
+        let unconfirmed = Unconfirmed(context: context)
+        unconfirmed.multisigIdValue = Int64(multisigId)
         unconfirmed.cryptoTxValue = tx
         unconfirmed.cryptoFeeValue = Int64(gasPrice)
         unconfirmed.cryptoNonceValue = Int64(nonce)
         unconfirmed.dateCreatedValue = date
         save()
+        return unconfirmed
     }
     
     // MARK: Address
@@ -294,7 +295,11 @@ class TeambrellaContentProvider {
     func multisig(id: Int64) -> Multisig? {
         return multisigs(with: NSPredicate(format: "idValue = %i", id)).first
     }
-    
+
+    var multisigsNeedsServerUpdate: [Multisig] {
+        return multisigs(with: NSPredicate(format: "needServerUpdateValue == TRUE"))
+    }
+
     func multisigsToCreate(publicKey: String) -> [Multisig] {
         let predicates = [NSPredicate(format: "addressValue = nil"),
                           NSPredicate(format: "statusValue = %i", MultisigStatus.current.rawValue),
@@ -335,6 +340,16 @@ class TeambrellaContentProvider {
         request.predicate = predicate
         let items = try? context.fetch(request)
         return items ?? []
+    }
+    
+    func unconfirmed(multisigId: Int, txHash: String) -> Unconfirmed? {
+        let predicates = [NSPredicate(format: "multisigIdValue = %i", multisigId),
+                          NSPredicate(format: "cryptoTxValue = %@", txHash)
+        ]
+        let request: NSFetchRequest<Unconfirmed> = Unconfirmed.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        let result = try? context.fetch(request)
+        return result?.first
     }
     
 }

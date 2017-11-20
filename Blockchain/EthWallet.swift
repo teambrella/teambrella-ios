@@ -35,8 +35,8 @@ class EthWallet {
     lazy var blockchain = { EtherNode(isTestNet: self.isTestNet) }()
     
     // 0.1 Gwei is enough since October 16, 2017 (1 Gwei = 10^9 wei)
-    var gasPrice: Int { return isTestNet ? 100000001 : 100000001 }
-    var contractGasPrice: Int { return isTestNet ? 100000001 : 100000001 }
+    var gasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
+    var contractGasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
     
     
     var contract: String? {
@@ -139,6 +139,7 @@ class EthWallet {
     func validateCreationTx(multisig: Multisig,
                             gasLimit: Int,
                             success: @escaping (String) -> Void,
+                            notmined: @escaping (Int) -> Void,
                             failure: @escaping (Error?) -> Void) {
         guard let creationTx = multisig.creationTx else {
             failure(EthWalletError.multisigHasNoCreationTx(multisig.id))
@@ -147,20 +148,24 @@ class EthWallet {
         
         //let blockchain = EtherNode(isTestNet: isTestNet)
         blockchain.checkTx(creationTx: creationTx, success: { txReceipt in
-            let gasUsed = Int(hexString: txReceipt.gasUsed)
-            let isAllGasUsed = gasUsed == gasLimit
-            if !isAllGasUsed {
-                success(txReceipt.contractAddress)
+            if !txReceipt.blockNumber.isEmpty {
+                let gasUsed = Int(hexString: txReceipt.gasUsed)
+                let isAllGasUsed = gasUsed == gasLimit
+                if !isAllGasUsed {
+                    success(txReceipt.contractAddress)
+                } else {
+                    failure(EthWalletError.allGasUsed)
+                }
             } else {
-                failure(EthWalletError.allGasUsed)
+                notmined(gasLimit)
             }
-        }) { error in
+        }, failure: { error in
             failure(error)
-        }
+        })
     }
     
     func deposit(multisig: Multisig, completion: @escaping (Bool) -> Void) {
-        guard let address = multisig.address else { return }
+        guard let address = processor.ethAddressString else { return }
         
         blockchain.checkBalance(address: address, success: { gasWalletAmount in
             print("balance is \(gasWalletAmount)")
@@ -170,7 +175,7 @@ class EthWallet {
                     do {
                         var tx = try self.processor.depositTx(nonce: nonce,
                                                  gasLimit: 50000,
-                                                 toAddress: address,
+                                                 toAddress: multisig.address!,
                                                  gasPrice: self.gasPrice,
                                                  value: value)
                         try tx = self.processor.signTx(unsignedTx: tx, isTestNet: self.isTestNet)
