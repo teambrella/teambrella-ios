@@ -17,7 +17,62 @@
 import Foundation
 
 struct RemotePayload {
+    struct Claim {
+        let id: String
+        let userName: String
+        let objectName: String
+        let avatar: String
+        
+        init?(dict: [AnyHashable: Any]) {
+            var dict = dict
+            if let claimDict = dict["Claim"] as? [AnyHashable: Any] { dict = claimDict }
+            guard let id = dict["ClaimId"] as? String,
+            let userName = dict["UserName"] as? String,
+            let objectName = dict["ObjectName"] as? String,
+                let avatar = dict["SmallPhoto"] as? String else { return nil }
+            
+            self.id = id
+            self.userName = userName
+            self.objectName = objectName
+            self.avatar = avatar
+        }
+    }
+    
+    struct Teammate {
+        let userID: String
+        let userName: String
+        let avatar: String
+        
+        init?(dict: [AnyHashable: Any]) {
+            var dict = dict
+            if let teammateDict = dict["Teammate"] as? [AnyHashable: Any] { dict = teammateDict }
+            guard let id = dict["UserId"] as? String,
+                let userName = dict["UserName"] as? String,
+                let avatar = dict["Avatar"] as? String else { return nil }
+            
+            self.userID = id
+            self.userName = userName
+            self.avatar = avatar
+        }
+    }
+    
+    struct Discussion {
+        let topicName: String
+        
+        init?(dict: [AnyHashable: Any]) {
+            var dict = dict
+            if let discussionDict = dict["Discussion"] as? [AnyHashable: Any] { dict = discussionDict }
+            guard let topicName = dict["TopicName"] as? String else { return nil }
+            
+            self.topicName = topicName
+        }
+    }
+    
     let dict: [AnyHashable: Any]
+    
+    var claim: RemotePayload.Claim?
+    var teammate: RemotePayload.Teammate?
+    var discussion: RemotePayload.Discussion?
     
     var type: RemoteCommandType { return (dict["Cmd"] as? Int).flatMap { RemoteCommandType(rawValue: $0) } ?? .unknown }
     var timestamp: Int64 { return dict["Timestamp"] as? Int64 ?? 0 }
@@ -51,7 +106,7 @@ struct RemotePayload {
     
     var teamIDValue: Int { return value(from: teamID) }
     var teamNameValue: String { return value(from: teamName) }
-    var newTeammatesCountValue: Int { return value(from: newTeammatesCount)}
+    var newTeammatesCountValue: Int { return value(from: newTeammatesCount) }
     var userIDValue: String { return value(from: userID) }
     var userNameValue: String { return value(from: userName) }
     var teammateIDValue: Int { return value(from: teammateID) }
@@ -73,6 +128,13 @@ struct RemotePayload {
             return teamLogo
         }
         return ""
+    }
+    
+    init(dict: [AnyHashable: Any]) {
+        self.dict = dict
+        self.claim = RemotePayload.Claim(dict: dict)
+        self.teammate = RemotePayload.Teammate(dict: dict)
+        self.discussion = RemotePayload.Discussion(dict: dict)
     }
     
     private func value(from: String?) -> String {
