@@ -76,6 +76,12 @@ class PushService: NSObject {
     func remoteNotification(in application: UIApplication,
                             userInfo: [AnyHashable: Any],
                             completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let aps = userInfo["aps"] as? [AnyHashable: Any], let content = aps["content-available"] as? Bool {
+            if content == true {
+                print("Content is available")
+                service.teambrella.startUpdating()
+            }
+        }
         guard command == nil else { return }
         guard let payloadDict = userInfo["Payload"] as? [AnyHashable: Any] else { return }
         
@@ -120,7 +126,7 @@ class PushService: NSObject {
         service.router.presentPrivateMessages()
         if let user = PrivateChatUser(remoteCommand: command) {
             let context = ChatContext.privateChat(user)
-            service.router.presentChat(context: context, itemType: .privateChat)
+            service.router.presentChat(context: context, itemType: .privateChat, animated: false)
         }
     }
     
@@ -139,14 +145,15 @@ class PushService: NSObject {
     
     private func showTopic(details: RemoteTopicDetails?) {
         if let details = details as? RemotePayload.Claim {
-            service.router.presentClaims()
-            service.router.presentClaim(claimID: details.claimID)
-            service.router.presentChat(context: ChatContext.remote(details), itemType: .claim)
+            service.router.switchToFeed()
+            service.router.presentClaims(animated: false)
+            service.router.presentClaim(claimID: details.claimID, animated: false)
+            service.router.presentChat(context: ChatContext.remote(details), itemType: .claim, animated: false)
         } else if let details = details as? RemotePayload.Teammate {
-            service.router.presentMemberProfile(teammateID: details.userID)
-            service.router.presentChat(context: ChatContext.remote(details), itemType: .teammate)
+            service.router.presentMemberProfile(teammateID: details.userID, animated: false)
+            service.router.presentChat(context: ChatContext.remote(details), itemType: .teammate, animated: false)
         } else if let details = details as? RemotePayload.Discussion {
-            service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat)
+            service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat, animated: false)
         }
     }
     

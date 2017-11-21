@@ -55,6 +55,8 @@ class TeambrellaService {
     
     var key: Key { return Key(base58String: self.contentProvider.user.privateKey, timestamp: self.server.timestamp) }
     
+    var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -164,6 +166,7 @@ class TeambrellaService {
     
     func sync() {
         print("Teambrella service start sync")
+        registerBackgroundTask()
         queue.addOperation {
             self.queue.isSuspended = true
             self.createWallets(gasLimit: Constant.gasLimit, completion: { success in
@@ -209,6 +212,7 @@ class TeambrellaService {
         
         queue.addOperation {
             print("Teambrella service executed all sync operations")
+            self.endBackgroundTask()
         }
         
     }
@@ -398,6 +402,19 @@ class TeambrellaService {
     //    func update() -> Bool {
     //        return false
     //    }
+    
+    func registerBackgroundTask() {
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+            self?.endBackgroundTask()
+        }
+        assert(backgroundTask != UIBackgroundTaskInvalid)
+    }
+    
+    func endBackgroundTask() {
+        print("Background task ended.")
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        backgroundTask = UIBackgroundTaskInvalid
+    }
     
 }
 
