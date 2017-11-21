@@ -24,13 +24,15 @@ class NotificationService: UNNotificationServiceExtension {
     override func didReceive(_ request: UNNotificationRequest,
                              withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
-        bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
         guard let content = request.content.mutableCopy() as? UNMutableNotificationContent else { return }
         guard let payloadDict = content.userInfo["Payload"] as? [AnyHashable: Any] else { return }
         
+        bestAttemptContent = content
         let payload = RemotePayload(dict: payloadDict)
-        
+
         let message = RemoteMessage(payload: payload)
+        
+        // set content from payload instead of aps
         message.title.flatMap { content.title = $0 }
         message.subtitle.flatMap { content.subtitle = $0 }
         message.body.flatMap { content.body = $0 }
@@ -42,7 +44,6 @@ class NotificationService: UNNotificationServiceExtension {
                     content.attachments = [attachment]
                     contentHandler(content)
                 } else {
-                    content.title = "Failed to fetch image"
                     contentHandler(content)
                 }
             })
@@ -53,20 +54,16 @@ class NotificationService: UNNotificationServiceExtension {
                     content.attachments = [attachment]
                     contentHandler(content)
                 } else {
-                    content.title = "Failed to fetch image"
                     contentHandler(content)
                 }
             })
         } else {
-            // fall back to the original content
-            content.title = "No info about image in this push"
-            contentHandler(request.content)
+            contentHandler(content)
         }
     }
     
     override func serviceExtensionTimeWillExpire() {
         if let contentHandler = contentHandler, let bestAttemptContent =  bestAttemptContent {
-            bestAttemptContent.title = "Time expired"
             contentHandler(bestAttemptContent)
         }
     }
