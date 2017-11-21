@@ -22,8 +22,8 @@
 import Foundation
 import SwiftyJSON
 
-struct ClaimEntity: ClaimLike {
-    var id: String
+struct ClaimEntity {
+    var id: Int
     var lastUpdated: Int64
     
     var smallPhoto: String
@@ -45,7 +45,7 @@ struct ClaimEntity: ClaimLike {
     }
     
     init(json: JSON) {
-        id = json["Id"].stringValue
+        id = json["Id"].intValue
         lastUpdated = json["LastUpdated"].int64Value
         smallPhoto = json["SmallPhoto"].stringValue
         avatar = json["Avatar"].stringValue
@@ -64,11 +64,11 @@ struct ClaimEntity: ClaimLike {
 }
 
 struct ClaimFactory {
-    static func claim(with json: JSON) -> ClaimLike {
+    static func claim(with json: JSON) -> ClaimEntity {
         return ClaimEntity(json: json)
     }
     
-    static func claims(with json: JSON) -> [ClaimLike] {
+    static func claims(with json: JSON) -> [ClaimEntity] {
         return json.arrayValue.map { self.claim(with: $0) }
     }
 }

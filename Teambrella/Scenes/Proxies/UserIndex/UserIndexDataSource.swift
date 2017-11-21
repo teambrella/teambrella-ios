@@ -71,8 +71,7 @@ class UserIndexDataSource {
         
         isLoading = true
         service.server.updateTimestamp { [weak self] timestamp, error in
-            let key = Key(base58String: ServerService.privateKey,
-                          timestamp: timestamp)
+            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
             guard let id = self?.teamID, var offset = self?.count, let limit = self?.limit,
                 let search = self?.search, let sort = self?.sortType else { return }
             

@@ -30,7 +30,7 @@ protocol ClaimsCell {
 }
 
 struct ClaimsCellBuilder {
-    static func populate(cell: UICollectionViewCell, with claim: ClaimLike) {
+    static func populate(cell: UICollectionViewCell, with claim: ClaimEntity) {
         guard let cell = cell as? ClaimsCell else { return }
         
         cell.ownerAvatarView.showAvatar(string: claim.avatar)

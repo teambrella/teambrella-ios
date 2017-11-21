@@ -61,7 +61,11 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         setupObjectView()
         if isPresentedInStack {
             addGradientNavBar()
-            collectionView.contentInsetAdjustmentBehavior = .never
+            if #available(iOS 11.0, *) {
+                collectionView.contentInsetAdjustmentBehavior = .never
+            } else {
+                automaticallyAdjustsScrollViewInsets = false
+            }
         }
     }
     

@@ -51,11 +51,10 @@ struct ClaimCellBuilder {
     }
     
     static func populateImageGallery(cell: ImageGalleryCell, with claim: EnhancedClaimEntity) {
-        let imageURLStrings = claim.largePhotos.map { service.server.urlString(string: $0) }
+        let imageURLStrings = claim.largePhotos.map { URLBuilder().urlString(string: $0) }
         log("\(imageURLStrings)", type: .serviceInfo)
         service.server.updateTimestamp { timestamp, error in
-            let key = Key(base58String: ServerService.privateKey,
-                          timestamp: timestamp)
+            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
             let modifier = AnyModifier { request in
                 var request = request
                 request.addValue("\(key.timestamp)", forHTTPHeaderField: "t")
@@ -65,7 +64,7 @@ struct ClaimCellBuilder {
             }
             cell.setupGallery(with: imageURLStrings, options: [.requestModifier(modifier)])
         }
-        cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: claim.avatar)))
+        cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: claim.avatar)))
         cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)//"Claim \(claim.id)"
         cell.textLabel.text = claim.originalPostText
         cell.unreadCountLabel.text = "\(claim.unreadCount)"
@@ -95,7 +94,7 @@ struct ClaimCellBuilder {
             cell.yourVoteAmount.text = String.truncatedNumber(proxyVote * claim.claimAmount)
             cell.slider.setValue(Float(proxyVote), animated: true)
             if let proxyAvatar = claim.proxyAvatar {
-                cell.proxyAvatar.kf.setImage(with: URL(string: service.server.avatarURLstring(for: proxyAvatar)))
+                cell.proxyAvatar.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: proxyAvatar)))
                 cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
             }
         } else {
@@ -118,7 +117,7 @@ struct ClaimCellBuilder {
         cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.resetButton.addTarget(delegate, action: #selector(ClaimVC.tapResetVote), for: .touchUpInside)
         
-        let avatars = claim.otherAvatars.flatMap { URL(string: service.server.avatarURLstring(for: $0)) }
+        let avatars = claim.otherAvatars.flatMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
         let label: String?  =  claim.otherCount > 0 ? "\(claim.otherCount)" : nil
         cell.avatarsStack.set(images: avatars, label: label, max: 3)
     }

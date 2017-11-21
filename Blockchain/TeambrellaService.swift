@@ -55,6 +55,8 @@ class TeambrellaService {
     
     var key: Key { return Key(base58String: self.contentProvider.user.privateKey, timestamp: self.server.timestamp) }
     
+    var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -164,6 +166,7 @@ class TeambrellaService {
     
     func sync() {
         print("Teambrella service start sync")
+        registerBackgroundTask()
         queue.addOperation {
             self.queue.isSuspended = true
             self.createWallets(gasLimit: Constant.gasLimit, completion: { success in
@@ -209,6 +212,7 @@ class TeambrellaService {
         
         queue.addOperation {
             print("Teambrella service executed all sync operations")
+            self.endBackgroundTask()
         }
         
     }
@@ -233,6 +237,7 @@ class TeambrellaService {
                 if let sameMultisig = self.myTeamMultisigIfAny(publicKey: myPublicKey,
                                                                myTeammateID: multisig.teammate?.id ?? 0,
                                                                multisigs: multisigsToCreate) {
+                    print("same multisig: \(sameMultisig)")
                     // todo: move "cosigner list", and send to the server the move tx (not creation tx).
                     ////boolean needServerUpdate = (sameTeammateMultisig.address != null);
                     ////operations.add(mTeambrellaClient.setMutisigAddressTxAndNeedsServerUpdate(m,
@@ -291,7 +296,7 @@ class TeambrellaService {
                 self?.contentProvider.save()
                 group.leave()
             }, notmined: { [weak self] gasLimit in
-                self?.recreateWalletIfTimedOut(multisig: multisig, gasLimit: gasLimit, completion: { [weak self] innerSuccees in
+                self?.recreateWalletIfTimedOut(multisig: multisig, gasLimit: gasLimit, completion: { innerSuccees in
                     success = false
                     group.leave()
                 })
@@ -397,6 +402,19 @@ class TeambrellaService {
     //    func update() -> Bool {
     //        return false
     //    }
+    
+    func registerBackgroundTask() {
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+            self?.endBackgroundTask()
+        }
+        assert(backgroundTask != UIBackgroundTaskInvalid)
+    }
+    
+    func endBackgroundTask() {
+        print("Background task ended.")
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        backgroundTask = UIBackgroundTaskInvalid
+    }
     
 }
 

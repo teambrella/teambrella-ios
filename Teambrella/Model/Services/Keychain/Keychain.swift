@@ -39,7 +39,9 @@ import SwiftKeychainWrapper
 class Keychain {
     @discardableResult
     class func save(value: String, forKey key: KeychainKey) -> Bool {
-        return KeychainWrapper.standard.set(value, forKey: key.rawValue)
+        return KeychainWrapper.standard.set(value,
+                                            forKey: key.rawValue,
+                                            withAccessibility: KeychainItemAccessibility.always)
     }
     
     class func value(forKey key: KeychainKey) -> String? {

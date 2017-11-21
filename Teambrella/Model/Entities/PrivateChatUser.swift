@@ -23,12 +23,38 @@ import Foundation
 import SwiftyJSON
 
 struct PrivateChatUser {
-    let json: JSON
+    //let json: JSON
     
-    var id: String { return json["UserId"].stringValue }
-    var avatar: String { return json["Avatar"].stringValue }
-    var name: String { return json["Name"].stringValue }
-    var text: String { return json["Text"].stringValue }
-    var unreadCount: Int { return json["UnreadCount"].intValue }
-    var minutesSinceLast: Int { return json["SinceLastMessageMinutes"].intValue }
+    let id: String
+    let avatar: String
+    let name: String
+    let text: String
+    let unreadCount: Int
+    let minutesSinceLast: Int
+    
+    init(json: JSON) {
+        id = json["UserId"].stringValue
+        avatar = json["Avatar"].stringValue
+        name = json["Name"].stringValue
+        text = json["Text"].stringValue
+        unreadCount = json["UnreadCount"].intValue
+        minutesSinceLast = json["SinceLastMessageMinutes"].intValue
+    }
+    
+    init?(remoteCommand: RemoteCommand) {
+        switch remoteCommand {
+        case let .privateMessage(userID: userID,
+                                 name: name,
+                                 avatar: avatar,
+                                 message: message):
+            self.id = userID
+            self.name = name
+            self.avatar = avatar
+            self.text = message
+            self.unreadCount = 0
+            self.minutesSinceLast = 0
+        default:
+            return nil
+        }
+    }
 }

@@ -54,7 +54,7 @@ struct ChatTextParser {
         if string.hasPrefix("http") {
             cell.add(image: string)
         } else if let idx = Int(string), idx < item.images.count {
-            let fullText = service.server.urlString(string: item.images[idx])
+            let fullText = URLBuilder().urlString(string: item.images[idx])
             cell.add(image: fullText)
         }
     }

@@ -43,10 +43,10 @@ class ClaimsDataSource {
         }
     }
     
-    lazy var claims: [[ClaimLike]] = {
-        var array: [[ClaimLike]] = []
+    lazy var claims: [[ClaimEntity]] = {
+        var array: [[ClaimEntity]] = []
         for _ in self.order {
-            var subArray: [ClaimLike] = []
+            var subArray: [ClaimEntity] = []
             array.append(subArray)
         }
         return array
@@ -77,10 +77,9 @@ class ClaimsDataSource {
         
         isLoading = true
         service.server.updateTimestamp { timestamp, error in
-            let key = Key(base58String: ServerService.privateKey,
-                          timestamp: timestamp)
+            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
             
-            var payload: [String: Any] = ["TeamId": ServerService.teamID,
+            var payload: [String: Any] = ["TeamId": service.session?.currentTeam?.teamID ?? 0,
                                           "Offset": offset,
                                           "Limit": Constant.loadLimit,
                                           "AvatarSize": Constant.avatarSize]
@@ -130,7 +129,7 @@ class ClaimsDataSource {
         return claims[section].isEmpty == false
     }
     
-    private func process(claims: [ClaimLike]) {
+    private func process(claims: [ClaimEntity]) {
         for claim in claims {
             let idx: Int!
             switch claim.state {
@@ -157,7 +156,7 @@ class ClaimsDataSource {
         return claims[section].count
     }
     
-    subscript(indexPath: IndexPath) -> ClaimLike {
+    subscript(indexPath: IndexPath) -> ClaimEntity {
         return claims[indexPath.section][indexPath.row]
     }
 }

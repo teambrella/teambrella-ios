@@ -26,7 +26,7 @@ struct MembersCellBuilder {
     static func populate(cell: UICollectionViewCell, with teammate: TeammateEntity) {
          if let cell = cell as? TeammateCandidateCell {
             cell.titleLabel.text = teammate.name.entire
-            if let url: URL = URL(string: service.server.avatarURLstring(for: teammate.avatar)) {
+            if let url: URL = URL(string: URLBuilder().avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
             cell.titleLabel.text = teammate.name.entire
@@ -36,7 +36,7 @@ struct MembersCellBuilder {
             cell.dateLabel.text = dateText
             cell.chartView.setupWith(remainingMinutes: teammate.minutesRemaining)
         } else if let cell = cell as? TeammateCell {
-            if let url: URL = URL(string: service.server.avatarURLstring(for: teammate.avatar)) {
+            if let url: URL = URL(string: URLBuilder().avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
             guard let currency: String = service.session?.currentTeam?.currencySymbol else { return }

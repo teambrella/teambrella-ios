@@ -56,6 +56,7 @@ class TeambrellaContentProvider {
         return user
     }
     
+    @discardableResult
     func createUnconfirmed(multisigId: Int, tx: String, gasPrice: Int, nonce: Int, date: Date) -> Unconfirmed {
         let unconfirmed = Unconfirmed(context: context)
         unconfirmed.multisigIdValue = Int64(multisigId)

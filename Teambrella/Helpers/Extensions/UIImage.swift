@@ -36,11 +36,13 @@ extension UIImage {
                             width: CGFloat? = nil,
                             cornerRadius: CGFloat? = nil,
                             completion: @escaping (UIImage?, NSError?) -> Void) {
+        let urlBuilder = URLBuilder()
         let modified: String!
         if let width = width {
-            modified = service.server.avatarURLstring(for: string, width: width * UIScreen.main.nativeScale)
+            
+            modified = urlBuilder.avatarURLstring(for: string, width: width * UIScreen.main.nativeScale)
         } else {
-            modified = service.server.avatarURLstring(for: string)
+            modified = urlBuilder.avatarURLstring(for: string)
         }
         guard let url = URL(string: modified) else { return }
         
@@ -61,8 +63,9 @@ extension UIImage {
     }
     
     static func fetchImage(url: URL, completion: @escaping (UIImage?, NSError?) -> Void) {
-        service.server.updateTimestamp { timestamp, error in
-            let key = service.server.key
+        let timestampFetcher = TimestampFetcher()
+        timestampFetcher.requestTimestamp { timestamp, error in
+            let key = Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
             let modifier = AnyModifier { request in
                 var request = request
                 request.addValue("\(key.timestamp)", forHTTPHeaderField: "t")
@@ -82,7 +85,7 @@ extension UIImage {
     }
     
     static func fetchImage(string: String, completion: @escaping (UIImage?, NSError?) -> Void) {
-        guard let url = service.server.url(string: string) else { return }
+        guard let url = URLBuilder().url(string: string) else { return }
         
         fetchImage(url: url, completion: completion)
     }

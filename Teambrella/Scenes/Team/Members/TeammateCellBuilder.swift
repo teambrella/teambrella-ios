@@ -27,8 +27,6 @@ struct TeammateCellBuilder {
                          with teammate: ExtendedTeammateEntity,
                          controller: TeammateProfileVC) {
         switch cell {
-        case let cell as TeammateSummaryCell:
-            populateSummary(cell: cell, with: teammate, controller: controller)
         case let cell as TeammateObjectCell:
             populateObject(cell: cell, with: teammate, controller: controller)
         case let cell as TeammateContactCell:
@@ -238,7 +236,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateDiscussion(cell: DiscussionCell, with stats: Topic, avatar: String) {
-        cell.avatarView.kf.setImage(with: URL(string: service.server.avatarURLstring(for: avatar)))
+        cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: avatar)))
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
         switch stats.minutesSinceLastPost {
         case 0:
@@ -255,7 +253,7 @@ struct TeammateCellBuilder {
         cell.textLabel.text = message
         cell.unreadCountView.text = String(stats.unreadCount)
         cell.unreadCountView.isHidden = stats.unreadCount == 0
-        let urls = stats.topPosterAvatars.flatMap { URL(string: service.server.avatarURLstring(for: $0)) }
+        let urls = stats.topPosterAvatars.flatMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
         let morePersons = stats.posterCount - urls.count
         let text: String? = morePersons > 0 ? "+\(morePersons)" : nil
         cell.teammatesAvatarStack.set(images: urls, label: text, max: 4)

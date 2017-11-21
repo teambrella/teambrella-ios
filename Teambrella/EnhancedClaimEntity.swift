@@ -27,7 +27,7 @@ import SwiftyJSON
  
  It is made so for faster development
  */
-struct EnhancedClaimEntity: EntityLike {
+struct EnhancedClaimEntity {
     private var json: JSON
     
     var description: String { return "EnhancedClaimEntity id: \(id)" }
@@ -37,7 +37,7 @@ struct EnhancedClaimEntity: EntityLike {
     }
     
     // MARK: Getters
-    var id: String { return json["Id"].stringValue }
+    var id: Int { return json["Id"].intValue }
     var lastUpdated: Int64 { return json["LastUpdated"].int64Value }
     
     var basicPart: JSON { return json["BasicPart"] }

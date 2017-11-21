@@ -90,7 +90,7 @@ struct EthereumProcessor {
         let last32bytes = bytes[(bytes.count - 32)...]
         
         do {
-            let storedKeyString = KeyStorage().privateKey
+            let storedKeyString = KeyStorage.shared.privateKey
             print(key.debugDescription)
             print("stored private key string: \(storedKeyString)")
             print("ethereum address: \(account.getAddress().getHex())")

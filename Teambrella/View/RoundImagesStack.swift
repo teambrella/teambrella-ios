@@ -37,7 +37,7 @@ class RoundImagesStack: UIView {
     }
     
     func  setAvatars(images: [String], label: String? = nil, max: Int? = nil) {
-        let images = images.map { service.server.avatarURLstring(for: $0) }
+        let images = images.map { URLBuilder().avatarURLstring(for: $0) }
         let urls = images.flatMap { URL(string: $0) }
         set(images: urls, label: label, max: max)
     }
@@ -92,7 +92,7 @@ class RoundImagesStack: UIView {
         guard !views.isEmpty else { return }
         
         let side = bounds.height
-        let quantity = CGFloat(maxImages)
+        //let quantity = CGFloat(maxImages)
         //let interval: CGFloat = quantity > 1 ? (bounds.width - side) / (quantity - 1) : 0
         let interval = side * 0.8
         let size = CGSize(width: side, height: side)

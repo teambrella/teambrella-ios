@@ -22,10 +22,10 @@
 import Foundation
 import PKHUD
 
-fileprivate(set)var service = ServicesHandler.i
+fileprivate(set)var service = ServicesHandler.shared
 
 class ServicesHandler {
-    static let i = ServicesHandler()
+    static let shared = ServicesHandler()
     
     /// routing between application scenes
     let router = MainRouter()
@@ -46,10 +46,14 @@ class ServicesHandler {
     lazy var error: ErrorPresenter = ErrorPresenter()
     
     /// logging service
-    lazy var log: Log = Log(logLevel: .all)
+    lazy var log: Log = {
+        let log = Log.shared
+        log.logLevel = .all
+        return log
+    }()
     
     /// service to store private keys and last user logged in
-    lazy var keyStorage: KeyStorage = KeyStorage()
+    var keyStorage: KeyStorage { return KeyStorage.shared }
     
     // WIP!
     // old analogue of cryptoWorker. Should be merged and deleted
