@@ -53,11 +53,11 @@ class ClaimDataSource {
         cellIDs.append(ClaimOptionsCell.cellID)
     }
     
-    func loadData(claimID: String) {
+    func loadData(claimID: Int) {
         service.server.updateTimestamp { timestamp, error in
             let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
             
-            let body = RequestBody(key: key, payload: ["id": Int(claimID) ?? 0,
+            let body = RequestBody(key: key, payload: ["id": claimID,
                                                       "AvatarSize": Constant.avatarSize,
                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
             let request = TeambrellaRequest(type: .claim, body: body, success: { [weak self] response in
@@ -73,7 +73,7 @@ class ClaimDataSource {
     }
     
     func updateVoteOnServer(vote: Float?) {
-        let claimID = claim?.id ?? "0"
+        let claimID = claim?.id ?? 0
         let lastUpdated = claim?.lastUpdated ?? 0
         service.server.updateTimestamp { timestamp, error in
             let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
@@ -96,7 +96,7 @@ class ClaimDataSource {
     }
     
     func getUpdates() {
-        let claimID = claim?.id ?? "0"
+        let claimID = claim?.id ?? 0
         let lastUpdated = claim?.lastUpdated ?? 0
         service.server.updateTimestamp { timestamp, error in
             let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)

@@ -30,6 +30,17 @@ enum ChatContext {
     case privateChat(PrivateChatUser)
     case remote(RemoteTopicDetails)
     case none
+    
+    var claimID: Int? {
+        switch self {
+        case let .claim(entity):
+            return entity.id
+        case let .feed(feed):
+            return feed.itemType == .claim ? feed.itemID : nil
+        default:
+            return nil
+        }
+    }
 }
 
 final class UniversalChatVC: UIViewController, Routable {

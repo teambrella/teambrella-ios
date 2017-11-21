@@ -20,8 +20,15 @@
  */
 
 import Foundation
+import SwiftyJSON
 
-protocol ClaimLike: EntityLike {
+/*
+protocol ClaimLike {
+    /// id of the item in the current context
+    var id: Int { get }
+    /// entity version (every change of this entity on server increments this)
+   // var lastUpdated: Int64 { get }
+    
     var smallPhoto: String { get }
     var avatar: String { get }
     var model: String { get }
@@ -36,4 +43,7 @@ protocol ClaimLike: EntityLike {
     var proxyAvatar: String? { get }
     var proxyName: String? { get }
     
+     init(json: JSON)
+    
 }
+*/

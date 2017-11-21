@@ -27,7 +27,7 @@ struct RemotePayload {
         let topicID: String
         let topicName: String
         
-        let claimID: String
+        let claimID: Int
         let userName: String
         let objectName: String
         let avatar: String
@@ -37,7 +37,7 @@ struct RemotePayload {
             self.topicID = dict["TopicId"] as? String ?? ""
             self.topicName = dict["TopicName"] as? String ?? ""
             if let claimDict = dict["Claim"] as? [AnyHashable: Any] { dict = claimDict }
-            guard let id = dict["ClaimId"] as? String,
+            guard let id = dict["ClaimId"] as? Int,
             let userName = dict["UserName"] as? String,
             let objectName = dict["ObjectName"] as? String,
                 let avatar = dict["SmallPhoto"] as? String else { return nil }

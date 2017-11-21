@@ -13,7 +13,7 @@
 "Team.ClaimsCell.viewToVote"                     = "View to vote";
 "Team.ClaimsCell.reimbursed"                     = "Reimbursed";
 
-"Team.ClaimCell.claimID_format"                  = "Claim %@";
+"Team.ClaimCell.claimID_format"                  = "Claim %d";
 "Team.ClaimCell.timePassed_format"               = "%d min ago";
 
 "Team.ClaimCell.voting"                          = "Voting";
