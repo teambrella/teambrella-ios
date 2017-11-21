@@ -20,6 +20,7 @@ class Application {
     struct Constant {
         static let uniqueIdentifier = "com.teambrella.application.uniqueIdentifier"
     }
+    
     var version: String { return Bundle.main
         .object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "" }
     

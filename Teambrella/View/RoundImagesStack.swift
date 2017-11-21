@@ -92,7 +92,7 @@ class RoundImagesStack: UIView {
         guard !views.isEmpty else { return }
         
         let side = bounds.height
-        let quantity = CGFloat(maxImages)
+        //let quantity = CGFloat(maxImages)
         //let interval: CGFloat = quantity > 1 ? (bounds.width - side) / (quantity - 1) : 0
         let interval = side * 0.8
         let size = CGSize(width: side, height: side)

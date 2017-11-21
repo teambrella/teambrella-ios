@@ -85,7 +85,6 @@ class PushService: NSObject {
         executeCommand()
     }
     
-    // swiftlint:disable:next cyclomatic_complexity
     func executeCommand() {
         guard let command = command else { return }
         
@@ -98,46 +97,57 @@ class PushService: NSObject {
                               teamName: _):
             service.router.presentMemberProfile(teammateID: String(teammateID))
         case .privateMessage:
-            service.router.presentPrivateMessages()
-            if let user = PrivateChatUser(remoteCommand: command) {
-                let context = ChatContext.privateChat(user)
-                service.router.presentChat(context: context, itemType: .privateChat)
-            }
+            showPrivateMessage(command: command)
         case let .walletFunded(teamID: teamID,
-                               userID: userID,
-                               cryptoAmount: cryptoAmount,
-                               currencyAmount: currencyAmount,
-                               teamLogo: teamLogo,
-                               teamName: teamName):
-            if let session = service.session {
-                if let team = session.currentTeam, team.teamID != teamID {
-                    for team in session.teams {
-                        if team.teamID == teamID {
-                            service.session?.switchToTeam(id: teamID)
-                            service.router.switchTeam()
-                        }
-                    }
-                }
-            }
-            service.router.switchToWallet()
-            case let .topicMessage(topicID: topicID,
-                               topicName: topicName,
-                               userName: userName,
-                               avatar: avatar, details: details):
-                if let details = details as? RemotePayload.Claim {
-                    service.router.presentClaims()
-                    service.router.presentClaim(claimID: details.claimID)
-                    service.router.presentChat(context: ChatContext.remote(details), itemType: .claim)
-                } else if let details = details as? RemotePayload.Teammate {
-                    service.router.presentMemberProfile(teammateID: details.userID)
-                    service.router.presentChat(context: ChatContext.remote(details), itemType: .teammate)
-                } else if let details = details as? RemotePayload.Discussion {
-                    service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat)
-                }
+                               userID: _,
+                               cryptoAmount: _,
+                               currencyAmount: _,
+                               teamLogo: _,
+                               teamName: _):
+            showWalletFunded(teamID: teamID)
+        case let .topicMessage(topicID: _,
+                               topicName: _,
+                               userName: _,
+                               avatar: _, details: details):
+            showTopic(details: details)
         default:
             break
         }
         self.command = nil
+    }
+    
+    private func showPrivateMessage(command: RemoteCommand) {
+        service.router.presentPrivateMessages()
+        if let user = PrivateChatUser(remoteCommand: command) {
+            let context = ChatContext.privateChat(user)
+            service.router.presentChat(context: context, itemType: .privateChat)
+        }
+    }
+    
+    private func showWalletFunded(teamID: Int) {
+        if let session = service.session {
+            if let team = session.currentTeam, team.teamID != teamID {
+                for team in session.teams where team.teamID == teamID {
+                    service.session?.switchToTeam(id: teamID)
+                    service.router.switchTeam()
+                    break
+                }
+            }
+        }
+        service.router.switchToWallet()
+    }
+    
+    private func showTopic(details: RemoteTopicDetails?) {
+        if let details = details as? RemotePayload.Claim {
+            service.router.presentClaims()
+            service.router.presentClaim(claimID: details.claimID)
+            service.router.presentChat(context: ChatContext.remote(details), itemType: .claim)
+        } else if let details = details as? RemotePayload.Teammate {
+            service.router.presentMemberProfile(teammateID: details.userID)
+            service.router.presentChat(context: ChatContext.remote(details), itemType: .teammate)
+        } else if let details = details as? RemotePayload.Discussion {
+            service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat)
+        }
     }
     
 }

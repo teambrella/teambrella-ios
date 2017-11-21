@@ -233,6 +233,7 @@ class TeambrellaService {
                 if let sameMultisig = self.myTeamMultisigIfAny(publicKey: myPublicKey,
                                                                myTeammateID: multisig.teammate?.id ?? 0,
                                                                multisigs: multisigsToCreate) {
+                    print("same multisig: \(sameMultisig)")
                     // todo: move "cosigner list", and send to the server the move tx (not creation tx).
                     ////boolean needServerUpdate = (sameTeammateMultisig.address != null);
                     ////operations.add(mTeambrellaClient.setMutisigAddressTxAndNeedsServerUpdate(m,
@@ -291,7 +292,7 @@ class TeambrellaService {
                 self?.contentProvider.save()
                 group.leave()
             }, notmined: { [weak self] gasLimit in
-                self?.recreateWalletIfTimedOut(multisig: multisig, gasLimit: gasLimit, completion: { [weak self] innerSuccees in
+                self?.recreateWalletIfTimedOut(multisig: multisig, gasLimit: gasLimit, completion: { innerSuccees in
                     success = false
                     group.leave()
                 })

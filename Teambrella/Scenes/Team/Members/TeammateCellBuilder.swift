@@ -27,8 +27,6 @@ struct TeammateCellBuilder {
                          with teammate: ExtendedTeammateEntity,
                          controller: TeammateProfileVC) {
         switch cell {
-        case let cell as TeammateSummaryCell:
-            populateSummary(cell: cell, with: teammate, controller: controller)
         case let cell as TeammateObjectCell:
             populateObject(cell: cell, with: teammate, controller: controller)
         case let cell as TeammateContactCell:

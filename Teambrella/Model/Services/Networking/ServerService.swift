@@ -57,6 +57,7 @@ class ServerService: NSObject {
         }
     }
     
+    // swiftlint:disable:next function_body_length
     func ask(for string: String,
              parameters: [String: String]? = nil,
              body: RequestBody? = nil,
@@ -68,9 +69,7 @@ class ServerService: NSObject {
         }
         
         var request = URLRequest(url: url)
-        
         log(url.absoluteString, type: .serverURL)
-        
         request.httpMethod = HTTPMethod.post.rawValue
         let contentType = body?.contentType ?? "application/json"
         request.setValue(contentType, forHTTPHeaderField: "Content-Type")
