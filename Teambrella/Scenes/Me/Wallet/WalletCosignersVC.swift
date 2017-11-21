@@ -34,7 +34,11 @@ class WalletCosignersVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            collectionView.contentInsetAdjustmentBehavior = .never
+        } else {
+             automaticallyAdjustsScrollViewInsets = false
+        }
         self.addGradientNavBar()
         WalletCosignersCellBuilder.registerCells(in: collectionView)
         dataSource.onUpdate = { [weak self] in
