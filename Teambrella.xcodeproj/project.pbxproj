@@ -640,6 +640,10 @@
 		6D900E221FC31D4100FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
 		6D900E231FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
 		6D900E241FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
+		6D900E271FC46A7200FF6FF8 /* Push.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D900E251FC46A7200FF6FF8 /* Push.strings */; };
+		6D900E291FC46B0D00FF6FF8 /* String-localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E281FC46B0D00FF6FF8 /* String-localized.swift */; };
+		6D900E2A1FC46B0D00FF6FF8 /* String-localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E281FC46B0D00FF6FF8 /* String-localized.swift */; };
+		6D900E2C1FC46BB000FF6FF8 /* String-localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E281FC46B0D00FF6FF8 /* String-localized.swift */; };
 		6D91BC041EB3900700FDC332 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC031EB3900700FDC332 /* UUID.swift */; };
 		6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC061EB3A79100FDC332 /* UUIDTests.swift */; };
 		6D9ACA261F434C7700A9B6C8 /* CurrencyProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */; };
@@ -1195,6 +1199,9 @@
 		6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teambrella-Bridging-Header.h"; sourceTree = "<group>"; };
 		6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMessage.swift; sourceTree = "<group>"; };
 		6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCommand.swift; sourceTree = "<group>"; };
+		6D900E261FC46A7200FF6FF8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Push.strings; sourceTree = "<group>"; };
+		6D900E281FC46B0D00FF6FF8 /* String-localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String-localized.swift"; path = "Helpers/Extensions/String-localized.swift"; sourceTree = "<group>"; };
+		6D900E2D1FC4734400FF6FF8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Push.strings; sourceTree = "<group>"; };
 		6D91BC031EB3900700FDC332 /* UUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UUID.swift; path = Helpers/Extensions/UUID.swift; sourceTree = "<group>"; };
 		6D91BC061EB3A79100FDC332 /* UUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDTests.swift; sourceTree = "<group>"; };
 		6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyProcessor.swift; path = Helpers/CurrencyProcessor.swift; sourceTree = "<group>"; };
@@ -1590,6 +1597,7 @@
 				6DCB19421F0F878500AC9969 /* Home.strings */,
 				9407A5851F13D81D00E0DD74 /* Login.strings */,
 				6D8C6FE51F754D7000BF65B6 /* Error.strings */,
+				6D900E251FC46A7200FF6FF8 /* Push.strings */,
 			);
 			name = Localizations;
 			sourceTree = "<group>";
@@ -1753,6 +1761,7 @@
 			children = (
 				6D481F7A1F0BAA960023C781 /* UIImageView.swift */,
 				CBDFE16BB5E7B5B758559237 /* String.swift */,
+				6D900E281FC46B0D00FF6FF8 /* String-localized.swift */,
 				6D1C23871E8EA99F009B05A3 /* Data.swift */,
 				6D829AA21EB0BE1A0051F43A /* UIColor.swift */,
 				6D829AA41EB0D6860051F43A /* Random.swift */,
@@ -2874,6 +2883,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D900E271FC46A7200FF6FF8 /* Push.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3485,6 +3495,7 @@
 				6D4E5CE71F7AB6870020DEE2 /* ProxiesVC.swift in Sources */,
 				6DA5B4641F98DBFC00021E8E /* CryptoWorker.swift in Sources */,
 				6D4E5CE81F7AB6870020DEE2 /* SortCellModel.swift in Sources */,
+				6D900E2A1FC46B0D00FF6FF8 /* String-localized.swift in Sources */,
 				6D4E5CE91F7AB6870020DEE2 /* TeamEntity.swift in Sources */,
 				6D4E5CEA1F7AB6870020DEE2 /* WalletCellModels.swift in Sources */,
 				6D4E5CEB1F7AB6870020DEE2 /* ErrorPresenter.swift in Sources */,
@@ -3640,6 +3651,7 @@
 				6D59FCF91FBC8407006C0A2B /* NotificationService.swift in Sources */,
 				6D900E201FC31CFF00FF6FF8 /* RemoteMessage.swift in Sources */,
 				6DA1A5401FBF0AEA000FDECA /* UIImage.swift in Sources */,
+				6D900E2C1FC46BB000FF6FF8 /* String-localized.swift in Sources */,
 				6D900E221FC31D4100FF6FF8 /* RemoteCommand.swift in Sources */,
 				6DA1A5431FBF0C70000FDECA /* TimestampFetcher.swift in Sources */,
 				6DA1A5411FBF0B0E000FDECA /* URLBuilder.swift in Sources */,
@@ -3859,6 +3871,7 @@
 				6D466AB21ED07CF1001BC579 /* TeambrellaService.swift in Sources */,
 				6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */,
 				6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */,
+				6D900E291FC46B0D00FF6FF8 /* String-localized.swift in Sources */,
 				6DF2E8CE1EF1979300C8D60B /* ProxiesVC.swift in Sources */,
 				94793A871F0D120700696B90 /* SortCellModel.swift in Sources */,
 				94C89B001F02AA8100C6D8F7 /* TeamEntity.swift in Sources */,
@@ -4093,6 +4106,15 @@
 				6D8C6FE81F754D8E00BF65B6 /* es */,
 			);
 			name = Error.strings;
+			sourceTree = "<group>";
+		};
+		6D900E251FC46A7200FF6FF8 /* Push.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D900E261FC46A7200FF6FF8 /* en */,
+				6D900E2D1FC4734400FF6FF8 /* es */,
+			);
+			name = Push.strings;
 			sourceTree = "<group>";
 		};
 		6DA475A71E8ABEE600B56D9B /* Main.storyboard */ = {

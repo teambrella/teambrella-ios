@@ -70,7 +70,7 @@ enum RemoteCommand {
         currencyAmount: String,
         teamLogo: String,
         teamName: String)
-    case postsSinceInteracted(count: Int)
+    case postsSinceInteracted(count: String)
     case newTeammate(teamID: Int,
         userID: String,
         teammateID: Int,

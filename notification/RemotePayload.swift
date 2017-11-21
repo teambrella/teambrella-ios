@@ -106,7 +106,7 @@ struct RemotePayload {
     var postID: String? { return dict["PostId"] as? String }
     var topicName: String? { return dict["TopicName"] as? String }
     //var text: String? { return dict["Text"] as? String }
-    var postsCount: Int? { return dict["Count"] as? Int }
+    var postsCount: String? { return dict["Count"] as? String }
     
     var claimID: Int? { return dict["ClaimId"] as? Int }
     
@@ -130,7 +130,7 @@ struct RemotePayload {
     var topicIDValue: String { return value(from: topicID) }
     var postIDValue: String { return value(from: postID) }
     var topicNameValue: String { return value(from: topicName) }
-    var postsCountValue: Int { return value(from: postsCount) }
+    var postsCountValue: String { return value(from: postsCount) }
     var claimIDValue: Int { return value(from: claimID) }
     var amountValue: String { return value(from: amount) }
     var cryptoAmountValue: String { return value(from: cryptoAmount) }

@@ -22,15 +22,15 @@ struct RemoteMessage {
     var title: String? {
         switch payload.type {
         case .createdPost:
-            return "New post"
+            return "Push.newPost".localized
         case .newTeammate:
-            return "New teammate"
+            return "Push.newTeammate".localized
         case .postsSinceInteracted:
-            return "You have \(payload.postsCount ?? 0) unread messages"
+            return "Push.unreadMessages_format".localized(payload.postsCount ?? "")
         case .walletFunded:
-            return "Wallet is funded"
+            return "Push.walletFunded".localized
         case .topicMessage:
-            return "New message"
+            return "Push.newMessage".localized
         default:
             return nil
         }
@@ -43,7 +43,7 @@ struct RemoteMessage {
         case .newTeammate:
             return payload.userName
         case .walletFunded:
-            return "Team: \(payload.teamNameValue)"
+            return "Push.team_format".localized(payload.teamNameValue)
         default:
             return nil
         }
@@ -55,12 +55,14 @@ struct RemoteMessage {
              .privateMessage:
             return payload.message
         case .walletFunded:
-            return """
-            Wallet for team \(payload.teamNameValue) is funded for \(payload.cryptoAmountValue)mETH \
-            (\(payload.currencyAmountValue))
-            """
+            return "Push.walletFunded.message_format".localized(payload.teamNameValue,
+                                                                payload.cryptoAmountValue,
+                                                                payload.currencyAmountValue)
         case .topicMessage:
-            return "\(payload.userNameValue) posted in \(payload.topicNameValue)"
+            return "Push.newMessage.posted_format".localized(payload.userNameValue,
+                                                             payload.topicNameValue)
+        case .postsSinceInteracted:
+            return ""
         default:
             return nil
         }
