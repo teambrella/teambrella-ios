@@ -28,7 +28,19 @@ enum ChatContext {
     case home(HomeScreenModel.Card)
     case chat(ChatModel)
     case privateChat(PrivateChatUser)
+    case remote(RemoteTopicDetails)
     case none
+    
+    var claimID: Int? {
+        switch self {
+        case let .claim(entity):
+            return entity.id
+        case let .feed(feed):
+            return feed.itemType == .claim ? feed.itemID : nil
+        default:
+            return nil
+        }
+    }
 }
 
 final class UniversalChatVC: UIViewController, Routable {
@@ -333,7 +345,11 @@ final class UniversalChatVC: UIViewController, Routable {
         collectionView.allowsSelection = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.autoresizingMask = UIViewAutoresizing()
-        collectionView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            collectionView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
         
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(refreshNeeded), for: .valueChanged)

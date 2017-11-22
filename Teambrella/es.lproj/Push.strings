@@ -1,0 +1,19 @@
+/* 
+  Push.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 21.11.2017.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+// need localization
+"Push.newPost" = "New post";
+"Push.newTeammate" = "New teammate";
+"Push.unreadMessages_format" = "You have %@ unread messages";
+"Push.walletFunded.title" = "Wallet is funded";
+"Push.newMessage" = "New message";
+
+"Push.team_format" = "Team: %@";
+
+"Push.walletFunded.message_format" = "Wallet for team %@ is funded for %@mETH (%@)";
+"Push.newMessage.posted_format" = "%@ posted in %@";

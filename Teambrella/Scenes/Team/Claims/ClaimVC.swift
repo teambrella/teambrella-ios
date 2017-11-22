@@ -26,7 +26,7 @@ final class ClaimVC: UIViewController, Routable {
     
     static var storyboardName = "Claims"
     
-    var claimID: String?
+    var claimID: Int?
     let dataSource = ClaimDataSource()
     
     var navigationTopLabel: UILabel?
@@ -103,9 +103,7 @@ final class ClaimVC: UIViewController, Routable {
         log("\ntap Transactions\n", type: .userInteraction)
         guard let session = service.session?.currentTeam?.teamID, let claimID = self.claimID else { return }
         
-        guard let id = Int(claimID) else { return }
-        
-        service.router.presentClaimTransactionsList(teamID: session, claimID: id, userID: dataSource.userID)
+        service.router.presentClaimTransactionsList(teamID: session, claimID: claimID, userID: dataSource.userID)
     }
     
     @objc

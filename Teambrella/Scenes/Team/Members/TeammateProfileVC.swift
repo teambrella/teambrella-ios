@@ -330,7 +330,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         TeammateCellBuilder.populate(cell: cell, with: teammate, controller: self)
     }
     
-    // swiftlint:disable:next function_body_length
+    // swiftlint:disable:next function_body_length cyclomatic_complexity
     func collectionView(_ collectionView: UICollectionView,
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,

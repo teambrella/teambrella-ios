@@ -57,6 +57,7 @@ class ServerService: NSObject {
         }
     }
     
+    // swiftlint:disable:next function_body_length
     func ask(for string: String,
              parameters: [String: String]? = nil,
              body: RequestBody? = nil,
@@ -68,9 +69,7 @@ class ServerService: NSObject {
         }
         
         var request = URLRequest(url: url)
-        
         log(url.absoluteString, type: .serverURL)
-        
         request.httpMethod = HTTPMethod.post.rawValue
         let contentType = body?.contentType ?? "application/json"
         request.setValue(contentType, forHTTPHeaderField: "Content-Type")
@@ -83,10 +82,13 @@ class ServerService: NSObject {
                 request.httpBody = data
                 printAsString(data: data)
             }
+            let application = Application()
             let dict: [String: Any] = ["t": body.timestamp,
                         "key": body.publicKey,
                         "sig": body.signature,
-                        "clientVersion": Application().clientVersion ]
+                        "clientVersion": application.clientVersion,
+                        "deviceToken": service.push.tokenString ?? "",
+                        "deviceId": application.uniqueIdentifier]
             for (key, value) in dict {
                 request.setValue(String(describing: value), forHTTPHeaderField: key)
             }

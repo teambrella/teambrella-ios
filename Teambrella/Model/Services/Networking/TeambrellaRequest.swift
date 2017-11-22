@@ -75,7 +75,7 @@ enum TeambrellaResponseType {
     case registerKey
     case coverageForDate(Double, Double)
     case setLanguage(String)
-    case claimsList([ClaimLike])
+    case claimsList([ClaimEntity])
     case claim(EnhancedClaimEntity)
     case claimVote(JSON)
     case claimUpdates(JSON)

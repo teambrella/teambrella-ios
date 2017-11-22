@@ -84,33 +84,38 @@ final class MainRouter {
     
     // MARK: Push
     
-    func presentJoinTeam() {
+    func presentJoinTeam(animated: Bool = true) {
         guard let vc = JoinTeamVC.instantiate() as? JoinTeamVC else { fatalError("Error instantiating") }
         
-        push(vc: vc)
+        push(vc: vc, animated: animated)
     }
     
-    func presentChat(context: ChatContext, itemType: ItemType) {
+    func presentChat(context: ChatContext, itemType: ItemType, animated: Bool = true) {
+        let last = navigator?.viewControllers.last
+        guard last as? UniversalChatVC == nil else {
+            print("already opened chat")
+            return
+        }
         guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
         
         vc.setContext(context: context, itemType: itemType)
-        push(vc: vc)
+        push(vc: vc, animated: animated)
     }
     
-    func presentClaim(claim: ClaimLike) {
+    func presentClaim(claim: ClaimEntity, animated: Bool = true) {
         guard let vc = getControllerClaim(claimID: claim.id) else { fatalError("Error instantiating") }
         
-        push(vc: vc)
+        push(vc: vc, animated: animated)
     }
     
-    func presentClaim(claimID: String) {
+    func presentClaim(claimID: Int, animated: Bool = true) {
         guard let vc = getControllerClaim(claimID: claimID) else { fatalError("Error instantiating") }
         
         vc.claimID = claimID
-        push(vc: vc)
+        push(vc: vc, animated: animated)
     }
     
-    func getControllerClaim(claimID: String) -> ClaimVC? {
+    func getControllerClaim(claimID: Int) -> ClaimVC? {
         let vc = ClaimVC.instantiate() as? ClaimVC
         vc?.claimID = claimID
         return vc
@@ -122,18 +127,18 @@ final class MainRouter {
         return vc
     }
     
-    func presentMemberProfile(teammateID: String) {
+    func presentMemberProfile(teammateID: String, animated: Bool = true) {
         guard let vc = getControllerMemberProfile(teammateID: teammateID) else { fatalError("Error instantiating") }
         
-        push(vc: vc)
+        push(vc: vc, animated: animated)
     }
     
-    func presentClaims(teammateID: String? = nil) {
+    func presentClaims(teammateID: String? = nil, animated: Bool = true) {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
         
         vc.teammateID = teammateID
         vc.isPresentedInStack = true
-        push(vc: vc)
+        push(vc: vc, animated: animated)
     }
     
     func presentClaimTransactionsList(teamID: Int, claimID: Int, userID: String) {
@@ -162,11 +167,11 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentWalletDetails(walletID: String) {
+    func presentWalletDetails(walletID: String, animated: Bool = true) {
         guard let vc = WalletDetailsVC.instantiate() as? WalletDetailsVC else { fatalError("Error instantiating") }
         
         vc.walletID = walletID
-        push(vc: vc)
+        push(vc: vc, animated: animated)
     }
     
     func presentReport(context: ReportContext,
@@ -187,10 +192,10 @@ final class MainRouter {
         }
     }
     
-    func presentPrivateMessages() {
+    func presentPrivateMessages(animated: Bool = true) {
         guard let vc = PrivateMessagesVC.instantiate() as? PrivateMessagesVC else { fatalError("Error instantiating") }
         
-        push(vc: vc)
+        push(vc: vc, animated: animated)
     }
     
     func presentCompareTeamRisk(ranges: [RiskScaleEntity.Range]) {

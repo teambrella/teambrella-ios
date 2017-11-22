@@ -12,7 +12,7 @@
 "Team.ClaimsCell.claimed"                        = "reclamado";
 "Team.ClaimsCell.viewToVote"                     = "ver para votar";
 "Team.ClaimsCell.reimbursed"                     = "Reembolsado";
-"Team.ClaimCell.claimID_format"                  = "Reclamación %@";
+"Team.ClaimCell.claimID_format"                  = "Reclamación %d";
 "Team.ClaimCell.timePassed_format"               = "hace %d minutos";
 "Team.ClaimCell.voting"                          = "Votación";
 "Team.ClaimCell.remainingMinutes_format"         = "%d minutos";

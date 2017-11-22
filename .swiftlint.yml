@@ -1,6 +1,7 @@
 disabled_rules:
   - unused_closure_parameter
   - multiple_closures_with_trailing_closure
+  - variable_name
 opt_in_rules:
 #  - conditional_returns_on_newline
 #  - operator_usage_whitespace
@@ -56,7 +57,7 @@ type_name:
     - iPhone
 
 identifier_name:
-  min_length: 3
+  min_length: 1
   max_length:
     - 40
     - 40

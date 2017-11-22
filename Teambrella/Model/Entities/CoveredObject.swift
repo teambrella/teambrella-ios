@@ -32,7 +32,7 @@ struct CoveredObject {
     let spayed: Bool
     let claimLimit: Double
     let claimCount: Int
-    let singleClaimID: String?
+    let singleClaimID: Int?
     
     init(json: JSON) {
         smallPhotos = json["SmallPhotos"].arrayObject as? [String] ?? []
@@ -45,8 +45,8 @@ struct CoveredObject {
         claimLimit = json["ClaimLimit"].doubleValue
         claimCount = json["ClaimCount"].intValue
         // Patch to emulate null behaviour. Unfortunately server returns "0" instead of null in this case
-        let claimID = json["OneClaimId"].stringValue
-        singleClaimID = claimID != "0" ? claimID : nil
+        let claimID = json["OneClaimId"].intValue
+        singleClaimID = claimID != 0 ? claimID : nil
     }
     
 }

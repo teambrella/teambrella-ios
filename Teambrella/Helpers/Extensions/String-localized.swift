@@ -16,18 +16,19 @@
 
 import Foundation
 
-enum PushCommand {
-    case openClaim(id: String)
-    case openChat(id: String)
-    case openPrivateChat(userID: Int)
-    
-    static func with(dict: [String: Any]?) -> PushCommand? {
-        guard let dict = dict else { return nil }
-        guard let type = dict["type"] as? Int else { return nil }
-        
-        if type == 1, let claimID = dict["claimID"] as? String {
-            return .openClaim(id: claimID)
+extension String {
+    var localized: String {
+        guard let range = self.range(of: ".") else {
+            return self
         }
-        return nil
+        
+        return NSLocalizedString(self,
+                                 tableName: String(self[..<range.lowerBound]),
+                                 comment: self)
+    }
+    
+    func localized(_ arguments: CVarArg...) -> String {
+        let template = localized
+        return String(format: template, arguments: arguments)
     }
 }

@@ -95,7 +95,11 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         if isIpadSimulatingPhone {
             gradientViewBottomConstraint.constant = 20
         }
-        collectionView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            collectionView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
     private func setupTopBar() {

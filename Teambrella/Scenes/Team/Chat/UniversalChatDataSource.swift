@@ -67,7 +67,7 @@ final class UniversalChatDatasource {
     
     var topicID: String? { return claim?.topicID }
     
-    var claimID: String? {
+    var claimID: Int? {
         if let strategy = strategy as? ClaimChatStrategy {
             return strategy.claim.id
         }

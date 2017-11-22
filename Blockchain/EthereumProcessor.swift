@@ -147,9 +147,9 @@ struct EthereumProcessor {
         
         let dict = ["nonce": "0x\(nonce.hexString)",
             "gasPrice": "0x\(gasPrice.hexString)",
-            "gasLimit": "0x\(gasLimit.hexString)",
-            "to": "0x\(toAddress)",
-            "value": weisHex,
+            "gas": "0x\(gasLimit.hexString)",
+            "to": "\(toAddress)",
+            "value": "0x\(weisHex)",
             "input": "0x",
             "v": "0x29",
             "r": "0x29",

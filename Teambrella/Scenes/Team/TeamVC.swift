@@ -97,11 +97,3 @@ extension TeamVC: TopBarDelegate {
         
     }
 }
-
-class TeamView: UIView {
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let frame = self.bounds
-        
-        return super.hitTest(point, with: event)
-    }
-}
