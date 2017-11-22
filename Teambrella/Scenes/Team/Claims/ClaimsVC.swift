@@ -41,7 +41,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     var isFirstLoading = true
     // is pushed to navigation stack instead of being the first controller in XLPagerTabStrip
     var isPresentedInStack = false
-    var teammateID: String?
+    var teammateID: Int?
     
     weak var emptyVC: EmptyVC?
     

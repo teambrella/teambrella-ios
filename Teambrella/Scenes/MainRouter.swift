@@ -133,7 +133,7 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
-    func presentClaims(teammateID: String? = nil, animated: Bool = true) {
+    func presentClaims(teammateID: Int? = nil, animated: Bool = true) {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
         
         vc.teammateID = teammateID

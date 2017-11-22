@@ -170,7 +170,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             claimCount == 1,
             let claimID = dataSource.extendedTeammate?.object.singleClaimID {
             service.router.presentClaim(claimID: claimID)
-        } else if let teammateID = dataSource.extendedTeammate?.basic.id {
+        } else if let teammateID = dataSource.extendedTeammate?.teammateID {
             service.router.presentClaims(teammateID: teammateID)
         }
     }
