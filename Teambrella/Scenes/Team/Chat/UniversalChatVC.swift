@@ -367,12 +367,12 @@ final class UniversalChatVC: UIViewController, Routable {
         
         claimObjectImage.image = #imageLiteral(resourceName: "imagePlaceholder")
         claimObjectValueLabel.text = "..."
-        guard let icon = claim.smallPhotos.first else { return }
-        
-        claimObjectImage.showImage(string: icon)
         guard let session = service.session, let team = session.currentTeam else { return }
         
         claimObjectCurrencyLabel.text = team.currency
+        guard let icon = claim.smallPhotos.first else { return }
+        
+        claimObjectImage.showImage(string: icon)
         guard let vote = claim.myVote else { return }
         
         claimObjectValueLabel.text = String(format: "%.2f", vote)
