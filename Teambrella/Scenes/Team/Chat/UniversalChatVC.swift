@@ -48,6 +48,7 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet var claimObjectView: UIView!
     @IBOutlet var claimObjectHeight: NSLayoutConstraint!
     @IBOutlet var claimObjectVoteLabel: UILabel!
     @IBOutlet var claimObjectImage: UIImageView!
@@ -350,16 +351,27 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     private func setupClaimObjectView() {
-        claimObjectVoteLabel.text = "Vote"
-        claimObjectImage.image = #imageLiteral(resourceName: "tesla")
-        claimObjectName.text = "Audi A-8"
-        claimObjectAmount.text = "Claim amount - 12.000".uppercased()
+        guard let claim = dataSource.claim else {
+            claimObjectHeight.constant = 0
+            claimObjectView.isHidden = true
+            return
+        }
+        
+        claimObjectName.text = claim.model
+        claimObjectAmount.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
+            + String(describing: claim.claimAmount)
         guard let session = service.session, let team = session.currentTeam else { return }
         
         claimObjectCurrencyLabel.text = team.currency
-        claimObjectTitleLabel.text = "your vote".uppercased()
-        claimObjectValueLabel.text = "-,--" //MyVote
+        claimObjectTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
+        claimObjectValueLabel.text = String(describing: claim.myVote)
         claimObjectPercentLabel.text = "%"
+        claimObjectVoteLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+        
+        claimObjectImage.image = #imageLiteral(resourceName: "imagePlaceholder")
+        guard let icon = claim.smallPhotos.first else { return }
+        
+        claimObjectImage.showImage(string: icon)
     }
     
     private func setupCollectionView() {
@@ -390,7 +402,6 @@ final class UniversalChatVC: UIViewController, Routable {
         let barItem = UIBarButtonItem(customView: button)
         button.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
         self.muteButton = button
-        //let barItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(tapMuteButton))
         navigationItem.setRightBarButton(barItem, animated: true)
     }
     

@@ -189,3 +189,7 @@
 "Team.Chat.Mute" = "You now don't receive notifications for this conversation.";
 
 "Team.Claims.objectView.reportButton.title" = "Report a Claim";
+
+"Team.Chat.ObjectView.VoteLabel" = "Vote";
+"Team.Chat.ObjectView.ClaimAmountLabel" = "CLAIM AMOUNT - ";
+"Team.Chat.ObjectView.TitleLabel" = "YOUR VOTE";

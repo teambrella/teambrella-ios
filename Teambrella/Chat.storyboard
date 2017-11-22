@@ -171,6 +171,7 @@
                         <outlet property="claimObjectPercentLabel" destination="zvZ-fj-wtR" id="fTZ-5i-s0l"/>
                         <outlet property="claimObjectTitleLabel" destination="79a-d0-333" id="vLC-4g-7Sd"/>
                         <outlet property="claimObjectValueLabel" destination="l7k-L3-Bkm" id="n7V-4K-Cw0"/>
+                        <outlet property="claimObjectView" destination="jsQ-Em-gKK" id="k2C-tB-zCI"/>
                         <outlet property="claimObjectVoteLabel" destination="hSP-6H-DDI" id="3yj-aZ-iWH"/>
                         <outlet property="collectionView" destination="1pK-Sm-stF" id="fsw-q0-b6R"/>
                     </connections>

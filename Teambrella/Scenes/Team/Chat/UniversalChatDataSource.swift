@@ -63,13 +63,19 @@ final class UniversalChatDatasource {
     
     private var topCellDate: Date?
     private var topic: Topic?
-    private var claim: EnhancedClaimEntity?
+    
+    var claim: EnhancedClaimEntity? {
+        if let strategy = strategy as? ClaimChatStrategy {
+            return strategy.claim
+        }
+        return nil
+    }
     
     var topicID: String? { return claim?.topicID }
     
     var claimID: Int? {
-        if let strategy = strategy as? ClaimChatStrategy {
-            return strategy.claim.id
+        if let claim = claim {
+            return claim.id
         }
         return nil
     }
@@ -312,7 +318,7 @@ final class UniversalChatDatasource {
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
         let filteredModel = removeChatDuplicates(chat: model.chat)
         addModels(models: filteredModel, isPrevious: isPrevious)
-        claim?.update(with: model.basicPart)
+        //claim?.update(with: model.basicPart)
         if model.chat.isEmpty {
             if isPrevious {
                 hasPrevious = false
