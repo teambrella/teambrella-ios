@@ -882,10 +882,8 @@
 		94C2D39B1F191FA600D203C2 /* TeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C2D3991F191FA600D203C2 /* TeamCell.xib */; };
 		94C4516B1FC33756007A93F0 /* ChatClaimPlague.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C451691FC33756007A93F0 /* ChatClaimPlague.swift */; };
 		94C4516C1FC33756007A93F0 /* ChatClaimPlague.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C451691FC33756007A93F0 /* ChatClaimPlague.swift */; };
-		94C4516D1FC33756007A93F0 /* ChatClaimPlague.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C451691FC33756007A93F0 /* ChatClaimPlague.swift */; };
 		94C4516E1FC33756007A93F0 /* ChatClaimPlague.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C4516A1FC33756007A93F0 /* ChatClaimPlague.xib */; };
 		94C4516F1FC33756007A93F0 /* ChatClaimPlague.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C4516A1FC33756007A93F0 /* ChatClaimPlague.xib */; };
-		94C451701FC33756007A93F0 /* ChatClaimPlague.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C4516A1FC33756007A93F0 /* ChatClaimPlague.xib */; };
 		94C89AD41EFD728000C6D8F7 /* WalletDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C89AD31EFD728000C6D8F7 /* WalletDetailsVC.swift */; };
 		94C89AD61F0104CC00C6D8F7 /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C89AD51F0104CC00C6D8F7 /* QRCode.framework */; };
 		94C89AFD1F0278FB00C6D8F7 /* MeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C89AFB1F0278FB00C6D8F7 /* MeCell.swift */; };
@@ -2858,7 +2856,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94C451701FC33756007A93F0 /* ChatClaimPlague.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3594,7 +3591,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94C4516D1FC33756007A93F0 /* ChatClaimPlague.swift in Sources */,
 				6D59FCF91FBC8407006C0A2B /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

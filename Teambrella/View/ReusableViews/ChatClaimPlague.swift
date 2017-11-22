@@ -17,10 +17,20 @@
 import UIKit
 
 class ChatClaimPlague: UICollectionReusableView {
-
+    @IBOutlet var backView: UIView!
+    @IBOutlet var itemImageView: UIImageView!
+    @IBOutlet var itemNameLabel: StatusSubtitleLabel!
+    @IBOutlet var claimAmountLabel: InfoHelpLabel!
+    @IBOutlet var currencyLabel: CurrencyLabel!
+    @IBOutlet var separator: UIView!
+    @IBOutlet var yourVoteLabel: InfoLabel!
+    @IBOutlet var voteValueLabel: TitleLabel!
+    @IBOutlet var percentLabel: TitleLabel!
+    @IBOutlet var voteLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
 }
