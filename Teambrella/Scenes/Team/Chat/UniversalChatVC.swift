@@ -48,6 +48,17 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet var claimObjectHeight: NSLayoutConstraint!
+    @IBOutlet var claimObjectVoteLabel: UILabel!
+    @IBOutlet var claimObjectImage: UIImageView!
+    @IBOutlet var claimObjectName: StatusSubtitleLabel!
+    @IBOutlet var claimObjectAmount: InfoHelpLabel!
+    @IBOutlet var claimObjectCurrencyLabel: CurrencyLabel!
+    @IBOutlet var claimObjectTitleLabel: InfoLabel!
+    @IBOutlet var claimObjectValueLabel: TitleLabel!
+    @IBOutlet var claimObjectPercentLabel: TitleLabel!
+    
+    
     override var inputAccessoryView: UIView? { return input }
     override var canBecomeFirstResponder: Bool { return true }
     
@@ -77,6 +88,7 @@ final class UniversalChatVC: UIViewController, Routable {
         super.viewDidLoad()
         addGradientNavBar()
         addMuteButton(muteType: .subscribed) //fake
+        setupClaimObjectView()
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
@@ -86,7 +98,7 @@ final class UniversalChatVC: UIViewController, Routable {
                 if isFirstLoad {
                     self.shouldScrollToBottomASilently = true
                 }
-               self.dataSource.isLoadPreviousNeeded = true
+                self.dataSource.isLoadPreviousNeeded = true
                 return
             }
             
@@ -337,6 +349,19 @@ final class UniversalChatVC: UIViewController, Routable {
         input.adjustHeight()
     }
     
+    private func setupClaimObjectView() {
+        claimObjectVoteLabel.text = "Vote"
+        claimObjectImage.image = #imageLiteral(resourceName: "tesla")
+        claimObjectName.text = "Audi A-8"
+        claimObjectAmount.text = "Claim amount - 12.000".uppercased()
+        guard let session = service.session, let team = session.currentTeam else { return }
+        
+        claimObjectCurrencyLabel.text = team.currency
+        claimObjectTitleLabel.text = "your vote".uppercased()
+        claimObjectValueLabel.text = "-,--" //MyVote
+        claimObjectPercentLabel.text = "%"
+    }
+    
     private func setupCollectionView() {
         registerCells()
         collectionView.keyboardDismissMode = .interactive
@@ -483,16 +508,16 @@ extension UniversalChatVC: UICollectionViewDelegate {
         let model = dataSource[indexPath]
         if let cell = cell as? ChatTextCell {
             if let model = model as? ChatTextCellModel {
-            let size = cloudSize(for: indexPath)
-            cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
-            cell.avatarView.tag = indexPath.row
-            cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
-            cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
-            cell.onTapImage = { [weak self] cell, galleryView in
-                guard let `self` = self else { return }
-                
-                galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
-            }
+                let size = cloudSize(for: indexPath)
+                cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
+                cell.avatarView.tag = indexPath.row
+                cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
+                cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
+                cell.onTapImage = { [weak self] cell, galleryView in
+                    guard let `self` = self else { return }
+                    
+                    galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
+                }
                 cell.alpha = model.isTemporary ? 0.5 : 1
             } else if let model = model as? ChatTextUnsentCellModel {
                 let size = cloudSize(for: indexPath)
