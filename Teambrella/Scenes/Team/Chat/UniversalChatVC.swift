@@ -351,28 +351,31 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     private func setupClaimObjectView() {
-        claimObjectView.isHidden = true //tmp
+        //claimObjectView.isHidden = true //tmp
         guard let claim = dataSource.claim else {
             claimObjectHeight.constant = 0
             claimObjectView.isHidden = true
             return
         }
-        
+        ViewDecorator.shadow(for: claimObjectView, opacity: 0.08, radius: 4)
         claimObjectName.text = claim.model
         claimObjectAmount.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
-            + String(describing: claim.claimAmount)
-        guard let session = service.session, let team = session.currentTeam else { return }
-        
-        claimObjectCurrencyLabel.text = team.currency
+            + String(format: "%.2f", claim.claimAmount)
         claimObjectTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
-        claimObjectValueLabel.text = String(describing: claim.myVote)
         claimObjectPercentLabel.text = "%"
         claimObjectVoteLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
         
         claimObjectImage.image = #imageLiteral(resourceName: "imagePlaceholder")
+        claimObjectValueLabel.text = "..."
         guard let icon = claim.smallPhotos.first else { return }
         
         claimObjectImage.showImage(string: icon)
+        guard let session = service.session, let team = session.currentTeam else { return }
+        
+        claimObjectCurrencyLabel.text = team.currency
+        guard let vote = claim.myVote else { return }
+        
+        claimObjectValueLabel.text = String(format: "%.2f", vote)
     }
     
     private func setupCollectionView() {
