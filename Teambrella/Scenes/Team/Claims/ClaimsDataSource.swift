@@ -53,7 +53,7 @@ class ClaimsDataSource {
     }()
     
     // if teammate id is set all results will be filtered
-    var teammateID: String?
+    var teammateID: Int?
     
     var homeModel: HomeScreenModel?
     
