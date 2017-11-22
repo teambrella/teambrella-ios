@@ -118,12 +118,6 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         objectImageView.layer.masksToBounds = true
         objectImageView.layer.cornerRadius = 4
         reportButton.setTitle("Team.Claims.objectView.reportButton.title".localized, for: .normal)
-        
-        guard let session = service.session, let team = session.currentTeam else { return }
-        
-        objectImageView.image = #imageLiteral(resourceName: "tesla")
-        objectTitle.text = team.objectName ?? ""
-        objectSubtitle.text = "New York, NY, USA".uppercased()
     }
     
     func registerCells() {

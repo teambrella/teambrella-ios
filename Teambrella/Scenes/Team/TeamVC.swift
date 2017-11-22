@@ -65,24 +65,6 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         topBarVC.setup()
     }
     
-    func teamSelected(name: String?) {
-        let name = name ?? ""
-        let alert = UIAlertController(title: "Team change",
-                                      message: "Are you sure you want to change your current team to \(name)?",
-            preferredStyle: .alert)
-        let confirm = UIAlertAction(title: "Yes I do", style: .destructive) { action in
-            log("Confirm pressed", type: .userInteraction)
-        }
-        alert.addAction(confirm)
-        let cancel = UIAlertAction(title: "No chance", style: .cancel) { action in
-            log("Cancel pressed", type: .userInteraction)
-        }
-        alert.addAction(cancel)
-        present(alert, animated: true) {
-            log("Alert presented", type: .userInteraction)
-        }
-    }
-    
     func loadHomeData() {
         guard let teamID = service.session?.currentTeam?.teamID else { return }
         
