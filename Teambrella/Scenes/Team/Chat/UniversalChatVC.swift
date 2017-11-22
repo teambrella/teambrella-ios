@@ -351,6 +351,7 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     private func setupClaimObjectView() {
+        claimObjectView.isHidden = true //tmp
         guard let claim = dataSource.claim else {
             claimObjectHeight.constant = 0
             claimObjectView.isHidden = true
