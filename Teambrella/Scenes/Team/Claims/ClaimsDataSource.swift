@@ -54,6 +54,25 @@ class ClaimsDataSource {
     
     // if teammate id is set all results will be filtered
     var teammateID: String?
+    
+    var homeModel: HomeScreenModel?
+    
+    var claimItem: ClaimItem? {
+        guard let model = homeModel else { return nil }
+        
+        return ClaimItem(name: model.objectName, photo: model.smallPhoto, location: "")
+    }
+    
+    var reportContext: ReportContext? {
+        guard let item = claimItem,
+            let coverage = homeModel?.coverage,
+            let balance = homeModel?.balance else { return nil }
+        
+        return ReportContext.claim(item: item, coverage: coverage, balance: balance)
+    }
+    
+    var unreadCount: Int { return homeModel?.unreadCount ?? 0 }
+    
     private var order: [ClaimsCellType] = [.open,
                                            .voted,
                                            .paid,
@@ -68,6 +87,7 @@ class ClaimsDataSource {
     var isLoading = false
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
+    var onLoadHome: (() -> Void)?
     
     var isSilentUpdate = false
     
@@ -109,6 +129,23 @@ class ClaimsDataSource {
             request.start()
         }
         
+    }
+    
+    func loadHomeData() {
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
+        
+        service.dao.requestHome(teamID: teamID).observe { [weak self] result in
+            switch result {
+            case let .value(model):
+                self?.homeModel = model
+                self?.onLoadHome?()
+            case let .temporaryValue(model):
+                self?.homeModel = model
+                self?.onLoadHome?()
+            case let .error(error):
+                log("\(error)", type: .error)
+            }
+        }
     }
     
     func updateSilently() {

@@ -39,11 +39,11 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         super.viewDidLoad()
         setupCollectionView()
         HUD.show(.progress, onView: view)
-        dataSource.loadData()
         dataSource.onLoad = { [weak self] in
             HUD.hide()
             self?.collectionView.reloadData()
         }
+        dataSource.loadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {

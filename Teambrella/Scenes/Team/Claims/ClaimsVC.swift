@@ -47,10 +47,10 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareView()
         HUD.show(.progress, onView: view)
         registerCells()
         dataSource.teammateID = teammateID
-        dataSource.loadData()
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
             guard let `self` = self else { return }
@@ -58,6 +58,12 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
             self.collectionView.reloadData()
             self.showEmptyIfNeeded()
         }
+        dataSource.onLoadHome = { [weak self] in
+            self?.setupObject()
+        }
+        dataSource.loadData()
+         dataSource.loadHomeData()
+        
         setupObjectView()
         if isPresentedInStack {
             addGradientNavBar()
@@ -67,6 +73,20 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
                 automaticallyAdjustsScrollViewInsets = false
             }
         }
+    }
+    
+    private func setupObject() {
+        guard let object = dataSource.claimItem else { return }
+        
+        objectImageView.showImage(string: object.photo)
+        objectTitle.text = object.name
+        objectSubtitle.text = object.location
+    }
+    
+    private func prepareView() {
+        objectImageView.image = nil
+        objectTitle.text = nil
+        objectSubtitle.text = nil
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -80,11 +100,9 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     }
     
     @IBAction func tapReportButton(_ sender: Any) {
-//        guard let model = HomeDataSource.model else { return }
-//        
-//        let item = ClaimItem(name: model.objectName, photo: model.smallPhoto, location: "")
-//        let context = ReportContext.claim(item: item, coverage: model.coverage, balance: model.balance)
-//        service.router.presentReport(context: context, delegate: self)
+        guard let context = dataSource.reportContext else { return }
+        
+        service.router.presentReport(context: context, delegate: self)
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -238,5 +256,15 @@ extension ClaimsVC: UIViewControllerPreviewingDelegate {
         previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)
         vc.isPeeking = true
         return vc
+    }
+}
+
+// MARK: ReportDelegate
+extension ClaimsVC: ReportDelegate {
+    func report(controller: ReportVC, didSendReport data: Any) {
+        service.router.navigator?.popViewController(animated: false)
+        if let claim = data as? EnhancedClaimEntity {
+            service.router.presentClaim(claimID: claim.id)
+        }
     }
 }

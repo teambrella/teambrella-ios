@@ -36,6 +36,7 @@ struct Session {
     
     var myAvatarString: String { return "me/avatar" }
     var myAvatarStringSmall: String { return myAvatarString + "/128" }
+    var dataSource: HomeDataSource = HomeDataSource()
     
     @discardableResult
     mutating func switchToTeam(id: Int) -> Bool {

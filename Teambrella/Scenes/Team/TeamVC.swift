@@ -41,12 +41,13 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         setupTransparentNavigationBar()
         navigationItem.title = "" //service.session?.currentTeam?.teamName ?? "Main.team".localized
         addTopBar()
+        loadHomeData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.layer.zPosition = -1
-       
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,7 +69,7 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         let name = name ?? ""
         let alert = UIAlertController(title: "Team change",
                                       message: "Are you sure you want to change your current team to \(name)?",
-                                      preferredStyle: .alert)
+            preferredStyle: .alert)
         let confirm = UIAlertAction(title: "Yes I do", style: .destructive) { action in
             log("Confirm pressed", type: .userInteraction)
         }
@@ -79,6 +80,21 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         alert.addAction(cancel)
         present(alert, animated: true) {
             log("Alert presented", type: .userInteraction)
+        }
+    }
+    
+    func loadHomeData() {
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
+        
+        service.dao.requestHome(teamID: teamID).observe { [weak self] result in
+            switch result {
+            case let .value(model):
+                self?.topBarVC.setPrivateMessages(unreadCount: model.unreadCount)
+            case let .temporaryValue(model):
+                self?.topBarVC.setPrivateMessages(unreadCount: model.unreadCount)
+            case let .error(error):
+                log("\(error)", type: .error)
+            }
         }
     }
     
