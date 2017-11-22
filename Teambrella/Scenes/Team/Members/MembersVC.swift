@@ -231,6 +231,7 @@ extension MembersVC: UISearchBarDelegate {
 // MARK: UIScrollViewDelegate
 extension MembersVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        /*
         let currentOffset = scrollView.contentOffset.y
         let velocity = currentOffset - previousScrollOffset
         previousScrollOffset = currentOffset
@@ -241,6 +242,7 @@ extension MembersVC: UIScrollViewDelegate {
         if velocity < -10 {
             showSearchBar(show: true, animated: true)
         }
+ */
     }
 }
 
