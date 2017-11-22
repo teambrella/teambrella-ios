@@ -63,7 +63,7 @@
                                             <action selector="tapReportButton:" destination="cCe-np-5xm" eventType="touchUpInside" id="Aok-9J-txv"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G0r-gu-lG2">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G0r-gu-lG2">
                                         <rect key="frame" x="16" y="16" width="96" height="96"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="G0r-gu-lG2" secondAttribute="height" multiplier="1:1" id="q0C-nS-hGy"/>
