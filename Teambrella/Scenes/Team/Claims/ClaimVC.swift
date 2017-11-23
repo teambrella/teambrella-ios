@@ -54,6 +54,12 @@ final class ClaimVC: UIViewController, Routable {
         dataSource.loadData(claimID: claimID)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        manageNavigationBar()
+        //addGradientNavBarIfNeeded()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         clearNavigationBar()
