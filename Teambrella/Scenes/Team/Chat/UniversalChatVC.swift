@@ -352,6 +352,10 @@ final class UniversalChatVC: UIViewController, Routable {
     
     private func setupObjectView() {
         //claimObjectView.isHidden = true //tmp
+//        let tap = UITapGestureRecognizer()
+//        tap.addTarget(self, action: #selector(showObjectDetails(gesture: tap)))
+//        claimObjectView.addGestureRecognizer(tap)
+//
         ViewDecorator.shadow(for: claimObjectView, opacity: 0.08, radius: 4)
         if let claim = dataSource.claim {
             setupClaimObjectView(with: claim)
@@ -361,9 +365,13 @@ final class UniversalChatVC: UIViewController, Routable {
             claimObjectHeight.constant = 0
             claimObjectView.isHidden = true
         }
-        
     }
     
+//    @objc
+//    private func showObjectDetails(gesture: UITapGestureRecognizer) {
+//        service.router.presentClaim()
+//    }
+//
     private func setupClaimObjectView(with claim: EnhancedClaimEntity) {
         claimObjectName.text = claim.model
         claimObjectAmount.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
@@ -380,7 +388,7 @@ final class UniversalChatVC: UIViewController, Routable {
         claimObjectImage.showImage(string: icon)
         guard let vote = claim.myVote else { return }
         
-        claimObjectValueLabel.text = String(format: "%.2f", vote)
+        claimObjectValueLabel.text = String(format: "%.f", vote * 100)
         claimObjectVoteLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
     }
     
