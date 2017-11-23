@@ -71,8 +71,6 @@ final class UniversalChatDatasource {
         return nil
     }
     
-    var topicID: String? { return claim?.topicID }
-    
     var claimID: Int? {
         if let claim = claim {
             return claim.id
@@ -80,6 +78,15 @@ final class UniversalChatDatasource {
         return nil
     }
     
+    var teammateInfo: TeammateBasicInfo? {
+        if let strategy = strategy as? TeammateChatStrategy {
+            return strategy.teammate.basic
+        }
+        return nil
+    }
+    
+    var topicID: String? { return claim?.topicID }
+
     var chatHeader: String? {
         if let strategy = strategy as? ClaimChatStrategy {
             return strategy.claim.description

@@ -183,5 +183,6 @@
 "Team.Claims.objectView.reportButton.title" = "Report a Claim";
 
 "Team.Chat.ObjectView.VoteLabel" = "Vote";
+"Team.Chat.ObjectView.RevoteLabel" = "Revote";
 "Team.Chat.ObjectView.ClaimAmountLabel" = "CLAIM AMOUNT - ";
 "Team.Chat.ObjectView.TitleLabel" = "YOUR VOTE";
