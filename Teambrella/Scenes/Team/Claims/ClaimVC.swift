@@ -57,7 +57,6 @@ final class ClaimVC: UIViewController, Routable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         manageNavigationBar()
-        //addGradientNavBarIfNeeded()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
