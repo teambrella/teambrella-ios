@@ -88,7 +88,7 @@ final class UniversalChatVC: UIViewController, Routable {
         super.viewDidLoad()
         addGradientNavBar()
         addMuteButton(muteType: .subscribed) //fake
-        setupClaimObjectView()
+        setupObjectView()
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
@@ -162,7 +162,7 @@ final class UniversalChatVC: UIViewController, Routable {
         cloudView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,
                                             constant: -rightCloudOffset).isActive = true
         cloudView.topAnchor.constraint(equalTo: self.view.topAnchor,
-                                       constant: 3 + collectionView.frame.minY).isActive = true
+                                       constant: 3 + claimObjectView.frame.minY).isActive = true
         cloudView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 0, alpha: 0)
         cloudView.alpha = 0
         if muteType == .subscribed {
@@ -349,29 +349,54 @@ final class UniversalChatVC: UIViewController, Routable {
         input.adjustHeight()
     }
     
-    private func setupClaimObjectView() {
-        claimObjectView.isHidden = true //tmp
-        guard let claim = dataSource.claim else {
+    private func setupObjectView() {
+        //claimObjectView.isHidden = true //tmp
+        ViewDecorator.shadow(for: claimObjectView, opacity: 0.08, radius: 4)
+        if let claim = dataSource.claim {
+            setupClaimObjectView(with: claim)
+        } else if let teammate = dataSource.teammateInfo {
+            setupTeammateObjectView(with: teammate)
+        } else {
             claimObjectHeight.constant = 0
             claimObjectView.isHidden = true
-            return
         }
         
+    }
+    
+    private func setupClaimObjectView(with claim: EnhancedClaimEntity) {
         claimObjectName.text = claim.model
         claimObjectAmount.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
-            + String(describing: claim.claimAmount)
-        guard let session = service.session, let team = session.currentTeam else { return }
-        
-        claimObjectCurrencyLabel.text = team.currency
+            + String(format: "%.2f", claim.claimAmount)
+        claimObjectCurrencyLabel.text = claim.currency
         claimObjectTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
-        claimObjectValueLabel.text = String(describing: claim.myVote)
         claimObjectPercentLabel.text = "%"
         claimObjectVoteLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
         
         claimObjectImage.image = #imageLiteral(resourceName: "imagePlaceholder")
+        claimObjectValueLabel.text = "..."
         guard let icon = claim.smallPhotos.first else { return }
         
         claimObjectImage.showImage(string: icon)
+        guard let vote = claim.myVote else { return }
+        
+        claimObjectValueLabel.text = String(format: "%.2f", vote)
+        claimObjectVoteLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+    }
+    
+    private func setupTeammateObjectView(with teammate: TeammateBasicInfo) {
+        claimObjectName.text = teammate.name.short
+        claimObjectImage.showImage(string: teammate.avatar)
+        claimObjectAmount.text = teammate.city.uppercased()
+        claimObjectTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
+        claimObjectVoteLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+        
+        claimObjectCurrencyLabel.isHidden = true
+        claimObjectPercentLabel.isHidden = true
+        claimObjectValueLabel.text = "..."
+//        guard let vote = claim.myVote else { return }
+//
+//        claimObjectValueLabel.text = String(format: "%.2f", vote)
+//        claimObjectVoteLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
     }
     
     private func setupCollectionView() {
