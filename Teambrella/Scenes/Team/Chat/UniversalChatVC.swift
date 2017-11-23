@@ -59,7 +59,6 @@ final class UniversalChatVC: UIViewController, Routable {
     @IBOutlet var claimObjectValueLabel: TitleLabel!
     @IBOutlet var claimObjectPercentLabel: TitleLabel!
     
-    
     override var inputAccessoryView: UIView? { return input }
     override var canBecomeFirstResponder: Bool { return true }
     
