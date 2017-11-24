@@ -351,26 +351,36 @@ final class UniversalChatVC: UIViewController, Routable {
     
     private func setupObjectView() {
         //claimObjectView.isHidden = true //tmp
-//        let tap = UITapGestureRecognizer()
-//        tap.addTarget(self, action: #selector(showObjectDetails(gesture: tap)))
-//        claimObjectView.addGestureRecognizer(tap)
-//
+        let tap = UITapGestureRecognizer()
         ViewDecorator.shadow(for: claimObjectView, opacity: 0.08, radius: 4)
         if let claim = dataSource.claim {
             setupClaimObjectView(with: claim)
+            tap.addTarget(self, action: #selector(showClaimDetails))
         } else if let teammate = dataSource.teammateInfo {
             setupTeammateObjectView(with: teammate)
+            tap.addTarget(self, action: #selector(showTeammateDetails))
         } else {
             claimObjectHeight.constant = 0
             claimObjectView.isHidden = true
+            return
         }
+        claimObjectView.addGestureRecognizer(tap)
     }
     
-//    @objc
-//    private func showObjectDetails(gesture: UITapGestureRecognizer) {
-//        service.router.presentClaim()
-//    }
-//
+    @objc
+    private func showClaimDetails(gesture: UITapGestureRecognizer) {
+        guard let claim = dataSource.claim else { return }
+        
+        service.router.presentClaim(claimID: claim.id)
+    }
+
+    @objc
+    private func showTeammateDetails(gesture: UITapGestureRecognizer) {
+        guard let teammate = dataSource.teammateInfo else { return }
+        
+        service.router.presentMemberProfile(teammateID: teammate.id)
+    }
+    
     private func setupClaimObjectView(with claim: EnhancedClaimEntity) {
         claimObjectName.text = claim.model
         claimObjectAmount.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
