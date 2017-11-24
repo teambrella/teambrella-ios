@@ -48,16 +48,16 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @IBOutlet var collectionView: UICollectionView!
     
-    @IBOutlet var claimObjectView: UIView!
-    @IBOutlet var claimObjectHeight: NSLayoutConstraint!
-    @IBOutlet var claimObjectVoteLabel: UILabel!
-    @IBOutlet var claimObjectImage: UIImageView!
-    @IBOutlet var claimObjectName: StatusSubtitleLabel!
-    @IBOutlet var claimObjectAmount: InfoHelpLabel!
-    @IBOutlet var claimObjectCurrencyLabel: CurrencyLabel!
-    @IBOutlet var claimObjectTitleLabel: InfoLabel!
-    @IBOutlet var claimObjectValueLabel: TitleLabel!
-    @IBOutlet var claimObjectPercentLabel: TitleLabel!
+    @IBOutlet var objectView: UIView!
+    @IBOutlet var objectViewHeight: NSLayoutConstraint!
+    @IBOutlet var objectImage: UIImageView!
+    @IBOutlet var objectNameLabel: StatusSubtitleLabel!
+    @IBOutlet var objectDetailsLabel: InfoHelpLabel!
+    @IBOutlet var objectBlueDetailsLabel: CurrencyLabel!
+    @IBOutlet var objectVoteTitleLabel: InfoLabel!
+    @IBOutlet var objectVoteLabel: TitleLabel!
+    @IBOutlet var objectPercentLabel: TitleLabel!
+    @IBOutlet var objectRightLabel: UILabel!
     
     override var inputAccessoryView: UIView? { return input }
     override var canBecomeFirstResponder: Bool { return true }
@@ -162,7 +162,7 @@ final class UniversalChatVC: UIViewController, Routable {
         cloudView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,
                                             constant: -rightCloudOffset).isActive = true
         cloudView.topAnchor.constraint(equalTo: self.view.topAnchor,
-                                       constant: 3 + claimObjectView.frame.minY).isActive = true
+                                       constant: 3 + objectView.frame.minY).isActive = true
         cloudView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 0, alpha: 0)
         cloudView.alpha = 0
         if muteType == .subscribed {
@@ -352,7 +352,7 @@ final class UniversalChatVC: UIViewController, Routable {
     private func setupObjectView() {
         //claimObjectView.isHidden = true //tmp
         let tap = UITapGestureRecognizer()
-        ViewDecorator.shadow(for: claimObjectView, opacity: 0.08, radius: 4)
+        ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
         if let claim = dataSource.claim {
             setupClaimObjectView(with: claim)
             tap.addTarget(self, action: #selector(showClaimDetails))
@@ -360,11 +360,11 @@ final class UniversalChatVC: UIViewController, Routable {
             setupTeammateObjectView(with: teammate)
             tap.addTarget(self, action: #selector(showTeammateDetails))
         } else {
-            claimObjectHeight.constant = 0
-            claimObjectView.isHidden = true
+            objectViewHeight.constant = 0
+            objectView.isHidden = true
             return
         }
-        claimObjectView.addGestureRecognizer(tap)
+        objectView.addGestureRecognizer(tap)
     }
     
     @objc
@@ -382,39 +382,39 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     private func setupClaimObjectView(with claim: EnhancedClaimEntity) {
-        claimObjectName.text = claim.model
-        claimObjectAmount.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
+        objectNameLabel.text = claim.model
+        objectDetailsLabel.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
             + String(format: "%.2f", claim.claimAmount)
-        claimObjectCurrencyLabel.text = claim.currency
-        claimObjectTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
-        claimObjectPercentLabel.text = "%"
-        claimObjectVoteLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+        objectBlueDetailsLabel.text = claim.currency
+        objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
+        objectPercentLabel.text = "%"
+        objectRightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
         
-        claimObjectImage.image = #imageLiteral(resourceName: "imagePlaceholder")
-        claimObjectValueLabel.text = "..."
+        objectImage.image = #imageLiteral(resourceName: "imagePlaceholder")
+        objectVoteLabel.text = "..."
         guard let icon = claim.smallPhotos.first else { return }
         
-        claimObjectImage.showImage(string: icon)
+        objectImage.showImage(string: icon)
         guard let vote = claim.myVote else { return }
         
-        claimObjectValueLabel.text = String(format: "%.f", vote * 100)
-        claimObjectVoteLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+        objectVoteLabel.text = String(format: "%.f", vote * 100)
+        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
     }
     
     private func setupTeammateObjectView(with teammate: TeammateBasicInfo) {
-        claimObjectName.text = teammate.name.short
-        claimObjectImage.showImage(string: teammate.avatar)
-        claimObjectAmount.text = teammate.city.uppercased()
-        claimObjectTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
-        claimObjectVoteLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+        objectNameLabel.text = teammate.name.short
+        objectImage.showImage(string: teammate.avatar)
+        objectDetailsLabel.text = teammate.city.uppercased()
+        objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
+        objectRightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
         
-        claimObjectCurrencyLabel.isHidden = true
-        claimObjectPercentLabel.isHidden = true
-        claimObjectValueLabel.text = "..."
+        objectBlueDetailsLabel.isHidden = true
+        objectPercentLabel.isHidden = true
+        objectVoteLabel.text = "..."
 //        guard let vote = claim.myVote else { return }
 //
-//        claimObjectValueLabel.text = String(format: "%.2f", vote)
-//        claimObjectVoteLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+//        objectVoteLabel.text = String(format: "%.2f", vote)
+//        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
     }
     
     private func setupCollectionView() {

@@ -163,17 +163,17 @@
                         <viewLayoutGuide key="safeArea" id="PC1-t1-KTu"/>
                     </view>
                     <connections>
-                        <outlet property="claimObjectAmount" destination="7PS-Uf-YEJ" id="4sI-GS-rp1"/>
-                        <outlet property="claimObjectCurrencyLabel" destination="Pm1-lT-F8g" id="fgK-Ax-MH5"/>
-                        <outlet property="claimObjectHeight" destination="fDP-uX-P96" id="zE2-t3-wLQ"/>
-                        <outlet property="claimObjectImage" destination="a2P-qi-Qj5" id="ibb-Pu-SWo"/>
-                        <outlet property="claimObjectName" destination="AUU-AZ-BaY" id="6UP-1T-SIB"/>
-                        <outlet property="claimObjectPercentLabel" destination="zvZ-fj-wtR" id="fTZ-5i-s0l"/>
-                        <outlet property="claimObjectTitleLabel" destination="79a-d0-333" id="vLC-4g-7Sd"/>
-                        <outlet property="claimObjectValueLabel" destination="l7k-L3-Bkm" id="n7V-4K-Cw0"/>
-                        <outlet property="claimObjectView" destination="jsQ-Em-gKK" id="k2C-tB-zCI"/>
-                        <outlet property="claimObjectVoteLabel" destination="hSP-6H-DDI" id="3yj-aZ-iWH"/>
                         <outlet property="collectionView" destination="1pK-Sm-stF" id="fsw-q0-b6R"/>
+                        <outlet property="objectBlueDetailsLabel" destination="Pm1-lT-F8g" id="fgK-Ax-MH5"/>
+                        <outlet property="objectDetailsLabel" destination="7PS-Uf-YEJ" id="4sI-GS-rp1"/>
+                        <outlet property="objectImage" destination="a2P-qi-Qj5" id="ibb-Pu-SWo"/>
+                        <outlet property="objectNameLabel" destination="AUU-AZ-BaY" id="6UP-1T-SIB"/>
+                        <outlet property="objectPercentLabel" destination="zvZ-fj-wtR" id="fTZ-5i-s0l"/>
+                        <outlet property="objectRightLabel" destination="hSP-6H-DDI" id="3yj-aZ-iWH"/>
+                        <outlet property="objectView" destination="jsQ-Em-gKK" id="k2C-tB-zCI"/>
+                        <outlet property="objectViewHeight" destination="fDP-uX-P96" id="zE2-t3-wLQ"/>
+                        <outlet property="objectVoteLabel" destination="l7k-L3-Bkm" id="n7V-4K-Cw0"/>
+                        <outlet property="objectVoteTitleLabel" destination="79a-d0-333" id="vLC-4g-7Sd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KI2-CH-Jbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
