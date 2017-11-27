@@ -35,6 +35,14 @@ protocol DAO {
     func requestPrivateList(offset: Int, limit: Int, filter: String?) -> Future<[PrivateChatUser]>
     func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Double, limit: Double)>
     
+    func requestWallet(teamID: Int) -> Future<WalletEntity>
+    func requestProxyRating(teamID: Int,
+                            offset: Int,
+                            limit: Int,
+                            searchString: String?,
+                            sortBy: SortVC.SortType) -> Future<UserIndexCellModel>
+    
+    
     // MARK: Send data
     
     func deleteCard(topicID: String) -> Future<HomeScreenModel>

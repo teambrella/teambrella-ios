@@ -181,6 +181,34 @@ class ServerDAO: DAO {
         return promise
     }
     
+    func requestWallet(teamID: Int) -> Future<WalletEntity> {
+        let promise = Promise<WalletEntity>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID])
+            let request = TeambrellaRequest(type: .wallet, body: body, success: { response in
+                if case .wallet(let wallet) = response {
+                 promise.resolve(with: wallet)
+                }
+                }, failure: { [weak self] error in
+                   promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
+    func requestProxyRating(teamID: Int,
+                            offset: Int,
+                            limit: Int,
+                            searchString: String?,
+                            sortBy: SortVC.SortType) -> Future<UserIndexCellModel> {
+        let promise = Promise<UserIndexCellModel>()
+        freshKey { key in
+            
+        }
+        return promise
+    }
+    
     func myProxy(userID: String, add: Bool) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in

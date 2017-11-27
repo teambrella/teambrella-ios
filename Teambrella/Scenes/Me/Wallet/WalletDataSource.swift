@@ -35,22 +35,22 @@ class WalletDataSource {
     
     func loadData() {
         guard !isLoading else { return }
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
         
         isLoading = true
-        service.server.updateTimestamp { timestamp, error in
-            let key = service.server.key
-            let body = RequestBody(key: key, payload: ["TeamId": service.session?.currentTeam?.teamID ?? 0])
-            let request = TeambrellaRequest(type: .wallet, body: body, success: { [weak self] response in
-                if case .wallet(let wallet) = response {
-                    self?.wallet = wallet
-                    self?.createCellModels(with: wallet)
-                    self?.fundAddress = wallet.fundAddress
-                    self?.onUpdate?()
-                }
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
-            })
-            request.start()
+        service.dao.requestWallet(teamID: teamID).observe { [weak self] result in
+            switch result {
+            case let .value(wallet):
+                self?.wallet = wallet
+                self?.createCellModels(with: wallet)
+                self?.fundAddress = wallet.fundAddress
+                self?.onUpdate?()
+            case let .error(error):
+                 self?.onError?(error)
+            default:
+                break
+            }
+            self?.isLoading = false
         }
     }
     
