@@ -58,6 +58,8 @@
 		6D1292891F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
 		6D12928A1F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
 		6D12928C1F83DE38001CCC31 /* NameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12928B1F83DE38001CCC31 /* NameTests.swift */; };
+		6D12C2EA1FCD6C6200A8926D /* Info.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D12C2E81FCD6C6200A8926D /* Info.strings */; };
+		6D12C2EB1FCD6C6200A8926D /* Info.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D12C2E81FCD6C6200A8926D /* Info.strings */; };
 		6D1425E21F73C2C300DCBF91 /* VotingRiskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */; };
 		6D1425E31F73C2C300DCBF91 /* VotingRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */; };
 		6D1425E61F73DD9B00DCBF91 /* VotingChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1425E41F73DD9A00DCBF91 /* VotingChartCell.swift */; };
@@ -79,6 +81,12 @@
 		6D2A497A1EDEF78C00A1111C /* MembersCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */; };
 		6D2A57AF1F69858A00CE8841 /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A57AE1F69858900CE8841 /* ChatHeader.swift */; };
 		6D2A57B11F698B8A00CE8841 /* EthereumProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A57B01F698B8A00CE8841 /* EthereumProcessor.swift */; };
+		6D2A7C5F1FCC663E0094ABB7 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */; };
+		6D2A7C601FCC663E0094ABB7 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */; };
+		6D2A7C631FCC66960094ABB7 /* SODVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A7C621FCC66960094ABB7 /* SODVC.swift */; };
+		6D2A7C641FCC66960094ABB7 /* SODVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A7C621FCC66960094ABB7 /* SODVC.swift */; };
+		6D2A7C661FCD42F60094ABB7 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A7C651FCD42F60094ABB7 /* UIApplication.swift */; };
+		6D2A7C671FCD42F60094ABB7 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A7C651FCD42F60094ABB7 /* UIApplication.swift */; };
 		6D2BD7BE1F60519F00C7F6A8 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BD7BD1F60519F00C7F6A8 /* Operators.swift */; };
 		6D2BD7C01F614EBF00C7F6A8 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BD7BF1F614EBF00C7F6A8 /* TextField.swift */; };
 		6D3141CC1F07DD7400C285DA /* JoinTeamDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141CB1F07DD7400C285DA /* JoinTeamDataSource.swift */; };
@@ -1029,6 +1037,8 @@
 		6D12927C1F83BD6A001CCC31 /* SceneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneType.swift; path = Model/Enums/SceneType.swift; sourceTree = "<group>"; };
 		6D1292881F83DC46001CCC31 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Name.swift; path = Model/Entities/Name.swift; sourceTree = "<group>"; };
 		6D12928B1F83DE38001CCC31 /* NameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTests.swift; sourceTree = "<group>"; };
+		6D12C2E91FCD6C6200A8926D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Info.strings; sourceTree = "<group>"; };
+		6D12C2EC1FCD6D3D00A8926D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Info.strings; sourceTree = "<group>"; };
 		6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingRiskCell.swift; path = View/Cells/VotingRiskCell.swift; sourceTree = "<group>"; };
 		6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = VotingRiskCell.xib; path = View/Cells/VotingRiskCell.xib; sourceTree = "<group>"; };
 		6D1425E41F73DD9A00DCBF91 /* VotingChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingChartCell.swift; path = View/Cells/VotingChartCell.swift; sourceTree = "<group>"; };
@@ -1050,6 +1060,9 @@
 		6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersCellBuilder.swift; path = Scenes/Team/Members/MembersCellBuilder.swift; sourceTree = "<group>"; };
 		6D2A57AE1F69858900CE8841 /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatHeader.swift; path = Scenes/Team/Chat/ChatHeader.swift; sourceTree = "<group>"; };
 		6D2A57B01F698B8A00CE8841 /* EthereumProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumProcessor.swift; sourceTree = "<group>"; };
+		6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Info.storyboard; path = Scenes/Info/Info.storyboard; sourceTree = "<group>"; };
+		6D2A7C621FCC66960094ABB7 /* SODVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SODVC.swift; path = Scenes/Info/SODVC.swift; sourceTree = "<group>"; };
+		6D2A7C651FCD42F60094ABB7 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIApplication.swift; path = Helpers/UIApplication.swift; sourceTree = "<group>"; };
 		6D2BD7BD1F60519F00C7F6A8 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Helpers/Operators.swift; sourceTree = "<group>"; };
 		6D2BD7BF1F614EBF00C7F6A8 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = View/TextField.swift; sourceTree = "<group>"; };
 		6D3141CB1F07DD7400C285DA /* JoinTeamDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamDataSource.swift; path = Scenes/Team/JoinTeam/JoinTeamDataSource.swift; sourceTree = "<group>"; };
@@ -1598,6 +1611,7 @@
 				9407A5851F13D81D00E0DD74 /* Login.strings */,
 				6D8C6FE51F754D7000BF65B6 /* Error.strings */,
 				6D900E251FC46A7200FF6FF8 /* Push.strings */,
+				6D12C2E81FCD6C6200A8926D /* Info.strings */,
 			);
 			name = Localizations;
 			sourceTree = "<group>";
@@ -1779,8 +1793,18 @@
 				6D0D2ADD1EFBC41D0095284C /* ButtonBarPagerTabStripViewController.swift */,
 				6DA1D1021F056DF900F9DE87 /* UIImage.swift */,
 				6D0C39DC1F991B6600941FF3 /* Notification.swift */,
+				6D2A7C651FCD42F60094ABB7 /* UIApplication.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		6D2A7C611FCC66490094ABB7 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */,
+				6D2A7C621FCC66960094ABB7 /* SODVC.swift */,
+			);
+			name = Info;
 			sourceTree = "<group>";
 		};
 		6D466A871ED07CF1001BC579 /* Blockchain */ = {
@@ -2232,6 +2256,7 @@
 				6DEC074A1E9BCF330078F40E /* Samples */,
 				6D9CC6281ED5EA8C007F936E /* Team */,
 				6D9CC6251ED5EA3F007F936E /* Home */,
+				6D2A7C611FCC66490094ABB7 /* Info */,
 				6D9CC6111ED2E239007F936E /* Login */,
 				6D9CC62B1ED5EADD007F936E /* Proxies */,
 				6D9CC62E1ED5EB2B007F936E /* Me */,
@@ -2841,6 +2866,7 @@
 				6D4E5DAD1F7AB6870020DEE2 /* Fill.sks in Resources */,
 				6D4E5DAE1F7AB6870020DEE2 /* General.strings in Resources */,
 				6D4E5DAF1F7AB6870020DEE2 /* AmountWithCurrency.xib in Resources */,
+				6D2A7C601FCC663E0094ABB7 /* Info.storyboard in Resources */,
 				6D4E5DB01F7AB6870020DEE2 /* ReportTitleCell.xib in Resources */,
 				6D4E5DB11F7AB6870020DEE2 /* WalletCosignerCell.xib in Resources */,
 				6D4E5DB21F7AB6870020DEE2 /* Test.stringsdict in Resources */,
@@ -2874,6 +2900,7 @@
 				6D4E5DCD1F7AB6870020DEE2 /* ClaimVoteCell.xib in Resources */,
 				6D4E5DCE1F7AB6870020DEE2 /* Login.strings in Resources */,
 				6D4E5DCF1F7AB6870020DEE2 /* ImageGalleryCell.xib in Resources */,
+				6D12C2EB1FCD6C6200A8926D /* Info.strings in Resources */,
 				6DDC655A1FBAE0CA00DE4E36 /* TopBarVC.xib in Resources */,
 				6D4E5DD01F7AB6870020DEE2 /* VotingRiskCell.xib in Resources */,
 			);
@@ -2941,6 +2968,7 @@
 				6D097EA81E9D220A00E77DAB /* General.strings in Resources */,
 				94EA56511F20FE04003B46CC /* AmountWithCurrency.xib in Resources */,
 				6DDFDAF51F8CD25600342696 /* Teambrella.xcassets in Resources */,
+				6D2A7C5F1FCC663E0094ABB7 /* Info.storyboard in Resources */,
 				6DAF1CB61F571F4A00421C5A /* ReportTitleCell.xib in Resources */,
 				944C66831F6C146200CCEB58 /* WalletCosignerCell.xib in Resources */,
 				6D097E9C1E9D1AD200E77DAB /* Test.stringsdict in Resources */,
@@ -2974,6 +3002,7 @@
 				6DDE95791EE843540019DA47 /* ClaimVoteCell.xib in Resources */,
 				9407A5871F13D81D00E0DD74 /* Login.strings in Resources */,
 				6DDE95691EE806F80019DA47 /* ImageGalleryCell.xib in Resources */,
+				6D12C2EA1FCD6C6200A8926D /* Info.strings in Resources */,
 				6DDC65591FBAE0CA00DE4E36 /* TopBarVC.xib in Resources */,
 				6D1425E31F73C2C300DCBF91 /* VotingRiskCell.xib in Resources */,
 			);
@@ -3004,7 +3033,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		5BF653B1A5278B620E9E183E /* [CP] Check Pods Manifest.lock */ = {
@@ -3022,7 +3051,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		65B64BFEA424A8A8035DD14A /* [CP] Embed Pods Frameworks */ = {
@@ -3220,7 +3249,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A20056F77F23DD914F29299D /* [CP] Embed Pods Frameworks */ = {
@@ -3253,7 +3282,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E02813D464CF735903FDEC9D /* [CP] Embed Pods Frameworks */ = {
@@ -3337,6 +3366,7 @@
 				6D4E5C4D1F7AB6870020DEE2 /* WalletButtonsCell.swift in Sources */,
 				6D4E5C4E1F7AB6870020DEE2 /* ClaimVC.swift in Sources */,
 				6D4E5C4F1F7AB6870020DEE2 /* Cosigner.swift in Sources */,
+				6D2A7C671FCD42F60094ABB7 /* UIApplication.swift in Sources */,
 				6D4E5C501F7AB6870020DEE2 /* ChatNewMessagesSeparatorCell.swift in Sources */,
 				6D4E5C511F7AB6870020DEE2 /* ChatFragmentHeightCalculator.swift in Sources */,
 				6D4E5C521F7AB6870020DEE2 /* PrivateChatUser.swift in Sources */,
@@ -3554,6 +3584,7 @@
 				6D4E5D161F7AB6870020DEE2 /* CoverageVC.swift in Sources */,
 				6D4E5D171F7AB6870020DEE2 /* VotingScrollerCellModel.swift in Sources */,
 				6D4E5D181F7AB6870020DEE2 /* PhotoPreviewVC.swift in Sources */,
+				6D2A7C641FCC66960094ABB7 /* SODVC.swift in Sources */,
 				6D4E5D191F7AB6870020DEE2 /* ImageGalleryCell.swift in Sources */,
 				6D4E5D1A1F7AB6870020DEE2 /* HeaderWithButton.swift in Sources */,
 				6D4E5D1B1F7AB6870020DEE2 /* EnhancedClaimEntity.swift in Sources */,
@@ -3713,6 +3744,7 @@
 				6D466AA61ED07CF1001BC579 /* Cosigner.swift in Sources */,
 				6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */,
 				6D66B4A41F4F109E00672583 /* ChatFragmentHeightCalculator.swift in Sources */,
+				6D2A7C661FCD42F60094ABB7 /* UIApplication.swift in Sources */,
 				6D1A9B251F55CF92004192AC /* PrivateChatUser.swift in Sources */,
 				6DEE67A31EDC5C4D0098EDB3 /* TeammateCell.swift in Sources */,
 				6D0E057C1F01015E00604981 /* ReportDataSource.swift in Sources */,
@@ -3930,6 +3962,7 @@
 				6D69DA141EFC461700DED5CE /* CoverageVC.swift in Sources */,
 				6D02AC951F06A6B800B01AAF /* VotingScrollerCellModel.swift in Sources */,
 				6DCF62531F4B30E200E8F500 /* PhotoPreviewVC.swift in Sources */,
+				6D2A7C631FCC66960094ABB7 /* SODVC.swift in Sources */,
 				6DDE95681EE806F80019DA47 /* ImageGalleryCell.swift in Sources */,
 				6D69DA371EFD6CED00DED5CE /* HeaderWithButton.swift in Sources */,
 				6DB8121B1EE6F1B800B202CE /* EnhancedClaimEntity.swift in Sources */,
@@ -4091,6 +4124,15 @@
 				6DCB19561F0FF21000AC9969 /* es */,
 			);
 			name = Proxy.strings;
+			sourceTree = "<group>";
+		};
+		6D12C2E81FCD6C6200A8926D /* Info.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D12C2E91FCD6C6200A8926D /* en */,
+				6D12C2EC1FCD6D3D00A8926D /* es */,
+			);
+			name = Info.strings;
 			sourceTree = "<group>";
 		};
 		6D69DA0D1EFC458C00DED5CE /* Me.strings */ = {

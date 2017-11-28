@@ -1,0 +1,12 @@
+/* 
+  Info.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 28.11.2017.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"Info.DemoExpired.Title" = "New demo session";
+"Info.DemoExpired.Details" = "We created a fresh demo team for you. It is compatible with all new features and updates.";
+"Info.DemoExpired.UpperButton.Title" = "Try the Demo";
+"Info.DemoExpired.LowerButton.Title" = "Back";

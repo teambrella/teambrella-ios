@@ -22,7 +22,13 @@ import PKHUD
 import UIKit
 
 final class InitialVC: UIViewController {
-    var isLoginNeeded: Bool = true
+    enum InitialVCMode {
+        case idle
+        case login
+        case demoExpired
+    }
+   
+    var mode: InitialVCMode = .login
     
     // MARK: Lifecycle
     
@@ -30,17 +36,28 @@ final class InitialVC: UIViewController {
         super.viewDidLoad()
         
         if service.keyStorage.lastUserType != .none {
-            isLoginNeeded = false
+           mode = .idle
             startLoadingTeams()
         }
     }
     
+    weak var sod: SODVC?
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if isLoginNeeded {
+        switch mode {
+        case .login:
             performSegue(type: .login)
-            isLoginNeeded = false
+        case .demoExpired:
+            if let vc = service.router.showSOD(in: self) {
+                vc.upperButton.addTarget(self, action: #selector(tapDemo), for: .touchUpInside)
+                vc.lowerButton.addTarget(self, action: #selector(tapBack), for: .touchUpInside)
+                sod = vc
+            }
+        default:
+            break
         }
+       mode = .idle
     }
     
     // MARK: Callbacks
@@ -53,6 +70,22 @@ final class InitialVC: UIViewController {
         HUD.hide()
         if segue.type == .teambrella {
             
+        }
+    }
+    
+    @objc
+    private func tapDemo() {
+        service.keyStorage.clearLastUserType()
+        self.startLoadingTeams()
+        sod?.dismiss(animated: true) {
+        
+        }
+    }
+    
+    @objc
+    private func tapBack() {
+        sod?.dismiss(animated: true) {
+            self.performSegue(type: .login)
         }
     }
     

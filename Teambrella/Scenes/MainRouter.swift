@@ -260,8 +260,9 @@ final class MainRouter {
     
     // MARK: Other
     
-    func logout() {
-        guard let navigator = navigator else { return }
+    @discardableResult
+    func logout() -> InitialVC? {
+        guard let navigator = navigator else { return nil }
         
         PlistStorage().removeCache()
         service.session = nil
@@ -276,10 +277,11 @@ final class MainRouter {
         for vc in navigator.viewControllers {
             if let vc = vc as? InitialVC {
                 navigator.popToViewController(vc, animated: true)
-                vc.isLoginNeeded = true
-                break
+                vc.mode = .login
+               return vc
             }
         }
+        return nil
     }
     
     func switchTeam() {
@@ -289,6 +291,21 @@ final class MainRouter {
             initial.performSegue(type: .teambrella)
         }
         
+    }
+    
+    func manageBrokenSignature() {
+        if let vc = logout() {
+            vc.mode = .demoExpired
+        }
+    }
+    
+    func showSOD(mode: SODVC.SODMode = .outdated, in controller: UIViewController) -> SODVC? {
+        guard let vc = SODVC.instantiate() as? SODVC else { return nil }
+        
+        vc.mode = mode
+        vc.loadViewIfNeeded()
+        controller.present(vc, animated: true)
+        return vc
     }
     
 }

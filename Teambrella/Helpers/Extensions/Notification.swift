@@ -18,4 +18,5 @@ import Foundation
 
 extension Notification.Name {
         //static let teambrellaTimestampUpdated = Notification.Name("teambrella.timestamp.updated")
+    static let teambrellaCoreDataWillClear = Notification.Name("teambrella.coreData.willClear")
 }

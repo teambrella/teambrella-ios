@@ -29,7 +29,11 @@ final class ErrorPresenter {
         guard let error = error else { return }
         
         if let error = error as? TeambrellaError {
+            if error.kind == .brokenSignature {
+                service.router.manageBrokenSignature()
+            } else {
             presentTeambrella(error: error)
+            }
         } else {
             presentGeneral(error: error)
         }

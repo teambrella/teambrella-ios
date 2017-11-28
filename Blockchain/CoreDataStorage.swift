@@ -36,7 +36,9 @@ class CoreDataStorage {
     }
     
     func clear() throws {
+        NotificationCenter.default.post(name: .teambrellaCoreDataWillClear, object: nil)
         context.reset()
+        context.shouldDeleteInaccessibleFaults = true
         let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask);
         var dbUrl = urls[urls.count-1];
         dbUrl = dbUrl.appendingPathComponent("Application Support/TransactionsModel.sqlite")

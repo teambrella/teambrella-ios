@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--SODVC-->
+        <scene sceneID="SHF-tq-cP3">
+            <objects>
+                <viewController storyboardIdentifier="SODVC" automaticallyAdjustsScrollViewInsets="NO" id="sRd-V0-NJw" customClass="SODVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9BB-h0-F61"/>
+                        <viewControllerLayoutGuide type="bottom" id="JTW-8n-Azd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wn2-CA-3Mp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti-color" translatesAutoresizingMaskIntoConstraints="NO" id="g5t-RZ-NBt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="YSo-wd-e5G">
+                                <rect key="frame" x="80" y="50" width="215" height="43"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qnd-rT-Nij">
+                                <rect key="frame" x="10" y="307" width="355" height="54"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9r-qh-PtF">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="29.5"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="25"/>
+                                        <color key="textColor" red="0.23921568627450979" green="0.28627450980392155" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itC-bR-tsJ">
+                                        <rect key="frame" x="0.0" y="37.5" width="355" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
+                                        <color key="textColor" red="0.23921568630000001" green="0.28627450980000002" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cv-5z-WNe" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="20" y="545" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XfL-ln-3ju"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasGradientBackground" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4V-G8-Rxz">
+                                <rect key="frame" x="161.5" y="615" width="52" height="32"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.23921568630000001" green="0.28627450980000002" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3cv-5z-WNe" firstAttribute="leading" secondItem="wn2-CA-3Mp" secondAttribute="leading" constant="20" id="DMS-Pb-03g"/>
+                            <constraint firstAttribute="trailing" secondItem="3cv-5z-WNe" secondAttribute="trailing" constant="20" id="IFt-Md-VxX"/>
+                            <constraint firstItem="K4V-G8-Rxz" firstAttribute="centerX" secondItem="wn2-CA-3Mp" secondAttribute="centerX" id="QSo-qj-Wam"/>
+                            <constraint firstItem="YSo-wd-e5G" firstAttribute="top" secondItem="9BB-h0-F61" secondAttribute="bottom" constant="30" id="Rqi-I9-u0R"/>
+                            <constraint firstAttribute="bottom" secondItem="g5t-RZ-NBt" secondAttribute="bottom" id="RtY-0v-uh3"/>
+                            <constraint firstItem="JTW-8n-Azd" firstAttribute="top" secondItem="K4V-G8-Rxz" secondAttribute="bottom" constant="20" id="STT-sk-Scz"/>
+                            <constraint firstItem="Qnd-rT-Nij" firstAttribute="centerY" secondItem="wn2-CA-3Mp" secondAttribute="centerY" id="Xe8-Ri-fxc"/>
+                            <constraint firstItem="K4V-G8-Rxz" firstAttribute="top" secondItem="3cv-5z-WNe" secondAttribute="bottom" constant="20" id="ZVt-Fl-fhT"/>
+                            <constraint firstAttribute="trailing" secondItem="Qnd-rT-Nij" secondAttribute="trailing" constant="10" id="iRQ-mE-Ba3"/>
+                            <constraint firstItem="g5t-RZ-NBt" firstAttribute="leading" secondItem="wn2-CA-3Mp" secondAttribute="leading" id="jgA-Co-g3g"/>
+                            <constraint firstItem="YSo-wd-e5G" firstAttribute="centerX" secondItem="g5t-RZ-NBt" secondAttribute="centerX" id="s6Q-qU-EH5"/>
+                            <constraint firstAttribute="trailing" secondItem="g5t-RZ-NBt" secondAttribute="trailing" id="u4Y-47-V08"/>
+                            <constraint firstItem="g5t-RZ-NBt" firstAttribute="top" secondItem="wn2-CA-3Mp" secondAttribute="top" id="uFJ-xw-ae0"/>
+                            <constraint firstItem="Qnd-rT-Nij" firstAttribute="leading" secondItem="wn2-CA-3Mp" secondAttribute="leading" constant="10" id="yZ2-tL-OWv"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="confettiView" destination="g5t-RZ-NBt" id="hFS-MT-vWe"/>
+                        <outlet property="detailsLabel" destination="itC-bR-tsJ" id="Rev-6Y-qik"/>
+                        <outlet property="logoView" destination="YSo-wd-e5G" id="zNd-Bi-cAj"/>
+                        <outlet property="lowerButton" destination="K4V-G8-Rxz" id="Mbr-34-wP2"/>
+                        <outlet property="titleLabel" destination="D9r-qh-PtF" id="Qgo-0j-AY6"/>
+                        <outlet property="upperButton" destination="3cv-5z-WNe" id="9fJ-d8-zqR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SnA-bT-03O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-199.19999999999999" y="103.89805097451276"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="confetti-color" width="1024" height="1024"/>
+        <image name="logo-1" width="215" height="43"/>
+    </resources>
+</document>

@@ -79,8 +79,16 @@ class TeambrellaService {
         
     }
     
+    var isStorageCleared = false {
+        didSet {
+            if isStorageCleared {
+        queue.cancelAllOperations()
+            }
+        }
+    }
     func clear() throws {
         try contentProvider.clear()
+        isStorageCleared = true
     }
     
     func updateData(completion: @escaping (Bool) -> Void) {
@@ -107,12 +115,18 @@ class TeambrellaService {
         let signatures = contentProvider.signaturesToUpdate
         let user = contentProvider.user
         let multisigsToUpdate = contentProvider.multisigsNeedsServerUpdate
+     
         server.getUpdates(privateKey: user.privateKey,
                           lastUpdated: user.lastUpdated,
                           multisigs: multisigsToUpdate,
                           transactions: txsToUpdate,
                           signatures: signatures
                           ) { [unowned self] reply in
+                            guard !self.isStorageCleared else {
+                                completion(false)
+                                return
+                            }
+                            
                             switch reply {
                             case .success(let json, let timestamp):
                                 log("BlockchainStorage Server update to local db received json: \(json)", type: .crypto)
@@ -166,6 +180,7 @@ class TeambrellaService {
     
     func sync() {
         print("Teambrella service start sync")
+        isStorageCleared = false
         registerBackgroundTask()
         queue.addOperation {
             self.queue.isSuspended = true
