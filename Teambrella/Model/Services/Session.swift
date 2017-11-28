@@ -22,7 +22,9 @@
 import Foundation
 
 struct Session {
-    var currentTeam: TeamEntity?
+    var isDemo: Bool
+    
+    var currentTeam: TeamEntity? = nil
     var teams: [TeamEntity] = []
     
     // TMP: my user properties
@@ -31,14 +33,16 @@ struct Session {
     var currentUserName: String?
     var currentUserAvatar: String = ""
     
-    var isDemo: Bool
-    
     var cryptoCurrency: CurrencyLike = Ethereum()
     var coinName: String { return cryptoCurrency.child?.code ?? "" }
     
     var myAvatarString: String { return "me/avatar" }
     var myAvatarStringSmall: String { return myAvatarString + "/128" }
     var dataSource: HomeDataSource = HomeDataSource()
+    
+    init(isDemo: Bool) {
+        self.isDemo = isDemo
+    }
     
     @discardableResult
     mutating func switchToTeam(id: Int) -> Bool {
