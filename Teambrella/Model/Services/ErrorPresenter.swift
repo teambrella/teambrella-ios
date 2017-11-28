@@ -29,7 +29,8 @@ final class ErrorPresenter {
         guard let error = error else { return }
         
         if let error = error as? TeambrellaError {
-            if error.kind == .brokenSignature {
+            // restart demo if current has expired
+            if let session = service.session, session.isDemo, error.kind == .brokenSignature {
                 service.router.manageBrokenSignature()
             } else {
             presentTeambrella(error: error)

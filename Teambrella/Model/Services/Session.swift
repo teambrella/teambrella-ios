@@ -31,6 +31,8 @@ struct Session {
     var currentUserName: String?
     var currentUserAvatar: String = ""
     
+    var isDemo: Bool
+    
     var cryptoCurrency: CurrencyLike = Ethereum()
     var coinName: String { return cryptoCurrency.child?.code ?? "" }
     

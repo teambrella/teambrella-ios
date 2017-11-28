@@ -97,7 +97,7 @@ final class InitialVC: UIViewController {
         service.dao.requestTeams(demo: isDemo).observe { [weak self] result in
             switch result {
             case let .value(teamsEntity):
-                self?.startSession(teamsEntity: teamsEntity)
+                self?.startSession(teamsEntity: teamsEntity, isDemo: isDemo)
             case .temporaryValue:
                 break
             case .error:
@@ -106,8 +106,8 @@ final class InitialVC: UIViewController {
         }
     }
     
-    private func startSession(teamsEntity: TeamsModel) {
-        service.session = Session()
+    private func startSession(teamsEntity: TeamsModel, isDemo: Bool) {
+        service.session = Session(isDemo: isDemo)
         
         service.teambrella.startUpdating()
         
