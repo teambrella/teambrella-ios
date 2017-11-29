@@ -18,19 +18,31 @@ import Foundation
 
 struct RemoteMessage {
     let payload: RemotePayload
+    /*
+    case privateMessage = 5
+    case walletFunded = 6
+    case postsSinceInteracted = 7
+    case newTeammate = 8
+    case newDiscussion = 9
     
+    case topicMessage = 21
+    */
     var title: String? {
         switch payload.type {
         case .createdPost:
             return "Push.newPost".localized
+        case .privateMessage:
+            return "Push.privateMessage.title_format".localized(payload.userNameValue)
         case .newTeammate:
-            return "Push.newTeammate".localized
+            return payload.teamNameValue
         case .postsSinceInteracted:
             return "Push.unreadMessages_format".localized(payload.postsCount ?? "")
         case .walletFunded:
             return "Push.walletFunded".localized
         case .topicMessage:
             return "Push.newMessage".localized
+        case .newDiscussion:
+            return "Push.newDiscussion.title_format".localized(payload.userNameValue, payload.topicNameValue)
         default:
             return nil
         }
@@ -55,14 +67,14 @@ struct RemoteMessage {
              .privateMessage:
             return payload.message
         case .walletFunded:
-            return "Push.walletFunded.message_format".localized(payload.teamNameValue,
-                                                                payload.cryptoAmountValue,
-                                                                payload.currencyAmountValue)
+            return "Push.walletFunded.message_format".localized(payload.cryptoAmountValue)
         case .topicMessage:
             return "Push.newMessage.posted_format".localized(payload.userNameValue,
                                                              payload.topicNameValue)
         case .postsSinceInteracted:
             return ""
+        case .newTeammate:
+            return "Push.newTeammate.body_format".localized(payload.userNameValue)
         default:
             return nil
         }

@@ -7,12 +7,18 @@
 */
 
 "Push.newPost" = "New post";
-"Push.newTeammate" = "New teammate";
+
+"Push.privateMessage.title_format" = "%1$@ (new message)";
+
+"Push.newTeammate.body_format" = "%@ wants to join your team. Say hello!";
 "Push.unreadMessages_format" = "You have %@ unread messages";
 "Push.walletFunded.title" = "Wallet is funded";
+
 "Push.newMessage" = "New message";
 
-"Push.team_format" = "Team: %@";
+"Push.team_format" = "Team: \"%@\"";
 
-"Push.walletFunded.message_format" = "Wallet for team %@ is funded for %@mETH (%@)";
+"Push.walletFunded.message_format" = "+ %@mETH";
 "Push.newMessage.posted_format" = "%@ posted in %@";
+
+"Push.newDiscussion.title_format" = "%1$@ started a new discussion \"%2$@\"";

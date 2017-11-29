@@ -7,13 +7,20 @@
 */
 
 // need localization
-"Push.newPost" = "New post";
-"Push.newTeammate" = "New teammate";
+"Push.newPost" = "Nuevo mensaje";
+
+"Push.privateMessage.title_format" = "%1$@ (nuevo mensaje)";
+
+"Push.newTeammate.body_format" = "%@ quiere unirse a tu equipo. Dile hola!";
 "Push.unreadMessages_format" = "You have %@ unread messages";
-"Push.walletFunded.title" = "Wallet is funded";
-"Push.newMessage" = "New message";
 
-"Push.team_format" = "Team: %@";
+"Push.walletFunded.title" = "Tu monedero está financiado";
 
-"Push.walletFunded.message_format" = "Wallet for team %@ is funded for %@mETH (%@)";
-"Push.newMessage.posted_format" = "%@ posted in %@";
+"Push.newMessage" = "Nuevo mensaje";
+
+"Push.team_format" = "Equipo \"%@\"";
+
+"Push.walletFunded.message_format" = "+ %1$@mETH";
+"Push.newMessage.posted_format" = "%@ publicado en %@";
+
+"Push.newDiscussion.title_format" = "%1$@ inició una nueva discusión \"%2$@\"";
