@@ -61,6 +61,7 @@ enum TeambrellaRequestType: String {
     case privateChat = "privatemessage/getChat"
     case privateList = "privatemessage/getList"
     case newPrivatePost = "privatemessage/newMessage"
+    case withdraw = "wallet/getWithdraw"
 }
 
 enum TeambrellaResponseType {
@@ -95,6 +96,7 @@ enum TeambrellaResponseType {
     
     case privateList([PrivateChatUser])
     case privateChat([ChatEntity])
+    case withdraw()
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void

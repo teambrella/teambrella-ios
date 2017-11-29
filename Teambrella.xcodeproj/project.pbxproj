@@ -728,6 +728,12 @@
 		6DA8D5531F0E74C9000A4DB7 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA8D5521F0E74C9000A4DB7 /* DAO.swift */; };
 		6DA8D5571F0E756B000A4DB7 /* HomeScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA8D5561F0E756B000A4DB7 /* HomeScreenModel.swift */; };
 		6DA8D55A1F0E8B99000A4DB7 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA8D5591F0E8B99000A4DB7 /* HomeDataSource.swift */; };
+		6DAD941C1FCEF4500011557C /* CodeCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD941B1FCEF4500011557C /* CodeCaptureDelegate.swift */; };
+		6DAD941D1FCEF4500011557C /* CodeCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD941B1FCEF4500011557C /* CodeCaptureDelegate.swift */; };
+		6DAD941F1FCEF4B00011557C /* QRCodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD941E1FCEF4B00011557C /* QRCodeType.swift */; };
+		6DAD94201FCEF4B00011557C /* QRCodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD941E1FCEF4B00011557C /* QRCodeType.swift */; };
+		6DAD94221FCEF5010011557C /* CodeCaptureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */; };
+		6DAD94231FCEF5010011557C /* CodeCaptureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */; };
 		6DAF1CB51F571F4A00421C5A /* ReportTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB31F571F4A00421C5A /* ReportTitleCell.swift */; };
 		6DAF1CB61F571F4A00421C5A /* ReportTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB41F571F4A00421C5A /* ReportTitleCell.xib */; };
 		6DAF1CB81F58562900421C5A /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB71F58562900421C5A /* PushService.swift */; };
@@ -1283,6 +1289,9 @@
 		6DA8D5521F0E74C9000A4DB7 /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DAO.swift; path = Model/Protocols/DAO.swift; sourceTree = "<group>"; };
 		6DA8D5561F0E756B000A4DB7 /* HomeScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenModel.swift; path = Model/Entities/HomeScreenModel.swift; sourceTree = "<group>"; };
 		6DA8D5591F0E8B99000A4DB7 /* HomeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeDataSource.swift; path = Scenes/Home/HomeDataSource.swift; sourceTree = "<group>"; };
+		6DAD941B1FCEF4500011557C /* CodeCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeCaptureDelegate.swift; path = Model/Protocols/CodeCaptureDelegate.swift; sourceTree = "<group>"; };
+		6DAD941E1FCEF4B00011557C /* QRCodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRCodeType.swift; path = Model/Enums/QRCodeType.swift; sourceTree = "<group>"; };
+		6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeCaptureVC.swift; path = Scenes/Info/CodeCaptureVC.swift; sourceTree = "<group>"; };
 		6DAF1CB31F571F4A00421C5A /* ReportTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportTitleCell.swift; path = View/Cells/Report/ReportTitleCell.swift; sourceTree = "<group>"; };
 		6DAF1CB41F571F4A00421C5A /* ReportTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportTitleCell.xib; path = View/Cells/Report/ReportTitleCell.xib; sourceTree = "<group>"; };
 		6DAF1CB71F58562900421C5A /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushService.swift; path = Model/Services/Push/PushService.swift; sourceTree = "<group>"; };
@@ -1803,6 +1812,7 @@
 			children = (
 				6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */,
 				6D2A7C621FCC66960094ABB7 /* SODVC.swift */,
+				6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */,
 			);
 			name = Info;
 			sourceTree = "<group>";
@@ -2500,6 +2510,7 @@
 				6DCB19571F11163900AC9969 /* PagingDraggable.swift */,
 				6DA5B4621F98D80700021E8E /* CryptoWorker.swift */,
 				6DA5B4661F98EA3500021E8E /* Currency.swift */,
+				6DAD941B1FCEF4500011557C /* CodeCaptureDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -2649,6 +2660,7 @@
 				6DF479151F42F0570025F489 /* CoverageType.swift */,
 				6DF479171F42F0740025F489 /* TeamAccessLevel.swift */,
 				6D12927C1F83BD6A001CCC31 /* SceneType.swift */,
+				6DAD941E1FCEF4B00011557C /* QRCodeType.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -3476,6 +3488,7 @@
 				6D4E5CB61F7AB6870020DEE2 /* FeedRequestContext.swift in Sources */,
 				6D4E5CB71F7AB6870020DEE2 /* ChatDatasourceStrategies.swift in Sources */,
 				6D4E5CB81F7AB6870020DEE2 /* WalletCosignersCellBuilder.swift in Sources */,
+				6DAD94201FCEF4B00011557C /* QRCodeType.swift in Sources */,
 				6D4E5CB91F7AB6870020DEE2 /* ClaimTransactionsCellModel.swift in Sources */,
 				6D4E5CBA1F7AB6870020DEE2 /* TransactionsModel.xcdatamodeld in Sources */,
 				6D4E5CBB1F7AB6870020DEE2 /* TextAdapter.swift in Sources */,
@@ -3643,6 +3656,7 @@
 				6D4E5D4E1F7AB6870020DEE2 /* LabeledButton.swift in Sources */,
 				6D4E5D4F1F7AB6870020DEE2 /* HomeCollectionCell.swift in Sources */,
 				6D4E5D501F7AB6870020DEE2 /* CosignerEntity.swift in Sources */,
+				6DAD94231FCEF5010011557C /* CodeCaptureVC.swift in Sources */,
 				6D4E5D521F7AB6870020DEE2 /* IsTypingView.swift in Sources */,
 				6D4E5D531F7AB6870020DEE2 /* PhotoPreviewDelegate.swift in Sources */,
 				6D4E5D541F7AB6870020DEE2 /* FacebookUser.swift in Sources */,
@@ -3656,6 +3670,7 @@
 				6D4E5D5C1F7AB6870020DEE2 /* TeammatesTVC.swift in Sources */,
 				6D4E5D5D1F7AB6870020DEE2 /* ClaimsVotedCell.swift in Sources */,
 				6D4E5D5E1F7AB6870020DEE2 /* SegueType.swift in Sources */,
+				6DAD941D1FCEF4500011557C /* CodeCaptureDelegate.swift in Sources */,
 				6D4E5D5F1F7AB6870020DEE2 /* CompareTeamRiskVC.swift in Sources */,
 				6D4E5D601F7AB6870020DEE2 /* TxSignature.swift in Sources */,
 				6D4E5D611F7AB6870020DEE2 /* ClaimsCellBuilder.swift in Sources */,
@@ -3854,6 +3869,7 @@
 				6DE793361EF92E34005F4508 /* ChatTextParser.swift in Sources */,
 				6DCDEB741F17E76A00C6D38C /* FeedRequestContext.swift in Sources */,
 				6DB309F71F1D169D007DFF40 /* ChatDatasourceStrategies.swift in Sources */,
+				6DAD941F1FCEF4B00011557C /* QRCodeType.swift in Sources */,
 				942429F31F696E81009967E9 /* WalletCosignersCellBuilder.swift in Sources */,
 				94266A2E1F55704A0089543F /* ClaimTransactionsCellModel.swift in Sources */,
 				6D466AB11ED07CF1001BC579 /* TransactionsModel.xcdatamodeld in Sources */,
@@ -4021,6 +4037,7 @@
 				6D0E742D1F13C0D70055BF1E /* LabeledButton.swift in Sources */,
 				6D9CC6511ED97C37007F936E /* HomeCollectionCell.swift in Sources */,
 				94B4C37E1F1E18AC00AED4CE /* CosignerEntity.swift in Sources */,
+				6DAD94221FCEF5010011557C /* CodeCaptureVC.swift in Sources */,
 				6D7C1AD11F598CFF00A88987 /* IsTypingView.swift in Sources */,
 				6DCF625A1F4B31EB00E8F500 /* PhotoPreviewDelegate.swift in Sources */,
 				6D6DA2641EE21ACA00307C73 /* FacebookUser.swift in Sources */,
@@ -4034,6 +4051,7 @@
 				6DEC074C1E9BCF700078F40E /* TeammatesTVC.swift in Sources */,
 				6D6DA2541EE1C65800307C73 /* ClaimsVotedCell.swift in Sources */,
 				6D9CC6151ED48244007F936E /* SegueType.swift in Sources */,
+				6DAD941C1FCEF4500011557C /* CodeCaptureDelegate.swift in Sources */,
 				9407A58A1F15105E00E0DD74 /* CompareTeamRiskVC.swift in Sources */,
 				6D466AAD1ED07CF1001BC579 /* TxSignature.swift in Sources */,
 				6D6DA2601EE1DAA400307C73 /* ClaimsCellBuilder.swift in Sources */,

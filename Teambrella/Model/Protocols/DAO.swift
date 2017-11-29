@@ -42,7 +42,6 @@ protocol DAO {
                             searchString: String?,
                             sortBy: SortVC.SortType) -> Future<UserIndexCellModel>
     
-    
     // MARK: Send data
     
     func deleteCard(topicID: String) -> Future<HomeScreenModel>
