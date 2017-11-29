@@ -189,7 +189,7 @@ class ServerDAO: DAO {
                 if case .wallet(let wallet) = response {
                  promise.resolve(with: wallet)
                 }
-                }, failure: { [weak self] error in
+                }, failure: { error in
                    promise.reject(with: error)
             })
             request.start()

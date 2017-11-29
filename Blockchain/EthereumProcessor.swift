@@ -51,7 +51,6 @@ struct EthereumProcessor {
     var ethKeyStore: GethKeyStore? {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let keyStore = GethNewKeyStore(documentsPath + "/keystore" + key.publicKey, GethLightScryptN, GethLightScryptP)
-        print("keyStore: \(keyStore)")
         return keyStore
     }
     
