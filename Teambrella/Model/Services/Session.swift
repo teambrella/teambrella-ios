@@ -24,7 +24,7 @@ import Foundation
 struct Session {
     var isDemo: Bool
     
-    var currentTeam: TeamEntity? = nil
+    var currentTeam: TeamEntity?
     var teams: [TeamEntity] = []
     
     // TMP: my user properties
