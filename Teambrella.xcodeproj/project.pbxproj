@@ -938,6 +938,8 @@
 		94E80E591F0FE33500DE1A0A /* HomeApplicationStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E80E571F0FE33500DE1A0A /* HomeApplicationStatusCell.xib */; };
 		94EA56511F20FE04003B46CC /* AmountWithCurrency.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EA564F1F20FE04003B46CC /* AmountWithCurrency.xib */; };
 		94EA56531F2101D4003B46CC /* AmountWithCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA56521F2101D4003B46CC /* AmountWithCurrency.swift */; };
+		94F0CF551FCF1952007BE39E /* WithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF541FCF1952007BE39E /* WithdrawVC.swift */; };
+		94F0CF561FCF1952007BE39E /* WithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF541FCF1952007BE39E /* WithdrawVC.swift */; };
 		94F502551FA8D31A0059D49B /* MuteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FEE831FA8D05700B43CB5 /* MuteVC.swift */; };
 		94F502571FA8D3760059D49B /* MuteCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475D9311FA390BC00F881C9 /* MuteCellModel.swift */; };
 		94F502581FA8D4690059D49B /* MuteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475D9331FA3956400F881C9 /* MuteCell.swift */; };
@@ -1487,6 +1489,7 @@
 		94E80E571F0FE33500DE1A0A /* HomeApplicationStatusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeApplicationStatusCell.xib; path = View/Cells/HomeApplicationStatusCell.xib; sourceTree = "<group>"; };
 		94EA564F1F20FE04003B46CC /* AmountWithCurrency.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AmountWithCurrency.xib; path = View/ReusableViews/AmountWithCurrency.xib; sourceTree = "<group>"; };
 		94EA56521F2101D4003B46CC /* AmountWithCurrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmountWithCurrency.swift; path = View/ReusableViews/AmountWithCurrency.swift; sourceTree = "<group>"; };
+		94F0CF541FCF1952007BE39E /* WithdrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawVC.swift; path = Scenes/Me/Wallet/WithdrawVC.swift; sourceTree = "<group>"; };
 		94F502591FA8E4A90059D49B /* MuteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuteDataSource.swift; path = Scenes/Team/Chat/MuteDataSource.swift; sourceTree = "<group>"; };
 		BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDFE16BB5E7B5B758559237 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Helpers/Extensions/String.swift; sourceTree = "<group>"; };
@@ -2021,6 +2024,7 @@
 				942429EC1F696E27009967E9 /* WalletCosignersVC.swift */,
 				942429EE1F696E44009967E9 /* WalletCosignersDataSource.swift */,
 				942429F21F696E81009967E9 /* WalletCosignersCellBuilder.swift */,
+				94F0CF541FCF1952007BE39E /* WithdrawVC.swift */,
 			);
 			name = Wallet;
 			sourceTree = "<group>";
@@ -3529,6 +3533,7 @@
 				6D56F9BD1FA737CC00B9D676 /* Application.swift in Sources */,
 				6D4E5CDD1F7AB6870020DEE2 /* FeedCellBuilder.swift in Sources */,
 				6D4E5CDE1F7AB6870020DEE2 /* ProxyCell.swift in Sources */,
+				94F0CF561FCF1952007BE39E /* WithdrawVC.swift in Sources */,
 				6DBF492D1F80F22300B236E2 /* AnimationTools.swift in Sources */,
 				6D4E5CDF1F7AB6870020DEE2 /* PayTo.swift in Sources */,
 				6D4E5CE01F7AB6870020DEE2 /* TeammateVotingInfo.swift in Sources */,
@@ -3910,6 +3915,7 @@
 				6D56F9BC1FA737CC00B9D676 /* Application.swift in Sources */,
 				CBDFE767664CC051784BF271 /* ServerService.swift in Sources */,
 				6D69DA211EFD19BF00DED5CE /* WalletHeaderCell.swift in Sources */,
+				94F0CF551FCF1952007BE39E /* WithdrawVC.swift in Sources */,
 				6D83EC941EDDA9DC000412DC /* TeammateProfileDataSource.swift in Sources */,
 				6D69DA3C1EFD6D3400DED5CE /* FeedCellBuilder.swift in Sources */,
 				6D0D2AEF1EFBDB7C0095284C /* ProxyCell.swift in Sources */,
