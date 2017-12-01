@@ -50,12 +50,19 @@ struct EthereumProcessor {
     
     var ethKeyStore: GethKeyStore? {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        return GethNewKeyStore(documentsPath + "/keystore" + key.publicKey, GethLightScryptN, GethLightScryptP)
+        let keyStore = GethNewKeyStore(documentsPath + "/keystore" + key.publicKey, GethLightScryptN, GethLightScryptP)
+        return keyStore
     }
     
     var ethAccount: GethAccount? {
-        guard let keyStore = ethKeyStore else { return nil }
-        guard let accounts = keyStore.getAccounts() else { return nil }
+        guard let keyStore = ethKeyStore else {
+            print("no keystore")
+            return nil
+        }
+        guard let accounts = keyStore.getAccounts() else {
+            print("no geth accounts")
+            return nil
+        }
         
         return accounts.size() == 0
             ? try? keyStore.importECDSAKey(secretData, passphrase: secretString)
@@ -80,23 +87,18 @@ struct EthereumProcessor {
     
     func sign(publicKey: String) -> Data? {
         // signing last 32 bytes of a string
-        guard let keyStore = ethKeyStore else { return nil }
         guard let account = ethAccount else { return nil }
         let data = Data(hex: publicKey)
-        
         var bytes: [UInt8] = Array(data)
         guard bytes.count >= 32 else { return nil }
         
         let last32bytes = bytes[(bytes.count - 32)...]
-        
         do {
-            let storedKeyString = KeyStorage.shared.privateKey
-            print(key.debugDescription)
-            print("stored private key string: \(storedKeyString)")
             print("ethereum address: \(account.getAddress().getHex())")
             print("last 32 bytes: \(Data(last32bytes).hexString)")
-            let signed = try keyStore.signHashPassphrase(account, passphrase: secretString, hash: Data(last32bytes))
-            print("signature: \(signed.hexString)")
+            print("secret string: \(secretString)")
+            let signed = try ethKeyStore?.signHashPassphrase(account, passphrase: secretString, hash: Data(last32bytes))
+            print("signature: \(signed?.hexString ?? "nil")")
             return signed
         } catch {
             log("Error signing ethereum: \(error)", type: .error)

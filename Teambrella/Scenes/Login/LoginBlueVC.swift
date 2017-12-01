@@ -80,11 +80,6 @@ final class LoginBlueVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
-        //        guard isRegisteredFacebookUser == false else {
-        //            logAsFacebookUser(user: nil)
-        //            return
-        //        }
-        
         let manager = FBSDKLoginManager()
         manager.logOut()
         let permissions = ["public_profile", "email", "user_friends"]
@@ -199,8 +194,7 @@ Are you sure you want to completely remove your private key from this device?
         service.keyStorage.setToRealUser()
         
         guard let signature = EthereumProcessor.standard.publicKeySignature else {
-            let error = TeambrellaErrorFactory.malformedETCsignature()
-            service.error.present(error: error)
+            HUD.hide()
             service.router.logout()
             return
         }

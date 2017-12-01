@@ -30,10 +30,14 @@ final class ErrorPresenter {
         
         if let error = error as? TeambrellaError {
             // restart demo if current has expired
-            if let session = service.session, session.isDemo, error.kind == .brokenSignature {
-                service.router.manageBrokenSignature()
+            if  error.kind == .brokenSignature {
+                if let session = service.session, session.isDemo {
+                    service.router.manageBrokenSignature()
+                } else {
+                    service.router.logout()
+                }
             } else {
-            presentTeambrella(error: error)
+                presentTeambrella(error: error)
             }
         } else {
             presentGeneral(error: error)
@@ -50,7 +54,7 @@ final class ErrorPresenter {
     func hide(id: String) {
         SwiftMessages.hide(id: id)
         if let idx = ids.index(of: id) {
-        ids.remove(at: idx)
+            ids.remove(at: idx)
         }
     }
     
@@ -70,12 +74,12 @@ final class ErrorPresenter {
         message.iconLabel = nil
         let id = message.id
         message.configureContent(title: title,
-                              body: details,
-                              iconImage: nil,
-                              iconText: nil,
-                              buttonImage: nil,
-                              buttonTitle: "OK") { [weak self] button in
-            self?.hide(id: id)
+                                 body: details,
+                                 iconImage: nil,
+                                 iconText: nil,
+                                 buttonImage: nil,
+                                 buttonTitle: "OK") { [weak self] button in
+                                    self?.hide(id: id)
         }
         
         var config = SwiftMessages.defaultConfig

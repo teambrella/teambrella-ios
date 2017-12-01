@@ -124,6 +124,7 @@ final class InitialVC: UIViewController {
         service.socket = SocketService()
         HUD.hide()
         presentMasterTab()
+        requestPush()
     }
     
     private func failure() {
@@ -146,6 +147,11 @@ final class InitialVC: UIViewController {
         } else {
             // present default .home screen
         }
+    }
+    
+    private func requestPush() {
+        let application = UIApplication.shared
+        service.push.askPermissionsForRemoteNotifications(application: application)
     }
     
 }
