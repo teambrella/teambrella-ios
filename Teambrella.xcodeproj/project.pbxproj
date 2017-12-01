@@ -940,6 +940,14 @@
 		94EA56531F2101D4003B46CC /* AmountWithCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA56521F2101D4003B46CC /* AmountWithCurrency.swift */; };
 		94F0CF551FCF1952007BE39E /* WithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF541FCF1952007BE39E /* WithdrawVC.swift */; };
 		94F0CF561FCF1952007BE39E /* WithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF541FCF1952007BE39E /* WithdrawVC.swift */; };
+		94F0CF591FD1ACCF007BE39E /* WithdrawHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF571FD1ACCF007BE39E /* WithdrawHeader.swift */; };
+		94F0CF5A1FD1ACCF007BE39E /* WithdrawHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF571FD1ACCF007BE39E /* WithdrawHeader.swift */; };
+		94F0CF5B1FD1ACCF007BE39E /* WithdrawHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F0CF581FD1ACCF007BE39E /* WithdrawHeader.xib */; };
+		94F0CF5C1FD1ACCF007BE39E /* WithdrawHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F0CF581FD1ACCF007BE39E /* WithdrawHeader.xib */; };
+		94F0CF5F1FD1B66E007BE39E /* WithdrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF5D1FD1B66E007BE39E /* WithdrawCell.swift */; };
+		94F0CF601FD1B66E007BE39E /* WithdrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF5D1FD1B66E007BE39E /* WithdrawCell.swift */; };
+		94F0CF611FD1B66E007BE39E /* WithdrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */; };
+		94F0CF621FD1B66E007BE39E /* WithdrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */; };
 		94F502551FA8D31A0059D49B /* MuteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FEE831FA8D05700B43CB5 /* MuteVC.swift */; };
 		94F502571FA8D3760059D49B /* MuteCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475D9311FA390BC00F881C9 /* MuteCellModel.swift */; };
 		94F502581FA8D4690059D49B /* MuteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475D9331FA3956400F881C9 /* MuteCell.swift */; };
@@ -1490,6 +1498,10 @@
 		94EA564F1F20FE04003B46CC /* AmountWithCurrency.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AmountWithCurrency.xib; path = View/ReusableViews/AmountWithCurrency.xib; sourceTree = "<group>"; };
 		94EA56521F2101D4003B46CC /* AmountWithCurrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmountWithCurrency.swift; path = View/ReusableViews/AmountWithCurrency.swift; sourceTree = "<group>"; };
 		94F0CF541FCF1952007BE39E /* WithdrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawVC.swift; path = Scenes/Me/Wallet/WithdrawVC.swift; sourceTree = "<group>"; };
+		94F0CF571FD1ACCF007BE39E /* WithdrawHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawHeader.swift; path = View/ReusableViews/WithdrawHeader.swift; sourceTree = "<group>"; };
+		94F0CF581FD1ACCF007BE39E /* WithdrawHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WithdrawHeader.xib; path = View/ReusableViews/WithdrawHeader.xib; sourceTree = "<group>"; };
+		94F0CF5D1FD1B66E007BE39E /* WithdrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawCell.swift; path = View/Cells/WithdrawCell.swift; sourceTree = "<group>"; };
+		94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WithdrawCell.xib; path = View/Cells/WithdrawCell.xib; sourceTree = "<group>"; };
 		94F502591FA8E4A90059D49B /* MuteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuteDataSource.swift; path = Scenes/Team/Chat/MuteDataSource.swift; sourceTree = "<group>"; };
 		BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDFE16BB5E7B5B758559237 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Helpers/Extensions/String.swift; sourceTree = "<group>"; };
@@ -1989,6 +2001,8 @@
 				6D59F00D1F56F47B00C422EB /* ChatFooter.xib */,
 				6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */,
 				6DDC65531FB9F02400DE4E36 /* TeammateSummaryView.xib */,
+				94F0CF571FD1ACCF007BE39E /* WithdrawHeader.swift */,
+				94F0CF581FD1ACCF007BE39E /* WithdrawHeader.xib */,
 			);
 			name = ReusableViews;
 			sourceTree = "<group>";
@@ -2433,6 +2447,8 @@
 				6DEFCFB71F7A66D7008C306C /* SwitchUserCell.xib */,
 				9475D9331FA3956400F881C9 /* MuteCell.swift */,
 				9475D9341FA3956400F881C9 /* MuteCell.xib */,
+				94F0CF5D1FD1B66E007BE39E /* WithdrawCell.swift */,
+				94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2899,6 +2915,7 @@
 				6D4E5DBC1F7AB6870020DEE2 /* PrivateChatUserCell.xib in Resources */,
 				6D4E5DBD1F7AB6870020DEE2 /* AkkuratPro-Bold.otf in Resources */,
 				6D4E5DBE1F7AB6870020DEE2 /* JoinTeamTermsCell.xib in Resources */,
+				94F0CF621FD1B66E007BE39E /* WithdrawCell.xib in Resources */,
 				6D4E5DBF1F7AB6870020DEE2 /* Me.strings in Resources */,
 				6D4E5DC11F7AB6870020DEE2 /* Team.strings in Resources */,
 				6D4E5DC21F7AB6870020DEE2 /* JoinTeamGreetingCell.xib in Resources */,
@@ -2910,6 +2927,7 @@
 				6D4E5DC71F7AB6870020DEE2 /* ReportItemCell.xib in Resources */,
 				6D4E5DC81F7AB6870020DEE2 /* TeamCell.xib in Resources */,
 				6D4E5DC91F7AB6870020DEE2 /* HeaderWithButton.xib in Resources */,
+				94F0CF5C1FD1ACCF007BE39E /* WithdrawHeader.xib in Resources */,
 				6D4E5DCA1F7AB6870020DEE2 /* Main.strings in Resources */,
 				6D4E5DCB1F7AB6870020DEE2 /* JoinTeamMessageCell.xib in Resources */,
 				6D4E5DCC1F7AB6870020DEE2 /* Proxy.strings in Resources */,
@@ -3001,6 +3019,7 @@
 				6D1A9B291F55D306004192AC /* PrivateChatUserCell.xib in Resources */,
 				6D9C808E1EDF17D000FB8C2C /* AkkuratPro-Bold.otf in Resources */,
 				94E325CE1F07FA7E00B2D8C8 /* JoinTeamTermsCell.xib in Resources */,
+				94F0CF611FD1B66E007BE39E /* WithdrawCell.xib in Resources */,
 				6D69DA0F1EFC458C00DED5CE /* Me.strings in Resources */,
 				6DF2E8C71EF057DB00C8D60B /* Team.strings in Resources */,
 				944504C41F07CFAE00CF443F /* JoinTeamGreetingCell.xib in Resources */,
@@ -3012,6 +3031,7 @@
 				6D0E05611EFEBF4000604981 /* ReportItemCell.xib in Resources */,
 				94C2D39B1F191FA600D203C2 /* TeamCell.xib in Resources */,
 				6D69DA381EFD6CED00DED5CE /* HeaderWithButton.xib in Resources */,
+				94F0CF5B1FD1ACCF007BE39E /* WithdrawHeader.xib in Resources */,
 				6DF2E8CB1EF194E400C8D60B /* Main.strings in Resources */,
 				94E325CA1F07F77A00B2D8C8 /* JoinTeamMessageCell.xib in Resources */,
 				6D0D2AEC1EFBD6820095284C /* Proxy.strings in Resources */,
@@ -3512,6 +3532,7 @@
 				6D4E5CC81F7AB6870020DEE2 /* ClaimTransactionsDataSource.swift in Sources */,
 				6D4E5CC91F7AB6870020DEE2 /* WalletVC.swift in Sources */,
 				6D4E5CCA1F7AB6870020DEE2 /* MembersVC.swift in Sources */,
+				94F0CF5A1FD1ACCF007BE39E /* WithdrawHeader.swift in Sources */,
 				6D4E5CCB1F7AB6870020DEE2 /* Formatter.swift in Sources */,
 				6D4E5CCC1F7AB6870020DEE2 /* SlashView.swift in Sources */,
 				6D4E5CCD1F7AB6870020DEE2 /* ChatSeparatorCell.swift in Sources */,
@@ -3643,6 +3664,7 @@
 				6D4E5D3C1F7AB6870020DEE2 /* VotingChartCell.swift in Sources */,
 				6D4E5D3D1F7AB6870020DEE2 /* CombinedModels.swift in Sources */,
 				6D4E5D3E1F7AB6870020DEE2 /* RoundImageView.swift in Sources */,
+				94F0CF601FD1B66E007BE39E /* WithdrawCell.swift in Sources */,
 				6D4E5D3F1F7AB6870020DEE2 /* TeamFeedCell.swift in Sources */,
 				6D4E5D401F7AB6870020DEE2 /* String.swift in Sources */,
 				6D4E5D411F7AB6870020DEE2 /* SortVC.swift in Sources */,
@@ -3894,6 +3916,7 @@
 				6D0D2AE01EFBD4260095284C /* MyProxiesVC.swift in Sources */,
 				94266A321F5579800089543F /* ClaimTransactionsDataSource.swift in Sources */,
 				6D69DA171EFC464000DED5CE /* WalletVC.swift in Sources */,
+				94F0CF591FD1ACCF007BE39E /* WithdrawHeader.swift in Sources */,
 				6D9CC63A1ED72675007F936E /* MembersVC.swift in Sources */,
 				6DB8121D1EE6F78700B202CE /* Formatter.swift in Sources */,
 				6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */,
@@ -4025,6 +4048,7 @@
 				6D66B49C1F4D89F900672583 /* CombinedModels.swift in Sources */,
 				6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */,
 				6D69DA331EFD6CB700DED5CE /* TeamFeedCell.swift in Sources */,
+				94F0CF5F1FD1B66E007BE39E /* WithdrawCell.swift in Sources */,
 				6DA5B4671F98EA3500021E8E /* Currency.swift in Sources */,
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
 				9440EDF51F0CED5A00E5A6E7 /* SortVC.swift in Sources */,
