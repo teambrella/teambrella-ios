@@ -62,6 +62,7 @@ enum TeambrellaRequestType: String {
     case privateList = "privatemessage/getList"
     case newPrivatePost = "privatemessage/newMessage"
     case withdraw = "wallet/getWithdraw"
+    case feedPinVote = "feed/setPinVote"
 }
 
 enum TeambrellaResponseType {

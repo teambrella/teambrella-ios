@@ -1,7 +1,8 @@
 disabled_rules:
   - unused_closure_parameter
   - multiple_closures_with_trailing_closure
-  - variable_name
+  - no_extension_access_modifier
+#  - variable_name
 opt_in_rules:
 #  - conditional_returns_on_newline
 #  - operator_usage_whitespace
@@ -73,8 +74,8 @@ identifier_name:
     - me
 
 function_parameter_count:
-  - 4
   - 5
+  - 6
 
 cyclomatic_complexity:
   - 10
