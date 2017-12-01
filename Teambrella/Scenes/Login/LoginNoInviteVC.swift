@@ -19,69 +19,23 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import UIKit
 import MessageUI
+import UIKit
 
-class LoginNoInviteVC: UIViewController, MFMailComposeViewControllerDelegate {
-    @IBOutlet var centerLabel: UILabel!
-    @IBOutlet var subcontainer: UIView!
-    @IBOutlet var upperLabel: UILabel!
-    @IBOutlet var lowerLabel: UILabel!
-    @IBOutlet var tryDemoButton: UIButton!
-    @IBOutlet var supportButton: UIButton!
-    @IBOutlet var requestInviteButton: UIButton!
+final class LoginNoInviteVC: UIViewController {
+    @IBOutlet private var centerLabel: UILabel!
+    @IBOutlet private var subcontainer: UIView!
+    @IBOutlet private var upperLabel: UILabel!
+    @IBOutlet private var lowerLabel: UILabel!
+    @IBOutlet private var tryDemoButton: UIButton!
+    @IBOutlet private var supportButton: UIButton!
+    @IBOutlet private var requestInviteButton: UIButton!
     
     var error: TeambrellaError?
-    var mailAddress: String = "support@teambrella.com"
-    @IBAction func tapTryDemoButton(_ sender: Any) {
-    }
     
-    @IBAction func tapSupport(_ sender: UIButton) {
-        print("Tap support")
-        let emailTitle = " "
-        var messageBody: String = ""
-        if let error = error {
-           //messageBody += "Code: \(error.kind.rawValue)"
-        }
-        let toRecipents = [mailAddress]
-        let mc: MFMailComposeViewController = MFMailComposeViewController()
-        mc.navigationBar.tintColor = .white
-        mc.mailComposeDelegate = self
-        mc.setSubject(emailTitle)
-        mc.setMessageBody(messageBody, isHTML: false)
-        mc.setToRecipients(toRecipents)
-        
-        present(mc, animated: true, completion: nil)
-    }
+    private var mailAddress: String = "support@teambrella.com"
     
-    @IBAction func tapClose(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func mailComposeController(_ controller: MFMailComposeViewController,
-                               didFinishWith result: MFMailComposeResult,
-                               error: Error?) {
-        switch result {
-        case .cancelled:
-            print("Mail cancelled")
-        case .saved:
-            print("Mail saved")
-        case .sent:
-            print("Mail sent")
-        case .failed:
-            print("Mail sent failure: \(error)")
-        }
-        
-       controller.dismiss(animated: true, completion: nil)
-        navigationController?.popViewController(animated: false)
-        
-    }
-    
-    @IBAction func tapRequestInvite(_ sender: UIButton) {
-        guard let url = URL(string: "http://teambrella.com/join/team") else { return }
-        
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,6 +66,39 @@ class LoginNoInviteVC: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
+    // MARK: Callbacks
+    
+    @IBAction func tapTryDemoButton(_ sender: Any) {
+        // unwind segue
+    }
+    
+    @IBAction func tapSupport(_ sender: UIButton) {
+        print("Tap support")
+        let emailTitle = " "
+        let messageBody: String = ""
+        let toRecipents = [mailAddress]
+        let mc: MFMailComposeViewController = MFMailComposeViewController()
+        mc.navigationBar.tintColor = .white
+        mc.mailComposeDelegate = self
+        mc.setSubject(emailTitle)
+        mc.setMessageBody(messageBody, isHTML: false)
+        mc.setToRecipients(toRecipents)
+        
+        present(mc, animated: true, completion: nil)
+    }
+    
+    @IBAction func tapClose(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func tapRequestInvite(_ sender: UIButton) {
+        guard let url = URL(string: "http://teambrella.com/join/team") else { return }
+        
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    // MARK: Private
+    
     private func inviteOnlySetup() {
         upperLabel.text = "Login.LoginNoInviteVC.upperLabel".localized
         lowerLabel.text = "Login.LoginNoInviteVC.lowerLabel".localized
@@ -137,18 +124,26 @@ class LoginNoInviteVC: UIViewController, MFMailComposeViewControllerDelegate {
         supportButton.isHidden = false
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+
+// MARK: MFMailComposeViewControllerDelegate
+extension LoginNoInviteVC: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult,
+                               error: Error?) {
+        switch result {
+        case .cancelled:
+            print("Mail cancelled")
+        case .saved:
+            print("Mail saved")
+        case .sent:
+            print("Mail sent")
+        case .failed:
+            print("Mail sent failure")
+            error.map { print($0) }
+        }
+        
+        controller.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: false)
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

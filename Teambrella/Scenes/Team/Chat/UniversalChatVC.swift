@@ -178,6 +178,26 @@ final class UniversalChatVC: UIViewController, Routable {
         }
     }
     
+    public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
+        // Cancel current scrolling
+        self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: false)
+        let offsetY = max(-collectionView.contentInset.top,
+                          collectionView.collectionViewLayout.collectionViewContentSize.height
+                            - collectionView.bounds.height
+                            + collectionView.contentInset.bottom)
+        
+        if animated {
+            UIView.animate(withDuration: 0.33, animations: { () -> Void in
+                self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
+            }) { completed in
+                completion?()
+            }
+        } else {
+            self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
+            completion?()
+        }
+    }
+    
     // MARK: Callbacks
     
     @objc
@@ -251,7 +271,119 @@ final class UniversalChatVC: UIViewController, Routable {
         
     }
     
-    // MARK: Private
+    @objc
+    private func showClaimDetails(gesture: UITapGestureRecognizer) {
+        guard let claim = dataSource.claim else { return }
+        
+        service.router.presentClaim(claimID: claim.id)
+    }
+
+    @objc
+    private func showTeammateDetails(gesture: UITapGestureRecognizer) {
+        guard let teammate = dataSource.teammateInfo else { return }
+        
+        service.router.presentMemberProfile(teammateID: teammate.id)
+    }
+    
+}
+
+// MARK: Private
+private extension UniversalChatVC {
+    private func setupClaimObjectView(with claim: EnhancedClaimEntity) {
+        objectNameLabel.text = claim.model
+        objectDetailsLabel.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
+            + String(format: "%.2f", claim.claimAmount)
+        objectBlueDetailsLabel.text = claim.currency
+        objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
+        objectPercentLabel.text = "%"
+        objectRightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+        
+        objectImage.image = #imageLiteral(resourceName: "imagePlaceholder")
+        objectVoteLabel.text = "..."
+        guard let icon = claim.smallPhotos.first else { return }
+        
+        objectImage.showImage(string: icon)
+        guard let vote = claim.myVote else { return }
+        
+        objectVoteLabel.text = String(format: "%.f", vote * 100)
+        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+    }
+    
+    private func setupTeammateObjectView(with teammate: TeammateBasicInfo) {
+        objectNameLabel.text = teammate.name.short
+        objectImage.showImage(string: teammate.avatar)
+        objectDetailsLabel.text = teammate.city.uppercased()
+        objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
+        objectRightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+        
+        objectBlueDetailsLabel.isHidden = true
+        objectPercentLabel.isHidden = true
+        objectVoteLabel.text = "..."
+        //        guard let vote = claim.myVote else { return }
+        //
+        //        objectVoteLabel.text = String(format: "%.2f", vote)
+        //        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+    }
+    
+    private func setupCollectionView() {
+        registerCells()
+        collectionView.keyboardDismissMode = .interactive
+        collectionView.showsVerticalScrollIndicator = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.allowsSelection = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.autoresizingMask = UIViewAutoresizing()
+        if #available(iOS 11.0, *) {
+            collectionView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
+        
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(refreshNeeded), for: .valueChanged)
+        collectionView.refreshControl = refresh
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.sectionHeadersPinToVisibleBounds = true
+    }
+    
+    private func addMuteButton(muteType: MuteVC.NotificationsType) {
+        let image = muteType == .subscribed ? #imageLiteral(resourceName: "iconBell1") : #imageLiteral(resourceName: "iconBellMuted1")
+        let button = UIButton()
+        button.setImage(image, for: .normal)
+        let barItem = UIBarButtonItem(customView: button)
+        button.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
+        self.muteButton = button
+        navigationItem.setRightBarButton(barItem, animated: true)
+    }
+    
+    private func registerCells() {
+        collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
+        collectionView.register(ChatTextCell.self, forCellWithReuseIdentifier: "com.chat.text.cell")
+        collectionView.register(ChatSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.separator.cell")
+        collectionView.register(ChatNewMessagesSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.new.cell")
+        collectionView.register(ChatHeader.self,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: "com.chat.header")
+        collectionView.register(ChatFooter.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
+                                withReuseIdentifier: ChatFooter.cellID)
+    }
+    
+    private func listenForKeyboard() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillChangeFrame),
+                                               name: Notification.Name.UIKeyboardWillChangeFrame,
+                                               object: nil)
+    }
+    
+    private func stopListeningKeyboard() {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    private func setupTapGestureRecognizer() {
+        collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                   action: #selector(userDidTapOnCollectionView)))
+    }
     
     /**
      * Refresh controller after new data comes from the server
@@ -367,141 +499,10 @@ final class UniversalChatVC: UIViewController, Routable {
         objectView.addGestureRecognizer(tap)
     }
     
-    @objc
-    private func showClaimDetails(gesture: UITapGestureRecognizer) {
-        guard let claim = dataSource.claim else { return }
-        
-        service.router.presentClaim(claimID: claim.id)
-    }
-
-    @objc
-    private func showTeammateDetails(gesture: UITapGestureRecognizer) {
-        guard let teammate = dataSource.teammateInfo else { return }
-        
-        service.router.presentMemberProfile(teammateID: teammate.id)
-    }
-    
-    private func setupClaimObjectView(with claim: EnhancedClaimEntity) {
-        objectNameLabel.text = claim.model
-        objectDetailsLabel.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
-            + String(format: "%.2f", claim.claimAmount)
-        objectBlueDetailsLabel.text = claim.currency
-        objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
-        objectPercentLabel.text = "%"
-        objectRightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
-        
-        objectImage.image = #imageLiteral(resourceName: "imagePlaceholder")
-        objectVoteLabel.text = "..."
-        guard let icon = claim.smallPhotos.first else { return }
-        
-        objectImage.showImage(string: icon)
-        guard let vote = claim.myVote else { return }
-        
-        objectVoteLabel.text = String(format: "%.f", vote * 100)
-        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
-    }
-    
-    private func setupTeammateObjectView(with teammate: TeammateBasicInfo) {
-        objectNameLabel.text = teammate.name.short
-        objectImage.showImage(string: teammate.avatar)
-        objectDetailsLabel.text = teammate.city.uppercased()
-        objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
-        objectRightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
-        
-        objectBlueDetailsLabel.isHidden = true
-        objectPercentLabel.isHidden = true
-        objectVoteLabel.text = "..."
-//        guard let vote = claim.myVote else { return }
-//
-//        objectVoteLabel.text = String(format: "%.2f", vote)
-//        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
-    }
-    
-    private func setupCollectionView() {
-        registerCells()
-        collectionView.keyboardDismissMode = .interactive
-        collectionView.showsVerticalScrollIndicator = true
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.allowsSelection = false
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.autoresizingMask = UIViewAutoresizing()
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        } else {
-            automaticallyAdjustsScrollViewInsets = false
-        }
-        
-        let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(refreshNeeded), for: .valueChanged)
-        collectionView.refreshControl = refresh
-        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        layout?.sectionHeadersPinToVisibleBounds = true
-    }
-    
-    private func addMuteButton(muteType: MuteVC.NotificationsType) {
-        let image = muteType == .subscribed ? #imageLiteral(resourceName: "iconBell1") : #imageLiteral(resourceName: "iconBellMuted1")
-        let button = UIButton()
-        button.setImage(image, for: .normal)
-        let barItem = UIBarButtonItem(customView: button)
-        button.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
-        self.muteButton = button
-        navigationItem.setRightBarButton(barItem, animated: true)
-    }
-    
-    private func registerCells() {
-        collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
-        collectionView.register(ChatTextCell.self, forCellWithReuseIdentifier: "com.chat.text.cell")
-        collectionView.register(ChatSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.separator.cell")
-        collectionView.register(ChatNewMessagesSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.new.cell")
-        collectionView.register(ChatHeader.self,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                withReuseIdentifier: "com.chat.header")
-        collectionView.register(ChatFooter.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
-                                withReuseIdentifier: ChatFooter.cellID)
-    }
-    
-    private func listenForKeyboard() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillChangeFrame),
-                                               name: Notification.Name.UIKeyboardWillChangeFrame,
-                                               object: nil)
-    }
-    
-    private func stopListeningKeyboard() {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
-    }
-    
-    private func setupTapGestureRecognizer() {
-        collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                                   action: #selector(userDidTapOnCollectionView)))
-    }
-    
-    public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
-        // Cancel current scrolling
-        self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: false)
-        let offsetY = max(-collectionView.contentInset.top,
-                          collectionView.collectionViewLayout.collectionViewContentSize.height
-                            - collectionView.bounds.height
-                            + collectionView.contentInset.bottom)
-        
-        if animated {
-            UIView.animate(withDuration: 0.33, animations: { () -> Void in
-                self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
-            }) { completed in
-                completion?()
-            }
-        } else {
-            self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
-            completion?()
-        }
-    }
-    
     private func linkImage(image: UIImage, name: String) {
         let fragment = ChatFragment.imageFragment(image: image, urlString: name)
         send(text: input.textView.text ?? "", imageFragments: [fragment])
     }
-    
 }
 
 // MARK: UICollectionViewDataSource
