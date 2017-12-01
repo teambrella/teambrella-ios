@@ -57,6 +57,7 @@ final class LoginBlueVC: UIViewController {
         centerLabel.isUserInteractionEnabled = true
         centerLabel.addGestureRecognizer(secretRecognizer)
         continueWithFBButton.addGestureRecognizer(clearAllRecognizer)
+        animateCenterLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,12 +65,13 @@ final class LoginBlueVC: UIViewController {
         centerLabel.alpha = 0
         gradientView.alpha = 0
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 1) { [weak self] in
             self?.gradientView.alpha = 1
+            self?.centerLabel.alpha = 1
         }
-        animateCenterLabel()
     }
     
     override func viewDidLayoutSubviews() {
@@ -129,7 +131,7 @@ Are you sure you want to completely remove your private key from this device?
                                            preferredStyle: .alert)
         
         controller.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
-           service.keyStorage.deleteStoredKeys()
+            service.keyStorage.deleteStoredKeys()
         }))
         controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
@@ -139,6 +141,10 @@ Are you sure you want to completely remove your private key from this device?
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? LoginDetailsVC, let user = sender as? FacebookUser {
             _ = LoginDetailsConfigurator(vc: vc, fbUser: user)
+        }
+        if let vc = segue.destination as? LoginNoInviteVC {
+            let error = sender as? TeambrellaError
+            vc.error = error
         }
     }
     
@@ -184,7 +190,6 @@ Are you sure you want to completely remove your private key from this device?
                        initialSpringVelocity: 0,
                        options: [.curveEaseIn],
                        animations: { [weak self] in
-                        self?.centerLabel.alpha = 1
                         self?.centerLabel.transform = .identity
             },
                        completion: nil)
@@ -234,7 +239,7 @@ Are you sure you want to completely remove your private key from this device?
     private func handleFailure(error: Error?) {
         HUD.hide()
         service.keyStorage.clearLastUserType()
-        performSegue(type: .invitationOnly, sender: nil)
+        performSegue(type: .invitationOnly, sender: error)
         log("Error \(String(describing: error))", type: .error)
     }
     

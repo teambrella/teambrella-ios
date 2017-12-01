@@ -61,7 +61,7 @@ class ServerService: NSObject {
     func ask(for string: String,
              parameters: [String: String]? = nil,
              body: RequestBody? = nil,
-             success: @escaping (JSON) -> Void,
+             success: @escaping (JSON, JSON?) -> Void,
              failure: @escaping (Error) -> Void) {
         
         guard let url = URLBuilder().url(for: string, parameters: parameters) else {
@@ -89,7 +89,9 @@ class ServerService: NSObject {
                         "clientVersion": application.clientVersion,
                         "deviceToken": service.push.tokenString ?? "",
                         "deviceId": application.uniqueIdentifier]
+            print("Headers:")
             for (key, value) in dict {
+                print("\(key): \(value)")
                 request.setValue(String(describing: value), forHTTPHeaderField: key)
             }
         }
@@ -104,7 +106,7 @@ class ServerService: NSObject {
                     self.timestamp = status.timestamp
                     switch status.code {
                     case 0:
-                        success(result["Data"])
+                        success(result["Data"], self.additionalData(from: result))
                     default:
                         let error = TeambrellaErrorFactory.error(with: status)
                         failure(error)
@@ -117,6 +119,13 @@ class ServerService: NSObject {
                 failure(error)
             }
         }
+    }
+    
+    private func additionalData(from json: JSON) -> JSON? {
+        if json["Paging"].exists() {
+            return json["Paging"]
+        }
+        return nil
     }
     
     private func printAsString(data: Data?) {

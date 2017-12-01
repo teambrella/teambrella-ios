@@ -35,6 +35,8 @@ struct TeambrellaError: Error {
         case permissionDenied           = 3
         case keyAlreadyRegistered       = 5
         case noTeamsYet                 = 6
+        case noTeamsApplicationPending  = 8
+        case noTeamsApplicationApproved = 9
         
         case teamAlreadyJoined          = 5010
         case teamJoinedAndProxyExists   = 5011

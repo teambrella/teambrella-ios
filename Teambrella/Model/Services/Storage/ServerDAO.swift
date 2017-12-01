@@ -131,8 +131,8 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestTeamFeed(context: FeedRequestContext) -> Future<[FeedEntity]> {
-        let promise = Promise<[FeedEntity]>()
+    func requestTeamFeed(context: FeedRequestContext, needTemporaryResult: Bool) -> Future<FeedChunk> {
+        let promise = Promise<FeedChunk>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["teamid": context.teamID,
                                                       "since": context.since,
@@ -141,10 +141,10 @@ class ServerDAO: DAO {
                                                       "commentAvatarSize": 32,
                                                       "search": NSNull()])
             let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in
-                if case .teamFeed(let json) = response {
+                if case let .teamFeed(json, pagingInfo) = response {
                     PlistStorage().store(json: json, for: .teamFeed, id: "")
                     let feed = json.arrayValue.flatMap { FeedEntity(json: $0) }
-                    promise.resolve(with: feed)
+                    promise.resolve(with: FeedChunk(feed: feed, pagingInfo: pagingInfo))
                 } else {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,
                                                          description: "Was waiting .teamFeed, got \(response)"))
@@ -154,10 +154,10 @@ class ServerDAO: DAO {
             })
             request.start()
         }
-        if let storedJSON = PlistStorage().retreiveJSON(for: .teamFeed, id: "") {
+        if needTemporaryResult, let storedJSON = PlistStorage().retreiveJSON(for: .teamFeed, id: "") {
             defer {
                 let feed = storedJSON.arrayValue.flatMap { FeedEntity(json: $0) }
-                promise.temporaryResolve(with: feed)
+                promise.temporaryResolve(with: FeedChunk(feed: feed, pagingInfo: nil))
             }
         }
         return promise

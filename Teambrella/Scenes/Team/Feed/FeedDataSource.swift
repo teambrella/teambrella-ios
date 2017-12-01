@@ -28,7 +28,7 @@ class FeedDataSource {
     
     var offset = 0
     var since: UInt64 = 0
-    let limit = 100
+    let limit = 10
     
     var isSilentUpdate = false
     
@@ -41,20 +41,21 @@ class FeedDataSource {
     func loadData() {
         let offset = isSilentUpdate ? 0 : count
         let context = FeedRequestContext(teamID: teamID, since: since, offset: offset, limit: limit)
-        service.dao.requestTeamFeed(context: context).observe { [weak self] result in
+        service.dao.requestTeamFeed(context: context,
+                                    needTemporaryResult: items.isEmpty).observe { [weak self] result in
              guard let `self` = self else { return }
             
             switch result {
-            case let .value(feed):
+            case let .value(feedChunk):
                 if self.isSilentUpdate {
                     self.items.removeAll()
                     self.isSilentUpdate = false
                 }
-                self.items.append(contentsOf: feed)
+                self.items.append(contentsOf: feedChunk.feed)
                 self.onLoad?()
-            case let .temporaryValue(feed):
+            case let .temporaryValue(feedChunk):
                 if !self.isSilentUpdate {
-                    self.items.append(contentsOf: feed)
+                    self.items.append(contentsOf: feedChunk.feed)
                     self.onLoad?()
                 }
             case let .error(error):

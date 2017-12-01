@@ -29,7 +29,7 @@ protocol DAO {
     
     func freshKey(completion: @escaping (Key) -> Void)
     func requestHome(teamID: Int) -> Future<HomeScreenModel>
-    func requestTeamFeed(context: FeedRequestContext) -> Future<[FeedEntity]>
+    func requestTeamFeed(context: FeedRequestContext, needTemporaryResult: Bool) -> Future<FeedChunk>
     // actual and potential teams
     func requestTeams(demo: Bool) -> Future<TeamsModel>
     func requestPrivateList(offset: Int, limit: Int, filter: String?) -> Future<[PrivateChatUser]>
