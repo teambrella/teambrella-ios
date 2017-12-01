@@ -948,6 +948,10 @@
 		94F0CF601FD1B66E007BE39E /* WithdrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF5D1FD1B66E007BE39E /* WithdrawCell.swift */; };
 		94F0CF611FD1B66E007BE39E /* WithdrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */; };
 		94F0CF621FD1B66E007BE39E /* WithdrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */; };
+		94F0CF651FD1BD50007BE39E /* WithdrawDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF631FD1BD50007BE39E /* WithdrawDetailsCell.swift */; };
+		94F0CF661FD1BD50007BE39E /* WithdrawDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF631FD1BD50007BE39E /* WithdrawDetailsCell.swift */; };
+		94F0CF671FD1BD50007BE39E /* WithdrawDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F0CF641FD1BD50007BE39E /* WithdrawDetailsCell.xib */; };
+		94F0CF681FD1BD50007BE39E /* WithdrawDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F0CF641FD1BD50007BE39E /* WithdrawDetailsCell.xib */; };
 		94F502551FA8D31A0059D49B /* MuteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FEE831FA8D05700B43CB5 /* MuteVC.swift */; };
 		94F502571FA8D3760059D49B /* MuteCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475D9311FA390BC00F881C9 /* MuteCellModel.swift */; };
 		94F502581FA8D4690059D49B /* MuteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475D9331FA3956400F881C9 /* MuteCell.swift */; };
@@ -1500,6 +1504,8 @@
 		94F0CF581FD1ACCF007BE39E /* WithdrawHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WithdrawHeader.xib; path = View/ReusableViews/WithdrawHeader.xib; sourceTree = "<group>"; };
 		94F0CF5D1FD1B66E007BE39E /* WithdrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawCell.swift; path = View/Cells/WithdrawCell.swift; sourceTree = "<group>"; };
 		94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WithdrawCell.xib; path = View/Cells/WithdrawCell.xib; sourceTree = "<group>"; };
+		94F0CF631FD1BD50007BE39E /* WithdrawDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawDetailsCell.swift; path = View/Cells/WithdrawDetailsCell.swift; sourceTree = "<group>"; };
+		94F0CF641FD1BD50007BE39E /* WithdrawDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WithdrawDetailsCell.xib; path = View/Cells/WithdrawDetailsCell.xib; sourceTree = "<group>"; };
 		94F502591FA8E4A90059D49B /* MuteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuteDataSource.swift; path = Scenes/Team/Chat/MuteDataSource.swift; sourceTree = "<group>"; };
 		BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDFE16BB5E7B5B758559237 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Helpers/Extensions/String.swift; sourceTree = "<group>"; };
@@ -1920,6 +1926,10 @@
 				6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */,
 				944C66801F6C146200CCEB58 /* WalletCosignerCell.swift */,
 				944C66811F6C146200CCEB58 /* WalletCosignerCell.xib */,
+				94F0CF5D1FD1B66E007BE39E /* WithdrawCell.swift */,
+				94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */,
+				94F0CF631FD1BD50007BE39E /* WithdrawDetailsCell.swift */,
+				94F0CF641FD1BD50007BE39E /* WithdrawDetailsCell.xib */,
 			);
 			name = Wallet;
 			sourceTree = "<group>";
@@ -2443,8 +2453,6 @@
 				6DEFCFB71F7A66D7008C306C /* SwitchUserCell.xib */,
 				9475D9331FA3956400F881C9 /* MuteCell.swift */,
 				9475D9341FA3956400F881C9 /* MuteCell.xib */,
-				94F0CF5D1FD1B66E007BE39E /* WithdrawCell.swift */,
-				94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2854,6 +2862,7 @@
 				6D4E5D851F7AB6870020DEE2 /* SwitchUserCell.xib in Resources */,
 				6DDFDAF31F8CD24400342696 /* Surilla.xcassets in Resources */,
 				6D4E5D861F7AB6870020DEE2 /* NeedHelpView.xib in Resources */,
+				94F0CF681FD1BD50007BE39E /* WithdrawDetailsCell.xib in Resources */,
 				94615F591FA9C26000CD3C8B /* MuteCell.xib in Resources */,
 				6D4E5D871F7AB6870020DEE2 /* TeamFeedCell.xib in Resources */,
 				6D4E5D881F7AB6870020DEE2 /* Team.stringsdict in Resources */,
@@ -2956,6 +2965,7 @@
 				6DEFCFB91F7A66D7008C306C /* SwitchUserCell.xib in Resources */,
 				6D69D9ED1EFBFF2E00DED5CE /* NeedHelpView.xib in Resources */,
 				6D69DA341EFD6CB700DED5CE /* TeamFeedCell.xib in Resources */,
+				94F0CF671FD1BD50007BE39E /* WithdrawDetailsCell.xib in Resources */,
 				9475D9361FA3956400F881C9 /* MuteCell.xib in Resources */,
 				6DC2487C1F5D948E00D9396D /* Team.stringsdict in Resources */,
 				94C186AF1F59B9A200F1BE51 /* WalletTransactionCell.xib in Resources */,
@@ -3550,6 +3560,7 @@
 				6D4E5CDD1F7AB6870020DEE2 /* FeedCellBuilder.swift in Sources */,
 				6D4E5CDE1F7AB6870020DEE2 /* ProxyCell.swift in Sources */,
 				94F0CF561FCF1952007BE39E /* WithdrawVC.swift in Sources */,
+				94F0CF661FD1BD50007BE39E /* WithdrawDetailsCell.swift in Sources */,
 				6DBF492D1F80F22300B236E2 /* AnimationTools.swift in Sources */,
 				6D4E5CDF1F7AB6870020DEE2 /* PayTo.swift in Sources */,
 				6D4E5CE01F7AB6870020DEE2 /* TeammateVotingInfo.swift in Sources */,
@@ -3936,6 +3947,7 @@
 				CBDFE767664CC051784BF271 /* ServerService.swift in Sources */,
 				6D69DA211EFD19BF00DED5CE /* WalletHeaderCell.swift in Sources */,
 				94F0CF551FCF1952007BE39E /* WithdrawVC.swift in Sources */,
+				94F0CF651FD1BD50007BE39E /* WithdrawDetailsCell.swift in Sources */,
 				6D83EC941EDDA9DC000412DC /* TeammateProfileDataSource.swift in Sources */,
 				6D69DA3C1EFD6D3400DED5CE /* FeedCellBuilder.swift in Sources */,
 				6D0D2AEF1EFBDB7C0095284C /* ProxyCell.swift in Sources */,
