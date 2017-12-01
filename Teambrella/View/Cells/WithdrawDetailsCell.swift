@@ -31,7 +31,7 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        ViewDecorator.shadow(for: self, opacity: 0.08, radius: 4)
     }
 
     @IBAction func tapInfoButton(_ sender: Any) {
