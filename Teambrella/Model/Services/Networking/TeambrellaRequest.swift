@@ -83,7 +83,7 @@ enum TeambrellaResponseType {
     case claimTransactions([ClaimTransactionsCellModel])
     case home(JSON)
     case feedDeleteCard(HomeScreenModel)
-    case teamFeed(JSON)
+    case teamFeed(JSON, PagingInfo?)
     case chat(ChatModel)
     case wallet(WalletEntity)
     case walletTransactions([WalletTransactionsCellModel])
@@ -135,8 +135,8 @@ struct TeambrellaRequest {
     }
     
     func start() {
-        service.server.ask(for: requestString, parameters: parameters, body: body, success: { json in
-            self.parseReply(reply: json)
+        service.server.ask(for: requestString, parameters: parameters, body: body, success: { json, additional in
+            self.parseReply(reply: json, additional: additional)
         }, failure: { error in
             log("\(error)", type: [.error, .serverReply])
             service.error.present(error: error)
@@ -145,7 +145,7 @@ struct TeambrellaRequest {
     }
     
     // swiftlint:disable:next cyclomatic_complexity
-    private func parseReply(reply: JSON) {
+    private func parseReply(reply: JSON, additional: JSON?) {
         switch type {
         case .timestamp:
             success(.timestamp)
@@ -216,7 +216,7 @@ struct TeambrellaRequest {
                                   teamPart: reply["TeamPart"])
             success(.chat(model))
         case .teamFeed:
-            success(.teamFeed(reply))
+            success(.teamFeed(reply, PagingInfo(json: additional)))
         case .claimTransactions:
             success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
         case .home:
