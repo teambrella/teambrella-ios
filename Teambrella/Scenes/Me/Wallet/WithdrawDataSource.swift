@@ -37,7 +37,7 @@ final class WithdrawDataSource {
     
     func rows(in section: Int) -> Int {
         guard section > 0 else { return 1 }
-        guard section < transactions.count + 1 else { return 0 }
+        guard section - 1 < transactions.count else { return 0 }
         
         return transactions[section - 1].count
     }
