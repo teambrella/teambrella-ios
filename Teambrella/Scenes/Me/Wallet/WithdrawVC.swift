@@ -116,8 +116,7 @@ extension WithdrawVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         let transaction = dataSource[indexPath]
-        /////fixIt
-        MembersCellBuilder.populate(cell: cell, with: transaction)
+        WithdrawCellBuilder.populate(cell: cell)//, with: transaction)
         
         let maxRow = dataSource.itemsInSection(section: indexPath.section)
         if let cell = cell as? WithdrawCell {
