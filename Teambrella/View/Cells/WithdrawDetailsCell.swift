@@ -16,11 +16,31 @@
 
 import UIKit
 
-class WithdrawDetailsCell: UICollectionViewCell {
+class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
 
+    @IBOutlet var backView: UIView!
+    @IBOutlet var titleLabel: BlockHeaderLabel!
+    @IBOutlet var infoButton: UIButton!
+    @IBOutlet var toLabel: InfoLabel!
+    @IBOutlet var cryptoAddressTextField: UITextField!
+    @IBOutlet var qrButton: BorderedButton!
+    @IBOutlet var amountLabel: InfoLabel!
+    @IBOutlet var cryptoAmountTextField: UITextField!
+    @IBOutlet var separator: UIView!
+    @IBOutlet var submitButton: BorderedButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        ViewDecorator.shadow(for: self, opacity: 0.08, radius: 4)
     }
 
+    @IBAction func tapInfoButton(_ sender: Any) {
+        
+    }
+    
+    @IBAction func tapQrButton(_ sender: Any) {
+    }
+    
+    @IBAction func tapSubmitButton(_ sender: Any) {
+    }
 }

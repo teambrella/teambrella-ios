@@ -61,3 +61,18 @@
 "Me.WalletVC.WalletTransactionsVC.statusTitle" = "Estado:";
 "Me.WalletVC.WalletCosignersVC.title"          = "Co-firmantes";
 
+"Me.Report.submitButtonTitle-submit"           = "Submit";
+"Me.Report.submitButtonTitle-create"           = "Create";
+"Me.Report.cancelButtonTitle"                  = "Cancel";
+"Me.Report.newDiscussion.title-placeholder"    = "Title";
+
+"Me.Wallet.Withdraw" = "Withdraw";
+"Me.Wallet.Withdraw.Details.title" = "WITHDRAW DETAILS";
+"Me.Wallet.Withdraw.Details.to.title" = "TO";
+"Me.Wallet.Withdraw.Details.to.placeholder" = "To ethereum address";
+"Me.Wallet.Withdraw.Details.amount.title" = "AMOUNT mETH";
+"Me.Wallet.Withdraw.Details.amount.placeholder" = "Value";
+"Me.Wallet.Withdraw.Details.submitButton.title" = "Submit";
+"Me.Wallet.Withdraw.header.queued" = "WITHDRAWAL QUEUED";
+"Me.Wallet.Withdraw.header.inProgress" = "WITHDRAWAL IN PROGRESS";
+"Me.Wallet.Withdraw.header.history" = "WITHDRAWAL HISTORY";
