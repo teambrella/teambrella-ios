@@ -73,6 +73,7 @@
 "Me.Report.cancelButtonTitle"                  = "Cancel";
 "Me.Report.newDiscussion.title-placeholder"    = "Title";
 
+"Me.Wallet.Withdraw" = "Withdraw";
 "Me.Wallet.Withdraw.Details.title" = "WITHDRAW DETAILS";
 "Me.Wallet.Withdraw.Details.to.title" = "TO";
 "Me.Wallet.Withdraw.Details.to.placeholder" = "To ethereum address";
