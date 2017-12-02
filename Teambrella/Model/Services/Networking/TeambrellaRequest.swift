@@ -61,7 +61,7 @@ enum TeambrellaRequestType: String {
     case privateChat = "privatemessage/getChat"
     case privateList = "privatemessage/getList"
     case newPrivatePost = "privatemessage/newMessage"
-    case withdraw = "wallet/getWithdraw"
+    case withdrawTransactions = "wallet/getWithdraw"
     case feedPinVote = "feed/setPinVote"
 }
 
@@ -97,7 +97,7 @@ enum TeambrellaResponseType {
     
     case privateList([PrivateChatUser])
     case privateChat([ChatEntity])
-    case withdraw()
+    case withdrawTransactions(WithdrawChunk)
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -252,6 +252,13 @@ struct TeambrellaRequest {
             //             .newPrivatePost:
             //            success(.privateChat(<#T##[ChatEntity]#>))
         //            success(.privateChat(PrivateChatAdaptor(json: reply).adaptedMessages))
+        case .withdrawTransactions:
+            if let chunk = WithdrawChunk(json: reply) {
+                success(.withdrawTransactions(chunk))
+            } else {
+                let error = TeambrellaErrorFactory.wrongReply()
+                failure?(error)
+            }
         default:
             break
         }

@@ -67,6 +67,10 @@ struct TeambrellaErrorFactory {
         return TeambrellaError(kind: .unknownError, description: "Unknown error occured")
     }
     
+    static func wrongReply() -> TeambrellaError {
+        return TeambrellaError(kind: .wrongReply, description: "Wrong reply from server")
+    }
+    
     static func error(with status: ResponseStatus?) -> TeambrellaError {
         guard let status = status else { return unknownError() }
         guard let errorKind =  TeambrellaError.TeambrellaErrorKind(rawValue: status.code) else { return unknownError() }
