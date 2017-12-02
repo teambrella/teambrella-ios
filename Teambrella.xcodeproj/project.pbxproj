@@ -786,6 +786,12 @@
 		6DD051C31F67CC5E00532626 /* InputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051C21F67CC5E00532626 /* InputAccessoryView.swift */; };
 		6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */; };
 		6DD12ECC1EC75C2C00BE1CC4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */; };
+		6DD4ABEC1FD1BEF500C95264 /* WithdrawTx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD4ABEB1FD1BEF500C95264 /* WithdrawTx.swift */; };
+		6DD4ABED1FD1BEF500C95264 /* WithdrawTx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD4ABEB1FD1BEF500C95264 /* WithdrawTx.swift */; };
+		6DD4ABEF1FD1C2F700C95264 /* WithdrawChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD4ABEE1FD1C2F700C95264 /* WithdrawChunk.swift */; };
+		6DD4ABF01FD1C2F700C95264 /* WithdrawChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD4ABEE1FD1C2F700C95264 /* WithdrawChunk.swift */; };
+		6DD4ABF21FD1C38F00C95264 /* EthereumAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD4ABF11FD1C38F00C95264 /* EthereumAddress.swift */; };
+		6DD4ABF31FD1C38F00C95264 /* EthereumAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD4ABF11FD1C38F00C95264 /* EthereumAddress.swift */; };
 		6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */; };
 		6DD7F41D1EB9FD8A001E7733 /* RoundImagesStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41C1EB9FD8A001E7733 /* RoundImagesStack.swift */; };
 		6DDC65541FB9F02400DE4E36 /* TeammateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */; };
@@ -1352,6 +1358,9 @@
 		6DD051C21F67CC5E00532626 /* InputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputAccessoryView.swift; path = Scenes/Team/Chat/InputAccessoryView.swift; sourceTree = "<group>"; };
 		6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mirror.swift; path = Helpers/Extensions/Mirror.swift; sourceTree = "<group>"; };
 		6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Helpers/Extensions/Date.swift; sourceTree = "<group>"; };
+		6DD4ABEB1FD1BEF500C95264 /* WithdrawTx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawTx.swift; path = Model/Entities/WithdrawTx.swift; sourceTree = "<group>"; };
+		6DD4ABEE1FD1C2F700C95264 /* WithdrawChunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawChunk.swift; path = Model/Entities/WithdrawChunk.swift; sourceTree = "<group>"; };
+		6DD4ABF11FD1C38F00C95264 /* EthereumAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EthereumAddress.swift; path = Model/Entities/EthereumAddress.swift; sourceTree = "<group>"; };
 		6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImageView.swift; path = View/RoundImageView.swift; sourceTree = "<group>"; };
 		6DD7F41C1EB9FD8A001E7733 /* RoundImagesStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImagesStack.swift; path = View/RoundImagesStack.swift; sourceTree = "<group>"; };
 		6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeammateSummaryView.swift; path = View/ReusableViews/TeammateSummaryView.swift; sourceTree = "<group>"; };
@@ -2514,6 +2523,9 @@
 				6D1292881F83DC46001CCC31 /* Name.swift */,
 				6D30A4A91FD1648E003149DB /* PagingInfo.swift */,
 				6D30A4AC1FD167FE003149DB /* FeedChunk.swift */,
+				6DD4ABEB1FD1BEF500C95264 /* WithdrawTx.swift */,
+				6DD4ABEE1FD1C2F700C95264 /* WithdrawChunk.swift */,
+				6DD4ABF11FD1C38F00C95264 /* EthereumAddress.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -3587,6 +3599,7 @@
 				6D4E5CF31F7AB6870020DEE2 /* ProxyForVC.swift in Sources */,
 				6D4E5CF41F7AB6870020DEE2 /* MyProxiesDataSource.swift in Sources */,
 				6D4E5CF51F7AB6870020DEE2 /* SortDataSource.swift in Sources */,
+				6DD4ABF01FD1C2F700C95264 /* WithdrawChunk.swift in Sources */,
 				6D4E5CF61F7AB6870020DEE2 /* LabeledTextField.swift in Sources */,
 				6D4E5CF71F7AB6870020DEE2 /* ButtonBarPagerTabStripViewController.swift in Sources */,
 				6D4E5CF81F7AB6870020DEE2 /* UserIndexCell.swift in Sources */,
@@ -3607,6 +3620,7 @@
 				6D4E5D041F7AB6870020DEE2 /* WalletTransactionsDataSource.swift in Sources */,
 				6D4E5D051F7AB6870020DEE2 /* NeedHelpView.swift in Sources */,
 				6DA5B4681F98EA3500021E8E /* Currency.swift in Sources */,
+				6DD4ABF31FD1C38F00C95264 /* EthereumAddress.swift in Sources */,
 				6D4E5D061F7AB6870020DEE2 /* WalletCosignerCell.swift in Sources */,
 				6D4E5D071F7AB6870020DEE2 /* TeammateSummaryCell.swift in Sources */,
 				6D4E5D081F7AB6870020DEE2 /* HomeScreenModel.swift in Sources */,
@@ -3618,6 +3632,7 @@
 				6D4E5D0F1F7AB6870020DEE2 /* BrickView.swift in Sources */,
 				6D4E5D101F7AB6870020DEE2 /* LabeledRoundImageView.swift in Sources */,
 				6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */,
+				6DD4ABED1FD1BEF500C95264 /* WithdrawTx.swift in Sources */,
 				6D4E5D111F7AB6870020DEE2 /* Routable.swift in Sources */,
 				6D4E5D121F7AB6870020DEE2 /* ReportTextFieldCell.swift in Sources */,
 				94F502571FA8D3760059D49B /* MuteCellModel.swift in Sources */,
@@ -3974,6 +3989,7 @@
 				6D6DA25E1EE1D1BB00307C73 /* ClaimEntity.swift in Sources */,
 				6DE7932F1EF810DB005F4508 /* ChatCell.swift in Sources */,
 				6D0D2AE31EFBD45F0095284C /* ProxyForVC.swift in Sources */,
+				6DD4ABEF1FD1C2F700C95264 /* WithdrawChunk.swift in Sources */,
 				6D69D9E31EFBEE8D00DED5CE /* MyProxiesDataSource.swift in Sources */,
 				94793A891F0D126600696B90 /* SortDataSource.swift in Sources */,
 				94E325C01F07E76300B2D8C8 /* LabeledTextField.swift in Sources */,
@@ -3994,6 +4010,7 @@
 				6D6DA2481EE16BBA00307C73 /* TeammateStats.swift in Sources */,
 				94C186A71F59B91A00F1BE51 /* WalletTransactionsDataSource.swift in Sources */,
 				6D69D9EC1EFBFF2E00DED5CE /* NeedHelpView.swift in Sources */,
+				6DD4ABF21FD1C38F00C95264 /* EthereumAddress.swift in Sources */,
 				944C66821F6C146200CCEB58 /* WalletCosignerCell.swift in Sources */,
 				6DA714E91EDF371300F39EBE /* TeammateSummaryCell.swift in Sources */,
 				6DA8D5571F0E756B000A4DB7 /* HomeScreenModel.swift in Sources */,
@@ -4005,6 +4022,7 @@
 				6D9CC64B1ED83111007F936E /* BrickView.swift in Sources */,
 				6D02AC9B1F06A6F800B01AAF /* LabeledRoundImageView.swift in Sources */,
 				6DBF49291F80EF2600B236E2 /* HomePresentationController.swift in Sources */,
+				6DD4ABEC1FD1BEF500C95264 /* WithdrawTx.swift in Sources */,
 				6D83EC891EDD6CA6000412DC /* Routable.swift in Sources */,
 				6D0E05791EFEC7A400604981 /* ReportTextFieldCell.swift in Sources */,
 				6D12927D1F83BD6A001CCC31 /* SceneType.swift in Sources */,
