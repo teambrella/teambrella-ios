@@ -34,6 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
             service.push.remoteNotificationOnStart(in: application, userInfo: notification)
         }
+        
+        let addr = "0x2C0333Fc88DCA6a89E54f68343fE02E88136980e"
+        
+        let eth = EthereumAddress(string: addr)
+        
         return true
     }
     

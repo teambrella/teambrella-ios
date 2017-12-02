@@ -41,6 +41,7 @@ protocol DAO {
                             limit: Int,
                             searchString: String?,
                             sortBy: SortVC.SortType) -> Future<UserIndexCellModel>
+    func requestWithdrawTransactions(teamID: Int) -> Future<WithdrawChunk>
     
     // MARK: Send data
     

@@ -97,6 +97,11 @@
 		6D3141D21F07DF9D00C285DA /* JoinTeamCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */; };
 		6D3141D41F07ECC800C285DA /* PoopyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141D31F07ECC800C285DA /* PoopyVC.swift */; };
 		6D33E1541F715BB10052A58B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
+		6D35566D1FD2EE4500AEBF07 /* WithdrawTx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35566A1FD2EE4400AEBF07 /* WithdrawTx.swift */; };
+		6D3556721FD2EE6A00AEBF07 /* WithdrawDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556701FD2EE6900AEBF07 /* WithdrawDataSource.swift */; };
+		6D3556731FD2EE6A00AEBF07 /* WithdrawCellModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556711FD2EE6A00AEBF07 /* WithdrawCellModelBuilder.swift */; };
+		6D3556761FD2EF3300AEBF07 /* EthereumAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556741FD2EF3200AEBF07 /* EthereumAddress.swift */; };
+		6D3556771FD2EF3300AEBF07 /* WithdrawChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */; };
 		6D3AE8851FB2015F00A027BB /* BigNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3AE8841FB2015F00A027BB /* BigNumberTests.swift */; };
 		6D40248C1F9F357200A2F2CD /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248B1F9F357200A2F2CD /* Hex.swift */; };
 		6D40248D1F9F357300A2F2CD /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248B1F9F357200A2F2CD /* Hex.swift */; };
@@ -128,6 +133,11 @@
 		6D481F7B1F0BAA960023C781 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D481F7A1F0BAA960023C781 /* UIImageView.swift */; };
 		6D481F7D1F0BD0DD0023C781 /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D481F7C1F0BD0DD0023C781 /* RoundedCornersView.swift */; };
 		6D481F7F1F0BDEF30023C781 /* EggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D481F7E1F0BDEF30023C781 /* EggView.swift */; };
+		6D4E590F1FD2EF8D0029D2F0 /* EthereumAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556741FD2EF3200AEBF07 /* EthereumAddress.swift */; };
+		6D4E59101FD2EF900029D2F0 /* WithdrawChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */; };
+		6D4E59111FD2EF970029D2F0 /* WithdrawTx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35566A1FD2EE4400AEBF07 /* WithdrawTx.swift */; };
+		6D4E59121FD2EF9E0029D2F0 /* WithdrawCellModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556711FD2EE6A00AEBF07 /* WithdrawCellModelBuilder.swift */; };
+		6D4E59131FD2EFA10029D2F0 /* WithdrawDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556701FD2EE6900AEBF07 /* WithdrawDataSource.swift */; };
 		6D4E5C271F7AB6870020DEE2 /* AmountWithCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA56521F2101D4003B46CC /* AmountWithCurrency.swift */; };
 		6D4E5C281F7AB6870020DEE2 /* PlainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE957A1EE84A2C0019DA47 /* PlainButton.swift */; };
 		6D4E5C291F7AB6870020DEE2 /* ProxyForDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9EF1EFC033300DED5CE /* ProxyForDataSource.swift */; };
@@ -1093,6 +1103,11 @@
 		6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamCellBuilder.swift; path = Scenes/Team/JoinTeam/JoinTeamCellBuilder.swift; sourceTree = "<group>"; };
 		6D3141D31F07ECC800C285DA /* PoopyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PoopyVC.swift; path = Scenes/Team/JoinTeam/PoopyVC.swift; sourceTree = "<group>"; };
 		6D33E1531F715BB10052A58B /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Log.swift; path = Model/Services/Log.swift; sourceTree = "<group>"; };
+		6D35566A1FD2EE4400AEBF07 /* WithdrawTx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WithdrawTx.swift; path = Model/Entities/WithdrawTx.swift; sourceTree = "<group>"; };
+		6D3556701FD2EE6900AEBF07 /* WithdrawDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WithdrawDataSource.swift; path = Scenes/Me/Wallet/WithdrawDataSource.swift; sourceTree = "<group>"; };
+		6D3556711FD2EE6A00AEBF07 /* WithdrawCellModelBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WithdrawCellModelBuilder.swift; path = Scenes/Me/Wallet/WithdrawCellModelBuilder.swift; sourceTree = "<group>"; };
+		6D3556741FD2EF3200AEBF07 /* EthereumAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EthereumAddress.swift; path = Model/Entities/EthereumAddress.swift; sourceTree = "<group>"; };
+		6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WithdrawChunk.swift; path = Model/Entities/WithdrawChunk.swift; sourceTree = "<group>"; };
 		6D3AE8841FB2015F00A027BB /* BigNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigNumberTests.swift; sourceTree = "<group>"; };
 		6D40248B1F9F357200A2F2CD /* Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hex.swift; sourceTree = "<group>"; };
 		6D40248E1F9F782600A2F2CD /* AbiArgumentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbiArgumentsTests.swift; sourceTree = "<group>"; };
@@ -2038,6 +2053,8 @@
 		6D69DA181EFC464500DED5CE /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				6D3556711FD2EE6A00AEBF07 /* WithdrawCellModelBuilder.swift */,
+				6D3556701FD2EE6900AEBF07 /* WithdrawDataSource.swift */,
 				6D69DA161EFC464000DED5CE /* WalletVC.swift */,
 				6D69DA191EFD171C00DED5CE /* WalletDataSource.swift */,
 				6D69DA1B1EFD178800DED5CE /* WalletCellModels.swift */,
@@ -2497,6 +2514,9 @@
 		6DCC7AC91E9551B40092D3F2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				6D3556741FD2EF3200AEBF07 /* EthereumAddress.swift */,
+				6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */,
+				6D35566A1FD2EE4400AEBF07 /* WithdrawTx.swift */,
 				94B4C37B1F1E18AC00AED4CE /* CosignerEntity.swift */,
 				94B4C37C1F1E18AC00AED4CE /* CoverageEntity.swift */,
 				94B4C37D1F1E18AC00AED4CE /* WalletEntity.swift */,
@@ -3502,6 +3522,7 @@
 				6D4E5CA11F7AB6870020DEE2 /* JoinTeamTermsCell.swift in Sources */,
 				6D4E5CA21F7AB6870020DEE2 /* Teammate.swift in Sources */,
 				6D4E5CA31F7AB6870020DEE2 /* KeyStorage.swift in Sources */,
+				6D4E59131FD2EFA10029D2F0 /* WithdrawDataSource.swift in Sources */,
 				6D4E5CA41F7AB6870020DEE2 /* TeammateBasicInfo.swift in Sources */,
 				6D4E5CA51F7AB6870020DEE2 /* TextField.swift in Sources */,
 				6D4E5CA61F7AB6870020DEE2 /* PrivateChatAdaptor.swift in Sources */,
@@ -3513,6 +3534,7 @@
 				6D4E5CAC1F7AB6870020DEE2 /* ReportCellModels.swift in Sources */,
 				6D4E5CAD1F7AB6870020DEE2 /* AppDelegate.swift in Sources */,
 				6D4E5CAE1F7AB6870020DEE2 /* VotingScrollerDataSource.swift in Sources */,
+				6D4E59111FD2EF970029D2F0 /* WithdrawTx.swift in Sources */,
 				6D4E5CAF1F7AB6870020DEE2 /* TeammateTransformer.swift in Sources */,
 				6D12928A1F83DC46001CCC31 /* Name.swift in Sources */,
 				6D4E5CB01F7AB6870020DEE2 /* ViewDecorator.swift in Sources */,
@@ -3572,6 +3594,7 @@
 				94F0CF661FD1BD50007BE39E /* WithdrawDetailsCell.swift in Sources */,
 				6DBF492D1F80F22300B236E2 /* AnimationTools.swift in Sources */,
 				6D4E5CDF1F7AB6870020DEE2 /* PayTo.swift in Sources */,
+				6D4E59121FD2EF9E0029D2F0 /* WithdrawCellModelBuilder.swift in Sources */,
 				6D4E5CE01F7AB6870020DEE2 /* TeammateVotingInfo.swift in Sources */,
 				6D4E5CE11F7AB6870020DEE2 /* ReachabilityService.swift in Sources */,
 				6D4E5CE21F7AB6870020DEE2 /* HomeApplicationStatusCell.swift in Sources */,
@@ -3616,6 +3639,7 @@
 				6D4E5D041F7AB6870020DEE2 /* WalletTransactionsDataSource.swift in Sources */,
 				6D4E5D051F7AB6870020DEE2 /* NeedHelpView.swift in Sources */,
 				6DA5B4681F98EA3500021E8E /* Currency.swift in Sources */,
+				6D4E590F1FD2EF8D0029D2F0 /* EthereumAddress.swift in Sources */,
 				6D4E5D061F7AB6870020DEE2 /* WalletCosignerCell.swift in Sources */,
 				6D4E5D071F7AB6870020DEE2 /* TeammateSummaryCell.swift in Sources */,
 				6D4E5D081F7AB6870020DEE2 /* HomeScreenModel.swift in Sources */,
@@ -3716,6 +3740,7 @@
 				6DAD941D1FCEF4500011557C /* CodeCaptureDelegate.swift in Sources */,
 				6D4E5D5F1F7AB6870020DEE2 /* CompareTeamRiskVC.swift in Sources */,
 				6D4E5D601F7AB6870020DEE2 /* TxSignature.swift in Sources */,
+				6D4E59101FD2EF900029D2F0 /* WithdrawChunk.swift in Sources */,
 				6D4E5D611F7AB6870020DEE2 /* ClaimsCellBuilder.swift in Sources */,
 				6D4E5D621F7AB6870020DEE2 /* ImageTransformer.swift in Sources */,
 				94F0CF6B1FD2DDB3007BE39E /* WithdrawCellModels.swift in Sources */,
@@ -3845,6 +3870,7 @@
 				940FEE841FA8D05700B43CB5 /* MuteVC.swift in Sources */,
 				6DCDEB701F17DC5900C6D38C /* FeedEntity.swift in Sources */,
 				6DEFCFB81F7A66D7008C306C /* SwitchUserCell.swift in Sources */,
+				6D3556771FD2EF3300AEBF07 /* WithdrawChunk.swift in Sources */,
 				6D466AA21ED07CF1001BC579 /* CoreDataStorage.swift in Sources */,
 				6D9CC6431ED7375E007F936E /* GradientView.swift in Sources */,
 				6D6DA2671EE21F2D00307C73 /* MembersDataSource.swift in Sources */,
@@ -3908,6 +3934,7 @@
 				6DF2E8BC1EF0232700C8D60B /* ViewDecorator.swift in Sources */,
 				6DA714FA1EE04D4900F39EBE /* ScaleBar.swift in Sources */,
 				6D66B4A21F4F106900672583 /* ChatModelBuilder.swift in Sources */,
+				6D3556761FD2EF3300AEBF07 /* EthereumAddress.swift in Sources */,
 				6D69DA061EFC34FE00DED5CE /* UserIndexCellBuilder.swift in Sources */,
 				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
 				6DE793361EF92E34005F4508 /* ChatTextParser.swift in Sources */,
@@ -4021,6 +4048,7 @@
 				6D12927D1F83BD6A001CCC31 /* SceneType.swift in Sources */,
 				9475D9321FA390BC00F881C9 /* MuteCellModel.swift in Sources */,
 				6DEE67A51EDC75DA0098EDB3 /* TeammateHeaderView.swift in Sources */,
+				6D35566D1FD2EE4500AEBF07 /* WithdrawTx.swift in Sources */,
 				6D0D2AE61EFBD48D0095284C /* UserIndexVC.swift in Sources */,
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
 				6DBBF8001F9A561600524B1E /* Multisig.swift in Sources */,
@@ -4053,6 +4081,7 @@
 				6DED01BB1F5B05EB00DE24CC /* GalleryView.swift in Sources */,
 				6D30A4AA1FD1648E003149DB /* PagingInfo.swift in Sources */,
 				6D466AAE1ED07CF1001BC579 /* User.swift in Sources */,
+				6D3556721FD2EE6A00AEBF07 /* WithdrawDataSource.swift in Sources */,
 				9475D9351FA3956400F881C9 /* MuteCell.swift in Sources */,
 				6D6DA2701EE21F9800307C73 /* StyledLabels.swift in Sources */,
 				6DEE67A11EDC341A0098EDB3 /* Geometry.swift in Sources */,
@@ -4121,6 +4150,7 @@
 				6D6DA26B1EE21F7A00307C73 /* LoginDetailsConfigurator.swift in Sources */,
 				94793A8B1F0D146400696B90 /* SortCell.swift in Sources */,
 				6D69DA291EFD1A0400DED5CE /* WalletFundingCell.swift in Sources */,
+				6D3556731FD2EE6A00AEBF07 /* WithdrawCellModelBuilder.swift in Sources */,
 				94F5025A1FA8E4A90059D49B /* MuteDataSource.swift in Sources */,
 				6DDE95841EE853550019DA47 /* ClaimOptionsCell.swift in Sources */,
 			);

@@ -135,11 +135,11 @@ class ServerDAO: DAO {
         let promise = Promise<FeedChunk>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["teamid": context.teamID,
-                                                      "since": context.since,
-                                                      "offset": context.offset,
-                                                      "limit": context.limit,
-                                                      "commentAvatarSize": 32,
-                                                      "search": NSNull()])
+                                                       "since": context.since,
+                                                       "offset": context.offset,
+                                                       "limit": context.limit,
+                                                       "commentAvatarSize": 32,
+                                                       "search": NSNull()])
             let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in
                 if case let .teamFeed(json, pagingInfo) = response {
                     PlistStorage().store(json: json, for: .teamFeed, id: "")
@@ -187,10 +187,10 @@ class ServerDAO: DAO {
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
             let request = TeambrellaRequest(type: .wallet, body: body, success: { response in
                 if case .wallet(let wallet) = response {
-                 promise.resolve(with: wallet)
+                    promise.resolve(with: wallet)
                 }
-                }, failure: { error in
-                   promise.reject(with: error)
+            }, failure: { error in
+                promise.reject(with: error)
             })
             request.start()
         }
@@ -209,11 +209,32 @@ class ServerDAO: DAO {
         return promise
     }
     
+    func requestWithdrawTransactions(teamID: Int) -> Future<WithdrawChunk> {
+        let promise = Promise<WithdrawChunk>()
+        
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID])
+            let request = TeambrellaRequest(type: .withdrawTransactions, body: body, success: { response in
+                if case let .withdrawTransactions(chunk) = response {
+                    promise.resolve(with: chunk)
+                } else {
+                    let error = TeambrellaError(kind: .wrongReply,
+                                                description: "Was waiting withdrawTransactions, got \(response)")
+                    promise.reject(with: error)
+                    service.error.present(error: error)
+                }
+            }, failure: { error in
+                promise.reject(with: error)
+            })
+        }
+        return promise
+    }
+    
     func myProxy(userID: String, add: Bool) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["UserId": userID,
-                                                      "add": add])
+                                                       "add": add])
             let request = TeambrellaRequest(type: .myProxy, body: body, success: { response in
                 if case .myProxy(let isProxy) = response {
                     promise.resolve(with: isProxy)
@@ -254,11 +275,11 @@ class ServerDAO: DAO {
         freshKey { key in
             let dateString = Formatter.teambrellaShortDashed.string(from: model.incidentDate)
             let body = RequestBody(key: key, payload: ["TeamId": model.teamID,
-                                                      "IncidentDate": dateString,
-                                                      "Expenses": model.expenses,
-                                                      "Message": model.text,
-                                                      "Images": model.images,
-                                                      "Address": model.address])
+                                                       "IncidentDate": dateString,
+                                                       "Expenses": model.expenses,
+                                                       "Message": model.text,
+                                                       "Images": model.images,
+                                                       "Address": model.address])
             let request = TeambrellaRequest(type: .newClaim, body: body, success: { response in
                 if case .claim(let claim) = response {
                     promise.resolve(with: claim)
@@ -275,8 +296,8 @@ class ServerDAO: DAO {
         let promise = Promise<ChatModel>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": model.teamID,
-                                                      "Text": model.text,
-                                                      "Title": model.title])
+                                                       "Text": model.text,
+                                                       "Title": model.title])
             let request = TeambrellaRequest(type: .newChat, body: body, success: { response in
                 if case .chat(let chat) = response {
                     promise.resolve(with: chat)
