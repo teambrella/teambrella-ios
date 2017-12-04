@@ -32,8 +32,6 @@
 "Home.ApplicationStatusCell.titleLabel"                 = "Your application";
 "Home.ApplicationStatusCell.centerLabel"                = "VOTE ( PENDING )";
 
-"Home.CoverageType.carCollisionDeductible"              = "Collision Deductible";
-"Home.CoverageType.pet"                                 = "Pet health";
 "Home.PrivateMessages.title"                            = "Inbox";
 
 //---waiting--

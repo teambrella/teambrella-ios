@@ -84,10 +84,10 @@ extension WithdrawVC: UICollectionViewDataSource {
         return dataSource.rows(in: section)
     }
     
-//    func collectionView(_ collectionView: UICollectionView,
-//                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell: UICollectionViewCell!
-//        /////fixIt
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = UICollectionViewCell()
+        /////fixIt
 //        switch dataSource.type(indexPath: indexPath) {
 //        case .new:
 //            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CandidateCell",
@@ -96,8 +96,8 @@ extension WithdrawVC: UICollectionViewDataSource {
 //            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeammateCell",
 //                                                      for: indexPath)
 //        }
-//        return cell
-//    }
+        return cell
+    }
     
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,

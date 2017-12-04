@@ -63,7 +63,7 @@ struct HomeScreenModel {
     var smallPhoto: String { return json["SmallPhoto"].stringValue }
     var haveVotingClaims: Bool { return json["HaveVotingClaims"].boolValue }
     var currency: String { return teamPart["Currency"].stringValue }
-    var coverageType: CoverageType { return CoverageType(rawValue: teamPart["CoverageType"].intValue) ?? .pet }
+    var coverageType: CoverageType { return CoverageType(rawValue: teamPart["CoverageType"].intValue) ?? .other }
     var teamAccessLevel: Int { return teamPart["TeamAccessLevel"].intValue }
     
     init(json: JSON) {

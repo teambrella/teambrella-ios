@@ -21,3 +21,10 @@
 
 "General.you"                    = "Tú";
 
+"General.CoverageType.other"                       = "OBJECT";
+"General.CoverageType.bicycle"                     = "BICYCLE";
+"General.CoverageType.carCollisionDeductible"      = "DEDUCIBLE POR COLISIÓN";
+"General.CoverageType.petDog"                      = "PERRO";
+"General.CoverageType.petCat"                      = "GATO";
+"General.CoverageType.bicycle"                     = "BICICLETA";
+

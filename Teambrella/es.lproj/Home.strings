@@ -13,8 +13,6 @@
 "Home.leftBrick.title"                                  = "COBERTURA";
 "Home.rightBrick.title"                                 = "MONEDERO";
 "Home.itemCard.status"                                  = "CUBIERTO";
-"Home.CoverageType.pet"                                 = "Salud de la Mascota";
-"Home.CoverageType.carCollisionDeductible"              = "Deducible por Colisión";
 "Home.SupportCell.headerLabel"                          = "Chatear con el apoyo";
 "Home.SupportCell.onlineLabel"                          = "EN LIÍNEA";
 "Home.SupportCell.textLabel"                            = "¡Hola %@! Si tienes alguna pregunta, somos aquí para ayudarte durante horas de oficina";

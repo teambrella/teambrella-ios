@@ -22,9 +22,14 @@
 import Foundation
 
 enum CoverageType: Int {
+    // in use
     case other                        = 0
     case bicycle                      = 40
     case carCollisionDeductible       = 100
+    case petDog                       = 240
+    case petCat                       = 241
+    
+    // reserved
     case carCollision                 = 101
     case carComprehensive             = 102
     case thirdParty                   = 103
@@ -32,7 +37,6 @@ enum CoverageType: Int {
     case drone                        = 140
     case mobile                       = 200
     case homeAppliances               = 220
-    case pet                          = 240
     case unemployment                 = 260
     case healthDental                 = 280
     case healthOther                  = 290
@@ -41,13 +45,8 @@ enum CoverageType: Int {
     case businessLiability            = 460
     
     var localizedName: String {
-        var key = ""
-        switch self {
-        case .carCollisionDeductible: key = "Home.CoverageType.carCollisionDeductible"
-        case .pet: key = "Home.CoverageType.pet"
-        default:
-            break
-        }
-        return key.localized
+        var key = "General.CoverageType.\(self)"
+        let localized = key.localized
+        return key != localized ? localized : "General.CoverageType.other".localized
     }
 }

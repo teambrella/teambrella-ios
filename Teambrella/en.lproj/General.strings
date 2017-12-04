@@ -44,3 +44,28 @@
 "General.TransactionState.errorOutOfFunds"         = "error: out of funds";
 "General.TransactionState.errorTooManyUtxos"       = "error: too many Utxos";
 
+"General.CoverageType.other"                       = "OBJECT";
+"General.CoverageType.bicycle"                     = "BICYCLE";
+"General.CoverageType.carCollisionDeductible"      = "COLLISION DEDUCTIBLE";
+"General.CoverageType.petDog"                      = "DOG";
+"General.CoverageType.petCat"                      = "CAT";
+"General.CoverageType.bicycle"                     = "BICYCLE";
+
+/*
+ case carCollision                 = 101
+ case carComprehensive             = 102
+ case thirdParty                   = 103
+ case carCollisionAndComprehensive = 104
+ case drone                        = 140
+ case mobile                       = 200
+ case homeAppliances               = 220
+ case unemployment                 = 260
+ case healthDental                 = 280
+ case healthOther                  = 290
+ case businessBees                 = 400
+ case businessCrime                = 440
+ case businessLiability            = 460
+ */
+
+
+

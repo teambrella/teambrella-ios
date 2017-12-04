@@ -141,7 +141,8 @@ struct TeammateCellBuilder {
     private static func populateObject(cell: TeammateObjectCell,
                                        with teammate: ExtendedTeammateEntity,
                                        controller: TeammateProfileVC) {
-        cell.titleLabel.text = teammate.object.subType.uppercased() //"Team.TeammateCell.object".localized
+        let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
+        cell.titleLabel.text = type.localizedName
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
