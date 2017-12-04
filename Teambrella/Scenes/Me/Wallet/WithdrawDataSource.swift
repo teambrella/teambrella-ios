@@ -42,6 +42,19 @@ final class WithdrawDataSource {
         return transactions[section - 1].count
     }
     
+    func headerName(section: Int) -> String? {
+        switch section {
+        case 1:
+            return transactions[0].isEmpty ? nil : "Me.Wallet.Withdraw.header.queued".localized
+        case 2:
+            return transactions[1].isEmpty ? nil : "Me.Wallet.Withdraw.header.inProgress".localized
+        case 3:
+            return transactions[2].isEmpty ? nil : "Me.Wallet.Withdraw.header.history".localized
+        default:
+            return nil
+        }
+    }
+    
     func loadData() {
         isLoading = true
         fakeLoad()
