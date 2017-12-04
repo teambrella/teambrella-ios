@@ -37,7 +37,8 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
         HUD.show(.progress, onView: view)
         //ask this
         collectionView.register(WithdrawDetailsCell.nib, forCellWithReuseIdentifier: WithdrawDetailsCell.cellID)
-
+        collectionView.register(WithdrawCell.nib, forCellWithReuseIdentifier: WithdrawCell.cellID)
+        
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
             self?.collectionView.reloadData()
@@ -89,11 +90,11 @@ extension WithdrawVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell!
+        let cell: UICollectionViewCell
         if indexPath.section == 0 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WithdrawDetailsCell", for: indexPath)
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WithdrawDetailsCell.cellID, for: indexPath)
         } else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WithdrawTransactionCell", for: indexPath)
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WithdrawCell.cellID, for: indexPath)
         }
         return cell
     }
