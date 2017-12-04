@@ -45,10 +45,7 @@ class WithdrawDetailsCellModel: WithdrawCellModel {
     var amountText: String = "Me.Wallet.Withdraw.Details.amount.title".localized
     var amountValue: String = ""
     var buttonTitle: String = "Me.Wallet.Withdraw.Details.submitButton.title".localized
-    /*
-     cell.cryptoAddressTextField.placeholder = "Me.Wallet.Withdraw.Details.to.placeholder".localized
-     cell.cryptoAmountTextField.placeholder = "Me.Wallet.Withdraw.Details.amount.placeholder".localized
-     */
+
 }
 
 struct WithdrawTransactionCellModel: WithdrawCellModel {
@@ -56,4 +53,23 @@ struct WithdrawTransactionCellModel: WithdrawCellModel {
     let isNew: Bool
     let bottomText: String
     let amountText: String
+}
+
+struct WithdrawCellBuilder {
+    static func populate(cell: UICollectionViewCell, with model: WithdrawCellModel) {
+        if let cell = cell as? WithdrawDetailsCell, let model = model as? WithdrawDetailsCellModel {
+            cell.titleLabel.text = model.title
+            cell.toLabel.text = model.toText
+            cell.cryptoAddressTextField.text = model.toValue
+            cell.qrButton.setImage(#imageLiteral(resourceName: "qrCode"), for: .normal) //
+            cell.amountLabel.text = model.amountText
+            cell.cryptoAmountTextField.text = model.amountValue
+            cell.submitButton.setTitle(model.buttonTitle, for: .normal)
+        } else if let cell = cell as? WithdrawCell, let model = model as? WithdrawTransactionCellModel {
+            cell.upperLabel.text = model.topText
+            cell.lowerLabel.text = model.bottomText
+            cell.indicatorView.isHidden = !model.isNew
+            cell.rightLabel.text = model.amountText
+        }
+    }
 }

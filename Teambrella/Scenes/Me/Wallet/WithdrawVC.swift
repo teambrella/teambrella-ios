@@ -22,7 +22,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate {
     @IBOutlet var backView: UIView!
     @IBOutlet var collectionView: UICollectionView!
     
-    let dataSource = MembersDatasource(orderByRisk: false)
+    let dataSource = WithdrawDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
     fileprivate var previousScrollOffset: CGFloat = 0
     
     var isFirstLoading = true
@@ -61,7 +61,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate {
             return
         }
         
-        dataSource.updateSilently()
+        //dataSource.updateSilently()
     }
     
     func codeCapture(controller: CodeCaptureVC, didCapture: String, type: QRCodeType) {
@@ -81,23 +81,23 @@ extension WithdrawVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.itemsInSection(section: section)
+        return dataSource.rows(in: section)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell!
-        /////fixIt
-        switch dataSource.type(indexPath: indexPath) {
-        case .new:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CandidateCell",
-                                                      for: indexPath)
-        case .teammate:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeammateCell",
-                                                      for: indexPath)
-        }
-        return cell
-    }
+//    func collectionView(_ collectionView: UICollectionView,
+//                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell: UICollectionViewCell!
+//        /////fixIt
+//        switch dataSource.type(indexPath: indexPath) {
+//        case .new:
+//            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CandidateCell",
+//                                                      for: indexPath)
+//        case .teammate:
+//            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeammateCell",
+//                                                      for: indexPath)
+//        }
+//        return cell
+//    }
     
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
@@ -115,10 +115,11 @@ extension WithdrawVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        let transaction = dataSource[indexPath]
-        WithdrawCellBuilder.populate(cell: cell)//, with: transaction)
+        guard let model = dataSource[indexPath] else { return }
         
-        let maxRow = dataSource.itemsInSection(section: indexPath.section)
+        WithdrawCellBuilder.populate(cell: cell, with: model)
+        
+        let maxRow = dataSource.rows(in: indexPath.section)
         if let cell = cell as? WithdrawCell {
             cell.separator.isHidden = indexPath.row == maxRow - 1
             ViewDecorator.decorateCollectionView(cell: cell,
@@ -132,8 +133,8 @@ extension WithdrawVC: UICollectionViewDelegate {
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
         if let view = view as? WithdrawHeader {
-            view.leadingLabel.text = dataSource.headerTitle(indexPath: indexPath)
-            view.trailingLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
+//            view.leadingLabel.text = dataSource.headerTitle(indexPath: indexPath)
+//            view.trailingLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
         }
     }
 
@@ -150,7 +151,8 @@ extension WithdrawVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 56)
+        return section == 0 ? CGSize(width: collectionView.bounds.width, height: 0) :
+            CGSize(width: collectionView.bounds.width, height: 56)
     }
 }
 

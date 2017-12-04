@@ -31,7 +31,10 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        ViewDecorator.shadow(for: self, opacity: 0.08, radius: 4)
+        cryptoAmountTextField.placeholder = ""
+        //cryptoAddressTextField.placeholder = "Me.Wallet.Withdraw.Details.to.placeholder".localized
+        cryptoAmountTextField.placeholder = "Me.Wallet.Withdraw.Details.amount.placeholder".localized
+        ViewDecorator.shadow(for: self)
     }
 
     @IBAction func tapInfoButton(_ sender: Any) {
