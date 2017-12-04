@@ -21,10 +21,15 @@
 
 "General.you"                    = "Tú";
 
-"General.CoverageType.other"                       = "OBJECT";
-"General.CoverageType.bicycle"                     = "BICYCLE";
-"General.CoverageType.carCollisionDeductible"      = "DEDUCIBLE POR COLISIÓN";
-"General.CoverageType.petDog"                      = "PERRO";
-"General.CoverageType.petCat"                      = "GATO";
-"General.CoverageType.bicycle"                     = "BICICLETA";
+"General.CoverageObject.other"                       = "OBJETO";
+"General.CoverageObject.bicycle"                     = "BICICLETA";
+"General.CoverageObject.carCollisionDeductible"      = "AUTO";
+"General.CoverageObject.petDog"                      = "PERRO";
+"General.CoverageObject.petCat"                      = "GATO";
 
+"General.CoverageType.other"                       = "Object coverage";
+"General.CoverageType.bicycle"                     = "Bicycle coverage";
+"General.CoverageType.carCollisionDeductible"      = "Deducible por colisión";
+"General.CoverageType.petDog"                      = "Salud de mascota";
+"General.CoverageType.petCat"                      = "Salud de mascota";
+"General.CoverageType.bicycle"                     = "Cobertura de bicicleta";

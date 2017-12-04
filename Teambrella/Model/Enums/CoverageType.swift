@@ -44,7 +44,13 @@ enum CoverageType: Int {
     case businessCrime                = 440
     case businessLiability            = 460
     
-    var localizedName: String {
+    var localizedCoverageObject: String {
+        var key = "General.CoverageObject.\(self)"
+        let localized = key.localized
+        return key != localized ? localized : "General.CoverageObject.other".localized
+    }
+    
+    var localizedCoverageType: String {
         var key = "General.CoverageType.\(self)"
         let localized = key.localized
         return key != localized ? localized : "General.CoverageType.other".localized

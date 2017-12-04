@@ -142,11 +142,11 @@ struct TeammateCellBuilder {
                                        with teammate: ExtendedTeammateEntity,
                                        controller: TeammateProfileVC) {
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
-        cell.titleLabel.text = type.localizedName
+        cell.titleLabel.text = type.localizedCoverageObject
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
-        cell.detailsLabel.text = teammate.coverageType.localizedName
+        cell.detailsLabel.text = teammate.coverageType.localizedCoverageType
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
