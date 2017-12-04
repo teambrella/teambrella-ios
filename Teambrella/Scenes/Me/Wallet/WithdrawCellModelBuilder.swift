@@ -39,13 +39,16 @@ protocol WithdrawCellModel {
 }
 
 class WithdrawDetailsCellModel: WithdrawCellModel {
-    var title: String = "WITHDRAW DETAILS"
-    var toText: String = "TO"
+    var title: String = "Me.Wallet.Withdraw.Details.title".localized
+    var toText: String = "Me.Wallet.Withdraw.Details.to.title".localized
     var toValue: String = ""
-    var amountText: String = "AMOUNT mETH"
+    var amountText: String = "Me.Wallet.Withdraw.Details.amount.title".localized
     var amountValue: String = ""
-    var buttonTitle: String = "Submit"
-    
+    var buttonTitle: String = "Me.Wallet.Withdraw.Details.submitButton.title".localized
+    /*
+     cell.cryptoAddressTextField.placeholder = "Me.Wallet.Withdraw.Details.to.placeholder".localized
+     cell.cryptoAmountTextField.placeholder = "Me.Wallet.Withdraw.Details.amount.placeholder".localized
+     */
 }
 
 struct WithdrawTransactionCellModel: WithdrawCellModel {
