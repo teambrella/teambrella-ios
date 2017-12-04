@@ -13,7 +13,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WithdrawDetailsCell" customModule="Surilla" customModuleProvider="target">
             <connections>
-                <outlet property="amountLabel" destination="Tha-xM-3Ul" id="O4J-Ox-9US"/>
                 <outlet property="backView" destination="FkY-dj-CQO" id="AgU-fT-z81"/>
                 <outlet property="cryptoAddressTextField" destination="vN4-vc-6NA" id="JBi-Ri-n8S"/>
                 <outlet property="cryptoAmountTextField" destination="MDX-O6-f91" id="cdu-qA-2kt"/>
@@ -26,7 +25,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="WithdrawDetailsCell" customModule="Surilla" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WithdrawDetailsCell" id="gTV-IL-0wX" customClass="WithdrawDetailsCell" customModule="Surilla" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="336" height="300"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

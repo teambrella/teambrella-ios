@@ -737,7 +737,7 @@
         <!--WithdrawVC-->
         <scene sceneID="yzh-iy-XTZ">
             <objects>
-                <viewController id="zuX-gQ-Ntd" customClass="WithdrawVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WithdrawVC" id="zuX-gQ-Ntd" customClass="WithdrawVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uua-Ft-Hgv"/>
                         <viewControllerLayoutGuide type="bottom" id="e5E-K2-fgV"/>

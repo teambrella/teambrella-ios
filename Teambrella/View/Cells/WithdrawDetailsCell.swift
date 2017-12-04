@@ -24,7 +24,7 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var toLabel: InfoLabel!
     @IBOutlet var cryptoAddressTextField: UITextField!
     @IBOutlet var qrButton: BorderedButton!
-    @IBOutlet var amountLabel: InfoLabel!
+   // @IBOutlet var amountLabel: InfoLabel!
     @IBOutlet var cryptoAmountTextField: UITextField!
     @IBOutlet var separator: UIView!
     @IBOutlet var submitButton: BorderedButton!

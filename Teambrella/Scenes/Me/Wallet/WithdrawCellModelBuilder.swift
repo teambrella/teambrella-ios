@@ -62,7 +62,7 @@ struct WithdrawCellBuilder {
             cell.toLabel.text = model.toText
             cell.cryptoAddressTextField.text = model.toValue
             cell.qrButton.setImage(#imageLiteral(resourceName: "qrCode"), for: .normal) //
-            cell.amountLabel.text = model.amountText
+           // cell.amountLabel.text = model.amountText
             cell.cryptoAmountTextField.text = model.amountValue
             cell.submitButton.setTitle(model.buttonTitle, for: .normal)
         } else if let cell = cell as? WithdrawCell, let model = model as? WithdrawTransactionCellModel {

@@ -17,11 +17,14 @@
 import UIKit
 import PKHUD
 
-class WithdrawVC: UIViewController, CodeCaptureDelegate {
+class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
 
+    static let storyboardName = "Me"
+    
     @IBOutlet var backView: UIView!
     @IBOutlet var collectionView: UICollectionView!
     
+    var teamID: Int = 0
     let dataSource = WithdrawDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
     fileprivate var previousScrollOffset: CGFloat = 0
     
@@ -86,16 +89,12 @@ extension WithdrawVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
-        /////fixIt
-//        switch dataSource.type(indexPath: indexPath) {
-//        case .new:
-//            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CandidateCell",
-//                                                      for: indexPath)
-//        case .teammate:
-//            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeammateCell",
-//                                                      for: indexPath)
-//        }
+        let cell: UICollectionViewCell!
+        if indexPath.section == 0 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WithdrawDetailsCell", for: indexPath)
+        } else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WithdrawTransactionCell", for: indexPath)
+        }
         return cell
     }
     
@@ -133,8 +132,8 @@ extension WithdrawVC: UICollectionViewDelegate {
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
         if let view = view as? WithdrawHeader {
-//            view.leadingLabel.text = dataSource.headerTitle(indexPath: indexPath)
-//            view.trailingLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
+            view.leadingLabel.text = dataSource.headerName(section: indexPath.section)
+            view.trailingLabel.text = "mETH"
         }
     }
 

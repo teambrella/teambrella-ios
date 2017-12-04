@@ -78,7 +78,7 @@ class WalletVC: UIViewController {
     
     @objc
     func tapWithdraw(sender: UIButton) {
-        log("tap Withdraw", type: .userInteraction)
+        service.router.presentWithdraw()
     }
     
     func generateQRCode() -> UIImage? {
