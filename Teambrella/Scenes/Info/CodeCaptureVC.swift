@@ -23,7 +23,7 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     @IBOutlet var container: UIView!
     @IBOutlet var textView: UITextView!
     @IBOutlet var confirmButton: BorderedButton!
-   
+    
     var output = AVCaptureMetadataOutput()
     var previewLayer: AVCaptureVideoPreviewLayer!
     var captureSession = AVCaptureSession()
@@ -34,7 +34,7 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupCamera()
     }
     
@@ -53,13 +53,13 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
             captureSession.stopRunning()
         }
     }
-
+    
     @IBAction func tapClose(_ sender: UIButton) {
         close(cancelled: true)
     }
     
     @IBAction func tapConfirm(_ sender: UIButton) {
-       close(cancelled: false)
+        close(cancelled: false)
     }
     
     private func close(cancelled: Bool) {
@@ -96,9 +96,9 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     
     private func codeType(text: String) -> QRCodeType {
         let array: [(String, QRCodeType)] = [
-                                              ("^5[HJK][1-9A-Za-z][^OIl]{48}", .bitcoinWiF),
-                                              ("^[123mn][1-9A-HJ-NP-Za-km-z]{26,35}", .bitcoinPublicKey),
-                                              ("^0x[a-fA-F0-9]{40}$", .ethereum)
+            ("^5[HJK][1-9A-Za-z][^OIl]{48}", .bitcoinWiF),
+            ("^[123mn][1-9A-HJ-NP-Za-km-z]{26,35}", .bitcoinPublicKey),
+            ("^0x[a-fA-F0-9]{40}$", .ethereum)
         ]
         for item in array {
             if text.range(of: item.0, options: .regularExpression) != nil {
@@ -111,9 +111,10 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     private func read(string: String) {
         guard lastReadString != string else { return }
         
-       lastReadString = string
+        lastReadString = string
         textView.text = string
         let type = codeType(text: string)
+        Vibrator().vibrate()
         delegate?.codeCapture(controller: self, didCapture: string, type: type)
     }
     
@@ -125,5 +126,5 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
             }
         }
     }
-
+    
 }
