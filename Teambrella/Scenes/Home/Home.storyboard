@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -366,8 +367,8 @@
                                                     <constraint firstItem="sHk-fD-QOV" firstAttribute="leading" secondItem="9ce-bs-ZRe" secondAttribute="leading" id="ZDS-eI-CvS"/>
                                                     <constraint firstItem="xCN-fH-yvY" firstAttribute="leading" secondItem="xL4-tL-WPQ" secondAttribute="leading" id="aEj-ga-vCe"/>
                                                     <constraint firstItem="xCN-fH-yvY" firstAttribute="top" secondItem="9ce-bs-ZRe" secondAttribute="top" id="guO-gb-Sfv"/>
-                                                    <constraint firstAttribute="trailing" secondItem="sjW-Hc-lVp" secondAttribute="trailing" id="p91-8Y-FsN"/>
-                                                    <constraint firstItem="sjW-Hc-lVp" firstAttribute="leading" secondItem="xL4-tL-WPQ" secondAttribute="trailing" id="rhL-wk-qkV"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sjW-Hc-lVp" secondAttribute="trailing" id="p91-8Y-FsN"/>
+                                                    <constraint firstItem="sjW-Hc-lVp" firstAttribute="leading" secondItem="xL4-tL-WPQ" secondAttribute="trailing" constant="2" id="rhL-wk-qkV"/>
                                                     <constraint firstItem="sHk-fD-QOV" firstAttribute="centerY" secondItem="9ce-bs-ZRe" secondAttribute="centerY" id="zx0-RJ-Stm"/>
                                                 </constraints>
                                             </view>
