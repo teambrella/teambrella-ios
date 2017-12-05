@@ -17,7 +17,7 @@
 import UIKit
 
 class WithdrawHeader: UICollectionReusableView, XIBInitableCell {
-    @IBOutlet var contentView: UIView!
+    @IBOutlet var backView: UIView!
     @IBOutlet var leadingLabel: InfoLabel!
     @IBOutlet var trailingLabel: InfoLabel!
     

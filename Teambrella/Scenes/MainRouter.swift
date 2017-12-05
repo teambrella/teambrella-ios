@@ -174,6 +174,13 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
+    func presentWithdraw(/*teamID: Int, */animated: Bool = true) {
+        guard let vc = WithdrawVC.instantiate() as? WithdrawVC else { fatalError("Error instantiating") }
+        
+//        vc.teamID = teamID
+        push(vc: vc, animated: animated)
+    }
+    
     func presentReport(context: ReportContext,
                        in parentViewController: UIViewController? = nil,
                        delegate: ReportDelegate?) {

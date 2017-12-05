@@ -32,7 +32,7 @@ struct WithdrawTx {
         guard let id = json["Id"].string,
             let lastUpdated = json["LastUpdated"].int64,
             let withdrawalID = json["WithdrawalId"].int,
-            let serverTxState = json["ServerState"].int else { return nil }
+            let serverTxState = json["ServerTxState"].int else { return nil }
         
         self.id = id
         self.lastUpdated = lastUpdated
