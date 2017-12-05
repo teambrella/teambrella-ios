@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +25,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="371" height="79"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqT-zv-FvV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="16" y="16" width="42" height="21"/>
+                                <rect key="frame" x="16" y="18.5" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmo-E4-NUO" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="16" y="42" width="42" height="21"/>
+                                <rect key="frame" x="16" y="43.5" width="42" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,7 +50,7 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPP-71-a4x">
-                                <rect key="frame" x="63" y="22.5" width="8" height="8"/>
+                                <rect key="frame" x="63" y="25" width="8" height="8"/>
                                 <color key="backgroundColor" red="0.40784313729999999" green="0.4549019608" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rPP-71-a4x" secondAttribute="height" multiplier="1:1" id="Rc8-hg-YxE"/>
@@ -68,12 +69,13 @@
                             <constraint firstItem="7ve-5A-frp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rPP-71-a4x" secondAttribute="trailing" constant="8" id="DMe-qE-jvq"/>
                             <constraint firstAttribute="trailing" secondItem="7ve-5A-frp" secondAttribute="trailing" constant="16" id="Xfn-Nj-9rj"/>
                             <constraint firstItem="rPP-71-a4x" firstAttribute="centerY" secondItem="nqT-zv-FvV" secondAttribute="centerY" id="bhz-Hq-1WU"/>
-                            <constraint firstAttribute="bottom" secondItem="dmo-E4-NUO" secondAttribute="bottom" constant="16" id="bwK-5W-L16"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dmo-E4-NUO" secondAttribute="bottom" constant="16" id="bwK-5W-L16"/>
                             <constraint firstItem="rPP-71-a4x" firstAttribute="leading" secondItem="nqT-zv-FvV" secondAttribute="trailing" constant="5" id="cmu-od-G1e"/>
-                            <constraint firstItem="nqT-zv-FvV" firstAttribute="top" secondItem="pO5-Ve-PTc" secondAttribute="top" constant="16" id="fbg-rw-5nn"/>
+                            <constraint firstItem="nqT-zv-FvV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pO5-Ve-PTc" secondAttribute="top" constant="16" id="fbg-rw-5nn"/>
                             <constraint firstItem="nqT-zv-FvV" firstAttribute="leading" secondItem="pO5-Ve-PTc" secondAttribute="leading" constant="16" id="jHJ-HG-IbM"/>
                             <constraint firstItem="dmo-E4-NUO" firstAttribute="leading" secondItem="pO5-Ve-PTc" secondAttribute="leading" constant="16" id="jbb-NL-fAN"/>
                             <constraint firstAttribute="trailing" secondItem="53n-qQ-D2f" secondAttribute="trailing" id="oYd-4f-cTO"/>
+                            <constraint firstItem="nqT-zv-FvV" firstAttribute="bottom" secondItem="pO5-Ve-PTc" secondAttribute="centerY" id="r2B-qg-826"/>
                             <constraint firstItem="7ve-5A-frp" firstAttribute="centerY" secondItem="pO5-Ve-PTc" secondAttribute="centerY" id="vSp-jU-tUW"/>
                             <constraint firstItem="53n-qQ-D2f" firstAttribute="leading" secondItem="pO5-Ve-PTc" secondAttribute="leading" constant="16" id="weV-65-VtH"/>
                             <constraint firstAttribute="bottom" secondItem="53n-qQ-D2f" secondAttribute="bottom" id="wfj-ZN-bXJ"/>

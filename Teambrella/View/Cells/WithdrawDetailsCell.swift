@@ -22,17 +22,20 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var titleLabel: BlockHeaderLabel!
     @IBOutlet var infoButton: UIButton!
     @IBOutlet var toLabel: InfoLabel!
-    @IBOutlet var cryptoAddressTextField: UITextField!
+    @IBOutlet var cryptoAddressTextView: UITextView!
     @IBOutlet var qrButton: BorderedButton!
     @IBOutlet var amountLabel: InfoLabel!
     @IBOutlet var cryptoAmountTextField: UITextField!
     @IBOutlet var separator: UIView!
     @IBOutlet var submitButton: BorderedButton!
+    @IBOutlet var placeholder: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cryptoAmountTextField.placeholder = ""
-        //cryptoAddressTextField.placeholder = "Me.Wallet.Withdraw.Details.to.placeholder".localized
+        cryptoAddressTextView.layer.borderWidth = 0.5
+        cryptoAddressTextView.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
+        cryptoAddressTextView.layer.cornerRadius = 4
+        placeholder.text = "Me.Wallet.Withdraw.Details.to.placeholder".localized
         cryptoAmountTextField.placeholder = "Me.Wallet.Withdraw.Details.amount.placeholder".localized
         ViewDecorator.shadow(for: self)
     }

@@ -14,6 +14,9 @@
         <array key="AkkuratPro-Bold.otf">
             <string>AkkuratPro-Bold</string>
         </array>
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -44,13 +47,14 @@
                                 <rect key="frame" x="296" y="19.5" width="20" height="22"/>
                                 <state key="normal" image="info"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znX-Dm-Kzy" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znX-Dm-Kzy" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="277" y="92" width="39" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="5Ma-7F-xgS"/>
                                     <constraint firstAttribute="width" secondItem="znX-Dm-Kzy" secondAttribute="height" multiplier="1:1" id="dlp-rI-dKv"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="qrCode"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMOUNT mETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tha-xM-3Ul" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="20" y="155" width="296" height="21"/>
@@ -64,12 +68,12 @@
                                     <constraint firstAttribute="height" constant="39" id="vPl-4W-A0i"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUf-NW-iWW">
                                 <rect key="frame" x="20" y="244" width="296" height="1"/>
-                                <color key="backgroundColor" red="0.84705882349999995" green="0.89411764709999997" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.90980392156862744" green="0.92941176470588238" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="orE-jl-beS"/>
                                 </constraints>
@@ -93,17 +97,16 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="xog-q4-tHw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To ethereum address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItO-uo-GV8">
+                                <rect key="frame" x="27" y="103.5" width="242" height="17"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
+                                <color key="textColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -119,13 +122,16 @@
                             <constraint firstItem="znX-Dm-Kzy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TFU-nf-aFb" secondAttribute="trailing" constant="8" id="KAk-zW-sB8"/>
                             <constraint firstItem="MDX-O6-f91" firstAttribute="trailing" secondItem="K1w-Ie-vHW" secondAttribute="trailing" id="NQ2-ds-cYM"/>
                             <constraint firstAttribute="bottom" secondItem="VBc-sh-QOB" secondAttribute="bottom" constant="12" id="OSi-bV-8Wk"/>
+                            <constraint firstItem="ItO-uo-GV8" firstAttribute="centerY" secondItem="V6o-oq-xsH" secondAttribute="centerY" id="OY8-Go-25N"/>
                             <constraint firstItem="VBc-sh-QOB" firstAttribute="top" secondItem="GUf-NW-iWW" secondAttribute="bottom" constant="14" id="POi-vS-w1Y"/>
                             <constraint firstAttribute="trailing" secondItem="K1w-Ie-vHW" secondAttribute="trailing" constant="20" id="YVi-vM-OGi"/>
+                            <constraint firstItem="ItO-uo-GV8" firstAttribute="leading" secondItem="V6o-oq-xsH" secondAttribute="leading" constant="7" id="YXf-0q-mHb"/>
                             <constraint firstItem="VBc-sh-QOB" firstAttribute="leading" secondItem="gtx-Vc-bOV" secondAttribute="leading" id="a1y-LT-AW5"/>
                             <constraint firstItem="GUf-NW-iWW" firstAttribute="top" secondItem="MDX-O6-f91" secondAttribute="bottom" constant="22" id="cBU-NZ-ahO"/>
                             <constraint firstItem="gtx-Vc-bOV" firstAttribute="top" secondItem="FkY-dj-CQO" secondAttribute="top" constant="20" id="dx4-OF-ZDx"/>
                             <constraint firstItem="TFU-nf-aFb" firstAttribute="leading" secondItem="gtx-Vc-bOV" secondAttribute="leading" id="iFU-f6-6ta"/>
                             <constraint firstItem="K1w-Ie-vHW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gtx-Vc-bOV" secondAttribute="trailing" constant="8" id="jgK-bC-irX"/>
+                            <constraint firstItem="ItO-uo-GV8" firstAttribute="trailing" secondItem="V6o-oq-xsH" secondAttribute="trailing" id="m74-rX-j6P"/>
                             <constraint firstItem="TFU-nf-aFb" firstAttribute="top" secondItem="gtx-Vc-bOV" secondAttribute="bottom" constant="23" id="p2u-sp-ose"/>
                             <constraint firstItem="znX-Dm-Kzy" firstAttribute="leading" secondItem="V6o-oq-xsH" secondAttribute="trailing" constant="8" id="raE-Yv-ch5"/>
                             <constraint firstItem="znX-Dm-Kzy" firstAttribute="trailing" secondItem="K1w-Ie-vHW" secondAttribute="trailing" id="tDe-LQ-F0U"/>
@@ -153,8 +159,10 @@
             <connections>
                 <outlet property="amountLabel" destination="Tha-xM-3Ul" id="fQy-B2-XDJ"/>
                 <outlet property="backView" destination="FkY-dj-CQO" id="3gl-eu-XgR"/>
+                <outlet property="cryptoAddressTextView" destination="V6o-oq-xsH" id="Mf4-NZ-61q"/>
                 <outlet property="cryptoAmountTextField" destination="MDX-O6-f91" id="Oqt-nR-0zv"/>
                 <outlet property="infoButton" destination="K1w-Ie-vHW" id="VJY-6H-5JU"/>
+                <outlet property="placeholder" destination="ItO-uo-GV8" id="dhG-oc-Fia"/>
                 <outlet property="qrButton" destination="znX-Dm-Kzy" id="Sxf-jx-viM"/>
                 <outlet property="separator" destination="GUf-NW-iWW" id="KMN-kn-OfQ"/>
                 <outlet property="submitButton" destination="VBc-sh-QOB" id="Xxf-7V-nNd"/>
@@ -166,5 +174,6 @@
     </objects>
     <resources>
         <image name="info" width="20" height="20"/>
+        <image name="qrCode" width="330" height="330"/>
     </resources>
 </document>
