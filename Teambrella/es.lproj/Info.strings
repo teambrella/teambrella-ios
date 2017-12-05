@@ -10,3 +10,7 @@
 "Info.DemoExpired.Details" = "Hemos creado un nuevo equipo demo para tí. Es compatible con todas nuevas funciones y actualizaciones.";
 "Info.DemoExpired.UpperButton.Title" = "Probar demo";
 "Info.DemoExpired.LowerButton.Title" = " Atrás";
+
+"Info.codeCapture.title" = "Scan Ethereum Address";
+"Info.codeCapture.button.title" = "Usar";
+"Info.codeCapture.cancelButton.title" = "Cancelar";

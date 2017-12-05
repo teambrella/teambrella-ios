@@ -23,6 +23,8 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     @IBOutlet var container: UIView!
     @IBOutlet var textView: UITextView!
     @IBOutlet var confirmButton: BorderedButton!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var cancelButton: UIButton!
     
     var output = AVCaptureMetadataOutput()
     var previewLayer: AVCaptureVideoPreviewLayer!
@@ -34,7 +36,13 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        titleLabel.text = "Info.codeCapture.title".localized
+        confirmButton.setTitle("Info.codeCapture.button.title".localized, for: .normal)
+        cancelButton.setTitle("Info.codeCapture.cancelButton.title".localized, for: .normal)
+        textView.layer.cornerRadius = 8
+        textView.layer.masksToBounds = true
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.bluishGray.cgColor
         setupCamera()
     }
     
