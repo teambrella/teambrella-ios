@@ -15,10 +15,10 @@
  */
 
 import UIKit
-import PKHUD
+//import PKHUD
 
 class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
-
+    
     static let storyboardName = "Me"
     
     @IBOutlet var backView: UIView!
@@ -34,18 +34,19 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        HUD.show(.progress, onView: view)
-        //ask this
+        //HUD.show(.progress, onView: view)
         collectionView.register(WithdrawDetailsCell.nib, forCellWithReuseIdentifier: WithdrawDetailsCell.cellID)
         collectionView.register(WithdrawCell.nib, forCellWithReuseIdentifier: WithdrawCell.cellID)
+        collectionView.register(WithdrawHeader.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: WithdrawHeader.cellID)
         
         dataSource.onUpdate = { [weak self] in
-            HUD.hide()
+            //HUD.hide()
             self?.collectionView.reloadData()
         }
         
         dataSource.onError = { [weak self] error in
-            HUD.hide()
+            //HUD.hide()
             guard let error = error as? TeambrellaError else { return }
             
             let controller = UIAlertController(title: "Error", message: error.description, preferredStyle: .alert)
@@ -55,6 +56,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
         }
         
         dataSource.loadData()
+        addGradientNavBar()
         title = "Me.Wallet.Withdraw".localized
     }
     
@@ -75,7 +77,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     func codeCaptureWillClose(controller: CodeCaptureVC) {
         
     }
-
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -103,7 +105,7 @@ extension WithdrawVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                   withReuseIdentifier: "WithdrawHeader",
+                                                                   withReuseIdentifier: WithdrawHeader.cellID,
                                                                    for: indexPath)
         return view
     }
@@ -134,10 +136,10 @@ extension WithdrawVC: UICollectionViewDelegate {
                         at indexPath: IndexPath) {
         if let view = view as? WithdrawHeader {
             view.leadingLabel.text = dataSource.headerName(section: indexPath.section)
-            view.trailingLabel.text = "mETH"
+            view.trailingLabel.text = dataSource.currencyName(section: indexPath.section)
         }
     }
-
+    
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
@@ -145,14 +147,15 @@ extension WithdrawVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 72)
+        return indexPath.section == 0 ? CGSize(width: collectionView.bounds.width - 32, height: 300) :
+            CGSize(width: collectionView.bounds.width, height: 72)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return section == 0 ? CGSize(width: collectionView.bounds.width, height: 0) :
-            CGSize(width: collectionView.bounds.width, height: 56)
+        return section == 0 ? CGSize(width: collectionView.bounds.width, height: 20) :
+             CGSize(width: collectionView.bounds.width, height: 40)
     }
 }
 

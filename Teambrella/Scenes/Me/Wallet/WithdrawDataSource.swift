@@ -44,12 +44,29 @@ final class WithdrawDataSource {
     
     func headerName(section: Int) -> String? {
         switch section {
+        case 0:
+            return ""
         case 1:
             return transactions[0].isEmpty ? nil : "Me.Wallet.Withdraw.header.queued".localized
         case 2:
             return transactions[1].isEmpty ? nil : "Me.Wallet.Withdraw.header.inProgress".localized
         case 3:
             return transactions[2].isEmpty ? nil : "Me.Wallet.Withdraw.header.history".localized
+        default:
+            return nil
+        }
+    }
+    
+    func currencyName(section: Int) -> String? {
+        switch section {
+        case 0:
+            return ""
+        case 1:
+            return transactions[0].isEmpty ? nil : "mETH"
+        case 2:
+            return transactions[1].isEmpty ? nil : "mETH"
+        case 3:
+            return transactions[2].isEmpty ? nil : "mETH"
         default:
             return nil
         }
@@ -114,13 +131,16 @@ private extension WithdrawDataSource {
         for _ in 0..<5 {
             guard let fake = WithdrawTx.fake(state: 10) else { return }
             
-            addQueued(transaction: fake)
+            addProcessing(transaction: fake)
         }
         for _ in 0..<5 {
             guard let fake = WithdrawTx.fake(state: 20) else { return }
             
-            addQueued(transaction: fake)
+            addHistory(transaction: fake)
         }
+//        if sections > 4 {
+//            sections = 4
+//        }
         self.onUpdate?()
         isLoading = false
     }
