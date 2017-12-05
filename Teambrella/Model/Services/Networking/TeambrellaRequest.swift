@@ -135,12 +135,14 @@ struct TeambrellaRequest {
         self.body = body
     }
     
-    func start() {
+    func start(isErrorAutoManaged: Bool = true) {
         service.server.ask(for: requestString, parameters: parameters, body: body, success: { json, additional in
             self.parseReply(reply: json, additional: additional)
         }, failure: { error in
             log("\(error)", type: [.error, .serverReply])
-            service.error.present(error: error)
+            if isErrorAutoManaged {
+                service.error.present(error: error)
+            }
             self.failure?(error)
         })
     }
@@ -221,7 +223,7 @@ struct TeambrellaRequest {
         case .claimTransactions:
             success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
         case .home:
-        success(.home(reply))
+            success(.home(reply))
         case .feedDeleteCard:
             success(.feedDeleteCard(HomeScreenModel(json: reply)))
         case .wallet:

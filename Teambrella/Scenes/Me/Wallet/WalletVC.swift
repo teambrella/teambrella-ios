@@ -48,6 +48,14 @@ class WalletVC: UIViewController {
             self?.wallet = self?.dataSource.wallet
             self?.collectionView.reloadData()
         }
+        dataSource.onError = { [weak self] error in
+            HUD.hide()
+            if let error = error as? TeambrellaError, error.kind == .walletNotCreated {
+                self?.dataSource.emptyWallet()
+            } else {
+                service.error.present(error: error)
+            }
+        }
         prepareWalletAddress()
         dataSource.loadData()
     }

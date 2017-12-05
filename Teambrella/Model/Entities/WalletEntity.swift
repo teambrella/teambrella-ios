@@ -50,4 +50,28 @@ struct WalletEntity {
     static func wallet(with json: JSON) -> WalletEntity {
         return WalletEntity(json: json)
     }
+    
+    static func empty() -> WalletEntity  {
+        /*
+         "Txs" : null,
+         "DefaultWithdrawAddress" : "0x336a9288ee464752ae94349da78964ad716b1e20",
+         "CryptoReserved" : 0,
+         "NeedCrypto" : 0.58180862083255402,
+         "CurrencyRate" : 8214.667713167657,
+         "RecommendedCrypto" : 1.170885834665087,
+         "CryptoBalance" : 0.0072685929999789633,
+         "Currency" : "ARS",
+         "FundAddress" : null,
+         "CoveragePart" : {
+         "NextCoverage" : 0,
+         "ClaimLimit" : 18000,
+         "DeductibleAmount" : 0,
+         "Coverage" : 0,
+         "DaysToNextCoverage" : 0
+         }
+ */
+        let json = JSON(["Cosigners": []])
+        return WalletEntity(json: json)
+    }
+
 }

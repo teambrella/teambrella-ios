@@ -54,6 +54,14 @@ class WalletDataSource {
         }
     }
     
+    func emptyWallet() {
+       let wallet = WalletEntity.empty()
+        self.wallet = wallet
+        createCellModels(with: wallet)
+       fundAddress = wallet.fundAddress
+        onUpdate?()
+    }
+    
     func createCellModels(with wallet: WalletEntity) {
         items.append(WalletHeaderCellModel(amount: wallet.cryptoBalance,
                                            reserved: wallet.cryptoReserved,
@@ -62,7 +70,10 @@ class WalletDataSource {
         items.append(WalletFundingCellModel(maxCoverageFunding: wallet.coveragePart.nextCoverage,
                                             uninterruptedCoverageFunding: wallet.coveragePart.coverage))
         let avatars = wallet.cosigners.map { $0.avatar }
-        let avatarsPreview = Array(avatars[..<3])
+        var avatarsPreview: [String] = []
+        if avatars.count >= 3 {
+       avatarsPreview = Array(avatars[..<3])
+        }
         items.append(WalletButtonsCellModel(avatars: avatars, avatarsPreview: avatarsPreview))
     }
     

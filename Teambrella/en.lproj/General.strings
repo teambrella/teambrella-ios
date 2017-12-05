@@ -54,7 +54,7 @@
 "General.CoverageType.carCollisionDeductible"      = "Collision deductible";
 "General.CoverageType.petDog"                      = "Pet health";
 "General.CoverageType.petCat"                      = "Pet health";
-"General.CoverageType.bicycle"                     = "Bicycle";
+"General.CoverageType.bicycle"                     = "Theft";
 
 /*
  case carCollision                 = 101

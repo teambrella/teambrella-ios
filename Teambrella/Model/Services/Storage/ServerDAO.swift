@@ -192,7 +192,7 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(isErrorAutoManaged: false)
         }
         return promise
     }
