@@ -67,7 +67,7 @@ class UserIndexVC: UIViewController {
         ViewDecorator.shadow(for: topContainer, opacity: 0.1, radius: 5)
         HUD.show(.progress, onView: view)
         setupCollectionView()
-        shrinkTopContainer(false)
+        shrinkTopContainer(true)
         dataSource.loadData()
         dataSource.onUpdate = { [weak self] in
             guard let dataSource = self?.dataSource, let me = dataSource.meModel else { return }
@@ -216,6 +216,7 @@ extension UserIndexVC: UICollectionViewDelegateFlowLayout {
 // MARK: UIScrollViewDelegate
 extension UserIndexVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        /*
         let currentOffset = scrollView.contentOffset.y
         let velocity = currentOffset - previousScrollOffset
         previousScrollOffset = currentOffset
@@ -225,6 +226,7 @@ extension UserIndexVC: UIScrollViewDelegate {
         if velocity < -Constant.scrollingVelocityThreshold {
             shrinkTopContainer(false)
         }
+ */
     }
 }
 
