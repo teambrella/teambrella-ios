@@ -62,7 +62,7 @@ class InputAccessoryView: UIView {
     
     var maxHeight: CGFloat = 70
     
-     var onTextChange: (() -> Void)?
+    var onTextChange: (() -> Void)?
     
     override var intrinsicContentSize: CGSize {
         let textSize = self.textView.sizeThatFits(CGSize(width: self.textView.bounds.width,
