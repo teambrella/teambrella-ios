@@ -328,7 +328,7 @@
                                         <rect key="frame" x="188" y="0.0" width="187" height="102"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ce-bs-ZRe" userLabel="Right Brick">
-                                                <rect key="frame" x="23.5" y="26" width="140" height="51"/>
+                                                <rect key="frame" x="22.5" y="26" width="142" height="51"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconWallet" translatesAutoresizingMaskIntoConstraints="NO" id="sHk-fD-QOV">
                                                         <rect key="frame" x="0.0" y="9" width="32" height="32"/>
@@ -338,7 +338,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCN-fH-yvY" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="48" y="0.0" width="92" height="12"/>
+                                                        <rect key="frame" x="48" y="0.0" width="94" height="12"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                         <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -350,7 +350,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mBTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjW-Hc-lVp" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="112" y="20" width="28" height="11"/>
+                                                        <rect key="frame" x="114" y="20" width="28" height="11"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                                         <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -373,7 +373,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mse-A7-u1j">
-                                                <rect key="frame" x="23.5" y="26" width="140" height="51"/>
+                                                <rect key="frame" x="22.5" y="26" width="142" height="51"/>
                                                 <connections>
                                                     <action selector="tapRightBrick:" destination="dtc-T4-z44" eventType="touchUpInside" id="BXx-6p-pkK"/>
                                                 </connections>

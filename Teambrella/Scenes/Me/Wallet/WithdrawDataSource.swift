@@ -20,11 +20,27 @@ final class WithdrawDataSource {
     let teamID: Int
     private(set) var isLoading = false
     private(set) var sections: Int = 1
-
+    
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
-
-    private var lastChunk: WithdrawChunk?
+    
+    private var lastChunk: WithdrawChunk? {
+        didSet {
+            if let chunk = lastChunk {
+                for tx in chunk.txs {
+                    switch tx.serverTxState {
+                    case .queued:
+                        addQueued(transaction: tx)
+                    case .inProcess:
+                        addProcessing(transaction: tx)
+                    case .history:
+                        addHistory(transaction: tx)
+                    }
+                }
+            }
+        }
+    }
+    
     private let modelBuilder = WithdrawModelBuilder()
     private var transactions: [[WithdrawTx]] = []
     
@@ -57,71 +73,68 @@ final class WithdrawDataSource {
     
     func loadData() {
         isLoading = true
-        fakeLoad()
-        /*
-         service.dao.requestWithdrawTransactions(teamID: teamID).observe { [weak self] result in
-         switch result {
-         case let .value(chunk):
-         self?.lastChunk = chunk
-         self?.onUpdate?()
-         case let .error(error):
-         self?.onError?(error)
-         default:
-         break
-         }
-         self?.isLoading = false
-         }
-         */
+        service.dao.requestWithdrawTransactions(teamID: teamID).observe { [weak self] result in
+            switch result {
+            case let .value(chunk):
+                self?.lastChunk = chunk
+                self?.onUpdate?()
+            case let .error(error):
+                self?.onError?(error)
+            default:
+                break
+            }
+            self?.isLoading = false
+        }
     }
     
-    // MARK: Private
-    
-    private func addQueued(transaction: WithdrawTx) {
-        if transactions[0].isEmpty { sections += 1 }
-        transactions[0].append(transaction)
-    }
-    
-    private func addProcessing(transaction: WithdrawTx) {
-        if transactions[1].isEmpty { sections += 1 }
-        transactions[1].append(transaction)
-    }
-    
-    private func addHistory(transaction: WithdrawTx) {
-        if transactions[2].isEmpty { sections += 1 }
-        transactions[2].append(transaction)
-    }
-    
-    // MARK: Subscripts
-    
-    subscript(indexPath: IndexPath) -> WithdrawCellModel? {
-        guard indexPath.section < sections else { return nil }
-        guard indexPath.row < rows(in: indexPath.section) else { return nil }
+        // MARK: Private
         
-        if indexPath.section == 0 { return modelBuilder.detailsModel() }
-        let transaction = transactions[indexPath.section - 1][indexPath.row]
-        return modelBuilder.modelFrom(transaction: transaction)
+        private func addQueued(transaction: WithdrawTx) {
+            if transactions[0].isEmpty { sections += 1 }
+            transactions[0].append(transaction)
+        }
+        
+        private func addProcessing(transaction: WithdrawTx) {
+            if transactions[1].isEmpty { sections += 1 }
+            transactions[1].append(transaction)
+        }
+        
+        private func addHistory(transaction: WithdrawTx) {
+            if transactions[2].isEmpty { sections += 1 }
+            transactions[2].append(transaction)
+        }
+        
+        // MARK: Subscripts
+        
+        subscript(indexPath: IndexPath) -> WithdrawCellModel? {
+            guard indexPath.section < sections else { return nil }
+            guard indexPath.row < rows(in: indexPath.section) else { return nil }
+            
+            if indexPath.section == 0 { return modelBuilder.detailsModel() }
+            let transaction = transactions[indexPath.section - 1][indexPath.row]
+            return modelBuilder.modelFrom(transaction: transaction)
+        }
+        
     }
     
-}
-
-private extension WithdrawDataSource {
-    private func fakeLoad() {
-        for _ in 0..<5 {
-            guard let fake = WithdrawTx.fake(state: 0) else { return }
-            
-            addQueued(transaction: fake)
+    private extension WithdrawDataSource {
+        private func fakeLoad() {
+            for _ in 0..<5 {
+                guard let fake = WithdrawTx.fake(state: 0) else { return }
+                
+                addQueued(transaction: fake)
+            }
+            for _ in 0..<5 {
+                guard let fake = WithdrawTx.fake(state: 10) else { return }
+                
+                addQueued(transaction: fake)
+            }
+            for _ in 0..<5 {
+                guard let fake = WithdrawTx.fake(state: 20) else { return }
+                
+                addQueued(transaction: fake)
+            }
+            self.onUpdate?()
+            isLoading = false
         }
-        for _ in 0..<5 {
-            guard let fake = WithdrawTx.fake(state: 10) else { return }
-            
-            addQueued(transaction: fake)
-        }
-        for _ in 0..<5 {
-            guard let fake = WithdrawTx.fake(state: 20) else { return }
-            
-            addQueued(transaction: fake)
-        }
-        self.onUpdate?()
-        isLoading = false
-    }
 }

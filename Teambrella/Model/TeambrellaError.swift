@@ -53,6 +53,12 @@ struct TeambrellaError: Error {
         case teammateNoAccess           = 702001
         case teammateNotExists          = 702011
         
+        case withdrawalAddressEmpty     = 710101
+        case withdrawalAddressFormat    = 710102
+        case withdrawalAddressChecksum  = 710103
+        
+        case walletNotCreated           = 710013
+        
         case malformedETCSignature      = -10001
     }
     
