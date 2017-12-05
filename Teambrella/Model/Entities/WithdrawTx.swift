@@ -26,7 +26,7 @@ struct WithdrawTx {
     let isNew: Bool
     let amount: Double
     
-    let serverTxState: Int
+    let serverTxState: ServerTxState
     
     init?(json: JSON) {
         guard let id = json["Id"].string,
@@ -37,7 +37,7 @@ struct WithdrawTx {
         self.id = id
         self.lastUpdated = lastUpdated
         self.withdrawalID = withdrawalID
-        self.serverTxState = serverTxState
+        self.serverTxState = ServerTxState.from(integer: serverTxState)
         
         self.withdrawalDate = Formatter.teambrella.date(from: json["WithdrawalDate"].stringValue)
         self.isNew = json["IsNew"].boolValue
@@ -57,5 +57,22 @@ struct WithdrawTx {
             "LastUpdated": 636477303381343450
             ])
         return WithdrawTx(json: json)
+    }
+}
+
+enum ServerTxState {
+    case queued
+    case inProcess(Int)
+    case history
+    
+    static func from(integer: Int) -> ServerTxState {
+        switch integer {
+        case -100:
+            return .queued
+        case 0...9:
+            return .inProcess(integer)
+        default:
+            return .history
+        }
     }
 }
