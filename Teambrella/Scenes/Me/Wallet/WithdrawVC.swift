@@ -71,11 +71,22 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     }
     
     func codeCapture(controller: CodeCaptureVC, didCapture: String, type: QRCodeType) {
-        
+        controller.confirmButton.isEnabled = true
+        controller.confirmButton.alpha = 1
     }
     
-    func codeCaptureWillClose(controller: CodeCaptureVC) {
+    func codeCaptureWillClose(controller: CodeCaptureVC, cancelled: Bool) {
+        guard !cancelled else { return }
         
+        dataSource.ethereumAddress = EthereumAddress(string: controller.lastReadString)
+        collectionView.reloadData()
+    }
+    
+    @objc
+    private func tapQR() {
+        let vc = service.router.showCodeCapture(in: self, delegate: self)
+        vc?.confirmButton.isEnabled = false
+        vc?.confirmButton.alpha = 0.5
     }
     
 }
@@ -121,6 +132,10 @@ extension WithdrawVC: UICollectionViewDelegate {
         
         WithdrawCellBuilder.populate(cell: cell, with: model)
         
+        if let cell = cell as? WithdrawDetailsCell {
+            cell.qrButton.removeTarget(self, action: nil, for: .allEvents)
+            cell.qrButton.addTarget(self, action: #selector(tapQR), for: .touchUpInside)
+        }
         let maxRow = dataSource.rows(in: indexPath.section)
         if let cell = cell as? WithdrawCell {
             cell.separator.isHidden = indexPath.row == maxRow - 1

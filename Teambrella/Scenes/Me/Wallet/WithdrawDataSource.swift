@@ -21,6 +21,18 @@ final class WithdrawDataSource {
     private(set) var isLoading = false
     private(set) var sections: Int = 1
     
+    var ethereumAddress: EthereumAddress? {
+        didSet {
+            guard let address = ethereumAddress?.string else { return }
+            
+            detailsModel.toValue = address
+        }
+    }
+    
+    lazy var detailsModel = {
+        return self.modelBuilder.detailsModel()
+    }()
+    
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     
@@ -128,7 +140,7 @@ final class WithdrawDataSource {
         guard indexPath.section < sections else { return nil }
         guard indexPath.row < rows(in: indexPath.section) else { return nil }
         
-        if indexPath.section == 0 { return modelBuilder.detailsModel() }
+        if indexPath.section == 0 { return detailsModel }
         let transaction = transactions[indexPath.section - 1][indexPath.row]
         return modelBuilder.modelFrom(transaction: transaction)
     }

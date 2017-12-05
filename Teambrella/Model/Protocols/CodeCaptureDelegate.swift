@@ -18,5 +18,5 @@ import Foundation
 
 protocol CodeCaptureDelegate: class {
     func codeCapture(controller: CodeCaptureVC, didCapture: String, type: QRCodeType)
-    func codeCaptureWillClose(controller: CodeCaptureVC)
+    func codeCaptureWillClose(controller: CodeCaptureVC, cancelled: Bool)
 }
