@@ -16,3 +16,6 @@
 
 "Main.Notification.noInternet" = "No Internet connection";
 
+"Main.my"                      = "my";
+"Main.his"                     = "his";
+"Main.her"                     = "her";

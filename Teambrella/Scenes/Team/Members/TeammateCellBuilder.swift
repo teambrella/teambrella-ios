@@ -142,7 +142,13 @@ struct TeammateCellBuilder {
                                        with teammate: ExtendedTeammateEntity,
                                        controller: TeammateProfileVC) {
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
-        cell.titleLabel.text = type.localizedCoverageObject
+        let owner: String
+        if let me = service.session?.currentUserID, me == teammate.basic.id {
+            owner = "Main.my".localized
+        } else {
+            owner = teammate.basic.gender == .male ? "Main.his".localized : "Main.her".localized
+        }
+        cell.titleLabel.text = owner.uppercased() + " " + type.localizedCoverageObject
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized

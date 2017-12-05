@@ -23,13 +23,12 @@
 
 "General.CoverageObject.other"                       = "OBJETO";
 "General.CoverageObject.bicycle"                     = "BICICLETA";
-"General.CoverageObject.carCollisionDeductible"      = "AUTO";
+"General.CoverageObject.carCollisionDeductible"      = "COCHE";
 "General.CoverageObject.petDog"                      = "PERRO";
 "General.CoverageObject.petCat"                      = "GATO";
 
-"General.CoverageType.other"                       = "Object coverage";
-"General.CoverageType.bicycle"                     = "Bicycle coverage";
+"General.CoverageType.other"                       = "Objeto";
 "General.CoverageType.carCollisionDeductible"      = "Deducible por colisión";
 "General.CoverageType.petDog"                      = "Salud de mascota";
 "General.CoverageType.petCat"                      = "Salud de mascota";
-"General.CoverageType.bicycle"                     = "Cobertura de bicicleta";
+"General.CoverageType.bicycle"                     = "Bicicleta";

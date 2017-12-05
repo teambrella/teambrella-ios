@@ -35,6 +35,7 @@ struct TeammateBasicInfo {
     var isMyProxy: Bool
     let role: TeammateType
     let state: TeammateState
+    let gender: Gender
     
     let maritalStatus: MaritalStatus
     
@@ -63,7 +64,7 @@ struct TeammateBasicInfo {
         totallyPaidAmount = json["TotallyPaidAmount"].doubleValue
         coversMeAmount = json["TheyCoverMeAmount"].doubleValue
         iCoverThemAmount = json["ICoverThemAmount"].doubleValue
-        
+        gender = Gender.fromServer(integer: json["Gender"].intValue)
         dateJoined = Formatter.teambrella.date(from: json["DateJoined"].stringValue)
     }
 }

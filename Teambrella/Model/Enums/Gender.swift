@@ -28,4 +28,9 @@ enum Gender {
     static func fromFacebook(string: String) -> Gender {
         return string == "female" ? .female : .male
     }
+    
+    /// fall back to male if received unsupported value
+    static func fromServer(integer: Int) -> Gender {
+        return integer == 2 ? .female : .male
+    }
 }
