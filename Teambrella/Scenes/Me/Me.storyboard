@@ -796,7 +796,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kwh-au-BV9">
-                                <rect key="frame" x="8" y="667" width="359" height="250"/>
+                                <rect key="frame" x="8" y="720" width="359" height="197"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBo-Bh-9KJ" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="42" height="21"/>
@@ -853,9 +853,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="2Ro-A5-ZR0"/>
+                                    <constraint firstAttribute="height" priority="250" constant="250" id="2Ro-A5-ZR0"/>
                                     <constraint firstAttribute="trailing" secondItem="vtH-SF-OpN" secondAttribute="trailing" constant="20" id="3zm-9a-7g9"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wVf-ux-cRu" secondAttribute="bottom" constant="30" id="5BY-OJ-Zgv"/>
+                                    <constraint firstAttribute="bottom" secondItem="wVf-ux-cRu" secondAttribute="bottom" constant="28" id="5BY-OJ-Zgv"/>
                                     <constraint firstItem="wVf-ux-cRu" firstAttribute="leading" secondItem="uBo-Bh-9KJ" secondAttribute="leading" id="AEz-FS-0W7"/>
                                     <constraint firstItem="6qX-Iz-fvR" firstAttribute="top" secondItem="uBo-Bh-9KJ" secondAttribute="bottom" constant="20" id="FB1-NZ-qlP"/>
                                     <constraint firstItem="0gu-Ub-ibB" firstAttribute="centerY" secondItem="uBo-Bh-9KJ" secondAttribute="centerY" id="NNK-r5-6bV"/>

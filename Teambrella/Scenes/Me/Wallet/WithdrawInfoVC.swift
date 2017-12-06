@@ -47,13 +47,8 @@ class WithdrawInfoVC: UIViewController, Routable {
                                               currency: "mETH")
             //"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized(
             //String.truncatedNumber((cryptoBalance - cryptoReserved) * 1000))
-        if cryptoReserved == 0 {
-            haveLabel.text = ""
-            bottomOffset = -78
-        } else {
-            haveLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized(
+        haveLabel.text = cryptoReserved == 0 ? "" : "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized(
                 String.truncatedNumber(cryptoReserved * 1000))
-        }
     }
     
     func decorateString(string: String, amount: String, currency: String) -> NSAttributedString {
