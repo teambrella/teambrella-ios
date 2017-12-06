@@ -39,8 +39,14 @@ class WithdrawInfoVC: UIViewController, Routable {
         infoView.layer.cornerRadius = 4
         headerLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.title".localized
         balanceLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.balance".localized
-        mayRequestLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized(
-            String.truncatedNumber((cryptoBalance - cryptoReserved) * 1000))
+        
+        
+        mayRequestLabel.attributedText =
+            decorateString(string: "Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized,
+                                              amount: String.truncatedNumber((cryptoBalance - cryptoReserved) * 1000),
+                                              currency: "mETH")
+            //"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized(
+            //String.truncatedNumber((cryptoBalance - cryptoReserved) * 1000))
         if cryptoReserved == 0 {
             haveLabel.text = ""
             bottomOffset = -78
@@ -48,6 +54,26 @@ class WithdrawInfoVC: UIViewController, Routable {
             haveLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized(
                 String.truncatedNumber(cryptoReserved * 1000))
         }
+    }
+    
+    func decorateString(string: String, amount: String, currency: String) -> NSAttributedString {
+        var amountAttributes = [NSAttributedStringKey : Any]()
+        amountAttributes[NSAttributedStringKey.foregroundColor] = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        amountAttributes[NSAttributedStringKey.font] = UIFont.teambrella(size: 12)
+        
+        var currencyAttributes = [NSAttributedStringKey : Any]()
+        currencyAttributes[NSAttributedStringKey.foregroundColor] = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        currencyAttributes[NSAttributedStringKey.font] = UIFont.teambrella(size: 8)
+        
+        let amountDecorated = NSMutableAttributedString(string: amount,
+                                                        attributes: amountAttributes)
+        let currencyDecorated = NSMutableAttributedString(string: currency,
+                                                          attributes: currencyAttributes)
+        var result = NSMutableAttributedString(string: string)
+        result.append(amountDecorated)
+        result.append(currencyDecorated)
+        
+        return result
     }
     
     override func viewDidAppear(_ animated: Bool) {
