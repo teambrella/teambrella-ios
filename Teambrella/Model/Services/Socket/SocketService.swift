@@ -34,10 +34,15 @@ class SocketService {
         let url = url ?? URL(string: "wss://" + "surilla.com" + "/wshandler.ashx")!
         log("trying to connect to socket: \(url.absoluteString)", type: .socket)
         socket = WebSocket(url: url)
+        
         service.dao.freshKey { key in
+            let application = Application()
             self.socket.headers["t"] = String(key.timestamp)
             self.socket.headers["key"] = key.publicKey
             self.socket.headers["sig"] = key.signature
+            self.socket.headers["clientVersion"] = application.clientVersion
+            self.socket.headers["deviceToken"] = service.push.tokenString ?? ""
+            self.socket.headers["deviceId"] = application.uniqueIdentifier
             self.socket.connect()
         }
         socket.delegate = self
