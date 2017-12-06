@@ -642,6 +642,8 @@
 		6D6FCBF51FD702D00032041A /* Vibrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCBF31FD702D00032041A /* Vibrator.swift */; };
 		6D6FCBF71FD703B60032041A /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCBF61FD703B60032041A /* UIDevice.swift */; };
 		6D6FCBF81FD703B60032041A /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCBF61FD703B60032041A /* UIDevice.swift */; };
+		6D6FCBFD1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCBFC1FD878FB0032041A /* NSMutableAttributedString.swift */; };
+		6D6FCBFE1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCBFC1FD878FB0032041A /* NSMutableAttributedString.swift */; };
 		6D7987791F6827A80060A193 /* ChatSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7987781F6827A80060A193 /* ChatSeparatorCell.swift */; };
 		6D7C1AD11F598CFF00A88987 /* IsTypingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7C1AD01F598CFF00A88987 /* IsTypingView.swift */; };
 		6D829AA31EB0BE1A0051F43A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA21EB0BE1A0051F43A /* UIColor.swift */; };
@@ -1230,6 +1232,7 @@
 		6D6DA26E1EE21F9800307C73 /* StyledLabels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyledLabels.swift; path = View/StyledLabels.swift; sourceTree = "<group>"; };
 		6D6FCBF31FD702D00032041A /* Vibrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Vibrator.swift; path = Model/Services/Vibrator.swift; sourceTree = "<group>"; };
 		6D6FCBF61FD703B60032041A /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIDevice.swift; path = Helpers/Extensions/UIDevice.swift; sourceTree = "<group>"; };
+		6D6FCBFC1FD878FB0032041A /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSMutableAttributedString.swift; path = Helpers/Extensions/NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		6D74B2911F7904A5007F736E /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
 		6D74B2921F7904B0007F736E /* SwiftMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMessages.framework; path = Carthage/Build/iOS/SwiftMessages.framework; sourceTree = "<group>"; };
 		6D7987781F6827A80060A193 /* ChatSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatSeparatorCell.swift; path = Scenes/Team/Chat/ChatSeparatorCell.swift; sourceTree = "<group>"; };
@@ -1823,28 +1826,29 @@
 		6D1C23861E8EA472009B05A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				6D481F7A1F0BAA960023C781 /* UIImageView.swift */,
-				CBDFE16BB5E7B5B758559237 /* String.swift */,
-				6D900E281FC46B0D00FF6FF8 /* String-localized.swift */,
-				6D1C23871E8EA99F009B05A3 /* Data.swift */,
-				6D829AA21EB0BE1A0051F43A /* UIColor.swift */,
-				6D829AA41EB0D6860051F43A /* Random.swift */,
-				6D91BC031EB3900700FDC332 /* UUID.swift */,
-				6D1C03A01EB8D4A2004AED30 /* UIView.swift */,
-				6D1C03A21EB8D4D6004AED30 /* NSObject.swift */,
-				6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */,
-				6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */,
-				6DCB9F561ECA0A45000B48C4 /* Decimal.swift */,
-				6D9CC6161ED48416007F936E /* UIStoryboardSegue.swift */,
-				6D9CC6181ED484CF007F936E /* UIViewController.swift */,
-				6DA714DE1EDF19AE00F39EBE /* UIFont.swift */,
-				6DB8121C1EE6F78700B202CE /* Formatter.swift */,
 				6D0D2AD91EFBB1B80095284C /* Array.swift */,
 				6D0D2ADD1EFBC41D0095284C /* ButtonBarPagerTabStripViewController.swift */,
-				6DA1D1021F056DF900F9DE87 /* UIImage.swift */,
+				6D1C23871E8EA99F009B05A3 /* Data.swift */,
+				6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */,
+				6DCB9F561ECA0A45000B48C4 /* Decimal.swift */,
+				6DB8121C1EE6F78700B202CE /* Formatter.swift */,
+				6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */,
 				6D0C39DC1F991B6600941FF3 /* Notification.swift */,
+				6D6FCBFC1FD878FB0032041A /* NSMutableAttributedString.swift */,
+				6D1C03A21EB8D4D6004AED30 /* NSObject.swift */,
+				6D829AA41EB0D6860051F43A /* Random.swift */,
+				CBDFE16BB5E7B5B758559237 /* String.swift */,
+				6D900E281FC46B0D00FF6FF8 /* String-localized.swift */,
 				6D2A7C651FCD42F60094ABB7 /* UIApplication.swift */,
+				6D829AA21EB0BE1A0051F43A /* UIColor.swift */,
 				6D6FCBF61FD703B60032041A /* UIDevice.swift */,
+				6DA714DE1EDF19AE00F39EBE /* UIFont.swift */,
+				6DA1D1021F056DF900F9DE87 /* UIImage.swift */,
+				6D481F7A1F0BAA960023C781 /* UIImageView.swift */,
+				6D9CC6161ED48416007F936E /* UIStoryboardSegue.swift */,
+				6D91BC031EB3900700FDC332 /* UUID.swift */,
+				6D1C03A01EB8D4A2004AED30 /* UIView.swift */,
+				6D9CC6181ED484CF007F936E /* UIViewController.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -3438,6 +3442,7 @@
 				6D4E5C4D1F7AB6870020DEE2 /* WalletButtonsCell.swift in Sources */,
 				6D4E5C4E1F7AB6870020DEE2 /* ClaimVC.swift in Sources */,
 				6D4E5C4F1F7AB6870020DEE2 /* Cosigner.swift in Sources */,
+				6D6FCBFE1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */,
 				6D2A7C671FCD42F60094ABB7 /* UIApplication.swift in Sources */,
 				6D4E5C501F7AB6870020DEE2 /* ChatNewMessagesSeparatorCell.swift in Sources */,
 				6D6FCBF81FD703B60032041A /* UIDevice.swift in Sources */,
@@ -3833,6 +3838,7 @@
 				6D466AA61ED07CF1001BC579 /* Cosigner.swift in Sources */,
 				6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */,
 				6D66B4A41F4F109E00672583 /* ChatFragmentHeightCalculator.swift in Sources */,
+				6D6FCBFD1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */,
 				6D2A7C661FCD42F60094ABB7 /* UIApplication.swift in Sources */,
 				6D1A9B251F55CF92004192AC /* PrivateChatUser.swift in Sources */,
 				6D6FCBF71FD703B60032041A /* UIDevice.swift in Sources */,

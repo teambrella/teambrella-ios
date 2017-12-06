@@ -40,35 +40,20 @@ class WithdrawInfoVC: UIViewController, Routable {
         headerLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.title".localized
         balanceLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.balance".localized
         
+        let currency = "mETH"
+        let mayRequestAmount = String.truncatedNumber((cryptoBalance - cryptoReserved) * 1000)
+        let mayRequestString = "Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized(mayRequestAmount)
+        let mayRequestAttributed = NSMutableAttributedString(string: mayRequestString)
+            .decorate(substring: mayRequestAmount, type: .boldAmount)
+            .decorate(substring: currency, type: .currency)
+        mayRequestLabel.attributedText = mayRequestAttributed
         
-        mayRequestLabel.attributedText =
-            decorateString(string: "Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized,
-                                              amount: String.truncatedNumber((cryptoBalance - cryptoReserved) * 1000),
-                                              currency: "mETH")
-            //"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized(
-            //String.truncatedNumber((cryptoBalance - cryptoReserved) * 1000))
-        haveLabel.text = cryptoReserved == 0 ? "" : "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized(
-                String.truncatedNumber(cryptoReserved * 1000))
-    }
-    
-    func decorateString(string: String, amount: String, currency: String) -> NSAttributedString {
-        var amountAttributes = [NSAttributedStringKey : Any]()
-        amountAttributes[NSAttributedStringKey.foregroundColor] = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        amountAttributes[NSAttributedStringKey.font] = UIFont.teambrella(size: 12)
-        
-        var currencyAttributes = [NSAttributedStringKey : Any]()
-        currencyAttributes[NSAttributedStringKey.foregroundColor] = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-        currencyAttributes[NSAttributedStringKey.font] = UIFont.teambrella(size: 8)
-        
-        let amountDecorated = NSMutableAttributedString(string: amount,
-                                                        attributes: amountAttributes)
-        let currencyDecorated = NSMutableAttributedString(string: currency,
-                                                          attributes: currencyAttributes)
-        var result = NSMutableAttributedString(string: string)
-        result.append(amountDecorated)
-        result.append(currencyDecorated)
-        
-        return result
+        let haveValue = String.truncatedNumber(cryptoReserved * 1000)
+        let haveString = cryptoReserved == 0 ? "" : "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized(haveValue)
+        let haveAttributed = NSMutableAttributedString(string: haveString)
+            .decorate(substring: haveValue, type: .boldAmount)
+            .decorate(substring: currency, type: .currency)
+        haveLabel.attributedText = haveAttributed
     }
     
     override func viewDidAppear(_ animated: Bool) {
