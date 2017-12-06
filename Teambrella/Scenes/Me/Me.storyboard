@@ -779,6 +779,24 @@
             </objects>
             <point key="canvasLocation" x="7225" y="3454"/>
         </scene>
+        <!--Withdraw InfoVC-->
+        <scene sceneID="25B-9d-ih3">
+            <objects>
+                <viewController storyboardIdentifier="WithdrawInfoVC" id="mlr-jS-ctt" customClass="WithdrawInfoVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XHC-Ar-yi4"/>
+                        <viewControllerLayoutGuide type="bottom" id="bh5-dn-99F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Otc-6o-gJE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ICG-Hk-ah6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8178" y="3454"/>
+        </scene>
         <!--ProfileVC-->
         <scene sceneID="4Hz-DU-Gs1">
             <objects>
@@ -820,6 +838,6 @@
     </scenes>
     <resources>
         <image name="info" width="20" height="20"/>
-        <image name="qrCode" width="237" height="237"/>
+        <image name="qrCode" width="330" height="330"/>
     </resources>
 </document>
