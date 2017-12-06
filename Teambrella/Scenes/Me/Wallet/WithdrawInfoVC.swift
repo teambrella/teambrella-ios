@@ -33,10 +33,10 @@ class WithdrawInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         infoView.layer.cornerRadius = 4
-        headerLabel.text = "Team.Chat.NotificationSettings.title".localized
-        balanceLabel.text = "Balance"
-        mayRequestLabel.text = "You may request up to balance amount for withdrawal 184 mETH."
-        haveLabel.text = "You have 22 mETH reserved, if some part of the reserved funds becomes available, it would be automatically scheduled for the withdrawal."
+        headerLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.title".localized
+        balanceLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.balance".localized
+        mayRequestLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized
+        haveLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized
     }
 
     override func viewDidAppear(_ animated: Bool) {
