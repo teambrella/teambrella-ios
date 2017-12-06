@@ -32,6 +32,7 @@ struct ChatEntity {
     var points: Int { return json["Points"].intValue }
     var text: String { return json["Text"].stringValue }
     var images: [String] { return json["Images"].arrayObject as? [String] ?? [] }
+    var smallImages: [String] { return json["SmallImages"].arrayObject as? [String] ?? [] }
     var imageRatios: [CGFloat] { return json["ImageRatios"].arrayObject as? [CGFloat] ?? [] }
     
     var isMyProxy: Bool { return json["TeammatePart"]["IsMyProxy"].boolValue }

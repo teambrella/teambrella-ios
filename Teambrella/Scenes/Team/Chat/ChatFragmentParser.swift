@@ -23,11 +23,11 @@ import UIKit
 
 enum ChatFragment {
     case text(String)
-    case image(urlString: String, aspect: CGFloat)
+    case image(urlString: String, urlStringSmall: String, aspect: CGFloat)
     
-    static func imageFragment(image: UIImage, urlString: String) -> ChatFragment {
+    static func imageFragment(image: UIImage, urlString: String, urlStringSmall: String) -> ChatFragment {
         let aspect = image.size.width / image.size.height
-        return ChatFragment.image(urlString: urlString, aspect: aspect)
+        return ChatFragment.image(urlString: urlString, urlStringSmall: urlStringSmall, aspect: aspect)
     }
     
     static func textFragment(string: String) -> ChatFragment {
@@ -66,7 +66,9 @@ struct ChatFragmentParser {
                     aspect = defaultAspect
                 }
                 if let idx = Int(img as String), idx < item.images.count {
-                    result.append(ChatFragment.image(urlString: item.images[idx], aspect: aspect))
+                    result.append(ChatFragment.image(urlString: item.images[idx],
+                                                     urlStringSmall: item.smallImages[idx],
+                                                     aspect: aspect))
                     imagesCount += 1
                 }
             }
