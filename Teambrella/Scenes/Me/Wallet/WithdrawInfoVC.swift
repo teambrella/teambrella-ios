@@ -20,26 +20,53 @@ class WithdrawInfoVC: UIViewController {
 
     static let storyboardName = "Me"
     
+    @IBOutlet var backView: UIView!
+    @IBOutlet var infoView: UIView!
+    @IBOutlet var headerLabel: BlockHeaderLabel!
+    @IBOutlet var closeButton: UIButton!
+    @IBOutlet var separator: UIView!
+    @IBOutlet var balanceLabel: UILabel!
+    @IBOutlet var mayRequestLabel: UILabel!
+    @IBOutlet var haveLabel: UILabel!
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        infoView.layer.cornerRadius = 4
+        headerLabel.text = "Team.Chat.NotificationSettings.title".localized
+        balanceLabel.text = "Balance"
+        mayRequestLabel.text = "You may request up to balance amount for withdrawal 184 mETH."
+        haveLabel.text = "You have 22 mETH reserved, if some part of the reserved funds becomes available, it would be automatically scheduled for the withdrawal."
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        appear()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func tapClose(_ sender: Any) {
+        disappear {
+            self.dismiss(animated: false, completion: nil)
+        }
     }
-    */
-
+    
+    func appear() {
+        self.bottomConstraint.constant = -8
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
+            self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            self.view.layoutIfNeeded()
+        }) { finished in
+            
+        }
+    }
+    
+    func disappear(completion: @escaping () -> Void) {
+        self.bottomConstraint.constant = -self.infoView.frame.height
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+            self.backView.backgroundColor = .clear
+            self.view.layoutIfNeeded()
+        }) { finished in
+            completion()
+        }
+    }
 }

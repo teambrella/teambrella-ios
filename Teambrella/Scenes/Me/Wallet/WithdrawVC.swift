@@ -89,6 +89,11 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
         vc?.confirmButton.alpha = 0.5
     }
     
+    @objc
+    private func tapInfo() {
+        service.router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource

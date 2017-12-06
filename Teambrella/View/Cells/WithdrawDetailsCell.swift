@@ -39,16 +39,6 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
         ViewDecorator.shadow(for: self)
         cryptoAddressTextView.delegate = self
     }
-
-    @IBAction func tapInfoButton(_ sender: Any) {
-        
-    }
-    
-    @IBAction func tapQrButton(_ sender: Any) {
-    }
-    
-    @IBAction func tapSubmitButton(_ sender: Any) {
-    }
 }
 
 // MARK: UITextViewDelegate

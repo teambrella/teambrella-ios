@@ -910,8 +910,6 @@
 		9480EA191F16466D008A7A3F /* RiskTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480EA171F16466D008A7A3F /* RiskTableHeader.xib */; };
 		94A168F11FD82E1D00797E0C /* WithdrawInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A168F01FD82E1D00797E0C /* WithdrawInfoVC.swift */; };
 		94A168F21FD82E1D00797E0C /* WithdrawInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A168F01FD82E1D00797E0C /* WithdrawInfoVC.swift */; };
-		94A168F41FD82E3D00797E0C /* WithdrawInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A168F31FD82E3D00797E0C /* WithdrawInfoDataSource.swift */; };
-		94A168F51FD82E3D00797E0C /* WithdrawInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A168F31FD82E3D00797E0C /* WithdrawInfoDataSource.swift */; };
 		94A70EC41FAB221600644CF3 /* CloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A70EC31FAB221600644CF3 /* CloudView.swift */; };
 		94A70EC51FAB221600644CF3 /* CloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A70EC31FAB221600644CF3 /* CloudView.swift */; };
 		94B4C37E1F1E18AC00AED4CE /* CosignerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B4C37B1F1E18AC00AED4CE /* CosignerEntity.swift */; };
@@ -1482,7 +1480,6 @@
 		9480EA161F16466D008A7A3F /* RiskTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RiskTableHeader.swift; path = View/ReusableViews/RiskTableHeader.swift; sourceTree = "<group>"; };
 		9480EA171F16466D008A7A3F /* RiskTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiskTableHeader.xib; path = View/ReusableViews/RiskTableHeader.xib; sourceTree = "<group>"; };
 		94A168F01FD82E1D00797E0C /* WithdrawInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawInfoVC.swift; path = Scenes/Me/Wallet/WithdrawInfoVC.swift; sourceTree = "<group>"; };
-		94A168F31FD82E3D00797E0C /* WithdrawInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawInfoDataSource.swift; path = Scenes/Me/Wallet/WithdrawInfoDataSource.swift; sourceTree = "<group>"; };
 		94A70EC31FAB221600644CF3 /* CloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudView.swift; path = Scenes/Team/Chat/CloudView.swift; sourceTree = "<group>"; };
 		94B4C37B1F1E18AC00AED4CE /* CosignerEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CosignerEntity.swift; path = Model/Entities/CosignerEntity.swift; sourceTree = "<group>"; };
 		94B4C37C1F1E18AC00AED4CE /* CoverageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoverageEntity.swift; path = Model/Entities/CoverageEntity.swift; sourceTree = "<group>"; };
@@ -2076,7 +2073,6 @@
 				6D3556701FD2EE6900AEBF07 /* WithdrawDataSource.swift */,
 				6D3556711FD2EE6A00AEBF07 /* WithdrawCellModelBuilder.swift */,
 				94A168F01FD82E1D00797E0C /* WithdrawInfoVC.swift */,
-				94A168F31FD82E3D00797E0C /* WithdrawInfoDataSource.swift */,
 			);
 			name = Wallet;
 			sourceTree = "<group>";
@@ -3584,7 +3580,6 @@
 				6D4E5CCF1F7AB6870020DEE2 /* CoverageEntity.swift in Sources */,
 				6D4E5CD01F7AB6870020DEE2 /* ChatFooter.swift in Sources */,
 				6D4E5CD11F7AB6870020DEE2 /* TxOutput.swift in Sources */,
-				94A168F51FD82E3D00797E0C /* WithdrawInfoDataSource.swift in Sources */,
 				6D4E5CD21F7AB6870020DEE2 /* ChatEntity.swift in Sources */,
 				6D4E5CD31F7AB6870020DEE2 /* ChooseYourTeamDataSource.swift in Sources */,
 				6D4E5CD41F7AB6870020DEE2 /* ClaimsOpenCell.swift in Sources */,
@@ -3980,7 +3975,6 @@
 				6D481F771F0BAA080023C781 /* Math.swift in Sources */,
 				94B4C37F1F1E18AC00AED4CE /* CoverageEntity.swift in Sources */,
 				6D59F00E1F56F47B00C422EB /* ChatFooter.swift in Sources */,
-				94A168F41FD82E3D00797E0C /* WithdrawInfoDataSource.swift in Sources */,
 				6D466AAC1ED07CF1001BC579 /* TxOutput.swift in Sources */,
 				6DDFDAF71F8CEC7E00342696 /* EtherNode.swift in Sources */,
 				6DB309F91F1D2093007DFF40 /* ChatEntity.swift in Sources */,
