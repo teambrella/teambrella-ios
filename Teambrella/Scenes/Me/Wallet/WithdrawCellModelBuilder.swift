@@ -17,8 +17,8 @@
 import Foundation
 
 class WithdrawModelBuilder {
-    func detailsModel() -> WithdrawDetailsCellModel {
-        return WithdrawDetailsCellModel()
+    func detailsModel(maxAmount: Double) -> WithdrawDetailsCellModel {
+        return WithdrawDetailsCellModel(amountPlaceholder: "Max \(String.truncatedNumber(maxAmount)) mETH")
     }
     
     func modelFrom(transaction: WithdrawTx) -> WithdrawTransactionCellModel {
@@ -45,7 +45,11 @@ class WithdrawDetailsCellModel: WithdrawCellModel {
     var amountText: String = "Me.Wallet.Withdraw.Details.amount.title".localized
     var amountValue: String = ""
     var buttonTitle: String = "Me.Wallet.Withdraw.Details.submitButton.title".localized
+    var amountPlaceholder: String
 
+    init(amountPlaceholder: String) {
+        self.amountPlaceholder = amountPlaceholder
+    }
 }
 
 struct WithdrawTransactionCellModel: WithdrawCellModel {
@@ -60,10 +64,11 @@ struct WithdrawCellBuilder {
         if let cell = cell as? WithdrawDetailsCell, let model = model as? WithdrawDetailsCellModel {
             cell.titleLabel.text = model.title
             cell.toLabel.text = model.toText
-            //cell.placeholder.text = ""
+            cell.placeholder.isHidden = cell.toLabel.isEmpty
             cell.cryptoAddressTextView.text = model.toValue
             cell.qrButton.setImage(#imageLiteral(resourceName: "qrCode"), for: .normal) //
             cell.amountLabel.text = model.amountText
+            cell.cryptoAmountTextField.placeholder = model.amountPlaceholder
             cell.cryptoAmountTextField.text = model.amountValue
             cell.submitButton.setTitle(model.buttonTitle, for: .normal)
         } else if let cell = cell as? WithdrawCell, let model = model as? WithdrawTransactionCellModel {

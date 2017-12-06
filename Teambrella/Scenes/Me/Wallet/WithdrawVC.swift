@@ -25,14 +25,18 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     @IBOutlet var collectionView: UICollectionView!
     
     var teamID: Int = 0
-    var cryptoBalance: Double = 0.0
-    var cryptoReserved: Double = 0.0
+
     let dataSource = WithdrawDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
     fileprivate var previousScrollOffset: CGFloat = 0
     
     var isFirstLoading = true
     
     // MARK: Lifecycle
+    
+    func setupCrypto(balance: Double, reserved: Double) {
+            dataSource.cryptoBalance = balance
+            dataSource.cryptoReserved = reserved
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,9 +97,35 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     @objc
     private func tapInfo() {
-        service.router.showWithdrawInfo(in: self, balance: cryptoBalance, reserved: cryptoReserved)
+        service.router.showWithdrawInfo(in: self,
+                                        balance: dataSource.cryptoBalance,
+                                        reserved: dataSource.cryptoReserved)
     }
     
+    func changedDetails(cell: WithdrawDetailsCell) {
+        print("Called \(#function)")
+        dataSource.detailsModel.toValue = cell.cryptoAddressTextView.text
+        dataSource.detailsModel.amountValue = cell.cryptoAmountTextField.text ?? ""
+        
+        if validateAddress(string:dataSource.detailsModel.toValue)
+            && validateAmount(string: dataSource.detailsModel.amountValue) {
+            cell.submitButton.alpha = 1
+            cell.submitButton.isEnabled = true
+        } else {
+            cell.submitButton.alpha = 0.5
+            cell.submitButton.isEnabled = false
+        }
+    }
+    
+    func validateAddress(string: String) -> Bool {
+        return EthereumAddress(string: string) != nil
+    }
+    
+    func validateAmount(string: String) -> Bool {
+        guard let amount = Double(string) else { return false }
+        
+        return amount <= dataSource.maxMETHAvailable
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -144,6 +174,9 @@ extension WithdrawVC: UICollectionViewDelegate {
             cell.qrButton.addTarget(self, action: #selector(tapQR), for: .touchUpInside)
             cell.infoButton.removeTarget(self, action: nil, for: .allEvents)
             cell.infoButton.addTarget(self, action: #selector(tapInfo), for: .touchUpInside)
+            cell.onValuesChanged = { [weak self] cell in
+                self?.changedDetails(cell: cell)
+            }
         }
         let maxRow = dataSource.rows(in: indexPath.section)
         if let cell = cell as? WithdrawCell {

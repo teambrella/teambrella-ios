@@ -21,6 +21,11 @@ final class WithdrawDataSource {
     private(set) var isLoading = false
     private(set) var sections: Int = 1
     
+    var cryptoBalance: Double = 0.0
+    var cryptoReserved: Double = 0.0
+    
+    var maxMETHAvailable: Double { return (cryptoBalance - cryptoReserved) * 1000 }
+    
     var ethereumAddress: EthereumAddress? {
         didSet {
             guard let address = ethereumAddress?.string else { return }
@@ -30,7 +35,7 @@ final class WithdrawDataSource {
     }
     
     lazy var detailsModel = {
-        return self.modelBuilder.detailsModel()
+        return self.modelBuilder.detailsModel(maxAmount: maxMETHAvailable)
     }()
     
     var onUpdate: (() -> Void)?

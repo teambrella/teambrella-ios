@@ -29,6 +29,8 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var submitButton: BorderedButton!
     @IBOutlet var placeholder: UILabel!
     
+    var onValuesChanged: ((WithdrawDetailsCell) -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         cryptoAddressTextView.layer.borderWidth = 0.5
@@ -38,6 +40,14 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
         cryptoAmountTextField.placeholder = "Me.Wallet.Withdraw.Details.amount.placeholder".localized
         ViewDecorator.shadow(for: self)
         cryptoAddressTextView.delegate = self
+        cryptoAmountTextField.addTarget(self, action: #selector(amountChanged), for: .editingChanged)
+        submitButton.isEnabled = false
+        submitButton.alpha = 0.5
+    }
+    
+    @objc
+    func amountChanged() {
+        onValuesChanged?(self)
     }
 }
 
@@ -53,12 +63,14 @@ extension WithdrawDetailsCell: UITextViewDelegate {
         } else {
             placeholder.isHidden = true
         }
+        onValuesChanged?(self)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == nil || textView.text == "" {
             placeholder.isHidden = false
         }
+        onValuesChanged?(self)
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

@@ -177,8 +177,7 @@ final class MainRouter {
     func presentWithdraw(balance: Double, reserved: Double, animated: Bool = true) {
         guard let vc = WithdrawVC.instantiate() as? WithdrawVC else { fatalError("Error instantiating") }
         
-        vc.cryptoBalance = balance
-        vc.cryptoReserved = reserved
+        vc.setupCrypto(balance: balance, reserved: reserved)
         push(vc: vc, animated: animated)
     }
     
