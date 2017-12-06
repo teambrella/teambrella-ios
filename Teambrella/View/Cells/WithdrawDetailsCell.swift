@@ -56,9 +56,9 @@ extension WithdrawDetailsCell: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-//        if textView.text == nil || textView.text == "" {
-//            placeholder.isHidden = false
-//        }
+        if textView.text == nil || textView.text == "" {
+            placeholder.isHidden = false
+        }
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
