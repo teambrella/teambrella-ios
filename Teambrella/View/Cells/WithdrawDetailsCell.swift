@@ -37,6 +37,7 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
         placeholder.text = "Me.Wallet.Withdraw.Details.to.placeholder".localized
         cryptoAmountTextField.placeholder = "Me.Wallet.Withdraw.Details.amount.placeholder".localized
         ViewDecorator.shadow(for: self)
+        cryptoAddressTextView.delegate = self
     }
 
     @IBAction func tapInfoButton(_ sender: Any) {
@@ -53,17 +54,21 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
 // MARK: UITextViewDelegate
 extension WithdrawDetailsCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        placeholder.isHidden = true
+
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        invalidateIntrinsicContentSize()
+        if textView.text == nil || textView.text == "" {
+            placeholder.isHidden = false
+        } else {
+            placeholder.isHidden = true
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text == nil || textView.text == "" {
-            placeholder.isHidden = false
-        }
+//        if textView.text == nil || textView.text == "" {
+//            placeholder.isHidden = false
+//        }
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
