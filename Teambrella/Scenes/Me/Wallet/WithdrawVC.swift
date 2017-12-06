@@ -91,7 +91,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     @objc
     private func tapInfo() {
-        service.router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
+       // service.router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
     }
     
 }
