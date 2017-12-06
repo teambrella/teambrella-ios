@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -37,7 +36,7 @@
                                 <rect key="frame" x="80" y="50" width="215" height="43"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qnd-rT-Nij">
-                                <rect key="frame" x="10" y="306.5" width="355" height="55.5"/>
+                                <rect key="frame" x="10" y="306" width="355" height="55.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9r-qh-PtF">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="30.5"/>
@@ -120,8 +119,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti-color" translatesAutoresizingMaskIntoConstraints="NO" id="XIc-Ry-tx6">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvN-5y-rEQ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="425"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvN-5y-rEQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="458"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwi-30-lOV">
@@ -148,17 +147,17 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="255" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qP1-Bh-5yt">
-                                <rect key="frame" x="20" y="461" width="335" height="33"/>
+                                <rect key="frame" x="20" y="494" width="335" height="33"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYE-Uc-neJ">
-                                <rect key="frame" x="19.5" y="537" width="335" height="45"/>
+                                <rect key="frame" x="19.5" y="547" width="335" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWh-ag-fem" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="20" y="537" width="335" height="45"/>
+                                <rect key="frame" x="20" y="547" width="335" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="SfN-af-vkM"/>
                                 </constraints>
@@ -207,10 +206,9 @@
                             <constraint firstItem="Uwi-fS-5KH" firstAttribute="centerX" secondItem="e7S-9q-rvt" secondAttribute="centerX" id="deN-xY-gKH"/>
                             <constraint firstAttribute="trailing" secondItem="zwi-30-lOV" secondAttribute="trailing" id="dhl-FA-S1F"/>
                             <constraint firstItem="qP1-Bh-5yt" firstAttribute="top" secondItem="RvN-5y-rEQ" secondAttribute="bottom" constant="16" id="hGR-a9-Caf"/>
-                            <constraint firstItem="RvN-5y-rEQ" firstAttribute="height" secondItem="e7S-9q-rvt" secondAttribute="width" constant="50" id="l7i-Lb-HUa"/>
                             <constraint firstItem="Rwi-IA-0i8" firstAttribute="top" secondItem="wpA-j1-q3y" secondAttribute="bottom" id="n8Q-as-pN7"/>
-                            <constraint firstItem="Uwi-fS-5KH" firstAttribute="top" secondItem="YWh-ag-fem" secondAttribute="bottom" constant="20" id="rqg-9T-smB"/>
-                            <constraint firstItem="YWh-ag-fem" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qP1-Bh-5yt" secondAttribute="bottom" constant="20" id="tbg-ls-aYJ"/>
+                            <constraint firstItem="Uwi-fS-5KH" firstAttribute="top" secondItem="YWh-ag-fem" secondAttribute="bottom" constant="10" id="rqg-9T-smB"/>
+                            <constraint firstItem="YWh-ag-fem" firstAttribute="top" secondItem="qP1-Bh-5yt" secondAttribute="bottom" constant="20" id="tbg-ls-aYJ"/>
                             <constraint firstItem="DHp-Z9-reg" firstAttribute="top" secondItem="Uwi-fS-5KH" secondAttribute="bottom" constant="20" id="ubv-CP-H55"/>
                             <constraint firstItem="BYE-Uc-neJ" firstAttribute="height" secondItem="YWh-ag-fem" secondAttribute="height" id="wIV-vC-c46"/>
                             <constraint firstItem="YWh-ag-fem" firstAttribute="leading" secondItem="e7S-9q-rvt" secondAttribute="leading" constant="20" id="xWe-Hk-Ss7"/>
