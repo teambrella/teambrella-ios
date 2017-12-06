@@ -119,7 +119,7 @@ final class UniversalChatDatasource {
         var images: [String] = []
         for fragment in fragments {
             switch fragment {
-            case let .image(string, _):
+            case let .image(string, _, _):
                 images.append(string)
             default:
                 break
@@ -409,7 +409,7 @@ struct UnsentMessage: Hashable {
     let imageFragments: [ChatFragment]
     var images: [String] {
         return imageFragments.flatMap {
-            if case let .image(image, _) = $0 {
+            if case let .image(image, _, _) = $0 {
                 return image
             } else {
                 return nil

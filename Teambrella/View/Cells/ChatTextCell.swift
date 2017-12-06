@@ -314,8 +314,8 @@ class ChatTextCell: UICollectionViewCell {
                 contentView.addSubview(label)
                 views.append(label)
                 result.append(label)
-            case let .image(urlString: urlString, aspect: _):
-                let imageView = createGalleryView(for: urlString, height: heights[idx])
+            case let .image(urlString: urlString, urlStringSmall: urlStringSmall, aspect: _):
+                let imageView = createGalleryView(for: urlString, small: urlStringSmall, height: heights[idx])
                 contentView.addSubview(imageView)
                 views.append(imageView)
                 result.append(imageView)
@@ -342,7 +342,7 @@ class ChatTextCell: UICollectionViewCell {
         return label
     }
     
-    private func createGalleryView(for urlString: String, height: CGFloat) -> GalleryView {
+    private func createGalleryView(for urlString: String, small: String, height: CGFloat) -> GalleryView {
         let verticalOffset = views.last?.frame.maxY ?? leftLabel.frame.maxY + 8
         let separator: CGFloat = 2.0
         
@@ -352,6 +352,7 @@ class ChatTextCell: UICollectionViewCell {
                                                   height: height))
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.present(imageString: small)
         imageView.present(imageString: urlString)
         imageView.onTap = { [weak self] sender in
             self?.onTap(galleryView: sender)

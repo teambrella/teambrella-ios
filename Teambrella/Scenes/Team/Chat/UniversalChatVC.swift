@@ -500,7 +500,7 @@ private extension UniversalChatVC {
     }
     
     private func linkImage(image: UIImage, name: String) {
-        let fragment = ChatFragment.imageFragment(image: image, urlString: name)
+        let fragment = ChatFragment.imageFragment(image: image, urlString: name, urlStringSmall: "")
         send(text: input.textView.text ?? "", imageFragments: [fragment])
     }
 }

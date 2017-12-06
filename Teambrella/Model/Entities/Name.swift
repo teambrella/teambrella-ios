@@ -43,7 +43,8 @@ struct Name {
     }
     
     var short: String {
-        let shortened = components[..<2]
+        let count = components.count > 1 ? 2 : components.count
+        let shortened = components[..<count]
         var result = ""
         for item in shortened {
             if result != "" { result += " " }
