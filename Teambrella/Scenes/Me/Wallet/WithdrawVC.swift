@@ -25,6 +25,8 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     @IBOutlet var collectionView: UICollectionView!
     
     var teamID: Int = 0
+    var cryptoBalance: Double = 0.0
+    var cryptoReserved: Double = 0.0
     let dataSource = WithdrawDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
     fileprivate var previousScrollOffset: CGFloat = 0
     
@@ -91,7 +93,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     @objc
     private func tapInfo() {
-       // service.router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
+        service.router.showWithdrawInfo(in: self, balance: cryptoBalance, reserved: cryptoReserved)
     }
     
 }
@@ -140,6 +142,8 @@ extension WithdrawVC: UICollectionViewDelegate {
         if let cell = cell as? WithdrawDetailsCell {
             cell.qrButton.removeTarget(self, action: nil, for: .allEvents)
             cell.qrButton.addTarget(self, action: #selector(tapQR), for: .touchUpInside)
+            cell.infoButton.removeTarget(self, action: nil, for: .allEvents)
+            cell.infoButton.addTarget(self, action: #selector(tapInfo), for: .touchUpInside)
         }
         let maxRow = dataSource.rows(in: indexPath.section)
         if let cell = cell as? WithdrawCell {

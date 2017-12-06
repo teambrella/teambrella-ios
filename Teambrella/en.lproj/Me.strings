@@ -85,5 +85,5 @@
 "Me.Wallet.Withdraw.header.history" = "WITHDRAWAL HISTORY";
 "Me.Wallet.Withdraw.WithdrawInfo.title" = "WITHDRAW INFORMATION";
 "Me.Wallet.Withdraw.WithdrawInfo.balance" = "Balance";
-"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest" = "You may request up to balance amount for withdrawal 184 mETH.";
-"Me.Wallet.Withdraw.WithdrawInfo.youHave" = "You have 22 mETH reserved, if some part of the reserved funds becomes available, it would be automatically scheduled for the withdrawal.";
+"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest" = "You may request up to balance amount for withdrawal %@ mETH.";
+"Me.Wallet.Withdraw.WithdrawInfo.youHave" = "You have %@ mETH reserved, if some part of the reserved funds becomes available, it would be automatically scheduled for the withdrawal.";

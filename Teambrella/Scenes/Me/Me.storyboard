@@ -782,7 +782,7 @@
         <!--Withdraw InfoVC-->
         <scene sceneID="25B-9d-ih3">
             <objects>
-                <viewController storyboardIdentifier="WithdrawInfoVC" id="mlr-jS-ctt" customClass="WithdrawInfoVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WithdrawInfoVC" modalPresentationStyle="overCurrentContext" id="mlr-jS-ctt" customClass="WithdrawInfoVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XHC-Ar-yi4"/>
                         <viewControllerLayoutGuide type="bottom" id="bh5-dn-99F"/>
@@ -791,6 +791,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIW-Q9-7hj">
+                                <rect key="frame" x="0.0" y="-44" width="375" height="711"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kwh-au-BV9">
                                 <rect key="frame" x="8" y="667" width="359" height="250"/>
                                 <subviews>
@@ -818,19 +822,19 @@
                                             <constraint firstAttribute="height" constant="1" id="mAc-fn-unq"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtH-SF-OpN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtH-SF-OpN" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="20" y="86" width="319" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVf-ux-cRu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVf-ux-cRu" customClass="ChatTextLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="20" y="148" width="319" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtY-OX-NP5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtY-OX-NP5" customClass="ChatTextLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="20" y="117" width="319" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -861,14 +865,19 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LIW-Q9-7hj" firstAttribute="leading" secondItem="Otc-6o-gJE" secondAttribute="leading" id="05H-Lc-Jfe"/>
+                            <constraint firstItem="LIW-Q9-7hj" firstAttribute="top" secondItem="Otc-6o-gJE" secondAttribute="top" constant="-44" id="4mq-sn-ug6"/>
+                            <constraint firstAttribute="trailing" secondItem="LIW-Q9-7hj" secondAttribute="trailing" id="501-hn-822"/>
                             <constraint firstItem="Kwh-au-BV9" firstAttribute="leading" secondItem="Otc-6o-gJE" secondAttribute="leading" constant="8" id="9px-gO-Q4I"/>
+                            <constraint firstAttribute="bottom" secondItem="LIW-Q9-7hj" secondAttribute="bottom" id="DV0-co-YLF"/>
                             <constraint firstAttribute="bottom" secondItem="Kwh-au-BV9" secondAttribute="bottom" constant="-250" id="WKH-Gb-D9E"/>
                             <constraint firstAttribute="trailing" secondItem="Kwh-au-BV9" secondAttribute="trailing" constant="8" id="Yiz-GN-KsS"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backView" destination="Otc-6o-gJE" id="4Jn-Ud-9wD"/>
+                        <outlet property="backView" destination="LIW-Q9-7hj" id="PXz-EV-GcG"/>
                         <outlet property="balanceLabel" destination="vtH-SF-OpN" id="8k1-tt-cFh"/>
                         <outlet property="bottomConstraint" destination="WKH-Gb-D9E" id="WlN-4M-NAE"/>
                         <outlet property="closeButton" destination="0gu-Ub-ibB" id="Cu1-TV-T9x"/>

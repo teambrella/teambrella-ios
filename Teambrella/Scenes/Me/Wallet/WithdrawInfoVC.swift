@@ -16,18 +16,22 @@
 
 import UIKit
 
-class WithdrawInfoVC: UIViewController {
-
+class WithdrawInfoVC: UIViewController, Routable {
+    
     static let storyboardName = "Me"
+    
+    var cryptoBalance: Double = 0.0
+    var cryptoReserved: Double = 0.0
+    var bottomOffset: CGFloat = -8
     
     @IBOutlet var backView: UIView!
     @IBOutlet var infoView: UIView!
     @IBOutlet var headerLabel: BlockHeaderLabel!
     @IBOutlet var closeButton: UIButton!
     @IBOutlet var separator: UIView!
-    @IBOutlet var balanceLabel: UILabel!
-    @IBOutlet var mayRequestLabel: UILabel!
-    @IBOutlet var haveLabel: UILabel!
+    @IBOutlet var balanceLabel: MessageTitleLabel!
+    @IBOutlet var mayRequestLabel: ChatTextLabel!
+    @IBOutlet var haveLabel: ChatTextLabel!
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -35,10 +39,17 @@ class WithdrawInfoVC: UIViewController {
         infoView.layer.cornerRadius = 4
         headerLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.title".localized
         balanceLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.balance".localized
-        mayRequestLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized
-        haveLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized
+        mayRequestLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized(
+            String.truncatedNumber((cryptoBalance - cryptoReserved) * 1000))
+        if cryptoReserved == 0 {
+            haveLabel.text = ""
+            bottomOffset = -78
+        } else {
+            haveLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized(
+                String.truncatedNumber(cryptoReserved * 1000))
+        }
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         appear()
@@ -51,7 +62,7 @@ class WithdrawInfoVC: UIViewController {
     }
     
     func appear() {
-        self.bottomConstraint.constant = -8
+        self.bottomConstraint.constant = bottomOffset //-8
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
             self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             self.view.layoutIfNeeded()
