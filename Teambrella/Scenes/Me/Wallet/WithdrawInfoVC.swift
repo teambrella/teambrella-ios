@@ -16,18 +16,22 @@
 
 import UIKit
 
-class WithdrawInfoVC: UIViewController {
-
+class WithdrawInfoVC: UIViewController, Routable {
+    
     static let storyboardName = "Me"
+    
+    var cryptoBalance: Double = 0.0
+    var cryptoReserved: Double = 0.0
+    var bottomOffset: CGFloat = -8
     
     @IBOutlet var backView: UIView!
     @IBOutlet var infoView: UIView!
     @IBOutlet var headerLabel: BlockHeaderLabel!
     @IBOutlet var closeButton: UIButton!
     @IBOutlet var separator: UIView!
-    @IBOutlet var balanceLabel: UILabel!
-    @IBOutlet var mayRequestLabel: UILabel!
-    @IBOutlet var haveLabel: UILabel!
+    @IBOutlet var balanceLabel: MessageTitleLabel!
+    @IBOutlet var mayRequestLabel: ChatTextLabel!
+    @IBOutlet var haveLabel: ChatTextLabel!
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -35,10 +39,38 @@ class WithdrawInfoVC: UIViewController {
         infoView.layer.cornerRadius = 4
         headerLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.title".localized
         balanceLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.balance".localized
-        mayRequestLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized
-        haveLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized
+        
+        
+        mayRequestLabel.attributedText =
+            decorateString(string: "Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized,
+                                              amount: String.truncatedNumber((cryptoBalance - cryptoReserved) * 1000),
+                                              currency: "mETH")
+            //"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized(
+            //String.truncatedNumber((cryptoBalance - cryptoReserved) * 1000))
+        haveLabel.text = cryptoReserved == 0 ? "" : "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized(
+                String.truncatedNumber(cryptoReserved * 1000))
     }
-
+    
+    func decorateString(string: String, amount: String, currency: String) -> NSAttributedString {
+        var amountAttributes = [NSAttributedStringKey : Any]()
+        amountAttributes[NSAttributedStringKey.foregroundColor] = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        amountAttributes[NSAttributedStringKey.font] = UIFont.teambrella(size: 12)
+        
+        var currencyAttributes = [NSAttributedStringKey : Any]()
+        currencyAttributes[NSAttributedStringKey.foregroundColor] = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        currencyAttributes[NSAttributedStringKey.font] = UIFont.teambrella(size: 8)
+        
+        let amountDecorated = NSMutableAttributedString(string: amount,
+                                                        attributes: amountAttributes)
+        let currencyDecorated = NSMutableAttributedString(string: currency,
+                                                          attributes: currencyAttributes)
+        var result = NSMutableAttributedString(string: string)
+        result.append(amountDecorated)
+        result.append(currencyDecorated)
+        
+        return result
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         appear()
@@ -51,7 +83,7 @@ class WithdrawInfoVC: UIViewController {
     }
     
     func appear() {
-        self.bottomConstraint.constant = -8
+        self.bottomConstraint.constant = bottomOffset //-8
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
             self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             self.view.layoutIfNeeded()

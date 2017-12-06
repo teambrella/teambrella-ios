@@ -86,7 +86,9 @@ class WalletVC: UIViewController {
     
     @objc
     func tapWithdraw(sender: UIButton) {
-        service.router.presentWithdraw()
+        guard let wallet = wallet else { return }
+        
+        service.router.presentWithdraw(balance: wallet.cryptoBalance, reserved: wallet.cryptoReserved)
     }
     
     func generateQRCode() -> UIImage? {

@@ -174,10 +174,11 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
-    func presentWithdraw(/*teamID: Int, */animated: Bool = true) {
+    func presentWithdraw(balance: Double, reserved: Double, animated: Bool = true) {
         guard let vc = WithdrawVC.instantiate() as? WithdrawVC else { fatalError("Error instantiating") }
         
-//        vc.teamID = teamID
+        vc.cryptoBalance = balance
+        vc.cryptoReserved = reserved
         push(vc: vc, animated: animated)
     }
     
@@ -247,6 +248,17 @@ final class MainRouter {
         
         vc.delegate = delegate
         vc.type = type
+        viewController.present(vc, animated: false, completion: nil)
+    }
+    
+    func showWithdrawInfo(in viewController: UIViewController,
+                          balance: Double,
+                          reserved: Double) {
+        guard let vc = WithdrawInfoVC.instantiate() as? WithdrawInfoVC else { fatalError("Error instantiating") }
+        
+       // vc.delegate = delegate
+        vc.cryptoBalance = balance
+        vc.cryptoReserved = reserved
         viewController.present(vc, animated: false, completion: nil)
     }
     
