@@ -104,14 +104,14 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     @objc
     private func tapWithdraw() {
-       
+       dataSource.withdraw()
     }
     
     func changedDetails(cell: WithdrawDetailsCell) {
         dataSource.detailsModel.toValue = cell.cryptoAddressTextView.text
         dataSource.detailsModel.amountValue = cell.cryptoAmountTextField.text ?? ""
         
-        if validateAddress(string:dataSource.detailsModel.toValue)
+        if validateAddress(string: dataSource.detailsModel.toValue)
             && validateAmount(string: dataSource.detailsModel.amountValue) {
             cell.submitButton.alpha = 1
             cell.submitButton.isEnabled = true
@@ -178,6 +178,8 @@ extension WithdrawVC: UICollectionViewDelegate {
             cell.qrButton.addTarget(self, action: #selector(tapQR), for: .touchUpInside)
             cell.infoButton.removeTarget(self, action: nil, for: .allEvents)
             cell.infoButton.addTarget(self, action: #selector(tapInfo), for: .touchUpInside)
+            cell.submitButton.removeTarget(self, action: nil, for: .allEvents)
+            cell.submitButton.addTarget(self, action: #selector(tapWithdraw), for: .touchUpInside)
             cell.onValuesChanged = { [weak self] cell in
                 self?.changedDetails(cell: cell)
             }
