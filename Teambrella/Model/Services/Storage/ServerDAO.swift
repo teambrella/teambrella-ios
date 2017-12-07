@@ -226,6 +226,7 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
+            request.start()
         }
         return promise
     }
@@ -248,6 +249,7 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
+            request.start()
         }
         return promise
     }

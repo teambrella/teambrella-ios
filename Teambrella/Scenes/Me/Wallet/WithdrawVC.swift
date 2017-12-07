@@ -15,7 +15,7 @@
  */
 
 import UIKit
-//import PKHUD
+import PKHUD
 
 class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
@@ -40,19 +40,19 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //HUD.show(.progress, onView: view)
+        HUD.show(.progress, onView: view)
         collectionView.register(WithdrawDetailsCell.nib, forCellWithReuseIdentifier: WithdrawDetailsCell.cellID)
         collectionView.register(WithdrawCell.nib, forCellWithReuseIdentifier: WithdrawCell.cellID)
         collectionView.register(WithdrawHeader.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: WithdrawHeader.cellID)
         
         dataSource.onUpdate = { [weak self] in
-            //HUD.hide()
+            HUD.hide()
             self?.collectionView.reloadData()
         }
         
         dataSource.onError = { [weak self] error in
-            //HUD.hide()
+            HUD.hide()
             guard let error = error as? TeambrellaError else { return }
             
             let controller = UIAlertController(title: "Error", message: error.description, preferredStyle: .alert)
