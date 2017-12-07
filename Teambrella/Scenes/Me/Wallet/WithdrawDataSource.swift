@@ -107,20 +107,19 @@ final class WithdrawDataSource {
     }
     
     func loadData() {
-        fakeLoad()
-//        isLoading = true
-//        service.dao.requestWithdrawTransactions(teamID: teamID).observe { [weak self] result in
-//            switch result {
-//            case let .value(chunk):
-//                self?.lastChunk = chunk
-//                self?.onUpdate?()
-//            case let .error(error):
-//                self?.onError?(error)
-//            default:
-//                break
-//            }
-//            self?.isLoading = false
-//        }
+        isLoading = true
+        service.dao.requestWithdrawTransactions(teamID: teamID).observe { [weak self] result in
+            switch result {
+            case let .value(chunk):
+                self?.lastChunk = chunk
+                self?.onUpdate?()
+            case let .error(error):
+                self?.onError?(error)
+            default:
+                break
+            }
+            self?.isLoading = false
+        }
     }
     
     // MARK: Private

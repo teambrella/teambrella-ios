@@ -51,7 +51,7 @@ struct WithdrawTx {
             "WithdrawalId": 2025,
             "WithdrawalDate": "2017-12-01 13:05:38",
             "IsNew": false,
-            "To": [ ["Amount": 222.050873208702408708] ],
+            "To": [ ["Amount": 22.05] ],
             "ServerTxState": state,
             "Id": "9c315088-45d7-42d9-9737-a83c00d7c805",
             "LastUpdated": 636477303381343450
