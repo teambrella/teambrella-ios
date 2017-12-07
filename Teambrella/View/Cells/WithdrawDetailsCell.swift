@@ -33,6 +33,9 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        let label = LabeledIcon(frame: CGRect(x: 1, y: 1, width: 80, height: 37))
+        cryptoAmountTextField.leftViewMode = .always
+        cryptoAmountTextField.leftView = label
         cryptoAddressTextView.layer.borderWidth = 0.5
         cryptoAddressTextView.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
         cryptoAddressTextView.layer.cornerRadius = 5
