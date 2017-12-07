@@ -24,12 +24,12 @@ class WithdrawModelBuilder {
     func modelFrom(transaction: WithdrawTx) -> WithdrawTransactionCellModel {
         var dateText = ""
         if let date = transaction.withdrawalDate {
-            dateText = Formatter.teambrella.string(from: date)
+            dateText = Formatter.teambrellaShort.string(from: date)
         }
         return WithdrawTransactionCellModel(topText: dateText,
                                             isNew: transaction.isNew,
-                                            bottomText: "No address given".uppercased(),
-                                            amountText: String.truncatedNumber(transaction.amount))
+                                            bottomText: "No address givenNo address givenNo address givenNo address given".uppercased(),
+                                            amountText: String(format: "%.2f", transaction.amount))
     }
     
 }

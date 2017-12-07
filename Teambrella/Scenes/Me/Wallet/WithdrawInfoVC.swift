@@ -69,7 +69,7 @@ class WithdrawInfoVC: UIViewController, Routable {
     }
     
     func appear() {
-        self.bottomConstraint.constant = bottomOffset //-8
+        self.bottomConstraint.constant = bottomOffset 
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
             self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             self.view.layoutIfNeeded()

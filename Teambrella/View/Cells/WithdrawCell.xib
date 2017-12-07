@@ -24,24 +24,49 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pO5-Ve-PTc">
                         <rect key="frame" x="0.0" y="0.0" width="371" height="79"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqT-zv-FvV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqT-zv-FvV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="16" y="18.5" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ve-5A-frp" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="313" y="29" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ve-5A-frp">
+                                <rect key="frame" x="285" y="29" width="70" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="1GG-fK-eyv"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Label">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmo-E4-NUO" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmo-E4-NUO" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="16" y="43.5" width="42" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Bk-bz-UFy" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="38" y="0.0" width="20" height="79"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="IPK-qA-HBp"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.01" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHorizontal" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53n-qQ-D2f">
                                 <rect key="frame" x="16" y="78" width="355" height="1"/>
                                 <color key="backgroundColor" red="0.90980392156862744" green="0.92941176470588238" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
@@ -65,7 +90,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="7Bk-bz-UFy" secondAttribute="bottom" id="2yy-Vf-sN3"/>
+                            <constraint firstItem="7ve-5A-frp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dmo-E4-NUO" secondAttribute="trailing" constant="20" id="4sq-hb-hZZ"/>
                             <constraint firstItem="dmo-E4-NUO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nqT-zv-FvV" secondAttribute="bottom" constant="4" id="Arb-0W-ZX1"/>
+                            <constraint firstItem="7Bk-bz-UFy" firstAttribute="trailing" secondItem="dmo-E4-NUO" secondAttribute="trailing" id="Bzj-mr-vq1"/>
                             <constraint firstItem="7ve-5A-frp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rPP-71-a4x" secondAttribute="trailing" constant="8" id="DMe-qE-jvq"/>
                             <constraint firstAttribute="trailing" secondItem="7ve-5A-frp" secondAttribute="trailing" constant="16" id="Xfn-Nj-9rj"/>
                             <constraint firstItem="rPP-71-a4x" firstAttribute="centerY" secondItem="nqT-zv-FvV" secondAttribute="centerY" id="bhz-Hq-1WU"/>
@@ -77,6 +105,7 @@
                             <constraint firstAttribute="trailing" secondItem="53n-qQ-D2f" secondAttribute="trailing" id="oYd-4f-cTO"/>
                             <constraint firstItem="nqT-zv-FvV" firstAttribute="bottom" secondItem="pO5-Ve-PTc" secondAttribute="centerY" id="r2B-qg-826"/>
                             <constraint firstItem="7ve-5A-frp" firstAttribute="centerY" secondItem="pO5-Ve-PTc" secondAttribute="centerY" id="vSp-jU-tUW"/>
+                            <constraint firstItem="7Bk-bz-UFy" firstAttribute="top" secondItem="pO5-Ve-PTc" secondAttribute="top" id="wEH-24-RmN"/>
                             <constraint firstItem="53n-qQ-D2f" firstAttribute="leading" secondItem="pO5-Ve-PTc" secondAttribute="leading" constant="16" id="weV-65-VtH"/>
                             <constraint firstAttribute="bottom" secondItem="53n-qQ-D2f" secondAttribute="bottom" id="wfj-ZN-bXJ"/>
                         </constraints>

@@ -43,7 +43,7 @@ struct WithdrawTx {
         self.isNew = json["IsNew"].boolValue
         
         let to = json["To"].arrayValue
-        self.amount = to.first?["Amount"].doubleValue ?? 0
+        self.amount = to.first?["Amount"].doubleValue ?? 0.0
     }
     
     static func fake(state: Int) -> WithdrawTx? {
@@ -51,7 +51,7 @@ struct WithdrawTx {
             "WithdrawalId": 2025,
             "WithdrawalDate": "2017-12-01 13:05:38",
             "IsNew": false,
-            "To": [ ["Amount": 0.0010] ],
+            "To": [ ["Amount": 222.050873208702408708] ],
             "ServerTxState": state,
             "Id": "9c315088-45d7-42d9-9737-a83c00d7c805",
             "LastUpdated": 636477303381343450

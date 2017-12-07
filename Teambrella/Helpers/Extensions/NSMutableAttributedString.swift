@@ -19,6 +19,8 @@ import Foundation
 enum StringDecorationType {
     case boldAmount
     case currency
+    case integerPart
+    case fractionalPart
 }
 
 extension NSMutableAttributedString {
@@ -39,6 +41,13 @@ extension NSMutableAttributedString {
             return [.foregroundColor: #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1),
                     .font: UIFont.teambrellaBold(size: 10),
                     .baselineOffset: 5]
+        case .integerPart:
+            return [.foregroundColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1),
+                    .font: UIFont.teambrellaBold(size: 23)]
+        case .fractionalPart:
+            return [.foregroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1),
+                    .font: UIFont.teambrellaBold(size: 18),
+                    .baselineOffset: 3]
         }
     }
 }

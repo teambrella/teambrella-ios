@@ -184,6 +184,22 @@ extension WithdrawVC: UICollectionViewDelegate {
             ViewDecorator.decorateCollectionView(cell: cell,
                                                  isFirst: indexPath.row == 0,
                                                  isLast: indexPath.row == maxRow - 1)
+            if indexPath.row == 1 {
+                cell.rightLabel.text = "80.11"
+            }
+            if indexPath.row == 2 {
+                cell.rightLabel.text = "12.81"
+            }
+            if indexPath.row == 3 {
+                cell.rightLabel.text = "2.75"
+            }
+            guard let text = cell.rightLabel.text else { return }
+
+            let keyIndex = text.index(text.endIndex, offsetBy: -3)
+            let amountAttributed = NSMutableAttributedString(string: text)
+                .decorate(substring: String(text[..<keyIndex]), type: .integerPart)
+                .decorate(substring: String(text[keyIndex...]), type: .fractionalPart)
+            cell.rightLabel.attributedText = amountAttributed
         }
     }
     
