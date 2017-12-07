@@ -15,7 +15,7 @@
  */
 
 import UIKit
-//import PKHUD
+import PKHUD
 
 class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
@@ -40,19 +40,19 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //HUD.show(.progress, onView: view)
+        HUD.show(.progress, onView: view)
         collectionView.register(WithdrawDetailsCell.nib, forCellWithReuseIdentifier: WithdrawDetailsCell.cellID)
         collectionView.register(WithdrawCell.nib, forCellWithReuseIdentifier: WithdrawCell.cellID)
         collectionView.register(WithdrawHeader.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: WithdrawHeader.cellID)
         
         dataSource.onUpdate = { [weak self] in
-            //HUD.hide()
+            HUD.hide()
             self?.collectionView.reloadData()
         }
         
         dataSource.onError = { [weak self] error in
-            //HUD.hide()
+            HUD.hide()
             guard let error = error as? TeambrellaError else { return }
             
             let controller = UIAlertController(title: "Error", message: error.description, preferredStyle: .alert)
@@ -102,12 +102,16 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
                                         reserved: dataSource.cryptoReserved)
     }
     
+    @objc
+    private func tapWithdraw() {
+       dataSource.withdraw()
+    }
+    
     func changedDetails(cell: WithdrawDetailsCell) {
-        print("Called \(#function)")
         dataSource.detailsModel.toValue = cell.cryptoAddressTextView.text
         dataSource.detailsModel.amountValue = cell.cryptoAmountTextField.text ?? ""
         
-        if validateAddress(string:dataSource.detailsModel.toValue)
+        if validateAddress(string: dataSource.detailsModel.toValue)
             && validateAmount(string: dataSource.detailsModel.amountValue) {
             cell.submitButton.alpha = 1
             cell.submitButton.isEnabled = true
@@ -174,6 +178,8 @@ extension WithdrawVC: UICollectionViewDelegate {
             cell.qrButton.addTarget(self, action: #selector(tapQR), for: .touchUpInside)
             cell.infoButton.removeTarget(self, action: nil, for: .allEvents)
             cell.infoButton.addTarget(self, action: #selector(tapInfo), for: .touchUpInside)
+            cell.submitButton.removeTarget(self, action: nil, for: .allEvents)
+            cell.submitButton.addTarget(self, action: #selector(tapWithdraw), for: .touchUpInside)
             cell.onValuesChanged = { [weak self] cell in
                 self?.changedDetails(cell: cell)
             }

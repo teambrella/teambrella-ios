@@ -44,6 +44,13 @@ final class WithdrawDataSource {
     private var lastChunk: WithdrawChunk? {
         didSet {
             if let chunk = lastChunk {
+                transactions[0].removeAll()
+                transactions[1].removeAll()
+                transactions[2].removeAll()
+                
+                cryptoBalance = chunk.cryptoBalance.double
+                cryptoReserved = chunk.cryptoReserved.double
+                
                 for tx in chunk.txs {
                     switch tx.serverTxState {
                     case .queued:
@@ -109,6 +116,25 @@ final class WithdrawDataSource {
     func loadData() {
         isLoading = true
         service.dao.requestWithdrawTransactions(teamID: teamID).observe { [weak self] result in
+            switch result {
+            case let .value(chunk):
+                self?.lastChunk = chunk
+                self?.onUpdate?()
+            case let .error(error):
+                self?.onError?(error)
+            default:
+                break
+            }
+            self?.isLoading = false
+        }
+    }
+    
+    func withdraw() {
+        guard let amount = Double(detailsModel.amountValue),
+            let address = EthereumAddress(string: detailsModel.toValue) else { return }
+        
+        isLoading = true
+        service.dao.withdraw(teamID: teamID, amount: amount / 1000, address: address).observe { [weak self] result in
             switch result {
             case let .value(chunk):
                 self?.lastChunk = chunk

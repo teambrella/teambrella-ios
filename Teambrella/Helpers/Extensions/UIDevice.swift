@@ -18,7 +18,7 @@ import Foundation
 
 extension UIDevice {
     public var hasHapticEngine: Bool {
-        guard let version = platform().split(separator: ",").first else { return false}
+        guard let version = platform().split(separator: ",").first else { return false }
         
         return ["iPhone9", "iPhone10"].contains(version)
     }
@@ -32,7 +32,7 @@ extension UIDevice {
         uname(&sysinfo) // ignore return value
         return String(bytes: Data(bytes: &sysinfo.machine,
                                   count: Int(_SYS_NAMELEN)),
-                      encoding: .ascii)!.trimmingCharacters(in: .controlCharacters)
+                      encoding: .ascii)?.trimmingCharacters(in: .controlCharacters) ?? ""
     }
     
 }

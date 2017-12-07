@@ -23,6 +23,18 @@ struct EthereumAddress {
     
     init?(string: String) {
         var string = string
+        if string.lowercased().hasPrefix("ethereum:") {
+            let index = string.index(string.startIndex, offsetBy: 9)
+            string = String(string[index...])
+        }
+        if string.lowercased().hasPrefix(" ") {
+            let index = string.index(string.startIndex, offsetBy: 1)
+            string = String(string[index...])
+        }
+        if string.lowercased().hasPrefix("\n") {
+            let index = string.index(string.startIndex, offsetBy: 1)
+            string = String(string[index...])
+        }
         if string.hasPrefix("0x") {
             let index = string.index(string.startIndex, offsetBy: 2)
             string = String(string[index...])
