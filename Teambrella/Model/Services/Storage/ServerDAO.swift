@@ -230,6 +230,28 @@ class ServerDAO: DAO {
         return promise
     }
     
+    func withdraw(teamID: Int, amount: Double, address: EthereumAddress) -> Future<WithdrawChunk> {
+        let promise = Promise<WithdrawChunk>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "Amount": amount,
+                                                       "ToAddress": address.string])
+            let request = TeambrellaRequest(type: .withdraw, body: body, success: { response in
+                if case let .withdrawTransactions(chunk) = response {
+                    promise.resolve(with: chunk)
+                } else {
+                    let error = TeambrellaError(kind: .wrongReply,
+                                                description: "Was waiting withdrawTransactions, got \(response)")
+                    promise.reject(with: error)
+                    service.error.present(error: error)
+                }
+            }, failure: { error in
+                promise.reject(with: error)
+            })
+        }
+        return promise
+    }
+    
     func myProxy(userID: String, add: Bool) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in

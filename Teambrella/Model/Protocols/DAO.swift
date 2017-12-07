@@ -42,6 +42,7 @@ protocol DAO {
                             searchString: String?,
                             sortBy: SortVC.SortType) -> Future<UserIndexCellModel>
     func requestWithdrawTransactions(teamID: Int) -> Future<WithdrawChunk>
+    func withdraw(teamID: Int, amount: Double, address: EthereumAddress) -> Future<WithdrawChunk>
     
     // MARK: Send data
     

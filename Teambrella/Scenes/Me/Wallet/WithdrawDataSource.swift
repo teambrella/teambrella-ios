@@ -122,6 +122,25 @@ final class WithdrawDataSource {
         }
     }
     
+    func withdraw() {
+        guard let amount = Double(detailsModel.amountValue),
+            let address = EthereumAddress(string: detailsModel.toValue) else { return }
+        
+        isLoading = true
+        service.dao.withdraw(teamID: teamID, amount: amount, address: address).observe { [weak self] result in
+            switch result {
+            case let .value(chunk):
+                self?.lastChunk = chunk
+                self?.onUpdate?()
+            case let .error(error):
+                self?.onError?(error)
+            default:
+                break
+            }
+            self?.isLoading = false
+        }
+    }
+    
     // MARK: Private
     
     private func addQueued(transaction: WithdrawTx) {

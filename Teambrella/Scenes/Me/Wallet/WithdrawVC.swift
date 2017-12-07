@@ -102,8 +102,12 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
                                         reserved: dataSource.cryptoReserved)
     }
     
+    @objc
+    private func tapWithdraw() {
+       
+    }
+    
     func changedDetails(cell: WithdrawDetailsCell) {
-        print("Called \(#function)")
         dataSource.detailsModel.toValue = cell.cryptoAddressTextView.text
         dataSource.detailsModel.amountValue = cell.cryptoAmountTextField.text ?? ""
         

@@ -61,8 +61,10 @@ enum TeambrellaRequestType: String {
     case privateChat = "privatemessage/getChat"
     case privateList = "privatemessage/getList"
     case newPrivatePost = "privatemessage/newMessage"
-    case withdrawTransactions = "wallet/getWithdraw"
     case feedPinVote = "feed/setPinVote"
+
+    case withdrawTransactions = "wallet/getWithdraw"
+    case withdraw = "wallet/newWithdraw"
 }
 
 enum TeambrellaResponseType {
@@ -254,7 +256,8 @@ struct TeambrellaRequest {
             //             .newPrivatePost:
             //            success(.privateChat(<#T##[ChatEntity]#>))
         //            success(.privateChat(PrivateChatAdaptor(json: reply).adaptedMessages))
-        case .withdrawTransactions:
+        case .withdrawTransactions,
+             .withdraw:
             if let chunk = WithdrawChunk(json: reply) {
                 success(.withdrawTransactions(chunk))
             } else {

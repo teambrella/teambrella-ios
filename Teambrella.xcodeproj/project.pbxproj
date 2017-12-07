@@ -2297,7 +2297,7 @@
 				6DAF1CB91F58562E00421C5A /* PushService */,
 				6DE3947E1F790A0100784ECD /* Reachability */,
 				6DF2E8BF1EF02F8C00C8D60B /* Socket */,
-				6DA8D5581F0E75FB000A4DB7 /* Storage */,
+				6DA8D5581F0E75FB000A4DB7 /* DAO */,
 				6DEC6DFA1E966AB400ACC119 /* Transformers */,
 				6DCC7AC31E93A6920092D3F2 /* Services.swift */,
 				6DA1D0FA1F040AEF00F9DE87 /* Session.swift */,
@@ -2395,13 +2395,13 @@
 			name = TeammateProfile;
 			sourceTree = "<group>";
 		};
-		6DA8D5581F0E75FB000A4DB7 /* Storage */ = {
+		6DA8D5581F0E75FB000A4DB7 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
 				6DA8D5501F0E74B1000A4DB7 /* ServerDAO.swift */,
 				6D666B6F1F8512FA00812CBE /* PlistStorage.swift */,
 			);
-			name = Storage;
+			name = DAO;
 			sourceTree = "<group>";
 		};
 		6DAF1CB91F58562E00421C5A /* PushService */ = {
