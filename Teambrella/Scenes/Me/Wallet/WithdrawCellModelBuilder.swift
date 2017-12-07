@@ -46,7 +46,7 @@ class WithdrawDetailsCellModel: WithdrawCellModel {
     var amountValue: String = ""
     var buttonTitle: String = "Me.Wallet.Withdraw.Details.submitButton.title".localized
     var amountPlaceholder: String
-
+    
     init(amountPlaceholder: String) {
         self.amountPlaceholder = amountPlaceholder
     }
@@ -60,17 +60,30 @@ struct WithdrawTransactionCellModel: WithdrawCellModel {
 }
 
 struct WithdrawCellBuilder {
-    static func populate(cell: UICollectionViewCell, with model: WithdrawCellModel) {
+    static func populate(cell: UICollectionViewCell, with model: WithdrawCellModel/*, delegate: UICollectionViewCell*/) {
         if let cell = cell as? WithdrawDetailsCell, let model = model as? WithdrawDetailsCellModel {
             cell.titleLabel.text = model.title
             cell.toLabel.text = model.toText
             cell.placeholder.isHidden = cell.toLabel.isEmpty
             cell.cryptoAddressTextView.text = model.toValue
-            cell.qrButton.setImage(#imageLiteral(resourceName: "qrCode"), for: .normal) //
+            cell.qrButton.setImage(#imageLiteral(resourceName: "qrCode"), for: .normal)
             cell.amountLabel.text = model.amountText
             cell.cryptoAmountTextField.placeholder = model.amountPlaceholder
             cell.cryptoAmountTextField.text = model.amountValue
             cell.submitButton.setTitle(model.buttonTitle, for: .normal)
+            
+//            cell.cryptoAmountTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+//            cell.cryptoAmountTextField.text = model.amountValue
+//            cell.cryptoAmountTextField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
+//            // cell.cryptoAmountTextField.tag = indexPath.row
+//            cell.cryptoAmountTextField.removeTarget(reportVC, action: nil, for: .allEvents)
+//            cell.cryptoAmountTextField.addTarget(delegate, action: #selector(ReportVC.textFieldDidChange),
+//                                                 for: .editingChanged)
+//            cell.cryptoAddressTextView.text = model.toValue
+//            // cell.cryptoAddressTextView.tag = indexPath.row
+//            cell.cryptoAddressTextView.delegate = delegate
+//            cell.cryptoAddressTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            
         } else if let cell = cell as? WithdrawCell, let model = model as? WithdrawTransactionCellModel {
             cell.upperLabel.text = model.topText
             cell.lowerLabel.text = model.bottomText

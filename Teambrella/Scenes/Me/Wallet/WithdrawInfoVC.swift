@@ -54,6 +54,7 @@ class WithdrawInfoVC: UIViewController, Routable {
             .decorate(substring: haveValue, type: .boldAmount)
             .decorate(substring: currency, type: .currency)
         haveLabel.attributedText = haveAttributed
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

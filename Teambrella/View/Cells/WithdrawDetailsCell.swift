@@ -35,12 +35,13 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
         super.awakeFromNib()
         cryptoAddressTextView.layer.borderWidth = 0.5
         cryptoAddressTextView.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
-        cryptoAddressTextView.layer.cornerRadius = 4
+        cryptoAddressTextView.layer.cornerRadius = 5
         placeholder.text = "Me.Wallet.Withdraw.Details.to.placeholder".localized
         cryptoAmountTextField.placeholder = "Me.Wallet.Withdraw.Details.amount.placeholder".localized
         ViewDecorator.shadow(for: self)
         cryptoAddressTextView.delegate = self
         cryptoAmountTextField.addTarget(self, action: #selector(amountChanged), for: .editingChanged)
+        cryptoAmountTextField.delegate = self
         submitButton.isEnabled = false
         submitButton.alpha = 0.5
     }
@@ -54,10 +55,12 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
 // MARK: UITextViewDelegate
 extension WithdrawDetailsCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-
+        (textView as? TextView)?.isInEditMode = true
     }
     
     func textViewDidChange(_ textView: UITextView) {
+        (textView as? TextView)?.isInAlertMode = false
+        (textView as? TextView)?.isInEditMode = true
         if textView.text == nil || textView.text == "" {
             placeholder.isHidden = false
         } else {
@@ -67,6 +70,7 @@ extension WithdrawDetailsCell: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        (textView as? TextView)?.isInEditMode = false
         if textView.text == nil || textView.text == "" {
             placeholder.isHidden = false
         }
@@ -76,5 +80,16 @@ extension WithdrawDetailsCell: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let input = (textView.text as NSString).replacingCharacters(in: range, with: text)
         return input.count <= 42;
+    }
+}
+
+extension WithdrawDetailsCell: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        (textField as? TextField)?.isInAlertMode = false
+        (textField as? TextField)?.isInEditMode = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        (textField as? TextField)?.isInEditMode = false
     }
 }
