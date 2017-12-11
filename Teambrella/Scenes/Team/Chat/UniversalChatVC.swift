@@ -58,6 +58,7 @@ final class UniversalChatVC: UIViewController, Routable {
     @IBOutlet var objectVoteLabel: TitleLabel!
     @IBOutlet var objectPercentLabel: TitleLabel!
     @IBOutlet var objectRightLabel: UILabel!
+    @IBOutlet var objectAvatarView: RoundImageView!
     
     override var inputAccessoryView: UIView? { return input }
     override var canBecomeFirstResponder: Bool { return true }
@@ -106,6 +107,9 @@ final class UniversalChatVC: UIViewController, Routable {
         }
         dataSource.isLoadNextNeeded = true
         title = dataSource.title
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapRightLabel))
+        objectRightLabel.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -272,10 +276,19 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     @objc
+    private func tapRightLabel(gesture: UITapGestureRecognizer) {
+        if let claim = dataSource.claim {
+        service.router.presentClaim(claimID: claim.id, scrollToVoting: true)
+        } else if let teammate =  dataSource.teammateInfo {
+            service.router.presentMemberProfile(teammateID: teammate.id, scrollToVote: true)
+        }
+    }
+    
+    @objc
     private func showClaimDetails(gesture: UITapGestureRecognizer) {
         guard let claim = dataSource.claim else { return }
         
-        service.router.presentClaim(claimID: claim.id)
+        service.router.presentClaim(claimID: claim.id, scrollToVoting: false)
     }
 
     @objc

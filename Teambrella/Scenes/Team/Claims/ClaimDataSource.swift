@@ -35,6 +35,13 @@ class ClaimDataSource {
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     
+    var voteCellIndexPath: IndexPath? {
+        for (idx, id) in cellIDs.enumerated() where id == ClaimVoteCell.cellID {
+            return IndexPath(row: idx, section: 0)
+        }
+        return nil
+    }
+    
     func rows(for section: Int) -> Int {
         return cellIDs.count
     }

@@ -39,6 +39,8 @@ final class TeammateProfileVC: UIViewController, Routable {
     var chosenRisk: Double?
     var isRiskScaleUpdateNeeded = true
     var isPeeking: Bool = false
+    var scrollToVote: Bool = false
+    
     var shouldAddGradientNavBar: Bool { return teammateID != nil }
     
     var votingRiskCell: VotingRiskCell? {
@@ -71,6 +73,10 @@ final class TeammateProfileVC: UIViewController, Routable {
             self.collectionView.reloadData()
             if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
                 flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate
+            }
+            if self.scrollToVote, let index = self.dataSource.votingCellIndexPath {
+                self.scrollToVote = false
+                self.collectionView.scrollToItem(at: index, at: .top, animated: true)
             }
         }
     }
