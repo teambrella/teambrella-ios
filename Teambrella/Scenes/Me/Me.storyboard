@@ -642,7 +642,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="kRq-pR-zwp" customClass="Label" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="109" y="24" width="57.5" height="16"/>
+                                        <rect key="frame" x="109" y="23" width="56" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="OzN-6s-0Vc"/>
                                         </constraints>
@@ -694,7 +694,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvj-xs-7a8">
-                                <rect key="frame" x="148.5" y="450" width="78" height="17"/>
+                                <rect key="frame" x="150.5" y="450" width="74" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="eED-6j-NkD"/>
                                 </constraints>

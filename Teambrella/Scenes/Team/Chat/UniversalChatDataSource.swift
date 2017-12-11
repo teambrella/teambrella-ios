@@ -46,6 +46,8 @@ final class UniversalChatDatasource {
     
     var name: String?
     
+    var chatModel: ChatModel?
+    
     private var chunks: [ChatChunk]                 = []
     private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
     private var cellModelBuilder                    = ChatModelBuilder()
@@ -326,6 +328,7 @@ final class UniversalChatDatasource {
         let filteredModel = removeChatDuplicates(chat: model.chat)
         addModels(models: filteredModel, isPrevious: isPrevious)
         //claim?.update(with: model.basicPart)
+        chatModel = model
         if model.chat.isEmpty {
             if isPrevious {
                 hasPrevious = false

@@ -89,12 +89,14 @@ final class UniversalChatVC: UIViewController, Routable {
         super.viewDidLoad()
         addGradientNavBar()
         addMuteButton(muteType: .subscribed) //fake
-        setupObjectView()
+        setupInitialObjectView()
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
         dataSource.onUpdate = { [weak self] backward, hasNew, isFirstLoad in
             guard let `self` = self else { return }
+            
+            self.setupActualObjectView()
             guard hasNew else {
                 if isFirstLoad {
                     self.shouldScrollToBottomASilently = true
@@ -494,7 +496,7 @@ private extension UniversalChatVC {
         input.adjustHeight()
     }
     
-    private func setupObjectView() {
+    private func setupInitialObjectView() {
         //claimObjectView.isHidden = true //tmp
         let tap = UITapGestureRecognizer()
         ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
@@ -510,6 +512,9 @@ private extension UniversalChatVC {
             return
         }
         objectView.addGestureRecognizer(tap)
+    }
+    
+    private func setupActualObjectView() {
     }
     
     private func linkImage(image: UIImage, name: String) {

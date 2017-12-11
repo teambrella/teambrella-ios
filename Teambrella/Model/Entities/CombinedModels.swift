@@ -62,12 +62,32 @@ struct ChatModel {
     let chat: [ChatEntity]
     let basicPart: JSON
     let teamPart: JSON
+    let votingPart: JSON
     
-    var topicID: String { return discussion["TopicId"].stringValue }
-    var title: String { return basicPart["Title"].stringValue }
+    // Basic Part
+    var year: Int { return basicPart["Year"].intValue }
     var userID: String { return basicPart["UserId"].stringValue }
-    var lastRead: Int64 { return discussion["LastRead"].int64Value }
+    var model: String { return basicPart["Model"].stringValue }
+    var name: String { return basicPart["Name"].stringValue }
+    var smallPhoto: String { return basicPart["SmallPhoto"].stringValue }
+    var avatar: String { return basicPart["Avatar"].stringValue }
+    
+    var title: String { return basicPart["Title"].stringValue }
+
+    // Voting Part
+    var remainingMinutes: Int { return votingPart["RemainedMinutes"].intValue }
+    var proxyName: String? { return votingPart["ProxyName"].string }
+    var vote: Double? { return votingPart["MyVote"].double }
+    var riskVoted: Double? { return votingPart["RiskVoted"].double }
+    
+    //TeamPart
+    var coverageType: CoverageType? { return teamPart["CoverageType"].int.flatMap { CoverageType(rawValue: $0) } }
+    var currency: String { return teamPart["Currency"].stringValue }
     var teamAccessLevel: TeamAccessLevel {
         return TeamAccessLevel(rawValue: teamPart["TeamAccessLevel"].intValue) ?? .noAccess
     }
+    
+    // Discussion Part
+    var topicID: String { return discussion["TopicId"].stringValue }
+    var lastRead: Int64 { return discussion["LastRead"].int64Value }
 }

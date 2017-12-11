@@ -218,7 +218,8 @@ struct TeambrellaRequest {
                                   discussion: discussion,
                                   chat: chat,
                                   basicPart: reply["BasicPart"],
-                                  teamPart: reply["TeamPart"])
+                                  teamPart: reply["TeamPart"],
+                                  votingPart: reply["VotingPart"])
             success(.chat(model))
         case .teamFeed:
             success(.teamFeed(reply, PagingInfo(json: additional)))
