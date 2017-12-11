@@ -97,6 +97,7 @@ final class UniversalChatVC: UIViewController, Routable {
             guard let `self` = self else { return }
             
             self.setupActualObjectView()
+            self.setupTitle()
             guard hasNew else {
                 if isFirstLoad {
                     self.shouldScrollToBottomASilently = true
@@ -108,7 +109,7 @@ final class UniversalChatVC: UIViewController, Routable {
             self.refresh(backward: backward)
         }
         dataSource.isLoadNextNeeded = true
-        title = dataSource.title
+        title = ""
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapRightLabel))
         objectRightLabel.addGestureRecognizer(tap)
@@ -279,31 +280,35 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     private func tapRightLabel(gesture: UITapGestureRecognizer) {
-        if let claim = dataSource.claim {
-        service.router.presentClaim(claimID: claim.id, scrollToVoting: true)
-        } else if let teammate =  dataSource.teammateInfo {
-            service.router.presentMemberProfile(teammateID: teammate.id, scrollToVote: true)
+        if (dataSource.chatModel?.basicPart as? BasicPartClaimConcrete) != nil, let id = dataSource.chatModel?.id {
+        service.router.presentClaim(claimID: id, scrollToVoting: true)
+        } else if let basic = dataSource.chatModel?.basicPart as? BasicPartTeammateConcrete {
+            service.router.presentMemberProfile(teammateID: basic.userID, scrollToVote: true)
         }
     }
     
     @objc
     private func showClaimDetails(gesture: UITapGestureRecognizer) {
-        guard let claim = dataSource.claim else { return }
+        guard let id = dataSource.chatModel?.id else { return }
         
-        service.router.presentClaim(claimID: claim.id, scrollToVoting: false)
+        service.router.presentClaim(claimID: id, scrollToVoting: false)
     }
 
     @objc
     private func showTeammateDetails(gesture: UITapGestureRecognizer) {
-        guard let teammate = dataSource.teammateInfo else { return }
+        guard let userID = dataSource.chatModel?.basicPart?.userID else { return }
         
-        service.router.presentMemberProfile(teammateID: teammate.id)
+        service.router.presentMemberProfile(teammateID: userID)
     }
     
 }
 
 // MARK: Private
 private extension UniversalChatVC {
+    private func setupTitle() {
+        title = dataSource.title
+    }
+    
     private func setupClaimObjectView(with claim: EnhancedClaimEntity) {
         objectNameLabel.text = claim.model
         objectDetailsLabel.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
@@ -324,6 +329,28 @@ private extension UniversalChatVC {
         objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
     }
     
+    private func setupClaimObjectView(basic: BasicPartClaimConcrete,
+                                      voting: VotingPartClaimConcrete?,
+                                      team: TeamPart) {
+        objectNameLabel.text = basic.model
+        objectDetailsLabel.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
+            + String(format: "%.2f", basic.claimAmount)
+        objectBlueDetailsLabel.text = team.currency
+        objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
+        objectPercentLabel.text = "%"
+        objectRightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+        
+        objectImage.image = #imageLiteral(resourceName: "imagePlaceholder")
+        objectVoteLabel.text = "..."
+        let icon = basic.smallPhoto
+        
+        objectImage.showImage(string: icon)
+        guard let vote = voting?.myVote else { return }
+        
+        objectVoteLabel.text = String(format: "%.f", vote * 100)
+        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+    }
+    
     private func setupTeammateObjectView(with teammate: TeammateBasicInfo) {
         objectNameLabel.text = teammate.name.short
         objectImage.showImage(string: teammate.avatar)
@@ -338,6 +365,26 @@ private extension UniversalChatVC {
         //
         //        objectVoteLabel.text = String(format: "%.2f", vote)
         //        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+    }
+    
+     private func setupTeammateObjectView(basic: BasicPartTeammateConcrete,
+                                          voting: VotingPartTeammateConcrete?,
+                                          team: TeamPart) {
+        objectNameLabel.text = basic.name.short
+        objectImage.showImage(string: basic.avatar)
+        objectDetailsLabel.text = "\(basic.model.uppercased()),  \(basic.year)"
+        objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
+        objectRightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+        objectBlueDetailsLabel.text = nil
+        objectPercentLabel.isHidden = true
+        
+        guard let vote = voting?.myVote else {
+            objectVoteLabel.text = "..."
+            objectBlueDetailsLabel.isHidden = true
+            return
+        }
+         objectVoteLabel.text = String(format: "%.2f", vote)
+        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
     }
     
     private func setupCollectionView() {
@@ -498,23 +545,46 @@ private extension UniversalChatVC {
     
     private func setupInitialObjectView() {
         //claimObjectView.isHidden = true //tmp
-        let tap = UITapGestureRecognizer()
+        //let tap = UITapGestureRecognizer()
         ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
         if let claim = dataSource.claim {
             setupClaimObjectView(with: claim)
-            tap.addTarget(self, action: #selector(showClaimDetails))
+           // tap.addTarget(self, action: #selector(showClaimDetails))
         } else if let teammate = dataSource.teammateInfo {
             setupTeammateObjectView(with: teammate)
-            tap.addTarget(self, action: #selector(showTeammateDetails))
+            //tap.addTarget(self, action: #selector(showTeammateDetails))
+        } else {
+            objectViewHeight.constant = 0
+            objectView.isHidden = true
+            return
+        }
+        //objectView.addGestureRecognizer(tap)
+    }
+    
+    private func setupActualObjectView() {
+        guard let teamPart = dataSource.chatModel?.teamPart else { return }
+        
+        let tap = UITapGestureRecognizer()
+        if let basicPart = dataSource.chatModel?.basicPart as? BasicPartClaimConcrete {
+            setupClaimObjectView(basic: basicPart,
+                                 voting: dataSource.chatModel?.votingPart as? VotingPartClaimConcrete,
+                                 team: teamPart)
+             tap.addTarget(self, action: #selector(showClaimDetails))
+            objectViewHeight.constant = 48
+            objectView.isHidden = false
+        } else if let basicPart = dataSource.chatModel?.basicPart as? BasicPartTeammateConcrete {
+            setupTeammateObjectView(basic: basicPart,
+                                    voting: dataSource.chatModel?.votingPart as? VotingPartTeammateConcrete,
+                                    team: teamPart)
+              tap.addTarget(self, action: #selector(showTeammateDetails))
+            objectViewHeight.constant = 48
+            objectView.isHidden = false
         } else {
             objectViewHeight.constant = 0
             objectView.isHidden = true
             return
         }
         objectView.addGestureRecognizer(tap)
-    }
-    
-    private func setupActualObjectView() {
     }
     
     private func linkImage(image: UIImage, name: String) {

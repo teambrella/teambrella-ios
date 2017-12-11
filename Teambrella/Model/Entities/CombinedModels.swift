@@ -60,31 +60,24 @@ struct ChatModel {
     let discussion: JSON
     //let lastRead: Int64
     let chat: [ChatEntity]
-    let basicPart: JSON
-    let teamPart: JSON
-    let votingPart: JSON
+    let basicPart: BasicPart?
+    let teamPart: TeamPart?
+    let votingPart: VotingPart?
     
-    // Basic Part
-    var year: Int { return basicPart["Year"].intValue }
-    var userID: String { return basicPart["UserId"].stringValue }
-    var model: String { return basicPart["Model"].stringValue }
-    var name: String { return basicPart["Name"].stringValue }
-    var smallPhoto: String { return basicPart["SmallPhoto"].stringValue }
-    var avatar: String { return basicPart["Avatar"].stringValue }
+    // teammateID or claimID
+    let id: Int
     
-    var title: String { return basicPart["Title"].stringValue }
-
-    // Voting Part
-    var remainingMinutes: Int { return votingPart["RemainedMinutes"].intValue }
-    var proxyName: String? { return votingPart["ProxyName"].string }
-    var vote: Double? { return votingPart["MyVote"].double }
-    var riskVoted: Double? { return votingPart["RiskVoted"].double }
+    let title: String
     
-    //TeamPart
-    var coverageType: CoverageType? { return teamPart["CoverageType"].int.flatMap { CoverageType(rawValue: $0) } }
-    var currency: String { return teamPart["Currency"].stringValue }
-    var teamAccessLevel: TeamAccessLevel {
-        return TeamAccessLevel(rawValue: teamPart["TeamAccessLevel"].intValue) ?? .noAccess
+    init(json: JSON, chat: [ChatEntity]) {
+        lastUpdated = json["LastUpdated"].int64Value
+        discussion = json["DiscussionPart"]
+        self.chat = chat
+        basicPart = BasicPartFactory.basicPart(from: json)
+        teamPart = TeamPartFactory.teamPart(from: json)
+        votingPart = VotingPartFactory.votingPart(from: json)
+        title = json["Title"].stringValue
+        id = json["Id"].intValue
     }
     
     // Discussion Part

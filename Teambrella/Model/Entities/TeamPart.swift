@@ -37,7 +37,7 @@ struct TeamPartConcrete: TeamPart {
 }
 
 struct TeamPartFactory {
-    static func votingPart(from json: JSON) -> TeamPart? {
+    static func teamPart(from json: JSON) -> TeamPart? {
         var json = json
         if json["TeamPart"].exists() { json = json["TeamPart"] }
         

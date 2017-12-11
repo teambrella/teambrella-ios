@@ -19,7 +19,7 @@ import SwiftyJSON
 
 protocol BasicPart {
     var userID: String { get }
-    var name: String { get }
+    var name: Name { get }
     var avatar: String { get }
     var model: String { get }
     var year: Int { get }
@@ -30,7 +30,7 @@ protocol BasicPart {
 
 struct BasicPartTeammateConcrete: BasicPart {
     let userID: String
-    let name: String
+    let name: Name
     let avatar: String
     let model: String
     let year: Int
@@ -38,7 +38,7 @@ struct BasicPartTeammateConcrete: BasicPart {
     
     init(json: JSON) {
         userID = json["UserId"].stringValue
-        name = json["Name"].stringValue
+        name = Name(fullName: json["Name"].stringValue)
         avatar = json["Avatar"].stringValue
         model = json["Model"].stringValue
         year = json["Year"].intValue
@@ -48,11 +48,11 @@ struct BasicPartTeammateConcrete: BasicPart {
 
 struct BasicPartClaimConcrete: BasicPart {
     let userID: String
-    let name: String
+    let name: Name
     let avatar: String
     let model: String
     let year: Int
-    var smallPhoto: String { return smallPhotos.first ?? "" }
+    var smallPhoto: String 
     
     let deductible: Double
     let bigPhotos: [String]
@@ -61,21 +61,24 @@ struct BasicPartClaimConcrete: BasicPart {
     let claimAmount: Double
     let estimatedExpenses: Double
     let incidentDate: Date?
+    let state: ClaimState
     
     init(json: JSON) {
         userID = json["UserId"].stringValue
-        name = json["Name"].stringValue
+        name = Name(fullName: json["Name"].stringValue)
         avatar = json["Avatar"].stringValue
         model = json["Model"].stringValue
         year = json["Year"].intValue
         
         deductible = json["Deductible"].doubleValue
         bigPhotos = json["BigPhotos"].arrayObject as? [String] ?? []
-        smallPhotos = json["BigPhotos"].arrayObject as? [String] ?? []
+        smallPhotos = json["SmallPhotos"].arrayObject as? [String] ?? []
+        smallPhoto = json["SmallPhoto"].stringValue
         coverage = json["Coverage"].doubleValue
         claimAmount = json["ClaimAmount"].doubleValue
         estimatedExpenses = json["EstimatedExpenses"].doubleValue
         incidentDate = Formatter.teambrella.date(from: json["IncidentDate"].stringValue)
+        state = ClaimState(rawValue: json["State"].intValue) ?? .voting
     }
     
 }
