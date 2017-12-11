@@ -155,7 +155,7 @@ class ChatTextCell: UICollectionViewCell {
             setupLeftLabel(name: model.userName, baseFrame: baseFrame)
             setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
-                setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
+            setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
             return setupFragments(fragments: model.fragments, heights: model.fragmentHeights)
         } else if let model = model as? ChatTextUnsentCellModel {
             id = model.id
@@ -310,10 +310,10 @@ class ChatTextCell: UICollectionViewCell {
         for (idx, fragment) in fragments.enumerated() {
             switch fragment {
             case let .text(text):
-                let label: UILabel = createLabel(for: text, height: heights[idx])
-                contentView.addSubview(label)
-                views.append(label)
-                result.append(label)
+                let textView: UITextView = createTextView(for: text, height: heights[idx])
+                contentView.addSubview(textView)
+                views.append(textView)
+                result.append(textView)
             case let .image(urlString: urlString, urlStringSmall: urlStringSmall, aspect: _):
                 let imageView = createGalleryView(for: urlString, small: urlStringSmall, height: heights[idx])
                 contentView.addSubview(imageView)
@@ -324,22 +324,25 @@ class ChatTextCell: UICollectionViewCell {
         return result
     }
     
-    private func createLabel(for text: String, height: CGFloat) -> UILabel {
+    private func createTextView(for text: String, height: CGFloat) -> UITextView {
         let verticalOffset: CGFloat
         if let lastMaxY = views.last?.frame.maxY {
-        verticalOffset = lastMaxY + 8
+            verticalOffset = lastMaxY + 8
         } else {
             verticalOffset = leftLabel.frame.maxY + 8
         }
-        let label = UILabel(frame: CGRect(x: cloudBodyMinX + 8,
-                                          y: verticalOffset,
-                                          width: cloudWidth - 16,
-                                          height: height))
-        label.textColor = .charcoalGray
-        label.text = text
-        label.font = UIFont.teambrella(size: 14)
-        label.numberOfLines = 0
-        return label
+        let textView = UITextView(frame: CGRect(x: cloudBodyMinX + 8,
+                                                y: verticalOffset,
+                                                width: cloudWidth - 16,
+                                                height: height))
+        
+        textView.textColor = .charcoalGray
+        textView.text = text
+        textView.font = UIFont.teambrella(size: 14)
+        textView.backgroundColor = .clear
+        textView.isEditable = false
+        textView.dataDetectorTypes = .all
+        return textView
     }
     
     private func createGalleryView(for urlString: String, small: String, height: CGFloat) -> GalleryView {
