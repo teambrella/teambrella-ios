@@ -342,6 +342,11 @@ class ChatTextCell: UICollectionViewCell {
         textView.backgroundColor = .clear
         textView.isEditable = false
         textView.dataDetectorTypes = .all
+        textView.isScrollEnabled = false
+        
+        // fix (remove) textView top padding
+        textView.textContainer.lineFragmentPadding = 0
+        textView.textContainerInset = .zero
         return textView
     }
     
