@@ -155,36 +155,10 @@ final class UniversalChatVC: UIViewController, Routable {
         service.socket?.remove(listener: socketToken)
     }
     
-    func setContext(context: ChatContext, itemType: ItemType) {
-        dataSource.addContext(context: context, itemType: itemType)
-    }
+    // MARK: Public
     
-    func showMuteInfo(muteType: TopicMuteType) {
-        let cloudView = CloudView()
-        self.view.addSubview(cloudView)
-        let rightCloudOffset: CGFloat = 8
-        let peekX: CGFloat = muteButton.convert(self.muteButton.frame, to: nil).midX
-        cloudView.rightPeekOffset = self.view.bounds.maxX - peekX - rightCloudOffset
-        // add constraints
-        cloudView.translatesAutoresizingMaskIntoConstraints = false
-        cloudView.leadingAnchor.constraint(greaterThanOrEqualTo: self.view.leadingAnchor, constant: 8).isActive = true
-        cloudView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,
-                                            constant: -rightCloudOffset).isActive = true
-        cloudView.topAnchor.constraint(equalTo: self.view.topAnchor,
-                                       constant: 3 + objectView.frame.minY).isActive = true
-        cloudView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 0, alpha: 0)
-        cloudView.alpha = 0
-        if muteType == .unmuted {
-            cloudView.title = "Team.Chat.Unmute".localized
-        } else {
-            cloudView.title = "Team.Chat.Mute".localized
-        }
-        cloudView.appear()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            cloudView.disappear {
-                cloudView.removeFromSuperview()
-            }
-        }
+   public func setContext(context: ChatContext, itemType: ItemType) {
+        dataSource.addContext(context: context, itemType: itemType)
     }
     
     public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
@@ -307,6 +281,34 @@ final class UniversalChatVC: UIViewController, Routable {
 
 // MARK: Private
 private extension UniversalChatVC {
+    private func showMuteInfo(muteType: TopicMuteType) {
+        let cloudView = CloudView()
+        self.view.addSubview(cloudView)
+        let rightCloudOffset: CGFloat = 8
+        let peekX: CGFloat = muteButton.convert(self.muteButton.frame, to: nil).midX
+        cloudView.rightPeekOffset = self.view.bounds.maxX - peekX - rightCloudOffset
+        // add constraints
+        cloudView.translatesAutoresizingMaskIntoConstraints = false
+        cloudView.leadingAnchor.constraint(greaterThanOrEqualTo: self.view.leadingAnchor, constant: 8).isActive = true
+        cloudView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,
+                                            constant: -rightCloudOffset).isActive = true
+        cloudView.topAnchor.constraint(equalTo: self.view.topAnchor,
+                                       constant: 3 + objectView.frame.minY).isActive = true
+        cloudView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 0, alpha: 0)
+        cloudView.alpha = 0
+        if muteType == .unmuted {
+            cloudView.title = "Team.Chat.Unmute".localized
+        } else {
+            cloudView.title = "Team.Chat.Mute".localized
+        }
+        cloudView.appear()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            cloudView.disappear {
+                cloudView.removeFromSuperview()
+            }
+        }
+    }
+    
     private func setupTitle() {
         title = dataSource.title
     }
@@ -817,6 +819,6 @@ extension UniversalChatVC: MuteControllerDelegate {
     }
     
     func didCloseMuteController(controller: MuteVC) {
-        //showMuteInfo(muteType: .subscribed) //fake
+    
     }
 }

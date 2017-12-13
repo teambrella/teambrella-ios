@@ -109,9 +109,9 @@ final class UniversalChatDatasource {
             return strategy.title
         }
         
-        if let basicPart = chatModel.basicPart as? BasicPartClaimConcrete {
+        if chatModel.basicPart is BasicPartClaimConcrete {
             return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(chatModel.id)"
-        } else if let basicPart = chatModel.basicPart as? BasicPartTeammateConcrete {
+        } else if chatModel.basicPart is BasicPartTeammateConcrete {
             return "Team.Chat.TypeLabel.application".localized.lowercased().capitalized
         } else {
             return strategy.title
