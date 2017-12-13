@@ -83,4 +83,5 @@ struct ChatModel {
     // Discussion Part
     var topicID: String { return discussion["TopicId"].stringValue }
     var lastRead: Int64 { return discussion["LastRead"].int64Value }
+    var isMuted: Bool? { return discussion["IsMuted"].bool }
 }

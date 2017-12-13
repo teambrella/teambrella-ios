@@ -26,6 +26,13 @@ class MuteVC: UIViewController, Routable {
         case unknown = -1
         case subscribed = 0
         case unsubscribed = 1
+        
+        static func from(boolean: Bool?) -> NotificationsType {
+        if let boolean = boolean {
+        return boolean == true ? .unsubscribed : .subscribed
+        }
+        return .unknown
+        }
     }
     
     static let storyboardName = "Chat"
@@ -43,7 +50,7 @@ class MuteVC: UIViewController, Routable {
     var type: NotificationsType = .unknown
     
     @IBAction func tapClose(_ sender: Any) {
-       close()
+        close()
     }
     
     private func close() {

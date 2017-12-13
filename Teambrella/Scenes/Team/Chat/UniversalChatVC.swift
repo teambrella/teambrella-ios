@@ -88,7 +88,8 @@ final class UniversalChatVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
-        addMuteButton(muteType: .subscribed) //fake
+        addMuteButton()
+        setMuteButtonImage(type: dataSource.notificationsType)
         setupInitialObjectView()
         setupCollectionView()
         setupInput()
@@ -98,6 +99,7 @@ final class UniversalChatVC: UIViewController, Routable {
             
             self.setupActualObjectView()
             self.setupTitle()
+            self.setMuteButtonImage(type: self.dataSource.notificationsType)
             guard hasNew else {
                 if isFirstLoad {
                     self.shouldScrollToBottomASilently = true
@@ -407,20 +409,23 @@ private extension UniversalChatVC {
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
     }
-    
-    private func addMuteButton(muteType: MuteVC.NotificationsType) {
-        let image: UIImage
-        if muteType == .unsubscribed {
-            image = #imageLiteral(resourceName: "iconBellMuted1")
-        } else {
-            image = #imageLiteral(resourceName: "iconBell1")
-        }
+
+    private func addMuteButton() {
         let button = UIButton()
-        button.setImage(image, for: .normal)
         let barItem = UIBarButtonItem(customView: button)
         button.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
         self.muteButton = button
         navigationItem.setRightBarButton(barItem, animated: true)
+    }
+    
+    private func setMuteButtonImage(type: MuteVC.NotificationsType) {
+        let image: UIImage
+        if  type == .unsubscribed {
+            image = #imageLiteral(resourceName: "iconBellMuted1")
+        } else {
+            image = #imageLiteral(resourceName: "iconBell1")
+        }
+        muteButton.setImage(image, for: .normal)
     }
     
     private func registerCells() {
@@ -800,6 +805,7 @@ extension UniversalChatVC: MuteControllerDelegate {
     func mute(controller: MuteVC, didSelect type: MuteVC.NotificationsType) {
         dataSource.mute(type: type) { [weak self] success in
             self?.showMuteInfo(muteType: type)
+            self?.setMuteButtonImage(type: type)
         }
     }
     
