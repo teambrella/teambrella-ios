@@ -350,20 +350,18 @@ class ChatTextCell: UICollectionViewCell {
         return textView
     }
     
-    private func createGalleryView(for urlString: String, small: String, height: CGFloat) -> GalleryView {
+    private func createGalleryView(for urlString: String, small: String, height: CGFloat) -> UIImageView {
         let verticalOffset = views.last?.frame.maxY ?? leftLabel.frame.maxY + 8
         let separator: CGFloat = 2.0
-        
-        let imageView = GalleryView(frame: CGRect(x: cloudBodyMinX + separator,
+        let imageView = ChatImageView(frame: CGRect(x: cloudBodyMinX + separator,
                                                   y: verticalOffset + separator,
                                                   width: cloudWidth - separator * 2,
                                                   height: height))
-        imageView.contentMode = .scaleAspectFill
+         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.present(imageString: small)
-        imageView.present(imageString: urlString)
-        imageView.onTap = { [weak self] sender in
-            self?.onTap(galleryView: sender)
+        imageView.setStartingImage(small: small, large: urlString)
+        imageView.onTap = { [weak self] galleryView in
+            self?.onTap(galleryView: galleryView)
         }
         return imageView
     }
@@ -372,4 +370,44 @@ class ChatTextCell: UICollectionViewCell {
         onTapImage?(self, galleryView)
     }
     
+}
+
+class ChatImageView: UIImageView {
+    var galleryImages: [String] = []
+    var startingImageString: String?
+    var onTap: ((GalleryView) -> Void)?
+    
+    var galleryView: GalleryView?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapView))
+        addGestureRecognizer(tap)
+    }
+    
+    func setStartingImage(small: String, large: String) {
+        self.showImage(string: small)
+        startingImageString = large
+        
+        galleryView?.removeFromSuperview()
+        let imageView = GalleryView(frame: bounds)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.present(imageString: large)
+        galleryView = imageView
+    }
+    
+    @objc
+    func tapView(sender: UITapGestureRecognizer) {
+        print("tap")
+        guard let galleryView = galleryView else { return }
+   
+        self.addSubview(galleryView)
+        self.onTap?(galleryView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
