@@ -17,17 +17,25 @@
 import UIKit
 
 protocol MuteControllerDelegate: class {
-    func mute(controller: MuteVC, didSelect type: MuteVC.NotificationsType)
+    func mute(controller: MuteVC, didSelect type: TopicMuteType)
     func didCloseMuteController(controller: MuteVC)
 }
 
-class MuteVC: UIViewController, Routable {
-    enum NotificationsType: Int {
-        case subscribed = 0
-        case unsubscribed = 1
-    }
+enum TopicMuteType: Int {
+    case unknown = -1
+    case unmuted = 0
+    case muted = 1
     
-    static let storyboardName = "Chat"
+    static func type(from boolean: Bool?) -> TopicMuteType {
+        if let boolean = boolean {
+            return boolean == true ? .muted : .unmuted
+        }
+        return .unknown
+    }
+}
+
+class MuteVC: UIViewController, Routable {
+   static let storyboardName = "Chat"
     
     @IBOutlet var backView: UIView!
     @IBOutlet var muteView: UIView!
@@ -39,9 +47,13 @@ class MuteVC: UIViewController, Routable {
     fileprivate var dataSource = MuteDataSource()
     weak var delegate: MuteControllerDelegate?
     
-    var type: NotificationsType = .subscribed
+    var type: TopicMuteType = .unknown
     
     @IBAction func tapClose(_ sender: Any) {
+        close()
+    }
+    
+    private func close() {
         disappear {
             self.delegate?.didCloseMuteController(controller: self)
             self.dismiss(animated: false, completion: nil)
@@ -113,9 +125,10 @@ extension MuteVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.cellForItem(at: indexPath) is MuteCell {
-            type = NotificationsType(rawValue: indexPath.row) ?? .subscribed
+            type = TopicMuteType(rawValue: indexPath.row) ?? .unknown
             delegate?.mute(controller: self, didSelect: type)
             collectionView.reloadData()
+            close()
         }
     }
 }

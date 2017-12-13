@@ -58,6 +58,7 @@ final class UniversalChatVC: UIViewController, Routable {
     @IBOutlet var objectVoteLabel: TitleLabel!
     @IBOutlet var objectPercentLabel: TitleLabel!
     @IBOutlet var objectRightLabel: UILabel!
+    @IBOutlet var objectAvatarView: RoundImageView!
     
     override var inputAccessoryView: UIView? { return input }
     override var canBecomeFirstResponder: Bool { return true }
@@ -87,13 +88,18 @@ final class UniversalChatVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
-        addMuteButton(muteType: .subscribed) //fake
-        setupObjectView()
+        addMuteButton()
+        setMuteButtonImage(type: dataSource.notificationsType)
+        setupInitialObjectView()
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
         dataSource.onUpdate = { [weak self] backward, hasNew, isFirstLoad in
             guard let `self` = self else { return }
+            
+            self.setupActualObjectView()
+            self.setupTitle()
+            self.setMuteButtonImage(type: self.dataSource.notificationsType)
             guard hasNew else {
                 if isFirstLoad {
                     self.shouldScrollToBottomASilently = true
@@ -105,7 +111,10 @@ final class UniversalChatVC: UIViewController, Routable {
             self.refresh(backward: backward)
         }
         dataSource.isLoadNextNeeded = true
-        title = dataSource.title
+        title = ""
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapRightLabel))
+        objectRightLabel.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,36 +155,10 @@ final class UniversalChatVC: UIViewController, Routable {
         service.socket?.remove(listener: socketToken)
     }
     
-    func setContext(context: ChatContext, itemType: ItemType) {
-        dataSource.addContext(context: context, itemType: itemType)
-    }
+    // MARK: Public
     
-    func showMuteInfo(muteType: MuteVC.NotificationsType) {
-        let cloudView = CloudView()
-        self.view.addSubview(cloudView)
-        let rightCloudOffset: CGFloat = 8
-        let peekX: CGFloat = muteButton.convert(self.muteButton.frame, to: nil).midX
-        cloudView.rightPeekOffset = self.view.bounds.maxX - peekX - rightCloudOffset
-        // add constraints
-        cloudView.translatesAutoresizingMaskIntoConstraints = false
-        cloudView.leadingAnchor.constraint(greaterThanOrEqualTo: self.view.leadingAnchor, constant: 8).isActive = true
-        cloudView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,
-                                            constant: -rightCloudOffset).isActive = true
-        cloudView.topAnchor.constraint(equalTo: self.view.topAnchor,
-                                       constant: 3 + objectView.frame.minY).isActive = true
-        cloudView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 0, alpha: 0)
-        cloudView.alpha = 0
-        if muteType == .subscribed {
-            cloudView.title = "Team.Chat.Unmute".localized
-        } else {
-            cloudView.title = "Team.Chat.Mute".localized
-        }
-        cloudView.appear()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            cloudView.disappear {
-                cloudView.removeFromSuperview()
-            }
-        }
+   public func setContext(context: ChatContext, itemType: ItemType) {
+        dataSource.addContext(context: context, itemType: itemType)
     }
     
     public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
@@ -272,23 +255,64 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     @objc
+    private func tapRightLabel(gesture: UITapGestureRecognizer) {
+        if (dataSource.chatModel?.basicPart as? BasicPartClaimConcrete) != nil, let id = dataSource.chatModel?.id {
+        service.router.presentClaim(claimID: id, scrollToVoting: true)
+        } else if let basic = dataSource.chatModel?.basicPart as? BasicPartTeammateConcrete {
+            service.router.presentMemberProfile(teammateID: basic.userID, scrollToVote: true)
+        }
+    }
+    
+    @objc
     private func showClaimDetails(gesture: UITapGestureRecognizer) {
-        guard let claim = dataSource.claim else { return }
+        guard let id = dataSource.chatModel?.id else { return }
         
-        service.router.presentClaim(claimID: claim.id)
+        service.router.presentClaim(claimID: id, scrollToVoting: false)
     }
 
     @objc
     private func showTeammateDetails(gesture: UITapGestureRecognizer) {
-        guard let teammate = dataSource.teammateInfo else { return }
+        guard let userID = dataSource.chatModel?.basicPart?.userID else { return }
         
-        service.router.presentMemberProfile(teammateID: teammate.id)
+        service.router.presentMemberProfile(teammateID: userID)
     }
     
 }
 
 // MARK: Private
 private extension UniversalChatVC {
+    private func showMuteInfo(muteType: TopicMuteType) {
+        let cloudView = CloudView()
+        self.view.addSubview(cloudView)
+        let rightCloudOffset: CGFloat = 8
+        let peekX: CGFloat = muteButton.convert(self.muteButton.frame, to: nil).midX
+        cloudView.rightPeekOffset = self.view.bounds.maxX - peekX - rightCloudOffset
+        // add constraints
+        cloudView.translatesAutoresizingMaskIntoConstraints = false
+        cloudView.leadingAnchor.constraint(greaterThanOrEqualTo: self.view.leadingAnchor, constant: 8).isActive = true
+        cloudView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,
+                                            constant: -rightCloudOffset).isActive = true
+        cloudView.topAnchor.constraint(equalTo: self.view.topAnchor,
+                                       constant: 3 + objectView.frame.minY).isActive = true
+        cloudView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 0, alpha: 0)
+        cloudView.alpha = 0
+        if muteType == .unmuted {
+            cloudView.title = "Team.Chat.Unmute".localized
+        } else {
+            cloudView.title = "Team.Chat.Mute".localized
+        }
+        cloudView.appear()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            cloudView.disappear {
+                cloudView.removeFromSuperview()
+            }
+        }
+    }
+    
+    private func setupTitle() {
+        title = dataSource.title
+    }
+    
     private func setupClaimObjectView(with claim: EnhancedClaimEntity) {
         objectNameLabel.text = claim.model
         objectDetailsLabel.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
@@ -309,6 +333,28 @@ private extension UniversalChatVC {
         objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
     }
     
+    private func setupClaimObjectView(basic: BasicPartClaimConcrete,
+                                      voting: VotingPartClaimConcrete?,
+                                      team: TeamPart) {
+        objectNameLabel.text = basic.model
+        objectDetailsLabel.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
+            + String(format: "%.2f", basic.claimAmount)
+        objectBlueDetailsLabel.text = team.currency
+        objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
+        objectPercentLabel.text = "%"
+        objectRightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+        
+        objectImage.image = #imageLiteral(resourceName: "imagePlaceholder")
+        objectVoteLabel.text = "..."
+        let icon = basic.smallPhoto
+        
+        objectImage.showImage(string: icon)
+        guard let vote = voting?.myVote else { return }
+        
+        objectVoteLabel.text = String(format: "%.f", vote * 100)
+        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+    }
+    
     private func setupTeammateObjectView(with teammate: TeammateBasicInfo) {
         objectNameLabel.text = teammate.name.short
         objectImage.showImage(string: teammate.avatar)
@@ -323,6 +369,26 @@ private extension UniversalChatVC {
         //
         //        objectVoteLabel.text = String(format: "%.2f", vote)
         //        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+    }
+    
+     private func setupTeammateObjectView(basic: BasicPartTeammateConcrete,
+                                          voting: VotingPartTeammateConcrete?,
+                                          team: TeamPart) {
+        objectNameLabel.text = basic.name.short
+        objectImage.showImage(string: basic.avatar)
+        objectDetailsLabel.text = "\(basic.model.uppercased()),  \(basic.year)"
+        objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
+        objectRightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+        objectBlueDetailsLabel.text = nil
+        objectPercentLabel.isHidden = true
+        
+        guard let vote = voting?.myVote else {
+            objectVoteLabel.text = "..."
+            objectBlueDetailsLabel.isHidden = true
+            return
+        }
+         objectVoteLabel.text = String(format: "%.2f", vote)
+        objectRightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
     }
     
     private func setupCollectionView() {
@@ -345,15 +411,23 @@ private extension UniversalChatVC {
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
     }
-    
-    private func addMuteButton(muteType: MuteVC.NotificationsType) {
-        let image = muteType == .subscribed ? #imageLiteral(resourceName: "iconBell1") : #imageLiteral(resourceName: "iconBellMuted1")
+
+    private func addMuteButton() {
         let button = UIButton()
-        button.setImage(image, for: .normal)
         let barItem = UIBarButtonItem(customView: button)
         button.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
         self.muteButton = button
         navigationItem.setRightBarButton(barItem, animated: true)
+    }
+    
+    private func setMuteButtonImage(type: TopicMuteType) {
+        let image: UIImage
+        if  type == .muted {
+            image = #imageLiteral(resourceName: "iconBellMuted1")
+        } else {
+            image = #imageLiteral(resourceName: "iconBell1")
+        }
+        muteButton.setImage(image, for: .normal)
     }
     
     private func registerCells() {
@@ -479,18 +553,52 @@ private extension UniversalChatVC {
         dataSource.send(text: text, imageFragments: imageFragments)
         input.textView.text = nil
         input.adjustHeight()
+        
+        if dataSource.notificationsType == .unknown {
+            let type: TopicMuteType = .unmuted
+            dataSource.mute(type: type, completion: { [weak self] muted in
+                self?.showMuteInfo(muteType: type)
+                self?.setMuteButtonImage(type: type)
+            })
+        }
     }
     
-    private func setupObjectView() {
+    private func setupInitialObjectView() {
         //claimObjectView.isHidden = true //tmp
-        let tap = UITapGestureRecognizer()
+        //let tap = UITapGestureRecognizer()
         ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
         if let claim = dataSource.claim {
             setupClaimObjectView(with: claim)
-            tap.addTarget(self, action: #selector(showClaimDetails))
+           // tap.addTarget(self, action: #selector(showClaimDetails))
         } else if let teammate = dataSource.teammateInfo {
             setupTeammateObjectView(with: teammate)
-            tap.addTarget(self, action: #selector(showTeammateDetails))
+            //tap.addTarget(self, action: #selector(showTeammateDetails))
+        } else {
+            objectViewHeight.constant = 0
+            objectView.isHidden = true
+            return
+        }
+        //objectView.addGestureRecognizer(tap)
+    }
+    
+    private func setupActualObjectView() {
+        guard let teamPart = dataSource.chatModel?.teamPart else { return }
+        
+        let tap = UITapGestureRecognizer()
+        if let basicPart = dataSource.chatModel?.basicPart as? BasicPartClaimConcrete {
+            setupClaimObjectView(basic: basicPart,
+                                 voting: dataSource.chatModel?.votingPart as? VotingPartClaimConcrete,
+                                 team: teamPart)
+             tap.addTarget(self, action: #selector(showClaimDetails))
+            objectViewHeight.constant = 48
+            objectView.isHidden = false
+        } else if let basicPart = dataSource.chatModel?.basicPart as? BasicPartTeammateConcrete {
+            setupTeammateObjectView(basic: basicPart,
+                                    voting: dataSource.chatModel?.votingPart as? VotingPartTeammateConcrete,
+                                    team: teamPart)
+              tap.addTarget(self, action: #selector(showTeammateDetails))
+            objectViewHeight.constant = 48
+            objectView.isHidden = false
         } else {
             objectViewHeight.constant = 0
             objectView.isHidden = true
@@ -704,11 +812,13 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
 
 // MARK: MuteControllerDelegate
 extension UniversalChatVC: MuteControllerDelegate {
-    func mute(controller: MuteVC, didSelect type: MuteVC.NotificationsType) {
-        dataSource.mute(type: type)
+    func mute(controller: MuteVC, didSelect type: TopicMuteType) {
+        dataSource.mute(type: type) { [weak self] success in
+            self?.setMuteButtonImage(type: type)
+        }
     }
     
     func didCloseMuteController(controller: MuteVC) {
-        showMuteInfo(muteType: .subscribed) //fake
+    
     }
 }

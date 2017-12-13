@@ -108,10 +108,11 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
-    func presentClaim(claimID: Int, animated: Bool = true) {
+    func presentClaim(claimID: Int, scrollToVoting: Bool = false, animated: Bool = true) {
         guard let vc = getControllerClaim(claimID: claimID) else { fatalError("Error instantiating") }
         
         vc.claimID = claimID
+        vc.isScrollToVoteNeeded = scrollToVoting
         push(vc: vc, animated: animated)
     }
     
@@ -127,9 +128,10 @@ final class MainRouter {
         return vc
     }
     
-    func presentMemberProfile(teammateID: String, animated: Bool = true) {
+    func presentMemberProfile(teammateID: String, scrollToVote: Bool = false, animated: Bool = true) {
         guard let vc = getControllerMemberProfile(teammateID: teammateID) else { fatalError("Error instantiating") }
         
+        vc.scrollToVote = scrollToVote
         push(vc: vc, animated: animated)
     }
     
@@ -242,7 +244,7 @@ final class MainRouter {
     
     func showNotificationFilter(in viewController: UIViewController,
                                 delegate: MuteControllerDelegate,
-                                currentState type: MuteVC.NotificationsType) {
+                                currentState type: TopicMuteType) {
         guard let vc = MuteVC.instantiate() as? MuteVC else { fatalError("Error instantiating") }
         
         vc.delegate = delegate

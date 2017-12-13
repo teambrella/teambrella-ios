@@ -333,6 +333,23 @@ class ServerDAO: DAO {
         }
         return promise
     }
+
+    func mute(topicID: String, isMuted: Bool) -> Future<Bool> {
+        let promise = Promise<Bool>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TopicId": topicID,
+                                                       "IsMuted": isMuted])
+            let request = TeambrellaRequest(type: .mute, body: body, success: { response in
+                if case let .mute(success) = response {
+                    promise.resolve(with: success)
+                }
+            }, failure: { error in
+                promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
     
     func requestPrivateList(offset: Int, limit: Int, filter: String?) -> Future<[PrivateChatUser]> {
         let promise = Promise<[PrivateChatUser]>()
@@ -352,6 +369,7 @@ class ServerDAO: DAO {
         }
         return promise
     }
+    
     
     func freshKey(completion: @escaping (Key) -> Void) {
         if let time = lastKeyTime, Date().timeIntervalSince(time) < 60 * 10 {
