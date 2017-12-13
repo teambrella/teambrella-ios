@@ -39,11 +39,11 @@ class PushService: NSObject {
     func askPermissionsForRemoteNotifications(application: UIApplication) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             DispatchQueue.main.async {
-                if granted {
-                    application.registerForRemoteNotifications()
-                } else {
+                // moved token register to AppDelegate
+                //application.registerForRemoteNotifications()
+                if !granted {
                     log("User Notification permission denied: \(String(describing: error))", type: [.error, .push])
-                    service.error.present(error: error)
+                    //service.error.present(error: error)
                 }
             }
         }
