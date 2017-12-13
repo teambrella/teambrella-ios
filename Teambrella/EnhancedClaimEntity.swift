@@ -57,7 +57,7 @@ struct EnhancedClaimEntity {
     var smallPhotos: [String] { return basicPart["SmallPhotos"].arrayObject as? [String] ?? [] }
     var largePhotos: [String] { return basicPart["BigPhotos"].arrayObject as? [String] ?? [] }
     var claimAmount: Double { return basicPart["ClaimAmount"].doubleValue }
-    var estimatedExpences: Double { return basicPart["EstimatedExpences"].doubleValue }
+    var estimatedExpences: Double { return basicPart["EstimatedExpenses"].doubleValue }
     var deductible: Double { return basicPart["Deductible"].doubleValue }
     var coverage: Double { return basicPart["Coverage"].doubleValue }
     var incidentDate: Date? { return DateFormatter.teambrella.date(from: basicPart["IncidentDate"].stringValue) }
