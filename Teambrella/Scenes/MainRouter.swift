@@ -244,7 +244,7 @@ final class MainRouter {
     
     func showNotificationFilter(in viewController: UIViewController,
                                 delegate: MuteControllerDelegate,
-                                currentState type: MuteVC.NotificationsType) {
+                                currentState type: TopicMuteType) {
         guard let vc = MuteVC.instantiate() as? MuteVC else { fatalError("Error instantiating") }
         
         vc.delegate = delegate

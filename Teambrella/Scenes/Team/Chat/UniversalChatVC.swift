@@ -159,7 +159,7 @@ final class UniversalChatVC: UIViewController, Routable {
         dataSource.addContext(context: context, itemType: itemType)
     }
     
-    func showMuteInfo(muteType: MuteVC.NotificationsType) {
+    func showMuteInfo(muteType: TopicMuteType) {
         let cloudView = CloudView()
         self.view.addSubview(cloudView)
         let rightCloudOffset: CGFloat = 8
@@ -174,7 +174,7 @@ final class UniversalChatVC: UIViewController, Routable {
                                        constant: 3 + objectView.frame.minY).isActive = true
         cloudView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 0, alpha: 0)
         cloudView.alpha = 0
-        if muteType == .subscribed {
+        if muteType == .unmuted {
             cloudView.title = "Team.Chat.Unmute".localized
         } else {
             cloudView.title = "Team.Chat.Mute".localized
@@ -418,9 +418,9 @@ private extension UniversalChatVC {
         navigationItem.setRightBarButton(barItem, animated: true)
     }
     
-    private func setMuteButtonImage(type: MuteVC.NotificationsType) {
+    private func setMuteButtonImage(type: TopicMuteType) {
         let image: UIImage
-        if  type == .unsubscribed {
+        if  type == .muted {
             image = #imageLiteral(resourceName: "iconBellMuted1")
         } else {
             image = #imageLiteral(resourceName: "iconBell1")
@@ -551,6 +551,14 @@ private extension UniversalChatVC {
         dataSource.send(text: text, imageFragments: imageFragments)
         input.textView.text = nil
         input.adjustHeight()
+        
+        if dataSource.notificationsType == .unknown {
+            let type: TopicMuteType = .unmuted
+            dataSource.mute(type: type, completion: { [weak self] muted in
+                self?.showMuteInfo(muteType: type)
+                self?.setMuteButtonImage(type: type)
+            })
+        }
     }
     
     private func setupInitialObjectView() {
@@ -802,9 +810,8 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
 
 // MARK: MuteControllerDelegate
 extension UniversalChatVC: MuteControllerDelegate {
-    func mute(controller: MuteVC, didSelect type: MuteVC.NotificationsType) {
+    func mute(controller: MuteVC, didSelect type: TopicMuteType) {
         dataSource.mute(type: type) { [weak self] success in
-            self?.showMuteInfo(muteType: type)
             self?.setMuteButtonImage(type: type)
         }
     }
