@@ -28,7 +28,7 @@ class WithdrawModelBuilder {
         }
         return WithdrawTransactionCellModel(topText: dateText,
                                             isNew: transaction.isNew,
-                                            bottomText: "No address givenNo address givenNo address givenNo address given".uppercased(),
+                                            bottomText: "No address given".uppercased(),
                                             amountText: String(format: "%.2f", transaction.amount))
     }
     
