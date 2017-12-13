@@ -73,6 +73,12 @@
 		6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A01EB8D4A2004AED30 /* UIView.swift */; };
 		6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A21EB8D4D6004AED30 /* NSObject.swift */; };
 		6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C23871E8EA99F009B05A3 /* Data.swift */; };
+		6D20CF961FDEE1890049BE9C /* TeamPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF951FDEE1890049BE9C /* TeamPart.swift */; };
+		6D20CF971FDEE1890049BE9C /* TeamPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF951FDEE1890049BE9C /* TeamPart.swift */; };
+		6D20CF991FDEE3020049BE9C /* VotingPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF981FDEE3020049BE9C /* VotingPart.swift */; };
+		6D20CF9A1FDEE3020049BE9C /* VotingPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF981FDEE3020049BE9C /* VotingPart.swift */; };
+		6D20CF9C1FDEF1FC0049BE9C /* BasicPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF9B1FDEF1FC0049BE9C /* BasicPart.swift */; };
+		6D20CF9D1FDEF1FC0049BE9C /* BasicPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF9B1FDEF1FC0049BE9C /* BasicPart.swift */; };
 		6D2808C51F1A450C00EBBE3D /* CompactUserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */; };
 		6D2808C61F1A450C00EBBE3D /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */; };
 		6D2808C81F1A563A00EBBE3D /* DiscussionCompactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */; };
@@ -1094,6 +1100,9 @@
 		6D1C03A01EB8D4A2004AED30 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = Helpers/Extensions/UIView.swift; sourceTree = "<group>"; };
 		6D1C03A21EB8D4D6004AED30 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSObject.swift; path = Helpers/Extensions/NSObject.swift; sourceTree = "<group>"; };
 		6D1C23871E8EA99F009B05A3 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Helpers/Extensions/Data.swift; sourceTree = "<group>"; };
+		6D20CF951FDEE1890049BE9C /* TeamPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamPart.swift; path = Model/Entities/TeamPart.swift; sourceTree = "<group>"; };
+		6D20CF981FDEE3020049BE9C /* VotingPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingPart.swift; path = Model/Entities/VotingPart.swift; sourceTree = "<group>"; };
+		6D20CF9B1FDEF1FC0049BE9C /* BasicPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BasicPart.swift; path = Model/Entities/BasicPart.swift; sourceTree = "<group>"; };
 		6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompactUserInfoHeader.swift; path = View/ReusableViews/CompactUserInfoHeader.swift; sourceTree = "<group>"; };
 		6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompactUserInfoHeader.xib; path = View/ReusableViews/CompactUserInfoHeader.xib; sourceTree = "<group>"; };
 		6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionCompactCell.swift; path = Scenes/Team/Members/DiscussionCompactCell.swift; sourceTree = "<group>"; };
@@ -2562,6 +2571,9 @@
 				6D1292881F83DC46001CCC31 /* Name.swift */,
 				6D30A4A91FD1648E003149DB /* PagingInfo.swift */,
 				6D30A4AC1FD167FE003149DB /* FeedChunk.swift */,
+				6D20CF951FDEE1890049BE9C /* TeamPart.swift */,
+				6D20CF981FDEE3020049BE9C /* VotingPart.swift */,
+				6D20CF9B1FDEF1FC0049BE9C /* BasicPart.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -3477,6 +3489,7 @@
 				6D4E5C5C1F7AB6870020DEE2 /* TeammateType.swift in Sources */,
 				6D4E5C5D1F7AB6870020DEE2 /* LoginDetailsVC.swift in Sources */,
 				6D4E5C5E1F7AB6870020DEE2 /* BorderedButton.swift in Sources */,
+				6D20CF9A1FDEE3020049BE9C /* VotingPart.swift in Sources */,
 				6D4E5C5F1F7AB6870020DEE2 /* EntityFactory.swift in Sources */,
 				6D4E5C601F7AB6870020DEE2 /* MainRouter.swift in Sources */,
 				6D4E5C611F7AB6870020DEE2 /* ChatFragmentParser.swift in Sources */,
@@ -3566,6 +3579,7 @@
 				6D4E5CB11F7AB6870020DEE2 /* ScaleBar.swift in Sources */,
 				6D4E5CB21F7AB6870020DEE2 /* ChatModelBuilder.swift in Sources */,
 				6D4E5CB31F7AB6870020DEE2 /* UserIndexCellBuilder.swift in Sources */,
+				6D20CF9D1FDEF1FC0049BE9C /* BasicPart.swift in Sources */,
 				6D4E5CB41F7AB6870020DEE2 /* UIView.swift in Sources */,
 				6D4E5CB51F7AB6870020DEE2 /* ChatTextParser.swift in Sources */,
 				6D4E5CB61F7AB6870020DEE2 /* FeedRequestContext.swift in Sources */,
@@ -3586,6 +3600,7 @@
 				6D4E5CC31F7AB6870020DEE2 /* Key.swift in Sources */,
 				6D4E5CC41F7AB6870020DEE2 /* Mirror.swift in Sources */,
 				6D4E5CC51F7AB6870020DEE2 /* TeammateCellBuilder.swift in Sources */,
+				6D20CF971FDEE1890049BE9C /* TeamPart.swift in Sources */,
 				6D4E5CC61F7AB6870020DEE2 /* JoinTeamMessageCell.swift in Sources */,
 				6D4E5CC71F7AB6870020DEE2 /* MyProxiesVC.swift in Sources */,
 				6D4E5CC81F7AB6870020DEE2 /* ClaimTransactionsDataSource.swift in Sources */,
@@ -3875,6 +3890,7 @@
 				6DEE67931ED9D3E60098EDB3 /* BorderedButton.swift in Sources */,
 				6D466AB01ED07CF1001BC579 /* EntityFactory.swift in Sources */,
 				6D83EC8E1EDD7230000412DC /* MainRouter.swift in Sources */,
+				6D20CF991FDEE3020049BE9C /* VotingPart.swift in Sources */,
 				6D66B4A01F4ED66700672583 /* ChatFragmentParser.swift in Sources */,
 				6D1425E21F73C2C300DCBF91 /* VotingRiskCell.swift in Sources */,
 				6D6DA26F1EE21F9800307C73 /* Label.swift in Sources */,
@@ -3964,6 +3980,7 @@
 				6DA714FA1EE04D4900F39EBE /* ScaleBar.swift in Sources */,
 				6D66B4A21F4F106900672583 /* ChatModelBuilder.swift in Sources */,
 				6D3556761FD2EF3300AEBF07 /* EthereumAddress.swift in Sources */,
+				6D20CF9C1FDEF1FC0049BE9C /* BasicPart.swift in Sources */,
 				6D69DA061EFC34FE00DED5CE /* UserIndexCellBuilder.swift in Sources */,
 				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
 				6DE793361EF92E34005F4508 /* ChatTextParser.swift in Sources */,
@@ -3984,6 +4001,7 @@
 				6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */,
 				6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */,
 				6D6DA24A1EE16E8300307C73 /* TeammateCellBuilder.swift in Sources */,
+				6D20CF961FDEE1890049BE9C /* TeamPart.swift in Sources */,
 				6D0C39DD1F991B6600941FF3 /* Notification.swift in Sources */,
 				94E325C91F07F77A00B2D8C8 /* JoinTeamMessageCell.swift in Sources */,
 				6D0D2AE01EFBD4260095284C /* MyProxiesVC.swift in Sources */,

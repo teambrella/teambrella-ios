@@ -60,14 +60,27 @@ struct ChatModel {
     let discussion: JSON
     //let lastRead: Int64
     let chat: [ChatEntity]
-    let basicPart: JSON
-    let teamPart: JSON
+    let basicPart: BasicPart?
+    let teamPart: TeamPart?
+    let votingPart: VotingPart?
     
-    var topicID: String { return discussion["TopicId"].stringValue }
-    var title: String { return basicPart["Title"].stringValue }
-    var userID: String { return basicPart["UserId"].stringValue }
-    var lastRead: Int64 { return discussion["LastRead"].int64Value }
-    var teamAccessLevel: TeamAccessLevel {
-        return TeamAccessLevel(rawValue: teamPart["TeamAccessLevel"].intValue) ?? .noAccess
+    // teammateID or claimID
+    let id: Int
+    
+    let title: String
+    
+    init(json: JSON, chat: [ChatEntity]) {
+        lastUpdated = json["LastUpdated"].int64Value
+        discussion = json["DiscussionPart"]
+        self.chat = chat
+        basicPart = BasicPartFactory.basicPart(from: json)
+        teamPart = TeamPartFactory.teamPart(from: json)
+        votingPart = VotingPartFactory.votingPart(from: json)
+        title = json["Title"].stringValue
+        id = json["Id"].intValue
     }
+    
+    // Discussion Part
+    var topicID: String { return discussion["TopicId"].stringValue }
+    var lastRead: Int64 { return discussion["LastRead"].int64Value }
 }

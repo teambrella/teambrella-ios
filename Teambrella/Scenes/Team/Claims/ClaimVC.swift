@@ -35,6 +35,7 @@ final class ClaimVC: UIViewController, Routable {
     var lastUpdatedVote: Date?
     var isPeeking: Bool = false
     var isNavBarAdded: Bool = false
+    var isScrollToVoteNeeded: Bool = false
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -50,6 +51,12 @@ final class ClaimVC: UIViewController, Routable {
             guard let `self` = self else { return }
             
             self.reloadData()
+            if self.isScrollToVoteNeeded {
+                self.isScrollToVoteNeeded = false
+                if let index = self.dataSource.voteCellIndexPath {
+                    self.collectionView.scrollToItem(at: index, at: .top, animated: true)
+                }
+            }
         }
         dataSource.loadData(claimID: claimID)
     }

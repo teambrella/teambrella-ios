@@ -209,18 +209,13 @@ struct TeambrellaRequest {
              .newChat,
              .privateChat,
              .newPrivatePost:
-            let discussion = reply["DiscussionPart"]
             let chat: [ChatEntity]
             if type == .privateChat || type == .newPrivatePost {
                 chat = PrivateChatAdaptor(json: reply).adaptedMessages
             } else {
-                chat = ChatEntity.buildArray(from: discussion["Chat"])
+                chat = ChatEntity.buildArray(from: reply["DiscussionPart"]["Chat"])
             }
-            let model = ChatModel(lastUpdated: reply["LastUpdated"].int64Value,
-                                  discussion: discussion,
-                                  chat: chat,
-                                  basicPart: reply["BasicPart"],
-                                  teamPart: reply["TeamPart"])
+            let model = ChatModel(json: reply, chat: chat)
             success(.chat(model))
         case .teamFeed:
             success(.teamFeed(reply, PagingInfo(json: additional)))

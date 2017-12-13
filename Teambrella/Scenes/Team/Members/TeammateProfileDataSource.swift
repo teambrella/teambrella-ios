@@ -57,6 +57,13 @@ class TeammateProfileDataSource {
     var riskScale: RiskScaleEntity? { return extendedTeammate?.riskScale }
     var isNewTeammate = false
     
+    var votingCellIndexPath: IndexPath? {
+        for (idx, cellType) in source.enumerated() where cellType == .voting {
+            return IndexPath(row: idx, section: 0)
+        }
+        return nil
+    }
+    
     init(id: String, isMe: Bool) {
         self.teammateID = id
         self.isMe = isMe

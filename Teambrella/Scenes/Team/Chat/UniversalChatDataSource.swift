@@ -46,6 +46,10 @@ final class UniversalChatDatasource {
     
     var name: String?
     
+    var chatModel: ChatModel?
+    
+    
+    
     private var chunks: [ChatChunk]                 = []
     private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
     private var cellModelBuilder                    = ChatModelBuilder()
@@ -86,7 +90,7 @@ final class UniversalChatDatasource {
     }
     
     var topicID: String? { return claim?.topicID }
-
+    
     var chatHeader: String? {
         if let strategy = strategy as? ClaimChatStrategy {
             return strategy.claim.description
@@ -98,7 +102,19 @@ final class UniversalChatDatasource {
     
     var count: Int { return chunks.reduce(0) { $0 + $1.count } }
     
-    var title: String { return strategy.title }
+    var title: String {
+        guard let chatModel = chatModel else {
+            return strategy.title
+        }
+        
+        if let basicPart = chatModel.basicPart as? BasicPartClaimConcrete {
+            return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(chatModel.id)"
+        } else if let basicPart = chatModel.basicPart as? BasicPartTeammateConcrete {
+            return "Team.Chat.TypeLabel.application".localized.lowercased().capitalized
+        } else {
+            return strategy.title
+        }
+    }
     
     var lastIndexPath: IndexPath? { return count >= 1 ? IndexPath(row: count - 1, section: 0) : nil }
     
@@ -338,6 +354,7 @@ final class UniversalChatDatasource {
         let filteredModel = removeChatDuplicates(chat: model.chat)
         addModels(models: filteredModel, isPrevious: isPrevious)
         //claim?.update(with: model.basicPart)
+        chatModel = model
         if model.chat.isEmpty {
             if isPrevious {
                 hasPrevious = false
@@ -347,7 +364,7 @@ final class UniversalChatDatasource {
             }
         }
         lastRead = model.lastRead
-        teamAccessLevel = model.teamAccessLevel
+        teamAccessLevel = model.teamPart?.accessLevel ?? .noAccess
     }
     
     private func processPrivateChat(messages: [ChatEntity], isPrevious: Bool, isMyNewMessage: Bool) {
