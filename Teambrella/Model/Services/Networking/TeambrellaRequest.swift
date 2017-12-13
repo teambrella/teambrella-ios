@@ -65,6 +65,7 @@ enum TeambrellaRequestType: String {
 
     case withdrawTransactions = "wallet/getWithdraw"
     case withdraw = "wallet/newWithdraw"
+    case mute = "feed/setIsMuted"
 }
 
 enum TeambrellaResponseType {
@@ -100,6 +101,7 @@ enum TeambrellaResponseType {
     case privateList([PrivateChatUser])
     case privateChat([ChatEntity])
     case withdrawTransactions(WithdrawChunk)
+    case mute(Bool)
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -264,6 +266,8 @@ struct TeambrellaRequest {
                 let error = TeambrellaErrorFactory.wrongReply()
                 failure?(error)
             }
+        case .mute:
+            success(.mute(true))
         default:
             break
         }

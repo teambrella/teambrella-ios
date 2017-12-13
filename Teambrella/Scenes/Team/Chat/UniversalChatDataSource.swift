@@ -32,7 +32,7 @@ final class UniversalChatDatasource {
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
     
-    var notificationsType: MuteVC.NotificationsType { return .subscribed }
+    var notificationsType: MuteVC.NotificationsType { return .unknown }
     var hasNext                                     = true
     var hasPrevious                                 = true
     var isFirstLoad                                 = true
@@ -138,8 +138,20 @@ final class UniversalChatDatasource {
     
     var isPrivateChat: Bool { return strategy is PrivateChatStrategy }
     
-    func mute(type: MuteVC.NotificationsType) {
-        //do sth
+    func mute(type: MuteVC.NotificationsType, completion: @escaping (Bool) -> Void) {
+        guard let topicID = topic?.id else { return }
+        
+        let isMuted = type == .unsubscribed
+        service.dao.mute(topicID: topicID, isMuted: isMuted).observe { result in
+            switch result {
+            case let .value(success):
+                completion(success)
+            case let .error(error):
+                log("\(error)", type: [.error, .serverReply])
+            default:
+                break
+            }
+        }
     }
     
     func addContext(context: ChatContext, itemType: ItemType) {

@@ -347,7 +347,12 @@ private extension UniversalChatVC {
     }
     
     private func addMuteButton(muteType: MuteVC.NotificationsType) {
-        let image = muteType == .subscribed ? #imageLiteral(resourceName: "iconBell1") : #imageLiteral(resourceName: "iconBellMuted1")
+        let image: UIImage
+        if muteType == .unsubscribed {
+            image = #imageLiteral(resourceName: "iconBellMuted1")
+        } else {
+            image = #imageLiteral(resourceName: "iconBell1")
+        }
         let button = UIButton()
         button.setImage(image, for: .normal)
         let barItem = UIBarButtonItem(customView: button)
@@ -705,10 +710,12 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
 // MARK: MuteControllerDelegate
 extension UniversalChatVC: MuteControllerDelegate {
     func mute(controller: MuteVC, didSelect type: MuteVC.NotificationsType) {
-        dataSource.mute(type: type)
+        dataSource.mute(type: type) { [weak self] success in
+            self?.showMuteInfo(muteType: type)
+        }
     }
     
     func didCloseMuteController(controller: MuteVC) {
-        showMuteInfo(muteType: .subscribed) //fake
+        //showMuteInfo(muteType: .subscribed) //fake
     }
 }

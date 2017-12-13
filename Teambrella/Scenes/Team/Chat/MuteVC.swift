@@ -23,6 +23,7 @@ protocol MuteControllerDelegate: class {
 
 class MuteVC: UIViewController, Routable {
     enum NotificationsType: Int {
+        case unknown = -1
         case subscribed = 0
         case unsubscribed = 1
     }
@@ -39,9 +40,13 @@ class MuteVC: UIViewController, Routable {
     fileprivate var dataSource = MuteDataSource()
     weak var delegate: MuteControllerDelegate?
     
-    var type: NotificationsType = .subscribed
+    var type: NotificationsType = .unknown
     
     @IBAction func tapClose(_ sender: Any) {
+       close()
+    }
+    
+    private func close() {
         disappear {
             self.delegate?.didCloseMuteController(controller: self)
             self.dismiss(animated: false, completion: nil)
@@ -113,9 +118,10 @@ extension MuteVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.cellForItem(at: indexPath) is MuteCell {
-            type = NotificationsType(rawValue: indexPath.row) ?? .subscribed
+            type = NotificationsType(rawValue: indexPath.row) ?? .unknown
             delegate?.mute(controller: self, didSelect: type)
             collectionView.reloadData()
+            close()
         }
     }
 }

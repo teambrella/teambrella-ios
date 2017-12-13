@@ -54,4 +54,5 @@ protocol DAO {
     func createNewChat(model: NewChatModel) -> Future<ChatModel>
     
     func myProxy(userID: String, add: Bool) -> Future<Bool>
+    func mute(topicID: String, isMuted: Bool) -> Future<Bool>
 }
