@@ -185,4 +185,6 @@
 "Team.Chat.ObjectView.VoteLabel" = "Vote";
 "Team.Chat.ObjectView.RevoteLabel" = "Revote";
 "Team.Chat.ObjectView.ClaimAmountLabel" = "CLAIM AMOUNT - ";
-"Team.Chat.ObjectView.TitleLabel" = "YOUR VOTE";
+"Team.Chat.ObjectView.TitleLabel" = "TU VOTO";
+"Team.Chat.ObjectView.TitleLabel.risk" = "RIESGO";
+"Team.Chat.ObjectView.TitleLabel.team" = "VOTO DEL EQUIPO";

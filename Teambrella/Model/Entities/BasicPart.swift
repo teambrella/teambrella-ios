@@ -19,13 +19,21 @@ import SwiftyJSON
 
 protocol BasicPart {
     var userID: String { get }
-    var name: Name { get }
     var avatar: String { get }
-    var model: String { get }
-    var year: Int { get }
-    var smallPhoto: String { get }
     
     init(json: JSON)
+}
+
+struct BasicPartDiscussionConcrete: BasicPart {
+    let userID: String
+    let avatar: String
+    let title: String
+    
+    init(json: JSON) {
+        userID = json["UserId"].stringValue
+        avatar = json["Avatar"].stringValue
+        title = json["Title"].stringValue
+    }
 }
 
 struct BasicPartTeammateConcrete: BasicPart {
@@ -36,6 +44,9 @@ struct BasicPartTeammateConcrete: BasicPart {
     let year: Int
     let smallPhoto: String
     
+    let risk: Double?
+    let claimLimit: Double?
+    
     init(json: JSON) {
         userID = json["UserId"].stringValue
         name = Name(fullName: json["Name"].stringValue)
@@ -43,6 +54,9 @@ struct BasicPartTeammateConcrete: BasicPart {
         model = json["Model"].stringValue
         year = json["Year"].intValue
         smallPhoto = json["SmallPhoto"].stringValue
+        
+        risk = json["Risk"].double
+        claimLimit = json["ClaimLimit"].double
     }
 }
 
@@ -63,6 +77,9 @@ struct BasicPartClaimConcrete: BasicPart {
     let incidentDate: Date?
     let state: ClaimState
     
+    let reimbursement: Double?
+    let claimLimit: Double?
+    
     init(json: JSON) {
         userID = json["UserId"].stringValue
         name = Name(fullName: json["Name"].stringValue)
@@ -79,6 +96,9 @@ struct BasicPartClaimConcrete: BasicPart {
         estimatedExpenses = json["EstimatedExpenses"].doubleValue
         incidentDate = Formatter.teambrella.date(from: json["IncidentDate"].stringValue)
         state = ClaimState(rawValue: json["State"].intValue) ?? .voting
+        
+        reimbursement = json["Reimbursement"].double
+        claimLimit = json["ClaimLimit"].double
     }
     
 }
@@ -90,6 +110,8 @@ struct BasicPartFactory {
         
         if json["ClaimAmount"].exists() {
             return BasicPartClaimConcrete(json: json)
+        } else if json["Title"].exists() {
+            return BasicPartDiscussionConcrete(json: json)
         } else if json["UserId"].exists() {
             return BasicPartTeammateConcrete(json: json)
         } else {
