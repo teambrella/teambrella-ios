@@ -77,6 +77,9 @@ struct BasicPartClaimConcrete: BasicPart {
     let incidentDate: Date?
     let state: ClaimState
     
+    let reimbursement: Double?
+    let claimLimit: Double?
+    
     init(json: JSON) {
         userID = json["UserId"].stringValue
         name = Name(fullName: json["Name"].stringValue)
@@ -93,6 +96,9 @@ struct BasicPartClaimConcrete: BasicPart {
         estimatedExpenses = json["EstimatedExpenses"].doubleValue
         incidentDate = Formatter.teambrella.date(from: json["IncidentDate"].stringValue)
         state = ClaimState(rawValue: json["State"].intValue) ?? .voting
+        
+        reimbursement = json["Reimbursement"].double
+        claimLimit = json["ClaimLimit"].double
     }
     
 }
