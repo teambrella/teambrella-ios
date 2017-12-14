@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,22 +14,22 @@
             <connections>
                 <outlet property="iconImageView" destination="e5M-S9-ned" id="lFM-iA-CQU"/>
                 <outlet property="textLabel" destination="bjc-iX-7gg" id="vLP-04-tyu"/>
-                <outlet property="verticalSeparator" destination="EZI-qh-edY" id="B8m-nD-R6H"/>
+                <outlet property="verticalSeparator" destination="4gP-VF-fr3" id="ZEh-JO-oRQ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="116" height="43"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-BM-5cw">
                     <rect key="frame" x="0.0" y="0.0" width="116" height="43"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZI-qh-edY">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gP-VF-fr3">
                             <rect key="frame" x="115" y="0.0" width="1" height="43"/>
-                            <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="1" id="Gps-bi-2Gl"/>
+                                <constraint firstAttribute="width" constant="1" id="0MX-KV-57C"/>
                             </constraints>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMETH" translatesAutoresizingMaskIntoConstraints="NO" id="e5M-S9-ned">
@@ -39,7 +39,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjc-iX-7gg" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="30" y="11" width="78" height="21"/>
+                            <rect key="frame" x="26" y="11" width="88" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -49,13 +49,13 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="e5M-S9-ned" secondAttribute="bottom" constant="10" id="38G-Ur-7Xa"/>
                         <constraint firstItem="bjc-iX-7gg" firstAttribute="centerY" secondItem="e5M-S9-ned" secondAttribute="centerY" id="4R3-MS-p9u"/>
-                        <constraint firstAttribute="trailing" secondItem="EZI-qh-edY" secondAttribute="trailing" id="7cj-fc-CHJ"/>
-                        <constraint firstItem="EZI-qh-edY" firstAttribute="top" secondItem="a5w-BM-5cw" secondAttribute="top" id="ZVG-5U-HYp"/>
-                        <constraint firstItem="bjc-iX-7gg" firstAttribute="leading" secondItem="e5M-S9-ned" secondAttribute="trailing" constant="8" id="bfM-Wo-OSs"/>
+                        <constraint firstItem="bjc-iX-7gg" firstAttribute="leading" secondItem="e5M-S9-ned" secondAttribute="trailing" constant="4" id="bfM-Wo-OSs"/>
                         <constraint firstItem="e5M-S9-ned" firstAttribute="leading" secondItem="a5w-BM-5cw" secondAttribute="leading" constant="10" id="g47-F0-Rma"/>
-                        <constraint firstAttribute="trailing" secondItem="bjc-iX-7gg" secondAttribute="trailing" constant="8" id="hhd-ot-wYg"/>
+                        <constraint firstAttribute="trailing" secondItem="4gP-VF-fr3" secondAttribute="trailing" id="hde-pm-2db"/>
+                        <constraint firstAttribute="trailing" secondItem="bjc-iX-7gg" secondAttribute="trailing" constant="2" id="hhd-ot-wYg"/>
                         <constraint firstItem="e5M-S9-ned" firstAttribute="top" secondItem="a5w-BM-5cw" secondAttribute="top" constant="10" id="igu-pp-Dy2"/>
-                        <constraint firstAttribute="bottom" secondItem="EZI-qh-edY" secondAttribute="bottom" id="nSE-qm-BY6"/>
+                        <constraint firstItem="4gP-VF-fr3" firstAttribute="top" secondItem="a5w-BM-5cw" secondAttribute="top" id="oDe-NI-AQj"/>
+                        <constraint firstAttribute="bottom" secondItem="4gP-VF-fr3" secondAttribute="bottom" id="qwT-Vj-VqY"/>
                     </constraints>
                 </view>
             </subviews>
