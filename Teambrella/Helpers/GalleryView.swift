@@ -25,6 +25,7 @@ import UIKit
 
 class GalleryView: ImageSlideshow {
     var onTap: ( (GalleryView) -> Void )?
+    var onCloseFullscreen: ((GalleryView) -> Void)?
     
     var mainImageString: String?
  
@@ -87,7 +88,7 @@ class GalleryView: ImageSlideshow {
     func fullscreen(in controller: UIViewController?, imageStrings: [String]?) {
         guard let controller = controller else { return }
         guard let imageStrings = imageStrings else {
-            self.presentFullScreenController(from: controller)
+           self.presentFullScreenController(from: controller)
             return
         }
         

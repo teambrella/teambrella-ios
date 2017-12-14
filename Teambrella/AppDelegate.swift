@@ -29,16 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        //service.push.askPermissionsForRemoteNotifications(application: application)
+       
+        // Register for Push here to be able to receive silent notifications even if user will restrict push service
         application.registerForRemoteNotifications()
         TeambrellaStyle.apply()
         if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
             service.push.remoteNotificationOnStart(in: application, userInfo: notification)
         }
-        
-        let addr = "0x2C0333Fc88DCA6a89E54f68343fE02E88136980e"
-        
-        let eth = EthereumAddress(string: addr)
         
         return true
     }

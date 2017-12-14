@@ -70,7 +70,7 @@ class EmptyChatStrategy: ChatDatasourceStrategy {
 }
 
 class ClaimChatStrategy: ChatDatasourceStrategy {
-    var title: String { return claim.name }
+    var title: String { return "Team.Chat.TypeLabel.claim".lowercased().capitalized + ": \(claim.id)" }
     var requestType: TeambrellaRequestType = .claimChat
     //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPost
