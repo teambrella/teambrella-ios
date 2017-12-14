@@ -89,14 +89,14 @@ final class UniversalChatVC: UIViewController, Routable {
         super.viewDidLoad()
         addGradientNavBar()
         addMuteButton(muteType: .subscribed) //fake
-        setupInitialObjectView()
+        setupInitialObjectViewIfNeeded()
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
         dataSource.onUpdate = { [weak self] backward, hasNew, isFirstLoad in
             guard let `self` = self else { return }
             
-            self.setupActualObjectView()
+            self.setupActualObjectViewIfNeeded()
             self.setupTitle()
             guard hasNew else {
                 if isFirstLoad {
@@ -543,46 +543,44 @@ private extension UniversalChatVC {
         input.adjustHeight()
     }
     
-    private func setupInitialObjectView() {
-        //claimObjectView.isHidden = true //tmp
-        //let tap = UITapGestureRecognizer()
-        ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
-        if let claim = dataSource.claim {
-            setupClaimObjectView(with: claim)
-           // tap.addTarget(self, action: #selector(showClaimDetails))
-        } else if let teammate = dataSource.teammateInfo {
-            setupTeammateObjectView(with: teammate)
-            //tap.addTarget(self, action: #selector(showTeammateDetails))
-        } else {
+    private func setupInitialObjectViewIfNeeded() {
+        guard dataSource.isObjectViewNeeded else {
             objectViewHeight.constant = 0
             objectView.isHidden = true
             return
         }
-        //objectView.addGestureRecognizer(tap)
+        
+        objectViewHeight.constant = 48
+        objectView.isHidden = false
+        ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
+        if let claim = dataSource.claim {
+            setupClaimObjectView(with: claim)
+        } else if let teammate = dataSource.teammateInfo {
+            setupTeammateObjectView(with: teammate)
+        }
     }
     
-    private func setupActualObjectView() {
+    private func setupActualObjectViewIfNeeded() {
+        guard dataSource.isObjectViewNeeded else {
+            objectViewHeight.constant = 0
+            objectView.isHidden = true
+            return
+        }
         guard let teamPart = dataSource.chatModel?.teamPart else { return }
         
+        objectViewHeight.constant = 48
+        objectView.isHidden = false
         let tap = UITapGestureRecognizer()
         if let basicPart = dataSource.chatModel?.basicPart as? BasicPartClaimConcrete {
             setupClaimObjectView(basic: basicPart,
                                  voting: dataSource.chatModel?.votingPart as? VotingPartClaimConcrete,
                                  team: teamPart)
              tap.addTarget(self, action: #selector(showClaimDetails))
-            objectViewHeight.constant = 48
-            objectView.isHidden = false
         } else if let basicPart = dataSource.chatModel?.basicPart as? BasicPartTeammateConcrete {
             setupTeammateObjectView(basic: basicPart,
                                     voting: dataSource.chatModel?.votingPart as? VotingPartTeammateConcrete,
                                     team: teamPart)
               tap.addTarget(self, action: #selector(showTeammateDetails))
-            objectViewHeight.constant = 48
-            objectView.isHidden = false
-        } else {
-            objectViewHeight.constant = 0
-            objectView.isHidden = true
-            return
         }
         objectView.addGestureRecognizer(tap)
     }

@@ -22,6 +22,10 @@
 import Foundation
 import SwiftyJSON
 
+enum UniversalChatType {
+    case privateChat, application, claim, discussion
+}
+
 final class UniversalChatDatasource {
     var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool, _ isFirstLoad: Bool) -> Void)?
     var onMessageSend: (() -> Void)?
@@ -103,6 +107,10 @@ final class UniversalChatDatasource {
     var count: Int { return chunks.reduce(0) { $0 + $1.count } }
     
     var title: String {
+        if strategy is PrivateChatStrategy {
+            return strategy.title
+        }
+        
         guard let chatModel = chatModel else {
             return strategy.title
         }
@@ -111,8 +119,47 @@ final class UniversalChatDatasource {
             return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(chatModel.id)"
         } else if let basicPart = chatModel.basicPart as? BasicPartTeammateConcrete {
             return "Team.Chat.TypeLabel.application".localized.lowercased().capitalized
+        } else if let basicPart = chatModel.basicPart as? BasicPartDiscussionConcrete {
+            return basicPart.title
         } else {
             return strategy.title
+        }
+    }
+    
+    var chatType: UniversalChatType {
+        switch strategy {
+        case is PrivateChatStrategy:
+            return .privateChat
+        case is ClaimChatStrategy:
+            return .claim
+        case is TeammateChatStrategy:
+            return .application
+        default:
+            break
+        }
+        
+        if let chatModel = chatModel {
+            switch chatModel.basicPart {
+            case is BasicPartClaimConcrete:
+                return .claim
+            case is BasicPartTeammateConcrete:
+                return .application
+            case is BasicPartDiscussionConcrete:
+                return .discussion
+            default:
+            break
+            }
+        }
+        
+        return .discussion
+    }
+    
+    var isObjectViewNeeded: Bool {
+        switch chatType {
+        case .application, .claim:
+            return true
+        default:
+            return false
         }
     }
     
