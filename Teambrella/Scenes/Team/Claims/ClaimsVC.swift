@@ -61,7 +61,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         dataSource.onLoadHome = { [weak self] in
             self?.setupObject()
         }
-        dataSource.onError = { [weak self] error in
+        dataSource.onError = { error in
             HUD.hide()
         }
         dataSource.loadData()

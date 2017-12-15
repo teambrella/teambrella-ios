@@ -23,8 +23,8 @@ import Foundation
 
 struct FeedRequestContext {
     let teamID: Int
-    let since: UInt64
-    let offset: Int
+    let startIndex: UInt64
     let limit: Int
+    let search: String?
     
 }

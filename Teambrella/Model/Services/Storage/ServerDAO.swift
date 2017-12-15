@@ -134,12 +134,10 @@ class ServerDAO: DAO {
     func requestTeamFeed(context: FeedRequestContext, needTemporaryResult: Bool) -> Future<FeedChunk> {
         let promise = Promise<FeedChunk>()
         freshKey { key in
-            let body = RequestBody(key: key, payload: ["teamid": context.teamID,
-                                                       "since": context.since,
-                                                       "offset": context.offset,
+            let body = RequestBody(key: key, payload: ["TeamId": context.teamID,
+                                                       "StartIndex": context.startIndex,
                                                        "limit": context.limit,
-                                                       "commentAvatarSize": 32,
-                                                       "search": NSNull()])
+                                                       "search": context.search ?? NSNull()])
             let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in
                 if case let .teamFeed(json, pagingInfo) = response {
                     PlistStorage().store(json: json, for: .teamFeed, id: "")
