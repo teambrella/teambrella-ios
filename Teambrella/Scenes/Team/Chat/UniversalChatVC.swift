@@ -121,6 +121,7 @@ final class UniversalChatVC: UIViewController, Routable {
         super.viewWillAppear(animated)
         startListeningSockets()
         listenForKeyboard()
+        setupTitle()
     }
     
     override func viewDidLayoutSubviews() {
@@ -136,12 +137,17 @@ final class UniversalChatVC: UIViewController, Routable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         collectionView.reloadData()
+         title = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopListeningSockets()
         stopListeningKeyboard()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

@@ -52,12 +52,12 @@ final class WithdrawDataSource {
                 cryptoReserved = chunk.cryptoReserved.double
                 
                 for tx in chunk.txs {
-                    switch tx.serverTxState {
-                    case .queued:
+                    let state = tx.serverTxState
+                    if state.isQueued {
                         addQueued(transaction: tx)
-                    case .inProcess:
+                    } else if state.isProcessing {
                         addProcessing(transaction: tx)
-                    case .history:
+                    } else if state.isHistory {
                         addHistory(transaction: tx)
                     }
                 }
@@ -174,27 +174,5 @@ final class WithdrawDataSource {
         if indexPath.section == 0 { return detailsModel }
         let transaction = transactions[indexPath.section - 1][indexPath.row]
         return modelBuilder.modelFrom(transaction: transaction)
-    }
-}
-
-private extension WithdrawDataSource {
-    private func fakeLoad() {
-        for _ in 0..<5 {
-            guard let fake = WithdrawTx.fake(state: 0) else { return }
-            
-            addQueued(transaction: fake)
-        }
-        for _ in 0..<5 {
-            guard let fake = WithdrawTx.fake(state: 10) else { return }
-            
-            addQueued(transaction: fake)
-        }
-        for _ in 0..<5 {
-            guard let fake = WithdrawTx.fake(state: 20) else { return }
-            
-            addQueued(transaction: fake)
-        }
-        self.onUpdate?()
-        isLoading = false
     }
 }

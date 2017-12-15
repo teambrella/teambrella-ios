@@ -25,8 +25,9 @@ struct WithdrawTx {
     let withdrawalDate: Date?
     let isNew: Bool
     let amount: Double
+    let toAddress: String
     
-    let serverTxState: ServerTxState
+    let serverTxState: TransactionState
     
     init?(json: JSON) {
         guard let id = json["Id"].string,
@@ -37,42 +38,14 @@ struct WithdrawTx {
         self.id = id
         self.lastUpdated = lastUpdated
         self.withdrawalID = withdrawalID
-        self.serverTxState = ServerTxState.from(integer: serverTxState)
+        self.serverTxState = TransactionState(rawValue: serverTxState) ?? .errorTechProblem
         
         self.withdrawalDate = Formatter.teambrella.date(from: json["WithdrawalDate"].stringValue)
         self.isNew = json["IsNew"].boolValue
         
-        let to = json["To"].arrayValue
-        self.amount = to.first?["Amount"].doubleValue ?? 0.0
+        self.amount = json["Amount"].doubleValue
+        self.toAddress = json["ToAddress"].stringValue
     }
-    
-    static func fake(state: Int) -> WithdrawTx? {
-        let json = JSON([
-            "WithdrawalId": 2025,
-            "WithdrawalDate": "2017-12-01 13:05:38",
-            "IsNew": false,
-            "To": [ ["Amount": 22.05] ],
-            "ServerTxState": state,
-            "Id": "9c315088-45d7-42d9-9737-a83c00d7c805",
-            "LastUpdated": 636477303381343450
-            ])
-        return WithdrawTx(json: json)
-    }
+
 }
 
-enum ServerTxState {
-    case queued
-    case inProcess(Int)
-    case history
-    
-    static func from(integer: Int) -> ServerTxState {
-        switch integer {
-        case -100:
-            return .queued
-        case 0...9:
-            return .inProcess(integer)
-        default:
-            return .history
-        }
-    }
-}

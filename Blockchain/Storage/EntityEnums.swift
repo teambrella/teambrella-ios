@@ -46,6 +46,8 @@ public enum TransactionKind: Int, EnumStringConvertible {
 }
 
 public enum TransactionState: Int, EnumStringConvertible {
+    case queued = -100
+    
     case created = 0
     case approvedMaster = 1
     case approvedCosigners = 2
@@ -65,6 +67,13 @@ public enum TransactionState: Int, EnumStringConvertible {
     case errorBadRequest = 102
     case errorOutOfFunds = 103
     case errorTooManyUtxos = 104
+    
+    case errorBlockchainVerification = 105
+    case errorTechProblem = 106
+    
+    var isProcessing: Bool { return self.rawValue >= 0 && self.rawValue < 10 }
+    var isQueued: Bool { return self == .queued }
+    var isHistory: Bool { return self.rawValue >= 10 }
     
     var localizationKey: String { return "General.TransactionState.\(self)" }
 }
