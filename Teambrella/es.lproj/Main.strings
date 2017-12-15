@@ -15,6 +15,7 @@
 "Main.cancel"                  = "Cancellar";
 
 "Main.Notification.noInternet" = "No hay conexión a Internet";
+"Main.Notification.noServer"   = "Servidor inalcanzable";
 
 "Main.my"                      = "mi";
 "Main.his"                     = "su";

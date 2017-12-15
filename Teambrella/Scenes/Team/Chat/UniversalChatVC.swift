@@ -137,13 +137,13 @@ final class UniversalChatVC: UIViewController, Routable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         collectionView.reloadData()
-         title = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopListeningSockets()
         stopListeningKeyboard()
+        title = nil
     }
     
     override func viewDidDisappear(_ animated: Bool) {

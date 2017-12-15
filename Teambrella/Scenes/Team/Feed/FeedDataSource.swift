@@ -28,7 +28,7 @@ class FeedDataSource {
     
     var offset = 0
     var since: UInt64 = 0
-    let limit = 10
+    let limit = 100
     
     var isSilentUpdate = false
     

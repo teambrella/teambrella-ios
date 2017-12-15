@@ -59,6 +59,8 @@ struct TeambrellaError: Error {
         
         case walletNotCreated           = 710013
         
+        case serverTimeout              = -1001
+        
         case malformedETCSignature      = -10001
     }
     

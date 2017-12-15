@@ -79,7 +79,8 @@ class TeammateProfileDataSource {
         return source[indexPath.row]
     }
     
-    func loadEntireTeammate(completion: @escaping (ExtendedTeammateEntity) -> Void) {
+    func loadEntireTeammate(completion: @escaping (ExtendedTeammateEntity) -> Void,
+                            failure: @escaping (Error) -> Void) {
         let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: service.server.timestamp)
         
         let body = RequestBodyFactory.teammateBody(key: key, id: teammateID)
@@ -91,6 +92,8 @@ class TeammateProfileDataSource {
                 me.modifySource()
                 completion(extendedTeammate)
             }
+            }, failure: { error in
+                failure(error)
         })
         request.start()
     }

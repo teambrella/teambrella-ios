@@ -61,8 +61,11 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         dataSource.onLoadHome = { [weak self] in
             self?.setupObject()
         }
+        dataSource.onError = { [weak self] error in
+            HUD.hide()
+        }
         dataSource.loadData()
-         dataSource.loadHomeData()
+        dataSource.loadHomeData()
         
         setupObjectView()
         if isPresentedInStack {

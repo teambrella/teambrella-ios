@@ -31,7 +31,6 @@ final class PrivateMessagesVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
-        title = "Home.PrivateMessages.title".localized
         collectionView.dataSource = self
         collectionView.delegate = self
         PrivateMessagesCellBuilder.registerCells(in: collectionView)
@@ -41,6 +40,16 @@ final class PrivateMessagesVC: UIViewController, Routable {
             self?.showEmptyIfNeeded()
         }
         dataSource.loadNext()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Home.PrivateMessages.title".localized
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = nil
     }
     
     func showEmptyIfNeeded() {

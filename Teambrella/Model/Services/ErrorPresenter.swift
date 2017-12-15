@@ -30,17 +30,24 @@ final class ErrorPresenter {
         
         if let error = error as? TeambrellaError {
             // restart demo if current has expired
-            if  error.kind == .brokenSignature {
+            switch error.kind {
+            case .brokenSignature:
                 if let session = service.session, session.isDemo {
                     service.router.manageBrokenSignature()
                 } else {
                     service.router.logout()
                 }
-            } else {
+            default:
                 presentTeambrella(error: error)
             }
         } else {
-            presentGeneral(error: error)
+            let error = error as NSError
+            switch error.code {
+            case -1001:
+                presentServerUnreacheable()
+            default:
+                presentGeneral(error: error)
+            }
         }
     }
     
@@ -64,6 +71,26 @@ final class ErrorPresenter {
     
     private func presentTeambrella(error: TeambrellaError) {
         showMessage(title: "\(error.kind)", details: error.description)
+    }
+    
+    private func presentServerUnreacheable() {
+        let view = MessageView.viewFromNib(layout: .statusLine)
+        view.configureTheme(.warning)
+        view.configureDropShadow()
+//        withUnsafePointer(to: &view) {
+//            view.id = "server.unreacheable \($0)"
+//        }
+        
+        view.configureContent(title: "", body: "Main.Notification.noServer".localized)
+        
+        var config = SwiftMessages.defaultConfig
+        service.router.navigator.map { config.presentationContext = .view($0.view) }
+        config.duration = .seconds(seconds: 5)
+        SwiftMessages.hideAll()
+        SwiftMessages.show(config: config, view: view)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//            SwiftMessages.hide(id: view.id)
+//        }
     }
     
     private func showMessage(title: String, details: String) {
