@@ -34,7 +34,7 @@ class FeedDataSource {
     var isTemporaryValueNeeded = false
     
     var onLoad: (() -> Void)?
-    var onError:((Error) -> Void)?
+    var onError: ((Error) -> Void)?
     
     init(teamID: Int) {
         self.teamID = teamID
@@ -62,7 +62,7 @@ class FeedDataSource {
                                                 self.isSilentUpdate = false
                                             }
                                             self.items.append(contentsOf: feedChunk.feed)
-                                            feedChunk.pagingInfo.map {  self.startIndex = $0.lastIndex }
+                                            feedChunk.pagingInfo.map { self.startIndex = $0.lastIndex }
                                             self.onLoad?()
                                         case let .temporaryValue(feedChunk):
                                             if !self.isSilentUpdate && self.isTemporaryValueNeeded {

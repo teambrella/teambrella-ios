@@ -51,7 +51,7 @@ struct WalletEntity {
         return WalletEntity(json: json)
     }
     
-    static func empty() -> WalletEntity  {
+    static func empty() -> WalletEntity {
         /*
          "Txs" : null,
          "DefaultWithdrawAddress" : "0x336a9288ee464752ae94349da78964ad716b1e20",

@@ -368,7 +368,6 @@ class ServerDAO: DAO {
         return promise
     }
     
-    
     func freshKey(completion: @escaping (Key) -> Void) {
         if let time = lastKeyTime, Date().timeIntervalSince(time) < 60 * 10 {
             completion(service.server.key)

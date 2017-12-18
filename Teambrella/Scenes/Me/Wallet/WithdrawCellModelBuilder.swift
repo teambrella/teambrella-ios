@@ -60,7 +60,7 @@ struct WithdrawTransactionCellModel: WithdrawCellModel {
 }
 
 struct WithdrawCellBuilder {
-    static func populate(cell: UICollectionViewCell, with model: WithdrawCellModel/*, delegate: UICollectionViewCell*/) {
+    static func populate(cell: UICollectionViewCell, with model: WithdrawCellModel) {
         if let cell = cell as? WithdrawDetailsCell, let model = model as? WithdrawDetailsCellModel {
             cell.titleLabel.text = model.title
             cell.toLabel.text = model.toText

@@ -34,9 +34,7 @@ final class WithdrawDataSource {
         }
     }
     
-    lazy var detailsModel = {
-        return self.modelBuilder.detailsModel(maxAmount: maxMETHAvailable)
-    }()
+    lazy var detailsModel = { self.modelBuilder.detailsModel(maxAmount: maxMETHAvailable) }()
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?

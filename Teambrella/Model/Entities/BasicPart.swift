@@ -66,7 +66,7 @@ struct BasicPartClaimConcrete: BasicPart {
     let avatar: String
     let model: String
     let year: Int
-    var smallPhoto: String 
+    var smallPhoto: String
     
     let deductible: Double
     let bigPhotos: [String]
