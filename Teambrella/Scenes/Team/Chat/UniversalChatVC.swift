@@ -70,9 +70,10 @@ final class UniversalChatVC: UIViewController, Routable {
     private var socketToken = "UniversalChat"
     private var lastTypingDate: Date = Date()
     private var typingUsers: [String: Date] = [:]
+    
     private var endsEditingWhenTappingOnChatBackground = true
     private var shouldScrollToBottom: Bool = false
-    private var shouldScrollToBottomASilently: Bool = false
+    //  private var shouldScrollToBottomSilently: Bool = false
     
     var muteButton = UIButton()
     
@@ -102,9 +103,9 @@ final class UniversalChatVC: UIViewController, Routable {
             self.setMuteButtonImage(type: self.dataSource.notificationsType)
             guard hasNew else {
                 if isFirstLoad {
-                    self.shouldScrollToBottomASilently = true
+                    self.shouldScrollToBottom = true
+                    self.dataSource.isLoadPreviousNeeded = true
                 }
-                self.dataSource.isLoadPreviousNeeded = true
                 return
             }
             
@@ -163,7 +164,7 @@ final class UniversalChatVC: UIViewController, Routable {
     
     // MARK: Public
     
-   public func setContext(context: ChatContext, itemType: ItemType) {
+    public func setContext(context: ChatContext, itemType: ItemType) {
         dataSource.addContext(context: context, itemType: itemType)
     }
     
@@ -395,7 +396,7 @@ private extension UniversalChatVC {
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
     }
-
+    
     private func addMuteButton() {
         let button = UIButton()
         let barItem = UIBarButtonItem(customView: button)
@@ -450,16 +451,14 @@ private extension UniversalChatVC {
      */
     private func refresh(backward: Bool) {
         // not using reloadData() to avoid blinking of cells
-        collectionView.dataSource = nil
-        collectionView.dataSource = self
+//        collectionView.dataSource = nil
+//        collectionView.dataSource = self
+        collectionView.reloadData()
         
         if self.shouldScrollToBottom {
             scrollToBottom(animated: true)
             self.shouldScrollToBottom = false
-        } else if self.shouldScrollToBottomASilently {
-            scrollToBottom(animated: false)
-            self.shouldScrollToBottomASilently = false
-        } else if backward, let indexPath = dataSource.currentTopCell {
+        } else if backward, let indexPath = dataSource.currentTopCellPath {
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
         }
         collectionView.refreshControl?.endRefreshing()
@@ -533,6 +532,7 @@ private extension UniversalChatVC {
     private func send(text: String, imageFragments: [ChatFragment]) {
         guard dataSource.isLoading == false else { return }
         
+        scrollToBottom(animated: true)
         self.shouldScrollToBottom = true
         dataSource.send(text: text, imageFragments: imageFragments)
         input.textView.text = nil
@@ -545,6 +545,8 @@ private extension UniversalChatVC {
                 self?.setMuteButtonImage(type: type)
             })
         }
+        
+        refresh(backward: false)
     }
     
     private func setupInitialObjectView() {
@@ -790,6 +792,6 @@ extension UniversalChatVC: MuteControllerDelegate {
     }
     
     func didCloseMuteController(controller: MuteVC) {
-    
+        
     }
 }

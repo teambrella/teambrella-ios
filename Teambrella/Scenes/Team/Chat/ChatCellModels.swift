@@ -22,7 +22,9 @@
 import Foundation
 
 protocol ChatCellModel {
+    var id: String { get }
     var date: Date { get }
+    var isTemporary: Bool { get }
 }
 
 struct ChatTextCellModel: ChatCellModel {
@@ -45,6 +47,7 @@ struct ChatTextCellModel: ChatCellModel {
 struct ChatTextUnsentCellModel: ChatCellModel {
     let fragments: [ChatFragment]
     let fragmentHeights: [CGFloat]
+    let isTemporary: Bool = true
     
     let userName: String
     let date: Date
@@ -56,11 +59,15 @@ struct ChatTextUnsentCellModel: ChatCellModel {
 }
 
 struct ChatSeparatorCellModel: ChatCellModel {
+    var id: String { return String(describing: date) }
     let date: Date
+    let isTemporary: Bool = true
     
 }
 
 struct ChatNewMessagesSeparatorModel: ChatCellModel {
+    var id: String { return "newMessages" }
     let date: Date
     let text: String = "Team.Chat.Separator.newMessages".localized
+    let isTemporary: Bool = true
 }

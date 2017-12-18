@@ -28,7 +28,7 @@ enum UniversalChatType {
 
 final class UniversalChatDatasource {
     var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool, _ isFirstLoad: Bool) -> Void)?
-    var onMessageSend: (() -> Void)?
+    var onError: ((Error) -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
     
     var limit                                       = 10
@@ -56,9 +56,13 @@ final class UniversalChatDatasource {
         }
     }
     
-    private var chunks: [ChatChunk]                 = []
+    private var models: [ChatCellModel]             = []
+    private var lastInsertionIndex                  = 0
+    
+    // private var chunks: [ChatChunk]                 = []
     private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
     private var cellModelBuilder                    = ChatModelBuilder()
+    
     private var lastRead: Int64                     = 0
     private var forwardOffset: Int                  = 0
     private var backwardOffset: Int                 = 0
@@ -106,7 +110,7 @@ final class UniversalChatDatasource {
         return nil
     }
     
-    var count: Int { return chunks.reduce(0) { $0 + $1.count } }
+    var count: Int { return models.count }
     
     var title: String {
         if strategy is PrivateChatStrategy {
@@ -149,7 +153,7 @@ final class UniversalChatDatasource {
             case is BasicPartDiscussionConcrete:
                 return .discussion
             default:
-            break
+                break
             }
         }
         
@@ -167,10 +171,9 @@ final class UniversalChatDatasource {
     
     var lastIndexPath: IndexPath? { return count >= 1 ? IndexPath(row: count - 1, section: 0) : nil }
     
-    var currentTopCell: IndexPath? {
+    var currentTopCellPath: IndexPath? {
         guard let topCellDate = topCellDate else { return nil }
         
-        let models = chunks.flatMap { $0.cellModels }
         for (idx, model) in models.enumerated() where model.date == topCellDate {
             return IndexPath(row: idx, section: 0)
         }
@@ -178,7 +181,6 @@ final class UniversalChatDatasource {
     }
     
     var allImages: [String] {
-        let models = chunks.flatMap { $0.cellModels }
         let textCellModels = models.flatMap { $0 as? ChatTextCellModel }
         let fragments = textCellModels.flatMap { $0.fragments }
         var images: [String] = []
@@ -236,55 +238,47 @@ final class UniversalChatDatasource {
     }
     
     func clear() {
-        chunks.removeAll()
+        models.removeAll()
         forwardOffset = 0
         backwardOffset = 0
         postsCount = 0
         hasNext = true
     }
     
-    var unsentStorage: UnsentMessagesStorage = UnsentMessagesStorage()
-    
     func send(text: String, imageFragments: [ChatFragment]) {
         isLoading = true
         let id = UUID().uuidString.lowercased()
-        let message = UnsentMessage(text: text, imageFragments: imageFragments, id: id)
-        unsentStorage.newSending(message: message)
-        
         let temporaryModel = cellModelBuilder.unsentModel(fragments: imageFragments + [ChatFragment.text(text)],
-                                                          id: id)
-        let chunk = ChatChunk(cellModels: [temporaryModel], type: .temporary)
-        addChunk(chunk: chunk)
-        let body = strategy.updatedMessageBody(body: RequestBody(key: service.server.key, payload: message.dictionary))
-        
+                                                         id: id)
+        addCellModel(model: temporaryModel)
+        let images = imageFragments.flatMap {
+            if case let .image(image, _, _) = $0 {
+                return image
+            } else {
+                return nil
+            }
+        }
+        let body = strategy.updatedMessageBody(body: RequestBody(key: service.server.key, payload: ["Text": text,
+                                                                                                    "NewPostId": id,
+                                                                                                    "Images": images]))
         let request = TeambrellaRequest(type: strategy.postType, body: body, success: { [weak self] response in
             guard let me = self else { return }
             
             me.hasNext = true
             me.isLoading = false
-            me.unsentStorage.sent(message: message)
-            me.onMessageSend?()
             me.process(response: response, isPrevious: false, isMyNewMessage: true)
             }, failure: { [weak self] error in
-                self?.unsentStorage.failedToSend(message: message)
+                self?.onError?(error)
         })
         request.start()
     }
     
     subscript(indexPath: IndexPath) -> ChatCellModel {
-        var idx = 0
-        var rightChunk: ChatChunk?
-        for chunk in chunks {
-            if idx + chunk.count > indexPath.row {
-                rightChunk = chunk
-                break
-            }
-            idx += chunk.count
+        guard indexPath.row < models.count else {
+            fatalError("Wrong index: \(indexPath), while have only \(models.count) models")
         }
-        guard let chunk = rightChunk else { fatalError("Wrong indexing") }
         
-        let offset = indexPath.row - idx
-        return chunk.cellModels[offset]
+        return models[indexPath.row]
     }
     
     // MARK: Private
@@ -296,7 +290,7 @@ final class UniversalChatDatasource {
         isLoading = true
         if previous {
             isLoadPreviousNeeded = false
-            topCellDate = chunks.first?.firstTextMessage?.date
+            topCellDate = models.first?.date
         } else {
             isLoadNextNeeded = false
         }
@@ -328,6 +322,57 @@ final class UniversalChatDatasource {
         }
     }
     
+    private func addCellModels(models: [ChatCellModel]) {
+        models.forEach { self.addCellModel(model: $0) }
+    }
+    
+    private func addCellModel(model: ChatCellModel) {
+        guard !models.isEmpty else {
+            models.append(model)
+            return
+        }
+        
+        while lastInsertionIndex > 0 && models[lastInsertionIndex].date > model.date {
+            lastInsertionIndex -= 1
+        }
+        while lastInsertionIndex < models.count && models[lastInsertionIndex].date <= model.date {
+            lastInsertionIndex += 1
+        }
+        
+        if lastInsertionIndex < models.count {
+            models.insert(model, at: lastInsertionIndex)
+            
+        } else {
+            models.append(model)
+        }
+        removeTemporaryIfNeeded()
+        addSeparatorIfNeeded()
+    }
+    
+    private func removeTemporaryIfNeeded() {
+        guard lastInsertionIndex > 0 else { return }
+        
+        let previous = models[lastInsertionIndex - 1]
+        guard previous.isTemporary else { return }
+        
+        let current = models[lastInsertionIndex]
+        if current.id == previous.id {
+            models.remove(at: lastInsertionIndex - 1)
+            lastInsertionIndex -= 1
+        }
+    }
+    
+    private func addSeparatorIfNeeded() {
+        guard lastInsertionIndex > 0 else { return }
+        
+        let previous = models[lastInsertionIndex - 1]
+        let current = models[lastInsertionIndex]
+        if let separator = cellModelBuilder.separatorModelIfNeeded(firstModel: previous, secondModel: current) {
+            models.insert(separator, at: lastInsertionIndex)
+            lastInsertionIndex += 1
+        }
+    }
+    
     private func addModels(models: [ChatEntity], isPrevious: Bool) {
         previousCount = postsCount
         let currentPostsCount = models.count
@@ -340,40 +385,10 @@ final class UniversalChatDatasource {
         }
         
         let models = createCellModels(from: models, isTemporary: false)
-        let chunk = ChatChunk(cellModels: models, type: .messages)
-        addChunk(chunk: chunk)
-    }
-    
-    private func removeTemporaryChunksIfNeeded() {
-        for (idx, chunk) in chunks.enumerated().reversed() {
-            if chunk.type == .temporary {
-                //postsCount -= 1
-                chunks.remove(at: idx)
-            } else if chunk.type == .messages {
-                break
-            }
-        }
-    }
-    
-    // CRUNCH: in most cases after sending the new message we receive 2 last messages back instead of one
-    private func removeChatDuplicates(chat: [ChatEntity]) -> [ChatEntity] {
-        guard let lastChunk = chunks.last else { return chat }
-        
-        var ids: Set<String> = []
-        for cellModel in lastChunk.cellModels {
-            if let cellModel = cellModel as? ChatTextCellModel {
-                ids.insert(cellModel.entity.id)
-            }
-        }
-        var chat = chat
-        for (idx, item) in chat.enumerated().reversed() where ids.contains(item.id) {
-            chat.remove(at: idx)
-        }
-        return chat
+        addCellModels(models: models)
     }
     
     private func process(response: TeambrellaResponseType, isPrevious: Bool, isMyNewMessage: Bool) {
-        removeTemporaryChunksIfNeeded()
         let count = self.count
         switch response {
         case let .chat(model):
@@ -383,27 +398,25 @@ final class UniversalChatDatasource {
             
         case let .newPost(post):
             let models = createCellModels(from: [post], isTemporary: true)
-            let chunk = ChatChunk(cellModels: models, type: .temporary)
-            addChunk(chunk: chunk)
-            //postsCount += 1
+            addCellModels(models: models)
+            postsCount += 1
             forwardOffset = 0
         default:
             return
         }
         let hasNewModels = self.count > count
-        //handleNewSeparator(hasNewModels: hasNewModels, isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
-        
+        if isMyNewMessage {
+            
+        } else {
         onUpdate?(isPrevious, hasNewModels, isFirstLoad)
-        
+        }
         if  isFirstLoad && hasNewModels {
             isFirstLoad = false
         }
     }
     
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
-        let filteredModel = removeChatDuplicates(chat: model.chat)
-        addModels(models: filteredModel, isPrevious: isPrevious)
-        //claim?.update(with: model.basicPart)
+        addModels(models: model.chat, isPrevious: isPrevious)
         chatModel = model
         if model.chat.isEmpty {
             if isPrevious {
@@ -427,111 +440,17 @@ final class UniversalChatDatasource {
                 hasPrevious = false
             } else {
                 hasNext = false
-                //forwardOffset = 0
-                //lastRead = model.lastRead + 1
             }
         }
-    }
-    
-    private func addChunk(chunk: ChatChunk?) {
-        guard let chunk = chunk else {
-            isChunkAdded = false
-            return
-        }
-        
-        isChunkAdded = true
-        for (idx, storedChunk) in chunks.enumerated() where chunk < storedChunk {
-            chunks.insert(chunk, at: idx)
-            return
-        }
-        chunks.append(chunk)
     }
     
     private func createCellModels(from entities: [ChatEntity], isTemporary: Bool) -> [ChatCellModel] {
         cellModelBuilder.font = font
         cellModelBuilder.width = cloudWidth - labelHorizontalInset * 2
         let models = cellModelBuilder.cellModels(from: entities,
-                                                 lastChunk: chunks.last,
                                                  isClaim: strategy.requestType == .claimChat,
                                                  isTemporary: isTemporary)
         return models
     }
     
-    private func handleNewSeparator(hasNewModels: Bool, isPrevious: Bool, isMyNewMessage: Bool) {
-        if hasNewModels && isFirstLoad {
-            addNewSeparatorIfNeeded(isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
-            isFirstLoad = false
-        } else if !hasNewModels {
-            removeNewSeparatorIfNeeded()
-        }
-    }
-    private func removeNewSeparatorIfNeeded() {
-        if let firstChunk = chunks.first, firstChunk.cellModels.first is ChatNewMessagesSeparatorModel {
-            chunks.removeFirst()
-        }
-    }
-    
-    private func addNewSeparatorIfNeeded(isPrevious: Bool, isMyNewMessage: Bool) {
-        guard !isPrevious && !isMyNewMessage else { return }
-        guard let firstChunk = chunks.first else { return }
-        
-        let minTime = firstChunk.minTime
-        let model = ChatNewMessagesSeparatorModel(date: minTime.addingTimeInterval(-0.01))
-        let chunk = ChatChunk(cellModels: [model], type: .technical)
-        addChunk(chunk: chunk)
-    }
-    
-}
-
-struct UnsentMessage: Hashable {
-    let text: String
-    let imageFragments: [ChatFragment]
-    var images: [String] {
-        return imageFragments.flatMap {
-            if case let .image(image, _, _) = $0 {
-                return image
-            } else {
-                return nil
-            }
-        }
-    }
-    let id: String
-    
-    var dictionary: [String: Any] {
-        return ["text": text,
-                "NewPostId": id,
-                "images": images]
-    }
-    
-    var hashValue: Int { return text.hashValue ^ images.reduce(0) { $0 ^ $1.hashValue } ^ id.hashValue }
-    
-    static func == (lhs: UnsentMessage, rhs: UnsentMessage) -> Bool {
-        return lhs.text == rhs.text && lhs.id == rhs.id && lhs.images == rhs.images
-    }
-    
-}
-
-class UnsentMessagesStorage {
-    var sendingMessages: [UnsentMessage] = []
-    var unsentMessages: [UnsentMessage] = []
-    
-    func newSending(message: UnsentMessage) {
-        sendingMessages.append(message)
-    }
-    
-    func failedToSend(message: UnsentMessage) {
-        if let index = sendingMessages.index(of: message) {
-            sendingMessages.remove(at: index)
-        }
-        unsentMessages.append(message)
-    }
-    
-    func sent(message: UnsentMessage) {
-        if let index = sendingMessages.index(of: message) {
-            sendingMessages.remove(at: index)
-        }
-        if let index = unsentMessages.index(of: message) {
-            unsentMessages.remove(at: index)
-        }
-    }
 }
