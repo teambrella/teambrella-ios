@@ -134,6 +134,8 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
             self?.collectionView.reloadData()
         }
         
+        self.clipsToBounds = true
+        ViewDecorator.roundedEdges(for: self)
         ViewDecorator.shadow(for: self)
     }
     

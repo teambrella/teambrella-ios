@@ -104,8 +104,10 @@ struct TeammateCellBuilder {
                                                  max: nil)
             if let risk = voting.riskVoted {
                 cell.teamVoteValueLabel.text = String.formattedNumber(risk)
+            } else {
+                cell.teamVoteValueLabel.text = "..."
             }
-            
+        
             if let myVote = voting.myVote {
                 cell.layoutIfNeeded()
                 cell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
