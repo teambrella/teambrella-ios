@@ -77,6 +77,13 @@ final class UniversalChatVC: UIViewController, Routable {
     
     var muteButton = UIButton()
     
+    var keyboardTopY: CGFloat?
+    var keyboardHeight: CGFloat {
+        guard let top = self.keyboardTopY else { return 0 }
+        
+        return self.view.bounds.maxY - top
+    }
+    
     private var showIsTyping: Bool = false {
         didSet {
             collectionView.reloadData()
@@ -111,11 +118,21 @@ final class UniversalChatVC: UIViewController, Routable {
             
             self.refresh(backward: backward)
         }
+        dataSource.onSendMessage = { [weak self] indexPAth in
+            guard let `self` = self else { return }
+            
+            self.shouldScrollToBottom = true
+            self.refresh(backward: false)
+        }
         dataSource.isLoadNextNeeded = true
         title = ""
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapRightLabel))
         objectRightLabel.addGestureRecognizer(tap)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+self.scrollToBottom(animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,7 +149,7 @@ final class UniversalChatVC: UIViewController, Routable {
             layout.footerReferenceSize = CGSize(width: collectionView.bounds.width, height: 30)
         }
         dataSource.cloudWidth = cloudWidth
-        collectionView.contentInset.bottom = input.frame.height
+        collectionView.contentInset.bottom = keyboardHeight + input.frame.height
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -171,6 +188,11 @@ final class UniversalChatVC: UIViewController, Routable {
     public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
         // Cancel current scrolling
         self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: false)
+        
+        let lastIndexPath = IndexPath(row: dataSource.count - 1, section: 0)
+        //        collectionView.scrollToItem(at: lastIndexPath, at: .bottom, animated: animated)
+        //        return
+        
         let offsetY = max(-collectionView.contentInset.top,
                           collectionView.collectionViewLayout.collectionViewContentSize.height
                             - collectionView.bounds.height
@@ -223,6 +245,11 @@ final class UniversalChatVC: UIViewController, Routable {
         }
     }
     
+//    func adjustCollectionViewHeight() {
+//        collectionView.contentInset.bottom = keyboardHeight
+//    }
+    
+    
     @objc
     func keyboardWillChangeFrame(notification: Notification) {
         if let finalFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
@@ -230,10 +257,11 @@ final class UniversalChatVC: UIViewController, Routable {
             var offset =  collectionView.contentOffset
             guard finalFrame.minY < collectionView.contentSize.height else { return }
             
+            keyboardTopY = finalFrame.minY
             let diff = initialFrame.minY - finalFrame.minY
             offset.y += diff
             collectionView.contentOffset = offset
-            collectionView.contentInset.bottom = view.frame.maxY - finalFrame.minY
+            collectionView.contentInset.bottom = keyboardHeight
         }
     }
     
@@ -451,17 +479,17 @@ private extension UniversalChatVC {
      */
     private func refresh(backward: Bool) {
         // not using reloadData() to avoid blinking of cells
-//        collectionView.dataSource = nil
-//        collectionView.dataSource = self
+        //        collectionView.dataSource = nil
+        //        collectionView.dataSource = self
         collectionView.reloadData()
-        
-        if self.shouldScrollToBottom {
-            scrollToBottom(animated: true)
-            self.shouldScrollToBottom = false
-        } else if backward, let indexPath = dataSource.currentTopCellPath {
-            self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
-        }
-        collectionView.refreshControl?.endRefreshing()
+            if self.shouldScrollToBottom {
+                self.scrollToBottom(animated: true)
+                self.shouldScrollToBottom = false
+            } else if backward, let indexPath = self.dataSource.currentTopCellPath {
+                self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
+            }
+            self.collectionView.refreshControl?.endRefreshing()
+        // adjustCollectionViewHeight()
     }
     
     private func cloudSize(for indexPath: IndexPath) -> CGSize {
@@ -532,7 +560,6 @@ private extension UniversalChatVC {
     private func send(text: String, imageFragments: [ChatFragment]) {
         guard dataSource.isLoading == false else { return }
         
-        scrollToBottom(animated: true)
         self.shouldScrollToBottom = true
         dataSource.send(text: text, imageFragments: imageFragments)
         input.textView.text = nil
@@ -546,7 +573,7 @@ private extension UniversalChatVC {
             })
         }
         
-        refresh(backward: false)
+        // refresh(backward: false)
     }
     
     private func setupInitialObjectView() {
@@ -654,7 +681,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
                     
                     galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
                 }
-                cell.alpha = model.isTemporary ? 0.5 : 1
+                //cell.alpha = model.isTemporary ? 0.5 : 1
             } else if let model = model as? ChatTextUnsentCellModel {
                 let size = cloudSize(for: indexPath)
                 cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)

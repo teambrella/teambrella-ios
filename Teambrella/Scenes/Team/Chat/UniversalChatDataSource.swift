@@ -29,6 +29,7 @@ enum UniversalChatType {
 final class UniversalChatDatasource {
     var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool, _ isFirstLoad: Bool) -> Void)?
     var onError: ((Error) -> Void)?
+    var onSendMessage: ((IndexPath) -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
     
     var limit                                       = 10
@@ -248,9 +249,9 @@ final class UniversalChatDatasource {
     func send(text: String, imageFragments: [ChatFragment]) {
         isLoading = true
         let id = UUID().uuidString.lowercased()
-        let temporaryModel = cellModelBuilder.unsentModel(fragments: imageFragments + [ChatFragment.text(text)],
-                                                         id: id)
-        addCellModel(model: temporaryModel)
+        //let temporaryModel = cellModelBuilder.unsentModel(fragments: imageFragments + [ChatFragment.text(text)],
+        //                                                 id: id)
+        //addCellModel(model: temporaryModel)
         let images = imageFragments.flatMap {
             if case let .image(image, _, _) = $0 {
                 return image
@@ -406,13 +407,14 @@ final class UniversalChatDatasource {
         }
         let hasNewModels = self.count > count
         if isMyNewMessage {
-            
+            onSendMessage?(IndexPath(row: lastInsertionIndex, section: 0))
         } else {
         onUpdate?(isPrevious, hasNewModels, isFirstLoad)
         }
-        if  isFirstLoad && hasNewModels {
-            isFirstLoad = false
-        }
+        isFirstLoad = false
+//        if  isFirstLoad && hasNewModels {
+//            isFirstLoad = false
+//        }
     }
     
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
