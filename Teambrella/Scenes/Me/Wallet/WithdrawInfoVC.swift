@@ -55,6 +55,11 @@ class WithdrawInfoVC: UIViewController, Routable {
             .decorate(substring: currency, type: .currency)
         haveLabel.attributedText = haveAttributed
         
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapClose))
+        recognizer.delegate = self
+        backView.addGestureRecognizer(recognizer)
+        backView.isUserInteractionEnabled = true
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,6 +67,7 @@ class WithdrawInfoVC: UIViewController, Routable {
         appear()
     }
     
+    @objc
     @IBAction func tapClose(_ sender: Any) {
         disappear {
             self.dismiss(animated: false, completion: nil)
@@ -86,5 +92,11 @@ class WithdrawInfoVC: UIViewController, Routable {
         }) { finished in
             completion()
         }
+    }
+}
+
+extension WithdrawInfoVC: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return touch.view == gestureRecognizer.view
     }
 }

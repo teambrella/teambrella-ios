@@ -53,6 +53,7 @@ class MuteVC: UIViewController, Routable {
         close()
     }
     
+    @objc
     private func close() {
         disappear {
             self.delegate?.didCloseMuteController(controller: self)
@@ -65,6 +66,11 @@ class MuteVC: UIViewController, Routable {
         collectionView.register(MuteCell.nib, forCellWithReuseIdentifier: MuteCell.cellID)
         headerLabel.text = "Team.Chat.NotificationSettings.title".localized
         dataSource.createModels()
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(close))
+        recognizer.delegate = self
+        backView.addGestureRecognizer(recognizer)
+        backView.isUserInteractionEnabled = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -138,5 +144,11 @@ extension MuteVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height / 2)
+    }
+}
+
+extension MuteVC: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return touch.view == gestureRecognizer.view
     }
 }
