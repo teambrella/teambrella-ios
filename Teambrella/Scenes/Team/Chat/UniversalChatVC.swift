@@ -137,13 +137,13 @@ final class UniversalChatVC: UIViewController, Routable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         collectionView.reloadData()
-         title = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopListeningSockets()
         stopListeningKeyboard()
+        title = nil
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -353,7 +353,7 @@ private extension UniversalChatVC {
                                          team: TeamPart) {
         objectNameLabel.text = basic.name.short
         objectImage.showImage(string: basic.avatar)
-        objectDetailsLabel.text = "\(basic.model.uppercased()),  \(basic.year)"
+        objectDetailsLabel.text = "\(basic.model.uppercased()), \(basic.year)"
         objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
         objectPercentLabel.isHidden = true
         objectBlueDetailsLabel.isHidden = true
@@ -538,7 +538,7 @@ private extension UniversalChatVC {
         input.textView.text = nil
         input.adjustHeight()
         
-        if dataSource.notificationsType == .unknown {
+        if dataSource.notificationsType == .unknown && dataSource.chatType != .privateChat {
             let type: TopicMuteType = .unmuted
             dataSource.mute(type: type, completion: { [weak self] muted in
                 self?.showMuteInfo(muteType: type)

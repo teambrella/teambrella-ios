@@ -15,6 +15,7 @@
 "Main.cancel"                  = "Cancel";
 
 "Main.Notification.noInternet" = "No Internet connection";
+"Main.Notification.noServer"   = "Server is unreachable";
 
 "Main.my"                      = "my";
 "Main.his"                     = "his";

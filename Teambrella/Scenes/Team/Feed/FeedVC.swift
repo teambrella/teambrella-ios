@@ -28,7 +28,7 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         static let cellHeight: CGFloat   = 119
         static let headerHeight: CGFloat = 72
     }
-
+    
     var dataSource: FeedDataSource = FeedDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
     
     @IBOutlet var collectionView: UICollectionView!
@@ -42,19 +42,32 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         dataSource.onLoad = { [weak self] in
             HUD.hide()
             self?.collectionView.reloadData()
+            self?.collectionView.refreshControl?.endRefreshing()
+        }
+        dataSource.onError = { [weak self] error in
+            HUD.hide()
+            self?.collectionView.refreshControl?.endRefreshing()
         }
         dataSource.loadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard isFirstLoading == false else {
-            isFirstLoading = false
-            return
-        }
-        
-        dataSource.updateSilently()
         service.dao.recentScene = .feed
+        isFirstLoading = false
+    }
+    
+    func addRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.bluishGray
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+        collectionView.alwaysBounceVertical = true
+    }
+    
+    @objc
+    func refresh(sender: UIRefreshControl) {
+        dataSource.loadFromTop()
     }
     
     func setupCollectionView() {
@@ -62,12 +75,13 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         collectionView.register(HeaderWithButton.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: HeaderWithButton.cellID)
+        addRefreshControl()
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "Team.FeedVC.indicatorTitle".localized)
     }
-
+    
     @objc
     func tapStartDiscussion(sender: UIButton) {
         service.router.presentReport(context: .newChat, delegate: self)
@@ -86,6 +100,9 @@ extension FeedVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row > dataSource.count - 10 {
+            dataSource.loadData()
+        }
         return collectionView.dequeueReusableCell(withReuseIdentifier: TeamFeedCell.cellID, for: indexPath)
     }
     

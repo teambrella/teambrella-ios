@@ -64,7 +64,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         registerCells()
         HUD.show(.progress, onView: view)
         
-        dataSource.loadEntireTeammate { [weak self] extendedTeammate in
+        dataSource.loadEntireTeammate(completion: { [weak self] extendedTeammate in
             HUD.hide()
             guard let `self` = self else { return }
             
@@ -78,7 +78,9 @@ final class TeammateProfileVC: UIViewController, Routable {
                 self.scrollToVote = false
                 self.collectionView.scrollToItem(at: index, at: .top, animated: true)
             }
-        }
+            }, failure: {  [weak self] error in
+                self?.navigationController?.popViewController(animated: true)
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {

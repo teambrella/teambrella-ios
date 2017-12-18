@@ -114,7 +114,7 @@ final class UniversalChatDatasource {
         }
         
         guard let chatModel = chatModel else {
-            return strategy.title
+            return ""//strategy.title
         }
         
         if chatModel.basicPart is BasicPartClaimConcrete {

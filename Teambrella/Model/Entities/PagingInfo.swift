@@ -21,19 +21,13 @@ import SwiftyJSON
     Used in feed/getList reply to manage pagination with chunks
  */
 struct PagingInfo {
-    let lastItemIndex: Int64
-    let limit: Int
-    let size: Int
+    let lastIndex: UInt64
     
     init?(json: JSON?) {
         guard let json = json else { return nil }
-        guard let lastItemIndex = json["LastItemIndex"].int64,
-        let limit = json["Limit"].int,
-            let size = json["Size"].int else { return nil }
+        guard let lastIndex = json["LastIndex"].uInt64 else { return nil }
         
-        self.lastItemIndex = lastItemIndex
-        self.limit = limit
-        self.size = size
+        self.lastIndex = lastIndex
     }
     
 }

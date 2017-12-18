@@ -39,7 +39,7 @@ final class ReachabilityService {
         }
     }
     
-    func showUnreachable(with: Reachability) {
+    func showUnreachable(with: Reachability? = nil) {
         let view = MessageView.viewFromNib(layout: .statusLine)
         view.configureTheme(.warning)
         view.configureDropShadow()

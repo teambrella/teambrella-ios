@@ -26,47 +26,56 @@ class FeedDataSource {
     private var items: [FeedEntity] = []
     var count: Int { return items.count }
     
-    var offset = 0
-    var since: UInt64 = 0
-    let limit = 10
+    var startIndex: UInt64 = 0
+    let limit = 100
     
     var isSilentUpdate = false
+    var isLoading = false
+    var isTemporaryValueNeeded = false
     
     var onLoad: (() -> Void)?
+    var onError: ((Error) -> Void)?
     
     init(teamID: Int) {
         self.teamID = teamID
     }
     
-    func loadData() {
-        let offset = isSilentUpdate ? 0 : count
-        let context = FeedRequestContext(teamID: teamID, since: since, offset: offset, limit: limit)
-        service.dao.requestTeamFeed(context: context,
-                                    needTemporaryResult: items.isEmpty).observe { [weak self] result in
-             guard let `self` = self else { return }
-            
-            switch result {
-            case let .value(feedChunk):
-                if self.isSilentUpdate {
-                    self.items.removeAll()
-                    self.isSilentUpdate = false
-                }
-                self.items.append(contentsOf: feedChunk.feed)
-                self.onLoad?()
-            case let .temporaryValue(feedChunk):
-                if !self.isSilentUpdate {
-                    self.items.append(contentsOf: feedChunk.feed)
-                    self.onLoad?()
-                }
-            case let .error(error):
-                log("\(error)", type: .error)
-            }
-        }
-    }
-    
-    func updateSilently() {
+    func loadFromTop() {
+        startIndex = 0
         isSilentUpdate = true
         loadData()
+    }
+    
+    func loadData() {
+        guard isLoading == false else { return }
+        
+        isLoading = true
+        let context = FeedRequestContext(teamID: teamID, startIndex: startIndex, limit: limit, search: nil)
+        service.dao.requestTeamFeed(context: context,
+                                    needTemporaryResult: items.isEmpty).observe { [weak self] result in
+                                        guard let `self` = self else { return }
+                                        
+                                        switch result {
+                                        case let .value(feedChunk):
+                                            if self.isSilentUpdate {
+                                                self.items.removeAll()
+                                                self.isSilentUpdate = false
+                                            }
+                                            self.items.append(contentsOf: feedChunk.feed)
+                                            feedChunk.pagingInfo.map { self.startIndex = $0.lastIndex }
+                                            self.onLoad?()
+                                        case let .temporaryValue(feedChunk):
+                                            if !self.isSilentUpdate && self.isTemporaryValueNeeded {
+                                                self.items.removeAll()
+                                                self.items.append(contentsOf: feedChunk.feed)
+                                                self.onLoad?()
+                                            }
+                                        case let .error(error):
+                                            log("\(error)", type: .error)
+                                            self.onError?(error)
+                                        }
+                                        self.isLoading = false
+        }
     }
     
     subscript(indexPath: IndexPath) -> FeedEntity {

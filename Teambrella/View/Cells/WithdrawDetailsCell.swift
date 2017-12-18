@@ -87,7 +87,7 @@ extension WithdrawDetailsCell: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let input = (textView.text as NSString).replacingCharacters(in: range, with: text)
-        return input.count <= 42;
+        return input.count <= 42
     }
 }
 

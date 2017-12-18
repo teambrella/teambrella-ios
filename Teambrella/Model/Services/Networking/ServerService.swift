@@ -125,6 +125,9 @@ class ServerService: NSObject {
         if json["Paging"].exists() {
             return json["Paging"]
         }
+        if json["Meta"].exists() {
+            return json["Meta"]
+        }
         return nil
     }
     
