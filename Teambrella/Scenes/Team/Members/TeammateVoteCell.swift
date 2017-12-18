@@ -26,8 +26,6 @@ class TeammateVoteCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        ViewDecorator.roundedEdges(for: self)
-        ViewDecorator.shadow(for: self)
     }
     
     override func layoutMarginsDidChange() {
