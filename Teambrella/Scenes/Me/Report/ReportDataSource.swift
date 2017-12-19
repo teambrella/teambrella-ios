@@ -80,7 +80,8 @@ class ReportDataSource {
             } else if let model = model as? DescriptionReportCellModel {
                 message = model.text
             } else if let model = model as? WalletReportCellModel {
-                address = model.text
+                let ethAddress = EthereumAddress(string: model.text)
+                address = ethAddress?.string
             }
         }
         
