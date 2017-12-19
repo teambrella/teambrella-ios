@@ -54,6 +54,7 @@ final class UniversalChatDatasource {
     var chatModel: ChatModel? {
         didSet {
             notificationsType = TopicMuteType.type(from: chatModel?.isMuted)
+            cellModelBuilder.showRate = chatType == .application || chatType == .claim
         }
     }
     
@@ -226,7 +227,7 @@ final class UniversalChatDatasource {
     func addContext(context: ChatContext, itemType: ItemType) {
         strategy = ChatStrategyFactory.strategy(with: context)
         hasPrevious = strategy.canLoadBackward
-        cellModelBuilder.showRate = itemType == .claim || itemType == .teammate
+        cellModelBuilder.showRate = chatType == .application || chatType == .claim
     }
     
     func loadNext() {

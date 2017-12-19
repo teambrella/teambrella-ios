@@ -24,7 +24,7 @@ import UIKit
 class ChatModelBuilder {
     let fragmentParser = ChatFragmentParser()
     
-    var showRate = true
+    var showRate = false
     var font: UIFont = UIFont.teambrella(size: 14)
     var width: CGFloat = 0
     lazy var heightCalculator = ChatFragmentHeightCalculator(width: width, font: font)

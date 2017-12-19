@@ -105,6 +105,7 @@ final class UniversalChatVC: UIViewController, Routable {
         dataSource.onUpdate = { [weak self] backward, hasNew, isFirstLoad in
             guard let `self` = self else { return }
             
+            self.collectionView.refreshControl?.endRefreshing()
             self.setupActualObjectViewIfNeeded()
             self.setupTitle()
             self.setMuteButtonImage(type: self.dataSource.notificationsType)
@@ -488,7 +489,6 @@ private extension UniversalChatVC {
             } else if backward, let indexPath = self.dataSource.currentTopCellPath {
                 self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
             }
-            self.collectionView.refreshControl?.endRefreshing()
         // adjustCollectionViewHeight()
     }
     
