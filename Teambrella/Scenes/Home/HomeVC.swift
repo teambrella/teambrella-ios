@@ -121,7 +121,8 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        addEmitter()
+        emitterScene.isHidden = true
+//        addEmitter()
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
