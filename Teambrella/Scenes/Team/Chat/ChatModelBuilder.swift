@@ -24,7 +24,7 @@ import UIKit
 class ChatModelBuilder {
     let fragmentParser = ChatFragmentParser()
     
-    var showRate = true
+    var showRate = false
     var font: UIFont = UIFont.teambrella(size: 14)
     var width: CGFloat = 0
     lazy var heightCalculator = ChatFragmentHeightCalculator(width: width, font: font)
@@ -40,12 +40,18 @@ class ChatModelBuilder {
                                                      isFailed: false)
     }
     
+    func separatorModelIfNeeded(firstModel: ChatCellModel, secondModel: ChatCellModel) -> ChatCellModel? {
+        if firstModel.date.interval(of: .day, since: secondModel.date) != 0 {
+            return ChatSeparatorCellModel(date: secondModel.date.addingTimeInterval(-0.01))
+        }
+        return nil
+    }
+    
     func cellModels(from chatItems: [ChatEntity],
-                    lastChunk: ChatChunk?,
                     isClaim: Bool,
                     isTemporary: Bool) -> [ChatCellModel] {
         var result: [ChatCellModel] = []
-        var lastDate: Date? = lastChunk?.cellModels.last?.date
+   
         for item in chatItems {
             let fragments = fragmentParser.parse(item: item)
             var isMy = false
@@ -60,11 +66,9 @@ class ChatModelBuilder {
                 name = item.name
                 avatar = item.avatar
             }
+            
             let date = item.created
-            if let last = lastDate, date.interval(of: .day, since: last) != 0 {
-                result.append(ChatSeparatorCellModel(date: date))
-                lastDate = date
-            }
+           
             var rateString: String?
             if showRate {
                 if let rate = item.vote {

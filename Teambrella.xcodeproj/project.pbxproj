@@ -249,7 +249,6 @@
 		6D4E5C901F7AB6870020DEE2 /* JoinTeamCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141CD1F07DDEF00C285DA /* JoinTeamCellModels.swift */; };
 		6D4E5C921F7AB6870020DEE2 /* DeveloperTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */; };
 		6D4E5C931F7AB6870020DEE2 /* ReportCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E057F1F01033700604981 /* ReportCellBuilder.swift */; };
-		6D4E5C941F7AB6870020DEE2 /* ChatChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8950A61F542815002DB34D /* ChatChunk.swift */; };
 		6D4E5C951F7AB6870020DEE2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC6461ED746FF007F936E /* HomeVC.swift */; };
 		6D4E5C961F7AB6870020DEE2 /* EntityEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A9A1ED07CF1001BC579 /* EntityEnums.swift */; };
 		6D4E5C971F7AB6870020DEE2 /* ChatCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B4A51F4F10E800672583 /* ChatCellModels.swift */; };
@@ -663,7 +662,6 @@
 		6D83EC941EDDA9DC000412DC /* TeammateProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */; };
 		6D862F6B1F1E639A00988D5C /* TeammateFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */; };
 		6D88C4FD1FA3986300E55F7C /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */; };
-		6D8950A71F542815002DB34D /* ChatChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8950A61F542815002DB34D /* ChatChunk.swift */; };
 		6D8C6FE41F75301000BF65B6 /* TeammateTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C6FE31F75301000BF65B6 /* TeammateTransformer.swift */; };
 		6D8C6FE71F754D7000BF65B6 /* Error.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D8C6FE51F754D7000BF65B6 /* Error.strings */; };
 		6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
@@ -1262,7 +1260,6 @@
 		6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateProfileDataSource.swift; path = Scenes/Team/Members/TeammateProfileDataSource.swift; sourceTree = "<group>"; };
 		6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateFooter.swift; path = Scenes/Team/Members/TeammateFooter.swift; sourceTree = "<group>"; };
 		6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTests.swift; sourceTree = "<group>"; };
-		6D8950A61F542815002DB34D /* ChatChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatChunk.swift; path = Scenes/Team/Chat/ChatChunk.swift; sourceTree = "<group>"; };
 		6D8C6FE31F75301000BF65B6 /* TeammateTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeammateTransformer.swift; path = Scenes/Team/Members/TeammateTransformer.swift; sourceTree = "<group>"; };
 		6D8C6FE61F754D7000BF65B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Error.strings; sourceTree = "<group>"; };
 		6D8C6FE81F754D8E00BF65B6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Error.strings; sourceTree = "<group>"; };
@@ -2442,7 +2439,6 @@
 				6D66B4A31F4F109E00672583 /* ChatFragmentHeightCalculator.swift */,
 				6D66B4A51F4F10E800672583 /* ChatCellModels.swift */,
 				6D66B49D1F4DD70F00672583 /* ChatTextCell.swift */,
-				6D8950A61F542815002DB34D /* ChatChunk.swift */,
 				6DD051C21F67CC5E00532626 /* InputAccessoryView.swift */,
 				6D7987781F6827A80060A193 /* ChatSeparatorCell.swift */,
 				6D2A57AE1F69858900CE8841 /* ChatHeader.swift */,
@@ -3544,7 +3540,6 @@
 				6D4E5C921F7AB6870020DEE2 /* DeveloperTools.swift in Sources */,
 				6D4E5C931F7AB6870020DEE2 /* ReportCellBuilder.swift in Sources */,
 				6D677E781FA110B800ED1C36 /* EtherAPI.swift in Sources */,
-				6D4E5C941F7AB6870020DEE2 /* ChatChunk.swift in Sources */,
 				6D4E5C951F7AB6870020DEE2 /* HomeVC.swift in Sources */,
 				6D4E5C961F7AB6870020DEE2 /* EntityEnums.swift in Sources */,
 				6D4E5C971F7AB6870020DEE2 /* ChatCellModels.swift in Sources */,
@@ -3943,7 +3938,6 @@
 				6D3141CE1F07DDEF00C285DA /* JoinTeamCellModels.swift in Sources */,
 				6D0E742F1F13C7810055BF1E /* DeveloperTools.swift in Sources */,
 				6D0E05801F01033700604981 /* ReportCellBuilder.swift in Sources */,
-				6D8950A71F542815002DB34D /* ChatChunk.swift in Sources */,
 				6D9CC6471ED746FF007F936E /* HomeVC.swift in Sources */,
 				6D677E771FA110B800ED1C36 /* EtherAPI.swift in Sources */,
 				6D466AAF1ED07CF1001BC579 /* EntityEnums.swift in Sources */,
