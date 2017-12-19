@@ -42,6 +42,7 @@ class WalletDataSource {
             switch result {
             case let .value(wallet):
                 self?.wallet = wallet
+                self?.items.removeAll()
                 self?.createCellModels(with: wallet)
                 self?.fundAddress = wallet.fundAddress
                 self?.onUpdate?()

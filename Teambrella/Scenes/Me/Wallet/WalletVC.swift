@@ -47,6 +47,7 @@ class WalletVC: UIViewController {
             HUD.hide()
             self?.wallet = self?.dataSource.wallet
             self?.collectionView.reloadData()
+            self?.collectionView.refreshControl?.endRefreshing()
         }
         dataSource.onError = { [weak self] error in
             HUD.hide()
@@ -56,7 +57,21 @@ class WalletVC: UIViewController {
                 service.error.present(error: error)
             }
         }
+        addRefreshControl()
         prepareWalletAddress()
+        dataSource.loadData()
+    }
+    
+    func addRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.bluishGray
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+        collectionView.alwaysBounceVertical = true
+    }
+    
+    @objc
+    func refresh(sender: UIRefreshControl) {
         dataSource.loadData()
     }
     
