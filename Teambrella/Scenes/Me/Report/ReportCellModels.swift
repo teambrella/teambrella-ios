@@ -95,7 +95,7 @@ struct WalletReportCellModel: ReportCellModel {
     let title = "Me.Report.WalletCell.title".localized
     var text: String
     
-    var isValid: Bool { return text != "" }
+    var isValid: Bool { return EthereumAddress(string: text) != nil }
 }
 
 struct TitleReportCellModel: ReportCellModel {
