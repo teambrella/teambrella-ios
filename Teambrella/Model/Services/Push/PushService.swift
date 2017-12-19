@@ -73,12 +73,26 @@ class PushService: NSObject {
         self.command = RemoteCommand.command(from: payload)
     }
     
+    func silentPushCalculator() {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        /*
+        let key = "teambrella.silent.push.counter"
+        var stored = UserDefaults.standard.object(forKey: key) as? Int ?? 0
+        stored += 1
+        print("silent push counter: \(stored)")
+        UIApplication.shared.applicationIconBadgeNumber = stored
+        UserDefaults.standard.set(stored, forKey: key)
+        UserDefaults.standard.synchronize()
+ */
+    }
+    
     func remoteNotification(in application: UIApplication,
                             userInfo: [AnyHashable: Any],
                             completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if let aps = userInfo["aps"] as? [AnyHashable: Any], let content = aps["content-available"] as? Bool {
             if content == true {
-                print("Content is available")
+                print("Content is available: \(userInfo)")
+                silentPushCalculator()
                 service.teambrella.startUpdating()
             }
         }
@@ -116,10 +130,28 @@ class PushService: NSObject {
                                userName: _,
                                avatar: _, details: details):
             showTopic(details: details)
+        case let .newClaim(teamID: teamID,
+                           userID: _,
+                           claimID: claimID,
+                           name: _,
+                           avatar: _,
+                           amount: _,
+                           teamName: _):
+            showNewClaim(teamID: teamID, claimID: claimID)
         default:
             break
         }
         self.command = nil
+    }
+    
+    private func showNewClaim(teamID: Int, claimID: Int) {
+        if selectCorrectTeam(teamID: teamID) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+               // service.router.switchTeam()
+//                service.router.presentClaims(animated: false)
+            service.router.presentClaim(claimID: claimID)
+            }
+        }
     }
     
     private func showPrivateMessage(command: RemoteCommand) {
@@ -130,17 +162,25 @@ class PushService: NSObject {
         }
     }
     
-    private func showWalletFunded(teamID: Int) {
+    private func selectCorrectTeam(teamID: Int) -> Bool {
         if let session = service.session {
             if let team = session.currentTeam, team.teamID != teamID {
                 for team in session.teams where team.teamID == teamID {
                     service.session?.switchToTeam(id: teamID)
                     service.router.switchTeam()
-                    break
+                    return true
                 }
+            } else {
+                return true
             }
         }
-        service.router.switchToWallet()
+        return false
+    }
+    
+    private func showWalletFunded(teamID: Int) {
+        if selectCorrectTeam(teamID: teamID) {
+            service.router.switchToWallet()
+        }
     }
     
     private func showTopic(details: RemoteTopicDetails?) {

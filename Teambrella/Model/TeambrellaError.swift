@@ -53,6 +53,8 @@ struct TeambrellaError: Error {
         case teammateNoAccess           = 702001
         case teammateNotExists          = 702011
         
+        case claimNotExists             = 704011
+        
         case withdrawalAddressEmpty     = 710101
         case withdrawalAddressFormat    = 710102
         case withdrawalAddressChecksum  = 710103

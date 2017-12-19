@@ -180,6 +180,7 @@ class TeambrellaService {
     
     func sync() {
         print("Teambrella service start sync")
+        print("Public Key: \(key.publicKey)")
         isStorageCleared = false
         registerBackgroundTask()
         queue.addOperation {
