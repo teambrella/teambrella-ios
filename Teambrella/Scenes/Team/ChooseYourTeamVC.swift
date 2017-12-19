@@ -45,9 +45,11 @@ class ChooseYourTeamVC: UIViewController, Routable {
         tableView.register(TeamCell.nib, forCellReuseIdentifier: TeamCell.cellID)
         tableView.register(SwitchUserCell.nib, forCellReuseIdentifier: SwitchUserCell.cellID)
         container.layer.cornerRadius = 4
-//        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapCancel))
-//        backView.addGestureRecognizer(recognizer)
-//        backView.isUserInteractionEnabled = true
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapCancel))
+        recognizer.delegate = self
+        backView.addGestureRecognizer(recognizer)
+        backView.isUserInteractionEnabled = true
+        
         backView.alpha = 0
         self.container.alpha = 0
     }
@@ -82,6 +84,7 @@ class ChooseYourTeamVC: UIViewController, Routable {
         }
     }
     
+    @objc
     func tapCancel() {
         disappear {
             self.dismiss(animated: false, completion: nil)
@@ -146,5 +149,11 @@ extension ChooseYourTeamVC: UITableViewDelegate {
         tableView.reloadData()
         delegate?.chooseTeam(controller: self, didSelectTeamID: team.teamID)
         tapCancel()
+    }
+}
+
+extension ChooseYourTeamVC: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return touch.view == gestureRecognizer.view
     }
 }

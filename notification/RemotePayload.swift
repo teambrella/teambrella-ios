@@ -110,7 +110,7 @@ struct RemotePayload {
     
     var claimID: Int? { return dict["ClaimId"] as? Int }
     
-    var amount: String? { return dict["Count"] as? String }
+    var amount: String? { return dict["Count"] as? String ?? dict["Amount"] as? String }
     var cryptoAmount: String? { return dict["BalanceCrypto"] as? String }
     var currencyAmount: String? { return dict["BalanceFiat"] as? String }
     

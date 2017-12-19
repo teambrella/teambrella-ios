@@ -24,3 +24,6 @@
 "Push.newMessage.posted_format" = "%@ publicado en %@";
 
 "Push.newDiscussion.title_format" = "%1$@ inició una nueva discusión \"%2$@\"";
+
+"Push.newClaim.title_format" = "%1$@ submitted new claim";
+"Push.newClaim.body_format" = "Claim created for the ammount of %1$@";

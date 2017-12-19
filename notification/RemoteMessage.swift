@@ -43,6 +43,8 @@ struct RemoteMessage {
             return "Push.newMessage".localized
         case .newDiscussion:
             return "Push.newDiscussion.title_format".localized(payload.userNameValue, payload.topicNameValue)
+        case .newClaim:
+            return "Push.newClaim.title_format".localized(payload.userNameValue)
         default:
             return nil
         }
@@ -75,6 +77,8 @@ struct RemoteMessage {
             return ""
         case .newTeammate:
             return "Push.newTeammate.body_format".localized(payload.userNameValue)
+        case .newClaim:
+            return "Push.newClaim.body_format".localized(payload.amountValue)
         default:
             return nil
         }
