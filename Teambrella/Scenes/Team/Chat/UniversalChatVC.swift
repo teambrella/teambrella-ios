@@ -132,7 +132,7 @@ final class UniversalChatVC: UIViewController, Routable {
         objectRightLabel.addGestureRecognizer(tap)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-self.scrollToBottom(animated: true)
+            self.scrollToBottom(animated: true)
         }
     }
     
@@ -246,9 +246,9 @@ self.scrollToBottom(animated: true)
         }
     }
     
-//    func adjustCollectionViewHeight() {
-//        collectionView.contentInset.bottom = keyboardHeight
-//    }
+    //    func adjustCollectionViewHeight() {
+    //        collectionView.contentInset.bottom = keyboardHeight
+    //    }
     
     
     @objc
@@ -483,12 +483,12 @@ private extension UniversalChatVC {
         //        collectionView.dataSource = nil
         //        collectionView.dataSource = self
         collectionView.reloadData()
-            if self.shouldScrollToBottom {
-                self.scrollToBottom(animated: true)
-                self.shouldScrollToBottom = false
-            } else if backward, let indexPath = self.dataSource.currentTopCellPath {
-                self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
-            }
+        if self.shouldScrollToBottom {
+            self.scrollToBottom(animated: true)
+            self.shouldScrollToBottom = false
+        } else if backward, let indexPath = self.dataSource.currentTopCellPath {
+            self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
+        }
         // adjustCollectionViewHeight()
     }
     

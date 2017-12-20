@@ -76,6 +76,47 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
         //dataSource.updateSilently()
     }
     
+    func addKeyboardObservers() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapView))
+        view.addGestureRecognizer(tap)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(adjustForKeyboard),
+                           name: Notification.Name.UIKeyboardWillHide,
+                           object: nil)
+        center.addObserver(self, selector: #selector(adjustForKeyboard),
+                           name: Notification.Name.UIKeyboardWillChangeFrame,
+                           object: nil)
+    }
+    
+    @objc
+    func adjustForKeyboard(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        let keyboardScreenEndFrame = value.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == Notification.Name.UIKeyboardWillHide {
+            collectionView.contentInset = UIEdgeInsets.zero
+        } else {
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+        }
+        
+        collectionView.scrollIndicatorInsets = collectionView.contentInset
+        if let responder = collectionView.currentFirstResponder() as? UIView {
+            for cell in collectionView.visibleCells where responder.isDescendant(of: cell) {
+                if let indexPath = collectionView.indexPath(for: cell) {
+                    collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                }
+            }
+        }
+    }
+    
+    @objc
+    func tapView(sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     func codeCapture(controller: CodeCaptureVC, didCapture: String, type: QRCodeType) {
         controller.confirmButton.isEnabled = true
         controller.confirmButton.alpha = 1
