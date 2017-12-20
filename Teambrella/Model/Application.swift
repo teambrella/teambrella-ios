@@ -17,10 +17,6 @@
 import Foundation
 
 class Application {
-    struct Constant {
-        static let uniqueIdentifier = "com.teambrella.application.uniqueIdentifier"
-    }
-    
     var version: String { return Bundle.main
         .object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "" }
     
@@ -29,12 +25,11 @@ class Application {
     var clientVersion: String { return "ios-\(version).\(build)" }
     
     var uniqueIdentifier: String {
-        if let stored = UserDefaults.standard.object(forKey: Constant.uniqueIdentifier) as? String {
+        if let stored = SimpleStorage().string(forKey: .uniqueIdentifier) {
             return stored
         } else {
             let id = UUID()
-            UserDefaults.standard.set(id.uuidString, forKey: Constant.uniqueIdentifier)
-            UserDefaults.standard.synchronize()
+            SimpleStorage().store(string: id.uuidString, forKey: .uniqueIdentifier)
             return id.uuidString
         }
     }

@@ -22,21 +22,16 @@
 import Foundation
 
 class ServerDAO: DAO {
-    struct Constant {
-        static let recentSceneKey: String = "storage.recentScene"
-    }
-    
     var lastKeyTime: Date?
     var recentScene: SceneType {
         get {
-            if let stored = UserDefaults.standard.object(forKey: Constant.recentSceneKey) as? String {
+            if let stored = SimpleStorage().string(forKey: .recentScene) {
                 return SceneType(rawValue: stored) ?? .home
             }
             return .home
         }
         set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: Constant.recentSceneKey)
-            UserDefaults.standard.synchronize()
+            SimpleStorage().store(string: newValue.rawValue, forKey: .recentScene)
         }
     }
     

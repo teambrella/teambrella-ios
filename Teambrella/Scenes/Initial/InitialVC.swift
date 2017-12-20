@@ -27,7 +27,7 @@ final class InitialVC: UIViewController {
         case login
         case demoExpired
     }
-   
+    
     var mode: InitialVCMode = .login
     
     // MARK: Lifecycle
@@ -36,7 +36,7 @@ final class InitialVC: UIViewController {
         super.viewDidLoad()
         
         if service.keyStorage.lastUserType != .none {
-           mode = .idle
+            mode = .idle
             startLoadingTeams()
         }
     }
@@ -57,7 +57,7 @@ final class InitialVC: UIViewController {
         default:
             break
         }
-       mode = .idle
+        mode = .idle
     }
     
     // MARK: Callbacks
@@ -78,7 +78,7 @@ final class InitialVC: UIViewController {
         service.keyStorage.clearLastUserType()
         self.startLoadingTeams()
         sod?.dismiss(animated: true) {
-        
+            
         }
     }
     
@@ -111,14 +111,28 @@ final class InitialVC: UIViewController {
         
         service.teambrella.startUpdating()
         
-        let lastTeam = teamsEntity.lastTeamID
-            .map { id in teamsEntity.teams.filter { team in team.teamID == id } }?.first
-        
-        if let lastTeam = lastTeam {
-            service.session?.currentTeam = lastTeam
-        } else if !teamsEntity.teams.isEmpty {
-            service.session?.currentTeam = teamsEntity.teams.first
+        /*
+         Selecting team that was used last time
+         
+         Firstly we try to use teamID that comes from server (but it is not implemented yet)
+         Secondly we use a stored on device last used teamID
+         and lastly if everything fails we take the first team from the list
+         */
+        let lastTeamID: Int
+        if let receivedID = teamsEntity.lastTeamID {
+            lastTeamID = receivedID
+        } else if let storedID = SimpleStorage().int(forKey: .teamID) {
+            lastTeamID = storedID
+        } else {
+            lastTeamID = teamsEntity.teams.first?.teamID ?? 0
         }
+        var currentTeam: TeamEntity?
+        for team in teamsEntity.teams where team.teamID == lastTeamID {
+            currentTeam = team
+            break
+        }
+        service.session?.currentTeam = currentTeam ?? teamsEntity.teams.first
+        
         service.session?.teams = teamsEntity.teams
         service.session?.currentUserID = teamsEntity.userID
         service.socket = SocketService()
