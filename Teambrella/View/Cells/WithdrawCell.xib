@@ -45,17 +45,17 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmo-E4-NUO" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmo-E4-NUO" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="16" y="43.5" width="42" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Bk-bz-UFy" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="245" y="0.0" width="20" height="79"/>
+                                <rect key="frame" x="50" y="0.0" width="8" height="79"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="IPK-qA-HBp"/>
+                                    <constraint firstAttribute="width" constant="8" id="IPK-qA-HBp"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -94,6 +94,7 @@
                             <constraint firstItem="7ve-5A-frp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dmo-E4-NUO" secondAttribute="trailing" constant="16" id="4sq-hb-hZZ"/>
                             <constraint firstItem="dmo-E4-NUO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nqT-zv-FvV" secondAttribute="bottom" constant="4" id="Arb-0W-ZX1"/>
                             <constraint firstItem="7ve-5A-frp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rPP-71-a4x" secondAttribute="trailing" constant="8" id="DMe-qE-jvq"/>
+                            <constraint firstItem="7Bk-bz-UFy" firstAttribute="trailing" secondItem="dmo-E4-NUO" secondAttribute="trailing" id="G6I-S4-q3E"/>
                             <constraint firstAttribute="trailing" secondItem="7ve-5A-frp" secondAttribute="trailing" constant="16" id="Xfn-Nj-9rj"/>
                             <constraint firstItem="rPP-71-a4x" firstAttribute="centerY" secondItem="nqT-zv-FvV" secondAttribute="centerY" id="bhz-Hq-1WU"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dmo-E4-NUO" secondAttribute="bottom" constant="16" id="bwK-5W-L16"/>
@@ -107,7 +108,6 @@
                             <constraint firstItem="7Bk-bz-UFy" firstAttribute="top" secondItem="pO5-Ve-PTc" secondAttribute="top" id="wEH-24-RmN"/>
                             <constraint firstItem="53n-qQ-D2f" firstAttribute="leading" secondItem="pO5-Ve-PTc" secondAttribute="leading" constant="16" id="weV-65-VtH"/>
                             <constraint firstAttribute="bottom" secondItem="53n-qQ-D2f" secondAttribute="bottom" id="wfj-ZN-bXJ"/>
-                            <constraint firstItem="7Bk-bz-UFy" firstAttribute="trailing" secondItem="7ve-5A-frp" secondAttribute="leading" id="wzY-gE-AcM"/>
                         </constraints>
                     </view>
                 </subviews>
