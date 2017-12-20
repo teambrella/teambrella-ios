@@ -64,6 +64,13 @@ final class TeammateProfileVC: UIViewController, Routable {
         registerCells()
         HUD.show(.progress, onView: view)
         
+      
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setTitle()
+        
         dataSource.loadEntireTeammate(completion: { [weak self] extendedTeammate in
             HUD.hide()
             guard let `self` = self else { return }
@@ -81,11 +88,6 @@ final class TeammateProfileVC: UIViewController, Routable {
             }, failure: {  [weak self] error in
                 self?.navigationController?.popViewController(animated: true)
         })
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setTitle()
     }
     
     override func viewDidLayoutSubviews() {
