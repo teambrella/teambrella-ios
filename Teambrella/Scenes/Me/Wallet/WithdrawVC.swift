@@ -75,10 +75,6 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            //layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 30)
-            //layout.footerReferenceSize = CGSize(width: collectionView.bounds.width, height: 30)
-        }
         collectionView.contentInset.bottom = keyboardHeight
     }
     
@@ -121,8 +117,6 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
             guard finalFrame.minY < collectionView.contentSize.height else { return }
             
             keyboardTopY = finalFrame.minY
-            // let diff = initialFrame.minY - finalFrame.minY
-            // offset.y += diff
             collectionView.contentOffset = offset
             collectionView.contentInset.bottom = keyboardHeight
         }
