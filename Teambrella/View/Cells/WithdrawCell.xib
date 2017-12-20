@@ -31,10 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ve-5A-frp">
-                                <rect key="frame" x="265" y="29" width="90" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="1GG-fK-eyv"/>
-                                </constraints>
+                                <rect key="frame" x="313" y="29" width="42" height="21"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Label">
                                         <attributes>
@@ -46,16 +43,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmo-E4-NUO" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="16" y="43.5" width="42" height="19.5"/>
+                                <rect key="frame" x="16" y="43.5" width="293" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Bk-bz-UFy" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="50" y="0.0" width="8" height="79"/>
+                                <rect key="frame" x="293" y="0.0" width="16" height="79"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="8" id="IPK-qA-HBp"/>
+                                    <constraint firstAttribute="width" constant="16" id="IPK-qA-HBp"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -91,10 +88,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="7Bk-bz-UFy" secondAttribute="bottom" id="2yy-Vf-sN3"/>
-                            <constraint firstItem="7ve-5A-frp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dmo-E4-NUO" secondAttribute="trailing" constant="16" id="4sq-hb-hZZ"/>
+                            <constraint firstItem="7ve-5A-frp" firstAttribute="leading" secondItem="dmo-E4-NUO" secondAttribute="trailing" constant="4" id="4sq-hb-hZZ"/>
                             <constraint firstItem="dmo-E4-NUO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nqT-zv-FvV" secondAttribute="bottom" constant="4" id="Arb-0W-ZX1"/>
                             <constraint firstItem="7ve-5A-frp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rPP-71-a4x" secondAttribute="trailing" constant="8" id="DMe-qE-jvq"/>
-                            <constraint firstItem="7Bk-bz-UFy" firstAttribute="trailing" secondItem="dmo-E4-NUO" secondAttribute="trailing" id="G6I-S4-q3E"/>
+                            <constraint firstItem="7ve-5A-frp" firstAttribute="leading" secondItem="7Bk-bz-UFy" secondAttribute="trailing" constant="4" id="JrJ-e6-CKt"/>
                             <constraint firstAttribute="trailing" secondItem="7ve-5A-frp" secondAttribute="trailing" constant="16" id="Xfn-Nj-9rj"/>
                             <constraint firstItem="rPP-71-a4x" firstAttribute="centerY" secondItem="nqT-zv-FvV" secondAttribute="centerY" id="bhz-Hq-1WU"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dmo-E4-NUO" secondAttribute="bottom" constant="16" id="bwK-5W-L16"/>
