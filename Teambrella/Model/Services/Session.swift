@@ -48,6 +48,8 @@ struct Session {
     mutating func switchToTeam(id: Int) -> Bool {
         guard let currentTeam = currentTeam, currentTeam.teamID != id else { return false }
         
+        SimpleStorage().store(int: id, forKey: .teamID)
+        
         let filtered = teams.filter { $0.teamID == id }
         if let team = filtered.first {
             self.currentTeam = team

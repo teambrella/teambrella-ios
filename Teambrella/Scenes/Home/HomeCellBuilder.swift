@@ -62,13 +62,15 @@ struct HomeCellBuilder {
             cell.titleLabel.text = model.isMine
                 ? "Team.Home.Card.yourClaim".localized
                 : "Team.Home.Card.claim".localized
-            cell.rightNumberView.amountLabel.text = String(format: "%.0f", model.teamVote * 100)
-            cell.rightNumberView.currencyLabel.text = "%"
+            let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
+            cell.rightNumberView.amountLabel.text = amountText
+            cell.rightNumberView.currencyLabel.text = model.teamVote == nil ? nil : "%"
         case .teammate:
             cell.avatarView.showAvatar(string: model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
             cell.titleLabel.text = "Team.Home.Card.newTeammate".localized
-            cell.rightNumberView.amountLabel.text = String.formattedNumber(model.teamVote)
+            let amountText: String = model.teamVote.map { String.formattedNumber($0) } ?? "..."
+            cell.rightNumberView.amountLabel.text = amountText
             cell.rightNumberView.currencyLabel.text = nil
         default:
             break
