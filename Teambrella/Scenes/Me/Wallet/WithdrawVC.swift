@@ -31,6 +31,13 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     var isFirstLoading = true
     
+    var keyboardTopY: CGFloat?
+    var keyboardHeight: CGFloat {
+        guard let top = self.keyboardTopY else { return 0 }
+        
+        return self.view.bounds.maxY - top
+    }
+    
     // MARK: Lifecycle
     
     func setupCrypto(balance: Double, reserved: Double) {
@@ -60,10 +67,24 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
             controller.addAction(cancel)
             self?.present(controller, animated: true, completion: nil)
         }
-        
+        addKeyboardObservers()
         dataSource.loadData()
         addGradientNavBar()
         title = "Me.Wallet.Withdraw".localized
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            //layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 30)
+            //layout.footerReferenceSize = CGSize(width: collectionView.bounds.width, height: 30)
+        }
+        collectionView.contentInset.bottom = keyboardHeight
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        listenForKeyboard()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,6 +95,37 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
         }
         
         //dataSource.updateSilently()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopListeningKeyboard()
+    }
+    
+    private func listenForKeyboard() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillChangeFrame),
+                                               name: Notification.Name.UIKeyboardWillChangeFrame,
+                                               object: nil)
+    }
+    
+    private func stopListeningKeyboard() {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    @objc
+    func keyboardWillChangeFrame(notification: Notification) {
+        if let finalFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let initialFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            var offset =  collectionView.contentOffset
+            guard finalFrame.minY < collectionView.contentSize.height else { return }
+            
+            keyboardTopY = finalFrame.minY
+            // let diff = initialFrame.minY - finalFrame.minY
+            // offset.y += diff
+            collectionView.contentOffset = offset
+            collectionView.contentInset.bottom = keyboardHeight
+        }
     }
     
     func addKeyboardObservers() {
