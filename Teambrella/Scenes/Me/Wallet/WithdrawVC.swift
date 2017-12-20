@@ -79,7 +79,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        super.viewWillAppear(animated)
         listenForKeyboard()
     }
     

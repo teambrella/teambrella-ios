@@ -250,7 +250,6 @@ final class UniversalChatVC: UIViewController, Routable {
     //        collectionView.contentInset.bottom = keyboardHeight
     //    }
     
-    
     @objc
     func keyboardWillChangeFrame(notification: Notification) {
         if let finalFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,

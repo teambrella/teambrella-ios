@@ -73,26 +73,12 @@ class PushService: NSObject {
         self.command = RemoteCommand.command(from: payload)
     }
     
-    func silentPushCalculator() {
-        UIApplication.shared.applicationIconBadgeNumber = 0
-        /*
-        let key = "teambrella.silent.push.counter"
-        var stored = UserDefaults.standard.object(forKey: key) as? Int ?? 0
-        stored += 1
-        print("silent push counter: \(stored)")
-        UIApplication.shared.applicationIconBadgeNumber = stored
-        UserDefaults.standard.set(stored, forKey: key)
-        UserDefaults.standard.synchronize()
- */
-    }
-    
     func remoteNotification(in application: UIApplication,
                             userInfo: [AnyHashable: Any],
                             completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if let aps = userInfo["aps"] as? [AnyHashable: Any], let content = aps["content-available"] as? Bool {
             if content == true {
                 print("Content is available: \(userInfo)")
-                silentPushCalculator()
                 service.teambrella.startUpdating()
             }
         }

@@ -32,7 +32,7 @@ struct HomeScreenModel {
         var itemDate: Date? { return json["ItemDate"].stringValue.dateFromTeambrella }
         var smallPhoto: String { return json["SmallPhotoOrAvatar"].stringValue }
         var amount: Double { return json["Amount"].doubleValue }
-        var teamVote: Double? { return json["TeamVote"].double}
+        var teamVote: Double? { return json["TeamVote"].double }
         var isVoting: Bool { return json["IsVoting"].boolValue }
         //var text: String { return json["Text"].stringValue }
         var unreadCount: Int { return json["UnreadCount"].intValue }

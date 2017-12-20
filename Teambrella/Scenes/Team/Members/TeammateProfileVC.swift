@@ -63,8 +63,6 @@ final class TeammateProfileVC: UIViewController, Routable {
         addGradientNavBarIfNeeded()
         registerCells()
         HUD.show(.progress, onView: view)
-        
-      
     }
     
     override func viewWillAppear(_ animated: Bool) {
