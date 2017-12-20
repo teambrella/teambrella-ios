@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -31,9 +31,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ve-5A-frp">
-                                <rect key="frame" x="285" y="29" width="70" height="21"/>
+                                <rect key="frame" x="265" y="29" width="90" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="1GG-fK-eyv"/>
+                                    <constraint firstAttribute="width" constant="90" id="1GG-fK-eyv"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Label">
@@ -91,7 +91,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="7Bk-bz-UFy" secondAttribute="bottom" id="2yy-Vf-sN3"/>
-                            <constraint firstItem="7ve-5A-frp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dmo-E4-NUO" secondAttribute="trailing" constant="20" id="4sq-hb-hZZ"/>
+                            <constraint firstItem="7ve-5A-frp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dmo-E4-NUO" secondAttribute="trailing" constant="16" id="4sq-hb-hZZ"/>
                             <constraint firstItem="dmo-E4-NUO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nqT-zv-FvV" secondAttribute="bottom" constant="4" id="Arb-0W-ZX1"/>
                             <constraint firstItem="7Bk-bz-UFy" firstAttribute="trailing" secondItem="dmo-E4-NUO" secondAttribute="trailing" id="Bzj-mr-vq1"/>
                             <constraint firstItem="7ve-5A-frp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rPP-71-a4x" secondAttribute="trailing" constant="8" id="DMe-qE-jvq"/>
