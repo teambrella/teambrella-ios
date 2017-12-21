@@ -136,6 +136,7 @@ class TeammateProfileDataSource {
     private func modifySource() {
         guard let teammate = extendedTeammate else { return }
         
+        source.removeAll()
         isMyProxy = teammate.basic.isMyProxy
         let isVoting = teammate.voting != nil
         
