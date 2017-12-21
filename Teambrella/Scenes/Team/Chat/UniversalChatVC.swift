@@ -434,6 +434,12 @@ private extension UniversalChatVC {
     }
     
     private func setMuteButtonImage(type: TopicMuteType) {
+        guard dataSource.chatType != .privateChat else {
+            muteButton.isEnabled = false
+            muteButton.isHidden = true
+            return
+        }
+        
         let image: UIImage
         if  type == .muted {
             image = #imageLiteral(resourceName: "iconBellMuted1")

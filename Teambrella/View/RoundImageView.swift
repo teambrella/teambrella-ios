@@ -109,6 +109,7 @@ class RoundImageView: UIImageView {
         backgroundColor = .clear
         addSubview(imageView)
         imageView.layer.masksToBounds = true
+        contentMode = .scaleAspectFill
     }
     
     override func layoutSubviews() {
