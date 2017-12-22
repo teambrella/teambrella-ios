@@ -31,7 +31,7 @@ struct TeammateTransformer {
         if let teammate = teammate {
             dict = ["UserId": teammate.userID,
                     "Avatar": teammate.avatar,
-                    "Name": teammate.name,
+                    "Name": teammate.name.short,
                     "Text": teammate.extended?.topic.originalPostText ?? "",
                     "UnreadCount": teammate.extended?.topic.unreadCount ?? 0,
                     "SinceLastMessageMinutes": teammate.extended?.topic.minutesSinceLastPost ?? 0
@@ -40,7 +40,7 @@ struct TeammateTransformer {
         } else if let extended = extendedTeammate {
             dict = ["UserId": extended.basic.id,
                     "Avatar": extended.basic.avatar,
-                    "Name": extended.basic.name,
+                    "Name": extended.basic.name.short,
                     "Text": extended.topic.originalPostText,
                     "UnreadCount": extended.topic.unreadCount,
                     "SinceLastMessageMinutes": extended.topic.minutesSinceLastPost

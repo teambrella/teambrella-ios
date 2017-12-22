@@ -296,7 +296,8 @@ class ChatStrategy: ChatDatasourceStrategy {
 }
 
 class PrivateChatStrategy: ChatDatasourceStrategy {
-    var title: String { return user.name }
+    var title: String {
+        return user.name }
     var requestType: TeambrellaRequestType { return .privateChat }
     //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPrivatePost
