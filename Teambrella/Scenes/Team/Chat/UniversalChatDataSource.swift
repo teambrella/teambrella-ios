@@ -334,10 +334,13 @@ final class UniversalChatDatasource {
             return
         }
         
-        while lastInsertionIndex > 0 && models[lastInsertionIndex].date > model.date {
+        while lastInsertionIndex > 0
+            && lastInsertionIndex < models.count
+            && models[lastInsertionIndex].date > model.date {
             lastInsertionIndex -= 1
         }
-        while lastInsertionIndex < models.count && models[lastInsertionIndex].date <= model.date {
+        while lastInsertionIndex < models.count
+            && models[lastInsertionIndex].date <= model.date {
             lastInsertionIndex += 1
         }
         
