@@ -110,10 +110,9 @@ class MembersListStrategy: MembersFetchStrategy {
     
     func arrange(teammates: [TeammateEntity]) {
         for teammate in teammates {
-            switch teammate.isJoining {
-            case true:
+            if teammate.isVoting || teammate.isJoining {
                 newTeammates.append(teammate)
-            case false:
+            } else {
                 self.teammates.append(teammate)
             }
         }
