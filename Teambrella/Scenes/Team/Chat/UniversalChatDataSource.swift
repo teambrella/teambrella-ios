@@ -341,13 +341,18 @@ final class UniversalChatDatasource {
             lastInsertionIndex += 1
         }
         
-        if lastInsertionIndex < models.count {
+        let previous = lastInsertionIndex > 0 ? models[lastInsertionIndex - 1] : nil
+        let next = lastInsertionIndex < models.count ? models[lastInsertionIndex] : nil
+        if let previous = previous, previous.id == model.id {
+            models[lastInsertionIndex - 1] = model
+        } else if let next = next, next.id == model.id {
+            models[lastInsertionIndex] = model
+        } else if lastInsertionIndex < models.count {
             models.insert(model, at: lastInsertionIndex)
-            
         } else {
             models.append(model)
         }
-        removeTemporaryIfNeeded()
+        //removeTemporaryIfNeeded()
         addSeparatorIfNeeded()
     }
     
@@ -365,7 +370,7 @@ final class UniversalChatDatasource {
     }
     
     private func addSeparatorIfNeeded() {
-        guard lastInsertionIndex > 0 else { return }
+        guard lastInsertionIndex > 0 && lastInsertionIndex < models.count else { return }
         
         let previous = models[lastInsertionIndex - 1]
         let current = models[lastInsertionIndex]
