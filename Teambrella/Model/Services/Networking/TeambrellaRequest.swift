@@ -262,7 +262,7 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .mute:
-            success(.mute(true))
+            success(.mute(reply.boolValue))
         default:
             break
         }
