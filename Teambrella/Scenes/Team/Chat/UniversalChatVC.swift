@@ -124,6 +124,7 @@ final class UniversalChatVC: UIViewController, Routable {
             
             self.shouldScrollToBottom = true
             self.refresh(backward: false)
+            self.dataSource.loadNext()
         }
         dataSource.isLoadNextNeeded = true
         title = ""

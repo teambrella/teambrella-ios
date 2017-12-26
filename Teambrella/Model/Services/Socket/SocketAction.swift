@@ -20,13 +20,25 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct SocketAction: CustomStringConvertible {
     let command: SocketCommand
     let data: SocketData
+    let json: JSON?
     
     var description: String { return "Socket action: \(command); data: \(data.stringValue)" }
     var socketString: String { return data.stringValue }
+    
+    init?(json: JSON) {
+        guard let commandValue = json["Cmd"].int,
+            let command = SocketCommand(rawValue: commandValue) else { return nil }
+        guard let data = SocketData.with(command: command, json: json) else { return nil }
+        
+        self.command = command
+        self.data = data
+        self.json = json
+    }
     
     init?(string: String) {
         let components = string.components(separatedBy: ";")
@@ -49,11 +61,13 @@ struct SocketAction: CustomStringConvertible {
         
         self.command = command
         self.data = data
+        json = nil
     }
     
     init(data: SocketData) {
         self.command = data.command
         self.data = data
+        json = nil
     }
     
 }

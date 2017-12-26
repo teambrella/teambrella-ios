@@ -20,6 +20,7 @@
  */
 
 import Starscream
+import SwiftyJSON
 
 typealias SocketListenerAction = (SocketAction) -> Void
 
@@ -94,6 +95,18 @@ class SocketService {
         send(action: action)
     }
     
+    func parse(data: Data) {
+        guard let socketAction = SocketAction(json: JSON(data)) else {
+            log("couldn't create socket action from JSON", type: [.socket, .error])
+            return
+        }
+        
+        // send action to subscribers
+        for action in actions.values {
+            action(socketAction)
+        }
+    }
+    
 }
 
 extension SocketService: WebSocketDelegate {
@@ -109,6 +122,7 @@ extension SocketService: WebSocketDelegate {
     
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
         log("received data: \(data)", type: .socket)
+        parse(data: data)
     }
     
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
@@ -120,10 +134,11 @@ extension SocketService: WebSocketDelegate {
     
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
         log("received: \(text)", type: .socket)
-        guard let socketAction = SocketAction(string: text) else { return }
-        
-        for action in actions.values {
-            action(socketAction)
+        guard let data = text.data(using: .utf8) else {
+            log("Failed to create data from websocket string", type: [.error, .socket])
+            return
         }
+        
+        parse(data: data)
     }
 }

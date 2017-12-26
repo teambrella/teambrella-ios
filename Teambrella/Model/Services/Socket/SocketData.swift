@@ -20,6 +20,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 enum SocketData {
     case auth
@@ -98,6 +99,31 @@ enum SocketData {
             return .newMessages
         case .theyTyping(teamID: _, userID: _, topicID: _, name: _):
             return .theyTyping
+        }
+    }
+    
+    static func with(command: SocketCommand, json: JSON) -> SocketData? {
+        switch command {
+        case .auth:
+            return .auth
+        case .newPost:
+            /*{"Cmd":1,
+             "Timestamp":636498845894664979,
+             "UserId":"dc11507d-d8c5-46ff-81ae-a7c300795fda",
+             "TeamId":2001,"TopicId":"fd6bcdc7-2b79-4525-af77-a85001161d49",
+             "PostId":"073e2a28-f028-4e0b-8ec9-3bf26e30cf1b",
+             "UserName":"Denis Vasilin",
+             "Avatar":"/content/uploads/dc11507d-d8c5-46ff-81ae-a7c300795fda/197da98c-e958-45ad-990c-a7c300796106_fb.jpg?width=128&crop=0,0,128,128",
+             "Content":"🍺"}*/
+            return .newPost(teamID: json["TeamId"].intValue,
+                            userID: json["UserId"].stringValue,
+                            topicID: json["TopicId"].stringValue,
+                            postID: json["PostId"].stringValue,
+                            name: json["UserName"].stringValue,
+                            url: json["Avatar"].stringValue,
+                            text: json["Content"].stringValue)
+        default:
+            return nil
         }
     }
     
