@@ -75,6 +75,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             
             self.prepareLinearFunction()
             self.setTitle()
+            //            self.chosenRisk = self.dataSource.extendedTeammate?.voting?.myVote
             self.collectionView.reloadData()
             if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
                 flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate
@@ -99,6 +100,10 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // in case that we return to this screen from some otheer scene
+        if let myVote = dataSource.extendedTeammate?.voting?.myVote {
+            updateAmounts(with: myVote)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -114,6 +119,11 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
         return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
+    }
+    
+    var userInfoHeader: CompactUserInfoHeader? {
+        let kind = UICollectionElementKindSectionHeader
+        return collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader
     }
     
     func updateAmounts(with risk: Double) {
@@ -312,8 +322,8 @@ extension TeammateProfileVC: UICollectionViewDataSource {
         if kind == UICollectionElementKindSectionHeader {
             return dataSource.isNewTeammate
                 ? collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                   withReuseIdentifier: CompactUserInfoHeader.cellID,
-                                                                   for: indexPath)
+                                                                  withReuseIdentifier: CompactUserInfoHeader.cellID,
+                                                                  for: indexPath)
                 : collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
                                                                   withReuseIdentifier: TeammateSummaryView.cellID,
                                                                   for: indexPath)
@@ -347,7 +357,6 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         
         if let view = view as? CompactUserInfoHeader {
             view.avatarView.showAvatar(string: teammate.basic.avatar)
-            
             if let left = view.leftNumberView {
                 left.titleLabel.text = "Team.TeammateCell.wouldCoverMe".localized
                 let amount = teammate.basic.coversMeAmount
@@ -424,7 +433,7 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: 210)
         case .object:
             /*guard let teammate = dataSource.extendedTeammate,
-                teammate.object.claimCount > 0 else { return CGSize(width: wdt, height: 216) } */
+             teammate.object.claimCount > 0 else { return CGSize(width: wdt, height: 216) } */
             
             return CGSize(width: wdt, height: 296)
         case .stats:
@@ -528,14 +537,16 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         updateAverages(cell: cell, risk: risk)
         updateAmounts(with: risk)
         cell.pieChart.setupWith(remainingMinutes: dataSource.extendedTeammate?.voting?.remainingMinutes ?? 0)
+        cell.showYourNoVote(risk: risk)
     }
     
     func votingRisk(cell: VotingRiskCell, stoppedOnOffset: CGFloat) {
-        let risk = riskFrom(offset: stoppedOnOffset, maxValue: cell.maxValue)
+        var risk = riskFrom(offset: stoppedOnOffset, maxValue: cell.maxValue)
         
         cell.yourVoteValueLabel.alpha = 0.5
         guard let teammateID = dataSource.extendedTeammate?.teammateID else { return }
         
+        if risk < 0.2 { risk = 0.2 }
         dataSource.sendRisk(userID: teammateID, risk: risk) { [weak self, weak cell] json in
             guard let `self` = self else { return }
             
@@ -557,7 +568,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             avatarView.isHidden = false
             label.isHidden = false
             avatarView.showAvatar(string: teammate.avatar,
-                                          options: [.transition(.fade(0.5)), .forceTransition])
+                                  options: [.transition(.fade(0.5)), .forceTransition])
             label.text = String(format: "%.2f", teammate.risk)
             label.backgroundColor = .blueWithAHintOfPurple
         }

@@ -36,11 +36,13 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var teamVoteHeaderLabel: InfoLabel!
     @IBOutlet var teamVoteValueLabel: UILabel!
     @IBOutlet var teamVoteBadgeLabel: UILabel!
+    @IBOutlet var teamVoteNotAccept: UILabel!
     @IBOutlet var teammatesAvatarStack: RoundImagesStack!
     
     @IBOutlet var yourVoteHeaderLabel: InfoLabel!
     @IBOutlet var yourVoteValueLabel: UILabel!
     @IBOutlet var yourVoteBadgeLabel: UILabel!
+    @IBOutlet var yourVoteNotAccept: UILabel!
     
     @IBOutlet var resetVoteButton: UIButton!
     
@@ -145,6 +147,24 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
             layout.sectionInset.left = collectionView.frame.width / 2
             layout.sectionInset.right = layout.sectionInset.left
         }
+    }
+    
+    func showTeamNoVote(risk: Double?) {
+        var show = false
+        risk.flatMap { show = $0 >= 5 }
+        teamVoteValueLabel.isHidden = show
+        teamVoteBadgeLabel.isHidden = show
+        teamVoteNotAccept.isHidden = !show
+        teamVoteNotAccept.text = "Team.Vote.doNotAccept".localized
+    }
+    
+    func showYourNoVote(risk: Double?) {
+        var show = false
+        risk.flatMap { show = $0 >= 5 }
+        yourVoteValueLabel.isHidden = show
+        yourVoteBadgeLabel.isHidden = show
+        yourVoteNotAccept.isHidden = !show
+        yourVoteNotAccept.text = "Team.Vote.doNotAccept".localized
     }
     
     func updateWithRiskScale(riskScale: RiskScaleEntity) {

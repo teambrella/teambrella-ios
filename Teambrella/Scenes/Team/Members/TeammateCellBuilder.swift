@@ -58,32 +58,32 @@ struct TeammateCellBuilder {
                                         with teammate: ExtendedTeammateEntity,
                                         controller: UIViewController) {
         /*
-        cell.title.text = teammate.basic.name.entire
-        //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
-        cell.avatarView.present(avatarString: teammate.basic.avatar)
-        cell.avatarView.onTap = { [weak controller] view in
-            view.fullscreen(in: controller, imageStrings: nil)
-        }
-        //cell.avatarView.kf.setImage(with: url)
-        if let left = cell.leftNumberView {
-            left.titleLabel.text = "Team.TeammateCell.coversMe".localized
-            let amount = teammate.basic.coversMeAmount
-            left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
-            left.currencyLabel.text = service.currencyName
-        }
-        if let right = cell.rightNumberView {
-            right.titleLabel.text = "Team.TeammateCell.coverThem".localized
-            let amount = teammate.basic.iCoverThemAmount
-            right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
-            right.currencyLabel.text = service.currencyName
-        }
-        
-        cell.subtitle.text = teammate.basic.city.uppercased()
-        if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
-            cell.infoLabel.isHidden = false
-            cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
-        }
- */
+         cell.title.text = teammate.basic.name.entire
+         //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
+         cell.avatarView.present(avatarString: teammate.basic.avatar)
+         cell.avatarView.onTap = { [weak controller] view in
+         view.fullscreen(in: controller, imageStrings: nil)
+         }
+         //cell.avatarView.kf.setImage(with: url)
+         if let left = cell.leftNumberView {
+         left.titleLabel.text = "Team.TeammateCell.coversMe".localized
+         let amount = teammate.basic.coversMeAmount
+         left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+         left.currencyLabel.text = service.currencyName
+         }
+         if let right = cell.rightNumberView {
+         right.titleLabel.text = "Team.TeammateCell.coverThem".localized
+         let amount = teammate.basic.iCoverThemAmount
+         right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+         right.currencyLabel.text = service.currencyName
+         }
+         
+         cell.subtitle.text = teammate.basic.city.uppercased()
+         if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
+         cell.infoLabel.isHidden = false
+         cell.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
+         }
+         */
     }
     
     private static func populateVote(cell: VotingRiskCell,
@@ -103,18 +103,22 @@ struct TeammateCellBuilder {
                                                  label: label,
                                                  max: nil)
             if let risk = voting.riskVoted {
-                cell.teamVoteValueLabel.text = String.formattedNumber(risk)
+                cell.teamVoteValueLabel.text =  String.formattedNumber(risk)
+                cell.showTeamNoVote(risk: risk)
             } else {
                 cell.teamVoteValueLabel.text = "..."
+                cell.showTeamNoVote(risk: nil)
             }
-        
+            
             if let myVote = voting.myVote {
                 cell.layoutIfNeeded()
                 cell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
                 let offset = controller.offsetFrom(risk: myVote, maxValue: cell.maxValue)
                 cell.scrollTo(offset: offset, silently: true)
+                cell.showYourNoVote(risk: myVote)
             } else {
                 controller.resetVote(cell: cell)
+                cell.showYourNoVote(risk: nil)
             }
             let currentChosenRisk = controller.riskFrom(offset: cell.collectionView.contentOffset.x,
                                                         maxValue: cell.maxValue)
@@ -205,20 +209,20 @@ struct TeammateCellBuilder {
         cell.proxyRankTitleLabel.text = "Team.TeammateCell.proxyRank".localized
         cell.proxyRankValueLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
         /*
-        if let left = cell.numberBar.left {
-            left.amountLabel.textAlignment = .center
-            left.titleLabel.text = "Team.TeammateCell.weight".localized
-            left.amountLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
-            left.currencyLabel.text = nil
-        }
-        if let right = cell.numberBar.right {
-            right.amountLabel.textAlignment = .center
-            right.titleLabel.text = "Team.TeammateCell.proxyRank".localized
-            right.amountLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
-            right.isBadgeVisible = false
-            right.currencyLabel.text = nil
-        }
- */
+         if let left = cell.numberBar.left {
+         left.amountLabel.textAlignment = .center
+         left.titleLabel.text = "Team.TeammateCell.weight".localized
+         left.amountLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
+         left.currencyLabel.text = nil
+         }
+         if let right = cell.numberBar.right {
+         right.amountLabel.textAlignment = .center
+         right.titleLabel.text = "Team.TeammateCell.proxyRank".localized
+         right.amountLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
+         right.isBadgeVisible = false
+         right.currencyLabel.text = nil
+         }
+         */
         cell.decisionsLabel.text = "Team.TeammateCell.decisions".localized
         cell.decisionsBar.autoSet(value: stats.decisionFrequency)
         cell.decisionsBar.rightText = ValueToTextConverter.decisionsText(from: stats.decisionFrequency).uppercased()

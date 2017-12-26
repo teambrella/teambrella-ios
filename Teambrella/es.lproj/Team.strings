@@ -188,3 +188,5 @@
 "Team.Chat.ObjectView.TitleLabel" = "TU VOTO";
 "Team.Chat.ObjectView.TitleLabel.risk" = "RIESGO";
 "Team.Chat.ObjectView.TitleLabel.team" = "VOTO DEL EQUIPO";
+
+"Team.Vote.doNotAccept" = "No aceptar";
