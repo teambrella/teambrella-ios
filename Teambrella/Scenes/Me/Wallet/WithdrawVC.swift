@@ -215,7 +215,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     func validateAmount(string: String) -> Bool {
         guard let amount = Double(string) else { return false }
         
-        return amount <= dataSource.maxMETHAvailable
+        return amount <= dataSource.maxMETHAvailable && amount != 0
     }
 }
 
