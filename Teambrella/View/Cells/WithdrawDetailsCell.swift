@@ -88,7 +88,13 @@ extension WithdrawDetailsCell: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let input = (textView.text as NSString).replacingCharacters(in: range, with: text)
+
+        if text == "\n" {
+            self.cryptoAmountTextField.becomeFirstResponder()
+            return false
+        }
         return input.count <= 42
+        
     }
 }
 
