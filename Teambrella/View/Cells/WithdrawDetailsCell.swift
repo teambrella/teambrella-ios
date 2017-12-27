@@ -44,6 +44,7 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
         cryptoAddressTextView.layer.borderWidth = 0.5
         cryptoAddressTextView.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
         cryptoAddressTextView.layer.cornerRadius = 5
+        cryptoAddressTextView.returnKeyType = .next
         placeholder.text = "Me.Wallet.Withdraw.Details.to.placeholder".localized
         cryptoAmountTextField.placeholder = "Me.Wallet.Withdraw.Details.amount.placeholder".localized
         ViewDecorator.shadow(for: self)
@@ -87,7 +88,13 @@ extension WithdrawDetailsCell: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let input = (textView.text as NSString).replacingCharacters(in: range, with: text)
+
+        if text == "\n" {
+            self.cryptoAmountTextField.becomeFirstResponder()
+            return false
+        }
         return input.count <= 42
+        
     }
 }
 
