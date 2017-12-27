@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,6 +14,9 @@
     <customFonts key="customFonts">
         <array key="AkkuratPro-Bold.otf">
             <string>AkkuratPro-Bold</string>
+        </array>
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -44,16 +48,22 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25q-2v-Cur" customClass="SlashView" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="16" y="50.5" width="635" height="105"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D29-8w-VUD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D29-8w-VUD">
                                         <rect key="frame" x="8" y="28" width="26.5" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uwK-ph-5aq">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uwK-ph-5aq">
                                         <rect key="frame" x="334" y="28" width="26.5" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H5F-fa-toM">
+                                        <rect key="frame" x="8" y="31" width="74.5" height="30.5"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="25"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVG -143%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="557-Va-QA6">
@@ -92,6 +102,12 @@
                                         <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="esR-N0-PHe">
+                                        <rect key="frame" x="334" y="31" width="74.5" height="30.5"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Nx1-Yq-BkA" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="8" y="16" width="310" height="12"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
@@ -124,7 +140,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufs-Z7-MdQ">
-                                        <rect key="frame" x="334" y="67.5" width="68" height="29"/>
+                                        <rect key="frame" x="334" y="67.5" width="70" height="29"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                         <state key="normal" title="Reset Vote">
                                             <color key="titleColor" red="0.2784313725" green="0.34509803919999998" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -139,6 +155,7 @@
                                     <constraint firstAttribute="trailing" secondItem="K9q-SA-b4t" secondAttribute="trailing" constant="8" id="AhS-eZ-N6E"/>
                                     <constraint firstItem="K9q-SA-b4t" firstAttribute="leading" secondItem="ufs-Z7-MdQ" secondAttribute="leading" id="BJb-QE-N90"/>
                                     <constraint firstItem="ufs-Z7-MdQ" firstAttribute="leading" secondItem="uwK-ph-5aq" secondAttribute="leading" id="H9X-5j-Hji"/>
+                                    <constraint firstItem="H5F-fa-toM" firstAttribute="centerY" secondItem="557-Va-QA6" secondAttribute="centerY" id="HLY-lF-1bU"/>
                                     <constraint firstItem="D29-8w-VUD" firstAttribute="leading" secondItem="Nx1-Yq-BkA" secondAttribute="leading" id="IWG-mf-fnr"/>
                                     <constraint firstItem="VE3-Bp-PEJ" firstAttribute="centerY" secondItem="Nx1-Yq-BkA" secondAttribute="centerY" id="JGi-Cu-SPO"/>
                                     <constraint firstItem="D29-8w-VUD" firstAttribute="top" secondItem="Nx1-Yq-BkA" secondAttribute="bottom" id="LWK-uN-oW5"/>
@@ -148,17 +165,22 @@
                                     <constraint firstItem="Nx1-Yq-BkA" firstAttribute="leading" secondItem="25q-2v-Cur" secondAttribute="leading" constant="8" id="QUQ-Cu-vlZ"/>
                                     <constraint firstItem="K9q-SA-b4t" firstAttribute="centerY" secondItem="ufs-Z7-MdQ" secondAttribute="centerY" id="RNl-A7-BeM"/>
                                     <constraint firstItem="qFN-q5-gOq" firstAttribute="leading" secondItem="D29-8w-VUD" secondAttribute="leading" id="RT0-zf-Xg7"/>
+                                    <constraint firstItem="esR-N0-PHe" firstAttribute="leading" secondItem="uwK-ph-5aq" secondAttribute="leading" id="TaU-kq-kFF"/>
                                     <constraint firstItem="uwK-ph-5aq" firstAttribute="leading" secondItem="VE3-Bp-PEJ" secondAttribute="leading" id="V7t-Y6-A1p"/>
                                     <constraint firstAttribute="centerX" secondItem="Nx1-Yq-BkA" secondAttribute="trailing" id="YHq-Wq-OjG"/>
                                     <constraint firstItem="Nx1-Yq-BkA" firstAttribute="top" secondItem="25q-2v-Cur" secondAttribute="top" constant="16" id="YgH-PN-DYL"/>
-                                    <constraint firstAttribute="centerX" relation="greaterThanOrEqual" secondItem="557-Va-QA6" secondAttribute="trailing" constant="-1" id="YlZ-ea-tct"/>
+                                    <constraint firstAttribute="centerX" relation="greaterThanOrEqual" secondItem="557-Va-QA6" secondAttribute="trailing" constant="3" id="YlZ-ea-tct"/>
                                     <constraint firstItem="qFN-q5-gOq" firstAttribute="centerY" secondItem="ufs-Z7-MdQ" secondAttribute="centerY" id="agB-I3-dwL"/>
                                     <constraint firstItem="uwK-ph-5aq" firstAttribute="centerY" secondItem="557-Va-QA6" secondAttribute="centerY" id="cHn-4r-JGv"/>
                                     <constraint firstItem="VE3-Bp-PEJ" firstAttribute="leading" secondItem="25q-2v-Cur" secondAttribute="centerX" constant="16" id="hEh-us-LYr"/>
                                     <constraint firstItem="UyJ-PS-yxB" firstAttribute="leading" secondItem="uwK-ph-5aq" secondAttribute="trailing" priority="750" constant="8" id="hPF-XM-5QU"/>
                                     <constraint firstItem="UyJ-PS-yxB" firstAttribute="centerY" secondItem="uwK-ph-5aq" secondAttribute="centerY" id="hae-dk-Ind"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UyJ-PS-yxB" secondAttribute="trailing" constant="1" id="lxk-kw-bJb"/>
+                                    <constraint firstItem="H5F-fa-toM" firstAttribute="leading" secondItem="D29-8w-VUD" secondAttribute="leading" id="ifM-uY-gXi"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UyJ-PS-yxB" secondAttribute="trailing" constant="3" id="lxk-kw-bJb"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ufs-Z7-MdQ" secondAttribute="bottom" constant="8" id="oS3-MN-anU"/>
+                                    <constraint firstItem="esR-N0-PHe" firstAttribute="centerY" secondItem="UyJ-PS-yxB" secondAttribute="centerY" id="oxj-qs-5hX"/>
+                                    <constraint firstItem="H5F-fa-toM" firstAttribute="trailing" secondItem="557-Va-QA6" secondAttribute="trailing" id="qxO-Hl-eej"/>
+                                    <constraint firstItem="esR-N0-PHe" firstAttribute="trailing" secondItem="UyJ-PS-yxB" secondAttribute="trailing" id="v8B-PT-f5c"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="slashViewColor">
@@ -205,7 +227,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="VDN-tt-rep">
-                                <rect key="frame" x="643" y="709.5" width="8" height="13"/>
+                                <rect key="frame" x="643" y="709" width="8" height="13"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zPb-mX-NaQ" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="320" y="687" width="26" height="26"/>
@@ -311,7 +333,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XY2-Tj-qf7">
-                                <rect key="frame" x="589" y="700" width="46" height="30"/>
+                                <rect key="frame" x="588" y="699" width="47" height="31"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                 <state key="normal" title="Others">
                                     <color key="titleColor" red="0.17254901960784313" green="0.22352941176470587" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
@@ -381,12 +403,14 @@
                 <outlet property="slashView" destination="25q-2v-Cur" id="HCE-C0-8xh"/>
                 <outlet property="teamVoteBadgeLabel" destination="557-Va-QA6" id="DpY-x0-22E"/>
                 <outlet property="teamVoteHeaderLabel" destination="Nx1-Yq-BkA" id="st5-nI-Ezv"/>
+                <outlet property="teamVoteNotAccept" destination="H5F-fa-toM" id="V3j-dD-wVE"/>
                 <outlet property="teamVoteValueLabel" destination="D29-8w-VUD" id="iab-bF-fGN"/>
                 <outlet property="teammatesAvatarStack" destination="qFN-q5-gOq" id="PsN-sa-DBp"/>
                 <outlet property="timeLabel" destination="4uw-BF-uDk" id="l7c-SF-BeE"/>
                 <outlet property="titleLabel" destination="73P-Jh-cgD" id="RyO-9E-Aua"/>
                 <outlet property="yourVoteBadgeLabel" destination="UyJ-PS-yxB" id="OlN-O2-8ra"/>
                 <outlet property="yourVoteHeaderLabel" destination="VE3-Bp-PEJ" id="EQW-mw-SSc"/>
+                <outlet property="yourVoteNotAccept" destination="esR-N0-PHe" id="Pbj-Xa-Mw0"/>
                 <outlet property="yourVoteValueLabel" destination="uwK-ph-5aq" id="0O7-Tn-Lt1"/>
             </connections>
             <point key="canvasLocation" x="-148.5" y="-157"/>
