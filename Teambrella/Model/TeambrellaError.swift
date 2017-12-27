@@ -82,11 +82,13 @@ struct TeambrellaErrorFactory {
         return TeambrellaError(kind: .wrongReply, description: "Wrong reply from server")
     }
     
-    static func error(with status: ResponseStatus?) -> TeambrellaError {
+    static func error(with status: ServerStatus?) -> TeambrellaError {
         guard let status = status else { return unknownError() }
-        guard let errorKind =  TeambrellaError.TeambrellaErrorKind(rawValue: status.code) else { return unknownError() }
+        guard let errorKind = TeambrellaError.TeambrellaErrorKind(rawValue: status.resultCode) else {
+            return unknownError()
+        }
         
-        return TeambrellaError(kind: errorKind, description: status.errorMessage)
+        return TeambrellaError(kind: errorKind, description: status.errorMessage ?? "")
     }
     
     static func malformedETCsignature() -> TeambrellaError {

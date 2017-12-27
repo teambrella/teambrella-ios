@@ -15,16 +15,27 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-/**
-    Used in feed/getList reply to manage pagination with chunks
- */
-struct PagingInfo: Codable {
-    let lastIndex: UInt64
-    
-    enum CodingKeys: String, CodingKey {
-        case lastIndex = "LastIndex"
+struct VotersList {
+    let me: Voter
+    let median: Voter
+    let voters: [Voter]
+}
+
+extension VotersList: Decodable {
+    enum VotersListKeys: String, CodingKey {
+        case me = "Me"
+        case median = "Median"
+        case voters = "Voters"
     }
     
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: VotersListKeys.self)
+        
+        let me = try container.decode(Voter.self, forKey: .me)
+        let median = try container.decode(Voter.self, forKey: .median)
+        let voters = try container.decode([Voter].self, forKey: .voters)
+        
+        self.init(me: me, median: median, voters: voters)
+    }
 }

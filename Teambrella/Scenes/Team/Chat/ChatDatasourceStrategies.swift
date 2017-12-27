@@ -319,8 +319,12 @@ class PrivateChatStrategy: ChatDatasourceStrategy {
     }
     
     func updatedMessageBody(body: RequestBody) -> RequestBody {
+        guard let payload = body.payload else { return body }
+        
         var body = body
         body.payload?["ToUserId"] = user.id
+        body.payload?["NewMessageId"] = payload["NewPostId"]
+        body.payload?["NewPostId"] = nil
         return body
     }
 }

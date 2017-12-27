@@ -66,6 +66,9 @@ enum TeambrellaRequestType: String {
     case withdrawTransactions = "wallet/getWithdraw"
     case withdraw = "wallet/newWithdraw"
     case mute = "feed/setIsMuted"
+    
+    case teammateVotesList = "teammate/getAllVotesList"
+    case claimVotesList = "claim/getAllVotesList"
 }
 
 enum TeambrellaResponseType {
@@ -102,6 +105,8 @@ enum TeambrellaResponseType {
     case privateChat([ChatEntity])
     case withdrawTransactions(WithdrawChunk)
     case mute(Bool)
+    
+    case votesList(me: Voter, median: Voter, voters: [Voter])
 }
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
@@ -140,8 +145,8 @@ struct TeambrellaRequest {
     }
     
     func start(isErrorAutoManaged: Bool = true) {
-        service.server.ask(for: requestString, parameters: parameters, body: body, success: { json, additional in
-            self.parseReply(reply: json, additional: additional)
+        service.server.ask(for: requestString, parameters: parameters, body: body, success: { serverReply in
+            self.parseReply(serverReply: serverReply)
         }, failure: { error in
             log("\(error)", type: [.error, .serverReply])
             if isErrorAutoManaged {
@@ -152,7 +157,8 @@ struct TeambrellaRequest {
     }
     
     // swiftlint:disable:next cyclomatic_complexity
-    private func parseReply(reply: JSON, additional: JSON?) {
+    private func parseReply(serverReply: ServerReply) {
+        let reply = JSON(serverReply.json)
         switch type {
         case .timestamp:
             success(.timestamp)
@@ -218,7 +224,12 @@ struct TeambrellaRequest {
             let model = ChatModel(json: reply, chat: chat)
             success(.chat(model))
         case .teamFeed:
-            success(.teamFeed(reply, PagingInfo(json: additional)))
+            guard let pagingInfo = serverReply.paging else {
+                failure?(TeambrellaErrorFactory.wrongReply())
+                return
+            }
+            
+            success(.teamFeed(reply, pagingInfo))
         case .claimTransactions:
             success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
         case .home:
@@ -263,6 +274,10 @@ struct TeambrellaRequest {
             }
         case .mute:
             success(.mute(reply.boolValue))
+            case .claimVotesList,
+                 .teammateVotesList:
+            
+            print("Not ready")
         default:
             break
         }

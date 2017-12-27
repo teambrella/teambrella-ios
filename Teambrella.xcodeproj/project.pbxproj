@@ -653,6 +653,8 @@
 		6D6FCC311FD89C220032041A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCC2F1FD89C220032041A /* UILabel.swift */; };
 		6D7987791F6827A80060A193 /* ChatSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7987781F6827A80060A193 /* ChatSeparatorCell.swift */; };
 		6D7C1AD11F598CFF00A88987 /* IsTypingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7C1AD01F598CFF00A88987 /* IsTypingView.swift */; };
+		6D7CC5A51FF3D49600ED46E3 /* ServerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */; };
+		6D7CC5A61FF3D49600ED46E3 /* ServerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */; };
 		6D829AA31EB0BE1A0051F43A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA21EB0BE1A0051F43A /* UIColor.swift */; };
 		6D829AA51EB0D6860051F43A /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA41EB0D6860051F43A /* Random.swift */; };
 		6D83EC851EDD6B80000412DC /* TeammateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */; };
@@ -721,6 +723,10 @@
 		6DA1D0FF1F0552FF00F9DE87 /* TabRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D0FE1F0552FF00F9DE87 /* TabRoutable.swift */; };
 		6DA1D1011F056A2400F9DE87 /* ImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D1001F056A2400F9DE87 /* ImageTransformer.swift */; };
 		6DA1D1031F056DF900F9DE87 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D1021F056DF900F9DE87 /* UIImage.swift */; };
+		6DA3FBA21FF2B39A00CA8FA1 /* Voter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3FBA11FF2B39A00CA8FA1 /* Voter.swift */; };
+		6DA3FBA31FF2B39A00CA8FA1 /* Voter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3FBA11FF2B39A00CA8FA1 /* Voter.swift */; };
+		6DA3FBA51FF2BA0800CA8FA1 /* VotersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3FBA41FF2BA0800CA8FA1 /* VotersList.swift */; };
+		6DA3FBA61FF2BA0800CA8FA1 /* VotersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3FBA41FF2BA0800CA8FA1 /* VotersList.swift */; };
 		6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475A31E8ABEE600B56D9B /* AppDelegate.swift */; };
 		6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475A71E8ABEE600B56D9B /* Main.storyboard */; };
 		6DA475AB1E8ABEE600B56D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AA1E8ABEE600B56D9B /* Assets.xcassets */; };
@@ -759,6 +765,8 @@
 		6DAF1CB51F571F4A00421C5A /* ReportTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB31F571F4A00421C5A /* ReportTitleCell.swift */; };
 		6DAF1CB61F571F4A00421C5A /* ReportTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB41F571F4A00421C5A /* ReportTitleCell.xib */; };
 		6DAF1CB81F58562900421C5A /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB71F58562900421C5A /* PushService.swift */; };
+		6DB2ABC81FF2C1B00028F95C /* ServerReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */; };
+		6DB2ABC91FF2C1B00028F95C /* ServerReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */; };
 		6DB309F71F1D169D007DFF40 /* ChatDatasourceStrategies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB309F61F1D169D007DFF40 /* ChatDatasourceStrategies.swift */; };
 		6DB309F91F1D2093007DFF40 /* ChatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB309F81F1D2093007DFF40 /* ChatEntity.swift */; };
 		6DB5E80A1FEA874E009A2A62 /* SimpleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB5E8091FEA874E009A2A62 /* SimpleStorage.swift */; };
@@ -1253,6 +1261,7 @@
 		6D74B2921F7904B0007F736E /* SwiftMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMessages.framework; path = Carthage/Build/iOS/SwiftMessages.framework; sourceTree = "<group>"; };
 		6D7987781F6827A80060A193 /* ChatSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatSeparatorCell.swift; path = Scenes/Team/Chat/ChatSeparatorCell.swift; sourceTree = "<group>"; };
 		6D7C1AD01F598CFF00A88987 /* IsTypingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IsTypingView.swift; path = View/IsTypingView.swift; sourceTree = "<group>"; };
+		6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServerStatus.swift; path = Model/Entities/ServerStatus.swift; sourceTree = "<group>"; };
 		6D829AA21EB0BE1A0051F43A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Helpers/Extensions/UIColor.swift; sourceTree = "<group>"; };
 		6D829AA41EB0D6860051F43A /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = Helpers/Extensions/Random.swift; sourceTree = "<group>"; };
 		6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateProfileVC.swift; path = Scenes/Team/Members/TeammateProfileVC.swift; sourceTree = "<group>"; };
@@ -1311,6 +1320,8 @@
 		6DA1D0FE1F0552FF00F9DE87 /* TabRoutable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabRoutable.swift; path = Model/Protocols/TabRoutable.swift; sourceTree = "<group>"; };
 		6DA1D1001F056A2400F9DE87 /* ImageTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTransformer.swift; path = Helpers/ImageTransformer.swift; sourceTree = "<group>"; };
 		6DA1D1021F056DF900F9DE87 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImage.swift; path = Helpers/Extensions/UIImage.swift; sourceTree = "<group>"; };
+		6DA3FBA11FF2B39A00CA8FA1 /* Voter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Voter.swift; path = Model/Entities/Voter.swift; sourceTree = "<group>"; };
+		6DA3FBA41FF2BA0800CA8FA1 /* VotersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotersList.swift; path = Model/Entities/VotersList.swift; sourceTree = "<group>"; };
 		6DA475A01E8ABEE600B56D9B /* Teambrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teambrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DA475A31E8ABEE600B56D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DA475A81E8ABEE600B56D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1348,6 +1359,7 @@
 		6DAF1CB31F571F4A00421C5A /* ReportTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportTitleCell.swift; path = View/Cells/Report/ReportTitleCell.swift; sourceTree = "<group>"; };
 		6DAF1CB41F571F4A00421C5A /* ReportTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportTitleCell.xib; path = View/Cells/Report/ReportTitleCell.xib; sourceTree = "<group>"; };
 		6DAF1CB71F58562900421C5A /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushService.swift; path = Model/Services/Push/PushService.swift; sourceTree = "<group>"; };
+		6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServerReply.swift; path = Model/Entities/ServerReply.swift; sourceTree = "<group>"; };
 		6DB309F61F1D169D007DFF40 /* ChatDatasourceStrategies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatDatasourceStrategies.swift; path = Scenes/Team/Chat/ChatDatasourceStrategies.swift; sourceTree = "<group>"; };
 		6DB309F81F1D2093007DFF40 /* ChatEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatEntity.swift; path = Model/Entities/ChatEntity.swift; sourceTree = "<group>"; };
 		6DB5E8091FEA874E009A2A62 /* SimpleStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SimpleStorage.swift; path = Model/Services/Storage/SimpleStorage.swift; sourceTree = "<group>"; };
@@ -2574,6 +2586,10 @@
 				6D20CF951FDEE1890049BE9C /* TeamPart.swift */,
 				6D20CF981FDEE3020049BE9C /* VotingPart.swift */,
 				6D20CF9B1FDEF1FC0049BE9C /* BasicPart.swift */,
+				6DA3FBA11FF2B39A00CA8FA1 /* Voter.swift */,
+				6DA3FBA41FF2BA0800CA8FA1 /* VotersList.swift */,
+				6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */,
+				6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -3472,6 +3488,7 @@
 				6D6FCBFE1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */,
 				6D2A7C671FCD42F60094ABB7 /* UIApplication.swift in Sources */,
 				6D4E5C501F7AB6870020DEE2 /* ChatNewMessagesSeparatorCell.swift in Sources */,
+				6DB2ABC91FF2C1B00028F95C /* ServerReply.swift in Sources */,
 				6D6FCBF81FD703B60032041A /* UIDevice.swift in Sources */,
 				6D4E5C511F7AB6870020DEE2 /* ChatFragmentHeightCalculator.swift in Sources */,
 				6D4E5C521F7AB6870020DEE2 /* PrivateChatUser.swift in Sources */,
@@ -3512,6 +3529,7 @@
 				6D4E5C721F7AB6870020DEE2 /* Decimal.swift in Sources */,
 				6D4E5C731F7AB6870020DEE2 /* Log.swift in Sources */,
 				6DB922261F9E27CD009D3937 /* AbiArguments.swift in Sources */,
+				6DA3FBA61FF2BA0800CA8FA1 /* VotersList.swift in Sources */,
 				6D4E5C741F7AB6870020DEE2 /* PostEntity.swift in Sources */,
 				6D4E5C751F7AB6870020DEE2 /* ClaimVoteCell.swift in Sources */,
 				6D4E5C761F7AB6870020DEE2 /* FeedEntity.swift in Sources */,
@@ -3622,6 +3640,7 @@
 				6D30A4AE1FD167FE003149DB /* FeedChunk.swift in Sources */,
 				6D4E5CD81F7AB6870020DEE2 /* UIImage.swift in Sources */,
 				6D4E5CD91F7AB6870020DEE2 /* ServerDAO.swift in Sources */,
+				6DA3FBA31FF2B39A00CA8FA1 /* Voter.swift in Sources */,
 				6D4E5CDA1F7AB6870020DEE2 /* ServerService.swift in Sources */,
 				6D6FCBF51FD702D00032041A /* Vibrator.swift in Sources */,
 				6D4E5CDB1F7AB6870020DEE2 /* WalletHeaderCell.swift in Sources */,
@@ -3745,6 +3764,7 @@
 				6D4E5D3D1F7AB6870020DEE2 /* CombinedModels.swift in Sources */,
 				6D4E5D3E1F7AB6870020DEE2 /* RoundImageView.swift in Sources */,
 				94F0CF601FD1B66E007BE39E /* WithdrawCell.swift in Sources */,
+				6D7CC5A61FF3D49600ED46E3 /* ServerStatus.swift in Sources */,
 				6D4E5D3F1F7AB6870020DEE2 /* TeamFeedCell.swift in Sources */,
 				6D4E5D401F7AB6870020DEE2 /* String.swift in Sources */,
 				6D4E5D411F7AB6870020DEE2 /* SortVC.swift in Sources */,
@@ -3873,6 +3893,7 @@
 				6D6FCBFD1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */,
 				6D2A7C661FCD42F60094ABB7 /* UIApplication.swift in Sources */,
 				6D1A9B251F55CF92004192AC /* PrivateChatUser.swift in Sources */,
+				6DB2ABC81FF2C1B00028F95C /* ServerReply.swift in Sources */,
 				6D6FCBF71FD703B60032041A /* UIDevice.swift in Sources */,
 				6DEE67A31EDC5C4D0098EDB3 /* TeammateCell.swift in Sources */,
 				6D0E057C1F01015E00604981 /* ReportDataSource.swift in Sources */,
@@ -3913,6 +3934,7 @@
 				6DEC6DF51E96673600ACC119 /* PostEntity.swift in Sources */,
 				6DDE95781EE843540019DA47 /* ClaimVoteCell.swift in Sources */,
 				940FEE841FA8D05700B43CB5 /* MuteVC.swift in Sources */,
+				6DA3FBA51FF2BA0800CA8FA1 /* VotersList.swift in Sources */,
 				6DCDEB701F17DC5900C6D38C /* FeedEntity.swift in Sources */,
 				6DEFCFB81F7A66D7008C306C /* SwitchUserCell.swift in Sources */,
 				6D3556771FD2EF3300AEBF07 /* WithdrawChunk.swift in Sources */,
@@ -4023,6 +4045,7 @@
 				6D30A4AD1FD167FE003149DB /* FeedChunk.swift in Sources */,
 				6D2A57B11F698B8A00CE8841 /* EthereumProcessor.swift in Sources */,
 				9407A5821F13C30800E0DD74 /* LoginNoInviteVC.swift in Sources */,
+				6DA3FBA21FF2B39A00CA8FA1 /* Voter.swift in Sources */,
 				6D1653B51F56B7F00022D5EA /* PrivateMessagesDataSource.swift in Sources */,
 				6D6FCBF41FD702D00032041A /* Vibrator.swift in Sources */,
 				6DA1D1031F056DF900F9DE87 /* UIImage.swift in Sources */,
@@ -4146,6 +4169,7 @@
 				6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */,
 				6D69DA331EFD6CB700DED5CE /* TeamFeedCell.swift in Sources */,
 				94F0CF5F1FD1B66E007BE39E /* WithdrawCell.swift in Sources */,
+				6D7CC5A51FF3D49600ED46E3 /* ServerStatus.swift in Sources */,
 				6DA5B4671F98EA3500021E8E /* Currency.swift in Sources */,
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
 				9440EDF51F0CED5A00E5A6E7 /* SortVC.swift in Sources */,

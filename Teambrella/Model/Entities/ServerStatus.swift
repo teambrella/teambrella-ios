@@ -15,16 +15,19 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-/**
-    Used in feed/getList reply to manage pagination with chunks
- */
-struct PagingInfo: Codable {
-    let lastIndex: UInt64
-    
+struct ServerStatus: Codable {
     enum CodingKeys: String, CodingKey {
-        case lastIndex = "LastIndex"
+        case resultCode = "ResultCode"
+        case timestamp = "Timestamp"
+        case errorMessage = "ErrorMessage"
     }
+    
+    let resultCode: Int
+    let timestamp: Int64
+    let errorMessage: String?
+    
+    var isValid: Bool { return resultCode == 0 }
+    var isError: Bool { return !isValid }
     
 }

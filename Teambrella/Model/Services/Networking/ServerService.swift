@@ -23,6 +23,7 @@ import Alamofire
 import Foundation
 import SwiftyJSON
 
+/*
 struct ResponseStatus {
     let timestamp: Int64
     let code: Int
@@ -34,6 +35,7 @@ struct ResponseStatus {
         errorMessage = json["ErrorMessage"].stringValue
     }
 }
+*/
 
 /**
  Service to interoperate with the server fetching all UI related information
@@ -61,7 +63,7 @@ class ServerService: NSObject {
     func ask(for string: String,
              parameters: [String: String]? = nil,
              body: RequestBody? = nil,
-             success: @escaping (JSON, JSON?) -> Void,
+             success: @escaping (ServerReply) -> Void,
              failure: @escaping (Error) -> Void) {
         
         guard let url = URLBuilder().url(for: string, parameters: parameters) else {
@@ -95,40 +97,26 @@ class ServerService: NSObject {
                 request.setValue(String(describing: value), forHTTPHeaderField: key)
             }
         }
-        
-        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).responseData { response in
+//        Alamofire.request(request).responseJSON { response in
             switch response.result {
-            case .success:
-                if let value = response.result.value {
-                    let result = JSON(value)
-                    log("\(result)", type: .serverReply)
-                    let status = ResponseStatus(json: result["Status"])
-                    self.timestamp = status.timestamp
-                    switch status.code {
-                    case 0:
-                        success(result["Data"], self.additionalData(from: result))
-                    default:
-                        let error = TeambrellaErrorFactory.error(with: status)
-                        failure(error)
-                    }
-                } else {
-                    let error = TeambrellaErrorFactory.emptyReplyError()
+            case let .success(value):
+                do {
+               let reply = try ServerReply(data: value)
+                guard reply.status.isValid else {
+                    let error = TeambrellaErrorFactory.error(with: reply.status)
+                    failure(error)
+                    return
+                }
+                
+                success(reply)
+                } catch {
                     failure(error)
                 }
             case .failure(let error):
                 failure(error)
             }
         }
-    }
-    
-    private func additionalData(from json: JSON) -> JSON? {
-        if json["Paging"].exists() {
-            return json["Paging"]
-        }
-        if json["Meta"].exists() {
-            return json["Meta"]
-        }
-        return nil
     }
     
     private func printAsString(data: Data?) {
