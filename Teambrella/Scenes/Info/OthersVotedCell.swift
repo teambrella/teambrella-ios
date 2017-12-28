@@ -22,6 +22,23 @@ class OthersVotedCell: UICollectionViewCell {
     @IBOutlet var subtitleLabel: Label!
     @IBOutlet var subtitleValueLabel: Label!
     @IBOutlet var valueLabel: Label!
+    @IBOutlet var separatorView: UIView!
+    @IBOutlet var separatorLeadingInset: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        subtitleLabel.font = UIFont.teambrella(size: 12)
+        subtitleLabel.textColor = UIColor.lightTextColor
+        
+        subtitleValueLabel.font = UIFont.teambrellaBold(size: 12)
+        subtitleValueLabel.textColor = UIColor.darkTextColor
+        
+        valueLabel.font = UIFont.teambrellaBold(size: 20)
+        valueLabel.textColor = UIColor.darkTextColor
+        
+        separatorView.backgroundColor = UIColor.separatorColor
+    }
     
     func update(with model: OthersVotedCellModel) {
         avatarView.showAvatar(string: model.avatar)

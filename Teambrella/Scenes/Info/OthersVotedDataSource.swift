@@ -24,6 +24,9 @@ class OthersVotedDataSource: NSObject {
             onLoad?()
         }
     }
+    var count: Int {
+        return list?.voters.count ?? 0
+    }
     
     var onLoad: (() -> Void)?
     
@@ -40,14 +43,14 @@ class OthersVotedDataSource: NSObject {
         if let teammateID = vc?.teammateID {
             service.dao.requestTeammateOthersVoted(teamID: teamID,
                                                    teammateID: teammateID).observe { [weak self] result in
-                switch result {
-                case let .value(othersList):
-                    self?.list = othersList
-                case let .error(error):
-                    break
-                default:
-                    break
-                }
+                                                    switch result {
+                                                    case let .value(othersList):
+                                                        self?.list = othersList
+                                                    case let .error(error):
+                                                        break
+                                                    default:
+                                                        break
+                                                    }
             }
         } else if let claimID = vc?.claimID {
             service.dao.requestClaimOthersVoted(teamID: teamID, claimID: claimID).observe { [weak self] result in
@@ -65,12 +68,12 @@ class OthersVotedDataSource: NSObject {
     
     subscript(indexPath: IndexPath) -> Voter? {
         guard let list = list else { return nil }
-    
+        
         switch indexPath.section {
         case 0:
-           return  list.me
+            return  list.me
         default:
-           return list.voters[indexPath.row]
+            return list.voters[indexPath.row]
         }
     }
 }
@@ -84,6 +87,9 @@ extension OthersVotedDataSource: UICollectionViewDelegate {
         
         let model = OthersVotedCellModel(voter: voter)
         cell.update(with: model)
+        let isLast = indexPath.section == 0 || indexPath.row == count - 1
+        cell.separatorView.isHidden = isLast
+        ViewDecorator.decorateCollectionView(cell: cell, isFirst: false, isLast: isLast)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -130,7 +136,7 @@ extension OthersVotedDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 50)
+        return CGSize(width: collectionView.bounds.width, height: 70)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -140,7 +146,7 @@ extension OthersVotedDataSource: UICollectionViewDelegateFlowLayout {
         case 0:
             return .zero
         default:
-            return CGSize(width: collectionView.bounds.width, height: 0)
+            return CGSize(width: collectionView.bounds.width, height: 30)
         }
     }
 }
