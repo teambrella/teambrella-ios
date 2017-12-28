@@ -21,7 +21,7 @@ class OthersVotedVC: UIViewController, Routable {
     
     var teamID: Int?
     var teammateID: Int?
-    var claimID: String?
+    var claimID: Int?
 
     @IBOutlet var collectionView: UICollectionView!
     var dataSource: OthersVotedDataSource!

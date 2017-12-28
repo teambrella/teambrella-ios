@@ -116,7 +116,7 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
-    func presentOthersVoted(teamID: Int, teammateID: Int?, claimID: String?) {
+    func presentOthersVoted(teamID: Int, teammateID: Int?, claimID: Int?) {
         guard let vc = OthersVotedVC.instantiate() as? OthersVotedVC else { return }
         
         vc.teamID = teamID

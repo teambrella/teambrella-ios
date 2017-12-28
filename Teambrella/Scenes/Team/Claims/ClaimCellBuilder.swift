@@ -120,6 +120,9 @@ struct ClaimCellBuilder {
         let avatars = claim.otherAvatars.flatMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
         let label: String?  =  claim.otherCount > 0 ? "\(claim.otherCount)" : nil
         cell.avatarsStack.set(images: avatars, label: label, max: 3)
+        
+        cell.othersVotedButton.removeTarget(delegate, action: nil, for: .allEvents)
+        cell.othersVotedButton.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted), for: .touchUpInside)
     }
     
     static func populateClaimDetails(cell: ClaimDetailsCell, with claim: EnhancedClaimEntity) {

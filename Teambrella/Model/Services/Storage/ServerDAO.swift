@@ -246,12 +246,12 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestClaimOthersVoted(teamID: Int, claimID: String) -> Future<VotersList> {
+    func requestClaimOthersVoted(teamID: Int, claimID: Int) -> Future<VotersList> {
         let promise = Promise<VotersList>()
         
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID,
-                                                       "TeammateId": claimID])
+                                                       "ClaimId": claimID])
             let request = TeambrellaRequest(type: .claimVotesList, body: body, success: { response in
                 if case let .votesList(votesList) = response {
                     promise.resolve(with: votesList)

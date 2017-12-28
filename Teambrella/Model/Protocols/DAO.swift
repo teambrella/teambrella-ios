@@ -44,7 +44,7 @@ protocol DAO {
     func requestWithdrawTransactions(teamID: Int) -> Future<WithdrawChunk>
     func withdraw(teamID: Int, amount: Double, address: EthereumAddress) -> Future<WithdrawChunk>
     func requestTeammateOthersVoted(teamID: Int, teammateID: Int) -> Future<VotersList>
-    func requestClaimOthersVoted(teamID: Int, claimID: String) -> Future<VotersList>
+    func requestClaimOthersVoted(teamID: Int, claimID: Int) -> Future<VotersList>
     
     // MARK: Send data
     
