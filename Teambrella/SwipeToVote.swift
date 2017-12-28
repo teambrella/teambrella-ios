@@ -18,6 +18,10 @@ import UIKit
 
 class SwipeToVote: UIView {
 
+    @IBOutlet var backView: UIView!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var label: HeaderLabel!
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
