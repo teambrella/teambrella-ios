@@ -16,14 +16,18 @@
 
 import Foundation
 
-struct VotersList: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case me = "Me"
-        case median = "Median"
-        case voters = "Voters"
-    }
+struct OthersVotedCellModel {
+    let avatar: String
+    let name: String
+    let subtitle: String
+    let subtitleValue: String
+    let value: String
     
-    let me: Voter
-    let median: Voter
-    let voters: [Voter]
+    init(voter: Voter) {
+        avatar = voter.avatar
+        name = voter.name
+        subtitle = "Info.OthersVoted.Cell.Weight".localized
+        subtitleValue = voter.weight.flatMap { String.formattedNumber($0) } ?? "?"
+        value = voter.vote.flatMap { String.formattedNumber($0) } ?? "?"
+    }
 }

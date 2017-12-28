@@ -252,6 +252,14 @@ final class TeammateProfileVC: UIViewController, Routable {
     }
     
     @objc
+    func tapShowVotesOfOthers(sender: UIButton) {
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
+        guard let teammateID = dataSource.extendedTeammate?.teammateID else { return }
+        
+        service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
+    }
+    
+    @objc
     private func tapPrivateMessage(sender: UIButton) {
         log("tapped private message", type: .userInteraction)
         let transformer = TeammateTransformer(teammate: nil, extendedTeammate: dataSource.extendedTeammate)

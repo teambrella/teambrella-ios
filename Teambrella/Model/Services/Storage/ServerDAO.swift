@@ -224,6 +224,50 @@ class ServerDAO: DAO {
         return promise
     }
     
+    func requestTeammateOthersVoted(teamID: Int, teammateID: Int) -> Future<VotersList> {
+        let promise = Promise<VotersList>()
+        
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "TeammateId": teammateID])
+            let request = TeambrellaRequest(type: .teammateVotesList, body: body, success: { response in
+                if case let .votesList(votesList) = response {
+                    promise.resolve(with: votesList)
+                } else {
+                    let error = TeambrellaError(kind: .wrongReply,
+                                                description: "Was waiting votesList, got \(response)")
+                    promise.reject(with: error)
+                }
+            }, failure: { error in
+                promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
+    func requestClaimOthersVoted(teamID: Int, claimID: Int) -> Future<VotersList> {
+        let promise = Promise<VotersList>()
+        
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "ClaimId": claimID])
+            let request = TeambrellaRequest(type: .claimVotesList, body: body, success: { response in
+                if case let .votesList(votesList) = response {
+                    promise.resolve(with: votesList)
+                } else {
+                    let error = TeambrellaError(kind: .wrongReply,
+                                                description: "Was waiting votesList, got \(response)")
+                    promise.reject(with: error)
+                }
+            }, failure: { error in
+                promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
     func withdraw(teamID: Int, amount: Double, address: EthereumAddress) -> Future<WithdrawChunk> {
         let promise = Promise<WithdrawChunk>()
         freshKey { key in

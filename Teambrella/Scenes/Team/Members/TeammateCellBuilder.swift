@@ -99,9 +99,7 @@ struct TeammateCellBuilder {
         
         if let voting = teammate.voting {
             let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
-            cell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars,
-                                                 label: label,
-                                                 max: nil)
+            cell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars, label: label, max: nil)
             if let risk = voting.riskVoted {
                 cell.teamVoteValueLabel.text =  String.formattedNumber(risk)
                 cell.showTeamNoVote(risk: risk)
@@ -127,11 +125,8 @@ struct TeammateCellBuilder {
             
             let timeString = DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
             cell.timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
-            
         }
-        
         cell.delegate = controller
-        
         cell.resetVoteButton.removeTarget(controller, action: nil, for: .allEvents)
         cell.resetVoteButton.addTarget(controller,
                                        action: #selector(TeammateProfileVC.tapResetVote),
@@ -142,6 +137,10 @@ struct TeammateCellBuilder {
                                     action: #selector(TeammateProfileVC.tapShowOtherVoters),
                                     for: .touchUpInside)
         
+        cell.othersVotesButton.removeTarget(controller, action: nil, for: .allEvents)
+        cell.othersVotesButton.addTarget(controller,
+                                         action: #selector(TeammateProfileVC.tapShowVotesOfOthers),
+                                         for: .touchUpInside)
     }
     
     private static func populateObject(cell: TeammateObjectCell,

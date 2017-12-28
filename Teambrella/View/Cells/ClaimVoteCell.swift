@@ -49,6 +49,8 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var submitButton: PlainButton!
     @IBOutlet var resetButton: UIButton!
     
+    @IBOutlet var othersVotedButton: UIButton!
+    
     var isYourVoteHidden: Bool = false {
         didSet {
             yourVoteAmount.isHidden = isYourVoteHidden

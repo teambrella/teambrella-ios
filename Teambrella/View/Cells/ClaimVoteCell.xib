@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -211,6 +212,9 @@
                                     <constraint firstAttribute="height" constant="125" id="7cV-Kv-yr1"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKR-rc-C51">
+                                <rect key="frame" x="148" y="151" width="46" height="30"/>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94U-NU-l4o">
                                 <rect key="frame" x="0.0" y="177.5" width="343" height="154.5"/>
                                 <subviews>
@@ -232,6 +236,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="86k-pi-DIK" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leadingMargin" id="1Wm-UP-YbY"/>
+                            <constraint firstItem="HKR-rc-C51" firstAttribute="centerX" secondItem="Qqi-A2-dcL" secondAttribute="centerX" id="6ZU-8G-GLL"/>
                             <constraint firstItem="94U-NU-l4o" firstAttribute="top" secondItem="Gj0-Hf-d4k" secondAttribute="bottom" id="7K4-DH-VNN"/>
                             <constraint firstItem="KVp-Aa-10c" firstAttribute="top" secondItem="NVa-WO-KTz" secondAttribute="topMargin" id="7OL-RS-3bZ"/>
                             <constraint firstItem="Gj0-Hf-d4k" firstAttribute="centerY" secondItem="86k-pi-DIK" secondAttribute="centerY" id="9Vx-V5-EVm"/>
@@ -239,14 +244,17 @@
                             <constraint firstItem="Gj0-Hf-d4k" firstAttribute="centerX" secondItem="86k-pi-DIK" secondAttribute="centerX" id="N4G-fZ-I4a"/>
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="centerY" secondItem="KVp-Aa-10c" secondAttribute="centerY" id="RtA-AP-bVR"/>
                             <constraint firstItem="0Iw-2g-vOp" firstAttribute="top" secondItem="NVa-WO-KTz" secondAttribute="topMargin" id="W17-G1-Olu"/>
+                            <constraint firstItem="HKR-rc-C51" firstAttribute="centerY" secondItem="Qqi-A2-dcL" secondAttribute="centerY" id="WHf-pC-FEm"/>
                             <constraint firstItem="F2r-3b-RDy" firstAttribute="bottom" secondItem="KVp-Aa-10c" secondAttribute="bottom" id="XXG-y7-9NZ"/>
                             <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" secondItem="KVp-Aa-10c" secondAttribute="trailing" constant="15" id="YOe-GY-gdc"/>
                             <constraint firstItem="94U-NU-l4o" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leading" id="eRU-4B-Kbw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Iw-2g-vOp" secondAttribute="trailing" id="f0m-P5-J2e"/>
                             <constraint firstItem="86k-pi-DIK" firstAttribute="top" secondItem="KVp-Aa-10c" secondAttribute="bottom" constant="16" id="kob-hj-XoC"/>
+                            <constraint firstItem="HKR-rc-C51" firstAttribute="width" secondItem="Qqi-A2-dcL" secondAttribute="width" id="kzD-Pk-Q6C"/>
                             <constraint firstAttribute="trailing" secondItem="94U-NU-l4o" secondAttribute="trailing" id="mc3-uj-Yac"/>
                             <constraint firstItem="KVp-Aa-10c" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leadingMargin" id="mgl-28-cBY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="86k-pi-DIK" secondAttribute="trailing" id="olz-9N-wLe"/>
+                            <constraint firstItem="HKR-rc-C51" firstAttribute="height" secondItem="Qqi-A2-dcL" secondAttribute="height" id="phs-BC-Gxj"/>
                             <constraint firstItem="Gj0-Hf-d4k" firstAttribute="height" secondItem="86k-pi-DIK" secondAttribute="height" id="r0D-zf-RJD"/>
                             <constraint firstItem="Gj0-Hf-d4k" firstAttribute="width" secondItem="86k-pi-DIK" secondAttribute="width" id="w4z-zY-Ztp"/>
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="leading" secondItem="F2r-3b-RDy" secondAttribute="trailing" constant="8" id="xqz-DI-XEe"/>
@@ -271,6 +279,7 @@
                 <outlet property="avatarsStack" destination="TnD-mv-QdM" id="VuN-fI-77A"/>
                 <outlet property="byProxyLabel" destination="gEt-FD-2iD" id="LUg-eZ-Xrl"/>
                 <outlet property="infoButton" destination="0Iw-2g-vOp" id="2EI-ti-CA5"/>
+                <outlet property="othersVotedButton" destination="HKR-rc-C51" id="qoa-6w-X0C"/>
                 <outlet property="pieChart" destination="y0E-WH-DMy" id="aru-OB-1OQ"/>
                 <outlet property="proxyAvatar" destination="uEe-ff-t9r" id="tmF-HM-uv8"/>
                 <outlet property="remainingDaysLabel" destination="F2r-3b-RDy" id="0SQ-ja-Nvn"/>
