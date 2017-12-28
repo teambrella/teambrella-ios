@@ -116,6 +116,15 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
+    func presentOthersVoted(teamID: Int, teammateID: Int?, claimID: String?) {
+        guard let vc = OthersVotedVC.instantiate() as? OthersVotedVC else { return }
+        
+        vc.teamID = teamID
+        vc.teammateID = teammateID
+        vc.claimID = claimID
+        push(vc: vc, animated: true)
+    }
+    
     func getControllerClaim(claimID: Int) -> ClaimVC? {
         let vc = ClaimVC.instantiate() as? ClaimVC
         vc?.claimID = claimID
