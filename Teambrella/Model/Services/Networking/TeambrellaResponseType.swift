@@ -52,5 +52,5 @@ enum TeambrellaResponseType {
     case withdrawTransactions(WithdrawChunk)
     case mute(Bool)
     
-    case votesList(me: Voter, median: Voter, voters: [Voter])
+    case votesList(VotersList)
 }

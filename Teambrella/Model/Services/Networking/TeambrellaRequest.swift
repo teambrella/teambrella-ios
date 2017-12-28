@@ -188,9 +188,14 @@ struct TeambrellaRequest {
             }
         case .mute:
             success(.mute(reply.boolValue))
-            case .claimVotesList,
-                 .teammateVotesList:
-            
+        case .claimVotesList,
+             .teammateVotesList:
+            do {
+                let votesList = try JSONDecoder().decode(VotersList.self, from: serverReply.data)
+                success(.votesList(votesList))
+            } catch {
+                failure?(error)
+            }
             print("Not ready")
         default:
             break
