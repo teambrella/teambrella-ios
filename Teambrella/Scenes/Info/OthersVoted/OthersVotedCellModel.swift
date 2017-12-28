@@ -26,7 +26,7 @@ struct OthersVotedCellModel {
     init(voter: Voter) {
         avatar = voter.avatar
         name = voter.name
-        subtitle = "Weight: "
+        subtitle = "Info.OthersVoted.Cell.Weight".localized
         subtitleValue = String.formattedNumber(voter.weight)
         value = String.formattedNumber(voter.vote)
     }

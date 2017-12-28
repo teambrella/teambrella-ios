@@ -98,8 +98,8 @@ extension OthersVotedDataSource: UICollectionViewDelegate {
                         forElementKind elementKind: String, at indexPath: IndexPath) {
         guard let view = view as? InfoHeader else { return }
         
-        view.leadingLabel.text = "ALL VOTES"
-        view.trailingLabel.text = "VOTES"
+        view.leadingLabel.text = "Info.OthersVoted.Header.allVotes".localized
+        view.trailingLabel.text = "Info.OthersVoted.Header.votes".localized
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

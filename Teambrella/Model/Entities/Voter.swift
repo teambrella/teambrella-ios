@@ -31,7 +31,7 @@ struct Voter: Decodable {
     let name: String
     let avatar: String
     let weight: Double
-    let weightCombined: Double
+    let weightCombined: Double?
     let proxyVoterID: String?
     let vote: Double
 }

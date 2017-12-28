@@ -30,6 +30,7 @@ class OthersVotedVC: UIViewController, Routable {
         super.viewDidLoad()
 
         addGradientNavBar()
+        title = "Info.OthersVoted.title".localized
         setupCollectionView()
         dataSource = OthersVotedDataSource(vc: self)
         dataSource.onLoad = { [weak self] in

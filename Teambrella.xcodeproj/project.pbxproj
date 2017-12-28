@@ -1918,10 +1918,10 @@
 		6D2A7C611FCC66490094ABB7 /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				6D1CAC0D1FF51AA000FA58B6 /* OthersVoted */,
 				6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */,
 				6D2A7C621FCC66960094ABB7 /* SODVC.swift */,
 				6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */,
-				6D1CAC0D1FF51AA000FA58B6 /* OthersVoted */,
 			);
 			name = Info;
 			sourceTree = "<group>";

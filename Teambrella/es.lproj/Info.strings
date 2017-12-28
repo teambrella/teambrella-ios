@@ -14,3 +14,8 @@
 "Info.codeCapture.title" = "Scan Ethereum Address";
 "Info.codeCapture.button.title" = "Usar";
 "Info.codeCapture.cancelButton.title" = "Cancelar";
+
+"Info.OthersVoted.title" = "Todos los votos";
+"Info.OthersVoted.Cell.Weight" = "Peso:";
+"Info.OthersVoted.Header.allVotes" = "TODOS LOS VOTOS";
+"Info.OthersVoted.Header.votes" = "VOTOS";
