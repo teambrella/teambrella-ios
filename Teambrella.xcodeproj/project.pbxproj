@@ -73,6 +73,10 @@
 		6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A01EB8D4A2004AED30 /* UIView.swift */; };
 		6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A21EB8D4D6004AED30 /* NSObject.swift */; };
 		6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C23871E8EA99F009B05A3 /* Data.swift */; };
+		6D1CAC051FF4FEE900FA58B6 /* TeambrellaRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC041FF4FEE900FA58B6 /* TeambrellaRequestType.swift */; };
+		6D1CAC061FF4FEE900FA58B6 /* TeambrellaRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC041FF4FEE900FA58B6 /* TeambrellaRequestType.swift */; };
+		6D1CAC081FF4FF3800FA58B6 /* TeambrellaResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */; };
+		6D1CAC091FF4FF3800FA58B6 /* TeambrellaResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */; };
 		6D20CF961FDEE1890049BE9C /* TeamPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF951FDEE1890049BE9C /* TeamPart.swift */; };
 		6D20CF971FDEE1890049BE9C /* TeamPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF951FDEE1890049BE9C /* TeamPart.swift */; };
 		6D20CF991FDEE3020049BE9C /* VotingPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF981FDEE3020049BE9C /* VotingPart.swift */; };
@@ -1108,6 +1112,8 @@
 		6D1C03A01EB8D4A2004AED30 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = Helpers/Extensions/UIView.swift; sourceTree = "<group>"; };
 		6D1C03A21EB8D4D6004AED30 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSObject.swift; path = Helpers/Extensions/NSObject.swift; sourceTree = "<group>"; };
 		6D1C23871E8EA99F009B05A3 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Helpers/Extensions/Data.swift; sourceTree = "<group>"; };
+		6D1CAC041FF4FEE900FA58B6 /* TeambrellaRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeambrellaRequestType.swift; path = Model/Services/Networking/TeambrellaRequestType.swift; sourceTree = "<group>"; };
+		6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeambrellaResponseType.swift; path = Model/Services/Networking/TeambrellaResponseType.swift; sourceTree = "<group>"; };
 		6D20CF951FDEE1890049BE9C /* TeamPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamPart.swift; path = Model/Entities/TeamPart.swift; sourceTree = "<group>"; };
 		6D20CF981FDEE3020049BE9C /* VotingPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingPart.swift; path = Model/Entities/VotingPart.swift; sourceTree = "<group>"; };
 		6D20CF9B1FDEF1FC0049BE9C /* BasicPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BasicPart.swift; path = Model/Entities/BasicPart.swift; sourceTree = "<group>"; };
@@ -2347,6 +2353,8 @@
 				CBDFEA3415104DFFD0D751C7 /* ServerService.swift */,
 				6D59FD131FBC95CB006C0A2B /* TimestampFetcher.swift */,
 				6D59FD171FBC9693006C0A2B /* URLBuilder.swift */,
+				6D1CAC041FF4FEE900FA58B6 /* TeambrellaRequestType.swift */,
+				6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -3636,6 +3644,7 @@
 				6D4E5CD31F7AB6870020DEE2 /* ChooseYourTeamDataSource.swift in Sources */,
 				6D4E5CD41F7AB6870020DEE2 /* ClaimsOpenCell.swift in Sources */,
 				6D4E5CD61F7AB6870020DEE2 /* LoginNoInviteVC.swift in Sources */,
+				6D1CAC061FF4FEE900FA58B6 /* TeambrellaRequestType.swift in Sources */,
 				6D4E5CD71F7AB6870020DEE2 /* PrivateMessagesDataSource.swift in Sources */,
 				6D30A4AE1FD167FE003149DB /* FeedChunk.swift in Sources */,
 				6D4E5CD81F7AB6870020DEE2 /* UIImage.swift in Sources */,
@@ -3804,6 +3813,7 @@
 				6D4E5D601F7AB6870020DEE2 /* TxSignature.swift in Sources */,
 				6D4E59101FD2EF900029D2F0 /* WithdrawChunk.swift in Sources */,
 				6D4E5D611F7AB6870020DEE2 /* ClaimsCellBuilder.swift in Sources */,
+				6D1CAC091FF4FF3800FA58B6 /* TeambrellaResponseType.swift in Sources */,
 				6D4E5D621F7AB6870020DEE2 /* ImageTransformer.swift in Sources */,
 				6D4E5D631F7AB6870020DEE2 /* WalletDataSource.swift in Sources */,
 				6D4E5D641F7AB6870020DEE2 /* ClaimTransactionsCellBuilder.swift in Sources */,
@@ -4041,6 +4051,7 @@
 				6DDFDAF71F8CEC7E00342696 /* EtherNode.swift in Sources */,
 				6DB309F91F1D2093007DFF40 /* ChatEntity.swift in Sources */,
 				94C2D3951F191F7100D203C2 /* ChooseYourTeamDataSource.swift in Sources */,
+				6D1CAC051FF4FEE900FA58B6 /* TeambrellaRequestType.swift in Sources */,
 				6D6DA2521EE1C62E00307C73 /* ClaimsOpenCell.swift in Sources */,
 				6D30A4AD1FD167FE003149DB /* FeedChunk.swift in Sources */,
 				6D2A57B11F698B8A00CE8841 /* EthereumProcessor.swift in Sources */,
@@ -4209,6 +4220,7 @@
 				6D466AAD1ED07CF1001BC579 /* TxSignature.swift in Sources */,
 				6D6DA2601EE1DAA400307C73 /* ClaimsCellBuilder.swift in Sources */,
 				6DA1D1011F056A2400F9DE87 /* ImageTransformer.swift in Sources */,
+				6D1CAC081FF4FF3800FA58B6 /* TeambrellaResponseType.swift in Sources */,
 				6D69DA1A1EFD171C00DED5CE /* WalletDataSource.swift in Sources */,
 				94266A381F55B3240089543F /* ClaimTransactionsCellBuilder.swift in Sources */,
 				6D59FD141FBC95CB006C0A2B /* TimestampFetcher.swift in Sources */,

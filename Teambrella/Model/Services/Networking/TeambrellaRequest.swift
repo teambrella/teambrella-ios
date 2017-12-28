@@ -22,93 +22,6 @@
 import Foundation
 import SwiftyJSON
 
-enum TeambrellaRequestType: String {
-    case timestamp = "me/GetTimestamp"
-    case initClient = "me/InitClient"
-    case updates = "me/GetUpdates"
-    case teams = "me/getTeams"
-    case demoTeams = "demo/getPetTeams"
-    case registerKey = "me/registerKey"
-    case coverageForDate = "me/getCoverageForDate"
-    case setLanguageEn = "me/setUiLang/en"
-    case setLanguageEs = "me/setUiLang/es"
-    case teammatesList = "teammate/getList"
-    case teammate = "teammate/getOne"
-    case teammateVote = "teammate/setVote"
-    case teammateChat = "teammate/getChat"
-    case newPost = "post/newPost"
-    case claimsList = "claim/getList"
-    case claim = "claim/getOne"
-    case claimVote = "claim/setVote"
-    case claimUpdates = "claim/getUpdates"
-    case claimChat = "claim/getChat"
-    case newClaim = "claim/newClaim"
-    case claimTransactions = "claim/getTransactionsList"
-    case home = "feed/getHome"
-    case feedDeleteCard = "feed/delCard"
-    case teamFeed = "feed/getList"
-    case feedChat = "feed/getChat"
-    case newChat = "feed/newChat"
-    case wallet = "wallet/getOne"
-    case walletTransactions = "wallet/getMyTxList"
-    case uploadPhoto = "post/newUpload"
-    case myProxy = "proxy/setMyProxy"
-    case myProxies = "proxy/getMyProxiesList"
-    case proxyFor = "proxy/getIAmProxyForList"
-    case proxyPosition = "proxy/setMyProxyPosition"
-    case proxyRatingList = "proxy/getRatingList"
-    
-    case privateChat = "privatemessage/getChat"
-    case privateList = "privatemessage/getList"
-    case newPrivatePost = "privatemessage/newMessage"
-    case feedPinVote = "feed/setPinVote"
-
-    case withdrawTransactions = "wallet/getWithdraw"
-    case withdraw = "wallet/newWithdraw"
-    case mute = "feed/setIsMuted"
-    
-    case teammateVotesList = "teammate/getAllVotesList"
-    case claimVotesList = "claim/getAllVotesList"
-}
-
-enum TeambrellaResponseType {
-    case timestamp
-    case initClient
-    case updates
-    case teams(TeamsModel)
-    case teammatesList([TeammateEntity])
-    case teammate(ExtendedTeammateEntity)
-    case teammateVote(JSON)
-    case newPost(ChatEntity)
-    case registerKey
-    case coverageForDate(Double, Double)
-    case setLanguage(String)
-    case claimsList([ClaimEntity])
-    case claim(EnhancedClaimEntity)
-    case claimVote(JSON)
-    case claimUpdates(JSON)
-    case claimTransactions([ClaimTransactionsCellModel])
-    case home(JSON)
-    case feedDeleteCard(HomeScreenModel)
-    case teamFeed(JSON, PagingInfo?)
-    case chat(ChatModel)
-    case wallet(WalletEntity)
-    case walletTransactions([WalletTransactionsCellModel])
-    case uploadPhoto(String)
-    case myProxy(Bool)
-    case myProxies([ProxyCellModel])
-    case proxyFor([ProxyForCellModel], Double)
-    case proxyPosition
-    case proxyRatingList([UserIndexCellModel], Int)
-    
-    case privateList([PrivateChatUser])
-    case privateChat([ChatEntity])
-    case withdrawTransactions(WithdrawChunk)
-    case mute(Bool)
-    
-    case votesList(me: Voter, median: Voter, voters: [Voter])
-}
-
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
 typealias TeambrellaRequestFailure = (_ error: Error) -> Void
 
@@ -158,6 +71,7 @@ struct TeambrellaRequest {
     
     // swiftlint:disable:next cyclomatic_complexity
     private func parseReply(serverReply: ServerReply) {
+        // temporary item for compatibility with legacy code
         let reply = JSON(serverReply.json)
         switch type {
         case .timestamp:
