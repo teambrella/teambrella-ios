@@ -35,6 +35,11 @@ class OthersVotedVC: UIViewController, Routable {
         dataSource.onLoad = { [weak self] in
             self?.collectionView.reloadData()
         }
+        dataSource.onSelectItem = { [weak self] indexPath in
+            if let voter = self?.dataSource[indexPath] {
+                service.router.presentMemberProfile(teammateID: voter.userID)
+            }
+        }
         dataSource.loadData()
     }
     

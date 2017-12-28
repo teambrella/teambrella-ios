@@ -29,6 +29,7 @@ class OthersVotedDataSource: NSObject {
     }
     
     var onLoad: (() -> Void)?
+    var onSelectItem: ((IndexPath) -> Void)?
     
     init(vc: OthersVotedVC) {
         super.init()
@@ -99,6 +100,14 @@ extension OthersVotedDataSource: UICollectionViewDelegate {
         
         view.leadingLabel.text = "ALL VOTES"
         view.trailingLabel.text = "VOTES"
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        onSelectItem?(indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return indexPath.section > 0
     }
 }
 
