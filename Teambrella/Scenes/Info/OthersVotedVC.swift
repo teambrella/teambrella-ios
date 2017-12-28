@@ -29,6 +29,7 @@ class OthersVotedVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addGradientNavBar()
         setupCollectionView()
         dataSource = OthersVotedDataSource(vc: self)
         dataSource.onLoad = { [weak self] in

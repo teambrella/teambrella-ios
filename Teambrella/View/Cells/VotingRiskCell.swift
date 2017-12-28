@@ -62,6 +62,8 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     
     @IBOutlet var othersButton: UIButton!
     
+    @IBOutlet var othersVotesButton: UIButton!
+    
     var maxValue: CGFloat {
 //        let itemWidth = collectionView(collectionView,
 //                                       layout: collectionView.collectionViewLayout,

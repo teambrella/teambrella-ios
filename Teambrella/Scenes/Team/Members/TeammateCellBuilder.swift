@@ -136,6 +136,11 @@ struct TeammateCellBuilder {
         cell.othersButton.addTarget(controller,
                                     action: #selector(TeammateProfileVC.tapShowOtherVoters),
                                     for: .touchUpInside)
+        
+        cell.othersVotesButton.removeTarget(controller, action: nil, for: .allEvents)
+        cell.othersVotesButton.addTarget(controller,
+                                         action: #selector(TeammateProfileVC.tapShowVotesOfOthers),
+                                         for: .touchUpInside)
     }
     
     private static func populateObject(cell: TeammateObjectCell,

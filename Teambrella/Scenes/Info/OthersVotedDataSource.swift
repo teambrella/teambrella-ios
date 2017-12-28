@@ -38,7 +38,8 @@ class OthersVotedDataSource: NSObject {
         guard let teamID = vc?.teamID else { return }
         
         if let teammateID = vc?.teammateID {
-            service.dao.requestTeammateOthersVoted(teamID: teamID, teammateID: teammateID).observe { [weak self] result in
+            service.dao.requestTeammateOthersVoted(teamID: teamID,
+                                                   teammateID: teammateID).observe { [weak self] result in
                 switch result {
                 case let .value(othersList):
                     self?.list = othersList
@@ -62,8 +63,8 @@ class OthersVotedDataSource: NSObject {
         }
     }
     
-    subscript(indexPath: IndexPath) -> Voter {
-        guard let list = list else { return }
+    subscript(indexPath: IndexPath) -> Voter? {
+        guard let list = list else { return nil }
     
         switch indexPath.section {
         case 0:
@@ -79,8 +80,8 @@ extension OthersVotedDataSource: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         guard let cell = cell as? OthersVotedCell else { return }
+        guard let voter = self[indexPath] else { return }
         
-        let voter = self[indexPath]
         let model = OthersVotedCellModel(voter: voter)
         cell.update(with: model)
     }
@@ -109,7 +110,8 @@ extension OthersVotedDataSource: UICollectionViewDataSource {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OthersVotedCell", for: indexPath)
         return cell
     }

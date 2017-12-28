@@ -27,7 +27,7 @@ struct OthersVotedCellModel {
         avatar = voter.avatar
         name = voter.name
         subtitle = "Weight: "
-        subtitleValue = String.truncatedNumber(voter.weightCombined)
-        value = String.truncatedNumber(voter.weight)
+        subtitleValue = String.formattedNumber(voter.weight)
+        value = String.formattedNumber(voter.vote)
     }
 }

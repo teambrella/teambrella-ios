@@ -195,8 +195,8 @@ struct TeambrellaRequest {
                 success(.votesList(votesList))
             } catch {
                 failure?(error)
+                print("votes eroor: \(error)")
             }
-            print("Not ready")
         default:
             break
         }
