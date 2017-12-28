@@ -934,6 +934,10 @@
 		9480EA151F15246E008A7A3F /* RiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480EA131F15246E008A7A3F /* RiskCell.xib */; };
 		9480EA181F16466D008A7A3F /* RiskTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480EA161F16466D008A7A3F /* RiskTableHeader.swift */; };
 		9480EA191F16466D008A7A3F /* RiskTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480EA171F16466D008A7A3F /* RiskTableHeader.xib */; };
+		9489C1221FF54D4300ECA3A4 /* SwipeToVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9489C1211FF54D4300ECA3A4 /* SwipeToVote.swift */; };
+		9489C1231FF54D4300ECA3A4 /* SwipeToVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9489C1211FF54D4300ECA3A4 /* SwipeToVote.swift */; };
+		9489C1251FF54D7100ECA3A4 /* SwipeToVote.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9489C1241FF54D7100ECA3A4 /* SwipeToVote.xib */; };
+		9489C1261FF54D7100ECA3A4 /* SwipeToVote.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9489C1241FF54D7100ECA3A4 /* SwipeToVote.xib */; };
 		94A168F11FD82E1D00797E0C /* WithdrawInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A168F01FD82E1D00797E0C /* WithdrawInfoVC.swift */; };
 		94A168F21FD82E1D00797E0C /* WithdrawInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A168F01FD82E1D00797E0C /* WithdrawInfoVC.swift */; };
 		94A70EC41FAB221600644CF3 /* CloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A70EC31FAB221600644CF3 /* CloudView.swift */; };
@@ -1518,6 +1522,8 @@
 		9480EA131F15246E008A7A3F /* RiskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiskCell.xib; path = View/Cells/RiskCell.xib; sourceTree = "<group>"; };
 		9480EA161F16466D008A7A3F /* RiskTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RiskTableHeader.swift; path = View/ReusableViews/RiskTableHeader.swift; sourceTree = "<group>"; };
 		9480EA171F16466D008A7A3F /* RiskTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiskTableHeader.xib; path = View/ReusableViews/RiskTableHeader.xib; sourceTree = "<group>"; };
+		9489C1211FF54D4300ECA3A4 /* SwipeToVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToVote.swift; sourceTree = "<group>"; };
+		9489C1241FF54D7100ECA3A4 /* SwipeToVote.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SwipeToVote.xib; path = View/SwipeToVote.xib; sourceTree = "<group>"; };
 		94A168F01FD82E1D00797E0C /* WithdrawInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawInfoVC.swift; path = Scenes/Me/Wallet/WithdrawInfoVC.swift; sourceTree = "<group>"; };
 		94A70EC31FAB221600644CF3 /* CloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudView.swift; path = Scenes/Team/Chat/CloudView.swift; sourceTree = "<group>"; };
 		94B4C37B1F1E18AC00AED4CE /* CosignerEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CosignerEntity.swift; path = Model/Entities/CosignerEntity.swift; sourceTree = "<group>"; };
@@ -1826,6 +1832,8 @@
 				6DA714F91EE04D4900F39EBE /* ScaleBar.swift */,
 				94282B081FD9B1C40006B5F6 /* LabeledIcon.swift */,
 				94282B0B1FD9B1EE0006B5F6 /* LabeledIcon.xib */,
+				9489C1211FF54D4300ECA3A4 /* SwipeToVote.swift */,
+				9489C1241FF54D7100ECA3A4 /* SwipeToVote.xib */,
 			);
 			name = ComplexViews;
 			sourceTree = "<group>";
@@ -3007,6 +3015,7 @@
 				94F0CF621FD1B66E007BE39E /* WithdrawCell.xib in Resources */,
 				6D4E5DBF1F7AB6870020DEE2 /* Me.strings in Resources */,
 				6D4E5DC11F7AB6870020DEE2 /* Team.strings in Resources */,
+				9489C1261FF54D7100ECA3A4 /* SwipeToVote.xib in Resources */,
 				6D4E5DC21F7AB6870020DEE2 /* JoinTeamGreetingCell.xib in Resources */,
 				6D4E5DC31F7AB6870020DEE2 /* ClaimOptionsCell.xib in Resources */,
 				6D4E5DC41F7AB6870020DEE2 /* Team.storyboard in Resources */,
@@ -3111,6 +3120,7 @@
 				94F0CF611FD1B66E007BE39E /* WithdrawCell.xib in Resources */,
 				6D69DA0F1EFC458C00DED5CE /* Me.strings in Resources */,
 				6DF2E8C71EF057DB00C8D60B /* Team.strings in Resources */,
+				9489C1251FF54D7100ECA3A4 /* SwipeToVote.xib in Resources */,
 				944504C41F07CFAE00CF443F /* JoinTeamGreetingCell.xib in Resources */,
 				6DDE95851EE853550019DA47 /* ClaimOptionsCell.xib in Resources */,
 				6D9CC6271ED5EA81007F936E /* Team.storyboard in Resources */,
@@ -3701,6 +3711,7 @@
 				6D666B711F8512FA00812CBE /* PlistStorage.swift in Sources */,
 				6DDC65551FB9F02400DE4E36 /* TeammateSummaryView.swift in Sources */,
 				6DBBF8041F9A5F6800524B1E /* Unconfirmed.swift in Sources */,
+				9489C1231FF54D4300ECA3A4 /* SwipeToVote.swift in Sources */,
 				6D4E5D011F7AB6870020DEE2 /* NSObject.swift in Sources */,
 				6D4E5D021F7AB6870020DEE2 /* Session.swift in Sources */,
 				6D4E5D031F7AB6870020DEE2 /* TeammateStats.swift in Sources */,
@@ -4108,6 +4119,7 @@
 				6DDC65541FB9F02400DE4E36 /* TeammateSummaryView.swift in Sources */,
 				6DA714E71EDF224A00F39EBE /* TeambrellaStyle.swift in Sources */,
 				6D666B701F8512FA00812CBE /* PlistStorage.swift in Sources */,
+				9489C1221FF54D4300ECA3A4 /* SwipeToVote.swift in Sources */,
 				6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */,
 				6DA1D0FB1F040AEF00F9DE87 /* Session.swift in Sources */,
 				6D6DA2481EE16BBA00307C73 /* TeammateStats.swift in Sources */,
