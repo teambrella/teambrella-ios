@@ -41,7 +41,7 @@ struct HomeCellBuilder {
         
         switch cell {
         case let cell as HomeCollectionCell:
-             populateHome(cell: cell, model: model)
+            populateHome(cell: cell, model: model)
         case let cell as HomeApplicationDeniedCell:
             populate(cell: cell, with: model)
         case let cell as HomeApplicationAcceptedCell:
@@ -59,19 +59,22 @@ struct HomeCellBuilder {
             cell.avatarView.showImage(string: model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
             cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
-            cell.titleLabel.text = model.isMine
-                ? "Team.Home.Card.yourClaim".localized
-                : "Team.Home.Card.claim".localized
+            cell.titleLabel.text = model.name
             let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
             cell.rightNumberView.amountLabel.text = amountText
             cell.rightNumberView.currencyLabel.text = model.teamVote == nil ? nil : "%"
+            cell.subtitleLabel.text = model.isMine
+                ? "Team.Home.Card.yourClaim".localized
+                : "Team.Home.Card.claim".localized
         case .teammate:
             cell.avatarView.showAvatar(string: model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
-            cell.titleLabel.text = "Team.Home.Card.newTeammate".localized
+            cell.titleLabel.text = model.name //
             let amountText: String = model.teamVote.map { String.formattedNumber($0) } ?? "..."
             cell.rightNumberView.amountLabel.text = amountText
             cell.rightNumberView.currencyLabel.text = nil
+            cell.subtitleLabel.text = "Team.Home.Card.newTeammate".localized
+            //if let date = model.itemDate { " APPLIED: " + DateProcessor().stringInterval(from: date) }
         default:
             break
         }
@@ -88,10 +91,6 @@ struct HomeCellBuilder {
             cell.unreadCountView.isHidden = true
         }
         cell.rightNumberView.isBadgeVisible = model.isVoting
-        
-        if let date = model.itemDate {
-            cell.subtitleLabel.text = DateProcessor().stringInterval(from: date)
-        }
     }
     
     static func populateSupport(cell: UICollectionViewCell, dataSource: HomeDataSource) {
