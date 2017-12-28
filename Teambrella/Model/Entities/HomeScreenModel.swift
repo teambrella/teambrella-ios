@@ -39,7 +39,9 @@ struct HomeScreenModel {
         var isMine: Bool { return json["IsMine"].boolValue }
         var chatTitle: String? { return json["ChatTitle"].string }
         var payProgress: Double { return json["PayProgress"].doubleValue }
-        var name: String { return json["ModelOrName"].stringValue }
+        var name: String? { return json["Name"].stringValue }
+        var model: String? { return json["Model"].stringValue }
+        var modelOrName: String { return json["ModelOrName"].stringValue }
         var userID: String { return json["ItemUserId"].stringValue }
         var topicID: String { return json["TopicId"].stringValue }
         

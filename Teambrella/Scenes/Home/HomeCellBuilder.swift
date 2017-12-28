@@ -59,21 +59,29 @@ struct HomeCellBuilder {
             cell.avatarView.showImage(string: model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
             cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
-            cell.titleLabel.text = model.name
+            if model.model == "" {
+                cell.titleLabel.text = model.modelOrName
+            } else {
+                cell.titleLabel.text = model.model
+            }
             let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
             cell.rightNumberView.amountLabel.text = amountText
             cell.rightNumberView.currencyLabel.text = model.teamVote == nil ? nil : "%"
             cell.subtitleLabel.text = model.isMine
                 ? "Team.Home.Card.yourClaim".localized
-                : "Team.Home.Card.claim".localized
+                : "Team.Home.Card.claim".localized // by ...
         case .teammate:
             cell.avatarView.showAvatar(string: model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
-            cell.titleLabel.text = model.name //
+            if model.name == "" {
+                cell.titleLabel.text = model.modelOrName
+            } else {
+                cell.titleLabel.text = model.name
+            }
             let amountText: String = model.teamVote.map { String.formattedNumber($0) } ?? "..."
             cell.rightNumberView.amountLabel.text = amountText
             cell.rightNumberView.currencyLabel.text = nil
-            cell.subtitleLabel.text = "Team.Home.Card.newTeammate".localized
+            cell.subtitleLabel.text = "Team.Home.Card.newTeammate".localized // applied ...
             //if let date = model.itemDate { " APPLIED: " + DateProcessor().stringInterval(from: date) }
         default:
             break
