@@ -77,7 +77,7 @@ struct TeambrellaRequest {
         case .timestamp:
             success(.timestamp)
         case .teammatesList:
-            if let teammates = TeammateEntityFactory.teammates(from: reply) {
+            if let teammates = TeammateListEntity.teammates(from: reply) {
                 success(.teammatesList(teammates))
             } else {
                 let error = TeambrellaErrorFactory.unknownError()
@@ -85,13 +85,8 @@ struct TeambrellaRequest {
                 service.error.present(error: error)
             }
         case .teammate:
-            if let teammate = TeammateEntityFactory.extendedTeammate(from: reply) {
-                success(.teammate(teammate))
-            } else {
-                let error = TeambrellaErrorFactory.unknownError()
-                failure?(error)
-                service.error.present(error: error)
-            }
+            let teammate = TeammateLarge(json: reply)
+            success(.teammate(teammate))
         case .teams, .demoTeams:
             let teams = TeamEntity.teams(with: reply["MyTeams"])
             let invitations = TeamEntity.teams(with: reply["MyInvitations"])
@@ -179,10 +174,6 @@ struct TeambrellaRequest {
         case .privateList:
             let users = reply.arrayValue.map { PrivateChatUser(json: $0) }
             success(.privateList(users))
-            //        case .privateChat,
-            //             .newPrivatePost:
-            //            success(.privateChat(<#T##[ChatEntity]#>))
-        //            success(.privateChat(PrivateChatAdaptor(json: reply).adaptedMessages))
         case .withdrawTransactions,
              .withdraw:
             if let chunk = WithdrawChunk(json: reply) {

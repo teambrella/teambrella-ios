@@ -24,7 +24,7 @@ import UIKit
 
 struct TeammateCellBuilder {
     static func populate(cell: UICollectionViewCell,
-                         with teammate: ExtendedTeammateEntity,
+                         with teammate: TeammateLarge,
                          controller: TeammateProfileVC) {
         switch cell {
         case let cell as TeammateObjectCell:
@@ -47,7 +47,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateMeCell(cell: MeCell,
-                                       with teammate: ExtendedTeammateEntity,
+                                       with teammate: TeammateLarge,
                                        controller: TeammateProfileVC?) {
         cell.avatar.showAvatar(string: teammate.basic.avatar)
         cell.nameLabel.text = teammate.basic.name.entire
@@ -55,7 +55,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateSummary(cell: TeammateSummaryCell,
-                                        with teammate: ExtendedTeammateEntity,
+                                        with teammate: TeammateLarge,
                                         controller: UIViewController) {
         /*
          cell.title.text = teammate.basic.name.entire
@@ -87,7 +87,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateVote(cell: VotingRiskCell,
-                                     with teammate: ExtendedTeammateEntity,
+                                     with teammate: TeammateLarge,
                                      controller: TeammateProfileVC) {
         if let riskScale = teammate.riskScale, controller.isRiskScaleUpdateNeeded == true {
             cell.updateWithRiskScale(riskScale: riskScale)
@@ -144,7 +144,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateObject(cell: TeammateObjectCell,
-                                       with teammate: ExtendedTeammateEntity,
+                                       with teammate: TeammateLarge,
                                        controller: TeammateProfileVC) {
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
         let owner: String
@@ -197,7 +197,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateStats(cell: TeammateStatsCell,
-                                      with teammate: ExtendedTeammateEntity,
+                                      with teammate: TeammateLarge,
                                       controller: TeammateProfileVC) {
         let stats = teammate.stats
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
@@ -283,7 +283,7 @@ struct TeammateCellBuilder {
     }
     
     private static func populateContact(cell: TeammateContactCell,
-                                        with teammate: ExtendedTeammateEntity,
+                                        with teammate: TeammateLarge,
                                         controller: TeammateProfileVC) {
         cell.headerLabel.text = "Team.TeammateCell.contact".localized
         cell.tableView.delegate = controller

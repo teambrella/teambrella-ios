@@ -22,7 +22,7 @@
 import Foundation
 import SwiftyJSON
 
-class ExtendedTeammateEntity {
+class TeammateLarge {
     let id: String
     let teammateID: Int
     let ver: Int64

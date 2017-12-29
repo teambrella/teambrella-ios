@@ -53,7 +53,7 @@ class TeammateProfileDataSource {
     }
     
     var source: [TeammateProfileCellType] = []
-    var extendedTeammate: ExtendedTeammateEntity?
+    var extendedTeammate: TeammateLarge?
     var riskScale: RiskScaleEntity? { return extendedTeammate?.riskScale }
     var isNewTeammate = false
     
@@ -79,7 +79,7 @@ class TeammateProfileDataSource {
         return source[indexPath.row]
     }
     
-    func loadEntireTeammate(completion: @escaping (ExtendedTeammateEntity) -> Void,
+    func loadEntireTeammate(completion: @escaping (TeammateLarge) -> Void,
                             failure: @escaping (Error) -> Void) {
         let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: service.server.timestamp)
         

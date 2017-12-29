@@ -28,7 +28,7 @@ struct SelectSampleCellData {
 }
 
 class TeammatesTVC: UITableViewController {
-    var teammatesData: [TeammateEntity] = [] {
+    var teammatesData: [TeammateListEntity] = [] {
         didSet {
             tableView.reloadData()
         }

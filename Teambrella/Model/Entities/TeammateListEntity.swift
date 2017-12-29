@@ -22,7 +22,7 @@
 import Foundation
 import SwiftyJSON
 
-class TeammateEntity {
+class TeammateListEntity {
     var lastUpdated: Int64
     let id: String
 
@@ -41,7 +41,7 @@ class TeammateEntity {
     let avatar: String
     let minutesRemaining: Int
     
-    var extended: ExtendedTeammateEntity?
+    var extended: TeammateLarge?
         
     var description: String {
         return "Teammate \(name) id: \(id); ver: \(lastUpdated)"
@@ -68,16 +68,10 @@ class TeammateEntity {
         minutesRemaining = json["VotingEndsIn"].intValue
     }
     
-}
-
-struct TeammateEntityFactory {
-    static func teammates(from json: JSON) -> [TeammateEntity]? {
+    static func teammates(from json: JSON) -> [TeammateListEntity]? {
         guard let teammates = json["Teammates"].array else { return nil }
         
-        return teammates.map { TeammateEntity(json: $0) }
+        return teammates.map { TeammateListEntity(json: $0) }
     }
     
-    static func extendedTeammate(from json: JSON) -> ExtendedTeammateEntity? {
-        return ExtendedTeammateEntity(json: json)
-    }
 }

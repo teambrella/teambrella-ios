@@ -30,17 +30,17 @@ protocol MembersFetchStrategy {
     func itemsInSection(section: Int) -> Int
     func headerTitle(indexPath: IndexPath) -> String
     func headerSubtitle(indexPath: IndexPath) -> String
-    func arrange(teammates: [TeammateEntity])
+    func arrange(teammates: [TeammateListEntity])
     func sort(type: SortVC.SortType)
     func removeData()
     
-    subscript(indexPath: IndexPath) -> TeammateEntity { get }
+    subscript(indexPath: IndexPath) -> TeammateListEntity { get }
 }
 
 class MembersListStrategy: MembersFetchStrategy {
     var ranges: [RiskScaleEntity.Range] = []
-    var newTeammates: [TeammateEntity] = []
-    var teammates: [TeammateEntity] = []
+    var newTeammates: [TeammateListEntity] = []
+    var teammates: [TeammateListEntity] = []
     var sortType: SortVC.SortType = .none
     
     func removeData() {
@@ -108,7 +108,7 @@ class MembersListStrategy: MembersFetchStrategy {
         }
     }
     
-    func arrange(teammates: [TeammateEntity]) {
+    func arrange(teammates: [TeammateListEntity]) {
         for teammate in teammates {
             if teammate.isVoting || teammate.isJoining {
                 newTeammates.append(teammate)
@@ -118,7 +118,7 @@ class MembersListStrategy: MembersFetchStrategy {
         }
     }
     
-    subscript(indexPath: IndexPath) -> TeammateEntity {
+    subscript(indexPath: IndexPath) -> TeammateListEntity {
         switch type(indexPath: indexPath) {
         case .new:
             return newTeammates[indexPath.row]
@@ -130,7 +130,7 @@ class MembersListStrategy: MembersFetchStrategy {
 }
 
 class MembersRiskStrategy: MembersFetchStrategy {
-    var arrayOfRanges: [[TeammateEntity]] = []
+    var arrayOfRanges: [[TeammateListEntity]] = []
     var ranges: [RiskScaleEntity.Range] = []
     var sections: Int { return arrayOfRanges.count }
     var sortType: SortVC.SortType = .none
@@ -156,10 +156,10 @@ class MembersRiskStrategy: MembersFetchStrategy {
         return "Team.Members.Teammates.Strategy.headerSubtitle".localized
     }
     
-    func arrange(teammates: [TeammateEntity]) {
+    func arrange(teammates: [TeammateListEntity]) {
         if arrayOfRanges.isEmpty {
             for _ in ranges {
-                arrayOfRanges.append([TeammateEntity]())
+                arrayOfRanges.append([TeammateListEntity]())
             }
         }
         
@@ -177,7 +177,7 @@ class MembersRiskStrategy: MembersFetchStrategy {
         
     }
     
-    subscript(indexPath: IndexPath) -> TeammateEntity {
+    subscript(indexPath: IndexPath) -> TeammateListEntity {
         return arrayOfRanges[indexPath.section][indexPath.row]
     }
 }

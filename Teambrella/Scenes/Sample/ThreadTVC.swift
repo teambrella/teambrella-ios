@@ -23,7 +23,7 @@ import SwiftSoup
 import UIKit
 
 class ThreadTVC: UITableViewController {
-    var teammate: TeammateEntity!
+    var teammate: TeammateListEntity!
     var messages: [Post] = []
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()

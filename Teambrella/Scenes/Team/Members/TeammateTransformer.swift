@@ -23,8 +23,8 @@ import Foundation
 import SwiftyJSON
 
 struct TeammateTransformer {
-    let teammate: TeammateEntity?
-    let extendedTeammate: ExtendedTeammateEntity?
+    let teammate: TeammateListEntity?
+    let extendedTeammate: TeammateLarge?
     
     var privateChatUser: PrivateChatUser? {
         var dict: [String: Any] = [:]
