@@ -142,8 +142,13 @@ struct TeambrellaRequest {
                 failure?(TeambrellaErrorFactory.wrongReply())
                 return
             }
-            
-            success(.teamFeed(reply, pagingInfo))
+            do {
+                let feed = try JSONDecoder().decode([FeedEntity].self, from: serverReply.data)
+                let chunk = FeedChunk(feed: feed, pagingInfo: pagingInfo)
+                success(.teamFeed(chunk))
+            } catch {
+                failure?(error)
+            }
         case .claimTransactions:
             success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
         case .home:

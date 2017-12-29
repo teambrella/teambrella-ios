@@ -36,7 +36,7 @@ enum TeambrellaResponseType {
     case claimTransactions([ClaimTransactionsCellModel])
     case home(JSON)
     case feedDeleteCard(HomeScreenModel)
-    case teamFeed(JSON, PagingInfo?)
+    case teamFeed(FeedChunk)
     case chat(ChatModel)
     case wallet(WalletEntity)
     case walletTransactions([WalletTransactionsCellModel])

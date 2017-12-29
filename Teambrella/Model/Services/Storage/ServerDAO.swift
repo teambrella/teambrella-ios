@@ -134,10 +134,8 @@ class ServerDAO: DAO {
                                                        "limit": context.limit,
                                                        "search": context.search ?? NSNull()])
             let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in
-                if case let .teamFeed(json, pagingInfo) = response {
-                    PlistStorage().store(json: json, for: .teamFeed, id: "")
-                    let feed = json.arrayValue.flatMap { FeedEntity(json: $0) }
-                    promise.resolve(with: FeedChunk(feed: feed, pagingInfo: pagingInfo))
+                if case let .teamFeed(chunk) = response {
+                    promise.resolve(with: chunk)
                 } else {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,
                                                          description: "Was waiting .teamFeed, got \(response)"))
@@ -147,12 +145,12 @@ class ServerDAO: DAO {
             })
             request.start()
         }
-        if needTemporaryResult, let storedJSON = PlistStorage().retreiveJSON(for: .teamFeed, id: "") {
-            defer {
-                let feed = storedJSON.arrayValue.flatMap { FeedEntity(json: $0) }
-                promise.temporaryResolve(with: FeedChunk(feed: feed, pagingInfo: nil))
-            }
-        }
+//        if needTemporaryResult, let storedJSON = PlistStorage().retreiveJSON(for: .teamFeed, id: "") {
+//            defer {
+//                let feed = storedJSON.arrayValue.flatMap { FeedEntity(json: $0) }
+//                promise.temporaryResolve(with: FeedChunk(feed: feed, pagingInfo: nil))
+//            }
+//        }
         return promise
     }
     

@@ -127,7 +127,7 @@ class TeammateChatStrategy: ChatDatasourceStrategy {
 }
 
 class FeedChatStrategy: ChatDatasourceStrategy {
-    var title: String { return feedEntity.chatTitle ?? feedEntity.modelOrName }
+    var title: String { return feedEntity.chatTitle ?? feedEntity.modelOrName ?? "" }
     var requestType: TeambrellaRequestType {
         switch feedEntity.itemType {
         case .claim:
