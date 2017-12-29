@@ -555,10 +555,10 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
         
         if risk < 0.2 { risk = 0.2 }
-        dataSource.sendRisk(userID: teammateID, risk: risk) { [weak self, weak cell] json in
+        dataSource.sendRisk(userID: teammateID, risk: risk) { [weak self, weak cell] votingResult in
             guard let `self` = self else { return }
             
-            self.dataSource.teammateLarge?.updateWithVote(json: json)
+            self.dataSource.teammateLarge?.update(votingResult: votingResult)
             cell?.yourVoteValueLabel.alpha = 1
             cell?.isProxyHidden = true
         }

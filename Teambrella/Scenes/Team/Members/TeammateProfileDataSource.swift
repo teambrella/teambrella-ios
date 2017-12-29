@@ -115,7 +115,7 @@ class TeammateProfileDataSource {
         }
     }
     
-    func sendRisk(userID: Int, risk: Double?, completion: @escaping (JSON) -> Void) {
+    func sendRisk(userID: Int, risk: Double?, completion: @escaping (TeammateVotingResult) -> Void) {
         service.server.updateTimestamp { timestamp, error in
             let key = service.server.key
             let body = RequestBody(payload: ["TeammateId": userID,
@@ -123,9 +123,9 @@ class TeammateProfileDataSource {
                                              "Since": key.timestamp,
                                              "ProxyAvatarSize": 32])
             let request = TeambrellaRequest(type: .teammateVote, body: body, success: { [weak self] response in
-                if case .teammateVote(let json) = response {
-                    self?.teammateLarge?.updateWithVote(json: json)
-                    completion(json)
+                if case let .teammateVote(votingResult) = response {
+                    self?.teammateLarge?.update(votingResult: votingResult)
+                    completion(votingResult)
                 }
             })
             request.start()

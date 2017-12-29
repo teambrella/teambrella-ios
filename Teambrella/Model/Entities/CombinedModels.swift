@@ -20,7 +20,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 struct TeamsModel {
     let teams: [TeamEntity]
@@ -53,35 +52,4 @@ struct NewChatModel: ReportModel {
     let text: String
     
     var isValid: Bool { return title != "" && text.count >= 30 }
-}
-
-struct ChatModel {
-    let lastUpdated: Int64
-    let discussion: JSON
-    //let lastRead: Int64
-    let chat: [ChatEntity]
-    let basicPart: BasicPart?
-    let teamPart: TeamPart?
-    let votingPart: VotingPart?
-    
-    // teammateID or claimID
-    let id: Int
-    
-    let title: String
-    
-    init(json: JSON, chat: [ChatEntity]) {
-        lastUpdated = json["LastUpdated"].int64Value
-        discussion = json["DiscussionPart"]
-        self.chat = chat
-        basicPart = BasicPartFactory.basicPart(from: json)
-        teamPart = TeamPartFactory.teamPart(from: json)
-        votingPart = VotingPartFactory.votingPart(from: json)
-        title = json["Title"].stringValue
-        id = json["Id"].intValue
-    }
-    
-    // Discussion Part
-    var topicID: String { return discussion["TopicId"].stringValue }
-    var lastRead: Int64 { return discussion["LastRead"].int64Value }
-    var isMuted: Bool? { return discussion["IsMuted"].bool }
 }

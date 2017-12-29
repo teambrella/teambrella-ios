@@ -101,7 +101,12 @@ struct TeambrellaRequest {
         case .newPost:
             success(.newPost(ChatEntity(json: reply)))
         case .teammateVote:
-            success(.teammateVote(reply))
+            do {
+                let teamVotingResult = try JSONDecoder().decode(TeammateVotingResult.self, from: serverReply.data)
+                success(.teammateVote(teamVotingResult))
+            } catch {
+                failure?(error)
+            }
         case .registerKey:
             success(.registerKey)
         case .coverageForDate:
