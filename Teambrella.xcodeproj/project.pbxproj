@@ -832,6 +832,8 @@
 		6DD12ECC1EC75C2C00BE1CC4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */; };
 		6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */; };
 		6DD7F41D1EB9FD8A001E7733 /* RoundImagesStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41C1EB9FD8A001E7733 /* RoundImagesStack.swift */; };
+		6DDB5D931FF692DC0066A07F /* TeammatesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB5D921FF692DC0066A07F /* TeammatesList.swift */; };
+		6DDB5D941FF692DC0066A07F /* TeammatesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB5D921FF692DC0066A07F /* TeammatesList.swift */; };
 		6DDC65541FB9F02400DE4E36 /* TeammateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */; };
 		6DDC65551FB9F02400DE4E36 /* TeammateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */; };
 		6DDC65561FB9F02400DE4E36 /* TeammateSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDC65531FB9F02400DE4E36 /* TeammateSummaryView.xib */; };
@@ -1430,6 +1432,7 @@
 		6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Helpers/Extensions/Date.swift; sourceTree = "<group>"; };
 		6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImageView.swift; path = View/RoundImageView.swift; sourceTree = "<group>"; };
 		6DD7F41C1EB9FD8A001E7733 /* RoundImagesStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImagesStack.swift; path = View/RoundImagesStack.swift; sourceTree = "<group>"; };
+		6DDB5D921FF692DC0066A07F /* TeammatesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeammatesList.swift; path = Model/Entities/TeammatesList.swift; sourceTree = "<group>"; };
 		6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeammateSummaryView.swift; path = View/ReusableViews/TeammateSummaryView.swift; sourceTree = "<group>"; };
 		6DDC65531FB9F02400DE4E36 /* TeammateSummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TeammateSummaryView.xib; path = View/ReusableViews/TeammateSummaryView.xib; sourceTree = "<group>"; };
 		6DDC65581FBAE0CA00DE4E36 /* TopBarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TopBarVC.xib; path = View/TopBarVC.xib; sourceTree = "<group>"; };
@@ -2595,14 +2598,14 @@
 		6DCC7AC91E9551B40092D3F2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				6DDB5D901FF681750066A07F /* ServerModels */,
-				6DDB5D911FF681FC0066A07F /* ServerModelsNew */,
+				6D66B49B1F4D89F900672583 /* CombinedModels.swift */,
 				6D3556741FD2EF3200AEBF07 /* EthereumAddress.swift */,
 				6D6DA2631EE21ACA00307C73 /* FacebookUser.swift */,
-				6D66B49B1F4D89F900672583 /* CombinedModels.swift */,
+				6D30A4AC1FD167FE003149DB /* FeedChunk.swift */,
 				6DCDEB731F17E76A00C6D38C /* FeedRequestContext.swift */,
 				6D1292881F83DC46001CCC31 /* Name.swift */,
-				6D30A4AC1FD167FE003149DB /* FeedChunk.swift */,
+				6DDB5D901FF681750066A07F /* ServerModels */,
+				6DDB5D911FF681FC0066A07F /* ServerModelsNew */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -2668,7 +2671,6 @@
 				6D481F781F0BAA600023C781 /* RiskScaleEntity.swift */,
 				94C89AFF1F02AA8100C6D8F7 /* TeamEntity.swift */,
 				6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */,
-				6DCC7AC71E95398D0092D3F2 /* TeammateListEntity.swift */,
 				6DEC07551E9BF7170078F40E /* TeammateLarge.swift */,
 				6D6DA2471EE16BBA00307C73 /* TeammateStats.swift */,
 				6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */,
@@ -2685,12 +2687,14 @@
 		6DDB5D911FF681FC0066A07F /* ServerModelsNew */ = {
 			isa = PBXGroup;
 			children = (
-				6D30A4A91FD1648E003149DB /* PagingInfo.swift */,
 				6DCDEB6F1F17DC5900C6D38C /* FeedEntity.swift */,
+				6D30A4A91FD1648E003149DB /* PagingInfo.swift */,
+				6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */,
+				6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */,
+				6DCC7AC71E95398D0092D3F2 /* TeammateListEntity.swift */,
+				6DDB5D921FF692DC0066A07F /* TeammatesList.swift */,
 				6DA3FBA11FF2B39A00CA8FA1 /* Voter.swift */,
 				6DA3FBA41FF2BA0800CA8FA1 /* VotersList.swift */,
-				6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */,
-				6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */,
 			);
 			name = ServerModelsNew;
 			sourceTree = "<group>";
@@ -3633,6 +3637,7 @@
 				6D4E5C9F1F7AB6870020DEE2 /* EggView.swift in Sources */,
 				6D4E5CA01F7AB6870020DEE2 /* UUID.swift in Sources */,
 				6D4E5CA11F7AB6870020DEE2 /* JoinTeamTermsCell.swift in Sources */,
+				6DDB5D941FF692DC0066A07F /* TeammatesList.swift in Sources */,
 				6D4E5CA21F7AB6870020DEE2 /* Teammate.swift in Sources */,
 				6D4E5CA31F7AB6870020DEE2 /* KeyStorage.swift in Sources */,
 				6D4E59131FD2EFA10029D2F0 /* WithdrawDataSource.swift in Sources */,
@@ -4045,6 +4050,7 @@
 				6DB921EE1F9DEC27009D3937 /* EthWallet.swift in Sources */,
 				6DA5B4631F98D80700021E8E /* CryptoWorker.swift in Sources */,
 				6D91BC041EB3900700FDC332 /* UUID.swift in Sources */,
+				6DDB5D931FF692DC0066A07F /* TeammatesList.swift in Sources */,
 				94E325CD1F07FA7E00B2D8C8 /* JoinTeamTermsCell.swift in Sources */,
 				6D466AA91ED07CF1001BC579 /* Teammate.swift in Sources */,
 				6DF3E7621F795ED6000C7885 /* KeyStorage.swift in Sources */,

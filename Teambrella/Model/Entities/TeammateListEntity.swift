@@ -20,11 +20,27 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-class TeammateListEntity {
-    var lastUpdated: Int64
-    let id: String
+class TeammateListEntity: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case id = "Id"
+        case claimLimit = "ClaimLimit"
+        case claimsCount = "ClaimsCount"
+        case isJoining = "IsJoining"
+        case isVoting = "IsVoting"
+        case model = "Model"
+        case name = "Name"
+        case risk = "Risk"
+        case riskVoted = "RiskVoted"
+        case totallyPaid = "TotallyPaid"
+        case hasUnread = "Unread"
+        case userID = "UserId"
+        case year = "Year"
+        case avatar = "Avatar"
+        case minutesRemaining = "VotingEndsIn"
+    }
+    
+    let id: Int
 
     let claimLimit: Int
     let claimsCount: Int
@@ -40,38 +56,5 @@ class TeammateListEntity {
     let year: Int
     let avatar: String
     let minutesRemaining: Int
-    
-    //var extended: TeammateLarge?
-        
-    var description: String {
-        return "Teammate \(name) id: \(id); ver: \(lastUpdated)"
-    }
-    
-    //var isComplete: Bool { return extended != nil }
-
-    init(json: JSON) {
-        claimLimit = json["ClaimLimit"].intValue
-        claimsCount = json["ClaimsCount"].intValue
-        id = json["Id"].stringValue
-        isJoining = json["IsJoining"].boolValue
-        isVoting = json["IsVoting"].boolValue
-        model = json["Model"].stringValue
-        name = Name(fullName: json["Name"].stringValue)
-        risk = json["Risk"].doubleValue
-        riskVoted = json["RiskVoted"].doubleValue
-        totallyPaid = json["TotallyPaid"].doubleValue
-        hasUnread = json["Unread"].boolValue
-        userID = json["UserId"].stringValue
-        lastUpdated = json["LastUpdated"].int64Value
-        year = json["Year"].intValue
-        avatar = json["Avatar"].stringValue
-        minutesRemaining = json["VotingEndsIn"].intValue
-    }
-    
-    static func teammates(from json: JSON) -> [TeammateListEntity]? {
-        guard let teammates = json["Teammates"].array else { return nil }
-        
-        return teammates.map { TeammateListEntity(json: $0) }
-    }
     
 }

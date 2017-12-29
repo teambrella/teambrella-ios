@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 struct FeedEntity: Decodable {
     enum CodingKeys: String, CodingKey {

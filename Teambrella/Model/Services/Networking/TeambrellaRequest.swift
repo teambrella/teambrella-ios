@@ -77,12 +77,13 @@ struct TeambrellaRequest {
         case .timestamp:
             success(.timestamp)
         case .teammatesList:
-            if let teammates = TeammateListEntity.teammates(from: reply) {
-                success(.teammatesList(teammates))
-            } else {
-                let error = TeambrellaErrorFactory.unknownError()
+            do {
+                let list = try JSONDecoder().decode(TeammatesList.self, from: serverReply.data)
+                print("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)")
+                success(.teammatesList(list.teammates))
+            } catch {
+                print(error)
                 failure?(error)
-                service.error.present(error: error)
             }
         case .teammate:
             let teammate = TeammateLarge(json: reply)
