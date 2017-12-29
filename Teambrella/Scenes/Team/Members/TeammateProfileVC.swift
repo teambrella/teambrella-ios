@@ -101,7 +101,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // in case that we return to this screen from some otheer scene
-        if let myVote = dataSource.extendedTeammate?.voting?.myVote {
+        if let myVote = dataSource.teammateLarge?.voting?.myVote {
             updateAmounts(with: myVote)
         }
     }
@@ -132,7 +132,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
             return
         }
-        guard let myRisk = dataSource.extendedTeammate?.riskScale?.myRisk else { return }
+        guard let myRisk = dataSource.teammateLarge?.riskScale?.myRisk else { return }
         guard let heCoversMe = linearFunction?.value(at: risk) else { return }
         
         let theirAmount = heCoversMe
@@ -143,9 +143,9 @@ final class TeammateProfileVC: UIViewController, Routable {
     }
     
     func resetVote(cell: VotingRiskCell) {
-        let vote = dataSource.extendedTeammate?.voting?.myVote
-        let proxyAvatar = dataSource.extendedTeammate?.voting?.proxyAvatar
-        let proxyName = dataSource.extendedTeammate?.voting?.proxyName
+        let vote = dataSource.teammateLarge?.voting?.myVote
+        let proxyAvatar = dataSource.teammateLarge?.voting?.proxyAvatar
+        let proxyName = dataSource.teammateLarge?.voting?.proxyName
         if let vote = vote,
             let proxyAvatar = proxyAvatar,
             let proxyName = proxyName {
@@ -164,7 +164,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     func updateAverages(cell: VotingRiskCell, risk: Double) {
         func text(for label: UILabel, risk: Double) {
-            guard let riskScale = dataSource.extendedTeammate?.riskScale else { return }
+            guard let riskScale = dataSource.teammateLarge?.riskScale else { return }
             
             let delta = risk - riskScale.averageRisk
             var text = "AVG\n"
@@ -175,7 +175,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         }
         
         text(for: cell.yourVoteBadgeLabel, risk: risk)
-        if let teamRisk = dataSource.extendedTeammate?.voting?.riskVoted {
+        if let teamRisk = dataSource.teammateLarge?.voting?.riskVoted {
             text(for: cell.teamVoteBadgeLabel, risk: teamRisk)
         }
     }
@@ -184,11 +184,11 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     @objc
     func showClaims(sender: UIButton) {
-        if let claimCount = dataSource.extendedTeammate?.object.claimCount,
+        if let claimCount = dataSource.teammateLarge?.object.claimCount,
             claimCount == 1,
-            let claimID = dataSource.extendedTeammate?.object.singleClaimID {
+            let claimID = dataSource.teammateLarge?.object.singleClaimID {
             service.router.presentClaim(claimID: claimID)
-        } else if let teammateID = dataSource.extendedTeammate?.teammateID {
+        } else if let teammateID = dataSource.teammateLarge?.teammateID {
             service.router.presentClaims(teammateID: teammateID)
         }
     }
@@ -227,7 +227,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     @objc
     func tapResetVote(sender: UIButton) {
         guard let cell = votingRiskCell else { return }
-        guard let teammateID = dataSource.extendedTeammate?.teammateID else { return }
+        guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
         
         cell.yourVoteValueLabel.alpha = 0.5
         //sender.isEnabled = false
@@ -243,7 +243,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     @objc
     func tapShowOtherVoters(sender: UIButton) {
-        guard let ranges = dataSource.extendedTeammate?.riskScale?.ranges else {
+        guard let ranges = dataSource.teammateLarge?.riskScale?.ranges else {
             log("Can't present CompareTeamRisk controller. No ranges in extendedTeammate.", type: .error)
             return
         }
@@ -254,7 +254,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     @objc
     func tapShowVotesOfOthers(sender: UIButton) {
         guard let teamID = service.session?.currentTeam?.teamID else { return }
-        guard let teammateID = dataSource.extendedTeammate?.teammateID else { return }
+        guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
         
         service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
     }
@@ -262,8 +262,8 @@ final class TeammateProfileVC: UIViewController, Routable {
     @objc
     private func tapPrivateMessage(sender: UIButton) {
         log("tapped private message", type: .userInteraction)
-        let transformer = TeammateTransformer(teammate: nil, extendedTeammate: dataSource.extendedTeammate)
-        guard let user = transformer.privateChatUser else { return }
+        let adaptor = TeammateAdaptor(teammateLarge: dataSource.teammateLarge)
+        guard let user = adaptor.privateChatUser else { return }
         
         service.router.presentChat(context: .privateChat(user), itemType: .privateChat)
     }
@@ -291,11 +291,11 @@ final class TeammateProfileVC: UIViewController, Routable {
     }
     
     private func setTitle() {
-        title = dataSource.extendedTeammate?.basic.name.short
+        title = dataSource.teammateLarge?.basic.name.short
     }
     
     private func prepareLinearFunction() {
-        guard let risk = dataSource.extendedTeammate?.riskScale else { return }
+        guard let risk = dataSource.teammateLarge?.riskScale else { return }
         
         let function = PiecewiseFunction((0.2, risk.coversIfMin), (1, risk.coversIf1), (5, risk.coversIfMax))
         linearFunction = function
@@ -351,7 +351,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        guard let teammate = dataSource.extendedTeammate else { return }
+        guard let teammate = dataSource.teammateLarge else { return }
         
         TeammateCellBuilder.populate(cell: cell, with: teammate, controller: self)
     }
@@ -361,7 +361,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        guard let teammate = dataSource.extendedTeammate else { return }
+        guard let teammate = dataSource.teammateLarge else { return }
         
         if let view = view as? CompactUserInfoHeader {
             view.avatarView.showAvatar(string: teammate.basic.avatar)
@@ -422,7 +422,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let identifier = dataSource.type(for: indexPath)
-        if identifier == .dialog || identifier == .dialogCompact, let extendedTeammate = dataSource.extendedTeammate {
+        if identifier == .dialog || identifier == .dialogCompact, let extendedTeammate = dataSource.teammateLarge {
             let context = ChatContext.teammate(extendedTeammate)
             service.router.presentChat(context: context, itemType: .teammate)
         }
@@ -445,7 +445,7 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             
             return CGSize(width: wdt, height: 296)
         case .stats:
-            guard  dataSource.extendedTeammate != nil,
+            guard  dataSource.teammateLarge != nil,
                 dataSource.isMe == true else { return CGSize(width: wdt, height: 368) }
             
             return CGSize(width: wdt, height: 311)
@@ -467,7 +467,7 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        guard dataSource.extendedTeammate != nil else { return CGSize.zero }
+        guard dataSource.teammateLarge != nil else { return CGSize.zero }
         
         return dataSource.isNewTeammate
             ? CGSize(width: collectionView.bounds.width, height: 60)
@@ -544,7 +544,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         cell.middleAvatarLabel.text = String(format: "%.2f", risk)
         updateAverages(cell: cell, risk: risk)
         updateAmounts(with: risk)
-        cell.pieChart.setupWith(remainingMinutes: dataSource.extendedTeammate?.voting?.remainingMinutes ?? 0)
+        cell.pieChart.setupWith(remainingMinutes: dataSource.teammateLarge?.voting?.remainingMinutes ?? 0)
         cell.showYourNoVote(risk: risk)
     }
     
@@ -552,13 +552,13 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         var risk = riskFrom(offset: stoppedOnOffset, maxValue: cell.maxValue)
         
         cell.yourVoteValueLabel.alpha = 0.5
-        guard let teammateID = dataSource.extendedTeammate?.teammateID else { return }
+        guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
         
         if risk < 0.2 { risk = 0.2 }
         dataSource.sendRisk(userID: teammateID, risk: risk) { [weak self, weak cell] json in
             guard let `self` = self else { return }
             
-            self.dataSource.extendedTeammate?.updateWithVote(json: json)
+            self.dataSource.teammateLarge?.updateWithVote(json: json)
             cell?.yourVoteValueLabel.alpha = 1
             cell?.isProxyHidden = true
         }
@@ -580,7 +580,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             label.text = String(format: "%.2f", teammate.risk)
             label.backgroundColor = .blueWithAHintOfPurple
         }
-        guard let range = dataSource.extendedTeammate?.riskScale?.ranges[changedMiddleRowIndex] else { return }
+        guard let range = dataSource.teammateLarge?.riskScale?.ranges[changedMiddleRowIndex] else { return }
         
         if range.teammates.count > 1 {
             setAvatar(avatarView: cell.rightAvatar, label: cell.rightAvatarLabel, with: range.teammates.last)

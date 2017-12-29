@@ -22,28 +22,18 @@
 import Foundation
 import SwiftyJSON
 
-struct TeammateTransformer {
-    let teammate: TeammateListEntity?
-    let extendedTeammate: TeammateLarge?
+struct TeammateAdaptor {
+    let teammateLarge: TeammateLarge?
     
     var privateChatUser: PrivateChatUser? {
         var dict: [String: Any] = [:]
-        if let teammate = teammate {
-            dict = ["UserId": teammate.userID,
-                    "Avatar": teammate.avatar,
-                    "Name": teammate.name.short,
-                    "Text": teammate.extended?.topic.originalPostText ?? "",
-                    "UnreadCount": teammate.extended?.topic.unreadCount ?? 0,
-                    "SinceLastMessageMinutes": teammate.extended?.topic.minutesSinceLastPost ?? 0
-            ]
-            
-        } else if let extended = extendedTeammate {
-            dict = ["UserId": extended.basic.id,
-                    "Avatar": extended.basic.avatar,
-                    "Name": extended.basic.name.short,
-                    "Text": extended.topic.originalPostText,
-                    "UnreadCount": extended.topic.unreadCount,
-                    "SinceLastMessageMinutes": extended.topic.minutesSinceLastPost
+       if let teammateLarge = teammateLarge {
+            dict = ["UserId": teammateLarge.basic.id,
+                    "Avatar": teammateLarge.basic.avatar,
+                    "Name": teammateLarge.basic.name.short,
+                    "Text": teammateLarge.topic.originalPostText,
+                    "UnreadCount": teammateLarge.topic.unreadCount,
+                    "SinceLastMessageMinutes": teammateLarge.topic.minutesSinceLastPost
             ]
         }
         let json = JSON(dict)

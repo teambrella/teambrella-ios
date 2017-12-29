@@ -41,13 +41,13 @@ class TeammateListEntity {
     let avatar: String
     let minutesRemaining: Int
     
-    var extended: TeammateLarge?
+    //var extended: TeammateLarge?
         
     var description: String {
         return "Teammate \(name) id: \(id); ver: \(lastUpdated)"
     }
     
-    var isComplete: Bool { return extended != nil }
+    //var isComplete: Bool { return extended != nil }
 
     init(json: JSON) {
         claimLimit = json["ClaimLimit"].intValue

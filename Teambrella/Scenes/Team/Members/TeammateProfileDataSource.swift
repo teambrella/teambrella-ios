@@ -45,16 +45,16 @@ class TeammateProfileDataSource {
    // let isVoting: Bool
     var isMyProxy: Bool {
         get {
-            return extendedTeammate?.basic.isMyProxy ?? false
+            return teammateLarge?.basic.isMyProxy ?? false
         }
         set {
-            extendedTeammate?.myProxy(set: newValue)
+            teammateLarge?.myProxy(set: newValue)
         }
     }
     
     var source: [TeammateProfileCellType] = []
-    var extendedTeammate: TeammateLarge?
-    var riskScale: RiskScaleEntity? { return extendedTeammate?.riskScale }
+    var teammateLarge: TeammateLarge?
+    var riskScale: RiskScaleEntity? { return teammateLarge?.riskScale }
     var isNewTeammate = false
     
     var votingCellIndexPath: IndexPath? {
@@ -88,7 +88,7 @@ class TeammateProfileDataSource {
             guard let me = self else { return }
             
             if case .teammate(let extendedTeammate) = response {
-                me.extendedTeammate = extendedTeammate
+                me.teammateLarge = extendedTeammate
                 me.modifySource()
                 completion(extendedTeammate)
             }
@@ -124,7 +124,7 @@ class TeammateProfileDataSource {
                                              "ProxyAvatarSize": 32])
             let request = TeambrellaRequest(type: .teammateVote, body: body, success: { [weak self] response in
                 if case .teammateVote(let json) = response {
-                    self?.extendedTeammate?.updateWithVote(json: json)
+                    self?.teammateLarge?.updateWithVote(json: json)
                     completion(json)
                 }
             })
@@ -134,7 +134,7 @@ class TeammateProfileDataSource {
     }
     
     private func modifySource() {
-        guard let teammate = extendedTeammate else { return }
+        guard let teammate = teammateLarge else { return }
         
         source.removeAll()
         isMyProxy = teammate.basic.isMyProxy
@@ -172,7 +172,7 @@ class TeammateProfileDataSource {
     
     var socialItems: [SocialItem] {
         var items: [SocialItem] = []
-        if let facebook = extendedTeammate?.basic.facebook {
+        if let facebook = teammateLarge?.basic.facebook {
             items.append(SocialItem(type: .facebook, icon: #imageLiteral(resourceName: "facebook"), address: facebook))
         }
         return items
