@@ -65,5 +65,10 @@ extension UIColor {
     var greenValue: CGFloat { return CIColor(color: self).green }
     var blueValue: CGFloat { return CIColor(color: self).blue }
     var alphaValue: CGFloat { return CIColor(color: self).alpha }
-
+    
+    // MARK: Commonly used
+    
+    class var separatorColor: UIColor { return .paleGray }
+    class var darkTextColor: UIColor { return .dark }
+    class var lightTextColor: UIColor { return .blueyGray }
 }

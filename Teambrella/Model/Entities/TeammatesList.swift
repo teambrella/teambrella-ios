@@ -16,14 +16,15 @@
 
 import Foundation
 
-/**
-    Used in feed/getList reply to manage pagination with chunks
- */
-struct PagingInfo: Codable {
-    let lastIndex: UInt64
-    
+class TeammatesList: Decodable {
     enum CodingKeys: String, CodingKey {
-        case lastIndex = "LastIndex"
+        case myTeammateID = "MyTeammateId"
+        case teamID = "TeamId"
+        case teammates = "Teammates"
     }
+    
+    let myTeammateID: Int
+    let teamID: String
+    let teammates: [TeammateListEntity]
     
 }

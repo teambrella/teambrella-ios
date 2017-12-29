@@ -59,7 +59,6 @@ class ServerService: NSObject {
         }
     }
     
-    // swiftlint:disable:next function_body_length
     func ask(for string: String,
              parameters: [String: String]? = nil,
              body: RequestBody? = nil,

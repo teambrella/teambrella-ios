@@ -16,18 +16,8 @@
 
 import Foundation
 
-struct Voter {
-    let userID: String
-    let name: String
-    let avatar: String
-    let weight: Double
-    let weightCombined: Double
-    let proxyVoterID: String?
-    let vote: Double
-}
-
-extension Voter: Decodable {
-    enum VoterKeys: String, CodingKey {
+struct Voter: Decodable {
+    enum CodingKeys: String, CodingKey {
         case userID = "UserId"
         case name = "Name"
         case avatar = "Avatar"
@@ -37,23 +27,11 @@ extension Voter: Decodable {
         case vote = "Vote"
     }
     
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: VoterKeys.self)
-        
-        let userID = try container.decode(String.self, forKey: .userID)
-        let name = try container.decode(String.self, forKey: .name)
-        let avatar = try container.decode(String.self, forKey: .avatar)
-        let weight = try container.decode(Double.self, forKey: .weight)
-        let weightCombined = try container.decode(Double.self, forKey: .weightCombined)
-        let proxyVoterID = try container.decode(Optional<String>.self, forKey: .proxyVoterID)
-        let vote = try container.decode(Double.self, forKey: .vote)
-        
-        self.init(userID: userID,
-                  name: name,
-                  avatar: avatar,
-                  weight: weight,
-                  weightCombined: weightCombined,
-                  proxyVoterID: proxyVoterID,
-                  vote: vote)
-    }
+    let userID: String
+    let name: String
+    let avatar: String
+    let weight: Double?
+    let weightCombined: Double?
+    let proxyVoterID: String?
+    let vote: Double?
 }

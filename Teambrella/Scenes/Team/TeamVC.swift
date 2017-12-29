@@ -41,7 +41,12 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         setupTransparentNavigationBar()
         navigationItem.title = "" //service.session?.currentTeam?.teamName ?? "Main.team".localized
         addTopBar()
-        loadHomeData()
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         loadHomeData()
     }
     
     override func viewDidAppear(_ animated: Bool) {

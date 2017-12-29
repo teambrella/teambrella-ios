@@ -102,7 +102,7 @@ class MembersDatasource {
         strategy.removeData()
     }
         
-    subscript(indexPath: IndexPath) -> TeammateEntity {
+    subscript(indexPath: IndexPath) -> TeammateListEntity {
         return strategy[indexPath]
     }
     

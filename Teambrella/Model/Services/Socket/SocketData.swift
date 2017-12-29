@@ -113,7 +113,8 @@ enum SocketData {
              "TeamId":2001,"TopicId":"fd6bcdc7-2b79-4525-af77-a85001161d49",
              "PostId":"073e2a28-f028-4e0b-8ec9-3bf26e30cf1b",
              "UserName":"Denis Vasilin",
-             "Avatar":"/content/uploads/dc11507d-d8c5-46ff-81ae-a7c300795fda/197da98c-e958-45ad-990c-a7c300796106_fb.jpg?width=128&crop=0,0,128,128",
+             "Avatar":"/content/uploads/dc11507d-d8c5-46ff-81ae-a7c300795fda/
+             197da98c-e958-45ad-990c-a7c300796106_fb.jpg?width=128&crop=0,0,128,128",
              "Content":"🍺"}*/
             return .newPost(teamID: json["TeamId"].intValue,
                             userID: json["UserId"].stringValue,
@@ -122,6 +123,19 @@ enum SocketData {
                             name: json["UserName"].stringValue,
                             url: json["Avatar"].stringValue,
                             text: json["Content"].stringValue)
+        case .theyTyping:
+            /*
+             {"Cmd":13,
+             "Timestamp":636500607291514776,
+             "UserId":"9c4a1984-66f9-4f3c-8470-a7c3006c9400",
+             "TeamId":2021,
+             "TopicId":"21f43e0e-a599-4e5f-8f4f-a6d7ff0195c1",
+             "UserName":"Vlad Kravchuk"}
+             */
+            return .theyTyping(teamID: json["TeamId"].intValue,
+                               userID: json["UserId"].stringValue,
+                               topicID: json["TopicId"].stringValue,
+                               name: json["UserName"].stringValue)
         default:
             return nil
         }

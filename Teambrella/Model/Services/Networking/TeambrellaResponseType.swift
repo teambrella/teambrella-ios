@@ -22,9 +22,9 @@ enum TeambrellaResponseType {
     case initClient
     case updates
     case teams(TeamsModel)
-    case teammatesList([TeammateEntity])
-    case teammate(ExtendedTeammateEntity)
-    case teammateVote(JSON)
+    case teammatesList([TeammateListEntity])
+    case teammate(TeammateLarge)
+    case teammateVote(TeammateVotingResult)
     case newPost(ChatEntity)
     case registerKey
     case coverageForDate(Double, Double)
@@ -36,7 +36,7 @@ enum TeambrellaResponseType {
     case claimTransactions([ClaimTransactionsCellModel])
     case home(JSON)
     case feedDeleteCard(HomeScreenModel)
-    case teamFeed(JSON, PagingInfo?)
+    case teamFeed(FeedChunk)
     case chat(ChatModel)
     case wallet(WalletEntity)
     case walletTransactions([WalletTransactionsCellModel])
@@ -52,5 +52,5 @@ enum TeambrellaResponseType {
     case withdrawTransactions(WithdrawChunk)
     case mute(Bool)
     
-    case votesList(me: Voter, median: Voter, voters: [Voter])
+    case votesList(VotersList)
 }

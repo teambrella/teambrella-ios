@@ -77,21 +77,17 @@ struct TeambrellaRequest {
         case .timestamp:
             success(.timestamp)
         case .teammatesList:
-            if let teammates = TeammateEntityFactory.teammates(from: reply) {
-                success(.teammatesList(teammates))
-            } else {
-                let error = TeambrellaErrorFactory.unknownError()
+            do {
+                let list = try JSONDecoder().decode(TeammatesList.self, from: serverReply.data)
+                print("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)")
+                success(.teammatesList(list.teammates))
+            } catch {
+                print(error)
                 failure?(error)
-                service.error.present(error: error)
             }
         case .teammate:
-            if let teammate = TeammateEntityFactory.extendedTeammate(from: reply) {
-                success(.teammate(teammate))
-            } else {
-                let error = TeambrellaErrorFactory.unknownError()
-                failure?(error)
-                service.error.present(error: error)
-            }
+            let teammate = TeammateLarge(json: reply)
+            success(.teammate(teammate))
         case .teams, .demoTeams:
             let teams = TeamEntity.teams(with: reply["MyTeams"])
             let invitations = TeamEntity.teams(with: reply["MyInvitations"])
@@ -105,7 +101,12 @@ struct TeambrellaRequest {
         case .newPost:
             success(.newPost(ChatEntity(json: reply)))
         case .teammateVote:
-            success(.teammateVote(reply))
+            do {
+                let teamVotingResult = try JSONDecoder().decode(TeammateVotingResult.self, from: serverReply.data)
+                success(.teammateVote(teamVotingResult))
+            } catch {
+                failure?(error)
+            }
         case .registerKey:
             success(.registerKey)
         case .coverageForDate:
@@ -142,8 +143,13 @@ struct TeambrellaRequest {
                 failure?(TeambrellaErrorFactory.wrongReply())
                 return
             }
-            
-            success(.teamFeed(reply, pagingInfo))
+            do {
+                let feed = try JSONDecoder().decode([FeedEntity].self, from: serverReply.data)
+                let chunk = FeedChunk(feed: feed, pagingInfo: pagingInfo)
+                success(.teamFeed(chunk))
+            } catch {
+                failure?(error)
+            }
         case .claimTransactions:
             success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
         case .home:
@@ -174,10 +180,6 @@ struct TeambrellaRequest {
         case .privateList:
             let users = reply.arrayValue.map { PrivateChatUser(json: $0) }
             success(.privateList(users))
-            //        case .privateChat,
-            //             .newPrivatePost:
-            //            success(.privateChat(<#T##[ChatEntity]#>))
-        //            success(.privateChat(PrivateChatAdaptor(json: reply).adaptedMessages))
         case .withdrawTransactions,
              .withdraw:
             if let chunk = WithdrawChunk(json: reply) {
@@ -188,10 +190,15 @@ struct TeambrellaRequest {
             }
         case .mute:
             success(.mute(reply.boolValue))
-            case .claimVotesList,
-                 .teammateVotesList:
-            
-            print("Not ready")
+        case .claimVotesList,
+             .teammateVotesList:
+            do {
+                let votesList = try JSONDecoder().decode(VotersList.self, from: serverReply.data)
+                success(.votesList(votesList))
+            } catch {
+                failure?(error)
+                print("votes eroor: \(error)")
+            }
         default:
             break
         }

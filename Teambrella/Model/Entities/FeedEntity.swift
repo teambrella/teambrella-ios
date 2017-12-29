@@ -20,31 +20,70 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct FeedEntity {
-    let json: JSON
-    let text: String
-    
-    var amount: Double { return json["Amount"].doubleValue }
-    var teamVote: Double { return json["TeamVote"].doubleValue }
-    var topicID: String { return json["TopicId"].stringValue }
-    var isVoting: Bool { return json["IsVoting"].boolValue }
-    var payProgress: Double { return json["PayProgress"].doubleValue }
-    var itemType: ItemType { return ItemType(rawValue: json["ItemType"].intValue) ?? .teammate }
-    var itemID: Int { return json["ItemId"].intValue }
-    var itemUserID: String { return json["ItemUserId"].stringValue }
-    var itemDate: Date? { return DateFormatter.teambrella.date(from: json["ItemDate"].stringValue) }
-    var smallPhotoOrAvatar: String { return json["SmallPhotoOrAvatar"].stringValue }
-    var modelOrName: String { return json["ModelOrName"].stringValue }
-    var chatTitle: String? { return json["ChatTitle"].string }
-    var unreadCount: Int { return json["UnreadCount"].intValue }
-    var posterCount: Int { return json["PosterCount"].intValue }
-    var topPosterAvatars: [String] { return json["TopPosterAvatars"].arrayObject as? [String] ?? [] }
-    
-    init(json: JSON) {
-        self.json = json
-        self.text = TextAdapter().parsedHTML(string: json["Text"].stringValue)
+struct FeedEntity: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case text = "Text"
+        case amount = "Amount"
+        case teamVote = "TeamVote"
+        case topicID = "TopicId"
+        case isVoting = "IsVoting"
+        case payProgress = "PayProgress"
+        case itemType = "ItemType"
+        case itemID = "ItemId"
+        case itemUserID = "ItemUserId"
+        case itemDate = "ItemDate"
+        case smallPhotoOrAvatar = "SmallPhotoOrAvatar"
+        case modelOrName = "ModelOrName"
+        case chatTitle = "ChatTitle"
+        case unreadCount = "UnreadCount"
+        case posterCount = "PosterCount"
+        case topPosterAvatars = "TopPosterAvatars"
     }
     
+    let text: String
+    let amount: Double?
+    let teamVote: Double?
+    let topicID: String
+    let isVoting: Bool?
+    let payProgress: Double?
+    let itemType: ItemType
+    let itemID: Int
+    let itemUserID: String
+    let itemDate: Date?
+    let smallPhotoOrAvatar: String
+    let modelOrName: String?
+    let chatTitle: String?
+    let unreadCount: Int
+    let posterCount: Int
+    let topPosterAvatars: [String]
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let text = try container.decode(String.self, forKey: .text)
+        let itemType = try container.decode(Int.self, forKey: .itemType)
+        let itemDate = try container.decode(String.self, forKey: .itemDate)
+        
+        self.text = TextAdapter().parsedHTML(string: text)
+        self.itemType = ItemType(rawValue: itemType) ?? .teammate
+        self.itemDate = DateFormatter.teambrella.date(from: itemDate)
+
+        self.topicID = try container.decode(String.self, forKey: .topicID)
+        self.itemID = try container.decode(Int.self, forKey: .itemID)
+        self.itemUserID = try container.decode(String.self, forKey: .itemUserID)
+        self.unreadCount = try container.decode(Int.self, forKey: .unreadCount)
+        self.posterCount = try container.decode(Int.self, forKey: .posterCount)
+        self.topPosterAvatars = try container.decode([String].self, forKey: .topPosterAvatars)
+
+        self.amount = try container.decodeIfPresent(Double.self, forKey: .amount)
+        self.teamVote = try container.decodeIfPresent(Double.self, forKey: .teamVote)
+        self.isVoting = try container.decodeIfPresent(Bool.self, forKey: .isVoting)
+        self.smallPhotoOrAvatar = try container.decode(String.self, forKey: .smallPhotoOrAvatar)
+        self.modelOrName = try container.decodeIfPresent(String.self, forKey: .modelOrName)
+        self.chatTitle = try container.decodeIfPresent(String.self, forKey: .chatTitle)
+
+        self.payProgress = (try? container.decodeIfPresent(Double.self, forKey: .payProgress)) as? Double
+    }
+
 }

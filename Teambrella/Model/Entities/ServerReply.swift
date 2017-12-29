@@ -27,7 +27,8 @@ struct ServerReply {
     let paging: PagingInfo?
     let json: Any
     
-    var data: Data? { return try? JSONSerialization.data(withJSONObject: json, options: []) }
+    // swiftlint:disable:next force_try
+    var data: Data { return try! JSONSerialization.data(withJSONObject: json, options: []) }
     
     init(status: ServerStatus, paging: PagingInfo?, json: Any) {
         self.status = status

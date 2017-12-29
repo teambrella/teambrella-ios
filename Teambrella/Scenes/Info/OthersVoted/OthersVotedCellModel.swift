@@ -16,14 +16,18 @@
 
 import Foundation
 
-/**
-    Used in feed/getList reply to manage pagination with chunks
- */
-struct PagingInfo: Codable {
-    let lastIndex: UInt64
+struct OthersVotedCellModel {
+    let avatar: String
+    let name: String
+    let subtitle: String
+    let subtitleValue: String
+    let value: String
     
-    enum CodingKeys: String, CodingKey {
-        case lastIndex = "LastIndex"
+    init(voter: Voter) {
+        avatar = voter.avatar
+        name = voter.name
+        subtitle = "Info.OthersVoted.Cell.Weight".localized
+        subtitleValue = voter.weight.flatMap { String.formattedNumber($0) } ?? "?"
+        value = voter.vote.flatMap { String.formattedNumber($0) } ?? "?"
     }
-    
 }

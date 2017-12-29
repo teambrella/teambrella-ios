@@ -22,7 +22,7 @@
 import Foundation
 import SwiftyJSON
 
-class ExtendedTeammateEntity {
+class TeammateLarge {
     let id: String
     let teammateID: Int
     let ver: Int64
@@ -65,10 +65,9 @@ class ExtendedTeammateEntity {
         basic.isMyProxy = set
     }
     
-    func updateWithVote(json: JSON) {
-        voting = TeammateVotingInfo(json: json["VotingPart"])
-        topic.minutesSinceLastPost = json["DiscussionPart"]["SinceLastPostMinutes"].intValue
-        topic.unreadCount = json["DiscussionPart"]["UnreadCount"].intValue
+    func update(votingResult: TeammateVotingResult) {
+        topic.minutesSinceLastPost = votingResult.minutesSinceLast
+        topic.unreadCount = votingResult.unreadCount
     }
     
 }

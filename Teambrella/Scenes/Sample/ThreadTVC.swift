@@ -23,7 +23,7 @@ import SwiftSoup
 import UIKit
 
 class ThreadTVC: UITableViewController {
-    var teammate: TeammateEntity!
+    var teammate: TeammateListEntity!
     var messages: [Post] = []
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -33,9 +33,9 @@ class ThreadTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let posts = teammate.extended?.topic.posts {
-            self.messages = posts.reversed()
-        }
+//        if let posts = teammate.extended?.topic.posts {
+//            self.messages = posts.reversed()
+//        }
         title = teammate.name.short
     }
     

@@ -16,26 +16,14 @@
 
 import Foundation
 
-struct VotersList {
-    let me: Voter
-    let median: Voter
-    let voters: [Voter]
-}
-
-extension VotersList: Decodable {
-    enum VotersListKeys: String, CodingKey {
+struct VotersList: Decodable {
+    enum CodingKeys: String, CodingKey {
         case me = "Me"
         case median = "Median"
         case voters = "Voters"
     }
     
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: VotersListKeys.self)
-        
-        let me = try container.decode(Voter.self, forKey: .me)
-        let median = try container.decode(Voter.self, forKey: .median)
-        let voters = try container.decode([Voter].self, forKey: .voters)
-        
-        self.init(me: me, median: median, voters: voters)
-    }
+    let me: Voter
+    let median: Voter
+    let voters: [Voter]
 }
