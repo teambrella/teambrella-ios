@@ -123,6 +123,19 @@ enum SocketData {
                             name: json["UserName"].stringValue,
                             url: json["Avatar"].stringValue,
                             text: json["Content"].stringValue)
+        case .theyTyping:
+            /*
+             {"Cmd":13,
+             "Timestamp":636500607291514776,
+             "UserId":"9c4a1984-66f9-4f3c-8470-a7c3006c9400",
+             "TeamId":2021,
+             "TopicId":"21f43e0e-a599-4e5f-8f4f-a6d7ff0195c1",
+             "UserName":"Vlad Kravchuk"}
+             */
+            return .theyTyping(teamID: json["TeamId"].intValue,
+                               userID: json["UserId"].stringValue,
+                               topicID: json["TopicId"].stringValue,
+                               name: json["UserName"].stringValue)
         default:
             return nil
         }

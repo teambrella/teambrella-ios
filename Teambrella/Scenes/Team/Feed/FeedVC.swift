@@ -48,7 +48,12 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
             HUD.hide()
             self?.collectionView.refreshControl?.endRefreshing()
         }
-        dataSource.loadData()
+       // dataSource.loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        dataSource.loadFromTop()
     }
     
     override func viewDidAppear(_ animated: Bool) {
