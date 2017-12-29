@@ -16,18 +16,43 @@
 
 import UIKit
 
-class SwipeToVote: UIView {
+class SwipeToVote: UIView, XIBInitable {
 
     @IBOutlet var backView: UIView!
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet var label: HeaderLabel!
+    @IBOutlet var label: UILabel!
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    var contentView: UIView!
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        xibSetup()
+        setup()
     }
-    */
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        xibSetup()
+        setup()
+    }
+    
+    func setup() {
+        label.text = "Team.Vote.SwipeToVote".localized
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeView))
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(closeView))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(closeView))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        
+        backView.addGestureRecognizer(tap)
+        backView.addGestureRecognizer(swipeLeft)
+        backView.addGestureRecognizer(swipeRight)
+    }
+    
+    @objc
+    func closeView() {
+        self.isHidden = true
+    }
 
 }

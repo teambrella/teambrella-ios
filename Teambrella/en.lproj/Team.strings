@@ -198,3 +198,4 @@
 "Team.Chat.ObjectView.TitleLabel.team" = "TEAM VOTE";
 
 "Team.Vote.doNotAccept" = "Do not accept";
+"Team.Vote.SwipeToVote" = "Swipe left or right to scroll";
