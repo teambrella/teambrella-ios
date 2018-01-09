@@ -28,6 +28,8 @@ struct TeambrellaError: Error {
     enum TeambrellaErrorKind: Int {
         case unknownError               = -666
         case wrongReply                 = -665
+        case malformedEthereumAddress   = -664
+        case malformedDate              = -663
         case emptyReply                 = -1
         
         case fatalError                 = 1
@@ -80,6 +82,14 @@ struct TeambrellaErrorFactory {
     
     static func wrongReply() -> TeambrellaError {
         return TeambrellaError(kind: .wrongReply, description: "Wrong reply from server")
+    }
+    
+    static func malformedEthereumAddress() -> TeambrellaError {
+        return TeambrellaError(kind: .malformedEthereumAddress, description: "Not a valid Ethereum address")
+    }
+    
+    static func malformedDate(format: String) -> TeambrellaError {
+        return TeambrellaError(kind: .malformedDate, description: "Date string is in incorrect format: \(format)")
     }
     
     static func error(with status: ServerStatus?) -> TeambrellaError {

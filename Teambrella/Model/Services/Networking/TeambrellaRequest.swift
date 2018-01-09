@@ -73,12 +73,13 @@ struct TeambrellaRequest {
     private func parseReply(serverReply: ServerReply) {
         // temporary item for compatibility with legacy code
         let reply = JSON(serverReply.json)
+        let decoder = JSONDecoder()
         switch type {
         case .timestamp:
             success(.timestamp)
         case .teammatesList:
             do {
-                let list = try JSONDecoder().decode(TeammatesList.self, from: serverReply.data)
+                let list = try decoder.decode(TeammatesList.self, from: serverReply.data)
                 print("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)")
                 success(.teammatesList(list.teammates))
             } catch {
@@ -102,7 +103,7 @@ struct TeambrellaRequest {
             success(.newPost(ChatEntity(json: reply)))
         case .teammateVote:
             do {
-                let teamVotingResult = try JSONDecoder().decode(TeammateVotingResult.self, from: serverReply.data)
+                let teamVotingResult = try decoder.decode(TeammateVotingResult.self, from: serverReply.data)
                 success(.teammateVote(teamVotingResult))
             } catch {
                 failure?(error)
@@ -144,7 +145,7 @@ struct TeambrellaRequest {
                 return
             }
             do {
-                let feed = try JSONDecoder().decode([FeedEntity].self, from: serverReply.data)
+                let feed = try decoder.decode([FeedEntity].self, from: serverReply.data)
                 let chunk = FeedChunk(feed: feed, pagingInfo: pagingInfo)
                 success(.teamFeed(chunk))
             } catch {
@@ -182,10 +183,10 @@ struct TeambrellaRequest {
             success(.privateList(users))
         case .withdrawTransactions,
              .withdraw:
-            if let chunk = WithdrawChunk(json: reply) {
+            do {
+                let chunk = try decoder.decode(WithdrawChunk.self, from: serverReply.data)
                 success(.withdrawTransactions(chunk))
-            } else {
-                let error = TeambrellaErrorFactory.wrongReply()
+            } catch {
                 failure?(error)
             }
         case .mute:
