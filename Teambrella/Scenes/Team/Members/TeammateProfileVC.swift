@@ -382,7 +382,6 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 footer.label.text = "..."
             }
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

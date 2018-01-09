@@ -2667,7 +2667,6 @@
 			children = (
 				6D20CF9B1FDEF1FC0049BE9C /* BasicPart.swift */,
 				6DB309F81F1D2093007DFF40 /* ChatEntity.swift */,
-				6D6DA25D1EE1D1BB00307C73 /* ClaimEntity.swift */,
 				94B4C37B1F1E18AC00AED4CE /* CosignerEntity.swift */,
 				94B4C37C1F1E18AC00AED4CE /* CoverageEntity.swift */,
 				6D6DA2451EE167BD00307C73 /* CoveredObject.swift */,
@@ -2692,6 +2691,7 @@
 		6DDB5D911FF681FC0066A07F /* ServerModelsNew */ = {
 			isa = PBXGroup;
 			children = (
+				6D6DA25D1EE1D1BB00307C73 /* ClaimEntity.swift */,
 				6DCDEB6F1F17DC5900C6D38C /* FeedEntity.swift */,
 				6D30A4A91FD1648E003149DB /* PagingInfo.swift */,
 				6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */,

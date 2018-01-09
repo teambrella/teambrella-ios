@@ -116,8 +116,13 @@ struct TeambrellaRequest {
              .setLanguageEs:
             success(.setLanguage(reply.stringValue))
         case .claimsList:
-            let claims = ClaimFactory.claims(with: reply)
-            success(.claimsList(claims))
+            do {
+                let claims = try decoder.decode([ClaimEntity].self, from: serverReply.data)
+                success(.claimsList(claims))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .claim,
              .newClaim:
             success(.claim(EnhancedClaimEntity(json: reply)))
