@@ -21,9 +21,16 @@
 
 import Foundation
 
-struct TeamsModel {
+struct TeamsModel: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case teams = "MyTeams"
+        case invitations = "MyInvitations"
+        case lastTeamID = "LastSelectedTeam"
+        case userID = "UserId"
+    }
+    
     let teams: [TeamEntity]
-    let invitations: [TeamEntity]
+    let invitations: [InviteToTeamEntity]
     let lastTeamID: Int?
     let userID: String
 }

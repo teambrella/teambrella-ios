@@ -90,15 +90,13 @@ struct TeambrellaRequest {
             let teammate = TeammateLarge(json: reply)
             success(.teammate(teammate))
         case .teams, .demoTeams:
-            let teams = TeamEntity.teams(with: reply["MyTeams"])
-            let invitations = TeamEntity.teams(with: reply["MyInvitations"])
-            let lastSelectedTeam = reply["LastSelectedTeam"].int
-            let userID = reply["UserId"].stringValue
-            let teamsModel = TeamsModel(teams: teams,
-                                        invitations: invitations,
-                                        lastTeamID: lastSelectedTeam,
-                                        userID: userID)
-            success(.teams(teamsModel))
+            do {
+                let teamsModel = try decoder.decode(TeamsModel.self, from: serverReply.data)
+                success(.teams(teamsModel))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .newPost:
             success(.newPost(ChatEntity(json: reply)))
         case .teammateVote:
