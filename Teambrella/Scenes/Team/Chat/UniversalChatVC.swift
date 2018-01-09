@@ -191,7 +191,7 @@ final class UniversalChatVC: UIViewController, Routable {
         // Cancel current scrolling
         self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: false)
         
-        let lastIndexPath = IndexPath(row: dataSource.count - 1, section: 0)
+        //let lastIndexPath = IndexPath(row: dataSource.count - 1, section: 0)
         //        collectionView.scrollToItem(at: lastIndexPath, at: .bottom, animated: animated)
         //        return
         

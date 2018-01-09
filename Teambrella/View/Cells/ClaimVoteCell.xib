@@ -212,8 +212,8 @@
                                     <constraint firstAttribute="height" constant="125" id="7cV-Kv-yr1"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKR-rc-C51">
-                                <rect key="frame" x="148" y="151" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKR-rc-C51">
+                                <rect key="frame" x="16" y="52.5" width="145.5" height="125"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94U-NU-l4o">
                                 <rect key="frame" x="0.0" y="177.5" width="343" height="154.5"/>
