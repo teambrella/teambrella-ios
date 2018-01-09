@@ -20,55 +20,110 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct HomeScreenModel {
+struct HomeScreenModel: Decodable {
     
-    struct Card {
-        let json: JSON
-        let text: String
-        var itemType: ItemType { return ItemType(rawValue: json["ItemType"].intValue) ?? .teammate }
-        var itemID: Int { return json["ItemId"].intValue }
-        var itemDate: Date? { return json["ItemDate"].stringValue.dateFromTeambrella }
-        var smallPhoto: String { return json["SmallPhotoOrAvatar"].stringValue }
-        var amount: Double { return json["Amount"].doubleValue }
-        var teamVote: Double? { return json["TeamVote"].double }
-        var isVoting: Bool { return json["IsVoting"].boolValue }
-        //var text: String { return json["Text"].stringValue }
-        var unreadCount: Int { return json["UnreadCount"].intValue }
-        var isMine: Bool { return json["IsMine"].boolValue }
-        var chatTitle: String? { return json["ChatTitle"].string }
-        var payProgress: Double { return json["PayProgress"].doubleValue }
-        var name: String { return json["ModelOrName"].stringValue }
-        var userID: String { return json["ItemUserId"].stringValue }
-        var topicID: String { return json["TopicId"].stringValue }
-        
-        init(json: JSON) {
-            self.json = json
-            self.text = TextAdapter().parsedHTML(string: json["Text"].stringValue)
+    struct Card: Decodable {
+        // swiftlint:disable:next nesting
+        enum CodingKeys: String, CodingKey {
+            case text        = "Text"
+            case itemType    = "ItemType"
+            case itemID      = "ItemId"
+            case itemDate    = "ItemDate"
+            case smallPhoto  = "SmallPhotoOrAvatar"
+            case amount      = "Amount"
+            case teamVote    = "TeamVote"
+            case isVoting    = "IsVoting"
+            case unreadCount = "UnreadCount"
+            case chatTitle   = "ChatTitle"
+            case payProgress = "PayProgress"
+            case name        = "ModelOrName"
+            case userID      = "ItemUserId"
+            case topicID     = "TopicId"
         }
+        
+        let text: String
+        let itemType: ItemType
+        let itemID: Int
+        let itemDate: Date
+        let smallPhoto: String
+        let amount: Double
+        let teamVote: Double?
+        let isVoting: Bool
+        let unreadCount: Int
+        let chatTitle: String?
+        let payProgress: Double
+        let name: String
+        let userID: String
+        let topicID: String
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            
+            let text = try container.decode(String.self, forKey: .text)
+            self.text = TextAdapter().parsedHTML(string: text)
+            self.itemType = try container.decode(ItemType.self, forKey: .itemType)
+            self.itemID = try container.decode(Int.self, forKey: .itemID)
+            let dateString = try container.decode(String.self, forKey: .itemDate)
+            guard let date = Formatter.teambrella.date(from: dateString) else {
+                throw TeambrellaErrorFactory.malformedDate(format: dateString)
+            }
+            
+            self.itemDate = date
+            self.smallPhoto = try container.decode(String.self, forKey: .smallPhoto)
+            self.amount = try container.decode(Double.self, forKey: .amount)
+            self.teamVote = try container.decodeIfPresent(Double.self, forKey: .teamVote)
+            self.isVoting = try container.decode(Bool.self, forKey: .isVoting)
+            self.unreadCount = try container.decode(Int.self, forKey: .unreadCount)
+            self.chatTitle = try container.decodeIfPresent(String.self, forKey: .chatTitle)
+            self.payProgress = try container.decode(Double.self, forKey: .payProgress)
+            self.name = try container.decode(String.self, forKey: .name)
+            self.userID = try container.decode(String.self, forKey: .userID)
+            self.topicID = try container.decode(String.self, forKey: .topicID)
+        }
+    
     }
     
-    let json: JSON
+    struct TeamPart: Decodable {
+        // swiftlint:disable:next nesting
+        enum CodingKeys: String, CodingKey {
+            case currency = "Currency"
+            case coverageType = "CoverageType"
+            case teamAccessLevel = "TeamAccessLevel"
+        }
+        
+        let currency: String
+        let coverageType: CoverageType
+        let teamAccessLevel: Int
+        
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case cards            = "Cards"
+        case userID           = "UserId"
+        case facebookID       = "FBName"
+        case name             = "Name"
+        case avatar           = "Avatar"
+        case unreadCount      = "UnreadCount"
+        case balance          = "CryptoBalance"
+        case coverage         = "Coverage"
+        case objectName       = "ObjectName"
+        case smallPhoto       = "SmallPhoto"
+        case haveVotingClaims = "HaveVotingClaims"
+        case teamPart         = "TeamPart"
+    }
+
     var cards: [Card]
-    var teamPart: JSON { return json["TeamPart"] }
+    let teamPart: TeamPart
+    let userID: String
+    let facebookID: UInt64?
+    let name: Name
+    let avatar: String
+    let unreadCount: Int
+    let balance: Double
+    let coverage: Double
+    let objectName: String
+    let smallPhoto: String
+    let haveVotingClaims: Bool
     
-    var userID: String { return json["UserId"].stringValue }
-    var facebookID: String { return json["FBName"].stringValue }
-    var name: Name { return Name(fullName: json["Name"].stringValue) }
-    var avatar: String { return json["Avatar"].stringValue }
-    var unreadCount: Int { return json["UnreadCount"].intValue }
-    var balance: Double { return json["CryptoBalance"].doubleValue }
-    var coverage: Double { return json["Coverage"].doubleValue }
-    var objectName: String { return json["ObjectName"].stringValue }
-    var smallPhoto: String { return json["SmallPhoto"].stringValue }
-    var haveVotingClaims: Bool { return json["HaveVotingClaims"].boolValue }
-    var currency: String { return teamPart["Currency"].stringValue }
-    var coverageType: CoverageType { return CoverageType(rawValue: teamPart["CoverageType"].intValue) ?? .other }
-    var teamAccessLevel: Int { return teamPart["TeamAccessLevel"].intValue }
-    
-    init(json: JSON) {
-        self.json = json
-        cards = json["Cards"].arrayValue.flatMap { Card(json: $0) }
-    }
 }

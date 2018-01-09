@@ -61,9 +61,9 @@ class ServerDAO: DAO {
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
             let request = TeambrellaRequest(type: .home, body: body, success: { response in
-                if case let .home(json) = response {
-                    PlistStorage().store(json: json, for: .home, id: String(teamID))
-                    let model = HomeScreenModel(json: json)
+                if case let .home(model) = response {
+                    //PlistStorage().store(json: json, for: .home, id: String(teamID))
+                    //let model = HomeScreenModel(json: json)
                     promise.resolve(with: model)
                 } else {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,
@@ -72,11 +72,11 @@ class ServerDAO: DAO {
             })
             request.start()
         }
-        if let storedJSON = PlistStorage().retreiveJSON(for: .home, id: String(teamID)) {
-            defer {
-                promise.temporaryResolve(with: HomeScreenModel(json: storedJSON))
-            }
-        }
+//        if let storedJSON = PlistStorage().retreiveJSON(for: .home, id: String(teamID)) {
+//            defer {
+//                promise.temporaryResolve(with: HomeScreenModel(json: storedJSON))
+//            }
+//        }
         return promise
     }
     

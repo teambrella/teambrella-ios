@@ -41,7 +41,7 @@ struct HomeCellBuilder {
         
         switch cell {
         case let cell as HomeCollectionCell:
-             populateHome(cell: cell, model: model)
+            populateHome(cell: cell, model: model)
         case let cell as HomeApplicationDeniedCell:
             populate(cell: cell, with: model)
         case let cell as HomeApplicationAcceptedCell:
@@ -59,7 +59,8 @@ struct HomeCellBuilder {
             cell.avatarView.showImage(string: model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
             cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
-            cell.titleLabel.text = model.isMine
+            let isMine = model.userID == service.myUserID
+            cell.titleLabel.text = isMine
                 ? "Team.Home.Card.yourClaim".localized
                 : "Team.Home.Card.claim".localized
             let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
@@ -89,9 +90,7 @@ struct HomeCellBuilder {
         }
         cell.rightNumberView.isBadgeVisible = model.isVoting
         
-        if let date = model.itemDate {
-            cell.subtitleLabel.text = DateProcessor().stringInterval(from: date)
-        }
+        cell.subtitleLabel.text = DateProcessor().stringInterval(from: model.itemDate)
     }
     
     static func populateSupport(cell: UICollectionViewCell, dataSource: HomeDataSource) {

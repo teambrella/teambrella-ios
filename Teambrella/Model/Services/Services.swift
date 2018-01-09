@@ -76,6 +76,8 @@ class ServicesHandler {
     /// gives the name code of the currency used in the current team (e.g. USD)
     var currencyName: String { return session?.currentTeam?.currency ?? "" }
     
+    var myUserID: String { return session?.currentUserID ?? "" }
+    
     private init() {
         PKHUD.sharedHUD.gracePeriod = 0.5
     }

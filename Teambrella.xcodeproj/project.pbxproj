@@ -2671,7 +2671,6 @@
 				94B4C37C1F1E18AC00AED4CE /* CoverageEntity.swift */,
 				6D6DA2451EE167BD00307C73 /* CoveredObject.swift */,
 				6DB8121A1EE6F1B800B202CE /* EnhancedClaimEntity.swift */,
-				6DA8D5561F0E756B000A4DB7 /* HomeScreenModel.swift */,
 				6DEC6DF41E96673600ACC119 /* PostEntity.swift */,
 				6D1A9B241F55CF92004192AC /* PrivateChatUser.swift */,
 				6D481F781F0BAA600023C781 /* RiskScaleEntity.swift */,
@@ -2693,6 +2692,7 @@
 			children = (
 				6D6DA25D1EE1D1BB00307C73 /* ClaimEntity.swift */,
 				6DCDEB6F1F17DC5900C6D38C /* FeedEntity.swift */,
+				6DA8D5561F0E756B000A4DB7 /* HomeScreenModel.swift */,
 				6D30A4A91FD1648E003149DB /* PagingInfo.swift */,
 				6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */,
 				6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */,

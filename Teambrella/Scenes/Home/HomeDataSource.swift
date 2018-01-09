@@ -33,7 +33,7 @@ class HomeDataSource {
     
     var onUpdate: (() -> Void)?
     
-    var currency: String { return model?.currency ?? "?" }
+    var currency: String { return model?.teamPart.currency ?? "?" }
     var name: String { return model?.name.first ?? "" }
     
     func loadData(teamID: Int) {
