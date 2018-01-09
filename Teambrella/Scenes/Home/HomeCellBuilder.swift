@@ -33,7 +33,7 @@ struct HomeCellBuilder {
                                 forCellWithReuseIdentifier: HomeApplicationStatusCell.cellID)
     }
     
-    static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeScreenModel.Card?) {
+    static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeCardModel?) {
         guard let model = model else {
             populateSupport(cell: cell, dataSource: dataSource)
             return
@@ -53,7 +53,7 @@ struct HomeCellBuilder {
         }
     }
     
-    static func populateHome(cell: HomeCollectionCell, model: HomeScreenModel.Card) {
+    static func populateHome(cell: HomeCollectionCell, model: HomeCardModel) {
         switch model.itemType {
         case .claim:
             cell.avatarView.showImage(string: model.smallPhoto)
@@ -103,20 +103,20 @@ struct HomeCellBuilder {
         cell.onlineIndicator.layer.cornerRadius = 3
     }
     
-    static func populate(cell: HomeApplicationDeniedCell, with model: HomeScreenModel.Card) {
+    static func populate(cell: HomeApplicationDeniedCell, with model: HomeCardModel) {
         cell.avatar.image = #imageLiteral(resourceName: "teammateF") //
         cell.headerLabel.text = "Home.ApplicationDeniedCell.headerLabel".localized
         cell.centerLabel.text = "Home.ApplicationDeniedCell.centerLabel".localized
         cell.button.setTitle("Home.ApplicationDeniedCell.viewAppButton".localized, for: .normal)
     }
     
-    static func populate(cell: HomeApplicationAcceptedCell, with model: HomeScreenModel.Card) {
+    static func populate(cell: HomeApplicationAcceptedCell, with model: HomeCardModel) {
         cell.avatar.image = #imageLiteral(resourceName: "teammateF") //
         cell.headerLabel.text = "Home.ApplicationAcceptedCell.headerLabel".localized
         cell.centerLabel.text = "Home.ApplicationAcceptedCell.centerLabel".localized
         cell.button.setTitle("Home.ApplicationAcceptedCell.learnAboutCoverageButton".localized, for: .normal)
     }
-    static func populate(cell: HomeApplicationStatusCell, with model: HomeScreenModel.Card) {
+    static func populate(cell: HomeApplicationStatusCell, with model: HomeCardModel) {
         cell.avatar.image = #imageLiteral(resourceName: "teammateF") //
         cell.headerLabel.text = "Home.ApplicationStatusCell.headerLabel".localized("Yummigum", "6 DAYS") //
         cell.titleLabel.text = "Home.ApplicationStatusCell.titleLabel".localized

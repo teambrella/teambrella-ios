@@ -160,7 +160,7 @@ struct TeambrellaRequest {
             success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
         case .home:
             do {
-                let model = try decoder.decode(HomeScreenModel.self, from: serverReply.data)
+                let model = try decoder.decode(HomeModel.self, from: serverReply.data)
                 success(.home(model))
             } catch {
                 log(error)
@@ -168,12 +168,11 @@ struct TeambrellaRequest {
             }
         case .feedDeleteCard:
             do {
-                let model = try decoder.decode(HomeScreenModel.self, from: serverReply.data)
+                let model = try decoder.decode(HomeModel.self, from: serverReply.data)
                 success(.feedDeleteCard(model))
             } catch {
                 failure?(error)
             }
-            //success(.feedDeleteCard(HomeScreenModel(json: reply)))
         case .wallet:
             success(.wallet(WalletEntity(json: reply)))
         case .walletTransactions:

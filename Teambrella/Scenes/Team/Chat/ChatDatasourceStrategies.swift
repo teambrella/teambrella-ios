@@ -189,9 +189,9 @@ class HomeChatStrategy: ChatDatasourceStrategy {
     var canLoadBackward: Bool = true
     // var isRateVisible: Bool = true
     
-    var card: HomeScreenModel.Card
+    var card: HomeCardModel
     
-    init(context: HomeScreenModel.Card) {
+    init(context: HomeCardModel) {
         card = context
     }
     

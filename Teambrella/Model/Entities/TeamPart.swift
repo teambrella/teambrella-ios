@@ -18,18 +18,24 @@ import Foundation
 import SwiftyJSON
 
 protocol TeamPart {
-    var coverage: CoverageType? { get }
+    var coverage: CoverageType { get }
     var currency: String { get }
     var accessLevel: TeamAccessLevel { get }
 }
 
-struct TeamPartConcrete: TeamPart {
-    let coverage: CoverageType?
+struct TeamPartConcrete: TeamPart, Decodable {
+    enum CodingKeys: String, CodingKey {
+        case currency = "Currency"
+        case coverage = "CoverageType"
+        case accessLevel = "TeamAccessLevel"
+    }
+    
+    let coverage: CoverageType
     let currency: String
     let accessLevel: TeamAccessLevel
     
     init(json: JSON) {
-        coverage = json["CoverageType"].int.flatMap { CoverageType(rawValue: $0) }
+        coverage = json["CoverageType"].int.flatMap { CoverageType(rawValue: $0) } ?? .other
         currency = json["Currency"].stringValue
         accessLevel = TeamAccessLevel(rawValue: json["TeamAccessLevel"].intValue) ?? .noAccess
     }
