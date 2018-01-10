@@ -51,3 +51,10 @@ target 'notification' do
   bitcoin_pods
 
 end
+
+target 'NotificationTeambrella' do
+  inhibit_all_warnings!
+
+  bitcoin_pods
+  
+end
