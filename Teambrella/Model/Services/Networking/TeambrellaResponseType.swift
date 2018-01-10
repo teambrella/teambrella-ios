@@ -45,7 +45,7 @@ enum TeambrellaResponseType {
     case myProxies([ProxyCellModel])
     case proxyFor(ProxyForEntity)
     case proxyPosition
-    case proxyRatingList([UserIndexCellModel], Int)
+    case proxyRatingList(ProxyRatingEntity)
     
     case privateList([PrivateChatUser])
     case privateChat([ChatEntity])
