@@ -20,32 +20,30 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct ProxyCellModel {
+struct ProxyCellModel: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case isMyTeammate = "IsMyTeammate"
+        case userID = "UserId"
+        case avatarString = "Avatar"
+        case name = "Name"
+        case address = "Location"
+        case proxyRank = "ProxyRank"
+        case decisionsCoeff = "DecisionFreq"
+        case discussionCoeff = "DiscussionFreq"
+        case frequencyCoeff = "VotingFreq"
+    }
+    
     let isMyTeammate: Bool
     let userID: String
     let avatarString: String
-    let number: Int
     let name: String
     let address: String
-    let time: Date? // ?
     let proxyRank: Double?
     let decisionsCoeff: Double?
     let discussionCoeff: Double?
     let frequencyCoeff: Double? // voting freq
-
-    init(json: JSON) {
-        isMyTeammate = json["IsMyTeammate"].boolValue
-        userID = json["UserId"].stringValue
-        avatarString = json["Avatar"].stringValue
-        number = 0
-        name = json["Name"].stringValue
-        address = json["Location"].stringValue
-        proxyRank = json["ProxyRank"].double
-        decisionsCoeff = json["DecisionFreq"].double
-        discussionCoeff = json["DiscussionFreq"].double
-        frequencyCoeff = json["VotingFreq"].double
-        time = nil
-    }
+    //    let number: Int
+    //    let time: Date?
+    
 }
