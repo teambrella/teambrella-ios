@@ -190,7 +190,7 @@ struct TeambrellaRequest {
                 log(error)
                 failure?(error)
             }
-о        case .proxyFor:
+        case .proxyFor:
             do {
                 let proxyForEntity = try decoder.decode(ProxyForEntity.self, from: serverReply.data)
                 success(.proxyFor(proxyForEntity))
