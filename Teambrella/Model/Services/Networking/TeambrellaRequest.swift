@@ -92,6 +92,7 @@ struct TeambrellaRequest {
         case .teams, .demoTeams:
             do {
                 let teamsModel = try decoder.decode(TeamsModel.self, from: serverReply.data)
+                print(teamsModel)
                 success(.teams(teamsModel))
             } catch {
                 log(error)

@@ -27,11 +27,28 @@ protocol TeamCellModel {
 
 struct ChooseYourTeamCellModel: TeamCellModel {
     var teamIcon: String
-    var incomingCount: Int
+    var incomingCount: String
     var teamName: String
     var itemName: String
-    var coverage: Int
+    var coverage: String
     var teamID: Int
+    
+    init(team: TeamEntity) {
+        teamIcon = team.teamLogo
+        if let unreadCount = team.unreadCount, unreadCount > 0 {
+            incomingCount = "\(unreadCount)"
+        } else {
+            incomingCount = ""
+        }
+        teamName = team.teamName
+        itemName = team.objectName ?? ""
+        if let coverage = team.teamCoverage {
+            self.coverage = String.formattedNumber(coverage * 100) + "%"
+        } else {
+            self.coverage = "0%"
+        }
+        teamID = team.teamID
+    }
 }
 
 struct SwitchUserTeamCellModel: TeamCellModel {

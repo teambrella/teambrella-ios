@@ -21,7 +21,7 @@
 
 import Foundation
 
-struct TeamsModel: Decodable {
+struct TeamsModel: Decodable, CustomStringConvertible {
     enum CodingKeys: String, CodingKey {
         case teams = "MyTeams"
         case invitations = "MyInvitations"
@@ -33,6 +33,14 @@ struct TeamsModel: Decodable {
     let invitations: [InviteToTeamEntity]
     let lastTeamID: Int?
     let userID: String
+    
+    var description: String {
+        return """
+        TeamsModel: teams \(teams.count), invitations: \(invitations.count), \
+        lastID: \(String(describing: lastTeamID)), userID: \(userID)
+        """
+    }
+    
 }
 
 protocol ReportModel {
