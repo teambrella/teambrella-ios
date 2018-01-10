@@ -44,7 +44,7 @@ struct HomeCardModel: Decodable {
     let isVoting: Bool
     let unreadCount: Int
     let chatTitle: String?
-    let payProgress: Double
+    let payProgress: Double?
     let name: String
     let userID: String
     let topicID: String
@@ -68,7 +68,8 @@ struct HomeCardModel: Decodable {
         self.isVoting = try container.decode(Bool.self, forKey: .isVoting)
         self.unreadCount = try container.decode(Int.self, forKey: .unreadCount)
         self.chatTitle = try container.decodeIfPresent(String.self, forKey: .chatTitle)
-        self.payProgress = try container.decode(Double.self, forKey: .payProgress)
+        // server sends NaN from time to time here
+        self.payProgress = try? container.decode(Double.self, forKey: .payProgress)
         self.name = try container.decode(String.self, forKey: .name)
         self.userID = try container.decode(String.self, forKey: .userID)
         self.topicID = try container.decode(String.self, forKey: .topicID)
