@@ -59,13 +59,13 @@ class ProxyForDataSource {
             let request = TeambrellaRequest(type: .proxyFor, body: body, success: { [weak self] response in
                 guard let `self` = self else { return }
                 
-                if case .proxyFor(let proxies, let commission) = response {
+                if case .proxyFor(let proxyForEntity) = response {
                     if self.isSilentUpdate {
                         self.items.removeAll()
                         self.isSilentUpdate = false
                     }
-                    self.items += proxies
-                    self.commission = commission
+                    self.items += proxyForEntity.members
+                    self.commission = proxyForEntity.totalCommission
                     self.onUpdate?()
                 }
                 }, failure: { [weak self] error in

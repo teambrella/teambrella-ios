@@ -1,10 +1,5 @@
 //
-//  ProxyForCellModel.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 22.06.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,19 +16,13 @@
 
 import Foundation
 
-struct ProxyForCellModel: Decodable {
+struct ProxyForEntity: Decodable {
     enum CodingKeys: String, CodingKey {
-        case userID = "UserId"
-        case avatarString = "Avatar"
-        case name = "Name"
-        case lastVoted = "LastVoted"
-        case amount = "Commission"
+        case members = "Members"
+        case totalCommission = "TotalCommission"
     }
     
-    let userID: String
-    let avatarString: String
-    let name: String
-    let lastVoted: Date?
-    let amount: Double // commission
-
+    let members: [ProxyForCellModel]
+    let totalCommission: Double
+    
 }

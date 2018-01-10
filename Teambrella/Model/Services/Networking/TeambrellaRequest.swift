@@ -191,8 +191,13 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .proxyFor:
-            let models = reply["Members"].arrayValue.map { ProxyForCellModel(json: $0) }
-            success(.proxyFor(models, reply["TotalCommission"].doubleValue))
+            do {
+                let proxyForEntity = try decoder.decode(ProxyForEntity.self, from: serverReply.data)
+                success(.proxyFor(proxyForEntity))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .proxyPosition:
             success(.proxyPosition)
         case .proxyRatingList:

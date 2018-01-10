@@ -43,7 +43,7 @@ enum TeambrellaResponseType {
     case uploadPhoto(String)
     case myProxy(Bool)
     case myProxies([ProxyCellModel])
-    case proxyFor([ProxyForCellModel], Double)
+    case proxyFor(ProxyForEntity)
     case proxyPosition
     case proxyRatingList([UserIndexCellModel], Int)
     
