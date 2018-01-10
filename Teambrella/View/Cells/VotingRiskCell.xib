@@ -61,7 +61,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H5F-fa-toM">
-                                        <rect key="frame" x="8" y="31" width="74.5" height="30.5"/>
+                                        <rect key="frame" x="8" y="31.5" width="74.5" height="29.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -103,7 +103,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="esR-N0-PHe">
-                                        <rect key="frame" x="334" y="31" width="74.5" height="30.5"/>
+                                        <rect key="frame" x="334" y="31.5" width="74.5" height="29.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -140,7 +140,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufs-Z7-MdQ">
-                                        <rect key="frame" x="334" y="67.5" width="70" height="29"/>
+                                        <rect key="frame" x="334" y="67.5" width="68" height="29"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                         <state key="normal" title="Reset Vote">
                                             <color key="titleColor" red="0.2784313725" green="0.34509803919999998" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -337,14 +337,14 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XY2-Tj-qf7">
-                                <rect key="frame" x="588" y="699" width="47" height="31"/>
+                                <rect key="frame" x="589" y="700" width="46" height="30"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                 <state key="normal" title="Others">
                                     <color key="titleColor" red="0.17254901960784313" green="0.22352941176470587" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="VDN-tt-rep">
-                                <rect key="frame" x="643" y="709" width="8" height="13"/>
+                                <rect key="frame" x="643" y="709.5" width="8" height="13"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sY-CF-eqa" customClass="SwipeToVote" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="16" y="572" width="635" height="120"/>
@@ -421,6 +421,7 @@
                 <outlet property="rightAvatar" destination="Ya1-jf-rNB" id="3Pf-Uy-NTH"/>
                 <outlet property="rightAvatarLabel" destination="ShF-od-eYS" id="Hmj-A7-cLq"/>
                 <outlet property="slashView" destination="25q-2v-Cur" id="HCE-C0-8xh"/>
+                <outlet property="swipeToVoteView" destination="2sY-CF-eqa" id="3ph-5b-8Am"/>
                 <outlet property="teamVoteBadgeLabel" destination="557-Va-QA6" id="DpY-x0-22E"/>
                 <outlet property="teamVoteHeaderLabel" destination="Nx1-Yq-BkA" id="st5-nI-Ezv"/>
                 <outlet property="teamVoteNotAccept" destination="H5F-fa-toM" id="V3j-dD-wVE"/>

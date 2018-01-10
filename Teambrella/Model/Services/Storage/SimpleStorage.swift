@@ -45,9 +45,9 @@ class SimpleStorage {
         return string(forKey: forKey).flatMap { Int($0) }
     }
     
-    func bool(forKey: StorageKey) -> Bool? {
-        return string(forKey: forKey).flatMap { Bool($0) }
-    }
+//    func bool(forKey: StorageKey) -> Bool? {
+//        return string(forKey: forKey).flatMap { Bool($0) }
+//    }
     
     func cleanValue(forKey: StorageKey) {
         UserDefaults.standard.setNilValueForKey(forKey.rawValue)

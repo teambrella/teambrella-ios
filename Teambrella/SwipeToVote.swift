@@ -23,18 +23,8 @@ class SwipeToVote: UIView, XIBInitable {
     @IBOutlet var label: UILabel!
     
     var contentView: UIView!
-
-    var viewWasShown: Bool {
-        get {
-            if SimpleStorage().string(forKey: .swipeHelperWasShown) != nil {
-                return true
-            }
-            return false
-        }
-        set {
-            SimpleStorage().store(bool: true, forKey: .swipeHelperWasShown)
-        }
-    }
+    
+    var onInteraction: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,7 +39,7 @@ class SwipeToVote: UIView, XIBInitable {
     }
     
     func setup() {
-        self.isHidden = viewWasShown
+        self.isHidden = SimpleStorage().string(forKey: .swipeHelperWasShown) != nil
         
         label.text = "Team.Vote.SwipeToVote".localized
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeView))
@@ -66,8 +56,7 @@ class SwipeToVote: UIView, XIBInitable {
     
     @objc
     func closeView() {
-        self.isHidden = true
-        viewWasShown = true
+        self.onInteraction?()
     }
 
 }
