@@ -127,8 +127,19 @@ struct TeammateCellBuilder {
         cell.layoutIfNeeded()
         cell.middleAvatar.showAvatar(string: teammate.basic.avatar)
         
+        
+        if SimpleStorage().string(forKey: .swipeHelperWasShown) != nil {
+            cell.swipeToVoteView.isHidden = true
+        } else {
+            cell.swipeToVoteView.isHidden = false
+            cell.swipeToVoteView.onInteraction = {
+                cell.swipeToVoteView.removeFromSuperview()
+                SimpleStorage().store(bool: true, forKey: .swipeHelperWasShown)
+            }
+        }
+        
         if let voting = teammate.voting {
-          setVote(votingCell: cell, voting: voting, controller: controller)
+            setVote(votingCell: cell, voting: voting, controller: controller)
         }
         cell.delegate = controller
     }

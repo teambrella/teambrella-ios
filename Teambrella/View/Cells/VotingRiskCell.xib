@@ -61,7 +61,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H5F-fa-toM">
-                                        <rect key="frame" x="8" y="31" width="74.5" height="30.5"/>
+                                        <rect key="frame" x="8" y="31.5" width="74.5" height="29.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -103,7 +103,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="esR-N0-PHe">
-                                        <rect key="frame" x="334" y="31" width="74.5" height="30.5"/>
+                                        <rect key="frame" x="334" y="31.5" width="74.5" height="29.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -140,7 +140,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufs-Z7-MdQ">
-                                        <rect key="frame" x="334" y="67.5" width="70" height="29"/>
+                                        <rect key="frame" x="334" y="67.5" width="68" height="29"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                         <state key="normal" title="Reset Vote">
                                             <color key="titleColor" red="0.2784313725" green="0.34509803919999998" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -233,9 +233,6 @@
                                     <constraint firstAttribute="width" constant="50" id="pSb-dK-AVn"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="VDN-tt-rep">
-                                <rect key="frame" x="643" y="709" width="8" height="13"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zPb-mX-NaQ" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="320" y="687" width="26" height="26"/>
                                 <constraints>
@@ -243,7 +240,7 @@
                                     <constraint firstAttribute="width" secondItem="zPb-mX-NaQ" secondAttribute="height" multiplier="1:1" id="Jvu-IN-xL4"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sW-oF-gn5" customClass="Label" customModule="Surilla" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sW-oF-gn5" customClass="Label" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="318" y="710" width="30" height="16"/>
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -340,12 +337,23 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XY2-Tj-qf7">
-                                <rect key="frame" x="588" y="699" width="47" height="31"/>
+                                <rect key="frame" x="589" y="700" width="46" height="30"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                 <state key="normal" title="Others">
                                     <color key="titleColor" red="0.17254901960784313" green="0.22352941176470587" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="VDN-tt-rep">
+                                <rect key="frame" x="643" y="709.5" width="8" height="13"/>
+                            </imageView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sY-CF-eqa" customClass="SwipeToVote" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="16" y="572" width="635" height="120"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -353,7 +361,9 @@
                             <constraint firstItem="GEo-Lf-sqz" firstAttribute="centerY" secondItem="73P-Jh-cgD" secondAttribute="centerY" id="1j7-OY-23E"/>
                             <constraint firstItem="Ya1-jf-rNB" firstAttribute="top" secondItem="FcP-VF-oBu" secondAttribute="top" id="8gD-VM-uo6"/>
                             <constraint firstItem="25q-2v-Cur" firstAttribute="top" secondItem="73P-Jh-cgD" secondAttribute="bottom" constant="16" id="8oW-sH-CqU"/>
+                            <constraint firstItem="2sY-CF-eqa" firstAttribute="leading" secondItem="aiG-hq-p1u" secondAttribute="leading" id="ACZ-Dc-I50"/>
                             <constraint firstItem="aiG-hq-p1u" firstAttribute="bottom" secondItem="FcP-VF-oBu" secondAttribute="top" constant="-4" id="CKR-iJ-0nc"/>
+                            <constraint firstItem="2sY-CF-eqa" firstAttribute="bottom" secondItem="aiG-hq-p1u" secondAttribute="bottom" id="Dst-Sy-PKx"/>
                             <constraint firstItem="aiG-hq-p1u" firstAttribute="leading" secondItem="XcV-fX-2kO" secondAttribute="leading" constant="16" id="FOK-7L-JEt"/>
                             <constraint firstAttribute="trailing" secondItem="25q-2v-Cur" secondAttribute="trailing" constant="16" id="Lc0-yX-5nP"/>
                             <constraint firstItem="XSt-gb-Ihh" firstAttribute="centerX" secondItem="FcP-VF-oBu" secondAttribute="centerX" id="M4B-lJ-9bj"/>
@@ -371,6 +381,7 @@
                             <constraint firstAttribute="bottom" secondItem="aiG-hq-p1u" secondAttribute="bottom" constant="54" id="bhP-dS-owu"/>
                             <constraint firstItem="GEo-Lf-sqz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1fO-Rr-g6b" secondAttribute="trailing" constant="8" id="d5P-cW-nFE"/>
                             <constraint firstItem="73P-Jh-cgD" firstAttribute="leading" secondItem="XcV-fX-2kO" secondAttribute="leading" constant="16" id="eW1-jK-rOq"/>
+                            <constraint firstItem="2sY-CF-eqa" firstAttribute="trailing" secondItem="aiG-hq-p1u" secondAttribute="trailing" id="i26-nd-W6h"/>
                             <constraint firstItem="25q-2v-Cur" firstAttribute="leading" secondItem="XcV-fX-2kO" secondAttribute="leading" constant="16" id="i7E-Z2-4cL"/>
                             <constraint firstItem="73P-Jh-cgD" firstAttribute="baseline" secondItem="4uw-BF-uDk" secondAttribute="baseline" id="jBu-v2-oMY"/>
                             <constraint firstItem="VDN-tt-rep" firstAttribute="trailing" secondItem="aiG-hq-p1u" secondAttribute="trailing" id="kSE-86-gbm"/>
@@ -380,6 +391,7 @@
                             <constraint firstItem="1fO-Rr-g6b" firstAttribute="leading" secondItem="4uw-BF-uDk" secondAttribute="trailing" constant="8" id="rMK-cF-vef"/>
                             <constraint firstAttribute="trailing" secondItem="GEo-Lf-sqz" secondAttribute="trailing" constant="16" id="sZf-mJ-Mqg"/>
                             <constraint firstItem="aiG-hq-p1u" firstAttribute="bottom" secondItem="zPb-mX-NaQ" secondAttribute="top" constant="5" id="uA1-SA-oTA"/>
+                            <constraint firstItem="2sY-CF-eqa" firstAttribute="top" secondItem="aiG-hq-p1u" secondAttribute="top" id="vvh-LP-WfQ"/>
                             <constraint firstItem="VDN-tt-rep" firstAttribute="centerY" secondItem="XY2-Tj-qf7" secondAttribute="centerY" constant="1" id="xBS-Dp-cqZ"/>
                             <constraint firstItem="4uw-BF-uDk" firstAttribute="leading" secondItem="73P-Jh-cgD" secondAttribute="trailing" constant="10" id="xd6-6P-LKm"/>
                         </constraints>
@@ -409,6 +421,7 @@
                 <outlet property="rightAvatar" destination="Ya1-jf-rNB" id="3Pf-Uy-NTH"/>
                 <outlet property="rightAvatarLabel" destination="ShF-od-eYS" id="Hmj-A7-cLq"/>
                 <outlet property="slashView" destination="25q-2v-Cur" id="HCE-C0-8xh"/>
+                <outlet property="swipeToVoteView" destination="2sY-CF-eqa" id="3ph-5b-8Am"/>
                 <outlet property="teamVoteBadgeLabel" destination="557-Va-QA6" id="DpY-x0-22E"/>
                 <outlet property="teamVoteHeaderLabel" destination="Nx1-Yq-BkA" id="st5-nI-Ezv"/>
                 <outlet property="teamVoteNotAccept" destination="H5F-fa-toM" id="V3j-dD-wVE"/>

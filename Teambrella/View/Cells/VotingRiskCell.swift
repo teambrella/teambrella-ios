@@ -51,6 +51,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var proxyNameLabel: InfoLabel!
     
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var swipeToVoteView: SwipeToVote!
     
     @IBOutlet var leftAvatar: RoundImageView!
     @IBOutlet var leftAvatarLabel: UILabel!

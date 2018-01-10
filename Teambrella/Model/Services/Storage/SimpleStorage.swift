@@ -21,10 +21,15 @@ class SimpleStorage {
         case teamID = "teambrella.currentTeam.id"
         case recentScene = "storage.recentScene"
         case uniqueIdentifier = "com.teambrella.application.uniqueIdentifier"
+        case swipeHelperWasShown = "com.teambrella.swipeHelperWasShown"
     }
     
     func store(int: Int, forKey: StorageKey) {
         store(string: "\(int)", forKey: forKey)
+    }
+    
+    func store(bool: Bool, forKey: StorageKey) {
+        store(string: "\(bool)", forKey: forKey)
     }
     
     func store(string: String, forKey: StorageKey) {
@@ -39,6 +44,10 @@ class SimpleStorage {
     func int(forKey: StorageKey) -> Int? {
         return string(forKey: forKey).flatMap { Int($0) }
     }
+    
+//    func bool(forKey: StorageKey) -> Bool? {
+//        return string(forKey: forKey).flatMap { Bool($0) }
+//    }
     
     func cleanValue(forKey: StorageKey) {
         UserDefaults.standard.setNilValueForKey(forKey.rawValue)
