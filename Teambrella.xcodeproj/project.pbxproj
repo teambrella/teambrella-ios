@@ -897,6 +897,22 @@
 		6DEFE3CC2005286200615022 /* HomeCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEFE3CA2005286200615022 /* HomeCardModel.swift */; };
 		6DEFE3D12005355C00615022 /* InviteToTeamEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEFE3D02005355C00615022 /* InviteToTeamEntity.swift */; };
 		6DEFE3D22005355C00615022 /* InviteToTeamEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEFE3D02005355C00615022 /* InviteToTeamEntity.swift */; };
+		6DEFE3F92006544100615022 /* NotificationTeambrella.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6DEFE3F22006544100615022 /* NotificationTeambrella.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6DEFE3FE2006547200615022 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FCF81FBC8407006C0A2B /* NotificationService.swift */; };
+		6DEFE3FF2006547D00615022 /* RemotePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1A54A1FBF25ED000FDECA /* RemotePayload.swift */; };
+		6DEFE4002006548000615022 /* RemoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */; };
+		6DEFE4012006548300615022 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
+		6DEFE4022006552B00615022 /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF4791B1F43326A0025F489 /* SwiftKeychainWrapper.framework */; };
+		6DEFE4032006553400615022 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
+		6DEFE4042006553E00615022 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */; };
+		6DEFE4052006559600615022 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D1021F056DF900F9DE87 /* UIImage.swift */; };
+		6DEFE406200655A100615022 /* String-localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E281FC46B0D00FF6FF8 /* String-localized.swift */; };
+		6DEFE407200655C400615022 /* TimestampFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FD131FBC95CB006C0A2B /* TimestampFetcher.swift */; };
+		6DEFE408200655D100615022 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FD171FBC9693006C0A2B /* URLBuilder.swift */; };
+		6DEFE409200655DE00615022 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF3E7611F795ED6000C7885 /* KeyStorage.swift */; };
+		6DEFE40A200655E500615022 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC230691ED07F0500FAC330 /* Key.swift */; };
+		6DEFE40B200655F600615022 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479191F432D230025F489 /* Keychain.swift */; };
+		6DEFE40C2006575900615022 /* Push.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D900E251FC46A7200FF6FF8 /* Push.strings */; };
 		6DF2079D1FB4A11600E10B85 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2079C1FB4A11600E10B85 /* StringTests.swift */; };
 		6DF2E8BC1EF0232700C8D60B /* ViewDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8BB1EF0232700C8D60B /* ViewDecorator.swift */; };
 		6DF2E8BE1EF02F8200C8D60B /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8BD1EF02F8200C8D60B /* SocketService.swift */; };
@@ -1023,6 +1039,7 @@
 		CBDFE3B8E39275922CDCC041 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE16BB5E7B5B758559237 /* String.swift */; };
 		CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */; };
 		CBDFE767664CC051784BF271 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEA3415104DFFD0D751C7 /* ServerService.swift */; };
+		CFC3BBD4921FE3745A914383 /* libPods-NotificationTeambrella.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0981AC48D38E5C8A149C38 /* libPods-NotificationTeambrella.a */; };
 		E0FA59804169C556DC361F3C /* libPods-notification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 177A2DBE9DB0723855A80DED /* libPods-notification.a */; };
 		E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */; };
 		FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */; };
@@ -1043,6 +1060,13 @@
 			remoteGlobalIDString = 6DA4759F1E8ABEE600B56D9B;
 			remoteInfo = Teambrella;
 		};
+		6DEFE3F72006544100615022 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DA475981E8ABEE600B56D9B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DEFE3F12006544100615022;
+			remoteInfo = NotificationTeambrella;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1057,15 +1081,28 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6DEFE3FD2006544100615022 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6DEFE3F92006544100615022 /* NotificationTeambrella.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0955ADF5D5781C76472099AB /* Pods-TeambrellaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.release.xcconfig"; sourceTree = "<group>"; };
 		0DD563BFF9640E2EA3A0F20D /* Pods-notification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notification.debug.xcconfig"; path = "Pods/Target Support Files/Pods-notification/Pods-notification.debug.xcconfig"; sourceTree = "<group>"; };
+		0F0981AC48D38E5C8A149C38 /* libPods-NotificationTeambrella.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NotificationTeambrella.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		177A2DBE9DB0723855A80DED /* libPods-notification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-notification.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.debug.xcconfig"; sourceTree = "<group>"; };
 		205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surilla/Pods-Surilla.debug.xcconfig"; sourceTree = "<group>"; };
 		44C520431479B61FE9F06E42 /* Pods-Teambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.release.xcconfig"; sourceTree = "<group>"; };
+		4A86321D7F36B3D7DE1C3979 /* Pods-NotificationTeambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationTeambrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotificationTeambrella/Pods-NotificationTeambrella.release.xcconfig"; sourceTree = "<group>"; };
 		5A31D4B51EC413D689755DD8 /* Pods-TeambrellaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		63613F4D9AC88C9CBF2AB08E /* Pods-TeambrellaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D02AC901F06A6B800B01AAF /* VotingScrollerCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingScrollerCellModel.swift; path = Scenes/Team/Members/VotingScrollerCellModel.swift; sourceTree = "<group>"; };
@@ -1495,6 +1532,9 @@
 		6DEFCFB71F7A66D7008C306C /* SwitchUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SwitchUserCell.xib; path = View/Cells/SwitchUserCell.xib; sourceTree = "<group>"; };
 		6DEFE3CA2005286200615022 /* HomeCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCardModel.swift; path = Model/Entities/HomeCardModel.swift; sourceTree = "<group>"; };
 		6DEFE3D02005355C00615022 /* InviteToTeamEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InviteToTeamEntity.swift; path = Model/Entities/InviteToTeamEntity.swift; sourceTree = "<group>"; };
+		6DEFE3ED2006523300615022 /* notification copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "notification copy-Info.plist"; path = "/Users/thorax/Developer/Teambrella/Teambrella-iOS/notification copy-Info.plist"; sourceTree = "<absolute>"; };
+		6DEFE3F22006544100615022 /* NotificationTeambrella.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationTeambrella.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DEFE3F62006544100615022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DF2079C1FB4A11600E10B85 /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		6DF2E8BB1EF0232700C8D60B /* ViewDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewDecorator.swift; path = Helpers/ViewDecorator.swift; sourceTree = "<group>"; };
 		6DF2E8BD1EF02F8200C8D60B /* SocketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketService.swift; path = Model/Services/Socket/SocketService.swift; sourceTree = "<group>"; };
@@ -1611,6 +1651,7 @@
 		F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Surilla.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Teambrella.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C3B97E2D3D3E031BC1B2FC /* Pods-Surilla.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.release.xcconfig"; path = "Pods/Target Support Files/Pods-Surilla/Pods-Surilla.release.xcconfig"; sourceTree = "<group>"; };
+		FB0CD5887370E04965902F23 /* Pods-NotificationTeambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationTeambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotificationTeambrella/Pods-NotificationTeambrella.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1675,6 +1716,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6DEFE3EF2006544100615022 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFC3BBD4921FE3745A914383 /* libPods-NotificationTeambrella.a in Frameworks */,
+				6DEFE4022006552B00615022 /* SwiftKeychainWrapper.framework in Frameworks */,
+				6DEFE4032006553400615022 /* Alamofire.framework in Frameworks */,
+				6DEFE4042006553E00615022 /* Kingfisher.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1691,6 +1743,8 @@
 				F8C3B97E2D3D3E031BC1B2FC /* Pods-Surilla.release.xcconfig */,
 				0DD563BFF9640E2EA3A0F20D /* Pods-notification.debug.xcconfig */,
 				CFB2C72BED9D6756BBD9381F /* Pods-notification.release.xcconfig */,
+				FB0CD5887370E04965902F23 /* Pods-NotificationTeambrella.debug.xcconfig */,
+				4A86321D7F36B3D7DE1C3979 /* Pods-NotificationTeambrella.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2295,11 +2349,13 @@
 				6DA475B71E8ABEE600B56D9B /* TeambrellaTests */,
 				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
 				6D59FCF71FBC8407006C0A2B /* notification */,
+				6DEFE3F32006544100615022 /* NotificationTeambrella */,
 				6DA475A11E8ABEE600B56D9B /* Products */,
 				5BD17B853E94E5AE1E9DCBE6 /* Pods */,
 				A3DA38407FE7184F4611CDC0 /* Frameworks */,
 				6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */,
 				6DA1A5421FBF0B42000FDECA /* Notification-Bridging-Header.h */,
+				6DEFE3ED2006523300615022 /* notification copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2310,6 +2366,7 @@
 				6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */,
 				6D4E5DD91F7AB6870020DEE2 /* Surilla.app */,
 				6D59FCF61FBC8407006C0A2B /* notification.appex */,
+				6DEFE3F22006544100615022 /* NotificationTeambrella.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2771,6 +2828,14 @@
 			name = Transformers;
 			sourceTree = "<group>";
 		};
+		6DEFE3F32006544100615022 /* NotificationTeambrella */ = {
+			isa = PBXGroup;
+			children = (
+				6DEFE3F62006544100615022 /* Info.plist */,
+			);
+			path = NotificationTeambrella;
+			sourceTree = "<group>";
+		};
 		6DF2E8BF1EF02F8C00C8D60B /* Socket */ = {
 			isa = PBXGroup;
 			children = (
@@ -2816,6 +2881,7 @@
 				BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */,
 				F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */,
 				177A2DBE9DB0723855A80DED /* libPods-notification.a */,
+				0F0981AC48D38E5C8A149C38 /* libPods-NotificationTeambrella.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2899,10 +2965,12 @@
 				8CD7C238ED8CE72CDAECD7D2 /* [CP] Copy Pods Resources */,
 				6DA475DD1E8BCDB000B56D9B /* SwiftLint */,
 				6DC60B7E1EA7B805007D285C /* CPD */,
+				6DEFE3FD2006544100615022 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6DEFE3F82006544100615022 /* PBXTargetDependency */,
 			);
 			name = Teambrella;
 			productName = Teambrella;
@@ -2930,13 +2998,32 @@
 			productReference = 6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		6DEFE3F12006544100615022 /* NotificationTeambrella */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DEFE3FA2006544100615022 /* Build configuration list for PBXNativeTarget "NotificationTeambrella" */;
+			buildPhases = (
+				32B29CA36163F30545BA829D /* [CP] Check Pods Manifest.lock */,
+				6DEFE3EE2006544100615022 /* Sources */,
+				6DEFE3EF2006544100615022 /* Frameworks */,
+				6DEFE3F02006544100615022 /* Resources */,
+				C9EBD6E0B966B48E6F3C64C2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationTeambrella;
+			productName = NotificationTeambrella;
+			productReference = 6DEFE3F22006544100615022 /* NotificationTeambrella.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		6DA475981E8ABEE600B56D9B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0910;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Yaroslav Pasternak";
 				TargetAttributes = {
@@ -2973,6 +3060,11 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6DA4759F1E8ABEE600B56D9B;
 					};
+					6DEFE3F12006544100615022 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = Y6A22RLVJG;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 6DA4759B1E8ABEE600B56D9B /* Build configuration list for PBXProject "Teambrella" */;
@@ -2993,6 +3085,7 @@
 				6DA475B31E8ABEE600B56D9B /* TeambrellaTests */,
 				6D4E5C241F7AB6870020DEE2 /* Surilla */,
 				6D59FCF51FBC8407006C0A2B /* notification */,
+				6DEFE3F12006544100615022 /* NotificationTeambrella */,
 			);
 		};
 /* End PBXProject section */
@@ -3207,9 +3300,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6DEFE3F02006544100615022 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DEFE40C2006575900615022 /* Push.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		32B29CA36163F30545BA829D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		5367BD3EC56B804CAF87F366 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3475,6 +3591,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C9EBD6E0B966B48E6F3C64C2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NotificationTeambrella/Pods-NotificationTeambrella-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E02813D464CF735903FDEC9D /* [CP] Embed Pods Frameworks */ = {
@@ -4342,6 +4473,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6DEFE3EE2006544100615022 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DEFE407200655C400615022 /* TimestampFetcher.swift in Sources */,
+				6DEFE40A200655E500615022 /* Key.swift in Sources */,
+				6DEFE3FF2006547D00615022 /* RemotePayload.swift in Sources */,
+				6DEFE4052006559600615022 /* UIImage.swift in Sources */,
+				6DEFE4012006548300615022 /* RemoteCommand.swift in Sources */,
+				6DEFE40B200655F600615022 /* Keychain.swift in Sources */,
+				6DEFE4002006548000615022 /* RemoteMessage.swift in Sources */,
+				6DEFE409200655DE00615022 /* KeyStorage.swift in Sources */,
+				6DEFE408200655D100615022 /* URLBuilder.swift in Sources */,
+				6DEFE406200655A100615022 /* String-localized.swift in Sources */,
+				6DEFE3FE2006547200615022 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -4354,6 +4503,11 @@
 			isa = PBXTargetDependency;
 			target = 6DA4759F1E8ABEE600B56D9B /* Teambrella */;
 			targetProxy = 6DA475B51E8ABEE600B56D9B /* PBXContainerItemProxy */;
+		};
+		6DEFE3F82006544100615022 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DEFE3F12006544100615022 /* NotificationTeambrella */;
+			targetProxy = 6DEFE3F72006544100615022 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4727,6 +4881,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = Teambrella/Teambrella.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				ENABLE_BITCODE = NO;
@@ -4752,6 +4907,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Teambrella-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -4769,6 +4925,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = Teambrella/Teambrella.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				ENABLE_BITCODE = NO;
@@ -4794,6 +4951,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Teambrella-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -4831,6 +4989,58 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Teambrella.app/Teambrella";
+			};
+			name = Release;
+		};
+		6DEFE3FB2006544100615022 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB0CD5887370E04965902F23 /* Pods-NotificationTeambrella.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = NotificationTeambrella/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.NotificationTeambrella;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Notification-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6DEFE3FC2006544100615022 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A86321D7F36B3D7DE1C3979 /* Pods-NotificationTeambrella.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = NotificationTeambrella/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.NotificationTeambrella;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Notification-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -4878,6 +5088,15 @@
 			buildConfigurations = (
 				6DA475CC1E8ABEE600B56D9B /* Debug */,
 				6DA475CD1E8ABEE600B56D9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DEFE3FA2006544100615022 /* Build configuration list for PBXNativeTarget "NotificationTeambrella" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DEFE3FB2006544100615022 /* Debug */,
+				6DEFE3FC2006544100615022 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
