@@ -49,10 +49,11 @@ struct TeamEntity: Decodable {
     let currency: String
     
     var isInvitation: Bool { return teamCoverage != nil }
-    var currencySymbol: String { return ["USD": "$",
-                                         "EUR": "€",
-                                         "PEN": "S/.",
-                                         "ARS": "$"][currency] ?? currency
+    var currencySymbol: String {
+        return ["USD": "$",
+                "EUR": "€",
+                "PEN": "S/.",
+                "ARS": "$"][currency] ?? currency
     }
     
 }

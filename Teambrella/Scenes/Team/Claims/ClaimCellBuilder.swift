@@ -68,6 +68,7 @@ struct ClaimCellBuilder {
         cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)//"Claim \(claim.id)"
         cell.textLabel.text = claim.originalPostText
         cell.unreadCountLabel.text = "\(claim.unreadCount)"
+       cell.unreadCountLabel.isHidden = claim.unreadCount <= 0
         let dateProcessor = DateProcessor()
         cell.timeLabel.text = dateProcessor.stringFromNow(minutes: claim.minutesinceLastPost)
     }
