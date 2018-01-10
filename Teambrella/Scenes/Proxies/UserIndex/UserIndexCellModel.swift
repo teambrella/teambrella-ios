@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 struct UserIndexCellModel: Decodable {
     enum CodingKeys: String, CodingKey {
