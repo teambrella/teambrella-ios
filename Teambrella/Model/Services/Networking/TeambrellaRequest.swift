@@ -201,8 +201,13 @@ struct TeambrellaRequest {
         case .proxyPosition:
             success(.proxyPosition)
         case .proxyRatingList:
-            let models = reply["Members"].arrayValue.map { UserIndexCellModel(json: $0) }
-            success(.proxyRatingList(models, reply["TotalCount"].intValue))
+            do {
+                let proxyRatingEntity = try decoder.decode(ProxyRatingEntity.self, from: serverReply.data)
+                success(.proxyRatingList(proxyRatingEntity))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .privateList:
             let users = reply.arrayValue.map { PrivateChatUser(json: $0) }
             success(.privateList(users))
