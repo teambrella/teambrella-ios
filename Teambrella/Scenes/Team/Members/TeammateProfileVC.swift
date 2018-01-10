@@ -227,9 +227,9 @@ final class TeammateProfileVC: UIViewController, Routable {
     @objc
     private func tapPrivateMessage(sender: UIButton) {
         log("tapped private message", type: .userInteraction)
-        let adaptor = TeammateAdaptor(teammateLarge: dataSource.teammateLarge)
-        guard let user = adaptor.privateChatUser else { return }
+        guard let teammateLarge = dataSource.teammateLarge else { return }
         
+        let user = PrivateChatUser(teammateLarge: teammateLarge)
         service.router.presentChat(context: .privateChat(user), itemType: .privateChat)
     }
     

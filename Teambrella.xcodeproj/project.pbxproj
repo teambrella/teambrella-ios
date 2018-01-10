@@ -287,7 +287,6 @@
 		6D4E5CAC1F7AB6870020DEE2 /* ReportCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D465F311F46E893007AC28F /* ReportCellModels.swift */; };
 		6D4E5CAD1F7AB6870020DEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475A31E8ABEE600B56D9B /* AppDelegate.swift */; };
 		6D4E5CAE1F7AB6870020DEE2 /* VotingScrollerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC911F06A6B800B01AAF /* VotingScrollerDataSource.swift */; };
-		6D4E5CAF1F7AB6870020DEE2 /* TeammateAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C6FE31F75301000BF65B6 /* TeammateAdaptor.swift */; };
 		6D4E5CB01F7AB6870020DEE2 /* ViewDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8BB1EF0232700C8D60B /* ViewDecorator.swift */; };
 		6D4E5CB11F7AB6870020DEE2 /* ScaleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714F91EE04D4900F39EBE /* ScaleBar.swift */; };
 		6D4E5CB21F7AB6870020DEE2 /* ChatModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B4A11F4F106900672583 /* ChatModelBuilder.swift */; };
@@ -676,7 +675,6 @@
 		6D83EC941EDDA9DC000412DC /* TeammateProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */; };
 		6D862F6B1F1E639A00988D5C /* TeammateFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */; };
 		6D88C4FD1FA3986300E55F7C /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */; };
-		6D8C6FE41F75301000BF65B6 /* TeammateAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C6FE31F75301000BF65B6 /* TeammateAdaptor.swift */; };
 		6D8C6FE71F754D7000BF65B6 /* Error.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D8C6FE51F754D7000BF65B6 /* Error.strings */; };
 		6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
 		6D8F97141E8D1532008DC62E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */; };
@@ -1342,7 +1340,6 @@
 		6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateProfileDataSource.swift; path = Scenes/Team/Members/TeammateProfileDataSource.swift; sourceTree = "<group>"; };
 		6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateFooter.swift; path = Scenes/Team/Members/TeammateFooter.swift; sourceTree = "<group>"; };
 		6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTests.swift; sourceTree = "<group>"; };
-		6D8C6FE31F75301000BF65B6 /* TeammateAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeammateAdaptor.swift; path = Scenes/Team/Members/TeammateAdaptor.swift; sourceTree = "<group>"; };
 		6D8C6FE61F754D7000BF65B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Error.strings; sourceTree = "<group>"; };
 		6D8C6FE81F754D8E00BF65B6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Error.strings; sourceTree = "<group>"; };
 		6D8CB40E1F5865B200C72AC3 /* Teambrella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Teambrella.entitlements; sourceTree = "<group>"; };
@@ -2535,7 +2532,6 @@
 				6D02AC9F1F06A98F00B01AAF /* TeammateVoteCell.swift */,
 				6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */,
 				6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */,
-				6D8C6FE31F75301000BF65B6 /* TeammateAdaptor.swift */,
 			);
 			name = TeammateProfile;
 			sourceTree = "<group>";
@@ -3809,7 +3805,6 @@
 				6D4E5CAE1F7AB6870020DEE2 /* VotingScrollerDataSource.swift in Sources */,
 				6DEFE3D22005355C00615022 /* InviteToTeamEntity.swift in Sources */,
 				6D4E59111FD2EF970029D2F0 /* WithdrawTx.swift in Sources */,
-				6D4E5CAF1F7AB6870020DEE2 /* TeammateAdaptor.swift in Sources */,
 				6D12928A1F83DC46001CCC31 /* Name.swift in Sources */,
 				6D4E5CB01F7AB6870020DEE2 /* ViewDecorator.swift in Sources */,
 				6D4E5CB11F7AB6870020DEE2 /* ScaleBar.swift in Sources */,
@@ -4227,7 +4222,6 @@
 				6DA475A41E8ABEE600B56D9B /* AppDelegate.swift in Sources */,
 				6DEFE3D12005355C00615022 /* InviteToTeamEntity.swift in Sources */,
 				6D02AC961F06A6B800B01AAF /* VotingScrollerDataSource.swift in Sources */,
-				6D8C6FE41F75301000BF65B6 /* TeammateAdaptor.swift in Sources */,
 				6D1292891F83DC46001CCC31 /* Name.swift in Sources */,
 				6DF2E8BC1EF0232700C8D60B /* ViewDecorator.swift in Sources */,
 				6DA714FA1EE04D4900F39EBE /* ScaleBar.swift in Sources */,

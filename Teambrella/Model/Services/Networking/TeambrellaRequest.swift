@@ -209,8 +209,13 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .privateList:
-            let users = reply.arrayValue.map { PrivateChatUser(json: $0) }
-            success(.privateList(users))
+            do {
+                let model = try decoder.decode([PrivateChatUser].self, from: serverReply.data)
+                success(.privateList(model))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .withdrawTransactions,
              .withdraw:
             do {
