@@ -27,6 +27,16 @@ func log(_ string: String, type: Log.LogType) {
     #endif
 }
 
+func log(_ error: Error) {
+    #if DEBUG
+        if let error = error as? TeambrellaError {
+            Log.shared.logPrint(error.description, type: [.error])
+        } else {
+        Log.shared.logPrint((error as NSError).description, type: [.error])
+        }
+    #endif
+}
+
 class Log {
     enum LogLevel {
         case none

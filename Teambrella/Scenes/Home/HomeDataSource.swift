@@ -22,7 +22,7 @@
 import Foundation
 
 class HomeDataSource {
-    var model: HomeScreenModel?
+    var model: HomeModel?
     var cardsCount: Int {
         guard let count = model?.cards.count else { return 0 }
         
@@ -33,7 +33,7 @@ class HomeDataSource {
     
     var onUpdate: (() -> Void)?
     
-    var currency: String { return model?.currency ?? "?" }
+    var currency: String { return model?.teamPart.currency ?? "?" }
     var name: String { return model?.name.first ?? "" }
     
     func loadData(teamID: Int) {
@@ -70,7 +70,7 @@ class HomeDataSource {
         return cellID(with: model)
     }
     
-    func cellID(with cardModel: HomeScreenModel.Card) -> String {
+    func cellID(with cardModel: HomeCardModel) -> String {
         switch cardModel.itemType {
         case .teammate, .claim:
             return "HomeCollectionCell"
@@ -96,7 +96,7 @@ class HomeDataSource {
        
     }
     
-    subscript(indexPath: IndexPath) -> HomeScreenModel.Card? {
+    subscript(indexPath: IndexPath) -> HomeCardModel? {
         guard let model = model, indexPath.row < model.cards.count else { return nil }
         
         return model.cards[indexPath.row]

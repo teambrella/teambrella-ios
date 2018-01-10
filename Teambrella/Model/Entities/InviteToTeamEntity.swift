@@ -1,10 +1,5 @@
 //
-//  ItemType.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 13.07.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,12 +16,17 @@
 
 import Foundation
 
-enum ItemType: Int, Codable {
-    case teammate = 0
-    case claim = 1
-    case rule = 2
-    case teamChat = 3
-    case teamNotification = 100
+struct InviteToTeamEntity: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case teamID = "TeamId"
+        case teamName = "TeamName"
+        case teamCoverage = "TeamCoverage"
+        case coverageType = "CoverageType"
+    }
     
-    case privateChat = -10
+    let teamID: Int
+    let teamName: String
+    let teamCoverage: Double?
+    let coverageType: CoverageType
+    
 }

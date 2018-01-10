@@ -28,7 +28,7 @@ protocol DAO {
     var recentScene: SceneType { get set }
     
     func freshKey(completion: @escaping (Key) -> Void)
-    func requestHome(teamID: Int) -> Future<HomeScreenModel>
+    func requestHome(teamID: Int) -> Future<HomeModel>
     func requestTeamFeed(context: FeedRequestContext, needTemporaryResult: Bool) -> Future<FeedChunk>
     // actual and potential teams
     func requestTeams(demo: Bool) -> Future<TeamsModel>
@@ -48,7 +48,7 @@ protocol DAO {
     
     // MARK: Send data
     
-    func deleteCard(topicID: String) -> Future<HomeScreenModel>
+    func deleteCard(topicID: String) -> Future<HomeModel>
     func setLanguage() -> Future<String>
     func sendPhoto(data: Data) -> Future<String>
     

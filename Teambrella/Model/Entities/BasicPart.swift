@@ -24,7 +24,13 @@ protocol BasicPart {
     init(json: JSON)
 }
 
-struct BasicPartDiscussionConcrete: BasicPart {
+struct BasicPartDiscussionConcrete: BasicPart, Decodable {
+    enum CodingKeys: String, CodingKey {
+        case userID = "UserId"
+        case avatar = "Avatar"
+        case title = "Title"
+    }
+    
     let userID: String
     let avatar: String
     let title: String
@@ -36,7 +42,18 @@ struct BasicPartDiscussionConcrete: BasicPart {
     }
 }
 
-struct BasicPartTeammateConcrete: BasicPart {
+struct BasicPartTeammateConcrete: BasicPart, Decodable {
+    enum CodingKeys: String, CodingKey {
+        case userID = "UserId"
+        case name = "Name"
+        case avatar = "Avatar"
+        case model = "Model"
+        case year = "Year"
+        case smallPhoto = "SmallPhoto"
+        case risk = "Risk"
+        case claimLimit = "ClaimLimit"
+    }
+    
     let userID: String
     let name: Name
     let avatar: String
@@ -60,7 +77,26 @@ struct BasicPartTeammateConcrete: BasicPart {
     }
 }
 
-struct BasicPartClaimConcrete: BasicPart {
+struct BasicPartClaimConcrete: BasicPart, Decodable {
+    enum CodingKeys: String, CodingKey {
+        case userID = "UserId"
+        case name = "Name"
+        case avatar = "Avatar"
+        case model = "Model"
+        case year = "Year"
+        case smallPhoto = "SmallPhoto"
+        case deductible = "Deductible"
+        case bigPhotos = "BigPhotos"
+        case smallPhotos = "SmallPhotos"
+        case coverage = "Coverage"
+        case claimAmount = "ClaimAmount"
+        case estimatedExpenses = "EstimatedExpenses"
+        case incidentDate = "IncidentDate"
+        case state = "State"
+        case reimbursement = "Reimbursement"
+        case claimLimit = "ClaimLimit"
+    }
+    
     let userID: String
     let name: Name
     let avatar: String
@@ -79,6 +115,28 @@ struct BasicPartClaimConcrete: BasicPart {
     
     let reimbursement: Double?
     let claimLimit: Double?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let dateString = try container.decode(String.self, forKey: .incidentDate)
+        incidentDate = Formatter.teambrella.date(from: dateString)
+        
+        userID = try container.decode(String.self, forKey: .userID)
+        name = try container.decode(Name.self, forKey: .name)
+        avatar = try container.decode(String.self, forKey: .avatar)
+        model = try container.decode(String.self, forKey: .model)
+        year = try container.decode(Int.self, forKey: .year)
+        smallPhoto = try container.decode(String.self, forKey: .smallPhoto)
+        deductible = try container.decode(Double.self, forKey: .deductible)
+        bigPhotos = try container.decode([String].self, forKey: .bigPhotos)
+        smallPhotos = try container.decode([String].self, forKey: .smallPhotos)
+        coverage = try container.decode(Double.self, forKey: .coverage)
+        claimAmount = try container.decode(Double.self, forKey: .claimAmount)
+        estimatedExpenses = try container.decode(Double.self, forKey: .estimatedExpenses)
+        state = try container.decode(ClaimState.self, forKey: .state)
+        reimbursement = try container.decodeIfPresent(Double.self, forKey: .reimbursement)
+        claimLimit = try container.decodeIfPresent(Double.self, forKey: .claimLimit)
+    }
     
     init(json: JSON) {
         userID = json["UserId"].stringValue

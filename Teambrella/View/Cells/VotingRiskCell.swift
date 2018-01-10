@@ -25,6 +25,7 @@ protocol VotingRiskCellDelegate: class {
     func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat)
     func votingRisk(cell: VotingRiskCell, stoppedOnOffset: CGFloat)
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int)
+    func votingRisk(cell: VotingRiskCell, didTapButton button: UIButton)
 }
 
 class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
@@ -141,6 +142,15 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         self.clipsToBounds = true
         ViewDecorator.roundedEdges(for: self)
         ViewDecorator.shadow(for: self)
+        
+        resetVoteButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        othersButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        othersVotesButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+    }
+    
+    @objc
+    private func tap(_ button: UIButton) {
+        delegate?.votingRisk(cell: self, didTapButton: button)
     }
     
     override func layoutSubviews() {

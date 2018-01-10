@@ -25,7 +25,7 @@ enum ChatContext {
     case claim(EnhancedClaimEntity)
     case teammate(TeammateLarge)
     case feed(FeedEntity)
-    case home(HomeScreenModel.Card)
+    case home(HomeCardModel)
     case chat(ChatModel)
     case privateChat(PrivateChatUser)
     case remote(RemoteTopicDetails)
@@ -191,7 +191,7 @@ final class UniversalChatVC: UIViewController, Routable {
         // Cancel current scrolling
         self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: false)
         
-        let lastIndexPath = IndexPath(row: dataSource.count - 1, section: 0)
+        //let lastIndexPath = IndexPath(row: dataSource.count - 1, section: 0)
         //        collectionView.scrollToItem(at: lastIndexPath, at: .bottom, animated: animated)
         //        return
         

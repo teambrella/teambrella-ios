@@ -86,6 +86,36 @@ struct TeammateCellBuilder {
          */
     }
     
+    private static func setVote(votingCell: VotingRiskCell, voting: TeammateVotingInfo, controller: TeammateProfileVC) {
+        let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
+        votingCell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars, label: label, max: nil)
+        if let risk = voting.riskVoted {
+            votingCell.teamVoteValueLabel.text =  String.formattedNumber(risk)
+            votingCell.showTeamNoVote(risk: risk)
+        } else {
+            votingCell.teamVoteValueLabel.text = "..."
+            votingCell.showTeamNoVote(risk: nil)
+        }
+        
+        if let myVote = voting.myVote {
+            votingCell.layoutIfNeeded()
+            votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
+            let offset = controller.offsetFrom(risk: myVote, maxValue: votingCell.maxValue)
+            votingCell.scrollTo(offset: offset, silently: true)
+            votingCell.showYourNoVote(risk: myVote)
+        } else {
+            controller.resetVote(cell: votingCell)
+            votingCell.showYourNoVote(risk: nil)
+        }
+        let currentChosenRisk = controller.riskFrom(offset: votingCell.collectionView.contentOffset.x,
+                                                    maxValue: votingCell.maxValue)
+        controller.updateAverages(cell: votingCell,
+                                  risk: currentChosenRisk)
+        
+        let timeString = DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
+        votingCell.timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
+    }
+    
     private static func populateVote(cell: VotingRiskCell,
                                      with teammate: TeammateLarge,
                                      controller: TeammateProfileVC) {
@@ -98,49 +128,9 @@ struct TeammateCellBuilder {
         cell.middleAvatar.showAvatar(string: teammate.basic.avatar)
         
         if let voting = teammate.voting {
-            let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
-            cell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars, label: label, max: nil)
-            if let risk = voting.riskVoted {
-                cell.teamVoteValueLabel.text =  String.formattedNumber(risk)
-                cell.showTeamNoVote(risk: risk)
-            } else {
-                cell.teamVoteValueLabel.text = "..."
-                cell.showTeamNoVote(risk: nil)
-            }
-            
-            if let myVote = voting.myVote {
-                cell.layoutIfNeeded()
-                cell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
-                let offset = controller.offsetFrom(risk: myVote, maxValue: cell.maxValue)
-                cell.scrollTo(offset: offset, silently: true)
-                cell.showYourNoVote(risk: myVote)
-            } else {
-                controller.resetVote(cell: cell)
-                cell.showYourNoVote(risk: nil)
-            }
-            let currentChosenRisk = controller.riskFrom(offset: cell.collectionView.contentOffset.x,
-                                                        maxValue: cell.maxValue)
-            controller.updateAverages(cell: cell,
-                                      risk: currentChosenRisk)
-            
-            let timeString = DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
-            cell.timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
+          setVote(votingCell: cell, voting: voting, controller: controller)
         }
         cell.delegate = controller
-        cell.resetVoteButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.resetVoteButton.addTarget(controller,
-                                       action: #selector(TeammateProfileVC.tapResetVote),
-                                       for: .touchUpInside)
-        
-        cell.othersButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.othersButton.addTarget(controller,
-                                    action: #selector(TeammateProfileVC.tapShowOtherVoters),
-                                    for: .touchUpInside)
-        
-        cell.othersVotesButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.othersVotesButton.addTarget(controller,
-                                         action: #selector(TeammateProfileVC.tapShowVotesOfOthers),
-                                         for: .touchUpInside)
     }
     
     private static func populateObject(cell: TeammateObjectCell,

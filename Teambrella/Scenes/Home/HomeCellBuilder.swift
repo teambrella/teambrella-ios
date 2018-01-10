@@ -33,7 +33,7 @@ struct HomeCellBuilder {
                                 forCellWithReuseIdentifier: HomeApplicationStatusCell.cellID)
     }
     
-    static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeScreenModel.Card?) {
+    static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeCardModel?) {
         guard let model = model else {
             populateSupport(cell: cell, dataSource: dataSource)
             return
@@ -41,7 +41,7 @@ struct HomeCellBuilder {
         
         switch cell {
         case let cell as HomeCollectionCell:
-             populateHome(cell: cell, model: model)
+            populateHome(cell: cell, model: model)
         case let cell as HomeApplicationDeniedCell:
             populate(cell: cell, with: model)
         case let cell as HomeApplicationAcceptedCell:
@@ -53,13 +53,14 @@ struct HomeCellBuilder {
         }
     }
     
-    static func populateHome(cell: HomeCollectionCell, model: HomeScreenModel.Card) {
+    static func populateHome(cell: HomeCollectionCell, model: HomeCardModel) {
         switch model.itemType {
         case .claim:
             cell.avatarView.showImage(string: model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
             cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
-            cell.titleLabel.text = model.isMine
+            let isMine = model.userID == service.myUserID
+            cell.titleLabel.text = isMine
                 ? "Team.Home.Card.yourClaim".localized
                 : "Team.Home.Card.claim".localized
             let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
@@ -89,9 +90,7 @@ struct HomeCellBuilder {
         }
         cell.rightNumberView.isBadgeVisible = model.isVoting
         
-        if let date = model.itemDate {
-            cell.subtitleLabel.text = DateProcessor().stringInterval(from: date)
-        }
+        cell.subtitleLabel.text = DateProcessor().stringInterval(from: model.itemDate)
     }
     
     static func populateSupport(cell: UICollectionViewCell, dataSource: HomeDataSource) {
@@ -104,20 +103,20 @@ struct HomeCellBuilder {
         cell.onlineIndicator.layer.cornerRadius = 3
     }
     
-    static func populate(cell: HomeApplicationDeniedCell, with model: HomeScreenModel.Card) {
+    static func populate(cell: HomeApplicationDeniedCell, with model: HomeCardModel) {
         cell.avatar.image = #imageLiteral(resourceName: "teammateF") //
         cell.headerLabel.text = "Home.ApplicationDeniedCell.headerLabel".localized
         cell.centerLabel.text = "Home.ApplicationDeniedCell.centerLabel".localized
         cell.button.setTitle("Home.ApplicationDeniedCell.viewAppButton".localized, for: .normal)
     }
     
-    static func populate(cell: HomeApplicationAcceptedCell, with model: HomeScreenModel.Card) {
+    static func populate(cell: HomeApplicationAcceptedCell, with model: HomeCardModel) {
         cell.avatar.image = #imageLiteral(resourceName: "teammateF") //
         cell.headerLabel.text = "Home.ApplicationAcceptedCell.headerLabel".localized
         cell.centerLabel.text = "Home.ApplicationAcceptedCell.centerLabel".localized
         cell.button.setTitle("Home.ApplicationAcceptedCell.learnAboutCoverageButton".localized, for: .normal)
     }
-    static func populate(cell: HomeApplicationStatusCell, with model: HomeScreenModel.Card) {
+    static func populate(cell: HomeApplicationStatusCell, with model: HomeCardModel) {
         cell.avatar.image = #imageLiteral(resourceName: "teammateF") //
         cell.headerLabel.text = "Home.ApplicationStatusCell.headerLabel".localized("Yummigum", "6 DAYS") //
         cell.titleLabel.text = "Home.ApplicationStatusCell.titleLabel".localized

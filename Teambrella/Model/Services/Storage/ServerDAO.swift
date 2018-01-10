@@ -55,15 +55,13 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestHome(teamID: Int) -> Future<HomeScreenModel> {
+    func requestHome(teamID: Int) -> Future<HomeModel> {
         //let language = setLanguage()
-        let promise = Promise<HomeScreenModel>()
+        let promise = Promise<HomeModel>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
             let request = TeambrellaRequest(type: .home, body: body, success: { response in
-                if case let .home(json) = response {
-                    PlistStorage().store(json: json, for: .home, id: String(teamID))
-                    let model = HomeScreenModel(json: json)
+                if case let .home(model) = response {
                     promise.resolve(with: model)
                 } else {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,
@@ -71,11 +69,6 @@ class ServerDAO: DAO {
                 }
             })
             request.start()
-        }
-        if let storedJSON = PlistStorage().retreiveJSON(for: .home, id: String(teamID)) {
-            defer {
-                promise.temporaryResolve(with: HomeScreenModel(json: storedJSON))
-            }
         }
         return promise
     }
@@ -109,8 +102,8 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func deleteCard(topicID: String) -> Future<HomeScreenModel> {
-        let promise = Promise<HomeScreenModel>()
+    func deleteCard(topicID: String) -> Future<HomeModel> {
+        let promise = Promise<HomeModel>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["topicId": topicID])
             let request = TeambrellaRequest(type: .feedDeleteCard, body: body, success: { response in

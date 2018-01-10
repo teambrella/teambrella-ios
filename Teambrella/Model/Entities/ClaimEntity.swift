@@ -20,9 +20,25 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct ClaimEntity {
+struct ClaimEntity: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case id = "Id"
+        case lastUpdated = "LastUpdated"
+        case smallPhoto = "SmallPhoto"
+        case avatar = "Avatar"
+        case model = "Model"
+        case name = "Name"
+        case state = "State"
+        case claimAmount = "ClaimAmount"
+        case reimbursement = "Reimbursement"
+//        case votingRes = "VotingRes_Crypto"
+//        case paymentRes = "PaymentRes_Crypto"
+        case proxyAvatar = "ProxyAvatar"
+        case proxyName = "ProxyName"
+        case myVote = "MyVote"
+    }
+    
     var id: Int
     var lastUpdated: Int64
     
@@ -33,8 +49,8 @@ struct ClaimEntity {
     var state: ClaimState
     var claimAmount: Double
     var reimbursement: Double
-    var votingRes: Double
-    var paymentRes: Double
+//    var votingRes: Double?
+//    var paymentRes: Double
     var myVote: Double
     
     var proxyAvatar: String?
@@ -43,32 +59,5 @@ struct ClaimEntity {
     var description: String {
         return "\(#file) \(id)"
     }
-    
-    init(json: JSON) {
-        id = json["Id"].intValue
-        lastUpdated = json["LastUpdated"].int64Value
-        smallPhoto = json["SmallPhoto"].stringValue
-        avatar = json["Avatar"].stringValue
-        model = json["Model"].stringValue
-        name = json["Name"].stringValue
-        state = ClaimState(rawValue: json["State"].intValue) ?? .voting
-        claimAmount = json["ClaimAmount"].doubleValue
-        reimbursement = json["Reimbursement"].doubleValue
-        votingRes = json["VotingRes_Crypto"].doubleValue
-        paymentRes = json["PaymentRes_Crypto"].doubleValue
-        proxyAvatar = json["ProxyAvatar"].string
-        proxyName = json["ProxyName"].string
-        myVote = json["MyVote"].doubleValue
-        
-    }
-}
 
-struct ClaimFactory {
-    static func claim(with json: JSON) -> ClaimEntity {
-        return ClaimEntity(json: json)
-    }
-    
-    static func claims(with json: JSON) -> [ClaimEntity] {
-        return json.arrayValue.map { self.claim(with: $0) }
-    }
 }

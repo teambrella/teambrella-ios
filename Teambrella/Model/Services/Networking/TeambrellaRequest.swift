@@ -73,12 +73,13 @@ struct TeambrellaRequest {
     private func parseReply(serverReply: ServerReply) {
         // temporary item for compatibility with legacy code
         let reply = JSON(serverReply.json)
+        let decoder = JSONDecoder()
         switch type {
         case .timestamp:
             success(.timestamp)
         case .teammatesList:
             do {
-                let list = try JSONDecoder().decode(TeammatesList.self, from: serverReply.data)
+                let list = try decoder.decode(TeammatesList.self, from: serverReply.data)
                 print("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)")
                 success(.teammatesList(list.teammates))
             } catch {
@@ -89,20 +90,18 @@ struct TeambrellaRequest {
             let teammate = TeammateLarge(json: reply)
             success(.teammate(teammate))
         case .teams, .demoTeams:
-            let teams = TeamEntity.teams(with: reply["MyTeams"])
-            let invitations = TeamEntity.teams(with: reply["MyInvitations"])
-            let lastSelectedTeam = reply["LastSelectedTeam"].int
-            let userID = reply["UserId"].stringValue
-            let teamsModel = TeamsModel(teams: teams,
-                                        invitations: invitations,
-                                        lastTeamID: lastSelectedTeam,
-                                        userID: userID)
-            success(.teams(teamsModel))
+            do {
+                let teamsModel = try decoder.decode(TeamsModel.self, from: serverReply.data)
+                success(.teams(teamsModel))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .newPost:
             success(.newPost(ChatEntity(json: reply)))
         case .teammateVote:
             do {
-                let teamVotingResult = try JSONDecoder().decode(TeammateVotingResult.self, from: serverReply.data)
+                let teamVotingResult = try decoder.decode(TeammateVotingResult.self, from: serverReply.data)
                 success(.teammateVote(teamVotingResult))
             } catch {
                 failure?(error)
@@ -115,8 +114,13 @@ struct TeambrellaRequest {
              .setLanguageEs:
             success(.setLanguage(reply.stringValue))
         case .claimsList:
-            let claims = ClaimFactory.claims(with: reply)
-            success(.claimsList(claims))
+            do {
+                let claims = try decoder.decode([ClaimEntity].self, from: serverReply.data)
+                success(.claimsList(claims))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .claim,
              .newClaim:
             success(.claim(EnhancedClaimEntity(json: reply)))
@@ -144,7 +148,7 @@ struct TeambrellaRequest {
                 return
             }
             do {
-                let feed = try JSONDecoder().decode([FeedEntity].self, from: serverReply.data)
+                let feed = try decoder.decode([FeedEntity].self, from: serverReply.data)
                 let chunk = FeedChunk(feed: feed, pagingInfo: pagingInfo)
                 success(.teamFeed(chunk))
             } catch {
@@ -153,9 +157,20 @@ struct TeambrellaRequest {
         case .claimTransactions:
             success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
         case .home:
-            success(.home(reply))
+            do {
+                let model = try decoder.decode(HomeModel.self, from: serverReply.data)
+                success(.home(model))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .feedDeleteCard:
-            success(.feedDeleteCard(HomeScreenModel(json: reply)))
+            do {
+                let model = try decoder.decode(HomeModel.self, from: serverReply.data)
+                success(.feedDeleteCard(model))
+            } catch {
+                failure?(error)
+            }
         case .wallet:
             success(.wallet(WalletEntity(json: reply)))
         case .walletTransactions:
@@ -182,10 +197,10 @@ struct TeambrellaRequest {
             success(.privateList(users))
         case .withdrawTransactions,
              .withdraw:
-            if let chunk = WithdrawChunk(json: reply) {
+            do {
+                let chunk = try decoder.decode(WithdrawChunk.self, from: serverReply.data)
                 success(.withdrawTransactions(chunk))
-            } else {
-                let error = TeambrellaErrorFactory.wrongReply()
+            } catch {
                 failure?(error)
             }
         case .mute:

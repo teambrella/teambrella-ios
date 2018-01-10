@@ -48,7 +48,7 @@ class OthersVotedDataSource: NSObject {
                                                     case let .value(othersList):
                                                         self?.list = othersList
                                                     case let .error(error):
-                                                        break
+                                                        log(error)
                                                     default:
                                                         break
                                                     }
@@ -59,7 +59,7 @@ class OthersVotedDataSource: NSObject {
                 case let .value(othersList):
                     self?.list = othersList
                 case let .error(error):
-                    break
+                    log(error)
                 default:
                     break
                 }

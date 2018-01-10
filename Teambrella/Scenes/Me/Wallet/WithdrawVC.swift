@@ -111,9 +111,8 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     @objc
     func keyboardWillChangeFrame(notification: Notification) {
-        if let finalFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            let initialFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            var offset =  collectionView.contentOffset
+        if let finalFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let offset = collectionView.contentOffset
             guard finalFrame.minY < collectionView.contentSize.height else { return }
             
             keyboardTopY = finalFrame.minY

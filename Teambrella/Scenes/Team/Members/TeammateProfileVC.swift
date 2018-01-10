@@ -225,41 +225,6 @@ final class TeammateProfileVC: UIViewController, Routable {
     }
     
     @objc
-    func tapResetVote(sender: UIButton) {
-        guard let cell = votingRiskCell else { return }
-        guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
-        
-        cell.yourVoteValueLabel.alpha = 0.5
-        //sender.isEnabled = false
-        dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self, weak cell] json in
-            guard let `self` = self else { return }
-            guard let cell = cell else { return }
-            
-            cell.yourVoteValueLabel.alpha = 1
-            cell.isProxyHidden = false
-            self.resetVote(cell: cell)
-        }
-    }
-    
-    @objc
-    func tapShowOtherVoters(sender: UIButton) {
-        guard let ranges = dataSource.teammateLarge?.riskScale?.ranges else {
-            log("Can't present CompareTeamRisk controller. No ranges in extendedTeammate.", type: .error)
-            return
-        }
-        
-        service.router.presentCompareTeamRisk(ranges: ranges)
-    }
-    
-    @objc
-    func tapShowVotesOfOthers(sender: UIButton) {
-        guard let teamID = service.session?.currentTeam?.teamID else { return }
-        guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
-        
-        service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
-    }
-    
-    @objc
     private func tapPrivateMessage(sender: UIButton) {
         log("tapped private message", type: .userInteraction)
         let adaptor = TeammateAdaptor(teammateLarge: dataSource.teammateLarge)
@@ -417,7 +382,6 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 footer.label.text = "..."
             }
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -589,5 +553,36 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             cell.rightAvatarLabel.isHidden = true
         }
         setAvatar(avatarView: cell.leftAvatar, label: cell.leftAvatarLabel, with: range.teammates.first)
+    }
+    
+    func votingRisk(cell: VotingRiskCell, didTapButton button: UIButton) {
+        switch button {
+        case cell.resetVoteButton:
+            guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
+            
+            cell.yourVoteValueLabel.alpha = 0.5
+            dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self, weak cell] json in
+                guard let `self` = self else { return }
+                guard let cell = cell else { return }
+                
+                cell.yourVoteValueLabel.alpha = 1
+                cell.isProxyHidden = false
+                self.resetVote(cell: cell)
+            }
+        case cell.othersButton:
+            guard let ranges = dataSource.teammateLarge?.riskScale?.ranges else {
+                log("Can't present CompareTeamRisk controller. No ranges in extendedTeammate.", type: .error)
+                return
+            }
+            
+            service.router.presentCompareTeamRisk(ranges: ranges)
+        case cell.othersVotesButton:
+            guard let teamID = service.session?.currentTeam?.teamID else { return }
+            guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
+            
+            service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
+        default:
+            log("VotingRiskCell unknown button pressed", type: [.error])
+        }
     }
 }
