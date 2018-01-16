@@ -20,36 +20,37 @@
 //
 
 import Foundation
-import SwiftyJSON
 
-struct ClaimTransactionsCellModel {
+struct ClaimTransactionsCellModel: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case userID = "UserId"
+        case avatarString = "Avatar"
+        case name = "Name"
+        case status = "Status"
+        case to = "To"
+    }
+    
     let userID: String
     let avatarString: String
     let name: String
     let status: TransactionState
     let to: [ClaimTransactionTo]
     
-    init(json: JSON) {
-        userID = json["UserId"].stringValue
-        avatarString = json["Avatar"].stringValue
-        name = json["Name"].stringValue
-        status = TransactionState(rawValue: json["Status"].intValue) ?? .created
-        to = json["To"].arrayValue.flatMap { ClaimTransactionTo(json: $0) }
-    }
 }
 
-struct ClaimTransactionTo {
+struct ClaimTransactionTo: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case amountCrypto = "AmountCrypto"
+        case userID = "UserId"
+        case name = "Name"
+        case avatarString = "Avatar"
+        case amountFiat = "AmountFiat"
+    }
+    
     let amountCrypto: Double
     let userID: String
     let name: String
     let avatarString: String
     let amountFiat: Double
     
-    init(json: JSON) {
-        amountCrypto = json["AmountCrypto"].doubleValue
-        userID = json["UserId"].stringValue
-        name = json["Name"].stringValue
-        avatarString = json["Avatar"].stringValue
-        amountFiat = json["AmountFiat"].doubleValue
-    }
 }

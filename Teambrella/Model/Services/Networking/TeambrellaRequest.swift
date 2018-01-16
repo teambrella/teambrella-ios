@@ -156,7 +156,13 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .claimTransactions:
-            success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
+            do {
+                let models = try decoder.decode([ClaimTransactionsCellModel].self, from: serverReply.data)
+                success(.claimTransactions(models))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .home:
             do {
                 let model = try decoder.decode(HomeModel.self, from: serverReply.data)
