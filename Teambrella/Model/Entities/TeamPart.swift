@@ -34,6 +34,12 @@ struct TeamPartConcrete: TeamPart, Decodable {
     let currency: String
     let accessLevel: TeamAccessLevel
     
+    init() {
+        coverage = .other
+        currency = ""
+        accessLevel = .noAccess
+    }
+    
     init(json: JSON) {
         coverage = json["CoverageType"].int.flatMap { CoverageType(rawValue: $0) } ?? .other
         currency = json["Currency"].stringValue

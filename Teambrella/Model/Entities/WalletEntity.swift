@@ -20,58 +20,58 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct WalletEntity {
-    private var json: JSON
-    
-    init(json: JSON) {
-        self.json = json
-        coveragePart = CoverageEntity(json: json["CoveragePart"])
-        cosigners = json["Cosigners"].arrayValue.flatMap { CosignerEntity(json: $0) }
+struct WalletEntity: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case currencyRate = "CurrencyRate"
+        case cryptoBalance = "CryptoBalance"
+        case cryptoReserved = "CryptoReserved"
+        case needCrypto = "NeedCrypto"
+        case recommendedCrypto = "RecommendedCrypto"
+        case fundAddress = "FundAddress"
+        case defaultWithdrawAddress = "DefaultWithdrawAddress"
+        case cosigners = "Cosigners"
+        case coveragePart = "CoveragePart"
+        case teamPart = "TeamPart"
     }
     
-    var currencyRate: Double { return json["CurrencyRate"].doubleValue }
-    var cryptoBalance: Double { return json["CryptoBalance"].doubleValue }
-    var cryptoReserved: Double { return json["CryptoReserved"].doubleValue }
-    var needCrypto: Double { return json["NeedCrypto"].doubleValue }
-    var recommendedCrypto: Double { return json["RecommendedCrypto"].doubleValue }
-    var fundAddress: String { return json["FundAddress"].stringValue }
-    var defaultWithdrawAddress: String? { return json["DefaultWithdrawAddress"].string }
+    var currencyRate: Double
+    var cryptoBalance: Double
+    var cryptoReserved: Double
+    var needCrypto: Double
+    var recommendedCrypto: Double
+    var fundAddress: String
+    var defaultWithdrawAddress: String?
     var cosigners: [CosignerEntity]
     var coveragePart: CoverageEntity
-    var teamPart: JSON { return json["TeamPart"] }
-    var currency: String { return teamPart["Currency"].stringValue }
-    var coverageType: Int { return teamPart["CoverageType"].intValue }
-    var teamAccessLevel: TeamAccessLevel {
-        return TeamAccessLevel(rawValue: teamPart["TeamAccessLevel"].intValue) ?? .noAccess
+    var teamPart: TeamPartConcrete?
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        currencyRate = try container.decode(Double.self, forKey: .currencyRate)
+        cryptoBalance = try container.decode(Double.self, forKey: .cryptoBalance)
+        cryptoReserved = try container.decode(Double.self, forKey: .cryptoReserved)
+        needCrypto = try container.decode(Double.self, forKey: .needCrypto)
+        recommendedCrypto = try container.decode(Double.self, forKey: .recommendedCrypto)
+        fundAddress = try container.decode(String.self, forKey: .fundAddress)
+        defaultWithdrawAddress = try container.decodeIfPresent(String.self, forKey: .defaultWithdrawAddress)
+        cosigners = try container.decode([CosignerEntity].self, forKey: .cosigners)
+        coveragePart = try container.decode(CoverageEntity.self, forKey: .coveragePart)
+        teamPart = try container.decodeIfPresent(TeamPartConcrete.self, forKey: .teamPart)
     }
     
-    static func wallet(with json: JSON) -> WalletEntity {
-        return WalletEntity(json: json)
-    }
-    
-    static func empty() -> WalletEntity {
-        /*
-         "Txs" : null,
-         "DefaultWithdrawAddress" : "0x336a9288ee464752ae94349da78964ad716b1e20",
-         "CryptoReserved" : 0,
-         "NeedCrypto" : 0.58180862083255402,
-         "CurrencyRate" : 8214.667713167657,
-         "RecommendedCrypto" : 1.170885834665087,
-         "CryptoBalance" : 0.0072685929999789633,
-         "Currency" : "ARS",
-         "FundAddress" : null,
-         "CoveragePart" : {
-         "NextCoverage" : 0,
-         "ClaimLimit" : 18000,
-         "DeductibleAmount" : 0,
-         "Coverage" : 0,
-         "DaysToNextCoverage" : 0
-         }
- */
-        let json = JSON(["Cosigners": []])
-        return WalletEntity(json: json)
+    init() {
+        currencyRate = 0
+        cryptoBalance = 0
+        cryptoReserved = 0
+        needCrypto = 0
+        recommendedCrypto = 0
+        fundAddress = ""
+        defaultWithdrawAddress = ""
+        cosigners = []
+        coveragePart = CoverageEntity()
+        teamPart = TeamPartConcrete()
     }
 
 }

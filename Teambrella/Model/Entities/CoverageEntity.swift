@@ -20,18 +20,38 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct CoverageEntity {
-    private var json: JSON
-    
-    init(json: JSON) {
-        self.json = json
+struct CoverageEntity: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case coverage = "Coverage"
+        case nextCoverage = "NextCoverage"
+        case daysToNextCoverage = "DaysToNextCoverage"
+        case claimLimit = "ClaimLimit"
+        case deductibleAmount = "DeductibleAmount"
     }
+
+    var coverage: Double
+    var nextCoverage: Double
+    var daysToNextCoverage: Int
+    var claimLimit: Double
+    var deductibleAmount: Double
     
-    var coverage: Double { return json["Coverage"].doubleValue }
-    var nextCoverage: Double { return json["NextCoverage"].doubleValue }
-    var daysToNextCoverage: Int { return json["DaysToNextCoverage"].intValue }
-    var claimLimit: Double { return json["ClaimLimit"].doubleValue }
-    var deductibleAmount: Double { return json["DeductibleAmount"].doubleValue }
+    init() {
+        coverage = 0
+        nextCoverage = 0
+        daysToNextCoverage = 0
+        claimLimit = 0
+        deductibleAmount = 0
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        coverage = try container.decode(Double.self, forKey: .coverage)
+        nextCoverage = try container.decode(Double.self, forKey: .nextCoverage)
+        daysToNextCoverage = try container.decode(Int.self, forKey: .daysToNextCoverage)
+        claimLimit = try container.decode(Double.self, forKey: .claimLimit)
+        deductibleAmount = try container.decode(Double.self, forKey: .deductibleAmount)
+    }
+
 }

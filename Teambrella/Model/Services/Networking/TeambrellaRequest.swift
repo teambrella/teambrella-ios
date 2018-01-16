@@ -173,7 +173,13 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .wallet:
-            success(.wallet(WalletEntity(json: reply)))
+            do {
+                let model = try decoder.decode(WalletEntity.self, from: serverReply.data)
+                success(.wallet(model))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .walletTransactions:
             success(.walletTransactions(reply.arrayValue.flatMap { WalletTransactionsCellModel(json: $0) }))
         case .updates:
