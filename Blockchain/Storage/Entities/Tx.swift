@@ -88,5 +88,21 @@ class Tx: NSManagedObject {
         
         return Array(set).sorted { $0.id < $1.id }
     }
+
+    var fromMultisig: Multisig? {
+        if let kind = kind, kind == .saveFromPreviousWallet {
+            return teammate?.previousAddress
+        } else {
+            return teammate?.currentAddress
+        }
+    }
+
+    var toMultisig: Multisig? {
+        if let kind = kind, kind == .saveFromPreviousWallet {
+            return teammate?.currentAddress
+        } else {
+            return teammate?.nextAddress
+        }
+    }
     
 }

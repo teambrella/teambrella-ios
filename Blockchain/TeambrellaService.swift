@@ -261,7 +261,13 @@ class TeambrellaService {
                     //                                                      sameTeammateMultisig.creationTx,
                     //                                                      needServerUpdate));
                 } else {
-                    let gasPrice = self.wallet.contractGasPrice
+                    group.enter()
+                    var gasPrice = 0
+                    self.wallet.refreshContractCreationGasPrice { contractGasPrice in
+                        gasPrice = contractGasPrice
+                        group.leave()
+                    }
+
                     group.enter()
                     self.wallet.createOneWallet(myNonce: nonce,
                                            multisig: multisig,
@@ -381,7 +387,29 @@ class TeambrellaService {
     
     func cosignApprovedTransactions() {
         print("Teambrella service start \(#function)")
-        
+        let publicKey = key.publicKey
+        let list = contentProvider.transactionsCosignable
+        let user = contentProvider.user
+        for tx in list {
+            cosignTransaction(transaction: tx, userID: user.id)
+        }
+        contentProvider.save()
+    }
+
+    private func cosignTransaction(transaction: Tx, userID: Int) {
+        guard let kind = transaction.kind else { return }
+
+        switch kind {
+        case .payout, .withdraw, .moveToNextWallet:
+            guard let multisig = transaction.fromMultisig else { return }
+
+            for input in transaction.inputs {
+                //let signature = wallet.cos
+            }
+        default:
+            // TODO: support move & incoming TXs
+            break
+        }
     }
     
     func masterSign() {
