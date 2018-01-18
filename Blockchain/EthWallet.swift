@@ -35,8 +35,8 @@ class EthWallet {
     lazy var blockchain = { EtherNode(isTestNet: self.isTestNet) }()
     
     // 0.1 Gwei is enough since October 16, 2017 (1 Gwei = 10^9 wei)
-    var gasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
-    var contractGasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
+    var gasPrice: Int { return isTestNet ? 11000000001 : 4_000_000_001 }
+    var contractGasPrice: Int { return isTestNet ? 11000000001 : 4_000_000_001 }
     
     
     var contract: String? {
