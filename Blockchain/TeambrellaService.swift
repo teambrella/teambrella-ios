@@ -401,11 +401,11 @@ class TeambrellaService {
 
         switch kind {
         case .payout, .withdraw, .moveToNextWallet:
-            guard let multisig = transaction.fromMultisig else { return }
+            guard transaction.fromMultisig != nil else { return }
 
             for input in transaction.inputs {
                 let signature = wallet.cosign(transaction: transaction, payOrMoveFrom: input)
-                
+                contentProvider.addNewSignature(input: input, tx: transaction, signature: signature)
             }
         default:
             // TODO: support move & incoming TXs
