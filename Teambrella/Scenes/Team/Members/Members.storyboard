@@ -30,7 +30,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pBm-Fr-UWK">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="Dpw-qZ-ihn">
                                     <size key="itemSize" width="375" height="72"/>
@@ -295,7 +295,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvl-QB-fgG">
-                                <rect key="frame" x="0.0" y="-98" width="375" height="118"/>
+                                <rect key="frame" x="0.0" y="-40" width="375" height="150"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="OUQ-Zh-QkO">
                                         <rect key="frame" x="16" y="34" width="309" height="44"/>
@@ -334,7 +334,6 @@
                                     <constraint firstAttribute="bottom" secondItem="fxN-1F-D8t" secondAttribute="bottom" constant="16" id="Qw8-wg-Rxm"/>
                                     <constraint firstItem="fxN-1F-D8t" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OUQ-Zh-QkO" secondAttribute="bottom" constant="8" id="bGV-rO-uJ4"/>
                                     <constraint firstItem="fxN-1F-D8t" firstAttribute="top" secondItem="OUQ-Zh-QkO" secondAttribute="bottom" constant="16" id="lH5-Mn-yZc"/>
-                                    <constraint firstAttribute="height" constant="118" id="mEc-Nm-RcI"/>
                                     <constraint firstAttribute="trailing" secondItem="fxN-1F-D8t" secondAttribute="trailing" constant="16" id="qGi-FO-hqo"/>
                                     <constraint firstItem="OUQ-Zh-QkO" firstAttribute="top" secondItem="jvl-QB-fgG" secondAttribute="topMargin" id="xbr-4j-Hpq"/>
                                 </constraints>
@@ -343,10 +342,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="jvl-QB-fgG" firstAttribute="top" secondItem="1wC-vL-fzt" secondAttribute="bottom" constant="-118" id="5GA-Np-kuC"/>
+                            <constraint firstItem="jvl-QB-fgG" firstAttribute="top" secondItem="1wC-vL-fzt" secondAttribute="bottom" constant="-60" id="5GA-Np-kuC"/>
                             <constraint firstItem="pBm-Fr-UWK" firstAttribute="leading" secondItem="4lh-SU-DtU" secondAttribute="leading" id="83N-el-DSd"/>
-                            <constraint firstItem="pBm-Fr-UWK" firstAttribute="top" secondItem="1wC-vL-fzt" secondAttribute="bottom" id="8G6-S5-BnH"/>
                             <constraint firstAttribute="trailing" secondItem="pBm-Fr-UWK" secondAttribute="trailing" id="KHl-Eq-OEb"/>
+                            <constraint firstItem="jvl-QB-fgG" firstAttribute="bottom" secondItem="pBm-Fr-UWK" secondAttribute="top" id="Z9n-Qf-09f"/>
                             <constraint firstItem="5Gj-56-9wc" firstAttribute="top" secondItem="pBm-Fr-UWK" secondAttribute="bottom" id="e5b-39-3O3"/>
                             <constraint firstAttribute="trailing" secondItem="jvl-QB-fgG" secondAttribute="trailing" id="qFQ-3d-Uxp"/>
                             <constraint firstItem="jvl-QB-fgG" firstAttribute="leading" secondItem="4lh-SU-DtU" secondAttribute="leading" id="vdF-9D-TBZ"/>
@@ -434,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R64-iy-Skq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7361" y="2096"/>
+            <point key="canvasLocation" x="6996" y="1585"/>
         </scene>
         <!--Teammate ProfileVC-->
         <scene sceneID="9GJ-cE-bOX">
