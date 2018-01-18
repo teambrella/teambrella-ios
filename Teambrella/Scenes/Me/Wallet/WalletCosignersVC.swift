@@ -37,7 +37,7 @@ class WalletCosignersVC: UIViewController, Routable {
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
         } else {
-             automaticallyAdjustsScrollViewInsets = false
+            automaticallyAdjustsScrollViewInsets = false
         }
         self.addGradientNavBar()
         WalletCosignersCellBuilder.registerCells(in: collectionView)
@@ -101,6 +101,13 @@ extension WalletCosignersVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         let cosigner = dataSource[indexPath]
         WalletCosignersCellBuilder.populate(cell: cell, with: cosigner)
+        let maxRow = dataSource.count
+        if let cell = cell as? WalletCosignerCell {
+            cell.separator.isHidden = indexPath.row == maxRow - 1
+            ViewDecorator.decorateCollectionView(cell: cell,
+                                                 isFirst: indexPath.row == 0,
+                                                 isLast: indexPath.row == maxRow - 1)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

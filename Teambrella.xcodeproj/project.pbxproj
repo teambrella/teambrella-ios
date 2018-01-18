@@ -2746,7 +2746,6 @@
 				6D20CF951FDEE1890049BE9C /* TeamPart.swift */,
 				6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */,
 				6D20CF981FDEE3020049BE9C /* VotingPart.swift */,
-				94B4C37D1F1E18AC00AED4CE /* WalletEntity.swift */,
 			);
 			name = ServerModels;
 			sourceTree = "<group>";
@@ -2768,6 +2767,7 @@
 				6DA3FBA11FF2B39A00CA8FA1 /* Voter.swift */,
 				6DA3FBA41FF2BA0800CA8FA1 /* VotersList.swift */,
 				6DDB5D981FF698B60066A07F /* TeammateVotingResult.swift */,
+				94B4C37D1F1E18AC00AED4CE /* WalletEntity.swift */,
 				6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */,
 				6D35566A1FD2EE4400AEBF07 /* WithdrawTx.swift */,
 				94112D7C20066DB20031898E /* ProxyForEntity.swift */,

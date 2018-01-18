@@ -73,6 +73,13 @@ extension WalletTransactionsVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         WalletTransactionsCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        let maxRow = dataSource.count
+        if let cell = cell as? WalletTransactionCell {
+            cell.separator.isHidden = indexPath.row == maxRow - 1
+            ViewDecorator.decorateCollectionView(cell: cell,
+                                                 isFirst: indexPath.row == 0,
+                                                 isLast: indexPath.row == maxRow - 1)
+        }
         if indexPath.row == (dataSource.count - dataSource.limit/2) {
             dataSource.loadData()
         }

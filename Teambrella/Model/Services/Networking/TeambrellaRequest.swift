@@ -156,7 +156,13 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .claimTransactions:
-            success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
+            do {
+                let models = try decoder.decode([ClaimTransactionsCellModel].self, from: serverReply.data)
+                success(.claimTransactions(models))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .home:
             do {
                 let model = try decoder.decode(HomeModel.self, from: serverReply.data)
@@ -173,7 +179,13 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .wallet:
-            success(.wallet(WalletEntity(json: reply)))
+            do {
+                let model = try decoder.decode(WalletEntity.self, from: serverReply.data)
+                success(.wallet(model))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .walletTransactions:
             success(.walletTransactions(reply.arrayValue.flatMap { WalletTransactionsCellModel(json: $0) }))
         case .updates:

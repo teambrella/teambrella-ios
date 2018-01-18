@@ -131,10 +131,6 @@ final class UniversalChatVC: UIViewController, Routable {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapRightLabel))
         objectRightLabel.addGestureRecognizer(tap)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.scrollToBottom(animated: true)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

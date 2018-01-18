@@ -20,16 +20,24 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct CosignerEntity {
-    private var json: JSON
-    
-    init(json: JSON) {
-        self.json = json
+struct CosignerEntity: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case avatar = "Avatar"
+        case name = "Name"
+        case userId = "UserId"
     }
     
-    var avatar: String { return json["Avatar"].stringValue }
-    var name: String { return json["Name"].stringValue }
-    var userId: String { return json["UserId"].stringValue }
+    var avatar: String
+    var name: String
+    var userId: String
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+    
+        avatar = try container.decode(String.self, forKey: .avatar)
+        name = try container.decode(String.self, forKey: .name)
+        userId = try container.decode(String.self, forKey: .userId)
+    }
+
 }
