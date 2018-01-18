@@ -404,7 +404,8 @@ class TeambrellaService {
             guard let multisig = transaction.fromMultisig else { return }
 
             for input in transaction.inputs {
-                //let signature = wallet.cos
+                let signature = wallet.cosign(transaction: transaction, payOrMoveFrom: input)
+                
             }
         default:
             // TODO: support move & incoming TXs

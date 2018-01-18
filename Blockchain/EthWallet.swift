@@ -250,5 +250,27 @@ class EthWallet {
             completion(false)
         })
     }
+
+    func cosign(transaction: Tx, payOrMoveFrom: TxInput) -> Data {
+        guard let kind = transaction.kind else {
+            fatalError()
+        }
+
+        switch kind {
+        case .moveToNextWallet:
+            return cosignMove(transaction: transaction, moveFrom: payOrMoveFrom)
+        default:
+            return cosignPay(transaction: transaction, payFrom: payOrMoveFrom)
+        }
+    }
+
+    // MARK: TODO
+    func cosignPay(transaction: Tx, payFrom: TxInput) -> Data {
+        return Data()
+    }
+
+    func cosignMove(transaction: Tx, moveFrom: TxInput) -> Data {
+        return Data()
+    }
     
 }
