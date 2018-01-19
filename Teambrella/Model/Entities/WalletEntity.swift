@@ -48,7 +48,7 @@ struct WalletEntity: Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
+
         currencyRate = try container.decode(Double.self, forKey: .currencyRate)
         cryptoBalance = try container.decode(Double.self, forKey: .cryptoBalance)
         cryptoReserved = try container.decode(Double.self, forKey: .cryptoReserved)
