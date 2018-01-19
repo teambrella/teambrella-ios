@@ -36,7 +36,7 @@
 "Team.Teammates.teammates"                       = "TEAMMATES";
 "Team.Teammates.votingEndsIn"                    = "VOTING ENDS IN";
 "Team.Teammates.net"                             = "NET";
-"Team.MembersVC.indicatorTitle"                  = "Members";
+"Team.MembersVC.indicatorTitle"                  = "Teammates";
 "Team.MembersVC.searchHere"                      = "Search";
 
 "Team.TeammateCell.coversMe"                     = "COVER ME";
@@ -102,7 +102,7 @@
 "Team.JoinTeamVC.GreetingCell.greeting"          = "Hi %@!";
 
 "Team.JoinTeamVC.InfoCell.headerLabel"           = "TEAM INFO";
-"Team.JoinTeamVC.InfoCell.numberBar.left"        = "Members";
+"Team.JoinTeamVC.InfoCell.numberBar.left"        = "Teammates";
 "Team.JoinTeamVC.InfoCell.numberBar.right"       = "Discussions";
 "Team.JoinTeamVC.InfoCell.rulesButton"           = "Read Team Rules";
 

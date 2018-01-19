@@ -25,7 +25,7 @@
 "Proxy.MyProxiesVC.discussions"       = "DISCUSSIONS";
 "Proxy.MyProxiesVC.votingFreq"        = "VOTING FREQ.";
 "Proxy.MyProxiesVC.proxyRank"         = "PROXY RANK";
-"Proxy.UserIndexVC.members"           = "MEMBERS";
+"Proxy.UserIndexVC.members"           = "TEAMMATES";
 "Proxy.UserIndexVC.proxyRank"         = "PROXY RANK";
 
 "Proxy.Empty.title"                   = "You don't have Proxy Voters yet";
