@@ -22,6 +22,7 @@
 import PKHUD
 import UIKit
 import XLPagerTabStrip
+import MessageUI
 
 final class MembersVC: UIViewController, IndicatorInfoProvider {
     @IBOutlet var collectionView: UICollectionView!
@@ -102,10 +103,8 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     fileprivate func showSearchBar(show: Bool, animated: Bool) {
         guard show != searchbarIsShown else { return }
         
-        searchViewTopConstraint.constant = show
-            ? 0
-            : -searchView.frame.height
-        collectionView.contentInset.top = show ? searchView.frame.height : 0
+        searchViewTopConstraint.constant = show ? -60 : -searchView.frame.height
+        //collectionView.contentInset.top = show ? searchView.frame.height : 0
         searchbarIsShown = show
         if !show {
             view.endEditing(true)
@@ -117,6 +116,20 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
         } else {
             view.setNeedsLayout()
         }
+    }
+    
+    @IBAction func tapInviteFriendButton(_ sender: UIButton) {
+        let subject = "Invitation to Teambrella"
+        let text = """
+        Hi!
+        I want to invite you to Teambrella project
+        Please follow this link:
+        
+        https://teambrella.com
+        """
+        
+        let vc = UIActivityViewController(activityItems: [text], applicationActivities: [])
+        present(vc, animated: true)
     }
     
     @IBAction func tapSort(_ sender: UIButton) {
@@ -231,7 +244,6 @@ extension MembersVC: UISearchBarDelegate {
 // MARK: UIScrollViewDelegate
 extension MembersVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        /*
         let currentOffset = scrollView.contentOffset.y
         let velocity = currentOffset - previousScrollOffset
         previousScrollOffset = currentOffset
@@ -242,7 +254,6 @@ extension MembersVC: UIScrollViewDelegate {
         if velocity < -10 {
             showSearchBar(show: true, animated: true)
         }
- */
     }
 }
 

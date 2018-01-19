@@ -322,6 +322,9 @@
                                         <state key="normal" title="Invite a Friend">
                                             <color key="titleColor" red="0.30588235294117649" green="0.76862745098039209" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tapInviteFriendButton:" destination="KAD-Uk-Hr8" eventType="touchUpInside" id="CNB-nE-Wpd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
