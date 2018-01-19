@@ -165,7 +165,8 @@ class MembersRiskStrategy: MembersFetchStrategy {
         
         for (idx, range) in ranges.enumerated() {
             for teammate in teammates {
-                if teammate.risk >= range.left && teammate.risk <= range.right {
+                let risk = teammate.risk ?? 0
+                if risk >= range.left && risk <= range.right {
                     arrayOfRanges[idx].append(teammate)
                 }
             }

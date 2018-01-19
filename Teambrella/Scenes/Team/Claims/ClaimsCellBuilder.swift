@@ -47,7 +47,11 @@ struct ClaimsCellBuilder {
             cell.avatarView.showImage(string: claim.smallPhoto)
             cell.claimedAmountLabel.text = service.currencySymbol + String.truncatedNumber(claim.claimAmount)
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
-            cell.votedLabel.text = "Team.Claims.VitedCell.voted".localized + String.formattedNumber(claim.myVote)
+            if let vote = claim.myVote {
+            cell.votedLabel.text = "Team.Claims.VitedCell.voted".localized + String.formattedNumber(vote)
+            } else {
+                cell.votedLabel.text = ""
+            }
             if let name = claim.proxyName {
                 cell.voterLabel.isHidden = false
                 cell.voterLabel.text = "By " + name

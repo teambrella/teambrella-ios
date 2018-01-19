@@ -51,7 +51,7 @@ struct ClaimEntity: Decodable {
     var reimbursement: Double
 //    var votingRes: Double?
 //    var paymentRes: Double
-    var myVote: Double
+    var myVote: Double?
     
     var proxyAvatar: String?
     var proxyName: String?

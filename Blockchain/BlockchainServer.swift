@@ -201,7 +201,7 @@ public class BlockchainServer {
     }
     
     func fetch(urlString: String, success: @escaping (_ result: JSON) -> Void, failure: @escaping (Error?) -> Void) {
-        guard let url = URL(string: urlString) else { fatalError() }
+        guard let url = url(string: urlString) else { fatalError() }
         
         let request = URLRequest(url: url)
         Alamofire.request(request).responseJSON { response in
