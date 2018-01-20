@@ -387,7 +387,7 @@ class TeambrellaService {
     
     func cosignApprovedTransactions() {
         print("Teambrella service start \(#function)")
-        let publicKey = key.publicKey
+        //let publicKey = key.publicKey
         let list = contentProvider.transactionsCosignable
         let user = contentProvider.user
         for tx in list {

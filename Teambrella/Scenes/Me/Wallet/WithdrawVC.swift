@@ -41,8 +41,8 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     // MARK: Lifecycle
     
     func setupCrypto(balance: Double, reserved: Double) {
-            dataSource.cryptoBalance = balance
-            dataSource.cryptoReserved = reserved
+        dataSource.cryptoBalance = balance
+        dataSource.cryptoReserved = reserved
     }
     
     override func viewDidLoad() {
@@ -68,7 +68,6 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
             self?.present(controller, animated: true, completion: nil)
         }
         addKeyboardObservers()
-        dataSource.loadData()
         addGradientNavBar()
         title = "Me.Wallet.Withdraw".localized
     }
@@ -85,11 +84,12 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard isFirstLoading == false else {
+        guard isFirstLoading == true else {
             isFirstLoading = false
             return
         }
-        
+
+        dataSource.loadData()
         //dataSource.updateSilently()
     }
     
@@ -189,8 +189,11 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     }
     
     @objc
-    private func tapWithdraw() {
-       dataSource.withdraw()
+    private func tapWithdraw(sender: UIButton) {
+        sender.isEnabled = false
+        sender.alpha = 0.5
+        dataSource.withdraw()
+        dataSource.cleanWithdrawDetails()
     }
     
     func changedDetails(cell: WithdrawDetailsCell) {
@@ -303,15 +306,17 @@ extension WithdrawVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return indexPath.section == 0 ? CGSize(width: collectionView.bounds.width - 32, height: 300) :
-            CGSize(width: collectionView.bounds.width, height: 72)
+        return indexPath.section == 0
+            ? CGSize(width: collectionView.bounds.width - 32, height: 300)
+            : CGSize(width: collectionView.bounds.width, height: 72)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return section == 0 ? CGSize(width: collectionView.bounds.width, height: 20) :
-             CGSize(width: collectionView.bounds.width, height: 40)
+        return section == 0
+            ? CGSize(width: collectionView.bounds.width, height: 20)
+            : CGSize(width: collectionView.bounds.width, height: 40)
     }
 }
 
