@@ -14,6 +14,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import AVFoundation
 import PKHUD
 import UIKit
 
@@ -176,9 +177,41 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     @objc
     private func tapQR() {
+        if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
+            showCodeCapture()
+        } else {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] granted in
+                if granted {
+                    self?.showCodeCapture()
+                } else {
+                    self?.alertNoCameraAccess()
+                }
+            })
+        }
+    }
+
+    private func showCodeCapture() {
         let vc = service.router.showCodeCapture(in: self, delegate: self)
         vc?.confirmButton.isEnabled = false
         vc?.confirmButton.alpha = 0.5
+    }
+
+    private func alertNoCameraAccess() {
+        let alert = UIAlertController(title: "Me.Wallet.Withdraw.noCameraAccess.title".localized,
+                                      message: "Me.Wallet.Withdraw.noCameraAccess.details".localized,
+                                      preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Me.Wallet.Withdraw.noCameraAccess.cancelButton".localized,
+                                      style: .cancel))
+        alert.addAction(UIAlertAction(title: "Me.Wallet.Withdraw.noCameraAccess.settingsButton".localized,
+                                      style: .default) { (alert) -> Void in
+            guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            UIApplication.shared.open(url, options: [:], completionHandler: { success in
+
+            })
+        })
+
+        present(alert, animated: true)
     }
     
     @objc
