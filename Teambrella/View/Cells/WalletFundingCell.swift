@@ -24,8 +24,6 @@ import UIKit
 class WalletFundingCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var headerLabel: Label!
     @IBOutlet var infoButton: UIButton!
-    @IBOutlet var upperNumberView: NumberView!
-    @IBOutlet var upperCurrencyLabel: Label!
     @IBOutlet var lowerNumberView: NumberView!
     @IBOutlet var lowerCurrencyLabel: Label!
     @IBOutlet var barcodeButton: BorderedButton!
@@ -35,7 +33,6 @@ class WalletFundingCell: UICollectionViewCell, XIBInitableCell {
         super.awakeFromNib()
         ViewDecorator.shadow(for: self, opacity: 0.1, radius: 5)
         ViewDecorator.roundedEdges(for: self)
-        upperNumberView.alignmentType = .leading
         lowerNumberView.alignmentType = .leading
     }
 

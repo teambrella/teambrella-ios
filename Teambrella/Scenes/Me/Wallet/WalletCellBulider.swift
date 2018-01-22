@@ -87,12 +87,7 @@ struct WalletCellBuilder {
         cell.headerLabel.text = balance > 0
             ? "Me.WalletVC.fundingCell.additionalTitle".localized
             : "Me.WalletVC.fundingCell.title".localized
-        cell.upperNumberView.titleLabel.text = "Me.WalletVC.upperBrick.title".localized
-        cell.upperNumberView.amountLabel.text = String.formattedNumber(model.maxCoverageFunding * 1000)
-        cell.upperNumberView.isBadgeVisible = false
         if let team = service.session?.currentTeam {
-            cell.upperCurrencyLabel.text =
-                String.formattedNumber(model.maxCoverageFunding * currencyRate) + " " + team.currency
             cell.lowerCurrencyLabel.text =
                 String.formattedNumber(model.uninterruptedCoverageFunding * currencyRate) + " " + team.currency
         }

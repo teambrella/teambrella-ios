@@ -14,8 +14,6 @@
 "Me.WalletVC.rightBrick.title"                 = "AVAILABLE";
 "Me.WalletVC.withdrawButton"                   = "Withdraw";
 "Me.WalletVC.fundingCell.title"                = "RECOMMENDED FUNDING";
-"Me.WalletVC.upperBrick.title"                 = "FOR MAX COVERAGE (100%)";
-"Me.WalletVC.lowerBrick.title"                 = "FOR UNINTERRUPTED COVERAGE";
 "Me.WalletVC.fundButton"                       = "Fund wallet";
 
 "Me.WalletVC.actionsCell.cosigners"            = "Co-signers";
@@ -92,3 +90,5 @@
 "Me.Wallet.Withdraw.noCameraAccess.details" = "Please grant access to device camera for Teambrella app to be able to scan QR codes";
 "Me.Wallet.Withdraw.noCameraAccess.cancelButton" = "Cancel";
 "Me.Wallet.Withdraw.noCameraAccess.settingsButton" = "Settings";
+
+"Me.WalletVC.lowerBrick.title"                 = "RECOMMENDED";
