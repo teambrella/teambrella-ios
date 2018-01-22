@@ -43,7 +43,11 @@ final class ErrorPresenter {
         } else {
             let error = error as NSError
             switch error.code {
-            case -1001:
+            case NSURLErrorTimedOut,
+                 NSURLErrorCannotFindHost,
+                 NSURLErrorCannotConnectToHost,
+                 NSURLErrorNetworkConnectionLost,
+                 NSURLErrorNotConnectedToInternet:
                 presentServerUnreacheable()
             default:
                 presentGeneral(error: error)

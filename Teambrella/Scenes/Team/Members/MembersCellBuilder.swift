@@ -24,7 +24,7 @@ import UIKit
 
 struct MembersCellBuilder {
     static func populate(cell: UICollectionViewCell, with teammate: TeammateListEntity) {
-         if let cell = cell as? TeammateCandidateCell {
+        if let cell = cell as? TeammateCandidateCell {
             cell.titleLabel.text = teammate.name.entire
             if let url: URL = URL(string: URLBuilder().avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
@@ -50,7 +50,11 @@ struct MembersCellBuilder {
             cell.titleLabel.text = teammate.name.entire
             let detailsText: String = "\(teammate.model), \(teammate.year)".uppercased()
             cell.detailsLabel.text = detailsText
-            cell.avatarView.badgeText = String(format: "%.1f", teammate.risk)
+            if let risk = teammate.risk {
+                cell.avatarView.badgeText = String(format: "%.1f", risk)
+            } else {
+                cell.avatarView.badgeText = nil
+            }
         }
     }
     

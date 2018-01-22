@@ -47,7 +47,6 @@ final class PrivateMessagesVC: UIViewController, Routable {
         title = "Home.PrivateMessages.title".localized
     }
     
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         title = nil

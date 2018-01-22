@@ -74,6 +74,10 @@ struct TeambrellaRequest {
         // temporary item for compatibility with legacy code
         let reply = JSON(serverReply.json)
         let decoder = JSONDecoder()
+        decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "PositiveInfinity",
+                                                                        negativeInfinity: "NegativeInfinity",
+                                                                        nan: "NaN")
+
         switch type {
         case .timestamp:
             success(.timestamp)

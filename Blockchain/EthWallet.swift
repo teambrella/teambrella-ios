@@ -35,8 +35,10 @@ class EthWallet {
     lazy var blockchain = { EtherNode(isTestNet: self.isTestNet) }()
     
     // 0.1 Gwei is enough since October 16, 2017 (1 Gwei = 10^9 wei)
-    var gasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
-    var contractGasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
+    //var gasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
+    //var contractGasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
+    var gasPrice: Int = -1
+    var contractGasPrice: Int = -1
     
     
     var contract: String? {
@@ -73,10 +75,10 @@ class EthWallet {
             failure(EthWalletError.multisigHasNoCosigners(multisig.id))
             return
         }
-//        guard let creationTx = multisig.creationTx else {
-//            failure(EthWalletError.multisigHasNoCreationTx(multisig.id))
-//            return
-//        }
+        //        guard let creationTx = multisig.creationTx else {
+        //            failure(EthWalletError.multisigHasNoCreationTx(multisig.id))
+        //            return
+        //        }
         
         let addresses = cosigners.flatMap { $0.teammate.address }
         guard let contract = contract else {
@@ -96,7 +98,7 @@ class EthWallet {
         } catch let AbiArguments.AbiArgumentsError.unEncodableArgument(wrongArgument) {
             print("AbiArguments failed to accept the wrong argument: \(wrongArgument)")
         } catch {
-             failure(error)
+            failure(error)
         }
     }
     
@@ -163,42 +165,112 @@ class EthWallet {
             failure(error)
         })
     }
-    
+
+    func refreshGasPrice(completion: @escaping (Int) -> Void) {
+        let gasStation = GasStation()
+        gasStation.gasPrice { [weak self] price, error in
+            guard let `self` = self else { return }
+
+            if let error = error {
+                print("refresh gas error: \(error)")
+            }
+
+            switch price {
+            case ..<0:
+                print("Failed to get the gas price from a server. A default gas price will be used.")
+                self.gasPrice = 100_000_001
+            case 50_000_000_001...:
+                print("The server is kidding with us about the gas price: \(price)")
+                self.gasPrice = 50_000_000_001
+            default:
+                self.gasPrice = price
+            }
+            completion(self.gasPrice)
+        }
+    }
+
+    func refreshContractCreationGasPrice(completion: @escaping (Int) -> Void) {
+        let gasStation = GasStation()
+        gasStation.contractCreationGasPrice { [weak self] price, error in
+            guard let `self` = self else { return }
+
+            if let error = error {
+                print("refresh gas error: \(error)")
+            }
+
+            switch price {
+            case ..<0:
+                print("Failed to get the gas price from a server. A default gas price will be used.")
+                self.contractGasPrice = 100_000_001
+            case 8_000_000_002...:
+                print("The server is kidding with us about the contract gas price: \(price)")
+                self.contractGasPrice = 8_000_000_001
+            default:
+                self.contractGasPrice = price
+            }
+            completion(self.contractGasPrice)
+        }
+    }
+
     func deposit(multisig: Multisig, completion: @escaping (Bool) -> Void) {
         guard let address = processor.ethAddressString else { return }
         
         blockchain.checkBalance(address: address, success: { gasWalletAmount in
             print("balance is \(gasWalletAmount)")
             if gasWalletAmount > Constant.maxGasWalletBalance {
-                self.blockchain.checkNonce(addressHex: address, success: { nonce in
-                    let value = gasWalletAmount - Constant.minGasWalletBalance
-                    do {
-                        var tx = try self.processor.depositTx(nonce: nonce,
-                                                 gasLimit: 50000,
-                                                 toAddress: multisig.address!,
-                                                 gasPrice: self.gasPrice,
-                                                 value: value)
-                        try tx = self.processor.signTx(unsignedTx: tx, isTestNet: self.isTestNet)
-                        self.publish(cryptoTx: tx, completion: { txHash in
-                            print("Deposit tx published: \(txHash)")
-                            completion(true)
-                        }, failure: { error in
-                            print("Publish Tx failed with \(String(describing: error))")
+                self.refreshGasPrice(completion: { gasPrice in
+                    self.blockchain.checkNonce(addressHex: address, success: { nonce in
+                        let value = gasWalletAmount - Constant.minGasWalletBalance
+                        do {
+                            var tx = try self.processor.depositTx(nonce: nonce,
+                                                                  gasLimit: 50000,
+                                                                  toAddress: multisig.address!,
+                                                                  gasPrice: gasPrice,
+                                                                  value: value)
+                            try tx = self.processor.signTx(unsignedTx: tx, isTestNet: self.isTestNet)
+                            self.publish(cryptoTx: tx, completion: { txHash in
+                                print("Deposit tx published: \(txHash)")
+                                completion(true)
+                            }, failure: { error in
+                                print("Publish Tx failed with \(String(describing: error))")
+                                completion(false)
+                            })
+                        } catch {
+                            print("Deposit Tx creation failed with \(String(describing: error))")
                             completion(false)
-                        })
-                    } catch {
-                        print("Deposit Tx creation failed with \(String(describing: error))")
+                        }
+                    }, failure: { error in
+                        print("Check nonce failed with \(String(describing: error))")
                         completion(false)
-                    }
-                }, failure: { error in
-                    print("Check nonce failed with \(String(describing: error))")
-                    completion(false)
+                    })
                 })
             }
         }, failure: { error in
             print("Check balance failed with \(String(describing: error))")
             completion(false)
         })
+    }
+
+    func cosign(transaction: Tx, payOrMoveFrom: TxInput) -> Data {
+        guard let kind = transaction.kind else {
+            fatalError()
+        }
+
+        switch kind {
+        case .moveToNextWallet:
+            return cosignMove(transaction: transaction, moveFrom: payOrMoveFrom)
+        default:
+            return cosignPay(transaction: transaction, payFrom: payOrMoveFrom)
+        }
+    }
+
+    // MARK: TODO
+    func cosignPay(transaction: Tx, payFrom: TxInput) -> Data {
+        return Data()
+    }
+
+    func cosignMove(transaction: Tx, moveFrom: TxInput) -> Data {
+        return Data()
     }
     
 }

@@ -19,7 +19,9 @@ import Foundation
 final class WithdrawDataSource {
     let teamID: Int
     private(set) var isLoading = false
-    private(set) var sections: Int = 1
+    var sections: Int {
+        return 1 + self.transactions.filter { $0.isEmpty == false }.count
+    }
     
     var cryptoBalance: Double = 0.0
     var cryptoReserved: Double = 0.0
@@ -75,39 +77,34 @@ final class WithdrawDataSource {
     
     func rows(in section: Int) -> Int {
         guard section > 0 else { return 1 }
-        guard section - 1 < transactions.count else { return 0 }
+
+        let filtered = transactions.filter { $0.isEmpty == false }
+        guard section - 1 < filtered.count else { return 0 }
         
-        return transactions[section - 1].count
+        return filtered[section - 1].count
     }
     
     func headerName(section: Int) -> String? {
+        var headers = ["Me.Wallet.Withdraw.header.queued",
+                       "Me.Wallet.Withdraw.header.inProgress",
+                       "Me.Wallet.Withdraw.header.history"]
+        for (idx, type) in transactions.enumerated().reversed() where type.isEmpty {
+                headers.remove(at: headers.count - 1 - idx)
+        }
         switch section {
         case 0:
             return ""
-        case 1:
-            return transactions[0].isEmpty ? nil : "Me.Wallet.Withdraw.header.queued".localized
-        case 2:
-            return transactions[1].isEmpty ? nil : "Me.Wallet.Withdraw.header.inProgress".localized
-        case 3:
-            return transactions[2].isEmpty ? nil : "Me.Wallet.Withdraw.header.history".localized
         default:
-            return nil
+            return headers[section - 1].localized
         }
     }
     
     func currencyName(section: Int) -> String? {
-        let string = "mETH"
         switch section {
         case 0:
             return ""
-        case 1:
-            return transactions[0].isEmpty ? nil : string
-        case 2:
-            return transactions[1].isEmpty ? nil : string
-        case 3:
-            return transactions[2].isEmpty ? nil : string
         default:
-            return nil
+            return "mETH"
         }
     }
     
@@ -145,21 +142,23 @@ final class WithdrawDataSource {
             self?.isLoading = false
         }
     }
+
+    func cleanWithdrawDetails() {
+        detailsModel.amountValue = ""
+        detailsModel.toValue = ""
+    }
     
     // MARK: Private
     
     private func addQueued(transaction: WithdrawTx) {
-        if transactions[0].isEmpty { sections += 1 }
         transactions[0].append(transaction)
     }
     
     private func addProcessing(transaction: WithdrawTx) {
-        if transactions[1].isEmpty { sections += 1 }
         transactions[1].append(transaction)
     }
     
     private func addHistory(transaction: WithdrawTx) {
-        if transactions[2].isEmpty { sections += 1 }
         transactions[2].append(transaction)
     }
     
@@ -170,7 +169,9 @@ final class WithdrawDataSource {
         guard indexPath.row < rows(in: indexPath.section) else { return nil }
         
         if indexPath.section == 0 { return detailsModel }
-        let transaction = transactions[indexPath.section - 1][indexPath.row]
+
+        let filtered = transactions.filter { $0.isEmpty == false }
+        let transaction = filtered[indexPath.section - 1][indexPath.row]
         return modelBuilder.modelFrom(transaction: transaction)
     }
 }

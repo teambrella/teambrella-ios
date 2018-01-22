@@ -49,11 +49,38 @@ class Teammate: NSManagedObject {
         
         return Array(set)
     }
+
+    var previousAddress: Multisig? {
+        guard let multisigs = multisigsValue as? Set<Multisig> else { return nil }
+
+        for multisig in multisigs where multisig.status == .previous {
+            return multisig
+        }
+        return nil
+    }
+
+    var currentAddress: Multisig? {
+        guard let multisigs = multisigsValue as? Set<Multisig> else { return nil }
+
+        for multisig in multisigs where multisig.status == .current {
+            return multisig
+        }
+        return nil
+    }
+
+    var nextAddress: Multisig? {
+        guard let multisigs = multisigsValue as? Set<Multisig> else { return nil }
+
+        for multisig in multisigs where multisig.status == .next {
+            return multisig
+        }
+        return nil
+    }
     
 //    var addressPrevious: CryptoAddress? {
 //        return addresses.filter { $0.status == UserAddressStatus.previous }.first
 //    }
-//    
+//
 //    var addressCurrent: CryptoAddress? {
 //        return addresses.filter { $0.status == UserAddressStatus.current }.first
 //    }

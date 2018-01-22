@@ -71,13 +71,13 @@ class TeambrellaContentProvider {
     // MARK: Address
     
     /*
-    func address(id: String) -> CryptoAddress? {
-        let request: NSFetchRequest<CryptoAddress> = CryptoAddress.fetchRequest()
-        request.predicate = NSPredicate(format: "addressValue = %@", id)
-        let result = try? context.fetch(request)
-        return result?.first
-    }
-    */
+     func address(id: String) -> CryptoAddress? {
+     let request: NSFetchRequest<CryptoAddress> = CryptoAddress.fetchRequest()
+     request.predicate = NSPredicate(format: "addressValue = %@", id)
+     let result = try? context.fetch(request)
+     return result?.first
+     }
+     */
     
     // MARK: Cosigner
     
@@ -278,12 +278,19 @@ class TeambrellaContentProvider {
         ]
         return signatures(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).first
     }
-    
+
+    /**
+     Adds TxSignature to the given input only in case if transaction owner is Me.
+     
+     - Important:
+     Saves result to the database
+     */
     @discardableResult
     func addNewSignature(input: TxInput, tx: Tx, signature: Data) -> TxSignature? {
         let txSignature = TxSignature.create(in: context)
         txSignature.inputValue = input
         guard let me = tx.teammate?.team.me(user: user) else { return nil }
+        
         txSignature.teammateValue = me
         txSignature.isServerUpdateNeededValue = true
         txSignature.signatureValue = signature

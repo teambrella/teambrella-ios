@@ -14,6 +14,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import AVFoundation
 import PKHUD
 import UIKit
 
@@ -41,8 +42,8 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     // MARK: Lifecycle
     
     func setupCrypto(balance: Double, reserved: Double) {
-            dataSource.cryptoBalance = balance
-            dataSource.cryptoReserved = reserved
+        dataSource.cryptoBalance = balance
+        dataSource.cryptoReserved = reserved
     }
     
     override func viewDidLoad() {
@@ -68,7 +69,6 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
             self?.present(controller, animated: true, completion: nil)
         }
         addKeyboardObservers()
-        dataSource.loadData()
         addGradientNavBar()
         title = "Me.Wallet.Withdraw".localized
     }
@@ -85,11 +85,12 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard isFirstLoading == false else {
+        guard isFirstLoading == true else {
             isFirstLoading = false
             return
         }
-        
+
+        dataSource.loadData()
         //dataSource.updateSilently()
     }
     
@@ -176,9 +177,41 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     @objc
     private func tapQR() {
+        if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
+            showCodeCapture()
+        } else {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] granted in
+                if granted {
+                    self?.showCodeCapture()
+                } else {
+                    self?.alertNoCameraAccess()
+                }
+            })
+        }
+    }
+
+    private func showCodeCapture() {
         let vc = service.router.showCodeCapture(in: self, delegate: self)
         vc?.confirmButton.isEnabled = false
         vc?.confirmButton.alpha = 0.5
+    }
+
+    private func alertNoCameraAccess() {
+        let alert = UIAlertController(title: "Me.Wallet.Withdraw.noCameraAccess.title".localized,
+                                      message: "Me.Wallet.Withdraw.noCameraAccess.details".localized,
+                                      preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Me.Wallet.Withdraw.noCameraAccess.cancelButton".localized,
+                                      style: .cancel))
+        alert.addAction(UIAlertAction(title: "Me.Wallet.Withdraw.noCameraAccess.settingsButton".localized,
+                                      style: .default) { (alert) -> Void in
+            guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            UIApplication.shared.open(url, options: [:], completionHandler: { success in
+
+            })
+        })
+
+        present(alert, animated: true)
     }
     
     @objc
@@ -189,8 +222,11 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     }
     
     @objc
-    private func tapWithdraw() {
-       dataSource.withdraw()
+    private func tapWithdraw(sender: UIButton) {
+        sender.isEnabled = false
+        sender.alpha = 0.5
+        dataSource.withdraw()
+        dataSource.cleanWithdrawDetails()
     }
     
     func changedDetails(cell: WithdrawDetailsCell) {
@@ -303,15 +339,17 @@ extension WithdrawVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return indexPath.section == 0 ? CGSize(width: collectionView.bounds.width - 32, height: 300) :
-            CGSize(width: collectionView.bounds.width, height: 72)
+        return indexPath.section == 0
+            ? CGSize(width: collectionView.bounds.width - 32, height: 300)
+            : CGSize(width: collectionView.bounds.width, height: 72)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return section == 0 ? CGSize(width: collectionView.bounds.width, height: 20) :
-             CGSize(width: collectionView.bounds.width, height: 40)
+        return section == 0
+            ? CGSize(width: collectionView.bounds.width, height: 20)
+            : CGSize(width: collectionView.bounds.width, height: 40)
     }
 }
 
