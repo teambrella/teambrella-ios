@@ -42,7 +42,7 @@ struct ChooseYourTeamCellModel: TeamCellModel {
         }
         teamName = team.teamName
         itemName = team.objectName ?? ""
-        if let coverage = team.teamCoverage {
+        if let coverage = team.objectCoverage {
             self.coverage = String.formattedNumber(coverage * 100) + "%"
         } else {
             self.coverage = "0%"
