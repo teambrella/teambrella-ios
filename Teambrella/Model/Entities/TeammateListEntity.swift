@@ -48,8 +48,8 @@ class TeammateListEntity: Decodable {
     let isVoting: Bool
     let model: String
     let name: Name
-    let risk: Double
-    let riskVoted: Double
+    let risk: Double?
+    let riskVoted: Double?
     let totallyPaid: Double
     let hasUnread: Bool
     let userID: String

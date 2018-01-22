@@ -1,10 +1,5 @@
 //
-//  CosignerEntity.swift
-//  Teambrella
-//
-//  Created by Екатерина Рыжова on 17.07.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,23 +16,13 @@
 
 import Foundation
 
-struct CosignerEntity: Decodable {
+struct ProxyRatingEntity: Decodable {
     enum CodingKeys: String, CodingKey {
-        case avatar = "Avatar"
-        case name = "Name"
-        case userId = "UserId"
+        case members = "Members"
+        case totalCount = "TotalCount"
     }
     
-    var avatar: String
-    var name: String
-    var userId: String
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+    var members: [UserIndexCellModel]
+    let totalCount: Double
     
-        avatar = try container.decode(String.self, forKey: .avatar)
-        name = try container.decode(String.self, forKey: .name)
-        userId = try container.decode(String.self, forKey: .userId)
-    }
-
 }

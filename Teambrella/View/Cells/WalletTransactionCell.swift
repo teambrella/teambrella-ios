@@ -32,6 +32,7 @@ class WalletTransactionCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var statusLabel: InfoHelpLabel!
     @IBOutlet var amountTitle: InfoHelpLabel!
     @IBOutlet var amountLabel: InfoHelpLabel!
+    @IBOutlet weak var separator: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

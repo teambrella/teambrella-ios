@@ -47,7 +47,7 @@ class WalletDataSource {
                 self?.fundAddress = wallet.fundAddress
                 self?.onUpdate?()
             case let .error(error):
-                 self?.onError?(error)
+                self?.onError?(error)
             default:
                 break
             }
@@ -56,10 +56,10 @@ class WalletDataSource {
     }
     
     func emptyWallet() {
-       let wallet = WalletEntity.empty()
+        let wallet = WalletEntity()
         self.wallet = wallet
         createCellModels(with: wallet)
-       fundAddress = wallet.fundAddress
+        fundAddress = wallet.fundAddress
         onUpdate?()
     }
     
@@ -73,7 +73,7 @@ class WalletDataSource {
         let avatars = wallet.cosigners.map { $0.avatar }
         var avatarsPreview: [String] = []
         if avatars.count >= 3 {
-       avatarsPreview = Array(avatars[..<3])
+            avatarsPreview = Array(avatars[..<3])
         }
         items.append(WalletButtonsCellModel(avatars: avatars, avatarsPreview: avatarsPreview))
     }

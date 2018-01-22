@@ -34,4 +34,6 @@ enum SocketCommand: Int {
     case newTeammates   = 9
     
     case theyTyping     = 13
+
+    case dbDump         = 101
 }

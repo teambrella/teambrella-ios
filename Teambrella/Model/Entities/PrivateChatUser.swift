@@ -20,10 +20,16 @@
 //
 
 import Foundation
-import SwiftyJSON
 
-struct PrivateChatUser {
-    //let json: JSON
+struct PrivateChatUser: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case id = "UserId"
+        case avatar = "Avatar"
+        case name = "Name"
+        case text = "Text"
+        case unreadCount = "UnreadCount"
+        case minutesSinceLast = "SinceLastMessageMinutes"
+    }
     
     let id: String
     let avatar: String
@@ -32,13 +38,13 @@ struct PrivateChatUser {
     let unreadCount: Int
     let minutesSinceLast: Int
     
-    init(json: JSON) {
-        id = json["UserId"].stringValue
-        avatar = json["Avatar"].stringValue
-        name = json["Name"].stringValue
-        text = json["Text"].stringValue
-        unreadCount = json["UnreadCount"].intValue
-        minutesSinceLast = json["SinceLastMessageMinutes"].intValue
+    init(teammateLarge: TeammateLarge) {
+        id = teammateLarge.basic.id
+        avatar = teammateLarge.basic.avatar
+        name = teammateLarge.basic.name.short
+        text = teammateLarge.topic.originalPostText
+        unreadCount = teammateLarge.topic.unreadCount
+        minutesSinceLast = teammateLarge.topic.minutesSinceLastPost
     }
     
     init?(remoteCommand: RemoteCommand) {

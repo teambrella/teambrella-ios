@@ -74,6 +74,10 @@ struct TeambrellaRequest {
         // temporary item for compatibility with legacy code
         let reply = JSON(serverReply.json)
         let decoder = JSONDecoder()
+        decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "PositiveInfinity",
+                                                                        negativeInfinity: "NegativeInfinity",
+                                                                        nan: "NaN")
+
         switch type {
         case .timestamp:
             success(.timestamp)
@@ -156,7 +160,13 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .claimTransactions:
-            success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
+            do {
+                let models = try decoder.decode([ClaimTransactionsCellModel].self, from: serverReply.data)
+                success(.claimTransactions(models))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .home:
             do {
                 let model = try decoder.decode(HomeModel.self, from: serverReply.data)
@@ -173,7 +183,13 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .wallet:
-            success(.wallet(WalletEntity(json: reply)))
+            do {
+                let model = try decoder.decode(WalletEntity.self, from: serverReply.data)
+                success(.wallet(model))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .walletTransactions:
             success(.walletTransactions(reply.arrayValue.flatMap { WalletTransactionsCellModel(json: $0) }))
         case .updates:
@@ -201,11 +217,21 @@ struct TeambrellaRequest {
         case .proxyPosition:
             success(.proxyPosition)
         case .proxyRatingList:
-            let models = reply["Members"].arrayValue.map { UserIndexCellModel(json: $0) }
-            success(.proxyRatingList(models, reply["TotalCount"].intValue))
+            do {
+                let proxyRatingEntity = try decoder.decode(ProxyRatingEntity.self, from: serverReply.data)
+                success(.proxyRatingList(proxyRatingEntity))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .privateList:
-            let users = reply.arrayValue.map { PrivateChatUser(json: $0) }
-            success(.privateList(users))
+            do {
+                let model = try decoder.decode([PrivateChatUser].self, from: serverReply.data)
+                success(.privateList(model))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .withdrawTransactions,
              .withdraw:
             do {

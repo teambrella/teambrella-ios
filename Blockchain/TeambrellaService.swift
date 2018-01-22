@@ -26,7 +26,7 @@ protocol TeambrellaServiceDelegate: class {
     func teambrellaDidUpdate(service: TeambrellaService)
 }
 
-class TeambrellaService {
+class TeambrellaService: NSObject {
     struct Constant {
         static let maxAttempts = 3
         static let gasLimit = 1300001
@@ -67,10 +67,10 @@ class TeambrellaService {
     
     private func update(completion: @escaping (Bool) -> Void) {
         log("Teambrella service begins updates", type: .crypto)
-       // let blockchain = BlockchainService(contentProvider: contentProvider, server: server)
+        // let blockchain = BlockchainService(contentProvider: contentProvider, server: server)
         updateData { success in
             if success {
-              //  blockchain.updateData()
+                //  blockchain.updateData()
                 self.contentProvider.save()
                 self.delegate?.teambrellaDidUpdate(service: self)
             }
@@ -82,7 +82,7 @@ class TeambrellaService {
     var isStorageCleared = false {
         didSet {
             if isStorageCleared {
-        queue.cancelAllOperations()
+                queue.cancelAllOperations()
             }
         }
     }
@@ -115,31 +115,31 @@ class TeambrellaService {
         let signatures = contentProvider.signaturesToUpdate
         let user = contentProvider.user
         let multisigsToUpdate = contentProvider.multisigsNeedsServerUpdate
-     
+
         server.getUpdates(privateKey: user.privateKey,
                           lastUpdated: user.lastUpdated,
                           multisigs: multisigsToUpdate,
                           transactions: txsToUpdate,
                           signatures: signatures
-                          ) { [unowned self] reply in
-                            guard !self.isStorageCleared else {
-                                completion(false)
-                                return
-                            }
-                            
-                            switch reply {
-                            case .success(let json, let timestamp):
-                                log("BlockchainStorage Server update to local db received json: \(json)", type: .crypto)
-                                let factory = EntityFactory(fetcher: self.contentProvider)
-                                factory.updateLocalDb(txs: txsToUpdate, signatures: signatures, multisigs: multisigsToUpdate, json: json)
-                                user.lastUpdated = timestamp
-                                self.contentProvider.save()
-                                completion(true)
-                                break
-                            case .failure(let error):
-                                print("server request failed with error: \(error)")
-                                completion(false)
-                            }
+        ) { [unowned self] reply in
+            guard !self.isStorageCleared else {
+                completion(false)
+                return
+            }
+
+            switch reply {
+            case .success(let json, let timestamp):
+                log("BlockchainStorage Server update to local db received json: \(json)", type: .crypto)
+                let factory = EntityFactory(fetcher: self.contentProvider)
+                factory.updateLocalDb(txs: txsToUpdate, signatures: signatures, multisigs: multisigsToUpdate, json: json)
+                user.lastUpdated = timestamp
+                self.contentProvider.save()
+                completion(true)
+                break
+            case .failure(let error):
+                print("server request failed with error: \(error)")
+                completion(false)
+            }
         }
     }
     
@@ -216,7 +216,7 @@ class TeambrellaService {
         }
         
         queue.addOperation {
-           self.publishApprovedAndCosignedTxs()
+            self.publishApprovedAndCosignedTxs()
         }
         
         queue.addOperation {
@@ -242,7 +242,7 @@ class TeambrellaService {
             return
         }
         
-       // let wallet = EthWallet(isTestNet: server.isTestnet, processor: processor)
+        // let wallet = EthWallet(isTestNet: server.isTestnet, processor: processor)
         wallet.checkMyNonce(success: { [weak self] nonce in
             guard let `self` = self else { return }
             var nonce = nonce
@@ -261,28 +261,34 @@ class TeambrellaService {
                     //                                                      sameTeammateMultisig.creationTx,
                     //                                                      needServerUpdate));
                 } else {
-                    let gasPrice = self.wallet.contractGasPrice
+                    group.enter()
+                    var gasPrice = 0
+                    self.wallet.refreshContractCreationGasPrice { contractGasPrice in
+                        gasPrice = contractGasPrice
+                        group.leave()
+                    }
+
                     group.enter()
                     self.wallet.createOneWallet(myNonce: nonce,
-                                           multisig: multisig,
-                                           gaslLimit: gasLimit,
-                                           gasPrice: gasPrice,
-                                           completion: { txHex in
-                                            // There could be 2 my pending mutisigs (Current and Next) for the same
-                                            // team. So we remember the first creation tx and don't create 2 contracts
-                                            // for the same team.
-                                            multisig.creationTx = txHex
-                                            multisig.needServerUpdate = false
-                                            multisig.address = nil
-                                            self.contentProvider.createUnconfirmed(multisigId: multisig.id,
-                                                                                   tx: txHex,
-                                                                                   gasPrice: gasPrice,
-                                                                                   nonce: nonce,
-                                                                                   date: Date())
-                                            self.contentProvider.save()
-                                            nonce += 1
-                                            success = true
-                                            group.leave()
+                                                multisig: multisig,
+                                                gaslLimit: gasLimit,
+                                                gasPrice: gasPrice,
+                                                completion: { txHex in
+                                                    // There could be 2 my pending mutisigs (Current and Next) for the same
+                                                    // team. So we remember the first creation tx and don't create 2 contracts
+                                                    // for the same team.
+                                                    multisig.creationTx = txHex
+                                                    multisig.needServerUpdate = false
+                                                    multisig.address = nil
+                                                    self.contentProvider.createUnconfirmed(multisigId: multisig.id,
+                                                                                           tx: txHex,
+                                                                                           gasPrice: gasPrice,
+                                                                                           nonce: nonce,
+                                                                                           date: Date())
+                                                    self.contentProvider.save()
+                                                    nonce += 1
+                                                    success = true
+                                                    group.leave()
                     }, failure: { error in
                         completion(false)
                     })
@@ -311,14 +317,14 @@ class TeambrellaService {
                 multisig.needServerUpdate = true
                 self?.contentProvider.save()
                 group.leave()
-            }, notmined: { [weak self] gasLimit in
-                self?.recreateWalletIfTimedOut(multisig: multisig, gasLimit: gasLimit, completion: { innerSuccees in
+                }, notmined: { [weak self] gasLimit in
+                    self?.recreateWalletIfTimedOut(multisig: multisig, gasLimit: gasLimit, completion: { innerSuccees in
+                        success = false
+                        group.leave()
+                    })
+                }, failure: { error in
                     success = false
                     group.leave()
-                })
-            }, failure: { error in
-                success = false
-                group.leave()
             })
             group.wait()
         }
@@ -381,7 +387,30 @@ class TeambrellaService {
     
     func cosignApprovedTransactions() {
         print("Teambrella service start \(#function)")
-        
+        //let publicKey = key.publicKey
+        let list = contentProvider.transactionsCosignable
+        let user = contentProvider.user
+        for tx in list {
+            cosignTransaction(transaction: tx, userID: user.id)
+        }
+        contentProvider.save()
+    }
+
+    private func cosignTransaction(transaction: Tx, userID: Int) {
+        guard let kind = transaction.kind else { return }
+
+        switch kind {
+        case .payout, .withdraw, .moveToNextWallet:
+            guard transaction.fromMultisig != nil else { return }
+
+            for input in transaction.inputs {
+                let signature = wallet.cosign(transaction: transaction, payOrMoveFrom: input)
+                contentProvider.addNewSignature(input: input, tx: transaction, signature: signature)
+            }
+        default:
+            // TODO: support move & incoming TXs
+            break
+        }
     }
     
     func masterSign() {
@@ -430,6 +459,19 @@ class TeambrellaService {
         print("Background task ended.")
         UIApplication.shared.endBackgroundTask(backgroundTask)
         backgroundTask = UIBackgroundTaskInvalid
+    }
+
+    func signToSockets(service: SocketService) {
+        print("Teambrella service signing to socket")
+        service.add(listener: self) { action in
+            switch action.command {
+            case .dbDump:
+                let dumper = Dumper(api: self.server)
+                dumper.sendDatabaseDump(privateKey: self.key.privateKey)
+            default:
+                break
+            }
+        }
     }
     
 }

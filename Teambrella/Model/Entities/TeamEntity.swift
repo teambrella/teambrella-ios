@@ -30,10 +30,12 @@ struct TeamEntity: Decodable {
         case objectName = "ObjectName"
         case objectCoverage = "ObjectCoverage"
         case unreadCount = "UnreadCount"
-        case teamCoverage = "TeamCoverage"
         case coverageType = "CoverageType"
         case teamAccessLevel = "TeamAccessLevel"
         case currency = "Currency"
+        case inviteText = "InviteFriendsText"
+        case myTopicID = "MyTopicId"
+        case inviteCode = "InviteFriendsCode"
     }
     
     let teamID: Int
@@ -43,12 +45,13 @@ struct TeamEntity: Decodable {
     let objectName: String?
     let objectCoverage: Double?
     let unreadCount: Int?
-    let teamCoverage: Double?
     let coverageType: CoverageType
     let teamAccessLevel: TeamAccessLevel
     let currency: String
+    let inviteText: String
+    let myTopicID: String
+    let inviteCode: String?
     
-    var isInvitation: Bool { return teamCoverage != nil }
     var currencySymbol: String {
         return ["USD": "$",
                 "EUR": "€",

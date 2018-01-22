@@ -22,8 +22,13 @@
 import PKHUD
 import UIKit
 import XLPagerTabStrip
+import MessageUI
 
 final class MembersVC: UIViewController, IndicatorInfoProvider {
+    struct Constant  {
+        static let searchViewOffset: CGFloat = -60 // constant offset to reveal button and hide seafchField
+    }
+    
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var searchView: UIView!
     @IBOutlet var searchBar: UISearchBar!
@@ -60,6 +65,7 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
         }
         
         dataSource.loadData()
+        ViewDecorator.shadow(for: searchView, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: 4))
         title = "Team.team".localized
     }
     
@@ -102,10 +108,8 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     fileprivate func showSearchBar(show: Bool, animated: Bool) {
         guard show != searchbarIsShown else { return }
         
-        searchViewTopConstraint.constant = show
-            ? 0
-            : -searchView.frame.height
-        collectionView.contentInset.top = show ? searchView.frame.height : 0
+        searchViewTopConstraint.constant = show ? Constant.searchViewOffset : -searchView.frame.height
+        //collectionView.contentInset.top = show ? searchView.frame.height : 0
         searchbarIsShown = show
         if !show {
             view.endEditing(true)
@@ -117,6 +121,13 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
         } else {
             view.setNeedsLayout()
         }
+    }
+    
+    @IBAction func tapInviteFriendButton(_ sender: UIButton) {
+        guard let text = service.session?.currentTeam?.inviteText else { return }
+
+        let vc = UIActivityViewController(activityItems: [text], applicationActivities: [])
+        present(vc, animated: true)
     }
     
     @IBAction func tapSort(_ sender: UIButton) {
@@ -231,7 +242,6 @@ extension MembersVC: UISearchBarDelegate {
 // MARK: UIScrollViewDelegate
 extension MembersVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        /*
         let currentOffset = scrollView.contentOffset.y
         let velocity = currentOffset - previousScrollOffset
         previousScrollOffset = currentOffset
@@ -242,7 +252,6 @@ extension MembersVC: UIScrollViewDelegate {
         if velocity < -10 {
             showSearchBar(show: true, animated: true)
         }
- */
     }
 }
 

@@ -87,3 +87,8 @@
 "Me.Wallet.Withdraw.WithdrawInfo.balance" = "Balance";
 "Me.Wallet.Withdraw.WithdrawInfo.youMayRequest" = "You may request up to balance amount for withdrawal %@ mETH";
 "Me.Wallet.Withdraw.WithdrawInfo.youHave" = "You have %@ mETH reserved, if some part of the reserved funds becomes available, it would be automatically scheduled for the withdrawal.";
+
+"Me.Wallet.Withdraw.noCameraAccess.title" = "Access to camera is required to scan QR code";
+"Me.Wallet.Withdraw.noCameraAccess.details" = "Please grant access to device camera for Teambrella app to be able to scan QR codes";
+"Me.Wallet.Withdraw.noCameraAccess.cancelButton" = "Cancel";
+"Me.Wallet.Withdraw.noCameraAccess.settingsButton" = "Settings";

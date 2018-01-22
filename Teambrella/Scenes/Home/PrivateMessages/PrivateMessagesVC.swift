@@ -39,11 +39,11 @@ final class PrivateMessagesVC: UIViewController, Routable {
             self?.collectionView.reloadData()
             self?.showEmptyIfNeeded()
         }
-        dataSource.loadNext()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        dataSource.reload()
         title = "Home.PrivateMessages.title".localized
     }
     
