@@ -25,6 +25,10 @@ import XLPagerTabStrip
 import MessageUI
 
 final class MembersVC: UIViewController, IndicatorInfoProvider {
+    struct Constant  {
+        static let searchViewOffset: CGFloat = -60 // constant offset to reveal button and hide seafchField
+    }
+    
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var searchView: UIView!
     @IBOutlet var searchBar: UISearchBar!
@@ -104,8 +108,7 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     fileprivate func showSearchBar(show: Bool, animated: Bool) {
         guard show != searchbarIsShown else { return }
         
-        let searchViewOffset: CGFloat = -60 // constant offset to reveal button and hide seafchField
-        searchViewTopConstraint.constant = show ? searchViewOffset : -searchView.frame.height
+        searchViewTopConstraint.constant = show ? Constant.searchViewOffset : -searchView.frame.height
         //collectionView.contentInset.top = show ? searchView.frame.height : 0
         searchbarIsShown = show
         if !show {
