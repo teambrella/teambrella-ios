@@ -119,10 +119,8 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     }
     
     @IBAction func tapInviteFriendButton(_ sender: UIButton) {
-        let subject = "Invitation to Teambrella"
-        //guard let
-        
-        let text = service.session?.currentTeam?.inviteText        
+        guard let text = service.session?.currentTeam?.inviteText else { return }
+
         let vc = UIActivityViewController(activityItems: [text], applicationActivities: [])
         present(vc, animated: true)
     }

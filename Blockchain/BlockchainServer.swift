@@ -130,8 +130,8 @@ public class BlockchainServer {
         let key = Key(base58String: privateKey, timestamp: timestamp)
 
         let multisigsInfo = multisigs.map { ["Id": $0.id,
-                                          "TeammateId": $0.teammate!.id,
-                                          "BlockchainTxId": $0.creationTx! ] }
+                                             "TeammateId": $0.teammate!.id,
+                                             "BlockchainTxId": $0.creationTx! ] }
 
         let txInfos = transactions.map { ["Id": $0.id.uuidString,
                                           "ResolutionTime": formatter.string(from: $0.clientResolutionTime!),
@@ -217,14 +217,57 @@ public class BlockchainServer {
             }
         }
     }
-    
+
+    func postData(to urlString: String,
+                  data: Data,
+                  privateKey: String,
+                  success: @escaping (_ result: JSON) -> Void,
+                  failure: @escaping (Error?) -> Void) {
+        guard let url = self.url(string: urlString) else {
+            failure(nil)
+            return
+        }
+
+        let key = Key(base58String: privateKey, timestamp: timestamp)
+        //let request: URLRequest = self.postDataRequest(string: urlString, key: key, data: data)
+        let application = Application()
+        let headers: HTTPHeaders = ["t": "\(timestamp)",
+            "key": key.publicKey,
+            "sig": key.signature,
+            "clientVersion": application.clientVersion,
+            "deviceToken": "",
+            "deviceId": application.uniqueIdentifier]
+
+        Alamofire.upload(data, to: url, method: .post, headers: headers).responseJSON { response in
+            switch response.result {
+            case let .success(value):
+                let json = JSON(value)
+                success(json)
+            case let .failure(error):
+                failure(error)
+            }
+        }
+    }
+
     private func request(string: String, key: Key, payload: [String: Any]? = nil) -> URLRequest {
         guard let url = url(string: string) else {
             fatalError("Couldn't create URL")
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
+
+        let application = Application()
+        let dict: [String: Any] = ["t": timestamp,
+                                   "key": key.publicKey,
+                                   "sig": key.signature,
+                                   "clientVersion": application.clientVersion,
+                                   "deviceToken": "",
+                                   "deviceId": application.uniqueIdentifier]
+        for (key, value) in dict {
+            request.setValue(String(describing: value), forHTTPHeaderField: key)
+        }
+
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         var body: [String : Any] = ["Timestamp": timestamp,
                                     "Signature": key.signature,
@@ -242,7 +285,32 @@ public class BlockchainServer {
         print("Request: \(url.absoluteURL) body: \(body)")
         return request
     }
-    
+
+    /*
+    private func postDataRequest(string: String, key: Key, data: Data) -> URLRequest {
+        guard let url = url(string: string) else {
+            fatalError("Couldn't create URL")
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+        let application = Application()
+        let dict: [String: Any] = ["t": timestamp,
+                                   "key": key.publicKey,
+                                   "sig": key.signature,
+                                   "clientVersion": application.clientVersion,
+                                   "deviceToken": "",
+                                   "deviceId": application.uniqueIdentifier]
+        for (key, value) in dict {
+            request.setValue(String(describing: value), forHTTPHeaderField: key)
+        }
+        request.httpBody = data
+        print("Request: \(url.absoluteURL) body: data \(data.count)")
+        return request
+    }
+    */
+
     private func url(string: String) -> URL? {
         return URL(string: Constant.siteURL + "/" + string)
     }

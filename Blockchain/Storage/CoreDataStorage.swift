@@ -40,7 +40,7 @@ class CoreDataStorage {
         context.reset()
         context.shouldDeleteInaccessibleFaults = true
         let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask);
-        var dbUrl = urls[urls.count-1];
+        var dbUrl = urls[urls.count - 1];
         dbUrl = dbUrl.appendingPathComponent("Application Support/TransactionsModel.sqlite")
             try container.persistentStoreCoordinator.destroyPersistentStore(at: dbUrl,
                                                                                       ofType: NSSQLiteStoreType,
