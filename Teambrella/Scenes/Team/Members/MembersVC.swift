@@ -61,6 +61,7 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
         }
         
         dataSource.loadData()
+        ViewDecorator.shadow(for: searchView, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: 4))
         title = "Team.team".localized
     }
     
@@ -103,7 +104,8 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     fileprivate func showSearchBar(show: Bool, animated: Bool) {
         guard show != searchbarIsShown else { return }
         
-        searchViewTopConstraint.constant = show ? -60 : -searchView.frame.height
+        let searchViewOffset: CGFloat = -60 // constant offset to reveal button and hide seafchField
+        searchViewTopConstraint.constant = show ? searchViewOffset : -searchView.frame.height
         //collectionView.contentInset.top = show ? searchView.frame.height : 0
         searchbarIsShown = show
         if !show {
