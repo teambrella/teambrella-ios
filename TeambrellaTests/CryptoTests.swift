@@ -41,5 +41,14 @@ class CryptoTests: XCTestCase {
         
         XCTAssertEqual(key?.privateKey.base58CheckString(), privateKey)
     }
+
+    func testWIF() {
+        let key = BTCKey()!
+        key.isPublicKeyCompressed = true
+        print(key.wif)
+        key.isPublicKeyCompressed = false
+        print(key.wif)
+        XCTAssertTrue(true)
+    }
     
 }

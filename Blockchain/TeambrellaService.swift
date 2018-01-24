@@ -61,8 +61,8 @@ class TeambrellaService: NSObject {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func startUpdating() {
-        sync()
+    func startUpdating(completion: @escaping (UIBackgroundFetchResult) -> Void) {
+    sync(completion: completion)
     }
     
     private func update(completion: @escaping (Bool) -> Void) {
@@ -178,11 +178,11 @@ class TeambrellaService: NSObject {
     //        }
     //    }
     
-    func sync() {
+    func sync(completion: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Teambrella service start sync")
         print("Public Key: \(key.publicKey)")
         isStorageCleared = false
-        registerBackgroundTask()
+        registerBackgroundTask(completion: completion)
         queue.addOperation {
             self.queue.isSuspended = true
             self.createWallets(gasLimit: Constant.gasLimit, completion: { success in
@@ -228,7 +228,7 @@ class TeambrellaService: NSObject {
         
         queue.addOperation {
             print("Teambrella service executed all sync operations")
-            self.endBackgroundTask()
+            self.endBackgroundTask(result: .newData,completion: completion)
         }
         
     }
@@ -448,17 +448,18 @@ class TeambrellaService: NSObject {
     //        return false
     //    }
     
-    func registerBackgroundTask() {
+    func registerBackgroundTask(completion: @escaping (UIBackgroundFetchResult) -> Void) {
         backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-            self?.endBackgroundTask()
+            self?.endBackgroundTask(result: .failed,completion: completion)
         }
         assert(backgroundTask != UIBackgroundTaskInvalid)
     }
     
-    func endBackgroundTask() {
-        print("Background task ended.")
+    func endBackgroundTask(result: UIBackgroundFetchResult, completion: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("Background task ended. Result: \(result.rawValue)")
         UIApplication.shared.endBackgroundTask(backgroundTask)
         backgroundTask = UIBackgroundTaskInvalid
+        completion(result)
     }
 
     func signToSockets(service: SocketService) {

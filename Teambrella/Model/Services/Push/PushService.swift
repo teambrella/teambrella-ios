@@ -79,7 +79,9 @@ class PushService: NSObject {
         if let aps = userInfo["aps"] as? [AnyHashable: Any], let content = aps["content-available"] as? Bool {
             if content == true {
                 print("Content is available: \(userInfo)")
-                service.teambrella.startUpdating()
+                service.teambrella.startUpdating(completion: { result in
+                    print("Remote notification get updetes result is: \(result)")
+                })
             }
         }
         guard command == nil else { return }

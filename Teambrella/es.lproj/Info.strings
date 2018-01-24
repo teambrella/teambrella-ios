@@ -11,7 +11,7 @@
 "Info.DemoExpired.UpperButton.Title" = "Probar demo";
 "Info.DemoExpired.LowerButton.Title" = " Atrás";
 
-"Info.codeCapture.title" = "Scan Ethereum Address";
+"Info.codeCapture.title" = "Escanear Dirección de Ethereum";
 "Info.codeCapture.button.title" = "Usar";
 "Info.codeCapture.cancelButton.title" = "Cancelar";
 
