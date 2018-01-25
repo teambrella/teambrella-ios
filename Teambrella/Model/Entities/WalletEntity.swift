@@ -45,21 +45,6 @@ struct WalletEntity: Decodable {
     var cosigners: [CosignerEntity]
     var coveragePart: CoverageEntity
     var teamPart: TeamPartConcrete?
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        currencyRate = try container.decode(Double.self, forKey: .currencyRate)
-        cryptoBalance = try container.decode(Double.self, forKey: .cryptoBalance)
-        cryptoReserved = try container.decode(Double.self, forKey: .cryptoReserved)
-        needCrypto = try container.decode(Double.self, forKey: .needCrypto)
-        recommendedCrypto = try container.decode(Double.self, forKey: .recommendedCrypto)
-        fundAddress = try container.decode(String.self, forKey: .fundAddress)
-        defaultWithdrawAddress = try container.decodeIfPresent(String.self, forKey: .defaultWithdrawAddress)
-        cosigners = try container.decode([CosignerEntity].self, forKey: .cosigners)
-        coveragePart = try container.decode(CoverageEntity.self, forKey: .coveragePart)
-        teamPart = try container.decodeIfPresent(TeamPartConcrete.self, forKey: .teamPart)
-    }
     
     init() {
         currencyRate = 0

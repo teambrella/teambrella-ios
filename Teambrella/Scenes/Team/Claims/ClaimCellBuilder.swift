@@ -23,7 +23,7 @@ import Kingfisher
 import UIKit
 
 struct ClaimCellBuilder {
-    static func populate(cell: UICollectionViewCell, with claim: EnhancedClaimEntity, delegate: ClaimVC) {
+    static func populate(cell: UICollectionViewCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         if let cell = cell as? ImageGalleryCell {
             populateImageGallery(cell: cell, with: claim)
             addObserversToImageGallery(cell: cell, delegate: delegate)
@@ -50,7 +50,7 @@ struct ClaimCellBuilder {
         cell.slider.addTarget(delegate, action: #selector(ClaimVC.sliderMoved), for: .valueChanged)
     }
     
-    static func populateImageGallery(cell: ImageGalleryCell, with claim: EnhancedClaimEntity) {
+    static func populateImageGallery(cell: ImageGalleryCell, with claim: ClaimEntityLarge) {
         let imageURLStrings = claim.largePhotos.map { URLBuilder().urlString(string: $0) }
         log("\(imageURLStrings)", type: .serviceInfo)
         service.server.updateTimestamp { timestamp, error in
@@ -73,7 +73,7 @@ struct ClaimCellBuilder {
         cell.timeLabel.text = dateProcessor.stringFromNow(minutes: claim.minutesinceLastPost)
     }
     
-    static func populateClaimVote(cell: ClaimVoteCell, with claim: EnhancedClaimEntity, delegate: ClaimVC) {
+    static func populateClaimVote(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         cell.slider.minimumValue = 0
         cell.slider.maximumValue = 1
         
@@ -126,7 +126,7 @@ struct ClaimCellBuilder {
         cell.othersVotedButton.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted), for: .touchUpInside)
     }
     
-    static func populateClaimDetails(cell: ClaimDetailsCell, with claim: EnhancedClaimEntity) {
+    static func populateClaimDetails(cell: ClaimDetailsCell, with claim: ClaimEntityLarge) {
         cell.titleLabel.text = "Team.ClaimCell.claimDetails".localized
         
         cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
@@ -150,7 +150,7 @@ struct ClaimCellBuilder {
         claim.incidentDate.map { cell.incidentDateValueLabel.text = DateFormatter.teambrellaShort.string(from: $0) }
     }
     
-    static func populateClaimOptions(cell: ClaimOptionsCell, with claim: EnhancedClaimEntity, delegate: ClaimVC) {
+    static func populateClaimOptions(cell: ClaimOptionsCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         cell.allVotesLabel.text = "Team.TeammateCell.allVotes".localized
         cell.cashFlowLabel.text = "Team.TeammateCell.cashFlow".localized
         cell.transactionsLabel.text = "Team.TeammateCell.transactions".localized

@@ -86,7 +86,9 @@ struct TeammateCellBuilder {
          */
     }
     
-    private static func setVote(votingCell: VotingRiskCell, voting: TeammateVotingInfo, controller: TeammateProfileVC) {
+    private static func setVote(votingCell: VotingRiskCell,
+                                voting: TeammateLarge.VotingInfo,
+                                controller: TeammateProfileVC) {
         let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
         votingCell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars, label: label, max: nil)
         if let risk = voting.riskVoted {

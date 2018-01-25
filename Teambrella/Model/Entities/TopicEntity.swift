@@ -32,10 +32,8 @@ struct TopicEntity: Topic {
     var unreadCount: Int
     var minutesSinceLastPost: Int
     
-    var posts: [Post]
-    
     var description: String {
-        return "TopicEntity id: \(id); posts: \(posts.count)"
+        return "TopicEntity id: \(id)"
     }
     
     init(json: JSON) {
@@ -47,8 +45,6 @@ struct TopicEntity: Topic {
         posterCount = json["PosterCount"].intValue
         unreadCount = json["UnreadCount"].intValue
         minutesSinceLastPost = json["SinceLastPostMinutes"].intValue
-        
-        posts = PostFactory.posts(with: json["Posts"]) ?? []
     }
     
     init(id: String) {
@@ -59,7 +55,6 @@ struct TopicEntity: Topic {
         posterCount = 0
         unreadCount = 0
         minutesSinceLastPost = 0
-        posts = []
     }
 }
 

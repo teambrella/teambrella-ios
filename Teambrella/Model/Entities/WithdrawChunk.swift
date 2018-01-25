@@ -19,23 +19,14 @@ import Foundation
 struct WithdrawChunk: Decodable {
     enum CodingKeys: String, CodingKey {
       case txs = "Txs"
-        case balance = "CryptoBalance"
-        case reserved = "CryptoReserved"
-        case withdrawAddress = "DefaultWithdrawAddress"
+        case cryptoBalance = "CryptoBalance"
+        case cryptoReserved = "CryptoReserved"
+        case defaultWithdrawAddress = "DefaultWithdrawAddress"
     }
     
     let txs: [WithdrawTx]
     let cryptoBalance: Decimal
     let cryptoReserved: Decimal
     let defaultWithdrawAddress: EthereumAddress?
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let addressString = try container.decode(String.self, forKey: .withdrawAddress)
-        defaultWithdrawAddress = EthereumAddress(string: addressString)
-        txs = try container.decode([WithdrawTx].self, forKey: .txs)
-        cryptoBalance = try container.decode(Decimal.self, forKey: .balance)
-        cryptoReserved = try container.decode(Decimal.self, forKey: .reserved)
-    }
  
 }

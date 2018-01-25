@@ -49,30 +49,4 @@ struct HomeCardModel: Decodable {
     let userID: String
     let topicID: String
     
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        let text = try container.decode(String.self, forKey: .text)
-        self.text = TextAdapter().parsedHTML(string: text)
-        self.itemType = try container.decode(ItemType.self, forKey: .itemType)
-        self.itemID = try container.decode(Int.self, forKey: .itemID)
-        let dateString = try container.decode(String.self, forKey: .itemDate)
-        guard let date = Formatter.teambrella.date(from: dateString) else {
-            throw TeambrellaErrorFactory.malformedDate(format: dateString)
-        }
-        
-        self.itemDate = date
-        self.smallPhoto = try container.decode(String.self, forKey: .smallPhoto)
-        self.amount = try container.decode(Double.self, forKey: .amount)
-        self.teamVote = try container.decodeIfPresent(Double.self, forKey: .teamVote)
-        self.isVoting = try container.decode(Bool.self, forKey: .isVoting)
-        self.unreadCount = try container.decode(Int.self, forKey: .unreadCount)
-        self.chatTitle = try container.decodeIfPresent(String.self, forKey: .chatTitle)
-        // server sends NaN from time to time here
-        self.payProgress = try? container.decode(Double.self, forKey: .payProgress)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.userID = try container.decode(String.self, forKey: .userID)
-        self.topicID = try container.decode(String.self, forKey: .topicID)
-    }
-    
 }

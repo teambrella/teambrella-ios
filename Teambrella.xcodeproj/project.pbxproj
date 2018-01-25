@@ -232,7 +232,6 @@
 		6D4E5C711F7AB6870020DEE2 /* MembersFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */; };
 		6D4E5C721F7AB6870020DEE2 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F561ECA0A45000B48C4 /* Decimal.swift */; };
 		6D4E5C731F7AB6870020DEE2 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
-		6D4E5C741F7AB6870020DEE2 /* PostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF41E96673600ACC119 /* PostEntity.swift */; };
 		6D4E5C751F7AB6870020DEE2 /* ClaimVoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95761EE843540019DA47 /* ClaimVoteCell.swift */; };
 		6D4E5C761F7AB6870020DEE2 /* FeedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDEB6F1F17DC5900C6D38C /* FeedEntity.swift */; };
 		6D4E5C771F7AB6870020DEE2 /* SwitchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEFCFB61F7A66D7008C306C /* SwitchUserCell.swift */; };
@@ -275,7 +274,6 @@
 		6D4E5CA11F7AB6870020DEE2 /* JoinTeamTermsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E325CB1F07FA7E00B2D8C8 /* JoinTeamTermsCell.swift */; };
 		6D4E5CA21F7AB6870020DEE2 /* Teammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A941ED07CF1001BC579 /* Teammate.swift */; };
 		6D4E5CA31F7AB6870020DEE2 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF3E7611F795ED6000C7885 /* KeyStorage.swift */; };
-		6D4E5CA41F7AB6870020DEE2 /* TeammateBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */; };
 		6D4E5CA51F7AB6870020DEE2 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BD7BF1F614EBF00C7F6A8 /* TextField.swift */; };
 		6D4E5CA61F7AB6870020DEE2 /* PrivateChatAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */; };
 		6D4E5CA71F7AB6870020DEE2 /* MasterTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714EC1EDF49F500F39EBE /* MasterTabBarController.swift */; };
@@ -333,7 +331,6 @@
 		6D4E5CDD1F7AB6870020DEE2 /* FeedCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA3B1EFD6D3400DED5CE /* FeedCellBuilder.swift */; };
 		6D4E5CDE1F7AB6870020DEE2 /* ProxyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D2AED1EFBDB7C0095284C /* ProxyCell.swift */; };
 		6D4E5CDF1F7AB6870020DEE2 /* PayTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A921ED07CF1001BC579 /* PayTo.swift */; };
-		6D4E5CE01F7AB6870020DEE2 /* TeammateVotingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */; };
 		6D4E5CE11F7AB6870020DEE2 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3947C1F7909E300784ECD /* ReachabilityService.swift */; };
 		6D4E5CE21F7AB6870020DEE2 /* HomeApplicationStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E80E561F0FE33500DE1A0A /* HomeApplicationStatusCell.swift */; };
 		6D4E5CE31F7AB6870020DEE2 /* ContactCellTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714FD1EE0679500F39EBE /* ContactCellTableCell.swift */; };
@@ -391,7 +388,7 @@
 		6D4E5D181F7AB6870020DEE2 /* PhotoPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF62521F4B30E200E8F500 /* PhotoPreviewVC.swift */; };
 		6D4E5D191F7AB6870020DEE2 /* ImageGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95661EE806F80019DA47 /* ImageGalleryCell.swift */; };
 		6D4E5D1A1F7AB6870020DEE2 /* HeaderWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA351EFD6CED00DED5CE /* HeaderWithButton.swift */; };
-		6D4E5D1B1F7AB6870020DEE2 /* EnhancedClaimEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8121A1EE6F1B800B202CE /* EnhancedClaimEntity.swift */; };
+		6D4E5D1B1F7AB6870020DEE2 /* ClaimEntityLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8121A1EE6F1B800B202CE /* ClaimEntityLarge.swift */; };
 		6D4E5D1C1F7AB6870020DEE2 /* PhotoPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */; };
 		6D4E5D1D1F7AB6870020DEE2 /* ReportStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D465F2F1F46E85C007AC28F /* ReportStrategy.swift */; };
 		6D4E5D1E1F7AB6870020DEE2 /* ClaimState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097E9E1E9D215500E77DAB /* ClaimState.swift */; };
@@ -629,8 +626,6 @@
 		6D69DA3A1EFD6D1200DED5CE /* FeedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA391EFD6D1200DED5CE /* FeedDataSource.swift */; };
 		6D69DA3C1EFD6D3400DED5CE /* FeedCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA3B1EFD6D3400DED5CE /* FeedCellBuilder.swift */; };
 		6D69DA3E1EFD6D9100DED5CE /* FeedCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA3D1EFD6D9100DED5CE /* FeedCellModels.swift */; };
-		6D6DA2421EE1650400307C73 /* TeammateBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */; };
-		6D6DA2441EE165B100307C73 /* TeammateVotingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */; };
 		6D6DA2461EE167BD00307C73 /* CoveredObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2451EE167BD00307C73 /* CoveredObject.swift */; };
 		6D6DA2481EE16BBA00307C73 /* TeammateStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2471EE16BBA00307C73 /* TeammateStats.swift */; };
 		6D6DA24A1EE16E8300307C73 /* TeammateCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2491EE16E8300307C73 /* TeammateCellBuilder.swift */; };
@@ -784,7 +779,7 @@
 		6DB5E80A1FEA874E009A2A62 /* SimpleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB5E8091FEA874E009A2A62 /* SimpleStorage.swift */; };
 		6DB5E80B1FEA874E009A2A62 /* SimpleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB5E8091FEA874E009A2A62 /* SimpleStorage.swift */; };
 		6DB812171EE6E6A900B202CE /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DB812161EE6E6A900B202CE /* Chat.storyboard */; };
-		6DB8121B1EE6F1B800B202CE /* EnhancedClaimEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8121A1EE6F1B800B202CE /* EnhancedClaimEntity.swift */; };
+		6DB8121B1EE6F1B800B202CE /* ClaimEntityLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8121A1EE6F1B800B202CE /* ClaimEntityLarge.swift */; };
 		6DB8121D1EE6F78700B202CE /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8121C1EE6F78700B202CE /* Formatter.swift */; };
 		6DB812221EE6FD2E00B202CE /* ClaimVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB812211EE6FD2E00B202CE /* ClaimVC.swift */; };
 		6DB8122A1EE715DA00B202CE /* DiscussionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB812281EE715DA00B202CE /* DiscussionCell.swift */; };
@@ -882,7 +877,6 @@
 		6DEC07541E9BF6600078F40E /* ExtendedTeammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC07531E9BF6600078F40E /* ExtendedTeammate.swift */; };
 		6DEC07561E9BF7170078F40E /* TeammateLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC07551E9BF7170078F40E /* TeammateLarge.swift */; };
 		6DEC6DF31E96670D00ACC119 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF21E96670D00ACC119 /* Post.swift */; };
-		6DEC6DF51E96673600ACC119 /* PostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF41E96673600ACC119 /* PostEntity.swift */; };
 		6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF61E96690B00ACC119 /* EntityLike.swift */; };
 		6DED01BB1F5B05EB00DE24CC /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DED01BA1F5B05EB00DE24CC /* GalleryView.swift */; };
 		6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE678C1ED9B8E10098EDB3 /* XIBInitable.swift */; };
@@ -1303,8 +1297,6 @@
 		6D69DA391EFD6D1200DED5CE /* FeedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedDataSource.swift; path = Scenes/Team/Feed/FeedDataSource.swift; sourceTree = "<group>"; };
 		6D69DA3B1EFD6D3400DED5CE /* FeedCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedCellBuilder.swift; path = Scenes/Team/Feed/FeedCellBuilder.swift; sourceTree = "<group>"; };
 		6D69DA3D1EFD6D9100DED5CE /* FeedCellModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedCellModels.swift; path = Scenes/Team/Feed/FeedCellModels.swift; sourceTree = "<group>"; };
-		6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateBasicInfo.swift; path = Model/Entities/TeammateBasicInfo.swift; sourceTree = "<group>"; };
-		6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateVotingInfo.swift; path = Model/Entities/TeammateVotingInfo.swift; sourceTree = "<group>"; };
 		6D6DA2451EE167BD00307C73 /* CoveredObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoveredObject.swift; path = Model/Entities/CoveredObject.swift; sourceTree = "<group>"; };
 		6D6DA2471EE16BBA00307C73 /* TeammateStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateStats.swift; path = Model/Entities/TeammateStats.swift; sourceTree = "<group>"; };
 		6D6DA2491EE16E8300307C73 /* TeammateCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateCellBuilder.swift; path = Scenes/Team/Members/TeammateCellBuilder.swift; sourceTree = "<group>"; };
@@ -1438,7 +1430,7 @@
 		6DB309F81F1D2093007DFF40 /* ChatEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatEntity.swift; path = Model/Entities/ChatEntity.swift; sourceTree = "<group>"; };
 		6DB5E8091FEA874E009A2A62 /* SimpleStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SimpleStorage.swift; path = Model/Services/Storage/SimpleStorage.swift; sourceTree = "<group>"; };
 		6DB812161EE6E6A900B202CE /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
-		6DB8121A1EE6F1B800B202CE /* EnhancedClaimEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnhancedClaimEntity.swift; sourceTree = "<group>"; };
+		6DB8121A1EE6F1B800B202CE /* ClaimEntityLarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimEntityLarge.swift; sourceTree = "<group>"; };
 		6DB8121C1EE6F78700B202CE /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Formatter.swift; path = Helpers/Extensions/Formatter.swift; sourceTree = "<group>"; };
 		6DB812211EE6FD2E00B202CE /* ClaimVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClaimVC.swift; path = Scenes/Team/Claims/ClaimVC.swift; sourceTree = "<group>"; };
 		6DB812281EE715DA00B202CE /* DiscussionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionCell.swift; path = View/Cells/DiscussionCell.swift; sourceTree = "<group>"; };
@@ -1524,7 +1516,6 @@
 		6DEC07531E9BF6600078F40E /* ExtendedTeammate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtendedTeammate.swift; path = Model/Protocols/ExtendedTeammate.swift; sourceTree = "<group>"; };
 		6DEC07551E9BF7170078F40E /* TeammateLarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateLarge.swift; path = Model/Entities/ExtendedTeammateEntity/TeammateLarge.swift; sourceTree = "<group>"; };
 		6DEC6DF21E96670D00ACC119 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Model/Protocols/Post.swift; sourceTree = "<group>"; };
-		6DEC6DF41E96673600ACC119 /* PostEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostEntity.swift; path = Model/Entities/PostEntity.swift; sourceTree = "<group>"; };
 		6DEC6DF61E96690B00ACC119 /* EntityLike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityLike.swift; path = Model/Protocols/EntityLike.swift; sourceTree = "<group>"; };
 		6DED01BA1F5B05EB00DE24CC /* GalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryView.swift; path = Helpers/GalleryView.swift; sourceTree = "<group>"; };
 		6DEE678C1ED9B8E10098EDB3 /* XIBInitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XIBInitable.swift; path = Model/Protocols/XIBInitable.swift; sourceTree = "<group>"; };
@@ -2747,14 +2738,11 @@
 				94B4C37B1F1E18AC00AED4CE /* CosignerEntity.swift */,
 				94B4C37C1F1E18AC00AED4CE /* CoverageEntity.swift */,
 				6D6DA2451EE167BD00307C73 /* CoveredObject.swift */,
-				6DB8121A1EE6F1B800B202CE /* EnhancedClaimEntity.swift */,
-				6DEC6DF41E96673600ACC119 /* PostEntity.swift */,
+				6DB8121A1EE6F1B800B202CE /* ClaimEntityLarge.swift */,
 				6D1A9B241F55CF92004192AC /* PrivateChatUser.swift */,
 				6D481F781F0BAA600023C781 /* RiskScaleEntity.swift */,
-				6D6DA2411EE1650400307C73 /* TeammateBasicInfo.swift */,
 				6DEC07551E9BF7170078F40E /* TeammateLarge.swift */,
 				6D6DA2471EE16BBA00307C73 /* TeammateStats.swift */,
-				6D6DA2431EE165B100307C73 /* TeammateVotingInfo.swift */,
 				6D20CF951FDEE1890049BE9C /* TeamPart.swift */,
 				6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */,
 				6D20CF981FDEE3020049BE9C /* VotingPart.swift */,
@@ -3757,7 +3745,6 @@
 				6D4E5C731F7AB6870020DEE2 /* Log.swift in Sources */,
 				6DB922261F9E27CD009D3937 /* AbiArguments.swift in Sources */,
 				6DA3FBA61FF2BA0800CA8FA1 /* VotersList.swift in Sources */,
-				6D4E5C741F7AB6870020DEE2 /* PostEntity.swift in Sources */,
 				6D4E5C751F7AB6870020DEE2 /* ClaimVoteCell.swift in Sources */,
 				6D4E5C761F7AB6870020DEE2 /* FeedEntity.swift in Sources */,
 				6D4E5C771F7AB6870020DEE2 /* SwitchUserCell.swift in Sources */,
@@ -3807,7 +3794,6 @@
 				6D4E5CA21F7AB6870020DEE2 /* Teammate.swift in Sources */,
 				6D4E5CA31F7AB6870020DEE2 /* KeyStorage.swift in Sources */,
 				6D4E59131FD2EFA10029D2F0 /* WithdrawDataSource.swift in Sources */,
-				6D4E5CA41F7AB6870020DEE2 /* TeammateBasicInfo.swift in Sources */,
 				6D4E5CA51F7AB6870020DEE2 /* TextField.swift in Sources */,
 				6D4E5CA61F7AB6870020DEE2 /* PrivateChatAdaptor.swift in Sources */,
 				6D4E5CA71F7AB6870020DEE2 /* MasterTabBarController.swift in Sources */,
@@ -3884,7 +3870,6 @@
 				6D4E5CDF1F7AB6870020DEE2 /* PayTo.swift in Sources */,
 				6D4E59121FD2EF9E0029D2F0 /* WithdrawCellModelBuilder.swift in Sources */,
 				6DC60A542019E48600ECCA7D /* InfoMaker.swift in Sources */,
-				6D4E5CE01F7AB6870020DEE2 /* TeammateVotingInfo.swift in Sources */,
 				6D4E5CE11F7AB6870020DEE2 /* ReachabilityService.swift in Sources */,
 				6D1CAC101FF51B6700FA58B6 /* OthersVotedDataSource.swift in Sources */,
 				6D4E5CE21F7AB6870020DEE2 /* HomeApplicationStatusCell.swift in Sources */,
@@ -3959,7 +3944,7 @@
 				6D2A7C641FCC66960094ABB7 /* SODVC.swift in Sources */,
 				6D4E5D191F7AB6870020DEE2 /* ImageGalleryCell.swift in Sources */,
 				6D4E5D1A1F7AB6870020DEE2 /* HeaderWithButton.swift in Sources */,
-				6D4E5D1B1F7AB6870020DEE2 /* EnhancedClaimEntity.swift in Sources */,
+				6D4E5D1B1F7AB6870020DEE2 /* ClaimEntityLarge.swift in Sources */,
 				6D4E5D1C1F7AB6870020DEE2 /* PhotoPreviewCell.swift in Sources */,
 				6D4E5D1D1F7AB6870020DEE2 /* ReportStrategy.swift in Sources */,
 				6D4E5D1E1F7AB6870020DEE2 /* ClaimState.swift in Sources */,
@@ -4173,7 +4158,6 @@
 				6DDF6D4C1F1623CE00F53B0B /* MembersFetchStrategy.swift in Sources */,
 				6DCB9F571ECA0A45000B48C4 /* Decimal.swift in Sources */,
 				6D33E1541F715BB10052A58B /* Log.swift in Sources */,
-				6DEC6DF51E96673600ACC119 /* PostEntity.swift in Sources */,
 				6DDE95781EE843540019DA47 /* ClaimVoteCell.swift in Sources */,
 				940FEE841FA8D05700B43CB5 /* MuteVC.swift in Sources */,
 				6DA3FBA51FF2BA0800CA8FA1 /* VotersList.swift in Sources */,
@@ -4227,7 +4211,6 @@
 				94E325CD1F07FA7E00B2D8C8 /* JoinTeamTermsCell.swift in Sources */,
 				6D466AA91ED07CF1001BC579 /* Teammate.swift in Sources */,
 				6DF3E7621F795ED6000C7885 /* KeyStorage.swift in Sources */,
-				6D6DA2421EE1650400307C73 /* TeammateBasicInfo.swift in Sources */,
 				6D2BD7C01F614EBF00C7F6A8 /* TextField.swift in Sources */,
 				6D59F0091F56E5D000C422EB /* PrivateChatAdaptor.swift in Sources */,
 				6DA714ED1EDF49F500F39EBE /* MasterTabBarController.swift in Sources */,
@@ -4307,7 +4290,6 @@
 				6DBF492B1F80F10B00B236E2 /* AnimationTools.swift in Sources */,
 				6D466AA71ED07CF1001BC579 /* PayTo.swift in Sources */,
 				6D1CAC0F1FF51B6700FA58B6 /* OthersVotedDataSource.swift in Sources */,
-				6D6DA2441EE165B100307C73 /* TeammateVotingInfo.swift in Sources */,
 				6DE3947D1F7909E300784ECD /* ReachabilityService.swift in Sources */,
 				94E80E581F0FE33500DE1A0A /* HomeApplicationStatusCell.swift in Sources */,
 				6DA714FE1EE0679500F39EBE /* ContactCellTableCell.swift in Sources */,
@@ -4379,7 +4361,7 @@
 				6D2A7C631FCC66960094ABB7 /* SODVC.swift in Sources */,
 				6DDE95681EE806F80019DA47 /* ImageGalleryCell.swift in Sources */,
 				6D69DA371EFD6CED00DED5CE /* HeaderWithButton.swift in Sources */,
-				6DB8121B1EE6F1B800B202CE /* EnhancedClaimEntity.swift in Sources */,
+				6DB8121B1EE6F1B800B202CE /* ClaimEntityLarge.swift in Sources */,
 				6DCF62571F4B319F00E8F500 /* PhotoPreviewCell.swift in Sources */,
 				6D465F301F46E85C007AC28F /* ReportStrategy.swift in Sources */,
 				6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */,

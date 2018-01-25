@@ -130,7 +130,7 @@ struct TeambrellaRequest {
             }
         case .claim,
              .newClaim:
-            success(.claim(EnhancedClaimEntity(json: reply)))
+            success(.claim(ClaimEntityLarge(json: reply)))
         case .claimVote:
             success(.claimVote(reply))
         case .claimUpdates:

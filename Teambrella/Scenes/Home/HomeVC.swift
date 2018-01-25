@@ -343,7 +343,7 @@ extension HomeVC: UIScrollViewDelegate {
 extension HomeVC: ReportDelegate {
     func report(controller: ReportVC, didSendReport data: Any) {
         service.router.navigator?.popViewController(animated: false)
-        if let claim = data as? EnhancedClaimEntity {
+        if let claim = data as? ClaimEntityLarge {
             service.router.presentClaim(claimID: claim.id)
         }
     }

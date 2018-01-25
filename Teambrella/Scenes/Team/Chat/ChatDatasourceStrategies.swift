@@ -77,9 +77,9 @@ class ClaimChatStrategy: ChatDatasourceStrategy {
     var canLoadBackward: Bool = true
     // var isRateVisible: Bool = true
     
-    var claim: EnhancedClaimEntity
+    var claim: ClaimEntityLarge
     
-    init(context: EnhancedClaimEntity) {
+    init(context: ClaimEntityLarge) {
         claim = context
     }
     

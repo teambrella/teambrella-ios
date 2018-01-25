@@ -80,7 +80,7 @@ final class UniversalChatDatasource {
     private var topCellDate: Date?
     private var topic: Topic?
     
-    var claim: EnhancedClaimEntity? {
+    var claim: ClaimEntityLarge? {
         if let strategy = strategy as? ClaimChatStrategy {
             return strategy.claim
         }
@@ -94,7 +94,7 @@ final class UniversalChatDatasource {
         return nil
     }
     
-    var teammateInfo: TeammateBasicInfo? {
+    var teammateInfo: TeammateLarge.BasicInfo? {
         if let strategy = strategy as? TeammateChatStrategy {
             return strategy.teammate.basic
         }

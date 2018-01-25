@@ -27,7 +27,7 @@ class ClaimDataSource {
         static let proxyAvatarSize = 32
     }
     
-    var claim: EnhancedClaimEntity?
+    var claim: ClaimEntityLarge?
     var cellIDs: [String] = []
     var userID: String { return claim?.userID ?? "" }
     
@@ -50,7 +50,7 @@ class ClaimDataSource {
         return cellIDs[indexPath.row]
     }
     
-    private func setupClaim(claim: EnhancedClaimEntity) {
+    private func setupClaim(claim: ClaimEntityLarge) {
         self.claim = claim
         cellIDs.append(ImageGalleryCell.cellID)
         if claim.hasVotingPart {

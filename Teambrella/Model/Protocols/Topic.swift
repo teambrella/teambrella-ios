@@ -28,7 +28,7 @@ protocol Topic: EntityLike {
     var unreadCount: Int { get set }
     var minutesSinceLastPost: Int { get set }
     
-    var posts: [Post] { get set }
+    //var posts: [Post] { get set }
     
     init(id: String)
 }

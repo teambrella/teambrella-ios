@@ -22,7 +22,7 @@
 import UIKit
 
 enum ChatContext {
-    case claim(EnhancedClaimEntity)
+    case claim(ClaimEntityLarge)
     case teammate(TeammateLarge)
     case feed(FeedEntity)
     case home(HomeCardModel)
