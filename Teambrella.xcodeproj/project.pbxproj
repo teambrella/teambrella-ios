@@ -688,6 +688,8 @@
 		6D900E2C1FC46BB000FF6FF8 /* String-localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E281FC46B0D00FF6FF8 /* String-localized.swift */; };
 		6D91BC041EB3900700FDC332 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC031EB3900700FDC332 /* UUID.swift */; };
 		6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC061EB3A79100FDC332 /* UUIDTests.swift */; };
+		6D9AAF5F201A4BB5000411CC /* TransactionsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9AAF5E201A4BB5000411CC /* TransactionsCellModel.swift */; };
+		6D9AAF60201A4BB5000411CC /* TransactionsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9AAF5E201A4BB5000411CC /* TransactionsCellModel.swift */; };
 		6D9ACA261F434C7700A9B6C8 /* CurrencyProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */; };
 		6D9ACA281F4466C500A9B6C8 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */; };
 		6D9C808E1EDF17D000FB8C2C /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */; };
@@ -1356,6 +1358,7 @@
 		6D900E2D1FC4734400FF6FF8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Push.strings; sourceTree = "<group>"; };
 		6D91BC031EB3900700FDC332 /* UUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UUID.swift; path = Helpers/Extensions/UUID.swift; sourceTree = "<group>"; };
 		6D91BC061EB3A79100FDC332 /* UUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDTests.swift; sourceTree = "<group>"; };
+		6D9AAF5E201A4BB5000411CC /* TransactionsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsCellModel.swift; sourceTree = "<group>"; };
 		6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyProcessor.swift; path = Helpers/CurrencyProcessor.swift; sourceTree = "<group>"; };
 		6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Bold.otf"; path = "Resources/AkkuratPro-Bold.otf"; sourceTree = "<group>"; };
@@ -2238,6 +2241,15 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		6D9AAF61201A4BC9000411CC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6D9AAF5E201A4BB5000411CC /* TransactionsCellModel.swift */,
+			);
+			name = ViewModel;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		6D9CC6111ED2E239007F936E /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -2391,6 +2403,7 @@
 				6DD7F4191EB9DAF4001E7733 /* View */,
 				6D83EC8C1EDD708A000412DC /* Controller */,
 				6DCB19491F0FD96E00AC9969 /* Effects */,
+				6D9AAF61201A4BC9000411CC /* ViewModel */,
 			);
 			path = Teambrella;
 			sourceTree = "<group>";
@@ -3914,6 +3927,7 @@
 				9489C1231FF54D4300ECA3A4 /* SwipeToVote.swift in Sources */,
 				6D4E5D011F7AB6870020DEE2 /* NSObject.swift in Sources */,
 				94112D7E20066DB20031898E /* ProxyForEntity.swift in Sources */,
+				6D9AAF60201A4BB5000411CC /* TransactionsCellModel.swift in Sources */,
 				6D4E5D021F7AB6870020DEE2 /* Session.swift in Sources */,
 				6D4E5D031F7AB6870020DEE2 /* TeammateStats.swift in Sources */,
 				6D4E5D041F7AB6870020DEE2 /* WalletTransactionsDataSource.swift in Sources */,
@@ -4333,6 +4347,7 @@
 				9489C1221FF54D4300ECA3A4 /* SwipeToVote.swift in Sources */,
 				6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */,
 				94112D7D20066DB20031898E /* ProxyForEntity.swift in Sources */,
+				6D9AAF5F201A4BB5000411CC /* TransactionsCellModel.swift in Sources */,
 				6DA1D0FB1F040AEF00F9DE87 /* Session.swift in Sources */,
 				6D6DA2481EE16BBA00307C73 /* TeammateStats.swift in Sources */,
 				94C186A71F59B91A00F1BE51 /* WalletTransactionsDataSource.swift in Sources */,
