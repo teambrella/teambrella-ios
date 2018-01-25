@@ -41,6 +41,9 @@ class WalletTransactionsVC: UIViewController, Routable {
         }
         title = "Me.WalletVC.WalletTransactionsVC.title".localized
         collectionView.register(WalletTransactionCell.nib, forCellWithReuseIdentifier: WalletTransactionCell.cellID)
+        collectionView.register(WithdrawHeader.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: WithdrawHeader.cellID)
         guard let teamID = teamID else { return }
         
         dataSource = WalletTransactionsDataSource(teamID: teamID)
@@ -65,6 +68,14 @@ extension WalletTransactionsVC: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCell(withReuseIdentifier: WalletTransactionCell.cellID, for: indexPath)
     }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                               withReuseIdentifier: WithdrawHeader.cellID,
+                                                               for: indexPath)
+    }
 }
 
 // MARK: UICollectionViewDelegate
@@ -81,6 +92,16 @@ extension WalletTransactionsVC: UICollectionViewDelegate {
             dataSource.loadData()
         }
     }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplaySupplementaryView view: UICollectionReusableView,
+                        forElementKind elementKind: String,
+                        at indexPath: IndexPath) {
+        guard let view = view as? WithdrawHeader else { return }
+
+        view.leadingLabel.text = "TO"
+        view.trailingLabel.text = "mETH"
+    }
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
@@ -89,6 +110,12 @@ extension WalletTransactionsVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 70)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 50)
     }
 }
 
