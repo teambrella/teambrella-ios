@@ -201,7 +201,6 @@ struct TeambrellaRequest {
                 log(error)
                 failure?(error)
             }
-            // success(.walletTransactions(reply.arrayValue.flatMap { WalletTransactionsCellModel(json: $0) }))
         case .updates:
             break
         case .uploadPhoto:

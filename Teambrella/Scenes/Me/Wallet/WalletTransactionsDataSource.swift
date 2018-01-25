@@ -59,7 +59,7 @@ class WalletTransactionsDataSource {
             let request = TeambrellaRequest(type: .walletTransactions, body: body, success: { [weak self] response in
                 if case .walletTransactions(let transactions) = response {
                     self?.hasMore = (transactions.count == limit)
-                    let cellModels = transactions.map { WalletTransactionsCellModel(model: $0) }
+                    let cellModels = WalletTransactionsCellModelBuilder().cellModels(from: transactions)
                     self?.items += cellModels
                     self?.isLoading = false
                     self?.onUpdate?()

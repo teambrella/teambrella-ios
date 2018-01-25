@@ -38,35 +38,72 @@ struct WalletTransactionsModel: Decodable {
     let dateCreated: Date?
     let id: String
     let to: [WalletTransactionTo]
+    
+}
 
-    /*
-    init(json: JSON) {
-        claimID = json["ClaimId"].intValue
-        lastUpdated = json["LastUpdated"].intValue
-        serverTxState = TransactionState(rawValue: json["ServerTxState"].intValue) ?? .created
-        dateCreated = json["DateCreated"].stringValue.dateFromTeambrella
-        id = json["Id"].stringValue
-        to = json["To"].arrayValue.flatMap { WalletTransactionTo(json: $0) }
+struct WalletTransactionsCellModelBuilder {
+    func cellModels(from models: [WalletTransactionsModel]) -> [WalletTransactionsCellModel] {
+        var result: [WalletTransactionsCellModel] = []
+        for model in models {
+            for subject in model.to {
+                let detailsText = self.detailsText(claimID: model.claimID, transactionKind: subject.kind)
+                let cellModel = WalletTransactionsCellModel(avatar: subject.avatar,
+                                                            name: subject.name,
+                                                            detailsText: detailsText,
+                                                            amountText: self.amountText(amount: subject.amount),
+                                                            kindText: self.typeText(state: model.serverTxState),
+                                                            claimID: model.claimID)
+                result.append(cellModel)
+            }
+        }
+        return result
     }
- */
+
+    private func detailsText(claimID: Int, transactionKind: TransactionKind) -> String {
+        switch transactionKind {
+        case .withdraw:
+            return "WITHDRAWAL"
+        default:
+            return "CLAIM \(claimID)"
+        }
+    }
+
+    private func amountText(amount: Double) -> String {
+        return String.formattedNumber(amount)
+    }
+
+    private func typeText(state: TransactionState) -> String {
+        switch state {
+        case .confirmed:
+            return ""
+            case .approvedAll,
+                 .approvedCosigners,
+                 .approvedMaster,
+                 .beingCosigned,
+                 .blockedCosigners,
+                 .blockedMaster,
+                 .cosigned,
+                 .created,
+                 .published,
+                 .queued,
+                 .selectedForCosigning:
+            return "PENDING"
+        default:
+            return "CANCELLED"
+        }
+    }
+
 }
 
 struct WalletTransactionsCellModel {
-    let claimID: Int
-    let lastUpdated: Int
-    let serverTxState: TransactionState
-    let dateCreated: Date?
-    let id: String
-    let to: [WalletTransactionTo]
+    let avatar: String
+    let name: String
+    let detailsText: String
+    let amountText: String
+    let kindText: String
 
-    init(model: WalletTransactionsModel) {
-        claimID = model.claimID
-        lastUpdated = model.lastUpdated
-        serverTxState = model.serverTxState
-        dateCreated = model.dateCreated
-        id = model.id
-        to = model.to
-    }
+    let claimID: Int
+
 }
 
 struct WalletTransactionTo: Decodable {
@@ -83,13 +120,4 @@ struct WalletTransactionTo: Decodable {
     let name: String
     let amount: Double
     let avatar: String
-
-    /*
-    init(json: JSON) {
-        kind = TransactionKind(rawValue: json["Kind"].intValue) ?? .payout
-        userID = json["UserId"].stringValue
-        name = json["UserName"].stringValue
-        amount = json["Amount"].doubleValue
-    }
- */
 }
