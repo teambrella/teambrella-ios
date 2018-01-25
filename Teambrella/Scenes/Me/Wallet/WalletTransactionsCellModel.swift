@@ -52,7 +52,26 @@ struct WalletTransactionsCellModelBuilder {
                                                             detailsText: detailsText,
                                                             amountText: self.amountText(amount: subject.amount),
                                                             kindText: self.typeText(state: model.serverTxState),
-                                                            claimID: model.claimID)
+                                                            claimID: model.claimID,
+                                                            userID: nil)
+                result.append(cellModel)
+            }
+        }
+        return result
+    }
+
+    func cellModels(from models: [ClaimTransactionsModel]) -> [WalletTransactionsCellModel] {
+        var result: [WalletTransactionsCellModel] = []
+        for model in models {
+            for subject in model.to {
+                let detailsText = ""
+                let cellModel = WalletTransactionsCellModel(avatar: model.avatar,
+                                                            name: model.name,
+                                                            detailsText: detailsText,
+                                                            amountText: self.amountText(amount: subject.amount),
+                                                            kindText: self.typeText(state: model.status),
+                                                            claimID: nil,
+                                                            userID: model.userID)
                 result.append(cellModel)
             }
         }
@@ -105,6 +124,7 @@ struct WalletTransactionsCellModel {
     let kindText: String
 
     let claimID: Int?
+    let userID: String?
 
 }
 

@@ -163,7 +163,7 @@ struct TeambrellaRequest {
             }
         case .claimTransactions:
             do {
-                let models = try decoder.decode([ClaimTransactionsCellModel].self, from: serverReply.data)
+                let models = try decoder.decode([ClaimTransactionsModel].self, from: serverReply.data)
                 success(.claimTransactions(models))
             } catch {
                 log(error)

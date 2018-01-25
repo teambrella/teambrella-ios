@@ -21,17 +21,17 @@
 
 import Foundation
 
-struct ClaimTransactionsCellModel: Decodable {
+struct ClaimTransactionsModel: Decodable {
     enum CodingKeys: String, CodingKey {
         case userID = "UserId"
-        case avatarString = "Avatar"
+        case avatar = "Avatar"
         case name = "Name"
         case status = "Status"
         case to = "To"
     }
     
     let userID: String
-    let avatarString: String
+    let avatar: String
     let name: String
     let status: TransactionState
     let to: [ClaimTransactionTo]
@@ -40,17 +40,17 @@ struct ClaimTransactionsCellModel: Decodable {
 
 struct ClaimTransactionTo: Decodable {
     enum CodingKeys: String, CodingKey {
-        case amountCrypto = "AmountCrypto"
+        case amount = "AmountCrypto"
         case userID = "UserId"
         case name = "Name"
-        case avatarString = "Avatar"
+        case avatar = "Avatar"
         case amountFiat = "AmountFiat"
     }
     
-    let amountCrypto: Double
+    let amount: Double
     let userID: String
     let name: String
-    let avatarString: String
+    let avatar: String
     let amountFiat: Double
     
 }

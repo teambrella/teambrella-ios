@@ -33,7 +33,7 @@ enum TeambrellaResponseType {
     case claim(EnhancedClaimEntity)
     case claimVote(JSON)
     case claimUpdates(JSON)
-    case claimTransactions([ClaimTransactionsCellModel])
+    case claimTransactions([ClaimTransactionsModel])
     case home(HomeModel)
     case feedDeleteCard(HomeModel)
     case teamFeed(FeedChunk)

@@ -22,24 +22,18 @@
 import Foundation
 
 struct ClaimTransactionsCellBuilder {
-    static func populate(cell: UICollectionViewCell, with model: ClaimTransactionsCellModel, userID: String) {
-        if let cell = cell as? ClaimTransactionCell {
-            cell.avatar.showAvatar(string: model.avatarString)
-            cell.nameLabel.text = model.name
-            guard let session = service.session else { return }
-        
-            let models = model.to.filter { $0.userID == userID }
-            
-            let cryptos = models.map { $0.amountCrypto * 1000 }.reduce(0, +)
-            let fiats = models.map { $0.amountFiat }.reduce(0, +)
-         
-            cell.amountCrypto.text = "Team.Claims.ClaimTransactionsVC.amountCrypto".localized
-            cell.cryptoAmountLabel.text = String.formattedNumber(cryptos) + " " + session.coinName
-            cell.amountFiat.text = "Team.Claims.ClaimTransactionsVC.amountFiat".localized
-            cell.fiatAmountLabel.text = String.formattedNumber(fiats) + " " + service.currencySymbol
-            
-            cell.status.text = "Team.Claims.ClaimTransactionsVC.status".localized
-            cell.statusLabel.text = model.status.localizationKey.localized
+    static func populate(cell: UICollectionViewCell,
+                         indexPath: IndexPath,
+                         with model: WalletTransactionsCellModel,
+                         userID: String,
+                         cellsCount: Int) {
+        if let cell = cell as? WalletTransactionCell {
+            cell.setup(with: model)
+            cell.separator.isHidden = indexPath.row == cellsCount - 1
+            ViewDecorator.decorateCollectionView(cell: cell,
+                                                 isFirst: indexPath.row == 0,
+                                                 isLast: indexPath.row == cellsCount - 1)
         }
     }
+
 }
