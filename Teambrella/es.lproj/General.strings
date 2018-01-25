@@ -32,3 +32,5 @@
 "General.CoverageType.petDog"                      = "Salud de mascota";
 "General.CoverageType.petCat"                      = "Salud de mascota";
 "General.CoverageType.bicycle"                     = "Robo";
+
+"General.mETH" = "mETH";

@@ -32,7 +32,7 @@ struct WalletTransactionsModel: Decodable {
         case to = "To"
     }
 
-    let claimID: Int
+    let claimID: Int?
     let lastUpdated: Int
     let serverTxState: TransactionState
     let dateCreated: Date?
@@ -59,17 +59,19 @@ struct WalletTransactionsCellModelBuilder {
         return result
     }
 
-    private func detailsText(claimID: Int, transactionKind: TransactionKind) -> String {
+    private func detailsText(claimID: Int?, transactionKind: TransactionKind) -> String {
         switch transactionKind {
         case .withdraw:
-            return "WITHDRAWAL"
+            return "Me.Wallet.Transactions.withdrawal".localized
         default:
-            return "CLAIM \(claimID)"
+            guard let claimID = claimID else { return "" }
+
+            return "Me.Wallet.Transactions.claimNumber".localized(claimID)
         }
     }
 
     private func amountText(amount: Double) -> String {
-        return String.formattedNumber(amount)
+        return String.formattedNumber(amount * 1000)
     }
 
     private func typeText(state: TransactionState) -> String {
@@ -87,9 +89,9 @@ struct WalletTransactionsCellModelBuilder {
                  .published,
                  .queued,
                  .selectedForCosigning:
-            return "PENDING"
+            return "Me.Wallet.Transactions.kind.pending".localized
         default:
-            return "CANCELLED"
+            return "Me.Wallet.Transactions.kind.cancelled".localized
         }
     }
 
@@ -102,7 +104,7 @@ struct WalletTransactionsCellModel {
     let amountText: String
     let kindText: String
 
-    let claimID: Int
+    let claimID: Int?
 
 }
 

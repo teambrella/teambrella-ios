@@ -99,8 +99,8 @@ extension WalletTransactionsVC: UICollectionViewDelegate {
                         at indexPath: IndexPath) {
         guard let view = view as? WithdrawHeader else { return }
 
-        view.leadingLabel.text = "TO"
-        view.trailingLabel.text = "mETH"
+        view.leadingLabel.text = "Me.Wallet.Transactions.to".localized
+        view.trailingLabel.text = "General.mETH".localized
     }
 }
 
