@@ -36,16 +36,16 @@
                                     <constraint firstAttribute="width" constant="40" id="gzX-uN-rj4"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BFn-ry-3N7">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="BFn-ry-3N7">
                                 <rect key="frame" x="72" y="31.5" width="42" height="41"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-wx-uW6">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-wx-uW6" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOz-bT-sRy">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOz-bT-sRy" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="20.5" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -56,13 +56,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AnO-gh-vxk">
                                 <rect key="frame" x="330" y="31.5" width="42" height="41"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6J-bT-rWU">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6J-bT-rWU" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDo-x7-ImP">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDo-x7-ImP" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="20.5" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -76,6 +76,7 @@
                             <constraint firstItem="oQp-IF-In1" firstAttribute="leading" secondItem="lqW-Ch-0YS" secondAttribute="leading" constant="16" id="GfM-fx-2NO"/>
                             <constraint firstAttribute="bottom" secondItem="oQp-IF-In1" secondAttribute="bottom" id="IvK-DY-xAr"/>
                             <constraint firstItem="6Cl-26-Lc2" firstAttribute="leading" secondItem="lqW-Ch-0YS" secondAttribute="leading" constant="16" id="QYI-RR-FOa"/>
+                            <constraint firstItem="AnO-gh-vxk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BFn-ry-3N7" secondAttribute="trailing" constant="16" id="Xay-Vg-qEL"/>
                             <constraint firstAttribute="trailing" secondItem="AnO-gh-vxk" secondAttribute="trailing" constant="16" id="Zp3-21-Z8g"/>
                             <constraint firstItem="BFn-ry-3N7" firstAttribute="centerY" secondItem="6Cl-26-Lc2" secondAttribute="centerY" id="aSi-pZ-6tN"/>
                             <constraint firstAttribute="trailing" secondItem="oQp-IF-In1" secondAttribute="trailing" id="hLK-AG-u6z"/>
