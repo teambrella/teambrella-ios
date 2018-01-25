@@ -159,7 +159,7 @@ struct TeammateCellBuilder {
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
-        cell.detailsLabel.text = teammate.coverageType.localizedCoverageType
+        cell.detailsLabel.text = teammate.teamPart?.coverageType.localizedCoverageType
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)

@@ -38,7 +38,7 @@ struct HomeModel: Decodable {
     }
     
     var cards: [HomeCardModel]
-    let teamPart: TeamPartConcrete
+    let teamPart: TeamPart
     let userID: String
     let facebookID: UInt64?
     let name: Name

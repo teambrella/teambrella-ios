@@ -346,7 +346,7 @@ private extension UniversalChatVC {
     }
     
     private func setupClaimObjectView(basic: BasicPartClaimConcrete,
-                                      voting: VotingPartClaimConcrete?,
+                                      voting: ChatModel.VotingPart?,
                                       team: TeamPart) {
         objectNameLabel.text = basic.model
         objectDetailsLabel.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
@@ -375,7 +375,7 @@ private extension UniversalChatVC {
     }
     
     private func setupTeammateObjectView(basic: BasicPartTeammateConcrete,
-                                         voting: VotingPartTeammateConcrete?,
+                                         voting: ChatModel.VotingPart?,
                                          team: TeamPart) {
         objectNameLabel.text = basic.name.short
         objectImage.showImage(string: basic.avatar)
@@ -597,12 +597,12 @@ private extension UniversalChatVC {
         let tap = UITapGestureRecognizer()
         if let basicPart = dataSource.chatModel?.basicPart as? BasicPartClaimConcrete {
             setupClaimObjectView(basic: basicPart,
-                                 voting: dataSource.chatModel?.votingPart as? VotingPartClaimConcrete,
+                                 voting: dataSource.chatModel?.votingPart,
                                  team: teamPart)
             tap.addTarget(self, action: #selector(showClaimDetails))
         } else if let basicPart = dataSource.chatModel?.basicPart as? BasicPartTeammateConcrete {
             setupTeammateObjectView(basic: basicPart,
-                                    voting: dataSource.chatModel?.votingPart as? VotingPartTeammateConcrete,
+                                    voting: dataSource.chatModel?.votingPart,
                                     team: teamPart)
             tap.addTarget(self, action: #selector(showTeammateDetails))
         }

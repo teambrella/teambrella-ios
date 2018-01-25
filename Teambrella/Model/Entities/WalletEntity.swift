@@ -44,7 +44,7 @@ struct WalletEntity: Decodable {
     var defaultWithdrawAddress: String?
     var cosigners: [CosignerEntity]
     var coveragePart: CoverageEntity
-    var teamPart: TeamPartConcrete?
+    var teamPart: TeamPart?
     
     init() {
         currencyRate = 0
@@ -56,7 +56,7 @@ struct WalletEntity: Decodable {
         defaultWithdrawAddress = ""
         cosigners = []
         coveragePart = CoverageEntity()
-        teamPart = TeamPartConcrete()
+        teamPart = TeamPart()
     }
 
 }

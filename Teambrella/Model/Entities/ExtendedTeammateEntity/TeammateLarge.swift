@@ -32,24 +32,18 @@ class TeammateLarge {
     var topic: Topic
     var basic: BasicInfo
     var voting: VotingInfo?
+    let teamPart: TeamPart?
     let object: CoveredObject
     let stats: TeammateStats
     let riskScale: RiskScaleEntity?
-    
-    // MARK: Team Part
-
-    let coverageType: CoverageType
-    let currency: String
-    let accessLevel: TeamAccessLevel
 
     var description: String {
         return "ExtendedTeammateEntity \(id)"
     }
     
     init(json: JSON) {
-        coverageType = CoverageType(rawValue:json["TeamPart"]["CoverageType"].intValue) ?? .other
-        currency = json["TeamPart"]["Currency"].stringValue
-        accessLevel = TeamAccessLevel(rawValue: json["TeamPart"]["TeamAccessLevel"].intValue) ?? .noAccess
+
+        teamPart = TeamPart(json: json["TeamPart"])
 
         id = json["UserId"].stringValue
         teammateID = json["Id"].intValue

@@ -36,8 +36,8 @@ struct ChatModel {
         discussion = json["DiscussionPart"]
         self.chat = chat
         basicPart = BasicPartFactory.basicPart(from: json)
-        teamPart = TeamPartFactory.teamPart(from: json)
-        votingPart = VotingPartFactory.votingPart(from: json)
+        teamPart = TeamPart(json: json["TeamPart"])
+        votingPart = VotingPart(json: json["VotingPart"])
         title = json["Title"].stringValue
         id = json["Id"].intValue
     }
@@ -46,4 +46,30 @@ struct ChatModel {
     var topicID: String { return discussion["TopicId"].stringValue }
     var lastRead: Int64 { return discussion["LastRead"].int64Value }
     var isMuted: Bool? { return discussion["IsMuted"].bool }
+
+    struct VotingPart {
+        let remainingMinutes: Int
+        let proxyName: String?
+        let proxyAvatar: String?
+        let myVote: Double?
+
+        let ratioVoted: Double?
+        let otherCount: Int?
+        let otherAvatars: [String]?
+
+        let riskVoted: Double?
+
+        init(json: JSON) {
+            remainingMinutes = json["RemainedMinutes"].intValue
+            proxyName = json["ProxyName"].string
+            proxyAvatar = json["ProxyAvatar"].string
+            myVote = json["MyVote"].double
+
+            ratioVoted = json["RatioVoted"].double
+            otherCount = json["OtherCount"].intValue
+            otherAvatars = json["OtherAvatars"].arrayObject as? [String]
+
+            riskVoted = json["RiskVoted"].double
+        }
+    }
 }
