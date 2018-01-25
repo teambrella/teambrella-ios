@@ -26,6 +26,10 @@ class WalletTransactionsVC: UIViewController, Routable {
     static let storyboardName = "Me"
     
     var teamID: Int?
+
+    var balance: Double?
+    var reserved: Double?
+
     var dataSource: WalletTransactionsDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0
     
@@ -101,6 +105,15 @@ extension WalletTransactionsVC: UICollectionViewDelegate {
 
         view.leadingLabel.text = "Me.Wallet.Transactions.to".localized
         view.trailingLabel.text = "General.mETH".localized
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = dataSource[indexPath]
+        if let claimID = model.claimID {
+            service.router.presentClaim(claimID: claimID)
+        } else if let balance = balance, let reserved = reserved {
+            service.router.presentWithdraw(balance: balance, reserved: reserved)
+        }
     }
 }
 

@@ -117,7 +117,9 @@ class WalletVC: UIViewController {
     func tapTransactions(sender: UITapGestureRecognizer) {
         guard let session = service.session?.currentTeam?.teamID else { return }
         
-        service.router.presentWalletTransactionsList(teamID: session)
+        service.router.presentWalletTransactionsList(teamID: session,
+                                                     balance: wallet?.cryptoBalance,
+                                                     reserved: wallet?.cryptoReserved)
     }
     
     @objc
