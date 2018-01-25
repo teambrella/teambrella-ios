@@ -39,7 +39,7 @@ enum TeambrellaResponseType {
     case teamFeed(FeedChunk)
     case chat(ChatModel)
     case wallet(WalletEntity)
-    case walletTransactions([WalletTransactionsCellModel])
+    case walletTransactions([WalletTransactionsModel])
     case uploadPhoto(String)
     case myProxy(Bool)
     case myProxies([ProxyCellModel])

@@ -73,7 +73,9 @@ struct TeambrellaRequest {
     private func parseReply(serverReply: ServerReply) {
         // temporary item for compatibility with legacy code
         let reply = JSON(serverReply.json)
+
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.teambrella)
         decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "PositiveInfinity",
                                                                         negativeInfinity: "NegativeInfinity",
                                                                         nan: "NaN")
@@ -191,7 +193,15 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .walletTransactions:
-            success(.walletTransactions(reply.arrayValue.flatMap { WalletTransactionsCellModel(json: $0) }))
+            print(reply)
+            do {
+                let models = try decoder.decode([WalletTransactionsModel].self, from: serverReply.data)
+                success(.walletTransactions(models))
+            } catch {
+                log(error)
+                failure?(error)
+            }
+            // success(.walletTransactions(reply.arrayValue.flatMap { WalletTransactionsCellModel(json: $0) }))
         case .updates:
             break
         case .uploadPhoto:

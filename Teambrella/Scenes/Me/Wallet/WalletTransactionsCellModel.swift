@@ -22,14 +22,24 @@
 import Foundation
 import SwiftyJSON
 
-struct WalletTransactionsCellModel {
+struct WalletTransactionsModel: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case claimID = "ClaimId"
+        case lastUpdated = "LastUpdated"
+        case serverTxState = "ServerTxState"
+        case dateCreated = "DateCreated"
+        case id = "Id"
+        case to = "To"
+    }
+
     let claimID: Int
     let lastUpdated: Int
     let serverTxState: TransactionState
     let dateCreated: Date?
     let id: String
     let to: [WalletTransactionTo]
-    
+
+    /*
     init(json: JSON) {
         claimID = json["ClaimId"].intValue
         lastUpdated = json["LastUpdated"].intValue
@@ -38,18 +48,48 @@ struct WalletTransactionsCellModel {
         id = json["Id"].stringValue
         to = json["To"].arrayValue.flatMap { WalletTransactionTo(json: $0) }
     }
+ */
 }
 
-struct WalletTransactionTo {
+struct WalletTransactionsCellModel {
+    let claimID: Int
+    let lastUpdated: Int
+    let serverTxState: TransactionState
+    let dateCreated: Date?
+    let id: String
+    let to: [WalletTransactionTo]
+
+    init(model: WalletTransactionsModel) {
+        claimID = model.claimID
+        lastUpdated = model.lastUpdated
+        serverTxState = model.serverTxState
+        dateCreated = model.dateCreated
+        id = model.id
+        to = model.to
+    }
+}
+
+struct WalletTransactionTo: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case kind = "Kind"
+        case userID = "UserId"
+        case name = "UserName"
+        case amount = "Amount"
+        case avatar = "Avatar"
+    }
+
     let kind: TransactionKind
     let userID: String
     let name: String
     let amount: Double
-    
+    let avatar: String
+
+    /*
     init(json: JSON) {
         kind = TransactionKind(rawValue: json["Kind"].intValue) ?? .payout
         userID = json["UserId"].stringValue
         name = json["UserName"].stringValue
         amount = json["Amount"].doubleValue
     }
+ */
 }
