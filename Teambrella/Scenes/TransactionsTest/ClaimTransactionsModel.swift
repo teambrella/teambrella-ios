@@ -29,28 +29,30 @@ struct ClaimTransactionsModel: Decodable {
         case status = "Status"
         case to = "To"
     }
-    
+
+    struct TransactionTo: Decodable {
+        enum CodingKeys: String, CodingKey {
+            case amount = "AmountCrypto"
+            case userID = "UserId"
+            case name = "Name"
+            case avatar = "Avatar"
+            case amountFiat = "AmountFiat"
+        }
+
+        let amount: Double
+        let userID: String
+        let name: String
+        let avatar: String
+        let amountFiat: Double
+
+    }
+
     let userID: String
     let avatar: String
     let name: String
     let status: TransactionState
-    let to: [ClaimTransactionTo]
+    let to: [TransactionTo]
     
 }
 
-struct ClaimTransactionTo: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case amount = "AmountCrypto"
-        case userID = "UserId"
-        case name = "Name"
-        case avatar = "Avatar"
-        case amountFiat = "AmountFiat"
-    }
-    
-    let amount: Double
-    let userID: String
-    let name: String
-    let avatar: String
-    let amountFiat: Double
-    
-}
+
