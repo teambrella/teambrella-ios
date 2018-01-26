@@ -59,6 +59,14 @@ struct WithdrawTransactionCellModel: WithdrawCellModel {
     let amountText: String
 }
 
+struct WalletInfoCellModel: WalletCellModel {
+    let amount: Double
+    let reserved: Double
+    let available: Double
+    let currencyRate: Double
+    
+}
+
 struct WithdrawCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: WithdrawCellModel) {
         if let cell = cell as? WithdrawDetailsCell, let model = model as? WithdrawDetailsCellModel {
@@ -72,23 +80,43 @@ struct WithdrawCellBuilder {
             cell.cryptoAmountTextField.text = model.amountValue
             cell.submitButton.setTitle(model.buttonTitle, for: .normal)
             
-//            cell.cryptoAmountTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
-//            cell.cryptoAmountTextField.text = model.amountValue
-//            cell.cryptoAmountTextField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
-//            // cell.cryptoAmountTextField.tag = indexPath.row
-//            cell.cryptoAmountTextField.removeTarget(reportVC, action: nil, for: .allEvents)
-//            cell.cryptoAmountTextField.addTarget(delegate, action: #selector(ReportVC.textFieldDidChange),
-//                                                 for: .editingChanged)
-//            cell.cryptoAddressTextView.text = model.toValue
-//            // cell.cryptoAddressTextView.tag = indexPath.row
-//            cell.cryptoAddressTextView.delegate = delegate
-//            cell.cryptoAddressTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            //            cell.cryptoAmountTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            //            cell.cryptoAmountTextField.text = model.amountValue
+            //            cell.cryptoAmountTextField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
+            //            // cell.cryptoAmountTextField.tag = indexPath.row
+            //            cell.cryptoAmountTextField.removeTarget(reportVC, action: nil, for: .allEvents)
+            //            cell.cryptoAmountTextField.addTarget(delegate, action: #selector(ReportVC.textFieldDidChange),
+            //                                                 for: .editingChanged)
+            //            cell.cryptoAddressTextView.text = model.toValue
+            //            // cell.cryptoAddressTextView.tag = indexPath.row
+            //            cell.cryptoAddressTextView.delegate = delegate
+            //            cell.cryptoAddressTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
             
         } else if let cell = cell as? WithdrawCell, let model = model as? WithdrawTransactionCellModel {
             cell.upperLabel.text = model.topText
             cell.lowerLabel.text = model.bottomText
             cell.indicatorView.isHidden = !model.isNew
             cell.rightLabel.text = model.amountText
+        } else if let cell = cell as? WalletInfoCell, let model = model as? WalletInfoCellModel {
+            populateHeader(cell: cell, model: model)
         }
+    }
+    
+    private static func populateHeader(cell: WalletInfoCell, model: WalletInfoCellModel) {
+        cell.numberBar.isBottomLineVisible = false
+        cell.amount.text = String.formattedNumber(model.amount * 1000)
+        //balance = model.amount * 1000
+        
+        cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
+        cell.numberBar.left?.amountLabel.text = model.reserved < 0.1
+            ? String.formattedNumber(model.reserved * 1000)
+            : String.truncatedNumber(model.reserved * 1000)
+        cell.numberBar.left?.isBadgeVisible = false
+        
+        cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
+        cell.numberBar.right?.amountLabel.text = model.available < 0.1
+            ? String.formattedNumber(model.available * 1000)
+            : String.truncatedNumber(model.available * 1000)
+        cell.numberBar.right?.isBadgeVisible = false
     }
 }

@@ -22,7 +22,7 @@ final class WithdrawDataSource {
     var sections: Int {
         return 1 + self.transactions.filter { $0.isEmpty == false }.count
     }
-    
+    var walletInfo: WalletInfoCellModel
     var cryptoBalance: Double = 0.0
     var cryptoReserved: Double = 0.0
     
@@ -147,6 +147,15 @@ final class WithdrawDataSource {
         detailsModel.amountValue = ""
         detailsModel.toValue = ""
     }
+    
+    func createCellModels(with wallet: WalletEntity) {
+        cryptoBalance = wallet.cryptoBalance
+        cryptoReserved = wallet.cryptoReserved
+        walletInfo = WalletInfoCellModel(amount: cryptoBalance,
+                                           reserved: cryptoReserved,
+                                           available: wallet.cryptoBalance - wallet.cryptoReserved,
+                                           currencyRate: wallet.currencyRate)
+}
     
     // MARK: Private
     

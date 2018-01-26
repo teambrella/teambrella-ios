@@ -59,21 +59,8 @@ struct WalletCellBuilder {
     }
     
     private static func populateHeader(cell: WalletHeaderCell, model: WalletHeaderCellModel) {
-//        cell.numberBar.isBottomLineVisible = false
         cell.amount.text = String.formattedNumber(model.amount * 1000)
         balance = model.amount * 1000
-        
-//        cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
-//        cell.numberBar.left?.amountLabel.text = model.reserved < 0.1
-//            ? String.formattedNumber(model.reserved * 1000)
-//            : String.truncatedNumber(model.reserved * 1000)
-//        cell.numberBar.left?.isBadgeVisible = false
-//
-//        cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
-//        cell.numberBar.right?.amountLabel.text = model.available < 0.1
-//            ? String.formattedNumber(model.available * 1000)
-//            : String.truncatedNumber(model.available * 1000)
-//        cell.numberBar.right?.isBadgeVisible = false
         
         cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
         cell.currencyLabel.text = service.session?.cryptoCurrency.coinCode

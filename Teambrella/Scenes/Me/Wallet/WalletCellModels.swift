@@ -27,8 +27,6 @@ protocol WalletCellModel {
 
 struct WalletHeaderCellModel: WalletCellModel {
     let amount: Double
-    let reserved: Double
-    let available: Double
     let currencyRate: Double
 
 }
