@@ -288,16 +288,17 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     private func tapRightLabel(gesture: UITapGestureRecognizer) {
-        if (dataSource.chatModel?.basicPart as? BasicPartClaimConcrete) != nil, let id = dataSource.chatModel?.id {
-            service.router.presentClaim(claimID: id, scrollToVoting: true)
-        } else if let basic = dataSource.chatModel?.basicPart as? BasicPartTeammateConcrete {
-            service.router.presentMemberProfile(teammateID: basic.userID, scrollToVote: true)
+        if let claimID = dataSource.chatModel?.claimID {
+       // if (dataSource.chatModel?.basicPart as? BasicPartClaimConcrete) != nil, let id = dataSource.chatModel?.id {
+            service.router.presentClaim(claimID: claimID, scrollToVoting: true)
+        } else if let userID = dataSource.chatModel?.basicPart?.userID {
+            service.router.presentMemberProfile(teammateID: userID, scrollToVote: true)
         }
     }
     
     @objc
     private func showClaimDetails(gesture: UITapGestureRecognizer) {
-        guard let id = dataSource.chatModel?.id else { return }
+        guard let id = dataSource.chatModel?.claimID else { return }
         
         service.router.presentClaim(claimID: id, scrollToVoting: false)
     }
@@ -345,20 +346,20 @@ private extension UniversalChatVC {
         title = dataSource.title
     }
     
-    private func setupClaimObjectView(basic: BasicPartClaimConcrete,
+    private func setupClaimObjectView(basic: ChatModel.BasicPart,
                                       voting: ChatModel.VotingPart?,
                                       team: TeamPart) {
         objectNameLabel.text = basic.model
-        objectDetailsLabel.text = "Team.Chat.ObjectView.ClaimAmountLabel".localized
-            + String(format: "%.2f", basic.claimAmount)
+        objectDetailsLabel.text = basic.claimAmount.map { amount in
+            "Team.Chat.ObjectView.ClaimAmountLabel".localized + String(format: "%.2f", amount)
+        }
         objectBlueDetailsLabel.text = team.currency
         objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
         objectPercentLabel.text = "%"
         objectRightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
         
         objectImage.image = #imageLiteral(resourceName: "imagePlaceholder")
-        let icon = basic.smallPhoto
-        objectImage.showImage(string: icon)
+        basic.smallPhoto.map { objectImage.showImage(string: $0) }
         
         if let voting = voting {
             if let vote = voting.myVote {
@@ -374,12 +375,14 @@ private extension UniversalChatVC {
         }
     }
     
-    private func setupTeammateObjectView(basic: BasicPartTeammateConcrete,
+    private func setupTeammateObjectView(basic: ChatModel.BasicPart,
                                          voting: ChatModel.VotingPart?,
                                          team: TeamPart) {
-        objectNameLabel.text = basic.name.short
+        objectNameLabel.text = basic.name?.short
         objectImage.showImage(string: basic.avatar)
-        objectDetailsLabel.text = "\(basic.model.uppercased()), \(basic.year)"
+        if let model = basic.model, let year = basic.year {
+        objectDetailsLabel.text = "\(model.uppercased()), \(year)"
+        }
         objectVoteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
         objectPercentLabel.isHidden = true
         objectBlueDetailsLabel.isHidden = true
@@ -595,12 +598,12 @@ private extension UniversalChatVC {
         objectViewHeight.constant = 48
         objectView.isHidden = false
         let tap = UITapGestureRecognizer()
-        if let basicPart = dataSource.chatModel?.basicPart as? BasicPartClaimConcrete {
+        if let basicPart = dataSource.chatModel?.basicPart, basicPart.claimAmount != nil {
             setupClaimObjectView(basic: basicPart,
                                  voting: dataSource.chatModel?.votingPart,
                                  team: teamPart)
             tap.addTarget(self, action: #selector(showClaimDetails))
-        } else if let basicPart = dataSource.chatModel?.basicPart as? BasicPartTeammateConcrete {
+        } else if let basicPart = dataSource.chatModel?.basicPart {
             setupTeammateObjectView(basic: basicPart,
                                     voting: dataSource.chatModel?.votingPart,
                                     team: teamPart)

@@ -50,7 +50,7 @@ struct ClaimTransactionsModel: Decodable {
     let userID: String
     let avatar: String
     let name: String
-    let status: TransactionState
+    let status: TransactionState?
     let to: [TransactionTo]
     
 }

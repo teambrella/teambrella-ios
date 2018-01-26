@@ -80,7 +80,9 @@ struct TransactionsCellModelBuilder {
         return String.formattedNumber(amount * 1000)
     }
 
-    private func typeText(state: TransactionState) -> String {
+    private func typeText(state: TransactionState?) -> String {
+        guard let state = state else { return "" }
+        
         switch state {
         case .confirmed:
             return ""
