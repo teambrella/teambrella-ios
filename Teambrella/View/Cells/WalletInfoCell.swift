@@ -24,7 +24,8 @@ class WalletInfoCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //ViewDecorator.shadow(for: self, opacity: 0.1, radius: 5)
+        ViewDecorator.shadow(for: self, opacity: 0.1, radius: 5)
+        ViewDecorator.roundedEdges(for: self)
         numberBar.left?.alignmentType = .leading
         numberBar.right?.alignmentType = .leading
     }

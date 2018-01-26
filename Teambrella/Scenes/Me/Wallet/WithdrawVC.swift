@@ -49,6 +49,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         HUD.show(.progress, onView: view)
+        collectionView.register(WalletInfoCell.nib, forCellWithReuseIdentifier: WalletInfoCell.cellID)
         collectionView.register(WithdrawDetailsCell.nib, forCellWithReuseIdentifier: WithdrawDetailsCell.cellID)
         collectionView.register(WithdrawCell.nib, forCellWithReuseIdentifier: WithdrawCell.cellID)
         collectionView.register(WithdrawHeader.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
@@ -268,6 +269,8 @@ extension WithdrawVC: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: UICollectionViewCell
         if indexPath.section == 0 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WalletInfoCell.cellID, for: indexPath)
+        } else if indexPath.section == 1 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: WithdrawDetailsCell.cellID, for: indexPath)
         } else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: WithdrawCell.cellID, for: indexPath)
@@ -294,7 +297,9 @@ extension WithdrawVC: UICollectionViewDelegate {
         guard let model = dataSource[indexPath] else { return }
         
         WithdrawCellBuilder.populate(cell: cell, with: model)
-        
+        if let cell = cell as? WalletInfoCell {
+            
+        }
         if let cell = cell as? WithdrawDetailsCell {
             cell.qrButton.removeTarget(self, action: nil, for: .allEvents)
             cell.qrButton.addTarget(self, action: #selector(tapQR), for: .touchUpInside)
@@ -339,15 +344,22 @@ extension WithdrawVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return indexPath.section == 0
-            ? CGSize(width: collectionView.bounds.width - 32, height: 300)
-            : CGSize(width: collectionView.bounds.width, height: 72)
+        if indexPath.section == 0 {
+            return CGSize(width: collectionView.bounds.width - 32, height: 150)
+        } else if indexPath.section == 1 {
+            return CGSize(width: collectionView.bounds.width - 32, height: 300)
+        } else {
+            return CGSize(width: collectionView.bounds.width, height: 72)
+        }
+//        return indexPath.section == 0
+//            ? CGSize(width: collectionView.bounds.width - 32, height: 300)
+//            : CGSize(width: collectionView.bounds.width, height: 72)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return section == 0
+        return (section == 0 || section == 1)
             ? CGSize(width: collectionView.bounds.width, height: 20)
             : CGSize(width: collectionView.bounds.width, height: 40)
     }
