@@ -146,7 +146,7 @@ class TeambrellaContentProvider {
         return transactions(with: NSPredicate(format: "isServerUpdateNeededValue == TRUE"))
     }
     
-    var transactionsResolvable: [Tx] {
+    var transactionsToApprove: [Tx] {
         let predicate = NSPredicate(format: "resolutionValue == \(TransactionClientResolution.received.rawValue)")
         return transactions(with: predicate)
     }

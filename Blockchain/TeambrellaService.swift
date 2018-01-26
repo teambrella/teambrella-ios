@@ -378,21 +378,39 @@ class TeambrellaService: NSObject {
         let myCurrentMultisigs = contentProvider.currentMultisigsWithAddress(publicKey: publicKey)
         if let multisig = myCurrentMultisigs.first {
             wallet.deposit(multisig: multisig) { success in
-                
+                print("Wallet deposit result: \(success)")
             }
         }
         
     }
     
     func autoApproveTxs() {
+        /*
+         Android version:
+
+         List<ContentProviderOperation> operations = new LinkedList<>();
+         List<Tx> txs = getTxToApprove();
+         for (Tx tx : txs) {
+         operations.add(ContentProviderOperation.newUpdate(TeambrellaRepository.Tx.CONTENT_URI)
+         .withValue(TeambrellaRepository.Tx.RESOLUTION, TeambrellaModel.TX_CLIENT_RESOLUTION_APPROVED)
+         .withValue(TeambrellaRepository.Tx.CLIENT_RESOLUTION_TIME, mSDF.format(new Date()))
+         .withValue(TeambrellaRepository.Tx.NEED_UPDATE_SERVER, true)
+         .withSelection(TeambrellaRepository.Tx.ID + "=?", new String[]{tx.id.toString()})
+         .build());
+         }
+         return operations;
+         */
         print("Teambrella service start \(#function)")
-        
+        let txs = contentProvider.transactionsToApprove
+        print("Teambrella service has \(txs.count) transactions to approve")
+        contentProvider.transactionsChangeResolution(txs: txs, to: .approved, when: Date())
     }
     
     func cosignApprovedTransactions() throws {
         print("Teambrella service start \(#function)")
         //let publicKey = key.publicKey
         let list = contentProvider.transactionsCosignable
+        print("Teambrella service has \(list.count) cosignable transactions")
         let user = contentProvider.user
         for tx in list {
             try cosignTransaction(transaction: tx, userID: user.id)
@@ -419,11 +437,59 @@ class TeambrellaService: NSObject {
     
     func masterSign() {
         print("Teambrella service start \(#function)")
-        
+        print("Master sign function disabled")
+        // Do nothing
     }
     
     func publishApprovedAndCosignedTxs() {
+        /*
+         Android version:
+
+         ArrayList<ContentProviderOperation> operations = new ArrayList<>();
+         List<Tx> txs = mTeambrellaClient.getApprovedAndCosignedTxs(mKey.getPublicKeyAsHex());
+         for (Tx tx : txs) {
+         Log.d(LOG_TAG, " ---- SYNC -- publishApprovedAndCosignedTxs() detected tx to publish. id:" + tx.id);
+
+         switch (tx.kind) {
+         case TeambrellaModel.TX_KIND_PAYOUT:
+         case TeambrellaModel.TX_KIND_WITHDRAW:
+         case TeambrellaModel.TX_KIND_MOVE_TO_NEXT_WALLET:
+         String cryptoTxHash = mWallet.publish(tx);
+         Log.d(LOG_TAG, " ---- SYNC -- publishApprovedAndCosignedTxs() published. tx hash:" + cryptoTxHash);
+         if (cryptoTxHash != null) {
+         operations.add(TeambrellaContentProviderClient.setTxPublished(tx, cryptoTxHash));
+         mClient.applyBatch(operations);
+         }
+         break;
+         default:
+         // TODO: support move & incoming TXs
+         break;
+         }
+         }
+
+         return !operations.isEmpty();
+         */
         print("Teambrella service start \(#function)")
+        let txs = contentProvider.transactionsApprovedAndCosigned
+        print("Teambrella has \(txs.count) approved and cosigned transactions to publish")
+        for tx in txs {
+            guard let kind = tx.kind else { continue }
+
+            switch kind {
+                case .payout,
+                     .withdraw,
+                     .moveToNextWallet:
+                    wallet.publish(tx: tx, completion: { hash in
+                        print("Teambrella service published tx hash: \(hash)")
+                    }, failure: { error in
+                        print("Teambrella service failed to publish tx \(tx.id.uuidString)")
+                        print("Error: \(String(describing: error))")
+                    })
+            default:
+                // TODO: support move & incoming TXs
+                break
+            }
+        }
         
     }
     
