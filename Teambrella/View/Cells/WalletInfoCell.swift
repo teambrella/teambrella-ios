@@ -1,10 +1,5 @@
 //
-//  WalletHeaderCell.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 23.06.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,15 +16,17 @@
 
 import UIKit
 
-class WalletHeaderCell: UICollectionViewCell, XIBInitableCell {
+class WalletInfoCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var amount: WalletAmountLabel!
     @IBOutlet var auxillaryAmount: UILabel!
     @IBOutlet var currencyLabel: UILabel!
-    @IBOutlet var button: BorderedButton!
+    @IBOutlet var numberBar: NumberBar!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        ViewDecorator.shadow(for: self, opacity: 0.1, radius: 5)
+        //ViewDecorator.shadow(for: self, opacity: 0.1, radius: 5)
+        numberBar.left?.alignmentType = .leading
+        numberBar.right?.alignmentType = .leading
     }
-
+    
 }
