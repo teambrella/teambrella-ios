@@ -62,7 +62,7 @@ class TeambrellaService: NSObject {
     }
     
     func startUpdating(completion: @escaping (UIBackgroundFetchResult) -> Void) {
-    sync(completion: completion)
+        sync(completion: completion)
     }
     
     private func update(completion: @escaping (Bool) -> Void) {
@@ -208,7 +208,11 @@ class TeambrellaService: NSObject {
         }
         
         queue.addOperation {
-            self.cosignApprovedTransactions()
+            do {
+                try self.cosignApprovedTransactions()
+            } catch {
+                print("Error cosigning approved transactions: \(error)")
+            }
         }
         
         queue.addOperation {
@@ -385,18 +389,18 @@ class TeambrellaService: NSObject {
         
     }
     
-    func cosignApprovedTransactions() {
+    func cosignApprovedTransactions() throws {
         print("Teambrella service start \(#function)")
         //let publicKey = key.publicKey
         let list = contentProvider.transactionsCosignable
         let user = contentProvider.user
         for tx in list {
-            cosignTransaction(transaction: tx, userID: user.id)
+            try cosignTransaction(transaction: tx, userID: user.id)
         }
         contentProvider.save()
     }
 
-    private func cosignTransaction(transaction: Tx, userID: Int) {
+    private func cosignTransaction(transaction: Tx, userID: Int) throws {
         guard let kind = transaction.kind else { return }
 
         switch kind {
@@ -404,7 +408,7 @@ class TeambrellaService: NSObject {
             guard transaction.fromMultisig != nil else { return }
 
             for input in transaction.inputs {
-                let signature = wallet.cosign(transaction: transaction, payOrMoveFrom: input)
+                let signature = try wallet.cosign(transaction: transaction, payOrMoveFrom: input)
                 contentProvider.addNewSignature(input: input, tx: transaction, signature: signature)
             }
         default:

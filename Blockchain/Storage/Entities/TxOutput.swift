@@ -36,3 +36,11 @@ class TxOutput: NSManagedObject {
         return payToValue!
     }
 }
+
+extension TxOutput {
+    func saneAddress() -> EthereumAddress? {
+        guard let addressString = self.payToValue?.addressValue else { return nil }
+
+        return EthereumAddress(string: addressString)
+    }
+}

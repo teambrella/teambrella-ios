@@ -251,7 +251,7 @@ class EthWallet {
         })
     }
 
-    func cosign(transaction: Tx, payOrMoveFrom: TxInput) -> Data {
+    func cosign(transaction: Tx, payOrMoveFrom: TxInput) throws -> Data {
         guard let kind = transaction.kind else {
             fatalError()
         }
@@ -260,17 +260,137 @@ class EthWallet {
         case .moveToNextWallet:
             return cosignMove(transaction: transaction, moveFrom: payOrMoveFrom)
         default:
-            return cosignPay(transaction: transaction, payFrom: payOrMoveFrom)
+            return try cosignPay(transaction: transaction, payFrom: payOrMoveFrom)
         }
     }
 
     // MARK: TODO
-    func cosignPay(transaction: Tx, payFrom: TxInput) -> Data {
-        return Data()
+    /**
+     Android version:
+
+     int opNum = payFrom.previousTxIndex + 1;
+
+     Multisig sourceMultisig = tx.getFromMultisig();
+     long teamId = sourceMultisig.teamId;
+
+     String[] payToAddresses = toAddresses(tx.txOutputs);
+     String[] payToValues = toValues(tx.txOutputs);
+
+     byte[] h = getHashForPaySignature(teamId, opNum, payToAddresses, payToValues);
+     Log.v(LOG_TAG, "Hash created for Tx transfer(s): " + Hex.fromBytes(h));
+
+     byte[] sig = mEtherAcc.signHashAndCalculateV(h);
+     Log.v(LOG_TAG, "Hash signed.");
+
+     return sig;
+     */
+    func cosignPay(transaction: Tx, payFrom: TxInput) throws -> Data {
+        let opNum = payFrom.previousTransactionIndex + 1
+        guard let sourceMultisig = transaction.fromMultisig else {
+            fatalError("There is no from Multisig")
+        }
+
+        let teamID = sourceMultisig.teamID
+        let payToAddresses = toAddresses(destinations: transaction.outputs)
+        let payToValues = toValues(destinations: transaction.outputs)
+
+        let h = try hashForPaySignature(teamID: teamID, opNum: opNum, addresses: payToAddresses, values: payToValues)
+        print("Hash created for Tx transfer(s): \(h.base64EncodedString())")
+
+        let sig = processor.signHashAndCalculateV(hash256: h)
+        print("Hash signed.")
+
+        return sig
+    }
+
+    /**
+     Android version:
+
+     int n = destinations.size();
+     String[] destinationAddresses = new String[n];
+
+     for (int i = 0; i < n; i++) {
+     destinationAddresses[i] = destinations.get(i).address;
+     sanityAddressCheck(destinationAddresses[i]);
+     }
+
+     return destinationAddresses;
+     */
+    private func toAddresses(destinations: [TxOutput]) -> [String] {
+        let destinationAddresses: [String] = destinations.flatMap { output in output.saneAddress()?.string }
+        return destinationAddresses
+    }
+
+    /**
+     Android version:
+
+     int n = destinations.size();
+     String[] destinationValues = new String[n];
+
+     for (int i = 0; i < n; i++) {
+     destinationValues[i] = AbiArguments.parseDecimalAmount(destinations.get(i).cryptoAmount);
+     }
+
+     return destinationValues;
+     */
+    private func toValues(destinations: [TxOutput]) -> [String] {
+        let destinationValues = destinations.flatMap { output in
+            guard let stringValue = output.amountValue?.stringValue else { return nil }
+
+            return AbiArguments.parseDecimalAmount(decimalAmount: stringValue)
+        }
+        return destinationValues
     }
 
     func cosignMove(transaction: Tx, moveFrom: TxInput) -> Data {
+        /*
+         int opNum = moveFrom.previousTxIndex + 1;
+
+         Multisig sourceMultisig = tx.getFromMultisig();
+         long teamId = sourceMultisig.teamId;
+
+         String[] nextCosignerAddresses = toCosignerAddresses(tx.getToMultisig());
+         byte[] h = getHashForMoveSignature(teamId, opNum, nextCosignerAddresses);
+         Log.v(LOG_TAG, "Hash created for Tx transfer(s): " + Hex.fromBytes(h));
+
+         byte[] sig = mEtherAcc.signHashAndCalculateV(h);
+         Log.v(LOG_TAG, "Hash signed.");
+
+         return sig;
+         */
         return Data()
+    }
+
+    /**
+     Android version:
+
+     String a0 = TX_PREFIX; // prefix, that is used in the contract to indicate a signature for transfer tx
+     String a1 = String.format("%064x", teamId);
+     String a2 = String.format("%064x", opNum);
+     int n = addresses.length;
+     String[] a3 = new String[n];
+     for (int i = 0; i < n; i++) {
+     a3[i] = Hex.remove0xPrefix(addresses[i]);
+     }
+     String[] a4 = new String[n];
+     for (int i = 0; i < n; i++) {
+     a4[i] = Hex.remove0xPrefix(values[i]);
+     }
+
+     byte[] data = com.teambrella.android.blockchain.Hex.toBytes(a0, a1, a2, a3, a4);
+     return Sha3.getKeccak256Hash(data);
+     */
+    private func hashForPaySignature(teamID: Int, opNum: Int, addresses: [String], values: [String]) throws -> Data {
+        let a0 = Constant.txPrefix // prefix, that is used in the contract to indicate a signature for transfer tx
+        let a1 = String(format: "%064x", teamID)
+        let a2 = String(format: "%064x", opNum)
+        let hex = Hex()
+        let a3: [String] = addresses.map { address in hex.truncatePrefix(string: address) }
+        let a4: [String] = values.map { value in hex.truncatePrefix(string: value) }
+
+        let data = try hex.data(from: a0, a1, a2, a3, a4)
+
+        return processor.sha3(data)
     }
     
 }

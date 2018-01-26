@@ -68,6 +68,17 @@ class AbiArguments {
         
         return abiArguments.hexString
     }
+
+    static func parseDecimalAmount(decimalAmount: String) -> String? {
+        /*
+            BigDecimal e = new BigDecimal(decimalAmount, MathContext.UNLIMITED);
+            BigInteger wei = e.multiply(WEIS_IN_ETH).toBigInteger();
+            return Hex.format(wei, BYTES_IN_WORD);
+        */
+        let e: BInt = BInt(decimalAmount)
+        let weis: BInt = e * BInt(Constant.weisInEth.description)
+        return  Hex().formattedString(bigInteger: weis, bytesCount: Constant.bytesInWord)
+    }
     
     func add(_ argument: Any) throws {
         guard isValid(argument) else { throw AbiArgumentsError.unEncodableArgument(argument) }
