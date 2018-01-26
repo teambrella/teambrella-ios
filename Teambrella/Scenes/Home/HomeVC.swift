@@ -206,7 +206,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         }
         itemCard.titleLabel.text = model.objectName
         itemCard.statusLabel.text = "Home.itemCard.status".localized
-        itemCard.subtitleLabel.text = model.teamPart.coverage.localizedCoverageType
+        itemCard.subtitleLabel.text = model.teamPart.coverageType.localizedCoverageType
         
         let buttonTitle = model.haveVotingClaims
             ? "Home.submitButton.anotherClaim".localized
@@ -343,7 +343,7 @@ extension HomeVC: UIScrollViewDelegate {
 extension HomeVC: ReportDelegate {
     func report(controller: ReportVC, didSendReport data: Any) {
         service.router.navigator?.popViewController(animated: false)
-        if let claim = data as? EnhancedClaimEntity {
+        if let claim = data as? ClaimEntityLarge {
             service.router.presentClaim(claimID: claim.id)
         }
     }

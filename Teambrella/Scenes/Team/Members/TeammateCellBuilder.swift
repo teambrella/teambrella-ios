@@ -86,7 +86,9 @@ struct TeammateCellBuilder {
          */
     }
     
-    private static func setVote(votingCell: VotingRiskCell, voting: TeammateVotingInfo, controller: TeammateProfileVC) {
+    private static func setVote(votingCell: VotingRiskCell,
+                                voting: TeammateLarge.VotingInfo,
+                                controller: TeammateProfileVC) {
         let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
         votingCell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars, label: label, max: nil)
         if let risk = voting.riskVoted {
@@ -157,7 +159,7 @@ struct TeammateCellBuilder {
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
-        cell.detailsLabel.text = teammate.coverageType.localizedCoverageType
+        cell.detailsLabel.text = teammate.teamPart?.coverageType.localizedCoverageType
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)

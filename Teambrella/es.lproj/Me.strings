@@ -86,3 +86,8 @@
 "Me.Wallet.Withdraw.noCameraAccess.settingsButton" = "Settings";
 
 "Me.WalletVC.lowerBrick.title"                 = "RECOMENDADO";
+"Me.Wallet.Transactions.to" = "TO";
+"Me.Wallet.Transactions.withdrawal" = "WITHDRAWAL";
+"Me.Wallet.Transactions.claimNumber" = "CLAIM %d";
+"Me.Wallet.Transactions.kind.pending" = "PENDING";
+"Me.Wallet.Transactions.kind.cancelled" = "CANCELLED";

@@ -73,7 +73,9 @@ struct TeambrellaRequest {
     private func parseReply(serverReply: ServerReply) {
         // temporary item for compatibility with legacy code
         let reply = JSON(serverReply.json)
+
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.teambrella)
         decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "PositiveInfinity",
                                                                         negativeInfinity: "NegativeInfinity",
                                                                         nan: "NaN")
@@ -128,7 +130,7 @@ struct TeambrellaRequest {
             }
         case .claim,
              .newClaim:
-            success(.claim(EnhancedClaimEntity(json: reply)))
+            success(.claim(ClaimEntityLarge(json: reply)))
         case .claimVote:
             success(.claimVote(reply))
         case .claimUpdates:
@@ -161,7 +163,7 @@ struct TeambrellaRequest {
             }
         case .claimTransactions:
             do {
-                let models = try decoder.decode([ClaimTransactionsCellModel].self, from: serverReply.data)
+                let models = try decoder.decode([ClaimTransactionsModel].self, from: serverReply.data)
                 success(.claimTransactions(models))
             } catch {
                 log(error)
@@ -191,7 +193,14 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .walletTransactions:
-            success(.walletTransactions(reply.arrayValue.flatMap { WalletTransactionsCellModel(json: $0) }))
+            print(reply)
+            do {
+                let models = try decoder.decode([WalletTransactionsModel].self, from: serverReply.data)
+                success(.walletTransactions(models))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .updates:
             break
         case .uploadPhoto:

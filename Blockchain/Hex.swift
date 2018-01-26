@@ -77,6 +77,11 @@ struct Hex {
         let format = "%0\(bytesCount * 2)X"
         return String(format: format, integer)
     }
+
+    // 777 to "00000000000000000777"
+    func formattedString(bigInteger: BInt, bytesCount: Int) -> String? {
+        return formattedString(string: bigInteger.asString(withBase: 10), bytesCount: bytesCount)
+    }
     
     // "0xABCDEF" to "00000000000000000ABCDEF"
     func formattedString(string: String, bytesCount: Int) -> String? {

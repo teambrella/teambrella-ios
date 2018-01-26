@@ -322,8 +322,8 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func createNewClaim(model: NewClaimModel) -> Future<EnhancedClaimEntity> {
-        let promise = Promise<EnhancedClaimEntity>()
+    func createNewClaim(model: NewClaimModel) -> Future<ClaimEntityLarge> {
+        let promise = Promise<ClaimEntityLarge>()
         freshKey { key in
             let dateString = Formatter.teambrellaShortDashed.string(from: model.incidentDate)
             let body = RequestBody(key: key, payload: ["TeamId": model.teamID,

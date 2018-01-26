@@ -56,6 +56,8 @@
 "General.CoverageType.petCat"                      = "Pet health";
 "General.CoverageType.bicycle"                     = "Theft";
 
+"General.mETH" = "mETH";
+
 /*
  case carCollision                 = 101
  case carComprehensive             = 102

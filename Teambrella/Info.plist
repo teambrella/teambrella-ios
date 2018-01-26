@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.2.6</string>
+	<string>0.2.9</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -26,7 +26,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>93</string>
+	<string>102</string>
 	<key>FacebookAppID</key>
 	<string>1826256607597448</string>
 	<key>FacebookDisplayName</key>
@@ -47,10 +47,10 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>To be able to take photos please provide an access to your photo camera</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To be able to send photos please provide an access to your photo library</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Please grant access to contacts</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To be able to send photos please provide an access to your photo library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AkkuratPro-Bold.otf</string>

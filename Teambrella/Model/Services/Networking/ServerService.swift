@@ -24,18 +24,18 @@ import Foundation
 import SwiftyJSON
 
 /*
-struct ResponseStatus {
-    let timestamp: Int64
-    let code: Int
-    let errorMessage: String
-    
-    init(json: JSON) {
-        timestamp = json["Timestamp"].int64Value
-        code = json["ResultCode"].intValue
-        errorMessage = json["ErrorMessage"].stringValue
-    }
-}
-*/
+ struct ResponseStatus {
+ let timestamp: Int64
+ let code: Int
+ let errorMessage: String
+
+ init(json: JSON) {
+ timestamp = json["Timestamp"].int64Value
+ code = json["ResultCode"].intValue
+ errorMessage = json["ErrorMessage"].stringValue
+ }
+ }
+ */
 
 /**
  Service to interoperate with the server fetching all UI related information
@@ -85,11 +85,13 @@ class ServerService: NSObject {
             }
             let application = Application()
             let dict: [String: Any] = ["t": body.timestamp,
-                        "key": body.publicKey,
-                        "sig": body.signature,
-                        "clientVersion": application.clientVersion,
-                        "deviceToken": service.push.tokenString ?? "",
-                        "deviceId": application.uniqueIdentifier]
+                                       "key": body.publicKey,
+                                       "sig": body.signature,
+                                       "clientVersion": application.clientVersion,
+                                       "deviceToken": service.push.tokenString ?? "",
+                                       "deviceId": application.uniqueIdentifier,
+                                       "info": service.info.info]
+
             print("Headers:")
             for (key, value) in dict {
                 print("\(key): \(value)")
@@ -97,18 +99,18 @@ class ServerService: NSObject {
             }
         }
         Alamofire.request(request).responseData { response in
-//        Alamofire.request(request).responseJSON { response in
+            //        Alamofire.request(request).responseJSON { response in
             switch response.result {
             case let .success(value):
                 do {
-               let reply = try ServerReply(data: value)
-                guard reply.status.isValid else {
-                    let error = TeambrellaErrorFactory.error(with: reply.status)
-                    failure(error)
-                    return
-                }
-                
-                success(reply)
+                    let reply = try ServerReply(data: value)
+                    guard reply.status.isValid else {
+                        let error = TeambrellaErrorFactory.error(with: reply.status)
+                        failure(error)
+                        return
+                    }
+
+                    success(reply)
                 } catch {
                     failure(error)
                 }

@@ -109,7 +109,9 @@ final class InitialVC: UIViewController {
     private func startSession(teamsEntity: TeamsModel, isDemo: Bool) {
         service.session = Session(isDemo: isDemo)
         
-        service.teambrella.startUpdating()
+        service.teambrella.startUpdating(completion: { result in
+            print("Get updates results in: \(result)")
+        })
         
         /*
          Selecting team that was used last time
@@ -135,7 +137,9 @@ final class InitialVC: UIViewController {
         
         service.session?.teams = teamsEntity.teams
         service.session?.currentUserID = teamsEntity.userID
-        service.socket = SocketService()
+        let socket = SocketService()
+        service.socket = socket
+        service.teambrella.signToSockets(service: socket)
         HUD.hide()
         presentMasterTab()
         requestPush()

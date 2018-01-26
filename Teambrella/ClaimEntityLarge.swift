@@ -27,7 +27,7 @@ import SwiftyJSON
  
  It is made so for faster development
  */
-struct EnhancedClaimEntity {
+struct ClaimEntityLarge {
     private var json: JSON
     
     var description: String { return "EnhancedClaimEntity id: \(id)" }

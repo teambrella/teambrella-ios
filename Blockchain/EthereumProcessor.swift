@@ -189,5 +189,27 @@ struct EthereumProcessor {
     func sha3(_ data: Data) -> Data {
         return keccak256(data)
     }
+
+    func signHash(hash256: Data) -> Data {
+        /*
+         try {
+         Log.v(LOG_TAG, "signing hash: " + Hex.fromBytes(hash256));
+         return mKeyStore.signHashPassphrase(mAccount, mKeyStoreSecret, hash256);
+         } catch (Exception e) {
+         Log.e(LOG_TAG, "Could not sign hash:" + Hex.fromBytes(hash256) + ". " + e.getMessage(), e);
+         if (!BuildConfig.DEBUG) {
+         Crashlytics.logException(e);
+         }
+         throw new CryptoException(e.getMessage(), e);
+         }
+ */
+        return Data()
+    }
+
+    func signHashAndCalculateV(hash256: Data) -> Data {
+        var sig: [UInt8] = Array(signHash(hash256: hash256))
+        sig[sig.count - 1] += 27
+        return Data(sig)
+    }
     
 }

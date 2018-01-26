@@ -21,36 +21,38 @@
 
 import Foundation
 
-struct ClaimTransactionsCellModel: Decodable {
+struct ClaimTransactionsModel: Decodable {
     enum CodingKeys: String, CodingKey {
         case userID = "UserId"
-        case avatarString = "Avatar"
+        case avatar = "Avatar"
         case name = "Name"
         case status = "Status"
         case to = "To"
     }
-    
+
+    struct TransactionTo: Decodable {
+        enum CodingKeys: String, CodingKey {
+            case amount = "AmountCrypto"
+            case userID = "UserId"
+            case name = "Name"
+            case avatar = "Avatar"
+            case amountFiat = "AmountFiat"
+        }
+
+        let amount: Double
+        let userID: String
+        let name: String
+        let avatar: String
+        let amountFiat: Double
+
+    }
+
     let userID: String
-    let avatarString: String
+    let avatar: String
     let name: String
-    let status: TransactionState
-    let to: [ClaimTransactionTo]
+    let status: TransactionState?
+    let to: [TransactionTo]
     
 }
 
-struct ClaimTransactionTo: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case amountCrypto = "AmountCrypto"
-        case userID = "UserId"
-        case name = "Name"
-        case avatarString = "Avatar"
-        case amountFiat = "AmountFiat"
-    }
-    
-    let amountCrypto: Double
-    let userID: String
-    let name: String
-    let avatarString: String
-    let amountFiat: Double
-    
-}
+

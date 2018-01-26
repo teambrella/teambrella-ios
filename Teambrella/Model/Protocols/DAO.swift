@@ -52,7 +52,7 @@ protocol DAO {
     func setLanguage() -> Future<String>
     func sendPhoto(data: Data) -> Future<String>
     
-    func createNewClaim(model: NewClaimModel) -> Future<EnhancedClaimEntity>
+    func createNewClaim(model: NewClaimModel) -> Future<ClaimEntityLarge>
     func createNewChat(model: NewChatModel) -> Future<ChatModel>
     
     func myProxy(userID: String, add: Bool) -> Future<Bool>

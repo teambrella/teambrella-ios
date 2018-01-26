@@ -162,11 +162,13 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentWalletTransactionsList(teamID: Int) {
+    func presentWalletTransactionsList(teamID: Int, balance: Double?, reserved: Double?) {
         guard let vc = WalletTransactionsVC.instantiate() as? WalletTransactionsVC
             else { fatalError("Error instantiating") }
         
         vc.teamID = teamID
+        vc.balance = balance
+        vc.reserved = reserved
         push(vc: vc)
     }
     

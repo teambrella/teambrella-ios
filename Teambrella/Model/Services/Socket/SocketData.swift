@@ -61,6 +61,7 @@ enum SocketData {
         userID: String,
         topicID: String,
         name: String)
+    case dbDump(timestamp: Int64)
     
     var stringValue: String {
         var strings: [String] = [String(command.rawValue)]
@@ -99,6 +100,8 @@ enum SocketData {
             return .newMessages
         case .theyTyping(teamID: _, userID: _, topicID: _, name: _):
             return .theyTyping
+        case .dbDump(timestamp: _):
+            return .dbDump
         }
     }
     
@@ -136,6 +139,8 @@ enum SocketData {
                                userID: json["UserId"].stringValue,
                                topicID: json["TopicId"].stringValue,
                                name: json["UserName"].stringValue)
+        case .dbDump:
+            return .dbDump(timestamp: json["Timestamp"].int64Value)
         default:
             return nil
         }
@@ -210,6 +215,8 @@ enum SocketData {
             break
         case .newTeammates:
             // 9;<teamId>;<qty>;<teamurl>;<teamname>
+            break
+        case .dbDump:
             break
         }
         return nil
