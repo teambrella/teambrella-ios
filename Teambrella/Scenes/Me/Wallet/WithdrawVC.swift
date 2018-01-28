@@ -26,7 +26,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     @IBOutlet var collectionView: UICollectionView!
     
     var teamID: Int = 0
-
+    
     let dataSource = WithdrawDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
     fileprivate var previousScrollOffset: CGFloat = 0
     
@@ -90,7 +90,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
             isFirstLoading = false
             return
         }
-
+        
         dataSource.loadData()
         //dataSource.updateSilently()
     }
@@ -190,28 +190,28 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
             })
         }
     }
-
+    
     private func showCodeCapture() {
         let vc = service.router.showCodeCapture(in: self, delegate: self)
         vc?.confirmButton.isEnabled = false
         vc?.confirmButton.alpha = 0.5
     }
-
+    
     private func alertNoCameraAccess() {
         let alert = UIAlertController(title: "Me.Wallet.Withdraw.noCameraAccess.title".localized,
                                       message: "Me.Wallet.Withdraw.noCameraAccess.details".localized,
                                       preferredStyle: .alert)
-
+        
         alert.addAction(UIAlertAction(title: "Me.Wallet.Withdraw.noCameraAccess.cancelButton".localized,
                                       style: .cancel))
         alert.addAction(UIAlertAction(title: "Me.Wallet.Withdraw.noCameraAccess.settingsButton".localized,
                                       style: .default) { (alert) -> Void in
-            guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
-            UIApplication.shared.open(url, options: [:], completionHandler: { success in
-
-            })
+                                        guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+                                        UIApplication.shared.open(url, options: [:], completionHandler: { success in
+                                            
+                                        })
         })
-
+        
         present(alert, animated: true)
     }
     
@@ -268,9 +268,9 @@ extension WithdrawVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: UICollectionViewCell
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && indexPath.row == 0 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: WalletInfoCell.cellID, for: indexPath)
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 0 && indexPath.row == 1 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: WithdrawDetailsCell.cellID, for: indexPath)
         } else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: WithdrawCell.cellID, for: indexPath)
@@ -297,9 +297,6 @@ extension WithdrawVC: UICollectionViewDelegate {
         guard let model = dataSource[indexPath] else { return }
         
         WithdrawCellBuilder.populate(cell: cell, with: model)
-        if let cell = cell as? WalletInfoCell {
-            
-        }
         if let cell = cell as? WithdrawDetailsCell {
             cell.qrButton.removeTarget(self, action: nil, for: .allEvents)
             cell.qrButton.addTarget(self, action: #selector(tapQR), for: .touchUpInside)
@@ -318,7 +315,7 @@ extension WithdrawVC: UICollectionViewDelegate {
                                                  isFirst: indexPath.row == 0,
                                                  isLast: indexPath.row == maxRow - 1)
             guard let text = cell.rightLabel.text else { return }
-
+            
             let keyIndex = text.index(text.endIndex, offsetBy: -3)
             let amountAttributed = NSMutableAttributedString(string: text)
                 .decorate(substring: String(text[..<keyIndex]), type: .integerPart)
@@ -344,22 +341,19 @@ extension WithdrawVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && indexPath.row == 0 {
             return CGSize(width: collectionView.bounds.width - 32, height: 150)
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 0 && indexPath.row == 1 {
             return CGSize(width: collectionView.bounds.width - 32, height: 300)
         } else {
             return CGSize(width: collectionView.bounds.width, height: 72)
         }
-//        return indexPath.section == 0
-//            ? CGSize(width: collectionView.bounds.width - 32, height: 300)
-//            : CGSize(width: collectionView.bounds.width, height: 72)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return (section == 0 || section == 1)
+        return section == 0
             ? CGSize(width: collectionView.bounds.width, height: 20)
             : CGSize(width: collectionView.bounds.width, height: 40)
     }

@@ -20,11 +20,12 @@ final class WithdrawDataSource {
     let teamID: Int
     private(set) var isLoading = false
     var sections: Int {
-        return 2 + self.transactions.filter { $0.isEmpty == false }.count
+        return 1 + self.transactions.filter { $0.isEmpty == false }.count
     }
     //var walletInfo: WalletInfoCellModel
     var cryptoBalance: Double = 0.0
     var cryptoReserved: Double = 0.0
+    var currencyRate: Double { return WalletCellBuilder.currencyRate }
     
     var maxMETHAvailable: Double { return (cryptoBalance - cryptoReserved) * 1000 }
     
@@ -37,6 +38,10 @@ final class WithdrawDataSource {
     }
     
     lazy var detailsModel = { self.modelBuilder.detailsModel(maxAmount: maxMETHAvailable) }()
+    lazy var infoModel = { self.modelBuilder.infoModel(amount: cryptoBalance,
+                                                       reserved: cryptoReserved,
+                                                       available: maxMETHAvailable / 1000,
+                                                       currencyRate: currencyRate) }()
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
@@ -76,7 +81,7 @@ final class WithdrawDataSource {
     }
     
     func rows(in section: Int) -> Int {
-        guard section > 0 else { return 1 }
+        guard section > 0 else { return 2 }
         
         let filtered = transactions.filter { $0.isEmpty == false }
         guard section - 1 < filtered.count else { return 0 }
@@ -94,8 +99,6 @@ final class WithdrawDataSource {
         switch section {
         case 0:
             return ""
-        case 1:
-            return ""
         default:
             return headers[section - 1].localized
         }
@@ -104,8 +107,6 @@ final class WithdrawDataSource {
     func currencyName(section: Int) -> String? {
         switch section {
         case 0:
-            return ""
-        case 1:
             return ""
         default:
             return "mETH"
@@ -153,12 +154,7 @@ final class WithdrawDataSource {
     }
     
     func createCellModels(with wallet: WalletEntity) {
-        cryptoBalance = wallet.cryptoBalance
-        cryptoReserved = wallet.cryptoReserved
-        //        walletInfo = WalletInfoCellModel(amount: cryptoBalance,
-        //                                           reserved: cryptoReserved,
-        //                                           available: wallet.cryptoBalance - wallet.cryptoReserved,
-        //                                           currencyRate: wallet.currencyRate)
+        //walletInfo = WalletInfoCellModel(currencyRate: wallet.currencyRate)
     }
     
     // MARK: Private
@@ -181,7 +177,8 @@ final class WithdrawDataSource {
         guard indexPath.section < sections else { return nil }
         guard indexPath.row < rows(in: indexPath.section) else { return nil }
         
-        if indexPath.section == 0 { return detailsModel }
+        if indexPath.section == 0 && indexPath.row == 0 { return infoModel }
+        else if indexPath.section == 0 && indexPath.row == 1 { return detailsModel }
         
         let filtered = transactions.filter { $0.isEmpty == false }
         let transaction = filtered[indexPath.section - 1][indexPath.row]

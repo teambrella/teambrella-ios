@@ -17,6 +17,10 @@
 import Foundation
 
 class WithdrawModelBuilder {
+    func infoModel(amount: Double, reserved: Double, available: Double, currencyRate: Double) -> WalletInfoCellModel {
+        return WalletInfoCellModel(amount: amount, reserved: reserved, available: available, currencyRate: currencyRate)
+    }
+
     func detailsModel(maxAmount: Double) -> WithdrawDetailsCellModel {
         return WithdrawDetailsCellModel(amountPlaceholder: "Max \(String.truncatedNumber(maxAmount)) mETH")
     }
@@ -59,7 +63,7 @@ struct WithdrawTransactionCellModel: WithdrawCellModel {
     let amountText: String
 }
 
-struct WalletInfoCellModel: WalletCellModel {
+struct WalletInfoCellModel: WithdrawCellModel {
     let amount: Double
     let reserved: Double
     let available: Double
@@ -98,25 +102,30 @@ struct WithdrawCellBuilder {
             cell.indicatorView.isHidden = !model.isNew
             cell.rightLabel.text = model.amountText
         } else if let cell = cell as? WalletInfoCell, let model = model as? WalletInfoCellModel {
-            populateHeader(cell: cell, model: model)
+            populateWalletInfo(cell: cell, model: model)
         }
     }
     
-    private static func populateHeader(cell: WalletInfoCell, model: WalletInfoCellModel) {
+    private static func populateWalletInfo(cell: WalletInfoCell, model: WalletInfoCellModel) {
         cell.numberBar.isBottomLineVisible = false
         cell.amount.text = String.formattedNumber(model.amount * 1000)
-        //balance = model.amount * 1000
+        
+        cell.currencyLabel.text = service.session?.cryptoCurrency.coinCode
+        if let team = service.session?.currentTeam {
+            cell.auxillaryAmount.text = String.formattedNumber(model.amount * model.currencyRate) + " " + team.currency
+        }
         
         cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
         cell.numberBar.left?.amountLabel.text = model.reserved < 0.1
             ? String.formattedNumber(model.reserved * 1000)
             : String.truncatedNumber(model.reserved * 1000)
         cell.numberBar.left?.isBadgeVisible = false
+        cell.numberBar.left?.currencyLabel.text = service.session?.cryptoCurrency.coinCode
         
         cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
         cell.numberBar.right?.amountLabel.text = model.available < 0.1
             ? String.formattedNumber(model.available * 1000)
             : String.truncatedNumber(model.available * 1000)
-        cell.numberBar.right?.isBadgeVisible = false
+        cell.numberBar.right?.currencyLabel.text = service.session?.cryptoCurrency.coinCode
     }
 }
