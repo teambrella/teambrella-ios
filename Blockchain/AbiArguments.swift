@@ -75,9 +75,16 @@ class AbiArguments {
             BigInteger wei = e.multiply(WEIS_IN_ETH).toBigInteger();
             return Hex.format(wei, BYTES_IN_WORD);
         */
-        let e: BInt = BInt(decimalAmount)
-        let weis: BInt = e * BInt(Constant.weisInEth.description)
-        return  Hex().formattedString(bigInteger: weis, bytesCount: Constant.bytesInWord)
+        guard let e: Decimal = Decimal(string: decimalAmount) else {
+            print("String \(decimalAmount) is not convertible to Decimal")
+            return nil
+        }
+
+        let weis: Decimal = e * Constant.weisInEth
+
+        //let e: BInt = BInt(decimalAmount)
+        //let weis: BInt = e * BInt(Constant.weisInEth.description)
+        return  Hex().formattedString(string: String(describing: weis), bytesCount: Constant.bytesInWord)
     }
     
     func add(_ argument: Any) throws {

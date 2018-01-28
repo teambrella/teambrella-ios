@@ -73,7 +73,7 @@ public class BlockchainServer {
             switch response.result {
             case .success:
                 if let value = response.result.value {
-                    print(value)
+                    log("BlockChain server init timestamp reply: \(value)", type: .cryptoRequests)
                     let result = JSON(value)
                     let status = result["Status"]
                     let timestamp = status["Timestamp"].int64Value
@@ -153,7 +153,6 @@ public class BlockchainServer {
             switch response.result {
             case .success:
                 if let value = response.result.value {
-                    print(value)
                     let result = JSON(value)
                     let timestamp = result["Status"]["Timestamp"].int64Value
                     me.timestamp = timestamp
@@ -280,9 +279,9 @@ public class BlockchainServer {
         if let data = try? JSONSerialization.data(withJSONObject: body, options: []) {
             request.httpBody = data
         } else {
-            print("could not create data from payload: \(body)")
+            log("could not create data from payload: \(body)", type: [.error, .cryptoRequests])
         }
-        print("Request: \(url.absoluteURL) body: \(body)")
+        log("Request: \(url.absoluteURL)", type: .cryptoRequests)
         return request
     }
 

@@ -32,6 +32,10 @@ class Cosigner: NSManagedObject {
     var multisig: Multisig {
         return multisigValue!
     }
+
+//    var bSignature: Data {
+//       
+//    }
     
     override var description: String {
         return "Cosigner for multisig: \(multisig.id), order: \(keyOrder)"

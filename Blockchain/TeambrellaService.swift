@@ -129,7 +129,7 @@ class TeambrellaService: NSObject {
 
             switch reply {
             case .success(let json, let timestamp):
-                log("BlockchainStorage Server update to local db received json: \(json)", type: .crypto)
+                log("BlockchainStorage Server update to local db received json: \(json)", type: .cryptoRequests)
                 let factory = EntityFactory(fetcher: self.contentProvider)
                 factory.updateLocalDb(txs: txsToUpdate, signatures: signatures, multisigs: multisigsToUpdate, json: json)
                 user.lastUpdated = timestamp
@@ -144,7 +144,7 @@ class TeambrellaService: NSObject {
     }
     
     func autoApproveTransactions() {
-        let txs = contentProvider.transactionsResolvable
+        let txs = contentProvider.transactionsToApprove
         for tx in txs {
             let daysLeft = contentProvider.daysToApproval(tx: tx, isMyTx: contentProvider.isMy(tx: tx))
             if daysLeft <= 0 {
