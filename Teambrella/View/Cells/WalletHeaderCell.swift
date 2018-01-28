@@ -25,14 +25,11 @@ class WalletHeaderCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var amount: WalletAmountLabel!
     @IBOutlet var auxillaryAmount: UILabel!
     @IBOutlet var currencyLabel: UILabel!
-    @IBOutlet var numberBar: NumberBar!
     @IBOutlet var button: BorderedButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         ViewDecorator.shadow(for: self, opacity: 0.1, radius: 5)
-        numberBar.left?.alignmentType = .leading
-        numberBar.right?.alignmentType = .leading
     }
 
 }

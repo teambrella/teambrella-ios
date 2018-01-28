@@ -26,8 +26,8 @@ import XLPagerTabStrip
 
 class WalletVC: UIViewController {
     struct Constant {
-        static let headerCellHeight: CGFloat = 247
-        static let fundingCellHeight: CGFloat = 279
+        static let headerCellHeight: CGFloat = 180
+        static let fundingCellHeight: CGFloat = 227
         static let buttonsCellHeight: CGFloat = 163
         static let horizontalCellPadding: CGFloat = 16
     }
@@ -201,5 +201,4 @@ extension WalletVC: UICollectionViewDelegateFlowLayout {
             return CGSize.zero
         }
     }
-    
 }

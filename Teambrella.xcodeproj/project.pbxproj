@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		175EF844201B71A300268D08 /* WalletInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175EF842201B71A300268D08 /* WalletInfoCell.swift */; };
+		175EF845201B71A300268D08 /* WalletInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175EF842201B71A300268D08 /* WalletInfoCell.swift */; };
+		175EF846201B71A300268D08 /* WalletInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175EF843201B71A300268D08 /* WalletInfoCell.xib */; };
+		175EF847201B71A300268D08 /* WalletInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175EF843201B71A300268D08 /* WalletInfoCell.xib */; };
 		6D02AC951F06A6B800B01AAF /* VotingScrollerCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC901F06A6B800B01AAF /* VotingScrollerCellModel.swift */; };
 		6D02AC961F06A6B800B01AAF /* VotingScrollerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC911F06A6B800B01AAF /* VotingScrollerDataSource.swift */; };
 		6D02AC9B1F06A6F800B01AAF /* LabeledRoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC991F06A6F800B01AAF /* LabeledRoundImageView.swift */; };
@@ -1096,6 +1100,8 @@
 		0955ADF5D5781C76472099AB /* Pods-TeambrellaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.release.xcconfig"; sourceTree = "<group>"; };
 		0DD563BFF9640E2EA3A0F20D /* Pods-notification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notification.debug.xcconfig"; path = "Pods/Target Support Files/Pods-notification/Pods-notification.debug.xcconfig"; sourceTree = "<group>"; };
 		0F0981AC48D38E5C8A149C38 /* libPods-NotificationTeambrella.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NotificationTeambrella.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		175EF842201B71A300268D08 /* WalletInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletInfoCell.swift; path = View/Cells/WalletInfoCell.swift; sourceTree = "<group>"; };
+		175EF843201B71A300268D08 /* WalletInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WalletInfoCell.xib; path = View/Cells/WalletInfoCell.xib; sourceTree = "<group>"; };
 		177A2DBE9DB0723855A80DED /* libPods-notification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-notification.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.debug.xcconfig"; sourceTree = "<group>"; };
 		205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surilla/Pods-Surilla.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2096,6 +2102,8 @@
 				94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */,
 				94F0CF631FD1BD50007BE39E /* WithdrawDetailsCell.swift */,
 				94F0CF641FD1BD50007BE39E /* WithdrawDetailsCell.xib */,
+				175EF842201B71A300268D08 /* WalletInfoCell.swift */,
+				175EF843201B71A300268D08 /* WalletInfoCell.xib */,
 			);
 			name = Wallet;
 			sourceTree = "<group>";
@@ -3155,6 +3163,7 @@
 				6D4E5DB31F7AB6870020DEE2 /* HomeApplicationDeniedCell.xib in Resources */,
 				6D4E5DB41F7AB6870020DEE2 /* HomeSupportCell.xib in Resources */,
 				6D4E5DB51F7AB6870020DEE2 /* HomeApplicationStatusCell.xib in Resources */,
+				175EF847201B71A300268D08 /* WalletInfoCell.xib in Resources */,
 				6D4E5DB61F7AB6870020DEE2 /* Main.storyboard in Resources */,
 				6D4E5DB71F7AB6870020DEE2 /* Assets.xcassets in Resources */,
 				6D4E5DB81F7AB6870020DEE2 /* ChatCell.xib in Resources */,
@@ -3259,6 +3268,7 @@
 				94E80E511F0FD30400DE1A0A /* HomeApplicationDeniedCell.xib in Resources */,
 				94E80E4D1F0FABFF00DE1A0A /* HomeSupportCell.xib in Resources */,
 				94E80E591F0FE33500DE1A0A /* HomeApplicationStatusCell.xib in Resources */,
+				175EF846201B71A300268D08 /* WalletInfoCell.xib in Resources */,
 				6DA475A91E8ABEE600B56D9B /* Main.storyboard in Resources */,
 				6DCB19481F0FD33400AC9969 /* Assets.xcassets in Resources */,
 				6DE793301EF810DB005F4508 /* ChatCell.xib in Resources */,
@@ -3945,6 +3955,7 @@
 				6D4E5D1E1F7AB6870020DEE2 /* ClaimState.swift in Sources */,
 				6D4E5D1F1F7AB6870020DEE2 /* WalletTransactionsCellBuilder.swift in Sources */,
 				6D4E5D201F7AB6870020DEE2 /* SocketService.swift in Sources */,
+				175EF845201B71A300268D08 /* WalletInfoCell.swift in Sources */,
 				6D4E5D211F7AB6870020DEE2 /* ImagePickerController.swift in Sources */,
 				6D4E5D221F7AB6870020DEE2 /* PiecewiseFunction.swift in Sources */,
 				6D4E5D231F7AB6870020DEE2 /* SignHelper.swift in Sources */,
@@ -4361,6 +4372,7 @@
 				6D097EA11E9D215500E77DAB /* ClaimState.swift in Sources */,
 				94C186A91F59B93100F1BE51 /* WalletTransactionsCellBuilder.swift in Sources */,
 				6DF2E8BE1EF02F8200C8D60B /* SocketService.swift in Sources */,
+				175EF844201B71A300268D08 /* WalletInfoCell.swift in Sources */,
 				6D66B49A1F4C461A00672583 /* ImagePickerController.swift in Sources */,
 				6DDE95871EE9988D0019DA47 /* PiecewiseFunction.swift in Sources */,
 				6D466AA31ED07CF1001BC579 /* SignHelper.swift in Sources */,

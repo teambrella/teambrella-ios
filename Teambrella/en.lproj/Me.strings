@@ -14,8 +14,6 @@
 "Me.WalletVC.rightBrick.title"                 = "AVAILABLE";
 "Me.WalletVC.withdrawButton"                   = "Withdraw";
 "Me.WalletVC.fundingCell.title"                = "RECOMMENDED FUNDING";
-"Me.WalletVC.upperBrick.title"                 = "FOR MAX COVERAGE (100%)";
-"Me.WalletVC.lowerBrick.title"                 = "FOR UNINTERRUPTED COVERAGE";
 "Me.WalletVC.fundButton"                       = "Fund wallet";
 
 "Me.WalletVC.actionsCell.cosigners"            = "Co-signers";
@@ -93,6 +91,7 @@
 "Me.Wallet.Withdraw.noCameraAccess.cancelButton" = "Cancel";
 "Me.Wallet.Withdraw.noCameraAccess.settingsButton" = "Settings";
 
+"Me.WalletVC.lowerBrick.title"                 = "RECOMMENDED";
 "Me.Wallet.Transactions.to" = "TO";
 "Me.Wallet.Transactions.withdrawal" = "WITHDRAWAL";
 "Me.Wallet.Transactions.claimNumber" = "CLAIM %d";
