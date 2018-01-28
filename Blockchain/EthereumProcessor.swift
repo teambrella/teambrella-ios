@@ -144,7 +144,7 @@ struct EthereumProcessor {
                    toAddress: String,
                    gasPrice: Int,
                    value: Decimal) throws -> GethTransaction {
-       let weis = value * 1_000_000_000_000_000_000
+        let weis = value * 1_000_000_000_000_000_000
         let weisHex = BInt((weis as NSDecimalNumber).stringValue).asString(withBase: 16)
         
         let dict = ["nonce": "0x\(nonce.hexString)",
@@ -160,6 +160,29 @@ struct EthereumProcessor {
         let json = String(bytes: jsonData, encoding: .utf8) ?? ""
         guard let tx = GethTransaction(fromJSON: json) else { throw EthereumProcessorError.inconsistentTxData(json) }
         
+        return  tx
+    }
+
+    func messageTx(nonce: Int,
+                   gasLimit: Int,
+                   contractAddress: String,
+                   gasPrice: Int,
+                   methodID: String,
+                   arguments: [Any]) throws -> GethTransaction {
+        let args = try AbiArguments.encodeToHex(args: arguments)
+        let dict = ["nonce": "0x\(nonce.hexString)",
+            "gasPrice": "0x\(gasPrice.hexString)",
+            "gas": "0x\(gasLimit.hexString)",
+            "to": "\(contractAddress)",
+            "value": "0x\(methodID)\(args)",
+            "input": "0x",
+            "v": "0x29",
+            "r": "0x29",
+            "s": "0x29"]
+        let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
+        let json = String(bytes: jsonData, encoding: .utf8) ?? ""
+        guard let tx = GethTransaction(fromJSON: json) else { throw EthereumProcessorError.inconsistentTxData(json) }
+
         return  tx
     }
     
@@ -190,7 +213,7 @@ struct EthereumProcessor {
         return keccak256(data)
     }
 
-    func signHash(hash256: Data) -> Data {
+    func signHash(hash256: Data) throws -> Data {
         /*
          try {
          Log.v(LOG_TAG, "signing hash: " + Hex.fromBytes(hash256));
@@ -202,12 +225,17 @@ struct EthereumProcessor {
          }
          throw new CryptoException(e.getMessage(), e);
          }
- */
-        return Data()
+         */
+        guard let account = ethAccount else { throw EthereumProcessorError.noAccount }
+        guard let keyStore = ethKeyStore else { throw EthereumProcessorError.noKeyStore }
+
+        let signed = try keyStore.signHashPassphrase(account, passphrase: secretString, hash: hash256)
+        log("signed hash 256: \(signed.hexString)", type: .cryptoDetails)
+        return signed
     }
 
-    func signHashAndCalculateV(hash256: Data) -> Data {
-        var sig: [UInt8] = Array(signHash(hash256: hash256))
+    func signHashAndCalculateV(hash256: Data) throws -> Data {
+        var sig: [UInt8] = try Array(signHash(hash256: hash256))
         sig[sig.count - 1] += 27
         return Data(sig)
     }

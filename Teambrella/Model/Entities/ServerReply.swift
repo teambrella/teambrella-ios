@@ -50,7 +50,6 @@ struct ServerReply {
         let decoder = JSONDecoder()
         let statusData = try JSONSerialization.data(withJSONObject: statusJSON, options: [])
    
-        print("JSON: \(json)")
         if let pagingJSON = json[CodingKeys.paging.rawValue] {
             let pagingData = try JSONSerialization.data(withJSONObject: pagingJSON, options: [])
             paging = try decoder.decode(PagingInfo.self, from: pagingData)

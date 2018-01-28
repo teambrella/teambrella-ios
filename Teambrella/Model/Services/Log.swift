@@ -50,7 +50,10 @@ class Log {
         case socket
         case push
         case facebook
+
         case crypto
+        case cryptoDetailed
+        case cryptoAll
         
         case all
     }
@@ -68,12 +71,14 @@ class Log {
         static let serviceInfo =  LogType(rawValue: 1 << 7)
         static let push = LogType(rawValue: 1 << 8)
         static let social = LogType(rawValue: 1 << 9)
-        static let crypto = LogType(rawValue: 1 << 9)
-        
+        static let crypto = LogType(rawValue: 1 << 10)
+        static let cryptoDetails = LogType(rawValue: 1 << 11)
+        static let cryptoRequests = LogType(rawValue: 1 << 12)
+
         static var all: LogType { return LogType(rawValue: Int.max) }
     }
     
-    var logLevel: LogLevel = .all
+    var logLevel: LogLevel = .cryptoDetailed
     lazy var types: LogType = { self.typesFor(level: self.logLevel) }()
     
     var isEmojied: Bool = true
@@ -133,7 +138,11 @@ class Log {
         case .socket: return [.socket, .error]
         case .push: return [.push, .error]
         case .facebook: return [.social, .error]
+
         case .crypto: return [.error, .crypto]
+        case .cryptoDetailed: return [.error, .crypto, .cryptoDetails]
+        case .cryptoAll: return [.error, .crypto, .cryptoDetails, .cryptoRequests]
+
         case .all: return LogType.all
         }
     }

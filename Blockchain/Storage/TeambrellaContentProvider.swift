@@ -199,10 +199,13 @@ class TeambrellaContentProvider {
     
     func transactionsChangeResolution(txs: [Tx], to resolution: TransactionClientResolution, when: Date = Date()) {
         for tx in txs {
+            let oldResolution = tx.resolution
             tx.resolution = resolution
             tx.clientResolutionTimeValue = when
             tx.isServerUpdateNeeded = true
             storage.save()
+            log("tx \(tx.id.uuidString) changed resolution from \(oldResolution) to \(tx.resolution)",
+                type: .cryptoDetails)
         }
     }
     
