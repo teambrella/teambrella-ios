@@ -201,5 +201,4 @@ extension WalletVC: UICollectionViewDelegateFlowLayout {
             return CGSize.zero
         }
     }
-    
 }

@@ -357,6 +357,12 @@ extension WithdrawVC: UICollectionViewDelegateFlowLayout {
             ? CGSize(width: collectionView.bounds.width, height: 20)
             : CGSize(width: collectionView.bounds.width, height: 40)
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return section == 0 ? CGFloat(16) : CGFloat(0)
+    }
 }
 
 // MARK: UIScrollViewDelegate
