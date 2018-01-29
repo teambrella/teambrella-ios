@@ -68,7 +68,7 @@ struct ClaimCellBuilder {
         cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)//"Claim \(claim.id)"
         cell.textLabel.text = claim.originalPostText
         cell.unreadCountLabel.text = "\(claim.unreadCount)"
-       cell.unreadCountLabel.isHidden = claim.unreadCount <= 0
+        cell.unreadCountLabel.isHidden = claim.unreadCount <= 0
         let dateProcessor = DateProcessor()
         cell.timeLabel.text = dateProcessor.stringFromNow(minutes: claim.minutesinceLastPost)
     }
@@ -84,7 +84,6 @@ struct ClaimCellBuilder {
         cell.pieChart.startAngle = 0
         cell.pieChart.setupWith(remainingMinutes: claim.minutesRemaining)
         
-        cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
 
         if let myVote = claim.myVote {
             cell.yourVotePercentValue.text = String.truncatedNumber(myVote * 100)
@@ -107,12 +106,15 @@ struct ClaimCellBuilder {
         cell.proxyAvatar.isHidden = claim.proxyAvatar == nil || claim.myVote != nil
         cell.byProxyLabel.isHidden = claim.proxyVote == nil || claim.myVote != nil
         
+        cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         cell.yourVotePercentValue.alpha = 1
         cell.yourVoteAmount.alpha = 1
+        cell.yourVoteCurrency.text = service.session?.currentTeam?.currency
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
         cell.teamVotePercentValue.text = String.truncatedNumber(claim.ratioVoted * 100)
         cell.teamVoteAmount.text = String.truncatedNumber(claim.ratioVoted * claim.claimAmount)
+        cell.teamVoteCurrency.text = service.session?.currentTeam?.currency
         
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
         cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)

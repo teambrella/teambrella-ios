@@ -71,32 +71,32 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qqi-A2-dcL" userLabel="Team">
                                         <rect key="frame" x="0.0" y="0.0" width="145.5" height="125"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR VOTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbW-W9-c1X" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbW-W9-c1X" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                                 <rect key="frame" x="12" y="13" width="58" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17,6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdR-JP-qTp">
-                                                <rect key="frame" x="12" y="25.5" width="70.5" height="42"/>
+                                                <rect key="frame" x="12" y="25.5" width="72.5" height="44"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="790" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdI-Ys-bOX">
-                                                <rect key="frame" x="12" y="67.5" width="30.5" height="21"/>
+                                                <rect key="frame" x="12" y="69.5" width="31" height="22"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQq-XY-4kI" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="44.5" y="66" width="21.5" height="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQq-XY-4kI" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="45" y="68.5" width="9.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnD-tB-IfF">
-                                                <rect key="frame" x="82.5" y="25.5" width="36" height="42"/>
+                                                <rect key="frame" x="84.5" y="25.5" width="33" height="44"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                                 <color key="textColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -137,19 +137,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17,6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKd-qO-8F4">
-                                                <rect key="frame" x="12" y="25.5" width="70.5" height="42"/>
+                                                <rect key="frame" x="12" y="25.5" width="72.5" height="44"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="790" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuP-CI-MHk">
-                                                <rect key="frame" x="12" y="67.5" width="30.5" height="21"/>
+                                                <rect key="frame" x="12" y="69.5" width="31" height="22"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFg-Z6-zvn" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="44.5" y="66" width="21.5" height="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFg-Z6-zvn" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="45" y="68.5" width="9.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -168,13 +168,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeT-xq-UKS">
-                                                <rect key="frame" x="82.5" y="25.5" width="36" height="42"/>
+                                                <rect key="frame" x="84.5" y="25.5" width="33" height="44"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xX-Pn-wVs">
-                                                <rect key="frame" x="12" y="98.5" width="58" height="26"/>
+                                                <rect key="frame" x="12" y="98" width="59" height="27"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
                                                 <state key="normal" title="Reset vote">
                                                     <color key="titleColor" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
