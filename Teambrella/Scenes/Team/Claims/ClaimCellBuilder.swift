@@ -133,19 +133,6 @@ struct ClaimCellBuilder {
     static func populateClaimDetails(cell: ClaimDetailsCell, with claim: ClaimEntityLarge) {
         cell.titleLabel.text = "Team.ClaimCell.claimDetails".localized
         
-        cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
-        let currency = "$"
-        let claimAmount = String(format: "%.2f", claim.claimAmount)
-        cell.claimAmountValueLabel.text = currency + claimAmount
-        
-        cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
-        let estimatedExpenses = String(format: "%.2f", claim.estimatedExpences)
-        cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses
-        
-        cell.deductibleLabel.text = "Team.ClaimCell.deductible".localized
-        let deductible = String(format: "%.2f", claim.deductible)
-        cell.deductibleValueLabel.text = currency + deductible
-        
         cell.coverageLabel.text = "Team.ClaimCell.coverage".localized
         let coverage = "\(Int((claim.coverage * 100).rounded()))"
         cell.coverageValueLabel.text = coverage + "%"
@@ -153,6 +140,19 @@ struct ClaimCellBuilder {
         cell.incidentDateLabel.text = "Team.ClaimCell.incidentDate".localized
         claim.incidentDate.map { cell.incidentDateValueLabel.text = DateFormatter.teambrellaShort.string(from: $0) }
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
+
+        cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
+        let claimAmount = String(format: "%.2f", claim.claimAmount)
+        cell.deductibleLabel.text = "Team.ClaimCell.deductible".localized
+        let deductible = String(format: "%.2f", claim.deductible)
+        cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
+        let estimatedExpenses = String(format: "%.2f", claim.estimatedExpences)
+        guard let currency = service.session?.currentTeam?.currencySymbol else { return }
+//        let currency = service.session?.currentTeam?.currencySymbol
+        cell.claimAmountValueLabel.text = currency + claimAmount
+        cell.deductibleValueLabel.text = currency + deductible
+        cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses
+        
     }
     
     static func populateClaimOptions(cell: ClaimOptionsCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
