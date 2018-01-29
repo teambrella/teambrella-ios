@@ -128,31 +128,19 @@ public class BlockchainServer {
                     signatures: [TxSignature],
                     completion: @escaping (Response) -> Void) {
         let key = Key(base58String: privateKey, timestamp: timestamp)
-
-        let multisigsInfo = multisigs.map { ["Id": $0.id,
-                                             "TeammateId": $0.teammate!.id,
-                                             "BlockchainTxId": $0.creationTx! ] }
-
-        let txInfos = transactions.map { ["Id": $0.id.uuidString,
-                                          "ResolutionTime": formatter.string(from: $0.clientResolutionTime!),
-                                          "Resolution": $0.resolution.rawValue ] }
-        
-        let txSignatures = signatures.map {
-            ["Signature": $0.signature.base64EncodedString(),
-             "TeammateId": $0.teammateID,
-             "TxInputId": $0.inputID]
-        }
-        let payload: [String: Any] = ["TxInfos": txInfos,
-                                      "TxSignatures": txSignatures,
-                                      "CryptoContracts": multisigsInfo,
-                                      "Since": lastUpdated]
-        let request = self.request(string: "me/GetUpdates", key: key, payload: payload)
+        let updateInfo = CryptoServerUpdateInfo(multisigs: multisigs,
+                                                transactions: transactions,
+                                                signatures: signatures,
+                                                lastUpdated: lastUpdated,
+                                                formatter: formatter)
+        let request = self.request(string: "me/GetUpdates", key: key, updateInfo: updateInfo)
         Alamofire.request(request).responseJSON { [weak self] response in
             guard let me = self else { return }
             
             switch response.result {
             case .success:
                 if let value = response.result.value {
+                    log("Success getting updates with \(updateInfo)", type: .cryptoDetails)
                     let result = JSON(value)
                     let timestamp = result["Status"]["Timestamp"].int64Value
                     me.timestamp = timestamp
@@ -268,32 +256,35 @@ public class BlockchainServer {
         }
 
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        var body: [String : Any] = ["Timestamp": timestamp,
-                                    "Signature": key.signature,
-                                    "PublicKey": key.publicKey]
+
+        var body: [String : Any] = [:]/* ["Timestamp": timestamp,
+         "Signature": key.signature,
+         "PublicKey": key.publicKey] */
         if let payload = payload {
             for (key, value) in payload {
                 body[key] = value
             }
         }
-        if let data = try? JSONSerialization.data(withJSONObject: body, options: []) {
+        print("request body: \(body)")
+        do {
+            let data = try JSONSerialization.data(withJSONObject: body, options: [])
             request.httpBody = data
-        } else {
-            log("could not create data from payload: \(body)", type: [.error, .cryptoRequests])
+            log("Request: \(url.absoluteURL)", type: .cryptoRequests)
+            return request
+        } catch {
+            log("could not create data from payload: \(body), error: \(error)", type: [.error, .cryptoRequests])
         }
-        log("Request: \(url.absoluteURL)", type: .cryptoRequests)
-        return request
+        fatalError()
     }
 
-    /*
-    private func postDataRequest(string: String, key: Key, data: Data) -> URLRequest {
+    private func request(string: String, key: Key, updateInfo: CryptoServerUpdateInfo) -> URLRequest {
         guard let url = url(string: string) else {
             fatalError("Couldn't create URL")
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+
         let application = Application()
         let dict: [String: Any] = ["t": timestamp,
                                    "key": key.publicKey,
@@ -304,11 +295,45 @@ public class BlockchainServer {
         for (key, value) in dict {
             request.setValue(String(describing: value), forHTTPHeaderField: key)
         }
-        request.httpBody = data
-        print("Request: \(url.absoluteURL) body: data \(data.count)")
-        return request
+
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let encoder = JSONEncoder()
+        do {
+            let jsonData = try encoder.encode(updateInfo)
+            request.httpBody = jsonData
+            log("Request: \(url.absoluteURL)", type: .cryptoRequests)
+            return request
+        } catch {
+            log("could not create data from updateInfo: ](updateInfo), error: \(error)", type: [.error, .cryptoRequests])
+            fatalError()
+        }
     }
-    */
+    
+    /*
+     private func postDataRequest(string: String, key: Key, data: Data) -> URLRequest {
+     guard let url = url(string: string) else {
+     fatalError("Couldn't create URL")
+     }
+
+     var request = URLRequest(url: url)
+     request.httpMethod = HTTPMethod.post.rawValue
+     request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+     let application = Application()
+     let dict: [String: Any] = ["t": timestamp,
+     "key": key.publicKey,
+     "sig": key.signature,
+     "clientVersion": application.clientVersion,
+     "deviceToken": "",
+     "deviceId": application.uniqueIdentifier]
+     for (key, value) in dict {
+     request.setValue(String(describing: value), forHTTPHeaderField: key)
+     }
+     request.httpBody = data
+     print("Request: \(url.absoluteURL) body: data \(data.count)")
+     return request
+     }
+     */
 
     private func url(string: String) -> URL? {
         return URL(string: Constant.siteURL + "/" + string)
