@@ -55,6 +55,8 @@
 		6D0E05801F01033700604981 /* ReportCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E057F1F01033700604981 /* ReportCellBuilder.swift */; };
 		6D0E742D1F13C0D70055BF1E /* LabeledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E742C1F13C0D70055BF1E /* LabeledButton.swift */; };
 		6D0E742F1F13C7810055BF1E /* DeveloperTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */; };
+		6D0FD84D201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */; };
+		6D0FD84E201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */; };
 		6D12927D1F83BD6A001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
 		6D12927E1F83BD6D001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
 		6D1292891F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
@@ -1153,6 +1155,7 @@
 		6D0E057F1F01033700604981 /* ReportCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCellBuilder.swift; path = Scenes/Me/Report/ReportCellBuilder.swift; sourceTree = "<group>"; };
 		6D0E742C1F13C0D70055BF1E /* LabeledButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabeledButton.swift; path = View/Buttons/LabeledButton.swift; sourceTree = "<group>"; };
 		6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeveloperTools.swift; path = Helpers/DeveloperTools.swift; sourceTree = "<group>"; };
+		6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoServerUpdate.swift; sourceTree = "<group>"; };
 		6D12927C1F83BD6A001CCC31 /* SceneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneType.swift; path = Model/Enums/SceneType.swift; sourceTree = "<group>"; };
 		6D1292881F83DC46001CCC31 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Name.swift; path = Model/Entities/Name.swift; sourceTree = "<group>"; };
 		6D12928B1F83DE38001CCC31 /* NameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTests.swift; sourceTree = "<group>"; };
@@ -2022,6 +2025,7 @@
 				6D466A8C1ED07CF1001BC579 /* SignHelper.swift */,
 				6D466A9E1ED07CF1001BC579 /* TeambrellaService.swift */,
 				6D878E4E200CF63600066492 /* GasStation.swift */,
+				6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */,
 			);
 			path = Blockchain;
 			sourceTree = "<group>";
@@ -3844,6 +3848,7 @@
 				6D4E5CC91F7AB6870020DEE2 /* WalletVC.swift in Sources */,
 				6D4E5CCA1F7AB6870020DEE2 /* MembersVC.swift in Sources */,
 				94F0CF5A1FD1ACCF007BE39E /* WithdrawHeader.swift in Sources */,
+				6D0FD84E201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */,
 				6D4E5CCB1F7AB6870020DEE2 /* Formatter.swift in Sources */,
 				6D4E5CCC1F7AB6870020DEE2 /* SlashView.swift in Sources */,
 				6D4E5CCD1F7AB6870020DEE2 /* ChatSeparatorCell.swift in Sources */,
@@ -4261,6 +4266,7 @@
 				94266A321F5579800089543F /* ClaimTransactionsDataSource.swift in Sources */,
 				6D69DA171EFC464000DED5CE /* WalletVC.swift in Sources */,
 				94F0CF591FD1ACCF007BE39E /* WithdrawHeader.swift in Sources */,
+				6D0FD84D201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */,
 				6D9CC63A1ED72675007F936E /* MembersVC.swift in Sources */,
 				6DB8121D1EE6F78700B202CE /* Formatter.swift in Sources */,
 				6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */,

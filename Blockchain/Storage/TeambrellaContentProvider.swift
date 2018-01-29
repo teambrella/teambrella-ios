@@ -291,7 +291,9 @@ class TeambrellaContentProvider {
     @discardableResult
     func addNewSignature(input: TxInput, tx: Tx, signature: Data) -> TxSignature? {
         let txSignature = TxSignature.create(in: context)
+        print("input is: \(input.id.uuidString) amount: \(input.ammount)")
         txSignature.inputValue = input
+        txSignature.inputIDValue = input.id.uuidString
         guard let me = tx.teammate?.team.me(user: user) else { return nil }
         
         txSignature.teammateValue = me

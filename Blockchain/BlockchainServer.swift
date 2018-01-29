@@ -268,7 +268,7 @@ public class BlockchainServer {
         }
 
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        var body: [String : Any] = ["Timestamp": timestamp,
+        var body: [String : Any] =  ["Timestamp": timestamp,
                                     "Signature": key.signature,
                                     "PublicKey": key.publicKey]
         if let payload = payload {
@@ -276,39 +276,42 @@ public class BlockchainServer {
                 body[key] = value
             }
         }
-        if let data = try? JSONSerialization.data(withJSONObject: body, options: []) {
+        print("request body: \(body)")
+        do {
+            let data = try JSONSerialization.data(withJSONObject: body, options: [])
             request.httpBody = data
-        } else {
-            log("could not create data from payload: \(body)", type: [.error, .cryptoRequests])
+            log("Request: \(url.absoluteURL)", type: .cryptoRequests)
+            return request
+        } catch {
+            log("could not create data from payload: \(body), error: \(error)", type: [.error, .cryptoRequests])
         }
-        log("Request: \(url.absoluteURL)", type: .cryptoRequests)
-        return request
+        fatalError()
     }
 
     /*
-    private func postDataRequest(string: String, key: Key, data: Data) -> URLRequest {
-        guard let url = url(string: string) else {
-            fatalError("Couldn't create URL")
-        }
+     private func postDataRequest(string: String, key: Key, data: Data) -> URLRequest {
+     guard let url = url(string: string) else {
+     fatalError("Couldn't create URL")
+     }
 
-        var request = URLRequest(url: url)
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
-        let application = Application()
-        let dict: [String: Any] = ["t": timestamp,
-                                   "key": key.publicKey,
-                                   "sig": key.signature,
-                                   "clientVersion": application.clientVersion,
-                                   "deviceToken": "",
-                                   "deviceId": application.uniqueIdentifier]
-        for (key, value) in dict {
-            request.setValue(String(describing: value), forHTTPHeaderField: key)
-        }
-        request.httpBody = data
-        print("Request: \(url.absoluteURL) body: data \(data.count)")
-        return request
-    }
-    */
+     var request = URLRequest(url: url)
+     request.httpMethod = HTTPMethod.post.rawValue
+     request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+     let application = Application()
+     let dict: [String: Any] = ["t": timestamp,
+     "key": key.publicKey,
+     "sig": key.signature,
+     "clientVersion": application.clientVersion,
+     "deviceToken": "",
+     "deviceId": application.uniqueIdentifier]
+     for (key, value) in dict {
+     request.setValue(String(describing: value), forHTTPHeaderField: key)
+     }
+     request.httpBody = data
+     print("Request: \(url.absoluteURL) body: data \(data.count)")
+     return request
+     }
+     */
 
     private func url(string: String) -> URL? {
         return URL(string: Constant.siteURL + "/" + string)
