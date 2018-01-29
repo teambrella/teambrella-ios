@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -36,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0E-WH-DMy" customClass="PieChartView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="143" y="16.5" width="20" height="20"/>
+                                <rect key="frame" x="144" y="16.5" width="20" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="y0E-WH-DMy" secondAttribute="height" multiplier="1:1" id="6OL-v2-AxR"/>
@@ -51,7 +52,7 @@
                                 <state key="normal" image="info"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2r-3b-RDy" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="93" y="16" width="42" height="20.5"/>
+                                <rect key="frame" x="94" y="16" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -245,8 +246,8 @@
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="centerY" secondItem="KVp-Aa-10c" secondAttribute="centerY" id="RtA-AP-bVR"/>
                             <constraint firstItem="0Iw-2g-vOp" firstAttribute="top" secondItem="NVa-WO-KTz" secondAttribute="topMargin" id="W17-G1-Olu"/>
                             <constraint firstItem="HKR-rc-C51" firstAttribute="centerY" secondItem="Qqi-A2-dcL" secondAttribute="centerY" id="WHf-pC-FEm"/>
-                            <constraint firstItem="F2r-3b-RDy" firstAttribute="bottom" secondItem="KVp-Aa-10c" secondAttribute="bottom" id="XXG-y7-9NZ"/>
-                            <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" secondItem="KVp-Aa-10c" secondAttribute="trailing" constant="15" id="YOe-GY-gdc"/>
+                            <constraint firstItem="F2r-3b-RDy" firstAttribute="firstBaseline" secondItem="KVp-Aa-10c" secondAttribute="firstBaseline" id="XXG-y7-9NZ"/>
+                            <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" secondItem="KVp-Aa-10c" secondAttribute="trailing" constant="16" id="YOe-GY-gdc"/>
                             <constraint firstItem="94U-NU-l4o" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leading" id="eRU-4B-Kbw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Iw-2g-vOp" secondAttribute="trailing" id="f0m-P5-J2e"/>
                             <constraint firstItem="KVp-Aa-10c" firstAttribute="leading" secondItem="HKR-rc-C51" secondAttribute="leading" id="hOk-xj-7xD"/>

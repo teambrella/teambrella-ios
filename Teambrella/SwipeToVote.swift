@@ -42,6 +42,7 @@ class SwipeToVote: UIView, XIBInitable {
         self.isHidden = SimpleStorage().string(forKey: .swipeHelperWasShown) != nil
         
         label.text = "Team.Vote.SwipeToVote".localized
+        imageView.image = #imageLiteral(resourceName: "swipe left-right")
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeView))
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(closeView))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left

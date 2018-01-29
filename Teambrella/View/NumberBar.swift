@@ -32,6 +32,7 @@ class NumberBar: UIView, XIBInitable {
         }
     }
     @IBInspectable var isBottomLineVisible: Bool = false
+    @IBInspectable var areVerticalLinesVisible: Bool = true
     @IBInspectable var lineColor: UIColor = .paleGray40 {
         didSet { drawingView.redraw(master: self) }
     }
@@ -79,7 +80,7 @@ class NumberBar: UIView, XIBInitable {
         drawingView.redraw(master: self)
     }
     
-    }
+}
 
 class NumberBarDrawingView: UIView {
     weak var master: NumberBar?
@@ -101,14 +102,16 @@ class NumberBarDrawingView: UIView {
             context.addLine(to: CGPoint(x: bounds.maxX, y: bounds.maxY))
             context.strokePath()
         }
-         let views = master.stackView.arrangedSubviews
-           guard views.count > 1 else { return }
+        let views = master.stackView.arrangedSubviews
+        guard views.count > 1 else { return }
         
-        for i in 0..<views.count - 1 {
-            let subview = views[i]
-            context.move(to: CGPoint(x: subview.frame.maxX, y: master.stackView.frame.minY))
-            context.addLine(to: CGPoint(x: subview.frame.maxX, y: master.stackView.frame.maxY))
-            context.strokePath()
+        if master.areVerticalLinesVisible {
+            for i in 0..<views.count - 1 {
+                let subview = views[i]
+                context.move(to: CGPoint(x: subview.frame.maxX, y: master.stackView.frame.minY))
+                context.addLine(to: CGPoint(x: subview.frame.maxX, y: master.stackView.frame.maxY))
+                context.strokePath()
+            }
         }
     }
     
