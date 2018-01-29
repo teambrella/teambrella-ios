@@ -61,7 +61,7 @@ class PushService: NSObject {
     
     func getNotificationSettings() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
-            log("Notification settings: \(settings)", type: [.push, .serviceInfo])
+            log("Notification settings: \(settings)", type: [.push, .info])
         }
     }
     

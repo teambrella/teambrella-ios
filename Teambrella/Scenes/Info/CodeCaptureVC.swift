@@ -98,7 +98,7 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
-            log("Could not add metadata output", type: [.error, .serviceInfo])
+            log("Could not add metadata output", type: [.error, .info])
         }
     }
     

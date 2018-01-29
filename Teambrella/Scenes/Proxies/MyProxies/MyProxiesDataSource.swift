@@ -90,7 +90,7 @@ class MyProxiesDataSource {
                                                       "Position": position])
             let request = TeambrellaRequest(type: .proxyPosition, body: body, success: { response in
                 if case .proxyPosition = response {
-                    log("Position saved to server", type: .serviceInfo)
+                    log("Position saved to server", type: .info)
                 }
             }, failure: { [weak self] error in
                 self?.onError?(error)

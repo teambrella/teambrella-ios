@@ -110,7 +110,7 @@ final class InitialVC: UIViewController {
         service.session = Session(isDemo: isDemo)
         
         service.teambrella.startUpdating(completion: { result in
-            log("Get updates results in: \(result)", type: .serviceInfo)
+            log("Get updates results in: \(result)", type: .info)
         })
         
         /*

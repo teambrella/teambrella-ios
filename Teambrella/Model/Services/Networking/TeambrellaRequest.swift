@@ -86,7 +86,7 @@ struct TeambrellaRequest {
         case .teammatesList:
             do {
                 let list = try decoder.decode(TeammatesList.self, from: serverReply.data)
-                log("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)", type: .serviceInfo)
+                log("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)", type: .info)
                 success(.teammatesList(list.teammates))
             } catch {
                 failure?(error)

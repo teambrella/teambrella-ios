@@ -124,7 +124,7 @@ class ServerService: NSObject {
         guard let data = data else { return }
         
         if let string = try? JSONSerialization.jsonObject(with: data, options: []) {
-            log("\(string)", type: .requestBody)
+            log("\(string)", type: .serverRequest)
         }
     }
     

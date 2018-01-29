@@ -204,7 +204,7 @@ Are you sure you want to completely remove your private key from this device?
             return
         }
         
-        log("Eth address: \(EthereumProcessor.standard.ethAddressString ?? "none")", type: .serviceInfo)
+        log("Eth address: \(EthereumProcessor.standard.ethAddressString ?? "none")", type: .info)
         service.server.updateTimestamp { timestamp, error in
             let body = RequestBody(key: service.server.key, payload: ["facebookToken": token,
                                                                       "sigOfPublicKey": signature])

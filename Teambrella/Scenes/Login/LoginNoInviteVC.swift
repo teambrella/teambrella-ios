@@ -132,13 +132,13 @@ extension LoginNoInviteVC: MFMailComposeViewControllerDelegate {
                                error: Error?) {
         switch result {
         case .cancelled:
-            log("Mail cancelled", type: .serviceInfo)
+            log("Mail cancelled", type: .info)
         case .saved:
-            log("Mail saved", type: .serviceInfo)
+            log("Mail saved", type: .info)
         case .sent:
-            log("Mail sent", type: .serviceInfo)
+            log("Mail sent", type: .info)
         case .failed:
-            log("Mail sent failure", type: .serviceInfo)
+            log("Mail sent failure", type: .info)
             error.map { log("error: \($0)", type: .error) }
         }
         

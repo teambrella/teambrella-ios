@@ -26,7 +26,7 @@ struct Random {
     /// Integer random in range from value included to value excluded
     static func range(from: Int = 0, to: Int) -> Int {
         guard from < to else {
-            log("Random range where from is larger than to. Return lowest value", type: .serviceInfo)
+            log("Random range where from is larger than to. Return lowest value", type: .info)
             return to
         }
         
