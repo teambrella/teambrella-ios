@@ -16,11 +16,18 @@
 
 import Foundation
 
-struct CryptoServerUpdateInfo: Encodable {
+struct CryptoServerUpdateInfo: Encodable, CustomStringConvertible {
     let txInfos: [TxInfo]
     let txSignatures: [TxSignatureInfo]
     let cryptoContracts: [MultisigInfo]
     let since: Int64
+
+    var description: String {
+        return """
+        CryptoServerUpdateInfo{txInfos: \(txInfos.count), txSignatures: \(txSignatures.count), \
+        cryptoContracts: \(cryptoContracts.count), since: \(since)}
+        """
+    }
 
     init(multisigs: [Multisig],
     transactions: [Tx],
