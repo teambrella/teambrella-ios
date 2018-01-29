@@ -76,7 +76,7 @@ class Tx: NSManagedObject {
     /// TxInputs sorted by UUID id values
     var inputs: [TxInput] {
         guard let set = inputsValue as? Set<TxInput> else {
-            print("couldn't form array from set of TxInput")
+            log("couldn't form array from set of TxInput", type: [.error, .crypto])
             return []
         }
         

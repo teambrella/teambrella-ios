@@ -87,7 +87,7 @@ class ServerDAO: DAO {
                                             body: body,
                                             success: { response in
                                                 if case let .setLanguage(language) = response {
-                                                    log("Language is set to \(language)", type: .serviceInfo)
+                                                    log("Language is set to \(language)", type: .info)
                                                     promise.resolve(with: language)
                                                 } else {
                                                     let errorMessage = "Was waiting .setLanguage got \(response)"

@@ -56,11 +56,11 @@ struct EthereumProcessor {
     
     var ethAccount: GethAccount? {
         guard let keyStore = ethKeyStore else {
-            print("no keystore")
+            log("no keystore", type: [.error, .crypto])
             return nil
         }
         guard let accounts = keyStore.getAccounts() else {
-            print("no geth accounts")
+            log("no geth accounts", type: [.error, .crypto])
             return nil
         }
         
@@ -77,7 +77,7 @@ struct EthereumProcessor {
         guard let signature: Data = sign(publicKey: key.publicKey) else { return nil }
         
         let publicKeySignature = reverseAndCalculateV(data: signature).hexString
-        print("Public key signature: \(publicKeySignature)")
+        log("Public key signature: \(publicKeySignature)", type: .crypto)
         return "0x" + publicKeySignature
     }
     
@@ -94,14 +94,14 @@ struct EthereumProcessor {
         
         let last32bytes = bytes[(bytes.count - 32)...]
         do {
-            print("ethereum address: \(account.getAddress().getHex())")
-            print("last 32 bytes: \(Data(last32bytes).hexString)")
-            print("secret string: \(secretString)")
+            log("ethereum address: \(account.getAddress().getHex())", type: .cryptoDetails)
+            log("last 32 bytes: \(Data(last32bytes).hexString)", type: .cryptoDetails)
+            log("secret string: \(secretString)", type: .cryptoDetails)
             let signed = try ethKeyStore?.signHashPassphrase(account, passphrase: secretString, hash: Data(last32bytes))
-            print("signature: \(signed?.hexString ?? "nil")")
+            log("signature: \(signed?.hexString ?? "nil")", type: .cryptoDetails)
             return signed
         } catch {
-            log("Error signing ethereum: \(error)", type: .error)
+            log("Error signing ethereum: \(error)", type: [.error, .crypto])
             service.error.present(error: error)
             return nil
         }

@@ -137,7 +137,7 @@ class TeambrellaService: NSObject {
                 completion(true)
                 break
             case .failure(let error):
-                print("server request failed with error: \(error)")
+                log("server request failed with error: \(error)", type: [.error, .crypto])
                 completion(false)
             }
         }
@@ -179,14 +179,14 @@ class TeambrellaService: NSObject {
     //    }
     
     func sync(completion: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("Teambrella service start sync")
-        print("Public Key: \(key.publicKey)")
+        log("Teambrella service start sync", type: .crypto)
+        log("Public Key: \(key.publicKey)", type: .cryptoDetails)
         isStorageCleared = false
         registerBackgroundTask(completion: completion)
         queue.addOperation {
             self.queue.isSuspended = true
             self.createWallets(gasLimit: Constant.gasLimit, completion: { success in
-                print("wallet created \(success)")
+                log("wallet created \(success)", type: .crypto)
                 self.queue.isSuspended = false
             })
         }
@@ -194,7 +194,7 @@ class TeambrellaService: NSObject {
         queue.addOperation {
             self.queue.isSuspended = true
             self.verifyIfWalletIsCreated(gasLimit: Constant.gasLimit) { success in
-                print("wallet creation verified: \(success)")
+                log("wallet creation verified: \(success)", type: .crypto)
                 self.queue.isSuspended = false
             }
         }
@@ -211,7 +211,7 @@ class TeambrellaService: NSObject {
             do {
                 try self.cosignApprovedTransactions()
             } catch {
-                print("Error cosigning approved transactions: \(error)")
+                log("Error cosigning approved transactions: \(error)", type: [.error, .crypto])
             }
         }
         
@@ -231,14 +231,14 @@ class TeambrellaService: NSObject {
         }
         
         queue.addOperation {
-            print("Teambrella service executed all sync operations")
+            log("Teambrella service executed all sync operations", type: .crypto)
             self.endBackgroundTask(result: .newData,completion: completion)
         }
         
     }
     
     func createWallets(gasLimit: Int, completion: @escaping (Bool) -> Void) {
-        print("Teambrella service start \(#function)")
+        log("Teambrella service start \(#function)", type: .crypto)
         let myPublicKey = key.publicKey
         let multisigsToCreate = contentProvider.multisigsToCreate(publicKey: myPublicKey)
         guard !multisigsToCreate.isEmpty else {
@@ -257,7 +257,7 @@ class TeambrellaService: NSObject {
                 if let sameMultisig = self.myTeamMultisigIfAny(publicKey: myPublicKey,
                                                                myTeammateID: multisig.teammate?.id ?? 0,
                                                                multisigs: multisigsToCreate) {
-                    print("same multisig: \(sameMultisig)")
+                    log("same multisig: \(sameMultisig)", type: .cryptoDetails)
                     // todo: move "cosigner list", and send to the server the move tx (not creation tx).
                     ////boolean needServerUpdate = (sameTeammateMultisig.address != null);
                     ////operations.add(mTeambrellaClient.setMutisigAddressTxAndNeedsServerUpdate(m,
@@ -306,7 +306,7 @@ class TeambrellaService: NSObject {
     }
     
     func verifyIfWalletIsCreated(gasLimit: Int, completion: (Bool) -> Void) {
-        print("Teambrella service start \(#function)")
+        log("Teambrella service start \(#function)", type: .crypto)
         let publicKey = key.publicKey
         let creationTxs = contentProvider.multisigsInCreation(publicKey: publicKey)
         var success = !creationTxs.isEmpty
@@ -373,12 +373,12 @@ class TeambrellaService: NSObject {
     }
     
     func depositWallet() {
-        print("Teambrella service start \(#function)")
+        log("Teambrella service start \(#function)", type: .crypto)
         let publicKey = key.publicKey
         let myCurrentMultisigs = contentProvider.currentMultisigsWithAddress(publicKey: publicKey)
         if let multisig = myCurrentMultisigs.first {
             wallet.deposit(multisig: multisig) { success in
-                print("Wallet deposit result: \(success)")
+                log("Wallet deposit result: \(success)", type: .crypto)
             }
         }
         
@@ -400,17 +400,17 @@ class TeambrellaService: NSObject {
          }
          return operations;
          */
-        print("Teambrella service start \(#function)")
+        log("Teambrella service start \(#function)", type: .crypto)
         let txs = contentProvider.transactionsToApprove
-        print("Teambrella service has \(txs.count) transactions to approve")
+        log("Teambrella service has \(txs.count) transactions to approve", type: .crypto)
         contentProvider.transactionsChangeResolution(txs: txs, to: .approved, when: Date())
     }
     
     func cosignApprovedTransactions() throws {
-        print("Teambrella service start \(#function)")
+        log("Teambrella service start \(#function)", type: .crypto)
         //let publicKey = key.publicKey
         let list = contentProvider.transactionsCosignable
-        print("Teambrella service has \(list.count) cosignable transactions")
+        log("Teambrella service has \(list.count) cosignable transactions", type: .crypto)
         let user = contentProvider.user
         for tx in list {
             try cosignTransaction(transaction: tx, userID: user.id)
@@ -436,8 +436,8 @@ class TeambrellaService: NSObject {
     }
     
     func masterSign() {
-        print("Teambrella service start \(#function)")
-        print("Master sign function disabled")
+        log("Teambrella service start \(#function)", type: .crypto)
+        log("Master sign function disabled", type: .cryptoDetails)
         // Do nothing
     }
     
@@ -469,9 +469,9 @@ class TeambrellaService: NSObject {
 
          return !operations.isEmpty();
          */
-        print("Teambrella service start \(#function)")
+        log("Teambrella service start \(#function)", type: .crypto)
         let txs = contentProvider.transactionsApprovedAndCosigned
-        print("Teambrella has \(txs.count) approved and cosigned transactions to publish")
+        log("Teambrella has \(txs.count) approved and cosigned transactions to publish", type: .crypto)
         for tx in txs {
             guard let kind = tx.kind else { continue }
 
@@ -480,10 +480,10 @@ class TeambrellaService: NSObject {
                      .withdraw,
                      .moveToNextWallet:
                     wallet.publish(tx: tx, completion: { hash in
-                        print("Teambrella service published tx hash: \(hash)")
+                        log("Teambrella service published tx hash: \(hash)", type: .crypto)
                     }, failure: { error in
-                        print("Teambrella service failed to publish tx \(tx.id.uuidString)")
-                        print("Error: \(String(describing: error))")
+                        log("Teambrella service failed to publish tx \(tx.id.uuidString)", type: [.error, .crypto] )
+                        log("Error: \(String(describing: error))", type: [.error, .crypto])
                     })
             default:
                 // TODO: support move & incoming TXs
@@ -526,14 +526,14 @@ class TeambrellaService: NSObject {
     }
     
     func endBackgroundTask(result: UIBackgroundFetchResult, completion: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("Background task ended. Result: \(result.rawValue)")
+        log("Background task ended. Result: \(result.rawValue)", type: .crypto)
         UIApplication.shared.endBackgroundTask(backgroundTask)
         backgroundTask = UIBackgroundTaskInvalid
         completion(result)
     }
 
     func signToSockets(service: SocketService) {
-        print("Teambrella service signing to socket")
+        log("Teambrella service signing to socket", type: .cryptoDetails)
         service.add(listener: self) { action in
             switch action.command {
             case .dbDump:

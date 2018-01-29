@@ -33,9 +33,9 @@ class Cosigner: NSManagedObject {
         return multisigValue!
     }
 
-//    var bSignature: Data {
-//       
-//    }
+    //    var bSignature: Data {
+    //
+    //    }
     
     override var description: String {
         return "Cosigner for multisig: \(multisig.id), order: \(keyOrder)"
@@ -47,8 +47,13 @@ extension Cosigner {
         guard let context = teammate.managedObjectContext else { return [] }
         
         let request: NSFetchRequest<Cosigner> = Cosigner.fetchRequest()
-        request.predicate = NSPredicate(format: "teammate = %@", teammate)
-        let result = try? context.fetch(request)
-        return result ?? []
+        request.predicate = NSPredicate(format: "teammateValue = %@", teammate)
+        do {
+            let result = try context.fetch(request)
+            return result
+        } catch {
+            log("Error in fetching cosigners: \(error)", type: [.error, .crypto])
+            return []
+        }
     }
 }

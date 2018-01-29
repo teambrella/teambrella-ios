@@ -143,7 +143,7 @@ class InfoMaker {
                 let fileDictionary = try fm.attributesOfItem(atPath: directory.appending("/" + fileName)) as NSDictionary
                 size += fileDictionary.fileSize()
             } catch let err {
-                print("err getting attributes of file \(fileName): \(err.localizedDescription)")
+                log("err getting attributes of file \(fileName): \(err.localizedDescription)", type: [.error, .info])
             }
         }
         return Double(size)

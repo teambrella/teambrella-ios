@@ -60,20 +60,25 @@ class Log {
     
     struct LogType: OptionSet {
         let rawValue: Int
-        
-        static let error    = LogType(rawValue: 1 << 0)
-        static let serverURL = LogType(rawValue: 1 << 1)
-        static let serverReply = LogType(rawValue: 1 << 2)
-        static let requestBody = LogType(rawValue: 1 << 3)
-        static let socket = LogType(rawValue: 1 << 4)
+
+        static let error           = LogType(rawValue: 1 << 0)
+
+        static let serverURL       = LogType(rawValue: 1 << 1)
+        static let serverReply     = LogType(rawValue: 1 << 2)
+        static let serverRequest   = LogType(rawValue: 1 << 3)
+
+        static let socket          = LogType(rawValue: 1 << 4)
         static let userInteraction = LogType(rawValue: 1 << 5)
-        static let callback = LogType(rawValue: 1 << 6)
-        static let serviceInfo =  LogType(rawValue: 1 << 7)
-        static let push = LogType(rawValue: 1 << 8)
-        static let social = LogType(rawValue: 1 << 9)
-        static let crypto = LogType(rawValue: 1 << 10)
-        static let cryptoDetails = LogType(rawValue: 1 << 11)
-        static let cryptoRequests = LogType(rawValue: 1 << 12)
+        // empty 6
+        static let info            = LogType(rawValue: 1 << 7)
+        static let push            = LogType(rawValue: 1 << 8)
+        static let social          = LogType(rawValue: 1 << 9)
+
+        static let crypto          = LogType(rawValue: 1 << 10)
+        static let cryptoDetails   = LogType(rawValue: 1 << 11)
+        static let cryptoRequests  = LogType(rawValue: 1 << 12)
+
+        static let database        = LogType(rawValue: 1 << 13)
 
         static var all: LogType { return LogType(rawValue: Int.max) }
     }
@@ -102,7 +107,7 @@ class Log {
         if type.contains(.error) {
            emojis.append("🛑")
         }
-        if type.contains(.requestBody) {
+        if type.contains(.serverRequest) {
             emojis.append("🌕")
         }
         if type.contains(.serverURL) {
@@ -131,17 +136,18 @@ class Log {
         switch level {
         case .none: return []
         case .critical: return [.error]
-        case .minimal: return [.error, .serverURL, .serviceInfo]
-        case .normal: return [.error, .serverURL, .serviceInfo, .requestBody, .socket, .push]
-        case .detailed: return [.error, .serverURL, .serviceInfo, .serverReply, .requestBody, .socket, .push]
-        case .server: return [.serverURL, .requestBody, .serverReply]
+        case .minimal: return [.error, .serverURL, .info, .database]
+        case .normal: return [.error, .serverURL, .info, .serverRequest, .socket, .push, .database]
+        case .detailed: return [.error, .serverURL, .info, .serverReply, .serverRequest, .socket, .push, .database]
+
+        case .server: return [.serverURL, .serverRequest, .serverReply]
         case .socket: return [.socket, .error]
         case .push: return [.push, .error]
         case .facebook: return [.social, .error]
 
-        case .crypto: return [.error, .crypto]
-        case .cryptoDetailed: return [.error, .crypto, .cryptoDetails]
-        case .cryptoAll: return [.error, .crypto, .cryptoDetails, .cryptoRequests]
+        case .crypto: return [.error, .crypto, .database]
+        case .cryptoDetailed: return [.error, .crypto, .cryptoDetails, .database]
+        case .cryptoAll: return [.error, .crypto, .cryptoDetails, .cryptoRequests, .database]
 
         case .all: return LogType.all
         }

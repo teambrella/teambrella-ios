@@ -93,7 +93,7 @@ class ClaimDataSource {
                 if case .claimVote(let json) = response {
                     self?.claim?.update(with: json)
                     self?.onUpdate?()
-                    log("Updated claim with \(json)", type: .serviceInfo)
+                    log("Updated claim with \(json)", type: .info)
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)
@@ -115,7 +115,7 @@ class ClaimDataSource {
                 if case .claimUpdates(let json) = response {
                     self?.claim?.update(with: json)
                     self?.onUpdate?()
-                    log("updated claim \(json)", type: .serviceInfo)
+                    log("updated claim \(json)", type: .info)
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)

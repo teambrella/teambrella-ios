@@ -52,7 +52,7 @@ struct ClaimCellBuilder {
     
     static func populateImageGallery(cell: ImageGalleryCell, with claim: ClaimEntityLarge) {
         let imageURLStrings = claim.largePhotos.map { URLBuilder().urlString(string: $0) }
-        log("\(imageURLStrings)", type: .serviceInfo)
+        log("\(imageURLStrings)", type: .info)
         service.server.updateTimestamp { timestamp, error in
             let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
             let modifier = AnyModifier { request in

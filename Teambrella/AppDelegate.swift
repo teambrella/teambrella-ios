@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("remote notification: \(userInfo)")
+        log("remote notification: \(userInfo)", type: .push)
         service.push.remoteNotification(in: application, userInfo: userInfo, completionHandler: completionHandler)
     }
 

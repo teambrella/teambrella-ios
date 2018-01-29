@@ -76,7 +76,7 @@ class AbiArguments {
             return Hex.format(wei, BYTES_IN_WORD);
         */
         guard let e: Decimal = Decimal(string: decimalAmount) else {
-            print("String \(decimalAmount) is not convertible to Decimal")
+            log("String \(decimalAmount) is not convertible to Decimal", type: [.error, .crypto])
             return nil
         }
 
