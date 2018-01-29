@@ -71,6 +71,7 @@ struct ClaimCellBuilder {
         cell.unreadCountLabel.isHidden = claim.unreadCount <= 0
         let dateProcessor = DateProcessor()
         cell.timeLabel.text = dateProcessor.stringFromNow(minutes: claim.minutesinceLastPost)
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
     
     static func populateClaimVote(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
@@ -126,6 +127,7 @@ struct ClaimCellBuilder {
         
         cell.othersVotedButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.othersVotedButton.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted), for: .touchUpInside)
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
     
     static func populateClaimDetails(cell: ClaimDetailsCell, with claim: ClaimEntityLarge) {
@@ -150,6 +152,7 @@ struct ClaimCellBuilder {
         
         cell.incidentDateLabel.text = "Team.ClaimCell.incidentDate".localized
         claim.incidentDate.map { cell.incidentDateValueLabel.text = DateFormatter.teambrellaShort.string(from: $0) }
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
     
     static func populateClaimOptions(cell: ClaimOptionsCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
@@ -158,6 +161,7 @@ struct ClaimCellBuilder {
         cell.transactionsLabel.text = "Team.TeammateCell.transactions".localized
         cell.tapTransactionsRecognizer.removeTarget(delegate, action: nil)
         cell.tapTransactionsRecognizer.addTarget(delegate, action: #selector(ClaimVC.tapTransactions))
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
     
 }
