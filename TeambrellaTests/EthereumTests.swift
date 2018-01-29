@@ -31,7 +31,6 @@ class EthereumTests: XCTestCase {
     func testString() {
         let processor = EthereumProcessor.standard
         let string = processor.ethAddressString
-        print(string)
         XCTAssertNotNil(string)
     }
     

@@ -78,9 +78,9 @@ class PushService: NSObject {
                             completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if let aps = userInfo["aps"] as? [AnyHashable: Any], let content = aps["content-available"] as? Bool {
             if content == true {
-                print("Content is available: \(userInfo)")
+                log("Content is available: \(userInfo)", type: .push)
                 service.teambrella.startUpdating(completion: { result in
-                    print("Remote notification get updetes result is: \(result)")
+                    log("Remote notification get updetes result is: \(result)", type: .push)
                 })
             }
         }

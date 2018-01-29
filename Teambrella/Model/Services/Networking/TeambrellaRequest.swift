@@ -86,10 +86,9 @@ struct TeambrellaRequest {
         case .teammatesList:
             do {
                 let list = try decoder.decode(TeammatesList.self, from: serverReply.data)
-                print("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)")
+                log("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)", type: .serviceInfo)
                 success(.teammatesList(list.teammates))
             } catch {
-                print(error)
                 failure?(error)
             }
         case .teammate:
@@ -98,7 +97,7 @@ struct TeambrellaRequest {
         case .teams, .demoTeams:
             do {
                 let teamsModel = try decoder.decode(TeamsModel.self, from: serverReply.data)
-                print(teamsModel)
+                log("teamsModel: \(teamsModel)", type: .serverReply)
                 success(.teams(teamsModel))
             } catch {
                 log(error)
@@ -193,7 +192,6 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .walletTransactions:
-            print(reply)
             do {
                 let models = try decoder.decode([WalletTransactionsModel].self, from: serverReply.data)
                 success(.walletTransactions(models))
@@ -258,7 +256,7 @@ struct TeambrellaRequest {
                 success(.votesList(votesList))
             } catch {
                 failure?(error)
-                print("votes eroor: \(error)")
+                log("votes eror: \(error)", type: .error)
             }
         default:
             break

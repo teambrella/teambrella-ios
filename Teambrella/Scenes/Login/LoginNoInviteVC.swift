@@ -73,7 +73,6 @@ final class LoginNoInviteVC: UIViewController {
     }
     
     @IBAction func tapSupport(_ sender: UIButton) {
-        print("Tap support")
         let emailTitle = " "
         let messageBody: String = ""
         let toRecipents = [mailAddress]
@@ -133,14 +132,14 @@ extension LoginNoInviteVC: MFMailComposeViewControllerDelegate {
                                error: Error?) {
         switch result {
         case .cancelled:
-            print("Mail cancelled")
+            log("Mail cancelled", type: .serviceInfo)
         case .saved:
-            print("Mail saved")
+            log("Mail saved", type: .serviceInfo)
         case .sent:
-            print("Mail sent")
+            log("Mail sent", type: .serviceInfo)
         case .failed:
-            print("Mail sent failure")
-            error.map { print($0) }
+            log("Mail sent failure", type: .serviceInfo)
+            error.map { log("error: \($0)", type: .error) }
         }
         
         controller.dismiss(animated: true, completion: nil)

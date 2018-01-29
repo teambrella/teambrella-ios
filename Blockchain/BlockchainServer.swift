@@ -51,7 +51,7 @@ public class BlockchainServer {
     
     private(set)var timestamp: Int64 = 0 {
         didSet {
-            print("timestamp updated from \(oldValue) to \(timestamp)")
+            log("timestamp updated from \(oldValue) to \(timestamp)", type: .cryptoDetails)
         }
     }
     
@@ -102,7 +102,7 @@ public class BlockchainServer {
                     switch response.result {
                     case .success:
                         if let value = response.result.value {
-                            print(value)
+                            log("init client reply: \(value)", type: .cryptoRequests)
                             let result = JSON(value)
                             if let timestamp = result["Timestamp"].int64 {
                                 me.timestamp = timestamp
@@ -110,7 +110,7 @@ public class BlockchainServer {
                             completion(true)
                         }
                     case .failure(let error):
-                        print("error initializing client: \(error)")
+                        log("error initializing client: \(error)", type: [.error, .cryptoRequests])
                         //                        me.delegate?.server(server: me, failedWithError: error)
                         completion(false)
                     }
@@ -265,7 +265,7 @@ public class BlockchainServer {
                 body[key] = value
             }
         }
-        print("request body: \(body)")
+        log("request body: \(body)", type: .cryptoRequests)
         do {
             let data = try JSONSerialization.data(withJSONObject: body, options: [])
             request.httpBody = data

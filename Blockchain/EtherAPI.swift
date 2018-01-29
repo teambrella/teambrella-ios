@@ -36,7 +36,7 @@ class EtherAPI {
     }
     
     deinit {
-        print("EtherAPI dies")
+        log("EtherAPI dies", type: .cryptoDetails)
     }
     
     lazy var session = { URLSession.shared }()
@@ -155,7 +155,7 @@ class EtherAPI {
             case .success:
                 if let value = response.value {
                     let json = JSON(value)
-                    print("raw: \(json)")
+                    log("raw post request reply: \(json)", type: .cryptoRequests)
                     success(json)
                 }
             case .failure(let error):

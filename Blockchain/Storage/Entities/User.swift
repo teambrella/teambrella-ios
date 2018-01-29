@@ -52,9 +52,8 @@ class User: NSManagedObject {
         }
         set {
             let prev = lastUpdated
-            print("last updated changed from \(prev)")
-            print("last updated changed to \(newValue)")
-            print("updates delta = \(Double(newValue - prev) / 10_000_000) seconds")
+            let Δ = Double(newValue - prev) / 10_000_000
+            log("last updated changed from \(prev) to \(newValue) delta = \(Δ) seconds", type: .cryptoDetails)
             lastUpdatedValue = newValue
             try? managedObjectContext?.save()
         }

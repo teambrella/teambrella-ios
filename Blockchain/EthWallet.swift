@@ -41,6 +41,7 @@ class EthWallet {
         case unexpectedTxInputsCount(count: Int, txID: String)
         case transactionHasNoTeammate
         case invalidCosigner(txID: String)
+        case argumentsMismatch(args: [Any])
     }
     
     let processor: EthereumProcessor
@@ -129,7 +130,7 @@ class EthWallet {
         guard let address = processor.ethAddressString else { return }
         
         blockchain.checkNonce(addressHex: address, success: { nonce in
-            print("Nonce: \(nonce)")
+            log("Nonce: \(nonce)", type: .crypto)
             success(nonce)
         }) { error in
             failure(error)
@@ -179,15 +180,16 @@ class EthWallet {
             guard let `self` = self else { return }
 
             if let error = error {
-                print("refresh gas error: \(error)")
+                log("refresh gas error: \(error)", type: [.error, .crypto])
             }
 
             switch price {
             case ..<0:
-                print("Failed to get the gas price from a server. A default gas price will be used.")
+                log("Failed to get the gas price from a server. A default gas price will be used.",
+                    type: [.error, .crypto])
                 self.gasPrice = 100_000_001
             case 50_000_000_001...:
-                print("The server is kidding with us about the gas price: \(price)")
+                log("The server is kidding with us about the gas price: \(price)", type: [.error, .crypto])
                 self.gasPrice = 50_000_000_001
             default:
                 self.gasPrice = price
@@ -202,15 +204,16 @@ class EthWallet {
             guard let `self` = self else { return }
 
             if let error = error {
-                print("refresh gas error: \(error)")
+                log("refresh gas error: \(error)", type: [.error, .crypto])
             }
 
             switch price {
             case ..<0:
-                print("Failed to get the gas price from a server. A default gas price will be used.")
+                log("Failed to get the gas price from a server. A default gas price will be used.",
+                    type: [.error, .crypto])
                 self.contractGasPrice = 100_000_001
             case 8_000_000_002...:
-                print("The server is kidding with us about the contract gas price: \(price)")
+                log("The server is kidding with us about the contract gas price: \(price)", type: [.error, .crypto])
                 self.contractGasPrice = 8_000_000_001
             default:
                 self.contractGasPrice = price
@@ -236,24 +239,24 @@ class EthWallet {
                                                                   value: value)
                             try tx = self.processor.signTx(unsignedTx: tx, isTestNet: self.isTestNet)
                             self.publish(cryptoTx: tx, completion: { txHash in
-                                print("Deposit tx published: \(txHash)")
+                                log("Deposit tx published: \(txHash)", type: .crypto)
                                 completion(true)
                             }, failure: { error in
-                                print("Publish Tx failed with \(String(describing: error))")
+                                log("Publish Tx failed with \(String(describing: error))", type: [.error, .crypto])
                                 completion(false)
                             })
                         } catch {
-                            print("Deposit Tx creation failed with \(String(describing: error))")
+                            log("Deposit Tx creation failed with \(String(describing: error))", type: [.error, .crypto])
                             completion(false)
                         }
                     }, failure: { error in
-                        print("Check nonce failed with \(String(describing: error))")
+                        log("Check nonce failed with \(String(describing: error))", type: [.error, .crypto])
                         completion(false)
                     })
                 })
             }
         }, failure: { error in
-            print("Check balance failed with \(String(describing: error))")
+            log("Check balance failed with \(String(describing: error))", type: [.error, .crypto])
             completion(false)
         })
     }
@@ -302,11 +305,11 @@ class EthWallet {
         let payToValues = toValues(destinations: transaction.outputs)
 
         let h = try hashForPaySignature(teamID: teamID, opNum: opNum, addresses: payToAddresses, values: payToValues)
-        print("Hash created for Tx transfer(s): \(h.base64EncodedString())")
+        log("Hash created for Tx transfer(s): \(h.base64EncodedString())", type: .cryptoDetails)
 
         let sig = try processor.signHashAndCalculateV(hash256: h)
 
-        print("Hash signed.")
+        log("Hash signed.", type: .cryptoDetails)
 
         return sig
     }
@@ -612,6 +615,10 @@ class EthWallet {
                         pos[0]: \(pos[0]) pos[1]: \(pos[1]) pos[2]: \(pos[2]) Tx.id: \(tx.id)
                         """)
                     failure(EthWalletError.invalidCosigner(txID: tx.id.uuidString))
+                    return
+                }
+                guard pos.count >= 3, sig.count >= 3 else {
+                    failure(EthWalletError.argumentsMismatch(args: [pos, sig]))
                     return
                 }
 

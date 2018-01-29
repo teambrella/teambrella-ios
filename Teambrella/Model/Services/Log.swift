@@ -74,6 +74,7 @@ class Log {
         static let crypto = LogType(rawValue: 1 << 10)
         static let cryptoDetails = LogType(rawValue: 1 << 11)
         static let cryptoRequests = LogType(rawValue: 1 << 12)
+        static let dataBase = LogType(rawValue: 1 << 13)
 
         static var all: LogType { return LogType(rawValue: Int.max) }
     }
@@ -131,17 +132,18 @@ class Log {
         switch level {
         case .none: return []
         case .critical: return [.error]
-        case .minimal: return [.error, .serverURL, .serviceInfo]
-        case .normal: return [.error, .serverURL, .serviceInfo, .requestBody, .socket, .push]
-        case .detailed: return [.error, .serverURL, .serviceInfo, .serverReply, .requestBody, .socket, .push]
+        case .minimal: return [.error, .serverURL, .serviceInfo, .dataBase]
+        case .normal: return [.error, .serverURL, .serviceInfo, .requestBody, .socket, .push, .dataBase]
+        case .detailed: return [.error, .serverURL, .serviceInfo, .serverReply, .requestBody, .socket, .push, .dataBase]
+
         case .server: return [.serverURL, .requestBody, .serverReply]
         case .socket: return [.socket, .error]
         case .push: return [.push, .error]
         case .facebook: return [.social, .error]
 
-        case .crypto: return [.error, .crypto]
-        case .cryptoDetailed: return [.error, .crypto, .cryptoDetails]
-        case .cryptoAll: return [.error, .crypto, .cryptoDetails, .cryptoRequests]
+        case .crypto: return [.error, .crypto, .dataBase]
+        case .cryptoDetailed: return [.error, .crypto, .cryptoDetails, .dataBase]
+        case .cryptoAll: return [.error, .crypto, .cryptoDetails, .cryptoRequests, .dataBase]
 
         case .all: return LogType.all
         }

@@ -400,7 +400,6 @@ class ChatImageView: UIImageView {
     
     @objc
     func tapView(sender: UITapGestureRecognizer) {
-        print("tap")
         guard let galleryView = galleryView else { return }
    
         self.addSubview(galleryView)
