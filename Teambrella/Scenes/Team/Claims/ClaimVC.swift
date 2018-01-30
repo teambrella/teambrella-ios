@@ -131,14 +131,6 @@ final class ClaimVC: UIViewController, Routable {
         service.router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
     }
     
-//    @objc
-//    func tapOthersVoted(sender: UIButton) {
-//        guard let teamID = service.session?.currentTeam?.teamID else { return }
-//        guard let claimID = dataSource.claim?.id else { return }
-//
-//        service.router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
-//    }
-    
     // MARK: Private
     
     private func updateVotingCell() {
