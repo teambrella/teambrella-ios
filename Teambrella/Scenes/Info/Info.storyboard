@@ -291,7 +291,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAr-Rs-wH9">
-                                                    <rect key="frame" x="20" y="71" width="323" height="1"/>
+                                                    <rect key="frame" x="16" y="71" width="327" height="1"/>
                                                     <color key="backgroundColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="JpK-Ki-ADa"/>
@@ -307,7 +307,7 @@
                                             <constraint firstItem="pq1-Cs-fxh" firstAttribute="leading" secondItem="5HR-lf-4RT" secondAttribute="trailing" constant="4" id="PLz-Ct-Tla"/>
                                             <constraint firstItem="pq1-Cs-fxh" firstAttribute="bottom" secondItem="5HR-lf-4RT" secondAttribute="bottom" id="Rkd-7W-Z57"/>
                                             <constraint firstAttribute="trailing" secondItem="bnh-h5-oPu" secondAttribute="trailing" constant="16" id="dl9-P0-jlR"/>
-                                            <constraint firstItem="lAr-Rs-wH9" firstAttribute="leading" secondItem="VyE-E8-7U0" secondAttribute="leading" constant="20" id="fBq-Pe-gDy"/>
+                                            <constraint firstItem="lAr-Rs-wH9" firstAttribute="leading" secondItem="VyE-E8-7U0" secondAttribute="leading" constant="16" id="fBq-Pe-gDy"/>
                                             <constraint firstItem="5HR-lf-4RT" firstAttribute="leading" secondItem="h3b-Rv-H83" secondAttribute="trailing" constant="21" id="gRw-Az-Wgw"/>
                                             <constraint firstItem="h3b-Rv-H83" firstAttribute="centerY" secondItem="VyE-E8-7U0" secondAttribute="centerY" id="ifY-gc-yC0"/>
                                             <constraint firstItem="e7T-em-y4y" firstAttribute="leading" secondItem="h3b-Rv-H83" secondAttribute="trailing" constant="20" id="jff-ij-KCx"/>

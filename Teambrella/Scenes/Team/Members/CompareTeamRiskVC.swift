@@ -45,9 +45,9 @@ class CompareTeamRiskVC: UIViewController, Routable {
     }
     
     func registerCells() {
-        collectionView.register(RiskTableHeader.nib,
+        collectionView.register(InfoHeader.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                withReuseIdentifier: RiskTableHeader.cellID)
+                                withReuseIdentifier: InfoHeader.cellID)
         collectionView.register(RiskCell.nib, forCellWithReuseIdentifier: RiskCell.cellID)
     }
 }
@@ -70,7 +70,7 @@ extension CompareTeamRiskVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                               withReuseIdentifier: RiskTableHeader.cellID,
+                                                               withReuseIdentifier: InfoHeader.cellID,
                                                                for: indexPath)
     }
 }
@@ -104,9 +104,10 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        if let header = view as? RiskTableHeader {
-            header.leftLabel.text = dataSource.headerTitle(indexPath: indexPath)
-            header.rightLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
+        if let header = view as? InfoHeader {
+            header.leadingLabel.text = dataSource.headerTitle(indexPath: indexPath)
+            header.trailingLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
+            header.trailingLabelTrailingConstraint.constant = 40
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -24,10 +24,11 @@ import UIKit
 class InfoHeader: UICollectionReusableView, XIBInitableCell {
     @IBOutlet var leadingLabel: Label!
     @IBOutlet var trailingLabel: Label!
-
+    @IBOutlet var trailingLabelTrailingConstraint: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        trailingLabelTrailingConstraint.constant = 16
     }
     
 }

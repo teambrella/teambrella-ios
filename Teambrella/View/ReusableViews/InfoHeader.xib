@@ -46,6 +46,7 @@
             <connections>
                 <outlet property="leadingLabel" destination="etd-mN-gap" id="8kU-jF-Zzr"/>
                 <outlet property="trailingLabel" destination="jaP-z1-xcn" id="aAF-hZ-jE7"/>
+                <outlet property="trailingLabelTrailingConstraint" destination="NfX-Xd-ur4" id="UNv-d8-McZ"/>
             </connections>
             <point key="canvasLocation" x="118" y="65.5"/>
         </collectionReusableView>
