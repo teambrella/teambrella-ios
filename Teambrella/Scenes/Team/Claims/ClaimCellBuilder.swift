@@ -148,7 +148,7 @@ struct ClaimCellBuilder {
         cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
         let estimatedExpenses = String(format: "%.2f", claim.estimatedExpences)
         guard let currency = service.session?.currentTeam?.currencySymbol else { return }
-//        let currency = service.session?.currentTeam?.currencySymbol
+
         cell.claimAmountValueLabel.text = currency + claimAmount
         cell.deductibleValueLabel.text = currency + deductible
         cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses
@@ -157,6 +157,8 @@ struct ClaimCellBuilder {
     
     static func populateClaimOptions(cell: ClaimOptionsCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         cell.allVotesLabel.text = "Team.TeammateCell.allVotes".localized
+        cell.tapAllVotesRecognizer.removeTarget(delegate, action: nil)
+        cell.tapAllVotesRecognizer.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted))
         cell.cashFlowLabel.text = "Team.TeammateCell.cashFlow".localized
         cell.transactionsLabel.text = "Team.TeammateCell.transactions".localized
         cell.tapTransactionsRecognizer.removeTarget(delegate, action: nil)
