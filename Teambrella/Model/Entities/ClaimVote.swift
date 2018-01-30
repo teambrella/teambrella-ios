@@ -16,23 +16,27 @@
 
 import Foundation
 
-struct Coverage: Decodable {
+struct ClaimVote: Decodable {
     let value: Double
+    
     var percentage: Double { return value * 100 }
     var integerPercentage: Int { return Int(percentage + 0.5) }
 
-    func ethers(from: Ether) -> Ether {
-        return Ether(from.value * value)
-    }
-
     init(_ value: Double) {
         self.value = value
+    }
+
+    init(_ value: Float) {
+        self.value = Double(value)
     }
 
     init(from decoder: Decoder) throws {
         let value = try decoder.singleValueContainer().decode(Double.self)
         self.value = value
     }
-    
-}
 
+    func fiat(from fiat: Fiat) -> Fiat {
+        return Fiat(value * fiat.value)
+    }
+
+}
