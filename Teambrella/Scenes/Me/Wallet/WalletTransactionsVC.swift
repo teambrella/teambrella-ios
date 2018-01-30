@@ -45,9 +45,9 @@ class WalletTransactionsVC: UIViewController, Routable {
         }
         title = "Me.WalletVC.WalletTransactionsVC.title".localized
         collectionView.register(WalletTransactionCell.nib, forCellWithReuseIdentifier: WalletTransactionCell.cellID)
-        collectionView.register(WithdrawHeader.nib,
+        collectionView.register(InfoHeader.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                withReuseIdentifier: WithdrawHeader.cellID)
+                                withReuseIdentifier: InfoHeader.cellID)
         guard let teamID = teamID else { return }
         
         dataSource = WalletTransactionsDataSource(teamID: teamID)
@@ -77,7 +77,7 @@ extension WalletTransactionsVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                               withReuseIdentifier: WithdrawHeader.cellID,
+                                                               withReuseIdentifier: InfoHeader.cellID,
                                                                for: indexPath)
     }
 }
@@ -101,7 +101,7 @@ extension WalletTransactionsVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        guard let view = view as? WithdrawHeader else { return }
+        guard let view = view as? InfoHeader else { return }
 
         view.leadingLabel.text = "Me.Wallet.Transactions.to".localized
         view.trailingLabel.text = "General.mETH".localized
