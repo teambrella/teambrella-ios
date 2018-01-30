@@ -28,7 +28,6 @@ class InfoHeader: UICollectionReusableView, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        trailingLabelTrailingConstraint.constant = 16
     }
     
 }
