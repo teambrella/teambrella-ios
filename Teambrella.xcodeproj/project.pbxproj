@@ -159,6 +159,12 @@
 		6D49FDDC20209DD900A908D2 /* Ether.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDDA20209DD900A908D2 /* Ether.swift */; };
 		6D49FDDE2020BB2B00A908D2 /* Coverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDDD2020BB2B00A908D2 /* Coverage.swift */; };
 		6D49FDDF2020BB2B00A908D2 /* Coverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDDD2020BB2B00A908D2 /* Coverage.swift */; };
+		6D49FDE12020C12800A908D2 /* Risk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE02020C12800A908D2 /* Risk.swift */; };
+		6D49FDE22020C12800A908D2 /* Risk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE02020C12800A908D2 /* Risk.swift */; };
+		6D49FDE42020C20B00A908D2 /* ClaimVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE32020C20B00A908D2 /* ClaimVote.swift */; };
+		6D49FDE52020C20B00A908D2 /* ClaimVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE32020C20B00A908D2 /* ClaimVote.swift */; };
+		6D49FDE72020C34900A908D2 /* Fiat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE62020C34900A908D2 /* Fiat.swift */; };
+		6D49FDE82020C34900A908D2 /* Fiat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE62020C34900A908D2 /* Fiat.swift */; };
 		6D4E590F1FD2EF8D0029D2F0 /* EthereumAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556741FD2EF3200AEBF07 /* EthereumAddress.swift */; };
 		6D4E59101FD2EF900029D2F0 /* WithdrawChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */; };
 		6D4E59111FD2EF970029D2F0 /* WithdrawTx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35566A1FD2EE4400AEBF07 /* WithdrawTx.swift */; };
@@ -1245,6 +1251,9 @@
 		6D481F7E1F0BDEF30023C781 /* EggView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EggView.swift; path = View/EggView.swift; sourceTree = "<group>"; };
 		6D49FDDA20209DD900A908D2 /* Ether.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Ether.swift; path = Model/Entities/Ether.swift; sourceTree = "<group>"; };
 		6D49FDDD2020BB2B00A908D2 /* Coverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Coverage.swift; path = Model/Entities/Coverage.swift; sourceTree = "<group>"; };
+		6D49FDE02020C12800A908D2 /* Risk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Risk.swift; path = Model/Entities/Risk.swift; sourceTree = "<group>"; };
+		6D49FDE32020C20B00A908D2 /* ClaimVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClaimVote.swift; path = Model/Entities/ClaimVote.swift; sourceTree = "<group>"; };
+		6D49FDE62020C34900A908D2 /* Fiat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Fiat.swift; path = Model/Entities/Fiat.swift; sourceTree = "<group>"; };
 		6D4E5DD91F7AB6870020DEE2 /* Surilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4E5DDA1F7AB6870020DEE2 /* Surilla.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Surilla.plist; path = "/Users/thorax/Developer/Teambrella/Teambrella-iOS/Surilla/Surilla.plist"; sourceTree = "<absolute>"; };
 		6D56F9BB1FA737CC00B9D676 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Application.swift; path = Model/Application.swift; sourceTree = "<group>"; };
@@ -2696,7 +2705,10 @@
 				6D6DA2631EE21ACA00307C73 /* FacebookUser.swift */,
 				6D30A4AC1FD167FE003149DB /* FeedChunk.swift */,
 				6DCDEB731F17E76A00C6D38C /* FeedRequestContext.swift */,
+				6D49FDE62020C34900A908D2 /* Fiat.swift */,
 				6D1292881F83DC46001CCC31 /* Name.swift */,
+				6D49FDE02020C12800A908D2 /* Risk.swift */,
+				6D49FDE32020C20B00A908D2 /* ClaimVote.swift */,
 				6DDB5D901FF681750066A07F /* ServerModels */,
 				6DDB5D911FF681FC0066A07F /* ServerModelsNew */,
 			);
@@ -3831,6 +3843,7 @@
 				6D20CF9D1FDEF1FC0049BE9C /* BasicPart.swift in Sources */,
 				6D4E5CB41F7AB6870020DEE2 /* UIView.swift in Sources */,
 				6D4E5CB51F7AB6870020DEE2 /* ChatTextParser.swift in Sources */,
+				6D49FDE82020C34900A908D2 /* Fiat.swift in Sources */,
 				6D4E5CB61F7AB6870020DEE2 /* FeedRequestContext.swift in Sources */,
 				6D4E5CB71F7AB6870020DEE2 /* ChatDatasourceStrategies.swift in Sources */,
 				6D4E5CB81F7AB6870020DEE2 /* WalletCosignersCellBuilder.swift in Sources */,
@@ -3847,6 +3860,7 @@
 				6D4E5CC11F7AB6870020DEE2 /* HomeDataSource.swift in Sources */,
 				6D4E5CC21F7AB6870020DEE2 /* Nameable.swift in Sources */,
 				6D49FDDF2020BB2B00A908D2 /* Coverage.swift in Sources */,
+				6D49FDE52020C20B00A908D2 /* ClaimVote.swift in Sources */,
 				6D4E5CC31F7AB6870020DEE2 /* Key.swift in Sources */,
 				6D4E5CC41F7AB6870020DEE2 /* Mirror.swift in Sources */,
 				6D4E5CC51F7AB6870020DEE2 /* TeammateCellBuilder.swift in Sources */,
@@ -3956,6 +3970,7 @@
 				9431CDB91F8E1FCC0011D072 /* EthereumProcessor.swift in Sources */,
 				6D12927E1F83BD6D001CCC31 /* SceneType.swift in Sources */,
 				6D4E5D131F7AB6870020DEE2 /* TeammateHeaderView.swift in Sources */,
+				6D49FDE22020C12800A908D2 /* Risk.swift in Sources */,
 				6D4E5D141F7AB6870020DEE2 /* UserIndexVC.swift in Sources */,
 				6D4E5D151F7AB6870020DEE2 /* TeammateState.swift in Sources */,
 				6D4E5D161F7AB6870020DEE2 /* CoverageVC.swift in Sources */,
@@ -4251,6 +4266,7 @@
 				6D20CF9C1FDEF1FC0049BE9C /* BasicPart.swift in Sources */,
 				6D69DA061EFC34FE00DED5CE /* UserIndexCellBuilder.swift in Sources */,
 				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
+				6D49FDE72020C34900A908D2 /* Fiat.swift in Sources */,
 				6DE793361EF92E34005F4508 /* ChatTextParser.swift in Sources */,
 				6DCDEB741F17E76A00C6D38C /* FeedRequestContext.swift in Sources */,
 				6DB309F71F1D169D007DFF40 /* ChatDatasourceStrategies.swift in Sources */,
@@ -4267,6 +4283,7 @@
 				6DA8D55A1F0E8B99000A4DB7 /* HomeDataSource.swift in Sources */,
 				6D097EA51E9D219A00E77DAB /* Nameable.swift in Sources */,
 				6D49FDDE2020BB2B00A908D2 /* Coverage.swift in Sources */,
+				6D49FDE42020C20B00A908D2 /* ClaimVote.swift in Sources */,
 				6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */,
 				6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */,
 				6D6DA24A1EE16E8300307C73 /* TeammateCellBuilder.swift in Sources */,
@@ -4376,6 +4393,7 @@
 				6DEE67A51EDC75DA0098EDB3 /* TeammateHeaderView.swift in Sources */,
 				6D35566D1FD2EE4500AEBF07 /* WithdrawTx.swift in Sources */,
 				6D0D2AE61EFBD48D0095284C /* UserIndexVC.swift in Sources */,
+				6D49FDE12020C12800A908D2 /* Risk.swift in Sources */,
 				6D097EA21E9D215500E77DAB /* TeammateState.swift in Sources */,
 				6DBBF8001F9A561600524B1E /* Multisig.swift in Sources */,
 				6D69DA141EFC461700DED5CE /* CoverageVC.swift in Sources */,

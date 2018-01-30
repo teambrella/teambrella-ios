@@ -16,14 +16,8 @@
 
 import Foundation
 
-struct Coverage: Decodable {
+struct Risk: Decodable {
     let value: Double
-    var percentage: Double { return value * 100 }
-    var integerPercentage: Int { return Int(percentage + 0.5) }
-
-    func ethers(from: Ether) -> Ether {
-        return Ether(from.value * value)
-    }
 
     init(_ value: Double) {
         self.value = value
@@ -33,6 +27,5 @@ struct Coverage: Decodable {
         let value = try decoder.singleValueContainer().decode(Double.self)
         self.value = value
     }
-    
-}
 
+}

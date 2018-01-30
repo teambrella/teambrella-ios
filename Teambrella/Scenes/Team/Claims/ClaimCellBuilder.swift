@@ -86,13 +86,13 @@ struct ClaimCellBuilder {
         
 
         if let myVote = claim.myVote {
-            cell.yourVotePercentValue.text = String.truncatedNumber(myVote * 100)
-            cell.yourVoteAmount.text = String.truncatedNumber(myVote * claim.claimAmount)
-            cell.slider.setValue(Float(myVote), animated: true)
+            cell.yourVotePercentValue.text = String.truncatedNumber(myVote.percentage)
+            cell.yourVoteAmount.text = String.truncatedNumber(myVote.fiat(from: claim.claimAmount).value)
+            cell.slider.setValue(Float(myVote.value), animated: true)
         } else if let proxyVote = claim.proxyVote {
-            cell.yourVotePercentValue.text = String.truncatedNumber(proxyVote * 100)
-            cell.yourVoteAmount.text = String.truncatedNumber(proxyVote * claim.claimAmount)
-            cell.slider.setValue(Float(proxyVote), animated: true)
+            cell.yourVotePercentValue.text = String.truncatedNumber(proxyVote.percentage)
+            cell.yourVoteAmount.text = String.truncatedNumber(proxyVote.fiat(from: claim.claimAmount).value)
+            cell.slider.setValue(Float(proxyVote.value), animated: true)
             if let proxyAvatar = claim.proxyAvatar {
                 cell.proxyAvatar.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: proxyAvatar)))
                 cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
@@ -112,8 +112,8 @@ struct ClaimCellBuilder {
         cell.yourVoteCurrency.text = service.session?.currentTeam?.currency
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
-        cell.teamVotePercentValue.text = String.truncatedNumber(claim.ratioVoted * 100)
-        cell.teamVoteAmount.text = String.truncatedNumber(claim.ratioVoted * claim.claimAmount)
+        cell.teamVotePercentValue.text = String.truncatedNumber(claim.ratioVoted.percentage)
+        cell.teamVoteAmount.text = String.truncatedNumber(claim.ratioVoted.fiat(from: claim.claimAmount).value)
         cell.teamVoteCurrency.text = service.session?.currentTeam?.currency
         
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
@@ -133,7 +133,7 @@ struct ClaimCellBuilder {
         
         cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
         let currency = "$"
-        let claimAmount = String(format: "%.2f", claim.claimAmount)
+        let claimAmount = String(format: "%.2f", claim.claimAmount.value)
         cell.claimAmountValueLabel.text = currency + claimAmount
         
         cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized

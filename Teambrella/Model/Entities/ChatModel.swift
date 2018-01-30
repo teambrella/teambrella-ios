@@ -53,7 +53,7 @@ struct ChatModel {
         let myVote: Double?
 
         let riskVoted: Double?
-        let ratioVoted: Double?
+        let ratioVoted: ClaimVote?
 
         let otherCount: Int?
         let otherAvatars: [String]?
@@ -64,7 +64,7 @@ struct ChatModel {
             proxyAvatar = json["ProxyAvatar"].string
             myVote = json["MyVote"].double
 
-            ratioVoted = json["RatioVoted"].double
+            ratioVoted = json["RatioVoted"].double.map { ClaimVote($0) }
             otherCount = json["OtherCount"].intValue
             otherAvatars = json["OtherAvatars"].arrayObject as? [String]
 
