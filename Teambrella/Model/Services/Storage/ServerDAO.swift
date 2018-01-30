@@ -147,8 +147,8 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Double, limit: Double)> {
-        let promise = Promise<(coverage: Double, limit: Double)>()
+    func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Coverage, limit: Double)> {
+        let promise = Promise<(coverage: Coverage, limit: Double)>()
         let dateString = Formatter.teambrellaShortDashed.string(from: date)
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID,

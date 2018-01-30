@@ -87,7 +87,7 @@ struct ChatModel {
         let deductible: Double?
         let bigPhotos: [String]?
         let smallPhotos: [String]?
-        let coverage: Double?
+        let coverage: Coverage?
         let claimAmount: Double?
         let estimatedExpenses: Double?
         let incidentDate: Date?
@@ -134,7 +134,7 @@ struct ChatModel {
             deductible = json["Deductible"].double
             bigPhotos = json["BigPhotos"].arrayObject as? [String]
             smallPhotos = json["SmallPhotos"].arrayObject as? [String]
-            coverage = json["Coverage"].double
+            coverage = json["Coverage"].double.map { Coverage($0) }
             claimAmount = json["ClaimAmount"].double
             estimatedExpenses = json["EstimatedExpenses"].double
             incidentDate = json["IncidentDate"].string.flatMap { Formatter.teambrella.date(from: $0) }

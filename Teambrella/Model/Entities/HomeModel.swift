@@ -44,8 +44,8 @@ struct HomeModel: Decodable {
     let name: Name
     let avatar: String
     let unreadCount: Int
-    let balance: Double
-    let coverage: Double
+    let balance: Ether
+    let coverage: Coverage
     let objectName: String
     let smallPhoto: String
     let haveVotingClaims: Bool

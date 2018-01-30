@@ -23,11 +23,11 @@ final class WithdrawDataSource {
         return 1 + self.transactions.filter { $0.isEmpty == false }.count
     }
     //var walletInfo: WalletInfoCellModel
-    var cryptoBalance: Double = 0.0
-    var cryptoReserved: Double = 0.0
+    var cryptoBalance: Ether = Ether.empty
+    var cryptoReserved: Ether = Ether.empty
     var currencyRate: Double { return WalletCellBuilder.currencyRate }
     
-    var maxMETHAvailable: Double { return (cryptoBalance - cryptoReserved) * 1000 }
+    var maxEthAvailable: Ether { return cryptoBalance - cryptoReserved }
     
     var ethereumAddress: EthereumAddress? {
         didSet {
@@ -37,10 +37,10 @@ final class WithdrawDataSource {
         }
     }
     
-    lazy var detailsModel = { self.modelBuilder.detailsModel(maxAmount: maxMETHAvailable) }()
+    lazy var detailsModel = { self.modelBuilder.detailsModel(maxAmount: MEth(maxEthAvailable).value) }()
     lazy var infoModel = { self.modelBuilder.infoModel(amount: cryptoBalance,
                                                        reserved: cryptoReserved,
-                                                       available: maxMETHAvailable / 1000,
+                                                       available: maxEthAvailable,
                                                        currencyRate: currencyRate) }()
     
     var onUpdate: (() -> Void)?
@@ -53,8 +53,8 @@ final class WithdrawDataSource {
                 transactions[1].removeAll()
                 transactions[2].removeAll()
                 
-                cryptoBalance = chunk.cryptoBalance.double
-                cryptoReserved = chunk.cryptoReserved.double
+                cryptoBalance = chunk.cryptoBalance
+                cryptoReserved = chunk.cryptoReserved
                 
                 for tx in chunk.txs {
                     let state = tx.serverTxState
@@ -130,11 +130,11 @@ final class WithdrawDataSource {
     }
     
     func withdraw() {
-        guard let amount = Double(detailsModel.amountValue),
+        guard let amount = MEth(string: detailsModel.amountValue),
             let address = EthereumAddress(string: detailsModel.toValue) else { return }
         
         isLoading = true
-        service.dao.withdraw(teamID: teamID, amount: amount / 1000, address: address).observe { [weak self] result in
+        service.dao.withdraw(teamID: teamID, amount: Ether(amount).value, address: address).observe { [weak self] result in
             switch result {
             case let .value(chunk):
                 self?.lastChunk = chunk

@@ -20,8 +20,8 @@ class WithdrawInfoVC: UIViewController, Routable {
     
     static let storyboardName = "Me"
     
-    var cryptoBalance: Double = 0.0
-    var cryptoReserved: Double = 0.0
+    var cryptoBalance: Ether = Ether.empty
+    var cryptoReserved: Ether = Ether.empty
     var bottomOffset: CGFloat = -8
     
     @IBOutlet var backView: UIView!
@@ -41,15 +41,15 @@ class WithdrawInfoVC: UIViewController, Routable {
         balanceLabel.text = "Me.Wallet.Withdraw.WithdrawInfo.balance".localized
         
         let currency = "mETH"
-        let mayRequestAmount = String.truncatedNumber((cryptoBalance - cryptoReserved) * 1000)
+        let mayRequestAmount = String.truncatedNumber(MEth(cryptoBalance - cryptoReserved).value)
         let mayRequestString = "Me.Wallet.Withdraw.WithdrawInfo.youMayRequest".localized(mayRequestAmount)
         let mayRequestAttributed = NSMutableAttributedString(string: mayRequestString)
             .decorate(substring: mayRequestAmount, type: .boldAmount)
             .decorate(substring: currency, type: .currency)
         mayRequestLabel.attributedText = mayRequestAttributed
         
-        let haveValue = String.truncatedNumber(cryptoReserved * 1000)
-        let haveString = cryptoReserved == 0 ? "" : "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized(haveValue)
+        let haveValue = String.truncatedNumber(MEth(cryptoReserved).value)
+        let haveString = cryptoReserved.value == 0 ? "" : "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized(haveValue)
         let haveAttributed = NSMutableAttributedString(string: haveString)
             .decorate(substring: haveValue, type: .boldAmount)
             .decorate(substring: currency, type: .currency)

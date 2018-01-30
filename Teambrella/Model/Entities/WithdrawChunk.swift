@@ -25,8 +25,8 @@ struct WithdrawChunk: Decodable {
     }
     
     let txs: [WithdrawTx]
-    let cryptoBalance: Decimal
-    let cryptoReserved: Decimal
+    let cryptoBalance: Ether
+    let cryptoReserved: Ether
     let defaultWithdrawAddress: EthereumAddress?
  
 }

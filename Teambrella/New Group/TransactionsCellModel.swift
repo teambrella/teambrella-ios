@@ -76,8 +76,8 @@ struct TransactionsCellModelBuilder {
         }
     }
 
-    private func amountText(amount: Double) -> String {
-        return String.formattedNumber(amount * 1000)
+    private func amountText(amount: Ether) -> String {
+        return String.formattedNumber(MEth(amount).value)
     }
 
     private func typeText(state: TransactionState?) -> String {

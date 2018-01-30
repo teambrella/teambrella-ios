@@ -17,7 +17,7 @@
 import Foundation
 
 class WithdrawModelBuilder {
-    func infoModel(amount: Double, reserved: Double, available: Double, currencyRate: Double) -> WalletInfoCellModel {
+    func infoModel(amount: Ether, reserved: Ether, available: Ether, currencyRate: Double) -> WalletInfoCellModel {
         return WalletInfoCellModel(amount: amount, reserved: reserved, available: available, currencyRate: currencyRate)
     }
 
@@ -33,7 +33,7 @@ class WithdrawModelBuilder {
         return WithdrawTransactionCellModel(topText: dateText,
                                             isNew: transaction.isNew,
                                             bottomText: transaction.toAddress,
-                                            amountText: String(format: "%.2f", transaction.amount * 1000))
+                                            amountText: String(format: "%.2f", MEth(transaction.amount).value))
     }
     
 }
@@ -64,9 +64,9 @@ struct WithdrawTransactionCellModel: WithdrawCellModel {
 }
 
 struct WalletInfoCellModel: WithdrawCellModel {
-    let amount: Double
-    let reserved: Double
-    let available: Double
+    let amount: Ether
+    let reserved: Ether
+    let available: Ether
     let currencyRate: Double
     
 }
@@ -108,24 +108,25 @@ struct WithdrawCellBuilder {
     
     private static func populateWalletInfo(cell: WalletInfoCell, model: WalletInfoCellModel) {
         cell.numberBar.isBottomLineVisible = false
-        cell.amount.text = String.formattedNumber(model.amount * 1000)
+        cell.amount.text = String.formattedNumber(MEth(model.amount).value)
         
-        cell.currencyLabel.text = service.session?.cryptoCurrency.coinCode
+        cell.currencyLabel.text = service.session?.cryptoCoin.code
         if let team = service.session?.currentTeam {
-            cell.auxillaryAmount.text = String.formattedNumber(model.amount * model.currencyRate) + " " + team.currency
+            let fiatAmount = model.amount.value * model.currencyRate
+            cell.auxillaryAmount.text = String.formattedNumber(fiatAmount) + " " + team.currency
         }
         
         cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
-        cell.numberBar.left?.amountLabel.text = model.reserved < 0.1
-            ? String.formattedNumber(model.reserved * 1000)
-            : String.truncatedNumber(model.reserved * 1000)
+        cell.numberBar.left?.amountLabel.text = model.reserved.value < 0.1
+            ? String.formattedNumber(MEth(model.reserved).value)
+            : String.truncatedNumber(MEth(model.reserved).value)
         cell.numberBar.left?.isBadgeVisible = false
-        cell.numberBar.left?.currencyLabel.text = service.session?.cryptoCurrency.coinCode
+        cell.numberBar.left?.currencyLabel.text = service.session?.cryptoCoin.code
         
         cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
-        cell.numberBar.right?.amountLabel.text = model.available < 0.1
-            ? String.formattedNumber(model.available * 1000)
-            : String.truncatedNumber(model.available * 1000)
-        cell.numberBar.right?.currencyLabel.text = service.session?.cryptoCurrency.coinCode
+        cell.numberBar.right?.amountLabel.text = model.available.value < 0.1
+            ? String.formattedNumber(MEth(model.available).value)
+            : String.truncatedNumber(MEth(model.available).value)
+        cell.numberBar.right?.currencyLabel.text = service.session?.cryptoCoin.code
     }
 }

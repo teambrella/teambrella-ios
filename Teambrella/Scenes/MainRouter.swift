@@ -162,12 +162,12 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentWalletTransactionsList(teamID: Int, balance: Double?, reserved: Double?) {
+    func presentWalletTransactionsList(teamID: Int, balance: Ether?, reserved: Ether?) {
         guard let vc = WalletTransactionsVC.instantiate() as? WalletTransactionsVC
             else { fatalError("Error instantiating") }
         
         vc.teamID = teamID
-        vc.balance = balance
+        vc.balance = balance.map { MEth($0) }
         vc.reserved = reserved
         push(vc: vc)
     }
@@ -187,7 +187,7 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
-    func presentWithdraw(balance: Double, reserved: Double, animated: Bool = true) {
+    func presentWithdraw(balance: MEth, reserved: Ether, animated: Bool = true) {
         guard let vc = WithdrawVC.instantiate() as? WithdrawVC else { fatalError("Error instantiating") }
         
         vc.setupCrypto(balance: balance, reserved: reserved)
@@ -264,8 +264,8 @@ final class MainRouter {
     }
     
     func showWithdrawInfo(in viewController: UIViewController,
-                          balance: Double,
-                          reserved: Double) {
+                          balance: Ether,
+                          reserved: Ether) {
         guard let vc = WithdrawInfoVC.instantiate() as? WithdrawInfoVC else { fatalError("Error instantiating") }
         
        // vc.delegate = delegate

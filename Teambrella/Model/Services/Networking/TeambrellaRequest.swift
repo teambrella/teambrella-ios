@@ -115,7 +115,7 @@ struct TeambrellaRequest {
         case .registerKey:
             success(.registerKey)
         case .coverageForDate:
-            success(.coverageForDate(reply["Coverage"].doubleValue, reply["LimitAmount"].doubleValue))
+            success(.coverageForDate(Coverage(reply["Coverage"].doubleValue), reply["LimitAmount"].doubleValue))
         case .setLanguageEn,
              .setLanguageEs:
             success(.setLanguage(reply.stringValue))

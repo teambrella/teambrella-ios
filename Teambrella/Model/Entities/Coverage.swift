@@ -1,10 +1,5 @@
 //
-//  WalletCellModels.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 23.06.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,24 +16,22 @@
 
 import Foundation
 
-protocol WalletCellModel {
-    
+struct Coverage: Decodable {
+    let value: Double
+    var percentage: Double { return value * 100 }
+    var integerPercentage: Int { return Int(percentage + 0.5) }
+
+    func ethers(from: Ether) -> Ether {
+        return Ether(from.value * value)
+    }
+
+    init(_ value: Double) {
+        self.value = value
+    }
+
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Double.self)
+        self.value = value
+    }
 }
 
-struct WalletHeaderCellModel: WalletCellModel {
-    let amount: Ether
-    let currencyRate: Double
-
-}
-
-struct WalletFundingCellModel: WalletCellModel {
-    let maxCoverageFunding: Ether
-    let uninterruptedCoverageFunding: Ether
-    
-}
-
-struct WalletButtonsCellModel: WalletCellModel {
-    let avatars: [String]
-    let avatarsPreview: [String]
-
-}

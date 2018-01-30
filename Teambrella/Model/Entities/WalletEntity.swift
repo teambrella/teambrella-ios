@@ -36,10 +36,10 @@ struct WalletEntity: Decodable {
     }
     
     var currencyRate: Double
-    var cryptoBalance: Double
-    var cryptoReserved: Double
-    var needCrypto: Double
-    var recommendedCrypto: Double
+    var cryptoBalance: Ether
+    var cryptoReserved: Ether
+    var needCrypto: Ether
+    var recommendedCrypto: Ether
     var fundAddress: String
     var defaultWithdrawAddress: String?
     var cosigners: [CosignerEntity]
@@ -48,10 +48,10 @@ struct WalletEntity: Decodable {
     
     init() {
         currencyRate = 0
-        cryptoBalance = 0
-        cryptoReserved = 0
-        needCrypto = 0
-        recommendedCrypto = 0
+        cryptoBalance = Ether.empty
+        cryptoReserved = Ether.empty
+        needCrypto = Ether.empty
+        recommendedCrypto = Ether.empty
         fundAddress = ""
         defaultWithdrawAddress = ""
         cosigners = []
