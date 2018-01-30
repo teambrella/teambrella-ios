@@ -42,6 +42,7 @@ class EthWallet {
         case transactionHasNoTeammate
         case invalidCosigner(txID: String)
         case argumentsMismatch(args: [Any])
+        case noFromMultisig
     }
     
     let processor: EthereumProcessor
@@ -555,6 +556,7 @@ class EthWallet {
 
          return publish(cryptoTx);
          */
+        log("Publishing tx: \(tx.id.uuidString)", type: .cryptoDetails)
         let inputs = tx.inputs
         guard inputs.count == 1 else {
             let error = EthWalletError.unexpectedTxInputsCount(count: inputs.count, txID: tx.id.uuidString)
@@ -584,9 +586,6 @@ class EthWallet {
                 let payToValues = self.toValues(destinations: tx.outputs)
 
                 var sig: [Data] = []
-                sig.append(Data())
-                sig.append(Data())
-                sig.append(Data())
 
                 var pos: [Int] = []
                 var txSignatures: [Int: TxSignature] = [:]
@@ -597,38 +596,38 @@ class EthWallet {
                         txSignatures[signature.teammateID] = signature
                     }
                 }
-                //  Map<Long, TXSignature> txSignatures = payFrom.signatures;
-               
-//                var index: Int = 0
-                var j: Int = 0
 
-                let cosigners = Cosigner.cosigners(for: teammate)
+                guard let cosigners = tx.fromMultisig?.cosigners else {
+                    failure(EthWalletError.noFromMultisig)
+                    return
+                }
+
                 for (idx, cosigner) in cosigners.enumerated() {
                     if let s = txSignatures[cosigner.teammate.id] {
-                        pos[j] = idx
-                        sig[j] = s.signature
-                        j += 1
-                        if j >= 3 {
+                        pos.append(idx)
+                        sig.append(s.signature)
+                        if sig.count >= 3 {
                             break
                         }
                     }
                 }
 
-                guard (j < txSignatures.count && j < 3) == false else {
+                log("sigs: \(sig.count), positions: \(pos)", type: .cryptoDetails)
+                guard (sig.count < 3 && sig.count < txSignatures.count) == false else {
                     print("""
                         tx was skipped. One or more signatures are not from a valid cosigner. \
-                        Total signatures: \(txSignatures.count)  Valid signatures: \(j) \
+                        Total signatures: \(txSignatures.count)  Valid signatures: \(sig.count) \
                         positions: \(pos) Tx.id: \(tx.id)
                         """)
                     failure(EthWalletError.invalidCosigner(txID: tx.id.uuidString))
                     return
                 }
-                guard pos.count >= 3, sig.count >= 3 else {
-                    failure(EthWalletError.argumentsMismatch(args: [pos, sig]))
-                    return
-                }
 
-                let args: [Any] = [opNum, payToAddresses, payToValues, pos[0], pos[1], pos[2], sig[0], sig[1], sig[2]]
+                var args: [Any] = [opNum, payToAddresses, payToValues]
+                args += pos as [Any]
+                args += sig as [Any]
+
+                log("args: \(args)", type: .cryptoDetails)
                 do {
                     let cryptoTx = try self.processor.messageTx(nonce: myNonce,
                                                                 gasLimit: gasLimit,

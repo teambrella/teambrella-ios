@@ -51,6 +51,7 @@ case txInfos = "TxInfos"
         let id: String
         let resolutionTime: String
         let resolution: Int
+        let hash: String?
 
         init?(tx: Tx, formatter: BlockchainDateFormatter) {
             guard let clientResolution = tx.clientResolutionTime else { return nil }
@@ -58,12 +59,14 @@ case txInfos = "TxInfos"
             id = tx.id.uuidString
             resolutionTime = formatter.string(from: clientResolution)
             resolution = tx.resolution.rawValue
+            hash = tx.cryptoTx
         }
 
         enum CodingKeys: String, CodingKey {
             case id = "Id"
             case resolutionTime = "ResolutionTime"
             case resolution = "Resolution"
+            case hash = "CryptoTx"
         }
     }
 

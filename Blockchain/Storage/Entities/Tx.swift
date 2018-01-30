@@ -46,6 +46,15 @@ class Tx: NSManagedObject {
             isServerUpdateNeededValue = newValue
         }
     }
+    /// transaction hash
+    var cryptoTx: String? {
+        get {
+            return cryptoTxValue
+        }
+        set {
+            cryptoTxValue = newValue
+        }
+    }
     var clientResolutionTime: Date? { return clientResolutionTimeValue as Date? }
     var resolutionTime: Date? { return resolutionTimeValue as Date? }
     var initiatedTime: Date? { return initiatedTimeValue as Date? }

@@ -481,6 +481,7 @@ class TeambrellaService: NSObject {
                      .moveToNextWallet:
                     wallet.publish(tx: tx, completion: { hash in
                         log("Teambrella service published tx hash: \(hash)", type: .crypto)
+                        self.contentProvider.transactionSetToPublished(tx: tx, hash: hash)
                     }, failure: { error in
                         log("Teambrella service failed to publish tx \(tx.id.uuidString)", type: [.error, .crypto] )
                         log("Error: \(String(describing: error))", type: [.error, .crypto])

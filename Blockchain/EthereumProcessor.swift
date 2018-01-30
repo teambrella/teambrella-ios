@@ -174,8 +174,8 @@ struct EthereumProcessor {
             "gasPrice": "0x\(gasPrice.hexString)",
             "gas": "0x\(gasLimit.hexString)",
             "to": "\(contractAddress)",
-            "value": "0x\(methodID)\(args)",
-            "input": "0x",
+            "value": "0x0",
+            "input": "0x\(methodID)\(args)",
             "v": "0x29",
             "r": "0x29",
             "s": "0x29"]

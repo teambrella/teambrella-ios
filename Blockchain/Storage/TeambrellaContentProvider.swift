@@ -198,6 +198,11 @@ class TeambrellaContentProvider {
     func canUnblock(tx: Tx) -> Bool {
         return tx.resolution == .blocked && isInChangeableState(tx: tx)
     }
+
+    func transactionSetToPublished(tx: Tx, hash: String) {
+        tx.cryptoTx = hash
+        transactionsChangeResolution(txs: [tx], to: .published)
+    }
     
     func transactionsChangeResolution(txs: [Tx], to resolution: TransactionClientResolution, when: Date = Date()) {
         for tx in txs {

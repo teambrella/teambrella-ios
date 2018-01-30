@@ -91,6 +91,7 @@
         <attribute name="amountValue" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="claimIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="clientResolutionTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="cryptoTxValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="feeValue" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="idValue" attributeType="String" syncable="YES"/>
         <attribute name="initiatedTimeValue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -194,7 +195,7 @@
         <element name="PayTo" positionX="115" positionY="414" width="128" height="135"/>
         <element name="Team" positionX="376" positionY="387" width="128" height="195"/>
         <element name="Teammate" positionX="54" positionY="90" width="128" height="225"/>
-        <element name="Tx" positionX="-353" positionY="-30" width="128" height="345"/>
+        <element name="Tx" positionX="-353" positionY="-30" width="128" height="360"/>
         <element name="TxInput" positionX="-578" positionY="387" width="128" height="150"/>
         <element name="TxOutput" positionX="-38" positionY="414" width="128" height="135"/>
         <element name="TxSignature" positionX="-333" positionY="513" width="128" height="150"/>
