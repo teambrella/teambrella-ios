@@ -44,7 +44,7 @@ struct WalletTransactionsModel: Decodable {
         let kind: TransactionKind
         let userID: String
         let name: String
-        let amount: Double
+        let amount: Ether
         let avatar: String
     }
 

@@ -34,7 +34,7 @@ struct WithdrawTx: Decodable {
     let withdrawalID: Int
     let withdrawalDate: Date?
     let isNew: Bool
-    let amount: Double
+    let amount: Ether
     let toAddress: String
     
     let serverTxState: TransactionState
@@ -54,7 +54,7 @@ struct WithdrawTx: Decodable {
         
         self.withdrawalDate = date
         self.isNew = try container.decode(Bool.self, forKey: .isNew)
-        self.amount = try container.decode(Double.self, forKey: .amount)
+        self.amount = try container.decode(Ether.self, forKey: .amount)
         self.toAddress = try container.decode(String.self, forKey: .toAddress)
     }
     

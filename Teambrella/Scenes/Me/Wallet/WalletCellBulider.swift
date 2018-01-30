@@ -76,10 +76,10 @@ struct WalletCellBuilder {
             : "Me.WalletVC.fundingCell.title".localized
         if let team = service.session?.currentTeam {
             cell.lowerCurrencyLabel.text =
-                String.formattedNumber(model.uninterruptedCoverageFunding * currencyRate) + " " + team.currency
+                String.formattedNumber(model.uninterruptedCoverageFunding.value * currencyRate) + " " + team.currency
         }
         cell.lowerNumberView.titleLabel.text = "Me.WalletVC.lowerBrick.title".localized
-        cell.lowerNumberView.amountLabel.text = String.formattedNumber(model.uninterruptedCoverageFunding * 1000)
+        cell.lowerNumberView.amountLabel.text = String.formattedNumber(MEth(model.uninterruptedCoverageFunding).value)
         cell.lowerNumberView.isBadgeVisible = false
         cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)
     }

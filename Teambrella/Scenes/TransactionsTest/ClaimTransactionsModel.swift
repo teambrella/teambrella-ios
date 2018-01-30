@@ -39,7 +39,7 @@ struct ClaimTransactionsModel: Decodable {
             case amountFiat = "AmountFiat"
         }
 
-        let amount: Double
+        let amount: Ether
         let userID: String
         let name: String
         let avatar: String

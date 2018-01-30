@@ -32,8 +32,8 @@ struct WalletHeaderCellModel: WalletCellModel {
 }
 
 struct WalletFundingCellModel: WalletCellModel {
-    let maxCoverageFunding: Double
-    let uninterruptedCoverageFunding: Double
+    let maxCoverageFunding: Ether
+    let uninterruptedCoverageFunding: Ether
     
 }
 

@@ -41,6 +41,13 @@ struct Ether: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStr
         self.value = value
     }
 
+    init?(string: String?) {
+        guard let string = string else { return nil }
+        guard let double = Double(string) else { return nil }
+
+        self.value = double
+    }
+
     init(_ mEth: MEth) {
         self.value = mEth.value / 1000
     }
@@ -97,6 +104,13 @@ struct MEth: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStri
         self.value = value
     }
 
+    init?(string: String?) {
+        guard let string = string else { return nil }
+        guard let double = Double(string) else { return nil }
+
+        self.value = double
+    }
+
     init(_ ether: Ether) {
         self.value = ether.value * 1000
     }
@@ -124,6 +138,13 @@ struct Gwei: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStri
 
     init(_ value: Double) {
         self.value = value
+    }
+
+    init?(string: String?) {
+        guard let string = string else { return nil }
+        guard let double = Double(string) else { return nil }
+
+        self.value = double
     }
 
     init(_ mEth: MEth) {

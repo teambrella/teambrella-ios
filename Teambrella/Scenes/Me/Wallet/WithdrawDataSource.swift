@@ -130,11 +130,11 @@ final class WithdrawDataSource {
     }
     
     func withdraw() {
-        guard let amount = Double(detailsModel.amountValue),
+        guard let amount = MEth(string: detailsModel.amountValue),
             let address = EthereumAddress(string: detailsModel.toValue) else { return }
         
         isLoading = true
-        service.dao.withdraw(teamID: teamID, amount: amount / 1000, address: address).observe { [weak self] result in
+        service.dao.withdraw(teamID: teamID, amount: Ether(amount).value, address: address).observe { [weak self] result in
             switch result {
             case let .value(chunk):
                 self?.lastChunk = chunk

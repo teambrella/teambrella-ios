@@ -33,7 +33,7 @@ class WithdrawModelBuilder {
         return WithdrawTransactionCellModel(topText: dateText,
                                             isNew: transaction.isNew,
                                             bottomText: transaction.toAddress,
-                                            amountText: String(format: "%.2f", transaction.amount * 1000))
+                                            amountText: String(format: "%.2f", MEth(transaction.amount).value))
     }
     
 }
