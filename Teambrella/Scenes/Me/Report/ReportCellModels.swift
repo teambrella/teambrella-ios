@@ -58,8 +58,8 @@ struct ExpensesReportCellModel: ReportCellModel {
     let amountTitle = "Me.Report.ExpensesCell.amountTitle".localized
     var expenses: Double?
     var expensesString: String { return expenses.map { String.truncatedNumber($0) } ?? "" }
-    var deductible: Double
-    var deductibleString: String { return String.truncatedNumber(deductible) }
+    var deductible: Ether
+    var deductibleString: String { return String.truncatedNumber(MEth(deductible).value) }
     var coverage: Double
     var coverageString: String { return String.truncatedNumber(coverage * 100) }
     var isValid: Bool {

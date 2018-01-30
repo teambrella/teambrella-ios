@@ -16,11 +16,15 @@
 
 import Foundation
 
-protocol CryptoCurrency {
+protocol CryptoCurrency: Comparable {
     var value: Double { get }
     var name: String { get }
     var code: String { get }
     var symbol: String { get }
+
+    static var empty: Self { get }
+
+    init(_ value: Double)
 }
 
 struct Ether: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStringConvertible {
@@ -50,6 +54,33 @@ struct Ether: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStr
         self.value = value
     }
 
+}
+
+extension CryptoCurrency {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.value == rhs.value
+    }
+
+    static func < (lhs: Self, rhs: Self) -> Bool {
+        return lhs.value < rhs.value
+    }
+
+    static var empty: Self { return Self(0) }
+}
+
+extension CryptoCurrency {
+   prefix static func - (lhs: Self) -> Self {
+        return Self(-lhs.value)
+    }
+
+    static func + (lhs: Self, rhs: Self) -> Self {
+        return Self(lhs.value + rhs.value)
+    }
+
+    static func -(lhs: Self, rhs: Self) -> Self {
+        return Self(lhs.value - rhs.value)
+    }
+    
 }
 
 struct MEth: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStringConvertible {

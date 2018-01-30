@@ -24,7 +24,7 @@ import Kingfisher
 
 struct WalletCellBuilder {
     static var currencyRate: Double = 0.0
-    static var balance: Double = 0.0
+    static var balance: MEth = MEth.empty
     
     static func registerCells(in collectionView: UICollectionView) {
         collectionView.register(WalletHeaderCell.nib, forCellWithReuseIdentifier: WalletHeaderCell.cellID)
@@ -59,19 +59,19 @@ struct WalletCellBuilder {
     }
     
     private static func populateHeader(cell: WalletHeaderCell, model: WalletHeaderCellModel) {
-        cell.amount.text = String.formattedNumber(model.amount * 1000)
-        balance = model.amount * 1000
+        cell.amount.text = String.formattedNumber(MEth(model.amount).value)
+        balance = MEth(model.amount)
         
         cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
         cell.currencyLabel.text = service.session?.cryptoCoin.code
         currencyRate = model.currencyRate
         if let team = service.session?.currentTeam {
-            cell.auxillaryAmount.text = String.formattedNumber(model.amount * currencyRate) + " " + team.currency
+            cell.auxillaryAmount.text = String.formattedNumber(model.amount.value * currencyRate) + " " + team.currency
         }
     }
     
     private static func populateFunding(cell: WalletFundingCell, model: WalletFundingCellModel) {
-        cell.headerLabel.text = balance > 0
+        cell.headerLabel.text = balance.value > 0
             ? "Me.WalletVC.fundingCell.additionalTitle".localized
             : "Me.WalletVC.fundingCell.title".localized
         if let team = service.session?.currentTeam {

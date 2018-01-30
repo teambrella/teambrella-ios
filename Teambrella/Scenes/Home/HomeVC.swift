@@ -191,7 +191,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         service.session?.currentUserAvatar = model.avatar
         
         leftBrickAmountLabel.text = String(format: "%.0f", model.coverage * 100)
-        rightBrickAmountLabel.text = String.formattedNumber(model.balance * 1000)
+        rightBrickAmountLabel.text = String.formattedNumber(MEth(model.balance).value)
         rightBrickCurrencyLabel.text = service.session?.cryptoCoin.code
         
         greetingsTitleLabel.text = "Home.salutation".localized(dataSource.name)

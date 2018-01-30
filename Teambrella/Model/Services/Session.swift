@@ -33,8 +33,8 @@ struct Session {
     var currentUserName: String?
     var currentUserAvatar: String = ""
     
-    var cryptoCurrency: CryptoCurrency = Ether(0)
-    var cryptoCoin: CryptoCurrency = MEth(0)
+    var cryptoCurrency: Ether = Ether.empty
+    var cryptoCoin: MEth = MEth(0)
 
     //var coinName: String { return cryptoCurrency.child?.code ?? "" }
     

@@ -27,8 +27,8 @@ class WalletTransactionsVC: UIViewController, Routable {
     
     var teamID: Int?
 
-    var balance: Double?
-    var reserved: Double?
+    var balance: MEth?
+    var reserved: Ether?
 
     var dataSource: WalletTransactionsDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0

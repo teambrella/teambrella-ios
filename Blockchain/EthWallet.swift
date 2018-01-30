@@ -618,7 +618,7 @@ class EthWallet {
                     print("""
                         tx was skipped. One or more signatures are not from a valid cosigner. \
                         Total signatures: \(txSignatures.count)  Valid signatures: \(j) \
-                        pos[0]: \(pos[0]) pos[1]: \(pos[1]) pos[2]: \(pos[2]) Tx.id: \(tx.id)
+                        positions: \(pos) Tx.id: \(tx.id)
                         """)
                     failure(EthWalletError.invalidCosigner(txID: tx.id.uuidString))
                     return

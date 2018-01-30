@@ -41,8 +41,8 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     // MARK: Lifecycle
     
-    func setupCrypto(balance: Double, reserved: Double) {
-        dataSource.cryptoBalance = balance
+    func setupCrypto(balance: MEth, reserved: Ether) {
+        dataSource.cryptoBalance = Ether(balance)
         dataSource.cryptoReserved = reserved
     }
     
@@ -251,7 +251,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     func validateAmount(string: String) -> Bool {
         guard let amount = Double(string) else { return false }
         
-        return amount <= dataSource.maxMETHAvailable && amount != 0
+        return MEth(amount) <= MEth(dataSource.maxEthAvailable) && amount != 0
     }
 }
 
