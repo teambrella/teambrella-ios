@@ -25,6 +25,7 @@ import XLPagerTabStrip
 
 class CoverageVC: UIViewController, Routable {
     
+    @IBOutlet var upperView: UIView!
     @IBOutlet var radarView: RadarView!
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var coverage: UILabel!
@@ -91,7 +92,10 @@ class CoverageVC: UIViewController, Routable {
         slider.isExclusiveTouch = true
     
         titleLabel.isUserInteractionEnabled = true
-       titleLabel.addGestureRecognizer(secretRecognizer)
+        titleLabel.addGestureRecognizer(secretRecognizer)
+        ViewDecorator.shadow(for: upperView, opacity: 0.1, radius: 5)
+        subcontainer.layer.cornerRadius = 4
+        ViewDecorator.shadow(for: subcontainer, opacity: 0.1, radius: 5)
     }
     
     override func viewWillAppear(_ animated: Bool) {

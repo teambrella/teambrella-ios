@@ -1032,10 +1032,6 @@
 		94EA56531F2101D4003B46CC /* AmountWithCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA56521F2101D4003B46CC /* AmountWithCurrency.swift */; };
 		94F0CF551FCF1952007BE39E /* WithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF541FCF1952007BE39E /* WithdrawVC.swift */; };
 		94F0CF561FCF1952007BE39E /* WithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF541FCF1952007BE39E /* WithdrawVC.swift */; };
-		94F0CF591FD1ACCF007BE39E /* WithdrawHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF571FD1ACCF007BE39E /* WithdrawHeader.swift */; };
-		94F0CF5A1FD1ACCF007BE39E /* WithdrawHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF571FD1ACCF007BE39E /* WithdrawHeader.swift */; };
-		94F0CF5B1FD1ACCF007BE39E /* WithdrawHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F0CF581FD1ACCF007BE39E /* WithdrawHeader.xib */; };
-		94F0CF5C1FD1ACCF007BE39E /* WithdrawHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F0CF581FD1ACCF007BE39E /* WithdrawHeader.xib */; };
 		94F0CF5F1FD1B66E007BE39E /* WithdrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF5D1FD1B66E007BE39E /* WithdrawCell.swift */; };
 		94F0CF601FD1B66E007BE39E /* WithdrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0CF5D1FD1B66E007BE39E /* WithdrawCell.swift */; };
 		94F0CF611FD1B66E007BE39E /* WithdrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */; };
@@ -1654,8 +1650,6 @@
 		94EA564F1F20FE04003B46CC /* AmountWithCurrency.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AmountWithCurrency.xib; path = View/ReusableViews/AmountWithCurrency.xib; sourceTree = "<group>"; };
 		94EA56521F2101D4003B46CC /* AmountWithCurrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmountWithCurrency.swift; path = View/ReusableViews/AmountWithCurrency.swift; sourceTree = "<group>"; };
 		94F0CF541FCF1952007BE39E /* WithdrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawVC.swift; path = Scenes/Me/Wallet/WithdrawVC.swift; sourceTree = "<group>"; };
-		94F0CF571FD1ACCF007BE39E /* WithdrawHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawHeader.swift; path = View/ReusableViews/WithdrawHeader.swift; sourceTree = "<group>"; };
-		94F0CF581FD1ACCF007BE39E /* WithdrawHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WithdrawHeader.xib; path = View/ReusableViews/WithdrawHeader.xib; sourceTree = "<group>"; };
 		94F0CF5D1FD1B66E007BE39E /* WithdrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawCell.swift; path = View/Cells/WithdrawCell.swift; sourceTree = "<group>"; };
 		94F0CF5E1FD1B66E007BE39E /* WithdrawCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WithdrawCell.xib; path = View/Cells/WithdrawCell.xib; sourceTree = "<group>"; };
 		94F0CF631FD1BD50007BE39E /* WithdrawDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawDetailsCell.swift; path = View/Cells/WithdrawDetailsCell.swift; sourceTree = "<group>"; };
@@ -2198,8 +2192,6 @@
 				6D59F00D1F56F47B00C422EB /* ChatFooter.xib */,
 				6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */,
 				6DDC65531FB9F02400DE4E36 /* TeammateSummaryView.xib */,
-				94F0CF571FD1ACCF007BE39E /* WithdrawHeader.swift */,
-				94F0CF581FD1ACCF007BE39E /* WithdrawHeader.xib */,
 			);
 			name = ReusableViews;
 			sourceTree = "<group>";
@@ -3212,7 +3204,6 @@
 				6D4E5DC81F7AB6870020DEE2 /* TeamCell.xib in Resources */,
 				6D4E5DC91F7AB6870020DEE2 /* HeaderWithButton.xib in Resources */,
 				94282B0D1FD9B1EE0006B5F6 /* LabeledIcon.xib in Resources */,
-				94F0CF5C1FD1ACCF007BE39E /* WithdrawHeader.xib in Resources */,
 				6D4E5DCA1F7AB6870020DEE2 /* Main.strings in Resources */,
 				6D4E5DCB1F7AB6870020DEE2 /* JoinTeamMessageCell.xib in Resources */,
 				6D4E5DCC1F7AB6870020DEE2 /* Proxy.strings in Resources */,
@@ -3317,7 +3308,6 @@
 				94C2D39B1F191FA600D203C2 /* TeamCell.xib in Resources */,
 				6D69DA381EFD6CED00DED5CE /* HeaderWithButton.xib in Resources */,
 				94282B0C1FD9B1EE0006B5F6 /* LabeledIcon.xib in Resources */,
-				94F0CF5B1FD1ACCF007BE39E /* WithdrawHeader.xib in Resources */,
 				6DF2E8CB1EF194E400C8D60B /* Main.strings in Resources */,
 				94E325CA1F07F77A00B2D8C8 /* JoinTeamMessageCell.xib in Resources */,
 				6D0D2AEC1EFBD6820095284C /* Proxy.strings in Resources */,
@@ -3870,7 +3860,6 @@
 				6D4E5CC81F7AB6870020DEE2 /* ClaimTransactionsDataSource.swift in Sources */,
 				6D4E5CC91F7AB6870020DEE2 /* WalletVC.swift in Sources */,
 				6D4E5CCA1F7AB6870020DEE2 /* MembersVC.swift in Sources */,
-				94F0CF5A1FD1ACCF007BE39E /* WithdrawHeader.swift in Sources */,
 				6D0FD84E201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */,
 				6D4E5CCB1F7AB6870020DEE2 /* Formatter.swift in Sources */,
 				6D4E5CCC1F7AB6870020DEE2 /* SlashView.swift in Sources */,
@@ -4293,7 +4282,6 @@
 				6D0D2AE01EFBD4260095284C /* MyProxiesVC.swift in Sources */,
 				94266A321F5579800089543F /* ClaimTransactionsDataSource.swift in Sources */,
 				6D69DA171EFC464000DED5CE /* WalletVC.swift in Sources */,
-				94F0CF591FD1ACCF007BE39E /* WithdrawHeader.swift in Sources */,
 				6D0FD84D201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */,
 				6D9CC63A1ED72675007F936E /* MembersVC.swift in Sources */,
 				6DB8121D1EE6F78700B202CE /* Formatter.swift in Sources */,

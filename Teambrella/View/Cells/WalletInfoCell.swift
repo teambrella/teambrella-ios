@@ -28,6 +28,7 @@ class WalletInfoCell: UICollectionViewCell, XIBInitableCell {
         ViewDecorator.roundedEdges(for: self)
         numberBar.left?.alignmentType = .leading
         numberBar.right?.alignmentType = .leading
+        numberBar.areVerticalLinesVisible = false
     }
     
 }

@@ -22,13 +22,13 @@ class OthersVotedVC: UIViewController, Routable {
     var teamID: Int?
     var teammateID: Int?
     var claimID: Int?
-
+    
     @IBOutlet var collectionView: UICollectionView!
     var dataSource: OthersVotedDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         addGradientNavBar()
         title = "Info.OthersVoted.title".localized
         setupCollectionView()
@@ -49,5 +49,5 @@ class OthersVotedVC: UIViewController, Routable {
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: InfoHeader.cellID)
     }
-
+    
 }

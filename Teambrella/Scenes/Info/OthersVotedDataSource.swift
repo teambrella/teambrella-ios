@@ -89,8 +89,11 @@ extension OthersVotedDataSource: UICollectionViewDelegate {
         let model = OthersVotedCellModel(voter: voter)
         cell.update(with: model)
         let isLast = indexPath.section == 0 || indexPath.row == count - 1
+        
         cell.separatorView.isHidden = isLast
-        ViewDecorator.decorateCollectionView(cell: cell, isFirst: false, isLast: isLast)
+        ViewDecorator.decorateCollectionView(cell: cell,
+                                             isFirst: indexPath.row == 0,
+                                             isLast: isLast)
     }
     
     func collectionView(_ collectionView: UICollectionView,

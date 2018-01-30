@@ -52,8 +52,8 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
         collectionView.register(WalletInfoCell.nib, forCellWithReuseIdentifier: WalletInfoCell.cellID)
         collectionView.register(WithdrawDetailsCell.nib, forCellWithReuseIdentifier: WithdrawDetailsCell.cellID)
         collectionView.register(WithdrawCell.nib, forCellWithReuseIdentifier: WithdrawCell.cellID)
-        collectionView.register(WithdrawHeader.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                withReuseIdentifier: WithdrawHeader.cellID)
+        collectionView.register(InfoHeader.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: InfoHeader.cellID)
         
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
@@ -282,7 +282,7 @@ extension WithdrawVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                   withReuseIdentifier: WithdrawHeader.cellID,
+                                                                   withReuseIdentifier: InfoHeader.cellID,
                                                                    for: indexPath)
         return view
     }
@@ -328,7 +328,7 @@ extension WithdrawVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        if let view = view as? WithdrawHeader {
+        if let view = view as? InfoHeader {
             view.leadingLabel.text = dataSource.headerName(section: indexPath.section)
             view.trailingLabel.text = dataSource.currencyName(section: indexPath.section)
         }

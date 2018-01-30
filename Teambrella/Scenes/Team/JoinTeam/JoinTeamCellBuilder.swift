@@ -97,9 +97,9 @@ struct JoinTeamCellBuilder {
         cell.year.headerLabel.text = "Team.JoinTeamVC.ItemCell.year".localized
         cell.year.textField.text = "2016"
         cell.currency.headerLabel.text = "Team.JoinTeamVC.ItemCell.currency".localized
-        cell.currency.textField.text = "usd".uppercased()
+        cell.currency.textField.text = "...".uppercased()
         cell.estimatedPrice.headerLabel.text = "Team.JoinTeamVC.ItemCell.price".localized
-        cell.estimatedPrice.textField.text = "$17000"
+        cell.estimatedPrice.textField.text = "..."
         cell.objectPhotosLabel.text = "Team.JoinTeamVC.ItemCell.objectPhotos".localized
     }
     static func populate(cell: JoinTeamMessageCell, with model: JoinTeamCellModel) {

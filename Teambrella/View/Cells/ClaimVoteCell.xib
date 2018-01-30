@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -36,14 +37,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0E-WH-DMy" customClass="PieChartView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="143" y="16.5" width="20" height="20"/>
+                                <rect key="frame" x="144" y="16.5" width="20" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="y0E-WH-DMy" secondAttribute="height" multiplier="1:1" id="6OL-v2-AxR"/>
                                     <constraint firstAttribute="width" constant="20" id="j5L-8n-YxB"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-2g-vOp">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-2g-vOp">
                                 <rect key="frame" x="287" y="16" width="40" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="xkZ-mK-QQt"/>
@@ -51,7 +52,7 @@
                                 <state key="normal" image="info"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2r-3b-RDy" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="93" y="16" width="42" height="20.5"/>
+                                <rect key="frame" x="94" y="16" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -77,7 +78,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17,6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdR-JP-qTp">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17,6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdR-JP-qTp">
                                                 <rect key="frame" x="12" y="25.5" width="72.5" height="44"/>
                                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                                 <nil key="textColor"/>
@@ -102,7 +103,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TnD-mv-QdM" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="97" width="72" height="20"/>
+                                                <rect key="frame" x="12" y="97" width="72" height="20"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="ODt-fB-e8X"/>
@@ -115,6 +116,7 @@
                                             <constraint firstItem="zdI-Ys-bOX" firstAttribute="leading" secondItem="lbW-W9-c1X" secondAttribute="leading" id="16c-qW-ebS"/>
                                             <constraint firstItem="lbW-W9-c1X" firstAttribute="top" secondItem="Qqi-A2-dcL" secondAttribute="topMargin" constant="8" id="566-z2-Uj1"/>
                                             <constraint firstItem="zdI-Ys-bOX" firstAttribute="top" secondItem="UdR-JP-qTp" secondAttribute="bottom" id="B6G-Re-zL2"/>
+                                            <constraint firstItem="TnD-mv-QdM" firstAttribute="leading" secondItem="zdI-Ys-bOX" secondAttribute="leading" id="I1R-BX-YJU"/>
                                             <constraint firstItem="MnD-tB-IfF" firstAttribute="leading" secondItem="UdR-JP-qTp" secondAttribute="trailing" id="LKh-3R-yaS"/>
                                             <constraint firstItem="MnD-tB-IfF" firstAttribute="centerY" secondItem="UdR-JP-qTp" secondAttribute="centerY" id="OL2-fw-ROH"/>
                                             <constraint firstItem="lbW-W9-c1X" firstAttribute="leading" secondItem="Qqi-A2-dcL" secondAttribute="leadingMargin" constant="4" id="RFl-2B-Z2b"/>
@@ -122,7 +124,6 @@
                                             <constraint firstItem="NQq-XY-4kI" firstAttribute="leading" secondItem="zdI-Ys-bOX" secondAttribute="trailing" constant="2" id="bSx-82-c5d"/>
                                             <constraint firstItem="UdR-JP-qTp" firstAttribute="leading" secondItem="lbW-W9-c1X" secondAttribute="leading" id="eBJ-0H-ei5"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="TnD-mv-QdM" secondAttribute="bottom" id="eRD-gW-Y9h"/>
-                                            <constraint firstItem="TnD-mv-QdM" firstAttribute="leading" secondItem="Qqi-A2-dcL" secondAttribute="leadingMargin" id="wdK-MN-RE9"/>
                                             <constraint firstItem="UdR-JP-qTp" firstAttribute="top" secondItem="lbW-W9-c1X" secondAttribute="bottom" constant="0.5" id="zWM-tj-qD1"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="5" left="8" bottom="8" right="8"/>
@@ -154,14 +155,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEt-FD-2iD" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="105" width="26.5" height="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEt-FD-2iD" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="105" width="9.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uEe-ff-t9r" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="42.5" y="101.5" width="20" height="20"/>
+                                                <rect key="frame" x="25.5" y="101.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="7GA-zY-z7z"/>
                                                     <constraint firstAttribute="width" secondItem="uEe-ff-t9r" secondAttribute="height" multiplier="1:1" id="eGh-K2-QXe"/>
@@ -245,14 +246,14 @@
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="centerY" secondItem="KVp-Aa-10c" secondAttribute="centerY" id="RtA-AP-bVR"/>
                             <constraint firstItem="0Iw-2g-vOp" firstAttribute="top" secondItem="NVa-WO-KTz" secondAttribute="topMargin" id="W17-G1-Olu"/>
                             <constraint firstItem="HKR-rc-C51" firstAttribute="centerY" secondItem="Qqi-A2-dcL" secondAttribute="centerY" id="WHf-pC-FEm"/>
-                            <constraint firstItem="F2r-3b-RDy" firstAttribute="bottom" secondItem="KVp-Aa-10c" secondAttribute="bottom" id="XXG-y7-9NZ"/>
-                            <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" secondItem="KVp-Aa-10c" secondAttribute="trailing" constant="15" id="YOe-GY-gdc"/>
+                            <constraint firstItem="F2r-3b-RDy" firstAttribute="firstBaseline" secondItem="KVp-Aa-10c" secondAttribute="firstBaseline" id="XXG-y7-9NZ"/>
+                            <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" secondItem="KVp-Aa-10c" secondAttribute="trailing" constant="16" id="YOe-GY-gdc"/>
                             <constraint firstItem="94U-NU-l4o" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leading" id="eRU-4B-Kbw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Iw-2g-vOp" secondAttribute="trailing" id="f0m-P5-J2e"/>
+                            <constraint firstItem="KVp-Aa-10c" firstAttribute="leading" secondItem="HKR-rc-C51" secondAttribute="leading" id="hOk-xj-7xD"/>
                             <constraint firstItem="86k-pi-DIK" firstAttribute="top" secondItem="KVp-Aa-10c" secondAttribute="bottom" constant="16" id="kob-hj-XoC"/>
                             <constraint firstItem="HKR-rc-C51" firstAttribute="width" secondItem="Qqi-A2-dcL" secondAttribute="width" id="kzD-Pk-Q6C"/>
                             <constraint firstAttribute="trailing" secondItem="94U-NU-l4o" secondAttribute="trailing" id="mc3-uj-Yac"/>
-                            <constraint firstItem="KVp-Aa-10c" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leadingMargin" id="mgl-28-cBY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="86k-pi-DIK" secondAttribute="trailing" id="olz-9N-wLe"/>
                             <constraint firstItem="HKR-rc-C51" firstAttribute="height" secondItem="Qqi-A2-dcL" secondAttribute="height" id="phs-BC-Gxj"/>
                             <constraint firstItem="Gj0-Hf-d4k" firstAttribute="height" secondItem="86k-pi-DIK" secondAttribute="height" id="r0D-zf-RJD"/>

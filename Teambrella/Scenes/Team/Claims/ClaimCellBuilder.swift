@@ -71,6 +71,7 @@ struct ClaimCellBuilder {
         cell.unreadCountLabel.isHidden = claim.unreadCount <= 0
         let dateProcessor = DateProcessor()
         cell.timeLabel.text = dateProcessor.stringFromNow(minutes: claim.minutesinceLastPost)
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
     
     static func populateClaimVote(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
@@ -126,11 +127,13 @@ struct ClaimCellBuilder {
         
         cell.othersVotedButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.othersVotedButton.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted), for: .touchUpInside)
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
     
     static func populateClaimDetails(cell: ClaimDetailsCell, with claim: ClaimEntityLarge) {
         cell.titleLabel.text = "Team.ClaimCell.claimDetails".localized
         
+<<<<<<< HEAD
         cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
         let currency = "$"
         let claimAmount = String(format: "%.2f", claim.claimAmount.value)
@@ -144,20 +147,39 @@ struct ClaimCellBuilder {
         let deductible = String(format: "%.2f", claim.deductible)
         cell.deductibleValueLabel.text = currency + deductible
         
+=======
+>>>>>>> 39f629e96a42e450a544e0d838cbd0dad3df1353
         cell.coverageLabel.text = "Team.ClaimCell.coverage".localized
         let coverage = "\(Int((claim.coverage * 100).rounded()))"
         cell.coverageValueLabel.text = coverage + "%"
         
         cell.incidentDateLabel.text = "Team.ClaimCell.incidentDate".localized
         claim.incidentDate.map { cell.incidentDateValueLabel.text = DateFormatter.teambrellaShort.string(from: $0) }
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
+
+        cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
+        let claimAmount = String(format: "%.2f", claim.claimAmount)
+        cell.deductibleLabel.text = "Team.ClaimCell.deductible".localized
+        let deductible = String(format: "%.2f", claim.deductible)
+        cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
+        let estimatedExpenses = String(format: "%.2f", claim.estimatedExpences)
+        guard let currency = service.session?.currentTeam?.currencySymbol else { return }
+
+        cell.claimAmountValueLabel.text = currency + claimAmount
+        cell.deductibleValueLabel.text = currency + deductible
+        cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses
+        
     }
     
     static func populateClaimOptions(cell: ClaimOptionsCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         cell.allVotesLabel.text = "Team.TeammateCell.allVotes".localized
+        cell.tapAllVotesRecognizer.removeTarget(delegate, action: nil)
+        cell.tapAllVotesRecognizer.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted))
         cell.cashFlowLabel.text = "Team.TeammateCell.cashFlow".localized
         cell.transactionsLabel.text = "Team.TeammateCell.transactions".localized
         cell.tapTransactionsRecognizer.removeTarget(delegate, action: nil)
         cell.tapTransactionsRecognizer.addTarget(delegate, action: #selector(ClaimVC.tapTransactions))
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
     
 }
