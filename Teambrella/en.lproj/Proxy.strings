@@ -35,3 +35,5 @@
 
 "Proxy.UserIndexVC.optButton.title.in" = "Opt Into Rating";
 "Proxy.UserIndexVC.optButton.title.out" = "Opt Out Of Rating";
+
+"Proxy.ProxyForCellBuilder.neverVoted" = "NEVER VOTED";

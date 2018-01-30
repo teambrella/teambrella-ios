@@ -348,7 +348,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eiH-hO-EVe">
                                                     <rect key="frame" x="271" y="16" width="72" height="80"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ej-gQ-vWi" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ej-gQ-vWi" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="72" height="44.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
