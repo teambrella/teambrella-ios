@@ -34,13 +34,18 @@
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="Dpw-qZ-ihn">
                                     <size key="itemSize" width="375" height="72"/>
-                                    <size key="headerReferenceSize" width="50" height="91"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <view key="backgroundView" contentMode="scaleToFill" id="y5l-cM-i8V" customClass="InfoHeader" customModule="Surilla" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CandidateCell" id="foQ-UG-0tF" userLabel="CandidateCell" customClass="TeammateCandidateCell" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="91" width="375" height="72"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
@@ -172,7 +177,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TeammateCell" id="4aQ-0e-dvT" customClass="TeammateCell" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="163" width="375" height="72"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
@@ -260,35 +265,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TeammatesHeader" id="1Yr-75-PMH" customClass="TeammateHeaderView" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW TEAMMATES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8O-Ym-0bL">
-                                            <rect key="frame" x="16" y="70" width="110" height="15"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                            <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTING ENDS IN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOb-lr-zAX">
-                                            <rect key="frame" x="262" y="70" width="97" height="15"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="xOb-lr-zAX" secondAttribute="trailing" id="4Of-by-MvQ"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="d8O-Ym-0bL" secondAttribute="bottom" id="Kje-Fx-teD"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="xOb-lr-zAX" secondAttribute="bottom" id="j5e-LD-NNr"/>
-                                        <constraint firstItem="d8O-Ym-0bL" firstAttribute="leading" secondItem="1Yr-75-PMH" secondAttribute="leadingMargin" id="mot-Yx-b2V"/>
-                                    </constraints>
-                                    <edgeInsets key="layoutMargins" top="6" left="16" bottom="6" right="16"/>
-                                    <connections>
-                                        <outlet property="subtitleLabel" destination="xOb-lr-zAX" id="Pcc-dU-JBh"/>
-                                        <outlet property="titleLabel" destination="d8O-Ym-0bL" id="H85-VB-dM5"/>
-                                    </connections>
-                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="KAD-Uk-Hr8" id="yl6-mg-GeL"/>
                                     <outlet property="delegate" destination="KAD-Uk-Hr8" id="P4p-xg-ShN"/>
