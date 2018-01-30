@@ -60,14 +60,14 @@ struct ExpensesReportCellModel: ReportCellModel {
     var expensesString: String { return expenses.map { String.truncatedNumber($0) } ?? "" }
     var deductible: Ether
     var deductibleString: String { return String.truncatedNumber(MEth(deductible).value) }
-    var coverage: Double
-    var coverageString: String { return String.truncatedNumber(coverage * 100) }
+    var coverage: Coverage
+    var coverageString: String { return String.truncatedNumber(coverage.percentage) }
     var isValid: Bool {
         guard let expenses = expenses else { return false }
         
         return expenses > 0
     }
-    var amountString: String { return String.truncatedNumber(expenses ?? 0 * coverage) }
+    var amountString: String { return String.truncatedNumber((expenses ?? 0) * coverage.value) }
 }
 
 struct DescriptionReportCellModel: ReportCellModel {

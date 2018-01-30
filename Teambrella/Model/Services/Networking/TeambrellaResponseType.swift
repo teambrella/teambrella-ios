@@ -27,7 +27,7 @@ enum TeambrellaResponseType {
     case teammateVote(TeammateVotingResult)
     case newPost(ChatEntity)
     case registerKey
-    case coverageForDate(Double, Double)
+    case coverageForDate(Coverage, Double)
     case setLanguage(String)
     case claimsList([ClaimEntity])
     case claim(ClaimEntityLarge)

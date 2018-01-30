@@ -43,7 +43,7 @@ struct TeamEntity: Decodable {
     let teamName: String
     let teamLogo: String
     let objectName: String?
-    let objectCoverage: Double?
+    let objectCoverage: Coverage?
     let unreadCount: Int?
     let coverageType: CoverageType
     let teamAccessLevel: TeamAccessLevel
