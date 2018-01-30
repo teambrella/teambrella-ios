@@ -589,23 +589,29 @@ class EthWallet {
                 sig.append(Data())
 
                 var pos: [Int] = []
+                var txSignatures: [Int: TxSignature] = [:]
+                for input in tx.inputs {
+                    guard let signatures = input.signaturesValue as? Set<TxSignature> else { continue }
+
+                    for signature in signatures {
+                        txSignatures[signature.teammateID] = signature
+                    }
+                }
                 //  Map<Long, TXSignature> txSignatures = payFrom.signatures;
-                let txSignatures: [Int: TxSignature] = [:]
-                var index: Int = 0
+               
+//                var index: Int = 0
                 var j: Int = 0
 
                 let cosigners = Cosigner.cosigners(for: teammate)
-                for cosigner in cosigners {
+                for (idx, cosigner) in cosigners.enumerated() {
                     if let s = txSignatures[cosigner.teammate.id] {
-                        pos[j] = index
-                        //sig[j] = s.bSignature
-
+                        pos[j] = idx
+                        sig[j] = s.signature
                         j += 1
                         if j >= 3 {
                             break
                         }
                     }
-                    index += 1
                 }
 
                 guard (j < txSignatures.count && j < 3) == false else {

@@ -110,7 +110,7 @@ struct WithdrawCellBuilder {
         cell.numberBar.isBottomLineVisible = false
         cell.amount.text = String.formattedNumber(model.amount * 1000)
         
-        cell.currencyLabel.text = service.session?.cryptoCurrency.coinCode
+        cell.currencyLabel.text = service.session?.cryptoCoin.code
         if let team = service.session?.currentTeam {
             cell.auxillaryAmount.text = String.formattedNumber(model.amount * model.currencyRate) + " " + team.currency
         }
@@ -120,12 +120,12 @@ struct WithdrawCellBuilder {
             ? String.formattedNumber(model.reserved * 1000)
             : String.truncatedNumber(model.reserved * 1000)
         cell.numberBar.left?.isBadgeVisible = false
-        cell.numberBar.left?.currencyLabel.text = service.session?.cryptoCurrency.coinCode
+        cell.numberBar.left?.currencyLabel.text = service.session?.cryptoCoin.code
         
         cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
         cell.numberBar.right?.amountLabel.text = model.available < 0.1
             ? String.formattedNumber(model.available * 1000)
             : String.truncatedNumber(model.available * 1000)
-        cell.numberBar.right?.currencyLabel.text = service.session?.cryptoCurrency.coinCode
+        cell.numberBar.right?.currencyLabel.text = service.session?.cryptoCoin.code
     }
 }

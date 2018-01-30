@@ -48,6 +48,7 @@ extension Cosigner {
         
         let request: NSFetchRequest<Cosigner> = Cosigner.fetchRequest()
         request.predicate = NSPredicate(format: "teammateValue = %@", teammate)
+        request.sortDescriptors = [NSSortDescriptor(key: "keyOrderValue", ascending: true)]
         do {
             let result = try context.fetch(request)
             return result

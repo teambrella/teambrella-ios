@@ -160,9 +160,11 @@ class TeambrellaContentProvider {
     }
     
     var transactionsApprovedAndCosigned: [Tx] {
+        let publicKey = user.key().publicKey
         let predicates = [NSPredicate(format: "resolutionValue == %i", TransactionClientResolution.approved.rawValue),
                           NSPredicate(format: "stateValue == %i", TransactionState.cosigned.rawValue),
-                          NSPredicate(format: "inputsValue.@count > 0")
+                          NSPredicate(format: "inputsValue.@count > 0"),
+                          NSPredicate(format: "teammateValue.publicKeyValue == %@", publicKey)
         ]
         return transactions(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
     }

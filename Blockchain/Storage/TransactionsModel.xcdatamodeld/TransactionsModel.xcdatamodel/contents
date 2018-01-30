@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Cosigner" representedClassName=".Cosigner" syncable="YES" codeGenerationType="category">
         <attribute name="idValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="keyOrderValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -123,7 +123,7 @@
         <attribute name="previousTransactionIDValue" attributeType="String" syncable="YES"/>
         <attribute name="previousTransactionIndexValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="transactionIDValue" attributeType="String" syncable="YES"/>
-        <relationship name="signatureValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxSignature" inverseName="inputValue" inverseEntity="TxSignature" syncable="YES"/>
+        <relationship name="signaturesValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TxSignature" inverseName="inputValue" inverseEntity="TxSignature" syncable="YES"/>
         <relationship name="transactionValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tx" inverseName="inputsValue" inverseEntity="Tx" syncable="YES"/>
         <fetchIndex name="byIdValueIndex">
             <fetchIndexElement property="idValue" type="Binary" order="ascending"/>
@@ -156,7 +156,7 @@
         <attribute name="isServerUpdateNeededValue" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="signatureValue" attributeType="Binary" syncable="YES"/>
         <attribute name="teammateIDValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="inputValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxInput" inverseName="signatureValue" inverseEntity="TxInput" syncable="YES"/>
+        <relationship name="inputValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TxInput" inverseName="signaturesValue" inverseEntity="TxInput" syncable="YES"/>
         <relationship name="teammateValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teammate" inverseName="signaturesValue" inverseEntity="Teammate" syncable="YES"/>
         <fetchIndex name="byIdValueIndex">
             <fetchIndexElement property="idValue" type="Binary" order="ascending"/>

@@ -53,6 +53,7 @@ class Log {
 
         case crypto
         case cryptoDetailed
+        case cryptoRequests
         case cryptoAll
         
         case all
@@ -128,6 +129,15 @@ class Log {
         if type.contains(.crypto) {
             emojis.append("🔒")
         }
+        if type.contains(.cryptoDetails) {
+            emojis.append("🔓")
+        }
+        if type.contains(.cryptoRequests) {
+            emojis.append("🔏")
+        }
+        if type.contains(.database) {
+            emojis.append("🗃")
+        }
         return emojis + " " + string
     }
     
@@ -147,6 +157,7 @@ class Log {
 
         case .crypto: return [.error, .crypto, .database]
         case .cryptoDetailed: return [.error, .crypto, .cryptoDetails, .database]
+        case .cryptoRequests: return [.error, .cryptoRequests, .database]
         case .cryptoAll: return [.error, .crypto, .cryptoDetails, .cryptoRequests, .database]
 
         case .all: return LogType.all
