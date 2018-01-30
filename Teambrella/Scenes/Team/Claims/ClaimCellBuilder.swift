@@ -132,23 +132,7 @@ struct ClaimCellBuilder {
     
     static func populateClaimDetails(cell: ClaimDetailsCell, with claim: ClaimEntityLarge) {
         cell.titleLabel.text = "Team.ClaimCell.claimDetails".localized
-        
-<<<<<<< HEAD
-        cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
-        let currency = "$"
-        let claimAmount = String(format: "%.2f", claim.claimAmount.value)
-        cell.claimAmountValueLabel.text = currency + claimAmount
-        
-        cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
-        let estimatedExpenses = String(format: "%.2f", claim.estimatedExpences)
-        cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses
-        
-        cell.deductibleLabel.text = "Team.ClaimCell.deductible".localized
-        let deductible = String(format: "%.2f", claim.deductible)
-        cell.deductibleValueLabel.text = currency + deductible
-        
-=======
->>>>>>> 39f629e96a42e450a544e0d838cbd0dad3df1353
+
         cell.coverageLabel.text = "Team.ClaimCell.coverage".localized
         let coverage = "\(Int((claim.coverage * 100).rounded()))"
         cell.coverageValueLabel.text = coverage + "%"
@@ -158,7 +142,7 @@ struct ClaimCellBuilder {
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
 
         cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
-        let claimAmount = String(format: "%.2f", claim.claimAmount)
+        let claimAmount = String(format: "%.2f", claim.claimAmount.value)
         cell.deductibleLabel.text = "Team.ClaimCell.deductible".localized
         let deductible = String(format: "%.2f", claim.deductible)
         cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
