@@ -122,8 +122,10 @@ struct ClaimCellBuilder {
         cell.resetButton.addTarget(delegate, action: #selector(ClaimVC.tapResetVote), for: .touchUpInside)
         
         let avatars = claim.otherAvatars.flatMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
-        let label: String?  =  claim.otherCount > 0 ? "\(claim.otherCount)" : nil
-        cell.avatarsStack.set(images: avatars, label: label, max: 3)
+        let maxAvatarsStackCount = 4
+        let otherVotersCount = claim.otherCount - maxAvatarsStackCount + 1
+        let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil
+        cell.avatarsStack.set(images: avatars, label: label, max: maxAvatarsStackCount)
         
         cell.othersVotedButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.othersVotedButton.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted), for: .touchUpInside)
