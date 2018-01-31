@@ -36,7 +36,7 @@ public enum UserAddressStatus: Int, EnumStringConvertible {
 
 public enum TransactionKind: Int, EnumStringConvertible, Decodable {
     /// voting compensation or reimbursement
-    case payout                 = 0//reimbursement payouts only
+    case payout                 = 0 //reimbursement payouts only
     case withdraw               = 1
     case moveToNextWallet       = 2
     case saveFromPreviousWallet = 3

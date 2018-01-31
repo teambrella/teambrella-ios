@@ -39,7 +39,7 @@ func log(_ error: Error) {
 
 class Log {
     /// Change log level to filter logs along the entire application
-    var logLevel: LogLevel = .appDetailed
+    var logLevel: LogLevel = .cryptoDetailed
 
     lazy var types: LogType = { self.typesFor(level: self.logLevel) }()
     
@@ -109,9 +109,10 @@ class Log {
         case .none: return []
         case .errorsOnly: return [.error]
         case .app: return [.error, .serverURL, .serverReplyStats, .info, .database]
-        case .appDetailed: return [.error, .serverURL, .info, .serverRequest, .serverHeaders, .socket, .push, .database]
+        case .appDetailed: return [.error, .serverURL, .info, .serverRequest, .serverHeaders,
+                                   .serverReplyStats, .socket, .push, .social, .database]
         case .appAll: return [.error, .serverURL, .info, .serverReply, .serverRequest, .serverHeaders,
-                              .serverReplyStats, .socket, .push, .database]
+                              .serverReplyStats, .socket, .push, .social, .database]
 
         case .server: return [.serverURL, .serverRequest, .serverReply]
         case .socket: return [.socket, .error]
