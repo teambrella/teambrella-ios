@@ -84,7 +84,7 @@ class Log {
         static var all: LogType { return LogType(rawValue: Int.max) }
     }
     
-    var logLevel: LogLevel = .cryptoDetailed
+    var logLevel: LogLevel = .all
     lazy var types: LogType = { self.typesFor(level: self.logLevel) }()
     
     var isEmojied: Bool = true

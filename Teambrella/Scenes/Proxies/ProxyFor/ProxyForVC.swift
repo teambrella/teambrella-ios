@@ -109,6 +109,11 @@ extension ProxyForVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         ProxyForCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        let isLast = indexPath.row == dataSource.count - 1
+        if let cell = cell as? ProxyForCell {
+            cell.separatorView.isHidden = isLast
+        }
+        ViewDecorator.decorateCollectionView(cell: cell, isFirst: indexPath.row == 0, isLast: isLast)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -117,10 +122,13 @@ extension ProxyForVC: UICollectionViewDelegate {
                         at indexPath: IndexPath) {
         if let cell = view as? ProxyForHeader {
             cell.headerLabel.text = "Proxy.ProxyForVC.header".localized
-            cell.detailsLabel.text = "Proxy.ProxyForVC.subtitle".localized
-            guard let currency = service.session?.currentTeam?.currencySymbol else { return }
+            cell.detailsLabel.text = "Proxy.ProxyForVC.subtitle".localized // instead of InfoHeader
+            ViewDecorator.shadow(for: cell)
+            ViewDecorator.roundedEdges(for: cell.containerView)
+            guard let team = service.session?.currentTeam else { return }
             
-            cell.amountLabel.text = currency + String(Int(dataSource.commission))
+            cell.amountLabel.text = team.currencySymbol + String(Int(dataSource.commission))
+            cell.currencyLabel.text = team.currency
         }
         
     }

@@ -74,6 +74,7 @@ struct TeambrellaRequest {
         // temporary item for compatibility with legacy code
         let reply = JSON(serverReply.json)
 
+        log("Server reply: \(reply)", type: .serverReply)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.teambrella)
         decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "PositiveInfinity",

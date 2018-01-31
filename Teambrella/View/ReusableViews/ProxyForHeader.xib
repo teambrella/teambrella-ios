@@ -16,22 +16,22 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7T-Z0-7X3" customClass="UICollectionReusableView">
-                    <rect key="frame" x="16" y="28" width="426" height="136"/>
+                    <rect key="frame" x="16" y="22" width="426" height="125"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL COMISSION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuT-Us-68H" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="32" y="57.5" width="149" height="21"/>
+                            <rect key="frame" x="32" y="52" width="149" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="57" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOS-d0-bGS" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="372" y="57.5" width="20" height="21"/>
+                            <rect key="frame" x="372" y="52" width="20" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndt-E7-5r0" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="392" y="57.5" width="14" height="21"/>
+                            <rect key="frame" x="392" y="52" width="14" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -58,10 +58,10 @@
                 <constraint firstItem="Vrm-dY-dAF" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="HlV-nG-kEg"/>
                 <constraint firstAttribute="trailing" secondItem="w7T-Z0-7X3" secondAttribute="trailing" constant="16" id="Nlp-JR-r3V"/>
                 <constraint firstItem="w7T-Z0-7X3" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="Orp-lN-mbo"/>
-                <constraint firstItem="Vrm-dY-dAF" firstAttribute="top" secondItem="w7T-Z0-7X3" secondAttribute="bottom" constant="11" id="WIa-hf-rGt"/>
+                <constraint firstItem="Vrm-dY-dAF" firstAttribute="top" secondItem="w7T-Z0-7X3" secondAttribute="bottom" constant="28" id="WIa-hf-rGt"/>
                 <constraint firstAttribute="bottom" secondItem="Vrm-dY-dAF" secondAttribute="bottom" constant="5" id="bJs-Q4-8Ll"/>
                 <constraint firstItem="w7T-Z0-7X3" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="dnE-KF-WlM"/>
-                <constraint firstItem="w7T-Z0-7X3" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="28" id="nuB-q7-ud3"/>
+                <constraint firstItem="w7T-Z0-7X3" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="22" id="nuB-q7-ud3"/>
             </constraints>
             <connections>
                 <outlet property="amountLabel" destination="gOS-d0-bGS" id="OJd-8f-HpU"/>

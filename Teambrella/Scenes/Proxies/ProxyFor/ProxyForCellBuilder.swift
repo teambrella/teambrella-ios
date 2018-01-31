@@ -26,13 +26,17 @@ struct ProxyForCellBuilder {
         if let cell = cell as? ProxyForCell {
             cell.avatarView.showAvatar(string: model.avatarString)
             cell.nameLabel.text = model.name
-            guard let lastVoted = model.lastVoted else { return }
+            if let lastVoted = model.lastVoted {
+                let dateString = DateProcessor().stringInterval(from: lastVoted)
+                cell.detailsLabel.text = "Proxy.ProxyForCellBuilder.lastVoted".localized + dateString
+            } else {
+                cell.detailsLabel.text = "Proxy.ProxyForCellBuilder.neverVoted".localized
+            }
             
-            let dateString = DateProcessor().stringInterval(from: lastVoted)
-            cell.detailsLabel.text = "Proxy.ProxyForCellBuilder.lastVoted".localized + dateString
-            guard let currency = service.session?.currentTeam?.currencySymbol else { return }
+            guard let team = service.session?.currentTeam else { return }
             
-            cell.amountLabel.text = currency + String(Int(model.amount))
+            cell.amountLabel.text = team.currencySymbol + String(Int(model.amount))
+            cell.currencyLabel.text = team.currency
         }
     }
     
