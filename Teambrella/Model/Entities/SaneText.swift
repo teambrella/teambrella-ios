@@ -1,10 +1,5 @@
 //
-//  Post.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 06.04.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,17 +16,26 @@
 
 import Foundation
 
-protocol Post: EntityLike {
-    var postContent: SaneText { get }
-    var dateCreated: Date { get }
-    var upvotesCount: Int { get }
-    var downvotesCount: Int { get }
-    var myVote: Int { get }
-    var dateEdited: Date { get }
-    var isSolution: Bool { get }
-    var isTopicStarter: Bool { get }
-    var isSpam: Bool { get }
-    var ipAddress: String { get }
-    var isPending: Bool { get }
-    var userID: String { get }
+struct SaneText: Decodable {
+    let original: String
+    let sane: String
+
+    static var empty: SaneText { return SaneText(text: "") }
+
+    init(text: String) {
+        original = text
+        sane = SaneText.sanitized(text: text)
+    }
+
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(String.self)
+        original = value
+        sane = SaneText.sanitized(text: value)
+    }
+
+    private static func sanitized(text: String) -> String {
+        let adapter = TextAdapter()
+        return adapter.parsedHTML(string: text)
+    }
+    
 }

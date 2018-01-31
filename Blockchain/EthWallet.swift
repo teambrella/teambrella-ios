@@ -227,7 +227,7 @@ class EthWallet {
         guard let address = processor.ethAddressString else { return }
         
         blockchain.checkBalance(address: address, success: { gasWalletAmount in
-            print("balance is \(gasWalletAmount)")
+            log("Multisig balance is \(gasWalletAmount)", type: .crypto)
             if gasWalletAmount > Constant.maxGasWalletBalance {
                 self.refreshGasPrice(completion: { gasPrice in
                     self.blockchain.checkNonce(addressHex: address, success: { nonce in
@@ -567,10 +567,10 @@ class EthWallet {
             failure(EthWalletError.noMultisigs)
             return
         }
-        guard let teammate = tx.teammate else {
-            failure(EthWalletError.transactionHasNoTeammate)
-            return
-        }
+//        guard let teammate = tx.teammate else {
+//            failure(EthWalletError.transactionHasNoTeammate)
+//            return
+//        }
 
         checkMyNonce(success: { myNonce in
             let gasLimit = Constant.gasLimitBase + 30_000 * tx.outputs.count

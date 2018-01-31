@@ -108,9 +108,9 @@ final class InitialVC: UIViewController {
     
     private func startSession(teamsEntity: TeamsModel, isDemo: Bool) {
         service.session = Session(isDemo: isDemo)
-        
         service.teambrella.startUpdating(completion: { result in
-            log("Get updates results in: \(result)", type: .info)
+            let description = result.rawValue == 0 ? "new data" : result.rawValue == 1 ? "no data" : "failed"
+            log("Teambrella service get updates results: \(description)", type: .info)
         })
         
         /*

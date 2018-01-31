@@ -92,9 +92,9 @@ class ServerService: NSObject {
                                        "deviceId": application.uniqueIdentifier,
                                        "info": service.info.info]
 
-            log("Headers:", type: .serverURL)
+            log("Headers:", type: .serverHeaders)
             for (key, value) in dict {
-                log("\(key): \(value)", type: .serverURL)
+                log("\(key): \(value)", type: .serverHeaders)
                 request.setValue(String(describing: value), forHTTPHeaderField: key)
             }
         }

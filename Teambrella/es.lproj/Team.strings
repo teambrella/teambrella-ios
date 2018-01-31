@@ -83,7 +83,7 @@
 "Team.MembersVC.inviteAFriend"                   = "Invita a un amigo";
 "Team.TeammateCell.allVotes"                     = "Todos los votos";
 "Team.TeammateCell.cashFlow"                     = "Flujo de fondos";
-"Team.TeammateCell.transactions"                 = "Actas";
+"Team.TeammateCell.transactions"                 = "Transacciones";
 "Team.team"                                      = "El grupo";
 
 "Team.JoinTeamVC.closeButton"                    = "Cerrar";

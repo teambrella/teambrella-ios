@@ -34,7 +34,7 @@ struct HomeCardModel: Decodable {
         case topicID     = "TopicId"
     }
     
-    let text: String
+    let text: SaneText
     let itemType: ItemType
     let itemID: Int
     let itemDate: Date

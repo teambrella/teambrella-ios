@@ -26,7 +26,7 @@ struct TopicEntity: Topic {
     let id: String
     let lastUpdated: Int64
     
-    let originalPostText: String
+    let originalPostText: SaneText
     let topPosterAvatars: [String]
     let posterCount: Int
     var unreadCount: Int
@@ -40,7 +40,7 @@ struct TopicEntity: Topic {
         id = json["TopicId"].stringValue
         lastUpdated = json["LastUpdated"].int64Value
         
-        originalPostText = json["OriginalPostText"].stringValue
+        originalPostText = SaneText(text: json["OriginalPostText"].stringValue)
         topPosterAvatars = json["TopPosterAvatars"].arrayObject as? [String] ?? []
         posterCount = json["PosterCount"].intValue
         unreadCount = json["UnreadCount"].intValue
@@ -50,7 +50,7 @@ struct TopicEntity: Topic {
     init(id: String) {
         self.id = id
         lastUpdated = 0
-        originalPostText = ""
+        originalPostText = SaneText.empty
         topPosterAvatars = []
         posterCount = 0
         unreadCount = 0

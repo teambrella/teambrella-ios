@@ -23,7 +23,6 @@ import Foundation
 import SwiftyJSON
 
 class TeammateLarge {
-    let id: String
     let teammateID: Int
     let ver: Int64
     
@@ -38,14 +37,13 @@ class TeammateLarge {
     let riskScale: RiskScaleEntity?
 
     var description: String {
-        return "ExtendedTeammateEntity \(id)"
+        return "ExtendedTeammateEntity \(teammateID)"
     }
     
     init(json: JSON) {
 
         teamPart = TeamPart(json: json["TeamPart"])
 
-        id = json["UserId"].stringValue
         teammateID = json["Id"].intValue
         ver = json["Ver"].int64Value
         lastUpdated = json["LastUpdated"].int64Value

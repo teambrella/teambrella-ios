@@ -80,35 +80,40 @@ struct TeambrellaRequest {
         decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "PositiveInfinity",
                                                                         negativeInfinity: "NegativeInfinity",
                                                                         nan: "NaN")
-
+        log("Reply type: \(type)", type: .serverReplyStats)
         switch type {
         case .timestamp:
             success(.timestamp)
         case .teammatesList:
             do {
                 let list = try decoder.decode(TeammatesList.self, from: serverReply.data)
-                log("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)", type: .info)
+                log("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)",
+                    type: .serverReplyStats)
                 success(.teammatesList(list.teammates))
             } catch {
                 failure?(error)
             }
         case .teammate:
             let teammate = TeammateLarge(json: reply)
+            log("teammate userId: \(teammate.basic.id)", type: .serverReplyStats)
             success(.teammate(teammate))
         case .teams, .demoTeams:
             do {
                 let teamsModel = try decoder.decode(TeamsModel.self, from: serverReply.data)
-                log("teamsModel: \(teamsModel)", type: .serverReply)
+                log("teamsModel: \(teamsModel)", type: .serverReplyStats)
                 success(.teams(teamsModel))
             } catch {
                 log(error)
                 failure?(error)
             }
         case .newPost:
-            success(.newPost(ChatEntity(json: reply)))
+            let entity = ChatEntity(json: reply)
+            log("chat entity id: \(entity.id)", type: .serverReplyStats)
+            success(.newPost(entity))
         case .teammateVote:
             do {
                 let teamVotingResult = try decoder.decode(TeammateVotingResult.self, from: serverReply.data)
+                log("teammmate voting result id: \(teamVotingResult.id)", type: .serverReplyStats)
                 success(.teammateVote(teamVotingResult))
             } catch {
                 failure?(error)
@@ -123,6 +128,7 @@ struct TeambrellaRequest {
         case .claimsList:
             do {
                 let claims = try decoder.decode([ClaimEntity].self, from: serverReply.data)
+                log("claims count: \(claims.count)", type: .serverReplyStats)
                 success(.claimsList(claims))
             } catch {
                 log(error)
@@ -148,6 +154,7 @@ struct TeambrellaRequest {
                 chat = ChatEntity.buildArray(from: reply["DiscussionPart"]["Chat"])
             }
             let model = ChatModel(json: reply, chat: chat)
+            log("chat model with items count: \(model.chat.count)", type: .serverReplyStats)
             success(.chat(model))
         case .teamFeed:
             guard let pagingInfo = serverReply.paging else {
@@ -157,6 +164,7 @@ struct TeambrellaRequest {
             do {
                 let feed = try decoder.decode([FeedEntity].self, from: serverReply.data)
                 let chunk = FeedChunk(feed: feed, pagingInfo: pagingInfo)
+                 log("feed with items count: \(chunk.feed.count)", type: .serverReplyStats)
                 success(.teamFeed(chunk))
             } catch {
                 failure?(error)
@@ -164,6 +172,7 @@ struct TeambrellaRequest {
         case .claimTransactions:
             do {
                 let models = try decoder.decode([ClaimTransactionsModel].self, from: serverReply.data)
+                log("claim transactions count: \(models.count)", type: .serverReplyStats)
                 success(.claimTransactions(models))
             } catch {
                 log(error)

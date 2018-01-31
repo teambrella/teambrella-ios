@@ -32,7 +32,7 @@ class CoreDataStorage {
     
     init() {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        log("Documents path: \(documentsPath)", type: .database)
+        log("Teambrella documents path: \(documentsPath)", type: .database)
     }
     
     func clear() throws {

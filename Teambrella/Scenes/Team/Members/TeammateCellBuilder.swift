@@ -266,7 +266,7 @@ struct TeammateCellBuilder {
         default:
             cell.timeLabel.text = "Team.TeammateCell.timeLabel.longAgo".localized
         }
-        let message = TextAdapter().parsedHTML(string: stats.originalPostText)
+        let message = stats.originalPostText.sane
         cell.textLabel.text = message
         cell.unreadCountView.text = String(stats.unreadCount)
         cell.unreadCountView.isHidden = stats.unreadCount == 0
@@ -281,7 +281,7 @@ struct TeammateCellBuilder {
         cell.avatarView.showAvatar(string: avatar)
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
         cell.timeLabel.text = DateProcessor().stringFromNow(seconds: stats.minutesSinceLastPost).uppercased()
-        let message = TextAdapter().parsedHTML(string: stats.originalPostText)
+        let message = stats.originalPostText.sane
         cell.textLabel.text = message
         cell.unreadCountView.text = String(stats.unreadCount)
         cell.unreadCountView.isHidden = stats.unreadCount == 0

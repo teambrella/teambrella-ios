@@ -42,7 +42,7 @@ struct PrivateChatUser: Decodable {
         id = teammateLarge.basic.id
         avatar = teammateLarge.basic.avatar
         name = teammateLarge.basic.name.short
-        text = teammateLarge.topic.originalPostText
+        text = teammateLarge.topic.originalPostText.sane
         unreadCount = teammateLarge.topic.unreadCount
         minutesSinceLast = teammateLarge.topic.minutesSinceLastPost
     }
