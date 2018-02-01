@@ -89,3 +89,8 @@
 "Me.Wallet.Transactions.claimNumber" = "CLAIM %d";
 "Me.Wallet.Transactions.kind.pending" = "PENDING";
 "Me.Wallet.Transactions.kind.cancelled" = "CANCELLED";
+
+"Me.Wallet.Transactions.Empty.title" = "No transactions yet";
+"Me.Wallet.Transactions.Empty.details" = "...";
+"Me.Wallet.Cosigners.Empty.title" = "No co-signers yet";
+"Me.Wallet.Cosigners.Empty.details" = "...";

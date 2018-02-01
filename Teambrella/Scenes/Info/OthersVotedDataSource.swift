@@ -24,9 +24,11 @@ class OthersVotedDataSource: NSObject {
             onLoad?()
         }
     }
+    
     var count: Int {
         return list?.voters.count ?? 0
     }
+    var isEmpty: Bool { return count == 0 }
     
     var onLoad: (() -> Void)?
     var onSelectItem: ((IndexPath) -> Void)?

@@ -192,3 +192,8 @@
 ////waiting
 "Team.Claim.Transactions.from" = "DE";
 "Team.VotingRiskCell.teamAvg" = "TEAM\nAVG";
+
+"Team.Claim.Transactions.Empty.title" = "No transactions yet";
+"Team.Claim.Transactions.Empty.details" = "...";
+"Team.OthersVoted.Empty.title" = "No votes yet";
+"Team.OthersVoted.Empty.details" = "...";

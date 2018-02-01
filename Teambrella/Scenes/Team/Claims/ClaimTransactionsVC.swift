@@ -31,6 +31,7 @@ class ClaimTransactionsVC: UIViewController, Routable {
     var userID: String = ""
     var dataSource: ClaimTransactionsDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0
+    weak var emptyVC: EmptyVC?
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -56,11 +57,23 @@ class ClaimTransactionsVC: UIViewController, Routable {
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
             self?.collectionView.reloadData()
+            self?.showEmptyIfNeeded()
         }
         dataSource.onError = { error in
             HUD.hide()
         }
         dataSource.loadData()
+    }
+    
+    func showEmptyIfNeeded() {
+        if dataSource.isEmpty && emptyVC == nil {
+            emptyVC = EmptyVC.show(in: self)
+            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconTeam"))
+            emptyVC?.setText(title: "Team.Claim.Transactions.Empty.title".localized,
+                             subtitle: "Team.Claim.Transactions.Empty.details".localized)
+        } else {
+            emptyVC?.remove()
+        }
     }
     
 }
