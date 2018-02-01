@@ -57,8 +57,10 @@ struct NewClaimModel: ReportModel {
     let text: String
     let images: [String]
     let address: String
+
+    let coverage: Coverage
     
-    var isValid: Bool { return expenses > 0 && text.count >= 30 && address != "" }
+    var isValid: Bool { return coverage.value > 0 && expenses > 0 && text.count >= 30 && address != "" }
 }
 
 struct NewChatModel: ReportModel {
