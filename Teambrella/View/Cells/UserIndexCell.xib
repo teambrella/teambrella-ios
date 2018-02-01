@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,7 +47,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="tjo-Cf-cEW">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="tjo-Cf-cEW">
                                 <rect key="frame" x="372" y="54" width="8" height="13"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsN-3n-E4M">
@@ -57,7 +58,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="80.81" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJB-UG-OHk" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="307" y="50" width="43" height="21"/>
+                                <rect key="frame" x="337" y="50" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -96,7 +97,6 @@
                             <constraint firstItem="00i-59-BAm" firstAttribute="leading" secondItem="RpD-3o-fgi" secondAttribute="trailing" constant="16" id="3HV-28-AFg"/>
                             <constraint firstItem="RpD-3o-fgi" firstAttribute="centerY" secondItem="kNR-zH-x9t" secondAttribute="centerY" id="Bah-rv-1rm"/>
                             <constraint firstItem="nJB-UG-OHk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eMU-rn-v4T" secondAttribute="trailing" constant="8" id="Dgx-cf-S6L"/>
-                            <constraint firstItem="tjo-Cf-cEW" firstAttribute="leading" secondItem="nJB-UG-OHk" secondAttribute="trailing" constant="22" id="Eeq-oC-Ecn"/>
                             <constraint firstItem="tjo-Cf-cEW" firstAttribute="centerY" secondItem="kNR-zH-x9t" secondAttribute="centerY" id="Ehn-XQ-AsP"/>
                             <constraint firstAttribute="trailing" secondItem="tjo-Cf-cEW" secondAttribute="trailing" constant="16" id="N0r-Qe-PGc"/>
                             <constraint firstItem="9pJ-1b-AQm" firstAttribute="leading" secondItem="RpD-3o-fgi" secondAttribute="leading" constant="-4" id="ZhG-3d-5TK"/>
@@ -111,6 +111,7 @@
                             <constraint firstItem="vsN-3n-E4M" firstAttribute="leading" secondItem="kNR-zH-x9t" secondAttribute="leading" constant="16" id="tQA-7h-tfB"/>
                             <constraint firstAttribute="trailing" secondItem="vsN-3n-E4M" secondAttribute="trailing" id="tUY-7g-yig"/>
                             <constraint firstItem="nJB-UG-OHk" firstAttribute="centerY" secondItem="RpD-3o-fgi" secondAttribute="centerY" id="tXR-uo-hwF"/>
+                            <constraint firstAttribute="trailing" secondItem="nJB-UG-OHk" secondAttribute="trailing" constant="16" id="yq5-Jp-Xeo"/>
                         </constraints>
                     </view>
                 </subviews>

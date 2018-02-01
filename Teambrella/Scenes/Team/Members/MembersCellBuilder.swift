@@ -33,7 +33,7 @@ struct MembersCellBuilder {
             let detailsText: String = "\(teammate.model), \(teammate.year)".uppercased()
             cell.detailsLabel.text = detailsText
             let dateText: String = DateProcessor().stringFromNow(minutes: -teammate.minutesRemaining)
-            cell.dateLabel.text = dateText
+            cell.dateLabel.text = dateText.uppercased()
             cell.chartView.setupWith(remainingMinutes: teammate.minutesRemaining)
         } else if let cell = cell as? TeammateCell {
             if let url: URL = URL(string: URLBuilder().avatarURLstring(for: teammate.avatar)) {
