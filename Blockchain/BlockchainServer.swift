@@ -51,7 +51,7 @@ public class BlockchainServer {
     
     private(set)var timestamp: Int64 = 0 {
         didSet {
-            print("timestamp updated from \(oldValue) to \(timestamp)")
+            log("timestamp updated from \(oldValue) to \(timestamp)", type: .cryptoDetails)
         }
     }
     
@@ -73,7 +73,7 @@ public class BlockchainServer {
             switch response.result {
             case .success:
                 if let value = response.result.value {
-                    print(value)
+                    log("BlockChain server init timestamp reply: \(value)", type: .cryptoRequests)
                     let result = JSON(value)
                     let status = result["Status"]
                     let timestamp = status["Timestamp"].int64Value
@@ -102,7 +102,7 @@ public class BlockchainServer {
                     switch response.result {
                     case .success:
                         if let value = response.result.value {
-                            print(value)
+                            log("init client reply: \(value)", type: .cryptoRequests)
                             let result = JSON(value)
                             if let timestamp = result["Timestamp"].int64 {
                                 me.timestamp = timestamp
@@ -110,7 +110,7 @@ public class BlockchainServer {
                             completion(true)
                         }
                     case .failure(let error):
-                        print("error initializing client: \(error)")
+                        log("error initializing client: \(error)", type: [.error, .cryptoRequests])
                         //                        me.delegate?.server(server: me, failedWithError: error)
                         completion(false)
                     }
@@ -128,32 +128,20 @@ public class BlockchainServer {
                     signatures: [TxSignature],
                     completion: @escaping (Response) -> Void) {
         let key = Key(base58String: privateKey, timestamp: timestamp)
-
-        let multisigsInfo = multisigs.map { ["Id": $0.id,
-                                             "TeammateId": $0.teammate!.id,
-                                             "BlockchainTxId": $0.creationTx! ] }
-
-        let txInfos = transactions.map { ["Id": $0.id.uuidString,
-                                          "ResolutionTime": formatter.string(from: $0.clientResolutionTime!),
-                                          "Resolution": $0.resolution.rawValue ] }
-        
-        let txSignatures = signatures.map {
-            ["Signature": $0.signature.base64EncodedString(),
-             "TeammateId": $0.teammateID,
-             "TxInputId": $0.inputID]
-        }
-        let payload: [String: Any] = ["TxInfos": txInfos,
-                                      "TxSignatures": txSignatures,
-                                      "CryptoContracts": multisigsInfo,
-                                      "Since": lastUpdated]
-        let request = self.request(string: "me/GetUpdates", key: key, payload: payload)
+        let updateInfo = CryptoServerUpdateInfo(multisigs: multisigs,
+                                                transactions: transactions,
+                                                signatures: signatures,
+                                                lastUpdated: lastUpdated,
+                                                formatter: formatter)
+        log("Get updates updateInfo signatures: \(updateInfo.txSignatures)", type: .cryptoDetails)
+        let request = self.request(string: "me/GetUpdates", key: key, updateInfo: updateInfo)
         Alamofire.request(request).responseJSON { [weak self] response in
             guard let me = self else { return }
             
             switch response.result {
             case .success:
                 if let value = response.result.value {
-                    print(value)
+                    log("Success getting updates with \(updateInfo)", type: .cryptoDetails)
                     let result = JSON(value)
                     let timestamp = result["Status"]["Timestamp"].int64Value
                     me.timestamp = timestamp
@@ -269,32 +257,35 @@ public class BlockchainServer {
         }
 
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        var body: [String : Any] = ["Timestamp": timestamp,
-                                    "Signature": key.signature,
-                                    "PublicKey": key.publicKey]
+
+        var body: [String : Any] = [:]/* ["Timestamp": timestamp,
+         "Signature": key.signature,
+         "PublicKey": key.publicKey] */
         if let payload = payload {
             for (key, value) in payload {
                 body[key] = value
             }
         }
-        if let data = try? JSONSerialization.data(withJSONObject: body, options: []) {
+        log("request body: \(body)", type: .cryptoRequests)
+        do {
+            let data = try JSONSerialization.data(withJSONObject: body, options: [])
             request.httpBody = data
-        } else {
-            print("could not create data from payload: \(body)")
+            log("Request: \(url.absoluteURL)", type: .cryptoRequests)
+            return request
+        } catch {
+            log("could not create data from payload: \(body), error: \(error)", type: [.error, .cryptoRequests])
         }
-        print("Request: \(url.absoluteURL) body: \(body)")
-        return request
+        fatalError()
     }
 
-    /*
-    private func postDataRequest(string: String, key: Key, data: Data) -> URLRequest {
+    private func request(string: String, key: Key, updateInfo: CryptoServerUpdateInfo) -> URLRequest {
         guard let url = url(string: string) else {
             fatalError("Couldn't create URL")
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+
         let application = Application()
         let dict: [String: Any] = ["t": timestamp,
                                    "key": key.publicKey,
@@ -305,11 +296,45 @@ public class BlockchainServer {
         for (key, value) in dict {
             request.setValue(String(describing: value), forHTTPHeaderField: key)
         }
-        request.httpBody = data
-        print("Request: \(url.absoluteURL) body: data \(data.count)")
-        return request
+
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let encoder = JSONEncoder()
+        do {
+            let jsonData = try encoder.encode(updateInfo)
+            request.httpBody = jsonData
+            log("Request: \(url.absoluteURL)", type: .cryptoRequests)
+            return request
+        } catch {
+            log("could not create data from updateInfo: ](updateInfo), error: \(error)", type: [.error, .cryptoRequests])
+            fatalError()
+        }
     }
-    */
+    
+    /*
+     private func postDataRequest(string: String, key: Key, data: Data) -> URLRequest {
+     guard let url = url(string: string) else {
+     fatalError("Couldn't create URL")
+     }
+
+     var request = URLRequest(url: url)
+     request.httpMethod = HTTPMethod.post.rawValue
+     request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+     let application = Application()
+     let dict: [String: Any] = ["t": timestamp,
+     "key": key.publicKey,
+     "sig": key.signature,
+     "clientVersion": application.clientVersion,
+     "deviceToken": "",
+     "deviceId": application.uniqueIdentifier]
+     for (key, value) in dict {
+     request.setValue(String(describing: value), forHTTPHeaderField: key)
+     }
+     request.httpBody = data
+     print("Request: \(url.absoluteURL) body: data \(data.count)")
+     return request
+     }
+     */
 
     private func url(string: String) -> URL? {
         return URL(string: Constant.siteURL + "/" + string)

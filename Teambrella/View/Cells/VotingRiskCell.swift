@@ -273,7 +273,7 @@ extension VotingRiskCell: UICollectionViewDelegate {
             let columnHeight = columnMaxHeight * multiplier
             cell.columnHeightConstraint.constant = bottomInset + columnHeight + cell.topLabel.frame.height / 2
             cell.topLabel.text = String.formattedNumber(model.riskCoefficient)
-            cell.centerLabel.text = model.isTeamAverage ? "TEAM\nAVG" : ""
+            cell.centerLabel.text = model.isTeamAverage ? "Team.VotingRiskCell.teamAvg".localized : ""
             cell.topLabel.clipsToBounds = true
             cell.topLabel.layer.cornerRadius = 3
             cell.topLabel.layer.borderWidth = 1

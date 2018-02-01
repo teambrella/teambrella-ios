@@ -25,7 +25,7 @@ class TeammateCandidateCell: UICollectionViewCell {
     @IBOutlet var avatarView: RoundBadgedView!
     @IBOutlet var titleLabel: Label!
     @IBOutlet var detailsLabel: UILabel!
-    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var dateLabel: InfoHelpLabel!
     @IBOutlet var chartView: PieChartView!
     @IBOutlet var badgeLabel: Label!
     @IBOutlet var cellSeparator: UIView!

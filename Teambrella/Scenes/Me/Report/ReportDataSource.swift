@@ -34,6 +34,8 @@ class ReportDataSource {
     let context: ReportContext
     var items: [ReportCellModel] = []
     var count: Int { return items.count }
+    var coverage: Coverage = Coverage.no
+    var limit: Double = 0
     
     var onUpdateCoverage: (() -> Void)?
     
@@ -47,6 +49,7 @@ class ReportDataSource {
                      DescriptionReportCellModel(title: "Me.Report.DescriptionCell.title".localized, text: ""),
                      PhotosReportCellModel(photos: []),
                      WalletReportCellModel(text: "")]
+            self.coverage = coverage
         case .newChat:
             items = [HeaderTitleReportCellModel(),
                      TitleReportCellModel(text: ""),
@@ -60,7 +63,7 @@ class ReportDataSource {
         guard let teamID = service.session?.currentTeam?.teamID else { fatalError("No current team") }
         
         switch context {
-        case .claim(item: _, coverage: _, balance: _):
+        case .claim:
             return claimModel(imageStrings: imageStrings, teamID: teamID)
         case .newChat:
             return newChatModel(teamID: teamID)
@@ -91,7 +94,9 @@ class ReportDataSource {
                                       expenses: expenses,
                                       text: message,
                                       images: imageStrings,
-                                      address: address)
+                                      address: address,
+                                      coverage: self.coverage,
+                                      limit: self.limit)
             return model
         }
         return nil
@@ -155,7 +160,9 @@ class ReportDataSource {
             guard let `self` = self else { return }
             
             switch result {
-            case let .value((coverage: coverage, limit: _)):
+            case let .value((coverage: coverage, limit: limit)):
+                self.coverage = coverage
+                self.limit = limit
                 for (idx, item) in self.items.enumerated() {
                     if var item = item as? ExpensesReportCellModel {
                     item.coverage = coverage

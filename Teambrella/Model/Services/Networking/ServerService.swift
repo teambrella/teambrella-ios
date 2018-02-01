@@ -92,9 +92,9 @@ class ServerService: NSObject {
                                        "deviceId": application.uniqueIdentifier,
                                        "info": service.info.info]
 
-            print("Headers:")
+            log("Headers:", type: .serverHeaders)
             for (key, value) in dict {
-                print("\(key): \(value)")
+                log("\(key): \(value)", type: .serverHeaders)
                 request.setValue(String(describing: value), forHTTPHeaderField: key)
             }
         }
@@ -124,7 +124,7 @@ class ServerService: NSObject {
         guard let data = data else { return }
         
         if let string = try? JSONSerialization.jsonObject(with: data, options: []) {
-            log("\(string)", type: .requestBody)
+            log("\(string)", type: .serverRequest)
         }
     }
     

@@ -56,9 +56,13 @@ struct Hex {
                     let data = createData(from: string)
                     result.append(data)
                 }
+                /*
             case let item as Int:
+//                let itemHex = String(item, radix: 16)
+//                let data = createData(from: truncatePrefix(string: itemHex))
                 let data = createData(from: String(item))
                 result.append(data)
+ */
             case let item as Data:
                 result.append(item)
             default:
@@ -76,6 +80,11 @@ struct Hex {
     func formattedString(integer: Int, bytesCount: Int) -> String {
         let format = "%0\(bytesCount * 2)X"
         return String(format: format, integer)
+    }
+
+    // 777 to "00000000000000000777"
+    func formattedString(bigInteger: BInt, bytesCount: Int) -> String? {
+        return formattedString(string: bigInteger.asString(withBase: 10), bytesCount: bytesCount)
     }
     
     // "0xABCDEF" to "00000000000000000ABCDEF"

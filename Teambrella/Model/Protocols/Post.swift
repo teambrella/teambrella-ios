@@ -22,7 +22,7 @@
 import Foundation
 
 protocol Post: EntityLike {
-    var postContent: String { get }
+    var postContent: SaneText { get }
     var dateCreated: Date { get }
     var upvotesCount: Int { get }
     var downvotesCount: Int { get }

@@ -27,7 +27,7 @@ import SwiftyJSON
  
  It is made so for faster development
  */
-struct EnhancedClaimEntity {
+struct ClaimEntityLarge {
     private var json: JSON
     
     var description: String { return "EnhancedClaimEntity id: \(id)" }
@@ -56,7 +56,7 @@ struct EnhancedClaimEntity {
     var year: Int { return basicPart["Year"].intValue }
     var smallPhotos: [String] { return basicPart["SmallPhotos"].arrayObject as? [String] ?? [] }
     var largePhotos: [String] { return basicPart["BigPhotos"].arrayObject as? [String] ?? [] }
-    var claimAmount: Double { return basicPart["ClaimAmount"].doubleValue }
+    var claimAmount: Fiat { return Fiat(basicPart["ClaimAmount"].doubleValue) }
     var estimatedExpences: Double { return basicPart["EstimatedExpenses"].doubleValue }
     var deductible: Double { return basicPart["Deductible"].doubleValue }
     var coverage: Double { return basicPart["Coverage"].doubleValue }
@@ -64,9 +64,9 @@ struct EnhancedClaimEntity {
     
     // MARK: Voting part
     
-    var ratioVoted: Double { return votingPart["RatioVoted"].doubleValue }
-    var myVote: Double? { return votingPart["MyVote"].double }
-    var proxyVote: Double? { return votingPart["ProxyVote"].double }
+    var ratioVoted: ClaimVote { return ClaimVote(votingPart["RatioVoted"].doubleValue) }
+    var myVote: ClaimVote? { return votingPart["MyVote"].double.map { ClaimVote($0) } }
+    var proxyVote: ClaimVote? { return votingPart["ProxyVote"].double.map { ClaimVote($0) } }
     var proxyAvatar: String? { return votingPart["ProxyAvatar"].string }
     var proxyName: String? { return votingPart["ProxyName"].string }
     var otherAvatars: [String] { return votingPart["OtherAvatars"].arrayObject as? [String] ?? [] }

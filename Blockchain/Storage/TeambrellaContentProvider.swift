@@ -146,7 +146,7 @@ class TeambrellaContentProvider {
         return transactions(with: NSPredicate(format: "isServerUpdateNeededValue == TRUE"))
     }
     
-    var transactionsResolvable: [Tx] {
+    var transactionsToApprove: [Tx] {
         let predicate = NSPredicate(format: "resolutionValue == \(TransactionClientResolution.received.rawValue)")
         return transactions(with: predicate)
     }
@@ -160,9 +160,11 @@ class TeambrellaContentProvider {
     }
     
     var transactionsApprovedAndCosigned: [Tx] {
+        let publicKey = user.key().publicKey
         let predicates = [NSPredicate(format: "resolutionValue == %i", TransactionClientResolution.approved.rawValue),
                           NSPredicate(format: "stateValue == %i", TransactionState.cosigned.rawValue),
-                          NSPredicate(format: "inputsValue.@count > 0")
+                          NSPredicate(format: "inputsValue.@count > 0"),
+                          NSPredicate(format: "teammateValue.publicKeyValue == %@", publicKey)
         ]
         return transactions(with: NSCompoundPredicate(andPredicateWithSubpredicates: predicates))
     }
@@ -196,13 +198,21 @@ class TeambrellaContentProvider {
     func canUnblock(tx: Tx) -> Bool {
         return tx.resolution == .blocked && isInChangeableState(tx: tx)
     }
+
+    func transactionSetToPublished(tx: Tx, hash: String) {
+        tx.cryptoTx = hash
+        transactionsChangeResolution(txs: [tx], to: .published)
+    }
     
     func transactionsChangeResolution(txs: [Tx], to resolution: TransactionClientResolution, when: Date = Date()) {
         for tx in txs {
+            let oldResolution = tx.resolution
             tx.resolution = resolution
             tx.clientResolutionTimeValue = when
             tx.isServerUpdateNeeded = true
             storage.save()
+            log("tx \(tx.id.uuidString) changed resolution from \(oldResolution) to \(tx.resolution)",
+                type: .cryptoDetails)
         }
     }
     
@@ -288,9 +298,12 @@ class TeambrellaContentProvider {
     @discardableResult
     func addNewSignature(input: TxInput, tx: Tx, signature: Data) -> TxSignature? {
         let txSignature = TxSignature.create(in: context)
+        log("Add new signature. input is: \(input.id.uuidString) amount: \(input.ammount)", type: .crypto)
         txSignature.inputValue = input
+        txSignature.inputIDValue = input.id.uuidString
         guard let me = tx.teammate?.team.me(user: user) else { return nil }
-        
+
+        txSignature.teammateIDValue = me.idValue
         txSignature.teammateValue = me
         txSignature.isServerUpdateNeededValue = true
         txSignature.signatureValue = signature

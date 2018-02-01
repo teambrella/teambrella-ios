@@ -33,7 +33,7 @@ protocol DAO {
     // actual and potential teams
     func requestTeams(demo: Bool) -> Future<TeamsModel>
     func requestPrivateList(offset: Int, limit: Int, filter: String?) -> Future<[PrivateChatUser]>
-    func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Double, limit: Double)>
+    func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Coverage, limit: Double)>
     
     func requestWallet(teamID: Int) -> Future<WalletEntity>
     func requestProxyRating(teamID: Int,
@@ -52,7 +52,7 @@ protocol DAO {
     func setLanguage() -> Future<String>
     func sendPhoto(data: Data) -> Future<String>
     
-    func createNewClaim(model: NewClaimModel) -> Future<EnhancedClaimEntity>
+    func createNewClaim(model: NewClaimModel) -> Future<ClaimEntityLarge>
     func createNewChat(model: NewChatModel) -> Future<ChatModel>
     
     func myProxy(userID: String, add: Bool) -> Future<Bool>

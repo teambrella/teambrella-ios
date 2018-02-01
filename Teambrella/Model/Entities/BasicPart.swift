@@ -17,13 +17,14 @@
 import Foundation
 import SwiftyJSON
 
-protocol BasicPart {
-    var userID: String { get }
-    var avatar: String { get }
-    
-    init(json: JSON)
-}
+//protocol BasicPart {
+//    var userID: String { get }
+//    var avatar: String { get }
+//
+//    init(json: JSON)
+//}
 
+/*
 struct BasicPartDiscussionConcrete: BasicPart, Decodable {
     enum CodingKeys: String, CodingKey {
         case userID = "UserId"
@@ -41,7 +42,9 @@ struct BasicPartDiscussionConcrete: BasicPart, Decodable {
         title = json["Title"].stringValue
     }
 }
+*/
 
+/*
 struct BasicPartTeammateConcrete: BasicPart, Decodable {
     enum CodingKeys: String, CodingKey {
         case userID = "UserId"
@@ -76,7 +79,9 @@ struct BasicPartTeammateConcrete: BasicPart, Decodable {
         claimLimit = json["ClaimLimit"].double
     }
 }
+*/
 
+/*
 struct BasicPartClaimConcrete: BasicPart, Decodable {
     enum CodingKeys: String, CodingKey {
         case userID = "UserId"
@@ -178,3 +183,4 @@ struct BasicPartFactory {
     }
     
 }
+*/

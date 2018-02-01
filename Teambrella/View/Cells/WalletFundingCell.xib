@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,40 +21,34 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletFundingCell" id="gTV-IL-0wX" customClass="WalletFundingCell" customModule="Teambrella" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="343" height="279"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletFundingCell" id="gTV-IL-0wX" customClass="WalletFundingCell" customModule="Surilla" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="227"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="343" height="279"/>
+                <rect key="frame" x="0.0" y="0.0" width="343" height="227"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ft1-fn-QZU">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="279"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="227"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED FUNDING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-FN-MiT" customClass="BlockHeaderLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="16" width="255.5" height="25.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED FUNDING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-FN-MiT" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="20" y="16" width="255.5" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SS-e1-43y" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="92" width="61" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCv-7T-Tb4" customClass="InfoLabel" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="175" width="59" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCv-7T-Tb4" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="20" y="107" width="14.5" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDf-9h-j00">
-                                <rect key="frame" x="303" y="16" width="20" height="25.5"/>
+                                <rect key="frame" x="303" y="16" width="20" height="27"/>
                                 <state key="normal" image="info"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lv4-qy-cUk" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="223" width="303" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lv4-qy-cUk" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="20" y="171" width="303" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="p9S-QN-qIM"/>
                                 </constraints>
@@ -62,19 +57,15 @@
                                     <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xdm-tr-dKv" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="52" width="199" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1r-kO-PWW" customClass="NumberView" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="20" y="135" width="199" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1r-kO-PWW" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="20" y="67" width="199" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="F7H-Bn-nbY"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Vn-JM-9Dk" customClass="BorderedButton" customModule="Teambrella" customModuleProvider="target">
-                                <rect key="frame" x="227" y="111" width="96" height="96"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Vn-JM-9Dk" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="227" y="59" width="96" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2Vn-JM-9Dk" secondAttribute="height" multiplier="1:1" id="7pO-eA-JrZ"/>
                                     <constraint firstAttribute="width" constant="96" id="ch3-Au-8KE"/>
@@ -90,22 +81,17 @@
                             <constraint firstItem="Lv4-qy-cUk" firstAttribute="leading" secondItem="ft1-fn-QZU" secondAttribute="leading" constant="20" id="4mf-7x-Fhk"/>
                             <constraint firstAttribute="trailing" secondItem="vDf-9h-j00" secondAttribute="trailing" constant="20" id="740-6A-7iv"/>
                             <constraint firstItem="sCv-7T-Tb4" firstAttribute="top" secondItem="s1r-kO-PWW" secondAttribute="bottom" id="Awf-Vg-Klo"/>
+                            <constraint firstItem="2Vn-JM-9Dk" firstAttribute="top" secondItem="dUM-FN-MiT" secondAttribute="bottom" constant="16" id="BF1-o1-wle"/>
                             <constraint firstItem="dUM-FN-MiT" firstAttribute="centerY" secondItem="vDf-9h-j00" secondAttribute="centerY" id="Hbx-gd-c32"/>
                             <constraint firstAttribute="bottom" secondItem="Lv4-qy-cUk" secondAttribute="bottom" constant="16" id="J2A-GT-QCQ"/>
                             <constraint firstItem="dUM-FN-MiT" firstAttribute="top" secondItem="ft1-fn-QZU" secondAttribute="top" constant="16" id="Mn1-SD-vAT"/>
-                            <constraint firstItem="3SS-e1-43y" firstAttribute="leading" secondItem="s1r-kO-PWW" secondAttribute="leading" id="SUw-VM-qtH"/>
-                            <constraint firstItem="Lv4-qy-cUk" firstAttribute="top" secondItem="sCv-7T-Tb4" secondAttribute="bottom" constant="28" id="Yec-j9-oMd"/>
                             <constraint firstItem="dUM-FN-MiT" firstAttribute="leading" secondItem="ft1-fn-QZU" secondAttribute="leading" constant="20" id="ZjA-Gi-fCi"/>
                             <constraint firstItem="vDf-9h-j00" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dUM-FN-MiT" secondAttribute="trailing" constant="8" id="dH2-RC-Fki"/>
                             <constraint firstItem="sCv-7T-Tb4" firstAttribute="leading" secondItem="Lv4-qy-cUk" secondAttribute="leading" id="dJX-C6-GJ2"/>
                             <constraint firstItem="vDf-9h-j00" firstAttribute="top" secondItem="ft1-fn-QZU" secondAttribute="top" constant="16" id="eAp-mV-0ru"/>
-                            <constraint firstItem="Xdm-tr-dKv" firstAttribute="width" secondItem="s1r-kO-PWW" secondAttribute="width" id="evc-bg-WUK"/>
-                            <constraint firstItem="Xdm-tr-dKv" firstAttribute="height" secondItem="s1r-kO-PWW" secondAttribute="height" id="h8u-Ip-3Sx"/>
-                            <constraint firstItem="s1r-kO-PWW" firstAttribute="top" secondItem="3SS-e1-43y" secondAttribute="bottom" constant="22" id="ii6-oH-1Bc"/>
                             <constraint firstItem="Lv4-qy-cUk" firstAttribute="top" secondItem="2Vn-JM-9Dk" secondAttribute="bottom" constant="16" id="jCi-rv-hih"/>
                             <constraint firstItem="2Vn-JM-9Dk" firstAttribute="leading" secondItem="s1r-kO-PWW" secondAttribute="trailing" constant="8" id="qjf-dt-GUu"/>
-                            <constraint firstItem="Xdm-tr-dKv" firstAttribute="leading" secondItem="s1r-kO-PWW" secondAttribute="leading" id="rLF-jA-7n8"/>
-                            <constraint firstItem="3SS-e1-43y" firstAttribute="top" secondItem="Xdm-tr-dKv" secondAttribute="bottom" id="rr4-mP-6QY"/>
+                            <constraint firstItem="sCv-7T-Tb4" firstAttribute="top" secondItem="2Vn-JM-9Dk" secondAttribute="centerY" id="uJd-k3-zqx"/>
                             <constraint firstItem="2Vn-JM-9Dk" firstAttribute="trailing" secondItem="Lv4-qy-cUk" secondAttribute="trailing" id="uwC-Et-LLc"/>
                         </constraints>
                     </view>
@@ -117,6 +103,7 @@
                 <constraint firstItem="ft1-fn-QZU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rdm-0F-U6H"/>
                 <constraint firstItem="ft1-fn-QZU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xJ3-GW-lN1"/>
             </constraints>
+            <size key="customSize" width="343" height="228"/>
             <connections>
                 <outlet property="barcodeButton" destination="2Vn-JM-9Dk" id="cyE-XR-S6A"/>
                 <outlet property="fundWalletButton" destination="Lv4-qy-cUk" id="Mrw-tE-rX3"/>
@@ -124,14 +111,12 @@
                 <outlet property="infoButton" destination="vDf-9h-j00" id="CDB-5p-PNQ"/>
                 <outlet property="lowerCurrencyLabel" destination="sCv-7T-Tb4" id="aVV-Ze-Gpw"/>
                 <outlet property="lowerNumberView" destination="s1r-kO-PWW" id="qSi-Yy-loH"/>
-                <outlet property="upperCurrencyLabel" destination="3SS-e1-43y" id="5Wd-an-IQg"/>
-                <outlet property="upperNumberView" destination="Xdm-tr-dKv" id="JNy-QQ-AvD"/>
             </connections>
-            <point key="canvasLocation" x="33.5" y="54.5"/>
+            <point key="canvasLocation" x="35.5" y="25"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="info" width="20" height="20"/>
-        <image name="qrCode" width="237" height="237"/>
+        <image name="qrCode" width="330" height="330"/>
     </resources>
 </document>

@@ -14,6 +14,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import PKHUD
 import UIKit
 
 class OthersVotedVC: UIViewController, Routable {
@@ -22,18 +23,19 @@ class OthersVotedVC: UIViewController, Routable {
     var teamID: Int?
     var teammateID: Int?
     var claimID: Int?
-
+    
     @IBOutlet var collectionView: UICollectionView!
     var dataSource: OthersVotedDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         addGradientNavBar()
+        HUD.show(.progress, onView: view)
         title = "Info.OthersVoted.title".localized
         setupCollectionView()
         dataSource = OthersVotedDataSource(vc: self)
         dataSource.onLoad = { [weak self] in
+            HUD.hide()
             self?.collectionView.reloadData()
         }
         dataSource.onSelectItem = { [weak self] indexPath in
@@ -49,5 +51,5 @@ class OthersVotedVC: UIViewController, Routable {
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: InfoHeader.cellID)
     }
-
+    
 }

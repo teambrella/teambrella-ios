@@ -190,9 +190,9 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         service.session?.currentUserName = dataSource.name
         service.session?.currentUserAvatar = model.avatar
         
-        leftBrickAmountLabel.text = String(format: "%.0f", model.coverage * 100)
-        rightBrickAmountLabel.text = String.formattedNumber(model.balance * 1000)
-        rightBrickCurrencyLabel.text = service.session?.cryptoCurrency.coinCode
+        leftBrickAmountLabel.text = String(format: "%.0f", model.coverage.percentage)
+        rightBrickAmountLabel.text = String(Int(MEth(model.balance).value))
+        rightBrickCurrencyLabel.text = service.session?.cryptoCoin.code
         
         greetingsTitleLabel.text = "Home.salutation".localized(dataSource.name)
         greetingsSubtitileLabel.text = "Home.subtitle".localized
@@ -206,7 +206,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         }
         itemCard.titleLabel.text = model.objectName
         itemCard.statusLabel.text = "Home.itemCard.status".localized
-        itemCard.subtitleLabel.text = model.teamPart.coverage.localizedCoverageType
+        itemCard.subtitleLabel.text = model.teamPart.coverageType.localizedCoverageType
         
         let buttonTitle = model.haveVotingClaims
             ? "Home.submitButton.anotherClaim".localized
@@ -343,7 +343,7 @@ extension HomeVC: UIScrollViewDelegate {
 extension HomeVC: ReportDelegate {
     func report(controller: ReportVC, didSendReport data: Any) {
         service.router.navigator?.popViewController(animated: false)
-        if let claim = data as? EnhancedClaimEntity {
+        if let claim = data as? ClaimEntityLarge {
             service.router.presentClaim(claimID: claim.id)
         }
     }

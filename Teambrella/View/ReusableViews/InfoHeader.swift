@@ -24,10 +24,14 @@ import UIKit
 class InfoHeader: UICollectionReusableView, XIBInitableCell {
     @IBOutlet var leadingLabel: Label!
     @IBOutlet var trailingLabel: Label!
-
+    @IBOutlet var trailingLabelTrailingConstraint: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        if let label = leadingLabel {
+            label.font = UIFont.teambrellaBold(size: 12)
+            label.textColor = .blueyGray
+        }
     }
     
 }

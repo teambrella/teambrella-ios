@@ -117,7 +117,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     
     func setupObjectView() {
         objectView.clipsToBounds = false
-        ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
+        ViewDecorator.shadow(for: objectView, opacity: 0.1, radius: 8)
         objectImageView.layer.masksToBounds = true
         objectImageView.layer.cornerRadius = 4
         reportButton.setTitle("Team.Claims.objectView.reportButton.title".localized, for: .normal)
@@ -260,7 +260,7 @@ extension ClaimsVC: UIViewControllerPreviewingDelegate {
 extension ClaimsVC: ReportDelegate {
     func report(controller: ReportVC, didSendReport data: Any) {
         service.router.navigator?.popViewController(animated: false)
-        if let claim = data as? EnhancedClaimEntity {
+        if let claim = data as? ClaimEntityLarge {
             service.router.presentClaim(claimID: claim.id)
         }
     }

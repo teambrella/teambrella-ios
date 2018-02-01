@@ -1,10 +1,5 @@
 //
-//  RiskTableHeader.swift
-//  Teambrella
-//
-//  Created by Екатерина Рыжова on 12.07.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,13 +16,19 @@
 
 import UIKit
 
-class RiskTableHeader: UICollectionReusableView, XIBInitableCell {
-    @IBOutlet var leftLabel: UILabel!
-    @IBOutlet var rightLabel: UILabel!
+class WalletInfoCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var amount: WalletAmountLabel!
+    @IBOutlet var auxillaryAmount: UILabel!
+    @IBOutlet var currencyLabel: UILabel!
+    @IBOutlet var numberBar: NumberBar!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        ViewDecorator.shadow(for: self, opacity: 0.1, radius: 5)
+        ViewDecorator.roundedEdges(for: self)
+        numberBar.left?.alignmentType = .leading
+        numberBar.right?.alignmentType = .leading
+        numberBar.areVerticalLinesVisible = false
     }
     
 }

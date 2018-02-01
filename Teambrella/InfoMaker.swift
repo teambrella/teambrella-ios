@@ -85,7 +85,7 @@ class InfoMaker {
         }
 
         return isReady
-            ? "\(options.rawValue);\(systemVersion);\(platformHumanReadable)"
+            ? "\(options.rawValue);\(systemVersion);\(platformHumanReadable)"//";\(Int(appSizeMB + 0.5));\(memoryMB)"
             : ""
     }
 
@@ -105,6 +105,64 @@ class InfoMaker {
             }
             self.options = options
             self.isReady = true
+        }
+    }
+
+     lazy private var appSizeMB: Double = {
+        var paths = [Bundle.main.bundlePath]
+        let docDirDomain = FileManager.SearchPathDirectory.documentDirectory
+        let docDirs = NSSearchPathForDirectoriesInDomains(docDirDomain, .userDomainMask, true)
+        if let docDir = docDirs.first {
+            paths.append(docDir)
+        }
+        let libDirDomain = FileManager.SearchPathDirectory.libraryDirectory
+        let libDirs = NSSearchPathForDirectoriesInDomains(libDirDomain, .userDomainMask, true)
+        if let libDir = libDirs.first {
+            paths.append(libDir)
+        }
+        paths.append(NSTemporaryDirectory() as String)
+
+        var totalSize: Double = 0
+        for path in paths {
+            if let size = bytesIn(directory: path) {
+                totalSize += size
+            }
+        }
+        return totalSize / 1000000
+    }()
+
+    private func bytesIn(directory: String) -> Double? {
+        let fm = FileManager.default
+        guard let subdirectories = try? fm.subpathsOfDirectory(atPath: directory) as NSArray else {
+            return nil
+        }
+        let enumerator = subdirectories.objectEnumerator()
+        var size: UInt64 = 0
+        while let fileName = enumerator.nextObject() as? String {
+            do {
+                let fileDictionary = try
+                    fm.attributesOfItem(atPath: directory.appending("/" + fileName)) as NSDictionary
+                size += fileDictionary.fileSize()
+            } catch let err {
+                log("err getting attributes of file \(fileName): \(err.localizedDescription)", type: [.error, .info])
+            }
+        }
+        return Double(size)
+    }
+
+    var memoryMB: Int {
+        var taskInfo = mach_task_basic_info()
+        var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size) / 4
+        let kerr: kern_return_t = withUnsafeMutablePointer(to: &taskInfo) {
+            $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
+                task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
+            }
+        }
+
+        if kerr == KERN_SUCCESS {
+            return Int(taskInfo.resident_size / 1000000)
+        } else {
+            return -1
         }
     }
 

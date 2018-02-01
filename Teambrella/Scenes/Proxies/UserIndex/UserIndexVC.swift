@@ -30,7 +30,7 @@ class UserIndexVC: UIViewController {
         static let avatarSizeShrinked: CGFloat         = 40
         static let avatarSizeExpanded: CGFloat         = 56
         static let userIndexCellHeight: CGFloat        = 75
-        static let headerHeight: CGFloat               = 40
+        static let headerHeight: CGFloat               = 50
         static let scrollingVelocityThreshold: CGFloat = 10
     }
     
@@ -187,7 +187,7 @@ extension UserIndexVC: UICollectionViewDelegate {
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
         if let cell = view as? InfoHeader {
-            cell.leadingLabel.text = "Proxy.UserIndexVC.members".localized
+            cell.leadingLabel.text = "Proxy.UserIndexVC.allTeamsRating".localized
             cell.trailingLabel.text = "Proxy.UserIndexVC.proxyRank".localized
         }
     }

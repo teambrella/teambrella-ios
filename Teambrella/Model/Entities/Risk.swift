@@ -1,10 +1,5 @@
 //
-//  TeammateHeaderView.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 29.05.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -19,10 +14,18 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import UIKit
+import Foundation
 
-class TeammateHeaderView: UICollectionReusableView {
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var subtitleLabel: UILabel!
-    
+struct Risk: Decodable {
+    let value: Double
+
+    init(_ value: Double) {
+        self.value = value
+    }
+
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Double.self)
+        self.value = value
+    }
+
 }

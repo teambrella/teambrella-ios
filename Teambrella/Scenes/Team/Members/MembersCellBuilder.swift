@@ -33,7 +33,7 @@ struct MembersCellBuilder {
             let detailsText: String = "\(teammate.model), \(teammate.year)".uppercased()
             cell.detailsLabel.text = detailsText
             let dateText: String = DateProcessor().stringFromNow(minutes: -teammate.minutesRemaining)
-            cell.dateLabel.text = dateText
+            cell.dateLabel.text = dateText.uppercased()
             cell.chartView.setupWith(remainingMinutes: teammate.minutesRemaining)
         } else if let cell = cell as? TeammateCell {
             if let url: URL = URL(string: URLBuilder().avatarURLstring(for: teammate.avatar)) {
@@ -41,7 +41,8 @@ struct MembersCellBuilder {
             }
             guard let currency: String = service.session?.currentTeam?.currencySymbol else { return }
             
-            let amountText: String = currency + "\(abs(Int(teammate.totallyPaid)))"
+            let coeff = teammate.totallyPaid > 0 ? 0.5 : -0.5
+            let amountText: String = currency + "\(abs(Int(teammate.totallyPaid + coeff)))"
             cell.amountLabel.text = amountText
             let sign: String = teammate.totallyPaid >= 0.5 ? "+" : teammate.totallyPaid <= -0.5 ? "-" : ""
             cell.signLabel.text = sign

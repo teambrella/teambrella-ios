@@ -17,9 +17,18 @@
 import Foundation
 import SwiftKeccak
 
-struct EthereumAddress {
+struct EthereumAddress: Decodable {
     let string: String
     let hasChecksum: Bool
+
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(String.self)
+        guard let address = EthereumAddress(string: value) else {
+            throw TeambrellaErrorFactory.malformedEthereumAddress()
+        }
+
+        self = address
+    }
     
     init?(string: String) {
         var string = string

@@ -310,7 +310,7 @@ class ChatTextCell: UICollectionViewCell {
         for (idx, fragment) in fragments.enumerated() {
             switch fragment {
             case let .text(text):
-                let textView: UITextView = createTextView(for: text, height: heights[idx])
+                let textView: UITextView = createTextView(for: text.sane, height: heights[idx])
                 contentView.addSubview(textView)
                 views.append(textView)
                 result.append(textView)
@@ -400,7 +400,6 @@ class ChatImageView: UIImageView {
     
     @objc
     func tapView(sender: UITapGestureRecognizer) {
-        print("tap")
         guard let galleryView = galleryView else { return }
    
         self.addSubview(galleryView)

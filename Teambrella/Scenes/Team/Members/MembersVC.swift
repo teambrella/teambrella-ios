@@ -19,10 +19,10 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import MessageUI
 import PKHUD
 import UIKit
 import XLPagerTabStrip
-import MessageUI
 
 final class MembersVC: UIViewController, IndicatorInfoProvider {
     struct Constant  {
@@ -47,6 +47,9 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.register(InfoHeader.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: InfoHeader.cellID)
         configureSearchController()
         HUD.show(.progress, onView: view)
         dataSource.onUpdate = { [weak self] in
@@ -166,10 +169,9 @@ extension MembersVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                   withReuseIdentifier: "TeammatesHeader",
-                                                                   for: indexPath)
-        return view
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                    withReuseIdentifier: InfoHeader.cellID,
+                                                                    for: indexPath)
     }
     
 }
@@ -200,9 +202,9 @@ extension MembersVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        if let view = view as? TeammateHeaderView {
-            view.titleLabel.text = dataSource.headerTitle(indexPath: indexPath)
-            view.subtitleLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
+        if let view = view as? InfoHeader {
+            view.leadingLabel.text = dataSource.headerTitle(indexPath: indexPath)
+            view.trailingLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
         }
     }
     

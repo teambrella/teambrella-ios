@@ -32,27 +32,27 @@ struct WalletTransactionsModel: Decodable {
         case to = "To"
     }
 
+    struct TransactionTo: Decodable {
+        enum CodingKeys: String, CodingKey {
+            case kind = "Kind"
+            case userID = "UserId"
+            case name = "UserName"
+            case amount = "Amount"
+            case avatar = "Avatar"
+        }
+
+        let kind: TransactionKind
+        let userID: String
+        let name: String
+        let amount: Ether
+        let avatar: String
+    }
+
     let claimID: Int?
     let lastUpdated: Int
     let serverTxState: TransactionState
     let dateCreated: Date?
     let id: String
-    let to: [WalletTransactionTo]
+    let to: [TransactionTo]
     
-}
-
-struct WalletTransactionTo: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case kind = "Kind"
-        case userID = "UserId"
-        case name = "UserName"
-        case amount = "Amount"
-        case avatar = "Avatar"
-    }
-
-    let kind: TransactionKind
-    let userID: String
-    let name: String
-    let amount: Double
-    let avatar: String
 }

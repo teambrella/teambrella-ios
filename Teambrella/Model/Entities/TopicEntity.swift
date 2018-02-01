@@ -26,40 +26,35 @@ struct TopicEntity: Topic {
     let id: String
     let lastUpdated: Int64
     
-    let originalPostText: String
+    let originalPostText: SaneText
     let topPosterAvatars: [String]
     let posterCount: Int
     var unreadCount: Int
     var minutesSinceLastPost: Int
     
-    var posts: [Post]
-    
     var description: String {
-        return "TopicEntity id: \(id); posts: \(posts.count)"
+        return "TopicEntity id: \(id)"
     }
     
     init(json: JSON) {
         id = json["TopicId"].stringValue
         lastUpdated = json["LastUpdated"].int64Value
         
-        originalPostText = json["OriginalPostText"].stringValue
+        originalPostText = SaneText(text: json["OriginalPostText"].stringValue)
         topPosterAvatars = json["TopPosterAvatars"].arrayObject as? [String] ?? []
         posterCount = json["PosterCount"].intValue
         unreadCount = json["UnreadCount"].intValue
         minutesSinceLastPost = json["SinceLastPostMinutes"].intValue
-        
-        posts = PostFactory.posts(with: json["Posts"]) ?? []
     }
     
     init(id: String) {
         self.id = id
         lastUpdated = 0
-        originalPostText = ""
+        originalPostText = SaneText.empty
         topPosterAvatars = []
         posterCount = 0
         unreadCount = 0
         minutesSinceLastPost = 0
-        posts = []
     }
 }
 
