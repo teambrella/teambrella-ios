@@ -56,9 +56,13 @@ struct Hex {
                     let data = createData(from: string)
                     result.append(data)
                 }
+                /*
             case let item as Int:
+//                let itemHex = String(item, radix: 16)
+//                let data = createData(from: truncatePrefix(string: itemHex))
                 let data = createData(from: String(item))
                 result.append(data)
+ */
             case let item as Data:
                 result.append(item)
             default:

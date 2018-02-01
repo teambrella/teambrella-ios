@@ -70,21 +70,22 @@ class AbiArguments {
     }
 
     static func parseDecimalAmount(decimalAmount: String) -> String? {
-        /*
-            BigDecimal e = new BigDecimal(decimalAmount, MathContext.UNLIMITED);
-            BigInteger wei = e.multiply(WEIS_IN_ETH).toBigInteger();
-            return Hex.format(wei, BYTES_IN_WORD);
-        */
         guard let e: Double = Double(decimalAmount) else {
             log("String \(decimalAmount) is not convertible to Double", type: [.error, .crypto])
             return nil
         }
 
+        let weis = e * Double(Constant.weisInEth)
+        let weisInt = UInt(weis)
+        let hex = String(weisInt, radix: 16)
+
+        /*
         let weis: BDouble = BDouble(e) * BDouble(Constant.weisInEth)
         let weisInt: BInt = BInt(weis.decimalExpansion(precisionAfterComma: 0))
         let dec = weisInt.asString(withBase: 10)
         let hex = weisInt.asString(withBase: 16)
-        log("Parse amount in ETH: \(decimalAmount) to Weis dec: \(dec); hex: \(hex)", type: .cryptoDetails)
+    */
+        log("Parse amount in ETH: \(decimalAmount) to Weis dec: \(weisInt); hex: \(hex)", type: .crypto)
         return  Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)
     }
     
