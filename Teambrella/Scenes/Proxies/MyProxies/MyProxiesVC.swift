@@ -65,9 +65,9 @@ class MyProxiesVC: UIViewController {
     
     func setupCollectionView() {
         collectionView.register(ProxyCell.nib, forCellWithReuseIdentifier: ProxyCell.cellID)
-        collectionView.register(NeedHelpView.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                withReuseIdentifier: NeedHelpView.cellID)
+//        collectionView.register(NeedHelpView.nib,
+//                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+//                                withReuseIdentifier: NeedHelpView.cellID)
         
         let longPressGesture = UILongPressGestureRecognizer(target: self,
                                                             action: #selector(handleGesture(gesture:)))
@@ -132,14 +132,14 @@ extension MyProxiesVC: UICollectionViewDataSource {
         return collectionView.dequeueReusableCell(withReuseIdentifier: ProxyCell.cellID, for: indexPath)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                   withReuseIdentifier: NeedHelpView.cellID,
-                                                                   for: indexPath)
-        return view
-    }
+//    func collectionView(_ collectionView: UICollectionView,
+//                        viewForSupplementaryElementOfKind kind: String,
+//                        at indexPath: IndexPath) -> UICollectionReusableView {
+//        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+//                                                                   withReuseIdentifier: NeedHelpView.cellID,
+//                                                                   for: indexPath)
+//        return view
+//    }
     
 }
 
@@ -158,9 +158,9 @@ extension MyProxiesVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        if let cell = view as? NeedHelpView {
-            cell.label.text = "Proxy.MyProxiesVC.infoButton".localized
-        }
+//        if let cell = view as? NeedHelpView {
+//            cell.label.text = "Proxy.MyProxiesVC.infoButton".localized
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -189,6 +189,12 @@ extension MyProxiesVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 60)
+        return CGSize(width: collectionView.bounds.width, height: 16)
+        //return CGSize(width: collectionView.bounds.width, height: 60)
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 16)
     }
 }

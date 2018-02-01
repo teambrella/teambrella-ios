@@ -158,7 +158,6 @@ struct ReportCellBuilder {
             cell.textField.tag = indexPath.row
             cell.textField.removeTarget(reportVC, action: nil, for: .allEvents)
             cell.textField.addTarget(reportVC, action: #selector(ReportVC.textFieldDidChange), for: .editingChanged)
-            cell.textField.placeholder = "Me.Report.newDiscussion.title-placeholder".localized
         default:
             break
         }

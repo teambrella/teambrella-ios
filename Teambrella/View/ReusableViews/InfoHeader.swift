@@ -28,6 +28,10 @@ class InfoHeader: UICollectionReusableView, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        if let label = leadingLabel {
+            label.font = UIFont.teambrellaBold(size: 12)
+            label.textColor = .blueyGray
+        }
     }
     
 }

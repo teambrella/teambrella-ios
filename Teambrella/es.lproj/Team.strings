@@ -42,7 +42,7 @@
 "Team.TeammateCell.covered"                      = "CUBIERTO";
 "Team.TeammateCell.collisionDeductible"          = "Deducible por colisión";
 "Team.TeammateCell.limit"                        = "LIMIT";
-"Team.TeammateCell.riskFactor"                   = "FACTOR DE RIESGO";
+"Team.TeammateCell.risk"                         = "RIESGO";
 "Team.TeammateCell.votingStats"                  = "ESTADISTICA DE VOTACIÓN";
 "Team.TeammateCell.weight"                       = "PESO";
 "Team.TeammateCell.proxyRank"                    = "RANGO DE PROXY";
@@ -169,30 +169,26 @@
 "Team.ChooseTeam.switchUser"                     = "Cambiar usuario";
 "Team.Chat.Input.yourMessageHere"                = "Tu mensaje aquí";
 
-//---waiting---
-"Team.Claims.Empty.title" = "No claims in the team so far";
-"Team.Claims.Empty.details" = "We will notify you when a claim is submitted.";
-"Team.Chat.NotificationSettings.title" = "NOTIFICATION SETTINGS";
-"Team.Chat.NotificationSettings.subscribed" = "Subscribed";
-"Team.Chat.NotificationSettings.subscribed.details" = "You will get a notification of each message.";
-"Team.Chat.NotificationSettings.unsubscribed" = "No Notifications";
-"Team.Chat.NotificationSettings.unsubscribed.details" = "Notifications will be disabled for this chat.";
-"Team.Chat.Unmute" = "You now receive notifications for this conversation.";
-"Team.Chat.Mute" = "You now don't receive notifications for this conversation.";
+"Team.Claims.Empty.title" = "Hasta el momento no hay reclamaciones en tu equipo";
+"Team.Claims.Empty.details" = "Te notificaremos cuando tu reclamaciòn esta enviada.";
+"Team.Chat.NotificationSettings.title" = "AJUSTES DE NOTIFICACIÓN";
+"Team.Chat.NotificationSettings.subscribed" = "Suscrito";
+"Team.Chat.NotificationSettings.subscribed.details" = "Recibirás notificación de cada mensaje.";
+"Team.Chat.NotificationSettings.unsubscribed" = "Sin notificaciones";
+"Team.Chat.NotificationSettings.unsubscribed.details" = "Notificaciones de este chat se desactivarán.";
+"Team.Chat.Unmute" = "Ahora recibes notificaciones de este discusión..";
+"Team.Chat.Mute" = "Ahora no recibes notificaciones de este discusión.";
 
-"Team.Claims.objectView.reportButton.title" = "Report a Claim";
+"Team.Claims.objectView.reportButton.title" = "Enviar una reclamación";
 
-"Team.Chat.ObjectView.VoteLabel" = "Vote";
-"Team.Chat.ObjectView.RevoteLabel" = "Revote";
-"Team.Chat.ObjectView.ClaimAmountLabel" = "CLAIM AMOUNT - ";
-"Team.Chat.ObjectView.TitleLabel" = "TU VOTO";
-"Team.Chat.ObjectView.TitleLabel.risk" = "RIESGO";
-"Team.Chat.ObjectView.TitleLabel.team" = "VOTO DEL EQUIPO";
+"Team.Chat.ObjectView.VoteLabel" = "Votar";
+"Team.Chat.ObjectView.RevoteLabel" = "Revotar";
+"Team.Chat.ObjectView.ClaimAmountLabel" = "CANTIDAD RECLAMADA - ";
 
 "Team.Vote.doNotAccept" = "No aceptar";
 
+"Team.Vote.SwipeToVote" = "Desliza a la izquierda o derecha para desplazarse";
+
 ////waiting
-"Team.Vote.SwipeToVote" = "Swipe left and right to vote";
 "Team.Claim.Transactions.from" = "DE";
-
-
+"Team.VotingRiskCell.teamAvg" = "TEAM\nAVG";

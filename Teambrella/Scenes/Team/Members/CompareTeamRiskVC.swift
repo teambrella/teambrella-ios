@@ -84,7 +84,7 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
             cell.nameLabel.text = model.name.entire
             cell.avatar.showAvatar(string: model.avatar)
             cell.itemLabel.text = model.model
-            cell.riskLabel.text = model.risk.map { String($0) } ?? ""
+            cell.riskLabel.text = model.risk.map { String(format: "%.2f", $0) } ?? ""
             let maxRow = dataSource.itemsInSection(section: indexPath.section)
             cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
             

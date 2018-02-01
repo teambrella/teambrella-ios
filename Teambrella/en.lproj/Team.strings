@@ -39,15 +39,15 @@
 "Team.MembersVC.indicatorTitle"                  = "Teammates";
 "Team.MembersVC.searchHere"                      = "Search";
 
-"Team.TeammateCell.coversMe"                     = "COVER ME";
+"Team.TeammateCell.coversMe"                     = "COVERS ME";
 "Team.TeammateCell.coverThem"                    = "COVER THEM";
 "Team.TeammateCell.wouldCoverMe"                 = "WOULD COVER ME";
 "Team.TeammateCell.wouldCoverThem"               = "WOULD COVER THEM";
 "Team.TeammateCell.youAreProxy_format_s"         = "You are proxy for %@";
 "Team.TeammateCell.covered"                      = "COVERED";
 "Team.TeammateCell.collisionDeductible"          = "Collision Deductible";
-"Team.TeammateCell.limit"                        = "LIMIT";
-"Team.TeammateCell.riskFactor"                   = "RISK FACTOR";
+"Team.TeammateCell.limit"                        = "CLAIM LIMIT";
+"Team.TeammateCell.risk"                         = "RISK";
 
 "Team.TeammateCell.votingStats"                  = "VOTING STATS";
 "Team.TeammateCell.weight"                       = "WEIGHT";
@@ -58,8 +58,8 @@
 "Team.TeammateCell.applicationDiscussion"        = "Application Discussion";
 
 "Team.TeammateCell.timeLabel.justNow"            = "JUST NOW";
-"Team.TeammateCell.timeLabel.minutes_format_i"   = "%d MIN AGO";
-"Team.TeammateCell.timeLabel.hours_format_i"     = "%d HR AGO";
+"Team.TeammateCell.timeLabel.minutes_format_i"   = "%d MIN. AGO";
+"Team.TeammateCell.timeLabel.hours_format_i"     = "%d HR. AGO";
 "Team.TeammateCell.timeLabel.longAgo"            = "LONG AGO";
 "Team.TeammateCell.contact"                      = "CONTACT";
 "Team.TeammateCell.buttonTitle_format_i"         = "See Claims (%d)";
@@ -201,3 +201,4 @@
 "Team.Vote.SwipeToVote" = "Swipe left and right to vote";
 
 "Team.Claim.Transactions.from" = "FROM";
+"Team.VotingRiskCell.teamAvg" = "TEAM\nAVG";
