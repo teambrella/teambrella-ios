@@ -27,7 +27,7 @@ struct OthersVotedCellModel {
         avatar = voter.avatar
         name = voter.name
         subtitle = "Info.OthersVoted.Cell.Weight".localized
-        subtitleValue = voter.weight.flatMap { String.formattedNumber($0) } ?? "..."
-        value = voter.vote.flatMap { String.formattedNumber($0) } ?? "..."
+        subtitleValue = voter.weight.flatMap { String(format: "%.1f", $0) } ?? "..."
+        value = voter.vote.flatMap { String(format: "%.2f", $0) } ?? "..."
     }
 }

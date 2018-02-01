@@ -201,3 +201,4 @@
 "Team.Vote.SwipeToVote" = "Swipe left and right to vote";
 
 "Team.Claim.Transactions.from" = "FROM";
+"Team.VotingRiskCell.teamAvg" = "TEAM\nAVG";
