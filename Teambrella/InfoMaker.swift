@@ -140,7 +140,8 @@ class InfoMaker {
         var size: UInt64 = 0
         while let fileName = enumerator.nextObject() as? String {
             do {
-                let fileDictionary = try fm.attributesOfItem(atPath: directory.appending("/" + fileName)) as NSDictionary
+                let fileDictionary = try
+                    fm.attributesOfItem(atPath: directory.appending("/" + fileName)) as NSDictionary
                 size += fileDictionary.fileSize()
             } catch let err {
                 log("err getting attributes of file \(fileName): \(err.localizedDescription)", type: [.error, .info])
@@ -160,8 +161,7 @@ class InfoMaker {
 
         if kerr == KERN_SUCCESS {
             return Int(taskInfo.resident_size / 1000000)
-        }
-        else {
+        } else {
             return -1
         }
     }

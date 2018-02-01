@@ -84,7 +84,7 @@ struct WithdrawCellBuilder {
             cell.cryptoAmountTextField.text = model.amountValue
             cell.submitButton.setTitle(model.buttonTitle, for: .normal)
             
-            //            cell.cryptoAmountTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            //          cell.cryptoAmountTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
             //            cell.cryptoAmountTextField.text = model.amountValue
             //            cell.cryptoAmountTextField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
             //            // cell.cryptoAmountTextField.tag = indexPath.row
@@ -94,7 +94,7 @@ struct WithdrawCellBuilder {
             //            cell.cryptoAddressTextView.text = model.toValue
             //            // cell.cryptoAddressTextView.tag = indexPath.row
             //            cell.cryptoAddressTextView.delegate = delegate
-            //            cell.cryptoAddressTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            //          cell.cryptoAddressTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
             
         } else if let cell = cell as? WithdrawCell, let model = model as? WithdrawTransactionCellModel {
             cell.upperLabel.text = model.topText

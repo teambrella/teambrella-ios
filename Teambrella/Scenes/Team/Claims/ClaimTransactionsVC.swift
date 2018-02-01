@@ -122,6 +122,7 @@ extension ClaimTransactionsVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
+        // swiftlint:disable:next empty_count
         if dataSource.count > 0 {
             guard let view = view as? InfoHeader else { return }
             

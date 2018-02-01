@@ -56,5 +56,3 @@ struct WalletTransactionsModel: Decodable {
     let to: [TransactionTo]
     
 }
-
-

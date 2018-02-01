@@ -85,7 +85,6 @@ struct ClaimCellBuilder {
         cell.pieChart.startAngle = 0
         cell.pieChart.setupWith(remainingMinutes: claim.minutesRemaining)
         
-
         if let myVote = claim.myVote {
             cell.yourVotePercentValue.text = String.truncatedNumber(myVote.percentage)
             cell.yourVoteAmount.text = String.truncatedNumber(myVote.fiat(from: claim.claimAmount).value)
