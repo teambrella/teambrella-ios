@@ -133,6 +133,7 @@ public class BlockchainServer {
                                                 signatures: signatures,
                                                 lastUpdated: lastUpdated,
                                                 formatter: formatter)
+        log("Get updates updateInfo signatures: \(updateInfo.txSignatures)", type: .cryptoDetails)
         let request = self.request(string: "me/GetUpdates", key: key, updateInfo: updateInfo)
         Alamofire.request(request).responseJSON { [weak self] response in
             guard let me = self else { return }

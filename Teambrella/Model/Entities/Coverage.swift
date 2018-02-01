@@ -21,6 +21,8 @@ struct Coverage: Decodable {
     var percentage: Double { return value * 100 }
     var integerPercentage: Int { return Int(percentage + 0.5) }
 
+    static var no: Coverage { return Coverage(0) }
+
     func ethers(from: Ether) -> Ether {
         return Ether(from.value * value)
     }

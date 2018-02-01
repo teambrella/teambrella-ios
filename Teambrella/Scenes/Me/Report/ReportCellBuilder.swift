@@ -91,6 +91,7 @@ struct ReportCellBuilder {
         
         cell.expensesTextField.delegate = reportVC
         cell.expensesTextField.text = model.expensesString
+        cell.expensesTextField.placeholder = "Max: \(Int(reportVC.limit))"
         cell.expensesTextField.keyboardType = .decimalPad
         cell.expensesTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
         cell.expensesTextField.rightViewMode = .unlessEditing
@@ -145,6 +146,7 @@ struct ReportCellBuilder {
             cell.textField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
             cell.textField.text = model.text
             cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
+            cell.textField.placeholder = ""
             cell.textField.tag = indexPath.row
             cell.textField.removeTarget(reportVC, action: nil, for: .allEvents)
             cell.textField.addTarget(reportVC, action: #selector(ReportVC.textFieldDidChange), for: .editingChanged)

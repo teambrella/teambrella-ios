@@ -879,7 +879,7 @@ public struct BInt:
 //
 //
 //
-fileprivate extension String
+/*fileprivate*/ extension String
 {
     // Splits the string into equally sized parts (exept for the last one).
     func split(_ count: Int) -> [String] {

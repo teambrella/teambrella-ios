@@ -19,7 +19,7 @@ import Foundation
 class AbiArguments {
     struct Constant {
         static let bytesInWord = 32
-        static let weisInEth: Decimal = 1_000_000_000_000_000_000
+        static let weisInEth: Int = 1_000_000_000_000_000_000
     }
     
     enum AbiArgumentsError: Error {
@@ -70,21 +70,23 @@ class AbiArguments {
     }
 
     static func parseDecimalAmount(decimalAmount: String) -> String? {
-        /*
-            BigDecimal e = new BigDecimal(decimalAmount, MathContext.UNLIMITED);
-            BigInteger wei = e.multiply(WEIS_IN_ETH).toBigInteger();
-            return Hex.format(wei, BYTES_IN_WORD);
-        */
-        guard let e: Decimal = Decimal(string: decimalAmount) else {
-            log("String \(decimalAmount) is not convertible to Decimal", type: [.error, .crypto])
+        guard let e: Double = Double(decimalAmount) else {
+            log("String \(decimalAmount) is not convertible to Double", type: [.error, .crypto])
             return nil
         }
 
-        let weis: Decimal = e * Constant.weisInEth
+        let weis = e * Double(Constant.weisInEth)
+        let weisInt = UInt(weis)
+        let hex = String(weisInt, radix: 16)
 
-        //let e: BInt = BInt(decimalAmount)
-        //let weis: BInt = e * BInt(Constant.weisInEth.description)
-        return  Hex().formattedString(string: String(describing: weis), bytesCount: Constant.bytesInWord)
+        /*
+        let weis: BDouble = BDouble(e) * BDouble(Constant.weisInEth)
+        let weisInt: BInt = BInt(weis.decimalExpansion(precisionAfterComma: 0))
+        let dec = weisInt.asString(withBase: 10)
+        let hex = weisInt.asString(withBase: 16)
+    */
+        log("Parse amount in ETH: \(decimalAmount) to Weis dec: \(weisInt); hex: \(hex)", type: .crypto)
+        return  Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)
     }
     
     func add(_ argument: Any) throws {

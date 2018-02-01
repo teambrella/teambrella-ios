@@ -155,31 +155,8 @@ class TeambrellaService: NSObject {
         contentProvider.save()
     }
     
-    /*
-     private func updateAddresses() {
-     for teammate in contentProvider.teammates {
-     guard teammate.addresses.isEmpty == false else { continue }
-     
-     if teammate.addressCurrent == nil {
-     let filtered = teammate.addresses.filter { $0.status == UserAddressStatus.current }
-     if let curServerAddress = filtered.first {
-     curServerAddress.status = .current
-     }
-     }
-     }
-     }
-     */
-    
-    //    private var observerToken: NSKeyValueObservation?
-    
-    //    init() {
-    //        observerToken = service.server.observe(\.timestamp) { [weak self] object, change in
-    //            self?.processor.key = object.key
-    //        }
-    //    }
-    
     func sync(completion: @escaping (UIBackgroundFetchResult) -> Void) {
-        log("Teambrella service start sync", type: .crypto)
+        log("Teambrella service start sync", type: .cryptoDetails)
         log("Public Key: \(key.publicKey)", type: .cryptoDetails)
         isStorageCleared = false
         registerBackgroundTask(completion: completion)
@@ -238,7 +215,7 @@ class TeambrellaService: NSObject {
     }
     
     func createWallets(gasLimit: Int, completion: @escaping (Bool) -> Void) {
-        log("Teambrella service start \(#function)", type: .crypto)
+        log("Teambrella service start \(#function)", type: .cryptoDetails)
         let myPublicKey = key.publicKey
         let multisigsToCreate = contentProvider.multisigsToCreate(publicKey: myPublicKey)
         guard !multisigsToCreate.isEmpty else {
@@ -306,7 +283,7 @@ class TeambrellaService: NSObject {
     }
     
     func verifyIfWalletIsCreated(gasLimit: Int, completion: (Bool) -> Void) {
-        log("Teambrella service start \(#function)", type: .crypto)
+        log("Teambrella service start \(#function)", type: .cryptoDetails)
         let publicKey = key.publicKey
         let creationTxs = contentProvider.multisigsInCreation(publicKey: publicKey)
         var success = !creationTxs.isEmpty
@@ -373,7 +350,7 @@ class TeambrellaService: NSObject {
     }
     
     func depositWallet() {
-        log("Teambrella service start \(#function)", type: .crypto)
+        log("Teambrella service start \(#function)", type: .cryptoDetails)
         let publicKey = key.publicKey
         let myCurrentMultisigs = contentProvider.currentMultisigsWithAddress(publicKey: publicKey)
         if let multisig = myCurrentMultisigs.first {
@@ -385,37 +362,20 @@ class TeambrellaService: NSObject {
     }
     
     func autoApproveTxs() {
-        /*
-         Android version:
-
-         List<ContentProviderOperation> operations = new LinkedList<>();
-         List<Tx> txs = getTxToApprove();
-         for (Tx tx : txs) {
-         operations.add(ContentProviderOperation.newUpdate(TeambrellaRepository.Tx.CONTENT_URI)
-         .withValue(TeambrellaRepository.Tx.RESOLUTION, TeambrellaModel.TX_CLIENT_RESOLUTION_APPROVED)
-         .withValue(TeambrellaRepository.Tx.CLIENT_RESOLUTION_TIME, mSDF.format(new Date()))
-         .withValue(TeambrellaRepository.Tx.NEED_UPDATE_SERVER, true)
-         .withSelection(TeambrellaRepository.Tx.ID + "=?", new String[]{tx.id.toString()})
-         .build());
-         }
-         return operations;
-         */
-        log("Teambrella service start \(#function)", type: .crypto)
+        log("Teambrella service start \(#function)", type: .cryptoDetails)
         let txs = contentProvider.transactionsToApprove
         log("Teambrella service has \(txs.count) transactions to approve", type: .crypto)
         contentProvider.transactionsChangeResolution(txs: txs, to: .approved, when: Date())
     }
     
     func cosignApprovedTransactions() throws {
-        log("Teambrella service start \(#function)", type: .crypto)
-        //let publicKey = key.publicKey
+        log("Teambrella service start \(#function)", type: .cryptoDetails)
         let list = contentProvider.transactionsCosignable
         log("Teambrella service has \(list.count) cosignable transactions", type: .crypto)
         let user = contentProvider.user
         for tx in list {
             try cosignTransaction(transaction: tx, userID: user.id)
         }
-        contentProvider.save()
     }
 
     private func cosignTransaction(transaction: Tx, userID: Int) throws {
@@ -429,6 +389,7 @@ class TeambrellaService: NSObject {
                 let signature = try wallet.cosign(transaction: transaction, payOrMoveFrom: input)
                 contentProvider.addNewSignature(input: input, tx: transaction, signature: signature)
             }
+            contentProvider.transactionsChangeResolution(txs: [transaction], to: .signed)
         default:
             // TODO: support move & incoming TXs
             break
@@ -436,40 +397,13 @@ class TeambrellaService: NSObject {
     }
     
     func masterSign() {
-        log("Teambrella service start \(#function)", type: .crypto)
+        log("Teambrella service start \(#function)", type: .cryptoDetails)
         log("Master sign function disabled", type: .cryptoDetails)
         // Do nothing
     }
     
     func publishApprovedAndCosignedTxs() {
-        /*
-         Android version:
-
-         ArrayList<ContentProviderOperation> operations = new ArrayList<>();
-         List<Tx> txs = mTeambrellaClient.getApprovedAndCosignedTxs(mKey.getPublicKeyAsHex());
-         for (Tx tx : txs) {
-         Log.d(LOG_TAG, " ---- SYNC -- publishApprovedAndCosignedTxs() detected tx to publish. id:" + tx.id);
-
-         switch (tx.kind) {
-         case TeambrellaModel.TX_KIND_PAYOUT:
-         case TeambrellaModel.TX_KIND_WITHDRAW:
-         case TeambrellaModel.TX_KIND_MOVE_TO_NEXT_WALLET:
-         String cryptoTxHash = mWallet.publish(tx);
-         Log.d(LOG_TAG, " ---- SYNC -- publishApprovedAndCosignedTxs() published. tx hash:" + cryptoTxHash);
-         if (cryptoTxHash != null) {
-         operations.add(TeambrellaContentProviderClient.setTxPublished(tx, cryptoTxHash));
-         mClient.applyBatch(operations);
-         }
-         break;
-         default:
-         // TODO: support move & incoming TXs
-         break;
-         }
-         }
-
-         return !operations.isEmpty();
-         */
-        log("Teambrella service start \(#function)", type: .crypto)
+        log("Teambrella service start \(#function)", type: .cryptoDetails)
         let txs = contentProvider.transactionsApprovedAndCosigned
         log("Teambrella has \(txs.count) approved and cosigned transactions to publish", type: .crypto)
         for tx in txs {

@@ -41,7 +41,7 @@ struct CryptoServerUpdateInfo: Encodable, CustomStringConvertible {
     }
 
     enum CodingKeys: String, CodingKey {
-case txInfos = "TxInfos"
+        case txInfos = "TxInfos"
         case txSignatures = "TxSignatures"
         case cryptoContracts = "CryptoContracts"
         case since = "Since"
@@ -66,14 +66,18 @@ case txInfos = "TxInfos"
             case id = "Id"
             case resolutionTime = "ResolutionTime"
             case resolution = "Resolution"
-            case hash = "CryptoTx"
+            case hash = "TxHash"
         }
     }
 
-    struct TxSignatureInfo: Encodable {
+    struct TxSignatureInfo: Encodable, CustomStringConvertible {
         let signature: String
         let teammateID: Int
         let txInputID: String
+
+        var description: String {
+            return "TxSignatureInfo{signature: \(signature), teammateID: \(teammateID), inputID: \(txInputID)"
+        }
 
         init(txSignature: TxSignature) {
             signature = txSignature.signature.base64EncodedString()

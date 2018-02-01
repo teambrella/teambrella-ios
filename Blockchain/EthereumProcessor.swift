@@ -205,12 +205,12 @@ struct EthereumProcessor {
     
     /// returns hash made by Keccak algorithm
     func sha3(_ string: String) -> Data {
-        return keccak256(string)
+        return string.keccak()
     }
     
     /// returns hash made by Keccak algorithm
     func sha3(_ data: Data) -> Data {
-        return keccak256(data)
+        return data.keccak()
     }
 
     func signHash(hash256: Data) throws -> Data {
@@ -230,7 +230,7 @@ struct EthereumProcessor {
         guard let keyStore = ethKeyStore else { throw EthereumProcessorError.noKeyStore }
 
         let signed = try keyStore.signHashPassphrase(account, passphrase: secretString, hash: hash256)
-        log("signed hash 256: \(signed.hexString)", type: .cryptoDetails)
+        log("signed hash 256: \(signed.hexString)", type: .crypto)
         return signed
     }
 
