@@ -19,6 +19,7 @@
  */
 //
 
+import PKHUD
 import UIKit
 
 class ClaimTransactionsVC: UIViewController, Routable {
@@ -36,18 +37,28 @@ class ClaimTransactionsVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
+        HUD.show(.progress, onView: view)
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
         title = "Team.Claims.ClaimTransactionsVC.title".localized
-        collectionView.register(ClaimTransactionCell.nib, forCellWithReuseIdentifier: ClaimTransactionCell.cellID)
+        
+        collectionView.register(WalletTransactionCell.nib, forCellWithReuseIdentifier: WalletTransactionCell.cellID)
+        collectionView.register(InfoHeader.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: InfoHeader.cellID)
+        
         guard let teamID = teamID, let claimID = claimID else { return }
         
         dataSource = ClaimTransactionsDataSource(teamID: teamID, claimID: claimID)
         dataSource.onUpdate = { [weak self] in
+            HUD.hide()
             self?.collectionView.reloadData()
+        }
+        dataSource.onError = { error in
+            HUD.hide()
         }
         dataSource.loadData()
     }
@@ -66,7 +77,15 @@ extension ClaimTransactionsVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: ClaimTransactionCell.cellID, for: indexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: WalletTransactionCell.cellID, for: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                               withReuseIdentifier: InfoHeader.cellID,
+                                                               for: indexPath)
     }
 }
 
@@ -75,9 +94,34 @@ extension ClaimTransactionsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        ClaimTransactionsCellBuilder.populate(cell: cell, with: dataSource[indexPath], userID: userID)
-        if indexPath.row == (dataSource.count - dataSource.limit/2) {
+        ClaimTransactionsCellBuilder.populate(cell: cell,
+                                              indexPath: indexPath,
+                                              with: dataSource[indexPath],
+                                              userID: userID,
+                                              cellsCount: dataSource.count)
+        
+        if indexPath.row == (dataSource.count - dataSource.limit / 2) {
             dataSource.loadData()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplaySupplementaryView view: UICollectionReusableView,
+                        forElementKind elementKind: String,
+                        at indexPath: IndexPath) {
+        // swiftlint:disable:next empty_count
+        if dataSource.count > 0 {
+            guard let view = view as? InfoHeader else { return }
+            
+            view.leadingLabel.text = "Team.Claim.Transactions.from".localized
+            view.trailingLabel.text = "General.mETH".localized
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = dataSource[indexPath]
+        if let userID = model.userID {
+            service.router.presentMemberProfile(teammateID: userID)
         }
     }
 }
@@ -87,7 +131,13 @@ extension ClaimTransactionsVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height/5 )
+        return CGSize(width: collectionView.bounds.width, height: 70)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 50)
     }
 }
 

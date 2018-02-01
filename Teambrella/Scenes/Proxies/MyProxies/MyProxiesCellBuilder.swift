@@ -28,7 +28,8 @@ struct MyProxiesCellBuilder {
             cell.nameLabel.text = model.name
             cell.detailsLabel.text = model.address.uppercased()
             //model.time.map { cell.timeLabel.text = Formatter.teambrellaShort.string(from: $0) }
-            cell.timeLabel.text = String.formattedNumber(model.proxyRank ?? 1)
+            cell.timeLabel.text = String(format: "%.1f", model.proxyRank ?? 0.01)
+            //String.formattedNumber(model.proxyRank ?? 1)
             
             guard let decisionsCoeff = model.decisionsCoeff,
                 let discussionCoeff = model.discussionCoeff,

@@ -87,7 +87,7 @@ class ServerDAO: DAO {
                                             body: body,
                                             success: { response in
                                                 if case let .setLanguage(language) = response {
-                                                    log("Language is set to \(language)", type: .serviceInfo)
+                                                    log("Language is set to \(language)", type: .info)
                                                     promise.resolve(with: language)
                                                 } else {
                                                     let errorMessage = "Was waiting .setLanguage got \(response)"
@@ -147,8 +147,8 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Double, limit: Double)> {
-        let promise = Promise<(coverage: Double, limit: Double)>()
+    func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Coverage, limit: Double)> {
+        let promise = Promise<(coverage: Coverage, limit: Double)>()
         let dateString = Formatter.teambrellaShortDashed.string(from: date)
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID,
@@ -322,8 +322,8 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func createNewClaim(model: NewClaimModel) -> Future<EnhancedClaimEntity> {
-        let promise = Promise<EnhancedClaimEntity>()
+    func createNewClaim(model: NewClaimModel) -> Future<ClaimEntityLarge> {
+        let promise = Promise<ClaimEntityLarge>()
         freshKey { key in
             let dateString = Formatter.teambrellaShortDashed.string(from: model.incidentDate)
             let body = RequestBody(key: key, payload: ["TeamId": model.teamID,

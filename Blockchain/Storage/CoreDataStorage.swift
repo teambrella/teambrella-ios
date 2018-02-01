@@ -32,7 +32,7 @@ class CoreDataStorage {
     
     init() {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        print("Documents path: \(documentsPath)")
+        log("Teambrella documents path: \(documentsPath)", type: .database)
     }
     
     func clear() throws {
@@ -79,7 +79,7 @@ class CoreDataStorage {
             } catch {
                 context.rollback()
                 let nserror = error as NSError
-                print("Unresolved error \(nserror), \(nserror.userInfo)")
+                log("Unresolved error \(nserror), \(nserror.userInfo)", type: [.error, .database])
                 return false
             }
             return true

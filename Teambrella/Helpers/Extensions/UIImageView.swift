@@ -65,7 +65,8 @@ extension UIImageView {
         }
     }
     
-    func showImage(string: String, completion: ((UIImage?, NSError?) -> Void)? = nil) {
+    func showImage(string: String?, completion: ((UIImage?, NSError?) -> Void)? = nil) {
+        guard let string = string else { return }
         guard let url = URLBuilder().url(string: string) else { return }
         
         showImage(url: url, completion: completion)

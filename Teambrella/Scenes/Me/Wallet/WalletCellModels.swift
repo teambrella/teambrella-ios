@@ -26,16 +26,14 @@ protocol WalletCellModel {
 }
 
 struct WalletHeaderCellModel: WalletCellModel {
-    let amount: Double
-    let reserved: Double
-    let available: Double
+    let amount: Ether
     let currencyRate: Double
 
 }
 
 struct WalletFundingCellModel: WalletCellModel {
-    let maxCoverageFunding: Double
-    let uninterruptedCoverageFunding: Double
+    let maxCoverageFunding: Ether
+    let uninterruptedCoverageFunding: Ether
     
 }
 

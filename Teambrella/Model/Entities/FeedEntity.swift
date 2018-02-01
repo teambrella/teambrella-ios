@@ -41,7 +41,7 @@ struct FeedEntity: Decodable {
         case topPosterAvatars = "TopPosterAvatars"
     }
     
-    let text: String
+    let text: SaneText
     let amount: Double?
     let teamVote: Double?
     let topicID: String
@@ -61,11 +61,10 @@ struct FeedEntity: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let text = try container.decode(String.self, forKey: .text)
+        self.text = try container.decode(SaneText.self, forKey: .text)
         let itemType = try container.decode(Int.self, forKey: .itemType)
         let itemDate = try container.decode(String.self, forKey: .itemDate)
-        
-        self.text = TextAdapter().parsedHTML(string: text)
+
         self.itemType = ItemType(rawValue: itemType) ?? .teammate
         self.itemDate = DateFormatter.teambrella.date(from: itemDate)
 

@@ -36,21 +36,21 @@ class Dumper {
 
     func printContents() {
         let url = applicationSupportURL
-        print("Path: \(url.path)")
+        log("Path: \(url.path)", type: .cryptoDetails)
         do {
             let content = try FileManager.default.contentsOfDirectory(atPath: url.path)
             for item in content {
-                print(item)
+                log(item, type: .cryptoDetails)
             }
         } catch {
-            print("Error: \(error)")
+            log("Dumper error printing: \(error)", type: [.error, .cryptoDetails])
         }
     }
 
     func sendDatabaseDump(privateKey: String) {
         let url = dbURL
         printContents()
-        print("Trying to send dump")
+        log("Trying to send dump", type: .crypto)
         do {
             let file = try Data(contentsOf: url)
             print("Bytes: \(file.count)")
@@ -60,10 +60,10 @@ class Dumper {
                          success: { json in
                             print("Dump sent successfully: \(json)")
             }, failure: { error in
-                print("Dump not sent with error: \(String(describing: error))")
+                log("Dump not sent with error: \(String(describing: error))", type: [.error, .crypto])
             })
         } catch {
-            print("Error reading database file: \(error)")
+            log("Error reading database file: \(error)", type: [.error, .cryptoDetails])
         }
     }
 

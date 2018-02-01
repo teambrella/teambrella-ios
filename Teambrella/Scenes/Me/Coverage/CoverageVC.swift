@@ -25,6 +25,7 @@ import XLPagerTabStrip
 
 class CoverageVC: UIViewController, Routable {
     
+    @IBOutlet var upperView: UIView!
     @IBOutlet var radarView: RadarView!
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var coverage: UILabel!
@@ -91,7 +92,10 @@ class CoverageVC: UIViewController, Routable {
         slider.isExclusiveTouch = true
     
         titleLabel.isUserInteractionEnabled = true
-       titleLabel.addGestureRecognizer(secretRecognizer)
+        titleLabel.addGestureRecognizer(secretRecognizer)
+        ViewDecorator.shadow(for: upperView, opacity: 0.1, radius: 5)
+        subcontainer.layer.cornerRadius = 4
+        ViewDecorator.shadow(for: subcontainer, opacity: 0.1, radius: 5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,7 +132,7 @@ class CoverageVC: UIViewController, Routable {
         service.dao.requestCoverage(for: Date(), teamID: teamID).observe { [weak self] result in
             switch result {
             case let .value((coverage: coverage, limit: limit)):
-                self?.coverageAmount = Int(coverage * 100)
+                self?.coverageAmount = coverage.integerPercentage
                 self?.limitAmount = limit
                 if let slider = self?.slider {
                     HUD.hide()

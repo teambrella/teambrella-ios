@@ -86,11 +86,16 @@ struct TeammateCellBuilder {
          */
     }
     
-    private static func setVote(votingCell: VotingRiskCell, voting: TeammateVotingInfo, controller: TeammateProfileVC) {
-        let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
-        votingCell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars, label: label, max: nil)
+    private static func setVote(votingCell: VotingRiskCell,
+                                voting: TeammateLarge.VotingInfo,
+                                controller: TeammateProfileVC) {
+        let maxAvatarsStackCount = 4
+        let otherVotersCount = voting.votersCount - maxAvatarsStackCount + 1
+        let label: String? = otherVotersCount > 0 ? "+" + String(otherVotersCount) : nil
+        votingCell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars, label: label,
+                                                   max: maxAvatarsStackCount)
         if let risk = voting.riskVoted {
-            votingCell.teamVoteValueLabel.text =  String.formattedNumber(risk)
+            votingCell.teamVoteValueLabel.text = String(format: "%.2f", risk)
             votingCell.showTeamNoVote(risk: risk)
         } else {
             votingCell.teamVoteValueLabel.text = "..."
@@ -157,20 +162,23 @@ struct TeammateCellBuilder {
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
-        cell.detailsLabel.text = teammate.coverageType.localizedCoverageType
+        cell.detailsLabel.text = teammate.teamPart?.coverageType.localizedCoverageType
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
             left.currencyLabel.text = service.currencyName
         }
-        if let middle = cell.numberBar.middle {
+        if let middle = cell.numberBar.middle { // math abs!!!
             middle.titleLabel.text = "Team.Teammates.net".localized
-            middle.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.totallyPaidAmount)
+            let test = teammate.basic.totallyPaidAmount > 0 ?
+                Int(teammate.basic.totallyPaidAmount + 0.5) :
+                Int(teammate.basic.totallyPaidAmount - 0.5)
+            middle.amountLabel.text = String(test)
             middle.currencyLabel.text = service.currencyName
         }
         if let right = cell.numberBar.right {
-            right.titleLabel.text = "Team.TeammateCell.riskFactor".localized
-            right.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.risk)
+            right.titleLabel.text = "Team.TeammateCell.risk".localized
+            right.amountLabel.text = String(format: "%.2f", teammate.basic.risk)
             let avg = String.truncatedNumber(teammate.basic.averageRisk)
             right.badgeLabel.text = avg + " AVG"
             right.isBadgeVisible = true
@@ -203,10 +211,17 @@ struct TeammateCellBuilder {
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
         
         cell.weightTitleLabel.text = "Team.TeammateCell.weight".localized
-        cell.weightValueLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
+        if stats.weight < 1 {
+            cell.weightValueLabel.text = String(format: "%.2f", stats.weight)
+        } else if stats.weight < 10 {
+            cell.weightValueLabel.text = String(format: "%.1f", stats.weight)
+        } else {
+            cell.weightValueLabel.text = String(Int(stats.weight))
+        }
+//        cell.weightValueLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
         
         cell.proxyRankTitleLabel.text = "Team.TeammateCell.proxyRank".localized
-        cell.proxyRankValueLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
+        cell.proxyRankValueLabel.text = String(format: "%.1f", stats.proxyRank)
         /*
          if let left = cell.numberBar.left {
          left.amountLabel.textAlignment = .center
@@ -261,7 +276,7 @@ struct TeammateCellBuilder {
         default:
             cell.timeLabel.text = "Team.TeammateCell.timeLabel.longAgo".localized
         }
-        let message = TextAdapter().parsedHTML(string: stats.originalPostText)
+        let message = stats.originalPostText.sane
         cell.textLabel.text = message
         cell.unreadCountView.text = String(stats.unreadCount)
         cell.unreadCountView.isHidden = stats.unreadCount == 0
@@ -276,7 +291,7 @@ struct TeammateCellBuilder {
         cell.avatarView.showAvatar(string: avatar)
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
         cell.timeLabel.text = DateProcessor().stringFromNow(seconds: stats.minutesSinceLastPost).uppercased()
-        let message = TextAdapter().parsedHTML(string: stats.originalPostText)
+        let message = stats.originalPostText.sane
         cell.textLabel.text = message
         cell.unreadCountView.text = String(stats.unreadCount)
         cell.unreadCountView.isHidden = stats.unreadCount == 0

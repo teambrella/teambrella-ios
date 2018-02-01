@@ -216,16 +216,25 @@
                                                     <constraint firstItem="FAb-A5-JrL" firstAttribute="top" secondItem="rtL-Dg-TqT" secondAttribute="top" constant="14" id="vCd-rE-M3A"/>
                                                 </constraints>
                                             </view>
-                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ByT-Mp-bxm">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ByT-Mp-bxm">
                                                 <rect key="frame" x="16" y="213" width="343" height="296.5"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jB-Sp-7uU">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6J2-id-xhd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="296.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jB-Sp-7uU">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="98"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRm-0v-r5N">
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRm-0v-r5N">
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="65.5"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U5-XL-AmS">
+                                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U5-XL-AmS">
                                                                         <rect key="frame" x="20" y="16" width="303" height="17"/>
                                                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -254,17 +263,22 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="eRm-0v-r5N" firstAttribute="top" secondItem="6jB-Sp-7uU" secondAttribute="top" id="1v6-fD-PhU"/>
-                                                            <constraint firstAttribute="trailing" secondItem="hIB-Df-BKn" secondAttribute="trailing" constant="-20" id="40g-Ev-WNY"/>
-                                                            <constraint firstItem="hIB-Df-BKn" firstAttribute="leading" secondItem="6jB-Sp-7uU" secondAttribute="leading" constant="-20" id="FKe-No-y6U"/>
                                                             <constraint firstItem="cBa-YD-YON" firstAttribute="top" secondItem="7U5-XL-AmS" secondAttribute="bottom" constant="2" id="IQe-CL-Soh"/>
                                                             <constraint firstItem="hIB-Df-BKn" firstAttribute="height" secondItem="6jB-Sp-7uU" secondAttribute="height" multiplier="1:3" id="Sh5-sY-2yV"/>
+                                                            <constraint firstAttribute="trailing" secondItem="hIB-Df-BKn" secondAttribute="trailing" constant="-20" id="Yl6-e1-T5y"/>
                                                             <constraint firstAttribute="trailing" secondItem="eRm-0v-r5N" secondAttribute="trailing" id="dnF-ha-x7w"/>
+                                                            <constraint firstItem="hIB-Df-BKn" firstAttribute="leading" secondItem="6jB-Sp-7uU" secondAttribute="leading" constant="-20" id="fXu-eb-7s7"/>
                                                             <constraint firstItem="eRm-0v-r5N" firstAttribute="leading" secondItem="6jB-Sp-7uU" secondAttribute="leading" id="fZF-QC-Rch"/>
                                                             <constraint firstAttribute="bottom" secondItem="hIB-Df-BKn" secondAttribute="bottom" id="hQt-xb-Ouw"/>
                                                             <constraint firstItem="cBa-YD-YON" firstAttribute="trailing" secondItem="7U5-XL-AmS" secondAttribute="trailing" id="kGs-iY-i2X"/>
                                                             <constraint firstItem="cBa-YD-YON" firstAttribute="leading" secondItem="7U5-XL-AmS" secondAttribute="leading" id="m3b-io-31u"/>
                                                             <constraint firstItem="hIB-Df-BKn" firstAttribute="top" secondItem="eRm-0v-r5N" secondAttribute="bottom" id="rE7-7M-Orr"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="YVO-7G-QQT">
                                                         <rect key="frame" x="20" y="119" width="36" height="17"/>
@@ -317,10 +331,9 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="oGn-Vb-oa8" firstAttribute="top" secondItem="OuM-mH-Dzn" secondAttribute="bottom" constant="16" id="0AU-6F-lM4"/>
-                                                    <constraint firstItem="6jB-Sp-7uU" firstAttribute="top" secondItem="ByT-Mp-bxm" secondAttribute="top" id="1Gi-vp-Xng"/>
                                                     <constraint firstItem="r4l-Uj-f8d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0ys-a7-OWw" secondAttribute="trailing" constant="8" id="2bu-Nj-0eO"/>
                                                     <constraint firstItem="oGn-Vb-oa8" firstAttribute="bottom" secondItem="RWV-cl-zkc" secondAttribute="bottom" id="427-Ju-eDU"/>
                                                     <constraint firstItem="r4l-Uj-f8d" firstAttribute="bottom" secondItem="0ys-a7-OWw" secondAttribute="bottom" id="89G-Be-8Hk"/>
@@ -330,30 +343,30 @@
                                                     <constraint firstItem="oGn-Vb-oa8" firstAttribute="trailing" secondItem="vKC-XX-fUK" secondAttribute="trailing" id="I21-Lp-5kf"/>
                                                     <constraint firstItem="oGn-Vb-oa8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RWV-cl-zkc" secondAttribute="trailing" constant="8" id="IO5-6D-iLY"/>
                                                     <constraint firstAttribute="trailing" secondItem="vKC-XX-fUK" secondAttribute="trailing" constant="20" id="Jee-10-u39"/>
+                                                    <constraint firstAttribute="bottom" secondItem="6J2-id-xhd" secondAttribute="bottom" id="Lta-VE-ft2"/>
                                                     <constraint firstAttribute="bottom" secondItem="oGn-Vb-oa8" secondAttribute="bottom" constant="24" id="Lv5-zw-QyO"/>
-                                                    <constraint firstAttribute="trailing" secondItem="6jB-Sp-7uU" secondAttribute="trailing" id="QVr-W6-YAv"/>
+                                                    <constraint firstItem="6jB-Sp-7uU" firstAttribute="top" secondItem="6J2-id-xhd" secondAttribute="top" id="Qzq-Ip-S8Q"/>
                                                     <constraint firstItem="r4l-Uj-f8d" firstAttribute="trailing" secondItem="vKC-XX-fUK" secondAttribute="trailing" id="Tzf-Df-GDH"/>
                                                     <constraint firstItem="6jB-Sp-7uU" firstAttribute="height" secondItem="ByT-Mp-bxm" secondAttribute="height" multiplier="1:3" id="XVt-CQ-h9c"/>
                                                     <constraint firstAttribute="trailing" secondItem="OuM-mH-Dzn" secondAttribute="trailing" constant="20" id="XbY-xs-Ddh"/>
                                                     <constraint firstItem="vKC-XX-fUK" firstAttribute="top" secondItem="6jB-Sp-7uU" secondAttribute="bottom" constant="8" id="c1T-cu-FXm"/>
-                                                    <constraint firstItem="6jB-Sp-7uU" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" id="e5k-eM-JUr"/>
                                                     <constraint firstItem="OuM-mH-Dzn" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" constant="20" id="hHG-GW-kg6"/>
                                                     <constraint firstItem="r4l-Uj-f8d" firstAttribute="top" secondItem="vKC-XX-fUK" secondAttribute="bottom" constant="8" id="iFD-8p-lGe"/>
+                                                    <constraint firstItem="6J2-id-xhd" firstAttribute="top" secondItem="ByT-Mp-bxm" secondAttribute="top" id="iLR-gQ-MJN"/>
                                                     <constraint firstItem="r4l-Uj-f8d" firstAttribute="width" secondItem="ByT-Mp-bxm" secondAttribute="width" multiplier="1:4" id="jmt-e8-QcT"/>
+                                                    <constraint firstItem="6jB-Sp-7uU" firstAttribute="trailing" secondItem="6J2-id-xhd" secondAttribute="trailing" id="kB8-qf-DgR"/>
+                                                    <constraint firstItem="6jB-Sp-7uU" firstAttribute="leading" secondItem="6J2-id-xhd" secondAttribute="leading" id="tYz-Mp-ZUH"/>
                                                     <constraint firstItem="YVO-7G-QQT" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" constant="20" id="tbF-vC-jPk"/>
+                                                    <constraint firstItem="6J2-id-xhd" firstAttribute="leading" secondItem="ByT-Mp-bxm" secondAttribute="leading" id="tcW-kX-ioy"/>
                                                     <constraint firstItem="OuM-mH-Dzn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="r4l-Uj-f8d" secondAttribute="bottom" constant="16" id="uQb-au-cjx"/>
                                                     <constraint firstItem="vKC-XX-fUK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YVO-7G-QQT" secondAttribute="trailing" constant="8" id="xO6-jJ-xK8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="6J2-id-xhd" secondAttribute="trailing" id="xbj-eJ-8Io"/>
                                                     <constraint firstItem="RWV-cl-zkc" firstAttribute="leading" secondItem="YVO-7G-QQT" secondAttribute="leading" id="xtb-Se-flG"/>
                                                     <constraint firstItem="0ys-a7-OWw" firstAttribute="leading" secondItem="YVO-7G-QQT" secondAttribute="leading" id="ziV-RT-BFP"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="rtL-Dg-TqT" firstAttribute="leading" secondItem="VmV-yc-E7V" secondAttribute="leading" id="6Nj-cB-O3t"/>
                                             <constraint firstAttribute="trailing" secondItem="rtL-Dg-TqT" secondAttribute="trailing" id="Lh4-fG-0AC"/>
@@ -374,7 +387,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="0sX-aq-UFl" secondAttribute="trailing" id="28O-jj-r8C"/>
                             <constraint firstItem="VmV-yc-E7V" firstAttribute="width" secondItem="geE-RI-RJq" secondAttribute="width" id="7wT-qQ-1wU"/>
@@ -399,6 +412,7 @@
                         <outlet property="umbrellaView" destination="hIB-Df-BKn" id="1c1-D2-uDc"/>
                         <outlet property="upperAmount" destination="vKC-XX-fUK" id="YgU-cU-jf9"/>
                         <outlet property="upperLabel" destination="YVO-7G-QQT" id="hz2-Nh-rzv"/>
+                        <outlet property="upperView" destination="rtL-Dg-TqT" id="6jw-5r-UFW"/>
                         <outlet property="weatherImage" destination="DDL-Sr-nJy" id="QWJ-FJ-EAP"/>
                     </connections>
                 </viewController>

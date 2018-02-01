@@ -1,10 +1,5 @@
 //
-//  RiskTableHeader.swift
-//  Teambrella
-//
-//  Created by Екатерина Рыжова on 12.07.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -19,15 +14,29 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import UIKit
+import Foundation
 
-class RiskTableHeader: UICollectionReusableView, XIBInitableCell {
-    @IBOutlet var leftLabel: UILabel!
-    @IBOutlet var rightLabel: UILabel!
+struct ClaimVote: Decodable {
+    let value: Double
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var percentage: Double { return value * 100 }
+    var integerPercentage: Int { return Int(percentage + 0.5) }
+
+    init(_ value: Double) {
+        self.value = value
     }
-    
+
+    init(_ value: Float) {
+        self.value = Double(value)
+    }
+
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Double.self)
+        self.value = value
+    }
+
+    func fiat(from fiat: Fiat) -> Fiat {
+        return Fiat(value * fiat.value)
+    }
+
 }

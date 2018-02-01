@@ -36,42 +36,27 @@ struct WalletEntity: Decodable {
     }
     
     var currencyRate: Double
-    var cryptoBalance: Double
-    var cryptoReserved: Double
-    var needCrypto: Double
-    var recommendedCrypto: Double
+    var cryptoBalance: Ether
+    var cryptoReserved: Ether
+    var needCrypto: Ether
+    var recommendedCrypto: Ether
     var fundAddress: String
     var defaultWithdrawAddress: String?
     var cosigners: [CosignerEntity]
     var coveragePart: CoverageEntity
-    var teamPart: TeamPartConcrete?
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        currencyRate = try container.decode(Double.self, forKey: .currencyRate)
-        cryptoBalance = try container.decode(Double.self, forKey: .cryptoBalance)
-        cryptoReserved = try container.decode(Double.self, forKey: .cryptoReserved)
-        needCrypto = try container.decode(Double.self, forKey: .needCrypto)
-        recommendedCrypto = try container.decode(Double.self, forKey: .recommendedCrypto)
-        fundAddress = try container.decode(String.self, forKey: .fundAddress)
-        defaultWithdrawAddress = try container.decodeIfPresent(String.self, forKey: .defaultWithdrawAddress)
-        cosigners = try container.decode([CosignerEntity].self, forKey: .cosigners)
-        coveragePart = try container.decode(CoverageEntity.self, forKey: .coveragePart)
-        teamPart = try container.decodeIfPresent(TeamPartConcrete.self, forKey: .teamPart)
-    }
+    var teamPart: TeamPart?
     
     init() {
         currencyRate = 0
-        cryptoBalance = 0
-        cryptoReserved = 0
-        needCrypto = 0
-        recommendedCrypto = 0
+        cryptoBalance = Ether.empty
+        cryptoReserved = Ether.empty
+        needCrypto = Ether.empty
+        recommendedCrypto = Ether.empty
         fundAddress = ""
         defaultWithdrawAddress = ""
         cosigners = []
         coveragePart = CoverageEntity()
-        teamPart = TeamPartConcrete()
+        teamPart = TeamPart()
     }
 
 }

@@ -269,9 +269,14 @@ struct EntityFactory {
         for item in json.arrayValue {
             let txInputId = item["TxInputId"].stringValue
             let teammateID = item["TeammateId"].int64Value
+
             // can't change signatures
-            guard fetcher.signature(input: txInputId,
-                                    teammateID: Int(teammateID)) == nil else { continue }
+            if let sig = fetcher.signature(input: txInputId,
+                                    teammateID: Int(teammateID)) {
+                sig.isServerUpdateNeededValue = false
+                fetcher.save()
+                continue
+            }
             guard let txInput = fetcher.input(id: txInputId) else { continue } // malformed TX
             
             let signature = TxSignature.create(in: context)

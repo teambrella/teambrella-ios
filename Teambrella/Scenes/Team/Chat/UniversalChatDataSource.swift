@@ -80,7 +80,7 @@ final class UniversalChatDatasource {
     private var topCellDate: Date?
     private var topic: Topic?
     
-    var claim: EnhancedClaimEntity? {
+    var claim: ClaimEntityLarge? {
         if let strategy = strategy as? ClaimChatStrategy {
             return strategy.claim
         }
@@ -94,7 +94,7 @@ final class UniversalChatDatasource {
         return nil
     }
     
-    var teammateInfo: TeammateBasicInfo? {
+    var teammateInfo: TeammateLarge.BasicInfo? {
         if let strategy = strategy as? TeammateChatStrategy {
             return strategy.teammate.basic
         }
@@ -123,12 +123,10 @@ final class UniversalChatDatasource {
             return ""//strategy.title
         }
         
-        if chatModel.basicPart is BasicPartClaimConcrete {
-            return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(chatModel.id)"
-        } else if chatModel.basicPart is BasicPartTeammateConcrete {
+        if chatModel.basicPart?.claimAmount != nil {
+            return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(chatModel.claimID)"
+        } else if chatModel.basicPart?.title != nil {
             return "Team.Chat.TypeLabel.application".localized.lowercased().capitalized
-        } else if let basicPart = chatModel.basicPart as? BasicPartDiscussionConcrete {
-            return basicPart.title
         } else {
             return strategy.title
         }
@@ -145,17 +143,29 @@ final class UniversalChatDatasource {
         default:
             break
         }
+
+        // TODO: delete all crunches
+        if let strategy = strategy as? FeedChatStrategy {
+            if strategy.feedEntity.itemType == .teammate {
+                return .application
+            }
+        }
+
+        if let strategy = strategy as? HomeChatStrategy {
+            if strategy.card.itemType == .teammate {
+                return .application
+            }
+        }
         
         if let chatModel = chatModel {
-            switch chatModel.basicPart {
-            case is BasicPartClaimConcrete:
+            if chatModel.basicPart?.claimAmount != nil {
                 return .claim
-            case is BasicPartTeammateConcrete:
-                return .application
-            case is BasicPartDiscussionConcrete:
+            }
+            if chatModel.basicPart?.title != nil {
                 return .discussion
-            default:
-                break
+            }
+            if chatModel.basicPart?.userID != nil {
+                return .application
             }
         }
         

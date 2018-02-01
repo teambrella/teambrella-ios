@@ -51,11 +51,19 @@ final class ReportVC: UIViewController, Routable {
     private(set) var isInCorrectionMode: Bool = false
     private var photoController: PhotoPreviewVC = PhotoPreviewVC(collectionViewLayout: UICollectionViewFlowLayout())
     private var dataSource: ReportDataSource!
+
+    // Navigation buttons
+    private var rightButton: UIButton?
+    private var leftButton: UIButton?
+
+    private var isCoverageActual = false
     
     var coverage: Double = 0.0
     var limit: Double = 0.0
     var lastDate: Date = Date()
-    
+
+    // MARK: Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if isModal {
@@ -80,37 +88,29 @@ final class ReportVC: UIViewController, Routable {
         
         dataSource = ReportDataSource(context: reportContext)
         dataSource.onUpdateCoverage = { [weak self] in
-            self?.reloadExpencesCellIfNeeded()
+            guard let `self` = self else { return }
+
+            self.reloadExpencesCellIfNeeded()
+            self.isCoverageActual = true
+            self.coverage = self.dataSource.coverage.value
+            self.limit = self.dataSource.limit
         }
         ReportCellBuilder.registerCells(in: collectionView)
-        
         dataSource.getCoverageForDate(date: datePicker.date)
     }
-    
-    private func reloadExpencesCellIfNeeded() {
-        let visibleCells = collectionView.visibleCells
-        let expensesCells = visibleCells.filter { $0 is ReportExpensesCell }
-        guard let expensesCell = expensesCells.first else { return }
-        guard let indexPath = collectionView.indexPath(for: expensesCell) else { return }
-        
-        collectionView.performBatchUpdates({
-            collectionView.reloadItems(at: [indexPath])
-        }) { finished in
-            
-        }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showNavigationBarButtons()
+        enableSendButton()
     }
-    
-    func addKeyboardObservers() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapView))
-        view.addGestureRecognizer(tap)
-        let center = NotificationCenter.default
-        center.addObserver(self, selector: #selector(adjustForKeyboard),
-                           name: Notification.Name.UIKeyboardWillHide,
-                           object: nil)
-        center.addObserver(self, selector: #selector(adjustForKeyboard),
-                           name: Notification.Name.UIKeyboardWillChangeFrame,
-                           object: nil)
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //showNavigationBarButtons()
     }
+
+    // MARK: Actions
     
     @objc
     func adjustForKeyboard(notification: Notification) {
@@ -171,60 +171,11 @@ final class ReportVC: UIViewController, Routable {
                     return
                 }
                 
+                self.isCoverageActual = false
                 self.dataSource.getCoverageForDate(date: dateReportCellModel.date)
             }
         }
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        showNavigationBarButtons()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        //showNavigationBarButtons()
-    }
-    
-    private func showNavigationBarButtons() {
-        guard let context = reportContext else { return }
-        
-        switch context {
-        case .newChat:
-            let cancelButton = UIButton()
-            cancelButton.addTarget(self, action: #selector(tapCancel), for: .touchUpInside)
-            cancelButton.setTitle("Me.Report.cancelButtonTitle".localized, for: .normal)
-            cancelButton.sizeToFit()
-            guard let cancelTitle = cancelButton.titleLabel else { return }
-            
-            cancelTitle.font = UIFont.teambrella(size: 17)
-            navigationItem.setLeftBarButton(UIBarButtonItem(customView: cancelButton), animated: false)
-            
-            let createButton = UIButton()
-            createButton.addTarget(self, action: #selector(tapSubmit(_:)), for: .touchUpInside)
-            createButton.setTitle("Me.Report.submitButtonTitle-create".localized, for: .normal)
-//            createButton.isUserInteractionEnabled = isCreateButtonEnabled ? true : false
-//            if isCreateButtonEnabled {
-//                createButton.setTitleColor(UIColor.white, for: .normal)
-//            } else  {
-//                createButton.setTitleColor(UIColor.perrywinkle, for: .disabled)
-//            }
-            createButton.sizeToFit()
-            guard let createTitle = createButton.titleLabel else { return }
-            
-            createTitle.font = UIFont.teambrella(size: 17)
-            navigationItem.setRightBarButton(UIBarButtonItem(customView: createButton), animated: false)
-        case .claim:
-            let submitButton = UIButton()
-            submitButton.addTarget(self, action: #selector(tapSubmit(_:)), for: .touchUpInside)
-            submitButton.setTitle("Me.Report.submitButtonTitle-submit".localized, for: .normal)
-            submitButton.sizeToFit()
-            guard let submitTitle = submitButton.titleLabel else { return }
-            
-            submitTitle.font = UIFont.teambrellaBold(size: 17)
-            navigationItem.setRightBarButton(UIBarButtonItem(customView: submitButton), animated: false)
-        }
     }
     
     @objc
@@ -235,22 +186,9 @@ final class ReportVC: UIViewController, Routable {
     
     @objc
     func tapSubmit(_ sender: UIButton) {
+        sender.isEnabled = false
         log("tap Submit/Create", type: .userInteraction)
         validateAndSendData()
-    }
-    
-    func validateAndSendData() {
-        guard let model = dataSource.reportModel(imageStrings: photoController.photos), model.isValid else {
-            isInCorrectionMode = true
-            collectionView.reloadData()
-            return
-        }
-        
-        dataSource.send(model: model) { [weak self] result in
-            guard let me = self else { return }
-            
-            me.delegate?.report(controller: me, didSendReport: result)
-        }
     }
     
     @objc
@@ -268,9 +206,12 @@ final class ReportVC: UIViewController, Routable {
             model.text = textField.text ?? ""
             dataSource.items[indexPath.row] = model
         }
+        enableSendButton()
     }
-    
-    func addPhotoController(to view: UIView) {
+
+    // MARK: Private
+
+    private func addPhotoController(to view: UIView) {
         photoController.loadViewIfNeeded()
         if let superview = photoController.view.superview, superview == view {
             return
@@ -284,6 +225,110 @@ final class ReportVC: UIViewController, Routable {
         photoController.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.addChildViewController(photoController)
         photoController.didMove(toParentViewController: self)
+    }
+
+    private func validateAndSendData() {
+        guard let model = dataSource.reportModel(imageStrings: photoController.photos), model.isValid else {
+            isInCorrectionMode = true
+            collectionView.reloadData()
+            enableSendButton()
+            return
+        }
+
+        dataSource.send(model: model) { [weak self] result in
+            guard let me = self else { return }
+
+            me.delegate?.report(controller: me, didSendReport: result)
+            self?.enableSendButton()
+        }
+    }
+
+    private func addKeyboardObservers() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapView))
+        view.addGestureRecognizer(tap)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(adjustForKeyboard),
+                           name: Notification.Name.UIKeyboardWillHide,
+                           object: nil)
+        center.addObserver(self, selector: #selector(adjustForKeyboard),
+                           name: Notification.Name.UIKeyboardWillChangeFrame,
+                           object: nil)
+    }
+
+    @discardableResult
+    private func enableSendButton() -> Bool {
+        guard let context = reportContext else { return false }
+
+        let enable: Bool
+        switch context {
+        case .claim:
+            if let model = dataSource.reportModel(imageStrings: []) {
+                enable = isCoverageActual && model.isValid
+            } else {
+                enable = false
+            }
+        case .newChat:
+            enable = true
+        }
+        rightButton?.isEnabled = enable
+        rightButton?.alpha = enable ? 1 : 0.5
+        return enable
+    }
+
+    private func reloadExpencesCellIfNeeded() {
+        let visibleCells = collectionView.visibleCells
+        let expensesCells = visibleCells.filter { $0 is ReportExpensesCell }
+        guard let expensesCell = expensesCells.first else { return }
+        guard let indexPath = collectionView.indexPath(for: expensesCell) else { return }
+
+        collectionView.performBatchUpdates({
+            collectionView.reloadItems(at: [indexPath])
+        }) { finished in
+
+        }
+    }
+
+    private func showNavigationBarButtons() {
+        guard let context = reportContext else { return }
+
+        switch context {
+        case .newChat:
+            let cancelButton = UIButton()
+            cancelButton.addTarget(self, action: #selector(tapCancel), for: .touchUpInside)
+            cancelButton.setTitle("Me.Report.cancelButtonTitle".localized, for: .normal)
+            cancelButton.sizeToFit()
+            guard let cancelTitle = cancelButton.titleLabel else { return }
+
+            cancelTitle.font = UIFont.teambrella(size: 17)
+            leftButton = cancelButton
+            navigationItem.setLeftBarButton(UIBarButtonItem(customView: cancelButton), animated: false)
+
+            let createButton = UIButton()
+            createButton.addTarget(self, action: #selector(tapSubmit(_:)), for: .touchUpInside)
+            createButton.setTitle("Me.Report.submitButtonTitle-create".localized, for: .normal)
+            //            createButton.isUserInteractionEnabled = isCreateButtonEnabled ? true : false
+            //            if isCreateButtonEnabled {
+            //                createButton.setTitleColor(UIColor.white, for: .normal)
+            //            } else  {
+            //                createButton.setTitleColor(UIColor.perrywinkle, for: .disabled)
+            //            }
+            createButton.sizeToFit()
+            guard let createTitle = createButton.titleLabel else { return }
+
+            createTitle.font = UIFont.teambrella(size: 17)
+            rightButton = createButton
+            navigationItem.setRightBarButton(UIBarButtonItem(customView: createButton), animated: false)
+        case .claim:
+            let submitButton = UIButton()
+            submitButton.addTarget(self, action: #selector(tapSubmit(_:)), for: .touchUpInside)
+            submitButton.setTitle("Me.Report.submitButtonTitle-submit".localized, for: .normal)
+            submitButton.sizeToFit()
+            guard let submitTitle = submitButton.titleLabel else { return }
+
+            submitTitle.font = UIFont.teambrellaBold(size: 17)
+            rightButton = submitButton
+            navigationItem.setRightBarButton(UIBarButtonItem(customView: submitButton), animated: false)
+        }
     }
     
 }
@@ -362,10 +407,12 @@ extension ReportVC: UITextViewDelegate {
         }
         (textView as? TextView)?.isInAlertMode = false
         (textView as? TextView)?.isInEditMode = true
+        enableSendButton()
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         (textView as? TextView)?.isInEditMode = false
+        enableSendButton()
     }
 }
 
@@ -377,6 +424,7 @@ extension ReportVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         (textField as? TextField)?.isInEditMode = false
+        enableSendButton()
         let indexPath = IndexPath(row: textField.tag, section: 0)
         if dataSource[indexPath] is ExpensesReportCellModel {
             reloadExpencesCellIfNeeded()

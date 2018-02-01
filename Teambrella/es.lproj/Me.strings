@@ -5,13 +5,11 @@
   Created by Yaroslav Pasternak on 22.06.17.
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
-// -------------------- waiting for translation :) -------------------- //
 
 "Me.WalletVC.fundingCell.additionalTitle"      = "FINANCIAMENTOS RECOMENDADOS";
 "Me.Report.submitButtonTitle-submit"           = "Enviar";
 "Me.Report.submitButtonTitle-create"           = "Hacer";
 "Me.Report.cancelButtonTitle"                  = "Cancelar";
-"Me.Report.newDiscussion.title-placeholder"    = "Titulo";
 "Me.Report.ReportClaim.title"                  = "Reportar una reclamación";
 "Me.Report.NewDiscussion.title"                = "Nueva discusión";
 "Me.Report.ImageSource.title"                  = "Imagen de";
@@ -24,9 +22,7 @@
 "Me.WalletVC.rightBrick.title"                 = "DISPONIBLE";
 "Me.WalletVC.withdrawButton"                   = "RETIRAR";
 "Me.WalletVC.fundingCell.title"                = "FINANCIAMENTO RECOMENDADO";
-"Me.WalletVC.upperBrick.title"                 = "PARA COBERTURA MAXIMA(100%)";
-"Me.WalletVC.lowerBrick.title"                 = "PARA COBERTURA ININTERRUMPIADA";
-"Me.WalletVC.fundButton"                       = "Financiar monedero";
+"Me.WalletVC.fundButton"                       = "Financiar Monedero";
 "Me.WalletVC.actionsCell.cosigners"            = "Co-firmantes";
 "Me.WalletVC.actionsCell.transactions"         = "Transacciones";
 "Me.WalletVC.actionsCell.withdrawAddress"      = "Dirección para retirar por defectos";
@@ -36,7 +32,7 @@
 "Me.WalletDetailsVC.timeLabel"                 = "Válido por 24 horas";
 "Me.WalletDetailsVC.copyAddressButton"         = "Copiar Dirección";
 "Me.WalletDetailsVC.copiedAddress"             = "Copiado";
-"Me.CoverageVC.fundButton"                     = "Financiar tu monedero para aumentar";
+"Me.CoverageVC.fundButton"                     = "Financiar tu Monedero para aumentar";
 "Me.CoverageVC.title"                          = "¿CÓMO FUNCIONA?";
 "Me.CoverageVC.subtitle"                       = "Utilice el control deslizante para ver cómo los gastos afectan su reembolso máximo";
 "Me.CoverageVC.maxExpenses"                    = "Cantidad máxima de los gastos cubiertos";
@@ -64,7 +60,6 @@
 "Me.Report.submitButtonTitle-submit"           = "Submit";
 "Me.Report.submitButtonTitle-create"           = "Create";
 "Me.Report.cancelButtonTitle"                  = "Cancel";
-"Me.Report.newDiscussion.title-placeholder"    = "Title";
 
 "Me.Wallet.Withdraw" = "Withdraw";
 "Me.Wallet.Withdraw.Details.title" = "WITHDRAW DETAILS";
@@ -87,3 +82,10 @@
 "Me.Wallet.Withdraw.noCameraAccess.details" = "Please grant access to device camera for Teambrella app to be able to scan QR codes";
 "Me.Wallet.Withdraw.noCameraAccess.cancelButton" = "Cancel";
 "Me.Wallet.Withdraw.noCameraAccess.settingsButton" = "Settings";
+
+"Me.WalletVC.lowerBrick.title"                 = "RECOMENDADO";
+"Me.Wallet.Transactions.to" = "TO";
+"Me.Wallet.Transactions.withdrawal" = "WITHDRAWAL";
+"Me.Wallet.Transactions.claimNumber" = "CLAIM %d";
+"Me.Wallet.Transactions.kind.pending" = "PENDING";
+"Me.Wallet.Transactions.kind.cancelled" = "CANCELLED";

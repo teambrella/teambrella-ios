@@ -38,14 +38,14 @@ struct HomeModel: Decodable {
     }
     
     var cards: [HomeCardModel]
-    let teamPart: TeamPartConcrete
+    let teamPart: TeamPart
     let userID: String
     let facebookID: UInt64?
     let name: Name
     let avatar: String
     let unreadCount: Int
-    let balance: Double
-    let coverage: Double
+    let balance: Ether
+    let coverage: Coverage
     let objectName: String
     let smallPhoto: String
     let haveVotingClaims: Bool

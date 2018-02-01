@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+        <array key="AkkuratPro-Regular.otf">
+            <string>AkkuratPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="WalletInfoCell" customModule="Surilla" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="312" height="162"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="312" height="162"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6q-Xe-MXf" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="312" height="162"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GmJ-QL-Xzr" customClass="WalletAmountLabel" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="16" y="16" width="50.5" height="90"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="88"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnl-W0-IE9">
+                                <rect key="frame" x="74" y="69" width="14.5" height="19"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
+                                <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jKH-qP-Pq1">
+                                <rect key="frame" x="74" y="55" width="14.5" height="12"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
+                                <color key="textColor" red="0.4823529412" green="0.55294117649999996" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8K-Gs-yrl" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="106" width="312" height="20"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.0079730308220000001" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kmX-M0-CsJ">
+                                <rect key="frame" x="0.0" y="126" width="312" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pv-P1-cz8" customClass="NumberBar" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="19" y="106" width="190" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="A3l-wR-1QU"/>
+                                    <constraint firstAttribute="height" constant="40" id="N5H-ON-hAQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="count">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isBottomLineVisible" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="stackHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qnl-W0-IE9" firstAttribute="baseline" secondItem="GmJ-QL-Xzr" secondAttribute="baseline" id="1pg-Zb-Xa3"/>
+                            <constraint firstItem="O8K-Gs-yrl" firstAttribute="top" secondItem="3Pv-P1-cz8" secondAttribute="top" id="4zI-pd-3n2"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qnl-W0-IE9" secondAttribute="trailing" constant="16" id="5bm-2S-MAM"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3Pv-P1-cz8" secondAttribute="trailing" constant="8" id="9Lz-xx-OjB"/>
+                            <constraint firstItem="qnl-W0-IE9" firstAttribute="leading" secondItem="GmJ-QL-Xzr" secondAttribute="trailing" constant="7" id="BbN-l8-pk2"/>
+                            <constraint firstItem="3Pv-P1-cz8" firstAttribute="leading" secondItem="GmJ-QL-Xzr" secondAttribute="leading" constant="3" id="EGD-Cd-8aR"/>
+                            <constraint firstAttribute="bottom" secondItem="kmX-M0-CsJ" secondAttribute="bottom" id="KzJ-WC-awV"/>
+                            <constraint firstItem="O8K-Gs-yrl" firstAttribute="bottom" secondItem="3Pv-P1-cz8" secondAttribute="centerY" id="MkS-pT-XuK"/>
+                            <constraint firstItem="jKH-qP-Pq1" firstAttribute="leading" secondItem="qnl-W0-IE9" secondAttribute="leading" id="Rf4-AA-fSg"/>
+                            <constraint firstItem="GmJ-QL-Xzr" firstAttribute="top" secondItem="H6q-Xe-MXf" secondAttribute="top" constant="16" id="TmJ-c3-ZFM"/>
+                            <constraint firstItem="jKH-qP-Pq1" firstAttribute="trailing" secondItem="qnl-W0-IE9" secondAttribute="trailing" id="Vck-Zm-5jw"/>
+                            <constraint firstItem="qnl-W0-IE9" firstAttribute="top" secondItem="jKH-qP-Pq1" secondAttribute="bottom" constant="2" id="bUc-Ew-ncD"/>
+                            <constraint firstAttribute="trailing" secondItem="O8K-Gs-yrl" secondAttribute="trailing" id="d5P-kK-w2T"/>
+                            <constraint firstItem="kmX-M0-CsJ" firstAttribute="leading" secondItem="H6q-Xe-MXf" secondAttribute="leading" id="dBc-2V-g2p"/>
+                            <constraint firstAttribute="trailing" secondItem="kmX-M0-CsJ" secondAttribute="trailing" id="dsU-9a-Jv3"/>
+                            <constraint firstAttribute="bottom" secondItem="3Pv-P1-cz8" secondAttribute="bottom" constant="16" id="jzA-Gm-Mip"/>
+                            <constraint firstItem="GmJ-QL-Xzr" firstAttribute="leading" secondItem="H6q-Xe-MXf" secondAttribute="leading" constant="16" id="m8V-dX-Uws"/>
+                            <constraint firstItem="3Pv-P1-cz8" firstAttribute="top" secondItem="GmJ-QL-Xzr" secondAttribute="bottom" id="oW2-1s-02B"/>
+                            <constraint firstItem="kmX-M0-CsJ" firstAttribute="top" secondItem="3Pv-P1-cz8" secondAttribute="centerY" id="ptm-oQ-cIL"/>
+                            <constraint firstItem="O8K-Gs-yrl" firstAttribute="leading" secondItem="H6q-Xe-MXf" secondAttribute="leading" id="wsP-lg-u3H"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="segments">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="diameter">
+                                <real key="value" value="420"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                <real key="value" value="180"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="centerX">
+                                <real key="value" value="207"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="centerY">
+                                <real key="value" value="130"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startWidth">
+                                <real key="value" value="110"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="coefficient">
+                                <real key="value" value="2.2000000000000002"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                <color key="value" red="0.85882352939999995" green="0.91764705879999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="H6q-Xe-MXf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2Aj-DK-ffY"/>
+                <constraint firstItem="H6q-Xe-MXf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3i5-FB-n49"/>
+                <constraint firstAttribute="trailing" secondItem="H6q-Xe-MXf" secondAttribute="trailing" id="W4k-Vm-bdJ"/>
+                <constraint firstAttribute="bottom" secondItem="H6q-Xe-MXf" secondAttribute="bottom" id="qyk-Qx-70i"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="312" height="162"/>
+            <connections>
+                <outlet property="amount" destination="GmJ-QL-Xzr" id="EXW-Aa-Pld"/>
+                <outlet property="auxillaryAmount" destination="jKH-qP-Pq1" id="03b-8D-9zC"/>
+                <outlet property="currencyLabel" destination="qnl-W0-IE9" id="MJE-gk-A4z"/>
+                <outlet property="numberBar" destination="3Pv-P1-cz8" id="f9V-Mq-7Iz"/>
+            </connections>
+            <point key="canvasLocation" x="94" y="16"/>
+        </collectionViewCell>
+    </objects>
+</document>

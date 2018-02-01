@@ -46,6 +46,15 @@ class Tx: NSManagedObject {
             isServerUpdateNeededValue = newValue
         }
     }
+    /// transaction hash
+    var cryptoTx: String? {
+        get {
+            return cryptoTxValue
+        }
+        set {
+            cryptoTxValue = newValue
+        }
+    }
     var clientResolutionTime: Date? { return clientResolutionTimeValue as Date? }
     var resolutionTime: Date? { return resolutionTimeValue as Date? }
     var initiatedTime: Date? { return initiatedTimeValue as Date? }
@@ -76,7 +85,7 @@ class Tx: NSManagedObject {
     /// TxInputs sorted by UUID id values
     var inputs: [TxInput] {
         guard let set = inputsValue as? Set<TxInput> else {
-            print("couldn't form array from set of TxInput")
+            log("couldn't form array from set of TxInput", type: [.error, .crypto])
             return []
         }
         

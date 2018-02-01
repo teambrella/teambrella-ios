@@ -81,7 +81,7 @@ struct HomeCellBuilder {
         cell.leftNumberView.currencyLabel.text = service.currencyName
         cell.rightNumberView.titleLabel.text = "Team.Home.Card.teamVote".localized
         cell.rightNumberView.badgeLabel.text = "Team.Home.Card.voting".localized
-        cell.textLabel.text = model.text
+        cell.textLabel.text = model.text.sane
         if model.unreadCount > 0 {
             cell.unreadCountView.isHidden = false
             cell.unreadCountView.text = String(model.unreadCount)

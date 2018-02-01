@@ -30,28 +30,28 @@ struct CoverageEntity: Decodable {
         case deductibleAmount = "DeductibleAmount"
     }
 
-    var coverage: Double
-    var nextCoverage: Double
+    var coverage: Ether
+    var nextCoverage: Ether
     var daysToNextCoverage: Int
     var claimLimit: Double
-    var deductibleAmount: Double
+    var deductibleAmount: Ether
     
     init() {
-        coverage = 0
-        nextCoverage = 0
+        coverage = Ether.empty
+        nextCoverage = Ether.empty
         daysToNextCoverage = 0
         claimLimit = 0
-        deductibleAmount = 0
+        deductibleAmount = Ether.empty
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        coverage = try container.decode(Double.self, forKey: .coverage)
-        nextCoverage = try container.decode(Double.self, forKey: .nextCoverage)
+        coverage = try container.decode(Ether.self, forKey: .coverage)
+        nextCoverage = try container.decode(Ether.self, forKey: .nextCoverage)
         daysToNextCoverage = try container.decode(Int.self, forKey: .daysToNextCoverage)
         claimLimit = try container.decode(Double.self, forKey: .claimLimit)
-        deductibleAmount = try container.decode(Double.self, forKey: .deductibleAmount)
+        deductibleAmount = try container.decode(Ether.self, forKey: .deductibleAmount)
     }
 
 }

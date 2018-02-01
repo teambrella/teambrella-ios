@@ -22,47 +22,17 @@
 import Foundation
 
 struct WalletTransactionsCellBuilder {
-    static func populate(cell: UICollectionViewCell, with model: WalletTransactionsCellModel) {
+    static func populate(cell: UICollectionViewCell,
+                         indexPath: IndexPath,
+                         with model: WalletTransactionsCellModel,
+                         cellsCount: Int) {
         if let cell = cell as? WalletTransactionCell {
-            guard let date = model.dateCreated else { return }
-            
-            cell.createdLabel.text = DateFormatter.teambrellaShort.string(from: date)
-            let names = model.to.map { $0.name }
-            var namesString = ""
-            var idx = 1
-            for name in names {
-                let separator = (idx != names.count) ? ", " : ""
-                namesString += String(describing: name) + separator
-                idx += 1
-            }
-            cell.nameLabel.text = namesString
-            cell.amountTitle.text = "Me.WalletVC.WalletTransactionsVC.amountTitle".localized
-            guard let session = service.session else { return }
-            
-            let amounts = model.to.map { $0.amount * 1000 }
-            var amountString = ""
-            idx = 1
-            for amount in amounts {
-                let isLast: Bool = idx == amounts.count
-                let separator = isLast ? "" : ", "
-                amountString += String.formattedNumber(amount) + separator
-                idx += 1
-            }
-            cell.amountLabel.text = amountString + " " + session.coinName
-            
-            cell.kindTitle.text = "Me.WalletVC.WalletTransactionsVC.kindTitle".localized
-            let kinds = model.to.map { $0.kind }
-            var kindsString = ""
-            idx = 1
-            for kind in kinds {
-                let isLast: Bool = idx == kinds.count
-                let separator = isLast ? "" :  ", "
-                kindsString += kind.localizationKey.localized + separator
-                idx += 1
-            }
-            cell.kindLabel.text = kindsString
-            cell.statusTitle.text = "Me.WalletVC.WalletTransactionsVC.statusTitle".localized
-            cell.statusLabel.text = model.serverTxState.localizationKey.localized
+            cell.setup(with: model)
+
+            cell.separator.isHidden = indexPath.row == cellsCount - 1
+            ViewDecorator.decorateCollectionView(cell: cell,
+                                                 isFirst: indexPath.row == 0,
+                                                 isLast: indexPath.row == cellsCount - 1)
         }
     }
 }
