@@ -54,5 +54,3 @@ struct ClaimTransactionsModel: Decodable {
     let to: [TransactionTo]
     
 }
-
-

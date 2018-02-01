@@ -19,10 +19,10 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import MessageUI
 import PKHUD
 import UIKit
 import XLPagerTabStrip
-import MessageUI
 
 final class MembersVC: UIViewController, IndicatorInfoProvider {
     struct Constant  {

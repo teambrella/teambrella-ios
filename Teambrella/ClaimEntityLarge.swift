@@ -65,8 +65,8 @@ struct ClaimEntityLarge {
     // MARK: Voting part
     
     var ratioVoted: ClaimVote { return ClaimVote(votingPart["RatioVoted"].doubleValue) }
-    var myVote: ClaimVote? { return votingPart["MyVote"].double.map { ClaimVote($0)} }
-    var proxyVote: ClaimVote? { return votingPart["ProxyVote"].double.map { ClaimVote($0)} }
+    var myVote: ClaimVote? { return votingPart["MyVote"].double.map { ClaimVote($0) } }
+    var proxyVote: ClaimVote? { return votingPart["ProxyVote"].double.map { ClaimVote($0) } }
     var proxyAvatar: String? { return votingPart["ProxyAvatar"].string }
     var proxyName: String? { return votingPart["ProxyName"].string }
     var otherAvatars: [String] { return votingPart["OtherAvatars"].arrayObject as? [String] ?? [] }

@@ -205,7 +205,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
         alert.addAction(UIAlertAction(title: "Me.Wallet.Withdraw.noCameraAccess.cancelButton".localized,
                                       style: .cancel))
         alert.addAction(UIAlertAction(title: "Me.Wallet.Withdraw.noCameraAccess.settingsButton".localized,
-                                      style: .default) { (alert) -> Void in
+                                      style: .default) { alert -> Void in
                                         guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
                                         UIApplication.shared.open(url, options: [:], completionHandler: { success in
                                             

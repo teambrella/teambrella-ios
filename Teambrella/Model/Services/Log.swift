@@ -39,7 +39,7 @@ func log(_ error: Error) {
 
 class Log {
     /// Change log level to filter logs along the entire application
-    var logLevel: LogLevel = .appAll
+    var logLevel: LogLevel = .cryptoDetailed
 
     lazy var types: LogType = { self.typesFor(level: self.logLevel) }()
     
@@ -58,7 +58,8 @@ class Log {
             print(string)
         }
     }
-    
+
+    // swiftlint:disable:next cyclomatic_complexity
     private func emojiString(_ string: String, type: LogType) -> String {
         var emojis = ""
         if type.contains(.error) {

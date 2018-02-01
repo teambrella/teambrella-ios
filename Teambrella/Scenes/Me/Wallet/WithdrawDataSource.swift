@@ -134,17 +134,19 @@ final class WithdrawDataSource {
             let address = EthereumAddress(string: detailsModel.toValue) else { return }
         
         isLoading = true
-        service.dao.withdraw(teamID: teamID, amount: Ether(amount).value, address: address).observe { [weak self] result in
-            switch result {
-            case let .value(chunk):
-                self?.lastChunk = chunk
-                self?.onUpdate?()
-            case let .error(error):
-                self?.onError?(error)
-            default:
-                break
-            }
-            self?.isLoading = false
+        service.dao.withdraw(teamID: teamID,
+                             amount: Ether(amount).value,
+                             address: address).observe { [weak self] result in
+                                switch result {
+                                case let .value(chunk):
+                                    self?.lastChunk = chunk
+                                    self?.onUpdate?()
+                                case let .error(error):
+                                    self?.onError?(error)
+                                default:
+                                    break
+                                }
+                                self?.isLoading = false
         }
     }
     
@@ -177,9 +179,11 @@ final class WithdrawDataSource {
         guard indexPath.section < sections else { return nil }
         guard indexPath.row < rows(in: indexPath.section) else { return nil }
         
-        if indexPath.section == 0 && indexPath.row == 0 { return infoModel }
-        else if indexPath.section == 0 && indexPath.row == 1 { return detailsModel }
-        
+        if indexPath.section == 0 && indexPath.row == 0 {
+            return infoModel
+        } else if indexPath.section == 0 && indexPath.row == 1 {
+            return detailsModel
+        }
         let filtered = transactions.filter { $0.isEmpty == false }
         let transaction = filtered[indexPath.section - 1][indexPath.row]
         return modelBuilder.modelFrom(transaction: transaction)
