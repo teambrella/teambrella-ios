@@ -59,8 +59,14 @@ struct NewClaimModel: ReportModel {
     let address: String
 
     let coverage: Coverage
+    let limit: Double
     
-    var isValid: Bool { return coverage.value > 0 && expenses > 0 && text.count >= 30 && address != "" }
+    var isValid: Bool {
+        let isLowerThanLimit = expenses <= limit
+        let isTextValid = text.count >= 30
+        let isAddressValid = EthereumAddress(string: address) == nil ? false : true
+        return coverage.value > 0 && expenses > 0 &&  isLowerThanLimit && isTextValid && isAddressValid
+    }
 }
 
 struct NewChatModel: ReportModel {

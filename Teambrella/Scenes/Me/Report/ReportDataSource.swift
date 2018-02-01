@@ -35,6 +35,7 @@ class ReportDataSource {
     var items: [ReportCellModel] = []
     var count: Int { return items.count }
     var coverage: Coverage = Coverage.no
+    var limit: Double = 0
     
     var onUpdateCoverage: (() -> Void)?
     
@@ -94,7 +95,8 @@ class ReportDataSource {
                                       text: message,
                                       images: imageStrings,
                                       address: address,
-                                      coverage: self.coverage)
+                                      coverage: self.coverage,
+                                      limit: self.limit)
             return model
         }
         return nil
@@ -158,8 +160,9 @@ class ReportDataSource {
             guard let `self` = self else { return }
             
             switch result {
-            case let .value((coverage: coverage, limit: _)):
+            case let .value((coverage: coverage, limit: limit)):
                 self.coverage = coverage
+                self.limit = limit
                 for (idx, item) in self.items.enumerated() {
                     if var item = item as? ExpensesReportCellModel {
                     item.coverage = coverage

@@ -88,8 +88,12 @@ final class ReportVC: UIViewController, Routable {
         
         dataSource = ReportDataSource(context: reportContext)
         dataSource.onUpdateCoverage = { [weak self] in
-            self?.reloadExpencesCellIfNeeded()
-            self?.isCoverageActual = true
+            guard let `self` = self else { return }
+
+            self.reloadExpencesCellIfNeeded()
+            self.isCoverageActual = true
+            self.coverage = self.dataSource.coverage.value
+            self.limit = self.dataSource.limit
         }
         ReportCellBuilder.registerCells(in: collectionView)
         dataSource.getCoverageForDate(date: datePicker.date)
