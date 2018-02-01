@@ -41,7 +41,8 @@ struct MembersCellBuilder {
             }
             guard let currency: String = service.session?.currentTeam?.currencySymbol else { return }
             
-            let amountText: String = currency + "\(abs(Int(teammate.totallyPaid)))"
+            let coeff = teammate.totallyPaid > 0 ? 0.5 : -0.5
+            let amountText: String = currency + "\(abs(Int(teammate.totallyPaid + coeff)))"
             cell.amountLabel.text = amountText
             let sign: String = teammate.totallyPaid >= 0.5 ? "+" : teammate.totallyPaid <= -0.5 ? "-" : ""
             cell.signLabel.text = sign

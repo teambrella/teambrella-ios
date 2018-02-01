@@ -7,7 +7,6 @@
 */
 
 "Proxy.MyProxiesVC.indicatorTitle"    = "Mis Proxies";
-"Proxy.ProxyForVC.indicatorTitle"     = "Proxy para";
 "Proxy.UserIndexVC.indicatorTitle"    = "Índice";
 "Proxy.SortVC.SortByHeader"           = "ORDENAR POR";
 "Proxy.SortVC.Cell.Rating"            = "Clasificación";
@@ -24,7 +23,6 @@
 "Proxy.MyProxiesVC.discussions"       = "DISCUSIONES";
 "Proxy.MyProxiesVC.votingFreq"        = "FREC. DE VOTACIÓN";
 "Proxy.MyProxiesVC.proxyRank"         = "RANGO DE PROXY";
-"Proxy.UserIndexVC.members"           = "MIEMBROS";
 "Proxy.UserIndexVC.proxyRank"         = "RANGO DE PROXY";
 "Proxy.Empty.title"                   = "Todavía no tienes los Proxies";
 "Proxy.Empty.details"                 = "Por favor, considera a alguien en quien confías para nombrar a tu primero Proxy.";
@@ -36,3 +34,5 @@
 "Proxy.UserIndexVC.optButton.title.out" = "Opt Out Of Rating";
 
 "Proxy.ProxyForCellBuilder.neverVoted" = "NEVER VOTED";
+"Proxy.UserIndexVC.allTeamsRating" = "ALL-TEAMS RATING";
+"Proxy.ProxyForVC.indicatorTitle" = "I Am Proxy For";

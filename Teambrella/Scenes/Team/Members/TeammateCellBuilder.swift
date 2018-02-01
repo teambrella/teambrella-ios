@@ -95,7 +95,7 @@ struct TeammateCellBuilder {
         votingCell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars, label: label,
                                                    max: maxAvatarsStackCount)
         if let risk = voting.riskVoted {
-            votingCell.teamVoteValueLabel.text =  String.formattedNumber(risk)
+            votingCell.teamVoteValueLabel.text = String(format: "%.2f", risk)
             votingCell.showTeamNoVote(risk: risk)
         } else {
             votingCell.teamVoteValueLabel.text = "..."
@@ -168,14 +168,17 @@ struct TeammateCellBuilder {
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
             left.currencyLabel.text = service.currencyName
         }
-        if let middle = cell.numberBar.middle {
+        if let middle = cell.numberBar.middle { // math abs!!!
             middle.titleLabel.text = "Team.Teammates.net".localized
-            middle.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.totallyPaidAmount)
+            let test = teammate.basic.totallyPaidAmount > 0 ?
+                Int(teammate.basic.totallyPaidAmount + 0.5) :
+                Int(teammate.basic.totallyPaidAmount - 0.5)
+            middle.amountLabel.text = String(test)
             middle.currencyLabel.text = service.currencyName
         }
         if let right = cell.numberBar.right {
-            right.titleLabel.text = "Team.TeammateCell.riskFactor".localized
-            right.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.risk)
+            right.titleLabel.text = "Team.TeammateCell.risk".localized
+            right.amountLabel.text = String(format: "%.2f", teammate.basic.risk)
             let avg = String.truncatedNumber(teammate.basic.averageRisk)
             right.badgeLabel.text = avg + " AVG"
             right.isBadgeVisible = true
@@ -208,10 +211,17 @@ struct TeammateCellBuilder {
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
         
         cell.weightTitleLabel.text = "Team.TeammateCell.weight".localized
-        cell.weightValueLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
+        if stats.weight < 1 {
+            cell.weightValueLabel.text = String(format: "%.2f", stats.weight)
+        } else if stats.weight < 10 {
+            cell.weightValueLabel.text = String(format: "%.1f", stats.weight)
+        } else {
+            cell.weightValueLabel.text = String(Int(stats.weight))
+        }
+//        cell.weightValueLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
         
         cell.proxyRankTitleLabel.text = "Team.TeammateCell.proxyRank".localized
-        cell.proxyRankValueLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
+        cell.proxyRankValueLabel.text = String(format: "%.1f", stats.proxyRank)
         /*
          if let left = cell.numberBar.left {
          left.amountLabel.textAlignment = .center

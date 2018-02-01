@@ -187,7 +187,7 @@ extension UserIndexVC: UICollectionViewDelegate {
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
         if let cell = view as? InfoHeader {
-            cell.leadingLabel.text = "Proxy.UserIndexVC.members".localized
+            cell.leadingLabel.text = "Proxy.UserIndexVC.allTeamsRating".localized
             cell.trailingLabel.text = "Proxy.UserIndexVC.proxyRank".localized
         }
     }

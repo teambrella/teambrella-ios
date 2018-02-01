@@ -42,7 +42,7 @@
 "Team.TeammateCell.covered"                      = "CUBIERTO";
 "Team.TeammateCell.collisionDeductible"          = "Deducible por colisión";
 "Team.TeammateCell.limit"                        = "LIMIT";
-"Team.TeammateCell.riskFactor"                   = "FACTOR DE RIESGO";
+"Team.TeammateCell.risk"                         = "RIESGO";
 "Team.TeammateCell.votingStats"                  = "ESTADISTICA DE VOTACIÓN";
 "Team.TeammateCell.weight"                       = "PESO";
 "Team.TeammateCell.proxyRank"                    = "RANGO DE PROXY";

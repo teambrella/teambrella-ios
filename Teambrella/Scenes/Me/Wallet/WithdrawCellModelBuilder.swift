@@ -22,7 +22,7 @@ class WithdrawModelBuilder {
     }
 
     func detailsModel(maxAmount: Double) -> WithdrawDetailsCellModel {
-        return WithdrawDetailsCellModel(amountPlaceholder: "Max \(String.truncatedNumber(maxAmount)) mETH")
+        return WithdrawDetailsCellModel(amountPlaceholder: "Max \(String(Int(maxAmount))) mETH")
     }
     
     func modelFrom(transaction: WithdrawTx) -> WithdrawTransactionCellModel {

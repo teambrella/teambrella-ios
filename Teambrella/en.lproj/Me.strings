@@ -14,7 +14,7 @@
 "Me.WalletVC.rightBrick.title"                 = "AVAILABLE";
 "Me.WalletVC.withdrawButton"                   = "Withdraw";
 "Me.WalletVC.fundingCell.title"                = "RECOMMENDED FUNDING";
-"Me.WalletVC.fundButton"                       = "Fund wallet";
+"Me.WalletVC.fundButton"                       = "Fund Wallet";
 
 "Me.WalletVC.actionsCell.cosigners"            = "Co-signers";
 "Me.WalletVC.actionsCell.transactions"         = "Transactions";
@@ -28,7 +28,7 @@
 "Me.WalletDetailsVC.copiedAddress"             = "Copied";
 
 
-"Me.CoverageVC.fundButton"                     = "Fund the wallet to increase";
+"Me.CoverageVC.fundButton"                     = "Fund Wallet to increase";
 "Me.CoverageVC.title"                          = "HOW IT WORKS";
 "Me.CoverageVC.subtitle"                       = "Use the slider to understand how Expenses impact your maximum reimbursement.";
 "Me.CoverageVC.maxExpenses"                    = "Max Expenses covered";
@@ -63,13 +63,12 @@
 "Me.Report.ImageSource.gallery"                = "Gallery";
 "Me.Report.ImageSource.camera"                 = "Camera";
 
-"Me.WalletVC.fundingCell.additionalTitle"      = "RECOMMENDED ADDITIONAL FUNDING";
+"Me.WalletVC.fundingCell.additionalTitle"      = "RECOMMENDED FUNDING";
 "Me.WalletVC.WalletCosignersVC.title"          = "Co-signers";
 
 "Me.Report.submitButtonTitle-submit"           = "Submit";
 "Me.Report.submitButtonTitle-create"           = "Create";
 "Me.Report.cancelButtonTitle"                  = "Cancel";
-"Me.Report.newDiscussion.title-placeholder"    = "Title";
 
 "Me.Wallet.Withdraw" = "Withdraw";
 "Me.Wallet.Withdraw.Details.title" = "WITHDRAW DETAILS";

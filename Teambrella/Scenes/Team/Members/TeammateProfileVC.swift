@@ -53,7 +53,9 @@ final class TeammateProfileVC: UIViewController, Routable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let teammateID = teammateID {
+        if let teammateID = teammateID, teammateID == service.session?.currentUserID {
+            dataSource = TeammateProfileDataSource(id: teammateID, isMe: true)
+        } else if let teammateID = teammateID {
             dataSource = TeammateProfileDataSource(id: teammateID, isMe: false)
         } else if let myID = service.session?.currentUserID {
             dataSource = TeammateProfileDataSource(id: myID, isMe: true)
@@ -333,14 +335,14 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             if let left = view.leftNumberView {
                 left.titleLabel.text = "Team.TeammateCell.wouldCoverMe".localized
                 let amount = teammate.basic.coversMeAmount
-                left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+                left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 left.currencyLabel.text = service.currencyName
             }
             
             if let right = view.rightNumberView {
                 right.titleLabel.text = "Team.TeammateCell.wouldCoverThem".localized
                 let amount = teammate.basic.iCoverThemAmount
-                right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+                right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 right.currencyLabel.text = service.currencyName
             }
         } else if let view = view as? TeammateSummaryView {
@@ -357,14 +359,14 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 left.isHidden = dataSource.isMe
                 left.titleLabel.text = "Team.TeammateCell.coversMe".localized
                 let amount = teammate.basic.coversMeAmount
-                left.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+                left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 left.currencyLabel.text = service.currencyName
             }
             if let right = view.rightNumberView {
                 right.isHidden = dataSource.isMe
                 right.titleLabel.text = "Team.TeammateCell.coverThem".localized
                 let amount = teammate.basic.iCoverThemAmount
-                right.amountLabel.text = ValueToTextConverter.textFor(amount: amount)
+                right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 right.currencyLabel.text = service.currencyName
             }
             
