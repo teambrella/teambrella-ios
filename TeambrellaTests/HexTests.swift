@@ -23,13 +23,11 @@ class HexTests: XCTestCase {
     func testData() {
         let str = Hex().formattedString(data: Data(hex: "7FAEA7BF543F36DAE9D379C67979EF10C824F3FC"), bytesCount: 32)
         XCTAssertNotNil(str)
-        print(str)
     }
     
     func testOtherString() {
         let str = Hex().formattedString(string: "123", bytesCount: 32)
         XCTAssertNotNil(str)
-        print(str)
     }
     
 }

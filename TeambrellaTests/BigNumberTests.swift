@@ -20,22 +20,11 @@ import XCTest
 
 class BigNumberTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
     func testBTCBigNumber() {
         let weis = BTCMutableBigNumber(int64: 666).multiply(BTCBigNumber(int64: 1_000_000_000_000_000_000))
         
         XCTAssertNotNil(weis)
-        print(weis?.hexString)
-         XCTAssertEqual(weis!.hexString.uppercased(), "241A9B4F617A280000".uppercased())
+        XCTAssertEqual(weis!.hexString.uppercased(), "241A9B4F617A280000".uppercased())
     }
     
 }
