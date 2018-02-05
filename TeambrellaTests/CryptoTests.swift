@@ -29,7 +29,8 @@ class CryptoTests: XCTestCase {
         let key = Key(base58String: privateKey, timestamp: 0)
         XCTAssertEqual(key.privateKey, privateKey)
     }
-    
+
+    /*
     func testBTCKey() {
         let key = BTCKey(wif: privateKey)
         
@@ -41,7 +42,8 @@ class CryptoTests: XCTestCase {
         
         XCTAssertEqual(key?.privateKey.base58CheckString(), privateKey)
     }
-
+*/
+    
     func testWIF() {
         let key = BTCKey()!
         key.isPublicKeyCompressed = true

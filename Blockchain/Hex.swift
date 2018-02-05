@@ -99,7 +99,6 @@ struct Hex {
         guard data.count <= bytesCount else { return nil }
 
         let str = data.hexString
-        print("String: \(str)")
         let bytes = [UInt8](data)
         var hexString = ""
         for i in 0..<bytesCount {
@@ -110,7 +109,6 @@ struct Hex {
             } else {
                 hexString += "00"
             }
-            print(hexString)
         }
         return hexString
     }
