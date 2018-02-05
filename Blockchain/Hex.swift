@@ -82,11 +82,11 @@ struct Hex {
         return String(format: format, integer)
     }
 
-    // 777 to "00000000000000000777"
-    func formattedString(bigInteger: BInt, bytesCount: Int) -> String? {
-        return formattedString(string: bigInteger.asString(withBase: 10), bytesCount: bytesCount)
-    }
-    
+//    // 777 to "00000000000000000777"
+//    func formattedString(bigInteger: BInt, bytesCount: Int) -> String? {
+//        return formattedString(string: bigInteger.asString(withBase: 10), bytesCount: bytesCount)
+//    }
+
     // "0xABCDEF" to "00000000000000000ABCDEF"
     func formattedString(string: String, bytesCount: Int) -> String? {
         let truncated = truncatePrefix(string: string)
@@ -97,7 +97,8 @@ struct Hex {
     
     func formattedString(data: Data, bytesCount: Int) -> String? {
         guard data.count <= bytesCount else { return nil }
-        
+
+        let str = data.hexString
         let bytes = [UInt8](data)
         var hexString = ""
         for i in 0..<bytesCount {

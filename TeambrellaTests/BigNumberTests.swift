@@ -31,17 +31,11 @@ class BigNumberTests: XCTestCase {
     }
     
     func testBTCBigNumber() {
-        let weis = BTCMutableBigNumber(int64: 12345).multiply(BTCBigNumber(int64: 1_000_000_000_000_000_000))
+        let weis = BTCMutableBigNumber(int64: 666).multiply(BTCBigNumber(int64: 1_000_000_000_000_000_000))
         
         XCTAssertNotNil(weis)
-        XCTAssertTrue(weis!.hexString.hasPrefix("0x"))
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        print(weis?.hexString)
+         XCTAssertEqual(weis!.hexString.uppercased(), "241A9B4F617A280000".uppercased())
     }
     
 }

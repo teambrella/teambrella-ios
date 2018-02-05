@@ -43,14 +43,14 @@ class EthereumTests: XCTestCase {
     func testLength() {
         let processor = EthereumProcessor.standard
         let signature = processor.publicKeySignature!
-        let length = signature.count
-        XCTAssertEqual(65 * 2, length)
+        let length = signature.count - 2 // because of "0x" prefix
+        XCTAssertEqual(length, 65 * 2)
     }
     
     func testInitialLetters() {
         let processor = EthereumProcessor.standard
         let signature = processor.publicKeySignature!
-         XCTAssertTrue(signature.hasPrefix("1b") || signature.hasPrefix("1c"))
+         XCTAssertTrue(signature.hasPrefix("0x1b") || signature.hasPrefix("0x1c"))
     }
     
 }
