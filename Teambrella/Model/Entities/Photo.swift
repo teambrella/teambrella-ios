@@ -16,27 +16,15 @@
 
 import Foundation
 
-/**
- Coverage is a coefficient that is applied to the claim amount to calculate actual amount to be paid
- */
-struct Coverage: Decodable {
-    let value: Double
-    var percentage: Double { return value * 100 }
-    var integerPercentage: Int { return Int(percentage + 0.5) }
+struct Photo: Decodable {
+    let string: String
 
-    static var no: Coverage { return Coverage(0) }
-
-    func ethers(from: Ether) -> Ether {
-        return Ether(from.value * value)
-    }
-
-    init(_ value: Double) {
-        self.value = value
+    init(_ string: String) {
+        self.string = string
     }
 
     init(from decoder: Decoder) throws {
-        let value = try decoder.singleValueContainer().decode(Double.self)
-        self.value = value
+        string = try decoder.singleValueContainer().decode(String.self)
     }
-    
+
 }

@@ -154,7 +154,7 @@
 "Team.Claims.State.Header.fullyPaid"             = "FULLY PAID";
 "Team.Claims.State.Header.beingPaid"             = "BEING PAID";
 "Team.Claims.State.Header.voted"                 = "VOTED";
-"Team.Claims.VitedCell.voted"                    = "Voted: ";
+"Team.Claims.VotedCell.voted"                    = "Voted: ";
 "Team.ClaimsCell.declined"                       = "DECLINED";
 
 "Team.Chat.TextCell.voted_format"                = "VOTED:%@%%";
