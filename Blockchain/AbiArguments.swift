@@ -86,7 +86,8 @@ class AbiArguments {
         let hex = weisInt.asString(withBase: 16)
     */
         log("Parse amount in ETH: \(decimalAmount) to Weis dec: \(weisInt); hex: \(hex)", type: .crypto)
-        return  Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)
+        return Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)
+//        return  Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)
     }
     
     func add(_ argument: Any) throws {

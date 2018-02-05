@@ -77,4 +77,16 @@ class AbiArgumentsTests: XCTestCase {
             XCTAssertTrue(false)
         }
     }
+
+    func testAmountValue() {
+        let amount = 0.00067
+        let abi = AbiArguments.parseDecimalAmount(decimalAmount: String(amount))
+        XCTAssertEqual(abi, "0000000000000000000000000000000000000000000000000002615C87FFE000")
+    }
+
+    func testAmountValue2() {
+        let amount = 0.00482326
+        let abi = AbiArguments.parseDecimalAmount(decimalAmount: String(amount))
+        XCTAssertEqual(abi, "000000000000000000000000000000000000000000000000001122BABAF59800")
+    }
 }
