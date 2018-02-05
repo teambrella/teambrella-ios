@@ -30,6 +30,10 @@ class ProxyForHeader: UICollectionReusableView, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        if let label = detailsLabel {
+            label.font = UIFont.teambrellaBold(size: 12)
+            label.textColor = .blueyGray
+        }
     }
     
 }

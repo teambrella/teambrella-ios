@@ -79,6 +79,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="stackHeight">
                                         <real key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="areVerticalLinesVisible" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

@@ -47,7 +47,7 @@
                         <constraint firstAttribute="trailing" secondItem="Ndt-E7-5r0" secondAttribute="trailing" constant="20" id="zuS-aZ-saI"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHO YOU ARE A PROXY FOR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrm-dY-dAF" customClass="StatusSubtitleLabel" customModule="Surilla" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHO YOU ARE A PROXY FOR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrm-dY-dAF" customClass="Label" customModule="Surilla" customModuleProvider="target">
                     <rect key="frame" x="16" y="175" width="229" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>

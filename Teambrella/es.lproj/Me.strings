@@ -32,7 +32,8 @@
 "Me.WalletDetailsVC.timeLabel"                 = "Válido por 24 horas";
 "Me.WalletDetailsVC.copyAddressButton"         = "Copiar Dirección";
 "Me.WalletDetailsVC.copiedAddress"             = "Copiado";
-"Me.CoverageVC.fundButton"                     = "Financiar tu Monedero para aumentar";
+"Me.CoverageVC.fundButton.title.toIncrease"    = "Financiar tu Monedero para aumentar";
+"Me.CoverageVC.fundButton.title"               = "Financiar Monedero";
 "Me.CoverageVC.title"                          = "¿CÓMO FUNCIONA?";
 "Me.CoverageVC.subtitle"                       = "Utilice el control deslizante para ver cómo los gastos afectan su reembolso máximo";
 "Me.CoverageVC.maxExpenses"                    = "Cantidad máxima de los gastos cubiertos";

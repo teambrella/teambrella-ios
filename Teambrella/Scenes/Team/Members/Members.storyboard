@@ -638,13 +638,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAA-xo-vE9" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="232" width="317" height="40"/>
+                                                    <rect key="frame" x="16" y="240" width="317" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="563-Sl-2SN"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                                     <state key="normal" title="See Claims (0)">
-                                                        <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="titleColor" red="0.30588235294117649" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Ln-izq" customClass="ChatTextLabel" customModule="Surilla" customModuleProvider="target">
@@ -700,7 +700,7 @@
                                             <constraint firstItem="wHf-Ln-izq" firstAttribute="bottom" secondItem="oqH-A9-lU0" secondAttribute="bottom" id="lku-ZP-1vg"/>
                                             <constraint firstItem="XnH-wy-WNx" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leading" id="prq-ZS-Svm"/>
                                             <constraint firstItem="kbY-VY-xCl" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leading" constant="16" id="vAy-6I-Rja"/>
-                                            <constraint firstAttribute="bottom" secondItem="rAA-xo-vE9" secondAttribute="bottom" constant="24" id="wfL-K3-rop"/>
+                                            <constraint firstAttribute="bottom" secondItem="rAA-xo-vE9" secondAttribute="bottom" constant="16" id="wfL-K3-rop"/>
                                             <constraint firstItem="wHf-Ln-izq" firstAttribute="top" secondItem="Yuo-5i-zpX" secondAttribute="bottom" id="wwN-dh-bhT"/>
                                             <constraint firstItem="oqH-A9-lU0" firstAttribute="leading" secondItem="THQ-y3-3Ql" secondAttribute="leading" constant="16" id="yyn-YL-zv1"/>
                                         </constraints>
@@ -942,7 +942,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="BXS-5h-N9n"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                                     <state key="normal" title="Add to my Proxy Voters">
                                                         <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>

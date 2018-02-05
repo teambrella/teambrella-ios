@@ -38,7 +38,7 @@ class TeammateObjectCell: UICollectionViewCell {
         ViewDecorator.roundedEdges(for: self)
         ViewDecorator.shadow(for: self)
         
-        button.setTitleColor(.robinEggBlue, for: .normal)
+        button.setTitleColor(.lightBlue, for: .normal)
         button.setTitleColor(.cloudyBlue, for: .disabled)
     }
     

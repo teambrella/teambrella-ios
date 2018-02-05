@@ -25,7 +25,6 @@ class WalletButtonsCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var topView: UIView!
     @IBOutlet var topViewLabel: Label!
     @IBOutlet var imagesStack: RoundImagesStack!
-    @IBOutlet var quantityLabel: Label!
 
     @IBOutlet var middleView: UIView!
     @IBOutlet var middleViewLabel: Label!
