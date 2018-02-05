@@ -17,6 +17,8 @@
 import Foundation
 
 struct Avatar: Decodable {
+    static var none: Avatar { return Avatar("") }
+    
     let string: String
 
     init(_ string: String) {

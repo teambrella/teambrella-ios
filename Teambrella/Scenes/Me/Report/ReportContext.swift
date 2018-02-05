@@ -28,7 +28,7 @@ enum ReportContext {
 }
 
 struct ClaimItem {
-    let name: String
-    let photo: String
+    let name: Name
+    let photo: Photo
     let location: String
 }
