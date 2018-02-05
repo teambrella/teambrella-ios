@@ -219,9 +219,9 @@ extension ClaimsVC: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size: CGSize!
         switch dataSource.cellType(for: indexPath) {
-        case .open: size = CGSize(width: collectionView.bounds.width - 32, height: 156)
+        case .open: size = CGSize(width: collectionView.bounds.width - 32, height: 128)
         case .voted: size = CGSize(width: collectionView.bounds.width, height: 112)
-        case .paid, .fullyPaid: size = CGSize(width: collectionView.bounds.width, height: 79)
+        case .paid, .fullyPaid: size = CGSize(width: collectionView.bounds.width, height: 72)
         }
         return size
     }
@@ -229,7 +229,11 @@ extension ClaimsVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: dataSource.showHeader(for: section) ? 50 : 0.01)
+        if section == 0 {
+            return CGSize(width: collectionView.bounds.width, height: 16)
+        } else {
+            return CGSize(width: collectionView.bounds.width, height: dataSource.showHeader(for: section) ? 50 : 0.01)
+        }
     }
 }
 
