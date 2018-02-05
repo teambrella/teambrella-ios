@@ -20,6 +20,8 @@ import Foundation
 struct Fiat: Decodable {
     let value: Double
 
+    var formatted: String { return String.truncatedNumber(value) }
+
     init(_ value: Double) {
         self.value = value
     }

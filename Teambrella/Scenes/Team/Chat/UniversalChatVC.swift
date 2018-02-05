@@ -534,7 +534,7 @@ private extension UniversalChatVC {
                 let interval = me.lastTypingDate.timeIntervalSinceNow
                 if interval < -2, let topicID = me.dataSource.topicID,
                     let name = service.session?.currentUserName {
-                    socket?.meTyping(teamID: teamID, topicID: topicID, name: name)
+                    socket?.meTyping(teamID: teamID, topicID: topicID, name: name.first)
                     self?.lastTypingDate = Date()
                 }
             }

@@ -31,7 +31,7 @@ class ChatModelBuilder {
     
     func unsentModel(fragments: [ChatFragment], id: String) -> ChatTextUnsentCellModel {
         let heights = heightCalculator.heights(for: fragments)
-        let myName = service.session?.currentUserName ?? ""
+        let myName = service.session?.currentUserName ?? Name.empty
         return  ChatTextUnsentCellModel(fragments: fragments,
                                                      fragmentHeights: heights,
                                                      userName: myName,
@@ -57,11 +57,11 @@ class ChatModelBuilder {
             var isMy = false
             service.session?.currentUserID.map { isMy = item.userID == $0 }
             
-            let name: String
-            let avatar: String
+            let name: Name
+            let avatar: Avatar
             if isMy == true {
-                name = "General.you".localized
-                avatar = service.session?.currentUserAvatar ?? ""
+                name = Name(fullName: "General.you".localized)
+                avatar = service.session?.currentUserAvatar ?? Avatar.none
             } else {
                 name = item.name
                 avatar = item.avatar

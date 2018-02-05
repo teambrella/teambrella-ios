@@ -173,7 +173,7 @@ class FeedChatStrategy: ChatDatasourceStrategy {
 }
 
 class HomeChatStrategy: ChatDatasourceStrategy {
-    var title: String { return card.chatTitle ?? card.name }
+    var title: String { return card.chatTitle ?? card.name.short }
     var requestType: TeambrellaRequestType {
         switch card.itemType {
         case .claim:

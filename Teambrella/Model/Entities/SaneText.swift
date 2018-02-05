@@ -16,6 +16,9 @@
 
 import Foundation
 
+/**
+ Sane text is intended to repair text from server that might contain HTML tags in it
+ */
 struct SaneText: Decodable {
     let original: String
     let sane: String

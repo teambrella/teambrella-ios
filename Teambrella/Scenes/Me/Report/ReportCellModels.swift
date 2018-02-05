@@ -33,8 +33,8 @@ struct ItemReportCellModel: ReportCellModel {
     var preferredHeight: Float { return 120 }
     let title = "Me.Report.ItemCell.title".localized
     
-    let name: String
-    let photo: String
+    let name: Name
+    let photo: Photo
     let location: String
     
     var isValid: Bool { return true }

@@ -17,8 +17,8 @@
 import Foundation
 
 struct WalletTransactionsCellModel {
-    let avatar: String
-    let name: String
+    let avatar: Avatar
+    let name: Name
     let detailsText: String
     let amountText: String
     let kindText: String

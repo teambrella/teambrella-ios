@@ -33,33 +33,35 @@ struct ClaimsCellBuilder {
     static func populate(cell: UICollectionViewCell, with claim: ClaimEntity) {
         guard let cell = cell as? ClaimsCell else { return }
         
-        cell.ownerAvatarView.showAvatar(string: claim.avatar)
+        cell.ownerAvatarView.show(claim.avatar)
         cell.titleLabel.text = claim.model
-        cell.ownerNameLabel.text = claim.name.uppercased()
+        cell.ownerNameLabel.text = claim.name.entire.uppercased()
         
         if let cell = cell as? ClaimsOpenCell {
-            cell.avatarView.showImage(string: claim.smallPhoto)
+            cell.avatarView.show(claim.smallPhoto)
             cell.button.setTitle("Team.ClaimsCell.viewToVote".localized, for: .normal)
-            cell.claimedAmountLabel.text = service.currencySymbol + String.truncatedNumber(claim.claimAmount)
+            cell.claimedAmountLabel.text = service.currencySymbol + claim.claimAmount.formatted
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
         } else if let cell = cell as? ClaimsVotedCell {
             //cell.avatarView.showAvatar(string: claim.smallPhoto)
-            cell.avatarView.showImage(string: claim.smallPhoto)
-            cell.claimedAmountLabel.text = service.currencySymbol + String.truncatedNumber(claim.claimAmount)
+            cell.avatarView.show(claim.smallPhoto)
+            cell.claimedAmountLabel.text = service.currencySymbol + claim.claimAmount.formatted
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
             if let vote = claim.myVote {
-            cell.votedLabel.text = "Team.Claims.VitedCell.voted".localized + String.formattedNumber(vote)
+            cell.votedLabel.text = "Team.Claims.VotedCell.voted".localized
+                + String.truncatedNumber(vote.percentage)
+                + "%"
             } else {
                 cell.votedLabel.text = ""
             }
             if let name = claim.proxyName {
                 cell.voterLabel.isHidden = false
-                cell.voterLabel.text = "By " + name
+                cell.voterLabel.text = "By " + name.short
             } else {
                 cell.voterLabel.isHidden = true
             }
         } else if let cell = cell as? ClaimsPaidCell {
-            cell.avatarView.showImage(string: claim.smallPhoto)
+            cell.avatarView.show(claim.smallPhoto)
             if claim.state == .declined {
                 cell.statusLabel.text = "Team.ClaimsCell.declined".localized.uppercased()
                 cell.statusLabel.textColor = .red
@@ -69,8 +71,8 @@ struct ClaimsCellBuilder {
                 cell.statusLabel.textColor = .blueyGray
                 cell.scaleBar.isLineHidden = false
             }
-            cell.amountLabel.text = service.currencySymbol + String.truncatedNumber(claim.claimAmount)
-            cell.scaleBar.value = CGFloat(claim.reimbursement)
+            cell.amountLabel.text = service.currencySymbol + claim.claimAmount.formatted
+            cell.scaleBar.value = CGFloat(claim.reimbursement.value)
         }
     }
 }

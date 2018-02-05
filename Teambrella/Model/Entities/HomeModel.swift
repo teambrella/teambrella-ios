@@ -42,12 +42,12 @@ struct HomeModel: Decodable {
     let userID: String
     let facebookID: UInt64?
     let name: Name
-    let avatar: String
+    let avatar: Avatar
     let unreadCount: Int
     let balance: Ether
     let coverage: Coverage
-    let objectName: String
-    let smallPhoto: String
+    let objectName: Name
+    let smallPhoto: Photo
     let haveVotingClaims: Bool
     
 }

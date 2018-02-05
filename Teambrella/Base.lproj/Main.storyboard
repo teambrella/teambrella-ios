@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xrQ-fg-9ck">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xrQ-fg-9ck">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -40,17 +41,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti-color" translatesAutoresizingMaskIntoConstraints="NO" id="aNj-ZE-j1Y">
+                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti-color" translatesAutoresizingMaskIntoConstraints="NO" id="aNj-ZE-j1Y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emU-7T-Nip">
-                                <rect key="frame" x="185.5" y="313" width="5.5" height="21"/>
+                                <rect key="frame" x="186" y="312" width="4" height="22"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                 <color key="textColor" red="0.74117647060000003" green="0.76470588240000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-n1-x7D">
-                                <rect key="frame" x="80" y="255" width="215" height="43"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-2" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-n1-x7D">
+                                <rect key="frame" x="38" y="237" width="300" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cBm-n1-x7D" secondAttribute="height" multiplier="5:1" id="enG-6g-6PF"/>
                                 </constraints>
@@ -64,6 +65,7 @@
                             <constraint firstItem="cBm-n1-x7D" firstAttribute="width" secondItem="cBm-n1-x7D" secondAttribute="height" multiplier="5:1" id="TrJ-k0-vGE"/>
                             <constraint firstItem="emU-7T-Nip" firstAttribute="centerX" secondItem="aNj-ZE-j1Y" secondAttribute="centerX" id="V4a-IN-dfD"/>
                             <constraint firstItem="cBm-n1-x7D" firstAttribute="centerX" secondItem="aNj-ZE-j1Y" secondAttribute="centerX" id="XFU-2n-ufu"/>
+                            <constraint firstItem="cBm-n1-x7D" firstAttribute="width" secondItem="XNb-Tt-LFR" secondAttribute="width" multiplier="0.8" id="bUF-1L-B7v"/>
                             <constraint firstItem="imF-3C-Sdp" firstAttribute="top" secondItem="XNb-Tt-LFR" secondAttribute="top" constant="-20" id="c8c-CE-DpR"/>
                             <constraint firstAttribute="trailing" secondItem="aNj-ZE-j1Y" secondAttribute="trailing" id="krh-F6-gvn"/>
                             <constraint firstItem="emU-7T-Nip" firstAttribute="bottom" secondItem="aNj-ZE-j1Y" secondAttribute="centerY" id="l0j-m3-dYQ"/>
@@ -202,6 +204,6 @@
     </scenes>
     <resources>
         <image name="confetti-color" width="1024" height="1024"/>
-        <image name="logo-1" width="215" height="43"/>
+        <image name="logo-2" width="1262" height="198"/>
     </resources>
 </document>
