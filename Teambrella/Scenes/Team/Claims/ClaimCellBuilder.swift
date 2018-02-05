@@ -75,14 +75,11 @@ struct ClaimCellBuilder {
     }
     
     static func populateClaimVote(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
-        cell.slider.minimumValue = 0
-        cell.slider.maximumValue = 1
-        
         cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
         let dateProcessor = DateProcessor()
         cell.remainingDaysLabel.text = "Team.Claims.ClaimVC.VotingCell.endsTitle".localized.uppercased()
             + dateProcessor.stringFromNow(minutes: -claim.minutesRemaining).uppercased()
-        cell.pieChart.startAngle = 0
+
         cell.pieChart.setupWith(remainingMinutes: claim.minutesRemaining)
         
         if let myVote = claim.myVote {
