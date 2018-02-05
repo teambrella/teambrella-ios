@@ -29,6 +29,7 @@ class WalletCosignersVC: UIViewController, Routable {
     fileprivate var previousScrollOffset: CGFloat = 0
     var cosigners: [CosignerEntity]?
     var isFirstLoading = true
+    weak var emptyVC: EmptyVC?
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -43,6 +44,7 @@ class WalletCosignersVC: UIViewController, Routable {
         WalletCosignersCellBuilder.registerCells(in: collectionView)
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
+            self?.showEmptyIfNeeded()
         }
         guard let cosigners = cosigners else { return }
         
@@ -67,6 +69,17 @@ class WalletCosignersVC: UIViewController, Routable {
         }
         
         // dataSource.updateSilently()
+    }
+    
+    func showEmptyIfNeeded() {
+        if dataSource.isEmpty && emptyVC == nil {
+            emptyVC = EmptyVC.show(in: self)
+            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconTeam"))
+            emptyVC?.setText(title: "Me.Wallet.Cosigners.Empty.title".localized,
+                             subtitle: "Me.Wallet.Cosigners.Empty.details".localized)
+        } else {
+            emptyVC?.remove()
+        }
     }
     
     override func didReceiveMemoryWarning() {

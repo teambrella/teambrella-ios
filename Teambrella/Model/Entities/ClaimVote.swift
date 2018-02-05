@@ -16,6 +16,12 @@
 
 import Foundation
 
+/**
+ Vote for the claim
+ can represent the vote of user or the vote of the group
+ can vary from 0 to 1
+ usually represented in UI in form of percents
+ */
 struct ClaimVote: Decodable {
     let value: Double
     

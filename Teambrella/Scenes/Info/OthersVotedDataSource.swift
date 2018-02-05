@@ -24,9 +24,12 @@ class OthersVotedDataSource: NSObject {
             onLoad?()
         }
     }
+    
     var count: Int {
         return list?.voters.count ?? 0
     }
+    // swiftlint:disable:next empty_count
+    var isEmpty: Bool { return count == 0 }
     
     var onLoad: (() -> Void)?
     var onSelectItem: ((IndexPath) -> Void)?

@@ -86,10 +86,13 @@ struct WalletCellBuilder {
     
     private static func populateButtons(cell: WalletButtonsCell, model: WalletButtonsCellModel, delegate: WalletVC) {
         cell.topViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
-        cell.imagesStack.setAvatars(images: model.avatarsPreview)
+        let avatars = model.avatarsPreview.flatMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
+        let maxAvatarsStackCount = 4
+        let otherVotersCount = model.avatars.count - maxAvatarsStackCount + 1
+        let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil
+        cell.imagesStack.set(images: avatars, label: label, max: maxAvatarsStackCount)
         cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
         cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
-        cell.quantityLabel.text = String(model.avatars.count)
         cell.tapMiddleViewRecognizer.removeTarget(delegate, action: nil)
         cell.tapMiddleViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapTransactions))
         cell.tapTopViewRecognizer.removeTarget(delegate, action: nil)

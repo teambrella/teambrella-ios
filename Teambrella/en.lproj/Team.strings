@@ -154,7 +154,7 @@
 "Team.Claims.State.Header.fullyPaid"             = "FULLY PAID";
 "Team.Claims.State.Header.beingPaid"             = "BEING PAID";
 "Team.Claims.State.Header.voted"                 = "VOTED";
-"Team.Claims.VitedCell.voted"                    = "Voted: ";
+"Team.Claims.VotedCell.voted"                    = "Voted: ";
 "Team.ClaimsCell.declined"                       = "DECLINED";
 
 "Team.Chat.TextCell.voted_format"                = "VOTED:%@%%";
@@ -202,3 +202,8 @@
 
 "Team.Claim.Transactions.from" = "FROM";
 "Team.VotingRiskCell.teamAvg" = "TEAM\nAVG";
+
+"Team.Claim.Transactions.Empty.title" = "No transactions yet";
+"Team.Claim.Transactions.Empty.details" = "...";
+"Team.OthersVoted.Empty.title" = "No votes yet";
+"Team.OthersVoted.Empty.details" = "...";

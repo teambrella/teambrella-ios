@@ -41,15 +41,15 @@ struct ClaimTransactionsModel: Decodable {
 
         let amount: Ether
         let userID: String
-        let name: String
-        let avatar: String
-        let amountFiat: Double
+        let name: Name
+        let avatar: Avatar
+        let amountFiat: Fiat
 
     }
 
     let userID: String
-    let avatar: String
-    let name: String
+    let avatar: Avatar
+    let name: Name
     let status: TransactionState?
     let to: [TransactionTo]
     

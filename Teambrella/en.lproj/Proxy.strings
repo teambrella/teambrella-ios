@@ -30,8 +30,8 @@
 
 "Proxy.Empty.title"                   = "You don't have Proxy Voters yet";
 "Proxy.Empty.details"                 = "Please consider someone you trust to be your first Proxy Voter.";
-"Proxy.Empty.You.title"               = "You’re not a Proxy Voter for anyone in the team";
-"Proxy.Empty.You.details"             = "You can become a Proxy Voter by gaining trust of other teammates. Post your ideas, opinions and votes.";
+"Proxy.Empty.You.title"               = "You’re not a Proxy Voter\nfor anyone in the team";
+"Proxy.Empty.You.details"             = "You can become a Proxy Voter\nby gaining trust of other teammates. Post your ideas, opinions and votes.";
 
 "Proxy.UserIndexVC.optButton.title.in" = "Opt Into Rating";
 "Proxy.UserIndexVC.optButton.title.out" = "Opt Out Of Rating";

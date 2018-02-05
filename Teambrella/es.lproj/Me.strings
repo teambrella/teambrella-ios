@@ -32,7 +32,8 @@
 "Me.WalletDetailsVC.timeLabel"                 = "Válido por 24 horas";
 "Me.WalletDetailsVC.copyAddressButton"         = "Copiar Dirección";
 "Me.WalletDetailsVC.copiedAddress"             = "Copiado";
-"Me.CoverageVC.fundButton"                     = "Financiar tu Monedero para aumentar";
+"Me.CoverageVC.fundButton.title.toIncrease"    = "Financiar tu Monedero para aumentar";
+"Me.CoverageVC.fundButton.title"               = "Financiar Monedero";
 "Me.CoverageVC.title"                          = "¿CÓMO FUNCIONA?";
 "Me.CoverageVC.subtitle"                       = "Utilice el control deslizante para ver cómo los gastos afectan su reembolso máximo";
 "Me.CoverageVC.maxExpenses"                    = "Cantidad máxima de los gastos cubiertos";
@@ -89,3 +90,8 @@
 "Me.Wallet.Transactions.claimNumber" = "CLAIM %d";
 "Me.Wallet.Transactions.kind.pending" = "PENDING";
 "Me.Wallet.Transactions.kind.cancelled" = "CANCELLED";
+
+"Me.Wallet.Transactions.Empty.title" = "No transactions yet";
+"Me.Wallet.Transactions.Empty.details" = "...";
+"Me.Wallet.Cosigners.Empty.title" = "No co-signers yet";
+"Me.Wallet.Cosigners.Empty.details" = "...";

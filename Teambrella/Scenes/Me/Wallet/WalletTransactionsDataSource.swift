@@ -30,6 +30,7 @@ class WalletTransactionsDataSource {
     var isLoading: Bool = false
     var hasMore: Bool = true
     var canLoad: Bool { return hasMore && !isLoading }
+    var isEmpty: Bool { return items.isEmpty }
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?

@@ -33,6 +33,7 @@ class WalletTransactionsVC: UIViewController, Routable {
     
     var dataSource: WalletTransactionsDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0
+    weak var emptyVC: EmptyVC?
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -56,11 +57,23 @@ class WalletTransactionsVC: UIViewController, Routable {
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
             self?.collectionView.reloadData()
+            self?.showEmptyIfNeeded()
         }
         dataSource.onError = { error in
             HUD.hide()
         }
         dataSource.loadData()
+    }
+    
+    func showEmptyIfNeeded() {
+        if dataSource.isEmpty && emptyVC == nil {
+            emptyVC = EmptyVC.show(in: self)
+            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
+            emptyVC?.setText(title: "Me.Wallet.Transactions.Empty.title".localized,
+                             subtitle: "Me.Wallet.Transactions.Empty.details".localized)
+        } else {
+            emptyVC?.remove()
+        }
     }
 }
 

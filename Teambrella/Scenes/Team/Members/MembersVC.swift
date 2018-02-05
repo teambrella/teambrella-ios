@@ -25,7 +25,7 @@ import UIKit
 import XLPagerTabStrip
 
 final class MembersVC: UIViewController, IndicatorInfoProvider {
-    struct Constant  {
+    struct Constant {
         static let searchViewOffset: CGFloat = -60 // constant offset to reveal button and hide seafchField
     }
     

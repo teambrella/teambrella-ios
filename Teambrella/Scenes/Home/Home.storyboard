@@ -426,7 +426,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Wku-KT-eqF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Submit Another Claim">
+                                <state key="normal">
                                     <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>

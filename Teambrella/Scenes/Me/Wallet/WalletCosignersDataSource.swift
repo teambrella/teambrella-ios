@@ -31,6 +31,7 @@ class WalletCosignersDataSource {
     var onError: ((Error) -> Void)?
     var offset = 0
     var isLoading = false
+    var isEmpty: Bool { return items.isEmpty }
     
     init() {
     }

@@ -138,7 +138,7 @@
 "Team.Claims.State.Header.fullyPaid"             = "COMPLETAMENTE PAGADO";
 "Team.Claims.State.Header.beingPaid"             = "ESTÁ PAGANDO";
 "Team.Claims.State.Header.voted"                 = "VOTADO";
-"Team.Claims.VitedCell.voted"                    = "Votado: ";
+"Team.Claims.VotedCell.voted"                    = "Votado: ";
 "Team.ClaimsCell.declined"                       = "RECHAZADO";
 
 "Team.Home.Card.claimed"                         = "RECLAMADO";
@@ -192,3 +192,8 @@
 ////waiting
 "Team.Claim.Transactions.from" = "DE";
 "Team.VotingRiskCell.teamAvg" = "TEAM\nAVG";
+
+"Team.Claim.Transactions.Empty.title" = "No transactions yet";
+"Team.Claim.Transactions.Empty.details" = "...";
+"Team.OthersVoted.Empty.title" = "No votes yet";
+"Team.OthersVoted.Empty.details" = "...";

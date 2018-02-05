@@ -194,17 +194,17 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         rightBrickAmountLabel.text = String(Int(MEth(model.balance).value))
         rightBrickCurrencyLabel.text = service.session?.cryptoCoin.code
         
-        greetingsTitleLabel.text = "Home.salutation".localized(dataSource.name)
+        greetingsTitleLabel.text = "Home.salutation".localized(dataSource.name.first)
         greetingsSubtitileLabel.text = "Home.subtitle".localized
         
         leftBrickTitleLabel.text = "Home.leftBrick.title".localized
         rightBrickTitleLabel.text = "Home.rightBrick.title".localized
         
-        itemCard.avatarView.present(imageString: model.smallPhoto)
+        itemCard.avatarView.present(imageString: model.smallPhoto.string)
         itemCard.avatarView.onTap = { [weak self] sender in
             sender.fullscreen(in: self, imageStrings: nil)
         }
-        itemCard.titleLabel.text = model.objectName
+        itemCard.titleLabel.text = model.objectName.entire
         itemCard.statusLabel.text = "Home.itemCard.status".localized
         itemCard.subtitleLabel.text = model.teamPart.coverageType.localizedCoverageType
         

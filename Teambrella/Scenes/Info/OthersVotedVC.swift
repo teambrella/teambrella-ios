@@ -26,6 +26,7 @@ class OthersVotedVC: UIViewController, Routable {
     
     @IBOutlet var collectionView: UICollectionView!
     var dataSource: OthersVotedDataSource!
+    weak var emptyVC: EmptyVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class OthersVotedVC: UIViewController, Routable {
         dataSource.onLoad = { [weak self] in
             HUD.hide()
             self?.collectionView.reloadData()
+            self?.showEmptyIfNeeded()
         }
         dataSource.onSelectItem = { [weak self] indexPath in
             if let voter = self?.dataSource[indexPath] {
@@ -44,6 +46,17 @@ class OthersVotedVC: UIViewController, Routable {
             }
         }
         dataSource.loadData()
+    }
+    
+    func showEmptyIfNeeded() {
+        if dataSource.isEmpty && emptyVC == nil {
+            emptyVC = EmptyVC.show(in: self)
+            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
+            emptyVC?.setText(title: "Team.OthersVoted.Empty.title".localized,
+                             subtitle: "Team.OthersVoted.Empty.details".localized)
+        } else {
+            emptyVC?.remove()
+        }
     }
     
     private func setupCollectionView() {
