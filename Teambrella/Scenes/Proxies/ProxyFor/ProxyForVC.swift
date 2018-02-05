@@ -122,7 +122,7 @@ extension ProxyForVC: UICollectionViewDelegate {
                         at indexPath: IndexPath) {
         if let cell = view as? ProxyForHeader {
             cell.headerLabel.text = "Proxy.ProxyForVC.header".localized
-            cell.detailsLabel.text = "Proxy.ProxyForVC.subtitle".localized // instead of InfoHeader
+            cell.detailsLabel.text = "Proxy.ProxyForVC.subtitle".localized
             ViewDecorator.shadow(for: cell)
             ViewDecorator.roundedEdges(for: cell.containerView)
             guard let team = service.session?.currentTeam else { return }

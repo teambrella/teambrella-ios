@@ -28,7 +28,8 @@
 "Me.WalletDetailsVC.copiedAddress"             = "Copied";
 
 
-"Me.CoverageVC.fundButton"                     = "Fund Wallet to increase";
+"Me.CoverageVC.fundButton.title.toIncrease"    = "Fund Wallet to increase";
+"Me.CoverageVC.fundButton.title"               = "Fund Wallet";
 "Me.CoverageVC.title"                          = "HOW IT WORKS";
 "Me.CoverageVC.subtitle"                       = "Use the slider to understand how Expenses impact your maximum reimbursement.";
 "Me.CoverageVC.maxExpenses"                    = "Max Expenses covered";

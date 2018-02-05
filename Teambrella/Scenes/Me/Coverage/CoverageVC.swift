@@ -53,8 +53,8 @@ class CoverageVC: UIViewController, Routable {
     var coverageAmount: Int = 0 {
         didSet {
             coverage.text = String(coverageAmount)
-            fundWalletButton.isEnabled = coverageAmount != 100
-            fundWalletButton.alpha = (coverageAmount == 100) ? 0.5 : 1
+            fundWalletButton.isEnabled = true
+            setFundButtonTitle(coverageAmount: coverageAmount)
             setImage(for: coverageAmount)
         }
     }
@@ -66,6 +66,11 @@ class CoverageVC: UIViewController, Routable {
     
     @IBAction func tapFundWalletButton(_ sender: Any) {
         service.router.switchToWallet()
+    }
+    
+    func setFundButtonTitle(coverageAmount: Int) {
+        let title = (coverageAmount == 100) ? "Fund Wallet" : "Fund Wallet to increase"
+        fundWalletButton.setTitle(title, for: .normal)
     }
     
     static var storyboardName = "Me"
@@ -80,7 +85,7 @@ class CoverageVC: UIViewController, Routable {
         centerAmount.currencyLabel.text = currency
         lowerAmount.currencyLabel.text = currency
 
-        fundWalletButton.setTitle("Me.CoverageVC.fundButton".localized, for: .normal)
+        setFundButtonTitle(coverageAmount: coverageAmount)
         titleLabel.text = "Me.CoverageVC.title".localized
         subtitleLabel.text = "Me.CoverageVC.subtitle".localized
         upperLabel.text = "Me.CoverageVC.maxExpenses".localized
