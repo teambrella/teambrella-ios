@@ -24,7 +24,7 @@ import Foundation
 protocol MembersFetchStrategy {
     var sections: Int { get }
     var sortType: SortVC.SortType { get }
-    var ranges: [RiskScaleEntity.Range] { get set }
+    var ranges: [RiskScaleRange] { get set }
     
     func type(indexPath: IndexPath) -> TeammateSectionType
     func itemsInSection(section: Int) -> Int
@@ -38,7 +38,7 @@ protocol MembersFetchStrategy {
 }
 
 class MembersListStrategy: MembersFetchStrategy {
-    var ranges: [RiskScaleEntity.Range] = []
+    var ranges: [RiskScaleRange] = []
     var newTeammates: [TeammateListEntity] = []
     var teammates: [TeammateListEntity] = []
     var sortType: SortVC.SortType = .none
@@ -131,7 +131,7 @@ class MembersListStrategy: MembersFetchStrategy {
 
 class MembersRiskStrategy: MembersFetchStrategy {
     var arrayOfRanges: [[TeammateListEntity]] = []
-    var ranges: [RiskScaleEntity.Range] = []
+    var ranges: [RiskScaleRange] = []
     var sections: Int { return arrayOfRanges.count }
     var sortType: SortVC.SortType = .none
     

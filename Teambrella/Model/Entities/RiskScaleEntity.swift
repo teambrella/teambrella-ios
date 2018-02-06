@@ -21,95 +21,58 @@
 
 import Foundation
 
-struct RiskScaleEntity: Decodable {
-    struct Teammate: Decodable {
-        let id: String
-        let avatar: String
-        let risk: Double
-
-        enum CodingKeys: String, CodingKey {
-            case id = "UserId"
-            case avatar = "Avatar"
-            case risk = "Risk"
-        }
-    }
-    
-    struct Range: Decodable {
-        let left: Double
-        let right: Double
-        let count: Int
-        let teammates: [Teammate]
-        
-        var minRiskTeammate: Teammate? {
-            var risk: Double = Double.greatestFiniteMagnitude
-            var teammate: Teammate?
-            teammates.forEach { if $0.risk < risk { teammate = $0; risk = $0.risk } }
-            return teammate
-        }
-        
-        var maxRiskTeammate: Teammate? {
-            var risk: Double = 0
-            var teammate: Teammate?
-            teammates.forEach { if $0.risk > risk { teammate = $0; risk = $0.risk } }
-            return teammate
-        }
-
-        enum CodingKeys: String, CodingKey {
-            case left = "LeftRange"
-            case right = "RightRange"
-            case count = "Count"
-            case teammates = "TeammatesInRange"
-        }
-    }
-    
-    let ranges: [Range]
+class RiskScaleEntity: Decodable {
+    let ranges: [RiskScaleRange]
     let averageRisk: Double
     let coversIfMin: Double
-    let coversIf1: Double
+    let coversIfOne: Double
     let coversIfMax: Double
     let myRisk: Double
     
-    lazy var sortedTeammates: [Teammate] = { self.ranges.flatMap { $0.teammates }.sorted { $0.risk < $1.risk } }()
+    lazy var sortedTeammates: [RiskScaleTeammate] = {
+        self.ranges.flatMap { $0.teammates }.sorted { $0.risk < $1.risk }
+    }()
     
-    var averageRange: Range? {
-       return rangeContaining(risk: averageRisk)
+    var averageRange: RiskScaleRange? {
+        return rangeContaining(risk: averageRisk)
     }
     
-    func rangeContaining(risk: Double) -> Range? {
+    func rangeContaining(risk: Double) -> RiskScaleRange? {
         for range in ranges where isInRange(item: risk, min: range.left, max: range.right) {
             return range
         }
         return nil
     }
     
-    mutating func teammates(with risk: Double) -> (Teammate, Teammate, Teammate)? {
-        var delta: Double = Double.greatestFiniteMagnitude
-        var index = -1
-        for (idx, teammate) in sortedTeammates.enumerated() {
-            let newDelta = fabs(teammate.risk - risk)
-            if  newDelta < delta {
-                delta = newDelta
-                index = idx
+    func teammates(with risk: Double)
+        -> (RiskScaleTeammate, RiskScaleTeammate, RiskScaleTeammate)? {
+            var delta: Double = Double.greatestFiniteMagnitude
+            var index = -1
+            for (idx, teammate) in sortedTeammates.enumerated() {
+                let newDelta = fabs(teammate.risk - risk)
+                if  newDelta < delta {
+                    delta = newDelta
+                    index = idx
+                }
             }
-        }
-        guard index < sortedTeammates.count && index >= 0 && sortedTeammates.count > 2 else { return nil }
-        
-        if index > 0 {
-            if index < sortedTeammates.count - 1 {
-                return (sortedTeammates[index - 1], sortedTeammates[index], sortedTeammates[index + 1])
+            guard index < sortedTeammates.count && index >= 0 && sortedTeammates.count > 2 else { return nil }
+
+            if index > 0 {
+                if index < sortedTeammates.count - 1 {
+                    return (sortedTeammates[index - 1], sortedTeammates[index], sortedTeammates[index + 1])
+                } else {
+                    return (sortedTeammates[index - 2], sortedTeammates[index - 1], sortedTeammates[index])
+                }
             } else {
-                return (sortedTeammates[index - 2], sortedTeammates[index - 1], sortedTeammates[index])
+                return (sortedTeammates[index], sortedTeammates[index + 1], sortedTeammates[index + 2])
             }
-        } else {
-            return (sortedTeammates[index], sortedTeammates[index + 1], sortedTeammates[index + 2])
-        }
     }
 
     enum CodingKeys: String, CodingKey {
         case ranges = "Ranges"
         case averageRisk = "AverageRisk"
         case coversIfMin = "HeCoversMeIf02"
-        case coversIf1 = "HeCoversMeIf1"
+        case coversIfOne = "HeCoversMeIf1"
         case coversIfMax = "HeCoversMeIf499"
         case myRisk = "MyRisk"
     }

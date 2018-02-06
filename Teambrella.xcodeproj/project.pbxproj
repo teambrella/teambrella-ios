@@ -22,7 +22,6 @@
 		6D097EA31E9D215500E77DAB /* TeammateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EA01E9D215500E77DAB /* TeammateType.swift */; };
 		6D097EA51E9D219A00E77DAB /* Nameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EA41E9D219A00E77DAB /* Nameable.swift */; };
 		6D097EA81E9D220A00E77DAB /* General.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D097EA61E9D220A00E77DAB /* General.strings */; };
-		6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAA1E9D390200E77DAB /* Topic.swift */; };
 		6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */; };
 		6D0B783D1F45EEAE00847FFF /* CryptoCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B783C1F45EEAE00847FFF /* CryptoCurrency.swift */; };
 		6D0BA5B11F14F83000055E74 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0BA5B01F14F83000055E74 /* SwiftDate.framework */; };
@@ -346,7 +345,6 @@
 		6D4E5CE21F7AB6870020DEE2 /* HomeApplicationStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E80E561F0FE33500DE1A0A /* HomeApplicationStatusCell.swift */; };
 		6D4E5CE31F7AB6870020DEE2 /* ContactCellTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714FD1EE0679500F39EBE /* ContactCellTableCell.swift */; };
 		6D4E5CE41F7AB6870020DEE2 /* TeambrellaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A9E1ED07CF1001BC579 /* TeambrellaService.swift */; };
-		6D4E5CE51F7AB6870020DEE2 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EAA1E9D390200E77DAB /* Topic.swift */; };
 		6D4E5CE61F7AB6870020DEE2 /* EntityLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC6DF61E96690B00ACC119 /* EntityLike.swift */; };
 		6D4E5CE71F7AB6870020DEE2 /* ProxiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */; };
 		6D4E5CE81F7AB6870020DEE2 /* SortCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94793A861F0D120700696B90 /* SortCellModel.swift */; };
@@ -682,6 +680,10 @@
 		6D83EC8E1EDD7230000412DC /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC8D1EDD7230000412DC /* MainRouter.swift */; };
 		6D83EC941EDDA9DC000412DC /* TeammateProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */; };
 		6D862F6B1F1E639A00988D5C /* TeammateFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */; };
+		6D8720D02029E23D000C5C3F /* RiskScaleTeammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8720CF2029E23D000C5C3F /* RiskScaleTeammate.swift */; };
+		6D8720D12029E23D000C5C3F /* RiskScaleTeammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8720CF2029E23D000C5C3F /* RiskScaleTeammate.swift */; };
+		6D8720D32029E268000C5C3F /* RiskScaleRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8720D22029E268000C5C3F /* RiskScaleRange.swift */; };
+		6D8720D42029E268000C5C3F /* RiskScaleRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8720D22029E268000C5C3F /* RiskScaleRange.swift */; };
 		6D878E4F200CF63600066492 /* GasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D878E4E200CF63600066492 /* GasStation.swift */; };
 		6D878E50200CF63600066492 /* GasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D878E4E200CF63600066492 /* GasStation.swift */; };
 		6D88C4FD1FA3986300E55F7C /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */; };
@@ -1128,7 +1130,6 @@
 		6D097EA41E9D219A00E77DAB /* Nameable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Nameable.swift; path = Model/Protocols/Nameable.swift; sourceTree = "<group>"; };
 		6D097EA71E9D220A00E77DAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/General.strings; sourceTree = "<group>"; };
 		6D097EA91E9D230E00E77DAB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/General.strings; sourceTree = "<group>"; };
-		6D097EAA1E9D390200E77DAB /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Topic.swift; path = Model/Protocols/Topic.swift; sourceTree = "<group>"; };
 		6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicEntity.swift; path = Model/Entities/TopicEntity.swift; sourceTree = "<group>"; };
 		6D0B783C1F45EEAE00847FFF /* CryptoCurrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CryptoCurrency.swift; path = Model/Entities/CryptoCurrency.swift; sourceTree = "<group>"; };
 		6D0BA5B01F14F83000055E74 /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftDate.framework; path = Carthage/Build/iOS/SwiftDate.framework; sourceTree = "<group>"; };
@@ -1352,6 +1353,8 @@
 		6D83EC8D1EDD7230000412DC /* MainRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainRouter.swift; path = Scenes/MainRouter.swift; sourceTree = "<group>"; };
 		6D83EC931EDDA9DC000412DC /* TeammateProfileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateProfileDataSource.swift; path = Scenes/Team/Members/TeammateProfileDataSource.swift; sourceTree = "<group>"; };
 		6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateFooter.swift; path = Scenes/Team/Members/TeammateFooter.swift; sourceTree = "<group>"; };
+		6D8720CF2029E23D000C5C3F /* RiskScaleTeammate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RiskScaleTeammate.swift; path = Model/Entities/RiskScaleTeammate.swift; sourceTree = "<group>"; };
+		6D8720D22029E268000C5C3F /* RiskScaleRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RiskScaleRange.swift; path = Model/Entities/RiskScaleRange.swift; sourceTree = "<group>"; };
 		6D878E4E200CF63600066492 /* GasStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStation.swift; sourceTree = "<group>"; };
 		6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTests.swift; sourceTree = "<group>"; };
 		6D8C6FE61F754D7000BF65B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Error.strings; sourceTree = "<group>"; };
@@ -2698,6 +2701,8 @@
 				6D716BBE2021E747001E2614 /* SaneText.swift */,
 				6D72AAF92028A0F10055FC47 /* Photo.swift */,
 				6D72AAFC2028A1690055FC47 /* Avatar.swift */,
+				6D8720CF2029E23D000C5C3F /* RiskScaleTeammate.swift */,
+				6D8720D22029E268000C5C3F /* RiskScaleRange.swift */,
 				6DDB5D901FF681750066A07F /* ServerModels */,
 				6DDB5D911FF681FC0066A07F /* ServerModelsNew */,
 			);
@@ -2712,7 +2717,6 @@
 				6D097EA41E9D219A00E77DAB /* Nameable.swift */,
 				6DEC6DF21E96670D00ACC119 /* Post.swift */,
 				CBDFEE452041D08B61C13CF8 /* TeammateLike.swift */,
-				6D097EAA1E9D390200E77DAB /* Topic.swift */,
 				6DEE678C1ED9B8E10098EDB3 /* XIBInitable.swift */,
 				6D83EC881EDD6CA6000412DC /* Routable.swift */,
 				6D6DA25B1EE1CE3100307C73 /* ClaimLike.swift */,
@@ -3808,6 +3812,7 @@
 				6D4E5CA31F7AB6870020DEE2 /* KeyStorage.swift in Sources */,
 				6D4E59131FD2EFA10029D2F0 /* WithdrawDataSource.swift in Sources */,
 				6D4E5CA51F7AB6870020DEE2 /* TextField.swift in Sources */,
+				6D8720D12029E23D000C5C3F /* RiskScaleTeammate.swift in Sources */,
 				6D4E5CA61F7AB6870020DEE2 /* PrivateChatAdaptor.swift in Sources */,
 				6D4E5CA71F7AB6870020DEE2 /* MasterTabBarController.swift in Sources */,
 				6D4E5CA81F7AB6870020DEE2 /* InputAccessoryView.swift in Sources */,
@@ -3878,6 +3883,7 @@
 				6D4E5CDB1F7AB6870020DEE2 /* WalletHeaderCell.swift in Sources */,
 				6D4E5CDC1F7AB6870020DEE2 /* TeammateProfileDataSource.swift in Sources */,
 				6D56F9BD1FA737CC00B9D676 /* Application.swift in Sources */,
+				6D8720D42029E268000C5C3F /* RiskScaleRange.swift in Sources */,
 				6D4E5CDD1F7AB6870020DEE2 /* FeedCellBuilder.swift in Sources */,
 				6D4E5CDE1F7AB6870020DEE2 /* ProxyCell.swift in Sources */,
 				94F0CF561FCF1952007BE39E /* WithdrawVC.swift in Sources */,
@@ -3891,7 +3897,6 @@
 				6D4E5CE21F7AB6870020DEE2 /* HomeApplicationStatusCell.swift in Sources */,
 				6D4E5CE31F7AB6870020DEE2 /* ContactCellTableCell.swift in Sources */,
 				6D4E5CE41F7AB6870020DEE2 /* TeambrellaService.swift in Sources */,
-				6D4E5CE51F7AB6870020DEE2 /* Topic.swift in Sources */,
 				6D4E5CE61F7AB6870020DEE2 /* EntityLike.swift in Sources */,
 				6D4E5CE71F7AB6870020DEE2 /* ProxiesVC.swift in Sources */,
 				6DA5B4641F98DBFC00021E8E /* CryptoWorker.swift in Sources */,
@@ -4230,6 +4235,7 @@
 				6D466AA91ED07CF1001BC579 /* Teammate.swift in Sources */,
 				6DF3E7621F795ED6000C7885 /* KeyStorage.swift in Sources */,
 				6D2BD7C01F614EBF00C7F6A8 /* TextField.swift in Sources */,
+				6D8720D02029E23D000C5C3F /* RiskScaleTeammate.swift in Sources */,
 				6D59F0091F56E5D000C422EB /* PrivateChatAdaptor.swift in Sources */,
 				6DA714ED1EDF49F500F39EBE /* MasterTabBarController.swift in Sources */,
 				6DD051C31F67CC5E00532626 /* InputAccessoryView.swift in Sources */,
@@ -4300,6 +4306,7 @@
 				6DA1D1031F056DF900F9DE87 /* UIImage.swift in Sources */,
 				6DA8D5511F0E74B1000A4DB7 /* ServerDAO.swift in Sources */,
 				6D56F9BC1FA737CC00B9D676 /* Application.swift in Sources */,
+				6D8720D32029E268000C5C3F /* RiskScaleRange.swift in Sources */,
 				CBDFE767664CC051784BF271 /* ServerService.swift in Sources */,
 				6D69DA211EFD19BF00DED5CE /* WalletHeaderCell.swift in Sources */,
 				94F0CF551FCF1952007BE39E /* WithdrawVC.swift in Sources */,
@@ -4315,7 +4322,6 @@
 				94E80E581F0FE33500DE1A0A /* HomeApplicationStatusCell.swift in Sources */,
 				6DA714FE1EE0679500F39EBE /* ContactCellTableCell.swift in Sources */,
 				6D466AB21ED07CF1001BC579 /* TeambrellaService.swift in Sources */,
-				6D097EAB1E9D390200E77DAB /* Topic.swift in Sources */,
 				6DEC6DF71E96690B00ACC119 /* EntityLike.swift in Sources */,
 				6D900E291FC46B0D00FF6FF8 /* String-localized.swift in Sources */,
 				6DF2E8CE1EF1979300C8D60B /* ProxiesVC.swift in Sources */,
