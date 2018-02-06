@@ -94,9 +94,14 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .teammate:
-            let teammate = TeammateLarge(json: reply)
-            log("teammate userId: \(teammate.basic.id)", type: .serverReplyStats)
-            success(.teammate(teammate))
+            do {
+                let teammate = try decoder.decode(TeammateLarge.self, from: serverReply.data)
+                log("teammate: \(teammate.basic.id)", type: .serverReplyStats)
+                success(.teammate(teammate))
+            } catch {
+                log("Teammate error \(error)", type: .error)
+                failure?(error)
+            }
         case .teams, .demoTeams:
             do {
                 let teamsModel = try decoder.decode(TeamsModel.self, from: serverReply.data)

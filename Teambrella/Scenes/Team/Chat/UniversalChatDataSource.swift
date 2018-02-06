@@ -78,7 +78,7 @@ final class UniversalChatDatasource {
     private var isChunkAdded                        = false
     
     private var topCellDate: Date?
-    private var topic: Topic?
+    //private var topic: Topic?
     
     var claim: ClaimEntityLarge? {
         if let strategy = strategy as? ClaimChatStrategy {

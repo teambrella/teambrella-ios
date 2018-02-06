@@ -20,11 +20,9 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct TopicEntity: Topic {
+struct TopicEntity: Decodable {
     let id: String
-    let lastUpdated: Int64
     
     let originalPostText: SaneText
     let topPosterAvatars: [String]
@@ -35,31 +33,22 @@ struct TopicEntity: Topic {
     var description: String {
         return "TopicEntity id: \(id)"
     }
-    
-    init(json: JSON) {
-        id = json["TopicId"].stringValue
-        lastUpdated = json["LastUpdated"].int64Value
-        
-        originalPostText = SaneText(text: json["OriginalPostText"].stringValue)
-        topPosterAvatars = json["TopPosterAvatars"].arrayObject as? [String] ?? []
-        posterCount = json["PosterCount"].intValue
-        unreadCount = json["UnreadCount"].intValue
-        minutesSinceLastPost = json["SinceLastPostMinutes"].intValue
-    }
-    
+
     init(id: String) {
         self.id = id
-        lastUpdated = 0
         originalPostText = SaneText.empty
         topPosterAvatars = []
         posterCount = 0
         unreadCount = 0
         minutesSinceLastPost = 0
     }
-}
 
-struct TopicFactory {
-    static func topic(with json: JSON) -> Topic {
-        return TopicEntity(json: json)
+    enum CodingKeys: String, CodingKey {
+        case id = "TopicId"
+        case originalPostText = "OriginalPostText"
+        case topPosterAvatars = "TopPosterAvatars"
+        case posterCount = "PosterCount"
+        case unreadCount = "UnreadCount"
+        case minutesSinceLastPost = "SinceLastPostMinutes"
     }
 }

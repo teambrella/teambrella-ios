@@ -262,7 +262,7 @@ struct TeammateCellBuilder {
         cell.addButton.addTarget(self, action: #selector(TeammateProfileVC.tapAddToProxy), for: .touchUpInside)
     }
     
-    private static func populateDiscussion(cell: DiscussionCell, with stats: Topic, avatar: String) {
+    private static func populateDiscussion(cell: DiscussionCell, with stats: TopicEntity, avatar: String) {
         cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: avatar)))
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
         switch stats.minutesSinceLastPost {
@@ -287,7 +287,9 @@ struct TeammateCellBuilder {
         cell.discussionLabel.text = "Team.TeammateCell.discussion".localized
     }
     
-    private static func populateCompactDiscussion(cell: DiscussionCompactCell, with stats: Topic, avatar: String) {
+    private static func populateCompactDiscussion(cell: DiscussionCompactCell,
+                                                  with stats: TopicEntity,
+                                                  avatar: String) {
         cell.avatarView.showAvatar(string: avatar)
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
         cell.timeLabel.text = DateProcessor().stringFromNow(seconds: stats.minutesSinceLastPost).uppercased()

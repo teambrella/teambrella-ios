@@ -21,6 +21,7 @@
 
 import Foundation
 
+/*
 protocol Topic: EntityLike {
     var originalPostText: SaneText { get }
     var topPosterAvatars: [String] { get }
@@ -32,3 +33,5 @@ protocol Topic: EntityLike {
     
     init(id: String)
 }
+*/
+

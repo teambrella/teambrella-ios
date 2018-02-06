@@ -5,7 +5,7 @@
 
 import Foundation
 
-enum TeammateState: Int {
+enum TeammateState: Int, Decodable {
     case joinVoting = 0
     case joinDeclinedCanRevote = 1
     case joinOKcanRevote = 2
@@ -15,4 +15,10 @@ enum TeammateState: Int {
     case normal = 6
     case revoting = 7
     case revotingResults = 8
+
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Int.self)
+        let type = TeammateState(rawValue: value) ?? .joinVoting
+        self = type
+    }
 }

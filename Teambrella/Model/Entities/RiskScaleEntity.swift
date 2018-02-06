@@ -20,22 +20,21 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct RiskScaleEntity {
-    struct Teammate {
+struct RiskScaleEntity: Decodable {
+    struct Teammate: Decodable {
         let id: String
         let avatar: String
         let risk: Double
-        
-        init(json: JSON) {
-            id = json["UserId"].stringValue
-            avatar = json["Avatar"].stringValue
-            risk = json["Risk"].doubleValue
+
+        enum CodingKeys: String, CodingKey {
+            case id = "UserId"
+            case avatar = "Avatar"
+            case risk = "Risk"
         }
     }
     
-    struct Range {
+    struct Range: Decodable {
         let left: Double
         let right: Double
         let count: Int
@@ -54,12 +53,12 @@ struct RiskScaleEntity {
             teammates.forEach { if $0.risk > risk { teammate = $0; risk = $0.risk } }
             return teammate
         }
-        
-        init(json: JSON) {
-            left = json["LeftRange"].doubleValue
-            right = json["RightRange"].doubleValue
-            count = json["Count"].intValue
-            teammates = json["TeammatesInRange"].arrayValue.flatMap { Teammate(json: $0) }
+
+        enum CodingKeys: String, CodingKey {
+            case left = "LeftRange"
+            case right = "RightRange"
+            case count = "Count"
+            case teammates = "TeammatesInRange"
         }
     }
     
@@ -105,16 +104,14 @@ struct RiskScaleEntity {
             return (sortedTeammates[index], sortedTeammates[index + 1], sortedTeammates[index + 2])
         }
     }
-    
-    init?(json: JSON) {
-        guard json.exists() else { return nil }
-        
-        ranges = json["Ranges"].arrayValue.flatMap { Range(json: $0) }
-        averageRisk = json["AverageRisk"].doubleValue
-        coversIfMin = json["HeCoversMeIf02"].doubleValue
-        coversIf1 = json["HeCoversMeIf1"].doubleValue
-        coversIfMax = json["HeCoversMeIf499"].doubleValue
-        myRisk = json["MyRisk"].doubleValue
+
+    enum CodingKeys: String, CodingKey {
+        case ranges = "Ranges"
+        case averageRisk = "AverageRisk"
+        case coversIfMin = "HeCoversMeIf02"
+        case coversIf1 = "HeCoversMeIf1"
+        case coversIfMax = "HeCoversMeIf499"
+        case myRisk = "MyRisk"
     }
     
 }
