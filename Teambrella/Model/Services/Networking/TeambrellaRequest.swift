@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
 typealias TeambrellaRequestFailure = (_ error: Error) -> Void
@@ -71,10 +70,7 @@ struct TeambrellaRequest {
     
     // swiftlint:disable:next cyclomatic_complexity
     private func parseReply(serverReply: ServerReply) {
-        // temporary item for compatibility with legacy code
-        let reply = JSON(serverReply.json)
-
-        log("Server reply: \(reply)", type: .serverReply)
+        log("Server reply: \(serverReply.json)", type: .serverReply)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.teambrella)
         decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "PositiveInfinity",
@@ -109,10 +105,18 @@ struct TeambrellaRequest {
             case .registerKey:
                 success(.registerKey)
             case .coverageForDate:
-                success(.coverageForDate(Coverage(reply["Coverage"].doubleValue), reply["LimitAmount"].doubleValue))
+                let coverageForDate = try decoder.decode(CoverageForDate.self, from: serverReply.data)
+                success(.coverageForDate(coverageForDate))
             case .setLanguageEn,
                  .setLanguageEs:
-                success(.setLanguage(reply.stringValue))
+                guard let language = serverReply.string else {
+                    log("SetLanguage wrong reply", type: .error)
+                    failure?(TeambrellaErrorFactory.wrongReply())
+                    return
+                }
+
+                log("language: \(language)", type: .serverReplyStats)
+                success(.setLanguage(language))
             case .claimsList:
                 let claims = try decoder.decode([ClaimEntity].self, from: serverReply.data)
                 log("claims count: \(claims.count)", type: .serverReplyStats)
@@ -164,9 +168,16 @@ struct TeambrellaRequest {
             case .updates:
                 break
             case .uploadPhoto:
-                success(.uploadPhoto(reply.arrayValue.first?.string ?? ""))
+                let photoAddresses = try decoder.decode([String].self, from: serverReply.data)
+                success(.uploadPhoto(photoAddresses.first ?? ""))
             case .myProxy:
-                success(.myProxy(reply.stringValue == "set"))
+                guard let string = serverReply.string else {
+                    log("MyProxy wrong reply", type: .error)
+                    failure?(TeambrellaErrorFactory.wrongReply())
+                    return
+                }
+
+                success(.myProxy(string == "Proxy voter is added." || string == "Proxy voter is removed."))
             case .myProxies:
                 let model = try decoder.decode([ProxyCellModel].self, from: serverReply.data)
                 success(.myProxies(model))
@@ -186,7 +197,13 @@ struct TeambrellaRequest {
                 let chunk = try decoder.decode(WithdrawChunk.self, from: serverReply.data)
                 success(.withdrawTransactions(chunk))
             case .mute:
-                success(.mute(reply.boolValue))
+                guard let bool = serverReply.bool else {
+                    log("Mute wrong reply", type: .error)
+                    failure?(TeambrellaErrorFactory.wrongReply())
+                    return
+                }
+
+                success(.mute(bool))
             case .claimVotesList,
                  .teammateVotesList:
                 let votesList = try decoder.decode(VotersList.self, from: serverReply.data)

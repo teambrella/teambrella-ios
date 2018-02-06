@@ -160,12 +160,12 @@ class ReportDataSource {
             guard let `self` = self else { return }
             
             switch result {
-            case let .value((coverage: coverage, limit: limit)):
-                self.coverage = coverage
-                self.limit = limit
+            case let .value(coverageForDate):
+                self.coverage = coverageForDate.coverage
+                self.limit = coverageForDate.limit
                 for (idx, item) in self.items.enumerated() {
                     if var item = item as? ExpensesReportCellModel {
-                    item.coverage = coverage
+                    item.coverage = coverageForDate.coverage
                         
                         self.items[idx] = item
                         self.onUpdateCoverage?()

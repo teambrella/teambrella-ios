@@ -26,7 +26,6 @@ struct ChatModel: Decodable {
 
     let id: Int?
     let lastRead: Int64?
-    let topicID: String?
     let title: String?
 
     enum CodingKeys: String, CodingKey {
@@ -38,7 +37,6 @@ struct ChatModel: Decodable {
         case id = "Id"
         case title = "Title"
         case lastRead = "LastRead"
-        case topicID = "TopicId"
     }
 
     struct DiscussionPart: Decodable {

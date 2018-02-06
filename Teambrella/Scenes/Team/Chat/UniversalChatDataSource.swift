@@ -219,7 +219,7 @@ final class UniversalChatDatasource {
     var isPrivateChat: Bool { return strategy is PrivateChatStrategy }
     
     func mute(type: TopicMuteType, completion: @escaping (Bool) -> Void) {
-        guard let topicID = chatModel?.topicID else { return }
+        guard let topicID = chatModel?.discussion.topicID else { return }
         
         let isMuted = type == .muted
         service.dao.mute(topicID: topicID, isMuted: isMuted).observe { [weak self] result in

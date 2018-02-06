@@ -282,14 +282,14 @@ class ChatStrategy: ChatDatasourceStrategy {
     
     func updatedChatBody(body: RequestBody) -> RequestBody {
         var body = body
-        body.payload?["TopicId"] = chatModel.topicID
+        body.payload?["TopicId"] = chatModel.discussion.topicID
         
         return body
     }
     
     func updatedMessageBody(body: RequestBody) -> RequestBody {
         var body = body
-        body.payload?["TopicId"] = chatModel.topicID
+        body.payload?["TopicId"] = chatModel.discussion.topicID
         return body
     }
     

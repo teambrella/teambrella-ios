@@ -30,7 +30,7 @@ struct ChatEntity: Decodable {
     let images: [String]
     let smallImages: [String]
     let imageRatios: [CGFloat]
-    let teammate: TeammatePart
+    let teammate: TeammatePart?
 
     private let dateCreated: UInt64
 

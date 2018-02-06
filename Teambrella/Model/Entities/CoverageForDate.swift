@@ -1,5 +1,5 @@
 //
-/* Copyright(C) 2017 Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -16,8 +16,13 @@
 
 import Foundation
 
-struct FeedChunk {
-    let feed: [FeedEntity]
-    let pagingInfo: PagingInfo?
-    
+struct CoverageForDate: Decodable {
+    let coverage: Coverage
+    let limit: Double
+
+    enum CodingKeys: String, CodingKey {
+        case coverage = "Coverage"
+        case limit = "LimitAmount"
+    }
+
 }

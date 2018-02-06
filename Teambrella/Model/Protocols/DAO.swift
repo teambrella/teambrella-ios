@@ -33,7 +33,7 @@ protocol DAO {
     // actual and potential teams
     func requestTeams(demo: Bool) -> Future<TeamsModel>
     func requestPrivateList(offset: Int, limit: Int, filter: String?) -> Future<[PrivateChatUser]>
-    func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Coverage, limit: Double)>
+    func requestCoverage(for date: Date, teamID: Int) -> Future<CoverageForDate>
     
     func requestWallet(teamID: Int) -> Future<WalletEntity>
     func requestProxyRating(teamID: Int,
