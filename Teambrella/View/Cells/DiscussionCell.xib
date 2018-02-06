@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,13 +49,13 @@
                             <constraint firstAttribute="width" secondItem="vsD-oO-HJn" secondAttribute="height" multiplier="1:1" id="aIx-WX-2oj"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" ambiguous="YES" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QhF-iw-jcV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="16" width="173" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QhF-iw-jcV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                        <rect key="frame" x="72" y="16" width="383" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1 MIN AGO" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xeX-Mw-yoX" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1 MIN AGO" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xeX-Mw-yoX" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                         <rect key="frame" x="463" y="16" width="83" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -87,6 +88,13 @@
                             <constraint firstAttribute="width" secondItem="V29-0m-7wa" secondAttribute="height" multiplier="1:1" id="GHo-t7-Gf8"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DoH-1h-L4C">
+                        <rect key="frame" x="0.0" y="0.0" width="562" height="1"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="x0u-xs-qHR"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,6 +109,7 @@
                 <constraint firstItem="qtc-Rp-2hk" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="MJr-0m-Rh2"/>
                 <constraint firstItem="z6p-Vb-wmZ" firstAttribute="centerY" secondItem="V29-0m-7wa" secondAttribute="centerY" id="QA1-C6-kz9"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="width" secondItem="vsD-oO-HJn" secondAttribute="height" multiplier="1:1" id="X5R-H4-Bmu"/>
+                <constraint firstItem="DoH-1h-L4C" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bEp-Dr-tfE"/>
                 <constraint firstItem="z6p-Vb-wmZ" firstAttribute="leading" secondItem="V29-0m-7wa" secondAttribute="trailing" constant="9" id="dIl-7W-vdT"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="dd3-AH-tpI"/>
                 <constraint firstItem="V29-0m-7wa" firstAttribute="centerY" secondItem="H07-1A-61F" secondAttribute="centerY" id="ecG-w9-iCn"/>
@@ -109,11 +118,13 @@
                 <constraint firstItem="xeX-Mw-yoX" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="trailing" constant="8" id="hEO-7g-OHn"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="kku-QK-gka"/>
                 <constraint firstItem="qtc-Rp-2hk" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="trailing" constant="16" id="mam-rN-AU5"/>
+                <constraint firstItem="DoH-1h-L4C" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mo1-ao-w3z"/>
                 <constraint firstItem="H07-1A-61F" firstAttribute="top" secondItem="dIA-wA-dBI" secondAttribute="bottom" constant="10" id="nWZ-i8-GmI"/>
                 <constraint firstItem="qtc-Rp-2hk" firstAttribute="width" secondItem="qtc-Rp-2hk" secondAttribute="height" multiplier="1:1" id="qqE-nv-QhH"/>
                 <constraint firstItem="H07-1A-61F" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="leading" id="vHJ-rZ-pXK"/>
                 <constraint firstAttribute="trailing" secondItem="vsD-oO-HJn" secondAttribute="trailing" constant="16" id="vqe-dZ-ozH"/>
                 <constraint firstItem="xeX-Mw-yoX" firstAttribute="centerY" secondItem="QhF-iw-jcV" secondAttribute="centerY" id="wTY-sb-XZY"/>
+                <constraint firstAttribute="trailing" secondItem="DoH-1h-L4C" secondAttribute="trailing" id="xLZ-pg-2d4"/>
                 <constraint firstItem="QhF-iw-jcV" firstAttribute="top" secondItem="Qcx-lN-iSa" secondAttribute="top" id="zQZ-ZG-4bi"/>
             </constraints>
             <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
