@@ -2759,9 +2759,6 @@
 			isa = PBXGroup;
 			children = (
 				6DB309F81F1D2093007DFF40 /* ChatEntity.swift */,
-				6DB8121A1EE6F1B800B202CE /* ClaimEntityLarge.swift */,
-				6D1A9B241F55CF92004192AC /* PrivateChatUser.swift */,
-				6D6DA2471EE16BBA00307C73 /* TeammateStats.swift */,
 			);
 			name = ServerModels;
 			sourceTree = "<group>";
@@ -2769,7 +2766,10 @@
 		6DDB5D911FF681FC0066A07F /* ServerModelsNew */ = {
 			isa = PBXGroup;
 			children = (
+				6D6DA2471EE16BBA00307C73 /* TeammateStats.swift */,
+				6D1A9B241F55CF92004192AC /* PrivateChatUser.swift */,
 				6D6DA25D1EE1D1BB00307C73 /* ClaimEntity.swift */,
+				6DB8121A1EE6F1B800B202CE /* ClaimEntityLarge.swift */,
 				94266A2D1F55704A0089543F /* ClaimTransactionsModel.swift */,
 				94B4C37B1F1E18AC00AED4CE /* CosignerEntity.swift */,
 				94B4C37C1F1E18AC00AED4CE /* CoverageEntity.swift */,

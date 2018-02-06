@@ -63,15 +63,15 @@ class ChatModelBuilder {
                 name = Name(fullName: "General.you".localized)
                 avatar = service.session?.currentUserAvatar ?? Avatar.none
             } else {
-                name = item.name
-                avatar = item.avatar
+                name = item.teammate.name
+                avatar = item.teammate.avatar
             }
             
             let date = item.created
            
             var rateString: String?
             if showRate {
-                if let rate = item.vote {
+                if let rate = item.teammate.vote {
                 rateString = isClaim
                     ? "Team.Chat.TextCell.voted_format".localized(String.truncatedNumber(rate * 100))
                     : "Team.Chat.TextCell.Application.voted_format".localized(String.formattedNumber(rate))

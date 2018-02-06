@@ -20,8 +20,8 @@
 //
 
 import Foundation
-import SwiftyJSON
 
+/*
 struct PrivateChatAdaptor {
     let json: JSON
     
@@ -43,3 +43,4 @@ struct PrivateChatAdaptor {
     }
     
 }
+*/

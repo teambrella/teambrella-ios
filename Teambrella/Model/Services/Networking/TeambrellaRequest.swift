@@ -112,9 +112,14 @@ struct TeambrellaRequest {
                 failure?(error)
             }
         case .newPost:
-            let entity = ChatEntity(json: reply)
-            log("chat entity id: \(entity.id)", type: .serverReplyStats)
-            success(.newPost(entity))
+            do {
+                let entity = try decoder.decode(ChatEntity.self, from: serverReply.data)
+                log("chat entity id: \(entity.id)", type: .serverReplyStats)
+                success(.newPost(entity))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .teammateVote:
             do {
                 let teamVotingResult = try decoder.decode(TeammateVotingResult.self, from: serverReply.data)
@@ -164,15 +169,14 @@ struct TeambrellaRequest {
              .newChat,
              .privateChat,
              .newPrivatePost:
-            let chat: [ChatEntity]
-            if type == .privateChat || type == .newPrivatePost {
-                chat = PrivateChatAdaptor(json: reply).adaptedMessages
-            } else {
-                chat = ChatEntity.buildArray(from: reply["DiscussionPart"]["Chat"])
+            do {
+                let model = try decoder.decode(ChatModel.self, from: serverReply.data)
+                log("ChatModel: \(model)", type: .serverReplyStats)
+                success(.chat(model))
+            } catch {
+                log(error)
+                failure?(error)
             }
-            let model = ChatModel(json: reply, chat: chat)
-            log("chat model with items count: \(model.chat.count)", type: .serverReplyStats)
-            success(.chat(model))
         case .teamFeed:
             guard let pagingInfo = serverReply.paging else {
                 failure?(TeambrellaErrorFactory.wrongReply())

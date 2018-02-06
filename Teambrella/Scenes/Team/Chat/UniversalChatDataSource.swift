@@ -53,7 +53,7 @@ final class UniversalChatDatasource {
     
     var chatModel: ChatModel? {
         didSet {
-            notificationsType = TopicMuteType.type(from: chatModel?.isMuted)
+            notificationsType = TopicMuteType.type(from: chatModel?.discussion.isMuted)
             cellModelBuilder.showRate = chatType == .application || chatType == .claim
         }
     }
@@ -123,9 +123,10 @@ final class UniversalChatDatasource {
             return ""//strategy.title
         }
         
-        if chatModel.basicPart?.claimAmount != nil {
-            return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(chatModel.claimID)"
-        } else if chatModel.basicPart?.title != nil {
+        if chatModel.basic?.claimAmount != nil {
+            let id = chatModel.id ?? 0
+            return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(id)"
+        } else if chatModel.basic?.title != nil {
             return "Team.Chat.TypeLabel.application".localized.lowercased().capitalized
         } else {
             return strategy.title
@@ -158,13 +159,13 @@ final class UniversalChatDatasource {
         }
         
         if let chatModel = chatModel {
-            if chatModel.basicPart?.claimAmount != nil {
+            if chatModel.basic?.claimAmount != nil {
                 return .claim
             }
-            if chatModel.basicPart?.title != nil {
+            if chatModel.basic?.title != nil {
                 return .discussion
             }
-            if chatModel.basicPart?.userID != nil {
+            if chatModel.basic?.userID != nil {
                 return .application
             }
         }
@@ -437,9 +438,9 @@ final class UniversalChatDatasource {
     }
     
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
-        addModels(models: model.chat, isPrevious: isPrevious)
+        addModels(models: model.discussion.chat, isPrevious: isPrevious)
         chatModel = model
-        if model.chat.isEmpty {
+        if model.discussion.chat.isEmpty {
             if isPrevious {
                 hasPrevious = false
             } else {
@@ -447,8 +448,8 @@ final class UniversalChatDatasource {
                 forwardOffset = 0
             }
         }
-        lastRead = model.lastRead
-        teamAccessLevel = model.teamPart?.accessLevel ?? .noAccess
+        lastRead = model.discussion.lastRead
+        teamAccessLevel = model.team?.accessLevel ?? .noAccess
     }
     
     private func processPrivateChat(messages: [ChatEntity], isPrevious: Bool, isMyNewMessage: Bool) {

@@ -267,7 +267,7 @@ class RemoteChatStrategy: ChatDatasourceStrategy {
 }
 
 class ChatStrategy: ChatDatasourceStrategy {
-    var title: String { return chatModel.title }
+    var title: String { return chatModel.basic?.title ?? "" }
     var requestType: TeambrellaRequestType { return .feedChat }
     //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPost
