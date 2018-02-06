@@ -16,6 +16,9 @@
 
 import Foundation
 
+/**
+ Coverage is a coefficient that is applied to the claim amount to calculate actual amount to be paid
+ */
 struct Coverage: Decodable {
     let value: Double
     var percentage: Double { return value * 100 }

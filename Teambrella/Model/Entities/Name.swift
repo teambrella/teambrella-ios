@@ -25,6 +25,8 @@ struct NameComponent: CustomStringConvertible {
 }
 
 struct Name: Decodable {
+    static var empty: Name { return Name(fullName: "") }
+    
     let components: [NameComponent]
     let hasLastName: Bool
     

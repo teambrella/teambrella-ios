@@ -30,8 +30,8 @@ struct Session {
     // TMP: my user properties
     var currentUserID: String?
     var currentUserTeammateID: Int? { return currentTeam?.teammateID }
-    var currentUserName: String?
-    var currentUserAvatar: String = ""
+    var currentUserName: Name?
+    var currentUserAvatar: Avatar = Avatar.none
     
     var cryptoCurrency: Ether = Ether.empty
     var cryptoCoin: MEth = MEth(0)

@@ -27,15 +27,15 @@ extension Data {
     }
     
     var hexString: String {
-        let bytes = [UInt8](self)
-        var hexString = ""
-        for byte in bytes {
-            hexString += String(format: "%02x", UInt8(byte))
-        }
-        return hexString
+        return map { String(format: "%02x", $0) }.joined()
     }
     
     init(hex: String) {
+        var hex = hex
+        // in case there is odd number of bytes (it may happen if we use String(int, radix: 16) )
+        // we need to add 0 in front of the string
+        if hex.count % 2 != 0 { hex = "0" + hex }
+
         let scalars = hex.unicodeScalars
         var bytes: [UInt8] = [UInt8](repeating: 0, count: (scalars.count + 1) >> 1)
         for (index, scalar) in scalars.enumerated() {

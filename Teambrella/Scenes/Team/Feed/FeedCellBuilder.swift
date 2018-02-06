@@ -39,7 +39,7 @@ struct FeedCellBuilder {
             cell.textLabel.text = model.text.sane
             let count = model.topPosterAvatars.count
             let label: String? = count > 3 ? "+\(count - 3)" : nil
-            cell.facesStack.setAvatars(images: model.topPosterAvatars, label: label, max: count > 3 ? 4 : 3)
+            cell.facesStack.setAvatars(model.topPosterAvatars, label: label, max: count > 3 ? 4 : 3)
          
             if let date = model.itemDate {
             cell.timeLabel.text = DateProcessor().stringInterval(from: date).uppercased()

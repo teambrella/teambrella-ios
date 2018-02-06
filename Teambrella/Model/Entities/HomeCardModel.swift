@@ -38,14 +38,14 @@ struct HomeCardModel: Decodable {
     let itemType: ItemType
     let itemID: Int
     let itemDate: Date
-    let smallPhoto: String
-    let amount: Double
+    let smallPhoto: Photo
+    let amount: Fiat
     let teamVote: Double?
     let isVoting: Bool
     let unreadCount: Int
     let chatTitle: String?
     let payProgress: Double?
-    let name: String
+    let name: Name
     let userID: String
     let topicID: String
     

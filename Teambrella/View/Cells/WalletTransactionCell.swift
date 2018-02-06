@@ -35,8 +35,8 @@ class WalletTransactionCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet weak var separator: UIView!
 
     func setup(with model: WalletTransactionsCellModel) {
-        avatarView.showAvatar(string: model.avatar)
-        nameLabel.text = model.name
+        avatarView.show(model.avatar)
+        nameLabel.text = model.name.entire
         detailsLabel.text = model.detailsText
         amountLabel.text = model.amountText
         kindLabel.text = model.kindText

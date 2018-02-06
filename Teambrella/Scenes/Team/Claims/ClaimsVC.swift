@@ -81,8 +81,8 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     private func setupObject() {
         guard let object = dataSource.claimItem else { return }
         
-        objectImageView.showImage(string: object.photo)
-        objectTitle.text = object.name
+        objectImageView.show(object.photo)
+        objectTitle.text = object.name.entire
         objectSubtitle.text = object.location
     }
     

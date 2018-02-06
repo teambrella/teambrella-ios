@@ -34,7 +34,7 @@ class HomeDataSource {
     var onUpdate: (() -> Void)?
     
     var currency: String { return model?.teamPart.currency ?? "?" }
-    var name: String { return model?.name.first ?? "" }
+    var name: Name { return model?.name ?? Name.empty }
     
     func loadData(teamID: Int) {
         service.dao.requestHome(teamID: teamID).observe { [weak self] result in

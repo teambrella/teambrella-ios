@@ -42,19 +42,19 @@ struct ClaimEntity: Decodable {
     var id: Int
     var lastUpdated: Int64
     
-    var smallPhoto: String
-    var avatar: String
+    var smallPhoto: Photo
+    var avatar: Avatar
     var model: String
-    var name: String
+    var name: Name
     var state: ClaimState
-    var claimAmount: Double
-    var reimbursement: Double
+    var claimAmount: Fiat
+    var reimbursement: Fiat
 //    var votingRes: Double?
 //    var paymentRes: Double
-    var myVote: Double?
+    var myVote: ClaimVote?
     
-    var proxyAvatar: String?
-    var proxyName: String?
+    var proxyAvatar: Avatar?
+    var proxyName: Name?
     
     var description: String {
         return "\(#file) \(id)"

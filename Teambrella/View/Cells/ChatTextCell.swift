@@ -255,14 +255,14 @@ class ChatTextCell: UICollectionViewCell {
         context.setStrokeColor(UIColor.lightBlueGray.cgColor)
     }
     
-    private func setupAvatar(avatar: String?, cloudHeight: CGFloat) {
+    private func setupAvatar(avatar: Avatar?, cloudHeight: CGFloat) {
         guard  isMy == false, let avatar = avatar else {
             avatarView.isHidden = true
             return
         }
         
         avatarView.isHidden = false
-        avatarView.showAvatar(string: avatar)
+        avatarView.show(avatar)
         let x = isMy ? width - Constant.avatarContainerInset - Constant.avatarWidth : Constant.avatarContainerInset
         avatarView.frame = CGRect(x: x,
                                   y: cloudHeight - Constant.avatarWidth,
@@ -270,9 +270,9 @@ class ChatTextCell: UICollectionViewCell {
                                   height: Constant.avatarWidth)
     }
     
-    private func setupLeftLabel(name: String, baseFrame: CGRect) {
+    private func setupLeftLabel(name: Name, baseFrame: CGRect) {
         leftLabel.frame = baseFrame
-        leftLabel.text = name
+        leftLabel.text = name.entire
         leftLabel.sizeToFit()
         leftLabel.center = CGPoint(x: cloudBodyMinX + leftLabel.frame.width / 2 + 8,
                                    y: leftLabel.frame.height / 2 + 8)

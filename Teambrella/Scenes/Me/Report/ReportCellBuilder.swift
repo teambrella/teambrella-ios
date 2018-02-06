@@ -56,8 +56,8 @@ struct ReportCellBuilder {
     static func populateItem(cell: ReportItemCell, model: ReportCellModel) {
         guard let model = model as? ItemReportCellModel else { return }
         
-        cell.avatarView.showImage(string: model.photo)
-        cell.itemLabel.text = model.name
+        cell.avatarView.show(model.photo)
+        cell.itemLabel.text = model.name.entire
         cell.detailsLabel.text = model.location
         cell.headerLabel.text = model.title
     }

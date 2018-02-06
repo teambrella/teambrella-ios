@@ -56,8 +56,9 @@ struct FeedEntity: Decodable {
     let chatTitle: String?
     let unreadCount: Int
     let posterCount: Int
-    let topPosterAvatars: [String]
-    
+    let topPosterAvatars: [Avatar]
+
+    /*
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -73,7 +74,7 @@ struct FeedEntity: Decodable {
         self.itemUserID = try container.decode(String.self, forKey: .itemUserID)
         self.unreadCount = try container.decode(Int.self, forKey: .unreadCount)
         self.posterCount = try container.decode(Int.self, forKey: .posterCount)
-        self.topPosterAvatars = try container.decode([String].self, forKey: .topPosterAvatars)
+        self.topPosterAvatars = try container.decode([Avatar].self, forKey: .topPosterAvatars)
 
         self.amount = try container.decodeIfPresent(Double.self, forKey: .amount)
         self.teamVote = try container.decodeIfPresent(Double.self, forKey: .teamVote)
@@ -84,5 +85,6 @@ struct FeedEntity: Decodable {
 
         self.payProgress = (try? container.decodeIfPresent(Double.self, forKey: .payProgress)) as? Double
     }
+ */
 
 }

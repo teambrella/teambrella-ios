@@ -56,7 +56,7 @@ struct HomeCellBuilder {
     static func populateHome(cell: HomeCollectionCell, model: HomeCardModel) {
         switch model.itemType {
         case .claim:
-            cell.avatarView.showImage(string: model.smallPhoto)
+            cell.avatarView.show(model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
             cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
             let isMine = model.userID == service.myUserID
@@ -67,7 +67,7 @@ struct HomeCellBuilder {
             cell.rightNumberView.amountLabel.text = amountText
             cell.rightNumberView.currencyLabel.text = model.teamVote == nil ? nil : "%"
         case .teammate:
-            cell.avatarView.showAvatar(string: model.smallPhoto)
+            cell.avatarView.show(model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
             cell.titleLabel.text = "Team.Home.Card.newTeammate".localized
             let amountText: String = model.teamVote.map { String.formattedNumber($0) } ?? "..."
@@ -77,7 +77,7 @@ struct HomeCellBuilder {
             break
         }
         
-        cell.leftNumberView.amountLabel.text = String.formattedNumber(model.amount)
+        cell.leftNumberView.amountLabel.text = model.amount.formatted
         cell.leftNumberView.currencyLabel.text = service.currencyName
         cell.rightNumberView.titleLabel.text = "Team.Home.Card.teamVote".localized
         cell.rightNumberView.badgeLabel.text = "Team.Home.Card.voting".localized
@@ -98,7 +98,7 @@ struct HomeCellBuilder {
         
         cell.headerLabel.text = "Home.SupportCell.headerLabel".localized
         cell.centerLabel.text = "Home.SupportCell.onlineLabel".localized
-        cell.bottomLabel.text = "Home.SupportCell.textLabel".localized(dataSource.name)
+        cell.bottomLabel.text = "Home.SupportCell.textLabel".localized(dataSource.name.first)
         cell.button.setTitle("Home.SupportCell.chatButton".localized, for: .normal)
         cell.onlineIndicator.layer.cornerRadius = 3
     }
