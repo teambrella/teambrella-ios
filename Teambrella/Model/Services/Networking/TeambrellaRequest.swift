@@ -81,216 +81,122 @@ struct TeambrellaRequest {
                                                                         negativeInfinity: "NegativeInfinity",
                                                                         nan: "NaN")
         log("Reply type: \(type)", type: .serverReplyStats)
-        switch type {
-        case .timestamp:
-            success(.timestamp)
-        case .teammatesList:
-            do {
+        do {
+            switch type {
+            case .timestamp:
+                success(.timestamp)
+            case .teammatesList:
                 let list = try decoder.decode(TeammatesList.self, from: serverReply.data)
                 log("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)",
                     type: .serverReplyStats)
                 success(.teammatesList(list.teammates))
-            } catch {
-                failure?(error)
-            }
-        case .teammate:
-            do {
+            case .teammate:
                 let teammate = try decoder.decode(TeammateLarge.self, from: serverReply.data)
                 log("teammate: \(teammate.basic.id)", type: .serverReplyStats)
                 success(.teammate(teammate))
-            } catch {
-                log("Teammate error \(error)", type: .error)
-                failure?(error)
-            }
-        case .teams, .demoTeams:
-            do {
+            case .teams, .demoTeams:
                 let teamsModel = try decoder.decode(TeamsModel.self, from: serverReply.data)
                 log("teamsModel: \(teamsModel)", type: .serverReplyStats)
                 success(.teams(teamsModel))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .newPost:
-            do {
+            case .newPost:
                 let entity = try decoder.decode(ChatEntity.self, from: serverReply.data)
                 log("chat entity id: \(entity.id)", type: .serverReplyStats)
                 success(.newPost(entity))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .teammateVote:
-            do {
+            case .teammateVote:
                 let teamVotingResult = try decoder.decode(TeammateVotingResult.self, from: serverReply.data)
                 log("teammmate voting result id: \(teamVotingResult.id)", type: .serverReplyStats)
                 success(.teammateVote(teamVotingResult))
-            } catch {
-                failure?(error)
-            }
-        case .registerKey:
-            success(.registerKey)
-        case .coverageForDate:
-            success(.coverageForDate(Coverage(reply["Coverage"].doubleValue), reply["LimitAmount"].doubleValue))
-        case .setLanguageEn,
-             .setLanguageEs:
-            success(.setLanguage(reply.stringValue))
-        case .claimsList:
-            do {
+            case .registerKey:
+                success(.registerKey)
+            case .coverageForDate:
+                success(.coverageForDate(Coverage(reply["Coverage"].doubleValue), reply["LimitAmount"].doubleValue))
+            case .setLanguageEn,
+                 .setLanguageEs:
+                success(.setLanguage(reply.stringValue))
+            case .claimsList:
                 let claims = try decoder.decode([ClaimEntity].self, from: serverReply.data)
                 log("claims count: \(claims.count)", type: .serverReplyStats)
                 success(.claimsList(claims))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .claim,
-             .newClaim:
-            do {
+            case .claim,
+                 .newClaim:
                 let claim = try decoder.decode(ClaimEntityLarge.self, from: serverReply.data)
                 log("claim: \(claim)", type: .serverReplyStats)
                 success(.claim(claim))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .claimVote:
-            do {
+            case .claimVote:
                 let claimUpdate = try decoder.decode(ClaimVoteUpdate.self, from: serverReply.data)
                 log("claim update: \(claimUpdate)", type: .serverReplyStats)
                 success(.claimVote(claimUpdate))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .claimChat,
-             .teammateChat,
-             .feedChat,
-             .newChat,
-             .privateChat,
-             .newPrivatePost:
-            do {
+            case .claimChat,
+                 .teammateChat,
+                 .feedChat,
+                 .newChat,
+                 .privateChat,
+                 .newPrivatePost:
                 let model = try decoder.decode(ChatModel.self, from: serverReply.data)
                 log("ChatModel: \(model)", type: .serverReplyStats)
                 success(.chat(model))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .teamFeed:
-            guard let pagingInfo = serverReply.paging else {
-                failure?(TeambrellaErrorFactory.wrongReply())
-                return
-            }
-            do {
+            case .teamFeed:
+                guard let pagingInfo = serverReply.paging else {
+                    failure?(TeambrellaErrorFactory.wrongReply())
+                    return
+                }
+
                 let feed = try decoder.decode([FeedEntity].self, from: serverReply.data)
                 let chunk = FeedChunk(feed: feed, pagingInfo: pagingInfo)
-                 log("feed with items count: \(chunk.feed.count)", type: .serverReplyStats)
+                log("feed with items count: \(chunk.feed.count)", type: .serverReplyStats)
                 success(.teamFeed(chunk))
-            } catch {
-                failure?(error)
-            }
-        case .claimTransactions:
-            do {
+            case .claimTransactions:
                 let models = try decoder.decode([ClaimTransactionsModel].self, from: serverReply.data)
                 log("claim transactions count: \(models.count)", type: .serverReplyStats)
                 success(.claimTransactions(models))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .home:
-            do {
+            case .home:
                 let model = try decoder.decode(HomeModel.self, from: serverReply.data)
                 success(.home(model))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .feedDeleteCard:
-            do {
+            case .feedDeleteCard:
                 let model = try decoder.decode(HomeModel.self, from: serverReply.data)
                 success(.feedDeleteCard(model))
-            } catch {
-                failure?(error)
-            }
-        case .wallet:
-            do {
+            case .wallet:
                 let model = try decoder.decode(WalletEntity.self, from: serverReply.data)
                 success(.wallet(model))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .walletTransactions:
-            do {
+            case .walletTransactions:
                 let models = try decoder.decode([WalletTransactionsModel].self, from: serverReply.data)
                 success(.walletTransactions(models))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .updates:
-            break
-        case .uploadPhoto:
-            success(.uploadPhoto(reply.arrayValue.first?.string ?? ""))
-        case .myProxy:
-            success(.myProxy(reply.stringValue == "set"))
-        case .myProxies:
-            do {
+            case .updates:
+                break
+            case .uploadPhoto:
+                success(.uploadPhoto(reply.arrayValue.first?.string ?? ""))
+            case .myProxy:
+                success(.myProxy(reply.stringValue == "set"))
+            case .myProxies:
                 let model = try decoder.decode([ProxyCellModel].self, from: serverReply.data)
                 success(.myProxies(model))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .proxyFor:
-            do {
+            case .proxyFor:
                 let proxyForEntity = try decoder.decode(ProxyForEntity.self, from: serverReply.data)
                 success(.proxyFor(proxyForEntity))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .proxyPosition:
-            success(.proxyPosition)
-        case .proxyRatingList:
-            do {
+            case .proxyPosition:
+                success(.proxyPosition)
+            case .proxyRatingList:
                 let proxyRatingEntity = try decoder.decode(ProxyRatingEntity.self, from: serverReply.data)
                 success(.proxyRatingList(proxyRatingEntity))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .privateList:
-            do {
+            case .privateList:
                 let model = try decoder.decode([PrivateChatUser].self, from: serverReply.data)
                 success(.privateList(model))
-            } catch {
-                log(error)
-                failure?(error)
-            }
-        case .withdrawTransactions,
-             .withdraw:
-            do {
+            case .withdrawTransactions,
+                 .withdraw:
                 let chunk = try decoder.decode(WithdrawChunk.self, from: serverReply.data)
                 success(.withdrawTransactions(chunk))
-            } catch {
-                failure?(error)
-            }
-        case .mute:
-            success(.mute(reply.boolValue))
-        case .claimVotesList,
-             .teammateVotesList:
-            do {
-                let votesList = try JSONDecoder().decode(VotersList.self, from: serverReply.data)
+            case .mute:
+                success(.mute(reply.boolValue))
+            case .claimVotesList,
+                 .teammateVotesList:
+                let votesList = try decoder.decode(VotersList.self, from: serverReply.data)
                 success(.votesList(votesList))
-            } catch {
-                failure?(error)
-                log("votes eror: \(error)", type: .error)
+            default:
+                break
             }
-        default:
-            break
+        } catch {
+            log(error)
+            failure?(error)
         }
     }
     
