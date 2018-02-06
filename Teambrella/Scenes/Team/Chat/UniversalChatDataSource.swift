@@ -101,7 +101,7 @@ final class UniversalChatDatasource {
         return nil
     }
     
-    var topicID: String? { return claim?.topicID }
+    var topicID: String? { return claim?.discussion.id }
     
     var chatHeader: String? {
         if let strategy = strategy as? ClaimChatStrategy {

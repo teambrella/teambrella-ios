@@ -141,11 +141,23 @@ struct TeambrellaRequest {
             }
         case .claim,
              .newClaim:
-            success(.claim(ClaimEntityLarge(json: reply)))
+            do {
+                let claim = try decoder.decode(ClaimEntityLarge.self, from: serverReply.data)
+                log("claim: \(claim)", type: .serverReplyStats)
+                success(.claim(claim))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .claimVote:
-            success(.claimVote(reply))
-        case .claimUpdates:
-            success(.claimUpdates(reply))
+            do {
+                let claimUpdate = try decoder.decode(ClaimVoteUpdate.self, from: serverReply.data)
+                log("claim update: \(claimUpdate)", type: .serverReplyStats)
+                success(.claimVote(claimUpdate))
+            } catch {
+                log(error)
+                failure?(error)
+            }
         case .claimChat,
              .teammateChat,
              .feedChat,

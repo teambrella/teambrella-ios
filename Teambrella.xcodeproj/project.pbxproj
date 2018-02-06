@@ -90,6 +90,8 @@
 		6D1CAC131FF52B7600FA58B6 /* OthersVotedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC111FF52B7600FA58B6 /* OthersVotedCell.swift */; };
 		6D1CAC151FF5354F00FA58B6 /* OthersVotedCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC141FF5354F00FA58B6 /* OthersVotedCellModel.swift */; };
 		6D1CAC161FF5354F00FA58B6 /* OthersVotedCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC141FF5354F00FA58B6 /* OthersVotedCellModel.swift */; };
+		6D1EC3D02029F5AA00F0541C /* ClaimVoteUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3CF2029F5AA00F0541C /* ClaimVoteUpdate.swift */; };
+		6D1EC3D12029F5AA00F0541C /* ClaimVoteUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3CF2029F5AA00F0541C /* ClaimVoteUpdate.swift */; };
 		6D20CF961FDEE1890049BE9C /* TeamPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF951FDEE1890049BE9C /* TeamPart.swift */; };
 		6D20CF971FDEE1890049BE9C /* TeamPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF951FDEE1890049BE9C /* TeamPart.swift */; };
 		6D2808C51F1A450C00EBBE3D /* CompactUserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */; };
@@ -1187,6 +1189,7 @@
 		6D1CAC0E1FF51B6700FA58B6 /* OthersVotedDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OthersVotedDataSource.swift; path = Scenes/Info/OthersVotedDataSource.swift; sourceTree = "<group>"; };
 		6D1CAC111FF52B7600FA58B6 /* OthersVotedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OthersVotedCell.swift; path = Scenes/Info/OthersVotedCell.swift; sourceTree = "<group>"; };
 		6D1CAC141FF5354F00FA58B6 /* OthersVotedCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OthersVotedCellModel.swift; path = Scenes/Info/OthersVoted/OthersVotedCellModel.swift; sourceTree = "<group>"; };
+		6D1EC3CF2029F5AA00F0541C /* ClaimVoteUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClaimVoteUpdate.swift; path = Model/Entities/ClaimVoteUpdate.swift; sourceTree = "<group>"; };
 		6D20CF951FDEE1890049BE9C /* TeamPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamPart.swift; path = Model/Entities/TeamPart.swift; sourceTree = "<group>"; };
 		6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompactUserInfoHeader.swift; path = View/ReusableViews/CompactUserInfoHeader.swift; sourceTree = "<group>"; };
 		6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompactUserInfoHeader.xib; path = View/ReusableViews/CompactUserInfoHeader.xib; sourceTree = "<group>"; };
@@ -2794,6 +2797,7 @@
 				94C186B01F5AD29F00F1BE51 /* WalletTransactionsModel.swift */,
 				6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */,
 				6D35566A1FD2EE4400AEBF07 /* WithdrawTx.swift */,
+				6D1EC3CF2029F5AA00F0541C /* ClaimVoteUpdate.swift */,
 			);
 			name = ServerModelsNew;
 			sourceTree = "<group>";
@@ -3935,6 +3939,7 @@
 				94112D7E20066DB20031898E /* ProxyForEntity.swift in Sources */,
 				6D9AAF60201A4BB5000411CC /* TransactionsCellModel.swift in Sources */,
 				6D4E5D021F7AB6870020DEE2 /* Session.swift in Sources */,
+				6D1EC3D12029F5AA00F0541C /* ClaimVoteUpdate.swift in Sources */,
 				6D4E5D031F7AB6870020DEE2 /* TeammateStats.swift in Sources */,
 				6D4E5D041F7AB6870020DEE2 /* WalletTransactionsDataSource.swift in Sources */,
 				6D4E5D051F7AB6870020DEE2 /* NeedHelpView.swift in Sources */,
@@ -4358,6 +4363,7 @@
 				94112D7D20066DB20031898E /* ProxyForEntity.swift in Sources */,
 				6D9AAF5F201A4BB5000411CC /* TransactionsCellModel.swift in Sources */,
 				6DA1D0FB1F040AEF00F9DE87 /* Session.swift in Sources */,
+				6D1EC3D02029F5AA00F0541C /* ClaimVoteUpdate.swift in Sources */,
 				6D6DA2481EE16BBA00307C73 /* TeammateStats.swift in Sources */,
 				94C186A71F59B91A00F1BE51 /* WalletTransactionsDataSource.swift in Sources */,
 				6D69D9EC1EFBFF2E00DED5CE /* NeedHelpView.swift in Sources */,

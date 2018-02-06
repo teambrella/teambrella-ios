@@ -91,7 +91,7 @@ class ClaimChatStrategy: ChatDatasourceStrategy {
     
     func updatedMessageBody(body: RequestBody) -> RequestBody {
         var body = body
-        body.payload?["TopicId"] =  claim.topicID
+        body.payload?["TopicId"] =  claim.discussion.id
         return body
     }
     

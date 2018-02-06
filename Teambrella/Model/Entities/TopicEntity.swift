@@ -29,9 +29,15 @@ struct TopicEntity: Decodable {
     let posterCount: Int
     var unreadCount: Int
     var minutesSinceLastPost: Int
+    let smallPhoto: String?
     
     var description: String {
         return "TopicEntity id: \(id)"
+    }
+
+    mutating func update(with claimUpdate: ClaimVoteUpdate.DiscussionPartUpdate) {
+        unreadCount = claimUpdate.unreadCount
+        minutesSinceLastPost = claimUpdate.minutesSinceLastPost
     }
 
     init(id: String) {
@@ -41,6 +47,7 @@ struct TopicEntity: Decodable {
         posterCount = 0
         unreadCount = 0
         minutesSinceLastPost = 0
+        smallPhoto = nil
     }
 
     enum CodingKeys: String, CodingKey {
@@ -50,5 +57,6 @@ struct TopicEntity: Decodable {
         case posterCount = "PosterCount"
         case unreadCount = "UnreadCount"
         case minutesSinceLastPost = "SinceLastPostMinutes"
+        case smallPhoto = "SmallPhoto"
     }
 }
