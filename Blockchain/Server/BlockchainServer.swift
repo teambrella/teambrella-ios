@@ -42,11 +42,6 @@ public class BlockchainServer {
         static var siteURL: String { return proto + site } // "https://surilla.com"
     }
     
-    enum Response {
-        case success(JSON, Int64)
-        case failure(Error)
-    }
-    
     var isTestnet: Bool = Constant.isTestNet
     
     private(set)var timestamp: Int64 = 0 {
@@ -60,7 +55,7 @@ public class BlockchainServer {
     init() {
     }
     
-    func initTimestamp(completion:@escaping (Response) -> Void) {
+    func initTimestamp(completion:@escaping (Int64?, Error?) -> Void) {
         guard let url = url(string: "me/GetTimestamp") else {
             fatalError("Couldn't create URL")
         }
@@ -71,52 +66,44 @@ public class BlockchainServer {
         
         Alamofire.request(request).responseJSON { response in
             switch response.result {
-            case .success:
-                if let value = response.result.value {
-                    log("BlockChain server init timestamp reply: \(value)", type: .cryptoRequests)
-                    let result = JSON(value)
-                    let status = result["Status"]
-                    let timestamp = status["Timestamp"].int64Value
-                    self.timestamp = timestamp
-                    completion(.success(result, timestamp))
-                } else {
-                    completion(.failure(TeambrellaErrorFactory.emptyReplyError()))
-                    //self.delegate?.server(server: self, failedWithError: nil)
-                }
+            case let .success(value):
+                log("BlockChain server init timestamp reply: \(value)", type: .cryptoRequests)
+                let result = JSON(value)
+                let status = result["Status"]
+                let timestamp = status["Timestamp"].int64Value
+                self.timestamp = timestamp
+                completion(timestamp, nil)
             case .failure(let error):
-                completion(.failure(error))
-                //                self.delegate?.server(server: self, failedWithError: error)
+                completion(nil, error)
             }
         }
     }
     
     func initClient(privateKey: String, completion: @escaping (_ success: Bool) -> Void) {
-        initTimestamp { [weak self] reply in
+        initTimestamp { [weak self] timestamp, error in
             guard let me = self else { return }
-            switch reply {
-            case .success(_, let timestamp):
-                let key = Key(base58String: privateKey, timestamp: timestamp)
-                
-                let request = me.request(string: "me/InitClient", key: key)
-                Alamofire.request(request).responseJSON { response in
-                    switch response.result {
-                    case .success:
-                        if let value = response.result.value {
-                            log("init client reply: \(value)", type: .cryptoRequests)
-                            let result = JSON(value)
-                            if let timestamp = result["Timestamp"].int64 {
-                                me.timestamp = timestamp
-                            }
-                            completion(true)
+            guard let timestamp = timestamp else { return }
+            guard error == nil else { return }
+
+            let key = Key(base58String: privateKey, timestamp: timestamp)
+
+            let request = me.request(string: "me/InitClient", key: key)
+            Alamofire.request(request).responseJSON { response in
+                switch response.result {
+                case .success:
+                    if let value = response.result.value {
+                        log("init client reply: \(value)", type: .cryptoRequests)
+                        let result = JSON(value)
+                        if let timestamp = result["Timestamp"].int64 {
+                            me.timestamp = timestamp
                         }
-                    case .failure(let error):
-                        log("error initializing client: \(error)", type: [.error, .cryptoRequests])
-                        //                        me.delegate?.server(server: me, failedWithError: error)
-                        completion(false)
+                        completion(true)
                     }
+                case .failure(let error):
+                    log("error initializing client: \(error)", type: [.error, .cryptoRequests])
+                    //                        me.delegate?.server(server: me, failedWithError: error)
+                    completion(false)
                 }
-                
-            default: break
             }
         }
     }
@@ -126,7 +113,7 @@ public class BlockchainServer {
                     multisigs: [Multisig],
                     transactions: [Tx],
                     signatures: [TxSignature],
-                    completion: @escaping (Response) -> Void) {
+                    completion: @escaping (UpdatesReplyServerImpl?, Error?) -> Void) {
         let key = Key(base58String: privateKey, timestamp: timestamp)
         let updateInfo = CryptoServerUpdateInfo(multisigs: multisigs,
                                                 transactions: transactions,
@@ -135,23 +122,22 @@ public class BlockchainServer {
                                                 formatter: formatter)
         log("Get updates updateInfo signatures: \(updateInfo.txSignatures)", type: .cryptoDetails)
         let request = self.request(string: "me/GetUpdates", key: key, updateInfo: updateInfo)
-        Alamofire.request(request).responseJSON { [weak self] response in
+        Alamofire.request(request).responseData { [weak self] response in
             guard let me = self else { return }
             
             switch response.result {
-            case .success:
-                if let value = response.result.value {
-                    log("Success getting updates with \(updateInfo)", type: .cryptoDetails)
-                    let result = JSON(value)
-                    let timestamp = result["Status"]["Timestamp"].int64Value
-                    me.timestamp = timestamp
-                    let lastUpdated = result["Data"]["LastUpdated"].int64Value
-                    completion(.success( result["Data"], lastUpdated))
-                    //                    me.delegate?.server(server: me, didReceiveUpdates: result["Data"], updateTime: lastUpdated)
+            case let .success(data):
+                log("Success getting updates with \(updateInfo)", type: .cryptoDetails)
+                do {
+                    let result = try JSONDecoder().decode(UpdatesReplyServerImpl.self, from: data)
+                    me.timestamp = result.status.timestamp
+                    completion(result, nil)
+                } catch {
+                    log("Get updates parsing error: \(error)", type: [.error, .crypto])
+                    completion(nil, error)
                 }
-            case .failure(let error):
-                completion(.failure(error))
-                //                me.delegate?.server(server: me, failedWithError: error)
+            case let .failure(error):
+                completion(nil, error)
             }
         }
     }
