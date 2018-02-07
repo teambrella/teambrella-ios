@@ -63,6 +63,7 @@ class OthersVotedVC: UIViewController, Routable {
                              subtitle: "Team.OthersVoted.Empty.details".localized)
         } else {
             emptyVC?.remove()
+            emptyVC = nil
         }
     }
     

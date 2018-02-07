@@ -68,7 +68,11 @@ class EmptyVC: UIViewController {
     }
     
     func remove() {
-        dismiss(animated: true, completion: nil)
+        self.view.removeFromSuperview()
+        self.removeFromParentViewController()
+        self.didMove(toParentViewController: nil)
+        
+       // dismiss(animated: true, completion: nil)
     }
     
 }

@@ -80,6 +80,7 @@ class WalletTransactionsVC: UIViewController, Routable {
                              subtitle: "Me.Wallet.Transactions.Empty.details".localized)
         } else {
             emptyVC?.remove()
+            emptyVC = nil
         }
     }
 }

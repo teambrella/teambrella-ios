@@ -82,6 +82,7 @@ class WalletCosignersVC: UIViewController, Routable {
                              subtitle: "Me.Wallet.Cosigners.Empty.details".localized)
         } else {
             emptyVC?.remove()
+            emptyVC = nil
         }
     }
     

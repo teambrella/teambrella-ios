@@ -44,8 +44,8 @@ class ProxyForVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        dataSource.loadData()
         guard isFirstLoading == false else {
+            dataSource.loadData()
             isFirstLoading = false
             return
         }
@@ -62,6 +62,7 @@ class ProxyForVC: UIViewController {
             emptyVC?.setText(title: "Proxy.Empty.You.title".localized, subtitle: "Proxy.Empty.You.details".localized)
         } else {
             emptyVC?.remove()
+            emptyVC = nil
         }
     }
     

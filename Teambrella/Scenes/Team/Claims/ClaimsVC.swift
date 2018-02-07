@@ -93,8 +93,8 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        dataSource.loadData()
         guard isFirstLoading == false else {
+            dataSource.loadData()
             isFirstLoading = false
             return
         }
@@ -142,6 +142,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
                              subtitle: "Team.Claims.Empty.details".localized)
         } else {
             emptyVC?.remove()
+            emptyVC = nil
         }
     }
 }

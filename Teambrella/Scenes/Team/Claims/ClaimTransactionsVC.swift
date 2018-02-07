@@ -80,6 +80,7 @@ class ClaimTransactionsVC: UIViewController, Routable {
                              subtitle: "Team.Claim.Transactions.Empty.details".localized)
         } else {
             emptyVC?.remove()
+            emptyVC = nil
         }
     }
     
