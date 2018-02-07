@@ -20,33 +20,38 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct CoveredObject {
+struct CoveredObject: Decodable {
     let smallPhotos: [String]
     let largePhotos: [String]
     let model: String
     let year: Int
-    let subType: String
-    let keyWords: String
+    let subType: String?
+    let keyWords: String?
     let spayed: Bool
     let claimLimit: Double
     let claimCount: Int
-    let singleClaimID: Int?
-    
-    init(json: JSON) {
-        smallPhotos = json["SmallPhotos"].arrayObject as? [String] ?? []
-        largePhotos = json["BigPhotos"].arrayObject as? [String] ?? []
-        model = json["Model"].stringValue
-        year = json["Year"].intValue
-        subType = json["SubType"].stringValue
-        keyWords = json["KeyWords"].stringValue
-        spayed = json["Spayed"].boolValue
-        claimLimit = json["ClaimLimit"].doubleValue
-        claimCount = json["ClaimCount"].intValue
+
+    private let claimID: Int?
+
+    var singleClaimID: Int? {
+        guard let claimID = claimID else { return nil }
+
         // Patch to emulate null behaviour. Unfortunately server returns "0" instead of null in this case
-        let claimID = json["OneClaimId"].intValue
-        singleClaimID = claimID != 0 ? claimID : nil
+        return claimID != 0 ? claimID : nil
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case smallPhotos = "SmallPhotos"
+        case largePhotos = "BigPhotos"
+        case model = "Model"
+        case year = "Year"
+        case subType = "SubType"
+        case keyWords = "KeyWords"
+        case spayed = "Spayed"
+        case claimLimit = "ClaimLimit"
+        case claimCount = "ClaimCount"
+        case claimID = "OneClaimId"
     }
     
 }

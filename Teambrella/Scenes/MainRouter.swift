@@ -218,7 +218,7 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
-    func presentCompareTeamRisk(ranges: [RiskScaleEntity.Range]) {
+    func presentCompareTeamRisk(ranges: [RiskScaleRange]) {
         guard let vc = CompareTeamRiskVC.instantiate() as? CompareTeamRiskVC else { fatalError("Error instantiating") }
         
         vc.ranges = ranges

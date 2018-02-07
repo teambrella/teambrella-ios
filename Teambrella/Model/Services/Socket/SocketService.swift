@@ -20,7 +20,6 @@
  */
 
 import Starscream
-import SwiftyJSON
 
 typealias SocketListenerAction = (SocketAction) -> Void
 
@@ -96,8 +95,8 @@ class SocketService {
     }
     
     func parse(data: Data) {
-        guard let socketAction = SocketAction(json: JSON(data)) else {
-            log("couldn't create socket action from JSON", type: [.socket, .error])
+        guard let socketAction = SocketAction(data: data) else {
+            log("couldn't create socket action from data", type: [.socket, .error])
             return
         }
         

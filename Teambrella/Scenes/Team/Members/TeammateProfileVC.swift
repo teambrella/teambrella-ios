@@ -265,7 +265,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     private func prepareLinearFunction() {
         guard let risk = dataSource.teammateLarge?.riskScale else { return }
         
-        let function = PiecewiseFunction((0.2, risk.coversIfMin), (1, risk.coversIf1), (5, risk.coversIfMax))
+        let function = PiecewiseFunction((0.2, risk.coversIfMin), (1, risk.coversIfOne), (5, risk.coversIfMax))
         linearFunction = function
     }
     
@@ -532,7 +532,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
     }
     
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int) {
-        func setAvatar(avatarView: RoundImageView, label: UILabel, with teammate: RiskScaleEntity.Teammate?) {
+        func setAvatar(avatarView: RoundImageView, label: UILabel, with teammate: RiskScaleTeammate?) {
             guard let teammate = teammate else {
                 avatarView.isHidden = true
                 avatarView.image = nil

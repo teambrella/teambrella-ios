@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 struct RequestBodyFactory {
     static func teammatesBody(key: Key, teamID: Int = service.session?.currentTeam?.teamID ?? 0) -> RequestBody {
@@ -80,8 +79,5 @@ struct RequestBody {
         }
         return result
     }
-    
-    var json: JSON {
-        return JSON(dictionary)
-    }
+
 }

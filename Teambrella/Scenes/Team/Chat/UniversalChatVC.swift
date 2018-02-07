@@ -288,24 +288,24 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     private func tapRightLabel(gesture: UITapGestureRecognizer) {
-        if let claimID = dataSource.chatModel?.claimID {
+        if let claimID = dataSource.chatModel?.id {
        // if (dataSource.chatModel?.basicPart as? BasicPartClaimConcrete) != nil, let id = dataSource.chatModel?.id {
             service.router.presentClaim(claimID: claimID, scrollToVoting: true)
-        } else if let userID = dataSource.chatModel?.basicPart?.userID {
+        } else if let userID = dataSource.chatModel?.basic?.userID {
             service.router.presentMemberProfile(teammateID: userID, scrollToVote: true)
         }
     }
     
     @objc
     private func showClaimDetails(gesture: UITapGestureRecognizer) {
-        guard let id = dataSource.chatModel?.claimID else { return }
+        guard let id = dataSource.chatModel?.id else { return }
         
         service.router.presentClaim(claimID: id, scrollToVoting: false)
     }
     
     @objc
     private func showTeammateDetails(gesture: UITapGestureRecognizer) {
-        guard let userID = dataSource.chatModel?.basicPart?.userID else { return }
+        guard let userID = dataSource.chatModel?.basic?.userID else { return }
         
         service.router.presentMemberProfile(teammateID: userID)
     }
@@ -593,19 +593,19 @@ private extension UniversalChatVC {
             objectView.isHidden = true
             return
         }
-        guard let teamPart = dataSource.chatModel?.teamPart else { return }
+        guard let teamPart = dataSource.chatModel?.team else { return }
         
         objectViewHeight.constant = 48
         objectView.isHidden = false
         let tap = UITapGestureRecognizer()
-        if let basicPart = dataSource.chatModel?.basicPart, basicPart.claimAmount != nil {
+        if let basicPart = dataSource.chatModel?.basic, basicPart.claimAmount != nil {
             setupClaimObjectView(basic: basicPart,
-                                 voting: dataSource.chatModel?.votingPart,
+                                 voting: dataSource.chatModel?.voting,
                                  team: teamPart)
             tap.addTarget(self, action: #selector(showClaimDetails))
-        } else if let basicPart = dataSource.chatModel?.basicPart {
+        } else if let basicPart = dataSource.chatModel?.basic {
             setupTeammateObjectView(basic: basicPart,
-                                    voting: dataSource.chatModel?.votingPart,
+                                    voting: dataSource.chatModel?.voting,
                                     team: teamPart)
             tap.addTarget(self, action: #selector(showTeammateDetails))
         }

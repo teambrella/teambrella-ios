@@ -91,7 +91,7 @@ class ClaimChatStrategy: ChatDatasourceStrategy {
     
     func updatedMessageBody(body: RequestBody) -> RequestBody {
         var body = body
-        body.payload?["TopicId"] =  claim.topicID
+        body.payload?["TopicId"] =  claim.discussion.id
         return body
     }
     
@@ -267,7 +267,7 @@ class RemoteChatStrategy: ChatDatasourceStrategy {
 }
 
 class ChatStrategy: ChatDatasourceStrategy {
-    var title: String { return chatModel.title }
+    var title: String { return chatModel.basic?.title ?? "" }
     var requestType: TeambrellaRequestType { return .feedChat }
     //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPost
@@ -282,14 +282,14 @@ class ChatStrategy: ChatDatasourceStrategy {
     
     func updatedChatBody(body: RequestBody) -> RequestBody {
         var body = body
-        body.payload?["TopicId"] = chatModel.topicID
+        body.payload?["TopicId"] = chatModel.discussion.topicID
         
         return body
     }
     
     func updatedMessageBody(body: RequestBody) -> RequestBody {
         var body = body
-        body.payload?["TopicId"] = chatModel.topicID
+        body.payload?["TopicId"] = chatModel.discussion.topicID
         return body
     }
     

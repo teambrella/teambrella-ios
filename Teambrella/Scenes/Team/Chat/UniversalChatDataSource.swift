@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 enum UniversalChatType {
     case privateChat, application, claim, discussion
@@ -37,7 +36,7 @@ final class UniversalChatDatasource {
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
     
-    var notificationsType: TopicMuteType = .unknown
+    var notificationsType: TopicMuteType            = .unknown
     var hasNext                                     = true
     var hasPrevious                                 = true
     var isFirstLoad                                 = true
@@ -53,7 +52,7 @@ final class UniversalChatDatasource {
     
     var chatModel: ChatModel? {
         didSet {
-            notificationsType = TopicMuteType.type(from: chatModel?.isMuted)
+            notificationsType = TopicMuteType.type(from: chatModel?.discussion.isMuted)
             cellModelBuilder.showRate = chatType == .application || chatType == .claim
         }
     }
@@ -78,7 +77,7 @@ final class UniversalChatDatasource {
     private var isChunkAdded                        = false
     
     private var topCellDate: Date?
-    private var topic: Topic?
+    //private var topic: Topic?
     
     var claim: ClaimEntityLarge? {
         if let strategy = strategy as? ClaimChatStrategy {
@@ -101,7 +100,7 @@ final class UniversalChatDatasource {
         return nil
     }
     
-    var topicID: String? { return claim?.topicID }
+    var topicID: String? { return claim?.discussion.id }
     
     var chatHeader: String? {
         if let strategy = strategy as? ClaimChatStrategy {
@@ -123,9 +122,10 @@ final class UniversalChatDatasource {
             return ""//strategy.title
         }
         
-        if chatModel.basicPart?.claimAmount != nil {
-            return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(chatModel.claimID)"
-        } else if chatModel.basicPart?.title != nil {
+        if chatModel.basic?.claimAmount != nil {
+            let id = chatModel.id ?? 0
+            return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(id)"
+        } else if chatModel.basic?.title != nil {
             return "Team.Chat.TypeLabel.application".localized.lowercased().capitalized
         } else {
             return strategy.title
@@ -158,13 +158,13 @@ final class UniversalChatDatasource {
         }
         
         if let chatModel = chatModel {
-            if chatModel.basicPart?.claimAmount != nil {
+            if chatModel.basic?.claimAmount != nil {
                 return .claim
             }
-            if chatModel.basicPart?.title != nil {
+            if chatModel.basic?.title != nil {
                 return .discussion
             }
-            if chatModel.basicPart?.userID != nil {
+            if chatModel.basic?.userID != nil {
                 return .application
             }
         }
@@ -218,7 +218,7 @@ final class UniversalChatDatasource {
     var isPrivateChat: Bool { return strategy is PrivateChatStrategy }
     
     func mute(type: TopicMuteType, completion: @escaping (Bool) -> Void) {
-        guard let topicID = chatModel?.topicID else { return }
+        guard let topicID = chatModel?.discussion.topicID else { return }
         
         let isMuted = type == .muted
         service.dao.mute(topicID: topicID, isMuted: isMuted).observe { [weak self] result in
@@ -437,9 +437,9 @@ final class UniversalChatDatasource {
     }
     
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
-        addModels(models: model.chat, isPrevious: isPrevious)
+        addModels(models: model.discussion.chat, isPrevious: isPrevious)
         chatModel = model
-        if model.chat.isEmpty {
+        if model.discussion.chat.isEmpty {
             if isPrevious {
                 hasPrevious = false
             } else {
@@ -447,8 +447,8 @@ final class UniversalChatDatasource {
                 forwardOffset = 0
             }
         }
-        lastRead = model.lastRead
-        teamAccessLevel = model.teamPart?.accessLevel ?? .noAccess
+        lastRead = model.discussion.lastRead
+        teamAccessLevel = model.team?.accessLevel ?? .noAccess
     }
     
     private func processPrivateChat(messages: [ChatEntity], isPrevious: Bool, isMyNewMessage: Bool) {

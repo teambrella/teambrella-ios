@@ -15,8 +15,49 @@
  */
 
 import Foundation
-import SwiftyJSON
 import Alamofire
+
+struct EthereumAPIReply: Codable {
+    let jsonrpc: String
+    let error: EthereumError?
+    let result: String?
+
+    enum CodingKeys: String, CodingKey {
+        case jsonrpc = "jsonrpc"
+        case error = "error"
+        case result = "result"
+    }
+}
+
+struct EthereumError: Codable, Error {
+    let code: Int
+    let message: String
+    let data: String?
+
+    enum CodingKeys: String, CodingKey {
+        case code = "code"
+        case message = "message"
+        case data = "data"
+    }
+}
+
+struct EthereumTxReceiptReply: Codable {
+    let jsonrpc: String
+    let error: EthereumError?
+    let result: TxReceipt?
+
+    enum CodingKeys: String, CodingKey {
+        case jsonrpc = "jsonrpc"
+        case error = "error"
+        case result = "result"
+    }
+}
+struct TxReceipt: Codable {
+    let blockNumber: String
+    let gasUsed: String
+    let contractAddress: String
+
+}
 
 class EtherAPI {
     enum EtherAPIError: Error {
@@ -26,7 +67,7 @@ class EtherAPI {
         case etherscanError(Int, String)
     }
     
-    typealias successClosure = (JSON) -> Void
+    typealias successClosure = (String) -> Void
     typealias failureClosure = (Error) -> Void
     
     let server: String
@@ -65,13 +106,8 @@ class EtherAPI {
                             "action": "eth_sendRawTransaction"
             ],
                         body: ["hex": hex],
-                        success: { json in
-                            if let result = json["result"].string {
-                                success(result)
-                            } else {
-                                failure(EtherAPIError.etherscanError(json["error"]["code"].intValue,
-                                                                     json["error"]["message"].stringValue))
-                            }
+                        success: { string in
+                            success(string)
         }) { error in
             failure(error)
         }
@@ -83,24 +119,46 @@ class EtherAPI {
                         "module": "proxy",
                         "action": "eth_getTransactionCount",
                         "address": address],
-                       success: { json in
-                        success(json)
+                       success: { string in
+                        success(string)
         }) { error in
             failure(error)
         }
     }
     
-    func checkTx(hash: String, success: @escaping successClosure, failure: @escaping failureClosure) {
-        sendGetRequest(urlString: "api",
-                       parameters: [
-                        "module": "proxy",
-                        "action": "eth_getTransactionReceipt",
-                        "txHash": hash],
-                       success: { json in
-                        success(json)
-        }) { error in
-            failure(error)
+    func checkTx(hash: String, success: @escaping (TxReceipt) -> Void, failure: @escaping failureClosure) {
+        let parameters: [String: String] = [
+            "module": "proxy",
+            "action": "eth_getTransactionReceipt",
+            "txHash": hash
+        ]
+        guard let url = urlWith(address: server + "api", parameters: parameters) else {
+            failure(EtherAPIError.malformedURL)
+            return
         }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                failure(error ?? EtherAPIError.noData)
+                return
+            }
+
+            do {
+                let reply = try JSONDecoder().decode(EthereumTxReceiptReply.self, from: data)
+                if let result = reply.result {
+                    success(result)
+                } else if let error = reply.error {
+                    failure(EtherAPIError.etherscanError(error.code, error.message))
+                } else {
+                    failure(EtherAPIError.corruptedData)
+                }
+            } catch {
+                failure(error)
+            }
+        }
+        task.resume()
     }
     
     func readContractString(to: String, callDataString: String) -> Future<String> {
@@ -111,8 +169,8 @@ class EtherAPI {
                         "action": "eth_call",
                         "to": to,
                         "data": callDataString],
-                       success: { json in
-                        promise.resolve(with: json.string ?? "")
+                       success: { string in
+                        promise.resolve(with: string)
         }) { error in
             promise.reject(with: error)
         }
@@ -125,11 +183,10 @@ class EtherAPI {
                         "module": "account",
                         "action": "balance",
                         "address": address],
-                       success: { json in
-                        guard let string = json.string,
-                            var balance = Decimal(string: string) else {
-                                failure(EtherAPIError.corruptedData)
-                                return
+                       success: { string in
+                        guard var balance = Decimal(string: string) else {
+                            failure(EtherAPIError.corruptedData)
+                            return
                         }
                         balance = balance / 1_000_000_000_000_000_000
                         success(balance)
@@ -150,15 +207,23 @@ class EtherAPI {
             return
         }
         
-        Alamofire.request(url, method: .post, parameters: body, encoding: URLEncoding.default).responseJSON { response in
+        Alamofire.request(url, method: .post, parameters: body, encoding: URLEncoding.default).responseData { response in
             switch response.result {
-            case .success:
-                if let value = response.value {
-                    let json = JSON(value)
-                    log("raw post request reply: \(json)", type: .cryptoRequests)
-                    success(json)
+            case let .success(data):
+                log("raw post request reply: \(data)", type: .cryptoRequests)
+                do {
+                    let reply = try JSONDecoder().decode(EthereumAPIReply.self, from: data)
+                    if let result = reply.result {
+                        success(result)
+                    } else if let error = reply.error {
+                        failure(EtherAPIError.etherscanError(error.code, error.message))
+                    } else {
+                        failure(EtherAPIError.corruptedData)
+                    }
+                } catch {
+                    failure(error)
                 }
-            case .failure(let error):
+            case let .failure(error):
                 failure(error)
             }
         }
@@ -186,13 +251,18 @@ class EtherAPI {
                 failure(error ?? EtherAPIError.noData)
                 return
             }
-            
-            let json = JSON(data)
-            if json["result"].exists() {
-                success(json["result"])
-            } else {
-                failure(EtherAPIError.etherscanError(json["error"]["code"].intValue,
-                                                     json["error"]["message"].stringValue))
+
+            do {
+                let reply = try JSONDecoder().decode(EthereumAPIReply.self, from: data)
+                if let result = reply.result {
+                    success(result)
+                } else if let error = reply.error {
+                    failure(EtherAPIError.etherscanError(error.code, error.message))
+                } else {
+                    failure(EtherAPIError.corruptedData)
+                }
+            } catch {
+                failure(error)
             }
         }
         task.resume()

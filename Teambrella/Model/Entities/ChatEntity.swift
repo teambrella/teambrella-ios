@@ -20,33 +20,48 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct ChatEntity {
-    let json: JSON
-    
-    var userID: String { return json["UserId"].stringValue }
-    var lastUpdated: Int64 { return json["LastUpdated"].int64Value }//Date(ticks: json["LastUpdated"].uInt64Value) }
-    var id: String { return json["Id"].stringValue }
-    var created: Date { return Date(ticks: json["Created"].uInt64Value) }
-    var points: Int { return json["Points"].intValue }
-    var text: String { return json["Text"].stringValue }
-    var images: [String] { return json["Images"].arrayObject as? [String] ?? [] }
-    var smallImages: [String] { return json["SmallImages"].arrayObject as? [String] ?? [] }
-    var imageRatios: [CGFloat] { return json["ImageRatios"].arrayObject as? [CGFloat] ?? [] }
-    
-    var isMyProxy: Bool { return json["TeammatePart"]["IsMyProxy"].boolValue }
-    var name: Name { return Name(fullName: json["TeammatePart"]["Name"].stringValue) }
-    var avatar: Avatar { return Avatar(json["TeammatePart"]["Avatar"].stringValue) }
-    var vote: Double? { return json["TeammatePart"]["Vote"].double }
-    
-    init(json: JSON) {
-        self.json = json
+struct ChatEntity: Decodable {
+    let userID: String
+    let lastUpdated: Int64
+    let id: String
+    let points: Int
+    let text: String
+    let images: [String]
+    let smallImages: [String]
+    let imageRatios: [CGFloat]
+    let teammate: TeammatePart?
+
+    private let dateCreated: UInt64
+
+    var created: Date { return Date(ticks: dateCreated) }
+
+    enum CodingKeys: String, CodingKey {
+        case userID = "UserId"
+        case lastUpdated = "LastUpdated"
+        case id = "Id"
+        case points = "Points"
+        case text = "Text"
+        case images = "Images"
+        case smallImages = "SmallImages"
+        case imageRatios = "ImageRatios"
+        case teammate = "TeammatePart"
+        case dateCreated = "Created"
     }
-    
-    static func buildArray(from json: JSON) -> [ChatEntity] {
-        guard let array = json.array else { return [] }
+
+    struct TeammatePart: Decodable {
+        let isMyProxy: Bool
+        let name: Name
+        let avatar: Avatar
+        let vote: Double?
+
+        enum CodingKeys: String, CodingKey {
+            case isMyProxy = "IsMyProxy"
+            case name = "Name"
+            case avatar = "Avatar"
+            case vote = "Vote"
+        }
         
-        return array.flatMap { ChatEntity(json: $0) }
     }
+
 }

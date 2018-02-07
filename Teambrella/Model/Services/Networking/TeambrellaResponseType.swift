@@ -15,7 +15,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 enum TeambrellaResponseType {
     case timestamp
@@ -27,12 +26,12 @@ enum TeambrellaResponseType {
     case teammateVote(TeammateVotingResult)
     case newPost(ChatEntity)
     case registerKey
-    case coverageForDate(Coverage, Double)
+    case coverageForDate(CoverageForDate)
     case setLanguage(String)
     case claimsList([ClaimEntity])
     case claim(ClaimEntityLarge)
-    case claimVote(JSON)
-    case claimUpdates(JSON)
+    case claimVote(ClaimVoteUpdate)
+    case claimUpdates(ClaimEntityLarge)
     case claimTransactions([ClaimTransactionsModel])
     case home(HomeModel)
     case feedDeleteCard(HomeModel)

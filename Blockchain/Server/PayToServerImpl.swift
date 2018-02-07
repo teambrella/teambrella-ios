@@ -1,10 +1,5 @@
 //
-//  ThreadPostCell.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 27.04.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -19,22 +14,21 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import UIKit
+import Foundation
 
-class ThreadPostCell: UITableViewCell {
-    @IBOutlet var postLabel: UILabel!
-    @IBOutlet var dateLabel: UILabel!
+struct PayToServerImpl: Codable {
+    let isDefault: Bool
+    let knownSince: String
+    let teammateID: Int64
+    let address: String
+    let id: String
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        dateLabel.textColor = .white50
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    enum CodingKeys: String, CodingKey {
+        case isDefault = "IsDefault"
+        case knownSince = "KnownSince"
+        case teammateID = "TeammateId"
+        case address = "Address"
+        case id = "Id"
     }
 
 }

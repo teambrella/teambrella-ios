@@ -139,7 +139,7 @@ final class ClaimVC: UIViewController, Routable {
         
         cell.isYourVoteHidden = false
         cell.yourVotePercentValue.text = String.truncatedNumber(cell.slider.value * 100)
-        if let amount = dataSource.claim?.claimAmount {
+        if let amount = dataSource.claim?.basic.claimAmount {
             let claimVote = ClaimVote(cell.slider.value)
             cell.yourVoteAmount.text = String.truncatedNumber(claimVote.fiat(from: amount).value)
         }
@@ -190,14 +190,15 @@ final class ClaimVC: UIViewController, Routable {
             firstLabel.textAlignment = .center
             firstLabel.textColor = .white
             firstLabel.font = UIFont.teambrellaBold(size: 17)
-            firstLabel.text = dataSource.claim?.model ?? ""
+            firstLabel.text = dataSource.claim?.basic.model ?? ""
             firstLabel.sizeToFit()
             firstLabel.center = CGPoint(x: navigationBar.bounds.midX,
                                         y: navigationBar.bounds.midY - firstLabel.frame.height / 2)
             navigationTopLabel = firstLabel
             navigationBar.addSubview(firstLabel)
-            guard let enhancedClaim = dataSource.claim, let date = enhancedClaim.incidentDate else { return }
-            
+            guard let claim = dataSource.claim else { return }
+
+            let date = claim.basic.incidentDate
             let secondLabel = UILabel(frame: secondFrame)
             secondLabel.textAlignment = .center
             secondLabel.textColor = .white50

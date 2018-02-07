@@ -15,7 +15,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 struct FeedChunk {
     let feed: [FeedEntity]

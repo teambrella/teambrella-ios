@@ -1,10 +1,5 @@
 //
-//  BlockchainDateFormatter.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 11.05.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,19 +16,15 @@
 
 import Foundation
 
-class BlockchainDateFormatter: DateFormatter {
-    override init() {
-        super.init()
-       setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    func setup() {
-         dateFormat = "yyyy-MM-dd HH:mm:ss"
+struct TeamServerImpl: Codable {
+    let name: String
+    let isTestnet: Bool
+    let id: Int64
+
+    enum CodingKeys: String, CodingKey {
+        case name = "Name"
+        case isTestnet = "Testnet"
+        case id = "Id"
     }
 
 }

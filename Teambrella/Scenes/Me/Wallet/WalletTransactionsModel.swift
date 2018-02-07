@@ -20,7 +20,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 struct WalletTransactionsModel: Decodable {
     enum CodingKeys: String, CodingKey {

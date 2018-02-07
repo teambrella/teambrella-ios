@@ -1,10 +1,5 @@
 //
-//  Topic.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 11.04.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,14 +16,17 @@
 
 import Foundation
 
-protocol Topic: EntityLike {
-    var originalPostText: SaneText { get }
-    var topPosterAvatars: [String] { get }
-    var posterCount: Int { get }
-    var unreadCount: Int { get set }
-    var minutesSinceLastPost: Int { get set }
-    
-    //var posts: [Post] { get set }
-    
-    init(id: String)
+struct TxOutputServerImpl: Codable {
+    let txID: String
+    let amountCrypto: Decimal
+    let payToID: String
+    let id: String
+
+    enum CodingKeys: String, CodingKey {
+        case txID = "TxId"
+        case amountCrypto = "AmountCrypto"
+        case payToID = "PayToId"
+        case id = "Id"
+    }
+
 }

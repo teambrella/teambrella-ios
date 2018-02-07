@@ -147,15 +147,15 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Coverage, limit: Double)> {
-        let promise = Promise<(coverage: Coverage, limit: Double)>()
+    func requestCoverage(for date: Date, teamID: Int) -> Future<CoverageForDate> {
+        let promise = Promise<CoverageForDate>()
         let dateString = Formatter.teambrellaShortDashed.string(from: date)
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID,
                                                        "Date": dateString])
             let request = TeambrellaRequest(type: .coverageForDate, body: body, success: { response in
-                if case .coverageForDate(let coverage, let limit) = response {
-                    promise.resolve(with: (coverage: coverage, limit: limit))
+                if case let .coverageForDate(coverageForDate) = response {
+                    promise.resolve(with: coverageForDate)
                 }
             }, failure: { error in
                 promise.reject(with: error)

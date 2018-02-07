@@ -24,16 +24,24 @@ import Foundation
 enum SocketCommand: Int {
     case auth           = 0
     case newPost        = 1
-    case deletePost     = 2
+
     case meTyping       = 3
-    case newClaim       = 4
+
     case privateMessage = 5
-    case walletFunded   = 6
-    case newMessages    = 7
-    case newTeammate    = 8
-    case newTeammates   = 9
     
     case theyTyping     = 13
 
     case dbDump         = 101
+    /*
+
+    case deletePost     = 2
+
+    case newClaim       = 4
+
+    case walletFunded   = 6
+    case newMessages    = 7
+    case newTeammate    = 8
+    case newTeammates   = 9
+    */
+
 }
