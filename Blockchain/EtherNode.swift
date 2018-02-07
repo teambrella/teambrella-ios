@@ -24,7 +24,7 @@ class EtherNode {
     }
     
     enum EtherNodeError: Error {
-        case malformedJSON(JSON)
+        case malformedString(String)
     }
     
     private let ethereumAPI: EtherAPI
@@ -46,10 +46,9 @@ class EtherNode {
     }
     
     func checkNonce(addressHex: String, success: @escaping (Int) -> Void, failure: @escaping (Error?) -> Void) {
-        ethereumAPI.checkNonce(address: addressHex, success: { json in
-            guard let string = json.string,
-                let nonce = Int(hexString: string) else {
-                    failure(EtherNodeError.malformedJSON(json))
+        ethereumAPI.checkNonce(address: addressHex, success: { string in
+            guard let nonce = Int(hexString: string) else {
+                    failure(EtherNodeError.malformedString(string))
                     return
             }
             
@@ -60,37 +59,11 @@ class EtherNode {
     }
     
     func checkTx(creationTx: String, success: @escaping (TxReceipt) -> Void, failure: @escaping (Error?) -> Void) {
-         ethereumAPI.checkTx(hash: creationTx, success: { json in
-            guard let txReceipt = TxReceipt(json: json) else {
-                failure(EtherNodeError.malformedJSON(json))
-                return
-            }
-            
-            success(txReceipt)
-        }, failure: { error in
-            failure(error)
-        })
+        ethereumAPI.checkTx(hash: creationTx, success: success, failure: failure)
     }
     
     func checkBalance(address: String, success: @escaping (Decimal) -> Void, failure: @escaping (Error) -> Void) {
         ethereumAPI.checkBalance(address: address, success: success, failure: failure)
     }
 
-}
-
-struct TxReceipt {
-    let blockNumber: String
-    let gasUsed: String
-    let contractAddress: String
-    
-    init?(json: JSON) {
-        guard let blockNumber = json["blockNumber"].string,
-            let gasUsed = json["gasUsed"].string,
-            let contractAddress = json["contractAddress"].string else { return nil }
-        
-        self.blockNumber = blockNumber
-        self.gasUsed = gasUsed
-        self.contractAddress  = contractAddress
-    }
-    
 }

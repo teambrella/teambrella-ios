@@ -20,7 +20,6 @@
  */
 
 import CoreData
-import SwiftyJSON
 
 class CoreDataStorage {
     struct Constant {

@@ -154,7 +154,6 @@
 		6D465F321F46E893007AC28F /* ReportCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D465F311F46E893007AC28F /* ReportCellModels.swift */; };
 		6D466A9F1ED07CF1001BC579 /* BlockchainDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A881ED07CF1001BC579 /* BlockchainDateFormatter.swift */; };
 		6D466AA01ED07CF1001BC579 /* BlockchainServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A891ED07CF1001BC579 /* BlockchainServer.swift */; };
-		6D466AA11ED07CF1001BC579 /* BlockchainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A8A1ED07CF1001BC579 /* BlockchainService.swift */; };
 		6D466AA21ED07CF1001BC579 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A8B1ED07CF1001BC579 /* CoreDataStorage.swift */; };
 		6D466AA31ED07CF1001BC579 /* SignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A8C1ED07CF1001BC579 /* SignHelper.swift */; };
 		6D466AA41ED07CF1001BC579 /* TeambrellaContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A8E1ED07CF1001BC579 /* TeambrellaContentProvider.swift */; };
@@ -199,7 +198,6 @@
 		6D4E5C2C1F7AB6870020DEE2 /* CryptoCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B783C1F45EEAE00847FFF /* CryptoCurrency.swift */; };
 		6D4E5C2D1F7AB6870020DEE2 /* PrivateMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A9B2A1F55D66E004192AC /* PrivateMessagesVC.swift */; };
 		6D4E5C2E1F7AB6870020DEE2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC31E93A6920092D3F2 /* Services.swift */; };
-		6D4E5C2F1F7AB6870020DEE2 /* BlockchainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A8A1ED07CF1001BC579 /* BlockchainService.swift */; };
 		6D4E5C301F7AB6870020DEE2 /* TeambrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */; };
 		6D4E5C311F7AB6870020DEE2 /* TeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC6341ED72252007F936E /* TeamVC.swift */; };
 		6D4E5C321F7AB6870020DEE2 /* BlockchainDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A881ED07CF1001BC579 /* BlockchainDateFormatter.swift */; };
@@ -1256,7 +1254,6 @@
 		6D465F311F46E893007AC28F /* ReportCellModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCellModels.swift; path = Scenes/Me/Report/ReportCellModels.swift; sourceTree = "<group>"; };
 		6D466A881ED07CF1001BC579 /* BlockchainDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockchainDateFormatter.swift; sourceTree = "<group>"; };
 		6D466A891ED07CF1001BC579 /* BlockchainServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockchainServer.swift; sourceTree = "<group>"; };
-		6D466A8A1ED07CF1001BC579 /* BlockchainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockchainService.swift; sourceTree = "<group>"; };
 		6D466A8B1ED07CF1001BC579 /* CoreDataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		6D466A8C1ED07CF1001BC579 /* SignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignHelper.swift; sourceTree = "<group>"; };
 		6D466A8E1ED07CF1001BC579 /* TeambrellaContentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeambrellaContentProvider.swift; sourceTree = "<group>"; };
@@ -2077,7 +2074,6 @@
 				6DB921F31F9DF2A1009D3937 /* Contract.txt */,
 				6DB922241F9E27CD009D3937 /* AbiArguments.swift */,
 				6D466A881ED07CF1001BC579 /* BlockchainDateFormatter.swift */,
-				6D466A8A1ED07CF1001BC579 /* BlockchainService.swift */,
 				6D1EC3D5202B0CB900F0541C /* Server */,
 				6D677E761FA110B800ED1C36 /* EtherAPI.swift */,
 				6D2A57B01F698B8A00CE8841 /* EthereumProcessor.swift */,
@@ -3726,7 +3722,6 @@
 				6D4E5C2C1F7AB6870020DEE2 /* CryptoCurrency.swift in Sources */,
 				6D4E5C2D1F7AB6870020DEE2 /* PrivateMessagesVC.swift in Sources */,
 				6D4E5C2E1F7AB6870020DEE2 /* Services.swift in Sources */,
-				6D4E5C2F1F7AB6870020DEE2 /* BlockchainService.swift in Sources */,
 				6D1EC3F3202B114A00F0541C /* UpdatesServerImpl.swift in Sources */,
 				6D4E5C301F7AB6870020DEE2 /* TeambrellaError.swift in Sources */,
 				6D4E5C311F7AB6870020DEE2 /* TeamVC.swift in Sources */,
@@ -4161,7 +4156,6 @@
 				6D0B783D1F45EEAE00847FFF /* CryptoCurrency.swift in Sources */,
 				6D1A9B2B1F55D66E004192AC /* PrivateMessagesVC.swift in Sources */,
 				6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */,
-				6D466AA11ED07CF1001BC579 /* BlockchainService.swift in Sources */,
 				6D1EC3F2202B114A00F0541C /* UpdatesServerImpl.swift in Sources */,
 				6DA475D91E8BBD2A00B56D9B /* TeambrellaError.swift in Sources */,
 				6D9CC6351ED72252007F936E /* TeamVC.swift in Sources */,
