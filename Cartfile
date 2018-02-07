@@ -4,7 +4,6 @@ github "daltoniam/Starscream" ~> 2.1.1
 github "ashleymills/Reachability.swift"
 
 # Parsers
-github "SwiftyJSON/SwiftyJSON"
 github "scinfu/SwiftSoup"
 #github "naoty/Timepiece"
 github "malcommac/SwiftDate" ~> 4.0

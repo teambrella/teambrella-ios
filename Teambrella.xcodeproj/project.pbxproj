@@ -699,7 +699,6 @@
 		6D88C4FD1FA3986300E55F7C /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */; };
 		6D8C6FE71F754D7000BF65B6 /* Error.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D8C6FE51F754D7000BF65B6 /* Error.strings */; };
 		6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
-		6D8F97141E8D1532008DC62E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */; };
 		6D900E201FC31CFF00FF6FF8 /* RemoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */; };
 		6D900E221FC31D4100FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
 		6D900E231FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
@@ -1719,7 +1718,6 @@
 				6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */,
 				6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */,
 				6DEC07501E9BD59D0078F40E /* Kingfisher.framework in Frameworks */,
-				6D8F97141E8D1532008DC62E /* SwiftyJSON.framework in Frameworks */,
 				6D0C39E31F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
 				6D0BA5B11F14F83000055E74 /* SwiftDate.framework in Frameworks */,
 				94C89AD61F0104CC00C6D8F7 /* QRCode.framework in Frameworks */,
@@ -3411,7 +3409,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)//Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftSoup.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
@@ -3468,7 +3465,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)//Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftSoup.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",

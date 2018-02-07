@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 struct FacebookUser {
     let name: String
@@ -32,14 +31,26 @@ struct FacebookUser {
     let picture: String?
     
     init(dict: [String: Any]) {
-        let json = JSON(dict)
-        name = json["name"].stringValue
-        firstName = json["first_name"].string
-        lastName = json["last_name"].string
-        gender = Gender.fromFacebook(string: json["gender"].stringValue)
-        email = json["email"].string
-        minAge = json["age_range"]["min"].intValue
-        picture = json["picture"]["data"]["url"].string
+        name = dict["name"] as? String ?? ""
+        firstName = dict["first_name"] as? String
+        lastName = dict["last_name"] as? String
+        if let genderString = dict["gender"] as? String {
+             gender = Gender.fromFacebook(string: genderString)
+        } else {
+            gender = .male
+        }
+
+        email = dict["email"] as? String
+        var minAge = 0
+        if let ageRange = dict["age_range"] as? [String: Any] {
+            minAge = ageRange["min"] as? Int ?? 0
+        }
+        self.minAge = minAge
+        if let pic = dict["picture"] as? [String: Any], let data = pic["data"] as? [String: Any] {
+            picture = data["url"] as? String
+        } else {
+            picture = nil
+        }
     }
     
 }
