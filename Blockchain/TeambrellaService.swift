@@ -134,7 +134,7 @@ class TeambrellaService: NSObject {
                                   signatures: signatures,
                                   multisigs: multisigsToUpdate,
                                   serverUpdate: updates.updates)
-            user.lastUpdated = updates.status.timestamp
+            user.lastUpdated = updates.updates.lastUpdated
             self.contentProvider.save()
             completion(true)
         }

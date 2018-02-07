@@ -113,7 +113,7 @@ public class BlockchainServer {
                     multisigs: [Multisig],
                     transactions: [Tx],
                     signatures: [TxSignature],
-                    completion: @escaping (UpdatesReplyServerImpl?, Error?) -> Void) {
+                    completion: @escaping (GetUpdatesReplyServerImpl?, Error?) -> Void) {
         let key = Key(base58String: privateKey, timestamp: timestamp)
         let updateInfo = CryptoServerUpdateInfo(multisigs: multisigs,
                                                 transactions: transactions,
@@ -129,7 +129,7 @@ public class BlockchainServer {
             case let .success(data):
                 log("Success getting updates with \(updateInfo)", type: .cryptoDetails)
                 do {
-                    let result = try JSONDecoder().decode(UpdatesReplyServerImpl.self, from: data)
+                    let result = try JSONDecoder().decode(GetUpdatesReplyServerImpl.self, from: data)
                     me.timestamp = result.status.timestamp
                     completion(result, nil)
                 } catch {
