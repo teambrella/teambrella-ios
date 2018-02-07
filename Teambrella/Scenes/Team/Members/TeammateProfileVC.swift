@@ -160,6 +160,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             cell.isProxyHidden = true
             cell.resetVoteButton.isHidden = true
             cell.yourVoteValueLabel.text = "..."
+            cell.yourVoteBadgeLabel.isHidden = true
             cell.scrollToAverage(silently: true)
         }
     }
