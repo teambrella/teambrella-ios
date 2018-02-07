@@ -74,7 +74,7 @@ class UserIndexVC: UIViewController {
             
             self?.avatarView.showAvatar(string: me.avatarString)
             self?.detailsLabel.text = me.location.uppercased()
-            self?.rankLabel.text = String(me.proxyRank)
+            self?.rankLabel.text = String(format: "%.1f", me.proxyRank)
             HUD.hide()
             self?.collectionView.reloadData()
         }

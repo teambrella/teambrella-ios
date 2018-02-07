@@ -175,7 +175,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         var show = false
         risk.flatMap { show = $0 >= 5 }
         yourVoteValueLabel.isHidden = show
-        yourVoteBadgeLabel.isHidden = show
+        yourVoteBadgeLabel.isHidden = risk != nil ? show : true
         yourVoteNotAccept.isHidden = !show
         yourVoteNotAccept.text = "Team.Vote.doNotAccept".localized
     }

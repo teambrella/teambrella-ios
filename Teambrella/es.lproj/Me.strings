@@ -23,7 +23,7 @@
 "Me.WalletVC.withdrawButton"                   = "RETIRAR";
 "Me.WalletVC.fundingCell.title"                = "FINANCIAMENTO RECOMENDADO";
 "Me.WalletVC.fundButton"                       = "Financiar Monedero";
-"Me.WalletVC.actionsCell.cosigners"            = "Co-firmantes";
+"Me.WalletVC.actionsCell.cosigners"            = "Cofirmantes";
 "Me.WalletVC.actionsCell.transactions"         = "Transacciones";
 "Me.WalletVC.actionsCell.withdrawAddress"      = "Dirección para retirar por defectos";
 "Me.WalletDetailsVC.title"                     = "QR-code";
@@ -56,7 +56,7 @@
 "Me.WalletVC.WalletTransactionsVC.amountTitle" = "Cantidad:";
 "Me.WalletVC.WalletTransactionsVC.kindTitle"   = "Tipo:";
 "Me.WalletVC.WalletTransactionsVC.statusTitle" = "Estado:";
-"Me.WalletVC.WalletCosignersVC.title"          = "Co-firmantes";
+"Me.WalletVC.WalletCosignersVC.title"          = "Cofirmantes";
 
 "Me.Report.submitButtonTitle-submit"           = "Submit";
 "Me.Report.submitButtonTitle-create"           = "Create";
@@ -93,5 +93,5 @@
 
 "Me.Wallet.Transactions.Empty.title" = "No transactions yet";
 "Me.Wallet.Transactions.Empty.details" = "...";
-"Me.Wallet.Cosigners.Empty.title" = "No co-signers yet";
+"Me.Wallet.Cosigners.Empty.title" = "No cosigners yet";
 "Me.Wallet.Cosigners.Empty.details" = "...";
