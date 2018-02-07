@@ -118,7 +118,6 @@ struct WithdrawCellBuilder {
         
         cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
         cell.numberBar.left?.amountLabel.text = String(Int(MEth(model.reserved).value))
-        cell.numberBar.left?.isBadgeVisible = false
         cell.numberBar.left?.currencyLabel.text = service.session?.cryptoCoin.code
         
         cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized

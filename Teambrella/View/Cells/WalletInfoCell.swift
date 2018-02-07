@@ -26,6 +26,8 @@ class WalletInfoCell: UICollectionViewCell, XIBInitableCell {
         super.awakeFromNib()
         ViewDecorator.shadow(for: self, opacity: 0.1, radius: 5)
         ViewDecorator.roundedEdges(for: self)
+        numberBar.left?.isBadgeVisible = false
+        numberBar.right?.isBadgeVisible = false
         numberBar.left?.alignmentType = .leading
         numberBar.right?.alignmentType = .leading
         numberBar.areVerticalLinesVisible = false
