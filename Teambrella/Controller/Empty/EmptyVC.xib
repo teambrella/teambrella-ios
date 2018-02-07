@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,6 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyVC" customModule="Surilla" customModuleProvider="target">
             <connections>
+                <outlet property="backImageView" destination="dsk-fx-yo1" id="pQj-eq-GP3"/>
                 <outlet property="detailsLabel" destination="u2r-Fo-70l" id="x5b-SC-YME"/>
                 <outlet property="imageView" destination="DGO-sn-tLt" id="pFP-c4-eIt"/>
                 <outlet property="mainLabel" destination="4Ft-Ua-idu" id="Iab-no-9Wm"/>
@@ -31,6 +33,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPattern" translatesAutoresizingMaskIntoConstraints="NO" id="dsk-fx-yo1">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Mrc-sm-ptr">
                     <rect key="frame" x="37.5" y="275.5" width="300" height="117"/>
                     <subviews>
@@ -43,13 +48,13 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vMz-Qo-xVP">
                             <rect key="frame" x="0.0" y="67" width="300" height="50"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ft-Ua-idu" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ft-Ua-idu" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="21"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-Fo-70l" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-Fo-70l" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="29" width="300" height="21"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="17"/>
                                     <nil key="highlightedColor"/>
@@ -61,15 +66,20 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="dsk-fx-yo1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="16g-5r-96g"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Mrc-sm-ptr" secondAttribute="bottom" constant="8" id="3pz-cl-8vC"/>
                 <constraint firstItem="Mrc-sm-ptr" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6RM-rw-TV7"/>
+                <constraint firstAttribute="trailing" secondItem="dsk-fx-yo1" secondAttribute="trailing" id="F8y-Ri-IQJ"/>
+                <constraint firstAttribute="bottom" secondItem="dsk-fx-yo1" secondAttribute="bottom" id="XXk-am-4Fb"/>
                 <constraint firstItem="Mrc-sm-ptr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aKi-io-rnp"/>
                 <constraint firstItem="Mrc-sm-ptr" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="h3A-3F-Fx8"/>
                 <constraint firstItem="Mrc-sm-ptr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="qkp-yZ-hEQ"/>
+                <constraint firstItem="dsk-fx-yo1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="syg-UL-365"/>
             </constraints>
         </view>
     </objects>
     <resources>
+        <image name="backgroundPattern" width="374" height="629"/>
         <image name="unhappy_cat" width="300" height="220"/>
     </resources>
 </document>

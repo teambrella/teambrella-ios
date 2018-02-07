@@ -45,12 +45,19 @@ class OthersVotedVC: UIViewController, Routable {
                 service.router.presentMemberProfile(teammateID: voter.userID)
             }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         dataSource.loadData()
     }
     
     func showEmptyIfNeeded() {
         if dataSource.isEmpty && emptyVC == nil {
-            emptyVC = EmptyVC.show(in: self)
+            let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y + 44,
+                               width: self.collectionView.frame.width,
+                               height: self.collectionView.frame.height - 44)
+            emptyVC = EmptyVC.show(in: self, inView: self.view, frame: frame, animated: false)
             emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
             emptyVC?.setText(title: "Team.OthersVoted.Empty.title".localized,
                              subtitle: "Team.OthersVoted.Empty.details".localized)

@@ -16,7 +16,7 @@
 "Me.WalletVC.fundingCell.title"                = "RECOMMENDED FUNDING";
 "Me.WalletVC.fundButton"                       = "Fund Wallet";
 
-"Me.WalletVC.actionsCell.cosigners"            = "Co-signers";
+"Me.WalletVC.actionsCell.cosigners"            = "Cosigners";
 "Me.WalletVC.actionsCell.transactions"         = "Transactions";
 "Me.WalletVC.actionsCell.withdrawAddress"      = "Default withdraw address";
 
@@ -65,7 +65,7 @@
 "Me.Report.ImageSource.camera"                 = "Camera";
 
 "Me.WalletVC.fundingCell.additionalTitle"      = "RECOMMENDED FUNDING";
-"Me.WalletVC.WalletCosignersVC.title"          = "Co-signers";
+"Me.WalletVC.WalletCosignersVC.title"          = "Cosigners";
 
 "Me.Report.submitButtonTitle-submit"           = "Submit";
 "Me.Report.submitButtonTitle-create"           = "Create";
@@ -100,5 +100,5 @@
 
 "Me.Wallet.Transactions.Empty.title" = "No transactions yet";
 "Me.Wallet.Transactions.Empty.details" = "...";
-"Me.Wallet.Cosigners.Empty.title" = "No co-signers yet";
+"Me.Wallet.Cosigners.Empty.title" = "No cosigners yet";
 "Me.Wallet.Cosigners.Empty.details" = "...";

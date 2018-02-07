@@ -26,6 +26,7 @@ class EmptyVC: UIViewController {
     @IBOutlet private var mainLabel: UILabel!
     @IBOutlet private var detailsLabel: UILabel!
     @IBOutlet private var stackView: UIStackView!
+    @IBOutlet var backImageView: UIImageView!
     
     class func show(in viewController: UIViewController,
                     inView: UIView? = nil,

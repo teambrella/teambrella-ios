@@ -51,6 +51,9 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         HUD.show(.progress, onView: view)
         registerCells()
         dataSource.teammateID = teammateID
+        dataSource.onLoadHome = { [weak self] in
+            self?.setupObject()
+        }
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
             guard let `self` = self else { return }
@@ -58,13 +61,9 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
             self.collectionView.reloadData()
             self.showEmptyIfNeeded()
         }
-        dataSource.onLoadHome = { [weak self] in
-            self?.setupObject()
-        }
         dataSource.onError = { error in
             HUD.hide()
         }
-        dataSource.loadData()
         dataSource.loadHomeData()
         
         setupObjectView()
@@ -94,6 +93,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        dataSource.loadData()
         guard isFirstLoading == false else {
             isFirstLoading = false
             return
@@ -136,6 +136,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     func showEmptyIfNeeded() {
         if dataSource.isEmpty && emptyVC == nil {
             emptyVC = EmptyVC.show(in: self)
+            emptyVC?.backImageView.image = nil
             emptyVC?.setImage(image: #imageLiteral(resourceName: "iconTeam"))
             emptyVC?.setText(title: "Team.Claims.Empty.title".localized,
                              subtitle: "Team.Claims.Empty.details".localized)

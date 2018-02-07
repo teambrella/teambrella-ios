@@ -40,22 +40,24 @@ class ProxyForVC: UIViewController {
             self?.collectionView.reloadData()
             self?.showEmptyIfNeeded()
         }
-        dataSource.loadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        dataSource.loadData()
         guard isFirstLoading == false else {
             isFirstLoading = false
             return
         }
-        
         dataSource.updateSilently()
     }
     
     func showEmptyIfNeeded() {
         if dataSource.isEmpty && emptyVC == nil {
-            emptyVC = EmptyVC.show(in: self)
+            let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y,
+                               width: self.collectionView.frame.width,
+                               height: self.collectionView.frame.height)
+            emptyVC = EmptyVC.show(in: self, inView: self.collectionView, frame: frame, animated: false)
             emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
             emptyVC?.setText(title: "Proxy.Empty.You.title".localized, subtitle: "Proxy.Empty.You.details".localized)
         } else {
