@@ -15,7 +15,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 enum TeambrellaResponseType {
     case timestamp

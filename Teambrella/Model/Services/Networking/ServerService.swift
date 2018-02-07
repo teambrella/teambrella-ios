@@ -21,21 +21,6 @@
 
 import Alamofire
 import Foundation
-import SwiftyJSON
-
-/*
- struct ResponseStatus {
- let timestamp: Int64
- let code: Int
- let errorMessage: String
-
- init(json: JSON) {
- timestamp = json["Timestamp"].int64Value
- code = json["ResultCode"].intValue
- errorMessage = json["ErrorMessage"].stringValue
- }
- }
- */
 
 /**
  Service to interoperate with the server fetching all UI related information

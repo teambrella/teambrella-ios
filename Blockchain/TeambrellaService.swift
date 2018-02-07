@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 protocol TeambrellaServiceDelegate: class {
     func teambrellaDidUpdate(service: TeambrellaService)

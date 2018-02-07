@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 enum TeammateSectionType {
     case new, teammate

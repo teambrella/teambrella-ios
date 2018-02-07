@@ -15,15 +15,8 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 struct TeamPart: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case currency = "Currency"
-        case coverageType = "CoverageType"
-        case accessLevel = "TeamAccessLevel"
-    }
-    
     let coverageType: CoverageType
     let currency: String
     let accessLevel: TeamAccessLevel
@@ -33,13 +26,11 @@ struct TeamPart: Decodable {
         currency = ""
         accessLevel = .noAccess
     }
-    
-    init?(json: JSON) {
-        guard !json.isEmpty else { return nil }
-        
-        coverageType = json["CoverageType"].int.flatMap { CoverageType(rawValue: $0) } ?? .other
-        currency = json["Currency"].stringValue
-        accessLevel = TeamAccessLevel(rawValue: json["TeamAccessLevel"].intValue) ?? .noAccess
+
+    enum CodingKeys: String, CodingKey {
+        case currency = "Currency"
+        case coverageType = "CoverageType"
+        case accessLevel = "TeamAccessLevel"
     }
     
 }

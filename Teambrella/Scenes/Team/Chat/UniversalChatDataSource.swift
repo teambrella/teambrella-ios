@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 enum UniversalChatType {
     case privateChat, application, claim, discussion
@@ -37,7 +36,7 @@ final class UniversalChatDatasource {
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
     
-    var notificationsType: TopicMuteType = .unknown
+    var notificationsType: TopicMuteType            = .unknown
     var hasNext                                     = true
     var hasPrevious                                 = true
     var isFirstLoad                                 = true
