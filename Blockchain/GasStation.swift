@@ -26,21 +26,31 @@ struct GasStation {
     }
 
     func gasPrice(completion: @escaping CompletionHandler) {
-        server.fetch(urlString: "api/eth_gasPrice", success: { json in
-            let value = json.intValue
-            completion(value, nil)
-        }) { error in
+        server.fetch(urlString: "api/eth_gasPrice", success: { data in
+            if let string = String(data: data, encoding: .utf8), let value = Int(string) {
+                 completion(value, nil)
+            } else {
+                completion(-1, GasStationError.fetchResponseCorrupted(data))
+            }
+        }, failure: { error in
             completion(-1, error)
-        }
+        })
     }
 
     func contractCreationGasPrice(completion: @escaping CompletionHandler) {
-        server.fetch(urlString: "api/eth_gasPrice/ContractCreation", success: { json in
-            let value = json.intValue
-            completion(value, nil)
-        }) { error in
+        server.fetch(urlString: "api/eth_gasPrice/ContractCreation", success: { data in
+            if let string = String(data: data, encoding: .utf8), let value = Int(string) {
+                completion(value, nil)
+            } else {
+                completion(-1, GasStationError.fetchResponseCorrupted(data))
+            }
+        }, failure: { error in
             completion(-1, error)
-        }
+        })
+    }
+
+    enum GasStationError: Error {
+        case fetchResponseCorrupted(Data)
     }
 
 }

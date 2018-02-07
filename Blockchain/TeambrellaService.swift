@@ -396,6 +396,10 @@ class TeambrellaService: NSObject {
     func masterSign() {
         log("Teambrella service start \(#function)", type: .cryptoDetails)
         log("Master sign function disabled", type: .cryptoDetails)
+        // just for fun
+        wallet.refreshGasPrice { price in
+            print("gas price is: \(price)")
+        }
         // Do nothing
     }
     

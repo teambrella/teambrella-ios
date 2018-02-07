@@ -49,6 +49,22 @@ extension Data {
     }
 }
 
+extension Data {
+    enum Endianness {
+        case bigEndian
+        case littleEndian
+    }
+    func scanValue<T: FixedWidthInteger>(at index: Data.Index = 0, endianess: Endianness = .littleEndian) -> T {
+        let number: T = self.subdata(in: index..<index + MemoryLayout<T>.size).withUnsafeBytes({ $0.pointee })
+        switch endianess {
+        case .bigEndian:
+            return number.bigEndian
+        case .littleEndian:
+            return number.littleEndian
+        }
+    }
+}
+
 extension UnicodeScalar {
     var hexNibble: UInt8 {
         let value = self.value

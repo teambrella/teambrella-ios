@@ -21,7 +21,6 @@
 
 import Alamofire
 import Foundation
-import SwiftyJSON
 
 /**
  Service to interoperate with the server that would provide all transactions related information
@@ -64,16 +63,18 @@ public class BlockchainServer {
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).responseData { response in
             switch response.result {
             case let .success(value):
                 log("BlockChain server init timestamp reply: \(value)", type: .cryptoRequests)
-                let result = JSON(value)
-                let status = result["Status"]
-                let timestamp = status["Timestamp"].int64Value
-                self.timestamp = timestamp
-                completion(timestamp, nil)
-            case .failure(let error):
+                do {
+                    let status = try JSONDecoder().decode(TimestampReplyServerImpl.self, from: value)
+                    completion(status.status.timestamp, nil)
+                    self.timestamp = status.status.timestamp
+                } catch {
+                    completion(nil, error)
+                }
+            case let .failure(error):
                 completion(nil, error)
             }
         }
@@ -88,20 +89,19 @@ public class BlockchainServer {
             let key = Key(base58String: privateKey, timestamp: timestamp)
 
             let request = me.request(string: "me/InitClient", key: key)
-            Alamofire.request(request).responseJSON { response in
+            Alamofire.request(request).responseData { response in
                 switch response.result {
-                case .success:
-                    if let value = response.result.value {
-                        log("init client reply: \(value)", type: .cryptoRequests)
-                        let result = JSON(value)
-                        if let timestamp = result["Timestamp"].int64 {
-                            me.timestamp = timestamp
-                        }
+                case let .success(value):
+                    log("init client reply: \(value)", type: .cryptoRequests)
+                    do {
+                        let status = try JSONDecoder().decode(ServerStatusImpl.self, from: value)
+                        me.timestamp = status.timestamp
                         completion(true)
+                    } catch {
+                        completion(false)
                     }
                 case .failure(let error):
                     log("error initializing client: \(error)", type: [.error, .cryptoRequests])
-                    //                        me.delegate?.server(server: me, failedWithError: error)
                     completion(false)
                 }
             }
@@ -158,34 +158,28 @@ public class BlockchainServer {
             request.httpBody = data
         }
         
-        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).responseData { response in
             switch response.result {
-            case.success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    if let txid = json.string {
-                        success(txid)
-                        return
-                    }
+            case let .success(value):
+                if let txID = String(data: value, encoding: .utf8) {
+                    success(txID)
+                } else {
+                    failure()
                 }
-            default: break
+            default:
+                failure()
             }
-            failure()
         }
     }
     
-    func fetch(urlString: String, success: @escaping (_ result: JSON) -> Void, failure: @escaping (Error?) -> Void) {
+    func fetch(urlString: String, success: @escaping (_ result: Data) -> Void, failure: @escaping (Error?) -> Void) {
         guard let url = url(string: urlString) else { fatalError() }
         
         let request = URLRequest(url: url)
-        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).responseData { response in
             switch response.result {
-            case .success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    success(json)
-                    return
-                }
+            case let .success(data):
+                success(data)
             case let .failure(error):
                 failure(error)
             }
@@ -195,7 +189,7 @@ public class BlockchainServer {
     func postData(to urlString: String,
                   data: Data,
                   privateKey: String,
-                  success: @escaping (_ result: JSON) -> Void,
+                  success: @escaping (_ result: Data) -> Void,
                   failure: @escaping (Error?) -> Void) {
         guard let url = self.url(string: urlString) else {
             failure(nil)
@@ -212,11 +206,10 @@ public class BlockchainServer {
             "deviceToken": "",
             "deviceId": application.uniqueIdentifier]
 
-        Alamofire.upload(data, to: url, method: .post, headers: headers).responseJSON { response in
+        Alamofire.upload(data, to: url, method: .post, headers: headers).responseData { response in
             switch response.result {
             case let .success(value):
-                let json = JSON(value)
-                success(json)
+                success(value)
             case let .failure(error):
                 failure(error)
             }
