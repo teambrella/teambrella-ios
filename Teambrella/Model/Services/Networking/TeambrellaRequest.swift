@@ -141,7 +141,7 @@ struct TeambrellaRequest {
                 success(.chat(model))
             case .teamFeed:
                 guard let pagingInfo = serverReply.paging else {
-                    failure?(TeambrellaErrorFactory.wrongReply())
+                    failure?(TeambrellaErrorFactory.noPagingInfo())
                     return
                 }
 

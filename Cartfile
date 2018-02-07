@@ -19,7 +19,6 @@ github "aschuch/QRCode"
 github "uport-project/SwiftKeccak"
 
 # Views
-github "MortimerGoro/MGSwipeTableCell"
 github "xmartlabs/XLPagerTabStrip" ~> 7.0
 github "pkluz/PKHUD" ~> 4.0
 github "SwiftKickMobile/SwiftMessages"
