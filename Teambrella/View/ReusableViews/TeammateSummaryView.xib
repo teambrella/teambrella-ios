@@ -175,6 +175,7 @@
                 <outlet property="avatarView" destination="TJg-Yb-uYZ" id="SJ3-ha-Rhi"/>
                 <outlet property="infoLabel" destination="b7E-xq-aLK" id="Qor-eK-RJV"/>
                 <outlet property="leftNumberView" destination="6bT-rC-Gc1" id="vj6-s7-E6Y"/>
+                <outlet property="radarView" destination="Azs-Fq-hiP" id="JNj-gY-TOL"/>
                 <outlet property="rightNumberView" destination="Gy9-eL-jxq" id="8hm-Zz-dfb"/>
                 <outlet property="subtitle" destination="Foo-4P-xaS" id="u7e-d2-k6M"/>
                 <outlet property="title" destination="7FZ-uv-HWs" id="gJY-tu-trf"/>

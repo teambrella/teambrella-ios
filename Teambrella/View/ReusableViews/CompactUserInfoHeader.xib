@@ -89,6 +89,7 @@
             <connections>
                 <outlet property="avatarView" destination="bzn-cA-T1m" id="Knf-ta-Ftf"/>
                 <outlet property="leftNumberView" destination="Dbk-bY-fZ4" id="Yuo-5v-YO6"/>
+                <outlet property="radarView" destination="64b-Ge-KPA" id="5WX-3R-paJ"/>
                 <outlet property="rightNumberView" destination="JmC-jf-L7s" id="o9Z-ug-Odd"/>
             </connections>
             <point key="canvasLocation" x="127" y="78.5"/>

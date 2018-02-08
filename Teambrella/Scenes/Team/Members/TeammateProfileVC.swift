@@ -332,6 +332,9 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         guard let teammate = dataSource.teammateLarge else { return }
         
         if let view = view as? CompactUserInfoHeader {
+            if dataSource.isMe {
+                view.radarView.color = .veryLightBlueThree
+            }
             ViewDecorator.shadow(for: view, opacity: 0.05, radius: 4)
             view.avatarView.showAvatar(string: teammate.basic.avatar)
             if let left = view.leftNumberView {
@@ -350,6 +353,9 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 right.currencyLabel.text = service.currencyName
             }
         } else if let view = view as? TeammateSummaryView {
+            if dataSource.isMe {
+                view.radarView.color = .veryLightBlueThree
+            }
             view.title.text = teammate.basic.name.entire
             //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
             view.avatarView.present(avatarString: teammate.basic.avatar)
