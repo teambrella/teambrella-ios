@@ -370,8 +370,11 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 right.currencyLabel.text = service.currencyName
             }
-            
-            view.subtitle.text = teammate.basic.city.uppercased()
+            if let city = teammate.basic.city {
+                view.subtitle.text = city.uppercased()
+            } else {
+                view.subtitle.text = ""
+            }
             if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
                 view.infoLabel.isHidden = false
                 view.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)

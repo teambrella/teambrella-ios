@@ -370,7 +370,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.96862745100000003" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="rtL-Dg-TqT" firstAttribute="leading" secondItem="VmV-yc-E7V" secondAttribute="leading" id="6Nj-cB-O3t"/>
                                             <constraint firstAttribute="trailing" secondItem="rtL-Dg-TqT" secondAttribute="trailing" id="Lh4-fG-0AC"/>
@@ -391,7 +391,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.96862745100000003" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="0sX-aq-UFl" secondAttribute="trailing" id="28O-jj-r8C"/>
                             <constraint firstItem="VmV-yc-E7V" firstAttribute="width" secondItem="geE-RI-RJq" secondAttribute="width" id="7wT-qQ-1wU"/>
@@ -452,7 +452,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QbC-lR-she" secondAttribute="trailing" id="553-aC-hag"/>
                             <constraint firstItem="QbC-lR-she" firstAttribute="top" secondItem="6dS-2j-dg7" secondAttribute="bottom" id="cZv-2R-TQV"/>
@@ -496,7 +496,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="EB9-y9-rte" secondAttribute="trailing" id="2yk-nz-ImL"/>
                             <constraint firstItem="EB9-y9-rte" firstAttribute="top" secondItem="qGh-Cp-75k" secondAttribute="bottom" id="3BG-dG-xxR"/>
@@ -601,7 +601,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="odu-Ew-fCp" firstAttribute="leading" secondItem="9M9-pY-QAw" secondAttribute="leading" id="2rW-9B-60J"/>
                             <constraint firstItem="SoN-WT-Fel" firstAttribute="top" secondItem="odu-Ew-fCp" secondAttribute="bottom" id="E9g-5v-qqN"/>
@@ -780,7 +780,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pYm-sV-wJe" firstAttribute="leading" secondItem="zEN-Kv-1aw" secondAttribute="leading" id="Guw-FK-cag"/>
                             <constraint firstAttribute="trailing" secondItem="pYm-sV-wJe" secondAttribute="trailing" id="WD9-gP-e8q"/>
@@ -934,7 +934,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ljv-aA-3pD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTd-MZ-gQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
