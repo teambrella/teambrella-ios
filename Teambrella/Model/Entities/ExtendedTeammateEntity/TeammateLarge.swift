@@ -50,7 +50,7 @@ class TeammateLarge: Decodable {
         case lastUpdated = "LastUpdated"
         case topic = "DiscussionPart"
         case basic = "BasicPart"
-        case voting = "VotingInfo"
+        case voting = "VotingPart"
         case object = "ObjectPart"
         case stats = "StatsPart"
         case riskScale = "RiskScalePart"
