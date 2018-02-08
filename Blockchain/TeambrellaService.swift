@@ -85,26 +85,29 @@ class TeambrellaService: NSObject {
             }
         }
     }
+
     func clear() throws {
         try contentProvider.clear()
         isStorageCleared = true
     }
     
     func updateData(completion: @escaping (Bool) -> Void) {
-        server.initClient(privateKey: contentProvider.user.privateKey) { [unowned self] success in
-            if success {
-                self.autoApproveTransactions()
-                self.serverUpdateToLocalDb { success in
-                    if success {
-                        
-                        //                        self.updateAddresses()
-                        completion(true)
-                    } else {
-                        completion(false)
-                    }
-                }
-            } else {
+        server.initTimestamp { (timestamp, error) in
+            if let error = error {
+                log("Update data couldn't proceed because of failed timestamp \(error)", type: .error)
                 completion(false)
+                return
+            }
+
+            self.autoApproveTransactions()
+            self.serverUpdateToLocalDb { success in
+                if success {
+
+                    //                        self.updateAddresses()
+                    completion(true)
+                } else {
+                    completion(false)
+                }
             }
         }
     }
@@ -395,10 +398,6 @@ class TeambrellaService: NSObject {
     func masterSign() {
         log("Teambrella service start \(#function)", type: .cryptoDetails)
         log("Master sign function disabled", type: .cryptoDetails)
-        // just for fun
-        wallet.refreshGasPrice { price in
-            print("gas price is: \(price)")
-        }
         // Do nothing
     }
     

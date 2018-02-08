@@ -16,7 +16,7 @@
 
 import Foundation
 
-struct ChatModel: Decodable {
+struct ChatModel: Decodable, CustomStringConvertible {
     let lastUpdated: Int64
     let discussion: DiscussionPart
 
@@ -27,6 +27,8 @@ struct ChatModel: Decodable {
     let id: Int?
     let lastRead: Int64?
     let title: String?
+
+    var description: String { return "\(type(of: self)) \(discussion.topicID); messages: \(discussion.chat.count)" }
 
     enum CodingKeys: String, CodingKey {
         case lastUpdated = "LastUpdated"

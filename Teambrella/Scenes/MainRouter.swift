@@ -39,11 +39,31 @@ final class MainRouter {
     var masterTabBar: MasterTabBarController? {
         return navigator?.viewControllers.filter { $0 is MasterTabBarController }.first as? MasterTabBarController
     }
-    
+
+    var frontmostViewController: UIViewController? {
+        return topViewController()
+    }
+
+    private func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController)
+        -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(base: selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
+    }
+
     func push(vc: UIViewController, animated: Bool = true) {
         navigator?.pushViewController(vc, animated: animated)
     }
-    
+
     private func switchTab(to tab: TabType) -> UIViewController? {
         return masterTabBar?.switchTo(tabType: tab)
     }

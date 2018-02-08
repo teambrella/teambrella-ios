@@ -69,8 +69,8 @@ public class BlockchainServer {
                 log("BlockChain server init timestamp reply: \(value)", type: .cryptoRequests)
                 do {
                     let status = try JSONDecoder().decode(TimestampReplyServerImpl.self, from: value)
-                    completion(status.status.timestamp, nil)
                     self.timestamp = status.status.timestamp
+                    completion(status.status.timestamp, nil)
                 } catch {
                     completion(nil, error)
                 }
@@ -79,7 +79,8 @@ public class BlockchainServer {
             }
         }
     }
-    
+
+    /*
     func initClient(privateKey: String, completion: @escaping (_ success: Bool) -> Void) {
         initTimestamp { [weak self] timestamp, error in
             guard let me = self else { return }
@@ -93,13 +94,18 @@ public class BlockchainServer {
                 switch response.result {
                 case let .success(value):
                     log("init client reply: \(value)", type: .cryptoRequests)
+                    completion(true)
+                    /*
                     do {
-                        let status = try JSONDecoder().decode(ServerStatusImpl.self, from: value)
-                        me.timestamp = status.timestamp
+
+                        //let status = try JSONDecoder().decode(ServerStatusImpl.self, from: value)
+                       // me.timestamp = status.timestamp
                         completion(true)
                     } catch {
+                        log("Init client error: \(error)", type: .error)
                         completion(false)
                     }
+ */
                 case .failure(let error):
                     log("error initializing client: \(error)", type: [.error, .cryptoRequests])
                     completion(false)
@@ -107,6 +113,7 @@ public class BlockchainServer {
             }
         }
     }
+    */
     
     func getUpdates(privateKey: String,
                     lastUpdated: Int64,

@@ -38,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
 
+        // Pull in case of emergency :)
+        // service.cryptoMalfunction()
+
         return true
     }
     
