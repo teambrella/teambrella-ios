@@ -255,6 +255,9 @@ class EthWallet {
                         completion(false)
                     })
                 })
+            } else {
+                log("Can't deposit contract: \(gasWalletAmount), needed: \(Constant.maxGasWalletBalance)", type: .cryptoDetails)
+                completion(false)
             }
         }, failure: { error in
             log("Check balance failed with \(String(describing: error))", type: [.error, .crypto])
