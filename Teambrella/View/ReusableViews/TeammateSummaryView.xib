@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -131,12 +132,20 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BaX-YW-SWq">
+                    <rect key="frame" x="0.0" y="209" width="373" height="1"/>
+                    <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="xc1-Ye-AI0"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="TJg-Yb-uYZ" firstAttribute="top" secondItem="b7E-xq-aLK" secondAttribute="bottom" constant="9" id="8bQ-1q-Lfh"/>
                 <constraint firstItem="7FZ-uv-HWs" firstAttribute="centerX" secondItem="VXr-Tz-HHm" secondAttribute="centerX" id="AX8-S8-2lk"/>
                 <constraint firstItem="b7E-xq-aLK" firstAttribute="centerX" secondItem="VXr-Tz-HHm" secondAttribute="centerX" id="B2v-Bm-OU3"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="BaX-YW-SWq" secondAttribute="bottom" id="Bp2-Vg-k9d"/>
                 <constraint firstItem="TJg-Yb-uYZ" firstAttribute="centerX" secondItem="VXr-Tz-HHm" secondAttribute="centerX" id="Doo-ca-1BV"/>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="leading" secondItem="Azs-Fq-hiP" secondAttribute="leading" id="Dzr-CU-mQ5"/>
                 <constraint firstItem="wfw-L4-nPI" firstAttribute="trailing" secondItem="Azs-Fq-hiP" secondAttribute="trailing" id="EQt-OW-Ibg"/>
@@ -149,6 +158,7 @@
                 <constraint firstItem="Gy9-eL-jxq" firstAttribute="leading" secondItem="TJg-Yb-uYZ" secondAttribute="trailing" constant="13" id="QBS-th-luc"/>
                 <constraint firstItem="Foo-4P-xaS" firstAttribute="top" secondItem="7FZ-uv-HWs" secondAttribute="bottom" id="UOw-dJ-Tyh"/>
                 <constraint firstItem="Foo-4P-xaS" firstAttribute="centerX" secondItem="7FZ-uv-HWs" secondAttribute="centerX" id="Z0t-gB-tDV"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="BaX-YW-SWq" secondAttribute="trailing" id="Zo1-l8-EUz"/>
                 <constraint firstItem="wfw-L4-nPI" firstAttribute="top" secondItem="6bT-rC-Gc1" secondAttribute="centerY" id="ebX-AS-0FF"/>
                 <constraint firstItem="Gy9-eL-jxq" firstAttribute="centerY" secondItem="TJg-Yb-uYZ" secondAttribute="centerY" id="euo-db-739"/>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="Gy9-eL-jxq" secondAttribute="trailing" constant="16" id="gNP-xB-BU4"/>
@@ -158,6 +168,7 @@
                 <constraint firstItem="Azs-Fq-hiP" firstAttribute="bottom" secondItem="7FZ-uv-HWs" secondAttribute="top" id="qix-pL-9VN"/>
                 <constraint firstItem="wfw-L4-nPI" firstAttribute="bottom" secondItem="7FZ-uv-HWs" secondAttribute="top" id="rCz-x2-E4V"/>
                 <constraint firstItem="6bT-rC-Gc1" firstAttribute="centerY" secondItem="TJg-Yb-uYZ" secondAttribute="centerY" id="rew-uq-he7"/>
+                <constraint firstItem="BaX-YW-SWq" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="wvh-nv-31L"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <connections>

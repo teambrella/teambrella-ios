@@ -332,6 +332,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         guard let teammate = dataSource.teammateLarge else { return }
         
         if let view = view as? CompactUserInfoHeader {
+            ViewDecorator.shadow(for: view, opacity: 0.05, radius: 4)
             view.avatarView.showAvatar(string: teammate.basic.avatar)
             if let left = view.leftNumberView {
                 let pronoun = teammate.basic.gender == .male ? "General.he".localized : "General.she".localized

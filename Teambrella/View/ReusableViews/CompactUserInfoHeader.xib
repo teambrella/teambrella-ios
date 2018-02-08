@@ -40,19 +40,29 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYA-kl-hgM">
+                            <rect key="frame" x="0.0" y="98" width="506" height="1"/>
+                            <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="i8h-sC-nsz"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Dbk-bY-fZ4" secondAttribute="bottom" id="7uV-EG-zeY"/>
                         <constraint firstAttribute="trailing" secondItem="JmC-jf-L7s" secondAttribute="trailing" id="APn-8F-Isy"/>
                         <constraint firstAttribute="bottom" secondItem="JmC-jf-L7s" secondAttribute="bottom" id="B2X-jR-Och"/>
+                        <constraint firstAttribute="trailing" secondItem="kYA-kl-hgM" secondAttribute="trailing" id="RgJ-Ms-lvf"/>
                         <constraint firstItem="bzn-cA-T1m" firstAttribute="leading" secondItem="Dbk-bY-fZ4" secondAttribute="trailing" id="WOw-sC-Dj3"/>
                         <constraint firstItem="Dbk-bY-fZ4" firstAttribute="top" secondItem="64b-Ge-KPA" secondAttribute="top" id="aRn-KR-lnn"/>
                         <constraint firstItem="bzn-cA-T1m" firstAttribute="centerX" secondItem="64b-Ge-KPA" secondAttribute="centerX" id="bTh-0A-S8Y"/>
                         <constraint firstItem="Dbk-bY-fZ4" firstAttribute="leading" secondItem="64b-Ge-KPA" secondAttribute="leading" id="dBD-nf-KFQ"/>
                         <constraint firstItem="JmC-jf-L7s" firstAttribute="leading" secondItem="bzn-cA-T1m" secondAttribute="trailing" id="hUL-0R-n9h"/>
                         <constraint firstItem="bzn-cA-T1m" firstAttribute="centerY" secondItem="64b-Ge-KPA" secondAttribute="centerY" id="hmL-wI-vhc"/>
+                        <constraint firstItem="kYA-kl-hgM" firstAttribute="leading" secondItem="64b-Ge-KPA" secondAttribute="leading" id="lKZ-1l-btR"/>
                         <constraint firstItem="JmC-jf-L7s" firstAttribute="top" secondItem="64b-Ge-KPA" secondAttribute="top" id="mwL-Pm-TQe"/>
+                        <constraint firstAttribute="bottom" secondItem="kYA-kl-hgM" secondAttribute="bottom" id="yl9-4p-pZx"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="segments">
