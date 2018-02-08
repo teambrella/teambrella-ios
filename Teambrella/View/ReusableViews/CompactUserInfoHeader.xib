@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="506" height="99"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64b-Ge-KPA">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64b-Ge-KPA" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="506" height="99"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbk-bY-fZ4" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
@@ -54,6 +54,20 @@
                         <constraint firstItem="bzn-cA-T1m" firstAttribute="centerY" secondItem="64b-Ge-KPA" secondAttribute="centerY" id="hmL-wI-vhc"/>
                         <constraint firstItem="JmC-jf-L7s" firstAttribute="top" secondItem="64b-Ge-KPA" secondAttribute="top" id="mwL-Pm-TQe"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="segments">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="diameter">
+                            <real key="value" value="121"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="startWidth">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="coefficient">
+                            <real key="value" value="1.1000000000000001"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <constraints>

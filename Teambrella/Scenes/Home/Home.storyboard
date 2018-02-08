@@ -530,8 +530,8 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pil-In-pht">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pIt-QB-0eU">
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pIt-QB-0eU">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -540,7 +540,7 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pil-In-pht" firstAttribute="leading" secondItem="UWR-UB-yfv" secondAttribute="leading" id="BlU-Z2-xhM"/>
                             <constraint firstItem="UWR-UB-yfv" firstAttribute="bottom" secondItem="pil-In-pht" secondAttribute="bottom" id="KjA-Ma-lkF"/>

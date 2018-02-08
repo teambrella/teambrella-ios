@@ -334,14 +334,16 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         if let view = view as? CompactUserInfoHeader {
             view.avatarView.showAvatar(string: teammate.basic.avatar)
             if let left = view.leftNumberView {
-                left.titleLabel.text = "Team.TeammateCell.wouldCoverMe".localized
+                let pronoun = teammate.basic.gender == .male ? "General.he".localized : "General.she".localized
+                left.titleLabel.text = "Team.TeammateCell.wouldCoverMe".localized(pronoun.uppercased())
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 left.currencyLabel.text = service.currencyName
             }
             
             if let right = view.rightNumberView {
-                right.titleLabel.text = "Team.TeammateCell.wouldCoverThem".localized
+                let pronoun = teammate.basic.gender == .male ? "General.him".localized : "General.her".localized
+                right.titleLabel.text = "Team.TeammateCell.wouldCoverThem".localized(pronoun.uppercased())
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 right.currencyLabel.text = service.currencyName
@@ -358,20 +360,25 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             //cell.avatarView.kf.setImage(with: url)
             if let left = view.leftNumberView {
                 left.isHidden = dataSource.isMe
-                left.titleLabel.text = "Team.TeammateCell.coversMe".localized
+                let pronoun = teammate.basic.gender == .male ? "General.he".localized : "General.she".localized
+                left.titleLabel.text = "Team.TeammateCell.coversMe".localized(pronoun.uppercased())
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 left.currencyLabel.text = service.currencyName
             }
             if let right = view.rightNumberView {
                 right.isHidden = dataSource.isMe
-                right.titleLabel.text = "Team.TeammateCell.coverThem".localized
+                let pronoun = teammate.basic.gender == .male ? "General.him".localized : "General.her".localized
+                right.titleLabel.text = "Team.TeammateCell.coverThem".localized(pronoun.uppercased())
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 right.currencyLabel.text = service.currencyName
             }
-            
-            view.subtitle.text = teammate.basic.city.uppercased()
+            if let city = teammate.basic.city {
+                view.subtitle.text = city.uppercased()
+            } else {
+                view.subtitle.text = ""
+            }
             if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
                 view.infoLabel.isHidden = false
                 view.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)

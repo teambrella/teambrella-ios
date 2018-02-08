@@ -197,3 +197,5 @@
 "Team.Claim.Transactions.Empty.details" = "...";
 "Team.OthersVoted.Empty.title" = "No votes yet";
 "Team.OthersVoted.Empty.details" = "...";
+
+"Team.TeammateCell.wouldCoverThem.notYet"        = "Not yet";

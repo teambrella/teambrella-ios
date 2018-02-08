@@ -39,10 +39,6 @@
 "Team.MembersVC.indicatorTitle"                  = "Teammates";
 "Team.MembersVC.searchHere"                      = "Search";
 
-"Team.TeammateCell.coversMe"                     = "COVERS ME";
-"Team.TeammateCell.coverThem"                    = "COVER THEM";
-"Team.TeammateCell.wouldCoverMe"                 = "WOULD COVER ME";
-"Team.TeammateCell.wouldCoverThem"               = "WOULD COVER THEM";
 "Team.TeammateCell.youAreProxy_format_s"         = "You are proxy for %@";
 "Team.TeammateCell.covered"                      = "COVERED";
 "Team.TeammateCell.collisionDeductible"          = "Collision Deductible";
@@ -207,3 +203,9 @@
 "Team.Claim.Transactions.Empty.details" = "...";
 "Team.OthersVoted.Empty.title" = "No votes yet";
 "Team.OthersVoted.Empty.details" = "...";
+
+"Team.TeammateCell.coversMe"                     = "%@ COVERS ME";
+"Team.TeammateCell.coverThem"                    = "I COVER %@";
+"Team.TeammateCell.wouldCoverMe"                 = "%@ WOULD COVER ME";
+"Team.TeammateCell.wouldCoverThem"               = "I WOULD COVER %@";
+"Team.TeammateCell.wouldCoverThem.notYet"        = "Not yet";

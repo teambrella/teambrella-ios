@@ -58,6 +58,11 @@
 
 "General.mETH" = "mETH";
 
+"General.he" = "He";
+"General.she" = "She";
+"General.him" = "Him";
+"General.her" = "Her";
+
 /*
  case carCollision                 = 101
  case carComprehensive             = 102

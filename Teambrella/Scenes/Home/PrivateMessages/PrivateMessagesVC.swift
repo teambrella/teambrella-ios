@@ -87,6 +87,13 @@ extension PrivateMessagesVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         let user = dataSource.items[indexPath.row]
         PrivateMessagesCellBuilder.populate(cell: cell, with: user)
+        let isLastCell = indexPath.row == dataSource.items.count - 1
+        if let cell = cell as? PrivateChatUserCell {
+            cell.cellSeparator.isHidden = isLastCell
+        }
+        ViewDecorator.decorateCollectionView(cell: cell,
+                                             isFirst: indexPath.row == 0,
+                                             isLast: isLastCell)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

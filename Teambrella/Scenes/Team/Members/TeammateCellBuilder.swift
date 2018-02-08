@@ -51,7 +51,11 @@ struct TeammateCellBuilder {
                                        controller: TeammateProfileVC?) {
         cell.avatar.showAvatar(string: teammate.basic.avatar)
         cell.nameLabel.text = teammate.basic.name.entire
-        cell.infoLabel.text = teammate.basic.city.uppercased()
+        if let city = teammate.basic.city {
+            cell.infoLabel.text = city.uppercased()
+        } else {
+            cell.infoLabel.text = ""
+        }
     }
     
     private static func populateSummary(cell: TeammateSummaryCell,

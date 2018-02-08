@@ -31,7 +31,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HB3-6s-gf8">
                                 <rect key="frame" x="0.0" y="148" width="375" height="519"/>
-                                <color key="backgroundColor" red="0.96862745098039216" green="0.98039215686274506" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="o5z-fr-1uL">
                                     <size key="itemSize" width="351" height="140"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -611,7 +611,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xCf-uZ-c4V">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" red="0.96862745100000003" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="10" id="DSZ-oU-OHc">
                                     <size key="itemSize" width="369" height="214"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -625,7 +625,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="xCf-uZ-c4V" firstAttribute="leading" secondItem="5iT-i1-57k" secondAttribute="leading" id="7Js-mQ-ccn"/>
                             <constraint firstAttribute="trailing" secondItem="xCf-uZ-c4V" secondAttribute="trailing" id="DoP-Oc-3Pm"/>
@@ -655,7 +655,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dVG-eD-Yna">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" red="0.96862745100000003" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gMg-zL-mm9">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
