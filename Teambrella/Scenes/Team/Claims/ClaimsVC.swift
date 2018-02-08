@@ -89,6 +89,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         objectImageView.image = nil
         objectTitle.text = nil
         objectSubtitle.text = nil
+        objectView.color = .veryLightBlueThree
     }
     
     override func viewDidAppear(_ animated: Bool) {

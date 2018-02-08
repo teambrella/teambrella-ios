@@ -147,6 +147,9 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="centerY">
                                                                 <real key="value" value="20"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                                <color key="value" red="0.85882352941176465" green="0.91764705882352937" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-sm-Jvx" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
