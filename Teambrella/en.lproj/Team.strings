@@ -204,8 +204,12 @@
 "Team.OthersVoted.Empty.title" = "No votes yet";
 "Team.OthersVoted.Empty.details" = "...";
 
-"Team.TeammateCell.coversMe"                     = "%@ COVERS ME";
-"Team.TeammateCell.coverThem"                    = "I COVER %@";
-"Team.TeammateCell.wouldCoverMe"                 = "%@ WOULD COVER ME";
-"Team.TeammateCell.wouldCoverThem"               = "I WOULD COVER %@";
+"Team.TeammateCell.heCoversMe"                     = "HE COVERS ME";
+"Team.TeammateCell.sheCoversMe"                     = "SHE COVERS ME";
+"Team.TeammateCell.coverHim"                    = "I COVER HIM";
+"Team.TeammateCell.coverHer"                    = "I COVER HER";
+"Team.TeammateCell.HeWouldCoverMe"                 = "HE WOULD COVER ME";
+"Team.TeammateCell.SheWouldCoverMe"                 = "SHE WOULD COVER ME";
+"Team.TeammateCell.wouldCoverHim"               = "I WOULD COVER HIM";
+"Team.TeammateCell.wouldCoverHer"               = "I WOULD COVER HER";
 "Team.TeammateCell.wouldCoverThem.notYet"        = "Not yet";

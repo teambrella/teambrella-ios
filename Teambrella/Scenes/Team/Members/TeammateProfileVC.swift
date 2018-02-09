@@ -338,16 +338,18 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             ViewDecorator.shadow(for: view, opacity: 0.05, radius: 4)
             view.avatarView.showAvatar(string: teammate.basic.avatar)
             if let left = view.leftNumberView {
-                let pronoun = teammate.basic.gender == .male ? "General.he".localized : "General.she".localized
-                left.titleLabel.text = "Team.TeammateCell.wouldCoverMe".localized(pronoun.uppercased())
+                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.HeWouldCoverMe".localized
+                    : "Team.TeammateCell.SheWouldCoverMe".localized
+                left.titleLabel.text = genderization
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 left.currencyLabel.text = service.currencyName
             }
             
             if let right = view.rightNumberView {
-                let pronoun = teammate.basic.gender == .male ? "General.him".localized : "General.her".localized
-                right.titleLabel.text = "Team.TeammateCell.wouldCoverThem".localized(pronoun.uppercased())
+                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.wouldCoverHim".localized
+                    : "Team.TeammateCell.wouldCoverHer".localized
+                right.titleLabel.text = genderization
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 right.currencyLabel.text = service.currencyName
@@ -367,16 +369,18 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             //cell.avatarView.kf.setImage(with: url)
             if let left = view.leftNumberView {
                 left.isHidden = dataSource.isMe
-                let pronoun = teammate.basic.gender == .male ? "General.he".localized : "General.she".localized
-                left.titleLabel.text = "Team.TeammateCell.coversMe".localized(pronoun.uppercased())
+                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.heCoversMe".localized
+                    : "Team.TeammateCell.sheCoversMe".localized
+                left.titleLabel.text = genderization
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 left.currencyLabel.text = service.currencyName
             }
             if let right = view.rightNumberView {
                 right.isHidden = dataSource.isMe
-                let pronoun = teammate.basic.gender == .male ? "General.him".localized : "General.her".localized
-                right.titleLabel.text = "Team.TeammateCell.coverThem".localized(pronoun.uppercased())
+                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.coverHim".localized
+                    : "Team.TeammateCell.coverHer".localized
+                right.titleLabel.text = genderization
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 right.currencyLabel.text = service.currencyName
