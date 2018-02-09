@@ -21,13 +21,14 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbk-bY-fZ4" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="232" height="99"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bzn-cA-T1m" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                             <rect key="frame" x="232" y="28" width="42" height="42"/>
+                            <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="bzn-cA-T1m" secondAttribute="height" multiplier="1:1" id="ib5-3u-0Uv"/>
                                 <constraint firstAttribute="width" constant="42" id="rtM-oC-YzO"/>
@@ -35,7 +36,7 @@
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JmC-jf-L7s" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
                             <rect key="frame" x="274" y="0.0" width="232" height="99"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
                             </userDefinedRuntimeAttributes>
@@ -75,7 +76,16 @@
                             <real key="value" value="35"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="coefficient">
-                            <real key="value" value="1.1000000000000001"/>
+                            <real key="value" value="1.28"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                            <color key="value" red="0.8784313725490196" green="0.91764705879999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                            <real key="value" value="360"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>

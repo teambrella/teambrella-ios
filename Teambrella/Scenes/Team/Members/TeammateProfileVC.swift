@@ -331,30 +331,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                         at indexPath: IndexPath) {
         guard let teammate = dataSource.teammateLarge else { return }
         
-        if let view = view as? CompactUserInfoHeader {
-            if dataSource.isMe {
-                view.radarView.color = .veryLightBlueThree
-            }
-            ViewDecorator.shadow(for: view, opacity: 0.05, radius: 4)
-            view.avatarView.showAvatar(string: teammate.basic.avatar)
-            if let left = view.leftNumberView {
-                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.HeWouldCoverMe".localized
-                    : "Team.TeammateCell.SheWouldCoverMe".localized
-                left.titleLabel.text = genderization
-                let amount = teammate.basic.coversMeAmount
-                left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
-                left.currencyLabel.text = service.currencyName
-            }
-            
-            if let right = view.rightNumberView {
-                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.wouldCoverHim".localized
-                    : "Team.TeammateCell.wouldCoverHer".localized
-                right.titleLabel.text = genderization
-                let amount = teammate.basic.iCoverThemAmount
-                right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
-                right.currencyLabel.text = service.currencyName
-            }
-        } else if let view = view as? TeammateSummaryView {
+        if let view = view as? TeammateSummaryView {
             if dataSource.isMe {
                 view.radarView.color = .veryLightBlueThree
             }
@@ -393,6 +370,30 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
                 view.infoLabel.isHidden = false
                 view.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
+            }
+        } else if let view = view as? CompactUserInfoHeader {
+            if dataSource.isMe {
+                view.radarView.color = .veryLightBlueThree
+            }
+            view.radarView.centerY = -view.bounds.midY
+            ViewDecorator.shadow(for: view, opacity: 0.05, radius: 4)
+            view.avatarView.showAvatar(string: teammate.basic.avatar)
+            if let left = view.leftNumberView {
+                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.HeWouldCoverMe".localized
+                    : "Team.TeammateCell.SheWouldCoverMe".localized
+                left.titleLabel.text = genderization
+                let amount = teammate.basic.coversMeAmount
+                left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                left.currencyLabel.text = service.currencyName
+            }
+            
+            if let right = view.rightNumberView {
+                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.wouldCoverHim".localized
+                    : "Team.TeammateCell.wouldCoverHer".localized
+                right.titleLabel.text = genderization
+                let amount = teammate.basic.iCoverThemAmount
+                right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                right.currencyLabel.text = service.currencyName
             }
         }
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
@@ -462,7 +463,9 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        return dataSource.isNewTeammate ?  CGSize.zero : CGSize(width: collectionView.bounds.width, height: 81)
+        return /*dataSource.isNewTeammate ?
+            CGSize(width: collectionView.bounds.width, height: 20) :*/
+            CGSize(width: collectionView.bounds.width, height: 81)
     }
 }
 

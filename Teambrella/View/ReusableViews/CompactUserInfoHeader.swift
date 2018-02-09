@@ -29,9 +29,7 @@ class CompactUserInfoHeader: UICollectionReusableView, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        radarView.color = .veryLightBlueThree
-        radarView.segments = 5
-        radarView.center = avatarView.center
+
     }
     
 }

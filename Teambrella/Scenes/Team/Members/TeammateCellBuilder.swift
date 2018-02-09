@@ -222,7 +222,6 @@ struct TeammateCellBuilder {
         } else {
             cell.weightValueLabel.text = String(Int(stats.weight))
         }
-//        cell.weightValueLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
         
         cell.proxyRankTitleLabel.text = "Team.TeammateCell.proxyRank".localized
         cell.proxyRankValueLabel.text = String(format: "%.1f", stats.proxyRank)
