@@ -39,7 +39,7 @@ func log(_ error: Error) {
 
 class Log {
     /// Change log level to filter logs along the entire application
-    var logLevel: LogLevel = .cryptoAll
+    var logLevel: LogLevel = .all
 
     lazy var types: LogType = { self.typesFor(level: self.logLevel) }()
     
