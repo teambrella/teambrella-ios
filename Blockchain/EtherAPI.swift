@@ -18,7 +18,7 @@ import Foundation
 import Alamofire
 
 struct EthereumAPIReply: Codable {
-    let jsonrpc: String
+    let jsonrpc: String?
     let error: EthereumError?
     let result: String?
 
@@ -251,7 +251,6 @@ class EtherAPI {
                 failure(error ?? EtherAPIError.noData)
                 return
             }
-
             do {
                 let reply = try JSONDecoder().decode(EthereumAPIReply.self, from: data)
                 if let result = reply.result {
@@ -262,6 +261,7 @@ class EtherAPI {
                     failure(EtherAPIError.corruptedData)
                 }
             } catch {
+                log("EthereumAPIReply parsing error: \(error)", type: .error)
                 failure(error)
             }
         }
