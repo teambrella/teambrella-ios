@@ -140,8 +140,8 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufs-Z7-MdQ">
-                                        <rect key="frame" x="334" y="67.5" width="70" height="29"/>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufs-Z7-MdQ">
+                                        <rect key="frame" x="334" y="67.5" width="293" height="29"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                         <state key="normal" title="Reset Vote">
                                             <color key="titleColor" red="0.2784313725" green="0.34509803919999998" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -154,6 +154,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="qFN-q5-gOq" firstAttribute="top" secondItem="D29-8w-VUD" secondAttribute="bottom" constant="8" id="13t-6v-5zG"/>
+                                    <constraint firstItem="ufs-Z7-MdQ" firstAttribute="trailing" secondItem="K9q-SA-b4t" secondAttribute="trailing" id="3XH-Ao-BIg"/>
                                     <constraint firstItem="557-Va-QA6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="D29-8w-VUD" secondAttribute="trailing" constant="1" id="3ZF-Sj-rtR"/>
                                     <constraint firstAttribute="centerX" secondItem="6qt-e2-WfN" secondAttribute="trailing" id="4Ey-bb-rDO"/>
                                     <constraint firstItem="UyJ-PS-yxB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uwK-ph-5aq" secondAttribute="trailing" constant="1" id="4Yb-rP-N3E"/>
