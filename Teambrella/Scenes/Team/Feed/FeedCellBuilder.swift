@@ -35,7 +35,6 @@ struct FeedCellBuilder {
                 cell.avatarView.layer.cornerRadius = cell.avatarView.frame.height / 2
             }
             cell.avatarView.contentMode = .scaleAspectFill
-            cell.titleLabel.text = model.chatTitle
             cell.textLabel.text = model.text.sane
             let count = model.topPosterAvatars.count
             let label: String? = count > 3 ? "+\(count - 3)" : nil

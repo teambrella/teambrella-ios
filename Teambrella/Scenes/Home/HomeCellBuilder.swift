@@ -70,7 +70,7 @@ struct HomeCellBuilder {
             cell.avatarView.show(model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
             cell.titleLabel.text = "Team.Home.Card.newTeammate".localized
-            let amountText: String = model.teamVote.map { String.formattedNumber($0) } ?? "..."
+            let amountText: String = model.teamVote.map { String(format: "%.1f", $0) } ?? "..."
             cell.rightNumberView.amountLabel.text = amountText
             cell.rightNumberView.currencyLabel.text = nil
         default:
