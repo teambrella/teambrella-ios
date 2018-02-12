@@ -122,7 +122,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         emitterScene.isHidden = true
-//        addEmitter()
+        //        addEmitter()
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
@@ -149,7 +149,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
             dataSource.loadData(teamID: teamID)
         }
     }
-    
+
     private func clearScreen() {
         greetingsTitleLabel.text = nil
         greetingsSubtitileLabel.text = nil

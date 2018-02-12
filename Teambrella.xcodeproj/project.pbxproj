@@ -2505,7 +2505,6 @@
 		6DA475DA1E8BC8EF00B56D9B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				6DEC074A1E9BCF330078F40E /* Samples */,
 				6D9CC6281ED5EA8C007F936E /* Team */,
 				6D9CC6251ED5EA3F007F936E /* Home */,
 				6D2A7C611FCC66490094ABB7 /* Info */,
@@ -2843,13 +2842,6 @@
 				6DE3947C1F7909E300784ECD /* ReachabilityService.swift */,
 			);
 			name = Reachability;
-			sourceTree = "<group>";
-		};
-		6DEC074A1E9BCF330078F40E /* Samples */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Samples;
 			sourceTree = "<group>";
 		};
 		6DEC6DFA1E966AB400ACC119 /* Transformers */ = {
