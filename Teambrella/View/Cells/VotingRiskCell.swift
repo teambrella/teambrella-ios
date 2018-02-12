@@ -130,6 +130,8 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right".localized
         yourVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
    
+        resetVoteButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
         resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
         othersButton.setTitle("Team.VotingRiskVC.othersButton".localized, for: .normal)
         
