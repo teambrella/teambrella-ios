@@ -44,11 +44,11 @@
 "General.TransactionState.errorOutOfFunds"         = "error: out of funds";
 "General.TransactionState.errorTooManyUtxos"       = "error: too many Utxos";
 
-"General.CoverageObject.other"                       = "OBJECT";
-"General.CoverageObject.carCollisionDeductible"      = "CAR";
-"General.CoverageObject.petDog"                      = "DOG";
-"General.CoverageObject.petCat"                      = "CAT";
-"General.CoverageObject.bicycle"                     = "BICYCLE";
+"General.CoverageObject.other"                     = "OBJECT";
+"General.CoverageObject.carCollisionDeductible"    = "CAR";
+"General.CoverageObject.petDog"                    = "DOG";
+"General.CoverageObject.petCat"                    = "CAT";
+"General.CoverageObject.bicycle"                   = "BICYCLE";
 
 "General.CoverageType.other"                       = "Object";
 "General.CoverageType.carCollisionDeductible"      = "Collision deductible";
@@ -56,12 +56,12 @@
 "General.CoverageType.petCat"                      = "Pet health";
 "General.CoverageType.bicycle"                     = "Theft";
 
-"General.mETH" = "mETH";
+"General.mETH"                                     = "mETH";
 
-"General.he" = "He";
-"General.she" = "She";
-"General.him" = "Him";
-"General.her" = "Her";
+"General.he"                                       = "He";
+"General.she"                                      = "She";
+"General.him"                                      = "Him";
+"General.her"                                      = "Her";
 
 /*
  case carCollision                 = 101

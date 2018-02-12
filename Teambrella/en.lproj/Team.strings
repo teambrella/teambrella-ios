@@ -8,204 +8,205 @@
 
 // Claims
 
-"Team.ClaimsVC.indicatorTitle"                   = "Claims";
-"Team.ClaimsCell.claimed"                        = "claimed";
-"Team.ClaimsCell.viewToVote"                     = "View to vote";
-"Team.ClaimsCell.reimbursed"                     = "Reimbursed";
+"Team.ClaimsVC.indicatorTitle"                        = "Claims";
+"Team.ClaimsCell.claimed"                             = "claimed";
+"Team.ClaimsCell.viewToVote"                          = "View to vote";
+"Team.ClaimsCell.reimbursed"                          = "Reimbursed";
 
-"Team.ClaimCell.claimID_format"                  = "Claim %d";
-"Team.ClaimCell.timePassed_format"               = "%d min ago";
+"Team.ClaimCell.claimID_format"                       = "Claim %d";
+"Team.ClaimCell.timePassed_format"                    = "%d min ago";
 
-"Team.ClaimCell.voting"                          = "Voting";
-"Team.ClaimCell.remainingMinutes_format"         = "%d min";
-"Team.ClaimCell.yourVote"                        = "your vote";
-"Team.ClaimCell.byProxy"                         = "by proxy";
-"Team.ClaimCell.teamVote"                        = "team vote";
-"Team.ClaimCell.voteSubmitted"                   = "Vote Submitted";
-"Team.ClaimCell.resetVote"                       = "Reset vote";
-"Team.ClaimCell.claimDetails"                    = "CLAIM DETAILS";
-"Team.ClaimCell.claimAmount"                     = "Claim Amount";
-"Team.ClaimCell.estimatedExpences"               = "Estimated expenses";
-"Team.ClaimCell.deductible"                      = "Deductible";
-"Team.ClaimCell.coverage"                        = "Coverage";
-"Team.ClaimCell.incidentDate"                    = "Incident date";
+"Team.ClaimCell.voting"                               = "Voting";
+"Team.ClaimCell.remainingMinutes_format"              = "%d min";
+"Team.ClaimCell.yourVote"                             = "your vote";
+"Team.ClaimCell.byProxy"                              = "by proxy";
+"Team.ClaimCell.teamVote"                             = "team vote";
+"Team.ClaimCell.voteSubmitted"                        = "Vote Submitted";
+"Team.ClaimCell.resetVote"                            = "Reset vote";
+"Team.ClaimCell.claimDetails"                         = "CLAIM DETAILS";
+"Team.ClaimCell.claimAmount"                          = "Claim Amount";
+"Team.ClaimCell.estimatedExpences"                    = "Estimated expenses";
+"Team.ClaimCell.deductible"                           = "Deductible";
+"Team.ClaimCell.coverage"                             = "Coverage";
+"Team.ClaimCell.incidentDate"                         = "Incident date";
 
-"Team.FeedVC.indicatorTitle"                     = "Feed";
+"Team.FeedVC.indicatorTitle"                          = "Feed";
 
-"Team.Teammates.newTeammates"                    = "NEW TEAMMATES";
-"Team.Teammates.teammates"                       = "TEAMMATES";
-"Team.Teammates.votingEndsIn"                    = "VOTING ENDS IN";
-"Team.Teammates.net"                             = "NET";
-"Team.MembersVC.indicatorTitle"                  = "Teammates";
-"Team.MembersVC.searchHere"                      = "Search";
+"Team.Teammates.newTeammates"                         = "NEW TEAMMATES";
+"Team.Teammates.teammates"                            = "TEAMMATES";
+"Team.Teammates.votingEndsIn"                         = "VOTING ENDS IN";
+"Team.Teammates.net"                                  = "NET";
+"Team.MembersVC.indicatorTitle"                       = "Teammates";
+"Team.MembersVC.searchHere"                           = "Search";
 
-"Team.TeammateCell.youAreProxy_format_s"         = "You are proxy for %@";
-"Team.TeammateCell.covered"                      = "COVERED";
-"Team.TeammateCell.collisionDeductible"          = "Collision Deductible";
-"Team.TeammateCell.limit"                        = "CLAIM LIMIT";
-"Team.TeammateCell.risk"                         = "RISK";
+"Team.TeammateCell.youAreProxy_format_s"              = "You are proxy for %@";
+"Team.TeammateCell.covered"                           = "COVERED";
+"Team.TeammateCell.collisionDeductible"               = "Collision Deductible";
+"Team.TeammateCell.limit"                             = "CLAIM LIMIT";
+"Team.TeammateCell.risk"                              = "RISK";
 
-"Team.TeammateCell.votingStats"                  = "VOTING STATS";
-"Team.TeammateCell.weight"                       = "WEIGHT";
-"Team.TeammateCell.proxyRank"                    = "PROXY RANK";
-"Team.TeammateCell.decisions"                    = "Decisions";
-"Team.TeammateCell.discussions"                  = "Discussions";
-"Team.TeammateCell.votingFrequency"              = "Voting Frequency";
-"Team.TeammateCell.applicationDiscussion"        = "Application Discussion";
+"Team.TeammateCell.votingStats"                       = "VOTING STATS";
+"Team.TeammateCell.weight"                            = "WEIGHT";
+"Team.TeammateCell.proxyRank"                         = "PROXY RANK";
+"Team.TeammateCell.decisions"                         = "Decisions";
+"Team.TeammateCell.discussions"                       = "Discussions";
+"Team.TeammateCell.votingFrequency"                   = "Voting Frequency";
+"Team.TeammateCell.applicationDiscussion"             = "Application Discussion";
 
-"Team.TeammateCell.timeLabel.justNow"            = "JUST NOW";
-"Team.TeammateCell.timeLabel.minutes_format_i"   = "%d MIN. AGO";
-"Team.TeammateCell.timeLabel.hours_format_i"     = "%d HR. AGO";
-"Team.TeammateCell.timeLabel.longAgo"            = "LONG AGO";
-"Team.TeammateCell.contact"                      = "CONTACT";
-"Team.TeammateCell.buttonTitle_format_i"         = "See Claims (%d)";
+"Team.TeammateCell.timeLabel.justNow"                 = "JUST NOW";
+"Team.TeammateCell.timeLabel.minutes_format_i"        = "%d MIN. AGO";
+"Team.TeammateCell.timeLabel.hours_format_i"          = "%d HR. AGO";
+"Team.TeammateCell.timeLabel.longAgo"                 = "LONG AGO";
+"Team.TeammateCell.contact"                           = "CONTACT";
+"Team.TeammateCell.buttonTitle_format_i"              = "See Claims (%d)";
 
-"Team.Decisions.generous"                        = "generous";
-"Team.Decisions.mild"                            = "mild";
-"Team.Decisions.moderate"                        = "moderate";
-"Team.Decisions.severe"                          = "severe";
-"Team.Decisions.harsh"                           = "harsh";
-"Team.unknown"                                   = "unknown";
+"Team.Decisions.generous"                             = "generous";
+"Team.Decisions.mild"                                 = "mild";
+"Team.Decisions.moderate"                             = "moderate";
+"Team.Decisions.severe"                               = "severe";
+"Team.Decisions.harsh"                                = "harsh";
+"Team.unknown"                                        = "unknown";
 
-"Team.Discussions.quiet"                         = "quiet";
-"Team.Discussions.reserved"                      = "reserved";
-"Team.Discussions.moderate"                      = "moderate";
-"Team.Discussions.sociable"                      = "sociable";
-"Team.Discussions.chatty"                        = "chatty";
+"Team.Discussions.quiet"                              = "quiet";
+"Team.Discussions.reserved"                           = "reserved";
+"Team.Discussions.moderate"                           = "moderate";
+"Team.Discussions.sociable"                           = "sociable";
+"Team.Discussions.chatty"                             = "chatty";
 
-"Team.Frequency.never"                           = "never";
-"Team.Frequency.rarely"                          = "rarely";
-"Team.Frequency.occasionally"                    = "ocasionally";
-"Team.Frequency.frequently"                      = "frequently";
-"Team.Frequency.often"                           = "often";
-"Team.Frequency.regularly"                       = "regularly";
-"Team.Frequency.always"                          = "always";
+"Team.Frequency.never"                                = "never";
+"Team.Frequency.rarely"                               = "rarely";
+"Team.Frequency.occasionally"                         = "ocasionally";
+"Team.Frequency.frequently"                           = "frequently";
+"Team.Frequency.often"                                = "often";
+"Team.Frequency.regularly"                            = "regularly";
+"Team.Frequency.always"                               = "always";
 
-"Team.RulesVC.indicatorTitle"                    = "Rules";
+"Team.RulesVC.indicatorTitle"                         = "Rules";
 
-"Team.TeammateCell.object"                       = "OBJECT";
-"Team.TeammateCell.addToMyProxyVoters"           = "Add to my Proxy Voters";
-"Team.TeammateCell.removeFromMyProxyVoters"      = "Remove from my Proxy Voters";
-"Team.TeammateCell.discussion"                   = "DISCUSSION";
-"Team.MembersVC.inviteAFriend"                   = "Invite a Friend";
-"Team.TeammateCell.allVotes"                     = "All Votes";
-"Team.TeammateCell.cashFlow"                     = "Cash Flow";
-"Team.TeammateCell.transactions"                 = "Transactions";
-"Team.team"                                      = "Team";
-"Team.JoinTeamVC.closeButton"                    = "Close";
-"Team.JoinTeamVC.getStartedButton"               = "Get Started";
+"Team.TeammateCell.object"                            = "OBJECT";
+"Team.TeammateCell.addToMyProxyVoters"                = "Add to my Proxy Voters";
+"Team.TeammateCell.removeFromMyProxyVoters"           = "Remove from my Proxy Voters";
+"Team.TeammateCell.discussion"                        = "DISCUSSION";
+"Team.MembersVC.inviteAFriend"                        = "Invite a Friend";
+"Team.TeammateCell.allVotes"                          = "All Votes";
+"Team.TeammateCell.cashFlow"                          = "Cash Flow";
+"Team.TeammateCell.transactions"                      = "Transactions";
+"Team.team"                                           = "Team";
+"Team.JoinTeamVC.closeButton"                         = "Close";
+"Team.JoinTeamVC.getStartedButton"                    = "Get Started";
 
-"Team.JoinTeamVC.GreetingCell.greeting"          = "Hi %@!";
+"Team.JoinTeamVC.GreetingCell.greeting"               = "Hi %@!";
 
-"Team.JoinTeamVC.InfoCell.headerLabel"           = "TEAM INFO";
-"Team.JoinTeamVC.InfoCell.numberBar.left"        = "Teammates";
-"Team.JoinTeamVC.InfoCell.numberBar.right"       = "Discussions";
-"Team.JoinTeamVC.InfoCell.rulesButton"           = "Read Team Rules";
+"Team.JoinTeamVC.InfoCell.headerLabel"                = "TEAM INFO";
+"Team.JoinTeamVC.InfoCell.numberBar.left"             = "Teammates";
+"Team.JoinTeamVC.InfoCell.numberBar.right"            = "Discussions";
+"Team.JoinTeamVC.InfoCell.rulesButton"                = "Read Team Rules";
 
-"Team.JoinTeamVC.PersonalCell.headerLabel"       = "PERSONAL INFO";
-"Team.JoinTeamVC.PersonalCell.name"              = "WHAT'S YOUR NAME";
-"Team.JoinTeamVC.PersonalCell.birthday"          = "DATE OF BIRTH";
-"Team.JoinTeamVC.PersonalCell.status"            = "STATUS";
-"Team.JoinTeamVC.PersonalCell.location"          = "WHAT'S YOUR LOCATION";
+"Team.JoinTeamVC.PersonalCell.headerLabel"            = "PERSONAL INFO";
+"Team.JoinTeamVC.PersonalCell.name"                   = "WHAT'S YOUR NAME";
+"Team.JoinTeamVC.PersonalCell.birthday"               = "DATE OF BIRTH";
+"Team.JoinTeamVC.PersonalCell.status"                 = "STATUS";
+"Team.JoinTeamVC.PersonalCell.location"               = "WHAT'S YOUR LOCATION";
 
-"Team.JoinTeamVC.ItemCell.headerLabel"           = "YOUR CAR";
-"Team.JoinTeamVC.ItemCell.makeModel"             = "MAKE AND MODEL";
-"Team.JoinTeamVC.ItemCell.year"                  = "YEAR";
-"Team.JoinTeamVC.ItemCell.currency"              = "CURRENCY";
-"Team.JoinTeamVC.ItemCell.price"                 = "ESTIMATED PRICE";
-"Team.JoinTeamVC.ItemCell.objectPhotos"          = "OBJECT PHOTOS";
+"Team.JoinTeamVC.ItemCell.headerLabel"                = "YOUR CAR";
+"Team.JoinTeamVC.ItemCell.makeModel"                  = "MAKE AND MODEL";
+"Team.JoinTeamVC.ItemCell.year"                       = "YEAR";
+"Team.JoinTeamVC.ItemCell.currency"                   = "CURRENCY";
+"Team.JoinTeamVC.ItemCell.price"                      = "ESTIMATED PRICE";
+"Team.JoinTeamVC.ItemCell.objectPhotos"               = "OBJECT PHOTOS";
 
-"Team.JoinTeamVC.MessageCell.headerLabel"        = "TEAM";
-"Team.JoinTeamVC.MessageCell.messageTitle"       = "MESSAGE TO TEAMMATES";
-"Team.JoinTeamVC.MessageCell.placeholder"        = "Introduce yourself to your future team mates by telling them a bit more about yourself. Note that this will help them approve or decline your application";
+"Team.JoinTeamVC.MessageCell.headerLabel"             = "TEAM";
+"Team.JoinTeamVC.MessageCell.messageTitle"            = "MESSAGE TO TEAMMATES";
+"Team.JoinTeamVC.MessageCell.placeholder"             = "Introduce yourself to your future team mates by telling them a bit more about yourself. Note that this will help them approve or decline your application";
 
-"Team.JoinTeamVC.TermsCell.headerLabel"          = "TERMS & CONDITIONS";
-"Team.JoinTeamVC.TermsCell.nonBold"              = "By pressing on ‘Send Application’\nI accept the Teambrella’s ";
-"Team.JoinTeamVC.TermsCell.bold"                 = "Terms & Conditions";
+"Team.JoinTeamVC.TermsCell.headerLabel"               = "TERMS & CONDITIONS";
+"Team.JoinTeamVC.TermsCell.nonBold"                   = "By pressing on ‘Send Application’\nI accept the Teambrella’s ";
+"Team.JoinTeamVC.TermsCell.bold"                      = "Terms & Conditions";
 
-"Team.VotingRiskVC.headerLabel"                  = "VOTING: RISK";
-"Team.VotingRiskVC.numberBar.left"               = "TEAM VOTE";
-"Team.VotingRiskVC.numberBar.right"              = "YOUR VOTE";
-"Team.VotingRiskVC.avgLabel"                     = "AVG\n%d\%";
-"Team.VotingRiskVC.resetVoteButton"              = "Reset Vote";
-"Team.VotingRiskVC.othersButton"                 = "Others";
-"Team.VotingRiskVC.ends"                         = "ENDS %@";
+"Team.VotingRiskVC.headerLabel"                       = "VOTING: RISK";
+"Team.VotingRiskVC.numberBar.left"                    = "TEAM VOTE";
+"Team.VotingRiskVC.numberBar.right"                   = "YOUR VOTE";
+"Team.VotingRiskVC.avgLabel"                          = "AVG\n%d\%";
+"Team.VotingRiskVC.resetVoteButton"                   = "Reset Vote";
+"Team.VotingRiskVC.othersButton"                      = "Others";
+"Team.VotingRiskVC.ends"                              = "ENDS %@";
 
-"Team.Members.Teammates.Strategy.headerTitle"    = "RISK: %.2f TO %.2f";
-"Team.Members.Teammates.Strategy.headerSubtitle" = "RISK";
-"Team.Members.Teammates.CompareTeamRisk.title"   = "Compare Team Risk";
+"Team.Members.Teammates.Strategy.headerTitle"         = "RISK: %.2f TO %.2f";
+"Team.Members.Teammates.Strategy.headerSubtitle"      = "RISK";
+"Team.Members.Teammates.CompareTeamRisk.title"        = "Compare Team Risk";
 
-"Team.ChooseYourTeamVC.header"                   = "CHOOSE YOUR TEAM";
-"Team.Teammate.Footer.MemberSince"               = "Member since %@";
+"Team.ChooseYourTeamVC.header"                        = "CHOOSE YOUR TEAM";
+"Team.Teammate.Footer.MemberSince"                    = "Member since %@";
 
-"Team.FeedVC.startDiscussionButton.title"        = "Start Discussion";
+"Team.FeedVC.startDiscussionButton.title"             = "Start Discussion";
 
-"Team.Claims.ClaimTransactionsVC.title"          = "Transactions";
-"Team.Claims.ClaimTransactionsVC.amountCrypto"   = "Amount Crypto";
-"Team.Claims.ClaimTransactionsVC.amountFiat"     = "Amount Fiat";
-"Team.Claims.ClaimTransactionsVC.status"         = "Status";
+"Team.Claims.ClaimTransactionsVC.title"               = "Transactions";
+"Team.Claims.ClaimTransactionsVC.amountCrypto"        = "Amount Crypto";
+"Team.Claims.ClaimTransactionsVC.amountFiat"          = "Amount Fiat";
+"Team.Claims.ClaimTransactionsVC.status"              = "Status";
 
-"Team.Claims.ClaimVC.VotingCell.endsTitle"       = "Ends ";
+"Team.Claims.ClaimVC.VotingCell.endsTitle"            = "Ends ";
 
-"Team.Claims.State.Header.fullyPaid"             = "FULLY PAID";
-"Team.Claims.State.Header.beingPaid"             = "BEING PAID";
-"Team.Claims.State.Header.voted"                 = "VOTED";
-"Team.Claims.VotedCell.voted"                    = "Voted: ";
-"Team.ClaimsCell.declined"                       = "DECLINED";
+"Team.Claims.State.Header.fullyPaid"                  = "FULLY PAID";
+"Team.Claims.State.Header.beingPaid"                  = "BEING PAID";
+"Team.Claims.State.Header.voted"                      = "VOTED";
+"Team.Claims.VotedCell.voted"                         = "Voted: ";
+"Team.ClaimsCell.declined"                            = "DECLINED";
 
-"Team.Chat.TextCell.voted_format"                = "VOTED:%@%%";
-"Team.Chat.TextCell.Application.voted_format"    = "VOTED:%@";
-"Team.Chat.TextCell.notVoted"                    = "NOT VOTED";
+"Team.Chat.TextCell.voted_format"                     = "VOTED:%@%%";
+"Team.Chat.TextCell.Application.voted_format"         = "VOTED:%@";
+"Team.Chat.TextCell.notVoted"                         = "NOT VOTED";
 
-"Team.Chat.TypeLabel.claim"                      = "CLAIM";
-"Team.Chat.TypeLabel.application"                = "APPLICATION";
-"Team.Chat.TypeLabel.other"                      = "DISCUSSION";
-"Team.Chat.Separator.newMessages"                = "NEW MESSAGES";
-"Team.Chat.Input.yourMessageHere"                = "Your message here";
+"Team.Chat.TypeLabel.claim"                           = "CLAIM";
+"Team.Chat.TypeLabel.application"                     = "APPLICATION";
+"Team.Chat.TypeLabel.other"                           = "DISCUSSION";
+"Team.Chat.Separator.newMessages"                     = "NEW MESSAGES";
+"Team.Chat.Input.yourMessageHere"                     = "Your message here";
 
-"Team.Home.Card.claimed"                         = "CLAIMED";
-"Team.Home.Card.yourClaim"                       = "Your Claim";
-"Team.Home.Card.claim"                           = "Claim";
-"Team.Home.Card.coverage"                        = "COVERAGE";
-"Team.Home.Card.newTeammate"                     = "New Teammate";
-"Team.Home.Card.teamVote"                        = "TEAM VOTE";
-"Team.Home.Card.voting"                          = "VOTING";
+"Team.Home.Card.claimed"                              = "CLAIMED";
+"Team.Home.Card.yourClaim"                            = "Your Claim";
+"Team.Home.Card.claim"                                = "Claim";
+"Team.Home.Card.coverage"                             = "COVERAGE";
+"Team.Home.Card.newTeammate"                          = "New Teammate";
+"Team.Home.Card.teamVote"                             = "TEAM VOTE";
+"Team.Home.Card.voting"                               = "VOTING";
 
-"Team.ChooseTeam.switchUser"                     = "Switch user";
+"Team.ChooseTeam.switchUser"                          = "Switch user";
 
 //---waiting---
-"Team.Claims.Empty.title" = "No claims in the team so far";
-"Team.Claims.Empty.details" = "We will notify you when a claim is submitted.";
-"Team.Chat.NotificationSettings.title" = "NOTIFICATION SETTINGS";
-"Team.Chat.NotificationSettings.subscribed" = "Subscribed";
-"Team.Chat.NotificationSettings.subscribed.details" = "You will get a notification of each message.";
-"Team.Chat.NotificationSettings.unsubscribed" = "No Notifications";
+"Team.Claims.Empty.title"                             = "No claims in the team so far";
+"Team.Claims.Empty.details"                           = "We will notify you when a claim is submitted.";
+"Team.Chat.NotificationSettings.title"                = "NOTIFICATION SETTINGS";
+"Team.Chat.NotificationSettings.subscribed"           = "Subscribed";
+"Team.Chat.NotificationSettings.subscribed.details"   = "You will get a notification of each message.";
+"Team.Chat.NotificationSettings.unsubscribed"         = "No Notifications";
 "Team.Chat.NotificationSettings.unsubscribed.details" = "Notifications will be disabled for this chat.";
-"Team.Chat.Unmute" = "You now receive notifications for this conversation.";
-"Team.Chat.Mute" = "You now don't receive notifications for this conversation.";
+"Team.Chat.Unmute"                                    = "You now receive notifications for this conversation.";
+"Team.Chat.Mute"                                      = "You now don't receive notifications for this conversation.";
 
-"Team.Claims.objectView.reportButton.title" = "Report a Claim";
+"Team.Claims.objectView.reportButton.title"           = "Report a Claim";
 
-"Team.Chat.ObjectView.VoteLabel" = "Vote";
-"Team.Chat.ObjectView.RevoteLabel" = "Revote";
-"Team.Chat.ObjectView.ClaimAmountLabel" = "CLAIM AMOUNT - ";
-"Team.Chat.ObjectView.TitleLabel" = "YOUR VOTE";
-"Team.Chat.ObjectView.TitleLabel.risk" = "RISK";
-"Team.Chat.ObjectView.TitleLabel.team" = "TEAM VOTE";
+"Team.Chat.ObjectView.VoteLabel"                      = "Vote";
+"Team.Chat.ObjectView.RevoteLabel"                    = "Revote";
+"Team.Chat.ObjectView.ClaimAmountLabel"               = "CLAIM AMOUNT - ";
+"Team.Chat.ObjectView.TitleLabel"                     = "YOUR VOTE";
+"Team.Chat.ObjectView.TitleLabel.risk"                = "RISK";
+"Team.Chat.ObjectView.TitleLabel.team"                = "TEAM VOTE";
 
-"Team.Vote.doNotAccept" = "Do not accept";
-"Team.Vote.SwipeToVote" = "Swipe left and right to vote";
+"Team.Vote.doNotAccept"                               = "Do not accept";
+"Team.Vote.SwipeToVote"                               = "Swipe left and right to vote";
 
-"Team.Claim.Transactions.from" = "FROM";
-"Team.VotingRiskCell.teamAvg" = "TEAM\nAVG";
+"Team.Claim.Transactions.from"                        = "FROM";
+"Team.VotingRiskCell.teamAvg"                         = "TEAM\nAVG";
 
-"Team.Claim.Transactions.Empty.title" = "No transactions yet";
-"Team.Claim.Transactions.Empty.details" = "...";
-"Team.OthersVoted.Empty.title" = "No votes yet";
-"Team.OthersVoted.Empty.details" = "...";
+"Team.Claim.Transactions.Empty.title"                 = "No transactions yet";
+"Team.Claim.Transactions.Empty.details"               = "...";
+"Team.OthersVoted.Empty.title"                        = "No votes yet";
+"Team.OthersVoted.Empty.details"                      = "...";
 
-"Team.TeammateCell.coversMe"                     = "%@ COVERS ME";
-"Team.TeammateCell.coverThem"                    = "I COVER %@";
-"Team.TeammateCell.wouldCoverMe"                 = "%@ WOULD COVER ME";
-"Team.TeammateCell.wouldCoverThem"               = "I WOULD COVER %@";
-"Team.TeammateCell.wouldCoverThem.notYet"        = "Not yet";
+"Team.TeammateCell.coversMe"                          = "%@ COVERS ME";
+"Team.TeammateCell.coverThem"                         = "I COVER %@";
+"Team.TeammateCell.wouldCoverMe"                      = "%@ WOULD COVER ME";
+"Team.TeammateCell.wouldCoverThem"                    = "I WOULD COVER %@";
+"Team.TeammateCell.wouldCoverThem.notYet"             = "Not yet";
+
