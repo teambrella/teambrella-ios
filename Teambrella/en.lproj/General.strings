@@ -44,11 +44,11 @@
 "General.TransactionState.errorOutOfFunds"         = "error: out of funds";
 "General.TransactionState.errorTooManyUtxos"       = "error: too many Utxos";
 
-"General.CoverageObject.other"                       = "OBJECT";
-"General.CoverageObject.carCollisionDeductible"      = "CAR";
-"General.CoverageObject.petDog"                      = "DOG";
-"General.CoverageObject.petCat"                      = "CAT";
-"General.CoverageObject.bicycle"                     = "BICYCLE";
+"General.CoverageObject.other"                     = "OBJECT";
+"General.CoverageObject.carCollisionDeductible"    = "CAR";
+"General.CoverageObject.petDog"                    = "DOG";
+"General.CoverageObject.petCat"                    = "CAT";
+"General.CoverageObject.bicycle"                   = "BICYCLE";
 
 "General.CoverageType.other"                       = "Object";
 "General.CoverageType.carCollisionDeductible"      = "Collision deductible";
@@ -56,23 +56,13 @@
 "General.CoverageType.petCat"                      = "Pet health";
 "General.CoverageType.bicycle"                     = "Theft";
 
-"General.mETH" = "mETH";
+"General.mETH"                                     = "mETH";
 
-/*
- case carCollision                 = 101
- case carComprehensive             = 102
- case thirdParty                   = 103
- case carCollisionAndComprehensive = 104
- case drone                        = 140
- case mobile                       = 200
- case homeAppliances               = 220
- case unemployment                 = 260
- case healthDental                 = 280
- case healthOther                  = 290
- case businessBees                 = 400
- case businessCrime                = 440
- case businessLiability            = 460
- */
+"General.he"                                       = "He";
+"General.she"                                      = "She";
+"General.him"                                      = "Him";
+"General.her"                                      = "Her";
+
 
 
 

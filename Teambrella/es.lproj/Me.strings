@@ -62,27 +62,32 @@
 "Me.Report.submitButtonTitle-create"           = "Create";
 "Me.Report.cancelButtonTitle"                  = "Cancel";
 
-"Me.Wallet.Withdraw" = "Withdraw";
-"Me.Wallet.Withdraw.Details.title" = "WITHDRAW DETAILS";
-"Me.Wallet.Withdraw.Details.to.title" = "TO";
-"Me.Wallet.Withdraw.Details.to.placeholder" = "To ethereum address";
-"Me.Wallet.Withdraw.Details.amount.title" = "AMOUNT mETH";
-"Me.Wallet.Withdraw.Details.amount.placeholder" = "Value";
-"Me.Wallet.Withdraw.Details.submitButton.title" = "Submit";
-"Me.Wallet.Withdraw.header.queued" = "WITHDRAWAL QUEUED";
-"Me.Wallet.Withdraw.header.inProgress" = "WITHDRAWAL IN PROGRESS";
-"Me.Wallet.Withdraw.header.history" = "WITHDRAWAL HISTORY";
-"Me.Wallet.Withdraw.WithdrawInfo.title" = "WITHDRAW INFORMATION";
+"Me.Report.submitButtonTitle-submit"           = "Enviar";
+"Me.Report.submitButtonTitle-create"           = "Crear";
+"Me.Report.cancelButtonTitle"                  = "Cancelar";
+"Me.Report.newDiscussion.title-placeholder"    = "Título";
+
+"Me.Wallet.Withdraw" = "Retirada";
+"Me.Wallet.Withdraw.Details.title" = "Detalles de retirada";
+"Me.Wallet.Withdraw.Details.to.title" = "Transferir a";
+"Me.Wallet.Withdraw.Details.to.placeholder" = "Dirección de Ethereum";
+"Me.Wallet.Withdraw.Details.amount.title" = "CANTIDAD mETH";
+"Me.Wallet.Withdraw.Details.amount.placeholder" = "Valor";
+"Me.Wallet.Withdraw.Details.submitButton.title" = "Enviar";
+"Me.Wallet.Withdraw.header.queued" = "RETIRADA APLAZADA";
+"Me.Wallet.Withdraw.header.inProgress" = "RETIRADA EN PROGRESSO";
+"Me.Wallet.Withdraw.header.history" = "ARCHIVO DE RETIRADAS";
+"Me.Wallet.Withdraw.WithdrawInfo.title" = "INFORMACIÓN DE RETIRADA";
 "Me.Wallet.Withdraw.WithdrawInfo.balance" = "Balance";
-"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest" = "You may request up to balance amount for withdrawal %@ mETH";
-"Me.Wallet.Withdraw.WithdrawInfo.youHave" = "You have %@ mETH reserved, if some part of the reserved funds becomes available, it would be automatically scheduled for the withdrawal.";
+"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest" = "Tu puedes solicitar hasta el saldo de la cantidad de retirada %@ mETH";
+"Me.Wallet.Withdraw.WithdrawInfo.youHave" = "Tienes %@ mETH reservado, si alguna parte de los fondos reservados está disponible, sería programado automáticamente para la retirada.";
 
-// To translate
+"Me.Wallet.Withdraw.noCameraAccess.title" = "Se require un acceso a la cámara para escanear código QR";
+"Me.Wallet.Withdraw.noCameraAccess.details" = "Por favor, permita acceso a la cámara del dispositivo para que la aplicación Teambrella pueda escanear códigos QR";
+"Me.Wallet.Withdraw.noCameraAccess.cancelButton" = "Cancelar";
+"Me.Wallet.Withdraw.noCameraAccess.settingsButton" = "Ajustes";
 
-"Me.Wallet.Withdraw.noCameraAccess.title" = "Access to camera is required to scan QR code";
-"Me.Wallet.Withdraw.noCameraAccess.details" = "Please grant access to device camera for Teambrella app to be able to scan QR codes";
-"Me.Wallet.Withdraw.noCameraAccess.cancelButton" = "Cancel";
-"Me.Wallet.Withdraw.noCameraAccess.settingsButton" = "Settings";
+// to translate
 
 "Me.WalletVC.lowerBrick.title"                 = "RECOMENDADO";
 "Me.Wallet.Transactions.to" = "TO";

@@ -41,6 +41,7 @@ struct TeambrellaError: Error {
         case noTeamsApplicationPending  = 8
         case noTeamsApplicationApproved = 9
         case argumentOutOfRange         = 10
+        case unsupportedClientVersion   = 12
         
         case teamAlreadyJoined          = 5010
         case teamJoinedAndProxyExists   = 5011
