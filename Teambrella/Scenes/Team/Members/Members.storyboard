@@ -58,17 +58,62 @@
                                                         <constraint firstAttribute="width" constant="40" id="v5m-ej-zg2"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Sp-Vp1">
-                                                    <rect key="frame" x="64" y="7" width="33" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Sp-Vp1">
+                                                    <rect key="frame" x="72" y="19" width="191.5" height="35"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk5-Mq-84T" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="191.5" height="17.5"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TESLA MODEL S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSm-tY-p3I" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="19.5" width="191.5" height="15.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTED (2.1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMa-g1-Uv2" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="20" width="56.5" height="15"/>
+                                                            <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                    <real key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                    <real key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="PMa-g1-Uv2" secondAttribute="bottom" id="7M8-ra-tcj"/>
+                                                        <constraint firstAttribute="bottom" secondItem="oSm-tY-p3I" secondAttribute="bottom" id="AJA-Mz-c9j"/>
+                                                        <constraint firstItem="gk5-Mq-84T" firstAttribute="top" secondItem="66R-Sp-Vp1" secondAttribute="top" id="CaP-0y-Buy"/>
+                                                        <constraint firstItem="gk5-Mq-84T" firstAttribute="leading" secondItem="66R-Sp-Vp1" secondAttribute="leading" id="HWE-zk-7BH"/>
+                                                        <constraint firstItem="PMa-g1-Uv2" firstAttribute="leading" secondItem="66R-Sp-Vp1" secondAttribute="leading" id="JGX-FY-oeI"/>
+                                                        <constraint firstItem="oSm-tY-p3I" firstAttribute="top" secondItem="gk5-Mq-84T" secondAttribute="bottom" constant="2" id="JHf-6f-Ibl"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PMa-g1-Uv2" secondAttribute="trailing" id="XdY-gE-GaS"/>
+                                                        <constraint firstItem="gk5-Mq-84T" firstAttribute="bottom" secondItem="66R-Sp-Vp1" secondAttribute="centerY" id="Z51-KH-h2m"/>
+                                                        <constraint firstItem="PMa-g1-Uv2" firstAttribute="top" secondItem="gk5-Mq-84T" secondAttribute="bottom" constant="2" id="bkc-Dh-SBK"/>
+                                                        <constraint firstAttribute="trailing" secondItem="gk5-Mq-84T" secondAttribute="trailing" id="e2s-MR-VIv"/>
+                                                        <constraint firstItem="oSm-tY-p3I" firstAttribute="leading" secondItem="66R-Sp-Vp1" secondAttribute="leading" id="jK9-mm-gLY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="oSm-tY-p3I" secondAttribute="trailing" id="nud-la-iI0"/>
+                                                    </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk5-Mq-84T" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="19" width="130" height="18"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="vCL-5f-T9L">
                                                     <rect key="frame" x="351" y="30" width="8" height="13"/>
                                                     <constraints>
@@ -98,41 +143,11 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 Days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="QSu-DT-TmB" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="255" y="27" width="48" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="6 Days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="QSu-DT-TmB" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                                                    <rect key="frame" x="255.5" y="27" width="47.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TESLA MODEL S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSm-tY-p3I" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="39" width="80" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTED (2.1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMa-g1-Uv2" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="37" width="56.5" height="11"/>
-                                                    <color key="backgroundColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
-                                                            <real key="value" value="2"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
-                                                            <real key="value" value="2"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                            <real key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                                            <real key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYX-XR-2ma">
                                                     <rect key="frame" x="16" y="71" width="359" height="1"/>
@@ -145,25 +160,21 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="oSm-tY-p3I" firstAttribute="leading" secondItem="gk5-Mq-84T" secondAttribute="leading" id="9Ub-4B-txG"/>
-                                            <constraint firstItem="QSu-DT-TmB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gk5-Mq-84T" secondAttribute="trailing" constant="8" id="Bss-lR-gi2"/>
                                             <constraint firstItem="QSu-DT-TmB" firstAttribute="centerY" secondItem="foQ-UG-0tF" secondAttribute="centerY" id="EF4-PE-vBi"/>
                                             <constraint firstItem="qAk-dA-n6i" firstAttribute="leading" secondItem="QSu-DT-TmB" secondAttribute="trailing" constant="12" id="IiS-hI-73J"/>
                                             <constraint firstAttribute="bottom" secondItem="rYX-XR-2ma" secondAttribute="bottom" id="JBl-wN-ZIJ"/>
-                                            <constraint firstItem="gk5-Mq-84T" firstAttribute="leading" secondItem="Tid-74-fKJ" secondAttribute="trailing" constant="16" id="KmJ-3f-ZW1"/>
+                                            <constraint firstItem="66R-Sp-Vp1" firstAttribute="trailing" secondItem="QSu-DT-TmB" secondAttribute="leading" constant="8" id="Lph-Oy-tae"/>
                                             <constraint firstAttribute="trailing" secondItem="rYX-XR-2ma" secondAttribute="trailing" id="NAj-Uj-5K6"/>
+                                            <constraint firstItem="66R-Sp-Vp1" firstAttribute="top" secondItem="Tid-74-fKJ" secondAttribute="top" id="OEl-oJ-bJC"/>
                                             <constraint firstItem="rYX-XR-2ma" firstAttribute="leading" secondItem="foQ-UG-0tF" secondAttribute="leading" constant="16" id="Qh5-y3-vX9"/>
                                             <constraint firstAttribute="trailing" secondItem="vCL-5f-T9L" secondAttribute="trailing" constant="16" id="Z4x-gb-n0M"/>
-                                            <constraint firstItem="PMa-g1-Uv2" firstAttribute="top" secondItem="gk5-Mq-84T" secondAttribute="bottom" id="ap2-Hm-W3P"/>
                                             <constraint firstItem="Tid-74-fKJ" firstAttribute="centerY" secondItem="foQ-UG-0tF" secondAttribute="centerY" id="b2N-g1-aY6"/>
-                                            <constraint firstItem="PMa-g1-Uv2" firstAttribute="leading" secondItem="gk5-Mq-84T" secondAttribute="leading" id="dTm-hy-o1O"/>
                                             <constraint firstItem="vCL-5f-T9L" firstAttribute="leading" secondItem="qAk-dA-n6i" secondAttribute="trailing" constant="16" id="iec-Ad-OVm"/>
                                             <constraint firstItem="Tid-74-fKJ" firstAttribute="leading" secondItem="foQ-UG-0tF" secondAttribute="leading" constant="16" id="iyz-vZ-Rcy"/>
-                                            <constraint firstItem="gk5-Mq-84T" firstAttribute="top" secondItem="Tid-74-fKJ" secondAttribute="top" id="kTy-Ld-2eM"/>
                                             <constraint firstItem="qAk-dA-n6i" firstAttribute="centerY" secondItem="foQ-UG-0tF" secondAttribute="centerY" id="mMh-bL-w1S"/>
-                                            <constraint firstItem="QSu-DT-TmB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oSm-tY-p3I" secondAttribute="trailing" constant="8" id="taK-Rf-thZ"/>
+                                            <constraint firstItem="66R-Sp-Vp1" firstAttribute="bottom" secondItem="Tid-74-fKJ" secondAttribute="bottom" id="rAj-I6-EaE"/>
+                                            <constraint firstItem="66R-Sp-Vp1" firstAttribute="leading" secondItem="Tid-74-fKJ" secondAttribute="trailing" constant="16" id="utg-7S-2Y2"/>
                                             <constraint firstItem="vCL-5f-T9L" firstAttribute="centerY" secondItem="foQ-UG-0tF" secondAttribute="centerY" id="x6V-rW-Ihb"/>
-                                            <constraint firstItem="oSm-tY-p3I" firstAttribute="top" secondItem="gk5-Mq-84T" secondAttribute="bottom" constant="2.5" id="yos-G0-7Rq"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                                         <connections>
@@ -190,17 +201,34 @@
                                                         <constraint firstAttribute="width" secondItem="AC1-iQ-fvm" secondAttribute="height" multiplier="8:7" id="gX9-ru-IY6"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hoq-Od-Ce2">
-                                                    <rect key="frame" x="64" y="7" width="33" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yV-jX-qWH">
+                                                    <rect key="frame" x="72" y="19" width="216" height="35"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIU-d2-vBN" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="216" height="17.5"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TESLA MODEL S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v4-6f-4kR" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="20" width="216" height="15"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="mIU-d2-vBN" firstAttribute="top" secondItem="6yV-jX-qWH" secondAttribute="top" id="AG2-k8-6zy"/>
+                                                        <constraint firstItem="mIU-d2-vBN" firstAttribute="leading" secondItem="6yV-jX-qWH" secondAttribute="leading" id="BDt-Mj-sVf"/>
+                                                        <constraint firstItem="2v4-6f-4kR" firstAttribute="top" secondItem="mIU-d2-vBN" secondAttribute="bottom" constant="2" id="b21-8p-Xl0"/>
+                                                        <constraint firstAttribute="trailing" secondItem="2v4-6f-4kR" secondAttribute="trailing" id="bdA-LC-K5K"/>
+                                                        <constraint firstAttribute="bottom" secondItem="2v4-6f-4kR" secondAttribute="bottom" id="f61-zd-7Lz"/>
+                                                        <constraint firstAttribute="trailing" secondItem="mIU-d2-vBN" secondAttribute="trailing" id="fkw-LY-fqP"/>
+                                                        <constraint firstItem="mIU-d2-vBN" firstAttribute="bottom" secondItem="6yV-jX-qWH" secondAttribute="centerY" id="mwB-91-5XJ"/>
+                                                        <constraint firstItem="2v4-6f-4kR" firstAttribute="leading" secondItem="6yV-jX-qWH" secondAttribute="leading" id="qcU-25-9Xz"/>
+                                                    </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIU-d2-vBN" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="19" width="130" height="18"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="v4A-ji-fL2">
                                                     <rect key="frame" x="351" y="30" width="8" height="13"/>
                                                     <constraints>
@@ -208,12 +236,6 @@
                                                         <constraint firstAttribute="width" constant="8" id="glw-TJ-OxI"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TESLA MODEL S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v4-6f-4kR" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="39" width="80" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEZ-8a-DwO">
                                                     <rect key="frame" x="16" y="71" width="359" height="1"/>
                                                     <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -221,13 +243,13 @@
                                                         <constraint firstAttribute="height" constant="1" id="pQA-MX-ZhP"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMB-N1-lwa" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMB-N1-lwa" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="307" y="17" width="28" height="39"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbc-3j-1Xu" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbc-3j-1Xu" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="280" y="17" width="22" height="39"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                     <nil key="textColor"/>
@@ -238,20 +260,19 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="MEZ-8a-DwO" secondAttribute="trailing" id="0H5-ji-zk5"/>
+                                            <constraint firstItem="6yV-jX-qWH" firstAttribute="top" secondItem="AC1-iQ-fvm" secondAttribute="top" id="362-vM-w0W"/>
                                             <constraint firstItem="MEZ-8a-DwO" firstAttribute="leading" secondItem="4aQ-0e-dvT" secondAttribute="leading" constant="16" id="6VZ-66-rtE"/>
-                                            <constraint firstItem="mIU-d2-vBN" firstAttribute="leading" secondItem="AC1-iQ-fvm" secondAttribute="trailing" constant="16" id="7aZ-BA-ime"/>
-                                            <constraint firstItem="mIU-d2-vBN" firstAttribute="top" secondItem="AC1-iQ-fvm" secondAttribute="top" id="9oy-Rl-Jbd"/>
-                                            <constraint firstItem="2v4-6f-4kR" firstAttribute="leading" secondItem="mIU-d2-vBN" secondAttribute="leading" id="CYw-6w-jMt"/>
-                                            <constraint firstItem="2v4-6f-4kR" firstAttribute="top" secondItem="mIU-d2-vBN" secondAttribute="bottom" constant="2.5" id="Dgn-fR-kyx"/>
+                                            <constraint firstItem="6yV-jX-qWH" firstAttribute="leading" secondItem="AC1-iQ-fvm" secondAttribute="trailing" constant="16" id="BWl-TD-PNX"/>
                                             <constraint firstItem="qbc-3j-1Xu" firstAttribute="centerY" secondItem="wMB-N1-lwa" secondAttribute="centerY" id="ENQ-Ah-MAg"/>
                                             <constraint firstAttribute="trailing" secondItem="v4A-ji-fL2" secondAttribute="trailing" constant="16" id="FP8-jU-eHM"/>
+                                            <constraint firstItem="6yV-jX-qWH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qbc-3j-1Xu" secondAttribute="leading" constant="8" id="T5W-Sq-0Ge"/>
                                             <constraint firstItem="v4A-ji-fL2" firstAttribute="leading" secondItem="wMB-N1-lwa" secondAttribute="trailing" constant="16" id="akg-qj-Jk6"/>
                                             <constraint firstItem="AC1-iQ-fvm" firstAttribute="leading" secondItem="4aQ-0e-dvT" secondAttribute="leading" constant="16" id="ayu-aE-EzB"/>
+                                            <constraint firstItem="6yV-jX-qWH" firstAttribute="bottom" secondItem="AC1-iQ-fvm" secondAttribute="bottom" id="l68-sb-DXO"/>
                                             <constraint firstItem="wMB-N1-lwa" firstAttribute="leading" secondItem="qbc-3j-1Xu" secondAttribute="trailing" constant="5" id="oaY-cB-MIZ"/>
                                             <constraint firstAttribute="bottom" secondItem="MEZ-8a-DwO" secondAttribute="bottom" id="pyb-fi-X5o"/>
                                             <constraint firstItem="AC1-iQ-fvm" firstAttribute="centerY" secondItem="4aQ-0e-dvT" secondAttribute="centerY" id="rMW-qw-wRw"/>
                                             <constraint firstItem="wMB-N1-lwa" firstAttribute="centerY" secondItem="4aQ-0e-dvT" secondAttribute="centerY" id="tBG-2O-c8V"/>
-                                            <constraint firstItem="qbc-3j-1Xu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mIU-d2-vBN" secondAttribute="trailing" constant="8" id="uxl-5l-wie"/>
                                             <constraint firstItem="v4A-ji-fL2" firstAttribute="centerY" secondItem="4aQ-0e-dvT" secondAttribute="centerY" id="v3b-3S-1I8"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
