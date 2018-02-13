@@ -144,10 +144,15 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         dataSource = HomeDataSource()
         dataSource.onUpdate = { [weak self] in
             self?.setup()
+//           бу self?.presentSettings()
         }
         if let teamID = service.session?.currentTeam?.teamID {
             dataSource.loadData(teamID: teamID)
         }
+    }
+
+    private func presentSettings() {
+        service.router.showSOD(mode: .silentPush, in: self)
     }
 
     private func clearScreen() {

@@ -20,6 +20,7 @@ class SODVC: UIViewController, Routable {
     enum SODMode {
         case outdated
         case oldVersion
+        case silentPush
     }
     
     static let storyboardName = "Info"
@@ -42,6 +43,8 @@ class SODVC: UIViewController, Routable {
             setupAsOutdated()
         case .oldVersion:
             setupAsOldVersion()
+        case .silentPush:
+            setupAsSilentPush()
         }
     }
     
@@ -70,12 +73,35 @@ class SODVC: UIViewController, Routable {
         lowerButton.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
 
+    private func setupAsSilentPush() {
+        logoView.image = #imageLiteral(resourceName: "logo-2").withRenderingMode(.alwaysTemplate)
+        logoView.tintColor = UIColor.sodBlue
+
+        titleLabel.text = "Info.OutdatedVersion.Title".localized
+        detailsLabel.text = "Info.OutdatedVersion.Details".localized
+
+        upperButton.setTitle("Info.OutdatedVersion.UpperButton.Title".localized, for: .normal)
+        lowerButton.setTitle("Info.OutdatedVersion.LowerButton.Title".localized, for: .normal)
+
+        upperButton.addTarget(self, action: #selector(openSilentPush), for: .touchUpInside)
+        lowerButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+    }
+
     @objc
     private func openAppStore() {
         let appID = Application().appID
         if let url = URL(string: "itms-apps://itunes.apple.com/app/id\(appID)") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+        close()
+    }
+
+    @objc
+    private func openSilentPush() {
+        guard var settingsURL = URL(string: UIApplicationOpenSettingsURLString) else { return }
+        //        guard let settingsURL = URL(string: "App-Prefs:root=General&path=BACKGROUND_APP_REFRESH") else { return }
+
+        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
         close()
     }
 

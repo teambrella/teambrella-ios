@@ -129,6 +129,7 @@ extension SocketService: WebSocketDelegate {
         if let error = error {
             log("disconnected with error: \(error)", type: [.error, .socket])
         }
+        // start()
     }
     
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
