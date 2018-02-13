@@ -22,11 +22,11 @@
 import UIKit
 
 class TextField: UITextField {
-    private lazy var alertDecorator = { AlertDecorator(view: self) }()
-    var isInAlertMode: Bool {
-        get { return alertDecorator.isInAlertMode }
-        set { alertDecorator.isInAlertMode = newValue }
-    }
+//    private lazy var alertDecorator = { AlertDecorator(view: self) }()
+//    var isInAlertMode: Bool {
+//        get { return alertDecorator.isInAlertMode }
+//        set { alertDecorator.isInAlertMode = newValue }
+//    }
     private lazy var editDecorator = { EditDecorator(view: self) }()
     var isInEditMode: Bool {
         get { return editDecorator.isInEditMode }
@@ -36,11 +36,11 @@ class TextField: UITextField {
 }
 
 class TextView: UITextView {
-    private lazy var alertDecorator = { AlertDecorator(view: self) }()
-    var isInAlertMode: Bool {
-        get { return alertDecorator.isInAlertMode }
-        set { alertDecorator.isInAlertMode = newValue }
-    }
+//    private lazy var alertDecorator = { AlertDecorator(view: self) }()
+//    var isInAlertMode: Bool {
+//        get { return alertDecorator.isInAlertMode }
+//        set { alertDecorator.isInAlertMode = newValue }
+//    }
     private lazy var editDecorator = { EditDecorator(view: self) }()
     var isInEditMode: Bool {
         get { return editDecorator.isInEditMode }
@@ -48,28 +48,26 @@ class TextView: UITextView {
     }
 }
 
-class AlertDecorator {
-    weak var view: UIView?
-    var alertBorderColor: UIColor = .red
-    var normalBorderColor: UIColor = .cloudyBlue
-    
-    var isInAlertMode: Bool {
-        didSet {
-            guard let view = view else { return }
-            
-            view.layer.borderWidth = 1
-            view.layer.cornerRadius = 5
-            view.clipsToBounds = true
-            view.layer.borderColor = isInAlertMode ? alertBorderColor.cgColor : normalBorderColor.cgColor
-        }
-    }
-    
-    init(view: UIView) {
-        self.view = view
-        self.isInAlertMode = false
-    }
-    
-}
+//class AlertDecorator {
+//    weak var view: UIView?
+//    var alertBorderColor: UIColor = .red
+//    var normalBorderColor: UIColor = .cloudyBlue
+//    var isInAlertMode: Bool {
+//        didSet {
+//            guard let view = view else { return }
+//
+//            view.layer.borderWidth = 1
+//            view.layer.cornerRadius = 5
+//            view.clipsToBounds = true
+//            view.layer.borderColor = isInAlertMode ? alertBorderColor.cgColor : normalBorderColor.cgColor
+//        }
+//    }
+//    init(view: UIView) {
+//        self.view = view
+//        self.isInAlertMode = false
+//    }
+//
+//}
 
 class EditDecorator {
     weak var view: UIView?

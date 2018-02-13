@@ -22,6 +22,7 @@
 import UIKit
 
 class ReportTitleCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var backView: UIView!
     @IBOutlet var titleLabel: Label!
 
     override func awakeFromNib() {

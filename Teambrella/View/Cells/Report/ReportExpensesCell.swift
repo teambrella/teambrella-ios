@@ -22,6 +22,7 @@
 import UIKit
 
 class ReportExpensesCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var backView: UIView!
     @IBOutlet var headerLabel: InfoLabel!
     @IBOutlet var expensesTextField: TextField!
     @IBOutlet var currencyTextField: TextField!

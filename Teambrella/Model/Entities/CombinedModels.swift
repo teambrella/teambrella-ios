@@ -74,5 +74,5 @@ struct NewChatModel: ReportModel {
     let title: String
     let text: String
     
-    var isValid: Bool { return title != "" && text.count >= 30 }
+    var isValid: Bool { return title != "" && title != " " && text != "" && text != " "/*&& text.count >= 30*/ }
 }

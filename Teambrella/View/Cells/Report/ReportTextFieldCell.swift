@@ -22,6 +22,7 @@
 import UIKit
 
 class ReportTextFieldCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var backView: UIView!
     @IBOutlet var headerLabel: Label!
     @IBOutlet var textField: TextField!
 

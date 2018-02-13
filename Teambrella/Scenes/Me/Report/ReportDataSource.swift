@@ -51,10 +51,11 @@ class ReportDataSource {
                      WalletReportCellModel(text: "")]
             self.coverage = coverage
         case .newChat:
-            items = [HeaderTitleReportCellModel(),
-                     TitleReportCellModel(text: ""),
-                     DescriptionReportCellModel(title: "Me.Report.DescriptionCell.title-discussion".localized,
-                                                text: "")]
+            items = [NewDiscussionCellModel(postTitleText: "", descriptionText: "")]
+            /*HeaderTitleReportCellModel(),
+             TitleReportCellModel(text: ""),
+             DescriptionReportCellModel(title: "Me.Report.DescriptionCell.title-discussion".localized,
+             text: "")]*/
         }
         
     }
@@ -106,11 +107,14 @@ class ReportDataSource {
         var title: String?
         var text: String?
         for model in items {
-            if let model = model as? TitleReportCellModel {
+            if let model = model as? NewDiscussionCellModel {
+                title = model.postTitleText
+                text = model.descriptionText
+            } /*else if let model = model as? TitleReportCellModel {
                 title = model.text
             } else if let model = model as? DescriptionReportCellModel {
                 text = model.text
-            }
+            }*/
         }
         
         if let text = text, let title = title {
@@ -165,7 +169,7 @@ class ReportDataSource {
                 self.limit = coverageForDate.limit
                 for (idx, item) in self.items.enumerated() {
                     if var item = item as? ExpensesReportCellModel {
-                    item.coverage = coverageForDate.coverage
+                        item.coverage = coverageForDate.coverage
                         
                         self.items[idx] = item
                         self.onUpdateCoverage?()

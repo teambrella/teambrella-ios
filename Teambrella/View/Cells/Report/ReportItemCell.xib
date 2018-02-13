@@ -12,14 +12,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReportItemCell" id="gTV-IL-0wX" customClass="ReportItemCell" customModule="Surilla" customModuleProvider="target">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReportItemCell" id="gTV-IL-0wX" customClass="ReportItemCell" customModule="Surilla" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="596" height="134"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="596" height="134"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apD-kU-Sjq">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apD-kU-Sjq">
                         <rect key="frame" x="0.0" y="0.0" width="596" height="134"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPORT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RC-8N-TtS" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
@@ -81,6 +81,7 @@
             <size key="customSize" width="596" height="134"/>
             <connections>
                 <outlet property="avatarView" destination="vkC-hk-Z91" id="uS4-Gr-OlR"/>
+                <outlet property="backView" destination="apD-kU-Sjq" id="hbT-4U-Xhf"/>
                 <outlet property="detailsLabel" destination="aeg-rl-3yn" id="2oI-Bq-Ipt"/>
                 <outlet property="headerLabel" destination="2RC-8N-TtS" id="AEh-Yg-3XG"/>
                 <outlet property="infoButton" destination="NaP-Kr-PAj" id="hRx-IF-bgc"/>

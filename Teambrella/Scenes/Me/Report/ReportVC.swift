@@ -51,19 +51,19 @@ final class ReportVC: UIViewController, Routable {
     private(set) var isInCorrectionMode: Bool = false
     private var photoController: PhotoPreviewVC = PhotoPreviewVC(collectionViewLayout: UICollectionViewFlowLayout())
     private var dataSource: ReportDataSource!
-
+    
     // Navigation buttons
     private var rightButton: UIButton?
     private var leftButton: UIButton?
-
+    
     private var isCoverageActual = false
     
     var coverage: Double = 0.0
     var limit: Double = 0.0
     var lastDate: Date = Date()
-
+    
     // MARK: Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if isModal {
@@ -89,7 +89,7 @@ final class ReportVC: UIViewController, Routable {
         dataSource = ReportDataSource(context: reportContext)
         dataSource.onUpdateCoverage = { [weak self] in
             guard let `self` = self else { return }
-
+            
             self.reloadExpencesCellIfNeeded()
             self.isCoverageActual = true
             self.coverage = self.dataSource.coverage.value
@@ -98,18 +98,18 @@ final class ReportVC: UIViewController, Routable {
         ReportCellBuilder.registerCells(in: collectionView)
         dataSource.getCoverageForDate(date: datePicker.date)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showNavigationBarButtons()
         enableSendButton()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         //showNavigationBarButtons()
     }
-
+    
     // MARK: Actions
     
     @objc
@@ -194,7 +194,10 @@ final class ReportVC: UIViewController, Routable {
     @objc
     func textFieldDidChange(textField: UITextField) {
         let indexPath = IndexPath(row: textField.tag, section: 0)
-        if var model = dataSource[indexPath] as? WalletReportCellModel {
+        if var model = dataSource[indexPath] as? NewDiscussionCellModel {
+            model.postTitleText = textField.text ?? ""
+            dataSource.items[indexPath.row] = model
+        } else if var model = dataSource[indexPath] as? WalletReportCellModel {
             model.text = textField.text ?? ""
             dataSource.items[indexPath.row] = model
         } else if var model = dataSource[indexPath] as? ExpensesReportCellModel,
@@ -208,9 +211,9 @@ final class ReportVC: UIViewController, Routable {
         }
         enableSendButton()
     }
-
+    
     // MARK: Private
-
+    
     private func addPhotoController(to view: UIView) {
         photoController.loadViewIfNeeded()
         if let superview = photoController.view.superview, superview == view {
@@ -226,7 +229,7 @@ final class ReportVC: UIViewController, Routable {
         self.addChildViewController(photoController)
         photoController.didMove(toParentViewController: self)
     }
-
+    
     private func validateAndSendData() {
         guard let model = dataSource.reportModel(imageStrings: photoController.photos), model.isValid else {
             isInCorrectionMode = true
@@ -234,15 +237,15 @@ final class ReportVC: UIViewController, Routable {
             enableSendButton()
             return
         }
-
+        
         dataSource.send(model: model) { [weak self] result in
             guard let me = self else { return }
-
+            
             me.delegate?.report(controller: me, didSendReport: result)
             self?.enableSendButton()
         }
     }
-
+    
     private func addKeyboardObservers() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapView))
         view.addGestureRecognizer(tap)
@@ -254,11 +257,11 @@ final class ReportVC: UIViewController, Routable {
                            name: Notification.Name.UIKeyboardWillChangeFrame,
                            object: nil)
     }
-
+    
     @discardableResult
     private func enableSendButton() -> Bool {
         guard let context = reportContext else { return false }
-
+        
         let enable: Bool
         switch context {
         case .claim:
@@ -274,23 +277,23 @@ final class ReportVC: UIViewController, Routable {
         rightButton?.alpha = enable ? 1 : 0.5
         return enable
     }
-
+    
     private func reloadExpencesCellIfNeeded() {
         let visibleCells = collectionView.visibleCells
         let expensesCells = visibleCells.filter { $0 is ReportExpensesCell }
         guard let expensesCell = expensesCells.first else { return }
         guard let indexPath = collectionView.indexPath(for: expensesCell) else { return }
-
+        
         collectionView.performBatchUpdates({
             collectionView.reloadItems(at: [indexPath])
         }) { finished in
-
+            
         }
     }
-
+    
     private func showNavigationBarButtons() {
         guard let context = reportContext else { return }
-
+        
         switch context {
         case .newChat:
             let cancelButton = UIButton()
@@ -298,11 +301,11 @@ final class ReportVC: UIViewController, Routable {
             cancelButton.setTitle("Me.Report.cancelButtonTitle".localized, for: .normal)
             cancelButton.sizeToFit()
             guard let cancelTitle = cancelButton.titleLabel else { return }
-
+            
             cancelTitle.font = UIFont.teambrella(size: 17)
             leftButton = cancelButton
             navigationItem.setLeftBarButton(UIBarButtonItem(customView: cancelButton), animated: false)
-
+            
             let createButton = UIButton()
             createButton.addTarget(self, action: #selector(tapSubmit(_:)), for: .touchUpInside)
             createButton.setTitle("Me.Report.submitButtonTitle-create".localized, for: .normal)
@@ -314,7 +317,7 @@ final class ReportVC: UIViewController, Routable {
             //            }
             createButton.sizeToFit()
             guard let createTitle = createButton.titleLabel else { return }
-
+            
             createTitle.font = UIFont.teambrella(size: 17)
             rightButton = createButton
             navigationItem.setRightBarButton(UIBarButtonItem(customView: createButton), animated: false)
@@ -324,7 +327,7 @@ final class ReportVC: UIViewController, Routable {
             submitButton.setTitle("Me.Report.submitButtonTitle-submit".localized, for: .normal)
             submitButton.sizeToFit()
             guard let submitTitle = submitButton.titleLabel else { return }
-
+            
             submitTitle.font = UIFont.teambrellaBold(size: 17)
             rightButton = submitButton
             navigationItem.setRightBarButton(UIBarButtonItem(customView: submitButton), animated: false)
@@ -360,8 +363,9 @@ extension ReportVC: UICollectionViewDelegate {
         ReportCellBuilder.populate(cell: cell, with: dataSource[indexPath], reportVC: self, indexPath: indexPath)
         if let cell = cell as? ReportPhotoGalleryCell {
             addPhotoController(to: cell.container)
-            
         }
+        let isLast = indexPath.row == dataSource.count - 1
+        ViewDecorator.decorateCollectionView(cell: cell, isFirst: indexPath.row == 0, isLast: isLast)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -375,7 +379,7 @@ extension ReportVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 16 * 2,
+        return CGSize(width: collectionView.bounds.width - 20 * 2,
                       height: CGFloat(dataSource[indexPath].preferredHeight))
     }
 }
@@ -401,11 +405,11 @@ extension ReportVC: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         let indexPath = IndexPath(row: textView.tag, section: 0)
-        if var model = dataSource[indexPath] as? DescriptionReportCellModel {
-            model.text = textView.text
+        if var model = dataSource[indexPath] as? NewDiscussionCellModel/*DescriptionReportCellModel*/ {
+            model.descriptionText = textView.text
             dataSource.items[indexPath.row] = model
         }
-        (textView as? TextView)?.isInAlertMode = false
+//        (textView as? TextView)?.isInAlertMode = false
         (textView as? TextView)?.isInEditMode = true
         enableSendButton()
     }
@@ -418,7 +422,7 @@ extension ReportVC: UITextViewDelegate {
 
 extension ReportVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        (textField as? TextField)?.isInAlertMode = false
+//        (textField as? TextField)?.isInAlertMode = false
         (textField as? TextField)?.isInEditMode = true
     }
     

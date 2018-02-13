@@ -11,6 +11,10 @@
 		175EF845201B71A300268D08 /* WalletInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175EF842201B71A300268D08 /* WalletInfoCell.swift */; };
 		175EF846201B71A300268D08 /* WalletInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175EF843201B71A300268D08 /* WalletInfoCell.xib */; };
 		175EF847201B71A300268D08 /* WalletInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175EF843201B71A300268D08 /* WalletInfoCell.xib */; };
+		17751AB12033568B00274F6A /* NewDiscussionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17751AAF2033568B00274F6A /* NewDiscussionCell.swift */; };
+		17751AB22033568B00274F6A /* NewDiscussionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17751AAF2033568B00274F6A /* NewDiscussionCell.swift */; };
+		17751AB32033568B00274F6A /* NewDiscussionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17751AB02033568B00274F6A /* NewDiscussionCell.xib */; };
+		17751AB42033568B00274F6A /* NewDiscussionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17751AB02033568B00274F6A /* NewDiscussionCell.xib */; };
 		6D02AC951F06A6B800B01AAF /* VotingScrollerCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC901F06A6B800B01AAF /* VotingScrollerCellModel.swift */; };
 		6D02AC961F06A6B800B01AAF /* VotingScrollerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC911F06A6B800B01AAF /* VotingScrollerDataSource.swift */; };
 		6D02AC9B1F06A6F800B01AAF /* LabeledRoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC991F06A6F800B01AAF /* LabeledRoundImageView.swift */; };
@@ -1112,6 +1116,8 @@
 		0F0981AC48D38E5C8A149C38 /* libPods-NotificationTeambrella.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NotificationTeambrella.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		175EF842201B71A300268D08 /* WalletInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletInfoCell.swift; path = View/Cells/WalletInfoCell.swift; sourceTree = "<group>"; };
 		175EF843201B71A300268D08 /* WalletInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WalletInfoCell.xib; path = View/Cells/WalletInfoCell.xib; sourceTree = "<group>"; };
+		17751AAF2033568B00274F6A /* NewDiscussionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewDiscussionCell.swift; path = View/Cells/Report/NewDiscussionCell.swift; sourceTree = "<group>"; };
+		17751AB02033568B00274F6A /* NewDiscussionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewDiscussionCell.xib; path = View/Cells/Report/NewDiscussionCell.xib; sourceTree = "<group>"; };
 		177A2DBE9DB0723855A80DED /* libPods-notification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-notification.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.debug.xcconfig"; sourceTree = "<group>"; };
 		205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surilla/Pods-Surilla.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1866,6 +1872,8 @@
 				6D0E05781EFEC7A400604981 /* ReportTextFieldCell.xib */,
 				6DAF1CB31F571F4A00421C5A /* ReportTitleCell.swift */,
 				6DAF1CB41F571F4A00421C5A /* ReportTitleCell.xib */,
+				17751AAF2033568B00274F6A /* NewDiscussionCell.swift */,
+				17751AB02033568B00274F6A /* NewDiscussionCell.xib */,
 			);
 			name = Report;
 			sourceTree = "<group>";
@@ -3138,6 +3146,7 @@
 				6D4E5D901F7AB6870020DEE2 /* Error.strings in Resources */,
 				6D4E5D921F7AB6870020DEE2 /* ProxyForCell.xib in Resources */,
 				6D4E5D931F7AB6870020DEE2 /* Me.storyboard in Resources */,
+				17751AB42033568B00274F6A /* NewDiscussionCell.xib in Resources */,
 				6D4E5D941F7AB6870020DEE2 /* MeCell.xib in Resources */,
 				6D4E5D951F7AB6870020DEE2 /* ReportExpensesCell.xib in Resources */,
 				6D4E5D961F7AB6870020DEE2 /* CompactUserInfoHeader.xib in Resources */,
@@ -3240,6 +3249,7 @@
 				6D69D9FC1EFC07FF00DED5CE /* ProxyForCell.xib in Resources */,
 				6D9CC62D1ED5EB23007F936E /* Me.storyboard in Resources */,
 				94C89AFE1F0278FB00C6D8F7 /* MeCell.xib in Resources */,
+				17751AB32033568B00274F6A /* NewDiscussionCell.xib in Resources */,
 				6D0E056A1EFEC21800604981 /* ReportExpensesCell.xib in Resources */,
 				6D2808C61F1A450C00EBBE3D /* CompactUserInfoHeader.xib in Resources */,
 				6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */,
@@ -3945,6 +3955,7 @@
 				6D1CAC0C1FF51A1200FA58B6 /* OthersVotedVC.swift in Sources */,
 				6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */,
 				6D4E5D111F7AB6870020DEE2 /* Routable.swift in Sources */,
+				17751AB22033568B00274F6A /* NewDiscussionCell.swift in Sources */,
 				6D4E5D121F7AB6870020DEE2 /* ReportTextFieldCell.swift in Sources */,
 				94F502571FA8D3760059D49B /* MuteCellModel.swift in Sources */,
 				9431CDB91F8E1FCC0011D072 /* EthereumProcessor.swift in Sources */,
@@ -4371,6 +4382,7 @@
 				6D83EC891EDD6CA6000412DC /* Routable.swift in Sources */,
 				6D1CAC0B1FF51A1200FA58B6 /* OthersVotedVC.swift in Sources */,
 				6D0E05791EFEC7A400604981 /* ReportTextFieldCell.swift in Sources */,
+				17751AB12033568B00274F6A /* NewDiscussionCell.swift in Sources */,
 				6D12927D1F83BD6A001CCC31 /* SceneType.swift in Sources */,
 				9475D9321FA390BC00F881C9 /* MuteCellModel.swift in Sources */,
 				6D35566D1FD2EE4500AEBF07 /* WithdrawTx.swift in Sources */,
