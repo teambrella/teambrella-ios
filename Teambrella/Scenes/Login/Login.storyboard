@@ -175,7 +175,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-2" translatesAutoresizingMaskIntoConstraints="NO" id="HaE-vq-3bd">
-                                <rect key="frame" x="38" y="236.5" width="300" height="60"/>
+                                <rect key="frame" x="57" y="244" width="262.5" height="52.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HaE-vq-3bd" secondAttribute="height" multiplier="5:1" id="Ki8-z6-kzM"/>
                                 </constraints>
@@ -217,7 +217,7 @@
                             <constraint firstItem="TKO-fV-G5k" firstAttribute="leading" secondItem="QFf-Ll-dqF" secondAttribute="leading" constant="28" id="017-G7-ZZt"/>
                             <constraint firstItem="O3C-eL-D90" firstAttribute="leading" secondItem="QFf-Ll-dqF" secondAttribute="leading" constant="16" id="6NY-MS-fpM"/>
                             <constraint firstItem="n5y-0s-mhl" firstAttribute="centerX" secondItem="TKO-fV-G5k" secondAttribute="centerX" id="6zV-1a-u5i"/>
-                            <constraint firstItem="HaE-vq-3bd" firstAttribute="width" secondItem="7DX-bd-hFW" secondAttribute="width" multiplier="0.8" id="ASg-K4-N3W"/>
+                            <constraint firstItem="HaE-vq-3bd" firstAttribute="width" secondItem="7DX-bd-hFW" secondAttribute="width" multiplier="0.7" id="ASg-K4-N3W"/>
                             <constraint firstItem="O7m-EB-YXq" firstAttribute="leading" secondItem="QFf-Ll-dqF" secondAttribute="leading" id="FW5-kO-FIn"/>
                             <constraint firstItem="HaE-vq-3bd" firstAttribute="centerX" secondItem="ZSJ-w0-Tqs" secondAttribute="centerX" id="HLL-nS-ZYf"/>
                             <constraint firstItem="QFf-Ll-dqF" firstAttribute="trailing" secondItem="TKO-fV-G5k" secondAttribute="trailing" constant="28" id="Npf-Vr-QUO"/>

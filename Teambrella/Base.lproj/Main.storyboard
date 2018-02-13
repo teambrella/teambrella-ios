@@ -51,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-2" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-n1-x7D">
-                                <rect key="frame" x="38" y="237" width="300" height="60"/>
+                                <rect key="frame" x="57" y="244.5" width="262.5" height="52.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cBm-n1-x7D" secondAttribute="height" multiplier="5:1" id="enG-6g-6PF"/>
                                 </constraints>
@@ -65,7 +65,7 @@
                             <constraint firstItem="cBm-n1-x7D" firstAttribute="width" secondItem="cBm-n1-x7D" secondAttribute="height" multiplier="5:1" id="TrJ-k0-vGE"/>
                             <constraint firstItem="emU-7T-Nip" firstAttribute="centerX" secondItem="aNj-ZE-j1Y" secondAttribute="centerX" id="V4a-IN-dfD"/>
                             <constraint firstItem="cBm-n1-x7D" firstAttribute="centerX" secondItem="aNj-ZE-j1Y" secondAttribute="centerX" id="XFU-2n-ufu"/>
-                            <constraint firstItem="cBm-n1-x7D" firstAttribute="width" secondItem="XNb-Tt-LFR" secondAttribute="width" multiplier="0.8" id="bUF-1L-B7v"/>
+                            <constraint firstItem="cBm-n1-x7D" firstAttribute="width" secondItem="XNb-Tt-LFR" secondAttribute="width" multiplier="0.7" id="bUF-1L-B7v"/>
                             <constraint firstItem="imF-3C-Sdp" firstAttribute="top" secondItem="XNb-Tt-LFR" secondAttribute="top" constant="-20" id="c8c-CE-DpR"/>
                             <constraint firstAttribute="trailing" secondItem="aNj-ZE-j1Y" secondAttribute="trailing" id="krh-F6-gvn"/>
                             <constraint firstItem="emU-7T-Nip" firstAttribute="bottom" secondItem="aNj-ZE-j1Y" secondAttribute="centerY" id="l0j-m3-dYQ"/>
