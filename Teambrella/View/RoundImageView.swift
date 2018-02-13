@@ -31,6 +31,7 @@ class RoundImageView: UIImageView {
             return imageView.image
         }
         set {
+            imageView.image = nil
             imageView.image = newValue
         }
     }
@@ -108,6 +109,7 @@ class RoundImageView: UIImageView {
     func setup() {
         backgroundColor = .clear
         addSubview(imageView)
+//        imageView.image = #imageLiteral(resourceName: "imagePlaceholder")
         imageView.layer.masksToBounds = true
         contentMode = .scaleAspectFill
     }

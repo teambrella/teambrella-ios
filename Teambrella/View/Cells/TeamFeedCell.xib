@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="height" constant="1" id="cU0-IE-Kfr"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M6n-hd-Q8f">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="M6n-hd-Q8f">
                                 <rect key="frame" x="16" y="16" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="M6n-hd-Q8f" secondAttribute="height" multiplier="1:1" id="U5P-ys-jcC"/>
@@ -173,5 +173,6 @@
     <resources>
         <image name="claim" width="9" height="10"/>
         <image name="forward" width="8" height="13"/>
+        <image name="imagePlaceholder" width="256" height="256"/>
     </resources>
 </document>

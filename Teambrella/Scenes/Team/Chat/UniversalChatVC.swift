@@ -373,6 +373,7 @@ private extension UniversalChatVC {
             objectVoteLabel.text = String.truncatedNumber(reimbursement * 100)
             objectRightLabel.isHidden = true
         }
+        objectAvatarView.image = nil
     }
     
     private func setupTeammateObjectView(basic: ChatModel.BasicPart,

@@ -86,13 +86,13 @@
                                         <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VrE-PX-4VK" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="VrE-PX-4VK" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="299.5" y="20" width="24.5" height="24.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="VrE-PX-4VK" secondAttribute="height" multiplier="1:1" id="QAo-SZ-qj9"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a2P-qi-Qj5">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="a2P-qi-Qj5">
                                         <rect key="frame" x="16" y="10" width="28" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="a2P-qi-Qj5" secondAttribute="height" multiplier="1:1" id="5dn-ct-W8Y"/>
@@ -321,5 +321,6 @@
     <resources>
         <image name="backgroundPattern" width="374" height="629"/>
         <image name="crossIcon" width="18" height="18"/>
+        <image name="imagePlaceholder" width="256" height="256"/>
     </resources>
 </document>

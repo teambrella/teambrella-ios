@@ -87,7 +87,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7o-eI-ssZ" userLabel="Container view">
                                                     <rect key="frame" x="0.0" y="0.0" width="325" height="150.5"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tesla" translatesAutoresizingMaskIntoConstraints="NO" id="oDi-TS-IgV">
+                                                        <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="oDi-TS-IgV">
                                                             <rect key="frame" x="16" y="16" width="32" height="32"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="32" id="u0u-id-qoV"/>
@@ -585,6 +585,6 @@
         <image name="iconCoverage" width="32" height="30"/>
         <image name="iconHome" width="17" height="19"/>
         <image name="iconWallet" width="30" height="26"/>
-        <image name="tesla" width="381" height="132"/>
+        <image name="imagePlaceholder" width="256" height="256"/>
     </resources>
 </document>
