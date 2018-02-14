@@ -409,7 +409,7 @@ extension ReportVC: UITextViewDelegate {
             model.descriptionText = textView.text
             dataSource.items[indexPath.row] = model
         }
-//        (textView as? TextView)?.isInAlertMode = false
+        (textView as? TextView)?.isInAlertMode = false
         (textView as? TextView)?.isInEditMode = true
         enableSendButton()
     }
@@ -422,7 +422,7 @@ extension ReportVC: UITextViewDelegate {
 
 extension ReportVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-//        (textField as? TextField)?.isInAlertMode = false
+        (textField as? TextField)?.isInAlertMode = false
         (textField as? TextField)?.isInEditMode = true
     }
     

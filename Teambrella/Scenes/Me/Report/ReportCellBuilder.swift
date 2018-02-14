@@ -65,7 +65,7 @@ struct ReportCellBuilder {
             cell.headerLabel.text = model.title
             cell.textFieldTitleLabel.text = model.postTitle
             cell.titleTextField.delegate = reportVC
-//            cell.titleTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            cell.titleTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
             cell.titleTextField.text = model.postTitleText
             cell.titleTextField.tintColor = cell.titleTextField.tintColor.withAlphaComponent(1)
             cell.titleTextField.tag = indexPath.row
@@ -77,7 +77,7 @@ struct ReportCellBuilder {
             cell.postTextView.text = model.descriptionText
             cell.postTextView.tag = indexPath.row
             cell.postTextView.delegate = reportVC
-//            cell.postTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            cell.postTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
         }
     }
     

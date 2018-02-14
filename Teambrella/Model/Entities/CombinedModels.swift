@@ -63,7 +63,7 @@ struct NewClaimModel: ReportModel {
     
     var isValid: Bool {
         let isLowerThanLimit = expenses <= limit
-        let isTextValid = text.count >= 30
+        let isTextValid = text != ""
         let isAddressValid = EthereumAddress(string: address) == nil ? false : true
         return coverage.value > 0 && expenses > 0 &&  isLowerThanLimit && isTextValid && isAddressValid
     }
@@ -74,5 +74,5 @@ struct NewChatModel: ReportModel {
     let title: String
     let text: String
     
-    var isValid: Bool { return title != "" && title != " " && text != "" && text != " "/*&& text.count >= 30*/ }
+    var isValid: Bool { return title != "" && text != "" }
 }
