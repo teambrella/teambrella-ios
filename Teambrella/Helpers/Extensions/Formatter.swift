@@ -32,7 +32,25 @@ extension Formatter {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         return formatter
     }()
-    
+
+    static let localDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM yyyy"
+        formatter.locale = Locale.current
+        formatter.calendar = NSCalendar.current
+        formatter.timeZone = TimeZone.current
+        return formatter
+    }()
+
+    static let localTime: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        formatter.locale = Locale.current
+        formatter.calendar = NSCalendar.current
+        formatter.timeZone = TimeZone.current
+        return formatter
+    }()
+
     static let teambrella: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
