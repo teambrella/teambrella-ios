@@ -22,6 +22,7 @@
 import UIKit
 
 class ReportPhotoGalleryCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var backView: UIView!
     @IBOutlet var headerLabel: Label!
     @IBOutlet var container: UIView!
     @IBOutlet var button: UIButton!

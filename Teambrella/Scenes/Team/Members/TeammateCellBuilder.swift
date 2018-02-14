@@ -158,9 +158,9 @@ struct TeammateCellBuilder {
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
         let owner: String
         if let me = service.session?.currentUserID, me == teammate.basic.id {
-            owner = "Main.my".localized
+            owner = "General.my".localized
         } else {
-            owner = teammate.basic.gender == .male ? "Main.his".localized : "Main.her".localized
+            owner = teammate.basic.gender == .male ? "General.his".localized : "General.her".localized
         }
         cell.titleLabel.text = owner.uppercased() + " " + type.localizedCoverageObject
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"

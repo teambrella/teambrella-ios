@@ -29,6 +29,7 @@ struct ReportCellBuilder {
         collectionView.register(ReportPhotoGalleryCell.nib, forCellWithReuseIdentifier: ReportPhotoGalleryCell.cellID)
         collectionView.register(ReportTextFieldCell.nib, forCellWithReuseIdentifier: ReportTextFieldCell.cellID)
         collectionView.register(ReportTitleCell.nib, forCellWithReuseIdentifier: ReportTitleCell.cellID)
+        collectionView.register(NewDiscussionCell.nib, forCellWithReuseIdentifier: NewDiscussionCell.cellID)
     }
     
     static func populate(cell: UICollectionViewCell,
@@ -36,6 +37,8 @@ struct ReportCellBuilder {
                          reportVC: ReportVC,
                          indexPath: IndexPath) {
         switch cell {
+        case let cell as NewDiscussionCell:
+            populateNewDiscussion(cell: cell, model: model, reportVC: reportVC, indexPath: indexPath)
         case let cell as ReportItemCell:
             populateItem(cell: cell, model: model)
         case let cell as ReportExpensesCell:
@@ -50,6 +53,31 @@ struct ReportCellBuilder {
             cell.titleLabel.text = model.title
         default:
             break
+        }
+    }
+    
+    static func populateNewDiscussion(cell: NewDiscussionCell,
+                                      model: ReportCellModel,
+                                      reportVC: ReportVC,
+                                      indexPath: IndexPath) {
+        cell.titleTextField.inputView = nil
+        if let model = model as? NewDiscussionCellModel {
+            cell.headerLabel.text = model.title
+            cell.textFieldTitleLabel.text = model.postTitle
+            cell.titleTextField.delegate = reportVC
+            cell.titleTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            cell.titleTextField.text = model.postTitleText
+            cell.titleTextField.tintColor = cell.titleTextField.tintColor.withAlphaComponent(1)
+            cell.titleTextField.tag = indexPath.row
+            cell.titleTextField.removeTarget(reportVC, action: nil, for: .allEvents)
+            cell.titleTextField.addTarget(reportVC,
+                                          action: #selector(ReportVC.textFieldDidChange),
+                                          for: .editingChanged)
+            cell.textViewTitleLabel.text = model.descriptionTitle
+            cell.postTextView.text = model.descriptionText
+            cell.postTextView.tag = indexPath.row
+            cell.postTextView.delegate = reportVC
+            cell.postTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
         }
     }
     
@@ -93,7 +121,7 @@ struct ReportCellBuilder {
         cell.expensesTextField.text = model.expensesString
         cell.expensesTextField.placeholder = "Max: \(Int(reportVC.limit))"
         cell.expensesTextField.keyboardType = .decimalPad
-        cell.expensesTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+//        cell.expensesTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
         cell.expensesTextField.rightViewMode = .unlessEditing
         
         cell.currencyTextField.isUserInteractionEnabled = false
@@ -110,13 +138,13 @@ struct ReportCellBuilder {
                                     model: ReportCellModel,
                                     reportVC: ReportVC,
                                     indexPath: IndexPath) {
-        guard let model = model as? DescriptionReportCellModel else { return }
-        
-        cell.headerLabel.text = model.title
-        cell.textView.text = model.text
-        cell.textView.tag = indexPath.row
-        cell.textView.delegate = reportVC
-        cell.textView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+//        guard let model = model as? DescriptionReportCellModel else { return }
+//
+//        cell.headerLabel.text = model.title
+//        cell.textView.text = model.text
+//        cell.textView.tag = indexPath.row
+//        cell.textView.delegate = reportVC
+//        cell.textView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
     }
     
     static func populatePhotoGallery(cell: ReportPhotoGalleryCell,
@@ -143,21 +171,21 @@ struct ReportCellBuilder {
             cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(0)
         case let model as WalletReportCellModel:
             cell.textField.delegate = reportVC
-            cell.textField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+//            cell.textField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
             cell.textField.text = model.text
             cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
             cell.textField.placeholder = ""
             cell.textField.tag = indexPath.row
             cell.textField.removeTarget(reportVC, action: nil, for: .allEvents)
             cell.textField.addTarget(reportVC, action: #selector(ReportVC.textFieldDidChange), for: .editingChanged)
-        case let model as TitleReportCellModel:
-            cell.textField.delegate = reportVC
-            cell.textField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
-            cell.textField.text = model.text
-            cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
-            cell.textField.tag = indexPath.row
-            cell.textField.removeTarget(reportVC, action: nil, for: .allEvents)
-            cell.textField.addTarget(reportVC, action: #selector(ReportVC.textFieldDidChange), for: .editingChanged)
+//        case let model as TitleReportCellModel:
+//            cell.textField.delegate = reportVC
+//            cell.textField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+//            cell.textField.text = model.text
+//            cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
+//            cell.textField.tag = indexPath.row
+//            cell.textField.removeTarget(reportVC, action: nil, for: .allEvents)
+//            cell.textField.addTarget(reportVC, action: #selector(ReportVC.textFieldDidChange), for: .editingChanged)
         default:
             break
         }

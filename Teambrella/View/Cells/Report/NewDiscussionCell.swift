@@ -1,10 +1,5 @@
 //
-//  ReportItemCell.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 24.06.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,17 +16,20 @@
 
 import UIKit
 
-class ReportItemCell: UICollectionViewCell, XIBInitableCell {
+class NewDiscussionCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var backView: UIView!
-    @IBOutlet var headerLabel: Label!
-    @IBOutlet var itemLabel: Label!
-    @IBOutlet var detailsLabel: Label!
-    @IBOutlet var avatarView: UIImageView!
-    @IBOutlet var infoButton: UIButton!
-
+    @IBOutlet var headerLabel: BlockHeaderLabel!
+    @IBOutlet var textFieldTitleLabel: InfoLabel!
+    @IBOutlet var titleTextField: TextField!
+    @IBOutlet var textViewTitleLabel: InfoLabel!
+    @IBOutlet var postTextView: TextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        avatarView.layer.cornerRadius = 3
+        postTextView.layer.masksToBounds = true
+        postTextView.layer.borderWidth = 1
+        postTextView.layer.cornerRadius = 3
+        postTextView.layer.borderColor = #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
     }
 
 }

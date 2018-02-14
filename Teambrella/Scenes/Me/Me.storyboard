@@ -647,7 +647,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrCode" translatesAutoresizingMaskIntoConstraints="NO" id="kLD-08-ZXq">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="kLD-08-ZXq">
                                 <rect key="frame" x="37" y="54" width="301" height="301"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kLD-08-ZXq" secondAttribute="height" multiplier="1:1" id="eEb-c8-Tzb"/>
@@ -967,7 +967,7 @@
     </scenes>
     <resources>
         <image name="crossIcon" width="18" height="18"/>
+        <image name="imagePlaceholder" width="256" height="256"/>
         <image name="info" width="20" height="20"/>
-        <image name="qrCode" width="330" height="330"/>
     </resources>
 </document>

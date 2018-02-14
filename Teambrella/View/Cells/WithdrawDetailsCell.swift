@@ -68,7 +68,7 @@ extension WithdrawDetailsCell: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        (textView as? TextView)?.isInAlertMode = false
+//        (textView as? TextView)?.isInAlertMode = false
         (textView as? TextView)?.isInEditMode = true
         if textView.text == nil || textView.text == "" {
             placeholder.isHidden = false
@@ -100,7 +100,7 @@ extension WithdrawDetailsCell: UITextViewDelegate {
 
 extension WithdrawDetailsCell: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        (textField as? TextField)?.isInAlertMode = false
+//        (textField as? TextField)?.isInAlertMode = false
         (textField as? TextField)?.isInEditMode = true
     }
     

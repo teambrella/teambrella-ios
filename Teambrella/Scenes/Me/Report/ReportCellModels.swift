@@ -114,3 +114,19 @@ struct HeaderTitleReportCellModel: ReportCellModel {
     
     var isValid: Bool { return true }
 }
+
+struct NewDiscussionCellModel: ReportCellModel {
+    var cellReusableIdentifier: String { return NewDiscussionCell.cellID }
+    var preferredHeight: Float { return 288 }
+    let title = "Me.Report.HeaderTitleCell.title".localized
+    
+    var isValid: Bool { return isTitleValid && isDescriptionValid }
+    
+    let postTitle = "Me.Report.TitleCell.title".localized
+    var postTitleText: String
+    var isTitleValid: Bool { return postTitleText != "" }
+    
+    let descriptionTitle = "Me.Report.DescriptionCell.title-discussion".localized
+    var descriptionText: String
+    var isDescriptionValid: Bool { return descriptionText != "" }
+}

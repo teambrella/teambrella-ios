@@ -66,10 +66,22 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pv-P1-cz8" customClass="NumberBar" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="19" y="106" width="190" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMK-fe-8FB">
+                                        <rect key="frame" x="72.5" y="4" width="1" height="32"/>
+                                        <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="YMg-Mx-mdz"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="A3l-wR-1QU"/>
                                     <constraint firstAttribute="height" constant="40" id="N5H-ON-hAQ"/>
+                                    <constraint firstItem="rMK-fe-8FB" firstAttribute="top" secondItem="3Pv-P1-cz8" secondAttribute="top" constant="4" id="Y9k-Uj-fUn"/>
+                                    <constraint firstAttribute="bottom" secondItem="rMK-fe-8FB" secondAttribute="bottom" constant="4" id="aO7-5E-j5t"/>
+                                    <constraint firstItem="rMK-fe-8FB" firstAttribute="centerX" secondItem="3Pv-P1-cz8" secondAttribute="centerX" constant="-22" id="kPg-tV-Tii"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="count">
