@@ -119,14 +119,14 @@
 		6D1EC3F3202B114A00F0541C /* UpdatesServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3F1202B114A00F0541C /* UpdatesServerImpl.swift */; };
 		6D20CF961FDEE1890049BE9C /* TeamPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF951FDEE1890049BE9C /* TeamPart.swift */; };
 		6D20CF971FDEE1890049BE9C /* TeamPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF951FDEE1890049BE9C /* TeamPart.swift */; };
-		6D251C3820348634005081E4 /* ClaimVotingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C3620348634005081E4 /* ClaimVotingController.swift */; };
-		6D251C3920348634005081E4 /* ClaimVotingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C3720348634005081E4 /* ClaimVotingController.xib */; };
-		6D251C3A20348643005081E4 /* ClaimVotingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C3720348634005081E4 /* ClaimVotingController.xib */; };
-		6D251C3B20348646005081E4 /* ClaimVotingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C3620348634005081E4 /* ClaimVotingController.swift */; };
-		6D251C3E2034B118005081E4 /* ChatObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C3C2034B118005081E4 /* ChatObjectViewController.swift */; };
-		6D251C3F2034B118005081E4 /* ChatObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C3C2034B118005081E4 /* ChatObjectViewController.swift */; };
-		6D251C402034B118005081E4 /* ChatObjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C3D2034B118005081E4 /* ChatObjectViewController.xib */; };
-		6D251C412034B118005081E4 /* ChatObjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C3D2034B118005081E4 /* ChatObjectViewController.xib */; };
+		6D251C3820348634005081E4 /* ClaimVotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C3620348634005081E4 /* ClaimVotingView.swift */; };
+		6D251C3920348634005081E4 /* ClaimVotingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C3720348634005081E4 /* ClaimVotingView.xib */; };
+		6D251C3A20348643005081E4 /* ClaimVotingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C3720348634005081E4 /* ClaimVotingView.xib */; };
+		6D251C3B20348646005081E4 /* ClaimVotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C3620348634005081E4 /* ClaimVotingView.swift */; };
+		6D251C3E2034B118005081E4 /* ChatObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C3C2034B118005081E4 /* ChatObjectView.swift */; };
+		6D251C3F2034B118005081E4 /* ChatObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C3C2034B118005081E4 /* ChatObjectView.swift */; };
+		6D251C402034B118005081E4 /* ChatObjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C3D2034B118005081E4 /* ChatObjectView.xib */; };
+		6D251C412034B118005081E4 /* ChatObjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C3D2034B118005081E4 /* ChatObjectView.xib */; };
 		6D251C432035D04B005081E4 /* ScrollViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C422035D04B005081E4 /* ScrollViewHandler.swift */; };
 		6D251C442035D04B005081E4 /* ScrollViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C422035D04B005081E4 /* ScrollViewHandler.swift */; };
 		6D2808C51F1A450C00EBBE3D /* CompactUserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */; };
@@ -1217,10 +1217,10 @@
 		6D1EC3EE202B0F7300F0541C /* TxInputServerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxInputServerImpl.swift; sourceTree = "<group>"; };
 		6D1EC3F1202B114A00F0541C /* UpdatesServerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesServerImpl.swift; sourceTree = "<group>"; };
 		6D20CF951FDEE1890049BE9C /* TeamPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamPart.swift; path = Model/Entities/TeamPart.swift; sourceTree = "<group>"; };
-		6D251C3620348634005081E4 /* ClaimVotingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClaimVotingController.swift; path = Controller/ClaimVotingController.swift; sourceTree = "<group>"; };
-		6D251C3720348634005081E4 /* ClaimVotingController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ClaimVotingController.xib; path = Controller/ClaimVotingController.xib; sourceTree = "<group>"; };
-		6D251C3C2034B118005081E4 /* ChatObjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatObjectViewController.swift; path = Controller/ChatObjectViewController.swift; sourceTree = "<group>"; };
-		6D251C3D2034B118005081E4 /* ChatObjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatObjectViewController.xib; path = Controller/ChatObjectViewController.xib; sourceTree = "<group>"; };
+		6D251C3620348634005081E4 /* ClaimVotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClaimVotingView.swift; path = Controller/ClaimVotingView.swift; sourceTree = "<group>"; };
+		6D251C3720348634005081E4 /* ClaimVotingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ClaimVotingView.xib; path = Controller/ClaimVotingView.xib; sourceTree = "<group>"; };
+		6D251C3C2034B118005081E4 /* ChatObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatObjectView.swift; path = Controller/ChatObjectView.swift; sourceTree = "<group>"; };
+		6D251C3D2034B118005081E4 /* ChatObjectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatObjectView.xib; path = Controller/ChatObjectView.xib; sourceTree = "<group>"; };
 		6D251C422035D04B005081E4 /* ScrollViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScrollViewHandler.swift; path = Model/ScrollViewHandler.swift; sourceTree = "<group>"; };
 		6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompactUserInfoHeader.swift; path = View/ReusableViews/CompactUserInfoHeader.swift; sourceTree = "<group>"; };
 		6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompactUserInfoHeader.xib; path = View/ReusableViews/CompactUserInfoHeader.xib; sourceTree = "<group>"; };
@@ -2282,10 +2282,10 @@
 				6DA714EC1EDF49F500F39EBE /* MasterTabBarController.swift */,
 				6D66B4991F4C461A00672583 /* ImagePickerController.swift */,
 				6DDC65611FBAE42700DE4E36 /* TopBar */,
-				6D251C3620348634005081E4 /* ClaimVotingController.swift */,
-				6D251C3720348634005081E4 /* ClaimVotingController.xib */,
-				6D251C3C2034B118005081E4 /* ChatObjectViewController.swift */,
-				6D251C3D2034B118005081E4 /* ChatObjectViewController.xib */,
+				6D251C3620348634005081E4 /* ClaimVotingView.swift */,
+				6D251C3720348634005081E4 /* ClaimVotingView.xib */,
+				6D251C3C2034B118005081E4 /* ChatObjectView.swift */,
+				6D251C3D2034B118005081E4 /* ChatObjectView.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -3179,7 +3179,7 @@
 				6D4E5D9D1F7AB6870020DEE2 /* NumberView.xib in Resources */,
 				6D4E5D9E1F7AB6870020DEE2 /* DiscussionCell.xib in Resources */,
 				6D4E5D9F1F7AB6870020DEE2 /* Home.storyboard in Resources */,
-				6D251C412034B118005081E4 /* ChatObjectViewController.xib in Resources */,
+				6D251C412034B118005081E4 /* ChatObjectView.xib in Resources */,
 				6D4E5DA01F7AB6870020DEE2 /* ReportDescriptionCell.xib in Resources */,
 				6D4E5DA11F7AB6870020DEE2 /* Home.strings in Resources */,
 				6D4E5DA21F7AB6870020DEE2 /* LabeledTextField.xib in Resources */,
@@ -3211,7 +3211,7 @@
 				6D4E5DBB1F7AB6870020DEE2 /* JoinTeamPersonalCell.xib in Resources */,
 				6D4E5DBC1F7AB6870020DEE2 /* PrivateChatUserCell.xib in Resources */,
 				6D4E5DBD1F7AB6870020DEE2 /* AkkuratPro-Bold.otf in Resources */,
-				6D251C3A20348643005081E4 /* ClaimVotingController.xib in Resources */,
+				6D251C3A20348643005081E4 /* ClaimVotingView.xib in Resources */,
 				6D4E5DBE1F7AB6870020DEE2 /* JoinTeamTermsCell.xib in Resources */,
 				94F0CF621FD1B66E007BE39E /* WithdrawCell.xib in Resources */,
 				6D4E5DBF1F7AB6870020DEE2 /* Me.strings in Resources */,
@@ -3284,7 +3284,7 @@
 				6DB8122B1EE715DA00B202CE /* DiscussionCell.xib in Resources */,
 				6D9CC6241ED5EA34007F936E /* Home.storyboard in Resources */,
 				6D0E056E1EFEC24D00604981 /* ReportDescriptionCell.xib in Resources */,
-				6D251C402034B118005081E4 /* ChatObjectViewController.xib in Resources */,
+				6D251C402034B118005081E4 /* ChatObjectView.xib in Resources */,
 				6DCB19441F0F878500AC9969 /* Home.strings in Resources */,
 				94E325C21F07E78E00B2D8C8 /* LabeledTextField.xib in Resources */,
 				6DA714EF1EE00CFB00F39EBE /* NumberBar.xib in Resources */,
@@ -3316,7 +3316,7 @@
 				94E325BE1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib in Resources */,
 				6D1A9B291F55D306004192AC /* PrivateChatUserCell.xib in Resources */,
 				6D9C808E1EDF17D000FB8C2C /* AkkuratPro-Bold.otf in Resources */,
-				6D251C3920348634005081E4 /* ClaimVotingController.xib in Resources */,
+				6D251C3920348634005081E4 /* ClaimVotingView.xib in Resources */,
 				94E325CE1F07FA7E00B2D8C8 /* JoinTeamTermsCell.xib in Resources */,
 				94F0CF611FD1B66E007BE39E /* WithdrawCell.xib in Resources */,
 				6D69DA0F1EFC458C00DED5CE /* Me.strings in Resources */,
@@ -3716,7 +3716,7 @@
 				6D4E5C381F7AB6870020DEE2 /* EmptyVC.swift in Sources */,
 				6D4E5C391F7AB6870020DEE2 /* WalletCosignersVC.swift in Sources */,
 				6D4E5C3A1F7AB6870020DEE2 /* WalletTransactionsVC.swift in Sources */,
-				6D251C3F2034B118005081E4 /* ChatObjectViewController.swift in Sources */,
+				6D251C3F2034B118005081E4 /* ChatObjectView.swift in Sources */,
 				6D4E5C3B1F7AB6870020DEE2 /* PagingDraggable.swift in Sources */,
 				6D4E5C3C1F7AB6870020DEE2 /* TopicEntity.swift in Sources */,
 				6D4E5C3D1F7AB6870020DEE2 /* BlockchainServer.swift in Sources */,
@@ -4059,7 +4059,7 @@
 				6D4E5D4D1F7AB6870020DEE2 /* WalletEntity.swift in Sources */,
 				6D4E5D4E1F7AB6870020DEE2 /* LabeledButton.swift in Sources */,
 				6D4E5D4F1F7AB6870020DEE2 /* HomeCollectionCell.swift in Sources */,
-				6D251C3B20348646005081E4 /* ClaimVotingController.swift in Sources */,
+				6D251C3B20348646005081E4 /* ClaimVotingView.swift in Sources */,
 				6D9F6ADC2014EB3000B3287D /* Dumper.swift in Sources */,
 				6D4E5D501F7AB6870020DEE2 /* CosignerEntity.swift in Sources */,
 				6DAD94231FCEF5010011557C /* CodeCaptureVC.swift in Sources */,
@@ -4146,7 +4146,7 @@
 				94C186AB1F59B95E00F1BE51 /* WalletTransactionsVC.swift in Sources */,
 				6DCB19581F11163900AC9969 /* PagingDraggable.swift in Sources */,
 				6D097EAF1E9D3BD200E77DAB /* TopicEntity.swift in Sources */,
-				6D251C3E2034B118005081E4 /* ChatObjectViewController.swift in Sources */,
+				6D251C3E2034B118005081E4 /* ChatObjectView.swift in Sources */,
 				6D466AA01ED07CF1001BC579 /* BlockchainServer.swift in Sources */,
 				6DEE67971EDC13D50098EDB3 /* RoundBadgedView.swift in Sources */,
 				6D69DA0B1EFC36C000DED5CE /* InfoHeader.swift in Sources */,
@@ -4489,7 +4489,7 @@
 				94B4C3801F1E18AC00AED4CE /* WalletEntity.swift in Sources */,
 				6D0E742D1F13C0D70055BF1E /* LabeledButton.swift in Sources */,
 				6D9CC6511ED97C37007F936E /* HomeCollectionCell.swift in Sources */,
-				6D251C3820348634005081E4 /* ClaimVotingController.swift in Sources */,
+				6D251C3820348634005081E4 /* ClaimVotingView.swift in Sources */,
 				6D9F6ADB2014EB3000B3287D /* Dumper.swift in Sources */,
 				94B4C37E1F1E18AC00AED4CE /* CosignerEntity.swift in Sources */,
 				6DAD94221FCEF5010011557C /* CodeCaptureVC.swift in Sources */,

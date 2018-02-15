@@ -16,13 +16,13 @@
 
 import UIKit
 
-protocol ClaimVotingControllerDelegate: class {
-    func claimVoting(controller: ClaimVotingController, finishedSliding slider: UISlider)
-    func claimVotingDidResetVote(controller: ClaimVotingController)
-    func claimVotingDidTapTeam(controller: ClaimVotingController)
+protocol ClaimVotingDelegate: class {
+    func claimVoting(view: ClaimVotingView, finishedSliding slider: UISlider)
+    func claimVotingDidResetVote(view: ClaimVotingView)
+    func claimVotingDidTapTeam(view: ClaimVotingView)
 }
 
-class ClaimVotingController: UIViewController {
+class ClaimVotingView: UIView, XIBInitable {
     @IBOutlet var slashView: SlashView!
     
     @IBOutlet var teamVoteLabel: InfoLabel!
@@ -53,8 +53,10 @@ class ClaimVotingController: UIViewController {
     var otherAvatars: [Avatar]?
     var otherCount: Int = 0
 
+    var contentView: UIView!
+
     var session: Session?
-    weak var delegate: ClaimVotingControllerDelegate?
+    weak var delegate: ClaimVotingDelegate?
 
     var isYourVoteHidden: Bool = false {
         didSet {
@@ -75,10 +77,25 @@ class ClaimVotingController: UIViewController {
             }
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        xibSetup()
+        initialSetup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        xibSetup()
+         initialSetup()
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+
+    func initialSetup() {
         slashView.layer.cornerRadius = 5
         slashView.layer.masksToBounds = true
         slashView.layer.borderWidth = 1
@@ -87,20 +104,6 @@ class ClaimVotingController: UIViewController {
         slider.minimumValue = 0
         slider.maximumValue = 1
         setup()
-    }
-
-    class func show(in viewController: UIViewController,
-                    inView view: UIView,
-                    session: Session?) -> ClaimVotingController {
-        let vc = ClaimVotingController(nibName: "ClaimVotingController", bundle: nil)
-        vc.view.frame = view.bounds
-        vc.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(vc.view)
-        viewController.addChildViewController(vc)
-        vc.didMove(toParentViewController: viewController)
-
-        vc.session = session
-        return vc
     }
 
     func setup(with claim: ClaimEntityLarge?) {
@@ -138,18 +141,18 @@ class ClaimVotingController: UIViewController {
         yourVote = ClaimVote(sender.value)
         setup()
         if let touch = event.allTouches?.first, touch.phase == .ended {
-            delegate?.claimVoting(controller: self, finishedSliding: sender)
+            delegate?.claimVoting(view: self, finishedSliding: sender)
         }
     }
 
     @IBAction func tapResetVote(_ sender: UIButton) {
         yourVote = nil
         setup()
-        delegate?.claimVotingDidResetVote(controller: self)
+        delegate?.claimVotingDidResetVote(view: self)
     }
 
     @IBAction func tapTeam(_ sender: UIButton) {
-        delegate?.claimVotingDidTapTeam(controller: self)
+        delegate?.claimVotingDidTapTeam(view: self)
     }
 
     private func setup() {

@@ -16,12 +16,12 @@
 
 import UIKit
 
-protocol ChatObjectViewControllerDelegate: class {
-    func chatObject(controller: ChatObjectViewController, didTap button: UIButton)
-    func chatObjectWasTapped(controller: ChatObjectViewController)
+protocol ChatObjectViewDelegate: class {
+    func chatObject(view: ChatObjectView, didTap button: UIButton)
+    func chatObjectWasTapped(view: ChatObjectView)
 }
 
-class ChatObjectViewController: UIViewController {
+class ChatObjectView: UIView, XIBInitable {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var amountLabel: InfoHelpLabel!
@@ -38,11 +38,28 @@ class ChatObjectViewController: UIViewController {
     @IBOutlet var proxyAvatarView: RoundImageView!
     @IBOutlet var rightButton: UIButton!
 
-    weak var delegate: ChatObjectViewControllerDelegate?
+    var contentView: UIView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    weak var delegate: ChatObjectViewDelegate?
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        xibSetup()
+        initialSetup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        xibSetup()
+        initialSetup()
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+    }
+
+   func initialSetup() {
         chevronButton.isHidden = false
         voteContainer.isHidden = false
         chevronButton.alpha = 0
@@ -50,17 +67,6 @@ class ChatObjectViewController: UIViewController {
 
         chevronButton.imageView?.contentMode = .scaleAspectFit
         chevronButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
-
-    class func show(in viewController: UIViewController,
-                    inView view: UIView) -> ChatObjectViewController {
-        let vc = ChatObjectViewController(nibName: "ChatObjectViewController", bundle: nil)
-        vc.view.frame = view.bounds
-        vc.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(vc.view)
-        viewController.addChildViewController(vc)
-        vc.didMove(toParentViewController: viewController)
-        return vc
     }
 
     func setup(with chatModel: ChatModel?) {
@@ -148,15 +154,15 @@ class ChatObjectViewController: UIViewController {
     }
 
     @IBAction func tapChevron(_ sender: UIButton) {
-        delegate?.chatObject(controller: self, didTap: sender)
+        delegate?.chatObject(view: self, didTap: sender)
     }
 
     @IBAction func tapRightButton(_ sender: UIButton) {
-        delegate?.chatObject(controller: self, didTap: sender)
+        delegate?.chatObject(view: self, didTap: sender)
     }
 
     @IBAction func tapView(_ sender: UITapGestureRecognizer) {
-        delegate?.chatObjectWasTapped(controller: self)
+        delegate?.chatObjectWasTapped(view: self)
     }
 
 }

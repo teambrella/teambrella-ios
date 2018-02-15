@@ -21,7 +21,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatObjectViewController" customModule="Surilla" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatObjectView" customModule="Surilla" customModuleProvider="target">
             <connections>
                 <outlet property="amountLabel" destination="F9g-le-cSH" id="Ghp-3G-l4i"/>
                 <outlet property="chevronButton" destination="8rK-LI-YhF" id="pPL-3X-oML"/>
@@ -32,7 +32,6 @@
                 <outlet property="proxyAvatarView" destination="crJ-Z8-f3o" id="jQu-C7-2LB"/>
                 <outlet property="rightButton" destination="36L-C4-ED1" id="mp0-KS-NSh"/>
                 <outlet property="separatorView" destination="vhP-W7-ibO" id="X8B-mT-Jtq"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="voteContainer" destination="c1y-bp-9dQ" id="Ulp-iK-Ekj"/>
                 <outlet property="voteTitleLabel" destination="L5F-fw-geK" id="wHg-Jr-xhY"/>
                 <outlet property="voteValueLabel" destination="bCK-U5-8Zp" id="2SF-BN-Uxk"/>

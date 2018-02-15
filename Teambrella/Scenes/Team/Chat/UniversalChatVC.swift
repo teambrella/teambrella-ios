@@ -49,8 +49,8 @@ final class UniversalChatVC: UIViewController, Routable {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var stackView: UIStackView!
 
-    @IBOutlet var objectContainer: UIView!
-    @IBOutlet var votingContainer: UIView!
+    @IBOutlet var objectContainer: ChatObjectView!
+    @IBOutlet var votingContainer: ClaimVotingView!
 
     override var inputAccessoryView: UIView? { return input }
     override var canBecomeFirstResponder: Bool { return true }
@@ -62,9 +62,6 @@ final class UniversalChatVC: UIViewController, Routable {
     private var socketToken = "UniversalChat"
     private var lastTypingDate: Date = Date()
     private var typingUsers: [String: Date] = [:]
-
-    private var claimVC: ClaimVotingController?
-    private var objectVC: ChatObjectViewController?
 
     private let scrollViewHandler: ScrollViewHandler = ScrollViewHandler()
     
@@ -107,7 +104,7 @@ final class UniversalChatVC: UIViewController, Routable {
             self.setupActualObjectViewIfNeeded()
             self.setupTitle()
             self.setMuteButtonImage(type: self.dataSource.notificationsType)
-            self.claimVC?.setup(with: self.dataSource.chatModel)
+            self.votingContainer.setup(with: self.dataSource.chatModel)
             guard hasNew else {
                 if isFirstLoad {
                     self.shouldScrollToBottom = true
@@ -128,20 +125,19 @@ final class UniversalChatVC: UIViewController, Routable {
         dataSource.onClaimVoteUpdate = { [weak self] in
             guard let `self` = self else { return }
 
-            self.claimVC?.isChangingVote = false
-            self.claimVC?.setup(with: self.dataSource.chatModel)
-            self.objectVC?.setup(with: self.dataSource.chatModel)
+            self.votingContainer?.isChangingVote = false
+            self.votingContainer?.setup(with: self.dataSource.chatModel)
+            self.objectContainer.setup(with: self.dataSource.chatModel)
         }
 
         dataSource.isLoadNextNeeded = true
         title = ""
 
-        objectContainer.layer.zPosition = 1
-        objectVC = ChatObjectViewController.show(in: self, inView: objectContainer)
-        objectVC?.delegate = self
+        //objectContainer.layer.zPosition = 1
+        objectContainer.delegate = self
         let session = service.session
-        claimVC = ClaimVotingController.show(in: self, inView: votingContainer, session: session)
-        claimVC?.delegate = self
+        votingContainer.session = session
+        votingContainer.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -295,7 +291,7 @@ private extension UniversalChatVC {
         }
 
         scrollViewHandler.onFastForwardScroll = { [weak self] velocity in
-             guard let `self` = self else { return }
+            guard let `self` = self else { return }
 
             self.showObject()
         }
@@ -304,10 +300,9 @@ private extension UniversalChatVC {
     private func hideAuxillaryViews() {
         guard objectContainer.isHidden == false || votingContainer.isHidden == false else { return }
 
-        UIView.animate(withDuration: 0.3) {
-            self.objectContainer.isHidden = true
-            self.votingContainer.isHidden = true
-        }
+        self.objectContainer.isHidden = true
+        self.objectContainer.showVoteContainer()
+        self.votingContainer.isHidden = true
     }
 
     private func showObject() {
@@ -536,7 +531,7 @@ private extension UniversalChatVC {
     private func setupActualObjectViewIfNeeded() {
         objectContainer.isHidden = !dataSource.isObjectViewNeeded
         votingContainer.isHidden = true
-        objectVC?.setup(with: dataSource.chatModel)
+        objectContainer.setup(with: dataSource.chatModel)
     }
     
     private func linkImage(image: UIImage, name: String) {
@@ -749,48 +744,48 @@ extension UniversalChatVC: MuteControllerDelegate {
     }
 }
 
-// MARK: ClaimVotingControllerDelegate
-extension UniversalChatVC: ClaimVotingControllerDelegate {
-    func claimVoting(controller: ClaimVotingController, finishedSliding slider: UISlider) {
+// MARK: ClaimVotingDelegate
+extension UniversalChatVC: ClaimVotingDelegate {
+    func claimVoting(view: ClaimVotingView, finishedSliding slider: UISlider) {
         dataSource.updateVoteOnServer(vote: slider.value)
     }
 
-    func claimVotingDidResetVote(controller: ClaimVotingController) {
+    func claimVotingDidResetVote(view: ClaimVotingView) {
         dataSource.updateVoteOnServer(vote: nil)
     }
 
-    func claimVotingDidTapTeam(controller: ClaimVotingController) {
+    func claimVotingDidTapTeam(view: ClaimVotingView) {
         guard let teamID = service.session?.currentTeam?.teamID, let claimID = dataSource.chatModel?.id else { return }
 
         service.router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
     }
 }
 
-// MARK: ChatObjectViewControllerDelegate
-extension  UniversalChatVC: ChatObjectViewControllerDelegate {
-    func chatObject(controller: ChatObjectViewController, didTap button: UIButton) {
+// MARK: ChatObjectViewDelegate
+extension  UniversalChatVC: ChatObjectViewDelegate {
+    func chatObject(view: ChatObjectView, didTap button: UIButton) {
         print("tap \(button)")
         switch button {
-        case controller.rightButton:
+        case view.rightButton:
             if let claimID = dataSource.chatModel?.id {
-                UIView.animate(withDuration: 0.3) {
-                    controller.showChevron()
-                    self.votingContainer.isHidden = false
-                }
+                //   UIView.animate(withDuration: 0.3) {
+                view.showChevron()
+                self.votingContainer.isHidden = false
+                //   }
             } else if let userID = dataSource.chatModel?.basic?.userID {
                 service.router.presentMemberProfile(teammateID: userID, scrollToVote: true)
             }
-        case controller.chevronButton:
-            UIView.animate(withDuration: 0.3) {
-                controller.showVoteContainer()
-                self.votingContainer.isHidden = true
-            }
+        case view.chevronButton:
+            // UIView.animate(withDuration: 0.3) {
+            view.showVoteContainer()
+            self.votingContainer.isHidden = true
+        //   }
         default:
             break
         }
     }
 
-    func chatObjectWasTapped(controller: ChatObjectViewController) {
+    func chatObjectWasTapped(view: ChatObjectView) {
 
     }
 }

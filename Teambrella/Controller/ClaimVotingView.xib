@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ClaimVotingController" customModule="Teambrella" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ClaimVotingView" customModule="Teambrella" customModuleProvider="target">
             <connections>
                 <outlet property="byProxyLabel" destination="4iD-BV-Kqg" id="jZf-6C-Bwz"/>
                 <outlet property="proxyAvatarView" destination="9o8-l9-9Vr" id="1Ia-qh-mdm"/>
@@ -32,7 +32,6 @@
                 <outlet property="teamPercentLabel" destination="9Fk-h5-0dt" id="sai-aY-7li"/>
                 <outlet property="teamValueLabel" destination="i6N-3B-wHt" id="7eS-Zf-58D"/>
                 <outlet property="teamVoteLabel" destination="uxr-FN-OZQ" id="Ccv-sL-4Qm"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yourAmountLabel" destination="vkh-1D-cCt" id="Flp-kk-rbA"/>
                 <outlet property="yourCurrencyLabel" destination="CTa-Mj-wXy" id="Th4-5G-zg0"/>
                 <outlet property="yourPercentLabel" destination="Um7-MI-F42" id="muK-Jg-BMA"/>
@@ -67,25 +66,25 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17,6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6N-3B-wHt">
-                                    <rect key="frame" x="12" y="25.5" width="72.5" height="44"/>
+                                    <rect key="frame" x="12" y="25.5" width="70.5" height="42"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="790" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgs-AC-yCG">
-                                    <rect key="frame" x="12" y="69.5" width="31" height="22"/>
+                                    <rect key="frame" x="12" y="67.5" width="30.5" height="21"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZm-82-CH3" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="45" y="68.5" width="9.5" height="12"/>
+                                    <rect key="frame" x="44.5" y="66" width="9.5" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fk-h5-0dt">
-                                    <rect key="frame" x="84.5" y="25.5" width="33" height="44"/>
+                                    <rect key="frame" x="82.5" y="25.5" width="36" height="42"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                     <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -126,19 +125,19 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17,6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjc-Xr-tdH">
-                                    <rect key="frame" x="12" y="25.5" width="72.5" height="44"/>
+                                    <rect key="frame" x="12" y="25.5" width="70.5" height="42"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="790" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkh-1D-cCt">
-                                    <rect key="frame" x="12" y="69.5" width="31" height="22"/>
+                                    <rect key="frame" x="12" y="67.5" width="30.5" height="21"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTa-Mj-wXy" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="45" y="68.5" width="9.5" height="12"/>
+                                    <rect key="frame" x="44.5" y="66" width="9.5" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -157,13 +156,13 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um7-MI-F42">
-                                    <rect key="frame" x="84.5" y="25.5" width="33" height="44"/>
+                                    <rect key="frame" x="82.5" y="25.5" width="36" height="42"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                     <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDu-Xg-lqj">
-                                    <rect key="frame" x="12" y="98" width="59" height="27"/>
+                                    <rect key="frame" x="12" y="98.5" width="58" height="26"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
                                     <state key="normal" title="Reset vote">
                                         <color key="titleColor" red="0.47058823529999999" green="0.50980392159999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
