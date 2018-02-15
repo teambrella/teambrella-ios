@@ -61,6 +61,11 @@ final class ReportVC: UIViewController, Routable {
     var coverage: Double = 0.0
     var limit: Double = 0.0
     var lastDate: Date = Date()
+    var claimCell: NewClaimCell? {
+        let visibleCells = collectionView.visibleCells
+        let claimCells = visibleCells.filter { $0 is NewClaimCell }
+        return claimCells.first as? NewClaimCell
+    }
     
     // MARK: Lifecycle
     
@@ -149,17 +154,17 @@ final class ReportVC: UIViewController, Routable {
     @objc
     func datePickerChangedValue(sender: UIDatePicker) {
         var idx = 0
-        for i in 0 ..< dataSource.items.count where dataSource.items[i] is DateReportCellModel {
+        for i in 0 ..< dataSource.items.count where dataSource.items[i] is NewClaimCellModel {
             idx = i
             break
         }
         
         let indexPath = IndexPath(row: idx, section: 0)
-        if var dateReportCellModel = dataSource[indexPath] as? DateReportCellModel {
+        if var dateReportCellModel = dataSource[indexPath] as? NewClaimCellModel {
             dateReportCellModel.date = sender.date
             dataSource.items[idx] = dateReportCellModel
-            if let cell = collectionView.cellForItem(at: indexPath) as? ReportTextFieldCell {
-                cell.textField.text = DateProcessor().stringIntervalOrDate(from: dateReportCellModel.date)
+            if let cell = collectionView.cellForItem(at: indexPath) as? NewClaimCell {
+                cell.dateTextField.text = DateProcessor().stringIntervalOrDate(from: dateReportCellModel.date)
             }
             
             lastDate = Date()
@@ -197,17 +202,18 @@ final class ReportVC: UIViewController, Routable {
         if var model = dataSource[indexPath] as? NewDiscussionCellModel {
             model.postTitleText = textField.text ?? ""
             dataSource.items[indexPath.row] = model
-        } else if var model = dataSource[indexPath] as? WalletReportCellModel {
-            model.text = textField.text ?? ""
-            dataSource.items[indexPath.row] = model
-        } else if var model = dataSource[indexPath] as? ExpensesReportCellModel,
-            let text = textField.text,
-            let expenses = Double(text) {
-            model.expenses = expenses
-            dataSource.items[indexPath.row] = model
-        } else if var model = dataSource[indexPath] as? TitleReportCellModel {
-            model.text = textField.text ?? ""
-            dataSource.items[indexPath.row] = model
+        } else if var model = dataSource[indexPath] as? NewClaimCellModel {
+            if let cell = claimCell {
+                if textField == cell.reimburseTextField {
+                    model.reimburseText = textField.text ?? ""
+                    dataSource.items[indexPath.row] = model
+                } else if textField == cell.expensesTextField {
+                    if let text = textField.text, let expenses = Double(text) {
+                        model.expenses = expenses
+                        dataSource.items[indexPath.row] = model
+                    }
+                }
+            }
         }
         enableSendButton()
     }
@@ -280,7 +286,7 @@ final class ReportVC: UIViewController, Routable {
     
     private func reloadExpencesCellIfNeeded() {
         let visibleCells = collectionView.visibleCells
-        let expensesCells = visibleCells.filter { $0 is ReportExpensesCell }
+        let expensesCells = visibleCells.filter { $0 is NewClaimCell }
         guard let expensesCell = expensesCells.first else { return }
         guard let indexPath = collectionView.indexPath(for: expensesCell) else { return }
         
@@ -361,8 +367,8 @@ extension ReportVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         ReportCellBuilder.populate(cell: cell, with: dataSource[indexPath], reportVC: self, indexPath: indexPath)
-        if let cell = cell as? ReportPhotoGalleryCell {
-            addPhotoController(to: cell.container)
+        if let cell = cell as? NewClaimCell {
+            addPhotoController(to: cell.photosContainer)
         }
         let isLast = indexPath.row == dataSource.count - 1
         ViewDecorator.decorateCollectionView(cell: cell, isFirst: indexPath.row == 0, isLast: isLast)
@@ -405,7 +411,10 @@ extension ReportVC: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         let indexPath = IndexPath(row: textView.tag, section: 0)
-        if var model = dataSource[indexPath] as? NewDiscussionCellModel/*DescriptionReportCellModel*/ {
+        if var model = dataSource[indexPath] as? NewDiscussionCellModel {
+            model.descriptionText = textView.text
+            dataSource.items[indexPath.row] = model
+        } else if var model = dataSource[indexPath] as? NewClaimCellModel {
             model.descriptionText = textView.text
             dataSource.items[indexPath.row] = model
         }
@@ -430,7 +439,7 @@ extension ReportVC: UITextFieldDelegate {
         (textField as? TextField)?.isInEditMode = false
         enableSendButton()
         let indexPath = IndexPath(row: textField.tag, section: 0)
-        if dataSource[indexPath] is ExpensesReportCellModel {
+        if dataSource[indexPath] is NewClaimCellModel {
             reloadExpencesCellIfNeeded()
         }
     }
