@@ -22,6 +22,12 @@ extension UIDevice {
         
         return ["iPhone9", "iPhone10"].contains(version)
     }
+
+    public var hasSemiHapticEngine: Bool {
+        guard let version = platform.split(separator: ",").first else { return false }
+
+        return ["iPhone8"].contains(version)
+    }
     
     public var isIphoneX: Bool {
         return ["iPhone10,3", "iPhone10,6"].contains(platform)

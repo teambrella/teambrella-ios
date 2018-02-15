@@ -30,6 +30,7 @@ final class UniversalChatDatasource {
     var onError: ((Error) -> Void)?
     var onSendMessage: ((IndexPath) -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
+    var onClaimVoteUpdate: (() -> Void)?
     
     var limit                                       = 10
     var cloudWidth: CGFloat                         = 0
@@ -283,6 +284,29 @@ final class UniversalChatDatasource {
                 self?.onError?(error)
         })
         request.start()
+    }
+
+    func updateVoteOnServer(vote: Float?) {
+        guard let claimID = chatModel?.id else { return }
+
+        let lastUpdated = claim?.lastUpdated ?? 0
+        service.server.updateTimestamp { timestamp, error in
+            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
+
+            let body = RequestBody(key: key, payload: ["ClaimId": claimID,
+                                                       "MyVote": vote ?? NSNull(),
+                                                       "Since": lastUpdated])
+            let request = TeambrellaRequest(type: .claimVote, body: body, success: { [weak self] response in
+                if case let .claimVote(voteUpdate) = response {
+                    self?.chatModel?.update(with: voteUpdate)
+                    self?.onClaimVoteUpdate?()
+                    log("Updated claim with \(voteUpdate)", type: .info)
+                }
+                }, failure: { [weak self] error in
+                    self?.onError?(error)
+            })
+            request.start()
+        }
     }
     
     subscript(indexPath: IndexPath) -> ChatCellModel {

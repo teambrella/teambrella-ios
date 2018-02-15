@@ -99,7 +99,7 @@ class SODVC: UIViewController, Routable {
     @objc
     private func openSilentPush() {
         guard var settingsURL = URL(string: UIApplicationOpenSettingsURLString) else { return }
-        //        guard let settingsURL = URL(string: "App-Prefs:root=General&path=BACKGROUND_APP_REFRESH") else { return }
+        //    guard let settingsURL = URL(string: "App-Prefs:root=General&path=BACKGROUND_APP_REFRESH") else { return }
 
         UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
         close()

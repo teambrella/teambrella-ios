@@ -17,18 +17,23 @@
 import Foundation
 
 struct ChatModel: Decodable, CustomStringConvertible {
-    let lastUpdated: Int64
+    var lastUpdated: Int64
     let discussion: DiscussionPart
 
     let basic: BasicPart?
     let team: TeamPart?
-    let voting: VotingPart?
+    var voting: VotingPart?
 
     let id: Int?
     let lastRead: Int64?
     let title: String?
 
     var description: String { return "\(type(of: self)) \(discussion.topicID); messages: \(discussion.chat.count)" }
+
+    mutating func update(with claimUpdate: ClaimVoteUpdate) {
+        lastUpdated = claimUpdate.lastUpdated
+        voting?.update(with: claimUpdate.voting)
+    }
 
     enum CodingKeys: String, CodingKey {
         case lastUpdated = "LastUpdated"
@@ -57,16 +62,26 @@ struct ChatModel: Decodable, CustomStringConvertible {
     }
 
     struct VotingPart: Decodable {
-        let remainingMinutes: Int
-        let proxyName: String?
-        let proxyAvatar: String?
-        let myVote: Double?
+        var remainingMinutes: Int
+        var proxyName: Name?
+        var proxyAvatar: Avatar?
+        var myVote: Double?
 
         let riskVoted: Double?
-        let ratioVoted: ClaimVote?
+        var ratioVoted: ClaimVote?
 
-        let otherCount: Int?
-        let otherAvatars: [String]?
+        var otherCount: Int?
+        var otherAvatars: [Avatar]?
+
+        mutating func update(with claim: ClaimEntityLarge.VotingPart) {
+            remainingMinutes = claim.minutesRemaining
+            proxyName = claim.proxyName
+            proxyAvatar = claim.proxyAvatar
+            myVote = claim.myVote?.value ?? claim.proxyVote?.value
+            ratioVoted = claim.ratioVoted
+            otherCount = claim.otherCount
+            otherAvatars = claim.otherAvatars
+        }
 
         enum CodingKeys: String, CodingKey {
             case remainingMinutes = "RemainedMinutes"
@@ -99,7 +114,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
         let bigPhotos: [String]?
         let smallPhotos: [String]?
         let coverage: Coverage?
-        let claimAmount: Double?
+        let claimAmount: Fiat?
         let estimatedExpenses: Double?
         let incidentDate: Date?
         let state: ClaimState?

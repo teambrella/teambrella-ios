@@ -96,7 +96,7 @@ struct ClaimCellBuilder {
             cell.yourVoteAmount.text = String.truncatedNumber(proxyVote.fiat(from: claim.basic.claimAmount).value)
             cell.slider.setValue(Float(proxyVote.value), animated: true)
             if let proxyAvatar = voting.proxyAvatar {
-                cell.proxyAvatar.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: proxyAvatar)))
+                cell.proxyAvatar.show(proxyAvatar)
                 cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
             }
         } else {
@@ -122,7 +122,7 @@ struct ClaimCellBuilder {
         cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.resetButton.addTarget(delegate, action: #selector(ClaimVC.tapResetVote), for: .touchUpInside)
         
-        let avatars = voting.otherAvatars.flatMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
+        let avatars = voting.otherAvatars.flatMap { $0.url }
         let maxAvatarsStackCount = 4
         let otherVotersCount = voting.otherCount - maxAvatarsStackCount + 1
         let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil

@@ -81,9 +81,9 @@ struct ClaimEntityLarge: Decodable, CustomStringConvertible {
         let ratioVoted: ClaimVote
         let myVote: ClaimVote?
         let proxyVote: ClaimVote?
-        let proxyAvatar: String?
-        let proxyName: String?
-        let otherAvatars: [String]
+        let proxyAvatar: Avatar?
+        let proxyName: Name?
+        let otherAvatars: [Avatar]
         let otherCount: Int
         let minutesRemaining: Int
 

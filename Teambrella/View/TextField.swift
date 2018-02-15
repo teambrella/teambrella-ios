@@ -62,6 +62,7 @@ class AlertDecorator {
             view.layer.borderColor = isInAlertMode ? alertBorderColor.cgColor : normalBorderColor.cgColor
         }
     }
+
     init(view: UIView) {
         self.view = view
         self.isInAlertMode = false

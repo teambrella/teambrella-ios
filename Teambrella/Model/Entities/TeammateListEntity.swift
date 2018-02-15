@@ -56,4 +56,5 @@ class TeammateListEntity: Decodable {
         case avatar = "Avatar"
         case minutesRemaining = "VotingEndsIn"
     }
+    
 }
