@@ -137,6 +137,8 @@ public class BlockchainServer {
                 log("Success getting updates with \(updateInfo)", type: .cryptoDetails)
                 do {
                     let result = try JSONDecoder().decode(GetUpdatesReplyServerImpl.self, from: data)
+                    let res = try JSONSerialization.jsonObject(with: data, options: [])
+                    log("Get updates: \(res)", type: .cryptoRequests)
                     me.timestamp = result.status.timestamp
                     completion(result, nil)
                 } catch {

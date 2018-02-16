@@ -56,6 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         service.socket?.start()
+        service.teambrella.startUpdating(completion: { result in
+            let description = result.rawValue == 0 ? "new data" : result.rawValue == 1 ? "no data" : "failed"
+            log("Teambrella service get updates results: \(description)", type: .info)
+        })
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
