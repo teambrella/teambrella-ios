@@ -46,5 +46,14 @@ class NewClaimCell: UICollectionViewCell, XIBInitableCell {
         descriptionTextView.layer.masksToBounds = true
         
     }
+    
+    func updateExpenses(limit: Double, coverage: Double, expenses: Double?) {
+        self.expensesTextField.placeholder = "Max: \(Int(limit))"
+        self.expensesTextField.text = expenses.map { String.truncatedNumber($0) } ?? ""
+        let amountString = String.truncatedNumber((expenses ?? 0) * coverage)
+        self.statsNumberBar.left?.amountLabel.text = String.truncatedNumber(limit)
+        self.statsNumberBar.middle?.amountLabel.text = String.truncatedNumber(coverage * 100)
+        self.statsNumberBar.right?.amountLabel.text = amountString
+    }
 
 }

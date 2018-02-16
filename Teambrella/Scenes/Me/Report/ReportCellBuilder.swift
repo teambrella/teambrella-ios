@@ -53,14 +53,14 @@ struct ReportCellBuilder {
             cell.titleTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isTitleValid : false
             cell.titleTextField.text = model.postTitleText
             cell.titleTextField.tintColor = cell.titleTextField.tintColor.withAlphaComponent(1)
-            cell.titleTextField.tag = indexPath.row
+//            cell.titleTextField.tag = indexPath.row
             cell.titleTextField.removeTarget(reportVC, action: nil, for: .allEvents)
             cell.titleTextField.addTarget(reportVC,
                                           action: #selector(ReportVC.textFieldDidChange),
                                           for: .editingChanged)
             cell.textViewTitleLabel.text = model.descriptionTitle
             cell.postTextView.text = model.descriptionText
-            cell.postTextView.tag = indexPath.row
+//            cell.postTextView.tag = indexPath.row
             cell.postTextView.delegate = reportVC
             cell.postTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isDescriptionValid : false
         }
@@ -101,6 +101,7 @@ struct ReportCellBuilder {
             cell.statsNumberBar.right?.titleLabel.text = model.amountTitle
             cell.statsNumberBar.right?.amountLabel.text = model.amountString
             cell.statsNumberBar.right?.currencyLabel.text = service.currencyName
+            cell.expensesTextField.inputView = nil
             cell.expensesTextField.delegate = reportVC
             cell.expensesTextField.text = model.expensesString
             cell.expensesTextField.placeholder = "Max: \(Int(reportVC.limit))"
@@ -109,7 +110,7 @@ struct ReportCellBuilder {
             cell.expensesTextField.rightViewMode = .unlessEditing
             cell.currencyTextField.isUserInteractionEnabled = false
             cell.currencyTextField.text = service.currencyName
-            cell.expensesTextField.tag = indexPath.row
+//            cell.expensesTextField.tag = indexPath.row
             cell.expensesTextField.removeTarget(reportVC, action: nil, for: .allEvents)
             cell.expensesTextField.addTarget(reportVC,
                                              action: #selector(ReportVC.textFieldDidChange),
@@ -117,7 +118,8 @@ struct ReportCellBuilder {
             
             cell.descriptionLabel.text = model.descriptionTitle
             cell.descriptionTextView.text = model.descriptionText
-            cell.descriptionTextView.tag = indexPath.row
+//            cell.descriptionTextView.tag = indexPath.row
+            cell.descriptionTextView.inputView = nil
             cell.descriptionTextView.delegate = reportVC
             cell.descriptionTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isDescriptionValid : false
             
@@ -134,7 +136,7 @@ struct ReportCellBuilder {
             cell.reimburseTextField.text = model.reimburseText
             cell.reimburseTextField.tintColor = cell.reimburseTextField.tintColor.withAlphaComponent(1)
             cell.reimburseTextField.placeholder = ""
-            cell.reimburseTextField.tag = indexPath.row
+//            cell.reimburseTextField.tag = indexPath.row
             cell.reimburseTextField.removeTarget(reportVC, action: nil, for: .allEvents)
             cell.reimburseTextField.addTarget(reportVC,
                                               action: #selector(ReportVC.textFieldDidChange),

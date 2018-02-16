@@ -67,6 +67,13 @@ final class ReportVC: UIViewController, Routable {
         return claimCells.first as? NewClaimCell
     }
     
+    var keyboardTopY: CGFloat?
+    var keyboardHeight: CGFloat {
+        guard let top = self.keyboardTopY else { return 0 }
+        
+        return self.view.bounds.maxY - top
+    }
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -95,10 +102,11 @@ final class ReportVC: UIViewController, Routable {
         dataSource.onUpdateCoverage = { [weak self] in
             guard let `self` = self else { return }
             
-            self.reloadExpencesCellIfNeeded()
             self.isCoverageActual = true
             self.coverage = self.dataSource.coverage.value
             self.limit = self.dataSource.limit
+            self.claimCell?.updateExpenses(limit: self.limit, coverage: self.coverage, expenses: nil)
+//            self.reloadExpencesCellIfNeeded()
         }
         ReportCellBuilder.registerCells(in: collectionView)
         dataSource.getCoverageForDate(date: datePicker.date)
@@ -107,12 +115,53 @@ final class ReportVC: UIViewController, Routable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showNavigationBarButtons()
+        listenForKeyboard()
         enableSendButton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         //showNavigationBarButtons()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.contentInset.bottom = keyboardHeight
+    }
+    
+    private func listenForKeyboard() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillChangeFrame),
+                                               name: Notification.Name.UIKeyboardWillChangeFrame,
+                                               object: nil)
+    }
+    
+    private func stopListeningKeyboard() {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    @objc
+    func keyboardWillChangeFrame(notification: Notification) {
+        if let finalFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let offset = collectionView.contentOffset
+            guard finalFrame.minY < collectionView.contentSize.height else { return }
+            
+            keyboardTopY = finalFrame.minY
+            collectionView.contentOffset = offset
+            collectionView.contentInset.bottom = keyboardHeight
+        }
+    }
+    
+    private func addKeyboardObservers() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapView))
+        view.addGestureRecognizer(tap)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(adjustForKeyboard),
+                           name: Notification.Name.UIKeyboardWillHide,
+                           object: nil)
+        center.addObserver(self, selector: #selector(adjustForKeyboard),
+                           name: Notification.Name.UIKeyboardWillChangeFrame,
+                           object: nil)
     }
     
     // MARK: Actions
@@ -132,13 +181,13 @@ final class ReportVC: UIViewController, Routable {
         }
         
         collectionView.scrollIndicatorInsets = collectionView.contentInset
-        if let responder = collectionView.currentFirstResponder() as? UIView {
-            for cell in collectionView.visibleCells where responder.isDescendant(of: cell) {
-                if let indexPath = collectionView.indexPath(for: cell) {
-                    collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
-                }
-            }
-        }
+//        if let responder = collectionView.currentFirstResponder() as? UIView {
+//            for cell in collectionView.visibleCells where responder.isDescendant(of: cell) {
+//                if let indexPath = collectionView.indexPath(for: cell) {
+//                    collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+//                }
+//            }
+//        }
     }
     
     @objc
@@ -252,18 +301,6 @@ final class ReportVC: UIViewController, Routable {
         }
     }
     
-    private func addKeyboardObservers() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapView))
-        view.addGestureRecognizer(tap)
-        let center = NotificationCenter.default
-        center.addObserver(self, selector: #selector(adjustForKeyboard),
-                           name: Notification.Name.UIKeyboardWillHide,
-                           object: nil)
-        center.addObserver(self, selector: #selector(adjustForKeyboard),
-                           name: Notification.Name.UIKeyboardWillChangeFrame,
-                           object: nil)
-    }
-    
     @discardableResult
     private func enableSendButton() -> Bool {
         guard let context = reportContext else { return false }
@@ -284,18 +321,18 @@ final class ReportVC: UIViewController, Routable {
         return enable
     }
     
-    private func reloadExpencesCellIfNeeded() {
-        let visibleCells = collectionView.visibleCells
-        let expensesCells = visibleCells.filter { $0 is NewClaimCell }
-        guard let expensesCell = expensesCells.first else { return }
-        guard let indexPath = collectionView.indexPath(for: expensesCell) else { return }
-        
-        collectionView.performBatchUpdates({
-            collectionView.reloadItems(at: [indexPath])
-        }) { finished in
-            
-        }
-    }
+//    private func reloadExpencesCellIfNeeded() {
+//        let visibleCells = collectionView.visibleCells
+//        let expensesCells = visibleCells.filter { $0 is NewClaimCell }
+//        guard let expensesCell = expensesCells.first else { return }
+//        guard let indexPath = collectionView.indexPath(for: expensesCell) else { return }
+//
+//        collectionView.performBatchUpdates({
+//            collectionView.reloadItems(at: [indexPath])
+//        }) { finished in
+//
+//        }
+//    }
     
     private func showNavigationBarButtons() {
         guard let context = reportContext else { return }
@@ -438,9 +475,12 @@ extension ReportVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         (textField as? TextField)?.isInEditMode = false
         enableSendButton()
-        let indexPath = IndexPath(row: textField.tag, section: 0)
-        if dataSource[indexPath] is NewClaimCellModel {
-            reloadExpencesCellIfNeeded()
+//        let indexPath = IndexPath(row: textField.tag, section: 0)
+        if var cell = claimCell as? NewClaimCell, textField == cell.expensesTextField, let text = textField.text {
+            cell.updateExpenses(limit: limit, coverage: coverage, expenses: Double(text))
         }
+//        if dataSource[indexPath] is NewClaimCellModel {
+//            reloadExpencesCellIfNeeded()
+//        }
     }
 }
