@@ -1959,6 +1959,10 @@
 				9489C1241FF54D7100ECA3A4 /* SwipeToVote.xib */,
 				6D251C452035E8E0005081E4 /* SlidingView.xib */,
 				6D251C482035E9B3005081E4 /* SlidingView.swift */,
+				6D251C3620348634005081E4 /* ClaimVotingView.swift */,
+				6D251C3720348634005081E4 /* ClaimVotingView.xib */,
+				6D251C3C2034B118005081E4 /* ChatObjectView.swift */,
+				6D251C3D2034B118005081E4 /* ChatObjectView.xib */,
 			);
 			name = ComplexViews;
 			sourceTree = "<group>";
@@ -2290,10 +2294,6 @@
 				6DA714EC1EDF49F500F39EBE /* MasterTabBarController.swift */,
 				6D66B4991F4C461A00672583 /* ImagePickerController.swift */,
 				6DDC65611FBAE42700DE4E36 /* TopBar */,
-				6D251C3620348634005081E4 /* ClaimVotingView.swift */,
-				6D251C3720348634005081E4 /* ClaimVotingView.xib */,
-				6D251C3C2034B118005081E4 /* ChatObjectView.swift */,
-				6D251C3D2034B118005081E4 /* ChatObjectView.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

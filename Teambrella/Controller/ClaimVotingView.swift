@@ -207,8 +207,12 @@ class ClaimVotingView: UIView, XIBInitable {
         let urls = avatars.flatMap { $0.url }
         let maxAvatarsStackCount = 4
         let otherVotersCount = otherCount - maxAvatarsStackCount + 1
-        let label: String?  =  otherCount > 0 ? "+\(otherVotersCount)" : nil
-        teamAvatarsStack.set(images: urls, label: label, max: maxAvatarsStackCount)
+        if otherVotersCount > 0 {
+            let label: String?  =  otherCount > 0 ? "+\(otherVotersCount)" : nil
+            teamAvatarsStack.set(images: urls, label: label, max: maxAvatarsStackCount)
+        } else {
+             teamAvatarsStack.set(images: urls, label: nil, max: maxAvatarsStackCount)
+        }
     }
 
 }

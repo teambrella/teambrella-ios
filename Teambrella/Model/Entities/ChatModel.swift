@@ -28,6 +28,12 @@ struct ChatModel: Decodable, CustomStringConvertible {
     let lastRead: Int64?
     let title: String?
 
+    var isClaimChat: Bool {
+        guard let basic = basic else { return false }
+
+        return basic.claimAmount != nil
+    }
+
     var description: String { return "\(type(of: self)) \(discussion.topicID); messages: \(discussion.chat.count)" }
 
     mutating func update(with claimUpdate: ClaimVoteUpdate) {

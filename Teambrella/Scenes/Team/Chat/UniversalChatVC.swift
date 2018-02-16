@@ -749,22 +749,24 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
         print("tap \(button)")
         switch button {
         case view.rightButton:
-            if let claimID = dataSource.chatModel?.id {
-                view.showChevron()
-                self.slidingView.showVotingView(animated: true)
+            if let model = dataSource.chatModel, model.isClaimChat {
+                self.slidingView.showVotingView()
             } else if let userID = dataSource.chatModel?.basic?.userID {
                 service.router.presentMemberProfile(teammateID: userID, scrollToVote: true)
             }
         case view.chevronButton:
-            view.showVoteContainer()
-            self.slidingView.hideVotingView(animated: true)
+            self.slidingView.hideVotingView()
         default:
             break
         }
     }
 
     func chatObjectWasTapped(view: ChatObjectView) {
-
+        if let id = dataSource.chatModel?.id {
+            service.router.presentClaim(claimID: id)
+        } else if let userID = dataSource.chatModel?.basic?.userID {
+            service.router.presentMemberProfile(teammateID: userID, scrollToVote: true)
+        }
     }
 }
 

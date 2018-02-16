@@ -50,21 +50,6 @@ class SlidingView: UIView, XIBInitable {
         ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
     }
 
-//    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-//        let result = super.hitTest(point, with: event)
-//        return result == self ? self.superview : result
-//    }
-
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        let views: [UIView] = [objectView, votingView]
-        for subview in views {
-            if subview.point(inside: point, with: event) {
-                return true
-            }
-        }
-        return false
-    }
-
     func setupViews(with delegate: ChatObjectViewDelegate & ClaimVotingDelegate, session: Session?) {
         objectView.delegate = delegate
         votingView.delegate = delegate
@@ -72,34 +57,32 @@ class SlidingView: UIView, XIBInitable {
     }
 
     func showObjectView() {
-        objectViewTopConstraint.constant = 0
+        delegate?.sliding(view: self, changeContentHeight: objectViewHeightConstraint.constant)
     }
 
-    func showVotingView(animated: Bool) {
-        votingViewTopConstraint.constant = 0
-        if animated {
-            UIView.animate(withDuration: 0.3) {
-                self.layoutIfNeeded()
-            }
+    func showVotingView() {
+        UIView.animate(withDuration: 0.3) {
+            self.objectView.showChevron()
         }
+        delegate?.sliding(view: self,
+                          changeContentHeight: objectViewHeightConstraint.constant
+                            + votingViewHeightConstraint.constant)
     }
-
+    
     func hideObjectView() {
-        objectViewTopConstraint.constant = -objectViewHeightConstraint.constant
+        delegate?.sliding(view: self, changeContentHeight: 0)
     }
 
-    func hideVotingView(animated: Bool) {
-        votingViewTopConstraint.constant = -votingViewHeightConstraint.constant
-        if animated {
-            UIView.animate(withDuration: 0.3) {
-                self.layoutIfNeeded()
-            }
+    func hideVotingView() {
+        UIView.animate(withDuration: 0.3) {
+            self.objectView.showVoteContainer()
         }
+        delegate?.sliding(view: self, changeContentHeight: objectViewHeightConstraint.constant)
     }
 
     func hideAll() {
-        hideObjectView()
-        hideVotingView(animated: false)
+        objectView.showVoteContainer()
+        delegate?.sliding(view: self, changeContentHeight: 0)
     }
 
     func updateChatModel(model: ChatModel) {
