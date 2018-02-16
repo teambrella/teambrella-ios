@@ -37,43 +37,26 @@
                                     <outlet property="delegate" destination="PAO-Ju-e4H" id="syo-R7-8zM"/>
                                 </connections>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xSl-ub-YXc">
-                                <rect key="frame" x="0.0" y="20" width="375" height="48"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsQ-Em-gKK" customClass="ChatObjectView" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="fDP-uX-P96"/>
-                                        </constraints>
-                                    </view>
-                                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8l-xf-SzX" customClass="ClaimVotingView" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-20" width="375" height="200"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="YSY-uw-s1z"/>
-                                        </constraints>
-                                        <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="4"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8FF-pN-i88" customClass="SlidingView" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="d9p-uA-88G"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="Ik8-Ic-VYL"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1pK-Sm-stF" firstAttribute="top" secondItem="PC1-t1-KTu" secondAttribute="top" id="21E-Aw-Yea"/>
-                            <constraint firstItem="xSl-ub-YXc" firstAttribute="leading" secondItem="PC1-t1-KTu" secondAttribute="leading" id="C7b-Pa-GJi"/>
+                            <constraint firstItem="8FF-pN-i88" firstAttribute="top" secondItem="1pK-Sm-stF" secondAttribute="top" id="8Q0-0k-rPo"/>
                             <constraint firstItem="Eub-Xr-XUC" firstAttribute="leading" secondItem="PC1-t1-KTu" secondAttribute="leading" id="QrV-Vh-qTZ"/>
+                            <constraint firstItem="PC1-t1-KTu" firstAttribute="trailing" secondItem="8FF-pN-i88" secondAttribute="trailing" id="Rx0-Z1-d3q"/>
                             <constraint firstItem="Eub-Xr-XUC" firstAttribute="top" secondItem="PC1-t1-KTu" secondAttribute="top" id="Skz-ca-BiC"/>
-                            <constraint firstItem="xSl-ub-YXc" firstAttribute="top" secondItem="PC1-t1-KTu" secondAttribute="top" id="WQf-2t-KM1"/>
                             <constraint firstItem="PC1-t1-KTu" firstAttribute="trailing" secondItem="1pK-Sm-stF" secondAttribute="trailing" id="XPE-xe-0Rl"/>
                             <constraint firstItem="1pK-Sm-stF" firstAttribute="leading" secondItem="PC1-t1-KTu" secondAttribute="leading" id="hLD-ez-i3S"/>
                             <constraint firstItem="PC1-t1-KTu" firstAttribute="bottom" secondItem="1pK-Sm-stF" secondAttribute="bottom" id="mGy-Rf-gGA"/>
-                            <constraint firstItem="PC1-t1-KTu" firstAttribute="trailing" secondItem="xSl-ub-YXc" secondAttribute="trailing" id="oLf-H7-twx"/>
+                            <constraint firstItem="8FF-pN-i88" firstAttribute="leading" secondItem="PC1-t1-KTu" secondAttribute="leading" id="mXa-bo-TbR"/>
                             <constraint firstItem="PC1-t1-KTu" firstAttribute="trailing" secondItem="Eub-Xr-XUC" secondAttribute="trailing" id="pUp-8V-Z3O"/>
                             <constraint firstItem="PC1-t1-KTu" firstAttribute="bottom" secondItem="Eub-Xr-XUC" secondAttribute="bottom" id="yQs-WZ-348"/>
                         </constraints>
@@ -81,9 +64,8 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="1pK-Sm-stF" id="fsw-q0-b6R"/>
-                        <outlet property="objectContainer" destination="jsQ-Em-gKK" id="1Lv-M7-uCM"/>
-                        <outlet property="stackView" destination="xSl-ub-YXc" id="1JO-xa-wZc"/>
-                        <outlet property="votingContainer" destination="e8l-xf-SzX" id="JnK-pm-Rt4"/>
+                        <outlet property="slidingView" destination="8FF-pN-i88" id="a7F-O7-zg9"/>
+                        <outlet property="slidingViewHeight" destination="d9p-uA-88G" id="p4i-ys-zC2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KI2-CH-Jbc" userLabel="First Responder" sceneMemberID="firstResponder"/>

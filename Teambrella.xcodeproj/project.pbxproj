@@ -129,6 +129,10 @@
 		6D251C412034B118005081E4 /* ChatObjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C3D2034B118005081E4 /* ChatObjectView.xib */; };
 		6D251C432035D04B005081E4 /* ScrollViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C422035D04B005081E4 /* ScrollViewHandler.swift */; };
 		6D251C442035D04B005081E4 /* ScrollViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C422035D04B005081E4 /* ScrollViewHandler.swift */; };
+		6D251C462035E8E0005081E4 /* SlidingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C452035E8E0005081E4 /* SlidingView.xib */; };
+		6D251C472035E8E0005081E4 /* SlidingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C452035E8E0005081E4 /* SlidingView.xib */; };
+		6D251C492035E9B3005081E4 /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C482035E9B3005081E4 /* SlidingView.swift */; };
+		6D251C4A2035E9B3005081E4 /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C482035E9B3005081E4 /* SlidingView.swift */; };
 		6D2808C51F1A450C00EBBE3D /* CompactUserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */; };
 		6D2808C61F1A450C00EBBE3D /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */; };
 		6D2808C81F1A563A00EBBE3D /* DiscussionCompactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */; };
@@ -1222,6 +1226,8 @@
 		6D251C3C2034B118005081E4 /* ChatObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatObjectView.swift; path = Controller/ChatObjectView.swift; sourceTree = "<group>"; };
 		6D251C3D2034B118005081E4 /* ChatObjectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatObjectView.xib; path = Controller/ChatObjectView.xib; sourceTree = "<group>"; };
 		6D251C422035D04B005081E4 /* ScrollViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScrollViewHandler.swift; path = Model/ScrollViewHandler.swift; sourceTree = "<group>"; };
+		6D251C452035E8E0005081E4 /* SlidingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SlidingView.xib; path = View/Complex/SlidingView.xib; sourceTree = "<group>"; };
+		6D251C482035E9B3005081E4 /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SlidingView.swift; path = View/Complex/SlidingView.swift; sourceTree = "<group>"; };
 		6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompactUserInfoHeader.swift; path = View/ReusableViews/CompactUserInfoHeader.swift; sourceTree = "<group>"; };
 		6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompactUserInfoHeader.xib; path = View/ReusableViews/CompactUserInfoHeader.xib; sourceTree = "<group>"; };
 		6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionCompactCell.swift; path = Scenes/Team/Members/DiscussionCompactCell.swift; sourceTree = "<group>"; };
@@ -1951,6 +1957,8 @@
 				94282B0B1FD9B1EE0006B5F6 /* LabeledIcon.xib */,
 				9489C1211FF54D4300ECA3A4 /* SwipeToVote.swift */,
 				9489C1241FF54D7100ECA3A4 /* SwipeToVote.xib */,
+				6D251C452035E8E0005081E4 /* SlidingView.xib */,
+				6D251C482035E9B3005081E4 /* SlidingView.swift */,
 			);
 			name = ComplexViews;
 			sourceTree = "<group>";
@@ -3181,6 +3189,7 @@
 				6D4E5D9F1F7AB6870020DEE2 /* Home.storyboard in Resources */,
 				6D251C412034B118005081E4 /* ChatObjectView.xib in Resources */,
 				6D4E5DA01F7AB6870020DEE2 /* ReportDescriptionCell.xib in Resources */,
+				6D251C472035E8E0005081E4 /* SlidingView.xib in Resources */,
 				6D4E5DA11F7AB6870020DEE2 /* Home.strings in Resources */,
 				6D4E5DA21F7AB6870020DEE2 /* LabeledTextField.xib in Resources */,
 				6D4E5DA31F7AB6870020DEE2 /* NumberBar.xib in Resources */,
@@ -3286,6 +3295,7 @@
 				6D0E056E1EFEC24D00604981 /* ReportDescriptionCell.xib in Resources */,
 				6D251C402034B118005081E4 /* ChatObjectView.xib in Resources */,
 				6DCB19441F0F878500AC9969 /* Home.strings in Resources */,
+				6D251C462035E8E0005081E4 /* SlidingView.xib in Resources */,
 				94E325C21F07E78E00B2D8C8 /* LabeledTextField.xib in Resources */,
 				6DA714EF1EE00CFB00F39EBE /* NumberBar.xib in Resources */,
 				6D9C808F1EDF17D000FB8C2C /* AkkuratPro-Regular.otf in Resources */,
@@ -3943,6 +3953,7 @@
 				6D4E5CF11F7AB6870020DEE2 /* ClaimEntity.swift in Sources */,
 				6D4E5CF21F7AB6870020DEE2 /* ChatCell.swift in Sources */,
 				6D4E5CF31F7AB6870020DEE2 /* ProxyForVC.swift in Sources */,
+				6D251C4A2035E9B3005081E4 /* SlidingView.swift in Sources */,
 				6D4E5CF41F7AB6870020DEE2 /* MyProxiesDataSource.swift in Sources */,
 				6D4E5CF51F7AB6870020DEE2 /* SortDataSource.swift in Sources */,
 				6D4E5CF61F7AB6870020DEE2 /* LabeledTextField.swift in Sources */,
@@ -4373,6 +4384,7 @@
 				6DDE95801EE84FFD0019DA47 /* ClaimDetailsCell.swift in Sources */,
 				6D6DA25E1EE1D1BB00307C73 /* ClaimEntity.swift in Sources */,
 				6DE7932F1EF810DB005F4508 /* ChatCell.swift in Sources */,
+				6D251C492035E9B3005081E4 /* SlidingView.swift in Sources */,
 				6D0D2AE31EFBD45F0095284C /* ProxyForVC.swift in Sources */,
 				6D69D9E31EFBEE8D00DED5CE /* MyProxiesDataSource.swift in Sources */,
 				94793A891F0D126600696B90 /* SortDataSource.swift in Sources */,

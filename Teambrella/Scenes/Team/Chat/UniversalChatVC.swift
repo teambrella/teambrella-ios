@@ -47,10 +47,9 @@ final class UniversalChatVC: UIViewController, Routable {
     static var storyboardName = "Chat"
     
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var stackView: UIStackView!
 
-    @IBOutlet var objectContainer: ChatObjectView!
-    @IBOutlet var votingContainer: ClaimVotingView!
+    @IBOutlet var slidingView: SlidingView!
+    @IBOutlet var slidingViewHeight: NSLayoutConstraint!
 
     override var inputAccessoryView: UIView? { return input }
     override var canBecomeFirstResponder: Bool { return true }
@@ -92,7 +91,6 @@ final class UniversalChatVC: UIViewController, Routable {
         addGradientNavBar()
         addMuteButton()
         setMuteButtonImage(type: dataSource.notificationsType)
-        setupInitialObjectView()
         setupCollectionView()
         setupInput()
         setupTapGestureRecognizer()
@@ -104,7 +102,7 @@ final class UniversalChatVC: UIViewController, Routable {
             self.setupActualObjectViewIfNeeded()
             self.setupTitle()
             self.setMuteButtonImage(type: self.dataSource.notificationsType)
-            self.votingContainer.setup(with: self.dataSource.chatModel)
+            self.slidingView.votingView.setup(with: self.dataSource.chatModel)
             guard hasNew else {
                 if isFirstLoad {
                     self.shouldScrollToBottom = true
@@ -124,20 +122,17 @@ final class UniversalChatVC: UIViewController, Routable {
         }
         dataSource.onClaimVoteUpdate = { [weak self] in
             guard let `self` = self else { return }
+            guard let model = self.dataSource.chatModel else { return }
 
-            self.votingContainer?.isChangingVote = false
-            self.votingContainer?.setup(with: self.dataSource.chatModel)
-            self.objectContainer.setup(with: self.dataSource.chatModel)
+            self.slidingView.updateChatModel(model: model)
         }
 
         dataSource.isLoadNextNeeded = true
         title = ""
 
-        //objectContainer.layer.zPosition = 1
-        objectContainer.delegate = self
         let session = service.session
-        votingContainer.session = session
-        votingContainer.delegate = self
+        slidingView.setupViews(with: self, session: session)
+        slidingView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -287,7 +282,7 @@ private extension UniversalChatVC {
         scrollViewHandler.onFastBackwardScroll = { [weak self] velocity in
             guard let `self` = self else { return }
 
-            self.hideAuxillaryViews()
+            self.slidingView.hideAll() 
         }
 
         scrollViewHandler.onFastForwardScroll = { [weak self] velocity in
@@ -297,21 +292,10 @@ private extension UniversalChatVC {
         }
     }
 
-    private func hideAuxillaryViews() {
-        guard objectContainer.isHidden == false || votingContainer.isHidden == false else { return }
-
-        self.objectContainer.isHidden = true
-        self.objectContainer.showVoteContainer()
-        self.votingContainer.isHidden = true
-    }
-
     private func showObject() {
         guard dataSource.isObjectViewNeeded == true else { return }
-        guard objectContainer.isHidden == true else { return }
 
-        UIView.animate(withDuration: 0.3) {
-            self.objectContainer.isHidden = false
-        }
+        slidingView.showObjectView()
     }
 
     private func showMuteInfo(muteType: TopicMuteType) {
@@ -326,7 +310,7 @@ private extension UniversalChatVC {
         cloudView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,
                                             constant: -rightCloudOffset).isActive = true
         cloudView.topAnchor.constraint(equalTo: self.view.topAnchor,
-                                       constant: 3 + stackView.frame.minY).isActive = true
+                                       constant: 3 + collectionView.frame.minY).isActive = true
         cloudView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 0, alpha: 0)
         cloudView.alpha = 0
         if muteType == .unmuted {
@@ -521,17 +505,15 @@ private extension UniversalChatVC {
         }
     }
     
-    private func setupInitialObjectView() {
-        ViewDecorator.shadow(for: votingContainer, opacity: 0.08, radius: 4)
-        ViewDecorator.shadow(for: objectContainer, opacity: 0.08, radius: 4)
-        votingContainer.isHidden = true
-        objectContainer.isHidden = true
-    }
-    
     private func setupActualObjectViewIfNeeded() {
-        objectContainer.isHidden = !dataSource.isObjectViewNeeded
-        votingContainer.isHidden = true
-        objectContainer.setup(with: dataSource.chatModel)
+        if dataSource.isObjectViewNeeded {
+            slidingView.showObjectView()
+        } else {
+            slidingView.hideObjectView()
+        }
+        if let model = dataSource.chatModel {
+            slidingView.updateChatModel(model: model)
+        }
     }
     
     private func linkImage(image: UIImage, name: String) {
@@ -768,18 +750,14 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
         switch button {
         case view.rightButton:
             if let claimID = dataSource.chatModel?.id {
-                //   UIView.animate(withDuration: 0.3) {
                 view.showChevron()
-                self.votingContainer.isHidden = false
-                //   }
+                self.slidingView.showVotingView(animated: true)
             } else if let userID = dataSource.chatModel?.basic?.userID {
                 service.router.presentMemberProfile(teammateID: userID, scrollToVote: true)
             }
         case view.chevronButton:
-            // UIView.animate(withDuration: 0.3) {
             view.showVoteContainer()
-            self.votingContainer.isHidden = true
-        //   }
+            self.slidingView.hideVotingView(animated: true)
         default:
             break
         }
@@ -794,5 +772,15 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
 extension UniversalChatVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewHandler.scrollViewDidScroll(scrollView)
+    }
+}
+
+// MARK: SlidingViewDelegate
+extension UniversalChatVC: SlidingViewDelegate {
+    func sliding(view: SlidingView, changeContentHeight height: CGFloat) {
+        slidingViewHeight.constant = height
+        UIView.animate(withDuration: 0.3) {
+            self.slidingView.layoutIfNeeded()
+        }
     }
 }
