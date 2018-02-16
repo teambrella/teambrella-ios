@@ -106,7 +106,6 @@ final class ReportVC: UIViewController, Routable {
             self.coverage = self.dataSource.coverage.value
             self.limit = self.dataSource.limit
             self.claimCell?.updateExpenses(limit: self.limit, coverage: self.coverage, expenses: nil)
-//            self.reloadExpencesCellIfNeeded()
         }
         ReportCellBuilder.registerCells(in: collectionView)
         dataSource.getCoverageForDate(date: datePicker.date)
@@ -321,19 +320,6 @@ final class ReportVC: UIViewController, Routable {
         return enable
     }
     
-//    private func reloadExpencesCellIfNeeded() {
-//        let visibleCells = collectionView.visibleCells
-//        let expensesCells = visibleCells.filter { $0 is NewClaimCell }
-//        guard let expensesCell = expensesCells.first else { return }
-//        guard let indexPath = collectionView.indexPath(for: expensesCell) else { return }
-//
-//        collectionView.performBatchUpdates({
-//            collectionView.reloadItems(at: [indexPath])
-//        }) { finished in
-//
-//        }
-//    }
-    
     private func showNavigationBarButtons() {
         guard let context = reportContext else { return }
         
@@ -475,12 +461,8 @@ extension ReportVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         (textField as? TextField)?.isInEditMode = false
         enableSendButton()
-//        let indexPath = IndexPath(row: textField.tag, section: 0)
-        if var cell = claimCell as? NewClaimCell, textField == cell.expensesTextField, let text = textField.text {
+        if let cell = claimCell as? NewClaimCell, textField == cell.expensesTextField, let text = textField.text {
             cell.updateExpenses(limit: limit, coverage: coverage, expenses: Double(text))
         }
-//        if dataSource[indexPath] is NewClaimCellModel {
-//            reloadExpencesCellIfNeeded()
-//        }
     }
 }
