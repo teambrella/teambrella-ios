@@ -20,6 +20,7 @@ class SODVC: UIViewController, Routable {
     enum SODMode {
         case outdated
         case oldVersion
+        case criticallyOldVersion
         case silentPush
     }
     
@@ -42,14 +43,16 @@ class SODVC: UIViewController, Routable {
         case .outdated:
             setupAsOutdated()
         case .oldVersion:
-            setupAsOldVersion()
+            setupAsOldVersion(isCritical: false)
+        case .criticallyOldVersion:
+            setupAsOldVersion(isCritical: true)
         case .silentPush:
             setupAsSilentPush()
         }
     }
     
     private func setupAsOutdated() {
-        logoView.image = #imageLiteral(resourceName: "logo-1").withRenderingMode(.alwaysTemplate)
+        //logoView.image = #imageLiteral(resourceName: "logo-1").withRenderingMode(.alwaysTemplate)
         logoView.tintColor = UIColor.teambrellaBlue
         
         titleLabel.text = "Info.DemoExpired.Title".localized
@@ -59,7 +62,7 @@ class SODVC: UIViewController, Routable {
         lowerButton.setTitle("Info.DemoExpired.LowerButton.Title".localized, for: .normal)
     }
 
-    private func setupAsOldVersion() {
+    private func setupAsOldVersion(isCritical: Bool) {
         logoView.image = #imageLiteral(resourceName: "logo-2").withRenderingMode(.alwaysTemplate)
         logoView.tintColor = UIColor.sodBlue
 
@@ -71,6 +74,10 @@ class SODVC: UIViewController, Routable {
 
         upperButton.addTarget(self, action: #selector(openAppStore), for: .touchUpInside)
         lowerButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+
+        if isCritical {
+            lowerButton.isHidden = true
+        }
     }
 
     private func setupAsSilentPush() {

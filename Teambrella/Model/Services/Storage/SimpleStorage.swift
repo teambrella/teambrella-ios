@@ -22,6 +22,7 @@ class SimpleStorage {
         case recentScene = "storage.recentScene"
         case uniqueIdentifier = "com.teambrella.application.uniqueIdentifier"
         case swipeHelperWasShown = "com.teambrella.swipeHelperWasShown"
+        case outdatedVersionLastShowDate = "com.teambrella.outdatedVersionLastShowDate"
     }
     
     func store(int: Int, forKey: StorageKey) {
@@ -36,6 +37,15 @@ class SimpleStorage {
         UserDefaults.standard.set(string, forKey: forKey.rawValue)
         UserDefaults.standard.synchronize()
     }
+
+    func store(date: Date, forKey: StorageKey) {
+        UserDefaults.standard.set(date, forKey: forKey.rawValue)
+        UserDefaults.standard.synchronize()
+    }
+
+    func date(forKey: StorageKey) -> Date? {
+        return UserDefaults.standard.object(forKey: forKey.rawValue) as? Date
+    }
     
     func string(forKey: StorageKey) -> String? {
         return UserDefaults.standard.object(forKey: forKey.rawValue) as? String
@@ -44,10 +54,6 @@ class SimpleStorage {
     func int(forKey: StorageKey) -> Int? {
         return string(forKey: forKey).flatMap { Int($0) }
     }
-    
-//    func bool(forKey: StorageKey) -> Bool? {
-//        return string(forKey: forKey).flatMap { Bool($0) }
-//    }
     
     func cleanValue(forKey: StorageKey) {
         UserDefaults.standard.setNilValueForKey(forKey.rawValue)
