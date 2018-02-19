@@ -177,7 +177,8 @@ struct TeambrellaRequest {
                     return
                 }
 
-                success(.myProxy(string == "Proxy voter is added." || string == "Proxy voter is removed."))
+                let isGoodReply = string == "Proxy voter is added." || string == "Proxy voter is removed."
+                success(.myProxy(isGoodReply))
             case .myProxies:
                 let model = try decoder.decode([ProxyCellModel].self, from: serverReply.data)
                 success(.myProxies(model))

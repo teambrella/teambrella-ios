@@ -22,7 +22,7 @@
 import UIKit
 
 enum ChatFragment {
-    case text(SaneText)
+    case text(String)
     case image(urlString: String, urlStringSmall: String, aspect: CGFloat)
     
     static func imageFragment(image: UIImage, urlString: String, urlStringSmall: String) -> ChatFragment {
@@ -31,7 +31,7 @@ enum ChatFragment {
     }
     
     static func textFragment(string: String) -> ChatFragment {
-        return ChatFragment.text(SaneText(text: string))
+        return ChatFragment.text(string)
     }
 }
 
@@ -49,7 +49,7 @@ struct ChatFragmentParser {
             scanner.scanUpTo("<img src=\"", into: &text)
             scanner.scanString("<img src=\"", into: nil)
             if let text = text {
-                    result.append(ChatFragment.text(SaneText(text: text as String)))
+                    result.append(ChatFragment.text(text as String))
             }
             
             scanner.scanUpTo("\">", into: &img)

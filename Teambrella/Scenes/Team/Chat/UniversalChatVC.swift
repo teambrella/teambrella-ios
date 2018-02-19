@@ -772,6 +772,9 @@ extension UniversalChatVC: UIScrollViewDelegate {
 extension UniversalChatVC: SlidingViewDelegate {
     func sliding(view: SlidingView, changeContentHeight height: CGFloat) {
         slidingViewHeight.constant = height
+        var inset = collectionView.contentInset
+        inset.top = height
+        collectionView.contentInset = inset
         UIView.animate(withDuration: 0.3) {
             self.slidingView.layoutIfNeeded()
         }

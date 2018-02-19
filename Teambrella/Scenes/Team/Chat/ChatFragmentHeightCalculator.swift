@@ -39,7 +39,7 @@ struct ChatFragmentHeightCalculator {
     func height(for fragment: ChatFragment) -> CGFloat {
         switch fragment {
         case let .text(text):
-            return height(for: text.sane)
+            return height(for: text)
         case let .image(_, _, ratio):
             return height(for: ratio)
         }
