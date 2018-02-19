@@ -27,10 +27,15 @@ struct ChatEntity: Decodable {
     let id: String
     let points: Int
     let text: String
-    let images: [String]
-    let smallImages: [String]
-    let imageRatios: [CGFloat]
     let teammate: TeammatePart?
+
+    private let imagesReceived: [String]?
+    private let smallImagesReceived: [String]?
+    private let imageRatiosReceived: [CGFloat]?
+
+    var images: [String] { return imagesReceived ?? [] }
+    var smallImages: [String] { return smallImagesReceived ?? [] }
+    var imageRatios: [CGFloat] { return imageRatiosReceived ?? [] }
 
     private let dateCreated: UInt64
 
@@ -42,9 +47,9 @@ struct ChatEntity: Decodable {
         case id = "Id"
         case points = "Points"
         case text = "Text"
-        case images = "Images"
-        case smallImages = "SmallImages"
-        case imageRatios = "ImageRatios"
+        case imagesReceived = "Images"
+        case smallImagesReceived = "SmallImages"
+        case imageRatiosReceived = "ImageRatios"
         case teammate = "TeammatePart"
         case dateCreated = "Created"
     }

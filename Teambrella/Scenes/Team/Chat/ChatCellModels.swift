@@ -35,7 +35,7 @@ struct ChatTextCellModel: ChatCellModel {
     let isMy: Bool
     let userName: Name
     let userAvatar: Avatar
-    let rateText: String?
+    var rateText: String?
     let date: Date
     let isTemporary: Bool
     

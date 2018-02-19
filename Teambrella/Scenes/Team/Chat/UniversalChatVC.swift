@@ -189,10 +189,6 @@ final class UniversalChatVC: UIViewController, Routable {
         // Cancel current scrolling
         self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: false)
         
-        //let lastIndexPath = IndexPath(row: dataSource.count - 1, section: 0)
-        //        collectionView.scrollToItem(at: lastIndexPath, at: .bottom, animated: animated)
-        //        return
-        
         let offsetY = max(-collectionView.contentInset.top,
                           collectionView.collectionViewLayout.collectionViewContentSize.height
                             - collectionView.bounds.height
@@ -282,7 +278,7 @@ private extension UniversalChatVC {
         scrollViewHandler.onFastBackwardScroll = { [weak self] velocity in
             guard let `self` = self else { return }
 
-            self.slidingView.hideAll() 
+            self.slidingView.hideAll()
         }
 
         scrollViewHandler.onFastForwardScroll = { [weak self] velocity in
@@ -380,9 +376,6 @@ private extension UniversalChatVC {
         collectionView.register(ChatTextCell.self, forCellWithReuseIdentifier: "com.chat.text.cell")
         collectionView.register(ChatSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.separator.cell")
         collectionView.register(ChatNewMessagesSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.new.cell")
-        collectionView.register(ChatHeader.self,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                withReuseIdentifier: "com.chat.header")
         collectionView.register(ChatFooter.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
                                 withReuseIdentifier: ChatFooter.cellID)
@@ -420,7 +413,6 @@ private extension UniversalChatVC {
         } else if backward, let indexPath = self.dataSource.currentTopCellPath {
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
         }
-        // adjustCollectionViewHeight()
     }
     
     private func cloudSize(for indexPath: IndexPath) -> CGSize {
@@ -553,16 +545,9 @@ extension UniversalChatVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        let view: UICollectionReusableView
-        if kind == UICollectionElementKindSectionHeader {
-            view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                   withReuseIdentifier: "com.chat.header",
-                                                                   for: indexPath)
-        } else {
-            view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
                                                                    withReuseIdentifier: ChatFooter.cellID,
                                                                    for: indexPath)
-        }
         return view
     }
     
@@ -582,6 +567,13 @@ extension UniversalChatVC: UICollectionViewDelegate {
             if let model = model as? ChatTextCellModel {
                 let size = cloudSize(for: indexPath)
                 cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
+
+                // crunch
+//                if model.isMy, let model = dataSource.chatModel, model.isClaimChat, let vote = model.voting?.myVote {
+//                    cell.rightLabel.text = dataSource.cellModelBuilder.rateText(rate: vote,
+//                                                                                showRate: true,
+//                                                                                isClaim: true)
+//                }
                 cell.avatarView.tag = indexPath.row
                 cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
                 cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
@@ -590,7 +582,6 @@ extension UniversalChatVC: UICollectionViewDelegate {
                     
                     galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
                 }
-                //cell.alpha = model.isTemporary ? 0.5 : 1
             } else if let model = model as? ChatTextUnsentCellModel {
                 let size = cloudSize(for: indexPath)
                 cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
@@ -762,7 +753,7 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
     }
 
     func chatObjectWasTapped(view: ChatObjectView) {
-        if let id = dataSource.chatModel?.id {
+        if let model = dataSource.chatModel, model.isClaimChat, let id = model.id {
             service.router.presentClaim(claimID: id)
         } else if let userID = dataSource.chatModel?.basic?.userID {
             service.router.presentMemberProfile(teammateID: userID, scrollToVote: true)

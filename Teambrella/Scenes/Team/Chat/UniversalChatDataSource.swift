@@ -60,10 +60,9 @@ final class UniversalChatDatasource {
     
     private var models: [ChatCellModel]             = []
     private var lastInsertionIndex                  = 0
-    
-    // private var chunks: [ChatChunk]                 = []
+
     private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
-    private var cellModelBuilder                    = ChatModelBuilder()
+    var cellModelBuilder                    = ChatModelBuilder()
     
     private var lastRead: Int64                     = 0
     private var forwardOffset: Int                  = 0
@@ -102,16 +101,7 @@ final class UniversalChatDatasource {
     }
     
     var topicID: String? { return claim?.discussion.id }
-    
-    var chatHeader: String? {
-        if let strategy = strategy as? ClaimChatStrategy {
-            return strategy.claim.description
-        } else if let strategy = strategy as? HomeChatStrategy {
-            return strategy.card.chatTitle
-        }
-        return nil
-    }
-    
+
     var count: Int { return models.count }
     
     var title: String {
@@ -120,16 +110,18 @@ final class UniversalChatDatasource {
         }
         
         guard let chatModel = chatModel else {
-            return ""//strategy.title
+            return ""
         }
-        
-        if chatModel.basic?.claimAmount != nil {
+
+         if chatModel.isClaimChat {
             let id = chatModel.id ?? 0
             return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(id)"
-        } else if chatModel.basic?.title != nil {
+        } else if chatModel.isApplicationChat {
             return "Team.Chat.TypeLabel.application".localized.lowercased().capitalized
+        } else if let title = chatModel.basic?.title {
+            return title
         } else {
-            return strategy.title
+            return ""
         }
     }
     
@@ -308,6 +300,10 @@ final class UniversalChatDatasource {
             request.start()
         }
     }
+
+    func updateMyModels(newVote: Double) {
+
+    }
     
     subscript(indexPath: IndexPath) -> ChatCellModel {
         guard indexPath.row < models.count else {
@@ -455,9 +451,6 @@ final class UniversalChatDatasource {
         onUpdate?(isPrevious, hasNewModels, isFirstLoad)
         }
         isFirstLoad = false
-//        if  isFirstLoad && hasNewModels {
-//            isFirstLoad = false
-//        }
     }
     
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {

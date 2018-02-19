@@ -26,12 +26,14 @@ struct ChatModel: Decodable, CustomStringConvertible {
 
     let id: Int?
     let lastRead: Int64?
-    let title: String?
+    //let title: String?
 
     var isClaimChat: Bool {
-        guard let basic = basic else { return false }
+        return basic?.claimAmount != nil
+    }
 
-        return basic.claimAmount != nil
+    var isApplicationChat: Bool {
+        return basic?.risk != nil
     }
 
     var description: String { return "\(type(of: self)) \(discussion.topicID); messages: \(discussion.chat.count)" }
@@ -48,7 +50,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
         case team = "TeamPart"
         case voting = "VotingPart"
         case id = "Id"
-        case title = "Title"
+        //case title = "Title"
         case lastRead = "LastRead"
     }
 
@@ -123,6 +125,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
         let claimAmount: Fiat?
         let estimatedExpenses: Double?
         let incidentDate: Date?
+        let dateCreated: Date?
         let state: ClaimState?
         let reimbursement: Double?
 
@@ -145,6 +148,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
             case claimAmount = "ClaimAmount"
             case estimatedExpenses = "EstimatedExpenses"
             case incidentDate = "IncidentDate"
+            case dateCreated = "DateCreated"
             case state = "State"
             case reimbursement = "Reimbursement"
         }

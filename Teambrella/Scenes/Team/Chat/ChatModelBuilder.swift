@@ -33,11 +33,11 @@ class ChatModelBuilder {
         let heights = heightCalculator.heights(for: fragments)
         let myName = service.session?.currentUserName ?? Name.empty
         return  ChatTextUnsentCellModel(fragments: fragments,
-                                                     fragmentHeights: heights,
-                                                     userName: myName,
-                                                     date: Date(),
-                                                     id: id,
-                                                     isFailed: false)
+                                        fragmentHeights: heights,
+                                        userName: myName,
+                                        date: Date(),
+                                        id: id,
+                                        isFailed: false)
     }
     
     func separatorModelIfNeeded(firstModel: ChatCellModel, secondModel: ChatCellModel) -> ChatCellModel? {
@@ -51,7 +51,7 @@ class ChatModelBuilder {
                     isClaim: Bool,
                     isTemporary: Bool) -> [ChatCellModel] {
         var result: [ChatCellModel] = []
-   
+
         for item in chatItems {
             let fragments = fragmentParser.parse(item: item)
             var isMy = false
@@ -68,19 +68,7 @@ class ChatModelBuilder {
             }
             
             let date = item.created
-           
-            var rateString: String?
-            if showRate {
-                if let rate = item.teammate?.vote {
-                rateString = isClaim
-                    ? "Team.Chat.TextCell.voted_format".localized(String.truncatedNumber(rate * 100))
-                    : "Team.Chat.TextCell.Application.voted_format".localized(String.formattedNumber(rate))
-                } else {
-                    rateString = "Team.Chat.TextCell.notVoted".localized
-                }
-            } else {
-                rateString = nil
-            }
+            let rateString = rateText(rate: item.teammate?.vote, showRate: showRate, isClaim: isClaim)
             
             let model = ChatTextCellModel(entity: item,
                                           fragments: fragments,
@@ -94,6 +82,22 @@ class ChatModelBuilder {
             result.append(model)
         }
         return result
+    }
+
+    func rateText(rate: Double?, showRate: Bool, isClaim: Bool) -> String? {
+        let rateString: String?
+        if showRate {
+            if let rate = rate {
+                rateString = isClaim
+                    ? "Team.Chat.TextCell.voted_format".localized(String.truncatedNumber(rate * 100))
+                    : "Team.Chat.TextCell.Application.voted_format".localized(String.formattedNumber(rate))
+            } else {
+                rateString = "Team.Chat.TextCell.notVoted".localized
+            }
+        } else {
+            rateString = nil
+        }
+        return rateString
     }
     
 }
