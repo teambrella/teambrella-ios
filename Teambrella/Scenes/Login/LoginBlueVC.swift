@@ -82,6 +82,11 @@ final class LoginBlueVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
+        guard Keychain.value(forKey: .ethPrivateAddress) == nil else {
+            logAsFacebookUser(user: nil)
+            return
+        }
+
         let manager = FBSDKLoginManager()
         manager.logOut()
         let permissions = ["public_profile", "email", "user_friends"]
