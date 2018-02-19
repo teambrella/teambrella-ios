@@ -27,6 +27,7 @@ class TeammateLarge: Decodable {
     var topic: TopicEntity
     var basic: BasicInfo
     var voting: VotingInfo?
+    var voted: VotingInfo?
     let teamPart: TeamPart?
     let object: CoveredObject
     let stats: TeammateStats
@@ -51,6 +52,7 @@ class TeammateLarge: Decodable {
         case topic = "DiscussionPart"
         case basic = "BasicPart"
         case voting = "VotingPart"
+        case voted = "VotedPart"
         case object = "ObjectPart"
         case stats = "StatsPart"
         case riskScale = "RiskScalePart"

@@ -28,6 +28,7 @@ struct ClaimEntityLarge: Decodable, CustomStringConvertible {
     let basic: BasicPart
     var discussion: TopicEntity
     var voting: VotingPart?
+    var voted: VotingPart?
     let team: TeamPart
 
     var description: String { return "ClaimEntityLarge: \(id)" }
@@ -42,6 +43,7 @@ struct ClaimEntityLarge: Decodable, CustomStringConvertible {
         case lastUpdated = "LastUpdated"
         case basic = "BasicPart"
         case voting = "VotingPart"
+        case voted = "VotedPart"
         case discussion = "DiscussionPart"
         case team = "TeamPart"
     }
