@@ -141,6 +141,11 @@
                                 <constraint firstItem="L5F-fw-geK" firstAttribute="top" secondItem="c1y-bp-9dQ" secondAttribute="top" constant="7" id="mVG-q4-DiH"/>
                                 <constraint firstItem="L5F-fw-geK" firstAttribute="leading" secondItem="c1y-bp-9dQ" secondAttribute="leading" constant="13" id="xTY-nY-XJd"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="MtC-Lm-vuJ"/>
+                                </mask>
+                            </variation>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
