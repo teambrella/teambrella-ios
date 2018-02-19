@@ -43,19 +43,15 @@ class ReportDataSource {
         self.context = context
         switch context {
         case let .claim(item: item, coverage: coverage, balance: balance):
-            items = [ItemReportCellModel(name: item.name, photo: item.photo, location: item.location),
-                     DateReportCellModel(date: Date()),
-                     ExpensesReportCellModel(expenses: nil, deductible: balance, coverage: coverage),
-                     DescriptionReportCellModel(title: "Me.Report.DescriptionCell.title".localized, text: ""),
-                     PhotosReportCellModel(photos: []),
-                     WalletReportCellModel(text: "")]
+            items = [NewClaimCellModel(objectName: item.name, objectPhoto: item.photo, objectLocation: item.location,
+                                       date: Date(),
+                                       expenses: nil, deductible: balance, coverage: coverage,
+                                       descriptionText: "",
+                                       photos: [],
+                                       reimburseText: "")]
             self.coverage = coverage
         case .newChat:
             items = [NewDiscussionCellModel(postTitleText: "", descriptionText: "")]
-            /*HeaderTitleReportCellModel(),
-             TitleReportCellModel(text: ""),
-             DescriptionReportCellModel(title: "Me.Report.DescriptionCell.title-discussion".localized,
-             text: "")]*/
         }
         
     }
@@ -77,14 +73,11 @@ class ReportDataSource {
         var message: String?
         var address: String?
         for model in items {
-            if let model = model as? DateReportCellModel {
+            if let model = model as? NewClaimCellModel {
                 date = model.date
-            } else if let model = model as? ExpensesReportCellModel {
                 expenses = model.expenses
-            } else if let model = model as? DescriptionReportCellModel {
-                message = model.text
-            } else if let model = model as? WalletReportCellModel {
-                let ethAddress = EthereumAddress(string: model.text)
+                message = model.descriptionText
+                let ethAddress = EthereumAddress(string: model.reimburseText)
                 address = ethAddress?.string
             }
         }
@@ -110,11 +103,7 @@ class ReportDataSource {
             if let model = model as? NewDiscussionCellModel {
                 title = model.postTitleText
                 text = model.descriptionText
-            } /*else if let model = model as? TitleReportCellModel {
-                title = model.text
-            } else if let model = model as? DescriptionReportCellModel {
-                text = model.text
-            }*/
+            }
         }
         
         if let text = text, let title = title {
@@ -168,7 +157,7 @@ class ReportDataSource {
                 self.coverage = coverageForDate.coverage
                 self.limit = coverageForDate.limit
                 for (idx, item) in self.items.enumerated() {
-                    if var item = item as? ExpensesReportCellModel {
+                    if var item = item as? NewClaimCellModel {
                         item.coverage = coverageForDate.coverage
                         
                         self.items[idx] = item

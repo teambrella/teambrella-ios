@@ -44,22 +44,16 @@
 		6D0D2AEF1EFBDB7C0095284C /* ProxyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D2AED1EFBDB7C0095284C /* ProxyCell.swift */; };
 		6D0D2AF01EFBDB7C0095284C /* ProxyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D2AEE1EFBDB7C0095284C /* ProxyCell.xib */; };
 		6D0E055C1EFEBC3F00604981 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E055B1EFEBC3F00604981 /* ReportVC.swift */; };
-		6D0E05601EFEBF4000604981 /* ReportItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E055E1EFEBF4000604981 /* ReportItemCell.swift */; };
-		6D0E05611EFEBF4000604981 /* ReportItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0E055F1EFEBF4000604981 /* ReportItemCell.xib */; };
-		6D0E05691EFEC21800604981 /* ReportExpensesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E05671EFEC21800604981 /* ReportExpensesCell.swift */; };
-		6D0E056A1EFEC21800604981 /* ReportExpensesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0E05681EFEC21800604981 /* ReportExpensesCell.xib */; };
-		6D0E056D1EFEC24D00604981 /* ReportDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E056B1EFEC24D00604981 /* ReportDescriptionCell.swift */; };
-		6D0E056E1EFEC24D00604981 /* ReportDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0E056C1EFEC24D00604981 /* ReportDescriptionCell.xib */; };
-		6D0E05711EFEC26F00604981 /* ReportPhotoGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E056F1EFEC26F00604981 /* ReportPhotoGalleryCell.swift */; };
-		6D0E05721EFEC26F00604981 /* ReportPhotoGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0E05701EFEC26F00604981 /* ReportPhotoGalleryCell.xib */; };
-		6D0E05791EFEC7A400604981 /* ReportTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E05771EFEC7A400604981 /* ReportTextFieldCell.swift */; };
-		6D0E057A1EFEC7A400604981 /* ReportTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0E05781EFEC7A400604981 /* ReportTextFieldCell.xib */; };
 		6D0E057C1F01015E00604981 /* ReportDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E057B1F01015E00604981 /* ReportDataSource.swift */; };
 		6D0E05801F01033700604981 /* ReportCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E057F1F01033700604981 /* ReportCellBuilder.swift */; };
 		6D0E742D1F13C0D70055BF1E /* LabeledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E742C1F13C0D70055BF1E /* LabeledButton.swift */; };
 		6D0E742F1F13C7810055BF1E /* DeveloperTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */; };
 		6D0FD84D201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */; };
 		6D0FD84E201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */; };
+		6D106F0A203AD4C70049E92E /* NewClaimCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D106F08203AD4C70049E92E /* NewClaimCell.xib */; };
+		6D106F0B203AD4C70049E92E /* NewClaimCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F09203AD4C70049E92E /* NewClaimCell.swift */; };
+		6D106F0C203AD4D70049E92E /* NewClaimCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F09203AD4C70049E92E /* NewClaimCell.swift */; };
+		6D106F0D203AD4DD0049E92E /* NewClaimCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D106F08203AD4C70049E92E /* NewClaimCell.xib */; };
 		6D12927D1F83BD6A001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
 		6D12927E1F83BD6D001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
 		6D1292891F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
@@ -254,7 +248,6 @@
 		6D4E5C551F7AB6870020DEE2 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A931ED07CF1001BC579 /* Team.swift */; };
 		6D4E5C561F7AB6870020DEE2 /* JoinTeamGreetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944504C11F07CFAE00CF443F /* JoinTeamGreetingCell.swift */; };
 		6D4E5C571F7AB6870020DEE2 /* TabRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D0FE1F0552FF00F9DE87 /* TabRoutable.swift */; };
-		6D4E5C581F7AB6870020DEE2 /* ReportPhotoGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E056F1EFEC26F00604981 /* ReportPhotoGalleryCell.swift */; };
 		6D4E5C591F7AB6870020DEE2 /* ProxyForHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9F51EFC05BE00DED5CE /* ProxyForHeader.swift */; };
 		6D4E5C5A1F7AB6870020DEE2 /* XIBInitableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE956F1EE814EE0019DA47 /* XIBInitableCell.swift */; };
 		6D4E5C5B1F7AB6870020DEE2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */; };
@@ -389,7 +382,6 @@
 		6D4E5CEB1F7AB6870020DEE2 /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3947F1F79284900784ECD /* ErrorPresenter.swift */; };
 		6D4E5CEC1F7AB6870020DEE2 /* HomeCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */; };
 		6D4E5CED1F7AB6870020DEE2 /* UIStoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC6161ED48416007F936E /* UIStoryboardSegue.swift */; };
-		6D4E5CEE1F7AB6870020DEE2 /* ReportDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E056B1EFEC24D00604981 /* ReportDescriptionCell.swift */; };
 		6D4E5CEF1F7AB6870020DEE2 /* WalletTransactionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C186B01F5AD29F00F1BE51 /* WalletTransactionsModel.swift */; };
 		6D4E5CF01F7AB6870020DEE2 /* ClaimDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE957E1EE84FFD0019DA47 /* ClaimDetailsCell.swift */; };
 		6D4E5CF11F7AB6870020DEE2 /* ClaimEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA25D1EE1D1BB00307C73 /* ClaimEntity.swift */; };
@@ -422,7 +414,6 @@
 		6D4E5D0F1F7AB6870020DEE2 /* BrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC64A1ED83111007F936E /* BrickView.swift */; };
 		6D4E5D101F7AB6870020DEE2 /* LabeledRoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02AC991F06A6F800B01AAF /* LabeledRoundImageView.swift */; };
 		6D4E5D111F7AB6870020DEE2 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC881EDD6CA6000412DC /* Routable.swift */; };
-		6D4E5D121F7AB6870020DEE2 /* ReportTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E05771EFEC7A400604981 /* ReportTextFieldCell.swift */; };
 		6D4E5D141F7AB6870020DEE2 /* UserIndexVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D2AE51EFBD48D0095284C /* UserIndexVC.swift */; };
 		6D4E5D151F7AB6870020DEE2 /* TeammateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097E9F1E9D215500E77DAB /* TeammateState.swift */; };
 		6D4E5D161F7AB6870020DEE2 /* CoverageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA131EFC461700DED5CE /* CoverageVC.swift */; };
@@ -471,7 +462,6 @@
 		6D4E5D431F7AB6870020DEE2 /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB71F58562900421C5A /* PushService.swift */; };
 		6D4E5D441F7AB6870020DEE2 /* DiscussionCompactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */; };
 		6D4E5D461F7AB6870020DEE2 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA41EB0D6860051F43A /* Random.swift */; };
-		6D4E5D471F7AB6870020DEE2 /* ReportTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB31F571F4A00421C5A /* ReportTitleCell.swift */; };
 		6D4E5D481F7AB6870020DEE2 /* JoinTeamCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */; };
 		6D4E5D491F7AB6870020DEE2 /* CoveredObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2451EE167BD00307C73 /* CoveredObject.swift */; };
 		6D4E5D4A1F7AB6870020DEE2 /* TeammateLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC07551E9BF7170078F40E /* TeammateLarge.swift */; };
@@ -486,10 +476,8 @@
 		6D4E5D541F7AB6870020DEE2 /* FacebookUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2631EE21ACA00307C73 /* FacebookUser.swift */; };
 		6D4E5D551F7AB6870020DEE2 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3981F191FA600D203C2 /* TeamCell.swift */; };
 		6D4E5D561F7AB6870020DEE2 /* ProxyForCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9F91EFC07FF00DED5CE /* ProxyForCell.swift */; };
-		6D4E5D581F7AB6870020DEE2 /* ReportItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E055E1EFEBF4000604981 /* ReportItemCell.swift */; };
 		6D4E5D591F7AB6870020DEE2 /* SocketCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BC1F66F10B00532626 /* SocketCommand.swift */; };
 		6D4E5D5A1F7AB6870020DEE2 /* HelperGlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CB11A91F0A471A0012C4CB /* HelperGlobalFunctions.swift */; };
-		6D4E5D5B1F7AB6870020DEE2 /* ReportExpensesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E05671EFEC21800604981 /* ReportExpensesCell.swift */; };
 		6D4E5D5D1F7AB6870020DEE2 /* ClaimsVotedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2531EE1C65800307C73 /* ClaimsVotedCell.swift */; };
 		6D4E5D5E1F7AB6870020DEE2 /* SegueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC6141ED48244007F936E /* SegueType.swift */; };
 		6D4E5D5F1F7AB6870020DEE2 /* CompareTeamRiskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A5891F15105E00E0DD74 /* CompareTeamRiskVC.swift */; };
@@ -521,7 +509,6 @@
 		6D4E5D7D1F7AB6870020DEE2 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0BA5B01F14F83000055E74 /* SwiftDate.framework */; };
 		6D4E5D7E1F7AB6870020DEE2 /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C89AD51F0104CC00C6D8F7 /* QRCode.framework */; };
 		6D4E5D801F7AB6870020DEE2 /* ProxyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D2AEE1EFBDB7C0095284C /* ProxyCell.xib */; };
-		6D4E5D811F7AB6870020DEE2 /* ReportPhotoGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0E05701EFEC26F00604981 /* ReportPhotoGalleryCell.xib */; };
 		6D4E5D821F7AB6870020DEE2 /* HomeApplicationAcceptedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E80E531F0FDA3100DE1A0A /* HomeApplicationAcceptedCell.xib */; };
 		6D4E5D831F7AB6870020DEE2 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DB812161EE6E6A900B202CE /* Chat.storyboard */; };
 		6D4E5D851F7AB6870020DEE2 /* SwitchUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DEFCFB71F7A66D7008C306C /* SwitchUserCell.xib */; };
@@ -538,7 +525,6 @@
 		6D4E5D921F7AB6870020DEE2 /* ProxyForCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69D9FA1EFC07FF00DED5CE /* ProxyForCell.xib */; };
 		6D4E5D931F7AB6870020DEE2 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC62C1ED5EB23007F936E /* Me.storyboard */; };
 		6D4E5D941F7AB6870020DEE2 /* MeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C89AFC1F0278FB00C6D8F7 /* MeCell.xib */; };
-		6D4E5D951F7AB6870020DEE2 /* ReportExpensesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0E05681EFEC21800604981 /* ReportExpensesCell.xib */; };
 		6D4E5D961F7AB6870020DEE2 /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */; };
 		6D4E5D971F7AB6870020DEE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AC1E8ABEE600B56D9B /* LaunchScreen.storyboard */; };
 		6D4E5D981F7AB6870020DEE2 /* WalletButtonsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */; };
@@ -549,7 +535,6 @@
 		6D4E5D9D1F7AB6870020DEE2 /* NumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC6521ED98A07007F936E /* NumberView.xib */; };
 		6D4E5D9E1F7AB6870020DEE2 /* DiscussionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB812291EE715DA00B202CE /* DiscussionCell.xib */; };
 		6D4E5D9F1F7AB6870020DEE2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC6231ED5EA34007F936E /* Home.storyboard */; };
-		6D4E5DA01F7AB6870020DEE2 /* ReportDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0E056C1EFEC24D00604981 /* ReportDescriptionCell.xib */; };
 		6D4E5DA11F7AB6870020DEE2 /* Home.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19421F0F878500AC9969 /* Home.strings */; };
 		6D4E5DA21F7AB6870020DEE2 /* LabeledTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E325C11F07E78E00B2D8C8 /* LabeledTextField.xib */; };
 		6D4E5DA31F7AB6870020DEE2 /* NumberBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DA714EE1EE00CFB00F39EBE /* NumberBar.xib */; };
@@ -564,7 +549,6 @@
 		6D4E5DAD1F7AB6870020DEE2 /* Fill.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19451F0FD33400AC9969 /* Fill.sks */; };
 		6D4E5DAE1F7AB6870020DEE2 /* General.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D097EA61E9D220A00E77DAB /* General.strings */; };
 		6D4E5DAF1F7AB6870020DEE2 /* AmountWithCurrency.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EA564F1F20FE04003B46CC /* AmountWithCurrency.xib */; };
-		6D4E5DB01F7AB6870020DEE2 /* ReportTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB41F571F4A00421C5A /* ReportTitleCell.xib */; };
 		6D4E5DB11F7AB6870020DEE2 /* WalletCosignerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944C66811F6C146200CCEB58 /* WalletCosignerCell.xib */; };
 		6D4E5DB31F7AB6870020DEE2 /* HomeApplicationDeniedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E80E4F1F0FD30400DE1A0A /* HomeApplicationDeniedCell.xib */; };
 		6D4E5DB41F7AB6870020DEE2 /* HomeSupportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E80E4B1F0FABFF00DE1A0A /* HomeSupportCell.xib */; };
@@ -573,7 +557,6 @@
 		6D4E5DB71F7AB6870020DEE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19461F0FD33400AC9969 /* Assets.xcassets */; };
 		6D4E5DB81F7AB6870020DEE2 /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DE7932E1EF810DB005F4508 /* ChatCell.xib */; };
 		6D4E5DB91F7AB6870020DEE2 /* EmptyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2487F1F5EAAF300D9396D /* EmptyVC.xib */; };
-		6D4E5DBA1F7AB6870020DEE2 /* ReportTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0E05781EFEC7A400604981 /* ReportTextFieldCell.xib */; };
 		6D4E5DBB1F7AB6870020DEE2 /* JoinTeamPersonalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E325BC1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib */; };
 		6D4E5DBC1F7AB6870020DEE2 /* PrivateChatUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1A9B271F55D306004192AC /* PrivateChatUserCell.xib */; };
 		6D4E5DBD1F7AB6870020DEE2 /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */; };
@@ -585,7 +568,6 @@
 		6D4E5DC41F7AB6870020DEE2 /* Team.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC6261ED5EA81007F936E /* Team.storyboard */; };
 		6D4E5DC51F7AB6870020DEE2 /* WalletFundingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA281EFD1A0400DED5CE /* WalletFundingCell.xib */; };
 		6D4E5DC61F7AB6870020DEE2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC62F1ED5EBA8007F936E /* Login.storyboard */; };
-		6D4E5DC71F7AB6870020DEE2 /* ReportItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0E055F1EFEBF4000604981 /* ReportItemCell.xib */; };
 		6D4E5DC81F7AB6870020DEE2 /* TeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C2D3991F191FA600D203C2 /* TeamCell.xib */; };
 		6D4E5DC91F7AB6870020DEE2 /* HeaderWithButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA361EFD6CED00DED5CE /* HeaderWithButton.xib */; };
 		6D4E5DCA1F7AB6870020DEE2 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DF2E8C91EF194E400C8D60B /* Main.strings */; };
@@ -814,8 +796,6 @@
 		6DAD94201FCEF4B00011557C /* QRCodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD941E1FCEF4B00011557C /* QRCodeType.swift */; };
 		6DAD94221FCEF5010011557C /* CodeCaptureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */; };
 		6DAD94231FCEF5010011557C /* CodeCaptureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */; };
-		6DAF1CB51F571F4A00421C5A /* ReportTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB31F571F4A00421C5A /* ReportTitleCell.swift */; };
-		6DAF1CB61F571F4A00421C5A /* ReportTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB41F571F4A00421C5A /* ReportTitleCell.xib */; };
 		6DAF1CB81F58562900421C5A /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB71F58562900421C5A /* PushService.swift */; };
 		6DB2ABC81FF2C1B00028F95C /* ServerReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */; };
 		6DB2ABC91FF2C1B00028F95C /* ServerReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */; };
@@ -1168,21 +1148,13 @@
 		6D0D2AED1EFBDB7C0095284C /* ProxyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyCell.swift; path = View/Cells/ProxyCell.swift; sourceTree = "<group>"; };
 		6D0D2AEE1EFBDB7C0095284C /* ProxyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProxyCell.xib; path = View/Cells/ProxyCell.xib; sourceTree = "<group>"; };
 		6D0E055B1EFEBC3F00604981 /* ReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportVC.swift; path = Scenes/Me/Report/ReportVC.swift; sourceTree = "<group>"; };
-		6D0E055E1EFEBF4000604981 /* ReportItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportItemCell.swift; path = View/Cells/Report/ReportItemCell.swift; sourceTree = "<group>"; };
-		6D0E055F1EFEBF4000604981 /* ReportItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportItemCell.xib; path = View/Cells/Report/ReportItemCell.xib; sourceTree = "<group>"; };
-		6D0E05671EFEC21800604981 /* ReportExpensesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportExpensesCell.swift; path = View/Cells/Report/ReportExpensesCell.swift; sourceTree = "<group>"; };
-		6D0E05681EFEC21800604981 /* ReportExpensesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportExpensesCell.xib; path = View/Cells/Report/ReportExpensesCell.xib; sourceTree = "<group>"; };
-		6D0E056B1EFEC24D00604981 /* ReportDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportDescriptionCell.swift; path = View/Cells/Report/ReportDescriptionCell.swift; sourceTree = "<group>"; };
-		6D0E056C1EFEC24D00604981 /* ReportDescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportDescriptionCell.xib; path = View/Cells/Report/ReportDescriptionCell.xib; sourceTree = "<group>"; };
-		6D0E056F1EFEC26F00604981 /* ReportPhotoGalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportPhotoGalleryCell.swift; path = View/Cells/Report/ReportPhotoGalleryCell.swift; sourceTree = "<group>"; };
-		6D0E05701EFEC26F00604981 /* ReportPhotoGalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportPhotoGalleryCell.xib; path = View/Cells/Report/ReportPhotoGalleryCell.xib; sourceTree = "<group>"; };
-		6D0E05771EFEC7A400604981 /* ReportTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportTextFieldCell.swift; path = View/Cells/Report/ReportTextFieldCell.swift; sourceTree = "<group>"; };
-		6D0E05781EFEC7A400604981 /* ReportTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportTextFieldCell.xib; path = View/Cells/Report/ReportTextFieldCell.xib; sourceTree = "<group>"; };
 		6D0E057B1F01015E00604981 /* ReportDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportDataSource.swift; path = Scenes/Me/Report/ReportDataSource.swift; sourceTree = "<group>"; };
 		6D0E057F1F01033700604981 /* ReportCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCellBuilder.swift; path = Scenes/Me/Report/ReportCellBuilder.swift; sourceTree = "<group>"; };
 		6D0E742C1F13C0D70055BF1E /* LabeledButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabeledButton.swift; path = View/Buttons/LabeledButton.swift; sourceTree = "<group>"; };
 		6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeveloperTools.swift; path = Helpers/DeveloperTools.swift; sourceTree = "<group>"; };
 		6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoServerUpdate.swift; sourceTree = "<group>"; };
+		6D106F08203AD4C70049E92E /* NewClaimCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewClaimCell.xib; path = View/Cells/Report/NewClaimCell.xib; sourceTree = "<group>"; };
+		6D106F09203AD4C70049E92E /* NewClaimCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClaimCell.swift; path = View/Cells/Report/NewClaimCell.swift; sourceTree = "<group>"; };
 		6D12927C1F83BD6A001CCC31 /* SceneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneType.swift; path = Model/Enums/SceneType.swift; sourceTree = "<group>"; };
 		6D1292881F83DC46001CCC31 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Name.swift; path = Model/Entities/Name.swift; sourceTree = "<group>"; };
 		6D12928B1F83DE38001CCC31 /* NameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTests.swift; sourceTree = "<group>"; };
@@ -1480,8 +1452,6 @@
 		6DAD941B1FCEF4500011557C /* CodeCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeCaptureDelegate.swift; path = Model/Protocols/CodeCaptureDelegate.swift; sourceTree = "<group>"; };
 		6DAD941E1FCEF4B00011557C /* QRCodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRCodeType.swift; path = Model/Enums/QRCodeType.swift; sourceTree = "<group>"; };
 		6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeCaptureVC.swift; path = Scenes/Info/CodeCaptureVC.swift; sourceTree = "<group>"; };
-		6DAF1CB31F571F4A00421C5A /* ReportTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportTitleCell.swift; path = View/Cells/Report/ReportTitleCell.swift; sourceTree = "<group>"; };
-		6DAF1CB41F571F4A00421C5A /* ReportTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportTitleCell.xib; path = View/Cells/Report/ReportTitleCell.xib; sourceTree = "<group>"; };
 		6DAF1CB71F58562900421C5A /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushService.swift; path = Model/Services/Push/PushService.swift; sourceTree = "<group>"; };
 		6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServerReply.swift; path = Model/Entities/ServerReply.swift; sourceTree = "<group>"; };
 		6DB309F61F1D169D007DFF40 /* ChatDatasourceStrategies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatDatasourceStrategies.swift; path = Scenes/Team/Chat/ChatDatasourceStrategies.swift; sourceTree = "<group>"; };
@@ -1881,18 +1851,8 @@
 		6D0E05621EFEBF4800604981 /* Report */ = {
 			isa = PBXGroup;
 			children = (
-				6D0E055E1EFEBF4000604981 /* ReportItemCell.swift */,
-				6D0E055F1EFEBF4000604981 /* ReportItemCell.xib */,
-				6D0E05671EFEC21800604981 /* ReportExpensesCell.swift */,
-				6D0E05681EFEC21800604981 /* ReportExpensesCell.xib */,
-				6D0E056B1EFEC24D00604981 /* ReportDescriptionCell.swift */,
-				6D0E056C1EFEC24D00604981 /* ReportDescriptionCell.xib */,
-				6D0E056F1EFEC26F00604981 /* ReportPhotoGalleryCell.swift */,
-				6D0E05701EFEC26F00604981 /* ReportPhotoGalleryCell.xib */,
-				6D0E05771EFEC7A400604981 /* ReportTextFieldCell.swift */,
-				6D0E05781EFEC7A400604981 /* ReportTextFieldCell.xib */,
-				6DAF1CB31F571F4A00421C5A /* ReportTitleCell.swift */,
-				6DAF1CB41F571F4A00421C5A /* ReportTitleCell.xib */,
+				6D106F09203AD4C70049E92E /* NewClaimCell.swift */,
+				6D106F08203AD4C70049E92E /* NewClaimCell.xib */,
 				17751AAF2033568B00274F6A /* NewDiscussionCell.swift */,
 				17751AB02033568B00274F6A /* NewDiscussionCell.xib */,
 			);
@@ -3155,7 +3115,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D4E5D801F7AB6870020DEE2 /* ProxyCell.xib in Resources */,
-				6D4E5D811F7AB6870020DEE2 /* ReportPhotoGalleryCell.xib in Resources */,
 				6D4E5D821F7AB6870020DEE2 /* HomeApplicationAcceptedCell.xib in Resources */,
 				6D4E5D831F7AB6870020DEE2 /* Chat.storyboard in Resources */,
 				6D4E5D851F7AB6870020DEE2 /* SwitchUserCell.xib in Resources */,
@@ -3176,7 +3135,7 @@
 				6D4E5D931F7AB6870020DEE2 /* Me.storyboard in Resources */,
 				17751AB42033568B00274F6A /* NewDiscussionCell.xib in Resources */,
 				6D4E5D941F7AB6870020DEE2 /* MeCell.xib in Resources */,
-				6D4E5D951F7AB6870020DEE2 /* ReportExpensesCell.xib in Resources */,
+				6D106F0D203AD4DD0049E92E /* NewClaimCell.xib in Resources */,
 				6D4E5D961F7AB6870020DEE2 /* CompactUserInfoHeader.xib in Resources */,
 				6D4E5D971F7AB6870020DEE2 /* LaunchScreen.storyboard in Resources */,
 				6D4E5D981F7AB6870020DEE2 /* WalletButtonsCell.xib in Resources */,
@@ -3188,7 +3147,6 @@
 				6D4E5D9E1F7AB6870020DEE2 /* DiscussionCell.xib in Resources */,
 				6D4E5D9F1F7AB6870020DEE2 /* Home.storyboard in Resources */,
 				6D251C412034B118005081E4 /* ChatObjectView.xib in Resources */,
-				6D4E5DA01F7AB6870020DEE2 /* ReportDescriptionCell.xib in Resources */,
 				6D251C472035E8E0005081E4 /* SlidingView.xib in Resources */,
 				6D4E5DA11F7AB6870020DEE2 /* Home.strings in Resources */,
 				6D4E5DA21F7AB6870020DEE2 /* LabeledTextField.xib in Resources */,
@@ -3205,7 +3163,6 @@
 				6D4E5DAE1F7AB6870020DEE2 /* General.strings in Resources */,
 				6D4E5DAF1F7AB6870020DEE2 /* AmountWithCurrency.xib in Resources */,
 				6D2A7C601FCC663E0094ABB7 /* Info.storyboard in Resources */,
-				6D4E5DB01F7AB6870020DEE2 /* ReportTitleCell.xib in Resources */,
 				6D4E5DB11F7AB6870020DEE2 /* WalletCosignerCell.xib in Resources */,
 				6D4E5DB31F7AB6870020DEE2 /* HomeApplicationDeniedCell.xib in Resources */,
 				6D4E5DB41F7AB6870020DEE2 /* HomeSupportCell.xib in Resources */,
@@ -3216,7 +3173,6 @@
 				6D4E5DB81F7AB6870020DEE2 /* ChatCell.xib in Resources */,
 				6DB921F51F9DF2A1009D3937 /* Contract.txt in Resources */,
 				6D4E5DB91F7AB6870020DEE2 /* EmptyVC.xib in Resources */,
-				6D4E5DBA1F7AB6870020DEE2 /* ReportTextFieldCell.xib in Resources */,
 				6D4E5DBB1F7AB6870020DEE2 /* JoinTeamPersonalCell.xib in Resources */,
 				6D4E5DBC1F7AB6870020DEE2 /* PrivateChatUserCell.xib in Resources */,
 				6D4E5DBD1F7AB6870020DEE2 /* AkkuratPro-Bold.otf in Resources */,
@@ -3232,7 +3188,6 @@
 				6DDC65571FB9F02400DE4E36 /* TeammateSummaryView.xib in Resources */,
 				6D4E5DC51F7AB6870020DEE2 /* WalletFundingCell.xib in Resources */,
 				6D4E5DC61F7AB6870020DEE2 /* Login.storyboard in Resources */,
-				6D4E5DC71F7AB6870020DEE2 /* ReportItemCell.xib in Resources */,
 				6D4E5DC81F7AB6870020DEE2 /* TeamCell.xib in Resources */,
 				6D4E5DC91F7AB6870020DEE2 /* HeaderWithButton.xib in Resources */,
 				94282B0D1FD9B1EE0006B5F6 /* LabeledIcon.xib in Resources */,
@@ -3261,7 +3216,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D0D2AF01EFBDB7C0095284C /* ProxyCell.xib in Resources */,
-				6D0E05721EFEC26F00604981 /* ReportPhotoGalleryCell.xib in Resources */,
 				94E80E551F0FDA3100DE1A0A /* HomeApplicationAcceptedCell.xib in Resources */,
 				6DB812171EE6E6A900B202CE /* Chat.storyboard in Resources */,
 				6DEFCFB91F7A66D7008C306C /* SwitchUserCell.xib in Resources */,
@@ -3281,8 +3235,8 @@
 				6D9CC62D1ED5EB23007F936E /* Me.storyboard in Resources */,
 				94C89AFE1F0278FB00C6D8F7 /* MeCell.xib in Resources */,
 				17751AB32033568B00274F6A /* NewDiscussionCell.xib in Resources */,
-				6D0E056A1EFEC21800604981 /* ReportExpensesCell.xib in Resources */,
 				6D2808C61F1A450C00EBBE3D /* CompactUserInfoHeader.xib in Resources */,
+				6D106F0A203AD4C70049E92E /* NewClaimCell.xib in Resources */,
 				6DA475AE1E8ABEE600B56D9B /* LaunchScreen.storyboard in Resources */,
 				6D69DA2E1EFD1A1E00DED5CE /* WalletButtonsCell.xib in Resources */,
 				6D6DA24E1EE1B65000307C73 /* Claims.storyboard in Resources */,
@@ -3292,7 +3246,6 @@
 				6D9CC6531ED98A07007F936E /* NumberView.xib in Resources */,
 				6DB8122B1EE715DA00B202CE /* DiscussionCell.xib in Resources */,
 				6D9CC6241ED5EA34007F936E /* Home.storyboard in Resources */,
-				6D0E056E1EFEC24D00604981 /* ReportDescriptionCell.xib in Resources */,
 				6D251C402034B118005081E4 /* ChatObjectView.xib in Resources */,
 				6DCB19441F0F878500AC9969 /* Home.strings in Resources */,
 				6D251C462035E8E0005081E4 /* SlidingView.xib in Resources */,
@@ -3311,7 +3264,6 @@
 				94EA56511F20FE04003B46CC /* AmountWithCurrency.xib in Resources */,
 				6DDFDAF51F8CD25600342696 /* Teambrella.xcassets in Resources */,
 				6D2A7C5F1FCC663E0094ABB7 /* Info.storyboard in Resources */,
-				6DAF1CB61F571F4A00421C5A /* ReportTitleCell.xib in Resources */,
 				944C66831F6C146200CCEB58 /* WalletCosignerCell.xib in Resources */,
 				94E80E511F0FD30400DE1A0A /* HomeApplicationDeniedCell.xib in Resources */,
 				94E80E4D1F0FABFF00DE1A0A /* HomeSupportCell.xib in Resources */,
@@ -3322,7 +3274,6 @@
 				6DE793301EF810DB005F4508 /* ChatCell.xib in Resources */,
 				6DB921F41F9DF2A1009D3937 /* Contract.txt in Resources */,
 				6DC248811F5EAAF300D9396D /* EmptyVC.xib in Resources */,
-				6D0E057A1EFEC7A400604981 /* ReportTextFieldCell.xib in Resources */,
 				94E325BE1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib in Resources */,
 				6D1A9B291F55D306004192AC /* PrivateChatUserCell.xib in Resources */,
 				6D9C808E1EDF17D000FB8C2C /* AkkuratPro-Bold.otf in Resources */,
@@ -3338,7 +3289,6 @@
 				6DDC65561FB9F02400DE4E36 /* TeammateSummaryView.xib in Resources */,
 				6D69DA2A1EFD1A0400DED5CE /* WalletFundingCell.xib in Resources */,
 				6D9CC6301ED5EBA8007F936E /* Login.storyboard in Resources */,
-				6D0E05611EFEBF4000604981 /* ReportItemCell.xib in Resources */,
 				94C2D39B1F191FA600D203C2 /* TeamCell.xib in Resources */,
 				6D69DA381EFD6CED00DED5CE /* HeaderWithButton.xib in Resources */,
 				94282B0C1FD9B1EE0006B5F6 /* LabeledIcon.xib in Resources */,
@@ -3766,7 +3716,6 @@
 				6D4E5C571F7AB6870020DEE2 /* TabRoutable.swift in Sources */,
 				6D1EC3DB202B0D5400F0541C /* TxServerImpl.swift in Sources */,
 				6D900E241FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */,
-				6D4E5C581F7AB6870020DEE2 /* ReportPhotoGalleryCell.swift in Sources */,
 				6D4E5C591F7AB6870020DEE2 /* ProxyForHeader.swift in Sources */,
 				6D4E5C5A1F7AB6870020DEE2 /* XIBInitableCell.swift in Sources */,
 				6D4E5C5B1F7AB6870020DEE2 /* Date.swift in Sources */,
@@ -3947,7 +3896,6 @@
 				6D4E5CEB1F7AB6870020DEE2 /* ErrorPresenter.swift in Sources */,
 				6D4E5CEC1F7AB6870020DEE2 /* HomeCellBuilder.swift in Sources */,
 				6D4E5CED1F7AB6870020DEE2 /* UIStoryboardSegue.swift in Sources */,
-				6D4E5CEE1F7AB6870020DEE2 /* ReportDescriptionCell.swift in Sources */,
 				6D4E5CEF1F7AB6870020DEE2 /* WalletTransactionsModel.swift in Sources */,
 				6D4E5CF01F7AB6870020DEE2 /* ClaimDetailsCell.swift in Sources */,
 				6D4E5CF11F7AB6870020DEE2 /* ClaimEntity.swift in Sources */,
@@ -3992,7 +3940,6 @@
 				6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */,
 				6D4E5D111F7AB6870020DEE2 /* Routable.swift in Sources */,
 				17751AB22033568B00274F6A /* NewDiscussionCell.swift in Sources */,
-				6D4E5D121F7AB6870020DEE2 /* ReportTextFieldCell.swift in Sources */,
 				94F502571FA8D3760059D49B /* MuteCellModel.swift in Sources */,
 				9431CDB91F8E1FCC0011D072 /* EthereumProcessor.swift in Sources */,
 				6D12927E1F83BD6D001CCC31 /* SceneType.swift in Sources */,
@@ -4040,6 +3987,7 @@
 				6D4E5D311F7AB6870020DEE2 /* StyledLabels.swift in Sources */,
 				6D4E5D321F7AB6870020DEE2 /* Geometry.swift in Sources */,
 				6D4E5D331F7AB6870020DEE2 /* Navigator.swift in Sources */,
+				6D106F0C203AD4D70049E92E /* NewClaimCell.swift in Sources */,
 				6D4E5D341F7AB6870020DEE2 /* RiskCell.swift in Sources */,
 				6D59FD191FBC9693006C0A2B /* URLBuilder.swift in Sources */,
 				6D4E5D351F7AB6870020DEE2 /* KingfisherSource.swift in Sources */,
@@ -4060,7 +4008,6 @@
 				6D4E5D431F7AB6870020DEE2 /* PushService.swift in Sources */,
 				6D4E5D441F7AB6870020DEE2 /* DiscussionCompactCell.swift in Sources */,
 				6D4E5D461F7AB6870020DEE2 /* Random.swift in Sources */,
-				6D4E5D471F7AB6870020DEE2 /* ReportTitleCell.swift in Sources */,
 				6D1EC3E7202B0EB700F0541C /* TxOutputServerImpl.swift in Sources */,
 				6D4E5D481F7AB6870020DEE2 /* JoinTeamCellBuilder.swift in Sources */,
 				6D4E5D491F7AB6870020DEE2 /* CoveredObject.swift in Sources */,
@@ -4079,11 +4026,9 @@
 				6D4E5D541F7AB6870020DEE2 /* FacebookUser.swift in Sources */,
 				6D4E5D551F7AB6870020DEE2 /* TeamCell.swift in Sources */,
 				6D4E5D561F7AB6870020DEE2 /* ProxyForCell.swift in Sources */,
-				6D4E5D581F7AB6870020DEE2 /* ReportItemCell.swift in Sources */,
 				6D4E5D591F7AB6870020DEE2 /* SocketCommand.swift in Sources */,
 				6D4E5D5A1F7AB6870020DEE2 /* HelperGlobalFunctions.swift in Sources */,
 				6D6FCC311FD89C220032041A /* UILabel.swift in Sources */,
-				6D4E5D5B1F7AB6870020DEE2 /* ReportExpensesCell.swift in Sources */,
 				6D4E5D5D1F7AB6870020DEE2 /* ClaimsVotedCell.swift in Sources */,
 				6D4E5D5E1F7AB6870020DEE2 /* SegueType.swift in Sources */,
 				6DAD941D1FCEF4500011557C /* CodeCaptureDelegate.swift in Sources */,
@@ -4193,7 +4138,6 @@
 				944504C31F07CFAE00CF443F /* JoinTeamGreetingCell.swift in Sources */,
 				94A70EC41FAB221600644CF3 /* CloudView.swift in Sources */,
 				6DA1D0FF1F0552FF00F9DE87 /* TabRoutable.swift in Sources */,
-				6D0E05711EFEC26F00604981 /* ReportPhotoGalleryCell.swift in Sources */,
 				6D69D9F71EFC05BE00DED5CE /* ProxyForHeader.swift in Sources */,
 				6D1EC3DA202B0D5400F0541C /* TxServerImpl.swift in Sources */,
 				6D900E231FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */,
@@ -4379,7 +4323,6 @@
 				6DE394801F79284900784ECD /* ErrorPresenter.swift in Sources */,
 				9407A57E1F111A5300E0DD74 /* HomeCellBuilder.swift in Sources */,
 				6D9CC6171ED48416007F936E /* UIStoryboardSegue.swift in Sources */,
-				6D0E056D1EFEC24D00604981 /* ReportDescriptionCell.swift in Sources */,
 				94C186B11F5AD29F00F1BE51 /* WalletTransactionsModel.swift in Sources */,
 				6DDE95801EE84FFD0019DA47 /* ClaimDetailsCell.swift in Sources */,
 				6D6DA25E1EE1D1BB00307C73 /* ClaimEntity.swift in Sources */,
@@ -4421,7 +4364,6 @@
 				6DBF49291F80EF2600B236E2 /* HomePresentationController.swift in Sources */,
 				6D83EC891EDD6CA6000412DC /* Routable.swift in Sources */,
 				6D1CAC0B1FF51A1200FA58B6 /* OthersVotedVC.swift in Sources */,
-				6D0E05791EFEC7A400604981 /* ReportTextFieldCell.swift in Sources */,
 				17751AB12033568B00274F6A /* NewDiscussionCell.swift in Sources */,
 				6D12927D1F83BD6A001CCC31 /* SceneType.swift in Sources */,
 				9475D9321FA390BC00F881C9 /* MuteCellModel.swift in Sources */,
@@ -4471,6 +4413,7 @@
 				6D6DA2701EE21F9800307C73 /* StyledLabels.swift in Sources */,
 				6DEE67A11EDC341A0098EDB3 /* Geometry.swift in Sources */,
 				6D83EC8B1EDD7083000412DC /* Navigator.swift in Sources */,
+				6D106F0B203AD4C70049E92E /* NewClaimCell.swift in Sources */,
 				9480EA141F15246E008A7A3F /* RiskCell.swift in Sources */,
 				6DDE956D1EE813D50019DA47 /* KingfisherSource.swift in Sources */,
 				6D59FD181FBC9693006C0A2B /* URLBuilder.swift in Sources */,
@@ -4491,7 +4434,6 @@
 				6DAF1CB81F58562900421C5A /* PushService.swift in Sources */,
 				6D2808C81F1A563A00EBBE3D /* DiscussionCompactCell.swift in Sources */,
 				6D829AA51EB0D6860051F43A /* Random.swift in Sources */,
-				6DAF1CB51F571F4A00421C5A /* ReportTitleCell.swift in Sources */,
 				6D1EC3E6202B0EB700F0541C /* TxOutputServerImpl.swift in Sources */,
 				6D3141D21F07DF9D00C285DA /* JoinTeamCellBuilder.swift in Sources */,
 				6D6DA2461EE167BD00307C73 /* CoveredObject.swift in Sources */,
@@ -4510,11 +4452,9 @@
 				6D6DA2641EE21ACA00307C73 /* FacebookUser.swift in Sources */,
 				94C2D39A1F191FA600D203C2 /* TeamCell.swift in Sources */,
 				6D69D9FB1EFC07FF00DED5CE /* ProxyForCell.swift in Sources */,
-				6D0E05601EFEBF4000604981 /* ReportItemCell.swift in Sources */,
 				6DD051BD1F66F10B00532626 /* SocketCommand.swift in Sources */,
 				94CB11AA1F0A471A0012C4CB /* HelperGlobalFunctions.swift in Sources */,
 				6D6FCC301FD89C220032041A /* UILabel.swift in Sources */,
-				6D0E05691EFEC21800604981 /* ReportExpensesCell.swift in Sources */,
 				6D6DA2541EE1C65800307C73 /* ClaimsVotedCell.swift in Sources */,
 				6D9CC6151ED48244007F936E /* SegueType.swift in Sources */,
 				6DAD941C1FCEF4500011557C /* CodeCaptureDelegate.swift in Sources */,

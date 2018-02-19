@@ -107,7 +107,7 @@ class ChatObjectView: UIView, XIBInitable {
         rightButton.setTitle("Team.Chat.ObjectView.VoteLabel".localized, for: .normal)
 
         imageView.image = #imageLiteral(resourceName: "imagePlaceholder")
-        basic.smallPhoto.map {  self.imageView.showImage(string: $0) }
+        basic.smallPhoto.map { self.imageView.showImage(string: $0) }
 
         if let voting = voting {
             if let vote = voting.myVote {

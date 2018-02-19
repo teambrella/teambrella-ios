@@ -23,13 +23,8 @@ import Foundation
 
 struct ReportCellBuilder {
     static func registerCells(in collectionView: UICollectionView) {
-        collectionView.register(ReportItemCell.nib, forCellWithReuseIdentifier: ReportItemCell.cellID)
-        collectionView.register(ReportExpensesCell.nib, forCellWithReuseIdentifier: ReportExpensesCell.cellID)
-        collectionView.register(ReportDescriptionCell.nib, forCellWithReuseIdentifier: ReportDescriptionCell.cellID)
-        collectionView.register(ReportPhotoGalleryCell.nib, forCellWithReuseIdentifier: ReportPhotoGalleryCell.cellID)
-        collectionView.register(ReportTextFieldCell.nib, forCellWithReuseIdentifier: ReportTextFieldCell.cellID)
-        collectionView.register(ReportTitleCell.nib, forCellWithReuseIdentifier: ReportTitleCell.cellID)
         collectionView.register(NewDiscussionCell.nib, forCellWithReuseIdentifier: NewDiscussionCell.cellID)
+        collectionView.register(NewClaimCell.nib, forCellWithReuseIdentifier: NewClaimCell.cellID)
     }
     
     static func populate(cell: UICollectionViewCell,
@@ -39,18 +34,8 @@ struct ReportCellBuilder {
         switch cell {
         case let cell as NewDiscussionCell:
             populateNewDiscussion(cell: cell, model: model, reportVC: reportVC, indexPath: indexPath)
-        case let cell as ReportItemCell:
-            populateItem(cell: cell, model: model)
-        case let cell as ReportExpensesCell:
-            populateExpenses(cell: cell, model: model, reportVC: reportVC, indexPath: indexPath)
-        case let cell as ReportDescriptionCell:
-            populateDescription(cell: cell, model: model, reportVC: reportVC, indexPath: indexPath)
-        case let cell as ReportPhotoGalleryCell:
-            populatePhotoGallery(cell: cell, model: model, reportVC: reportVC)
-        case let cell as ReportTextFieldCell:
-            populateTextField(cell: cell, model: model, reportVC: reportVC, indexPath: indexPath)
-        case let cell as ReportTitleCell:
-            cell.titleLabel.text = model.title
+        case let cell as NewClaimCell:
+            populateNewClaim(cell: cell, model: model, reportVC: reportVC, indexPath: indexPath)
         default:
             break
         }
@@ -60,135 +45,103 @@ struct ReportCellBuilder {
                                       model: ReportCellModel,
                                       reportVC: ReportVC,
                                       indexPath: IndexPath) {
-        cell.titleTextField.inputView = nil
         if let model = model as? NewDiscussionCellModel {
             cell.headerLabel.text = model.title
             cell.textFieldTitleLabel.text = model.postTitle
+            cell.titleTextField.inputView = nil
             cell.titleTextField.delegate = reportVC
-            cell.titleTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            cell.titleTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isTitleValid : false
             cell.titleTextField.text = model.postTitleText
             cell.titleTextField.tintColor = cell.titleTextField.tintColor.withAlphaComponent(1)
-            cell.titleTextField.tag = indexPath.row
+//            cell.titleTextField.tag = indexPath.row
             cell.titleTextField.removeTarget(reportVC, action: nil, for: .allEvents)
             cell.titleTextField.addTarget(reportVC,
                                           action: #selector(ReportVC.textFieldDidChange),
                                           for: .editingChanged)
             cell.textViewTitleLabel.text = model.descriptionTitle
             cell.postTextView.text = model.descriptionText
-            cell.postTextView.tag = indexPath.row
+//            cell.postTextView.tag = indexPath.row
             cell.postTextView.delegate = reportVC
-            cell.postTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            cell.postTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isDescriptionValid : false
         }
     }
     
-    static func populateItem(cell: ReportItemCell, model: ReportCellModel) {
-        guard let model = model as? ItemReportCellModel else { return }
-        
-        cell.avatarView.show(model.photo)
-        cell.itemLabel.text = model.name.entire
-        cell.detailsLabel.text = model.location
-        cell.headerLabel.text = model.title
-    }
-    
-    static func populateExpenses(cell: ReportExpensesCell,
+    // swiftlint:disable:next function_body_length
+    static func populateNewClaim(cell: NewClaimCell,
                                  model: ReportCellModel,
                                  reportVC: ReportVC,
                                  indexPath: IndexPath) {
-        guard let model = model as? ExpensesReportCellModel else { return }
-        
-        cell.headerLabel.text = model.title
-        cell.numberBar.left?.titleLabel.text = model.deductibleTitle
-        cell.numberBar.left?.amountLabel.text = model.deductibleString
-        cell.numberBar.left?.currencyLabel.text = service.currencySymbol
-        
-        cell.numberBar.middle?.titleLabel.text = model.coverageTitle
-        cell.numberBar.middle?.amountLabel.text = model.coverageString
-        cell.numberBar.middle?.currencyLabel.text = "%"
-        cell.numberBar.middle?.isCurrencyOnTop = false
-        if reportVC.isInCorrectionMode && model.coverage.value <= 0 {
-            cell.numberBar.middle?.titleLabel.textColor = .red
-            cell.numberBar.middle?.amountLabel.textColor = .red
-        } else if let left = cell.numberBar.left {
-            cell.numberBar.middle?.titleLabel.textColor = left.titleLabel.textColor
-            cell.numberBar.middle?.amountLabel.textColor = left.amountLabel.textColor
+        if let model = model as? NewClaimCellModel {
+            cell.headerLabel.text = model.title
+            cell.objectImageView.show(model.objectPhoto)
+            cell.objectNameLabel.text = model.objectName.entire
+            cell.objectDetailsLabel.text = model.objectLocation
+            
+            cell.dateLabel.text = model.dateTitle
+            cell.dateTextField.inputView = nil
+            cell.dateTextField.inputView = reportVC.datePicker
+            cell.dateTextField.text = DateProcessor().stringIntervalOrDate(from: model.date)
+            cell.dateTextField.tintColor = cell.dateTextField.tintColor.withAlphaComponent(0)
+            
+            cell.expensesLabel.text = model.expensesTitle
+            cell.statsNumberBar.left?.titleLabel.text = model.deductibleTitle
+            cell.statsNumberBar.left?.amountLabel.text = model.deductibleString
+            cell.statsNumberBar.left?.currencyLabel.text = service.currencyName
+            cell.statsNumberBar.middle?.titleLabel.text = model.coverageTitle
+            cell.statsNumberBar.middle?.amountLabel.text = model.coverageString
+            cell.statsNumberBar.middle?.currencyLabel.text = "%"
+            cell.statsNumberBar.middle?.isCurrencyOnTop = false
+            if reportVC.isInCorrectionMode && model.coverage.value <= 0 {
+                cell.statsNumberBar.middle?.titleLabel.textColor = .red
+                cell.statsNumberBar.middle?.amountLabel.textColor = .red
+            } else if let left = cell.statsNumberBar.left {
+                cell.statsNumberBar.middle?.titleLabel.textColor = left.titleLabel.textColor
+                cell.statsNumberBar.middle?.amountLabel.textColor = left.amountLabel.textColor
+            }
+            cell.statsNumberBar.right?.titleLabel.text = model.amountTitle
+            cell.statsNumberBar.right?.amountLabel.text = model.amountString
+            cell.statsNumberBar.right?.currencyLabel.text = service.currencyName
+            cell.expensesTextField.inputView = nil
+            cell.expensesTextField.delegate = reportVC
+            cell.expensesTextField.text = model.expensesString
+            cell.expensesTextField.placeholder = "Max: \(Int(reportVC.limit))"
+            cell.expensesTextField.keyboardType = .decimalPad
+            cell.expensesTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isExpensesValid : false
+            cell.expensesTextField.rightViewMode = .unlessEditing
+            cell.currencyTextField.isUserInteractionEnabled = false
+            cell.currencyTextField.text = service.currencyName
+//            cell.expensesTextField.tag = indexPath.row
+            cell.expensesTextField.removeTarget(reportVC, action: nil, for: .allEvents)
+            cell.expensesTextField.addTarget(reportVC,
+                                             action: #selector(ReportVC.textFieldDidChange),
+                                             for: .editingChanged)
+            
+            cell.descriptionLabel.text = model.descriptionTitle
+            cell.descriptionTextView.text = model.descriptionText
+//            cell.descriptionTextView.tag = indexPath.row
+            cell.descriptionTextView.inputView = nil
+            cell.descriptionTextView.delegate = reportVC
+            cell.descriptionTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isDescriptionValid : false
+            
+            cell.photosLabel.text = model.photosTitle
+            cell.addPhotosButton.setTitle(model.buttonTitle, for: .normal)
+            cell.addPhotosButton.removeTarget(reportVC, action: nil, for: .allEvents)
+            cell.addPhotosButton.addTarget(reportVC, action: #selector(ReportVC.tapAddPhoto), for: .touchUpInside)
+            
+            cell.reimburseLabel.text = model.reimburseTitle
+            cell.reimburseTextField.inputView = nil
+            
+            cell.reimburseTextField.delegate = reportVC
+            cell.reimburseTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isReimburseValid : false
+            cell.reimburseTextField.text = model.reimburseText
+            cell.reimburseTextField.tintColor = cell.reimburseTextField.tintColor.withAlphaComponent(1)
+            cell.reimburseTextField.placeholder = ""
+//            cell.reimburseTextField.tag = indexPath.row
+            cell.reimburseTextField.removeTarget(reportVC, action: nil, for: .allEvents)
+            cell.reimburseTextField.addTarget(reportVC,
+                                              action: #selector(ReportVC.textFieldDidChange),
+                                              for: .editingChanged)
         }
         
-        cell.numberBar.right?.titleLabel.text = model.amountTitle
-        cell.numberBar.right?.amountLabel.text = model.amountString
-        cell.numberBar.right?.currencyLabel.text = service.currencySymbol
-        
-        cell.expensesTextField.delegate = reportVC
-        cell.expensesTextField.text = model.expensesString
-        cell.expensesTextField.placeholder = "Max: \(Int(reportVC.limit))"
-        cell.expensesTextField.keyboardType = .decimalPad
-//        cell.expensesTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
-        cell.expensesTextField.rightViewMode = .unlessEditing
-        
-        cell.currencyTextField.isUserInteractionEnabled = false
-        cell.currencyTextField.text = service.currencySymbol
-        
-        cell.expensesTextField.tag = indexPath.row
-        cell.expensesTextField.removeTarget(reportVC, action: nil, for: .allEvents)
-        cell.expensesTextField.addTarget(reportVC,
-                                         action: #selector(ReportVC.textFieldDidChange),
-                                         for: .editingChanged)
     }
-    
-    static func populateDescription(cell: ReportDescriptionCell,
-                                    model: ReportCellModel,
-                                    reportVC: ReportVC,
-                                    indexPath: IndexPath) {
-//        guard let model = model as? DescriptionReportCellModel else { return }
-//
-//        cell.headerLabel.text = model.title
-//        cell.textView.text = model.text
-//        cell.textView.tag = indexPath.row
-//        cell.textView.delegate = reportVC
-//        cell.textView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
-    }
-    
-    static func populatePhotoGallery(cell: ReportPhotoGalleryCell,
-                                     model: ReportCellModel,
-                                     reportVC: ReportVC) {
-        guard let model = model as? PhotosReportCellModel else { return }
-        
-        cell.headerLabel.text = model.title
-        cell.button.setTitle(model.buttonTitle, for: .normal)
-        cell.button.removeTarget(reportVC, action: nil, for: .allEvents)
-        cell.button.addTarget(reportVC, action: #selector(ReportVC.tapAddPhoto), for: .touchUpInside)
-    }
-    
-    static func populateTextField(cell: ReportTextFieldCell,
-                                  model: ReportCellModel,
-                                  reportVC: ReportVC,
-                                  indexPath: IndexPath) {
-        cell.headerLabel.text = model.title
-        cell.textField.inputView = nil
-        switch model {
-        case let model as DateReportCellModel:
-            cell.textField.inputView = reportVC.datePicker
-            cell.textField.text = DateProcessor().stringIntervalOrDate(from: model.date)
-            cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(0)
-        case let model as WalletReportCellModel:
-            cell.textField.delegate = reportVC
-//            cell.textField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
-            cell.textField.text = model.text
-            cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
-            cell.textField.placeholder = ""
-            cell.textField.tag = indexPath.row
-            cell.textField.removeTarget(reportVC, action: nil, for: .allEvents)
-            cell.textField.addTarget(reportVC, action: #selector(ReportVC.textFieldDidChange), for: .editingChanged)
-//        case let model as TitleReportCellModel:
-//            cell.textField.delegate = reportVC
-//            cell.textField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
-//            cell.textField.text = model.text
-//            cell.textField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
-//            cell.textField.tag = indexPath.row
-//            cell.textField.removeTarget(reportVC, action: nil, for: .allEvents)
-//            cell.textField.addTarget(reportVC, action: #selector(ReportVC.textFieldDidChange), for: .editingChanged)
-        default:
-            break
-        }
-    }
-    
 }
