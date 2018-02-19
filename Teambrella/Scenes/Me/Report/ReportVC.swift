@@ -106,7 +106,6 @@ final class ReportVC: UIViewController, Routable {
             self.coverage = self.dataSource.coverage.value
             self.limit = self.dataSource.limit
             self.claimCell?.updateExpenses(limit: self.limit, coverage: self.coverage, expenses: nil)
-//            self.reloadExpencesCellIfNeeded()
         }
         ReportCellBuilder.registerCells(in: collectionView)
         dataSource.getCoverageForDate(date: datePicker.date)
@@ -181,13 +180,32 @@ final class ReportVC: UIViewController, Routable {
         }
         
         collectionView.scrollIndicatorInsets = collectionView.contentInset
-//        if let responder = collectionView.currentFirstResponder() as? UIView {
-//            for cell in collectionView.visibleCells where responder.isDescendant(of: cell) {
+        if let responder = collectionView.currentFirstResponder() as? UIView {
+            for cell in collectionView.visibleCells where responder.isDescendant(of: cell) {
+                if cell == claimCell {
+                    let screenWithKeyboardHeight = collectionView.bounds.height - keyboardScreenEndFrame.height
+                    let rect = cell.convert(responder.frame, to: collectionView)
+                    let newRect = collectionView.convert(rect, to: self.view)
+                    let offset = newRect.maxY - screenWithKeyboardHeight
+                    if offset > 0 {
+                        var myPoint = collectionView.contentOffset
+                        myPoint.y = offset
+                        collectionView.contentOffset = myPoint
+                    }
+//                    print("controller.view.height = \(self.view.bounds.height)")
+//                    print("keyboard.height = \(keyboardHeight)")
+//                    print("responder.height = \(responder.frame.maxY)")
+                    
+                }
 //                if let indexPath = collectionView.indexPath(for: cell) {
 //                    collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
 //                }
-//            }
-//        }
+            }
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("scrollView = \(scrollView.contentOffset.y)")
     }
     
     @objc
@@ -320,19 +338,6 @@ final class ReportVC: UIViewController, Routable {
         rightButton?.alpha = enable ? 1 : 0.5
         return enable
     }
-    
-//    private func reloadExpencesCellIfNeeded() {
-//        let visibleCells = collectionView.visibleCells
-//        let expensesCells = visibleCells.filter { $0 is NewClaimCell }
-//        guard let expensesCell = expensesCells.first else { return }
-//        guard let indexPath = collectionView.indexPath(for: expensesCell) else { return }
-//
-//        collectionView.performBatchUpdates({
-//            collectionView.reloadItems(at: [indexPath])
-//        }) { finished in
-//
-//        }
-//    }
     
     private func showNavigationBarButtons() {
         guard let context = reportContext else { return }
@@ -475,12 +480,8 @@ extension ReportVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         (textField as? TextField)?.isInEditMode = false
         enableSendButton()
-//        let indexPath = IndexPath(row: textField.tag, section: 0)
-        if var cell = claimCell as? NewClaimCell, textField == cell.expensesTextField, let text = textField.text {
+        if let cell = claimCell as? NewClaimCell, textField == cell.expensesTextField, let text = textField.text {
             cell.updateExpenses(limit: limit, coverage: coverage, expenses: Double(text))
         }
-//        if dataSource[indexPath] is NewClaimCellModel {
-//            reloadExpencesCellIfNeeded()
-//        }
     }
 }
