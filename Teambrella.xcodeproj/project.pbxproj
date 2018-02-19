@@ -54,6 +54,10 @@
 		6D106F0B203AD4C70049E92E /* NewClaimCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F09203AD4C70049E92E /* NewClaimCell.swift */; };
 		6D106F0C203AD4D70049E92E /* NewClaimCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F09203AD4C70049E92E /* NewClaimCell.swift */; };
 		6D106F0D203AD4DD0049E92E /* NewClaimCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D106F08203AD4C70049E92E /* NewClaimCell.xib */; };
+		6D106F0F203AEA400049E92E /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F0E203AEA400049E92E /* Console.swift */; };
+		6D106F10203AEA400049E92E /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F0E203AEA400049E92E /* Console.swift */; };
+		6D106F12203B071A0049E92E /* VersionValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F11203B071A0049E92E /* VersionValidator.swift */; };
+		6D106F13203B071A0049E92E /* VersionValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F11203B071A0049E92E /* VersionValidator.swift */; };
 		6D12927D1F83BD6A001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
 		6D12927E1F83BD6D001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
 		6D1292891F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
@@ -1155,6 +1159,8 @@
 		6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoServerUpdate.swift; sourceTree = "<group>"; };
 		6D106F08203AD4C70049E92E /* NewClaimCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewClaimCell.xib; path = View/Cells/Report/NewClaimCell.xib; sourceTree = "<group>"; };
 		6D106F09203AD4C70049E92E /* NewClaimCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClaimCell.swift; path = View/Cells/Report/NewClaimCell.swift; sourceTree = "<group>"; };
+		6D106F0E203AEA400049E92E /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Console.swift; path = Scenes/Info/Console.swift; sourceTree = "<group>"; };
+		6D106F11203B071A0049E92E /* VersionValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionValidator.swift; sourceTree = "<group>"; };
 		6D12927C1F83BD6A001CCC31 /* SceneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneType.swift; path = Model/Enums/SceneType.swift; sourceTree = "<group>"; };
 		6D1292881F83DC46001CCC31 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Name.swift; path = Model/Entities/Name.swift; sourceTree = "<group>"; };
 		6D12928B1F83DE38001CCC31 /* NameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTests.swift; sourceTree = "<group>"; };
@@ -2026,6 +2032,7 @@
 				6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */,
 				6D2A7C621FCC66960094ABB7 /* SODVC.swift */,
 				6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */,
+				6D106F0E203AEA400049E92E /* Console.swift */,
 			);
 			name = Info;
 			sourceTree = "<group>";
@@ -2460,6 +2467,7 @@
 				6D56F9BB1FA737CC00B9D676 /* Application.swift */,
 				6D6FCBF31FD702D00032041A /* Vibrator.swift */,
 				6D251C422035D04B005081E4 /* ScrollViewHandler.swift */,
+				6D106F11203B071A0049E92E /* VersionValidator.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -3661,6 +3669,7 @@
 				6D4E5C2B1F7AB6870020DEE2 /* RoundedCornersView.swift in Sources */,
 				6D4E5C2C1F7AB6870020DEE2 /* CryptoCurrency.swift in Sources */,
 				6D4E5C2D1F7AB6870020DEE2 /* PrivateMessagesVC.swift in Sources */,
+				6D106F13203B071A0049E92E /* VersionValidator.swift in Sources */,
 				6D4E5C2E1F7AB6870020DEE2 /* Services.swift in Sources */,
 				6D1EC3F3202B114A00F0541C /* UpdatesServerImpl.swift in Sources */,
 				6D4E5C301F7AB6870020DEE2 /* TeambrellaError.swift in Sources */,
@@ -4014,6 +4023,7 @@
 				6D4E5D4A1F7AB6870020DEE2 /* TeammateLarge.swift in Sources */,
 				6D4E5D4B1F7AB6870020DEE2 /* MaritalStatus.swift in Sources */,
 				6D4E5D4C1F7AB6870020DEE2 /* HomeApplicationDeniedCell.swift in Sources */,
+				6D106F10203AEA400049E92E /* Console.swift in Sources */,
 				6D4E5D4D1F7AB6870020DEE2 /* WalletEntity.swift in Sources */,
 				6D4E5D4E1F7AB6870020DEE2 /* LabeledButton.swift in Sources */,
 				6D4E5D4F1F7AB6870020DEE2 /* HomeCollectionCell.swift in Sources */,
@@ -4087,6 +4097,7 @@
 				6D481F7D1F0BD0DD0023C781 /* RoundedCornersView.swift in Sources */,
 				6D0B783D1F45EEAE00847FFF /* CryptoCurrency.swift in Sources */,
 				6D1A9B2B1F55D66E004192AC /* PrivateMessagesVC.swift in Sources */,
+				6D106F12203B071A0049E92E /* VersionValidator.swift in Sources */,
 				6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */,
 				6D1EC3F2202B114A00F0541C /* UpdatesServerImpl.swift in Sources */,
 				6DA475D91E8BBD2A00B56D9B /* TeambrellaError.swift in Sources */,
@@ -4440,6 +4451,7 @@
 				6DEC07561E9BF7170078F40E /* TeammateLarge.swift in Sources */,
 				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,
 				94E80E501F0FD30400DE1A0A /* HomeApplicationDeniedCell.swift in Sources */,
+				6D106F0F203AEA400049E92E /* Console.swift in Sources */,
 				94B4C3801F1E18AC00AED4CE /* WalletEntity.swift in Sources */,
 				6D0E742D1F13C0D70055BF1E /* LabeledButton.swift in Sources */,
 				6D9CC6511ED97C37007F936E /* HomeCollectionCell.swift in Sources */,

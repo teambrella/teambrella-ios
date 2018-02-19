@@ -37,7 +37,7 @@ class ServicesHandler {
     let info: InfoMaker = InfoMaker()
     
     /// server interoperability (should be removed from here when all requests will go through DAO)
-    lazy var server = ServerService()
+    lazy var server = ServerService(router: self.router)
     
     /// data access object
     lazy var dao: DAO = ServerDAO()

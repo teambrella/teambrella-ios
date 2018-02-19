@@ -244,7 +244,13 @@ final class MainRouter {
         vc.ranges = ranges
         push(vc: vc)
     }
-    
+
+    func presentConsole() {
+        guard let vc = Console.instantiate() as? Console else { fatalError("Error instantiating") }
+
+        push(vc: vc)
+    }
+
     // MARK: Present Modally
     
     func showChooseTeam(in viewController: UIViewController, delegate: ChooseYourTeamControllerDelegate) {
@@ -349,7 +355,8 @@ final class MainRouter {
             vc.mode = .demoExpired
         }
     }
-    
+
+    @discardableResult
     func showSOD(mode: SODVC.SODMode = .outdated, in controller: UIViewController) -> SODVC? {
         guard let vc = SODVC.instantiate() as? SODVC else { return nil }
         

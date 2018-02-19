@@ -463,15 +463,19 @@ class TeambrellaService: NSObject {
 
     func signToSockets(service: SocketService) {
         log("Teambrella service signing to socket", type: .cryptoDetails)
-        service.add(listener: self) { action in
+        service.add(listener: self) { [weak self] action in
             switch action.command {
             case .dbDump:
-                let dumper = Dumper(api: self.server)
-                dumper.sendDatabaseDump(privateKey: self.key.privateKey)
+                self?.sendDBDump()
             default:
                 break
             }
         }
+    }
+    
+    func sendDBDump() {
+        let dumper = Dumper(api: self.server)
+        dumper.sendDatabaseDump(privateKey: self.key.privateKey)
     }
     
 }
