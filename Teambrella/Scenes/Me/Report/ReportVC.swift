@@ -180,13 +180,32 @@ final class ReportVC: UIViewController, Routable {
         }
         
         collectionView.scrollIndicatorInsets = collectionView.contentInset
-//        if let responder = collectionView.currentFirstResponder() as? UIView {
-//            for cell in collectionView.visibleCells where responder.isDescendant(of: cell) {
+        if let responder = collectionView.currentFirstResponder() as? UIView {
+            for cell in collectionView.visibleCells where responder.isDescendant(of: cell) {
+                if cell == claimCell {
+                    let screenWithKeyboardHeight = collectionView.bounds.height - keyboardScreenEndFrame.height
+                    let rect = cell.convert(responder.frame, to: collectionView)
+                    let newRect = collectionView.convert(rect, to: self.view)
+                    let offset = newRect.maxY - screenWithKeyboardHeight
+                    if offset > 0 {
+                        var myPoint = collectionView.contentOffset
+                        myPoint.y = offset
+                        collectionView.contentOffset = myPoint
+                    }
+//                    print("controller.view.height = \(self.view.bounds.height)")
+//                    print("keyboard.height = \(keyboardHeight)")
+//                    print("responder.height = \(responder.frame.maxY)")
+                    
+                }
 //                if let indexPath = collectionView.indexPath(for: cell) {
 //                    collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
 //                }
-//            }
-//        }
+            }
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("scrollView = \(scrollView.contentOffset.y)")
     }
     
     @objc
