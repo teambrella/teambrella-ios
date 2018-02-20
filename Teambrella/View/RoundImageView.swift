@@ -84,7 +84,7 @@ class RoundImageView: UIImageView {
             imageView.contentMode = contentMode
         }
     }
-
+    
     @IBInspectable var inset: CGFloat = 0.0 {
         didSet {
             setNeedsLayout()
@@ -109,7 +109,7 @@ class RoundImageView: UIImageView {
     func setup() {
         backgroundColor = .clear
         addSubview(imageView)
-//        imageView.image = #imageLiteral(resourceName: "imagePlaceholder")
+        // image = #imageLiteral(resourceName: "imagePlaceholder")
         imageView.layer.masksToBounds = true
         contentMode = .scaleAspectFill
     }
@@ -132,4 +132,10 @@ class RoundImageView: UIImageView {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if image == nil {
+            image = #imageLiteral(resourceName: "imagePlaceholder")
+        }
+    }
 }
