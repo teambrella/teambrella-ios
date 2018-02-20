@@ -136,7 +136,7 @@ struct TeammateCellBuilder {
         cell.layoutIfNeeded()
         cell.middleAvatar.showAvatar(string: teammate.basic.avatar)
         
-        if SimpleStorage().string(forKey: .swipeHelperWasShown) != nil {
+        if SimpleStorage().bool(forKey: .swipeHelperWasShown) {
             cell.swipeToVoteView.isHidden = true
         } else {
             cell.swipeToVoteView.isHidden = false

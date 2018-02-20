@@ -140,6 +140,7 @@ final class InitialVC: UIViewController {
         let socket = SocketService()
         service.socket = socket
         service.teambrella.signToSockets(service: socket)
+        SimpleStorage().store(bool: true, forKey: .didLogWithKey)
         HUD.hide()
         presentMasterTab()
         requestPush()
@@ -148,6 +149,7 @@ final class InitialVC: UIViewController {
     private func failure() {
         HUD.hide()
         service.router.logout()
+        SimpleStorage().store(bool: false, forKey: .didLogWithKey)
         performSegue(type: .login)
     }
     
