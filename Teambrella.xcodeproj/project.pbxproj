@@ -58,6 +58,8 @@
 		6D106F10203AEA400049E92E /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F0E203AEA400049E92E /* Console.swift */; };
 		6D106F12203B071A0049E92E /* VersionValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F11203B071A0049E92E /* VersionValidator.swift */; };
 		6D106F13203B071A0049E92E /* VersionValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F11203B071A0049E92E /* VersionValidator.swift */; };
+		6D106F15203C3E180049E92E /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D106F14203C3E180049E92E /* KeychainAccess.framework */; };
+		6D106F16203C3E180049E92E /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D106F14203C3E180049E92E /* KeychainAccess.framework */; };
 		6D12927D1F83BD6A001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
 		6D12927E1F83BD6D001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
 		6D1292891F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
@@ -941,6 +943,8 @@
 		6DF2E8CB1EF194E400C8D60B /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DF2E8C91EF194E400C8D60B /* Main.strings */; };
 		6DF2E8CE1EF1979300C8D60B /* ProxiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8CD1EF1979300C8D60B /* ProxiesVC.swift */; };
 		6DF2E8D01EF197D100C8D60B /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF2E8CF1EF197D100C8D60B /* MeVC.swift */; };
+		6DF2FF34203C63BD008C919C /* SimpleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB5E8091FEA874E009A2A62 /* SimpleStorage.swift */; };
+		6DF2FF35203C63BD008C919C /* SimpleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB5E8091FEA874E009A2A62 /* SimpleStorage.swift */; };
 		6DF3E7621F795ED6000C7885 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF3E7611F795ED6000C7885 /* KeyStorage.swift */; };
 		6DF479121F41E4300025F489 /* PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479111F41E4300025F489 /* PromiseKit.swift */; };
 		6DF479161F42F0570025F489 /* CoverageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479151F42F0570025F489 /* CoverageType.swift */; };
@@ -1161,6 +1165,7 @@
 		6D106F09203AD4C70049E92E /* NewClaimCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClaimCell.swift; path = View/Cells/Report/NewClaimCell.swift; sourceTree = "<group>"; };
 		6D106F0E203AEA400049E92E /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Console.swift; path = Scenes/Info/Console.swift; sourceTree = "<group>"; };
 		6D106F11203B071A0049E92E /* VersionValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionValidator.swift; sourceTree = "<group>"; };
+		6D106F14203C3E180049E92E /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		6D12927C1F83BD6A001CCC31 /* SceneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneType.swift; path = Model/Enums/SceneType.swift; sourceTree = "<group>"; };
 		6D1292881F83DC46001CCC31 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Name.swift; path = Model/Entities/Name.swift; sourceTree = "<group>"; };
 		6D12928B1F83DE38001CCC31 /* NameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTests.swift; sourceTree = "<group>"; };
@@ -1690,6 +1695,7 @@
 				6D4E5D7A1F7AB6870020DEE2 /* SwiftSoup.framework in Frameworks */,
 				6D4E5D7B1F7AB6870020DEE2 /* Kingfisher.framework in Frameworks */,
 				6D0C39E41F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
+				6D106F16203C3E180049E92E /* KeychainAccess.framework in Frameworks */,
 				6D4E5D7D1F7AB6870020DEE2 /* SwiftDate.framework in Frameworks */,
 				6D4E5D7E1F7AB6870020DEE2 /* QRCode.framework in Frameworks */,
 				FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */,
@@ -1721,6 +1727,7 @@
 				6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */,
 				6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */,
 				6DEC07501E9BD59D0078F40E /* Kingfisher.framework in Frameworks */,
+				6D106F15203C3E180049E92E /* KeychainAccess.framework in Frameworks */,
 				6D0C39E31F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
 				6D0BA5B11F14F83000055E74 /* SwiftDate.framework in Frameworks */,
 				94C89AD61F0104CC00C6D8F7 /* QRCode.framework in Frameworks */,
@@ -2889,6 +2896,7 @@
 			children = (
 				6D8F97111E8D1529008DC62E /* Alamofire.framework */,
 				6DDE956A1EE80FE40019DA47 /* ImageSlideshow.framework */,
+				6D106F14203C3E180049E92E /* KeychainAccess.framework */,
 				6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */,
 				6DA8D54E1F0E43B7000A4DB7 /* PKHUD.framework */,
 				94C89AD51F0104CC00C6D8F7 /* QRCode.framework */,
@@ -3076,7 +3084,13 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -3416,6 +3430,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -3472,6 +3487,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -4082,6 +4098,7 @@
 				6D9374AA202C9EB800BB28CB /* Notification.swift in Sources */,
 				6DA1A5451FBF0C8B000FDECA /* Key.swift in Sources */,
 				6DA1A54B1FBF25ED000FDECA /* RemotePayload.swift in Sources */,
+				6DF2FF34203C63BD008C919C /* SimpleStorage.swift in Sources */,
 				6DA1A5491FBF0CF1000FDECA /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4528,6 +4545,7 @@
 				6D9374AB202C9EB900BB28CB /* Notification.swift in Sources */,
 				6DEFE408200655D100615022 /* URLBuilder.swift in Sources */,
 				6DEFE406200655A100615022 /* String-localized.swift in Sources */,
+				6DF2FF35203C63BD008C919C /* SimpleStorage.swift in Sources */,
 				6DEFE3FE2006547200615022 /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

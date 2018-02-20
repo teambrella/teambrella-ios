@@ -20,43 +20,83 @@
 //
 
 import Foundation
-import SwiftKeychainWrapper
+import KeychainAccess
+//import SwiftKeychainWrapper
 
 #if TEAMBRELLA
     enum KeychainKey: String {
         case ethPrivateAddress = "teambrella.ethPrivateAddress"
-        case ethPrivateAddressDemo = "teambrella.ethPrivateAddress.demo"
-        case lastUserType = "teambrella.lastUserType"
+        //case ethPrivateAddressDemo = "teambrella.ethPrivateAddress.demo"
+        //case lastUserType = "teambrella.lastUserType"
     }
 #else
     enum KeychainKey: String {
         case ethPrivateAddress = "ethPrivateAddress"
-        case ethPrivateAddressDemo = "ethPrivateAddress.demo"
-        case lastUserType = "lastUserType"
+        //case ethPrivateAddressDemo = "ethPrivateAddress.demo"
+        //case lastUserType = "lastUserType"
     }
 #endif
 
-class Keychain {
+class KeychainService {
+    let keychain = Keychain(service: Constant.keychainName)
+        .accessibility(.always)
+
     @discardableResult
-    class func save(value: String, forKey key: KeychainKey) -> Bool {
-        return KeychainWrapper.standard.set(value,
-                                            forKey: key.rawValue,
-                                            withAccessibility: KeychainItemAccessibility.always)
+    func save(value: String, forKey key: KeychainKey) -> Bool {
+        do {
+            try keychain
+                .synchronizable(true)
+                .set(value, key: key.rawValue)
+            return true
+        } catch {
+            print("keychain error: \(error)")
+            return false
+        }
+        /*
+         return KeychainWrapper.standard.set(value,
+         forKey: key.rawValue,
+         withAccessibility: KeychainItemAccessibility.always)
+         */
     }
     
-    class func value(forKey key: KeychainKey) -> String? {
-        return KeychainWrapper.standard.string(forKey: key.rawValue)
+    func value(forKey key: KeychainKey) -> String? {
+        do {
+            return try keychain.getString(key.rawValue)
+        } catch {
+            print("error getting string from keychain: \(error)")
+            return nil
+        }
+        /*
+         return KeychainWrapper.standard.string(forKey: key.rawValue)
+         */
     }
     
     @discardableResult
-    class func removeValue(forKey key: KeychainKey) -> Bool {
-        return KeychainWrapper.standard.removeObject(forKey: key.rawValue)
+    func removeValue(forKey key: KeychainKey) -> Bool {
+        do {
+            try keychain.remove(key.rawValue)
+            return true
+        } catch let error {
+            print("error removing item from keychain: \(error)")
+            return false
+        }
+        /*
+         return KeychainWrapper.standard.removeObject(forKey: key.rawValue)
+         */
     }
     
-    class func clear() {
+    func clear() {
         removeValue(forKey: .ethPrivateAddress)
-        removeValue(forKey: .ethPrivateAddressDemo)
-        removeValue(forKey: .lastUserType)
+//        removeValue(forKey: .ethPrivateAddressDemo)
+//        removeValue(forKey: .lastUserType)
     }
-    
+
+    struct Constant {
+        #if TEAMBRELLA
+        static let keychainName: String = "com.teambrella.ios.app"
+        #else
+        static let keychainName = "com.surilla.ios.app"
+        #endif
+    }
+
 }

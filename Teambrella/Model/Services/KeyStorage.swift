@@ -27,11 +27,12 @@ final class KeyStorage {
     }
     
     static let shared = KeyStorage()
+    let keychain = KeychainService()
     
     private init() { }
     
     var lastUserType: LastUserType {
-        guard let lastUserType = Keychain.value(forKey: .lastUserType) else { return .none }
+        guard let lastUserType = SimpleStorage().string(forKey: .lastUserType) else { return .none }
         
         return LastUserType(rawValue: lastUserType) ?? .none
     }
@@ -52,7 +53,10 @@ final class KeyStorage {
     }
     
     func deleteStoredKeys() {
-        Keychain.clear()
+        keychain.clear()
+        let storage = SimpleStorage()
+        storage.cleanValue(forKey: .lastUserType)
+        storage.cleanValue(forKey: .privateDemoKey)
     }
     
    private var realPrivateKey: String {
@@ -62,12 +66,20 @@ final class KeyStorage {
     }
     
     private var demoPrivateKey: String {
+        let storage = SimpleStorage()
         storeLastUserType(type: .demo)
-        return privateKey(for: .ethPrivateAddressDemo)
+        guard let key = storage.string(forKey: .privateDemoKey) else {
+            let newKey = Key(timestamp: timestamp)
+            let privateKey = newKey.privateKey
+            storage.store(string: privateKey, forKey: .privateDemoKey)
+            return privateKey
+        }
+
+        return key
     }
     
     private func privateKey(for key: KeychainKey) -> String {
-        guard let privateKey = Keychain.value(forKey: key) else {
+        guard let privateKey = keychain.value(forKey: key) else {
             return createPrivateKey(for: key)
         }
         
@@ -77,12 +89,12 @@ final class KeyStorage {
     private func createPrivateKey(for key: KeychainKey) -> String {
         let newKey = Key(timestamp: timestamp)
         let privateKey = newKey.privateKey
-        Keychain.save(value: privateKey, forKey: key)
+        keychain.save(value: privateKey, forKey: key)
         return self.privateKey
     }
     
     private func storeLastUserType(type: LastUserType) {
-        Keychain.save(value: type.rawValue, forKey: .lastUserType)
+        SimpleStorage().store(string: type.rawValue, forKey: .lastUserType)
     }
     
 }
