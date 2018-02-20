@@ -24,7 +24,6 @@ github "pkluz/PKHUD" ~> 4.0
 github "SwiftKickMobile/SwiftMessages"
 
 # Security
-github "jrendel/SwiftKeychainWrapper"
 github "kishikawakatsumi/KeychainAccess"
 
 # Constraints

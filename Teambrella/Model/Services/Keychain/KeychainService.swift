@@ -21,19 +21,14 @@
 
 import Foundation
 import KeychainAccess
-//import SwiftKeychainWrapper
 
 #if TEAMBRELLA
     enum KeychainKey: String {
         case ethPrivateAddress = "teambrella.ethPrivateAddress"
-        //case ethPrivateAddressDemo = "teambrella.ethPrivateAddress.demo"
-        //case lastUserType = "teambrella.lastUserType"
     }
 #else
     enum KeychainKey: String {
         case ethPrivateAddress = "ethPrivateAddress"
-        //case ethPrivateAddressDemo = "ethPrivateAddress.demo"
-        //case lastUserType = "lastUserType"
     }
 #endif
 
@@ -52,11 +47,6 @@ class KeychainService {
             print("keychain error: \(error)")
             return false
         }
-        /*
-         return KeychainWrapper.standard.set(value,
-         forKey: key.rawValue,
-         withAccessibility: KeychainItemAccessibility.always)
-         */
     }
     
     func value(forKey key: KeychainKey) -> String? {
@@ -66,9 +56,6 @@ class KeychainService {
             print("error getting string from keychain: \(error)")
             return nil
         }
-        /*
-         return KeychainWrapper.standard.string(forKey: key.rawValue)
-         */
     }
     
     @discardableResult
@@ -80,15 +67,10 @@ class KeychainService {
             print("error removing item from keychain: \(error)")
             return false
         }
-        /*
-         return KeychainWrapper.standard.removeObject(forKey: key.rawValue)
-         */
     }
     
     func clear() {
         removeValue(forKey: .ethPrivateAddress)
-//        removeValue(forKey: .ethPrivateAddressDemo)
-//        removeValue(forKey: .lastUserType)
     }
 
     struct Constant {
