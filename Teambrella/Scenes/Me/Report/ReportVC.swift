@@ -114,7 +114,7 @@ final class ReportVC: UIViewController, Routable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showNavigationBarButtons()
-        listenForKeyboard()
+        //listenForKeyboard()
         enableSendButton()
     }
     
@@ -176,30 +176,33 @@ final class ReportVC: UIViewController, Routable {
         if notification.name == Notification.Name.UIKeyboardWillHide {
             collectionView.contentInset = UIEdgeInsets.zero
         } else {
-            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+            collectionView.contentInset = UIEdgeInsets(top: 0,
+                                                       left: 0,
+                                                       bottom: self.view.bounds.height - keyboardViewEndFrame.minY,
+                                                       right: 0)
         }
         
         collectionView.scrollIndicatorInsets = collectionView.contentInset
         if let responder = collectionView.currentFirstResponder() as? UIView {
             for cell in collectionView.visibleCells where responder.isDescendant(of: cell) {
                 if cell == claimCell {
-                    let screenWithKeyboardHeight = collectionView.bounds.height - keyboardScreenEndFrame.height
-                    let rect = cell.convert(responder.frame, to: collectionView)
-                    let newRect = collectionView.convert(rect, to: self.view)
-                    let offset = newRect.maxY - screenWithKeyboardHeight
+                    let availableHeight = self.view.bounds.height
+                        - collectionView.frame.minY
+                        - keyboardScreenEndFrame.height
+                    let rect = collectionView.convert(responder.frame, to: self.view)
+                    let offset = rect.maxY - availableHeight
+                    let inset = rect.minY
                     if offset > 0 {
                         var myPoint = collectionView.contentOffset
-                        myPoint.y = offset
+                        myPoint.y += offset
+                        collectionView.contentOffset = myPoint
+                    } else if inset < 0 {
+                        var myPoint = collectionView.contentOffset
+                        myPoint.y += inset
                         collectionView.contentOffset = myPoint
                     }
-//                    print("controller.view.height = \(self.view.bounds.height)")
-//                    print("keyboard.height = \(keyboardHeight)")
-//                    print("responder.height = \(responder.frame.maxY)")
-                    
+
                 }
-//                if let indexPath = collectionView.indexPath(for: cell) {
-//                    collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
-//                }
             }
         }
     }

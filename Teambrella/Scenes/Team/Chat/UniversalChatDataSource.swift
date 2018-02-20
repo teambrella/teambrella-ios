@@ -32,7 +32,7 @@ final class UniversalChatDatasource {
     var onLoadPrevious: ((Int) -> Void)?
     var onClaimVoteUpdate: (() -> Void)?
     
-    var limit                                       = 10
+    var limit                                       = 20
     var cloudWidth: CGFloat                         = 0
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
@@ -328,25 +328,29 @@ final class UniversalChatDatasource {
         }
         
         service.dao.freshKey { [weak self] key in
-            guard let me = self else { return }
+            guard let `self` = self else { return }
             
-            let limit = me.limit// previous ? -me.limit: me.limit
-            let offset = previous ? me.backwardOffset : me.forwardOffset
+            let limit = self.limit// previous ? -me.limit: me.limit
+            var offset = previous
+                ? self.backwardOffset
+                : self.isFirstLoad
+                ? -10
+                : self.forwardOffset
             var payload: [String: Any] = ["limit": limit,
                                           "offset": offset,
-                                          "avatarSize": me.avatarSize,
-                                          "commentAvatarSize": me.commentAvatarSize]
-            if me.lastRead > 0 {
-                payload["since"] = me.lastRead
+                                          "avatarSize": self.avatarSize,
+                                          "commentAvatarSize": self.commentAvatarSize]
+            if self.lastRead > 0 {
+                payload["since"] = self.lastRead
             }
-            let body = me.strategy.updatedChatBody(body: RequestBody(key: key, payload: payload))
-            let request = TeambrellaRequest(type: me.strategy.requestType,
+            let body = self.strategy.updatedChatBody(body: RequestBody(key: key, payload: payload))
+            let request = TeambrellaRequest(type: self.strategy.requestType,
                                             body: body,
-                                            success: { [weak me] response in
-                                                guard let me = me else { return }
+                                            success: { [weak self] response in
+                                                guard let`self` = self else { return }
                                                 
-                                                me.isLoading = false
-                                                me.process(response: response,
+                                                self.isLoading = false
+                                                self.process(response: response,
                                                            isPrevious: previous,
                                                            isMyNewMessage: false)
             })
