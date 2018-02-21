@@ -64,7 +64,7 @@ class SimpleStorage {
     }
     
     func cleanValue(forKey: StorageKey) {
-        UserDefaults.standard.setNilValueForKey(forKey.rawValue)
+        UserDefaults.standard.set(nil, forKey: forKey.rawValue)
         UserDefaults.standard.synchronize()
     }
 }
