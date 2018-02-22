@@ -953,6 +953,8 @@
 		6DF479161F42F0570025F489 /* CoverageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479151F42F0570025F489 /* CoverageType.swift */; };
 		6DF479181F42F0740025F489 /* TeamAccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479171F42F0740025F489 /* TeamAccessLevel.swift */; };
 		6DF4791A1F432D230025F489 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479191F432D230025F489 /* KeychainService.swift */; };
+		6DF531A0203EE18C007CA0CD /* SODManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5319F203EE18C007CA0CD /* SODManager.swift */; };
+		6DF531A1203EE18C007CA0CD /* SODManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5319F203EE18C007CA0CD /* SODManager.swift */; };
 		6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
 		80F21A7C34B08754FB74C0D3 /* libPods-TeambrellaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */; };
 		9407A57E1F111A5300E0DD74 /* HomeCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */; };
@@ -1584,6 +1586,7 @@
 		6DF479151F42F0570025F489 /* CoverageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoverageType.swift; path = Model/Enums/CoverageType.swift; sourceTree = "<group>"; };
 		6DF479171F42F0740025F489 /* TeamAccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamAccessLevel.swift; path = Model/Enums/TeamAccessLevel.swift; sourceTree = "<group>"; };
 		6DF479191F432D230025F489 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainService.swift; path = Model/Services/Keychain/KeychainService.swift; sourceTree = "<group>"; };
+		6DF5319F203EE18C007CA0CD /* SODManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SODManager.swift; sourceTree = "<group>"; };
 		6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
 		9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCellBuilder.swift; path = Scenes/Home/HomeCellBuilder.swift; sourceTree = "<group>"; };
 		9407A5811F13C30800E0DD74 /* LoginNoInviteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNoInviteVC.swift; path = Scenes/Login/LoginNoInviteVC.swift; sourceTree = "<group>"; };
@@ -2472,6 +2475,7 @@
 				6D6FCBF31FD702D00032041A /* Vibrator.swift */,
 				6D251C422035D04B005081E4 /* ScrollViewHandler.swift */,
 				6D106F11203B071A0049E92E /* VersionValidator.swift */,
+				6DF5319F203EE18C007CA0CD /* SODManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2484,7 +2488,6 @@
 				6DE3947E1F790A0100784ECD /* Reachability */,
 				6DF2E8BF1EF02F8C00C8D60B /* Socket */,
 				6DA8D5581F0E75FB000A4DB7 /* DAO */,
-				6DEC6DFA1E966AB400ACC119 /* Transformers */,
 				6DCC7AC31E93A6920092D3F2 /* Services.swift */,
 				6DA1D0FA1F040AEF00F9DE87 /* Session.swift */,
 				6DF479191F432D230025F489 /* KeychainService.swift */,
@@ -2850,13 +2853,6 @@
 				6DE3947C1F7909E300784ECD /* ReachabilityService.swift */,
 			);
 			name = Reachability;
-			sourceTree = "<group>";
-		};
-		6DEC6DFA1E966AB400ACC119 /* Transformers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Transformers;
 			sourceTree = "<group>";
 		};
 		6DEFE3F32006544100615022 /* NotificationTeambrella */ = {
@@ -4033,6 +4029,7 @@
 				6D4E5D4A1F7AB6870020DEE2 /* TeammateLarge.swift in Sources */,
 				6D4E5D4B1F7AB6870020DEE2 /* MaritalStatus.swift in Sources */,
 				6D4E5D4C1F7AB6870020DEE2 /* HomeApplicationDeniedCell.swift in Sources */,
+				6DF531A1203EE18C007CA0CD /* SODManager.swift in Sources */,
 				6D106F10203AEA400049E92E /* Console.swift in Sources */,
 				6D4E5D4D1F7AB6870020DEE2 /* WalletEntity.swift in Sources */,
 				6D4E5D4E1F7AB6870020DEE2 /* LabeledButton.swift in Sources */,
@@ -4465,6 +4462,7 @@
 				6DEC07561E9BF7170078F40E /* TeammateLarge.swift in Sources */,
 				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,
 				94E80E501F0FD30400DE1A0A /* HomeApplicationDeniedCell.swift in Sources */,
+				6DF531A0203EE18C007CA0CD /* SODManager.swift in Sources */,
 				6D106F0F203AEA400049E92E /* Console.swift in Sources */,
 				94B4C3801F1E18AC00AED4CE /* WalletEntity.swift in Sources */,
 				6D0E742D1F13C0D70055BF1E /* LabeledButton.swift in Sources */,

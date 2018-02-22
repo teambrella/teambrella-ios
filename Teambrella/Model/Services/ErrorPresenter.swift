@@ -38,9 +38,8 @@ final class ErrorPresenter {
                     service.router.logout()
                 }
             case .unsupportedClientVersion:
-                if let controller = service.router.frontmostViewController {
-                    service.router.showSOD(mode: .criticallyOldVersion, in: controller)
-                }
+                let router = service.router
+                SODManager(router: router).showCriticallyOldVersion()
             default:
                 presentTeambrella(error: error)
             }

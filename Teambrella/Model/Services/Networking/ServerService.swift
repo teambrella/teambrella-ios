@@ -98,9 +98,10 @@ final class ServerService: NSObject {
                     }
 
                     success(reply)
+
                     if let router = self.router {
-                        let validator = VersionValidator(router: router)
-                        validator.validate(serverReply: reply)
+                        let manager = SODManager(router: router)
+                        manager.checkVersion(serverReply: reply)
                     }
                 } catch {
                     failure(error)

@@ -48,7 +48,8 @@ final class InitialVC: UIViewController {
         case .login:
             performSegue(type: .login)
         case .demoExpired:
-            if let vc = service.router.showSOD(in: self) {
+            let router = service.router
+            if let vc = SODManager(router: router).showOutdatedDemo(in: self) {
                 vc.upperButton.addTarget(self, action: #selector(tapDemo), for: .touchUpInside)
                 vc.lowerButton.addTarget(self, action: #selector(tapBack), for: .touchUpInside)
                 sod = vc

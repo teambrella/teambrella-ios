@@ -24,3 +24,8 @@
 "Info.OthersVoted.Cell.Weight" = "Peso:";
 "Info.OthersVoted.Header.allVotes" = "TODOS LOS VOTOS";
 "Info.OthersVoted.Header.votes" = "VOTOS";
+
+// Translate
+"Info.NoSilentPush.Title"             = "Background App Refresh is required for uninterrupted coverage";
+"Info.NoSilentPush.UpperButton.Title" = "Open Settings";
+"Info.NoSilentPush.LowerButton.Title" = "Remind me later";

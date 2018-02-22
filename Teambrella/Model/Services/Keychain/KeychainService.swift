@@ -28,7 +28,7 @@ import KeychainAccess
     }
 #else
     enum OldKeychainKey: String {
-        case ethPrivateAddress = "teambrella.ethPrivateAddress"
+        case ethPrivateAddress = "ethPrivateAddress"
     }
 #endif
 
@@ -60,6 +60,7 @@ class KeychainService {
     func value(forKey key: KeychainKey) -> String? {
         do {
             var value = try keychain.getString(key.rawValue)
+            
             // try to use previous locally saved value if any
             if value == nil {
                 let oldKey = KeychainKeyAdaptor().oldKey(from: key)

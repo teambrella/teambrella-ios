@@ -52,9 +52,9 @@ class SODVC: UIViewController, Routable {
     }
     
     private func setupAsOutdated() {
-        //logoView.image = #imageLiteral(resourceName: "logo-1").withRenderingMode(.alwaysTemplate)
-        logoView.tintColor = UIColor.teambrellaBlue
-        
+//        logoView.image = #imageLiteral(resourceName: "logo-1").withRenderingMode(.alwaysTemplate)
+//        logoView.tintColor = UIColor.teambrellaBlue
+
         titleLabel.text = "Info.DemoExpired.Title".localized
         detailsLabel.text = "Info.DemoExpired.Details".localized
         
@@ -63,8 +63,8 @@ class SODVC: UIViewController, Routable {
     }
 
     private func setupAsOldVersion(isCritical: Bool) {
-        logoView.image = #imageLiteral(resourceName: "logo-2").withRenderingMode(.alwaysTemplate)
-        logoView.tintColor = UIColor.sodBlue
+//        logoView.image = #imageLiteral(resourceName: "logo-2").withRenderingMode(.alwaysTemplate)
+//        logoView.tintColor = UIColor.sodBlue
 
         titleLabel.text = "Info.OutdatedVersion.Title".localized
         detailsLabel.text = "Info.OutdatedVersion.Details".localized
@@ -81,14 +81,15 @@ class SODVC: UIViewController, Routable {
     }
 
     private func setupAsSilentPush() {
-        logoView.image = #imageLiteral(resourceName: "logo-2").withRenderingMode(.alwaysTemplate)
-        logoView.tintColor = UIColor.sodBlue
+//        logoView.image = #imageLiteral(resourceName: "logo-2").withRenderingMode(.alwaysTemplate)
+//        logoView.tintColor = UIColor.sodBlue
 
-        titleLabel.text = "Info.OutdatedVersion.Title".localized
-        detailsLabel.text = "Info.OutdatedVersion.Details".localized
+        titleLabel.text = "Info.NoSilentPush.Title".localized
+       detailsLabel.text = nil//"Info.NoSilentPush.Details".localized
+        detailsLabel.isHidden = true
 
-        upperButton.setTitle("Info.OutdatedVersion.UpperButton.Title".localized, for: .normal)
-        lowerButton.setTitle("Info.OutdatedVersion.LowerButton.Title".localized, for: .normal)
+        upperButton.setTitle("Info.NoSilentPush.UpperButton.Title".localized, for: .normal)
+        lowerButton.setTitle("Info.NoSilentPush.LowerButton.Title".localized, for: .normal)
 
         upperButton.addTarget(self, action: #selector(openSilentPush), for: .touchUpInside)
         lowerButton.addTarget(self, action: #selector(close), for: .touchUpInside)
@@ -105,7 +106,7 @@ class SODVC: UIViewController, Routable {
 
     @objc
     private func openSilentPush() {
-        guard var settingsURL = URL(string: UIApplicationOpenSettingsURLString) else { return }
+        guard let settingsURL = URL(string: UIApplicationOpenSettingsURLString) else { return }
         //    guard let settingsURL = URL(string: "App-Prefs:root=General&path=BACKGROUND_APP_REFRESH") else { return }
 
         UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)

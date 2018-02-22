@@ -18,14 +18,15 @@ import Foundation
 
 class SimpleStorage {
     enum StorageKey: String {
-        case teamID = "teambrella.currentTeam.id"
-        case recentScene = "storage.recentScene"
-        case uniqueIdentifier = "com.teambrella.application.uniqueIdentifier"
-        case swipeHelperWasShown = "com.teambrella.swipeHelperWasShown"
+        case teamID                      = "teambrella.currentTeam.id"
+        case recentScene                 = "storage.recentScene"
+        case uniqueIdentifier            = "com.teambrella.application.uniqueIdentifier"
+        case swipeHelperWasShown         = "com.teambrella.swipeHelperWasShown"
         case outdatedVersionLastShowDate = "com.teambrella.outdatedVersionLastShowDate"
-        case didLogWithKey = "com.teambrella.didLogWithKey"
-        case lastUserType = "com.teambrella.lastUserType"
-        case privateDemoKey = "com.teambrella.privateDemoKey"
+        case disabledPushLastShowDate    = "com.teambrella.disabledPushLastShowDate"
+        case didLogWithKey               = "com.teambrella.didLogWithKey"
+        case lastUserType                = "com.teambrella.lastUserType"
+        case privateDemoKey              = "com.teambrella.privateDemoKey"
     }
     
     func store(int: Int, forKey: StorageKey) {

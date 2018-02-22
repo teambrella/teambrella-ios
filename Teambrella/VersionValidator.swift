@@ -26,24 +26,7 @@ struct VersionValidator {
 
         let serverRecommendedBuild = serverReply.status.recommendedVersion
         let result = currentBuild >= serverRecommendedBuild
-        if result == false {
-            presentOldVersionNotificationIfNeeded()
-        }
         return result
-    }
-
-    func presentOldVersionNotificationIfNeeded() {
-        let simpleStorage = SimpleStorage()
-        let now = Date()
-        // no need to show notification more than once in 3 days
-        if let lastShownDate = simpleStorage.date(forKey: .outdatedVersionLastShowDate),
-            now < lastShownDate.add(components: [.day: 3]) {
-                return
-        }
-        guard let vc = router.frontmostViewController else { return }
-
-        simpleStorage.store(date: now, forKey: .outdatedVersionLastShowDate)
-        router.showSOD(mode: .oldVersion, in: vc)
     }
 
 }
