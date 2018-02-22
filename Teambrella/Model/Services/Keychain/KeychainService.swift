@@ -22,19 +22,27 @@
 import Foundation
 import KeychainAccess
 
-#if TEAMBRELLA
-    enum KeychainKey: String {
-        case ethPrivateAddress = "teambrella.ethPrivateAddress"
+#if SURILLA
+    enum OldKeychainKey: String {
+        case ethPrivateAddress
     }
 #else
-    enum KeychainKey: String {
+    enum OldKeychainKey: String {
         case ethPrivateAddress = "ethPrivateAddress"
     }
 #endif
 
+enum KeychainKey: String {
+    case privateKey = "Private Key"
+}
+
 class KeychainService {
     let keychain = Keychain(service: Constant.keychainName)
         .accessibility(.always)
+        .synchronizable(true)
+
+    // support for older stored keys
+    let oldKeychain = Keychain().accessibility(.always)
 
     @discardableResult
     func save(value: String, forKey key: KeychainKey) -> Bool {
@@ -51,7 +59,17 @@ class KeychainService {
     
     func value(forKey key: KeychainKey) -> String? {
         do {
-            return try keychain.getString(key.rawValue)
+            var value = try keychain.getString(key.rawValue)
+            
+            // try to use previous locally saved value if any
+            if value == nil {
+                let oldKey = KeychainKeyAdaptor().oldKey(from: key)
+                value = try oldKeychain.getString(oldKey.rawValue)
+                let saved = value.map { self.save(value: $0, forKey: key) }
+                log("KeychainService storing newValue from OldValue: \(String(describing: value)), saved: \(saved)",
+                    type: [.crypto, .info])
+            }
+            return value
         } catch {
             print("error getting string from keychain: \(error)")
             return nil
@@ -70,15 +88,24 @@ class KeychainService {
     }
     
     func clear() {
-        removeValue(forKey: .ethPrivateAddress)
+        removeValue(forKey: .privateKey)
     }
 
     struct Constant {
-        #if TEAMBRELLA
-        static let keychainName: String = "com.teambrella.ios.app"
+        #if SURILLA
+        static let keychainName = "Surilla iOS App"
         #else
-        static let keychainName = "com.surilla.ios.app"
+        static let keychainName: String = "Teambrella iOS App"
         #endif
     }
 
+}
+
+struct KeychainKeyAdaptor {
+    func oldKey(from key: KeychainKey) -> OldKeychainKey {
+        switch key {
+        default:
+            return .ethPrivateAddress
+        }
+    }
 }

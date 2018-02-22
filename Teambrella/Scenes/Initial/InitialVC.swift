@@ -29,27 +29,27 @@ final class InitialVC: UIViewController {
     }
     
     var mode: InitialVCMode = .login
-    
+    weak var sod: SODVC?
+
     // MARK: Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if service.keyStorage.lastUserType != .none {
+
+        if service.keyStorage.isUserSelected {
             mode = .idle
             startLoadingTeams()
         }
     }
-    
-    weak var sod: SODVC?
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         switch mode {
         case .login:
             performSegue(type: .login)
         case .demoExpired:
-            if let vc = service.router.showSOD(in: self) {
+            let router = service.router
+            if let vc = SODManager(router: router).showOutdatedDemo(in: self) {
                 vc.upperButton.addTarget(self, action: #selector(tapDemo), for: .touchUpInside)
                 vc.lowerButton.addTarget(self, action: #selector(tapBack), for: .touchUpInside)
                 sod = vc

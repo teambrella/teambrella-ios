@@ -74,6 +74,9 @@ class InfoMaker {
         }
     }
 
+    var isSilentPushAvailable: Bool { return options.contains(.silentPushEnabled) }
+    var isPushEnabled: Bool { return options.contains(.pushEnabled) }
+
     init() {
         prepareServices()
     }

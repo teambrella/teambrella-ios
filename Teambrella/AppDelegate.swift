@@ -63,6 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 log("Teambrella service get updates results: \(description)", type: .info)
             })
         }
+
+        service.info.prepareServices()
+        let router = service.router
+        let info = service.info
+        SODManager(router: router).checkSilentPush(infoMaker: info)
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {

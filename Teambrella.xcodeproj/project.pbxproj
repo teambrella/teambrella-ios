@@ -582,6 +582,12 @@
 		6D4E5DCE1F7AB6870020DEE2 /* Login.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9407A5851F13D81D00E0DD74 /* Login.strings */; };
 		6D4E5DCF1F7AB6870020DEE2 /* ImageGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE95671EE806F80019DA47 /* ImageGalleryCell.xib */; };
 		6D4E5DD01F7AB6870020DEE2 /* VotingRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */; };
+		6D525D0C203D8309004C3C92 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
+		6D525D0D203D830B004C3C92 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
+		6D525D0E203D837A004C3C92 /* TeambrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */; };
+		6D525D0F203D837A004C3C92 /* TeambrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */; };
+		6D525D10203D8390004C3C92 /* ServerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */; };
+		6D525D11203D8391004C3C92 /* ServerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */; };
 		6D56F9BC1FA737CC00B9D676 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D56F9BB1FA737CC00B9D676 /* Application.swift */; };
 		6D56F9BD1FA737CC00B9D676 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D56F9BB1FA737CC00B9D676 /* Application.swift */; };
 		6D5852C81F9F83A00079CA89 /* HexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5852C71F9F83A00079CA89 /* HexTests.swift */; };
@@ -947,6 +953,8 @@
 		6DF479161F42F0570025F489 /* CoverageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479151F42F0570025F489 /* CoverageType.swift */; };
 		6DF479181F42F0740025F489 /* TeamAccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479171F42F0740025F489 /* TeamAccessLevel.swift */; };
 		6DF4791A1F432D230025F489 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479191F432D230025F489 /* KeychainService.swift */; };
+		6DF531A0203EE18C007CA0CD /* SODManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5319F203EE18C007CA0CD /* SODManager.swift */; };
+		6DF531A1203EE18C007CA0CD /* SODManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5319F203EE18C007CA0CD /* SODManager.swift */; };
 		6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
 		80F21A7C34B08754FB74C0D3 /* libPods-TeambrellaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */; };
 		9407A57E1F111A5300E0DD74 /* HomeCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */; };
@@ -1578,6 +1586,7 @@
 		6DF479151F42F0570025F489 /* CoverageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoverageType.swift; path = Model/Enums/CoverageType.swift; sourceTree = "<group>"; };
 		6DF479171F42F0740025F489 /* TeamAccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamAccessLevel.swift; path = Model/Enums/TeamAccessLevel.swift; sourceTree = "<group>"; };
 		6DF479191F432D230025F489 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainService.swift; path = Model/Services/Keychain/KeychainService.swift; sourceTree = "<group>"; };
+		6DF5319F203EE18C007CA0CD /* SODManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SODManager.swift; sourceTree = "<group>"; };
 		6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
 		9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCellBuilder.swift; path = Scenes/Home/HomeCellBuilder.swift; sourceTree = "<group>"; };
 		9407A5811F13C30800E0DD74 /* LoginNoInviteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNoInviteVC.swift; path = Scenes/Login/LoginNoInviteVC.swift; sourceTree = "<group>"; };
@@ -2466,6 +2475,7 @@
 				6D6FCBF31FD702D00032041A /* Vibrator.swift */,
 				6D251C422035D04B005081E4 /* ScrollViewHandler.swift */,
 				6D106F11203B071A0049E92E /* VersionValidator.swift */,
+				6DF5319F203EE18C007CA0CD /* SODManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2478,7 +2488,6 @@
 				6DE3947E1F790A0100784ECD /* Reachability */,
 				6DF2E8BF1EF02F8C00C8D60B /* Socket */,
 				6DA8D5581F0E75FB000A4DB7 /* DAO */,
-				6DEC6DFA1E966AB400ACC119 /* Transformers */,
 				6DCC7AC31E93A6920092D3F2 /* Services.swift */,
 				6DA1D0FA1F040AEF00F9DE87 /* Session.swift */,
 				6DF479191F432D230025F489 /* KeychainService.swift */,
@@ -2844,13 +2853,6 @@
 				6DE3947C1F7909E300784ECD /* ReachabilityService.swift */,
 			);
 			name = Reachability;
-			sourceTree = "<group>";
-		};
-		6DEC6DFA1E966AB400ACC119 /* Transformers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Transformers;
 			sourceTree = "<group>";
 		};
 		6DEFE3F32006544100615022 /* NotificationTeambrella */ = {
@@ -4030,6 +4032,7 @@
 				6D4E5D4A1F7AB6870020DEE2 /* TeammateLarge.swift in Sources */,
 				6D4E5D4B1F7AB6870020DEE2 /* MaritalStatus.swift in Sources */,
 				6D4E5D4C1F7AB6870020DEE2 /* HomeApplicationDeniedCell.swift in Sources */,
+				6DF531A1203EE18C007CA0CD /* SODManager.swift in Sources */,
 				6D106F10203AEA400049E92E /* Console.swift in Sources */,
 				6D4E5D4D1F7AB6870020DEE2 /* WalletEntity.swift in Sources */,
 				6D4E5D4E1F7AB6870020DEE2 /* LabeledButton.swift in Sources */,
@@ -4085,7 +4088,10 @@
 				6D900E221FC31D4100FF6FF8 /* RemoteCommand.swift in Sources */,
 				6DA1A5431FBF0C70000FDECA /* TimestampFetcher.swift in Sources */,
 				6DA1A5411FBF0B0E000FDECA /* URLBuilder.swift in Sources */,
+				6D525D0E203D837A004C3C92 /* TeambrellaError.swift in Sources */,
+				6D525D10203D8390004C3C92 /* ServerStatus.swift in Sources */,
 				6DA1A5441FBF0C7F000FDECA /* KeyStorage.swift in Sources */,
+				6D525D0C203D8309004C3C92 /* Log.swift in Sources */,
 				6D9374AA202C9EB800BB28CB /* Notification.swift in Sources */,
 				6DA1A5451FBF0C8B000FDECA /* Key.swift in Sources */,
 				6DA1A54B1FBF25ED000FDECA /* RemotePayload.swift in Sources */,
@@ -4459,6 +4465,7 @@
 				6DEC07561E9BF7170078F40E /* TeammateLarge.swift in Sources */,
 				CBDFE405B08DC2B3E63B8B8A /* MaritalStatus.swift in Sources */,
 				94E80E501F0FD30400DE1A0A /* HomeApplicationDeniedCell.swift in Sources */,
+				6DF531A0203EE18C007CA0CD /* SODManager.swift in Sources */,
 				6D106F0F203AEA400049E92E /* Console.swift in Sources */,
 				94B4C3801F1E18AC00AED4CE /* WalletEntity.swift in Sources */,
 				6D0E742D1F13C0D70055BF1E /* LabeledButton.swift in Sources */,
@@ -4532,7 +4539,10 @@
 				6DEFE4012006548300615022 /* RemoteCommand.swift in Sources */,
 				6DEFE40B200655F600615022 /* KeychainService.swift in Sources */,
 				6DEFE4002006548000615022 /* RemoteMessage.swift in Sources */,
+				6D525D0F203D837A004C3C92 /* TeambrellaError.swift in Sources */,
+				6D525D11203D8391004C3C92 /* ServerStatus.swift in Sources */,
 				6DEFE409200655DE00615022 /* KeyStorage.swift in Sources */,
+				6D525D0D203D830B004C3C92 /* Log.swift in Sources */,
 				6D9374AB202C9EB900BB28CB /* Notification.swift in Sources */,
 				6DEFE408200655D100615022 /* URLBuilder.swift in Sources */,
 				6DEFE406200655A100615022 /* String-localized.swift in Sources */,
