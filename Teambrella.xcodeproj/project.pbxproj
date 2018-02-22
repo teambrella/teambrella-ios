@@ -1587,6 +1587,18 @@
 		6DF479171F42F0740025F489 /* TeamAccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamAccessLevel.swift; path = Model/Enums/TeamAccessLevel.swift; sourceTree = "<group>"; };
 		6DF479191F432D230025F489 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainService.swift; path = Model/Services/Keychain/KeychainService.swift; sourceTree = "<group>"; };
 		6DF5319F203EE18C007CA0CD /* SODManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SODManager.swift; sourceTree = "<group>"; };
+		6DF78A9F203F213100320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		6DF78AA0203F213100320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/General.strings; sourceTree = "<group>"; };
+		6DF78AA1203F213100320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Team.strings; sourceTree = "<group>"; };
+		6DF78AA2203F213100320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Team.stringsdict; sourceTree = "<group>"; };
+		6DF78AA3203F213100320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		6DF78AA4203F213100320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Proxy.strings; sourceTree = "<group>"; };
+		6DF78AA5203F213100320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Me.strings; sourceTree = "<group>"; };
+		6DF78AA6203F213100320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Home.strings; sourceTree = "<group>"; };
+		6DF78AA7203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Login.strings; sourceTree = "<group>"; };
+		6DF78AA8203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Error.strings; sourceTree = "<group>"; };
+		6DF78AA9203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Push.strings; sourceTree = "<group>"; };
+		6DF78AAA203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Info.strings; sourceTree = "<group>"; };
 		6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
 		9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCellBuilder.swift; path = Scenes/Home/HomeCellBuilder.swift; sourceTree = "<group>"; };
 		9407A5811F13C30800E0DD74 /* LoginNoInviteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNoInviteVC.swift; path = Scenes/Login/LoginNoInviteVC.swift; sourceTree = "<group>"; };
@@ -3108,6 +3120,7 @@
 				en,
 				Base,
 				es,
+				ru,
 			);
 			mainGroup = 6DA475971E8ABEE600B56D9B;
 			productRefGroup = 6DA475A11E8ABEE600B56D9B /* Products */;
@@ -4574,6 +4587,7 @@
 			children = (
 				6D097EA71E9D220A00E77DAB /* en */,
 				6D097EA91E9D230E00E77DAB /* es */,
+				6DF78AA0203F213100320D25 /* ru */,
 			);
 			name = General.strings;
 			sourceTree = "<group>";
@@ -4583,6 +4597,7 @@
 			children = (
 				6D0D2AEB1EFBD6820095284C /* en */,
 				6DCB19561F0FF21000AC9969 /* es */,
+				6DF78AA4203F213100320D25 /* ru */,
 			);
 			name = Proxy.strings;
 			sourceTree = "<group>";
@@ -4592,6 +4607,7 @@
 			children = (
 				6D12C2E91FCD6C6200A8926D /* en */,
 				6D12C2EC1FCD6D3D00A8926D /* es */,
+				6DF78AAA203F213200320D25 /* ru */,
 			);
 			name = Info.strings;
 			sourceTree = "<group>";
@@ -4601,6 +4617,7 @@
 			children = (
 				6D69DA0E1EFC458C00DED5CE /* en */,
 				6D66EDE41F3E13A800AC4B53 /* es */,
+				6DF78AA5203F213100320D25 /* ru */,
 			);
 			name = Me.strings;
 			sourceTree = "<group>";
@@ -4610,6 +4627,7 @@
 			children = (
 				6D8C6FE61F754D7000BF65B6 /* en */,
 				6D8C6FE81F754D8E00BF65B6 /* es */,
+				6DF78AA8203F213200320D25 /* ru */,
 			);
 			name = Error.strings;
 			sourceTree = "<group>";
@@ -4619,6 +4637,7 @@
 			children = (
 				6D900E261FC46A7200FF6FF8 /* en */,
 				6D900E2D1FC4734400FF6FF8 /* es */,
+				6DF78AA9203F213200320D25 /* ru */,
 			);
 			name = Push.strings;
 			sourceTree = "<group>";
@@ -4636,6 +4655,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6DA475AD1E8ABEE600B56D9B /* Base */,
+				6DF78A9F203F213100320D25 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -4645,6 +4665,7 @@
 			children = (
 				6DC2487B1F5D948E00D9396D /* en */,
 				6DC2487D1F5D951600D9396D /* es */,
+				6DF78AA2203F213100320D25 /* ru */,
 			);
 			name = Team.stringsdict;
 			sourceTree = "<group>";
@@ -4654,6 +4675,7 @@
 			children = (
 				6DCB19431F0F878500AC9969 /* en */,
 				6DCB19591F11312300AC9969 /* es */,
+				6DF78AA6203F213100320D25 /* ru */,
 			);
 			name = Home.strings;
 			sourceTree = "<group>";
@@ -4663,6 +4685,7 @@
 			children = (
 				6DF2E8C61EF057DB00C8D60B /* en */,
 				6DF2E8C81EF05B2100C8D60B /* es */,
+				6DF78AA1203F213100320D25 /* ru */,
 			);
 			name = Team.strings;
 			sourceTree = "<group>";
@@ -4672,6 +4695,7 @@
 			children = (
 				6DF2E8CA1EF194E400C8D60B /* en */,
 				6DF2E8CC1EF1961C00C8D60B /* es */,
+				6DF78AA3203F213100320D25 /* ru */,
 			);
 			name = Main.strings;
 			sourceTree = "<group>";
@@ -4681,6 +4705,7 @@
 			children = (
 				9407A5861F13D81D00E0DD74 /* en */,
 				9407A5881F13D8D300E0DD74 /* es */,
+				6DF78AA7203F213200320D25 /* ru */,
 			);
 			name = Login.strings;
 			sourceTree = "<group>";

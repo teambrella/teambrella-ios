@@ -1,0 +1,28 @@
+/*
+  Push.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 21.11.2017.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"Push.newPost"                     = "New post";
+
+"Push.privateMessage.title_format" = "%1$@ (new message)";
+
+"Push.newTeammate.body_format"     = "%@ wants to join your team. Say hello!";
+"Push.unreadMessages_format"       = "You have %@ unread messages";
+"Push.walletFunded.title"          = "Wallet is funded";
+
+"Push.newMessage"                  = "New message";
+
+"Push.team_format"                 = "Team: \"%@\"";
+
+"Push.walletFunded.message_format" = "+ %@mETH";
+"Push.newMessage.posted_format"    = "%@ posted in %@";
+
+"Push.newDiscussion.title_format"  = "%1$@ started a new discussion \"%2$@\"";
+
+"Push.newClaim.title_format"       = "%1$@ submitted new claim";
+"Push.newClaim.body_format"        = "Claim created for the ammount of %1$@";
+
