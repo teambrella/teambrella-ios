@@ -71,15 +71,15 @@ struct WalletCellBuilder {
     }
     
     private static func populateFunding(cell: WalletFundingCell, model: WalletFundingCellModel) {
-        cell.headerLabel.text = balance.value > 0
-            ? "Me.WalletVC.fundingCell.additionalTitle".localized
-            : "Me.WalletVC.fundingCell.title".localized
+        cell.headerLabel.text = "Me.WalletVC.fundingCell.title".localized
         if let team = service.session?.currentTeam {
             cell.lowerCurrencyLabel.text =
                 String.formattedNumber(model.uninterruptedCoverageFunding.value * currencyRate) + " " + team.currency
         }
+        cell.lowerNumberView.verticalStackView.alignment = .leading
         cell.lowerNumberView.titleLabel.text = "Me.WalletVC.lowerBrick.title".localized
         cell.lowerNumberView.amountLabel.text = String.formattedNumber(MEth(model.uninterruptedCoverageFunding).value)
+        cell.lowerNumberView.isPercentVisible = false
         cell.lowerNumberView.isBadgeVisible = false
         cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)
     }

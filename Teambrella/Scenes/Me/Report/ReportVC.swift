@@ -201,14 +201,12 @@ final class ReportVC: UIViewController, Routable {
                         myPoint.y += inset
                         collectionView.contentOffset = myPoint
                     }
-
+                } else {
+                    let indexPath = IndexPath(row: 0, section: 0)
+                    collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
                 }
             }
         }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrollView = \(scrollView.contentOffset.y)")
     }
     
     @objc

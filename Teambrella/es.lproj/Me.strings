@@ -6,7 +6,6 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Me.WalletVC.fundingCell.additionalTitle"      = "FINANCIAMENTOS RECOMENDADOS";
 "Me.Report.submitButtonTitle-submit"           = "Enviar";
 "Me.Report.submitButtonTitle-create"           = "Hacer";
 "Me.Report.cancelButtonTitle"                  = "Cancelar";
@@ -68,8 +67,8 @@
 "Me.Report.newDiscussion.title-placeholder"    = "Título";
 
 "Me.Wallet.Withdraw" = "Retirada";
-"Me.Wallet.Withdraw.Details.title" = "Detalles de retirada";
-"Me.Wallet.Withdraw.Details.to.title" = "Transferir a";
+"Me.Wallet.Withdraw.Details.title" = "DETALLES DE RETIRADA";
+"Me.Wallet.Withdraw.Details.to.title" = "TRANSFERIR A";
 "Me.Wallet.Withdraw.Details.to.placeholder" = "Dirección de Ethereum";
 "Me.Wallet.Withdraw.Details.amount.title" = "CANTIDAD mETH";
 "Me.Wallet.Withdraw.Details.amount.placeholder" = "Valor";

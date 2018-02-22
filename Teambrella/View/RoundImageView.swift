@@ -31,7 +31,7 @@ class RoundImageView: UIImageView {
             return imageView.image
         }
         set {
-            imageView.image = nil
+//            imageView.image = nil
             imageView.image = newValue
         }
     }
@@ -134,8 +134,5 @@ class RoundImageView: UIImageView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if image == nil {
-            image = #imageLiteral(resourceName: "imagePlaceholder")
-        }
     }
 }
