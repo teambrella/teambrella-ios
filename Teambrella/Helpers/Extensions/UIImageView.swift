@@ -23,6 +23,10 @@ import Foundation
 import Kingfisher
 
 extension UIImageView {
+    func setStandardPlaceholder() {
+        image = #imageLiteral(resourceName: "imagePlaceholder")
+    }
+
     func show(_ avatar: Avatar,
               options: KingfisherOptionsInfo? = nil,
               isFullSize: Bool = false,

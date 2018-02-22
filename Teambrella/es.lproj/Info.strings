@@ -14,7 +14,7 @@
 "Info.OutdatedVersion.Title"              = "Update Required";
 "Info.OutdatedVersion.Details"            = "A newer and improved version of Teambrella is available at AppStore.";
 "Info.OutdatedVersion.UpperButton.Title"  = "Update the App";
-"Info.OutdatedVersion.LowerButton.Title"  = "Remind me later";
+"Info.OutdatedVersion.LowerButton.Title"  = "Recordarme más tarde";
 
 "Info.codeCapture.title" = "Escanear Dirección de Ethereum";
 "Info.codeCapture.button.title" = "Usar";
@@ -26,6 +26,6 @@
 "Info.OthersVoted.Header.votes" = "VOTOS";
 
 // Translate
-"Info.NoSilentPush.Title"             = "Background App Refresh is required for uninterrupted coverage";
-"Info.NoSilentPush.UpperButton.Title" = "Open Settings";
-"Info.NoSilentPush.LowerButton.Title" = "Remind me later";
+"Info.NoSilentPush.Title"             = "Se requiere Actualizacíon en segundo plano  para la cubertura ininterrumpida";
+"Info.NoSilentPush.UpperButton.Title" = "Abrir Ajustes";
+"Info.NoSilentPush.LowerButton.Title" = "Recordarme más tarde";

@@ -66,7 +66,8 @@ class KeychainService {
                 let oldKey = KeychainKeyAdaptor().oldKey(from: key)
                 value = try oldKeychain.getString(oldKey.rawValue)
                 let saved = value.map { self.save(value: $0, forKey: key) }
-                log("KeychainService storing newValue from OldValue: \(value), saved: \(saved)", type: [.crypto, .info])
+                log("KeychainService storing newValue from OldValue: \(String(describing: value)), saved: \(saved)",
+                    type: [.crypto, .info])
             }
             return value
         } catch {
