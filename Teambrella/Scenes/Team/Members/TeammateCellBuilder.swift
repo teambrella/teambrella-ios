@@ -151,7 +151,8 @@ struct TeammateCellBuilder {
         }
         cell.delegate = controller
     }
-    
+
+    // swiftlint:disable:next function_body_length
     private static func populateObject(cell: TeammateObjectCell,
                                        with teammate: TeammateLarge,
                                        controller: TeammateProfileVC) {
