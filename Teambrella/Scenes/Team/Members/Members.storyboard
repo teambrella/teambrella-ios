@@ -526,6 +526,7 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isCurrencyOnTop" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isAmountWithCurrencyViewCentered" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZr-aY-aTt" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
@@ -537,6 +538,7 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isCurrencyOnTop" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isAmountWithCurrencyViewCentered" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are proxy voter for Jimmy Wong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxQ-2I-53K" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">

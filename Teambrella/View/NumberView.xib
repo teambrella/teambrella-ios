@@ -19,13 +19,13 @@
                 <outlet property="amountLabel" destination="3E2-y1-WiR" id="kNI-n4-eib"/>
                 <outlet property="badgeLabel" destination="9hk-vw-O9D" id="ZcL-Ly-df4"/>
                 <outlet property="centerXConstraint" destination="lLd-tV-20l" id="Ih3-2r-9Xu"/>
-                <outlet property="currencyCenterConstraint" destination="4PY-JO-TvG" id="Wja-44-PR6"/>
+                <outlet property="currencyContainer" destination="y6F-pK-Jy8" id="feH-Ee-Uu1"/>
                 <outlet property="currencyLabel" destination="ecV-sI-j40" id="g53-6b-K7m"/>
-                <outlet property="currencyToBadgeConstraint" destination="jBF-MS-YGO" id="G2P-wQ-Y6q"/>
-                <outlet property="currencyToContainerConstraint" destination="qRN-XD-rIO" id="yH6-rW-4hi"/>
                 <outlet property="leadingXConstraint" destination="fYY-88-h6h" id="NOl-NK-Qq0"/>
+                <outlet property="percentLabel" destination="HFo-CY-wtt" id="vT5-ty-Ufk"/>
                 <outlet property="titleLabel" destination="MLC-D6-CiE" id="Qqz-Bc-HQq"/>
                 <outlet property="trailingXConstraint" destination="GEg-8g-tXx" id="EZQ-24-PeO"/>
+                <outlet property="verticalStackView" destination="BIV-7x-MdR" id="OHT-SK-MZk"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,66 +34,85 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="0J0-P7-9yQ" userLabel="Centering container">
-                    <rect key="frame" x="0.5" y="75.5" width="378.5" height="32.5"/>
+                    <rect key="frame" x="0.0" y="22.5" width="379" height="139"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLC-D6-CiE" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="378" height="12"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                            <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="600" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3E2-y1-WiR" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="12" width="28.5" height="20.5"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="mBTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecV-sI-j40" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="28.5" y="13" width="297" height="11"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
-                            <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="9hk-vw-O9D" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="333.5" y="15" width="45" height="15"/>
-                            <color key="backgroundColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="3"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="topInset">
-                                    <real key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                    <real key="value" value="4"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
-                                    <real key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                    <real key="value" value="4"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BIV-7x-MdR">
+                            <rect key="frame" x="0.0" y="0.0" width="379" height="139"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="TEAM VOTE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLC-D6-CiE" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="379" height="12"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                    <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <stackView opaque="NO" contentMode="center" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="aSd-9y-46e">
+                                    <rect key="frame" x="164.5" y="12" width="140" height="127"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="600" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3E2-y1-WiR" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="53.5" width="28.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6F-pK-Jy8">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="127"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" horizontalCompressionResistancePriority="752" text="mBTC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecV-sI-j40" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="54" width="50" height="11"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
+                                                    <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="ecV-sI-j40" firstAttribute="centerY" secondItem="y6F-pK-Jy8" secondAttribute="centerY" constant="-4" id="T1Q-bl-l7W"/>
+                                                <constraint firstAttribute="trailing" secondItem="ecV-sI-j40" secondAttribute="trailing" id="Zat-vd-mYb"/>
+                                                <constraint firstItem="ecV-sI-j40" firstAttribute="leading" secondItem="y6F-pK-Jy8" secondAttribute="leading" id="ker-SQ-PJv"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFo-CY-wtt" customClass="CurrencyNormalLabel" customModule="Surilla" customModuleProvider="target">
+                                            <rect key="frame" x="50" y="50" width="18.5" height="27.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="VOTING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="9hk-vw-O9D" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
+                                            <rect key="frame" x="50" y="58" width="37" height="11"/>
+                                            <color key="backgroundColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="ecV-sI-j40" firstAttribute="centerY" secondItem="3E2-y1-WiR" secondAttribute="centerY" constant="-4" id="4PY-JO-TvG"/>
-                        <constraint firstItem="3E2-y1-WiR" firstAttribute="leading" secondItem="0J0-P7-9yQ" secondAttribute="leading" id="Bga-4V-bJ8"/>
-                        <constraint firstItem="3E2-y1-WiR" firstAttribute="top" secondItem="MLC-D6-CiE" secondAttribute="bottom" id="DqO-9A-MgE"/>
-                        <constraint firstAttribute="bottom" secondItem="3E2-y1-WiR" secondAttribute="bottom" id="PSX-lo-06A"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9hk-vw-O9D" secondAttribute="trailing" id="RfK-Im-BT8"/>
-                        <constraint firstItem="MLC-D6-CiE" firstAttribute="leading" secondItem="0J0-P7-9yQ" secondAttribute="leading" id="Tcl-ft-FlI"/>
-                        <constraint firstAttribute="trailing" secondItem="MLC-D6-CiE" secondAttribute="trailing" id="as9-IQ-cdm"/>
-                        <constraint firstItem="9hk-vw-O9D" firstAttribute="centerY" secondItem="3E2-y1-WiR" secondAttribute="centerY" id="btu-78-2go"/>
-                        <constraint firstItem="MLC-D6-CiE" firstAttribute="top" secondItem="0J0-P7-9yQ" secondAttribute="top" id="dfQ-SE-bh6"/>
-                        <constraint firstItem="9hk-vw-O9D" firstAttribute="leading" secondItem="ecV-sI-j40" secondAttribute="trailing" constant="8" id="jBF-MS-YGO"/>
-                        <constraint firstAttribute="trailing" secondItem="ecV-sI-j40" secondAttribute="trailing" priority="750" id="qRN-XD-rIO"/>
-                        <constraint firstItem="ecV-sI-j40" firstAttribute="leading" secondItem="3E2-y1-WiR" secondAttribute="trailing" id="yGI-7r-BHT"/>
+                        <constraint firstItem="BIV-7x-MdR" firstAttribute="top" secondItem="0J0-P7-9yQ" secondAttribute="top" id="7UP-xr-bVc"/>
+                        <constraint firstAttribute="trailing" secondItem="BIV-7x-MdR" secondAttribute="trailing" id="VFI-iD-g0F"/>
+                        <constraint firstAttribute="bottom" secondItem="BIV-7x-MdR" secondAttribute="bottom" id="dpI-EP-i7l"/>
+                        <constraint firstItem="BIV-7x-MdR" firstAttribute="leading" secondItem="0J0-P7-9yQ" secondAttribute="leading" id="j6m-PZ-w99"/>
                     </constraints>
                 </view>
             </subviews>

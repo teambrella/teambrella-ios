@@ -352,6 +352,8 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 left.currencyLabel.text = service.currencyName
+                left.isCurrencyVisible = true
+                left.isPercentVisible = false
             }
             if let right = view.rightNumberView {
                 right.isHidden = dataSource.isMe
@@ -361,6 +363,8 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 right.currencyLabel.text = service.currencyName
+                right.isCurrencyVisible = true
+                right.isPercentVisible = false
             }
             if let city = teammate.basic.city {
                 view.subtitle.text = city.uppercased()
@@ -385,6 +389,8 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 left.currencyLabel.text = service.currencyName
+                left.isCurrencyVisible = true
+                left.isPercentVisible = false
             }
             
             if let right = view.rightNumberView {
@@ -394,6 +400,8 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 right.currencyLabel.text = service.currencyName
+                right.isCurrencyVisible = true
+                right.isPercentVisible = false
             }
         }
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {

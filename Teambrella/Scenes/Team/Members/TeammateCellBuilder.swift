@@ -171,6 +171,9 @@ struct TeammateCellBuilder {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
             left.currencyLabel.text = service.currencyName
+            left.isCurrencyVisible = true
+            left.isPercentVisible = false
+            left.isBadgeVisible = false
         }
         if let middle = cell.numberBar.middle { // math abs!!!
             middle.titleLabel.text = "Team.Teammates.net".localized
@@ -179,6 +182,9 @@ struct TeammateCellBuilder {
                 Int(teammate.basic.totallyPaidAmount - 0.5)
             middle.amountLabel.text = String(test)
             middle.currencyLabel.text = service.currencyName
+            middle.isCurrencyVisible = true
+            middle.isPercentVisible = false
+            middle.isBadgeVisible = false
         }
         if let right = cell.numberBar.right {
             right.titleLabel.text = "Team.TeammateCell.risk".localized
@@ -187,6 +193,8 @@ struct TeammateCellBuilder {
             right.badgeLabel.text = avg + " AVG"
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
+            right.isCurrencyVisible = false
+            right.isPercentVisible = false
         }
         
         if let imageString = teammate.object.smallPhotos.first {

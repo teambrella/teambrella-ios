@@ -59,20 +59,29 @@ struct HomeCellBuilder {
             cell.avatarView.show(model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
             cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
+            cell.leftNumberView.isCurrencyVisible = true
+            cell.leftNumberView.isPercentVisible = false
             let isMine = model.userID == service.myUserID
             cell.titleLabel.text = isMine
                 ? "Team.Home.Card.yourClaim".localized
                 : "Team.Home.Card.claim".localized
             let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
             cell.rightNumberView.amountLabel.text = amountText
-            cell.rightNumberView.currencyLabel.text = model.teamVote == nil ? nil : "%"
+            cell.rightNumberView.isBadgeVisible = model.isVoting
+            cell.rightNumberView.isPercentVisible = model.teamVote != nil
+//            cell.rightNumberView.currencyLabel.text = model.teamVote == nil ? nil : "%"
         case .teammate:
             cell.avatarView.show(model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
             cell.titleLabel.text = "Team.Home.Card.newTeammate".localized
+            cell.leftNumberView.isCurrencyVisible = true
+            cell.leftNumberView.isPercentVisible = false
             let amountText: String = model.teamVote.map { String(format: "%.1f", $0) } ?? "..."
             cell.rightNumberView.amountLabel.text = amountText
-            cell.rightNumberView.currencyLabel.text = nil
+            cell.rightNumberView.isBadgeVisible = model.isVoting
+            cell.rightNumberView.isCurrencyVisible = false
+            cell.rightNumberView.isPercentVisible = false
+//            cell.rightNumberView.currencyLabel.text = nil
         default:
             break
         }
