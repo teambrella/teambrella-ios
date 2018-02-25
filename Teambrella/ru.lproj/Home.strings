@@ -7,7 +7,7 @@
 */
 
 "Home.salutation"                                       = "Привет, %@!";
-"Home.subtitle"                                         = "Вот какие новости";
+"Home.subtitle"                                         = "Свежие новости для вас";
 "Home.submitButton.anotherClaim"                        = "Отправить ещё заявку";
 "Home.submitButton.claim"                               = "Отправить заявку";
 "Home.leftBrick.title"                                  = "ЗАЩИТА";

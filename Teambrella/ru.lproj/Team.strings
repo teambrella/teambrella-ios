@@ -27,7 +27,7 @@
 "Team.ClaimCell.claimAmount"                          = "Сумма заявки";
 "Team.ClaimCell.estimatedExpences"                    = "Предполагаемые расходы";
 "Team.ClaimCell.deductible"                           = "Подлежит вычету";
-"Team.ClaimCell.coverage"                             = "Покрытие";
+"Team.ClaimCell.coverage"                             = "Защита";
 "Team.ClaimCell.incidentDate"                         = "Дата происшествия";
 
 "Team.FeedVC.indicatorTitle"                          = "Лента";
@@ -40,14 +40,14 @@
 "Team.MembersVC.searchHere"                           = "Поиск";
 
 "Team.TeammateCell.youAreProxy_format_s"              = "Вы прокси для %@";
-"Team.TeammateCell.covered"                           = "ПОКРЫТИЕ";
+"Team.TeammateCell.covered"                           = "ЗАЩИТА";
 "Team.TeammateCell.collisionDeductible"               = "Франшиза";
 "Team.TeammateCell.limit"                             = "ЛИМИТ НА ЗАЯВКУ";
 "Team.TeammateCell.risk"                              = "ФАКТОР РИСКА";
 
 "Team.TeammateCell.votingStats"                       = "СТАТИСТИКА";
 "Team.TeammateCell.weight"                            = "ВЕС";
-"Team.TeammateCell.proxyRank"                         = "РЕЙТИНГ ПРОКСИ";
+"Team.TeammateCell.proxyRank"                         = "ПРОКСИ РЕЙТИНГ";
 "Team.TeammateCell.decisions"                         = "Решения";
 "Team.TeammateCell.discussions"                       = "Обсуждения";
 "Team.TeammateCell.votingFrequency"                   = "Частота голосований";
@@ -158,7 +158,7 @@
 "Team.Chat.TextCell.notVoted"                         = "Не голосовал";
 
 "Team.Chat.TypeLabel.claim"                           = "ЗАЯВКА";
-"Team.Chat.TypeLabel.application"                     = "ОБРАЩЕНИЕ";
+"Team.Chat.TypeLabel.application"                     = "ВСТУПЛЕНИЕ";
 "Team.Chat.TypeLabel.other"                           = "ОБСУЖДЕНИЕ";
 "Team.Chat.Separator.newMessages"                     = "НОВЫЕ СООБЩЕНИЯ";
 "Team.Chat.Input.yourMessageHere"                     = "Ваше сообщение";
@@ -166,7 +166,7 @@
 "Team.Home.Card.claimed"                              = "ЗАЯВЛЕНО";
 "Team.Home.Card.yourClaim"                            = "Ваша заявка";
 "Team.Home.Card.claim"                                = "Заявка";
-"Team.Home.Card.coverage"                             = "ПОКРЫТИЕ";
+"Team.Home.Card.coverage"                             = "ЗАЩИТА";
 "Team.Home.Card.newTeammate"                          = "Новый участник";
 "Team.Home.Card.teamVote"                             = "ГОЛОС ГРУППЫ";
 "Team.Home.Card.voting"                               = "ГОЛОСОВАНИЕ";
@@ -205,12 +205,12 @@
 "Team.OthersVoted.Empty.title" = "Голосов пока нет";
 "Team.OthersVoted.Empty.details" = "...";
 
-"Team.TeammateCell.heCoversMe"                     = "ОН ЗАЩИЩАЕТ МЕНЯ";
-"Team.TeammateCell.sheCoversMe"                     = "ОНА ЗАЩИЩАЕТ МЕНЯ";
-"Team.TeammateCell.coverHim"                    = "Я ЗАЩИЩАЮ ЕГО";
-"Team.TeammateCell.coverHer"                    = "Я ЗАЩИЩАЮ ЕЁ";
-"Team.TeammateCell.HeWouldCoverMe"                 = "ОН ЗАЩИЩАЛ БЫ МЕНЯ НА";
-"Team.TeammateCell.SheWouldCoverMe"                 = "ОНА ЗАЩИЩАЛА БЫ МЕНЯ НА";
-"Team.TeammateCell.wouldCoverHim"               = "Я БЫ ЗАЩИЩАЛ ЕГО НА";
-"Team.TeammateCell.wouldCoverHer"               = "Я БЫ ЗАЩИЩАЛ ЕЁ";
+"Team.TeammateCell.heCoversMe"                     = "ЗАЩИЩАЕТ МЕНЯ";
+"Team.TeammateCell.sheCoversMe"                     = "ЗАЩИЩАЕТ МЕНЯ";
+"Team.TeammateCell.coverHim"                    = "ЗАЩИЩАЮ ЕГО";
+"Team.TeammateCell.coverHer"                    = "ЗАЩИЩАЮ ЕЁ";
+"Team.TeammateCell.HeWouldCoverMe"                 = "ЗАЩИЩАЛ БЫ МЕНЯ";
+"Team.TeammateCell.SheWouldCoverMe"                 = "ЗАЩИЩАЛА БЫ МЕНЯ";
+"Team.TeammateCell.wouldCoverHim"               = "ЗАЩИЩАЛ БЫ ЕГО";
+"Team.TeammateCell.wouldCoverHer"               = "ЗАЩИЩАЛ БЫ ЕЁ";
 "Team.TeammateCell.wouldCoverThem.notYet"        = "Ещё нет";
