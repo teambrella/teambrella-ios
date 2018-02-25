@@ -19,7 +19,6 @@
  */
 //
 
-import SnapKit
 import UIKit
 
 class ChatNewMessagesSeparatorCell: UICollectionViewCell {
@@ -55,7 +54,8 @@ class ChatNewMessagesSeparatorCell: UICollectionViewCell {
     override func updateConstraints() {
         super.updateConstraints()
         guard areConstraintsUpdated == false else { return }
-        
+
+        /*
         label.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-8)
             make.top.equalToSuperview()
@@ -67,6 +67,7 @@ class ChatNewMessagesSeparatorCell: UICollectionViewCell {
             make.right.equalTo(label.snp.left).offset(-8)
             make.height.equalTo(0.5)
         }
+ */
         areConstraintsUpdated = true
     }
     

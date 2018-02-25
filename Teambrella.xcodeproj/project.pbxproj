@@ -137,7 +137,6 @@
 		6D2808C61F1A450C00EBBE3D /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */; };
 		6D2808C81F1A563A00EBBE3D /* DiscussionCompactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */; };
 		6D2A497A1EDEF78C00A1111C /* MembersCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */; };
-		6D2A57AF1F69858A00CE8841 /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A57AE1F69858900CE8841 /* ChatHeader.swift */; };
 		6D2A57B11F698B8A00CE8841 /* EthereumProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A57B01F698B8A00CE8841 /* EthereumProcessor.swift */; };
 		6D2A7C5F1FCC663E0094ABB7 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */; };
 		6D2A7C601FCC663E0094ABB7 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */; };
@@ -219,7 +218,6 @@
 		6D4E5C311F7AB6870020DEE2 /* TeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC6341ED72252007F936E /* TeamVC.swift */; };
 		6D4E5C321F7AB6870020DEE2 /* BlockchainDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A881ED07CF1001BC579 /* BlockchainDateFormatter.swift */; };
 		6D4E5C331F7AB6870020DEE2 /* TeammateObjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714EA1EDF433900F39EBE /* TeammateObjectCell.swift */; };
-		6D4E5C341F7AB6870020DEE2 /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A57AE1F69858900CE8841 /* ChatHeader.swift */; };
 		6D4E5C351F7AB6870020DEE2 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1683871F13BE3E002B52EE /* DropDownButton.swift */; };
 		6D4E5C361F7AB6870020DEE2 /* TeammateFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D862F6A1F1E639A00988D5C /* TeammateFooter.swift */; };
 		6D4E5C371F7AB6870020DEE2 /* PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479111F41E4300025F489 /* PromiseKit.swift */; };
@@ -504,7 +502,6 @@
 		6D4E5D6E1F7AB6870020DEE2 /* WalletFundingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA271EFD1A0400DED5CE /* WalletFundingCell.swift */; };
 		6D4E5D6F1F7AB6870020DEE2 /* ClaimOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95821EE853550019DA47 /* ClaimOptionsCell.swift */; };
 		6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */; };
-		6D4E5D741F7AB6870020DEE2 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */; };
 		6D4E5D751F7AB6870020DEE2 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */; };
 		6D4E5D761F7AB6870020DEE2 /* ImageSlideshow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DDE956A1EE80FE40019DA47 /* ImageSlideshow.framework */; };
 		6D4E5D771F7AB6870020DEE2 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8D54E1F0E43B7000A4DB7 /* PKHUD.framework */; };
@@ -724,7 +721,6 @@
 		6D9AAF5F201A4BB5000411CC /* TransactionsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9AAF5E201A4BB5000411CC /* TransactionsCellModel.swift */; };
 		6D9AAF60201A4BB5000411CC /* TransactionsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9AAF5E201A4BB5000411CC /* TransactionsCellModel.swift */; };
 		6D9ACA261F434C7700A9B6C8 /* CurrencyProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */; };
-		6D9ACA281F4466C500A9B6C8 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */; };
 		6D9C808E1EDF17D000FB8C2C /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */; };
 		6D9C808F1EDF17D000FB8C2C /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9C808D1EDF17D000FB8C2C /* AkkuratPro-Regular.otf */; };
 		6D9CC6131ED47C79007F936E /* LoginDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC6121ED47C79007F936E /* LoginDetailsVC.swift */; };
@@ -1219,7 +1215,6 @@
 		6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompactUserInfoHeader.xib; path = View/ReusableViews/CompactUserInfoHeader.xib; sourceTree = "<group>"; };
 		6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionCompactCell.swift; path = Scenes/Team/Members/DiscussionCompactCell.swift; sourceTree = "<group>"; };
 		6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersCellBuilder.swift; path = Scenes/Team/Members/MembersCellBuilder.swift; sourceTree = "<group>"; };
-		6D2A57AE1F69858900CE8841 /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatHeader.swift; path = Scenes/Team/Chat/ChatHeader.swift; sourceTree = "<group>"; };
 		6D2A57B01F698B8A00CE8841 /* EthereumProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumProcessor.swift; sourceTree = "<group>"; };
 		6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Info.storyboard; path = Scenes/Info/Info.storyboard; sourceTree = "<group>"; };
 		6D2A7C621FCC66960094ABB7 /* SODVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SODVC.swift; path = Scenes/Info/SODVC.swift; sourceTree = "<group>"; };
@@ -1702,7 +1697,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */,
-				6D4E5D741F7AB6870020DEE2 /* SnapKit.framework in Frameworks */,
 				6D4E5D751F7AB6870020DEE2 /* XLPagerTabStrip.framework in Frameworks */,
 				6D4E5D761F7AB6870020DEE2 /* ImageSlideshow.framework in Frameworks */,
 				6D4E5D771F7AB6870020DEE2 /* PKHUD.framework in Frameworks */,
@@ -1733,7 +1727,6 @@
 			files = (
 				6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */,
 				E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */,
-				6D9ACA281F4466C500A9B6C8 /* SnapKit.framework in Frameworks */,
 				6D9CC6331ED7207E007F936E /* XLPagerTabStrip.framework in Frameworks */,
 				6DDE956B1EE80FE40019DA47 /* ImageSlideshow.framework in Frameworks */,
 				6DA8D54F1F0E43B7000A4DB7 /* PKHUD.framework in Frameworks */,
@@ -2628,7 +2621,6 @@
 				6D66B49D1F4DD70F00672583 /* ChatTextCell.swift */,
 				6DD051C21F67CC5E00532626 /* InputAccessoryView.swift */,
 				6D7987781F6827A80060A193 /* ChatSeparatorCell.swift */,
-				6D2A57AE1F69858900CE8841 /* ChatHeader.swift */,
 				6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */,
 				940FEE831FA8D05700B43CB5 /* MuteVC.swift */,
 				94F502591FA8E4A90059D49B /* MuteDataSource.swift */,
@@ -3433,7 +3425,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftDate.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
@@ -3489,7 +3480,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftDate.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
@@ -3698,7 +3688,6 @@
 				6D4E5C311F7AB6870020DEE2 /* TeamVC.swift in Sources */,
 				6D4E5C321F7AB6870020DEE2 /* BlockchainDateFormatter.swift in Sources */,
 				6D4E5C331F7AB6870020DEE2 /* TeammateObjectCell.swift in Sources */,
-				6D4E5C341F7AB6870020DEE2 /* ChatHeader.swift in Sources */,
 				6D4E5C351F7AB6870020DEE2 /* DropDownButton.swift in Sources */,
 				6D4E5C361F7AB6870020DEE2 /* TeammateFooter.swift in Sources */,
 				6D677E751FA0F0FE00ED1C36 /* EtherNode.swift in Sources */,
@@ -4131,7 +4120,6 @@
 				6D9CC6351ED72252007F936E /* TeamVC.swift in Sources */,
 				6D466A9F1ED07CF1001BC579 /* BlockchainDateFormatter.swift in Sources */,
 				6DA714EB1EDF433900F39EBE /* TeammateObjectCell.swift in Sources */,
-				6D2A57AF1F69858A00CE8841 /* ChatHeader.swift in Sources */,
 				6D1683881F13BE3E002B52EE /* DropDownButton.swift in Sources */,
 				6D862F6B1F1E639A00988D5C /* TeammateFooter.swift in Sources */,
 				6DF479121F41E4300025F489 /* PromiseKit.swift in Sources */,

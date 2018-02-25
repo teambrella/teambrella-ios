@@ -19,13 +19,12 @@
  */
 //
 
-import SnapKit
 import UIKit
 
 class InputAccessoryView: UIView {
     
     lazy var textView: UITextView = {
-       let textView = UITextView()
+        let textView = UITextView()
         textView.font = UIFont.teambrella(size: 14)
         textView.layer.cornerRadius = 5
         textView.layer.borderColor = UIColor.cloudyBlue.cgColor
@@ -52,7 +51,7 @@ class InputAccessoryView: UIView {
     }()
     
     lazy var placeholderLabel: Label = {
-       let label = Label()
+        let label = Label()
         label.font = UIFont.teambrella(size: 14)
         label.textColor = .cloudyBlue
         label.text = "Team.Chat.Input.yourMessageHere".localized
@@ -83,33 +82,34 @@ class InputAccessoryView: UIView {
     }
     
     func setupConstraints() {
-        leftButton.snp.makeConstraints { make in
-            make.size.equalTo(44)
-            make.left.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.top.greaterThanOrEqualToSuperview()
-        }
-        rightButton.snp.makeConstraints { make in
-            make.size.equalTo(44)
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        textView.snp.makeConstraints { make in
-            make.left.equalTo(leftButton.snp.right)
-            make.right.equalTo(rightButton.snp.left)
-            make.bottom.equalToSuperview().inset(5)
-            make.top.equalToSuperview().offset(5)
-            make.height.lessThanOrEqualTo(maxHeight)
-        }
-        
-        placeholderLabel.snp.makeConstraints { make in
-            make.center.equalTo(textView)
-            make.size.lessThanOrEqualTo(textView)
-        }
-        
-        snp.makeConstraints { make in
-            make.height.lessThanOrEqualTo(maxHeight + 10)
-        }
+        leftButton.translatesAutoresizingMaskIntoConstraints = false
+        leftButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        leftButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        leftButton.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        leftButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        leftButton.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor).isActive = true
+
+        rightButton.translatesAutoresizingMaskIntoConstraints = false
+        rightButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        rightButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        rightButton.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        rightButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.leftAnchor.constraint(equalTo: leftButton.rightAnchor).isActive = true
+        textView.rightAnchor.constraint(equalTo: rightButton.leftAnchor).isActive = true
+        textView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
+        textView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
+        textView.heightAnchor.constraint(lessThanOrEqualToConstant: maxHeight).isActive = true
+
+        placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
+        placeholderLabel.centerXAnchor.constraint(equalTo: textView.centerXAnchor).isActive = true
+        placeholderLabel.centerYAnchor.constraint(equalTo: textView.centerYAnchor).isActive = true
+        placeholderLabel.widthAnchor.constraint(lessThanOrEqualTo: textView.widthAnchor).isActive = true
+        placeholderLabel.heightAnchor.constraint(lessThanOrEqualTo: textView.heightAnchor).isActive = true
+
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.heightAnchor.constraint(lessThanOrEqualToConstant: maxHeight + 10).isActive = true
     }
     
     func adjustHeight() {
