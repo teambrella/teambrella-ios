@@ -1,0 +1,40 @@
+/*
+  Home.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 07.07.17.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"Home.salutation"                                       = "Привет, %@!";
+"Home.subtitle"                                         = "Свежие новости для вас";
+"Home.submitButton.anotherClaim"                        = "Отправить ещё заявку";
+"Home.submitButton.claim"                               = "Отправить заявку";
+"Home.leftBrick.title"                                  = "ЗАЩИТА";
+"Home.rightBrick.title"                                 = "КОШЕЛЁК";
+"Home.itemCard.status"                                  = "ЗАЩИЩЕНО";
+"Home.itemCard.coverageType"                            = "Франшиза";
+
+"Home.SupportCell.headerLabel"                          = "Техподдержка";
+"Home.SupportCell.onlineLabel"                          = "ОНЛАЙН";
+"Home.SupportCell.textLabel"                            = "Привет, %@!  Нужна помощь? Мы доступны в рабочее время по любым вопросам.";
+"Home.SupportCell.chatButton"                           = "Пообщаться";
+
+"Home.ApplicationDeniedCell.headerLabel"                = "К сожалению";
+//"Home.ApplicationDeniedCell.centerLabel"                = "Team application was denied";
+//"Home.ApplicationDeniedCell.viewAppButton"              = "View Application";
+
+//"Home.ApplicationAcceptedCell.headerLabel"              = "Congratulations";
+//"Home.ApplicationAcceptedCell.centerLabel"              = "Team application approved";
+//"Home.ApplicationAcceptedCell.learnAboutCoverageButton" = "Learn about Coverage";
+
+//"Home.ApplicationStatusCell.headerLabel"                = "%@ team members have %@ left to review your applications.";
+//"Home.ApplicationStatusCell.titleLabel"                 = "Your application";
+//"Home.ApplicationStatusCell.centerLabel"                = "VOTE ( PENDING )";
+
+"Home.PrivateMessages.title"                            = "Входящие";
+
+//---waiting--
+"Home.Empty.Title.noPrivateMessages"                    = "У вас нет сообщений";
+"Home.Empty.SubTitle.noPrivateMessages"                 = "Напишите ваше первое приватное сообщение кому-нибудь из участников.";
+

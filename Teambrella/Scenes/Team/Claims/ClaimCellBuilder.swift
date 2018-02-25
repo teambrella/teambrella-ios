@@ -73,7 +73,8 @@ struct ClaimCellBuilder {
         cell.timeLabel.text = dateProcessor.stringFromNow(minutes: claim.discussion.minutesSinceLastPost)
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
-    
+
+    // swiftlint:disable:next function_body_length
     static func populateClaimVote(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         guard let voting = claim.voting else {
             log("ClaimEntityLarge has no voting part. Can't populate ClaimVoteCell", type: .error)

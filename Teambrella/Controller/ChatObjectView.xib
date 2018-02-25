@@ -118,6 +118,9 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36L-C4-ED1">
                                     <rect key="frame" x="81.5" y="-0.5" width="59.5" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="va9-Ne-XNE"/>
+                                    </constraints>
                                     <state key="normal" title="Button"/>
                                     <connections>
                                         <action selector="tapRightButton:" destination="-1" eventType="touchUpInside" id="hqM-PE-usZ"/>

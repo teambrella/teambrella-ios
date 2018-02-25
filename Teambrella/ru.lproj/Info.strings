@@ -1,0 +1,31 @@
+/*
+  Info.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 28.11.2017.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"Info.DemoExpired.Title"              = "Новая демо";
+"Info.DemoExpired.Details"            = "Мы создали демо команду для вас. В ней есть все новые фишки.";
+"Info.DemoExpired.UpperButton.Title"  = "Попробовать демо";
+"Info.DemoExpired.LowerButton.Title"  = "Назад";
+
+"Info.OutdatedVersion.Title"              = "Требуется обновление";
+"Info.OutdatedVersion.Details"            = "Новая улучшенная версия Teambrella доступна в AppStore.";
+"Info.OutdatedVersion.UpperButton.Title"  = "Обновить приложение";
+"Info.OutdatedVersion.LowerButton.Title"  = "Напомнить позже";
+
+"Info.codeCapture.title"              = "Просканировать адрес Ethereum";
+"Info.codeCapture.button.title"       = "Использовать";
+"Info.codeCapture.cancelButton.title" = "Отменить";
+
+"Info.OthersVoted.title"              = "Все голоса";
+"Info.OthersVoted.Cell.Weight"        = "Вес:";
+"Info.OthersVoted.Header.allVotes"    = "ВСЕ ГОЛОСА";
+"Info.OthersVoted.Header.votes"       = "ГОЛОС";
+
+"Info.NoSilentPush.Title"             = "Функция \"Обновление контента\" необходима для поддержания защиты";
+"Info.NoSilentPush.UpperButton.Title" = "Открыть настройки";
+"Info.NoSilentPush.LowerButton.Title" = "Напомнить позже";
+

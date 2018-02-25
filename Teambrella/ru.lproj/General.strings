@@ -1,0 +1,63 @@
+/*
+  General.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 11.04.17.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"General.maritalStatus.divorced"                   = "divorced";
+"General.maritalStatus.single"                     = "single";
+"General.maritalStatus.widowed"                    = "widowed";
+"General.maritalStatus.married"                    = "married";
+"General.maritalStatus.unknown"                    = "unknown";
+"General.claimState.voting"                        = "voting";
+"General.claimState.revoting"                      = "revoting";
+"General.claimState.declined"                      = "declined";
+"General.claimState.inPayment"                     = "in payment";
+"General.claimState.processed"                     = "processed";
+
+"General.today"                                    = "сегодня";
+
+"General.you"                                      = "Вы";
+
+"General.TransactionKind.payout"                   = "выплата";
+"General.TransactionKind.withdraw"                 = "снятие";
+"General.TransactionKind.moveToNextWallet"         = "перевод на другой кошелек";
+"General.TransactionKind.saveFromPreviousWallet"   = "перевод с другого кошелька";
+"General.TransactionKind.votingPayout"             = "выплата по голосования";
+
+"General.TransactionState.created"                 = "создана";
+"General.TransactionState.approvedMaster"          = "approved by master";
+"General.TransactionState.approvedCosigners"       = "approved by cosigners";
+"General.TransactionState.approvedAll"             = "approved by all";
+"General.TransactionState.blockedMaster"           = "blocked by master";
+"General.TransactionState.blockedCosigners"        = "blocked by cosigners";
+"General.TransactionState.selectedForCosigning"    = "selected for cosigning";
+"General.TransactionState.beingCosigned"           = "being cosigned";
+"General.TransactionState.cosigned"                = "cosigned";
+"General.TransactionState.published"               = "published";
+"General.TransactionState.confirmed"               = "confirmed";
+"General.TransactionState.errorCosignersTimeout"   = "error: cosigners timeout";
+"General.TransactionState.errorSubmitToBlockchain" = "error: submit to blockchain";
+"General.TransactionState.errorBadRequest"         = "error: bad request";
+"General.TransactionState.errorOutOfFunds"         = "error: out of funds";
+"General.TransactionState.errorTooManyUtxos"       = "error: too many Utxos";
+
+"General.CoverageObject.other"                     = "ОБЪЕКТ";
+"General.CoverageObject.carCollisionDeductible"    = "МАШИНА";
+"General.CoverageObject.petDog"                    = "СОБАКА";
+"General.CoverageObject.petCat"                    = "КОТ";
+"General.CoverageObject.bicycle"                   = "ВЕЛОСИПЕД";
+
+"General.CoverageType.other"                       = "Объект";
+"General.CoverageType.carCollisionDeductible"      = "Франшиза";
+"General.CoverageType.petDog"                      = "Здоровье питомца";
+"General.CoverageType.petCat"                      = "Здоровье питомца";
+"General.CoverageType.bicycle"                     = "Кража";
+
+"General.mETH"                                     = "mETH";
+
+"General.my"                      = "мой";
+"General.his"                     = "его";
+"General.her"                     = "её";
