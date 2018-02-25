@@ -35,14 +35,19 @@ struct FeedCellBuilder {
                 cell.avatarView.layer.cornerRadius = cell.avatarView.frame.height / 2
             }
             cell.avatarView.contentMode = .scaleAspectFill
-            cell.titleLabel.text = model.chatTitle
             cell.textLabel.text = model.text.sane
             let count = model.topPosterAvatars.count
             let label: String? = count > 3 ? "+\(count - 3)" : nil
             cell.facesStack.setAvatars(model.topPosterAvatars, label: label, max: count > 3 ? 4 : 3)
-         
+
             if let date = model.itemDate {
-            cell.timeLabel.text = DateProcessor().stringInterval(from: date).uppercased()
+                if Date().isInSameDayOf(date: date) {
+                    cell.timeLabel.text = Formatter.localTime.string(from: date)
+                } else {
+                    cell.timeLabel.text = Formatter.localDate.string(from: date)
+                }
+
+                //DateProcessor().stringInterval(from: date).uppercased()
             }
             cell.unreadLabel.font = UIFont.teambrellaBold(size: 13)
             cell.unreadLabel.text = String(model.unreadCount)

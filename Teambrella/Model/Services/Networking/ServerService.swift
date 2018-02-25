@@ -21,32 +21,18 @@
 
 import Alamofire
 import Foundation
-import SwiftyJSON
-
-/*
- struct ResponseStatus {
- let timestamp: Int64
- let code: Int
- let errorMessage: String
-
- init(json: JSON) {
- timestamp = json["Timestamp"].int64Value
- code = json["ResultCode"].intValue
- errorMessage = json["ErrorMessage"].stringValue
- }
- }
- */
 
 /**
  Service to interoperate with the server fetching all UI related information
  */
-class ServerService: NSObject {
+final class ServerService: NSObject {
     @objc dynamic private(set)var timestamp: Int64 = 0
-    
+    var router: MainRouter?
     var key: Key { return Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp) }
-    
-    override init() {
+
+    required init(router: MainRouter) {
         super.init()
+        self.router = router
     }
     
     func updateTimestamp(completion: @escaping (Int64, Error?) -> Void) {
@@ -98,8 +84,9 @@ class ServerService: NSObject {
                 request.setValue(String(describing: value), forHTTPHeaderField: key)
             }
         }
-        Alamofire.request(request).responseData { response in
-            //        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).responseData { [weak self] response in
+            guard let `self` = self else { return }
+
             switch response.result {
             case let .success(value):
                 do {
@@ -111,6 +98,11 @@ class ServerService: NSObject {
                     }
 
                     success(reply)
+
+                    if let router = self.router {
+                        let manager = SODManager(router: router)
+                        manager.checkVersion(serverReply: reply)
+                    }
                 } catch {
                     failure(error)
                 }

@@ -109,7 +109,8 @@ struct WithdrawCellBuilder {
     private static func populateWalletInfo(cell: WalletInfoCell, model: WalletInfoCellModel) {
         cell.numberBar.isBottomLineVisible = false
         cell.amount.text = String.formattedNumber(MEth(model.amount).value)
-        
+        cell.numberBar.left?.verticalStackView.alignment = .leading
+        cell.numberBar.right?.verticalStackView.alignment = .leading
         cell.currencyLabel.text = service.session?.cryptoCoin.code
         if let team = service.session?.currentTeam {
             let fiatAmount = model.amount.value * model.currencyRate
@@ -118,11 +119,12 @@ struct WithdrawCellBuilder {
         
         cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
         cell.numberBar.left?.amountLabel.text = String(Int(MEth(model.reserved).value))
-        cell.numberBar.left?.isBadgeVisible = false
         cell.numberBar.left?.currencyLabel.text = service.session?.cryptoCoin.code
+        cell.numberBar.left?.isPercentVisible = false
         
         cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
         cell.numberBar.right?.amountLabel.text = String(Int(MEth(model.available).value))
         cell.numberBar.right?.currencyLabel.text = service.session?.cryptoCoin.code
+        cell.numberBar.right?.isPercentVisible = false
     }
 }

@@ -39,7 +39,7 @@ class SwipeToVote: UIView, XIBInitable {
     }
     
     func setup() {
-        self.isHidden = SimpleStorage().string(forKey: .swipeHelperWasShown) != nil
+        self.isHidden = SimpleStorage().bool(forKey: .swipeHelperWasShown)
         
         label.text = "Team.Vote.SwipeToVote".localized
         imageView.image = #imageLiteral(resourceName: "swipe left-right")

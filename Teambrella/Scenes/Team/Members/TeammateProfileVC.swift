@@ -160,6 +160,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             cell.isProxyHidden = true
             cell.resetVoteButton.isHidden = true
             cell.yourVoteValueLabel.text = "..."
+            cell.yourVoteBadgeLabel.isHidden = true
             cell.scrollToAverage(silently: true)
         }
     }
@@ -264,7 +265,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     private func prepareLinearFunction() {
         guard let risk = dataSource.teammateLarge?.riskScale else { return }
         
-        let function = PiecewiseFunction((0.2, risk.coversIfMin), (1, risk.coversIf1), (5, risk.coversIfMax))
+        let function = PiecewiseFunction((0.2, risk.coversIfMin), (1, risk.coversIfOne), (5, risk.coversIfMax))
         linearFunction = function
     }
     
@@ -330,22 +331,10 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                         at indexPath: IndexPath) {
         guard let teammate = dataSource.teammateLarge else { return }
         
-        if let view = view as? CompactUserInfoHeader {
-            view.avatarView.showAvatar(string: teammate.basic.avatar)
-            if let left = view.leftNumberView {
-                left.titleLabel.text = "Team.TeammateCell.wouldCoverMe".localized
-                let amount = teammate.basic.coversMeAmount
-                left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
-                left.currencyLabel.text = service.currencyName
+        if let view = view as? TeammateSummaryView {
+            if dataSource.isMe {
+                view.radarView.color = .veryLightBlueThree
             }
-            
-            if let right = view.rightNumberView {
-                right.titleLabel.text = "Team.TeammateCell.wouldCoverThem".localized
-                let amount = teammate.basic.iCoverThemAmount
-                right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
-                right.currencyLabel.text = service.currencyName
-            }
-        } else if let view = view as? TeammateSummaryView {
             view.title.text = teammate.basic.name.entire
             //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
             view.avatarView.present(avatarString: teammate.basic.avatar)
@@ -357,23 +346,62 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             //cell.avatarView.kf.setImage(with: url)
             if let left = view.leftNumberView {
                 left.isHidden = dataSource.isMe
-                left.titleLabel.text = "Team.TeammateCell.coversMe".localized
+                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.heCoversMe".localized
+                    : "Team.TeammateCell.sheCoversMe".localized
+                left.titleLabel.text = genderization
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 left.currencyLabel.text = service.currencyName
+                left.isCurrencyVisible = true
+                left.isPercentVisible = false
             }
             if let right = view.rightNumberView {
                 right.isHidden = dataSource.isMe
-                right.titleLabel.text = "Team.TeammateCell.coverThem".localized
+                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.coverHim".localized
+                    : "Team.TeammateCell.coverHer".localized
+                right.titleLabel.text = genderization
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
                 right.currencyLabel.text = service.currencyName
+                right.isCurrencyVisible = true
+                right.isPercentVisible = false
             }
-            
-            view.subtitle.text = teammate.basic.city.uppercased()
+            if let city = teammate.basic.city {
+                view.subtitle.text = city.uppercased()
+            } else {
+                view.subtitle.text = ""
+            }
             if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
                 view.infoLabel.isHidden = false
                 view.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
+            }
+        } else if let view = view as? CompactUserInfoHeader {
+            if dataSource.isMe {
+                view.radarView.color = .veryLightBlueThree
+            }
+            view.radarView.centerY = -view.bounds.midY
+            ViewDecorator.shadow(for: view, opacity: 0.05, radius: 4)
+            view.avatarView.showAvatar(string: teammate.basic.avatar)
+            if let left = view.leftNumberView {
+                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.HeWouldCoverMe".localized
+                    : "Team.TeammateCell.SheWouldCoverMe".localized
+                left.titleLabel.text = genderization
+                let amount = teammate.basic.coversMeAmount
+                left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                left.currencyLabel.text = service.currencyName
+                left.isCurrencyVisible = true
+                left.isPercentVisible = false
+            }
+            
+            if let right = view.rightNumberView {
+                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.wouldCoverHim".localized
+                    : "Team.TeammateCell.wouldCoverHer".localized
+                right.titleLabel.text = genderization
+                let amount = teammate.basic.iCoverThemAmount
+                right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                right.currencyLabel.text = service.currencyName
+                right.isCurrencyVisible = true
+                right.isPercentVisible = false
             }
         }
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
@@ -443,7 +471,9 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        return dataSource.isNewTeammate ?  CGSize.zero : CGSize(width: collectionView.bounds.width, height: 81)
+        return /*dataSource.isNewTeammate ?
+            CGSize(width: collectionView.bounds.width, height: 20) :*/
+            CGSize(width: collectionView.bounds.width, height: 81)
     }
 }
 
@@ -531,7 +561,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
     }
     
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int) {
-        func setAvatar(avatarView: RoundImageView, label: UILabel, with teammate: RiskScaleEntity.Teammate?) {
+        func setAvatar(avatarView: RoundImageView, label: UILabel, with teammate: RiskScaleTeammate?) {
             guard let teammate = teammate else {
                 avatarView.isHidden = true
                 avatarView.image = nil

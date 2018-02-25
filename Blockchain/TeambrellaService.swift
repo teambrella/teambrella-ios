@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 protocol TeambrellaServiceDelegate: class {
     func teambrellaDidUpdate(service: TeambrellaService)
@@ -86,26 +85,29 @@ class TeambrellaService: NSObject {
             }
         }
     }
+
     func clear() throws {
         try contentProvider.clear()
         isStorageCleared = true
     }
     
     func updateData(completion: @escaping (Bool) -> Void) {
-        server.initClient(privateKey: contentProvider.user.privateKey) { [unowned self] success in
-            if success {
-                self.autoApproveTransactions()
-                self.serverUpdateToLocalDb { success in
-                    if success {
-                        
-                        //                        self.updateAddresses()
-                        completion(true)
-                    } else {
-                        completion(false)
-                    }
-                }
-            } else {
+        server.initTimestamp { (timestamp, error) in
+            if let error = error {
+                log("Update data couldn't proceed because of failed timestamp \(error)", type: .error)
                 completion(false)
+                return
+            }
+
+            self.autoApproveTransactions()
+            self.serverUpdateToLocalDb { success in
+                if success {
+
+                    //                        self.updateAddresses()
+                    completion(true)
+                } else {
+                    completion(false)
+                }
             }
         }
     }
@@ -121,25 +123,22 @@ class TeambrellaService: NSObject {
                           multisigs: multisigsToUpdate,
                           transactions: txsToUpdate,
                           signatures: signatures
-        ) { [unowned self] reply in
-            guard !self.isStorageCleared else {
-                completion(false)
-                return
+        ) { [unowned self] updates, error in
+            guard !self.isStorageCleared,
+                let updates = updates else {
+                    completion(false)
+                    return
             }
 
-            switch reply {
-            case .success(let json, let timestamp):
-                log("BlockchainStorage Server update to local db received json: \(json)", type: .cryptoRequests)
-                let factory = EntityFactory(fetcher: self.contentProvider)
-                factory.updateLocalDb(txs: txsToUpdate, signatures: signatures, multisigs: multisigsToUpdate, json: json)
-                user.lastUpdated = timestamp
-                self.contentProvider.save()
-                completion(true)
-                break
-            case .failure(let error):
-                log("server request failed with error: \(error)", type: [.error, .crypto])
-                completion(false)
-            }
+            log("BlockchainStorage Server update to local db received updates: \(updates)", type: .cryptoRequests)
+            let factory = EntityFactory(fetcher: self.contentProvider)
+            factory.updateLocalDb(txs: txsToUpdate,
+                                  signatures: signatures,
+                                  multisigs: multisigsToUpdate,
+                                  serverUpdate: updates.updates)
+            user.lastUpdated = updates.updates.lastUpdated
+            self.contentProvider.save()
+            completion(true)
         }
     }
     
@@ -410,16 +409,16 @@ class TeambrellaService: NSObject {
             guard let kind = tx.kind else { continue }
 
             switch kind {
-                case .payout,
-                     .withdraw,
-                     .moveToNextWallet:
-                    wallet.publish(tx: tx, completion: { hash in
-                        log("Teambrella service published tx hash: \(hash)", type: .crypto)
-                        self.contentProvider.transactionSetToPublished(tx: tx, hash: hash)
-                    }, failure: { error in
-                        log("Teambrella service failed to publish tx \(tx.id.uuidString)", type: [.error, .crypto] )
-                        log("Error: \(String(describing: error))", type: [.error, .crypto])
-                    })
+            case .payout,
+                 .withdraw,
+                 .moveToNextWallet:
+                wallet.publish(tx: tx, completion: { hash in
+                    log("Teambrella service published tx hash: \(hash)", type: .crypto)
+                    self.contentProvider.transactionSetToPublished(tx: tx, hash: hash)
+                }, failure: { error in
+                    log("Teambrella service failed to publish tx \(tx.id.uuidString)", type: [.error, .crypto] )
+                    log("Error: \(String(describing: error))", type: [.error, .crypto])
+                })
             default:
                 // TODO: support move & incoming TXs
                 break
@@ -448,11 +447,6 @@ class TeambrellaService: NSObject {
         return betterPrice
     }
     
-    
-    //    func update() -> Bool {
-    //        return false
-    //    }
-    
     func registerBackgroundTask(completion: @escaping (UIBackgroundFetchResult) -> Void) {
         backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
             self?.endBackgroundTask(result: .failed,completion: completion)
@@ -469,15 +463,19 @@ class TeambrellaService: NSObject {
 
     func signToSockets(service: SocketService) {
         log("Teambrella service signing to socket", type: .cryptoDetails)
-        service.add(listener: self) { action in
+        service.add(listener: self) { [weak self] action in
             switch action.command {
             case .dbDump:
-                let dumper = Dumper(api: self.server)
-                dumper.sendDatabaseDump(privateKey: self.key.privateKey)
+                self?.sendDBDump()
             default:
                 break
             }
         }
+    }
+    
+    func sendDBDump() {
+        let dumper = Dumper(api: self.server)
+        dumper.sendDatabaseDump(privateKey: self.key.privateKey)
     }
     
 }

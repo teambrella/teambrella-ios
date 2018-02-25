@@ -19,6 +19,9 @@ import UIKit
 class SODVC: UIViewController, Routable {
     enum SODMode {
         case outdated
+        case oldVersion
+        case criticallyOldVersion
+        case silentPush
     }
     
     static let storyboardName = "Info"
@@ -39,18 +42,80 @@ class SODVC: UIViewController, Routable {
         switch mode {
         case .outdated:
             setupAsOutdated()
+        case .oldVersion:
+            setupAsOldVersion(isCritical: false)
+        case .criticallyOldVersion:
+            setupAsOldVersion(isCritical: true)
+        case .silentPush:
+            setupAsSilentPush()
         }
     }
     
     private func setupAsOutdated() {
-        logoView.image = #imageLiteral(resourceName: "logo-1").withRenderingMode(.alwaysTemplate)
-        logoView.tintColor = UIColor.teambrellaBlue
-        
+//        logoView.image = #imageLiteral(resourceName: "logo-1").withRenderingMode(.alwaysTemplate)
+//        logoView.tintColor = UIColor.teambrellaBlue
+
         titleLabel.text = "Info.DemoExpired.Title".localized
         detailsLabel.text = "Info.DemoExpired.Details".localized
         
         upperButton.setTitle("Info.DemoExpired.UpperButton.Title".localized, for: .normal)
         lowerButton.setTitle("Info.DemoExpired.LowerButton.Title".localized, for: .normal)
+    }
+
+    private func setupAsOldVersion(isCritical: Bool) {
+//        logoView.image = #imageLiteral(resourceName: "logo-2").withRenderingMode(.alwaysTemplate)
+//        logoView.tintColor = UIColor.sodBlue
+
+        titleLabel.text = "Info.OutdatedVersion.Title".localized
+        detailsLabel.text = "Info.OutdatedVersion.Details".localized
+
+        upperButton.setTitle("Info.OutdatedVersion.UpperButton.Title".localized, for: .normal)
+        lowerButton.setTitle("Info.OutdatedVersion.LowerButton.Title".localized, for: .normal)
+
+        upperButton.addTarget(self, action: #selector(openAppStore), for: .touchUpInside)
+        lowerButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+
+        if isCritical {
+            lowerButton.isHidden = true
+        }
+    }
+
+    private func setupAsSilentPush() {
+//        logoView.image = #imageLiteral(resourceName: "logo-2").withRenderingMode(.alwaysTemplate)
+//        logoView.tintColor = UIColor.sodBlue
+
+        titleLabel.text = "Info.NoSilentPush.Title".localized
+       detailsLabel.text = nil//"Info.NoSilentPush.Details".localized
+        detailsLabel.isHidden = true
+
+        upperButton.setTitle("Info.NoSilentPush.UpperButton.Title".localized, for: .normal)
+        lowerButton.setTitle("Info.NoSilentPush.LowerButton.Title".localized, for: .normal)
+
+        upperButton.addTarget(self, action: #selector(openSilentPush), for: .touchUpInside)
+        lowerButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+    }
+
+    @objc
+    private func openAppStore() {
+        let appID = Application().appID
+        if let url = URL(string: "itms-apps://itunes.apple.com/app/id\(appID)") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        close()
+    }
+
+    @objc
+    private func openSilentPush() {
+        guard let settingsURL = URL(string: UIApplicationOpenSettingsURLString) else { return }
+        //    guard let settingsURL = URL(string: "App-Prefs:root=General&path=BACKGROUND_APP_REFRESH") else { return }
+
+        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+        close()
+    }
+
+    @objc
+    private func close() {
+        dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

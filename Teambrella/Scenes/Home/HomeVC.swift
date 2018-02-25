@@ -91,6 +91,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         switchToCurrentTeam()
         service.push.executeCommand()
+        consoleAccessSetup()
         
         if isIpadSimulatingPhone {
             gradientViewBottomConstraint.constant = 20
@@ -100,6 +101,18 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
+    }
+
+    private func consoleAccessSetup() {
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 8
+        tap.addTarget(self, action: #selector(tapConsole))
+        topBarContainer.addGestureRecognizer(tap)
+    }
+
+    @objc
+    private func tapConsole() {
+        service.router.presentConsole()
     }
     
     private func setupTopBar() {
@@ -122,7 +135,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         emitterScene.isHidden = true
-//        addEmitter()
+        //        addEmitter()
         collectionView.collectionViewLayout.invalidateLayout()
     }
     

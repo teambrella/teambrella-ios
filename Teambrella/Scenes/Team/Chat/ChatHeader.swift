@@ -22,6 +22,7 @@
 import SnapKit
 import UIKit
 
+/*
 class ChatHeader: UICollectionReusableView {
     lazy var titleLabel: Label = {
         let label = Label()
@@ -80,3 +81,4 @@ class ChatHeader: UICollectionReusableView {
     }
     
 }
+*/

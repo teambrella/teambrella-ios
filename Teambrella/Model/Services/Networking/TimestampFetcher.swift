@@ -16,7 +16,6 @@
 
 import Alamofire
 import Foundation
-import SwiftyJSON
 
 class TimestampFetcher {
     func requestTimestamp(completion: @escaping (Int64, Error?) -> Void) {
@@ -28,19 +27,37 @@ class TimestampFetcher {
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        Alamofire.request(request).responseJSON { response in
-            var timestamp: Int64 = 0
+        Alamofire.request(request).responseData { response in
             switch response.result {
-            case .success:
-                if let value = response.result.value {
-                    let result = JSON(value)
-                    timestamp = result["Status"]["Timestamp"].int64Value
+            case let .success(data):
+                do {
+                    let result = try JSONDecoder().decode(TimestampReply.self, from: data)
+                    completion(result.status.timestamp, nil)
+                } catch {
+                    completion(0, error)
                 }
-                completion(timestamp, nil)
-            case .failure(let error):
+            case let .failure(error):
                 completion(0, error)
             }
         }
+    }
+    
+}
+
+struct TimestampReply: Codable {
+    let status: TimestampReplyStatus
+
+    enum CodingKeys: String, CodingKey {
+        case status = "Status"
+    }
+
+}
+
+struct TimestampReplyStatus: Codable {
+    let timestamp: Int64
+
+    enum CodingKeys: String, CodingKey {
+        case timestamp = "Timestamp"
     }
     
 }

@@ -136,9 +136,9 @@ class CoverageVC: UIViewController, Routable {
         HUD.show(.progress, onView: view)
         service.dao.requestCoverage(for: Date(), teamID: teamID).observe { [weak self] result in
             switch result {
-            case let .value((coverage: coverage, limit: limit)):
-                self?.coverageAmount = coverage.integerPercentage
-                self?.limitAmount = limit
+            case let .value(coverageForDate):
+                self?.coverageAmount = coverageForDate.coverage.integerPercentage
+                self?.limitAmount = coverageForDate.limit
                 if let slider = self?.slider {
                     HUD.hide()
                     self?.changeValues(slider: slider)

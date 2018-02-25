@@ -181,6 +181,11 @@ extension MembersVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
+        if let cell = cell as? TeammateCandidateCell {
+            cell.avatarView.image = #imageLiteral(resourceName: "imagePlaceholder")
+        } else if let cell = cell as? TeammateCell {
+            cell.avatarView.image = #imageLiteral(resourceName: "imagePlaceholder")
+        }
         let teammate = dataSource[indexPath]
         MembersCellBuilder.populate(cell: cell, with: teammate)
         let maxRow = dataSource.itemsInSection(section: indexPath.section)

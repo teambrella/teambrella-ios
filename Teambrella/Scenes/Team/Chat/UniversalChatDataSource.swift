@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 enum UniversalChatType {
     case privateChat, application, claim, discussion
@@ -31,13 +30,14 @@ final class UniversalChatDatasource {
     var onError: ((Error) -> Void)?
     var onSendMessage: ((IndexPath) -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
+    var onClaimVoteUpdate: (() -> Void)?
     
-    var limit                                       = 10
+    var limit                                       = 20
     var cloudWidth: CGFloat                         = 0
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
     
-    var notificationsType: TopicMuteType = .unknown
+    var notificationsType: TopicMuteType            = .unknown
     var hasNext                                     = true
     var hasPrevious                                 = true
     var isFirstLoad                                 = true
@@ -53,17 +53,16 @@ final class UniversalChatDatasource {
     
     var chatModel: ChatModel? {
         didSet {
-            notificationsType = TopicMuteType.type(from: chatModel?.isMuted)
+            notificationsType = TopicMuteType.type(from: chatModel?.discussion.isMuted)
             cellModelBuilder.showRate = chatType == .application || chatType == .claim
         }
     }
     
     private var models: [ChatCellModel]             = []
     private var lastInsertionIndex                  = 0
-    
-    // private var chunks: [ChatChunk]                 = []
+
     private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
-    private var cellModelBuilder                    = ChatModelBuilder()
+    var cellModelBuilder                    = ChatModelBuilder()
     
     private var lastRead: Int64                     = 0
     private var forwardOffset: Int                  = 0
@@ -78,7 +77,7 @@ final class UniversalChatDatasource {
     private var isChunkAdded                        = false
     
     private var topCellDate: Date?
-    private var topic: Topic?
+    //private var topic: Topic?
     
     var claim: ClaimEntityLarge? {
         if let strategy = strategy as? ClaimChatStrategy {
@@ -101,17 +100,8 @@ final class UniversalChatDatasource {
         return nil
     }
     
-    var topicID: String? { return claim?.topicID }
-    
-    var chatHeader: String? {
-        if let strategy = strategy as? ClaimChatStrategy {
-            return strategy.claim.description
-        } else if let strategy = strategy as? HomeChatStrategy {
-            return strategy.card.chatTitle
-        }
-        return nil
-    }
-    
+    var topicID: String? { return claim?.discussion.id }
+
     var count: Int { return models.count }
     
     var title: String {
@@ -120,15 +110,18 @@ final class UniversalChatDatasource {
         }
         
         guard let chatModel = chatModel else {
-            return ""//strategy.title
+            return ""
         }
-        
-        if chatModel.basicPart?.claimAmount != nil {
-            return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(chatModel.claimID)"
-        } else if chatModel.basicPart?.title != nil {
+
+         if chatModel.isClaimChat {
+            let id = chatModel.id ?? 0
+            return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(id)"
+        } else if chatModel.isApplicationChat {
             return "Team.Chat.TypeLabel.application".localized.lowercased().capitalized
+        } else if let title = chatModel.basic?.title {
+            return title
         } else {
-            return strategy.title
+            return ""
         }
     }
     
@@ -158,13 +151,13 @@ final class UniversalChatDatasource {
         }
         
         if let chatModel = chatModel {
-            if chatModel.basicPart?.claimAmount != nil {
+            if chatModel.basic?.claimAmount != nil {
                 return .claim
             }
-            if chatModel.basicPart?.title != nil {
+            if chatModel.basic?.title != nil {
                 return .discussion
             }
-            if chatModel.basicPart?.userID != nil {
+            if chatModel.basic?.userID != nil {
                 return .application
             }
         }
@@ -218,7 +211,7 @@ final class UniversalChatDatasource {
     var isPrivateChat: Bool { return strategy is PrivateChatStrategy }
     
     func mute(type: TopicMuteType, completion: @escaping (Bool) -> Void) {
-        guard let topicID = chatModel?.topicID else { return }
+        guard let topicID = chatModel?.discussion.topicID else { return }
         
         let isMuted = type == .muted
         service.dao.mute(topicID: topicID, isMuted: isMuted).observe { [weak self] result in
@@ -284,6 +277,33 @@ final class UniversalChatDatasource {
         })
         request.start()
     }
+
+    func updateVoteOnServer(vote: Float?) {
+        guard let claimID = chatModel?.id else { return }
+
+        let lastUpdated = claim?.lastUpdated ?? 0
+        service.server.updateTimestamp { timestamp, error in
+            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
+
+            let body = RequestBody(key: key, payload: ["ClaimId": claimID,
+                                                       "MyVote": vote ?? NSNull(),
+                                                       "Since": lastUpdated])
+            let request = TeambrellaRequest(type: .claimVote, body: body, success: { [weak self] response in
+                if case let .claimVote(voteUpdate) = response {
+                    self?.chatModel?.update(with: voteUpdate)
+                    self?.onClaimVoteUpdate?()
+                    log("Updated claim with \(voteUpdate)", type: .info)
+                }
+                }, failure: { [weak self] error in
+                    self?.onError?(error)
+            })
+            request.start()
+        }
+    }
+
+    func updateMyModels(newVote: Double) {
+
+    }
     
     subscript(indexPath: IndexPath) -> ChatCellModel {
         guard indexPath.row < models.count else {
@@ -308,25 +328,29 @@ final class UniversalChatDatasource {
         }
         
         service.dao.freshKey { [weak self] key in
-            guard let me = self else { return }
+            guard let `self` = self else { return }
             
-            let limit = me.limit// previous ? -me.limit: me.limit
-            let offset = previous ? me.backwardOffset : me.forwardOffset
+            let limit = self.limit// previous ? -me.limit: me.limit
+            var offset = previous
+                ? self.backwardOffset
+                : self.isFirstLoad
+                ? -10
+                : self.forwardOffset
             var payload: [String: Any] = ["limit": limit,
                                           "offset": offset,
-                                          "avatarSize": me.avatarSize,
-                                          "commentAvatarSize": me.commentAvatarSize]
-            if me.lastRead > 0 {
-                payload["since"] = me.lastRead
+                                          "avatarSize": self.avatarSize,
+                                          "commentAvatarSize": self.commentAvatarSize]
+            if self.lastRead > 0 {
+                payload["since"] = self.lastRead
             }
-            let body = me.strategy.updatedChatBody(body: RequestBody(key: key, payload: payload))
-            let request = TeambrellaRequest(type: me.strategy.requestType,
+            let body = self.strategy.updatedChatBody(body: RequestBody(key: key, payload: payload))
+            let request = TeambrellaRequest(type: self.strategy.requestType,
                                             body: body,
-                                            success: { [weak me] response in
-                                                guard let me = me else { return }
+                                            success: { [weak self] response in
+                                                guard let`self` = self else { return }
                                                 
-                                                me.isLoading = false
-                                                me.process(response: response,
+                                                self.isLoading = false
+                                                self.process(response: response,
                                                            isPrevious: previous,
                                                            isMyNewMessage: false)
             })
@@ -431,15 +455,12 @@ final class UniversalChatDatasource {
         onUpdate?(isPrevious, hasNewModels, isFirstLoad)
         }
         isFirstLoad = false
-//        if  isFirstLoad && hasNewModels {
-//            isFirstLoad = false
-//        }
     }
     
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
-        addModels(models: model.chat, isPrevious: isPrevious)
+        addModels(models: model.discussion.chat, isPrevious: isPrevious)
         chatModel = model
-        if model.chat.isEmpty {
+        if model.discussion.chat.isEmpty {
             if isPrevious {
                 hasPrevious = false
             } else {
@@ -447,8 +468,8 @@ final class UniversalChatDatasource {
                 forwardOffset = 0
             }
         }
-        lastRead = model.lastRead
-        teamAccessLevel = model.teamPart?.accessLevel ?? .noAccess
+        lastRead = model.discussion.lastRead
+        teamAccessLevel = model.team?.accessLevel ?? .noAccess
     }
     
     private func processPrivateChat(messages: [ChatEntity], isPrevious: Bool, isMyNewMessage: Bool) {

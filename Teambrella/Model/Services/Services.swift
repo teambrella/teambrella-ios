@@ -37,7 +37,7 @@ class ServicesHandler {
     let info: InfoMaker = InfoMaker()
     
     /// server interoperability (should be removed from here when all requests will go through DAO)
-    lazy var server = ServerService()
+    lazy var server = ServerService(router: self.router)
     
     /// data access object
     lazy var dao: DAO = ServerDAO()
@@ -85,6 +85,23 @@ class ServicesHandler {
     
     private init() {
         PKHUD.sharedHUD.gracePeriod = 0.5
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(cryptoMalfunction),
+                                               name: .cryptoKeyFailure, object: nil)
+    }
+
+    @objc
+    func cryptoMalfunction() {
+        service.keyStorage.deleteStoredKeys()
+        if let vc = service.router.frontmostViewController {
+            let message =  """
+            Private key that was stored is not a valid BTC key. It will be deleted from the app. Please restart.
+            """
+            let alert = UIAlertController(title: "Fatal Error", message: message, preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "OK", style: .destructive, handler: nil)
+            alert.addAction(cancel)
+            vc.present(alert, animated: true, completion: nil)
+        }
     }
     
 }

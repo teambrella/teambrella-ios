@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 class BlockchainDateFormatter: DateFormatter {
     override init() {
@@ -36,13 +35,5 @@ class BlockchainDateFormatter: DateFormatter {
     func setup() {
          dateFormat = "yyyy-MM-dd HH:mm:ss"
     }
-    
-    func date(from json: JSON, key: String) -> Date? {
-        return date(from: json[key].stringValue)
-    }
-    
-    func nsDate(from json: JSON, key: String) -> NSDate? {
-        return date(from: json, key: key) as NSDate?
-    }
-    
+
 }

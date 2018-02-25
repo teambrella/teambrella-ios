@@ -39,11 +39,31 @@ final class MainRouter {
     var masterTabBar: MasterTabBarController? {
         return navigator?.viewControllers.filter { $0 is MasterTabBarController }.first as? MasterTabBarController
     }
-    
+
+    var frontmostViewController: UIViewController? {
+        return topViewController()
+    }
+
+    private func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController)
+        -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(base: selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
+    }
+
     func push(vc: UIViewController, animated: Bool = true) {
         navigator?.pushViewController(vc, animated: animated)
     }
-    
+
     private func switchTab(to tab: TabType) -> UIViewController? {
         return masterTabBar?.switchTo(tabType: tab)
     }
@@ -218,13 +238,19 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
-    func presentCompareTeamRisk(ranges: [RiskScaleEntity.Range]) {
+    func presentCompareTeamRisk(ranges: [RiskScaleRange]) {
         guard let vc = CompareTeamRiskVC.instantiate() as? CompareTeamRiskVC else { fatalError("Error instantiating") }
         
         vc.ranges = ranges
         push(vc: vc)
     }
-    
+
+    func presentConsole() {
+        guard let vc = Console.instantiate() as? Console else { fatalError("Error instantiating") }
+
+        push(vc: vc)
+    }
+
     // MARK: Present Modally
     
     func showChooseTeam(in viewController: UIViewController, delegate: ChooseYourTeamControllerDelegate) {
@@ -329,7 +355,8 @@ final class MainRouter {
             vc.mode = .demoExpired
         }
     }
-    
+
+    @discardableResult
     func showSOD(mode: SODVC.SODMode = .outdated, in controller: UIViewController) -> SODVC? {
         guard let vc = SODVC.instantiate() as? SODVC else { return nil }
         

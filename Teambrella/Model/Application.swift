@@ -17,6 +17,12 @@
 import Foundation
 
 class Application {
+    #if SURILLA
+    let appID: String = "1259298681" //"1294611410"
+    #else
+    let appID: String = "1259298681"
+    #endif
+
     var version: String { return Bundle.main
         .object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "" }
     

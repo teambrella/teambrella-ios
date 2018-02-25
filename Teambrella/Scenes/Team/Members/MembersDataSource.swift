@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 enum TeammateSectionType {
     case new, teammate
@@ -55,7 +54,7 @@ class MembersDatasource {
         self.strategy = orderByRisk ? MembersRiskStrategy() : MembersListStrategy()
     }
     
-    func setRanges(ranges: [RiskScaleEntity.Range]) {
+    func setRanges(ranges: [RiskScaleRange]) {
         strategy.ranges = ranges
     }
     

@@ -25,21 +25,29 @@ import SwiftyJSON
 struct SocketAction: CustomStringConvertible {
     let command: SocketCommand
     let data: SocketData
-    let json: JSON?
     
     var description: String { return "Socket action: \(command); data: \(data.stringValue)" }
     var socketString: String { return data.stringValue }
     
-    init?(json: JSON) {
-        guard let commandValue = json["Cmd"].int,
-            let command = SocketCommand(rawValue: commandValue) else { return nil }
-        guard let data = SocketData.with(command: command, json: json) else { return nil }
-        
-        self.command = command
-        self.data = data
-        self.json = json
+    init?(data: Data) {
+        do {
+            guard let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                return nil
+            }
+            guard let commandValue = dict["Cmd"] as? Int else { return nil }
+            guard let command = SocketCommand(rawValue: commandValue) else { return nil }
+            guard let data = SocketData.with(command: command, dict: dict) else { return nil }
+
+            self.command = command
+            self.data = data
+
+        } catch {
+            log("Error initializing \(type(of: self)): \(error)", type: .error)
+            return nil
+        }
     }
-    
+
+    /*
     init?(string: String) {
         let components = string.components(separatedBy: ";")
         guard let first = components.first,
@@ -53,6 +61,7 @@ struct SocketAction: CustomStringConvertible {
         
         self.init(command: command, data: data)
     }
+    */
     
     init?(command: SocketCommand, data: SocketData) {
         guard command == data.command else {
@@ -61,13 +70,11 @@ struct SocketAction: CustomStringConvertible {
         
         self.command = command
         self.data = data
-        json = nil
     }
     
     init(data: SocketData) {
         self.command = data.command
         self.data = data
-        json = nil
     }
     
 }

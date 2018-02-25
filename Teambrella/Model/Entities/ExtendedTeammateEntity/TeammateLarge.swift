@@ -20,41 +20,22 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-class TeammateLarge {
+class TeammateLarge: Decodable {
     let teammateID: Int
-    let ver: Int64
-    
     let lastUpdated: Int64
-    
-    var topic: Topic
+    var topic: TopicEntity
     var basic: BasicInfo
     var voting: VotingInfo?
+    var voted: VotingInfo?
     let teamPart: TeamPart?
     let object: CoveredObject
     let stats: TeammateStats
     let riskScale: RiskScaleEntity?
-
     var description: String {
         return "ExtendedTeammateEntity \(teammateID)"
     }
-    
-    init(json: JSON) {
 
-        teamPart = TeamPart(json: json["TeamPart"])
-
-        teammateID = json["Id"].intValue
-        ver = json["Ver"].int64Value
-        lastUpdated = json["LastUpdated"].int64Value
-        topic = TopicFactory.topic(with: json["DiscussionPart"])
-        basic = BasicInfo(json: json["BasicPart"])
-        voting = VotingInfo(json: json["VotingPart"])
-        object = CoveredObject(json: json["ObjectPart"])
-        stats = TeammateStats(json: json["StatsPart"])
-        riskScale = RiskScaleEntity(json: json["RiskScalePart"])
-    }
-    
     func myProxy(set: Bool) {
         basic.isMyProxy = set
     }
@@ -64,13 +45,26 @@ class TeammateLarge {
         topic.unreadCount = votingResult.unreadCount
     }
 
-    struct BasicInfo {
+    enum CodingKeys: String, CodingKey {
+        case teamPart = "TeamPart"
+        case teammateID = "Id"
+        case lastUpdated = "LastUpdated"
+        case topic = "DiscussionPart"
+        case basic = "BasicPart"
+        case voting = "VotingPart"
+        case voted = "VotedPart"
+        case object = "ObjectPart"
+        case stats = "StatsPart"
+        case riskScale = "RiskScalePart"
+    }
+    
+    struct BasicInfo: Decodable {
         let id: String
         let teamID: Int
 
         let avatar: String
         let name: Name
-        let city: String
+        let city: String?
         let facebook: String
 
         let isProxiedByMe: Bool
@@ -89,32 +83,32 @@ class TeammateLarge {
 
         let dateJoined: Date?
 
-        init(json: JSON) {
-            id = json["UserId"].stringValue
-            teamID = json["TeamId"].intValue
-            avatar = json["Avatar"].stringValue
-            name = Name(fullName: json["Name"].stringValue)
-            city = json["City"].stringValue
-            facebook = json["FacebookUrl"].stringValue
-            isProxiedByMe = json["AmIProxy"].boolValue
-            isMyProxy = json["IsMyProxy"].boolValue
-            role = TeammateType(rawValue: json["Role"].intValue) ?? .regular
-            state = TeammateState(rawValue: json["State"].intValue) ?? .joinVoting
-            maritalStatus = MaritalStatus(rawValue: json["MaritalStatus"].intValue) ?? .unknown
-            risk = json["Risk"].doubleValue
-            averageRisk = json["AverageRisk"].doubleValue
-            totallyPaidAmount = json["TotallyPaidAmount"].doubleValue
-            coversMeAmount = json["TheyCoverMeAmount"].doubleValue
-            iCoverThemAmount = json["ICoverThemAmount"].doubleValue
-            gender = Gender.fromServer(integer: json["Gender"].intValue)
-            dateJoined = Formatter.teambrella.date(from: json["DateJoined"].stringValue)
+        enum CodingKeys: String, CodingKey {
+            case id = "UserId"
+            case teamID = "TeamId"
+            case avatar = "Avatar"
+            case name = "Name"
+            case city = "City"
+            case facebook = "FacebookUrl"
+            case isProxiedByMe = "AmIProxy"
+            case isMyProxy = "IsMyProxy"
+            case role = "Role"
+            case state = "State"
+            case maritalStatus = "MaritalStatus"
+            case risk = "Risk"
+            case averageRisk = "AverageRisk"
+            case totallyPaidAmount = "TotallyPaidAmount"
+            case coversMeAmount = "TheyCoverMeAmount"
+            case iCoverThemAmount = "ICoverThemAmount"
+            case gender = "Gender"
+            case dateJoined = "DateJoined"
         }
     }
 
-    struct VotingInfo {
+    struct VotingInfo: Decodable {
         let riskVoted: Double?
         let myVote: Double?
-        //let proxyVote: Double?
+        let proxyVote: Double?
 
         let proxyAvatar: String?
         let proxyName: String?
@@ -124,20 +118,15 @@ class TeammateLarge {
         let votersCount: Int
         let votersAvatars: [String]
 
-        let otherCount: Int
-
-        init?(json: JSON) {
-            guard json.dictionary != nil else { return nil }
-
-            riskVoted = json["RiskVoted"].double
-            myVote = json["MyVote"].double
-            //proxyVote = json["ProxyVote"].double
-            proxyAvatar = json["ProxyAvatar"].string
-            proxyName = json["ProxyName"].string
-            remainingMinutes = json["RemainedMinutes"].intValue
-            votersCount = json["OtherCount"].intValue
-            votersAvatars = json["OtherAvatars"].arrayObject as? [String] ?? []
-            otherCount = json["OtherCount"].intValue
+        enum CodingKeys: String, CodingKey {
+            case riskVoted = "RiskVoted"
+            case myVote = "MyVote"
+            case proxyAvatar = "ProxyAvatar"
+            case proxyVote = "ProxyVote"
+            case proxyName = "ProxyName"
+            case remainingMinutes = "RemainedMinutes"
+            case votersCount = "OtherCount"
+            case votersAvatars = "OtherAvatars"
         }
 
     }

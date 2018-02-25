@@ -51,7 +51,11 @@ struct TeammateCellBuilder {
                                        controller: TeammateProfileVC?) {
         cell.avatar.showAvatar(string: teammate.basic.avatar)
         cell.nameLabel.text = teammate.basic.name.entire
-        cell.infoLabel.text = teammate.basic.city.uppercased()
+        if let city = teammate.basic.city {
+            cell.infoLabel.text = city.uppercased()
+        } else {
+            cell.infoLabel.text = ""
+        }
     }
     
     private static func populateSummary(cell: TeammateSummaryCell,
@@ -132,7 +136,7 @@ struct TeammateCellBuilder {
         cell.layoutIfNeeded()
         cell.middleAvatar.showAvatar(string: teammate.basic.avatar)
         
-        if SimpleStorage().string(forKey: .swipeHelperWasShown) != nil {
+        if SimpleStorage().bool(forKey: .swipeHelperWasShown) {
             cell.swipeToVoteView.isHidden = true
         } else {
             cell.swipeToVoteView.isHidden = false
@@ -154,9 +158,9 @@ struct TeammateCellBuilder {
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
         let owner: String
         if let me = service.session?.currentUserID, me == teammate.basic.id {
-            owner = "Main.my".localized
+            owner = "General.my".localized
         } else {
-            owner = teammate.basic.gender == .male ? "Main.his".localized : "Main.her".localized
+            owner = teammate.basic.gender == .male ? "General.his".localized : "General.her".localized
         }
         cell.titleLabel.text = owner.uppercased() + " " + type.localizedCoverageObject
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
@@ -167,6 +171,9 @@ struct TeammateCellBuilder {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
             left.currencyLabel.text = service.currencyName
+            left.isCurrencyVisible = true
+            left.isPercentVisible = false
+            left.isBadgeVisible = false
         }
         if let middle = cell.numberBar.middle { // math abs!!!
             middle.titleLabel.text = "Team.Teammates.net".localized
@@ -175,6 +182,9 @@ struct TeammateCellBuilder {
                 Int(teammate.basic.totallyPaidAmount - 0.5)
             middle.amountLabel.text = String(test)
             middle.currencyLabel.text = service.currencyName
+            middle.isCurrencyVisible = true
+            middle.isPercentVisible = false
+            middle.isBadgeVisible = false
         }
         if let right = cell.numberBar.right {
             right.titleLabel.text = "Team.TeammateCell.risk".localized
@@ -183,6 +193,8 @@ struct TeammateCellBuilder {
             right.badgeLabel.text = avg + " AVG"
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
+            right.isCurrencyVisible = false
+            right.isPercentVisible = false
         }
         
         if let imageString = teammate.object.smallPhotos.first {
@@ -218,7 +230,6 @@ struct TeammateCellBuilder {
         } else {
             cell.weightValueLabel.text = String(Int(stats.weight))
         }
-//        cell.weightValueLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
         
         cell.proxyRankTitleLabel.text = "Team.TeammateCell.proxyRank".localized
         cell.proxyRankValueLabel.text = String(format: "%.1f", stats.proxyRank)
@@ -262,7 +273,7 @@ struct TeammateCellBuilder {
         cell.addButton.addTarget(self, action: #selector(TeammateProfileVC.tapAddToProxy), for: .touchUpInside)
     }
     
-    private static func populateDiscussion(cell: DiscussionCell, with stats: Topic, avatar: String) {
+    private static func populateDiscussion(cell: DiscussionCell, with stats: TopicEntity, avatar: String) {
         cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: avatar)))
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
         switch stats.minutesSinceLastPost {
@@ -287,7 +298,9 @@ struct TeammateCellBuilder {
         cell.discussionLabel.text = "Team.TeammateCell.discussion".localized
     }
     
-    private static func populateCompactDiscussion(cell: DiscussionCompactCell, with stats: Topic, avatar: String) {
+    private static func populateCompactDiscussion(cell: DiscussionCompactCell,
+                                                  with stats: TopicEntity,
+                                                  avatar: String) {
         cell.avatarView.showAvatar(string: avatar)
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
         cell.timeLabel.text = DateProcessor().stringFromNow(seconds: stats.minutesSinceLastPost).uppercased()

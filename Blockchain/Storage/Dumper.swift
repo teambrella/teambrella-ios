@@ -49,6 +49,7 @@ class Dumper {
 
     func sendDatabaseDump(privateKey: String) {
         let url = dbURL
+        print("url: \(url)")
         printContents()
         log("Trying to send dump", type: .crypto)
         do {
@@ -58,7 +59,8 @@ class Dumper {
                          data: file,
                          privateKey: privateKey,
                          success: { json in
-                            print("Dump sent successfully: \(json)")
+                            let serialized = (try? JSONSerialization.jsonObject(with: json, options: [])) ?? []
+                            print("Dump sent successfully: \(serialized)")
             }, failure: { error in
                 log("Dump not sent with error: \(String(describing: error))", type: [.error, .crypto])
             })

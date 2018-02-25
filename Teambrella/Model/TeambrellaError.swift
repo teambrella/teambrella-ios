@@ -30,6 +30,7 @@ struct TeambrellaError: Error {
         case wrongReply                 = -665
         case malformedEthereumAddress   = -664
         case malformedDate              = -663
+        case noPagingInfo               = -662
         case emptyReply                 = -1
         
         case fatalError                 = 1
@@ -40,6 +41,7 @@ struct TeambrellaError: Error {
         case noTeamsApplicationPending  = 8
         case noTeamsApplicationApproved = 9
         case argumentOutOfRange         = 10
+        case unsupportedClientVersion   = 12
         
         case teamAlreadyJoined          = 5010
         case teamJoinedAndProxyExists   = 5011
@@ -83,7 +85,10 @@ struct TeambrellaErrorFactory {
     static func wrongReply() -> TeambrellaError {
         return TeambrellaError(kind: .wrongReply, description: "Wrong reply from server")
     }
-    
+
+    static func noPagingInfo() -> TeambrellaError {
+        return TeambrellaError(kind: .noPagingInfo, description: "No Paging info")
+    }
     static func malformedEthereumAddress() -> TeambrellaError {
         return TeambrellaError(kind: .malformedEthereumAddress, description: "Not a valid Ethereum address")
     }

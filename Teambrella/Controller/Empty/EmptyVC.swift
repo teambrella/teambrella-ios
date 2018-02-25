@@ -26,6 +26,7 @@ class EmptyVC: UIViewController {
     @IBOutlet private var mainLabel: UILabel!
     @IBOutlet private var detailsLabel: UILabel!
     @IBOutlet private var stackView: UIStackView!
+    @IBOutlet var backImageView: UIImageView!
     
     class func show(in viewController: UIViewController,
                     inView: UIView? = nil,
@@ -67,7 +68,11 @@ class EmptyVC: UIViewController {
     }
     
     func remove() {
-        dismiss(animated: true, completion: nil)
+        self.view.removeFromSuperview()
+        self.removeFromParentViewController()
+        self.didMove(toParentViewController: nil)
+        
+       // dismiss(animated: true, completion: nil)
     }
     
 }

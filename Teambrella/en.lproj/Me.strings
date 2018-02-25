@@ -6,99 +6,99 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Me.CoverageVC.indicatorTitle"                 = "Coverage";
-"Me.ProfileVC.indicatorTitle"                  = "Profile";
-"Me.WalletVC.indicatorTitle"                   = "Wallet";
+"Me.CoverageVC.indicatorTitle"                     = "Coverage";
+"Me.ProfileVC.indicatorTitle"                      = "Profile";
+"Me.WalletVC.indicatorTitle"                       = "Wallet";
 
-"Me.WalletVC.leftBrick.title"                  = "RESERVED";
-"Me.WalletVC.rightBrick.title"                 = "AVAILABLE";
-"Me.WalletVC.withdrawButton"                   = "Withdraw";
-"Me.WalletVC.fundingCell.title"                = "RECOMMENDED FUNDING";
-"Me.WalletVC.fundButton"                       = "Fund Wallet";
+"Me.WalletVC.leftBrick.title"                      = "RESERVED";
+"Me.WalletVC.rightBrick.title"                     = "AVAILABLE";
+"Me.WalletVC.withdrawButton"                       = "Withdraw";
+"Me.WalletVC.fundingCell.title"                    = "RECOMMENDED FUNDING";
+"Me.WalletVC.fundButton"                           = "Fund Wallet";
 
-"Me.WalletVC.actionsCell.cosigners"            = "Co-signers";
-"Me.WalletVC.actionsCell.transactions"         = "Transactions";
-"Me.WalletVC.actionsCell.withdrawAddress"      = "Default withdraw address";
+"Me.WalletVC.actionsCell.cosigners"                = "Cosigners";
+"Me.WalletVC.actionsCell.transactions"             = "Transactions";
+"Me.WalletVC.actionsCell.withdrawAddress"          = "Default withdraw address";
 
-"Me.WalletDetailsVC.title"                     = "QR-code";
-"Me.WalletDetailsVC.fundButton"                = "How do I fund a wallet? >";
-"Me.WalletDetailsVC.headerLabel"               = "Ethereum Account";
-"Me.WalletDetailsVC.timeLabel"                 = "Valid for 24 hours";
-"Me.WalletDetailsVC.copyAddressButton"         = "Copy Address";
-"Me.WalletDetailsVC.copiedAddress"             = "Copied";
+"Me.WalletDetailsVC.title"                         = "QR-code";
+"Me.WalletDetailsVC.fundButton"                    = "How do I fund a wallet? >";
+"Me.WalletDetailsVC.headerLabel"                   = "Ethereum Account";
+"Me.WalletDetailsVC.timeLabel"                     = "Valid for 24 hours";
+"Me.WalletDetailsVC.copyAddressButton"             = "Copy Address";
+"Me.WalletDetailsVC.copiedAddress"                 = "Copied";
 
 
-"Me.CoverageVC.fundButton.title.toIncrease"    = "Fund Wallet to increase";
-"Me.CoverageVC.fundButton.title"               = "Fund Wallet";
-"Me.CoverageVC.title"                          = "HOW IT WORKS";
-"Me.CoverageVC.subtitle"                       = "Use the slider to understand how Expenses impact your maximum reimbursement.";
-"Me.CoverageVC.maxExpenses"                    = "Max Expenses covered";
-"Me.CoverageVC.yourExpenses"                   = "In case your Expenses are";
-"Me.CoverageVC.teamPay"                        = "The team would pay you up to";
+"Me.CoverageVC.fundButton.title.toIncrease"        = "Fund Wallet to increase";
+"Me.CoverageVC.fundButton.title"                   = "Fund Wallet";
+"Me.CoverageVC.title"                              = "HOW IT WORKS";
+"Me.CoverageVC.subtitle"                           = "Use the slider to understand how Expenses impact your maximum reimbursement.";
+"Me.CoverageVC.maxExpenses"                        = "Max Expenses covered";
+"Me.CoverageVC.yourExpenses"                       = "In case your Expenses are";
+"Me.CoverageVC.teamPay"                            = "The team would pay you up to";
 
-"Me.Report.ItemCell.title"                     = "REPORT";
-"Me.Report.DateCell.title"                     = "INCIDENT DATE";
-"Me.Report.ExpensesCell.title"                 = "EXPENSES";
-"Me.Report.DescriptionCell.title"              = "DESCRIBE YOUR CASE";
-"Me.Report.DescriptionCell.title-discussion"   = "POST";
-"Me.Report.PhotosCell.title"                   = "PHOTOS";
-"Me.Report.WalletCell.title"                   = "REIMBURSE TO";
-"Me.Report.TitleCell.title"                    = "TITLE";
-"Me.Report.HeaderTitleCell.title"              = "DISCUSSION";
+"Me.Report.ItemCell.title"                         = "REPORT";
+"Me.Report.DateCell.title"                         = "INCIDENT DATE";
+"Me.Report.ExpensesCell.title"                     = "EXPENSES";
+"Me.Report.DescriptionCell.title"                  = "DESCRIBE YOUR CASE";
+"Me.Report.DescriptionCell.title-discussion"       = "POST";
+"Me.Report.PhotosCell.title"                       = "PHOTOS";
+"Me.Report.WalletCell.title"                       = "REIMBURSE TO";
+"Me.Report.TitleCell.title"                        = "TITLE";
+"Me.Report.HeaderTitleCell.title"                  = "DISCUSSION";
 
-"Me.Report.ExpensesCell.deductibleTitle"       = "DEDUCTIBLE";
-"Me.Report.ExpensesCell.coverageTitle"         = "COVERAGE";
-"Me.Report.ExpensesCell.amountTitle"           = "AMOUNT";
+"Me.Report.ExpensesCell.deductibleTitle"           = "DEDUCTIBLE";
+"Me.Report.ExpensesCell.coverageTitle"             = "COVERAGE";
+"Me.Report.ExpensesCell.amountTitle"               = "AMOUNT";
 
-"Me.Report.PhotosCell.buttonTitle"             = "Add Photos";
+"Me.Report.PhotosCell.buttonTitle"                 = "Add Photos";
 
-"Me.Report.ReportClaim.title"                  = "Report a Claim";
-"Me.Report.NewDiscussion.title"                = "New Discussion";
+"Me.Report.ReportClaim.title"                      = "Report a Claim";
+"Me.Report.NewDiscussion.title"                    = "New Discussion";
 
-"Me.WalletVC.WalletTransactionsVC.title"       = "Transactions";
-"Me.WalletVC.WalletTransactionsVC.amountTitle" = "Amount:";
-"Me.WalletVC.WalletTransactionsVC.kindTitle"   = "Kind:";
-"Me.WalletVC.WalletTransactionsVC.statusTitle" = "Status:";
+"Me.WalletVC.WalletTransactionsVC.title"           = "Transactions";
+"Me.WalletVC.WalletTransactionsVC.amountTitle"     = "Amount:";
+"Me.WalletVC.WalletTransactionsVC.kindTitle"       = "Kind:";
+"Me.WalletVC.WalletTransactionsVC.statusTitle"     = "Status:";
 
-"Me.Report.ImageSource.title"                  = "Image from";
-"Me.Report.ImageSource.gallery"                = "Gallery";
-"Me.Report.ImageSource.camera"                 = "Camera";
+"Me.Report.ImageSource.title"                      = "Image from";
+"Me.Report.ImageSource.gallery"                    = "Gallery";
+"Me.Report.ImageSource.camera"                     = "Camera";
 
-"Me.WalletVC.fundingCell.additionalTitle"      = "RECOMMENDED FUNDING";
-"Me.WalletVC.WalletCosignersVC.title"          = "Co-signers";
+"Me.WalletVC.WalletCosignersVC.title"              = "Cosigners";
 
-"Me.Report.submitButtonTitle-submit"           = "Submit";
-"Me.Report.submitButtonTitle-create"           = "Create";
-"Me.Report.cancelButtonTitle"                  = "Cancel";
+"Me.Report.submitButtonTitle-submit"               = "Submit";
+"Me.Report.submitButtonTitle-create"               = "Create";
+"Me.Report.cancelButtonTitle"                      = "Cancel";
 
-"Me.Wallet.Withdraw" = "Withdraw";
-"Me.Wallet.Withdraw.Details.title" = "WITHDRAW DETAILS";
-"Me.Wallet.Withdraw.Details.to.title" = "TO";
-"Me.Wallet.Withdraw.Details.to.placeholder" = "To ethereum address";
-"Me.Wallet.Withdraw.Details.amount.title" = "AMOUNT mETH";
-"Me.Wallet.Withdraw.Details.amount.placeholder" = "Value";
-"Me.Wallet.Withdraw.Details.submitButton.title" = "Submit";
-"Me.Wallet.Withdraw.header.queued" = "WITHDRAWAL QUEUED";
-"Me.Wallet.Withdraw.header.inProgress" = "WITHDRAWAL IN PROGRESS";
-"Me.Wallet.Withdraw.header.history" = "WITHDRAWAL HISTORY";
-"Me.Wallet.Withdraw.WithdrawInfo.title" = "WITHDRAW INFORMATION";
-"Me.Wallet.Withdraw.WithdrawInfo.balance" = "Balance";
-"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest" = "You may request up to balance amount for withdrawal %@ mETH";
-"Me.Wallet.Withdraw.WithdrawInfo.youHave" = "You have %@ mETH reserved, if some part of the reserved funds becomes available, it would be automatically scheduled for the withdrawal.";
+"Me.Wallet.Withdraw"                               = "Withdraw";
+"Me.Wallet.Withdraw.Details.title"                 = "WITHDRAW DETAILS";
+"Me.Wallet.Withdraw.Details.to.title"              = "TO";
+"Me.Wallet.Withdraw.Details.to.placeholder"        = "To ethereum address";
+"Me.Wallet.Withdraw.Details.amount.title"          = "AMOUNT mETH";
+"Me.Wallet.Withdraw.Details.amount.placeholder"    = "Value";
+"Me.Wallet.Withdraw.Details.submitButton.title"    = "Submit";
+"Me.Wallet.Withdraw.header.queued"                 = "WITHDRAWAL QUEUED";
+"Me.Wallet.Withdraw.header.inProgress"             = "WITHDRAWAL IN PROGRESS";
+"Me.Wallet.Withdraw.header.history"                = "WITHDRAWAL HISTORY";
+"Me.Wallet.Withdraw.WithdrawInfo.title"            = "WITHDRAW INFORMATION";
+"Me.Wallet.Withdraw.WithdrawInfo.balance"          = "Balance";
+"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest"    = "You may request up to balance amount for withdrawal %@ mETH";
+"Me.Wallet.Withdraw.WithdrawInfo.youHave"          = "You have %@ mETH reserved, if some part of the reserved funds becomes available, it would be automatically scheduled for the withdrawal.";
 
-"Me.Wallet.Withdraw.noCameraAccess.title" = "Access to camera is required to scan QR code";
-"Me.Wallet.Withdraw.noCameraAccess.details" = "Please grant access to device camera for Teambrella app to be able to scan QR codes";
-"Me.Wallet.Withdraw.noCameraAccess.cancelButton" = "Cancel";
+"Me.Wallet.Withdraw.noCameraAccess.title"          = "Access to camera is required to scan QR code";
+"Me.Wallet.Withdraw.noCameraAccess.details"        = "Please grant access to device camera for Teambrella app to be able to scan QR codes";
+"Me.Wallet.Withdraw.noCameraAccess.cancelButton"   = "Cancel";
 "Me.Wallet.Withdraw.noCameraAccess.settingsButton" = "Settings";
 
-"Me.WalletVC.lowerBrick.title"                 = "RECOMMENDED";
-"Me.Wallet.Transactions.to" = "TO";
-"Me.Wallet.Transactions.withdrawal" = "WITHDRAWAL";
-"Me.Wallet.Transactions.claimNumber" = "CLAIM %d";
-"Me.Wallet.Transactions.kind.pending" = "PENDING";
-"Me.Wallet.Transactions.kind.cancelled" = "CANCELLED";
+"Me.WalletVC.lowerBrick.title"                     = "RECOMMENDED";
+"Me.Wallet.Transactions.to"                        = "TO";
+"Me.Wallet.Transactions.withdrawal"                = "WITHDRAWAL";
+"Me.Wallet.Transactions.claimNumber"               = "CLAIM %d";
+"Me.Wallet.Transactions.kind.pending"              = "PENDING";
+"Me.Wallet.Transactions.kind.cancelled"            = "CANCELLED";
 
-"Me.Wallet.Transactions.Empty.title" = "No transactions yet";
-"Me.Wallet.Transactions.Empty.details" = "...";
-"Me.Wallet.Cosigners.Empty.title" = "No co-signers yet";
-"Me.Wallet.Cosigners.Empty.details" = "...";
+"Me.Wallet.Transactions.Empty.title"               = "No transactions yet";
+"Me.Wallet.Transactions.Empty.details"             = "...";
+"Me.Wallet.Cosigners.Empty.title"                  = "No cosigners yet";
+"Me.Wallet.Cosigners.Empty.details"                = "...";
+

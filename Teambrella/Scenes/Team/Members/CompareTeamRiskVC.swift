@@ -29,7 +29,7 @@ class CompareTeamRiskVC: UIViewController, Routable {
     @IBOutlet var searchBar: UISearchBar!
     
     let dataSource = MembersDatasource(orderByRisk: true)
-    var ranges: [RiskScaleEntity.Range] = []
+    var ranges: [RiskScaleRange] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

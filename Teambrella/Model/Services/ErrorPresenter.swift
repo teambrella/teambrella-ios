@@ -37,6 +37,9 @@ final class ErrorPresenter {
                 } else {
                     service.router.logout()
                 }
+            case .unsupportedClientVersion:
+                let router = service.router
+                SODManager(router: router).showCriticallyOldVersion()
             default:
                 presentTeambrella(error: error)
             }
@@ -54,49 +57,49 @@ final class ErrorPresenter {
             }
         }
     }
-    
+
     func hideAll() {
         for id in ids {
             SwiftMessages.hide(id: id)
         }
         ids.removeAll()
     }
-    
+
     func hide(id: String) {
         SwiftMessages.hide(id: id)
         if let idx = ids.index(of: id) {
             ids.remove(at: idx)
         }
     }
-    
+
     private func presentGeneral(error: Error) {
         showMessage(title: "Error", details: "\(error)")
     }
-    
+
     private func presentTeambrella(error: TeambrellaError) {
         showMessage(title: "\(error.kind)", details: error.description)
     }
-    
+
     private func presentServerUnreacheable() {
         let view = MessageView.viewFromNib(layout: .statusLine)
         view.configureTheme(.warning)
         view.configureDropShadow()
-//        withUnsafePointer(to: &view) {
-//            view.id = "server.unreacheable \($0)"
-//        }
-        
+        //        withUnsafePointer(to: &view) {
+        //            view.id = "server.unreacheable \($0)"
+        //        }
+
         view.configureContent(title: "", body: "Main.Notification.noServer".localized)
-        
+
         var config = SwiftMessages.defaultConfig
         service.router.navigator.map { config.presentationContext = .view($0.view) }
         config.duration = .seconds(seconds: 5)
         SwiftMessages.hideAll()
         SwiftMessages.show(config: config, view: view)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//            SwiftMessages.hide(id: view.id)
-//        }
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        //            SwiftMessages.hide(id: view.id)
+        //        }
     }
-    
+
     private func showMessage(title: String, details: String) {
         let message = MessageView.viewFromNib(layout: .cardView)
         message.configureTheme(.warning)
@@ -112,7 +115,7 @@ final class ErrorPresenter {
                                  buttonTitle: "OK") { [weak self] button in
                                     self?.hide(id: id)
         }
-        
+
         var config = SwiftMessages.defaultConfig
         service.router.navigator.map { config.presentationContext = .view($0.view) }
         config.duration = .forever
@@ -120,5 +123,5 @@ final class ErrorPresenter {
         SwiftMessages.show(config: config, view: message)
         ids.append(id)
     }
-    
+
 }

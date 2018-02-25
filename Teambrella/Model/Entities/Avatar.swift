@@ -34,3 +34,8 @@ struct Avatar: Decodable {
     }
 
 }
+
+extension Avatar {
+    var urlString: String { return URLBuilder().avatarURLstring(for: string) }
+    var url: URL? { return URL(string: urlString) }
+}

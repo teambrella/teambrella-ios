@@ -44,7 +44,7 @@ final class LoginBlueVC: UIViewController {
         return recognizer
     }()
     
-    var isRegisteredFacebookUser: Bool { return Keychain.value(forKey: .ethPrivateAddress) != nil }
+    var isRegisteredFacebookUser: Bool { return KeychainService().value(forKey: .privateKey) != nil }
     
     // MARK: Lifecycle
     
@@ -82,6 +82,11 @@ final class LoginBlueVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
+        guard SimpleStorage().bool(forKey: .didLogWithKey) == false else {
+            logAsFacebookUser(user: nil)
+            return
+        }
+
         let manager = FBSDKLoginManager()
         manager.logOut()
         let permissions = ["public_profile", "email", "user_friends"]
@@ -114,7 +119,7 @@ final class LoginBlueVC: UIViewController {
             if let textField = controller.textFields?.first,
                 let text = textField.text,
                 text.count > 10 {
-                self?.setupBTCsecretAddress(string: text)
+                self?.insertSecretKey(string: text)
             }
         }))
         controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -243,13 +248,8 @@ Are you sure you want to completely remove your private key from this device?
         log("Error \(String(describing: error))", type: .error)
     }
     
-    private func setupBTCsecretAddress(string: String) {
-        let demo = Keychain.value(forKey: .ethPrivateAddressDemo)
-        guard demo != string else {
-            return
-        }
-        
-        Keychain.save(value: string, forKey: .ethPrivateAddress)
+    private func insertSecretKey(string: String) {
+        service.keyStorage.saveNewPrivateKey(string: string)
         logAsFacebookUser(user: nil)
     }
     

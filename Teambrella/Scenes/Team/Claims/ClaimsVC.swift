@@ -51,6 +51,9 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         HUD.show(.progress, onView: view)
         registerCells()
         dataSource.teammateID = teammateID
+        dataSource.onLoadHome = { [weak self] in
+            self?.setupObject()
+        }
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
             guard let `self` = self else { return }
@@ -58,13 +61,9 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
             self.collectionView.reloadData()
             self.showEmptyIfNeeded()
         }
-        dataSource.onLoadHome = { [weak self] in
-            self?.setupObject()
-        }
         dataSource.onError = { error in
             HUD.hide()
         }
-        dataSource.loadData()
         dataSource.loadHomeData()
         
         setupObjectView()
@@ -90,11 +89,13 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         objectImageView.image = nil
         objectTitle.text = nil
         objectSubtitle.text = nil
+        objectView.color = .veryLightBlueThree
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard isFirstLoading == false else {
+            dataSource.loadData()
             isFirstLoading = false
             return
         }
@@ -136,11 +137,13 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     func showEmptyIfNeeded() {
         if dataSource.isEmpty && emptyVC == nil {
             emptyVC = EmptyVC.show(in: self)
+            emptyVC?.backImageView.image = nil
             emptyVC?.setImage(image: #imageLiteral(resourceName: "iconTeam"))
             emptyVC?.setText(title: "Team.Claims.Empty.title".localized,
                              subtitle: "Team.Claims.Empty.details".localized)
         } else {
             emptyVC?.remove()
+            emptyVC = nil
         }
     }
 }
@@ -219,9 +222,9 @@ extension ClaimsVC: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size: CGSize!
         switch dataSource.cellType(for: indexPath) {
-        case .open: size = CGSize(width: collectionView.bounds.width - 32, height: 156)
+        case .open: size = CGSize(width: collectionView.bounds.width - 32, height: 128)
         case .voted: size = CGSize(width: collectionView.bounds.width, height: 112)
-        case .paid, .fullyPaid: size = CGSize(width: collectionView.bounds.width, height: 79)
+        case .paid, .fullyPaid: size = CGSize(width: collectionView.bounds.width, height: 72)
         }
         return size
     }
@@ -229,7 +232,11 @@ extension ClaimsVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: dataSource.showHeader(for: section) ? 50 : 0.01)
+        if section == 0 {
+            return CGSize(width: collectionView.bounds.width, height: 16)
+        } else {
+            return CGSize(width: collectionView.bounds.width, height: dataSource.showHeader(for: section) ? 50 : 0.01)
+        }
     }
 }
 

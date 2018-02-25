@@ -20,21 +20,19 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct TeammateStats {
+struct TeammateStats: Decodable {
     let weight: Double
     let proxyRank: Double
     let decisionFrequency: Double
     let discussionFrequency: Double
     let votingFrequency: Double
-    
-    init(json: JSON) {
-        weight = json["Weight"].doubleValue
-        proxyRank = json["ProxyRank"].doubleValue
-        decisionFrequency = json["DecisionFreq"].doubleValue
-        discussionFrequency = json["DiscussionFreq"].doubleValue
-        votingFrequency = json["VotingFreq"].doubleValue
+
+    enum CodingKeys: String, CodingKey {
+        case weight = "Weight"
+        case proxyRank = "ProxyRank"
+        case decisionFrequency = "DecisionFreq"
+        case discussionFrequency = "DiscussionFreq"
+        case votingFrequency = "VotingFreq"
     }
-    
 }

@@ -15,67 +15,101 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct ChatModel {
-    let lastUpdated: Int64
-    let discussion: JSON
-    //let lastRead: Int64
-    let chat: [ChatEntity]
-    let basicPart: BasicPart?
-    let teamPart: TeamPart?
-    let votingPart: VotingPart?
+struct ChatModel: Decodable, CustomStringConvertible {
+    var lastUpdated: Int64
+    let discussion: DiscussionPart
 
-    let claimID: Int
-    
-    let title: String
-    
-    init(json: JSON, chat: [ChatEntity]) {
-        lastUpdated = json["LastUpdated"].int64Value
-        discussion = json["DiscussionPart"]
-        self.chat = chat
-        basicPart = BasicPart(json: json["BasicPart"])
-        teamPart = TeamPart(json: json["TeamPart"])
-        votingPart = VotingPart(json: json["VotingPart"])
-        title = json["Title"].stringValue
-        claimID = json["Id"].intValue
+    let basic: BasicPart?
+    let team: TeamPart?
+    var voting: VotingPart?
+
+    let id: Int?
+    let lastRead: Int64?
+    //let title: String?
+
+    var isClaimChat: Bool {
+        return basic?.claimAmount != nil
     }
-    
-    // Discussion Part
-    var topicID: String { return discussion["TopicId"].stringValue }
-    var lastRead: Int64 { return discussion["LastRead"].int64Value }
-    var isMuted: Bool? { return discussion["IsMuted"].bool }
 
-    struct VotingPart {
-        let remainingMinutes: Int
-        let proxyName: String?
-        let proxyAvatar: String?
-        let myVote: Double?
+    var isApplicationChat: Bool {
+        return basic?.risk != nil
+    }
+
+    var description: String { return "\(type(of: self)) \(discussion.topicID); messages: \(discussion.chat.count)" }
+
+    mutating func update(with claimUpdate: ClaimVoteUpdate) {
+        lastUpdated = claimUpdate.lastUpdated
+        voting?.update(with: claimUpdate.voting)
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case lastUpdated = "LastUpdated"
+        case discussion = "DiscussionPart"
+        case basic = "BasicPart"
+        case team = "TeamPart"
+        case voting = "VotingPart"
+        case id = "Id"
+        //case title = "Title"
+        case lastRead = "LastRead"
+    }
+
+    struct DiscussionPart: Decodable {
+        let isMuted: Bool?
+        let lastRead: Int64
+        let topicID: String
+        let chat: [ChatEntity]
+
+        enum CodingKeys: String, CodingKey {
+            case isMuted = "IsMuted"
+            case lastRead = "LastRead"
+            case topicID = "TopicId"
+            case chat = "Chat"
+        }
+
+    }
+
+    struct VotingPart: Decodable {
+        var remainingMinutes: Int
+        var proxyName: Name?
+        var proxyAvatar: Avatar?
+        var myVote: Double?
 
         let riskVoted: Double?
-        let ratioVoted: ClaimVote?
+        var ratioVoted: ClaimVote?
 
-        let otherCount: Int?
-        let otherAvatars: [String]?
+        var otherCount: Int?
+        var otherAvatars: [Avatar]?
 
-        init(json: JSON) {
-            remainingMinutes = json["RemainedMinutes"].intValue
-            proxyName = json["ProxyName"].string
-            proxyAvatar = json["ProxyAvatar"].string
-            myVote = json["MyVote"].double
-
-            ratioVoted = json["RatioVoted"].double.map { ClaimVote($0) }
-            otherCount = json["OtherCount"].intValue
-            otherAvatars = json["OtherAvatars"].arrayObject as? [String]
-
-            riskVoted = json["RiskVoted"].double
+        mutating func update(with claim: ClaimEntityLarge.VotingPart) {
+            remainingMinutes = claim.minutesRemaining
+            proxyName = claim.proxyName
+            proxyAvatar = claim.proxyAvatar
+            myVote = claim.myVote?.value ?? claim.proxyVote?.value
+            ratioVoted = claim.ratioVoted
+            otherCount = claim.otherCount
+            otherAvatars = claim.otherAvatars
         }
+
+        enum CodingKeys: String, CodingKey {
+            case remainingMinutes = "RemainedMinutes"
+            case proxyName = "ProxyName"
+            case proxyAvatar = "ProxyAvatar"
+            case myVote = "MyVote"
+
+            case riskVoted = "RiskVoted"
+
+            case ratioVoted = "RatioVoted"
+            case otherCount = "OtherCount"
+            case otherAvatars = "OtherAvatars"
+        }
+
     }
 
     struct BasicPart: Decodable {
         let userID: String
         let avatar: String
-        let title: String
+        let title: String?
 
         let model: String?
         let year: Int?
@@ -88,9 +122,10 @@ struct ChatModel {
         let bigPhotos: [String]?
         let smallPhotos: [String]?
         let coverage: Coverage?
-        let claimAmount: Double?
+        let claimAmount: Fiat?
         let estimatedExpenses: Double?
         let incidentDate: Date?
+        let dateCreated: Date?
         let state: ClaimState?
         let reimbursement: Double?
 
@@ -113,34 +148,11 @@ struct ChatModel {
             case claimAmount = "ClaimAmount"
             case estimatedExpenses = "EstimatedExpenses"
             case incidentDate = "IncidentDate"
+            case dateCreated = "DateCreated"
             case state = "State"
             case reimbursement = "Reimbursement"
         }
 
-        init?(json: JSON) {
-            guard !json.isEmpty else { return nil }
-
-            userID = json["UserId"].stringValue
-            avatar = json["Avatar"].stringValue
-            title = json["Title"].stringValue
-
-            model = json["Model"].string
-            year = json["Year"].int
-            smallPhoto = json["SmallPhoto"].string
-            risk = json["Risk"].double
-            claimLimit = json["ClaimLimit"].double
-
-            name = Name(fullName: json["Name"].stringValue)
-            deductible = json["Deductible"].double
-            bigPhotos = json["BigPhotos"].arrayObject as? [String]
-            smallPhotos = json["SmallPhotos"].arrayObject as? [String]
-            coverage = json["Coverage"].double.map { Coverage($0) }
-            claimAmount = json["ClaimAmount"].double
-            estimatedExpenses = json["EstimatedExpenses"].double
-            incidentDate = json["IncidentDate"].string.flatMap { Formatter.teambrella.date(from: $0) }
-            state = json["State"].int.flatMap { ClaimState(rawValue: $0) }
-            reimbursement = json["Reimbursement"].double
-        }
     }
     
 }

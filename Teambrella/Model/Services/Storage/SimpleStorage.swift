@@ -18,10 +18,15 @@ import Foundation
 
 class SimpleStorage {
     enum StorageKey: String {
-        case teamID = "teambrella.currentTeam.id"
-        case recentScene = "storage.recentScene"
-        case uniqueIdentifier = "com.teambrella.application.uniqueIdentifier"
-        case swipeHelperWasShown = "com.teambrella.swipeHelperWasShown"
+        case teamID                      = "teambrella.currentTeam.id"
+        case recentScene                 = "storage.recentScene"
+        case uniqueIdentifier            = "com.teambrella.application.uniqueIdentifier"
+        case swipeHelperWasShown         = "com.teambrella.swipeHelperWasShown"
+        case outdatedVersionLastShowDate = "com.teambrella.outdatedVersionLastShowDate"
+        case disabledPushLastShowDate    = "com.teambrella.disabledPushLastShowDate"
+        case didLogWithKey               = "com.teambrella.didLogWithKey"
+        case lastUserType                = "com.teambrella.lastUserType"
+        case privateDemoKey              = "com.teambrella.privateDemoKey"
     }
     
     func store(int: Int, forKey: StorageKey) {
@@ -29,28 +34,38 @@ class SimpleStorage {
     }
     
     func store(bool: Bool, forKey: StorageKey) {
-        store(string: "\(bool)", forKey: forKey)
+        UserDefaults.standard.set(bool, forKey: forKey.rawValue)
+        UserDefaults.standard.synchronize()
     }
     
     func store(string: String, forKey: StorageKey) {
         UserDefaults.standard.set(string, forKey: forKey.rawValue)
         UserDefaults.standard.synchronize()
     }
+
+    func store(date: Date, forKey: StorageKey) {
+        UserDefaults.standard.set(date, forKey: forKey.rawValue)
+        UserDefaults.standard.synchronize()
+    }
+
+    func date(forKey: StorageKey) -> Date? {
+        return UserDefaults.standard.object(forKey: forKey.rawValue) as? Date
+    }
     
     func string(forKey: StorageKey) -> String? {
         return UserDefaults.standard.object(forKey: forKey.rawValue) as? String
+    }
+
+    func bool(forKey: StorageKey) -> Bool {
+        return UserDefaults.standard.bool(forKey: forKey.rawValue)
     }
     
     func int(forKey: StorageKey) -> Int? {
         return string(forKey: forKey).flatMap { Int($0) }
     }
     
-//    func bool(forKey: StorageKey) -> Bool? {
-//        return string(forKey: forKey).flatMap { Bool($0) }
-//    }
-    
     func cleanValue(forKey: StorageKey) {
-        UserDefaults.standard.setNilValueForKey(forKey.rawValue)
+        UserDefaults.standard.set(nil, forKey: forKey.rawValue)
         UserDefaults.standard.synchronize()
     }
 }

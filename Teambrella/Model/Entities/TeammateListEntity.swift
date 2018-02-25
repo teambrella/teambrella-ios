@@ -22,6 +22,23 @@
 import Foundation
 
 class TeammateListEntity: Decodable {
+    let id: Int
+
+    let claimLimit: Decimal
+    let claimsCount: Int
+    let isJoining: Bool
+    let isVoting: Bool
+    let model: String
+    let name: Name
+    let risk: Double?
+    let riskVoted: Double?
+    let totallyPaid: Double
+    let hasUnread: Bool
+    let userID: String
+    let year: Int
+    let avatar: String
+    let minutesRemaining: Int
+
     enum CodingKeys: String, CodingKey {
         case id = "Id"
         case claimLimit = "ClaimLimit"
@@ -39,22 +56,5 @@ class TeammateListEntity: Decodable {
         case avatar = "Avatar"
         case minutesRemaining = "VotingEndsIn"
     }
-    
-    let id: Int
-
-    let claimLimit: Int
-    let claimsCount: Int
-    let isJoining: Bool
-    let isVoting: Bool
-    let model: String
-    let name: Name
-    let risk: Double?
-    let riskVoted: Double?
-    let totallyPaid: Double
-    let hasUnread: Bool
-    let userID: String
-    let year: Int
-    let avatar: String
-    let minutesRemaining: Int
     
 }

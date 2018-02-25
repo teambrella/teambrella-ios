@@ -25,10 +25,11 @@ class CompactUserInfoHeader: UICollectionReusableView, XIBInitableCell {
     @IBOutlet var leftNumberView: NumberView!
     @IBOutlet var rightNumberView: NumberView!
     @IBOutlet var avatarView: RoundImageView!
-
+    @IBOutlet var radarView: RadarView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
     
 }

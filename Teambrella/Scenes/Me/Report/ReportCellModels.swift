@@ -28,31 +28,21 @@ protocol ReportCellModel {
     var isValid: Bool { get }
 }
 
-struct ItemReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportItemCell.cellID }
-    var preferredHeight: Float { return 120 }
+struct NewClaimCellModel: ReportCellModel {
+    var cellReusableIdentifier: String { return NewClaimCell.cellID }
+    var preferredHeight: Float { return 750 }
     let title = "Me.Report.ItemCell.title".localized
+    var isValid: Bool { return isExpensesValid && isDescriptionValid && isReimburseValid }
     
-    let name: Name
-    let photo: Photo
-    let location: String
+    let objectName: Name
+    let objectPhoto: Photo
+    let objectLocation: String
     
-    var isValid: Bool { return true }
-}
-
-struct DateReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportTextFieldCell.cellID }
-    var preferredHeight: Float { return 80 }
-    let title = "Me.Report.DateCell.title".localized
+    let dateTitle = "Me.Report.DateCell.title".localized
     var date: Date
+    //    var isDateValid: Bool { return true }
     
-    var isValid: Bool { return true }
-}
-
-struct ExpensesReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportExpensesCell.cellID }
-    var preferredHeight: Float { return 160 }
-    let title = "Me.Report.ExpensesCell.title".localized
+    let expensesTitle = "Me.Report.ExpensesCell.title".localized
     let deductibleTitle = "Me.Report.ExpensesCell.deductibleTitle".localized
     let coverageTitle = "Me.Report.ExpensesCell.coverageTitle".localized
     let amountTitle = "Me.Report.ExpensesCell.amountTitle".localized
@@ -62,55 +52,39 @@ struct ExpensesReportCellModel: ReportCellModel {
     var deductibleString: String { return String.truncatedNumber(MEth(deductible).value) }
     var coverage: Coverage
     var coverageString: String { return String.truncatedNumber(coverage.percentage) }
-    var isValid: Bool {
+    var isExpensesValid: Bool {
         guard let expenses = expenses else { return false }
         
         return expenses > 0
     }
     var amountString: String { return String.truncatedNumber((expenses ?? 0) * coverage.value) }
-}
-
-struct DescriptionReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportDescriptionCell.cellID }
-    var preferredHeight: Float { return 170 }
-    let title: String
-    var text: String
     
-    var isValid: Bool { return title != "" && text != "" }
-}
-
-struct PhotosReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportPhotoGalleryCell.cellID }
-    var preferredHeight: Float { return 145 }
-    let title = "Me.Report.PhotosCell.title".localized
+    let descriptionTitle = "Me.Report.DescriptionCell.title".localized
+    var descriptionText: String
+    var isDescriptionValid: Bool { return descriptionTitle != "" && descriptionText != "" }
+    
+    let photosTitle = "Me.Report.PhotosCell.title".localized
     let buttonTitle = "Me.Report.PhotosCell.buttonTitle".localized
     var photos: [String]
+    //    var isPhotosValid: Bool { return true }
     
-    var isValid: Bool { return true }
+    let reimburseTitle = "Me.Report.WalletCell.title".localized
+    var reimburseText: String
+    var isReimburseValid: Bool { return EthereumAddress(string: reimburseText) != nil }
 }
 
-struct WalletReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportTextFieldCell.cellID }
-    var preferredHeight: Float { return 80 }
-    let title = "Me.Report.WalletCell.title".localized
-    var text: String
-    
-    var isValid: Bool { return EthereumAddress(string: text) != nil }
-}
-
-struct TitleReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportTextFieldCell.cellID }
-    var preferredHeight: Float { return 80 }
-    let title = "Me.Report.TitleCell.title".localized
-    var text: String
-    
-    var isValid: Bool { return text != "" }
-}
-
-struct HeaderTitleReportCellModel: ReportCellModel {
-    var cellReusableIdentifier: String { return ReportTitleCell.cellID }
-    var preferredHeight: Float { return 70 }
+struct NewDiscussionCellModel: ReportCellModel {
+    var cellReusableIdentifier: String { return NewDiscussionCell.cellID }
+    var preferredHeight: Float { return 288 }
     let title = "Me.Report.HeaderTitleCell.title".localized
     
-    var isValid: Bool { return true }
+    var isValid: Bool { return isTitleValid && isDescriptionValid }
+    
+    let postTitle = "Me.Report.TitleCell.title".localized
+    var postTitleText: String
+    var isTitleValid: Bool { return postTitleText != "" }
+    
+    let descriptionTitle = "Me.Report.DescriptionCell.title-discussion".localized
+    var descriptionText: String
+    var isDescriptionValid: Bool { return descriptionText != "" }
 }

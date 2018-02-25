@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-       
+
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
         application.registerForRemoteNotifications()
         TeambrellaStyle.apply()
@@ -37,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             service.push.remoteNotificationOnStart(in: application, userInfo: notification)
         }
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+
+        // Pull in case of emergency :)
+        // service.cryptoMalfunction()
 
         return true
     }
@@ -53,6 +56,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         service.socket?.start()
+
+        if service.session != nil {
+            service.teambrella.startUpdating(completion: { result in
+                let description = result.rawValue == 0 ? "new data" : result.rawValue == 1 ? "no data" : "failed"
+                log("Teambrella service get updates results: \(description)", type: .info)
+            })
+        }
+
+        service.info.prepareServices()
+        let router = service.router
+        let info = service.info
+        SODManager(router: router).checkSilentPush(infoMaker: info)
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {

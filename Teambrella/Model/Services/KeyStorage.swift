@@ -22,25 +22,55 @@
 import Foundation
 
 final class KeyStorage {
-    enum LastUserType: String {
+    private enum LastUserType: String {
         case none, real, demo
     }
     
     static let shared = KeyStorage()
-    
-    private init() { }
-    
-    var lastUserType: LastUserType {
-        guard let lastUserType = Keychain.value(forKey: .lastUserType) else { return .none }
-        
-        return LastUserType(rawValue: lastUserType) ?? .none
-    }
-    
+    let keychain = KeychainService()
+
     var timestamp: Int64 = 0
     var isDemoUser: Bool { return lastUserType != .real }
-    
+    var isUserSelected: Bool { return lastUserType != .none }
+
     var privateKey: String {
         return isDemoUser ? demoPrivateKey : realPrivateKey
+    }
+
+    private var lastUserType: LastUserType {
+        guard let lastUserType = SimpleStorage().string(forKey: .lastUserType) else { return .none }
+
+        return LastUserType(rawValue: lastUserType) ?? .none
+    }
+
+    private var realPrivateKey: String {
+        storeLastUserType(type: .real)
+
+        guard let privateKey = keychain.value(forKey: .privateKey) else {
+            return newPrivateKey()
+        }
+
+        return privateKey
+    }
+
+    private var demoPrivateKey: String {
+        let storage = SimpleStorage()
+        storeLastUserType(type: .demo)
+        guard let key = storage.string(forKey: .privateDemoKey) else {
+            let newKey = Key(timestamp: timestamp)
+            let privateKey = newKey.privateKey
+            storage.store(string: privateKey, forKey: .privateDemoKey)
+            return privateKey
+        }
+
+        return key
+    }
+
+    private init() { }
+
+    func saveNewPrivateKey(string: String) {
+        keychain.save(value: string, forKey: .privateKey)
+        log("Key Storage saved new private key: \(string)", type: [.cryptoDetails, .info])
     }
     
     func clearLastUserType() {
@@ -52,37 +82,21 @@ final class KeyStorage {
     }
     
     func deleteStoredKeys() {
-        Keychain.clear()
+        keychain.clear()
+        clearLastUserType()
+        SimpleStorage().cleanValue(forKey: .privateDemoKey)
     }
-    
-   private var realPrivateKey: String {
-       storeLastUserType(type: .real)
-//    return "cUNX4HYHK3thsjDKEcB26qRYriw8uJLtt8UvDrM98GbUBn22HMrY"
-        return privateKey(for: .ethPrivateAddress)
-    }
-    
-    private var demoPrivateKey: String {
-        storeLastUserType(type: .demo)
-        return privateKey(for: .ethPrivateAddressDemo)
-    }
-    
-    private func privateKey(for key: KeychainKey) -> String {
-        guard let privateKey = Keychain.value(forKey: key) else {
-            return createPrivateKey(for: key)
-        }
-        
-        return privateKey
-    }
-    
-    private func createPrivateKey(for key: KeychainKey) -> String {
+
+    /// creates new private BTC key
+    private func newPrivateKey() -> String {
         let newKey = Key(timestamp: timestamp)
         let privateKey = newKey.privateKey
-        Keychain.save(value: privateKey, forKey: key)
-        return self.privateKey
+        saveNewPrivateKey(string: privateKey)
+        return privateKey
     }
-    
+
     private func storeLastUserType(type: LastUserType) {
-        Keychain.save(value: type.rawValue, forKey: .lastUserType)
+        SimpleStorage().store(string: type.rawValue, forKey: .lastUserType)
     }
     
 }

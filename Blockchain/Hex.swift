@@ -98,7 +98,6 @@ struct Hex {
     func formattedString(data: Data, bytesCount: Int) -> String? {
         guard data.count <= bytesCount else { return nil }
 
-        let str = data.hexString
         let bytes = [UInt8](data)
         var hexString = ""
         for i in 0..<bytesCount {
