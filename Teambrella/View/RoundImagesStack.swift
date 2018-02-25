@@ -72,7 +72,7 @@ class RoundImagesStack: UIView {
         }
         if let label = label {
             let lastView = Label()
-            lastView.text = "+1000"//label
+            lastView.text = "+1000"//label          // !!!!!!!!!!!!!!!!!!!!!!!
             add(view: lastView)
         }
     }
@@ -92,7 +92,7 @@ class RoundImagesStack: UIView {
             view.backgroundColor = .paleGray
             view.textColor = #colorLiteral(red: 0.4, green: 0.4549019608, blue: 0.4901960784, alpha: 1)
             view.tintColor = limbColor
-//            view.layer.borderWidth = limbWidth
+//            view.layer.borderWidth = limbWidth          // !!!!!!!!!!!!!!!!!!!!!!!
             view.font = UIFont.teambrellaBold(size: 10)
             view.textAlignment = .center
         }
@@ -108,7 +108,7 @@ class RoundImagesStack: UIView {
         //let quantity = CGFloat(maxImages)
         //let interval: CGFloat = quantity > 1 ? (bounds.width - side) / (quantity - 1) : 0
         let interval = side * 0.8
-        let size = CGSize(width: side, height: side)
+        let size = CGSize(width: side, height: side)          // !!!!!!!!!!!!!!!!!!!!!!!
         for (idx, view) in views.enumerated() {
             view.frame.origin = CGPoint(x: CGFloat(idx) * interval, y: 0)
             view.frame.size = size
