@@ -28,7 +28,7 @@
 "Team.ClaimCell.estimatedExpences"                    = "Предполагаемые расходы";
 "Team.ClaimCell.deductible"                           = "Подлежит вычету";
 "Team.ClaimCell.coverage"                             = "Покрытие";
-"Team.ClaimCell.incidentDate"                         = "Дата происшестви]";
+"Team.ClaimCell.incidentDate"                         = "Дата происшествия";
 
 "Team.FeedVC.indicatorTitle"                          = "Лента";
 
@@ -57,7 +57,7 @@
 "Team.TeammateCell.timeLabel.minutes_format_i"        = "%d МИН. НАЗАД";
 "Team.TeammateCell.timeLabel.hours_format_i"          = "%d ЧАС. НАЗАД";
 "Team.TeammateCell.timeLabel.longAgo"                 = "ДАВНО";
-"Team.TeammateCell.contact"                           = "СВЯЗАТЬСЯ";
+"Team.TeammateCell.contact"                           = "КОНТАКТЫ";
 "Team.TeammateCell.buttonTitle_format_i"              = "Смотреть заявки (%d)";
 
 "Team.Decisions.generous"                             = "щедрый";
@@ -180,7 +180,7 @@
 "Team.Chat.NotificationSettings.subscribed"           = "Подписан";
 "Team.Chat.NotificationSettings.subscribed.details"   = "Вы будете получать нотификации о каждом сообщении";
 "Team.Chat.NotificationSettings.unsubscribed"         = "Без нотификаций";
-"Team.Chat.NotificationSettings.unsubscribed.details" = "NНотификации для этой беседы выключены";
+"Team.Chat.NotificationSettings.unsubscribed.details" = "Нотификации для этой беседы выключены";
 
 "Team.Chat.Unmute" = "Теперь вы получаете нотификации по этой беседе";
 "Team.Chat.Mute" = "Вы отписались от нотификаций по этой беседе";
@@ -200,7 +200,7 @@
 "Team.Claim.Transactions.from" = "ОТ";
 "Team.VotingRiskCell.teamAvg" = "СРЕДН.\nВ ГРУППЕ";
 
-"Team.Claim.Transactions.Empty.title" = "Пока транзакций нет";
+"Team.Claim.Transactions.Empty.title" = "Транзакций ещё нет";
 "Team.Claim.Transactions.Empty.details" = "...";
 "Team.OthersVoted.Empty.title" = "Голосов пока нет";
 "Team.OthersVoted.Empty.details" = "...";

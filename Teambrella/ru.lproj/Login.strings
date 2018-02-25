@@ -6,24 +6,24 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Login.LoginBlueVC.centerLabel"                    = "Not insurance. A lot better.";
-"Login.LoginBlueVC.continueWithFBButton"           = "Continue with Facebook";
-"Login.LoginBlueVC.tryDemoButton"                  = "Try the Demo";
-"Login.LoginNoInviteVC.centerLabel"                = "Not insurance. A lot better.";
-"Login.LoginNoInviteVC.upperLabel"                 = "We’re invite only!";
+"Login.LoginBlueVC.centerLabel"                    = "Не страховка. А намного лучше.";
+"Login.LoginBlueVC.continueWithFBButton"           = "Продолжить с Фейсбуком";
+"Login.LoginBlueVC.tryDemoButton"                  = "Попробовать демо";
+"Login.LoginNoInviteVC.centerLabel"                = "Не страховка. А намного лучше.";
+"Login.LoginNoInviteVC.upperLabel"                 = "Доступ только по приглашениям!";
 
-"Login.LoginNoInviteVC.requestInvitationButton"    = "Request invitation";
-"Login.LoginNoInviteVC.mailToSupport"              = "Contact support";
+"Login.LoginNoInviteVC.requestInvitationButton"    = "Запросить приглашение";
+"Login.LoginNoInviteVC.mailToSupport"              = "Связаться с поддержкой";
 
-"Login.LoginNoInviteVC.lowerLabel"                 = "Hey there, for now we’re invite only. Please open an invite URL before you can continue, or try the demo.";
-"Login.LoginNoInviteVC.tryDemoButton"              = "Try the Demo";
+"Login.LoginNoInviteVC.lowerLabel"                 = "Привет, пока мы принимаем только по приглашениям. Откройте ссылку, присланную вам в приглашении, или попробуйте демо.";
+"Login.LoginNoInviteVC.tryDemoButton"              = "Попробовать демо";
 
-"Login.LoginNoInviteVC.almostReady.title"          = "Hiya!";
-"Login.LoginNoInviteVC.almostReady.details"        = "We are working round the clock to set up your team. It will be ready soon!";
+"Login.LoginNoInviteVC.almostReady.title"          = "Привет!";
+"Login.LoginNoInviteVC.almostReady.details"        = "Мы работаем не покладая рук, чтобы запустить команду. Скоро она будет готова!";
 
-"Login.LoginNoInviteVC.accessDenied.title"         = "We are sorry";
-"Login.LoginNoInviteVC.accessDenied.details"       = "Currently you are unable to connect to Teambrella. Please, contact our support";
+"Login.LoginNoInviteVC.accessDenied.title"         = "Сожалеем";
+"Login.LoginNoInviteVC.accessDenied.details"       = "В данный момент вы не можете войти в Тимбреллу. Пожалуйста, свяжитесь с нашей поддержкой";
 
-"Login.LoginNoInviteVC.pendingApplication.title"   = "Your application is not complete";
-"Login.LoginNoInviteVC.pendingApplication.details" = "Please, check missing points and finalise it. We are waiting for you! Feel free to contact us if you have any questions.";
+"Login.LoginNoInviteVC.pendingApplication.title"   = "Ваша заявка не завершена";
+"Login.LoginNoInviteVC.pendingApplication.details" = "Пожалуйста, заполните все необходимые поля. Мы ждем вас! Если у вас есть вопросы, свяжитесь с нашей службой поддержки.";
 

@@ -6,35 +6,35 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Home.salutation"                                       = "Hi, %@!";
-"Home.subtitle"                                         = "Here's what's new for you";
-"Home.submitButton.anotherClaim"                        = "Submit Another Claim";
-"Home.submitButton.claim"                               = "Submit Claim";
-"Home.leftBrick.title"                                  = "COVERAGE";
-"Home.rightBrick.title"                                 = "WALLET";
-"Home.itemCard.status"                                  = "COVERED";
-"Home.itemCard.coverageType"                            = "Collision Deductable";
+"Home.salutation"                                       = "Привет, %@!";
+"Home.subtitle"                                         = "Вот какие новости";
+"Home.submitButton.anotherClaim"                        = "Отправить ещё заявку";
+"Home.submitButton.claim"                               = "Отправить заявку";
+"Home.leftBrick.title"                                  = "ЗАЩИТА";
+"Home.rightBrick.title"                                 = "КОШЕЛЁК";
+"Home.itemCard.status"                                  = "ЗАЩИЩЕНО";
+"Home.itemCard.coverageType"                            = "Франшиза";
 
-"Home.SupportCell.headerLabel"                          = "Chat with Support";
-"Home.SupportCell.onlineLabel"                          = "ONLINE";
-"Home.SupportCell.textLabel"                            = "Hi %@!  Need help? We’re online during office hours (PST) for any questions.";
-"Home.SupportCell.chatButton"                           = "Chat with Support";
+"Home.SupportCell.headerLabel"                          = "Техподдержка";
+"Home.SupportCell.onlineLabel"                          = "ОНЛАЙН";
+"Home.SupportCell.textLabel"                            = "Привет, %@!  Нужна помощь? Мы доступны в рабочее время по любым вопросам.";
+"Home.SupportCell.chatButton"                           = "Пообщаться";
 
-"Home.ApplicationDeniedCell.headerLabel"                = "Unfortunately";
-"Home.ApplicationDeniedCell.centerLabel"                = "Team application was denied";
-"Home.ApplicationDeniedCell.viewAppButton"              = "View Application";
+"Home.ApplicationDeniedCell.headerLabel"                = "К сожалению";
+//"Home.ApplicationDeniedCell.centerLabel"                = "Team application was denied";
+//"Home.ApplicationDeniedCell.viewAppButton"              = "View Application";
 
-"Home.ApplicationAcceptedCell.headerLabel"              = "Congratulations";
-"Home.ApplicationAcceptedCell.centerLabel"              = "Team application approved";
-"Home.ApplicationAcceptedCell.learnAboutCoverageButton" = "Learn about Coverage";
+//"Home.ApplicationAcceptedCell.headerLabel"              = "Congratulations";
+//"Home.ApplicationAcceptedCell.centerLabel"              = "Team application approved";
+//"Home.ApplicationAcceptedCell.learnAboutCoverageButton" = "Learn about Coverage";
 
-"Home.ApplicationStatusCell.headerLabel"                = "%@ team members have %@ left to review your applications.";
-"Home.ApplicationStatusCell.titleLabel"                 = "Your application";
-"Home.ApplicationStatusCell.centerLabel"                = "VOTE ( PENDING )";
+//"Home.ApplicationStatusCell.headerLabel"                = "%@ team members have %@ left to review your applications.";
+//"Home.ApplicationStatusCell.titleLabel"                 = "Your application";
+//"Home.ApplicationStatusCell.centerLabel"                = "VOTE ( PENDING )";
 
-"Home.PrivateMessages.title"                            = "Inbox";
+"Home.PrivateMessages.title"                            = "Входящие";
 
 //---waiting--
-"Home.Empty.Title.noPrivateMessages"                    = "You have no messages";
-"Home.Empty.SubTitle.noPrivateMessages"                 = "Tap on the compose button to keep in touch with your teammates.";
+"Home.Empty.Title.noPrivateMessages"                    = "У вас нет сообщений";
+"Home.Empty.SubTitle.noPrivateMessages"                 = "Напишите ваше первое приватное сообщение кому-нибудь из участников.";
 

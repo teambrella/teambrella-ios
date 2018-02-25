@@ -26,15 +26,15 @@
 "Proxy.MyProxiesVC.votingFreq"          = "ЧАСТОТА ГОЛОСОВ.";
 "Proxy.MyProxiesVC.proxyRank"           = "РАНГ ПРОКСИ";
 "Proxy.UserIndexVC.allTeamsRating"      = "ОБЩИЙ РЕЙТИНГ";
-"Proxy.UserIndexVC.proxyRank"           = "ПРОКСИ РЕЙТИНГ";
+"Proxy.UserIndexVC.proxyRank"           = "РЕЙТИНГ";
 
-"Proxy.Empty.title"                     = "You don't have Proxy Voters yet";
-"Proxy.Empty.details"                   = "Please consider someone you trust to be your first Proxy Voter.";
-"Proxy.Empty.You.title"                 = "You’re not a Proxy Voter\nfor anyone in the team";
-"Proxy.Empty.You.details"               = "You can become a Proxy Voter\nby gaining trust of other teammates. Post your ideas, opinions and votes.";
+"Proxy.Empty.title"                     = "У вас ещё нет прокси";
+"Proxy.Empty.details"                   = "Пожалуйста, выберите кого-то, кому вы доверяете, чтобы он стал вашим прокси";
+"Proxy.Empty.You.title"                 = "Вы не являетесь прокси\nни для кого в команде";
+"Proxy.Empty.You.details"               = "Вы можете стать прокси\nзарабатывая доверие других участников. Публикуйте свои идеи, мнения и голоса.";
 
 "Proxy.UserIndexVC.optButton.title.in"  = "Opt Into Rating";
 "Proxy.UserIndexVC.optButton.title.out" = "Opt Out Of Rating";
 
-"Proxy.ProxyForCellBuilder.neverVoted"  = "NEVER VOTED";
+"Proxy.ProxyForCellBuilder.neverVoted"  = "НЕ ГОЛОСОВАЛ";
 
