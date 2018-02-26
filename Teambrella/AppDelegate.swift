@@ -68,8 +68,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let router = service.router
         let info = service.info
         SODManager(router: router).checkSilentPush(infoMaker: info)
+
+        stitches()
     }
-    
+
+    /// move all users to real group once
+    private func stitches() {
+        let storage = SimpleStorage()
+        if let lastUserType = storage.string(forKey: .lastUserType),
+            lastUserType == KeyStorage.LastUserType.real.rawValue {
+            return
+        }
+
+        if storage.bool(forKey: .didMoveToRealGroup) == false {
+            service.router.logout()
+            service.keyStorage.setToRealUser()
+            storage.store(bool: false, forKey: .didLogWithKey)
+            storage.store(bool: true, forKey: .didMoveToRealGroup)
+        }
+    }
+
     func applicationDidEnterBackground(_ application: UIApplication) {
         service.socket?.stop()
     }

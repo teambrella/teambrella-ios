@@ -22,7 +22,7 @@
 import Foundation
 
 final class KeyStorage {
-    private enum LastUserType: String {
+    enum LastUserType: String {
         case none, real, demo
     }
     

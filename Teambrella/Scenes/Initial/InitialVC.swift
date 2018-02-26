@@ -63,6 +63,7 @@ final class InitialVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
+        mode = .idle
         startLoadingTeams()
     }
     
