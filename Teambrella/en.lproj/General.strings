@@ -58,6 +58,8 @@
 
 "General.mETH"                                     = "mETH";
 
-"General.my"                      = "my";
-"General.his"                     = "his";
-"General.her"                     = "her";
+"General.posessiveFormat.my" = "MY";
+"General.posessiveFormat.his" = "%@'S";
+"General.posessiveFormat.her" = "%@'S";
+"General.unitedFormat" = "%1$@ %2$@";
+"General.unitedFormat.my" = "%1$@ %2$@";
