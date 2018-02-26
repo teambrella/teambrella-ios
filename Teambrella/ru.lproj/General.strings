@@ -45,8 +45,8 @@
 "General.TransactionState.errorTooManyUtxos"       = "error: too many Utxos";
 
 "General.CoverageObject.other"                     = "ОБЪЕКТ";
-"General.CoverageObject.carCollisionDeductible"    = "МАШИНА";
-"General.CoverageObject.petDog"                    = "СОБАКА";
+"General.CoverageObject.carCollisionDeductible"    = "АВТОМОБИЛЬ";
+"General.CoverageObject.petDog"                    = "ПЁС";
 "General.CoverageObject.petCat"                    = "КОТ";
 "General.CoverageObject.bicycle"                   = "ВЕЛОСИПЕД";
 
@@ -58,6 +58,9 @@
 
 "General.mETH"                                     = "mETH";
 
-"General.my"                      = "мой";
-"General.his"                     = "его";
-"General.her"                     = "её";
+"General.posessiveFormat.my" = "МОЙ";
+"General.posessiveFormat.his" = "ЕГО";
+"General.posessiveFormat.her" = "ЕЁ";
+"General.unitedFormat" = "%1$@ %2$@";
+"General.unitedFormat.my" = "%1$@ %2$@";
+
