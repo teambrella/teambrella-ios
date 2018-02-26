@@ -35,6 +35,7 @@ class RoundImagesStack: UIView {
     var isEmpty: Bool {
         return views.isEmpty
     }
+    var labelText: String = ""
 
     func  setAvatars(_ avatars: [Avatar], label: String? = nil, max: Int? = nil) {
         let images = avatars.map { URLBuilder().avatarURLstring(for: $0.string) }
@@ -72,7 +73,8 @@ class RoundImagesStack: UIView {
         }
         if let label = label {
             let lastView = Label()
-            lastView.text = "+1000"//label          // !!!!!!!!!!!!!!!!!!!!!!!
+            labelText = label
+            lastView.text = label
             add(view: lastView)
         }
     }
@@ -89,10 +91,13 @@ class RoundImagesStack: UIView {
             view.inset = limbWidth
         } else if let view = view as? Label {
             view.cornerRadius = 10
+            view.leftInset = 2
+            view.rightInset = 2
             view.backgroundColor = .paleGray
             view.textColor = #colorLiteral(red: 0.4, green: 0.4549019608, blue: 0.4901960784, alpha: 1)
+            view.layer.borderWidth = limbWidth
+            view.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
             view.tintColor = limbColor
-//            view.layer.borderWidth = limbWidth          // !!!!!!!!!!!!!!!!!!!!!!!
             view.font = UIFont.teambrellaBold(size: 10)
             view.textAlignment = .center
         }
@@ -108,12 +113,26 @@ class RoundImagesStack: UIView {
         //let quantity = CGFloat(maxImages)
         //let interval: CGFloat = quantity > 1 ? (bounds.width - side) / (quantity - 1) : 0
         let interval = side * 0.8
-        let size = CGSize(width: side, height: side)          // !!!!!!!!!!!!!!!!!!!!!!!
+        let size = CGSize(width: side, height: side)
+        let labelWidth = width(for: labelText, height: side)
+        let labelSize = CGSize(width: labelWidth > side ? labelWidth : side, height: side)
         for (idx, view) in views.enumerated() {
             view.frame.origin = CGPoint(x: CGFloat(idx) * interval, y: 0)
-            view.frame.size = size
+            if let view = view as? Label {
+                view.frame.size = labelSize
+            } else {
+                view.frame.size = size
+            }
         }
         frame.size.width = views.last?.frame.maxX ?? 0
     }
     
+    func width(for text: String, height: CGFloat) -> CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = text.boundingRect(with: constraintRect,
+                                            options: .usesLineFragmentOrigin,
+                                            attributes: nil,
+                                            context: nil)
+        return ceil(boundingBox.width) + 4
+    }
 }
