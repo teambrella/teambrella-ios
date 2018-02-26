@@ -26,6 +26,7 @@ protocol VotingRiskCellDelegate: class {
     func votingRisk(cell: VotingRiskCell, stoppedOnOffset: CGFloat)
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int)
     func votingRisk(cell: VotingRiskCell, didTapButton button: UIButton)
+    func averageVotingRisk(cell: VotingRiskCell) -> Double
 }
 
 class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
@@ -186,7 +187,8 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
         }
-        dataSource.createModels(with: riskScale)
+        let average = delegate?.averageVotingRisk(cell: self) ?? 0
+        dataSource.createModels(with: riskScale, averageRisk: average)
         collectionView.reloadData()
     }
     

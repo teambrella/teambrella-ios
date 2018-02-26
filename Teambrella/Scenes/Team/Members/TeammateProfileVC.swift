@@ -167,12 +167,14 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     func updateAverages(cell: VotingRiskCell, risk: Double) {
         func text(for label: UILabel, risk: Double) {
-            guard let riskScale = dataSource.teammateLarge?.riskScale else { return }
+//            guard let riskScale = dataSource.teammateLarge?.riskScale else { return }
+            guard let averageRisk = dataSource.teammateLarge?.voting?.averageRisk else { return }
+            guard averageRisk != 0 else { return }
             
-            let delta = risk - riskScale.averageRisk
+            let delta = risk - averageRisk
             var text = "AVG\n"
             text += delta > 0 ? "+" : ""
-            let percent = 100 * delta / riskScale.averageRisk
+            let percent = 100 * delta / averageRisk
             let amount = String(format: "%.0f", percent)
             label.text =  text + amount + "%"
         }
@@ -616,5 +618,9 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         default:
             log("VotingRiskCell unknown button pressed", type: [.error])
         }
+    }
+
+    func averageVotingRisk(cell: VotingRiskCell) -> Double {
+        return dataSource.teammateLarge?.voting?.averageRisk ?? 0
     }
 }
