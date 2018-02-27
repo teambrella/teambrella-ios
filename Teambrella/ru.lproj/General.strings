@@ -17,17 +17,17 @@
 "General.claimState.inPayment"                     = "in payment";
 "General.claimState.processed"                     = "processed";
 
-"General.today"                                    = "today";
+"General.today"                                    = "сегодня";
 
-"General.you"                                      = "You";
+"General.you"                                      = "Вы";
 
-"General.TransactionKind.payout"                   = "payout";
-"General.TransactionKind.withdraw"                 = "withdraw";
-"General.TransactionKind.moveToNextWallet"         = "move to next wallet";
-"General.TransactionKind.saveFromPreviousWallet"   = "save from previous wallet";
-"General.TransactionKind.votingPayout"             = "voting payout";
+"General.TransactionKind.payout"                   = "выплата";
+"General.TransactionKind.withdraw"                 = "снятие";
+"General.TransactionKind.moveToNextWallet"         = "перевод на другой кошелек";
+"General.TransactionKind.saveFromPreviousWallet"   = "перевод с другого кошелька";
+"General.TransactionKind.votingPayout"             = "выплата по голосования";
 
-"General.TransactionState.created"                 = "created";
+"General.TransactionState.created"                 = "создана";
 "General.TransactionState.approvedMaster"          = "approved by master";
 "General.TransactionState.approvedCosigners"       = "approved by cosigners";
 "General.TransactionState.approvedAll"             = "approved by all";
@@ -44,22 +44,23 @@
 "General.TransactionState.errorOutOfFunds"         = "error: out of funds";
 "General.TransactionState.errorTooManyUtxos"       = "error: too many Utxos";
 
-"General.CoverageObject.other"                     = "OBJECT";
-"General.CoverageObject.carCollisionDeductible"    = "CAR";
-"General.CoverageObject.petDog"                    = "DOG";
-"General.CoverageObject.petCat"                    = "CAT";
-"General.CoverageObject.bicycle"                   = "BICYCLE";
+"General.CoverageObject.other"                     = "ОБЪЕКТ";
+"General.CoverageObject.carCollisionDeductible"    = "АВТОМОБИЛЬ";
+"General.CoverageObject.petDog"                    = "ПЁС";
+"General.CoverageObject.petCat"                    = "КОТ";
+"General.CoverageObject.bicycle"                   = "ВЕЛОСИПЕД";
 
-"General.CoverageType.other"                       = "Object";
-"General.CoverageType.carCollisionDeductible"      = "Collision deductible";
-"General.CoverageType.petDog"                      = "Pet health";
-"General.CoverageType.petCat"                      = "Pet health";
-"General.CoverageType.bicycle"                     = "Theft";
+"General.CoverageType.other"                       = "Объект";
+"General.CoverageType.carCollisionDeductible"      = "Франшиза";
+"General.CoverageType.petDog"                      = "Здоровье питомца";
+"General.CoverageType.petCat"                      = "Здоровье питомца";
+"General.CoverageType.bicycle"                     = "Кража";
 
 "General.mETH"                                     = "mETH";
 
-"General.posessiveFormat.my" = "MY";
-"General.posessiveFormat.his" = "%@'S";
-"General.posessiveFormat.her" = "%@'S";
+"General.posessiveFormat.my" = "МОЙ";
+"General.posessiveFormat.his" = "ЕГО";
+"General.posessiveFormat.her" = "ЕЁ";
 "General.unitedFormat" = "%1$@ %2$@";
 "General.unitedFormat.my" = "%1$@ %2$@";
+

@@ -69,7 +69,9 @@ class CoverageVC: UIViewController, Routable {
     }
     
     func setFundButtonTitle(coverageAmount: Int) {
-        let title = (coverageAmount == 100) ? "Fund Wallet" : "Fund Wallet to increase"
+        let title = (coverageAmount == 100)
+            ? "Me.CoverageVC.fundButton.title".localized
+            : "Me.CoverageVC.fundButton.title.toIncrease".localized
         fundWalletButton.setTitle(title, for: .normal)
     }
     

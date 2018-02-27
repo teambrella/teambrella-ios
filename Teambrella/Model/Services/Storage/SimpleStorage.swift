@@ -27,6 +27,8 @@ class SimpleStorage {
         case didLogWithKey               = "com.teambrella.didLogWithKey"
         case lastUserType                = "com.teambrella.lastUserType"
         case privateDemoKey              = "com.teambrella.privateDemoKey"
+
+        case didMoveToRealGroup          = "com.teambrella.didMoveToRealGroup"
     }
     
     func store(int: Int, forKey: StorageKey) {

@@ -23,7 +23,7 @@ import Foundation
 
 class RiskScaleEntity: Decodable {
     let ranges: [RiskScaleRange]
-    let averageRisk: Double
+//    let averageRisk: Double
     let coversIfMin: Double
     let coversIfOne: Double
     let coversIfMax: Double
@@ -33,9 +33,9 @@ class RiskScaleEntity: Decodable {
         self.ranges.flatMap { $0.teammates }.sorted { $0.risk < $1.risk }
     }()
     
-    var averageRange: RiskScaleRange? {
-        return rangeContaining(risk: averageRisk)
-    }
+//    var averageRange: RiskScaleRange? {
+//        return rangeContaining(risk: averageRisk)
+//    }
     
     func rangeContaining(risk: Double) -> RiskScaleRange? {
         for range in ranges where isInRange(item: risk, min: range.left, max: range.right) {
@@ -70,7 +70,7 @@ class RiskScaleEntity: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case ranges = "Ranges"
-        case averageRisk = "AverageRisk"
+//        case averageRisk = "AverageRisk"
         case coversIfMin = "HeCoversMeIf02"
         case coversIfOne = "HeCoversMeIf1"
         case coversIfMax = "HeCoversMeIf499"

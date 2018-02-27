@@ -131,7 +131,7 @@
                 <outlet property="nameLabel" destination="00i-59-BAm" id="ehl-aO-dle"/>
                 <outlet property="numberLabel" destination="9pJ-1b-AQm" id="Xss-Jf-n69"/>
             </connections>
-            <point key="canvasLocation" x="-7" y="2"/>
+            <point key="canvasLocation" x="-7" y="1.5"/>
         </collectionViewCell>
     </objects>
     <resources>

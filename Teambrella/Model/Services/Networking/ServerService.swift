@@ -44,7 +44,8 @@ final class ServerService: NSObject {
             completion(timestamp, nil)
         }
     }
-    
+
+    // swiftlint:disable:next function_body_length
     func ask(for string: String,
              parameters: [String: String]? = nil,
              body: RequestBody? = nil,

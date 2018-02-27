@@ -175,19 +175,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-2" translatesAutoresizingMaskIntoConstraints="NO" id="HaE-vq-3bd">
-                                <rect key="frame" x="57" y="244" width="262.5" height="52.5"/>
+                                <rect key="frame" x="57" y="245" width="262.5" height="52.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HaE-vq-3bd" secondAttribute="height" multiplier="5:1" id="Ki8-z6-kzM"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3C-eL-D90">
-                                <rect key="frame" x="16" y="311.5" width="343" height="22"/>
+                                <rect key="frame" x="16" y="312.5" width="343" height="21"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                 <color key="textColor" red="0.74117647058823533" green="0.76470588235294112" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKO-fV-G5k">
-                                <rect key="frame" x="28" y="565" width="319" height="40"/>
+                                <rect key="frame" x="28" y="566" width="319" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ToO-DP-vy6"/>
@@ -201,7 +201,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-0s-mhl">
-                                <rect key="frame" x="168" y="622" width="39" height="27"/>
+                                <rect key="frame" x="169" y="623" width="37" height="26"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -287,38 +287,38 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-2" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-qJ-3a4">
-                                <rect key="frame" x="80" y="194.5" width="215" height="43"/>
+                                <rect key="frame" x="80" y="195.5" width="215" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="ahq-Ad-kov"/>
                                     <constraint firstAttribute="width" secondItem="2Jk-qJ-3a4" secondAttribute="height" multiplier="5:1" id="jtN-3y-ZKp"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilg-bB-Wml">
-                                <rect key="frame" x="16" y="252.5" width="343" height="22"/>
+                                <rect key="frame" x="16" y="253.5" width="343" height="21"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                 <color key="textColor" red="0.74117647060000003" green="0.76470588240000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4QV-T4-WRb">
-                                <rect key="frame" x="24" y="333.5" width="327" height="73.5"/>
+                                <rect key="frame" x="24" y="333.5" width="327" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooX-xL-xb7">
-                                        <rect key="frame" x="0.0" y="16" width="327" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="16" width="327" height="17.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                         <color key="textColor" red="0.23529411764705882" green="0.27843137254901962" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCR-qq-z2B">
-                                        <rect key="frame" x="28" y="36.5" width="271" height="17"/>
+                                        <rect key="frame" x="28" y="35.5" width="271" height="16.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                         <color key="textColor" red="0.23529411764705882" green="0.27843137254901962" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="24O-wj-H1N">
-                                        <rect key="frame" x="163.5" y="63.5" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="163.5" y="62" width="0.0" height="0.0"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yg-At-X1f" userLabel="Support">
-                                                <rect key="frame" x="-187.5" y="-397" width="39" height="30"/>
+                                                <rect key="frame" x="-187.5" y="-395.5" width="37" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="UHz-c0-QGo"/>
                                                 </constraints>
@@ -331,7 +331,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pr7-PO-vtj" userLabel="Support">
-                                                <rect key="frame" x="-187.5" y="-397" width="39" height="30"/>
+                                                <rect key="frame" x="-187.5" y="-395.5" width="37" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="iPI-M3-qGN"/>
                                                 </constraints>
@@ -371,7 +371,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DwP-oK-zAv">
-                                <rect key="frame" x="168" y="617" width="39" height="30"/>
+                                <rect key="frame" x="169" y="617" width="37" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="llB-96-mcl"/>
                                 </constraints>

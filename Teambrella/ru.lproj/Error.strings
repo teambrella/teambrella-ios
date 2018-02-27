@@ -1,0 +1,10 @@
+/*
+  Error.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 22.09.2017.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"Error.somethingWentWrong" = "Ой, невозможно связаться с Тимбреллой. Сохраняйте спокойствие и попробуйте позже.";
+

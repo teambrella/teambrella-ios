@@ -1,0 +1,216 @@
+/*
+  Team.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 13.06.17.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+// Claims
+
+"Team.ClaimsVC.indicatorTitle"                        = "Заявки";
+"Team.ClaimsCell.claimed"                             = "заявлено";
+"Team.ClaimsCell.viewToVote"                          = "Смотреть чтобы голосовать";
+"Team.ClaimsCell.reimbursed"                          = "Выплачено";
+
+"Team.ClaimCell.claimID_format"                       = "Заявка %d";
+"Team.ClaimCell.timePassed_format"                    = "%d мин. назад";
+
+"Team.ClaimCell.voting"                               = "Голосование";
+"Team.ClaimCell.remainingMinutes_format"              = "%d мин.";
+"Team.ClaimCell.yourVote"                             = "твой голос";
+"Team.ClaimCell.byProxy"                              = "прокси";
+"Team.ClaimCell.teamVote"                             = "голос группы";
+"Team.ClaimCell.voteSubmitted"                        = "Голос отправлен";
+"Team.ClaimCell.resetVote"                            = "Сбросить голос";
+"Team.ClaimCell.claimDetails"                         = "ДЕТАЛИ ЗАЯВКИ";
+"Team.ClaimCell.claimAmount"                          = "Сумма заявки";
+"Team.ClaimCell.estimatedExpences"                    = "Предполагаемые расходы";
+"Team.ClaimCell.deductible"                           = "Подлежит вычету";
+"Team.ClaimCell.coverage"                             = "Защита";
+"Team.ClaimCell.incidentDate"                         = "Дата происшествия";
+
+"Team.FeedVC.indicatorTitle"                          = "Лента";
+
+"Team.Teammates.newTeammates"                         = "НОВЫЕ УЧАСТНИКИ";
+"Team.Teammates.teammates"                            = "УЧАСТНИКИ";
+"Team.Teammates.votingEndsIn"                         = "ГОЛОСОВАНИЕ ЗАКАНЧИВАЕТСЯ ЧЕРЕЗ";
+"Team.Teammates.net"                                  = "НЕТТО";
+"Team.MembersVC.indicatorTitle"                       = "Участники";
+"Team.MembersVC.searchHere"                           = "Поиск";
+
+"Team.TeammateCell.youAreProxy_format_s"              = "Вы прокси для %@";
+"Team.TeammateCell.covered"                           = "ЗАЩИТА";
+"Team.TeammateCell.collisionDeductible"               = "Франшиза";
+"Team.TeammateCell.limit"                             = "ЛИМИТ НА ЗАЯВКУ";
+"Team.TeammateCell.risk"                              = "ФАКТОР РИСКА";
+
+"Team.TeammateCell.votingStats"                       = "СТАТИСТИКА";
+"Team.TeammateCell.weight"                            = "ВЕС";
+"Team.TeammateCell.proxyRank"                         = "ПРОКСИ РЕЙТИНГ";
+"Team.TeammateCell.decisions"                         = "Решения";
+"Team.TeammateCell.discussions"                       = "Обсуждения";
+"Team.TeammateCell.votingFrequency"                   = "Частота голосований";
+"Team.TeammateCell.applicationDiscussion"             = "Обсуждение вступления";
+
+"Team.TeammateCell.timeLabel.justNow"                 = "ТОЛЬКО ЧТО";
+"Team.TeammateCell.timeLabel.minutes_format_i"        = "%d МИН. НАЗАД";
+"Team.TeammateCell.timeLabel.hours_format_i"          = "%d ЧАС. НАЗАД";
+"Team.TeammateCell.timeLabel.longAgo"                 = "ДАВНО";
+"Team.TeammateCell.contact"                           = "КОНТАКТЫ";
+"Team.TeammateCell.buttonTitle_format_i"              = "Смотреть заявки (%d)";
+
+"Team.Decisions.generous"                             = "щедрый";
+"Team.Decisions.mild"                                 = "мягкий";
+"Team.Decisions.moderate"                             = "умеренный";
+"Team.Decisions.severe"                               = "суровый";
+"Team.Decisions.harsh"                                = "строгий";
+"Team.unknown"                                        = "неизвестно";
+
+"Team.Discussions.quiet"                              = "тихий";
+"Team.Discussions.reserved"                           = "необщительный";
+"Team.Discussions.moderate"                           = "умеренный";
+"Team.Discussions.sociable"                           = "социальный";
+"Team.Discussions.chatty"                             = "разговорчивый";
+
+"Team.Frequency.never"                                = "никогда";
+"Team.Frequency.rarely"                               = "редко";
+"Team.Frequency.occasionally"                         = "временами";
+"Team.Frequency.frequently"                           = "нередко";
+"Team.Frequency.often"                                = "часто";
+"Team.Frequency.regularly"                            = "постоянно";
+"Team.Frequency.always"                               = "всегда";
+
+"Team.RulesVC.indicatorTitle"                         = "Правила";
+
+"Team.TeammateCell.object"                            = "Объект";
+"Team.TeammateCell.addToMyProxyVoters"                = "Сделать моим прокси";
+"Team.TeammateCell.removeFromMyProxyVoters"           = "Убрать из моих прокси";
+"Team.TeammateCell.discussion"                        = "ОБСУЖДЕНИЕ";
+"Team.MembersVC.inviteAFriend"                        = "Пригласить друга";
+"Team.TeammateCell.allVotes"                          = "Все голоса";
+"Team.TeammateCell.cashFlow"                          = "Cash Flow";
+"Team.TeammateCell.transactions"                      = "Транзакции";
+"Team.team"                                           = "Команда";
+"Team.JoinTeamVC.closeButton"                         = "Закрыть";
+"Team.JoinTeamVC.getStartedButton"                    = "Начать";
+
+"Team.JoinTeamVC.GreetingCell.greeting"               = "Привет, %@!";
+
+"Team.JoinTeamVC.InfoCell.headerLabel"                = "О КОМАНДЕ";
+"Team.JoinTeamVC.InfoCell.numberBar.left"             = "Участники";
+"Team.JoinTeamVC.InfoCell.numberBar.right"            = "Обсуждения";
+"Team.JoinTeamVC.InfoCell.rulesButton"                = "Читать правила команды";
+
+"Team.JoinTeamVC.PersonalCell.headerLabel"            = "ПЕРСОНАЛЬНАЯ ИНФОРМАЦИЯ";
+"Team.JoinTeamVC.PersonalCell.name"                   = "ВАШЕ ИМЯ";
+"Team.JoinTeamVC.PersonalCell.birthday"               = "ДАТА РОЖДЕНИЯ";
+"Team.JoinTeamVC.PersonalCell.status"                 = "СТАТУС";
+"Team.JoinTeamVC.PersonalCell.location"               = "МЕСТО ЖИТЕЛЬСТВА";
+
+"Team.JoinTeamVC.ItemCell.headerLabel"                = "ВАША МАШИНА";
+"Team.JoinTeamVC.ItemCell.makeModel"                  = "МАРКА И МОДЕЛЬ";
+"Team.JoinTeamVC.ItemCell.year"                       = "ГОД";
+"Team.JoinTeamVC.ItemCell.currency"                   = "ВАЛЮТА";
+"Team.JoinTeamVC.ItemCell.price"                      = "ПРИМЕРНАЯ СТОИМОСТЬ";
+"Team.JoinTeamVC.ItemCell.objectPhotos"               = "ФОТОГРАФИИ ОБЪЕКТА";
+
+"Team.JoinTeamVC.MessageCell.headerLabel"             = "КОМАНДА";
+"Team.JoinTeamVC.MessageCell.messageTitle"            = "СООБЩЕНИЕ УЧАСТНИКАМ";
+"Team.JoinTeamVC.MessageCell.placeholder"             = "Introduce yourself to your future team mates by telling them a bit more about yourself. Note that this will help them approve or decline your application";
+
+"Team.JoinTeamVC.TermsCell.headerLabel"               = "TERMS & CONDITIONS";
+"Team.JoinTeamVC.TermsCell.nonBold"                   = "By pressing on ‘Send Application’\nI accept the Teambrella’s ";
+"Team.JoinTeamVC.TermsCell.bold"                      = "Terms & Conditions";
+
+"Team.VotingRiskVC.headerLabel"                       = "ГОЛОСОВАНИЕ: ФАКТОР РИСКА";
+"Team.VotingRiskVC.numberBar.left"                    = "ГОЛОС КОМАНДЫ";
+"Team.VotingRiskVC.numberBar.right"                   = "ВАШ ГОЛОС";
+"Team.VotingRiskVC.avgLabel"                          = "СРЕДН.\n%d\%";
+"Team.VotingRiskVC.resetVoteButton"                   = "Сбросить голос";
+"Team.VotingRiskVC.othersButton"                      = "Остальные";
+"Team.VotingRiskVC.ends"                              = "Заканчивается %@";
+
+"Team.Members.Teammates.Strategy.headerTitle"         = "ФАКТОР РИСКА: %.2f ДО %.2f";
+"Team.Members.Teammates.Strategy.headerSubtitle"      = "ФАКТОР РИСКА";
+"Team.Members.Teammates.CompareTeamRisk.title"        = "Сравнить факторы риска";
+
+"Team.ChooseYourTeamVC.header"                        = "ВЫБЕРИТЕ КОМАНДУ";
+"Team.Teammate.Footer.MemberSince"                    = "Участник с %@";
+
+"Team.FeedVC.startDiscussionButton.title"             = "Начать обсуждение";
+
+"Team.Claims.ClaimTransactionsVC.title"               = "Транзакции";
+"Team.Claims.ClaimTransactionsVC.amountCrypto"        = "Сумма крипто";
+"Team.Claims.ClaimTransactionsVC.amountFiat"          = "Сумма фиатная";
+"Team.Claims.ClaimTransactionsVC.status"              = "Статус";
+
+"Team.Claims.ClaimVC.VotingCell.endsTitle"            = "Заканчивается ";
+
+"Team.Claims.State.Header.fullyPaid"                  = "ПОЛНОСТЬЮ ВЫПЛАЧЕНО";
+"Team.Claims.State.Header.beingPaid"                  = "В ОПЛАТЕ";
+"Team.Claims.State.Header.voted"                      = "НА ГОЛОСОВАНИИ";
+"Team.Claims.VotedCell.voted"                         = "Голос: ";
+"Team.ClaimsCell.declined"                            = "ОТКЛОНЕН";
+
+"Team.Chat.TextCell.voted_format"                     = "Голос:%@%%";
+"Team.Chat.TextCell.Application.voted_format"         = "Голос:%@";
+"Team.Chat.TextCell.notVoted"                         = "Не голосовал";
+
+"Team.Chat.TypeLabel.claim"                           = "ЗАЯВКА";
+"Team.Chat.TypeLabel.application"                     = "ВСТУПЛЕНИЕ";
+"Team.Chat.TypeLabel.other"                           = "ОБСУЖДЕНИЕ";
+"Team.Chat.Separator.newMessages"                     = "НОВЫЕ СООБЩЕНИЯ";
+"Team.Chat.Input.yourMessageHere"                     = "Ваше сообщение";
+
+"Team.Home.Card.claimed"                              = "ЗАЯВЛЕНО";
+"Team.Home.Card.yourClaim"                            = "Ваша заявка";
+"Team.Home.Card.claim"                                = "Заявка";
+"Team.Home.Card.coverage"                             = "ЗАЩИТА";
+"Team.Home.Card.newTeammate"                          = "Новый участник";
+"Team.Home.Card.teamVote"                             = "ГОЛОС ГРУППЫ";
+"Team.Home.Card.voting"                               = "ГОЛОСОВАНИЕ";
+
+"Team.ChooseTeam.switchUser"                          = "Сменить пользователя";
+
+//---waiting---
+"Team.Claims.Empty.title"                             = "В группе ещё нет ни одной заявки";
+"Team.Claims.Empty.details"                           = "Мы сообщим, когда первая заявка будет создана";
+"Team.Chat.NotificationSettings.title"                = "НАСТРОЙКИ НОТИФИКАЦИЙ";
+"Team.Chat.NotificationSettings.subscribed"           = "Подписан";
+"Team.Chat.NotificationSettings.subscribed.details"   = "Вы будете получать нотификации о каждом сообщении";
+"Team.Chat.NotificationSettings.unsubscribed"         = "Без нотификаций";
+"Team.Chat.NotificationSettings.unsubscribed.details" = "Нотификации для этой беседы выключены";
+
+"Team.Chat.Unmute" = "Теперь вы получаете нотификации по этой беседе";
+"Team.Chat.Mute" = "Вы отписались от нотификаций по этой беседе";
+
+"Team.Claims.objectView.reportButton.title" = "Отправить заявку";
+
+"Team.Chat.ObjectView.VoteLabel" = "Голосовать";
+"Team.Chat.ObjectView.RevoteLabel" = "Переголосовать";
+"Team.Chat.ObjectView.ClaimAmountLabel" = "РАЗМЕР ЗАЯВКИ - ";
+"Team.Chat.ObjectView.TitleLabel" = "ВАШ ГОЛОС";
+"Team.Chat.ObjectView.TitleLabel.risk" = "ФАКТОР РИСКА";
+"Team.Chat.ObjectView.TitleLabel.team" = "ГОЛОС КОМАНДЫ";
+
+"Team.Vote.doNotAccept" = "Не принимать";
+"Team.Vote.SwipeToVote" = "Смахните влево или вправо, чтобы голосовать";
+
+"Team.Claim.Transactions.from" = "ОТ";
+"Team.VotingRiskCell.teamAvg" = "СРЕДН.\nВ ГРУППЕ";
+
+"Team.Claim.Transactions.Empty.title" = "Транзакций ещё нет";
+"Team.Claim.Transactions.Empty.details" = "...";
+"Team.OthersVoted.Empty.title" = "Голосов пока нет";
+"Team.OthersVoted.Empty.details" = "...";
+
+"Team.TeammateCell.heCoversMe"                     = "ЗАЩИЩАЕТ МЕНЯ";
+"Team.TeammateCell.sheCoversMe"                     = "ЗАЩИЩАЕТ МЕНЯ";
+"Team.TeammateCell.coverHim"                    = "ЗАЩИЩАЮ ЕГО";
+"Team.TeammateCell.coverHer"                    = "ЗАЩИЩАЮ ЕЁ";
+"Team.TeammateCell.HeWouldCoverMe"                 = "ЗАЩИЩАЛ БЫ МЕНЯ";
+"Team.TeammateCell.SheWouldCoverMe"                 = "ЗАЩИЩАЛА БЫ МЕНЯ";
+"Team.TeammateCell.wouldCoverHim"               = "ЗАЩИЩАЛ БЫ ЕГО";
+"Team.TeammateCell.wouldCoverHer"               = "ЗАЩИЩАЛ БЫ ЕЁ";
+"Team.TeammateCell.wouldCoverThem.notYet"        = "Ещё нет";

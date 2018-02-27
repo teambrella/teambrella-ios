@@ -28,5 +28,14 @@ struct WithdrawChunk: Decodable {
     let cryptoBalance: Ether
     let cryptoReserved: Ether
     let defaultWithdrawAddress: EthereumAddress?
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        txs = try container.decode([WithdrawTx].self, forKey: .txs)
+        cryptoBalance = try container.decode(Ether.self, forKey: .cryptoBalance)
+        cryptoReserved = try container.decode(Ether.self, forKey: .cryptoReserved)
+        let address = try? container.decode(EthereumAddress.self, forKey: .defaultWithdrawAddress)
+        defaultWithdrawAddress = address
+    }
  
 }

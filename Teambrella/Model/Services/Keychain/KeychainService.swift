@@ -28,7 +28,7 @@ import KeychainAccess
     }
 #else
     enum OldKeychainKey: String {
-        case ethPrivateAddress = "ethPrivateAddress"
+        case ethPrivateAddress
     }
 #endif
 
@@ -65,7 +65,7 @@ class KeychainService {
             if value == nil {
                 let oldKey = KeychainKeyAdaptor().oldKey(from: key)
                 value = try oldKeychain.getString(oldKey.rawValue)
-                let saved = value.map { self.save(value: $0, forKey: key) }
+                let saved = value.map { self.save(value: $0, forKey: key) } ?? false
                 log("KeychainService storing newValue from OldValue: \(String(describing: value)), saved: \(saved)",
                     type: [.crypto, .info])
             }

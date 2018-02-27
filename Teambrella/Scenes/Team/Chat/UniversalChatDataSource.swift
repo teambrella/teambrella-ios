@@ -312,9 +312,10 @@ final class UniversalChatDatasource {
         
         return models[indexPath.row]
     }
-    
-    // MARK: Private
-    
+}
+
+// MARK: Private
+extension UniversalChatDatasource {
     private func load(previous: Bool) {
         let canLoadMore = previous ? hasPrevious : hasNext
         guard isLoading == false, canLoadMore else { return }
@@ -331,10 +332,10 @@ final class UniversalChatDatasource {
             guard let `self` = self else { return }
             
             let limit = self.limit// previous ? -me.limit: me.limit
-            var offset = previous
+            let offset = previous
                 ? self.backwardOffset
                 : self.isFirstLoad
-                ? -10
+                ? -5
                 : self.forwardOffset
             var payload: [String: Any] = ["limit": limit,
                                           "offset": offset,

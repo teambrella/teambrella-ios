@@ -117,7 +117,7 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     }
     
     private func read(string: String) {
-        guard lastReadString != string else { return }
+        guard lastReadString != string && string != "" else { return }
         
         lastReadString = string
         textView.text = string

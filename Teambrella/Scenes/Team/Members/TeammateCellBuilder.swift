@@ -151,18 +151,22 @@ struct TeammateCellBuilder {
         }
         cell.delegate = controller
     }
-    
+
+    // swiftlint:disable:next function_body_length
     private static func populateObject(cell: TeammateObjectCell,
                                        with teammate: TeammateLarge,
                                        controller: TeammateProfileVC) {
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
         let owner: String
         if let me = service.session?.currentUserID, me == teammate.basic.id {
-            owner = "General.my".localized
+            owner = "General.posessiveFormat.my".localized
+            cell.titleLabel.text = "General.unitedFormat.my".localized(owner, type.localizedCoverageObject)
         } else {
-            owner = teammate.basic.gender == .male ? "General.his".localized : "General.her".localized
+            owner = teammate.basic.gender == .male ?
+                "General.posessiveFormat.his".localized(teammate.basic.name.first.uppercased()) :
+                "General.posessiveFormat.her".localized(teammate.basic.name.first.uppercased())
+            cell.titleLabel.text = "General.unitedFormat".localized(owner, type.localizedCoverageObject)
         }
-        cell.titleLabel.text = owner.uppercased() + " " + type.localizedCoverageObject
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized

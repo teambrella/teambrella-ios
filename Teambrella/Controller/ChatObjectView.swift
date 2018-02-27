@@ -59,11 +59,14 @@ class ChatObjectView: UIView, XIBInitable {
 
     }
 
-   func initialSetup() {
+    func initialSetup() {
         chevronButton.isHidden = false
         voteContainer.isHidden = false
         chevronButton.alpha = 0
         voteContainer.alpha = 1
+
+        rightButton.titleLabel?.minimumScaleFactor = 0.5
+        rightButton.titleLabel?.adjustsFontSizeToFitWidth = true
 
         chevronButton.imageView?.contentMode = .scaleAspectFit
         chevronButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
