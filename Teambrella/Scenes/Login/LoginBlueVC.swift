@@ -22,6 +22,8 @@
 import PKHUD
 import SpriteKit
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 final class LoginBlueVC: UIViewController {
     @IBOutlet var centerLabel: UILabel!

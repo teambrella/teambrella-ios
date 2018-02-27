@@ -19,7 +19,6 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import QRCode
 import UIKit
 
 class WalletDetailsVC: UIViewController, Routable {
@@ -55,13 +54,17 @@ class WalletDetailsVC: UIViewController, Routable {
     }
     
     func generateQRCode() {
-        guard var qrCode = QRCode(walletID) else { return }
-        
-        qrCode.size = CGSize(width: 250, height: 250) // Zeplin (04.2 wallet-dialog-1)
-        qrCode.color = CIColor(rgba: "2C3948")
-        qrCode.backgroundColor = CIColor(rgba: "F8FAFD")
-        let image = qrCode.image
-        qrCodeImageView.image = image
+//        guard var qrCode = QRCode(walletID) else { return }
+guard let qrCode = BTCQRCode.image(for: walletID,
+                                   size: CGSize(width: 250, height: 250),
+                                   scale: UIScreen.main.scale) else { return }
+
+//        qrCode.size = CGSize(width: 250, height: 250) // Zeplin (04.2 wallet-dialog-1)
+//        qrCode.color = CIColor(rgba: "2C3948")
+//        qrCode.backgroundColor = CIColor(rgba: "F8FAFD")
+//        let image = qrCode.image
+
+        qrCodeImageView.image = qrCode
     }
     
     @IBAction func tapCopy(_ sender: UIButton) {

@@ -10,9 +10,9 @@ def ethereum_pods
 end
 
 def social_pods
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKShareKit'
+#  pod 'FBSDKCoreKit'
+  # pod 'FBSDKLoginKit'
+#  pod 'FBSDKShareKit'
 end
 
 target 'Teambrella' do
@@ -56,5 +56,5 @@ target 'NotificationTeambrella' do
   inhibit_all_warnings!
 
   bitcoin_pods
-  
+
 end
