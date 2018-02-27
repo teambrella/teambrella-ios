@@ -29,7 +29,7 @@ class Application {
     var build: String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "" }
     /// version in format: "ios-0.2.3.64"
     var clientVersion: String { return "ios-\(version).\(build)" }
-    
+
     var uniqueIdentifier: String {
         if let stored = SimpleStorage().string(forKey: .uniqueIdentifier) {
             return stored

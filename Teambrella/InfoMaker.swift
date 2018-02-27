@@ -24,6 +24,7 @@ class InfoMaker {
         static let silentPushEnabled    = ServicesOptions(rawValue: 1 << 0)
         static let pushEnabled          = ServicesOptions(rawValue: 1 << 1)
         static let pushNeverAsked       = ServicesOptions(rawValue: 1 << 2)
+        static let isInLowPowerMode     = ServicesOptions(rawValue: 1 << 3)
     }
 
     private(set) var isReady = false
@@ -95,6 +96,7 @@ class InfoMaker {
     func prepareServices() {
         var options: ServicesOptions = []
         if UIApplication.shared.backgroundRefreshStatus == .available { options.insert(.silentPushEnabled) }
+        if UIDevice.current.isInLowPowerMode { options.insert(.isInLowPowerMode) }
 
         let current = UNUserNotificationCenter.current()
         current.getNotificationSettings { settings in

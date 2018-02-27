@@ -32,6 +32,8 @@ extension UIDevice {
     public var isIphoneX: Bool {
         return ["iPhone10,3", "iPhone10,6"].contains(platform)
     }
+
+    public var isInLowPowerMode: Bool { return ProcessInfo.processInfo.isLowPowerModeEnabled }
     
     public var platform: String {
         var sysinfo = utsname()
