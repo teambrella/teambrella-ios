@@ -15,6 +15,7 @@
  */
 
 import AudioToolbox
+import ExtensionsPack
 import UIKit
 
 class Vibrator {

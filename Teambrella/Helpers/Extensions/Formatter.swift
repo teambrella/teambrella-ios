@@ -22,17 +22,6 @@
 import Foundation
 
 extension Formatter {
-    static var cSharp: DateFormatter { return iso8601 }
-    
-    static let iso8601: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-        return formatter
-    }()
-
     static let localDate: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMM yyyy"
@@ -41,7 +30,7 @@ extension Formatter {
         formatter.timeZone = TimeZone.current
         return formatter
     }()
-
+    
     static let localTime: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
@@ -50,7 +39,7 @@ extension Formatter {
         formatter.timeZone = TimeZone.current
         return formatter
     }()
-
+    
     static let teambrella: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

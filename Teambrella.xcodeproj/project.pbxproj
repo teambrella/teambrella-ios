@@ -77,8 +77,6 @@
 		6D1A9B281F55D306004192AC /* PrivateChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A9B261F55D306004192AC /* PrivateChatUserCell.swift */; };
 		6D1A9B291F55D306004192AC /* PrivateChatUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1A9B271F55D306004192AC /* PrivateChatUserCell.xib */; };
 		6D1A9B2B1F55D66E004192AC /* PrivateMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A9B2A1F55D66E004192AC /* PrivateMessagesVC.swift */; };
-		6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A01EB8D4A2004AED30 /* UIView.swift */; };
-		6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A21EB8D4D6004AED30 /* NSObject.swift */; };
 		6D1C23881E8EA99F009B05A3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C23871E8EA99F009B05A3 /* Data.swift */; };
 		6D1CAC051FF4FEE900FA58B6 /* TeambrellaRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC041FF4FEE900FA58B6 /* TeambrellaRequestType.swift */; };
 		6D1CAC061FF4FEE900FA58B6 /* TeambrellaRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC041FF4FEE900FA58B6 /* TeambrellaRequestType.swift */; };
@@ -141,8 +139,6 @@
 		6D2A7C601FCC663E0094ABB7 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */; };
 		6D2A7C631FCC66960094ABB7 /* SODVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A7C621FCC66960094ABB7 /* SODVC.swift */; };
 		6D2A7C641FCC66960094ABB7 /* SODVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A7C621FCC66960094ABB7 /* SODVC.swift */; };
-		6D2A7C661FCD42F60094ABB7 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A7C651FCD42F60094ABB7 /* UIApplication.swift */; };
-		6D2A7C671FCD42F60094ABB7 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A7C651FCD42F60094ABB7 /* UIApplication.swift */; };
 		6D2BD7BE1F60519F00C7F6A8 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BD7BD1F60519F00C7F6A8 /* Operators.swift */; };
 		6D2BD7C01F614EBF00C7F6A8 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BD7BF1F614EBF00C7F6A8 /* TextField.swift */; };
 		6D30A4AA1FD1648E003149DB /* PagingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30A4A91FD1648E003149DB /* PagingInfo.swift */; };
@@ -252,7 +248,6 @@
 		6D4E5C571F7AB6870020DEE2 /* TabRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D0FE1F0552FF00F9DE87 /* TabRoutable.swift */; };
 		6D4E5C591F7AB6870020DEE2 /* ProxyForHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69D9F51EFC05BE00DED5CE /* ProxyForHeader.swift */; };
 		6D4E5C5A1F7AB6870020DEE2 /* XIBInitableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE956F1EE814EE0019DA47 /* XIBInitableCell.swift */; };
-		6D4E5C5B1F7AB6870020DEE2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */; };
 		6D4E5C5C1F7AB6870020DEE2 /* TeammateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EA01E9D215500E77DAB /* TeammateType.swift */; };
 		6D4E5C5D1F7AB6870020DEE2 /* LoginDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9CC6121ED47C79007F936E /* LoginDetailsVC.swift */; };
 		6D4E5C5E1F7AB6870020DEE2 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE67921ED9D3E60098EDB3 /* BorderedButton.swift */; };
@@ -274,7 +269,6 @@
 		6D4E5C6F1F7AB6870020DEE2 /* FeedCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA3D1EFD6D9100DED5CE /* FeedCellModels.swift */; };
 		6D4E5C701F7AB6870020DEE2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA21EB0BE1A0051F43A /* UIColor.swift */; };
 		6D4E5C711F7AB6870020DEE2 /* MembersFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF6D4B1F1623CE00F53B0B /* MembersFetchStrategy.swift */; };
-		6D4E5C721F7AB6870020DEE2 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F561ECA0A45000B48C4 /* Decimal.swift */; };
 		6D4E5C731F7AB6870020DEE2 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
 		6D4E5C751F7AB6870020DEE2 /* ClaimVoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95761EE843540019DA47 /* ClaimVoteCell.swift */; };
 		6D4E5C761F7AB6870020DEE2 /* FeedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDEB6F1F17DC5900C6D38C /* FeedEntity.swift */; };
@@ -313,7 +307,6 @@
 		6D4E5C9D1F7AB6870020DEE2 /* TeammateContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714F51EE02BA000F39EBE /* TeammateContactCell.swift */; };
 		6D4E5C9E1F7AB6870020DEE2 /* ClaimsViewAllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2571EE1C69400307C73 /* ClaimsViewAllCell.swift */; };
 		6D4E5C9F1F7AB6870020DEE2 /* EggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D481F7E1F0BDEF30023C781 /* EggView.swift */; };
-		6D4E5CA01F7AB6870020DEE2 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC031EB3900700FDC332 /* UUID.swift */; };
 		6D4E5CA11F7AB6870020DEE2 /* JoinTeamTermsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E325CB1F07FA7E00B2D8C8 /* JoinTeamTermsCell.swift */; };
 		6D4E5CA21F7AB6870020DEE2 /* Teammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A941ED07CF1001BC579 /* Teammate.swift */; };
 		6D4E5CA31F7AB6870020DEE2 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF3E7611F795ED6000C7885 /* KeyStorage.swift */; };
@@ -331,7 +324,6 @@
 		6D4E5CB11F7AB6870020DEE2 /* ScaleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714F91EE04D4900F39EBE /* ScaleBar.swift */; };
 		6D4E5CB21F7AB6870020DEE2 /* ChatModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B4A11F4F106900672583 /* ChatModelBuilder.swift */; };
 		6D4E5CB31F7AB6870020DEE2 /* UserIndexCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA051EFC34FE00DED5CE /* UserIndexCellBuilder.swift */; };
-		6D4E5CB41F7AB6870020DEE2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A01EB8D4A2004AED30 /* UIView.swift */; };
 		6D4E5CB51F7AB6870020DEE2 /* ChatTextParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE793351EF92E34005F4508 /* ChatTextParser.swift */; };
 		6D4E5CB61F7AB6870020DEE2 /* FeedRequestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDEB731F17E76A00C6D38C /* FeedRequestContext.swift */; };
 		6D4E5CB71F7AB6870020DEE2 /* ChatDatasourceStrategies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB309F61F1D169D007DFF40 /* ChatDatasourceStrategies.swift */; };
@@ -346,7 +338,6 @@
 		6D4E5CC11F7AB6870020DEE2 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA8D5591F0E8B99000A4DB7 /* HomeDataSource.swift */; };
 		6D4E5CC21F7AB6870020DEE2 /* Nameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D097EA41E9D219A00E77DAB /* Nameable.swift */; };
 		6D4E5CC31F7AB6870020DEE2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC230691ED07F0500FAC330 /* Key.swift */; };
-		6D4E5CC41F7AB6870020DEE2 /* Mirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */; };
 		6D4E5CC51F7AB6870020DEE2 /* TeammateCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2491EE16E8300307C73 /* TeammateCellBuilder.swift */; };
 		6D4E5CC61F7AB6870020DEE2 /* JoinTeamMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E325C71F07F77A00B2D8C8 /* JoinTeamMessageCell.swift */; };
 		6D4E5CC71F7AB6870020DEE2 /* MyProxiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D2ADF1EFBD4260095284C /* MyProxiesVC.swift */; };
@@ -400,7 +391,6 @@
 		6D4E5CFD1F7AB6870020DEE2 /* JoinTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02ACA11F07D3A400B01AAF /* JoinTeamVC.swift */; };
 		6D4E5CFF1F7AB6870020DEE2 /* ChooseYourTeamCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2D3911F191F7100D203C2 /* ChooseYourTeamCellModel.swift */; };
 		6D4E5D001F7AB6870020DEE2 /* TeambrellaStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA714E61EDF224A00F39EBE /* TeambrellaStyle.swift */; };
-		6D4E5D011F7AB6870020DEE2 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C03A21EB8D4D6004AED30 /* NSObject.swift */; };
 		6D4E5D021F7AB6870020DEE2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D0FA1F040AEF00F9DE87 /* Session.swift */; };
 		6D4E5D031F7AB6870020DEE2 /* TeammateStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2471EE16BBA00307C73 /* TeammateStats.swift */; };
 		6D4E5D041F7AB6870020DEE2 /* WalletTransactionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C186A61F59B91A00F1BE51 /* WalletTransactionsDataSource.swift */; };
@@ -459,7 +449,6 @@
 		6D4E5D421F7AB6870020DEE2 /* ChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B49D1F4DD70F00672583 /* ChatTextCell.swift */; };
 		6D4E5D431F7AB6870020DEE2 /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB71F58562900421C5A /* PushService.swift */; };
 		6D4E5D441F7AB6870020DEE2 /* DiscussionCompactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */; };
-		6D4E5D461F7AB6870020DEE2 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA41EB0D6860051F43A /* Random.swift */; };
 		6D4E5D481F7AB6870020DEE2 /* JoinTeamCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */; };
 		6D4E5D491F7AB6870020DEE2 /* CoveredObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA2451EE167BD00307C73 /* CoveredObject.swift */; };
 		6D4E5D4A1F7AB6870020DEE2 /* TeammateLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC07551E9BF7170078F40E /* TeammateLarge.swift */; };
@@ -582,6 +571,8 @@
 		6D506CE32045A8A30011CB4B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506CE12045A8A20011CB4B /* Bolts.framework */; };
 		6D506D4D2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */; };
 		6D506D4E2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */; };
+		6D506DA72045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */; };
+		6D506DA82045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */; };
 		6D525D0C203D8309004C3C92 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
 		6D525D0D203D830B004C3C92 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
 		6D525D0E203D837A004C3C92 /* TeambrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */; };
@@ -676,12 +667,8 @@
 		6D6DA2701EE21F9800307C73 /* StyledLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA26E1EE21F9800307C73 /* StyledLabels.swift */; };
 		6D6FCBF41FD702D00032041A /* Vibrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCBF31FD702D00032041A /* Vibrator.swift */; };
 		6D6FCBF51FD702D00032041A /* Vibrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCBF31FD702D00032041A /* Vibrator.swift */; };
-		6D6FCBF71FD703B60032041A /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCBF61FD703B60032041A /* UIDevice.swift */; };
-		6D6FCBF81FD703B60032041A /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCBF61FD703B60032041A /* UIDevice.swift */; };
 		6D6FCBFD1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCBFC1FD878FB0032041A /* NSMutableAttributedString.swift */; };
 		6D6FCBFE1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCBFC1FD878FB0032041A /* NSMutableAttributedString.swift */; };
-		6D6FCC301FD89C220032041A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCC2F1FD89C220032041A /* UILabel.swift */; };
-		6D6FCC311FD89C220032041A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6FCC2F1FD89C220032041A /* UILabel.swift */; };
 		6D716BBF2021E747001E2614 /* SaneText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D716BBE2021E747001E2614 /* SaneText.swift */; };
 		6D716BC02021E747001E2614 /* SaneText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D716BBE2021E747001E2614 /* SaneText.swift */; };
 		6D72AAFA2028A0F10055FC47 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D72AAF92028A0F10055FC47 /* Photo.swift */; };
@@ -693,7 +680,6 @@
 		6D7CC5A51FF3D49600ED46E3 /* ServerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */; };
 		6D7CC5A61FF3D49600ED46E3 /* ServerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */; };
 		6D829AA31EB0BE1A0051F43A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA21EB0BE1A0051F43A /* UIColor.swift */; };
-		6D829AA51EB0D6860051F43A /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D829AA41EB0D6860051F43A /* Random.swift */; };
 		6D83EC851EDD6B80000412DC /* TeammateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */; };
 		6D83EC891EDD6CA6000412DC /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC881EDD6CA6000412DC /* Routable.swift */; };
 		6D83EC8B1EDD7083000412DC /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83EC8A1EDD7083000412DC /* Navigator.swift */; };
@@ -717,7 +703,6 @@
 		6D900E291FC46B0D00FF6FF8 /* String-localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E281FC46B0D00FF6FF8 /* String-localized.swift */; };
 		6D900E2A1FC46B0D00FF6FF8 /* String-localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E281FC46B0D00FF6FF8 /* String-localized.swift */; };
 		6D900E2C1FC46BB000FF6FF8 /* String-localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E281FC46B0D00FF6FF8 /* String-localized.swift */; };
-		6D91BC041EB3900700FDC332 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC031EB3900700FDC332 /* UUID.swift */; };
 		6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC061EB3A79100FDC332 /* UUIDTests.swift */; };
 		6D9374AA202C9EB800BB28CB /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
 		6D9374AB202C9EB900BB28CB /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
@@ -843,7 +828,6 @@
 		6DCB19481F0FD33400AC9969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19461F0FD33400AC9969 /* Assets.xcassets */; };
 		6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */; };
 		6DCB19581F11163900AC9969 /* PagingDraggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB19571F11163900AC9969 /* PagingDraggable.swift */; };
-		6DCB9F571ECA0A45000B48C4 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB9F561ECA0A45000B48C4 /* Decimal.swift */; };
 		6DCC7AC41E93A6920092D3F2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC31E93A6920092D3F2 /* Services.swift */; };
 		6DCC7AC81E95398D0092D3F2 /* TeammateListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC7AC71E95398D0092D3F2 /* TeammateListEntity.swift */; };
 		6DCD8DBB1F6BD5E800BC6A49 /* EthereumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCD8DBA1F6BD5E800BC6A49 /* EthereumTests.swift */; };
@@ -859,8 +843,6 @@
 		6DD051BF1F66F14100532626 /* SocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BE1F66F14100532626 /* SocketData.swift */; };
 		6DD051C11F66F18200532626 /* SocketDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051C01F66F18200532626 /* SocketDataTests.swift */; };
 		6DD051C31F67CC5E00532626 /* InputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051C21F67CC5E00532626 /* InputAccessoryView.swift */; };
-		6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */; };
-		6DD12ECC1EC75C2C00BE1CC4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */; };
 		6DD7F41B1EB9DB3A001E7733 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */; };
 		6DD7F41D1EB9FD8A001E7733 /* RoundImagesStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7F41C1EB9FD8A001E7733 /* RoundImagesStack.swift */; };
 		6DDB5D931FF692DC0066A07F /* TeammatesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB5D921FF692DC0066A07F /* TeammatesList.swift */; };
@@ -1181,8 +1163,6 @@
 		6D1A9B261F55D306004192AC /* PrivateChatUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatUserCell.swift; path = View/PrivateChatUserCell.swift; sourceTree = "<group>"; };
 		6D1A9B271F55D306004192AC /* PrivateChatUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrivateChatUserCell.xib; path = View/PrivateChatUserCell.xib; sourceTree = "<group>"; };
 		6D1A9B2A1F55D66E004192AC /* PrivateMessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesVC.swift; path = Scenes/Home/PrivateMessages/PrivateMessagesVC.swift; sourceTree = "<group>"; };
-		6D1C03A01EB8D4A2004AED30 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = Helpers/Extensions/UIView.swift; sourceTree = "<group>"; };
-		6D1C03A21EB8D4D6004AED30 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSObject.swift; path = Helpers/Extensions/NSObject.swift; sourceTree = "<group>"; };
 		6D1C23871E8EA99F009B05A3 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Helpers/Extensions/Data.swift; sourceTree = "<group>"; };
 		6D1CAC041FF4FEE900FA58B6 /* TeambrellaRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeambrellaRequestType.swift; path = Model/Services/Networking/TeambrellaRequestType.swift; sourceTree = "<group>"; };
 		6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeambrellaResponseType.swift; path = Model/Services/Networking/TeambrellaResponseType.swift; sourceTree = "<group>"; };
@@ -1217,7 +1197,6 @@
 		6D2A57B01F698B8A00CE8841 /* EthereumProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumProcessor.swift; sourceTree = "<group>"; };
 		6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Info.storyboard; path = Scenes/Info/Info.storyboard; sourceTree = "<group>"; };
 		6D2A7C621FCC66960094ABB7 /* SODVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SODVC.swift; path = Scenes/Info/SODVC.swift; sourceTree = "<group>"; };
-		6D2A7C651FCD42F60094ABB7 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIApplication.swift; path = Helpers/UIApplication.swift; sourceTree = "<group>"; };
 		6D2BD7BD1F60519F00C7F6A8 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Helpers/Operators.swift; sourceTree = "<group>"; };
 		6D2BD7BF1F614EBF00C7F6A8 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = View/TextField.swift; sourceTree = "<group>"; };
 		6D30A4A91FD1648E003149DB /* PagingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PagingInfo.swift; path = Model/Entities/PagingInfo.swift; sourceTree = "<group>"; };
@@ -1274,6 +1253,7 @@
 		6D506CDE2045A8580011CB4B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Carthage/Build/iOS/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		6D506CE12045A8A20011CB4B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ThoraxMath.framework; path = Carthage/Build/iOS/ThoraxMath.framework; sourceTree = "<group>"; };
+		6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExtensionsPack.framework; path = Carthage/Build/iOS/ExtensionsPack.framework; sourceTree = "<group>"; };
 		6D56F9BB1FA737CC00B9D676 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Application.swift; path = Model/Application.swift; sourceTree = "<group>"; };
 		6D5852C71F9F83A00079CA89 /* HexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexTests.swift; sourceTree = "<group>"; };
 		6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatAdaptor.swift; path = Scenes/Home/PrivateMessages/PrivateChatAdaptor.swift; sourceTree = "<group>"; };
@@ -1357,9 +1337,7 @@
 		6D6DA26D1EE21F9800307C73 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Label.swift; path = View/Label.swift; sourceTree = "<group>"; };
 		6D6DA26E1EE21F9800307C73 /* StyledLabels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyledLabels.swift; path = View/StyledLabels.swift; sourceTree = "<group>"; };
 		6D6FCBF31FD702D00032041A /* Vibrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Vibrator.swift; path = Model/Services/Vibrator.swift; sourceTree = "<group>"; };
-		6D6FCBF61FD703B60032041A /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIDevice.swift; path = Helpers/Extensions/UIDevice.swift; sourceTree = "<group>"; };
 		6D6FCBFC1FD878FB0032041A /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSMutableAttributedString.swift; path = Helpers/Extensions/NSMutableAttributedString.swift; sourceTree = "<group>"; };
-		6D6FCC2F1FD89C220032041A /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UILabel.swift; path = Helpers/Extensions/UILabel.swift; sourceTree = "<group>"; };
 		6D716BBE2021E747001E2614 /* SaneText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SaneText.swift; path = Model/Entities/SaneText.swift; sourceTree = "<group>"; };
 		6D72AAF92028A0F10055FC47 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Photo.swift; path = Model/Entities/Photo.swift; sourceTree = "<group>"; };
 		6D72AAFC2028A1690055FC47 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Avatar.swift; path = Model/Entities/Avatar.swift; sourceTree = "<group>"; };
@@ -1369,7 +1347,6 @@
 		6D7C1AD01F598CFF00A88987 /* IsTypingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IsTypingView.swift; path = View/IsTypingView.swift; sourceTree = "<group>"; };
 		6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServerStatus.swift; path = Model/Entities/ServerStatus.swift; sourceTree = "<group>"; };
 		6D829AA21EB0BE1A0051F43A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Helpers/Extensions/UIColor.swift; sourceTree = "<group>"; };
-		6D829AA41EB0D6860051F43A /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = Helpers/Extensions/Random.swift; sourceTree = "<group>"; };
 		6D83EC841EDD6B80000412DC /* TeammateProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateProfileVC.swift; path = Scenes/Team/Members/TeammateProfileVC.swift; sourceTree = "<group>"; };
 		6D83EC881EDD6CA6000412DC /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Routable.swift; path = Model/Protocols/Routable.swift; sourceTree = "<group>"; };
 		6D83EC8A1EDD7083000412DC /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Navigator.swift; path = Controller/Navigator.swift; sourceTree = "<group>"; };
@@ -1391,7 +1368,6 @@
 		6D900E261FC46A7200FF6FF8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Push.strings; sourceTree = "<group>"; };
 		6D900E281FC46B0D00FF6FF8 /* String-localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String-localized.swift"; path = "Helpers/Extensions/String-localized.swift"; sourceTree = "<group>"; };
 		6D900E2D1FC4734400FF6FF8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Push.strings; sourceTree = "<group>"; };
-		6D91BC031EB3900700FDC332 /* UUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UUID.swift; path = Helpers/Extensions/UUID.swift; sourceTree = "<group>"; };
 		6D91BC061EB3A79100FDC332 /* UUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDTests.swift; sourceTree = "<group>"; };
 		6D9AAF5E201A4BB5000411CC /* TransactionsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsCellModel.swift; sourceTree = "<group>"; };
 		6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyProcessor.swift; path = Helpers/CurrencyProcessor.swift; sourceTree = "<group>"; };
@@ -1496,7 +1472,6 @@
 		6DCB19561F0FF21000AC9969 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Proxy.strings; sourceTree = "<group>"; };
 		6DCB19571F11163900AC9969 /* PagingDraggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingDraggable.swift; path = Model/Protocols/PagingDraggable.swift; sourceTree = "<group>"; };
 		6DCB19591F11312300AC9969 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Home.strings; sourceTree = "<group>"; };
-		6DCB9F561ECA0A45000B48C4 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decimal.swift; path = Helpers/Extensions/Decimal.swift; sourceTree = "<group>"; };
 		6DCC7AC31E93A6920092D3F2 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Model/Services/Services.swift; sourceTree = "<group>"; };
 		6DCC7AC71E95398D0092D3F2 /* TeammateListEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeammateListEntity.swift; path = Model/Entities/TeammateListEntity.swift; sourceTree = "<group>"; };
 		6DCD8DBA1F6BD5E800BC6A49 /* EthereumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumTests.swift; sourceTree = "<group>"; };
@@ -1512,8 +1487,6 @@
 		6DD051BE1F66F14100532626 /* SocketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocketData.swift; path = Model/Services/Socket/SocketData.swift; sourceTree = "<group>"; };
 		6DD051C01F66F18200532626 /* SocketDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketDataTests.swift; sourceTree = "<group>"; };
 		6DD051C21F67CC5E00532626 /* InputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputAccessoryView.swift; path = Scenes/Team/Chat/InputAccessoryView.swift; sourceTree = "<group>"; };
-		6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mirror.swift; path = Helpers/Extensions/Mirror.swift; sourceTree = "<group>"; };
-		6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Helpers/Extensions/Date.swift; sourceTree = "<group>"; };
 		6DD7F41A1EB9DB3A001E7733 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImageView.swift; path = View/RoundImageView.swift; sourceTree = "<group>"; };
 		6DD7F41C1EB9FD8A001E7733 /* RoundImagesStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundImagesStack.swift; path = View/RoundImagesStack.swift; sourceTree = "<group>"; };
 		6DDB5D921FF692DC0066A07F /* TeammatesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeammatesList.swift; path = Model/Entities/TeammatesList.swift; sourceTree = "<group>"; };
@@ -1699,6 +1672,7 @@
 			files = (
 				6D506D4E2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */,
 				6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */,
+				6D506DA82045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */,
 				6D4E5D751F7AB6870020DEE2 /* XLPagerTabStrip.framework in Frameworks */,
 				6D506CE02045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */,
 				6D4E5D761F7AB6870020DEE2 /* ImageSlideshow.framework in Frameworks */,
@@ -1732,6 +1706,7 @@
 			files = (
 				6D506D4D2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */,
 				6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */,
+				6D506DA72045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */,
 				E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */,
 				6D506CDF2045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */,
 				6D9CC6331ED7207E007F936E /* XLPagerTabStrip.framework in Frameworks */,
@@ -1989,27 +1964,17 @@
 			children = (
 				6D0D2ADD1EFBC41D0095284C /* ButtonBarPagerTabStripViewController.swift */,
 				6D1C23871E8EA99F009B05A3 /* Data.swift */,
-				6DD12ECB1EC75C2C00BE1CC4 /* Date.swift */,
-				6DCB9F561ECA0A45000B48C4 /* Decimal.swift */,
 				6DB8121C1EE6F78700B202CE /* Formatter.swift */,
-				6DD12EC91EC5AF7C00BE1CC4 /* Mirror.swift */,
 				6D0C39DC1F991B6600941FF3 /* Notification.swift */,
 				6D6FCBFC1FD878FB0032041A /* NSMutableAttributedString.swift */,
-				6D1C03A21EB8D4D6004AED30 /* NSObject.swift */,
-				6D829AA41EB0D6860051F43A /* Random.swift */,
 				CBDFE16BB5E7B5B758559237 /* String.swift */,
 				6D900E281FC46B0D00FF6FF8 /* String-localized.swift */,
-				6D2A7C651FCD42F60094ABB7 /* UIApplication.swift */,
 				6D829AA21EB0BE1A0051F43A /* UIColor.swift */,
-				6D6FCBF61FD703B60032041A /* UIDevice.swift */,
 				6DA714DE1EDF19AE00F39EBE /* UIFont.swift */,
 				6DA1D1021F056DF900F9DE87 /* UIImage.swift */,
 				6D481F7A1F0BAA960023C781 /* UIImageView.swift */,
 				6D9CC6161ED48416007F936E /* UIStoryboardSegue.swift */,
-				6D91BC031EB3900700FDC332 /* UUID.swift */,
-				6D1C03A01EB8D4A2004AED30 /* UIView.swift */,
 				6D9CC6181ED484CF007F936E /* UIViewController.swift */,
-				6D6FCC2F1FD89C220032041A /* UILabel.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2898,6 +2863,7 @@
 			children = (
 				6D8F97111E8D1529008DC62E /* Alamofire.framework */,
 				6D506CE12045A8A20011CB4B /* Bolts.framework */,
+				6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */,
 				6D506CD52045A69D0011CB4B /* FacebookCore.framework */,
 				6D506CDB2045A7930011CB4B /* FBSDKCoreKit.framework */,
 				6D506CDE2045A8580011CB4B /* FBSDKLoginKit.framework */,
@@ -3438,11 +3404,12 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
-				"$(SRCROOT)/Carthage/build/iOS/FacebookCore.framework",
-				"$(SRCROOT)/Carthage/build/iOS/FBSDKCoreKit.framework",
-				"$(SRCROOT)/Carthage/build/iOS/FBSDKLoginKit.framework",
-				"$(SRCROOT)/Carthage/build/iOS/Bolts.framework",
-				"$(SRCROOT)/Carthage/build/iOS/ThoraxMath.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FacebookCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ThoraxMath.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ExtensionsPack.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -3497,11 +3464,12 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
-				"$(SRCROOT)/Carthage/build/iOS/FacebookCore.framework",
-				"$(SRCROOT)/Carthage/build/iOS/FBSDKCoreKit.framework",
-				"$(SRCROOT)/Carthage/build/iOS/FBSDKLoginKit.framework",
-				"$(SRCROOT)/Carthage/build/iOS/Bolts.framework",
-				"$(SRCROOT)/Carthage/build/iOS/ThoraxMath.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FacebookCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ThoraxMath.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ExtensionsPack.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -3738,12 +3706,10 @@
 				6D4E5C4E1F7AB6870020DEE2 /* ClaimVC.swift in Sources */,
 				6D4E5C4F1F7AB6870020DEE2 /* Cosigner.swift in Sources */,
 				6D6FCBFE1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */,
-				6D2A7C671FCD42F60094ABB7 /* UIApplication.swift in Sources */,
 				6D4E5C501F7AB6870020DEE2 /* ChatNewMessagesSeparatorCell.swift in Sources */,
 				6D878E50200CF63600066492 /* GasStation.swift in Sources */,
 				6DDB5D971FF694090066A07F /* ChatModel.swift in Sources */,
 				6DB2ABC91FF2C1B00028F95C /* ServerReply.swift in Sources */,
-				6D6FCBF81FD703B60032041A /* UIDevice.swift in Sources */,
 				6D4E5C511F7AB6870020DEE2 /* ChatFragmentHeightCalculator.swift in Sources */,
 				6D4E5C521F7AB6870020DEE2 /* PrivateChatUser.swift in Sources */,
 				6D4E5C531F7AB6870020DEE2 /* TeammateCell.swift in Sources */,
@@ -3756,7 +3722,6 @@
 				6D900E241FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */,
 				6D4E5C591F7AB6870020DEE2 /* ProxyForHeader.swift in Sources */,
 				6D4E5C5A1F7AB6870020DEE2 /* XIBInitableCell.swift in Sources */,
-				6D4E5C5B1F7AB6870020DEE2 /* Date.swift in Sources */,
 				6D4E5C5C1F7AB6870020DEE2 /* TeammateType.swift in Sources */,
 				6D4E5C5D1F7AB6870020DEE2 /* LoginDetailsVC.swift in Sources */,
 				6D4E5C5E1F7AB6870020DEE2 /* BorderedButton.swift in Sources */,
@@ -3783,7 +3748,6 @@
 				6D4E5C6F1F7AB6870020DEE2 /* FeedCellModels.swift in Sources */,
 				6D4E5C701F7AB6870020DEE2 /* UIColor.swift in Sources */,
 				6D4E5C711F7AB6870020DEE2 /* MembersFetchStrategy.swift in Sources */,
-				6D4E5C721F7AB6870020DEE2 /* Decimal.swift in Sources */,
 				6D4E5C731F7AB6870020DEE2 /* Log.swift in Sources */,
 				6DB922261F9E27CD009D3937 /* AbiArguments.swift in Sources */,
 				6DA3FBA61FF2BA0800CA8FA1 /* VotersList.swift in Sources */,
@@ -3829,7 +3793,6 @@
 				6D4E5C9D1F7AB6870020DEE2 /* TeammateContactCell.swift in Sources */,
 				6D4E5C9E1F7AB6870020DEE2 /* ClaimsViewAllCell.swift in Sources */,
 				6D4E5C9F1F7AB6870020DEE2 /* EggView.swift in Sources */,
-				6D4E5CA01F7AB6870020DEE2 /* UUID.swift in Sources */,
 				6D4E5CA11F7AB6870020DEE2 /* JoinTeamTermsCell.swift in Sources */,
 				6DDB5D941FF692DC0066A07F /* TeammatesList.swift in Sources */,
 				6D4E5CA21F7AB6870020DEE2 /* Teammate.swift in Sources */,
@@ -3853,7 +3816,6 @@
 				6D4E5CB11F7AB6870020DEE2 /* ScaleBar.swift in Sources */,
 				6D4E5CB21F7AB6870020DEE2 /* ChatModelBuilder.swift in Sources */,
 				6D4E5CB31F7AB6870020DEE2 /* UserIndexCellBuilder.swift in Sources */,
-				6D4E5CB41F7AB6870020DEE2 /* UIView.swift in Sources */,
 				6D4E5CB51F7AB6870020DEE2 /* ChatTextParser.swift in Sources */,
 				6D1EC3D4202A10AA00F0541C /* CoverageForDate.swift in Sources */,
 				6D49FDE82020C34900A908D2 /* Fiat.swift in Sources */,
@@ -3875,7 +3837,6 @@
 				6D49FDE52020C20B00A908D2 /* ClaimVote.swift in Sources */,
 				6D1EC3EA202B0F0100F0541C /* TeammateServerImpl.swift in Sources */,
 				6D4E5CC31F7AB6870020DEE2 /* Key.swift in Sources */,
-				6D4E5CC41F7AB6870020DEE2 /* Mirror.swift in Sources */,
 				6D4E5CC51F7AB6870020DEE2 /* TeammateCellBuilder.swift in Sources */,
 				6D20CF971FDEE1890049BE9C /* TeamPart.swift in Sources */,
 				6D4E5CC61F7AB6870020DEE2 /* JoinTeamMessageCell.swift in Sources */,
@@ -3955,7 +3916,6 @@
 				6DDC65551FB9F02400DE4E36 /* TeammateSummaryView.swift in Sources */,
 				6DBBF8041F9A5F6800524B1E /* Unconfirmed.swift in Sources */,
 				9489C1231FF54D4300ECA3A4 /* SwipeToVote.swift in Sources */,
-				6D4E5D011F7AB6870020DEE2 /* NSObject.swift in Sources */,
 				94112D7E20066DB20031898E /* ProxyForEntity.swift in Sources */,
 				6D9AAF60201A4BB5000411CC /* TransactionsCellModel.swift in Sources */,
 				6D4E5D021F7AB6870020DEE2 /* Session.swift in Sources */,
@@ -4041,7 +4001,6 @@
 				6DB5E80B1FEA874E009A2A62 /* SimpleStorage.swift in Sources */,
 				6D4E5D431F7AB6870020DEE2 /* PushService.swift in Sources */,
 				6D4E5D441F7AB6870020DEE2 /* DiscussionCompactCell.swift in Sources */,
-				6D4E5D461F7AB6870020DEE2 /* Random.swift in Sources */,
 				6D1EC3E7202B0EB700F0541C /* TxOutputServerImpl.swift in Sources */,
 				6D4E5D481F7AB6870020DEE2 /* JoinTeamCellBuilder.swift in Sources */,
 				6D4E5D491F7AB6870020DEE2 /* CoveredObject.swift in Sources */,
@@ -4064,7 +4023,6 @@
 				6D4E5D561F7AB6870020DEE2 /* ProxyForCell.swift in Sources */,
 				6D4E5D591F7AB6870020DEE2 /* SocketCommand.swift in Sources */,
 				6D4E5D5A1F7AB6870020DEE2 /* HelperGlobalFunctions.swift in Sources */,
-				6D6FCC311FD89C220032041A /* UILabel.swift in Sources */,
 				6D4E5D5D1F7AB6870020DEE2 /* ClaimsVotedCell.swift in Sources */,
 				6D4E5D5E1F7AB6870020DEE2 /* SegueType.swift in Sources */,
 				6DAD941D1FCEF4500011557C /* CodeCaptureDelegate.swift in Sources */,
@@ -4166,12 +4124,10 @@
 				6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */,
 				6D66B4A41F4F109E00672583 /* ChatFragmentHeightCalculator.swift in Sources */,
 				6D6FCBFD1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */,
-				6D2A7C661FCD42F60094ABB7 /* UIApplication.swift in Sources */,
 				6D1A9B251F55CF92004192AC /* PrivateChatUser.swift in Sources */,
 				6D878E4F200CF63600066492 /* GasStation.swift in Sources */,
 				6DDB5D961FF694090066A07F /* ChatModel.swift in Sources */,
 				6DB2ABC81FF2C1B00028F95C /* ServerReply.swift in Sources */,
-				6D6FCBF71FD703B60032041A /* UIDevice.swift in Sources */,
 				6DEE67A31EDC5C4D0098EDB3 /* TeammateCell.swift in Sources */,
 				6D0E057C1F01015E00604981 /* ReportDataSource.swift in Sources */,
 				6D466AA81ED07CF1001BC579 /* Team.swift in Sources */,
@@ -4182,7 +4138,6 @@
 				6D1EC3DA202B0D5400F0541C /* TxServerImpl.swift in Sources */,
 				6D900E231FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */,
 				6DDE95701EE814EE0019DA47 /* XIBInitableCell.swift in Sources */,
-				6DD12ECC1EC75C2C00BE1CC4 /* Date.swift in Sources */,
 				6D097EA31E9D215500E77DAB /* TeammateType.swift in Sources */,
 				6D9CC6131ED47C79007F936E /* LoginDetailsVC.swift in Sources */,
 				6DEE67931ED9D3E60098EDB3 /* BorderedButton.swift in Sources */,
@@ -4209,7 +4164,6 @@
 				6D69DA3E1EFD6D9100DED5CE /* FeedCellModels.swift in Sources */,
 				6D829AA31EB0BE1A0051F43A /* UIColor.swift in Sources */,
 				6DDF6D4C1F1623CE00F53B0B /* MembersFetchStrategy.swift in Sources */,
-				6DCB9F571ECA0A45000B48C4 /* Decimal.swift in Sources */,
 				6D33E1541F715BB10052A58B /* Log.swift in Sources */,
 				6DDE95781EE843540019DA47 /* ClaimVoteCell.swift in Sources */,
 				940FEE841FA8D05700B43CB5 /* MuteVC.swift in Sources */,
@@ -4258,7 +4212,6 @@
 				6D481F7F1F0BDEF30023C781 /* EggView.swift in Sources */,
 				6DB921EE1F9DEC27009D3937 /* EthWallet.swift in Sources */,
 				6DA5B4631F98D80700021E8E /* CryptoWorker.swift in Sources */,
-				6D91BC041EB3900700FDC332 /* UUID.swift in Sources */,
 				6DDB5D931FF692DC0066A07F /* TeammatesList.swift in Sources */,
 				94E325CD1F07FA7E00B2D8C8 /* JoinTeamTermsCell.swift in Sources */,
 				6D466AA91ED07CF1001BC579 /* Teammate.swift in Sources */,
@@ -4282,7 +4235,6 @@
 				6D66B4A21F4F106900672583 /* ChatModelBuilder.swift in Sources */,
 				6D3556761FD2EF3300AEBF07 /* EthereumAddress.swift in Sources */,
 				6D69DA061EFC34FE00DED5CE /* UserIndexCellBuilder.swift in Sources */,
-				6D1C03A11EB8D4A2004AED30 /* UIView.swift in Sources */,
 				6D1EC3D3202A10AA00F0541C /* CoverageForDate.swift in Sources */,
 				6D49FDE72020C34900A908D2 /* Fiat.swift in Sources */,
 				6DE793361EF92E34005F4508 /* ChatTextParser.swift in Sources */,
@@ -4303,7 +4255,6 @@
 				6D49FDE42020C20B00A908D2 /* ClaimVote.swift in Sources */,
 				6D1EC3E9202B0F0100F0541C /* TeammateServerImpl.swift in Sources */,
 				6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */,
-				6DD12ECA1EC5AF7C00BE1CC4 /* Mirror.swift in Sources */,
 				6D6DA24A1EE16E8300307C73 /* TeammateCellBuilder.swift in Sources */,
 				6D20CF961FDEE1890049BE9C /* TeamPart.swift in Sources */,
 				6D0C39DD1F991B6600941FF3 /* Notification.swift in Sources */,
@@ -4383,7 +4334,6 @@
 				6DA714E71EDF224A00F39EBE /* TeambrellaStyle.swift in Sources */,
 				6D666B701F8512FA00812CBE /* PlistStorage.swift in Sources */,
 				9489C1221FF54D4300ECA3A4 /* SwipeToVote.swift in Sources */,
-				6D1C03A31EB8D4D6004AED30 /* NSObject.swift in Sources */,
 				94112D7D20066DB20031898E /* ProxyForEntity.swift in Sources */,
 				6D9AAF5F201A4BB5000411CC /* TransactionsCellModel.swift in Sources */,
 				6DA1D0FB1F040AEF00F9DE87 /* Session.swift in Sources */,
@@ -4469,7 +4419,6 @@
 				6DB5E80A1FEA874E009A2A62 /* SimpleStorage.swift in Sources */,
 				6DAF1CB81F58562900421C5A /* PushService.swift in Sources */,
 				6D2808C81F1A563A00EBBE3D /* DiscussionCompactCell.swift in Sources */,
-				6D829AA51EB0D6860051F43A /* Random.swift in Sources */,
 				6D1EC3E6202B0EB700F0541C /* TxOutputServerImpl.swift in Sources */,
 				6D3141D21F07DF9D00C285DA /* JoinTeamCellBuilder.swift in Sources */,
 				6D6DA2461EE167BD00307C73 /* CoveredObject.swift in Sources */,
@@ -4492,7 +4441,6 @@
 				6D69D9FB1EFC07FF00DED5CE /* ProxyForCell.swift in Sources */,
 				6DD051BD1F66F10B00532626 /* SocketCommand.swift in Sources */,
 				94CB11AA1F0A471A0012C4CB /* HelperGlobalFunctions.swift in Sources */,
-				6D6FCC301FD89C220032041A /* UILabel.swift in Sources */,
 				6D6DA2541EE1C65800307C73 /* ClaimsVotedCell.swift in Sources */,
 				6D9CC6151ED48244007F936E /* SegueType.swift in Sources */,
 				6DAD941C1FCEF4500011557C /* CodeCaptureDelegate.swift in Sources */,

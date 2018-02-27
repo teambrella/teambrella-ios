@@ -20,6 +20,7 @@
  */
 
 import CoreData
+import ExtensionsPack
 import Foundation
 
 struct EntityFactory {

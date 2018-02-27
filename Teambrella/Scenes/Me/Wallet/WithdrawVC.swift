@@ -15,6 +15,7 @@
  */
 
 import AVFoundation
+import ExtensionsPack
 import PKHUD
 import UIKit
 

@@ -19,6 +19,7 @@
  */
 //
 
+import ExtensionsPack
 import Foundation
 import Geth
 import SwiftKeccak
