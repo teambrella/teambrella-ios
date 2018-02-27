@@ -62,7 +62,7 @@ extension UIColor {
     class var battleshipGray: UIColor { return          #colorLiteral(red: 0.4, green: 0.4549019608, blue: 0.4901960784, alpha: 1) }
     class var charcoalGray: UIColor { return            #colorLiteral(red: 0.2352941176, green: 0.2784313725, blue: 0.3254901961, alpha: 1) }
     class var dark: UIColor { return                    #colorLiteral(red: 0.1725490196, green: 0.2235294118, blue: 0.2823529412, alpha: 1) }
-    
+
     var redValue: CGFloat { return CIColor(color: self).red }
     var greenValue: CGFloat { return CIColor(color: self).green }
     var blueValue: CGFloat { return CIColor(color: self).blue }

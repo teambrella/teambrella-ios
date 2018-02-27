@@ -22,6 +22,7 @@
 import Kingfisher
 import PKHUD
 import UIKit
+import ThoraxMath
 import XLPagerTabStrip
 
 final class TeammateProfileVC: UIViewController, Routable {

@@ -28,3 +28,6 @@ github "kishikawakatsumi/KeychainAccess"
 
 # Constraints
 # github "SnapKit/SnapKit" ~> 3.2.0
+
+#Other
+github "Yaro812/ThoraxMath"

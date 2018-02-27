@@ -20,10 +20,11 @@
  */
 
 import UIKit
+import ThoraxMath
 
 @IBDesignable
 class RadarView: UIView {
-    @IBInspectable var color: UIColor = .paleLilac
+    @IBInspectable var color: UIColor = #colorLiteral(red: 0.8784313725, green: 0.8862745098, blue: 1, alpha: 1)
     @IBInspectable var segments: Int = 3
     @IBInspectable var diameter: CGFloat = 136
     @IBInspectable var startAngle: CGFloat = 0

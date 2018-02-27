@@ -1,6 +1,7 @@
 github "Alamofire/Alamofire" "4.6.0"
 github "BoltsFramework/Bolts-ObjC" "1.9.0"
 github "SwiftKickMobile/SwiftMessages" "4.1.0"
+github "Yaro812/ThoraxMath" "1.0.0"
 github "ashleymills/Reachability.swift" "v4.1.0"
 github "daltoniam/Starscream" "2.1.1"
 github "facebook/Facebook-SDK-Swift" "0.3.0"

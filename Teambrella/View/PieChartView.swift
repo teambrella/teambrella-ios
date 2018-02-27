@@ -20,6 +20,7 @@
  */
 
 import UIKit
+import ThoraxMath
 
 @IBDesignable
 class PieChartView: UIView {
