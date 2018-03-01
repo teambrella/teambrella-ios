@@ -19,11 +19,11 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import FBSDKCoreKit
+import FBSDKLoginKit
 import PKHUD
 import SpriteKit
 import UIKit
-import FBSDKCoreKit
-import FBSDKLoginKit
 
 final class LoginBlueVC: UIViewController {
     @IBOutlet var centerLabel: UILabel!

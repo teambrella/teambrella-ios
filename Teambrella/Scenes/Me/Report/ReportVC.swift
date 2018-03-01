@@ -482,7 +482,7 @@ extension ReportVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         (textField as? TextField)?.isInEditMode = false
         enableSendButton()
-        if let cell = claimCell as? NewClaimCell, textField == cell.expensesTextField, let text = textField.text {
+        if let cell = claimCell, textField == cell.expensesTextField, let text = textField.text {
             cell.updateExpenses(limit: limit, coverage: coverage, expenses: Double(text))
         }
     }
