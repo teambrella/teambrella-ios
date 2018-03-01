@@ -6,7 +6,7 @@ def bitcoin_pods
 end
 
 def ethereum_pods
-  pod 'Geth', '~> 1.7'
+#  pod 'Geth', '~> 1.7'
 end
 
 def social_pods
