@@ -1365,7 +1365,6 @@
 		6D8C6FE81F754D8E00BF65B6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Error.strings; sourceTree = "<group>"; };
 		6D8CB40E1F5865B200C72AC3 /* Teambrella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Teambrella.entitlements; sourceTree = "<group>"; };
 		6D8F97111E8D1529008DC62E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teambrella-Bridging-Header.h"; sourceTree = "<group>"; };
 		6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMessage.swift; sourceTree = "<group>"; };
 		6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCommand.swift; sourceTree = "<group>"; };
@@ -1375,7 +1374,6 @@
 		6D91BC061EB3A79100FDC332 /* UUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDTests.swift; sourceTree = "<group>"; };
 		6D9AAF5E201A4BB5000411CC /* TransactionsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsCellModel.swift; sourceTree = "<group>"; };
 		6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyProcessor.swift; path = Helpers/CurrencyProcessor.swift; sourceTree = "<group>"; };
-		6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Bold.otf"; path = "Resources/AkkuratPro-Bold.otf"; sourceTree = "<group>"; };
 		6D9C808D1EDF17D000FB8C2C /* AkkuratPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Regular.otf"; path = "Resources/AkkuratPro-Regular.otf"; sourceTree = "<group>"; };
 		6D9CC6121ED47C79007F936E /* LoginDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginDetailsVC.swift; path = Scenes/Login/LoginDetailsVC.swift; sourceTree = "<group>"; };
@@ -1625,7 +1623,6 @@
 		94C2D3981F191FA600D203C2 /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamCell.swift; path = View/Cells/TeamCell.swift; sourceTree = "<group>"; };
 		94C2D3991F191FA600D203C2 /* TeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TeamCell.xib; path = View/Cells/TeamCell.xib; sourceTree = "<group>"; };
 		94C89AD31EFD728000C6D8F7 /* WalletDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletDetailsVC.swift; path = Scenes/Me/Wallet/WalletDetailsVC.swift; sourceTree = "<group>"; };
-		94C89AD51F0104CC00C6D8F7 /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		94C89AFB1F0278FB00C6D8F7 /* MeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeCell.swift; path = View/Cells/MeCell.swift; sourceTree = "<group>"; };
 		94C89AFC1F0278FB00C6D8F7 /* MeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MeCell.xib; path = View/Cells/MeCell.xib; sourceTree = "<group>"; };
 		94C89AFF1F02AA8100C6D8F7 /* TeamEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamEntity.swift; path = Model/Entities/TeamEntity.swift; sourceTree = "<group>"; };
@@ -2881,16 +2878,13 @@
 				6D106F14203C3E180049E92E /* KeychainAccess.framework */,
 				6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */,
 				6DA8D54E1F0E43B7000A4DB7 /* PKHUD.framework */,
-				94C89AD51F0104CC00C6D8F7 /* QRCode.framework */,
 				6D74B2911F7904A5007F736E /* Reachability.framework */,
-				6D9ACA271F4466C500A9B6C8 /* SnapKit.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				6D471A111F7BEBC2003AB5C7 /* Starscream.framework */,
 				6D0BA5B01F14F83000055E74 /* SwiftDate.framework */,
 				6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */,
 				6D74B2921F7904B0007F736E /* SwiftMessages.framework */,
 				6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */,
-				6D8F97131E8D1532008DC62E /* SwiftyJSON.framework */,
 				6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */,
 				6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */,
 				F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */,
@@ -4685,6 +4679,7 @@
 				CODE_SIGN_ENTITLEMENTS = Teambrella/Teambrella.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
