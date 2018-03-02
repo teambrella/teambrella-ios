@@ -55,7 +55,9 @@ class TeambrellaService: NSObject {
     var key: Key { return Key(base58String: self.contentProvider.user.privateKey, timestamp: self.server.timestamp) }
     
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
-    
+
+    private var currentAttempt = 0
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

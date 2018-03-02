@@ -20,6 +20,7 @@
  */
 
 import PKHUD
+import QRCode
 import UIKit
 import XLPagerTabStrip
 
@@ -106,13 +107,10 @@ class WalletVC: UIViewController {
     }
     
     func generateQRCode() -> UIImage? {
-        guard let image = BTCQRCode.image(for: walletID,
-                                          size: CGSize(width: 79, height: 75),
-                                          scale: UIScreen.main.scale) else {
-                                            return nil
-        }
+        guard var qrCode = QRCode(walletID) else { return nil }
 
-        return image
+        qrCode.size = CGSize(width: 79, height: 75) // Zeplin (04.2 wallet-1 & ...-1-a)
+        return qrCode.image
     }
     
     @objc

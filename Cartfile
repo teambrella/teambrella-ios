@@ -11,7 +11,7 @@ github "malcommac/SwiftDate" ~> 4.0
 #Images
 github "onevcat/Kingfisher" ~> 3.0
 github "zvonicek/ImageSlideshow"
-# github "aschuch/QRCode"
+github "aschuch/QRCode"
 
 #  Libraries
 github "facebook/Facebook-SDK-Swift"

@@ -883,6 +883,8 @@
 		6DE3E319204853220042CD72 /* Geth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE3E317204853220042CD72 /* Geth.framework */; };
 		6DE3E31B2048560C0042CD72 /* MeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3E31A2048560C0042CD72 /* MeModel.swift */; };
 		6DE3E31C2048560C0042CD72 /* MeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3E31A2048560C0042CD72 /* MeModel.swift */; };
+		6DE3E34D2049BCED0042CD72 /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE3E34C2049BCED0042CD72 /* QRCode.framework */; };
+		6DE3E34E2049BCED0042CD72 /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE3E34C2049BCED0042CD72 /* QRCode.framework */; };
 		6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */; };
 		6DE793291EF80F11005F4508 /* UniversalChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE793281EF80F11005F4508 /* UniversalChatVC.swift */; };
 		6DE7932C1EF80F41005F4508 /* UniversalChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */; };
@@ -1520,6 +1522,7 @@
 		6DE3947F1F79284900784ECD /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorPresenter.swift; path = Model/Services/ErrorPresenter.swift; sourceTree = "<group>"; };
 		6DE3E317204853220042CD72 /* Geth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Geth.framework; sourceTree = "<group>"; };
 		6DE3E31A2048560C0042CD72 /* MeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MeModel.swift; path = Model/Entities/MeModel.swift; sourceTree = "<group>"; };
+		6DE3E34C2049BCED0042CD72 /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatNewMessagesSeparatorCell.swift; path = Scenes/Team/Chat/ChatNewMessagesSeparatorCell.swift; sourceTree = "<group>"; };
 		6DE793281EF80F11005F4508 /* UniversalChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatVC.swift; path = Scenes/Team/Chat/UniversalChatVC.swift; sourceTree = "<group>"; };
 		6DE7932B1EF80F41005F4508 /* UniversalChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatDataSource.swift; path = Scenes/Team/Chat/UniversalChatDataSource.swift; sourceTree = "<group>"; };
@@ -1683,6 +1686,7 @@
 				6D4E5D771F7AB6870020DEE2 /* PKHUD.framework in Frameworks */,
 				6D4E5D791F7AB6870020DEE2 /* Alamofire.framework in Frameworks */,
 				6D4E5D7A1F7AB6870020DEE2 /* SwiftSoup.framework in Frameworks */,
+				6DE3E34E2049BCED0042CD72 /* QRCode.framework in Frameworks */,
 				6D4E5D7B1F7AB6870020DEE2 /* Kingfisher.framework in Frameworks */,
 				6D0C39E41F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
 				6D106F16203C3E180049E92E /* KeychainAccess.framework in Frameworks */,
@@ -1718,6 +1722,7 @@
 				6DDE956B1EE80FE40019DA47 /* ImageSlideshow.framework in Frameworks */,
 				6DA8D54F1F0E43B7000A4DB7 /* PKHUD.framework in Frameworks */,
 				6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */,
+				6DE3E34D2049BCED0042CD72 /* QRCode.framework in Frameworks */,
 				6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */,
 				6DEC07501E9BD59D0078F40E /* Kingfisher.framework in Frameworks */,
 				6D106F15203C3E180049E92E /* KeychainAccess.framework in Frameworks */,
@@ -2879,6 +2884,7 @@
 				6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */,
 				6DA8D54E1F0E43B7000A4DB7 /* PKHUD.framework */,
 				6D74B2911F7904A5007F736E /* Reachability.framework */,
+				6DE3E34C2049BCED0042CD72 /* QRCode.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				6D471A111F7BEBC2003AB5C7 /* Starscream.framework */,
 				6D0BA5B01F14F83000055E74 /* SwiftDate.framework */,
@@ -3414,6 +3420,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ThoraxMath.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ExtensionsPack.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -3474,6 +3481,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ThoraxMath.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ExtensionsPack.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -4914,7 +4922,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
@@ -4954,7 +4962,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 44C520431479B61FE9F06E42 /* Pods-Teambrella.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
