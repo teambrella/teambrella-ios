@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -197,23 +196,23 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEo-Lf-sqz">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEo-Lf-sqz">
                                 <rect key="frame" x="631" y="16" width="20" height="22"/>
                                 <state key="normal" image="info"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" horizontalCompressionResistancePriority="751" text="VOTING: RISK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="73P-Jh-cgD" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" horizontalCompressionResistancePriority="751" text="VOTING: RISK" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="73P-Jh-cgD" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="16" y="20" width="84" height="14.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" red="0.2470588235" green="0.67450980390000004" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 DAYS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4uw-BF-uDk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="6 DAYS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4uw-BF-uDk">
                                 <rect key="frame" x="116" y="20" width="42" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.70588235290000001" green="0.74901960779999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fO-Rr-g6b" customClass="PieChartView" customModule="Surilla" customModuleProvider="target">
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="1fO-Rr-g6b" customClass="PieChartView" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="166" y="18" width="20" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -385,7 +384,7 @@
                             <constraint firstItem="73P-Jh-cgD" firstAttribute="leading" secondItem="XcV-fX-2kO" secondAttribute="leading" constant="16" id="eW1-jK-rOq"/>
                             <constraint firstItem="2sY-CF-eqa" firstAttribute="trailing" secondItem="aiG-hq-p1u" secondAttribute="trailing" id="i26-nd-W6h"/>
                             <constraint firstItem="25q-2v-Cur" firstAttribute="leading" secondItem="XcV-fX-2kO" secondAttribute="leading" constant="16" id="i7E-Z2-4cL"/>
-                            <constraint firstItem="73P-Jh-cgD" firstAttribute="firstBaseline" secondItem="4uw-BF-uDk" secondAttribute="firstBaseline" id="jBu-v2-oMY"/>
+                            <constraint firstItem="73P-Jh-cgD" firstAttribute="baseline" secondItem="4uw-BF-uDk" secondAttribute="baseline" id="jBu-v2-oMY"/>
                             <constraint firstItem="VDN-tt-rep" firstAttribute="trailing" secondItem="aiG-hq-p1u" secondAttribute="trailing" id="kSE-86-gbm"/>
                             <constraint firstItem="aVs-ZO-f7v" firstAttribute="centerX" secondItem="XcV-fX-2kO" secondAttribute="centerX" id="knz-ak-1D9"/>
                             <constraint firstItem="2sW-oF-gn5" firstAttribute="top" secondItem="zPb-mX-NaQ" secondAttribute="bottom" constant="-3" id="oha-f1-Dqf"/>
@@ -394,8 +393,9 @@
                             <constraint firstAttribute="trailing" secondItem="GEo-Lf-sqz" secondAttribute="trailing" constant="16" id="sZf-mJ-Mqg"/>
                             <constraint firstItem="aiG-hq-p1u" firstAttribute="bottom" secondItem="zPb-mX-NaQ" secondAttribute="top" constant="5" id="uA1-SA-oTA"/>
                             <constraint firstItem="2sY-CF-eqa" firstAttribute="top" secondItem="aiG-hq-p1u" secondAttribute="top" id="vvh-LP-WfQ"/>
+                            <constraint firstItem="4uw-BF-uDk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="73P-Jh-cgD" secondAttribute="trailing" constant="8" id="wAq-8l-5c7"/>
                             <constraint firstItem="VDN-tt-rep" firstAttribute="centerY" secondItem="XY2-Tj-qf7" secondAttribute="centerY" constant="1" id="xBS-Dp-cqZ"/>
-                            <constraint firstItem="4uw-BF-uDk" firstAttribute="leading" secondItem="73P-Jh-cgD" secondAttribute="trailing" constant="16" id="xd6-6P-LKm"/>
+                            <constraint firstItem="4uw-BF-uDk" firstAttribute="leading" secondItem="73P-Jh-cgD" secondAttribute="trailing" priority="750" constant="16" id="xd6-6P-LKm"/>
                         </constraints>
                     </view>
                 </subviews>

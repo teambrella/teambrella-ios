@@ -33,7 +33,7 @@
 
 "Team.Teammates.newTeammates"                         = "НОВЫЕ УЧАСТНИКИ";
 "Team.Teammates.teammates"                            = "УЧАСТНИКИ";
-"Team.Teammates.votingEndsIn"                         = "ГОЛОСОВАНИЕ ЗАКАНЧИВАЕТСЯ ЧЕРЕЗ";
+"Team.Teammates.votingEndsIn"                         = "ГОЛОСОВАНИЕ: ОСТАЛОСЬ";
 "Team.Teammates.net"                                  = "НЕТТО";
 "Team.MembersVC.indicatorTitle"                       = "Участники";
 "Team.MembersVC.searchHere"                           = "Поиск";
