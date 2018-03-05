@@ -188,7 +188,7 @@
 "Team.Claims.objectView.reportButton.title" = "Отправить заявку";
 
 "Team.Chat.ObjectView.VoteLabel" = "Голосовать";
-"Team.Chat.ObjectView.RevoteLabel" = "Переголосовать";
+"Team.Chat.ObjectView.RevoteLabel" = "Голосовать"; // переголосовать не влезает на маленькие айфоны
 "Team.Chat.ObjectView.ClaimAmountLabel" = "РАЗМЕР ЗАЯВКИ - ";
 "Team.Chat.ObjectView.TitleLabel" = "ВАШ ГОЛОС";
 "Team.Chat.ObjectView.TitleLabel.risk" = "ФАКТОР РИСКА";
