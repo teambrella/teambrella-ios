@@ -121,7 +121,6 @@
 "Team.VotingRiskVC.othersButton"                      = "Otros";
 
 "Team.VotingRiskVC.ends"                              = "TERMINA %@";
-"Team.Claims.ClaimVC.VotingCell.endsTitle"            = "Termina ";
 
 "Team.Members.Teammates.Strategy.headerTitle"         = "RIESGO: %.2f A %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle"      = "RIESGO";

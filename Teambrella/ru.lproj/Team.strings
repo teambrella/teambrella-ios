@@ -10,7 +10,7 @@
 
 "Team.ClaimsVC.indicatorTitle"                        = "Заявки";
 "Team.ClaimsCell.claimed"                             = "заявлено";
-"Team.ClaimsCell.viewToVote"                          = "Смотреть чтобы голосовать";
+"Team.ClaimsCell.viewToVote"                          = "Смотреть, чтобы голосовать";
 "Team.ClaimsCell.reimbursed"                          = "Выплачено";
 
 "Team.ClaimCell.claimID_format"                       = "Заявка %d";
@@ -144,8 +144,6 @@
 "Team.Claims.ClaimTransactionsVC.amountCrypto"        = "Сумма крипто";
 "Team.Claims.ClaimTransactionsVC.amountFiat"          = "Сумма фиатная";
 "Team.Claims.ClaimTransactionsVC.status"              = "Статус";
-
-"Team.Claims.ClaimVC.VotingCell.endsTitle"            = "Заканчивается ";
 
 "Team.Claims.State.Header.fullyPaid"                  = "ПОЛНОСТЬЮ ВЫПЛАЧЕНО";
 "Team.Claims.State.Header.beingPaid"                  = "В ОПЛАТЕ";

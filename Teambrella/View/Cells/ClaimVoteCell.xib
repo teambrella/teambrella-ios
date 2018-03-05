@@ -30,13 +30,13 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVa-WO-KTz">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="332"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOTING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVp-Aa-10c" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="VOTING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVp-Aa-10c" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="16" y="16" width="62" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0E-WH-DMy" customClass="PieChartView" customModule="Surilla" customModuleProvider="target">
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="y0E-WH-DMy" customClass="PieChartView" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="144" y="16.5" width="20" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -44,14 +44,14 @@
                                     <constraint firstAttribute="width" constant="20" id="j5L-8n-YxB"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-2g-vOp">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-2g-vOp">
                                 <rect key="frame" x="287" y="16" width="40" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="xkZ-mK-QQt"/>
                                 </constraints>
                                 <state key="normal" image="info"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2r-3b-RDy" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="F2r-3b-RDy" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="94" y="16" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -246,8 +246,10 @@
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="centerY" secondItem="KVp-Aa-10c" secondAttribute="centerY" id="RtA-AP-bVR"/>
                             <constraint firstItem="0Iw-2g-vOp" firstAttribute="top" secondItem="NVa-WO-KTz" secondAttribute="topMargin" id="W17-G1-Olu"/>
                             <constraint firstItem="HKR-rc-C51" firstAttribute="centerY" secondItem="Qqi-A2-dcL" secondAttribute="centerY" id="WHf-pC-FEm"/>
-                            <constraint firstItem="F2r-3b-RDy" firstAttribute="firstBaseline" secondItem="KVp-Aa-10c" secondAttribute="firstBaseline" id="XXG-y7-9NZ"/>
-                            <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" secondItem="KVp-Aa-10c" secondAttribute="trailing" constant="16" id="YOe-GY-gdc"/>
+                            <constraint firstItem="0Iw-2g-vOp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y0E-WH-DMy" secondAttribute="trailing" id="WiC-rU-V4Y"/>
+                            <constraint firstItem="F2r-3b-RDy" firstAttribute="baseline" secondItem="KVp-Aa-10c" secondAttribute="firstBaseline" id="XXG-y7-9NZ"/>
+                            <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KVp-Aa-10c" secondAttribute="trailing" constant="8" id="YOe-GY-gdc"/>
+                            <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" secondItem="KVp-Aa-10c" secondAttribute="trailing" priority="750" constant="16" id="aqA-Qm-jd0"/>
                             <constraint firstItem="94U-NU-l4o" firstAttribute="leading" secondItem="NVa-WO-KTz" secondAttribute="leading" id="eRU-4B-Kbw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Iw-2g-vOp" secondAttribute="trailing" id="f0m-P5-J2e"/>
                             <constraint firstItem="KVp-Aa-10c" firstAttribute="leading" secondItem="HKR-rc-C51" secondAttribute="leading" id="hOk-xj-7xD"/>

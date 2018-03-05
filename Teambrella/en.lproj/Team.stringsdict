@@ -29,7 +29,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>one day</string>
+			<string>%d day</string>
 			<key>other</key>
 			<string>%d days</string>
 		</dict>
@@ -45,7 +45,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>one hour</string>
+			<string>%d hour</string>
 			<key>other</key>
 			<string>%d hours</string>
 		</dict>
@@ -61,9 +61,57 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>one minute</string>
+			<string>%d minute</string>
 			<key>other</key>
 			<string>%d minutes</string>
+		</dict>
+	</dict>
+	<key>Team.Claim.minutes_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@minutes@</string>
+		<key>minutes</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>ends in</string>
+			<key>other</key>
+			<string>ends in</string>
+		</dict>
+	</dict>
+	<key>Team.Claim.hours_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@hours@</string>
+		<key>hours</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>ends in</string>
+			<key>other</key>
+			<string>ends in</string>
+		</dict>
+	</dict>
+	<key>Team.Claim.days_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>ends in</string>
+			<key>other</key>
+			<string>ends in</string>
 		</dict>
 	</dict>
 </dict>

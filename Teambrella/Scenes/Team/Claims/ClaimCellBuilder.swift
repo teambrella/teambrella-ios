@@ -83,8 +83,16 @@ struct ClaimCellBuilder {
 
         cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
         let dateProcessor = DateProcessor()
-        cell.remainingDaysLabel.text = "Team.Claims.ClaimVC.VotingCell.endsTitle".localized.uppercased()
-            + dateProcessor.stringFromNow(minutes: -voting.minutesRemaining).uppercased()
+        var prefix = ""
+        if voting.minutesRemaining < 60 {
+            prefix = "Team.Claim.minutes_format".localized(voting.minutesRemaining)
+        } else if voting.minutesRemaining < 60 * 24 {
+            prefix = "Team.Claim.hours_format".localized(voting.minutesRemaining / 60)
+        } else {
+            prefix = "Team.Claim.days_format".localized(voting.minutesRemaining / (60 * 24))
+        }
+        cell.remainingDaysLabel.text = prefix.uppercased() + " " +
+            dateProcessor.stringFromNow(minutes: -voting.minutesRemaining).uppercased()
 
         cell.pieChart.setupWith(remainingMinutes: voting.minutesRemaining)
         

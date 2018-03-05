@@ -1,81 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   Team.stringsdict
-   Teambrella
-
-   Created by Yaroslav Pasternak on 04.09.17.
-   Copyright (c) 2017 Yaroslav Pasternak. All rights reserved.
--->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>Team.Chat.typing_format</key>
-        <dict>
-            <key>NSStringLocalizedFormatKey</key>
-            <string>%#@teammates@</string>
-            <key>teammates</key>
-            <dict>
-                <key>NSStringFormatSpecTypeKey</key>
-                <string>NSStringPluralRuleType</string>
-                <key>NSStringFormatValueTypeKey</key>
-                <string>d</string>
-                <key>one</key>
-                <string>escribe</string>
-                <key>other</key>
-                <string>escriben</string>
-            </dict>
-        </dict>
-        
-        <key>Team.Members.days_format</key>
-        <dict>
-            <key>NSStringLocalizedFormatKey</key>
-            <string>%#@days@</string>
-            <key>days</key>
-            <dict>
-                <key>NSStringFormatSpecTypeKey</key>
-                <string>NSStringPluralRuleType</string>
-                <key>NSStringFormatValueTypeKey</key>
-                <string>d</string>
-                <key>one</key>
-                <string>un día</string>
-                <key>other</key>
-                <string>%d días</string>
-            </dict>
-        </dict>
-        
-        <key>Team.Members.hours_format</key>
-        <dict>
-            <key>NSStringLocalizedFormatKey</key>
-            <string>%#@days@</string>
-            <key>days</key>
-            <dict>
-                <key>NSStringFormatSpecTypeKey</key>
-                <string>NSStringPluralRuleType</string>
-                <key>NSStringFormatValueTypeKey</key>
-                <string>d</string>
-                <key>one</key>
-                <string>una hora</string>
-                <key>other</key>
-                <string>%d horas</string>
-            </dict>
-        </dict>
-        
-        <key>Team.Members.minutes_format</key>
-        <dict>
-            <key>NSStringLocalizedFormatKey</key>
-            <string>%#@days@</string>
-            <key>days</key>
-            <dict>
-                <key>NSStringFormatSpecTypeKey</key>
-                <string>NSStringPluralRuleType</string>
-                <key>NSStringFormatValueTypeKey</key>
-                <string>d</string>
-                <key>one</key>
-                <string>un minuto</string>
-                <key>other</key>
-                <string>%d minutos</string>
-            </dict>
-        </dict>
-        
-    </dict>
+<dict>
+	<key>Team.Chat.typing_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@teammates@</string>
+		<key>teammates</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>escribe</string>
+			<key>other</key>
+			<string>escriben</string>
+		</dict>
+	</dict>
+	<key>Team.Members.days_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d día</string>
+			<key>other</key>
+			<string>%d días</string>
+		</dict>
+	</dict>
+	<key>Team.Members.hours_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d hora</string>
+			<key>other</key>
+			<string>%d horas</string>
+		</dict>
+	</dict>
+	<key>Team.Members.minutes_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d minuto</string>
+			<key>other</key>
+			<string>%d minutos</string>
+		</dict>
+	</dict>
+	<key>Team.Claim.minutes_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@minutes@</string>
+		<key>minutes</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>termina in</string>
+			<key>other</key>
+			<string>termina in</string>
+		</dict>
+	</dict>
+	<key>Team.Claim.hours_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@hours@</string>
+		<key>hours</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>termina in</string>
+			<key>other</key>
+			<string>termina in</string>
+		</dict>
+	</dict>
+	<key>Team.Claim.days_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>termina in</string>
+			<key>other</key>
+			<string>termina in</string>
+		</dict>
+	</dict>
+</dict>
 </plist>
