@@ -21,6 +21,7 @@
 
 import Kingfisher
 import PKHUD
+import ThoraxMath
 import UIKit
 import XLPagerTabStrip
 

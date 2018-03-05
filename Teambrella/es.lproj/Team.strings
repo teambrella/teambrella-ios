@@ -15,7 +15,6 @@
 "Team.ClaimCell.claimID_format"                       = "Reclamación %d";
 "Team.ClaimCell.timePassed_format"                    = "hace %d minutos";
 "Team.ClaimCell.voting"                               = "Votación";
-"Team.ClaimCell.remainingMinutes_format"              = "%d minutos";
 "Team.ClaimCell.yourVote"                             = "tu vota";
 "Team.ClaimCell.byProxy"                              = "por proxy";
 "Team.ClaimCell.teamVote"                             = "vota del equipo";
@@ -119,9 +118,6 @@
 "Team.VotingRiskVC.avgLabel"                          = "PROM\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Reiniciar Votación";
 "Team.VotingRiskVC.othersButton"                      = "Otros";
-
-"Team.VotingRiskVC.ends"                              = "TERMINA %@";
-"Team.Claims.ClaimVC.VotingCell.endsTitle"            = "Termina ";
 
 "Team.Members.Teammates.Strategy.headerTitle"         = "RIESGO: %.2f A %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle"      = "RIESGO";

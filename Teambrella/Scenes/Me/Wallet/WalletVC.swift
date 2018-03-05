@@ -108,7 +108,7 @@ class WalletVC: UIViewController {
     
     func generateQRCode() -> UIImage? {
         guard var qrCode = QRCode(walletID) else { return nil }
-        
+
         qrCode.size = CGSize(width: 79, height: 75) // Zeplin (04.2 wallet-1 & ...-1-a)
         return qrCode.image
     }

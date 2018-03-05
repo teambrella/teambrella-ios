@@ -20,6 +20,7 @@
  */
 
 import CoreData
+import ExtensionsPack
 
 class Tx: NSManagedObject {
     var kind: TransactionKind? { return TransactionKind(rawValue: Int(kindValue)) }

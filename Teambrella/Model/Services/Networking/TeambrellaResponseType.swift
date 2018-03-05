@@ -52,4 +52,5 @@ enum TeambrellaResponseType {
     case mute(Bool)
     
     case votesList(VotersList)
+    case me(MeModel)
 }

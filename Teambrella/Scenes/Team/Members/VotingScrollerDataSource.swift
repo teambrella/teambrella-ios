@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ThoraxMath
 
 struct VotingScrollerDataSource {
     var count: Int { return models.count }

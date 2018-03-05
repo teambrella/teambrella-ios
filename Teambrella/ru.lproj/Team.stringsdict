@@ -29,7 +29,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>день</string>
+			<string>%d день</string>
 			<key>other</key>
 			<string>%d дней</string>
 			<key>few</key>
@@ -47,7 +47,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>час</string>
+			<string>%d час</string>
 			<key>few</key>
 			<string>%d часа</string>
 			<key>other</key>
@@ -65,11 +65,65 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>минута</string>
+			<string>%d минута</string>
 			<key>few</key>
 			<string>%d минуты</string>
 			<key>other</key>
 			<string>%d минут</string>
+		</dict>
+	</dict>
+	<key>Team.Claim.minutes_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@minutes@</string>
+		<key>minutes</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>осталась</string>
+			<key>few</key>
+			<string>осталось</string>
+			<key>other</key>
+			<string>осталось</string>
+		</dict>
+	</dict>
+	<key>Team.Claim.hours_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@hours@</string>
+		<key>hours</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>остался</string>
+			<key>few</key>
+			<string>осталось</string>
+			<key>other</key>
+			<string>осталось</string>
+		</dict>
+	</dict>
+	<key>Team.Claim.days_format</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>остался</string>
+			<key>few</key>
+			<string>осталось</string>
+			<key>other</key>
+			<string>осталось</string>
 		</dict>
 	</dict>
 </dict>

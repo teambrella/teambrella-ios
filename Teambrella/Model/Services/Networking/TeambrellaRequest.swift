@@ -209,6 +209,9 @@ struct TeambrellaRequest {
                  .teammateVotesList:
                 let votesList = try decoder.decode(VotersList.self, from: serverReply.data)
                 success(.votesList(votesList))
+            case .me:
+                let myModel = try decoder.decode(MeModel.self, from: serverReply.data)
+                success(.me(myModel))
             default:
                 break
             }

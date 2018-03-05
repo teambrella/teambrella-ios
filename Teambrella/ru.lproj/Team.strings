@@ -10,14 +10,13 @@
 
 "Team.ClaimsVC.indicatorTitle"                        = "Заявки";
 "Team.ClaimsCell.claimed"                             = "заявлено";
-"Team.ClaimsCell.viewToVote"                          = "Смотреть чтобы голосовать";
+"Team.ClaimsCell.viewToVote"                          = "Смотреть, чтобы голосовать";
 "Team.ClaimsCell.reimbursed"                          = "Выплачено";
 
 "Team.ClaimCell.claimID_format"                       = "Заявка %d";
 "Team.ClaimCell.timePassed_format"                    = "%d мин. назад";
 
 "Team.ClaimCell.voting"                               = "Голосование";
-"Team.ClaimCell.remainingMinutes_format"              = "%d мин.";
 "Team.ClaimCell.yourVote"                             = "твой голос";
 "Team.ClaimCell.byProxy"                              = "прокси";
 "Team.ClaimCell.teamVote"                             = "голос группы";
@@ -129,7 +128,6 @@
 "Team.VotingRiskVC.avgLabel"                          = "СРЕДН.\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Сбросить голос";
 "Team.VotingRiskVC.othersButton"                      = "Остальные";
-"Team.VotingRiskVC.ends"                              = "Заканчивается %@";
 
 "Team.Members.Teammates.Strategy.headerTitle"         = "ФАКТОР РИСКА: %.2f ДО %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle"      = "ФАКТОР РИСКА";
@@ -144,8 +142,6 @@
 "Team.Claims.ClaimTransactionsVC.amountCrypto"        = "Сумма крипто";
 "Team.Claims.ClaimTransactionsVC.amountFiat"          = "Сумма фиатная";
 "Team.Claims.ClaimTransactionsVC.status"              = "Статус";
-
-"Team.Claims.ClaimVC.VotingCell.endsTitle"            = "Заканчивается ";
 
 "Team.Claims.State.Header.fullyPaid"                  = "ПОЛНОСТЬЮ ВЫПЛАЧЕНО";
 "Team.Claims.State.Header.beingPaid"                  = "В ОПЛАТЕ";
@@ -188,7 +184,7 @@
 "Team.Claims.objectView.reportButton.title" = "Отправить заявку";
 
 "Team.Chat.ObjectView.VoteLabel" = "Голосовать";
-"Team.Chat.ObjectView.RevoteLabel" = "Переголосовать";
+"Team.Chat.ObjectView.RevoteLabel" = "Голосовать"; // переголосовать не влезает на маленькие айфоны
 "Team.Chat.ObjectView.ClaimAmountLabel" = "РАЗМЕР ЗАЯВКИ - ";
 "Team.Chat.ObjectView.TitleLabel" = "ВАШ ГОЛОС";
 "Team.Chat.ObjectView.TitleLabel.risk" = "ФАКТОР РИСКА";

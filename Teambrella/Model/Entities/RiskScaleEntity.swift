@@ -20,6 +20,7 @@
  */
 
 import Foundation
+import ThoraxMath
 
 class RiskScaleEntity: Decodable {
     let ranges: [RiskScaleRange]

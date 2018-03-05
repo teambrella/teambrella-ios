@@ -20,7 +20,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 struct SocketAction: CustomStringConvertible {
     let command: SocketCommand

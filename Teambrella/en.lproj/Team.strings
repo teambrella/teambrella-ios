@@ -17,7 +17,6 @@
 "Team.ClaimCell.timePassed_format"                    = "%d min ago";
 
 "Team.ClaimCell.voting"                               = "Voting";
-"Team.ClaimCell.remainingMinutes_format"              = "%d min";
 "Team.ClaimCell.yourVote"                             = "your vote";
 "Team.ClaimCell.byProxy"                              = "by proxy";
 "Team.ClaimCell.teamVote"                             = "team vote";
@@ -129,7 +128,6 @@
 "Team.VotingRiskVC.avgLabel"                          = "AVG\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Reset Vote";
 "Team.VotingRiskVC.othersButton"                      = "Others";
-"Team.VotingRiskVC.ends"                              = "ENDS %@";
 
 "Team.Members.Teammates.Strategy.headerTitle"         = "RISK: %.2f TO %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle"      = "RISK";
@@ -144,8 +142,6 @@
 "Team.Claims.ClaimTransactionsVC.amountCrypto"        = "Amount Crypto";
 "Team.Claims.ClaimTransactionsVC.amountFiat"          = "Amount Fiat";
 "Team.Claims.ClaimTransactionsVC.status"              = "Status";
-
-"Team.Claims.ClaimVC.VotingCell.endsTitle"            = "Ends ";
 
 "Team.Claims.State.Header.fullyPaid"                  = "FULLY PAID";
 "Team.Claims.State.Header.beingPaid"                  = "BEING PAID";

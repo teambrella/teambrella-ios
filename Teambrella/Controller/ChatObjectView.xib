@@ -83,7 +83,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rK-LI-YhF">
-                            <rect key="frame" x="299.5" y="-0.5" width="59.5" height="48"/>
+                            <rect key="frame" x="295.5" y="-0.5" width="75.5" height="48"/>
                             <state key="normal" image="chevronUp"/>
                             <connections>
                                 <action selector="tapChevron:" destination="-1" eventType="touchUpInside" id="lrG-4a-vHf"/>
@@ -92,19 +92,19 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1y-bp-9dQ">
                             <rect key="frame" x="218" y="0.0" width="157" height="48"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5F-fw-geK" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5F-fw-geK" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                     <rect key="frame" x="13" y="7" width="26.5" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCK-U5-8Zp" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCK-U5-8Zp" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
                                     <rect key="frame" x="13" y="21.5" width="42" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGy-kF-cLV">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGy-kF-cLV">
                                     <rect key="frame" x="55" y="19.5" width="18.5" height="24.5"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="20"/>
                                     <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -117,10 +117,7 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36L-C4-ED1">
-                                    <rect key="frame" x="81.5" y="-0.5" width="59.5" height="48"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="va9-Ne-XNE"/>
-                                    </constraints>
+                                    <rect key="frame" x="77.5" y="-0.5" width="75.5" height="48"/>
                                     <state key="normal" title="Button"/>
                                     <connections>
                                         <action selector="tapRightButton:" destination="-1" eventType="touchUpInside" id="hqM-PE-usZ"/>
@@ -130,8 +127,9 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="crJ-Z8-f3o" firstAttribute="leading" secondItem="AGy-kF-cLV" secondAttribute="trailing" constant="8" id="4Yl-pW-tDN"/>
-                                <constraint firstItem="36L-C4-ED1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AGy-kF-cLV" secondAttribute="trailing" constant="8" id="5YB-fG-qiI"/>
-                                <constraint firstAttribute="trailing" secondItem="36L-C4-ED1" secondAttribute="trailing" constant="16" id="79d-ud-2Iu"/>
+                                <constraint firstAttribute="trailing" secondItem="36L-C4-ED1" secondAttribute="trailing" priority="250" constant="16" id="79d-ud-2Iu"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="36L-C4-ED1" secondAttribute="trailing" constant="4" id="A6E-fF-o7i"/>
+                                <constraint firstItem="36L-C4-ED1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L5F-fw-geK" secondAttribute="trailing" id="FfR-Uu-EP9"/>
                                 <constraint firstItem="36L-C4-ED1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L5F-fw-geK" secondAttribute="trailing" constant="8" id="MtC-Lm-vuJ"/>
                                 <constraint firstItem="crJ-Z8-f3o" firstAttribute="height" secondItem="AGy-kF-cLV" secondAttribute="height" id="O4S-cr-Dw8"/>
                                 <constraint firstItem="bCK-U5-8Zp" firstAttribute="leading" secondItem="c1y-bp-9dQ" secondAttribute="leading" constant="13" id="Qen-zE-aKJ"/>
@@ -142,6 +140,7 @@
                                 <constraint firstAttribute="bottom" secondItem="36L-C4-ED1" secondAttribute="bottom" id="Y1Q-HJ-74j"/>
                                 <constraint firstItem="AGy-kF-cLV" firstAttribute="centerY" secondItem="bCK-U5-8Zp" secondAttribute="centerY" id="cjM-5l-Fip"/>
                                 <constraint firstItem="L5F-fw-geK" firstAttribute="top" secondItem="c1y-bp-9dQ" secondAttribute="top" constant="7" id="mVG-q4-DiH"/>
+                                <constraint firstItem="36L-C4-ED1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AGy-kF-cLV" secondAttribute="trailing" constant="4" id="oac-cw-fIB"/>
                                 <constraint firstItem="L5F-fw-geK" firstAttribute="leading" secondItem="c1y-bp-9dQ" secondAttribute="leading" constant="13" id="xTY-nY-XJd"/>
                             </constraints>
                             <variation key="default">
@@ -195,10 +194,6 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="-240.5"/>
         </view>
-        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="FwF-Cf-q4H">
-            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-        </activityIndicatorView>
         <tapGestureRecognizer id="lAt-RZ-1he">
             <connections>
                 <action selector="tapView:" destination="-1" id="xzJ-8X-sJ1"/>

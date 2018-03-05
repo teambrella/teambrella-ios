@@ -1,10 +1,5 @@
 //
-//  Decimal.swift
-//  Teambrella
-//
-//  Created by Yaroslav Pasternak on 15.05.17.
-
-/* Copyright(C) 2017  Teambrella, Inc.
+/* Copyright(C) 2018 Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -21,8 +16,18 @@
 
 import Foundation
 
-extension Decimal {
-    var double: Double {
-        return NSDecimalNumber(decimal: self).doubleValue
+/// Short model of my user
+struct MeModel: Decodable {
+    let id: String
+    let name: Name
+    let fbName: String?
+    let avatar: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "Id"
+        case name = "Name"
+        case fbName = "FBName"
+        case avatar = "Avatar"
     }
+
 }
