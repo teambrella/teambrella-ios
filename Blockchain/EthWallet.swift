@@ -44,6 +44,7 @@ class EthWallet {
         case invalidCosigner(txID: String)
         case argumentsMismatch(args: [Any])
         case noFromMultisig
+        case noToMultisig
         case transactionHasNoKind
     }
     
@@ -273,7 +274,7 @@ class EthWallet {
 
         switch kind {
         case .moveToNextWallet:
-            return cosignMove(transaction: transaction, moveFrom: payOrMoveFrom)
+            return try cosignMove(transaction: transaction, moveFrom: payOrMoveFrom)
         default:
             return try cosignPay(transaction: transaction, payFrom: payOrMoveFrom)
         }
@@ -296,23 +297,24 @@ class EthWallet {
         return sig
     }
 
-    func cosignMove(transaction: Tx, moveFrom: TxInput) -> Data {
-        /*
-         int opNum = moveFrom.previousTxIndex + 1;
+    func cosignMove(transaction: Tx, moveFrom: TxInput) throws -> Data {
+         let opNum = moveFrom.previousTransactionIndex + 1
+        guard let sourceMultisig = transaction.fromMultisig else {
+            log("There is no from Multisig", type: [.error, .cryptoDetails])
+            throw EthWalletError.noFromMultisig
+        }
+        guard let toMultisig = transaction.toMultisig else {
+            log("There is no to Multisig", type: [.error, .cryptoDetails])
+            throw EthWalletError.noToMultisig
+        }
 
-         Multisig sourceMultisig = tx.getFromMultisig();
-         long teamId = sourceMultisig.teamId;
-
-         String[] nextCosignerAddresses = toCosignerAddresses(tx.getToMultisig());
-         byte[] h = getHashForMoveSignature(teamId, opNum, nextCosignerAddresses);
-         Log.v(LOG_TAG, "Hash created for Tx transfer(s): " + Hex.fromBytes(h));
-
-         byte[] sig = mEtherAcc.signHashAndCalculateV(h);
-         Log.v(LOG_TAG, "Hash signed.");
-
-         return sig;
-         */
-        return Data()
+        let teamID = sourceMultisig.teamID
+        let nextCosignerAddresses = toCosignerAddresses(nextMultisig: toMultisig)
+        let hash = try hashForMoveSignature(teamID: teamID, opNum: opNum, addresses: nextCosignerAddresses)
+        log("Hash created for Tx transfer(s): \(hash.hexString)", type: .crypto)
+        let sig = try processor.signHashAndCalculateV(hash256: hash)
+         log("Hash signed. \(sig)", type: .cryptoDetails)
+        return sig
     }
 
     func publish(tx: Tx, completion: @escaping (String) -> Void, failure: @escaping (Error?) -> Void) {
@@ -334,6 +336,12 @@ class EthWallet {
         return destinationAddresses
     }
 
+    private func toCosignerAddresses(nextMultisig: Multisig) -> [String] {
+        let cosigners = nextMultisig.cosigners
+        return cosigners.flatMap { cosigner in cosigner.address?.string }
+
+    }
+
     private func toValues(destinations: [TxOutput]) -> [String] {
         let destinationValues = destinations.flatMap { output in
             guard let stringValue = output.amountValue?.stringValue else { return nil }
@@ -344,14 +352,24 @@ class EthWallet {
     }
 
     private func hashForPaySignature(teamID: Int, opNum: Int, addresses: [String], values: [String]) throws -> Data {
+        let hex = Hex()
         let a0 = Constant.txPrefix // prefix, that is used in the contract to indicate a signature for transfer tx
         let a1 = String(format: "%064x", teamID)
         let a2 = String(format: "%064x", opNum)
-        let hex = Hex()
         let a3: [String] = addresses.map { address in hex.truncatePrefix(string: address) }
         let a4: [String] = values.map { value in hex.truncatePrefix(string: value) }
         let data = try hex.data(from: a0, a1, a2, a3, a4)
         log("hashForPaySignature values: \(values);\ndata: \(data.hexString))", type: .cryptoDetails)
+        return processor.sha3(data)
+    }
+
+    private func hashForMoveSignature(teamID: Int, opNum: Int, addresses: [String]) throws -> Data {
+        let hex = Hex()
+        let a0 = Constant.nsPrefix // prefix, that is used in the contract to indicate a signature for move tx.
+        let a1 = String(format: "%064x", teamID)
+        let a2 = String(format: "%064x", opNum)
+        let a3: [String] = addresses.map { address in hex.truncatePrefix(string: address) }
+        let data = try hex.data(from: a0, a1, a2, a3)
         return processor.sha3(data)
     }
 

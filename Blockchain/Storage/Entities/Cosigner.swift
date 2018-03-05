@@ -58,3 +58,11 @@ extension Cosigner {
         }
     }
 }
+
+extension Cosigner {
+    var address: EthereumAddress? {
+        guard let address = teammate.address else { return nil }
+
+        return EthereumAddress(string: address)
+    }
+}
