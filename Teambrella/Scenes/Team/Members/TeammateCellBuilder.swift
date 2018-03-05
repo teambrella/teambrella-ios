@@ -121,8 +121,17 @@ struct TeammateCellBuilder {
         controller.updateAverages(cell: votingCell,
                                   risk: currentChosenRisk)
         
-        let timeString = DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
-        votingCell.timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
+        let dateProcessor = DateProcessor()
+        var prefix = ""
+        if voting.remainingMinutes < 60 {
+            prefix = "Team.Claim.minutes_format".localized(voting.remainingMinutes)
+        } else if voting.remainingMinutes < 60 * 24 {
+            prefix = "Team.Claim.hours_format".localized(voting.remainingMinutes / 60)
+        } else {
+            prefix = "Team.Claim.days_format".localized(voting.remainingMinutes / (60 * 24))
+        }
+        votingCell.timeLabel.text = prefix.uppercased() + " " +
+            dateProcessor.stringFromNow(minutes: -voting.remainingMinutes).uppercased()
     }
     
     private static func populateVote(cell: VotingRiskCell,

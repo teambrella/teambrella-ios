@@ -119,8 +119,6 @@
 "Team.VotingRiskVC.resetVoteButton"                   = "Reiniciar Votación";
 "Team.VotingRiskVC.othersButton"                      = "Otros";
 
-"Team.VotingRiskVC.ends"                              = "TERMINA %@";
-
 "Team.Members.Teammates.Strategy.headerTitle"         = "RIESGO: %.2f A %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle"      = "RIESGO";
 "Team.Members.Teammates.CompareTeamRisk.title"        = "Comparar riesgo del equipo";

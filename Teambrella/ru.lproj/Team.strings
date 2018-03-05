@@ -128,7 +128,6 @@
 "Team.VotingRiskVC.avgLabel"                          = "СРЕДН.\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Сбросить голос";
 "Team.VotingRiskVC.othersButton"                      = "Остальные";
-"Team.VotingRiskVC.ends"                              = "Заканчивается %@";
 
 "Team.Members.Teammates.Strategy.headerTitle"         = "ФАКТОР РИСКА: %.2f ДО %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle"      = "ФАКТОР РИСКА";
