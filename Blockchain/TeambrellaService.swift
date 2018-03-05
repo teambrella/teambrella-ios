@@ -42,7 +42,7 @@ class TeambrellaService: NSObject {
         return queue
     }()
     
-    var hasNews: Bool = false
+    //var hasNews: Bool = false
     
     let server = BlockchainServer()
     let contentProvider: TeambrellaContentProvider = TeambrellaContentProvider()
@@ -57,6 +57,7 @@ class TeambrellaService: NSObject {
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
 
     private var currentAttempt = 0
+    var hasChanges: Bool = true
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -75,7 +76,17 @@ class TeambrellaService: NSObject {
                 self.contentProvider.save()
                 self.delegate?.teambrellaDidUpdate(service: self)
             }
-            completion(success)
+
+            if self.hasChanges && self.currentAttempt < Constant.maxAttempts {
+                self.currentAttempt += 1
+                log("Teambrella has more things to update. Requesting update attempt: \(self.currentAttempt)\n\n",
+                    type: .crypto)
+                self.update(completion: completion)
+            } else {
+                self.currentAttempt = 0
+                self.hasChanges = false
+                completion(success)
+            }
         }
         
     }
@@ -104,7 +115,6 @@ class TeambrellaService: NSObject {
             self.autoApproveTransactions()
             self.serverUpdateToLocalDb { success in
                 if success {
-
                     //                        self.updateAddresses()
                     completion(true)
                 } else {
@@ -113,12 +123,14 @@ class TeambrellaService: NSObject {
             }
         }
     }
-    
+
     func serverUpdateToLocalDb(completion: @escaping (Bool) -> Void) {
         let txsToUpdate = contentProvider.transactionsNeedServerUpdate
         let signatures = contentProvider.signaturesToUpdate
         let user = contentProvider.user
         let multisigsToUpdate = contentProvider.multisigsNeedsServerUpdate
+
+        hasChanges = !(txsToUpdate.isEmpty && signatures.isEmpty && multisigsToUpdate.isEmpty)
 
         server.getUpdates(privateKey: user.privateKey,
                           lastUpdated: user.lastUpdated,

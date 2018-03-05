@@ -215,18 +215,6 @@ struct EthereumProcessor {
     }
 
     func signHash(hash256: Data) throws -> Data {
-        /*
-         try {
-         Log.v(LOG_TAG, "signing hash: " + Hex.fromBytes(hash256));
-         return mKeyStore.signHashPassphrase(mAccount, mKeyStoreSecret, hash256);
-         } catch (Exception e) {
-         Log.e(LOG_TAG, "Could not sign hash:" + Hex.fromBytes(hash256) + ". " + e.getMessage(), e);
-         if (!BuildConfig.DEBUG) {
-         Crashlytics.logException(e);
-         }
-         throw new CryptoException(e.getMessage(), e);
-         }
-         */
         guard let account = ethAccount else { throw EthereumProcessorError.noAccount }
         guard let keyStore = ethKeyStore else { throw EthereumProcessorError.noKeyStore }
 
