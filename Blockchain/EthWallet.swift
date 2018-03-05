@@ -20,17 +20,18 @@ import Geth
 
 class EthWallet {
     struct Constant {
-        static let methodIDteamID = "8d475461"
-        static let methodIDcosigners = "22c5ec0f"
-        static let methodIDtransfer = "91f34dbd"
-        static let txPrefix = "5452"
-        static let nsPrefix = "4E53"
-        
+        static let methodIDteamID               = "8d475461"
+        static let methodIDcosigners            = "22c5ec0f"
+        static let methodIDtransfer             = "91f34dbd"
+        static let methodIDchangeAllCosigners   = "a0175b96"
+        static let txPrefix                     = "5452"
+        static let nsPrefix                     = "4E53"
+
         static let minGasWalletBalance: Decimal = 0.0075
         static let maxGasWalletBalance: Decimal = 0.01
 
-        static let gasLimitBase: Int = 100_000
-        static let gasLimitForMoveTx: Int = 200_000
+        static let gasLimitBase: Int            = 100_000
+        static let gasLimitForMoveTx: Int       = 200_000
     }
 
     enum EthWalletError: Error {
@@ -201,6 +202,33 @@ class EthWallet {
         }
     }
 
+    func refreshClaimGasPrice(completion: @escaping (Int) -> Void) {
+        let gasStation = GasStation()
+        gasStation.gasPrice { [weak self] price, error in
+            guard let `self` = self else { return }
+
+            if let error = error {
+                log("refresh gas error: \(error)", type: [.error, .crypto])
+            }
+
+            switch price {
+            case ..<0:
+                log("Failed to get the gas price from a server. A default gas price will be used.",
+                    type: [.error, .crypto])
+                self.gasPrice = 1_000_000_001
+            case 4_000_000_001...:
+                log("""
+                    With the current version gas price for a clime is limited. This high price will be supported later \
+                    (when off-chain payments are implemented) : \(price)
+                    """, type: [.error, .crypto])
+                self.gasPrice = 4_000_000_001
+            default:
+                self.gasPrice = price
+            }
+            completion(self.gasPrice)
+        }
+    }
+
     func refreshContractCreationGasPrice(completion: @escaping (Int) -> Void) {
         let gasStation = GasStation()
         gasStation.contractCreationGasPrice { [weak self] price, error in
@@ -217,7 +245,7 @@ class EthWallet {
                 self.contractGasPrice = 100_000_001
             case 8_000_000_002...:
                 log("The server is kidding with us about the contract gas price: \(price)", type: [.error, .crypto])
-                self.contractGasPrice = 8_000_000_001
+                self.contractGasPrice = 8_000_000_002
             default:
                 self.contractGasPrice = price
             }
@@ -374,72 +402,98 @@ class EthWallet {
     }
 
     private  func publishMove(tx: Tx, completion: @escaping (String) -> Void, failure: @escaping (Error?) -> Void) {
-        /*
-         Android version:
+         log("Publishing move tx: \(tx.id.uuidString)", type: .crypto)
+        let inputs = tx.inputs
+        guard inputs.count == 1 else {
+            let error = EthWalletError.unexpectedTxInputsCount(count: inputs.count, txID: tx.id.uuidString)
+            failure(error)
+            return
+        }
+        guard let myMultisig = tx.fromMultisig else {
+            failure(EthWalletError.noMultisigs)
+            return
+        }
 
-         List<TxInput> inputs = tx.txInputs;
-         if (inputs.size() != 1) {
-         String msg = "Unexpected count of move tx inputs of ETH tx. Expected: 1, was: " + inputs.size() + ". (tx ID: " + tx.id + ")";
-         Log.e(LOG_TAG, msg);
-         if (!BuildConfig.DEBUG) {
-         Crashlytics.log(msg);
-         }
+        checkMyNonce(success: { myNonce in
+            let gasLimit = 200_000
+            self.refreshGasPrice { gasPrice in
+                guard let multisigAddress = myMultisig.address, let moveFrom = tx.inputs.first else {
+                    return
+                }
 
-         return null;
-         }
+                let methodID = Constant.methodIDchangeAllCosigners
+                let opNum = moveFrom.previousTransactionIndex + 1
+                guard let toMultisig = tx.toMultisig else {
+                    failure(EthWalletError.noToMultisig)
+                    return
+                }
 
-         Multisig myMultisig = tx.getFromMultisig();
-         long myNonce = getMyNonce();
-         long gasLimit = 200_000L;
-         long gasPrice = getGasPrice();
-         String multisigAddress = myMultisig.address;
-         String methodId = METHOD_ID_CHANGEALLCOSIGNERS;
+                let nextCosignerAddresses = self.toCosignerAddresses(nextMultisig: toMultisig)
 
-         TxInput moveFrom = tx.txInputs.get(0);
-         int opNum = moveFrom.previousTxIndex + 1;
-         String[] nextCosignerAddresses = toCosignerAddresses(tx.getToMultisig());
+                var sig: [Data] = [Data(), Data(), Data()]
+                var pos: [Int] = [0, 0, 0]
+                var txSignatures: [Int: TxSignature] = [:]
 
-         int[] pos = new int[3];
-         byte[][] sig = new byte[3][];
-         sig[0] = sig[1] = sig[2] = new byte[0];
-         Map<Long, TXSignature> txSignatures = moveFrom.signatures;
-         int index = 0, j = 0;
-         for (Cosigner cos : tx.cosigners) {
-         if (txSignatures.containsKey(cos.teammateId)) {
-         TXSignature s = txSignatures.get(cos.teammateId);
-         pos[j] = index;
-         sig[j] = s.bSignature;
+                for input in tx.inputs {
+                    guard let signatures = input.signaturesValue as? Set<TxSignature> else { continue }
 
-         if (++j >= 3) {
-         break;
-         }
-         }
+                    for signature in signatures {
+                        txSignatures[signature.teammateID] = signature
+                    }
+                }
 
-         index++;
-         }
-         if (j < txSignatures.size() && j < 3){
-         Log.reportNonFatal(LOG_TAG, "tx was skipped. One or more signatures are not from a valid cosigner. Total signatures: " + txSignatures.size() + ". Valid signatures: " + j +
-         ". pos[0]: " + pos[0] + "" + ". pos[1]: " + pos[1] + ". pos[2]: " + pos[2] + ". Tx.id: " + tx.id);
-         return null;
-         }
+                // CHECK: should cosigners be from fromMultisig or toMultisig
+                guard let cosigners = tx.fromMultisig?.cosigners else {
+                    failure(EthWalletError.noFromMultisig)
+                    return
+                }
 
-         Transaction cryptoTx = mEtherAcc.newMessageTx(myNonce, gasLimit, multisigAddress, gasPrice, methodId, opNum, nextCosignerAddresses, pos[0], pos[1], pos[2], sig[0], sig[1], sig[2]);
-         if (cryptoTx == null){
-         Log.w(LOG_TAG, "move tx was skipped. Seek details in the log above. Tx.id: " + tx.id);
-         return null;
-         }
+                var j = 0
+                for (idx, cosigner) in cosigners.enumerated() {
+                    if let s = txSignatures[cosigner.teammate.id] {
+                        pos[j] = idx
+                        sig[j] = s.signature
+                        j += 1
+                        if j >= 3 {
+                            break
+                        }
+                    }
+                }
 
-         try {
-         Log.v(LOG_TAG, "move tx created: " + cryptoTx.encodeJSON());
-         } catch (Exception e) {
-         Log.e(LOG_TAG, "could not encode JSON to log move tx: " + e.getMessage(), e);
-         }
+                log("sigs: \(sig.count), positions: \(pos)", type: .cryptoDetails)
+                guard (sig.count < 3 && sig.count < txSignatures.count) == false else {
+                    print("""
+                        tx was skipped. One or more signatures are not from a valid cosigner. \
+                        Total signatures: \(txSignatures.count)  Valid signatures: \(sig.count) \
+                        positions: \(pos) Tx.id: \(tx.id)
+                        """)
+                    failure(EthWalletError.invalidCosigner(txID: tx.id.uuidString))
+                    return
+                }
 
-         cryptoTx = mEtherAcc.signTx(cryptoTx, mIsTestNet);
-         Log.v(LOG_TAG, "move tx signed.");
+                var args: [Any] = [opNum, nextCosignerAddresses]
+                args += pos as [Any]
+                args += sig as [Any]
 
-         return publish(cryptoTx);
-         */
+                log("args: \(args)", type: .cryptoDetails)
+                do {
+                    let cryptoTx = try self.processor.messageTx(nonce: myNonce,
+                                                                gasLimit: gasLimit,
+                                                                contractAddress: multisigAddress,
+                                                                gasPrice: gasPrice,
+                                                                methodID: methodID,
+                                                                arguments: args)
+                    let signedTx = try self.processor.signTx(unsignedTx: cryptoTx, isTestNet: self.isTestNet)
+                    self.publish(cryptoTx: signedTx, completion: { hash in
+                        completion(hash)
+                    }, failure: failure)
+                } catch {
+                    failure(error)
+                }
+            }
+        }) { error in
+            failure(error)
+        }
     }
 
     private  func publishPay(tx: Tx, completion: @escaping (String) -> Void, failure: @escaping (Error?) -> Void) {
@@ -454,14 +508,10 @@ class EthWallet {
             failure(EthWalletError.noMultisigs)
             return
         }
-//        guard let teammate = tx.teammate else {
-//            failure(EthWalletError.transactionHasNoTeammate)
-//            return
-//        }
 
         checkMyNonce(success: { myNonce in
             let gasLimit = Constant.gasLimitBase + 30_000 * tx.outputs.count
-            self.refreshGasPrice { gasPrice in
+            self.refreshClaimGasPrice { gasPrice in
                 guard let multisigAddress = myMultisig.address, let payFrom = tx.inputs.first else {
                     return
                 }
