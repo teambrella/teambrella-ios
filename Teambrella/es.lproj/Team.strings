@@ -15,7 +15,6 @@
 "Team.ClaimCell.claimID_format"                       = "Reclamación %d";
 "Team.ClaimCell.timePassed_format"                    = "hace %d minutos";
 "Team.ClaimCell.voting"                               = "Votación";
-"Team.ClaimCell.remainingMinutes_format"              = "%d minutos";
 "Team.ClaimCell.yourVote"                             = "tu vota";
 "Team.ClaimCell.byProxy"                              = "por proxy";
 "Team.ClaimCell.teamVote"                             = "vota del equipo";

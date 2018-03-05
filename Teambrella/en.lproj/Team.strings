@@ -17,7 +17,6 @@
 "Team.ClaimCell.timePassed_format"                    = "%d min ago";
 
 "Team.ClaimCell.voting"                               = "Voting";
-"Team.ClaimCell.remainingMinutes_format"              = "%d min";
 "Team.ClaimCell.yourVote"                             = "your vote";
 "Team.ClaimCell.byProxy"                              = "by proxy";
 "Team.ClaimCell.teamVote"                             = "team vote";
