@@ -65,12 +65,25 @@ struct ClaimCellBuilder {
             cell.setupGallery(with: imageURLStrings, options: [.requestModifier(modifier)])
         }
         cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: claim.basic.avatar)))
-        cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)//"Claim \(claim.id)"
+        cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)
         cell.textLabel.text = claim.discussion.originalPostText.sane
         cell.unreadCountLabel.text = "\(claim.discussion.unreadCount)"
         cell.unreadCountLabel.isHidden = claim.discussion.unreadCount <= 0
         let dateProcessor = DateProcessor()
-        cell.timeLabel.text = dateProcessor.stringFromNow(minutes: claim.discussion.minutesSinceLastPost)
+        let minutesSinceLastPost = claim.discussion.minutesSinceLastPost
+        switch minutesSinceLastPost {
+        case 0:
+            cell.timeLabel.text = "Team.TeammateCell.timeLabel.justNow".localized
+        case 1..<60:
+            cell.timeLabel.text = "Team.Ago.minutes_format".localized(minutesSinceLastPost)
+        case 60..<(60 * 24):
+            cell.timeLabel.text = "Team.Ago.hours_format".localized(minutesSinceLastPost / 60)
+        case (60 * 24)...(60*24*7):
+            cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
+        default:
+            let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
+            cell.timeLabel.text = dateProcessor.stringIntervalOrDate(from: date)
+        }
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
 

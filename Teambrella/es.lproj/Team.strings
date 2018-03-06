@@ -46,9 +46,6 @@
 "Team.TeammateCell.votingFrequency"                   = "Frecuencia de Votación";
 "Team.TeammateCell.applicationDiscussion"             = "Discusión de Solicitud";
 "Team.TeammateCell.timeLabel.justNow"                 = "HACE POCO";
-"Team.TeammateCell.timeLabel.minutes_format_i"        = "HACE %d MIN";
-"Team.TeammateCell.timeLabel.hours_format_i"          = "HACE %d HORAS";
-"Team.TeammateCell.timeLabel.longAgo"                 = "HACE TIEMPO";
 "Team.TeammateCell.contact"                           = "CONTACTO";
 "Team.TeammateCell.buttonTitle_format_i"              = "Ver Reclamaciones (%d)";
 "Team.Decisions.generous"                             = "generoso";

@@ -53,9 +53,6 @@
 "Team.TeammateCell.applicationDiscussion"             = "Обсуждение вступления";
 
 "Team.TeammateCell.timeLabel.justNow"                 = "ТОЛЬКО ЧТО";
-"Team.TeammateCell.timeLabel.minutes_format_i"        = "%d МИН. НАЗАД";
-"Team.TeammateCell.timeLabel.hours_format_i"          = "%d ЧАС. НАЗАД";
-"Team.TeammateCell.timeLabel.longAgo"                 = "ДАВНО";
 "Team.TeammateCell.contact"                           = "КОНТАКТЫ";
 "Team.TeammateCell.buttonTitle_format_i"              = "Смотреть заявки (%d)";
 

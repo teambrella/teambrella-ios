@@ -160,7 +160,7 @@ struct TeammateCellBuilder {
         }
         cell.delegate = controller
     }
-
+    
     // swiftlint:disable:next function_body_length
     private static func populateObject(cell: TeammateObjectCell,
                                        with teammate: TeammateLarge,
@@ -289,16 +289,20 @@ struct TeammateCellBuilder {
     private static func populateDiscussion(cell: DiscussionCell, with stats: TopicEntity, avatar: String) {
         cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: avatar)))
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
-        switch stats.minutesSinceLastPost {
+        let dateProcessor = DateProcessor()
+        let minutesSinceLastPost = stats.minutesSinceLastPost
+        switch minutesSinceLastPost {
         case 0:
             cell.timeLabel.text = "Team.TeammateCell.timeLabel.justNow".localized
         case 1..<60:
-            cell.timeLabel.text = "Team.TeammateCell.timeLabel.minutes_format_i".localized(stats.minutesSinceLastPost)
-        case 60...(60 * 24):
-            let hours = stats.minutesSinceLastPost / 60
-            cell.timeLabel.text = "Team.TeammateCell.timeLabel.hours_format_i".localized(hours)
+            cell.timeLabel.text = "Team.Ago.minutes_format".localized(minutesSinceLastPost)
+        case 60..<(60 * 24):
+            cell.timeLabel.text = "Team.Ago.hours_format".localized(minutesSinceLastPost / 60)
+        case (60 * 24)...(60*24*7):
+            cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
         default:
-            cell.timeLabel.text = "Team.TeammateCell.timeLabel.longAgo".localized
+            let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
+            cell.timeLabel.text = dateProcessor.stringIntervalOrDate(from: date)
         }
         let message = stats.originalPostText.sane
         cell.textLabel.text = message
