@@ -33,9 +33,9 @@ struct ChatTextCellModel: ChatCellModel {
     let fragmentHeights: [CGFloat]
     
     let isMy: Bool
-    let userName: String
-    let userAvatar: String
-    let rateText: String?
+    let userName: Name
+    let userAvatar: Avatar
+    var rateText: String?
     let date: Date
     let isTemporary: Bool
     
@@ -49,7 +49,7 @@ struct ChatTextUnsentCellModel: ChatCellModel {
     let fragmentHeights: [CGFloat]
     let isTemporary: Bool = true
     
-    let userName: String
+    let userName: Name
     let date: Date
     
     var totalFragmentsHeight: CGFloat { return fragmentHeights.reduce(0, +) }

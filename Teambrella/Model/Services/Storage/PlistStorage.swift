@@ -15,7 +15,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 struct PlistStorage {
     private var url: URL? { return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first }
@@ -29,7 +28,8 @@ struct PlistStorage {
         }
         return url
     }
-    
+
+    /*
     func store(json: JSON, for requestType: TeambrellaRequestType, id: String) {
         guard let path = path(requestType: requestType, id: id) else { return }
         guard let object = json.object as? NSCoding else {
@@ -46,7 +46,8 @@ struct PlistStorage {
         
         return JSON(object)
     }
-    
+    */
+
     func path(requestType: TeambrellaRequestType, id: String) -> String? {
         let type = requestType.rawValue.replacingOccurrences(of: "/", with: "_")
         return userURL?.appendingPathComponent(type + "-" + id).path

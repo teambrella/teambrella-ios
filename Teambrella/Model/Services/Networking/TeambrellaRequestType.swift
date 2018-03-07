@@ -34,7 +34,7 @@ enum TeambrellaRequestType: String {
     case claimsList = "claim/getList"
     case claim = "claim/getOne"
     case claimVote = "claim/setVote"
-    case claimUpdates = "claim/getUpdates"
+//    case claimUpdates = "claim/getUpdates"
     case claimChat = "claim/getChat"
     case newClaim = "claim/newClaim"
     case claimTransactions = "claim/getTransactionsList"
@@ -63,4 +63,5 @@ enum TeambrellaRequestType: String {
     
     case teammateVotesList = "teammate/getAllVotesList"
     case claimVotesList = "claim/getAllVotesList"
+    case me = "me/getMe"
 }

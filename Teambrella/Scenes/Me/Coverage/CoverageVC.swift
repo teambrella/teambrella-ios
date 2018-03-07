@@ -25,6 +25,7 @@ import XLPagerTabStrip
 
 class CoverageVC: UIViewController, Routable {
     
+    @IBOutlet var upperView: UIView!
     @IBOutlet var radarView: RadarView!
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var coverage: UILabel!
@@ -52,8 +53,8 @@ class CoverageVC: UIViewController, Routable {
     var coverageAmount: Int = 0 {
         didSet {
             coverage.text = String(coverageAmount)
-            fundWalletButton.isEnabled = coverageAmount != 100
-            fundWalletButton.alpha = (coverageAmount == 100) ? 0.5 : 1
+            fundWalletButton.isEnabled = true
+            setFundButtonTitle(coverageAmount: coverageAmount)
             setImage(for: coverageAmount)
         }
     }
@@ -65,6 +66,13 @@ class CoverageVC: UIViewController, Routable {
     
     @IBAction func tapFundWalletButton(_ sender: Any) {
         service.router.switchToWallet()
+    }
+    
+    func setFundButtonTitle(coverageAmount: Int) {
+        let title = (coverageAmount == 100)
+            ? "Me.CoverageVC.fundButton.title".localized
+            : "Me.CoverageVC.fundButton.title.toIncrease".localized
+        fundWalletButton.setTitle(title, for: .normal)
     }
     
     static var storyboardName = "Me"
@@ -79,7 +87,7 @@ class CoverageVC: UIViewController, Routable {
         centerAmount.currencyLabel.text = currency
         lowerAmount.currencyLabel.text = currency
 
-        fundWalletButton.setTitle("Me.CoverageVC.fundButton".localized, for: .normal)
+        setFundButtonTitle(coverageAmount: coverageAmount)
         titleLabel.text = "Me.CoverageVC.title".localized
         subtitleLabel.text = "Me.CoverageVC.subtitle".localized
         upperLabel.text = "Me.CoverageVC.maxExpenses".localized
@@ -91,7 +99,10 @@ class CoverageVC: UIViewController, Routable {
         slider.isExclusiveTouch = true
     
         titleLabel.isUserInteractionEnabled = true
-       titleLabel.addGestureRecognizer(secretRecognizer)
+        titleLabel.addGestureRecognizer(secretRecognizer)
+        ViewDecorator.shadow(for: upperView, opacity: 0.1, radius: 5)
+        subcontainer.layer.cornerRadius = 4
+        ViewDecorator.shadow(for: subcontainer, opacity: 0.1, radius: 5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,9 +138,9 @@ class CoverageVC: UIViewController, Routable {
         HUD.show(.progress, onView: view)
         service.dao.requestCoverage(for: Date(), teamID: teamID).observe { [weak self] result in
             switch result {
-            case let .value((coverage: coverage, limit: limit)):
-                self?.coverageAmount = Int(coverage * 100)
-                self?.limitAmount = limit
+            case let .value(coverageForDate):
+                self?.coverageAmount = coverageForDate.coverage.integerPercentage
+                self?.limitAmount = coverageForDate.limit
                 if let slider = self?.slider {
                     HUD.hide()
                     self?.changeValues(slider: slider)

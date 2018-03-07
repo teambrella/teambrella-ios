@@ -91,6 +91,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         switchToCurrentTeam()
         service.push.executeCommand()
+        consoleAccessSetup()
         
         if isIpadSimulatingPhone {
             gradientViewBottomConstraint.constant = 20
@@ -100,6 +101,18 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
+    }
+
+    private func consoleAccessSetup() {
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 8
+        tap.addTarget(self, action: #selector(tapConsole))
+        topBarContainer.addGestureRecognizer(tap)
+    }
+
+    @objc
+    private func tapConsole() {
+        service.router.presentConsole()
     }
     
     private func setupTopBar() {
@@ -122,7 +135,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         emitterScene.isHidden = true
-//        addEmitter()
+        //        addEmitter()
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
@@ -190,23 +203,23 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         service.session?.currentUserName = dataSource.name
         service.session?.currentUserAvatar = model.avatar
         
-        leftBrickAmountLabel.text = String(format: "%.0f", model.coverage * 100)
-        rightBrickAmountLabel.text = String.formattedNumber(model.balance * 1000)
-        rightBrickCurrencyLabel.text = service.session?.cryptoCurrency.coinCode
+        leftBrickAmountLabel.text = String(format: "%.0f", model.coverage.percentage)
+        rightBrickAmountLabel.text = String(Int(MEth(model.balance).value))
+        rightBrickCurrencyLabel.text = service.session?.cryptoCoin.code
         
-        greetingsTitleLabel.text = "Home.salutation".localized(dataSource.name)
+        greetingsTitleLabel.text = "Home.salutation".localized(dataSource.name.first)
         greetingsSubtitileLabel.text = "Home.subtitle".localized
         
         leftBrickTitleLabel.text = "Home.leftBrick.title".localized
         rightBrickTitleLabel.text = "Home.rightBrick.title".localized
         
-        itemCard.avatarView.present(imageString: model.smallPhoto)
+        itemCard.avatarView.present(imageString: model.smallPhoto.string)
         itemCard.avatarView.onTap = { [weak self] sender in
             sender.fullscreen(in: self, imageStrings: nil)
         }
-        itemCard.titleLabel.text = model.objectName
+        itemCard.titleLabel.text = model.objectName.entire
         itemCard.statusLabel.text = "Home.itemCard.status".localized
-        itemCard.subtitleLabel.text = model.coverageType.localizedCoverageType
+        itemCard.subtitleLabel.text = model.teamPart.coverageType.localizedCoverageType
         
         let buttonTitle = model.haveVotingClaims
             ? "Home.submitButton.anotherClaim".localized
@@ -343,7 +356,7 @@ extension HomeVC: UIScrollViewDelegate {
 extension HomeVC: ReportDelegate {
     func report(controller: ReportVC, didSendReport data: Any) {
         service.router.navigator?.popViewController(animated: false)
-        if let claim = data as? EnhancedClaimEntity {
+        if let claim = data as? ClaimEntityLarge {
             service.router.presentClaim(claimID: claim.id)
         }
     }

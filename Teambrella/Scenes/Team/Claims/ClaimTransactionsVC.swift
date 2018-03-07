@@ -19,6 +19,7 @@
  */
 //
 
+import PKHUD
 import UIKit
 
 class ClaimTransactionsVC: UIViewController, Routable {
@@ -30,26 +31,57 @@ class ClaimTransactionsVC: UIViewController, Routable {
     var userID: String = ""
     var dataSource: ClaimTransactionsDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0
+    weak var emptyVC: EmptyVC?
     
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
+        HUD.show(.progress, onView: view)
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
         title = "Team.Claims.ClaimTransactionsVC.title".localized
-        collectionView.register(ClaimTransactionCell.nib, forCellWithReuseIdentifier: ClaimTransactionCell.cellID)
+        
+        collectionView.register(WalletTransactionCell.nib, forCellWithReuseIdentifier: WalletTransactionCell.cellID)
+        collectionView.register(InfoHeader.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: InfoHeader.cellID)
+        
         guard let teamID = teamID, let claimID = claimID else { return }
         
         dataSource = ClaimTransactionsDataSource(teamID: teamID, claimID: claimID)
         dataSource.onUpdate = { [weak self] in
+            HUD.hide()
             self?.collectionView.reloadData()
+            self?.showEmptyIfNeeded()
         }
+        dataSource.onError = { error in
+            HUD.hide()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         dataSource.loadData()
+    }
+    
+    func showEmptyIfNeeded() {
+        if dataSource.isEmpty && emptyVC == nil {
+            let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y + 44,
+                               width: self.collectionView.frame.width,
+                               height: self.collectionView.frame.height - 44)
+            emptyVC = EmptyVC.show(in: self, inView: self.view, frame: frame, animated: false)
+            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
+            emptyVC?.setText(title: "Team.Claim.Transactions.Empty.title".localized,
+                             subtitle: "Team.Claim.Transactions.Empty.details".localized)
+        } else {
+            emptyVC?.remove()
+            emptyVC = nil
+        }
     }
     
 }
@@ -66,7 +98,15 @@ extension ClaimTransactionsVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: ClaimTransactionCell.cellID, for: indexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: WalletTransactionCell.cellID, for: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                               withReuseIdentifier: InfoHeader.cellID,
+                                                               for: indexPath)
     }
 }
 
@@ -75,9 +115,34 @@ extension ClaimTransactionsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        ClaimTransactionsCellBuilder.populate(cell: cell, with: dataSource[indexPath], userID: userID)
-        if indexPath.row == (dataSource.count - dataSource.limit/2) {
+        ClaimTransactionsCellBuilder.populate(cell: cell,
+                                              indexPath: indexPath,
+                                              with: dataSource[indexPath],
+                                              userID: userID,
+                                              cellsCount: dataSource.count)
+        
+        if indexPath.row == (dataSource.count - dataSource.limit / 2) {
             dataSource.loadData()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplaySupplementaryView view: UICollectionReusableView,
+                        forElementKind elementKind: String,
+                        at indexPath: IndexPath) {
+        // swiftlint:disable:next empty_count
+        if dataSource.count > 0 {
+            guard let view = view as? InfoHeader else { return }
+            
+            view.leadingLabel.text = "Team.Claim.Transactions.from".localized
+            view.trailingLabel.text = "General.mETH".localized
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = dataSource[indexPath]
+        if let userID = model.userID {
+            service.router.presentMemberProfile(teammateID: userID)
         }
     }
 }
@@ -87,7 +152,13 @@ extension ClaimTransactionsVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height/5 )
+        return CGSize(width: collectionView.bounds.width, height: 70)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 50)
     }
 }
 

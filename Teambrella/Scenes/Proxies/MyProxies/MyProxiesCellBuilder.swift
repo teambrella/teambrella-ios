@@ -26,9 +26,14 @@ struct MyProxiesCellBuilder {
         if let cell = cell as? ProxyCell {
             cell.avatarView.showAvatar(string: model.avatarString)
             cell.nameLabel.text = model.name
-            cell.detailsLabel.text = model.address.uppercased()
+            if let address = model.address {
+                cell.detailsLabel.text = address.uppercased()
+            } else {
+                cell.detailsLabel.text = nil
+            }
             //model.time.map { cell.timeLabel.text = Formatter.teambrellaShort.string(from: $0) }
-            cell.timeLabel.text = String.formattedNumber(model.proxyRank ?? 1)
+            cell.timeLabel.text = String(format: "%.1f", model.proxyRank ?? 0.01)
+            //String.formattedNumber(model.proxyRank ?? 1)
             
             guard let decisionsCoeff = model.decisionsCoeff,
                 let discussionCoeff = model.discussionCoeff,

@@ -15,42 +15,42 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 enum TeambrellaResponseType {
     case timestamp
     case initClient
     case updates
     case teams(TeamsModel)
-    case teammatesList([TeammateEntity])
-    case teammate(ExtendedTeammateEntity)
-    case teammateVote(JSON)
+    case teammatesList([TeammateListEntity])
+    case teammate(TeammateLarge)
+    case teammateVote(TeammateVotingResult)
     case newPost(ChatEntity)
     case registerKey
-    case coverageForDate(Double, Double)
+    case coverageForDate(CoverageForDate)
     case setLanguage(String)
     case claimsList([ClaimEntity])
-    case claim(EnhancedClaimEntity)
-    case claimVote(JSON)
-    case claimUpdates(JSON)
-    case claimTransactions([ClaimTransactionsCellModel])
-    case home(JSON)
-    case feedDeleteCard(HomeScreenModel)
-    case teamFeed(JSON, PagingInfo?)
+    case claim(ClaimEntityLarge)
+    case claimVote(ClaimVoteUpdate)
+    case claimUpdates(ClaimEntityLarge)
+    case claimTransactions([ClaimTransactionsModel])
+    case home(HomeModel)
+    case feedDeleteCard(HomeModel)
+    case teamFeed(FeedChunk)
     case chat(ChatModel)
     case wallet(WalletEntity)
-    case walletTransactions([WalletTransactionsCellModel])
+    case walletTransactions([WalletTransactionsModel])
     case uploadPhoto(String)
     case myProxy(Bool)
     case myProxies([ProxyCellModel])
-    case proxyFor([ProxyForCellModel], Double)
+    case proxyFor(ProxyForEntity)
     case proxyPosition
-    case proxyRatingList([UserIndexCellModel], Int)
+    case proxyRatingList(ProxyRatingEntity)
     
     case privateList([PrivateChatUser])
     case privateChat([ChatEntity])
     case withdrawTransactions(WithdrawChunk)
     case mute(Bool)
     
-    case votesList(me: Voter, median: Voter, voters: [Voter])
+    case votesList(VotersList)
+    case me(MeModel)
 }

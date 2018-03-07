@@ -24,23 +24,23 @@ import Foundation
 protocol MembersFetchStrategy {
     var sections: Int { get }
     var sortType: SortVC.SortType { get }
-    var ranges: [RiskScaleEntity.Range] { get set }
+    var ranges: [RiskScaleRange] { get set }
     
     func type(indexPath: IndexPath) -> TeammateSectionType
     func itemsInSection(section: Int) -> Int
     func headerTitle(indexPath: IndexPath) -> String
     func headerSubtitle(indexPath: IndexPath) -> String
-    func arrange(teammates: [TeammateEntity])
+    func arrange(teammates: [TeammateListEntity])
     func sort(type: SortVC.SortType)
     func removeData()
     
-    subscript(indexPath: IndexPath) -> TeammateEntity { get }
+    subscript(indexPath: IndexPath) -> TeammateListEntity { get }
 }
 
 class MembersListStrategy: MembersFetchStrategy {
-    var ranges: [RiskScaleEntity.Range] = []
-    var newTeammates: [TeammateEntity] = []
-    var teammates: [TeammateEntity] = []
+    var ranges: [RiskScaleRange] = []
+    var newTeammates: [TeammateListEntity] = []
+    var teammates: [TeammateListEntity] = []
     var sortType: SortVC.SortType = .none
     
     func removeData() {
@@ -108,7 +108,7 @@ class MembersListStrategy: MembersFetchStrategy {
         }
     }
     
-    func arrange(teammates: [TeammateEntity]) {
+    func arrange(teammates: [TeammateListEntity]) {
         for teammate in teammates {
             if teammate.isVoting || teammate.isJoining {
                 newTeammates.append(teammate)
@@ -118,7 +118,7 @@ class MembersListStrategy: MembersFetchStrategy {
         }
     }
     
-    subscript(indexPath: IndexPath) -> TeammateEntity {
+    subscript(indexPath: IndexPath) -> TeammateListEntity {
         switch type(indexPath: indexPath) {
         case .new:
             return newTeammates[indexPath.row]
@@ -130,8 +130,8 @@ class MembersListStrategy: MembersFetchStrategy {
 }
 
 class MembersRiskStrategy: MembersFetchStrategy {
-    var arrayOfRanges: [[TeammateEntity]] = []
-    var ranges: [RiskScaleEntity.Range] = []
+    var arrayOfRanges: [[TeammateListEntity]] = []
+    var ranges: [RiskScaleRange] = []
     var sections: Int { return arrayOfRanges.count }
     var sortType: SortVC.SortType = .none
     
@@ -156,16 +156,17 @@ class MembersRiskStrategy: MembersFetchStrategy {
         return "Team.Members.Teammates.Strategy.headerSubtitle".localized
     }
     
-    func arrange(teammates: [TeammateEntity]) {
+    func arrange(teammates: [TeammateListEntity]) {
         if arrayOfRanges.isEmpty {
             for _ in ranges {
-                arrayOfRanges.append([TeammateEntity]())
+                arrayOfRanges.append([TeammateListEntity]())
             }
         }
         
         for (idx, range) in ranges.enumerated() {
             for teammate in teammates {
-                if teammate.risk >= range.left && teammate.risk <= range.right {
+                let risk = teammate.risk ?? 0
+                if risk >= range.left && risk <= range.right {
                     arrayOfRanges[idx].append(teammate)
                 }
             }
@@ -177,7 +178,7 @@ class MembersRiskStrategy: MembersFetchStrategy {
         
     }
     
-    subscript(indexPath: IndexPath) -> TeammateEntity {
+    subscript(indexPath: IndexPath) -> TeammateListEntity {
         return arrayOfRanges[indexPath.section][indexPath.row]
     }
 }

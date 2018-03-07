@@ -39,7 +39,7 @@ class BrickView: UIView {
     @IBInspectable var icon: UIImage?
     @IBInspectable var title: String = ""
     @IBInspectable var amount: String = "0"
-    @IBInspectable var currency: String = "USD"
+    @IBInspectable var currency: String = "..."
     @IBInspectable var badge: String?
     
     var currencyType: BrickViewCurrencyType = .normal

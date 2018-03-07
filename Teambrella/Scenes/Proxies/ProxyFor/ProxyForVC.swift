@@ -40,26 +40,29 @@ class ProxyForVC: UIViewController {
             self?.collectionView.reloadData()
             self?.showEmptyIfNeeded()
         }
-        dataSource.loadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard isFirstLoading == false else {
+            dataSource.loadData()
             isFirstLoading = false
             return
         }
-        
         dataSource.updateSilently()
     }
     
     func showEmptyIfNeeded() {
         if dataSource.isEmpty && emptyVC == nil {
-            emptyVC = EmptyVC.show(in: self)
+            let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y,
+                               width: self.collectionView.frame.width,
+                               height: self.collectionView.frame.height)
+            emptyVC = EmptyVC.show(in: self, inView: self.collectionView, frame: frame, animated: false)
             emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
             emptyVC?.setText(title: "Proxy.Empty.You.title".localized, subtitle: "Proxy.Empty.You.details".localized)
         } else {
             emptyVC?.remove()
+            emptyVC = nil
         }
     }
     
@@ -109,6 +112,11 @@ extension ProxyForVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         ProxyForCellBuilder.populate(cell: cell, with: dataSource[indexPath])
+        let isLast = indexPath.row == dataSource.count - 1
+        if let cell = cell as? ProxyForCell {
+            cell.separatorView.isHidden = isLast
+        }
+        ViewDecorator.decorateCollectionView(cell: cell, isFirst: indexPath.row == 0, isLast: isLast)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -117,8 +125,13 @@ extension ProxyForVC: UICollectionViewDelegate {
                         at indexPath: IndexPath) {
         if let cell = view as? ProxyForHeader {
             cell.headerLabel.text = "Proxy.ProxyForVC.header".localized
-            cell.amountLabel.text = "$" + String(Int(dataSource.commission))
             cell.detailsLabel.text = "Proxy.ProxyForVC.subtitle".localized
+            ViewDecorator.shadow(for: cell)
+            ViewDecorator.roundedEdges(for: cell.containerView)
+            guard let team = service.session?.currentTeam else { return }
+            
+            cell.amountLabel.text = team.currencySymbol + String(Int(dataSource.commission))
+            cell.currencyLabel.text = team.currency
         }
         
     }

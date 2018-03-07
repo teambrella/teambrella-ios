@@ -29,6 +29,7 @@ class WalletCosignersVC: UIViewController, Routable {
     fileprivate var previousScrollOffset: CGFloat = 0
     var cosigners: [CosignerEntity]?
     var isFirstLoading = true
+    weak var emptyVC: EmptyVC?
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -37,18 +38,17 @@ class WalletCosignersVC: UIViewController, Routable {
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
         } else {
-             automaticallyAdjustsScrollViewInsets = false
+            automaticallyAdjustsScrollViewInsets = false
         }
         self.addGradientNavBar()
         WalletCosignersCellBuilder.registerCells(in: collectionView)
-        dataSource.onUpdate = { [weak self] in
-            self?.collectionView.reloadData()
-        }
-        guard let cosigners = cosigners else { return }
         
-        dataSource.loadData(cosigners: cosigners)
         title = "Me.WalletVC.WalletCosignersVC.title".localized
         
+        dataSource.onUpdate = { [weak self] in
+            self?.collectionView.reloadData()
+            self?.showEmptyIfNeeded()
+        }
         dataSource.onError = { [weak self] error in
             guard let error = error as? TeambrellaError else { return }
             
@@ -61,12 +61,29 @@ class WalletCosignersVC: UIViewController, Routable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard let cosigners = cosigners else { return }
+
+        dataSource.loadData(cosigners: cosigners)
         guard isFirstLoading == false else {
             isFirstLoading = false
             return
         }
-        
         // dataSource.updateSilently()
+    }
+    
+    func showEmptyIfNeeded() {
+        if dataSource.isEmpty && emptyVC == nil {
+            let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y + 44,
+                               width: self.collectionView.frame.width,
+                               height: self.collectionView.frame.height - 44)
+            emptyVC = EmptyVC.show(in: self, inView: self.view, frame: frame, animated: false)
+            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconTeam"))
+            emptyVC?.setText(title: "Me.Wallet.Cosigners.Empty.title".localized,
+                             subtitle: "Me.Wallet.Cosigners.Empty.details".localized)
+        } else {
+            emptyVC?.remove()
+            emptyVC = nil
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -101,6 +118,13 @@ extension WalletCosignersVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         let cosigner = dataSource[indexPath]
         WalletCosignersCellBuilder.populate(cell: cell, with: cosigner)
+        let maxRow = dataSource.count
+        if let cell = cell as? WalletCosignerCell {
+            cell.separator.isHidden = indexPath.row == maxRow - 1
+            ViewDecorator.decorateCollectionView(cell: cell,
+                                                 isFirst: indexPath.row == 0,
+                                                 isLast: indexPath.row == maxRow - 1)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

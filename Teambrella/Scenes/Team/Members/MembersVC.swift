@@ -19,11 +19,16 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import MessageUI
 import PKHUD
 import UIKit
 import XLPagerTabStrip
 
 final class MembersVC: UIViewController, IndicatorInfoProvider {
+    struct Constant {
+        static let searchViewOffset: CGFloat = -60 // constant offset to reveal button and hide seafchField
+    }
+    
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var searchView: UIView!
     @IBOutlet var searchBar: UISearchBar!
@@ -42,6 +47,9 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.register(InfoHeader.nib,
+                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                withReuseIdentifier: InfoHeader.cellID)
         configureSearchController()
         HUD.show(.progress, onView: view)
         dataSource.onUpdate = { [weak self] in
@@ -60,6 +68,7 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
         }
         
         dataSource.loadData()
+        ViewDecorator.shadow(for: searchView, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: 4))
         title = "Team.team".localized
     }
     
@@ -102,10 +111,8 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     fileprivate func showSearchBar(show: Bool, animated: Bool) {
         guard show != searchbarIsShown else { return }
         
-        searchViewTopConstraint.constant = show
-            ? 0
-            : -searchView.frame.height
-        collectionView.contentInset.top = show ? searchView.frame.height : 0
+        searchViewTopConstraint.constant = show ? Constant.searchViewOffset : -searchView.frame.height
+        //collectionView.contentInset.top = show ? searchView.frame.height : 0
         searchbarIsShown = show
         if !show {
             view.endEditing(true)
@@ -117,6 +124,13 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
         } else {
             view.setNeedsLayout()
         }
+    }
+    
+    @IBAction func tapInviteFriendButton(_ sender: UIButton) {
+        guard let text = service.session?.currentTeam?.inviteText else { return }
+
+        let vc = UIActivityViewController(activityItems: [text], applicationActivities: [])
+        present(vc, animated: true)
     }
     
     @IBAction func tapSort(_ sender: UIButton) {
@@ -155,10 +169,9 @@ extension MembersVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                   withReuseIdentifier: "TeammatesHeader",
-                                                                   for: indexPath)
-        return view
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                    withReuseIdentifier: InfoHeader.cellID,
+                                                                    for: indexPath)
     }
     
 }
@@ -168,6 +181,11 @@ extension MembersVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
+        if let cell = cell as? TeammateCandidateCell {
+            cell.avatarView.image = #imageLiteral(resourceName: "imagePlaceholder")
+        } else if let cell = cell as? TeammateCell {
+            cell.avatarView.image = #imageLiteral(resourceName: "imagePlaceholder")
+        }
         let teammate = dataSource[indexPath]
         MembersCellBuilder.populate(cell: cell, with: teammate)
         let maxRow = dataSource.itemsInSection(section: indexPath.section)
@@ -189,9 +207,9 @@ extension MembersVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-        if let view = view as? TeammateHeaderView {
-            view.titleLabel.text = dataSource.headerTitle(indexPath: indexPath)
-            view.subtitleLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
+        if let view = view as? InfoHeader {
+            view.leadingLabel.text = dataSource.headerTitle(indexPath: indexPath)
+            view.trailingLabel.text = dataSource.headerSubtitle(indexPath: indexPath)
         }
     }
     
@@ -231,7 +249,6 @@ extension MembersVC: UISearchBarDelegate {
 // MARK: UIScrollViewDelegate
 extension MembersVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        /*
         let currentOffset = scrollView.contentOffset.y
         let velocity = currentOffset - previousScrollOffset
         previousScrollOffset = currentOffset
@@ -242,7 +259,6 @@ extension MembersVC: UIScrollViewDelegate {
         if velocity < -10 {
             showSearchBar(show: true, animated: true)
         }
- */
     }
 }
 

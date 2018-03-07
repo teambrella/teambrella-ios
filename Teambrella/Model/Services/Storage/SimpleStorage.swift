@@ -18,22 +18,48 @@ import Foundation
 
 class SimpleStorage {
     enum StorageKey: String {
-        case teamID = "teambrella.currentTeam.id"
-        case recentScene = "storage.recentScene"
-        case uniqueIdentifier = "com.teambrella.application.uniqueIdentifier"
+        case teamID                      = "teambrella.currentTeam.id"
+        case recentScene                 = "storage.recentScene"
+        case uniqueIdentifier            = "com.teambrella.application.uniqueIdentifier"
+        case swipeHelperWasShown         = "com.teambrella.swipeHelperWasShown"
+        case outdatedVersionLastShowDate = "com.teambrella.outdatedVersionLastShowDate"
+        case disabledPushLastShowDate    = "com.teambrella.disabledPushLastShowDate"
+        case didLogWithKey               = "com.teambrella.didLogWithKey"
+        case lastUserType                = "com.teambrella.lastUserType"
+        case privateDemoKey              = "com.teambrella.privateDemoKey"
+
+        case didMoveToRealGroup          = "com.teambrella.didMoveToRealGroup"
     }
     
     func store(int: Int, forKey: StorageKey) {
         store(string: "\(int)", forKey: forKey)
     }
     
+    func store(bool: Bool, forKey: StorageKey) {
+        UserDefaults.standard.set(bool, forKey: forKey.rawValue)
+        UserDefaults.standard.synchronize()
+    }
+    
     func store(string: String, forKey: StorageKey) {
         UserDefaults.standard.set(string, forKey: forKey.rawValue)
         UserDefaults.standard.synchronize()
     }
+
+    func store(date: Date, forKey: StorageKey) {
+        UserDefaults.standard.set(date, forKey: forKey.rawValue)
+        UserDefaults.standard.synchronize()
+    }
+
+    func date(forKey: StorageKey) -> Date? {
+        return UserDefaults.standard.object(forKey: forKey.rawValue) as? Date
+    }
     
     func string(forKey: StorageKey) -> String? {
         return UserDefaults.standard.object(forKey: forKey.rawValue) as? String
+    }
+
+    func bool(forKey: StorageKey) -> Bool {
+        return UserDefaults.standard.bool(forKey: forKey.rawValue)
     }
     
     func int(forKey: StorageKey) -> Int? {
@@ -41,7 +67,7 @@ class SimpleStorage {
     }
     
     func cleanValue(forKey: StorageKey) {
-        UserDefaults.standard.setNilValueForKey(forKey.rawValue)
+        UserDefaults.standard.set(nil, forKey: forKey.rawValue)
         UserDefaults.standard.synchronize()
     }
 }

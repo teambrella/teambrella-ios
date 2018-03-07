@@ -19,6 +19,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import ExtensionsPack
 import Foundation
 import SwiftDate
 
@@ -63,7 +64,7 @@ struct DateProcessor {
             formatter.locale = locale
             formatter.dateStyle = .short
             return formatter.string(from: date)
-        } else if days <= 1 {
+        } else if days < 1 {
             return "General.today".localized.capitalized
         } else {
             return stringInterval(from: date)

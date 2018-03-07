@@ -14,19 +14,39 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import ExtensionsPack
 import Foundation
 import Geth
 
 class EthWallet {
     struct Constant {
-        static let methodIDteamID = "8d475461"
-        static let methodIDcosigners = "22c5ec0f"
-        static let methodIDtransfer = "91f34dbd"
-        static let txPrefix = "5452"
-        static let nsPrefix = "4E53"
-        
+        static let methodIDteamID               = "8d475461"
+        static let methodIDcosigners            = "22c5ec0f"
+        static let methodIDtransfer             = "91f34dbd"
+        static let methodIDchangeAllCosigners   = "a0175b96"
+        static let txPrefix                     = "5452"
+        static let nsPrefix                     = "4E53"
+
         static let minGasWalletBalance: Decimal = 0.0075
         static let maxGasWalletBalance: Decimal = 0.01
+
+        static let gasLimitBase: Int            = 100_000
+        static let gasLimitForMoveTx: Int       = 200_000
+    }
+
+    enum EthWalletError: Error {
+        case multisigHasNoCosigners(Int)
+        case contractDoesNotExist
+        case multisigHasNoCreationTx(Int)
+        case noMultisigs
+        case allGasUsed
+        case unexpectedTxInputsCount(count: Int, txID: String)
+        case transactionHasNoTeammate
+        case invalidCosigner(txID: String)
+        case argumentsMismatch(args: [Any])
+        case noFromMultisig
+        case noToMultisig
+        case transactionHasNoKind
     }
     
     let processor: EthereumProcessor
@@ -35,8 +55,10 @@ class EthWallet {
     lazy var blockchain = { EtherNode(isTestNet: self.isTestNet) }()
     
     // 0.1 Gwei is enough since October 16, 2017 (1 Gwei = 10^9 wei)
-    var gasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
-    var contractGasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
+    //var gasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
+    //var contractGasPrice: Int { return isTestNet ? 11000000001 : 100000001 }
+    var gasPrice: Int = -1
+    var contractGasPrice: Int = -1
     
     
     var contract: String? {
@@ -54,13 +76,6 @@ class EthWallet {
         self.processor = processor
     }
     
-    enum EthWalletError: Error {
-        case multisigHasNoCosigners(Int)
-        case contractDoesNotExist
-        case multisigHasNoCreationTx(Int)
-        case allGasUsed
-    }
-    
     func createOneWallet(myNonce: Int,
                          multisig: Multisig,
                          gaslLimit: Int,
@@ -69,14 +84,14 @@ class EthWallet {
                          failure: @escaping (Error?) -> Void) {
         let cosigners = multisig.cosigners
         guard !cosigners.isEmpty else {
-            log("Multisig address id: \(multisig.id) has no cosigners", type: [.error, .crypto])
+            log("Multisig address id: \(multisig.id) has no cosigners", type: [.error, .cryptoDetails])
             failure(EthWalletError.multisigHasNoCosigners(multisig.id))
             return
         }
-//        guard let creationTx = multisig.creationTx else {
-//            failure(EthWalletError.multisigHasNoCreationTx(multisig.id))
-//            return
-//        }
+        //        guard let creationTx = multisig.creationTx else {
+        //            failure(EthWalletError.multisigHasNoCreationTx(multisig.id))
+        //            return
+        //        }
         
         let addresses = cosigners.flatMap { $0.teammate.address }
         guard let contract = contract else {
@@ -94,9 +109,9 @@ class EthWallet {
             log("CryptoTx created teamID: \(multisig.teamID), tx: \(cryptoTx)", type: .crypto)
             publish(cryptoTx: cryptoTx, completion: completion, failure: failure)
         } catch let AbiArguments.AbiArgumentsError.unEncodableArgument(wrongArgument) {
-            print("AbiArguments failed to accept the wrong argument: \(wrongArgument)")
+            log("AbiArguments failed to accept the wrong argument: \(wrongArgument)", type: [.error, .cryptoDetails])
         } catch {
-             failure(error)
+            failure(error)
         }
     }
     
@@ -120,7 +135,7 @@ class EthWallet {
         guard let address = processor.ethAddressString else { return }
         
         blockchain.checkNonce(addressHex: address, success: { nonce in
-            print("Nonce: \(nonce)")
+            log("Nonce: \(nonce)", type: .crypto)
             success(nonce)
         }) { error in
             failure(error)
@@ -146,7 +161,6 @@ class EthWallet {
             return
         }
         
-        //let blockchain = EtherNode(isTestNet: isTestNet)
         blockchain.checkTx(creationTx: creationTx, success: { txReceipt in
             if !txReceipt.blockNumber.isEmpty {
                 let gasUsed = Int(hexString: txReceipt.gasUsed)
@@ -163,42 +177,413 @@ class EthWallet {
             failure(error)
         })
     }
-    
+
+    func refreshGasPrice(completion: @escaping (Int) -> Void) {
+        let gasStation = GasStation()
+        gasStation.gasPrice { [weak self] price, error in
+            guard let `self` = self else { return }
+
+            if let error = error {
+                log("refresh gas error: \(error)", type: [.error, .crypto])
+            }
+
+            switch price {
+            case ..<0:
+                log("Failed to get the gas price from a server. A default gas price will be used.",
+                    type: [.error, .crypto])
+                self.gasPrice = 100_000_001
+            case 50_000_000_001...:
+                log("The server is kidding with us about the gas price: \(price)", type: [.error, .crypto])
+                self.gasPrice = 50_000_000_001
+            default:
+                self.gasPrice = price
+            }
+            completion(self.gasPrice)
+        }
+    }
+
+    func refreshClaimGasPrice(completion: @escaping (Int) -> Void) {
+        let gasStation = GasStation()
+        gasStation.gasPrice { [weak self] price, error in
+            guard let `self` = self else { return }
+
+            if let error = error {
+                log("refresh gas error: \(error)", type: [.error, .crypto])
+            }
+
+            switch price {
+            case ..<0:
+                log("Failed to get the gas price from a server. A default gas price will be used.",
+                    type: [.error, .crypto])
+                self.gasPrice = 1_000_000_001
+            case 4_000_000_001...:
+                log("""
+                    With the current version gas price for a clime is limited. This high price will be supported later \
+                    (when off-chain payments are implemented) : \(price)
+                    """, type: [.error, .crypto])
+                self.gasPrice = 4_000_000_001
+            default:
+                self.gasPrice = price
+            }
+            completion(self.gasPrice)
+        }
+    }
+
+    func refreshContractCreationGasPrice(completion: @escaping (Int) -> Void) {
+        let gasStation = GasStation()
+        gasStation.contractCreationGasPrice { [weak self] price, error in
+            guard let `self` = self else { return }
+
+            if let error = error {
+                log("refresh gas error: \(error)", type: [.error, .crypto])
+            }
+
+            switch price {
+            case ..<0:
+                log("Failed to get the gas price from a server. A default gas price will be used.",
+                    type: [.error, .crypto])
+                self.contractGasPrice = 100_000_001
+            case 8_000_000_002...:
+                log("The server is kidding with us about the contract gas price: \(price)", type: [.error, .crypto])
+                self.contractGasPrice = 8_000_000_002
+            default:
+                self.contractGasPrice = price
+            }
+            completion(self.contractGasPrice)
+        }
+    }
+
     func deposit(multisig: Multisig, completion: @escaping (Bool) -> Void) {
         guard let address = processor.ethAddressString else { return }
         
         blockchain.checkBalance(address: address, success: { gasWalletAmount in
-            print("balance is \(gasWalletAmount)")
+            log("Multisig balance is \(gasWalletAmount)", type: .crypto)
             if gasWalletAmount > Constant.maxGasWalletBalance {
-                self.blockchain.checkNonce(addressHex: address, success: { nonce in
-                    let value = gasWalletAmount - Constant.minGasWalletBalance
-                    do {
-                        var tx = try self.processor.depositTx(nonce: nonce,
-                                                 gasLimit: 50000,
-                                                 toAddress: multisig.address!,
-                                                 gasPrice: self.gasPrice,
-                                                 value: value)
-                        try tx = self.processor.signTx(unsignedTx: tx, isTestNet: self.isTestNet)
-                        self.publish(cryptoTx: tx, completion: { txHash in
-                            print("Deposit tx published: \(txHash)")
-                            completion(true)
-                        }, failure: { error in
-                            print("Publish Tx failed with \(String(describing: error))")
+                self.refreshGasPrice(completion: { gasPrice in
+                    self.blockchain.checkNonce(addressHex: address, success: { nonce in
+                        let value = gasWalletAmount - Constant.minGasWalletBalance
+                        do {
+                            var tx = try self.processor.depositTx(nonce: nonce,
+                                                                  gasLimit: 50000,
+                                                                  toAddress: multisig.address!,
+                                                                  gasPrice: gasPrice,
+                                                                  value: value)
+                            try tx = self.processor.signTx(unsignedTx: tx, isTestNet: self.isTestNet)
+                            self.publish(cryptoTx: tx, completion: { txHash in
+                                log("Deposit tx published: \(txHash)", type: .crypto)
+                                completion(true)
+                            }, failure: { error in
+                                log("Publish Tx failed with \(String(describing: error))", type: [.error, .crypto])
+                                completion(false)
+                            })
+                        } catch {
+                            log("Deposit Tx creation failed with \(String(describing: error))", type: [.error, .crypto])
                             completion(false)
-                        })
-                    } catch {
-                        print("Deposit Tx creation failed with \(String(describing: error))")
+                        }
+                    }, failure: { error in
+                        log("Check nonce failed with \(String(describing: error))", type: [.error, .crypto])
                         completion(false)
-                    }
-                }, failure: { error in
-                    print("Check nonce failed with \(String(describing: error))")
-                    completion(false)
+                    })
                 })
+            } else {
+                log("Can't deposit contract: \(gasWalletAmount), needed: \(Constant.maxGasWalletBalance)", type: .cryptoDetails)
+                completion(false)
             }
         }, failure: { error in
-            print("Check balance failed with \(String(describing: error))")
+            log("Check balance failed with \(String(describing: error))", type: [.error, .crypto])
             completion(false)
         })
+    }
+
+    func cosign(transaction: Tx, payOrMoveFrom: TxInput) throws -> Data {
+        guard let kind = transaction.kind else {
+            throw EthWalletError.transactionHasNoKind
+        }
+
+        switch kind {
+        case .moveToNextWallet:
+            return try cosignMove(transaction: transaction, moveFrom: payOrMoveFrom)
+        default:
+            return try cosignPay(transaction: transaction, payFrom: payOrMoveFrom)
+        }
+    }
+
+    func cosignPay(transaction: Tx, payFrom: TxInput) throws -> Data {
+        let opNum = payFrom.previousTransactionIndex + 1
+        guard let sourceMultisig = transaction.fromMultisig else {
+            log("There is no from Multisig", type: [.error, .cryptoDetails])
+            throw EthWalletError.noFromMultisig
+        }
+
+        let teamID = sourceMultisig.teamID
+        let payToAddresses = toAddresses(destinations: transaction.outputs)
+        let payToValues = toValues(destinations: transaction.outputs)
+        let h = try hashForPaySignature(teamID: teamID, opNum: opNum, addresses: payToAddresses, values: payToValues)
+        log("Hash created for Tx transfer(s): \(h.hexString)", type: .crypto)
+        let sig = try processor.signHashAndCalculateV(hash256: h)
+        log("Hash signed. \(sig)", type: .cryptoDetails)
+        return sig
+    }
+
+    func cosignMove(transaction: Tx, moveFrom: TxInput) throws -> Data {
+         let opNum = moveFrom.previousTransactionIndex + 1
+        guard let sourceMultisig = transaction.fromMultisig else {
+            log("There is no from Multisig", type: [.error, .cryptoDetails])
+            throw EthWalletError.noFromMultisig
+        }
+        guard let toMultisig = transaction.toMultisig else {
+            log("There is no to Multisig", type: [.error, .cryptoDetails])
+            throw EthWalletError.noToMultisig
+        }
+
+        let teamID = sourceMultisig.teamID
+        let nextCosignerAddresses = toCosignerAddresses(nextMultisig: toMultisig)
+        let hash = try hashForMoveSignature(teamID: teamID, opNum: opNum, addresses: nextCosignerAddresses)
+        log("Hash created for Tx transfer(s): \(hash.hexString)", type: .crypto)
+        let sig = try processor.signHashAndCalculateV(hash256: hash)
+         log("Hash signed. \(sig)", type: .cryptoDetails)
+        return sig
+    }
+
+    func publish(tx: Tx, completion: @escaping (String) -> Void, failure: @escaping (Error?) -> Void) {
+        guard let kind = tx.kind else {
+            failure(nil)
+            return
+        }
+
+        switch kind {
+        case .moveToNextWallet:
+            publishMove(tx: tx, completion: completion, failure: failure)
+        default:
+            publishPay(tx: tx, completion: completion, failure: failure)
+        }
+    }
+
+    private func toAddresses(destinations: [TxOutput]) -> [String] {
+        let destinationAddresses: [String] = destinations.flatMap { output in output.saneAddress()?.string }
+        return destinationAddresses
+    }
+
+    private func toCosignerAddresses(nextMultisig: Multisig) -> [String] {
+        let cosigners = nextMultisig.cosigners
+        return cosigners.flatMap { cosigner in cosigner.address?.string }
+
+    }
+
+    private func toValues(destinations: [TxOutput]) -> [String] {
+        let destinationValues = destinations.flatMap { output in
+            guard let stringValue = output.amountValue?.stringValue else { return nil }
+
+            return AbiArguments.parseDecimalAmount(decimalAmount: stringValue)
+        }
+        return destinationValues
+    }
+
+    private func hashForPaySignature(teamID: Int, opNum: Int, addresses: [String], values: [String]) throws -> Data {
+        let hex = Hex()
+        let a0 = Constant.txPrefix // prefix, that is used in the contract to indicate a signature for transfer tx
+        let a1 = String(format: "%064x", teamID)
+        let a2 = String(format: "%064x", opNum)
+        let a3: [String] = addresses.map { address in hex.truncatePrefix(string: address) }
+        let a4: [String] = values.map { value in hex.truncatePrefix(string: value) }
+        let data = try hex.data(from: a0, a1, a2, a3, a4)
+        log("hashForPaySignature values: \(values);\ndata: \(data.hexString))", type: .cryptoDetails)
+        return processor.sha3(data)
+    }
+
+    private func hashForMoveSignature(teamID: Int, opNum: Int, addresses: [String]) throws -> Data {
+        let hex = Hex()
+        let a0 = Constant.nsPrefix // prefix, that is used in the contract to indicate a signature for move tx.
+        let a1 = String(format: "%064x", teamID)
+        let a2 = String(format: "%064x", opNum)
+        let a3: [String] = addresses.map { address in hex.truncatePrefix(string: address) }
+        let data = try hex.data(from: a0, a1, a2, a3)
+        return processor.sha3(data)
+    }
+
+    private  func publishMove(tx: Tx, completion: @escaping (String) -> Void, failure: @escaping (Error?) -> Void) {
+         log("Publishing move tx: \(tx.id.uuidString)", type: .crypto)
+        let inputs = tx.inputs
+        guard inputs.count == 1 else {
+            let error = EthWalletError.unexpectedTxInputsCount(count: inputs.count, txID: tx.id.uuidString)
+            failure(error)
+            return
+        }
+        guard let myMultisig = tx.fromMultisig else {
+            failure(EthWalletError.noMultisigs)
+            return
+        }
+
+        checkMyNonce(success: { myNonce in
+            let gasLimit = 200_000
+            self.refreshGasPrice { gasPrice in
+                guard let multisigAddress = myMultisig.address, let moveFrom = tx.inputs.first else {
+                    return
+                }
+
+                let methodID = Constant.methodIDchangeAllCosigners
+                let opNum = moveFrom.previousTransactionIndex + 1
+                guard let toMultisig = tx.toMultisig else {
+                    failure(EthWalletError.noToMultisig)
+                    return
+                }
+
+                let nextCosignerAddresses = self.toCosignerAddresses(nextMultisig: toMultisig)
+
+                var sig: [Data] = [Data(), Data(), Data()]
+                var pos: [Int] = [0, 0, 0]
+                var txSignatures: [Int: TxSignature] = [:]
+
+                for input in tx.inputs {
+                    guard let signatures = input.signaturesValue as? Set<TxSignature> else { continue }
+
+                    for signature in signatures {
+                        txSignatures[signature.teammateID] = signature
+                    }
+                }
+
+                // CHECK: should cosigners be from fromMultisig or toMultisig
+                guard let cosigners = tx.fromMultisig?.cosigners else {
+                    failure(EthWalletError.noFromMultisig)
+                    return
+                }
+
+                var j = 0
+                for (idx, cosigner) in cosigners.enumerated() {
+                    if let s = txSignatures[cosigner.teammate.id] {
+                        pos[j] = idx
+                        sig[j] = s.signature
+                        j += 1
+                        if j >= 3 {
+                            break
+                        }
+                    }
+                }
+
+                log("sigs: \(sig.count), positions: \(pos)", type: .cryptoDetails)
+                guard (sig.count < 3 && sig.count < txSignatures.count) == false else {
+                    print("""
+                        tx was skipped. One or more signatures are not from a valid cosigner. \
+                        Total signatures: \(txSignatures.count)  Valid signatures: \(sig.count) \
+                        positions: \(pos) Tx.id: \(tx.id)
+                        """)
+                    failure(EthWalletError.invalidCosigner(txID: tx.id.uuidString))
+                    return
+                }
+
+                var args: [Any] = [opNum, nextCosignerAddresses]
+                args += pos as [Any]
+                args += sig as [Any]
+
+                log("args: \(args)", type: .cryptoDetails)
+                do {
+                    let cryptoTx = try self.processor.messageTx(nonce: myNonce,
+                                                                gasLimit: gasLimit,
+                                                                contractAddress: multisigAddress,
+                                                                gasPrice: gasPrice,
+                                                                methodID: methodID,
+                                                                arguments: args)
+                    let signedTx = try self.processor.signTx(unsignedTx: cryptoTx, isTestNet: self.isTestNet)
+                    self.publish(cryptoTx: signedTx, completion: { hash in
+                        completion(hash)
+                    }, failure: failure)
+                } catch {
+                    failure(error)
+                }
+            }
+        }) { error in
+            failure(error)
+        }
+    }
+
+    private  func publishPay(tx: Tx, completion: @escaping (String) -> Void, failure: @escaping (Error?) -> Void) {
+        log("Publishing tx: \(tx.id.uuidString)", type: .crypto)
+        let inputs = tx.inputs
+        guard inputs.count == 1 else {
+            let error = EthWalletError.unexpectedTxInputsCount(count: inputs.count, txID: tx.id.uuidString)
+            failure(error)
+            return
+        }
+        guard let myMultisig = tx.fromMultisig else {
+            failure(EthWalletError.noMultisigs)
+            return
+        }
+
+        checkMyNonce(success: { myNonce in
+            let gasLimit = Constant.gasLimitBase + 30_000 * tx.outputs.count
+            self.refreshClaimGasPrice { gasPrice in
+                guard let multisigAddress = myMultisig.address, let payFrom = tx.inputs.first else {
+                    return
+                }
+
+                let methodID = Constant.methodIDtransfer
+
+                let opNum = payFrom.previousTransactionIndex + 1
+                let payToAddresses = self.toAddresses(destinations: tx.outputs)
+                let payToValues = self.toValues(destinations: tx.outputs)
+
+                var sig: [Data] = [Data(), Data(), Data()]
+                var pos: [Int] = [0, 0, 0]
+                var txSignatures: [Int: TxSignature] = [:]
+                for input in tx.inputs {
+                    guard let signatures = input.signaturesValue as? Set<TxSignature> else { continue }
+
+                    for signature in signatures {
+                        txSignatures[signature.teammateID] = signature
+                    }
+                }
+
+                guard let cosigners = tx.fromMultisig?.cosigners else {
+                    failure(EthWalletError.noFromMultisig)
+                    return
+                }
+
+                var j = 0
+                for (idx, cosigner) in cosigners.enumerated() {
+                    if let s = txSignatures[cosigner.teammate.id] {
+                        pos[j] = idx
+                        sig[j] = s.signature
+                        j += 1
+                        if j >= 3 {
+                            break
+                        }
+                    }
+                }
+
+                log("sigs: \(sig.count), positions: \(pos)", type: .cryptoDetails)
+                guard (sig.count < 3 && sig.count < txSignatures.count) == false else {
+                    print("""
+                        tx was skipped. One or more signatures are not from a valid cosigner. \
+                        Total signatures: \(txSignatures.count)  Valid signatures: \(sig.count) \
+                        positions: \(pos) Tx.id: \(tx.id)
+                        """)
+                    failure(EthWalletError.invalidCosigner(txID: tx.id.uuidString))
+                    return
+                }
+
+                var args: [Any] = [opNum, payToAddresses, payToValues]
+                args += pos as [Any]
+                args += sig as [Any]
+
+                log("args: \(args)", type: .cryptoDetails)
+                do {
+                    let cryptoTx = try self.processor.messageTx(nonce: myNonce,
+                                                                gasLimit: gasLimit,
+                                                                contractAddress: multisigAddress,
+                                                                gasPrice: gasPrice,
+                                                                methodID: methodID,
+                                                                arguments: args)
+                    let signedTx = try self.processor.signTx(unsignedTx: cryptoTx, isTestNet: self.isTestNet)
+                    self.publish(cryptoTx: signedTx, completion: { hash in
+                        completion(hash)
+                    }, failure: failure)
+                } catch {
+                    failure(error)
+                }
+            }
+        }) { error in
+            failure(error)
+        }
     }
     
 }

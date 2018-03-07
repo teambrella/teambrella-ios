@@ -22,83 +22,93 @@
 import Foundation
 
 public enum UserAddressStatus: Int, EnumStringConvertible {
-    case previous = 0
-    case current = 1
-    case next = 2
-    case archive = 3
-    
+    case previous       = 0
+    case current        = 1
+    case next           = 2
+    case archive        = 3
+
     // extra values, that are valid for local DB only
-    case invalid = 4
+    case invalid        = 4
     case serverPrevious = 10
-    case serverCurrent = 11
-    case serverNext = 12
+    case serverCurrent  = 11
+    case serverNext     = 12
 }
 
-public enum TransactionKind: Int, EnumStringConvertible {
+public enum TransactionKind: Int, EnumStringConvertible, Decodable {
     /// voting compensation or reimbursement
-    case payout = 0 //reimbursement payouts only
-    case withdraw = 1
-    case moveToNextWallet = 2
+    case payout                 = 0 //reimbursement payouts only
+    case withdraw               = 1
+    case moveToNextWallet       = 2
     case saveFromPreviousWallet = 3
-    case votingPayout = 100
-    
+    case votingPayout           = 100
+
     var localizationKey: String { return "General.TransactionKind.\(self)" }
+
+    public init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Int.self)
+        self = TransactionKind(rawValue: value) ?? .payout
+    }
 }
 
-public enum TransactionState: Int, EnumStringConvertible {
-    case queued = -100
-    
-    case created = 0
-    case approvedMaster = 1
-    case approvedCosigners = 2
+public enum TransactionState: Int, EnumStringConvertible, Decodable {
+    case queued                      = -100
+
+    case created                     = 0
+    case approvedMaster              = 1
+    case approvedCosigners           = 2
     // =?>  SelectedForCosigning (select by date)
-    case approvedAll = 3
-    case blockedMaster = 4
-    case blockedCosigners = 5
+    case approvedAll                 = 3
+    case blockedMaster               = 4
+    case blockedCosigners            = 5
     // => BeingCosigned (after at least half co-signers got signature tasks)
-    case selectedForCosigning = 6
-    case beingCosigned = 7
-    case cosigned = 8
-    case published = 9
-    case confirmed = 10
-    case errorCosignersTimeout = 100
-    case errorSubmitToBlockchain = 101
+    case selectedForCosigning        = 6
+    case beingCosigned               = 7
+    case cosigned                    = 8
+    case published                   = 9
+    case confirmed                   = 10
+    case errorCosignersTimeout       = 100
+    case errorSubmitToBlockchain     = 101
     // bad id, kind or amounts
-    case errorBadRequest = 102
-    case errorOutOfFunds = 103
-    case errorTooManyUtxos = 104
-    
+    case errorBadRequest             = 102
+    case errorOutOfFunds             = 103
+    case errorTooManyUtxos           = 104
+
     case errorBlockchainVerification = 105
-    case errorTechProblem = 106
-    
+    case errorTechProblem            = 106
+
     var isProcessing: Bool { return self.rawValue >= 0 && self.rawValue < 10 }
     var isQueued: Bool { return self == .queued }
     var isHistory: Bool { return self.rawValue >= 10 }
+    
+    init(decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Int.self)
+        self = TransactionState(rawValue: value) ?? .queued
+    }
     
     var localizationKey: String { return "General.TransactionState.\(self)" }
 }
 
 public enum TransactionClientResolution: Int, EnumStringConvertible {
-    case none = 0
-    case received = 1
-    case approved = 2
-    case blocked = 3
-    case signed = 4
-    case published = 5
-    case errorCosignersTimeout = 100
+    case none                    = 0
+    case received                = 1
+    case approved                = 2
+    case blocked                 = 3
+    case signed                  = 4
+    case published               = 5
+    case errorCosignersTimeout   = 100
     case errorSubmitToBlockchain = 101
     // bad id, kind or amounts
-    case errorBadRequest = 102
-    case errorOutOfFunds = 103
+    case errorBadRequest         = 102
+    case errorOutOfFunds         = 103
 }
 
 /// user multisig (address) status 
 public enum MultisigStatus: Int {
     case previous = 0
-    case current = 1
-    case next = 3
-    case archive = 4
-    case failed = -400
+    case current  = 1
+    case next     = 3
+    case archive  = 4
+    case failed   = -400
 }
 
 

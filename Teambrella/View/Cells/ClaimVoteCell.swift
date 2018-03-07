@@ -49,6 +49,8 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var submitButton: PlainButton!
     @IBOutlet var resetButton: UIButton!
     
+    @IBOutlet var othersVotedButton: UIButton!
+    
     var isYourVoteHidden: Bool = false {
         didSet {
             yourVoteAmount.isHidden = isYourVoteHidden
@@ -63,7 +65,11 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
         slashView.layer.masksToBounds = true
         slashView.layer.borderWidth = 1
         slashView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1).cgColor
-        
+
+        slider.minimumValue = 0
+        slider.maximumValue = 1
+
+        pieChart.startAngle = 0
     }
 
 }

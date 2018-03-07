@@ -6,13 +6,13 @@ def bitcoin_pods
 end
 
 def ethereum_pods
-  pod 'Geth', '~> 1.7'
+#  pod 'Geth', '~> 1.7'
 end
 
 def social_pods
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKShareKit'
+#  pod 'FBSDKCoreKit'
+  # pod 'FBSDKLoginKit'
+#  pod 'FBSDKShareKit'
 end
 
 target 'Teambrella' do
@@ -46,6 +46,13 @@ target 'Surilla' do
 end
 
 target 'notification' do
+  inhibit_all_warnings!
+
+  bitcoin_pods
+
+end
+
+target 'NotificationTeambrella' do
   inhibit_all_warnings!
 
   bitcoin_pods

@@ -27,9 +27,9 @@ class ClaimDataSource {
         static let proxyAvatarSize = 32
     }
     
-    var claim: EnhancedClaimEntity?
+    var claim: ClaimEntityLarge?
     var cellIDs: [String] = []
-    var userID: String { return claim?.userID ?? "" }
+    var userID: String { return claim?.basic.userID ?? "" }
     
     var sections: Int { return 1 }
     var onUpdate: (() -> Void)?
@@ -50,10 +50,10 @@ class ClaimDataSource {
         return cellIDs[indexPath.row]
     }
     
-    private func setupClaim(claim: EnhancedClaimEntity) {
+    private func setupClaim(claim: ClaimEntityLarge) {
         self.claim = claim
         cellIDs.append(ImageGalleryCell.cellID)
-        if claim.hasVotingPart {
+        if claim.voting != nil {
             cellIDs.append(ClaimVoteCell.cellID)
         }
         cellIDs.append(ClaimDetailsCell.cellID)
@@ -90,10 +90,10 @@ class ClaimDataSource {
                                                       "Since": lastUpdated,
                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
             let request = TeambrellaRequest(type: .claimVote, body: body, success: { [weak self] response in
-                if case .claimVote(let json) = response {
-                    self?.claim?.update(with: json)
+                if case let .claimVote(voteUpdate) = response {
+                    self?.claim?.update(with: voteUpdate)
                     self?.onUpdate?()
-                    log("Updated claim with \(json)", type: .serviceInfo)
+                    log("Updated claim with \(voteUpdate)", type: .info)
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)
@@ -101,7 +101,8 @@ class ClaimDataSource {
             request.start()
         }
     }
-    
+
+    /*
     func getUpdates() {
         let claimID = claim?.id ?? 0
         let lastUpdated = claim?.lastUpdated ?? 0
@@ -112,10 +113,10 @@ class ClaimDataSource {
                                                       "Since": lastUpdated,
                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
             let request = TeambrellaRequest(type: .claimUpdates, body: body, success: { [weak self] response in
-                if case .claimUpdates(let json) = response {
-                    self?.claim?.update(with: json)
+                if case .claimUpdates(let claimUpdate) = response {
+                    self?.claim?.update(with: claimUpdate)
                     self?.onUpdate?()
-                    log("updated claim \(json)", type: .serviceInfo)
+                    log("updated claim \(claimUpdate)", type: .info)
                 }
                 }, failure: { [weak self] error in
                     self?.onError?(error)
@@ -123,5 +124,5 @@ class ClaimDataSource {
             request.start()
         }
     }
-    
+    */
 }

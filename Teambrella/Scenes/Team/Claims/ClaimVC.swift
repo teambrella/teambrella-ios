@@ -123,6 +123,14 @@ final class ClaimVC: UIViewController, Routable {
         self.dataSource.updateVoteOnServer(vote: nil)
     }
     
+    @objc
+    func tapOthersVoted(sender: UIButton) {
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
+        guard let claimID = dataSource.claim?.id else { return }
+        
+        service.router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
+    }
+    
     // MARK: Private
     
     private func updateVotingCell() {
@@ -131,8 +139,9 @@ final class ClaimVC: UIViewController, Routable {
         
         cell.isYourVoteHidden = false
         cell.yourVotePercentValue.text = String.truncatedNumber(cell.slider.value * 100)
-        if let amount = dataSource.claim?.claimAmount {
-            cell.yourVoteAmount.text = String.truncatedNumber(cell.slider.value * Float(amount))
+        if let amount = dataSource.claim?.basic.claimAmount {
+            let claimVote = ClaimVote(cell.slider.value)
+            cell.yourVoteAmount.text = String.truncatedNumber(claimVote.fiat(from: amount).value)
         }
         cell.yourVotePercentValue.alpha = 0.5
         cell.yourVoteAmount.alpha = 0.5
@@ -181,14 +190,15 @@ final class ClaimVC: UIViewController, Routable {
             firstLabel.textAlignment = .center
             firstLabel.textColor = .white
             firstLabel.font = UIFont.teambrellaBold(size: 17)
-            firstLabel.text = dataSource.claim?.model ?? ""
+            firstLabel.text = dataSource.claim?.basic.model ?? ""
             firstLabel.sizeToFit()
             firstLabel.center = CGPoint(x: navigationBar.bounds.midX,
                                         y: navigationBar.bounds.midY - firstLabel.frame.height / 2)
             navigationTopLabel = firstLabel
             navigationBar.addSubview(firstLabel)
-            guard let enhancedClaim = dataSource.claim, let date = enhancedClaim.incidentDate else { return }
-            
+            guard let claim = dataSource.claim else { return }
+
+            let date = claim.basic.incidentDate
             let secondLabel = UILabel(frame: secondFrame)
             secondLabel.textAlignment = .center
             secondLabel.textColor = .white50

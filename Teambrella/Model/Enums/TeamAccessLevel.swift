@@ -21,7 +21,7 @@
 
 import Foundation
 
-enum TeamAccessLevel: Int {
+enum TeamAccessLevel: Int, Codable {
     case noAccess                 = 0
     case hiddenDetailsAndEditMine = 1
     case readOnly                 = 2

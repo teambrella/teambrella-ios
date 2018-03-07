@@ -17,6 +17,6 @@
 import Foundation
 
 extension Notification.Name {
-        //static let teambrellaTimestampUpdated = Notification.Name("teambrella.timestamp.updated")
     static let teambrellaCoreDataWillClear = Notification.Name("teambrella.coreData.willClear")
+    static let cryptoKeyFailure = Notification.Name("teambrella.crypto.key.failure")
 }

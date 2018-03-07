@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,32 +49,32 @@
                             <constraint firstAttribute="width" secondItem="vsD-oO-HJn" secondAttribute="height" multiplier="1:1" id="aIx-WX-2oj"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" ambiguous="YES" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QhF-iw-jcV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="16" width="173" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QhF-iw-jcV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                        <rect key="frame" x="72" y="16" width="383" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1 MIN AGO" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xeX-Mw-yoX" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1 MIN AGO" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xeX-Mw-yoX" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                         <rect key="frame" x="463" y="16" width="83" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCUSSION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6p-Vb-wmZ" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="104" y="74.5" width="101" height="21"/>
+                        <rect key="frame" x="109" y="71" width="101" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIA-wA-dBI" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="45" width="407" height="20.5"/>
+                        <rect key="frame" x="72" y="41" width="375" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H07-1A-61F" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="75.5" width="0.0" height="20"/>
+                    <view alpha="0.59999999999999998" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="H07-1A-61F" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
+                        <rect key="frame" x="72" y="71.5" width="0.0" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" priority="250" id="Cjy-Nc-jwU"/>
@@ -81,7 +82,7 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discussion" translatesAutoresizingMaskIntoConstraints="NO" id="V29-0m-7wa">
-                        <rect key="frame" x="80" y="77.5" width="15" height="15"/>
+                        <rect key="frame" x="88" y="74" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="1TE-zI-fnj"/>
                             <constraint firstAttribute="width" secondItem="V29-0m-7wa" secondAttribute="height" multiplier="1:1" id="GHo-t7-Gf8"/>
@@ -91,24 +92,25 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="V29-0m-7wa" firstAttribute="leading" secondItem="H07-1A-61F" secondAttribute="trailing" constant="8" id="3x6-Eq-VDj"/>
+                <constraint firstItem="V29-0m-7wa" firstAttribute="leading" secondItem="H07-1A-61F" secondAttribute="trailing" constant="16" id="3x6-Eq-VDj"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="A2l-j8-o3j"/>
                 <constraint firstAttribute="trailing" secondItem="xeX-Mw-yoX" secondAttribute="trailing" constant="16" id="ACl-Dr-h7q"/>
                 <constraint firstItem="V29-0m-7wa" firstAttribute="width" secondItem="V29-0m-7wa" secondAttribute="height" multiplier="1:1" id="CBB-Sw-Go5"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="width" secondItem="Qcx-lN-iSa" secondAttribute="height" multiplier="1:1" id="CmI-hR-JSE"/>
                 <constraint firstItem="dIA-wA-dBI" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="leading" id="Gne-Fb-JeF"/>
-                <constraint firstItem="dIA-wA-dBI" firstAttribute="top" secondItem="QhF-iw-jcV" secondAttribute="bottom" constant="8" id="JuY-Hj-Hmv"/>
+                <constraint firstItem="dIA-wA-dBI" firstAttribute="top" secondItem="QhF-iw-jcV" secondAttribute="bottom" constant="4" id="JuY-Hj-Hmv"/>
                 <constraint firstItem="qtc-Rp-2hk" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="MJr-0m-Rh2"/>
-                <constraint firstItem="z6p-Vb-wmZ" firstAttribute="centerY" secondItem="V29-0m-7wa" secondAttribute="centerY" id="QA1-C6-kz9"/>
+                <constraint firstItem="z6p-Vb-wmZ" firstAttribute="centerY" secondItem="H07-1A-61F" secondAttribute="centerY" id="QOv-Xd-r2p"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="width" secondItem="vsD-oO-HJn" secondAttribute="height" multiplier="1:1" id="X5R-H4-Bmu"/>
-                <constraint firstItem="z6p-Vb-wmZ" firstAttribute="leading" secondItem="V29-0m-7wa" secondAttribute="trailing" constant="9" id="dIl-7W-vdT"/>
+                <constraint firstItem="dIA-wA-dBI" firstAttribute="trailing" secondItem="xeX-Mw-yoX" secondAttribute="leading" constant="-16" id="czc-fk-MYr"/>
+                <constraint firstItem="z6p-Vb-wmZ" firstAttribute="leading" secondItem="V29-0m-7wa" secondAttribute="trailing" constant="6" id="dIl-7W-vdT"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="dd3-AH-tpI"/>
                 <constraint firstItem="V29-0m-7wa" firstAttribute="centerY" secondItem="H07-1A-61F" secondAttribute="centerY" id="ecG-w9-iCn"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="leading" secondItem="qtc-Rp-2hk" secondAttribute="trailing" constant="16" id="f6z-U3-WgJ"/>
                 <constraint firstItem="QhF-iw-jcV" firstAttribute="leading" secondItem="Qcx-lN-iSa" secondAttribute="trailing" constant="16" id="gC4-CX-1rg"/>
                 <constraint firstItem="xeX-Mw-yoX" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="trailing" constant="8" id="hEO-7g-OHn"/>
+                <constraint firstAttribute="bottom" secondItem="H07-1A-61F" secondAttribute="bottom" constant="16" id="ker-Y5-0qR"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="kku-QK-gka"/>
-                <constraint firstItem="qtc-Rp-2hk" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="trailing" constant="16" id="mam-rN-AU5"/>
                 <constraint firstItem="H07-1A-61F" firstAttribute="top" secondItem="dIA-wA-dBI" secondAttribute="bottom" constant="10" id="nWZ-i8-GmI"/>
                 <constraint firstItem="qtc-Rp-2hk" firstAttribute="width" secondItem="qtc-Rp-2hk" secondAttribute="height" multiplier="1:1" id="qqE-nv-QhH"/>
                 <constraint firstItem="H07-1A-61F" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="leading" id="vHJ-rZ-pXK"/>

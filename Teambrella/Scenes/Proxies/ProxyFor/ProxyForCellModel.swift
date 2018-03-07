@@ -20,20 +20,20 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct ProxyForCellModel {
+struct ProxyForCellModel: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case userID = "UserId"
+        case avatarString = "Avatar"
+        case name = "Name"
+        case lastVoted = "LastVoted"
+        case amount = "Commission"
+    }
+    
     let userID: String
     let avatarString: String
     let name: String
     let lastVoted: Date?
-    let amount: Double // commission?
- 
-    init(json: JSON) {
-        userID = json["UserId"].stringValue
-        avatarString = json["Avatar"].stringValue
-        name = json["Name"].stringValue
-        lastVoted = Formatter.teambrella.date(from: json["LastVoted"].stringValue)
-        amount = json["Commission"].doubleValue
-    }
+    let amount: Double // commission
+
 }

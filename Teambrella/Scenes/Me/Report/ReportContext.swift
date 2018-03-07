@@ -23,12 +23,12 @@ import Foundation
 
 enum ReportContext {
     // ClaimItem Coverage, Balance
-    case claim(item: ClaimItem, coverage: Double, balance: Double)
+    case claim(item: ClaimItem, coverage: Coverage, balance: Ether)
     case newChat
 }
 
 struct ClaimItem {
-    let name: String
-    let photo: String
+    let name: Name
+    let photo: Photo
     let location: String
 }

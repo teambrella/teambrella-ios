@@ -20,13 +20,27 @@
 //
 
 import Foundation
-import SwiftyJSON
 
-struct TeamsModel {
+struct TeamsModel: Decodable, CustomStringConvertible {
+    enum CodingKeys: String, CodingKey {
+        case teams = "MyTeams"
+        case invitations = "MyInvitations"
+        case lastTeamID = "LastSelectedTeam"
+        case userID = "UserId"
+    }
+    
     let teams: [TeamEntity]
-    let invitations: [TeamEntity]
+    let invitations: [InviteToTeamEntity]
     let lastTeamID: Int?
     let userID: String
+    
+    var description: String {
+        return """
+        TeamsModel: teams \(teams.count), invitations: \(invitations.count), \
+        lastID: \(String(describing: lastTeamID)), userID: \(userID)
+        """
+    }
+    
 }
 
 protocol ReportModel {
@@ -43,8 +57,16 @@ struct NewClaimModel: ReportModel {
     let text: String
     let images: [String]
     let address: String
+
+    let coverage: Coverage
+    let limit: Double
     
-    var isValid: Bool { return expenses > 0 && text.count >= 30 && address != "" }
+    var isValid: Bool {
+        let isLowerThanLimit = expenses <= limit
+        let isTextValid = text != ""
+        let isAddressValid = EthereumAddress(string: address) == nil ? false : true
+        return coverage.value > 0 && expenses > 0 && isLowerThanLimit && isTextValid && isAddressValid
+    }
 }
 
 struct NewChatModel: ReportModel {
@@ -52,36 +74,5 @@ struct NewChatModel: ReportModel {
     let title: String
     let text: String
     
-    var isValid: Bool { return title != "" && text.count >= 30 }
-}
-
-struct ChatModel {
-    let lastUpdated: Int64
-    let discussion: JSON
-    //let lastRead: Int64
-    let chat: [ChatEntity]
-    let basicPart: BasicPart?
-    let teamPart: TeamPart?
-    let votingPart: VotingPart?
-    
-    // teammateID or claimID
-    let id: Int
-    
-    let title: String
-    
-    init(json: JSON, chat: [ChatEntity]) {
-        lastUpdated = json["LastUpdated"].int64Value
-        discussion = json["DiscussionPart"]
-        self.chat = chat
-        basicPart = BasicPartFactory.basicPart(from: json)
-        teamPart = TeamPartFactory.teamPart(from: json)
-        votingPart = VotingPartFactory.votingPart(from: json)
-        title = json["Title"].stringValue
-        id = json["Id"].intValue
-    }
-    
-    // Discussion Part
-    var topicID: String { return discussion["TopicId"].stringValue }
-    var lastRead: Int64 { return discussion["LastRead"].int64Value }
-    var isMuted: Bool? { return discussion["IsMuted"].bool }
+    var isValid: Bool { return title != "" && text != "" }
 }

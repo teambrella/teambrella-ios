@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +36,7 @@
                                         <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="dEN-dN-JCa">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="dEN-dN-JCa">
                                         <rect key="frame" x="568" y="29" width="8" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="UoT-sq-byk"/>
@@ -50,34 +50,25 @@
                                             <constraint firstAttribute="height" constant="1" id="Ljs-NI-PxG"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4sg-xG-VXv" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="438.5" y="19.5" width="80" height="32"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="4sg-xG-VXv" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="480" y="25.5" width="72" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="b6Q-xr-9fD"/>
-                                            <constraint firstAttribute="height" constant="32" id="wWu-Tp-vny"/>
+                                            <constraint firstAttribute="width" constant="72" id="b6Q-xr-9fD"/>
+                                            <constraint firstAttribute="height" constant="20" id="wWu-Tp-vny"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuV-Bt-tPv" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="534.5" y="26" width="17.5" height="18.5"/>
-                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="15"/>
-                                        <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="4sg-xG-VXv" firstAttribute="centerY" secondItem="dEN-dN-JCa" secondAttribute="centerY" id="1MX-jK-mPc"/>
                                     <constraint firstAttribute="trailing" secondItem="W6N-tS-Hn6" secondAttribute="trailing" id="3UB-tE-p19"/>
                                     <constraint firstAttribute="bottom" secondItem="W6N-tS-Hn6" secondAttribute="bottom" id="FAQ-V2-rCk"/>
                                     <constraint firstItem="4sg-xG-VXv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h9f-sF-6gJ" secondAttribute="trailing" constant="16" id="Uru-FU-uNf"/>
                                     <constraint firstItem="h9f-sF-6gJ" firstAttribute="leading" secondItem="aUv-pz-bPk" secondAttribute="leadingMargin" id="ZOo-Dm-wAp"/>
-                                    <constraint firstItem="dEN-dN-JCa" firstAttribute="leading" secondItem="VuV-Bt-tPv" secondAttribute="trailing" constant="16" id="Zdk-TN-6Dm"/>
-                                    <constraint firstItem="VuV-Bt-tPv" firstAttribute="leading" secondItem="4sg-xG-VXv" secondAttribute="trailing" constant="16" id="gIT-3Y-YDX"/>
-                                    <constraint firstItem="4sg-xG-VXv" firstAttribute="centerY" secondItem="VuV-Bt-tPv" secondAttribute="centerY" id="iSS-ew-jjv"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="dEN-dN-JCa" secondAttribute="trailing" id="iZs-Fp-ulk"/>
                                     <constraint firstItem="h9f-sF-6gJ" firstAttribute="centerY" secondItem="aUv-pz-bPk" secondAttribute="centerY" id="jpv-RV-hmq"/>
-                                    <constraint firstItem="VuV-Bt-tPv" firstAttribute="centerY" secondItem="aUv-pz-bPk" secondAttribute="centerY" id="jxe-Mb-6g6"/>
                                     <constraint firstItem="W6N-tS-Hn6" firstAttribute="leading" secondItem="aUv-pz-bPk" secondAttribute="leadingMargin" id="ld0-ga-DCx"/>
+                                    <constraint firstItem="dEN-dN-JCa" firstAttribute="leading" secondItem="4sg-xG-VXv" secondAttribute="trailing" constant="16" id="wOA-Zp-e0c"/>
                                     <constraint firstItem="dEN-dN-JCa" firstAttribute="centerY" secondItem="aUv-pz-bPk" secondAttribute="centerY" id="zQR-gI-YyE"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
@@ -91,7 +82,7 @@
                                         <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="fsh-EZ-clu">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="fsh-EZ-clu">
                                         <rect key="frame" x="568" y="29" width="8" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="7c1-yR-YhK"/>
@@ -127,7 +118,7 @@
                                         <color key="textColor" red="0.23529411759999999" green="0.2784313725" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="hmN-l5-8cT">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="hmN-l5-8cT">
                                         <rect key="frame" x="568" y="29.5" width="8" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="8" id="QXs-Hl-I7C"/>
@@ -161,7 +152,6 @@
                 <outlet property="imagesStack" destination="4sg-xG-VXv" id="H2r-Hx-s30"/>
                 <outlet property="middleView" destination="fCk-KF-cNn" id="H9L-qX-1AG"/>
                 <outlet property="middleViewLabel" destination="HUV-s2-5wO" id="2XA-sF-QgB"/>
-                <outlet property="quantityLabel" destination="VuV-Bt-tPv" id="vcu-Kv-bRl"/>
                 <outlet property="topView" destination="aUv-pz-bPk" id="eSW-1t-plg"/>
                 <outlet property="topViewLabel" destination="h9f-sF-6gJ" id="eYe-EM-6oW"/>
             </connections>

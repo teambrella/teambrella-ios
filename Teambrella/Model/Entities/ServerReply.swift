@@ -17,22 +17,34 @@
 import Foundation
 
 struct ServerReply {
-    enum CodingKeys: String {
-        case status = "Status"
-        case paging = "Meta"
-        case data = "Data"
-    }
-    
     let status: ServerStatus
     let paging: PagingInfo?
     let json: Any
-    
-    var data: Data? { return try? JSONSerialization.data(withJSONObject: json, options: []) }
+    let string: String?
+    let bool: Bool?
+
+    var data: Data {
+        switch json {
+        case _ as String:
+            fatalError("Don't use data. Use string instead")
+        case _ as Bool:
+            fatalError("Don't use data. Use bool instead")
+        default:
+            do {
+                return try JSONSerialization.data(withJSONObject: json, options: [])
+            } catch {
+                log("ServerReply parse error: \(error)\n Data: \(json)", type: .error)
+                return Data()
+            }
+        }
+    }
     
     init(status: ServerStatus, paging: PagingInfo?, json: Any) {
         self.status = status
         self.paging = paging
         self.json = json
+        self.string = nil
+        self.bool = nil
     }
     
     init(data: Data) throws {
@@ -48,8 +60,7 @@ struct ServerReply {
         
         let decoder = JSONDecoder()
         let statusData = try JSONSerialization.data(withJSONObject: statusJSON, options: [])
-   
-        print("JSON: \(json)")
+
         if let pagingJSON = json[CodingKeys.paging.rawValue] {
             let pagingData = try JSONSerialization.data(withJSONObject: pagingJSON, options: [])
             paging = try decoder.decode(PagingInfo.self, from: pagingData)
@@ -58,6 +69,25 @@ struct ServerReply {
         }
         status = try decoder.decode(ServerStatus.self, from: statusData)
         self.json = dataJSON
+
+        var string: String? = nil
+        var bool: Bool? = nil
+        switch dataJSON {
+        case let value as String:
+            string = value
+        case let value as Bool:
+            bool = value
+        default:
+            break
+        }
+        self.string = string
+        self.bool = bool
+    }
+
+    enum CodingKeys: String {
+        case status = "Status"
+        case paging = "Meta"
+        case data = "Data"
     }
     
 }

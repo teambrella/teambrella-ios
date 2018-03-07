@@ -26,8 +26,8 @@ import XLPagerTabStrip
 
 class WalletVC: UIViewController {
     struct Constant {
-        static let headerCellHeight: CGFloat = 247
-        static let fundingCellHeight: CGFloat = 279
+        static let headerCellHeight: CGFloat = 180
+        static let fundingCellHeight: CGFloat = 227
         static let buttonsCellHeight: CGFloat = 163
         static let horizontalCellPadding: CGFloat = 16
     }
@@ -103,12 +103,12 @@ class WalletVC: UIViewController {
     func tapWithdraw(sender: UIButton) {
         guard let wallet = wallet else { return }
         
-        service.router.presentWithdraw(balance: wallet.cryptoBalance, reserved: wallet.cryptoReserved)
+        service.router.presentWithdraw(balance: MEth(wallet.cryptoBalance), reserved: wallet.cryptoReserved)
     }
     
     func generateQRCode() -> UIImage? {
         guard var qrCode = QRCode(walletID) else { return nil }
-        
+
         qrCode.size = CGSize(width: 79, height: 75) // Zeplin (04.2 wallet-1 & ...-1-a)
         return qrCode.image
     }
@@ -117,7 +117,9 @@ class WalletVC: UIViewController {
     func tapTransactions(sender: UITapGestureRecognizer) {
         guard let session = service.session?.currentTeam?.teamID else { return }
         
-        service.router.presentWalletTransactionsList(teamID: session)
+        service.router.presentWalletTransactionsList(teamID: session,
+                                                     balance: wallet?.cryptoBalance,
+                                                     reserved: wallet?.cryptoReserved)
     }
     
     @objc
@@ -199,5 +201,4 @@ extension WalletVC: UICollectionViewDelegateFlowLayout {
             return CGSize.zero
         }
     }
-    
 }

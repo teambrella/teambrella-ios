@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,13 +24,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="CLAIM DETAILS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhE-3B-gEJ" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="20" y="20" width="121" height="20.5"/>
+                        <rect key="frame" x="16" y="20" width="121" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kj-0I-Hu9">
-                        <rect key="frame" x="293" y="9" width="40" height="44"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kj-0I-Hu9">
+                        <rect key="frame" x="287" y="9" width="40" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="5kj-0I-Hu9" secondAttribute="height" multiplier="10:11" id="EYe-as-HI4"/>
                             <constraint firstAttribute="width" constant="40" id="t6Z-Dm-O8h"/>
@@ -37,10 +38,10 @@
                         <state key="normal" image="info"/>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="594-Fk-t4w">
-                        <rect key="frame" x="20" y="48.5" width="301" height="244.5"/>
+                        <rect key="frame" x="16" y="48.5" width="311" height="244.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vs3-d9-ZMU">
-                                <rect key="frame" x="0.0" y="0.0" width="301" height="49"/>
+                                <rect key="frame" x="0.0" y="0.0" width="311" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYa-Iq-hDy" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="13.5" width="42" height="20.5"/>
@@ -49,7 +50,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSp-Mx-qVy" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="292.5" y="13.5" width="8.5" height="20.5"/>
+                                        <rect key="frame" x="302.5" y="13.5" width="8.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -64,7 +65,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdj-YP-EEH">
-                                <rect key="frame" x="0.0" y="49" width="301" height="49"/>
+                                <rect key="frame" x="0.0" y="49" width="311" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TH7-uN-10z" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="14.5" width="42" height="20.5"/>
@@ -73,7 +74,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot9-Ob-4n4" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="292.5" y="14.5" width="8.5" height="20.5"/>
+                                        <rect key="frame" x="302.5" y="14.5" width="8.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -88,7 +89,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4g-qL-e49">
-                                <rect key="frame" x="0.0" y="98" width="301" height="48.5"/>
+                                <rect key="frame" x="0.0" y="98" width="311" height="48.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kti-fg-kdW" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="14.5" width="42" height="20.5"/>
@@ -97,7 +98,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osi-9w-2eL" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="292.5" y="14.5" width="8.5" height="20.5"/>
+                                        <rect key="frame" x="302.5" y="14.5" width="8.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -112,7 +113,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4d-s0-Bc9">
-                                <rect key="frame" x="0.0" y="146.5" width="301" height="49"/>
+                                <rect key="frame" x="0.0" y="146.5" width="311" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9p-to-FnA" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="14" width="42" height="20.5"/>
@@ -121,7 +122,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ji5-EH-Eyp" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="292.5" y="14" width="8.5" height="20.5"/>
+                                        <rect key="frame" x="302.5" y="14" width="8.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -136,7 +137,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxB-Gg-GRC">
-                                <rect key="frame" x="0.0" y="195.5" width="301" height="49"/>
+                                <rect key="frame" x="0.0" y="195.5" width="311" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvc-LS-tg2" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="14" width="42" height="20.5"/>
@@ -145,7 +146,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mi0-Og-TSq" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="292.5" y="14" width="8.5" height="20.5"/>
+                                        <rect key="frame" x="302.5" y="14" width="8.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -164,16 +165,16 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="594-Fk-t4w" secondAttribute="trailing" constant="22" id="5Z7-3R-UXA"/>
+                <constraint firstAttribute="trailing" secondItem="594-Fk-t4w" secondAttribute="trailing" constant="16" id="5Z7-3R-UXA"/>
                 <constraint firstItem="WhE-3B-gEJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="8Dt-Fg-LvL"/>
                 <constraint firstAttribute="bottom" secondItem="594-Fk-t4w" secondAttribute="bottom" id="9Uy-5b-eHO"/>
                 <constraint firstAttribute="bottom" secondItem="AQi-Yl-ex1" secondAttribute="bottom" id="AZz-2w-MYj"/>
                 <constraint firstItem="AQi-Yl-ex1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JkN-Xl-pdB"/>
                 <constraint firstItem="5kj-0I-Hu9" firstAttribute="centerY" secondItem="WhE-3B-gEJ" secondAttribute="centerY" id="VLE-dH-I6s"/>
                 <constraint firstItem="AQi-Yl-ex1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YAL-x5-Iho"/>
-                <constraint firstAttribute="trailing" secondItem="5kj-0I-Hu9" secondAttribute="trailing" constant="10" id="ZhM-bq-aGb"/>
-                <constraint firstItem="WhE-3B-gEJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="igh-mc-ZgH"/>
-                <constraint firstItem="594-Fk-t4w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="nXp-LG-cuw"/>
+                <constraint firstAttribute="trailing" secondItem="5kj-0I-Hu9" secondAttribute="trailing" constant="16" id="ZhM-bq-aGb"/>
+                <constraint firstItem="WhE-3B-gEJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="igh-mc-ZgH"/>
+                <constraint firstItem="594-Fk-t4w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="nXp-LG-cuw"/>
                 <constraint firstItem="594-Fk-t4w" firstAttribute="top" secondItem="WhE-3B-gEJ" secondAttribute="bottom" constant="8" id="sa5-ZF-Jxs"/>
                 <constraint firstAttribute="trailing" secondItem="AQi-Yl-ex1" secondAttribute="trailing" id="vz9-iM-iOU"/>
             </constraints>

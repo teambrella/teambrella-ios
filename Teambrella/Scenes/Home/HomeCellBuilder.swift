@@ -33,7 +33,7 @@ struct HomeCellBuilder {
                                 forCellWithReuseIdentifier: HomeApplicationStatusCell.cellID)
     }
     
-    static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeScreenModel.Card?) {
+    static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeCardModel?) {
         guard let model = model else {
             populateSupport(cell: cell, dataSource: dataSource)
             return
@@ -53,45 +53,44 @@ struct HomeCellBuilder {
         }
     }
     
-    static func populateHome(cell: HomeCollectionCell, model: HomeScreenModel.Card) {
+    static func populateHome(cell: HomeCollectionCell, model: HomeCardModel) {
         switch model.itemType {
         case .claim:
-            cell.avatarView.showImage(string: model.smallPhoto)
+            cell.avatarView.show(model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
             cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
-            if model.model == "" {
-                cell.titleLabel.text = model.modelOrName
-            } else {
-                cell.titleLabel.text = model.model
-            }
+            cell.leftNumberView.isCurrencyVisible = true
+            cell.leftNumberView.isPercentVisible = false
+            let isMine = model.userID == service.myUserID
+            cell.titleLabel.text = isMine
+                ? "Team.Home.Card.yourClaim".localized
+                : "Team.Home.Card.claim".localized
             let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
             cell.rightNumberView.amountLabel.text = amountText
-            cell.rightNumberView.currencyLabel.text = model.teamVote == nil ? nil : "%"
-            cell.subtitleLabel.text = model.isMine
-                ? "Team.Home.Card.yourClaim".localized
-                : "Team.Home.Card.claim".localized // by ...
+            cell.rightNumberView.isBadgeVisible = model.isVoting
+            cell.rightNumberView.isPercentVisible = model.teamVote != nil
+//            cell.rightNumberView.currencyLabel.text = model.teamVote == nil ? nil : "%"
         case .teammate:
-            cell.avatarView.showAvatar(string: model.smallPhoto)
+            cell.avatarView.show(model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
-            if model.name == "" {
-                cell.titleLabel.text = model.modelOrName
-            } else {
-                cell.titleLabel.text = model.name
-            }
-            let amountText: String = model.teamVote.map { String.formattedNumber($0) } ?? "..."
+            cell.titleLabel.text = "Team.Home.Card.newTeammate".localized
+            cell.leftNumberView.isCurrencyVisible = true
+            cell.leftNumberView.isPercentVisible = false
+            let amountText: String = model.teamVote.map { String(format: "%.1f", $0) } ?? "..."
             cell.rightNumberView.amountLabel.text = amountText
-            cell.rightNumberView.currencyLabel.text = nil
-            cell.subtitleLabel.text = "Team.Home.Card.newTeammate".localized // applied ...
-            //if let date = model.itemDate { " APPLIED: " + DateProcessor().stringInterval(from: date) }
+            cell.rightNumberView.isBadgeVisible = model.isVoting
+            cell.rightNumberView.isCurrencyVisible = false
+            cell.rightNumberView.isPercentVisible = false
+//            cell.rightNumberView.currencyLabel.text = nil
         default:
             break
         }
         
-        cell.leftNumberView.amountLabel.text = String.formattedNumber(model.amount)
+        cell.leftNumberView.amountLabel.text = model.amount.formatted
         cell.leftNumberView.currencyLabel.text = service.currencyName
         cell.rightNumberView.titleLabel.text = "Team.Home.Card.teamVote".localized
         cell.rightNumberView.badgeLabel.text = "Team.Home.Card.voting".localized
-        cell.textLabel.text = model.text
+        cell.textLabel.text = model.text.sane
         if model.unreadCount > 0 {
             cell.unreadCountView.isHidden = false
             cell.unreadCountView.text = String(model.unreadCount)
@@ -99,6 +98,8 @@ struct HomeCellBuilder {
             cell.unreadCountView.isHidden = true
         }
         cell.rightNumberView.isBadgeVisible = model.isVoting
+
+        cell.subtitleLabel.text = DateProcessor().stringIntervalOrDate(from: model.itemDate)
     }
     
     static func populateSupport(cell: UICollectionViewCell, dataSource: HomeDataSource) {
@@ -106,25 +107,25 @@ struct HomeCellBuilder {
         
         cell.headerLabel.text = "Home.SupportCell.headerLabel".localized
         cell.centerLabel.text = "Home.SupportCell.onlineLabel".localized
-        cell.bottomLabel.text = "Home.SupportCell.textLabel".localized(dataSource.name)
+        cell.bottomLabel.text = "Home.SupportCell.textLabel".localized(dataSource.name.first)
         cell.button.setTitle("Home.SupportCell.chatButton".localized, for: .normal)
         cell.onlineIndicator.layer.cornerRadius = 3
     }
     
-    static func populate(cell: HomeApplicationDeniedCell, with model: HomeScreenModel.Card) {
+    static func populate(cell: HomeApplicationDeniedCell, with model: HomeCardModel) {
         cell.avatar.image = #imageLiteral(resourceName: "teammateF") //
         cell.headerLabel.text = "Home.ApplicationDeniedCell.headerLabel".localized
         cell.centerLabel.text = "Home.ApplicationDeniedCell.centerLabel".localized
         cell.button.setTitle("Home.ApplicationDeniedCell.viewAppButton".localized, for: .normal)
     }
     
-    static func populate(cell: HomeApplicationAcceptedCell, with model: HomeScreenModel.Card) {
+    static func populate(cell: HomeApplicationAcceptedCell, with model: HomeCardModel) {
         cell.avatar.image = #imageLiteral(resourceName: "teammateF") //
         cell.headerLabel.text = "Home.ApplicationAcceptedCell.headerLabel".localized
         cell.centerLabel.text = "Home.ApplicationAcceptedCell.centerLabel".localized
         cell.button.setTitle("Home.ApplicationAcceptedCell.learnAboutCoverageButton".localized, for: .normal)
     }
-    static func populate(cell: HomeApplicationStatusCell, with model: HomeScreenModel.Card) {
+    static func populate(cell: HomeApplicationStatusCell, with model: HomeCardModel) {
         cell.avatar.image = #imageLiteral(resourceName: "teammateF") //
         cell.headerLabel.text = "Home.ApplicationStatusCell.headerLabel".localized("Yummigum", "6 DAYS") //
         cell.titleLabel.text = "Home.ApplicationStatusCell.titleLabel".localized

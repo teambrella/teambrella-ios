@@ -21,32 +21,18 @@
 
 import Alamofire
 import Foundation
-import SwiftyJSON
-
-/*
-struct ResponseStatus {
-    let timestamp: Int64
-    let code: Int
-    let errorMessage: String
-    
-    init(json: JSON) {
-        timestamp = json["Timestamp"].int64Value
-        code = json["ResultCode"].intValue
-        errorMessage = json["ErrorMessage"].stringValue
-    }
-}
-*/
 
 /**
  Service to interoperate with the server fetching all UI related information
  */
-class ServerService: NSObject {
+final class ServerService: NSObject {
     @objc dynamic private(set)var timestamp: Int64 = 0
-    
+    var router: MainRouter?
     var key: Key { return Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp) }
-    
-    override init() {
+
+    required init(router: MainRouter) {
         super.init()
+        self.router = router
     }
     
     func updateTimestamp(completion: @escaping (Int64, Error?) -> Void) {
@@ -58,7 +44,7 @@ class ServerService: NSObject {
             completion(timestamp, nil)
         }
     }
-    
+
     // swiftlint:disable:next function_body_length
     func ask(for string: String,
              parameters: [String: String]? = nil,
@@ -86,30 +72,38 @@ class ServerService: NSObject {
             }
             let application = Application()
             let dict: [String: Any] = ["t": body.timestamp,
-                        "key": body.publicKey,
-                        "sig": body.signature,
-                        "clientVersion": application.clientVersion,
-                        "deviceToken": service.push.tokenString ?? "",
-                        "deviceId": application.uniqueIdentifier]
-            print("Headers:")
+                                       "key": body.publicKey,
+                                       "sig": body.signature,
+                                       "clientVersion": application.clientVersion,
+                                       "deviceToken": service.push.tokenString ?? "",
+                                       "deviceId": application.uniqueIdentifier,
+                                       "info": service.info.info]
+
+            log("Headers:", type: .serverHeaders)
             for (key, value) in dict {
-                print("\(key): \(value)")
+                log("\(key): \(value)", type: .serverHeaders)
                 request.setValue(String(describing: value), forHTTPHeaderField: key)
             }
         }
-        Alamofire.request(request).responseData { response in
-//        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).responseData { [weak self] response in
+            guard let `self` = self else { return }
+
             switch response.result {
             case let .success(value):
                 do {
-               let reply = try ServerReply(data: value)
-                guard reply.status.isValid else {
-                    let error = TeambrellaErrorFactory.error(with: reply.status)
-                    failure(error)
-                    return
-                }
-                
-                success(reply)
+                    let reply = try ServerReply(data: value)
+                    guard reply.status.isValid else {
+                        let error = TeambrellaErrorFactory.error(with: reply.status)
+                        failure(error)
+                        return
+                    }
+
+                    success(reply)
+
+                    if let router = self.router {
+                        let manager = SODManager(router: router)
+                        manager.checkVersion(serverReply: reply)
+                    }
                 } catch {
                     failure(error)
                 }
@@ -123,7 +117,7 @@ class ServerService: NSObject {
         guard let data = data else { return }
         
         if let string = try? JSONSerialization.jsonObject(with: data, options: []) {
-            log("\(string)", type: .requestBody)
+            log("\(string)", type: .serverRequest)
         }
     }
     

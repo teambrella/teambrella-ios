@@ -7,7 +7,6 @@
 */
 
 "Proxy.MyProxiesVC.indicatorTitle"    = "Mis Proxies";
-"Proxy.ProxyForVC.indicatorTitle"     = "Proxy para";
 "Proxy.UserIndexVC.indicatorTitle"    = "Índice";
 "Proxy.SortVC.SortByHeader"           = "ORDENAR POR";
 "Proxy.SortVC.Cell.Rating"            = "Clasificación";
@@ -24,13 +23,16 @@
 "Proxy.MyProxiesVC.discussions"       = "DISCUSIONES";
 "Proxy.MyProxiesVC.votingFreq"        = "FREC. DE VOTACIÓN";
 "Proxy.MyProxiesVC.proxyRank"         = "RANGO DE PROXY";
-"Proxy.UserIndexVC.members"           = "MIEMBROS";
 "Proxy.UserIndexVC.proxyRank"         = "RANGO DE PROXY";
 "Proxy.Empty.title"                   = "Todavía no tienes los Proxies";
 "Proxy.Empty.details"                 = "Por favor, considera a alguien en quien confías para nombrar a tu primero Proxy.";
-"Proxy.Empty.You.title"               = "No estás Proxy de cualquier compañero del equipo";
-"Proxy.Empty.You.details"             = "Tu puedes llegar a estar Proxy por ganar la confianza de otros compañeros del equipo. Publica tus ideas, opiniones e votos";
-//--waiting--
+"Proxy.Empty.You.title"               = "No estás Proxy\nde cualquier compañero del equipo";
+"Proxy.Empty.You.details"             = "Tu puedes llegar a estar Proxy\npor ganar la confianza de otros compañeros del equipo. Publica tus ideas, opiniones e votos";
 
-"Proxy.UserIndexVC.optButton.title.in" = "Opt Into Rating";
-"Proxy.UserIndexVC.optButton.title.out" = "Opt Out Of Rating";
+"Proxy.UserIndexVC.optButton.title.in" = "Optar en Calificación";
+"Proxy.UserIndexVC.optButton.title.out" = "Optar por No Calificar";
+
+//--waiting--
+"Proxy.ProxyForVC.indicatorTitle" = "Soy proxy para"; // I am proxy for
+"Proxy.ProxyForCellBuilder.neverVoted" = "NUNCA VOTADO"; // never voted
+"Proxy.UserIndexVC.allTeamsRating" = "CLACIFICACIÓN"; // all-teams rating

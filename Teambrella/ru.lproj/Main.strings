@@ -1,0 +1,18 @@
+/*
+  Main.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 14.06.17.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"Main.home"                    = "Домой";
+"Main.team"                    = "Команда";
+"Main.proxies"                 = "Прокси";
+"Main.me"                      = "Я";
+
+"Main.back"                    = "Назад";
+"Main.cancel"                  = "Отмена";
+
+"Main.Notification.noInternet" = "Нет связи с Интернетом";
+"Main.Notification.noServer"   = "Нет связи с сервером";

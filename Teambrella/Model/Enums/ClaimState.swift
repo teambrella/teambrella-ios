@@ -5,13 +5,18 @@
 
 import Foundation
 
-enum ClaimState: Int {
+enum ClaimState: Int, Decodable {
     case voting     = 0
     case revoting   = 10
     case voted      = 15
     case declined   = 20
     case inPayment  = 30
     case processed  = 40
+    
+    init(decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Int.self)
+        self = ClaimState(rawValue: value) ?? .voting
+    }
 }
 
 extension ClaimState: Nameable {

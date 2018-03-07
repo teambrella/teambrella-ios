@@ -1,0 +1,40 @@
+/*
+  Proxy.strings
+  Teambrella
+
+  Created by Yaroslav Pasternak on 22.06.17.
+  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+*/
+
+"Proxy.MyProxiesVC.indicatorTitle"      = "Мои прокси";
+"Proxy.ProxyForVC.indicatorTitle"       = "Я прокси для";
+"Proxy.UserIndexVC.indicatorTitle"      = "Рейтинг";
+"Proxy.SortVC.SortByHeader"             = "Сортировать по";
+"Proxy.SortVC.Cell.Rating"              = "Рейтингу";
+"Proxy.SortVC.Cell.Rating.HighLow"      = "ВЫСОКИЙ-НИЗКИЙ";
+"Proxy.SortVC.Cell.Rating.LowHigh"      = "НИЗКИЙ-ВЫСОКИЙ";
+"Proxy.SortVC.Cell.Alphabetical"        = "По алфавиту";
+"Proxy.SortVC.Cell.Alphabetical.AZ"     = "А-Я";
+"Proxy.SortVC.Cell.Alphabetical.ZA"     = "Я-А";
+
+"Proxy.ProxyForVC.header"               = "ОБЩАЯ КОМИССИЯ";
+"Proxy.ProxyForVC.subtitle"             = "ДЛЯ КОГО ВЫ ПРОКСИ";
+"Proxy.ProxyForCellBuilder.lastVoted"   = "ПОСЛЕДНИЙ ГОЛОС: ";
+"Proxy.MyProxiesVC.infoButton"          = "Нужна помощь?";
+"Proxy.MyProxiesVC.decisions"           = "РЕШЕНИЯ";
+"Proxy.MyProxiesVC.discussions"         = "ОБСУЖДЕНИЯ";
+"Proxy.MyProxiesVC.votingFreq"          = "ЧАСТОТА ГОЛОСОВ.";
+"Proxy.MyProxiesVC.proxyRank"           = "РАНГ ПРОКСИ";
+"Proxy.UserIndexVC.allTeamsRating"      = "ОБЩИЙ РЕЙТИНГ";
+"Proxy.UserIndexVC.proxyRank"           = "РЕЙТИНГ";
+
+"Proxy.Empty.title"                     = "У вас ещё нет прокси";
+"Proxy.Empty.details"                   = "Пожалуйста, выберите кого-то, кому вы доверяете, чтобы он стал вашим прокси";
+"Proxy.Empty.You.title"                 = "Вы не являетесь прокси\nни для кого в команде";
+"Proxy.Empty.You.details"               = "Вы можете стать прокси\nзарабатывая доверие других участников. Публикуйте свои идеи, мнения и голоса.";
+
+"Proxy.UserIndexVC.optButton.title.in"  = "Opt Into Rating";
+"Proxy.UserIndexVC.optButton.title.out" = "Opt Out Of Rating";
+
+"Proxy.ProxyForCellBuilder.neverVoted"  = "НЕ ГОЛОСОВАЛ";
+

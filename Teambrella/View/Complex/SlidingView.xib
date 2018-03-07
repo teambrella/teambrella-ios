@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SlidingView" customModule="Surilla" customModuleProvider="target">
+            <connections>
+                <outlet property="objectView" destination="TiV-T4-dM5" id="yIC-2B-xU6"/>
+                <outlet property="objectViewHeightConstraint" destination="YXd-iD-f1w" id="Qrv-vD-0hy"/>
+                <outlet property="objectViewTopConstraint" destination="k8C-og-XTf" id="mGa-Iz-Oo2"/>
+                <outlet property="votingView" destination="9cc-9U-uIy" id="ppI-9F-Gm1"/>
+                <outlet property="votingViewHeightConstraint" destination="ZCW-8A-vMA" id="k4l-JV-onP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="263"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cc-9U-uIy" customClass="ClaimVotingView" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="48" width="375" height="215"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="215" id="ZCW-8A-vMA"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiV-T4-dM5" customClass="ChatObjectView" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="YXd-iD-f1w"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TiV-T4-dM5" secondAttribute="bottom" id="1V3-Zx-HUL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TiV-T4-dM5" secondAttribute="trailing" id="Edb-fu-kUP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9cc-9U-uIy" secondAttribute="trailing" id="QNi-h3-Y4G"/>
+                <constraint firstItem="TiV-T4-dM5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" priority="250" id="k8C-og-XTf"/>
+                <constraint firstItem="TiV-T4-dM5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="tma-AR-Rdt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9cc-9U-uIy" secondAttribute="bottom" id="yoh-uR-fWY"/>
+                <constraint firstItem="9cc-9U-uIy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zpH-fh-ddm"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="-147.5"/>
+        </view>
+    </objects>
+</document>

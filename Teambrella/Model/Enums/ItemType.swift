@@ -21,7 +21,7 @@
 
 import Foundation
 
-enum ItemType: Int {
+enum ItemType: Int, Codable {
     case teammate = 0
     case claim = 1
     case rule = 2

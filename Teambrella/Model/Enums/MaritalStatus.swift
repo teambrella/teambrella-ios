@@ -5,12 +5,18 @@
 
 import Foundation
 
-enum MaritalStatus: Int {
+enum MaritalStatus: Int, Decodable {
     case unknown    = 0
     case single     = 1
     case divorced   = 2
     case widowed    = 9
     case married    = 10
+
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Int.self)
+        let type = MaritalStatus(rawValue: value) ?? .unknown
+        self = type
+    }
 }
 
 extension MaritalStatus: Nameable {

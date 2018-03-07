@@ -19,7 +19,6 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import SwiftyJSON
 import UIKit
 
 enum TeammateProfileCellType: String {
@@ -45,16 +44,16 @@ class TeammateProfileDataSource {
    // let isVoting: Bool
     var isMyProxy: Bool {
         get {
-            return extendedTeammate?.basic.isMyProxy ?? false
+            return teammateLarge?.basic.isMyProxy ?? false
         }
         set {
-            extendedTeammate?.myProxy(set: newValue)
+            teammateLarge?.myProxy(set: newValue)
         }
     }
     
     var source: [TeammateProfileCellType] = []
-    var extendedTeammate: ExtendedTeammateEntity?
-    var riskScale: RiskScaleEntity? { return extendedTeammate?.riskScale }
+    var teammateLarge: TeammateLarge?
+    var riskScale: RiskScaleEntity? { return teammateLarge?.riskScale }
     var isNewTeammate = false
     
     var votingCellIndexPath: IndexPath? {
@@ -79,7 +78,7 @@ class TeammateProfileDataSource {
         return source[indexPath.row]
     }
     
-    func loadEntireTeammate(completion: @escaping (ExtendedTeammateEntity) -> Void,
+    func loadEntireTeammate(completion: @escaping (TeammateLarge) -> Void,
                             failure: @escaping (Error) -> Void) {
         let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: service.server.timestamp)
         
@@ -88,7 +87,7 @@ class TeammateProfileDataSource {
             guard let me = self else { return }
             
             if case .teammate(let extendedTeammate) = response {
-                me.extendedTeammate = extendedTeammate
+                me.teammateLarge = extendedTeammate
                 me.modifySource()
                 completion(extendedTeammate)
             }
@@ -115,7 +114,7 @@ class TeammateProfileDataSource {
         }
     }
     
-    func sendRisk(userID: Int, risk: Double?, completion: @escaping (JSON) -> Void) {
+    func sendRisk(userID: Int, risk: Double?, completion: @escaping (TeammateVotingResult) -> Void) {
         service.server.updateTimestamp { timestamp, error in
             let key = service.server.key
             let body = RequestBody(payload: ["TeammateId": userID,
@@ -123,9 +122,9 @@ class TeammateProfileDataSource {
                                              "Since": key.timestamp,
                                              "ProxyAvatarSize": 32])
             let request = TeambrellaRequest(type: .teammateVote, body: body, success: { [weak self] response in
-                if case .teammateVote(let json) = response {
-                    self?.extendedTeammate?.updateWithVote(json: json)
-                    completion(json)
+                if case let .teammateVote(votingResult) = response {
+                    self?.teammateLarge?.update(votingResult: votingResult)
+                    completion(votingResult)
                 }
             })
             request.start()
@@ -134,7 +133,7 @@ class TeammateProfileDataSource {
     }
     
     private func modifySource() {
-        guard let teammate = extendedTeammate else { return }
+        guard let teammate = teammateLarge else { return }
         
         source.removeAll()
         isMyProxy = teammate.basic.isMyProxy
@@ -172,7 +171,7 @@ class TeammateProfileDataSource {
     
     var socialItems: [SocialItem] {
         var items: [SocialItem] = []
-        if let facebook = extendedTeammate?.basic.facebook {
+        if let facebook = teammateLarge?.basic.facebook {
             items.append(SocialItem(type: .facebook, icon: #imageLiteral(resourceName: "facebook"), address: facebook))
         }
         return items

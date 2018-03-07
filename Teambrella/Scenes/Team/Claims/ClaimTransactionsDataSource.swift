@@ -22,7 +22,7 @@
 import Foundation
 
 class ClaimTransactionsDataSource {
-    var items: [ClaimTransactionsCellModel] = []
+    var items: [WalletTransactionsCellModel] = []
     var count: Int { return items.count }
     let teamID: Int
     let claimID: Int
@@ -31,6 +31,7 @@ class ClaimTransactionsDataSource {
     var isLoading: Bool = false
     var hasMore: Bool = true
     var canLoad: Bool { return hasMore && !isLoading }
+    var isEmpty: Bool { return items.isEmpty }
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
@@ -40,7 +41,7 @@ class ClaimTransactionsDataSource {
         self.claimID = claimID
     }
     
-    subscript(indexPath: IndexPath) -> ClaimTransactionsCellModel {
+    subscript(indexPath: IndexPath) -> WalletTransactionsCellModel {
         let model = items[indexPath.row]
         return model
     }
@@ -62,7 +63,8 @@ class ClaimTransactionsDataSource {
             let request = TeambrellaRequest(type: .claimTransactions, body: body, success: { [weak self] response in
                 if case .claimTransactions(let transactions) = response {
                     self?.hasMore = (transactions.count == limit)
-                    self?.items += transactions
+                    let models = TransactionsCellModelBuilder().cellModels(from: transactions)
+                    self?.items += models
                     self?.isLoading = false
                     self?.onUpdate?()
                 }

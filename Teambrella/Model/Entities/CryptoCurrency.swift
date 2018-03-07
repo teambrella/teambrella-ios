@@ -21,6 +21,7 @@
 
 import Foundation
 
+/*
 protocol CurrencyLike {
     var name: String { get }
     var symbol: String { get }
@@ -30,7 +31,9 @@ protocol CurrencyLike {
     var coinCode: String { get }
     var parent: CurrencyLike? { get }
 }
+*/
 
+/*
 protocol CurrencyTransformable {
     func rate(to: CurrencyTransformable) -> Decimal?
 }
@@ -61,6 +64,7 @@ extension CurrencyTransformable where Self: CurrencyLike {
         return nil
     }
 }
+*/
 
 /*
  let finneyRate = 1000
@@ -71,28 +75,25 @@ extension CurrencyTransformable where Self: CurrencyLike {
  let weiRate = 1000_000_000_000_000_000
  */
 
-struct Ethereum: CurrencyLike, CurrencyTransformable {
+struct Ethereum {
     let name = "Ethereum"
     let code = "ETH"
     let symbol = "Ξ"
-    
-    var coinCode: String { return child?.code ?? "" }
-    var child: CurrencyLike? { return Finney() }
-    let parent: CurrencyLike? = nil
+
+    //var coinCode: String { return child?.code ?? "" }
     let childRate: Decimal = 1000
 }
 
-struct Finney: CurrencyLike, CurrencyTransformable {
+struct Finney {
     let name = "Finney"
     let code = "mETH"
     let symbol = "mΞ"
-    
-    var coinCode: String { return child?.code ?? "" }
-    var child: CurrencyLike? { return Szabo() }
-    var parent: CurrencyLike? { return Ethereum() }
+
+   // var coinCode: String { return child?.code ?? "" }
     let childRate: Decimal = 1000
 }
 
+/*
 struct Szabo: CurrencyLike, CurrencyTransformable {
     let name = "Szabo"
     let code = "µETH"
@@ -147,3 +148,4 @@ struct Wei: CurrencyLike, CurrencyTransformable {
     var parent: CurrencyLike? { return Kwei() }
     let childRate: Decimal = 1
 }
+*/

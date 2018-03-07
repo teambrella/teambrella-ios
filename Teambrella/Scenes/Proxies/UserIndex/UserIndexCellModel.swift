@@ -20,9 +20,20 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct UserIndexCellModel {
+struct UserIndexCellModel: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case userID = "UserId"
+        case avatarString = "Avatar"
+        case name = "Name"
+        case location = "Location"
+        case proxyRank = "ProxyRank"
+        case decisionFreq = "DecisionFreq"
+        case discussionFreq = "DiscussionFreq"
+        case votingFreq = "VotingFreq"
+        case position = "Position"
+    }
+    
     let userID: String
     let avatarString: String
     let proxyRank: Double
@@ -33,15 +44,4 @@ struct UserIndexCellModel {
     let name: String
     let votingFreq: Int?
     
-    init(json: JSON) {
-        userID = json["UserId"].stringValue
-        avatarString = json["Avatar"].stringValue
-        proxyRank = json["ProxyRank"].doubleValue
-        discussionFreq = json["DiscussionFreq"].double
-        decisionFreq = json["DecisionFreq"].double
-        location = json["Location"].stringValue
-        position = json["Position"].int
-        name = json["Name"].stringValue
-        votingFreq = json["VotingFreq"].int
-    }
 }

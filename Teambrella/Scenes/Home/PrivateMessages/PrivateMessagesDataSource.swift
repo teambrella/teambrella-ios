@@ -53,4 +53,11 @@ class PrivateMessagesDataSource: NSObject {
         }
     }
     
+    func reload() {
+        offset = 0
+        hasNext = true
+        items = []
+        loadNext()
+    }
+    
 }

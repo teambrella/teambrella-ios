@@ -15,23 +15,27 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct WithdrawChunk {
-    let txs: [WithdrawTx]
-    let cryptoBalance: Decimal
-    let cryptoReserved: Decimal
-    let defaultWithdrawAddress: EthereumAddress
-    
-    init?(json: JSON) {
-        guard let balance = Decimal(string: json["CryptoBalance"].stringValue),
-            let reserved = Decimal(string: json["CryptoReserved"].stringValue),
-            let address = EthereumAddress(string: json["DefaultWithdrawAddress"].stringValue) else { return nil }
-        
-        txs = json["Txs"].arrayValue.flatMap { WithdrawTx(json: $0) }
-        cryptoBalance = balance
-        cryptoReserved = reserved
-        defaultWithdrawAddress = address
+struct WithdrawChunk: Decodable {
+    enum CodingKeys: String, CodingKey {
+      case txs = "Txs"
+        case cryptoBalance = "CryptoBalance"
+        case cryptoReserved = "CryptoReserved"
+        case defaultWithdrawAddress = "DefaultWithdrawAddress"
     }
     
+    let txs: [WithdrawTx]
+    let cryptoBalance: Ether
+    let cryptoReserved: Ether
+    let defaultWithdrawAddress: EthereumAddress?
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        txs = try container.decode([WithdrawTx].self, forKey: .txs)
+        cryptoBalance = try container.decode(Ether.self, forKey: .cryptoBalance)
+        cryptoReserved = try container.decode(Ether.self, forKey: .cryptoReserved)
+        let address = try? container.decode(EthereumAddress.self, forKey: .defaultWithdrawAddress)
+        defaultWithdrawAddress = address
+    }
+ 
 }

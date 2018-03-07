@@ -39,11 +39,31 @@ final class MainRouter {
     var masterTabBar: MasterTabBarController? {
         return navigator?.viewControllers.filter { $0 is MasterTabBarController }.first as? MasterTabBarController
     }
-    
+
+    var frontmostViewController: UIViewController? {
+        return topViewController()
+    }
+
+    private func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController)
+        -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(base: selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
+    }
+
     func push(vc: UIViewController, animated: Bool = true) {
         navigator?.pushViewController(vc, animated: animated)
     }
-    
+
     private func switchTab(to tab: TabType) -> UIViewController? {
         return masterTabBar?.switchTo(tabType: tab)
     }
@@ -93,7 +113,7 @@ final class MainRouter {
     func presentChat(context: ChatContext, itemType: ItemType, animated: Bool = true) {
         let last = navigator?.viewControllers.last
         guard last as? UniversalChatVC == nil else {
-            print("already opened chat")
+            log("already opened chat", type: [.error, .info])
             return
         }
         guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
@@ -114,6 +134,15 @@ final class MainRouter {
         vc.claimID = claimID
         vc.isScrollToVoteNeeded = scrollToVoting
         push(vc: vc, animated: animated)
+    }
+    
+    func presentOthersVoted(teamID: Int, teammateID: Int?, claimID: Int?) {
+        guard let vc = OthersVotedVC.instantiate() as? OthersVotedVC else { return }
+        
+        vc.teamID = teamID
+        vc.teammateID = teammateID
+        vc.claimID = claimID
+        push(vc: vc, animated: true)
     }
     
     func getControllerClaim(claimID: Int) -> ClaimVC? {
@@ -153,11 +182,13 @@ final class MainRouter {
         push(vc: vc)
     }
     
-    func presentWalletTransactionsList(teamID: Int) {
+    func presentWalletTransactionsList(teamID: Int, balance: Ether?, reserved: Ether?) {
         guard let vc = WalletTransactionsVC.instantiate() as? WalletTransactionsVC
             else { fatalError("Error instantiating") }
         
         vc.teamID = teamID
+        vc.balance = balance.map { MEth($0) }
+        vc.reserved = reserved
         push(vc: vc)
     }
     
@@ -176,7 +207,7 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
-    func presentWithdraw(balance: Double, reserved: Double, animated: Bool = true) {
+    func presentWithdraw(balance: MEth, reserved: Ether, animated: Bool = true) {
         guard let vc = WithdrawVC.instantiate() as? WithdrawVC else { fatalError("Error instantiating") }
         
         vc.setupCrypto(balance: balance, reserved: reserved)
@@ -207,13 +238,19 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
-    func presentCompareTeamRisk(ranges: [RiskScaleEntity.Range]) {
+    func presentCompareTeamRisk(ranges: [RiskScaleRange]) {
         guard let vc = CompareTeamRiskVC.instantiate() as? CompareTeamRiskVC else { fatalError("Error instantiating") }
         
         vc.ranges = ranges
         push(vc: vc)
     }
-    
+
+    func presentConsole() {
+        guard let vc = Console.instantiate() as? Console else { fatalError("Error instantiating") }
+
+        push(vc: vc)
+    }
+
     // MARK: Present Modally
     
     func showChooseTeam(in viewController: UIViewController, delegate: ChooseYourTeamControllerDelegate) {
@@ -253,8 +290,8 @@ final class MainRouter {
     }
     
     func showWithdrawInfo(in viewController: UIViewController,
-                          balance: Double,
-                          reserved: Double) {
+                          balance: Ether,
+                          reserved: Ether) {
         guard let vc = WithdrawInfoVC.instantiate() as? WithdrawInfoVC else { fatalError("Error instantiating") }
         
        // vc.delegate = delegate
@@ -318,7 +355,8 @@ final class MainRouter {
             vc.mode = .demoExpired
         }
     }
-    
+
+    @discardableResult
     func showSOD(mode: SODVC.SODMode = .outdated, in controller: UIViewController) -> SODVC? {
         guard let vc = SODVC.instantiate() as? SODVC else { return nil }
         

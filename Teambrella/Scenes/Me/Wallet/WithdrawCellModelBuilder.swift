@@ -17,8 +17,12 @@
 import Foundation
 
 class WithdrawModelBuilder {
+    func infoModel(amount: Ether, reserved: Ether, available: Ether, currencyRate: Double) -> WalletInfoCellModel {
+        return WalletInfoCellModel(amount: amount, reserved: reserved, available: available, currencyRate: currencyRate)
+    }
+
     func detailsModel(maxAmount: Double) -> WithdrawDetailsCellModel {
-        return WithdrawDetailsCellModel(amountPlaceholder: "Max \(String.truncatedNumber(maxAmount)) mETH")
+        return WithdrawDetailsCellModel(amountPlaceholder: "Max \(String(Int(maxAmount))) mETH")
     }
     
     func modelFrom(transaction: WithdrawTx) -> WithdrawTransactionCellModel {
@@ -29,7 +33,7 @@ class WithdrawModelBuilder {
         return WithdrawTransactionCellModel(topText: dateText,
                                             isNew: transaction.isNew,
                                             bottomText: transaction.toAddress,
-                                            amountText: String(format: "%.2f", transaction.amount * 1000))
+                                            amountText: String(format: "%.2f", MEth(transaction.amount).value))
     }
     
 }
@@ -59,6 +63,14 @@ struct WithdrawTransactionCellModel: WithdrawCellModel {
     let amountText: String
 }
 
+struct WalletInfoCellModel: WithdrawCellModel {
+    let amount: Ether
+    let reserved: Ether
+    let available: Ether
+    let currencyRate: Double
+    
+}
+
 struct WithdrawCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: WithdrawCellModel) {
         if let cell = cell as? WithdrawDetailsCell, let model = model as? WithdrawDetailsCellModel {
@@ -72,23 +84,47 @@ struct WithdrawCellBuilder {
             cell.cryptoAmountTextField.text = model.amountValue
             cell.submitButton.setTitle(model.buttonTitle, for: .normal)
             
-//            cell.cryptoAmountTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
-//            cell.cryptoAmountTextField.text = model.amountValue
-//            cell.cryptoAmountTextField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
-//            // cell.cryptoAmountTextField.tag = indexPath.row
-//            cell.cryptoAmountTextField.removeTarget(reportVC, action: nil, for: .allEvents)
-//            cell.cryptoAmountTextField.addTarget(delegate, action: #selector(ReportVC.textFieldDidChange),
-//                                                 for: .editingChanged)
-//            cell.cryptoAddressTextView.text = model.toValue
-//            // cell.cryptoAddressTextView.tag = indexPath.row
-//            cell.cryptoAddressTextView.delegate = delegate
-//            cell.cryptoAddressTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            //          cell.cryptoAmountTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
+            //            cell.cryptoAmountTextField.text = model.amountValue
+            //            cell.cryptoAmountTextField.tintColor = cell.textField.tintColor.withAlphaComponent(1)
+            //            // cell.cryptoAmountTextField.tag = indexPath.row
+            //            cell.cryptoAmountTextField.removeTarget(reportVC, action: nil, for: .allEvents)
+            //            cell.cryptoAmountTextField.addTarget(delegate, action: #selector(ReportVC.textFieldDidChange),
+            //                                                 for: .editingChanged)
+            //            cell.cryptoAddressTextView.text = model.toValue
+            //            // cell.cryptoAddressTextView.tag = indexPath.row
+            //            cell.cryptoAddressTextView.delegate = delegate
+            //          cell.cryptoAddressTextView.isInAlertMode = reportVC.isInCorrectionMode ? !model.isValid : false
             
         } else if let cell = cell as? WithdrawCell, let model = model as? WithdrawTransactionCellModel {
             cell.upperLabel.text = model.topText
             cell.lowerLabel.text = model.bottomText
             cell.indicatorView.isHidden = !model.isNew
             cell.rightLabel.text = model.amountText
+        } else if let cell = cell as? WalletInfoCell, let model = model as? WalletInfoCellModel {
+            populateWalletInfo(cell: cell, model: model)
         }
+    }
+    
+    private static func populateWalletInfo(cell: WalletInfoCell, model: WalletInfoCellModel) {
+        cell.numberBar.isBottomLineVisible = false
+        cell.amount.text = String.formattedNumber(MEth(model.amount).value)
+        cell.numberBar.left?.verticalStackView.alignment = .leading
+        cell.numberBar.right?.verticalStackView.alignment = .leading
+        cell.currencyLabel.text = service.session?.cryptoCoin.code
+        if let team = service.session?.currentTeam {
+            let fiatAmount = model.amount.value * model.currencyRate
+            cell.auxillaryAmount.text = String.formattedNumber(fiatAmount) + " " + team.currency
+        }
+        
+        cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
+        cell.numberBar.left?.amountLabel.text = String(Int(MEth(model.reserved).value))
+        cell.numberBar.left?.currencyLabel.text = service.session?.cryptoCoin.code
+        cell.numberBar.left?.isPercentVisible = false
+        
+        cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
+        cell.numberBar.right?.amountLabel.text = String(Int(MEth(model.available).value))
+        cell.numberBar.right?.currencyLabel.text = service.session?.cryptoCoin.code
+        cell.numberBar.right?.isPercentVisible = false
     }
 }

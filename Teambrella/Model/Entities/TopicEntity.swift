@@ -20,51 +20,43 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct TopicEntity: Topic {
+struct TopicEntity: Decodable {
     let id: String
-    let lastUpdated: Int64
     
-    let originalPostText: String
+    let originalPostText: SaneText
     let topPosterAvatars: [String]
     let posterCount: Int
     var unreadCount: Int
     var minutesSinceLastPost: Int
-    
-    var posts: [Post]
+    let smallPhoto: String?
     
     var description: String {
-        return "TopicEntity id: \(id); posts: \(posts.count)"
+        return "TopicEntity id: \(id)"
     }
-    
-    init(json: JSON) {
-        id = json["TopicId"].stringValue
-        lastUpdated = json["LastUpdated"].int64Value
-        
-        originalPostText = json["OriginalPostText"].stringValue
-        topPosterAvatars = json["TopPosterAvatars"].arrayObject as? [String] ?? []
-        posterCount = json["PosterCount"].intValue
-        unreadCount = json["UnreadCount"].intValue
-        minutesSinceLastPost = json["SinceLastPostMinutes"].intValue
-        
-        posts = PostFactory.posts(with: json["Posts"]) ?? []
+
+    mutating func update(with claimUpdate: ClaimVoteUpdate.DiscussionPartUpdate) {
+        unreadCount = claimUpdate.unreadCount
+        minutesSinceLastPost = claimUpdate.minutesSinceLastPost
     }
-    
+
     init(id: String) {
         self.id = id
-        lastUpdated = 0
-        originalPostText = ""
+        originalPostText = SaneText.empty
         topPosterAvatars = []
         posterCount = 0
         unreadCount = 0
         minutesSinceLastPost = 0
-        posts = []
+        smallPhoto = nil
     }
-}
 
-struct TopicFactory {
-    static func topic(with json: JSON) -> Topic {
-        return TopicEntity(json: json)
+    enum CodingKeys: String, CodingKey {
+        case id = "TopicId"
+        case originalPostText = "OriginalPostText"
+        case topPosterAvatars = "TopPosterAvatars"
+        case posterCount = "PosterCount"
+        case unreadCount = "UnreadCount"
+        case minutesSinceLastPost = "SinceLastPostMinutes"
+        case smallPhoto = "SmallPhoto"
     }
 }

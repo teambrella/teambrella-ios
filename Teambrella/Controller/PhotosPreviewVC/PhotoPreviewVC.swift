@@ -19,7 +19,6 @@
  */
 //
 
-import SnapKit
 import UIKit
 
 class PhotoPreviewVC: UICollectionViewController {

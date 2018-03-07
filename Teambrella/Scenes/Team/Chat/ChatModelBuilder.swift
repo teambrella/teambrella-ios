@@ -31,13 +31,13 @@ class ChatModelBuilder {
     
     func unsentModel(fragments: [ChatFragment], id: String) -> ChatTextUnsentCellModel {
         let heights = heightCalculator.heights(for: fragments)
-        let myName = service.session?.currentUserName ?? ""
+        let myName = service.session?.currentUserName ?? Name.empty
         return  ChatTextUnsentCellModel(fragments: fragments,
-                                                     fragmentHeights: heights,
-                                                     userName: myName,
-                                                     date: Date(),
-                                                     id: id,
-                                                     isFailed: false)
+                                        fragmentHeights: heights,
+                                        userName: myName,
+                                        date: Date(),
+                                        id: id,
+                                        isFailed: false)
     }
     
     func separatorModelIfNeeded(firstModel: ChatCellModel, secondModel: ChatCellModel) -> ChatCellModel? {
@@ -51,36 +51,24 @@ class ChatModelBuilder {
                     isClaim: Bool,
                     isTemporary: Bool) -> [ChatCellModel] {
         var result: [ChatCellModel] = []
-   
+
         for item in chatItems {
             let fragments = fragmentParser.parse(item: item)
             var isMy = false
             service.session?.currentUserID.map { isMy = item.userID == $0 }
             
-            let name: String
-            let avatar: String
+            let name: Name
+            let avatar: Avatar
             if isMy == true {
-                name = "General.you".localized
-                avatar = service.session?.currentUserAvatar ?? ""
+                name = Name(fullName: "General.you".localized)
+                avatar = service.session?.currentUserAvatar ?? Avatar.none
             } else {
-                name = item.name
-                avatar = item.avatar
+                name = item.teammate?.name ?? Name.empty
+                avatar = item.teammate?.avatar ?? Avatar.none
             }
             
             let date = item.created
-           
-            var rateString: String?
-            if showRate {
-                if let rate = item.vote {
-                rateString = isClaim
-                    ? "Team.Chat.TextCell.voted_format".localized(String.truncatedNumber(rate * 100))
-                    : "Team.Chat.TextCell.Application.voted_format".localized(String.formattedNumber(rate))
-                } else {
-                    rateString = "Team.Chat.TextCell.notVoted".localized
-                }
-            } else {
-                rateString = nil
-            }
+            let rateString = rateText(rate: item.teammate?.vote, showRate: showRate, isClaim: isClaim)
             
             let model = ChatTextCellModel(entity: item,
                                           fragments: fragments,
@@ -94,6 +82,22 @@ class ChatModelBuilder {
             result.append(model)
         }
         return result
+    }
+
+    func rateText(rate: Double?, showRate: Bool, isClaim: Bool) -> String? {
+        let rateString: String?
+        if showRate {
+            if let rate = rate {
+                rateString = isClaim
+                    ? "Team.Chat.TextCell.voted_format".localized(String.truncatedNumber(rate * 100))
+                    : "Team.Chat.TextCell.Application.voted_format".localized(String.formattedNumber(rate))
+            } else {
+                rateString = "Team.Chat.TextCell.notVoted".localized
+            }
+        } else {
+            rateString = nil
+        }
+        return rateString
     }
     
 }

@@ -24,7 +24,7 @@ import Kingfisher
 
 struct WalletCellBuilder {
     static var currencyRate: Double = 0.0
-    static var balance: Double = 0.0
+    static var balance: MEth = MEth.empty
     
     static func registerCells(in collectionView: UICollectionView) {
         collectionView.register(WalletHeaderCell.nib, forCellWithReuseIdentifier: WalletHeaderCell.cellID)
@@ -59,55 +59,40 @@ struct WalletCellBuilder {
     }
     
     private static func populateHeader(cell: WalletHeaderCell, model: WalletHeaderCellModel) {
-        cell.numberBar.isBottomLineVisible = false
-        cell.amount.text = String.formattedNumber(model.amount * 1000)
-        balance = model.amount * 1000
-        
-        cell.numberBar.left?.titleLabel.text = "Me.WalletVC.leftBrick.title".localized
-        cell.numberBar.left?.amountLabel.text = model.reserved < 0.1
-            ? String.formattedNumber(model.reserved * 1000)
-            : String.truncatedNumber(model.reserved * 1000)
-        cell.numberBar.left?.isBadgeVisible = false
-        
-        cell.numberBar.right?.titleLabel.text = "Me.WalletVC.rightBrick.title".localized
-        cell.numberBar.right?.amountLabel.text = model.available < 0.1
-            ? String.formattedNumber(model.available * 1000)
-            : String.truncatedNumber(model.available * 1000)
-        cell.numberBar.right?.isBadgeVisible = false
+        cell.amount.text = String.formattedNumber(MEth(model.amount).value)
+        balance = MEth(model.amount)
         
         cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
-        cell.currencyLabel.text = service.session?.cryptoCurrency.coinCode
+        cell.currencyLabel.text = service.session?.cryptoCoin.code
         currencyRate = model.currencyRate
         if let team = service.session?.currentTeam {
-            cell.auxillaryAmount.text = String.formattedNumber(model.amount * currencyRate) + " " + team.currency
+            cell.auxillaryAmount.text = String.formattedNumber(model.amount.value * currencyRate) + " " + team.currency
         }
     }
     
     private static func populateFunding(cell: WalletFundingCell, model: WalletFundingCellModel) {
-        cell.headerLabel.text = balance > 0
-            ? "Me.WalletVC.fundingCell.additionalTitle".localized
-            : "Me.WalletVC.fundingCell.title".localized
-        cell.upperNumberView.titleLabel.text = "Me.WalletVC.upperBrick.title".localized
-        cell.upperNumberView.amountLabel.text = String.formattedNumber(model.maxCoverageFunding * 1000)
-        cell.upperNumberView.isBadgeVisible = false
+        cell.headerLabel.text = "Me.WalletVC.fundingCell.title".localized
         if let team = service.session?.currentTeam {
-            cell.upperCurrencyLabel.text =
-                String.formattedNumber(model.maxCoverageFunding * currencyRate) + " " + team.currency
             cell.lowerCurrencyLabel.text =
-                String.formattedNumber(model.uninterruptedCoverageFunding * currencyRate) + " " + team.currency
+                String.formattedNumber(model.uninterruptedCoverageFunding.value * currencyRate) + " " + team.currency
         }
+        cell.lowerNumberView.verticalStackView.alignment = .leading
         cell.lowerNumberView.titleLabel.text = "Me.WalletVC.lowerBrick.title".localized
-        cell.lowerNumberView.amountLabel.text = String.formattedNumber(model.uninterruptedCoverageFunding * 1000)
+        cell.lowerNumberView.amountLabel.text = String.formattedNumber(MEth(model.uninterruptedCoverageFunding).value)
+        cell.lowerNumberView.isPercentVisible = false
         cell.lowerNumberView.isBadgeVisible = false
         cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)
     }
     
     private static func populateButtons(cell: WalletButtonsCell, model: WalletButtonsCellModel, delegate: WalletVC) {
         cell.topViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
-        cell.imagesStack.setAvatars(images: model.avatarsPreview)
+        let avatars = model.avatarsPreview.flatMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
+        let maxAvatarsStackCount = 4
+        let otherVotersCount = model.avatars.count - maxAvatarsStackCount + 1
+        let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil
+        cell.imagesStack.set(images: avatars, label: label, max: maxAvatarsStackCount)
         cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
         cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
-        cell.quantityLabel.text = String(model.avatars.count)
         cell.tapMiddleViewRecognizer.removeTarget(delegate, action: nil)
         cell.tapMiddleViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapTransactions))
         cell.tapTopViewRecognizer.removeTarget(delegate, action: nil)

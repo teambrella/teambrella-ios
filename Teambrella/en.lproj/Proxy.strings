@@ -6,32 +6,35 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Proxy.MyProxiesVC.indicatorTitle"    = "My Proxies";
-"Proxy.ProxyForVC.indicatorTitle"     = "Proxy For";
-"Proxy.UserIndexVC.indicatorTitle"    = "Rating";
-"Proxy.SortVC.SortByHeader"           = "SORT BY";
-"Proxy.SortVC.Cell.Rating"            = "Rating";
-"Proxy.SortVC.Cell.Rating.HighLow"    = "HIGH-LOW";
-"Proxy.SortVC.Cell.Rating.LowHigh"    = "LOW-HIGH";
-"Proxy.SortVC.Cell.Alphabetical"      = "Alphabetical";
-"Proxy.SortVC.Cell.Alphabetical.AZ"   = "A-Z";
-"Proxy.SortVC.Cell.Alphabetical.ZA"   = "Z-A";
+"Proxy.MyProxiesVC.indicatorTitle"      = "My Proxies";
+"Proxy.ProxyForVC.indicatorTitle"       = "I Am Proxy For";
+"Proxy.UserIndexVC.indicatorTitle"      = "Rating";
+"Proxy.SortVC.SortByHeader"             = "SORT BY";
+"Proxy.SortVC.Cell.Rating"              = "Rating";
+"Proxy.SortVC.Cell.Rating.HighLow"      = "HIGH-LOW";
+"Proxy.SortVC.Cell.Rating.LowHigh"      = "LOW-HIGH";
+"Proxy.SortVC.Cell.Alphabetical"        = "Alphabetical";
+"Proxy.SortVC.Cell.Alphabetical.AZ"     = "A-Z";
+"Proxy.SortVC.Cell.Alphabetical.ZA"     = "Z-A";
 
-"Proxy.ProxyForVC.header"             = "TOTAL COMMISSION";
-"Proxy.ProxyForVC.subtitle"           = "WHO YOU'RE A PROXY FOR";
-"Proxy.ProxyForCellBuilder.lastVoted" = "LAST VOTED: ";
-"Proxy.MyProxiesVC.infoButton"        = "Do you need some help?";
-"Proxy.MyProxiesVC.decisions"         = "DECISIONS";
-"Proxy.MyProxiesVC.discussions"       = "DISCUSSIONS";
-"Proxy.MyProxiesVC.votingFreq"        = "VOTING FREQ.";
-"Proxy.MyProxiesVC.proxyRank"         = "PROXY RANK";
-"Proxy.UserIndexVC.members"           = "MEMBERS";
-"Proxy.UserIndexVC.proxyRank"         = "PROXY RANK";
+"Proxy.ProxyForVC.header"               = "TOTAL COMMISSION";
+"Proxy.ProxyForVC.subtitle"             = "WHO YOU'RE A PROXY FOR";
+"Proxy.ProxyForCellBuilder.lastVoted"   = "LAST VOTED: ";
+"Proxy.MyProxiesVC.infoButton"          = "Do you need some help?";
+"Proxy.MyProxiesVC.decisions"           = "DECISIONS";
+"Proxy.MyProxiesVC.discussions"         = "DISCUSSIONS";
+"Proxy.MyProxiesVC.votingFreq"          = "VOTING FREQ.";
+"Proxy.MyProxiesVC.proxyRank"           = "PROXY RANK";
+"Proxy.UserIndexVC.allTeamsRating"      = "ALL-TEAMS RATING";
+"Proxy.UserIndexVC.proxyRank"           = "PROXY RANK";
 
-"Proxy.Empty.title"                   = "You don't have Proxy Voters yet";
-"Proxy.Empty.details"                 = "Please consider someone you trust to be your first Proxy Voter.";
-"Proxy.Empty.You.title"               = "You’re not a Proxy Voter for anyone in the team";
-"Proxy.Empty.You.details"             = "You can become a Proxy Voter by gaining trust of other teammates. Post your ideas, opinions and votes.";
+"Proxy.Empty.title"                     = "You don't have Proxy Voters yet";
+"Proxy.Empty.details"                   = "Please consider someone you trust to be your first Proxy Voter.";
+"Proxy.Empty.You.title"                 = "You’re not a Proxy Voter\nfor anyone in the team";
+"Proxy.Empty.You.details"               = "You can become a Proxy Voter\nby gaining trust of other teammates. Post your ideas, opinions and votes.";
 
-"Proxy.UserIndexVC.optButton.title.in" = "Opt Into Rating";
+"Proxy.UserIndexVC.optButton.title.in"  = "Opt Into Rating";
 "Proxy.UserIndexVC.optButton.title.out" = "Opt Out Of Rating";
+
+"Proxy.ProxyForCellBuilder.neverVoted"  = "NEVER VOTED";
+

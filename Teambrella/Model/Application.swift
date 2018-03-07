@@ -17,13 +17,19 @@
 import Foundation
 
 class Application {
+    #if SURILLA
+    let appID: String = "1259298681" //"1294611410"
+    #else
+    let appID: String = "1259298681"
+    #endif
+
     var version: String { return Bundle.main
         .object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "" }
     
     var build: String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "" }
     /// version in format: "ios-0.2.3.64"
     var clientVersion: String { return "ios-\(version).\(build)" }
-    
+
     var uniqueIdentifier: String {
         if let stored = SimpleStorage().string(forKey: .uniqueIdentifier) {
             return stored

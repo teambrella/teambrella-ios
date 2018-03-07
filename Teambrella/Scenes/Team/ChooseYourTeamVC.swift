@@ -118,11 +118,11 @@ extension ChooseYourTeamVC: UITableViewDelegate {
          let model = dataSource[indexPath]
         if let cell = cell as? TeamCell, let model = model as? ChooseYourTeamCellModel {
             cell.teamIcon.showImage(string: model.teamIcon)
-            cell.incomingCount.text = String(model.incomingCount)
-            cell.incomingCount.isHidden = model.incomingCount == 0
+            cell.incomingCount.text = model.incomingCount
+            cell.incomingCount.isHidden = model.incomingCount == ""
             cell.teamName.text = model.teamName
             cell.itemName.text = model.itemName
-            cell.coverage.text = String(model.coverage) + "%"
+            cell.coverage.text = model.coverage
             cell.tick.isHidden = indexPath.row != dataSource.currentTeamIndex
         } else if let cell = cell as? SwitchUserCell, let model = model as? SwitchUserTeamCellModel {
             cell.infoLabel.text = model.name

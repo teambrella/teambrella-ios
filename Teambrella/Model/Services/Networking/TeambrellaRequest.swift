@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
 typealias TeambrellaRequestFailure = (_ error: Error) -> Void
@@ -71,129 +70,154 @@ struct TeambrellaRequest {
     
     // swiftlint:disable:next cyclomatic_complexity
     private func parseReply(serverReply: ServerReply) {
-        // temporary item for compatibility with legacy code
-        let reply = JSON(serverReply.json)
-        switch type {
-        case .timestamp:
-            success(.timestamp)
-        case .teammatesList:
-            if let teammates = TeammateEntityFactory.teammates(from: reply) {
-                success(.teammatesList(teammates))
-            } else {
-                let error = TeambrellaErrorFactory.unknownError()
-                failure?(error)
-                service.error.present(error: error)
-            }
-        case .teammate:
-            if let teammate = TeammateEntityFactory.extendedTeammate(from: reply) {
+        log("Server reply: \(serverReply.json)", type: .serverReply)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.teambrella)
+        decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "PositiveInfinity",
+                                                                        negativeInfinity: "NegativeInfinity",
+                                                                        nan: "NaN")
+        log("Reply type: \(type)", type: .serverReplyStats)
+        do {
+            switch type {
+            case .timestamp:
+                success(.timestamp)
+            case .teammatesList:
+                let list = try decoder.decode(TeammatesList.self, from: serverReply.data)
+                log("my id: \(list.myTeammateID); team: \(list.teamID); count: \(list.teammates.count)",
+                    type: .serverReplyStats)
+                success(.teammatesList(list.teammates))
+            case .teammate:
+                let teammate = try decoder.decode(TeammateLarge.self, from: serverReply.data)
+                log("teammate: \(teammate.basic.id)", type: .serverReplyStats)
                 success(.teammate(teammate))
-            } else {
-                let error = TeambrellaErrorFactory.unknownError()
-                failure?(error)
-                service.error.present(error: error)
-            }
-        case .teams, .demoTeams:
-            let teams = TeamEntity.teams(with: reply["MyTeams"])
-            let invitations = TeamEntity.teams(with: reply["MyInvitations"])
-            let lastSelectedTeam = reply["LastSelectedTeam"].int
-            let userID = reply["UserId"].stringValue
-            let teamsModel = TeamsModel(teams: teams,
-                                        invitations: invitations,
-                                        lastTeamID: lastSelectedTeam,
-                                        userID: userID)
-            success(.teams(teamsModel))
-        case .newPost:
-            success(.newPost(ChatEntity(json: reply)))
-        case .teammateVote:
-            success(.teammateVote(reply))
-        case .registerKey:
-            success(.registerKey)
-        case .coverageForDate:
-            success(.coverageForDate(reply["Coverage"].doubleValue, reply["LimitAmount"].doubleValue))
-        case .setLanguageEn,
-             .setLanguageEs:
-            success(.setLanguage(reply.stringValue))
-        case .claimsList:
-            let claims = ClaimFactory.claims(with: reply)
-            success(.claimsList(claims))
-        case .claim,
-             .newClaim:
-            success(.claim(EnhancedClaimEntity(json: reply)))
-        case .claimVote:
-            success(.claimVote(reply))
-        case .claimUpdates:
-            success(.claimUpdates(reply))
-        case .claimChat,
-             .teammateChat,
-             .feedChat,
-             .newChat,
-             .privateChat,
-             .newPrivatePost:
-            let chat: [ChatEntity]
-            if type == .privateChat || type == .newPrivatePost {
-                chat = PrivateChatAdaptor(json: reply).adaptedMessages
-            } else {
-                chat = ChatEntity.buildArray(from: reply["DiscussionPart"]["Chat"])
-            }
-            let model = ChatModel(json: reply, chat: chat)
-            success(.chat(model))
-        case .teamFeed:
-            guard let pagingInfo = serverReply.paging else {
-                failure?(TeambrellaErrorFactory.wrongReply())
-                return
-            }
-            
-            success(.teamFeed(reply, pagingInfo))
-        case .claimTransactions:
-            success(.claimTransactions(reply.arrayValue.flatMap { ClaimTransactionsCellModel(json: $0) }))
-        case .home:
-            success(.home(reply))
-        case .feedDeleteCard:
-            success(.feedDeleteCard(HomeScreenModel(json: reply)))
-        case .wallet:
-            success(.wallet(WalletEntity(json: reply)))
-        case .walletTransactions:
-            success(.walletTransactions(reply.arrayValue.flatMap { WalletTransactionsCellModel(json: $0) }))
-        case .updates:
-            break
-        case .uploadPhoto:
-            success(.uploadPhoto(reply.arrayValue.first?.string ?? ""))
-        case .myProxy:
-            success(.myProxy(reply.stringValue == "set"))
-        case .myProxies:
-            let models = reply.arrayValue.map { ProxyCellModel(json: $0) }
-            success(.myProxies(models))
-        case .proxyFor:
-            let models = reply["Members"].arrayValue.map { ProxyForCellModel(json: $0) }
-            success(.proxyFor(models, reply["TotalCommission"].doubleValue))
-        case .proxyPosition:
-            success(.proxyPosition)
-        case .proxyRatingList:
-            let models = reply["Members"].arrayValue.map { UserIndexCellModel(json: $0) }
-            success(.proxyRatingList(models, reply["TotalCount"].intValue))
-        case .privateList:
-            let users = reply.arrayValue.map { PrivateChatUser(json: $0) }
-            success(.privateList(users))
-            //        case .privateChat,
-            //             .newPrivatePost:
-            //            success(.privateChat(<#T##[ChatEntity]#>))
-        //            success(.privateChat(PrivateChatAdaptor(json: reply).adaptedMessages))
-        case .withdrawTransactions,
-             .withdraw:
-            if let chunk = WithdrawChunk(json: reply) {
+            case .teams, .demoTeams:
+                let teamsModel = try decoder.decode(TeamsModel.self, from: serverReply.data)
+                log("teamsModel: \(teamsModel)", type: .serverReplyStats)
+                success(.teams(teamsModel))
+            case .newPost:
+                let entity = try decoder.decode(ChatEntity.self, from: serverReply.data)
+                log("chat entity id: \(entity.id)", type: .serverReplyStats)
+                success(.newPost(entity))
+            case .teammateVote:
+                let teamVotingResult = try decoder.decode(TeammateVotingResult.self, from: serverReply.data)
+                log("teammmate voting result id: \(teamVotingResult.id)", type: .serverReplyStats)
+                success(.teammateVote(teamVotingResult))
+            case .registerKey:
+                success(.registerKey)
+            case .coverageForDate:
+                let coverageForDate = try decoder.decode(CoverageForDate.self, from: serverReply.data)
+                success(.coverageForDate(coverageForDate))
+            case .setLanguageEn,
+                 .setLanguageEs:
+                guard let language = serverReply.string else {
+                    log("SetLanguage wrong reply", type: .error)
+                    failure?(TeambrellaErrorFactory.wrongReply())
+                    return
+                }
+
+                log("language: \(language)", type: .serverReplyStats)
+                success(.setLanguage(language))
+            case .claimsList:
+                let claims = try decoder.decode([ClaimEntity].self, from: serverReply.data)
+                log("claims count: \(claims.count)", type: .serverReplyStats)
+                success(.claimsList(claims))
+            case .claim,
+                 .newClaim:
+                let claim = try decoder.decode(ClaimEntityLarge.self, from: serverReply.data)
+                log("claim: \(claim)", type: .serverReplyStats)
+                success(.claim(claim))
+            case .claimVote:
+                let claimUpdate = try decoder.decode(ClaimVoteUpdate.self, from: serverReply.data)
+                log("claim update: \(claimUpdate)", type: .serverReplyStats)
+                success(.claimVote(claimUpdate))
+            case .claimChat,
+                 .teammateChat,
+                 .feedChat,
+                 .newChat,
+                 .privateChat,
+                 .newPrivatePost:
+                let model = try decoder.decode(ChatModel.self, from: serverReply.data)
+                log("ChatModel: \(model)", type: .serverReplyStats)
+                success(.chat(model))
+            case .teamFeed:
+                guard let pagingInfo = serverReply.paging else {
+                    failure?(TeambrellaErrorFactory.noPagingInfo())
+                    return
+                }
+
+                let feed = try decoder.decode([FeedEntity].self, from: serverReply.data)
+                let chunk = FeedChunk(feed: feed, pagingInfo: pagingInfo)
+                log("feed with items count: \(chunk.feed.count)", type: .serverReplyStats)
+                success(.teamFeed(chunk))
+            case .claimTransactions:
+                let models = try decoder.decode([ClaimTransactionsModel].self, from: serverReply.data)
+                log("claim transactions count: \(models.count)", type: .serverReplyStats)
+                success(.claimTransactions(models))
+            case .home:
+                let model = try decoder.decode(HomeModel.self, from: serverReply.data)
+                success(.home(model))
+            case .feedDeleteCard:
+                let model = try decoder.decode(HomeModel.self, from: serverReply.data)
+                success(.feedDeleteCard(model))
+            case .wallet:
+                let model = try decoder.decode(WalletEntity.self, from: serverReply.data)
+                success(.wallet(model))
+            case .walletTransactions:
+                let models = try decoder.decode([WalletTransactionsModel].self, from: serverReply.data)
+                success(.walletTransactions(models))
+            case .updates:
+                break
+            case .uploadPhoto:
+                let photoAddresses = try decoder.decode([String].self, from: serverReply.data)
+                success(.uploadPhoto(photoAddresses.first ?? ""))
+            case .myProxy:
+                guard let string = serverReply.string else {
+                    log("MyProxy wrong reply", type: .error)
+                    failure?(TeambrellaErrorFactory.wrongReply())
+                    return
+                }
+
+                let isGoodReply = string == "Proxy voter is added." || string == "Proxy voter is removed."
+                success(.myProxy(isGoodReply))
+            case .myProxies:
+                let model = try decoder.decode([ProxyCellModel].self, from: serverReply.data)
+                success(.myProxies(model))
+            case .proxyFor:
+                let proxyForEntity = try decoder.decode(ProxyForEntity.self, from: serverReply.data)
+                success(.proxyFor(proxyForEntity))
+            case .proxyPosition:
+                success(.proxyPosition)
+            case .proxyRatingList:
+                let proxyRatingEntity = try decoder.decode(ProxyRatingEntity.self, from: serverReply.data)
+                success(.proxyRatingList(proxyRatingEntity))
+            case .privateList:
+                let model = try decoder.decode([PrivateChatUser].self, from: serverReply.data)
+                success(.privateList(model))
+            case .withdrawTransactions,
+                 .withdraw:
+                let chunk = try decoder.decode(WithdrawChunk.self, from: serverReply.data)
                 success(.withdrawTransactions(chunk))
-            } else {
-                let error = TeambrellaErrorFactory.wrongReply()
-                failure?(error)
-            }
-        case .mute:
-            success(.mute(reply.boolValue))
+            case .mute:
+                guard let bool = serverReply.bool else {
+                    log("Mute wrong reply", type: .error)
+                    failure?(TeambrellaErrorFactory.wrongReply())
+                    return
+                }
+
+                success(.mute(bool))
             case .claimVotesList,
                  .teammateVotesList:
-            
-            print("Not ready")
-        default:
-            break
+                let votesList = try decoder.decode(VotersList.self, from: serverReply.data)
+                success(.votesList(votesList))
+            case .me:
+                let myModel = try decoder.decode(MeModel.self, from: serverReply.data)
+                success(.me(myModel))
+            default:
+                break
+            }
+        } catch {
+            log(error)
+            failure?(error)
         }
     }
     

@@ -27,15 +27,13 @@ class NumberView: UIView, XIBInitable {
         case leading, middle, trailing
     }
     
+    @IBOutlet var verticalStackView: UIStackView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var amountLabel: UILabel!
+    @IBOutlet var currencyContainer: UIView!
     @IBOutlet var currencyLabel: UILabel!
+    @IBOutlet var percentLabel: CurrencyLabel!
     @IBOutlet var badgeLabel: Label!
-    
-    @IBOutlet var currencyToContainerConstraint: NSLayoutConstraint!
-    @IBOutlet var currencyToBadgeConstraint: NSLayoutConstraint!
-    
-    @IBOutlet var currencyCenterConstraint: NSLayoutConstraint!
     
     @IBOutlet var centerXConstraint: NSLayoutConstraint!
     @IBOutlet var leadingXConstraint: NSLayoutConstraint!
@@ -71,24 +69,24 @@ class NumberView: UIView, XIBInitable {
     @IBInspectable var isBadgeVisible: Bool = true {
         didSet {
             badgeLabel.isHidden = !isBadgeVisible
-            currencyToContainerConstraint.isActive = !isBadgeVisible
-            currencyToBadgeConstraint.isActive = isBadgeVisible
         }
     }
     
-    @IBInspectable var isCurrencyOnTop: Bool = true {
+    @IBInspectable var isPercentVisible: Bool = false {
         didSet {
-            currencyLabel.font = isCurrencyOnTop ? UIFont.teambrellaBold(size: 9) : UIFont.teambrellaBold(size: 23)
-            if isCurrencyOnTop {
-                currencyCenterConstraint.constant = -4
-            } else {
-                currencyCenterConstraint.constant = 0
-            }
+            percentLabel.isHidden = !isPercentVisible
+        }
+    }
+    
+    @IBInspectable var isCurrencyVisible: Bool = true {
+        didSet {
+            currencyLabel.isHidden = !isCurrencyVisible
+            currencyContainer.isHidden = !isCurrencyVisible
         }
     }
     
     func tmpSetup() {
-        currencyLabel.text = service.session?.cryptoCurrency.coinCode
+        currencyLabel.text = service.session?.cryptoCoin.code
         activateAlignmentType()
     }
     

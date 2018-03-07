@@ -32,9 +32,12 @@ class ServicesHandler {
     
     /// internet connection monitoring
     let reachability: ReachabilityService = ReachabilityService()
+
+    /// information about available services
+    let info: InfoMaker = InfoMaker()
     
     /// server interoperability (should be removed from here when all requests will go through DAO)
-    lazy var server = ServerService()
+    lazy var server = ServerService(router: self.router)
     
     /// data access object
     lazy var dao: DAO = ServerDAO()
@@ -44,13 +47,15 @@ class ServicesHandler {
     
     /// errors handling service
     lazy var error: ErrorPresenter = ErrorPresenter()
-    
+
+    /*
     /// logging service
     lazy var log: Log = {
         let log = Log.shared
-        log.logLevel = .all
+        log.logLevel = .none
         return log
     }()
+    */
     
     /// service to store private keys and last user logged in
     var keyStorage: KeyStorage { return KeyStorage.shared }
@@ -76,8 +81,27 @@ class ServicesHandler {
     /// gives the name code of the currency used in the current team (e.g. USD)
     var currencyName: String { return session?.currentTeam?.currency ?? "" }
     
+    var myUserID: String { return session?.currentUserID ?? "" }
+    
     private init() {
         PKHUD.sharedHUD.gracePeriod = 0.5
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(cryptoMalfunction),
+                                               name: .cryptoKeyFailure, object: nil)
+    }
+
+    @objc
+    func cryptoMalfunction() {
+        service.keyStorage.deleteStoredKeys()
+        if let vc = service.router.frontmostViewController {
+            let message =  """
+            Private key that was stored is not a valid BTC key. It will be deleted from the app. Please restart.
+            """
+            let alert = UIAlertController(title: "Fatal Error", message: message, preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "OK", style: .destructive, handler: nil)
+            alert.addAction(cancel)
+            vc.present(alert, animated: true, completion: nil)
+        }
     }
     
 }

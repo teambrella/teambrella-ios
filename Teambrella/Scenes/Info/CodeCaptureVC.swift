@@ -98,7 +98,7 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
-            print("Could not add metadata output")
+            log("Could not add metadata output", type: [.error, .info])
         }
     }
     
@@ -117,7 +117,7 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     }
     
     private func read(string: String) {
-        guard lastReadString != string else { return }
+        guard lastReadString != string && string != "" else { return }
         
         lastReadString = string
         textView.text = string

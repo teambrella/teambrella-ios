@@ -19,12 +19,15 @@ import Foundation
 final class WithdrawDataSource {
     let teamID: Int
     private(set) var isLoading = false
-    private(set) var sections: Int = 1
+    var sections: Int {
+        return 1 + self.transactions.filter { $0.isEmpty == false }.count
+    }
+    //var walletInfo: WalletInfoCellModel
+    var cryptoBalance: Ether = Ether.empty
+    var cryptoReserved: Ether = Ether.empty
+    var currencyRate: Double { return WalletCellBuilder.currencyRate }
     
-    var cryptoBalance: Double = 0.0
-    var cryptoReserved: Double = 0.0
-    
-    var maxMETHAvailable: Double { return (cryptoBalance - cryptoReserved) * 1000 }
+    var maxEthAvailable: Ether { return cryptoBalance - cryptoReserved }
     
     var ethereumAddress: EthereumAddress? {
         didSet {
@@ -34,7 +37,11 @@ final class WithdrawDataSource {
         }
     }
     
-    lazy var detailsModel = { self.modelBuilder.detailsModel(maxAmount: maxMETHAvailable) }()
+    lazy var detailsModel = { self.modelBuilder.detailsModel(maxAmount: MEth(maxEthAvailable).value) }()
+    lazy var infoModel = { self.modelBuilder.infoModel(amount: cryptoBalance,
+                                                       reserved: cryptoReserved,
+                                                       available: maxEthAvailable,
+                                                       currencyRate: currencyRate) }()
     
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
@@ -46,8 +53,8 @@ final class WithdrawDataSource {
                 transactions[1].removeAll()
                 transactions[2].removeAll()
                 
-                cryptoBalance = chunk.cryptoBalance.double
-                cryptoReserved = chunk.cryptoReserved.double
+                cryptoBalance = chunk.cryptoBalance
+                cryptoReserved = chunk.cryptoReserved
                 
                 for tx in chunk.txs {
                     let state = tx.serverTxState
@@ -74,40 +81,35 @@ final class WithdrawDataSource {
     }
     
     func rows(in section: Int) -> Int {
-        guard section > 0 else { return 1 }
-        guard section - 1 < transactions.count else { return 0 }
+        guard section > 0 else { return 2 }
         
-        return transactions[section - 1].count
+        let filtered = transactions.filter { $0.isEmpty == false }
+        guard section - 1 < filtered.count else { return 0 }
+        
+        return filtered[section - 1].count
     }
     
     func headerName(section: Int) -> String? {
+        var headers = ["Me.Wallet.Withdraw.header.queued",
+                       "Me.Wallet.Withdraw.header.inProgress",
+                       "Me.Wallet.Withdraw.header.history"]
+        for (idx, type) in transactions.enumerated().reversed() where type.isEmpty {
+            headers.remove(at: headers.count - 1 - idx)
+        }
         switch section {
         case 0:
             return ""
-        case 1:
-            return transactions[0].isEmpty ? nil : "Me.Wallet.Withdraw.header.queued".localized
-        case 2:
-            return transactions[1].isEmpty ? nil : "Me.Wallet.Withdraw.header.inProgress".localized
-        case 3:
-            return transactions[2].isEmpty ? nil : "Me.Wallet.Withdraw.header.history".localized
         default:
-            return nil
+            return headers[section - 1].localized
         }
     }
     
     func currencyName(section: Int) -> String? {
-        let string = "mETH"
         switch section {
         case 0:
             return ""
-        case 1:
-            return transactions[0].isEmpty ? nil : string
-        case 2:
-            return transactions[1].isEmpty ? nil : string
-        case 3:
-            return transactions[2].isEmpty ? nil : string
         default:
-            return nil
+            return "mETH"
         }
     }
     
@@ -128,38 +130,46 @@ final class WithdrawDataSource {
     }
     
     func withdraw() {
-        guard let amount = Double(detailsModel.amountValue),
+        guard let amount = MEth(string: detailsModel.amountValue),
             let address = EthereumAddress(string: detailsModel.toValue) else { return }
         
         isLoading = true
-        service.dao.withdraw(teamID: teamID, amount: amount / 1000, address: address).observe { [weak self] result in
-            switch result {
-            case let .value(chunk):
-                self?.lastChunk = chunk
-                self?.onUpdate?()
-            case let .error(error):
-                self?.onError?(error)
-            default:
-                break
-            }
-            self?.isLoading = false
+        service.dao.withdraw(teamID: teamID,
+                             amount: Ether(amount).value,
+                             address: address).observe { [weak self] result in
+                                switch result {
+                                case let .value(chunk):
+                                    self?.lastChunk = chunk
+                                    self?.onUpdate?()
+                                case let .error(error):
+                                    self?.onError?(error)
+                                default:
+                                    break
+                                }
+                                self?.isLoading = false
         }
+    }
+    
+    func cleanWithdrawDetails() {
+        detailsModel.amountValue = ""
+        detailsModel.toValue = ""
+    }
+    
+    func createCellModels(with wallet: WalletEntity) {
+        //walletInfo = WalletInfoCellModel(currencyRate: wallet.currencyRate)
     }
     
     // MARK: Private
     
     private func addQueued(transaction: WithdrawTx) {
-        if transactions[0].isEmpty { sections += 1 }
         transactions[0].append(transaction)
     }
     
     private func addProcessing(transaction: WithdrawTx) {
-        if transactions[1].isEmpty { sections += 1 }
         transactions[1].append(transaction)
     }
     
     private func addHistory(transaction: WithdrawTx) {
-        if transactions[2].isEmpty { sections += 1 }
         transactions[2].append(transaction)
     }
     
@@ -169,8 +179,13 @@ final class WithdrawDataSource {
         guard indexPath.section < sections else { return nil }
         guard indexPath.row < rows(in: indexPath.section) else { return nil }
         
-        if indexPath.section == 0 { return detailsModel }
-        let transaction = transactions[indexPath.section - 1][indexPath.row]
+        if indexPath.section == 0 && indexPath.row == 0 {
+            return infoModel
+        } else if indexPath.section == 0 && indexPath.row == 1 {
+            return detailsModel
+        }
+        let filtered = transactions.filter { $0.isEmpty == false }
+        let transaction = filtered[indexPath.section - 1][indexPath.row]
         return modelBuilder.modelFrom(transaction: transaction)
     }
 }

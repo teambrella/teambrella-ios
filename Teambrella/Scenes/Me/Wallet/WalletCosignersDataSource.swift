@@ -20,7 +20,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 class WalletCosignersDataSource {
     var items: [CosignerEntity] = []
@@ -31,6 +30,7 @@ class WalletCosignersDataSource {
     var onError: ((Error) -> Void)?
     var offset = 0
     var isLoading = false
+    var isEmpty: Bool { return items.isEmpty }
     
     init() {
     }
@@ -51,11 +51,6 @@ class WalletCosignersDataSource {
         onUpdate?()
         isLoading = false
     }
-    
-//    func updateSilently() {
-//        isSilentUpdate = true
-//        loadData()
-//    }
     
     subscript(indexPath: IndexPath) -> CosignerEntity {
         let model = items[indexPath.row]

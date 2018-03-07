@@ -77,9 +77,9 @@ class ClaimChatStrategy: ChatDatasourceStrategy {
     var canLoadBackward: Bool = true
     // var isRateVisible: Bool = true
     
-    var claim: EnhancedClaimEntity
+    var claim: ClaimEntityLarge
     
-    init(context: EnhancedClaimEntity) {
+    init(context: ClaimEntityLarge) {
         claim = context
     }
     
@@ -91,7 +91,7 @@ class ClaimChatStrategy: ChatDatasourceStrategy {
     
     func updatedMessageBody(body: RequestBody) -> RequestBody {
         var body = body
-        body.payload?["TopicId"] =  claim.topicID
+        body.payload?["TopicId"] =  claim.discussion.id
         return body
     }
     
@@ -105,9 +105,9 @@ class TeammateChatStrategy: ChatDatasourceStrategy {
     var canLoadBackward: Bool = true
     // var isRateVisible: Bool = true
     
-    var teammate: ExtendedTeammateEntity
+    var teammate: TeammateLarge
     
-    init(context: ExtendedTeammateEntity) {
+    init(context: TeammateLarge) {
         teammate = context
     }
     
@@ -127,7 +127,7 @@ class TeammateChatStrategy: ChatDatasourceStrategy {
 }
 
 class FeedChatStrategy: ChatDatasourceStrategy {
-    var title: String { return feedEntity.chatTitle ?? feedEntity.modelOrName }
+    var title: String { return feedEntity.chatTitle ?? feedEntity.modelOrName ?? "" }
     var requestType: TeambrellaRequestType {
         switch feedEntity.itemType {
         case .claim:
@@ -173,7 +173,7 @@ class FeedChatStrategy: ChatDatasourceStrategy {
 }
 
 class HomeChatStrategy: ChatDatasourceStrategy {
-    var title: String { return card.chatTitle ?? card.modelOrName }
+    var title: String { return card.chatTitle ?? card.name.short }
     var requestType: TeambrellaRequestType {
         switch card.itemType {
         case .claim:
@@ -189,9 +189,9 @@ class HomeChatStrategy: ChatDatasourceStrategy {
     var canLoadBackward: Bool = true
     // var isRateVisible: Bool = true
     
-    var card: HomeScreenModel.Card
+    var card: HomeCardModel
     
-    init(context: HomeScreenModel.Card) {
+    init(context: HomeCardModel) {
         card = context
     }
     
@@ -267,7 +267,7 @@ class RemoteChatStrategy: ChatDatasourceStrategy {
 }
 
 class ChatStrategy: ChatDatasourceStrategy {
-    var title: String { return chatModel.title }
+    var title: String { return chatModel.basic?.title ?? "" }
     var requestType: TeambrellaRequestType { return .feedChat }
     //    var createChatType: TeambrellaRequestType = .newChat
     var postType: TeambrellaRequestType = .newPost
@@ -282,14 +282,14 @@ class ChatStrategy: ChatDatasourceStrategy {
     
     func updatedChatBody(body: RequestBody) -> RequestBody {
         var body = body
-        body.payload?["TopicId"] = chatModel.topicID
+        body.payload?["TopicId"] = chatModel.discussion.topicID
         
         return body
     }
     
     func updatedMessageBody(body: RequestBody) -> RequestBody {
         var body = body
-        body.payload?["TopicId"] = chatModel.topicID
+        body.payload?["TopicId"] = chatModel.discussion.topicID
         return body
     }
     

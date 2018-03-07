@@ -24,7 +24,7 @@ import UIKit
 
 struct TeammateCellBuilder {
     static func populate(cell: UICollectionViewCell,
-                         with teammate: ExtendedTeammateEntity,
+                         with teammate: TeammateLarge,
                          controller: TeammateProfileVC) {
         switch cell {
         case let cell as TeammateObjectCell:
@@ -47,15 +47,19 @@ struct TeammateCellBuilder {
     }
     
     private static func populateMeCell(cell: MeCell,
-                                       with teammate: ExtendedTeammateEntity,
+                                       with teammate: TeammateLarge,
                                        controller: TeammateProfileVC?) {
         cell.avatar.showAvatar(string: teammate.basic.avatar)
         cell.nameLabel.text = teammate.basic.name.entire
-        cell.infoLabel.text = teammate.basic.city.uppercased()
+        if let city = teammate.basic.city {
+            cell.infoLabel.text = city.uppercased()
+        } else {
+            cell.infoLabel.text = ""
+        }
     }
     
     private static func populateSummary(cell: TeammateSummaryCell,
-                                        with teammate: ExtendedTeammateEntity,
+                                        with teammate: TeammateLarge,
                                         controller: UIViewController) {
         /*
          cell.title.text = teammate.basic.name.entire
@@ -86,8 +90,51 @@ struct TeammateCellBuilder {
          */
     }
     
+    private static func setVote(votingCell: VotingRiskCell,
+                                voting: TeammateLarge.VotingInfo,
+                                controller: TeammateProfileVC) {
+        let maxAvatarsStackCount = 4
+        let otherVotersCount = voting.votersCount - maxAvatarsStackCount + 1
+        let label: String? = otherVotersCount > 0 ? "+" + String(otherVotersCount) : nil
+        votingCell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars, label: label,
+                                                   max: maxAvatarsStackCount)
+        if let risk = voting.riskVoted {
+            votingCell.teamVoteValueLabel.text = String(format: "%.2f", risk)
+            votingCell.showTeamNoVote(risk: risk)
+        } else {
+            votingCell.teamVoteValueLabel.text = "..."
+            votingCell.showTeamNoVote(risk: nil)
+        }
+        
+        if let myVote = voting.myVote {
+            votingCell.layoutIfNeeded()
+            votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
+            let offset = controller.offsetFrom(risk: myVote, maxValue: votingCell.maxValue)
+            votingCell.scrollTo(offset: offset, silently: true)
+            votingCell.showYourNoVote(risk: myVote)
+        } else {
+            controller.resetVote(cell: votingCell)
+            votingCell.showYourNoVote(risk: nil)
+        }
+        let currentChosenRisk = controller.riskFrom(offset: votingCell.collectionView.contentOffset.x,
+                                                    maxValue: votingCell.maxValue)
+        controller.updateAverages(cell: votingCell,
+                                  risk: currentChosenRisk)
+        
+        var prefix = ""
+        if voting.remainingMinutes < 60 {
+            prefix = "Team.Claim.minutes_format".localized(voting.remainingMinutes)
+        } else if voting.remainingMinutes < 60 * 24 {
+            prefix = "Team.Claim.hours_format".localized(voting.remainingMinutes / 60)
+        } else {
+            prefix = "Team.Claim.days_format".localized(voting.remainingMinutes / (60 * 24))
+        }
+        votingCell.timeLabel.text = prefix.uppercased() + " " +
+            DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
+    }
+    
     private static func populateVote(cell: VotingRiskCell,
-                                     with teammate: ExtendedTeammateEntity,
+                                     with teammate: TeammateLarge,
                                      controller: TeammateProfileVC) {
         if let riskScale = teammate.riskScale, controller.isRiskScaleUpdateNeeded == true {
             cell.updateWithRiskScale(riskScale: riskScale)
@@ -97,85 +144,69 @@ struct TeammateCellBuilder {
         cell.layoutIfNeeded()
         cell.middleAvatar.showAvatar(string: teammate.basic.avatar)
         
-        if let voting = teammate.voting {
-            let label: String? = voting.votersCount > 0 ? String(voting.votersCount) : nil
-            cell.teammatesAvatarStack.setAvatars(images: voting.votersAvatars,
-                                                 label: label,
-                                                 max: nil)
-            if let risk = voting.riskVoted {
-                cell.teamVoteValueLabel.text =  String.formattedNumber(risk)
-                cell.showTeamNoVote(risk: risk)
-            } else {
-                cell.teamVoteValueLabel.text = "..."
-                cell.showTeamNoVote(risk: nil)
+        if SimpleStorage().bool(forKey: .swipeHelperWasShown) {
+            cell.swipeToVoteView.isHidden = true
+        } else {
+            cell.swipeToVoteView.isHidden = false
+            cell.swipeToVoteView.onInteraction = {
+                cell.swipeToVoteView.removeFromSuperview()
+                SimpleStorage().store(bool: true, forKey: .swipeHelperWasShown)
             }
-            
-            if let myVote = voting.myVote {
-                cell.layoutIfNeeded()
-                cell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
-                let offset = controller.offsetFrom(risk: myVote, maxValue: cell.maxValue)
-                cell.scrollTo(offset: offset, silently: true)
-                cell.showYourNoVote(risk: myVote)
-            } else {
-                controller.resetVote(cell: cell)
-                cell.showYourNoVote(risk: nil)
-            }
-            let currentChosenRisk = controller.riskFrom(offset: cell.collectionView.contentOffset.x,
-                                                        maxValue: cell.maxValue)
-            controller.updateAverages(cell: cell,
-                                      risk: currentChosenRisk)
-            
-            let timeString = DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
-            cell.timeLabel.text = "Team.VotingRiskVC.ends".localized(timeString)
-            
         }
         
+        if let voting = teammate.voting {
+            setVote(votingCell: cell, voting: voting, controller: controller)
+        }
         cell.delegate = controller
-        
-        cell.resetVoteButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.resetVoteButton.addTarget(controller,
-                                       action: #selector(TeammateProfileVC.tapResetVote),
-                                       for: .touchUpInside)
-        
-        cell.othersButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.othersButton.addTarget(controller,
-                                    action: #selector(TeammateProfileVC.tapShowOtherVoters),
-                                    for: .touchUpInside)
-        
     }
     
+    // swiftlint:disable:next function_body_length
     private static func populateObject(cell: TeammateObjectCell,
-                                       with teammate: ExtendedTeammateEntity,
+                                       with teammate: TeammateLarge,
                                        controller: TeammateProfileVC) {
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
         let owner: String
         if let me = service.session?.currentUserID, me == teammate.basic.id {
-            owner = "Main.my".localized
+            owner = "General.posessiveFormat.my".localized
+            cell.titleLabel.text = "General.unitedFormat.my".localized(owner, type.localizedCoverageObject)
         } else {
-            owner = teammate.basic.gender == .male ? "Main.his".localized : "Main.her".localized
+            owner = teammate.basic.gender == .male ?
+                "General.posessiveFormat.his".localized(teammate.basic.name.first.uppercased()) :
+                "General.posessiveFormat.her".localized(teammate.basic.name.first.uppercased())
+            cell.titleLabel.text = "General.unitedFormat".localized(owner, type.localizedCoverageObject)
         }
-        cell.titleLabel.text = owner.uppercased() + " " + type.localizedCoverageObject
         cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
-        cell.detailsLabel.text = teammate.coverageType.localizedCoverageType
+        cell.detailsLabel.text = teammate.teamPart?.coverageType.localizedCoverageType
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
             left.currencyLabel.text = service.currencyName
+            left.isCurrencyVisible = true
+            left.isPercentVisible = false
+            left.isBadgeVisible = false
         }
-        if let middle = cell.numberBar.middle {
+        if let middle = cell.numberBar.middle { // math abs!!!
             middle.titleLabel.text = "Team.Teammates.net".localized
-            middle.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.totallyPaidAmount)
+            let test = teammate.basic.totallyPaidAmount > 0 ?
+                Int(teammate.basic.totallyPaidAmount + 0.5) :
+                Int(teammate.basic.totallyPaidAmount - 0.5)
+            middle.amountLabel.text = String(test)
             middle.currencyLabel.text = service.currencyName
+            middle.isCurrencyVisible = true
+            middle.isPercentVisible = false
+            middle.isBadgeVisible = false
         }
         if let right = cell.numberBar.right {
-            right.titleLabel.text = "Team.TeammateCell.riskFactor".localized
-            right.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.basic.risk)
+            right.titleLabel.text = "Team.TeammateCell.risk".localized
+            right.amountLabel.text = String(format: "%.2f", teammate.basic.risk)
             let avg = String.truncatedNumber(teammate.basic.averageRisk)
             right.badgeLabel.text = avg + " AVG"
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
+            right.isCurrencyVisible = false
+            right.isPercentVisible = false
         }
         
         if let imageString = teammate.object.smallPhotos.first {
@@ -198,16 +229,22 @@ struct TeammateCellBuilder {
     }
     
     private static func populateStats(cell: TeammateStatsCell,
-                                      with teammate: ExtendedTeammateEntity,
+                                      with teammate: TeammateLarge,
                                       controller: TeammateProfileVC) {
         let stats = teammate.stats
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
         
         cell.weightTitleLabel.text = "Team.TeammateCell.weight".localized
-        cell.weightValueLabel.text = ValueToTextConverter.textFor(amount: stats.weight)
+        if stats.weight < 1 {
+            cell.weightValueLabel.text = String(format: "%.2f", stats.weight)
+        } else if stats.weight < 10 {
+            cell.weightValueLabel.text = String(format: "%.1f", stats.weight)
+        } else {
+            cell.weightValueLabel.text = String(Int(stats.weight))
+        }
         
         cell.proxyRankTitleLabel.text = "Team.TeammateCell.proxyRank".localized
-        cell.proxyRankValueLabel.text = ValueToTextConverter.textFor(amount: stats.proxyRank)
+        cell.proxyRankValueLabel.text = String(format: "%.1f", stats.proxyRank)
         /*
          if let left = cell.numberBar.left {
          left.amountLabel.textAlignment = .center
@@ -248,21 +285,24 @@ struct TeammateCellBuilder {
         cell.addButton.addTarget(self, action: #selector(TeammateProfileVC.tapAddToProxy), for: .touchUpInside)
     }
     
-    private static func populateDiscussion(cell: DiscussionCell, with stats: Topic, avatar: String) {
+    private static func populateDiscussion(cell: DiscussionCell, with stats: TopicEntity, avatar: String) {
         cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: avatar)))
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
-        switch stats.minutesSinceLastPost {
+        let minutesSinceLastPost = stats.minutesSinceLastPost
+        switch minutesSinceLastPost {
         case 0:
             cell.timeLabel.text = "Team.TeammateCell.timeLabel.justNow".localized
         case 1..<60:
-            cell.timeLabel.text = "Team.TeammateCell.timeLabel.minutes_format_i".localized(stats.minutesSinceLastPost)
-        case 60...(60 * 24):
-            let hours = stats.minutesSinceLastPost / 60
-            cell.timeLabel.text = "Team.TeammateCell.timeLabel.hours_format_i".localized(hours)
+            cell.timeLabel.text = "Team.Ago.minutes_format".localized(minutesSinceLastPost)
+        case 60..<(60 * 24):
+            cell.timeLabel.text = "Team.Ago.hours_format".localized(minutesSinceLastPost / 60)
+        case (60 * 24)...(60*24*7):
+            cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
         default:
-            cell.timeLabel.text = "Team.TeammateCell.timeLabel.longAgo".localized
+            let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
+            cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date)
         }
-        let message = TextAdapter().parsedHTML(string: stats.originalPostText)
+        let message = stats.originalPostText.sane
         cell.textLabel.text = message
         cell.unreadCountView.text = String(stats.unreadCount)
         cell.unreadCountView.isHidden = stats.unreadCount == 0
@@ -273,18 +313,20 @@ struct TeammateCellBuilder {
         cell.discussionLabel.text = "Team.TeammateCell.discussion".localized
     }
     
-    private static func populateCompactDiscussion(cell: DiscussionCompactCell, with stats: Topic, avatar: String) {
+    private static func populateCompactDiscussion(cell: DiscussionCompactCell,
+                                                  with stats: TopicEntity,
+                                                  avatar: String) {
         cell.avatarView.showAvatar(string: avatar)
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
         cell.timeLabel.text = DateProcessor().stringFromNow(seconds: stats.minutesSinceLastPost).uppercased()
-        let message = TextAdapter().parsedHTML(string: stats.originalPostText)
+        let message = stats.originalPostText.sane
         cell.textLabel.text = message
         cell.unreadCountView.text = String(stats.unreadCount)
         cell.unreadCountView.isHidden = stats.unreadCount == 0
     }
     
     private static func populateContact(cell: TeammateContactCell,
-                                        with teammate: ExtendedTeammateEntity,
+                                        with teammate: TeammateLarge,
                                         controller: TeammateProfileVC) {
         cell.headerLabel.text = "Team.TeammateCell.contact".localized
         cell.tableView.delegate = controller

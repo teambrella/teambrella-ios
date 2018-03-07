@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AkkuratPro-Bold.otf">
+            <string>AkkuratPro-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SwipeToVote" customModule="Surilla" customModuleProvider="target">
+            <connections>
+                <outlet property="backView" destination="Bfh-le-rFh" id="KFC-cO-rNN"/>
+                <outlet property="imageView" destination="cd7-Wd-XZY" id="emJ-Bd-rvn"/>
+                <outlet property="label" destination="Gdk-Dc-nCA" id="ybv-2b-2oS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="380" height="111"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bfh-le-rFh">
+                    <rect key="frame" x="0.0" y="0.0" width="380" height="111"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EhB-hU-6Ew">
+                            <rect key="frame" x="66" y="0.0" width="248" height="111"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cd7-Wd-XZY">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="111"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Gdk-Dc-nCA">
+                                    <rect key="frame" x="128" y="0.0" width="120" height="111"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="LyL-Kw-Tda"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.40784313729999999" green="0.4549019608" blue="0.90588235289999997" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="EhB-hU-6Ew" firstAttribute="centerY" secondItem="Bfh-le-rFh" secondAttribute="centerY" id="Phf-tJ-aSb"/>
+                        <constraint firstAttribute="bottom" secondItem="EhB-hU-6Ew" secondAttribute="bottom" id="T5T-kV-zuX"/>
+                        <constraint firstItem="EhB-hU-6Ew" firstAttribute="top" secondItem="Bfh-le-rFh" secondAttribute="top" id="nWl-Vx-wMT"/>
+                        <constraint firstItem="EhB-hU-6Ew" firstAttribute="centerX" secondItem="Bfh-le-rFh" secondAttribute="centerX" id="yPB-m4-2C2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Bfh-le-rFh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0Gq-tI-UG4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Bfh-le-rFh" secondAttribute="trailing" id="SPL-mr-c4a"/>
+                <constraint firstItem="Bfh-le-rFh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZYZ-Q2-SEY"/>
+                <constraint firstItem="Bfh-le-rFh" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="xTX-2s-CA1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="42" y="-223.5"/>
+        </view>
+    </objects>
+</document>

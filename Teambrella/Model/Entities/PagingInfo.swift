@@ -15,7 +15,6 @@
  */
 
 import Foundation
-import SwiftyJSON
 
 /**
     Used in feed/getList reply to manage pagination with chunks

@@ -29,27 +29,27 @@ final class InitialVC: UIViewController {
     }
     
     var mode: InitialVCMode = .login
-    
+    weak var sod: SODVC?
+
     // MARK: Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if service.keyStorage.lastUserType != .none {
+
+        if service.keyStorage.isUserSelected {
             mode = .idle
             startLoadingTeams()
         }
     }
-    
-    weak var sod: SODVC?
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         switch mode {
         case .login:
             performSegue(type: .login)
         case .demoExpired:
-            if let vc = service.router.showSOD(in: self) {
+            let router = service.router
+            if let vc = SODManager(router: router).showOutdatedDemo(in: self) {
                 vc.upperButton.addTarget(self, action: #selector(tapDemo), for: .touchUpInside)
                 vc.lowerButton.addTarget(self, action: #selector(tapBack), for: .touchUpInside)
                 sod = vc
@@ -63,6 +63,7 @@ final class InitialVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
+        mode = .idle
         startLoadingTeams()
     }
     
@@ -108,8 +109,10 @@ final class InitialVC: UIViewController {
     
     private func startSession(teamsEntity: TeamsModel, isDemo: Bool) {
         service.session = Session(isDemo: isDemo)
-        
-        service.teambrella.startUpdating()
+        service.teambrella.startUpdating(completion: { result in
+            let description = result.rawValue == 0 ? "new data" : result.rawValue == 1 ? "no data" : "failed"
+            log("Teambrella service get updates results: \(description)", type: .info)
+        })
         
         /*
          Selecting team that was used last time
@@ -135,7 +138,10 @@ final class InitialVC: UIViewController {
         
         service.session?.teams = teamsEntity.teams
         service.session?.currentUserID = teamsEntity.userID
-        service.socket = SocketService()
+        let socket = SocketService()
+        service.socket = socket
+        service.teambrella.signToSockets(service: socket)
+        SimpleStorage().store(bool: true, forKey: .didLogWithKey)
         HUD.hide()
         presentMasterTab()
         requestPush()
@@ -144,6 +150,7 @@ final class InitialVC: UIViewController {
     private func failure() {
         HUD.hide()
         service.router.logout()
+        SimpleStorage().store(bool: false, forKey: .didLogWithKey)
         performSegue(type: .login)
     }
     

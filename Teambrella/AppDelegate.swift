@@ -20,6 +20,8 @@
  */
 
 import UIKit
+//import FacebookLogin
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,16 +29,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-       
+
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
         application.registerForRemoteNotifications()
         TeambrellaStyle.apply()
         if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
             service.push.remoteNotificationOnStart(in: application, userInfo: notification)
         }
-        
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+
+        // Pull in case of emergency :)
+        // service.cryptoMalfunction()
+
         return true
     }
     
@@ -52,8 +58,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         service.socket?.start()
+
+        if service.session != nil {
+            service.teambrella.startUpdating(completion: { result in
+                let description = result.rawValue == 0 ? "new data" : result.rawValue == 1 ? "no data" : "failed"
+                log("Teambrella service get updates results: \(description)", type: .info)
+            })
+        }
+
+        service.info.prepareServices()
+        let router = service.router
+        let info = service.info
+        SODManager(router: router).checkSilentPush(infoMaker: info)
+
+        stitches()
     }
-    
+
+    /// move all users to real group once
+    private func stitches() {
+        let storage = SimpleStorage()
+        if let lastUserType = storage.string(forKey: .lastUserType),
+            lastUserType == KeyStorage.LastUserType.real.rawValue {
+            return
+        }
+
+        if storage.bool(forKey: .didMoveToRealGroup) == false {
+            service.router.logout()
+            service.keyStorage.setToRealUser()
+            storage.store(bool: false, forKey: .didLogWithKey)
+            storage.store(bool: true, forKey: .didMoveToRealGroup)
+        }
+    }
+
     func applicationDidEnterBackground(_ application: UIApplication) {
         service.socket?.stop()
     }
@@ -71,8 +107,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("remote notification: \(userInfo)")
+        log("remote notification: \(userInfo)", type: .push)
         service.push.remoteNotification(in: application, userInfo: userInfo, completionHandler: completionHandler)
+    }
+
+    func application(_ application: UIApplication,
+                     performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        service.teambrella.startUpdating(completion: completionHandler)
+
     }
     
 }

@@ -23,6 +23,7 @@ class TeammateSummaryView: UICollectionReusableView, XIBInitableCell {
     @IBOutlet var rightNumberView: NumberView!
     @IBOutlet var title: Label!
     @IBOutlet var subtitle: Label!
+    @IBOutlet var radarView: RadarView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -5,13 +5,10 @@
   Created by Yaroslav Pasternak on 22.06.17.
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
-// -------------------- waiting for translation :) -------------------- //
 
-"Me.WalletVC.fundingCell.additionalTitle"      = "FINANCIAMENTOS RECOMENDADOS";
 "Me.Report.submitButtonTitle-submit"           = "Enviar";
 "Me.Report.submitButtonTitle-create"           = "Hacer";
 "Me.Report.cancelButtonTitle"                  = "Cancelar";
-"Me.Report.newDiscussion.title-placeholder"    = "Titulo";
 "Me.Report.ReportClaim.title"                  = "Reportar una reclamación";
 "Me.Report.NewDiscussion.title"                = "Nueva discusión";
 "Me.Report.ImageSource.title"                  = "Imagen de";
@@ -24,10 +21,8 @@
 "Me.WalletVC.rightBrick.title"                 = "DISPONIBLE";
 "Me.WalletVC.withdrawButton"                   = "RETIRAR";
 "Me.WalletVC.fundingCell.title"                = "FINANCIAMENTO RECOMENDADO";
-"Me.WalletVC.upperBrick.title"                 = "PARA COBERTURA MAXIMA(100%)";
-"Me.WalletVC.lowerBrick.title"                 = "PARA COBERTURA ININTERRUMPIADA";
-"Me.WalletVC.fundButton"                       = "Financiar monedero";
-"Me.WalletVC.actionsCell.cosigners"            = "Co-firmantes";
+"Me.WalletVC.fundButton"                       = "Financiar Monedero";
+"Me.WalletVC.actionsCell.cosigners"            = "Cofirmantes";
 "Me.WalletVC.actionsCell.transactions"         = "Transacciones";
 "Me.WalletVC.actionsCell.withdrawAddress"      = "Dirección para retirar por defectos";
 "Me.WalletDetailsVC.title"                     = "QR-code";
@@ -36,7 +31,8 @@
 "Me.WalletDetailsVC.timeLabel"                 = "Válido por 24 horas";
 "Me.WalletDetailsVC.copyAddressButton"         = "Copiar Dirección";
 "Me.WalletDetailsVC.copiedAddress"             = "Copiado";
-"Me.CoverageVC.fundButton"                     = "Financiar tu monedero para aumentar";
+"Me.CoverageVC.fundButton.title.toIncrease"    = "Financiar tu Monedero para aumentar";
+"Me.CoverageVC.fundButton.title"               = "Financiar Monedero";
 "Me.CoverageVC.title"                          = "¿CÓMO FUNCIONA?";
 "Me.CoverageVC.subtitle"                       = "Utilice el control deslizante para ver cómo los gastos afectan su reembolso máximo";
 "Me.CoverageVC.maxExpenses"                    = "Cantidad máxima de los gastos cubiertos";
@@ -59,24 +55,47 @@
 "Me.WalletVC.WalletTransactionsVC.amountTitle" = "Cantidad:";
 "Me.WalletVC.WalletTransactionsVC.kindTitle"   = "Tipo:";
 "Me.WalletVC.WalletTransactionsVC.statusTitle" = "Estado:";
-"Me.WalletVC.WalletCosignersVC.title"          = "Co-firmantes";
+"Me.WalletVC.WalletCosignersVC.title"          = "Cofirmantes";
 
 "Me.Report.submitButtonTitle-submit"           = "Submit";
 "Me.Report.submitButtonTitle-create"           = "Create";
 "Me.Report.cancelButtonTitle"                  = "Cancel";
-"Me.Report.newDiscussion.title-placeholder"    = "Title";
 
-"Me.Wallet.Withdraw" = "Withdraw";
-"Me.Wallet.Withdraw.Details.title" = "WITHDRAW DETAILS";
-"Me.Wallet.Withdraw.Details.to.title" = "TO";
-"Me.Wallet.Withdraw.Details.to.placeholder" = "To ethereum address";
-"Me.Wallet.Withdraw.Details.amount.title" = "AMOUNT mETH";
-"Me.Wallet.Withdraw.Details.amount.placeholder" = "Value";
-"Me.Wallet.Withdraw.Details.submitButton.title" = "Submit";
-"Me.Wallet.Withdraw.header.queued" = "WITHDRAWAL QUEUED";
-"Me.Wallet.Withdraw.header.inProgress" = "WITHDRAWAL IN PROGRESS";
-"Me.Wallet.Withdraw.header.history" = "WITHDRAWAL HISTORY";
-"Me.Wallet.Withdraw.WithdrawInfo.title" = "WITHDRAW INFORMATION";
+"Me.Report.submitButtonTitle-submit"           = "Enviar";
+"Me.Report.submitButtonTitle-create"           = "Crear";
+"Me.Report.cancelButtonTitle"                  = "Cancelar";
+"Me.Report.newDiscussion.title-placeholder"    = "Título";
+
+"Me.Wallet.Withdraw" = "Retirada";
+"Me.Wallet.Withdraw.Details.title" = "DETALLES DE RETIRADA";
+"Me.Wallet.Withdraw.Details.to.title" = "TRANSFERIR A";
+"Me.Wallet.Withdraw.Details.to.placeholder" = "Dirección de Ethereum";
+"Me.Wallet.Withdraw.Details.amount.title" = "CANTIDAD mETH";
+"Me.Wallet.Withdraw.Details.amount.placeholder" = "Valor";
+"Me.Wallet.Withdraw.Details.submitButton.title" = "Enviar";
+"Me.Wallet.Withdraw.header.queued" = "RETIRADA APLAZADA";
+"Me.Wallet.Withdraw.header.inProgress" = "RETIRADA EN PROGRESSO";
+"Me.Wallet.Withdraw.header.history" = "ARCHIVO DE RETIRADAS";
+"Me.Wallet.Withdraw.WithdrawInfo.title" = "INFORMACIÓN DE RETIRADA";
 "Me.Wallet.Withdraw.WithdrawInfo.balance" = "Balance";
-"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest" = "You may request up to balance amount for withdrawal %@ mETH";
-"Me.Wallet.Withdraw.WithdrawInfo.youHave" = "You have %@ mETH reserved, if some part of the reserved funds becomes available, it would be automatically scheduled for the withdrawal.";
+"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest" = "Tu puedes solicitar hasta el saldo de la cantidad de retirada %@ mETH";
+"Me.Wallet.Withdraw.WithdrawInfo.youHave" = "Tienes %@ mETH reservado, si alguna parte de los fondos reservados está disponible, sería programado automáticamente para la retirada.";
+
+"Me.Wallet.Withdraw.noCameraAccess.title" = "Se require un acceso a la cámara para escanear código QR";
+"Me.Wallet.Withdraw.noCameraAccess.details" = "Por favor, permita acceso a la cámara del dispositivo para que la aplicación Teambrella pueda escanear códigos QR";
+"Me.Wallet.Withdraw.noCameraAccess.cancelButton" = "Cancelar";
+"Me.Wallet.Withdraw.noCameraAccess.settingsButton" = "Ajustes";
+
+// to translate
+
+"Me.WalletVC.lowerBrick.title"                 = "RECOMENDADO";
+"Me.Wallet.Transactions.to" = "TO";
+"Me.Wallet.Transactions.withdrawal" = "WITHDRAWAL";
+"Me.Wallet.Transactions.claimNumber" = "CLAIM %d";
+"Me.Wallet.Transactions.kind.pending" = "PENDING";
+"Me.Wallet.Transactions.kind.cancelled" = "CANCELLED";
+
+"Me.Wallet.Transactions.Empty.title" = "No transactions yet";
+"Me.Wallet.Transactions.Empty.details" = "...";
+"Me.Wallet.Cosigners.Empty.title" = "No cosigners yet";
+"Me.Wallet.Cosigners.Empty.details" = "...";

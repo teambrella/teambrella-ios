@@ -18,8 +18,15 @@ default_platform :ios
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    cocoapods
     carthage(platform: "iOS")
+    cocoapods
+  end
+
+  desc "Runs tests then uploads Surilla and Teambrella to iTunes Connect"
+  lane :all do
+    lane test
+    lane beta
+    lane release
   end
 
   desc "Runs all the tests"

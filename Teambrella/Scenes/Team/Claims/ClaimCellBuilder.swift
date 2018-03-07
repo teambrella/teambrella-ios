@@ -23,7 +23,7 @@ import Kingfisher
 import UIKit
 
 struct ClaimCellBuilder {
-    static func populate(cell: UICollectionViewCell, with claim: EnhancedClaimEntity, delegate: ClaimVC) {
+    static func populate(cell: UICollectionViewCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         if let cell = cell as? ImageGalleryCell {
             populateImageGallery(cell: cell, with: claim)
             addObserversToImageGallery(cell: cell, delegate: delegate)
@@ -50,9 +50,9 @@ struct ClaimCellBuilder {
         cell.slider.addTarget(delegate, action: #selector(ClaimVC.sliderMoved), for: .valueChanged)
     }
     
-    static func populateImageGallery(cell: ImageGalleryCell, with claim: EnhancedClaimEntity) {
-        let imageURLStrings = claim.largePhotos.map { URLBuilder().urlString(string: $0) }
-        log("\(imageURLStrings)", type: .serviceInfo)
+    static func populateImageGallery(cell: ImageGalleryCell, with claim: ClaimEntityLarge) {
+        let imageURLStrings = claim.basic.largePhotos.map { URLBuilder().urlString(string: $0) }
+        log("\(imageURLStrings)", type: .info)
         service.server.updateTimestamp { timestamp, error in
             let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
             let modifier = AnyModifier { request in
@@ -64,37 +64,59 @@ struct ClaimCellBuilder {
             }
             cell.setupGallery(with: imageURLStrings, options: [.requestModifier(modifier)])
         }
-        cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: claim.avatar)))
-        cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)//"Claim \(claim.id)"
-        cell.textLabel.text = claim.originalPostText
-        cell.unreadCountLabel.text = "\(claim.unreadCount)"
-        let dateProcessor = DateProcessor()
-        cell.timeLabel.text = dateProcessor.stringFromNow(minutes: claim.minutesinceLastPost)
+        cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: claim.basic.avatar)))
+        cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)
+        cell.textLabel.text = claim.discussion.originalPostText.sane
+        cell.unreadCountLabel.text = "\(claim.discussion.unreadCount)"
+        cell.unreadCountLabel.isHidden = claim.discussion.unreadCount <= 0
+        let minutesSinceLastPost = claim.discussion.minutesSinceLastPost
+        switch minutesSinceLastPost {
+        case 0:
+            cell.timeLabel.text = "Team.TeammateCell.timeLabel.justNow".localized
+        case 1..<60:
+            cell.timeLabel.text = "Team.Ago.minutes_format".localized(minutesSinceLastPost)
+        case 60..<(60 * 24):
+            cell.timeLabel.text = "Team.Ago.hours_format".localized(minutesSinceLastPost / 60)
+        case (60 * 24)...(60*24*7):
+            cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
+        default:
+            let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
+            cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date)
+        }
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
-    
-    static func populateClaimVote(cell: ClaimVoteCell, with claim: EnhancedClaimEntity, delegate: ClaimVC) {
-        cell.slider.minimumValue = 0
-        cell.slider.maximumValue = 1
-        
-        cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
-        let dateProcessor = DateProcessor()
-        cell.remainingDaysLabel.text = "Team.Claims.ClaimVC.VotingCell.endsTitle".localized.uppercased()
-            + dateProcessor.stringFromNow(minutes: -claim.minutesRemaining).uppercased()
-        cell.pieChart.startAngle = 0
-        cell.pieChart.setupWith(remainingMinutes: claim.minutesRemaining)
-        
-        cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
 
-        if let myVote = claim.myVote {
-            cell.yourVotePercentValue.text = String.truncatedNumber(myVote * 100)
-            cell.yourVoteAmount.text = String.truncatedNumber(myVote * claim.claimAmount)
-            cell.slider.setValue(Float(myVote), animated: true)
-        } else if let proxyVote = claim.proxyVote {
-            cell.yourVotePercentValue.text = String.truncatedNumber(proxyVote * 100)
-            cell.yourVoteAmount.text = String.truncatedNumber(proxyVote * claim.claimAmount)
-            cell.slider.setValue(Float(proxyVote), animated: true)
-            if let proxyAvatar = claim.proxyAvatar {
-                cell.proxyAvatar.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: proxyAvatar)))
+    // swiftlint:disable:next function_body_length
+    static func populateClaimVote(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
+        guard let voting = claim.voting else {
+            log("ClaimEntityLarge has no voting part. Can't populate ClaimVoteCell", type: .error)
+            return
+        }
+
+        cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
+        var prefix = ""
+        if voting.minutesRemaining < 60 {
+            prefix = "Team.Claim.minutes_format".localized(voting.minutesRemaining)
+        } else if voting.minutesRemaining < 60 * 24 {
+            prefix = "Team.Claim.hours_format".localized(voting.minutesRemaining / 60)
+        } else {
+            prefix = "Team.Claim.days_format".localized(voting.minutesRemaining / (60 * 24))
+        }
+        cell.remainingDaysLabel.text = prefix.uppercased() + " " +
+            DateProcessor().stringFromNow(minutes: -voting.minutesRemaining).uppercased()
+
+        cell.pieChart.setupWith(remainingMinutes: voting.minutesRemaining)
+        
+        if let myVote = voting.myVote {
+            cell.yourVotePercentValue.text = String.truncatedNumber(myVote.percentage)
+            cell.yourVoteAmount.text = String.truncatedNumber(myVote.fiat(from: claim.basic.claimAmount).value)
+            cell.slider.setValue(Float(myVote.value), animated: true)
+        } else if let proxyVote = voting.proxyVote {
+            cell.yourVotePercentValue.text = String.truncatedNumber(proxyVote.percentage)
+            cell.yourVoteAmount.text = String.truncatedNumber(proxyVote.fiat(from: claim.basic.claimAmount).value)
+            cell.slider.setValue(Float(proxyVote.value), animated: true)
+            if let proxyAvatar = voting.proxyAvatar {
+                cell.proxyAvatar.show(proxyAvatar)
                 cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
             }
         } else {
@@ -102,56 +124,69 @@ struct ClaimCellBuilder {
             cell.isYourVoteHidden = true
             cell.slider.setValue(cell.slider.minimumValue, animated: true)
         }
-        cell.resetButton.isHidden = claim.myVote == nil
-        cell.proxyAvatar.isHidden = claim.proxyAvatar == nil || claim.myVote != nil
-        cell.byProxyLabel.isHidden = claim.proxyVote == nil || claim.myVote != nil
+        cell.resetButton.isHidden = voting.myVote == nil
+        cell.proxyAvatar.isHidden = voting.proxyAvatar == nil || voting.myVote != nil
+        cell.byProxyLabel.isHidden = voting.proxyVote == nil || voting.myVote != nil
         
+        cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         cell.yourVotePercentValue.alpha = 1
         cell.yourVoteAmount.alpha = 1
+        cell.yourVoteCurrency.text = service.session?.currentTeam?.currency
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
-        cell.teamVotePercentValue.text = String.truncatedNumber(claim.ratioVoted * 100)
-        cell.teamVoteAmount.text = String.truncatedNumber(claim.ratioVoted * claim.claimAmount)
+        cell.teamVotePercentValue.text = String.truncatedNumber(voting.ratioVoted.percentage)
+        cell.teamVoteAmount.text = String.truncatedNumber(voting.ratioVoted.fiat(from: claim.basic.claimAmount).value)
+        cell.teamVoteCurrency.text = service.session?.currentTeam?.currency
         
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
         cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.resetButton.addTarget(delegate, action: #selector(ClaimVC.tapResetVote), for: .touchUpInside)
         
-        let avatars = claim.otherAvatars.flatMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
-        let label: String?  =  claim.otherCount > 0 ? "\(claim.otherCount)" : nil
-        cell.avatarsStack.set(images: avatars, label: label, max: 3)
+        let avatars = voting.otherAvatars.flatMap { $0.url }
+        let maxAvatarsStackCount = 4
+        let otherVotersCount = voting.otherCount - maxAvatarsStackCount + 1
+        let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil
+        cell.avatarsStack.set(images: avatars, label: label, max: maxAvatarsStackCount)
+        
+        cell.othersVotedButton.removeTarget(delegate, action: nil, for: .allEvents)
+        cell.othersVotedButton.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted), for: .touchUpInside)
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
     
-    static func populateClaimDetails(cell: ClaimDetailsCell, with claim: EnhancedClaimEntity) {
+    static func populateClaimDetails(cell: ClaimDetailsCell, with claim: ClaimEntityLarge) {
         cell.titleLabel.text = "Team.ClaimCell.claimDetails".localized
-        
-        cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
-        let currency = "$"
-        let claimAmount = String(format: "%.2f", claim.claimAmount)
-        cell.claimAmountValueLabel.text = currency + claimAmount
-        
-        cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
-        let estimatedExpenses = String(format: "%.2f", claim.estimatedExpences)
-        cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses
-        
-        cell.deductibleLabel.text = "Team.ClaimCell.deductible".localized
-        let deductible = String(format: "%.2f", claim.deductible)
-        cell.deductibleValueLabel.text = currency + deductible
-        
+
         cell.coverageLabel.text = "Team.ClaimCell.coverage".localized
-        let coverage = "\(Int((claim.coverage * 100).rounded()))"
+        let coverage = "\(Int((claim.basic.coverage * 100).rounded()))"
         cell.coverageValueLabel.text = coverage + "%"
         
         cell.incidentDateLabel.text = "Team.ClaimCell.incidentDate".localized
-        claim.incidentDate.map { cell.incidentDateValueLabel.text = DateFormatter.teambrellaShort.string(from: $0) }
+        cell.incidentDateValueLabel.text = DateFormatter.teambrellaShort.string(from: claim.basic.incidentDate)
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
+
+        cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
+        let claimAmount = String(format: "%.2f", claim.basic.claimAmount.value)
+        cell.deductibleLabel.text = "Team.ClaimCell.deductible".localized
+        let deductible = String(format: "%.2f", claim.basic.deductible)
+        cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
+        let estimatedExpenses = String(format: "%.2f", claim.basic.estimatedExpenses)
+        guard let currency = service.session?.currentTeam?.currencySymbol else { return }
+
+        cell.claimAmountValueLabel.text = currency + claimAmount
+        cell.deductibleValueLabel.text = currency + deductible
+        cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses
+        
     }
     
-    static func populateClaimOptions(cell: ClaimOptionsCell, with claim: EnhancedClaimEntity, delegate: ClaimVC) {
+    static func populateClaimOptions(cell: ClaimOptionsCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         cell.allVotesLabel.text = "Team.TeammateCell.allVotes".localized
+        cell.tapAllVotesRecognizer.removeTarget(delegate, action: nil)
+        cell.tapAllVotesRecognizer.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted))
         cell.cashFlowLabel.text = "Team.TeammateCell.cashFlow".localized
         cell.transactionsLabel.text = "Team.TeammateCell.transactions".localized
         cell.tapTransactionsRecognizer.removeTarget(delegate, action: nil)
         cell.tapTransactionsRecognizer.addTarget(delegate, action: #selector(ClaimVC.tapTransactions))
+        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
     
 }

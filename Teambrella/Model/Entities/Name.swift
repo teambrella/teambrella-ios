@@ -24,7 +24,9 @@ struct NameComponent: CustomStringConvertible {
     var description: String { return entire }
 }
 
-struct Name {
+struct Name: Decodable {
+    static var empty: Name { return Name(fullName: "") }
+    
     let components: [NameComponent]
     let hasLastName: Bool
     
@@ -51,6 +53,11 @@ struct Name {
             result += item.entire
         }
         return result
+    }
+    
+    init(from decoder: Decoder) throws {
+        let name = try decoder.singleValueContainer().decode(String.self)
+        self.init(fullName: name)
     }
     
     init(fullName: String) {

@@ -32,17 +32,10 @@ struct ChooseYourTeamDataSource {
     }
     
     mutating func createModels() {
-        guard let model = service.session?.teams else { return }
+        guard let teams = service.session?.teams else { return }
         
-        for card in model {
-            if let inc = card.unreadCount, let item = card.objectName, let cvg = card.teamCoverage {
-                models.append(ChooseYourTeamCellModel(teamIcon: card.teamLogo,
-                                                      incomingCount: inc,
-                                                      teamName: card.teamName,
-                                                      itemName: item,
-                                                      coverage: Int(cvg),
-                                                      teamID: card.teamID))
-            }
+        for team in teams {
+            models.append(ChooseYourTeamCellModel(team: team))
         }
         models.append(SwitchUserTeamCellModel())
     }

@@ -25,6 +25,8 @@ protocol VotingRiskCellDelegate: class {
     func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat)
     func votingRisk(cell: VotingRiskCell, stoppedOnOffset: CGFloat)
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int)
+    func votingRisk(cell: VotingRiskCell, didTapButton button: UIButton)
+    func averageVotingRisk(cell: VotingRiskCell) -> Double
 }
 
 class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
@@ -50,6 +52,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var proxyNameLabel: InfoLabel!
     
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var swipeToVoteView: SwipeToVote!
     
     @IBOutlet var leftAvatar: RoundImageView!
     @IBOutlet var leftAvatarLabel: UILabel!
@@ -61,6 +64,8 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var rightAvatarLabel: UILabel!
     
     @IBOutlet var othersButton: UIButton!
+    
+    @IBOutlet var othersVotesButton: UIButton!
     
     var maxValue: CGFloat {
 //        let itemWidth = collectionView(collectionView,
@@ -126,6 +131,8 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right".localized
         yourVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
    
+        resetVoteButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
         resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
         othersButton.setTitle("Team.VotingRiskVC.othersButton".localized, for: .normal)
         
@@ -139,6 +146,15 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         self.clipsToBounds = true
         ViewDecorator.roundedEdges(for: self)
         ViewDecorator.shadow(for: self)
+        
+        resetVoteButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        othersButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        othersVotesButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+    }
+    
+    @objc
+    private func tap(_ button: UIButton) {
+        delegate?.votingRisk(cell: self, didTapButton: button)
     }
     
     override func layoutSubviews() {
@@ -162,7 +178,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         var show = false
         risk.flatMap { show = $0 >= 5 }
         yourVoteValueLabel.isHidden = show
-        yourVoteBadgeLabel.isHidden = show
+        yourVoteBadgeLabel.isHidden = risk != nil ? show : true
         yourVoteNotAccept.isHidden = !show
         yourVoteNotAccept.text = "Team.Vote.doNotAccept".localized
     }
@@ -171,7 +187,8 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
         }
-        dataSource.createModels(with: riskScale)
+        let average = delegate?.averageVotingRisk(cell: self) ?? 0
+        dataSource.createModels(with: riskScale, averageRisk: average)
         collectionView.reloadData()
     }
     
@@ -260,7 +277,7 @@ extension VotingRiskCell: UICollectionViewDelegate {
             let columnHeight = columnMaxHeight * multiplier
             cell.columnHeightConstraint.constant = bottomInset + columnHeight + cell.topLabel.frame.height / 2
             cell.topLabel.text = String.formattedNumber(model.riskCoefficient)
-            cell.centerLabel.text = model.isTeamAverage ? "TEAM\nAVG" : ""
+            cell.centerLabel.text = model.isTeamAverage ? "Team.VotingRiskCell.teamAvg".localized : ""
             cell.topLabel.clipsToBounds = true
             cell.topLabel.layer.cornerRadius = 3
             cell.topLabel.layer.borderWidth = 1

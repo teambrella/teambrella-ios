@@ -14,6 +14,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import ExtensionsPack
 import Foundation
 
 struct Hex {
@@ -56,9 +57,13 @@ struct Hex {
                     let data = createData(from: string)
                     result.append(data)
                 }
+                /*
             case let item as Int:
+//                let itemHex = String(item, radix: 16)
+//                let data = createData(from: truncatePrefix(string: itemHex))
                 let data = createData(from: String(item))
                 result.append(data)
+ */
             case let item as Data:
                 result.append(item)
             default:
@@ -77,7 +82,12 @@ struct Hex {
         let format = "%0\(bytesCount * 2)X"
         return String(format: format, integer)
     }
-    
+
+//    // 777 to "00000000000000000777"
+//    func formattedString(bigInteger: BInt, bytesCount: Int) -> String? {
+//        return formattedString(string: bigInteger.asString(withBase: 10), bytesCount: bytesCount)
+//    }
+
     // "0xABCDEF" to "00000000000000000ABCDEF"
     func formattedString(string: String, bytesCount: Int) -> String? {
         let truncated = truncatePrefix(string: string)
@@ -88,7 +98,7 @@ struct Hex {
     
     func formattedString(data: Data, bytesCount: Int) -> String? {
         guard data.count <= bytesCount else { return nil }
-        
+
         let bytes = [UInt8](data)
         var hexString = ""
         for i in 0..<bytesCount {

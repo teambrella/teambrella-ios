@@ -61,7 +61,7 @@ class PushService: NSObject {
     
     func getNotificationSettings() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
-            log("Notification settings: \(settings)", type: [.push, .serviceInfo])
+            log("Notification settings: \(settings)", type: [.push, .info])
         }
     }
     
@@ -78,8 +78,10 @@ class PushService: NSObject {
                             completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if let aps = userInfo["aps"] as? [AnyHashable: Any], let content = aps["content-available"] as? Bool {
             if content == true {
-                print("Content is available: \(userInfo)")
-                service.teambrella.startUpdating()
+                log("Content is available: \(userInfo)", type: .push)
+                service.teambrella.startUpdating(completion: { result in
+                    log("Remote notification get updetes result is: \(result)", type: .push)
+                })
             }
         }
         guard command == nil else { return }

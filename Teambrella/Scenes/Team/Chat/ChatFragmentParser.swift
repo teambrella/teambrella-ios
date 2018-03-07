@@ -37,7 +37,6 @@ enum ChatFragment {
 
 struct ChatFragmentParser {
     var defaultAspect: CGFloat = 2.0
-    let textAdapter = TextAdapter()
     
     func parse(item: ChatEntity) -> [ChatFragment] {
         let scanner = Scanner(string: item.text)
@@ -50,10 +49,7 @@ struct ChatFragmentParser {
             scanner.scanUpTo("<img src=\"", into: &text)
             scanner.scanString("<img src=\"", into: nil)
             if let text = text {
-                let parsedText = textAdapter.parsedHTML(string: text as String)
-                if parsedText != "" {
-                result.append(ChatFragment.text(parsedText))
-                }
+                    result.append(ChatFragment.text(text as String))
             }
             
             scanner.scanUpTo("\">", into: &img)

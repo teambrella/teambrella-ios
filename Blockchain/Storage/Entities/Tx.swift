@@ -20,6 +20,7 @@
  */
 
 import CoreData
+import ExtensionsPack
 
 class Tx: NSManagedObject {
     var kind: TransactionKind? { return TransactionKind(rawValue: Int(kindValue)) }
@@ -44,6 +45,15 @@ class Tx: NSManagedObject {
         }
         set {
             isServerUpdateNeededValue = newValue
+        }
+    }
+    /// transaction hash
+    var cryptoTx: String? {
+        get {
+            return cryptoTxValue
+        }
+        set {
+            cryptoTxValue = newValue
         }
     }
     var clientResolutionTime: Date? { return clientResolutionTimeValue as Date? }
@@ -76,7 +86,7 @@ class Tx: NSManagedObject {
     /// TxInputs sorted by UUID id values
     var inputs: [TxInput] {
         guard let set = inputsValue as? Set<TxInput> else {
-            print("couldn't form array from set of TxInput")
+            log("couldn't form array from set of TxInput", type: [.error, .crypto])
             return []
         }
         
@@ -87,6 +97,22 @@ class Tx: NSManagedObject {
         guard let set = outputsValue as? Set<TxOutput> else { return [] }
         
         return Array(set).sorted { $0.id < $1.id }
+    }
+
+    var fromMultisig: Multisig? {
+        if let kind = kind, kind == .saveFromPreviousWallet {
+            return teammate?.previousAddress
+        } else {
+            return teammate?.currentAddress
+        }
+    }
+
+    var toMultisig: Multisig? {
+        if let kind = kind, kind == .saveFromPreviousWallet {
+            return teammate?.currentAddress
+        } else {
+            return teammate?.nextAddress
+        }
     }
     
 }

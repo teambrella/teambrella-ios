@@ -55,15 +55,13 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestHome(teamID: Int) -> Future<HomeScreenModel> {
+    func requestHome(teamID: Int) -> Future<HomeModel> {
         //let language = setLanguage()
-        let promise = Promise<HomeScreenModel>()
+        let promise = Promise<HomeModel>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
             let request = TeambrellaRequest(type: .home, body: body, success: { response in
-                if case let .home(json) = response {
-                    PlistStorage().store(json: json, for: .home, id: String(teamID))
-                    let model = HomeScreenModel(json: json)
+                if case let .home(model) = response {
                     promise.resolve(with: model)
                 } else {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,
@@ -71,11 +69,6 @@ class ServerDAO: DAO {
                 }
             })
             request.start()
-        }
-        if let storedJSON = PlistStorage().retreiveJSON(for: .home, id: String(teamID)) {
-            defer {
-                promise.temporaryResolve(with: HomeScreenModel(json: storedJSON))
-            }
         }
         return promise
     }
@@ -94,7 +87,7 @@ class ServerDAO: DAO {
                                             body: body,
                                             success: { response in
                                                 if case let .setLanguage(language) = response {
-                                                    log("Language is set to \(language)", type: .serviceInfo)
+                                                    log("Language is set to \(language)", type: .info)
                                                     promise.resolve(with: language)
                                                 } else {
                                                     let errorMessage = "Was waiting .setLanguage got \(response)"
@@ -109,8 +102,8 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func deleteCard(topicID: String) -> Future<HomeScreenModel> {
-        let promise = Promise<HomeScreenModel>()
+    func deleteCard(topicID: String) -> Future<HomeModel> {
+        let promise = Promise<HomeModel>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["topicId": topicID])
             let request = TeambrellaRequest(type: .feedDeleteCard, body: body, success: { response in
@@ -134,10 +127,8 @@ class ServerDAO: DAO {
                                                        "limit": context.limit,
                                                        "search": context.search ?? NSNull()])
             let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in
-                if case let .teamFeed(json, pagingInfo) = response {
-                    PlistStorage().store(json: json, for: .teamFeed, id: "")
-                    let feed = json.arrayValue.flatMap { FeedEntity(json: $0) }
-                    promise.resolve(with: FeedChunk(feed: feed, pagingInfo: pagingInfo))
+                if case let .teamFeed(chunk) = response {
+                    promise.resolve(with: chunk)
                 } else {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,
                                                          description: "Was waiting .teamFeed, got \(response)"))
@@ -147,24 +138,24 @@ class ServerDAO: DAO {
             })
             request.start()
         }
-        if needTemporaryResult, let storedJSON = PlistStorage().retreiveJSON(for: .teamFeed, id: "") {
-            defer {
-                let feed = storedJSON.arrayValue.flatMap { FeedEntity(json: $0) }
-                promise.temporaryResolve(with: FeedChunk(feed: feed, pagingInfo: nil))
-            }
-        }
+//        if needTemporaryResult, let storedJSON = PlistStorage().retreiveJSON(for: .teamFeed, id: "") {
+//            defer {
+//                let feed = storedJSON.arrayValue.flatMap { FeedEntity(json: $0) }
+//                promise.temporaryResolve(with: FeedChunk(feed: feed, pagingInfo: nil))
+//            }
+//        }
         return promise
     }
     
-    func requestCoverage(for date: Date, teamID: Int) -> Future<(coverage: Double, limit: Double)> {
-        let promise = Promise<(coverage: Double, limit: Double)>()
+    func requestCoverage(for date: Date, teamID: Int) -> Future<CoverageForDate> {
+        let promise = Promise<CoverageForDate>()
         let dateString = Formatter.teambrellaShortDashed.string(from: date)
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID,
                                                        "Date": dateString])
             let request = TeambrellaRequest(type: .coverageForDate, body: body, success: { response in
-                if case .coverageForDate(let coverage, let limit) = response {
-                    promise.resolve(with: (coverage: coverage, limit: limit))
+                if case let .coverageForDate(coverageForDate) = response {
+                    promise.resolve(with: coverageForDate)
                 }
             }, failure: { error in
                 promise.reject(with: error)
@@ -215,6 +206,50 @@ class ServerDAO: DAO {
                                                 description: "Was waiting withdrawTransactions, got \(response)")
                     promise.reject(with: error)
                     service.error.present(error: error)
+                }
+            }, failure: { error in
+                promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
+    func requestTeammateOthersVoted(teamID: Int, teammateID: Int) -> Future<VotersList> {
+        let promise = Promise<VotersList>()
+        
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "TeammateId": teammateID])
+            let request = TeambrellaRequest(type: .teammateVotesList, body: body, success: { response in
+                if case let .votesList(votesList) = response {
+                    promise.resolve(with: votesList)
+                } else {
+                    let error = TeambrellaError(kind: .wrongReply,
+                                                description: "Was waiting votesList, got \(response)")
+                    promise.reject(with: error)
+                }
+            }, failure: { error in
+                promise.reject(with: error)
+            })
+            request.start()
+        }
+        return promise
+    }
+    
+    func requestClaimOthersVoted(teamID: Int, claimID: Int) -> Future<VotersList> {
+        let promise = Promise<VotersList>()
+        
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "ClaimId": claimID])
+            let request = TeambrellaRequest(type: .claimVotesList, body: body, success: { response in
+                if case let .votesList(votesList) = response {
+                    promise.resolve(with: votesList)
+                } else {
+                    let error = TeambrellaError(kind: .wrongReply,
+                                                description: "Was waiting votesList, got \(response)")
+                    promise.reject(with: error)
                 }
             }, failure: { error in
                 promise.reject(with: error)
@@ -287,8 +322,8 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func createNewClaim(model: NewClaimModel) -> Future<EnhancedClaimEntity> {
-        let promise = Promise<EnhancedClaimEntity>()
+    func createNewClaim(model: NewClaimModel) -> Future<ClaimEntityLarge> {
+        let promise = Promise<ClaimEntityLarge>()
         freshKey { key in
             let dateString = Formatter.teambrellaShortDashed.string(from: model.incidentDate)
             let body = RequestBody(key: key, payload: ["TeamId": model.teamID,

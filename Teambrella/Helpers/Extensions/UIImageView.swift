@@ -23,6 +23,22 @@ import Foundation
 import Kingfisher
 
 extension UIImageView {
+    func setStandardPlaceholder() {
+        image = #imageLiteral(resourceName: "imagePlaceholder")
+    }
+
+    func show(_ avatar: Avatar,
+              options: KingfisherOptionsInfo? = nil,
+              isFullSize: Bool = false,
+              completion: ((UIImage?, NSError?) -> Void)? = nil) {
+        showAvatar(string: avatar.string, options: options, isFullSize: isFullSize, completion: completion)
+    }
+    
+    func show(_ image: Photo,
+              completion: ((UIImage?, NSError?) -> Void)? = nil) {
+        showImage(string: image.string, completion: completion)
+    }
+    
     func showAvatar(string: String,
                     options: KingfisherOptionsInfo? = nil,
                     isFullSize: Bool = false,
@@ -65,7 +81,8 @@ extension UIImageView {
         }
     }
     
-    func showImage(string: String, completion: ((UIImage?, NSError?) -> Void)? = nil) {
+    func showImage(string: String?, completion: ((UIImage?, NSError?) -> Void)? = nil) {
+        guard let string = string else { return }
         guard let url = URLBuilder().url(string: string) else { return }
         
         showImage(url: url, completion: completion)

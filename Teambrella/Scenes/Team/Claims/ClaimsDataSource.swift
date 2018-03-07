@@ -55,7 +55,7 @@ class ClaimsDataSource {
     // if teammate id is set all results will be filtered
     var teammateID: Int?
     
-    var homeModel: HomeScreenModel?
+    var homeModel: HomeModel?
     
     var claimItem: ClaimItem? {
         guard let model = homeModel else { return nil }

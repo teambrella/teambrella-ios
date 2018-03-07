@@ -20,42 +20,46 @@
  */
 
 import Foundation
-import SwiftyJSON
 
-struct TeamEntity {
-    private var json: JSON
-    
-    var teamID: Int { return json["TeamId"].intValue }
-    var teammateID: Int { return json["MyTeammateId"].intValue }
-    var teamType: Int { return json["TeamType"].intValue }
-    var teamName: String { return json["TeamName"].stringValue }
-    var teamLogo: String { return json["TeamLogo"].stringValue }
-    var objectName: String? { return json["ObjectName"].stringValue }
-    var objectCoverage: Double? { return json["ObjectCoverage"].doubleValue }
-    var unreadCount: Int? { return json["UnreadCount"].intValue }
-    var teamCoverage: Double? { return json["TeamCoverage"].doubleValue }
-    var coverageType: CoverageType { return CoverageType(rawValue: json["CoverageType"].intValue) ?? .other }
-    var teamAccessLevel: TeamAccessLevel {
-        return TeamAccessLevel(rawValue: json["TeamAccessLevel"].intValue) ?? .noAccess
+struct TeamEntity: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case teamID = "TeamId"
+        case teammateID = "MyTeammateId"
+        case teamName = "TeamName"
+        case teamLogo = "TeamLogo"
+        case objectName = "ObjectName"
+        case objectCoverage = "ObjectCoverage"
+        case unreadCount = "UnreadCount"
+        case coverageType = "CoverageType"
+        case teamAccessLevel = "TeamAccessLevel"
+        case currency = "Currency"
+        case inviteText = "InviteFriendsText"
+        case myTopicID = "MyTopicId"
+        case inviteCode = "InviteFriendsCode"
     }
-    var currency: String { return json["Currency"].stringValue }
-    var isInvitation: Bool { return teamCoverage != nil }
-
+    
+    let teamID: Int
+    let teammateID: Int
+    let teamName: String
+    let teamLogo: String
+    let objectName: String?
+    let objectCoverage: Coverage?
+    let unreadCount: Int?
+    let coverageType: CoverageType
+    let teamAccessLevel: TeamAccessLevel
+    let currency: String
+    let inviteText: String
+    let myTopicID: String
+    let inviteCode: String?
+    
     var currencySymbol: String {
         return ["USD": "$",
                 "EUR": "€",
                 "PEN": "S/.",
-                "ARS": "$"][currency] ?? currency
-        
+                "ARS": "$",
+                "RUB": "₽"][currency] ?? currency
     }
     
-    static func team(with json: JSON) -> TeamEntity {
-        return TeamEntity(json: json)
-    }
-    
-    static func teams(with json: JSON) -> [TeamEntity] {
-        return json.arrayValue.map { self.team(with: $0) }
-    }
 }
 
 extension TeamEntity: Equatable {

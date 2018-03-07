@@ -21,7 +21,7 @@
 
 import Foundation
 
-enum Gender {
+enum Gender: Decodable {
     case male
     case female
     
@@ -32,5 +32,11 @@ enum Gender {
     /// fall back to male if received unsupported value
     static func fromServer(integer: Int) -> Gender {
         return integer == 2 ? .female : .male
+    }
+
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Int.self)
+        let type = Gender.fromServer(integer: value)
+        self = type
     }
 }

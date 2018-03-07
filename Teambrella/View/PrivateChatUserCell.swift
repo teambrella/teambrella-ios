@@ -27,7 +27,8 @@ class PrivateChatUserCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var messageLabel: MessageTextLabel!
     @IBOutlet var timeLabel: InfoLabel!
     @IBOutlet var unreadCountView: RoundImageView!
-
+    @IBOutlet var cellSeparator: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

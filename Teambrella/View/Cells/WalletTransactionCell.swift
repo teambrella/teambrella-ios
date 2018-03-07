@@ -24,18 +24,22 @@ import UIKit
 class WalletTransactionCell: UICollectionViewCell, XIBInitableCell {
 
     @IBOutlet var container: UIView!
-    @IBOutlet var createdLabel: InfoHelpLabel!
-    @IBOutlet var nameLabel: MessageTitleLabel!
-    @IBOutlet var kindTitle: InfoHelpLabel!
-    @IBOutlet var kindLabel: InfoHelpLabel!
-    @IBOutlet var statusTitle: InfoHelpLabel!
-    @IBOutlet var statusLabel: InfoHelpLabel!
-    @IBOutlet var amountTitle: InfoHelpLabel!
-    @IBOutlet var amountLabel: InfoHelpLabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+
+    @IBOutlet var avatarView: RoundImageView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var detailsLabel: UILabel!
+
+    @IBOutlet var amountLabel: UILabel!
+    @IBOutlet var kindLabel: UILabel!
+
+    @IBOutlet weak var separator: UIView!
+
+    func setup(with model: WalletTransactionsCellModel) {
+        avatarView.show(model.avatar)
+        nameLabel.text = model.name.entire
+        detailsLabel.text = model.detailsText
+        amountLabel.text = model.amountText
+        kindLabel.text = model.kindText
     }
 
 }

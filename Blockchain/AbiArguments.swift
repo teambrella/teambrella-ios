@@ -19,7 +19,7 @@ import Foundation
 class AbiArguments {
     struct Constant {
         static let bytesInWord = 32
-        static let weisInEth: Decimal = 1_000_000_000_000_000_000
+        static let weisInEth: Int = 1_000_000_000_000_000_000
     }
     
     enum AbiArgumentsError: Error {
@@ -67,6 +67,27 @@ class AbiArguments {
         }
         
         return abiArguments.hexString
+    }
+
+    static func parseDecimalAmount(decimalAmount: String) -> String? {
+        guard let e: Double = Double(decimalAmount) else {
+            log("String \(decimalAmount) is not convertible to Double", type: [.error, .crypto])
+            return nil
+        }
+
+        /*
+        let weis = e * Double(Constant.weisInEth)
+        let weisInt = UInt(weis)
+        let hex = String(weisInt, radix: 16)
+*/
+
+        let weis: BDouble = BDouble(e) * BDouble(Constant.weisInEth)
+        let weisInt: BInt = BInt(weis.decimalExpansion(precisionAfterComma: 0))
+        let hex = weisInt.asString(withBase: 16)
+    
+        log("Parse amount in ETH: \(decimalAmount) to Weis dec: \(weisInt); hex: \(hex)", type: .crypto)
+        return Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)
+//        return  Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)
     }
     
     func add(_ argument: Any) throws {
