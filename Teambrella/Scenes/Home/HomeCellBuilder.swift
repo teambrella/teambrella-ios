@@ -71,6 +71,7 @@ struct HomeCellBuilder {
             cell.rightNumberView.isPercentVisible = model.teamVote != nil
         case .teammate:
             cell.avatarView.show(model.smallPhoto)
+//            cell.avatarView.roundCorners(.allCorners, radius: 20)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
             cell.titleLabel.text = "Team.Home.Card.newTeammate".localized
             cell.leftNumberView.isCurrencyVisible = true
