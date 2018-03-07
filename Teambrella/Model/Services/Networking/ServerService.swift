@@ -19,7 +19,6 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import Alamofire
 import Foundation
 
 /**
@@ -29,6 +28,11 @@ final class ServerService: NSObject {
     @objc dynamic private(set)var timestamp: Int64 = 0
     var router: MainRouter?
     var key: Key { return Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp) }
+
+    lazy private var session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config)
+    }()
 
     required init(router: MainRouter) {
         super.init()
@@ -58,7 +62,7 @@ final class ServerService: NSObject {
         
         var request = URLRequest(url: url)
         log(url.absoluteString, type: .serverURL)
-        request.httpMethod = HTTPMethod.post.rawValue
+        request.httpMethod = "POST"
         let contentType = body?.contentType ?? "application/json"
         request.setValue(contentType, forHTTPHeaderField: "Content-Type")
         
@@ -85,32 +89,47 @@ final class ServerService: NSObject {
                 request.setValue(String(describing: value), forHTTPHeaderField: key)
             }
         }
-        Alamofire.request(request).responseData { [weak self] response in
-            guard let `self` = self else { return }
 
-            switch response.result {
-            case let .success(value):
-                do {
-                    let reply = try ServerReply(data: value)
-                    guard reply.status.isValid else {
-                        let error = TeambrellaErrorFactory.error(with: reply.status)
-                        failure(error)
-                        return
-                    }
-
-                    success(reply)
-
-                    if let router = self.router {
-                        let manager = SODManager(router: router)
-                        manager.checkVersion(serverReply: reply)
-                    }
-                } catch {
+        let queue = OperationQueue.current?.underlyingQueue ?? DispatchQueue.main
+        let task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                queue.async {
                     failure(error)
                 }
-            case .failure(let error):
-                failure(error)
+                return
+            }
+            guard let value = data else {
+                queue.async {
+                    failure(TeambrellaErrorFactory.emptyReplyError())
+                }
+                return
+            }
+
+            do {
+                let reply = try ServerReply(data: value)
+                guard reply.status.isValid else {
+                    let error = TeambrellaErrorFactory.error(with: reply.status)
+                    queue.async {
+                        failure(error)
+                    }
+                    return
+                }
+
+                queue.async {
+                    success(reply)
+                }
+
+                if let router = self.router {
+                    let manager = SODManager(router: router)
+                    manager.checkVersion(serverReply: reply)
+                }
+            } catch {
+                queue.async {
+                    failure(error)
+                }
             }
         }
+        task.resume()
     }
     
     private func printAsString(data: Data?) {
