@@ -58,7 +58,7 @@ struct HomeCellBuilder {
         case .claim:
             cell.avatarView.show(model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
-            cell.leftNumberView.currencyLabel.text = service.session?.currentTeam?.currencySymbol ?? "?"
+            cell.leftNumberView.currencyLabel.text = service.currencySymbol
             cell.leftNumberView.isCurrencyVisible = true
             cell.leftNumberView.isPercentVisible = false
             let isMine = model.userID == service.myUserID
@@ -69,7 +69,6 @@ struct HomeCellBuilder {
             cell.rightNumberView.amountLabel.text = amountText
             cell.rightNumberView.isBadgeVisible = model.isVoting
             cell.rightNumberView.isPercentVisible = model.teamVote != nil
-//            cell.rightNumberView.currencyLabel.text = model.teamVote == nil ? nil : "%"
         case .teammate:
             cell.avatarView.show(model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
@@ -81,7 +80,6 @@ struct HomeCellBuilder {
             cell.rightNumberView.isBadgeVisible = model.isVoting
             cell.rightNumberView.isCurrencyVisible = false
             cell.rightNumberView.isPercentVisible = false
-//            cell.rightNumberView.currencyLabel.text = nil
         default:
             break
         }
