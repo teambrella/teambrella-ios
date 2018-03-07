@@ -14,32 +14,44 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import Alamofire
 import Foundation
 
 class TimestampFetcher {
+    lazy private var session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config)
+    }()
+
     func requestTimestamp(completion: @escaping (Int64, Error?) -> Void) {
         guard let url = URLBuilder().url(string: "me/GetTimestamp") else {
             fatalError("Couldn't create URL")
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = HTTPMethod.post.rawValue
+        request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        Alamofire.request(request).responseData { response in
-            switch response.result {
-            case let .success(data):
-                do {
-                    let result = try JSONDecoder().decode(TimestampReply.self, from: data)
-                    completion(result.status.timestamp, nil)
-                } catch {
+
+        let queue = OperationQueue.current?.underlyingQueue ?? DispatchQueue.main
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                queue.async {
                     completion(0, error)
                 }
-            case let .failure(error):
-                completion(0, error)
+                return
+            }
+
+            do {
+                let result = try JSONDecoder().decode(TimestampReply.self, from: data)
+                queue.async {
+                    completion(result.status.timestamp, nil)
+                }
+            } catch {
+                queue.async {
+                    completion(0, error)
+                }
             }
         }
+        task.resume()
     }
     
 }
