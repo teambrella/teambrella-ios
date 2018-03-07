@@ -121,7 +121,6 @@ struct TeammateCellBuilder {
         controller.updateAverages(cell: votingCell,
                                   risk: currentChosenRisk)
         
-        let dateProcessor = DateProcessor()
         var prefix = ""
         if voting.remainingMinutes < 60 {
             prefix = "Team.Claim.minutes_format".localized(voting.remainingMinutes)
@@ -131,7 +130,7 @@ struct TeammateCellBuilder {
             prefix = "Team.Claim.days_format".localized(voting.remainingMinutes / (60 * 24))
         }
         votingCell.timeLabel.text = prefix.uppercased() + " " +
-            dateProcessor.stringFromNow(minutes: -voting.remainingMinutes).uppercased()
+            DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
     }
     
     private static func populateVote(cell: VotingRiskCell,
@@ -289,7 +288,6 @@ struct TeammateCellBuilder {
     private static func populateDiscussion(cell: DiscussionCell, with stats: TopicEntity, avatar: String) {
         cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: avatar)))
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
-        let dateProcessor = DateProcessor()
         let minutesSinceLastPost = stats.minutesSinceLastPost
         switch minutesSinceLastPost {
         case 0:
@@ -302,7 +300,7 @@ struct TeammateCellBuilder {
             cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
         default:
             let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
-            cell.timeLabel.text = dateProcessor.stringIntervalOrDate(from: date)
+            cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date)
         }
         let message = stats.originalPostText.sane
         cell.textLabel.text = message

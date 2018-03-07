@@ -69,7 +69,6 @@ struct ClaimCellBuilder {
         cell.textLabel.text = claim.discussion.originalPostText.sane
         cell.unreadCountLabel.text = "\(claim.discussion.unreadCount)"
         cell.unreadCountLabel.isHidden = claim.discussion.unreadCount <= 0
-        let dateProcessor = DateProcessor()
         let minutesSinceLastPost = claim.discussion.minutesSinceLastPost
         switch minutesSinceLastPost {
         case 0:
@@ -82,7 +81,7 @@ struct ClaimCellBuilder {
             cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
         default:
             let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
-            cell.timeLabel.text = dateProcessor.stringIntervalOrDate(from: date)
+            cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date)
         }
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
@@ -95,7 +94,6 @@ struct ClaimCellBuilder {
         }
 
         cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
-        let dateProcessor = DateProcessor()
         var prefix = ""
         if voting.minutesRemaining < 60 {
             prefix = "Team.Claim.minutes_format".localized(voting.minutesRemaining)
@@ -105,7 +103,7 @@ struct ClaimCellBuilder {
             prefix = "Team.Claim.days_format".localized(voting.minutesRemaining / (60 * 24))
         }
         cell.remainingDaysLabel.text = prefix.uppercased() + " " +
-            dateProcessor.stringFromNow(minutes: -voting.minutesRemaining).uppercased()
+            DateProcessor().stringFromNow(minutes: -voting.minutesRemaining).uppercased()
 
         cell.pieChart.setupWith(remainingMinutes: voting.minutesRemaining)
         

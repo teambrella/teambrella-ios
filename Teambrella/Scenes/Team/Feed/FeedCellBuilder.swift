@@ -40,9 +40,8 @@ struct FeedCellBuilder {
             let label: String? = count > 3 ? "+\(count - 3)" : nil
             cell.facesStack.setAvatars(model.topPosterAvatars, label: label, max: count > 3 ? 4 : 3)
 
-            let dateProcessor = DateProcessor()
             if let date = model.itemDate {
-                cell.timeLabel.text = dateProcessor.stringIntervalOrDate(from: date).uppercased()
+                cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date).uppercased()
             }
             cell.unreadLabel.font = UIFont.teambrellaBold(size: 13)
             cell.unreadLabel.text = String(model.unreadCount)

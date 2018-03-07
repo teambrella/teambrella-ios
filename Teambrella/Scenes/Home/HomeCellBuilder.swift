@@ -98,8 +98,8 @@ struct HomeCellBuilder {
             cell.unreadCountView.isHidden = true
         }
         cell.rightNumberView.isBadgeVisible = model.isVoting
-        
-        cell.subtitleLabel.text = DateProcessor().stringInterval(from: model.itemDate)
+
+        cell.subtitleLabel.text = DateProcessor().stringIntervalOrDate(from: model.itemDate)
     }
     
     static func populateSupport(cell: UICollectionViewCell, dataSource: HomeDataSource) {
