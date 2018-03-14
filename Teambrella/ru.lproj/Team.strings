@@ -157,10 +157,7 @@
 "Team.Chat.Input.yourMessageHere"                     = "Ваше сообщение";
 
 "Team.Home.Card.claimed"                              = "ЗАЯВЛЕНО";
-"Team.Home.Card.yourClaim"                            = "Ваша заявка";
-"Team.Home.Card.claim"                                = "Заявка";
 "Team.Home.Card.coverage"                             = "ЗАЩИТА";
-"Team.Home.Card.newTeammate"                          = "Новый участник";
 "Team.Home.Card.teamVote"                             = "ГОЛОС ГРУППЫ";
 "Team.Home.Card.voting"                               = "ГОЛОСОВАНИЕ";
 

@@ -131,12 +131,12 @@ struct ClaimCellBuilder {
         cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         cell.yourVotePercentValue.alpha = 1
         cell.yourVoteAmount.alpha = 1
-        cell.yourVoteCurrency.text = service.session?.currentTeam?.currency
+        cell.yourVoteCurrency.text = service.currencyName 
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
         cell.teamVotePercentValue.text = String.truncatedNumber(voting.ratioVoted.percentage)
         cell.teamVoteAmount.text = String.truncatedNumber(voting.ratioVoted.fiat(from: claim.basic.claimAmount).value)
-        cell.teamVoteCurrency.text = service.session?.currentTeam?.currency
+        cell.teamVoteCurrency.text = service.currencyName
         
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
         cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)
@@ -170,8 +170,7 @@ struct ClaimCellBuilder {
         let deductible = String(format: "%.2f", claim.basic.deductible)
         cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
         let estimatedExpenses = String(format: "%.2f", claim.basic.estimatedExpenses)
-        guard let currency = service.session?.currentTeam?.currencySymbol else { return }
-
+        let currency = service.currencySymbol
         cell.claimAmountValueLabel.text = currency + claimAmount
         cell.deductibleValueLabel.text = currency + deductible
         cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses
