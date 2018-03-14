@@ -33,6 +33,7 @@ class HomeCollectionCell: UICollectionViewCell, XIBInitableCell, ClosableCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subtitleLabel: UILabel!
     @IBOutlet var avatarView: UIImageView!
+    @IBOutlet var ownerAvatarView: RoundImageView!
     
     @IBOutlet var leftNumberView: NumberView!
     @IBOutlet var rightNumberView: NumberView!
@@ -49,7 +50,7 @@ class HomeCollectionCell: UICollectionViewCell, XIBInitableCell, ClosableCell {
         ViewDecorator.addCloseButton(for: self)
         rightNumberView.isCurrencyVisible = false
         // show 2 lines on shorter screens and 4 or 5 lines on larger ones
-        textLabel.numberOfLines = isSmallIPhone ? 2 : 5 - (3 - Int(UIScreen.main.nativeScale))
+        textLabel.numberOfLines = 2 //isSmallIPhone ? 2 : 5 - (3 - Int(UIScreen.main.nativeScale))
     }
     
 }

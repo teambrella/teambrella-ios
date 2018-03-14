@@ -37,13 +37,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collision Deductible" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIJ-N2-jqV" customClass="ChatTextLabel" customModule="Surilla" customModuleProvider="target">
-                    <rect key="frame" x="94" y="119" width="129" height="17"/>
+                    <rect key="frame" x="94" y="127" width="129" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVERED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRW-vd-Z9W" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                    <rect key="frame" x="94" y="107" width="50" height="12"/>
+                    <rect key="frame" x="94" y="115" width="50" height="12"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                     <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -54,7 +54,7 @@
                 <constraint firstItem="SIJ-N2-jqV" firstAttribute="leading" secondItem="tYG-VS-gf2" secondAttribute="leading" id="6bU-0N-zpB"/>
                 <constraint firstItem="pRW-vd-Z9W" firstAttribute="leading" secondItem="tYG-VS-gf2" secondAttribute="leading" id="7er-5e-sfy"/>
                 <constraint firstItem="SIJ-N2-jqV" firstAttribute="top" secondItem="pRW-vd-Z9W" secondAttribute="bottom" id="Phj-Th-iJn"/>
-                <constraint firstItem="SIJ-N2-jqV" firstAttribute="bottom" secondItem="V3n-rk-6pA" secondAttribute="bottom" constant="-8" id="UV9-cF-xo1"/>
+                <constraint firstItem="SIJ-N2-jqV" firstAttribute="bottom" secondItem="V3n-rk-6pA" secondAttribute="bottom" id="UV9-cF-xo1"/>
                 <constraint firstItem="tYG-VS-gf2" firstAttribute="leading" secondItem="V3n-rk-6pA" secondAttribute="trailing" constant="22" id="dRn-9a-5FM"/>
                 <constraint firstItem="tYG-VS-gf2" firstAttribute="top" secondItem="V3n-rk-6pA" secondAttribute="top" id="gJc-lK-Mrh"/>
                 <constraint firstItem="V3n-rk-6pA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="lrw-TO-6qw"/>

@@ -56,24 +56,26 @@ struct HomeCellBuilder {
     static func populateHome(cell: HomeCollectionCell, model: HomeCardModel) {
         switch model.itemType {
         case .claim:
+            cell.titleLabel.text = model.itemName
+            cell.ownerAvatarView.isHidden = false
+            cell.ownerAvatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: model.userAvatar)))
+            cell.subtitleLabel.text = model.userName.entire.uppercased()
             cell.avatarView.show(model.smallPhoto)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
             cell.leftNumberView.currencyLabel.text = service.currencySymbol
             cell.leftNumberView.isCurrencyVisible = true
             cell.leftNumberView.isPercentVisible = false
-            let isMine = model.userID == service.myUserID
-            cell.titleLabel.text = isMine
-                ? "Team.Home.Card.yourClaim".localized
-                : "Team.Home.Card.claim".localized
             let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
             cell.rightNumberView.amountLabel.text = amountText
             cell.rightNumberView.isBadgeVisible = model.isVoting
             cell.rightNumberView.isPercentVisible = model.teamVote != nil
         case .teammate:
+            cell.titleLabel.text = model.userName.entire
+            cell.subtitleLabel.text = model.itemName.uppercased()
+            cell.ownerAvatarView.isHidden = true
             cell.avatarView.show(model.smallPhoto)
-//            cell.avatarView.roundCorners(.allCorners, radius: 20)
+            cell.avatarView.roundCorners(.allCorners, radius: cell.avatarView.bounds.width / 2)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
-            cell.titleLabel.text = "Team.Home.Card.newTeammate".localized
             cell.leftNumberView.isCurrencyVisible = true
             cell.leftNumberView.isPercentVisible = false
             let amountText: String = model.teamVote.map { String(format: "%.1f", $0) } ?? "..."
@@ -98,7 +100,7 @@ struct HomeCellBuilder {
         }
         cell.rightNumberView.isBadgeVisible = model.isVoting
 
-        cell.subtitleLabel.text = DateProcessor().stringIntervalOrDate(from: model.itemDate)
+//        cell.subtitleLabel.text = DateProcessor().stringIntervalOrDate(from: model.itemDate)
     }
     
     static func populateSupport(cell: UICollectionViewCell, dataSource: HomeDataSource) {
