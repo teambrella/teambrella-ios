@@ -486,7 +486,6 @@
 		6D4E5D751F7AB6870020DEE2 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */; };
 		6D4E5D761F7AB6870020DEE2 /* ImageSlideshow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DDE956A1EE80FE40019DA47 /* ImageSlideshow.framework */; };
 		6D4E5D771F7AB6870020DEE2 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8D54E1F0E43B7000A4DB7 /* PKHUD.framework */; };
-		6D4E5D791F7AB6870020DEE2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
 		6D4E5D7A1F7AB6870020DEE2 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
 		6D4E5D7B1F7AB6870020DEE2 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */; };
 		6D4E5D7D1F7AB6870020DEE2 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0BA5B01F14F83000055E74 /* SwiftDate.framework */; };
@@ -692,7 +691,6 @@
 		6D878E50200CF63600066492 /* GasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D878E4E200CF63600066492 /* GasStation.swift */; };
 		6D88C4FD1FA3986300E55F7C /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */; };
 		6D8C6FE71F754D7000BF65B6 /* Error.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D8C6FE51F754D7000BF65B6 /* Error.strings */; };
-		6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
 		6D900E201FC31CFF00FF6FF8 /* RemoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */; };
 		6D900E221FC31D4100FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
 		6D900E231FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
@@ -740,7 +738,6 @@
 		6DA1A5431FBF0C70000FDECA /* TimestampFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FD131FBC95CB006C0A2B /* TimestampFetcher.swift */; };
 		6DA1A5441FBF0C7F000FDECA /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF3E7611F795ED6000C7885 /* KeyStorage.swift */; };
 		6DA1A5451FBF0C8B000FDECA /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC230691ED07F0500FAC330 /* Key.swift */; };
-		6DA1A5461FBF0CB9000FDECA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
 		6DA1A5471FBF0CC1000FDECA /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */; };
 		6DA1A5491FBF0CF1000FDECA /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479191F432D230025F489 /* KeychainService.swift */; };
 		6DA1A54B1FBF25ED000FDECA /* RemotePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1A54A1FBF25ED000FDECA /* RemotePayload.swift */; };
@@ -912,7 +909,6 @@
 		6DEFE3FF2006547D00615022 /* RemotePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1A54A1FBF25ED000FDECA /* RemotePayload.swift */; };
 		6DEFE4002006548000615022 /* RemoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */; };
 		6DEFE4012006548300615022 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
-		6DEFE4032006553400615022 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F97111E8D1529008DC62E /* Alamofire.framework */; };
 		6DEFE4042006553E00615022 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */; };
 		6DEFE4052006559600615022 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D1021F056DF900F9DE87 /* UIImage.swift */; };
 		6DEFE406200655A100615022 /* String-localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E281FC46B0D00FF6FF8 /* String-localized.swift */; };
@@ -1681,7 +1677,6 @@
 				6D506CE02045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */,
 				6D4E5D761F7AB6870020DEE2 /* ImageSlideshow.framework in Frameworks */,
 				6D4E5D771F7AB6870020DEE2 /* PKHUD.framework in Frameworks */,
-				6D4E5D791F7AB6870020DEE2 /* Alamofire.framework in Frameworks */,
 				6D4E5D7A1F7AB6870020DEE2 /* SwiftSoup.framework in Frameworks */,
 				6DE3E34E2049BCED0042CD72 /* QRCode.framework in Frameworks */,
 				6D4E5D7B1F7AB6870020DEE2 /* Kingfisher.framework in Frameworks */,
@@ -1700,7 +1695,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0FA59804169C556DC361F3C /* libPods-notification.a in Frameworks */,
-				6DA1A5461FBF0CB9000FDECA /* Alamofire.framework in Frameworks */,
 				6DA1A5471FBF0CC1000FDECA /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1718,7 +1712,6 @@
 				6D9CC6331ED7207E007F936E /* XLPagerTabStrip.framework in Frameworks */,
 				6DDE956B1EE80FE40019DA47 /* ImageSlideshow.framework in Frameworks */,
 				6DA8D54F1F0E43B7000A4DB7 /* PKHUD.framework in Frameworks */,
-				6D8F97121E8D1529008DC62E /* Alamofire.framework in Frameworks */,
 				6DE3E34D2049BCED0042CD72 /* QRCode.framework in Frameworks */,
 				6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */,
 				6DEC07501E9BD59D0078F40E /* Kingfisher.framework in Frameworks */,
@@ -1744,7 +1737,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFC3BBD4921FE3745A914383 /* libPods-NotificationTeambrella.a in Frameworks */,
-				6DEFE4032006553400615022 /* Alamofire.framework in Frameworks */,
 				6DEFE4042006553E00615022 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3338,7 +3330,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5367BD3EC56B804CAF87F366 /* [CP] Check Pods Manifest.lock */ = {
@@ -3356,7 +3348,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5BF653B1A5278B620E9E183E /* [CP] Check Pods Manifest.lock */ = {
@@ -3374,7 +3366,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		65B64BFEA424A8A8035DD14A /* [CP] Embed Pods Frameworks */ = {
@@ -3398,7 +3390,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftSoup.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
@@ -3459,7 +3450,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftSoup.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
@@ -3580,7 +3570,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A20056F77F23DD914F29299D /* [CP] Embed Pods Frameworks */ = {
@@ -3613,7 +3603,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C9EBD6E0B966B48E6F3C64C2 /* [CP] Copy Pods Resources */ = {
