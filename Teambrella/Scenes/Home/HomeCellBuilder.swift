@@ -61,6 +61,7 @@ struct HomeCellBuilder {
             cell.ownerAvatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: model.userAvatar)))
             cell.subtitleLabel.text = model.userName.entire.uppercased()
             cell.avatarView.show(model.smallPhoto)
+            cell.avatarView.roundCorners(.allCorners, radius: 3)
             cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
             cell.leftNumberView.currencyLabel.text = service.currencySymbol
             cell.leftNumberView.isCurrencyVisible = true
@@ -99,8 +100,6 @@ struct HomeCellBuilder {
             cell.unreadCountView.isHidden = true
         }
         cell.rightNumberView.isBadgeVisible = model.isVoting
-
-//        cell.subtitleLabel.text = DateProcessor().stringIntervalOrDate(from: model.itemDate)
     }
     
     static func populateSupport(cell: UICollectionViewCell, dataSource: HomeDataSource) {
