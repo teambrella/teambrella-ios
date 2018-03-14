@@ -99,13 +99,13 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Claim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOc-vE-rr1" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="64" y="16" width="79" height="16"/>
+                                                            <rect key="frame" x="61" y="16" width="79" height="16"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <color key="textColor" red="0.17254901960784313" green="0.22352941176470587" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Xgi-6B-dc7">
-                                                            <rect key="frame" x="64" y="32" width="149" height="16"/>
+                                                            <rect key="frame" x="61" y="32" width="149" height="16"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="glR-a3-NEg" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -154,13 +154,13 @@
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OCk-hp-xSl">
-                                                            <rect key="frame" x="16" y="112" width="293" height="22.5"/>
+                                                            <rect key="frame" x="16" y="112" width="293" height="28.5"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLa-Rg-RZk">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="253" height="22.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="253" height="28.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neighborhood that is really good and i would like to buy it for sure" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTU-MO-gZV" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="253" height="22.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="253" height="28.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -175,7 +175,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UyN-7e-WUG" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                                                    <rect key="frame" x="258" y="0.5" width="22" height="22"/>
+                                                                    <rect key="frame" x="258" y="3.5" width="22" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="22" id="H9v-Ou-kgr"/>
                                                                         <constraint firstAttribute="width" secondItem="UyN-7e-WUG" secondAttribute="height" multiplier="1:1" id="Pfb-7M-5Lm"/>
@@ -191,7 +191,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="1RN-Vg-g5G">
-                                                                    <rect key="frame" x="285" y="5" width="8" height="13"/>
+                                                                    <rect key="frame" x="285" y="8" width="8" height="13"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="8" id="WKe-ei-NRG"/>
                                                                         <constraint firstAttribute="height" constant="13" id="oO8-pS-otp"/>
@@ -212,11 +212,11 @@
                                                         <constraint firstItem="OD5-cP-eZ5" firstAttribute="top" secondItem="oDi-TS-IgV" secondAttribute="bottom" constant="8" id="bxu-9W-0bZ"/>
                                                         <constraint firstItem="dOc-vE-rr1" firstAttribute="bottom" secondItem="oDi-TS-IgV" secondAttribute="centerY" id="cF4-oW-jZN"/>
                                                         <constraint firstItem="OCk-hp-xSl" firstAttribute="leading" secondItem="I7o-eI-ssZ" secondAttribute="leading" constant="16" id="d2X-iz-zEd"/>
-                                                        <constraint firstItem="dOc-vE-rr1" firstAttribute="leading" secondItem="oDi-TS-IgV" secondAttribute="trailing" constant="16" id="dJI-qb-oMJ"/>
+                                                        <constraint firstItem="dOc-vE-rr1" firstAttribute="leading" secondItem="oDi-TS-IgV" secondAttribute="trailing" constant="13" id="dJI-qb-oMJ"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dOc-vE-rr1" secondAttribute="trailing" constant="16" id="giu-2K-2Gh"/>
                                                         <constraint firstItem="OCk-hp-xSl" firstAttribute="top" secondItem="OD5-cP-eZ5" secondAttribute="bottom" constant="2" id="gv0-fd-E8B"/>
                                                         <constraint firstItem="oDi-TS-IgV" firstAttribute="top" secondItem="I7o-eI-ssZ" secondAttribute="top" constant="16" id="h6g-uk-3Cb"/>
-                                                        <constraint firstAttribute="bottom" secondItem="OCk-hp-xSl" secondAttribute="bottom" constant="16" id="jTj-MJ-m6A"/>
+                                                        <constraint firstAttribute="bottom" secondItem="OCk-hp-xSl" secondAttribute="bottom" constant="10" id="jTj-MJ-m6A"/>
                                                         <constraint firstItem="Xgi-6B-dc7" firstAttribute="top" secondItem="dOc-vE-rr1" secondAttribute="bottom" id="p87-l9-tbd"/>
                                                         <constraint firstItem="dOc-vE-rr1" firstAttribute="top" secondItem="oDi-TS-IgV" secondAttribute="top" id="vcN-F0-jRH"/>
                                                     </constraints>
