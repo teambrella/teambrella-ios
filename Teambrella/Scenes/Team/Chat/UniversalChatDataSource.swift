@@ -93,6 +93,13 @@ final class UniversalChatDatasource {
         return nil
     }
     
+    var claimDate: Date? {
+        if let chatModel = chatModel?.basic {
+            return chatModel.incidentDate
+        }
+        return nil
+    }
+    
     var teammateInfo: TeammateLarge.BasicInfo? {
         if let strategy = strategy as? TeammateChatStrategy {
             return strategy.teammate.basic
@@ -114,8 +121,12 @@ final class UniversalChatDatasource {
         }
 
          if chatModel.isClaimChat {
-            let id = chatModel.id ?? 0
-            return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(id)"
+            if let date = claimDate {
+                return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " - " +
+                    Formatter.teambrellaShort.string(from: date)
+            } else {
+                return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized
+            }
         } else if chatModel.isApplicationChat {
             return "Team.Chat.TypeLabel.application".localized.lowercased().capitalized
         } else if let title = chatModel.basic?.title {
