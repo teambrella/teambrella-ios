@@ -275,15 +275,11 @@ final class UniversalChatVC: UIViewController, Routable {
 // MARK: Private
 private extension UniversalChatVC {
     private func setupScrollHandler() {
-        scrollViewHandler.onFastBackwardScroll = { [weak self] velocity in
-            guard let `self` = self else { return }
-
+        scrollViewHandler.onScrollingUp = {
             self.slidingView.hideAll()
         }
 
-        scrollViewHandler.onFastForwardScroll = { [weak self] velocity in
-            guard let `self` = self else { return }
-
+        scrollViewHandler.onScrollingDown = {
             self.showObject()
         }
     }
@@ -765,6 +761,14 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
 extension UniversalChatVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewHandler.scrollViewDidScroll(scrollView)
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollViewHandler.scrollViewWillBeginDragging(scrollView)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        scrollViewHandler.scrollViewDidEndDragging(scrollView, willDecelerate: decelerate)
     }
 }
 
