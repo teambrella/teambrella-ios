@@ -36,6 +36,7 @@ struct HomeCardModel: Decodable {
         case userAvatar       = "ItemUserAvatar"
         case posterCount      = "PosterCount"
         case topPosterAvatars = "TopPosterAvatars"
+        case year             = "Year"
     }
     
     let text: SaneText
@@ -56,4 +57,5 @@ struct HomeCardModel: Decodable {
     let userAvatar: String
     let posterCount: Int?
     let topPosterAvatars: [String]?
+    let year: Int
 }
