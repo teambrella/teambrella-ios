@@ -53,13 +53,15 @@ class ProxyForVC: UIViewController {
     }
     
     func showEmptyIfNeeded() {
-        if dataSource.isEmpty && emptyVC == nil {
-            let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y,
-                               width: self.collectionView.frame.width,
-                               height: self.collectionView.frame.height)
-            emptyVC = EmptyVC.show(in: self, inView: self.collectionView, frame: frame, animated: false)
-            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
-            emptyVC?.setText(title: "Proxy.Empty.You.title".localized, subtitle: "Proxy.Empty.You.details".localized)
+        if dataSource.isEmpty {
+            if emptyVC == nil {
+                let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y,
+                                   width: self.collectionView.frame.width,
+                                   height: self.collectionView.frame.height)
+                emptyVC = EmptyVC.show(in: self, inView: self.collectionView, frame: frame, animated: false)
+                emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
+                emptyVC?.setText(title: "Proxy.Empty.You.title".localized, subtitle: "Proxy.Empty.You.details".localized)
+            }
         } else {
             emptyVC?.remove()
             emptyVC = nil
