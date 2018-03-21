@@ -8,7 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -211,12 +210,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niI-CL-ghc" userLabel="Resizing View" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlV-U7-6tI">
-                                                        <rect key="frame" x="333.5" y="0.0" width="41.5" height="214"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CAU-Da-efd" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="250.5" y="0.0" width="83" height="214"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -331,27 +326,23 @@
                                                     <constraint firstItem="pn0-6n-rVi" firstAttribute="leading" secondItem="kUP-Nl-L65" secondAttribute="leading" id="8lf-zl-Hvg"/>
                                                     <constraint firstItem="G8l-Eu-bWi" firstAttribute="leading" secondItem="qyr-m3-nkH" secondAttribute="trailing" constant="8" id="CBk-ka-y0T"/>
                                                     <constraint firstItem="qyr-m3-nkH" firstAttribute="leading" secondItem="niI-CL-ghc" secondAttribute="leading" constant="16" id="Drw-9E-2Vx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CAU-Da-efd" secondAttribute="trailing" id="Fu3-Gs-MDt"/>
                                                     <constraint firstAttribute="bottom" secondItem="CAU-Da-efd" secondAttribute="bottom" id="IJO-SC-M6b"/>
-                                                    <constraint firstItem="dlV-U7-6tI" firstAttribute="width" secondItem="niI-CL-ghc" secondAttribute="width" multiplier="1:9" id="InT-Hx-cxy"/>
                                                     <constraint firstAttribute="bottom" secondItem="Ank-lB-ThK" secondAttribute="bottom" id="N0c-NM-IzR"/>
                                                     <constraint firstItem="KSQ-J5-PyT" firstAttribute="centerY" secondItem="niI-CL-ghc" secondAttribute="centerY" id="N1P-Dh-lUy"/>
                                                     <constraint firstItem="pn0-6n-rVi" firstAttribute="top" secondItem="KSQ-J5-PyT" secondAttribute="centerY" id="OFt-tN-bWY"/>
-                                                    <constraint firstAttribute="bottom" secondItem="dlV-U7-6tI" secondAttribute="bottom" id="RFS-6i-W2A"/>
                                                     <constraint firstItem="CAU-Da-efd" firstAttribute="top" secondItem="niI-CL-ghc" secondAttribute="top" id="ZHX-Kk-NMG"/>
                                                     <constraint firstAttribute="trailing" secondItem="G8l-Eu-bWi" secondAttribute="trailing" constant="16" id="bIm-Lg-ZHQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ank-lB-ThK" secondAttribute="trailing" id="cn6-Tm-b7D"/>
                                                     <constraint firstItem="jor-Dp-OpJ" firstAttribute="centerY" secondItem="KSQ-J5-PyT" secondAttribute="centerY" id="dQ1-zf-Mvb"/>
                                                     <constraint firstAttribute="height" constant="214" id="jfu-tc-bcX"/>
                                                     <constraint firstItem="kUP-Nl-L65" firstAttribute="leading" secondItem="KSQ-J5-PyT" secondAttribute="trailing" constant="16" id="mR0-9d-Ajm"/>
-                                                    <constraint firstItem="CAU-Da-efd" firstAttribute="trailing" secondItem="dlV-U7-6tI" secondAttribute="leading" id="mjS-W8-lmY"/>
-                                                    <constraint firstItem="dlV-U7-6tI" firstAttribute="top" secondItem="niI-CL-ghc" secondAttribute="top" id="qbK-yo-XWD"/>
-                                                    <constraint firstAttribute="trailing" secondItem="dlV-U7-6tI" secondAttribute="trailing" id="sKb-CP-WjJ"/>
                                                     <constraint firstItem="qyr-m3-nkH" firstAttribute="top" secondItem="niI-CL-ghc" secondAttribute="top" constant="8" id="t7J-nk-2xZ"/>
                                                     <constraint firstItem="kUP-Nl-L65" firstAttribute="bottom" secondItem="KSQ-J5-PyT" secondAttribute="centerY" id="uSj-6x-snd"/>
                                                     <constraint firstItem="Ank-lB-ThK" firstAttribute="leading" secondItem="niI-CL-ghc" secondAttribute="leading" id="xq3-7B-vVN"/>
                                                     <constraint firstItem="G8l-Eu-bWi" firstAttribute="centerY" secondItem="qyr-m3-nkH" secondAttribute="centerY" id="yhK-KQ-ist"/>
+                                                    <constraint firstItem="CAU-Da-efd" firstAttribute="leading" secondItem="niI-CL-ghc" secondAttribute="leading" id="z0t-Wo-VOX"/>
                                                     <constraint firstItem="KSQ-J5-PyT" firstAttribute="leading" secondItem="niI-CL-ghc" secondAttribute="leading" constant="16" id="zrP-tg-cgE"/>
-                                                    <constraint firstItem="CAU-Da-efd" firstAttribute="width" secondItem="dlV-U7-6tI" secondAttribute="width" multiplier="2:1" id="zzq-i4-jTO"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="rotated" value="YES"/>

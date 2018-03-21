@@ -176,7 +176,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-qd-b7g" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="80" y="22" width="42" height="21"/>
+                                                            <rect key="frame" x="78" y="22" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -222,7 +222,7 @@
                                                         <constraint firstAttribute="trailingMargin" secondItem="lxG-ol-cRO" secondAttribute="trailing" id="u2q-pz-TDf"/>
                                                         <constraint firstItem="lxG-ol-cRO" firstAttribute="leading" secondItem="bnD-c5-vO8" secondAttribute="leading" id="v9N-bx-VPx"/>
                                                         <constraint firstItem="XNe-Ds-VYF" firstAttribute="leading" secondItem="vO9-KQ-q0o" secondAttribute="leading" id="vJ8-oz-gxl"/>
-                                                        <constraint firstItem="yJq-qd-b7g" firstAttribute="leading" secondItem="kAt-qk-Sp0" secondAttribute="trailing" constant="8" id="xdJ-Cl-mZH"/>
+                                                        <constraint firstItem="yJq-qd-b7g" firstAttribute="leading" secondItem="kAt-qk-Sp0" secondAttribute="trailing" constant="6" id="xdJ-Cl-mZH"/>
                                                     </constraints>
                                                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                                 </view>
@@ -312,7 +312,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-bQ-aHd" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="80" y="22.5" width="42" height="20.5"/>
+                                                            <rect key="frame" x="78" y="22.5" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -332,7 +332,7 @@
                                                         <constraint firstItem="Dd6-bQ-aHd" firstAttribute="centerY" secondItem="HgH-8d-lM4" secondAttribute="centerY" id="G5Q-6g-gys"/>
                                                         <constraint firstItem="80E-3m-yXF" firstAttribute="leading" secondItem="uvp-wZ-ehF" secondAttribute="leading" id="Pm9-pn-DNf"/>
                                                         <constraint firstItem="HgH-8d-lM4" firstAttribute="bottom" secondItem="80E-3m-yXF" secondAttribute="bottom" id="c3X-He-bXR"/>
-                                                        <constraint firstItem="Dd6-bQ-aHd" firstAttribute="leading" secondItem="HgH-8d-lM4" secondAttribute="trailing" constant="8" id="jMl-oA-n4H"/>
+                                                        <constraint firstItem="Dd6-bQ-aHd" firstAttribute="leading" secondItem="HgH-8d-lM4" secondAttribute="trailing" constant="6" id="jMl-oA-n4H"/>
                                                         <constraint firstItem="qe7-3f-eEx" firstAttribute="top" secondItem="80E-3m-yXF" secondAttribute="top" id="jx9-7P-o00"/>
                                                         <constraint firstAttribute="height" constant="40" id="zHr-Mm-nPZ"/>
                                                         <constraint firstItem="80E-3m-yXF" firstAttribute="top" secondItem="uvp-wZ-ehF" secondAttribute="top" id="zq6-9c-w7i"/>
@@ -471,12 +471,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3o-0U-iv8" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="128"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6V-UU-Z0D">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="36"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pso-K3-agA" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -525,27 +521,23 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="y6V-UU-Z0D" firstAttribute="top" secondItem="vga-kX-rYF" secondAttribute="centerY" id="0oz-zp-VFV"/>
                                     <constraint firstItem="vga-kX-rYF" firstAttribute="leading" secondItem="G0r-gu-lG2" secondAttribute="trailing" constant="16" id="1rO-2w-aih"/>
                                     <constraint firstItem="4x9-LP-1wx" firstAttribute="leading" secondItem="G0r-gu-lG2" secondAttribute="trailing" constant="16" id="3N2-1w-w4q"/>
                                     <constraint firstAttribute="trailing" secondItem="vga-kX-rYF" secondAttribute="trailing" constant="16" id="6Mb-Di-xX0"/>
-                                    <constraint firstItem="y6V-UU-Z0D" firstAttribute="leading" secondItem="T3o-0U-iv8" secondAttribute="leading" id="7pN-ap-SE1"/>
                                     <constraint firstItem="pso-K3-agA" firstAttribute="leading" secondItem="T3o-0U-iv8" secondAttribute="leading" id="9eD-NL-Uag"/>
                                     <constraint firstAttribute="trailing" secondItem="err-yi-dhZ" secondAttribute="trailing" constant="16" id="F8h-Uk-ekm"/>
                                     <constraint firstAttribute="trailing" secondItem="pso-K3-agA" secondAttribute="trailing" id="M6k-u0-8eQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="y6V-UU-Z0D" secondAttribute="bottom" id="NMf-Li-7T6"/>
                                     <constraint firstItem="err-yi-dhZ" firstAttribute="leading" secondItem="G0r-gu-lG2" secondAttribute="trailing" constant="16" id="Pdq-cL-FEc"/>
-                                    <constraint firstItem="pso-K3-agA" firstAttribute="bottom" secondItem="y6V-UU-Z0D" secondAttribute="top" id="ToA-B4-KgK"/>
-                                    <constraint firstAttribute="trailing" secondItem="y6V-UU-Z0D" secondAttribute="trailing" id="U4d-S2-uUb"/>
                                     <constraint firstAttribute="trailing" secondItem="4x9-LP-1wx" secondAttribute="trailing" constant="16" id="UgK-Fi-gXE"/>
                                     <constraint firstItem="G0r-gu-lG2" firstAttribute="leading" secondItem="T3o-0U-iv8" secondAttribute="leading" constant="16" id="bJ2-up-q5X"/>
+                                    <constraint firstItem="pso-K3-agA" firstAttribute="top" secondItem="T3o-0U-iv8" secondAttribute="top" id="geR-df-caU"/>
                                     <constraint firstItem="G0r-gu-lG2" firstAttribute="top" secondItem="T3o-0U-iv8" secondAttribute="top" constant="16" id="kv0-eg-cPz"/>
                                     <constraint firstAttribute="bottom" secondItem="G0r-gu-lG2" secondAttribute="bottom" constant="16" id="m0D-eU-yI6"/>
                                     <constraint firstItem="err-yi-dhZ" firstAttribute="top" secondItem="4x9-LP-1wx" secondAttribute="bottom" constant="7" id="owj-ZQ-qzF"/>
+                                    <constraint firstAttribute="bottom" secondItem="pso-K3-agA" secondAttribute="bottom" id="pRw-6O-1mQ"/>
                                     <constraint firstAttribute="bottom" secondItem="vga-kX-rYF" secondAttribute="bottom" constant="16" id="rmY-ui-Cec"/>
                                     <constraint firstAttribute="height" constant="128" id="u6J-sI-vGB"/>
                                     <constraint firstItem="vga-kX-rYF" firstAttribute="top" secondItem="err-yi-dhZ" secondAttribute="bottom" constant="15" id="vdH-JO-OwE"/>
-                                    <constraint firstItem="vga-kX-rYF" firstAttribute="top" secondItem="pso-K3-agA" secondAttribute="top" id="xOS-vU-Mzh"/>
                                     <constraint firstItem="4x9-LP-1wx" firstAttribute="top" secondItem="G0r-gu-lG2" secondAttribute="top" id="zMH-ar-9TN"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

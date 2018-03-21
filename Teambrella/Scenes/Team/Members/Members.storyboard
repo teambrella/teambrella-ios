@@ -498,7 +498,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsF-Jx-hUP" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="94" width="373" height="58"/>
+                                                    <rect key="frame" x="0.0" y="-200" width="373" height="410"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -586,6 +586,7 @@
                                         <constraints>
                                             <constraint firstItem="j8Z-zx-s9L" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leadingMargin" id="87e-4D-8bn"/>
                                             <constraint firstItem="xmI-Jc-cL8" firstAttribute="top" secondItem="rLk-u7-6iT" secondAttribute="top" constant="-200" id="Agt-BQ-MoC"/>
+                                            <constraint firstItem="YsF-Jx-hUP" firstAttribute="top" secondItem="xmI-Jc-cL8" secondAttribute="top" id="Anb-Eo-PZ3"/>
                                             <constraint firstItem="pZr-aY-aTt" firstAttribute="centerY" secondItem="dlw-4G-kxZ" secondAttribute="centerY" id="D2a-3D-ex8"/>
                                             <constraint firstItem="pZr-aY-aTt" firstAttribute="leading" secondItem="dlw-4G-kxZ" secondAttribute="trailing" constant="18" id="G6S-Xh-vHV"/>
                                             <constraint firstItem="qxQ-2I-53K" firstAttribute="centerX" secondItem="rLk-u7-6iT" secondAttribute="centerX" id="GMU-ex-gzu"/>
@@ -596,11 +597,10 @@
                                             <constraint firstItem="dlw-4G-kxZ" firstAttribute="top" secondItem="qxQ-2I-53K" secondAttribute="bottom" constant="9" id="Sg4-xQ-ewG"/>
                                             <constraint firstItem="xmI-Jc-cL8" firstAttribute="leading" secondItem="rLk-u7-6iT" secondAttribute="leading" id="UhR-jR-qNw"/>
                                             <constraint firstItem="dlw-4G-kxZ" firstAttribute="centerX" secondItem="rLk-u7-6iT" secondAttribute="centerX" id="cdh-hJ-Wsz"/>
+                                            <constraint firstAttribute="bottom" secondItem="YsF-Jx-hUP" secondAttribute="bottom" id="dqg-gE-gpy"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="pZr-aY-aTt" secondAttribute="trailing" constant="12" id="fhj-en-wir"/>
-                                            <constraint firstItem="YsF-Jx-hUP" firstAttribute="bottom" secondItem="PJt-7g-pSD" secondAttribute="top" id="isP-tZ-O4b"/>
                                             <constraint firstItem="YsF-Jx-hUP" firstAttribute="leading" secondItem="xmI-Jc-cL8" secondAttribute="leading" id="lR2-jb-r8q"/>
                                             <constraint firstItem="dlw-4G-kxZ" firstAttribute="top" secondItem="rLk-u7-6iT" secondAttribute="topMargin" constant="42" id="mfb-cT-I60"/>
-                                            <constraint firstItem="YsF-Jx-hUP" firstAttribute="top" secondItem="KqH-Lf-3HG" secondAttribute="centerY" id="mwx-ic-IsT"/>
                                             <constraint firstItem="KqH-Lf-3HG" firstAttribute="centerY" secondItem="dlw-4G-kxZ" secondAttribute="centerY" id="rQ3-k3-DA4"/>
                                             <constraint firstItem="PJt-7g-pSD" firstAttribute="centerX" secondItem="rLk-u7-6iT" secondAttribute="centerX" id="sGi-9L-azd"/>
                                             <constraint firstItem="PJt-7g-pSD" firstAttribute="top" secondItem="xmI-Jc-cL8" secondAttribute="bottom" id="t6d-kA-J7g"/>

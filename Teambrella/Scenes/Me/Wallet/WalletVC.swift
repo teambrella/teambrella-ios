@@ -170,18 +170,6 @@ extension WalletVC: UICollectionViewDelegate {
             cell.barcodeButton.setImage(qrCode, for: .normal)
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplaySupplementaryView view: UICollectionReusableView,
-                        forElementKind elementKind: String,
-                        at indexPath: IndexPath) {
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-    
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
