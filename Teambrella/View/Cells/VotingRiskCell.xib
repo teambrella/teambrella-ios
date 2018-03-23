@@ -61,7 +61,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H5F-fa-toM">
-                                        <rect key="frame" x="8" y="31" width="74.5" height="30.5"/>
+                                        <rect key="frame" x="8" y="31" width="302.5" height="30.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -103,7 +103,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="esR-N0-PHe">
-                                        <rect key="frame" x="330" y="31" width="74.5" height="30.5"/>
+                                        <rect key="frame" x="330" y="31" width="64.5" height="30.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -166,7 +166,7 @@
                                     <constraint firstItem="VE3-Bp-PEJ" firstAttribute="centerY" secondItem="Nx1-Yq-BkA" secondAttribute="centerY" id="JGi-Cu-SPO"/>
                                     <constraint firstItem="D29-8w-VUD" firstAttribute="top" secondItem="Nx1-Yq-BkA" secondAttribute="bottom" id="LWK-uN-oW5"/>
                                     <constraint firstItem="557-Va-QA6" firstAttribute="centerY" secondItem="D29-8w-VUD" secondAttribute="centerY" id="MXm-0C-tr4"/>
-                                    <constraint firstItem="557-Va-QA6" firstAttribute="leading" secondItem="D29-8w-VUD" secondAttribute="trailing" priority="750" constant="8" id="Nho-yr-Ngi"/>
+                                    <constraint firstItem="557-Va-QA6" firstAttribute="leading" secondItem="D29-8w-VUD" secondAttribute="trailing" constant="8" id="Nho-yr-Ngi"/>
                                     <constraint firstAttribute="height" constant="105" id="Piz-5C-SK1"/>
                                     <constraint firstItem="Nx1-Yq-BkA" firstAttribute="leading" secondItem="25q-2v-Cur" secondAttribute="leading" constant="8" id="QUQ-Cu-vlZ"/>
                                     <constraint firstItem="K9q-SA-b4t" firstAttribute="centerY" secondItem="ufs-Z7-MdQ" secondAttribute="centerY" id="RNl-A7-BeM"/>
@@ -179,16 +179,16 @@
                                     <constraint firstItem="qFN-q5-gOq" firstAttribute="centerY" secondItem="ufs-Z7-MdQ" secondAttribute="centerY" id="agB-I3-dwL"/>
                                     <constraint firstItem="uwK-ph-5aq" firstAttribute="centerY" secondItem="557-Va-QA6" secondAttribute="centerY" id="cHn-4r-JGv"/>
                                     <constraint firstItem="VE3-Bp-PEJ" firstAttribute="leading" secondItem="25q-2v-Cur" secondAttribute="centerX" constant="16" id="hEh-us-LYr"/>
-                                    <constraint firstItem="UyJ-PS-yxB" firstAttribute="leading" secondItem="uwK-ph-5aq" secondAttribute="trailing" priority="750" constant="8" id="hPF-XM-5QU"/>
+                                    <constraint firstItem="UyJ-PS-yxB" firstAttribute="leading" secondItem="uwK-ph-5aq" secondAttribute="trailing" constant="8" id="hPF-XM-5QU"/>
                                     <constraint firstAttribute="bottom" secondItem="6qt-e2-WfN" secondAttribute="bottom" id="hRj-U1-Jzm"/>
                                     <constraint firstItem="UyJ-PS-yxB" firstAttribute="centerY" secondItem="uwK-ph-5aq" secondAttribute="centerY" id="hae-dk-Ind"/>
                                     <constraint firstItem="H5F-fa-toM" firstAttribute="leading" secondItem="D29-8w-VUD" secondAttribute="leading" id="ifM-uY-gXi"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="esR-N0-PHe" secondAttribute="trailing" constant="3" id="kJ7-G4-AoH"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UyJ-PS-yxB" secondAttribute="trailing" constant="3" id="lxk-kw-bJb"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ufs-Z7-MdQ" secondAttribute="bottom" constant="8" id="oS3-MN-anU"/>
                                     <constraint firstItem="esR-N0-PHe" firstAttribute="centerY" secondItem="UyJ-PS-yxB" secondAttribute="centerY" id="oxj-qs-5hX"/>
-                                    <constraint firstItem="H5F-fa-toM" firstAttribute="trailing" secondItem="557-Va-QA6" secondAttribute="trailing" id="qxO-Hl-eej"/>
-                                    <constraint firstItem="esR-N0-PHe" firstAttribute="trailing" secondItem="UyJ-PS-yxB" secondAttribute="trailing" id="v8B-PT-f5c"/>
                                     <constraint firstItem="6qt-e2-WfN" firstAttribute="top" secondItem="25q-2v-Cur" secondAttribute="top" id="xoD-sn-Th7"/>
+                                    <constraint firstItem="H5F-fa-toM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="25q-2v-Cur" secondAttribute="centerX" constant="-3" id="yZo-8U-xqW"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="slashViewColor">
