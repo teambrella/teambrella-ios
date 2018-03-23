@@ -57,7 +57,7 @@ class AlertDecorator {
             guard let view = view else { return }
 
             view.layer.borderWidth = 1
-            view.layer.cornerRadius = 5
+            view.layer.cornerRadius = 3
             view.clipsToBounds = true
             view.layer.borderColor = isInAlertMode ? alertBorderColor.cgColor : normalBorderColor.cgColor
         }
@@ -80,7 +80,7 @@ class EditDecorator {
             guard let view = view else { return }
             
             view.layer.borderWidth = 1
-            view.layer.cornerRadius = 5
+            view.layer.cornerRadius = 3
             view.clipsToBounds = true
             view.layer.borderColor = isInEditMode ? editBorderColor.cgColor : normalBorderColor.cgColor
         }

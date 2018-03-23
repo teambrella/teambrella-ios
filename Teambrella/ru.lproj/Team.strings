@@ -10,7 +10,7 @@
 
 "Team.ClaimsVC.indicatorTitle"                        = "Заявки";
 "Team.ClaimsCell.claimed"                             = "заявлено";
-"Team.ClaimsCell.viewToVote"                          = "Смотреть, чтобы голосовать";
+"Team.ClaimsCell.viewToVote"                          = "Голосовать";
 "Team.ClaimsCell.reimbursed"                          = "Выплачено";
 
 "Team.ClaimCell.claimID_format"                       = "Заявка %d";
@@ -175,7 +175,7 @@
 "Team.Chat.Unmute" = "Теперь вы получаете нотификации по этой беседе";
 "Team.Chat.Mute" = "Вы отписались от нотификаций по этой беседе";
 
-"Team.Claims.objectView.reportButton.title" = "Отправить заявку";
+"Team.Claims.objectView.reportButton.title" = "Подать заявку";
 
 "Team.Chat.ObjectView.VoteLabel" = "Голосовать";
 "Team.Chat.ObjectView.RevoteLabel" = "Голосовать"; // переголосовать не влезает на маленькие айфоны

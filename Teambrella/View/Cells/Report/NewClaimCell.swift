@@ -39,12 +39,16 @@ class NewClaimCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        objectImageView.layer.cornerRadius = 3
+        objectImageView.layer.cornerRadius = 4
         statsNumberBar.left?.isBadgeVisible = false
         statsNumberBar.middle?.isBadgeVisible = false
         statsNumberBar.right?.isBadgeVisible = false
-        descriptionTextView.layer.masksToBounds = true
-        
+        expensesTextField.clipsToBounds = true
+        expensesTextField.layer.cornerRadius = 3
+        descriptionTextView.clipsToBounds = true
+        descriptionTextView.layer.cornerRadius = 3
+        reimburseTextField.clipsToBounds = true
+        reimburseTextField.layer.cornerRadius = 3
     }
     
     func updateExpenses(limit: Double, coverage: Double, expenses: Double?) {

@@ -43,6 +43,8 @@
 "Me.Report.DescriptionCell.title-discussion"       = "СООБЩЕНИЕ";
 "Me.Report.PhotosCell.title"                       = "ФОТО";
 "Me.Report.WalletCell.title"                       = "ВОЗМЕЩАТЬ НА КОШЕЛЁК";
+
+"Me.Report.reimburse.placeholder"                  = "Адрес Ethereum";
 "Me.Report.TitleCell.title"                        = "ЗАГОЛОВОК";
 "Me.Report.HeaderTitleCell.title"                  = "НОВОЕ ОБСУЖДЕНИЕ";
 

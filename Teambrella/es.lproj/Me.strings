@@ -45,6 +45,8 @@
 "Me.Report.DescriptionCell.title-discussion"   = "PUBLICACIÓN";
 "Me.Report.PhotosCell.title"                   = "FOTOS";
 "Me.Report.WalletCell.title"                   = "REEMBOLSO A";
+
+"Me.Report.reimburse.placeholder"              = "Dirección de Ethereum";
 "Me.Report.ExpensesCell.deductibleTitle"       = "DEDUCIBLE";
 "Me.Report.ExpensesCell.coverageTitle"         = "COBERTURA";
 "Me.Report.ExpensesCell.amountTitle"           = "CANTIDAD";
