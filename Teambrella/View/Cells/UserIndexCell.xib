@@ -36,13 +36,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Augusta Strokes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00i-59-BAm" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="72" y="40" width="126" height="21"/>
+                                <rect key="frame" x="72" y="41" width="126" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST VOTED: 2 WEEKS AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMU-rn-v4T" customClass="ThinStatusSubtitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="72" y="61" width="221" height="21"/>
+                                <rect key="frame" x="72" y="61" width="221" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -94,14 +94,17 @@
                         <constraints>
                             <constraint firstItem="RpD-3o-fgi" firstAttribute="leading" secondItem="kNR-zH-x9t" secondAttribute="leading" constant="16" id="0PC-aG-43q"/>
                             <constraint firstAttribute="bottom" secondItem="DXV-oU-4bY" secondAttribute="bottom" id="0iX-Sq-Pre"/>
+                            <constraint firstItem="eMU-rn-v4T" firstAttribute="bottom" secondItem="RpD-3o-fgi" secondAttribute="bottom" id="2NB-lB-UvV"/>
                             <constraint firstItem="00i-59-BAm" firstAttribute="leading" secondItem="RpD-3o-fgi" secondAttribute="trailing" constant="16" id="3HV-28-AFg"/>
                             <constraint firstItem="RpD-3o-fgi" firstAttribute="centerY" secondItem="kNR-zH-x9t" secondAttribute="centerY" id="Bah-rv-1rm"/>
                             <constraint firstItem="nJB-UG-OHk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eMU-rn-v4T" secondAttribute="trailing" constant="8" id="Dgx-cf-S6L"/>
                             <constraint firstItem="tjo-Cf-cEW" firstAttribute="centerY" secondItem="kNR-zH-x9t" secondAttribute="centerY" id="Ehn-XQ-AsP"/>
                             <constraint firstAttribute="trailing" secondItem="tjo-Cf-cEW" secondAttribute="trailing" constant="16" id="N0r-Qe-PGc"/>
+                            <constraint firstItem="00i-59-BAm" firstAttribute="top" secondItem="RpD-3o-fgi" secondAttribute="top" id="XAK-1W-Z0n"/>
                             <constraint firstItem="9pJ-1b-AQm" firstAttribute="leading" secondItem="RpD-3o-fgi" secondAttribute="leading" constant="-4" id="ZhG-3d-5TK"/>
                             <constraint firstItem="eMU-rn-v4T" firstAttribute="top" secondItem="RpD-3o-fgi" secondAttribute="centerY" id="bp2-o2-a3C"/>
                             <constraint firstItem="nJB-UG-OHk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="00i-59-BAm" secondAttribute="trailing" constant="8" id="eMi-ou-z9z"/>
+                            <constraint firstItem="eMU-rn-v4T" firstAttribute="top" secondItem="00i-59-BAm" secondAttribute="bottom" id="eWf-fS-qGS"/>
                             <constraint firstItem="eMU-rn-v4T" firstAttribute="leading" secondItem="00i-59-BAm" secondAttribute="leading" id="jIe-gJ-PvG"/>
                             <constraint firstItem="9pJ-1b-AQm" firstAttribute="top" secondItem="RpD-3o-fgi" secondAttribute="top" constant="-4" id="kYW-Mh-a2v"/>
                             <constraint firstAttribute="bottom" secondItem="vsN-3n-E4M" secondAttribute="bottom" id="l8k-ef-sUp"/>

@@ -101,7 +101,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Mr-eg-SUb">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="10" id="ADU-Jd-xnt">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="ADU-Jd-xnt">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -244,13 +244,13 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUP-Nl-L65" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="88" y="86" width="29" height="21"/>
+                                                        <rect key="frame" x="88" y="79" width="29" height="28"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW YORK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pn0-6n-rVi" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="88" y="107" width="87" height="21"/>
+                                                        <rect key="frame" x="88" y="107" width="87" height="28"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -336,9 +336,11 @@
                                                     <constraint firstAttribute="trailing" secondItem="Ank-lB-ThK" secondAttribute="trailing" id="cn6-Tm-b7D"/>
                                                     <constraint firstItem="jor-Dp-OpJ" firstAttribute="centerY" secondItem="KSQ-J5-PyT" secondAttribute="centerY" id="dQ1-zf-Mvb"/>
                                                     <constraint firstAttribute="height" constant="214" id="jfu-tc-bcX"/>
+                                                    <constraint firstItem="pn0-6n-rVi" firstAttribute="bottom" secondItem="KSQ-J5-PyT" secondAttribute="bottom" id="krM-C4-nQG"/>
                                                     <constraint firstItem="kUP-Nl-L65" firstAttribute="leading" secondItem="KSQ-J5-PyT" secondAttribute="trailing" constant="16" id="mR0-9d-Ajm"/>
                                                     <constraint firstItem="qyr-m3-nkH" firstAttribute="top" secondItem="niI-CL-ghc" secondAttribute="top" constant="8" id="t7J-nk-2xZ"/>
                                                     <constraint firstItem="kUP-Nl-L65" firstAttribute="bottom" secondItem="KSQ-J5-PyT" secondAttribute="centerY" id="uSj-6x-snd"/>
+                                                    <constraint firstItem="kUP-Nl-L65" firstAttribute="top" secondItem="KSQ-J5-PyT" secondAttribute="top" id="wsl-9Z-tcr"/>
                                                     <constraint firstItem="Ank-lB-ThK" firstAttribute="leading" secondItem="niI-CL-ghc" secondAttribute="leading" id="xq3-7B-vVN"/>
                                                     <constraint firstItem="G8l-Eu-bWi" firstAttribute="centerY" secondItem="qyr-m3-nkH" secondAttribute="centerY" id="yhK-KQ-ist"/>
                                                     <constraint firstItem="CAU-Da-efd" firstAttribute="leading" secondItem="niI-CL-ghc" secondAttribute="leading" id="z0t-Wo-VOX"/>

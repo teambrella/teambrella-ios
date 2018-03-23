@@ -83,20 +83,14 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
         if let cell = cell as? RiskCell {
             cell.nameLabel.text = model.name.entire
             cell.avatar.showAvatar(string: model.avatar)
-            cell.itemLabel.text = model.model
+            cell.itemLabel.text = model.model.uppercased()
             cell.riskLabel.text = model.risk.map { String(format: "%.2f", $0) } ?? ""
             let maxRow = dataSource.itemsInSection(section: indexPath.section)
             cell.cellSeparator.isHidden = indexPath.row == maxRow - 1
             
-            if indexPath.row == 0 && indexPath.row == maxRow - 1 {
-                ViewDecorator.shadow(for: cell, opacity: 0.05, radius: 8, offset: CGSize.init(width: 0, height: 0))
-            } else if indexPath.row == 0 {
-                ViewDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: -4))
-            } else if indexPath.row == maxRow - 1 {
-                ViewDecorator.shadow(for: cell, opacity: 0.05, radius: 4, offset: CGSize.init(width: 0, height: 4))
-            } else {
-                ViewDecorator.removeShadow(for: cell)
-            }
+            ViewDecorator.decorateCollectionView(cell: cell,
+                                                 isFirst: indexPath.row == 0,
+                                                 isLast: indexPath.row == maxRow - 1)
         }
     }
     
