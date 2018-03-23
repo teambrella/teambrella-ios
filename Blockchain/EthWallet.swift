@@ -286,7 +286,8 @@ class EthWallet {
                     })
                 })
             } else {
-                log("Can't deposit contract: \(gasWalletAmount), needed: \(Constant.maxGasWalletBalance)", type: .cryptoDetails)
+                log("Can't deposit contract: \(gasWalletAmount), needed: \(Constant.maxGasWalletBalance)",
+                    type: .cryptoDetails)
                 completion(false)
             }
         }, failure: { error in
