@@ -131,7 +131,7 @@ struct ClaimCellBuilder {
         cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         cell.yourVotePercentValue.alpha = 1
         cell.yourVoteAmount.alpha = 1
-        cell.yourVoteCurrency.text = service.currencyName 
+        cell.yourVoteCurrency.text = service.currencyName
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
         cell.teamVotePercentValue.text = String.truncatedNumber(voting.ratioVoted.percentage)

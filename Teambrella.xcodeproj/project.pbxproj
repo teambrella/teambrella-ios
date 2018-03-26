@@ -1538,7 +1538,6 @@
 		6DEFCFB71F7A66D7008C306C /* SwitchUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SwitchUserCell.xib; path = View/Cells/SwitchUserCell.xib; sourceTree = "<group>"; };
 		6DEFE3CA2005286200615022 /* HomeCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCardModel.swift; path = Model/Entities/HomeCardModel.swift; sourceTree = "<group>"; };
 		6DEFE3D02005355C00615022 /* InviteToTeamEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InviteToTeamEntity.swift; path = Model/Entities/InviteToTeamEntity.swift; sourceTree = "<group>"; };
-		6DEFE3ED2006523300615022 /* notification copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "notification copy-Info.plist"; path = "/Users/thorax/Developer/Teambrella/Teambrella-iOS/notification copy-Info.plist"; sourceTree = "<absolute>"; };
 		6DEFE3F22006544100615022 /* NotificationTeambrella.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationTeambrella.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DEFE3F62006544100615022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DF2079C1FB4A11600E10B85 /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
@@ -2368,18 +2367,17 @@
 			isa = PBXGroup;
 			children = (
 				6DDE956E1EE813DC0019DA47 /* External */,
+				A3DA38407FE7184F4611CDC0 /* Frameworks */,
 				6D466A871ED07CF1001BC579 /* Blockchain */,
-				6DA475A21E8ABEE600B56D9B /* Teambrella */,
-				6DA475B71E8ABEE600B56D9B /* TeambrellaTests */,
-				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
 				6D59FCF71FBC8407006C0A2B /* notification */,
 				6DEFE3F32006544100615022 /* NotificationTeambrella */,
-				6DA475A11E8ABEE600B56D9B /* Products */,
 				5BD17B853E94E5AE1E9DCBE6 /* Pods */,
-				A3DA38407FE7184F4611CDC0 /* Frameworks */,
+				6DA475A11E8ABEE600B56D9B /* Products */,
+				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
+				6DA475A21E8ABEE600B56D9B /* Teambrella */,
+				6DA475B71E8ABEE600B56D9B /* TeambrellaTests */,
 				6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */,
 				6DA1A5421FBF0B42000FDECA /* Notification-Bridging-Header.h */,
-				6DEFE3ED2006523300615022 /* notification copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
