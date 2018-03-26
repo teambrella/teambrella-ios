@@ -17,9 +17,9 @@
 "Team.ClaimCell.timePassed_format"                    = "%d мин. назад";
 
 "Team.ClaimCell.voting"                               = "Голосование";
-"Team.ClaimCell.yourVote"                             = "твой голос";
+"Team.ClaimCell.yourVote"                             = "ваш голос";
 "Team.ClaimCell.byProxy"                              = "прокси";
-"Team.ClaimCell.teamVote"                             = "голос группы";
+"Team.ClaimCell.teamVote"                             = "голос команды";
 "Team.ClaimCell.voteSubmitted"                        = "Голос отправлен";
 "Team.ClaimCell.resetVote"                            = "Сбросить голос";
 "Team.ClaimCell.claimDetails"                         = "ДЕТАЛИ ЗАЯВКИ";

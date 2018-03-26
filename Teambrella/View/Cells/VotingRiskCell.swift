@@ -31,20 +31,20 @@ protocol VotingRiskCellDelegate: class {
 
 class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var titleLabel: BlockHeaderLabel!
-    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var timeLabel: ThinStatusSubtitleLabel!
     @IBOutlet var pieChart: PieChartView!
     
     @IBOutlet var slashView: SlashView!
     @IBOutlet var teamVoteHeaderLabel: InfoLabel!
-    @IBOutlet var teamVoteValueLabel: UILabel!
-    @IBOutlet var teamVoteBadgeLabel: UILabel!
-    @IBOutlet var teamVoteNotAccept: UILabel!
+    @IBOutlet var teamVoteValueLabel: AmountLabel!
+    @IBOutlet var teamVoteBadgeLabel: BadgeLabel!
+    @IBOutlet var teamVoteNotAccept: AmountLabel!
     @IBOutlet var teammatesAvatarStack: RoundImagesStack!
     
     @IBOutlet var yourVoteHeaderLabel: InfoLabel!
-    @IBOutlet var yourVoteValueLabel: UILabel!
-    @IBOutlet var yourVoteBadgeLabel: UILabel!
-    @IBOutlet var yourVoteNotAccept: UILabel!
+    @IBOutlet var yourVoteValueLabel: AmountLabel!
+    @IBOutlet var yourVoteBadgeLabel: BadgeLabel!
+    @IBOutlet var yourVoteNotAccept: AmountLabel!
     
     @IBOutlet var resetVoteButton: UIButton!
     
@@ -66,6 +66,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var othersButton: UIButton!
     
     @IBOutlet var othersVotesButton: UIButton!
+    @IBOutlet weak var yourVoteValueLabelLeadingConstraint: NSLayoutConstraint!
     
     var maxValue: CGFloat {
 //        let itemWidth = collectionView(collectionView,
@@ -127,10 +128,18 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         titleLabel.text = "Team.VotingRiskVC.headerLabel".localized
         teamVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.left".localized
         teamVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
+        teamVoteBadgeLabel.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
         
         yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right".localized
         yourVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
-   
+        yourVoteBadgeLabel.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
+
+        othersButton.titleLabel?.minimumScaleFactor = 0.7
+        othersButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        yourVoteValueLabelLeadingConstraint.constant = isSmallIPhone ? 8 : 16
+        yourVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
+        teamVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
+        
         resetVoteButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
         resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
