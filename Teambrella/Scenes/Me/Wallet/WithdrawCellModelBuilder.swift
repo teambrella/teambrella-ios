@@ -108,12 +108,12 @@ struct WithdrawCellBuilder {
     
     private static func populateWalletInfo(cell: WalletInfoCell, model: WalletInfoCellModel) {
         cell.numberBar.isBottomLineVisible = false
-        cell.amount.text = String.formattedNumber(MEth(model.amount).value)
+        cell.amount.text = String.formattedNumber(floor(MEth(model.amount).value))
         cell.numberBar.left?.verticalStackView.alignment = .leading
         cell.numberBar.right?.verticalStackView.alignment = .leading
         cell.currencyLabel.text = service.session?.cryptoCoin.code
         if let team = service.session?.currentTeam {
-            let fiatAmount = model.amount.value * model.currencyRate
+            let fiatAmount = floor(model.amount.value * model.currencyRate)
             cell.auxillaryAmount.text = String.formattedNumber(fiatAmount) + " " + team.currency
         }
         

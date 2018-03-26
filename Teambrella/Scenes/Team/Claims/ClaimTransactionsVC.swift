@@ -70,14 +70,16 @@ class ClaimTransactionsVC: UIViewController, Routable {
     }
     
     func showEmptyIfNeeded() {
-        if dataSource.isEmpty && emptyVC == nil {
-            let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y + 44,
-                               width: self.collectionView.frame.width,
-                               height: self.collectionView.frame.height - 44)
-            emptyVC = EmptyVC.show(in: self, inView: self.view, frame: frame, animated: false)
-            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
-            emptyVC?.setText(title: "Team.Claim.Transactions.Empty.title".localized,
-                             subtitle: "Team.Claim.Transactions.Empty.details".localized)
+        if dataSource.isEmpty {
+            if emptyVC == nil {
+                let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y + 44,
+                                   width: self.collectionView.frame.width,
+                                   height: self.collectionView.frame.height - 44)
+                emptyVC = EmptyVC.show(in: self, inView: self.view, frame: frame, animated: false)
+                emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
+                emptyVC?.setText(title: "Team.Claim.Transactions.Empty.title".localized,
+                                 subtitle: "Team.Claim.Transactions.Empty.details".localized)
+            }
         } else {
             emptyVC?.remove()
             emptyVC = nil

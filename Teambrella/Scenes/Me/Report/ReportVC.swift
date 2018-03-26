@@ -202,6 +202,11 @@ final class ReportVC: UIViewController, Routable {
                         myPoint.y += inset
                         collectionView.contentOffset = myPoint
                     }
+                    if datePicker.isFirstResponder {
+                        claimCell?.dateTextField.isInEditMode = true
+                    } else {
+                        claimCell?.dateTextField.isInEditMode = false
+                    }
                 } else {
                     let indexPath = IndexPath(row: 0, section: 0)
                     collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
@@ -429,7 +434,7 @@ extension ReportVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 20 * 2,
+        return CGSize(width: collectionView.bounds.width - 16 * 2,
                       height: CGFloat(dataSource[indexPath].preferredHeight))
     }
 }

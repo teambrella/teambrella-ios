@@ -57,29 +57,32 @@ class WalletCosignersVC: UIViewController, Routable {
             controller.addAction(cancel)
             self?.present(controller, animated: true, completion: nil)
         }
+        guard let cosigners = cosigners else { return }
+
+        dataSource.loadData(cosigners: cosigners)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard let cosigners = cosigners else { return }
-
-        dataSource.loadData(cosigners: cosigners)
         guard isFirstLoading == false else {
             isFirstLoading = false
             return
         }
-        // dataSource.updateSilently()
+        
+        dataSource.updateSilently()
     }
     
     func showEmptyIfNeeded() {
-        if dataSource.isEmpty && emptyVC == nil {
-            let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y + 44,
-                               width: self.collectionView.frame.width,
-                               height: self.collectionView.frame.height - 44)
-            emptyVC = EmptyVC.show(in: self, inView: self.view, frame: frame, animated: false)
-            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconTeam"))
-            emptyVC?.setText(title: "Me.Wallet.Cosigners.Empty.title".localized,
-                             subtitle: "Me.Wallet.Cosigners.Empty.details".localized)
+        if dataSource.isEmpty {
+            if emptyVC == nil {
+                let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y + 44,
+                                   width: self.collectionView.frame.width,
+                                   height: self.collectionView.frame.height - 44)
+                emptyVC = EmptyVC.show(in: self, inView: self.view, frame: frame, animated: false)
+                emptyVC?.setImage(image: #imageLiteral(resourceName: "iconTeam"))
+                emptyVC?.setText(title: "Me.Wallet.Cosigners.Empty.title".localized,
+                                 subtitle: "Me.Wallet.Cosigners.Empty.details".localized)
+            }
         } else {
             emptyVC?.remove()
             emptyVC = nil

@@ -54,6 +54,7 @@
 
 "Me.Report.ReportClaim.title"                      = "Report a Claim";
 "Me.Report.NewDiscussion.title"                    = "New Discussion";
+"Me.Report.reimburse.placeholder"                  = "Ethereum address";
 
 "Me.WalletVC.WalletTransactionsVC.title"           = "Transactions";
 "Me.WalletVC.WalletTransactionsVC.amountTitle"     = "Amount:";

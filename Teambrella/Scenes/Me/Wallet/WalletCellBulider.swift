@@ -59,14 +59,15 @@ struct WalletCellBuilder {
     }
     
     private static func populateHeader(cell: WalletHeaderCell, model: WalletHeaderCellModel) {
-        cell.amount.text = String.formattedNumber(MEth(model.amount).value)
         balance = MEth(model.amount)
+        cell.amount.text = String.formattedNumber(floor(balance.value))
         
         cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
         cell.currencyLabel.text = service.session?.cryptoCoin.code
         currencyRate = model.currencyRate
         if let team = service.session?.currentTeam {
-            cell.auxillaryAmount.text = String.formattedNumber(model.amount.value * currencyRate) + " " + team.currency
+            cell.auxillaryAmount.text = String.formattedNumber(floor(model.amount.value * currencyRate))
+                + " " + team.currency
         }
     }
     
@@ -74,11 +75,13 @@ struct WalletCellBuilder {
         cell.headerLabel.text = "Me.WalletVC.fundingCell.title".localized
         if let team = service.session?.currentTeam {
             cell.lowerCurrencyLabel.text =
-                String.formattedNumber(model.uninterruptedCoverageFunding.value * currencyRate) + " " + team.currency
+                String.formattedNumber(floor(model.uninterruptedCoverageFunding.value * currencyRate))
+                + " " + team.currency
         }
         cell.lowerNumberView.verticalStackView.alignment = .leading
         cell.lowerNumberView.titleLabel.text = "Me.WalletVC.lowerBrick.title".localized
-        cell.lowerNumberView.amountLabel.text = String.formattedNumber(MEth(model.uninterruptedCoverageFunding).value)
+        cell.lowerNumberView.amountLabel.text =
+            String.formattedNumber(floor(MEth(model.uninterruptedCoverageFunding).value))
         cell.lowerNumberView.isPercentVisible = false
         cell.lowerNumberView.isBadgeVisible = false
         cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)

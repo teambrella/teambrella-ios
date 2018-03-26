@@ -54,7 +54,7 @@ class BorderedButton: UIButton {
     
     func setup() {
         layer.masksToBounds = true
-        layer.cornerRadius = 5
+        layer.cornerRadius = 3
         layer.borderWidth = 1
         layer.borderColor = borderColor.cgColor
         if hasGradientBackground {

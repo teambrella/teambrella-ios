@@ -108,7 +108,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         
         service.router.presentReport(context: context, delegate: self)
     }
-
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if traitCollection.forceTouchCapability == .available {
@@ -135,12 +135,14 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     }
     
     func showEmptyIfNeeded() {
-        if dataSource.isEmpty && emptyVC == nil {
-            emptyVC = EmptyVC.show(in: self)
-            emptyVC?.backImageView.image = nil
-            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconTeam"))
-            emptyVC?.setText(title: "Team.Claims.Empty.title".localized,
-                             subtitle: "Team.Claims.Empty.details".localized)
+        if dataSource.isEmpty {
+            if emptyVC == nil {
+                emptyVC = EmptyVC.show(in: self)
+                emptyVC?.backImageView.image = nil
+                emptyVC?.setImage(image: #imageLiteral(resourceName: "iconTeam"))
+                emptyVC?.setText(title: "Team.Claims.Empty.title".localized,
+                                 subtitle: "Team.Claims.Empty.details".localized)
+            }
         } else {
             emptyVC?.remove()
             emptyVC = nil
