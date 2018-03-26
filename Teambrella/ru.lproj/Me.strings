@@ -31,7 +31,7 @@
 "Me.CoverageVC.fundButton.title.toIncrease"        = "Пополнить кошелёк, чтобы увеличить";
 "Me.CoverageVC.fundButton.title"                   = "Пополнить кошелёк";
 "Me.CoverageVC.title"                              = "КАК ЭТО РАБОТАЕТ";
-"Me.CoverageVC.subtitle"                           = "Используйте бегунок, чтобы увидеть, как расходы влияют на ксимальное возмещение.";
+"Me.CoverageVC.subtitle"                           = "Используйте бегунок, чтобы увидеть, как расходы влияют на максимальное возмещение.";
 "Me.CoverageVC.maxExpenses"                        = "Максимальное возмещение";
 "Me.CoverageVC.yourExpenses"                       = "В случае, когда ваши расходы составляют";
 "Me.CoverageVC.teamPay"                            = "Команда выплатит вам";
