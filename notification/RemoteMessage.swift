@@ -38,7 +38,7 @@ struct RemoteMessage {
         case .postsSinceInteracted:
             return "Push.unreadMessages_format".localized(payload.postsCount ?? "")
         case .walletFunded:
-            return "Push.walletFunded".localized
+            return "Push.walletFunded.title".localized
         case .topicMessage:
             return "Push.newMessage".localized
         case .newDiscussion:
