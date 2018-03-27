@@ -64,9 +64,11 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var rightAvatarLabel: UILabel!
     
     @IBOutlet var othersButton: UIButton!
+    @IBOutlet weak var othersLabel: MessageTitleLabel!
     
     @IBOutlet var othersVotesButton: UIButton!
     @IBOutlet weak var yourVoteValueLabelLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var othersLabelTrailingConstraint: NSLayoutConstraint!
     
     var maxValue: CGFloat {
 //        let itemWidth = collectionView(collectionView,
@@ -137,13 +139,14 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         othersButton.titleLabel?.minimumScaleFactor = 0.7
         othersButton.titleLabel?.adjustsFontSizeToFitWidth = true
         yourVoteValueLabelLeadingConstraint.constant = isSmallIPhone ? 8 : 16
+        othersLabelTrailingConstraint.constant = isSmallIPhone ? 4 : 8
         yourVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
         teamVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
         
         resetVoteButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
         resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
-        othersButton.setTitle("Team.VotingRiskVC.othersButton".localized, for: .normal)
+        othersLabel.text = "Team.VotingRiskVC.othersButton".localized
         
         collectionView.delegate = self
         collectionView.dataSource = self

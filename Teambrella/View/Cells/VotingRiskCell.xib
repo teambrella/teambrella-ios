@@ -344,15 +344,24 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XY2-Tj-qf7">
-                                <rect key="frame" x="584" y="699" width="47" height="31"/>
+                                <rect key="frame" x="531" y="699" width="100" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="tgb-h9-naq"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
-                                <state key="normal" title="Others">
+                                <state key="normal">
                                     <color key="titleColor" red="0.17254901960784313" green="0.22352941176470587" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="VDN-tt-rep">
                                 <rect key="frame" x="639" y="709" width="8" height="13"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="TAs-Dm-HYL" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="589" y="705.5" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sY-CF-eqa" customClass="SwipeToVote" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="20" y="572" width="627" height="120"/>
                                 <userDefinedRuntimeAttributes>
@@ -371,13 +380,16 @@
                             <constraint firstItem="2sY-CF-eqa" firstAttribute="leading" secondItem="aiG-hq-p1u" secondAttribute="leading" id="ACZ-Dc-I50"/>
                             <constraint firstItem="aiG-hq-p1u" firstAttribute="bottom" secondItem="FcP-VF-oBu" secondAttribute="top" constant="-4" id="CKR-iJ-0nc"/>
                             <constraint firstItem="2sY-CF-eqa" firstAttribute="bottom" secondItem="aiG-hq-p1u" secondAttribute="bottom" id="Dst-Sy-PKx"/>
+                            <constraint firstItem="TAs-Dm-HYL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ya1-jf-rNB" secondAttribute="trailing" constant="8" id="EuB-Ab-IGg"/>
                             <constraint firstItem="aiG-hq-p1u" firstAttribute="leading" secondItem="XcV-fX-2kO" secondAttribute="leading" constant="20" id="FOK-7L-JEt"/>
                             <constraint firstAttribute="trailing" secondItem="25q-2v-Cur" secondAttribute="trailing" constant="20" id="Lc0-yX-5nP"/>
                             <constraint firstItem="XSt-gb-Ihh" firstAttribute="centerX" secondItem="FcP-VF-oBu" secondAttribute="centerX" id="M4B-lJ-9bj"/>
                             <constraint firstItem="ShF-od-eYS" firstAttribute="bottom" secondItem="2sW-oF-gn5" secondAttribute="bottom" id="OvP-le-McM"/>
+                            <constraint firstItem="VDN-tt-rep" firstAttribute="leading" secondItem="TAs-Dm-HYL" secondAttribute="trailing" constant="8" id="RIP-47-Dyz"/>
                             <constraint firstItem="73P-Jh-cgD" firstAttribute="top" secondItem="XcV-fX-2kO" secondAttribute="top" constant="20" id="Sfq-Xe-Qgt"/>
                             <constraint firstItem="ShF-od-eYS" firstAttribute="centerX" secondItem="Ya1-jf-rNB" secondAttribute="centerX" id="Tj0-hI-5QT"/>
                             <constraint firstItem="2sW-oF-gn5" firstAttribute="centerX" secondItem="zPb-mX-NaQ" secondAttribute="centerX" id="TvC-Qz-O8i"/>
+                            <constraint firstItem="TAs-Dm-HYL" firstAttribute="centerY" secondItem="VDN-tt-rep" secondAttribute="centerY" id="UgG-bp-UI5"/>
                             <constraint firstItem="aiG-hq-p1u" firstAttribute="top" secondItem="aVs-ZO-f7v" secondAttribute="top" id="Ylc-aM-DJ2"/>
                             <constraint firstAttribute="bottom" secondItem="XY2-Tj-qf7" secondAttribute="bottom" constant="16" id="ZHM-At-oEU"/>
                             <constraint firstItem="VDN-tt-rep" firstAttribute="leading" secondItem="XY2-Tj-qf7" secondAttribute="trailing" constant="8" id="ZfB-Ad-4Pz"/>
@@ -421,6 +433,8 @@
                 <outlet property="middleAvatar" destination="zPb-mX-NaQ" id="6fv-C6-F26"/>
                 <outlet property="middleAvatarLabel" destination="2sW-oF-gn5" id="YY4-OK-mab"/>
                 <outlet property="othersButton" destination="XY2-Tj-qf7" id="jiz-ou-qjT"/>
+                <outlet property="othersLabel" destination="TAs-Dm-HYL" id="CpL-PY-yY4"/>
+                <outlet property="othersLabelTrailingConstraint" destination="RIP-47-Dyz" id="1Pc-ow-oKz"/>
                 <outlet property="othersVotesButton" destination="6qt-e2-WfN" id="KOs-EM-6LC"/>
                 <outlet property="pieChart" destination="1fO-Rr-g6b" id="Uxn-fZ-G4B"/>
                 <outlet property="proxyAvatarView" destination="94E-S6-lnc" id="6EN-md-DQm"/>
