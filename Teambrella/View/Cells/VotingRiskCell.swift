@@ -69,10 +69,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var othersVotesButton: UIButton!
     
     var maxValue: CGFloat {
-//        let itemWidth = collectionView(collectionView,
-//                                       layout: collectionView.collectionViewLayout,
-//                                       sizeForItemAt: IndexPath(row: 0, section: 0)).width
-        return collectionView.contentSize.width - collectionLeftInset - collectionRightInset// - itemWidth
+        return collectionView.contentSize.width - collectionLeftInset - collectionRightInset - columnWidth
     }
     
     var collectionLeftInset: CGFloat {
@@ -95,7 +92,9 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     weak var delegate: VotingRiskCellDelegate?
     
     var shouldSilenceScroll: Bool = false
-    
+
+    var columnWidth: CGFloat { return collectionView.bounds.width * 4 / CGFloat(dataSource.count) }
+
     var isProxyHidden: Bool = true {
         didSet {
             proxyAvatarView.isHidden = isProxyHidden
@@ -302,7 +301,7 @@ extension VotingRiskCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width * 4 / CGFloat(dataSource.count),
+        return CGSize(width: columnWidth,
                       height: collectionView.bounds.height)
     }
     
