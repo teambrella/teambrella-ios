@@ -29,6 +29,8 @@ struct ServerReply {
             fatalError("Don't use data. Use string instead")
         case _ as Bool:
             fatalError("Don't use data. Use bool instead")
+        case _ as NSNull:
+            return Data()
         default:
             do {
                 return try JSONSerialization.data(withJSONObject: json, options: [])
@@ -54,9 +56,8 @@ struct ServerReply {
         guard let statusJSON = json[CodingKeys.status.rawValue] else {
             throw TeambrellaErrorFactory.emptyReplyError()
         }
-        guard let dataJSON = json[CodingKeys.data.rawValue] else {
-            throw TeambrellaErrorFactory.emptyReplyError()
-        }
+
+        let dataJSON = json[CodingKeys.data.rawValue]
         
         let decoder = JSONDecoder()
         let statusData = try JSONSerialization.data(withJSONObject: statusJSON, options: [])
@@ -68,7 +69,6 @@ struct ServerReply {
             paging = nil
         }
         status = try decoder.decode(ServerStatus.self, from: statusData)
-        self.json = dataJSON
 
         var string: String? = nil
         var bool: Bool? = nil
@@ -82,6 +82,8 @@ struct ServerReply {
         }
         self.string = string
         self.bool = bool
+
+        self.json = dataJSON
     }
 
     enum CodingKeys: String {

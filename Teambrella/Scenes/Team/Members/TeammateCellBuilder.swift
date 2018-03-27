@@ -101,6 +101,7 @@ struct TeammateCellBuilder {
         if let risk = voting.riskVoted {
             votingCell.teamVoteValueLabel.text = String(format: "%.2f", risk)
             votingCell.showTeamNoVote(risk: risk)
+
         } else {
             votingCell.teamVoteValueLabel.text = "..."
             votingCell.showTeamNoVote(risk: nil)
@@ -115,6 +116,13 @@ struct TeammateCellBuilder {
         } else {
             controller.resetVote(cell: votingCell)
             votingCell.showYourNoVote(risk: nil)
+
+            if let risk = voting.riskVoted {
+                let offset = controller.offsetFrom(risk: risk, maxValue: votingCell.maxValue)
+                votingCell.scrollTo(offset: offset, silently: true)
+            } else {
+                votingCell.scrollToAverage()
+            }
         }
         let currentChosenRisk = controller.riskFrom(offset: votingCell.collectionView.contentOffset.x,
                                                     maxValue: votingCell.maxValue)
@@ -136,6 +144,7 @@ struct TeammateCellBuilder {
     private static func populateVote(cell: VotingRiskCell,
                                      with teammate: TeammateLarge,
                                      controller: TeammateProfileVC) {
+        cell.delegate = controller
         if let riskScale = teammate.riskScale, controller.isRiskScaleUpdateNeeded == true {
             cell.updateWithRiskScale(riskScale: riskScale)
             controller.isRiskScaleUpdateNeeded = false
@@ -143,7 +152,7 @@ struct TeammateCellBuilder {
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         cell.middleAvatar.showAvatar(string: teammate.basic.avatar)
-        
+
         if SimpleStorage().bool(forKey: .swipeHelperWasShown) {
             cell.swipeToVoteView.isHidden = true
         } else {
@@ -153,11 +162,10 @@ struct TeammateCellBuilder {
                 SimpleStorage().store(bool: true, forKey: .swipeHelperWasShown)
             }
         }
-        
+
         if let voting = teammate.voting {
             setVote(votingCell: cell, voting: voting, controller: controller)
         }
-        cell.delegate = controller
     }
     
     // swiftlint:disable:next function_body_length

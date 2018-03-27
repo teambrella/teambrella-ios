@@ -227,14 +227,15 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         }
     }
     
-    func scrollToAverage(silently: Bool = true) {
+    func scrollToAverage(silently: Bool = true) -> Bool {
         shouldSilenceScroll = silently
         for (idx, model) in dataSource.models.enumerated() where model.isTeamAverage {
             collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
                                         at: .centeredHorizontally,
                                         animated: !silently)
-            break
+            return true
         }
+        return false
     }
     
     func scrollToCenter(silently: Bool) {
@@ -243,7 +244,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     
     func scrollTo(offset: CGFloat, silently: Bool) {
         shouldSilenceScroll = silently
-        collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)
+        collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: !silently)
     }
     
 }

@@ -163,6 +163,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             cell.yourVoteValueLabel.text = "..."
             cell.yourVoteBadgeLabel.isHidden = true
             cell.scrollToAverage(silently: true)
+       
         }
     }
     
