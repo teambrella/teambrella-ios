@@ -20,6 +20,7 @@
 //
 
 import UIKit
+import ThoraxMath
 
 protocol VotingRiskCellDelegate: class {
     func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat)
@@ -245,6 +246,15 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     func scrollTo(offset: CGFloat, silently: Bool) {
         shouldSilenceScroll = silently
         collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: !silently)
+        delegate?.votingRisk(cell: self, changedOffset: offset)
+    }
+
+    func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
+        return min(Double(pow(25, offset / maxValue) / 5), 5)
+    }
+
+    func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
+        return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
     }
     
 }

@@ -110,7 +110,7 @@ struct TeammateCellBuilder {
         if let myVote = voting.myVote {
             votingCell.layoutIfNeeded()
             votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
-            let offset = controller.offsetFrom(risk: myVote, maxValue: votingCell.maxValue)
+            let offset = votingCell.offsetFrom(risk: myVote, maxValue: votingCell.maxValue)
             votingCell.scrollTo(offset: offset, silently: true)
             votingCell.showYourNoVote(risk: myVote)
         } else {
@@ -118,13 +118,13 @@ struct TeammateCellBuilder {
             votingCell.showYourNoVote(risk: nil)
 
             if let risk = voting.riskVoted {
-                let offset = controller.offsetFrom(risk: risk, maxValue: votingCell.maxValue)
+                let offset = votingCell.offsetFrom(risk: risk, maxValue: votingCell.maxValue)
                 votingCell.scrollTo(offset: offset, silently: true)
             } else {
                 votingCell.scrollToAverage()
             }
         }
-        let currentChosenRisk = controller.riskFrom(offset: votingCell.collectionView.contentOffset.x,
+        let currentChosenRisk = votingCell.riskFrom(offset: votingCell.collectionView.contentOffset.x,
                                                     maxValue: votingCell.maxValue)
         controller.updateAverages(cell: votingCell,
                                   risk: currentChosenRisk)

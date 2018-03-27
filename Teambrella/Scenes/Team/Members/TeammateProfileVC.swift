@@ -116,14 +116,6 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     // MARK: Public
     
-    func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
-        return min(Double(pow(25, offset / maxValue) / 5), 5)
-    }
-    
-    func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
-        return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
-    }
-    
     var userInfoHeader: CompactUserInfoHeader? {
         let kind = UICollectionElementKindSectionHeader
         return collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader
@@ -155,7 +147,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             cell.isProxyHidden = false
             cell.proxyAvatarView.showAvatar(string: proxyAvatar)
             cell.proxyNameLabel.text = proxyName.uppercased()
-            let offset = offsetFrom(risk: vote, maxValue: cell.maxValue)
+            let offset = cell.offsetFrom(risk: vote, maxValue: cell.maxValue)
             cell.scrollTo(offset: offset, silently: true)
         } else {
             cell.isProxyHidden = true
@@ -539,7 +531,7 @@ extension TeammateProfileVC: IndicatorInfoProvider {
 // MARK: VotingRiskCellDelegate
 extension TeammateProfileVC: VotingRiskCellDelegate {
     func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat) {
-        let risk = riskFrom(offset: changedOffset, maxValue: cell.maxValue)
+        let risk = cell.riskFrom(offset: changedOffset, maxValue: cell.maxValue)
         cell.yourVoteValueLabel.text = String(format: "%.2f", risk)
         cell.middleAvatarLabel.text = String(format: "%.2f", risk)
         updateAverages(cell: cell, risk: risk)
@@ -549,7 +541,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
     }
     
     func votingRisk(cell: VotingRiskCell, stoppedOnOffset: CGFloat) {
-        var risk = riskFrom(offset: stoppedOnOffset, maxValue: cell.maxValue)
+        var risk = cell.riskFrom(offset: stoppedOnOffset, maxValue: cell.maxValue)
         
         cell.yourVoteValueLabel.alpha = 0.5
         guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
