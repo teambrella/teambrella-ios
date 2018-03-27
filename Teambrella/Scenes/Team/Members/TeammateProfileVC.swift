@@ -131,10 +131,20 @@ final class TeammateProfileVC: UIViewController, Routable {
         guard let heCoversMe = linearFunction?.value(at: risk) else { return }
         
         let theirAmount = heCoversMe
-        view.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
+        view.leftNumberView.amountLabel.text = amountsFormat(amount: theirAmount)
         
         let myAmount = heCoversMe * myRisk / risk
-        view.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
+        view.rightNumberView.amountLabel.text = amountsFormat(amount: myAmount)
+    }
+    
+    func amountsFormat(amount: Double) -> String {
+        if amount == 0 {
+            return "0"
+        } else if amount < 100 {
+            return String(format: "%.2f", amount)
+        } else {
+            return String(format: "%.0f", amount)
+        }
     }
     
     func resetVote(cell: VotingRiskCell) {
@@ -346,7 +356,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                     : "Team.TeammateCell.sheCoversMe".localized
                 left.titleLabel.text = genderization
                 let amount = teammate.basic.coversMeAmount
-                left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                left.amountLabel.text = amountsFormat(amount: amount)
                 left.currencyLabel.text = service.currencyName
                 left.isCurrencyVisible = true
                 left.isPercentVisible = false
@@ -357,7 +367,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                     : "Team.TeammateCell.coverHer".localized
                 right.titleLabel.text = genderization
                 let amount = teammate.basic.iCoverThemAmount
-                right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                right.amountLabel.text = amountsFormat(amount: amount)
                 right.currencyLabel.text = service.currencyName
                 right.isCurrencyVisible = true
                 right.isPercentVisible = false
@@ -383,7 +393,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                     : "Team.TeammateCell.SheWouldCoverMe".localized
                 left.titleLabel.text = genderization
                 let amount = teammate.basic.coversMeAmount
-                left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                left.amountLabel.text = amountsFormat(amount: amount)
                 left.currencyLabel.text = service.currencyName
                 left.isCurrencyVisible = true
                 left.isPercentVisible = false
@@ -394,7 +404,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                     : "Team.TeammateCell.wouldCoverHer".localized
                 right.titleLabel.text = genderization
                 let amount = teammate.basic.iCoverThemAmount
-                right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                right.amountLabel.text = amountsFormat(amount: amount)
                 right.currencyLabel.text = service.currencyName
                 right.isCurrencyVisible = true
                 right.isPercentVisible = false
