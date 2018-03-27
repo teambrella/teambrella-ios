@@ -32,7 +32,7 @@
 "Home.ApplicationStatusCell.titleLabel"                 = "Your application";
 "Home.ApplicationStatusCell.centerLabel"                = "VOTE ( PENDING )";
 
-"Home.PrivateMessages.title"                            = "Inbox";
+"Home.PrivateMessages.title"                            = "Private Chats";
 
 //---waiting--
 "Home.Empty.Title.noPrivateMessages"                    = "You have no messages";

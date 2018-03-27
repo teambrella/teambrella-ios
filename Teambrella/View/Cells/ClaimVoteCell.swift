@@ -23,7 +23,7 @@ import UIKit
 
 class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var titleLabel: Label!
-    @IBOutlet var remainingDaysLabel: Label!
+    @IBOutlet var remainingDaysLabel: ThinStatusSubtitleLabel!
     @IBOutlet var pieChart: PieChartView!
     @IBOutlet var infoButton: UIButton!
     
