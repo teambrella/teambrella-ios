@@ -127,7 +127,7 @@
 "Team.VotingRiskVC.othersButton"                      = "Остальные";
 
 "Team.Members.Teammates.Strategy.headerTitle"         = "ФАКТОР РИСКА: %.2f ДО %.2f";
-"Team.Members.Teammates.Strategy.headerSubtitle"      = "ФАКТОР РИСКА";
+"Team.Members.Teammates.Strategy.headerSubtitle"      = "РИСК";
 "Team.Members.Teammates.CompareTeamRisk.title"        = "Сравнить факторы риска";
 
 "Team.ChooseYourTeamVC.header"                        = "ВЫБЕРИТЕ КОМАНДУ";
