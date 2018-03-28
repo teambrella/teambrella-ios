@@ -235,7 +235,9 @@ final class TeammateProfileVC: UIViewController, Routable {
     private func addGradientNavBarIfNeeded() {
         if !isPeeking && shouldAddGradientNavBar {
             addGradientNavBar()
-            addPrivateMessageButton()
+            if !dataSource.isMe {
+                addPrivateMessageButton()
+            }
             setTitle()
         }
     }

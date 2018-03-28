@@ -65,6 +65,7 @@ final class PrivateMessagesVC: UIViewController, Routable {
             }
         } else {
             emptyVC?.remove()
+            emptyVC = nil
         }
     }
     
