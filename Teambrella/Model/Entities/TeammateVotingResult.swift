@@ -31,31 +31,15 @@ struct TeammateVotingResult: Decodable {
         case minutesSinceLast = "SinceLastPostMinutes"
         case unreadCount = "UnreadCount"
     }
-    
-    enum VotingKeys: String, CodingKey {
-        case myVote = "MyVote"
-        case otherAvatars = "OtherAvatars"
-        case otherCount = "OtherCount"
-        case proxyAvatar = "ProxyAvatar"
-        case proxyName = "ProxyName"
-        case minutesRemaining = "RemainedMinutes"
-        case riskVoted = "RiskVoted"
-    }
-    
+
     let id: Int
     let lastUpdated: Int64
     
     let unreadCount: Int
     let minutesSinceLast: Int
-    
-    let myVote: Double?
-    let otherAvatars: [String]
-    let otherCount: Int
-    let proxyAvatar: String?
-    let proxyName: String?
-    let minutesRemaining: Int?
-    let riskVoted: Double?
-    
+
+    let voting: TeammateLarge.VotingInfo
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
@@ -64,14 +48,6 @@ struct TeammateVotingResult: Decodable {
         let discussion = try container.nestedContainer(keyedBy: DiscussionKeys.self, forKey: .discussion)
         unreadCount = try discussion.decode(Int.self, forKey: .unreadCount)
         minutesSinceLast = try discussion.decode(Int.self, forKey: .minutesSinceLast)
-        
-        let voting = try container.nestedContainer(keyedBy: VotingKeys.self, forKey: .voting)
-        myVote = try voting.decodeIfPresent(Double.self, forKey: .myVote)
-        otherAvatars = try voting.decode([String].self, forKey: .otherAvatars)
-        otherCount = try voting.decode(Int.self, forKey: .otherCount)
-        proxyAvatar = try voting.decodeIfPresent(String.self, forKey: .proxyAvatar)
-        proxyName = try voting.decodeIfPresent(String.self, forKey: .proxyName)
-        minutesRemaining = try voting.decodeIfPresent(Int.self, forKey: .minutesRemaining)
-        riskVoted = try voting.decodeIfPresent(Double.self, forKey: .riskVoted)
+        voting = try container.decode(TeammateLarge.VotingInfo.self, forKey: .voting)
     }
 }

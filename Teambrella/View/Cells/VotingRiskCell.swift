@@ -19,12 +19,12 @@
  */
 //
 
-import UIKit
 import ThoraxMath
+import UIKit
 
 protocol VotingRiskCellDelegate: class {
-    func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat)
-    func votingRisk(cell: VotingRiskCell, stoppedOnOffset: CGFloat)
+    func votingRisk(cell: VotingRiskCell, changedRisk: Double)
+    func votingRisk(cell: VotingRiskCell, stoppedOnRisk: Double)
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int)
     func votingRisk(cell: VotingRiskCell, didTapButton button: UIButton)
     func averageVotingRisk(cell: VotingRiskCell) -> Double
@@ -108,14 +108,48 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        collectionView.layer.cornerRadius = 4
-        collectionView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1).cgColor
-        collectionView.layer.borderWidth = 1
         
+        setupLabels()
+        setupButtons()
+        setupCollectionView()
+
         slashView.layer.cornerRadius = 4
         slashView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1).cgColor
         slashView.layer.borderWidth = 1
-        
+
+        self.clipsToBounds = true
+        ViewDecorator.roundedEdges(for: self)
+        ViewDecorator.shadow(for: self)
+
+        dataSource.onUpdate = { [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
+
+    private func setupCollectionView() {
+        collectionView.register(VotingChartCell.nib, forCellWithReuseIdentifier: VotingChartCell.cellID)
+
+        collectionView.layer.cornerRadius = 4
+        collectionView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1).cgColor
+        collectionView.layer.borderWidth = 1
+
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+
+    private func setupButtons() {
+        othersButton.titleLabel?.minimumScaleFactor = 0.7
+        othersButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        othersButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+
+        resetVoteButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
+        resetVoteButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+
+        othersVotesButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+    }
+
+    private func setupLabels() {
         leftAvatar.isHidden = true
         leftAvatarLabel.isHidden = true
         leftAvatarLabel.layer.borderColor = UIColor.white.cgColor
@@ -126,42 +160,23 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         rightAvatarLabel.layer.borderWidth = 1
         middleAvatarLabel.layer.borderColor = UIColor.white.cgColor
         middleAvatarLabel.layer.borderWidth = 1
-      
+
         titleLabel.text = "Team.VotingRiskVC.headerLabel".localized
         teamVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.left".localized
         teamVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
         teamVoteBadgeLabel.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
-        
+
         yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right".localized
         yourVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
         yourVoteBadgeLabel.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
 
-        othersButton.titleLabel?.minimumScaleFactor = 0.7
-        othersButton.titleLabel?.adjustsFontSizeToFitWidth = true
         yourVoteValueLabelLeadingConstraint.constant = isSmallIPhone ? 8 : 16
         othersLabelTrailingConstraint.constant = isSmallIPhone ? 4 : 8
+
         yourVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
         teamVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
-        
-        resetVoteButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
+
         othersLabel.text = "Team.VotingRiskVC.othersButton".localized
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(VotingChartCell.nib, forCellWithReuseIdentifier: VotingChartCell.cellID)
-        dataSource.onUpdate = { [weak self] in
-            self?.collectionView.reloadData()
-        }
-        
-        self.clipsToBounds = true
-        ViewDecorator.roundedEdges(for: self)
-        ViewDecorator.shadow(for: self)
-        
-        resetVoteButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
-        othersButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
-        othersVotesButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
     }
     
     @objc
@@ -238,33 +253,42 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
             
         }
     }
-    
-    func scrollToAverage(silently: Bool = true) -> Bool {
+
+    var currentRisk: Double { return riskFrom(offset: collectionView.contentOffset.x, maxValue: maxValue) }
+
+    func scrollToAverage(silently: Bool = true, animated: Bool) -> Bool {
         shouldSilenceScroll = silently
         for (idx, model) in dataSource.models.enumerated() where model.isTeamAverage {
             collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
                                         at: .centeredHorizontally,
-                                        animated: !silently)
+                                        animated: animated)
+
+            delegate?.votingRisk(cell: self, changedRisk: currentRisk)
             return true
         }
         return false
     }
     
-    func scrollToCenter(silently: Bool) {
-        scrollTo(offset: maxValue / 2, silently: silently)
-    }
-    
-    func scrollTo(offset: CGFloat, silently: Bool) {
-        shouldSilenceScroll = silently
-        collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: !silently)
-        delegate?.votingRisk(cell: self, changedOffset: offset)
+    func scrollToCenter(silently: Bool, animated: Bool) {
+        scrollTo(offset: maxValue / 2, silently: silently, animated: animated)
     }
 
-    func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
+    func scrollTo(risk: Double, silently: Bool, animated: Bool) {
+        let offset = offsetFrom(risk: risk, maxValue: maxValue)
+        scrollTo(offset: offset, silently: silently, animated: animated)
+    }
+    
+    private func scrollTo(offset: CGFloat, silently: Bool, animated: Bool) {
+        shouldSilenceScroll = silently
+        collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: animated)
+        delegate?.votingRisk(cell: self, changedRisk: riskFrom(offset: offset, maxValue: maxValue))
+    }
+
+    private func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
         return min(Double(pow(25, offset / maxValue) / 5), 5)
     }
 
-    func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
+    private func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
         return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
     }
     
@@ -333,7 +357,7 @@ extension VotingRiskCell: UICollectionViewDelegateFlowLayout {
 extension VotingRiskCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if shouldSilenceScroll == false {
-            delegate?.votingRisk(cell: self, changedOffset: scrollView.contentOffset.x)
+            delegate?.votingRisk(cell: self, changedRisk: currentRisk)
         } else {
             shouldSilenceScroll = false
         }
@@ -346,11 +370,11 @@ extension VotingRiskCell: UIScrollViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            delegate?.votingRisk(cell: self, stoppedOnOffset: scrollView.contentOffset.x)
+            delegate?.votingRisk(cell: self, stoppedOnRisk: currentRisk)
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        delegate?.votingRisk(cell: self, stoppedOnOffset: scrollView.contentOffset.x)
+        delegate?.votingRisk(cell: self, stoppedOnRisk: currentRisk)
     }
 }

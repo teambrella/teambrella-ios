@@ -52,38 +52,13 @@ struct HomeCellBuilder {
             break
         }
     }
-    
+
     static func populateHome(cell: HomeCollectionCell, model: HomeCardModel) {
         switch model.itemType {
         case .claim:
-            cell.titleLabel.text = model.itemName
-            cell.ownerAvatarView.isHidden = false
-            cell.ownerAvatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: model.userAvatar)))
-            cell.subtitleLabel.text = model.userName.entire.uppercased()
-            cell.avatarView.show(model.smallPhoto)
-            cell.avatarView.roundCorners(.allCorners, radius: 3)
-            cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
-            cell.leftNumberView.currencyLabel.text = service.currencySymbol
-            cell.leftNumberView.isCurrencyVisible = true
-            cell.leftNumberView.isPercentVisible = false
-            let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
-            cell.rightNumberView.amountLabel.text = amountText
-            cell.rightNumberView.isBadgeVisible = model.isVoting
-            cell.rightNumberView.isPercentVisible = model.teamVote != nil
+            setupClaimCell(cell: cell, model: model)
         case .teammate:
-            cell.titleLabel.text = model.userName.entire
-            cell.subtitleLabel.text = model.itemName.uppercased()
-            cell.ownerAvatarView.isHidden = true
-            cell.avatarView.show(model.smallPhoto)
-            cell.avatarView.roundCorners(.allCorners, radius: cell.avatarView.bounds.width / 2)
-            cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
-            cell.leftNumberView.isCurrencyVisible = true
-            cell.leftNumberView.isPercentVisible = false
-            let amountText: String = model.teamVote.map { String(format: "%.1f", $0) } ?? "..."
-            cell.rightNumberView.amountLabel.text = amountText
-            cell.rightNumberView.isBadgeVisible = model.isVoting
-            cell.rightNumberView.isCurrencyVisible = false
-            cell.rightNumberView.isPercentVisible = false
+            setupTeammateCell(cell: cell, model: model)
         default:
             break
         }
@@ -134,6 +109,39 @@ struct HomeCellBuilder {
         cell.timeLabel.text = "6 DAYS" //
         cell.bottomLabel.text = "I think it’s a great idea to let Frank in, he seems trustworthy and his application …"
         cell.messageCountLabel.text = "4" //
+    }
+
+    static private func setupClaimCell(cell: HomeCollectionCell, model: HomeCardModel) {
+        cell.titleLabel.text = model.itemName
+        cell.ownerAvatarView.isHidden = false
+        cell.ownerAvatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: model.userAvatar)))
+        cell.subtitleLabel.text = model.userName.entire.uppercased()
+        cell.avatarView.show(model.smallPhoto)
+        cell.avatarView.roundCorners(.allCorners, radius: 3)
+        cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
+        cell.leftNumberView.currencyLabel.text = service.currencySymbol
+        cell.leftNumberView.isCurrencyVisible = true
+        cell.leftNumberView.isPercentVisible = false
+        let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
+        cell.rightNumberView.amountLabel.text = amountText
+        cell.rightNumberView.isBadgeVisible = model.isVoting
+        cell.rightNumberView.isPercentVisible = model.teamVote != nil
+    }
+
+    static private func setupTeammateCell(cell: HomeCollectionCell, model: HomeCardModel) {
+        cell.titleLabel.text = model.userName.entire
+        cell.subtitleLabel.text = model.itemName.uppercased()
+        cell.ownerAvatarView.isHidden = true
+        cell.avatarView.show(model.smallPhoto)
+        cell.avatarView.roundCorners(.allCorners, radius: cell.avatarView.bounds.width / 2)
+        cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
+        cell.leftNumberView.isCurrencyVisible = true
+        cell.leftNumberView.isPercentVisible = false
+        let amountText: String = model.teamVote.map { String(format: "%.1f", $0) } ?? "..."
+        cell.rightNumberView.amountLabel.text = amountText
+        cell.rightNumberView.isBadgeVisible = model.isVoting
+        cell.rightNumberView.isCurrencyVisible = false
+        cell.rightNumberView.isPercentVisible = false
     }
     
 }
