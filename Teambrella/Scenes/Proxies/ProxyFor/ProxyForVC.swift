@@ -60,7 +60,8 @@ class ProxyForVC: UIViewController {
                                    height: self.collectionView.frame.height)
                 emptyVC = EmptyVC.show(in: self, inView: self.collectionView, frame: frame, animated: false)
                 emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
-                emptyVC?.setText(title: "Proxy.Empty.You.title".localized, subtitle: "Proxy.Empty.You.details".localized)
+                emptyVC?.setText(title: "Proxy.Empty.You.title".localized,
+                                 subtitle: "Proxy.Empty.You.details".localized)
             }
         } else {
             emptyVC?.remove()
