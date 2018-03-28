@@ -57,14 +57,15 @@ class WalletCosignersVC: UIViewController, Routable {
             controller.addAction(cancel)
             self?.present(controller, animated: true, completion: nil)
         }
-        guard let cosigners = cosigners else { return }
-
-        dataSource.loadData(cosigners: cosigners)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         guard isFirstLoading == false else {
+            if let cosigners = cosigners {
+                dataSource.loadData(cosigners: cosigners)
+            } 
             isFirstLoading = false
             return
         }

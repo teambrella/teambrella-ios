@@ -309,6 +309,9 @@ struct TeammateCellBuilder {
         let morePersons = stats.posterCount - urls.count
         let text: String? = morePersons > 0 ? "+\(morePersons)" : nil
         cell.teammatesAvatarStack.set(images: urls, label: text, max: 4)
+        if urls.isEmpty {
+            cell.teammatesAvatarStack.isHidden = true
+        }
         cell.discussionLabel.text = "Team.TeammateCell.discussion".localized
     }
     
