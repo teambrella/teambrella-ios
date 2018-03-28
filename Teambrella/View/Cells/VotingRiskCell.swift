@@ -71,29 +71,31 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet weak var yourVoteValueLabelLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var othersLabelTrailingConstraint: NSLayoutConstraint!
     
+    var currentRisk: Double { return riskFrom(offset: collectionView.contentOffset.x, maxValue: maxValue) }
+
     var maxValue: CGFloat {
         return collectionView.contentSize.width - collectionLeftInset - collectionRightInset - columnWidth
     }
-    
+
     var collectionLeftInset: CGFloat {
         return (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset.left ?? 0
     }
-    
+
     var collectionRightInset: CGFloat {
         return (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset.right ?? 0
     }
-    
+
     var middleCellRow: Int = -1 {
         didSet {
             delegate?.votingRisk(cell: self, changedMiddleRowIndex: middleCellRow)
             colorizeCenterCell()
         }
     }
-    
+
     private var dataSource: VotingScrollerDataSource = VotingScrollerDataSource()
-    
+
     weak var delegate: VotingRiskCellDelegate?
-    
+
     var shouldSilenceScroll: Bool = false
 
     var columnWidth: CGFloat { return collectionView.bounds.width * 4 / CGFloat(dataSource.count) }
@@ -254,8 +256,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         }
     }
 
-    var currentRisk: Double { return riskFrom(offset: collectionView.contentOffset.x, maxValue: maxValue) }
-
+    @discardableResult
     func scrollToAverage(silently: Bool = true, animated: Bool) -> Bool {
         shouldSilenceScroll = silently
         for (idx, model) in dataSource.models.enumerated() where model.isTeamAverage {
@@ -263,6 +264,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
                                         at: .centeredHorizontally,
                                         animated: animated)
 
+            colorizeCenterCell()
             delegate?.votingRisk(cell: self, changedRisk: currentRisk)
             return true
         }
@@ -281,6 +283,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     private func scrollTo(offset: CGFloat, silently: Bool, animated: Bool) {
         shouldSilenceScroll = silently
         collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: animated)
+        colorizeCenterCell()
         delegate?.votingRisk(cell: self, changedRisk: riskFrom(offset: offset, maxValue: maxValue))
     }
 
