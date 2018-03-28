@@ -23,8 +23,8 @@ import UIKit
 import ThoraxMath
 
 protocol VotingRiskCellDelegate: class {
-    func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat)
-    func votingRisk(cell: VotingRiskCell, stoppedOnOffset: CGFloat)
+    func votingRisk(cell: VotingRiskCell, changedRisk: Double)
+    func votingRisk(cell: VotingRiskCell, stoppedOnRisk: Double)
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int)
     func votingRisk(cell: VotingRiskCell, didTapButton button: UIButton)
     func averageVotingRisk(cell: VotingRiskCell) -> Double
@@ -238,33 +238,42 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
             
         }
     }
-    
-    func scrollToAverage(silently: Bool = true) -> Bool {
+
+    var currentRisk: Double { return riskFrom(offset: collectionView.contentOffset.x, maxValue: maxValue) }
+
+    func scrollToAverage(silently: Bool = true, animated: Bool) -> Bool {
         shouldSilenceScroll = silently
         for (idx, model) in dataSource.models.enumerated() where model.isTeamAverage {
             collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
                                         at: .centeredHorizontally,
-                                        animated: !silently)
+                                        animated: animated)
+
+             delegate?.votingRisk(cell: self, changedRisk: currentRisk)
             return true
         }
         return false
     }
     
-    func scrollToCenter(silently: Bool) {
-        scrollTo(offset: maxValue / 2, silently: silently)
-    }
-    
-    func scrollTo(offset: CGFloat, silently: Bool) {
-        shouldSilenceScroll = silently
-        collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: !silently)
-        delegate?.votingRisk(cell: self, changedOffset: offset)
+    func scrollToCenter(silently: Bool, animated: Bool) {
+        scrollTo(offset: maxValue / 2, silently: silently, animated: animated)
     }
 
-    func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
+    func scrollTo(risk: Double, silently: Bool, animated: Bool) {
+        let offset = offsetFrom(risk: risk, maxValue: maxValue)
+        scrollTo(offset: offset, silently: silently, animated: animated)
+    }
+    
+    private func scrollTo(offset: CGFloat, silently: Bool, animated: Bool) {
+        shouldSilenceScroll = silently
+        collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: animated)
+        delegate?.votingRisk(cell: self, changedRisk: riskFrom(offset: offset, maxValue: maxValue))
+    }
+
+    private func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
         return min(Double(pow(25, offset / maxValue) / 5), 5)
     }
 
-    func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
+    private func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
         return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
     }
     
@@ -333,7 +342,7 @@ extension VotingRiskCell: UICollectionViewDelegateFlowLayout {
 extension VotingRiskCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if shouldSilenceScroll == false {
-            delegate?.votingRisk(cell: self, changedOffset: scrollView.contentOffset.x)
+            delegate?.votingRisk(cell: self, changedRisk: currentRisk)
         } else {
             shouldSilenceScroll = false
         }
@@ -346,11 +355,11 @@ extension VotingRiskCell: UIScrollViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            delegate?.votingRisk(cell: self, stoppedOnOffset: scrollView.contentOffset.x)
+            delegate?.votingRisk(cell: self, stoppedOnRisk: currentRisk)
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        delegate?.votingRisk(cell: self, stoppedOnOffset: scrollView.contentOffset.x)
+        delegate?.votingRisk(cell: self, stoppedOnRisk: currentRisk)
     }
 }

@@ -101,7 +101,6 @@ struct TeammateCellBuilder {
         if let risk = voting.riskVoted {
             votingCell.teamVoteValueLabel.text = String(format: "%.2f", risk)
             votingCell.showTeamNoVote(risk: risk)
-
         } else {
             votingCell.teamVoteValueLabel.text = "..."
             votingCell.showTeamNoVote(risk: nil)
@@ -109,25 +108,17 @@ struct TeammateCellBuilder {
         
         if let myVote = voting.myVote {
             votingCell.layoutIfNeeded()
+            votingCell.yourVoteValueLabel.alpha = 1
             votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
-            let offset = votingCell.offsetFrom(risk: myVote, maxValue: votingCell.maxValue)
-            votingCell.scrollTo(offset: offset, silently: true)
+            votingCell.scrollTo(risk: myVote, silently: true, animated: false)
             votingCell.showYourNoVote(risk: myVote)
+            votingCell.isProxyHidden = true
         } else {
             controller.resetVote(cell: votingCell)
             votingCell.showYourNoVote(risk: nil)
-
-            if let risk = voting.riskVoted {
-                let offset = votingCell.offsetFrom(risk: risk, maxValue: votingCell.maxValue)
-                votingCell.scrollTo(offset: offset, silently: true)
-            } else {
-                votingCell.scrollToAverage()
-            }
         }
-        let currentChosenRisk = votingCell.riskFrom(offset: votingCell.collectionView.contentOffset.x,
-                                                    maxValue: votingCell.maxValue)
         controller.updateAverages(cell: votingCell,
-                                  risk: currentChosenRisk)
+                                  risk: votingCell.currentRisk)
         
         var prefix = ""
         if voting.remainingMinutes < 60 {

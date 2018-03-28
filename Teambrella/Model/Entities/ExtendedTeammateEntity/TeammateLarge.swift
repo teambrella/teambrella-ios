@@ -43,6 +43,7 @@ class TeammateLarge: Decodable {
     func update(votingResult: TeammateVotingResult) {
         topic.minutesSinceLastPost = votingResult.minutesSinceLast
         topic.unreadCount = votingResult.unreadCount
+        voting = votingResult.voting
     }
 
     enum CodingKeys: String, CodingKey {
