@@ -32,7 +32,7 @@ class ChatModelBuilder {
     func unsentModel(fragments: [ChatFragment], id: String) -> ChatTextUnsentCellModel {
         let heights = heightCalculator.heights(for: fragments)
         let myName = service.session?.currentUserName ?? Name.empty
-        return  ChatTextUnsentCellModel(fragments: fragments,
+        return ChatTextUnsentCellModel(fragments: fragments,
                                         fragmentHeights: heights,
                                         userName: myName,
                                         date: Date(),

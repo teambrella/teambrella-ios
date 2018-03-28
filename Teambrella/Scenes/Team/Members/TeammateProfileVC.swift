@@ -81,7 +81,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             self.setTitle()
             self.collectionView.reloadData()
             if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate
+                flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate && !self.dataSource.isMe
             }
             if self.scrollToVote, let index = self.dataSource.votingCellIndexPath {
                 self.scrollToVote = false
@@ -139,6 +139,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     func updateAverages(cell: VotingRiskCell, risk: Double) {
         func text(for label: UILabel, risk: Double) {
+
             guard let averageRisk = dataSource.teammateLarge?.voting?.averageRisk else { return }
             guard averageRisk != 0 else { return }
             
@@ -289,13 +290,19 @@ extension TeammateProfileVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            return dataSource.isNewTeammate
-                ? collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                  withReuseIdentifier: CompactUserInfoHeader.cellID,
-                                                                  for: indexPath)
-                : collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                  withReuseIdentifier: TeammateSummaryView.cellID,
-                                                                  for: indexPath)
+            if dataSource.isNewTeammate {
+                return dataSource.isMe
+                    ? collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                      withReuseIdentifier: TeammateSummaryView.cellID,
+                                                                      for: indexPath)
+                    : collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                      withReuseIdentifier: CompactUserInfoHeader.cellID,
+                                                                      for: indexPath)
+            } else {
+                return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                       withReuseIdentifier: TeammateSummaryView.cellID,
+                                                                       for: indexPath)
+            }
         }
         if kind == UICollectionElementKindSectionFooter {
             return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
@@ -460,9 +467,13 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         guard dataSource.teammateLarge != nil else { return CGSize.zero }
         
-        return dataSource.isNewTeammate
-            ? CGSize(width: collectionView.bounds.width, height: 60)
-            : CGSize(width: collectionView.bounds.width, height: 210)
+        if dataSource.isNewTeammate {
+            return dataSource.isMe
+                ? CGSize(width: collectionView.bounds.width, height: 210)
+                : CGSize(width: collectionView.bounds.width, height: 60)
+        } else {
+            return CGSize(width: collectionView.bounds.width, height: 210)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -610,7 +621,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             log("VotingRiskCell unknown button pressed", type: [.error])
         }
     }
-
+    
     func averageVotingRisk(cell: VotingRiskCell) -> Double {
         return dataSource.teammateLarge?.voting?.averageRisk ?? 0
     }
