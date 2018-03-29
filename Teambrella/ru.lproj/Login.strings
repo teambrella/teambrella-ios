@@ -7,7 +7,7 @@
 */
 
 "Login.LoginBlueVC.centerLabel"                    = "Не страховка. А намного лучше.";
-"Login.LoginBlueVC.continueWithFBButton"           = "Продолжить с Фейсбуком";
+"Login.LoginBlueVC.continueWithFBButton"           = "Продолжить с Facebook";
 "Login.LoginBlueVC.tryDemoButton"                  = "Попробовать демо";
 "Login.LoginNoInviteVC.centerLabel"                = "Не страховка. А намного лучше.";
 "Login.LoginNoInviteVC.upperLabel"                 = "Доступ только по приглашениям!";

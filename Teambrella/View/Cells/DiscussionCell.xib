@@ -50,7 +50,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QhF-iw-jcV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="16" width="383" height="20.5"/>
+                        <rect key="frame" x="72" y="16" width="375" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -62,74 +62,49 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIA-wA-dBI" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="40.5" width="375" height="37.5"/>
+                        <rect key="frame" x="72" y="40.5" width="407" height="33.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="LAB-GY-vxT">
-                        <rect key="frame" x="72" y="88" width="188" height="20"/>
-                        <subviews>
-                            <view alpha="0.59999999999999998" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="H07-1A-61F" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="20"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="250" id="Cjy-Nc-jwU"/>
-                                    <constraint firstAttribute="height" constant="20" id="ubL-SX-sLA"/>
-                                </constraints>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="b3f-Ro-k67">
-                                <rect key="frame" x="66" y="0.0" width="122" height="20"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discussion" translatesAutoresizingMaskIntoConstraints="NO" id="V29-0m-7wa">
-                                        <rect key="frame" x="0.0" y="2.5" width="15" height="15"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="15" id="1TE-zI-fnj"/>
-                                            <constraint firstAttribute="width" secondItem="V29-0m-7wa" secondAttribute="height" multiplier="1:1" id="GHo-t7-Gf8"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCUSSION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6p-Vb-wmZ" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="0.0" width="101" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                    </stackView>
+                    <view alpha="0.59999999999999998" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="H07-1A-61F" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
+                        <rect key="frame" x="72" y="84" width="0.0" height="20"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" priority="250" id="Cjy-Nc-jwU"/>
+                            <constraint firstAttribute="height" constant="20" id="ubL-SX-sLA"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="qtc-Rp-2hk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dIA-wA-dBI" secondAttribute="trailing" constant="16" id="3yo-GP-V5H"/>
-                <constraint firstItem="LAB-GY-vxT" firstAttribute="top" secondItem="dIA-wA-dBI" secondAttribute="bottom" constant="10" id="4bd-qY-s7x"/>
+                <constraint firstItem="qtc-Rp-2hk" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="trailing" constant="16" id="3yo-GP-V5H"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="A2l-j8-o3j"/>
                 <constraint firstAttribute="trailing" secondItem="xeX-Mw-yoX" secondAttribute="trailing" constant="16" id="ACl-Dr-h7q"/>
+                <constraint firstItem="H07-1A-61F" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="leading" id="Cj6-6U-o1e"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="width" secondItem="Qcx-lN-iSa" secondAttribute="height" multiplier="1:1" id="CmI-hR-JSE"/>
                 <constraint firstItem="dIA-wA-dBI" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="leading" id="Gne-Fb-JeF"/>
                 <constraint firstItem="dIA-wA-dBI" firstAttribute="top" secondItem="QhF-iw-jcV" secondAttribute="bottom" constant="4" id="JuY-Hj-Hmv"/>
                 <constraint firstItem="qtc-Rp-2hk" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="MJr-0m-Rh2"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LAB-GY-vxT" secondAttribute="trailing" constant="16" id="TdH-WI-hid"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="H07-1A-61F" secondAttribute="trailing" constant="20" id="Okc-VF-TEu"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="width" secondItem="vsD-oO-HJn" secondAttribute="height" multiplier="1:1" id="X5R-H4-Bmu"/>
-                <constraint firstItem="dIA-wA-dBI" firstAttribute="trailing" secondItem="xeX-Mw-yoX" secondAttribute="leading" constant="-16" id="czc-fk-MYr"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="dd3-AH-tpI"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="leading" secondItem="qtc-Rp-2hk" secondAttribute="trailing" constant="16" id="f6z-U3-WgJ"/>
                 <constraint firstItem="QhF-iw-jcV" firstAttribute="leading" secondItem="Qcx-lN-iSa" secondAttribute="trailing" constant="16" id="gC4-CX-1rg"/>
-                <constraint firstItem="xeX-Mw-yoX" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="trailing" constant="8" id="hEO-7g-OHn"/>
+                <constraint firstItem="xeX-Mw-yoX" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="trailing" constant="16" id="hEO-7g-OHn"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="kku-QK-gka"/>
-                <constraint firstAttribute="bottom" secondItem="LAB-GY-vxT" secondAttribute="bottom" constant="16" id="miV-TG-Rd1"/>
-                <constraint firstItem="LAB-GY-vxT" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="leading" id="nAb-Pe-tA4"/>
+                <constraint firstAttribute="bottom" secondItem="H07-1A-61F" secondAttribute="bottom" constant="20" id="mbp-LI-q00"/>
                 <constraint firstItem="qtc-Rp-2hk" firstAttribute="width" secondItem="qtc-Rp-2hk" secondAttribute="height" multiplier="1:1" id="qqE-nv-QhH"/>
                 <constraint firstAttribute="trailing" secondItem="vsD-oO-HJn" secondAttribute="trailing" constant="16" id="vqe-dZ-ozH"/>
                 <constraint firstItem="xeX-Mw-yoX" firstAttribute="centerY" secondItem="QhF-iw-jcV" secondAttribute="centerY" id="wTY-sb-XZY"/>
                 <constraint firstItem="QhF-iw-jcV" firstAttribute="top" secondItem="Qcx-lN-iSa" secondAttribute="top" id="zQZ-ZG-4bi"/>
+                <constraint firstItem="H07-1A-61F" firstAttribute="top" secondItem="dIA-wA-dBI" secondAttribute="bottom" constant="10" id="zeK-Hd-14N"/>
             </constraints>
             <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
             <size key="customSize" width="562" height="124"/>
             <connections>
                 <outlet property="avatarView" destination="Qcx-lN-iSa" id="mSE-Su-a6H"/>
-                <outlet property="discussionLabel" destination="z6p-Vb-wmZ" id="fXj-rR-nR5"/>
                 <outlet property="teammatesAvatarStack" destination="H07-1A-61F" id="vkt-zc-jWP"/>
                 <outlet property="textLabel" destination="dIA-wA-dBI" id="wiH-V9-mPL"/>
                 <outlet property="timeLabel" destination="xeX-Mw-yoX" id="lcy-Ft-SpW"/>
@@ -140,7 +115,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="discussion" width="11" height="10"/>
         <image name="forward" width="8" height="13"/>
     </resources>
 </document>
