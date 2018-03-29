@@ -19,6 +19,7 @@
  */
 //
 
+import BigNumbers
 import ExtensionsPack
 import Foundation
 import Geth

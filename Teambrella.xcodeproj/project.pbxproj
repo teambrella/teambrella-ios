@@ -670,8 +670,6 @@
 		6D717BC6206CE5630093CBDE /* ExtensionsPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */; };
 		6D717BC7206CE56F0093CBDE /* SwiftKeccak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */; };
 		6D717BC8206CE5730093CBDE /* ThoraxMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */; };
-		6D717BEB206D206F0093CBDE /* SMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D717BEA206D206E0093CBDE /* SMP.swift */; };
-		6D717BEC206D206F0093CBDE /* SMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D717BEA206D206E0093CBDE /* SMP.swift */; };
 		6D72AAFA2028A0F10055FC47 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D72AAF92028A0F10055FC47 /* Photo.swift */; };
 		6D72AAFB2028A0F10055FC47 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D72AAF92028A0F10055FC47 /* Photo.swift */; };
 		6D72AAFD2028A1690055FC47 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D72AAFC2028A1690055FC47 /* Avatar.swift */; };
@@ -816,6 +814,8 @@
 		6DBF492B1F80F10B00B236E2 /* AnimationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */; };
 		6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */; };
 		6DBF492D1F80F22300B236E2 /* AnimationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */; };
+		6DC06F63206D336A006EE570 /* BigNumbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC06F62206D336A006EE570 /* BigNumbers.framework */; };
+		6DC06F64206D336A006EE570 /* BigNumbers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC06F62206D336A006EE570 /* BigNumbers.framework */; };
 		6DC2306A1ED07F0500FAC330 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC230691ED07F0500FAC330 /* Key.swift */; };
 		6DC2487C1F5D948E00D9396D /* Team.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2487A1F5D948E00D9396D /* Team.stringsdict */; };
 		6DC248801F5EAAF300D9396D /* EmptyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2487E1F5EAAF300D9396D /* EmptyVC.swift */; };
@@ -1341,7 +1341,6 @@
 		6D6FCBF31FD702D00032041A /* Vibrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Vibrator.swift; path = Model/Services/Vibrator.swift; sourceTree = "<group>"; };
 		6D6FCBFC1FD878FB0032041A /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSMutableAttributedString.swift; path = Helpers/Extensions/NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		6D716BBE2021E747001E2614 /* SaneText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SaneText.swift; path = Model/Entities/SaneText.swift; sourceTree = "<group>"; };
-		6D717BEA206D206E0093CBDE /* SMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SMP.swift; path = External/SMP.swift; sourceTree = "<group>"; };
 		6D72AAF92028A0F10055FC47 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Photo.swift; path = Model/Entities/Photo.swift; sourceTree = "<group>"; };
 		6D72AAFC2028A1690055FC47 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Avatar.swift; path = Model/Entities/Avatar.swift; sourceTree = "<group>"; };
 		6D74B2911F7904A5007F736E /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
@@ -1459,6 +1458,7 @@
 		6DBBF8021F9A5F6800524B1E /* Unconfirmed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unconfirmed.swift; sourceTree = "<group>"; };
 		6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomePresentationController.swift; path = Scenes/Home/HomePresentationController.swift; sourceTree = "<group>"; };
 		6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimationTools.swift; path = Helpers/AnimationTools.swift; sourceTree = "<group>"; };
+		6DC06F62206D336A006EE570 /* BigNumbers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BigNumbers.framework; path = Carthage/Build/iOS/BigNumbers.framework; sourceTree = "<group>"; };
 		6DC230691ED07F0500FAC330 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		6DC2487B1F5D948E00D9396D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Team.stringsdict; sourceTree = "<group>"; };
 		6DC2487D1F5D951600D9396D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Team.stringsdict; sourceTree = "<group>"; };
@@ -1678,6 +1678,7 @@
 				6D4E5D751F7AB6870020DEE2 /* XLPagerTabStrip.framework in Frameworks */,
 				6D506CE02045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */,
 				6D4E5D761F7AB6870020DEE2 /* ImageSlideshow.framework in Frameworks */,
+				6DC06F64206D336A006EE570 /* BigNumbers.framework in Frameworks */,
 				6D4E5D771F7AB6870020DEE2 /* PKHUD.framework in Frameworks */,
 				6D4E5D7A1F7AB6870020DEE2 /* SwiftSoup.framework in Frameworks */,
 				6DE3E34E2049BCED0042CD72 /* QRCode.framework in Frameworks */,
@@ -1712,6 +1713,7 @@
 				E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */,
 				6D506CDF2045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */,
 				6D9CC6331ED7207E007F936E /* XLPagerTabStrip.framework in Frameworks */,
+				6DC06F63206D336A006EE570 /* BigNumbers.framework in Frameworks */,
 				6DDE956B1EE80FE40019DA47 /* ImageSlideshow.framework in Frameworks */,
 				6DA8D54F1F0E43B7000A4DB7 /* PKHUD.framework in Frameworks */,
 				6DE3E34D2049BCED0042CD72 /* QRCode.framework in Frameworks */,
@@ -2806,7 +2808,6 @@
 		6DDE956E1EE813DC0019DA47 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				6D717BEA206D206E0093CBDE /* SMP.swift */,
 				6DDE956C1EE813D50019DA47 /* KingfisherSource.swift */,
 			);
 			name = External;
@@ -2865,6 +2866,7 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DC06F62206D336A006EE570 /* BigNumbers.framework */,
 				6D506CE12045A8A20011CB4B /* Bolts.framework */,
 				6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */,
 				6D506CD52045A69D0011CB4B /* FacebookCore.framework */,
@@ -3412,6 +3414,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ThoraxMath.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ExtensionsPack.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BigNumbers.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -3472,6 +3475,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ThoraxMath.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ExtensionsPack.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BigNumbers.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -3734,7 +3738,6 @@
 				6D4E5C631F7AB6870020DEE2 /* Label.swift in Sources */,
 				6D1EC3DE202B0DE000F0541C /* CosignerServerImpl.swift in Sources */,
 				6D4E5C641F7AB6870020DEE2 /* HomeApplicationAcceptedCell.swift in Sources */,
-				6D717BEC206D206F0093CBDE /* SMP.swift in Sources */,
 				6D4E5C651F7AB6870020DEE2 /* JoinTeamInfoCell.swift in Sources */,
 				6D4E5C661F7AB6870020DEE2 /* XIBInitable.swift in Sources */,
 				6D4E5C671F7AB6870020DEE2 /* ProxyForCellModel.swift in Sources */,
@@ -4152,7 +4155,6 @@
 				94E325B91F07DA9400B2D8C8 /* JoinTeamInfoCell.swift in Sources */,
 				6D1EC3DD202B0DE000F0541C /* CosignerServerImpl.swift in Sources */,
 				6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */,
-				6D717BEB206D206F0093CBDE /* SMP.swift in Sources */,
 				6D69D9F41EFC03A600DED5CE /* ProxyForCellModel.swift in Sources */,
 				6DA8D5531F0E74C9000A4DB7 /* DAO.swift in Sources */,
 				6D6DA26C1EE21F7A00307C73 /* LoginDetailsRouter.swift in Sources */,
