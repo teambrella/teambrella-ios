@@ -111,7 +111,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         didSet {
             proxyAvatarView.isHidden = isProxyHidden
             proxyNameLabel.isHidden = isProxyHidden
-            resetVoteButton.isHidden = !isProxyHidden
+//            resetVoteButton.isHidden = !isProxyHidden
         }
     }
     

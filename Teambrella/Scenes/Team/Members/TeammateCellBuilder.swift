@@ -107,13 +107,29 @@ struct TeammateCellBuilder {
         }
         
         if let myVote = voting.myVote {
-            votingCell.layoutIfNeeded()
-            votingCell.yourVoteValueLabel.alpha = 1
-            votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
-            votingCell.scrollTo(risk: myVote, silently: true, animated: false)
-            votingCell.showYourNoVote(risk: myVote)
-            votingCell.isProxyHidden = true
+            if let proxyVote = voting.proxyName {
+                votingCell.isProxyHidden = false
+                votingCell.resetVoteButton.isHidden = true
+                votingCell.layoutIfNeeded()
+                votingCell.yourVoteValueLabel.alpha = 1
+                votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
+                votingCell.scrollTo(risk: myVote, silently: true, animated: false)
+                votingCell.showYourNoVote(risk: myVote)
+                if let avatar = voting.proxyAvatar {
+                    votingCell.proxyAvatarView.show(avatar)
+                }
+                votingCell.proxyNameLabel.text = voting.proxyName?.uppercased()
+            } else {
+                votingCell.layoutIfNeeded()
+                votingCell.yourVoteValueLabel.alpha = 1
+                votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
+                votingCell.scrollTo(risk: myVote, silently: true, animated: false)
+                votingCell.showYourNoVote(risk: myVote)
+                votingCell.isProxyHidden = true
+                votingCell.resetVoteButton.isHidden = false
+            }
         } else {
+            votingCell.resetVoteButton.isHidden = true
             controller.resetVote(cell: votingCell)
             votingCell.showYourNoVote(risk: nil)
         }
@@ -143,7 +159,7 @@ struct TeammateCellBuilder {
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         cell.middleAvatar.showAvatar(string: teammate.basic.avatar)
-
+        
         if SimpleStorage().bool(forKey: .swipeHelperWasShown) {
             cell.swipeToVoteView.isHidden = true
         } else {
@@ -153,7 +169,7 @@ struct TeammateCellBuilder {
                 SimpleStorage().store(bool: true, forKey: .swipeHelperWasShown)
             }
         }
-
+        
         if let voting = teammate.voting {
             setVote(votingCell: cell, voting: voting, controller: controller)
         }
@@ -312,7 +328,6 @@ struct TeammateCellBuilder {
         if urls.isEmpty {
             cell.teammatesAvatarStack.isHidden = true
         }
-        cell.discussionLabel.text = "Team.TeammateCell.discussion".localized
     }
     
     private static func populateCompactDiscussion(cell: DiscussionCompactCell,

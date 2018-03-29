@@ -50,8 +50,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEA-pj-5Rg" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="72" y="41" width="358" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEA-pj-5Rg" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="72" y="41" width="411" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="1 MIN AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ejr-yO-pjp" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="1 MIN AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ejr-yO-pjp" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="446" y="16" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -116,9 +116,9 @@
                             <constraint firstItem="JbY-Lf-BOo" firstAttribute="leading" secondItem="yqT-sY-ffe" secondAttribute="leading" id="0Ch-mC-Dc2"/>
                             <constraint firstItem="Ejr-yO-pjp" firstAttribute="leading" secondItem="yqT-sY-ffe" secondAttribute="trailing" constant="8" id="3zg-zE-1cC"/>
                             <constraint firstAttribute="trailing" secondItem="uev-dk-iCT" secondAttribute="trailing" id="4UY-pt-jAS"/>
+                            <constraint firstItem="B6d-fE-Fmr" firstAttribute="leading" secondItem="lEA-pj-5Rg" secondAttribute="trailing" id="BOK-FD-Muk"/>
                             <constraint firstItem="yqT-sY-ffe" firstAttribute="top" secondItem="M6n-hd-Q8f" secondAttribute="top" id="D7I-p0-BHs"/>
                             <constraint firstItem="uev-dk-iCT" firstAttribute="leading" secondItem="BkT-eI-XLe" secondAttribute="leading" constant="16" id="GPL-TR-cVD"/>
-                            <constraint firstItem="lEA-pj-5Rg" firstAttribute="trailing" secondItem="Ejr-yO-pjp" secondAttribute="leading" constant="-16" id="OZw-gV-44k"/>
                             <constraint firstItem="yqT-sY-ffe" firstAttribute="leading" secondItem="M6n-hd-Q8f" secondAttribute="trailing" constant="16" id="PTJ-Jf-zyS"/>
                             <constraint firstItem="Gex-0H-g7a" firstAttribute="leading" secondItem="B6d-fE-Fmr" secondAttribute="trailing" constant="16" id="Q2T-Db-rrg"/>
                             <constraint firstAttribute="trailing" secondItem="Gex-0H-g7a" secondAttribute="trailing" constant="16" id="U49-VG-gw5"/>
@@ -134,7 +134,7 @@
                             <constraint firstItem="Gex-0H-g7a" firstAttribute="centerY" secondItem="BkT-eI-XLe" secondAttribute="centerY" id="hoD-nA-wY6"/>
                             <constraint firstItem="7wD-Sn-ye9" firstAttribute="leading" secondItem="JbY-Lf-BOo" secondAttribute="trailing" constant="16" id="jLK-6K-x1Z"/>
                             <constraint firstItem="M6n-hd-Q8f" firstAttribute="leading" secondItem="BkT-eI-XLe" secondAttribute="leading" constant="16" id="kJL-Ex-GPM"/>
-                            <constraint firstItem="lEA-pj-5Rg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ejr-yO-pjp" secondAttribute="bottom" id="kwj-va-Min"/>
+                            <constraint firstItem="lEA-pj-5Rg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ejr-yO-pjp" secondAttribute="bottom" constant="1" id="kwj-va-Min"/>
                             <constraint firstItem="lEA-pj-5Rg" firstAttribute="leading" secondItem="yqT-sY-ffe" secondAttribute="leading" id="mXQ-QL-Fqo"/>
                             <constraint firstItem="lEA-pj-5Rg" firstAttribute="top" secondItem="yqT-sY-ffe" secondAttribute="bottom" constant="4" id="oJN-ny-W39"/>
                             <constraint firstItem="B6d-fE-Fmr" firstAttribute="centerY" secondItem="Gex-0H-g7a" secondAttribute="centerY" id="r3T-Fh-nzp"/>

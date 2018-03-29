@@ -166,7 +166,8 @@ final class TeammateProfileVC: UIViewController, Routable {
             let proxyName = proxyName {
             cell.scrollTo(risk: vote, silently: true, animated: false)
             cell.isProxyHidden = false
-            cell.proxyAvatarView.showAvatar(string: proxyAvatar)
+            cell.resetVoteButton.isHidden = true
+            cell.proxyAvatarView.show(proxyAvatar)
             cell.proxyNameLabel.text = proxyName.uppercased()
         } else {
             cell.scrollToAverage(silently: true, animated: false)
@@ -454,7 +455,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             let cellHeight: CGFloat = Constant.socialCellHeight
             return CGSize(width: wdt, height: base + CGFloat(dataSource.socialItems.count) * cellHeight)
         case .dialog:
-            return CGSize(width: collectionView.bounds.width, height: 120)
+            return isSmallIPhone ? CGSize(width: collectionView.bounds.width, height: 110)
+            : CGSize(width: collectionView.bounds.width, height: 120)
         case .me:
             return CGSize(width: collectionView.bounds.width, height: 215)
         case .voting:
