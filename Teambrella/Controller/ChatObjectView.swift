@@ -108,7 +108,6 @@ class ChatObjectView: UIView, XIBInitable {
         
         imageView.image = #imageLiteral(resourceName: "imagePlaceholder")
         rightLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
-//        voteTitleLabel.lineBreakMode = .byWordWrapping
         basic.smallPhoto.map { self.imageView.showImage(string: $0) }
         
         if let voting = voting {
