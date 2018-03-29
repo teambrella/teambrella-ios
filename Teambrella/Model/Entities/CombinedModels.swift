@@ -65,7 +65,7 @@ struct NewClaimModel: ReportModel {
         let isLowerThanLimit = expenses <= limit
         let isTextValid = text != ""
         let isAddressValid = EthereumAddress(string: address) == nil ? false : true
-        return coverage.value > 0 && expenses > 0 && isLowerThanLimit && isTextValid && isAddressValid
+        return coverage.value > 0.0 && expenses > 0.0 && isLowerThanLimit && isTextValid && isAddressValid
     }
 }
 

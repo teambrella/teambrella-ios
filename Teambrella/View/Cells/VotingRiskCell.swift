@@ -201,7 +201,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     
     func showTeamNoVote(risk: Double?) {
         var show = false
-        risk.flatMap { show = $0 >= 5 }
+        risk.flatMap { show = $0 >= 5.0 }
         teamVoteValueLabel.isHidden = show
         teamVoteBadgeLabel.isHidden = show
         teamVoteNotAccept.isHidden = !show
@@ -210,7 +210,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     
     func showYourNoVote(risk: Double?) {
         var show = false
-        risk.flatMap { show = $0 >= 5 }
+        risk.flatMap { show = $0 >= 5.0 }
         yourVoteValueLabel.isHidden = show
         yourVoteBadgeLabel.isHidden = risk != nil ? show : true
         yourVoteNotAccept.isHidden = !show

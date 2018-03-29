@@ -188,7 +188,7 @@ struct TeammateCellBuilder {
         }
         if let middle = cell.numberBar.middle { // math abs!!!
             middle.titleLabel.text = "Team.Teammates.net".localized
-            let test = teammate.basic.totallyPaidAmount > 0 ?
+            let test = teammate.basic.totallyPaidAmount > 0.0 ?
                 Int(teammate.basic.totallyPaidAmount + 0.5) :
                 Int(teammate.basic.totallyPaidAmount - 0.5)
             middle.amountLabel.text = String(test)
@@ -234,9 +234,9 @@ struct TeammateCellBuilder {
         cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
         
         cell.weightTitleLabel.text = "Team.TeammateCell.weight".localized
-        if stats.weight < 1 {
+        if stats.weight < 1.0 {
             cell.weightValueLabel.text = String(format: "%.2f", stats.weight)
-        } else if stats.weight < 10 {
+        } else if stats.weight < 10.0 {
             cell.weightValueLabel.text = String(format: "%.1f", stats.weight)
         } else {
             cell.weightValueLabel.text = String(Int(stats.weight))

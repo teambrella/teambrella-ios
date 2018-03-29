@@ -33,6 +33,7 @@ struct EthereumProcessor {
         case noAccount
         case noWIF
         case inconsistentTxData(String)
+        case wrongNumber
     }
     
     /// creates a processor with the key that is stored for the current user
@@ -146,7 +147,9 @@ struct EthereumProcessor {
                    gasPrice: Int,
                    value: Decimal) throws -> GethTransaction {
         let weis = value * 1_000_000_000_000_000_000
-        let weisHex = BInt((weis as NSDecimalNumber).stringValue).asString(withBase: 16)
+        guard let weisHex = BInt((weis as NSDecimalNumber).stringValue)?.asString(withBase: 16) else {
+            throw EthereumProcessorError.wrongNumber
+        }
         
         let dict = ["nonce": "0x\(nonce.hexString)",
             "gasPrice": "0x\(gasPrice.hexString)",

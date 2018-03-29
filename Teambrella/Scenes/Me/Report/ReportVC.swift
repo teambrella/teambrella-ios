@@ -246,7 +246,7 @@ final class ReportVC: UIViewController, Routable {
                 guard let `self` = self else { return }
                 
                 let now = Date()
-                guard now.timeIntervalSince(self.lastDate) >= 2 else {
+                guard now.timeIntervalSince(self.lastDate) >= 2.0 else {
                     return
                 }
                 

@@ -373,9 +373,9 @@ class EthWallet {
 
     private func toValues(destinations: [TxOutput]) -> [String] {
         let destinationValues = destinations.flatMap { output in
-            guard let stringValue = output.amountValue?.stringValue else { return nil }
+            guard let amountValue = output.amountValue else { return nil }
 
-            return AbiArguments.parseDecimalAmount(decimalAmount: stringValue)
+            return AbiArguments.parseDecimalAmount(decimal: amountValue)
         }
         return destinationValues
     }

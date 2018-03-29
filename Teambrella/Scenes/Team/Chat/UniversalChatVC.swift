@@ -426,7 +426,7 @@ private extension UniversalChatVC {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             guard let `self` = self else { return }
             
-            if Date().timeIntervalSince(self.lastTypingDate) > 3 {
+            if Date().timeIntervalSince(self.lastTypingDate) > 3.0 {
                 self.showIsTyping = false
                 self.typingUsers.removeAll()
             }
@@ -446,7 +446,7 @@ private extension UniversalChatVC {
                 guard let me = self else { return }
                 
                 let interval = me.lastTypingDate.timeIntervalSinceNow
-                if interval < -2, let topicID = me.dataSource.topicID,
+                if interval < -2.0, let topicID = me.dataSource.topicID,
                     let name = service.session?.currentUserName {
                     socket?.meTyping(teamID: teamID, topicID: topicID, name: name.first)
                     self?.lastTypingDate = Date()
@@ -608,7 +608,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
             for user in typingUsers.keys {
                 guard let date = typingUsers[user] else { continue }
                 
-                if Date().timeIntervalSince(date) < 3 {
+                if Date().timeIntervalSince(date) < 3.0 {
                     if text != "" { text += ", " }
                     text += user.uppercased()
                 } else {
