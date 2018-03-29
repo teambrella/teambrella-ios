@@ -29,11 +29,11 @@ extension String {
     }
     
     static func formattedNumber(_ double: Double) -> String {
-        guard double < 1000 else { return String(format: "%.0f", double) }
+        guard double < 1000.0 else { return String(format: "%.0f", double) }
         
-        let truncatedNumber = round(double * 100) / 100
+        let truncatedNumber = round(double * 100) / 100.0
         if fabs(truncatedNumber.truncatingRemainder(dividingBy: 1)) < 0.01 {
-            if truncatedNumber == -0 {
+            if truncatedNumber == -0.0 {
                 return "0"
             }
                return String(format: "%.0f", truncatedNumber)

@@ -99,7 +99,7 @@ struct ReportCellBuilder {
             cell.statsNumberBar.middle?.amountLabel.text = model.coverageString
             cell.statsNumberBar.middle?.isCurrencyVisible = false
             cell.statsNumberBar.left?.isPercentVisible = true
-            if reportVC.isInCorrectionMode && model.coverage.value <= 0 {
+            if reportVC.isInCorrectionMode && model.coverage.value <= 0.0 {
                 cell.statsNumberBar.middle?.titleLabel.textColor = .red
                 cell.statsNumberBar.middle?.amountLabel.textColor = .red
             } else if let left = cell.statsNumberBar.left {

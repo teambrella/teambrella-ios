@@ -55,7 +55,7 @@ struct NewClaimCellModel: ReportCellModel {
     var isExpensesValid: Bool {
         guard let expenses = expenses else { return false }
         
-        return expenses > 0
+        return expenses > 0.0
     }
     var amountString: String { return String.truncatedNumber((expenses ?? 0) * coverage.value) }
     

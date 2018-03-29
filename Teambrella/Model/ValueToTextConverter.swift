@@ -62,7 +62,7 @@ struct ValueToTextConverter {
     
     static func textFor(amount: Double?) -> String {
         guard let amount = amount else { return "..." }
-        guard amount >= 100 else { return String.formattedNumber(amount) }
+        guard amount >= 100.0 else { return String.formattedNumber(amount) }
         
         return String.truncatedNumber(amount)
     }

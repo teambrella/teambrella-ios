@@ -28,7 +28,7 @@ class SocketDataTests: XCTestCase {
     override func setUp() {
         super.setUp()
     }
-    
+    /*
     func testString() {
         let string = "13;12345;abbabbabbbaaaa;edededededededee;Petya"
         let action = SocketAction(string: string)
@@ -46,5 +46,6 @@ class SocketDataTests: XCTestCase {
             XCTAssertTrue(false)
         }
     }
+ */
     
 }

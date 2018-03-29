@@ -128,9 +128,9 @@ final class TeammateProfileVC: UIViewController, Routable {
     }
     
     func amountsFormat(amount: Double) -> String {
-        if amount == 0 {
+        if amount == 0.0 {
             return "0"
-        } else if amount < 100 {
+        } else if amount < 100.0 {
             return String(format: "%.2f", amount)
         } else {
             return String(format: "%.0f", amount)
@@ -145,7 +145,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             
             let delta = risk - averageRisk
             var text = "AVG\n"
-            text += delta > 0 ? "+" : ""
+            text += delta > 0.0 ? "+" : ""
             let percent = 100 * delta / averageRisk
             let amount = String(format: "%.0f", percent)
             label.text =  text + amount + "%"

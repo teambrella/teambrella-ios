@@ -65,7 +65,7 @@ class WalletCosignersVC: UIViewController, Routable {
         guard isFirstLoading == false else {
             if let cosigners = cosigners {
                 dataSource.loadData(cosigners: cosigners)
-            } 
+            }
             isFirstLoading = false
             return
         }

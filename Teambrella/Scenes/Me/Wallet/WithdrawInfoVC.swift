@@ -49,7 +49,9 @@ class WithdrawInfoVC: UIViewController, Routable {
         mayRequestLabel.attributedText = mayRequestAttributed
         
         let haveValue = String.truncatedNumber(MEth(cryptoReserved).value)
-        let haveString = cryptoReserved.value == 0 ? "" : "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized(haveValue)
+        let haveString = cryptoReserved.value == 0.0
+            ? ""
+            : "Me.Wallet.Withdraw.WithdrawInfo.youHave".localized(haveValue)
         let haveAttributed = NSMutableAttributedString(string: haveString)
             .decorate(substring: haveValue, type: .boldAmount)
             .decorate(substring: currency, type: .currency)
