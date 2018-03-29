@@ -144,8 +144,8 @@
 "Team.Claims.ClaimTransactionsVC.amountFiat"          = "Cantidad Fiat";
 "Team.Claims.ClaimTransactionsVC.status"              = "Estado";
 
-"Team.Chat.TextCell.voted_format"                     = "VOTADO:%@%%";
-"Team.Chat.TextCell.Application.voted_format"         = "VOTADO:%@";
+"Team.Chat.TextCell.voted_format"                     = "VOTADO: %@%%";
+"Team.Chat.TextCell.Application.voted_format"         = "VOTADO: %@";
 "Team.Chat.TextCell.notVoted"                         = "NO HA VOTADO ÁUN";
 
 "Team.Chat.TypeLabel.claim"                           = "RECLAMACIÓN";
@@ -189,6 +189,7 @@
 "Team.Chat.ObjectView.TitleLabel"                     = "TU VOTO";
 "Team.Chat.ObjectView.TitleLabel.risk"                = "RIESGO";
 "Team.Chat.ObjectView.TitleLabel.team"                = "VOTO DEL EQUIPO";
+"Team.Chat.ObjectView.TitleLabel.proxy"               = "PROXY VOTO";
 
 "Team.TeammateCell.heCoversMe"                        = "ME CUBRE";
 "Team.TeammateCell.sheCoversMe"                       = "ME CUBRE";

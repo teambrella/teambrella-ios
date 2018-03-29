@@ -93,7 +93,7 @@
                         <view contentMode="scaleToFill" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="c1y-bp-9dQ">
                             <rect key="frame" x="225" y="0.0" width="150" height="48"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="L5F-fw-geK" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="L5F-fw-geK" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                     <rect key="frame" x="13" y="7" width="26.5" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <nil key="textColor"/>
@@ -119,13 +119,15 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36L-C4-ED1">
                                     <rect key="frame" x="77.5" y="-0.5" width="68.5" height="48"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                     <connections>
                                         <action selector="tapRightButton:" destination="-1" eventType="touchUpInside" id="hqM-PE-usZ"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="rMb-Z5-rkV" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="rMb-Z5-rkV" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
                                     <rect key="frame" x="132" y="13.5" width="14" height="20.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -139,7 +141,7 @@
                                 <constraint firstAttribute="trailing" secondItem="36L-C4-ED1" secondAttribute="trailing" priority="250" constant="16" id="79d-ud-2Iu"/>
                                 <constraint firstItem="rMb-Z5-rkV" firstAttribute="trailing" secondItem="36L-C4-ED1" secondAttribute="trailing" id="9Gf-hq-BmI"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="36L-C4-ED1" secondAttribute="trailing" constant="4" id="A6E-fF-o7i"/>
-                                <constraint firstItem="rMb-Z5-rkV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AGy-kF-cLV" secondAttribute="trailing" constant="8" id="Any-Sp-1Pw"/>
+                                <constraint firstItem="rMb-Z5-rkV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AGy-kF-cLV" secondAttribute="trailing" constant="4" id="Any-Sp-1Pw"/>
                                 <constraint firstItem="36L-C4-ED1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L5F-fw-geK" secondAttribute="trailing" id="FfR-Uu-EP9"/>
                                 <constraint firstItem="36L-C4-ED1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L5F-fw-geK" secondAttribute="trailing" constant="8" id="MtC-Lm-vuJ"/>
                                 <constraint firstItem="crJ-Z8-f3o" firstAttribute="height" secondItem="AGy-kF-cLV" secondAttribute="height" id="O4S-cr-Dw8"/>
@@ -149,7 +151,7 @@
                                 <constraint firstItem="crJ-Z8-f3o" firstAttribute="centerY" secondItem="AGy-kF-cLV" secondAttribute="centerY" id="UXK-yq-kV3"/>
                                 <constraint firstItem="AGy-kF-cLV" firstAttribute="leading" secondItem="bCK-U5-8Zp" secondAttribute="trailing" id="VFv-xy-ofa"/>
                                 <constraint firstAttribute="bottom" secondItem="36L-C4-ED1" secondAttribute="bottom" id="Y1Q-HJ-74j"/>
-                                <constraint firstItem="rMb-Z5-rkV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L5F-fw-geK" secondAttribute="trailing" constant="5" id="YZa-dY-XeK"/>
+                                <constraint firstItem="rMb-Z5-rkV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L5F-fw-geK" secondAttribute="trailing" constant="2" id="YZa-dY-XeK"/>
                                 <constraint firstItem="AGy-kF-cLV" firstAttribute="centerY" secondItem="bCK-U5-8Zp" secondAttribute="centerY" id="cjM-5l-Fip"/>
                                 <constraint firstItem="L5F-fw-geK" firstAttribute="top" secondItem="c1y-bp-9dQ" secondAttribute="top" constant="7" id="mVG-q4-DiH"/>
                                 <constraint firstItem="36L-C4-ED1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AGy-kF-cLV" secondAttribute="trailing" constant="4" id="oac-cw-fIB"/>

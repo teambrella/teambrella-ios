@@ -50,7 +50,7 @@
 "Team.TeammateCell.decisions"                         = "Решения";
 "Team.TeammateCell.discussions"                       = "Обсуждения";
 "Team.TeammateCell.votingFrequency"                   = "Частота голосований";
-"Team.TeammateCell.applicationDiscussion"             = "Обсуждение вступления";
+"Team.TeammateCell.applicationDiscussion"             = "Заявка в команду";
 
 "Team.TeammateCell.timeLabel.justNow"                 = "ТОЛЬКО ЧТО";
 "Team.TeammateCell.contact"                           = "КОНТАКТЫ";
@@ -146,8 +146,8 @@
 "Team.Claims.VotedCell.voted"                         = "Голос: ";
 "Team.ClaimsCell.declined"                            = "ОТКЛОНЕН";
 
-"Team.Chat.TextCell.voted_format"                     = "Голос:%@%%";
-"Team.Chat.TextCell.Application.voted_format"         = "Голос:%@";
+"Team.Chat.TextCell.voted_format"                     = "Голос: %@%%";
+"Team.Chat.TextCell.Application.voted_format"         = "Голос: %@";
 "Team.Chat.TextCell.notVoted"                         = "Не голосовал";
 
 "Team.Chat.TypeLabel.claim"                           = "ЗАЯВКА";
@@ -179,10 +179,11 @@
 
 "Team.Chat.ObjectView.VoteLabel" = "Голосовать";
 "Team.Chat.ObjectView.RevoteLabel" = "Изменить"; // переголосовать не влезает на маленькие айфоны
-"Team.Chat.ObjectView.ClaimAmountLabel" = "РАЗМЕР ЗАЯВКИ - ";
+"Team.Chat.ObjectView.ClaimAmountLabel" = "ЗАЯВКА - ";
 "Team.Chat.ObjectView.TitleLabel" = "ВАШ ГОЛОС";
 "Team.Chat.ObjectView.TitleLabel.risk" = "РИСК";
-"Team.Chat.ObjectView.TitleLabel.team" = "ГОЛОС КОМАНДЫ";
+"Team.Chat.ObjectView.TitleLabel.team" = "КОМАНДА";
+"Team.Chat.ObjectView.TitleLabel.proxy" = "ПРОКСИ";
 
 "Team.Vote.doNotAccept" = "Не принимать";
 "Team.Vote.SwipeToVote" = "Смахните влево или вправо, чтобы голосовать";
