@@ -29,6 +29,14 @@ class RiskScaleEntity: Decodable {
     let coversIfOne: Double
     let coversIfMax: Double
     let myRisk: Double
+
+    init() {
+        ranges = []
+        coversIfMin = 0
+        coversIfOne = 0
+        coversIfMax = 0
+        myRisk = 0
+    }
     
     lazy var sortedTeammates: [RiskScaleTeammate] = {
         self.ranges.flatMap { $0.teammates }.sorted { $0.risk < $1.risk }

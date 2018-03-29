@@ -80,8 +80,8 @@ struct WalletCellBuilder {
         }
         cell.lowerNumberView.verticalStackView.alignment = .leading
         cell.lowerNumberView.titleLabel.text = "Me.WalletVC.lowerBrick.title".localized
-        cell.lowerNumberView.amountLabel.text =
-            String.formattedNumber(floor(MEth(model.uninterruptedCoverageFunding).value))
+        let amount = max(0, floor(MEth(model.uninterruptedCoverageFunding).value))
+        cell.lowerNumberView.amountLabel.text = String.formattedNumber(amount)
         cell.lowerNumberView.isPercentVisible = false
         cell.lowerNumberView.isBadgeVisible = false
         cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)
@@ -89,7 +89,7 @@ struct WalletCellBuilder {
     
     private static func populateButtons(cell: WalletButtonsCell, model: WalletButtonsCellModel, delegate: WalletVC) {
         cell.topViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
-        let avatars = model.avatarsPreview.flatMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
+        let avatars = model.avatarsPreview.compactMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
         let maxAvatarsStackCount = 4
         let otherVotersCount = model.avatars.count - maxAvatarsStackCount + 1
         let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil

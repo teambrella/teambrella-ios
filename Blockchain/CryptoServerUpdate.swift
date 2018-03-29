@@ -34,9 +34,9 @@ struct CryptoServerUpdateInfo: Encodable, CustomStringConvertible {
     signatures: [TxSignature],
     lastUpdated: Int64, 
     formatter: BlockchainDateFormatter) {
-        txInfos = transactions.flatMap { TxInfo(tx: $0, formatter: formatter) }
+        txInfos = transactions.compactMap { TxInfo(tx: $0, formatter: formatter) }
         txSignatures = signatures.map { TxSignatureInfo(txSignature: $0) }
-        cryptoContracts = multisigs.flatMap { MultisigInfo(multisig: $0) }
+        cryptoContracts = multisigs.compactMap { MultisigInfo(multisig: $0) }
         since = lastUpdated
     }
 

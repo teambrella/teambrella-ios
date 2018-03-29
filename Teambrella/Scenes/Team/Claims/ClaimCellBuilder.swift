@@ -142,7 +142,7 @@ struct ClaimCellBuilder {
         cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.resetButton.addTarget(delegate, action: #selector(ClaimVC.tapResetVote), for: .touchUpInside)
         
-        let avatars = voting.otherAvatars.flatMap { $0.url }
+        let avatars = voting.otherAvatars.compactMap { $0.url }
         let maxAvatarsStackCount = 4
         let otherVotersCount = voting.otherCount - maxAvatarsStackCount + 1
         let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil

@@ -305,7 +305,7 @@ struct TeammateCellBuilder {
         cell.textLabel.text = message
         cell.unreadCountView.text = String(stats.unreadCount)
         cell.unreadCountView.isHidden = stats.unreadCount == 0
-        let urls = stats.topPosterAvatars.flatMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
+        let urls = stats.topPosterAvatars.compactMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
         let morePersons = stats.posterCount - urls.count
         let text: String? = morePersons > 0 ? "+\(morePersons)" : nil
         cell.teammatesAvatarStack.set(images: urls, label: text, max: 4)

@@ -204,7 +204,7 @@ class ClaimVotingView: UIView, XIBInitable {
     private func presentAvatars() {
         guard let avatars = otherAvatars else { return }
 
-        let urls = avatars.flatMap { $0.url }
+        let urls = avatars.compactMap { $0.url }
         let maxAvatarsStackCount = 4
         let otherVotersCount = otherCount - maxAvatarsStackCount + 1
         if otherVotersCount > 0 {

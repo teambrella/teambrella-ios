@@ -182,18 +182,18 @@ final class TeambrellaService: NSObject {
         isStorageCleared = false
         registerBackgroundTask(completion: completion)
         queue.addOperation {
-            self.queue.isSuspended = true
+            //self.queue.isSuspended = true
             self.createWallets(gasLimit: Constant.gasLimit, completion: { success in
                 log("wallet created \(success)", type: .crypto)
-                self.queue.isSuspended = false
+                //self.queue.isSuspended = false
             })
         }
         
         queue.addOperation {
-            self.queue.isSuspended = true
+            //self.queue.isSuspended = true
             self.verifyIfWalletIsCreated(gasLimit: Constant.gasLimit) { success in
                 log("wallet creation verified: \(success)", type: .crypto)
-                self.queue.isSuspended = false
+               // self.queue.isSuspended = false
             }
         }
         

@@ -211,7 +211,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             guard let me = self else { return }
             
             let cells = me.collectionView.visibleCells
-            let statCells = cells.flatMap { $0 as? TeammateStatsCell }
+            let statCells = cells.compactMap { $0 as? TeammateStatsCell }
             if let cell = statCells.first {
                 let title = me.dataSource.isMyProxy
                     ? "Team.TeammateCell.removeFromMyProxyVoters".localized

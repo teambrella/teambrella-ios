@@ -39,8 +39,7 @@ struct MembersCellBuilder {
             if let url: URL = URL(string: URLBuilder().avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
-            guard let currency: String = service.currencySymbol else { return }
-            
+            let currency: String = service.currencySymbol
             let coeff = teammate.totallyPaid > 0.0 ? 0.5 : -0.5
             let amountText: String = currency + "\(abs(Int(teammate.totallyPaid + coeff)))"
             cell.amountLabel.text = amountText

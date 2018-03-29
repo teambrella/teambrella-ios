@@ -47,15 +47,6 @@ class ServicesHandler {
     
     /// errors handling service
     lazy var error: ErrorPresenter = ErrorPresenter()
-
-    /*
-    /// logging service
-    lazy var log: Log = {
-        let log = Log.shared
-        log.logLevel = .none
-        return log
-    }()
-    */
     
     /// service to store private keys and last user logged in
     var keyStorage: KeyStorage { return KeyStorage.shared }

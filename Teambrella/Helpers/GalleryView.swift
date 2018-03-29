@@ -72,7 +72,7 @@ class GalleryView: ImageSlideshow {
                 return request
             }
             
-            let inputs: [InputSource] = imageStrings.flatMap { KingfisherSource(urlString: $0,
+            let inputs: [InputSource] = imageStrings.compactMap { KingfisherSource(urlString: $0,
                                                                                 placeholder: #imageLiteral(resourceName: "imagePlaceholder"),
                                                                                 options: [.requestModifier(modifier)])
                 

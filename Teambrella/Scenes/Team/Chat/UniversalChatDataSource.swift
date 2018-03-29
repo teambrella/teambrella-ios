@@ -197,7 +197,7 @@ final class UniversalChatDatasource {
     }
     
     var allImages: [String] {
-        let textCellModels = models.flatMap { $0 as? ChatTextCellModel }
+        let textCellModels = models.compactMap { $0 as? ChatTextCellModel }
         let fragments = textCellModels.flatMap { $0.fragments }
         var images: [String] = []
         for fragment in fragments {
@@ -267,7 +267,7 @@ final class UniversalChatDatasource {
         //let temporaryModel = cellModelBuilder.unsentModel(fragments: imageFragments + [ChatFragment.text(text)],
         //                                                 id: id)
         //addCellModel(model: temporaryModel)
-        let images = imageFragments.flatMap {
+        let images: [String] = imageFragments.compactMap {
             if case let .image(image, _, _) = $0 {
                 return image
             } else {
