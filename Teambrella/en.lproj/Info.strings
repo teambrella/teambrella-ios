@@ -23,7 +23,7 @@
 "Info.OthersVoted.title"              = "All votes";
 "Info.OthersVoted.Cell.Weight"        = "Weight:";
 "Info.OthersVoted.Header.allVotes"    = "ALL VOTES";
-"Info.OthersVoted.Header.votes"       = "VOTES";
+"Info.OthersVoted.Header.votes"       = "VOTE";
 
 "Info.NoSilentPush.Title"             = "Background App Refresh is required for uninterrupted coverage";
 "Info.NoSilentPush.UpperButton.Title" = "Open Settings";

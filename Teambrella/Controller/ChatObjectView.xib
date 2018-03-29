@@ -31,6 +31,7 @@
                 <outlet property="percentLabel" destination="AGy-kF-cLV" id="HYE-an-Nm5"/>
                 <outlet property="proxyAvatarView" destination="crJ-Z8-f3o" id="jQu-C7-2LB"/>
                 <outlet property="rightButton" destination="36L-C4-ED1" id="mp0-KS-NSh"/>
+                <outlet property="rightLabel" destination="rMb-Z5-rkV" id="4Ou-Ua-3Rn"/>
                 <outlet property="separatorView" destination="vhP-W7-ibO" id="X8B-mT-Jtq"/>
                 <outlet property="voteContainer" destination="c1y-bp-9dQ" id="Ulp-iK-Ekj"/>
                 <outlet property="voteTitleLabel" destination="L5F-fw-geK" id="wHg-Jr-xhY"/>
@@ -46,7 +47,7 @@
                     <rect key="frame" x="0.0" y="15.5" width="375" height="48"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHo-BD-xhI">
-                            <rect key="frame" x="52" y="6" width="157" height="18"/>
+                            <rect key="frame" x="52" y="6" width="164" height="18"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
                             <color key="textColor" red="0.42352941179999998" green="0.44705882349999998" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -76,23 +77,23 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhP-W7-ibO" userLabel="Separator">
-                            <rect key="frame" x="217" y="8" width="1" height="32"/>
+                            <rect key="frame" x="224" y="8" width="1" height="32"/>
                             <color key="backgroundColor" red="0.84705882349999995" green="0.89411764709999997" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="1" id="E5Z-AU-Reo"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rK-LI-YhF">
-                            <rect key="frame" x="295.5" y="-0.5" width="75.5" height="48"/>
+                            <rect key="frame" x="302.5" y="-0.5" width="68.5" height="48"/>
                             <state key="normal" image="chevronUp"/>
                             <connections>
                                 <action selector="tapChevron:" destination="-1" eventType="touchUpInside" id="lrG-4a-vHf"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1y-bp-9dQ">
-                            <rect key="frame" x="218" y="0.0" width="157" height="48"/>
+                        <view contentMode="scaleToFill" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="c1y-bp-9dQ">
+                            <rect key="frame" x="225" y="0.0" width="150" height="48"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5F-fw-geK" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="L5F-fw-geK" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                     <rect key="frame" x="13" y="7" width="26.5" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <nil key="textColor"/>
@@ -116,19 +117,29 @@
                                         <constraint firstAttribute="width" secondItem="crJ-Z8-f3o" secondAttribute="height" multiplier="1:1" id="KRw-zF-chB"/>
                                     </constraints>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36L-C4-ED1">
-                                    <rect key="frame" x="77.5" y="-0.5" width="75.5" height="48"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36L-C4-ED1">
+                                    <rect key="frame" x="77.5" y="-0.5" width="68.5" height="48"/>
+                                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
                                     <connections>
                                         <action selector="tapRightButton:" destination="-1" eventType="touchUpInside" id="hqM-PE-usZ"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="rMb-Z5-rkV" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
+                                    <rect key="frame" x="132" y="13.5" width="14" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="rMb-Z5-rkV" firstAttribute="centerY" secondItem="36L-C4-ED1" secondAttribute="centerY" id="49f-dy-C3t"/>
+                                <constraint firstAttribute="width" constant="150" id="4Id-6H-d3o"/>
                                 <constraint firstItem="crJ-Z8-f3o" firstAttribute="leading" secondItem="AGy-kF-cLV" secondAttribute="trailing" constant="8" id="4Yl-pW-tDN"/>
                                 <constraint firstAttribute="trailing" secondItem="36L-C4-ED1" secondAttribute="trailing" priority="250" constant="16" id="79d-ud-2Iu"/>
+                                <constraint firstItem="rMb-Z5-rkV" firstAttribute="trailing" secondItem="36L-C4-ED1" secondAttribute="trailing" id="9Gf-hq-BmI"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="36L-C4-ED1" secondAttribute="trailing" constant="4" id="A6E-fF-o7i"/>
+                                <constraint firstItem="rMb-Z5-rkV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AGy-kF-cLV" secondAttribute="trailing" constant="8" id="Any-Sp-1Pw"/>
                                 <constraint firstItem="36L-C4-ED1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L5F-fw-geK" secondAttribute="trailing" id="FfR-Uu-EP9"/>
                                 <constraint firstItem="36L-C4-ED1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L5F-fw-geK" secondAttribute="trailing" constant="8" id="MtC-Lm-vuJ"/>
                                 <constraint firstItem="crJ-Z8-f3o" firstAttribute="height" secondItem="AGy-kF-cLV" secondAttribute="height" id="O4S-cr-Dw8"/>
@@ -138,6 +149,7 @@
                                 <constraint firstItem="crJ-Z8-f3o" firstAttribute="centerY" secondItem="AGy-kF-cLV" secondAttribute="centerY" id="UXK-yq-kV3"/>
                                 <constraint firstItem="AGy-kF-cLV" firstAttribute="leading" secondItem="bCK-U5-8Zp" secondAttribute="trailing" id="VFv-xy-ofa"/>
                                 <constraint firstAttribute="bottom" secondItem="36L-C4-ED1" secondAttribute="bottom" id="Y1Q-HJ-74j"/>
+                                <constraint firstItem="rMb-Z5-rkV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L5F-fw-geK" secondAttribute="trailing" constant="5" id="YZa-dY-XeK"/>
                                 <constraint firstItem="AGy-kF-cLV" firstAttribute="centerY" secondItem="bCK-U5-8Zp" secondAttribute="centerY" id="cjM-5l-Fip"/>
                                 <constraint firstItem="L5F-fw-geK" firstAttribute="top" secondItem="c1y-bp-9dQ" secondAttribute="top" constant="7" id="mVG-q4-DiH"/>
                                 <constraint firstItem="36L-C4-ED1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AGy-kF-cLV" secondAttribute="trailing" constant="4" id="oac-cw-fIB"/>
@@ -173,7 +185,6 @@
                         <constraint firstItem="8rK-LI-YhF" firstAttribute="width" secondItem="36L-C4-ED1" secondAttribute="width" id="nun-Ov-Vtp"/>
                         <constraint firstItem="F9g-le-cSH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kHo-BD-xhI" secondAttribute="bottom" id="pER-pT-PYf"/>
                         <constraint firstItem="kHo-BD-xhI" firstAttribute="top" secondItem="8MY-cC-Bco" secondAttribute="top" constant="6" id="pnK-Sc-LV4"/>
-                        <constraint firstItem="vhP-W7-ibO" firstAttribute="centerX" secondItem="8MY-cC-Bco" secondAttribute="centerX" constant="30" id="rnp-Fw-IK4"/>
                         <constraint firstItem="8rK-LI-YhF" firstAttribute="centerX" secondItem="36L-C4-ED1" secondAttribute="centerX" id="s1Q-P1-m4a"/>
                         <constraint firstItem="7YP-gL-Rik" firstAttribute="leading" secondItem="F9g-le-cSH" secondAttribute="trailing" constant="4" id="sJs-3j-qyH"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="trailing" secondItem="c1y-bp-9dQ" secondAttribute="leading" id="ymh-o5-NL1"/>

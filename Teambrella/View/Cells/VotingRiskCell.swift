@@ -175,8 +175,13 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         yourVoteValueLabelLeadingConstraint.constant = isSmallIPhone ? 8 : 16
         othersLabelTrailingConstraint.constant = isSmallIPhone ? 4 : 8
 
-        yourVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
-        teamVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
+        if isSmallIPhone {
+        yourVoteValueLabel.font = UIFont.teambrellaBold(size: 29)
+        teamVoteValueLabel.font = UIFont.teambrellaBold(size: 29)
+        } else {
+            yourVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
+            teamVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
+        }
 
         othersLabel.text = "Team.VotingRiskVC.othersButton".localized
     }

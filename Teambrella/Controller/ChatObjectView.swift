@@ -37,7 +37,8 @@ class ChatObjectView: UIView, XIBInitable {
     @IBOutlet var percentLabel: UILabel!
     @IBOutlet var proxyAvatarView: RoundImageView!
     @IBOutlet var rightButton: UIButton!
-
+    @IBOutlet var rightLabel: BlockHeaderLabel!
+    
     var contentView: UIView!
 
     weak var delegate: ChatObjectViewDelegate?
@@ -64,9 +65,7 @@ class ChatObjectView: UIView, XIBInitable {
         voteContainer.isHidden = false
         chevronButton.alpha = 0
         voteContainer.alpha = 1
-
-        rightButton.titleLabel?.minimumScaleFactor = 0.5
-        rightButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        rightLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
 
         chevronButton.imageView?.contentMode = .scaleAspectFit
         chevronButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -107,7 +106,7 @@ class ChatObjectView: UIView, XIBInitable {
         currencyLabel.text = team.currency
         voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
         percentLabel.text = "%"
-        rightButton.setTitle("Team.Chat.ObjectView.VoteLabel".localized, for: .normal)
+        rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
 
         imageView.image = #imageLiteral(resourceName: "imagePlaceholder")
         basic.smallPhoto.map { self.imageView.showImage(string: $0) }
@@ -115,7 +114,7 @@ class ChatObjectView: UIView, XIBInitable {
         if let voting = voting {
             if let vote = voting.myVote {
                 voteValueLabel.text = String(format: "%.f", vote * 100)
-                rightButton.setTitle("Team.Chat.ObjectView.RevoteLabel".localized, for: .normal)
+                rightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
             } else {
                 voteValueLabel.text = "..."
             }
@@ -123,6 +122,7 @@ class ChatObjectView: UIView, XIBInitable {
             voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.team".localized
             voteValueLabel.text = String.truncatedNumber(reimbursement * 100)
             rightButton.isHidden = true
+            rightLabel.isHidden = true
         }
         proxyAvatarView.image = nil
     }
@@ -140,7 +140,7 @@ class ChatObjectView: UIView, XIBInitable {
         currencyLabel.isHidden = true
 
         if let voting = voting {
-            rightButton.setTitle("Team.Chat.ObjectView.VoteLabel".localized, for: .normal)
+            rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
             currencyLabel.text = nil
 
             guard let vote = voting.myVote else {
@@ -148,11 +148,12 @@ class ChatObjectView: UIView, XIBInitable {
                 return
             }
             voteValueLabel.text = String(format: "%.2f", vote)
-            rightButton.setTitle("Team.Chat.ObjectView.RevoteLabel".localized, for: .normal)
+            rightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
         } else if let risk = basic.risk {
-            rightButton.setTitle("Team.Chat.ObjectView.TitleLabel.risk".localized, for: .normal)
+            rightLabel.text = "Team.Chat.ObjectView.TitleLabel.risk".localized
             voteValueLabel.text = String.truncatedNumber(risk)
             rightButton.isHidden = true
+            rightLabel.isHidden = true
         }
     }
 

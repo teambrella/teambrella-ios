@@ -21,7 +21,7 @@
 "Team.ClaimCell.byProxy"                              = "прокси";
 "Team.ClaimCell.teamVote"                             = "голос команды";
 "Team.ClaimCell.voteSubmitted"                        = "Голос отправлен";
-"Team.ClaimCell.resetVote"                            = "Сбросить голос";
+"Team.ClaimCell.resetVote"                            = "Сбросить";
 "Team.ClaimCell.claimDetails"                         = "ДЕТАЛИ ЗАЯВКИ";
 "Team.ClaimCell.claimAmount"                          = "Сумма заявки";
 "Team.ClaimCell.estimatedExpences"                    = "Предполагаемые расходы";
@@ -41,8 +41,8 @@
 "Team.TeammateCell.youAreProxy_format_s"              = "Вы прокси для %@";
 "Team.TeammateCell.covered"                           = "ЗАЩИТА";
 "Team.TeammateCell.collisionDeductible"               = "Франшиза";
-"Team.TeammateCell.limit"                             = "ЛИМИТ НА ЗАЯВКУ";
-"Team.TeammateCell.risk"                              = "ФАКТОР РИСКА";
+"Team.TeammateCell.limit"                             = "ЛИМИТ";
+"Team.TeammateCell.risk"                              = "РИСК";
 
 "Team.TeammateCell.votingStats"                       = "СТАТИСТИКА";
 "Team.TeammateCell.weight"                            = "ВЕС";
@@ -119,16 +119,16 @@
 "Team.JoinTeamVC.TermsCell.nonBold"                   = "By pressing on ‘Send Application’\nI accept the Teambrella’s ";
 "Team.JoinTeamVC.TermsCell.bold"                      = "Terms & Conditions";
 
-"Team.VotingRiskVC.headerLabel"                       = "ГОЛОСОВАНИЕ: ФАКТОР РИСКА";
+"Team.VotingRiskVC.headerLabel"                       = "ГОЛОСОВАНИЕ: РИСК";
 "Team.VotingRiskVC.numberBar.left"                    = "ГОЛОС КОМАНДЫ";
 "Team.VotingRiskVC.numberBar.right"                   = "ВАШ ГОЛОС";
 "Team.VotingRiskVC.avgLabel"                          = "СРЕДН.\n%d\%";
-"Team.VotingRiskVC.resetVoteButton"                   = "Сбросить голос";
+"Team.VotingRiskVC.resetVoteButton"                   = "Сбросить";
 "Team.VotingRiskVC.othersButton"                      = "Остальные";
 
-"Team.Members.Teammates.Strategy.headerTitle"         = "ФАКТОР РИСКА: %.2f ДО %.2f";
+"Team.Members.Teammates.Strategy.headerTitle"         = "РИСК: %.2f ДО %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle"      = "РИСК";
-"Team.Members.Teammates.CompareTeamRisk.title"        = "Сравнить факторы риска";
+"Team.Members.Teammates.CompareTeamRisk.title"        = "Сравнить риск";
 
 "Team.ChooseYourTeamVC.header"                        = "ВЫБЕРИТЕ КОМАНДУ";
 "Team.Teammate.Footer.MemberSince"                    = "Участник с %@";
@@ -178,10 +178,10 @@
 "Team.Claims.objectView.reportButton.title" = "Подать заявку";
 
 "Team.Chat.ObjectView.VoteLabel" = "Голосовать";
-"Team.Chat.ObjectView.RevoteLabel" = "Голосовать"; // переголосовать не влезает на маленькие айфоны
+"Team.Chat.ObjectView.RevoteLabel" = "Изменить"; // переголосовать не влезает на маленькие айфоны
 "Team.Chat.ObjectView.ClaimAmountLabel" = "РАЗМЕР ЗАЯВКИ - ";
 "Team.Chat.ObjectView.TitleLabel" = "ВАШ ГОЛОС";
-"Team.Chat.ObjectView.TitleLabel.risk" = "ФАКТОР РИСКА";
+"Team.Chat.ObjectView.TitleLabel.risk" = "РИСК";
 "Team.Chat.ObjectView.TitleLabel.team" = "ГОЛОС КОМАНДЫ";
 
 "Team.Vote.doNotAccept" = "Не принимать";

@@ -23,7 +23,7 @@
 "Info.OthersVoted.title" = "Todos los votos";
 "Info.OthersVoted.Cell.Weight" = "Peso:";
 "Info.OthersVoted.Header.allVotes" = "TODOS LOS VOTOS";
-"Info.OthersVoted.Header.votes" = "VOTOS";
+"Info.OthersVoted.Header.votes" = "VOTO";
 
 // Translate
 "Info.NoSilentPush.Title"             = "Se requiere Actualizacíon en segundo plano  para la cubertura ininterrumpida";
