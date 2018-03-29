@@ -68,38 +68,45 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet weak var othersLabel: MessageTitleLabel!
     
     @IBOutlet var othersVotesButton: UIButton!
-    @IBOutlet weak var yourVoteValueLabelLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var othersLabelTrailingConstraint: NSLayoutConstraint!
     
+    @IBOutlet var teamVoteAVGLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var yourVoteAVGLeadingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var yourVoteHeaderLabelLeadingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var timeCenterConstraint: NSLayoutConstraint!
+    @IBOutlet var timeBaseLineConstraint: NSLayoutConstraint!
+    
     var currentRisk: Double { return riskFrom(offset: collectionView.contentOffset.x, maxValue: maxValue) }
-
+    
     var maxValue: CGFloat {
         return collectionView.contentSize.width - collectionLeftInset - collectionRightInset - columnWidth
     }
-
+    
     var collectionLeftInset: CGFloat {
         return (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset.left ?? 0
     }
-
+    
     var collectionRightInset: CGFloat {
         return (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset.right ?? 0
     }
-
+    
     var middleCellRow: Int = -1 {
         didSet {
             delegate?.votingRisk(cell: self, changedMiddleRowIndex: middleCellRow)
             colorizeCenterCell()
         }
     }
-
+    
     private var dataSource: VotingScrollerDataSource = VotingScrollerDataSource()
-
+    
     weak var delegate: VotingRiskCellDelegate?
-
+    
     var shouldSilenceScroll: Bool = false
-
+    
     var columnWidth: CGFloat { return collectionView.bounds.width * 4 / CGFloat(dataSource.count) }
-
+    
     var isProxyHidden: Bool = true {
         didSet {
             proxyAvatarView.isHidden = isProxyHidden
@@ -114,43 +121,43 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         setupLabels()
         setupButtons()
         setupCollectionView()
-
+        
         slashView.layer.cornerRadius = 4
         slashView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1).cgColor
         slashView.layer.borderWidth = 1
-
+        
         self.clipsToBounds = true
         ViewDecorator.roundedEdges(for: self)
         ViewDecorator.shadow(for: self)
-
+        
         dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
         }
     }
-
+    
     private func setupCollectionView() {
         collectionView.register(VotingChartCell.nib, forCellWithReuseIdentifier: VotingChartCell.cellID)
-
+        
         collectionView.layer.cornerRadius = 4
         collectionView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1).cgColor
         collectionView.layer.borderWidth = 1
-
+        
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-
+    
     private func setupButtons() {
         othersButton.titleLabel?.minimumScaleFactor = 0.7
         othersButton.titleLabel?.adjustsFontSizeToFitWidth = true
         othersButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
-
+        
         resetVoteButton.titleLabel?.adjustsFontSizeToFitWidth = true
         resetVoteButton.setTitle("Team.VotingRiskVC.resetVoteButton".localized, for: .normal)
         resetVoteButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
-
+        
         othersVotesButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
     }
-
+    
     private func setupLabels() {
         leftAvatar.isHidden = true
         leftAvatarLabel.isHidden = true
@@ -162,27 +169,33 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         rightAvatarLabel.layer.borderWidth = 1
         middleAvatarLabel.layer.borderColor = UIColor.white.cgColor
         middleAvatarLabel.layer.borderWidth = 1
-
+        
         titleLabel.text = "Team.VotingRiskVC.headerLabel".localized
         teamVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.left".localized
         teamVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
         teamVoteBadgeLabel.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
-
+        
         yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right".localized
         yourVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
         yourVoteBadgeLabel.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
-
-        yourVoteValueLabelLeadingConstraint.constant = isSmallIPhone ? 8 : 16
+        
+        yourVoteHeaderLabelLeadingConstraint.constant = isSmallIPhone ? 12 : 30
         othersLabelTrailingConstraint.constant = isSmallIPhone ? 4 : 8
-
+        yourVoteAVGLeadingConstraint.constant = isSmallIPhone ? 2 : 8
+        teamVoteAVGLeadingConstraint.constant = isSmallIPhone ? 2 : 8
+        
         if isSmallIPhone {
-        yourVoteValueLabel.font = UIFont.teambrellaBold(size: 29)
-        teamVoteValueLabel.font = UIFont.teambrellaBold(size: 29)
+            timeCenterConstraint.isActive = true
+            timeBaseLineConstraint.isActive = false
+            yourVoteValueLabel.font = UIFont.teambrellaBold(size: 29)
+            teamVoteValueLabel.font = UIFont.teambrellaBold(size: 29)
         } else {
+            timeCenterConstraint.isActive = false
+            timeBaseLineConstraint.isActive = true
             yourVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
             teamVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
         }
-
+        
         othersLabel.text = "Team.VotingRiskVC.othersButton".localized
     }
     
@@ -260,7 +273,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
             
         }
     }
-
+    
     @discardableResult
     func scrollToAverage(silently: Bool = true, animated: Bool) -> Bool {
         shouldSilenceScroll = silently
@@ -268,7 +281,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
             collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
                                         at: .centeredHorizontally,
                                         animated: animated)
-
+            
             colorizeCenterCell()
             delegate?.votingRisk(cell: self, changedRisk: currentRisk)
             return true
@@ -279,7 +292,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     func scrollToCenter(silently: Bool, animated: Bool) {
         scrollTo(offset: maxValue / 2, silently: silently, animated: animated)
     }
-
+    
     func scrollTo(risk: Double, silently: Bool, animated: Bool) {
         let offset = offsetFrom(risk: risk, maxValue: maxValue)
         scrollTo(offset: offset, silently: silently, animated: animated)
@@ -291,11 +304,11 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         colorizeCenterCell()
         delegate?.votingRisk(cell: self, changedRisk: riskFrom(offset: offset, maxValue: maxValue))
     }
-
+    
     private func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
         return min(Double(pow(25, offset / maxValue) / 5), 5)
     }
-
+    
     private func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
         return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
     }
