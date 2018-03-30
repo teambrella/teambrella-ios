@@ -31,8 +31,9 @@ final class UniversalChatDatasource {
     var onSendMessage: ((IndexPath) -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
     var onClaimVoteUpdate: (() -> Void)?
-    
-    var limit                                       = 20
+
+    let firstOffset                                 = -5
+    var limit                                       = 30
     var cloudWidth: CGFloat                         = 0
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
@@ -120,7 +121,7 @@ final class UniversalChatDatasource {
             return ""
         }
 
-         if chatModel.isClaimChat {
+        if chatModel.isClaimChat {
             if let date = claimDate {
                 return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " - " +
                     Formatter.teambrellaShort.string(from: date)
@@ -346,9 +347,9 @@ extension UniversalChatDatasource {
             let offset = previous
                 ? self.backwardOffset
                 : self.isFirstLoad
-                ? -5
+                ? self.firstOffset
                 : self.forwardOffset
-            var payload: [String: Any] = ["limit": limit,
+            var payload: [String: Any] = ["limit": limit + abs(offset),
                                           "offset": offset,
                                           "avatarSize": self.avatarSize,
                                           "commentAvatarSize": self.commentAvatarSize]
@@ -363,8 +364,8 @@ extension UniversalChatDatasource {
                                                 
                                                 self.isLoading = false
                                                 self.process(response: response,
-                                                           isPrevious: previous,
-                                                           isMyNewMessage: false)
+                                                             isPrevious: previous,
+                                                             isMyNewMessage: false)
             })
             request.start()
         }
@@ -383,11 +384,11 @@ extension UniversalChatDatasource {
         while lastInsertionIndex > 0
             && lastInsertionIndex < models.count
             && models[lastInsertionIndex].date > model.date {
-            lastInsertionIndex -= 1
+                lastInsertionIndex -= 1
         }
         while lastInsertionIndex < models.count
             && models[lastInsertionIndex].date <= model.date {
-            lastInsertionIndex += 1
+                lastInsertionIndex += 1
         }
         
         let previous = lastInsertionIndex > 0 ? models[lastInsertionIndex - 1] : nil
@@ -464,7 +465,7 @@ extension UniversalChatDatasource {
         if isMyNewMessage {
             onSendMessage?(IndexPath(row: lastInsertionIndex, section: 0))
         } else {
-        onUpdate?(isPrevious, hasNewModels, isFirstLoad)
+            onUpdate?(isPrevious, hasNewModels, isFirstLoad)
         }
         isFirstLoad = false
     }

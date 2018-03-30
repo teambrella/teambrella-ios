@@ -19,14 +19,14 @@ import Foundation
 struct RemoteMessage {
     let payload: RemotePayload
     /*
-    case privateMessage = 5
-    case walletFunded = 6
-    case postsSinceInteracted = 7
-    case newTeammate = 8
-    case newDiscussion = 9
-    
-    case topicMessage = 21
-    */
+     case privateMessage = 5
+     case walletFunded = 6
+     case postsSinceInteracted = 7
+     case newTeammate = 8
+     case newDiscussion = 9
+
+     case topicMessage = 21
+     */
     var title: String? {
         switch payload.type {
         case .createdPost:
@@ -71,8 +71,11 @@ struct RemoteMessage {
         case .walletFunded:
             return "Push.walletFunded.message_format".localized(payload.cryptoAmountValue)
         case .topicMessage:
-            return "Push.newMessage.posted_format".localized(payload.userNameValue,
-                                                             payload.topicNameValue)
+            if let topicName = payload.topicName {
+                return "Push.newMessage.posted_format".localized(payload.userNameValue, topicName)
+            } else {
+                return payload.userNameValue
+            }
         case .postsSinceInteracted:
             return ""
         case .newTeammate:

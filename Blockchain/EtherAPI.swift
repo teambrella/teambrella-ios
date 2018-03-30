@@ -206,13 +206,19 @@ class EtherAPI {
                                  body: [String: String],
                                  success: @escaping successClosure,
                                  failure: @escaping failureClosure) {
+        var parameters = parameters
+        for (key, value) in body {
+parameters[key] = value
+        }
         guard let url = urlWith(address: server + urlString, parameters: parameters) else {
             failure(EtherAPIError.malformedURL)
             return
         }
 
         let queue = OperationQueue.current?.underlyingQueue ?? DispatchQueue.main
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+//        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
 
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
