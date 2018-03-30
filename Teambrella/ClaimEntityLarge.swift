@@ -53,7 +53,7 @@ struct ClaimEntityLarge: Decodable, CustomStringConvertible {
         let avatar: String
         let name: String
         let model: String
-        let year: Int
+        let year: Year
         let smallPhotos: [String]
         let largePhotos: [String]
         let claimAmount: Fiat

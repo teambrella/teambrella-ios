@@ -1,184 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Team.Chat.typing_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@teammates@</string>
-		<key>teammates</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>печатает</string>
-			<key>other</key>
-			<string>печатают</string>
-		</dict>
-	</dict>
-	<key>Team.Members.days_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d день</string>
-			<key>other</key>
-			<string>%d дней</string>
-			<key>few</key>
-			<string>%d дня</string>
-		</dict>
-	</dict>
-	<key>Team.Members.hours_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d час</string>
-			<key>few</key>
-			<string>%d часа</string>
-			<key>other</key>
-			<string>%d часов</string>
-		</dict>
-	</dict>
-	<key>Team.Members.minutes_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d минута</string>
-			<key>few</key>
-			<string>%d минуты</string>
-			<key>other</key>
-			<string>%d минут</string>
-		</dict>
-	</dict>
-	<key>Team.Claim.minutes_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@minutes@</string>
-		<key>minutes</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>осталась</string>
-			<key>few</key>
-			<string>осталось</string>
-			<key>other</key>
-			<string>осталось</string>
-		</dict>
-	</dict>
-	<key>Team.Claim.hours_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>остался</string>
-			<key>few</key>
-			<string>осталось</string>
-			<key>other</key>
-			<string>осталось</string>
-		</dict>
-	</dict>
-	<key>Team.Claim.days_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>остался</string>
-			<key>few</key>
-			<string>осталось</string>
-			<key>other</key>
-			<string>осталось</string>
-		</dict>
-	</dict>
-	<key>Team.Ago.minutes_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@minutes@</string>
-		<key>minutes</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d МИН. НАЗАД</string>
-			<key>few</key>
-			<string>%d МИН. НАЗАД</string>
-			<key>other</key>
-			<string>%d МИН. НАЗАД</string>
-		</dict>
-	</dict>
-	<key>Team.Ago.hours_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d ЧАС НАЗАД</string>
-			<key>few</key>
-			<string>%d ЧАСА НАЗАД</string>
-			<key>other</key>
-			<string>%d ЧАСОВ НАЗАД</string>
-		</dict>
-	</dict>
-	<key>Team.Ago.days_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d ДЕНЬ НАЗАД</string>
-			<key>few</key>
-			<string>%d ДНЯ НАЗАД</string>
-			<key>other</key>
-			<string>%d ДНЕЙ НАЗАД</string>
-		</dict>
-	</dict>
-</dict>
+    <dict>
+        <key>Team.Chat.typing_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@teammates@</string>
+            <key>teammates</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>печатает</string>
+                <key>other</key>
+                <string>печатают</string>
+            </dict>
+        </dict>
+        <key>Team.Members.days_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d день</string>
+                <key>other</key>
+                <string>%d дней</string>
+                <key>few</key>
+                <string>%d дня</string>
+            </dict>
+        </dict>
+        <key>Team.Members.hours_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d час</string>
+                <key>few</key>
+                <string>%d часа</string>
+                <key>other</key>
+                <string>%d часов</string>
+            </dict>
+        </dict>
+        <key>Team.Members.minutes_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d минута</string>
+                <key>few</key>
+                <string>%d минуты</string>
+                <key>other</key>
+                <string>%d минут</string>
+            </dict>
+        </dict>
+        <key>Team.Claim.minutes_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@minutes@</string>
+            <key>minutes</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>осталась</string>
+                <key>few</key>
+                <string>осталось</string>
+                <key>other</key>
+                <string>осталось</string>
+            </dict>
+        </dict>
+        <key>Team.Claim.hours_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@hours@</string>
+            <key>hours</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>остался</string>
+                <key>few</key>
+                <string>осталось</string>
+                <key>other</key>
+                <string>осталось</string>
+            </dict>
+        </dict>
+        <key>Team.Claim.days_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>остался</string>
+                <key>few</key>
+                <string>осталось</string>
+                <key>other</key>
+                <string>осталось</string>
+            </dict>
+        </dict>
+        <key>Team.Ago.minutes_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@minutes@</string>
+            <key>minutes</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d МИН. НАЗАД</string>
+                <key>few</key>
+                <string>%d МИН. НАЗАД</string>
+                <key>other</key>
+                <string>%d МИН. НАЗАД</string>
+            </dict>
+        </dict>
+        <key>Team.Ago.hours_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@hours@</string>
+            <key>hours</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d ЧАС НАЗАД</string>
+                <key>few</key>
+                <string>%d ЧАСА НАЗАД</string>
+                <key>other</key>
+                <string>%d ЧАСОВ НАЗАД</string>
+            </dict>
+        </dict>
+        <key>Team.Ago.days_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d ДЕНЬ НАЗАД</string>
+                <key>few</key>
+                <string>%d ДНЯ НАЗАД</string>
+                <key>other</key>
+                <string>%d ДНЕЙ НАЗАД</string>
+            </dict>
+        </dict>
+
+        <key>Team.YearsOld.years_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@years@</string>
+            <key>years</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>1 год</string>
+                <key>few</key>
+                <string>%d года</string>
+                <key>other</key>
+                <string>%d лет</string>
+            </dict>
+        </dict>
+
+    </dict>
 </plist>

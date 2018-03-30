@@ -1,166 +1,184 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Team.Chat.typing_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@teammates@</string>
-		<key>teammates</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>is typing</string>
-			<key>other</key>
-			<string>are typing</string>
-		</dict>
-	</dict>
-	<key>Team.Members.days_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d day</string>
-			<key>other</key>
-			<string>%d days</string>
-		</dict>
-	</dict>
-	<key>Team.Members.hours_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d hour</string>
-			<key>other</key>
-			<string>%d hours</string>
-		</dict>
-	</dict>
-	<key>Team.Members.minutes_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d minute</string>
-			<key>other</key>
-			<string>%d minutes</string>
-		</dict>
-	</dict>
-	<key>Team.Claim.minutes_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@minutes@</string>
-		<key>minutes</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>ends in</string>
-			<key>other</key>
-			<string>ends in</string>
-		</dict>
-	</dict>
-	<key>Team.Claim.hours_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>ends in</string>
-			<key>other</key>
-			<string>ends in</string>
-		</dict>
-	</dict>
-	<key>Team.Claim.days_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>ends in</string>
-			<key>other</key>
-			<string>ends in</string>
-		</dict>
-	</dict>
-	<key>Team.Ago.minutes_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@minutes@</string>
-		<key>minutes</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d MIN. AGO</string>
-			<key>other</key>
-			<string>%d MIN. AGO</string>
-		</dict>
-	</dict>
-	<key>Team.Ago.hours_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d HOUR AGO</string>
-			<key>other</key>
-			<string>%d HOURS AGO</string>
-		</dict>
-	</dict>
-	<key>Team.Ago.days_format</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d DAY AGO</string>
-			<key>other</key>
-			<string>%d DAYS AGO</string>
-		</dict>
-	</dict>
-</dict>
+    <dict>
+        <key>Team.Chat.typing_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@teammates@</string>
+            <key>teammates</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>is typing</string>
+                <key>other</key>
+                <string>are typing</string>
+            </dict>
+        </dict>
+        <key>Team.Members.days_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d day</string>
+                <key>other</key>
+                <string>%d days</string>
+            </dict>
+        </dict>
+        <key>Team.Members.hours_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d hour</string>
+                <key>other</key>
+                <string>%d hours</string>
+            </dict>
+        </dict>
+        <key>Team.Members.minutes_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d minute</string>
+                <key>other</key>
+                <string>%d minutes</string>
+            </dict>
+        </dict>
+        <key>Team.Claim.minutes_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@minutes@</string>
+            <key>minutes</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>ends in</string>
+                <key>other</key>
+                <string>ends in</string>
+            </dict>
+        </dict>
+        <key>Team.Claim.hours_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@hours@</string>
+            <key>hours</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>ends in</string>
+                <key>other</key>
+                <string>ends in</string>
+            </dict>
+        </dict>
+        <key>Team.Claim.days_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>ends in</string>
+                <key>other</key>
+                <string>ends in</string>
+            </dict>
+        </dict>
+        <key>Team.Ago.minutes_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@minutes@</string>
+            <key>minutes</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d MIN. AGO</string>
+                <key>other</key>
+                <string>%d MIN. AGO</string>
+            </dict>
+        </dict>
+        <key>Team.Ago.hours_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@hours@</string>
+            <key>hours</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d HOUR AGO</string>
+                <key>other</key>
+                <string>%d HOURS AGO</string>
+            </dict>
+        </dict>
+        <key>Team.Ago.days_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@days@</string>
+            <key>days</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>%d DAY AGO</string>
+                <key>other</key>
+                <string>%d DAYS AGO</string>
+            </dict>
+        </dict>
+
+        <key>Team.YearsOld.years_format</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@years@</string>
+            <key>years</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>one</key>
+                <string>one y.o.</string>
+                <key>other</key>
+                <string>%d y.o.</string>
+            </dict>
+        </dict>
+
+    </dict>
 </plist>

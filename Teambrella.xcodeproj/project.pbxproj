@@ -787,6 +787,8 @@
 		6DAD94201FCEF4B00011557C /* QRCodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD941E1FCEF4B00011557C /* QRCodeType.swift */; };
 		6DAD94221FCEF5010011557C /* CodeCaptureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */; };
 		6DAD94231FCEF5010011557C /* CodeCaptureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */; };
+		6DAE4176206E42D50028F6C4 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE4175206E42D50028F6C4 /* Year.swift */; };
+		6DAE4177206E42D50028F6C4 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE4175206E42D50028F6C4 /* Year.swift */; };
 		6DAF1CB81F58562900421C5A /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB71F58562900421C5A /* PushService.swift */; };
 		6DB2ABC81FF2C1B00028F95C /* ServerReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */; };
 		6DB2ABC91FF2C1B00028F95C /* ServerReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */; };
@@ -1440,6 +1442,7 @@
 		6DAD941B1FCEF4500011557C /* CodeCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeCaptureDelegate.swift; path = Model/Protocols/CodeCaptureDelegate.swift; sourceTree = "<group>"; };
 		6DAD941E1FCEF4B00011557C /* QRCodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRCodeType.swift; path = Model/Enums/QRCodeType.swift; sourceTree = "<group>"; };
 		6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeCaptureVC.swift; path = Scenes/Info/CodeCaptureVC.swift; sourceTree = "<group>"; };
+		6DAE4175206E42D50028F6C4 /* Year.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Year.swift; path = Model/Entities/Year.swift; sourceTree = "<group>"; };
 		6DAF1CB71F58562900421C5A /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushService.swift; path = Model/Services/Push/PushService.swift; sourceTree = "<group>"; };
 		6DB2ABC71FF2C1B00028F95C /* ServerReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServerReply.swift; path = Model/Entities/ServerReply.swift; sourceTree = "<group>"; };
 		6DB309F61F1D169D007DFF40 /* ChatDatasourceStrategies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatDatasourceStrategies.swift; path = Scenes/Team/Chat/ChatDatasourceStrategies.swift; sourceTree = "<group>"; };
@@ -2710,6 +2713,7 @@
 				6D72AAFC2028A1690055FC47 /* Avatar.swift */,
 				6D8720CF2029E23D000C5C3F /* RiskScaleTeammate.swift */,
 				6D8720D22029E268000C5C3F /* RiskScaleRange.swift */,
+				6DAE4175206E42D50028F6C4 /* Year.swift */,
 				6DDB5D911FF681FC0066A07F /* ServerModels */,
 			);
 			name = Entities;
@@ -3852,6 +3856,7 @@
 				6D4E5CCA1F7AB6870020DEE2 /* MembersVC.swift in Sources */,
 				6D0FD84E201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */,
 				6D4E5CCB1F7AB6870020DEE2 /* Formatter.swift in Sources */,
+				6DAE4177206E42D50028F6C4 /* Year.swift in Sources */,
 				6D4E5CCC1F7AB6870020DEE2 /* SlashView.swift in Sources */,
 				6D4E5CCD1F7AB6870020DEE2 /* ChatSeparatorCell.swift in Sources */,
 				6DA1A54C1FBF40BD000FDECA /* RemotePayload.swift in Sources */,
@@ -4269,6 +4274,7 @@
 				6D69DA171EFC464000DED5CE /* WalletVC.swift in Sources */,
 				6D0FD84D201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */,
 				6D9CC63A1ED72675007F936E /* MembersVC.swift in Sources */,
+				6DAE4176206E42D50028F6C4 /* Year.swift in Sources */,
 				6DB8121D1EE6F78700B202CE /* Formatter.swift in Sources */,
 				6D02AC9C1F06A6F800B01AAF /* SlashView.swift in Sources */,
 				6D7987791F6827A80060A193 /* ChatSeparatorCell.swift in Sources */,

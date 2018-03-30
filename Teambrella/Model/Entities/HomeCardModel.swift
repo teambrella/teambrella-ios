@@ -57,5 +57,5 @@ struct HomeCardModel: Decodable {
     let userAvatar: String
     let posterCount: Int?
     let topPosterAvatars: [String]?
-    let year: Int
+    let year: Year
 }
