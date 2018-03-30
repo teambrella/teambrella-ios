@@ -205,3 +205,5 @@
 "Team.TeammateCell.wouldCoverHim"               = "ЗАЩИЩАЛ БЫ ЕГО";
 "Team.TeammateCell.wouldCoverHer"               = "ЗАЩИЩАЛ БЫ ЕЁ";
 "Team.TeammateCell.wouldCoverThem.notYet"        = "Ещё нет";
+
+"Team.TearsOld.lessThanAYear"   = "< года";

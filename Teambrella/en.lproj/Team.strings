@@ -205,3 +205,5 @@ gh = "Submit Claim";
 "Team.TeammateCell.wouldCoverHim"               = "I WOULD COVER HIM";
 "Team.TeammateCell.wouldCoverHer"               = "I WOULD COVER HER";
 "Team.TeammateCell.wouldCoverThem.notYet"        = "Not yet";
+
+"Team.TearsOld.lessThanAYear"   = "< 1 y.o.";

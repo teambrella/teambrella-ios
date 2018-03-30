@@ -144,14 +144,8 @@ class ChatObjectView: UIView, XIBInitable {
                                          team: TeamPart) {
         nameLabel.text = basic.name?.short
         imageView.showImage(string: basic.avatar)
-        if let model = basic.model, let year = basic.year {
-            if let team = service.session?.currentTeam, team.coverageType == .petCat || team.coverageType == .petDog {
-                // for pets we use "pet name, 2 y.o." format
-                let yearsOld = "Team.YearsOld.years_format".localized(max(1, year.yearsSinceNow))
-                amountLabel.text = "\(model.uppercased()), \(yearsOld)"
-            } else {
-                amountLabel.text = "\(model.uppercased()), \(year)"
-            }
+        if let model = basic.model, let year = basic.year, let team = service.session?.currentTeam {
+            amountLabel.text = "\(model.uppercased()), \(year.localizedString(for: team.coverageType))"
         }
         percentLabel.isHidden = true
         currencyLabel.isHidden = true

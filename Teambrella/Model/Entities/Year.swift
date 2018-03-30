@@ -21,6 +21,7 @@ struct Year: Decodable, CustomStringConvertible {
         // astronomic year
         static let secondsInYear: TimeInterval = 31_557_600.0
     }
+
     static var empty: Year { return Year(0) }
 
     let value: Int
@@ -29,7 +30,8 @@ struct Year: Decodable, CustomStringConvertible {
     var yearsSinceNow: Int {
         let yearsSince1970 = value - 1970
         let date = Date(timeIntervalSince1970: Constant.secondsInYear * Double(yearsSince1970))
-        return -Int(date.timeIntervalSinceNow / Constant.secondsInYear)
+        let years = Int(date.timeIntervalSinceNow / Constant.secondsInYear)
+        return -years
     }
 
     init(_ value: Int) {
@@ -40,4 +42,21 @@ struct Year: Decodable, CustomStringConvertible {
         value = try decoder.singleValueContainer().decode(Int.self)
     }
 
+}
+
+extension Year {
+    func localizedString(for coverageType: CoverageType) -> String {
+        // for pets we use "pet name, 2 y.o." format
+        switch coverageType {
+        case .petCat, .petDog:
+            switch value {
+            case ...0:
+                return "Team.TearsOld.lessThanAYear".localized
+            default:
+                return "Team.YearsOld.years_format".localized(yearsSinceNow)
+            }
+        default:
+            return "\(self)"
+        }
+    }
 }

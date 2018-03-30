@@ -191,13 +191,7 @@ struct TeammateCellBuilder {
             cell.titleLabel.text = "General.unitedFormat".localized(owner, type.localizedCoverageObject)
         }
 
-        // for pets we use "pet name, 2 y.o." format
-        if type == .petCat || type == .petDog {
-            let yearsOld = "Team.YearsOld.years_format".localized(max(1, teammate.object.year.yearsSinceNow))
-            cell.nameLabel.text = "\(teammate.object.model), \(yearsOld)"
-        } else {
-        cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year)"
-        }
+        cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year.localizedString(for: type))"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
         cell.detailsLabel.text = teammate.teamPart?.coverageType.localizedCoverageType
