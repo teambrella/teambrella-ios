@@ -12,7 +12,7 @@
 
 "Push.newTeammate.body_format"     = "%@ wants to join your team. Say hello!";
 "Push.unreadMessages_format"       = "You have %@ unread messages";
-"Push.walletFunded.title"          = "Wallet is funded";
+"Push.walletFunded.title"          = "Your wallet has been funded";
 
 "Push.newMessage"                  = "New message";
 

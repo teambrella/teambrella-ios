@@ -42,7 +42,12 @@ class ChatModelBuilder {
     
     func separatorModelIfNeeded(firstModel: ChatCellModel, secondModel: ChatCellModel) -> ChatCellModel? {
         if firstModel.date.interval(of: .day, since: secondModel.date) != 0 {
-            return ChatSeparatorCellModel(date: secondModel.date.addingTimeInterval(-0.01))
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([Calendar.Component.day,
+                                                                 Calendar.Component.month,
+                                                                 Calendar.Component.year], from: secondModel.date)
+            let date = calendar.date(from: components)
+            return date.flatMap { ChatSeparatorCellModel(date: $0) }
         }
         return nil
     }

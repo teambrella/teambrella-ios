@@ -32,7 +32,6 @@ final class UniversalChatDatasource {
     var onLoadPrevious: ((Int) -> Void)?
     var onClaimVoteUpdate: (() -> Void)?
 
-    let firstOffset                                 = -5
     var limit                                       = 30
     var cloudWidth: CGFloat                         = 0
     var previousCount: Int                          = 0
@@ -346,10 +345,8 @@ extension UniversalChatDatasource {
             let limit = self.limit// previous ? -me.limit: me.limit
             let offset = previous
                 ? self.backwardOffset
-                : self.isFirstLoad
-                ? self.firstOffset
                 : self.forwardOffset
-            var payload: [String: Any] = ["limit": limit + abs(offset),
+            var payload: [String: Any] = ["limit": limit,
                                           "offset": offset,
                                           "avatarSize": self.avatarSize,
                                           "commentAvatarSize": self.commentAvatarSize]
