@@ -107,6 +107,7 @@ class ChatObjectView: UIView, XIBInitable {
         rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
         
         imageView.image = #imageLiteral(resourceName: "imagePlaceholder")
+        imageView.layer.cornerRadius = 4
         rightLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
         basic.smallPhoto.map { self.imageView.showImage(string: $0) }
         voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
@@ -137,6 +138,7 @@ class ChatObjectView: UIView, XIBInitable {
                                          team: TeamPart) {
         nameLabel.text = basic.name?.short
         imageView.showImage(string: basic.avatar)
+        imageView.layer.cornerRadius = imageView.frame.width / 2
         if let model = basic.model, let year = basic.year, let team = service.session?.currentTeam {
             amountLabel.text = "\(model.uppercased()), \(year.localizedString(for: team.coverageType))"
         }
