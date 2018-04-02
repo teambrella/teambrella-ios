@@ -189,7 +189,6 @@
 "Team.Chat.ObjectView.TitleLabel"                     = "TU VOTO";
 "Team.Chat.ObjectView.TitleLabel.risk"                = "RIESGO";
 "Team.Chat.ObjectView.TitleLabel.team"                = "VOTO DEL EQUIPO";
-"Team.Chat.ObjectView.TitleLabel.proxy"               = "PROXY VOTO";
 
 "Team.TeammateCell.heCoversMe"                        = "ME CUBRE";
 "Team.TeammateCell.sheCoversMe"                       = "ME CUBRE";

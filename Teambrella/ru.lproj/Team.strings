@@ -183,7 +183,6 @@
 "Team.Chat.ObjectView.TitleLabel" = "ВАШ ГОЛОС";
 "Team.Chat.ObjectView.TitleLabel.risk" = "РИСК";
 "Team.Chat.ObjectView.TitleLabel.team" = "КОМАНДА";
-"Team.Chat.ObjectView.TitleLabel.proxy" = "ПРОКСИ";
 
 "Team.Vote.doNotAccept" = "Не принимать";
 "Team.Vote.SwipeToVote" = "Смахните влево или вправо, чтобы голосовать";

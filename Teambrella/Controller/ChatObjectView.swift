@@ -109,24 +109,17 @@ class ChatObjectView: UIView, XIBInitable {
         imageView.image = #imageLiteral(resourceName: "imagePlaceholder")
         rightLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
         basic.smallPhoto.map { self.imageView.showImage(string: $0) }
-        
+        voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
         if let voting = voting {
             if let vote = voting.myVote {
                 if voting.proxyName != nil {
-                    voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.proxy".localized
                     voteValueLabel.text = String(format: "%.f", vote * 100)
                     rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
                 } else {
-                    voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
                     voteValueLabel.text = String(format: "%.f", vote * 100)
                     rightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
                 }
-            } else if let teamVote = voting.ratioVoted {
-                voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.team".localized
-                voteValueLabel.text = String(format: "%.f", teamVote.value * 100)
-                rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
             } else {
-                voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.team".localized
                 rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
                 voteValueLabel.text = "..."
             }
@@ -154,23 +147,15 @@ class ChatObjectView: UIView, XIBInitable {
         if let voting = voting {
             currencyLabel.text = nil
             voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
-            
             if let vote = voting.myVote {
                 if voting.proxyName != nil {
-                    voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.proxy".localized
                     voteValueLabel.text = String(format: "%.2f", vote)
                     rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
                 } else {
-                    voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
                     voteValueLabel.text = String(format: "%.2f", vote)
                     rightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
                 }
-            } else if let teamVote = voting.riskVoted {
-                voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.team".localized
-                voteValueLabel.text = String(format: "%.2f", teamVote)
-                rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
             } else {
-                voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.team".localized
                 rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
                 voteValueLabel.text = "..."
             }
