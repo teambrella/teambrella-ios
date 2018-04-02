@@ -73,11 +73,6 @@ struct WalletCellBuilder {
     
     private static func populateFunding(cell: WalletFundingCell, model: WalletFundingCellModel) {
         cell.headerLabel.text = "Me.WalletVC.fundingCell.title".localized
-        if let team = service.session?.currentTeam {
-            cell.lowerCurrencyLabel.text =
-                String.formattedNumber(floor(model.uninterruptedCoverageFunding.value * currencyRate))
-                + " " + team.currency
-        }
         cell.lowerNumberView.verticalStackView.alignment = .leading
         cell.lowerNumberView.titleLabel.text = "Me.WalletVC.lowerBrick.title".localized
         let amount = max(0, floor(MEth(model.uninterruptedCoverageFunding).value))
@@ -85,6 +80,10 @@ struct WalletCellBuilder {
         cell.lowerNumberView.isPercentVisible = false
         cell.lowerNumberView.isBadgeVisible = false
         cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)
+        if let team = service.session?.currentTeam {
+            let amount = max(0, floor(model.uninterruptedCoverageFunding.value * currencyRate))
+            cell.lowerCurrencyLabel.text = String.formattedNumber(amount) + " " + team.currency
+        }
     }
     
     private static func populateButtons(cell: WalletButtonsCell, model: WalletButtonsCellModel, delegate: WalletVC) {
