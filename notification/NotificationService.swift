@@ -30,8 +30,7 @@ class NotificationService: UNNotificationServiceExtension {
         guard let apsDict = content.userInfo["aps"] as? [AnyHashable: Any] else { return }
 
         let aps = APS(dict: apsDict)
-
-        bestAttemptContent = content
+        
         let payload = RemotePayload(dict: payloadDict)
 
         let message = RemoteMessage(aps: aps, payload: payload)
@@ -40,6 +39,22 @@ class NotificationService: UNNotificationServiceExtension {
         message.title.flatMap { content.title = $0 }
         message.subtitle.flatMap { content.subtitle = $0 }
         message.body.flatMap { content.body = $0 }
+
+        bestAttemptContent = content
+
+        // remove duplicating messages
+//        UNUserNotificationCenter.current()
+//            .getDeliveredNotifications { notifications in
+//                let matching = notifications.first(where: { notify in
+//                    let threadID = notify.request.content.threadIdentifier
+//                    return threadID == content.threadIdentifier
+//                })
+//                if let matchExists = matching {
+//                    UNUserNotificationCenter.current().removeDeliveredNotifications(
+//                        withIdentifiers: [matchExists.request.identifier]
+//                    )
+//                }
+//        }
 
         if let avatarURL = message.avatar {
             UIImage.fetchAvatar(string: avatarURL, completion: { image, error in

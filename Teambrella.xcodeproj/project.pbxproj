@@ -1176,6 +1176,8 @@
 		6D1CAC0E1FF51B6700FA58B6 /* OthersVotedDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OthersVotedDataSource.swift; path = Scenes/Info/OthersVotedDataSource.swift; sourceTree = "<group>"; };
 		6D1CAC111FF52B7600FA58B6 /* OthersVotedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OthersVotedCell.swift; path = Scenes/Info/OthersVotedCell.swift; sourceTree = "<group>"; };
 		6D1CAC141FF5354F00FA58B6 /* OthersVotedCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OthersVotedCellModel.swift; path = Scenes/Info/OthersVoted/OthersVotedCellModel.swift; sourceTree = "<group>"; };
+		6D1D5BCA2073C0630083CF6D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		6D1D5BCC2073C0640083CF6D /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		6D1EC3CF2029F5AA00F0541C /* ClaimVoteUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClaimVoteUpdate.swift; path = Model/Entities/ClaimVoteUpdate.swift; sourceTree = "<group>"; };
 		6D1EC3D2202A10AA00F0541C /* CoverageForDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoverageForDate.swift; path = Model/Entities/CoverageForDate.swift; sourceTree = "<group>"; };
 		6D1EC3D6202B0CFB00F0541C /* MultisigServerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultisigServerImpl.swift; sourceTree = "<group>"; };
@@ -2897,6 +2899,8 @@
 				F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */,
 				177A2DBE9DB0723855A80DED /* libPods-notification.a */,
 				0F0981AC48D38E5C8A149C38 /* libPods-NotificationTeambrella.a */,
+				6D1D5BCA2073C0630083CF6D /* UserNotifications.framework */,
+				6D1D5BCC2073C0640083CF6D /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3038,7 +3042,7 @@
 		6DA475981E8ABEE600B56D9B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Yaroslav Pasternak";
 				TargetAttributes = {
@@ -4922,7 +4926,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
@@ -4962,7 +4966,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 44C520431479B61FE9F06E42 /* Pods-Teambrella.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;

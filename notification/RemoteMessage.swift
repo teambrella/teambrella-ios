@@ -16,25 +16,6 @@
 
 import Foundation
 
-struct APS {
-    let body: String?
-    let title: String?
-    let hasContent: Bool
-    let sound: String?
-
-    init(dict: [AnyHashable: Any]) {
-        if let alert = dict["alert"] as? [String: String] {
-            body = alert["body"] ?? ""
-            title = alert["title"]
-        } else {
-            body = nil
-            title = nil
-        }
-        hasContent = dict["mutable-content"] as? Bool ?? false
-        sound = dict["sound"] as? String
-    }
-}
-
 struct RemoteMessage {
     let aps: APS
     let payload: RemotePayload
@@ -65,16 +46,19 @@ struct RemoteMessage {
     }
     
     var subtitle: String? {
-        switch payload.type {
-        case .createdPost:
-            return nil
-        case .newTeammate:
-            return payload.userName
-        case .walletFunded:
-            return "Push.team_format".localized(payload.teamNameValue)
-        default:
-            return nil
-        }
+        guard aps.subtitle == nil else { return aps.subtitle }
+
+        return nil
+//        switch payload.type {
+//        case .createdPost:
+//            return nil
+//        case .newTeammate:
+//            return payload.userName
+//        case .walletFunded:
+//            return "Push.team_format".localized(payload.teamNameValue)
+//        default:
+//            return nil
+//        }
     }
     
     var body: String? {
