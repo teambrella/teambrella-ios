@@ -20,12 +20,13 @@ enum RemoteCommandType: Int {
     case unknown = 0
     
     // will come only from Sockets
-    case createdPost = 1
     case deletedPost = 2
     case typing = 3
-    case newClaim = 4
-    
+
     // may come from Push
+    case createdPost = 1
+
+    case newClaim = 4
     case privateMessage = 5
     case walletFunded = 6
     case postsSinceInteracted = 7

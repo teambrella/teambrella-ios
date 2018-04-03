@@ -177,11 +177,11 @@ class PushService: NSObject {
             service.router.presentClaims(animated: false)
             service.router.presentClaim(claimID: details.claimID, animated: false)
             service.router.presentChat(context: ChatContext.remote(details), itemType: .claim, animated: false)
+        } else if let details = details as? RemotePayload.Discussion {
+            service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat, animated: false)
         } else if let details = details as? RemotePayload.Teammate {
             service.router.presentMemberProfile(teammateID: details.userID, animated: false)
             service.router.presentChat(context: ChatContext.remote(details), itemType: .teammate, animated: false)
-        } else if let details = details as? RemotePayload.Discussion {
-            service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat, animated: false)
         }
     }
     
