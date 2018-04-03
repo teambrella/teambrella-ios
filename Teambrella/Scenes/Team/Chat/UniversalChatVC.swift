@@ -436,6 +436,7 @@ private extension UniversalChatVC {
     private func setupInput() {
         if dataSource.isPrivateChat {
             input.leftButton.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
+            input.leftButton.isHidden = true
             input.leftButton.isEnabled = false
         }
         input.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
