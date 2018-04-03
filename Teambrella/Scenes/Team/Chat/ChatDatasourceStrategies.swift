@@ -220,8 +220,14 @@ class HomeChatStrategy: ChatDatasourceStrategy {
 
 class RemoteChatStrategy: ChatDatasourceStrategy {
     var title: String {
-        return details.topicName
+        switch details {
+        case let discussion as RemotePayload.Discussion:
+            return discussion.topicName
+        default:
+            return ""
+        }
     }
+
     var requestType: TeambrellaRequestType {
         switch details {
         case _ as RemotePayload.Claim:

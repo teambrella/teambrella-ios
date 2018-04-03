@@ -16,18 +16,32 @@
 
 import Foundation
 
-struct RemoteMessage {
-    let payload: RemotePayload
-    /*
-     case privateMessage = 5
-     case walletFunded = 6
-     case postsSinceInteracted = 7
-     case newTeammate = 8
-     case newDiscussion = 9
+struct APS {
+    let body: String?
+    let title: String?
+    let hasContent: Bool
+    let sound: String?
 
-     case topicMessage = 21
-     */
+    init(dict: [AnyHashable: Any]) {
+        if let alert = dict["alert"] as? [String: String] {
+            body = alert["body"] ?? ""
+            title = alert["title"]
+        } else {
+            body = nil
+            title = nil
+        }
+        hasContent = dict["mutable-content"] as? Bool ?? false
+        sound = dict["sound"] as? String
+    }
+}
+
+struct RemoteMessage {
+    let aps: APS
+    let payload: RemotePayload
+
     var title: String? {
+        guard aps.title == nil else { return aps.title }
+
         switch payload.type {
         case .createdPost:
             return "Push.newPost".localized
@@ -64,6 +78,8 @@ struct RemoteMessage {
     }
     
     var body: String? {
+        guard aps.body == nil else { return aps.body }
+
         switch payload.type {
         case .createdPost,
              .privateMessage:
