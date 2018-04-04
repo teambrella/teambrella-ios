@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -44,7 +44,7 @@
                                     <constraint firstAttribute="width" constant="20" id="j5L-8n-YxB"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-2g-vOp">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-2g-vOp">
                                 <rect key="frame" x="287" y="16" width="40" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="xkZ-mK-QQt"/>
@@ -246,7 +246,6 @@
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="centerY" secondItem="KVp-Aa-10c" secondAttribute="centerY" id="RtA-AP-bVR"/>
                             <constraint firstItem="0Iw-2g-vOp" firstAttribute="top" secondItem="NVa-WO-KTz" secondAttribute="topMargin" id="W17-G1-Olu"/>
                             <constraint firstItem="HKR-rc-C51" firstAttribute="centerY" secondItem="Qqi-A2-dcL" secondAttribute="centerY" id="WHf-pC-FEm"/>
-                            <constraint firstItem="0Iw-2g-vOp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y0E-WH-DMy" secondAttribute="trailing" id="WiC-rU-V4Y"/>
                             <constraint firstItem="F2r-3b-RDy" firstAttribute="baseline" secondItem="KVp-Aa-10c" secondAttribute="firstBaseline" id="XXG-y7-9NZ"/>
                             <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KVp-Aa-10c" secondAttribute="trailing" constant="8" id="YOe-GY-gdc"/>
                             <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" secondItem="KVp-Aa-10c" secondAttribute="trailing" priority="750" constant="16" id="aqA-Qm-jd0"/>
@@ -262,6 +261,7 @@
                             <constraint firstItem="Gj0-Hf-d4k" firstAttribute="height" secondItem="86k-pi-DIK" secondAttribute="height" id="r0D-zf-RJD"/>
                             <constraint firstItem="Gj0-Hf-d4k" firstAttribute="width" secondItem="86k-pi-DIK" secondAttribute="width" id="w4z-zY-Ztp"/>
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="leading" secondItem="F2r-3b-RDy" secondAttribute="trailing" constant="8" id="xqz-DI-XEe"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y0E-WH-DMy" secondAttribute="trailing" constant="20" id="zE9-cs-vVF"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                         <userDefinedRuntimeAttributes>
