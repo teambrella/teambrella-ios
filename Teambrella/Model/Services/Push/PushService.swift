@@ -68,10 +68,7 @@ class PushService: NSObject {
     
     func remoteNotificationOnStart(in application: UIApplication,
                                    userInfo: [AnyHashable: Any]) {
-        guard let payloadDict = userInfo["Payload"] as? [AnyHashable: Any] else { return }
-        
-        let payload = RemotePayload(dict: payloadDict)
-        self.command = payload
+      prepareCommand(userInfo: userInfo)
     }
     
     func remoteNotification(in application: UIApplication,
@@ -86,12 +83,21 @@ class PushService: NSObject {
             }
         }
         guard command == nil else { return }
+
+        prepareCommand(userInfo: userInfo)
+        executeCommand()
+    }
+
+    private func prepareCommand(userInfo: [AnyHashable: Any]) {
         guard let payloadDict = userInfo["Payload"] as? [AnyHashable: Any] else { return }
-        
+        guard let apsDict = userInfo["aps"] as? [AnyHashable: Any] else { return }
+
         log("\(userInfo)", type: .push)
+        let aps = APS(dict: apsDict)
         let payload = RemotePayload(dict: payloadDict)
         self.command = payload
-        executeCommand()
+
+        clearNotificationsThread(id: aps.threadID)
     }
     
     func executeCommand() {
@@ -113,6 +119,21 @@ class PushService: NSObject {
             break
         }
         self.command = nil
+    }
+
+    private func clearNotificationsThread(id: String?) {
+        guard let id = id else { return }
+
+        UNUserNotificationCenter.current().getDeliveredNotifications { notifications in
+            let ids: [String] = notifications.compactMap { notification in
+                if notification.request.content.threadIdentifier == id {
+                    return notification.request.identifier
+                } else {
+                    return nil
+                }
+            }
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ids)
+        }
     }
     
     private func showNewClaim(teamID: Int, claimID: Int) {

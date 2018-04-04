@@ -16,6 +16,32 @@
 
 import Foundation
 
+struct APS {
+    let body: String?
+    let title: String?
+    let subtitle: String?
+    let hasContent: Bool
+    let sound: String?
+    let threadID: String?
+    let category: String?
+
+    init(dict: [AnyHashable: Any]) {
+        if let alert = dict["alert"] as? [String: String] {
+            body = alert["body"] ?? ""
+            title = alert["title"]
+            subtitle = alert["subtitle"]
+        } else {
+            body = nil
+            title = nil
+            subtitle = nil
+        }
+        hasContent = dict["mutable-content"] as? Bool ?? false
+        sound = dict["sound"] as? String
+        threadID = dict["thread-id"] as? String
+        category = dict["category"] as? String
+    }
+}
+
 protocol RemoteTopicDetails {
     var topicID: String { get }
 }
