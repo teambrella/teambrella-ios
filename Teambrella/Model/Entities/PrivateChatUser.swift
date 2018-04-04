@@ -47,16 +47,13 @@ struct PrivateChatUser: Decodable {
         minutesSinceLast = teammateLarge.topic.minutesSinceLastPost
     }
     
-    init?(remoteCommand: RemoteCommand) {
-        switch remoteCommand {
-        case let .privateMessage(userID: userID,
-                                 name: name,
-                                 avatar: avatar,
-                                 message: message):
-            self.id = userID
-            self.name = name
-            self.avatar = avatar
-            self.text = message
+    init?(remotePayload: RemotePayload) {
+        switch remotePayload.type {
+        case .privateMessage:
+            self.id = remotePayload.userIDValue
+            self.name = remotePayload.userNameValue
+            self.avatar = remotePayload.avatar ?? ""
+            self.text = remotePayload.messageValue
             self.unreadCount = 0
             self.minutesSinceLast = 0
         default:

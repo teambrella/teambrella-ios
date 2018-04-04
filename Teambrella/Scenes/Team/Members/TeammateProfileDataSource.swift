@@ -41,7 +41,7 @@ struct SocialItem {
 class TeammateProfileDataSource {
     let teammateID: String
     let isMe: Bool
-   // let isVoting: Bool
+    // let isVoting: Bool
     var isMyProxy: Bool {
         get {
             return teammateLarge?.basic.isMyProxy ?? false
@@ -139,33 +139,17 @@ class TeammateProfileDataSource {
         isMyProxy = teammate.basic.isMyProxy
         let isVoting = teammate.voting != nil
         
-        if isVoting && !isMe {
+        //if isMe { source.append(.me) } else { source.append(.summary) }
+        source.append(.dialog)
+        if isVoting {
             isNewTeammate = true
             //source.append(.dialogCompact)
-             source.append(.dialog)
             source.append(.voting)
-            source.append(.object)
-            source.append(.stats)
-            if !socialItems.isEmpty && !isMe {
-                source.append(.contact)
-            }
-        } else {
-            if isMe {
-                //source.append(.me)
-            } else {
-                //source.append(.summary)
-
-            }
-//            source.append(.me)
-            source.append(.dialog)
-                source.append(.object)
-                source.append(.stats)
-            if !socialItems.isEmpty && !isMe {
-                source.append(.contact)
-            }
-            if !isNewTeammate {
-                
-            }
+        }
+        source.append(.object)
+        source.append(.stats)
+        if !socialItems.isEmpty && !isMe {
+            source.append(.contact)
         }
     }
     

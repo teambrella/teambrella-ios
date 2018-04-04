@@ -24,19 +24,38 @@ class NotificationService: UNNotificationServiceExtension {
     override func didReceive(_ request: UNNotificationRequest,
                              withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
+
         guard let content = request.content.mutableCopy() as? UNMutableNotificationContent else { return }
         guard let payloadDict = content.userInfo["Payload"] as? [AnyHashable: Any] else { return }
+        guard let apsDict = content.userInfo["aps"] as? [AnyHashable: Any] else { return }
+
+        let aps = APS(dict: apsDict)
         
-        bestAttemptContent = content
         let payload = RemotePayload(dict: payloadDict)
 
-        let message = RemoteMessage(payload: payload)
+        let message = RemoteMessage(aps: aps, payload: payload)
         
         // set content from payload instead of aps
         message.title.flatMap { content.title = $0 }
         message.subtitle.flatMap { content.subtitle = $0 }
         message.body.flatMap { content.body = $0 }
-        
+
+        bestAttemptContent = content
+
+        // remove duplicating messages
+//        UNUserNotificationCenter.current()
+//            .getDeliveredNotifications { notifications in
+//                let matching = notifications.first(where: { notify in
+//                    let threadID = notify.request.content.threadIdentifier
+//                    return threadID == content.threadIdentifier
+//                })
+//                if let matchExists = matching {
+//                    UNUserNotificationCenter.current().removeDeliveredNotifications(
+//                        withIdentifiers: [matchExists.request.identifier]
+//                    )
+//                }
+//        }
+
         if let avatarURL = message.avatar {
             UIImage.fetchAvatar(string: avatarURL, completion: { image, error in
                 if let filePath = self.saveImage(image: image),

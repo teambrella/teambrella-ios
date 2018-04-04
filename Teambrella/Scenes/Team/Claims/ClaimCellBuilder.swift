@@ -65,12 +65,24 @@ struct ClaimCellBuilder {
             cell.setupGallery(with: imageURLStrings, options: [.requestModifier(modifier)])
         }
         cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: claim.basic.avatar)))
-        cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)//"Claim \(claim.id)"
+        cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)
         cell.textLabel.text = claim.discussion.originalPostText.sane
         cell.unreadCountLabel.text = "\(claim.discussion.unreadCount)"
         cell.unreadCountLabel.isHidden = claim.discussion.unreadCount <= 0
-        let dateProcessor = DateProcessor()
-        cell.timeLabel.text = dateProcessor.stringFromNow(minutes: claim.discussion.minutesSinceLastPost)
+        let minutesSinceLastPost = claim.discussion.minutesSinceLastPost
+        switch minutesSinceLastPost {
+        case 0:
+            cell.timeLabel.text = "Team.TeammateCell.timeLabel.justNow".localized
+        case 1..<60:
+            cell.timeLabel.text = "Team.Ago.minutes_format".localized(minutesSinceLastPost)
+        case 60..<(60 * 24):
+            cell.timeLabel.text = "Team.Ago.hours_format".localized(minutesSinceLastPost / 60)
+        case (60 * 24)...(60*24*7):
+            cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
+        default:
+            let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
+            cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date)
+        }
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
 
@@ -82,7 +94,6 @@ struct ClaimCellBuilder {
         }
 
         cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
-        let dateProcessor = DateProcessor()
         var prefix = ""
         if voting.minutesRemaining < 60 {
             prefix = "Team.Claim.minutes_format".localized(voting.minutesRemaining)
@@ -92,7 +103,7 @@ struct ClaimCellBuilder {
             prefix = "Team.Claim.days_format".localized(voting.minutesRemaining / (60 * 24))
         }
         cell.remainingDaysLabel.text = prefix.uppercased() + " " +
-            dateProcessor.stringFromNow(minutes: -voting.minutesRemaining).uppercased()
+            DateProcessor().stringFromNow(minutes: -voting.minutesRemaining).uppercased()
 
         cell.pieChart.setupWith(remainingMinutes: voting.minutesRemaining)
         
@@ -120,18 +131,18 @@ struct ClaimCellBuilder {
         cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         cell.yourVotePercentValue.alpha = 1
         cell.yourVoteAmount.alpha = 1
-        cell.yourVoteCurrency.text = service.session?.currentTeam?.currency
+        cell.yourVoteCurrency.text = service.currencyName
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
         cell.teamVotePercentValue.text = String.truncatedNumber(voting.ratioVoted.percentage)
         cell.teamVoteAmount.text = String.truncatedNumber(voting.ratioVoted.fiat(from: claim.basic.claimAmount).value)
-        cell.teamVoteCurrency.text = service.session?.currentTeam?.currency
+        cell.teamVoteCurrency.text = service.currencyName
         
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
         cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.resetButton.addTarget(delegate, action: #selector(ClaimVC.tapResetVote), for: .touchUpInside)
         
-        let avatars = voting.otherAvatars.flatMap { $0.url }
+        let avatars = voting.otherAvatars.compactMap { $0.url }
         let maxAvatarsStackCount = 4
         let otherVotersCount = voting.otherCount - maxAvatarsStackCount + 1
         let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil
@@ -159,8 +170,7 @@ struct ClaimCellBuilder {
         let deductible = String(format: "%.2f", claim.basic.deductible)
         cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
         let estimatedExpenses = String(format: "%.2f", claim.basic.estimatedExpenses)
-        guard let currency = service.session?.currentTeam?.currencySymbol else { return }
-
+        let currency = service.currencySymbol
         cell.claimAmountValueLabel.text = currency + claimAmount
         cell.deductibleValueLabel.text = currency + deductible
         cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses

@@ -14,6 +14,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import BigNumbers
 import Foundation
 
 class AbiArguments {
@@ -69,23 +70,25 @@ class AbiArguments {
         return abiArguments.hexString
     }
 
-    static func parseDecimalAmount(decimalAmount: String) -> String? {
-        guard let e: Double = Double(decimalAmount) else {
-            log("String \(decimalAmount) is not convertible to Double", type: [.error, .crypto])
-            return nil
-        }
+    static func parseDecimalAmount(decimal: NSDecimalNumber) -> String? {
+//        guard let e: Double = Double(decimalAmount) else {
+//            log("String \(decimalAmount) is not convertible to Double", type: [.error, .crypto])
+//            return nil
+//        }
 
         /*
         let weis = e * Double(Constant.weisInEth)
         let weisInt = UInt(weis)
         let hex = String(weisInt, radix: 16)
 */
+        guard let bigDecimal = BDouble(decimal.stringValue, radix: 10) else { return nil }
 
-        let weis: BDouble = BDouble(e) * BDouble(Constant.weisInEth)
-        let weisInt: BInt = BInt(weis.decimalExpansion(precisionAfterComma: 0))
+        let weis: BDouble = bigDecimal * BDouble(Constant.weisInEth)
+        guard let weisInt: BInt = BInt(weis.decimalExpansion(precisionAfterComma: 0)) else { return nil }
+        
         let hex = weisInt.asString(withBase: 16)
     
-        log("Parse amount in ETH: \(decimalAmount) to Weis dec: \(weisInt); hex: \(hex)", type: .crypto)
+        log("Parse amount in ETH: \(decimal) to Weis dec: \(weisInt); hex: \(hex)", type: .crypto)
         return Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)
 //        return  Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)
     }

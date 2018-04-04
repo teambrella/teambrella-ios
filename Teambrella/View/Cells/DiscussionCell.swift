@@ -27,8 +27,7 @@ class DiscussionCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var titleLabel: Label!
     @IBOutlet var textLabel: MessageTextLabel!
     
-    @IBOutlet var timeLabel: Label!
-    @IBOutlet var discussionLabel: Label!
+    @IBOutlet var timeLabel: ThinStatusSubtitleLabel!
     
     @IBOutlet var unreadCountView: RoundImageView!
     @IBOutlet var teammatesAvatarStack: RoundImagesStack!

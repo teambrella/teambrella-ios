@@ -38,7 +38,7 @@ struct ProxyCellModel: Decodable {
     let userID: String
     let avatarString: String
     let name: String
-    let address: String
+    let address: String?
     let proxyRank: Double?
     let decisionsCoeff: Double?
     let discussionCoeff: Double?

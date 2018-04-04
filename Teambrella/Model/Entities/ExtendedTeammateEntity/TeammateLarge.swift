@@ -43,6 +43,7 @@ class TeammateLarge: Decodable {
     func update(votingResult: TeammateVotingResult) {
         topic.minutesSinceLastPost = votingResult.minutesSinceLast
         topic.unreadCount = votingResult.unreadCount
+        voting = votingResult.voting
     }
 
     enum CodingKeys: String, CodingKey {
@@ -108,9 +109,8 @@ class TeammateLarge: Decodable {
     struct VotingInfo: Decodable {
         let riskVoted: Double?
         let myVote: Double?
-        let proxyVote: Double?
 
-        let proxyAvatar: String?
+        let proxyAvatar: Avatar?
         let proxyName: String?
 
         let remainingMinutes: Int
@@ -123,7 +123,6 @@ class TeammateLarge: Decodable {
             case riskVoted = "RiskVoted"
             case myVote = "MyVote"
             case proxyAvatar = "ProxyAvatar"
-            case proxyVote = "ProxyVote"
             case proxyName = "ProxyName"
             case remainingMinutes = "RemainedMinutes"
             case votersCount = "OtherCount"

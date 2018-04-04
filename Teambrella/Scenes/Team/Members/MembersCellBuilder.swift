@@ -24,13 +24,14 @@ import UIKit
 
 struct MembersCellBuilder {
     static func populate(cell: UICollectionViewCell, with teammate: TeammateListEntity) {
+        let coverage = service.session?.currentTeam?.coverageType ?? .other
         if let cell = cell as? TeammateCandidateCell {
             cell.titleLabel.text = teammate.name.entire
             if let url: URL = URL(string: URLBuilder().avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
             cell.titleLabel.text = teammate.name.entire
-            let detailsText: String = "\(teammate.model), \(teammate.year)".uppercased()
+            let detailsText: String = "\(teammate.model), \(teammate.year.localizedString(for: coverage))".uppercased()
             cell.detailsLabel.text = detailsText
             let dateText: String = DateProcessor().stringFromNow(minutes: -teammate.minutesRemaining)
             cell.dateLabel.text = dateText.uppercased()
@@ -39,17 +40,16 @@ struct MembersCellBuilder {
             if let url: URL = URL(string: URLBuilder().avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
-            guard let currency: String = service.session?.currentTeam?.currencySymbol else { return }
-            
-            let coeff = teammate.totallyPaid > 0 ? 0.5 : -0.5
+            let currency: String = service.currencySymbol
+            let coeff = teammate.totallyPaid > 0.0 ? 0.5 : -0.5
             let amountText: String = currency + "\(abs(Int(teammate.totallyPaid + coeff)))"
             cell.amountLabel.text = amountText
             let sign: String = teammate.totallyPaid >= 0.5 ? "+" : teammate.totallyPaid <= -0.5 ? "-" : ""
             cell.signLabel.text = sign
-            let signColor: UIColor = teammate.totallyPaid > 0 ? .tealish : .lipstick
+            let signColor: UIColor = teammate.totallyPaid > 0.0 ? .tealish : .lipstick
             cell.signLabel.textColor = signColor
             cell.titleLabel.text = teammate.name.entire
-            let detailsText: String = "\(teammate.model), \(teammate.year)".uppercased()
+            let detailsText: String = "\(teammate.model), \(teammate.year.localizedString(for: coverage))".uppercased()
             cell.detailsLabel.text = detailsText
             if let risk = teammate.risk {
                 cell.avatarView.badgeText = String(format: "%.1f", risk)

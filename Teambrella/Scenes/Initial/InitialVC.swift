@@ -76,7 +76,7 @@ final class InitialVC: UIViewController {
     
     @objc
     private func tapDemo() {
-        service.keyStorage.clearLastUserType()
+        service.keyStorage.setToDemoUser()
         self.startLoadingTeams()
         sod?.dismiss(animated: true) {
             

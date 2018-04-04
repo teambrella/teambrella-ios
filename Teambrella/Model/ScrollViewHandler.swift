@@ -20,21 +20,41 @@ class ScrollViewHandler {
     var previousScrollOffset: CGFloat = 0
     var highBackwardSpeed: CGFloat = 10
     var highForwardSpeed: CGFloat = -10
-
+    
     var onFastBackwardScroll: ((CGFloat) -> Void)?
     var onFastForwardScroll: ((CGFloat) -> Void)?
-
+    
+    var onScrollingUp: (() -> Void)?
+    var onScrollingDown: (() -> Void)?
+    
+    var isScrolling: Bool = false
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset.y
         let velocity = currentOffset - previousScrollOffset
         previousScrollOffset = currentOffset
-
+        
         if velocity > highBackwardSpeed {
             onFastBackwardScroll?(velocity)
         }
         if velocity < highForwardSpeed {
             onFastForwardScroll?(velocity)
         }
+        if isScrolling {
+            if velocity > 0 {
+                onScrollingUp?()
+            }
+            if velocity < 0 {
+                onScrollingDown?()
+            }
+        }
     }
-
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isScrolling = true
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        isScrolling = false
+    }
 }

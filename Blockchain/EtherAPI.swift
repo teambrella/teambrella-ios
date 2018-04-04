@@ -15,7 +15,6 @@
  */
 
 import Foundation
-import Alamofire
 
 struct EthereumAPIReply: Codable {
     let jsonrpc: String?
@@ -71,6 +70,11 @@ class EtherAPI {
     typealias failureClosure = (Error) -> Void
     
     let server: String
+
+    lazy private var session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config)
+    }()
     
     init(server: String?) {
         self.server = server ?? "https://api.etherscan.io/"
@@ -80,7 +84,7 @@ class EtherAPI {
         log("EtherAPI dies", type: .cryptoDetails)
     }
     
-    lazy var session = { URLSession.shared }()
+    //lazy var session = { URLSession.shared }()
     
     // https://api.etherscan.io/api?module=proxy&action=eth_sendRawTransaction&hex=0xf904808000831cfde080&apikey=YourApiKeyToken
     func pushTx(hex: String, success: @escaping (String) -> Void, failure: @escaping failureClosure) {
@@ -202,31 +206,48 @@ class EtherAPI {
                                  body: [String: String],
                                  success: @escaping successClosure,
                                  failure: @escaping failureClosure) {
+        var parameters = parameters
+        for (key, value) in body {
+parameters[key] = value
+        }
         guard let url = urlWith(address: server + urlString, parameters: parameters) else {
             failure(EtherAPIError.malformedURL)
             return
         }
-        
-        Alamofire.request(url, method: .post, parameters: body, encoding: URLEncoding.default).responseData { response in
-            switch response.result {
-            case let .success(data):
-                log("raw post request reply: \(data)", type: .cryptoRequests)
-                do {
-                    let reply = try JSONDecoder().decode(EthereumAPIReply.self, from: data)
-                    if let result = reply.result {
-                        success(result)
-                    } else if let error = reply.error {
-                        failure(EtherAPIError.etherscanError(error.code, error.message))
-                    } else {
-                        failure(EtherAPIError.corruptedData)
-                    }
-                } catch {
-                    failure(error)
+
+        let queue = OperationQueue.current?.underlyingQueue ?? DispatchQueue.main
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+//        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                queue.async {
+                    failure(error ?? TeambrellaErrorFactory.unknownError())
                 }
-            case let .failure(error):
-                failure(error)
+                return
             }
+
+            log("raw post request reply: \(data)", type: .cryptoRequests)
+            do {
+                let reply = try JSONDecoder().decode(EthereumAPIReply.self, from: data)
+                 queue.async {
+                if let result = reply.result {
+                    success(result)
+                } else if let error = reply.error {
+                    failure(EtherAPIError.etherscanError(error.code, error.message))
+                } else {
+                    failure(EtherAPIError.corruptedData)
+                }
+                }
+            } catch {
+                 queue.async {
+                failure(error)
+                }
+            }
+
         }
+        task.resume()
     }
     
     private func sendGetRequest(urlString: String,

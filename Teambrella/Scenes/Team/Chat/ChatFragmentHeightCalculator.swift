@@ -33,7 +33,7 @@ struct ChatFragmentHeightCalculator {
     }
     
     func heights(for fragments: [ChatFragment]) -> [CGFloat] {
-        return fragments.flatMap { height(for: $0) }
+        return fragments.compactMap { height(for: $0) }
     }
     
     func height(for fragment: ChatFragment) -> CGFloat {

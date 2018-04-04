@@ -35,6 +35,11 @@ class WalletCosignersDataSource {
     init() {
     }
     
+    func updateSilently() {
+        isSilentUpdate = true
+        loadData(cosigners: items)
+    }
+    
     func loadData(cosigners: [CosignerEntity]) {
         var offset = isSilentUpdate ? 0 : count
         guard !isLoading else { return }

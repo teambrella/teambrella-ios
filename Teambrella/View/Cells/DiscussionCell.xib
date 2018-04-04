@@ -13,10 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dialog" id="gTV-IL-0wX" customClass="DiscussionCell" customModule="Surilla" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="562" height="108"/>
+            <rect key="frame" x="0.0" y="0.0" width="562" height="124"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="562" height="108"/>
+                <rect key="frame" x="0.0" y="0.0" width="562" height="124"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qcx-lN-iSa" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qtc-Rp-2hk" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="495" y="43" width="22" height="22"/>
+                        <rect key="frame" x="495" y="51" width="22" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="0NL-Xd-aqQ"/>
                             <constraint firstAttribute="width" secondItem="qtc-Rp-2hk" secondAttribute="height" multiplier="1:1" id="DAC-ZO-2FY"/>
@@ -43,97 +43,78 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="vsD-oO-HJn">
-                        <rect key="frame" x="533" y="47.5" width="13" height="13"/>
+                        <rect key="frame" x="533" y="55.5" width="13" height="13"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="13" id="73t-CU-w1z"/>
                             <constraint firstAttribute="width" secondItem="vsD-oO-HJn" secondAttribute="height" multiplier="1:1" id="aIx-WX-2oj"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QhF-iw-jcV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="16" width="383" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QhF-iw-jcV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                        <rect key="frame" x="72" y="16" width="375" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1 MIN AGO" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xeX-Mw-yoX" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="463" y="16" width="83" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCUSSION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6p-Vb-wmZ" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="109" y="71" width="101" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1 MIN AGO" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xeX-Mw-yoX" customClass="ThinStatusSubtitleLabel" customModule="Surilla" customModuleProvider="target">
+                        <rect key="frame" x="463" y="16.5" width="83" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIA-wA-dBI" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="41" width="375" height="20.5"/>
+                        <rect key="frame" x="72" y="40.5" width="407" height="33.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.59999999999999998" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="H07-1A-61F" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="71.5" width="0.0" height="20"/>
+                        <rect key="frame" x="72" y="84" width="0.0" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" priority="250" id="Cjy-Nc-jwU"/>
                             <constraint firstAttribute="height" constant="20" id="ubL-SX-sLA"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discussion" translatesAutoresizingMaskIntoConstraints="NO" id="V29-0m-7wa">
-                        <rect key="frame" x="88" y="74" width="15" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="15" id="1TE-zI-fnj"/>
-                            <constraint firstAttribute="width" secondItem="V29-0m-7wa" secondAttribute="height" multiplier="1:1" id="GHo-t7-Gf8"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="V29-0m-7wa" firstAttribute="leading" secondItem="H07-1A-61F" secondAttribute="trailing" constant="16" id="3x6-Eq-VDj"/>
+                <constraint firstItem="qtc-Rp-2hk" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="trailing" constant="16" id="3yo-GP-V5H"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="A2l-j8-o3j"/>
                 <constraint firstAttribute="trailing" secondItem="xeX-Mw-yoX" secondAttribute="trailing" constant="16" id="ACl-Dr-h7q"/>
-                <constraint firstItem="V29-0m-7wa" firstAttribute="width" secondItem="V29-0m-7wa" secondAttribute="height" multiplier="1:1" id="CBB-Sw-Go5"/>
+                <constraint firstItem="H07-1A-61F" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="leading" id="Cj6-6U-o1e"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="width" secondItem="Qcx-lN-iSa" secondAttribute="height" multiplier="1:1" id="CmI-hR-JSE"/>
                 <constraint firstItem="dIA-wA-dBI" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="leading" id="Gne-Fb-JeF"/>
                 <constraint firstItem="dIA-wA-dBI" firstAttribute="top" secondItem="QhF-iw-jcV" secondAttribute="bottom" constant="4" id="JuY-Hj-Hmv"/>
                 <constraint firstItem="qtc-Rp-2hk" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="MJr-0m-Rh2"/>
-                <constraint firstItem="z6p-Vb-wmZ" firstAttribute="centerY" secondItem="H07-1A-61F" secondAttribute="centerY" id="QOv-Xd-r2p"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="H07-1A-61F" secondAttribute="trailing" constant="20" id="Okc-VF-TEu"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="width" secondItem="vsD-oO-HJn" secondAttribute="height" multiplier="1:1" id="X5R-H4-Bmu"/>
-                <constraint firstItem="dIA-wA-dBI" firstAttribute="trailing" secondItem="xeX-Mw-yoX" secondAttribute="leading" constant="-16" id="czc-fk-MYr"/>
-                <constraint firstItem="z6p-Vb-wmZ" firstAttribute="leading" secondItem="V29-0m-7wa" secondAttribute="trailing" constant="6" id="dIl-7W-vdT"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="dd3-AH-tpI"/>
-                <constraint firstItem="V29-0m-7wa" firstAttribute="centerY" secondItem="H07-1A-61F" secondAttribute="centerY" id="ecG-w9-iCn"/>
                 <constraint firstItem="vsD-oO-HJn" firstAttribute="leading" secondItem="qtc-Rp-2hk" secondAttribute="trailing" constant="16" id="f6z-U3-WgJ"/>
                 <constraint firstItem="QhF-iw-jcV" firstAttribute="leading" secondItem="Qcx-lN-iSa" secondAttribute="trailing" constant="16" id="gC4-CX-1rg"/>
-                <constraint firstItem="xeX-Mw-yoX" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="trailing" constant="8" id="hEO-7g-OHn"/>
-                <constraint firstAttribute="bottom" secondItem="H07-1A-61F" secondAttribute="bottom" constant="16" id="ker-Y5-0qR"/>
+                <constraint firstItem="xeX-Mw-yoX" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="trailing" constant="16" id="hEO-7g-OHn"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="kku-QK-gka"/>
-                <constraint firstItem="H07-1A-61F" firstAttribute="top" secondItem="dIA-wA-dBI" secondAttribute="bottom" constant="10" id="nWZ-i8-GmI"/>
+                <constraint firstAttribute="bottom" secondItem="H07-1A-61F" secondAttribute="bottom" constant="20" id="mbp-LI-q00"/>
                 <constraint firstItem="qtc-Rp-2hk" firstAttribute="width" secondItem="qtc-Rp-2hk" secondAttribute="height" multiplier="1:1" id="qqE-nv-QhH"/>
-                <constraint firstItem="H07-1A-61F" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="leading" id="vHJ-rZ-pXK"/>
                 <constraint firstAttribute="trailing" secondItem="vsD-oO-HJn" secondAttribute="trailing" constant="16" id="vqe-dZ-ozH"/>
                 <constraint firstItem="xeX-Mw-yoX" firstAttribute="centerY" secondItem="QhF-iw-jcV" secondAttribute="centerY" id="wTY-sb-XZY"/>
                 <constraint firstItem="QhF-iw-jcV" firstAttribute="top" secondItem="Qcx-lN-iSa" secondAttribute="top" id="zQZ-ZG-4bi"/>
+                <constraint firstItem="H07-1A-61F" firstAttribute="top" secondItem="dIA-wA-dBI" secondAttribute="bottom" constant="10" id="zeK-Hd-14N"/>
             </constraints>
             <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
-            <size key="customSize" width="562" height="108"/>
+            <size key="customSize" width="562" height="124"/>
             <connections>
                 <outlet property="avatarView" destination="Qcx-lN-iSa" id="mSE-Su-a6H"/>
-                <outlet property="discussionLabel" destination="z6p-Vb-wmZ" id="fXj-rR-nR5"/>
                 <outlet property="teammatesAvatarStack" destination="H07-1A-61F" id="vkt-zc-jWP"/>
                 <outlet property="textLabel" destination="dIA-wA-dBI" id="wiH-V9-mPL"/>
                 <outlet property="timeLabel" destination="xeX-Mw-yoX" id="lcy-Ft-SpW"/>
                 <outlet property="titleLabel" destination="QhF-iw-jcV" id="3jQ-bt-21e"/>
                 <outlet property="unreadCountView" destination="qtc-Rp-2hk" id="ZcT-6y-CdC"/>
             </connections>
-            <point key="canvasLocation" x="42" y="105"/>
+            <point key="canvasLocation" x="42" y="113"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="discussion" width="11" height="10"/>
         <image name="forward" width="8" height="13"/>
     </resources>
 </document>

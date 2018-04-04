@@ -46,9 +46,6 @@
 "Team.TeammateCell.votingFrequency"                   = "Frecuencia de Votación";
 "Team.TeammateCell.applicationDiscussion"             = "Discusión de Solicitud";
 "Team.TeammateCell.timeLabel.justNow"                 = "HACE POCO";
-"Team.TeammateCell.timeLabel.minutes_format_i"        = "HACE %d MIN";
-"Team.TeammateCell.timeLabel.hours_format_i"          = "HACE %d HORAS";
-"Team.TeammateCell.timeLabel.longAgo"                 = "HACE TIEMPO";
 "Team.TeammateCell.contact"                           = "CONTACTO";
 "Team.TeammateCell.buttonTitle_format_i"              = "Ver Reclamaciones (%d)";
 "Team.Decisions.generous"                             = "generoso";
@@ -134,10 +131,7 @@
 "Team.ClaimsCell.declined"                            = "RECHAZADO";
 
 "Team.Home.Card.claimed"                              = "RECLAMADO";
-"Team.Home.Card.yourClaim"                            = "Tu Reclamación";
-"Team.Home.Card.claim"                                = "Reclamación";
 "Team.Home.Card.coverage"                             = "COBERTURA";
-"Team.Home.Card.newTeammate"                          = "Nuevo compañero";
 "Team.Home.Card.teamVote"                             = "VOTO DEL EQUIPO";
 "Team.Home.Card.voting"                               = "VOTACIÓN";
 
@@ -150,8 +144,8 @@
 "Team.Claims.ClaimTransactionsVC.amountFiat"          = "Cantidad Fiat";
 "Team.Claims.ClaimTransactionsVC.status"              = "Estado";
 
-"Team.Chat.TextCell.voted_format"                     = "VOTADO:%@%%";
-"Team.Chat.TextCell.Application.voted_format"         = "VOTADO:%@";
+"Team.Chat.TextCell.voted_format"                     = "VOTADO: %@%%";
+"Team.Chat.TextCell.Application.voted_format"         = "VOTADO: %@";
 "Team.Chat.TextCell.notVoted"                         = "NO HA VOTADO ÁUN";
 
 "Team.Chat.TypeLabel.claim"                           = "RECLAMACIÓN";
@@ -171,7 +165,7 @@
 "Team.Chat.Unmute"                                    = "Ahora recibes notificaciones de este discusión..";
 "Team.Chat.Mute"                                      = "Ahora no recibes notificaciones de este discusión.";
 
-"Team.Claims.objectView.reportButton.title"           = "Enviar una reclamación";
+"Team.Claims.objectView.reportButton.title"           = "Enviar reclamación";
 
 "Team.Chat.ObjectView.VoteLabel"                      = "Votar";
 "Team.Chat.ObjectView.RevoteLabel"                    = "Revotar";
@@ -207,3 +201,4 @@
 
 "Team.TeammateCell.wouldCoverThem.notYet"             = "Not yet";
 
+"Team.TearsOld.lessThanAYear"   = "< 1 año";

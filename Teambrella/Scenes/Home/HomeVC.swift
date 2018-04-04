@@ -39,6 +39,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var walletContainer: UIView!
     @IBOutlet var greetingsTitleLabel: UILabel!
     @IBOutlet var greetingsSubtitileLabel: UILabel!
+    @IBOutlet weak var greetingContainer: UIView!
     
     @IBOutlet var leftBrickTitleLabel: UILabel!
     @IBOutlet var leftBrickAvatarView: UIImageView!

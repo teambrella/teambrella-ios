@@ -24,7 +24,7 @@
 "Proxy.MyProxiesVC.decisions"           = "РЕШЕНИЯ";
 "Proxy.MyProxiesVC.discussions"         = "ОБСУЖДЕНИЯ";
 "Proxy.MyProxiesVC.votingFreq"          = "ЧАСТОТА ГОЛОСОВ.";
-"Proxy.MyProxiesVC.proxyRank"           = "РАНГ ПРОКСИ";
+"Proxy.MyProxiesVC.proxyRank"           = "РАНГ";
 "Proxy.UserIndexVC.allTeamsRating"      = "ОБЩИЙ РЕЙТИНГ";
 "Proxy.UserIndexVC.proxyRank"           = "РЕЙТИНГ";
 

@@ -59,7 +59,7 @@ struct ChatTextUnsentCellModel: ChatCellModel {
 }
 
 struct ChatSeparatorCellModel: ChatCellModel {
-    var id: String { return String(describing: date) }
+    var id: String { return String(describing: date.timeIntervalSince1970) }
     let date: Date
     let isTemporary: Bool = true
     

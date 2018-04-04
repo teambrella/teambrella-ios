@@ -98,6 +98,7 @@ final class ErrorPresenter {
         //        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
         //            SwiftMessages.hide(id: view.id)
         //        }
+        NotificationCenter.default.post(name: .serverUnreachable, object: nil)
     }
 
     private func showMessage(title: String, details: String) {

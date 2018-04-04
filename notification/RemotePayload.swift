@@ -16,16 +16,40 @@
 
 import Foundation
 
+struct APS {
+    let body: String?
+    let title: String?
+    let subtitle: String?
+    let hasContent: Bool
+    let sound: String?
+    let threadID: String?
+    let category: String?
+
+    init(dict: [AnyHashable: Any]) {
+        if let alert = dict["alert"] as? [String: String] {
+            body = alert["body"] ?? ""
+            title = alert["title"]
+            subtitle = alert["subtitle"]
+        } else {
+            body = nil
+            title = nil
+            subtitle = nil
+        }
+        hasContent = dict["mutable-content"] as? Bool ?? false
+        sound = dict["sound"] as? String
+        threadID = dict["thread-id"] as? String
+        category = dict["category"] as? String
+    }
+}
+
 protocol RemoteTopicDetails {
     var topicID: String { get }
-    var topicName: String { get }
 }
 
 struct RemotePayload {
     
     struct Claim: RemoteTopicDetails {
         let topicID: String
-        let topicName: String
         
         let claimID: Int
         let userName: String
@@ -35,11 +59,10 @@ struct RemotePayload {
         init?(dict: [AnyHashable: Any]) {
             var dict = dict
             self.topicID = dict["TopicId"] as? String ?? ""
-            self.topicName = dict["TopicName"] as? String ?? ""
             if let claimDict = dict["Claim"] as? [AnyHashable: Any] { dict = claimDict }
             guard let id = dict["ClaimId"] as? Int,
-            let userName = dict["UserName"] as? String,
-            let objectName = dict["ObjectName"] as? String,
+                let userName = dict["UserName"] as? String,
+                let objectName = dict["ObjectName"] as? String,
                 let avatar = dict["SmallPhoto"] as? String else { return nil }
             
             self.claimID = id
@@ -51,7 +74,6 @@ struct RemotePayload {
     
     struct Teammate: RemoteTopicDetails {
         let topicID: String
-        let topicName: String
         
         let userID: String
         let userName: String
@@ -60,7 +82,6 @@ struct RemotePayload {
         init?(dict: [AnyHashable: Any]) {
             var dict = dict
             self.topicID = dict["TopicId"] as? String ?? ""
-            self.topicName = dict["TopicName"] as? String ?? ""
             if let teammateDict = dict["Teammate"] as? [AnyHashable: Any] { dict = teammateDict }
             guard let id = dict["UserId"] as? String,
                 let userName = dict["UserName"] as? String,
@@ -77,8 +98,12 @@ struct RemotePayload {
         let topicName: String
         
         init?(dict: [AnyHashable: Any]) {
-            self.topicID = dict["TopicId"] as? String ?? ""
-            self.topicName = dict["TopicName"] as? String ?? ""
+            guard let discussion = dict["Discussion"] as? [String: Any] else { return nil }
+            guard let id = dict["TopicId"] as? String,
+                let name = discussion["TopicName"] as? String else { return nil }
+
+            self.topicID = id
+            self.topicName = name
         }
     }
     
@@ -88,7 +113,7 @@ struct RemotePayload {
     var teammate: RemotePayload.Teammate?
     var discussion: RemotePayload.Discussion?
     
-    var topicDetails: RemoteTopicDetails? { return claim ?? teammate ?? discussion }
+    var topicDetails: RemoteTopicDetails? { return claim ?? discussion ?? teammate }
     
     var type: RemoteCommandType { return (dict["Cmd"] as? Int).flatMap { RemoteCommandType(rawValue: $0) } ?? .unknown }
     var timestamp: Int64 { return dict["Timestamp"] as? Int64 ?? 0 }
@@ -148,9 +173,12 @@ struct RemotePayload {
     
     init(dict: [AnyHashable: Any]) {
         self.dict = dict
-        self.claim = RemotePayload.Claim(dict: dict)
-        self.teammate = RemotePayload.Teammate(dict: dict)
-        self.discussion = RemotePayload.Discussion(dict: dict)
+        let claim = RemotePayload.Claim(dict: dict)
+        let teammate = RemotePayload.Teammate(dict: dict)
+        let discussion = RemotePayload.Discussion(dict: dict)
+        self.claim = claim
+        self.teammate = teammate
+        self.discussion = discussion
     }
     
     private func value(from: String?) -> String {

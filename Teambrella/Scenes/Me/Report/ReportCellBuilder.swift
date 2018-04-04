@@ -80,8 +80,18 @@ struct ReportCellBuilder {
             cell.dateTextField.inputView = reportVC.datePicker
             cell.dateTextField.text = DateProcessor().stringIntervalOrDate(from: model.date)
             cell.dateTextField.tintColor = cell.dateTextField.tintColor.withAlphaComponent(0)
+            cell.dateTextField.layer.masksToBounds = true
+            cell.dateTextField.layer.cornerRadius = 3
+            cell.dateTextField.layer.borderWidth = 1
+            cell.dateTextField.layer.borderColor = #colorLiteral(red: 0.8078431373, green: 0.8470588235, blue: 0.8745098039, alpha: 1)
             
             cell.expensesLabel.text = model.expensesTitle
+            cell.currencyTextField.isUserInteractionEnabled = false
+            cell.currencyTextField.text = service.currencyName
+            cell.currencyTextField.layer.masksToBounds = true
+            cell.currencyTextField.layer.cornerRadius = 3
+            cell.currencyTextField.layer.borderWidth = 1
+            cell.currencyTextField.layer.borderColor = #colorLiteral(red: 0.8078431373, green: 0.8470588235, blue: 0.8745098039, alpha: 1)
             cell.statsNumberBar.left?.titleLabel.text = model.deductibleTitle
             cell.statsNumberBar.left?.amountLabel.text = model.deductibleString
             cell.statsNumberBar.left?.currencyLabel.text = service.currencyName
@@ -89,7 +99,7 @@ struct ReportCellBuilder {
             cell.statsNumberBar.middle?.amountLabel.text = model.coverageString
             cell.statsNumberBar.middle?.isCurrencyVisible = false
             cell.statsNumberBar.left?.isPercentVisible = true
-            if reportVC.isInCorrectionMode && model.coverage.value <= 0 {
+            if reportVC.isInCorrectionMode && model.coverage.value <= 0.0 {
                 cell.statsNumberBar.middle?.titleLabel.textColor = .red
                 cell.statsNumberBar.middle?.amountLabel.textColor = .red
             } else if let left = cell.statsNumberBar.left {
@@ -106,12 +116,10 @@ struct ReportCellBuilder {
             cell.expensesTextField.inputView = nil
             cell.expensesTextField.delegate = reportVC
             cell.expensesTextField.text = model.expensesString
-            cell.expensesTextField.placeholder = "Max: \(Int(reportVC.limit))"
+            cell.expensesTextField.placeholder = "Max \(Int(reportVC.limit))"
             cell.expensesTextField.keyboardType = .decimalPad
             cell.expensesTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isExpensesValid : false
             cell.expensesTextField.rightViewMode = .unlessEditing
-            cell.currencyTextField.isUserInteractionEnabled = false
-            cell.currencyTextField.text = service.currencyName
             cell.expensesTextField.removeTarget(reportVC, action: nil, for: .allEvents)
             cell.expensesTextField.addTarget(reportVC,
                                              action: #selector(ReportVC.textFieldDidChange),
@@ -135,7 +143,7 @@ struct ReportCellBuilder {
             cell.reimburseTextField.isInAlertMode = reportVC.isInCorrectionMode ? !model.isReimburseValid : false
             cell.reimburseTextField.text = model.reimburseText
             cell.reimburseTextField.tintColor = cell.reimburseTextField.tintColor.withAlphaComponent(1)
-            cell.reimburseTextField.placeholder = ""
+            cell.reimburseTextField.placeholder = "Me.Report.reimburse.placeholder".localized
             cell.reimburseTextField.removeTarget(reportVC, action: nil, for: .allEvents)
             cell.reimburseTextField.addTarget(reportVC,
                                               action: #selector(ReportVC.textFieldDidChange),

@@ -53,16 +53,19 @@ final class PrivateMessagesVC: UIViewController, Routable {
     }
     
     func showEmptyIfNeeded() {
-        if dataSource.isEmpty && emptyVC == nil {
-            let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y + 44,
-                               width: self.collectionView.frame.width,
-                               height: self.collectionView.frame.height - 44)
-            emptyVC = EmptyVC.show(in: self, inView: self.view, frame: frame, animated: false)
-            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconInbox"))
-            emptyVC?.setText(title: "Home.Empty.Title.noPrivateMessages".localized,
-                             subtitle: "Home.Empty.SubTitle.noPrivateMessages".localized)
+        if dataSource.isEmpty {
+            if emptyVC == nil {
+                let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y + 44,
+                                   width: self.collectionView.frame.width,
+                                   height: self.collectionView.frame.height - 44)
+                emptyVC = EmptyVC.show(in: self, inView: self.view, frame: frame, animated: false)
+                emptyVC?.setImage(image: #imageLiteral(resourceName: "iconInbox"))
+                emptyVC?.setText(title: "Home.Empty.Title.noPrivateMessages".localized,
+                                 subtitle: "Home.Empty.SubTitle.noPrivateMessages".localized)
+            }
         } else {
             emptyVC?.remove()
+            emptyVC = nil
         }
     }
     

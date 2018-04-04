@@ -30,8 +30,8 @@ final class KeyStorage {
     let keychain = KeychainService()
 
     var timestamp: Int64 = 0
-    var isDemoUser: Bool { return lastUserType != .real }
-    var isUserSelected: Bool { return lastUserType != .none }
+    var isDemoUser: Bool { return lastUserType == .demo }
+    var isUserSelected: Bool { return lastUserType == .real }
 
     var privateKey: String {
         return isDemoUser ? demoPrivateKey : realPrivateKey
@@ -79,6 +79,10 @@ final class KeyStorage {
     
     func setToRealUser() {
         storeLastUserType(type: .real)
+    }
+
+    func setToDemoUser() {
+        storeLastUserType(type: .demo)
     }
     
     func deleteStoredKeys() {

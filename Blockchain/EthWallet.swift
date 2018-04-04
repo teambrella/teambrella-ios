@@ -93,7 +93,7 @@ class EthWallet {
         //            return
         //        }
         
-        let addresses = cosigners.flatMap { $0.teammate.address }
+        let addresses = cosigners.compactMap { $0.teammate.address }
         guard let contract = contract else {
             failure(EthWalletError.contractDoesNotExist)
             return
@@ -286,7 +286,8 @@ class EthWallet {
                     })
                 })
             } else {
-                log("Can't deposit contract: \(gasWalletAmount), needed: \(Constant.maxGasWalletBalance)", type: .cryptoDetails)
+                log("Can't deposit contract: \(gasWalletAmount), needed: \(Constant.maxGasWalletBalance)",
+                    type: .cryptoDetails)
                 completion(false)
             }
         }, failure: { error in
@@ -360,21 +361,21 @@ class EthWallet {
     }
 
     private func toAddresses(destinations: [TxOutput]) -> [String] {
-        let destinationAddresses: [String] = destinations.flatMap { output in output.saneAddress()?.string }
+        let destinationAddresses: [String] = destinations.compactMap { output in output.saneAddress()?.string }
         return destinationAddresses
     }
 
     private func toCosignerAddresses(nextMultisig: Multisig) -> [String] {
         let cosigners = nextMultisig.cosigners
-        return cosigners.flatMap { cosigner in cosigner.address?.string }
+        return cosigners.compactMap { cosigner in cosigner.address?.string }
 
     }
 
     private func toValues(destinations: [TxOutput]) -> [String] {
-        let destinationValues = destinations.flatMap { output in
-            guard let stringValue = output.amountValue?.stringValue else { return nil }
+        let destinationValues: [String] = destinations.compactMap { output in
+            guard let amountValue = output.amountValue else { return nil }
 
-            return AbiArguments.parseDecimalAmount(decimalAmount: stringValue)
+            return AbiArguments.parseDecimalAmount(decimal: amountValue)
         }
         return destinationValues
     }

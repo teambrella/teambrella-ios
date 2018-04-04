@@ -53,9 +53,6 @@
 "Team.TeammateCell.applicationDiscussion"             = "Application Discussion";
 
 "Team.TeammateCell.timeLabel.justNow"                 = "JUST NOW";
-"Team.TeammateCell.timeLabel.minutes_format_i"        = "%d MIN. AGO";
-"Team.TeammateCell.timeLabel.hours_format_i"          = "%d HR. AGO";
-"Team.TeammateCell.timeLabel.longAgo"                 = "LONG AGO";
 "Team.TeammateCell.contact"                           = "CONTACT";
 "Team.TeammateCell.buttonTitle_format_i"              = "See Claims (%d)";
 
@@ -149,8 +146,8 @@
 "Team.Claims.VotedCell.voted"                         = "Voted: ";
 "Team.ClaimsCell.declined"                            = "DECLINED";
 
-"Team.Chat.TextCell.voted_format"                     = "VOTED:%@%%";
-"Team.Chat.TextCell.Application.voted_format"         = "VOTED:%@";
+"Team.Chat.TextCell.voted_format"                     = "VOTED: %@%%";
+"Team.Chat.TextCell.Application.voted_format"         = "VOTED: %@";
 "Team.Chat.TextCell.notVoted"                         = "NOT VOTED";
 
 "Team.Chat.TypeLabel.claim"                           = "CLAIM";
@@ -160,10 +157,7 @@
 "Team.Chat.Input.yourMessageHere"                     = "Your message here";
 
 "Team.Home.Card.claimed"                              = "CLAIMED";
-"Team.Home.Card.yourClaim"                            = "Your Claim";
-"Team.Home.Card.claim"                                = "Claim";
 "Team.Home.Card.coverage"                             = "COVERAGE";
-"Team.Home.Card.newTeammate"                          = "New Teammate";
 "Team.Home.Card.teamVote"                             = "TEAM VOTE";
 "Team.Home.Card.voting"                               = "VOTING";
 
@@ -181,7 +175,7 @@
 "Team.Chat.Unmute" = "You now receive notifications for this conversation.";
 "Team.Chat.Mute" = "You now don't receive notifications for this conversation.";
 
-"Team.Claims.objectView.reportButton.title" = "Report a Claim";
+"Team.Claims.objectView.reportButton.title" = "Submit Claim";
 
 "Team.Chat.ObjectView.VoteLabel" = "Vote";
 "Team.Chat.ObjectView.RevoteLabel" = "Revote";
@@ -210,3 +204,5 @@
 "Team.TeammateCell.wouldCoverHim"               = "I WOULD COVER HIM";
 "Team.TeammateCell.wouldCoverHer"               = "I WOULD COVER HER";
 "Team.TeammateCell.wouldCoverThem.notYet"        = "Not yet";
+
+"Team.TearsOld.lessThanAYear"   = "< 1 y.o.";

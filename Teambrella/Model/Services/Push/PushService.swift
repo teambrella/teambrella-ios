@@ -29,7 +29,8 @@ class PushService: NSObject {
         
         return [UInt8](token).reduce("") { $0 + String(format: "%02x", $1) }
     }
-    var command: RemoteCommand?
+    var command: RemotePayload?
+    var router: MainRouter { return service.router }
     
     override init() {
         super.init()
@@ -67,10 +68,7 @@ class PushService: NSObject {
     
     func remoteNotificationOnStart(in application: UIApplication,
                                    userInfo: [AnyHashable: Any]) {
-        guard let payloadDict = userInfo["Payload"] as? [AnyHashable: Any] else { return }
-        
-        let payload = RemotePayload(dict: payloadDict)
-        self.command = RemoteCommand.command(from: payload)
+      prepareCommand(userInfo: userInfo)
     }
     
     func remoteNotification(in application: UIApplication,
@@ -85,51 +83,57 @@ class PushService: NSObject {
             }
         }
         guard command == nil else { return }
-        guard let payloadDict = userInfo["Payload"] as? [AnyHashable: Any] else { return }
-        
-        log("\(userInfo)", type: .push)
-        let payload = RemotePayload(dict: payloadDict)
-        self.command = RemoteCommand.command(from: payload)
+
+        prepareCommand(userInfo: userInfo)
         executeCommand()
+    }
+
+    private func prepareCommand(userInfo: [AnyHashable: Any]) {
+        guard let payloadDict = userInfo["Payload"] as? [AnyHashable: Any] else { return }
+        guard let apsDict = userInfo["aps"] as? [AnyHashable: Any] else { return }
+
+        log("\(userInfo)", type: .push)
+        let aps = APS(dict: apsDict)
+        let payload = RemotePayload(dict: payloadDict)
+        self.command = payload
+
+        clearNotificationsThread(id: aps.threadID)
     }
     
     func executeCommand() {
         guard let command = command else { return }
         
-        switch command {
-        case let .newTeammate(teamID: _,
-                              userID: _,
-                              teammateID: teammateID,
-                              name: _,
-                              avatar: _,
-                              teamName: _):
-            service.router.presentMemberProfile(teammateID: String(teammateID))
+        let type = command.type
+        switch type {
+        case .newTeammate:
+            router.presentMemberProfile(teammateID: String(command.teammateIDValue))
         case .privateMessage:
-            showPrivateMessage(command: command)
-        case let .walletFunded(teamID: teamID,
-                               userID: _,
-                               cryptoAmount: _,
-                               currencyAmount: _,
-                               teamLogo: _,
-                               teamName: _):
-            showWalletFunded(teamID: teamID)
-        case let .topicMessage(topicID: _,
-                               topicName: _,
-                               userName: _,
-                               avatar: _, details: details):
-            showTopic(details: details)
-        case let .newClaim(teamID: teamID,
-                           userID: _,
-                           claimID: claimID,
-                           name: _,
-                           avatar: _,
-                           amount: _,
-                           teamName: _):
-            showNewClaim(teamID: teamID, claimID: claimID)
+             showPrivateMessage(command: command)
+        case .walletFunded:
+            showWalletFunded(teamID: command.teamIDValue)
+        case .topicMessage:
+            showTopic(details: command.topicDetails)
+        case .newClaim:
+             showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
         default:
             break
         }
         self.command = nil
+    }
+
+    private func clearNotificationsThread(id: String?) {
+        guard let id = id else { return }
+
+        UNUserNotificationCenter.current().getDeliveredNotifications { notifications in
+            let ids: [String] = notifications.compactMap { notification in
+                if notification.request.content.threadIdentifier == id {
+                    return notification.request.identifier
+                } else {
+                    return nil
+                }
+            }
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ids)
+        }
     }
     
     private func showNewClaim(teamID: Int, claimID: Int) {
@@ -142,9 +146,9 @@ class PushService: NSObject {
         }
     }
     
-    private func showPrivateMessage(command: RemoteCommand) {
+    private func showPrivateMessage(command: RemotePayload) {
         service.router.presentPrivateMessages()
-        if let user = PrivateChatUser(remoteCommand: command) {
+        if let user = PrivateChatUser(remotePayload: command) {
             let context = ChatContext.privateChat(user)
             service.router.presentChat(context: context, itemType: .privateChat, animated: false)
         }
@@ -177,11 +181,11 @@ class PushService: NSObject {
             service.router.presentClaims(animated: false)
             service.router.presentClaim(claimID: details.claimID, animated: false)
             service.router.presentChat(context: ChatContext.remote(details), itemType: .claim, animated: false)
+        } else if let details = details as? RemotePayload.Discussion {
+            service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat, animated: false)
         } else if let details = details as? RemotePayload.Teammate {
             service.router.presentMemberProfile(teammateID: details.userID, animated: false)
             service.router.presentChat(context: ChatContext.remote(details), itemType: .teammate, animated: false)
-        } else if let details = details as? RemotePayload.Discussion {
-            service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat, animated: false)
         }
     }
     

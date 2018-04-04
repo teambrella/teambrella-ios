@@ -134,7 +134,7 @@ final class ClaimVC: UIViewController, Routable {
     // MARK: Private
     
     private func updateVotingCell() {
-        let cells = collectionView.visibleCells.flatMap { $0 as? ClaimVoteCell }
+        let cells = collectionView.visibleCells.compactMap { $0 as? ClaimVoteCell }
         guard let cell = cells.first else { return }
         
         cell.isYourVoteHidden = false

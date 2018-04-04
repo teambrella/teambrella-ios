@@ -104,7 +104,7 @@ final class LoginBlueVC: UIViewController {
     }
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
-        service.keyStorage.clearLastUserType()
+        service.keyStorage.setToDemoUser()
     }
     
     @objc

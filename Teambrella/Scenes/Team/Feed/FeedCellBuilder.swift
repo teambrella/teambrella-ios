@@ -41,13 +41,7 @@ struct FeedCellBuilder {
             cell.facesStack.setAvatars(model.topPosterAvatars, label: label, max: count > 3 ? 4 : 3)
 
             if let date = model.itemDate {
-                if Date().isInSameDayOf(date: date) {
-                    cell.timeLabel.text = Formatter.localTime.string(from: date)
-                } else {
-                    cell.timeLabel.text = Formatter.localDate.string(from: date)
-                }
-
-                //DateProcessor().stringInterval(from: date).uppercased()
+                cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date).uppercased()
             }
             cell.unreadLabel.font = UIFont.teambrellaBold(size: 13)
             cell.unreadLabel.text = String(model.unreadCount)

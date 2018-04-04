@@ -1,5 +1,5 @@
 # Network
-github "Alamofire/Alamofire" ~> 4.4
+# github "Alamofire/Alamofire" ~> 4.4
 github "daltoniam/Starscream" ~> 2.1.1
 github "ashleymills/Reachability.swift"
 
@@ -32,3 +32,4 @@ github "kishikawakatsumi/KeychainAccess"
 #Other
 github "Yaro812/ThoraxMath"
 github "Yaro812/ExtensionsPack"
+github "Yaro812/BigNumbers"

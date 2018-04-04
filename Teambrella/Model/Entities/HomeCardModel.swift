@@ -18,20 +18,25 @@ import Foundation
 
 struct HomeCardModel: Decodable {
     enum CodingKeys: String, CodingKey {
-        case text        = "Text"
-        case itemType    = "ItemType"
-        case itemID      = "ItemId"
-        case itemDate    = "ItemDate"
-        case smallPhoto  = "SmallPhotoOrAvatar"
-        case amount      = "Amount"
-        case teamVote    = "TeamVote"
-        case isVoting    = "IsVoting"
-        case unreadCount = "UnreadCount"
-        case chatTitle   = "ChatTitle"
-        case payProgress = "PayProgress"
-        case name        = "ModelOrName"
-        case userID      = "ItemUserId"
-        case topicID     = "TopicId"
+        case text             = "Text"
+        case itemType         = "ItemType"
+        case itemID           = "ItemId"
+        case itemDate         = "ItemDate"
+        case smallPhoto       = "SmallPhotoOrAvatar"
+        case amount           = "Amount"
+        case teamVote         = "TeamVote"
+        case isVoting         = "IsVoting"
+        case unreadCount      = "UnreadCount"
+        case chatTitle        = "ChatTitle"
+        case payProgress      = "PayProgress"
+        case itemName         = "ModelOrName"
+        case userID           = "ItemUserId"
+        case topicID          = "TopicId"
+        case userName         = "ItemUserName"
+        case userAvatar       = "ItemUserAvatar"
+        case posterCount      = "PosterCount"
+        case topPosterAvatars = "TopPosterAvatars"
+        case year             = "Year"
     }
     
     let text: SaneText
@@ -45,8 +50,12 @@ struct HomeCardModel: Decodable {
     let unreadCount: Int
     let chatTitle: String?
     let payProgress: Double?
-    let name: Name
+    let itemName: String
     let userID: String
     let topicID: String
-    
+    let userName: Name
+    let userAvatar: String
+    let posterCount: Int?
+    let topPosterAvatars: [String]?
+    let year: Year
 }

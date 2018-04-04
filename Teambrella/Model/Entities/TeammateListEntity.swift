@@ -35,9 +35,27 @@ class TeammateListEntity: Decodable {
     let totallyPaid: Double
     let hasUnread: Bool
     let userID: String
-    let year: Int
+    let year: Year
     let avatar: String
     let minutesRemaining: Int
+
+    init() {
+        id = 0
+        claimLimit = 0
+        claimsCount = 0
+        isJoining = false
+        isVoting = false
+        model = ""
+        name = Name.empty
+        risk = nil
+        riskVoted = nil
+        totallyPaid = 0
+        hasUnread = false
+        userID = ""
+        year = Year.empty
+        avatar = ""
+        minutesRemaining = 0
+    }
 
     enum CodingKeys: String, CodingKey {
         case id = "Id"

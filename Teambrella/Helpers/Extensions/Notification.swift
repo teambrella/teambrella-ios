@@ -19,4 +19,9 @@ import Foundation
 extension Notification.Name {
     static let teambrellaCoreDataWillClear = Notification.Name("teambrella.coreData.willClear")
     static let cryptoKeyFailure = Notification.Name("teambrella.crypto.key.failure")
+
+    static let internetUnreachable = Notification.Name("teambrella.reachability.noInternet")
+    static let internetConnected = Notification.Name("teambrella.reachability.internetIsReachable")
+    
+    static let serverUnreachable = Notification.Name("teambrella.reachability.serverNotConnected")
 }

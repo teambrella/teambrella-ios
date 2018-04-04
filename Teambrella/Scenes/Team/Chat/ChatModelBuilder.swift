@@ -32,7 +32,7 @@ class ChatModelBuilder {
     func unsentModel(fragments: [ChatFragment], id: String) -> ChatTextUnsentCellModel {
         let heights = heightCalculator.heights(for: fragments)
         let myName = service.session?.currentUserName ?? Name.empty
-        return  ChatTextUnsentCellModel(fragments: fragments,
+        return ChatTextUnsentCellModel(fragments: fragments,
                                         fragmentHeights: heights,
                                         userName: myName,
                                         date: Date(),
@@ -42,7 +42,12 @@ class ChatModelBuilder {
     
     func separatorModelIfNeeded(firstModel: ChatCellModel, secondModel: ChatCellModel) -> ChatCellModel? {
         if firstModel.date.interval(of: .day, since: secondModel.date) != 0 {
-            return ChatSeparatorCellModel(date: secondModel.date.addingTimeInterval(-0.01))
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([Calendar.Component.day,
+                                                                 Calendar.Component.month,
+                                                                 Calendar.Component.year], from: secondModel.date)
+            let date = calendar.date(from: components)
+            return date.flatMap { ChatSeparatorCellModel(date: $0) }
         }
         return nil
     }

@@ -25,7 +25,7 @@ struct CoveredObject: Decodable {
     let smallPhotos: [String]
     let largePhotos: [String]
     let model: String
-    let year: Int
+    let year: Year
     let subType: String?
     let keyWords: String?
     let spayed: Bool

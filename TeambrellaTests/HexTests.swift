@@ -29,5 +29,29 @@ class HexTests: XCTestCase {
         let str = Hex().formattedString(string: "123", bytesCount: 32)
         XCTAssertNotNil(str)
     }
+
+    func testTransaction() {
+        let hex = Hex()
+        let a0 = "5452"
+        let a1 = String(format: "%064x", "2020")
+        let a2 = String(format: "%064x", 5)
+        let a3 = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        let a4raw = [0.00000211, 0.00017648, 0.00000211, 0.00000211, 0.00018195, 0.00000423, 0.00000211, 0.00000211, 0.00037682]
+        let a4 = a4raw.flatMap { Int($0 * 1_000_000_000_000_000_000) }
+
+        do {
+            let data = try hex.data(from: a0, a1, a2, a3, a4)
+            XCTAssertNotNil(data)
+        } catch {
+            print("Error: \(error)")
+            XCTAssertTrue(false)
+        }
+    }
+
+    func testFormat1() {
+        let hex = Hex()
+        let data = hex.formattedString(string: "123", bytesCount: 32)
+        XCTAssertEqual(data, "0000000000000000000000000000000000000000000000000000000000000123")
+    }
     
 }

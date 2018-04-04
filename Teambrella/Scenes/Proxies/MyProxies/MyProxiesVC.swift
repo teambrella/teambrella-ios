@@ -54,13 +54,15 @@ class MyProxiesVC: UIViewController {
     }
     
     func showEmptyIfNeeded() {
-        if dataSource.isEmpty && emptyVC == nil {
-            let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y,
-                               width: self.collectionView.frame.width,
-                               height: self.collectionView.frame.height)
-            emptyVC = EmptyVC.show(in: self, inView: self.collectionView, frame: frame, animated: false)
-            emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
-            emptyVC?.setText(title: "Proxy.Empty.title".localized, subtitle: "Proxy.Empty.details".localized)
+        if dataSource.isEmpty {
+            if emptyVC == nil {
+                let frame = CGRect(x: self.collectionView.frame.origin.x, y: self.collectionView.frame.origin.y,
+                                   width: self.collectionView.frame.width,
+                                   height: self.collectionView.frame.height)
+                emptyVC = EmptyVC.show(in: self, inView: self.collectionView, frame: frame, animated: false)
+                emptyVC?.setImage(image: #imageLiteral(resourceName: "iconVote"))
+                emptyVC?.setText(title: "Proxy.Empty.title".localized, subtitle: "Proxy.Empty.details".localized)
+            }
         } else {
             emptyVC?.remove()
             emptyVC = nil
@@ -69,31 +71,31 @@ class MyProxiesVC: UIViewController {
     
     func setupCollectionView() {
         collectionView.register(ProxyCell.nib, forCellWithReuseIdentifier: ProxyCell.cellID)
-//        collectionView.register(NeedHelpView.nib,
-//                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-//                                withReuseIdentifier: NeedHelpView.cellID)
+        //        collectionView.register(NeedHelpView.nib,
+        //                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+        //                                withReuseIdentifier: NeedHelpView.cellID)
         
         let longPressGesture = UILongPressGestureRecognizer(target: self,
                                                             action: #selector(handleGesture(gesture:)))
         longPressGesture.minimumPressDuration = 0.1
         self.collectionView.addGestureRecognizer(longPressGesture)
         
-//        let shortPressGesture = UITapGestureRecognizer(target: self,
-//                                                            action: #selector(handleGesture(gesture:)))
-//        self.collectionView.addGestureRecognizer(shortPressGesture)
+        //        let shortPressGesture = UITapGestureRecognizer(target: self,
+        //                                                            action: #selector(handleGesture(gesture:)))
+        //        self.collectionView.addGestureRecognizer(shortPressGesture)
     }
     
     @objc
     func handleGesture(gesture: UIGestureRecognizer) {
-//        if gesture is UITapGestureRecognizer {
-//            let view = gesture.view
-//            let location = gesture.location(in: view)
-//            if let subview = view?.hitTest(location, with: nil) {
-//                guard subview.tag == 25 else {
-//                    return
-//                }
-//            }
-//        }
+        //        if gesture is UITapGestureRecognizer {
+        //            let view = gesture.view
+        //            let location = gesture.location(in: view)
+        //            if let subview = view?.hitTest(location, with: nil) {
+        //                guard subview.tag == 25 else {
+        //                    return
+        //                }
+        //            }
+        //        }
         
         switch gesture.state {
         case .began:
@@ -136,14 +138,14 @@ extension MyProxiesVC: UICollectionViewDataSource {
         return collectionView.dequeueReusableCell(withReuseIdentifier: ProxyCell.cellID, for: indexPath)
     }
     
-//    func collectionView(_ collectionView: UICollectionView,
-//                        viewForSupplementaryElementOfKind kind: String,
-//                        at indexPath: IndexPath) -> UICollectionReusableView {
-//        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-//                                                                   withReuseIdentifier: NeedHelpView.cellID,
-//                                                                   for: indexPath)
-//        return view
-//    }
+    //    func collectionView(_ collectionView: UICollectionView,
+    //                        viewForSupplementaryElementOfKind kind: String,
+    //                        at indexPath: IndexPath) -> UICollectionReusableView {
+    //        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+    //                                                                   withReuseIdentifier: NeedHelpView.cellID,
+    //                                                                   for: indexPath)
+    //        return view
+    //    }
     
 }
 
@@ -162,9 +164,9 @@ extension MyProxiesVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
-//        if let cell = view as? NeedHelpView {
-//            cell.label.text = "Proxy.MyProxiesVC.infoButton".localized
-//        }
+        //        if let cell = view as? NeedHelpView {
+        //            cell.label.text = "Proxy.MyProxiesVC.infoButton".localized
+        //        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

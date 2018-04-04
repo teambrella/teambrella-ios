@@ -31,14 +31,24 @@ final class ReachabilityService {
     init() {
         try? reachability.startNotifier()
         reachability.whenReachable = { [weak self] reachability in
+            self?.notifyReachable()
             self?.hideUnreachable()
         }
         
         reachability.whenUnreachable = { [weak self] reachability in
+            self?.notyfyUnreachable()
             self?.showUnreachable(with: reachability)
         }
     }
-    
+
+    func notyfyUnreachable() {
+        NotificationCenter.default.post(name: .internetUnreachable, object: nil)
+    }
+
+    func notifyReachable() {
+        NotificationCenter.default.post(name: .internetConnected, object: nil)
+    }
+
     func showUnreachable(with: Reachability? = nil) {
         let view = MessageView.viewFromNib(layout: .statusLine)
         view.configureTheme(.warning)

@@ -275,15 +275,11 @@ final class UniversalChatVC: UIViewController, Routable {
 // MARK: Private
 private extension UniversalChatVC {
     private func setupScrollHandler() {
-        scrollViewHandler.onFastBackwardScroll = { [weak self] velocity in
-            guard let `self` = self else { return }
-
+        scrollViewHandler.onScrollingUp = {
             self.slidingView.hideAll()
         }
 
-        scrollViewHandler.onFastForwardScroll = { [weak self] velocity in
-            guard let `self` = self else { return }
-
+        scrollViewHandler.onScrollingDown = {
             self.showObject()
         }
     }
@@ -430,7 +426,7 @@ private extension UniversalChatVC {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             guard let `self` = self else { return }
             
-            if Date().timeIntervalSince(self.lastTypingDate) > 3 {
+            if Date().timeIntervalSince(self.lastTypingDate) > 3.0 {
                 self.showIsTyping = false
                 self.typingUsers.removeAll()
             }
@@ -440,6 +436,7 @@ private extension UniversalChatVC {
     private func setupInput() {
         if dataSource.isPrivateChat {
             input.leftButton.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
+            input.leftButton.isHidden = true
             input.leftButton.isEnabled = false
         }
         input.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
@@ -450,7 +447,7 @@ private extension UniversalChatVC {
                 guard let me = self else { return }
                 
                 let interval = me.lastTypingDate.timeIntervalSinceNow
-                if interval < -2, let topicID = me.dataSource.topicID,
+                if interval < -2.0, let topicID = me.dataSource.topicID,
                     let name = service.session?.currentUserName {
                     socket?.meTyping(teamID: teamID, topicID: topicID, name: name.first)
                     self?.lastTypingDate = Date()
@@ -612,7 +609,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
             for user in typingUsers.keys {
                 guard let date = typingUsers[user] else { continue }
                 
-                if Date().timeIntervalSince(date) < 3 {
+                if Date().timeIntervalSince(date) < 3.0 {
                     if text != "" { text += ", " }
                     text += user.uppercased()
                 } else {
@@ -765,6 +762,14 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
 extension UniversalChatVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewHandler.scrollViewDidScroll(scrollView)
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollViewHandler.scrollViewWillBeginDragging(scrollView)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        scrollViewHandler.scrollViewDidEndDragging(scrollView, willDecelerate: decelerate)
     }
 }
 

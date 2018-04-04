@@ -112,7 +112,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
         let title: String?
 
         let model: String?
-        let year: Int?
+        let year: Year?
         let smallPhoto: String?
         let risk: Double?
         let claimLimit: Double?

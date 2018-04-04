@@ -17,17 +17,12 @@
 import Foundation
 
 struct RemoteMessage {
+    let aps: APS
     let payload: RemotePayload
-    /*
-    case privateMessage = 5
-    case walletFunded = 6
-    case postsSinceInteracted = 7
-    case newTeammate = 8
-    case newDiscussion = 9
-    
-    case topicMessage = 21
-    */
+
     var title: String? {
+        guard aps.title == nil else { return aps.title }
+
         switch payload.type {
         case .createdPost:
             return "Push.newPost".localized
@@ -38,7 +33,7 @@ struct RemoteMessage {
         case .postsSinceInteracted:
             return "Push.unreadMessages_format".localized(payload.postsCount ?? "")
         case .walletFunded:
-            return "Push.walletFunded".localized
+            return "Push.walletFunded.title".localized
         case .topicMessage:
             return "Push.newMessage".localized
         case .newDiscussion:
@@ -51,19 +46,24 @@ struct RemoteMessage {
     }
     
     var subtitle: String? {
-        switch payload.type {
-        case .createdPost:
-            return nil
-        case .newTeammate:
-            return payload.userName
-        case .walletFunded:
-            return "Push.team_format".localized(payload.teamNameValue)
-        default:
-            return nil
-        }
+        guard aps.subtitle == nil else { return aps.subtitle }
+
+        return nil
+//        switch payload.type {
+//        case .createdPost:
+//            return nil
+//        case .newTeammate:
+//            return payload.userName
+//        case .walletFunded:
+//            return "Push.team_format".localized(payload.teamNameValue)
+//        default:
+//            return nil
+//        }
     }
     
     var body: String? {
+        guard aps.body == nil else { return aps.body }
+
         switch payload.type {
         case .createdPost,
              .privateMessage:
@@ -71,8 +71,11 @@ struct RemoteMessage {
         case .walletFunded:
             return "Push.walletFunded.message_format".localized(payload.cryptoAmountValue)
         case .topicMessage:
-            return "Push.newMessage.posted_format".localized(payload.userNameValue,
-                                                             payload.topicNameValue)
+            if let topicName = payload.topicName {
+                return "Push.newMessage.posted_format".localized(payload.userNameValue, topicName)
+            } else {
+                return payload.userNameValue
+            }
         case .postsSinceInteracted:
             return ""
         case .newTeammate:

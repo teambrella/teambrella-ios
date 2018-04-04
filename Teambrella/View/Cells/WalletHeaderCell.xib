@@ -29,15 +29,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kw2-yj-Xiw" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJo-dm-TTW">
-                                <rect key="frame" x="0.0" y="135" width="375" height="56"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vur-zE-tBc" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="97" width="375" height="38"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="0.0079730308219178089" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.85882352941176465" green="0.91764705882352937" blue="1" alpha="0.01" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -81,18 +77,14 @@
                             <constraint firstAttribute="bottom" secondItem="Tge-af-isS" secondAttribute="bottom" constant="16" id="4c2-eJ-5le"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W6O-dA-TcK" secondAttribute="trailing" constant="16" id="AQW-Nh-2Sr"/>
                             <constraint firstItem="W6O-dA-TcK" firstAttribute="top" secondItem="Nka-jt-bBu" secondAttribute="bottom" constant="2" id="Est-8T-FdY"/>
-                            <constraint firstAttribute="trailing" secondItem="rJo-dm-TTW" secondAttribute="trailing" id="Had-IS-0dY"/>
+                            <constraint firstAttribute="bottom" secondItem="Vur-zE-tBc" secondAttribute="bottom" id="GJR-XP-XBs"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Nka-jt-bBu" secondAttribute="trailing" constant="16" id="L3B-qz-k2C"/>
-                            <constraint firstItem="rJo-dm-TTW" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" id="Tkr-Ph-fSc"/>
                             <constraint firstItem="W6O-dA-TcK" firstAttribute="leading" secondItem="4Ff-9F-8fr" secondAttribute="trailing" constant="7" id="alt-c3-IiC"/>
-                            <constraint firstAttribute="bottom" secondItem="rJo-dm-TTW" secondAttribute="bottom" id="bgf-j3-B25"/>
                             <constraint firstItem="4Ff-9F-8fr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Kw2-yj-Xiw" secondAttribute="top" constant="16" id="bi5-mE-LHX"/>
                             <constraint firstItem="4Ff-9F-8fr" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" constant="30" id="gOf-kR-0eT"/>
                             <constraint firstItem="Tge-af-isS" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" constant="16" id="lAn-n6-30d"/>
-                            <constraint firstItem="Vur-zE-tBc" firstAttribute="top" secondItem="4Ff-9F-8fr" secondAttribute="baseline" id="lUU-vd-e62"/>
+                            <constraint firstItem="Vur-zE-tBc" firstAttribute="top" secondItem="Kw2-yj-Xiw" secondAttribute="top" id="m2g-N0-5oG"/>
                             <constraint firstAttribute="trailing" secondItem="Vur-zE-tBc" secondAttribute="trailing" id="uGY-Xd-Lsr"/>
-                            <constraint firstItem="Vur-zE-tBc" firstAttribute="bottom" secondItem="Tge-af-isS" secondAttribute="top" id="v3K-xe-BXt"/>
-                            <constraint firstItem="rJo-dm-TTW" firstAttribute="top" secondItem="Tge-af-isS" secondAttribute="top" id="xsy-nf-Q1d"/>
                             <constraint firstItem="W6O-dA-TcK" firstAttribute="baseline" secondItem="4Ff-9F-8fr" secondAttribute="baseline" id="yFh-aq-lhk"/>
                             <constraint firstAttribute="trailing" secondItem="Tge-af-isS" secondAttribute="trailing" constant="16" id="yNb-1S-yqz"/>
                             <constraint firstItem="Vur-zE-tBc" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" id="znw-4d-zMw"/>

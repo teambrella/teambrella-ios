@@ -20,6 +20,14 @@ import PKHUD
 import UIKit
 
 class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
+    struct Constant {
+        static let headerCellHeight: CGFloat = 150
+        static let withdrawCellHeight: CGFloat = 310
+        static let txCellHeight: CGFloat = 72
+        static let horizontalCellPadding: CGFloat = 16
+        static let defaultHeaderHeight = 0
+        static let txHeaderHeight = 40
+    }
     
     static let storyboardName = "Me"
     
@@ -342,12 +350,18 @@ extension WithdrawVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            return CGSize(width: collectionView.bounds.width - 32, height: 150)
-        } else if indexPath.section == 0 && indexPath.row == 1 {
-            return CGSize(width: collectionView.bounds.width - 32, height: 300)
-        } else {
-            return CGSize(width: collectionView.bounds.width, height: 72)
+        switch indexPath.section {
+        case 0:
+            if indexPath.row == 0 {
+                return CGSize(width: collectionView.bounds.width, height: Constant.headerCellHeight)
+            } else {
+                return CGSize(width: collectionView.bounds.width - Constant.horizontalCellPadding * 2,
+                              height: Constant.withdrawCellHeight)
+            }
+        case 1:
+            return CGSize(width: collectionView.bounds.width, height: Constant.txCellHeight)
+        default:
+            return CGSize.zero
         }
     }
     
@@ -355,14 +369,14 @@ extension WithdrawVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         return section == 0
-            ? CGSize(width: collectionView.bounds.width, height: 20)
-            : CGSize(width: collectionView.bounds.width, height: 40)
+            ? CGSize(width: collectionView.bounds.width, height: CGFloat(Constant.defaultHeaderHeight))
+            : CGSize(width: collectionView.bounds.width, height: CGFloat(Constant.txHeaderHeight))
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return section == 0 ? CGFloat(16) : CGFloat(0)
+        return section == 0 ? CGFloat(Constant.horizontalCellPadding) : CGFloat(Constant.defaultHeaderHeight)
     }
 }
 

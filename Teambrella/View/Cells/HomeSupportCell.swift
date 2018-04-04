@@ -33,6 +33,7 @@ class HomeSupportCell: UICollectionViewCell, XIBInitableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         ViewDecorator.roundedEdges(for: self)
+        backView.layer.cornerRadius = 6
         ViewDecorator.homeCardShadow(for: self)
     }
 }

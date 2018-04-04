@@ -37,7 +37,6 @@ final class TeammateProfileVC: UIViewController, Routable {
     var teammateID: String?
     var dataSource: TeammateProfileDataSource!
     var linearFunction: PiecewiseFunction?
-    var chosenRisk: Double?
     var isRiskScaleUpdateNeeded = true
     var isPeeking: Bool = false
     var scrollToVote: Bool = false
@@ -48,6 +47,8 @@ final class TeammateProfileVC: UIViewController, Routable {
         let visibleCells = collectionView.visibleCells
         return visibleCells.filter { $0 is VotingRiskCell }.first as? VotingRiskCell
     }
+
+    private var currentRiskVote: Double?
     
     // MARK: Lifecycle
     
@@ -78,10 +79,9 @@ final class TeammateProfileVC: UIViewController, Routable {
             
             self.prepareLinearFunction()
             self.setTitle()
-            //            self.chosenRisk = self.dataSource.extendedTeammate?.voting?.myVote
             self.collectionView.reloadData()
             if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate
+                flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate && !self.dataSource.isMe
             }
             if self.scrollToVote, let index = self.dataSource.votingCellIndexPath {
                 self.scrollToVote = false
@@ -103,10 +103,6 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // in case that we return to this screen from some otheer scene
-        if let myVote = dataSource.teammateLarge?.voting?.myVote {
-            updateAmounts(with: myVote)
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -116,65 +112,40 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     // MARK: Public
     
-    func riskFrom(offset: CGFloat, maxValue: CGFloat) -> Double {
-        return min(Double(pow(25, offset / maxValue) / 5), 5)
-    }
-    
-    func offsetFrom(risk: Double, maxValue: CGFloat) -> CGFloat {
-        return CGFloat(log(base: 25.0, value: risk * 5.0)) * maxValue
-    }
-    
     var userInfoHeader: CompactUserInfoHeader? {
         let kind = UICollectionElementKindSectionHeader
         return collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader
     }
     
-    func updateAmounts(with risk: Double) {
-        chosenRisk = risk
-        let kind = UICollectionElementKindSectionHeader
-        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
-            return
-        }
+    func updateAmounts(header: CompactUserInfoHeader, with risk: Double) {
         guard let myRisk = dataSource.teammateLarge?.riskScale?.myRisk else { return }
         guard let heCoversMe = linearFunction?.value(at: risk) else { return }
         
         let theirAmount = heCoversMe
-        view.leftNumberView.amountLabel.text = String(format: "%.2f", theirAmount)
-        
+        header.leftNumberView.amountLabel.text = amountsFormat(amount: theirAmount)
         let myAmount = heCoversMe * myRisk / risk
-        view.rightNumberView.amountLabel.text = String(format: "%.2f", myAmount)
+        header.rightNumberView.amountLabel.text = amountsFormat(amount: myAmount)
     }
     
-    func resetVote(cell: VotingRiskCell) {
-        let vote = dataSource.teammateLarge?.voting?.myVote
-        let proxyAvatar = dataSource.teammateLarge?.voting?.proxyAvatar
-        let proxyName = dataSource.teammateLarge?.voting?.proxyName
-        if let vote = vote,
-            let proxyAvatar = proxyAvatar,
-            let proxyName = proxyName {
-            cell.isProxyHidden = false
-            cell.proxyAvatarView.showAvatar(string: proxyAvatar)
-            cell.proxyNameLabel.text = proxyName.uppercased()
-            let offset = offsetFrom(risk: vote, maxValue: cell.maxValue)
-            cell.scrollTo(offset: offset, silently: true)
+    func amountsFormat(amount: Double) -> String {
+        if amount == 0.0 {
+            return "0"
+        } else if amount < 100.0 {
+            return String(format: "%.2f", amount)
         } else {
-            cell.isProxyHidden = true
-            cell.resetVoteButton.isHidden = true
-            cell.yourVoteValueLabel.text = "..."
-            cell.yourVoteBadgeLabel.isHidden = true
-            cell.scrollToAverage(silently: true)
+            return String(format: "%.0f", amount)
         }
     }
     
     func updateAverages(cell: VotingRiskCell, risk: Double) {
         func text(for label: UILabel, risk: Double) {
-//            guard let riskScale = dataSource.teammateLarge?.riskScale else { return }
+
             guard let averageRisk = dataSource.teammateLarge?.voting?.averageRisk else { return }
             guard averageRisk != 0 else { return }
             
             let delta = risk - averageRisk
             var text = "AVG\n"
-            text += delta > 0 ? "+" : ""
+            text += delta > 0.0 ? "+" : ""
             let percent = 100 * delta / averageRisk
             let amount = String(format: "%.0f", percent)
             label.text =  text + amount + "%"
@@ -183,6 +154,27 @@ final class TeammateProfileVC: UIViewController, Routable {
         text(for: cell.yourVoteBadgeLabel, risk: risk)
         if let teamRisk = dataSource.teammateLarge?.voting?.riskVoted {
             text(for: cell.teamVoteBadgeLabel, risk: teamRisk)
+        }
+    }
+
+    func resetVote(cell: VotingRiskCell) {
+        let vote = dataSource.teammateLarge?.voting?.myVote
+        let proxyAvatar = dataSource.teammateLarge?.voting?.proxyAvatar
+        let proxyName = dataSource.teammateLarge?.voting?.proxyName
+        if let vote = vote,
+            let proxyAvatar = proxyAvatar,
+            let proxyName = proxyName {
+            cell.scrollTo(risk: vote, silently: true, animated: false)
+            cell.isProxyHidden = false
+            cell.resetVoteButton.isHidden = true
+            cell.proxyAvatarView.show(proxyAvatar)
+            cell.proxyNameLabel.text = proxyName.uppercased()
+        } else {
+            cell.scrollToAverage(silently: true, animated: false)
+            cell.isProxyHidden = true
+            cell.resetVoteButton.isHidden = true
+            cell.yourVoteValueLabel.text = "..."
+            cell.yourVoteBadgeLabel.isHidden = true
         }
     }
     
@@ -220,7 +212,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             guard let me = self else { return }
             
             let cells = me.collectionView.visibleCells
-            let statCells = cells.flatMap { $0 as? TeammateStatsCell }
+            let statCells = cells.compactMap { $0 as? TeammateStatsCell }
             if let cell = statCells.first {
                 let title = me.dataSource.isMyProxy
                     ? "Team.TeammateCell.removeFromMyProxyVoters".localized
@@ -244,7 +236,9 @@ final class TeammateProfileVC: UIViewController, Routable {
     private func addGradientNavBarIfNeeded() {
         if !isPeeking && shouldAddGradientNavBar {
             addGradientNavBar()
-            addPrivateMessageButton()
+            if !dataSource.isMe {
+                addPrivateMessageButton()
+            }
             setTitle()
         }
     }
@@ -299,13 +293,19 @@ extension TeammateProfileVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            return dataSource.isNewTeammate
-                ? collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                  withReuseIdentifier: CompactUserInfoHeader.cellID,
-                                                                  for: indexPath)
-                : collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                  withReuseIdentifier: TeammateSummaryView.cellID,
-                                                                  for: indexPath)
+            if dataSource.isNewTeammate {
+                return dataSource.isMe
+                    ? collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                      withReuseIdentifier: TeammateSummaryView.cellID,
+                                                                      for: indexPath)
+                    : collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                      withReuseIdentifier: CompactUserInfoHeader.cellID,
+                                                                      for: indexPath)
+            } else {
+                return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                       withReuseIdentifier: TeammateSummaryView.cellID,
+                                                                       for: indexPath)
+            }
         }
         if kind == UICollectionElementKindSectionFooter {
             return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
@@ -353,7 +353,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                     : "Team.TeammateCell.sheCoversMe".localized
                 left.titleLabel.text = genderization
                 let amount = teammate.basic.coversMeAmount
-                left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                left.amountLabel.text = amountsFormat(amount: amount)
                 left.currencyLabel.text = service.currencyName
                 left.isCurrencyVisible = true
                 left.isPercentVisible = false
@@ -364,7 +364,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                     : "Team.TeammateCell.coverHer".localized
                 right.titleLabel.text = genderization
                 let amount = teammate.basic.iCoverThemAmount
-                right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                right.amountLabel.text = amountsFormat(amount: amount)
                 right.currencyLabel.text = service.currencyName
                 right.isCurrencyVisible = true
                 right.isPercentVisible = false
@@ -390,7 +390,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                     : "Team.TeammateCell.SheWouldCoverMe".localized
                 left.titleLabel.text = genderization
                 let amount = teammate.basic.coversMeAmount
-                left.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                left.amountLabel.text = amountsFormat(amount: amount)
                 left.currencyLabel.text = service.currencyName
                 left.isCurrencyVisible = true
                 left.isPercentVisible = false
@@ -401,10 +401,14 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                     : "Team.TeammateCell.wouldCoverHer".localized
                 right.titleLabel.text = genderization
                 let amount = teammate.basic.iCoverThemAmount
-                right.amountLabel.text = amount == 0 ? "0" : String(format: "%.2f", amount)
+                right.amountLabel.text = amountsFormat(amount: amount)
                 right.currencyLabel.text = service.currencyName
                 right.isCurrencyVisible = true
                 right.isPercentVisible = false
+            }
+
+            if let risk = currentRiskVote {
+                updateAmounts(header: view, with: risk)
             }
         }
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
@@ -451,7 +455,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             let cellHeight: CGFloat = Constant.socialCellHeight
             return CGSize(width: wdt, height: base + CGFloat(dataSource.socialItems.count) * cellHeight)
         case .dialog:
-            return CGSize(width: collectionView.bounds.width, height: 120)
+            return isSmallIPhone ? CGSize(width: collectionView.bounds.width, height: 110)
+            : CGSize(width: collectionView.bounds.width, height: 120)
         case .me:
             return CGSize(width: collectionView.bounds.width, height: 215)
         case .voting:
@@ -466,16 +471,20 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         guard dataSource.teammateLarge != nil else { return CGSize.zero }
         
-        return dataSource.isNewTeammate
-            ? CGSize(width: collectionView.bounds.width, height: 60)
-            : CGSize(width: collectionView.bounds.width, height: 210)
+        if dataSource.isNewTeammate {
+            return dataSource.isMe
+                ? CGSize(width: collectionView.bounds.width, height: 210)
+                : CGSize(width: collectionView.bounds.width, height: 60)
+        } else {
+            return CGSize(width: collectionView.bounds.width, height: 210)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
         return /*dataSource.isNewTeammate ?
-            CGSize(width: collectionView.bounds.width, height: 20) :*/
+             CGSize(width: collectionView.bounds.width, height: 20) :*/
             CGSize(width: collectionView.bounds.width, height: 81)
     }
 }
@@ -537,29 +546,30 @@ extension TeammateProfileVC: IndicatorInfoProvider {
 
 // MARK: VotingRiskCellDelegate
 extension TeammateProfileVC: VotingRiskCellDelegate {
-    func votingRisk(cell: VotingRiskCell, changedOffset: CGFloat) {
-        let risk = riskFrom(offset: changedOffset, maxValue: cell.maxValue)
-        cell.yourVoteValueLabel.text = String(format: "%.2f", risk)
-        cell.middleAvatarLabel.text = String(format: "%.2f", risk)
-        updateAverages(cell: cell, risk: risk)
-        updateAmounts(with: risk)
+    func votingRisk(cell: VotingRiskCell, changedRisk: Double) {
+        currentRiskVote = changedRisk
+        cell.yourVoteValueLabel.text = String(format: "%.2f", changedRisk)
+        cell.middleAvatarLabel.text = String(format: "%.2f", changedRisk)
+        updateAverages(cell: cell, risk: changedRisk)
         cell.pieChart.setupWith(remainingMinutes: dataSource.teammateLarge?.voting?.remainingMinutes ?? 0)
-        cell.showYourNoVote(risk: risk)
+        cell.showYourNoVote(risk: changedRisk)
+
+        let kind = UICollectionElementKindSectionHeader
+        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
+            return
+        }
+        updateAmounts(header: view, with: changedRisk)
     }
     
-    func votingRisk(cell: VotingRiskCell, stoppedOnOffset: CGFloat) {
-        var risk = riskFrom(offset: stoppedOnOffset, maxValue: cell.maxValue)
-        
+    func votingRisk(cell: VotingRiskCell, stoppedOnRisk: Double) {
+        var risk = stoppedOnRisk
         cell.yourVoteValueLabel.alpha = 0.5
         guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
         
         if risk < 0.2 { risk = 0.2 }
-        dataSource.sendRisk(userID: teammateID, risk: risk) { [weak self, weak cell] votingResult in
-            guard let `self` = self else { return }
-            
-            self.dataSource.teammateLarge?.update(votingResult: votingResult)
-            cell?.yourVoteValueLabel.alpha = 1
-            cell?.isProxyHidden = true
+        currentRiskVote = risk
+        dataSource.sendRisk(userID: teammateID, risk: risk) { [weak self] votingResult in
+            self?.collectionView.reloadData()
         }
     }
     
@@ -596,13 +606,8 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
             
             cell.yourVoteValueLabel.alpha = 0.5
-            dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self, weak cell] json in
-                guard let `self` = self else { return }
-                guard let cell = cell else { return }
-                
-                cell.yourVoteValueLabel.alpha = 1
-                cell.isProxyHidden = false
-                self.resetVote(cell: cell)
+            dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self] json in
+                self?.collectionView.reloadData()
             }
         case cell.othersButton:
             guard let ranges = dataSource.teammateLarge?.riskScale?.ranges else {
@@ -620,7 +625,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             log("VotingRiskCell unknown button pressed", type: [.error])
         }
     }
-
+    
     func averageVotingRisk(cell: VotingRiskCell) -> Double {
         return dataSource.teammateLarge?.voting?.averageRisk ?? 0
     }

@@ -399,7 +399,7 @@ class ServerDAO: DAO {
     }
     
     func freshKey(completion: @escaping (Key) -> Void) {
-        if let time = lastKeyTime, Date().timeIntervalSince(time) < 60 * 10 {
+        if let time = lastKeyTime, Date().timeIntervalSince(time) < 60.0 * 10.0 {
             completion(service.server.key)
         } else {
             service.server.updateTimestamp(completion: { _, _ in

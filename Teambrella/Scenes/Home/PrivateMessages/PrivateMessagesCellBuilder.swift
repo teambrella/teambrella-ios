@@ -31,7 +31,20 @@ struct PrivateMessagesCellBuilder {
             cell.avatarView.showAvatar(string: model.avatar)
             cell.nameLabel.text = model.name
             cell.messageLabel.text = model.text
-            cell.timeLabel.text = DateProcessor().stringFromNow(minutes: model.minutesSinceLast)
+            let minutes = model.minutesSinceLast
+            switch minutes {
+            case 0:
+                cell.timeLabel.text = "Team.TeammateCell.timeLabel.justNow".localized
+            case 1..<60:
+                cell.timeLabel.text = "Team.Ago.minutes_format".localized(minutes)
+            case 60..<(60 * 24):
+                cell.timeLabel.text = "Team.Ago.hours_format".localized(minutes / 60)
+            case (60 * 24)...(60 * 24 * 7):
+                cell.timeLabel.text = "Team.Ago.days_format".localized(minutes / (60 * 24))
+            default:
+                let date = Date().addingTimeInterval(TimeInterval(-minutes * 60))
+                cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date)
+            }
             cell.unreadCountView.text = String(model.unreadCount)
             cell.unreadCountView.isHidden = model.unreadCount == 0
         }

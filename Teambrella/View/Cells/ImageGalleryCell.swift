@@ -28,7 +28,7 @@ class ImageGalleryCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var avatarView: RoundImageView!
     @IBOutlet var titleLabel: MessageTitleLabel!
     @IBOutlet var textLabel: MessageTextLabel!
-    @IBOutlet var timeLabel: InfoLabel!
+    @IBOutlet var timeLabel: ThinStatusSubtitleLabel!
     @IBOutlet var unreadCountLabel: RoundImageView!
     
     var tapGalleryGesture: UITapGestureRecognizer?
@@ -41,7 +41,7 @@ class ImageGalleryCell: UICollectionViewCell, XIBInitableCell {
     func setupGallery(with imageURLs: [String], options: KingfisherOptionsInfo? = nil) {
         guard slideshow.images.isEmpty else { return }
         
-        let inputs: [InputSource] = imageURLs.flatMap { KingfisherSource(urlString: $0, options: options) }
+        let inputs: [InputSource] = imageURLs.compactMap { KingfisherSource(urlString: $0, options: options) }
         slideshow.setImageInputs(inputs)
         slideshow.contentScaleMode = .scaleAspectFill
     }

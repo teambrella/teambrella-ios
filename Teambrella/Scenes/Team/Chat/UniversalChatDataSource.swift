@@ -31,8 +31,8 @@ final class UniversalChatDatasource {
     var onSendMessage: ((IndexPath) -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
     var onClaimVoteUpdate: (() -> Void)?
-    
-    var limit                                       = 20
+
+    var limit                                       = 30
     var cloudWidth: CGFloat                         = 0
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
@@ -93,6 +93,13 @@ final class UniversalChatDatasource {
         return nil
     }
     
+    var claimDate: Date? {
+        if let chatModel = chatModel?.basic {
+            return chatModel.incidentDate
+        }
+        return nil
+    }
+    
     var teammateInfo: TeammateLarge.BasicInfo? {
         if let strategy = strategy as? TeammateChatStrategy {
             return strategy.teammate.basic
@@ -113,9 +120,13 @@ final class UniversalChatDatasource {
             return ""
         }
 
-         if chatModel.isClaimChat {
-            let id = chatModel.id ?? 0
-            return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " \(id)"
+        if chatModel.isClaimChat {
+            if let date = claimDate {
+                return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " - " +
+                    Formatter.teambrellaShort.string(from: date)
+            } else {
+                return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized
+            }
         } else if chatModel.isApplicationChat {
             return "Team.Chat.TypeLabel.application".localized.lowercased().capitalized
         } else if let title = chatModel.basic?.title {
@@ -186,7 +197,7 @@ final class UniversalChatDatasource {
     }
     
     var allImages: [String] {
-        let textCellModels = models.flatMap { $0 as? ChatTextCellModel }
+        let textCellModels = models.compactMap { $0 as? ChatTextCellModel }
         let fragments = textCellModels.flatMap { $0.fragments }
         var images: [String] = []
         for fragment in fragments {
@@ -256,7 +267,7 @@ final class UniversalChatDatasource {
         //let temporaryModel = cellModelBuilder.unsentModel(fragments: imageFragments + [ChatFragment.text(text)],
         //                                                 id: id)
         //addCellModel(model: temporaryModel)
-        let images = imageFragments.flatMap {
+        let images: [String] = imageFragments.compactMap {
             if case let .image(image, _, _) = $0 {
                 return image
             } else {
@@ -334,8 +345,6 @@ extension UniversalChatDatasource {
             let limit = self.limit// previous ? -me.limit: me.limit
             let offset = previous
                 ? self.backwardOffset
-                : self.isFirstLoad
-                ? -5
                 : self.forwardOffset
             var payload: [String: Any] = ["limit": limit,
                                           "offset": offset,
@@ -352,8 +361,8 @@ extension UniversalChatDatasource {
                                                 
                                                 self.isLoading = false
                                                 self.process(response: response,
-                                                           isPrevious: previous,
-                                                           isMyNewMessage: false)
+                                                             isPrevious: previous,
+                                                             isMyNewMessage: false)
             })
             request.start()
         }
@@ -372,11 +381,11 @@ extension UniversalChatDatasource {
         while lastInsertionIndex > 0
             && lastInsertionIndex < models.count
             && models[lastInsertionIndex].date > model.date {
-            lastInsertionIndex -= 1
+                lastInsertionIndex -= 1
         }
         while lastInsertionIndex < models.count
             && models[lastInsertionIndex].date <= model.date {
-            lastInsertionIndex += 1
+                lastInsertionIndex += 1
         }
         
         let previous = lastInsertionIndex > 0 ? models[lastInsertionIndex - 1] : nil
@@ -453,7 +462,7 @@ extension UniversalChatDatasource {
         if isMyNewMessage {
             onSendMessage?(IndexPath(row: lastInsertionIndex, section: 0))
         } else {
-        onUpdate?(isPrevious, hasNewModels, isFirstLoad)
+            onUpdate?(isPrevious, hasNewModels, isFirstLoad)
         }
         isFirstLoad = false
     }
