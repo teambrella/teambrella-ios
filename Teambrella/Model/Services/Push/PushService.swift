@@ -30,7 +30,9 @@ class PushService: NSObject {
         return [UInt8](token).reduce("") { $0 + String(format: "%02x", $1) }
     }
     var command: RemotePayload?
+    
     var router: MainRouter { return service.router }
+    var session: Session? { return service.session }
     
     override init() {
         super.init()
@@ -68,7 +70,7 @@ class PushService: NSObject {
     
     func remoteNotificationOnStart(in application: UIApplication,
                                    userInfo: [AnyHashable: Any]) {
-      prepareCommand(userInfo: userInfo)
+        prepareCommand(userInfo: userInfo)
     }
     
     func remoteNotification(in application: UIApplication,
@@ -101,20 +103,25 @@ class PushService: NSObject {
     }
     
     func executeCommand() {
-        guard let command = command else { return }
-        
+        guard let command = command else {
+            print("No remote command to execute")
+            return
+        }
+
+        router.popToBase()
+
         let type = command.type
         switch type {
         case .newTeammate:
             router.presentMemberProfile(teammateID: String(command.teammateIDValue))
         case .privateMessage:
-             showPrivateMessage(command: command)
+            showPrivateMessage(command: command)
         case .walletFunded:
             showWalletFunded(teamID: command.teamIDValue)
         case .topicMessage:
             showTopic(details: command.topicDetails)
         case .newClaim:
-             showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
+            showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
         default:
             break
         }
@@ -139,15 +146,15 @@ class PushService: NSObject {
     private func showNewClaim(teamID: Int, claimID: Int) {
         if selectCorrectTeam(teamID: teamID) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-               // service.router.switchTeam()
-//                service.router.presentClaims(animated: false)
-            service.router.presentClaim(claimID: claimID)
+                // service.router.switchTeam()
+                //                service.router.presentClaims(animated: false)
+                service.router.presentClaim(claimID: claimID)
             }
         }
     }
     
     private func showPrivateMessage(command: RemotePayload) {
-        service.router.presentPrivateMessages()
+//        service.router.presentPrivateMessages()
         if let user = PrivateChatUser(remotePayload: command) {
             let context = ChatContext.privateChat(user)
             service.router.presentChat(context: context, itemType: .privateChat, animated: false)
@@ -170,21 +177,21 @@ class PushService: NSObject {
     }
     
     private func showWalletFunded(teamID: Int) {
-        if selectCorrectTeam(teamID: teamID) {
-            service.router.switchToWallet()
-        }
+        service.router.switchToWallet()
+//        if selectCorrectTeam(teamID: teamID) {
+//        }
     }
     
     private func showTopic(details: RemoteTopicDetails?) {
         if let details = details as? RemotePayload.Claim {
-            service.router.switchToFeed()
-            service.router.presentClaims(animated: false)
-            service.router.presentClaim(claimID: details.claimID, animated: false)
+//            service.router.switchToFeed()
+//            service.router.presentClaims(animated: false)
+//            service.router.presentClaim(claimID: details.claimID, animated: false)
             service.router.presentChat(context: ChatContext.remote(details), itemType: .claim, animated: false)
         } else if let details = details as? RemotePayload.Discussion {
             service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat, animated: false)
         } else if let details = details as? RemotePayload.Teammate {
-            service.router.presentMemberProfile(teammateID: details.userID, animated: false)
+//            service.router.presentMemberProfile(teammateID: details.userID, animated: false)
             service.router.presentChat(context: ChatContext.remote(details), itemType: .teammate, animated: false)
         }
     }

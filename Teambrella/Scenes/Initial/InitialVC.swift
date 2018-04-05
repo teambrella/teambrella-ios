@@ -70,7 +70,7 @@ final class InitialVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         HUD.hide()
         if segue.type == .teambrella {
-            
+           
         }
     }
     

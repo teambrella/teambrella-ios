@@ -60,7 +60,7 @@ struct RemotePayload {
             var dict = dict
             self.topicID = dict["TopicId"] as? String ?? ""
             if let claimDict = dict["Claim"] as? [AnyHashable: Any] { dict = claimDict }
-            guard let id = dict["ClaimId"] as? Int,
+            guard let id = dict["ClaimId"] as? Int ?? (dict["ClaimId"] as? String).flatMap { Int($0) },
                 let userName = dict["UserName"] as? String,
                 let objectName = dict["ObjectName"] as? String,
                 let avatar = dict["SmallPhoto"] as? String else { return nil }
@@ -124,7 +124,7 @@ struct RemotePayload {
     
     var userID: String? { return dict["UserId"] as? String }
     var userName: String? { return dict["UserName"] as? String }
-    var teammateID: Int? { return dict["TeammateId"] as? Int }
+    var teammateID: Int? { return dict["TeammateId"] as? Int ?? (dict["TeammateId"] as? String).flatMap { Int($0) } }
     var message: String? { return dict["Message"] as? String }
     
     var topicID: String? { return dict["TopicId"] as? String }
@@ -133,7 +133,7 @@ struct RemotePayload {
     //var text: String? { return dict["Text"] as? String }
     var postsCount: String? { return dict["Count"] as? String }
     
-    var claimID: Int? { return dict["ClaimId"] as? Int }
+    var claimID: Int? { return dict["ClaimId"] as? Int ?? (dict["ClaimId"] as? String).flatMap { Int($0) } }
     
     var amount: String? { return dict["Count"] as? String ?? dict["Amount"] as? String }
     var cryptoAmount: String? { return dict["BalanceCrypto"] as? String }

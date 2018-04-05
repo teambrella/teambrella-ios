@@ -64,6 +64,13 @@ final class MainRouter {
         navigator?.pushViewController(vc, animated: animated)
     }
 
+    func popToBase(animated: Bool = false) {
+        guard let navigator = navigator else { return }
+        guard let tabController = masterTabBar else { return }
+
+        navigator.popToViewController(tabController, animated: animated)
+    }
+
     private func switchTab(to tab: TabType) -> UIViewController? {
         return masterTabBar?.switchTo(tabType: tab)
     }
