@@ -105,9 +105,8 @@ struct TeammateCellBuilder {
             votingCell.teamVoteValueLabel.text = "..."
             votingCell.showTeamNoVote(risk: nil)
         }
-        
         if let myVote = voting.myVote {
-            if let proxyVote = voting.proxyName {
+            if voting.proxyName != nil {
                 votingCell.isProxyHidden = false
                 votingCell.resetVoteButton.isHidden = true
                 votingCell.layoutIfNeeded()
@@ -133,9 +132,7 @@ struct TeammateCellBuilder {
             controller.resetVote(cell: votingCell)
             votingCell.showYourNoVote(risk: nil)
         }
-        controller.updateAverages(cell: votingCell,
-                                  risk: votingCell.currentRisk)
-        
+        controller.updateAverages(cell: votingCell, risk: votingCell.currentRisk)
         var prefix = ""
         if voting.remainingMinutes < 60 {
             prefix = "Team.Claim.minutes_format".localized(voting.remainingMinutes)

@@ -85,7 +85,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
             remainingMinutes = claim.minutesRemaining
             proxyName = claim.proxyName
             proxyAvatar = claim.proxyAvatar
-            myVote = claim.myVote?.value ?? claim.proxyVote?.value
+            myVote = claim.myVote?.value
             ratioVoted = claim.ratioVoted
             otherCount = claim.otherCount
             otherAvatars = claim.otherAvatars

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -142,14 +142,14 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iD-BV-Kqg" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="8" y="105" width="9.5" height="12"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iD-BV-Kqg" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                    <rect key="frame" x="4" y="97" width="0.0" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9o8-l9-9Vr" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="25.5" y="101.5" width="20" height="20"/>
+                                    <rect key="frame" x="12" y="97.5" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="9o8-l9-9Vr" secondAttribute="height" multiplier="1:1" id="nFI-m3-lst"/>
                                         <constraint firstAttribute="width" constant="20" id="s6T-mP-vet"/>
@@ -162,7 +162,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDu-Xg-lqj">
-                                    <rect key="frame" x="12" y="98" width="59" height="27"/>
+                                    <rect key="frame" x="12" y="94" width="59" height="27"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
                                     <state key="normal" title="Reset vote">
                                         <color key="titleColor" red="0.47058823529999999" green="0.50980392159999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -177,6 +177,8 @@
                                 <constraint firstItem="Um7-MI-F42" firstAttribute="leading" secondItem="Wjc-Xr-tdH" secondAttribute="trailing" id="0aC-ZC-UYP"/>
                                 <constraint firstItem="Wjc-Xr-tdH" firstAttribute="leading" secondItem="h52-xe-L3b" secondAttribute="leading" id="1oY-Yd-aJZ"/>
                                 <constraint firstItem="h52-xe-L3b" firstAttribute="top" secondItem="PiU-uu-aEw" secondAttribute="topMargin" constant="8" id="KMx-I4-brE"/>
+                                <constraint firstItem="4iD-BV-Kqg" firstAttribute="leading" secondItem="9o8-l9-9Vr" secondAttribute="trailing" constant="5" id="NEN-cx-Btg"/>
+                                <constraint firstItem="9o8-l9-9Vr" firstAttribute="leading" secondItem="h52-xe-L3b" secondAttribute="leading" id="Nx7-Kz-P2O"/>
                                 <constraint firstItem="vkh-1D-cCt" firstAttribute="leading" secondItem="h52-xe-L3b" secondAttribute="leading" id="NxN-u9-e08"/>
                                 <constraint firstAttribute="bottomMargin" secondItem="4iD-BV-Kqg" secondAttribute="bottom" id="Sdj-UM-ZIM"/>
                                 <constraint firstItem="vDu-Xg-lqj" firstAttribute="centerY" secondItem="9o8-l9-9Vr" secondAttribute="centerY" id="TSI-4D-Vb4"/>
@@ -187,9 +189,7 @@
                                 <constraint firstItem="9o8-l9-9Vr" firstAttribute="centerY" secondItem="4iD-BV-Kqg" secondAttribute="centerY" id="d8Q-bS-tgs"/>
                                 <constraint firstItem="vDu-Xg-lqj" firstAttribute="leading" secondItem="vkh-1D-cCt" secondAttribute="leading" id="fbK-a3-V0e"/>
                                 <constraint firstItem="Wjc-Xr-tdH" firstAttribute="top" secondItem="h52-xe-L3b" secondAttribute="bottom" constant="0.5" id="i2J-ie-afm"/>
-                                <constraint firstItem="9o8-l9-9Vr" firstAttribute="leading" secondItem="4iD-BV-Kqg" secondAttribute="trailing" constant="8" id="kNS-L2-g1o"/>
                                 <constraint firstItem="vkh-1D-cCt" firstAttribute="top" secondItem="Wjc-Xr-tdH" secondAttribute="bottom" id="mpa-SZ-sWM"/>
-                                <constraint firstItem="4iD-BV-Kqg" firstAttribute="leading" secondItem="PiU-uu-aEw" secondAttribute="leadingMargin" id="rHr-EW-drQ"/>
                             </constraints>
                             <edgeInsets key="layoutMargins" top="5" left="8" bottom="8" right="8"/>
                             <userDefinedRuntimeAttributes>
@@ -201,6 +201,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="125" id="RfC-aa-1Mo"/>
+                        <constraint firstItem="4iD-BV-Kqg" firstAttribute="centerY" secondItem="hzn-fw-GSP" secondAttribute="centerY" id="X6C-kq-6B4"/>
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5h-eA-Ctg">

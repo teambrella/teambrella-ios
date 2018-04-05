@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -59,16 +59,16 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66R-Sp-Vp1">
-                                                    <rect key="frame" x="72" y="19" width="191.5" height="35"/>
+                                                    <rect key="frame" x="72" y="19" width="175.5" height="35"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk5-Mq-84T" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="191.5" height="17.5"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk5-Mq-84T" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="175.5" height="17.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TESLA MODEL S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSm-tY-p3I" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="19.5" width="191.5" height="15.5"/>
+                                                            <rect key="frame" x="0.0" y="19.5" width="175.5" height="15.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -163,7 +163,7 @@
                                             <constraint firstItem="QSu-DT-TmB" firstAttribute="centerY" secondItem="foQ-UG-0tF" secondAttribute="centerY" id="EF4-PE-vBi"/>
                                             <constraint firstItem="qAk-dA-n6i" firstAttribute="leading" secondItem="QSu-DT-TmB" secondAttribute="trailing" constant="12" id="IiS-hI-73J"/>
                                             <constraint firstAttribute="bottom" secondItem="rYX-XR-2ma" secondAttribute="bottom" id="JBl-wN-ZIJ"/>
-                                            <constraint firstItem="66R-Sp-Vp1" firstAttribute="trailing" secondItem="QSu-DT-TmB" secondAttribute="leading" constant="8" id="Lph-Oy-tae"/>
+                                            <constraint firstItem="66R-Sp-Vp1" firstAttribute="trailing" secondItem="QSu-DT-TmB" secondAttribute="leading" constant="-8" id="Lph-Oy-tae"/>
                                             <constraint firstAttribute="trailing" secondItem="rYX-XR-2ma" secondAttribute="trailing" id="NAj-Uj-5K6"/>
                                             <constraint firstItem="66R-Sp-Vp1" firstAttribute="top" secondItem="Tid-74-fKJ" secondAttribute="top" id="OEl-oJ-bJC"/>
                                             <constraint firstItem="rYX-XR-2ma" firstAttribute="leading" secondItem="foQ-UG-0tF" secondAttribute="leading" constant="16" id="Qh5-y3-vX9"/>
@@ -204,7 +204,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yV-jX-qWH">
                                                     <rect key="frame" x="72" y="19" width="216" height="35"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIU-d2-vBN" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIU-d2-vBN" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="216" height="17.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <nil key="textColor"/>
@@ -262,6 +262,7 @@
                                             <constraint firstAttribute="trailing" secondItem="MEZ-8a-DwO" secondAttribute="trailing" id="0H5-ji-zk5"/>
                                             <constraint firstItem="6yV-jX-qWH" firstAttribute="top" secondItem="AC1-iQ-fvm" secondAttribute="top" id="362-vM-w0W"/>
                                             <constraint firstItem="MEZ-8a-DwO" firstAttribute="leading" secondItem="4aQ-0e-dvT" secondAttribute="leading" constant="16" id="6VZ-66-rtE"/>
+                                            <constraint firstItem="wMB-N1-lwa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6yV-jX-qWH" secondAttribute="trailing" constant="8" id="B8I-l5-rLU"/>
                                             <constraint firstItem="6yV-jX-qWH" firstAttribute="leading" secondItem="AC1-iQ-fvm" secondAttribute="trailing" constant="16" id="BWl-TD-PNX"/>
                                             <constraint firstItem="qbc-3j-1Xu" firstAttribute="centerY" secondItem="wMB-N1-lwa" secondAttribute="centerY" id="ENQ-Ah-MAg"/>
                                             <constraint firstAttribute="trailing" secondItem="v4A-ji-fL2" secondAttribute="trailing" constant="16" id="FP8-jU-eHM"/>

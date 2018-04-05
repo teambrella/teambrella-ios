@@ -190,6 +190,7 @@
                                             <constraint firstItem="wuP-CI-MHk" firstAttribute="leading" secondItem="khs-Zb-hW8" secondAttribute="leading" id="DoO-Mg-5NH"/>
                                             <constraint firstItem="gEt-FD-2iD" firstAttribute="leading" secondItem="fkE-jc-cEr" secondAttribute="leadingMargin" id="Dw0-Go-66H"/>
                                             <constraint firstItem="UKd-qO-8F4" firstAttribute="leading" secondItem="khs-Zb-hW8" secondAttribute="leading" id="GUD-fh-1vc"/>
+                                            <constraint firstItem="6xX-Pn-wVs" firstAttribute="centerY" secondItem="gEt-FD-2iD" secondAttribute="centerY" id="HG1-ZX-10T"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="gEt-FD-2iD" secondAttribute="bottom" id="Lyy-rl-tvL"/>
                                             <constraint firstItem="LeT-xq-UKS" firstAttribute="leading" secondItem="UKd-qO-8F4" secondAttribute="trailing" id="T9a-GL-kBy"/>
                                             <constraint firstItem="wuP-CI-MHk" firstAttribute="top" secondItem="UKd-qO-8F4" secondAttribute="bottom" id="VwA-hG-bpr"/>
@@ -200,6 +201,7 @@
                                             <constraint firstItem="uEe-ff-t9r" firstAttribute="leading" secondItem="gEt-FD-2iD" secondAttribute="trailing" constant="8" id="nvd-Ja-jss"/>
                                             <constraint firstItem="6xX-Pn-wVs" firstAttribute="centerY" secondItem="uEe-ff-t9r" secondAttribute="centerY" id="q8n-Zb-Sc6"/>
                                             <constraint firstItem="qFg-Z6-zvn" firstAttribute="leading" secondItem="wuP-CI-MHk" secondAttribute="trailing" constant="2" id="uv5-Ne-1xH"/>
+                                            <constraint firstItem="gEt-FD-2iD" firstAttribute="leading" secondItem="khs-Zb-hW8" secondAttribute="leading" id="zqk-3h-Jh1"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="5" left="8" bottom="8" right="8"/>
                                         <userDefinedRuntimeAttributes>
@@ -211,6 +213,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="7cV-Kv-yr1"/>
+                                    <constraint firstItem="gEt-FD-2iD" firstAttribute="centerY" secondItem="TnD-mv-QdM" secondAttribute="centerY" id="pWI-U0-vyJ"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKR-rc-C51">

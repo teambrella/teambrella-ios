@@ -82,7 +82,6 @@ struct ClaimEntityLarge: Decodable, CustomStringConvertible {
     struct VotingPart: Decodable {
         let ratioVoted: ClaimVote
         let myVote: ClaimVote?
-        let proxyVote: ClaimVote?
         let proxyAvatar: Avatar?
         let proxyName: Name?
         let otherAvatars: [Avatar]
@@ -92,7 +91,6 @@ struct ClaimEntityLarge: Decodable, CustomStringConvertible {
         enum CodingKeys: String, CodingKey {
             case ratioVoted = "RatioVoted"
             case myVote = "MyVote"
-            case proxyVote = "ProxyVote"
             case proxyAvatar = "ProxyAvatar"
             case proxyName = "ProxyName"
             case otherAvatars = "OtherAvatars"
