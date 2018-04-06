@@ -1223,7 +1223,6 @@
 		6D466A9B1ED07CF1001BC579 /* EntityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
 		6D466A9D1ED07CF1001BC579 /* TransactionsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TransactionsModel.xcdatamodel; sourceTree = "<group>"; };
 		6D466A9E1ED07CF1001BC579 /* TeambrellaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeambrellaService.swift; sourceTree = "<group>"; };
-		6D471A111F7BEBC2003AB5C7 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
 		6D481F781F0BAA600023C781 /* RiskScaleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RiskScaleEntity.swift; path = Model/Entities/RiskScaleEntity.swift; sourceTree = "<group>"; };
 		6D481F7A1F0BAA960023C781 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageView.swift; path = Helpers/Extensions/UIImageView.swift; sourceTree = "<group>"; };
 		6D481F7C1F0BD0DD0023C781 /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedCornersView.swift; path = View/RoundedCornersView.swift; sourceTree = "<group>"; };
@@ -2835,7 +2834,6 @@
 				6D506CDE2045A8580011CB4B /* FBSDKLoginKit.framework */,
 				6DE3E317204853220042CD72 /* Geth.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
-				6D471A111F7BEBC2003AB5C7 /* Starscream.framework */,
 				6D0BA5B01F14F83000055E74 /* SwiftDate.framework */,
 				6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */,
 				6D74B2921F7904B0007F736E /* SwiftMessages.framework */,
@@ -3331,7 +3329,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftDate.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",

@@ -29,6 +29,8 @@ def swift_frameworks_pods
   pod 'PKHUD'
   pod 'ReachabilitySwift'
   pod 'QRCode'
+  pod 'Starscream'
+  pod 'SwiftDate'
 end
 
 def pods_bundle
