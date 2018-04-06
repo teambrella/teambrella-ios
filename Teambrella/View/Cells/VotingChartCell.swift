@@ -32,7 +32,7 @@ class VotingChartCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        centerLabel.font = isSmallIPhone ? UIFont.teambrellaBold(size: 8) : UIFont.teambrellaBold(size: 10)
     }
 
 }

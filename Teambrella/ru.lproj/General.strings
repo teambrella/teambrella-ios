@@ -46,8 +46,8 @@
 
 "General.CoverageObject.other"                     = "ОБЪЕКТ";
 "General.CoverageObject.carCollisionDeductible"    = "АВТОМОБИЛЬ";
-"General.CoverageObject.petDog"                    = "ПЁС";
-"General.CoverageObject.petCat"                    = "КОТ";
+"General.CoverageObject.petDog"                    = "СОБАКА";
+"General.CoverageObject.petCat"                    = "КОШКА";
 "General.CoverageObject.bicycle"                   = "ВЕЛОСИПЕД";
 
 "General.CoverageType.other"                       = "Объект";
@@ -58,7 +58,8 @@
 
 "General.mETH"                                     = "mETH";
 
-"General.posessiveFormat.my" = "МОЙ";
+"General.posessiveFormat.my.male" = "МОЙ";
+"General.posessiveFormat.my.female" = "МОЯ";
 "General.posessiveFormat.his" = "ЕГО";
 "General.posessiveFormat.her" = "ЕЁ";
 "General.unitedFormat" = "%1$@ %2$@";
