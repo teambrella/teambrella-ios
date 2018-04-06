@@ -69,6 +69,14 @@ struct ClaimCellBuilder {
         cell.textLabel.text = claim.discussion.originalPostText.sane
         cell.unreadCountLabel.text = "\(claim.discussion.unreadCount)"
         cell.unreadCountLabel.isHidden = claim.discussion.unreadCount <= 0
+        
+        let urls = claim.discussion.topPosterAvatars.compactMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
+        let morePersons = claim.discussion.posterCount - urls.count
+        let text: String? = morePersons > 0 ? "+\(morePersons)" : nil
+        cell.imagesStack.set(images: urls, label: text, max: 4)
+        if urls.isEmpty {
+            cell.imagesStack.isHidden = true
+        }
         let minutesSinceLastPost = claim.discussion.minutesSinceLastPost
         switch minutesSinceLastPost {
         case 0:

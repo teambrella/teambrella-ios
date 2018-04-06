@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,7 +35,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7e-HQ-fhc" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="69" y="16" width="297" height="21"/>
+                                <rect key="frame" x="69" y="16" width="297" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" verticalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeg-zL-8ga" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="69" y="37" width="309" height="21"/>
+                                <rect key="frame" x="69" y="36.5" width="309" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -76,6 +76,14 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </imageView>
+                            <view alpha="0.5" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="89J-hJ-MxL" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="69" y="65" width="0.0" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="250" id="QIO-bj-tU2"/>
+                                    <constraint firstAttribute="height" constant="20" id="h8p-KS-Ybe"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -91,9 +99,11 @@
                             <constraint firstItem="Jxe-aJ-RJr" firstAttribute="leading" secondItem="wH6-UR-PyD" secondAttribute="leadingMargin" id="Pdy-LR-AHQ"/>
                             <constraint firstItem="M7e-HQ-fhc" firstAttribute="top" secondItem="Jxe-aJ-RJr" secondAttribute="top" id="Pnd-Sz-se3"/>
                             <constraint firstAttribute="height" constant="111" id="Sb5-Lt-aIG"/>
+                            <constraint firstItem="89J-hJ-MxL" firstAttribute="leading" secondItem="eeg-zL-8ga" secondAttribute="leading" id="ZN1-ee-dFI"/>
                             <constraint firstItem="eeg-zL-8ga" firstAttribute="leading" secondItem="M7e-HQ-fhc" secondAttribute="leading" id="fou-9t-3O1"/>
                             <constraint firstItem="3DA-zh-MbS" firstAttribute="leading" secondItem="eeg-zL-8ga" secondAttribute="trailing" constant="16" id="kIn-Wi-vOz"/>
                             <constraint firstItem="eeg-zL-8ga" firstAttribute="top" secondItem="M7e-HQ-fhc" secondAttribute="bottom" id="wp7-ft-JJv"/>
+                            <constraint firstItem="89J-hJ-MxL" firstAttribute="top" secondItem="eeg-zL-8ga" secondAttribute="bottom" constant="8" id="zFD-40-V7C"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eeg-zL-8ga" secondAttribute="bottom" constant="17" id="zZ3-VJ-NEY"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
@@ -108,10 +118,12 @@
                 <constraint firstItem="wH6-UR-PyD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="PVR-La-HAp"/>
                 <constraint firstItem="wH6-UR-PyD" firstAttribute="top" secondItem="mhz-q3-hzE" secondAttribute="bottom" id="p0t-BY-o7c"/>
                 <constraint firstAttribute="trailing" secondItem="wH6-UR-PyD" secondAttribute="trailing" id="qAb-jL-zQL"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="89J-hJ-MxL" secondAttribute="bottom" constant="10" id="qnF-fi-AFV"/>
             </constraints>
             <size key="customSize" width="456" height="286"/>
             <connections>
                 <outlet property="avatarView" destination="Jxe-aJ-RJr" id="aXE-7R-7gg"/>
+                <outlet property="imagesStack" destination="89J-hJ-MxL" id="gcL-KD-Khl"/>
                 <outlet property="slideshow" destination="mhz-q3-hzE" id="Dgm-KX-0wB"/>
                 <outlet property="textLabel" destination="eeg-zL-8ga" id="YlN-t5-2gi"/>
                 <outlet property="timeLabel" destination="Fug-nW-qVc" id="hat-i7-Sgg"/>
