@@ -22,6 +22,7 @@
 import UIKit
 //import FacebookLogin
 import FBSDKCoreKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Pull in case of emergency :)
         // service.cryptoMalfunction()
+
+        configureLibs()
 
         return true
     }
@@ -88,6 +91,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             storage.store(bool: false, forKey: .didLogWithKey)
             storage.store(bool: true, forKey: .didMoveToRealGroup)
         }
+    }
+
+    private func configureLibs() {
+        // Add firebase support
+        FirebaseApp.configure()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
