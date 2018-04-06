@@ -121,7 +121,8 @@ class PushService: NSObject {
         case .topicMessage:
             showTopic(details: command.topicDetails)
         case .newClaim:
-            showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
+            showTopic(details: command.topicDetails)
+            //showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
         default:
             break
         }
