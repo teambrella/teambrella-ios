@@ -22,6 +22,13 @@ end
 
 def swift_frameworks_pods
   pod 'SwiftSoup'
+  #pod 'XLPagerTabStrip'
+  pod 'ImageSlideshow'
+  pod 'KeychainAccess'
+  pod 'Kingfisher'
+  pod 'PKHUD'
+  pod 'ReachabilitySwift'
+  pod 'QRCode'
 end
 
 def pods_bundle
