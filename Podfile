@@ -31,6 +31,7 @@ def swift_frameworks_pods
   pod 'QRCode'
   pod 'Starscream'
   pod 'SwiftDate'
+  pod 'SwiftMessages'
 end
 
 def pods_bundle
