@@ -10,9 +10,9 @@ def ethereum_pods
 end
 
 def social_pods
- pod 'FBSDKCoreKit'
- pod 'FBSDKLoginKit'
- pod 'FBSDKShareKit'
+ # pod 'FBSDKCoreKit'
+ # pod 'FBSDKLoginKit'
+ # pod 'FBSDKShareKit'
 end
 
 def firebase_pods
