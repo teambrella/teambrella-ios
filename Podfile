@@ -10,9 +10,9 @@ def ethereum_pods
 end
 
 def social_pods
- # pod 'FBSDKCoreKit'
- # pod 'FBSDKLoginKit'
- # pod 'FBSDKShareKit'
+  pod 'FBSDKCoreKit', :modular_headers => true
+  pod 'FBSDKLoginKit', :modular_headers => true
+  # pod 'FBSDKShareKit'
 end
 
 def firebase_pods
@@ -28,7 +28,7 @@ def swift_frameworks_pods
   pod 'Kingfisher'
   pod 'PKHUD'
   pod 'ReachabilitySwift'
-  pod 'QRCode'
+  pod 'QRCode', :modular_headers => true
   pod 'Starscream'
   pod 'SwiftDate'
   pod 'SwiftMessages'

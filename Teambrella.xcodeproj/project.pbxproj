@@ -551,14 +551,6 @@
 		6D4E5DCE1F7AB6870020DEE2 /* Login.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9407A5851F13D81D00E0DD74 /* Login.strings */; };
 		6D4E5DCF1F7AB6870020DEE2 /* ImageGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE95671EE806F80019DA47 /* ImageGalleryCell.xib */; };
 		6D4E5DD01F7AB6870020DEE2 /* VotingRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */; };
-		6D506CD62045A69D0011CB4B /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506CD52045A69D0011CB4B /* FacebookCore.framework */; };
-		6D506CD72045A69D0011CB4B /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506CD52045A69D0011CB4B /* FacebookCore.framework */; };
-		6D506CDC2045A7940011CB4B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506CDB2045A7930011CB4B /* FBSDKCoreKit.framework */; };
-		6D506CDD2045A7940011CB4B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506CDB2045A7930011CB4B /* FBSDKCoreKit.framework */; };
-		6D506CDF2045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506CDE2045A8580011CB4B /* FBSDKLoginKit.framework */; };
-		6D506CE02045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506CDE2045A8580011CB4B /* FBSDKLoginKit.framework */; };
-		6D506CE22045A8A30011CB4B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506CE12045A8A20011CB4B /* Bolts.framework */; };
-		6D506CE32045A8A30011CB4B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506CE12045A8A20011CB4B /* Bolts.framework */; };
 		6D506D4D2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */; };
 		6D506D4E2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */; };
 		6D506DA72045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */; };
@@ -1229,10 +1221,6 @@
 		6D49FDE62020C34900A908D2 /* Fiat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Fiat.swift; path = Model/Entities/Fiat.swift; sourceTree = "<group>"; };
 		6D4E5DD91F7AB6870020DEE2 /* Surilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4E5DDA1F7AB6870020DEE2 /* Surilla.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Surilla.plist; path = "/Users/thorax/Developer/Teambrella/Teambrella-iOS/Surilla/Surilla.plist"; sourceTree = "<absolute>"; };
-		6D506CD52045A69D0011CB4B /* FacebookCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookCore.framework; path = Carthage/Build/iOS/FacebookCore.framework; sourceTree = "<group>"; };
-		6D506CDB2045A7930011CB4B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Carthage/Build/iOS/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		6D506CDE2045A8580011CB4B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Carthage/Build/iOS/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		6D506CE12045A8A20011CB4B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ThoraxMath.framework; path = Carthage/Build/iOS/ThoraxMath.framework; sourceTree = "<group>"; };
 		6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExtensionsPack.framework; path = Carthage/Build/iOS/ExtensionsPack.framework; sourceTree = "<group>"; };
 		6D56F9BB1FA737CC00B9D676 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Application.swift; path = Model/Application.swift; sourceTree = "<group>"; };
@@ -1646,12 +1634,8 @@
 				6DC1BB232077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */,
 				6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */,
 				6D506DA82045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */,
-				6D506CE02045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */,
 				6D0C39E41F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
-				6D506CD72045A69D0011CB4B /* FacebookCore.framework in Frameworks */,
-				6D506CDD2045A7940011CB4B /* FBSDKCoreKit.framework in Frameworks */,
 				FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */,
-				6D506CE32045A8A30011CB4B /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1672,11 +1656,7 @@
 				6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */,
 				6D506DA72045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */,
 				E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */,
-				6D506CDF2045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */,
-				6D506CD62045A69D0011CB4B /* FacebookCore.framework in Frameworks */,
-				6D506CDC2045A7940011CB4B /* FBSDKCoreKit.framework in Frameworks */,
 				6D0C39E31F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
-				6D506CE22045A8A30011CB4B /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2816,11 +2796,7 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6D506CE12045A8A20011CB4B /* Bolts.framework */,
 				6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */,
-				6D506CD52045A69D0011CB4B /* FacebookCore.framework */,
-				6D506CDB2045A7930011CB4B /* FBSDKCoreKit.framework */,
-				6D506CDE2045A8580011CB4B /* FBSDKLoginKit.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */,
 				6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */,
@@ -3316,10 +3292,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FacebookCore.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ThoraxMath.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ExtensionsPack.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BigNumbers.framework",
@@ -3427,6 +3399,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ImageSlideshow/ImageSlideshow.bundle",
 				"${PODS_ROOT}/PKHUD/PKHUD/Images.xcassets",
 				"${PODS_ROOT}/SwiftDate/Sources/SwiftDate/SwiftDate.bundle",
@@ -3434,6 +3407,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ImageSlideshow.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftDate.bundle",
@@ -3469,6 +3443,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ImageSlideshow/ImageSlideshow.bundle",
 				"${PODS_ROOT}/PKHUD/PKHUD/Images.xcassets",
 				"${PODS_ROOT}/SwiftDate/Sources/SwiftDate/SwiftDate.bundle",
@@ -3476,6 +3451,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ImageSlideshow.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftDate.bundle",
