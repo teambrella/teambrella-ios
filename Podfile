@@ -10,9 +10,26 @@ def ethereum_pods
 end
 
 def social_pods
-#  pod 'FBSDKCoreKit'
-  # pod 'FBSDKLoginKit'
-#  pod 'FBSDKShareKit'
+ pod 'FBSDKCoreKit'
+ pod 'FBSDKLoginKit'
+ pod 'FBSDKShareKit'
+end
+
+def firebase_pods
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+end
+
+def swift_frameworks_pods
+  pod 'SwiftSoup'
+end
+
+def pods_bundle
+  bitcoin_pods
+  ethereum_pods
+  social_pods
+  firebase_pods
+  swift_frameworks_pods
 end
 
 target 'Teambrella' do
@@ -20,9 +37,7 @@ target 'Teambrella' do
   #use_frameworks!
   inhibit_all_warnings!
 
-  bitcoin_pods
-  ethereum_pods
-  social_pods
+  pods_bundle
 
   target 'TeambrellaTests' do
     inherit! :search_paths
@@ -39,9 +54,7 @@ end
 target 'Surilla' do
   inhibit_all_warnings!
 
-  bitcoin_pods
-  ethereum_pods
-  social_pods
+  pods_bundle
 
 end
 

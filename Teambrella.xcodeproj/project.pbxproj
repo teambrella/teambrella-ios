@@ -488,7 +488,6 @@
 		6D4E5D751F7AB6870020DEE2 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */; };
 		6D4E5D761F7AB6870020DEE2 /* ImageSlideshow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DDE956A1EE80FE40019DA47 /* ImageSlideshow.framework */; };
 		6D4E5D771F7AB6870020DEE2 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8D54E1F0E43B7000A4DB7 /* PKHUD.framework */; };
-		6D4E5D7A1F7AB6870020DEE2 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
 		6D4E5D7B1F7AB6870020DEE2 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEC074F1E9BD59D0078F40E /* Kingfisher.framework */; };
 		6D4E5D7D1F7AB6870020DEE2 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0BA5B01F14F83000055E74 /* SwiftDate.framework */; };
 		6D4E5D801F7AB6870020DEE2 /* ProxyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D2AEE1EFBDB7C0095284C /* ProxyCell.xib */; };
@@ -934,7 +933,6 @@
 		6DF4791A1F432D230025F489 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479191F432D230025F489 /* KeychainService.swift */; };
 		6DF531A0203EE18C007CA0CD /* SODManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5319F203EE18C007CA0CD /* SODManager.swift */; };
 		6DF531A1203EE18C007CA0CD /* SODManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5319F203EE18C007CA0CD /* SODManager.swift */; };
-		6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */; };
 		80F21A7C34B08754FB74C0D3 /* libPods-TeambrellaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */; };
 		9407A57E1F111A5300E0DD74 /* HomeCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */; };
 		9407A5821F13C30800E0DD74 /* LoginNoInviteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A5811F13C30800E0DD74 /* LoginNoInviteVC.swift */; };
@@ -1567,7 +1565,6 @@
 		6DF78AA8203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Error.strings; sourceTree = "<group>"; };
 		6DF78AA9203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Push.strings; sourceTree = "<group>"; };
 		6DF78AAA203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Info.strings; sourceTree = "<group>"; };
-		6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
 		9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCellBuilder.swift; path = Scenes/Home/HomeCellBuilder.swift; sourceTree = "<group>"; };
 		9407A5811F13C30800E0DD74 /* LoginNoInviteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNoInviteVC.swift; path = Scenes/Login/LoginNoInviteVC.swift; sourceTree = "<group>"; };
 		9407A5831F13C33E00E0DD74 /* LoginBlueVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBlueVC.swift; path = Scenes/Login/LoginBlueVC.swift; sourceTree = "<group>"; };
@@ -1676,7 +1673,6 @@
 				6D506CE02045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */,
 				6D4E5D761F7AB6870020DEE2 /* ImageSlideshow.framework in Frameworks */,
 				6D4E5D771F7AB6870020DEE2 /* PKHUD.framework in Frameworks */,
-				6D4E5D7A1F7AB6870020DEE2 /* SwiftSoup.framework in Frameworks */,
 				6DE3E34E2049BCED0042CD72 /* QRCode.framework in Frameworks */,
 				6D4E5D7B1F7AB6870020DEE2 /* Kingfisher.framework in Frameworks */,
 				6D0C39E41F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
@@ -1712,7 +1708,6 @@
 				6DDE956B1EE80FE40019DA47 /* ImageSlideshow.framework in Frameworks */,
 				6DA8D54F1F0E43B7000A4DB7 /* PKHUD.framework in Frameworks */,
 				6DE3E34D2049BCED0042CD72 /* QRCode.framework in Frameworks */,
-				6DFB8AC11EB22F77008FC8D9 /* SwiftSoup.framework in Frameworks */,
 				6DEC07501E9BD59D0078F40E /* Kingfisher.framework in Frameworks */,
 				6D106F15203C3E180049E92E /* KeychainAccess.framework in Frameworks */,
 				6D506CD62045A69D0011CB4B /* FacebookCore.framework in Frameworks */,
@@ -2876,7 +2871,6 @@
 				6D0BA5B01F14F83000055E74 /* SwiftDate.framework */,
 				6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */,
 				6D74B2921F7904B0007F736E /* SwiftMessages.framework */,
-				6DFB8AC01EB22F77008FC8D9 /* SwiftSoup.framework */,
 				6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */,
 				6D9CC6321ED7207E007F936E /* XLPagerTabStrip.framework */,
 				F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */,
@@ -2922,8 +2916,6 @@
 				6D4E5DD11F7AB6870020DEE2 /* Carthage */,
 				6D4E5DD41F7AB6870020DEE2 /* SwiftLint */,
 				6D4E5DD51F7AB6870020DEE2 /* CPD */,
-				A20056F77F23DD914F29299D /* [CP] Embed Pods Frameworks */,
-				8F1F79FC00866CFF2A575797 /* [CP] Copy Pods Resources */,
 				6D59FD011FBC8407006C0A2B /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -2944,7 +2936,6 @@
 				6D59FCF21FBC8407006C0A2B /* Sources */,
 				6D59FCF31FBC8407006C0A2B /* Frameworks */,
 				6D59FCF41FBC8407006C0A2B /* Resources */,
-				84AC14B68DD2F19E9A0CE465 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2964,8 +2955,6 @@
 				6DA4759D1E8ABEE600B56D9B /* Frameworks */,
 				6DA4759E1E8ABEE600B56D9B /* Resources */,
 				6D8F97161E8D15B5008DC62E /* Carthage */,
-				E02813D464CF735903FDEC9D /* [CP] Embed Pods Frameworks */,
-				8CD7C238ED8CE72CDAECD7D2 /* [CP] Copy Pods Resources */,
 				6DA475DD1E8BCDB000B56D9B /* SwiftLint */,
 				6DC60B7E1EA7B805007D285C /* CPD */,
 				6DEFE3FD2006544100615022 /* Embed App Extensions */,
@@ -2988,8 +2977,6 @@
 				6DA475B01E8ABEE600B56D9B /* Sources */,
 				6DA475B11E8ABEE600B56D9B /* Frameworks */,
 				6DA475B21E8ABEE600B56D9B /* Resources */,
-				65B64BFEA424A8A8035DD14A /* [CP] Embed Pods Frameworks */,
-				FF1ABC26A0AA529738031605 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3009,7 +2996,6 @@
 				6DEFE3EE2006544100615022 /* Sources */,
 				6DEFE3EF2006544100615022 /* Frameworks */,
 				6DEFE3F02006544100615022 /* Resources */,
-				C9EBD6E0B966B48E6F3C64C2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3367,21 +3353,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		65B64BFEA424A8A8035DD14A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6D4E5DD11F7AB6870020DEE2 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3389,7 +3360,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftSoup.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ImageSlideshow.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
@@ -3504,57 +3474,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Running CPD\npmd cpd --files ${EXECUTABLE_NAME} --minimum-tokens 100 --language swift --encoding UTF-8 --format net.sourceforge.pmd.cpd.XMLRenderer > cpd-output.xml --failOnViolation false\n# Running script\nphp ./cpd_script.php -cpd-xml cpd-output.xml";
 		};
-		84AC14B68DD2F19E9A0CE465 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-notification/Pods-notification-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8CD7C238ED8CE72CDAECD7D2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh",
-				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8F1F79FC00866CFF2A575797 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh",
-				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8F73F72AC1E236FABBC621AB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3573,21 +3492,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A20056F77F23DD914F29299D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Surilla/Pods-Surilla-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C57EED01CCD06144A330A0FF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3604,51 +3508,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C9EBD6E0B966B48E6F3C64C2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NotificationTeambrella/Pods-NotificationTeambrella-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E02813D464CF735903FDEC9D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FF1ABC26A0AA529738031605 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -4664,7 +4523,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
@@ -4704,7 +4563,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8C3B97E2D3D3E031BC1B2FC /* Pods-Surilla.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
@@ -4839,6 +4698,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -4892,6 +4752,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -4906,7 +4767,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
@@ -4946,7 +4807,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 44C520431479B61FE9F06E42 /* Pods-Teambrella.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
