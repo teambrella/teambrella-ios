@@ -179,7 +179,11 @@ struct TeammateCellBuilder {
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
         let owner: String
         if let me = service.session?.currentUserID, me == teammate.basic.id {
-            owner = "General.posessiveFormat.my".localized
+            if type == CoverageType.petCat || type == CoverageType.petDog {
+                owner = "General.posessiveFormat.my.female".localized
+            } else {
+                owner = "General.posessiveFormat.my.male".localized
+            }
             cell.titleLabel.text = "General.unitedFormat.my".localized(owner, type.localizedCoverageObject)
         } else {
             owner = teammate.basic.gender == .male ?

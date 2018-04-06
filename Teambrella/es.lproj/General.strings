@@ -60,7 +60,8 @@
 
 "General.mETH" = "mETH";
 
-"General.posessiveFormat.my" = "MI";
+"General.posessiveFormat.my.male" = "MI";
+"General.posessiveFormat.my.female" = "MI";
 "General.posessiveFormat.his" = "DE %@";
 "General.posessiveFormat.her" = "DE %@";
 "General.unitedFormat" = "%2$@ %1$@";
