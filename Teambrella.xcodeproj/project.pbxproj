@@ -865,8 +865,6 @@
 		6DDFDAF71F8CEC7E00342696 /* EtherNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFDAF61F8CEC7E00342696 /* EtherNode.swift */; };
 		6DE3947D1F7909E300784ECD /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3947C1F7909E300784ECD /* ReachabilityService.swift */; };
 		6DE394801F79284900784ECD /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3947F1F79284900784ECD /* ErrorPresenter.swift */; };
-		6DE3E318204853220042CD72 /* Geth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE3E317204853220042CD72 /* Geth.framework */; };
-		6DE3E319204853220042CD72 /* Geth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE3E317204853220042CD72 /* Geth.framework */; };
 		6DE3E31B2048560C0042CD72 /* MeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3E31A2048560C0042CD72 /* MeModel.swift */; };
 		6DE3E31C2048560C0042CD72 /* MeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3E31A2048560C0042CD72 /* MeModel.swift */; };
 		6DE5541E1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */; };
@@ -1492,7 +1490,6 @@
 		6DDFDAF61F8CEC7E00342696 /* EtherNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherNode.swift; sourceTree = "<group>"; };
 		6DE3947C1F7909E300784ECD /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReachabilityService.swift; path = Model/Services/Reachability/ReachabilityService.swift; sourceTree = "<group>"; };
 		6DE3947F1F79284900784ECD /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorPresenter.swift; path = Model/Services/ErrorPresenter.swift; sourceTree = "<group>"; };
-		6DE3E317204853220042CD72 /* Geth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Geth.framework; sourceTree = "<group>"; };
 		6DE3E31A2048560C0042CD72 /* MeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MeModel.swift; path = Model/Entities/MeModel.swift; sourceTree = "<group>"; };
 		6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatNewMessagesSeparatorCell.swift; path = Scenes/Team/Chat/ChatNewMessagesSeparatorCell.swift; sourceTree = "<group>"; };
 		6DE793281EF80F11005F4508 /* UniversalChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalChatVC.swift; path = Scenes/Team/Chat/UniversalChatVC.swift; sourceTree = "<group>"; };
@@ -1648,7 +1645,6 @@
 				6D506D4E2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */,
 				6DC1BB232077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */,
 				6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */,
-				6DE3E319204853220042CD72 /* Geth.framework in Frameworks */,
 				6D506DA82045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */,
 				6D506CE02045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */,
 				6D0C39E41F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
@@ -1674,7 +1670,6 @@
 				6D506D4D2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */,
 				6DC1BB222077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */,
 				6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */,
-				6DE3E318204853220042CD72 /* Geth.framework in Frameworks */,
 				6D506DA72045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */,
 				E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */,
 				6D506CDF2045A8590011CB4B /* FBSDKLoginKit.framework in Frameworks */,
@@ -2826,7 +2821,6 @@
 				6D506CD52045A69D0011CB4B /* FacebookCore.framework */,
 				6D506CDB2045A7930011CB4B /* FBSDKCoreKit.framework */,
 				6D506CDE2045A8580011CB4B /* FBSDKLoginKit.framework */,
-				6DE3E317204853220042CD72 /* Geth.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */,
 				6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */,
