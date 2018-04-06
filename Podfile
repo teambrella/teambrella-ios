@@ -12,7 +12,6 @@ end
 def social_pods
   pod 'FBSDKCoreKit', :modular_headers => true
   pod 'FBSDKLoginKit', :modular_headers => true
-  # pod 'FBSDKShareKit'
 end
 
 def firebase_pods
@@ -32,6 +31,11 @@ def swift_frameworks_pods
   pod 'Starscream'
   pod 'SwiftDate'
   pod 'SwiftMessages'
+
+  pod 'BigNumber', :git => 'https://github.com/mkrd/Swift-Big-Integer.git'
+  pod 'ExtensionsPack', :git => 'https://github.com/yaro812/ExtensionsPack.git'
+  pod 'ThoraxMath', :git => 'https://github.com/yaro812/ThoraxMath.git'
+
 end
 
 def pods_bundle

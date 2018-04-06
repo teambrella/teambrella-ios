@@ -551,10 +551,6 @@
 		6D4E5DCE1F7AB6870020DEE2 /* Login.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9407A5851F13D81D00E0DD74 /* Login.strings */; };
 		6D4E5DCF1F7AB6870020DEE2 /* ImageGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE95671EE806F80019DA47 /* ImageGalleryCell.xib */; };
 		6D4E5DD01F7AB6870020DEE2 /* VotingRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */; };
-		6D506D4D2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */; };
-		6D506D4E2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */; };
-		6D506DA72045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */; };
-		6D506DA82045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */; };
 		6D525D0C203D8309004C3C92 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
 		6D525D0D203D830B004C3C92 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
 		6D525D0E203D837A004C3C92 /* TeambrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */; };
@@ -1221,8 +1217,6 @@
 		6D49FDE62020C34900A908D2 /* Fiat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Fiat.swift; path = Model/Entities/Fiat.swift; sourceTree = "<group>"; };
 		6D4E5DD91F7AB6870020DEE2 /* Surilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4E5DDA1F7AB6870020DEE2 /* Surilla.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Surilla.plist; path = "/Users/thorax/Developer/Teambrella/Teambrella-iOS/Surilla/Surilla.plist"; sourceTree = "<absolute>"; };
-		6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ThoraxMath.framework; path = Carthage/Build/iOS/ThoraxMath.framework; sourceTree = "<group>"; };
-		6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExtensionsPack.framework; path = Carthage/Build/iOS/ExtensionsPack.framework; sourceTree = "<group>"; };
 		6D56F9BB1FA737CC00B9D676 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Application.swift; path = Model/Application.swift; sourceTree = "<group>"; };
 		6D5852C71F9F83A00079CA89 /* HexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexTests.swift; sourceTree = "<group>"; };
 		6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatAdaptor.swift; path = Scenes/Home/PrivateMessages/PrivateChatAdaptor.swift; sourceTree = "<group>"; };
@@ -1630,10 +1624,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D506D4E2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */,
 				6DC1BB232077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */,
 				6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */,
-				6D506DA82045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */,
 				6D0C39E41F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
 				FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */,
 			);
@@ -1651,10 +1643,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D506D4D2045C00C0011CB4B /* ThoraxMath.framework in Frameworks */,
 				6DC1BB222077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */,
 				6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */,
-				6D506DA72045CAB00011CB4B /* ExtensionsPack.framework in Frameworks */,
 				E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */,
 				6D0C39E31F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
 			);
@@ -2796,10 +2786,8 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6D506DA62045CAB00011CB4B /* ExtensionsPack.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */,
-				6D506D4C2045C00B0011CB4B /* ThoraxMath.framework */,
 				6DC1BB212077C8CF008661AF /* XLPagerTabStrip.framework */,
 				F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */,
 				EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */,
@@ -3292,9 +3280,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ThoraxMath.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ExtensionsPack.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/BigNumbers.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
 			);
 			name = Carthage;
