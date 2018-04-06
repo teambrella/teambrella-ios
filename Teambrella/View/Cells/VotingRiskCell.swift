@@ -163,12 +163,15 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         leftAvatarLabel.isHidden = true
         leftAvatarLabel.layer.borderColor = UIColor.white.cgColor
         leftAvatarLabel.layer.borderWidth = 1
+        leftAvatarLabel.layer.cornerRadius = 3
         rightAvatar.isHidden = true
         rightAvatarLabel.isHidden = true
         rightAvatarLabel.layer.borderColor = UIColor.white.cgColor
         rightAvatarLabel.layer.borderWidth = 1
+        rightAvatarLabel.layer.cornerRadius = 3
         middleAvatarLabel.layer.borderColor = UIColor.white.cgColor
         middleAvatarLabel.layer.borderWidth = 1
+        middleAvatarLabel.layer.cornerRadius = 3
         
         titleLabel.text = "Team.VotingRiskVC.headerLabel".localized
         teamVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.left".localized
