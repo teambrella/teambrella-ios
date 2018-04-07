@@ -226,12 +226,12 @@ struct TeammateCellBuilder {
             right.isPercentVisible = false
         }
         
-        if let imageString = teammate.object.smallPhotos.first {
+        if let imageString = teammate.object.largePhotos.first {
             cell.avatarView.present(imageString: imageString)
             cell.avatarView.onTap = { [weak controller] view in
                 guard let vc = controller else { return }
                 
-                view.fullscreen(in: vc, imageStrings: nil)
+                view.fullscreen(in: vc, imageStrings: teammate.object.largePhotos)
             }
             //cell.avatarView.showImage(string: imageString)
         }

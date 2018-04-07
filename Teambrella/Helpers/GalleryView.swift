@@ -24,7 +24,7 @@ import Kingfisher
 import UIKit
 
 class GalleryView: ImageSlideshow {
-    var onTap: ( (GalleryView) -> Void )?
+    var onTap: ((GalleryView) -> Void )?
     var onCloseFullscreen: ((GalleryView) -> Void)?
     
     var mainImageString: String?
