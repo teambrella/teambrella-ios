@@ -1032,7 +1032,7 @@
 			remoteGlobalIDString = 6DA4759F1E8ABEE600B56D9B;
 			remoteInfo = Teambrella;
 		};
-		6DEFE3F72006544100615022 /* PBXContainerItemProxy */ = {
+		6DFECAB6207CCB2500B5FEC8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6DA475981E8ABEE600B56D9B /* Project object */;
 			proxyType = 1;
@@ -2873,14 +2873,13 @@
 				6DA4759E1E8ABEE600B56D9B /* Resources */,
 				6D8F97161E8D15B5008DC62E /* Carthage */,
 				6DA475DD1E8BCDB000B56D9B /* SwiftLint */,
-				6DC60B7E1EA7B805007D285C /* CPD */,
 				6DEFE3FD2006544100615022 /* Embed App Extensions */,
 				97A0AD50573B83ED5B26327F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6DEFE3F82006544100615022 /* PBXTargetDependency */,
+				6DFECAB7207CCB2500B5FEC8 /* PBXTargetDependency */,
 			);
 			name = Teambrella;
 			productName = Teambrella;
@@ -3346,20 +3345,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		6DC60B7E1EA7B805007D285C /* CPD */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = CPD;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "# Running CPD\npmd cpd --files ${EXECUTABLE_NAME} --minimum-tokens 100 --language swift --encoding UTF-8 --format net.sourceforge.pmd.cpd.XMLRenderer > cpd-output.xml --failOnViolation false\n# Running script\nphp ./cpd_script.php -cpd-xml cpd-output.xml";
 		};
 		6F2D2231E75AD99947AB1E17 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4319,10 +4304,10 @@
 			target = 6DA4759F1E8ABEE600B56D9B /* Teambrella */;
 			targetProxy = 6DA475B51E8ABEE600B56D9B /* PBXContainerItemProxy */;
 		};
-		6DEFE3F82006544100615022 /* PBXTargetDependency */ = {
+		6DFECAB7207CCB2500B5FEC8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6DEFE3F12006544100615022 /* NotificationTeambrella */;
-			targetProxy = 6DEFE3F72006544100615022 /* PBXContainerItemProxy */;
+			targetProxy = 6DFECAB6207CCB2500B5FEC8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4463,7 +4448,7 @@
 			baseConfigurationReference = 205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconSurilla;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = Teambrella/Teambrella.entitlements;
@@ -4503,7 +4488,7 @@
 			baseConfigurationReference = F8C3B97E2D3D3E031BC1B2FC /* Pods-Surilla.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconSurilla;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = Teambrella/Teambrella.entitlements;
