@@ -3,3 +3,4 @@ github "uport-project/SwiftKeccak"
 
 # Views
 github "xmartlabs/XLPagerTabStrip" ~> 7.0
+github "pkluz/PKHUD"
