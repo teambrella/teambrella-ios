@@ -35,7 +35,12 @@ def swift_frameworks_pods
   pod 'BigNumber', :git => 'https://github.com/mkrd/Swift-Big-Integer.git'
   pod 'ExtensionsPack', :git => 'https://github.com/yaro812/ExtensionsPack.git'
   pod 'ThoraxMath', :git => 'https://github.com/yaro812/ThoraxMath.git'
+end
 
+def notification_swift_pods
+  bitcoin_pods
+  pod 'Kingfisher'
+  pod 'KeychainAccess'
 end
 
 def pods_bundle
@@ -75,13 +80,13 @@ end
 target 'notification' do
   inhibit_all_warnings!
 
-  bitcoin_pods
+  notification_swift_pods
 
 end
 
 target 'NotificationTeambrella' do
   inhibit_all_warnings!
 
-  bitcoin_pods
+  notification_swift_pods
 
 end
