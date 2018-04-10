@@ -156,8 +156,14 @@ final class InitialVC: UIViewController {
     
     private func startLoadingTeams() {
         HUD.show(.progress)
-        service.server.updateTimestamp { timestamp, error in
-            self.getTeams(timestamp: timestamp)
+        service.server.updateTimestamp { [weak self] timestamp, error in
+            guard error == nil else {
+                log("Failed to get timestamp", type: [.serverReply, .error])
+                self?.failure()
+                return
+            }
+
+            self?.getTeams(timestamp: timestamp)
         }
     }
     

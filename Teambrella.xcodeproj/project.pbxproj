@@ -2996,8 +2996,8 @@
 			projectRoot = "";
 			targets = (
 				6DA4759F1E8ABEE600B56D9B /* Teambrella */,
-				6DA475B31E8ABEE600B56D9B /* TeambrellaTests */,
 				6D4E5C241F7AB6870020DEE2 /* Surilla */,
+				6DA475B31E8ABEE600B56D9B /* TeambrellaTests */,
 				6D59FCF51FBC8407006C0A2B /* notification */,
 				6DEFE3F12006544100615022 /* NotificationTeambrella */,
 			);
@@ -4707,6 +4707,7 @@
 			baseConfigurationReference = 1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
@@ -4874,6 +4875,7 @@
 			baseConfigurationReference = 44C520431479B61FE9F06E42 /* Pods-Teambrella.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
@@ -4896,6 +4898,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/ISO8601DateFormatter\"",
 					"\"${PODS_ROOT}/OpenSSL-Universal/lib-ios\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

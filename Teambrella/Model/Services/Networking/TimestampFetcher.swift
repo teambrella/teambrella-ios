@@ -19,6 +19,8 @@ import Foundation
 class TimestampFetcher {
     lazy private var session: URLSession = {
         let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = TimeInterval(20)
+        config.timeoutIntervalForResource = TimeInterval(20)
         return URLSession(configuration: config)
     }()
 

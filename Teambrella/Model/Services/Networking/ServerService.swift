@@ -31,6 +31,8 @@ final class ServerService: NSObject {
 
     lazy private var session: URLSession = {
         let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = TimeInterval(20)
+        config.timeoutIntervalForResource = TimeInterval(60)
         return URLSession(configuration: config)
     }()
 
@@ -42,7 +44,10 @@ final class ServerService: NSObject {
     func updateTimestamp(completion: @escaping (Int64, Error?) -> Void) {
         let timestampFetcher = TimestampFetcher()
         timestampFetcher.requestTimestamp { timestamp, error in
-            guard error == nil else { return }
+            guard error == nil else {
+                completion(0, error)
+                return
+            }
             
             self.timestamp = timestamp
             completion(timestamp, nil)
