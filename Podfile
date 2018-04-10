@@ -25,7 +25,7 @@ def swift_frameworks_pods
   pod 'ImageSlideshow'
   pod 'KeychainAccess'
   pod 'Kingfisher'
-  pod 'PKHUD'
+ #pod 'PKHUD'
   pod 'ReachabilitySwift'
   pod 'QRCode', :modular_headers => true
   pod 'Starscream'
@@ -89,12 +89,4 @@ target 'NotificationTeambrella' do
 
   notification_swift_pods
 
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['ARCHS'] = 'arm64'
-    end
-  end
 end

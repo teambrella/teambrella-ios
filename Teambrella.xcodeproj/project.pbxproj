@@ -907,6 +907,8 @@
 		6DF4791A1F432D230025F489 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479191F432D230025F489 /* KeychainService.swift */; };
 		6DF531A0203EE18C007CA0CD /* SODManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5319F203EE18C007CA0CD /* SODManager.swift */; };
 		6DF531A1203EE18C007CA0CD /* SODManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5319F203EE18C007CA0CD /* SODManager.swift */; };
+		6DFECAD7207CFEF800B5FEC8 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFECAD6207CFEF800B5FEC8 /* PKHUD.framework */; };
+		6DFECAD8207CFEF800B5FEC8 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFECAD6207CFEF800B5FEC8 /* PKHUD.framework */; };
 		80F21A7C34B08754FB74C0D3 /* libPods-TeambrellaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */; };
 		9407A57E1F111A5300E0DD74 /* HomeCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */; };
 		9407A5821F13C30800E0DD74 /* LoginNoInviteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A5811F13C30800E0DD74 /* LoginNoInviteVC.swift */; };
@@ -1524,6 +1526,7 @@
 		6DF78AA8203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Error.strings; sourceTree = "<group>"; };
 		6DF78AA9203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Push.strings; sourceTree = "<group>"; };
 		6DF78AAA203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Info.strings; sourceTree = "<group>"; };
+		6DFECAD6207CFEF800B5FEC8 /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = Carthage/Build/iOS/PKHUD.framework; sourceTree = "<group>"; };
 		9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCellBuilder.swift; path = Scenes/Home/HomeCellBuilder.swift; sourceTree = "<group>"; };
 		9407A5811F13C30800E0DD74 /* LoginNoInviteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNoInviteVC.swift; path = Scenes/Login/LoginNoInviteVC.swift; sourceTree = "<group>"; };
 		9407A5831F13C33E00E0DD74 /* LoginBlueVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBlueVC.swift; path = Scenes/Login/LoginBlueVC.swift; sourceTree = "<group>"; };
@@ -1625,6 +1628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DC1BB232077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */,
+				6DFECAD8207CFEF800B5FEC8 /* PKHUD.framework in Frameworks */,
 				6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */,
 				6D0C39E41F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
 				FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */,
@@ -1644,6 +1648,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DC1BB222077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */,
+				6DFECAD7207CFEF800B5FEC8 /* PKHUD.framework in Frameworks */,
 				6DCB19551F0FE5A200AC9969 /* SpriteKit.framework in Frameworks */,
 				E64FEE2CACB8805B71B05597 /* libPods-Teambrella.a in Frameworks */,
 				6D0C39E31F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
@@ -2789,6 +2794,7 @@
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */,
 				6DC1BB212077C8CF008661AF /* XLPagerTabStrip.framework */,
+				6DFECAD6207CFEF800B5FEC8 /* PKHUD.framework */,
 				F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */,
 				EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */,
 				BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */,
@@ -3324,6 +3330,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -3355,7 +3362,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ImageSlideshow/ImageSlideshow.bundle",
-				"${PODS_ROOT}/PKHUD/PKHUD/Images.xcassets",
 				"${PODS_ROOT}/SwiftDate/Sources/SwiftDate/SwiftDate.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 			);
@@ -3363,7 +3369,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ImageSlideshow.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftDate.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 			);
@@ -3399,7 +3404,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ImageSlideshow/ImageSlideshow.bundle",
-				"${PODS_ROOT}/PKHUD/PKHUD/Images.xcassets",
 				"${PODS_ROOT}/SwiftDate/Sources/SwiftDate/SwiftDate.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 			);
@@ -3407,7 +3411,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ImageSlideshow.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftDate.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 			);
@@ -4780,7 +4783,6 @@
 					"-l\"ImageSlideshow\"",
 					"-l\"KeychainAccess\"",
 					"-l\"Kingfisher\"",
-					"-l\"PKHUD\"",
 					"-l\"Protobuf\"",
 					"-l\"QRCode\"",
 					"-l\"ReachabilitySwift\"",
@@ -4897,7 +4899,6 @@
 					"-l\"ImageSlideshow\"",
 					"-l\"KeychainAccess\"",
 					"-l\"Kingfisher\"",
-					"-l\"PKHUD\"",
 					"-l\"Protobuf\"",
 					"-l\"QRCode\"",
 					"-l\"ReachabilitySwift\"",
