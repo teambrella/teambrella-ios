@@ -41,41 +41,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fug-nW-qVc" customClass="ThinStatusSubtitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="382" y="16" width="42" height="21"/>
+                                <rect key="frame" x="382" y="16.5" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3DA-zh-MbS" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="394" y="44" width="22" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="5a0-Ym-wdN"/>
-                                    <constraint firstAttribute="width" secondItem="3DA-zh-MbS" secondAttribute="height" multiplier="1:1" id="Adu-jj-fdz"/>
-                                </constraints>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="viewColor">
-                                        <color key="value" red="0.14117647059999999" green="0.86274509799999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" verticalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeg-zL-8ga" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="69" y="36.5" width="309" height="20.5"/>
+                                <rect key="frame" x="69" y="36.5" width="265" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="FHT-Ki-5VZ">
-                                <rect key="frame" x="432" y="48.5" width="8" height="13"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="8" id="E6T-Dq-WAR"/>
-                                    <constraint firstAttribute="height" constant="13" id="RWB-dT-Tf7"/>
-                                </constraints>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                            </imageView>
                             <view alpha="0.5" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="89J-hJ-MxL" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="69" y="65" width="0.0" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,6 +60,35 @@
                                     <constraint firstAttribute="height" constant="20" id="h8p-KS-Ybe"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ffg-lA-RS1">
+                                <rect key="frame" x="350" y="44.5" width="74" height="22"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3DA-zh-MbS" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="5a0-Ym-wdN"/>
+                                            <constraint firstAttribute="height" constant="22" id="dTd-Cy-B1D"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="viewColor">
+                                                <color key="value" red="0.14117647059999999" green="0.86274509799999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="FHT-Ki-5VZ">
+                                        <rect key="frame" x="66" y="4.5" width="8" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="E6T-Dq-WAR"/>
+                                            <constraint firstAttribute="height" constant="13" id="RWB-dT-Tf7"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -91,17 +96,15 @@
                             <constraint firstItem="M7e-HQ-fhc" firstAttribute="leading" secondItem="Jxe-aJ-RJr" secondAttribute="trailing" constant="13" id="0G2-vg-WPZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fug-nW-qVc" secondAttribute="trailing" constant="16" id="1yl-ur-xnf"/>
                             <constraint firstItem="Jxe-aJ-RJr" firstAttribute="top" secondItem="wH6-UR-PyD" secondAttribute="topMargin" id="4HD-Zs-M2v"/>
-                            <constraint firstItem="FHT-Ki-5VZ" firstAttribute="leading" secondItem="3DA-zh-MbS" secondAttribute="trailing" constant="16" id="5n6-9m-brb"/>
-                            <constraint firstItem="3DA-zh-MbS" firstAttribute="centerY" secondItem="FHT-Ki-5VZ" secondAttribute="centerY" id="Aqp-gY-Pp8"/>
+                            <constraint firstItem="ffg-lA-RS1" firstAttribute="centerY" secondItem="wH6-UR-PyD" secondAttribute="centerY" id="BJ7-sn-rZf"/>
                             <constraint firstItem="Fug-nW-qVc" firstAttribute="leading" secondItem="M7e-HQ-fhc" secondAttribute="trailing" constant="16" id="EoU-hh-B8H"/>
-                            <constraint firstItem="FHT-Ki-5VZ" firstAttribute="centerY" secondItem="wH6-UR-PyD" secondAttribute="centerY" id="JLe-KU-Uag"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FHT-Ki-5VZ" secondAttribute="trailing" id="PNc-mB-eeZ"/>
+                            <constraint firstItem="ffg-lA-RS1" firstAttribute="trailing" secondItem="Fug-nW-qVc" secondAttribute="trailing" id="LDe-ct-MKL"/>
                             <constraint firstItem="Jxe-aJ-RJr" firstAttribute="leading" secondItem="wH6-UR-PyD" secondAttribute="leadingMargin" id="Pdy-LR-AHQ"/>
                             <constraint firstItem="M7e-HQ-fhc" firstAttribute="top" secondItem="Jxe-aJ-RJr" secondAttribute="top" id="Pnd-Sz-se3"/>
                             <constraint firstAttribute="height" constant="111" id="Sb5-Lt-aIG"/>
                             <constraint firstItem="89J-hJ-MxL" firstAttribute="leading" secondItem="eeg-zL-8ga" secondAttribute="leading" id="ZN1-ee-dFI"/>
+                            <constraint firstItem="ffg-lA-RS1" firstAttribute="leading" secondItem="eeg-zL-8ga" secondAttribute="trailing" constant="16" id="eFu-aF-lpd"/>
                             <constraint firstItem="eeg-zL-8ga" firstAttribute="leading" secondItem="M7e-HQ-fhc" secondAttribute="leading" id="fou-9t-3O1"/>
-                            <constraint firstItem="3DA-zh-MbS" firstAttribute="leading" secondItem="eeg-zL-8ga" secondAttribute="trailing" constant="16" id="kIn-Wi-vOz"/>
                             <constraint firstItem="eeg-zL-8ga" firstAttribute="top" secondItem="M7e-HQ-fhc" secondAttribute="bottom" id="wp7-ft-JJv"/>
                             <constraint firstItem="89J-hJ-MxL" firstAttribute="top" secondItem="eeg-zL-8ga" secondAttribute="bottom" constant="8" id="zFD-40-V7C"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eeg-zL-8ga" secondAttribute="bottom" constant="17" id="zZ3-VJ-NEY"/>
