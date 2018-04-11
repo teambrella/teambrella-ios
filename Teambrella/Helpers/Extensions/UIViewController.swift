@@ -30,6 +30,7 @@ extension UIViewController {
     func addGradientNavBar() {
         setupTransparentNavigationBar()
         defaultGradientOnTop()
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.7411764706, green: 0.7647058824, blue: 1, alpha: 1)
     }
     
     func setupTransparentNavigationBar() {
