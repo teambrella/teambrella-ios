@@ -80,8 +80,20 @@ class InputAccessoryView: UIView {
         autoresizingMask = [.flexibleHeight]
         setupConstraints()
     }
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if #available(iOS 11.0, *) {
+            if let window = self.window {
+                self.bottomAnchor
+                    .constraintLessThanOrEqualToSystemSpacingBelow(window.safeAreaLayoutGuide.bottomAnchor,
+                                                                   multiplier: 1.0)
+                    .isActive = true
+            }
+        }
+    }
     
-    func setupConstraints() {      
+    func setupConstraints() {
         leftButton.translatesAutoresizingMaskIntoConstraints = false
         leftButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         leftButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
