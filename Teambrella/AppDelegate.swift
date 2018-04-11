@@ -34,7 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
-        application.registerForRemoteNotifications()
+        service.push.register(application: application)
+
         TeambrellaStyle.apply()
         if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
             service.push.remoteNotificationOnStart(in: application, userInfo: notification)

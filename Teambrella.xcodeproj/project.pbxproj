@@ -909,6 +909,7 @@
 		6DF531A1203EE18C007CA0CD /* SODManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5319F203EE18C007CA0CD /* SODManager.swift */; };
 		6DFECAD7207CFEF800B5FEC8 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFECAD6207CFEF800B5FEC8 /* PKHUD.framework */; };
 		6DFECAD8207CFEF800B5FEC8 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFECAD6207CFEF800B5FEC8 /* PKHUD.framework */; };
+		6DFECADA207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */; };
 		80F21A7C34B08754FB74C0D3 /* libPods-TeambrellaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */; };
 		9407A57E1F111A5300E0DD74 /* HomeCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */; };
 		9407A5821F13C30800E0DD74 /* LoginNoInviteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A5811F13C30800E0DD74 /* LoginNoInviteVC.swift */; };
@@ -1527,6 +1528,7 @@
 		6DF78AA9203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Push.strings; sourceTree = "<group>"; };
 		6DF78AAA203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Info.strings; sourceTree = "<group>"; };
 		6DFECAD6207CFEF800B5FEC8 /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = Carthage/Build/iOS/PKHUD.framework; sourceTree = "<group>"; };
+		6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPayloadProtocol.swift; sourceTree = "<group>"; };
 		9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCellBuilder.swift; path = Scenes/Home/HomeCellBuilder.swift; sourceTree = "<group>"; };
 		9407A5811F13C30800E0DD74 /* LoginNoInviteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNoInviteVC.swift; path = Scenes/Login/LoginNoInviteVC.swift; sourceTree = "<group>"; };
 		9407A5831F13C33E00E0DD74 /* LoginBlueVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBlueVC.swift; path = Scenes/Login/LoginBlueVC.swift; sourceTree = "<group>"; };
@@ -2101,6 +2103,7 @@
 				6DA1A54A1FBF25ED000FDECA /* RemotePayload.swift */,
 				6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */,
 				6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */,
+				6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */,
 			);
 			path = notification;
 			sourceTree = "<group>";
@@ -3286,6 +3289,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -3850,6 +3854,7 @@
 				6D525D10203D8390004C3C92 /* ServerStatus.swift in Sources */,
 				6DA1A5441FBF0C7F000FDECA /* KeyStorage.swift in Sources */,
 				6D525D0C203D8309004C3C92 /* Log.swift in Sources */,
+				6DFECADA207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift in Sources */,
 				6D9374AA202C9EB800BB28CB /* Notification.swift in Sources */,
 				6DA1A5451FBF0C8B000FDECA /* Key.swift in Sources */,
 				6DA1A54B1FBF25ED000FDECA /* RemotePayload.swift in Sources */,
