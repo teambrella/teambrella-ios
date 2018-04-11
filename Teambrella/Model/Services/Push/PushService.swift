@@ -19,6 +19,7 @@
  */
 //
 
+import Firebase
 import UIKit
 import UserNotifications
 
@@ -33,10 +34,15 @@ class PushService: NSObject {
     
     var router: MainRouter { return service.router }
     var session: Session? { return service.session }
+
+    var currentFirebaseToken: String?
     
     override init() {
         super.init()
         UNUserNotificationCenter.current().delegate = self
+
+        // Firebase
+        Messaging.messaging().delegate = self
     }
     
     func askPermissionsForRemoteNotifications(application: UIApplication) {
@@ -51,7 +57,11 @@ class PushService: NSObject {
             }
         }
     }
-    
+
+    func register(application: UIApplication) {
+        application.registerForRemoteNotifications()
+    }
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         token = deviceToken
         log("Did register for remote notifications with token \(tokenString ?? "nil")", type: .push)
@@ -205,5 +215,12 @@ extension PushService: UNUserNotificationCenterDelegate {
                                 withCompletionHandler completionHandler:
         @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound, .badge])
+    }
+}
+
+extension PushService: MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        currentFirebaseToken = fcmToken
+        print("Firebase token: \(fcmToken)")
     }
 }
