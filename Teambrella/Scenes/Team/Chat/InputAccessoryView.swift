@@ -26,7 +26,7 @@ class InputAccessoryView: UIView {
     lazy var textView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.teambrella(size: 14)
-        textView.layer.cornerRadius = 5
+        textView.layer.cornerRadius = 3
         textView.layer.borderColor = UIColor.cloudyBlue.cgColor
         textView.layer.borderWidth = 1
         textView.delegate = self
@@ -76,38 +76,38 @@ class InputAccessoryView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .lightBlueGray
+        backgroundColor = .paleGrayFour
         autoresizingMask = [.flexibleHeight]
         setupConstraints()
     }
     
-    func setupConstraints() {
+    func setupConstraints() {      
         leftButton.translatesAutoresizingMaskIntoConstraints = false
         leftButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         leftButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         leftButton.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         leftButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         leftButton.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor).isActive = true
-
+        
         rightButton.translatesAutoresizingMaskIntoConstraints = false
         rightButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         rightButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         rightButton.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         rightButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-
+        
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.leftAnchor.constraint(equalTo: leftButton.rightAnchor).isActive = true
         textView.rightAnchor.constraint(equalTo: rightButton.leftAnchor).isActive = true
         textView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
         textView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
         textView.heightAnchor.constraint(lessThanOrEqualToConstant: maxHeight).isActive = true
-
+        
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
         placeholderLabel.centerXAnchor.constraint(equalTo: textView.centerXAnchor).isActive = true
         placeholderLabel.centerYAnchor.constraint(equalTo: textView.centerYAnchor).isActive = true
         placeholderLabel.widthAnchor.constraint(lessThanOrEqualTo: textView.widthAnchor).isActive = true
         placeholderLabel.heightAnchor.constraint(lessThanOrEqualTo: textView.heightAnchor).isActive = true
-
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         self.heightAnchor.constraint(lessThanOrEqualToConstant: maxHeight + 10).isActive = true
     }

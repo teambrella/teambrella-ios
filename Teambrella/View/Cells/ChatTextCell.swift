@@ -24,8 +24,8 @@ import UIKit
 class ChatTextCell: UICollectionViewCell {
     struct Constant {
         static let tailWidth: CGFloat = 10
-        static let tailHeight: CGFloat = 7
-        static let cloudCornerRadius: CGFloat = 5
+        static let tailHeight: CGFloat = 10
+        static let cloudCornerRadius: CGFloat = 6
         static let avatarWidth: CGFloat = 15 * UIScreen.main.nativeScale
         static let avatarContainerInset: CGFloat = 5
         static let avatarCloudInset: CGFloat = 5
@@ -213,7 +213,7 @@ class ChatTextCell: UICollectionViewCell {
         context.closePath()
         
         context.setFillColor(UIColor.veryLightBlue.cgColor)
-        context.setStrokeColor(#colorLiteral(red: 0.8039215686, green: 0.862745098, blue: 0.9529411765, alpha: 1).cgColor)
+        context.setStrokeColor(#colorLiteral(red: 0.8039215686, green: 0.8666666667, blue: 0.9529411765, alpha: 1).cgColor)
     }
     
     private func prepareTheirCloud(in context: CGContext) {

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -53,13 +52,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="F9g-le-cSH" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="52" y="23.5" width="25.5" height="12"/>
+                            <rect key="frame" x="52" y="26" width="25.5" height="12"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YP-gL-Rik" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="82" y="25" width="23.5" height="11"/>
+                            <rect key="frame" x="82" y="27.5" width="23.5" height="11"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="9"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -72,7 +71,7 @@
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="4"/>
+                                    <integer key="value" value="3"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </imageView>
@@ -170,23 +169,23 @@
                         <constraint firstItem="MYB-G5-BbW" firstAttribute="leading" secondItem="8MY-cC-Bco" secondAttribute="leading" constant="16" id="12G-ef-882"/>
                         <constraint firstAttribute="bottom" secondItem="MYB-G5-BbW" secondAttribute="bottom" constant="10" id="15d-Pj-OnK"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="top" secondItem="8MY-cC-Bco" secondAttribute="top" constant="8" id="1Ub-ll-bXn"/>
+                        <constraint firstItem="kHo-BD-xhI" firstAttribute="top" secondItem="MYB-G5-BbW" secondAttribute="top" id="4U9-n4-Ygi"/>
                         <constraint firstItem="8rK-LI-YhF" firstAttribute="centerY" secondItem="36L-C4-ED1" secondAttribute="centerY" id="6Tr-IS-yyI"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7YP-gL-Rik" secondAttribute="trailing" constant="8" id="7MR-rt-lQ4"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="leading" secondItem="kHo-BD-xhI" secondAttribute="trailing" constant="8" id="7yY-KF-xdU"/>
                         <constraint firstAttribute="trailing" secondItem="c1y-bp-9dQ" secondAttribute="trailing" id="8Hh-Gp-F8W"/>
+                        <constraint firstItem="F9g-le-cSH" firstAttribute="centerY" secondItem="7YP-gL-Rik" secondAttribute="centerY" id="9uG-MP-zqe"/>
+                        <constraint firstItem="F9g-le-cSH" firstAttribute="bottom" secondItem="MYB-G5-BbW" secondAttribute="bottom" constant="2" id="9wa-ib-UY3"/>
                         <constraint firstItem="c1y-bp-9dQ" firstAttribute="top" secondItem="8MY-cC-Bco" secondAttribute="top" id="BxJ-FP-7I1"/>
                         <constraint firstAttribute="bottom" secondItem="c1y-bp-9dQ" secondAttribute="bottom" id="K6i-MX-Xmu"/>
                         <constraint firstAttribute="bottom" secondItem="vhP-W7-ibO" secondAttribute="bottom" constant="8" id="MRj-66-XS9"/>
                         <constraint firstItem="MYB-G5-BbW" firstAttribute="top" secondItem="8MY-cC-Bco" secondAttribute="top" constant="10" id="Pd4-vj-G1H"/>
-                        <constraint firstItem="7YP-gL-Rik" firstAttribute="firstBaseline" secondItem="F9g-le-cSH" secondAttribute="firstBaseline" id="Rti-Vs-dH7"/>
                         <constraint firstItem="kHo-BD-xhI" firstAttribute="bottom" secondItem="MYB-G5-BbW" secondAttribute="centerY" id="TIS-gl-pKm"/>
                         <constraint firstItem="F9g-le-cSH" firstAttribute="leading" secondItem="MYB-G5-BbW" secondAttribute="trailing" constant="8" id="WOT-eE-08h"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="centerY" secondItem="8MY-cC-Bco" secondAttribute="centerY" id="dLX-Xv-jaU"/>
                         <constraint firstItem="kHo-BD-xhI" firstAttribute="leading" secondItem="MYB-G5-BbW" secondAttribute="trailing" constant="8" id="m9N-k5-Jqz"/>
-                        <constraint firstAttribute="bottom" secondItem="F9g-le-cSH" secondAttribute="bottom" constant="12" id="nfM-Z9-dha"/>
                         <constraint firstItem="8rK-LI-YhF" firstAttribute="width" secondItem="36L-C4-ED1" secondAttribute="width" id="nun-Ov-Vtp"/>
-                        <constraint firstItem="F9g-le-cSH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kHo-BD-xhI" secondAttribute="bottom" id="pER-pT-PYf"/>
-                        <constraint firstItem="kHo-BD-xhI" firstAttribute="top" secondItem="8MY-cC-Bco" secondAttribute="top" constant="6" id="pnK-Sc-LV4"/>
+                        <constraint firstItem="F9g-le-cSH" firstAttribute="top" secondItem="kHo-BD-xhI" secondAttribute="bottom" id="pER-pT-PYf"/>
                         <constraint firstItem="8rK-LI-YhF" firstAttribute="centerX" secondItem="36L-C4-ED1" secondAttribute="centerX" id="s1Q-P1-m4a"/>
                         <constraint firstItem="7YP-gL-Rik" firstAttribute="leading" secondItem="F9g-le-cSH" secondAttribute="trailing" constant="4" id="sJs-3j-qyH"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="trailing" secondItem="c1y-bp-9dQ" secondAttribute="leading" id="ymh-o5-NL1"/>

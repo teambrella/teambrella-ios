@@ -107,7 +107,7 @@ class ChatObjectView: UIView, XIBInitable {
         rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
         
         imageView.image = #imageLiteral(resourceName: "imagePlaceholder")
-        imageView.layer.cornerRadius = 4
+        imageView.layer.cornerRadius = 3
         rightLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
         basic.smallPhoto.map { self.imageView.showImage(string: $0) }
         voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
