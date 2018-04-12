@@ -26,9 +26,10 @@ import UserNotifications
 class PushService: NSObject {
     var token: Data?
     var tokenString: String? {
-        guard let token = token else { return nil }
-        
-        return [UInt8](token).reduce("") { $0 + String(format: "%02x", $1) }
+//        guard let token = token else { return nil }
+//
+//        return [UInt8](token).reduce("") { $0 + String(format: "%02x", $1) }
+        return currentFirebaseToken
     }
     var command: RemotePayload?
     

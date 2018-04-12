@@ -104,7 +104,10 @@ class MyProxiesVC: UIViewController {
             location.y += offsetForDraggedCell.y
             collectionView.updateInteractiveMovementTargetPosition(location)
         case UIGestureRecognizerState.ended:
-            collectionView.endInteractiveMovement()
+            // without performing batch update the dragged cell blinks when dropped
+           // collectionView.performBatchUpdates({
+                self.collectionView.endInteractiveMovement()
+           // }, completion: nil)
         default:
             collectionView.cancelInteractiveMovement()
         }
@@ -185,8 +188,13 @@ extension MyProxiesVC: UICollectionViewDelegate {
                         moveItemAt sourceIndexPath: IndexPath,
                         to destinationIndexPath: IndexPath) {
         dataSource.move(from: sourceIndexPath, to: destinationIndexPath)
-        collectionView.reloadData()
-        collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
+
+        let idxs = self.collectionView.indexPathsForVisibleItems
+        for idx in idxs {
+            guard let cell = collectionView.cellForItem(at: idx) as? ProxyCell else { continue }
+
+            cell.numberLabel.text = String(idx.row + 1)
+        }
     }
     
 }
