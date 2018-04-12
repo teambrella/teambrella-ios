@@ -39,6 +39,9 @@ class ChatObjectView: UIView, XIBInitable {
     @IBOutlet var rightButton: UIButton!
     @IBOutlet var rightLabel: BlockHeaderLabel!
     
+    @IBOutlet var imageViewWidth: NSLayoutConstraint!
+    @IBOutlet var imageViewHeight: NSLayoutConstraint!
+    
     var contentView: UIView!
     
     weak var delegate: ChatObjectViewDelegate?
@@ -65,7 +68,6 @@ class ChatObjectView: UIView, XIBInitable {
         voteContainer.isHidden = false
         chevronButton.alpha = 0
         voteContainer.alpha = 1
-        
         chevronButton.imageView?.contentMode = .scaleAspectFit
         chevronButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
@@ -93,6 +95,11 @@ class ChatObjectView: UIView, XIBInitable {
     func showVoteContainer() {
         voteContainer.alpha = 1
         chevronButton.alpha = 0
+    }
+    
+    func resizeImageView() {
+        imageViewWidth.constant = isSmallIPhone ? 28 : 38
+        imageViewHeight.constant = isSmallIPhone ? 28 : 38
     }
     
     private func setupClaimObjectView(basic: ChatModel.BasicPart,
@@ -131,6 +138,7 @@ class ChatObjectView: UIView, XIBInitable {
             rightLabel.isHidden = true
         }
         proxyAvatarView.image = nil
+        resizeImageView()
     }
     
     private func setupTeammateObjectView(basic: ChatModel.BasicPart,
@@ -167,6 +175,7 @@ class ChatObjectView: UIView, XIBInitable {
             rightButton.isHidden = true
             rightLabel.isHidden = true
         }
+        resizeImageView()
     }
     
     @IBAction func tapChevron(_ sender: UIButton) {
