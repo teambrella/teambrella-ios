@@ -436,7 +436,7 @@ private extension UniversalChatVC {
     }
     
     private func setupInput() {
-        ViewDecorator.shadow(for: input, color: #colorLiteral(red: 0.8705882353, green: 0.8901960784, blue: 0.9098039216, alpha: 1), opacity: 1, radius: 8, offset: CGSize(width: 0, height: -8))
+        ViewDecorator.shadow(for: input, color: #colorLiteral(red: 0.231372549, green: 0.2588235294, blue: 0.4901960784, alpha: 1), opacity: 0.05, radius: 8, offset: CGSize(width: 0, height: -9))
         if dataSource.isPrivateChat {
             input.leftButton.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
             input.leftButton.isHidden = true
