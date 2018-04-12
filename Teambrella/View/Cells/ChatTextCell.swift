@@ -23,8 +23,10 @@ import UIKit
 
 class ChatTextCell: UICollectionViewCell {
     struct Constant {
-        static let tailWidth: CGFloat = 10
-        static let tailHeight: CGFloat = 10
+        static let tailWidth: CGFloat = 8
+        static let tailHeight: CGFloat = 8
+        static let tailSoftening: CGFloat = 3
+        static let tailCornerRadius: CGFloat = 1
         static let cloudCornerRadius: CGFloat = 6
         static let avatarWidth: CGFloat = 15 * UIScreen.main.nativeScale
         static let avatarContainerInset: CGFloat = 5
@@ -180,8 +182,11 @@ class ChatTextCell: UICollectionViewCell {
     private func prepareMyCloud(in context: CGContext) {
         var pen: CGPoint = cloudStartPoint
         context.move(to: pen)
-        pen.x -= Constant.tailWidth
-        pen.y -= Constant.tailHeight
+        pen.y -= Constant.tailSoftening
+        pen.x -= Constant.tailSoftening
+        context.move(to: pen)
+        pen.x -= Constant.tailWidth - Constant.tailSoftening
+        pen.y -= Constant.tailHeight - Constant.tailSoftening
         context.addLine(to: pen)
         
         pen.y = Constant.cloudCornerRadius
@@ -198,8 +203,7 @@ class ChatTextCell: UICollectionViewCell {
         pen.x = cloudBodyMinX
         pen.y = Constant.cloudCornerRadius
         controlP = CGPoint(x: cloudBodyMinX, y: 0)
-        context.addQuadCurve(to: pen,
-                             control: controlP)
+        context.addQuadCurve(to: pen, control: controlP)
         
         pen.y = cloudHeight - Constant.cloudCornerRadius
         context.addLine(to: pen)
@@ -207,9 +211,14 @@ class ChatTextCell: UICollectionViewCell {
         pen.x += Constant.cloudCornerRadius
         pen.y = cloudHeight
         controlP = CGPoint(x: cloudBodyMinX, y: cloudHeight)
-        context.addQuadCurve(to: pen,
-                             control: controlP)
+        context.addQuadCurve(to: pen, control: controlP)
         
+        pen.x = cloudStartPoint.x - Constant.tailSoftening
+        context.addLine(to: pen)
+        
+        pen.y -= Constant.tailSoftening
+        controlP = CGPoint(x: cloudStartPoint.x, y: cloudStartPoint.y - Constant.tailCornerRadius)
+        context.addQuadCurve(to: pen, control: controlP)
         context.closePath()
         
         context.setFillColor(UIColor.veryLightBlue.cgColor)
@@ -219,8 +228,11 @@ class ChatTextCell: UICollectionViewCell {
     private func prepareTheirCloud(in context: CGContext) {
         var pen: CGPoint = cloudStartPoint
         context.move(to: pen)
-        pen.x += Constant.tailWidth
-        pen.y -= Constant.tailHeight
+        pen.x += Constant.tailSoftening
+        pen.y -= Constant.tailSoftening
+        context.move(to: pen)
+        pen.x += Constant.tailWidth - Constant.tailSoftening
+        pen.y -= Constant.tailHeight - Constant.tailSoftening
         context.addLine(to: pen)
         
         pen.y = Constant.cloudCornerRadius
@@ -237,8 +249,7 @@ class ChatTextCell: UICollectionViewCell {
         pen.x = cloudBodyMaxX
         pen.y = Constant.cloudCornerRadius
         controlP = CGPoint(x: cloudBodyMaxX, y: 0)
-        context.addQuadCurve(to: pen,
-                             control: controlP)
+        context.addQuadCurve(to: pen, control: controlP)
         
         pen.y = cloudHeight - Constant.cloudCornerRadius
         context.addLine(to: pen)
@@ -246,8 +257,14 @@ class ChatTextCell: UICollectionViewCell {
         pen.x -= Constant.cloudCornerRadius
         pen.y = cloudHeight
         controlP = CGPoint(x: cloudBodyMaxX, y: cloudHeight)
-        context.addQuadCurve(to: pen,
-                             control: controlP)
+        context.addQuadCurve(to: pen, control: controlP)
+        
+        pen.x = cloudStartPoint.x + Constant.tailSoftening
+        context.addLine(to: pen)
+        
+        pen.y -= Constant.tailSoftening
+        controlP = CGPoint(x: cloudStartPoint.x, y: cloudStartPoint.y - Constant.tailCornerRadius)
+        context.addQuadCurve(to: pen, control: controlP)
         
         context.closePath()
         
