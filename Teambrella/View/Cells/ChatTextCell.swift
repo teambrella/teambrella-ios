@@ -29,8 +29,10 @@ class ChatTextCell: UICollectionViewCell {
         static let tailCornerRadius: CGFloat = 1
         static let cloudCornerRadius: CGFloat = 6
         static let avatarWidth: CGFloat = 15 * UIScreen.main.nativeScale
-        static let avatarContainerInset: CGFloat = 5
-        static let avatarCloudInset: CGFloat = 5
+        static let avatarContainerInset: CGFloat = 12
+        static let avatarCloudInset: CGFloat = 3.5
+        static let textInset: CGFloat = 16
+        static let timeInset: CGFloat = 8
     }
     
     var cloudHeight: CGFloat = 90
@@ -221,6 +223,7 @@ class ChatTextCell: UICollectionViewCell {
         context.addQuadCurve(to: pen, control: controlP)
         context.closePath()
         
+        context.setLineWidth(0.5)
         context.setFillColor(UIColor.veryLightBlue.cgColor)
         context.setStrokeColor(#colorLiteral(red: 0.8039215686, green: 0.8666666667, blue: 0.9529411765, alpha: 1).cgColor)
     }
@@ -268,6 +271,7 @@ class ChatTextCell: UICollectionViewCell {
         
         context.closePath()
         
+        context.setLineWidth(0.5)
         context.setFillColor(UIColor.white.cgColor)
         context.setStrokeColor(UIColor.lightBlueGray.cgColor)
     }
@@ -291,8 +295,8 @@ class ChatTextCell: UICollectionViewCell {
         leftLabel.frame = baseFrame
         leftLabel.text = name.entire
         leftLabel.sizeToFit()
-        leftLabel.center = CGPoint(x: cloudBodyMinX + leftLabel.frame.width / 2 + 8,
-                                   y: leftLabel.frame.height / 2 + 8)
+        leftLabel.center = CGPoint(x: cloudBodyMinX + leftLabel.frame.width / 2 + Constant.textInset,
+                                   y: leftLabel.frame.height / 2 + Constant.textInset / 2)
     }
     
     private func setupRightLabel(rateText: String?, baseFrame: CGRect) {
@@ -301,10 +305,10 @@ class ChatTextCell: UICollectionViewCell {
             rightLabel.isHidden = false
             rightLabel.text = rate
             rightLabel.sizeToFit()
-            rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - 8,
+            rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - Constant.timeInset,
                                         y: leftLabel.frame.minY + rightLabel.frame.height / 2)
             if leftLabel.frame.maxX > rightLabel.frame.minX - 8 {
-                leftLabel.frame.size.width -= leftLabel.frame.maxX - (rightLabel.frame.minX - 8)
+                leftLabel.frame.size.width -= leftLabel.frame.maxX - (rightLabel.frame.minX - Constant.timeInset)
             }
         } else {
             rightLabel.isHidden = true
@@ -313,10 +317,13 @@ class ChatTextCell: UICollectionViewCell {
     
     private func setupBottomLabel(date: Date, baseFrame: CGRect) {
         bottomLabel.frame = baseFrame
-        bottomLabel.text = DateProcessor().stringInterval(from: date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.timeStyle = .short
+        bottomLabel.text = dateFormatter.string(from: date)
         bottomLabel.sizeToFit()
-        bottomLabel.center = CGPoint(x: cloudBodyMaxX - bottomLabel.frame.width / 2 - 8,
-                                     y: cloudHeight - bottomLabel.frame.height / 2 - 8)
+        bottomLabel.center = CGPoint(x: cloudBodyMaxX - bottomLabel.frame.width / 2 - Constant.timeInset,
+                                     y: cloudHeight - bottomLabel.frame.height / 2 - Constant.timeInset)
     }
     
     private func setupFragments(fragments: [ChatFragment], heights: [CGFloat]) -> [UIView] {
@@ -348,9 +355,9 @@ class ChatTextCell: UICollectionViewCell {
         } else {
             verticalOffset = leftLabel.frame.maxY + 8
         }
-        let textView = UITextView(frame: CGRect(x: cloudBodyMinX + 8,
+        let textView = UITextView(frame: CGRect(x: cloudBodyMinX + Constant.textInset,
                                                 y: verticalOffset,
-                                                width: cloudWidth - 16,
+                                                width: cloudWidth - Constant.textInset * 2,
                                                 height: height))
         
         textView.textColor = .charcoalGray

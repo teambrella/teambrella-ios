@@ -597,7 +597,16 @@ extension UniversalChatVC: UICollectionViewDelegate {
                 cell.alpha = 0.5
             }
         } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
-            cell.text = Formatter.teambrellaShort.string(from: model.date)
+            let modelYear = NSCalendar.current.component(.year, from: model.date)
+            let currentDate = Date()
+            let currentYear = NSCalendar.current.component(.year, from: currentDate)
+            
+            let dateFormatter = DateFormatter()
+            let template = modelYear == currentYear ? "dMMMM" : "YYYYdMMM"
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template,
+                                                                options: 0,
+                                                                locale: NSLocale.current)
+            cell.text = dateFormatter.string(from: model.date)
         } else if let cell = cell as? ChatNewMessagesSeparatorCell,
             let model = model as? ChatNewMessagesSeparatorModel {
             cell.label.text = model.text
