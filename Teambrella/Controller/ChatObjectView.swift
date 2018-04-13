@@ -41,6 +41,7 @@ class ChatObjectView: UIView, XIBInitable {
     
     @IBOutlet var imageViewWidth: NSLayoutConstraint!
     @IBOutlet var imageViewHeight: NSLayoutConstraint!
+    @IBOutlet var imageViewLeadingConstraint: NSLayoutConstraint!
     
     var contentView: UIView!
     
@@ -100,6 +101,7 @@ class ChatObjectView: UIView, XIBInitable {
     func resizeImageView() {
         imageViewWidth.constant = isSmallIPhone ? 28 : 38
         imageViewHeight.constant = isSmallIPhone ? 28 : 38
+        imageViewLeadingConstraint.constant = isSmallIPhone ? 12 : 16
     }
     
     private func setupClaimObjectView(basic: ChatModel.BasicPart,
