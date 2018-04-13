@@ -42,6 +42,8 @@ class ChatObjectView: UIView, XIBInitable {
     @IBOutlet var imageViewWidth: NSLayoutConstraint!
     @IBOutlet var imageViewHeight: NSLayoutConstraint!
     @IBOutlet var imageViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var voteStackViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet var voteButtonContainer: UIView!
     
     var contentView: UIView!
     
@@ -102,6 +104,7 @@ class ChatObjectView: UIView, XIBInitable {
         imageViewWidth.constant = isSmallIPhone ? 28 : 38
         imageViewHeight.constant = isSmallIPhone ? 28 : 38
         imageViewLeadingConstraint.constant = isSmallIPhone ? 12 : 16
+        voteStackViewTrailingConstraint.constant = isSmallIPhone ? 12 : 16
     }
     
     private func setupClaimObjectView(basic: ChatModel.BasicPart,
@@ -138,6 +141,7 @@ class ChatObjectView: UIView, XIBInitable {
             voteValueLabel.text = String.truncatedNumber(reimbursement * 100)
             rightButton.isHidden = true
             rightLabel.isHidden = true
+            voteButtonContainer.isHidden = true
         }
         proxyAvatarView.image = nil
         resizeImageView()
@@ -176,6 +180,7 @@ class ChatObjectView: UIView, XIBInitable {
             voteValueLabel.text = String.truncatedNumber(risk)
             rightButton.isHidden = true
             rightLabel.isHidden = true
+            voteButtonContainer.isHidden = true
         }
         resizeImageView()
     }
