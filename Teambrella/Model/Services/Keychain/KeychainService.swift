@@ -68,6 +68,7 @@ class KeychainService {
                 let saved = value.map { self.save(value: $0, forKey: key) } ?? false
                 log("KeychainService storing newValue from OldValue: \(String(describing: value)), saved: \(saved)",
                     type: [.crypto, .info])
+                try oldKeychain.remove(oldKey.rawValue)
             }
             return value
         } catch {
@@ -78,8 +79,13 @@ class KeychainService {
     
     @discardableResult
     func removeValue(forKey key: KeychainKey) -> Bool {
+        return removeValue(forString: key.rawValue)
+    }
+
+    @discardableResult
+    private func removeValue(forString keyString: String) -> Bool {
         do {
-            try keychain.remove(key.rawValue)
+            try keychain.remove(keyString)
             return true
         } catch let error {
             print("error removing item from keychain: \(error)")
@@ -89,6 +95,7 @@ class KeychainService {
     
     func clear() {
         removeValue(forKey: .privateKey)
+        removeValue(forString: KeychainKeyAdaptor().oldKey(from: .privateKey).rawValue)
     }
 
     struct Constant {
