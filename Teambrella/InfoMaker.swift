@@ -76,8 +76,16 @@ class InfoMaker {
         }
     }
 
-    var isSilentPushAvailable: Bool { return options.contains(.silentPushEnabled) }
-    var isPushEnabled: Bool { return options.contains(.pushEnabled) }
+    var isSilentPushAvailable: Bool {
+        defer { prepareServices() }
+        return options.contains(.silentPushEnabled)
+    }
+    var isPushEnabled: Bool {
+        defer { prepareServices() }
+        return options.contains(.pushEnabled)
+    }
+
+    private var isPreparingServices: Bool = false
 
     init() {
         prepareServices()
@@ -95,6 +103,9 @@ class InfoMaker {
     }
 
     func prepareServices() {
+        guard !isPreparingServices else { return }
+
+        isPreparingServices = true
         var options: ServicesOptions = []
         if UIApplication.shared.backgroundRefreshStatus == .available { options.insert(.silentPushEnabled) }
         if UIDevice.current.isInLowPowerMode { options.insert(.isInLowPowerMode) }
@@ -111,6 +122,7 @@ class InfoMaker {
             }
             self.options = options
             self.isReady = true
+            self.isPreparingServices = false
         }
     }
 

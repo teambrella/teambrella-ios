@@ -57,6 +57,7 @@ final class InitialVC: UIViewController {
         default:
             break
         }
+
         mode = .idle
     }
     

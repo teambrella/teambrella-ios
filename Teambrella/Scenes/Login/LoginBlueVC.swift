@@ -84,7 +84,7 @@ final class LoginBlueVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
-        guard SimpleStorage().bool(forKey: .didLogWithKey) == false else {
+        guard service.keyStorage.hasRealPrivateKey == false else {
             logAsFacebookUser(user: nil)
             return
         }

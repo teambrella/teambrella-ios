@@ -32,6 +32,7 @@ final class KeyStorage {
     var timestamp: Int64 = 0
     var isDemoUser: Bool { return lastUserType == .demo }
     var isUserSelected: Bool { return lastUserType == .real }
+    var hasRealPrivateKey: Bool { return keychain.value(forKey: .privateKey) != nil }
 
     var privateKey: String {
         return isDemoUser ? demoPrivateKey : realPrivateKey
