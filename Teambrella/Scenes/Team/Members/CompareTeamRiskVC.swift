@@ -42,6 +42,7 @@ class CompareTeamRiskVC: UIViewController, Routable {
             HUD.hide()
             self.collectionView.reloadData()
         }
+        addGradientNavBar()
     }
     
     func registerCells() {

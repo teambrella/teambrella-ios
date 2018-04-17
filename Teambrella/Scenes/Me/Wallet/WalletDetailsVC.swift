@@ -37,7 +37,7 @@ class WalletDetailsVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTransparentNavigationBar()
+        addGradientNavBar()
         title = "Me.WalletDetailsVC.title".localized
         fundButton.setTitle("Me.WalletDetailsVC.fundButton".localized, for: .normal)
         headerLabel.text = "Me.WalletDetailsVC.headerLabel".localized.uppercased()
