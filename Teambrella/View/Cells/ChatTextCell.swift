@@ -142,7 +142,7 @@ class ChatTextCell: UICollectionViewCell {
         } else {
             prepareTheirCloud(in: context)
         }
-        context.setLineWidth(1)
+       context.setLineWidth(1)
         context.drawPath(using: .fillStroke)
     }
     
@@ -222,8 +222,7 @@ class ChatTextCell: UICollectionViewCell {
         controlP = CGPoint(x: cloudStartPoint.x, y: cloudStartPoint.y - Constant.tailCornerRadius)
         context.addQuadCurve(to: pen, control: controlP)
         context.closePath()
-        
-        context.setLineWidth(0.5)
+
         context.setFillColor(UIColor.veryLightBlue.cgColor)
         context.setStrokeColor(#colorLiteral(red: 0.8039215686, green: 0.8666666667, blue: 0.9529411765, alpha: 1).cgColor)
     }
@@ -270,8 +269,7 @@ class ChatTextCell: UICollectionViewCell {
         context.addQuadCurve(to: pen, control: controlP)
         
         context.closePath()
-        
-        context.setLineWidth(0.5)
+
         context.setFillColor(UIColor.white.cgColor)
         context.setStrokeColor(UIColor.lightBlueGray.cgColor)
     }

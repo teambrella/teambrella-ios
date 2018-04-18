@@ -44,6 +44,12 @@ enum ChatContext {
 }
 
 final class UniversalChatVC: UIViewController, Routable {
+    struct Constant {
+        static let newMessagesSeparatorCellID = "com.chat.new.cell"
+        static let dateSeparatorCellID = "com.chat.separator.cell"
+        static let textWithImagesCellID = "com.chat.text.cell"
+    }
+
     static var storyboardName = "Chat"
     
     @IBOutlet var collectionView: UICollectionView!
@@ -130,8 +136,8 @@ final class UniversalChatVC: UIViewController, Routable {
         }
         
         dataSource.isLoadNextNeeded = true
+
         title = ""
-        
         let session = service.session
         slidingView.setupViews(with: self, session: session)
         slidingView.delegate = self
@@ -371,9 +377,12 @@ private extension UniversalChatVC {
     
     private func registerCells() {
         collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
-        collectionView.register(ChatTextCell.self, forCellWithReuseIdentifier: "com.chat.text.cell")
-        collectionView.register(ChatSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.separator.cell")
-        collectionView.register(ChatNewMessagesSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.new.cell")
+        collectionView.register(ChatTextCell.self,
+                                forCellWithReuseIdentifier: Constant.textWithImagesCellID)
+        collectionView.register(ChatSeparatorCell.self,
+                                forCellWithReuseIdentifier: Constant.dateSeparatorCellID)
+        collectionView.register(ChatNewMessagesSeparatorCell.self,
+                                forCellWithReuseIdentifier: Constant.newMessagesSeparatorCellID)
         collectionView.register(ChatFooter.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
                                 withReuseIdentifier: ChatFooter.cellID)
@@ -530,11 +539,11 @@ extension UniversalChatVC: UICollectionViewDataSource {
         switch dataSource[indexPath] {
         case _ as ChatTextCellModel,
              _ as ChatTextUnsentCellModel:
-            identifier = "com.chat.text.cell"
+            identifier = Constant.textWithImagesCellID
         case _ as ChatSeparatorCellModel:
-            identifier = "com.chat.separator.cell"
+            identifier = Constant.dateSeparatorCellID
         case _ as ChatNewMessagesSeparatorModel:
-            identifier = "com.chat.new.cell"
+            identifier = Constant.newMessagesSeparatorCellID
         default:
             fatalError("Unknown cell")
         }
@@ -609,6 +618,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.text = dateFormatter.string(from: model.date)
         } else if let cell = cell as? ChatNewMessagesSeparatorCell,
             let model = model as? ChatNewMessagesSeparatorModel {
+            cell.setNeedsDisplay()
             cell.label.text = model.text
         }
     }
