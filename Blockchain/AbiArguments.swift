@@ -86,7 +86,7 @@ class AbiArguments {
         let weis: BDouble = bigDecimal * BDouble(Constant.weisInEth)
         guard let weisInt: BInt = BInt(weis.decimalExpansion(precisionAfterComma: 0)) else { return nil }
         
-        let hex = weisInt.asString(withBase: 16)
+        let hex = weisInt.asString(radix: 16)
     
         log("Parse amount in ETH: \(decimal) to Weis dec: \(weisInt); hex: \(hex)", type: .crypto)
         return Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)

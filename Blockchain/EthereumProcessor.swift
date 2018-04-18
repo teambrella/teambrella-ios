@@ -148,7 +148,7 @@ struct EthereumProcessor {
                    gasPrice: Int,
                    value: Decimal) throws -> GethTransaction {
         let weis = value * 1_000_000_000_000_000_000
-        guard let weisHex = BInt((weis as NSDecimalNumber).stringValue)?.asString(withBase: 16) else {
+        guard let weisHex = BInt((weis as NSDecimalNumber).stringValue)?.asString(radix: 16) else {
             throw EthereumProcessorError.wrongNumber
         }
         
