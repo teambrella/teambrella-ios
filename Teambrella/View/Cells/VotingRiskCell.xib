@@ -55,12 +55,22 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="261" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uwK-ph-5aq" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="326" y="28" width="26.5" height="36"/>
+                                        <rect key="frame" x="326" y="28" width="30" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blN-yG-O3g">
+                                        <rect key="frame" x="326" y="28" width="30" height="36"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapYourVoteButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="O0N-S2-nzx"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H5F-fa-toM" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="8" y="31" width="302.5" height="29.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="25"/>
@@ -89,7 +99,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVG +14%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UyJ-PS-yxB" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="360.5" y="34" width="40" height="24"/>
+                                        <rect key="frame" x="364" y="34" width="40" height="24"/>
                                         <color key="backgroundColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="njE-cx-Jyk"/>
@@ -166,6 +176,7 @@
                                     <constraint firstItem="H5F-fa-toM" firstAttribute="centerY" secondItem="557-Va-QA6" secondAttribute="centerY" id="HLY-lF-1bU"/>
                                     <constraint firstItem="D29-8w-VUD" firstAttribute="leading" secondItem="Nx1-Yq-BkA" secondAttribute="leading" id="IWG-mf-fnr"/>
                                     <constraint firstItem="VE3-Bp-PEJ" firstAttribute="centerY" secondItem="Nx1-Yq-BkA" secondAttribute="centerY" id="JGi-Cu-SPO"/>
+                                    <constraint firstItem="blN-yG-O3g" firstAttribute="trailing" secondItem="uwK-ph-5aq" secondAttribute="trailing" id="KN9-8x-rve"/>
                                     <constraint firstItem="D29-8w-VUD" firstAttribute="top" secondItem="Nx1-Yq-BkA" secondAttribute="bottom" id="LWK-uN-oW5"/>
                                     <constraint firstAttribute="trailing" secondItem="K9q-SA-b4t" secondAttribute="trailing" constant="8" id="M9v-ly-du1"/>
                                     <constraint firstItem="557-Va-QA6" firstAttribute="centerY" secondItem="D29-8w-VUD" secondAttribute="centerY" id="MXm-0C-tr4"/>
@@ -183,15 +194,18 @@
                                     <constraint firstItem="qFN-q5-gOq" firstAttribute="centerY" secondItem="ufs-Z7-MdQ" secondAttribute="centerY" id="agB-I3-dwL"/>
                                     <constraint firstItem="UyJ-PS-yxB" firstAttribute="leading" secondItem="uwK-ph-5aq" secondAttribute="trailing" constant="8" id="hPF-XM-5QU"/>
                                     <constraint firstAttribute="bottom" secondItem="6qt-e2-WfN" secondAttribute="bottom" id="hRj-U1-Jzm"/>
+                                    <constraint firstItem="blN-yG-O3g" firstAttribute="bottom" secondItem="uwK-ph-5aq" secondAttribute="bottom" id="hXf-bF-roU"/>
                                     <constraint firstItem="H5F-fa-toM" firstAttribute="leading" secondItem="D29-8w-VUD" secondAttribute="leading" id="ifM-uY-gXi"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="esR-N0-PHe" secondAttribute="trailing" constant="3" id="kJ7-G4-AoH"/>
                                     <constraint firstItem="K9q-SA-b4t" firstAttribute="leading" secondItem="VE3-Bp-PEJ" secondAttribute="leading" id="kjT-hO-s1p"/>
                                     <constraint firstItem="esR-N0-PHe" firstAttribute="centerY" secondItem="H5F-fa-toM" secondAttribute="centerY" id="lm5-Wh-Dse"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UyJ-PS-yxB" secondAttribute="trailing" constant="3" id="lxk-kw-bJb"/>
                                     <constraint firstItem="uwK-ph-5aq" firstAttribute="bottom" secondItem="D29-8w-VUD" secondAttribute="bottom" id="mCK-Uo-fcy"/>
+                                    <constraint firstItem="blN-yG-O3g" firstAttribute="leading" secondItem="uwK-ph-5aq" secondAttribute="leading" id="mcM-E6-xTx"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ufs-Z7-MdQ" secondAttribute="bottom" constant="8" id="oS3-MN-anU"/>
                                     <constraint firstItem="esR-N0-PHe" firstAttribute="centerY" secondItem="UyJ-PS-yxB" secondAttribute="centerY" id="oxj-qs-5hX"/>
                                     <constraint firstItem="VE3-Bp-PEJ" firstAttribute="leading" secondItem="25q-2v-Cur" secondAttribute="centerX" constant="12" id="pQP-xS-1Ye"/>
+                                    <constraint firstItem="blN-yG-O3g" firstAttribute="top" secondItem="uwK-ph-5aq" secondAttribute="top" id="uqT-76-aOs"/>
                                     <constraint firstAttribute="bottom" secondItem="K9q-SA-b4t" secondAttribute="bottom" constant="8" id="xcr-pL-roC"/>
                                     <constraint firstItem="6qt-e2-WfN" firstAttribute="top" secondItem="25q-2v-Cur" secondAttribute="top" id="xoD-sn-Th7"/>
                                     <constraint firstItem="H5F-fa-toM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="25q-2v-Cur" secondAttribute="centerX" constant="-3" id="yZo-8U-xqW"/>
@@ -460,6 +474,7 @@
                 <outlet property="titleLabel" destination="73P-Jh-cgD" id="RyO-9E-Aua"/>
                 <outlet property="yourVoteAVGLeadingConstraint" destination="hPF-XM-5QU" id="iVE-NH-vph"/>
                 <outlet property="yourVoteBadgeLabel" destination="UyJ-PS-yxB" id="OlN-O2-8ra"/>
+                <outlet property="yourVoteButton" destination="blN-yG-O3g" id="5kY-1T-83p"/>
                 <outlet property="yourVoteHeaderLabel" destination="VE3-Bp-PEJ" id="EQW-mw-SSc"/>
                 <outlet property="yourVoteHeaderLabelLeadingConstraint" destination="pQP-xS-1Ye" id="gOl-AP-cfh"/>
                 <outlet property="yourVoteNotAccept" destination="esR-N0-PHe" id="Pbj-Xa-Mw0"/>

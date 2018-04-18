@@ -162,7 +162,6 @@ struct TeammateCellBuilder {
         } else {
             cell.swipeToVoteView.isHidden = false
             cell.swipeToVoteView.onInteraction = {
-                cell.swipeToVoteView.removeFromSuperview()
                 SimpleStorage().store(bool: true, forKey: .swipeHelperWasShown)
             }
         }
