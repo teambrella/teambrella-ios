@@ -30,6 +30,7 @@ class ImageGalleryCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var textLabel: MessageTextLabel!
     @IBOutlet var timeLabel: ThinStatusSubtitleLabel!
     @IBOutlet var unreadCountLabel: RoundImageView!
+    @IBOutlet var imagesStack: RoundImagesStack!
     
     var tapGalleryGesture: UITapGestureRecognizer?
     

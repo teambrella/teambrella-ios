@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lGP-Uv-A7d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lGP-Uv-A7d">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,9 +16,6 @@
         </array>
         <array key="AkkuratPro-Regular.otf">
             <string>AkkuratPro-Regular</string>
-        </array>
-        <array key="Courier.ttc">
-            <string>Courier</string>
         </array>
     </customFonts>
     <scenes>
@@ -460,7 +457,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QbC-lR-she" secondAttribute="trailing" id="553-aC-hag"/>
                             <constraint firstItem="QbC-lR-she" firstAttribute="top" secondItem="6dS-2j-dg7" secondAttribute="bottom" id="cZv-2R-TQV"/>
-                            <constraint firstItem="292-uU-zft" firstAttribute="top" secondItem="QbC-lR-she" secondAttribute="bottom" id="fba-ts-8wN"/>
+                            <constraint firstAttribute="bottom" secondItem="QbC-lR-she" secondAttribute="bottom" id="fba-ts-8wN"/>
                             <constraint firstItem="QbC-lR-she" firstAttribute="leading" secondItem="5K7-D0-HhG" secondAttribute="leading" id="x1a-z6-3xP"/>
                         </constraints>
                     </view>
@@ -633,21 +630,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSc-J0-AKa" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-44" width="375" height="64"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="3VB-3l-L96"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
-                                        <color key="value" red="0.32156862749999998" green="0.36862745099999999" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
-                                        <color key="value" red="0.25882352939999997" green="0.30588235289999999" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="kLD-08-ZXq">
                                 <rect key="frame" x="37" y="54" width="301" height="301"/>
                                 <constraints>
@@ -685,7 +667,7 @@
                                             <action selector="tapCopy:" destination="JhV-Xk-tp3" eventType="touchUpInside" id="Dlg-9s-ttd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="255" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5R-Gm-xGr">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="255" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5R-Gm-xGr">
                                         <rect key="frame" x="303" y="20" width="20" height="22"/>
                                         <state key="normal" image="info"/>
                                     </button>
@@ -728,15 +710,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="SSc-J0-AKa" secondAttribute="trailing" id="4mF-mx-NgM"/>
                             <constraint firstAttribute="trailing" secondItem="9nr-ZE-zsd" secondAttribute="trailing" constant="16" id="AUt-QC-vzX"/>
                             <constraint firstItem="9nr-ZE-zsd" firstAttribute="leading" secondItem="fii-bz-8VW" secondAttribute="leading" constant="16" id="CcE-yK-Rvk"/>
                             <constraint firstItem="s8P-w9-Xfi" firstAttribute="top" secondItem="9nr-ZE-zsd" secondAttribute="bottom" constant="16" id="HAF-ya-x3z"/>
                             <constraint firstItem="kLD-08-ZXq" firstAttribute="top" secondItem="Kj6-or-uep" secondAttribute="bottom" constant="34" id="LNC-c1-bPu"/>
-                            <constraint firstItem="SSc-J0-AKa" firstAttribute="leading" secondItem="fii-bz-8VW" secondAttribute="leading" id="Qvo-MX-Pob"/>
                             <constraint firstItem="kLD-08-ZXq" firstAttribute="leading" secondItem="fii-bz-8VW" secondAttribute="leading" constant="37" id="g61-0D-YfK"/>
                             <constraint firstItem="zvj-xs-7a8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kLD-08-ZXq" secondAttribute="bottom" constant="21" id="hdd-B1-25B"/>
-                            <constraint firstItem="SSc-J0-AKa" firstAttribute="bottom" secondItem="Kj6-or-uep" secondAttribute="bottom" id="lN6-za-cSb"/>
                             <constraint firstItem="9nr-ZE-zsd" firstAttribute="top" secondItem="zvj-xs-7a8" secondAttribute="bottom" constant="21" id="qAh-o4-QGI"/>
                             <constraint firstAttribute="trailing" secondItem="kLD-08-ZXq" secondAttribute="trailing" constant="37" id="xUW-MM-dwA"/>
                             <constraint firstItem="zvj-xs-7a8" firstAttribute="centerX" secondItem="fii-bz-8VW" secondAttribute="centerX" id="xZP-oD-nof"/>

@@ -22,6 +22,7 @@
 import UIKit
 //import FacebookLogin
 import FBSDKCoreKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,7 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
-        application.registerForRemoteNotifications()
+        service.push.register(application: application)
+
         TeambrellaStyle.apply()
         if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
             service.push.remoteNotificationOnStart(in: application, userInfo: notification)
@@ -43,19 +45,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Pull in case of emergency :)
         // service.cryptoMalfunction()
 
+        configureLibs()
+
         return true
     }
-    
-    func application(_ application: UIApplication,
+
+    func application(_ app: UIApplication,
                      open url: URL,
-                     sourceApplication: String?,
-                     annotation: Any) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application,
+                     options: [UIApplicationOpenURLOptionsKey: Any] = [ : ]) -> Bool {
+        guard let source = options[.sourceApplication] as? String else {
+            print("Failed to get source application from options")
+            return false
+        }
+
+        return FBSDKApplicationDelegate.sharedInstance().application(app,
                                                                      open: url,
-                                                                     sourceApplication: sourceApplication,
-                                                                     annotation: annotation)
+                                                                     sourceApplication: source,
+                                                                     annotation: options[.annotation])
     }
-    
+
     func applicationDidBecomeActive(_ application: UIApplication) {
         service.socket?.start()
 
@@ -88,6 +96,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             storage.store(bool: false, forKey: .didLogWithKey)
             storage.store(bool: true, forKey: .didMoveToRealGroup)
         }
+    }
+
+    private func configureLibs() {
+        // Add firebase support
+        FirebaseApp.configure()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

@@ -35,4 +35,3 @@ enum RemoteCommandType: Int {
     
     case topicMessage = 21
 }
-

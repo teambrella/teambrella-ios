@@ -2,9 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>FILEHEADER</key>
-	<string>
-/* Copyright(C) ___YEAR___ Teambrella, Inc.
+    <key>FILEHEADER</key>
+    <string>
+/* Copyright(C) 2016-___YEAR___ Teambrella, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License(version 3) as published
@@ -16,7 +16,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see&lt;http://www.gnu.org/licenses/&gt;.
+ * along with this program.  If not, see http://www.gnu.org/licenses/
  */</string>
 </dict>
 </plist>

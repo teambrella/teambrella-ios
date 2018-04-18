@@ -105,9 +105,8 @@ struct TeammateCellBuilder {
             votingCell.teamVoteValueLabel.text = "..."
             votingCell.showTeamNoVote(risk: nil)
         }
-        
         if let myVote = voting.myVote {
-            if let proxyVote = voting.proxyName {
+            if voting.proxyName != nil {
                 votingCell.isProxyHidden = false
                 votingCell.resetVoteButton.isHidden = true
                 votingCell.layoutIfNeeded()
@@ -133,9 +132,7 @@ struct TeammateCellBuilder {
             controller.resetVote(cell: votingCell)
             votingCell.showYourNoVote(risk: nil)
         }
-        controller.updateAverages(cell: votingCell,
-                                  risk: votingCell.currentRisk)
-        
+        controller.updateAverages(cell: votingCell, risk: votingCell.currentRisk)
         var prefix = ""
         if voting.remainingMinutes < 60 {
             prefix = "Team.Claim.minutes_format".localized(voting.remainingMinutes)
@@ -182,7 +179,11 @@ struct TeammateCellBuilder {
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
         let owner: String
         if let me = service.session?.currentUserID, me == teammate.basic.id {
-            owner = "General.posessiveFormat.my".localized
+            if type == CoverageType.petCat || type == CoverageType.petDog {
+                owner = "General.posessiveFormat.my.female".localized
+            } else {
+                owner = "General.posessiveFormat.my.male".localized
+            }
             cell.titleLabel.text = "General.unitedFormat.my".localized(owner, type.localizedCoverageObject)
         } else {
             owner = teammate.basic.gender == .male ?
@@ -225,12 +226,12 @@ struct TeammateCellBuilder {
             right.isPercentVisible = false
         }
         
-        if let imageString = teammate.object.smallPhotos.first {
+        if let imageString = teammate.object.largePhotos.first {
             cell.avatarView.present(imageString: imageString)
             cell.avatarView.onTap = { [weak controller] view in
                 guard let vc = controller else { return }
                 
-                view.fullscreen(in: vc, imageStrings: nil)
+                view.fullscreen(in: vc, imageStrings: teammate.object.largePhotos)
             }
             //cell.avatarView.showImage(string: imageString)
         }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -44,7 +44,7 @@
                                     <constraint firstAttribute="width" constant="20" id="j5L-8n-YxB"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-2g-vOp">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-2g-vOp">
                                 <rect key="frame" x="287" y="16" width="40" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="xkZ-mK-QQt"/>
@@ -190,6 +190,7 @@
                                             <constraint firstItem="wuP-CI-MHk" firstAttribute="leading" secondItem="khs-Zb-hW8" secondAttribute="leading" id="DoO-Mg-5NH"/>
                                             <constraint firstItem="gEt-FD-2iD" firstAttribute="leading" secondItem="fkE-jc-cEr" secondAttribute="leadingMargin" id="Dw0-Go-66H"/>
                                             <constraint firstItem="UKd-qO-8F4" firstAttribute="leading" secondItem="khs-Zb-hW8" secondAttribute="leading" id="GUD-fh-1vc"/>
+                                            <constraint firstItem="6xX-Pn-wVs" firstAttribute="centerY" secondItem="gEt-FD-2iD" secondAttribute="centerY" id="HG1-ZX-10T"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="gEt-FD-2iD" secondAttribute="bottom" id="Lyy-rl-tvL"/>
                                             <constraint firstItem="LeT-xq-UKS" firstAttribute="leading" secondItem="UKd-qO-8F4" secondAttribute="trailing" id="T9a-GL-kBy"/>
                                             <constraint firstItem="wuP-CI-MHk" firstAttribute="top" secondItem="UKd-qO-8F4" secondAttribute="bottom" id="VwA-hG-bpr"/>
@@ -200,6 +201,7 @@
                                             <constraint firstItem="uEe-ff-t9r" firstAttribute="leading" secondItem="gEt-FD-2iD" secondAttribute="trailing" constant="8" id="nvd-Ja-jss"/>
                                             <constraint firstItem="6xX-Pn-wVs" firstAttribute="centerY" secondItem="uEe-ff-t9r" secondAttribute="centerY" id="q8n-Zb-Sc6"/>
                                             <constraint firstItem="qFg-Z6-zvn" firstAttribute="leading" secondItem="wuP-CI-MHk" secondAttribute="trailing" constant="2" id="uv5-Ne-1xH"/>
+                                            <constraint firstItem="gEt-FD-2iD" firstAttribute="leading" secondItem="khs-Zb-hW8" secondAttribute="leading" id="zqk-3h-Jh1"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="5" left="8" bottom="8" right="8"/>
                                         <userDefinedRuntimeAttributes>
@@ -211,6 +213,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="7cV-Kv-yr1"/>
+                                    <constraint firstItem="gEt-FD-2iD" firstAttribute="centerY" secondItem="TnD-mv-QdM" secondAttribute="centerY" id="pWI-U0-vyJ"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKR-rc-C51">
@@ -246,7 +249,6 @@
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="centerY" secondItem="KVp-Aa-10c" secondAttribute="centerY" id="RtA-AP-bVR"/>
                             <constraint firstItem="0Iw-2g-vOp" firstAttribute="top" secondItem="NVa-WO-KTz" secondAttribute="topMargin" id="W17-G1-Olu"/>
                             <constraint firstItem="HKR-rc-C51" firstAttribute="centerY" secondItem="Qqi-A2-dcL" secondAttribute="centerY" id="WHf-pC-FEm"/>
-                            <constraint firstItem="0Iw-2g-vOp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y0E-WH-DMy" secondAttribute="trailing" id="WiC-rU-V4Y"/>
                             <constraint firstItem="F2r-3b-RDy" firstAttribute="baseline" secondItem="KVp-Aa-10c" secondAttribute="firstBaseline" id="XXG-y7-9NZ"/>
                             <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KVp-Aa-10c" secondAttribute="trailing" constant="8" id="YOe-GY-gdc"/>
                             <constraint firstItem="F2r-3b-RDy" firstAttribute="leading" secondItem="KVp-Aa-10c" secondAttribute="trailing" priority="750" constant="16" id="aqA-Qm-jd0"/>
@@ -262,6 +264,7 @@
                             <constraint firstItem="Gj0-Hf-d4k" firstAttribute="height" secondItem="86k-pi-DIK" secondAttribute="height" id="r0D-zf-RJD"/>
                             <constraint firstItem="Gj0-Hf-d4k" firstAttribute="width" secondItem="86k-pi-DIK" secondAttribute="width" id="w4z-zY-Ztp"/>
                             <constraint firstItem="y0E-WH-DMy" firstAttribute="leading" secondItem="F2r-3b-RDy" secondAttribute="trailing" constant="8" id="xqz-DI-XEe"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y0E-WH-DMy" secondAttribute="trailing" constant="20" id="zE9-cs-vVF"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                         <userDefinedRuntimeAttributes>

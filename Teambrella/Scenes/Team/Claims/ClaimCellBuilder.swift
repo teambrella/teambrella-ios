@@ -69,6 +69,14 @@ struct ClaimCellBuilder {
         cell.textLabel.text = claim.discussion.originalPostText.sane
         cell.unreadCountLabel.text = "\(claim.discussion.unreadCount)"
         cell.unreadCountLabel.isHidden = claim.discussion.unreadCount <= 0
+        
+        let urls = claim.discussion.topPosterAvatars.compactMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
+        let morePersons = claim.discussion.posterCount - urls.count
+        let text: String? = morePersons > 0 ? "+\(morePersons)" : nil
+        cell.imagesStack.set(images: urls, label: text, max: 4)
+        if urls.isEmpty {
+            cell.imagesStack.isHidden = true
+        }
         let minutesSinceLastPost = claim.discussion.minutesSinceLastPost
         switch minutesSinceLastPost {
         case 0:
@@ -85,14 +93,14 @@ struct ClaimCellBuilder {
         }
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
-
+    
     // swiftlint:disable:next function_body_length
     static func populateClaimVote(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         guard let voting = claim.voting else {
             log("ClaimEntityLarge has no voting part. Can't populate ClaimVoteCell", type: .error)
             return
         }
-
+        
         cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
         var prefix = ""
         if voting.minutesRemaining < 60 {
@@ -104,29 +112,30 @@ struct ClaimCellBuilder {
         }
         cell.remainingDaysLabel.text = prefix.uppercased() + " " +
             DateProcessor().stringFromNow(minutes: -voting.minutesRemaining).uppercased()
-
+        
         cell.pieChart.setupWith(remainingMinutes: voting.minutesRemaining)
         
         if let myVote = voting.myVote {
             cell.yourVotePercentValue.text = String.truncatedNumber(myVote.percentage)
             cell.yourVoteAmount.text = String.truncatedNumber(myVote.fiat(from: claim.basic.claimAmount).value)
             cell.slider.setValue(Float(myVote.value), animated: true)
-        } else if let proxyVote = voting.proxyVote {
-            cell.yourVotePercentValue.text = String.truncatedNumber(proxyVote.percentage)
-            cell.yourVoteAmount.text = String.truncatedNumber(proxyVote.fiat(from: claim.basic.claimAmount).value)
-            cell.slider.setValue(Float(proxyVote.value), animated: true)
-            if let proxyAvatar = voting.proxyAvatar {
-                cell.proxyAvatar.show(proxyAvatar)
-                cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
+            if voting.proxyName != nil {
+                cell.resetButton.isHidden = true
+                if let proxyAvatar = voting.proxyAvatar {
+                    cell.proxyAvatar.show(proxyAvatar)
+                    cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
+                }
+            } else {
+                cell.resetButton.isHidden = false
             }
         } else {
             cell.yourVotePercentValue.text = ". . ."
             cell.isYourVoteHidden = true
             cell.slider.setValue(cell.slider.minimumValue, animated: true)
+            cell.resetButton.isHidden = true
         }
-        cell.resetButton.isHidden = voting.myVote == nil
-        cell.proxyAvatar.isHidden = voting.proxyAvatar == nil || voting.myVote != nil
-        cell.byProxyLabel.isHidden = voting.proxyVote == nil || voting.myVote != nil
+        cell.proxyAvatar.isHidden = voting.proxyAvatar == nil || voting.myVote == nil
+        cell.byProxyLabel.isHidden = voting.proxyName == nil || voting.myVote == nil
         
         cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         cell.yourVotePercentValue.alpha = 1
@@ -155,7 +164,7 @@ struct ClaimCellBuilder {
     
     static func populateClaimDetails(cell: ClaimDetailsCell, with claim: ClaimEntityLarge) {
         cell.titleLabel.text = "Team.ClaimCell.claimDetails".localized
-
+        
         cell.coverageLabel.text = "Team.ClaimCell.coverage".localized
         let coverage = "\(Int((claim.basic.coverage * 100).rounded()))"
         cell.coverageValueLabel.text = coverage + "%"
@@ -163,7 +172,7 @@ struct ClaimCellBuilder {
         cell.incidentDateLabel.text = "Team.ClaimCell.incidentDate".localized
         cell.incidentDateValueLabel.text = DateFormatter.teambrellaShort.string(from: claim.basic.incidentDate)
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
-
+        
         cell.claimAmountLabel.text = "Team.ClaimCell.claimAmount".localized
         let claimAmount = String(format: "%.2f", claim.basic.claimAmount.value)
         cell.deductibleLabel.text = "Team.ClaimCell.deductible".localized

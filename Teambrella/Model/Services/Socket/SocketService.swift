@@ -30,22 +30,24 @@ class SocketService {
     var unsentMessage: String?
     
     init(url: URL?) {
-        // swiftlint:disable:next force_unwrapping
-        let url = url ?? URL(string: "wss://" + "surilla.com" + "/wshandler.ashx")!
+        guard let url = url ?? URL(string: "wss://" + "surilla.com" + "/wshandler.ashx") else {
+            fatalError("Unable to create socket URL")
+        }
+
         log("trying to connect to socket: \(url.absoluteString)", type: .socket)
-        socket = WebSocket(url: url)
-        
         service.dao.freshKey { key in
             let application = Application()
-            self.socket.headers["t"] = String(key.timestamp)
-            self.socket.headers["key"] = key.publicKey
-            self.socket.headers["sig"] = key.signature
-            self.socket.headers["clientVersion"] = application.clientVersion
-            self.socket.headers["deviceToken"] = service.push.tokenString ?? ""
-            self.socket.headers["deviceId"] = application.uniqueIdentifier
+            var request = URLRequest(url: url)
+            request.setValue(String(key.timestamp), forHTTPHeaderField: "t")
+            request.setValue(key.publicKey, forHTTPHeaderField: "key")
+            request.setValue(key.signature, forHTTPHeaderField: "sig")
+            request.setValue(application.clientVersion, forHTTPHeaderField: "clientVersion")
+            request.setValue(service.push.tokenString ?? "", forHTTPHeaderField: "deviceToken")
+            request.setValue(application.uniqueIdentifier, forHTTPHeaderField: "deviceId")
+            self.socket = WebSocket(url: url)
             self.socket.connect()
+            self.socket.delegate = self
         }
-        socket.delegate = self
     }
     
     convenience init() {
@@ -109,7 +111,7 @@ class SocketService {
 }
 
 extension SocketService: WebSocketDelegate {
-    func websocketDidConnect(socket: WebSocket) {
+    func websocketDidConnect(socket: WebSocketClient) {
         log("connected", type: .socket)
         if let message = unsentMessage {
             send(string: message)
@@ -119,12 +121,12 @@ extension SocketService: WebSocketDelegate {
         }
     }
     
-    func websocketDidReceiveData(socket: WebSocket, data: Data) {
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         log("received data: \(data)", type: .socket)
         parse(data: data)
     }
     
-    func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
         log("disconnected", type: .socket)
         if let error = error {
             log("disconnected with error: \(error)", type: [.error, .socket])
@@ -132,7 +134,7 @@ extension SocketService: WebSocketDelegate {
         // start()
     }
     
-    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         log("received: \(text)", type: .socket)
         guard let data = text.data(using: .utf8) else {
             log("Failed to create data from websocket string", type: [.error, .socket])

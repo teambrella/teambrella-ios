@@ -48,7 +48,7 @@ class ClaimVotingView: UIView, XIBInitable {
     var yourVote: ClaimVote?
     var claimAmount: Fiat?
 
-    var proxyVote: ClaimVote?
+    var proxyName: Name?
     var proxyAvatar: Avatar?
     var otherAvatars: [Avatar]?
     var otherCount: Int = 0
@@ -87,7 +87,7 @@ class ClaimVotingView: UIView, XIBInitable {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         xibSetup()
-         initialSetup()
+        initialSetup()
     }
 
     override func awakeFromNib() {
@@ -112,9 +112,9 @@ class ClaimVotingView: UIView, XIBInitable {
         claimAmount = claim?.basic.claimAmount
         teamVote = voting.ratioVoted
         yourVote = voting.myVote
-        proxyVote = voting.proxyVote
         proxyAvatar = voting.proxyAvatar
-
+        proxyName = voting.proxyName
+        
         otherAvatars = voting.otherAvatars
         otherCount = voting.otherCount
         setup()
@@ -124,13 +124,11 @@ class ClaimVotingView: UIView, XIBInitable {
         guard let chatModel = chatModel else { return }
 
         teamVote = chatModel.voting?.ratioVoted
-        let hasProxy = chatModel.voting?.proxyAvatar != nil
-        let vote = chatModel.voting?.myVote.map { ClaimVote($0) }
 
         claimAmount = chatModel.basic?.claimAmount
-        yourVote = hasProxy ? nil : vote
-        proxyVote = hasProxy ? vote : nil
+        yourVote = chatModel.voting?.myVote.map { ClaimVote($0) }
         proxyAvatar = chatModel.voting?.proxyAvatar
+        proxyName = chatModel.voting?.proxyName
         otherAvatars = chatModel.voting?.otherAvatars
         otherCount = chatModel.voting?.otherCount ?? 0
         setup()
@@ -146,7 +144,9 @@ class ClaimVotingView: UIView, XIBInitable {
     }
 
     @IBAction func tapResetVote(_ sender: UIButton) {
-        yourVote = nil
+//        if proxyName == nil {
+//            yourVote = nil
+//        }
         setup()
         delegate?.claimVotingDidResetVote(view: self)
     }
@@ -162,6 +162,7 @@ class ClaimVotingView: UIView, XIBInitable {
         yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         yourCurrencyLabel.text = session?.currentTeam?.currency
 
+        presentAvatars()
         setupYourView()
         guard let claimAmount = claimAmount else { return }
 
@@ -170,7 +171,7 @@ class ClaimVotingView: UIView, XIBInitable {
             teamAmountLabel.text = String.truncatedNumber(teamVote.fiat(from: claimAmount).value)
         }
 
-        let vote: ClaimVote? = yourVote ?? proxyVote
+        let vote: ClaimVote? = yourVote
         if let vote = vote {
             isYourVoteHidden = false
             yourValueLabel.text = String.truncatedNumber(vote.percentage)
@@ -178,26 +179,36 @@ class ClaimVotingView: UIView, XIBInitable {
             slider.setValue(Float(vote.value), animated: true)
         }
 
-        if yourVote == nil, let proxyAvatar = proxyAvatar {
+        if yourVote != nil && proxyName != nil, let proxyAvatar = proxyAvatar {
             proxyAvatarView.show(proxyAvatar)
             byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
         }
 
         resetVoteButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
-
-        presentAvatars()
-
     }
 
     private func setupYourView() {
-        resetVoteButton.isHidden = yourVote == nil
-        proxyAvatarView.isHidden = proxyAvatar == nil || yourVote != nil
-        byProxyLabel.isHidden = proxyVote == nil || yourVote != nil
-
-        if yourVote == nil && proxyVote == nil {
+        if yourVote == nil {
             yourValueLabel.text = ". . ."
             isYourVoteHidden = true
             slider.setValue(slider.minimumValue, animated: true)
+            resetVoteButton.isHidden = true
+            proxyAvatarView.isHidden = true
+            byProxyLabel.isHidden = true
+        } else {
+            if proxyName != nil {
+                if let proxyAvatar = proxyAvatar {
+                    proxyAvatarView.show(proxyAvatar)
+                }
+                byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
+                resetVoteButton.isHidden = true
+                proxyAvatarView.isHidden = false
+                byProxyLabel.isHidden = false
+            } else {
+                resetVoteButton.isHidden = false
+                proxyAvatarView.isHidden = true
+                byProxyLabel.isHidden = true
+            }
         }
     }
 

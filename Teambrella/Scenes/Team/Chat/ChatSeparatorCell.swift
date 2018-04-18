@@ -25,9 +25,9 @@ class ChatSeparatorCell: UICollectionViewCell {
     lazy var timeLabel: Label = {
         let label = Label()
         label.textAlignment = .center
-        label.font = UIFont.teambrella(size: 14)
-        label.textInsets = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
-        label.backgroundColor = UIColor.charcoalGray.withAlphaComponent(0.25)
+        label.font = UIFont.teambrellaBold(size: 10)
+        label.textInsets = UIEdgeInsets(top: 3, left: 12.5, bottom: 3, right: 12.5)
+        label.backgroundColor = UIColor.perrywinkle
         label.textColor = .white
         self.contentView.addSubview(label)
         return label

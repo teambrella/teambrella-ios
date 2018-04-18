@@ -47,10 +47,10 @@ final class UniversalChatVC: UIViewController, Routable {
     static var storyboardName = "Chat"
     
     @IBOutlet var collectionView: UICollectionView!
-
+    
     @IBOutlet var slidingView: SlidingView!
     @IBOutlet var slidingViewHeight: NSLayoutConstraint!
-
+    
     override var inputAccessoryView: UIView? { return input }
     override var canBecomeFirstResponder: Bool { return true }
     
@@ -61,7 +61,7 @@ final class UniversalChatVC: UIViewController, Routable {
     private var socketToken = "UniversalChat"
     private var lastTypingDate: Date = Date()
     private var typingUsers: [String: Date] = [:]
-
+    
     private let scrollViewHandler: ScrollViewHandler = ScrollViewHandler()
     
     private var endsEditingWhenTappingOnChatBackground = true
@@ -84,8 +84,10 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     private var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
     
+    private var leftButton: UIButton?
+    
     // MARK: Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
@@ -123,13 +125,13 @@ final class UniversalChatVC: UIViewController, Routable {
         dataSource.onClaimVoteUpdate = { [weak self] in
             guard let `self` = self else { return }
             guard let model = self.dataSource.chatModel else { return }
-
+            
             self.slidingView.updateChatModel(model: model)
         }
-
+        
         dataSource.isLoadNextNeeded = true
         title = ""
-
+        
         let session = service.session
         slidingView.setupViews(with: self, session: session)
         slidingView.delegate = self
@@ -269,7 +271,7 @@ final class UniversalChatVC: UIViewController, Routable {
         service.router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
         
     }
-
+    
 }
 
 // MARK: Private
@@ -278,18 +280,18 @@ private extension UniversalChatVC {
         scrollViewHandler.onScrollingUp = {
             self.slidingView.hideAll()
         }
-
+        
         scrollViewHandler.onScrollingDown = {
             self.showObject()
         }
     }
-
+    
     private func showObject() {
         guard dataSource.isObjectViewNeeded == true else { return }
-
+        
         slidingView.showObjectView()
     }
-
+    
     private func showMuteInfo(muteType: TopicMuteType) {
         let cloudView = CloudView()
         self.view.addSubview(cloudView)
@@ -434,6 +436,7 @@ private extension UniversalChatVC {
     }
     
     private func setupInput() {
+        ViewDecorator.shadow(for: input, color: #colorLiteral(red: 0.231372549, green: 0.2588235294, blue: 0.4901960784, alpha: 1), opacity: 0.05, radius: 8, offset: CGSize(width: 0, height: -9))
         if dataSource.isPrivateChat {
             input.leftButton.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
             input.leftButton.isHidden = true
@@ -564,13 +567,14 @@ extension UniversalChatVC: UICollectionViewDelegate {
             if let model = model as? ChatTextCellModel {
                 let size = cloudSize(for: indexPath)
                 cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
-
+                
                 // crunch
-//                if model.isMy, let model = dataSource.chatModel, model.isClaimChat, let vote = model.voting?.myVote {
-//                    cell.rightLabel.text = dataSource.cellModelBuilder.rateText(rate: vote,
-//                                                                                showRate: true,
-//                                                                                isClaim: true)
-//                }
+                //                if model.isMy, let model = dataSource.chatModel, model.isClaimChat,
+                //                let vote = model.voting?.myVote {
+                //                    cell.rightLabel.text = dataSource.cellModelBuilder.rateText(rate: vote,
+                //                                                                                showRate: true,
+                //                                                                                isClaim: true)
+                //                }
                 cell.avatarView.tag = indexPath.row
                 cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
                 cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
@@ -593,7 +597,16 @@ extension UniversalChatVC: UICollectionViewDelegate {
                 cell.alpha = 0.5
             }
         } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
-            cell.text = Formatter.teambrellaShort.string(from: model.date)
+            let modelYear = NSCalendar.current.component(.year, from: model.date)
+            let currentDate = Date()
+            let currentYear = NSCalendar.current.component(.year, from: currentDate)
+            
+            let dateFormatter = DateFormatter()
+            let template = modelYear == currentYear ? "dMMMM" : "YYYYdMMM"
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template,
+                                                                options: 0,
+                                                                locale: NSLocale.current)
+            cell.text = dateFormatter.string(from: model.date)
         } else if let cell = cell as? ChatNewMessagesSeparatorCell,
             let model = model as? ChatNewMessagesSeparatorModel {
             cell.label.text = model.text
@@ -719,14 +732,14 @@ extension UniversalChatVC: ClaimVotingDelegate {
     func claimVoting(view: ClaimVotingView, finishedSliding slider: UISlider) {
         dataSource.updateVoteOnServer(vote: slider.value)
     }
-
+    
     func claimVotingDidResetVote(view: ClaimVotingView) {
         dataSource.updateVoteOnServer(vote: nil)
     }
-
+    
     func claimVotingDidTapTeam(view: ClaimVotingView) {
         guard let teamID = service.session?.currentTeam?.teamID, let claimID = dataSource.chatModel?.id else { return }
-
+        
         service.router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
     }
 }
@@ -748,7 +761,7 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
             break
         }
     }
-
+    
     func chatObjectWasTapped(view: ChatObjectView) {
         if let model = dataSource.chatModel, model.isClaimChat, let id = model.id {
             service.router.presentClaim(claimID: id)
@@ -763,7 +776,7 @@ extension UniversalChatVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewHandler.scrollViewDidScroll(scrollView)
     }
-
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollViewHandler.scrollViewWillBeginDragging(scrollView)
     }

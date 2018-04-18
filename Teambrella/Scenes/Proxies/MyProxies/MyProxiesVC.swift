@@ -87,34 +87,44 @@ class MyProxiesVC: UIViewController {
     
     @objc
     func handleGesture(gesture: UIGestureRecognizer) {
-        //        if gesture is UITapGestureRecognizer {
-        //            let view = gesture.view
-        //            let location = gesture.location(in: view)
-        //            if let subview = view?.hitTest(location, with: nil) {
-        //                guard subview.tag == 25 else {
-        //                    return
-        //                }
-        //            }
-        //        }
-        
         switch gesture.state {
         case .began:
             let point = gesture.location(in: collectionView)
             guard let selectedIndexPath = self.collectionView.indexPathForItem(at: point) else {
                 break
             }
+
+            if let cell = collectionView.cellForItem(at: selectedIndexPath) {
+            offsetForDraggedCell = offsetOfTouchFrom(recognizer: gesture, inCell: cell)
+            }
             collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
         case UIGestureRecognizerState.changed:
-            guard let view = gesture.view else { break }
-            
-            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: view))
+            var location = gesture.location(in: collectionView)
+            location.x += offsetForDraggedCell.x
+            location.y += offsetForDraggedCell.y
+            collectionView.updateInteractiveMovementTargetPosition(location)
         case UIGestureRecognizerState.ended:
-            collectionView.endInteractiveMovement()
+            // without performing batch update the dragged cell blinks when dropped
+           // collectionView.performBatchUpdates({
+                self.collectionView.endInteractiveMovement()
+           // }, completion: nil)
         default:
             collectionView.cancelInteractiveMovement()
         }
     }
-    
+
+    private var offsetForDraggedCell: CGPoint = .zero
+
+    private func offsetOfTouchFrom(recognizer: UIGestureRecognizer, inCell cell: UICollectionViewCell) -> CGPoint {
+        let locationOfTouchInCell = recognizer.location(in: cell)
+        let cellCenterX = cell.frame.width / 2
+        let cellCenterY = cell.frame.height / 2
+        let cellCenter = CGPoint(x: cellCenterX, y: cellCenterY)
+        var offset = CGPoint.zero
+        offset.y = cellCenter.y - locationOfTouchInCell.y
+        offset.x = cellCenter.x - locationOfTouchInCell.x
+        return offset
+    }
 }
 
 extension MyProxiesVC: IndicatorInfoProvider {
@@ -178,8 +188,13 @@ extension MyProxiesVC: UICollectionViewDelegate {
                         moveItemAt sourceIndexPath: IndexPath,
                         to destinationIndexPath: IndexPath) {
         dataSource.move(from: sourceIndexPath, to: destinationIndexPath)
-        collectionView.reloadData()
-        collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
+
+        let idxs = self.collectionView.indexPathsForVisibleItems
+        for idx in idxs {
+            guard let cell = collectionView.cellForItem(at: idx) as? ProxyCell else { continue }
+
+            cell.numberLabel.text = String(idx.row + 1)
+        }
     }
     
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +29,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kj-0I-Hu9">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kj-0I-Hu9">
                         <rect key="frame" x="283" y="9" width="40" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="5kj-0I-Hu9" secondAttribute="height" multiplier="10:11" id="EYe-as-HI4"/>
@@ -170,6 +170,7 @@
                 <constraint firstAttribute="bottom" secondItem="594-Fk-t4w" secondAttribute="bottom" constant="5" id="9Uy-5b-eHO"/>
                 <constraint firstAttribute="bottom" secondItem="AQi-Yl-ex1" secondAttribute="bottom" id="AZz-2w-MYj"/>
                 <constraint firstItem="AQi-Yl-ex1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JkN-Xl-pdB"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WhE-3B-gEJ" secondAttribute="trailing" constant="20" id="ROU-E7-hzt"/>
                 <constraint firstItem="5kj-0I-Hu9" firstAttribute="centerY" secondItem="WhE-3B-gEJ" secondAttribute="centerY" id="VLE-dH-I6s"/>
                 <constraint firstItem="AQi-Yl-ex1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YAL-x5-Iho"/>
                 <constraint firstAttribute="trailing" secondItem="5kj-0I-Hu9" secondAttribute="trailing" constant="20" id="ZhM-bq-aGb"/>

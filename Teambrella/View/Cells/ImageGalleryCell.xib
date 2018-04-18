@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,18 +14,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="ImageGalleryCell" customModule="Surilla" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="456" height="286"/>
+            <rect key="frame" x="0.0" y="0.0" width="456" height="295"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="456" height="286"/>
+                <rect key="frame" x="0.0" y="0.0" width="456" height="295"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhz-q3-hzE" customClass="ImageSlideshow" customModule="ImageSlideshow">
-                        <rect key="frame" x="0.0" y="0.0" width="456" height="175"/>
+                        <rect key="frame" x="0.0" y="0.0" width="456" height="184"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wH6-UR-PyD">
-                        <rect key="frame" x="0.0" y="175" width="456" height="111"/>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wH6-UR-PyD">
+                        <rect key="frame" x="0.0" y="175" width="456" height="120"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jxe-aJ-RJr" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="16" y="16" width="40" height="40"/>
@@ -35,65 +35,78 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7e-HQ-fhc" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="69" y="16" width="297" height="21"/>
+                                <rect key="frame" x="69" y="16" width="313" height="28.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fug-nW-qVc" customClass="ThinStatusSubtitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="382" y="16" width="42" height="21"/>
+                                <rect key="frame" x="398" y="20.5" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3DA-zh-MbS" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="394" y="44" width="22" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="5a0-Ym-wdN"/>
-                                    <constraint firstAttribute="width" secondItem="3DA-zh-MbS" secondAttribute="height" multiplier="1:1" id="Adu-jj-fdz"/>
-                                </constraints>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="viewColor">
-                                        <color key="value" red="0.14117647059999999" green="0.86274509799999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" verticalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeg-zL-8ga" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="69" y="37" width="309" height="21"/>
+                                <rect key="frame" x="69" y="44.5" width="281" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="FHT-Ki-5VZ">
-                                <rect key="frame" x="432" y="48.5" width="8" height="13"/>
+                            <view alpha="0.5" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="89J-hJ-MxL" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="69" y="75" width="0.0" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="8" id="E6T-Dq-WAR"/>
-                                    <constraint firstAttribute="height" constant="13" id="RWB-dT-Tf7"/>
+                                    <constraint firstAttribute="width" priority="250" id="QIO-bj-tU2"/>
+                                    <constraint firstAttribute="height" constant="20" id="h8p-KS-Ybe"/>
                                 </constraints>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                            </imageView>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ffg-lA-RS1">
+                                <rect key="frame" x="366" y="44.5" width="74" height="22"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3DA-zh-MbS" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="5a0-Ym-wdN"/>
+                                            <constraint firstAttribute="height" constant="22" id="dTd-Cy-B1D"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="viewColor">
+                                                <color key="value" red="0.14117647059999999" green="0.86274509799999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="FHT-Ki-5VZ">
+                                        <rect key="frame" x="66" y="4.5" width="8" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="E6T-Dq-WAR"/>
+                                            <constraint firstAttribute="height" constant="13" id="RWB-dT-Tf7"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fug-nW-qVc" firstAttribute="centerY" secondItem="M7e-HQ-fhc" secondAttribute="centerY" id="0C8-S3-RbK"/>
                             <constraint firstItem="M7e-HQ-fhc" firstAttribute="leading" secondItem="Jxe-aJ-RJr" secondAttribute="trailing" constant="13" id="0G2-vg-WPZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Fug-nW-qVc" secondAttribute="trailing" constant="16" id="1yl-ur-xnf"/>
                             <constraint firstItem="Jxe-aJ-RJr" firstAttribute="top" secondItem="wH6-UR-PyD" secondAttribute="topMargin" id="4HD-Zs-M2v"/>
-                            <constraint firstItem="FHT-Ki-5VZ" firstAttribute="leading" secondItem="3DA-zh-MbS" secondAttribute="trailing" constant="16" id="5n6-9m-brb"/>
-                            <constraint firstItem="3DA-zh-MbS" firstAttribute="centerY" secondItem="FHT-Ki-5VZ" secondAttribute="centerY" id="Aqp-gY-Pp8"/>
+                            <constraint firstItem="ffg-lA-RS1" firstAttribute="centerY" secondItem="wH6-UR-PyD" secondAttribute="centerY" id="BJ7-sn-rZf"/>
                             <constraint firstItem="Fug-nW-qVc" firstAttribute="leading" secondItem="M7e-HQ-fhc" secondAttribute="trailing" constant="16" id="EoU-hh-B8H"/>
-                            <constraint firstItem="FHT-Ki-5VZ" firstAttribute="centerY" secondItem="wH6-UR-PyD" secondAttribute="centerY" id="JLe-KU-Uag"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FHT-Ki-5VZ" secondAttribute="trailing" id="PNc-mB-eeZ"/>
+                            <constraint firstAttribute="trailing" secondItem="ffg-lA-RS1" secondAttribute="trailing" constant="16" id="Ny6-8h-Yit"/>
                             <constraint firstItem="Jxe-aJ-RJr" firstAttribute="leading" secondItem="wH6-UR-PyD" secondAttribute="leadingMargin" id="Pdy-LR-AHQ"/>
                             <constraint firstItem="M7e-HQ-fhc" firstAttribute="top" secondItem="Jxe-aJ-RJr" secondAttribute="top" id="Pnd-Sz-se3"/>
+                            <constraint firstAttribute="trailing" secondItem="Fug-nW-qVc" secondAttribute="trailing" constant="16" id="RnN-Ls-i72"/>
                             <constraint firstAttribute="height" constant="111" id="Sb5-Lt-aIG"/>
+                            <constraint firstItem="89J-hJ-MxL" firstAttribute="leading" secondItem="eeg-zL-8ga" secondAttribute="leading" id="ZN1-ee-dFI"/>
+                            <constraint firstItem="ffg-lA-RS1" firstAttribute="leading" secondItem="eeg-zL-8ga" secondAttribute="trailing" constant="16" id="eFu-aF-lpd"/>
                             <constraint firstItem="eeg-zL-8ga" firstAttribute="leading" secondItem="M7e-HQ-fhc" secondAttribute="leading" id="fou-9t-3O1"/>
-                            <constraint firstItem="3DA-zh-MbS" firstAttribute="leading" secondItem="eeg-zL-8ga" secondAttribute="trailing" constant="16" id="kIn-Wi-vOz"/>
                             <constraint firstItem="eeg-zL-8ga" firstAttribute="top" secondItem="M7e-HQ-fhc" secondAttribute="bottom" id="wp7-ft-JJv"/>
+                            <constraint firstItem="89J-hJ-MxL" firstAttribute="top" secondItem="eeg-zL-8ga" secondAttribute="bottom" constant="10" id="zFD-40-V7C"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eeg-zL-8ga" secondAttribute="bottom" constant="17" id="zZ3-VJ-NEY"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
@@ -108,10 +121,12 @@
                 <constraint firstItem="wH6-UR-PyD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="PVR-La-HAp"/>
                 <constraint firstItem="wH6-UR-PyD" firstAttribute="top" secondItem="mhz-q3-hzE" secondAttribute="bottom" id="p0t-BY-o7c"/>
                 <constraint firstAttribute="trailing" secondItem="wH6-UR-PyD" secondAttribute="trailing" id="qAb-jL-zQL"/>
+                <constraint firstAttribute="bottom" secondItem="89J-hJ-MxL" secondAttribute="bottom" constant="16" id="qnF-fi-AFV"/>
             </constraints>
             <size key="customSize" width="456" height="286"/>
             <connections>
                 <outlet property="avatarView" destination="Jxe-aJ-RJr" id="aXE-7R-7gg"/>
+                <outlet property="imagesStack" destination="89J-hJ-MxL" id="gcL-KD-Khl"/>
                 <outlet property="slideshow" destination="mhz-q3-hzE" id="Dgm-KX-0wB"/>
                 <outlet property="textLabel" destination="eeg-zL-8ga" id="YlN-t5-2gi"/>
                 <outlet property="timeLabel" destination="Fug-nW-qVc" id="hat-i7-Sgg"/>

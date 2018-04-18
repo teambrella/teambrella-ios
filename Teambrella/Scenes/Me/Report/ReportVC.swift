@@ -126,7 +126,7 @@ final class ReportVC: UIViewController, Routable {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.contentInset.bottom = keyboardHeight
+        collectionView.contentInset.bottom = keyboardHeight + 16
     }
     
     private func listenForKeyboard() {

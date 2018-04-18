@@ -30,6 +30,7 @@ extension UIViewController {
     func addGradientNavBar() {
         setupTransparentNavigationBar()
         defaultGradientOnTop()
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.7411764706, green: 0.7647058824, blue: 1, alpha: 1)
     }
     
     func setupTransparentNavigationBar() {
@@ -54,7 +55,7 @@ extension UIViewController {
             metrics: nil,
             views: views)
         constraints += hConstraints
-        let verticalVisualFormat = isIphoneX ? "V:|-(0)-[gradientView(84)]" : "V:|-(0)-[gradientView(64)]"
+        let verticalVisualFormat = isIphoneX ? "V:|-(0)-[gradientView(88)]" : "V:|-(0)-[gradientView(64)]"
         let vConstraints = NSLayoutConstraint.constraints(
             withVisualFormat: verticalVisualFormat,
             options: [],
