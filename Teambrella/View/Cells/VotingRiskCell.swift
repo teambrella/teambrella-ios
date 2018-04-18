@@ -382,6 +382,8 @@ extension VotingRiskCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if shouldSilenceScroll == false {
             delegate?.votingRisk(cell: self, changedRisk: currentRisk)
+//            swipeToVoteView.removeFromSuperview()
+            swipeToVoteView.disappear()
         } else {
             shouldSilenceScroll = false
         }

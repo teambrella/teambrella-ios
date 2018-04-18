@@ -43,16 +43,7 @@ class SwipeToVote: UIView, XIBInitable {
         
         label.text = "Team.Vote.SwipeToVote".localized
         imageView.image = #imageLiteral(resourceName: "swipe left-right")
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeView))
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(closeView))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
-        
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(closeView))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
-        
-        backView.addGestureRecognizer(tap)
-        backView.addGestureRecognizer(swipeLeft)
-        backView.addGestureRecognizer(swipeRight)
+        self.isUserInteractionEnabled = false
     }
     
     @objc
@@ -60,4 +51,13 @@ class SwipeToVote: UIView, XIBInitable {
         self.onInteraction?()
     }
 
+    func disappear() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseIn], animations: {
+            self.backView.alpha = 0
+            self.backView.backgroundColor = .clear
+            self.onInteraction?()
+        }) { finished in
+            
+        }
+    }
 }
