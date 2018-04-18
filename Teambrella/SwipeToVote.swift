@@ -50,11 +50,20 @@ class SwipeToVote: UIView, XIBInitable {
     func closeView() {
         self.onInteraction?()
     }
+    
+    func appear() {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
+            self.isHidden = false
+            self.backView.alpha = 1
+        }) { finished in
+            
+        }
+        self.disappear(duration: 0.5, delay: 1.5)
+    }
 
-    func disappear() {
-        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseIn], animations: {
+    func disappear(duration: Double, delay: Double) {
+        UIView.animate(withDuration: duration, delay: delay, options: [.curveEaseIn], animations: {
             self.backView.alpha = 0
-            self.backView.backgroundColor = .clear
             self.onInteraction?()
         }) { finished in
             
