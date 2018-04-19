@@ -27,13 +27,13 @@ class ChatModelBuilder {
     var showRate = false
     var font: UIFont = UIFont.teambrella(size: 14)
     var width: CGFloat = 0
-    lazy var heightCalculator = ChatFragmentHeightCalculator(width: width, font: font)
+    lazy var heightCalculator = ChatFragmentSizeCalculator(width: width, font: font)
     
     func unsentModel(fragments: [ChatFragment], id: String) -> ChatTextUnsentCellModel {
-        let heights = heightCalculator.heights(for: fragments)
+        let sizes = heightCalculator.sizes(for: fragments)
         let myName = service.session?.currentUserName ?? Name.empty
         return ChatTextUnsentCellModel(fragments: fragments,
-                                        fragmentHeights: heights,
+                                        fragmentSizes: sizes,
                                         userName: myName,
                                         date: Date(),
                                         id: id,
@@ -77,7 +77,7 @@ class ChatModelBuilder {
             
             let model = ChatTextCellModel(entity: item,
                                           fragments: fragments,
-                                          fragmentHeights: heightCalculator.heights(for: fragments),
+                                          fragmentSizes: heightCalculator.sizes(for: fragments),
                                           isMy: isMy,
                                           userName: name,
                                           userAvatar: avatar,

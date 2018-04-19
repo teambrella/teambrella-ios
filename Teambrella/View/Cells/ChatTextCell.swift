@@ -160,7 +160,7 @@ class ChatTextCell: UICollectionViewCell {
             setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
             setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
-            return setupFragments(fragments: model.fragments, heights: model.fragmentHeights)
+            return setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)
         } else if let model = model as? ChatTextUnsentCellModel {
             id = model.id
             isMy = true
@@ -173,7 +173,7 @@ class ChatTextCell: UICollectionViewCell {
             setupRightLabel(rateText: nil, baseFrame: baseFrame)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
             // setupAvatar(avatar: nil, cloudHeight: cloudHeight)
-            return setupFragments(fragments: model.fragments, heights: model.fragmentHeights)
+            return setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)
         } else {
             return []
         }
@@ -324,7 +324,7 @@ class ChatTextCell: UICollectionViewCell {
                                      y: cloudHeight - bottomLabel.frame.height / 2 - Constant.timeInset)
     }
     
-    private func setupFragments(fragments: [ChatFragment], heights: [CGFloat]) -> [UIView] {
+    private func setupFragments(fragments: [ChatFragment], sizes: [CGSize]) -> [UIView] {
         views.forEach { $0.removeFromSuperview() }
         views.removeAll()
         
@@ -332,12 +332,12 @@ class ChatTextCell: UICollectionViewCell {
         for (idx, fragment) in fragments.enumerated() {
             switch fragment {
             case let .text(text):
-                let textView: UITextView = createTextView(for: text, height: heights[idx])
+                let textView: UITextView = createTextView(for: text, size: sizes[idx])
                 contentView.addSubview(textView)
                 views.append(textView)
                 result.append(textView)
             case let .image(urlString: urlString, urlStringSmall: urlStringSmall, aspect: _):
-                let imageView = createGalleryView(for: urlString, small: urlStringSmall, height: heights[idx])
+                let imageView = createGalleryView(for: urlString, small: urlStringSmall, height: sizes[idx].height)
                 contentView.addSubview(imageView)
                 views.append(imageView)
                 result.append(imageView)
@@ -346,7 +346,7 @@ class ChatTextCell: UICollectionViewCell {
         return result
     }
     
-    private func createTextView(for text: String, height: CGFloat) -> UITextView {
+    private func createTextView(for text: String, size: CGSize) -> UITextView {
         let verticalOffset: CGFloat
         if let lastMaxY = views.last?.frame.maxY {
             verticalOffset = lastMaxY + 8
@@ -355,8 +355,8 @@ class ChatTextCell: UICollectionViewCell {
         }
         let textView = UITextView(frame: CGRect(x: cloudBodyMinX + Constant.textInset,
                                                 y: verticalOffset,
-                                                width: cloudWidth - Constant.textInset * 2,
-                                                height: height))
+                                                width: size.width,
+                                                height: size.height))
         
         textView.textColor = .charcoalGray
         textView.text = text

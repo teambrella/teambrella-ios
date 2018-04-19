@@ -21,7 +21,7 @@
 
 import UIKit
 
-struct ChatFragmentHeightCalculator {
+struct ChatFragmentSizeCalculator {
     let width: CGFloat
     let standardRatio: CGFloat
     let font: UIFont
@@ -32,29 +32,29 @@ struct ChatFragmentHeightCalculator {
         self.standardRatio = standardRatio
     }
     
-    func heights(for fragments: [ChatFragment]) -> [CGFloat] {
-        return fragments.compactMap { height(for: $0) }
+    func sizes(for fragments: [ChatFragment]) -> [CGSize] {
+        return fragments.compactMap { size(for: $0) }
     }
     
-    func height(for fragment: ChatFragment) -> CGFloat {
+    func size(for fragment: ChatFragment) -> CGSize {
         switch fragment {
         case let .text(text):
-            return height(for: text)
+            return size(for: text)
         case let .image(_, _, ratio):
-            return height(for: ratio)
+            return size(for: ratio)
         }
     }
     
-    func height(for text: String) -> CGFloat {
+    func size(for text: String) -> CGSize {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = text.boundingRect(with: constraintRect,
                                             options: .usesLineFragmentOrigin,
                                             attributes: [NSAttributedStringKey.font: font],
                                             context: nil)
-        return ceil(boundingBox.height) + 8
+        return boundingBox.size
     }
     
-    func height(for imageRatio: CGFloat) -> CGFloat {
-        return width / imageRatio
+    func size(for imageRatio: CGFloat) -> CGSize {
+        return CGSize(width: width, height: width / imageRatio)
     }
 }
