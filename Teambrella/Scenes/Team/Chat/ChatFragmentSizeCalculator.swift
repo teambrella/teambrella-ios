@@ -46,15 +46,21 @@ struct ChatFragmentSizeCalculator {
     }
     
     func size(for text: String) -> CGSize {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        return TextSizeCalculator().size(for: text, font: font, maxWidth: width)
+    }
+    
+    func size(for imageRatio: CGFloat) -> CGSize {
+        return CGSize(width: width, height: width / imageRatio)
+    }
+}
+
+struct TextSizeCalculator {
+    func size(for text: String, font: UIFont, maxWidth: CGFloat) -> CGSize {
+        let constraintRect = CGSize(width: maxWidth, height: .greatestFiniteMagnitude)
         let boundingBox = text.boundingRect(with: constraintRect,
                                             options: .usesLineFragmentOrigin,
                                             attributes: [NSAttributedStringKey.font: font],
                                             context: nil)
         return boundingBox.size
-    }
-    
-    func size(for imageRatio: CGFloat) -> CGSize {
-        return CGSize(width: width, height: width / imageRatio)
     }
 }

@@ -31,8 +31,11 @@ class ChatTextCell: UICollectionViewCell {
         static let avatarWidth: CGFloat = 15 * UIScreen.main.nativeScale
         static let avatarContainerInset: CGFloat = 12
         static let avatarCloudInset: CGFloat = 3.5
-        static let textInset: CGFloat = 16
+        static let textInset: CGFloat = 8
         static let timeInset: CGFloat = 8
+        static let auxillaryLabelHeight: CGFloat = 20
+        static let leftLabelFont = UIFont.teambrella(size: 12)
+        static let rightLabelFont = UIFont.teambrella(size: 10)
     }
     
     var cloudHeight: CGFloat = 90
@@ -54,7 +57,7 @@ class ChatTextCell: UICollectionViewCell {
     
     lazy var leftLabel: Label = {
         let label = Label()
-        label.font = UIFont.teambrella(size: 12)
+        label.font = Constant.leftLabelFont
         label.textColor = .darkSkyBlue
         self.contentView.addSubview(label)
         return label
@@ -62,7 +65,7 @@ class ChatTextCell: UICollectionViewCell {
     
     lazy var rightLabel: Label = {
         let label = Label()
-        label.font = UIFont.teambrella(size: 10)
+        label.font = Constant.rightLabelFont
         label.textColor = .bluishGray
         self.contentView.addSubview(label)
         return label
@@ -155,7 +158,7 @@ class ChatTextCell: UICollectionViewCell {
             self.cloudHeight = cloudHeight
             setNeedsDisplay()
             
-            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: 20)
+            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
             setupLeftLabel(name: model.userName, baseFrame: baseFrame)
             setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
@@ -168,7 +171,7 @@ class ChatTextCell: UICollectionViewCell {
             self.cloudHeight = cloudHeight
             setNeedsDisplay()
             
-            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: 20)
+            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
             setupLeftLabel(name: model.userName, baseFrame: baseFrame)
             setupRightLabel(rateText: nil, baseFrame: baseFrame)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
@@ -294,7 +297,7 @@ class ChatTextCell: UICollectionViewCell {
         leftLabel.text = name.entire
         leftLabel.sizeToFit()
         leftLabel.center = CGPoint(x: cloudBodyMinX + leftLabel.frame.width / 2 + Constant.textInset,
-                                   y: leftLabel.frame.height / 2 + Constant.textInset / 2)
+                                   y: leftLabel.frame.height / 2 + Constant.textInset)
     }
     
     private func setupRightLabel(rateText: String?, baseFrame: CGRect) {

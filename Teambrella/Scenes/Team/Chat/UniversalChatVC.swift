@@ -88,7 +88,7 @@ final class UniversalChatVC: UIViewController, Routable {
             collectionView.reloadData()
         }
     }
-    private var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
+    private var cloudWidth: CGFloat { return collectionView.bounds.width * 0.80 }
     
     private var leftButton: UIButton?
     
@@ -424,9 +424,26 @@ private extension UniversalChatVC {
     
     private func cloudSize(for indexPath: IndexPath) -> CGSize {
         guard let model = dataSource[indexPath] as? ChatTextCellModel else { return .zero }
-        
-        return CGSize(width: cloudWidth,
-                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + 60 )
+        let textInset = ChatTextCell.Constant.textInset
+        let minimalFragmentWidth: CGFloat = 50
+        let fragmentWidth = max(model.maxFragmentsWidth,
+                                minimalFragmentWidth)
+        let calculator = TextSizeCalculator()
+        let rightLabelWidth = calculator.size(for: model.rateText ?? "",
+                                              font: ChatTextCell.Constant.leftLabelFont,
+                                              maxWidth: cloudWidth).width
+        let leftLabelWidth = calculator.size(for: model.userName.entire,
+                                        font: ChatTextCell.Constant.leftLabelFont,
+                                        maxWidth: cloudWidth - rightLabelWidth).width
+
+        let width = max(fragmentWidth + textInset * 2,
+                        rightLabelWidth + leftLabelWidth + textInset * 3)
+
+        let verticalInset = ChatTextCell.Constant.auxillaryLabelHeight * 2
+            + ChatTextCell.Constant.textInset
+            + ChatTextCell.Constant.timeInset
+        return CGSize(width: width,
+                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset)
     }
     
     private func processIsTyping(action: SocketAction) {
