@@ -16,19 +16,21 @@
 
 import UIKit
 
-protocol ChatUserDataCell {
-
-}
-
-class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
+class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
     struct Constant {
+        static let tailWidth: CGFloat = 8
+        static let tailHeight: CGFloat = 8
+        static let tailSoftening: CGFloat = 3
+        static let tailCornerRadius: CGFloat = 1
         static let cloudCornerRadius: CGFloat = 6
-        static let imageInset: CGFloat = 2.0
         static let avatarWidth: CGFloat = 15 * UIScreen.main.nativeScale
         static let avatarContainerInset: CGFloat = 12
         static let avatarCloudInset: CGFloat = 3.5
+        static let textInset: CGFloat = 8
         static let timeInset: CGFloat = 8
         static let auxillaryLabelHeight: CGFloat = 20
+        static let leftLabelFont = UIFont.teambrella(size: 12)
+        static let rightLabelFont = UIFont.teambrella(size: 10)
     }
 
     var cloudHeight: CGFloat = 90
@@ -48,30 +50,44 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         return gesture
     }()
 
-    lazy var bottomLabel: Label = {
+    lazy var leftLabel: Label = {
         let label = Label()
-        label.font = UIFont.teambrella(size: 10)
-        label.textColor = .white
-        label.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        label.textInsets = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
+        label.font = Constant.leftLabelFont
+        label.textColor = .darkSkyBlue
         self.contentView.addSubview(label)
         return label
     }()
 
-    lazy var imageView: ChatImageView = {
-        let verticalOffset = 8
-        let imageView = ChatImageView(frame: CGRect(x: Constant.imageInset,
-                                                    y: Constant.imageInset,
-                                                    width: self.cloudWidth - Constant.imageInset * 2,
-                                                    height: self.cloudHeight - Constant.imageInset * 2))
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.roundCorners(.allCorners, radius: Constant.cloudCornerRadius - Constant.imageInset / 2)
-        imageView.onTap = { [weak self] galleryView in
-            self?.onTap(galleryView: galleryView)
-        }
-        self.contentView.addSubview(imageView)
-        return imageView
+    lazy var rightLabel: Label = {
+        let label = Label()
+        label.font = Constant.rightLabelFont
+        label.textColor = .bluishGray
+        self.contentView.addSubview(label)
+        return label
+    }()
+
+    lazy var bottomLabel: Label = {
+        let label = Label()
+        label.font = UIFont.teambrella(size: 10)
+        label.textColor = .bluishGray
+        self.contentView.addSubview(label)
+        return label
+    }()
+
+    lazy var textView: UITextView = {
+        let textView = UITextView(frame: .zero)
+        textView.textColor = .charcoalGray
+        textView.font = UIFont.teambrella(size: 14)
+        textView.backgroundColor = .clear
+        textView.isEditable = false
+        textView.dataDetectorTypes = .all
+        textView.isScrollEnabled = false
+
+        // fix (remove) textView top padding
+        textView.textContainer.lineFragmentPadding = 0
+        textView.textContainerInset = .zero
+        self.contentView.addSubview(textView)
+        return textView
     }()
 
     var width: CGFloat {
@@ -94,16 +110,16 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
 
     var cloudBodyMinX: CGFloat {
         if isMy {
-            return cloudStartPoint.x - cloudWidth
+            return cloudStartPoint.x - Constant.tailWidth - cloudWidth
         } else {
-            return cloudStartPoint.x
+            return cloudStartPoint.x + Constant.tailWidth
         }
     }
     var cloudBodyMaxX: CGFloat {
         if isMy {
-            return cloudStartPoint.x
+            return cloudStartPoint.x - Constant.tailWidth
         } else {
-            return cloudStartPoint.x + cloudWidth
+            return cloudStartPoint.x + Constant.tailWidth + cloudWidth
         }
     }
 
@@ -113,7 +129,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         }
     }
 
-    var onTapImage: ((ChatImageCell, GalleryView) -> Void)?
+    var onTapImage: ((ChatTextCell, GalleryView) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -142,8 +158,8 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         context.drawPath(using: .fillStroke)
     }
 
-    func prepare(with model: ChatCellUserDataLike, cloudWidth: CGFloat, cloudHeight: CGFloat) {
-        if model.id != id, let fragment = model.fragments.first {
+    func prepare(with model: ChatCellModel, cloudWidth: CGFloat, cloudHeight: CGFloat) {
+        if let model = model as? ChatTextCellModel, model.id != id {
             id = model.id
             isMy = model.isMy
             self.cloudWidth = cloudWidth
@@ -151,9 +167,23 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
             setNeedsDisplay()
 
             let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
-            setupFragment(fragment: fragment)
+            setupLeftLabel(name: model.userName, baseFrame: baseFrame)
+            setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
             setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
+            setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)
+        } else if let model = model as? ChatTextUnsentCellModel {
+            id = model.id
+            isMy = true
+            self.cloudWidth = cloudWidth
+            self.cloudHeight = cloudHeight
+            setNeedsDisplay()
+
+            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
+            setupLeftLabel(name: model.userName, baseFrame: baseFrame)
+            setupRightLabel(rateText: nil, baseFrame: baseFrame)
+            setupBottomLabel(date: model.date, baseFrame: baseFrame)
+            setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)
         }
     }
 
@@ -161,8 +191,13 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
 
     private func prepareMyCloud(in context: CGContext) {
         var pen: CGPoint = cloudStartPoint
-        pen.y -= Constant.cloudCornerRadius
         context.move(to: pen)
+        pen.y -= Constant.tailSoftening
+        pen.x -= Constant.tailSoftening
+        context.move(to: pen)
+        pen.x -= Constant.tailWidth - Constant.tailSoftening
+        pen.y -= Constant.tailHeight - Constant.tailSoftening
+        context.addLine(to: pen)
 
         pen.y = Constant.cloudCornerRadius
         context.addLine(to: pen)
@@ -188,12 +223,11 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         controlP = CGPoint(x: cloudBodyMinX, y: cloudHeight)
         context.addQuadCurve(to: pen, control: controlP)
 
-        pen.x = cloudStartPoint.x - Constant.cloudCornerRadius
+        pen.x = cloudStartPoint.x - Constant.tailSoftening
         context.addLine(to: pen)
 
-        pen.x += Constant.cloudCornerRadius
-        pen.y = cloudHeight - Constant.cloudCornerRadius
-        controlP = cloudStartPoint
+        pen.y -= Constant.tailSoftening
+        controlP = CGPoint(x: cloudStartPoint.x, y: cloudStartPoint.y - Constant.tailCornerRadius)
         context.addQuadCurve(to: pen, control: controlP)
         context.closePath()
 
@@ -203,8 +237,14 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
 
     private func prepareTheirCloud(in context: CGContext) {
         var pen: CGPoint = cloudStartPoint
-        pen.y -= Constant.cloudCornerRadius
         context.move(to: pen)
+        pen.x += Constant.tailSoftening
+        pen.y -= Constant.tailSoftening
+        context.move(to: pen)
+        pen.x += Constant.tailWidth - Constant.tailSoftening
+        pen.y -= Constant.tailHeight - Constant.tailSoftening
+        context.addLine(to: pen)
+
         pen.y = Constant.cloudCornerRadius
         context.addLine(to: pen)
 
@@ -229,13 +269,13 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         controlP = CGPoint(x: cloudBodyMaxX, y: cloudHeight)
         context.addQuadCurve(to: pen, control: controlP)
 
-        pen.x = cloudStartPoint.x + Constant.cloudCornerRadius
+        pen.x = cloudStartPoint.x + Constant.tailSoftening
         context.addLine(to: pen)
 
-        pen.x -= Constant.cloudCornerRadius
-        pen.y = cloudHeight - Constant.cloudCornerRadius
-        controlP = cloudStartPoint
+        pen.y -= Constant.tailSoftening
+        controlP = CGPoint(x: cloudStartPoint.x, y: cloudStartPoint.y - Constant.tailCornerRadius)
         context.addQuadCurve(to: pen, control: controlP)
+
         context.closePath()
 
         context.setFillColor(UIColor.white.cgColor)
@@ -257,6 +297,30 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
                                   height: Constant.avatarWidth)
     }
 
+    private func setupLeftLabel(name: Name, baseFrame: CGRect) {
+        leftLabel.frame = baseFrame
+        leftLabel.text = name.entire
+        leftLabel.sizeToFit()
+        leftLabel.center = CGPoint(x: cloudBodyMinX + leftLabel.frame.width / 2 + Constant.textInset,
+                                   y: leftLabel.frame.height / 2 + Constant.textInset)
+    }
+
+    private func setupRightLabel(rateText: String?, baseFrame: CGRect) {
+        rightLabel.frame = baseFrame
+        if let rate = rateText {
+            rightLabel.isHidden = false
+            rightLabel.text = rate
+            rightLabel.sizeToFit()
+            rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - Constant.timeInset,
+                                        y: leftLabel.frame.minY + rightLabel.frame.height / 2)
+            if leftLabel.frame.maxX > rightLabel.frame.minX - 8 {
+                leftLabel.frame.size.width -= leftLabel.frame.maxX - (rightLabel.frame.minX - Constant.timeInset)
+            }
+        } else {
+            rightLabel.isHidden = true
+        }
+    }
+
     private func setupBottomLabel(date: Date, baseFrame: CGRect) {
         bottomLabel.frame = baseFrame
         let dateFormatter = DateFormatter()
@@ -264,25 +328,32 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         dateFormatter.timeStyle = .short
         bottomLabel.text = dateFormatter.string(from: date)
         bottomLabel.sizeToFit()
-        bottomLabel.cornerRadius = bottomLabel.frame.height / 2
         bottomLabel.center = CGPoint(x: cloudBodyMaxX - bottomLabel.frame.width / 2 - Constant.timeInset,
                                      y: cloudHeight - bottomLabel.frame.height / 2 - Constant.timeInset)
     }
 
-    private func setupFragment(fragment: ChatFragment) {
-        switch fragment {
-        case let .image(urlString: urlString, urlStringSmall: urlStringSmall, aspect: _):
-            imageView.setStartingImage(small: urlStringSmall, large: urlString)
-            imageView.frame = CGRect(x: cloudBodyMinX + Constant.imageInset,
-                                     y: Constant.imageInset,
-                                     width: cloudWidth - Constant.imageInset * 2,
-                                     height: cloudHeight - Constant.imageInset * 2)
-        default:
-            break
+    private func setupFragments(fragments: [ChatFragment], sizes: [CGSize]) {
+        for (idx, fragment) in fragments.enumerated() {
+            switch fragment {
+            case let .text(text):
+                updateTextView(for: text, size: sizes[idx])
+            default:
+                break
+            }
         }
+    }
+
+    private func updateTextView(for text: String, size: CGSize) {
+        let verticalOffset: CGFloat = leftLabel.frame.maxY + Constant.textInset
+        textView.frame = CGRect(x: cloudBodyMinX + Constant.textInset,
+                                                y: verticalOffset,
+                                                width: size.width,
+                                                height: size.height)
+        textView.text = text
     }
 
     private func onTap(galleryView: GalleryView) {
         onTapImage?(self, galleryView)
     }
+
 }
