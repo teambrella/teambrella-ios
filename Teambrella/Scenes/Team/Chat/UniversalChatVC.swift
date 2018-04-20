@@ -49,7 +49,7 @@ final class UniversalChatVC: UIViewController, Routable {
         static let dateSeparatorCellID = "com.chat.separator.cell"
         static let textWithImagesCellID = "com.chat.text.cell"
     }
-
+    
     static var storyboardName = "Chat"
     
     @IBOutlet var collectionView: UICollectionView!
@@ -136,7 +136,7 @@ final class UniversalChatVC: UIViewController, Routable {
         }
         
         dataSource.isLoadNextNeeded = true
-
+        
         title = ""
         let session = service.session
         slidingView.setupViews(with: self, session: session)
@@ -296,6 +296,7 @@ private extension UniversalChatVC {
         guard dataSource.isObjectViewNeeded == true else { return }
         
         slidingView.showObjectView()
+        slidingView.objectView.clearLabels()
     }
     
     private func showMuteInfo(muteType: TopicMuteType) {
@@ -433,12 +434,12 @@ private extension UniversalChatVC {
                                               font: ChatTextCell.Constant.leftLabelFont,
                                               maxWidth: cloudWidth).width
         let leftLabelWidth = calculator.size(for: model.userName.entire,
-                                        font: ChatTextCell.Constant.leftLabelFont,
-                                        maxWidth: cloudWidth - rightLabelWidth).width
-
+                                             font: ChatTextCell.Constant.leftLabelFont,
+                                             maxWidth: cloudWidth - rightLabelWidth).width
+        
         let width = max(fragmentWidth + textInset * 2,
                         rightLabelWidth + leftLabelWidth + textInset * 3)
-
+        
         let verticalInset = ChatTextCell.Constant.auxillaryLabelHeight * 2
             + ChatTextCell.Constant.textInset
             + ChatTextCell.Constant.timeInset

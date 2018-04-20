@@ -63,10 +63,9 @@ class ChatObjectView: UIView, XIBInitable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
-    func initialSetup() {
+    func clearLabels() {
         nameLabel.text = ""
         amountLabel.text = ""
         currencyLabel.text = ""
@@ -75,6 +74,10 @@ class ChatObjectView: UIView, XIBInitable {
         voteValueLabel.text = ""
         percentLabel.text = ""
         rightLabel.text = ""
+    }
+    
+    func initialSetup() {
+        clearLabels()
         chevronButton.isHidden = false
         voteContainer.isHidden = false
         chevronButton.alpha = 0
