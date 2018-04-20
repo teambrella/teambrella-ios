@@ -67,6 +67,14 @@ class ChatObjectView: UIView, XIBInitable {
     }
     
     func initialSetup() {
+        nameLabel.text = ""
+        amountLabel.text = ""
+        currencyLabel.text = ""
+        voteTitleLabel.text = ""
+        voteValueLabel.text = ""
+        voteValueLabel.text = ""
+        percentLabel.text = ""
+        rightLabel.text = ""
         chevronButton.isHidden = false
         voteContainer.isHidden = false
         chevronButton.alpha = 0
