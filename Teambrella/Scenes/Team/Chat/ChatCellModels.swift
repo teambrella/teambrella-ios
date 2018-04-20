@@ -27,7 +27,17 @@ protocol ChatCellModel {
     var isTemporary: Bool { get }
 }
 
-struct ChatTextCellModel: ChatCellModel {
+protocol ChatCellUserDataLike: ChatCellModel {
+    var entity: ChatEntity { get }
+    var fragments: [ChatFragment] { get }
+    var isMy: Bool { get }
+    var userAvatar: Avatar { get }
+    var date: Date { get }
+    var isTemporary: Bool { get }
+    var id: String { get }
+}
+
+struct ChatTextCellModel: ChatCellUserDataLike {
     let entity: ChatEntity
     let fragments: [ChatFragment]
     let fragmentSizes: [CGSize]
@@ -42,7 +52,21 @@ struct ChatTextCellModel: ChatCellModel {
     var maxFragmentsWidth: CGFloat { return fragmentSizes.reduce(0) { return max($0, $1.width) } }
     var totalFragmentsHeight: CGFloat { return fragmentSizes.reduce(0) { $0 + $1.height } }
     var id: String { return entity.id }
-    
+}
+
+struct ChatImageCellModel: ChatCellUserDataLike {
+    let entity: ChatEntity
+    let fragments: [ChatFragment]
+    let fragmentSizes: [CGSize]
+
+    let isMy: Bool
+    let userAvatar: Avatar
+    let date: Date
+    let isTemporary: Bool
+
+    var maxFragmentsWidth: CGFloat { return fragmentSizes.reduce(0) { return max($0, $1.width) } }
+    var totalFragmentsHeight: CGFloat { return fragmentSizes.reduce(0) { $0 + $1.height } }
+    var id: String { return entity.id }
 }
 
 struct ChatTextUnsentCellModel: ChatCellModel {

@@ -21,7 +21,7 @@
 
 import UIKit
 
-class ChatTextCell: UICollectionViewCell {
+class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
     struct Constant {
         static let tailWidth: CGFloat = 8
         static let tailHeight: CGFloat = 8

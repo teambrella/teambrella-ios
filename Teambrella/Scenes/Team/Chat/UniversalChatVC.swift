@@ -48,6 +48,7 @@ final class UniversalChatVC: UIViewController, Routable {
         static let newMessagesSeparatorCellID = "com.chat.new.cell"
         static let dateSeparatorCellID = "com.chat.separator.cell"
         static let textWithImagesCellID = "com.chat.text.cell"
+        static let singleImageCellID = "com.chat.image.cell"
     }
 
     static var storyboardName = "Chat"
@@ -266,7 +267,7 @@ final class UniversalChatVC: UIViewController, Routable {
         guard let view = sender.view else { return }
         
         let indexPath = IndexPath(row: view.tag, section: 0)
-        if let model = dataSource[indexPath] as? ChatTextCellModel {
+        if let model = dataSource[indexPath] as? ChatCellUserDataLike {
             let userID = model.entity.userID
             service.router.presentMemberProfile(teammateID: userID)
         }
@@ -379,6 +380,8 @@ private extension UniversalChatVC {
         collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
         collectionView.register(ChatTextCell.self,
                                 forCellWithReuseIdentifier: Constant.textWithImagesCellID)
+        collectionView.register(ChatImageCell.self,
+                                forCellWithReuseIdentifier: Constant.singleImageCellID)
         collectionView.register(ChatSeparatorCell.self,
                                 forCellWithReuseIdentifier: Constant.dateSeparatorCellID)
         collectionView.register(ChatNewMessagesSeparatorCell.self,
@@ -423,27 +426,33 @@ private extension UniversalChatVC {
     }
     
     private func cloudSize(for indexPath: IndexPath) -> CGSize {
-        guard let model = dataSource[indexPath] as? ChatTextCellModel else { return .zero }
-        let textInset = ChatTextCell.Constant.textInset
-        let minimalFragmentWidth: CGFloat = 50
-        let fragmentWidth = max(model.maxFragmentsWidth,
-                                minimalFragmentWidth)
-        let calculator = TextSizeCalculator()
-        let rightLabelWidth = calculator.size(for: model.rateText ?? "",
-                                              font: ChatTextCell.Constant.leftLabelFont,
-                                              maxWidth: cloudWidth).width
-        let leftLabelWidth = calculator.size(for: model.userName.entire,
-                                        font: ChatTextCell.Constant.leftLabelFont,
-                                        maxWidth: cloudWidth - rightLabelWidth).width
+        if let model = dataSource[indexPath] as? ChatTextCellModel {
+            let textInset = ChatTextCell.Constant.textInset
+            let minimalFragmentWidth: CGFloat = 50
+            let fragmentWidth = max(model.maxFragmentsWidth,
+                                    minimalFragmentWidth)
+            let calculator = TextSizeCalculator()
+            let rightLabelWidth = calculator.size(for: model.rateText ?? "",
+                                                  font: ChatTextCell.Constant.leftLabelFont,
+                                                  maxWidth: cloudWidth).width
+            let leftLabelWidth = calculator.size(for: model.userName.entire,
+                                                 font: ChatTextCell.Constant.leftLabelFont,
+                                                 maxWidth: cloudWidth - rightLabelWidth).width
 
-        let width = max(fragmentWidth + textInset * 2,
-                        rightLabelWidth + leftLabelWidth + textInset * 3)
+            let width = max(fragmentWidth + textInset * 2,
+                            rightLabelWidth + leftLabelWidth + textInset * 3)
 
-        let verticalInset = ChatTextCell.Constant.auxillaryLabelHeight * 2
-            + ChatTextCell.Constant.textInset
-            + ChatTextCell.Constant.timeInset
-        return CGSize(width: width,
-                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset)
+            let verticalInset = ChatTextCell.Constant.auxillaryLabelHeight * 2
+                + ChatTextCell.Constant.textInset
+                + ChatTextCell.Constant.timeInset
+            return CGSize(width: width,
+                          height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset)
+        } else if let model = dataSource[indexPath] as? ChatImageCellModel {
+            return CGSize(width: model.maxFragmentsWidth + ChatImageCell.Constant.imageInset * 2,
+                          height: model.totalFragmentsHeight + ChatImageCell.Constant.imageInset * 2)
+        } else {
+            return .zero
+        }
     }
     
     private func processIsTyping(action: SocketAction) {
@@ -557,6 +566,8 @@ extension UniversalChatVC: UICollectionViewDataSource {
         case _ as ChatTextCellModel,
              _ as ChatTextUnsentCellModel:
             identifier = Constant.textWithImagesCellID
+        case _ as ChatImageCellModel:
+            identifier = Constant.singleImageCellID
         case _ as ChatSeparatorCellModel:
             identifier = Constant.dateSeparatorCellID
         case _ as ChatNewMessagesSeparatorModel:
@@ -590,26 +601,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
         
         let model = dataSource[indexPath]
         if let cell = cell as? ChatTextCell {
-            if let model = model as? ChatTextCellModel {
-                let size = cloudSize(for: indexPath)
-                cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
-                
-                // crunch
-                //                if model.isMy, let model = dataSource.chatModel, model.isClaimChat,
-                //                let vote = model.voting?.myVote {
-                //                    cell.rightLabel.text = dataSource.cellModelBuilder.rateText(rate: vote,
-                //                                                                                showRate: true,
-                //                                                                                isClaim: true)
-                //                }
-                cell.avatarView.tag = indexPath.row
-                cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
-                cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
-                cell.onTapImage = { [weak self] cell, galleryView in
-                    guard let `self` = self else { return }
-                    
-                    galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
-                }
-            } else if let model = model as? ChatTextUnsentCellModel {
+            if let model = model as? ChatCellUserDataLike {
                 let size = cloudSize(for: indexPath)
                 cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
                 cell.avatarView.tag = indexPath.row
@@ -620,7 +612,17 @@ extension UniversalChatVC: UICollectionViewDelegate {
                     
                     galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
                 }
-                cell.alpha = 0.5
+            }
+        } else if let cell = cell as? ChatImageCell, let model = model as? ChatImageCellModel {
+            let size = cloudSize(for: indexPath)
+            cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
+            cell.avatarView.tag = indexPath.row
+            cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
+            cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
+            cell.onTapImage = { [weak self] cell, galleryView in
+                guard let `self` = self else { return }
+
+                galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
             }
         } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
             let modelYear = NSCalendar.current.component(.year, from: model.date)
@@ -676,6 +678,9 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch dataSource[indexPath] {
         case _ as ChatTextCellModel:
+            let size = cloudSize(for: indexPath)
+            return CGSize(width: collectionView.bounds.width, height: size.height)
+        case _ as ChatImageCellModel:
             let size = cloudSize(for: indexPath)
             return CGSize(width: collectionView.bounds.width, height: size.height)
         case _ as ChatSeparatorCellModel:

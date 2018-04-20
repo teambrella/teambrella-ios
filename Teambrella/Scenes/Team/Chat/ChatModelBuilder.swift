@@ -74,8 +74,18 @@ class ChatModelBuilder {
             
             let date = item.created
             let rateString = rateText(rate: item.teammate?.vote, showRate: showRate, isClaim: isClaim)
-            
-            let model = ChatTextCellModel(entity: item,
+
+            let model: ChatCellUserDataLike
+            if fragments.count == 1, let fragment = fragments.first, case .image = fragment {
+                 model = ChatImageCellModel(entity: item,
+                                               fragments: fragments,
+                                               fragmentSizes: heightCalculator.sizes(for: fragments),
+                                               isMy: isMy,
+                                               userAvatar: avatar,
+                                               date: date,
+                                               isTemporary: isTemporary)
+            } else {
+            model = ChatTextCellModel(entity: item,
                                           fragments: fragments,
                                           fragmentSizes: heightCalculator.sizes(for: fragments),
                                           isMy: isMy,
@@ -84,6 +94,7 @@ class ChatModelBuilder {
                                           rateText: rateString,
                                           date: date,
                                           isTemporary: isTemporary)
+            }
             result.append(model)
         }
         return result

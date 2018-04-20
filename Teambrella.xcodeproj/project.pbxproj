@@ -679,6 +679,8 @@
 		6D900E2A1FC46B0D00FF6FF8 /* String-localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E281FC46B0D00FF6FF8 /* String-localized.swift */; };
 		6D900E2C1FC46BB000FF6FF8 /* String-localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E281FC46B0D00FF6FF8 /* String-localized.swift */; };
 		6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC061EB3A79100FDC332 /* UUIDTests.swift */; };
+		6D92BBBA2089E28F00E2E953 /* ChatImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */; };
+		6D92BBBB2089E28F00E2E953 /* ChatImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */; };
 		6D9374AA202C9EB800BB28CB /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
 		6D9374AB202C9EB900BB28CB /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
 		6D9AAF5F201A4BB5000411CC /* TransactionsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9AAF5E201A4BB5000411CC /* TransactionsCellModel.swift */; };
@@ -1330,6 +1332,7 @@
 		6D900E281FC46B0D00FF6FF8 /* String-localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String-localized.swift"; path = "Helpers/Extensions/String-localized.swift"; sourceTree = "<group>"; };
 		6D900E2D1FC4734400FF6FF8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Push.strings; sourceTree = "<group>"; };
 		6D91BC061EB3A79100FDC332 /* UUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDTests.swift; sourceTree = "<group>"; };
+		6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatImageCell.swift; path = Scenes/Team/Chat/ChatImageCell.swift; sourceTree = "<group>"; };
 		6D9AAF5E201A4BB5000411CC /* TransactionsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsCellModel.swift; sourceTree = "<group>"; };
 		6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyProcessor.swift; path = Helpers/CurrencyProcessor.swift; sourceTree = "<group>"; };
 		6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Bold.otf"; path = "Resources/AkkuratPro-Bold.otf"; sourceTree = "<group>"; };
@@ -2527,6 +2530,7 @@
 				940FEE831FA8D05700B43CB5 /* MuteVC.swift */,
 				94F502591FA8E4A90059D49B /* MuteDataSource.swift */,
 				9475D9311FA390BC00F881C9 /* MuteCellModel.swift */,
+				6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -3495,6 +3499,7 @@
 				6D6FCBFE1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */,
 				6D4E5C501F7AB6870020DEE2 /* ChatNewMessagesSeparatorCell.swift in Sources */,
 				6D878E50200CF63600066492 /* GasStation.swift in Sources */,
+				6D92BBBB2089E28F00E2E953 /* ChatImageCell.swift in Sources */,
 				6DDB5D971FF694090066A07F /* ChatModel.swift in Sources */,
 				6DB2ABC91FF2C1B00028F95C /* ServerReply.swift in Sources */,
 				6D4E5C511F7AB6870020DEE2 /* ChatFragmentSizeCalculator.swift in Sources */,
@@ -3914,6 +3919,7 @@
 				6D6FCBFD1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */,
 				6D1A9B251F55CF92004192AC /* PrivateChatUser.swift in Sources */,
 				6D878E4F200CF63600066492 /* GasStation.swift in Sources */,
+				6D92BBBA2089E28F00E2E953 /* ChatImageCell.swift in Sources */,
 				6DDB5D961FF694090066A07F /* ChatModel.swift in Sources */,
 				6DB2ABC81FF2C1B00028F95C /* ServerReply.swift in Sources */,
 				6DEE67A31EDC5C4D0098EDB3 /* TeammateCell.swift in Sources */,
