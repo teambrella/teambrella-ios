@@ -88,7 +88,7 @@ final class UniversalChatVC: UIViewController, Routable {
             collectionView.reloadData()
         }
     }
-    private var cloudWidth: CGFloat { return collectionView.bounds.width * 0.80 }
+    private var cloudWidth: CGFloat { return collectionView.bounds.width * 0.75 }
     
     private var leftButton: UIButton?
     
