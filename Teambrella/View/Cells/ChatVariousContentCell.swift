@@ -21,7 +21,7 @@
 
 import UIKit
 
-class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
+class ChatVariousContentCell: UICollectionViewCell, ChatUserDataCell {
     struct Constant {
         static let tailWidth: CGFloat = 8
         static let tailHeight: CGFloat = 8
@@ -120,7 +120,7 @@ class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
         }
     }
     
-    var onTapImage: ((ChatTextCell, GalleryView) -> Void)?
+    var onTapImage: ((ChatVariousContentCell, GalleryView) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

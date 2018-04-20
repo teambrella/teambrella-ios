@@ -378,7 +378,7 @@ private extension UniversalChatVC {
     
     private func registerCells() {
         collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
-        collectionView.register(ChatTextCell.self,
+        collectionView.register(ChatVariousContentCell.self,
                                 forCellWithReuseIdentifier: Constant.textWithImagesCellID)
         collectionView.register(ChatImageCell.self,
                                 forCellWithReuseIdentifier: Constant.singleImageCellID)
@@ -427,24 +427,24 @@ private extension UniversalChatVC {
     
     private func cloudSize(for indexPath: IndexPath) -> CGSize {
         if let model = dataSource[indexPath] as? ChatTextCellModel {
-            let textInset = ChatTextCell.Constant.textInset
+            let textInset = ChatVariousContentCell.Constant.textInset
             let minimalFragmentWidth: CGFloat = 50
             let fragmentWidth = max(model.maxFragmentsWidth,
                                     minimalFragmentWidth)
             let calculator = TextSizeCalculator()
             let rightLabelWidth = calculator.size(for: model.rateText ?? "",
-                                                  font: ChatTextCell.Constant.leftLabelFont,
+                                                  font: ChatVariousContentCell.Constant.leftLabelFont,
                                                   maxWidth: cloudWidth).width
             let leftLabelWidth = calculator.size(for: model.userName.entire,
-                                                 font: ChatTextCell.Constant.leftLabelFont,
+                                                 font: ChatVariousContentCell.Constant.leftLabelFont,
                                                  maxWidth: cloudWidth - rightLabelWidth).width
 
             let width = max(fragmentWidth + textInset * 2,
                             rightLabelWidth + leftLabelWidth + textInset * 3)
 
-            let verticalInset = ChatTextCell.Constant.auxillaryLabelHeight * 2
-                + ChatTextCell.Constant.textInset
-                + ChatTextCell.Constant.timeInset
+            let verticalInset = ChatVariousContentCell.Constant.auxillaryLabelHeight * 2
+                + ChatVariousContentCell.Constant.textInset
+                + ChatVariousContentCell.Constant.timeInset
             return CGSize(width: width,
                           height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset)
         } else if let model = dataSource[indexPath] as? ChatImageCellModel {
@@ -600,7 +600,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
         }
         
         let model = dataSource[indexPath]
-        if let cell = cell as? ChatTextCell {
+        if let cell = cell as? ChatVariousContentCell {
             if let model = model as? ChatCellUserDataLike {
                 let size = cloudSize(for: indexPath)
                 cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
@@ -732,7 +732,7 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
                            viewControllerForLocation location: CGPoint) -> UIViewController? {
         let updatedLocation = view.convert(location, to: collectionView)
         guard let indexPath = collectionView?.indexPathForItem(at: updatedLocation) else { return nil }
-        guard let cell = collectionView?.cellForItem(at: indexPath) as? ChatTextCell else { return nil }
+        guard let cell = collectionView?.cellForItem(at: indexPath) as? ChatVariousContentCell else { return nil }
         
         let cellLocation = collectionView.convert(updatedLocation, to: cell.avatarView)
         guard cell.avatarView.point(inside: cellLocation, with: nil) else { return nil }

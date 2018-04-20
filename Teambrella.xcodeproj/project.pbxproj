@@ -443,7 +443,7 @@
 		6D4E5D3F1F7AB6870020DEE2 /* TeamFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA311EFD6CB700DED5CE /* TeamFeedCell.swift */; };
 		6D4E5D401F7AB6870020DEE2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFE16BB5E7B5B758559237 /* String.swift */; };
 		6D4E5D411F7AB6870020DEE2 /* SortVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9440EDF41F0CED5A00E5A6E7 /* SortVC.swift */; };
-		6D4E5D421F7AB6870020DEE2 /* ChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B49D1F4DD70F00672583 /* ChatTextCell.swift */; };
+		6D4E5D421F7AB6870020DEE2 /* ChatVariousContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B49D1F4DD70F00672583 /* ChatVariousContentCell.swift */; };
 		6D4E5D431F7AB6870020DEE2 /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF1CB71F58562900421C5A /* PushService.swift */; };
 		6D4E5D441F7AB6870020DEE2 /* DiscussionCompactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */; };
 		6D4E5D481F7AB6870020DEE2 /* JoinTeamCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141D11F07DF9D00C285DA /* JoinTeamCellBuilder.swift */; };
@@ -573,7 +573,7 @@
 		6D666B711F8512FA00812CBE /* PlistStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D666B6F1F8512FA00812CBE /* PlistStorage.swift */; };
 		6D66B49A1F4C461A00672583 /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B4991F4C461A00672583 /* ImagePickerController.swift */; };
 		6D66B49C1F4D89F900672583 /* CombinedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B49B1F4D89F900672583 /* CombinedModels.swift */; };
-		6D66B49E1F4DD70F00672583 /* ChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B49D1F4DD70F00672583 /* ChatTextCell.swift */; };
+		6D66B49E1F4DD70F00672583 /* ChatVariousContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B49D1F4DD70F00672583 /* ChatVariousContentCell.swift */; };
 		6D66B4A01F4ED66700672583 /* ChatFragmentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B49F1F4ED66700672583 /* ChatFragmentParser.swift */; };
 		6D66B4A21F4F106900672583 /* ChatModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B4A11F4F106900672583 /* ChatModelBuilder.swift */; };
 		6D66B4A41F4F109E00672583 /* ChatFragmentSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66B4A31F4F109E00672583 /* ChatFragmentSizeCalculator.swift */; };
@@ -1236,7 +1236,7 @@
 		6D666B6F1F8512FA00812CBE /* PlistStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlistStorage.swift; path = Model/Services/Storage/PlistStorage.swift; sourceTree = "<group>"; };
 		6D66B4991F4C461A00672583 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickerController.swift; path = Controller/ImagePickerController.swift; sourceTree = "<group>"; };
 		6D66B49B1F4D89F900672583 /* CombinedModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CombinedModels.swift; path = Model/Entities/CombinedModels.swift; sourceTree = "<group>"; };
-		6D66B49D1F4DD70F00672583 /* ChatTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatTextCell.swift; path = View/Cells/ChatTextCell.swift; sourceTree = "<group>"; };
+		6D66B49D1F4DD70F00672583 /* ChatVariousContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatVariousContentCell.swift; path = View/Cells/ChatVariousContentCell.swift; sourceTree = "<group>"; };
 		6D66B49F1F4ED66700672583 /* ChatFragmentParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatFragmentParser.swift; path = Scenes/Team/Chat/ChatFragmentParser.swift; sourceTree = "<group>"; };
 		6D66B4A11F4F106900672583 /* ChatModelBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatModelBuilder.swift; path = Scenes/Team/Chat/ChatModelBuilder.swift; sourceTree = "<group>"; };
 		6D66B4A31F4F109E00672583 /* ChatFragmentSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatFragmentSizeCalculator.swift; path = Scenes/Team/Chat/ChatFragmentSizeCalculator.swift; sourceTree = "<group>"; };
@@ -2523,7 +2523,7 @@
 				6D66B4A11F4F106900672583 /* ChatModelBuilder.swift */,
 				6D66B4A31F4F109E00672583 /* ChatFragmentSizeCalculator.swift */,
 				6D66B4A51F4F10E800672583 /* ChatCellModels.swift */,
-				6D66B49D1F4DD70F00672583 /* ChatTextCell.swift */,
+				6D66B49D1F4DD70F00672583 /* ChatVariousContentCell.swift */,
 				6DD051C21F67CC5E00532626 /* InputAccessoryView.swift */,
 				6D7987781F6827A80060A193 /* ChatSeparatorCell.swift */,
 				6DE5541D1F755A2E00782884 /* ChatNewMessagesSeparatorCell.swift */,
@@ -3789,7 +3789,7 @@
 				6D4E5D3F1F7AB6870020DEE2 /* TeamFeedCell.swift in Sources */,
 				6D4E5D401F7AB6870020DEE2 /* String.swift in Sources */,
 				6D4E5D411F7AB6870020DEE2 /* SortVC.swift in Sources */,
-				6D4E5D421F7AB6870020DEE2 /* ChatTextCell.swift in Sources */,
+				6D4E5D421F7AB6870020DEE2 /* ChatVariousContentCell.swift in Sources */,
 				6DB5E80B1FEA874E009A2A62 /* SimpleStorage.swift in Sources */,
 				6D4E5D431F7AB6870020DEE2 /* PushService.swift in Sources */,
 				6D4E5D441F7AB6870020DEE2 /* DiscussionCompactCell.swift in Sources */,
@@ -4209,7 +4209,7 @@
 				6D7CC5A51FF3D49600ED46E3 /* ServerStatus.swift in Sources */,
 				CBDFE3B8E39275922CDCC041 /* String.swift in Sources */,
 				9440EDF51F0CED5A00E5A6E7 /* SortVC.swift in Sources */,
-				6D66B49E1F4DD70F00672583 /* ChatTextCell.swift in Sources */,
+				6D66B49E1F4DD70F00672583 /* ChatVariousContentCell.swift in Sources */,
 				6DB5E80A1FEA874E009A2A62 /* SimpleStorage.swift in Sources */,
 				6DAF1CB81F58562900421C5A /* PushService.swift in Sources */,
 				6D2808C81F1A563A00EBBE3D /* DiscussionCompactCell.swift in Sources */,
