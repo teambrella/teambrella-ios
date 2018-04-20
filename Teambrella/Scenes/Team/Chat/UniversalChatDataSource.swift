@@ -62,7 +62,7 @@ final class UniversalChatDatasource {
     private var lastInsertionIndex                  = 0
 
     private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
-    var cellModelBuilder                    = ChatModelBuilder()
+    var cellModelBuilder                            = ChatModelBuilder()
     
     private var lastRead: Int64                     = 0
     private var forwardOffset: Int                  = 0
@@ -436,10 +436,21 @@ extension UniversalChatDatasource {
         } else {
             isLoadNextNeeded = false
             forwardOffset += currentPostsCount
+            if lastRead == 0 && !models.isEmpty {
+                insertNewMessagesSeparator(firstNewMessage: models.first)
+            }
         }
         
         let models = createCellModels(from: models, isTemporary: false)
         addCellModels(models: models)
+    }
+
+    private func insertNewMessagesSeparator(firstNewMessage: ChatEntity?) {
+        guard let message = firstNewMessage else { return }
+
+        let separatorDate = message.created.addingTimeInterval(-0.1)
+        let model = ChatNewMessagesSeparatorModel(date: separatorDate)
+        addCellModels(models: [model])
     }
     
     private func process(response: TeambrellaResponseType, isPrevious: Bool, isMyNewMessage: Bool) {

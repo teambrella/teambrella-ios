@@ -31,8 +31,11 @@ class ChatTextCell: UICollectionViewCell {
         static let avatarWidth: CGFloat = 15 * UIScreen.main.nativeScale
         static let avatarContainerInset: CGFloat = 12
         static let avatarCloudInset: CGFloat = 3.5
-        static let textInset: CGFloat = 16
+        static let textInset: CGFloat = 8
         static let timeInset: CGFloat = 8
+        static let auxillaryLabelHeight: CGFloat = 20
+        static let leftLabelFont = UIFont.teambrella(size: 12)
+        static let rightLabelFont = UIFont.teambrella(size: 10)
     }
     
     var cloudHeight: CGFloat = 90
@@ -54,7 +57,7 @@ class ChatTextCell: UICollectionViewCell {
     
     lazy var leftLabel: Label = {
         let label = Label()
-        label.font = UIFont.teambrella(size: 12)
+        label.font = Constant.leftLabelFont
         label.textColor = .darkSkyBlue
         self.contentView.addSubview(label)
         return label
@@ -62,7 +65,7 @@ class ChatTextCell: UICollectionViewCell {
     
     lazy var rightLabel: Label = {
         let label = Label()
-        label.font = UIFont.teambrella(size: 10)
+        label.font = Constant.rightLabelFont
         label.textColor = .bluishGray
         self.contentView.addSubview(label)
         return label
@@ -142,7 +145,7 @@ class ChatTextCell: UICollectionViewCell {
         } else {
             prepareTheirCloud(in: context)
         }
-        context.setLineWidth(1)
+       context.setLineWidth(1)
         context.drawPath(using: .fillStroke)
     }
     
@@ -155,12 +158,12 @@ class ChatTextCell: UICollectionViewCell {
             self.cloudHeight = cloudHeight
             setNeedsDisplay()
             
-            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: 20)
+            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
             setupLeftLabel(name: model.userName, baseFrame: baseFrame)
             setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
             setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
-            return setupFragments(fragments: model.fragments, heights: model.fragmentHeights)
+            return setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)
         } else if let model = model as? ChatTextUnsentCellModel {
             id = model.id
             isMy = true
@@ -168,12 +171,12 @@ class ChatTextCell: UICollectionViewCell {
             self.cloudHeight = cloudHeight
             setNeedsDisplay()
             
-            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: 20)
+            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
             setupLeftLabel(name: model.userName, baseFrame: baseFrame)
             setupRightLabel(rateText: nil, baseFrame: baseFrame)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
             // setupAvatar(avatar: nil, cloudHeight: cloudHeight)
-            return setupFragments(fragments: model.fragments, heights: model.fragmentHeights)
+            return setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)
         } else {
             return []
         }
@@ -222,8 +225,7 @@ class ChatTextCell: UICollectionViewCell {
         controlP = CGPoint(x: cloudStartPoint.x, y: cloudStartPoint.y - Constant.tailCornerRadius)
         context.addQuadCurve(to: pen, control: controlP)
         context.closePath()
-        
-        context.setLineWidth(0.5)
+
         context.setFillColor(UIColor.veryLightBlue.cgColor)
         context.setStrokeColor(#colorLiteral(red: 0.8039215686, green: 0.8666666667, blue: 0.9529411765, alpha: 1).cgColor)
     }
@@ -270,8 +272,7 @@ class ChatTextCell: UICollectionViewCell {
         context.addQuadCurve(to: pen, control: controlP)
         
         context.closePath()
-        
-        context.setLineWidth(0.5)
+
         context.setFillColor(UIColor.white.cgColor)
         context.setStrokeColor(UIColor.lightBlueGray.cgColor)
     }
@@ -296,7 +297,7 @@ class ChatTextCell: UICollectionViewCell {
         leftLabel.text = name.entire
         leftLabel.sizeToFit()
         leftLabel.center = CGPoint(x: cloudBodyMinX + leftLabel.frame.width / 2 + Constant.textInset,
-                                   y: leftLabel.frame.height / 2 + Constant.textInset / 2)
+                                   y: leftLabel.frame.height / 2 + Constant.textInset)
     }
     
     private func setupRightLabel(rateText: String?, baseFrame: CGRect) {
@@ -326,7 +327,7 @@ class ChatTextCell: UICollectionViewCell {
                                      y: cloudHeight - bottomLabel.frame.height / 2 - Constant.timeInset)
     }
     
-    private func setupFragments(fragments: [ChatFragment], heights: [CGFloat]) -> [UIView] {
+    private func setupFragments(fragments: [ChatFragment], sizes: [CGSize]) -> [UIView] {
         views.forEach { $0.removeFromSuperview() }
         views.removeAll()
         
@@ -334,12 +335,12 @@ class ChatTextCell: UICollectionViewCell {
         for (idx, fragment) in fragments.enumerated() {
             switch fragment {
             case let .text(text):
-                let textView: UITextView = createTextView(for: text, height: heights[idx])
+                let textView: UITextView = createTextView(for: text, size: sizes[idx])
                 contentView.addSubview(textView)
                 views.append(textView)
                 result.append(textView)
             case let .image(urlString: urlString, urlStringSmall: urlStringSmall, aspect: _):
-                let imageView = createGalleryView(for: urlString, small: urlStringSmall, height: heights[idx])
+                let imageView = createGalleryView(for: urlString, small: urlStringSmall, height: sizes[idx].height)
                 contentView.addSubview(imageView)
                 views.append(imageView)
                 result.append(imageView)
@@ -348,7 +349,7 @@ class ChatTextCell: UICollectionViewCell {
         return result
     }
     
-    private func createTextView(for text: String, height: CGFloat) -> UITextView {
+    private func createTextView(for text: String, size: CGSize) -> UITextView {
         let verticalOffset: CGFloat
         if let lastMaxY = views.last?.frame.maxY {
             verticalOffset = lastMaxY + 8
@@ -357,8 +358,8 @@ class ChatTextCell: UICollectionViewCell {
         }
         let textView = UITextView(frame: CGRect(x: cloudBodyMinX + Constant.textInset,
                                                 y: verticalOffset,
-                                                width: cloudWidth - Constant.textInset * 2,
-                                                height: height))
+                                                width: size.width,
+                                                height: size.height))
         
         textView.textColor = .charcoalGray
         textView.text = text

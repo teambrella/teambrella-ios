@@ -30,7 +30,7 @@ protocol ChatCellModel {
 struct ChatTextCellModel: ChatCellModel {
     let entity: ChatEntity
     let fragments: [ChatFragment]
-    let fragmentHeights: [CGFloat]
+    let fragmentSizes: [CGSize]
     
     let isMy: Bool
     let userName: Name
@@ -38,21 +38,22 @@ struct ChatTextCellModel: ChatCellModel {
     var rateText: String?
     let date: Date
     let isTemporary: Bool
-    
-    var totalFragmentsHeight: CGFloat { return fragmentHeights.reduce(0, +) }
+
+    var maxFragmentsWidth: CGFloat { return fragmentSizes.reduce(0) { return max($0, $1.width) } }
+    var totalFragmentsHeight: CGFloat { return fragmentSizes.reduce(0) { $0 + $1.height } }
     var id: String { return entity.id }
     
 }
 
 struct ChatTextUnsentCellModel: ChatCellModel {
     let fragments: [ChatFragment]
-    let fragmentHeights: [CGFloat]
+    let fragmentSizes: [CGSize]
     let isTemporary: Bool = true
     
     let userName: Name
     let date: Date
     
-    var totalFragmentsHeight: CGFloat { return fragmentHeights.reduce(0, +) }
+    var totalFragmentsHeight: CGFloat { return fragmentSizes.reduce(0) { $0 + $1.height } }
     var id: String
     
     var isFailed: Bool

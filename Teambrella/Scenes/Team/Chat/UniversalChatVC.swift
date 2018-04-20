@@ -44,6 +44,12 @@ enum ChatContext {
 }
 
 final class UniversalChatVC: UIViewController, Routable {
+    struct Constant {
+        static let newMessagesSeparatorCellID = "com.chat.new.cell"
+        static let dateSeparatorCellID = "com.chat.separator.cell"
+        static let textWithImagesCellID = "com.chat.text.cell"
+    }
+
     static var storyboardName = "Chat"
     
     @IBOutlet var collectionView: UICollectionView!
@@ -82,7 +88,7 @@ final class UniversalChatVC: UIViewController, Routable {
             collectionView.reloadData()
         }
     }
-    private var cloudWidth: CGFloat { return collectionView.bounds.width * 0.66 }
+    private var cloudWidth: CGFloat { return collectionView.bounds.width * 0.75 }
     
     private var leftButton: UIButton?
     
@@ -130,8 +136,8 @@ final class UniversalChatVC: UIViewController, Routable {
         }
         
         dataSource.isLoadNextNeeded = true
+
         title = ""
-        
         let session = service.session
         slidingView.setupViews(with: self, session: session)
         slidingView.delegate = self
@@ -371,9 +377,12 @@ private extension UniversalChatVC {
     
     private func registerCells() {
         collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
-        collectionView.register(ChatTextCell.self, forCellWithReuseIdentifier: "com.chat.text.cell")
-        collectionView.register(ChatSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.separator.cell")
-        collectionView.register(ChatNewMessagesSeparatorCell.self, forCellWithReuseIdentifier: "com.chat.new.cell")
+        collectionView.register(ChatTextCell.self,
+                                forCellWithReuseIdentifier: Constant.textWithImagesCellID)
+        collectionView.register(ChatSeparatorCell.self,
+                                forCellWithReuseIdentifier: Constant.dateSeparatorCellID)
+        collectionView.register(ChatNewMessagesSeparatorCell.self,
+                                forCellWithReuseIdentifier: Constant.newMessagesSeparatorCellID)
         collectionView.register(ChatFooter.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
                                 withReuseIdentifier: ChatFooter.cellID)
@@ -415,9 +424,26 @@ private extension UniversalChatVC {
     
     private func cloudSize(for indexPath: IndexPath) -> CGSize {
         guard let model = dataSource[indexPath] as? ChatTextCellModel else { return .zero }
-        
-        return CGSize(width: cloudWidth,
-                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + 60 )
+        let textInset = ChatTextCell.Constant.textInset
+        let minimalFragmentWidth: CGFloat = 50
+        let fragmentWidth = max(model.maxFragmentsWidth,
+                                minimalFragmentWidth)
+        let calculator = TextSizeCalculator()
+        let rightLabelWidth = calculator.size(for: model.rateText ?? "",
+                                              font: ChatTextCell.Constant.leftLabelFont,
+                                              maxWidth: cloudWidth).width
+        let leftLabelWidth = calculator.size(for: model.userName.entire,
+                                        font: ChatTextCell.Constant.leftLabelFont,
+                                        maxWidth: cloudWidth - rightLabelWidth).width
+
+        let width = max(fragmentWidth + textInset * 2,
+                        rightLabelWidth + leftLabelWidth + textInset * 3)
+
+        let verticalInset = ChatTextCell.Constant.auxillaryLabelHeight * 2
+            + ChatTextCell.Constant.textInset
+            + ChatTextCell.Constant.timeInset
+        return CGSize(width: width,
+                      height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset)
     }
     
     private func processIsTyping(action: SocketAction) {
@@ -530,11 +556,11 @@ extension UniversalChatVC: UICollectionViewDataSource {
         switch dataSource[indexPath] {
         case _ as ChatTextCellModel,
              _ as ChatTextUnsentCellModel:
-            identifier = "com.chat.text.cell"
+            identifier = Constant.textWithImagesCellID
         case _ as ChatSeparatorCellModel:
-            identifier = "com.chat.separator.cell"
+            identifier = Constant.dateSeparatorCellID
         case _ as ChatNewMessagesSeparatorModel:
-            identifier = "com.chat.new.cell"
+            identifier = Constant.newMessagesSeparatorCellID
         default:
             fatalError("Unknown cell")
         }
@@ -609,6 +635,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.text = dateFormatter.string(from: model.date)
         } else if let cell = cell as? ChatNewMessagesSeparatorCell,
             let model = model as? ChatNewMessagesSeparatorModel {
+            cell.setNeedsDisplay()
             cell.label.text = model.text
         }
     }
