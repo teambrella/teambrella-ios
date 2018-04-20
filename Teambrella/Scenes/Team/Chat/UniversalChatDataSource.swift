@@ -197,7 +197,7 @@ final class UniversalChatDatasource {
     }
     
     var allImages: [String] {
-        let textCellModels = models.compactMap { $0 as? ChatTextCellModel }
+        let textCellModels = models.compactMap { $0 as? ChatCellUserDataLike }
         let fragments = textCellModels.flatMap { $0.fragments }
         var images: [String] = []
         for fragment in fragments {
