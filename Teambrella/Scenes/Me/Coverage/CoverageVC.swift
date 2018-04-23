@@ -145,8 +145,6 @@ class CoverageVC: UIViewController, Routable {
                     HUD.hide()
                     self?.changeValues(slider: slider)
                 }
-            case .temporaryValue:
-                break
             case .error:
                 break
             }

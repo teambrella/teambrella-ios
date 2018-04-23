@@ -139,9 +139,6 @@ class ClaimsDataSource {
             case let .value(model):
                 self?.homeModel = model
                 self?.onLoadHome?()
-            case let .temporaryValue(model):
-                self?.homeModel = model
-                self?.onLoadHome?()
             case let .error(error):
                 log("\(error)", type: .error)
             }

@@ -232,8 +232,6 @@ final class UniversalChatDatasource {
                 completion(muted)
             case let .error(error):
                 log("\(error)", type: [.error, .serverReply])
-            default:
-                break
             }
         }
     }

@@ -89,7 +89,7 @@ struct TeammateCellBuilder {
          }
          */
     }
-    
+
     private static func setVote(votingCell: VotingRiskCell,
                                 voting: TeammateLarge.VotingInfo,
                                 controller: TeammateProfileVC) {

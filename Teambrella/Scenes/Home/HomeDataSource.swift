@@ -48,11 +48,6 @@ class HomeDataSource {
                 }
                 self.model = value
                 self.onUpdate?()
-            case let .temporaryValue(value):
-                if !(self.isSilentUpdate) {
-                    self.model = value
-                    self.onUpdate?()
-                }
             case .error(let error):
                 log("\(error)", type: .error)
             }
@@ -87,8 +82,6 @@ class HomeDataSource {
             case .value(let homeModel):
                 self?.model = homeModel
                 self?.onUpdate?()
-            case .temporaryValue:
-                return
             case .error(let error):
                 log("can't delete card: \(error)", type: .error)
             }

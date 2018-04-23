@@ -31,7 +31,6 @@ class FeedDataSource {
     
     var isSilentUpdate = false
     var isLoading = false
-    var isTemporaryValueNeeded = false
     
     var onLoad: (() -> Void)?
     var onError: ((Error) -> Void)?
@@ -64,12 +63,6 @@ class FeedDataSource {
                                             self.items.append(contentsOf: feedChunk.feed)
                                             feedChunk.pagingInfo.map { self.startIndex = $0.lastIndex }
                                             self.onLoad?()
-                                        case let .temporaryValue(feedChunk):
-                                            if !self.isSilentUpdate && self.isTemporaryValueNeeded {
-                                                self.items.removeAll()
-                                                self.items.append(contentsOf: feedChunk.feed)
-                                                self.onLoad?()
-                                            }
                                         case let .error(error):
                                             log("\(error)", type: .error)
                                             self.onError?(error)

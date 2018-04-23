@@ -52,8 +52,6 @@ class OthersVotedDataSource: NSObject {
                                                         self?.list = othersList
                                                     case let .error(error):
                                                         log(error)
-                                                    default:
-                                                        break
                                                     }
             }
         } else if let claimID = vc?.claimID {
@@ -63,8 +61,6 @@ class OthersVotedDataSource: NSObject {
                     self?.list = othersList
                 case let .error(error):
                     log(error)
-                default:
-                    break
                 }
             }
         }

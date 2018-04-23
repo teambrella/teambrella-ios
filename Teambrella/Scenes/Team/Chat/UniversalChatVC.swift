@@ -598,6 +598,7 @@ extension UniversalChatVC: UICollectionViewDataSource {
 
 // MARK: UICollectionViewDelegate
 extension UniversalChatVC: UICollectionViewDelegate {
+    // swiftlint:disable:next function_body_length
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {

@@ -100,8 +100,6 @@ final class InitialVC: UIViewController {
             switch result {
             case let .value(teamsEntity):
                 self?.startSession(teamsEntity: teamsEntity, isDemo: isDemo)
-            case .temporaryValue:
-                break
             case .error:
                 self?.failure()
             }

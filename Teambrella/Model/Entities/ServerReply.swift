@@ -83,7 +83,7 @@ struct ServerReply {
         self.string = string
         self.bool = bool
 
-        self.json = dataJSON
+        self.json = dataJSON as Any
     }
 
     enum CodingKeys: String {
