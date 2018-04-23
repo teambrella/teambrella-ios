@@ -272,11 +272,11 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
     private func setupFragment(fragment: ChatFragment) {
         switch fragment {
         case let .image(urlString: urlString, urlStringSmall: urlStringSmall, aspect: _):
-            imageView.setStartingImage(small: urlStringSmall, large: urlString)
             imageView.frame = CGRect(x: cloudBodyMinX + Constant.imageInset,
                                      y: Constant.imageInset,
                                      width: cloudWidth - Constant.imageInset * 2,
                                      height: cloudHeight - Constant.imageInset * 2)
+            imageView.setStartingImage(small: urlStringSmall, large: urlString)
         default:
             break
         }

@@ -15,15 +15,15 @@
 "Login.LoginNoInviteVC.requestInvitationButton"    = "Запросить приглашение";
 "Login.LoginNoInviteVC.mailToSupport"              = "Связаться с поддержкой";
 
-"Login.LoginNoInviteVC.lowerLabel"                 = "Привет, пока мы принимаем только по приглашениям. Откройте ссылку, присланную вам в приглашении, или попробуйте демо.";
+"Login.LoginNoInviteVC.lowerLabel"                 = "Привет, пока мы принимаем только по приглашениям. Открой ссылку, присланную в приглашении, или попробуй демо.";
 "Login.LoginNoInviteVC.tryDemoButton"              = "Попробовать демо";
 
 "Login.LoginNoInviteVC.almostReady.title"          = "Привет!";
 "Login.LoginNoInviteVC.almostReady.details"        = "Мы работаем не покладая рук, чтобы запустить команду. Скоро она будет готова!";
 
 "Login.LoginNoInviteVC.accessDenied.title"         = "Сожалеем";
-"Login.LoginNoInviteVC.accessDenied.details"       = "В данный момент вы не можете войти в Тимбреллу. Пожалуйста, свяжитесь с нашей поддержкой";
+"Login.LoginNoInviteVC.accessDenied.details"       = "В данный момент ты не можешь войти в Тимбреллу. Пожалуйста, свяжись с нашей поддержкой";
 
-"Login.LoginNoInviteVC.pendingApplication.title"   = "Ваша заявка не завершена";
-"Login.LoginNoInviteVC.pendingApplication.details" = "Пожалуйста, заполните все необходимые поля. Мы ждем вас! Если у вас есть вопросы, свяжитесь с нашей службой поддержки.";
+"Login.LoginNoInviteVC.pendingApplication.title"   = "Твоя заявка не завершена";
+"Login.LoginNoInviteVC.pendingApplication.details" = "Пожалуйста, заполни все необходимые поля. Мы ждем тебя! Если у тебя есть вопросы, свяжись с нашей службой поддержки.";
 

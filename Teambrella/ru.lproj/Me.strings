@@ -31,15 +31,15 @@
 "Me.CoverageVC.fundButton.title.toIncrease"        = "Пополнить кошелёк, чтобы увеличить";
 "Me.CoverageVC.fundButton.title"                   = "Пополнить кошелёк";
 "Me.CoverageVC.title"                              = "КАК ЭТО РАБОТАЕТ";
-"Me.CoverageVC.subtitle"                           = "Используйте бегунок, чтобы увидеть, как расходы влияют на максимальное возмещение.";
+"Me.CoverageVC.subtitle"                           = "Используй бегунок, чтобы увидеть, как расходы влияют на максимальное возмещение.";
 "Me.CoverageVC.maxExpenses"                        = "Максимальное возмещение";
-"Me.CoverageVC.yourExpenses"                       = "В случае, когда ваши расходы составляют";
-"Me.CoverageVC.teamPay"                            = "Команда выплатит вам";
+"Me.CoverageVC.yourExpenses"                       = "В случае, когда твои расходы составляют";
+"Me.CoverageVC.teamPay"                            = "Команда выплатит тебе";
 
 "Me.Report.ItemCell.title"                         = "СООБЩИТЬ";
 "Me.Report.DateCell.title"                         = "ДАТА СОБЫТИЯ";
 "Me.Report.ExpensesCell.title"                     = "РАСХОДЫ";
-"Me.Report.DescriptionCell.title"                  = "ОПИШИТЕ ВАШ СЛУЧАЙ";
+"Me.Report.DescriptionCell.title"                  = "ОПИШИ СВОЙ СЛУЧАЙ";
 "Me.Report.DescriptionCell.title-discussion"       = "СООБЩЕНИЕ";
 "Me.Report.PhotosCell.title"                       = "ФОТО";
 "Me.Report.WalletCell.title"                       = "ВОЗМЕЩАТЬ НА КОШЕЛЁК";
@@ -85,8 +85,8 @@
 "Me.Wallet.Withdraw.header.history"                = "ИСТОРИЯ СНЯТИЙ";
 "Me.Wallet.Withdraw.WithdrawInfo.title"            = "ИНФОРМАЦИЯ О СНЯТИЯХ";
 "Me.Wallet.Withdraw.WithdrawInfo.balance"          = "Баланс";
-"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest"    = "Вы можете запросить до %@ mETH на снятие";
-"Me.Wallet.Withdraw.WithdrawInfo.youHave"          = "У вас зарезервировано %@ mETH, если часть зарезервированных средств станет доступна, они будут автоматически поставлены на снятие.";
+"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest"    = "Ты можешь запросить до %@ mETH на снятие";
+"Me.Wallet.Withdraw.WithdrawInfo.youHave"          = "У тебя зарезервировано %@ mETH, если часть зарезервированных средств станет доступна, они будут автоматически поставлены на снятие.";
 
 "Me.Wallet.Withdraw.noCameraAccess.title"          = "Для сканирования QR-кода требуется доступ к камере";
 "Me.Wallet.Withdraw.noCameraAccess.details"        = "Please grant access to device camera for Teambrella app to be able to scan QR codes";

@@ -18,7 +18,7 @@
 "Proxy.SortVC.Cell.Alphabetical.ZA"     = "Я-А";
 
 "Proxy.ProxyForVC.header"               = "ОБЩАЯ КОМИССИЯ";
-"Proxy.ProxyForVC.subtitle"             = "ДЛЯ КОГО ВЫ ПРОКСИ";
+"Proxy.ProxyForVC.subtitle"             = "ДЛЯ КОГО ТЫ ПРОКСИ";
 "Proxy.ProxyForCellBuilder.lastVoted"   = "ПОСЛЕДНИЙ ГОЛОС: ";
 "Proxy.MyProxiesVC.infoButton"          = "Нужна помощь?";
 "Proxy.MyProxiesVC.decisions"           = "РЕШЕНИЯ";
@@ -28,10 +28,10 @@
 "Proxy.UserIndexVC.allTeamsRating"      = "ОБЩИЙ РЕЙТИНГ";
 "Proxy.UserIndexVC.proxyRank"           = "РЕЙТИНГ";
 
-"Proxy.Empty.title"                     = "У вас ещё нет прокси";
-"Proxy.Empty.details"                   = "Пожалуйста, выберите кого-то, кому вы доверяете, чтобы он стал вашим прокси";
-"Proxy.Empty.You.title"                 = "Вы не являетесь прокси\nни для кого в команде";
-"Proxy.Empty.You.details"               = "Вы можете стать прокси\nзарабатывая доверие других участников. Публикуйте свои идеи, мнения и голоса.";
+"Proxy.Empty.title"                     = "У тебя ещё нет прокси";
+"Proxy.Empty.details"                   = "Пожалуйста, выбери кого-то, кому доверяешь, чтобы он стал твоим прокси";
+"Proxy.Empty.You.title"                 = "Ты не являешься прокси\nни для кого в команде";
+"Proxy.Empty.You.details"               = "Ты можешь стать прокси\nзарабатывая доверие других участников. Публикуй свои идеи, мнения и голоса.";
 
 "Proxy.UserIndexVC.optButton.title.in"  = "Opt Into Rating";
 "Proxy.UserIndexVC.optButton.title.out" = "Opt Out Of Rating";
