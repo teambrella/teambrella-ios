@@ -69,20 +69,6 @@ struct ChatImageCellModel: ChatCellUserDataLike {
     var id: String { return entity.id }
 }
 
-struct ChatTextUnsentCellModel: ChatCellModel {
-    let fragments: [ChatFragment]
-    let fragmentSizes: [CGSize]
-    let isTemporary: Bool = true
-    
-    let userName: Name
-    let date: Date
-    
-    var totalFragmentsHeight: CGFloat { return fragmentSizes.reduce(0) { $0 + $1.height } }
-    var id: String
-    
-    var isFailed: Bool
-}
-
 struct ChatSeparatorCellModel: ChatCellModel {
     var id: String { return String(describing: date.timeIntervalSince1970) }
     let date: Date

@@ -28,18 +28,7 @@ class ChatModelBuilder {
     var font: UIFont = UIFont.teambrella(size: 14)
     var width: CGFloat = 0
     lazy var heightCalculator = ChatFragmentSizeCalculator(width: width, font: font)
-    
-    func unsentModel(fragments: [ChatFragment], id: String) -> ChatTextUnsentCellModel {
-        let sizes = heightCalculator.sizes(for: fragments)
-        let myName = service.session?.currentUserName ?? Name.empty
-        return ChatTextUnsentCellModel(fragments: fragments,
-                                        fragmentSizes: sizes,
-                                        userName: myName,
-                                        date: Date(),
-                                        id: id,
-                                        isFailed: false)
-    }
-    
+
     func separatorModelIfNeeded(firstModel: ChatCellModel, secondModel: ChatCellModel) -> ChatCellModel? {
         if firstModel.date.interval(of: .day, since: secondModel.date) != 0 {
             let calendar = Calendar.current

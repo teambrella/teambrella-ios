@@ -164,19 +164,6 @@ class ChatVariousContentCell: UICollectionViewCell, ChatUserDataCell {
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
             setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
             return setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)
-        } else if let model = model as? ChatTextUnsentCellModel {
-            id = model.id
-            isMy = true
-            self.cloudWidth = cloudWidth
-            self.cloudHeight = cloudHeight
-            setNeedsDisplay()
-            
-            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
-            setupLeftLabel(name: model.userName, baseFrame: baseFrame)
-            setupRightLabel(rateText: nil, baseFrame: baseFrame)
-            setupBottomLabel(date: model.date, baseFrame: baseFrame)
-            // setupAvatar(avatar: nil, cloudHeight: cloudHeight)
-            return setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)
         } else {
             return []
         }

@@ -572,8 +572,6 @@ extension UniversalChatVC: UICollectionViewDataSource {
             } else {
                 identifier = Constant.textWithImagesCellID
             }
-        case _ as ChatTextUnsentCellModel:
-            identifier = Constant.textWithImagesCellID
         case _ as ChatImageCellModel:
             identifier = Constant.singleImageCellID
         case _ as ChatSeparatorCellModel:
