@@ -107,7 +107,7 @@ final class UniversalChatDatasource {
         return nil
     }
     
-    var topicID: String? { return claim?.discussion.id }
+    var topicID: String? { return claim?.discussion.id ?? chatModel?.discussion.topicID }
 
     var count: Int { return models.count }
     

@@ -62,6 +62,13 @@ enum SocketData {
         userID: String,
         topicID: String,
         name: String)
+    case newPost(teamID: Int,
+        userID: String,
+        topicID: String,
+        postID: String,
+        name: String,
+        url: String,
+        text: String)
     case dbDump(timestamp: Int64)
     
     var stringValue: String {
@@ -91,6 +98,8 @@ enum SocketData {
             return .meTyping
         case .dbDump(timestamp: _):
             return .dbDump
+        case .newPost:
+            return .newPost
             /*
              case .newPost(teamID: _, userID: _, topicID: _, postID: _, name: _, url: _, text: _):
              return .newPost
@@ -128,6 +137,14 @@ enum SocketData {
                                name: dict["UserName"] as? String ?? "")
         case .dbDump:
             return .dbDump(timestamp: dict["Timestamp"] as? Int64 ?? 0)
+        case .newPost:
+            return .newPost(teamID: dict["TeamId"] as? Int ?? 0,
+                            userID: dict["UserId"] as? String ?? "",
+                            topicID: dict["TopicId"] as? String ?? "",
+                            postID: dict["PostId"] as? String ?? "",
+                            name: dict["UserName"] as? String ?? "",
+                            url: dict["Avatar"] as? String ?? "",
+                            text: dict["Content"] as? String ?? "")
         default:
             return nil
         }
