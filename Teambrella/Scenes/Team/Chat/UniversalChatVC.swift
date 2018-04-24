@@ -482,11 +482,19 @@ private extension UniversalChatVC {
         }
         input.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
         input.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
+        input.onBeginEdit = { [weak self] in
+            guard let `self` = self else { return }
+
+            if self.dataSource.removeNewMessagesSeparator() {
+                self.collectionView.reloadData()
+            }
+        }
+
         if let socket = service.socket,
             let teamID = service.session?.currentTeam?.teamID {
             input.onTextChange = { [weak socket, weak self] in
                 guard let me = self else { return }
-                
+
                 let interval = me.lastTypingDate.timeIntervalSinceNow
                 if interval < -2.0, let topicID = me.dataSource.topicID,
                     let name = service.session?.currentUserName {
@@ -507,6 +515,7 @@ private extension UniversalChatVC {
                  .newPost:
                 self?.showIsTyping = false
                 self?.dataSource.hasNext = true
+                self?.shouldScrollToBottom = true
                 self?.dataSource.loadNext()
             default:
                 break

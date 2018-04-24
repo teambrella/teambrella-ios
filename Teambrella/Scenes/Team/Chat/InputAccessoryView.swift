@@ -62,6 +62,7 @@ class InputAccessoryView: UIView {
     var maxHeight: CGFloat = 70
     
     var onTextChange: (() -> Void)?
+    var onBeginEdit: (() -> Void)?
     
     override var intrinsicContentSize: CGSize {
         let textSize = self.textView.sizeThatFits(CGSize(width: self.textView.bounds.width,
@@ -134,6 +135,7 @@ class InputAccessoryView: UIView {
 extension InputAccessoryView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         placeholderLabel.isHidden = true
+        onBeginEdit?()
     }
     
     func textViewDidChange(_ textView: UITextView) {
