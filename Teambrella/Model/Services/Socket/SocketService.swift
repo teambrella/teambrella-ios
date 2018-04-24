@@ -24,13 +24,23 @@ import Starscream
 typealias SocketListenerAction = (SocketAction) -> Void
 
 class SocketService {
+    struct Constant {
+        static let scheme: String = "wss"
+        static let path: String = "wshandler.ashx"
+        #if SURILLA
+        static let serverName: String = "surilla.com"
+        #else
+         static let serverName: String = "teambrella.com"
+        #endif
+    }
+    
     var socket: WebSocket!
     var actions: [AnyHashable: SocketListenerAction] = [:]
     var isConnected: Bool { return socket.isConnected }
     var unsentMessage: String?
     
     init(url: URL?) {
-        guard let url = url ?? URL(string: "wss://" + "surilla.com" + "/wshandler.ashx") else {
+        guard let url = url ?? URL(string: "\(Constant.scheme)://\(Constant.serverName)/\(Constant.path)") else {
             fatalError("Unable to create socket URL")
         }
 
@@ -44,9 +54,10 @@ class SocketService {
             request.setValue(application.clientVersion, forHTTPHeaderField: "clientVersion")
             request.setValue(service.push.tokenString ?? "", forHTTPHeaderField: "deviceToken")
             request.setValue(application.uniqueIdentifier, forHTTPHeaderField: "deviceId")
-            self.socket = WebSocket(url: url)
-            self.socket.connect()
+            self.socket = WebSocket(request: request)
             self.socket.delegate = self
+            log("connecting with request: \(request)", type: .socket)
+            self.socket.connect()
         }
     }
     
