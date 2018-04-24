@@ -14,7 +14,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import Foundation
+import UIKit
 
 struct SODManager {
     let router: MainRouter
@@ -29,7 +29,8 @@ struct SODManager {
     }
 
     func checkSilentPush(infoMaker: InfoMaker) {
-        if infoMaker.isSilentPushAvailable == false {
+        if infoMaker.isSilentPushAvailable == false
+            && UIDevice.current.isInLowPowerMode == false {
             presentSilentPushNotificationIfNeeded()
         }
     }
