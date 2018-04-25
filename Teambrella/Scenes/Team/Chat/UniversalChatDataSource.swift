@@ -447,7 +447,7 @@ extension UniversalChatDatasource {
     private func insertNewMessagesSeparator(firstNewMessage: ChatEntity?) {
         guard let message = firstNewMessage else { return }
 
-        removeNewMessagesSeparator()
+        _ = removeNewMessagesSeparator()
         let separatorDate = message.created.addingTimeInterval(-0.1)
         let model = ChatNewMessagesSeparatorModel(date: separatorDate)
         addCellModels(models: [model])
@@ -457,12 +457,10 @@ extension UniversalChatDatasource {
     func removeNewMessagesSeparator() -> Bool {
         guard hasNewMessagesSeparator else { return false }
 
-        for (idx, model) in self.models.enumerated().reversed() {
-            if model is ChatNewMessagesSeparatorModel {
+        for (idx, model) in self.models.enumerated().reversed() where model is ChatNewMessagesSeparatorModel {
                 self.models.remove(at: idx)
                 hasNewMessagesSeparator = false
                 return true
-            }
         }
 
         assert(false, "Situation is impossible")

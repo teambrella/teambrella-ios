@@ -871,6 +871,7 @@
 		6DEC9482208E449C0017E87B /* VersionValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC9480208E449C0017E87B /* VersionValidator.swift */; };
 		6DEC9484208E45040017E87B /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DEC9483208E45030017E87B /* Chat.storyboard */; };
 		6DEC9485208E45040017E87B /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DEC9483208E45030017E87B /* Chat.storyboard */; };
+		6DEC94D62090CD420017E87B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DEC94D52090CD410017E87B /* GoogleService-Info.plist */; };
 		6DED01BB1F5B05EB00DE24CC /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DED01BA1F5B05EB00DE24CC /* GalleryView.swift */; };
 		6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE678C1ED9B8E10098EDB3 /* XIBInitable.swift */; };
 		6DEE678F1ED9CF070098EDB3 /* ItemCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DEE678E1ED9CF060098EDB3 /* ItemCard.xib */; };
@@ -1492,6 +1493,7 @@
 		6DEC947D208E446C0017E87B /* ClaimEntityLarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClaimEntityLarge.swift; path = Model/Entities/ClaimEntityLarge.swift; sourceTree = "<group>"; };
 		6DEC9480208E449C0017E87B /* VersionValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VersionValidator.swift; path = Model/VersionValidator.swift; sourceTree = "<group>"; };
 		6DEC9483208E45030017E87B /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Chat.storyboard; path = Scenes/Team/Chat/Chat.storyboard; sourceTree = "<group>"; };
+		6DEC94D52090CD410017E87B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DED01BA1F5B05EB00DE24CC /* GalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryView.swift; path = Helpers/GalleryView.swift; sourceTree = "<group>"; };
 		6DEE678C1ED9B8E10098EDB3 /* XIBInitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XIBInitable.swift; path = Model/Protocols/XIBInitable.swift; sourceTree = "<group>"; };
 		6DEE678E1ED9CF060098EDB3 /* ItemCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemCard.xib; path = View/ItemCard.xib; sourceTree = "<group>"; };
@@ -1505,7 +1507,6 @@
 		6DEFCFB71F7A66D7008C306C /* SwitchUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SwitchUserCell.xib; path = View/Cells/SwitchUserCell.xib; sourceTree = "<group>"; };
 		6DEFE3CA2005286200615022 /* HomeCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCardModel.swift; path = Model/Entities/HomeCardModel.swift; sourceTree = "<group>"; };
 		6DEFE3D02005355C00615022 /* InviteToTeamEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InviteToTeamEntity.swift; path = Model/Entities/InviteToTeamEntity.swift; sourceTree = "<group>"; };
-		6DEFE3ED2006523300615022 /* notification copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "notification copy-Info.plist"; path = "/Users/thorax/Developer/Teambrella/Teambrella-iOS/notification copy-Info.plist"; sourceTree = "<absolute>"; };
 		6DEFE3F22006544100615022 /* NotificationTeambrella.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationTeambrella.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DEFE3F62006544100615022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DF2079C1FB4A11600E10B85 /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
@@ -2310,6 +2311,7 @@
 				6DDE956E1EE813DC0019DA47 /* External */,
 				6D466A871ED07CF1001BC579 /* Blockchain */,
 				6DA475A21E8ABEE600B56D9B /* Teambrella */,
+				6DEC94D52090CD410017E87B /* GoogleService-Info.plist */,
 				6DA475B71E8ABEE600B56D9B /* TeambrellaTests */,
 				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
 				6D59FCF71FBC8407006C0A2B /* notification */,
@@ -2319,7 +2321,6 @@
 				A3DA38407FE7184F4611CDC0 /* Frameworks */,
 				6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */,
 				6DA1A5421FBF0B42000FDECA /* Notification-Bridging-Header.h */,
-				6DEFE3ED2006523300615022 /* notification copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3168,6 +3169,7 @@
 				6D6DA2501EE1B68F00307C73 /* Members.storyboard in Resources */,
 				6D69D9F81EFC05BE00DED5CE /* ProxyForHeader.xib in Resources */,
 				6D69DA221EFD19BF00DED5CE /* WalletHeaderCell.xib in Resources */,
+				6DEC94D62090CD420017E87B /* GoogleService-Info.plist in Resources */,
 				6D1425E71F73DD9B00DCBF91 /* VotingChartCell.xib in Resources */,
 				6D69DA001EFC32CB00DED5CE /* UserIndexCell.xib in Resources */,
 				6D69DA0C1EFC36C000DED5CE /* InfoHeader.xib in Resources */,
