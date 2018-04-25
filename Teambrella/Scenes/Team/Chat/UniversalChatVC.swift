@@ -102,6 +102,7 @@ final class UniversalChatVC: UIViewController, Routable {
         addMuteButton()
         setMuteButtonImage(type: dataSource.notificationsType)
         setupCollectionView()
+        collectionView.refreshControl?.beginRefreshing()
         setupInput()
         setupTapGestureRecognizer()
         setupScrollHandler()
@@ -290,7 +291,9 @@ private extension UniversalChatVC {
         }
         
         scrollViewHandler.onScrollingDown = {
-            self.showObject()
+            if self.dataSource.chatModel != nil {
+                self.showObject()
+            }
         }
     }
     
