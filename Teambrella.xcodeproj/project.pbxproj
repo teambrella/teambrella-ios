@@ -782,6 +782,8 @@
 		6DBBF8011F9A561600524B1E /* Multisig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBF7FF1F9A561600524B1E /* Multisig.swift */; };
 		6DBBF8031F9A5F6800524B1E /* Unconfirmed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBF8021F9A5F6800524B1E /* Unconfirmed.swift */; };
 		6DBBF8041F9A5F6800524B1E /* Unconfirmed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBF8021F9A5F6800524B1E /* Unconfirmed.swift */; };
+		6DBD695E2093864000D1524F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DBD695D2093864000D1524F /* GoogleService-Info.plist */; };
+		6DBD695F2093864000D1524F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DBD695D2093864000D1524F /* GoogleService-Info.plist */; };
 		6DBF49291F80EF2600B236E2 /* HomePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */; };
 		6DBF492B1F80F10B00B236E2 /* AnimationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */; };
 		6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */; };
@@ -869,7 +871,6 @@
 		6DEC9482208E449C0017E87B /* VersionValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC9480208E449C0017E87B /* VersionValidator.swift */; };
 		6DEC9484208E45040017E87B /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DEC9483208E45030017E87B /* Chat.storyboard */; };
 		6DEC9485208E45040017E87B /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DEC9483208E45030017E87B /* Chat.storyboard */; };
-		6DEC94D62090CD420017E87B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DEC94D52090CD410017E87B /* GoogleService-Info.plist */; };
 		6DED01BB1F5B05EB00DE24CC /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DED01BA1F5B05EB00DE24CC /* GalleryView.swift */; };
 		6DEE678D1ED9B8E10098EDB3 /* XIBInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE678C1ED9B8E10098EDB3 /* XIBInitable.swift */; };
 		6DEE678F1ED9CF070098EDB3 /* ItemCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DEE678E1ED9CF060098EDB3 /* ItemCard.xib */; };
@@ -1417,6 +1418,7 @@
 		6DB922241F9E27CD009D3937 /* AbiArguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AbiArguments.swift; path = Blockchain/AbiArguments.swift; sourceTree = SOURCE_ROOT; };
 		6DBBF7FF1F9A561600524B1E /* Multisig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multisig.swift; sourceTree = "<group>"; };
 		6DBBF8021F9A5F6800524B1E /* Unconfirmed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unconfirmed.swift; sourceTree = "<group>"; };
+		6DBD695D2093864000D1524F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomePresentationController.swift; path = Scenes/Home/HomePresentationController.swift; sourceTree = "<group>"; };
 		6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimationTools.swift; path = Helpers/AnimationTools.swift; sourceTree = "<group>"; };
 		6DC1BB212077C8CF008661AF /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLPagerTabStrip.framework; path = Carthage/Build/iOS/XLPagerTabStrip.framework; sourceTree = "<group>"; };
@@ -1490,7 +1492,6 @@
 		6DEC947D208E446C0017E87B /* ClaimEntityLarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClaimEntityLarge.swift; path = Model/Entities/ClaimEntityLarge.swift; sourceTree = "<group>"; };
 		6DEC9480208E449C0017E87B /* VersionValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VersionValidator.swift; path = Model/VersionValidator.swift; sourceTree = "<group>"; };
 		6DEC9483208E45030017E87B /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Chat.storyboard; path = Scenes/Team/Chat/Chat.storyboard; sourceTree = "<group>"; };
-		6DEC94D52090CD410017E87B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DED01BA1F5B05EB00DE24CC /* GalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryView.swift; path = Helpers/GalleryView.swift; sourceTree = "<group>"; };
 		6DEE678C1ED9B8E10098EDB3 /* XIBInitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XIBInitable.swift; path = Model/Protocols/XIBInitable.swift; sourceTree = "<group>"; };
 		6DEE678E1ED9CF060098EDB3 /* ItemCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemCard.xib; path = View/ItemCard.xib; sourceTree = "<group>"; };
@@ -2307,7 +2308,6 @@
 				6DDE956E1EE813DC0019DA47 /* External */,
 				6D466A871ED07CF1001BC579 /* Blockchain */,
 				6DA475A21E8ABEE600B56D9B /* Teambrella */,
-				6DEC94D52090CD410017E87B /* GoogleService-Info.plist */,
 				6DA475B71E8ABEE600B56D9B /* TeambrellaTests */,
 				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
 				6D59FCF71FBC8407006C0A2B /* notification */,
@@ -2317,6 +2317,7 @@
 				A3DA38407FE7184F4611CDC0 /* Frameworks */,
 				6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */,
 				6DA1A5421FBF0B42000FDECA /* Notification-Bridging-Header.h */,
+				6DBD695D2093864000D1524F /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2842,6 +2843,7 @@
 				C57EED01CCD06144A330A0FF /* [CP] Check Pods Manifest.lock */,
 				6D4E5C261F7AB6870020DEE2 /* Sources */,
 				6D4E5D701F7AB6870020DEE2 /* Frameworks */,
+				6DBD695C2093853400D1524F /* Google Firebase */,
 				6D4E5D7F1F7AB6870020DEE2 /* Resources */,
 				6D4E5DD11F7AB6870020DEE2 /* Carthage */,
 				6D4E5DD41F7AB6870020DEE2 /* SwiftLint */,
@@ -2884,6 +2886,7 @@
 				5BF653B1A5278B620E9E183E /* [CP] Check Pods Manifest.lock */,
 				6DA4759C1E8ABEE600B56D9B /* Sources */,
 				6DA4759D1E8ABEE600B56D9B /* Frameworks */,
+				6DBD69602093868300D1524F /* Google Firebase */,
 				6DA4759E1E8ABEE600B56D9B /* Resources */,
 				6D8F97161E8D15B5008DC62E /* Carthage */,
 				6DA475DD1E8BCDB000B56D9B /* SwiftLint */,
@@ -3084,6 +3087,7 @@
 				6D4E5DBB1F7AB6870020DEE2 /* JoinTeamPersonalCell.xib in Resources */,
 				6D4E5DBC1F7AB6870020DEE2 /* PrivateChatUserCell.xib in Resources */,
 				6D4E5DBD1F7AB6870020DEE2 /* AkkuratPro-Bold.otf in Resources */,
+				6DBD695F2093864000D1524F /* GoogleService-Info.plist in Resources */,
 				6D251C3A20348643005081E4 /* ClaimVotingView.xib in Resources */,
 				6D4E5DBE1F7AB6870020DEE2 /* JoinTeamTermsCell.xib in Resources */,
 				94F0CF621FD1B66E007BE39E /* WithdrawCell.xib in Resources */,
@@ -3164,7 +3168,6 @@
 				6D6DA2501EE1B68F00307C73 /* Members.storyboard in Resources */,
 				6D69D9F81EFC05BE00DED5CE /* ProxyForHeader.xib in Resources */,
 				6D69DA221EFD19BF00DED5CE /* WalletHeaderCell.xib in Resources */,
-				6DEC94D62090CD420017E87B /* GoogleService-Info.plist in Resources */,
 				6D1425E71F73DD9B00DCBF91 /* VotingChartCell.xib in Resources */,
 				6D69DA001EFC32CB00DED5CE /* UserIndexCell.xib in Resources */,
 				6D69DA0C1EFC36C000DED5CE /* InfoHeader.xib in Resources */,
@@ -3186,6 +3189,7 @@
 				94E325BE1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib in Resources */,
 				6D1A9B291F55D306004192AC /* PrivateChatUserCell.xib in Resources */,
 				6D9C808E1EDF17D000FB8C2C /* AkkuratPro-Bold.otf in Resources */,
+				6DBD695E2093864000D1524F /* GoogleService-Info.plist in Resources */,
 				6D251C3920348634005081E4 /* ClaimVotingView.xib in Resources */,
 				94E325CE1F07FA7E00B2D8C8 /* JoinTeamTermsCell.xib in Resources */,
 				94F0CF611FD1B66E007BE39E /* WithdrawCell.xib in Resources */,
@@ -3360,6 +3364,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		6DBD695C2093853400D1524F /* Google Firebase */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Google Firebase";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp \"${SRCROOT}/Firebase/Surilla-GoogleService-Info.plist\" \"${SRCROOT}/GoogleService-Info.plist\"\n";
+		};
+		6DBD69602093868300D1524F /* Google Firebase */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Google Firebase";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp \"${SRCROOT}/Firebase/Teambrella-GoogleService-Info.plist\" \"${SRCROOT}/GoogleService-Info.plist\"\n";
 		};
 		6F2D2231E75AD99947AB1E17 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
