@@ -31,7 +31,7 @@ final class UniversalChatDatasource {
     var onSendMessage: ((IndexPath) -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
     var onClaimVoteUpdate: (() -> Void)?
-
+    
     var limit                                       = 30
     var cloudWidth: CGFloat                         = 0
     var previousCount: Int                          = 0
@@ -60,7 +60,7 @@ final class UniversalChatDatasource {
     
     private var models: [ChatCellModel]             = []
     private var lastInsertionIndex                  = 0
-
+    
     private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
     var cellModelBuilder                            = ChatModelBuilder()
     
@@ -109,7 +109,7 @@ final class UniversalChatDatasource {
     }
     
     var topicID: String? { return claim?.discussion.id ?? chatModel?.discussion.topicID }
-
+    
     var count: Int { return models.count }
     
     var title: String {
@@ -120,7 +120,7 @@ final class UniversalChatDatasource {
         guard let chatModel = chatModel else {
             return ""
         }
-
+        
         if chatModel.isClaimChat {
             if let date = claimDate {
                 return "Team.Chat.TypeLabel.claim".localized.lowercased().capitalized + " - " +
@@ -148,14 +148,14 @@ final class UniversalChatDatasource {
         default:
             break
         }
-
+        
         // TODO: delete all crunches
         if let strategy = strategy as? FeedChatStrategy {
             if strategy.feedEntity.itemType == .teammate {
                 return .application
             }
         }
-
+        
         if let strategy = strategy as? HomeChatStrategy {
             if strategy.card.itemType == .teammate {
                 return .application
@@ -273,46 +273,48 @@ final class UniversalChatDatasource {
                 return nil
             }
         }
-        let body = strategy.updatedMessageBody(body: RequestBody(key: service.server.key, payload: ["Text": text,
-                                                                                                    "NewPostId": id,
-                                                                                                    "Images": images]))
-        let request = TeambrellaRequest(type: strategy.postType, body: body, success: { [weak self] response in
-            guard let me = self else { return }
+        service.dao.freshKey { [weak self] key in
+            guard let `self` = self else { return }
             
-            me.hasNext = true
-            me.isLoading = false
-            me.process(response: response, isPrevious: false, isMyNewMessage: true)
-            }, failure: { [weak self] error in
-                self?.onError?(error)
-        })
-        request.start()
-    }
-
-    func updateVoteOnServer(vote: Float?) {
-        guard let claimID = chatModel?.id else { return }
-
-        let lastUpdated = claim?.lastUpdated ?? 0
-        service.server.updateTimestamp { timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-
-            let body = RequestBody(key: key, payload: ["ClaimId": claimID,
-                                                       "MyVote": vote ?? NSNull(),
-                                                       "Since": lastUpdated])
-            let request = TeambrellaRequest(type: .claimVote, body: body, success: { [weak self] response in
-                if case let .claimVote(voteUpdate) = response {
-                    self?.chatModel?.update(with: voteUpdate)
-                    self?.onClaimVoteUpdate?()
-                    log("Updated claim with \(voteUpdate)", type: .info)
-                }
+            let body = self.strategy.updatedMessageBody(body: RequestBody(key: key, payload: ["Text": text,
+                                                                                              "NewPostId": id,
+                                                                                              "Images": images]))
+            let request = TeambrellaRequest(type: self.strategy.postType, body: body, success: { [weak self] response in
+                guard let `self` = self else { return }
+                
+                self.hasNext = true
+                self.isLoading = false
+                self.process(response: response, isPrevious: false, isMyNewMessage: true)
                 }, failure: { [weak self] error in
                     self?.onError?(error)
             })
-            request.start()
+            request.start(server: service.server)
         }
     }
-
+    
+    func updateVoteOnServer(vote: Float?) {
+        guard let claimID = chatModel?.id else { return }
+        
+        let lastUpdated = claim?.lastUpdated ?? 0
+        service.dao.updateClaimVote(claimID: claimID,
+                                    vote: vote,
+                                    lastUpdated: lastUpdated)
+            .observe { [weak self] result in
+                guard let `self` = self else { return }
+                
+                switch result {
+                case let .value(voteUpdate):
+                    self.chatModel?.update(with: voteUpdate)
+                    self.onClaimVoteUpdate?()
+                    log("Updated claim with \(voteUpdate)", type: .info)
+                case let .error(error):
+                    self.onError?(error)
+                }
+        }
+    }
+    
     func updateMyModels(newVote: Double) {
-
+        
     }
     
     subscript(indexPath: IndexPath) -> ChatCellModel {
@@ -363,7 +365,7 @@ extension UniversalChatDatasource {
                                                              isPrevious: previous,
                                                              isMyNewMessage: false)
             })
-            request.start()
+            request.start(server: service.server)
         }
     }
     
@@ -443,26 +445,26 @@ extension UniversalChatDatasource {
         let models = createCellModels(from: models, isTemporary: false)
         addCellModels(models: models)
     }
-
+    
     private func insertNewMessagesSeparator(firstNewMessage: ChatEntity?) {
         guard let message = firstNewMessage else { return }
-
+        
         _ = removeNewMessagesSeparator()
         let separatorDate = message.created.addingTimeInterval(-0.1)
         let model = ChatNewMessagesSeparatorModel(date: separatorDate)
         addCellModels(models: [model])
         hasNewMessagesSeparator = true
     }
-
+    
     func removeNewMessagesSeparator() -> Bool {
         guard hasNewMessagesSeparator else { return false }
-
+        
         for (idx, model) in self.models.enumerated().reversed() where model is ChatNewMessagesSeparatorModel {
-                self.models.remove(at: idx)
-                hasNewMessagesSeparator = false
-                return true
+            self.models.remove(at: idx)
+            hasNewMessagesSeparator = false
+            return true
         }
-
+        
         assert(false, "Situation is impossible")
         return false
     }

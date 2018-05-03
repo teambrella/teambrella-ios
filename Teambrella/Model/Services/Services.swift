@@ -40,7 +40,7 @@ class ServicesHandler {
     lazy var server = ServerService(router: self.router)
     
     /// data access object
-    lazy var dao: DAO = ServerDAO()
+    lazy var dao: DAO = ServerDAO(server: self.server)
     
     /// push notifications handling service
     lazy var push: PushService = PushService()

@@ -70,36 +70,31 @@ class UserIndexDataSource {
         guard canLoad else { return }
         
         isLoading = true
-        service.server.updateTimestamp { [weak self] timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-            guard let id = self?.teamID, var offset = self?.count, let limit = self?.limit,
-                let search = self?.search, let sort = self?.sortType else { return }
-            
-            if self?.meModel != nil { offset += 1 }
-            let body = RequestBody(key: key, payload: ["TeamId": id,
-                                                       "Offset": offset,
-                                                       "Limit": limit,
-                                                       "Search": search,
-                                                       "SortBy": sort.rawValue])
-            let request = TeambrellaRequest(type: .proxyRatingList, body: body, success: { [weak self] response in
-                if case .proxyRatingList(var proxyRatingEntity) = response {
-                    self?.hasMore = (proxyRatingEntity.members.count == limit)
+        let offset = meModel != nil ? count + 1 : count
+        service.dao.requestProxyRating(teamID: teamID,
+                                       offset: offset,
+                                       limit: limit,
+                                       searchString: search,
+                                       sortBy: sortType)
+            .observe { [weak self] result in
+                guard let `self` = self else { return }
+                
+                switch result {
+                case var .value(proxyRatingEntity):
+                    self.hasMore = (proxyRatingEntity.members.count == self.limit)
                     let myID = service.session?.currentUserID
                     for (idx, proxy) in proxyRatingEntity.members.enumerated().reversed() where proxy.userID == myID {
-                        self?.meModel = proxy
-                        self?.meIdx = idx
+                        self.meModel = proxy
+                        self.meIdx = idx
                         proxyRatingEntity.members.remove(at: idx)
                         break
                     }
-                    self?.items += proxyRatingEntity.members
-                    self?.isLoading = false
-                    self?.onUpdate?()
+                    self.items += proxyRatingEntity.members
+                    self.onUpdate?()
+                case let .error(error):
+                    self.onError?(error)
                 }
-                }, failure: { [weak self] error in
-                    self?.isLoading = false
-                    self?.onError?(error)
-            })
-            request.start()
+                self.isLoading = false
         }
     }
 }

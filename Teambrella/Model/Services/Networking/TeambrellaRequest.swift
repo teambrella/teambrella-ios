@@ -56,8 +56,8 @@ struct TeambrellaRequest {
         self.body = body
     }
     
-    func start(isErrorAutoManaged: Bool = true) {
-        service.server.ask(for: requestString, parameters: parameters, body: body, success: { serverReply in
+    func start(server: ServerService, isErrorAutoManaged: Bool = true) {
+        server.ask(for: requestString, parameters: parameters, body: body, success: { serverReply in
             self.parseReply(serverReply: serverReply)
         }, failure: { error in
             log("\(error)", type: [.error, .serverReply])

@@ -212,18 +212,15 @@ Are you sure you want to completely remove your private key from this device?
         }
         
         log("Eth address: \(EthereumProcessor.standard.ethAddressString ?? "none")", type: .info)
-        service.server.updateTimestamp { timestamp, error in
-            let body = RequestBody(key: service.server.key, payload: ["facebookToken": token,
-                                                                      "sigOfPublicKey": signature])
-            let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": token,
-                                                                             "sigOfPublicKey": signature],
-                                            body: body,
-                                            success: { response in
-                                                self.getMe()
-            }) { error in
+        service.dao.registerKey(facebookToken: token, signature: signature).observe { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
+            case .value:
+                self.getMe()
+            case let .error(error):
                 self.handleFailure(error: error)
             }
-            request.start()
         }
     }
     
