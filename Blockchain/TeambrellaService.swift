@@ -27,7 +27,9 @@ final class TeambrellaService: NSObject {
         static let gasLimit = 1300001
     }
     
-    var key: Key { return Key(base58String: self.contentProvider.user.privateKey, timestamp: self.server.timestamp) }
+    var key: Key { return Key(base58String: self.contentProvider.user.privateKey(in: keyStorage),
+                              timestamp: self.server.timestamp)
+    }
     var isStorageCleared = false {
         didSet {
             if isStorageCleared {
@@ -38,7 +40,8 @@ final class TeambrellaService: NSObject {
 
     private let dispatchQueue = DispatchQueue(label: "com.teambrella.teambrellaService.queue", qos: .background)
     private let server = BlockchainServer()
-    private let contentProvider: TeambrellaContentProvider = TeambrellaContentProvider()
+    private let keyStorage: KeyStorage = KeyStorage.shared
+    lazy private var contentProvider: TeambrellaContentProvider = TeambrellaContentProvider(keyStorage: self.keyStorage)
     private var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     private var currentAttempt = 0
     private var hasChanges: Bool = true
@@ -50,7 +53,7 @@ final class TeambrellaService: NSObject {
         queue.underlyingQueue = dispatchQueue
         return queue
     }()
-    lazy private var processor: EthereumProcessor = { EthereumProcessor.standard }()
+    lazy var processor: EthereumProcessor = EthereumProcessor(key: contentProvider.user.key(in: self.keyStorage))
     lazy private var wallet: EthWallet = { EthWallet(isTestNet: server.isTestnet, processor: processor) }()
 
     deinit {
@@ -66,6 +69,7 @@ final class TeambrellaService: NSObject {
         isStorageCleared = true
     }
 
+    #if MAIN_APP
     func signToSockets(service: SocketService) {
         log("Teambrella service signing to socket", type: .cryptoDetails)
         service.add(listener: self) { [weak self] action in
@@ -77,6 +81,7 @@ final class TeambrellaService: NSObject {
             }
         }
     }
+    #endif
 
     func sendDBDump() {
         let dumper = Dumper(api: self.server)
@@ -140,7 +145,7 @@ final class TeambrellaService: NSObject {
 
         hasChanges = !(txsToUpdate.isEmpty && signatures.isEmpty && multisigsToUpdate.isEmpty)
 
-        server.getUpdates(privateKey: user.privateKey,
+        server.getUpdates(privateKey: user.privateKey(in: keyStorage),
                           lastUpdated: user.lastUpdated,
                           multisigs: multisigsToUpdate,
                           transactions: txsToUpdate,
@@ -180,7 +185,7 @@ final class TeambrellaService: NSObject {
         log("Teambrella service start sync", type: .cryptoDetails)
         log("Public Key: \(key.publicKey)", type: .cryptoDetails)
         isStorageCleared = false
-        registerBackgroundTask(completion: completion)
+        registerBackgroundTaskIfNeeded(completion: completion)
         queue.addOperation {
             //self.queue.isSuspended = true
             self.createWallets(gasLimit: Constant.gasLimit, completion: { success in
@@ -230,7 +235,7 @@ final class TeambrellaService: NSObject {
         
         queue.addOperation {
             log("Teambrella service executed all sync operations", type: .crypto)
-            self.endBackgroundTask(result: .newData,completion: completion)
+            self.endBackgroundTaskIfNeeded(result: .newData, completion: completion)
         }
         
     }
@@ -468,14 +473,28 @@ final class TeambrellaService: NSObject {
         }
         return betterPrice
     }
-    
+
+    private func registerBackgroundTaskIfNeeded(completion: @escaping (UIBackgroundFetchResult) -> Void) {
+        #if MAIN_APP
+        registerBackgroundTask(completion: completion)
+        #endif
+    }
+
+    private func endBackgroundTaskIfNeeded(result: UIBackgroundFetchResult,
+                                   completion: @escaping (UIBackgroundFetchResult) -> Void) {
+        #if MAIN_APP
+        endBackgroundTask(result: result, completion: completion)
+        #endif
+    }
+
+    #if MAIN_APP
     private func registerBackgroundTask(completion: @escaping (UIBackgroundFetchResult) -> Void) {
         backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
             self?.endBackgroundTask(result: .failed,completion: completion)
         }
         assert(backgroundTask != UIBackgroundTaskInvalid)
     }
-    
+
     private func endBackgroundTask(result: UIBackgroundFetchResult,
                                    completion: @escaping (UIBackgroundFetchResult) -> Void) {
         log("Background task ended. Result: \(result.rawValue)", type: .crypto)
@@ -483,5 +502,6 @@ final class TeambrellaService: NSObject {
         backgroundTask = UIBackgroundTaskInvalid
         completion(result)
     }
+    #endif
     
 }

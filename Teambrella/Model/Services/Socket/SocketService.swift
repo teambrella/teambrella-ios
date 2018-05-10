@@ -38,14 +38,16 @@ class SocketService {
     var actions: [AnyHashable: SocketListenerAction] = [:]
     var isConnected: Bool { return socket.isConnected }
     var unsentMessage: String?
+    var dao: DAO
     
-    init(url: URL?) {
+    init(dao: DAO, url: URL?) {
+        self.dao = dao
         guard let url = url ?? URL(string: "\(Constant.scheme)://\(Constant.serverName)/\(Constant.path)") else {
             fatalError("Unable to create socket URL")
         }
 
         log("trying to connect to socket: \(url.absoluteString)", type: .socket)
-        service.dao.freshKey { key in
+        dao.freshKey { key in
             let application = Application()
             var request = URLRequest(url: url)
             request.setValue(String(key.timestamp), forHTTPHeaderField: "t")
@@ -59,10 +61,6 @@ class SocketService {
             log("connecting with request: \(request)", type: .socket)
             self.socket.connect()
         }
-    }
-    
-    convenience init() {
-        self.init(url: nil)
     }
     
     func add(listener: AnyHashable, action: @escaping SocketListenerAction) {

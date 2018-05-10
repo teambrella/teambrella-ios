@@ -204,14 +204,14 @@ Are you sure you want to completely remove your private key from this device?
     
     private func register(token: String, userID: String) {
         service.keyStorage.setToRealUser()
-        
-        guard let signature = EthereumProcessor.standard.publicKeySignature else {
+        let processor = service.teambrella.processor
+        guard let signature = processor.publicKeySignature else {
             HUD.hide()
             service.router.logout()
             return
         }
         
-        log("Eth address: \(EthereumProcessor.standard.ethAddressString ?? "none")", type: .info)
+        log("Eth address: \(processor.ethAddressString ?? "none")", type: .info)
         service.dao.registerKey(facebookToken: token, signature: signature).observe { [weak self] result in
             guard let `self` = self else { return }
 

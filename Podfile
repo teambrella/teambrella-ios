@@ -39,8 +39,12 @@ end
 
 def notification_swift_pods
   bitcoin_pods
+  ethereum_pods
   pod 'Kingfisher'
   pod 'KeychainAccess'
+  pod 'Starscream'
+  pod 'BigNumber', :git => 'https://github.com/mkrd/Swift-Big-Integer.git'
+  pod 'ExtensionsPack', :git => 'https://github.com/yaro812/ExtensionsPack.git'
 end
 
 def pods_bundle

@@ -26,10 +26,10 @@ class User: NSManagedObject {
     var id: Int {
         return Int(idValue)
     }
-    
+
     // stored in keychain
-    var privateKey: String { return service.keyStorage.privateKey }
-    
+    //var privateKey: String { return service.keyStorage.privateKey }
+
     var auxWalletAmount: Decimal {
         return auxWalletAmountValue! as Decimal
     }
@@ -58,8 +58,12 @@ class User: NSManagedObject {
             try? managedObjectContext?.save()
         }
     }
+
+    func privateKey(in keyStorage: KeyStorage) -> String {
+        return keyStorage.privateKey
+    }
     
-    func key(timestamp: Int64 = 0) -> Key {
-        return Key(base58String: privateKey, timestamp: timestamp)
+    func key(in keyStorage: KeyStorage, timestamp: Int64 = 0) -> Key {
+        return Key(base58String: privateKey(in: keyStorage), timestamp: timestamp)
     }
 }

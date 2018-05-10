@@ -137,7 +137,7 @@ final class InitialVC: UIViewController {
         
         service.session?.teams = teamsEntity.teams
         service.session?.currentUserID = teamsEntity.userID
-        let socket = SocketService()
+        let socket = SocketService(dao: service.dao, url: nil)
         service.socket = socket
         service.teambrella.signToSockets(service: socket)
         SimpleStorage().store(bool: true, forKey: .didLogWithKey)

@@ -84,7 +84,7 @@ class AbiArguments {
         guard let bigDecimal = BDouble(decimal.stringValue, radix: 10) else { return nil }
 
         let weis: BDouble = bigDecimal * BDouble(Constant.weisInEth)
-        guard let weisInt: BInt = BInt(weis.decimalExpansion(precisionAfterComma: 0)) else { return nil }
+        guard let weisInt: BInt = BInt(weis.decimalExpansion(precisionAfterDecimalPoint: 0)) else { return nil }
         
         let hex = weisInt.asString(radix: 16)
     
