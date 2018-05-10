@@ -232,6 +232,8 @@
 		6D31103420A449D700F66ED5 /* SocketCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BC1F66F10B00532626 /* SocketCommand.swift */; };
 		6D31103520A449D700F66ED5 /* SocketCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BC1F66F10B00532626 /* SocketCommand.swift */; };
 		6D31103820A46F1200F66ED5 /* TeambrellaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A9E1ED07CF1001BC579 /* TeambrellaService.swift */; };
+		6D31103920A487CF00F66ED5 /* SwiftKeccak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */; };
+		6D31103B20A494E100F66ED5 /* SwiftKeccak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */; };
 		6D3141CC1F07DD7400C285DA /* JoinTeamDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141CB1F07DD7400C285DA /* JoinTeamDataSource.swift */; };
 		6D3141CE1F07DDEF00C285DA /* JoinTeamCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141CD1F07DDEF00C285DA /* JoinTeamCellModels.swift */; };
 		6D3141D01F07DF7000C285DA /* JoinTeamValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3141CF1F07DF7000C285DA /* JoinTeamValidator.swift */; };
@@ -1736,6 +1738,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D31103920A487CF00F66ED5 /* SwiftKeccak.framework in Frameworks */,
 				E0FA59804169C556DC361F3C /* libPods-notification.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1764,6 +1767,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D31103B20A494E100F66ED5 /* SwiftKeccak.framework in Frameworks */,
 				CFC3BBD4921FE3745A914383 /* libPods-NotificationTeambrella.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2959,6 +2963,7 @@
 				6D59FCF21FBC8407006C0A2B /* Sources */,
 				6D59FCF31FBC8407006C0A2B /* Frameworks */,
 				6D59FCF41FBC8407006C0A2B /* Resources */,
+				6D31103A20A487EC00F66ED5 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -3380,6 +3385,21 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6D31103A20A487EC00F66ED5 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
 		};
 		6D4E5DD11F7AB6870020DEE2 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4752,6 +4772,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0DD563BFF9640E2EA3A0F20D /* Pods-notification.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -4779,6 +4800,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CFB2C72BED9D6756BBD9381F /* Pods-notification.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -5029,8 +5051,6 @@
 					"-framework",
 					"\"FirebaseAnalytics\"",
 					"-framework",
-					"\"FirebaseCore\"",
-					"-framework",
 					"\"FirebaseCoreDiagnostics\"",
 					"-framework",
 					"\"FirebaseInstanceID\"",
@@ -5145,8 +5165,6 @@
 					"-framework",
 					"\"FirebaseAnalytics\"",
 					"-framework",
-					"\"FirebaseCore\"",
-					"-framework",
 					"\"FirebaseCoreDiagnostics\"",
 					"-framework",
 					"\"FirebaseInstanceID\"",
@@ -5238,6 +5256,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -5264,6 +5283,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

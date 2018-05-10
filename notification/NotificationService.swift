@@ -24,6 +24,7 @@ class NotificationService: UNNotificationServiceExtension {
     override func didReceive(_ request: UNNotificationRequest,
                              withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
+        print("content request received")
 
         guard let content = request.content.mutableCopy() as? UNMutableNotificationContent else { return }
         guard let payloadDict = content.userInfo["Payload"] as? [AnyHashable: Any] else { return }
@@ -43,41 +44,58 @@ class NotificationService: UNNotificationServiceExtension {
         bestAttemptContent = content
 
         // remove duplicating messages
-//        UNUserNotificationCenter.current()
-//            .getDeliveredNotifications { notifications in
-//                let matching = notifications.first(where: { notify in
-//                    let threadID = notify.request.content.threadIdentifier
-//                    return threadID == content.threadIdentifier
-//                })
-//                if let matchExists = matching {
-//                    UNUserNotificationCenter.current().removeDeliveredNotifications(
-//                        withIdentifiers: [matchExists.request.identifier]
-//                    )
-//                }
-//        }
+        //        UNUserNotificationCenter.current()
+        //            .getDeliveredNotifications { notifications in
+        //                let matching = notifications.first(where: { notify in
+        //                    let threadID = notify.request.content.threadIdentifier
+        //                    return threadID == content.threadIdentifier
+        //                })
+        //                if let matchExists = matching {
+        //                    UNUserNotificationCenter.current().removeDeliveredNotifications(
+        //                        withIdentifiers: [matchExists.request.identifier]
+        //                    )
+        //                }
+        //        }
 
-        if let avatarURL = message.avatar {
-            UIImage.fetchAvatar(string: avatarURL, completion: { image, error in
-                if let filePath = self.saveImage(image: image),
-                    let attachment = try? UNNotificationAttachment(identifier: "image", url: filePath, options: nil) {
-                    content.attachments = [attachment]
-                    contentHandler(content)
-                } else {
+        print("fetching attachments for message: \(message)")
+
+        fetchAttachments(message: message) { [weak self] in
+            self?.getUpdates {
+                if let content = self?.bestAttemptContent {
                     contentHandler(content)
                 }
+            }
+        }
+    }
+
+    private func fetchAttachments(message: RemoteMessage, completion: @escaping () -> Void) {
+        if let avatarURL = message.avatar {
+            UIImage.fetchAvatar(string: avatarURL, completion: { [weak self] image, error in
+                if let filePath = self?.saveImage(image: image),
+                    let attachment = try? UNNotificationAttachment(identifier: "image", url: filePath, options: nil) {
+                    self?.bestAttemptContent?.attachments = [attachment]
+                }
+                completion()
             })
         } else if let imageURL = message.image {
-            UIImage.fetchImage(string: imageURL, completion: { image, error in
-                if let filePath = self.saveImage(image: image),
+            UIImage.fetchImage(string: imageURL, completion: { [weak self] image, error in
+                if let filePath = self?.saveImage(image: image),
                     let attachment = try? UNNotificationAttachment(identifier: "image", url: filePath, options: nil) {
-                    content.attachments = [attachment]
-                    contentHandler(content)
-                } else {
-                    contentHandler(content)
+                    self?.bestAttemptContent?.attachments = [attachment]
                 }
+                completion()
             })
         } else {
-            contentHandler(content)
+            completion()
+        }
+    }
+
+    private func getUpdates(completion: @escaping () -> Void) {
+        print("getting updates")
+        let service = TeambrellaService()
+        service.startUpdating { result in
+            print("\n\n\nget updates is executed from notifications service\n\n\n")
+            completion()
         }
     }
     

@@ -484,6 +484,8 @@ final class TeambrellaService: NSObject {
                                    completion: @escaping (UIBackgroundFetchResult) -> Void) {
         #if MAIN_APP
         endBackgroundTask(result: result, completion: completion)
+        #else
+        completion(.failed)
         #endif
     }
 
