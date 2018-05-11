@@ -12,7 +12,6 @@
 		17751AB22033568B00274F6A /* NewDiscussionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17751AAF2033568B00274F6A /* NewDiscussionCell.swift */; };
 		17751AB42033568B00274F6A /* NewDiscussionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17751AB02033568B00274F6A /* NewDiscussionCell.xib */; };
 		1790BB3B20750A3F00FD1303 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1790BB3920750A3F00FD1303 /* Year.swift */; };
-		29C3822B8BBCE41CBCE8D805 /* libPods-Teambrella2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A05F7840E0D4C4EEBEFB1E7 /* libPods-Teambrella2.a */; };
 		6D05235020A5D838000B3247 /* InfoMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC9474208E435E0017E87B /* InfoMaker.swift */; };
 		6D05235120A5D838000B3247 /* AmountWithCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA56521F2101D4003B46CC /* AmountWithCurrency.swift */; };
 		6D05235220A5D838000B3247 /* PlainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE957A1EE84A2C0019DA47 /* PlainButton.swift */; };
@@ -1727,7 +1726,6 @@
 				6D0524D820A5D838000B3247 /* PKHUD.framework in Frameworks */,
 				6D0524D920A5D838000B3247 /* SpriteKit.framework in Frameworks */,
 				6D0524DA20A5D838000B3247 /* SwiftKeccak.framework in Frameworks */,
-				29C3822B8BBCE41CBCE8D805 /* libPods-Teambrella2.a in Frameworks */,
 				6EB6C5A3A1AD4F95F386210D /* libPods-Teambrella.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
