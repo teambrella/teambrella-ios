@@ -55,29 +55,22 @@ def pods_bundle
   swift_frameworks_pods
 end
 
-target 'Teambrella' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  #use_frameworks!
-  inhibit_all_warnings!
-
-  pods_bundle
-
-  target 'TeambrellaTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  #target 'TeambrellaUITests' do
-  #  inherit! :search_paths
-    # Pods for testing
-  #end
-
-end
-
 target 'Surilla' do
   inhibit_all_warnings!
 
   pods_bundle
+
+end
+
+target 'Teambrella' do
+    inhibit_all_warnings!
+
+    pods_bundle
+
+    target 'TeambrellaTests' do
+        inherit! :search_paths
+
+    end
 
 end
 
