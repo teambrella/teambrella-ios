@@ -29,10 +29,16 @@ struct FeedCellBuilder {
                 cell.avatarView.showImage(string: model.smallPhotoOrAvatar)
                 cell.avatarView.layer.masksToBounds = true
                 cell.avatarView.layer.cornerRadius = 4
+                cell.titleLabel.text = model.modelOrName
             } else {
-                cell.avatarView.showAvatar(string: model.smallPhotoOrAvatar)
+                if let avatar = model.itemUserAvatar {
+                    cell.avatarView.show(avatar)
+                } else {
+                    cell.avatarView.showImage(string: model.smallPhotoOrAvatar)
+                }
                 cell.avatarView.layer.masksToBounds = true
                 cell.avatarView.layer.cornerRadius = cell.avatarView.frame.height / 2
+                cell.titleLabel.text = model.chatTitle ?? model.itemUserName.entire
             }
             cell.avatarView.contentMode = .scaleAspectFill
             cell.textLabel.text = model.text.sane
@@ -46,8 +52,6 @@ struct FeedCellBuilder {
             cell.unreadLabel.font = UIFont.teambrellaBold(size: 13)
             cell.unreadLabel.text = String(model.unreadCount)
             cell.unreadLabel.isHidden = model.unreadCount == 0
-            
-            cell.titleLabel.text = model.chatTitle ?? model.modelOrName
             
             switch model.itemType {
             case .claim:
