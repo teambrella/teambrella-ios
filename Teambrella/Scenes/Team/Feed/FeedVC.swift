@@ -25,7 +25,7 @@ import XLPagerTabStrip
 
 class FeedVC: UIViewController, IndicatorInfoProvider {
     struct Constant {
-        static let cellHeight: CGFloat   = 119
+        static let cellHeight: CGFloat   = isSmallIPhone ? 110 : 119
         static let headerHeight: CGFloat = 72
     }
     
