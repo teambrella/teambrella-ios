@@ -89,7 +89,7 @@ struct ClaimCellBuilder {
             cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
         default:
             let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
-            cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date)
+            cell.timeLabel.text = DateProcessor().yearProcessor(from: date)
         }
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }

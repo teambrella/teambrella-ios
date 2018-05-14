@@ -610,7 +610,6 @@ extension UniversalChatVC: UICollectionViewDataSource {
 
 // MARK: UICollectionViewDelegate
 extension UniversalChatVC: UICollectionViewDelegate {
-    // swiftlint:disable:next function_body_length
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
@@ -655,16 +654,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
                 }
             }
         } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
-            let modelYear = NSCalendar.current.component(.year, from: model.date)
-            let currentDate = Date()
-            let currentYear = NSCalendar.current.component(.year, from: currentDate)
-
-            let dateFormatter = DateFormatter()
-            let template = modelYear == currentYear ? "dMMMM" : "YYYYdMMM"
-            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template,
-                                                                options: 0,
-                                                                locale: NSLocale.current)
-            cell.text = dateFormatter.string(from: model.date)
+            cell.text = DateProcessor().yearProcessor(from: model.date)
         } else if let cell = cell as? ChatNewMessagesSeparatorCell,
             let model = model as? ChatNewMessagesSeparatorModel {
             cell.setNeedsDisplay()
