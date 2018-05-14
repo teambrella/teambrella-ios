@@ -47,7 +47,7 @@ struct FeedCellBuilder {
             cell.facesStack.setAvatars(model.topPosterAvatars, label: label, max: count > 3 ? 4 : 3)
 
             if let date = model.itemDate {
-                cell.timeLabel.text = DateProcessor().yearProcessor(from: date)
+                cell.timeLabel.text = DateProcessor().yearFilter(from: date)
             }
             cell.unreadLabel.font = UIFont.teambrellaBold(size: 13)
             cell.unreadLabel.text = String(model.unreadCount)

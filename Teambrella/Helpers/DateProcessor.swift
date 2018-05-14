@@ -71,7 +71,7 @@ struct DateProcessor {
         }
     }
     
-    func yearProcessor(from date: Date) -> String {
+    func yearFilter(from date: Date) -> String {
         let modelYear = NSCalendar.current.component(.year, from: date)
         let currentDate = Date()
         let currentYear = NSCalendar.current.component(.year, from: currentDate)

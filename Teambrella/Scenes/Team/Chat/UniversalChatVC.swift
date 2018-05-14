@@ -654,7 +654,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
                 }
             }
         } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
-            cell.text = DateProcessor().yearProcessor(from: model.date)
+            cell.text = DateProcessor().yearFilter(from: model.date)
         } else if let cell = cell as? ChatNewMessagesSeparatorCell,
             let model = model as? ChatNewMessagesSeparatorModel {
             cell.setNeedsDisplay()

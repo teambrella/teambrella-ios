@@ -316,7 +316,7 @@ struct TeammateCellBuilder {
             cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
         default:
             let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
-            cell.timeLabel.text = DateProcessor().yearProcessor(from: date)
+            cell.timeLabel.text = DateProcessor().yearFilter(from: date)
         }
         let message = stats.originalPostText.sane
         cell.textLabel.text = message
