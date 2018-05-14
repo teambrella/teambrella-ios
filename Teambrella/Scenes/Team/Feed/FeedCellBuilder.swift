@@ -47,7 +47,16 @@ struct FeedCellBuilder {
             cell.facesStack.setAvatars(model.topPosterAvatars, label: label, max: count > 3 ? 4 : 3)
 
             if let date = model.itemDate {
-                cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date).uppercased()
+                let modelYear = NSCalendar.current.component(.year, from: date)
+                let currentDate = Date()
+                let currentYear = NSCalendar.current.component(.year, from: currentDate)
+                
+                let dateFormatter = DateFormatter()
+                let template = modelYear == currentYear ? "dMMMM" : "YYYYdMMM"
+                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template,
+                                                                    options: 0,
+                                                                    locale: NSLocale.current)
+                cell.timeLabel.text = dateFormatter.string(from: date)
             }
             cell.unreadLabel.font = UIFont.teambrellaBold(size: 13)
             cell.unreadLabel.text = String(model.unreadCount)
