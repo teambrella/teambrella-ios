@@ -316,7 +316,16 @@ struct TeammateCellBuilder {
             cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
         default:
             let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
-            cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date)
+            let modelYear = NSCalendar.current.component(.year, from: date)
+            let currentDate = Date()
+            let currentYear = NSCalendar.current.component(.year, from: currentDate)
+            
+            let dateFormatter = DateFormatter()
+            let template = modelYear == currentYear ? "dMMMM" : "YYYYdMMM"
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template,
+                                                                options: 0,
+                                                                locale: NSLocale.current)
+            cell.timeLabel.text = dateFormatter.string(from: date)
         }
         let message = stats.originalPostText.sane
         cell.textLabel.text = message
