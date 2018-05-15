@@ -136,6 +136,7 @@ final class UniversalChatVC: UIViewController, Routable {
             guard let model = self.dataSource.chatModel else { return }
             
             self.slidingView.updateChatModel(model: model)
+            self.collectionView.reloadData()
         }
         
         dataSource.isLoadNextNeeded = true
@@ -619,9 +620,11 @@ extension UniversalChatVC: UICollectionViewDelegate {
         
         let model = dataSource[indexPath]
         if let model = model as? ChatCellUserDataLike {
-            if let  cell = cell as? ChatVariousContentCell {
-                let size = cloudSize(for: indexPath)
-                cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
+            if let cell = cell as? ChatVariousContentCell {
+                cell.prepare(with: model,
+                             myVote: dataSource.myVote,
+                             type: dataSource.chatType,
+                             size: cloudSize(for: indexPath))
                 cell.avatarView.tag = indexPath.row
                 cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
                 cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
@@ -630,9 +633,11 @@ extension UniversalChatVC: UICollectionViewDelegate {
                     
                     galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
                 }
-            } else if let  cell = cell as? ChatTextCell {
-                let size = cloudSize(for: indexPath)
-                cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
+            } else if let cell = cell as? ChatTextCell {
+                cell.prepare(with: model,
+                             myVote: dataSource.myVote,
+                             type: dataSource.chatType,
+                             size: cloudSize(for: indexPath))
                 cell.avatarView.tag = indexPath.row
                 cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
                 cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
@@ -642,8 +647,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
                     galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
                 }
             } else if let cell = cell as? ChatImageCell {
-                let size = cloudSize(for: indexPath)
-                cell.prepare(with: model, cloudWidth: size.width, cloudHeight: size.height)
+                cell.prepare(with: model, size: cloudSize(for: indexPath))
                 cell.avatarView.tag = indexPath.row
                 cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
                 cell.avatarTap.addTarget(self, action: #selector(tapAvatar))

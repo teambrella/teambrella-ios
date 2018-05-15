@@ -142,12 +142,12 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         context.drawPath(using: .fillStroke)
     }
 
-    func prepare(with model: ChatCellUserDataLike, cloudWidth: CGFloat, cloudHeight: CGFloat) {
+    func prepare(with model: ChatCellUserDataLike, size: CGSize) {
         if model.id != id, let fragment = model.fragments.first {
             id = model.id
             isMy = model.isMy
-            self.cloudWidth = cloudWidth
-            self.cloudHeight = cloudHeight
+            self.cloudWidth = size.width
+            self.cloudHeight = size.height
             setNeedsDisplay()
 
             let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)

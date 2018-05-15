@@ -158,17 +158,23 @@ class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
         context.drawPath(using: .fillStroke)
     }
 
-    func prepare(with model: ChatCellModel, cloudWidth: CGFloat, cloudHeight: CGFloat) {
+    func prepare(with model: ChatCellModel, myVote: Double?, type: UniversalChatType, size: CGSize) {
         if let model = model as? ChatTextCellModel, model.id != id {
             id = model.id
             isMy = model.isMy
-            self.cloudWidth = cloudWidth
-            self.cloudHeight = cloudHeight
+            self.cloudWidth = size.width
+            self.cloudHeight = size.height
             setNeedsDisplay()
 
             let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
             setupLeftLabel(name: model.userName, baseFrame: baseFrame)
-            setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
+            if isMy, let vote = myVote {
+                let builder = ChatModelBuilder()
+                let text = builder.rateText(rate: vote, showRate: true, isClaim: type == .claim)
+                setupRightLabel(rateText: text, baseFrame: baseFrame)
+            } else {
+                setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
+            }
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
             setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
             setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)

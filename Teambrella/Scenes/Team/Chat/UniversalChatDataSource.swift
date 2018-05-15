@@ -80,6 +80,10 @@ final class UniversalChatDatasource {
     private var topCellDate: Date?
     //private var topic: Topic?
     
+    var myVote: Double? {
+        return chatModel?.voting?.myVote
+    }
+    
     var claim: ClaimEntityLarge? {
         if let strategy = strategy as? ClaimChatStrategy {
             return strategy.claim
