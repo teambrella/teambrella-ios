@@ -509,7 +509,7 @@ extension UniversalChatDatasource {
         lastRead = model.discussion.lastRead
         teamAccessLevel = model.team?.accessLevel ?? .noAccess
 
-        addClaimPaidIfNeeded(date:model.basic?.paymentFinishedDate)
+        addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
     }
 
     private func addClaimPaidIfNeeded(date: Date?) {
