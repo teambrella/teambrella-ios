@@ -73,7 +73,6 @@ struct ChatSeparatorCellModel: ChatCellModel {
     var id: String { return String(describing: date.timeIntervalSince1970) }
     let date: Date
     let isTemporary: Bool = true
-    
 }
 
 struct ChatNewMessagesSeparatorModel: ChatCellModel {
@@ -81,4 +80,11 @@ struct ChatNewMessagesSeparatorModel: ChatCellModel {
     let date: Date
     let text: String = "Team.Chat.Separator.newMessages".localized
     let isTemporary: Bool = true
+}
+
+struct ChatClaimPaidCellModel: ChatCellModel {
+    var id: String { return String(describing: date.timeIntervalSince1970) }
+    let date: Date
+    let isTemporary: Bool = false
+
 }

@@ -61,6 +61,7 @@ struct ClaimEntityLarge: Decodable, CustomStringConvertible {
         let deductible: Double
         let coverage: Double
         let incidentDate: Date
+        let paymentFinishedDate: Date?
 
         enum CodingKeys: String, CodingKey {
             case userID = "UserId"
@@ -75,6 +76,7 @@ struct ClaimEntityLarge: Decodable, CustomStringConvertible {
             case deductible = "Deductible"
             case coverage = "Coverage"
             case incidentDate = "IncidentDate"
+            case paymentFinishedDate = "DatePaymentFinished"
         }
 
     }
