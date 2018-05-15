@@ -31,7 +31,7 @@ protocol ChatCellUserDataLike: ChatCellModel {
     var entity: ChatEntity { get }
     var fragments: [ChatFragment] { get }
     var isMy: Bool { get }
-    var userAvatar: Avatar { get }
+    var userAvatar: Avatar? { get }
     var date: Date { get }
     var isTemporary: Bool { get }
     var id: String { get }
@@ -44,7 +44,7 @@ struct ChatTextCellModel: ChatCellUserDataLike {
     
     let isMy: Bool
     let userName: Name
-    let userAvatar: Avatar
+    let userAvatar: Avatar?
     var rateText: String?
     let date: Date
     let isTemporary: Bool
@@ -60,7 +60,7 @@ struct ChatImageCellModel: ChatCellUserDataLike {
     let fragmentSizes: [CGSize]
 
     let isMy: Bool
-    let userAvatar: Avatar
+    let userAvatar: Avatar?
     let date: Date
     let isTemporary: Bool
 

@@ -242,6 +242,7 @@ final class UniversalChatDatasource {
         strategy = ChatStrategyFactory.strategy(with: context)
         hasPrevious = strategy.canLoadBackward
         cellModelBuilder.showRate = chatType == .application || chatType == .claim
+        cellModelBuilder.showTheirAvatar = chatType != .privateChat
     }
     
     func loadNext() {

@@ -105,6 +105,8 @@ class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
     var cloudInsetX: CGFloat {
         return isMy
             ? Constant.avatarContainerInset + Constant.avatarCloudInset
+            : avatarView.isHidden
+            ? Constant.avatarContainerInset + Constant.avatarCloudInset
             : Constant.avatarContainerInset + Constant.avatarWidth + Constant.avatarCloudInset
     }
 
@@ -167,10 +169,10 @@ class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
             setNeedsDisplay()
 
             let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
+            setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
             setupLeftLabel(name: model.userName, baseFrame: baseFrame)
             setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
-            setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
             setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)
         }
     }
@@ -334,9 +336,9 @@ class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
     private func updateTextView(for text: String, size: CGSize) {
         let verticalOffset: CGFloat = leftLabel.frame.maxY + Constant.textInset
         textView.frame = CGRect(x: cloudBodyMinX + Constant.textInset,
-                                                y: verticalOffset,
-                                                width: size.width,
-                                                height: size.height)
+                                y: verticalOffset,
+                                width: size.width,
+                                height: size.height)
         textView.text = text
     }
 
