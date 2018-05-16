@@ -20,6 +20,7 @@ class Console: UIViewController, Routable {
 static let storyboardName = "Info"
 
     @IBOutlet var pushTokenField: UITextField!
+    @IBOutlet var pushTokenAPNSField: UITextField!
     @IBOutlet var privateKeyField: UITextField!
     @IBOutlet var publicKeyField: UITextField!
 
@@ -29,6 +30,7 @@ static let storyboardName = "Info"
         super.viewDidLoad()
 
         pushTokenField.text = service.push.tokenString
+        pushTokenAPNSField.text = service.push.apnsTokenString
         privateKeyField.text = service.teambrella.key.privateKey
         publicKeyField.text = service.teambrella.key.publicKey
 
