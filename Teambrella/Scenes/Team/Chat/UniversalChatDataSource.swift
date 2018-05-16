@@ -79,52 +79,22 @@ final class UniversalChatDatasource {
     private var isClaimPaidModelAdded               = false
     
     private var topCellDate: Date?
-    //private var topic: Topic?
     
     var myVote: Double? {
         return chatModel?.voting?.myVote
     }
-    
-    var claim: ClaimEntityLarge? {
-        if let strategy = strategy as? ClaimChatStrategy {
-            return strategy.claim
-        }
-        return nil
-    }
-    
-    var claimID: Int? {
-        if let claim = claim {
-            return claim.id
-        }
-        return nil
-    }
-    
+
     var claimDate: Date? {
-        if let chatModel = chatModel?.basic {
-            return chatModel.incidentDate
-        }
-        return nil
+        return chatModel?.basic?.incidentDate
     }
-    
-    var teammateInfo: TeammateLarge.BasicInfo? {
-        if let strategy = strategy as? TeammateChatStrategy {
-            return strategy.teammate.basic
-        }
-        return nil
-    }
-    
-    var topicID: String? { return claim?.discussion.id ?? chatModel?.discussion.topicID }
+
+    var topicID: String? { return chatModel?.discussion.topicID }
     
     var count: Int { return models.count }
     
     var title: String {
-        if strategy is PrivateChatStrategy {
-            return strategy.title
-        }
-        
-        guard let chatModel = chatModel else {
-            return ""
-        }
+        guard !(strategy is PrivateChatStrategy) else { return strategy.title }
+        guard let chatModel = chatModel else { return "" }
         
         if chatModel.isClaimChat {
             if let date = claimDate {
@@ -153,32 +123,10 @@ final class UniversalChatDatasource {
         default:
             break
         }
-        
-        // TODO: delete all crunches
-        if let strategy = strategy as? FeedChatStrategy {
-            if strategy.feedEntity.itemType == .teammate {
-                return .application
-            }
-        }
-        
-        if let strategy = strategy as? HomeChatStrategy {
-            if strategy.card.itemType == .teammate {
-                return .application
-            }
-        }
-        
-        if let chatModel = chatModel {
-            if chatModel.basic?.claimAmount != nil {
-                return .claim
-            }
-            if chatModel.basic?.title != nil {
-                return .discussion
-            }
-            if chatModel.basic?.userID != nil {
-                return .application
-            }
-        }
-        
+
+        if chatModel?.basic?.claimAmount != nil { return .claim }
+        if chatModel?.basic?.title != nil { return .discussion }
+        if chatModel?.basic?.userID != nil { return .application }
         return .discussion
     }
     
@@ -269,9 +217,6 @@ final class UniversalChatDatasource {
     func send(text: String, imageFragments: [ChatFragment]) {
         isLoading = true
         let id = UUID().uuidString.lowercased()
-        //let temporaryModel = cellModelBuilder.unsentModel(fragments: imageFragments + [ChatFragment.text(text)],
-        //                                                 id: id)
-        //addCellModel(model: temporaryModel)
         let images: [String] = imageFragments.compactMap {
             if case let .image(image, _, _) = $0 {
                 return image
@@ -300,8 +245,8 @@ final class UniversalChatDatasource {
     
     func updateVoteOnServer(vote: Float?) {
         guard let claimID = chatModel?.id else { return }
-        
-        let lastUpdated = claim?.lastUpdated ?? 0
+
+        let lastUpdated = chatModel?.lastUpdated ?? 0
         service.dao.updateClaimVote(claimID: claimID,
                                     vote: vote,
                                     lastUpdated: lastUpdated)
@@ -318,11 +263,7 @@ final class UniversalChatDatasource {
                 }
         }
     }
-    
-    func updateMyModels(newVote: Double) {
-        
-    }
-    
+
     subscript(indexPath: IndexPath) -> ChatCellModel {
         guard indexPath.row < models.count else {
             fatalError("Wrong index: \(indexPath), while have only \(models.count) models")
