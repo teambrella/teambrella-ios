@@ -396,6 +396,8 @@ private extension UniversalChatVC {
         collectionView.register(ChatFooter.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
                                 withReuseIdentifier: ChatFooter.cellID)
+        collectionView.register(ChatClaimPaidCell.nib,
+                                forCellWithReuseIdentifier: ChatClaimPaidCell.cellID)
     }
     
     private func listenForKeyboard() {
@@ -591,6 +593,8 @@ extension UniversalChatVC: UICollectionViewDataSource {
             identifier = Constant.dateSeparatorCellID
         case _ as ChatNewMessagesSeparatorModel:
             identifier = Constant.newMessagesSeparatorCellID
+        case _ as ChatClaimPaidCellModel:
+            identifier = ChatClaimPaidCell.cellID
         default:
             fatalError("Unknown cell")
         }
@@ -663,6 +667,9 @@ extension UniversalChatVC: UICollectionViewDelegate {
             let model = model as? ChatNewMessagesSeparatorModel {
             cell.setNeedsDisplay()
             cell.label.text = model.text
+        } else if let cell = cell as? ChatClaimPaidCell {
+            cell.messageLabel.text = "Your team has paid the claim. Pretty cool, huh? Share it with your friends!"
+            cell.button.setTitle("Share with friends", for: .normal)
         }
     }
 
@@ -711,6 +718,8 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: 30)
         case _ as ChatNewMessagesSeparatorModel:
             return CGSize(width: collectionView.bounds.width, height: 30)
+        case _ as ChatClaimPaidCellModel:
+            return CGSize(width: collectionView.bounds.width, height: 135)
         default:
             return CGSize(width: collectionView.bounds.width - 32, height: 100)
         }

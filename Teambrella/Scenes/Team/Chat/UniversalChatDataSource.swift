@@ -76,6 +76,7 @@ final class UniversalChatDatasource {
     private(set) var isLoading                      = false
     private var isChunkAdded                        = false
     private var hasNewMessagesSeparator: Bool       = false
+    private var isClaimPaidModelAdded               = false
     
     private var topCellDate: Date?
     //private var topic: Topic?
@@ -245,6 +246,7 @@ final class UniversalChatDatasource {
         strategy = ChatStrategyFactory.strategy(with: context)
         hasPrevious = strategy.canLoadBackward
         cellModelBuilder.showRate = chatType == .application || chatType == .claim
+        cellModelBuilder.showTheirAvatar = chatType != .privateChat
     }
     
     func loadNext() {
@@ -497,7 +499,7 @@ extension UniversalChatDatasource {
         }
         isFirstLoad = false
     }
-    
+
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
         addModels(models: model.discussion.chat, isPrevious: isPrevious)
         chatModel = model
@@ -511,8 +513,18 @@ extension UniversalChatDatasource {
         }
         lastRead = model.discussion.lastRead
         teamAccessLevel = model.team?.accessLevel ?? .noAccess
+
+        addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
     }
-    
+
+    private func addClaimPaidIfNeeded(date: Date?) {
+        guard !isClaimPaidModelAdded, let date = date else { return }
+
+        let model = ChatClaimPaidCellModel(date: date)
+        addCellModels(models: [model])
+        isClaimPaidModelAdded = true
+    }
+
     private func processPrivateChat(messages: [ChatEntity], isPrevious: Bool, isMyNewMessage: Bool) {
         if isMyNewMessage {
             clear()

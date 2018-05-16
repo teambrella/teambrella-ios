@@ -25,6 +25,7 @@ class ChatModelBuilder {
     let fragmentParser = ChatFragmentParser()
     
     var showRate = false
+    var showTheirAvatar = false
     var font: UIFont = UIFont.teambrella(size: 14)
     var width: CGFloat = 0
     lazy var heightCalculator = ChatFragmentSizeCalculator(width: width, font: font)
@@ -52,13 +53,13 @@ class ChatModelBuilder {
             service.session?.currentUserID.map { isMy = item.userID == $0 }
             
             let name: Name
-            let avatar: Avatar
+            let avatar: Avatar?
             if isMy == true {
                 name = Name(fullName: "General.you".localized)
                 avatar = service.session?.currentUserAvatar ?? Avatar.none
             } else {
                 name = item.teammate?.name ?? Name.empty
-                avatar = item.teammate?.avatar ?? Avatar.none
+                avatar = showTheirAvatar ? item.teammate?.avatar : nil
             }
             
             let date = item.created

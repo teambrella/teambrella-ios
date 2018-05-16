@@ -128,6 +128,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
         let dateCreated: Date?
         let state: ClaimState?
         let reimbursement: Double?
+        let paymentFinishedDate: Date?
 
         enum CodingKeys: String, CodingKey {
             case userID = "UserId"
@@ -151,6 +152,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
             case dateCreated = "DateCreated"
             case state = "State"
             case reimbursement = "Reimbursement"
+            case paymentFinishedDate = "DatePaymentFinished"
         }
 
     }
