@@ -538,95 +538,58 @@
 		6D30A4AE1FD167FE003149DB /* FeedChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30A4AC1FD167FE003149DB /* FeedChunk.swift */; };
 		6D310FDA20A445D000F66ED5 /* Contract.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6DB921F31F9DF2A1009D3937 /* Contract.txt */; };
 		6D310FDB20A445D100F66ED5 /* Contract.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6DB921F31F9DF2A1009D3937 /* Contract.txt */; };
-		6D310FDC20A445D400F66ED5 /* AbiArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB922241F9E27CD009D3937 /* AbiArguments.swift */; };
 		6D310FDD20A445D400F66ED5 /* AbiArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB922241F9E27CD009D3937 /* AbiArguments.swift */; };
-		6D310FDE20A445D700F66ED5 /* BlockchainDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A881ED07CF1001BC579 /* BlockchainDateFormatter.swift */; };
 		6D310FDF20A445D800F66ED5 /* BlockchainDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A881ED07CF1001BC579 /* BlockchainDateFormatter.swift */; };
-		6D310FE020A445DA00F66ED5 /* EtherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D677E761FA110B800ED1C36 /* EtherAPI.swift */; };
 		6D310FE120A445DB00F66ED5 /* EtherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D677E761FA110B800ED1C36 /* EtherAPI.swift */; };
 		6D310FE320A445DE00F66ED5 /* EthereumProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A57B01F698B8A00CE8841 /* EthereumProcessor.swift */; };
-		6D310FE420A445E100F66ED5 /* EtherNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFDAF61F8CEC7E00342696 /* EtherNode.swift */; };
 		6D310FE520A445E200F66ED5 /* EtherNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFDAF61F8CEC7E00342696 /* EtherNode.swift */; };
 		6D310FE720A445E500F66ED5 /* EthWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB921ED1F9DEC27009D3937 /* EthWallet.swift */; };
-		6D310FE820A445E800F66ED5 /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248B1F9F357200A2F2CD /* Hex.swift */; };
 		6D310FE920A445E900F66ED5 /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248B1F9F357200A2F2CD /* Hex.swift */; };
 		6D310FEB20A445EE00F66ED5 /* TeambrellaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A9E1ED07CF1001BC579 /* TeambrellaService.swift */; };
-		6D310FEC20A445F100F66ED5 /* GasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D878E4E200CF63600066492 /* GasStation.swift */; };
 		6D310FED20A445F200F66ED5 /* GasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D878E4E200CF63600066492 /* GasStation.swift */; };
-		6D310FEE20A445F500F66ED5 /* CryptoServerUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */; };
 		6D310FEF20A445F600F66ED5 /* CryptoServerUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */; };
-		6D310FF020A4460E00F66ED5 /* BlockchainServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A891ED07CF1001BC579 /* BlockchainServer.swift */; };
 		6D310FF120A4460F00F66ED5 /* BlockchainServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A891ED07CF1001BC579 /* BlockchainServer.swift */; };
-		6D310FF220A4461200F66ED5 /* MultisigServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3D6202B0CFB00F0541C /* MultisigServerImpl.swift */; };
 		6D310FF320A4461200F66ED5 /* MultisigServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3D6202B0CFB00F0541C /* MultisigServerImpl.swift */; };
-		6D310FF420A4461600F66ED5 /* TxServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3D9202B0D5400F0541C /* TxServerImpl.swift */; };
 		6D310FF520A4461600F66ED5 /* TxServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3D9202B0D5400F0541C /* TxServerImpl.swift */; };
-		6D310FF620A4461800F66ED5 /* CosignerServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3DC202B0DE000F0541C /* CosignerServerImpl.swift */; };
 		6D310FF720A4461900F66ED5 /* CosignerServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3DC202B0DE000F0541C /* CosignerServerImpl.swift */; };
-		6D310FF820A4461C00F66ED5 /* TxSignatureServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3DF202B0E2E00F0541C /* TxSignatureServerImpl.swift */; };
 		6D310FF920A4461D00F66ED5 /* TxSignatureServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3DF202B0E2E00F0541C /* TxSignatureServerImpl.swift */; };
-		6D310FFA20A4461F00F66ED5 /* PayToServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3E2202B0E6900F0541C /* PayToServerImpl.swift */; };
 		6D310FFB20A4462000F66ED5 /* PayToServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3E2202B0E6900F0541C /* PayToServerImpl.swift */; };
-		6D310FFC20A4462200F66ED5 /* TxOutputServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3E5202B0EB700F0541C /* TxOutputServerImpl.swift */; };
 		6D310FFD20A4462300F66ED5 /* TxOutputServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3E5202B0EB700F0541C /* TxOutputServerImpl.swift */; };
-		6D310FFE20A4462500F66ED5 /* TeammateServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3E8202B0F0100F0541C /* TeammateServerImpl.swift */; };
 		6D310FFF20A4462600F66ED5 /* TeammateServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3E8202B0F0100F0541C /* TeammateServerImpl.swift */; };
-		6D31100020A4462900F66ED5 /* TeamServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3EB202B0F3A00F0541C /* TeamServerImpl.swift */; };
 		6D31100120A4462900F66ED5 /* TeamServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3EB202B0F3A00F0541C /* TeamServerImpl.swift */; };
-		6D31100220A4462C00F66ED5 /* TxInputServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3EE202B0F7300F0541C /* TxInputServerImpl.swift */; };
 		6D31100320A4462C00F66ED5 /* TxInputServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3EE202B0F7300F0541C /* TxInputServerImpl.swift */; };
-		6D31100420A4462F00F66ED5 /* UpdatesServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3F1202B114A00F0541C /* UpdatesServerImpl.swift */; };
 		6D31100520A4463000F66ED5 /* UpdatesServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3F1202B114A00F0541C /* UpdatesServerImpl.swift */; };
 		6D31100720A4464500F66ED5 /* Cosigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A911ED07CF1001BC579 /* Cosigner.swift */; };
-		6D31100820A4464700F66ED5 /* Multisig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBF7FF1F9A561600524B1E /* Multisig.swift */; };
 		6D31100920A4464800F66ED5 /* Multisig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBF7FF1F9A561600524B1E /* Multisig.swift */; };
-		6D31100A20A4464B00F66ED5 /* PayTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A921ED07CF1001BC579 /* PayTo.swift */; };
 		6D31100B20A4464B00F66ED5 /* PayTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A921ED07CF1001BC579 /* PayTo.swift */; };
-		6D31100C20A4464E00F66ED5 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A931ED07CF1001BC579 /* Team.swift */; };
 		6D31100D20A4464E00F66ED5 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A931ED07CF1001BC579 /* Team.swift */; };
-		6D31100E20A4465100F66ED5 /* Teammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A941ED07CF1001BC579 /* Teammate.swift */; };
 		6D31100F20A4465100F66ED5 /* Teammate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A941ED07CF1001BC579 /* Teammate.swift */; };
-		6D31101020A4465400F66ED5 /* Tx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A951ED07CF1001BC579 /* Tx.swift */; };
 		6D31101120A4465400F66ED5 /* Tx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A951ED07CF1001BC579 /* Tx.swift */; };
-		6D31101220A4465700F66ED5 /* TxInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A961ED07CF1001BC579 /* TxInput.swift */; };
 		6D31101320A4465700F66ED5 /* TxInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A961ED07CF1001BC579 /* TxInput.swift */; };
 		6D31101520A4465B00F66ED5 /* TxOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A971ED07CF1001BC579 /* TxOutput.swift */; };
-		6D31101620A4465D00F66ED5 /* TxSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A981ED07CF1001BC579 /* TxSignature.swift */; };
 		6D31101720A4465E00F66ED5 /* TxSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A981ED07CF1001BC579 /* TxSignature.swift */; };
-		6D31101820A4466000F66ED5 /* Unconfirmed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBF8021F9A5F6800524B1E /* Unconfirmed.swift */; };
 		6D31101920A4466100F66ED5 /* Unconfirmed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBF8021F9A5F6800524B1E /* Unconfirmed.swift */; };
-		6D31101A20A4466300F66ED5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A991ED07CF1001BC579 /* User.swift */; };
 		6D31101B20A4466400F66ED5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A991ED07CF1001BC579 /* User.swift */; };
-		6D31101C20A4466800F66ED5 /* Dumper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F6ADA2014EB3000B3287D /* Dumper.swift */; };
 		6D31101D20A4466900F66ED5 /* Dumper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F6ADA2014EB3000B3287D /* Dumper.swift */; };
-		6D31101E20A4466B00F66ED5 /* EntityEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A9A1ED07CF1001BC579 /* EntityEnums.swift */; };
 		6D31101F20A4466C00F66ED5 /* EntityEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A9A1ED07CF1001BC579 /* EntityEnums.swift */; };
-		6D31102020A4466F00F66ED5 /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A9B1ED07CF1001BC579 /* EntityFactory.swift */; };
 		6D31102120A4466F00F66ED5 /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A9B1ED07CF1001BC579 /* EntityFactory.swift */; };
-		6D31102220A4467200F66ED5 /* TeambrellaContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A8E1ED07CF1001BC579 /* TeambrellaContentProvider.swift */; };
 		6D31102320A4467200F66ED5 /* TeambrellaContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A8E1ED07CF1001BC579 /* TeambrellaContentProvider.swift */; };
-		6D31102420A4467500F66ED5 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A8B1ED07CF1001BC579 /* CoreDataStorage.swift */; };
 		6D31102520A4467500F66ED5 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A8B1ED07CF1001BC579 /* CoreDataStorage.swift */; };
-		6D31102620A4467A00F66ED5 /* TransactionsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A9C1ED07CF1001BC579 /* TransactionsModel.xcdatamodeld */; };
 		6D31102720A4467A00F66ED5 /* TransactionsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A9C1ED07CF1001BC579 /* TransactionsModel.xcdatamodeld */; };
 		6D31102820A4495A00F66ED5 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D56F9BB1FA737CC00B9D676 /* Application.swift */; };
 		6D31102920A4495B00F66ED5 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D56F9BB1FA737CC00B9D676 /* Application.swift */; };
 		6D31102B20A4498C00F66ED5 /* EthereumAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556741FD2EF3200AEBF07 /* EthereumAddress.swift */; };
 		6D31102C20A449B300F66ED5 /* PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479111F41E4300025F489 /* PromiseKit.swift */; };
 		6D31102D20A449B300F66ED5 /* PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479111F41E4300025F489 /* PromiseKit.swift */; };
-		6D31103020A449CF00F66ED5 /* SocketAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BA1F66F0D700532626 /* SocketAction.swift */; };
 		6D31103120A449D000F66ED5 /* SocketAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BA1F66F0D700532626 /* SocketAction.swift */; };
-		6D31103220A449D200F66ED5 /* SocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BE1F66F14100532626 /* SocketData.swift */; };
 		6D31103320A449D300F66ED5 /* SocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BE1F66F14100532626 /* SocketData.swift */; };
-		6D31103420A449D700F66ED5 /* SocketCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BC1F66F10B00532626 /* SocketCommand.swift */; };
 		6D31103520A449D700F66ED5 /* SocketCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD051BC1F66F10B00532626 /* SocketCommand.swift */; };
 		6D31103B20A494E100F66ED5 /* SwiftKeccak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */; };
 		6D3AE8851FB2015F00A027BB /* BigNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3AE8841FB2015F00A027BB /* BigNumberTests.swift */; };
 		6D40248D1F9F357300A2F2CD /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248B1F9F357200A2F2CD /* Hex.swift */; };
 		6D40248F1F9F782600A2F2CD /* AbiArgumentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248E1F9F782600A2F2CD /* AbiArgumentsTests.swift */; };
-		6D41416420AC51AC00F6B48E /* TxOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A971ED07CF1001BC579 /* TxOutput.swift */; };
-		6D41416520AC51BA00F6B48E /* Cosigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A911ED07CF1001BC579 /* Cosigner.swift */; };
-		6D41416620AC51E800F6B48E /* EthereumAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556741FD2EF3200AEBF07 /* EthereumAddress.swift */; };
+		6D41416720AC537000F6B48E /* TimestampFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FD131FBC95CB006C0A2B /* TimestampFetcher.swift */; };
+		6D41416820AC538A00F6B48E /* TeambrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */; };
 		6D49FDDC20209DD900A908D2 /* Ether.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDDA20209DD900A908D2 /* Ether.swift */; };
 		6D49FDDF2020BB2B00A908D2 /* Coverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDDD2020BB2B00A908D2 /* Coverage.swift */; };
 		6D49FDE22020C12800A908D2 /* Risk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE02020C12800A908D2 /* Risk.swift */; };
@@ -990,7 +953,6 @@
 		6D4E5DD01F7AB6870020DEE2 /* VotingRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */; };
 		6D525D0C203D8309004C3C92 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
 		6D525D0D203D830B004C3C92 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33E1531F715BB10052A58B /* Log.swift */; };
-		6D525D0E203D837A004C3C92 /* TeambrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */; };
 		6D525D0F203D837A004C3C92 /* TeambrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */; };
 		6D525D10203D8390004C3C92 /* ServerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */; };
 		6D525D11203D8391004C3C92 /* ServerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7CC5A41FF3D49600ED46E3 /* ServerStatus.swift */; };
@@ -1031,7 +993,6 @@
 		6D9F6ADC2014EB3000B3287D /* Dumper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F6ADA2014EB3000B3287D /* Dumper.swift */; };
 		6DA1A5401FBF0AEA000FDECA /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D1021F056DF900F9DE87 /* UIImage.swift */; };
 		6DA1A5411FBF0B0E000FDECA /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FD171FBC9693006C0A2B /* URLBuilder.swift */; };
-		6DA1A5431FBF0C70000FDECA /* TimestampFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FD131FBC95CB006C0A2B /* TimestampFetcher.swift */; };
 		6DA1A5441FBF0C7F000FDECA /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF3E7611F795ED6000C7885 /* KeyStorage.swift */; };
 		6DA1A5451FBF0C8B000FDECA /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC230691ED07F0500FAC330 /* Key.swift */; };
 		6DA1A5491FBF0CF1000FDECA /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479191F432D230025F489 /* KeychainService.swift */; };
@@ -4407,61 +4368,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D31102C20A449B300F66ED5 /* PromiseKit.swift in Sources */,
-				6D31100420A4462F00F66ED5 /* UpdatesServerImpl.swift in Sources */,
-				6D310FE420A445E100F66ED5 /* EtherNode.swift in Sources */,
-				6D310FEC20A445F100F66ED5 /* GasStation.swift in Sources */,
-				6D31101E20A4466B00F66ED5 /* EntityEnums.swift in Sources */,
-				6D31103220A449D200F66ED5 /* SocketData.swift in Sources */,
-				6D310FDE20A445D700F66ED5 /* BlockchainDateFormatter.swift in Sources */,
 				6D900E201FC31CFF00FF6FF8 /* RemoteMessage.swift in Sources */,
 				6D31102820A4495A00F66ED5 /* Application.swift in Sources */,
 				6DA1A5401FBF0AEA000FDECA /* UIImage.swift in Sources */,
 				6D900E2C1FC46BB000FF6FF8 /* String-localized.swift in Sources */,
 				6D900E221FC31D4100FF6FF8 /* RemoteCommand.swift in Sources */,
-				6D310FF220A4461200F66ED5 /* MultisigServerImpl.swift in Sources */,
-				6D31100A20A4464B00F66ED5 /* PayTo.swift in Sources */,
-				6DA1A5431FBF0C70000FDECA /* TimestampFetcher.swift in Sources */,
-				6D310FE020A445DA00F66ED5 /* EtherAPI.swift in Sources */,
-				6D310FF620A4461800F66ED5 /* CosignerServerImpl.swift in Sources */,
-				6D310FFE20A4462500F66ED5 /* TeammateServerImpl.swift in Sources */,
-				6D41416620AC51E800F6B48E /* EthereumAddress.swift in Sources */,
-				6D31103420A449D700F66ED5 /* SocketCommand.swift in Sources */,
-				6D310FF420A4461600F66ED5 /* TxServerImpl.swift in Sources */,
-				6D31101620A4465D00F66ED5 /* TxSignature.swift in Sources */,
-				6D31102020A4466F00F66ED5 /* EntityFactory.swift in Sources */,
-				6D310FE820A445E800F66ED5 /* Hex.swift in Sources */,
 				6DA1A5411FBF0B0E000FDECA /* URLBuilder.swift in Sources */,
-				6D310FDC20A445D400F66ED5 /* AbiArguments.swift in Sources */,
-				6D310FEE20A445F500F66ED5 /* CryptoServerUpdate.swift in Sources */,
-				6D310FFC20A4462200F66ED5 /* TxOutputServerImpl.swift in Sources */,
-				6D41416520AC51BA00F6B48E /* Cosigner.swift in Sources */,
-				6D31100220A4462C00F66ED5 /* TxInputServerImpl.swift in Sources */,
-				6D525D0E203D837A004C3C92 /* TeambrellaError.swift in Sources */,
-				6D31102420A4467500F66ED5 /* CoreDataStorage.swift in Sources */,
-				6D31102620A4467A00F66ED5 /* TransactionsModel.xcdatamodeld in Sources */,
 				6D525D10203D8390004C3C92 /* ServerStatus.swift in Sources */,
 				6DA1A5441FBF0C7F000FDECA /* KeyStorage.swift in Sources */,
-				6D31101C20A4466800F66ED5 /* Dumper.swift in Sources */,
-				6D31101220A4465700F66ED5 /* TxInput.swift in Sources */,
-				6D31103020A449CF00F66ED5 /* SocketAction.swift in Sources */,
-				6D41416420AC51AC00F6B48E /* TxOutput.swift in Sources */,
+				6D41416720AC537000F6B48E /* TimestampFetcher.swift in Sources */,
 				6D525D0C203D8309004C3C92 /* Log.swift in Sources */,
-				6D31102220A4467200F66ED5 /* TeambrellaContentProvider.swift in Sources */,
-				6D310FFA20A4461F00F66ED5 /* PayToServerImpl.swift in Sources */,
-				6D31100C20A4464E00F66ED5 /* Team.swift in Sources */,
 				6DFECADA207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift in Sources */,
-				6D31100820A4464700F66ED5 /* Multisig.swift in Sources */,
 				6D9374AA202C9EB800BB28CB /* Notification.swift in Sources */,
-				6D31101820A4466000F66ED5 /* Unconfirmed.swift in Sources */,
+				6D41416820AC538A00F6B48E /* TeambrellaError.swift in Sources */,
 				6DA1A5451FBF0C8B000FDECA /* Key.swift in Sources */,
 				6DA1A54B1FBF25ED000FDECA /* RemotePayload.swift in Sources */,
-				6D31101A20A4466300F66ED5 /* User.swift in Sources */,
-				6D31100020A4462900F66ED5 /* TeamServerImpl.swift in Sources */,
-				6D31100E20A4465100F66ED5 /* Teammate.swift in Sources */,
-				6D31101020A4465400F66ED5 /* Tx.swift in Sources */,
 				6DF2FF34203C63BD008C919C /* SimpleStorage.swift in Sources */,
-				6D310FF820A4461C00F66ED5 /* TxSignatureServerImpl.swift in Sources */,
-				6D310FF020A4460E00F66ED5 /* BlockchainServer.swift in Sources */,
 				6DA1A5491FBF0CF1000FDECA /* KeychainService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
