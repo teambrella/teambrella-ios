@@ -15,7 +15,7 @@
  */
 
 import Foundation
-import SwiftKeccak
+//import SwiftKeccak
 
 struct EthereumAddress: Decodable {
     let string: String
