@@ -145,22 +145,28 @@ class ChatVariousContentCell: UICollectionViewCell, ChatUserDataCell {
         } else {
             prepareTheirCloud(in: context)
         }
-       context.setLineWidth(1)
+        context.setLineWidth(1)
         context.drawPath(using: .fillStroke)
     }
     
     @discardableResult
-    func prepare(with model: ChatCellModel, cloudWidth: CGFloat, cloudHeight: CGFloat) -> [UIView] {
+    func prepare(with model: ChatCellModel, myVote: Double?, type: UniversalChatType, size: CGSize) -> [UIView] {
         if let model = model as? ChatTextCellModel, model.id != id {
             id = model.id
             isMy = model.isMy
-            self.cloudWidth = cloudWidth
-            self.cloudHeight = cloudHeight
+            self.cloudWidth = size.width
+            self.cloudHeight = size.height
             setNeedsDisplay()
             
             let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
             setupLeftLabel(name: model.userName, baseFrame: baseFrame)
-            setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
+            if isMy, let vote = myVote {
+                let builder = ChatModelBuilder()
+                let text = builder.rateText(rate: vote, showRate: true, isClaim: type == .claim)
+                setupRightLabel(rateText: text, baseFrame: baseFrame)
+            } else {
+                setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
+            }
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
             setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
             return setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)
@@ -212,7 +218,7 @@ class ChatVariousContentCell: UICollectionViewCell, ChatUserDataCell {
         controlP = CGPoint(x: cloudStartPoint.x, y: cloudStartPoint.y - Constant.tailCornerRadius)
         context.addQuadCurve(to: pen, control: controlP)
         context.closePath()
-
+        
         context.setFillColor(UIColor.veryLightBlue.cgColor)
         context.setStrokeColor(#colorLiteral(red: 0.8039215686, green: 0.8666666667, blue: 0.9529411765, alpha: 1).cgColor)
     }
@@ -259,7 +265,7 @@ class ChatVariousContentCell: UICollectionViewCell, ChatUserDataCell {
         context.addQuadCurve(to: pen, control: controlP)
         
         context.closePath()
-
+        
         context.setFillColor(UIColor.white.cgColor)
         context.setStrokeColor(UIColor.lightBlueGray.cgColor)
     }
@@ -366,10 +372,10 @@ class ChatVariousContentCell: UICollectionViewCell, ChatUserDataCell {
         let verticalOffset = views.last?.frame.maxY ?? leftLabel.frame.maxY + 8
         let separator: CGFloat = 2.0
         let imageView = ChatImageView(frame: CGRect(x: cloudBodyMinX + separator,
-                                                  y: verticalOffset + separator,
-                                                  width: cloudWidth - separator * 2,
-                                                  height: height))
-         imageView.contentMode = .scaleAspectFill
+                                                    y: verticalOffset + separator,
+                                                    width: cloudWidth - separator * 2,
+                                                    height: height))
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.setStartingImage(small: small, large: urlString)
         imageView.onTap = { [weak self] galleryView in
@@ -413,7 +419,7 @@ class ChatImageView: UIImageView {
     @objc
     func tapView(sender: UITapGestureRecognizer) {
         guard let galleryView = galleryView else { return }
-   
+        
         self.addSubview(galleryView)
         self.onTap?(galleryView)
     }

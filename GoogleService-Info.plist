@@ -7,34 +7,34 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>284228578739-bci407chqkph3jjkj0nm9atp9ku1jhaj.apps.googleusercontent.com</string>
+	<string>841186141932-jdlbsckoo5kd9lpr3rjl2ks4kk3gfapn.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.284228578739-bci407chqkph3jjkj0nm9atp9ku1jhaj</string>
+	<string>com.googleusercontent.apps.841186141932-jdlbsckoo5kd9lpr3rjl2ks4kk3gfapn</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA39_VyTPb5oaMse6HY6ir9zZt3MSR0geE</string>
+	<string>AIzaSyDeG6dPxepHAi-HZDD37PULu85Tuuw6jmU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>284228578739</string>
+	<string>841186141932</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.teambrella.ios.app</string>
+	<string>com.surilla.ios.app</string>
 	<key>PROJECT_ID</key>
-	<string>teambrella-id</string>
+	<string>surilla-id</string>
 	<key>STORAGE_BUCKET</key>
-	<string>teambrella-id.appspot.com</string>
+	<string>surilla-id.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<false></false>
 	<key>IS_GCM_ENABLED</key>
 	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:284228578739:ios:f83515f3d1892ded</string>
+	<string>1:841186141932:ios:f5c02579595eaeaf</string>
 	<key>DATABASE_URL</key>
-	<string>https://teambrella-id.firebaseio.com</string>
+	<string>https://surilla-id.firebaseio.com</string>
 </dict>
 </plist>
