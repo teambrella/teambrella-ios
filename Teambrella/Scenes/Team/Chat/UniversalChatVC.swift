@@ -668,8 +668,16 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.setNeedsDisplay()
             cell.label.text = model.text
         } else if let cell = cell as? ChatClaimPaidCell {
-            cell.messageLabel.text = "Your team has paid the claim. Pretty cool, huh? Share it with your friends!"
-            cell.button.setTitle("Share with friends", for: .normal)
+            cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
+            cell.button.setTitle("Team.Chat.ClaimPaidCell.buttonTitle".localized, for: .normal)
+            cell.onButtonTap = { [weak self] in
+                guard let claimID = self?.dataSource.chatModel?.id,
+                    let teamID = service.session?.currentTeam?.teamID else { return }
+
+                let text = URLBuilder().urlString(claimID: claimID, teamID: teamID)
+                let vc = UIActivityViewController(activityItems: [text], applicationActivities: [])
+                self?.present(vc, animated: true)
+            }
         }
     }
 

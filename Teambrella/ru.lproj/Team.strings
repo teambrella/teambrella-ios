@@ -206,3 +206,6 @@
 "Team.TeammateCell.wouldCoverThem.notYet"        = "Ещё нет";
 
 "Team.TearsOld.lessThanAYear"   = "< года";
+
+"Team.Chat.ClaimPaidCell.text" = "Твоя команда оплатила заявку. Неплохо, да? Поделись с друзьями!";
+"Team.Chat.ClaimPaidCell.buttonTitle" = "Поделиться с друзьями";

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,9 +31,21 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBd-aX-BRg">
                         <rect key="frame" x="3" y="0.0" width="280" height="163"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="confetti" translatesAutoresizingMaskIntoConstraints="NO" id="Uk7-hS-UL4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="confetti-slice" translatesAutoresizingMaskIntoConstraints="NO" id="Uk7-hS-UL4">
                                 <rect key="frame" x="0.0" y="0.0" width="280" height="110"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nf7-Sl-mPD" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55" width="280" height="55"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="0.014206977739726028" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="0.80316245719178081" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-J9-mKM">
                                 <rect key="frame" x="16" y="0.0" width="248" height="110"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
@@ -69,13 +82,17 @@
                             <constraint firstAttribute="width" constant="280" id="JZP-8I-YSn"/>
                             <constraint firstItem="Uk7-hS-UL4" firstAttribute="top" secondItem="bBd-aX-BRg" secondAttribute="top" id="Nzx-0k-xH5"/>
                             <constraint firstItem="ZPz-ZL-nAU" firstAttribute="width" secondItem="bBd-aX-BRg" secondAttribute="width" id="S1g-v3-3kv"/>
+                            <constraint firstItem="Nf7-Sl-mPD" firstAttribute="leading" secondItem="Uk7-hS-UL4" secondAttribute="leading" id="UFU-LJ-7mI"/>
                             <constraint firstItem="4S3-J9-mKM" firstAttribute="leading" secondItem="Uk7-hS-UL4" secondAttribute="leading" constant="16" id="XCA-v7-zRg"/>
+                            <constraint firstItem="Nf7-Sl-mPD" firstAttribute="bottom" secondItem="Uk7-hS-UL4" secondAttribute="bottom" id="cUm-dv-Oa2"/>
                             <constraint firstAttribute="bottom" secondItem="eDm-Uj-uEh" secondAttribute="bottom" id="dAR-aw-qZZ"/>
                             <constraint firstItem="ZPz-ZL-nAU" firstAttribute="centerX" secondItem="bBd-aX-BRg" secondAttribute="centerX" id="fUX-b0-2Yv"/>
+                            <constraint firstItem="Nf7-Sl-mPD" firstAttribute="trailing" secondItem="Uk7-hS-UL4" secondAttribute="trailing" id="hgO-rH-RPk"/>
                             <constraint firstItem="Uk7-hS-UL4" firstAttribute="width" secondItem="bBd-aX-BRg" secondAttribute="width" id="jmD-WR-nnC"/>
                             <constraint firstItem="ZPz-ZL-nAU" firstAttribute="top" secondItem="Uk7-hS-UL4" secondAttribute="bottom" id="jx1-Dg-6Ah"/>
                             <constraint firstAttribute="trailing" secondItem="eDm-Uj-uEh" secondAttribute="trailing" id="mho-Ee-aHs"/>
                             <constraint firstItem="Uk7-hS-UL4" firstAttribute="centerX" secondItem="bBd-aX-BRg" secondAttribute="centerX" id="r91-jL-BlQ"/>
+                            <constraint firstItem="Nf7-Sl-mPD" firstAttribute="top" secondItem="Uk7-hS-UL4" secondAttribute="centerY" id="rLF-Ck-V68"/>
                             <constraint firstItem="4S3-J9-mKM" firstAttribute="top" secondItem="Uk7-hS-UL4" secondAttribute="top" id="rbt-M1-vOI"/>
                         </constraints>
                     </view>
@@ -99,6 +116,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="confetti" width="1500" height="2668"/>
+        <image name="confetti-slice" width="391" height="229"/>
     </resources>
 </document>

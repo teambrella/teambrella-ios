@@ -206,3 +206,6 @@
 "Team.TeammateCell.wouldCoverThem.notYet"        = "Not yet";
 
 "Team.TearsOld.lessThanAYear"   = "< 1 y.o.";
+
+"Team.Chat.ClaimPaidCell.text" = "Your team has paid the claim. Pretty cool, huh? Share it with your friends!";
+"Team.Chat.ClaimPaidCell.buttonTitle" = "Share with friends";

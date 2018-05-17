@@ -127,12 +127,7 @@ final class TeambrellaService: NSObject {
 
             self.autoApproveTransactions()
             self.serverUpdateToLocalDb { success in
-                if success {
-                    //                        self.updateAddresses()
-                    completion(true)
-                } else {
-                    completion(false)
-                }
+                    completion(success)
             }
         }
     }

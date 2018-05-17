@@ -36,7 +36,7 @@ class ChatClaimPaidCell: UICollectionViewCell, XIBInitableCell {
         containerView.layer.borderWidth = 1
         containerView.layer.borderColor = UIColor.cornflowerBlueThree.cgColor
 
-        separatorView.backgroundColor = .lavender
+        separatorView.backgroundColor = UIColor.cornflowerBlueThree
     }
 
     @IBAction func tapButton(_ sender: UIButton) {
