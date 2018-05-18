@@ -37,7 +37,7 @@ class ServicesHandler {
     let info: InfoMaker = InfoMaker()
     
     /// server interoperability (should be removed from here when all requests will go through DAO)
-    lazy private var server = ServerService(router: self.router)
+    lazy private var server = ServerService(router: self.router, infoMaker: info)
     
     /// data access object
     lazy var dao: DAO = ServerDAO(server: self.server)
@@ -54,9 +54,6 @@ class ServicesHandler {
     // WIP!
     // old analogue of cryptoWorker. Should be merged and deleted
     lazy var teambrella = TeambrellaService()
-    
-    /// service to work with current Crypto currency and it's blockchain
-//    lazy var cryptoWorker: CryptoWorker = EthereumWorker()
     
     /// socket messaging service
     var socket: SocketService?
