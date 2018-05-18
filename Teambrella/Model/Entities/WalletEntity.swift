@@ -45,18 +45,5 @@ struct WalletEntity: Decodable {
     var cosigners: [CosignerEntity]
     var coveragePart: CoverageEntity
     var teamPart: TeamPart?
-    
-    init() {
-        currencyRate = 0
-        cryptoBalance = Ether.empty
-        cryptoReserved = Ether.empty
-        needCrypto = Ether.empty
-        recommendedCrypto = Ether.empty
-        fundAddress = ""
-        defaultWithdrawAddress = ""
-        cosigners = []
-        coveragePart = CoverageEntity()
-        teamPart = TeamPart()
-    }
 
 }

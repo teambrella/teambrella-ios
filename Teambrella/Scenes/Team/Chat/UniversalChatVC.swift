@@ -671,8 +671,9 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
             cell.button.setTitle("Team.Chat.ClaimPaidCell.buttonTitle".localized, for: .normal)
             cell.onButtonTap = { [weak self] in
-                guard let claimID = self?.dataSource.chatModel?.id,
-                    let teamID = service.session?.currentTeam?.teamID else { return }
+                guard let model = self?.dataSource.chatModel,
+                    let claimID = model.basic?.claimID,
+                    let teamID = model.team?.teamID else { return }
 
                 let text = URLBuilder().urlString(claimID: claimID, teamID: teamID)
                 let vc = UIActivityViewController(activityItems: [text], applicationActivities: [])

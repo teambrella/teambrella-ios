@@ -54,14 +54,22 @@ class WalletDataSource {
     }
     
     func emptyWallet() {
-        let wallet = WalletEntity()
-        self.wallet = wallet
+        self.wallet = nil
         createCellModels(with: wallet)
-        fundAddress = wallet.fundAddress
+        fundAddress = ""
         onUpdate?()
     }
     
-    func createCellModels(with wallet: WalletEntity) {
+    func createCellModels(with wallet: WalletEntity?) {
+        guard let wallet = wallet else {
+            items.append(WalletHeaderCellModel(amount: .empty,
+                                               currencyRate: 0))
+            items.append(WalletFundingCellModel(maxCoverageFunding: .empty,
+                                                uninterruptedCoverageFunding: .empty))
+            items.append(WalletButtonsCellModel(avatars: [], avatarsPreview: []))
+            return
+        }
+
         items.append(WalletHeaderCellModel(amount: wallet.cryptoBalance,
                                            currencyRate: wallet.currencyRate))
         items.append(WalletFundingCellModel(maxCoverageFunding: wallet.coveragePart.nextCoverage,

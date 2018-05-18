@@ -35,14 +35,6 @@ struct CoverageEntity: Decodable {
     var daysToNextCoverage: Int
     var claimLimit: Double
     var deductibleAmount: Ether
-    
-    init() {
-        coverage = Ether.empty
-        nextCoverage = Ether.empty
-        daysToNextCoverage = 0
-        claimLimit = 0
-        deductibleAmount = Ether.empty
-    }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

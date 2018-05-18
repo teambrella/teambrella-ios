@@ -20,17 +20,20 @@ struct TeamPart: Decodable {
     let coverageType: CoverageType
     let currency: String
     let accessLevel: TeamAccessLevel
-    
-    init() {
-        coverageType = .other
-        currency = ""
-        accessLevel = .noAccess
+    let teamID: Int
+
+    static var empty: TeamPart {
+        return TeamPart(coverageType: .other,
+                        currency: "",
+                        accessLevel: .noAccess,
+                        teamID: 0)
     }
 
     enum CodingKeys: String, CodingKey {
         case currency = "Currency"
         case coverageType = "CoverageType"
         case accessLevel = "TeamAccessLevel"
+        case teamID = "TeamId"
     }
     
 }
