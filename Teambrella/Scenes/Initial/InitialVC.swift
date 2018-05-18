@@ -93,8 +93,7 @@ final class InitialVC: UIViewController {
     
     // MARK: Private
     
-    private func getTeams(timestamp: Int64) {
-        service.keyStorage.timestamp = timestamp
+    private func getTeams() {
         let isDemo = service.keyStorage.isDemoUser
         service.dao.requestTeams(demo: isDemo).observe { [weak self] result in
             switch result {
@@ -155,15 +154,7 @@ final class InitialVC: UIViewController {
     
     private func startLoadingTeams() {
         HUD.show(.progress)
-        service.server.updateTimestamp { [weak self] timestamp, error in
-            guard error == nil else {
-                log("Failed to get timestamp", type: [.serverReply, .error])
-                self?.failure()
-                return
-            }
-
-            self?.getTeams(timestamp: timestamp)
-        }
+        getTeams()
     }
     
     private func presentMasterTab() {

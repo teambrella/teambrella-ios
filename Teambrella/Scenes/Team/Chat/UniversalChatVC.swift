@@ -382,7 +382,6 @@ private extension UniversalChatVC {
     }
     
     private func registerCells() {
-        collectionView.register(ChatCell.nib, forCellWithReuseIdentifier: ChatCell.cellID)
         collectionView.register(ChatVariousContentCell.self,
                                 forCellWithReuseIdentifier: Constant.textWithImagesCellID)
         collectionView.register(ChatTextCell.self,
@@ -812,7 +811,8 @@ extension UniversalChatVC: ClaimVotingDelegate {
     }
 
     func claimVotingDidTapTeam(view: ClaimVotingView) {
-        guard let teamID = service.session?.currentTeam?.teamID, let claimID = dataSource.chatModel?.id else { return }
+        guard let model = dataSource.chatModel else { return }
+        guard let teamID = model.team?.teamID, let claimID = model.basic?.claimID else { return }
 
         service.router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
     }

@@ -62,8 +62,8 @@ struct RequestBody {
         self.publicKey = publicKey
     }
     
-    init(key: Key? = nil, payload: [String: Any]? = nil) {
-        let key = key ?? service.server.key
+    init(key: Key, payload: [String: Any]? = nil) {
+        let key = key
         self.payload = payload
         self.timestamp = key.timestamp
         self.signature = key.signature

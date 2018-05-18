@@ -93,4 +93,6 @@ protocol DAO {
     func registerKey(facebookToken: String, signature: String) -> Future<Bool>
 
     func updateClaimVote(claimID: Int, vote: Float?, lastUpdated: Int64) -> Future<ClaimVoteUpdate>
+
+    func performRequest(request: TeambrellaRequest)
 }

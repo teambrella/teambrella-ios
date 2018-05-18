@@ -503,7 +503,7 @@ class ServerDAO: DAO {
     func sendPhoto(data: Data) -> Future<String> {
         let promise = Promise<String>()
         freshKey { key in
-            var body = RequestBody(key: service.server.key, payload: nil)
+            var body = RequestBody(key: key, payload: nil)
             body.contentType = "image/jpeg"
             body.data = data
             let request = TeambrellaRequest(type: .uploadPhoto, body: body, success: { response in
@@ -521,7 +521,7 @@ class ServerDAO: DAO {
     func sendRiskVote(teammateID: Int, risk: Double?) -> Future<TeammateVotingResult> {
         let promise = Promise<TeammateVotingResult>()
         freshKey { key in
-            let body = RequestBody(payload: ["TeammateId": teammateID,
+            let body = RequestBody(key: key, payload: ["TeammateId": teammateID,
                                              "MyVote": risk ?? NSNull(),
                                              "Since": key.timestamp,
                                              "ProxyAvatarSize": Constant.proxyAvatarSize])
@@ -573,6 +573,11 @@ class ServerDAO: DAO {
             request.start(server: self.server)
         }
         return promise
+    }
+
+    // TMP: remove when possible
+    func performRequest(request: TeambrellaRequest) {
+        request.start(server: server)
     }
     
     func mute(topicID: String, isMuted: Bool) -> Future<Bool> {
@@ -629,11 +634,11 @@ class ServerDAO: DAO {
     
     func freshKey(completion: @escaping (Key) -> Void) {
         if let time = lastKeyTime, Date().timeIntervalSince(time) < 60.0 * 10.0 {
-            completion(service.server.key)
+            completion(server.key)
         } else {
             self.server.updateTimestamp(completion: { _, _ in
                 defer { self.lastKeyTime = Date() }
-                completion(service.server.key)
+                completion(self.server.key)
             })
         }
     }

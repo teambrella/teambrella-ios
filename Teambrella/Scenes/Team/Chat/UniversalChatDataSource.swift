@@ -91,6 +91,8 @@ final class UniversalChatDatasource {
     var topicID: String? { return chatModel?.discussion.topicID }
     
     var count: Int { return models.count }
+
+    var dao: DAO { return service.dao }
     
     var title: String {
         guard !(strategy is PrivateChatStrategy) else { return strategy.title }
@@ -179,7 +181,7 @@ final class UniversalChatDatasource {
         guard let topicID = chatModel?.discussion.topicID else { return }
         
         let isMuted = type == .muted
-        service.dao.mute(topicID: topicID, isMuted: isMuted).observe { [weak self] result in
+        dao.mute(topicID: topicID, isMuted: isMuted).observe { [weak self] result in
             switch result {
             case let .value(muted):
                 self?.notificationsType = TopicMuteType.type(from: muted)
@@ -224,7 +226,8 @@ final class UniversalChatDatasource {
                 return nil
             }
         }
-        service.dao.freshKey { [weak self] key in
+
+        dao.freshKey { [weak self] key in
             guard let `self` = self else { return }
             
             let body = self.strategy.updatedMessageBody(body: RequestBody(key: key, payload: ["Text": text,
@@ -239,7 +242,7 @@ final class UniversalChatDatasource {
                 }, failure: { [weak self] error in
                     self?.onError?(error)
             })
-            request.start(server: service.server)
+            self.dao.performRequest(request: request)
         }
     }
     
@@ -287,7 +290,7 @@ extension UniversalChatDatasource {
             isLoadNextNeeded = false
         }
         
-        service.dao.freshKey { [weak self] key in
+        dao.freshKey { [weak self] key in
             guard let `self` = self else { return }
             
             let limit = self.limit// previous ? -me.limit: me.limit
@@ -312,7 +315,7 @@ extension UniversalChatDatasource {
                                                              isPrevious: previous,
                                                              isMyNewMessage: false)
             })
-            request.start(server: service.server)
+            self.dao.performRequest(request: request)
         }
     }
     
