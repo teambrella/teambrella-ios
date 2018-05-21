@@ -208,7 +208,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tapTryDemoButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="yWz-Z2-4TB"/>
-                                    <segue destination="Mpw-oG-9Tx" kind="unwind" identifier="unwindToInitial" animates="NO" unwindAction="unwindToInitialWithSegue:" id="OIX-Re-QHu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -256,6 +255,7 @@
                         <outlet property="gradientView" destination="JJj-TS-F5o" id="xCU-IY-abS"/>
                         <outlet property="tryDemoButton" destination="n5y-0s-mhl" id="tWI-xH-yix"/>
                         <segue destination="RUg-4M-8iQ" kind="show" identifier="invitationOnly" id="3Hc-wB-HHG"/>
+                        <segue destination="Mpw-oG-9Tx" kind="unwind" identifier="unwindToInitial" animates="NO" unwindAction="unwindToInitialWithSegue:" id="3aY-tD-QnZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P38-XV-jDq" userLabel="First Responder" sceneMemberID="firstResponder"/>

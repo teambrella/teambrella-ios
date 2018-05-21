@@ -26,13 +26,17 @@ enum UniversalChatType {
 }
 
 final class UniversalChatDatasource {
+    enum Constant {
+        static let limit = 30
+        static let firstLoadPreviousMessagesCount = 10
+    }
+
     var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool, _ isFirstLoad: Bool) -> Void)?
     var onError: ((Error) -> Void)?
     var onSendMessage: ((IndexPath) -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
     var onClaimVoteUpdate: (() -> Void)?
-    
-    var limit                                       = 30
+
     var cloudWidth: CGFloat                         = 0
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
@@ -204,7 +208,7 @@ final class UniversalChatDatasource {
     }
     
     func loadPrevious() {
-        backwardOffset -= limit
+        backwardOffset -= Constant.limit
         load(previous: true)
     }
     
@@ -293,10 +297,16 @@ extension UniversalChatDatasource {
         dao.freshKey { [weak self] key in
             guard let `self` = self else { return }
             
-            let limit = self.limit// previous ? -me.limit: me.limit
-            let offset = previous
+            var limit = Constant.limit
+
+            var offset = previous
                 ? self.backwardOffset
                 : self.forwardOffset
+
+            if self.isFirstLoad {
+                limit += Constant.firstLoadPreviousMessagesCount
+                offset -= Constant.firstLoadPreviousMessagesCount
+            }
             var payload: [String: Any] = ["limit": limit,
                                           "offset": offset,
                                           "avatarSize": self.avatarSize,
