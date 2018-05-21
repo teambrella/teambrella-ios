@@ -297,11 +297,11 @@ extension HomeVC: UICollectionViewDataSource {
             cell.button.removeTarget(nil, action: nil, for: .allEvents)
             cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
         }
-        if let cell = cell as? ClosableCell {
-            cell.closeButton.removeTarget(self, action: nil, for: .allEvents)
-            cell.closeButton.addTarget(self, action: #selector(closeCard), for: .touchUpInside)
-            cell.closeButton.tag = indexPath.row
-        }
+//        if let cell = cell as? ClosableCell {
+//            cell.closeButton.removeTarget(self, action: nil, for: .allEvents)
+//            cell.closeButton.addTarget(self, action: #selector(closeCard), for: .touchUpInside)
+//            cell.closeButton.tag = indexPath.row
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -35,6 +35,6 @@ class HomeApplicationAcceptedCell: UICollectionViewCell, XIBInitableCell, Closab
         super.awakeFromNib()
         ViewDecorator.roundedEdges(for: self)
         ViewDecorator.shadow(for: self)
-        ViewDecorator.addCloseButton(for: self)
+//        ViewDecorator.addCloseButton(for: self)
     }
 }

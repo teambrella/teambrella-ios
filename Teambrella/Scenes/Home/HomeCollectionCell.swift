@@ -48,7 +48,7 @@ class HomeCollectionCell: UICollectionViewCell, XIBInitableCell, ClosableCell {
         ViewDecorator.roundedEdges(for: self)
         contentView.layer.cornerRadius = 6
         ViewDecorator.homeCardShadow(for: self)
-        ViewDecorator.addCloseButton(for: self)
+//        ViewDecorator.addCloseButton(for: self)
         rightNumberView.isCurrencyVisible = false
         textLabel.numberOfLines = 2
     }
