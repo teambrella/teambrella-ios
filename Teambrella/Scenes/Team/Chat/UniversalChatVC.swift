@@ -418,7 +418,7 @@ private extension UniversalChatVC {
     /**
      * Refresh controller after new data comes from the server
      *
-     * - Parameter backward: if the chunk of data comes above existing cells or below them
+     * - Parameter backward: wether the chunk of data comes above existing cells or below them
      */
     private func refresh(backward: Bool) {
         // not using reloadData() to avoid blinking of cells
@@ -617,7 +617,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        if indexPath.row > dataSource.count - dataSource.limit / 2 {
+        if indexPath.row > dataSource.count -  UniversalChatDatasource.Constant.limit / 2 {
             dataSource.isLoadNextNeeded = true
         }
         

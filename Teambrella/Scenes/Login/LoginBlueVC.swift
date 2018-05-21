@@ -33,6 +33,7 @@ final class LoginBlueVC: UIViewController {
     @IBOutlet var confetti: SKView!
     
     var isEmitterAdded: Bool = false
+    var didTapDemo: Bool = false
     
     lazy var secretRecognizer: UILongPressGestureRecognizer = {
         let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(secretTap))
@@ -105,6 +106,7 @@ final class LoginBlueVC: UIViewController {
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
         service.keyStorage.setToDemoUser()
+        performSegue(withIdentifier: "unwindToInitial", sender: self)
     }
     
     @objc
@@ -255,7 +257,7 @@ Are you sure you want to completely remove your private key from this device?
     private func logAsFacebookUser(user: FacebookUser?) {
         HUD.hide()
         service.keyStorage.setToRealUser()
-        performSegue(type: .unwindToInitial, sender: user)
+        performSegue(withIdentifier: "unwindToInitial", sender: user)
     }
     
 }
