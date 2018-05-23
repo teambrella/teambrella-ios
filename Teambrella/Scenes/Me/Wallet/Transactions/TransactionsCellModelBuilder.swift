@@ -16,18 +16,6 @@
 
 import Foundation
 
-struct WalletTransactionsCellModel {
-    let avatar: Avatar
-    let name: Name
-    let detailsText: String
-    let amountText: String
-    let kindText: String
-
-    let claimID: Int?
-    let userID: String?
-
-}
-
 struct TransactionsCellModelBuilder {
     func cellModels(from models: [WalletTransactionsModel]) -> [WalletTransactionsCellModel] {
         var result: [WalletTransactionsCellModel] = []

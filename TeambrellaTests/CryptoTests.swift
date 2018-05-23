@@ -29,20 +29,6 @@ class CryptoTests: XCTestCase {
         let key = Key(base58String: privateKey, timestamp: 0)
         XCTAssertEqual(key.privateKey, privateKey)
     }
-
-    /*
-    func testBTCKey() {
-        let key = BTCKey(wif: privateKey)
-        
-        XCTAssertEqual(key?.wif, privateKey)
-    }
-    
-    func testBTCKey2() {
-        let key = BTCKey(wif: privateKey)
-        
-        XCTAssertEqual(key?.privateKey.base58CheckString(), privateKey)
-    }
-*/
     
     func testWIF() {
         let key = BTCKey()!

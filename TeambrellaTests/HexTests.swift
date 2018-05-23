@@ -37,7 +37,7 @@ class HexTests: XCTestCase {
         let a2 = String(format: "%064x", 5)
         let a3 = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
         let a4raw = [0.00000211, 0.00017648, 0.00000211, 0.00000211, 0.00018195, 0.00000423, 0.00000211, 0.00000211, 0.00037682]
-        let a4 = a4raw.flatMap { Int($0 * 1_000_000_000_000_000_000) }
+        let a4 = a4raw.compactMap { Int($0 * 1_000_000_000_000_000_000) }.map { String($0) }
 
         do {
             let data = try hex.data(from: a0, a1, a2, a3, a4)
