@@ -427,7 +427,6 @@
 		6D05250020A5D838000B3247 /* Home.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19421F0F878500AC9969 /* Home.strings */; };
 		6D05250120A5D838000B3247 /* LabeledTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E325C11F07E78E00B2D8C8 /* LabeledTextField.xib */; };
 		6D05250220A5D838000B3247 /* NumberBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DA714EE1EE00CFB00F39EBE /* NumberBar.xib */; };
-		6D05250320A5D838000B3247 /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9C808D1EDF17D000FB8C2C /* AkkuratPro-Regular.otf */; };
 		6D05250420A5D838000B3247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AA1E8ABEE600B56D9B /* Assets.xcassets */; };
 		6D05250520A5D838000B3247 /* Members.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D6DA24F1EE1B68F00307C73 /* Members.storyboard */; };
 		6D05250620A5D838000B3247 /* ProxyForHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69D9F61EFC05BE00DED5CE /* ProxyForHeader.xib */; };
@@ -450,7 +449,6 @@
 		6D05251820A5D838000B3247 /* EmptyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2487F1F5EAAF300D9396D /* EmptyVC.xib */; };
 		6D05251920A5D838000B3247 /* JoinTeamPersonalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E325BC1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib */; };
 		6D05251A20A5D838000B3247 /* PrivateChatUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1A9B271F55D306004192AC /* PrivateChatUserCell.xib */; };
-		6D05251B20A5D838000B3247 /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */; };
 		6D05251C20A5D838000B3247 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DBD695D2093864000D1524F /* GoogleService-Info.plist */; };
 		6D05251D20A5D838000B3247 /* ClaimVotingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C3720348634005081E4 /* ClaimVotingView.xib */; };
 		6D05251E20A5D838000B3247 /* JoinTeamTermsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E325CC1F07FA7E00B2D8C8 /* JoinTeamTermsCell.xib */; };
@@ -841,7 +839,6 @@
 		6D4E5DA11F7AB6870020DEE2 /* Home.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB19421F0F878500AC9969 /* Home.strings */; };
 		6D4E5DA21F7AB6870020DEE2 /* LabeledTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E325C11F07E78E00B2D8C8 /* LabeledTextField.xib */; };
 		6D4E5DA31F7AB6870020DEE2 /* NumberBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DA714EE1EE00CFB00F39EBE /* NumberBar.xib */; };
-		6D4E5DA41F7AB6870020DEE2 /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9C808D1EDF17D000FB8C2C /* AkkuratPro-Regular.otf */; };
 		6D4E5DA51F7AB6870020DEE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AA1E8ABEE600B56D9B /* Assets.xcassets */; };
 		6D4E5DA61F7AB6870020DEE2 /* Members.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D6DA24F1EE1B68F00307C73 /* Members.storyboard */; };
 		6D4E5DA81F7AB6870020DEE2 /* ProxyForHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69D9F61EFC05BE00DED5CE /* ProxyForHeader.xib */; };
@@ -861,7 +858,6 @@
 		6D4E5DB91F7AB6870020DEE2 /* EmptyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2487F1F5EAAF300D9396D /* EmptyVC.xib */; };
 		6D4E5DBB1F7AB6870020DEE2 /* JoinTeamPersonalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E325BC1F07E36E00B2D8C8 /* JoinTeamPersonalCell.xib */; };
 		6D4E5DBC1F7AB6870020DEE2 /* PrivateChatUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1A9B271F55D306004192AC /* PrivateChatUserCell.xib */; };
-		6D4E5DBD1F7AB6870020DEE2 /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */; };
 		6D4E5DBE1F7AB6870020DEE2 /* JoinTeamTermsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E325CC1F07FA7E00B2D8C8 /* JoinTeamTermsCell.xib */; };
 		6D4E5DBF1F7AB6870020DEE2 /* Me.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA0D1EFC458C00DED5CE /* Me.strings */; };
 		6D4E5DC11F7AB6870020DEE2 /* Team.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DF2E8C51EF057DB00C8D60B /* Team.strings */; };
@@ -942,6 +938,10 @@
 		6D90303A20B5C05D001775ED /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D90303820B5BF89001775ED /* KeyStorage.swift */; };
 		6D90303B20B5C072001775ED /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D90303820B5BF89001775ED /* KeyStorage.swift */; };
 		6D90303C20B5C073001775ED /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D90303820B5BF89001775ED /* KeyStorage.swift */; };
+		6D90303F20B5D4CE001775ED /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */; };
+		6D90304020B5D4CE001775ED /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */; };
+		6D90304120B5D4CE001775ED /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */; };
+		6D90304220B5D4CE001775ED /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */; };
 		6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC061EB3A79100FDC332 /* UUIDTests.swift */; };
 		6D92BBBB2089E28F00E2E953 /* ChatImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */; };
 		6D9374AA202C9EB800BB28CB /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
@@ -1342,12 +1342,12 @@
 		6D900E281FC46B0D00FF6FF8 /* String-localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String-localized.swift"; path = "Helpers/Extensions/String-localized.swift"; sourceTree = "<group>"; };
 		6D900E2D1FC4734400FF6FF8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Push.strings; sourceTree = "<group>"; };
 		6D90303820B5BF89001775ED /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyStorage.swift; path = Model/Services/Storage/KeyStorage.swift; sourceTree = "<group>"; };
+		6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Bold.otf"; path = "Resources/Fonts/AkkuratPro-Bold.otf"; sourceTree = SOURCE_ROOT; };
+		6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Regular.otf"; path = "Resources/Fonts/AkkuratPro-Regular.otf"; sourceTree = SOURCE_ROOT; };
 		6D91BC061EB3A79100FDC332 /* UUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDTests.swift; sourceTree = "<group>"; };
 		6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatImageCell.swift; path = Scenes/Team/Chat/ChatImageCell.swift; sourceTree = "<group>"; };
 		6D96E119208A1338009F99F5 /* ChatTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatTextCell.swift; path = Scenes/Team/Chat/ChatTextCell.swift; sourceTree = "<group>"; };
 		6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyProcessor.swift; path = Helpers/CurrencyProcessor.swift; sourceTree = "<group>"; };
-		6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Bold.otf"; path = "Resources/AkkuratPro-Bold.otf"; sourceTree = "<group>"; };
-		6D9C808D1EDF17D000FB8C2C /* AkkuratPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Regular.otf"; path = "Resources/AkkuratPro-Regular.otf"; sourceTree = "<group>"; };
 		6D9CC6121ED47C79007F936E /* LoginDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginDetailsVC.swift; path = Scenes/Login/LoginDetailsVC.swift; sourceTree = "<group>"; };
 		6D9CC6141ED48244007F936E /* SegueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueType.swift; path = Model/Enums/SegueType.swift; sourceTree = "<group>"; };
 		6D9CC6161ED48416007F936E /* UIStoryboardSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIStoryboardSegue.swift; path = Helpers/Extensions/UIStoryboardSegue.swift; sourceTree = "<group>"; };
@@ -2464,8 +2464,8 @@
 		6DA714F21EE00EC100F39EBE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6D9C808C1EDF17D000FB8C2C /* AkkuratPro-Bold.otf */,
-				6D9C808D1EDF17D000FB8C2C /* AkkuratPro-Regular.otf */,
+				6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */,
+				6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -3021,6 +3021,7 @@
 				6D0524DF20A5D838000B3247 /* HomeApplicationAcceptedCell.xib in Resources */,
 				6D0524E020A5D838000B3247 /* SwitchUserCell.xib in Resources */,
 				6D0524E220A5D838000B3247 /* NeedHelpView.xib in Resources */,
+				6D90304020B5D4CE001775ED /* AkkuratPro-Bold.otf in Resources */,
 				6D0524E320A5D838000B3247 /* WithdrawDetailsCell.xib in Resources */,
 				6D0524E420A5D838000B3247 /* MuteCell.xib in Resources */,
 				6D0524E520A5D838000B3247 /* TeamFeedCell.xib in Resources */,
@@ -3054,7 +3055,6 @@
 				6D05250020A5D838000B3247 /* Home.strings in Resources */,
 				6D05250120A5D838000B3247 /* LabeledTextField.xib in Resources */,
 				6D05250220A5D838000B3247 /* NumberBar.xib in Resources */,
-				6D05250320A5D838000B3247 /* AkkuratPro-Regular.otf in Resources */,
 				6D05250420A5D838000B3247 /* Assets.xcassets in Resources */,
 				6D05250520A5D838000B3247 /* Members.storyboard in Resources */,
 				6D05250620A5D838000B3247 /* ProxyForHeader.xib in Resources */,
@@ -3072,13 +3072,13 @@
 				6D05251120A5D838000B3247 /* HomeSupportCell.xib in Resources */,
 				6D05251220A5D838000B3247 /* HomeApplicationStatusCell.xib in Resources */,
 				6D05251320A5D838000B3247 /* WalletInfoCell.xib in Resources */,
+				6D90304220B5D4CE001775ED /* AkkuratPro-Regular.otf in Resources */,
 				6D05251420A5D838000B3247 /* Main.storyboard in Resources */,
 				6D05251520A5D838000B3247 /* Assets.xcassets in Resources */,
 				6D05251720A5D838000B3247 /* Contract.txt in Resources */,
 				6D05251820A5D838000B3247 /* EmptyVC.xib in Resources */,
 				6D05251920A5D838000B3247 /* JoinTeamPersonalCell.xib in Resources */,
 				6D05251A20A5D838000B3247 /* PrivateChatUserCell.xib in Resources */,
-				6D05251B20A5D838000B3247 /* AkkuratPro-Bold.otf in Resources */,
 				6D05251C20A5D838000B3247 /* GoogleService-Info.plist in Resources */,
 				6D05251D20A5D838000B3247 /* ClaimVotingView.xib in Resources */,
 				6D05251E20A5D838000B3247 /* JoinTeamTermsCell.xib in Resources */,
@@ -3115,6 +3115,7 @@
 				6D4E5D821F7AB6870020DEE2 /* HomeApplicationAcceptedCell.xib in Resources */,
 				6D4E5D851F7AB6870020DEE2 /* SwitchUserCell.xib in Resources */,
 				6DDFDAF31F8CD24400342696 /* Surilla.xcassets in Resources */,
+				6D90303F20B5D4CE001775ED /* AkkuratPro-Bold.otf in Resources */,
 				6D4E5D861F7AB6870020DEE2 /* NeedHelpView.xib in Resources */,
 				94F0CF681FD1BD50007BE39E /* WithdrawDetailsCell.xib in Resources */,
 				94615F591FA9C26000CD3C8B /* MuteCell.xib in Resources */,
@@ -3148,7 +3149,6 @@
 				6D4E5DA11F7AB6870020DEE2 /* Home.strings in Resources */,
 				6D4E5DA21F7AB6870020DEE2 /* LabeledTextField.xib in Resources */,
 				6D4E5DA31F7AB6870020DEE2 /* NumberBar.xib in Resources */,
-				6D4E5DA41F7AB6870020DEE2 /* AkkuratPro-Regular.otf in Resources */,
 				6D4E5DA51F7AB6870020DEE2 /* Assets.xcassets in Resources */,
 				6D4E5DA61F7AB6870020DEE2 /* Members.storyboard in Resources */,
 				6D4E5DA81F7AB6870020DEE2 /* ProxyForHeader.xib in Resources */,
@@ -3166,13 +3166,13 @@
 				6D4E5DB41F7AB6870020DEE2 /* HomeSupportCell.xib in Resources */,
 				6D4E5DB51F7AB6870020DEE2 /* HomeApplicationStatusCell.xib in Resources */,
 				175EF847201B71A300268D08 /* WalletInfoCell.xib in Resources */,
+				6D90304120B5D4CE001775ED /* AkkuratPro-Regular.otf in Resources */,
 				6D4E5DB61F7AB6870020DEE2 /* Main.storyboard in Resources */,
 				6D4E5DB71F7AB6870020DEE2 /* Assets.xcassets in Resources */,
 				6DB921F51F9DF2A1009D3937 /* Contract.txt in Resources */,
 				6D4E5DB91F7AB6870020DEE2 /* EmptyVC.xib in Resources */,
 				6D4E5DBB1F7AB6870020DEE2 /* JoinTeamPersonalCell.xib in Resources */,
 				6D4E5DBC1F7AB6870020DEE2 /* PrivateChatUserCell.xib in Resources */,
-				6D4E5DBD1F7AB6870020DEE2 /* AkkuratPro-Bold.otf in Resources */,
 				6DBD695F2093864000D1524F /* GoogleService-Info.plist in Resources */,
 				6D251C3A20348643005081E4 /* ClaimVotingView.xib in Resources */,
 				6D4E5DBE1F7AB6870020DEE2 /* JoinTeamTermsCell.xib in Resources */,
