@@ -24,7 +24,6 @@ import XCTest
 @testable import Teambrella
 
 class UUIDTests: XCTestCase {
-    
     func testLarger() {
         let a = UUID(uuidString: "10000000-0018-1000-0001-020304050607")!
         let b = UUID(uuidString: "10000000-0018-1000-0001-020304050604")!
