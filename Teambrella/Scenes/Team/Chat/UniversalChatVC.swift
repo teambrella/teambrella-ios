@@ -614,7 +614,6 @@ extension UniversalChatVC: UICollectionViewDataSource {
 
 // MARK: UICollectionViewDelegate
 extension UniversalChatVC: UICollectionViewDelegate {
-    // swiftlint:disable:next function_body_length
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
@@ -623,45 +622,58 @@ extension UniversalChatVC: UICollectionViewDelegate {
         }
         
         let model = dataSource[indexPath]
-        if let model = model as? ChatCellUserDataLike {
-            if let cell = cell as? ChatVariousContentCell {
-                cell.prepare(with: model,
-                             myVote: dataSource.myVote,
-                             type: dataSource.chatType,
-                             size: cloudSize(for: indexPath))
-                cell.avatarView.tag = indexPath.row
-                cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
-                cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
-                cell.onTapImage = { [weak self] cell, galleryView in
-                    guard let `self` = self else { return }
-                    
-                    galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
-                }
-            } else if let cell = cell as? ChatTextCell {
-                cell.prepare(with: model,
-                             myVote: dataSource.myVote,
-                             type: dataSource.chatType,
-                             size: cloudSize(for: indexPath))
-                cell.avatarView.tag = indexPath.row
-                cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
-                cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
-                cell.onTapImage = { [weak self] cell, galleryView in
-                    guard let `self` = self else { return }
+        switch model {
+        case let model as ChatCellUserDataLike:
+            populateUserData(cell: cell, indexPath: indexPath, model: model)
+        default:
+            populateService(cell: cell, model: model)
+        }
+    }
 
-                    galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
-                }
-            } else if let cell = cell as? ChatImageCell {
-                cell.prepare(with: model, size: cloudSize(for: indexPath))
-                cell.avatarView.tag = indexPath.row
-                cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
-                cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
-                cell.onTapImage = { [weak self] cell, galleryView in
-                    guard let `self` = self else { return }
+    private func populateUserData(cell: UICollectionViewCell, indexPath: IndexPath, model: ChatCellUserDataLike) {
+        if let cell = cell as? ChatVariousContentCell {
+            cell.prepare(with: model,
+                         myVote: dataSource.myVote,
+                         type: dataSource.chatType,
+                         size: cloudSize(for: indexPath))
+            cell.avatarView.tag = indexPath.row
+            cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
+            cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
+            cell.onTapImage = { [weak self] cell, galleryView in
+                guard let `self` = self else { return }
 
-                    galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
-                }
+                galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
             }
-        } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
+        } else if let cell = cell as? ChatTextCell {
+            cell.prepare(with: model,
+                         myVote: dataSource.myVote,
+                         type: dataSource.chatType,
+                         size: cloudSize(for: indexPath))
+            cell.avatarView.tag = indexPath.row
+            cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
+            cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
+            cell.onTapImage = { [weak self] cell, galleryView in
+                guard let `self` = self else { return }
+
+                galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
+            }
+        } else if let cell = cell as? ChatImageCell {
+            cell.prepare(with: model, size: cloudSize(for: indexPath))
+            cell.avatarView.tag = indexPath.row
+            cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
+            cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
+            cell.onTapImage = { [weak self] cell, galleryView in
+                guard let `self` = self else { return }
+
+                galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
+            }
+        }
+    }
+
+    func populateService(cell: UICollectionViewCell, model: ChatCellModel) {
+        if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
+            cell.text = DateProcessor().yearFilter(from: model.date)
+    } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
             cell.text = DateProcessor().yearFilter(from: model.date)
         } else if let cell = cell as? ChatNewMessagesSeparatorCell,
             let model = model as? ChatNewMessagesSeparatorModel {

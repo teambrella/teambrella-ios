@@ -416,7 +416,7 @@ extension UniversalChatDatasource {
         hasNewMessagesSeparator = true
     }
     
-    func removeNewMessagesSeparator() -> Bool {
+    private func removeNewMessagesSeparator() -> Bool {
         guard hasNewMessagesSeparator else { return false }
         
         for (idx, model) in self.models.enumerated().reversed() where model is ChatNewMessagesSeparatorModel {
