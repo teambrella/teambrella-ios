@@ -149,6 +149,7 @@ final class MainRouter {
     func presentOthersVoted(teamID: Int, teammateID: Int?, claimID: Int?) {
         guard let vc = OthersVotedVC.instantiate() as? OthersVotedVC else { return }
         
+        vc.router = self
         vc.teamID = teamID
         vc.teammateID = teammateID
         vc.claimID = claimID
@@ -157,6 +158,9 @@ final class MainRouter {
     
     func getControllerClaim(claimID: Int) -> ClaimVC? {
         let vc = ClaimVC.instantiate() as? ClaimVC
+        
+        vc?.router = self
+        vc?.session = service.session
         vc?.claimID = claimID
         return vc
     }

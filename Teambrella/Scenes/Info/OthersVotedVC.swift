@@ -28,6 +28,8 @@ class OthersVotedVC: UIViewController, Routable {
     var dataSource: OthersVotedDataSource!
     weak var emptyVC: EmptyVC?
     
+    var router: MainRouter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
@@ -42,7 +44,7 @@ class OthersVotedVC: UIViewController, Routable {
         }
         dataSource.onSelectItem = { [weak self] indexPath in
             if let voter = self?.dataSource[indexPath] {
-                service.router.presentMemberProfile(teammateID: voter.userID)
+                self?.router.presentMemberProfile(teammateID: voter.userID)
             }
         }
     }
