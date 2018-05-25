@@ -31,6 +31,8 @@ class WalletCosignersVC: UIViewController, Routable {
     var isFirstLoading = true
     weak var emptyVC: EmptyVC?
     
+    var router: MainRouter!
+    
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -133,7 +135,7 @@ extension WalletCosignersVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cosigner = dataSource[indexPath]
-        service.router.presentMemberProfile(teammateID: cosigner.userId)
+        router.presentMemberProfile(teammateID: cosigner.userId)
     }
 }
 

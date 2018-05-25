@@ -204,6 +204,7 @@ final class MainRouter {
         guard let vc = WalletCosignersVC.instantiate() as? WalletCosignersVC
             else { fatalError("Error instantiating") }
         
+        vc.router = self
         vc.cosigners = cosigners
         push(vc: vc)
     }
