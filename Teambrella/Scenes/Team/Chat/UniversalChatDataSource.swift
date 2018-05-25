@@ -68,7 +68,7 @@ final class UniversalChatDatasource {
     private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
     var cellModelBuilder                            = ChatModelBuilder()
     
-    private var lastRead: Int64                     = 0
+    private var lastRead: UInt64                    = 0
     private var forwardOffset: Int                  = 0
     private var backwardOffset: Int                 = 0
     private var postsCount: Int                     = 0
@@ -360,7 +360,6 @@ extension UniversalChatDatasource {
         } else {
             models.append(model)
         }
-        //removeTemporaryIfNeeded()
         addSeparatorIfNeeded()
     }
     
@@ -388,7 +387,7 @@ extension UniversalChatDatasource {
         }
     }
     
-    private func addModels(models: [ChatEntity], isPrevious: Bool) {
+    private func addModels(models: [ChatEntity], isPrevious: Bool, chatModel: ChatModel?) {
         previousCount = postsCount
         let currentPostsCount = models.count
         postsCount += currentPostsCount
@@ -397,8 +396,11 @@ extension UniversalChatDatasource {
         } else {
             isLoadNextNeeded = false
             forwardOffset += currentPostsCount
-            if lastRead == 0 && !models.isEmpty {
-                insertNewMessagesSeparator(firstNewMessage: models.first)
+            if lastRead == 0,
+                let last = models.last,
+                let chatModel = chatModel,
+                last.lastUpdated > chatModel.discussion.lastRead {
+                insertNewMessagesSeparator(lastRead: chatModel.discussion.lastRead)
             }
         }
         
@@ -406,17 +408,19 @@ extension UniversalChatDatasource {
         addCellModels(models: models)
     }
     
-    private func insertNewMessagesSeparator(firstNewMessage: ChatEntity?) {
-        guard let message = firstNewMessage else { return }
-        
+    private func insertNewMessagesSeparator(lastRead: UInt64) {
+        guard isFirstLoad else { return }
+        guard lastRead != 0 else { return }
+
         _ = removeNewMessagesSeparator()
-        let separatorDate = message.created.addingTimeInterval(-0.1)
+        let lastReadDate = Date(ticks: lastRead)
+        let separatorDate = lastReadDate.addingTimeInterval(0.1)
         let model = ChatNewMessagesSeparatorModel(date: separatorDate)
         addCellModels(models: [model])
         hasNewMessagesSeparator = true
     }
     
-    private func removeNewMessagesSeparator() -> Bool {
+   func removeNewMessagesSeparator() -> Bool {
         guard hasNewMessagesSeparator else { return false }
         
         for (idx, model) in self.models.enumerated().reversed() where model is ChatNewMessagesSeparatorModel {
@@ -455,7 +459,7 @@ extension UniversalChatDatasource {
     }
 
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
-        addModels(models: model.discussion.chat, isPrevious: isPrevious)
+        addModels(models: model.discussion.chat, isPrevious: isPrevious, chatModel: model)
         chatModel = model
         if model.discussion.chat.isEmpty {
             if isPrevious {
@@ -483,7 +487,7 @@ extension UniversalChatDatasource {
         if isMyNewMessage {
             clear()
         }
-        addModels(models: messages, isPrevious: isPrevious)
+        addModels(models: messages, isPrevious: isPrevious, chatModel: nil)
         if messages.isEmpty {
             if isPrevious {
                 hasPrevious = false
