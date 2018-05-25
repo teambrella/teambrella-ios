@@ -176,25 +176,21 @@ struct TeammateCellBuilder {
                                        with teammate: TeammateLarge,
                                        controller: TeammateProfileVC) {
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
-        let owner: String
+        let localizer = CoverageLocalizer(type: type)
         if let me = service.session?.currentUserID, me == teammate.basic.id {
-            if type == CoverageType.petCat || type == CoverageType.petDog {
-                owner = "General.posessiveFormat.my.female".localized
-            } else {
-                owner = "General.posessiveFormat.my.male".localized
-            }
-            cell.titleLabel.text = "General.unitedFormat.my".localized(owner, type.localizedCoverageObject)
+            cell.titleLabel.text = localizer.myCoveredObject()
         } else {
-            owner = teammate.basic.gender == .male ?
+            let owner = teammate.basic.gender == .male ?
                 "General.posessiveFormat.his".localized(teammate.basic.name.first.uppercased()) :
                 "General.posessiveFormat.her".localized(teammate.basic.name.first.uppercased())
-            cell.titleLabel.text = "General.unitedFormat".localized(owner, type.localizedCoverageObject)
+            cell.titleLabel.text = "General.unitedFormat".localized(owner, localizer.coveredObject)
         }
 
-        cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year.localizedString(for: type))"
+        let yearString = CoverageLocalizer(type: type).yearsString(year: teammate.object.year)
+        cell.nameLabel.text = "\(teammate.object.model), \(yearString)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
-        cell.detailsLabel.text = teammate.teamPart?.coverageType.localizedCoverageType
+        cell.detailsLabel.text = localizer.coverageType
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)

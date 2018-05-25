@@ -614,6 +614,7 @@ extension UniversalChatVC: UICollectionViewDataSource {
 
 // MARK: UICollectionViewDelegate
 extension UniversalChatVC: UICollectionViewDelegate {
+    // swiftlint:disable:next function_body_length
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
@@ -672,10 +673,12 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.onButtonTap = { [weak self] in
                 guard let model = self?.dataSource.chatModel,
                     let claimID = model.basic?.claimID,
-                    let teamID = model.team?.teamID else { return }
+                    let team = model.team else { return }
 
-                let text = URLBuilder().urlString(claimID: claimID, teamID: teamID)
-                let vc = UIActivityViewController(activityItems: [text], applicationActivities: [])
+                let urlText = URLBuilder().urlString(claimID: claimID, teamID: team.teamID)
+                let messageText = CoverageLocalizer(type: team.coverageType).paidClaimText()
+                let combinedText = "\(messageText)\n\(urlText)"
+                let vc = UIActivityViewController(activityItems: [combinedText], applicationActivities: [])
                 self?.present(vc, animated: true)
             }
         }

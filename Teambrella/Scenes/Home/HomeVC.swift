@@ -221,7 +221,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         }
         itemCard.titleLabel.text = model.objectName.entire
         itemCard.statusLabel.text = "Home.itemCard.status".localized
-        itemCard.subtitleLabel.text = model.teamPart.coverageType.localizedCoverageType
+        itemCard.subtitleLabel.text = CoverageLocalizer(type: model.teamPart.coverageType).coverageType
         
         let buttonTitle = model.haveVotingClaims
             ? "Home.submitButton.anotherClaim".localized

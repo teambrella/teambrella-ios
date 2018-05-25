@@ -942,6 +942,8 @@
 		6D90304020B5D4CE001775ED /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */; };
 		6D90304120B5D4CE001775ED /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */; };
 		6D90304220B5D4CE001775ED /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */; };
+		6D90304420B80469001775ED /* CoverageLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D90304320B80469001775ED /* CoverageLocalizer.swift */; };
+		6D90304520B80469001775ED /* CoverageLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D90304320B80469001775ED /* CoverageLocalizer.swift */; };
 		6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D91BC061EB3A79100FDC332 /* UUIDTests.swift */; };
 		6D92BBBB2089E28F00E2E953 /* ChatImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */; };
 		6D9374AA202C9EB800BB28CB /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
@@ -1344,6 +1346,7 @@
 		6D90303820B5BF89001775ED /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyStorage.swift; path = Model/Services/Storage/KeyStorage.swift; sourceTree = "<group>"; };
 		6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Bold.otf"; path = "Resources/Fonts/AkkuratPro-Bold.otf"; sourceTree = SOURCE_ROOT; };
 		6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkkuratPro-Regular.otf"; path = "Resources/Fonts/AkkuratPro-Regular.otf"; sourceTree = SOURCE_ROOT; };
+		6D90304320B80469001775ED /* CoverageLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoverageLocalizer.swift; path = Model/Services/CoverageLocalizer.swift; sourceTree = "<group>"; };
 		6D91BC061EB3A79100FDC332 /* UUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDTests.swift; sourceTree = "<group>"; };
 		6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatImageCell.swift; path = Scenes/Team/Chat/ChatImageCell.swift; sourceTree = "<group>"; };
 		6D96E119208A1338009F99F5 /* ChatTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatTextCell.swift; path = Scenes/Team/Chat/ChatTextCell.swift; sourceTree = "<group>"; };
@@ -2413,6 +2416,7 @@
 				6D33E1531F715BB10052A58B /* Log.swift */,
 				6DE3947F1F79284900784ECD /* ErrorPresenter.swift */,
 				6DB5E8091FEA874E009A2A62 /* SimpleStorage.swift */,
+				6D90304320B80469001775ED /* CoverageLocalizer.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -3828,6 +3832,7 @@
 				6D05248220A5D838000B3247 /* TxSignatureServerImpl.swift in Sources */,
 				6D05248320A5D838000B3247 /* PayToServerImpl.swift in Sources */,
 				6D05248420A5D838000B3247 /* RequestBody.swift in Sources */,
+				6D90304520B80469001775ED /* CoverageLocalizer.swift in Sources */,
 				6D05248520A5D838000B3247 /* TeammateProfileVC.swift in Sources */,
 				6D05248620A5D838000B3247 /* MembersCellBuilder.swift in Sources */,
 				6D05248720A5D838000B3247 /* ScrollViewHandler.swift in Sources */,
@@ -4225,6 +4230,7 @@
 				6D1EC3E1202B0E2E00F0541C /* TxSignatureServerImpl.swift in Sources */,
 				6D1EC3E4202B0E6900F0541C /* PayToServerImpl.swift in Sources */,
 				6D4E5D281F7AB6870020DEE2 /* RequestBody.swift in Sources */,
+				6D90304420B80469001775ED /* CoverageLocalizer.swift in Sources */,
 				6D4E5D291F7AB6870020DEE2 /* TeammateProfileVC.swift in Sources */,
 				6D4E5D2A1F7AB6870020DEE2 /* MembersCellBuilder.swift in Sources */,
 				6D251C442035D04B005081E4 /* ScrollViewHandler.swift in Sources */,

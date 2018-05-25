@@ -165,7 +165,8 @@ class ChatObjectView: UIView, XIBInitable {
         imageView.showImage(string: basic.avatar)
         imageView.layer.cornerRadius = imageView.frame.width / 2
         if let model = basic.model, let year = basic.year {
-            amountLabel.text = "\(model.uppercased()), \(year.localizedString(for: team.coverageType))"
+            let yearsString = CoverageLocalizer(type: team.coverageType).yearsString(year: year)
+            amountLabel.text = "\(model.uppercased()), \(yearsString)"
         }
         percentLabel.isHidden = true
         currencyLabel.isHidden = true

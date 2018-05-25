@@ -43,20 +43,3 @@ struct Year: Decodable, CustomStringConvertible {
     }
 
 }
-
-extension Year {
-    func localizedString(for coverageType: CoverageType) -> String {
-        // for pets we use "pet name, 2 y.o." format
-        switch coverageType {
-        case .petCat, .petDog:
-            switch value {
-            case ...0:
-                return "Team.TearsOld.lessThanAYear".localized
-            default:
-                return "Team.YearsOld.years_format".localized(yearsSinceNow)
-            }
-        default:
-            return "\(self)"
-        }
-    }
-}

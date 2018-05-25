@@ -80,7 +80,7 @@ class ServicesHandler {
 
     @objc
     func cryptoMalfunction() {
-        service.keyStorage.deleteStoredKeys()
+        keyStorage.deleteStoredKeys()
         if let vc = service.router.frontmostViewController {
             let message =  """
             Private key that was stored is not a valid BTC key. It will be deleted from the app. Please restart.
