@@ -36,7 +36,10 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     var teamID: Int = 0
     
-    let dataSource = WithdrawDataSource(teamID: service.session?.currentTeam?.teamID ?? 0)
+    var session: Session!
+    var router: MainRouter!
+    
+    var dataSource: WithdrawDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0
     
     var isFirstLoading = true
@@ -51,6 +54,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     // MARK: Lifecycle
     
     func setupCrypto(balance: MEth, reserved: Ether) {
+        dataSource = WithdrawDataSource(teamID: session.currentTeam?.teamID ?? 0)
         dataSource.cryptoBalance = Ether(balance)
         dataSource.cryptoReserved = reserved
     }
@@ -63,7 +67,6 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
         collectionView.register(WithdrawCell.nib, forCellWithReuseIdentifier: WithdrawCell.cellID)
         collectionView.register(InfoHeader.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: InfoHeader.cellID)
-        
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
             self?.collectionView.reloadData()
@@ -201,7 +204,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     }
     
     private func showCodeCapture() {
-        let vc = service.router.showCodeCapture(in: self, delegate: self)
+        let vc = router.showCodeCapture(in: self, delegate: self)
         vc?.confirmButton.isEnabled = false
         vc?.confirmButton.alpha = 0.5
     }
@@ -226,9 +229,9 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     @objc
     private func tapInfo() {
-        service.router.showWithdrawInfo(in: self,
-                                        balance: dataSource.cryptoBalance,
-                                        reserved: dataSource.cryptoReserved)
+        router.showWithdrawInfo(in: self,
+                                balance: dataSource.cryptoBalance,
+                                reserved: dataSource.cryptoReserved)
     }
     
     @objc
