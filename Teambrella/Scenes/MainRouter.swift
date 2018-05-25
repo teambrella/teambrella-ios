@@ -196,6 +196,7 @@ final class MainRouter {
         vc.teamID = teamID
         vc.balance = balance.map { MEth($0) }
         vc.reserved = reserved
+        vc.router = self
         push(vc: vc)
     }
     
