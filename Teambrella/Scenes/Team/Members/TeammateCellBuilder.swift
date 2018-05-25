@@ -106,27 +106,10 @@ struct TeammateCellBuilder {
             votingCell.showTeamNoVote(risk: nil)
         }
         if let myVote = voting.myVote {
-            if voting.proxyName != nil {
-                votingCell.isProxyHidden = false
-                votingCell.resetVoteButton.isHidden = true
-                votingCell.layoutIfNeeded()
-                votingCell.yourVoteValueLabel.alpha = 1
-                votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
-                votingCell.scrollTo(risk: myVote, silently: true, animated: false)
-                votingCell.showYourNoVote(risk: myVote)
-                if let avatar = voting.proxyAvatar {
-                    votingCell.proxyAvatarView.show(avatar)
-                }
-                votingCell.proxyNameLabel.text = voting.proxyName?.uppercased()
-            } else {
-                votingCell.layoutIfNeeded()
-                votingCell.yourVoteValueLabel.alpha = 1
-                votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
-                votingCell.scrollTo(risk: myVote, silently: true, animated: false)
-                votingCell.showYourNoVote(risk: myVote)
-                votingCell.isProxyHidden = true
-                votingCell.resetVoteButton.isHidden = false
-            }
+            setMyVote(votingCell: votingCell,
+                      myVote: myVote,
+                      proxyName: voting.proxyName,
+                      proxyAvatar: voting.proxyAvatar)
         } else {
             votingCell.resetVoteButton.isHidden = true
             controller.resetVote(cell: votingCell)
@@ -143,6 +126,33 @@ struct TeammateCellBuilder {
         }
         votingCell.timeLabel.text = prefix.uppercased() + " " +
             DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
+    }
+
+    private static func setMyVote(votingCell: VotingRiskCell,
+                                  myVote: Double,
+                                  proxyName: String?,
+                                  proxyAvatar: Avatar?) {
+        if let proxyName = proxyName {
+            votingCell.isProxyHidden = false
+            votingCell.resetVoteButton.isHidden = true
+            votingCell.layoutIfNeeded()
+            votingCell.yourVoteValueLabel.alpha = 1
+            votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
+            votingCell.scrollTo(risk: myVote, silently: true, animated: false)
+            votingCell.showYourNoVote(risk: myVote)
+            if let avatar = proxyAvatar {
+                votingCell.proxyAvatarView.show(avatar)
+            }
+            votingCell.proxyNameLabel.text = proxyName.uppercased()
+        } else {
+            votingCell.layoutIfNeeded()
+            votingCell.yourVoteValueLabel.alpha = 1
+            votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
+            votingCell.scrollTo(risk: myVote, silently: true, animated: false)
+            votingCell.showYourNoVote(risk: myVote)
+            votingCell.isProxyHidden = true
+            votingCell.resetVoteButton.isHidden = false
+        }
     }
     
     private static func populateVote(cell: VotingRiskCell,

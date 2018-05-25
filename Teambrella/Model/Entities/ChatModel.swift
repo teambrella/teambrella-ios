@@ -25,7 +25,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
     var voting: VotingPart?
 
     let id: Int?
-    let lastRead: Int64?
+//    let lastRead: UInt64?
     //let title: String?
 
     var isClaimChat: Bool {
@@ -51,12 +51,12 @@ struct ChatModel: Decodable, CustomStringConvertible {
         case voting = "VotingPart"
         case id = "Id"
         //case title = "Title"
-        case lastRead = "LastRead"
+//        case lastRead = "LastRead"
     }
 
     struct DiscussionPart: Decodable {
         let isMuted: Bool?
-        let lastRead: Int64
+        let lastRead: UInt64
         let topicID: String
         let chat: [ChatEntity]
 

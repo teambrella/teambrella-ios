@@ -31,6 +31,8 @@ class ChatModelBuilder {
     lazy var heightCalculator = ChatFragmentSizeCalculator(width: width, font: font)
 
     func separatorModelIfNeeded(firstModel: ChatCellModel, secondModel: ChatCellModel) -> ChatCellModel? {
+        guard !(firstModel is ChatSeparatorCellModel), !(secondModel is ChatSeparatorCellModel) else { return nil }
+
         if firstModel.date.interval(of: .day, since: secondModel.date) != 0 {
             let calendar = Calendar.current
             let components = calendar.dateComponents([Calendar.Component.day,
