@@ -185,6 +185,7 @@ final class MainRouter {
     func presentClaims(teammateID: Int? = nil, animated: Bool = true) {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
         
+        vc.router = self
         vc.teammateID = teammateID
         vc.isPresentedInStack = true
         push(vc: vc, animated: animated)
