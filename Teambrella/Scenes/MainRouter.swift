@@ -167,6 +167,10 @@ final class MainRouter {
     
     func getControllerMemberProfile(teammateID: String) -> TeammateProfileVC? {
         let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC
+        
+        vc?.router = self
+        vc?.session = service.session
+        vc?.currencyName = service.currencyName
         vc?.teammateID = teammateID
         return vc
     }
