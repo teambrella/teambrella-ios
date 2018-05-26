@@ -122,8 +122,6 @@ final class WithdrawDataSource {
                 self?.onUpdate?()
             case let .error(error):
                 self?.onError?(error)
-            default:
-                break
             }
             self?.isLoading = false
         }
@@ -143,8 +141,6 @@ final class WithdrawDataSource {
                                     self?.onUpdate?()
                                 case let .error(error):
                                     self?.onError?(error)
-                                default:
-                                    break
                                 }
                                 self?.isLoading = false
         }

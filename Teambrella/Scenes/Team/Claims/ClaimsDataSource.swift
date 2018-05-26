@@ -94,23 +94,18 @@ class ClaimsDataSource {
     func loadData() {
         let offset = isSilentUpdate ? 0 : count
         guard !isLoading else { return }
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
         
         isLoading = true
-        service.server.updateTimestamp { timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-            
-            var payload: [String: Any] = ["TeamId": service.session?.currentTeam?.teamID ?? 0,
-                                          "Offset": offset,
-                                          "Limit": Constant.loadLimit,
-                                          "AvatarSize": Constant.avatarSize]
-            if let teammateID = self.teammateID {
-                payload["TeammateIdFilter"] = teammateID
-            }
-            let body = RequestBody(key: key, payload: payload)
-            let request = TeambrellaRequest(type: .claimsList, body: body, success: { [weak self] response in
+        service.dao.requestClaimsList(teamID: teamID,
+                                      offset: offset,
+                                      limit: Constant.loadLimit,
+                                      filterTeammateID: teammateID)
+            .observe { [weak self] result in
                 guard let `self` = self else { return }
                 
-                if case .claimsList(let claims) = response {
+                switch result {
+                case let .value(claims):
                     if self.isSilentUpdate {
                         for idx in 0..<self.claims.count {
                             self.claims[idx].removeAll()
@@ -121,14 +116,11 @@ class ClaimsDataSource {
                     
                     self.process(claims: claims)
                     self.onUpdate?()
-                    self.isLoading = false
+                case let .error(error):
+                    self.onError?(error)
                 }
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
-            })
-            request.start()
+                self.isLoading = false
         }
-        
     }
     
     func loadHomeData() {
@@ -137,9 +129,6 @@ class ClaimsDataSource {
         service.dao.requestHome(teamID: teamID).observe { [weak self] result in
             switch result {
             case let .value(model):
-                self?.homeModel = model
-                self?.onLoadHome?()
-            case let .temporaryValue(model):
                 self?.homeModel = model
                 self?.onLoadHome?()
             case let .error(error):

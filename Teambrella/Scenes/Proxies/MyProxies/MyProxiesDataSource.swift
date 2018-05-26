@@ -55,47 +55,34 @@ class MyProxiesDataSource {
     
     func loadData() {
         let offset = isSilentUpdate ? 0 : count
-        service.server.updateTimestamp { [weak self] timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-            guard let id = self?.teamID, let limit = self?.limit else { return }
+        service.dao.requestMyProxiesList(teamID: teamID, offset: offset, limit: limit).observe { [weak self] result in
+            guard let `self` = self else { return }
             
-            let body = RequestBody(key: key, payload: ["TeamId": id,
-                                                      "Offset": offset,
-                                                      "Limit": limit])
-            let request = TeambrellaRequest(type: .myProxies, body: body, success: { [weak self] response in
-                guard let `self` = self else { return }
-                
-                if case .myProxies(let proxies) = response {
-                    if self.isSilentUpdate {
-                        self.items.removeAll()
-                        self.isSilentUpdate = false
-                    }
-                    self.items += proxies
-                    self.onUpdate?()
+            switch result {
+            case let .value(proxies):
+                if self.isSilentUpdate {
+                    self.items.removeAll()
+                    self.isSilentUpdate = false
                 }
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
-            })
-            request.start()
+                self.items += proxies
+                self.onUpdate?()
+            case let .error(error):
+                self.onError?(error)
+            }
         }
     }
     
     func refreshDataFor(userID: String, at position: Int) {
-        service.server.updateTimestamp { [weak self] timestamp, error in
-            let key = Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-            guard let id = self?.teamID else { return }
-            
-            let body = RequestBody(key: key, payload: ["TeamId": id,
-                                                      "UserId": userID,
-                                                      "Position": position])
-            let request = TeambrellaRequest(type: .proxyPosition, body: body, success: { response in
-                if case .proxyPosition = response {
+        service.dao.updateProxyPosition(teamID: teamID, userID: userID, newPosition: position)
+            .observe { [weak self] result in
+                guard let `self` = self else { return }
+                
+                switch result {
+                case .value:
                     log("Position saved to server", type: .info)
+                case let .error(error):
+                    self.onError?(error)
                 }
-            }, failure: { [weak self] error in
-                self?.onError?(error)
-            })
-            request.start()
         }
     }
 }

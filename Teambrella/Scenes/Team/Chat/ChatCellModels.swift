@@ -27,42 +27,52 @@ protocol ChatCellModel {
     var isTemporary: Bool { get }
 }
 
-struct ChatTextCellModel: ChatCellModel {
+protocol ChatCellUserDataLike: ChatCellModel {
+    var entity: ChatEntity { get }
+    var fragments: [ChatFragment] { get }
+    var isMy: Bool { get }
+    var userAvatar: Avatar? { get }
+    var date: Date { get }
+    var isTemporary: Bool { get }
+    var id: String { get }
+}
+
+struct ChatTextCellModel: ChatCellUserDataLike {
     let entity: ChatEntity
     let fragments: [ChatFragment]
-    let fragmentHeights: [CGFloat]
+    let fragmentSizes: [CGSize]
     
     let isMy: Bool
     let userName: Name
-    let userAvatar: Avatar
+    let userAvatar: Avatar?
     var rateText: String?
     let date: Date
     let isTemporary: Bool
-    
-    var totalFragmentsHeight: CGFloat { return fragmentHeights.reduce(0, +) }
+
+    var maxFragmentsWidth: CGFloat { return fragmentSizes.reduce(0) { return max($0, $1.width) } }
+    var totalFragmentsHeight: CGFloat { return fragmentSizes.reduce(0) { $0 + $1.height } }
     var id: String { return entity.id }
-    
 }
 
-struct ChatTextUnsentCellModel: ChatCellModel {
+struct ChatImageCellModel: ChatCellUserDataLike {
+    let entity: ChatEntity
     let fragments: [ChatFragment]
-    let fragmentHeights: [CGFloat]
-    let isTemporary: Bool = true
-    
-    let userName: Name
+    let fragmentSizes: [CGSize]
+
+    let isMy: Bool
+    let userAvatar: Avatar?
     let date: Date
-    
-    var totalFragmentsHeight: CGFloat { return fragmentHeights.reduce(0, +) }
-    var id: String
-    
-    var isFailed: Bool
+    let isTemporary: Bool
+
+    var maxFragmentsWidth: CGFloat { return fragmentSizes.reduce(0) { return max($0, $1.width) } }
+    var totalFragmentsHeight: CGFloat { return fragmentSizes.reduce(0) { $0 + $1.height } }
+    var id: String { return entity.id }
 }
 
 struct ChatSeparatorCellModel: ChatCellModel {
     var id: String { return String(describing: date.timeIntervalSince1970) }
     let date: Date
     let isTemporary: Bool = true
-    
 }
 
 struct ChatNewMessagesSeparatorModel: ChatCellModel {
@@ -70,4 +80,11 @@ struct ChatNewMessagesSeparatorModel: ChatCellModel {
     let date: Date
     let text: String = "Team.Chat.Separator.newMessages".localized
     let isTemporary: Bool = true
+}
+
+struct ChatClaimPaidCellModel: ChatCellModel {
+    var id: String { return String(describing: date.timeIntervalSince1970) }
+    let date: Date
+    let isTemporary: Bool = false
+
 }

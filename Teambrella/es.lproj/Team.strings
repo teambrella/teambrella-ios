@@ -202,3 +202,9 @@
 "Team.TeammateCell.wouldCoverThem.notYet"             = "Not yet";
 
 "Team.TearsOld.lessThanAYear"   = "< 1 año";
+
+"Team.Chat.ClaimPaidCell.text" = "Your team has paid the claim. Pretty cool, huh? Share it with your friends!";
+"Team.Chat.ClaimPaid.ShareText.pets" = "We helped our teammate to pay the vet bill.  Pretty cool, huh?";
+"Team.Chat.ClaimPaid.ShareText.car" = "We helped our teammate to pay for the car repair.  Pretty cool, huh?";
+"Team.Chat.ClaimPaid.ShareText.bike" = "We reimbursed our teammate his stolen bike. Pretty cool, huh?";
+"Team.Chat.ClaimPaidCell.buttonTitle" = "Share with friends";

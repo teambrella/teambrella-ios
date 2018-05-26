@@ -22,11 +22,6 @@
 import Foundation
 
 class ClaimDataSource {
-    struct Constant {
-        static let avatarSize = 64
-        static let proxyAvatarSize = 32
-    }
-    
     var claim: ClaimEntityLarge?
     var cellIDs: [String] = []
     var userID: String { return claim?.basic.userID ?? "" }
@@ -61,68 +56,37 @@ class ClaimDataSource {
     }
     
     func loadData(claimID: Int) {
-        service.server.updateTimestamp { timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-            
-            let body = RequestBody(key: key, payload: ["id": claimID,
-                                                      "AvatarSize": Constant.avatarSize,
-                                                      "ProxyAvatarSize": Constant.proxyAvatarSize])
-            let request = TeambrellaRequest(type: .claim, body: body, success: { [weak self] response in
-                if case .claim(let claim) = response {
-                    self?.setupClaim(claim: claim)
-                    self?.onUpdate?()
-                }
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
-            })
-            request.start()
+        service.dao.requestClaim(claimID: claimID).observe { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
+            case let .value(claim):
+                self.setupClaim(claim: claim)
+                self.onUpdate?()
+            case let .error(error):
+                self.onError?(error)
+            }
         }
     }
     
     func updateVoteOnServer(vote: Float?) {
         let claimID = claim?.id ?? 0
         let lastUpdated = claim?.lastUpdated ?? 0
-        service.server.updateTimestamp { timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-            
-            let body = RequestBody(key: key, payload: ["ClaimId": claimID,
-                                                      "MyVote": vote ?? NSNull(),
-                                                      "Since": lastUpdated,
-                                                      "ProxyAvatarSize": Constant.proxyAvatarSize])
-            let request = TeambrellaRequest(type: .claimVote, body: body, success: { [weak self] response in
-                if case let .claimVote(voteUpdate) = response {
-                    self?.claim?.update(with: voteUpdate)
-                    self?.onUpdate?()
+        service.dao.updateClaimVote(claimID: claimID,
+                                    vote: vote,
+                                    lastUpdated: lastUpdated)
+            .observe { [weak self] result in
+                guard let `self` = self else { return }
+                
+                switch result {
+                case let .value(voteUpdate):
+                    self.claim?.update(with: voteUpdate)
+                    self.onUpdate?()
                     log("Updated claim with \(voteUpdate)", type: .info)
+                case let .error(error):
+                    self.onError?(error)
                 }
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
-            })
-            request.start()
-        }
+            }
     }
 
-    /*
-    func getUpdates() {
-        let claimID = claim?.id ?? 0
-        let lastUpdated = claim?.lastUpdated ?? 0
-        service.server.updateTimestamp { timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-            
-            let body = RequestBody(key: key, payload: ["ClaimId": claimID,
-                                                      "Since": lastUpdated,
-                                                      "ProxyAvatarSize": Constant.proxyAvatarSize])
-            let request = TeambrellaRequest(type: .claimUpdates, body: body, success: { [weak self] response in
-                if case .claimUpdates(let claimUpdate) = response {
-                    self?.claim?.update(with: claimUpdate)
-                    self?.onUpdate?()
-                    log("updated claim \(claimUpdate)", type: .info)
-                }
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
-            })
-            request.start()
-        }
-    }
-    */
 }

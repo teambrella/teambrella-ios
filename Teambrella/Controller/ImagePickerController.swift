@@ -91,8 +91,6 @@ class ImagePickerController: NSObject {
             switch result {
             case let .value(imageString):
                 me.delegate?.imagePicker(controller: me, didSendImage: image, urlString: imageString)
-            case .temporaryValue:
-                break
             case .error:
                 break
             }

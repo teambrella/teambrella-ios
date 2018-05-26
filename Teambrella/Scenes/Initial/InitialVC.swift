@@ -93,15 +93,12 @@ final class InitialVC: UIViewController {
     
     // MARK: Private
     
-    private func getTeams(timestamp: Int64) {
-        service.keyStorage.timestamp = timestamp
+    private func getTeams() {
         let isDemo = service.keyStorage.isDemoUser
         service.dao.requestTeams(demo: isDemo).observe { [weak self] result in
             switch result {
             case let .value(teamsEntity):
                 self?.startSession(teamsEntity: teamsEntity, isDemo: isDemo)
-            case .temporaryValue:
-                break
             case .error:
                 self?.failure()
             }
@@ -139,7 +136,7 @@ final class InitialVC: UIViewController {
         
         service.session?.teams = teamsEntity.teams
         service.session?.currentUserID = teamsEntity.userID
-        let socket = SocketService()
+        let socket = SocketService(dao: service.dao, url: nil)
         service.socket = socket
         service.teambrella.signToSockets(service: socket)
         SimpleStorage().store(bool: true, forKey: .didLogWithKey)
@@ -157,15 +154,7 @@ final class InitialVC: UIViewController {
     
     private func startLoadingTeams() {
         HUD.show(.progress)
-        service.server.updateTimestamp { [weak self] timestamp, error in
-            guard error == nil else {
-                log("Failed to get timestamp", type: [.serverReply, .error])
-                self?.failure()
-                return
-            }
-
-            self?.getTeams(timestamp: timestamp)
-        }
+        getTeams()
     }
     
     private func presentMasterTab() {

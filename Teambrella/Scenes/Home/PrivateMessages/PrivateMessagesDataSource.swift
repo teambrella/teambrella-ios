@@ -45,8 +45,6 @@ class PrivateMessagesDataSource: NSObject {
                 self.offset += users.count
                 self.hasNext = users.count == self.limit
                 self.onLoad?()
-            case .temporaryValue:
-                break
             case .error:
                 break
             }

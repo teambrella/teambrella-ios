@@ -50,29 +50,20 @@ class ClaimTransactionsDataSource {
         guard canLoad else { return }
         
         isLoading = true
-        service.server.updateTimestamp { [weak self] timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-            guard let teamId = self?.teamID, let claimId = self?.claimID,
-                let offset = self?.count, let limit = self?.limit/*, let search = self?.search */ else { return }
-            
-            let body = RequestBody(key: key, payload: ["TeamId": teamId,
-                                                      "ClaimId": claimId,
-                                                      "Limit": limit,
-                                                      "Offset": offset
-                                                      /*"Search": search*/])
-            let request = TeambrellaRequest(type: .claimTransactions, body: body, success: { [weak self] response in
-                if case .claimTransactions(let transactions) = response {
-                    self?.hasMore = (transactions.count == limit)
+        service.dao.requestClaimTransactions(teamID: teamID, claimID: claimID, limit: limit, offset: count)
+            .observe { [weak self] result in
+                guard let `self` = self else { return }
+                
+                switch result {
+                case let .value(transactions):
+                    self.hasMore = (transactions.count == self.limit)
                     let models = TransactionsCellModelBuilder().cellModels(from: transactions)
-                    self?.items += models
-                    self?.isLoading = false
-                    self?.onUpdate?()
+                    self.items += models
+                    self.onUpdate?()
+                case let .error(error):
+                    self.onError?(error)
                 }
-                }, failure: { [weak self] error in
-                    self?.isLoading = false
-                    self?.onError?(error)
-            })
-            request.start()
+                self.isLoading = false
         }
     }
     

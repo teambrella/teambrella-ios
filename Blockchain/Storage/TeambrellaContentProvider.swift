@@ -50,7 +50,13 @@ class TeambrellaContentProvider {
             return createUser()
         }
     }
+
+    let keyStorage: KeyStorage
     
+    init(keyStorage: KeyStorage) {
+        self.keyStorage = keyStorage
+    }
+
     private func createUser() -> User {
         let user = User(context: context)
         save()
@@ -161,7 +167,7 @@ class TeambrellaContentProvider {
     }
     
     var transactionsApprovedAndCosigned: [Tx] {
-        let publicKey = user.key().publicKey
+        let publicKey = user.key(in: keyStorage).publicKey
         let predicates = [NSPredicate(format: "resolutionValue == %i", TransactionClientResolution.approved.rawValue),
                           NSPredicate(format: "stateValue == %i", TransactionState.cosigned.rawValue),
                           NSPredicate(format: "inputsValue.@count > 0"),

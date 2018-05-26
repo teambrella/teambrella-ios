@@ -19,7 +19,7 @@
 
 "General.today"                                    = "сегодня";
 
-"General.you"                                      = "Вы";
+"General.you"                                      = "Ты";
 
 "General.TransactionKind.payout"                   = "выплата";
 "General.TransactionKind.withdraw"                 = "снятие";

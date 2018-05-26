@@ -48,28 +48,21 @@ class WalletTransactionsDataSource {
         guard canLoad else { return }
         
         isLoading = true
-        service.server.updateTimestamp { [weak self] timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-            guard let teamId = self?.teamID, let offset = self?.count,
-                let limit = self?.limit, let search = self?.search else { return }
-            
-            let body = RequestBody(key: key, payload: ["TeamId": teamId,
-                                                      "offset": offset,
-                                                      "limit": limit,
-                                                      "search": search])
-            let request = TeambrellaRequest(type: .walletTransactions, body: body, success: { [weak self] response in
-                if case .walletTransactions(let transactions) = response {
-                    self?.hasMore = (transactions.count == limit)
+        
+        service.dao.requestWalletTransactions(teamID: teamID, offset: count, limit: limit, search: search)
+            .observe { [weak self] result in
+                guard let `self` = self else { return }
+                
+                switch result {
+                case let .value(transactions):
+                    self.hasMore = transactions.count == self.limit
                     let cellModels = TransactionsCellModelBuilder().cellModels(from: transactions)
-                    self?.items += cellModels
-                    self?.isLoading = false
-                    self?.onUpdate?()
+                    self.items += cellModels
+                    self.onUpdate?()
+                case let .error(error):
+                    self.onError?(error)
                 }
-                }, failure: { [weak self] error in
-                    self?.isLoading = false
-                    self?.onError?(error)
-            })
-            request.start()
+                self.isLoading = false
         }
     }
     

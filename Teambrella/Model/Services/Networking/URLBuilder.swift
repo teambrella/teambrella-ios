@@ -55,6 +55,10 @@ class URLBuilder {
     func url(string: String) -> URL? {
         return URL(string: urlString(string: string))
     }
+
+    func urlString(claimID: Int, teamID: Int) -> String {
+        return"\(siteURL)/claim/\(teamID)/\(claimID)"
+    }
     
 }
 

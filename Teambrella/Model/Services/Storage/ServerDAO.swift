@@ -21,7 +21,13 @@
 
 import Foundation
 
+// swiftlint:disable type_body_length
 class ServerDAO: DAO {
+    struct Constant {
+        static let avatarSize = 128
+        static let proxyAvatarSize = 32
+    }
+    
     var lastKeyTime: Date?
     var recentScene: SceneType {
         get {
@@ -35,22 +41,22 @@ class ServerDAO: DAO {
         }
     }
     
+    private var server: ServerService
+    
+    init(server: ServerService) {
+        self.server = server
+    }
+    
     func requestTeams(demo: Bool) -> Future<TeamsModel> {
         let promise = Promise<TeamsModel>()
+        let server = self.server
         freshKey { key in
             let body = RequestBody(key: key, payload: [:])
             let requestType: TeambrellaRequestType = demo ? .demoTeams : .teams
-            let request = TeambrellaRequest(type: requestType,
-                                            parameters: nil,
-                                            body: body,
-                                            success: { response in
-                                                if case .teams(let teamsEntity) = response {
-                                                    promise.resolve(with: teamsEntity)
-                                                }
-            }) { error in
-                promise.reject(with: error)
-            }
-            request.start()
+            let request = TeambrellaRequest(type: requestType, parameters: nil, body: body, success: { response in
+                if case .teams(let teamsEntity) = response { promise.resolve(with: teamsEntity) }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: server)
         }
         return promise
     }
@@ -67,8 +73,8 @@ class ServerDAO: DAO {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,
                                                          description: "Was waiting .home got \(response)"))
                 }
-            })
-            request.start()
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
         }
         return promise
     }
@@ -94,10 +100,8 @@ class ServerDAO: DAO {
                                                     promise.reject(with: TeambrellaError(kind: .wrongReply,
                                                                                          description: errorMessage))
                                                 }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
-            request.start()
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
         }
         return promise
     }
@@ -114,7 +118,7 @@ class ServerDAO: DAO {
                                                          description: "Was waiting .deleteCard got \(response)"))
                 }
             })
-            request.start()
+            request.start(server: self.server)
         }
         return promise
     }
@@ -136,14 +140,8 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
         }
-//        if needTemporaryResult, let storedJSON = PlistStorage().retreiveJSON(for: .teamFeed, id: "") {
-//            defer {
-//                let feed = storedJSON.arrayValue.flatMap { FeedEntity(json: $0) }
-//                promise.temporaryResolve(with: FeedChunk(feed: feed, pagingInfo: nil))
-//            }
-//        }
         return promise
     }
     
@@ -160,10 +158,12 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
         }
         return promise
     }
+    
+    // MARK: Wallet
     
     func requestWallet(teamID: Int) -> Future<WalletEntity> {
         let promise = Promise<WalletEntity>()
@@ -176,7 +176,61 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start(isErrorAutoManaged: false)
+            request.start(server: self.server, isErrorAutoManaged: false)
+        }
+        return promise
+    }
+    
+    func requestWalletTransactions(teamID: Int,
+                                   offset: Int,
+                                   limit: Int,
+                                   search: String) -> Future<[WalletTransactionsModel]> {
+        let promise = Promise<[WalletTransactionsModel]>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "offset": offset,
+                                                       "limit": limit,
+                                                       "search": search])
+            let request = TeambrellaRequest(type: .walletTransactions, body: body, success: { response in
+                if case let .walletTransactions(transactions) = response {
+                    promise.resolve(with: transactions)
+                }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    // MARK: Proxy
+    
+    func requestMyProxiesList(teamID: Int, offset: Int, limit: Int) -> Future<[ProxyCellModel]> {
+        let promise = Promise<[ProxyCellModel]>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "Offset": offset,
+                                                       "Limit": limit])
+            let request = TeambrellaRequest(type: .myProxies, body: body, success: { response in
+                if case let .myProxies(proxies) = response {
+                    promise.resolve(with: proxies)
+                }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    func updateProxyPosition(teamID: Int, userID: String, newPosition: Int) -> Future<Bool> {
+        let promise = Promise<Bool>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "UserId": userID,
+                                                       "Position": newPosition])
+            let request = TeambrellaRequest(type: .proxyPosition, body: body, success: { response in
+                if case .proxyPosition = response {
+                    promise.resolve(with: true)
+                }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
         }
         return promise
     }
@@ -185,10 +239,141 @@ class ServerDAO: DAO {
                             offset: Int,
                             limit: Int,
                             searchString: String?,
-                            sortBy: SortVC.SortType) -> Future<UserIndexCellModel> {
-        let promise = Promise<UserIndexCellModel>()
+                            sortBy: SortVC.SortType) -> Future<ProxyRatingEntity> {
+        let promise = Promise<ProxyRatingEntity>()
         freshKey { key in
-            
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "Offset": offset,
+                                                       "Limit": limit,
+                                                       "Search": searchString ?? "",
+                                                       "SortBy": sortBy.rawValue])
+            let request = TeambrellaRequest(type: .proxyRatingList, body: body, success: { response in
+                if case let .proxyRatingList(proxyRatingEntity) = response {
+                    promise.resolve(with: proxyRatingEntity)
+                }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    func requestProxyFor(teamID: Int, offset: Int, limit: Int) -> Future<ProxyForEntity> {
+        let promise = Promise<ProxyForEntity>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "Offset": offset,
+                                                       "Limit": limit])
+            let request = TeambrellaRequest(type: .proxyFor, body: body, success: { response in
+                if case let .proxyFor(proxyForEntity) = response { promise.resolve(with: proxyForEntity) }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    // MARK: Claims
+    
+    func updateClaimVote(claimID: Int, vote: Float?, lastUpdated: Int64) -> Future<ClaimVoteUpdate> {
+        let promise = Promise<ClaimVoteUpdate>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["ClaimId": claimID,
+                                                       "MyVote": vote ?? NSNull(),
+                                                       "Since": lastUpdated,
+                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
+            let request = TeambrellaRequest(type: .claimVote, body: body, success: { response in
+                if case let .claimVote(voteUpdate) = response { promise.resolve(with: voteUpdate) }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    func requestClaimsList(teamID: Int, offset: Int, limit: Int, filterTeammateID: Int?) -> Future<[ClaimEntity]> {
+        let promise = Promise<[ClaimEntity]>()
+        freshKey { key in
+            var payload: [String: Any] = ["TeamId": service.session?.currentTeam?.teamID ?? 0,
+                                          "Offset": offset,
+                                          "Limit": limit,
+                                          "AvatarSize": Constant.avatarSize]
+            if let teammateID = filterTeammateID {
+                payload["TeammateIdFilter"] = teammateID
+            }
+            let body = RequestBody(key: key, payload: payload)
+            let request = TeambrellaRequest(type: .claimsList, body: body, success: { response in
+                if case let .claimsList(claims) = response {
+                    promise.resolve(with: claims)
+                }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    func requestClaim(claimID: Int) -> Future<ClaimEntityLarge> {
+        let promise = Promise<ClaimEntityLarge>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["id": claimID,
+                                                       "AvatarSize": Constant.avatarSize,
+                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
+            let request = TeambrellaRequest(type: .claim, body: body, success: { response in
+                if case let .claim(claim) = response { promise.resolve(with: claim) }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    func requestClaimTransactions(teamID: Int,
+                                  claimID: Int,
+                                  limit: Int,
+                                  offset: Int) -> Future<[ClaimTransactionsModel]> {
+        let promise = Promise<[ClaimTransactionsModel]>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "ClaimId": claimID,
+                                                       "Limit": limit,
+                                                       "Offset": offset])
+            let request = TeambrellaRequest(type: .claimTransactions, body: body, success: { response in
+                if case let .claimTransactions(transactions) = response {
+                    promise.resolve(with: transactions)
+                }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    // MARK: Teammates
+    
+    func requestTeammatesList(teamID: Int,
+                              offset: Int,
+                              limit: Int,
+                              isOrderedByRisk: Bool) -> Future<[TeammateListEntity]> {
+        let promise = Promise<[TeammateListEntity]>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "Offset": offset,
+                                                       "Limit": limit,
+                                                       "AvatarSize": Constant.avatarSize,
+                                                       "OrderByRisk": isOrderedByRisk])
+            let request = TeambrellaRequest(type: .teammatesList, body: body, success: { response in
+                if case let .teammatesList(teammates) = response { promise.resolve(with: teammates) }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    func requestTeammate(userID: String) -> Future<TeammateLarge> {
+        let promise = Promise<TeammateLarge>()
+        freshKey { key in
+            let body = RequestBodyFactory.teammateBody(key: key, id: userID)
+            let request = TeambrellaRequest(type: .teammate, body: body, success: {response in
+                if case let .teammate(teammate) = response {
+                    promise.resolve(with: teammate)
+                }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
         }
         return promise
     }
@@ -210,7 +395,7 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
         }
         return promise
     }
@@ -232,7 +417,7 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
         }
         return promise
     }
@@ -254,7 +439,18 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    func requestChat(type: TeambrellaRequestType, body: RequestBody) -> Future<TeambrellaResponseType> {
+        let promise = Promise<TeambrellaResponseType>()
+        freshKey { key in
+            let request = TeambrellaRequest(type: type, body: body, success: { response in
+                promise.resolve(with: response)
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
         }
         return promise
     }
@@ -277,7 +473,7 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
         }
         return promise
     }
@@ -299,7 +495,7 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
         }
         return promise
     }
@@ -307,7 +503,7 @@ class ServerDAO: DAO {
     func sendPhoto(data: Data) -> Future<String> {
         let promise = Promise<String>()
         freshKey { key in
-            var body = RequestBody(key: service.server.key, payload: nil)
+            var body = RequestBody(key: key, payload: nil)
             body.contentType = "image/jpeg"
             body.data = data
             let request = TeambrellaRequest(type: .uploadPhoto, body: body, success: { response in
@@ -317,7 +513,24 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    func sendRiskVote(teammateID: Int, risk: Double?) -> Future<TeammateVotingResult> {
+        let promise = Promise<TeammateVotingResult>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeammateId": teammateID,
+                                             "MyVote": risk ?? NSNull(),
+                                             "Since": key.timestamp,
+                                             "ProxyAvatarSize": Constant.proxyAvatarSize])
+            let request = TeambrellaRequest(type: .teammateVote, body: body, success: { response in
+                if case let .teammateVote(votingResult) = response {
+                    promise.resolve(with: votingResult)
+                }
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
         }
         return promise
     }
@@ -339,7 +552,7 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
         }
         return promise
     }
@@ -357,11 +570,16 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
         }
         return promise
     }
 
+    // TMP: remove when possible
+    func performRequest(request: TeambrellaRequest) {
+        request.start(server: server)
+    }
+    
     func mute(topicID: String, isMuted: Bool) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in
@@ -374,7 +592,7 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
         }
         return promise
     }
@@ -393,19 +611,36 @@ class ServerDAO: DAO {
             }, failure: { error in
                 promise.reject(with: error)
             })
-            request.start()
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    func registerKey(facebookToken: String, signature: String) -> Future<Bool> {
+        let promise = Promise<Bool>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["facebookToken": facebookToken,
+                                                       "sigOfPublicKey": signature])
+            let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": facebookToken,
+                                                                             "sigOfPublicKey": signature],
+                                            body: body,
+                                            success: { response in
+                                                promise.resolve(with: true)
+            }, failure: { error in promise.reject(with: error) })
+            request.start(server: self.server)
         }
         return promise
     }
     
     func freshKey(completion: @escaping (Key) -> Void) {
         if let time = lastKeyTime, Date().timeIntervalSince(time) < 60.0 * 10.0 {
-            completion(service.server.key)
+            completion(server.key)
         } else {
-            service.server.updateTimestamp(completion: { _, _ in
+            self.server.updateTimestamp(completion: { _, _ in
                 defer { self.lastKeyTime = Date() }
-                completion(service.server.key)
+                completion(self.server.key)
             })
         }
     }
+    
 }

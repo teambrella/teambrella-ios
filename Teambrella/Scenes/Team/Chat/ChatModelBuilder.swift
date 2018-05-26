@@ -25,22 +25,14 @@ class ChatModelBuilder {
     let fragmentParser = ChatFragmentParser()
     
     var showRate = false
+    var showTheirAvatar = false
     var font: UIFont = UIFont.teambrella(size: 14)
     var width: CGFloat = 0
-    lazy var heightCalculator = ChatFragmentHeightCalculator(width: width, font: font)
-    
-    func unsentModel(fragments: [ChatFragment], id: String) -> ChatTextUnsentCellModel {
-        let heights = heightCalculator.heights(for: fragments)
-        let myName = service.session?.currentUserName ?? Name.empty
-        return ChatTextUnsentCellModel(fragments: fragments,
-                                        fragmentHeights: heights,
-                                        userName: myName,
-                                        date: Date(),
-                                        id: id,
-                                        isFailed: false)
-    }
-    
+    lazy var heightCalculator = ChatFragmentSizeCalculator(width: width, font: font)
+
     func separatorModelIfNeeded(firstModel: ChatCellModel, secondModel: ChatCellModel) -> ChatCellModel? {
+        guard !(firstModel is ChatSeparatorCellModel), !(secondModel is ChatSeparatorCellModel) else { return nil }
+
         if firstModel.date.interval(of: .day, since: secondModel.date) != 0 {
             let calendar = Calendar.current
             let components = calendar.dateComponents([Calendar.Component.day,
@@ -63,27 +55,38 @@ class ChatModelBuilder {
             service.session?.currentUserID.map { isMy = item.userID == $0 }
             
             let name: Name
-            let avatar: Avatar
+            let avatar: Avatar?
             if isMy == true {
                 name = Name(fullName: "General.you".localized)
                 avatar = service.session?.currentUserAvatar ?? Avatar.none
             } else {
                 name = item.teammate?.name ?? Name.empty
-                avatar = item.teammate?.avatar ?? Avatar.none
+                avatar = showTheirAvatar ? item.teammate?.avatar : nil
             }
             
             let date = item.created
             let rateString = rateText(rate: item.teammate?.vote, showRate: showRate, isClaim: isClaim)
-            
-            let model = ChatTextCellModel(entity: item,
+
+            let model: ChatCellUserDataLike
+            if fragments.count == 1, let fragment = fragments.first, case .image = fragment {
+                 model = ChatImageCellModel(entity: item,
+                                               fragments: fragments,
+                                               fragmentSizes: heightCalculator.sizes(for: fragments),
+                                               isMy: isMy,
+                                               userAvatar: avatar,
+                                               date: date,
+                                               isTemporary: isTemporary)
+            } else {
+            model = ChatTextCellModel(entity: item,
                                           fragments: fragments,
-                                          fragmentHeights: heightCalculator.heights(for: fragments),
+                                          fragmentSizes: heightCalculator.sizes(for: fragments),
                                           isMy: isMy,
                                           userName: name,
                                           userAvatar: avatar,
                                           rateText: rateString,
                                           date: date,
                                           isTemporary: isTemporary)
+            }
             result.append(model)
         }
         return result

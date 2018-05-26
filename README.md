@@ -17,7 +17,8 @@ You need to download additional libraries before compiling this project.
 To do so you first need to have [Cocoapods](https://cocoapods.org)
 and [Carthage](https://github.com/Carthage/Carthage) installed.
 
-Then you need to execute a simple script **builder.sh** to do so go to the project 
+But you can run a simple script **builder.sh** to handle everything for you.
+Just go to the project
 root folder in terminal and execute `./builder.sh`
 
 ## Warning
@@ -32,3 +33,4 @@ The client stores private keys locally and backs them up via Apple iCloud servic
 | notification | Push notification extension to handle rich notifications |
 | Teambrella | Main application's bundle |
 | External | Separate files that are not originated in our dev lab |
+| Resources | All those resources that can't be made public |

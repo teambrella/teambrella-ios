@@ -70,4 +70,17 @@ struct DateProcessor {
             return stringInterval(from: date)
         }
     }
+    
+    func yearFilter(from date: Date) -> String {
+        let modelYear = NSCalendar.current.component(.year, from: date)
+        let currentDate = Date()
+        let currentYear = NSCalendar.current.component(.year, from: currentDate)
+        
+        let dateFormatter = DateFormatter()
+        let template = modelYear == currentYear ? "dMMMM" : "YYYYdMMM"
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template,
+                                                            options: 0,
+                                                            locale: NSLocale.current)
+        return dateFormatter.string(from: date)
+    }
 }

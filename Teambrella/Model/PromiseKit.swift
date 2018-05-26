@@ -23,7 +23,6 @@ import Foundation
 
 enum Result<Value> {
     case value(Value)
-    case temporaryValue(Value)
     case error(Error)
 }
 
@@ -50,10 +49,6 @@ class Promise<Value>: Future<Value> {
     init(value: Value? = nil) {
         super.init()
         result = value.map(Result.value)
-    }
-    
-    func temporaryResolve(with value: Value) {
-        result = .temporaryValue(value)
     }
     
     func resolve(with value: Value) {

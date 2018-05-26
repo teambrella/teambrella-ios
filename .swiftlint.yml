@@ -12,7 +12,7 @@ opt_in_rules:
 #  - implicitly_unwrapped_optional
 #  - no_grouping_extension
 #  - strict_fileprivate
-  - closure_end_indentation
+#  - closure_end_indentation
   - attributes
   - nimble_operator
   - let_var_whitespace

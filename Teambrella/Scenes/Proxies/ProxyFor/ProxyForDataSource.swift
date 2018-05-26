@@ -49,29 +49,21 @@ class ProxyForDataSource {
     
     func loadData() {
         let offset = isSilentUpdate ? 0 : count
-        service.server.updateTimestamp { [weak self] timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-            guard let id = self?.teamID, let limit = self?.limit else { return }
-            
-            let body = RequestBody(key: key, payload: ["TeamId": id,
-                                                      "Offset": offset,
-                                                      "Limit": limit])
-            let request = TeambrellaRequest(type: .proxyFor, body: body, success: { [weak self] response in
-                guard let `self` = self else { return }
-                
-                if case .proxyFor(let proxyForEntity) = response {
-                    if self.isSilentUpdate {
-                        self.items.removeAll()
-                        self.isSilentUpdate = false
-                    }
-                    self.items += proxyForEntity.members
-                    self.commission = proxyForEntity.totalCommission
-                    self.onUpdate?()
+        service.dao.requestProxyFor(teamID: teamID, offset: offset, limit: limit).observe { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
+            case let .value(proxyForEntity):
+                if self.isSilentUpdate {
+                    self.items.removeAll()
+                    self.isSilentUpdate = false
                 }
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
-            })
-            request.start()
+                self.items += proxyForEntity.members
+                self.commission = proxyForEntity.totalCommission
+                self.onUpdate?()
+            case let .error(error):
+                self.onError?(error)
+            }
         }
     }
 }

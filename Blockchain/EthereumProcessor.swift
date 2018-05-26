@@ -38,8 +38,8 @@ struct EthereumProcessor {
     }
     
     /// creates a processor with the key that is stored for the current user
-    static var standard: EthereumProcessor { return EthereumProcessor(key: service.server.key) }
-    
+//    static var standard: EthereumProcessor { return EthereumProcessor(key: service.server.key) }
+
     var key: Key
     
     /// BTC key
@@ -105,7 +105,7 @@ struct EthereumProcessor {
             return signed
         } catch {
             log("Error signing ethereum: \(error)", type: [.error, .crypto])
-            service.error.present(error: error)
+            //service.error.present(error: error)
             return nil
         }
     }

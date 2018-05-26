@@ -44,18 +44,6 @@ enum CoverageType: Int, Decodable {
     case businessCrime                = 440
     case businessLiability            = 460
     
-    var localizedCoverageObject: String {
-        let key = "General.CoverageObject.\(self)"
-        let localized = key.localized
-        return key != localized ? localized : "General.CoverageObject.other".localized
-    }
-    
-    var localizedCoverageType: String {
-        let key = "General.CoverageType.\(self)"
-        let localized = key.localized
-        return key != localized ? localized : "General.CoverageType.other".localized
-    }
-    
     init(decoder: Decoder) throws {
         let value = try decoder.singleValueContainer().decode(Int.self)
         self = CoverageType(rawValue: value) ?? .other

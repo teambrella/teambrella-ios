@@ -7,7 +7,7 @@
 */
 
 "Home.salutation"                                       = "Привет, %@!";
-"Home.subtitle"                                         = "Свежие новости для вас";
+"Home.subtitle"                                         = "Свежие новости для тебя";
 "Home.submitButton.anotherClaim"                        = "Подать ещё заявку";
 "Home.submitButton.claim"                               = "Подать заявку";
 "Home.leftBrick.title"                                  = "ЗАЩИТА";
@@ -35,6 +35,6 @@
 "Home.PrivateMessages.title"                            = "Входящие";
 
 //---waiting--
-"Home.Empty.Title.noPrivateMessages"                    = "У вас нет сообщений";
-"Home.Empty.SubTitle.noPrivateMessages"                 = "Напишите ваше первое приватное сообщение кому-нибудь из участников.";
+"Home.Empty.Title.noPrivateMessages"                    = "У тебя нет сообщений";
+"Home.Empty.SubTitle.noPrivateMessages"                 = "Напиши твоё первое приватное сообщение кому-нибудь из участников.";
 

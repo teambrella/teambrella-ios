@@ -11,7 +11,7 @@
 "Push.privateMessage.title_format" = "%1$@ (новое сообщение)";
 
 "Push.newTeammate.body_format"     = "%@ хочет присоединиться к команде. Поприветствуйте!";
-"Push.unreadMessages_format"       = "У вас %@ непрочитанных сообщений";
+"Push.unreadMessages_format"       = "У тебя %@ непрочитанных сообщений";
 "Push.walletFunded.title"          = "Кошелёк пополнен";
 
 "Push.newMessage"                  = "Новое сообщение";

@@ -26,7 +26,8 @@ import Foundation
  */
 final class ServerService: NSObject {
     @objc dynamic private(set)var timestamp: Int64 = 0
-    var router: MainRouter?
+    var router: MainRouter
+    var infoMaker: InfoMaker
     var key: Key { return Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp) }
 
     lazy private var session: URLSession = {
@@ -36,9 +37,10 @@ final class ServerService: NSObject {
         return URLSession(configuration: config)
     }()
 
-    required init(router: MainRouter) {
-        super.init()
+    required init(router: MainRouter, infoMaker: InfoMaker) {
         self.router = router
+        self.infoMaker = infoMaker
+        super.init()
     }
     
     func updateTimestamp(completion: @escaping (Int64, Error?) -> Void) {
@@ -86,7 +88,7 @@ final class ServerService: NSObject {
                                        "clientVersion": application.clientVersion,
                                        "deviceToken": service.push.tokenString ?? "",
                                        "deviceId": application.uniqueIdentifier,
-                                       "info": service.info.info]
+                                       "info": infoMaker.info]
 
             log("Headers:", type: .serverHeaders)
             for (key, value) in dict {
@@ -124,10 +126,8 @@ final class ServerService: NSObject {
                     success(reply)
                 }
 
-                if let router = self.router {
-                    let manager = SODManager(router: router)
-                    manager.checkVersion(serverReply: reply)
-                }
+                let manager = SODManager(router: self.router)
+                manager.checkVersion(serverReply: reply)
             } catch {
                 queue.async {
                     failure(error)

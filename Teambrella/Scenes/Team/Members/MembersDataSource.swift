@@ -26,6 +26,10 @@ enum TeammateSectionType {
 }
 
 class MembersDatasource {
+    struct Constant {
+        static let limit = 1000
+    }
+
     private var strategy: MembersFetchStrategy
     
     var isSilentUpdate = false
@@ -62,24 +66,22 @@ class MembersDatasource {
         isSilentUpdate = true
         loadData()
     }
-   
+
     func loadData() {
         let offset = isSilentUpdate ? 0 : sections
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
         guard !isLoading else { return }
-        
+
         isLoading = true
-        service.server.updateTimestamp { timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
-            
-            let body = RequestBody(key: key, payload: ["TeamId": service.session?.currentTeam?.teamID ?? 0,
-                                                      "Offset": offset,
-                                                      "Limit": 1000,
-                                                      "AvatarSize": 128,
-                                                      "OrderByRisk": self.orderByRisk])
-            let request = TeambrellaRequest(type: .teammatesList, body: body, success: { [weak self] response in
+        service.dao.requestTeammatesList(teamID: teamID,
+                                         offset: offset,
+                                         limit: Constant.limit,
+                                         isOrderedByRisk: orderByRisk)
+            .observe { [weak self] result in
                 guard let `self` = self else { return }
-                
-                if case .teammatesList(let teammates) = response {
+
+                switch result {
+                case let .value(teammates):
                     if self.isSilentUpdate {
                         self.clearDataSource()
                         self.isSilentUpdate = false
@@ -88,19 +90,16 @@ class MembersDatasource {
                     self.offset += teammates.count
                     self.onUpdate?()
                     self.isLoading = false
+                case let .error(error):
+                    self.onError?(error)
                 }
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
-            })
-            request.start()
-        }
-        
+            }
     }
     
     func clearDataSource() {
         strategy.removeData()
     }
-        
+
     subscript(indexPath: IndexPath) -> TeammateListEntity {
         return strategy[indexPath]
     }

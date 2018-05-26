@@ -7,7 +7,7 @@
 */
 
 "Info.DemoExpired.Title"              = "Новая демо";
-"Info.DemoExpired.Details"            = "Мы создали демо команду для вас. В ней есть все новые фишки.";
+"Info.DemoExpired.Details"            = "Мы создали демо команду для тебя. В ней есть все новые фишки.";
 "Info.DemoExpired.UpperButton.Title"  = "Попробовать демо";
 "Info.DemoExpired.LowerButton.Title"  = "Назад";
 

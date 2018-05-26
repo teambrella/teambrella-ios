@@ -80,21 +80,18 @@ class TeammateProfileDataSource {
     
     func loadEntireTeammate(completion: @escaping (TeammateLarge) -> Void,
                             failure: @escaping (Error) -> Void) {
-        let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: service.server.timestamp)
-        
-        let body = RequestBodyFactory.teammateBody(key: key, id: teammateID)
-        let request = TeambrellaRequest(type: .teammate, body: body, success: { [weak self] response in
-            guard let me = self else { return }
-            
-            if case .teammate(let extendedTeammate) = response {
-                me.teammateLarge = extendedTeammate
-                me.modifySource()
-                completion(extendedTeammate)
-            }
-            }, failure: { error in
+        service.dao.requestTeammate(userID: teammateID).observe { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
+            case let .value(teammate):
+                self.teammateLarge = teammate
+                self.modifySource()
+                completion(teammate)
+            case let .error(error):
                 failure(error)
-        })
-        request.start()
+            }
+        }
     }
     
     func addToProxy(completion: @escaping () -> Void) {
@@ -105,8 +102,6 @@ class TeammateProfileDataSource {
                 
                 me.isMyProxy = !me.isMyProxy
                 completion()
-            case .temporaryValue:
-                break
             case let .error(error):
                 log("\(#file) \(error)", type: .error)
                 completion()
@@ -115,21 +110,17 @@ class TeammateProfileDataSource {
     }
     
     func sendRisk(userID: Int, risk: Double?, completion: @escaping (TeammateVotingResult) -> Void) {
-        service.server.updateTimestamp { timestamp, error in
-            let key = service.server.key
-            let body = RequestBody(payload: ["TeammateId": userID,
-                                             "MyVote": risk ?? NSNull(),
-                                             "Since": key.timestamp,
-                                             "ProxyAvatarSize": 32])
-            let request = TeambrellaRequest(type: .teammateVote, body: body, success: { [weak self] response in
-                if case let .teammateVote(votingResult) = response {
-                    self?.teammateLarge?.update(votingResult: votingResult)
-                    completion(votingResult)
-                }
-            })
-            request.start()
+        service.dao.sendRiskVote(teammateID: userID, risk: risk).observe { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
+            case let .value(votingResult):
+                self.teammateLarge?.update(votingResult: votingResult)
+                completion(votingResult)
+            case let .error(error):
+                log("\(#file) \(error)", type: .error)
+            }
         }
-        
     }
     
     private func modifySource() {

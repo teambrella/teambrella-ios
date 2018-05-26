@@ -40,7 +40,7 @@ class Team: NSManagedObject {
 
 extension Team {
     func me(user: User) -> Teammate? {
-        let pubKey = user.key().publicKey
+        let pubKey = user.key(in: KeyStorage.shared).publicKey
         
         return teammates.filter { $0.publicKey == pubKey }.first
     }

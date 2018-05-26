@@ -17,7 +17,7 @@
 "Team.ClaimCell.timePassed_format"                    = "%d мин. назад";
 
 "Team.ClaimCell.voting"                               = "Голосование";
-"Team.ClaimCell.yourVote"                             = "ваш голос";
+"Team.ClaimCell.yourVote"                             = "твой голос";
 "Team.ClaimCell.byProxy"                              = "прокси";
 "Team.ClaimCell.teamVote"                             = "голос команды";
 "Team.ClaimCell.voteSubmitted"                        = "Голос отправлен";
@@ -38,7 +38,7 @@
 "Team.MembersVC.indicatorTitle"                       = "Участники";
 "Team.MembersVC.searchHere"                           = "Поиск";
 
-"Team.TeammateCell.youAreProxy_format_s"              = "Вы прокси для %@";
+"Team.TeammateCell.youAreProxy_format_s"              = "Ты прокси для %@";
 "Team.TeammateCell.covered"                           = "ЗАЩИТА";
 "Team.TeammateCell.collisionDeductible"               = "Франшиза";
 "Team.TeammateCell.limit"                             = "ЛИМИТ";
@@ -99,12 +99,12 @@
 "Team.JoinTeamVC.InfoCell.rulesButton"                = "Читать правила команды";
 
 "Team.JoinTeamVC.PersonalCell.headerLabel"            = "ПЕРСОНАЛЬНАЯ ИНФОРМАЦИЯ";
-"Team.JoinTeamVC.PersonalCell.name"                   = "ВАШЕ ИМЯ";
+"Team.JoinTeamVC.PersonalCell.name"                   = "ТВОЁ ИМЯ";
 "Team.JoinTeamVC.PersonalCell.birthday"               = "ДАТА РОЖДЕНИЯ";
 "Team.JoinTeamVC.PersonalCell.status"                 = "СТАТУС";
 "Team.JoinTeamVC.PersonalCell.location"               = "МЕСТО ЖИТЕЛЬСТВА";
 
-"Team.JoinTeamVC.ItemCell.headerLabel"                = "ВАША МАШИНА";
+"Team.JoinTeamVC.ItemCell.headerLabel"                = "ТВОЯ МАШИНА";
 "Team.JoinTeamVC.ItemCell.makeModel"                  = "МАРКА И МОДЕЛЬ";
 "Team.JoinTeamVC.ItemCell.year"                       = "ГОД";
 "Team.JoinTeamVC.ItemCell.currency"                   = "ВАЛЮТА";
@@ -121,7 +121,7 @@
 
 "Team.VotingRiskVC.headerLabel"                       = "ГОЛОСОВАНИЕ: РИСК";
 "Team.VotingRiskVC.numberBar.left"                    = "ГОЛОС КОМАНДЫ";
-"Team.VotingRiskVC.numberBar.right"                   = "ВАШ ГОЛОС";
+"Team.VotingRiskVC.numberBar.right"                   = "ТВОЙ ГОЛОС";
 "Team.VotingRiskVC.avgLabel"                          = "СРЕДН.\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Сбросить";
 "Team.VotingRiskVC.othersButton"                      = "Остальные";
@@ -154,7 +154,7 @@
 "Team.Chat.TypeLabel.application"                     = "ВСТУПЛЕНИЕ";
 "Team.Chat.TypeLabel.other"                           = "ОБСУЖДЕНИЕ";
 "Team.Chat.Separator.newMessages"                     = "НОВЫЕ СООБЩЕНИЯ";
-"Team.Chat.Input.yourMessageHere"                     = "Ваше сообщение";
+"Team.Chat.Input.yourMessageHere"                     = "Твоё сообщение";
 
 "Team.Home.Card.claimed"                              = "ЗАЯВЛЕНО";
 "Team.Home.Card.coverage"                             = "ЗАЩИТА";
@@ -168,24 +168,24 @@
 "Team.Claims.Empty.details"                           = "Мы сообщим, когда первая заявка будет создана";
 "Team.Chat.NotificationSettings.title"                = "НАСТРОЙКИ НОТИФИКАЦИЙ";
 "Team.Chat.NotificationSettings.subscribed"           = "Подписан";
-"Team.Chat.NotificationSettings.subscribed.details"   = "Вы будете получать нотификации о каждом сообщении";
+"Team.Chat.NotificationSettings.subscribed.details"   = "Ты будешь получать нотификации о каждом сообщении";
 "Team.Chat.NotificationSettings.unsubscribed"         = "Без нотификаций";
 "Team.Chat.NotificationSettings.unsubscribed.details" = "Нотификации для этой беседы выключены";
 
-"Team.Chat.Unmute" = "Теперь вы получаете нотификации по этой беседе";
-"Team.Chat.Mute" = "Вы отписались от нотификаций по этой беседе";
+"Team.Chat.Unmute" = "Теперь ты получаешь нотификации по этой беседе";
+"Team.Chat.Mute" = "Ты больше не получаешь нотификаций по этой беседе";
 
 "Team.Claims.objectView.reportButton.title" = "Подать заявку";
 
 "Team.Chat.ObjectView.VoteLabel" = "Голосовать";
 "Team.Chat.ObjectView.RevoteLabel" = "Изменить"; // переголосовать не влезает на маленькие айфоны
 "Team.Chat.ObjectView.ClaimAmountLabel" = "ЗАЯВКА - ";
-"Team.Chat.ObjectView.TitleLabel" = "ВАШ ГОЛОС";
+"Team.Chat.ObjectView.TitleLabel" = "ТВОЙ ГОЛОС";
 "Team.Chat.ObjectView.TitleLabel.risk" = "РИСК";
 "Team.Chat.ObjectView.TitleLabel.team" = "КОМАНДА";
 
 "Team.Vote.doNotAccept" = "Не принимать";
-"Team.Vote.SwipeToVote" = "Смахните влево или вправо, чтобы голосовать";
+"Team.Vote.SwipeToVote" = "Смахни влево или вправо, чтобы голосовать";
 
 "Team.Claim.Transactions.from" = "ОТ";
 "Team.VotingRiskCell.teamAvg" = "СРЕДН.\nВ ГРУППЕ";
@@ -206,3 +206,9 @@
 "Team.TeammateCell.wouldCoverThem.notYet"        = "Ещё нет";
 
 "Team.TearsOld.lessThanAYear"   = "< года";
+
+"Team.Chat.ClaimPaidCell.text" = "Твоя команда оплатила заявку. Неплохо, да? Поделись с друзьями!";
+"Team.Chat.ClaimPaid.ShareText.pets" = "Мы помогли участнику оплатить лечение питомца.  Неплохо, да?";
+"Team.Chat.ClaimPaid.ShareText.car" = "Мы помогли участнику оплатить ремонт машины. Неплохо, да?";
+"Team.Chat.ClaimPaid.ShareText.bike" = "Мы возместили участнику стоимость украденного велосипеда. Неплохо, да?";
+"Team.Chat.ClaimPaidCell.buttonTitle" = "Поделиться с друзьями";

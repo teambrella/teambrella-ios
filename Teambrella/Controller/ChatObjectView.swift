@@ -63,10 +63,21 @@ class ChatObjectView: UIView, XIBInitable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+    }
+    
+    func clearLabels() {
+        nameLabel.text = ""
+        amountLabel.text = ""
+        currencyLabel.text = ""
+        voteTitleLabel.text = ""
+        voteValueLabel.text = ""
+        voteValueLabel.text = ""
+        percentLabel.text = ""
+        rightLabel.text = ""
     }
     
     func initialSetup() {
+        clearLabels()
         chevronButton.isHidden = false
         voteContainer.isHidden = false
         chevronButton.alpha = 0
@@ -153,8 +164,9 @@ class ChatObjectView: UIView, XIBInitable {
         nameLabel.text = basic.name?.short
         imageView.showImage(string: basic.avatar)
         imageView.layer.cornerRadius = imageView.frame.width / 2
-        if let model = basic.model, let year = basic.year, let team = service.session?.currentTeam {
-            amountLabel.text = "\(model.uppercased()), \(year.localizedString(for: team.coverageType))"
+        if let model = basic.model, let year = basic.year {
+            let yearsString = CoverageLocalizer(type: team.coverageType).yearsString(year: year)
+            amountLabel.text = "\(model.uppercased()), \(yearsString)"
         }
         percentLabel.isHidden = true
         currencyLabel.isHidden = true

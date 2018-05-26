@@ -24,7 +24,6 @@ import XCTest
 @testable import Teambrella
 
 class UUIDTests: XCTestCase {
-    
     func testLarger() {
         let a = UUID(uuidString: "10000000-0018-1000-0001-020304050607")!
         let b = UUID(uuidString: "10000000-0018-1000-0001-020304050604")!
@@ -102,7 +101,7 @@ class UUIDTests: XCTestCase {
             UUID(uuidString: "fffffffd-0000-0000-0000-000000000000"),
             UUID(uuidString: "fffffffe-0000-0000-0000-000000000000"),
             UUID(uuidString: "ffffffff-0000-0000-0000-000000000000")
-            ].flatMap { $0 }
+            ].compactMap { $0 }
         XCTAssertFalse(array.isEmpty)
         XCTAssertEqual(array, array.sorted())
     }

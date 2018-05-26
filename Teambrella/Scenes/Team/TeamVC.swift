@@ -77,8 +77,6 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
             switch result {
             case let .value(model):
                 self?.topBarVC.setPrivateMessages(unreadCount: model.unreadCount)
-            case let .temporaryValue(model):
-                self?.topBarVC.setPrivateMessages(unreadCount: model.unreadCount)
             case let .error(error):
                 log("\(error)", type: .error)
             }

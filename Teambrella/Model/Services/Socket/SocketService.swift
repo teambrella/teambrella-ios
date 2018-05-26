@@ -24,18 +24,30 @@ import Starscream
 typealias SocketListenerAction = (SocketAction) -> Void
 
 class SocketService {
+    struct Constant {
+        static let scheme: String = "wss"
+        static let path: String = "wshandler.ashx"
+        #if SURILLA
+        static let serverName: String = "surilla.com"
+        #else
+         static let serverName: String = "teambrella.com"
+        #endif
+    }
+    
     var socket: WebSocket!
     var actions: [AnyHashable: SocketListenerAction] = [:]
     var isConnected: Bool { return socket.isConnected }
     var unsentMessage: String?
+    var dao: DAO
     
-    init(url: URL?) {
-        guard let url = url ?? URL(string: "wss://" + "surilla.com" + "/wshandler.ashx") else {
+    init(dao: DAO, url: URL?) {
+        self.dao = dao
+        guard let url = url ?? URL(string: "\(Constant.scheme)://\(Constant.serverName)/\(Constant.path)") else {
             fatalError("Unable to create socket URL")
         }
 
         log("trying to connect to socket: \(url.absoluteString)", type: .socket)
-        service.dao.freshKey { key in
+        dao.freshKey { key in
             let application = Application()
             var request = URLRequest(url: url)
             request.setValue(String(key.timestamp), forHTTPHeaderField: "t")
@@ -44,14 +56,11 @@ class SocketService {
             request.setValue(application.clientVersion, forHTTPHeaderField: "clientVersion")
             request.setValue(service.push.tokenString ?? "", forHTTPHeaderField: "deviceToken")
             request.setValue(application.uniqueIdentifier, forHTTPHeaderField: "deviceId")
-            self.socket = WebSocket(url: url)
-            self.socket.connect()
+            self.socket = WebSocket(request: request)
             self.socket.delegate = self
+            log("connecting with request: \(request)", type: .socket)
+            self.socket.connect()
         }
-    }
-    
-    convenience init() {
-        self.init(url: nil)
     }
     
     func add(listener: AnyHashable, action: @escaping SocketListenerAction) {

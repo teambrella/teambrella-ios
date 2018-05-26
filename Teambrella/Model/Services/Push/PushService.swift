@@ -26,11 +26,14 @@ import UserNotifications
 class PushService: NSObject {
     var token: Data?
     var tokenString: String? {
-//        guard let token = token else { return nil }
-//
-//        return [UInt8](token).reduce("") { $0 + String(format: "%02x", $1) }
         return currentFirebaseToken
     }
+    var apnsTokenString: String? {
+        guard let token = token else { return nil }
+
+        return [UInt8](token).reduce("") { $0 + String(format: "%02x", $1) }
+    }
+
     var command: RemotePayload?
     
     var router: MainRouter { return service.router }
@@ -65,7 +68,8 @@ class PushService: NSObject {
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         token = deviceToken
-        log("Did register for remote notifications with token \(tokenString ?? "nil")", type: .push)
+        log("Did register for remote notifications with firebase token \(tokenString ?? "nil")", type: .push)
+        log("apns token \(apnsTokenString ?? "nil")", type: .push)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -133,7 +137,7 @@ class PushService: NSObject {
             showTopic(details: command.topicDetails)
         case .newClaim:
             showTopic(details: command.topicDetails)
-            //showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
+        //showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
         default:
             break
         }
@@ -166,7 +170,7 @@ class PushService: NSObject {
     }
     
     private func showPrivateMessage(command: RemotePayload) {
-//        service.router.presentPrivateMessages()
+        //        service.router.presentPrivateMessages()
         if let user = PrivateChatUser(remotePayload: command) {
             let context = ChatContext.privateChat(user)
             service.router.presentChat(context: context, itemType: .privateChat, animated: false)
@@ -190,20 +194,20 @@ class PushService: NSObject {
     
     private func showWalletFunded(teamID: Int) {
         service.router.switchToWallet()
-//        if selectCorrectTeam(teamID: teamID) {
-//        }
+        //        if selectCorrectTeam(teamID: teamID) {
+        //        }
     }
     
     private func showTopic(details: RemoteTopicDetails?) {
         if let details = details as? RemotePayload.Claim {
-//            service.router.switchToFeed()
-//            service.router.presentClaims(animated: false)
-//            service.router.presentClaim(claimID: details.claimID, animated: false)
+            //            service.router.switchToFeed()
+            //            service.router.presentClaims(animated: false)
+            //            service.router.presentClaim(claimID: details.claimID, animated: false)
             service.router.presentChat(context: ChatContext.remote(details), itemType: .claim, animated: false)
         } else if let details = details as? RemotePayload.Discussion {
             service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat, animated: false)
         } else if let details = details as? RemotePayload.Teammate {
-//            service.router.presentMemberProfile(teammateID: details.userID, animated: false)
+            //            service.router.presentMemberProfile(teammateID: details.userID, animated: false)
             service.router.presentChat(context: ChatContext.remote(details), itemType: .teammate, animated: false)
         }
     }

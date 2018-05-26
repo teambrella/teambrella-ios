@@ -32,7 +32,7 @@
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti" translatesAutoresizingMaskIntoConstraints="NO" id="273-Iy-hCT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-2" translatesAutoresizingMaskIntoConstraints="NO" id="9Q2-WM-DHB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teambrella-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="9Q2-WM-DHB">
                                 <rect key="frame" x="57" y="244" width="262.5" height="52.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9Q2-WM-DHB" secondAttribute="height" multiplier="5:1" id="8kw-bT-bZK"/>
@@ -69,6 +69,6 @@
     </scenes>
     <resources>
         <image name="confetti" width="1500" height="2668"/>
-        <image name="logo-2" width="1262" height="198"/>
+        <image name="teambrella-logo-white" width="150" height="24"/>
     </resources>
 </document>

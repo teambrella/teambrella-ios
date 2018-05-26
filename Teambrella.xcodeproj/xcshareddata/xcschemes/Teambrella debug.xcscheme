@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6DA4759F1E8ABEE600B56D9B"
+               BlueprintIdentifier = "6D05234B20A5D838000B3247"
                BuildableName = "Teambrella.app"
                BlueprintName = "Teambrella"
                ReferencedContainer = "container:Teambrella.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6DA4759F1E8ABEE600B56D9B"
+            BlueprintIdentifier = "6D05234B20A5D838000B3247"
             BuildableName = "Teambrella.app"
             BlueprintName = "Teambrella"
             ReferencedContainer = "container:Teambrella.xcodeproj">
@@ -52,11 +52,10 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "ru"
-      region = "US"
+      language = "en"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -67,21 +66,27 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6DA4759F1E8ABEE600B56D9B"
+            BlueprintIdentifier = "6D05234B20A5D838000B3247"
             BuildableName = "Teambrella.app"
             BlueprintName = "Teambrella"
             ReferencedContainer = "container:Teambrella.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "DYLD_PRINT_STATISTICS"
-            value = "1"
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = ""
             isEnabled = "YES">
-         </EnvironmentVariable>
+         </CommandLineArgument>
+      </CommandLineArguments>
+      <EnvironmentVariables>
          <EnvironmentVariable
             key = "OS_ACTIVITY_MODE"
             value = "disable"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "DYLD_PRINT_STATISTICS"
+            value = "1"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
@@ -98,7 +103,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6DA4759F1E8ABEE600B56D9B"
+            BlueprintIdentifier = "6D05234B20A5D838000B3247"
             BuildableName = "Teambrella.app"
             BlueprintName = "Teambrella"
             ReferencedContainer = "container:Teambrella.xcodeproj">

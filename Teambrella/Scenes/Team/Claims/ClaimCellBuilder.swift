@@ -53,8 +53,7 @@ struct ClaimCellBuilder {
     static func populateImageGallery(cell: ImageGalleryCell, with claim: ClaimEntityLarge) {
         let imageURLStrings = claim.basic.largePhotos.map { URLBuilder().urlString(string: $0) }
         log("\(imageURLStrings)", type: .info)
-        service.server.updateTimestamp { timestamp, error in
-            let key =  Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp)
+        service.dao.freshKey { key in
             let modifier = AnyModifier { request in
                 var request = request
                 request.addValue("\(key.timestamp)", forHTTPHeaderField: "t")
@@ -89,7 +88,7 @@ struct ClaimCellBuilder {
             cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
         default:
             let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
-            cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date)
+            cell.timeLabel.text = DateProcessor().yearFilter(from: date)
         }
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }

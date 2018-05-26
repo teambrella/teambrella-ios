@@ -30,6 +30,8 @@ struct FeedEntity: Decodable {
     let payProgress: Double?
     let itemType: ItemType
     let itemID: Int
+    let itemUserAvatar: Avatar?
+    let itemUserName: Name
     let itemUserID: String
     let itemDate: Date?
     let smallPhotoOrAvatar: String
@@ -38,6 +40,7 @@ struct FeedEntity: Decodable {
     let unreadCount: Int
     let posterCount: Int
     let topPosterAvatars: [Avatar]
+    let year: Year?
 
     enum CodingKeys: String, CodingKey {
         case text = "Text"
@@ -48,6 +51,8 @@ struct FeedEntity: Decodable {
         case payProgress = "PayProgress"
         case itemType = "ItemType"
         case itemID = "ItemId"
+        case itemUserAvatar = "ItemUserAvatar"
+        case itemUserName = "ItemUserName"
         case itemUserID = "ItemUserId"
         case itemDate = "ItemDate"
         case smallPhotoOrAvatar = "SmallPhotoOrAvatar"
@@ -56,6 +61,7 @@ struct FeedEntity: Decodable {
         case unreadCount = "UnreadCount"
         case posterCount = "PosterCount"
         case topPosterAvatars = "TopPosterAvatars"
+        case year = "Year"
     }
     
 }

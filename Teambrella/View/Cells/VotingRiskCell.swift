@@ -77,6 +77,11 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     
     @IBOutlet var timeCenterConstraint: NSLayoutConstraint!
     @IBOutlet var timeBaseLineConstraint: NSLayoutConstraint!
+    @IBOutlet var yourVoteButton: UIButton!
+    
+    @IBAction func tapYourVoteButton(_ sender: Any) {
+        swipeToVoteView.appear()
+    }
     
     var currentRisk: Double { return riskFrom(offset: collectionView.contentOffset.x, maxValue: maxValue) }
     
@@ -111,7 +116,6 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         didSet {
             proxyAvatarView.isHidden = isProxyHidden
             proxyNameLabel.isHidden = isProxyHidden
-//            resetVoteButton.isHidden = !isProxyHidden
         }
     }
     
@@ -382,6 +386,9 @@ extension VotingRiskCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if shouldSilenceScroll == false {
             delegate?.votingRisk(cell: self, changedRisk: currentRisk)
+            if swipeToVoteView.backView.alpha != 0 {
+                swipeToVoteView.disappear(duration: 0.5, delay: 0)
+            }
         } else {
             shouldSilenceScroll = false
         }

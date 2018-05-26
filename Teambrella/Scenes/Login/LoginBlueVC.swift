@@ -33,6 +33,7 @@ final class LoginBlueVC: UIViewController {
     @IBOutlet var confetti: SKView!
     
     var isEmitterAdded: Bool = false
+    var didTapDemo: Bool = false
     
     lazy var secretRecognizer: UILongPressGestureRecognizer = {
         let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(secretTap))
@@ -105,6 +106,7 @@ final class LoginBlueVC: UIViewController {
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
         service.keyStorage.setToDemoUser()
+        performSegue(withIdentifier: "unwindToInitial", sender: self)
     }
     
     @objc
@@ -204,26 +206,23 @@ Are you sure you want to completely remove your private key from this device?
     
     private func register(token: String, userID: String) {
         service.keyStorage.setToRealUser()
-        
-        guard let signature = EthereumProcessor.standard.publicKeySignature else {
+        let processor = service.teambrella.processor
+        guard let signature = processor.publicKeySignature else {
             HUD.hide()
             service.router.logout()
             return
         }
         
-        log("Eth address: \(EthereumProcessor.standard.ethAddressString ?? "none")", type: .info)
-        service.server.updateTimestamp { timestamp, error in
-            let body = RequestBody(key: service.server.key, payload: ["facebookToken": token,
-                                                                      "sigOfPublicKey": signature])
-            let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": token,
-                                                                             "sigOfPublicKey": signature],
-                                            body: body,
-                                            success: { response in
-                                                self.getMe()
-            }) { error in
+        log("Eth address: \(processor.ethAddressString ?? "none")", type: .info)
+        service.dao.registerKey(facebookToken: token, signature: signature).observe { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
+            case .value:
+                self.getMe()
+            case let .error(error):
                 self.handleFailure(error: error)
             }
-            request.start()
         }
     }
     
@@ -258,7 +257,7 @@ Are you sure you want to completely remove your private key from this device?
     private func logAsFacebookUser(user: FacebookUser?) {
         HUD.hide()
         service.keyStorage.setToRealUser()
-        performSegue(type: .unwindToInitial, sender: user)
+        performSegue(withIdentifier: "unwindToInitial", sender: user)
     }
     
 }

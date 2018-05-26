@@ -89,7 +89,7 @@ struct TeammateCellBuilder {
          }
          */
     }
-    
+
     private static func setVote(votingCell: VotingRiskCell,
                                 voting: TeammateLarge.VotingInfo,
                                 controller: TeammateProfileVC) {
@@ -106,27 +106,10 @@ struct TeammateCellBuilder {
             votingCell.showTeamNoVote(risk: nil)
         }
         if let myVote = voting.myVote {
-            if voting.proxyName != nil {
-                votingCell.isProxyHidden = false
-                votingCell.resetVoteButton.isHidden = true
-                votingCell.layoutIfNeeded()
-                votingCell.yourVoteValueLabel.alpha = 1
-                votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
-                votingCell.scrollTo(risk: myVote, silently: true, animated: false)
-                votingCell.showYourNoVote(risk: myVote)
-                if let avatar = voting.proxyAvatar {
-                    votingCell.proxyAvatarView.show(avatar)
-                }
-                votingCell.proxyNameLabel.text = voting.proxyName?.uppercased()
-            } else {
-                votingCell.layoutIfNeeded()
-                votingCell.yourVoteValueLabel.alpha = 1
-                votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
-                votingCell.scrollTo(risk: myVote, silently: true, animated: false)
-                votingCell.showYourNoVote(risk: myVote)
-                votingCell.isProxyHidden = true
-                votingCell.resetVoteButton.isHidden = false
-            }
+            setMyVote(votingCell: votingCell,
+                      myVote: myVote,
+                      proxyName: voting.proxyName,
+                      proxyAvatar: voting.proxyAvatar)
         } else {
             votingCell.resetVoteButton.isHidden = true
             controller.resetVote(cell: votingCell)
@@ -143,6 +126,33 @@ struct TeammateCellBuilder {
         }
         votingCell.timeLabel.text = prefix.uppercased() + " " +
             DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
+    }
+
+    private static func setMyVote(votingCell: VotingRiskCell,
+                                  myVote: Double,
+                                  proxyName: String?,
+                                  proxyAvatar: Avatar?) {
+        if let proxyName = proxyName {
+            votingCell.isProxyHidden = false
+            votingCell.resetVoteButton.isHidden = true
+            votingCell.layoutIfNeeded()
+            votingCell.yourVoteValueLabel.alpha = 1
+            votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
+            votingCell.scrollTo(risk: myVote, silently: true, animated: false)
+            votingCell.showYourNoVote(risk: myVote)
+            if let avatar = proxyAvatar {
+                votingCell.proxyAvatarView.show(avatar)
+            }
+            votingCell.proxyNameLabel.text = proxyName.uppercased()
+        } else {
+            votingCell.layoutIfNeeded()
+            votingCell.yourVoteValueLabel.alpha = 1
+            votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
+            votingCell.scrollTo(risk: myVote, silently: true, animated: false)
+            votingCell.showYourNoVote(risk: myVote)
+            votingCell.isProxyHidden = true
+            votingCell.resetVoteButton.isHidden = false
+        }
     }
     
     private static func populateVote(cell: VotingRiskCell,
@@ -162,7 +172,6 @@ struct TeammateCellBuilder {
         } else {
             cell.swipeToVoteView.isHidden = false
             cell.swipeToVoteView.onInteraction = {
-                cell.swipeToVoteView.removeFromSuperview()
                 SimpleStorage().store(bool: true, forKey: .swipeHelperWasShown)
             }
         }
@@ -177,25 +186,21 @@ struct TeammateCellBuilder {
                                        with teammate: TeammateLarge,
                                        controller: TeammateProfileVC) {
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
-        let owner: String
+        let localizer = CoverageLocalizer(type: type)
         if let me = service.session?.currentUserID, me == teammate.basic.id {
-            if type == CoverageType.petCat || type == CoverageType.petDog {
-                owner = "General.posessiveFormat.my.female".localized
-            } else {
-                owner = "General.posessiveFormat.my.male".localized
-            }
-            cell.titleLabel.text = "General.unitedFormat.my".localized(owner, type.localizedCoverageObject)
+            cell.titleLabel.text = localizer.myCoveredObject()
         } else {
-            owner = teammate.basic.gender == .male ?
+            let owner = teammate.basic.gender == .male ?
                 "General.posessiveFormat.his".localized(teammate.basic.name.first.uppercased()) :
                 "General.posessiveFormat.her".localized(teammate.basic.name.first.uppercased())
-            cell.titleLabel.text = "General.unitedFormat".localized(owner, type.localizedCoverageObject)
+            cell.titleLabel.text = "General.unitedFormat".localized(owner, localizer.coveredObject)
         }
 
-        cell.nameLabel.text = "\(teammate.object.model), \(teammate.object.year.localizedString(for: type))"
+        let yearString = CoverageLocalizer(type: type).yearsString(year: teammate.object.year)
+        cell.nameLabel.text = "\(teammate.object.model), \(yearString)"
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
-        cell.detailsLabel.text = teammate.teamPart?.coverageType.localizedCoverageType
+        cell.detailsLabel.text = localizer.coverageType
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
@@ -317,7 +322,7 @@ struct TeammateCellBuilder {
             cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
         default:
             let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
-            cell.timeLabel.text = DateProcessor().stringIntervalOrDate(from: date)
+            cell.timeLabel.text = DateProcessor().yearFilter(from: date)
         }
         let message = stats.originalPostText.sane
         cell.textLabel.text = message

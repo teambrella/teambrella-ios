@@ -74,9 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         }
 
-        service.info.prepareServices()
         let router = service.router
         let info = service.info
+        info.prepareServices()
         SODManager(router: router).checkSilentPush(infoMaker: info)
 
         stitches()

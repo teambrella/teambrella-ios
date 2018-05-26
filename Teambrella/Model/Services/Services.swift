@@ -37,10 +37,10 @@ class ServicesHandler {
     let info: InfoMaker = InfoMaker()
     
     /// server interoperability (should be removed from here when all requests will go through DAO)
-    lazy var server = ServerService(router: self.router)
+    lazy private var server = ServerService(router: self.router, infoMaker: info)
     
     /// data access object
-    lazy var dao: DAO = ServerDAO()
+    lazy var dao: DAO = ServerDAO(server: self.server)
     
     /// push notifications handling service
     lazy var push: PushService = PushService()
@@ -54,9 +54,6 @@ class ServicesHandler {
     // WIP!
     // old analogue of cryptoWorker. Should be merged and deleted
     lazy var teambrella = TeambrellaService()
-    
-    /// service to work with current Crypto currency and it's blockchain
-//    lazy var cryptoWorker: CryptoWorker = EthereumWorker()
     
     /// socket messaging service
     var socket: SocketService?
@@ -83,7 +80,7 @@ class ServicesHandler {
 
     @objc
     func cryptoMalfunction() {
-        service.keyStorage.deleteStoredKeys()
+        keyStorage.deleteStoredKeys()
         if let vc = service.router.frontmostViewController {
             let message =  """
             Private key that was stored is not a valid BTC key. It will be deleted from the app. Please restart.

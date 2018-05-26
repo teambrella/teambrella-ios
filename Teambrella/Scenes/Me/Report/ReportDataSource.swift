@@ -125,8 +125,6 @@ class ReportDataSource {
             switch result {
             case let .value(claim):
                 completion(claim)
-            case .temporaryValue:
-                break
             case let .error(error):
                 completion(error)
             }
@@ -138,8 +136,6 @@ class ReportDataSource {
             switch result {
             case let .value(claim):
                 completion(claim)
-            case .temporaryValue:
-                break
             case let .error(error):
                 completion(error)
             }
@@ -165,8 +161,6 @@ class ReportDataSource {
                         break
                     }
                 }
-            case .temporaryValue:
-                break
             case .error:
                 break
             }
