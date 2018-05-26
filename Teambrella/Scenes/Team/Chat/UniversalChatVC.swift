@@ -114,21 +114,20 @@ final class UniversalChatVC: UIViewController, Routable {
             self.setupTitle()
             self.setMuteButtonImage(type: self.dataSource.notificationsType)
             self.slidingView.votingView.setup(with: self.dataSource.chatModel)
-            guard hasNew else {
-                if isFirstLoad {
-                    self.shouldScrollToBottom = true
-                    self.dataSource.isLoadPreviousNeeded = true
-                }
-                return
-            }
-            
-            self.refresh(backward: backward)
+//            guard hasNew else {
+//                if isFirstLoad {
+//                    self.shouldScrollToBottom = true
+//                    self.dataSource.isLoadPreviousNeeded = true
+//                }
+//                return
+//            }
+            self.refresh(backward: backward, isFirstLoad: isFirstLoad)
         }
         dataSource.onSendMessage = { [weak self] indexPath in
             guard let `self` = self else { return }
             
             self.shouldScrollToBottom = true
-            self.refresh(backward: false)
+            self.refresh(backward: false, isFirstLoad: false)
             self.dataSource.loadNext()
         }
         dataSource.onClaimVoteUpdate = { [weak self] in
@@ -420,12 +419,11 @@ private extension UniversalChatVC {
      *
      * - Parameter backward: wether the chunk of data comes above existing cells or below them
      */
-    private func refresh(backward: Bool) {
-        // not using reloadData() to avoid blinking of cells
-        //        collectionView.dataSource = nil
-        //        collectionView.dataSource = self
+    private func refresh(backward: Bool, isFirstLoad: Bool) {
         collectionView.reloadData()
-        if self.shouldScrollToBottom {
+        if isFirstLoad, let lastReadIndexPath = dataSource.lastReadIndexPath {
+            self.collectionView.scrollToItem(at: lastReadIndexPath, at: .top, animated: true)
+        } else if self.shouldScrollToBottom {
             self.scrollToBottom(animated: true)
             self.shouldScrollToBottom = false
         } else if backward, let indexPath = self.dataSource.currentTopCellPath {
@@ -617,10 +615,10 @@ extension UniversalChatVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        if indexPath.row > dataSource.count -  UniversalChatDatasource.Constant.limit / 2 {
+        if indexPath.row == dataSource.count - 1 {
             dataSource.isLoadNextNeeded = true
         }
-        
+
         let model = dataSource[indexPath]
         switch model {
         case let model as ChatCellUserDataLike:

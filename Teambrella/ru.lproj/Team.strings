@@ -208,4 +208,7 @@
 "Team.TearsOld.lessThanAYear"   = "< года";
 
 "Team.Chat.ClaimPaidCell.text" = "Твоя команда оплатила заявку. Неплохо, да? Поделись с друзьями!";
+"Team.Chat.ClaimPaid.ShareText.pets" = "Мы помогли участнику оплатить лечение питомца.  Неплохо, да?";
+"Team.Chat.ClaimPaid.ShareText.car" = "Мы помогли участнику оплатить ремонт машины. Неплохо, да?";
+"Team.Chat.ClaimPaid.ShareText.bike" = "Мы возместили участнику стоимость украденного велосипеда. Неплохо, да?";
 "Team.Chat.ClaimPaidCell.buttonTitle" = "Поделиться с друзьями";

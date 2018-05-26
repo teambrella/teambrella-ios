@@ -68,7 +68,7 @@ final class UniversalChatDatasource {
     private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
     var cellModelBuilder                            = ChatModelBuilder()
     
-    private var lastRead: UInt64                    = 0
+    private var lastRead: UInt64 { return chatModel?.discussion.lastRead ?? 0 }
     private var forwardOffset: Int                  = 0
     private var backwardOffset: Int                 = 0
     private var postsCount: Int                     = 0
@@ -154,6 +154,16 @@ final class UniversalChatDatasource {
             return IndexPath(row: idx, section: 0)
         }
         return nil
+    }
+
+    var lastReadIndexPath: IndexPath? {
+        guard lastRead != 0 else { return lastIndexPath }
+
+        let lastReadDate = Date(ticks: lastRead)
+        for (idx, model) in models.enumerated() where model.date >= lastReadDate {
+            return IndexPath(row: idx, section: 0)
+        }
+        return lastIndexPath
     }
     
     var allImages: [String] {
@@ -469,7 +479,6 @@ extension UniversalChatDatasource {
                 forwardOffset = 0
             }
         }
-        lastRead = model.discussion.lastRead
         teamAccessLevel = model.team?.accessLevel ?? .noAccess
 
         addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
