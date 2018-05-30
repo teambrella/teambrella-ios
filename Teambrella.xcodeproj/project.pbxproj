@@ -390,7 +390,6 @@
 		6D0524D720A5D838000B3247 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC1BB212077C8CF008661AF /* XLPagerTabStrip.framework */; };
 		6D0524D820A5D838000B3247 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFECAD6207CFEF800B5FEC8 /* PKHUD.framework */; };
 		6D0524D920A5D838000B3247 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */; };
-		6D0524DA20A5D838000B3247 /* SwiftKeccak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */; };
 		6D0524DE20A5D838000B3247 /* ProxyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D2AEE1EFBDB7C0095284C /* ProxyCell.xib */; };
 		6D0524DF20A5D838000B3247 /* HomeApplicationAcceptedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E80E531F0FDA3100DE1A0A /* HomeApplicationAcceptedCell.xib */; };
 		6D0524E020A5D838000B3247 /* SwitchUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DEFCFB71F7A66D7008C306C /* SwitchUserCell.xib */; };
@@ -477,7 +476,6 @@
 		6D05254220A5DA1A000B3247 /* Teambrella.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DDFDAF41F8CD25600342696 /* Teambrella.xcassets */; };
 		6D05254320A5DE3A000B3247 /* NotificationTeambrella.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6DEFE3F22006544100615022 /* NotificationTeambrella.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6D0C39DE1F991B6600941FF3 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
-		6D0C39E41F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */; };
 		6D0FD84E201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */; };
 		6D106F0C203AD4D70049E92E /* NewClaimCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F09203AD4C70049E92E /* NewClaimCell.swift */; };
 		6D106F0D203AD4DD0049E92E /* NewClaimCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D106F08203AD4C70049E92E /* NewClaimCell.xib */; };
@@ -1634,7 +1632,6 @@
 				6D0524D720A5D838000B3247 /* XLPagerTabStrip.framework in Frameworks */,
 				6D0524D820A5D838000B3247 /* PKHUD.framework in Frameworks */,
 				6D0524D920A5D838000B3247 /* SpriteKit.framework in Frameworks */,
-				6D0524DA20A5D838000B3247 /* SwiftKeccak.framework in Frameworks */,
 				6EB6C5A3A1AD4F95F386210D /* libPods-Teambrella.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1646,7 +1643,6 @@
 				6DC1BB232077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */,
 				6DFECAD8207CFEF800B5FEC8 /* PKHUD.framework in Frameworks */,
 				6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */,
-				6D0C39E41F9927D000941FF3 /* SwiftKeccak.framework in Frameworks */,
 				FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3308,7 +3304,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
 			);
@@ -3355,14 +3350,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ImageSlideshow/ImageSlideshow.bundle",
+				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
+				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png",
 				"${PODS_ROOT}/SwiftDate/Sources/SwiftDate/SwiftDate.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ImageSlideshow.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@3x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftDate.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 			);
@@ -3405,7 +3402,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
 			);
@@ -3466,14 +3462,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ImageSlideshow/ImageSlideshow.bundle",
+				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
+				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png",
 				"${PODS_ROOT}/SwiftDate/Sources/SwiftDate/SwiftDate.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ImageSlideshow.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@3x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftDate.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 			);
