@@ -358,10 +358,11 @@ extension WithdrawVC: UICollectionViewDelegateFlowLayout {
                 return CGSize(width: collectionView.bounds.width - Constant.horizontalCellPadding * 2,
                               height: Constant.withdrawCellHeight)
             }
-        case 1:
-            return CGSize(width: collectionView.bounds.width, height: Constant.txCellHeight)
+//        case 1:
+//            return CGSize(width: collectionView.bounds.width, height: Constant.txCellHeight)
         default:
-            return CGSize.zero
+            return CGSize(width: collectionView.bounds.width, height: Constant.txCellHeight)
+//            return CGSize.zero
         }
     }
     
@@ -376,7 +377,9 @@ extension WithdrawVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return section == 0 ? CGFloat(Constant.horizontalCellPadding) : CGFloat(Constant.defaultHeaderHeight)
+        return section == 0
+            ? CGFloat(Constant.horizontalCellPadding)
+            : CGFloat(Constant.defaultHeaderHeight)
     }
 }
 

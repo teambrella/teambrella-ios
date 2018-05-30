@@ -33,7 +33,8 @@ class WithdrawModelBuilder {
         return WithdrawTransactionCellModel(topText: dateText,
                                             isNew: transaction.isNew,
                                             bottomText: transaction.toAddress,
-                                            amountText: String(format: "%.2f", MEth(transaction.amount).value))
+                                            amountText: String(format: "%.2f", MEth(transaction.amount).value),
+                                            isValid: !transaction.serverTxState.isError)
     }
     
 }
@@ -61,6 +62,7 @@ struct WithdrawTransactionCellModel: WithdrawCellModel {
     let isNew: Bool
     let bottomText: String
     let amountText: String
+    let isValid: Bool
 }
 
 struct WalletInfoCellModel: WithdrawCellModel {
@@ -99,8 +101,14 @@ struct WithdrawCellBuilder {
         } else if let cell = cell as? WithdrawCell, let model = model as? WithdrawTransactionCellModel {
             cell.upperLabel.text = model.topText
             cell.lowerLabel.text = model.bottomText
-            cell.indicatorView.isHidden = !model.isNew
             cell.rightLabel.text = model.amountText
+            if !model.isValid {
+                cell.indicatorView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+                cell.indicatorView.isHidden = false
+            } else {
+                cell.indicatorView.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.2, blue: 0.5176470588, alpha: 1)
+                cell.indicatorView.isHidden = !model.isNew
+            }
         } else if let cell = cell as? WalletInfoCell, let model = model as? WalletInfoCellModel {
             populateWalletInfo(cell: cell, model: model)
         }
