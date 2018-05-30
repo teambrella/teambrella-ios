@@ -2981,6 +2981,7 @@
 					};
 					6DA475B31E8ABEE600B56D9B = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = Y6A22RLVJG;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6DA4759F1E8ABEE600B56D9B;
@@ -4864,6 +4865,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				INFOPLIST_FILE = TeambrellaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaTests;
@@ -4880,6 +4882,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				INFOPLIST_FILE = TeambrellaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaTests;

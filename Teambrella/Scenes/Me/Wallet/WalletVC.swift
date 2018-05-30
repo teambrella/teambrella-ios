@@ -59,6 +59,10 @@ class WalletVC: UIViewController {
         }
         addRefreshControl()
         prepareWalletAddress()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         dataSource.loadData()
     }
     
