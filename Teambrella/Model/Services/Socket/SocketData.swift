@@ -119,6 +119,10 @@ enum SocketData {
     }
     
     static func with(command: SocketCommand, dict: [String: Any]) -> SocketData? {
+        let teamID = dict["TeamId"] as? Int ?? 0
+        let userID = dict["UserId"] as? String ?? ""
+        let topicID = dict["TopicId"] as? String ?? ""
+        let name = dict["UserName"] as? String ?? ""
         switch command {
         case .auth:
             return .auth
@@ -131,20 +135,24 @@ enum SocketData {
              "TopicId":"21f43e0e-a599-4e5f-8f4f-a6d7ff0195c1",
              "UserName":"Vlad Kravchuk"}
              */
-            return .theyTyping(teamID: dict["TeamId"] as? Int ?? 0,
-                               userID: dict["UserId"] as? String ?? "",
-                               topicID: dict["TopicId"] as? String ?? "",
-                               name: dict["UserName"] as? String ?? "")
+            return .theyTyping(teamID: teamID,
+                               userID: userID,
+                               topicID: topicID,
+                               name: name)
         case .dbDump:
             return .dbDump(timestamp: dict["Timestamp"] as? Int64 ?? 0)
         case .newPost:
-            return .newPost(teamID: dict["TeamId"] as? Int ?? 0,
-                            userID: dict["UserId"] as? String ?? "",
-                            topicID: dict["TopicId"] as? String ?? "",
-                            postID: dict["PostId"] as? String ?? "",
-                            name: dict["UserName"] as? String ?? "",
-                            url: dict["Avatar"] as? String ?? "",
-                            text: dict["Content"] as? String ?? "")
+            let postID = dict["PostId"] as? String ?? ""
+            let urlString = dict["Avatar"] as? String ?? ""
+            let text = dict["Content"] as? String ?? ""
+
+            return .newPost(teamID: teamID,
+                            userID: userID,
+                            topicID: topicID,
+                            postID: postID,
+                            name: name,
+                            url: urlString,
+                            text: text)
         default:
             return nil
         }

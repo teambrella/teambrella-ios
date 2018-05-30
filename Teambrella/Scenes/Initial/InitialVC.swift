@@ -99,8 +99,8 @@ final class InitialVC: UIViewController {
             switch result {
             case let .value(teamsEntity):
                 self?.startSession(teamsEntity: teamsEntity, isDemo: isDemo)
-            case .error:
-                self?.failure()
+            case let .error(error):
+                self?.failure(error: error)
             }
         }
     }
@@ -145,13 +145,14 @@ final class InitialVC: UIViewController {
         requestPush()
     }
     
-    private func failure() {
+    private func failure(error: Error) {
+        print("InitialVC got error: \(error)")
         HUD.hide()
         service.router.logout()
         SimpleStorage().store(bool: false, forKey: .didLogWithKey)
         performSegue(type: .login)
     }
-    
+
     private func startLoadingTeams() {
         HUD.show(.progress)
         getTeams()

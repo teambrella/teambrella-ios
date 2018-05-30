@@ -2884,8 +2884,8 @@
 				6D4E5DD11F7AB6870020DEE2 /* Carthage */,
 				6D4E5DD41F7AB6870020DEE2 /* SwiftLint */,
 				6D4E5DD51F7AB6870020DEE2 /* CPD */,
-				6D59FD011FBC8407006C0A2B /* Embed App Extensions */,
 				6F2D2231E75AD99947AB1E17 /* [CP] Copy Pods Resources */,
+				6D59FD011FBC8407006C0A2B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
