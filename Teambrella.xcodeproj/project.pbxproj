@@ -926,6 +926,9 @@
 		6D8720D42029E268000C5C3F /* RiskScaleRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8720D22029E268000C5C3F /* RiskScaleRange.swift */; };
 		6D878E50200CF63600066492 /* GasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D878E4E200CF63600066492 /* GasStation.swift */; };
 		6D88C4FD1FA3986300E55F7C /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */; };
+		6D8A624B20C002E5003CD95B /* PushKitWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A624A20C002E4003CD95B /* PushKitWorker.swift */; };
+		6D8A624C20C00323003CD95B /* PushKitWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A624A20C002E4003CD95B /* PushKitWorker.swift */; };
+		6D8A624E20C02B82003CD95B /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8A624D20C02B82003CD95B /* PushKit.framework */; };
 		6D900E201FC31CFF00FF6FF8 /* RemoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */; };
 		6D900E221FC31D4100FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
 		6D900E241FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
@@ -1332,6 +1335,8 @@
 		6D8720D22029E268000C5C3F /* RiskScaleRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RiskScaleRange.swift; path = Model/Entities/RiskScaleRange.swift; sourceTree = "<group>"; };
 		6D878E4E200CF63600066492 /* GasStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStation.swift; sourceTree = "<group>"; };
 		6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTests.swift; sourceTree = "<group>"; };
+		6D8A624A20C002E4003CD95B /* PushKitWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushKitWorker.swift; path = Model/Services/Push/PushKitWorker.swift; sourceTree = "<group>"; };
+		6D8A624D20C02B82003CD95B /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		6D8C6FE61F754D7000BF65B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Error.strings; sourceTree = "<group>"; };
 		6D8C6FE81F754D8E00BF65B6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Error.strings; sourceTree = "<group>"; };
 		6D8CB40E1F5865B200C72AC3 /* Teambrella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Teambrella.entitlements; sourceTree = "<group>"; };
@@ -1640,6 +1645,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D8A624E20C02B82003CD95B /* PushKit.framework in Frameworks */,
 				6DC1BB232077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */,
 				6DFECAD8207CFEF800B5FEC8 /* PKHUD.framework in Frameworks */,
 				6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */,
@@ -2515,6 +2521,7 @@
 		6DAF1CB91F58562E00421C5A /* PushService */ = {
 			isa = PBXGroup;
 			children = (
+				6D8A624A20C002E4003CD95B /* PushKitWorker.swift */,
 				6DAF1CB71F58562900421C5A /* PushService.swift */,
 			);
 			name = PushService;
@@ -2807,6 +2814,7 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D8A624D20C02B82003CD95B /* PushKit.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				6D0C39E21F9927D000941FF3 /* SwiftKeccak.framework */,
 				6DC1BB212077C8CF008661AF /* XLPagerTabStrip.framework */,
@@ -3603,6 +3611,7 @@
 				6D7A01AB20B5BC77006A30FA /* WithdrawVC.swift in Sources */,
 				6D05239C20A5D838000B3247 /* ProxyForCellModel.swift in Sources */,
 				6D05239D20A5D838000B3247 /* TeamServerImpl.swift in Sources */,
+				6D8A624B20C002E5003CD95B /* PushKitWorker.swift in Sources */,
 				6D05239E20A5D838000B3247 /* SaneText.swift in Sources */,
 				6D05239F20A5D838000B3247 /* DAO.swift in Sources */,
 				6D0523A020A5D838000B3247 /* LoginDetailsRouter.swift in Sources */,
@@ -4001,6 +4010,7 @@
 				6D7A01AA20B5BC77006A30FA /* WithdrawVC.swift in Sources */,
 				6D4E5C671F7AB6870020DEE2 /* ProxyForCellModel.swift in Sources */,
 				6D1EC3ED202B0F3A00F0541C /* TeamServerImpl.swift in Sources */,
+				6D8A624C20C00323003CD95B /* PushKitWorker.swift in Sources */,
 				6D716BC02021E747001E2614 /* SaneText.swift in Sources */,
 				6D4E5C681F7AB6870020DEE2 /* DAO.swift in Sources */,
 				6D4E5C691F7AB6870020DEE2 /* LoginDetailsRouter.swift in Sources */,

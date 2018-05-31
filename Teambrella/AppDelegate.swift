@@ -23,6 +23,7 @@ import UIKit
 //import FacebookLogin
 import FBSDKCoreKit
 import Firebase
+import PushKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
         service.push.register(application: application)
+        service.push.startPushKit()
 
         TeambrellaStyle.apply()
         if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
@@ -129,5 +131,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         service.teambrella.startUpdating(completion: completionHandler)
 
     }
-    
+
 }

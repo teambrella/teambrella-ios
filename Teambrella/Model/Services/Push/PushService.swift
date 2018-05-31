@@ -1,3 +1,4 @@
+
 //
 //  PushService.swift
 //  Teambrella
@@ -40,6 +41,11 @@ class PushService: NSObject {
     var session: Session? { return service.session }
 
     var currentFirebaseToken: String?
+
+    lazy var pushKit: PushKitWorker = {
+       let pushKit = PushKitWorker()
+        return pushKit
+    }()
     
     override init() {
         super.init()
@@ -47,6 +53,35 @@ class PushService: NSObject {
 
         // Firebase
         Messaging.messaging().delegate = self
+    }
+
+    func startPushKit() {
+        self.pushKit.onTokenUpdate = { token in
+            print("PushKit token: \(token)")
+        }
+        pushKit.onPushReceived = { [weak self] dict, completion in
+            self?.presentPushKitUserNotification(dict: dict)
+            service.teambrella.startUpdating { result in
+                print("PushKit has finished it's job")
+                completion()
+            }
+        }
+    }
+
+    func presentPushKitUserNotification(dict: [AnyHashable: Any]) {
+        let state = UIApplication.shared.applicationState
+
+        let content = UNMutableNotificationContent()
+
+        content.title = "PushKit \(state.rawValue)"
+        content.body = dict.description
+        content.categoryIdentifier = "notify-test"
+
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest.init(identifier: "notify-test", content: content, trigger: trigger)
+
+        let center = UNUserNotificationCenter.current()
+        center.add(request)
     }
     
     func askPermissionsForRemoteNotifications(application: UIApplication) {

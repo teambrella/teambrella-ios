@@ -489,6 +489,7 @@ final class TeambrellaService: NSObject {
         backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
             self?.endBackgroundTask(result: .failed,completion: completion)
         }
+        print("Background task registered \(backgroundTask)")
         assert(backgroundTask != UIBackgroundTaskInvalid)
     }
 

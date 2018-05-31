@@ -30,35 +30,46 @@ final class InitialVC: UIViewController {
     
     var mode: InitialVCMode = .login
     weak var sod: SODVC?
+    var isFirstLoad: Bool = true
 
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if service.keyStorage.isUserSelected {
-            mode = .idle
-            startLoadingTeams()
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        switch mode {
-        case .login:
-            performSegue(type: .login)
-        case .demoExpired:
-            let router = service.router
-            if let vc = SODManager(router: router).showOutdatedDemo(in: self) {
-                vc.upperButton.addTarget(self, action: #selector(tapDemo), for: .touchUpInside)
-                vc.lowerButton.addTarget(self, action: #selector(tapBack), for: .touchUpInside)
-                sod = vc
-            }
-        default:
-            break
+
+        let state = UIApplication.shared.applicationState
+        print("Application state is: \(state.rawValue)")
+        guard state != .background else {
+            print("Running in background")
+            return
         }
 
-        mode = .idle
+        if isFirstLoad, service.keyStorage.isUserSelected {
+            mode = .idle
+            startLoadingTeams()
+        } else {
+            switch mode {
+            case .login:
+                performSegue(type: .login)
+            case .demoExpired:
+                let router = service.router
+                if let vc = SODManager(router: router).showOutdatedDemo(in: self) {
+                    vc.upperButton.addTarget(self, action: #selector(tapDemo), for: .touchUpInside)
+                    vc.lowerButton.addTarget(self, action: #selector(tapBack), for: .touchUpInside)
+                    sod = vc
+                }
+            default:
+                break
+            }
+
+            mode = .idle
+        }
+        isFirstLoad = false
     }
     
     // MARK: Callbacks
@@ -71,7 +82,7 @@ final class InitialVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         HUD.hide()
         if segue.type == .teambrella {
-           
+
         }
     }
     
