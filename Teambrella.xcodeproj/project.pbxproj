@@ -929,6 +929,7 @@
 		6D8A624B20C002E5003CD95B /* PushKitWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A624A20C002E4003CD95B /* PushKitWorker.swift */; };
 		6D8A624C20C00323003CD95B /* PushKitWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A624A20C002E4003CD95B /* PushKitWorker.swift */; };
 		6D8A624E20C02B82003CD95B /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8A624D20C02B82003CD95B /* PushKit.framework */; };
+		6D8A627F20C07761003CD95B /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8A624D20C02B82003CD95B /* PushKit.framework */; };
 		6D900E201FC31CFF00FF6FF8 /* RemoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */; };
 		6D900E221FC31D4100FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
 		6D900E241FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
@@ -1634,6 +1635,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D8A627F20C07761003CD95B /* PushKit.framework in Frameworks */,
 				6D0524D720A5D838000B3247 /* XLPagerTabStrip.framework in Frameworks */,
 				6D0524D820A5D838000B3247 /* PKHUD.framework in Frameworks */,
 				6D0524D920A5D838000B3247 /* SpriteKit.framework in Frameworks */,
