@@ -887,6 +887,11 @@
 		6D5F089B20A9BEAC0061A6E8 /* ChatClaimPaidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5F089820A9BEAC0061A6E8 /* ChatClaimPaidCell.swift */; };
 		6D5F089C20A9BEAC0061A6E8 /* ChatClaimPaidCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D5F089920A9BEAC0061A6E8 /* ChatClaimPaidCell.xib */; };
 		6D5F089D20A9BEAC0061A6E8 /* ChatClaimPaidCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D5F089920A9BEAC0061A6E8 /* ChatClaimPaidCell.xib */; };
+		6D6388EB20C1BDAD00FD3351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D6388EA20C1BDAD00FD3351 /* Assets.xcassets */; };
+		6D6388EC20C1D35700FD3351 /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */; };
+		6D6388ED20C1D35700FD3351 /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */; };
+		6D6388EE20C1D35800FD3351 /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */; };
+		6D6388EF20C1D35800FD3351 /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */; };
 		6D666B711F8512FA00812CBE /* PlistStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D666B6F1F8512FA00812CBE /* PlistStorage.swift */; };
 		6D677E751FA0F0FE00ED1C36 /* EtherNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFDAF61F8CEC7E00342696 /* EtherNode.swift */; };
 		6D677E781FA110B800ED1C36 /* EtherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D677E761FA110B800ED1C36 /* EtherAPI.swift */; };
@@ -930,6 +935,14 @@
 		6D8A624C20C00323003CD95B /* PushKitWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A624A20C002E4003CD95B /* PushKitWorker.swift */; };
 		6D8A624E20C02B82003CD95B /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8A624D20C02B82003CD95B /* PushKit.framework */; };
 		6D8A627F20C07761003CD95B /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8A624D20C02B82003CD95B /* PushKit.framework */; };
+		6D8A628620C1A19F003CD95B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D8A628420C1A19F003CD95B /* Interface.storyboard */; };
+		6D8A628F20C1A1A1003CD95B /* SurillaWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6D8A628E20C1A1A1003CD95B /* SurillaWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6D8A629420C1A1A1003CD95B /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A629320C1A1A1003CD95B /* InterfaceController.swift */; };
+		6D8A629620C1A1A1003CD95B /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A629520C1A1A1003CD95B /* ExtensionDelegate.swift */; };
+		6D8A629820C1A1A1003CD95B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A629720C1A1A1003CD95B /* NotificationController.swift */; };
+		6D8A629A20C1A1A1003CD95B /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A629920C1A1A1003CD95B /* ComplicationController.swift */; };
+		6D8A629C20C1A1A1003CD95B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D8A629B20C1A1A1003CD95B /* Assets.xcassets */; };
+		6D8A62A120C1A1A1003CD95B /* SurillaWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6D8A628220C1A19F003CD95B /* SurillaWatch.app */; };
 		6D900E201FC31CFF00FF6FF8 /* RemoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */; };
 		6D900E221FC31D4100FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
 		6D900E241FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
@@ -1046,6 +1059,20 @@
 			remoteGlobalIDString = 6D59FCF51FBC8407006C0A2B;
 			remoteInfo = notification;
 		};
+		6D8A629020C1A1A1003CD95B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DA475981E8ABEE600B56D9B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D8A628D20C1A1A1003CD95B;
+			remoteInfo = "SurillaWatch Extension";
+		};
+		6D8A629F20C1A1A1003CD95B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DA475981E8ABEE600B56D9B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D8A628120C1A19F003CD95B;
+			remoteInfo = SurillaWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1069,6 +1096,28 @@
 				6D59FCFD1FBC8407006C0A2B /* notification.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D8A62A520C1A1A1003CD95B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6D8A628F20C1A1A1003CD95B /* SurillaWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D8A62A920C1A1A1003CD95B /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				6D8A62A120C1A1A1003CD95B /* SurillaWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -1234,6 +1283,7 @@
 		6D5F089820A9BEAC0061A6E8 /* ChatClaimPaidCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatClaimPaidCell.swift; path = View/Cells/ChatClaimPaidCell.swift; sourceTree = "<group>"; };
 		6D5F089920A9BEAC0061A6E8 /* ChatClaimPaidCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatClaimPaidCell.xib; path = View/Cells/ChatClaimPaidCell.xib; sourceTree = "<group>"; };
 		6D6245EE1FBEF25C00641D0A /* notification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = notification.entitlements; sourceTree = "<group>"; };
+		6D6388EA20C1BDAD00FD3351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Desktop/Output/Assets.xcassets; sourceTree = "<group>"; };
 		6D666B6F1F8512FA00812CBE /* PlistStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlistStorage.swift; path = Model/Services/Storage/PlistStorage.swift; sourceTree = "<group>"; };
 		6D66B4991F4C461A00672583 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickerController.swift; path = Controller/ImagePickerController.swift; sourceTree = "<group>"; };
 		6D66B49B1F4D89F900672583 /* CombinedModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CombinedModels.swift; path = Model/Entities/CombinedModels.swift; sourceTree = "<group>"; };
@@ -1338,6 +1388,17 @@
 		6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTests.swift; sourceTree = "<group>"; };
 		6D8A624A20C002E4003CD95B /* PushKitWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushKitWorker.swift; path = Model/Services/Push/PushKitWorker.swift; sourceTree = "<group>"; };
 		6D8A624D20C02B82003CD95B /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
+		6D8A628220C1A19F003CD95B /* SurillaWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurillaWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D8A628520C1A19F003CD95B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		6D8A628920C1A1A0003CD95B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D8A628E20C1A1A1003CD95B /* SurillaWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SurillaWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D8A629320C1A1A1003CD95B /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		6D8A629520C1A1A1003CD95B /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		6D8A629720C1A1A1003CD95B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		6D8A629920C1A1A1003CD95B /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		6D8A629B20C1A1A1003CD95B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6D8A629D20C1A1A1003CD95B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D8A629E20C1A1A1003CD95B /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		6D8C6FE61F754D7000BF65B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Error.strings; sourceTree = "<group>"; };
 		6D8C6FE81F754D8E00BF65B6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Error.strings; sourceTree = "<group>"; };
 		6D8CB40E1F5865B200C72AC3 /* Teambrella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Teambrella.entitlements; sourceTree = "<group>"; };
@@ -1660,6 +1721,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0FA59804169C556DC361F3C /* libPods-notification.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D8A628B20C1A1A1003CD95B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2213,6 +2281,30 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		6D8A628320C1A19F003CD95B /* SurillaWatch */ = {
+			isa = PBXGroup;
+			children = (
+				6D6388EA20C1BDAD00FD3351 /* Assets.xcassets */,
+				6D8A628420C1A19F003CD95B /* Interface.storyboard */,
+				6D8A628920C1A1A0003CD95B /* Info.plist */,
+			);
+			path = SurillaWatch;
+			sourceTree = "<group>";
+		};
+		6D8A629220C1A1A1003CD95B /* SurillaWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6D8A629320C1A1A1003CD95B /* InterfaceController.swift */,
+				6D8A629520C1A1A1003CD95B /* ExtensionDelegate.swift */,
+				6D8A629720C1A1A1003CD95B /* NotificationController.swift */,
+				6D8A629920C1A1A1003CD95B /* ComplicationController.swift */,
+				6D8A629B20C1A1A1003CD95B /* Assets.xcassets */,
+				6D8A629D20C1A1A1003CD95B /* Info.plist */,
+				6D8A629E20C1A1A1003CD95B /* PushNotificationPayload.apns */,
+			);
+			path = "SurillaWatch Extension";
+			sourceTree = "<group>";
+		};
 		6D9CC6111ED2E239007F936E /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -2331,6 +2423,8 @@
 				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
 				6D59FCF71FBC8407006C0A2B /* notification */,
 				6DEFE3F32006544100615022 /* NotificationTeambrella */,
+				6D8A628320C1A19F003CD95B /* SurillaWatch */,
+				6D8A629220C1A1A1003CD95B /* SurillaWatch Extension */,
 				6DA475A11E8ABEE600B56D9B /* Products */,
 				5BD17B853E94E5AE1E9DCBE6 /* Pods */,
 				A3DA38407FE7184F4611CDC0 /* Frameworks */,
@@ -2348,6 +2442,8 @@
 				6D59FCF61FBC8407006C0A2B /* notification.appex */,
 				6DEFE3F22006544100615022 /* NotificationTeambrella.appex */,
 				6D05253E20A5D839000B3247 /* Teambrella.app */,
+				6D8A628220C1A19F003CD95B /* SurillaWatch.app */,
+				6D8A628E20C1A1A1003CD95B /* SurillaWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2892,11 +2988,13 @@
 				6D4E5DD51F7AB6870020DEE2 /* CPD */,
 				6F2D2231E75AD99947AB1E17 /* [CP] Copy Pods Resources */,
 				6D59FD011FBC8407006C0A2B /* Embed App Extensions */,
+				6D8A62A920C1A1A1003CD95B /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				6D59FCFC1FBC8407006C0A2B /* PBXTargetDependency */,
+				6D8A62A020C1A1A1003CD95B /* PBXTargetDependency */,
 			);
 			name = Surilla;
 			productName = Teambrella;
@@ -2921,6 +3019,40 @@
 			productName = notification;
 			productReference = 6D59FCF61FBC8407006C0A2B /* notification.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		6D8A628120C1A19F003CD95B /* SurillaWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D8A62A620C1A1A1003CD95B /* Build configuration list for PBXNativeTarget "SurillaWatch" */;
+			buildPhases = (
+				6D8A628020C1A19F003CD95B /* Resources */,
+				6D8A62A520C1A1A1003CD95B /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D8A629120C1A1A1003CD95B /* PBXTargetDependency */,
+			);
+			name = SurillaWatch;
+			productName = SurillaWatch;
+			productReference = 6D8A628220C1A19F003CD95B /* SurillaWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		6D8A628D20C1A1A1003CD95B /* SurillaWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D8A62A220C1A1A1003CD95B /* Build configuration list for PBXNativeTarget "SurillaWatch Extension" */;
+			buildPhases = (
+				6D8A628A20C1A1A1003CD95B /* Sources */,
+				6D8A628B20C1A1A1003CD95B /* Frameworks */,
+				6D8A628C20C1A1A1003CD95B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SurillaWatch Extension";
+			productName = "SurillaWatch Extension";
+			productReference = 6D8A628E20C1A1A1003CD95B /* SurillaWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		6DA475B31E8ABEE600B56D9B /* TeambrellaTests */ = {
 			isa = PBXNativeTarget;
@@ -2965,7 +3097,7 @@
 		6DA475981E8ABEE600B56D9B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Yaroslav Pasternak";
 				TargetAttributes = {
@@ -2984,6 +3116,16 @@
 								enabled = 0;
 							};
 						};
+					};
+					6D8A628120C1A19F003CD95B = {
+						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = Y6A22RLVJG;
+						ProvisioningStyle = Automatic;
+					};
+					6D8A628D20C1A1A1003CD95B = {
+						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = Y6A22RLVJG;
+						ProvisioningStyle = Automatic;
 					};
 					6DA475B31E8ABEE600B56D9B = {
 						CreatedOnToolsVersion = 8.3;
@@ -3019,6 +3161,8 @@
 				6D59FCF51FBC8407006C0A2B /* notification */,
 				6DEFE3F12006544100615022 /* NotificationTeambrella */,
 				6D05234B20A5D838000B3247 /* Teambrella */,
+				6D8A628120C1A19F003CD95B /* SurillaWatch */,
+				6D8A628D20C1A1A1003CD95B /* SurillaWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -3218,6 +3362,27 @@
 			files = (
 				6D310FDA20A445D000F66ED5 /* Contract.txt in Resources */,
 				6D900E271FC46A7200FF6FF8 /* Push.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D8A628020C1A19F003CD95B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6388ED20C1D35700FD3351 /* AkkuratPro-Regular.otf in Resources */,
+				6D6388EB20C1BDAD00FD3351 /* Assets.xcassets in Resources */,
+				6D8A628620C1A19F003CD95B /* Interface.storyboard in Resources */,
+				6D6388EC20C1D35700FD3351 /* AkkuratPro-Bold.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D8A628C20C1A1A1003CD95B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6388EE20C1D35800FD3351 /* AkkuratPro-Bold.otf in Resources */,
+				6D6388EF20C1D35800FD3351 /* AkkuratPro-Regular.otf in Resources */,
+				6D8A629C20C1A1A1003CD95B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4353,6 +4518,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6D8A628A20C1A1A1003CD95B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D8A629820C1A1A1003CD95B /* NotificationController.swift in Sources */,
+				6D8A629A20C1A1A1003CD95B /* ComplicationController.swift in Sources */,
+				6D8A629620C1A1A1003CD95B /* ExtensionDelegate.swift in Sources */,
+				6D8A629420C1A1A1003CD95B /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DA475B01E8ABEE600B56D9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4406,6 +4582,16 @@
 			target = 6D59FCF51FBC8407006C0A2B /* notification */;
 			targetProxy = 6D59FCFB1FBC8407006C0A2B /* PBXContainerItemProxy */;
 		};
+		6D8A629120C1A1A1003CD95B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D8A628D20C1A1A1003CD95B /* SurillaWatch Extension */;
+			targetProxy = 6D8A629020C1A1A1003CD95B /* PBXContainerItemProxy */;
+		};
+		6D8A62A020C1A1A1003CD95B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D8A628120C1A19F003CD95B /* SurillaWatch */;
+			targetProxy = 6D8A629F20C1A1A1003CD95B /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -4447,6 +4633,14 @@
 				6DF78AA5203F213100320D25 /* ru */,
 			);
 			name = Me.strings;
+			sourceTree = "<group>";
+		};
+		6D8A628420C1A19F003CD95B /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D8A628520C1A19F003CD95B /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 		6D8C6FE51F754D7000BF65B6 /* Error.strings */ = {
@@ -4752,6 +4946,102 @@
 			};
 			name = Release;
 		};
+		6D8A62A320C1A1A1003CD95B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "SurillaWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALID_ARCHS = " $(ARCHS_STANDARD)";
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		6D8A62A420C1A1A1003CD95B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "SurillaWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALID_ARCHS = " $(ARCHS_STANDARD)";
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		6D8A62A720C1A1A1003CD95B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = SurillaWatch_Extension;
+				INFOPLIST_FILE = SurillaWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		6D8A62A820C1A1A1003CD95B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = SurillaWatch_Extension;
+				INFOPLIST_FILE = SurillaWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
 		6DA475C61E8ABEE600B56D9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4985,6 +5275,24 @@
 			buildConfigurations = (
 				6D59FCFE1FBC8407006C0A2B /* Debug */,
 				6D59FCFF1FBC8407006C0A2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D8A62A220C1A1A1003CD95B /* Build configuration list for PBXNativeTarget "SurillaWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D8A62A320C1A1A1003CD95B /* Debug */,
+				6D8A62A420C1A1A1003CD95B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D8A62A620C1A1A1003CD95B /* Build configuration list for PBXNativeTarget "SurillaWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D8A62A720C1A1A1003CD95B /* Debug */,
+				6D8A62A820C1A1A1003CD95B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
