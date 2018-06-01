@@ -59,29 +59,40 @@ class PushService: NSObject {
             print("PushKit token: \(token)")
         }
         pushKit.onPushReceived = { [weak self] dict, completion in
-            self?.presentPushKitUserNotification(dict: dict)
-            service.teambrella.startUpdating { result in
-                print("PushKit has finished it's job")
-                completion()
+            guard let cmd = dict["cmd"] as? String else {
+                print("No command found in PushKit dictionary")
+                return
             }
+
+            switch cmd {
+            case "102":
+                //self?.presentPushKitUserNotification(dict: dict)
+                service.teambrella.startUpdating { result in
+                    print("PushKit has finished it's job")
+                    completion()
+                }
+            default:
+                print("Unknown command in push kit")
+            }
+
         }
     }
 
-    func presentPushKitUserNotification(dict: [AnyHashable: Any]) {
-        let state = UIApplication.shared.applicationState
-
-        let content = UNMutableNotificationContent()
-
-        content.title = "PushKit \(state.rawValue)"
-        content.body = dict.description
-        content.categoryIdentifier = "notify-test"
-
-        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest.init(identifier: "notify-test", content: content, trigger: trigger)
-
-        let center = UNUserNotificationCenter.current()
-        center.add(request)
-    }
+//    func presentPushKitUserNotification(dict: [AnyHashable: Any]) {
+//        let state = UIApplication.shared.applicationState
+//
+//        let content = UNMutableNotificationContent()
+//
+//        content.title = "PushKit \(state.rawValue)"
+//        content.body = dict.description
+//        content.categoryIdentifier = "notify-test"
+//
+//        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1, repeats: false)
+//        let request = UNNotificationRequest.init(identifier: "notify-test", content: content, trigger: trigger)
+//
+//        let center = UNUserNotificationCenter.current()
+//        center.add(request)
+//    }
     
     func askPermissionsForRemoteNotifications(application: UIApplication) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in

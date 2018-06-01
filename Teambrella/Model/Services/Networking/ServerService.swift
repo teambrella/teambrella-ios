@@ -87,6 +87,7 @@ final class ServerService: NSObject {
                                        "sig": body.signature,
                                        "clientVersion": application.clientVersion,
                                        "deviceToken": service.push.tokenString ?? "",
+                                       "pushKitToken": service.push.pushKit.tokenString,
                                        "deviceId": application.uniqueIdentifier,
                                        "info": infoMaker.info]
 
