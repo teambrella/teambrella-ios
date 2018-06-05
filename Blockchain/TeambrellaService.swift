@@ -75,7 +75,9 @@ final class TeambrellaService: NSObject {
         service.add(listener: self) { [weak self] action in
             switch action.command {
             case .dbDump:
-                self?.sendDBDump()
+                self?.sendDBDump(completion: { success in
+                    
+                })
             default:
                 break
             }
@@ -83,9 +85,9 @@ final class TeambrellaService: NSObject {
     }
     #endif
 
-    func sendDBDump() {
+    func sendDBDump(completion: @escaping (Bool) -> Void) {
         let dumper = Dumper(api: self.server)
-        dumper.sendDatabaseDump(privateKey: self.key.privateKey)
+        dumper.sendDatabaseDump(privateKey: self.key.privateKey, completion: completion)
     }
 
     func approve(tx: Tx) {

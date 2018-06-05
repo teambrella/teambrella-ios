@@ -484,6 +484,9 @@
 		6D12928A1F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
 		6D12928C1F83DE38001CCC31 /* NameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12928B1F83DE38001CCC31 /* NameTests.swift */; };
 		6D12C2EB1FCD6C6200A8926D /* Info.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D12C2E81FCD6C6200A8926D /* Info.strings */; };
+		6D1B287520C6B795003B2D32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D1B287420C6B795003B2D32 /* Assets.xcassets */; };
+		6D1B287720C6C3D1003B2D32 /* PushKitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */; };
+		6D1B287820C6C3D1003B2D32 /* PushKitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */; };
 		6D1CAC061FF4FEE900FA58B6 /* TeambrellaRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC041FF4FEE900FA58B6 /* TeambrellaRequestType.swift */; };
 		6D1CAC091FF4FF3800FA58B6 /* TeambrellaResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */; };
 		6D1CAC0C1FF51A1200FA58B6 /* OthersVotedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC0A1FF51A1200FA58B6 /* OthersVotedVC.swift */; };
@@ -887,11 +890,19 @@
 		6D5F089B20A9BEAC0061A6E8 /* ChatClaimPaidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5F089820A9BEAC0061A6E8 /* ChatClaimPaidCell.swift */; };
 		6D5F089C20A9BEAC0061A6E8 /* ChatClaimPaidCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D5F089920A9BEAC0061A6E8 /* ChatClaimPaidCell.xib */; };
 		6D5F089D20A9BEAC0061A6E8 /* ChatClaimPaidCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D5F089920A9BEAC0061A6E8 /* ChatClaimPaidCell.xib */; };
-		6D6388EB20C1BDAD00FD3351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D6388EA20C1BDAD00FD3351 /* Assets.xcassets */; };
 		6D6388EC20C1D35700FD3351 /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */; };
 		6D6388ED20C1D35700FD3351 /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */; };
 		6D6388EE20C1D35800FD3351 /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */; };
 		6D6388EF20C1D35800FD3351 /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */; };
+		6D6388F120C3257900FD3351 /* WatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6388F020C3257900FD3351 /* WatchService.swift */; };
+		6D6388F220C3257900FD3351 /* WatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6388F020C3257900FD3351 /* WatchService.swift */; };
+		6D6388F920C326E900FD3351 /* WatchDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6388F820C326E900FD3351 /* WatchDAO.swift */; };
+		6D6388FA20C326E900FD3351 /* WatchDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6388F820C326E900FD3351 /* WatchDAO.swift */; };
+		6D6388FD20C3271300FD3351 /* WalletEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6388FC20C3271300FD3351 /* WalletEntities.swift */; };
+		6D6388FE20C3271300FD3351 /* WalletEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6388FC20C3271300FD3351 /* WalletEntities.swift */; };
+		6D6388FF20C3271300FD3351 /* WalletEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6388FC20C3271300FD3351 /* WalletEntities.swift */; };
+		6D63890120C32DAB00FD3351 /* WatchDAOCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D63890020C32DAB00FD3351 /* WatchDAOCache.swift */; };
+		6D63890220C32DAB00FD3351 /* WatchDAOCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D63890020C32DAB00FD3351 /* WatchDAOCache.swift */; };
 		6D666B711F8512FA00812CBE /* PlistStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D666B6F1F8512FA00812CBE /* PlistStorage.swift */; };
 		6D677E751FA0F0FE00ED1C36 /* EtherNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFDAF61F8CEC7E00342696 /* EtherNode.swift */; };
 		6D677E781FA110B800ED1C36 /* EtherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D677E761FA110B800ED1C36 /* EtherAPI.swift */; };
@@ -1190,6 +1201,8 @@
 		6D1A9B261F55D306004192AC /* PrivateChatUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatUserCell.swift; path = View/PrivateChatUserCell.swift; sourceTree = "<group>"; };
 		6D1A9B271F55D306004192AC /* PrivateChatUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrivateChatUserCell.xib; path = View/PrivateChatUserCell.xib; sourceTree = "<group>"; };
 		6D1A9B2A1F55D66E004192AC /* PrivateMessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesVC.swift; path = Scenes/Home/PrivateMessages/PrivateMessagesVC.swift; sourceTree = "<group>"; };
+		6D1B287420C6B795003B2D32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushKitCommand.swift; path = Model/Services/Push/PushKitCommand.swift; sourceTree = "<group>"; };
 		6D1C23871E8EA99F009B05A3 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Helpers/Extensions/Data.swift; sourceTree = "<group>"; };
 		6D1CAC041FF4FEE900FA58B6 /* TeambrellaRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeambrellaRequestType.swift; path = Model/Services/Networking/TeambrellaRequestType.swift; sourceTree = "<group>"; };
 		6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeambrellaResponseType.swift; path = Model/Services/Networking/TeambrellaResponseType.swift; sourceTree = "<group>"; };
@@ -1283,7 +1296,11 @@
 		6D5F089820A9BEAC0061A6E8 /* ChatClaimPaidCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatClaimPaidCell.swift; path = View/Cells/ChatClaimPaidCell.swift; sourceTree = "<group>"; };
 		6D5F089920A9BEAC0061A6E8 /* ChatClaimPaidCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatClaimPaidCell.xib; path = View/Cells/ChatClaimPaidCell.xib; sourceTree = "<group>"; };
 		6D6245EE1FBEF25C00641D0A /* notification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = notification.entitlements; sourceTree = "<group>"; };
-		6D6388EA20C1BDAD00FD3351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Desktop/Output/Assets.xcassets; sourceTree = "<group>"; };
+		6D6388F020C3257900FD3351 /* WatchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WatchService.swift; path = Model/Services/WatchService/WatchService.swift; sourceTree = "<group>"; };
+		6D6388F720C326E800FD3351 /* SurillaWatch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SurillaWatch-Bridging-Header.h"; sourceTree = "<group>"; };
+		6D6388F820C326E900FD3351 /* WatchDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WatchDAO.swift; path = Model/Services/WatchService/WatchDAO.swift; sourceTree = "<group>"; };
+		6D6388FC20C3271300FD3351 /* WalletEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletEntities.swift; path = Model/Services/WatchService/WalletEntities.swift; sourceTree = "<group>"; };
+		6D63890020C32DAB00FD3351 /* WatchDAOCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WatchDAOCache.swift; path = Model/Services/WatchService/WatchDAOCache.swift; sourceTree = "<group>"; };
 		6D666B6F1F8512FA00812CBE /* PlistStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlistStorage.swift; path = Model/Services/Storage/PlistStorage.swift; sourceTree = "<group>"; };
 		6D66B4991F4C461A00672583 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickerController.swift; path = Controller/ImagePickerController.swift; sourceTree = "<group>"; };
 		6D66B49B1F4D89F900672583 /* CombinedModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CombinedModels.swift; path = Model/Entities/CombinedModels.swift; sourceTree = "<group>"; };
@@ -2183,6 +2200,18 @@
 			path = notification;
 			sourceTree = "<group>";
 		};
+		6D6388F620C3269D00FD3351 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				6D6388F020C3257900FD3351 /* WatchService.swift */,
+				6D6388F820C326E900FD3351 /* WatchDAO.swift */,
+				6D6388F720C326E800FD3351 /* SurillaWatch-Bridging-Header.h */,
+				6D6388FC20C3271300FD3351 /* WalletEntities.swift */,
+				6D63890020C32DAB00FD3351 /* WatchDAOCache.swift */,
+			);
+			name = Watch;
+			sourceTree = "<group>";
+		};
 		6D69D9EE1EFBFF3700DED5CE /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -2284,7 +2313,7 @@
 		6D8A628320C1A19F003CD95B /* SurillaWatch */ = {
 			isa = PBXGroup;
 			children = (
-				6D6388EA20C1BDAD00FD3351 /* Assets.xcassets */,
+				6D1B287420C6B795003B2D32 /* Assets.xcassets */,
 				6D8A628420C1A19F003CD95B /* Interface.storyboard */,
 				6D8A628920C1A1A0003CD95B /* Info.plist */,
 			);
@@ -2509,6 +2538,7 @@
 				6DE3947E1F790A0100784ECD /* Reachability */,
 				6DF2E8BF1EF02F8C00C8D60B /* Socket */,
 				6DA8D5581F0E75FB000A4DB7 /* DAO */,
+				6D6388F620C3269D00FD3351 /* Watch */,
 				6DCC7AC31E93A6920092D3F2 /* Services.swift */,
 				6DA1D0FA1F040AEF00F9DE87 /* Session.swift */,
 				6DF479191F432D230025F489 /* KeychainService.swift */,
@@ -2621,6 +2651,7 @@
 			children = (
 				6D8A624A20C002E4003CD95B /* PushKitWorker.swift */,
 				6DAF1CB71F58562900421C5A /* PushService.swift */,
+				6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */,
 			);
 			name = PushService;
 			sourceTree = "<group>";
@@ -3120,6 +3151,7 @@
 					6D8A628120C1A19F003CD95B = {
 						CreatedOnToolsVersion = 9.4;
 						DevelopmentTeam = Y6A22RLVJG;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 					6D8A628D20C1A1A1003CD95B = {
@@ -3370,8 +3402,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D6388ED20C1D35700FD3351 /* AkkuratPro-Regular.otf in Resources */,
-				6D6388EB20C1BDAD00FD3351 /* Assets.xcassets in Resources */,
 				6D8A628620C1A19F003CD95B /* Interface.storyboard in Resources */,
+				6D1B287520C6B795003B2D32 /* Assets.xcassets in Resources */,
 				6D6388EC20C1D35700FD3351 /* AkkuratPro-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3740,6 +3772,7 @@
 				6D05237920A5D838000B3247 /* ClaimDataSource.swift in Sources */,
 				6D05237A20A5D838000B3247 /* WalletButtonsCell.swift in Sources */,
 				6D05237B20A5D838000B3247 /* ClaimVC.swift in Sources */,
+				6D6388FA20C326E900FD3351 /* WatchDAO.swift in Sources */,
 				6D5F089B20A9BEAC0061A6E8 /* ChatClaimPaidCell.swift in Sources */,
 				6D05237C20A5D838000B3247 /* Cosigner.swift in Sources */,
 				6D7A01B020B5BCBF006A30FA /* WalletCosignersCellBuilder.swift in Sources */,
@@ -3796,6 +3829,7 @@
 				6D0523AC20A5D838000B3247 /* ClaimVoteCell.swift in Sources */,
 				6D0523AD20A5D838000B3247 /* FeedEntity.swift in Sources */,
 				6D0523AE20A5D838000B3247 /* SwitchUserCell.swift in Sources */,
+				6D63890220C32DAB00FD3351 /* WatchDAOCache.swift in Sources */,
 				6D0523AF20A5D838000B3247 /* CoreDataStorage.swift in Sources */,
 				6D0523B020A5D838000B3247 /* GradientView.swift in Sources */,
 				6D0523B120A5D838000B3247 /* MembersDataSource.swift in Sources */,
@@ -3940,6 +3974,7 @@
 				6D05243B20A5D838000B3247 /* HomeCellBuilder.swift in Sources */,
 				6D05243C20A5D838000B3247 /* UIStoryboardSegue.swift in Sources */,
 				6D05243E20A5D838000B3247 /* ClaimDetailsCell.swift in Sources */,
+				6D6388FE20C3271300FD3351 /* WalletEntities.swift in Sources */,
 				6D05243F20A5D838000B3247 /* ClaimEntity.swift in Sources */,
 				6D05244120A5D838000B3247 /* ProxyForVC.swift in Sources */,
 				6D05244220A5D838000B3247 /* SlidingView.swift in Sources */,
@@ -3970,6 +4005,7 @@
 				6D05245C20A5D838000B3247 /* HomeModel.swift in Sources */,
 				6D05245D20A5D838000B3247 /* ChooseYourTeamVC.swift in Sources */,
 				6D05245E20A5D838000B3247 /* HomeSupportCell.swift in Sources */,
+				6D6388F220C3257900FD3351 /* WatchService.swift in Sources */,
 				6D05245F20A5D838000B3247 /* MeCell.swift in Sources */,
 				6D05246020A5D838000B3247 /* BrickView.swift in Sources */,
 				6D05246120A5D838000B3247 /* LabeledRoundImageView.swift in Sources */,
@@ -4014,6 +4050,7 @@
 				6D05248820A5D838000B3247 /* TabType.swift in Sources */,
 				6D7A01A720B5BC77006A30FA /* WithdrawInfoVC.swift in Sources */,
 				6D05248920A5D838000B3247 /* InitialVC.swift in Sources */,
+				6D1B287820C6C3D1003B2D32 /* PushKitCommand.swift in Sources */,
 				6D05248A20A5D838000B3247 /* Operators.swift in Sources */,
 				6D05248B20A5D838000B3247 /* PoopyVC.swift in Sources */,
 				6D05248C20A5D838000B3247 /* PagingInfo.swift in Sources */,
@@ -4139,6 +4176,7 @@
 				6D4E5C4C1F7AB6870020DEE2 /* ClaimDataSource.swift in Sources */,
 				6D4E5C4D1F7AB6870020DEE2 /* WalletButtonsCell.swift in Sources */,
 				6D4E5C4E1F7AB6870020DEE2 /* ClaimVC.swift in Sources */,
+				6D6388F920C326E900FD3351 /* WatchDAO.swift in Sources */,
 				6D5F089A20A9BEAC0061A6E8 /* ChatClaimPaidCell.swift in Sources */,
 				6D4E5C4F1F7AB6870020DEE2 /* Cosigner.swift in Sources */,
 				6D7A01AF20B5BCBF006A30FA /* WalletCosignersCellBuilder.swift in Sources */,
@@ -4195,6 +4233,7 @@
 				6D4E5C751F7AB6870020DEE2 /* ClaimVoteCell.swift in Sources */,
 				6D4E5C761F7AB6870020DEE2 /* FeedEntity.swift in Sources */,
 				6D4E5C771F7AB6870020DEE2 /* SwitchUserCell.swift in Sources */,
+				6D63890120C32DAB00FD3351 /* WatchDAOCache.swift in Sources */,
 				6D4E5C781F7AB6870020DEE2 /* CoreDataStorage.swift in Sources */,
 				6D4E5C791F7AB6870020DEE2 /* GradientView.swift in Sources */,
 				6D4E5C7A1F7AB6870020DEE2 /* MembersDataSource.swift in Sources */,
@@ -4339,6 +4378,7 @@
 				6D4E5CEC1F7AB6870020DEE2 /* HomeCellBuilder.swift in Sources */,
 				6D4E5CED1F7AB6870020DEE2 /* UIStoryboardSegue.swift in Sources */,
 				6D4E5CF01F7AB6870020DEE2 /* ClaimDetailsCell.swift in Sources */,
+				6D6388FD20C3271300FD3351 /* WalletEntities.swift in Sources */,
 				6D4E5CF11F7AB6870020DEE2 /* ClaimEntity.swift in Sources */,
 				6D4E5CF31F7AB6870020DEE2 /* ProxyForVC.swift in Sources */,
 				6D251C4A2035E9B3005081E4 /* SlidingView.swift in Sources */,
@@ -4369,6 +4409,7 @@
 				6D4E5D081F7AB6870020DEE2 /* HomeModel.swift in Sources */,
 				6D4E5D091F7AB6870020DEE2 /* ChooseYourTeamVC.swift in Sources */,
 				6D4E5D0A1F7AB6870020DEE2 /* HomeSupportCell.swift in Sources */,
+				6D6388F120C3257900FD3351 /* WatchService.swift in Sources */,
 				6D4E5D0D1F7AB6870020DEE2 /* MeCell.swift in Sources */,
 				6D4E5D0F1F7AB6870020DEE2 /* BrickView.swift in Sources */,
 				6D4E5D101F7AB6870020DEE2 /* LabeledRoundImageView.swift in Sources */,
@@ -4413,6 +4454,7 @@
 				6D4E5D2B1F7AB6870020DEE2 /* TabType.swift in Sources */,
 				6D7A01A620B5BC77006A30FA /* WithdrawInfoVC.swift in Sources */,
 				6D4E5D2C1F7AB6870020DEE2 /* InitialVC.swift in Sources */,
+				6D1B287720C6C3D1003B2D32 /* PushKitCommand.swift in Sources */,
 				6D4E5D2D1F7AB6870020DEE2 /* Operators.swift in Sources */,
 				6D4E5D2E1F7AB6870020DEE2 /* PoopyVC.swift in Sources */,
 				6D30A4AB1FD1648E003149DB /* PagingInfo.swift in Sources */,
@@ -4523,6 +4565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D8A629820C1A1A1003CD95B /* NotificationController.swift in Sources */,
+				6D6388FF20C3271300FD3351 /* WalletEntities.swift in Sources */,
 				6D8A629A20C1A1A1003CD95B /* ComplicationController.swift in Sources */,
 				6D8A629620C1A1A1003CD95B /* ExtensionDelegate.swift in Sources */,
 				6D8A629420C1A1A1003CD95B /* InterfaceController.swift in Sources */,
@@ -4998,6 +5041,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -5007,10 +5051,13 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = SurillaWatch_Extension;
 				INFOPLIST_FILE = SurillaWatch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Teambrella/SurillaWatch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 4.3;
@@ -5023,6 +5070,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -5032,10 +5080,12 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = SurillaWatch_Extension;
 				INFOPLIST_FILE = SurillaWatch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Teambrella/SurillaWatch-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 4.3;

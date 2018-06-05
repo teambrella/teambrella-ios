@@ -66,8 +66,23 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getLocalizableSampleTemplate(for complication: CLKComplication,
                                       withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
-        // This method will be called once per supported complication, and the results will be cached
-        handler(nil)
+        if complication.family == .modularSmall {
+            let smallFlat = CLKComplicationTemplateModularSmallRingText()
+            smallFlat.ringStyle = .closed
+            smallFlat.fillFraction = 1
+            smallFlat.textProvider = CLKSimpleTextProvider(text: "100%")
+            handler(smallFlat)
+        } else if complication.family == .modularLarge {
+            let large = CLKComplicationTemplateModularLargeStandardBody()
+            if let image = UIImage(named: "teambrella-logo-white") {
+                large.headerImageProvider = CLKImageProvider(onePieceImage: image)
+            }
+            large.body1TextProvider = CLKSimpleTextProvider(text: "Coverage: 100%")
+            handler(large)
+
+        } else {
+            handler(nil)
+        }
     }
     
 }

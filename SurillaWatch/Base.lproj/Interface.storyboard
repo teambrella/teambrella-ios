@@ -25,7 +25,7 @@
                         <group width="1" height="40" alignment="left" spacing="3" id="4nA-F9-uDQ">
                             <items>
                                 <imageView width="40" height="40" alignment="left" image="teambrella-round-logo" contentMode="scaleAspectFit" id="yp7-oW-Oyi"/>
-                                <label width="0.69999999999999996" height="1" alignment="left" text="Test Teambrella" numberOfLines="2" id="QSd-ne-NtU">
+                                <label width="0.69999999999999996" height="1" alignment="left" text="?" numberOfLines="2" id="QSd-ne-NtU">
                                     <color key="textColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </label>
                             </items>
@@ -36,21 +36,21 @@
                         </label>
                         <group width="1" alignment="left" id="WaZ-oJ-PNb">
                             <items>
-                                <label alignment="left" text="0" id="7k0-gm-Ksz">
+                                <label alignment="left" text="?" id="7k0-gm-Ksz">
                                     <fontDescription key="font" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                 </label>
-                                <label alignment="left" verticalAlignment="bottom" text="ETH" textAlignment="right" id="t9K-nZ-slv" userLabel="ETH">
+                                <label alignment="left" verticalAlignment="bottom" text="mETH" textAlignment="right" id="t9K-nZ-slv" userLabel="ETH">
                                     <fontDescription key="font" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="12"/>
                                 </label>
                             </items>
                         </group>
                         <group width="1" alignment="left" id="tKp-7h-8VM">
                             <items>
-                                <label alignment="left" text="0" id="MB5-ko-ved">
+                                <label alignment="left" text="?" id="MB5-ko-ved">
                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="0.50353167808219179" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="18"/>
                                 </label>
-                                <label alignment="left" verticalAlignment="bottom" text="$" id="Wej-ed-5Mg">
+                                <label alignment="left" verticalAlignment="bottom" text="?" id="Wej-ed-5Mg">
                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
                                 </label>
@@ -62,7 +62,7 @@
                         </label>
                         <group width="1" height="40" alignment="left" id="jr2-9V-aAq">
                             <items>
-                                <label alignment="left" text="100" id="Asr-im-Mxs">
+                                <label alignment="left" text="?" id="Asr-im-Mxs">
                                     <fontDescription key="font" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                 </label>
                                 <label alignment="left" verticalAlignment="bottom" text="%" textAlignment="right" id="wxQ-V8-bcN">
@@ -89,6 +89,7 @@
                     <connections>
                         <outlet property="coverage" destination="Asr-im-Mxs" id="cBt-dk-XXx"/>
                         <outlet property="ethValue" destination="7k0-gm-Ksz" id="0Vv-b6-1gY"/>
+                        <outlet property="fiatCurrency" destination="Wej-ed-5Mg" id="7Br-GL-lda"/>
                         <outlet property="fiatValue" destination="MB5-ko-ved" id="seB-IO-Mrw"/>
                         <outlet property="teamLogo" destination="yp7-oW-Oyi" id="QCl-6U-8kM"/>
                         <outlet property="teamName" destination="QSd-ne-NtU" id="0BP-tD-sC2"/>

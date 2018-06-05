@@ -41,6 +41,9 @@ class ServicesHandler {
     
     /// data access object
     lazy var dao: DAO = ServerDAO(server: self.server)
+
+    /// communication with watch
+    var watch: WatchService?
     
     /// push notifications handling service
     lazy var push: PushService = PushService()
@@ -59,7 +62,11 @@ class ServicesHandler {
     var socket: SocketService?
     
     /// service to store current user state. Teams, names unread counts etc
-    var session: Session?
+    var session: Session? {
+        didSet {
+            self.watch = WatchService()
+        }
+    }
     
     // MARK: Utilities
     

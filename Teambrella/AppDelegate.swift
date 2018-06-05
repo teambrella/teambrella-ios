@@ -107,6 +107,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         service.socket?.stop()
+        print("enter background")
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        print("will terminate")
     }
     
     // MARK: Push

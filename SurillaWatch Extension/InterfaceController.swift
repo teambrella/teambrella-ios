@@ -15,26 +15,30 @@
  */
 
 import Foundation
+import WatchConnectivity
 import WatchKit
 
 class InterfaceController: WKInterfaceController {
     @IBOutlet var ethValue: WKInterfaceLabel!
     @IBOutlet var fiatValue: WKInterfaceLabel!
+    @IBOutlet var fiatCurrency: WKInterfaceLabel!
     @IBOutlet var teamName: WKInterfaceLabel!
     @IBOutlet var teamLogo: WKInterfaceImage!
     @IBOutlet var coverage: WKInterfaceLabel!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        sendRequest()
 
-        ethValue.setText("0")
-        fiatValue.setText("0")
-        teamName.setText("Team name")
     }
     
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+
+        let session = WCSession.default
+        session.delegate = self
+        session.activate()
+        sendRequest()
     }
     
     override func didDeactivate() {
@@ -42,4 +46,45 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    func sendRequest() {
+        let walletCommand = WatchCommand.wallet
+        WCSession.default.sendMessage(walletCommand.dict, replyHandler: { [weak self] message in
+            if let wallet = WatchWallet(dict: message) {
+                self?.setupWith(wallet: wallet)
+            }
+        })
+
+        let coverageCommand = WatchCommand.coverage
+        WCSession.default.sendMessage(coverageCommand.dict, replyHandler: { [weak self] message in
+            if let coverage = WatchCoverage(dict: message) {
+                self?.setupWith(coverage: coverage)
+            }
+        })
+    }
+
+    func setupWith(wallet: WatchWallet) {
+        ethValue.setText(String(format: "%.2f", wallet.mETH))
+        fiatValue.setText(String(format: "%.2f", wallet.rate * wallet.mETH))
+        fiatCurrency.setText(wallet.team.currency)
+        teamName.setText(wallet.team.name)
+
+        //teamLogo.setImage(message["image"] as? UIImage)
+    }
+
+    func setupWith(coverage: WatchCoverage) {
+        self.coverage.setText("\(coverage.coverage)")
+    }
+
+}
+
+extension InterfaceController: WCSessionDelegate {
+    func session(_ session: WCSession,
+                 activationDidCompleteWith activationState: WCSessionActivationState,
+                 error: Error?) {
+
+    }
+
+    func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
+        WKInterfaceDevice().play(.click)
+    }
 }

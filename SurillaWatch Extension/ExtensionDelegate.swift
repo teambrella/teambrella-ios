@@ -61,4 +61,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
 
+    func handle(_ userActivity: NSUserActivity) {
+            print("launched from \(userActivity.activityType)")
+    }
+
 }
