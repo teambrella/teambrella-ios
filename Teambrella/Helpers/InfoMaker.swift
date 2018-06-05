@@ -106,27 +106,29 @@ class InfoMaker {
         guard !isPreparingServices else { return }
 
         isPreparingServices = true
-        var options: ServicesOptions = []
-        if UIApplication.shared.backgroundRefreshStatus == .available { options.insert(.silentPushEnabled) }
-        if UIDevice.current.isInLowPowerMode { options.insert(.isInLowPowerMode) }
+        DispatchQueue.main.async {
+            var options: ServicesOptions = []
+            if UIApplication.shared.backgroundRefreshStatus == .available { options.insert(.silentPushEnabled) }
+            if UIDevice.current.isInLowPowerMode { options.insert(.isInLowPowerMode) }
 
-        let current = UNUserNotificationCenter.current()
-        current.getNotificationSettings { settings in
-            switch settings.authorizationStatus {
-            case .notDetermined:
-                options.insert(.pushNeverAsked)
-            case .authorized:
-                options.insert(.pushEnabled)
-            case .denied:
-                break
+            let current = UNUserNotificationCenter.current()
+            current.getNotificationSettings { settings in
+                switch settings.authorizationStatus {
+                case .notDetermined:
+                    options.insert(.pushNeverAsked)
+                case .authorized:
+                    options.insert(.pushEnabled)
+                case .denied:
+                    break
+                }
+                self.options = options
+                self.isReady = true
+                self.isPreparingServices = false
             }
-            self.options = options
-            self.isReady = true
-            self.isPreparingServices = false
         }
     }
 
-     lazy private var appSizeMB: Double = {
+    lazy private var appSizeMB: Double = {
         var paths = [Bundle.main.bundlePath]
         let docDirDomain = FileManager.SearchPathDirectory.documentDirectory
         let docDirs = NSSearchPathForDirectoriesInDomains(docDirDomain, .userDomainMask, true)

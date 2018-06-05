@@ -26,10 +26,19 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var teamLogo: WKInterfaceImage!
     @IBOutlet var coverage: WKInterfaceLabel!
     
+    @IBOutlet var walletTitle: WKInterfaceLabel!
+    @IBOutlet var coverageTitle: WKInterfaceLabel!
+
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        sendRequest()
+        print(context)
 
+        walletTitle.setText(NSLocalizedString("Wallet",
+                                              tableName: "Watch",
+                                              comment: ""))
+        coverageTitle.setText(NSLocalizedString("Coverage",
+                                                tableName: "Watch",
+                                                comment: ""))
     }
     
     override func willActivate() {
@@ -37,7 +46,10 @@ class InterfaceController: WKInterfaceController {
 
         let session = WCSession.default
         session.delegate = self
-        session.activate()
+        if session.activationState != .activated {
+            session.activate()
+        }
+
         sendRequest()
     }
     
@@ -46,11 +58,24 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    func setTeamLogo(urlString: String) {
+        guard let urlData = urlString.data(using: .utf8) else { return }
+
+        WCSession.default.sendMessageData(urlData, replyHandler: { [weak self] data in
+            guard let image = UIImage(data: data) else { return }
+
+            self?.teamLogo.setImage(image)
+        }) { error in
+
+        }
+    }
+
     func sendRequest() {
         let walletCommand = WatchCommand.wallet
         WCSession.default.sendMessage(walletCommand.dict, replyHandler: { [weak self] message in
             if let wallet = WatchWallet(dict: message) {
                 self?.setupWith(wallet: wallet)
+                self?.setTeamLogo(urlString: wallet.team.logo)
             }
         })
 
@@ -64,7 +89,7 @@ class InterfaceController: WKInterfaceController {
 
     func setupWith(wallet: WatchWallet) {
         ethValue.setText(String(format: "%.2f", wallet.mETH))
-        fiatValue.setText(String(format: "%.2f", wallet.rate * wallet.mETH))
+        fiatValue.setText(String(format: "%.2f", wallet.mETH / 1000 * wallet.rate))
         fiatCurrency.setText(wallet.team.currency)
         teamName.setText(wallet.team.name)
 

@@ -15,68 +15,63 @@
  */
 
 import ClockKit
+import WatchKit
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
-    
+    enum Constant {
+        static let complicationCurrentEntry = "ComplicationCurrentEntry"
+        static let complicationTextData = "ComplicationTextData"
+        static let complicationShortTextData = "ComplicationShortTextData"
+    }
+
     // MARK: - Timeline Configuration
     
     func getSupportedTimeTravelDirections(for complication: CLKComplication,
                                           withHandler handler: @escaping (CLKComplicationTimeTravelDirections) -> Void) {
-        handler([.forward, .backward])
-    }
-    
-    func getTimelineStartDate(for complication: CLKComplication,
-                              withHandler handler: @escaping (Date?) -> Void) {
-        handler(nil)
-    }
-    
-    func getTimelineEndDate(for complication: CLKComplication,
-                            withHandler handler: @escaping (Date?) -> Void) {
-        handler(nil)
-    }
-    
-    func getPrivacyBehavior(for complication: CLKComplication,
-                            withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
-        handler(.showOnLockScreen)
+        handler([])
     }
     
     // MARK: - Timeline Population
-    
+
     func getCurrentTimelineEntry(for complication: CLKComplication,
                                  withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
-        // Call the handler with the current timeline entry
-        handler(nil)
-    }
-    
-    func getTimelineEntries(for complication: CLKComplication,
-                            before date: Date, limit: Int,
-                            withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
-        // Call the handler with the timeline entries prior to the given date
-        handler(nil)
-    }
-    
-    func getTimelineEntries(for complication: CLKComplication,
-                            after date: Date, limit: Int,
-                            withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
-        // Call the handler with the timeline entries after to the given date
-        handler(nil)
+        //        guard let myDelegate = WKExtension.shared().delegate as? ExtensionDelegate else { return }
+        //
+        //        var data: Dictionary = myDelegate.dictionaryWithValues(forKeys: [Constant.complicationCurrentEntry,
+        //                                                                          Constant.complicationTextData,
+        //
+
+        var entry: CLKComplicationTimelineEntry?
+        let now = Date()
+        let longText = "Teambrella" //data[Constant.complicationTextData] as! String
+        let shortText = "Wallet" //data[Constant.complicationShortTextData] as! String
+
+        if complication.family == .modularSmall {
+            let textTemplate = CLKComplicationTemplateModularSmallSimpleText()
+            textTemplate.textProvider = CLKSimpleTextProvider(text: shortText, shortText: shortText)
+            entry = CLKComplicationTimelineEntry(date: now, complicationTemplate: textTemplate)
+        } else if complication.family == .modularLarge {
+            let large = CLKComplicationTemplateModularLargeStandardBody()
+            large.headerTextProvider = CLKSimpleTextProvider(text: longText)
+            large.body1TextProvider = CLKSimpleTextProvider(text: shortText)
+            entry = CLKComplicationTimelineEntry(date: now, complicationTemplate: large)
+        }
+
+        handler(entry)
     }
     
     // MARK: - Placeholder Templates
     
     func getLocalizableSampleTemplate(for complication: CLKComplication,
                                       withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
+        print("complication family: \(complication.family)")
         if complication.family == .modularSmall {
-            let smallFlat = CLKComplicationTemplateModularSmallRingText()
-            smallFlat.ringStyle = .closed
-            smallFlat.fillFraction = 1
-            smallFlat.textProvider = CLKSimpleTextProvider(text: "100%")
+            let smallFlat = CLKComplicationTemplateModularSmallSimpleText()
+            smallFlat.textProvider = CLKSimpleTextProvider(text: "Wallet", shortText: "W")
             handler(smallFlat)
         } else if complication.family == .modularLarge {
             let large = CLKComplicationTemplateModularLargeStandardBody()
-            if let image = UIImage(named: "teambrella-logo-white") {
-                large.headerImageProvider = CLKImageProvider(onePieceImage: image)
-            }
+            large.headerTextProvider = CLKSimpleTextProvider(text: "Wallet")
             large.body1TextProvider = CLKSimpleTextProvider(text: "Coverage: 100%")
             handler(large)
 

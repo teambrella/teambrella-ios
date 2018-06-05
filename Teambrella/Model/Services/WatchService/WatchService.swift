@@ -50,6 +50,22 @@ extension WatchService: WCSessionDelegate {
         print("message received: \(message)")
     }
 
+    func session(_ session: WCSession,
+                 didReceiveMessageData messageData: Data,
+                 replyHandler: @escaping (Data) -> Void) {
+        guard let imageURLString = String(data: messageData, encoding: .utf8) else {
+            replyHandler(Data())
+            return
+        }
+
+        UIImage.fetchImage(string: imageURLString) { image, error in
+            if let image = image, let encodedImage = UIImagePNGRepresentation(image) {
+                replyHandler(encodedImage)
+            } else {
+                replyHandler(Data())
+            }
+        }
+    }
     func session(_ session: WCSession, didReceiveMessage message: [String: Any],
                  replyHandler: @escaping ([String: Any]) -> Void) {
         guard let command = WatchCommand(dict: message) else { return }
@@ -63,7 +79,8 @@ extension WatchService: WCSessionDelegate {
                     return
                 }
 
-                result.merge(wallet.dict, uniquingKeysWith: { (first, _) in first })
+                result.merge(wallet.dict, uniquingKeysWith: { first, _ in first })
+                replyHandler(result)
             }
         case .coverage:
             dao.getCoverage { coverage in
@@ -72,10 +89,10 @@ extension WatchService: WCSessionDelegate {
                     return
                 }
 
-                result.merge(item.dict, uniquingKeysWith: { (first, _) in first })
+                result.merge(item.dict, uniquingKeysWith: { first, _ in first })
+                replyHandler(result)
             }
         }
-        replyHandler(result)
         /*
         if  let wallet = self.wallet,
             let team = service.session?.currentTeam {

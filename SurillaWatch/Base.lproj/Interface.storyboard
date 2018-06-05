@@ -72,14 +72,13 @@
                         </group>
                         <separator alignment="left" id="hJa-Aq-3Fn"/>
                         <group width="1" height="30" alignment="left" id="Isg-Z8-aSw"/>
-                        <button width="1" alignment="left" title="View Feed" id="lid-OX-p21">
+                        <button width="1" alignment="left" hidden="YES" title="View Feed" id="lid-OX-p21">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="backgroundColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="e5g-BR-Gke" kind="push" id="Kd1-j4-3NC"/>
                             </connections>
                         </button>
-                        <group width="1" height="30" alignment="left" id="f6S-sp-dbt"/>
                         <group width="1" height="30" alignment="left" id="o1g-F3-mJb">
                             <items>
                                 <imageView alignment="left" image="teambrella-logo-white" id="mdN-eQ-bsz"/>
@@ -88,11 +87,13 @@
                     </items>
                     <connections>
                         <outlet property="coverage" destination="Asr-im-Mxs" id="cBt-dk-XXx"/>
+                        <outlet property="coverageTitle" destination="wZG-pl-bWf" id="Xc7-zh-PIA"/>
                         <outlet property="ethValue" destination="7k0-gm-Ksz" id="0Vv-b6-1gY"/>
                         <outlet property="fiatCurrency" destination="Wej-ed-5Mg" id="7Br-GL-lda"/>
                         <outlet property="fiatValue" destination="MB5-ko-ved" id="seB-IO-Mrw"/>
                         <outlet property="teamLogo" destination="yp7-oW-Oyi" id="QCl-6U-8kM"/>
                         <outlet property="teamName" destination="QSd-ne-NtU" id="0BP-tD-sC2"/>
+                        <outlet property="walletTitle" destination="hEl-c6-9D0" id="uBb-Vm-D98"/>
                     </connections>
                 </controller>
             </objects>

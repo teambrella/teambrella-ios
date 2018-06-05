@@ -19,9 +19,10 @@ import Foundation
 class WatchDAO {
     let cache: WatchDAOCache = WatchDAOCache(deprecateInterval: 60 * 3)
     let dao: DAO = service.dao
+    var isCaching: Bool = true
 
     func getWallet(completion: @escaping (WatchWallet?) -> Void) {
-        if let wallet = cache.wallet, cache.isValid(item: wallet) {
+        if isCaching, let wallet = cache.wallet, cache.isValid(item: wallet) {
             completion(wallet.value)
         } else {
             guard let session = service.session, let team = session.currentTeam else {
@@ -46,7 +47,7 @@ class WatchDAO {
     }
 
     func getCoverage(completion: @escaping (WatchCoverage?) -> Void) {
-        if let item = cache.coverage, cache.isValid(item: item) {
+        if isCaching, let item = cache.coverage, cache.isValid(item: item) {
             completion(item.value)
         } else {
             guard let session = service.session, let team = session.currentTeam else {
