@@ -114,7 +114,7 @@
 "Team.VotingRiskVC.numberBar.right"                   = "TU VOTO";
 "Team.VotingRiskVC.avgLabel"                          = "PROM\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Reiniciar Votación";
-"Team.VotingRiskVC.othersButton"                      = "Otros";
+"Team.VotingRiskVC.othersButton"                      = "Comparar";
 
 "Team.Members.Teammates.Strategy.headerTitle"         = "RIESGO: %.2f A %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle"      = "RIESGO";

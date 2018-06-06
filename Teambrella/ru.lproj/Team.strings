@@ -124,7 +124,7 @@
 "Team.VotingRiskVC.numberBar.right"                   = "ТВОЙ ГОЛОС";
 "Team.VotingRiskVC.avgLabel"                          = "СРЕДН.\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Сбросить";
-"Team.VotingRiskVC.othersButton"                      = "Остальные";
+"Team.VotingRiskVC.othersButton"                      = "Сравнить";
 
 "Team.Members.Teammates.Strategy.headerTitle"         = "РИСК: %.2f ДО %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle"      = "РИСК";
