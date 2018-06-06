@@ -39,9 +39,9 @@ class EthWallet {
         static let gasPriceDefault: Int         = 100_000_001
         static let gasPriceMax: Int             = 50_000_000_001
         static let claimGasPriceDefault: Int    = 1_000_000_001
-        static let claimGasPriceMax: Int        = 4_000_000_001
+        static let claimGasPriceMax: Int        = 10_000_000_001
         static let contractGasPriceDefault: Int = 100_000_001
-        static let contractGasPriceMax: Int     = 8_000_000_002
+        static let contractGasPriceMax: Int     = 20_000_000_002
     }
 
     enum EthWalletError: Error {
