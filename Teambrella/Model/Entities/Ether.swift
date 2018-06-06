@@ -53,7 +53,7 @@ struct Ether: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStr
     }
 
     init(_ gwei: Gwei) {
-        self.value = gwei.value * 1_000_000_000
+        self.value = gwei.value / 1_000_000_000
     }
 
     init(from decoder: Decoder) throws {
@@ -116,7 +116,7 @@ struct MEth: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStri
     }
 
     init(_ gwei: Gwei) {
-        self.value = gwei.value * 1000_000
+        self.value = gwei.value / 1_000_000
     }
 
     init(from decoder: Decoder) throws {
@@ -148,11 +148,136 @@ struct Gwei: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStri
     }
 
     init(_ mEth: MEth) {
-        self.value = mEth.value * 1000
+        self.value = mEth.value * 1_000_000
     }
 
     init(_ ether: Ether) {
         self.value = ether.value * 1_000_000_000
+    }
+
+    init(_ mwei: Mwei) {
+        self.value = mwei.value / 1000
+    }
+
+    init(_ kwei: Kwei) {
+        self.value = kwei.value / 1_000_000
+    }
+
+    init(_ wei: Wei) {
+        self.value = Double(wei.value) / 1_000_000_000
+    }
+
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Double.self)
+        self.value = value
+    }
+
+}
+
+struct Wei {
+    enum WeiError: Error {
+        case overflowingValue
+        case notIntegerInputValue
+    }
+
+    let value: Int
+
+    init(_ value: Int) {
+        self.value = value
+    }
+
+    static func integerConversion(from: Gwei) throws -> Wei {
+        let safeValue = from.value * 1_000_000_000
+        guard safeValue < Double(Int.max) else { throw WeiError.overflowingValue }
+
+        let result = Int(safeValue)
+        guard result == Int(from.value) * 1_000_000_000 else { throw WeiError.notIntegerInputValue }
+
+        return Wei(result)
+    }
+
+    static func integerConversion(from: MEth) throws -> Wei {
+        let safeValue = from.value * 1_000_000_000_000_000
+        guard safeValue < Double(Int.max) else { throw WeiError.overflowingValue }
+
+        let result = Int(safeValue)
+        guard result == Int(from.value) * 1_000_000_000_000_000 else { throw WeiError.notIntegerInputValue }
+
+        return Wei(result)
+    }
+}
+
+struct Kwei: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStringConvertible {
+    let value: Double
+
+    let name = "KWei"
+    let code = "KWei"
+    let symbol = "KWei"
+
+    var description: String { return String(describing: value) }
+    var debugDescription: String { return "KWei(\(value)" }
+
+    init(_ value: Double) {
+        self.value = value
+    }
+
+    init?(string: String?) {
+        guard let string = string else { return nil }
+        guard let double = Double(string) else { return nil }
+
+        self.value = double
+    }
+
+    init(_ wei: Wei) {
+        self.value = Double(wei.value) / 1000
+    }
+
+    init(_ mwei: Mwei) {
+        self.value = mwei.value * 1000
+    }
+
+    init(_ gwei: Gwei) {
+        self.value = gwei.value * 1_000_000
+    }
+
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Double.self)
+        self.value = value
+    }
+
+}
+
+struct Mwei: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStringConvertible {
+    let value: Double
+
+    let name = "MWei"
+    let code = "MWei"
+    let symbol = "MWei"
+
+    var description: String { return String(describing: value) }
+    var debugDescription: String { return "MWei(\(value)" }
+
+    init(_ value: Double) {
+        self.value = value
+    }
+
+    init?(string: String?) {
+        guard let string = string else { return nil }
+        guard let double = Double(string) else { return nil }
+
+        self.value = double
+    }
+
+    init(_ wei: Wei) {
+        self.value = Double(wei.value) / 1_000_000
+    }
+
+    init(_ kwei: Kwei) {
+        self.value = kwei.value / 1000
+    }
+
+    init(_ gwei: Gwei) {
+        self.value = gwei.value * 1000
     }
 
     init(from decoder: Decoder) throws {

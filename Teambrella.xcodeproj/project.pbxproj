@@ -1000,6 +1000,7 @@
 		6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */; };
 		6DBF492D1F80F22300B236E2 /* AnimationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */; };
 		6DC1BB232077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC1BB212077C8CF008661AF /* XLPagerTabStrip.framework */; };
+		6DCE7B3A20C81F1000D0003A /* EtherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE7B3920C81F1000D0003A /* EtherTests.swift */; };
 		6DDB5D941FF692DC0066A07F /* TeammatesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB5D921FF692DC0066A07F /* TeammatesList.swift */; };
 		6DDB5D971FF694090066A07F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB5D951FF694090066A07F /* ChatModel.swift */; };
 		6DDB5D9A1FF698B60066A07F /* TeammateVotingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB5D981FF698B60066A07F /* TeammateVotingResult.swift */; };
@@ -1534,6 +1535,7 @@
 		6DCDEB6F1F17DC5900C6D38C /* FeedEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedEntity.swift; path = Model/Entities/FeedEntity.swift; sourceTree = "<group>"; };
 		6DCDEB711F17E2F100C6D38C /* ItemType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemType.swift; path = Model/Enums/ItemType.swift; sourceTree = "<group>"; };
 		6DCDEB731F17E76A00C6D38C /* FeedRequestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedRequestContext.swift; path = Model/Entities/FeedRequestContext.swift; sourceTree = "<group>"; };
+		6DCE7B3920C81F1000D0003A /* EtherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherTests.swift; sourceTree = "<group>"; };
 		6DCF62521F4B30E200E8F500 /* PhotoPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewVC.swift; path = Controller/PhotosPreviewVC/PhotoPreviewVC.swift; sourceTree = "<group>"; };
 		6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewCell.swift; path = View/Cells/PhotoPreviewCell.swift; sourceTree = "<group>"; };
 		6DCF62561F4B319F00E8F500 /* PhotoPreviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewCell.xib; path = View/Cells/PhotoPreviewCell.xib; sourceTree = "<group>"; };
@@ -1764,6 +1766,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFC3BBD4921FE3745A914383 /* libPods-NotificationTeambrella.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9B05017EF7A4C7608AC28CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2510,6 +2519,7 @@
 				6D88C4FC1FA3986300E55F7C /* CryptoTests.swift */,
 				6D3AE8841FB2015F00A027BB /* BigNumberTests.swift */,
 				6DF2079C1FB4A11600E10B85 /* StringTests.swift */,
+				6DCE7B3920C81F1000D0003A /* EtherTests.swift */,
 			);
 			path = TeambrellaTests;
 			sourceTree = "<group>";
@@ -3060,6 +3070,7 @@
 			buildPhases = (
 				6D8A628020C1A19F003CD95B /* Resources */,
 				6D8A62A520C1A1A1003CD95B /* Embed App Extensions */,
+				D9B05017EF7A4C7608AC28CD /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4586,6 +4597,7 @@
 				6D88C4FD1FA3986300E55F7C /* CryptoTests.swift in Sources */,
 				6D12928C1F83DE38001CCC31 /* NameTests.swift in Sources */,
 				6D91BC071EB3A79100FDC332 /* UUIDTests.swift in Sources */,
+				6DCE7B3A20C81F1000D0003A /* EtherTests.swift in Sources */,
 				6D3AE8851FB2015F00A027BB /* BigNumberTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4874,7 +4886,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconSurilla;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
@@ -4914,7 +4926,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8C3B97E2D3D3E031BC1B2FC /* Pods-Surilla.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconSurilla;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;

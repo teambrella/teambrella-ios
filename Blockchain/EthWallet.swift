@@ -32,6 +32,16 @@ class EthWallet {
 
         static let gasLimitBase: Int            = 100_000
         static let gasLimitForMoveTx: Int       = 200_000
+        static let gasLimitForDepositTx: Int    = 50_000
+
+        static let gasStash: Int                = 30_000
+
+        static let gasPriceDefault: Int         = 100_000_001
+        static let gasPriceMax: Int             = 50_000_000_001
+        static let claimGasPriceDefault: Int    = 1_000_000_001
+        static let claimGasPriceMax: Int        = 4_000_000_001
+        static let contractGasPriceDefault: Int = 100_000_001
+        static let contractGasPriceMax: Int     = 8_000_000_002
     }
 
     enum EthWalletError: Error {
@@ -191,10 +201,10 @@ class EthWallet {
             case ..<0:
                 log("Failed to get the gas price from a server. A default gas price will be used.",
                     type: [.error, .crypto])
-                self.gasPrice = 100_000_001
-            case 50_000_000_001...:
+                self.gasPrice = Constant.gasPriceDefault
+            case Constant.gasPriceMax...:
                 log("The server is kidding with us about the gas price: \(price)", type: [.error, .crypto])
-                self.gasPrice = 50_000_000_001
+                self.gasPrice = Constant.gasPriceMax
             default:
                 self.gasPrice = price
             }
@@ -215,13 +225,13 @@ class EthWallet {
             case ..<0:
                 log("Failed to get the gas price from a server. A default gas price will be used.",
                     type: [.error, .crypto])
-                self.gasPrice = 1_000_000_001
-            case 4_000_000_001...:
+                self.gasPrice = Constant.claimGasPriceDefault
+            case Constant.claimGasPriceMax...:
                 log("""
                     With the current version gas price for a clime is limited. This high price will be supported later \
                     (when off-chain payments are implemented) : \(price)
                     """, type: [.error, .crypto])
-                self.gasPrice = 4_000_000_001
+                self.gasPrice = Constant.claimGasPriceMax
             default:
                 self.gasPrice = price
             }
@@ -242,10 +252,10 @@ class EthWallet {
             case ..<0:
                 log("Failed to get the gas price from a server. A default gas price will be used.",
                     type: [.error, .crypto])
-                self.contractGasPrice = 100_000_001
-            case 8_000_000_002...:
+                self.contractGasPrice = Constant.contractGasPriceDefault
+            case Constant.contractGasPriceMax...:
                 log("The server is kidding with us about the contract gas price: \(price)", type: [.error, .crypto])
-                self.contractGasPrice = 8_000_000_002
+                self.contractGasPrice = Constant.contractGasPriceMax
             default:
                 self.contractGasPrice = price
             }
@@ -264,7 +274,7 @@ class EthWallet {
                         let value = gasWalletAmount - Constant.minGasWalletBalance
                         do {
                             var tx = try self.processor.depositTx(nonce: nonce,
-                                                                  gasLimit: 50000,
+                                                                  gasLimit: Constant.gasLimitForDepositTx,
                                                                   toAddress: multisig.address!,
                                                                   gasPrice: gasPrice,
                                                                   value: value)
@@ -416,7 +426,7 @@ class EthWallet {
         }
 
         checkMyNonce(success: { myNonce in
-            let gasLimit = 200_000
+            let gasLimit = Constant.gasLimitForMoveTx
             self.refreshGasPrice { gasPrice in
                 guard let multisigAddress = myMultisig.address, let moveFrom = tx.inputs.first else {
                     return
@@ -511,7 +521,7 @@ class EthWallet {
         }
 
         checkMyNonce(success: { myNonce in
-            let gasLimit = Constant.gasLimitBase + 30_000 * tx.outputs.count
+            let gasLimit = Constant.gasLimitBase + Constant.gasStash * tx.outputs.count
             self.refreshClaimGasPrice { gasPrice in
                 guard let multisigAddress = myMultisig.address, let payFrom = tx.inputs.first else {
                     return
