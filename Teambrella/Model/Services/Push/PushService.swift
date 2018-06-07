@@ -34,6 +34,8 @@ class PushService: NSObject {
         return [UInt8](token).reduce("") { $0 + String(format: "%02x", $1) }
     }
 
+    var listeners: [AnyHashable: (RemoteCommandType, [AnyHashable: Any]) -> Bool] = [:]
+
     var command: RemotePayload?
     
     var router: MainRouter { return service.router }
@@ -53,6 +55,14 @@ class PushService: NSObject {
 
         // Firebase
         Messaging.messaging().delegate = self
+    }
+
+    func addListener(_ listener: AnyHashable, handler: @escaping (RemoteCommandType, [AnyHashable: Any]) -> Bool) {
+        listeners[listener] = handler
+    }
+
+    func removeListener(_ listener: AnyHashable) {
+        listeners[listener] = nil
     }
 
     func startPushKit() {
@@ -76,10 +86,6 @@ class PushService: NSObject {
                 self?.teambrella.sendDBDump { success in
                     completion()
                 }
-            default:
-                print("Unknown command in push kit")
-                self?.presentPushKitUserNotification(dict: dict)
-                completion()
             }
         }
     }
@@ -270,6 +276,18 @@ extension PushService: UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler:
         @escaping (UNNotificationPresentationOptions) -> Void) {
+        let dict = notification.request.content.userInfo
+        print("userNotificationCenter dict: \(dict)")
+        if let payload = dict["Payload"] as? [AnyHashable: Any],
+            let commandInt = payload["Cmd"] as? Int,
+            let command = RemoteCommandType(rawValue: commandInt) {
+            for (_ , handler) in listeners {
+                // listeners may opt into showing push (sending true) or not
+                if handler(command, payload) == false {
+                    return
+                }
+            }
+        }
         completionHandler([.alert, .sound, .badge])
     }
 }

@@ -975,6 +975,8 @@
 		6D92BBBB2089E28F00E2E953 /* ChatImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */; };
 		6D9374AA202C9EB800BB28CB /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
 		6D9374AB202C9EB900BB28CB /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
+		6D94B0BD20C9429D00E98F99 /* ChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D94B0BC20C9429D00E98F99 /* ChatContext.swift */; };
+		6D94B0BE20C9429D00E98F99 /* ChatContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D94B0BC20C9429D00E98F99 /* ChatContext.swift */; };
 		6D96E11B208A1338009F99F5 /* ChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D96E119208A1338009F99F5 /* ChatTextCell.swift */; };
 		6D9F6ADC2014EB3000B3287D /* Dumper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F6ADA2014EB3000B3287D /* Dumper.swift */; };
 		6DA1A5401FBF0AEA000FDECA /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D1021F056DF900F9DE87 /* UIImage.swift */; };
@@ -1435,6 +1437,7 @@
 		6D90304320B80469001775ED /* CoverageLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoverageLocalizer.swift; path = Model/Services/CoverageLocalizer.swift; sourceTree = "<group>"; };
 		6D91BC061EB3A79100FDC332 /* UUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDTests.swift; sourceTree = "<group>"; };
 		6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatImageCell.swift; path = Scenes/Team/Chat/ChatImageCell.swift; sourceTree = "<group>"; };
+		6D94B0BC20C9429D00E98F99 /* ChatContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatContext.swift; path = Scenes/Team/Chat/ChatContext.swift; sourceTree = "<group>"; };
 		6D96E119208A1338009F99F5 /* ChatTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatTextCell.swift; path = Scenes/Team/Chat/ChatTextCell.swift; sourceTree = "<group>"; };
 		6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyProcessor.swift; path = Helpers/CurrencyProcessor.swift; sourceTree = "<group>"; };
 		6D9CC6121ED47C79007F936E /* LoginDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginDetailsVC.swift; path = Scenes/Login/LoginDetailsVC.swift; sourceTree = "<group>"; };
@@ -2690,6 +2693,7 @@
 				9475D9311FA390BC00F881C9 /* MuteCellModel.swift */,
 				6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */,
 				6D96E119208A1338009F99F5 /* ChatTextCell.swift */,
+				6D94B0BC20C9429D00E98F99 /* ChatContext.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -3938,6 +3942,7 @@
 				6D05240820A5D838000B3247 /* ClaimTransactionsDataSource.swift in Sources */,
 				6D05240920A5D838000B3247 /* WalletVC.swift in Sources */,
 				6D05240A20A5D838000B3247 /* MultisigServerImpl.swift in Sources */,
+				6D94B0BE20C9429D00E98F99 /* ChatContext.swift in Sources */,
 				6D05240B20A5D838000B3247 /* MembersVC.swift in Sources */,
 				6D05240C20A5D838000B3247 /* CryptoServerUpdate.swift in Sources */,
 				6D05240D20A5D838000B3247 /* Formatter.swift in Sources */,
@@ -4342,6 +4347,7 @@
 				6D4E5CC81F7AB6870020DEE2 /* ClaimTransactionsDataSource.swift in Sources */,
 				6D4E5CC91F7AB6870020DEE2 /* WalletVC.swift in Sources */,
 				6D1EC3D8202B0CFB00F0541C /* MultisigServerImpl.swift in Sources */,
+				6D94B0BD20C9429D00E98F99 /* ChatContext.swift in Sources */,
 				6D4E5CCA1F7AB6870020DEE2 /* MembersVC.swift in Sources */,
 				6D0FD84E201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */,
 				6D4E5CCB1F7AB6870020DEE2 /* Formatter.swift in Sources */,

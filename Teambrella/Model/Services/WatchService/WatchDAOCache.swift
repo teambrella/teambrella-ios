@@ -35,7 +35,9 @@ class WatchDAOCache {
 
     func saveWallet(_ wallet: WalletEntity, team: TeamEntity) -> WatchWallet {
         let watchTeam = WatchTeam(name: team.teamName, logo: team.teamLogo, currency: team.currency)
-        let watchWallet = WatchWallet(mETH: MEth(wallet.cryptoBalance).value, rate: wallet.currencyRate, team: watchTeam)
+        let watchWallet = WatchWallet(mETH: MEth(wallet.cryptoBalance).value,
+                                      rate: wallet.currencyRate,
+                                      team: watchTeam)
         self.wallet = WatchCashItem<WatchWallet>(value: watchWallet)
         return watchWallet
     }
