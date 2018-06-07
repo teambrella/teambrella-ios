@@ -30,35 +30,70 @@ final class InitialVC: UIViewController {
     
     var mode: InitialVCMode = .login
     weak var sod: SODVC?
+    var isFirstLoad: Bool = true
 
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if service.keyStorage.isUserSelected {
-            mode = .idle
-            startLoadingTeams()
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        switch mode {
-        case .login:
-            performSegue(type: .login)
-        case .demoExpired:
-            let router = service.router
-            if let vc = SODManager(router: router).showOutdatedDemo(in: self) {
-                vc.upperButton.addTarget(self, action: #selector(tapDemo), for: .touchUpInside)
-                vc.lowerButton.addTarget(self, action: #selector(tapBack), for: .touchUpInside)
-                sod = vc
-            }
-        default:
-            break
+
+        /*
+         When application wakes up by PushKit after been killed or by BackgroundFetch
+         it runs viewDidAppear in background.
+         if we start loading teams in that mode our server won't distinguish background fetch from UI activity
+         that's why we use the following hack
+                                            ||
+                                            \/
+         */
+        let state = UIApplication.shared.applicationState
+        print("Application state is: \(state.rawValue)")
+        guard state != .background else {
+            print("Running in background")
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(performTransitionsAfterWakeUp),
+                                                   name: .UIApplicationDidBecomeActive,
+                                                   object: nil)
+            return
         }
 
-        mode = .idle
+        performTransitions()
+    }
+
+    @objc
+    func performTransitionsAfterWakeUp() {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: .UIApplicationDidBecomeActive,
+                                                  object: nil)
+        performTransitions()
+    }
+
+    func performTransitions() {
+        if isFirstLoad, service.keyStorage.isUserSelected {
+            mode = .idle
+            startLoadingTeams()
+        } else {
+            switch mode {
+            case .login:
+                performSegue(type: .login)
+            case .demoExpired:
+                let router = service.router
+                if let vc = SODManager(router: router).showOutdatedDemo(in: self) {
+                    vc.upperButton.addTarget(self, action: #selector(tapDemo), for: .touchUpInside)
+                    vc.lowerButton.addTarget(self, action: #selector(tapBack), for: .touchUpInside)
+                    sod = vc
+                }
+            default:
+                break
+            }
+
+            mode = .idle
+        }
+        isFirstLoad = false
     }
     
     // MARK: Callbacks
@@ -71,7 +106,7 @@ final class InitialVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         HUD.hide()
         if segue.type == .teambrella {
-           
+
         }
     }
     
@@ -99,8 +134,8 @@ final class InitialVC: UIViewController {
             switch result {
             case let .value(teamsEntity):
                 self?.startSession(teamsEntity: teamsEntity, isDemo: isDemo)
-            case .error:
-                self?.failure()
+            case let .error(error):
+                self?.failure(error: error)
             }
         }
     }
@@ -145,13 +180,14 @@ final class InitialVC: UIViewController {
         requestPush()
     }
     
-    private func failure() {
+    private func failure(error: Error) {
+        print("InitialVC got error: \(error)")
         HUD.hide()
         service.router.logout()
         SimpleStorage().store(bool: false, forKey: .didLogWithKey)
         performSegue(type: .login)
     }
-    
+
     private func startLoadingTeams() {
         HUD.show(.progress)
         getTeams()

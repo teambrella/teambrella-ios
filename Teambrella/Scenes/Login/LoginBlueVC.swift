@@ -92,7 +92,8 @@ final class LoginBlueVC: UIViewController {
 
         let manager = FBSDKLoginManager()
         manager.logOut()
-        let permissions = ["public_profile", "email", "user_friends"]
+        // remove user_friends permission to comply with FBSDK 3.0
+        let permissions =  ["public_profile", "email"]
         HUD.show(.progress)
         manager.logIn(withReadPermissions: permissions, from: self) { [weak self] result, error in
             guard let me = self else { return }

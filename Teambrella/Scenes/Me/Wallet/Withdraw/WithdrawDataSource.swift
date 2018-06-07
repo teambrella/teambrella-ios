@@ -67,6 +67,7 @@ final class WithdrawDataSource {
                     }
                 }
             }
+            print(transactions)
         }
     }
     
@@ -94,7 +95,7 @@ final class WithdrawDataSource {
                        "Me.Wallet.Withdraw.header.inProgress",
                        "Me.Wallet.Withdraw.header.history"]
         for (idx, type) in transactions.enumerated().reversed() where type.isEmpty {
-            headers.remove(at: headers.count - 1 - idx)
+            headers.remove(at: idx)
         }
         switch section {
         case 0:

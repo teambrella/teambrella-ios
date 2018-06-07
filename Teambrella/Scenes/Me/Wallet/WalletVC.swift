@@ -49,6 +49,7 @@ class WalletVC: UIViewController {
             self?.collectionView.reloadData()
             self?.collectionView.refreshControl?.endRefreshing()
         }
+
         dataSource.onError = { [weak self] error in
             HUD.hide()
             if let error = error as? TeambrellaError, error.kind == .walletNotCreated {
@@ -59,6 +60,11 @@ class WalletVC: UIViewController {
         }
         addRefreshControl()
         prepareWalletAddress()
+
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         dataSource.loadData()
     }
     

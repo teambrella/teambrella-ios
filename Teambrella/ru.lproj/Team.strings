@@ -124,7 +124,7 @@
 "Team.VotingRiskVC.numberBar.right"                   = "ТВОЙ ГОЛОС";
 "Team.VotingRiskVC.avgLabel"                          = "СРЕДН.\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Сбросить";
-"Team.VotingRiskVC.othersButton"                      = "Остальные";
+"Team.VotingRiskVC.othersButton"                      = "Сравнить";
 
 "Team.Members.Teammates.Strategy.headerTitle"         = "РИСК: %.2f ДО %.2f";
 "Team.Members.Teammates.Strategy.headerSubtitle"      = "РИСК";
@@ -208,4 +208,7 @@
 "Team.TearsOld.lessThanAYear"   = "< года";
 
 "Team.Chat.ClaimPaidCell.text" = "Твоя команда оплатила заявку. Неплохо, да? Поделись с друзьями!";
+"Team.Chat.ClaimPaid.ShareText.pets" = "Мы помогли участнику оплатить лечение питомца.  Неплохо, да?";
+"Team.Chat.ClaimPaid.ShareText.car" = "Мы помогли участнику оплатить ремонт машины. Неплохо, да?";
+"Team.Chat.ClaimPaid.ShareText.bike" = "Мы возместили участнику стоимость украденного велосипеда. Неплохо, да?";
 "Team.Chat.ClaimPaidCell.buttonTitle" = "Поделиться с друзьями";

@@ -38,8 +38,14 @@ class PushService: NSObject {
     
     var router: MainRouter { return service.router }
     var session: Session? { return service.session }
+    var teambrella: TeambrellaService { return service.teambrella }
 
     var currentFirebaseToken: String?
+
+    lazy var pushKit: PushKitWorker = {
+        let pushKit = PushKitWorker()
+        return pushKit
+    }()
     
     override init() {
         super.init()
@@ -48,7 +54,52 @@ class PushService: NSObject {
         // Firebase
         Messaging.messaging().delegate = self
     }
-    
+
+    func startPushKit() {
+        self.pushKit.onTokenUpdate = { token in
+            print("PushKit token: \(token)")
+        }
+        pushKit.onPushReceived = { [weak self] dict, completion in
+            guard let cmd = dict["cmd"] as? String, let command = PushKitCommand(rawValue: cmd) else {
+                print("No command found in PushKit dictionary: \(dict)")
+                return
+            }
+
+            print("got cmd string: \(cmd), command: \(command)")
+            switch command {
+            case .getUpdates:
+                self?.teambrella.startUpdating { result in
+                    print("PushKit has finished it's job")
+                    completion()
+                }
+            case .getDatabaseDump:
+                self?.teambrella.sendDBDump { success in
+                    completion()
+                }
+            default:
+                print("Unknown command in push kit")
+                self?.presentPushKitUserNotification(dict: dict)
+                completion()
+            }
+        }
+    }
+
+    func presentPushKitUserNotification(dict: [AnyHashable: Any]) {
+        let state = UIApplication.shared.applicationState
+
+        let content = UNMutableNotificationContent()
+
+        content.title = "PushKit. App state: \(state.rawValue)"
+        content.body = dict.description
+        content.categoryIdentifier = "notify-test"
+
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest.init(identifier: "notify-test", content: content, trigger: trigger)
+
+        let center = UNUserNotificationCenter.current()
+        center.add(request)
+    }
+
     func askPermissionsForRemoteNotifications(application: UIApplication) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             DispatchQueue.main.async {

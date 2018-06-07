@@ -19,7 +19,7 @@ import Foundation
 class URLBuilder {
     #if SURILLA
     let isLocalServer = true
-    let siteURL: String = "https://surilla.com"
+    let siteURL: String = "http://surilla.com"
     #else
     let isLocalServer = false
     let siteURL: String = "https://teambrella.com"

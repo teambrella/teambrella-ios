@@ -79,6 +79,7 @@ public enum TransactionState: Int, EnumStringConvertible, Decodable {
     var isProcessing: Bool { return self.rawValue >= 0 && self.rawValue < 10 }
     var isQueued: Bool { return self == .queued }
     var isHistory: Bool { return self.rawValue >= 10 }
+    var isError: Bool { return self.rawValue >= 100 }
     
     init(decoder: Decoder) throws {
         let value = try decoder.singleValueContainer().decode(Int.self)

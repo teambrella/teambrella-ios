@@ -38,7 +38,9 @@ static let storyboardName = "Info"
     }
 
     @IBAction func sendDbDump(_ sender: UIButton) {
-        service.teambrella.sendDBDump()
+        service.teambrella.sendDBDump { success in
+
+        }
     }
 
 }
