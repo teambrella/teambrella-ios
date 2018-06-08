@@ -50,20 +50,20 @@ final class TeammateProfileVC: UIViewController, Routable {
 
     private var currentRiskVote: Double?
     
-    var router: MainRouter!
-    var session: Session!
-    var currencyName: String!
+//    var router: MainRouter!
+//    var session: Session!
+//    var currencyName: String!
     
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let teammateID = teammateID, teammateID == session.currentUserID {
+        if let teammateID = teammateID, teammateID == service.session?.currentUserID {
             dataSource = TeammateProfileDataSource(id: teammateID, isMe: true)
         } else if let teammateID = teammateID {
             dataSource = TeammateProfileDataSource(id: teammateID, isMe: false)
-        } else if let myID = session.currentUserID {
+        } else if let myID = service.session?.currentUserID {
             dataSource = TeammateProfileDataSource(id: myID, isMe: true)
         } else {
             fatalError("No valid info about teammate")
@@ -189,9 +189,9 @@ final class TeammateProfileVC: UIViewController, Routable {
         if let claimCount = dataSource.teammateLarge?.object.claimCount,
             claimCount == 1,
             let claimID = dataSource.teammateLarge?.object.singleClaimID {
-            router.presentClaim(claimID: claimID)
+            service.router.presentClaim(claimID: claimID)
         } else if let teammateID = dataSource.teammateLarge?.teammateID {
-            router.presentClaims(teammateID: teammateID)
+            service.router.presentClaims(teammateID: teammateID)
         }
     }
     
@@ -232,7 +232,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         guard let teammateLarge = dataSource.teammateLarge else { return }
         
         let user = PrivateChatUser(teammateLarge: teammateLarge)
-        router.presentChat(context: .privateChat(user), itemType: .privateChat)
+        service.router.presentChat(context: .privateChat(user), itemType: .privateChat)
     }
     
     // MARK: Private
@@ -358,7 +358,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 left.titleLabel.text = genderization
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amountsFormat(amount: amount)
-                left.currencyLabel.text = currencyName
+                left.currencyLabel.text = service.currencyName
                 left.isCurrencyVisible = true
                 left.isPercentVisible = false
             }
@@ -369,7 +369,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 right.titleLabel.text = genderization
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amountsFormat(amount: amount)
-                right.currencyLabel.text = currencyName
+                right.currencyLabel.text = service.currencyName
                 right.isCurrencyVisible = true
                 right.isPercentVisible = false
             }
@@ -378,7 +378,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             } else {
                 view.subtitle.text = ""
             }
-            if teammate.basic.isProxiedByMe, let myID = session.currentUserID, teammate.basic.id != myID {
+            if teammate.basic.isProxiedByMe, let myID = service.session?.currentUserID, teammate.basic.id != myID {
                 view.infoLabel.isHidden = false
                 view.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
             }
@@ -395,7 +395,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 left.titleLabel.text = genderization
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amountsFormat(amount: amount)
-                left.currencyLabel.text = currencyName
+                left.currencyLabel.text = service.currencyName
                 left.isCurrencyVisible = true
                 left.isPercentVisible = false
             }
@@ -406,7 +406,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 right.titleLabel.text = genderization
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amountsFormat(amount: amount)
-                right.currencyLabel.text = currencyName
+                right.currencyLabel.text = service.currencyName
                 right.isCurrencyVisible = true
                 right.isPercentVisible = false
             }
@@ -429,7 +429,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         let identifier = dataSource.type(for: indexPath)
         if identifier == .dialog || identifier == .dialogCompact, let extendedTeammate = dataSource.teammateLarge {
             let context = ChatContext.teammate(extendedTeammate)
-            router.presentChat(context: context, itemType: .teammate)
+            service.router.presentChat(context: context, itemType: .teammate)
         }
     }
     
@@ -619,12 +619,12 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
                 return
             }
             
-            router.presentCompareTeamRisk(ranges: ranges)
+            service.router.presentCompareTeamRisk(ranges: ranges)
         case cell.othersVotesButton:
-            guard let teamID = session.currentTeam?.teamID else { return }
+            guard let teamID = service.session?.currentTeam?.teamID else { return }
             guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
             
-            router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
+            service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
         default:
             log("VotingRiskCell unknown button pressed", type: [.error])
         }

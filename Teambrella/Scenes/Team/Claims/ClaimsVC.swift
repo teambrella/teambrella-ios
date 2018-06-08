@@ -43,7 +43,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     var isPresentedInStack = false
     var teammateID: Int?
     
-    var router: MainRouter!
+   // var router: MainRouter!
     
     weak var emptyVC: EmptyVC?
     
@@ -108,7 +108,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     @IBAction func tapReportButton(_ sender: Any) {
         guard let context = dataSource.reportContext else { return }
         
-        router.presentReport(context: context, delegate: self)
+        service.router.presentReport(context: context, delegate: self)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -215,7 +215,7 @@ extension ClaimsVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let claim = dataSource[indexPath]
-        router.presentClaim(claim: claim)
+        service.router.presentClaim(claim: claim)
     }
 }
 
@@ -248,7 +248,7 @@ extension ClaimsVC: UICollectionViewDelegateFlowLayout {
 extension ClaimsVC: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                            commit viewControllerToCommit: UIViewController) {
-        router.push(vc: viewControllerToCommit, animated: true)
+        service.router.push(vc: viewControllerToCommit, animated: true)
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,
@@ -258,7 +258,7 @@ extension ClaimsVC: UIViewControllerPreviewingDelegate {
         guard let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
         
         let claim = dataSource[indexPath]
-        guard let vc = router.getControllerClaim(claimID: claim.id) else { return nil }
+        guard let vc = service.router.getControllerClaim(claimID: claim.id) else { return nil }
         
         vc.preferredContentSize = CGSize(width: view.bounds.width * 0.8, height: view.bounds.height * 0.9)
         previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)
@@ -270,9 +270,9 @@ extension ClaimsVC: UIViewControllerPreviewingDelegate {
 // MARK: ReportDelegate
 extension ClaimsVC: ReportDelegate {
     func report(controller: ReportVC, didSendReport data: Any) {
-        router.navigator?.popViewController(animated: false)
+        service.router.navigator?.popViewController(animated: false)
         if let claim = data as? ClaimEntityLarge {
-            router.presentClaim(claimID: claim.id)
+            service.router.presentClaim(claimID: claim.id)
         }
     }
 }

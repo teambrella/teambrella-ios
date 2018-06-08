@@ -168,9 +168,9 @@ final class MainRouter {
     func getControllerMemberProfile(teammateID: String) -> TeammateProfileVC? {
         let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC
         
-        vc?.router = self
-        vc?.session = service.session
-        vc?.currencyName = service.currencyName
+//        vc?.router = self
+//        vc?.session = service.session
+//        vc?.currencyName = service.currencyName
         vc?.teammateID = teammateID
         return vc
     }
@@ -185,7 +185,7 @@ final class MainRouter {
     func presentClaims(teammateID: Int? = nil, animated: Bool = true) {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
         
-        vc.router = self
+//        vc.router = self
         vc.teammateID = teammateID
         vc.isPresentedInStack = true
         push(vc: vc, animated: animated)
