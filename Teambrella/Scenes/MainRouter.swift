@@ -125,6 +125,9 @@ final class MainRouter {
         }
         guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
         
+//        vc.session = service.session
+//        vc.router = self
+//        vc.socket = service.socket
         vc.setContext(context: context, itemType: itemType)
         push(vc: vc, animated: animated)
     }
@@ -146,6 +149,7 @@ final class MainRouter {
     func presentOthersVoted(teamID: Int, teammateID: Int?, claimID: Int?) {
         guard let vc = OthersVotedVC.instantiate() as? OthersVotedVC else { return }
         
+        vc.router = self
         vc.teamID = teamID
         vc.teammateID = teammateID
         vc.claimID = claimID
@@ -154,12 +158,19 @@ final class MainRouter {
     
     func getControllerClaim(claimID: Int) -> ClaimVC? {
         let vc = ClaimVC.instantiate() as? ClaimVC
+        
+        vc?.router = self
+        vc?.session = service.session
         vc?.claimID = claimID
         return vc
     }
     
     func getControllerMemberProfile(teammateID: String) -> TeammateProfileVC? {
         let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC
+        
+//        vc?.router = self
+//        vc?.session = service.session
+//        vc?.currencyName = service.currencyName
         vc?.teammateID = teammateID
         return vc
     }
@@ -174,6 +185,7 @@ final class MainRouter {
     func presentClaims(teammateID: Int? = nil, animated: Bool = true) {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
         
+//        vc.router = self
         vc.teammateID = teammateID
         vc.isPresentedInStack = true
         push(vc: vc, animated: animated)
@@ -196,6 +208,7 @@ final class MainRouter {
         vc.teamID = teamID
         vc.balance = balance.map { MEth($0) }
         vc.reserved = reserved
+        vc.router = self
         push(vc: vc)
     }
     
@@ -203,6 +216,7 @@ final class MainRouter {
         guard let vc = WalletCosignersVC.instantiate() as? WalletCosignersVC
             else { fatalError("Error instantiating") }
         
+        vc.router = self
         vc.cosigners = cosigners
         push(vc: vc)
     }
@@ -217,6 +231,8 @@ final class MainRouter {
     func presentWithdraw(balance: MEth, reserved: Ether, animated: Bool = true) {
         guard let vc = WithdrawVC.instantiate() as? WithdrawVC else { fatalError("Error instantiating") }
         
+        vc.session = service.session
+        vc.router = self
         vc.setupCrypto(balance: balance, reserved: reserved)
         push(vc: vc, animated: animated)
     }

@@ -37,6 +37,9 @@ final class ClaimVC: UIViewController, Routable {
     var isNavBarAdded: Bool = false
     var isScrollToVoteNeeded: Bool = false
     
+    var session: Session!
+    var router: MainRouter!
+    
     @IBOutlet var collectionView: UICollectionView!
     
     // MARK: Lifecycle
@@ -113,9 +116,9 @@ final class ClaimVC: UIViewController, Routable {
     @objc
     func tapTransactions(sender: UITapGestureRecognizer) {
         log("\ntap Transactions\n", type: .userInteraction)
-        guard let session = service.session?.currentTeam?.teamID, let claimID = self.claimID else { return }
+        guard let session = session.currentTeam?.teamID, let claimID = self.claimID else { return }
         
-        service.router.presentClaimTransactionsList(teamID: session, claimID: claimID, userID: dataSource.userID)
+        router.presentClaimTransactionsList(teamID: session, claimID: claimID, userID: dataSource.userID)
     }
     
     @objc
@@ -125,10 +128,10 @@ final class ClaimVC: UIViewController, Routable {
     
     @objc
     func tapOthersVoted(sender: UIButton) {
-        guard let teamID = service.session?.currentTeam?.teamID else { return }
+        guard let teamID = session.currentTeam?.teamID else { return }
         guard let claimID = dataSource.claim?.id else { return }
         
-        service.router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
+        router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
     }
     
     // MARK: Private
@@ -261,7 +264,7 @@ extension ClaimVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.cellForItem(at: indexPath) is ImageGalleryCell, let claim = dataSource.claim {
             let context = ChatContext.claim(claim)
-            service.router.presentChat(context: context, itemType: .claim)
+            router.presentChat(context: context, itemType: .claim)
         }
     }
     

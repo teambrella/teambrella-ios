@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -49,20 +49,20 @@
                                 <rect key="frame" x="20" y="50.5" width="627" height="105"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D29-8w-VUD" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="28" width="26.5" height="36"/>
+                                        <rect key="frame" x="8" y="28" width="26.5" height="33"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="261" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uwK-ph-5aq" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="326" y="28" width="30" height="36"/>
+                                        <rect key="frame" x="326" y="28" width="26.5" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blN-yG-O3g">
-                                        <rect key="frame" x="326" y="28" width="30" height="36"/>
+                                        <rect key="frame" x="326" y="0.0" width="301" height="61"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,19 +72,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H5F-fa-toM" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="30.5" width="302.5" height="30.5"/>
+                                        <rect key="frame" x="8" y="29" width="302.5" height="30.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="esR-N0-PHe" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="325.5" y="30.5" width="64.5" height="30.5"/>
+                                        <rect key="frame" x="325.5" y="29" width="64.5" height="30.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVG -143%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="557-Va-QA6" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="42.5" y="34" width="40" height="24"/>
+                                        <rect key="frame" x="42.5" y="32.5" width="40" height="24"/>
                                         <color key="backgroundColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="qM7-EE-wsH"/>
@@ -99,7 +99,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVG +14%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UyJ-PS-yxB" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="364" y="34" width="40" height="24"/>
+                                        <rect key="frame" x="360.5" y="32.5" width="40" height="24"/>
                                         <color key="backgroundColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="njE-cx-Jyk"/>
@@ -113,38 +113,38 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR VOTE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VE3-Bp-PEJ" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="YOUR VOTE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VE3-Bp-PEJ" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="325.5" y="15.5" width="301.5" height="12"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                         <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Nx1-Yq-BkA" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="TEAM VOTE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Nx1-Yq-BkA" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="8" y="16" width="306" height="12"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                         <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFN-q5-gOq" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="72" width="70" height="20"/>
+                                        <rect key="frame" x="8" y="69" width="70" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Afd-Xn-foC"/>
                                             <constraint firstAttribute="width" constant="70" id="Gso-5I-9Bq"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K9q-SA-b4t">
-                                        <rect key="frame" x="326" y="67" width="293" height="30"/>
+                                        <rect key="frame" x="326" y="61" width="293" height="36"/>
                                         <subviews>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="94E-S6-lnc" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="-346" y="-137.5" width="20" height="20"/>
+                                                <rect key="frame" x="-346" y="-131.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="94E-S6-lnc" secondAttribute="height" multiplier="1:1" id="S5e-Oh-aEb"/>
                                                     <constraint firstAttribute="width" constant="20" id="uwP-am-mCQ"/>
                                                 </constraints>
                                             </imageView>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-Nv-AVa" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="-346" y="-137.5" width="0.0" height="20"/>
+                                                <rect key="frame" x="-346" y="-131.5" width="0.0" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -152,7 +152,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufs-Z7-MdQ">
-                                        <rect key="frame" x="326" y="67.5" width="70" height="29"/>
+                                        <rect key="frame" x="326" y="64.5" width="70" height="29"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="14"/>
                                         <state key="normal" title="Reset Vote">
@@ -192,7 +192,6 @@
                                     <constraint firstItem="Nx1-Yq-BkA" firstAttribute="top" secondItem="25q-2v-Cur" secondAttribute="top" constant="16" id="YgH-PN-DYL"/>
                                     <constraint firstAttribute="centerX" relation="greaterThanOrEqual" secondItem="557-Va-QA6" secondAttribute="trailing" constant="3" id="YlZ-ea-tct"/>
                                     <constraint firstItem="qFN-q5-gOq" firstAttribute="centerY" secondItem="ufs-Z7-MdQ" secondAttribute="centerY" id="agB-I3-dwL"/>
-                                    <constraint firstItem="blN-yG-O3g" firstAttribute="bottom" secondItem="ufs-Z7-MdQ" secondAttribute="top" id="dSa-e3-clZ"/>
                                     <constraint firstItem="blN-yG-O3g" firstAttribute="top" secondItem="25q-2v-Cur" secondAttribute="top" id="fUD-9v-XyA"/>
                                     <constraint firstItem="UyJ-PS-yxB" firstAttribute="leading" secondItem="uwK-ph-5aq" secondAttribute="trailing" constant="8" id="hPF-XM-5QU"/>
                                     <constraint firstAttribute="bottom" secondItem="6qt-e2-WfN" secondAttribute="bottom" id="hRj-U1-Jzm"/>

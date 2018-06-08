@@ -31,6 +31,8 @@ class WalletTransactionsVC: UIViewController, Routable {
     var balance: MEth?
     var reserved: Ether?
     
+    var router: MainRouter!
+    
     var dataSource: WalletTransactionsDataSource!
     fileprivate var previousScrollOffset: CGFloat = 0
     weak var emptyVC: EmptyVC?
@@ -143,9 +145,9 @@ extension WalletTransactionsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let model = dataSource[indexPath]
         if let claimID = model.claimID {
-            service.router.presentClaim(claimID: claimID)
+            router.presentClaim(claimID: claimID)
         } else if let balance = balance, let reserved = reserved {
-            service.router.presentWithdraw(balance: balance, reserved: reserved)
+            router.presentWithdraw(balance: balance, reserved: reserved)
         }
     }
 }

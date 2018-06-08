@@ -50,6 +50,10 @@ final class TeammateProfileVC: UIViewController, Routable {
 
     private var currentRiskVote: Double?
     
+//    var router: MainRouter!
+//    var session: Session!
+//    var currencyName: String!
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
