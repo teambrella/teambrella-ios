@@ -35,6 +35,8 @@ class ClaimTransactionsVC: UIViewController, Routable {
     
     @IBOutlet var collectionView: UICollectionView!
     
+    var router: MainRouter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientNavBar()
@@ -144,7 +146,7 @@ extension ClaimTransactionsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let model = dataSource[indexPath]
         if let userID = model.userID {
-            service.router.presentMemberProfile(teammateID: userID)
+            router.presentMemberProfile(teammateID: userID)
         }
     }
 }
