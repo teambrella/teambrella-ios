@@ -289,6 +289,8 @@ final class MainRouter {
             as? ChooseYourTeamVC else { fatalError("Error instantiating") }
         
         vc.delegate = delegate
+        vc.router = self
+        vc.session = service.session
         viewController.present(vc, animated: false, completion: nil)
     }
     
