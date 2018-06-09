@@ -261,6 +261,7 @@ final class MainRouter {
     func presentPrivateMessages(animated: Bool = true) {
         guard let vc = PrivateMessagesVC.instantiate() as? PrivateMessagesVC else { fatalError("Error instantiating") }
         
+        vc.router = self
         push(vc: vc, animated: animated)
     }
     
