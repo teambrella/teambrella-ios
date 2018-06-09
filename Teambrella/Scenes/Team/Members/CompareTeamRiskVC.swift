@@ -30,6 +30,7 @@ class CompareTeamRiskVC: UIViewController, Routable {
     
     let dataSource = MembersDatasource(orderByRisk: true)
     var ranges: [RiskScaleRange] = []
+    var router: MainRouter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,7 +107,7 @@ extension CompareTeamRiskVC: UICollectionViewDelegate {
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        service.router.presentMemberProfile(teammateID: dataSource[indexPath].userID)
+        router.presentMemberProfile(teammateID: dataSource[indexPath].userID)
     }
 }
 

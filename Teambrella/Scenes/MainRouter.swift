@@ -269,6 +269,7 @@ final class MainRouter {
         guard let vc = CompareTeamRiskVC.instantiate() as? CompareTeamRiskVC else { fatalError("Error instantiating") }
         
         vc.ranges = ranges
+        vc.router = self
         push(vc: vc)
     }
     
