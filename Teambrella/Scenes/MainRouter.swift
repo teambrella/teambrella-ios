@@ -276,6 +276,8 @@ final class MainRouter {
     func presentConsole() {
         guard let vc = Console.instantiate() as? Console else { fatalError("Error instantiating") }
         
+        vc.push = service.push
+        vc.teambrella = service.teambrella
         push(vc: vc)
     }
     

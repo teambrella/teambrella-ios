@@ -26,19 +26,22 @@ static let storyboardName = "Info"
 
     @IBOutlet var versionLabel: UILabel!
 
+    var push: PushService!
+    var teambrella: TeambrellaService!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        pushTokenField.text = service.push.tokenString
-        pushTokenAPNSField.text = service.push.apnsTokenString
-        privateKeyField.text = service.teambrella.key.privateKey
-        publicKeyField.text = service.teambrella.key.publicKey
+        pushTokenField.text = push.tokenString
+        pushTokenAPNSField.text = push.apnsTokenString
+        privateKeyField.text = teambrella.key.privateKey
+        publicKeyField.text = teambrella.key.publicKey
 
         versionLabel.text = Application().clientVersion
     }
 
     @IBAction func sendDbDump(_ sender: UIButton) {
-        service.teambrella.sendDBDump { success in
+        teambrella.sendDBDump { success in
 
         }
     }
