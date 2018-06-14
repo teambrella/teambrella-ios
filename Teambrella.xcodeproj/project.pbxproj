@@ -1932,6 +1932,24 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		6D1616AC20D2968500C8FBBE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6D1616AD20D296C400C8FBBE /* Teambrella */,
+				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		6D1616AD20D296C400C8FBBE /* Teambrella */ = {
+			isa = PBXGroup;
+			children = (
+				6DDFDAF41F8CD25600342696 /* Teambrella.xcassets */,
+				6DA475AF1E8ABEE600B56D9B /* Info.plist */,
+			);
+			path = Teambrella;
+			sourceTree = "<group>";
+		};
 		6D1683831F13BCE9002B52EE /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -2147,6 +2165,7 @@
 		6D4E5C131F7AB64C0020DEE2 /* Surilla */ = {
 			isa = PBXGroup;
 			children = (
+				6DDFDAF21F8CD24400342696 /* Surilla.xcassets */,
 				6D05254520A5E444000B3247 /* Surilla Info.plist */,
 			);
 			path = Surilla;
@@ -2482,12 +2501,12 @@
 		6DA475971E8ABEE600B56D9B = {
 			isa = PBXGroup;
 			children = (
+				6D1616AC20D2968500C8FBBE /* App */,
 				6DDE956E1EE813DC0019DA47 /* External */,
 				6D466A871ED07CF1001BC579 /* Blockchain */,
 				6D1616AB20D2845000C8FBBE /* Notifications */,
 				6DA475A21E8ABEE600B56D9B /* Teambrella */,
 				6DA475B71E8ABEE600B56D9B /* Tests */,
-				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
 				6D1616A820D2800B00C8FBBE /* Watch */,
 				6DA475A11E8ABEE600B56D9B /* Products */,
 				5BD17B853E94E5AE1E9DCBE6 /* Pods */,
@@ -2516,7 +2535,7 @@
 			isa = PBXGroup;
 			children = (
 				6D8CB40E1F5865B200C72AC3 /* Teambrella.entitlements */,
-				6DA714F21EE00EC100F39EBE /* Resources */,
+				6DA714F21EE00EC100F39EBE /* Fonts */,
 				6D1C23851E8EA45A009B05A3 /* Helpers */,
 				6D097E991E9D1A0000E77DAB /* Localizations */,
 				6DA475D61E8BB9F000B56D9B /* Services */,
@@ -2623,21 +2642,18 @@
 			children = (
 				6DA475A31E8ABEE600B56D9B /* AppDelegate.swift */,
 				6DA475AA1E8ABEE600B56D9B /* Assets.xcassets */,
-				6DA475AF1E8ABEE600B56D9B /* Info.plist */,
 				6DA475AC1E8ABEE600B56D9B /* LaunchScreen.storyboard */,
-				6DDFDAF21F8CD24400342696 /* Surilla.xcassets */,
-				6DDFDAF41F8CD25600342696 /* Teambrella.xcassets */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		6DA714F21EE00EC100F39EBE /* Resources */ = {
+		6DA714F21EE00EC100F39EBE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */,
 				6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */,
 			);
-			name = Resources;
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		6DA714F31EE02B0200F39EBE /* Teammates */ = {
@@ -4851,7 +4867,7 @@
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Teambrella/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/App/Teambrella/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200 -DMAIN_APP -Onone";
@@ -4892,7 +4908,7 @@
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Teambrella/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/App/Teambrella/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200 -DMAIN_APP";
@@ -4930,7 +4946,7 @@
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Surilla/Surilla Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/App/Surilla/Surilla Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200 -DMAIN_APP -DSURILLA -Onone";
@@ -4969,7 +4985,7 @@
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Surilla/Surilla Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/App/Surilla/Surilla Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200 -DMAIN_APP -DSURILLA";
