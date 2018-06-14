@@ -1003,6 +1003,17 @@
 		6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */; };
 		6DBF492D1F80F22300B236E2 /* AnimationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */; };
 		6DC1BB232077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC1BB212077C8CF008661AF /* XLPagerTabStrip.framework */; };
+		6DCA41BF20D29E1900B741BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCA41BE20D29E1900B741BA /* Assets.xcassets */; };
+		6DCA41C620D29E1900B741BA /* TeambrellaWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6DCA41C520D29E1900B741BA /* TeambrellaWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6DCA41D320D29E1A00B741BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCA41D220D29E1A00B741BA /* Assets.xcassets */; };
+		6DCA41D820D29E1A00B741BA /* TeambrellaWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6DCA41B920D29E1800B741BA /* TeambrellaWatch.app */; };
+		6DCA41E120D29EA400B741BA /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A629320C1A1A1003CD95B /* InterfaceController.swift */; };
+		6DCA41E220D29EA800B741BA /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A629520C1A1A1003CD95B /* ExtensionDelegate.swift */; };
+		6DCA41E320D29EAB00B741BA /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A629720C1A1A1003CD95B /* NotificationController.swift */; };
+		6DCA41E420D29EAE00B741BA /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A629920C1A1A1003CD95B /* ComplicationController.swift */; };
+		6DCA41E520D29EB400B741BA /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D1616A920D280C600C8FBBE /* SharedAssets.xcassets */; };
+		6DCA41E620D29EC200B741BA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D8A628420C1A19F003CD95B /* Interface.storyboard */; };
+		6DCA41E720D29F6C00B741BA /* WalletEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6388FC20C3271300FD3351 /* WalletEntities.swift */; };
 		6DCE7B3A20C81F1000D0003A /* EtherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE7B3920C81F1000D0003A /* EtherTests.swift */; };
 		6DDB5D941FF692DC0066A07F /* TeammatesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB5D921FF692DC0066A07F /* TeammatesList.swift */; };
 		6DDB5D971FF694090066A07F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB5D951FF694090066A07F /* ChatModel.swift */; };
@@ -1089,6 +1100,20 @@
 			remoteGlobalIDString = 6D8A628120C1A19F003CD95B;
 			remoteInfo = SurillaWatch;
 		};
+		6DCA41C720D29E1900B741BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DA475981E8ABEE600B56D9B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DCA41C420D29E1900B741BA;
+			remoteInfo = "TeambrellaWatch Extension";
+		};
+		6DCA41D620D29E1A00B741BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DA475981E8ABEE600B56D9B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DCA41B820D29E1800B741BA;
+			remoteInfo = TeambrellaWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1132,6 +1157,28 @@
 			dstSubfolderSpec = 16;
 			files = (
 				6D8A62A120C1A1A1003CD95B /* SurillaWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DCA41DC20D29E1A00B741BA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6DCA41C620D29E1900B741BA /* TeambrellaWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DCA41E020D29E1A00B741BA /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				6DCA41D820D29E1A00B741BA /* TeambrellaWatch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1528,6 +1575,12 @@
 		6DC2487D1F5D951600D9396D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Team.stringsdict; sourceTree = "<group>"; };
 		6DC2487E1F5EAAF300D9396D /* EmptyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyVC.swift; path = Controller/Empty/EmptyVC.swift; sourceTree = "<group>"; };
 		6DC2487F1F5EAAF300D9396D /* EmptyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyVC.xib; path = Controller/Empty/EmptyVC.xib; sourceTree = "<group>"; };
+		6DCA41B920D29E1800B741BA /* TeambrellaWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeambrellaWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DCA41BE20D29E1900B741BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6DCA41C020D29E1900B741BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DCA41C520D29E1900B741BA /* TeambrellaWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TeambrellaWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DCA41D220D29E1A00B741BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6DCA41D420D29E1A00B741BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DCB19431F0F878500AC9969 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
 		6DCB19451F0FD33400AC9969 /* Fill.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Fill.sks; path = Effects/Fill.sks; sourceTree = "<group>"; };
 		6DCB19461F0FD33400AC9969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Effects/Assets.xcassets; sourceTree = "<group>"; };
@@ -1765,6 +1818,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6DCA41C220D29E1900B741BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DEFE3EF2006544100615022 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1912,6 +1972,8 @@
 				6D1616A920D280C600C8FBBE /* SharedAssets.xcassets */,
 				6D8A628320C1A19F003CD95B /* SurillaWatch */,
 				6D8A629220C1A1A1003CD95B /* SurillaWatch Extension */,
+				6DCA41BA20D29E1800B741BA /* TeambrellaWatch */,
+				6DCA41C920D29E1900B741BA /* TeambrellaWatch Extension */,
 			);
 			path = Watch;
 			sourceTree = "<group>";
@@ -2526,6 +2588,8 @@
 				6D05253E20A5D839000B3247 /* Teambrella.app */,
 				6D8A628220C1A19F003CD95B /* SurillaWatch.app */,
 				6D8A628E20C1A1A1003CD95B /* SurillaWatch Extension.appex */,
+				6DCA41B920D29E1800B741BA /* TeambrellaWatch.app */,
+				6DCA41C520D29E1900B741BA /* TeambrellaWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2798,6 +2862,24 @@
 			name = Empty;
 			sourceTree = "<group>";
 		};
+		6DCA41BA20D29E1800B741BA /* TeambrellaWatch */ = {
+			isa = PBXGroup;
+			children = (
+				6DCA41BE20D29E1900B741BA /* Assets.xcassets */,
+				6DCA41C020D29E1900B741BA /* Info.plist */,
+			);
+			path = TeambrellaWatch;
+			sourceTree = "<group>";
+		};
+		6DCA41C920D29E1900B741BA /* TeambrellaWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6DCA41D220D29E1A00B741BA /* Assets.xcassets */,
+				6DCA41D420D29E1A00B741BA /* Info.plist */,
+			);
+			path = "TeambrellaWatch Extension";
+			sourceTree = "<group>";
+		};
 		6DCB19411F0EA2ED00AC9969 /* Sort */ = {
 			isa = PBXGroup;
 			children = (
@@ -3044,11 +3126,13 @@
 				6D05253720A5D838000B3247 /* CPD */,
 				6D05253A20A5D838000B3247 /* [CP] Copy Pods Resources */,
 				6D05254420A5DE3B000B3247 /* Embed App Extensions */,
+				6DCA41E020D29E1A00B741BA /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				6D05254120A5D914000B3247 /* PBXTargetDependency */,
+				6DCA41D720D29E1A00B741BA /* PBXTargetDependency */,
 			);
 			name = Teambrella;
 			productName = Teambrella;
@@ -3154,6 +3238,40 @@
 			productReference = 6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		6DCA41B820D29E1800B741BA /* TeambrellaWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DCA41DD20D29E1A00B741BA /* Build configuration list for PBXNativeTarget "TeambrellaWatch" */;
+			buildPhases = (
+				6DCA41B720D29E1800B741BA /* Resources */,
+				6DCA41DC20D29E1A00B741BA /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6DCA41C820D29E1900B741BA /* PBXTargetDependency */,
+			);
+			name = TeambrellaWatch;
+			productName = TeambrellaWatch;
+			productReference = 6DCA41B920D29E1800B741BA /* TeambrellaWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		6DCA41C420D29E1900B741BA /* TeambrellaWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DCA41D920D29E1A00B741BA /* Build configuration list for PBXNativeTarget "TeambrellaWatch Extension" */;
+			buildPhases = (
+				6DCA41C120D29E1900B741BA /* Sources */,
+				6DCA41C220D29E1900B741BA /* Frameworks */,
+				6DCA41C320D29E1900B741BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TeambrellaWatch Extension";
+			productName = "TeambrellaWatch Extension";
+			productReference = 6DCA41C520D29E1900B741BA /* TeambrellaWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		6DEFE3F12006544100615022 /* TeambrellaNotification */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DEFE3FA2006544100615022 /* Build configuration list for PBXNativeTarget "TeambrellaNotification" */;
@@ -3217,6 +3335,16 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6DA4759F1E8ABEE600B56D9B;
 					};
+					6DCA41B820D29E1800B741BA = {
+						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = Y6A22RLVJG;
+						ProvisioningStyle = Automatic;
+					};
+					6DCA41C420D29E1900B741BA = {
+						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = Y6A22RLVJG;
+						ProvisioningStyle = Automatic;
+					};
 					6DEFE3F12006544100615022 = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = Y6A22RLVJG;
@@ -3245,6 +3373,8 @@
 				6D8A628D20C1A1A1003CD95B /* SurillaWatch Extension */,
 				6D05234B20A5D838000B3247 /* Teambrella */,
 				6DEFE3F12006544100615022 /* TeambrellaNotification */,
+				6DCA41B820D29E1800B741BA /* TeambrellaWatch */,
+				6DCA41C420D29E1900B741BA /* TeambrellaWatch Extension */,
 				6DA475B31E8ABEE600B56D9B /* TeambrellaTests */,
 			);
 		};
@@ -3475,6 +3605,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DCA41B720D29E1800B741BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DCA41BF20D29E1900B741BA /* Assets.xcassets in Resources */,
+				6DCA41E620D29EC200B741BA /* Interface.storyboard in Resources */,
+				6DCA41E520D29EB400B741BA /* SharedAssets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DCA41C320D29E1900B741BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DCA41D320D29E1A00B741BA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4642,6 +4790,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6DCA41C120D29E1900B741BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DCA41E320D29EAB00B741BA /* NotificationController.swift in Sources */,
+				6DCA41E420D29EAE00B741BA /* ComplicationController.swift in Sources */,
+				6DCA41E220D29EA800B741BA /* ExtensionDelegate.swift in Sources */,
+				6DCA41E720D29F6C00B741BA /* WalletEntities.swift in Sources */,
+				6DCA41E120D29EA400B741BA /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DEFE3EE2006544100615022 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4690,6 +4850,16 @@
 			isa = PBXTargetDependency;
 			target = 6D8A628120C1A19F003CD95B /* SurillaWatch */;
 			targetProxy = 6D8A629F20C1A1A1003CD95B /* PBXContainerItemProxy */;
+		};
+		6DCA41C820D29E1900B741BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DCA41C420D29E1900B741BA /* TeambrellaWatch Extension */;
+			targetProxy = 6DCA41C720D29E1900B741BA /* PBXContainerItemProxy */;
+		};
+		6DCA41D720D29E1A00B741BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DCA41B820D29E1800B741BA /* TeambrellaWatch */;
+			targetProxy = 6DCA41D620D29E1A00B741BA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -5311,6 +5481,102 @@
 			};
 			name = Release;
 		};
+		6DCA41DA20D29E1A00B741BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/Watch/TeambrellaWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALID_ARCHS = " $(ARCHS_STANDARD)";
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		6DCA41DB20D29E1A00B741BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/Watch/TeambrellaWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALID_ARCHS = " $(ARCHS_STANDARD)";
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		6DCA41DE20D29E1A00B741BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = TeambrellaWatch_Extension;
+				INFOPLIST_FILE = "$(SRCROOT)/Watch/TeambrellaWatch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		6DCA41DF20D29E1A00B741BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y6A22RLVJG;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = TeambrellaWatch_Extension;
+				INFOPLIST_FILE = "$(SRCROOT)/Watch/TeambrellaWatch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
 		6DEFE3FB2006544100615022 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB0CD5887370E04965902F23 /* Pods-NotificationTeambrella.debug.xcconfig */;
@@ -5429,6 +5695,24 @@
 			buildConfigurations = (
 				6DA475CC1E8ABEE600B56D9B /* Debug */,
 				6DA475CD1E8ABEE600B56D9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DCA41D920D29E1A00B741BA /* Build configuration list for PBXNativeTarget "TeambrellaWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DCA41DA20D29E1A00B741BA /* Debug */,
+				6DCA41DB20D29E1A00B741BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DCA41DD20D29E1A00B741BA /* Build configuration list for PBXNativeTarget "TeambrellaWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DCA41DE20D29E1A00B741BA /* Debug */,
+				6DCA41DF20D29E1A00B741BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
