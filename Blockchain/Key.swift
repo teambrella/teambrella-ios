@@ -36,6 +36,13 @@ struct Key: CustomDebugStringConvertible {
     var publicKey: String {
         return key.publicKey.hex()
     }
+
+    var mnemonic: [String] {
+        let entropy = key.privateKey as Data
+        let mnemonic = BTCMnemonic(entropy: entropy, password: nil, wordListType: .english)
+        let words = mnemonic?.words as? [String]
+        return words ?? []
+    }
     
     var address: String {
         return isTestnet ? key.privateKeyAddressTestnet.string : key.privateKeyAddress.string 
@@ -61,6 +68,17 @@ struct Key: CustomDebugStringConvertible {
         isTestnet" \(isTestnet)
         """
     }
+
+//    init?(words: [String], timestamp: Int64) {
+//        let mnemonic = BTCMnemonic(words: words, password: nil, wordListType: .english)
+//        guard let data = mnemonic?.data else { return nil }
+//        guard let key = BTCKey(privateKey: data) else { return nil }
+//
+//        key.isPublicKeyCompressed = true
+//        self.key = key
+//        self.timestamp = timestamp
+//        isTestnet = false
+//    }
     
     init(base58String: String, timestamp: Int64) {
         self.timestamp = timestamp
