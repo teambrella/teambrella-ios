@@ -484,6 +484,7 @@
 		6D12928A1F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
 		6D12928C1F83DE38001CCC31 /* NameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12928B1F83DE38001CCC31 /* NameTests.swift */; };
 		6D12C2EB1FCD6C6200A8926D /* Info.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D12C2E81FCD6C6200A8926D /* Info.strings */; };
+		6D1616AA20D280C600C8FBBE /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D1616A920D280C600C8FBBE /* SharedAssets.xcassets */; };
 		6D1B287520C6B795003B2D32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D1B287420C6B795003B2D32 /* Assets.xcassets */; };
 		6D1B287720C6C3D1003B2D32 /* PushKitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */; };
 		6D1B287820C6C3D1003B2D32 /* PushKitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */; };
@@ -1197,6 +1198,7 @@
 		6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = VotingRiskCell.xib; path = View/Cells/VotingRiskCell.xib; sourceTree = "<group>"; };
 		6D1425E41F73DD9A00DCBF91 /* VotingChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingChartCell.swift; path = View/Cells/VotingChartCell.swift; sourceTree = "<group>"; };
 		6D1425E51F73DD9A00DCBF91 /* VotingChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = VotingChartCell.xib; path = View/Cells/VotingChartCell.xib; sourceTree = "<group>"; };
+		6D1616A920D280C600C8FBBE /* SharedAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedAssets.xcassets; sourceTree = "<group>"; };
 		6D1653B41F56B7F00022D5EA /* PrivateMessagesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesDataSource.swift; path = Scenes/Home/PrivateMessages/PrivateMessagesDataSource.swift; sourceTree = "<group>"; };
 		6D1653B61F56C08A0022D5EA /* PrivateMessagesCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesCellBuilder.swift; path = Scenes/Home/PrivateMessages/PrivateMessagesCellBuilder.swift; sourceTree = "<group>"; };
 		6D1683871F13BE3E002B52EE /* DropDownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DropDownButton.swift; path = View/Buttons/DropDownButton.swift; sourceTree = "<group>"; };
@@ -1901,6 +1903,20 @@
 			name = Report;
 			sourceTree = "<group>";
 		};
+		6D1616A820D2800B00C8FBBE /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				6D8A629320C1A1A1003CD95B /* InterfaceController.swift */,
+				6D8A629520C1A1A1003CD95B /* ExtensionDelegate.swift */,
+				6D8A629720C1A1A1003CD95B /* NotificationController.swift */,
+				6D8A629920C1A1A1003CD95B /* ComplicationController.swift */,
+				6D1616A920D280C600C8FBBE /* SharedAssets.xcassets */,
+				6D8A628320C1A19F003CD95B /* SurillaWatch */,
+				6D8A629220C1A1A1003CD95B /* SurillaWatch Extension */,
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
 		6D1683831F13BCE9002B52EE /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -2339,10 +2355,6 @@
 		6D8A629220C1A1A1003CD95B /* SurillaWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
-				6D8A629320C1A1A1003CD95B /* InterfaceController.swift */,
-				6D8A629520C1A1A1003CD95B /* ExtensionDelegate.swift */,
-				6D8A629720C1A1A1003CD95B /* NotificationController.swift */,
-				6D8A629920C1A1A1003CD95B /* ComplicationController.swift */,
 				6D8A629B20C1A1A1003CD95B /* Assets.xcassets */,
 				6D8A629D20C1A1A1003CD95B /* Info.plist */,
 				6D8A629E20C1A1A1003CD95B /* PushNotificationPayload.apns */,
@@ -2461,6 +2473,7 @@
 		6DA475971E8ABEE600B56D9B = {
 			isa = PBXGroup;
 			children = (
+				6D1616A820D2800B00C8FBBE /* Watch */,
 				6DDE956E1EE813DC0019DA47 /* External */,
 				6D466A871ED07CF1001BC579 /* Blockchain */,
 				6DA475A21E8ABEE600B56D9B /* Teambrella */,
@@ -2468,8 +2481,6 @@
 				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
 				6D59FCF71FBC8407006C0A2B /* notification */,
 				6DEFE3F32006544100615022 /* NotificationTeambrella */,
-				6D8A628320C1A19F003CD95B /* SurillaWatch */,
-				6D8A629220C1A1A1003CD95B /* SurillaWatch Extension */,
 				6DA475A11E8ABEE600B56D9B /* Products */,
 				5BD17B853E94E5AE1E9DCBE6 /* Pods */,
 				A3DA38407FE7184F4611CDC0 /* Frameworks */,
@@ -3422,6 +3433,7 @@
 				6D6388ED20C1D35700FD3351 /* AkkuratPro-Regular.otf in Resources */,
 				6D8A628620C1A19F003CD95B /* Interface.storyboard in Resources */,
 				6D1B287520C6B795003B2D32 /* Assets.xcassets in Resources */,
+				6D1616AA20D280C600C8FBBE /* SharedAssets.xcassets in Resources */,
 				6D6388EC20C1D35700FD3351 /* AkkuratPro-Bold.otf in Resources */,
 				6D1B287C20C6F81F003B2D32 /* Watch.strings in Resources */,
 			);
@@ -5033,7 +5045,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "SurillaWatch Extension/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Watch/SurillaWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -5056,7 +5068,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "SurillaWatch Extension/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Watch/SurillaWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -5084,7 +5096,7 @@
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = SurillaWatch_Extension;
-				INFOPLIST_FILE = SurillaWatch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Watch/SurillaWatch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5113,7 +5125,7 @@
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = SurillaWatch_Extension;
-				INFOPLIST_FILE = SurillaWatch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Watch/SurillaWatch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
