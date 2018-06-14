@@ -74,6 +74,11 @@ final class UniversalChatVC: UIViewController, Routable {
     
     private var leftButton: UIButton?
     
+    var router: MainRouter!
+    var session: Session!
+    var push: PushService!
+    var socket: SocketService!
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -121,7 +126,7 @@ final class UniversalChatVC: UIViewController, Routable {
         dataSource.isLoadNextNeeded = true
 
         title = ""
-        let session = service.session
+        let session = self.session
         slidingView.setupViews(with: self, session: session)
         slidingView.delegate = self
     }
@@ -169,7 +174,7 @@ final class UniversalChatVC: UIViewController, Routable {
     }
 
     deinit {
-        service.socket?.remove(listener: socketToken)
+        socket.remove(listener: socketToken)
     }
 
     // MARK: Public
@@ -253,13 +258,13 @@ final class UniversalChatVC: UIViewController, Routable {
         let indexPath = IndexPath(row: view.tag, section: 0)
         if let model = dataSource[indexPath] as? ChatCellUserDataLike {
             let userID = model.entity.userID
-            service.router.presentMemberProfile(teammateID: userID)
+            router.presentMemberProfile(teammateID: userID)
         }
     }
 
     @objc
     private func tapMuteButton(sender: UIButton) {
-        service.router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
+        router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
 
     }
 
@@ -475,14 +480,14 @@ private extension UniversalChatVC {
             }
         }
 
-        if let socket = service.socket,
-            let teamID = service.session?.currentTeam?.teamID {
+        if let socket = socket,
+            let teamID = session.currentTeam?.teamID {
             input.onTextChange = { [weak socket, weak self] in
                 guard let me = self else { return }
 
                 let interval = me.lastTypingDate.timeIntervalSinceNow
                 if interval < -2.0, let topicID = me.dataSource.topicID,
-                    let name = service.session?.currentUserName {
+                    let name = self?.session.currentUserName {
                     socket?.meTyping(teamID: teamID, topicID: topicID, name: name.first)
                     self?.lastTypingDate = Date()
                 }
@@ -491,7 +496,7 @@ private extension UniversalChatVC {
     }
 
     private func startListeningSockets() {
-        service.socket?.add(listener: socketToken, action: { [weak self] action in
+        socket.add(listener: socketToken, action: { [weak self] action in
             log("add command \(action.command)", type: .socket)
             switch action.command {
             case .theyTyping, .meTyping:
@@ -514,11 +519,11 @@ private extension UniversalChatVC {
     }
 
     private func stopListeningSockets() {
-        service.socket?.remove(listener: self)
+        socket.remove(listener: self)
     }
 
     private func startListeningPushes() {
-        service.push.addListener(self) { [weak self] type, payload -> Bool in
+        push.addListener(self) { [weak self] type, payload -> Bool in
             guard let `self` = self else { return true }
 
             switch type {
@@ -539,7 +544,7 @@ private extension UniversalChatVC {
     }
 
     private func stopListeningPushes() {
-        service.push.removeListener(self)
+        push.removeListener(self)
     }
 
     private func send(text: String, imageFragments: [ChatFragment]) {
@@ -791,7 +796,7 @@ extension UniversalChatVC: ImagePickerControllerDelegate {
 extension UniversalChatVC: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                            commit viewControllerToCommit: UIViewController) {
-        service.router.push(vc: viewControllerToCommit, animated: true)
+        router.push(vc: viewControllerToCommit, animated: true)
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,
@@ -803,7 +808,7 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
         let cellLocation = collectionView.convert(updatedLocation, to: cell.avatarView)
         guard cell.avatarView.point(inside: cellLocation, with: nil) else { return nil }
         guard let model = dataSource[indexPath] as? ChatTextCellModel else { return nil }
-        guard let vc = service.router.getControllerMemberProfile(teammateID: model.entity.userID) else { return nil }
+        guard let vc = router.getControllerMemberProfile(teammateID: model.entity.userID) else { return nil }
 
         vc.preferredContentSize = CGSize(width: view.bounds.width * 0.9, height: view.bounds.height * 0.9)
         previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)
@@ -839,7 +844,7 @@ extension UniversalChatVC: ClaimVotingDelegate {
         guard let model = dataSource.chatModel else { return }
         guard let teamID = model.team?.teamID, let claimID = model.basic?.claimID else { return }
 
-        service.router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
+        router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
     }
 }
 
@@ -852,7 +857,7 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
             if let model = dataSource.chatModel, model.isClaimChat {
                 self.slidingView.showVotingView()
             } else if let userID = dataSource.chatModel?.basic?.userID {
-                service.router.presentMemberProfile(teammateID: userID, scrollToVote: true)
+                router.presentMemberProfile(teammateID: userID, scrollToVote: true)
             }
         case view.chevronButton:
             self.slidingView.hideVotingView()
@@ -863,9 +868,9 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
 
     func chatObjectWasTapped(view: ChatObjectView) {
         if let model = dataSource.chatModel, model.isClaimChat, let id = model.id {
-            service.router.presentClaim(claimID: id)
+            router.presentClaim(claimID: id)
         } else if let userID = dataSource.chatModel?.basic?.userID {
-            service.router.presentMemberProfile(teammateID: userID, scrollToVote: true)
+            router.presentMemberProfile(teammateID: userID, scrollToVote: true)
         }
     }
 }

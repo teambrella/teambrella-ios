@@ -43,7 +43,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
     var isPresentedInStack = false
     var teammateID: Int?
     
-   // var router: MainRouter!
+//    var router: MainRouter!
     
     weak var emptyVC: EmptyVC?
     

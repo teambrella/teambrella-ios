@@ -37,6 +37,9 @@ class ChooseYourTeamVC: UIViewController, Routable {
     fileprivate var dataSource = ChooseYourTeamDataSource()
     weak var delegate: ChooseYourTeamControllerDelegate?
     
+    var router: MainRouter!
+    var session: Session!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         header.text = "Team.ChooseYourTeamVC.header".localized
@@ -140,12 +143,12 @@ extension ChooseYourTeamVC: UITableViewDelegate {
         }
         
         guard let team = dataSource[indexPath] as? ChooseYourTeamCellModel else {
-            service.router.logout()
+            router.logout()
             tapCancel()
             return
         }
         
-        service.session?.switchToTeam(id: team.teamID)
+        session.switchToTeam(id: team.teamID)
         tableView.reloadData()
         delegate?.chooseTeam(controller: self, didSelectTeamID: team.teamID)
         tapCancel()

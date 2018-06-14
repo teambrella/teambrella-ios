@@ -39,38 +39,38 @@ final class MainRouter {
     var masterTabBar: MasterTabBarController? {
         return navigator?.viewControllers.filter { $0 is MasterTabBarController }.first as? MasterTabBarController
     }
-
+    
     var frontmostViewController: UIViewController? {
         return topViewController()
     }
-
+    
     private func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController)
         -> UIViewController? {
-        if let nav = base as? UINavigationController {
-            return topViewController(base: nav.visibleViewController)
-        }
-        if let tab = base as? UITabBarController {
-            if let selected = tab.selectedViewController {
-                return topViewController(base: selected)
+            if let nav = base as? UINavigationController {
+                return topViewController(base: nav.visibleViewController)
             }
-        }
-        if let presented = base?.presentedViewController {
-            return topViewController(base: presented)
-        }
-        return base
+            if let tab = base as? UITabBarController {
+                if let selected = tab.selectedViewController {
+                    return topViewController(base: selected)
+                }
+            }
+            if let presented = base?.presentedViewController {
+                return topViewController(base: presented)
+            }
+            return base
     }
-
+    
     func push(vc: UIViewController, animated: Bool = true) {
         navigator?.pushViewController(vc, animated: animated)
     }
-
+    
     func popToBase(animated: Bool = false) {
         guard let navigator = navigator else { return }
         guard let tabController = masterTabBar else { return }
-
+        
         navigator.popToViewController(tabController, animated: animated)
     }
-
+    
     private func switchTab(to tab: TabType) -> UIViewController? {
         return masterTabBar?.switchTo(tabType: tab)
     }
@@ -125,9 +125,10 @@ final class MainRouter {
         }
         guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
         
-//        vc.session = service.session
-//        vc.router = self
-//        vc.socket = service.socket
+        vc.session = service.session
+        vc.router = self
+        vc.push = service.push
+        vc.socket = service.socket
         vc.setContext(context: context, itemType: itemType)
         push(vc: vc, animated: animated)
     }
@@ -168,10 +169,11 @@ final class MainRouter {
     func getControllerMemberProfile(teammateID: String) -> TeammateProfileVC? {
         let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC
         
+        vc?.teammateID = teammateID
+//        vc?.currentUserID = service.session?.currentUserID
 //        vc?.router = self
 //        vc?.session = service.session
 //        vc?.currencyName = service.currencyName
-        vc?.teammateID = teammateID
         return vc
     }
     
@@ -195,6 +197,7 @@ final class MainRouter {
         guard let vc = ClaimTransactionsVC.instantiate() as? ClaimTransactionsVC
             else { fatalError("Error instantiating") }
         
+        vc.router = self
         vc.teamID = teamID
         vc.claimID = claimID
         vc.userID = userID
@@ -258,6 +261,7 @@ final class MainRouter {
     func presentPrivateMessages(animated: Bool = true) {
         guard let vc = PrivateMessagesVC.instantiate() as? PrivateMessagesVC else { fatalError("Error instantiating") }
         
+        vc.router = self
         push(vc: vc, animated: animated)
     }
     
@@ -265,15 +269,18 @@ final class MainRouter {
         guard let vc = CompareTeamRiskVC.instantiate() as? CompareTeamRiskVC else { fatalError("Error instantiating") }
         
         vc.ranges = ranges
+        vc.router = self
         push(vc: vc)
     }
-
+    
     func presentConsole() {
         guard let vc = Console.instantiate() as? Console else { fatalError("Error instantiating") }
-
+        
+        vc.push = service.push
+        vc.teambrella = service.teambrella
         push(vc: vc)
     }
-
+    
     // MARK: Present Modally
     
     func showChooseTeam(in viewController: UIViewController, delegate: ChooseYourTeamControllerDelegate) {
@@ -282,6 +289,8 @@ final class MainRouter {
             as? ChooseYourTeamVC else { fatalError("Error instantiating") }
         
         vc.delegate = delegate
+        vc.router = self
+        vc.session = service.session
         viewController.present(vc, animated: false, completion: nil)
     }
     
@@ -317,7 +326,7 @@ final class MainRouter {
                           reserved: Ether) {
         guard let vc = WithdrawInfoVC.instantiate() as? WithdrawInfoVC else { fatalError("Error instantiating") }
         
-       // vc.delegate = delegate
+        // vc.delegate = delegate
         vc.cryptoBalance = balance
         vc.cryptoReserved = reserved
         viewController.present(vc, animated: false, completion: nil)
@@ -358,7 +367,7 @@ final class MainRouter {
             if let vc = vc as? InitialVC {
                 navigator.popToViewController(vc, animated: true)
                 vc.mode = .login
-               return vc
+                return vc
             }
         }
         return nil
@@ -378,7 +387,7 @@ final class MainRouter {
             vc.mode = .demoExpired
         }
     }
-
+    
     @discardableResult
     func showSOD(mode: SODVC.SODMode = .outdated, in controller: UIViewController) -> SODVC? {
         guard let vc = SODVC.instantiate() as? SODVC else { return nil }
