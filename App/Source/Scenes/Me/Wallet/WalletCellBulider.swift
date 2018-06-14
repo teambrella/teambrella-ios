@@ -94,7 +94,7 @@ struct WalletCellBuilder {
         let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil
         cell.imagesStack.set(images: avatars, label: label, max: maxAvatarsStackCount)
         cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
-        cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
+        cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.backupWallet".localized
         cell.tapMiddleViewRecognizer.removeTarget(delegate, action: nil)
         cell.tapMiddleViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapTransactions))
         cell.tapTopViewRecognizer.removeTarget(delegate, action: nil)

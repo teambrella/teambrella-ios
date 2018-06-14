@@ -18,7 +18,7 @@
 
 "Me.WalletVC.actionsCell.cosigners"                = "Cosigners";
 "Me.WalletVC.actionsCell.transactions"             = "Transactions";
-"Me.WalletVC.actionsCell.withdrawAddress"          = "Default withdraw address";
+"Me.WalletVC.actionsCell.backupWallet"             = "Backup Wallet";
 
 "Me.WalletDetailsVC.title"                         = "QR-code";
 "Me.WalletDetailsVC.fundButton"                    = "How do I fund a wallet? >";

@@ -18,7 +18,7 @@
 
 "Me.WalletVC.actionsCell.cosigners"                = "Сопоручители";
 "Me.WalletVC.actionsCell.transactions"             = "Транзакции";
-"Me.WalletVC.actionsCell.withdrawAddress"          = "Стандартный адрес снятия";
+"Me.WalletVC.actionsCell.backupWallet"             = "Бэкап кошелька";
 
 "Me.WalletDetailsVC.title"                         = "QR-код";
 "Me.WalletDetailsVC.fundButton"                    = "Как мне пополнить кошелёк? >";

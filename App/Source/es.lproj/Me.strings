@@ -24,7 +24,7 @@
 "Me.WalletVC.fundButton"                       = "Financiar Monedero";
 "Me.WalletVC.actionsCell.cosigners"            = "Cofirmantes";
 "Me.WalletVC.actionsCell.transactions"         = "Transacciones";
-"Me.WalletVC.actionsCell.withdrawAddress"      = "Dirección para retirar por defectos";
+"Me.WalletVC.actionsCell.backupWallet"         = "Hacer una copia respaldo del monedero";
 "Me.WalletDetailsVC.title"                     = "QR-code";
 "Me.WalletDetailsVC.fundButton"                = "Como financiar mi monedero?";
 "Me.WalletDetailsVC.headerLabel"               = "Dirección de Ethereum";
