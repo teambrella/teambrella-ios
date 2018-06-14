@@ -1917,6 +1917,21 @@
 			path = Watch;
 			sourceTree = "<group>";
 		};
+		6D1616AB20D2845000C8FBBE /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				6D59FCF81FBC8407006C0A2B /* NotificationService.swift */,
+				6DA1A54A1FBF25ED000FDECA /* RemotePayload.swift */,
+				6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */,
+				6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */,
+				6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */,
+				6D6245EE1FBEF25C00641D0A /* notification.entitlements */,
+				6D59FCF71FBC8407006C0A2B /* Surilla */,
+				6DEFE3F32006544100615022 /* Teambrella */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		6D1683831F13BCE9002B52EE /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -2218,18 +2233,12 @@
 			name = Proxy;
 			sourceTree = "<group>";
 		};
-		6D59FCF71FBC8407006C0A2B /* NotificationSurilla */ = {
+		6D59FCF71FBC8407006C0A2B /* Surilla */ = {
 			isa = PBXGroup;
 			children = (
-				6D6245EE1FBEF25C00641D0A /* notification.entitlements */,
-				6D59FCF81FBC8407006C0A2B /* NotificationService.swift */,
 				6D59FCFA1FBC8407006C0A2B /* Info.plist */,
-				6DA1A54A1FBF25ED000FDECA /* RemotePayload.swift */,
-				6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */,
-				6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */,
-				6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */,
 			);
-			path = NotificationSurilla;
+			path = Surilla;
 			sourceTree = "<group>";
 		};
 		6D6388F620C3269D00FD3351 /* Watch */ = {
@@ -2473,14 +2482,13 @@
 		6DA475971E8ABEE600B56D9B = {
 			isa = PBXGroup;
 			children = (
+				6D1616AB20D2845000C8FBBE /* Notifications */,
 				6D1616A820D2800B00C8FBBE /* Watch */,
 				6DDE956E1EE813DC0019DA47 /* External */,
 				6D466A871ED07CF1001BC579 /* Blockchain */,
 				6DA475A21E8ABEE600B56D9B /* Teambrella */,
 				6DA475B71E8ABEE600B56D9B /* TeambrellaTests */,
 				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
-				6D59FCF71FBC8407006C0A2B /* NotificationSurilla */,
-				6DEFE3F32006544100615022 /* NotificationTeambrella */,
 				6DA475A11E8ABEE600B56D9B /* Products */,
 				5BD17B853E94E5AE1E9DCBE6 /* Pods */,
 				A3DA38407FE7184F4611CDC0 /* Frameworks */,
@@ -2940,12 +2948,12 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
-		6DEFE3F32006544100615022 /* NotificationTeambrella */ = {
+		6DEFE3F32006544100615022 /* Teambrella */ = {
 			isa = PBXGroup;
 			children = (
 				6DEFE3F62006544100615022 /* Info.plist */,
 			);
-			path = NotificationTeambrella;
+			path = Teambrella;
 			sourceTree = "<group>";
 		};
 		6DF2E8BF1EF02F8C00C8D60B /* Socket */ = {
@@ -4994,7 +5002,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "$(SRCROOT)/NotificationSurilla/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Notifications/Surilla/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.notification;
@@ -5023,7 +5031,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "$(SRCROOT)/NotificationSurilla/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Notifications/Surilla/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.notification;
@@ -5305,7 +5313,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = NotificationTeambrella/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Notifications/Teambrella/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.NotificationTeambrella;
@@ -5333,7 +5341,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = NotificationTeambrella/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Notifications/Teambrella/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.NotificationTeambrella;
