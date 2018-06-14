@@ -36,7 +36,7 @@ enum KeychainKey: String {
     case privateKey = "Private Key"
 }
 
-class KeychainService {
+final class KeychainService {
     let keychain = Keychain(service: Constant.keychainName)
         .accessibility(.always)
         .synchronizable(true)

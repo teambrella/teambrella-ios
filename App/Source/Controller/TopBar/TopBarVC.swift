@@ -20,7 +20,7 @@ protocol TopBarDelegate: class {
     func topBar(vc: TopBarVC, didSwitchTeamToID: Int)
 }
 
-class TopBarVC: UIViewController {
+final class TopBarVC: UIViewController {
     struct Constant {
         static let teamIconWidth: CGFloat = 24
         static let teamIconCornerRadius: CGFloat = 4
@@ -98,6 +98,7 @@ class TopBarVC: UIViewController {
 
 extension TopBarVC: ChooseYourTeamControllerDelegate {
     func chooseTeam(controller: ChooseYourTeamVC, didSelectTeamID: Int) {
+        session?.switchToTeam(id: didSelectTeamID)
         router?.switchTeam()
         delegate?.topBar(vc: self, didSwitchTeamToID: didSelectTeamID)
     }

@@ -25,7 +25,7 @@ protocol ChooseYourTeamControllerDelegate: class {
     func chooseTeam(controller: ChooseYourTeamVC, didSelectTeamID: Int)
 }
 
-class ChooseYourTeamVC: UIViewController, Routable {
+final class ChooseYourTeamVC: UIViewController, Routable {
     static let storyboardName = "Team"
     
     @IBOutlet var backView: UIView!
@@ -38,7 +38,6 @@ class ChooseYourTeamVC: UIViewController, Routable {
     weak var delegate: ChooseYourTeamControllerDelegate?
     
     var router: MainRouter!
-    var session: Session!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,7 +147,6 @@ extension ChooseYourTeamVC: UITableViewDelegate {
             return
         }
         
-        session.switchToTeam(id: team.teamID)
         tableView.reloadData()
         delegate?.chooseTeam(controller: self, didSelectTeamID: team.teamID)
         tapCancel()

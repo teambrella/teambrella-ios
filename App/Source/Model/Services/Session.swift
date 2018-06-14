@@ -21,7 +21,7 @@
 
 import Foundation
 
-struct Session {
+class Session {
     var isDemo: Bool
     
     var currentTeam: TeamEntity?
@@ -47,7 +47,7 @@ struct Session {
     }
     
     @discardableResult
-    mutating func switchToTeam(id: Int) -> Bool {
+    func switchToTeam(id: Int) -> Bool {
         guard let currentTeam = currentTeam, currentTeam.teamID != id else { return false }
         
         SimpleStorage().store(int: id, forKey: .teamID)

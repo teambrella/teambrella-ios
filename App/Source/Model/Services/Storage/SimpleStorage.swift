@@ -16,7 +16,7 @@
 
 import Foundation
 
-class SimpleStorage {
+final class SimpleStorage {
     enum StorageKey: String {
         case teamID                      = "teambrella.currentTeam.id"
         case recentScene                 = "storage.recentScene"

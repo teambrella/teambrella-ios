@@ -24,7 +24,7 @@ import PKHUD
 
 fileprivate(set)var service = ServicesHandler.shared
 
-class ServicesHandler {
+final class ServicesHandler {
     static let shared = ServicesHandler()
     
     /// routing between application scenes

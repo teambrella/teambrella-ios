@@ -1014,6 +1014,8 @@
 		6DCA41E520D29EB400B741BA /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D1616A920D280C600C8FBBE /* SharedAssets.xcassets */; };
 		6DCA41E620D29EC200B741BA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D8A628420C1A19F003CD95B /* Interface.storyboard */; };
 		6DCA41E720D29F6C00B741BA /* WalletEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6388FC20C3271300FD3351 /* WalletEntities.swift */; };
+		6DCA41E820D2AA4700B741BA /* AkkuratPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303D20B5D4CD001775ED /* AkkuratPro-Bold.otf */; };
+		6DCA41E920D2AA4A00B741BA /* AkkuratPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90303E20B5D4CE001775ED /* AkkuratPro-Regular.otf */; };
 		6DCE7B3A20C81F1000D0003A /* EtherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE7B3920C81F1000D0003A /* EtherTests.swift */; };
 		6DDB5D941FF692DC0066A07F /* TeammatesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB5D921FF692DC0066A07F /* TeammatesList.swift */; };
 		6DDB5D971FF694090066A07F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB5D951FF694090066A07F /* ChatModel.swift */; };
@@ -3612,7 +3614,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DCA41E820D2AA4700B741BA /* AkkuratPro-Bold.otf in Resources */,
 				6DCA41BF20D29E1900B741BA /* Assets.xcassets in Resources */,
+				6DCA41E920D2AA4A00B741BA /* AkkuratPro-Regular.otf in Resources */,
 				6DCA41E620D29EC200B741BA /* Interface.storyboard in Resources */,
 				6DCA41E520D29EB400B741BA /* SharedAssets.xcassets in Resources */,
 			);

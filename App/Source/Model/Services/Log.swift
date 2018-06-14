@@ -37,7 +37,7 @@ func log(_ error: Error) {
     #endif
 }
 
-class Log {
+final class Log {
     /// Change log level to filter logs along the entire application
     var logLevel: LogLevel = .all
 

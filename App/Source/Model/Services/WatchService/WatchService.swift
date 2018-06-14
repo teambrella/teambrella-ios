@@ -17,7 +17,7 @@
 import Foundation
 import WatchConnectivity
 
-class WatchService: NSObject {
+final class WatchService: NSObject {
     let dao: WatchDAO = WatchDAO()
 
     override init() {

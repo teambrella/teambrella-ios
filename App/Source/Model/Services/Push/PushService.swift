@@ -23,7 +23,7 @@ import Firebase
 import UIKit
 import UserNotifications
 
-class PushService: NSObject {
+final class PushService: NSObject {
     var token: Data?
     var tokenString: String? {
         return currentFirebaseToken

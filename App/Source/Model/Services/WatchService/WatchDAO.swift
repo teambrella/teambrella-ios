@@ -16,10 +16,10 @@
 
 import Foundation
 
-class WatchDAO {
+final class WatchDAO {
     let cache: WatchDAOCache = WatchDAOCache(deprecateInterval: 60 * 3)
     let dao: DAO = service.dao
-    var isCaching: Bool = true
+    var isCaching: Bool = false
 
     func getWallet(completion: @escaping (WatchWallet?) -> Void) {
         if isCaching, let wallet = cache.wallet, cache.isValid(item: wallet) {

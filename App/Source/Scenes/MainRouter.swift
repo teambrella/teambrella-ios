@@ -290,7 +290,6 @@ final class MainRouter {
         
         vc.delegate = delegate
         vc.router = self
-        vc.session = service.session
         viewController.present(vc, animated: false, completion: nil)
     }
     
