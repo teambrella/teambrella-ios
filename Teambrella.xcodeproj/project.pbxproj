@@ -2482,13 +2482,13 @@
 		6DA475971E8ABEE600B56D9B = {
 			isa = PBXGroup;
 			children = (
-				6D1616AB20D2845000C8FBBE /* Notifications */,
-				6D1616A820D2800B00C8FBBE /* Watch */,
 				6DDE956E1EE813DC0019DA47 /* External */,
 				6D466A871ED07CF1001BC579 /* Blockchain */,
+				6D1616AB20D2845000C8FBBE /* Notifications */,
 				6DA475A21E8ABEE600B56D9B /* Teambrella */,
-				6DA475B71E8ABEE600B56D9B /* TeambrellaTests */,
+				6DA475B71E8ABEE600B56D9B /* Tests */,
 				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
+				6D1616A820D2800B00C8FBBE /* Watch */,
 				6DA475A11E8ABEE600B56D9B /* Products */,
 				5BD17B853E94E5AE1E9DCBE6 /* Pods */,
 				A3DA38407FE7184F4611CDC0 /* Frameworks */,
@@ -2530,7 +2530,7 @@
 			path = Teambrella;
 			sourceTree = "<group>";
 		};
-		6DA475B71E8ABEE600B56D9B /* TeambrellaTests */ = {
+		6DA475B71E8ABEE600B56D9B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				6DA475BA1E8ABEE600B56D9B /* Info.plist */,
@@ -2543,7 +2543,7 @@
 				6DF2079C1FB4A11600E10B85 /* StringTests.swift */,
 				6DCE7B3920C81F1000D0003A /* EtherTests.swift */,
 			);
-			path = TeambrellaTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		6DA475D51E8BB9DF00B56D9B /* Model */ = {
@@ -5270,7 +5270,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
-				INFOPLIST_FILE = TeambrellaTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5287,7 +5287,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
-				INFOPLIST_FILE = TeambrellaTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

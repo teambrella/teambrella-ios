@@ -36,8 +36,8 @@ opt_in_rules:
 excluded: # paths to ignore during linting.
   - Carthage
   - Pods
-  - TeambrellaTests
-  - TeambrellaUITests
+  - Tests
+  - UITests
   - Blockchain
   - External
 
