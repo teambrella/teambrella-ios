@@ -102,6 +102,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
+
     }
 
     private func consoleAccessSetup() {
