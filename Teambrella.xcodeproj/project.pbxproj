@@ -489,7 +489,7 @@
 		6D1B287720C6C3D1003B2D32 /* PushKitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */; };
 		6D1B287820C6C3D1003B2D32 /* PushKitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */; };
 		6D1B287C20C6F81F003B2D32 /* Watch.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D1B287A20C6F81F003B2D32 /* Watch.strings */; };
-		6D1B287F20C7072F003B2D32 /* notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6D59FCF61FBC8407006C0A2B /* notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6D1B287F20C7072F003B2D32 /* NotificationSurilla.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6D59FCF61FBC8407006C0A2B /* NotificationSurilla.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6D1CAC061FF4FEE900FA58B6 /* TeambrellaRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC041FF4FEE900FA58B6 /* TeambrellaRequestType.swift */; };
 		6D1CAC091FF4FF3800FA58B6 /* TeambrellaResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */; };
 		6D1CAC0C1FF51A1200FA58B6 /* OthersVotedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC0A1FF51A1200FA58B6 /* OthersVotedVC.swift */; };
@@ -1109,7 +1109,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				6D1B287F20C7072F003B2D32 /* notification.appex in Embed App Extensions */,
+				6D1B287F20C7072F003B2D32 /* NotificationSurilla.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1296,7 +1296,7 @@
 		6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatAdaptor.swift; path = Scenes/Home/PrivateMessages/PrivateChatAdaptor.swift; sourceTree = "<group>"; };
 		6D59F00C1F56F47B00C422EB /* ChatFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatFooter.swift; path = View/ReusableViews/ChatFooter.swift; sourceTree = "<group>"; };
 		6D59F00D1F56F47B00C422EB /* ChatFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChatFooter.xib; path = View/ReusableViews/ChatFooter.xib; sourceTree = "<group>"; };
-		6D59FCF61FBC8407006C0A2B /* notification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = notification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D59FCF61FBC8407006C0A2B /* NotificationSurilla.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationSurilla.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D59FCF81FBC8407006C0A2B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		6D59FCFA1FBC8407006C0A2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D59FD131FBC95CB006C0A2B /* TimestampFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimestampFetcher.swift; path = Model/Services/Networking/TimestampFetcher.swift; sourceTree = "<group>"; };
@@ -2218,7 +2218,7 @@
 			name = Proxy;
 			sourceTree = "<group>";
 		};
-		6D59FCF71FBC8407006C0A2B /* notification */ = {
+		6D59FCF71FBC8407006C0A2B /* NotificationSurilla */ = {
 			isa = PBXGroup;
 			children = (
 				6D6245EE1FBEF25C00641D0A /* notification.entitlements */,
@@ -2229,7 +2229,7 @@
 				6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */,
 				6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */,
 			);
-			path = notification;
+			path = NotificationSurilla;
 			sourceTree = "<group>";
 		};
 		6D6388F620C3269D00FD3351 /* Watch */ = {
@@ -2479,7 +2479,7 @@
 				6DA475A21E8ABEE600B56D9B /* Teambrella */,
 				6DA475B71E8ABEE600B56D9B /* TeambrellaTests */,
 				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
-				6D59FCF71FBC8407006C0A2B /* notification */,
+				6D59FCF71FBC8407006C0A2B /* NotificationSurilla */,
 				6DEFE3F32006544100615022 /* NotificationTeambrella */,
 				6DA475A11E8ABEE600B56D9B /* Products */,
 				5BD17B853E94E5AE1E9DCBE6 /* Pods */,
@@ -2495,7 +2495,7 @@
 			children = (
 				6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */,
 				6D4E5DD91F7AB6870020DEE2 /* Surilla.app */,
-				6D59FCF61FBC8407006C0A2B /* notification.appex */,
+				6D59FCF61FBC8407006C0A2B /* NotificationSurilla.appex */,
 				6DEFE3F22006544100615022 /* NotificationTeambrella.appex */,
 				6D05253E20A5D839000B3247 /* Teambrella.app */,
 				6D8A628220C1A19F003CD95B /* SurillaWatch.app */,
@@ -3060,9 +3060,9 @@
 			productReference = 6D4E5DD91F7AB6870020DEE2 /* Surilla.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6D59FCF51FBC8407006C0A2B /* notification */ = {
+		6D59FCF51FBC8407006C0A2B /* NotificationSurilla */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D59FD001FBC8407006C0A2B /* Build configuration list for PBXNativeTarget "notification" */;
+			buildConfigurationList = 6D59FD001FBC8407006C0A2B /* Build configuration list for PBXNativeTarget "NotificationSurilla" */;
 			buildPhases = (
 				8F73F72AC1E236FABBC621AB /* [CP] Check Pods Manifest.lock */,
 				6D59FCF21FBC8407006C0A2B /* Sources */,
@@ -3074,9 +3074,9 @@
 			);
 			dependencies = (
 			);
-			name = notification;
+			name = NotificationSurilla;
 			productName = notification;
-			productReference = 6D59FCF61FBC8407006C0A2B /* notification.appex */;
+			productReference = 6D59FCF61FBC8407006C0A2B /* NotificationSurilla.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		6D8A628120C1A19F003CD95B /* SurillaWatch */ = {
@@ -3219,7 +3219,7 @@
 			targets = (
 				6D4E5C241F7AB6870020DEE2 /* Surilla */,
 				6DA475B31E8ABEE600B56D9B /* TeambrellaTests */,
-				6D59FCF51FBC8407006C0A2B /* notification */,
+				6D59FCF51FBC8407006C0A2B /* NotificationSurilla */,
 				6DEFE3F12006544100615022 /* NotificationTeambrella */,
 				6D05234B20A5D838000B3247 /* Teambrella */,
 				6D8A628120C1A19F003CD95B /* SurillaWatch */,
@@ -4656,7 +4656,7 @@
 		};
 		6D1B288120C7072F003B2D32 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6D59FCF51FBC8407006C0A2B /* notification */;
+			target = 6D59FCF51FBC8407006C0A2B /* NotificationSurilla */;
 			targetProxy = 6D1B288020C7072F003B2D32 /* PBXContainerItemProxy */;
 		};
 		6D8A629120C1A1A1003CD95B /* PBXTargetDependency */ = {
@@ -4994,7 +4994,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = notification/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NotificationSurilla/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.notification;
@@ -5023,7 +5023,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = notification/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NotificationSurilla/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.notification;
@@ -5366,7 +5366,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D59FD001FBC8407006C0A2B /* Build configuration list for PBXNativeTarget "notification" */ = {
+		6D59FD001FBC8407006C0A2B /* Build configuration list for PBXNativeTarget "NotificationSurilla" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D59FCFE1FBC8407006C0A2B /* Debug */,

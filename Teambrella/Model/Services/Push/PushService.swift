@@ -281,7 +281,7 @@ extension PushService: UNUserNotificationCenterDelegate {
         if let payload = dict["Payload"] as? [AnyHashable: Any],
             let commandInt = payload["Cmd"] as? Int,
             let command = RemoteCommandType(rawValue: commandInt) {
-            for (_ , handler) in listeners {
+            for (_, handler) in listeners {
                 // listeners may opt into showing push (sending true) or not
                 if handler(command, payload) == false {
                     return

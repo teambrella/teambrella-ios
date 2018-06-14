@@ -502,7 +502,6 @@ private extension UniversalChatVC {
                 self?.loadNewMessages()
             default:
                 print("unsupported command: \(action.command)")
-                break
             }
         })
     }
