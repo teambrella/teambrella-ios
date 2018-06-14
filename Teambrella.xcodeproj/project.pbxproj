@@ -1705,7 +1705,6 @@
 		94F502591FA8E4A90059D49B /* MuteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuteDataSource.swift; path = Scenes/Team/Chat/MuteDataSource.swift; sourceTree = "<group>"; };
 		96FABEEB77E20E892668A71C /* Pods-Teambrella2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella2/Pods-Teambrella2.debug.xcconfig"; sourceTree = "<group>"; };
 		A3262F01941F36B157BA1E0F /* Pods-Teambrella2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella2/Pods-Teambrella2.release.xcconfig"; sourceTree = "<group>"; };
-		BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDFE16BB5E7B5B758559237 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Helpers/Extensions/String.swift; sourceTree = "<group>"; };
 		CBDFEA3415104DFFD0D751C7 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerService.swift; path = Model/Services/Networking/ServerService.swift; sourceTree = "<group>"; };
 		CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaritalStatus.swift; path = Model/Enums/MaritalStatus.swift; sourceTree = "<group>"; };
@@ -1925,6 +1924,7 @@
 				6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */,
 				6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */,
 				6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */,
+				6DA1A5421FBF0B42000FDECA /* Notification-Bridging-Header.h */,
 				6D6245EE1FBEF25C00641D0A /* notification.entitlements */,
 				6D59FCF71FBC8407006C0A2B /* Surilla */,
 				6DEFE3F32006544100615022 /* Teambrella */,
@@ -1935,6 +1935,7 @@
 		6D1616AC20D2968500C8FBBE /* App */ = {
 			isa = PBXGroup;
 			children = (
+				6DA475A21E8ABEE600B56D9B /* Source */,
 				6D1616AD20D296C400C8FBBE /* Teambrella */,
 				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
 			);
@@ -2502,17 +2503,15 @@
 			isa = PBXGroup;
 			children = (
 				6D1616AC20D2968500C8FBBE /* App */,
-				6DDE956E1EE813DC0019DA47 /* External */,
 				6D466A871ED07CF1001BC579 /* Blockchain */,
+				6DDE956E1EE813DC0019DA47 /* External */,
 				6D1616AB20D2845000C8FBBE /* Notifications */,
-				6DA475A21E8ABEE600B56D9B /* Teambrella */,
 				6DA475B71E8ABEE600B56D9B /* Tests */,
 				6D1616A820D2800B00C8FBBE /* Watch */,
 				6DA475A11E8ABEE600B56D9B /* Products */,
 				5BD17B853E94E5AE1E9DCBE6 /* Pods */,
 				A3DA38407FE7184F4611CDC0 /* Frameworks */,
 				6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */,
-				6DA1A5421FBF0B42000FDECA /* Notification-Bridging-Header.h */,
 				6DBD695D2093864000D1524F /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
@@ -2531,7 +2530,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6DA475A21E8ABEE600B56D9B /* Teambrella */ = {
+		6DA475A21E8ABEE600B56D9B /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				6D8CB40E1F5865B200C72AC3 /* Teambrella.entitlements */,
@@ -2546,7 +2545,7 @@
 				6D83EC8C1EDD708A000412DC /* Controller */,
 				6DCB19491F0FD96E00AC9969 /* Effects */,
 			);
-			path = Teambrella;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		6DA475B71E8ABEE600B56D9B /* Tests */ = {
@@ -3002,7 +3001,6 @@
 				6DFECAD6207CFEF800B5FEC8 /* PKHUD.framework */,
 				F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */,
 				EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */,
-				BC8626132073AB752667A90E /* libPods-TeambrellaUITests.a */,
 				F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */,
 				177A2DBE9DB0723855A80DED /* libPods-notification.a */,
 				0F0981AC48D38E5C8A149C38 /* libPods-NotificationTeambrella.a */,
@@ -4853,7 +4851,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
-				CODE_SIGN_ENTITLEMENTS = Teambrella/Teambrella.entitlements;
+				CODE_SIGN_ENTITLEMENTS = App/Source/Teambrella.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
@@ -4894,7 +4892,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
-				CODE_SIGN_ENTITLEMENTS = Teambrella/Teambrella.entitlements;
+				CODE_SIGN_ENTITLEMENTS = App/Source/Teambrella.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
@@ -4932,7 +4930,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconSurilla;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
-				CODE_SIGN_ENTITLEMENTS = Teambrella/Teambrella.entitlements;
+				CODE_SIGN_ENTITLEMENTS = App/Source/Teambrella.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
@@ -4972,7 +4970,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconSurilla;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
-				CODE_SIGN_ENTITLEMENTS = Teambrella/Teambrella.entitlements;
+				CODE_SIGN_ENTITLEMENTS = App/Source/Teambrella.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
@@ -5024,7 +5022,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.notification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Notification-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -5053,7 +5051,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.notification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Notification-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -5335,7 +5333,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.NotificationTeambrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Notification-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -5363,7 +5361,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.NotificationTeambrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Notification-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
