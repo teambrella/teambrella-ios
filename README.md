@@ -29,8 +29,9 @@ The client stores private keys locally and backs them up via Apple iCloud servic
 
 | Folder | Description |
 |---|---|
+| App | Main application's bundle |
 | Blockchain | Services managing communication with Ethereum network and storing data about transactions and users locally |
-| notification | Push notification extension to handle rich notifications |
-| Teambrella | Main application's bundle |
+| Notifications | Push notification extension to handle rich notifications |
+| Watch | Apple Watch satellite app |
 | External | Separate files that are not originated in our dev lab |
 | Resources | All those resources that can't be made public |
