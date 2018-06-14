@@ -474,7 +474,7 @@
 		6D05253320A5D838000B3247 /* TopBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDC65581FBAE0CA00DE4E36 /* TopBarVC.xib */; };
 		6D05253420A5D838000B3247 /* VotingRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */; };
 		6D05254220A5DA1A000B3247 /* Teambrella.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DDFDAF41F8CD25600342696 /* Teambrella.xcassets */; };
-		6D05254320A5DE3A000B3247 /* NotificationTeambrella.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6DEFE3F22006544100615022 /* NotificationTeambrella.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6D05254320A5DE3A000B3247 /* TeambrellaNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6DEFE3F22006544100615022 /* TeambrellaNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6D0C39DE1F991B6600941FF3 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
 		6D0FD84E201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */; };
 		6D106F0C203AD4D70049E92E /* NewClaimCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F09203AD4C70049E92E /* NewClaimCell.swift */; };
@@ -489,7 +489,7 @@
 		6D1B287720C6C3D1003B2D32 /* PushKitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */; };
 		6D1B287820C6C3D1003B2D32 /* PushKitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */; };
 		6D1B287C20C6F81F003B2D32 /* Watch.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D1B287A20C6F81F003B2D32 /* Watch.strings */; };
-		6D1B287F20C7072F003B2D32 /* NotificationSurilla.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6D59FCF61FBC8407006C0A2B /* NotificationSurilla.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6D1B287F20C7072F003B2D32 /* SurillaNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6D59FCF61FBC8407006C0A2B /* SurillaNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6D1CAC061FF4FEE900FA58B6 /* TeambrellaRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC041FF4FEE900FA58B6 /* TeambrellaRequestType.swift */; };
 		6D1CAC091FF4FF3800FA58B6 /* TeambrellaResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */; };
 		6D1CAC0C1FF51A1200FA58B6 /* OthersVotedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC0A1FF51A1200FA58B6 /* OthersVotedVC.swift */; };
@@ -1098,7 +1098,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				6D05254320A5DE3A000B3247 /* NotificationTeambrella.appex in Embed App Extensions */,
+				6D05254320A5DE3A000B3247 /* TeambrellaNotification.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1109,7 +1109,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				6D1B287F20C7072F003B2D32 /* NotificationSurilla.appex in Embed App Extensions */,
+				6D1B287F20C7072F003B2D32 /* SurillaNotification.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1296,7 +1296,7 @@
 		6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatAdaptor.swift; path = Scenes/Home/PrivateMessages/PrivateChatAdaptor.swift; sourceTree = "<group>"; };
 		6D59F00C1F56F47B00C422EB /* ChatFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatFooter.swift; path = View/ReusableViews/ChatFooter.swift; sourceTree = "<group>"; };
 		6D59F00D1F56F47B00C422EB /* ChatFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChatFooter.xib; path = View/ReusableViews/ChatFooter.xib; sourceTree = "<group>"; };
-		6D59FCF61FBC8407006C0A2B /* NotificationSurilla.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationSurilla.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D59FCF61FBC8407006C0A2B /* SurillaNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SurillaNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D59FCF81FBC8407006C0A2B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		6D59FCFA1FBC8407006C0A2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D59FD131FBC95CB006C0A2B /* TimestampFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimestampFetcher.swift; path = Model/Services/Networking/TimestampFetcher.swift; sourceTree = "<group>"; };
@@ -1602,7 +1602,7 @@
 		6DEFCFB71F7A66D7008C306C /* SwitchUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SwitchUserCell.xib; path = View/Cells/SwitchUserCell.xib; sourceTree = "<group>"; };
 		6DEFE3CA2005286200615022 /* HomeCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCardModel.swift; path = Model/Entities/HomeCardModel.swift; sourceTree = "<group>"; };
 		6DEFE3D02005355C00615022 /* InviteToTeamEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InviteToTeamEntity.swift; path = Model/Entities/InviteToTeamEntity.swift; sourceTree = "<group>"; };
-		6DEFE3F22006544100615022 /* NotificationTeambrella.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationTeambrella.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DEFE3F22006544100615022 /* TeambrellaNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TeambrellaNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DEFE3F62006544100615022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DF2079C1FB4A11600E10B85 /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		6DF2E8BB1EF0232700C8D60B /* ViewDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewDecorator.swift; path = Helpers/ViewDecorator.swift; sourceTree = "<group>"; };
@@ -2521,8 +2521,8 @@
 			children = (
 				6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */,
 				6D4E5DD91F7AB6870020DEE2 /* Surilla.app */,
-				6D59FCF61FBC8407006C0A2B /* NotificationSurilla.appex */,
-				6DEFE3F22006544100615022 /* NotificationTeambrella.appex */,
+				6D59FCF61FBC8407006C0A2B /* SurillaNotification.appex */,
+				6DEFE3F22006544100615022 /* TeambrellaNotification.appex */,
 				6D05253E20A5D839000B3247 /* Teambrella.app */,
 				6D8A628220C1A19F003CD95B /* SurillaWatch.app */,
 				6D8A628E20C1A1A1003CD95B /* SurillaWatch Extension.appex */,
@@ -3082,9 +3082,9 @@
 			productReference = 6D4E5DD91F7AB6870020DEE2 /* Surilla.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6D59FCF51FBC8407006C0A2B /* NotificationSurilla */ = {
+		6D59FCF51FBC8407006C0A2B /* SurillaNotification */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D59FD001FBC8407006C0A2B /* Build configuration list for PBXNativeTarget "NotificationSurilla" */;
+			buildConfigurationList = 6D59FD001FBC8407006C0A2B /* Build configuration list for PBXNativeTarget "SurillaNotification" */;
 			buildPhases = (
 				8F73F72AC1E236FABBC621AB /* [CP] Check Pods Manifest.lock */,
 				6D59FCF21FBC8407006C0A2B /* Sources */,
@@ -3096,9 +3096,9 @@
 			);
 			dependencies = (
 			);
-			name = NotificationSurilla;
+			name = SurillaNotification;
 			productName = notification;
-			productReference = 6D59FCF61FBC8407006C0A2B /* NotificationSurilla.appex */;
+			productReference = 6D59FCF61FBC8407006C0A2B /* SurillaNotification.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		6D8A628120C1A19F003CD95B /* SurillaWatch */ = {
@@ -3154,9 +3154,9 @@
 			productReference = 6DA475B41E8ABEE600B56D9B /* TeambrellaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6DEFE3F12006544100615022 /* NotificationTeambrella */ = {
+		6DEFE3F12006544100615022 /* TeambrellaNotification */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6DEFE3FA2006544100615022 /* Build configuration list for PBXNativeTarget "NotificationTeambrella" */;
+			buildConfigurationList = 6DEFE3FA2006544100615022 /* Build configuration list for PBXNativeTarget "TeambrellaNotification" */;
 			buildPhases = (
 				32B29CA36163F30545BA829D /* [CP] Check Pods Manifest.lock */,
 				6DEFE3EE2006544100615022 /* Sources */,
@@ -3168,9 +3168,9 @@
 			);
 			dependencies = (
 			);
-			name = NotificationTeambrella;
+			name = TeambrellaNotification;
 			productName = NotificationTeambrella;
-			productReference = 6DEFE3F22006544100615022 /* NotificationTeambrella.appex */;
+			productReference = 6DEFE3F22006544100615022 /* TeambrellaNotification.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -3240,12 +3240,12 @@
 			projectRoot = "";
 			targets = (
 				6D4E5C241F7AB6870020DEE2 /* Surilla */,
-				6DA475B31E8ABEE600B56D9B /* TeambrellaTests */,
-				6D59FCF51FBC8407006C0A2B /* NotificationSurilla */,
-				6DEFE3F12006544100615022 /* NotificationTeambrella */,
-				6D05234B20A5D838000B3247 /* Teambrella */,
+				6D59FCF51FBC8407006C0A2B /* SurillaNotification */,
 				6D8A628120C1A19F003CD95B /* SurillaWatch */,
 				6D8A628D20C1A1A1003CD95B /* SurillaWatch Extension */,
+				6D05234B20A5D838000B3247 /* Teambrella */,
+				6DEFE3F12006544100615022 /* TeambrellaNotification */,
+				6DA475B31E8ABEE600B56D9B /* TeambrellaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -4673,12 +4673,12 @@
 /* Begin PBXTargetDependency section */
 		6D05254120A5D914000B3247 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6DEFE3F12006544100615022 /* NotificationTeambrella */;
+			target = 6DEFE3F12006544100615022 /* TeambrellaNotification */;
 			targetProxy = 6D05254020A5D914000B3247 /* PBXContainerItemProxy */;
 		};
 		6D1B288120C7072F003B2D32 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6D59FCF51FBC8407006C0A2B /* NotificationSurilla */;
+			target = 6D59FCF51FBC8407006C0A2B /* SurillaNotification */;
 			targetProxy = 6D1B288020C7072F003B2D32 /* PBXContainerItemProxy */;
 		};
 		6D8A629120C1A1A1003CD95B /* PBXTargetDependency */ = {
@@ -5388,7 +5388,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D59FD001FBC8407006C0A2B /* Build configuration list for PBXNativeTarget "NotificationSurilla" */ = {
+		6D59FD001FBC8407006C0A2B /* Build configuration list for PBXNativeTarget "SurillaNotification" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D59FCFE1FBC8407006C0A2B /* Debug */,
@@ -5433,7 +5433,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6DEFE3FA2006544100615022 /* Build configuration list for PBXNativeTarget "NotificationTeambrella" */ = {
+		6DEFE3FA2006544100615022 /* Build configuration list for PBXNativeTarget "TeambrellaNotification" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6DEFE3FB2006544100615022 /* Debug */,

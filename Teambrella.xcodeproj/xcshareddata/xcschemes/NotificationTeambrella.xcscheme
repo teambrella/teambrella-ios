@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6DEFE3F12006544100615022"
-               BuildableName = "NotificationTeambrella.appex"
-               BlueprintName = "NotificationTeambrella"
+               BuildableName = "TeambrellaNotification.appex"
+               BlueprintName = "TeambrellaNotification"
                ReferencedContainer = "container:Teambrella.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6DEFE3F12006544100615022"
-            BuildableName = "NotificationTeambrella.appex"
-            BlueprintName = "NotificationTeambrella"
+            BuildableName = "TeambrellaNotification.appex"
+            BlueprintName = "TeambrellaNotification"
             ReferencedContainer = "container:Teambrella.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
