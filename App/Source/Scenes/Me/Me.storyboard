@@ -735,6 +735,65 @@
             </objects>
             <point key="canvasLocation" x="7224.8000000000002" y="4208.5457271364321"/>
         </scene>
+        <!--WalletQR CodeVC-->
+        <scene sceneID="pPB-aY-Qoh">
+            <objects>
+                <viewController storyboardIdentifier="WalletQRCodeVC" id="zF7-Pc-Kvv" customClass="WalletQRCodeVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wJ1-fs-WWY"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Bq-nk-Wax"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uw5-nH-0K6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CVu-sr-KrB">
+                                <rect key="frame" x="20" y="40" width="335" height="335"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CVu-sr-KrB" secondAttribute="height" multiplier="1:1" id="Zsy-4T-lIq"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5d-te-ToE" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="20" y="527" width="335" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="DQZ-by-wx1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="15"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fG6-bC-DOX" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="20" y="587" width="335" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Pxr-QF-SHP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="15"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CVu-sr-KrB" firstAttribute="leading" secondItem="uw5-nH-0K6" secondAttribute="leading" constant="20" id="3Ym-He-M7N"/>
+                            <constraint firstItem="fG6-bC-DOX" firstAttribute="leading" secondItem="CVu-sr-KrB" secondAttribute="leading" id="835-3m-qOl"/>
+                            <constraint firstItem="CVu-sr-KrB" firstAttribute="top" secondItem="wJ1-fs-WWY" secondAttribute="bottom" constant="20" id="GTV-V5-aVc"/>
+                            <constraint firstItem="D5d-te-ToE" firstAttribute="trailing" secondItem="CVu-sr-KrB" secondAttribute="trailing" id="KRA-2d-viY"/>
+                            <constraint firstItem="1Bq-nk-Wax" firstAttribute="top" secondItem="fG6-bC-DOX" secondAttribute="bottom" constant="40" id="Ls6-qN-1da"/>
+                            <constraint firstItem="fG6-bC-DOX" firstAttribute="trailing" secondItem="CVu-sr-KrB" secondAttribute="trailing" id="W7a-aV-4Ax"/>
+                            <constraint firstItem="D5d-te-ToE" firstAttribute="leading" secondItem="CVu-sr-KrB" secondAttribute="leading" id="YTm-Oa-b0t"/>
+                            <constraint firstAttribute="trailing" secondItem="CVu-sr-KrB" secondAttribute="trailing" constant="20" id="cqS-p3-P6Z"/>
+                            <constraint firstItem="D5d-te-ToE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="CVu-sr-KrB" secondAttribute="bottom" constant="20" id="dy8-qT-QAa"/>
+                            <constraint firstItem="fG6-bC-DOX" firstAttribute="top" secondItem="D5d-te-ToE" secondAttribute="bottom" constant="20" id="thg-Yy-kdw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="fG6-bC-DOX" id="daS-8G-WTi"/>
+                        <outlet property="imageView" destination="CVu-sr-KrB" id="atr-3G-feN"/>
+                        <outlet property="saveButton" destination="D5d-te-ToE" id="agb-oo-EFD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hso-gi-JYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5239" y="4209"/>
+        </scene>
         <!--WithdrawVC-->
         <scene sceneID="yzh-iy-XTZ">
             <objects>
