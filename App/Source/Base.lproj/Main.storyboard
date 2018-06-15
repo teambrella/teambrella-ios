@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xrQ-fg-9ck">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xrQ-fg-9ck">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -26,11 +26,11 @@
                         <viewControllerLayoutGuide type="bottom" id="SpK-yL-8zu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XNb-Tt-LFR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imF-3C-Sdp" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -42,16 +42,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti" translatesAutoresizingMaskIntoConstraints="NO" id="aNj-ZE-j1Y">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emU-7T-Nip">
-                                <rect key="frame" x="185.5" y="312" width="4" height="22"/>
+                                <rect key="frame" x="185.66666666666666" y="384.66666666666669" width="4" height="22"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                 <color key="textColor" red="0.74117647060000003" green="0.76470588240000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teambrella-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-n1-x7D">
-                                <rect key="frame" x="57" y="244.5" width="262.5" height="52.5"/>
+                                <rect key="frame" x="56.666666666666657" y="180" width="262.33333333333337" height="52.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cBm-n1-x7D" secondAttribute="height" multiplier="5:1" id="enG-6g-6PF"/>
                                 </constraints>
@@ -60,8 +60,8 @@
                         <color key="backgroundColor" red="0.13333333333333333" green="0.20000000000000001" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="SpK-yL-8zu" firstAttribute="top" secondItem="imF-3C-Sdp" secondAttribute="bottom" id="7yo-5G-rbG"/>
+                            <constraint firstItem="cBm-n1-x7D" firstAttribute="top" secondItem="XNb-Tt-LFR" secondAttribute="top" constant="180" id="AC0-Md-ZpY"/>
                             <constraint firstAttribute="trailing" secondItem="imF-3C-Sdp" secondAttribute="trailing" id="Ipp-aM-ULn"/>
-                            <constraint firstItem="emU-7T-Nip" firstAttribute="top" secondItem="cBm-n1-x7D" secondAttribute="bottom" constant="15" id="OqJ-ml-iEi"/>
                             <constraint firstItem="cBm-n1-x7D" firstAttribute="width" secondItem="cBm-n1-x7D" secondAttribute="height" multiplier="5:1" id="TrJ-k0-vGE"/>
                             <constraint firstItem="emU-7T-Nip" firstAttribute="centerX" secondItem="aNj-ZE-j1Y" secondAttribute="centerX" id="V4a-IN-dfD"/>
                             <constraint firstItem="cBm-n1-x7D" firstAttribute="centerX" secondItem="aNj-ZE-j1Y" secondAttribute="centerX" id="XFU-2n-ufu"/>
