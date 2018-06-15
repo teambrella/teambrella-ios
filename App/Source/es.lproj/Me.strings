@@ -101,3 +101,10 @@
 "Me.Wallet.Transactions.Empty.details" = "...";
 "Me.Wallet.Cosigners.Empty.title" = "No cosigners yet";
 "Me.Wallet.Cosigners.Empty.details" = "...";
+
+"Me.Wallet.QRCodeVC.saveButton.title" = "Save to Gallery";
+"Me.Wallet.QRCodeVC.closeButton.title" = "Close";
+
+"Me.WalletVC.actionsCell.backupWallet.qrCode" = "QR code";
+"Me.WalletVC.actionsCell.backupWallet.passPhrase" = "Pass Phrase";
+"Me.WalletVC.actionsCell.backupWallet.cancel"                           = "Cancelar";

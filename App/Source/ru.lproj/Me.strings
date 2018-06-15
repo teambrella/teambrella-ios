@@ -105,3 +105,10 @@
 "Me.Wallet.Cosigners.Empty.title"                  = "Сопоручителей ещё нет";
 "Me.Wallet.Cosigners.Empty.details"                = "...";
 
+"Me.Wallet.QRCodeVC.saveButton.title" = "Сохранить в Фотогалерею";
+"Me.Wallet.QRCodeVC.closeButton.title" = "Закрыть";
+
+"Me.WalletVC.actionsCell.backupWallet.qrCode" = "QR код";
+"Me.WalletVC.actionsCell.backupWallet.passPhrase" = "Пароль";
+"Me.WalletVC.actionsCell.backupWallet.cancel" = "Отменить";
+

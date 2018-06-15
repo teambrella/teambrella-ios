@@ -14,24 +14,55 @@
  * along with this program.  If not, see http://www.gnu.org/licenses/
  */
 
+import QRCode
 import UIKit
 
-class WalletQRCodeVC: UIViewController {
+class WalletQRCodeVC: UIViewController, Routable {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var saveButton: BorderedButton!
     @IBOutlet var cancelButton: BorderedButton!
     
     static let storyboardName = "Me"
     
+    @IBAction func tapSaveButton(_ sender: UIButton) {
+        if let image = imageView.image {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
+    }
+    
+    @IBAction func tapCancelButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    var privateKey: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        saveButton.setTitle("Me.Wallet.QRCodeVC.saveButton.title".localized, for: .normal)
+        cancelButton.setTitle("Me.Wallet.QRCodeVC.closeButton.title".localized, for: .normal)
+        imageView.image = generateQRCode()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func generateQRCode() -> UIImage? {
+        guard var qrCode = QRCode(privateKey) else { return nil }
+        
+        qrCode.size = CGSize(width: 250, height: 250)
+        qrCode.color = CIColor(rgba: "2C3948")
+        qrCode.backgroundColor = CIColor(rgba: "F8FAFD")
+        return qrCode.image
     }
-
+    
+    @objc
+    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.",
+                                       preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
 }

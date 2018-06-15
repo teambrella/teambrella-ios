@@ -142,9 +142,16 @@ class WalletVC: UIViewController {
         let alertController = UIAlertController(title: "",
                                    message: "Me.WalletVC.actionsCell.backupWallet".localized,
                                    preferredStyle: .actionSheet)
-        let qrCode = UIAlertAction(title: "QR code", style: .default, handler: nil)
-        let passPhrase = UIAlertAction(title: "Pass Phrase", style: .default, handler: nil)
-        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let qrCode = UIAlertAction(title: "Me.WalletVC.actionsCell.backupWallet.qrCode".localized,
+                                   style: .default) { action in
+                                    service.router.showWalletQRCode(in: self)
+        }
+        let passPhrase = UIAlertAction(title: "Me.WalletVC.actionsCell.backupWallet.passPhrase".localized,
+                                       style: .default,
+                                       handler: nil)
+        let cancel = UIAlertAction(title: "Me.WalletVC.actionsCell.backupWallet.cancel".localized,
+                                   style: .default,
+                                   handler: nil)
         alertController.addAction(qrCode)
         alertController.addAction(passPhrase)
         alertController.addAction(cancel)
