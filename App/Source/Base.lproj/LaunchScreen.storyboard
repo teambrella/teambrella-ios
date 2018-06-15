@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,13 +32,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teambrella-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="9Q2-WM-DHB">
-                                <rect key="frame" x="57" y="244" width="262.5" height="52.5"/>
+                                <rect key="frame" x="57" y="180" width="262.5" height="52.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9Q2-WM-DHB" secondAttribute="height" multiplier="5:1" id="8kw-bT-bZK"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpr-22-1Jp">
-                                <rect key="frame" x="16" y="311.5" width="343" height="22"/>
+                                <rect key="frame" x="16" y="247.5" width="343" height="22"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                 <color key="textColor" red="0.74117647060000003" green="0.76470588240000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -57,8 +56,8 @@
                             <constraint firstAttribute="trailing" secondItem="fpr-22-1Jp" secondAttribute="trailing" constant="16" id="fl7-wy-Qbh"/>
                             <constraint firstItem="273-Iy-hCT" firstAttribute="leading" secondItem="M9w-1E-1gH" secondAttribute="leading" id="lru-dj-vEh"/>
                             <constraint firstItem="9Q2-WM-DHB" firstAttribute="width" secondItem="273-Iy-hCT" secondAttribute="width" multiplier="0.7" id="mHh-kX-7D8"/>
-                            <constraint firstItem="fpr-22-1Jp" firstAttribute="bottom" secondItem="M9w-1E-1gH" secondAttribute="centerY" id="qry-0s-U4J"/>
                             <constraint firstItem="fpr-22-1Jp" firstAttribute="top" secondItem="9Q2-WM-DHB" secondAttribute="bottom" constant="15" id="z72-3x-mQn"/>
+                            <constraint firstItem="9Q2-WM-DHB" firstAttribute="top" secondItem="M9w-1E-1gH" secondAttribute="top" constant="180" id="zRx-0D-gXb"/>
                         </constraints>
                     </view>
                 </viewController>
