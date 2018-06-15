@@ -27,6 +27,7 @@ class WalletQRCodeVC: UIViewController, Routable {
     @IBAction func tapSaveButton(_ sender: UIButton) {
         if let image = imageView.image {
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            saveButton.setTitle("Me.Wallet.QRCodeVC.saveButton.saved.title".localized, for: .normal)
         }
     }
     
