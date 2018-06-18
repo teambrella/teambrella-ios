@@ -36,11 +36,12 @@ final class ServicesHandler {
     /// information about available services
     let info: InfoMaker = InfoMaker()
     
-    /// server interoperability (should be removed from here when all requests will go through DAO)
-    lazy private var server = ServerService(router: self.router, infoMaker: info)
-    
     /// data access object
-    lazy var dao: DAO = ServerDAO(server: self.server)
+    lazy var dao: DAO = {
+        let server = ServerService(router: self.router, infoMaker: info)
+        let dao = ServerDAO(server: server)
+        return dao
+    }()
 
     /// communication with watch
     var watch: WatchService?

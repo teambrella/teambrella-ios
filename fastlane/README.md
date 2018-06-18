@@ -16,6 +16,11 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
+### ios all
+```
+fastlane ios all
+```
+Runs tests then uploads Surilla and Teambrella to iTunes Connect
 ### ios test
 ```
 fastlane ios test
@@ -33,6 +38,11 @@ This will also make sure the profile is up to date
 fastlane ios release
 ```
 Deploy a new version to the App Store
+### ios bump
+```
+fastlane ios bump
+```
+Update build number
 
 ----
 
