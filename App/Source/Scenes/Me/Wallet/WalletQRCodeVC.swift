@@ -45,7 +45,7 @@ class WalletQRCodeVC: UIViewController, Routable {
         }
     }
 
-    // MARK: Livecycle
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,23 +84,12 @@ class WalletQRCodeVC: UIViewController, Routable {
     }
 
     private func print(image: UIImage) {
-        let printInfo = UIPrintInfo(dictionary: nil)
-        printInfo.outputType = UIPrintInfoOutputType.general
-        printInfo.jobName = "Teambrella print job"
-
-        let printController = UIPrintInteractionController.shared
-        printController.printInfo = printInfo
-        printController.printingItem = image
-        printController.present(from: view.frame,
-                                in: view,
-                                animated: true,
-                                completionHandler: { controller, success, error in
-                                    if let error = error {
-                                        self.presentError(error: error)
-                                    } else {
-
-                                    }
-        })
+        let printer = Printer(presentingView: view)
+        printer.print(image: image) { error in
+            if let error = error {
+                self.presentError(error: error)
+            }
+        }
     }
     
     private func generateQRCode() -> UIImage? {
