@@ -31,6 +31,12 @@ class InterfaceController: WKInterfaceController {
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        let session = WCSession.default
+        session.delegate = self
+        if session.activationState != .activated {
+            session.activate()
+        }
+
         walletTitle.setText(NSLocalizedString("Wallet",
                                               tableName: "Watch",
                                               comment: ""))
@@ -41,12 +47,6 @@ class InterfaceController: WKInterfaceController {
     
     override func willActivate() {
         super.willActivate()
-
-        let session = WCSession.default
-        session.delegate = self
-        if session.activationState != .activated {
-            session.activate()
-        }
 
         sendRequest()
     }
