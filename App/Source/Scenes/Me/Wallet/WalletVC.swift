@@ -24,7 +24,7 @@ import QRCode
 import UIKit
 import XLPagerTabStrip
 
-class WalletVC: UIViewController {
+final class WalletVC: UIViewController {
     struct Constant {
         static let headerCellHeight: CGFloat = 180
         static let fundingCellHeight: CGFloat = 227
@@ -140,22 +140,40 @@ class WalletVC: UIViewController {
     func tapBackupWallet(sender: UITapGestureRecognizer) {
         log("tap backup wallet", type: .userInteraction)
         let alertController = UIAlertController(title: "",
-                                   message: "Me.WalletVC.actionsCell.backupWallet".localized,
-                                   preferredStyle: .actionSheet)
+                                                message: "Me.WalletVC.actionsCell.backupWallet".localized,
+                                                preferredStyle: .actionSheet)
         let qrCode = UIAlertAction(title: "Me.WalletVC.actionsCell.backupWallet.qrCode".localized,
                                    style: .default) { action in
-                                    service.router.showWalletQRCode(in: self)
+                                    self.showAlertBeforePresentingQRCode()
         }
-        let passPhrase = UIAlertAction(title: "Me.WalletVC.actionsCell.backupWallet.passPhrase".localized,
-                                       style: .default,
-                                       handler: nil)
+        /*
+         let passPhrase = UIAlertAction(title: "Me.WalletVC.actionsCell.backupWallet.passPhrase".localized,
+         style: .default,
+         handler: nil)
+         */
         let cancel = UIAlertAction(title: "Me.WalletVC.actionsCell.backupWallet.cancel".localized,
-                                   style: .default,
+                                   style: .cancel,
                                    handler: nil)
         alertController.addAction(qrCode)
-        alertController.addAction(passPhrase)
+        //        alertController.addAction(passPhrase)
         alertController.addAction(cancel)
         self.present(alertController, animated: true, completion: nil)
+    }
+
+    private func showAlertBeforePresentingQRCode() {
+        let alertController = UIAlertController(title: "Me.WalletVC.QRCodeAlert.attention".localized,
+                                                message: "Me.WalletVC.QRCodeAlert.attentionDetails".localized,
+                                                preferredStyle: .alert)
+        let sure = UIAlertAction(title: "Me.WalletVC.QRCodeAlert.yes".localized,
+                                 style: .destructive) { action in
+                                    service.router.showWalletQRCode(in: self)
+        }
+        let cancel = UIAlertAction(title: "Me.WalletVC.actionsCell.backupWallet.cancel".localized,
+                                   style: .cancel,
+                                   handler: nil)
+        alertController.addAction(sure)
+        alertController.addAction(cancel)
+        present(alertController, animated: true, completion: nil)
     }
 }
 

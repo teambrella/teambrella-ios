@@ -110,3 +110,7 @@
 "Me.WalletVC.actionsCell.backupWallet.cancel"                           = "Cancelar";
 "Me.Wallet.QRCodeVC.saveButton.saved.title" = "guardado en la galería";
 "Me.Wallet.QRCodeVC.printButton.title" = "Imprimir";
+
+"Me.WalletVC.QRCodeAlert.attention" = "¡Atención!";
+"Me.WalletVC.QRCodeAlert.attentionDetails" = "Su clave privada se revelará en forma de código QR. ¿Estas seguro que deseas continuar?";
+"Me.WalletVC.QRCodeAlert.yes" = "Estoy siguro";

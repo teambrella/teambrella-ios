@@ -114,3 +114,7 @@
 "Me.Wallet.QRCodeVC.saveButton.saved.title" = "Сохранено";
 "Me.Wallet.QRCodeVC.printButton.title" = "Напечатать";
 
+"Me.WalletVC.QRCodeAlert.attention" = "Внимание!";
+"Me.WalletVC.QRCodeAlert.attentionDetails" = "Твой приватный ключ будет показан в форме QR кода. Уверен, что хочешь продолжить?";
+"Me.WalletVC.QRCodeAlert.yes" = "Да, я уверен";
+

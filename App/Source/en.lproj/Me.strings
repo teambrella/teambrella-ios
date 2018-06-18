@@ -112,3 +112,6 @@
 "Me.Wallet.QRCodeVC.saveButton.saved.title" = "Saved";
 "Me.Wallet.QRCodeVC.printButton.title" = "Print";
 
+"Me.WalletVC.QRCodeAlert.attention" = "Attention!";
+"Me.WalletVC.QRCodeAlert.attentionDetails" = "Your private key will be revealed in form of QR code. Are you sure you want to proceed?";
+"Me.WalletVC.QRCodeAlert.yes" = "I am sure";
