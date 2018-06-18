@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.3'
+platform :ios, '11.0'
 
 def bitcoin_pods
   pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec'
@@ -88,10 +88,12 @@ target 'NotificationTeambrella' do
 
 end
 
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['ARCHS'] = 'arm64'
-    end
-  end
-end
+#post_install do |installer|
+#  installer.pods_project.targets.each do |target|
+#    target.build_configurations.each do |config|
+#      config.build_settings['ARCHS'] = 'arm64'
+#    end
+#  end
+#end
+
+

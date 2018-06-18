@@ -47,7 +47,7 @@ class Dumper {
         }
     }
 
-    func sendDatabaseDump(privateKey: String) {
+    func sendDatabaseDump(privateKey: String, completion: @escaping (Bool) -> Void) {
         let url = dbURL
         print("url: \(url)")
         printContents()
@@ -61,11 +61,14 @@ class Dumper {
                          success: { json in
                             let serialized = (try? JSONSerialization.jsonObject(with: json, options: [])) ?? []
                             print("Dump sent successfully: \(serialized)")
+                            completion(true)
             }, failure: { error in
                 log("Dump not sent with error: \(String(describing: error))", type: [.error, .crypto])
+                completion(false)
             })
         } catch {
             log("Error reading database file: \(error)", type: [.error, .cryptoDetails])
+            completion(false)
         }
     }
 

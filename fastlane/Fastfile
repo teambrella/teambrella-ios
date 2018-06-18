@@ -18,8 +18,8 @@ default_platform :ios
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    carthage(platform: "iOS")
-    cocoapods
+    # carthage(platform: "iOS")
+    # cocoapods
   end
 
   desc "Runs tests then uploads Surilla and Teambrella to iTunes Connect"
@@ -38,6 +38,7 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     # match(type: "appstore") # more information: https://codesigning.guide
+    sh "builder.sh"
     gym(scheme: "Surilla") # Build your app - more options available
     pilot
 
@@ -52,6 +53,11 @@ platform :ios do
     gym(scheme: "Teambrella") # Build your app - more options available
     deliver(force: true)
     # frameit
+  end
+
+  desc "Update build number"
+  lane :bump do
+    increment_build_number
   end
 
   # You can define as many lanes as you want
