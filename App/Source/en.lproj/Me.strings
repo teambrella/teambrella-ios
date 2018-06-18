@@ -110,4 +110,5 @@
 "Me.WalletVC.actionsCell.backupWallet.passPhrase" = "Pass Phrase";
 "Me.WalletVC.actionsCell.backupWallet.cancel" = "Cancel";
 "Me.Wallet.QRCodeVC.saveButton.saved.title" = "Saved";
+"Me.Wallet.QRCodeVC.printButton.title" = "Print";
 

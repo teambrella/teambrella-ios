@@ -335,7 +335,7 @@ final class MainRouter {
         guard let vc = WalletQRCodeVC.instantiate() as? WalletQRCodeVC else { fatalError("Error instantiating") }
         
         vc.privateKey = service.keyStorage.privateKey
-        viewController.present(vc, animated: false, completion: nil)
+        viewController.present(vc, animated: true, completion: nil)
     }
     /*
      func pushOrReuse(vc: UIViewController,

@@ -14,37 +14,96 @@
  * along with this program.  If not, see http://www.gnu.org/licenses/
  */
 
+import PKHUD
 import QRCode
 import UIKit
 
 class WalletQRCodeVC: UIViewController, Routable {
+    static let storyboardName = "Me"
+
+    var privateKey: String = ""
+
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var saveButton: BorderedButton!
     @IBOutlet var cancelButton: BorderedButton!
-    
-    static let storyboardName = "Me"
-    
+    @IBOutlet var printButton: BorderedButton!
+
     @IBAction func tapSaveButton(_ sender: UIButton) {
         if let image = imageView.image {
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-            saveButton.setTitle("Me.Wallet.QRCodeVC.saveButton.saved.title".localized, for: .normal)
+            HUD.show(.progress)
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(didFinishSaving), nil)
         }
     }
-    
+
     @IBAction func tapCancelButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        close()
     }
-    
-    var privateKey: String = ""
-    
+
+    @IBAction func tapPrint(_ sender: UIButton) {
+        if let image = imageView.image {
+            print(image: image)
+        }
+    }
+
+    // MARK: Livecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         saveButton.setTitle("Me.Wallet.QRCodeVC.saveButton.title".localized, for: .normal)
         cancelButton.setTitle("Me.Wallet.QRCodeVC.closeButton.title".localized, for: .normal)
+        
+        printButton.setTitle("Me.Wallet.QRCodeVC.printButton.title".localized, for: .normal)
         imageView.image = generateQRCode()
     }
+
+    // MARK: Public
+
+    func close() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: Private
+
+    @objc
+    private func didFinishSaving(_ image: UIImage, error: Error?, contextInfo: UnsafeRawPointer) {
+        HUD.hide()
+        if let error = error {
+            presentError(error: error)
+        } else {
+            saveButton.setTitle("Me.Wallet.QRCodeVC.saveButton.saved.title".localized, for: .normal)
+            saveButton.isEnabled = false
+        }
+    }
+
+    private func presentError(error: Error) {
+        let error = error as NSError
+        let vc = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        vc.addAction(cancel)
+        present(vc, animated: true, completion: nil)
+    }
+
+    private func print(image: UIImage) {
+        let printInfo = UIPrintInfo(dictionary: nil)
+        printInfo.outputType = UIPrintInfoOutputType.general
+        printInfo.jobName = "Teambrella print job"
+
+        let printController = UIPrintInteractionController.shared
+        printController.printInfo = printInfo
+        printController.printingItem = image
+        printController.present(from: view.frame,
+                                in: view,
+                                animated: true,
+                                completionHandler: { controller, success, error in
+                                    if let error = error {
+                                        self.presentError(error: error)
+                                    } else {
+
+                                    }
+        })
+    }
     
-    func generateQRCode() -> UIImage? {
+    private func generateQRCode() -> UIImage? {
         guard var qrCode = QRCode(privateKey) else { return nil }
         
         qrCode.size = CGSize(width: 250, height: 250)
@@ -52,18 +111,5 @@ class WalletQRCodeVC: UIViewController, Routable {
         qrCode.backgroundColor = CIColor(rgba: "F8FAFD")
         return qrCode.image
     }
-    
-    @objc
-    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if let error = error {
-            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
-        } else {
-            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.",
-                                       preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
-        }
-    }
+
 }

@@ -747,8 +747,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="an9-5z-GqF">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CVu-sr-KrB">
-                                <rect key="frame" x="20" y="116" width="335" height="335"/>
+                                <rect key="frame" x="20" y="70" width="335" height="335"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CVu-sr-KrB" secondAttribute="height" multiplier="1:1" id="Zsy-4T-lIq"/>
                                 </constraints>
@@ -779,25 +783,45 @@
                                     <action selector="tapCancelButton:" destination="zF7-Pc-Kvv" eventType="touchUpInside" id="jn1-fT-vZT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g03-1U-V3o" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="20" y="467" width="335" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="d7A-P2-cuy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapPrint:" destination="zF7-Pc-Kvv" eventType="touchUpInside" id="3Ij-MM-KiL"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.23921568630000001" green="0.28627450980000002" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="g03-1U-V3o" firstAttribute="top" relation="greaterThanOrEqual" secondItem="CVu-sr-KrB" secondAttribute="bottom" constant="20" id="1lk-iw-hs2"/>
                             <constraint firstItem="CVu-sr-KrB" firstAttribute="leading" secondItem="uw5-nH-0K6" secondAttribute="leading" constant="20" id="3Ym-He-M7N"/>
-                            <constraint firstItem="fG6-bC-DOX" firstAttribute="leading" secondItem="CVu-sr-KrB" secondAttribute="leading" id="835-3m-qOl"/>
-                            <constraint firstItem="CVu-sr-KrB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wJ1-fs-WWY" secondAttribute="bottom" constant="20" id="GTV-V5-aVc"/>
-                            <constraint firstItem="D5d-te-ToE" firstAttribute="trailing" secondItem="CVu-sr-KrB" secondAttribute="trailing" id="KRA-2d-viY"/>
+                            <constraint firstItem="fG6-bC-DOX" firstAttribute="centerX" secondItem="uw5-nH-0K6" secondAttribute="centerX" id="5yj-Cr-8Cv"/>
+                            <constraint firstItem="g03-1U-V3o" firstAttribute="width" secondItem="CVu-sr-KrB" secondAttribute="width" id="8sW-fb-QXj"/>
+                            <constraint firstItem="D5d-te-ToE" firstAttribute="top" secondItem="g03-1U-V3o" secondAttribute="bottom" constant="20" id="BAd-00-STz"/>
+                            <constraint firstItem="1Bq-nk-Wax" firstAttribute="top" secondItem="an9-5z-GqF" secondAttribute="bottom" id="BgN-QH-CVq"/>
+                            <constraint firstItem="g03-1U-V3o" firstAttribute="centerX" secondItem="D5d-te-ToE" secondAttribute="centerX" id="LFn-gu-CZd"/>
                             <constraint firstItem="1Bq-nk-Wax" firstAttribute="top" secondItem="fG6-bC-DOX" secondAttribute="bottom" constant="40" id="Ls6-qN-1da"/>
-                            <constraint firstItem="fG6-bC-DOX" firstAttribute="trailing" secondItem="CVu-sr-KrB" secondAttribute="trailing" id="W7a-aV-4Ax"/>
-                            <constraint firstItem="D5d-te-ToE" firstAttribute="leading" secondItem="CVu-sr-KrB" secondAttribute="leading" id="YTm-Oa-b0t"/>
+                            <constraint firstAttribute="trailing" secondItem="an9-5z-GqF" secondAttribute="trailing" id="NTA-P9-JgY"/>
+                            <constraint firstItem="D5d-te-ToE" firstAttribute="centerX" secondItem="fG6-bC-DOX" secondAttribute="centerX" id="Rxd-Qi-JBx"/>
+                            <constraint firstItem="CVu-sr-KrB" firstAttribute="top" secondItem="wJ1-fs-WWY" secondAttribute="bottom" priority="250" constant="50" id="bGN-qV-81d"/>
                             <constraint firstAttribute="trailing" secondItem="CVu-sr-KrB" secondAttribute="trailing" constant="20" id="cqS-p3-P6Z"/>
-                            <constraint firstItem="D5d-te-ToE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="CVu-sr-KrB" secondAttribute="bottom" constant="20" id="dy8-qT-QAa"/>
-                            <constraint firstItem="CVu-sr-KrB" firstAttribute="centerY" secondItem="uw5-nH-0K6" secondAttribute="centerY" constant="-50" id="kIn-6J-6Uf"/>
+                            <constraint firstItem="an9-5z-GqF" firstAttribute="top" secondItem="wJ1-fs-WWY" secondAttribute="bottom" id="dKc-yf-zgg"/>
+                            <constraint firstItem="D5d-te-ToE" firstAttribute="width" secondItem="g03-1U-V3o" secondAttribute="width" id="rNK-hS-DDe"/>
+                            <constraint firstItem="an9-5z-GqF" firstAttribute="leading" secondItem="uw5-nH-0K6" secondAttribute="leading" id="sya-9Z-lSI"/>
                             <constraint firstItem="fG6-bC-DOX" firstAttribute="top" secondItem="D5d-te-ToE" secondAttribute="bottom" constant="20" id="thg-Yy-kdw"/>
+                            <constraint firstItem="fG6-bC-DOX" firstAttribute="width" secondItem="g03-1U-V3o" secondAttribute="width" id="xz7-zB-gan"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="fG6-bC-DOX" id="daS-8G-WTi"/>
                         <outlet property="imageView" destination="CVu-sr-KrB" id="atr-3G-feN"/>
+                        <outlet property="printButton" destination="g03-1U-V3o" id="b7M-Uv-G7L"/>
                         <outlet property="saveButton" destination="D5d-te-ToE" id="agb-oo-EFD"/>
                     </connections>
                 </viewController>
