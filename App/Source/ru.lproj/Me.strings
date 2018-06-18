@@ -18,7 +18,7 @@
 
 "Me.WalletVC.actionsCell.cosigners"                = "Сопоручители";
 "Me.WalletVC.actionsCell.transactions"             = "Транзакции";
-"Me.WalletVC.actionsCell.withdrawAddress"          = "Стандартный адрес снятия";
+"Me.WalletVC.actionsCell.backupWallet"             = "Бэкап кошелька";
 
 "Me.WalletDetailsVC.title"                         = "QR-код";
 "Me.WalletDetailsVC.fundButton"                    = "Как мне пополнить кошелёк? >";
@@ -104,4 +104,12 @@
 "Me.Wallet.Transactions.Empty.details"             = "...";
 "Me.Wallet.Cosigners.Empty.title"                  = "Сопоручителей ещё нет";
 "Me.Wallet.Cosigners.Empty.details"                = "...";
+
+"Me.Wallet.QRCodeVC.saveButton.title" = "Сохранить в Фотогалерею";
+"Me.Wallet.QRCodeVC.closeButton.title" = "Закрыть";
+
+"Me.WalletVC.actionsCell.backupWallet.qrCode" = "QR код";
+"Me.WalletVC.actionsCell.backupWallet.passPhrase" = "Пароль";
+"Me.WalletVC.actionsCell.backupWallet.cancel" = "Отменить";
+"Me.Wallet.QRCodeVC.saveButton.saved.title" = "Сохранено";
 

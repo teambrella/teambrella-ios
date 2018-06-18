@@ -18,7 +18,7 @@
 
 "Me.WalletVC.actionsCell.cosigners"                = "Cosigners";
 "Me.WalletVC.actionsCell.transactions"             = "Transactions";
-"Me.WalletVC.actionsCell.withdrawAddress"          = "Default withdraw address";
+"Me.WalletVC.actionsCell.backupWallet"             = "Backup Wallet";
 
 "Me.WalletDetailsVC.title"                         = "QR-code";
 "Me.WalletDetailsVC.fundButton"                    = "How do I fund a wallet? >";
@@ -102,4 +102,12 @@
 "Me.Wallet.Transactions.Empty.details"             = "...";
 "Me.Wallet.Cosigners.Empty.title"                  = "No cosigners yet";
 "Me.Wallet.Cosigners.Empty.details"                = "...";
+
+"Me.Wallet.QRCodeVC.saveButton.title" = "Save to Gallery";
+"Me.Wallet.QRCodeVC.closeButton.title" = "Close";
+
+"Me.WalletVC.actionsCell.backupWallet.qrCode" = "QR code";
+"Me.WalletVC.actionsCell.backupWallet.passPhrase" = "Pass Phrase";
+"Me.WalletVC.actionsCell.backupWallet.cancel" = "Cancel";
+"Me.Wallet.QRCodeVC.saveButton.saved.title" = "Saved";
 

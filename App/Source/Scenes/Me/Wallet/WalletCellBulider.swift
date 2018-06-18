@@ -87,18 +87,20 @@ struct WalletCellBuilder {
     }
     
     private static func populateButtons(cell: WalletButtonsCell, model: WalletButtonsCellModel, delegate: WalletVC) {
-        cell.topViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
         let avatars = model.avatarsPreview.compactMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
         let maxAvatarsStackCount = 4
         let otherVotersCount = model.avatars.count - maxAvatarsStackCount + 1
         let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil
         cell.imagesStack.set(images: avatars, label: label, max: maxAvatarsStackCount)
+        cell.topViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
         cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
-        cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.withdrawAddress".localized
-        cell.tapMiddleViewRecognizer.removeTarget(delegate, action: nil)
-        cell.tapMiddleViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapTransactions))
+        cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.backupWallet".localized
         cell.tapTopViewRecognizer.removeTarget(delegate, action: nil)
         cell.tapTopViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapCosigners))
+        cell.tapMiddleViewRecognizer.removeTarget(delegate, action: nil)
+        cell.tapMiddleViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapTransactions))
+        cell.tapBottomViewRecognizer.removeTarget(delegate, action: nil)
+        cell.tapBottomViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapBackupWallet))
     }
     
 }

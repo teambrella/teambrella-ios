@@ -135,6 +135,28 @@ class WalletVC: UIViewController {
         
         service.router.presentWalletCosignersList(cosigners: wallet.cosigners)
     }
+    
+    @objc
+    func tapBackupWallet(sender: UITapGestureRecognizer) {
+        log("tap backup wallet", type: .userInteraction)
+        let alertController = UIAlertController(title: "",
+                                   message: "Me.WalletVC.actionsCell.backupWallet".localized,
+                                   preferredStyle: .actionSheet)
+        let qrCode = UIAlertAction(title: "Me.WalletVC.actionsCell.backupWallet.qrCode".localized,
+                                   style: .default) { action in
+                                    service.router.showWalletQRCode(in: self)
+        }
+        let passPhrase = UIAlertAction(title: "Me.WalletVC.actionsCell.backupWallet.passPhrase".localized,
+                                       style: .default,
+                                       handler: nil)
+        let cancel = UIAlertAction(title: "Me.WalletVC.actionsCell.backupWallet.cancel".localized,
+                                   style: .default,
+                                   handler: nil)
+        alertController.addAction(qrCode)
+        alertController.addAction(passPhrase)
+        alertController.addAction(cancel)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension WalletVC: IndicatorInfoProvider {
