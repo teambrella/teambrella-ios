@@ -74,14 +74,14 @@ target 'Teambrella' do
 
 end
 
-target 'notification' do
+target 'SurillaNotification' do
   inhibit_all_warnings!
 
   notification_swift_pods
 
 end
 
-target 'NotificationTeambrella' do
+target 'TeambrellaNotification' do
   inhibit_all_warnings!
 
   notification_swift_pods
@@ -95,5 +95,3 @@ end
 #    end
 #  end
 #end
-
-

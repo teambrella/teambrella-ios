@@ -53,7 +53,7 @@ class WalletQRCodeVC: UIViewController, Routable {
         cancelButton.setTitle("Me.Wallet.QRCodeVC.closeButton.title".localized, for: .normal)
         
         printButton.setTitle("Me.Wallet.QRCodeVC.printButton.title".localized, for: .normal)
-        imageView.image = generateQRCode()
+        imageView.image = QRCodeManager().code(from: privateKey)
     }
 
     // MARK: Public
@@ -90,15 +90,6 @@ class WalletQRCodeVC: UIViewController, Routable {
                 self.presentError(error: error)
             }
         }
-    }
-    
-    private func generateQRCode() -> UIImage? {
-        guard var qrCode = QRCode(privateKey) else { return nil }
-        
-        qrCode.size = CGSize(width: 250, height: 250)
-        qrCode.color = CIColor(rgba: "2C3948")
-        qrCode.backgroundColor = CIColor(rgba: "F8FAFD")
-        return qrCode.image
     }
 
 }

@@ -84,8 +84,11 @@ final class WalletVC: UIViewController {
     func prepareWalletAddress() {
         service.dao.freshKey { [weak self] key in
             let processor = EthereumProcessor(key: key)
-            self?.walletID = processor.ethAddressString ?? ""
-            self?.qrCode = self?.generateQRCode()
+            let walletID = processor.ethAddressString ?? ""
+            self?.walletID = walletID
+            let codeManager = QRCodeManager()
+            codeManager.size = CGSize(width: 79, height: 75)
+            self?.qrCode = codeManager.code(from: walletID)
         }
     }
     
@@ -110,13 +113,6 @@ final class WalletVC: UIViewController {
         guard let wallet = wallet else { return }
         
         service.router.presentWithdraw(balance: MEth(wallet.cryptoBalance), reserved: wallet.cryptoReserved)
-    }
-    
-    func generateQRCode() -> UIImage? {
-        guard var qrCode = QRCode(walletID) else { return nil }
-
-        qrCode.size = CGSize(width: 79, height: 75) // Zeplin (04.2 wallet-1 & ...-1-a)
-        return qrCode.image
     }
     
     @objc
