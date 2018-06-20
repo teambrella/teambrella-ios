@@ -21,6 +21,14 @@ protocol ChatObjectViewDelegate: class {
     func chatObjectWasTapped(view: ChatObjectView)
 }
 
+struct Constant {
+    static let smallImageViewSize: CGFloat = 28
+    static let normalImageViewSize: CGFloat = 38
+    static let claimObjectViewCornerRadius: CGFloat = 3
+    static let smallImageViewOffset: CGFloat = 12
+    static let normalImageViewOffset: CGFloat = 16
+}
+
 class ChatObjectView: UIView, XIBInitable {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
@@ -112,10 +120,12 @@ class ChatObjectView: UIView, XIBInitable {
     }
     
     func resizeImageView() {
-        imageViewWidth.constant = isSmallIPhone ? 28 : 38
-        imageViewHeight.constant = isSmallIPhone ? 28 : 38
-        imageViewLeadingConstraint.constant = isSmallIPhone ? 12 : 16
-        voteStackViewTrailingConstraint.constant = isSmallIPhone ? 12 : 16
+        imageViewWidth.constant = isSmallIPhone ? Constant.smallImageViewSize : Constant.normalImageViewSize
+        imageViewHeight.constant = isSmallIPhone ? Constant.smallImageViewSize : Constant.normalImageViewSize
+        imageViewLeadingConstraint.constant = isSmallIPhone ? Constant.smallImageViewOffset :
+            Constant.normalImageViewOffset
+        voteStackViewTrailingConstraint.constant = isSmallIPhone ? Constant.smallImageViewOffset :
+            Constant.normalImageViewOffset
     }
     
     private func setupClaimObjectView(basic: ChatModel.BasicPart,
@@ -130,7 +140,6 @@ class ChatObjectView: UIView, XIBInitable {
         rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
         
         imageView.image = #imageLiteral(resourceName: "imagePlaceholder")
-        imageView.layer.cornerRadius = 3
         rightLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
         basic.smallPhoto.map { self.imageView.showImage(string: $0) }
         voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
@@ -156,6 +165,7 @@ class ChatObjectView: UIView, XIBInitable {
         }
         proxyAvatarView.image = nil
         resizeImageView()
+        imageView.layer.cornerRadius = Constant.claimObjectViewCornerRadius
     }
     
     private func setupTeammateObjectView(basic: ChatModel.BasicPart,
@@ -163,7 +173,6 @@ class ChatObjectView: UIView, XIBInitable {
                                          team: TeamPart) {
         nameLabel.text = basic.name?.short
         imageView.showImage(string: basic.avatar)
-        imageView.layer.cornerRadius = imageView.frame.width / 2
         if let model = basic.model, let year = basic.year {
             let yearsString = CoverageLocalizer(type: team.coverageType).yearsString(year: year)
             amountLabel.text = "\(model.uppercased()), \(yearsString)"
@@ -195,6 +204,8 @@ class ChatObjectView: UIView, XIBInitable {
             voteButtonContainer.isHidden = true
         }
         resizeImageView()
+        imageView.layer.cornerRadius = isSmallIPhone ? Constant.smallImageViewSize / 2
+                                                     : Constant.normalImageViewSize / 2
     }
     
     @IBAction func tapChevron(_ sender: UIButton) {
