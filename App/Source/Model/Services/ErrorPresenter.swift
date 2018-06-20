@@ -73,20 +73,17 @@ final class ErrorPresenter {
     }
 
     private func presentGeneral(error: Error) {
-        showMessage(title: "Error", details: "\(error)")
+        showMessage(title: "Error.oops".localized, details: "\(error)")
     }
 
     private func presentTeambrella(error: TeambrellaError) {
-        showMessage(title: "\(error.kind)", details: error.description)
+        showMessage(title: "Error.oops".localized, details: error.description)
     }
 
     private func presentServerUnreacheable() {
         let view = MessageView.viewFromNib(layout: .statusLine)
         view.configureTheme(.warning)
         view.configureDropShadow()
-        //        withUnsafePointer(to: &view) {
-        //            view.id = "server.unreacheable \($0)"
-        //        }
 
         view.configureContent(title: "", body: "Main.Notification.noServer".localized)
 
@@ -95,31 +92,40 @@ final class ErrorPresenter {
         config.duration = .seconds(seconds: 5)
         SwiftMessages.hideAll()
         SwiftMessages.show(config: config, view: view)
-        //        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-        //            SwiftMessages.hide(id: view.id)
-        //        }
         NotificationCenter.default.post(name: .serverUnreachable, object: nil)
     }
 
     private func showMessage(title: String, details: String) {
+        guard let navigator = service.router.navigator else { return }
+
         let message = MessageView.viewFromNib(layout: .cardView)
-        message.configureTheme(.warning)
+//        message.configureTheme(.info)
+        message.configureTheme(backgroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5), foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
         message.configureDropShadow()
-        message.configureContent(title: title, body: details)
         message.iconLabel = nil
         let id = message.id
         message.configureContent(title: title,
-                                 body: details,
+                                 body: nil,
                                  iconImage: nil,
                                  iconText: nil,
                                  buttonImage: nil,
-                                 buttonTitle: "OK") { [weak self] button in
+                                 buttonTitle: "Error.DetailsButton.title".localized) { [weak self] button in
+                                    let vc = UIAlertController(title: title,
+                                                               message: details,
+                                                               preferredStyle: .alert)
+                                    let cancel = UIAlertAction(title: "General.ok".localized,
+                                                               style: .cancel,
+                                                               handler: nil)
+                                    vc.addAction(cancel)
+                                    service.router.frontmostViewController?.present(vc,
+                                                                                    animated: true,
+                                                                                    completion: nil)
                                     self?.hide(id: id)
         }
 
         var config = SwiftMessages.defaultConfig
-        service.router.navigator.map { config.presentationContext = .view($0.view) }
-        config.duration = .forever
+        config.presentationContext = .view(navigator.view)
+        config.duration = .seconds(seconds: 5)
         config.presentationStyle = .bottom
         SwiftMessages.show(config: config, view: message)
         ids.append(id)

@@ -65,3 +65,4 @@
 "General.unitedFormat" = "%1$@ %2$@";
 "General.unitedFormat.my" = "%1$@ %2$@";
 
+"General.ok" = "OK";
