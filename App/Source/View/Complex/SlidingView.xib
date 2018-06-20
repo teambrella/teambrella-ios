@@ -32,10 +32,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiV-T4-dM5" customClass="ChatObjectView" customModule="Surilla" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="48" id="YXd-iD-f1w"/>
+                        <constraint firstAttribute="height" constant="55" id="YXd-iD-f1w"/>
                     </constraints>
                 </view>
             </subviews>
