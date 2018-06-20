@@ -66,3 +66,5 @@
 "General.posessiveFormat.her" = "DE %@";
 "General.unitedFormat" = "%2$@ %1$@";
 "General.unitedFormat.my" = "%1$@ %2$@";
+
+"General.ok" = "OK";
