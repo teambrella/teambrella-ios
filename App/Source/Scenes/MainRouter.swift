@@ -402,7 +402,8 @@ final class MainRouter {
         controller.present(vc, animated: true)
         return vc
     }
-    
+
+    @discardableResult
     func showCodeCapture(in controller: UIViewController,
                          delegate: CodeCaptureDelegate,
                          type: CodeCaptureVC.LayoutType = .ethereum) -> CodeCaptureVC? {
