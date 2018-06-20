@@ -459,8 +459,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             let cellHeight: CGFloat = Constant.socialCellHeight
             return CGSize(width: wdt, height: base + CGFloat(dataSource.socialItems.count) * cellHeight)
         case .dialog:
-            return isSmallIPhone ? CGSize(width: collectionView.bounds.width, height: 115)
-            : CGSize(width: collectionView.bounds.width, height: 120)
+            return isSmallIPhone ? CGSize(width: collectionView.bounds.width, height: 105)
+            : CGSize(width: collectionView.bounds.width, height: 110)
         case .me:
             return CGSize(width: collectionView.bounds.width, height: 215)
         case .voting:

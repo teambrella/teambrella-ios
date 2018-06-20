@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,19 +27,19 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Application Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QhF-iw-jcV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="16" width="375" height="20.5"/>
+                        <rect key="frame" x="72" y="16" width="375" height="19"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1 MIN AGO" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xeX-Mw-yoX" customClass="ThinStatusSubtitleLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="463" y="16.5" width="83" height="20.5"/>
+                        <rect key="frame" x="463" y="16" width="83" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIA-wA-dBI" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="72" y="40.5" width="379" height="37.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Just discovered a new garage in my neigborhood that is really good and..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIA-wA-dBI" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
+                        <rect key="frame" x="72" y="39" width="379" height="41"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                             <constraint firstAttribute="height" constant="20" id="ubL-SX-sLA"/>
                         </constraints>
                     </view>
-                    <stackView opaque="NO" contentMode="right" ambiguous="YES" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aD0-QQ-xg9">
+                    <stackView opaque="NO" contentMode="right" horizontalHuggingPriority="251" ambiguous="YES" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aD0-QQ-xg9">
                         <rect key="frame" x="467" y="51" width="79" height="22"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qtc-Rp-2hk" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
@@ -88,7 +88,7 @@
                 <constraint firstItem="H07-1A-61F" firstAttribute="leading" secondItem="dIA-wA-dBI" secondAttribute="leading" id="Cj6-6U-o1e"/>
                 <constraint firstItem="Qcx-lN-iSa" firstAttribute="width" secondItem="Qcx-lN-iSa" secondAttribute="height" multiplier="1:1" id="CmI-hR-JSE"/>
                 <constraint firstItem="dIA-wA-dBI" firstAttribute="leading" secondItem="QhF-iw-jcV" secondAttribute="leading" id="Gne-Fb-JeF"/>
-                <constraint firstItem="H07-1A-61F" firstAttribute="top" secondItem="dIA-wA-dBI" secondAttribute="bottom" constant="10" id="Gxz-KD-6Bu"/>
+                <constraint firstItem="H07-1A-61F" firstAttribute="top" secondItem="dIA-wA-dBI" secondAttribute="bottom" constant="8" id="Gxz-KD-6Bu"/>
                 <constraint firstItem="dIA-wA-dBI" firstAttribute="top" secondItem="QhF-iw-jcV" secondAttribute="bottom" constant="4" id="JuY-Hj-Hmv"/>
                 <constraint firstItem="aD0-QQ-xg9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dIA-wA-dBI" secondAttribute="trailing" constant="16" id="JwJ-cc-oFF"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="H07-1A-61F" secondAttribute="trailing" constant="20" id="Okc-VF-TEu"/>
