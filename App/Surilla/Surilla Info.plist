@@ -57,6 +57,8 @@
 	<string>To be able to take photos please provide an access to your photo camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To be able to send photos please provide an access to your photo library</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>To be able to save photos please provide an access to your photo library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AkkuratPro-Bold.otf</string>

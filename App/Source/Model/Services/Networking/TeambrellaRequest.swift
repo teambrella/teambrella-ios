@@ -20,6 +20,7 @@
  */
 
 import Foundation
+import ExtensionsPack
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
 typealias TeambrellaRequestFailure = (_ error: Error) -> Void
@@ -76,6 +77,7 @@ struct TeambrellaRequest {
         decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "PositiveInfinity",
                                                                         negativeInfinity: "NegativeInfinity",
                                                                         nan: "NaN")
+        //decoder.keyDecodingStrategy = .convertFromUpperCamelCase
         log("Reply type: \(type)", type: .serverReplyStats)
         do {
             switch type {

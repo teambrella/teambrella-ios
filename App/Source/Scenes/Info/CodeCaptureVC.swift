@@ -25,24 +25,27 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     @IBOutlet var confirmButton: BorderedButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var cancelButton: UIButton!
+
+    @IBOutlet var infoContainer: UIView!
+    @IBOutlet var infoLabel: UILabel!
+    
+    @IBOutlet var tickImageView: UIImageView!
     
     var output = AVCaptureMetadataOutput()
     var previewLayer: AVCaptureVideoPreviewLayer!
     var captureSession = AVCaptureSession()
+
+    var type: LayoutType = .ethereum
     
     var lastReadString: String = ""
     
     weak var delegate: CodeCaptureDelegate?
-    
+
+    // MARK: Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = "Info.codeCapture.title".localized
-        confirmButton.setTitle("Info.codeCapture.button.title".localized, for: .normal)
-        cancelButton.setTitle("Info.codeCapture.cancelButton.title".localized, for: .normal)
-        textView.layer.cornerRadius = 8
-        textView.layer.masksToBounds = true
-        textView.layer.borderWidth = 1
-        textView.layer.borderColor = UIColor.bluishGray.cgColor
+        setupViews()
         setupCamera()
     }
     
@@ -61,6 +64,8 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
             captureSession.stopRunning()
         }
     }
+
+    // MARK: Callbacks
     
     @IBAction func tapClose(_ sender: UIButton) {
         close(cancelled: true)
@@ -69,10 +74,52 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     @IBAction func tapConfirm(_ sender: UIButton) {
         close(cancelled: false)
     }
-    
-    private func close(cancelled: Bool) {
+
+    // MARK: Public methods
+
+    var animator: UIViewPropertyAnimator?
+    func animateSuccess(completion: @escaping () -> Void) {
+        tickImageView.alpha = 0
+        tickImageView.isHidden = false
+        animator = UIViewPropertyAnimator(duration: 2, curve: .easeInOut) { [unowned self] in
+            self.tickImageView.alpha = 1
+        }
+        animator?.addCompletion { position in
+            completion()
+        }
+        animator?.startAnimation()
+    }
+
+    func close(cancelled: Bool) {
         delegate?.codeCaptureWillClose(controller: self, cancelled: cancelled)
         dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: Private methods
+
+    private func setupViews() {
+        switch type {
+        case .ethereum:
+            setupEthereum()
+        case .privateKey:
+            setupPrivateKey()
+        }
+    }
+
+    private func setupEthereum() {
+        titleLabel.text = "Info.codeCapture.title".localized
+        confirmButton.setTitle("Info.codeCapture.button.title".localized, for: .normal)
+        cancelButton.setTitle("Info.codeCapture.cancelButton.title".localized, for: .normal)
+        textView.layer.cornerRadius = 8
+        textView.layer.masksToBounds = true
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.bluishGray.cgColor
+    }
+
+    private func setupPrivateKey() {
+        cancelButton.setTitle("Info.codeCapture.cancelButton.title".localized, for: .normal)
+        infoContainer.isHidden = false
+        infoLabel.text = "Let camera focus on QR code of your private key. It will log in automatically"
     }
     
     private func setupCamera() {
@@ -104,7 +151,7 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     
     private func codeType(text: String) -> QRCodeType {
         let array: [(String, QRCodeType)] = [
-            ("^5[HJK][1-9A-Za-z][^OIl]{48}", .bitcoinWiF),
+            ("^[5KL][1-9A-HJ-NP-Za-km-z]{50,51}$", .bitcoinWiF),
             ("^[123mn][1-9A-HJ-NP-Za-km-z]{26,35}", .bitcoinPublicKey),
             ("^0x[a-fA-F0-9]{40}$", .ethereum)
         ]
@@ -135,6 +182,11 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
                 read(string: code)
             }
         }
+    }
+
+    enum LayoutType {
+        case ethereum
+        case privateKey
     }
     
 }

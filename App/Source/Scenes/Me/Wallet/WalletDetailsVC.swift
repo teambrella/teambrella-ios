@@ -51,18 +51,7 @@ class WalletDetailsVC: UIViewController, Routable {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        generateQRCode()
-    }
-    
-    func generateQRCode() {
-        guard var qrCode = QRCode(walletID) else { return }
-
-        qrCode.size = CGSize(width: 250, height: 250) // Zeplin (04.2 wallet-dialog-1)
-        qrCode.color = CIColor(rgba: "2C3948")
-        qrCode.backgroundColor = CIColor(rgba: "F8FAFD")
-        let image = qrCode.image
-
-        qrCodeImageView.image = image
+        qrCodeImageView.image = QRCodeManager().code(from: walletID)
     }
     
     @IBAction func tapCopy(_ sender: UIButton) {

@@ -403,9 +403,12 @@ final class MainRouter {
         return vc
     }
     
-    func showCodeCapture(in controller: UIViewController, delegate: CodeCaptureDelegate) -> CodeCaptureVC? {
+    func showCodeCapture(in controller: UIViewController,
+                         delegate: CodeCaptureDelegate,
+                         type: CodeCaptureVC.LayoutType = .ethereum) -> CodeCaptureVC? {
         guard let vc = CodeCaptureVC.instantiate() as? CodeCaptureVC else { return nil }
-        
+
+        vc.type = type
         vc.delegate = delegate
         controller.present(vc, animated: true)
         return vc
