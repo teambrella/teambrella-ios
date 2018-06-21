@@ -27,7 +27,8 @@ final class ErrorPresenter {
     
     func present(error: Error?) {
         guard let error = error else { return }
-        
+
+        Statistics.log(error: error)
         if let error = error as? TeambrellaError {
             // restart demo if current has expired
             switch error.kind {

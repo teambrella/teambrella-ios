@@ -31,6 +31,7 @@ class WalletQRCodeVC: UIViewController, Routable {
     @IBAction func tapSaveButton(_ sender: UIButton) {
         if let image = imageView.image {
             HUD.show(.progress)
+            Statistics.log(event: .tapPhotoPrivateKey)
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(didFinishSaving), nil)
         }
     }
@@ -41,6 +42,7 @@ class WalletQRCodeVC: UIViewController, Routable {
 
     @IBAction func tapPrint(_ sender: UIButton) {
         if let image = imageView.image {
+            Statistics.log(event: .tapPrintPrivateKey)
             print(image: image)
         }
     }

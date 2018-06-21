@@ -141,6 +141,10 @@ final class InitialVC: UIViewController {
     }
     
     private func startSession(teamsEntity: TeamsModel, isDemo: Bool) {
+        if !isDemo {
+            Statistics.register(userID: teamsEntity.userID)
+        }
+
         service.session = Session(isDemo: isDemo)
         service.teambrella.startUpdating(completion: { result in
             let description = result.rawValue == 0 ? "new data" : result.rawValue == 1 ? "no data" : "failed"

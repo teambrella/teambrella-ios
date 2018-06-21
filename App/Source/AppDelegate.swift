@@ -19,11 +19,11 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import UIKit
-//import FacebookLogin
+import Fabric
 import FBSDKCoreKit
 import Firebase
 import PushKit
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -103,6 +103,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configureLibs() {
         // Add firebase support
         FirebaseApp.configure()
+        // Add Crashlytics in debug mode
+        #if SURILLA
+         Fabric.sharedSDK().debug = true
+        #endif
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
