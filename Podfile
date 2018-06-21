@@ -1,5 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '10.0'
+use_frameworks!(false)
+inhibit_all_warnings!
 
 def bitcoin_pods
   pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec'
@@ -25,7 +27,7 @@ def swift_frameworks_pods
   pod 'ImageSlideshow'
   pod 'KeychainAccess'
   pod 'Kingfisher'
- #pod 'PKHUD'
+  pod 'PKHUD'
   pod 'ReachabilitySwift'
   pod 'QRCode', :modular_headers => true
   pod 'Starscream'
@@ -59,15 +61,12 @@ def pods_bundle
 end
 
 target 'Surilla' do
-  inhibit_all_warnings!
 
   pods_bundle
 
 end
 
 target 'Teambrella' do
-    inhibit_all_warnings!
-
     pods_bundle
 
     target 'TeambrellaTests' do
@@ -78,14 +77,12 @@ target 'Teambrella' do
 end
 
 target 'SurillaNotification' do
-  inhibit_all_warnings!
 
   notification_swift_pods
 
 end
 
 target 'TeambrellaNotification' do
-  inhibit_all_warnings!
 
   notification_swift_pods
 
