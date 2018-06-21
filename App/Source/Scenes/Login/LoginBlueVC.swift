@@ -77,6 +77,7 @@ final class LoginBlueVC: UIViewController {
 
     @objc
     private func tapQRCode() {
+        Statistics.log(event: .tapQRCodeLogin)
         service.router.showCodeCapture(in: self, delegate: self, type: .privateKey)
     }
 

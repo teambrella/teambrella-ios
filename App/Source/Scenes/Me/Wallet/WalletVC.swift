@@ -135,6 +135,7 @@ final class WalletVC: UIViewController {
     @objc
     func tapBackupWallet(sender: UITapGestureRecognizer) {
         log("tap backup wallet", type: .userInteraction)
+        Statistics.log(event: .tapSavePrivateKey)
         let alertController = UIAlertController(title: "",
                                                 message: "Me.WalletVC.actionsCell.backupWallet".localized,
                                                 preferredStyle: .actionSheet)
