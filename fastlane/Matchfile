@@ -1,0 +1,6 @@
+git_url("https://github.com/teambrella/certificates.git")
+
+type("development") # The default type, can be: appstore, adhoc, enterprise or development
+
+app_identifier(["com.surilla.ios.app", "com.teambrella.ios.app"])
+username("thorax@me.com") # Your Apple Developer Portal username

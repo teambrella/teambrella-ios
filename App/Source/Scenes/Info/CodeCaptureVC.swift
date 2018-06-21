@@ -78,6 +78,7 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     // MARK: Public methods
 
     var animator: UIViewPropertyAnimator?
+
     func animateSuccess(completion: @escaping () -> Void) {
         tickImageView.alpha = 0
         tickImageView.isHidden = false

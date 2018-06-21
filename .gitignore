@@ -39,3 +39,4 @@ fastlane/test_output
 # Private
 
 GoogleService-Info.plist
+*.cer

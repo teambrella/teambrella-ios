@@ -19,8 +19,8 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import Foundation
 import ExtensionsPack
+import Foundation
 
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
 typealias TeambrellaRequestFailure = (_ error: Error) -> Void

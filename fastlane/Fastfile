@@ -11,7 +11,8 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "2.23.0"
+fastlane_version "2.98"
+xcode_select "/Applications/Xcode.app"
 
 default_platform :ios
 
@@ -37,10 +38,11 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
-    # match(type: "appstore") # more information: https://codesigning.guide
-    sh "builder.sh"
-    gym(scheme: "Surilla") # Build your app - more options available
-    pilot
+    # match(type: "development") # more information: https://codesigning.guide
+    # build_app(scheme: "Surilla")
+    gym(scheme: "Surilla")
+    upload_to_testflight
+    #slack(message: "Surilla uploaded to TestFlight")
 
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)

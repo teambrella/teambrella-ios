@@ -1076,8 +1076,6 @@
 		94F5025B1FA8E5CA0059D49B /* MuteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F502591FA8E4A90059D49B /* MuteDataSource.swift */; };
 		96D36B38F2C29414646DFB00 /* libPods-SurillaNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2A801FF41C5B535060F542 /* libPods-SurillaNotification.a */; };
 		AF75CB2D5126A58209C629B8 /* libPods-TeambrellaNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 687E6255A456D7A98D2880C7 /* libPods-TeambrellaNotification.a */; };
-		CFC3BBD4921FE3745A914383 /* libPods-NotificationTeambrella.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0981AC48D38E5C8A149C38 /* libPods-NotificationTeambrella.a */; };
-		E0FA59804169C556DC361F3C /* libPods-notification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 177A2DBE9DB0723855A80DED /* libPods-notification.a */; };
 		FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */; };
 /* End PBXBuildFile section */
 
@@ -1818,7 +1816,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0FA59804169C556DC361F3C /* libPods-notification.a in Frameworks */,
 				96D36B38F2C29414646DFB00 /* libPods-SurillaNotification.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1849,7 +1846,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFC3BBD4921FE3745A914383 /* libPods-NotificationTeambrella.a in Frameworks */,
 				AF75CB2D5126A58209C629B8 /* libPods-TeambrellaNotification.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5235,7 +5231,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Notifications/Surilla/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.notification;
+				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.SurillaNotification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
@@ -5264,7 +5260,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Notifications/Surilla/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.notification;
+				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app.SurillaNotification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
@@ -5648,7 +5644,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Notifications/Teambrella/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.NotificationTeambrella;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.TeambrellaNotification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
@@ -5676,7 +5672,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Notifications/Teambrella/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.NotificationTeambrella;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.TeambrellaNotification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
