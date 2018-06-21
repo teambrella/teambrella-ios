@@ -23,7 +23,7 @@ fi
 echo "Retreiving carthage dependencies. This may take a while..."
 carthage update --platform iOS
 echo "Retreiving Cocoapods dependencies. This should be quite fast..."
-pod update
+pod install
 
 resources="Resources"
 if test "$(ls "$resources")"; then
