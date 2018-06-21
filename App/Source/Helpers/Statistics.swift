@@ -25,6 +25,8 @@ class Statistics {
         case tapSavePrivateKey
         case tapPrintPrivateKey
         case tapPhotoPrivateKey
+        case voipPushReceived
+        case voipPushWrongPayload
     }
 
     static func crash() {
@@ -33,6 +35,7 @@ class Statistics {
 
     static func register(userID: String) {
         Crashlytics.sharedInstance().setUserIdentifier(userID)
+        Analytics.setUserID(userID)
     }
 
     static func log(error: Error) {

@@ -72,9 +72,11 @@ final class PushService: NSObject {
         pushKit.onPushReceived = { [weak self] dict, completion in
             guard let cmd = dict["cmd"] as? String, let command = PushKitCommand(rawValue: cmd) else {
                 print("No command found in PushKit dictionary: \(dict)")
+                Statistics.log(event: .voipPushWrongPayload, dict: dict as? [String: Any])
                 return
             }
-
+            
+            Statistics.log(event: .voipPushReceived, dict: dict as? [String: Any])
             print("got cmd string: \(cmd), command: \(command)")
             switch command {
             case .getUpdates:
