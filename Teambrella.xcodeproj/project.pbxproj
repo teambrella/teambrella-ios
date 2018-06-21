@@ -389,7 +389,6 @@
 		6D0524D320A5D838000B3247 /* MuteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F502591FA8E4A90059D49B /* MuteDataSource.swift */; };
 		6D0524D420A5D838000B3247 /* MeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE3E31A2048560C0042CD72 /* MeModel.swift */; };
 		6D0524D520A5D838000B3247 /* ClaimOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE95821EE853550019DA47 /* ClaimOptionsCell.swift */; };
-		6D0524D720A5D838000B3247 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC1BB212077C8CF008661AF /* XLPagerTabStrip.framework */; };
 		6D0524D920A5D838000B3247 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */; };
 		6D0524DE20A5D838000B3247 /* ProxyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D2AEE1EFBDB7C0095284C /* ProxyCell.xib */; };
 		6D0524DF20A5D838000B3247 /* HomeApplicationAcceptedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E80E531F0FDA3100DE1A0A /* HomeApplicationAcceptedCell.xib */; };
@@ -1005,7 +1004,6 @@
 		6DBD695F2093864000D1524F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DBD695D2093864000D1524F /* GoogleService-Info.plist */; };
 		6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */; };
 		6DBF492D1F80F22300B236E2 /* AnimationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */; };
-		6DC1BB232077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC1BB212077C8CF008661AF /* XLPagerTabStrip.framework */; };
 		6DCA41BF20D29E1900B741BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCA41BE20D29E1900B741BA /* Assets.xcassets */; };
 		6DCA41C620D29E1900B741BA /* TeambrellaWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6DCA41C520D29E1900B741BA /* TeambrellaWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6DCA41D320D29E1A00B741BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCA41D220D29E1A00B741BA /* Assets.xcassets */; };
@@ -1057,7 +1055,6 @@
 		6DF8B92620DBC46400D9D831 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF8B92420DBC46400D9D831 /* Statistics.swift */; };
 		6DFECADA207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */; };
 		6EB6C5A3A1AD4F95F386210D /* libPods-Teambrella.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */; };
-		80F21A7C34B08754FB74C0D3 /* libPods-TeambrellaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */; };
 		94112D7E20066DB20031898E /* ProxyForEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94112D7C20066DB20031898E /* ProxyForEntity.swift */; };
 		94112D81200678E90031898E /* ProxyRatingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94112D7F200678E90031898E /* ProxyRatingEntity.swift */; };
 		94282B0A1FD9B1C40006B5F6 /* LabeledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94282B081FD9B1C40006B5F6 /* LabeledIcon.swift */; };
@@ -1076,6 +1073,7 @@
 		94F5025B1FA8E5CA0059D49B /* MuteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F502591FA8E4A90059D49B /* MuteDataSource.swift */; };
 		96D36B38F2C29414646DFB00 /* libPods-SurillaNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2A801FF41C5B535060F542 /* libPods-SurillaNotification.a */; };
 		AF75CB2D5126A58209C629B8 /* libPods-TeambrellaNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 687E6255A456D7A98D2880C7 /* libPods-TeambrellaNotification.a */; };
+		E974F633467D39F41F4FDFBC /* libPods-TeambrellaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A99F1FDFE091B62B23E01A6 /* libPods-TeambrellaTests.a */; };
 		FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */; };
 /* End PBXBuildFile section */
 
@@ -1197,12 +1195,10 @@
 		01DB4DE4E15DABDAA0633C69 /* Pods-TeambrellaNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaNotification.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaNotification/Pods-TeambrellaNotification.release.xcconfig"; sourceTree = "<group>"; };
 		0955ADF5D5781C76472099AB /* Pods-TeambrellaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.release.xcconfig"; sourceTree = "<group>"; };
 		0DD563BFF9640E2EA3A0F20D /* Pods-notification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notification.debug.xcconfig"; path = "Pods/Target Support Files/Pods-notification/Pods-notification.debug.xcconfig"; sourceTree = "<group>"; };
-		0F0981AC48D38E5C8A149C38 /* libPods-NotificationTeambrella.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NotificationTeambrella.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		175EF842201B71A300268D08 /* WalletInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletInfoCell.swift; path = View/Cells/WalletInfoCell.swift; sourceTree = "<group>"; };
 		175EF843201B71A300268D08 /* WalletInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WalletInfoCell.xib; path = View/Cells/WalletInfoCell.xib; sourceTree = "<group>"; };
 		17751AAF2033568B00274F6A /* NewDiscussionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewDiscussionCell.swift; path = View/Cells/Report/NewDiscussionCell.swift; sourceTree = "<group>"; };
 		17751AB02033568B00274F6A /* NewDiscussionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewDiscussionCell.xib; path = View/Cells/Report/NewDiscussionCell.xib; sourceTree = "<group>"; };
-		177A2DBE9DB0723855A80DED /* libPods-notification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-notification.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1790BB3920750A3F00FD1303 /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Year.swift; path = Model/Entities/Year.swift; sourceTree = "<group>"; };
 		17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletQRCodeVC.swift; path = Scenes/Me/Wallet/WalletQRCodeVC.swift; sourceTree = "<group>"; };
 		1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1211,6 +1207,7 @@
 		40342A343EEBF297AD7B968E /* Pods-SurillaNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurillaNotification.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SurillaNotification/Pods-SurillaNotification.debug.xcconfig"; sourceTree = "<group>"; };
 		44C520431479B61FE9F06E42 /* Pods-Teambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.release.xcconfig"; sourceTree = "<group>"; };
 		4A86321D7F36B3D7DE1C3979 /* Pods-NotificationTeambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationTeambrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotificationTeambrella/Pods-NotificationTeambrella.release.xcconfig"; sourceTree = "<group>"; };
+		4A99F1FDFE091B62B23E01A6 /* libPods-TeambrellaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A31D4B51EC413D689755DD8 /* Pods-TeambrellaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		63613F4D9AC88C9CBF2AB08E /* Pods-TeambrellaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		687E6255A456D7A98D2880C7 /* libPods-TeambrellaNotification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaNotification.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1583,7 +1580,6 @@
 		6DBD695D2093864000D1524F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomePresentationController.swift; path = Scenes/Home/HomePresentationController.swift; sourceTree = "<group>"; };
 		6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimationTools.swift; path = Helpers/AnimationTools.swift; sourceTree = "<group>"; };
-		6DC1BB212077C8CF008661AF /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLPagerTabStrip.framework; path = Carthage/Build/iOS/XLPagerTabStrip.framework; sourceTree = "<group>"; };
 		6DC230691ED07F0500FAC330 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		6DC2487B1F5D948E00D9396D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Team.stringsdict; sourceTree = "<group>"; };
 		6DC2487D1F5D951600D9396D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Team.stringsdict; sourceTree = "<group>"; };
@@ -1779,7 +1775,6 @@
 		CBDFEA3415104DFFD0D751C7 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerService.swift; path = Model/Services/Networking/ServerService.swift; sourceTree = "<group>"; };
 		CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaritalStatus.swift; path = Model/Enums/MaritalStatus.swift; sourceTree = "<group>"; };
 		CFB2C72BED9D6756BBD9381F /* Pods-notification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notification.release.xcconfig"; path = "Pods/Target Support Files/Pods-notification/Pods-notification.release.xcconfig"; sourceTree = "<group>"; };
-		EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA9DEFD913DBBA749086C64 /* Pods-TeambrellaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Surilla.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Teambrella.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1793,7 +1788,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D8A627F20C07761003CD95B /* PushKit.framework in Frameworks */,
-				6D0524D720A5D838000B3247 /* XLPagerTabStrip.framework in Frameworks */,
 				6D0524D920A5D838000B3247 /* SpriteKit.framework in Frameworks */,
 				6EB6C5A3A1AD4F95F386210D /* libPods-Teambrella.a in Frameworks */,
 			);
@@ -1804,7 +1798,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D8A624E20C02B82003CD95B /* PushKit.framework in Frameworks */,
-				6DC1BB232077C8CF008661AF /* XLPagerTabStrip.framework in Frameworks */,
 				6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */,
 				FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */,
 			);
@@ -1829,7 +1822,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80F21A7C34B08754FB74C0D3 /* libPods-TeambrellaTests.a in Frameworks */,
+				E974F633467D39F41F4FDFBC /* libPods-TeambrellaTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3109,14 +3102,11 @@
 			children = (
 				6D8A624D20C02B82003CD95B /* PushKit.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
-				6DC1BB212077C8CF008661AF /* XLPagerTabStrip.framework */,
 				F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */,
-				EF97D18D2974A521C3D2CC62 /* libPods-TeambrellaTests.a */,
 				F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */,
-				177A2DBE9DB0723855A80DED /* libPods-notification.a */,
-				0F0981AC48D38E5C8A149C38 /* libPods-NotificationTeambrella.a */,
 				AA2A801FF41C5B535060F542 /* libPods-SurillaNotification.a */,
 				687E6255A456D7A98D2880C7 /* libPods-TeambrellaNotification.a */,
+				4A99F1FDFE091B62B23E01A6 /* libPods-TeambrellaTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3748,7 +3738,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -3798,6 +3787,7 @@
 				"${PODS_ROOT}/PKHUD/PKHUD/Images.xcassets",
 				"${PODS_ROOT}/SwiftDate/Sources/SwiftDate/SwiftDate.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/XLPagerTabStrip/XLPagerTabStrip.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -3807,6 +3797,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftDate.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XLPagerTabStrip.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3847,7 +3838,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -3939,6 +3929,7 @@
 				"${PODS_ROOT}/PKHUD/PKHUD/Images.xcassets",
 				"${PODS_ROOT}/SwiftDate/Sources/SwiftDate/SwiftDate.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/XLPagerTabStrip/XLPagerTabStrip.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -3948,6 +3939,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftDate.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XLPagerTabStrip.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
