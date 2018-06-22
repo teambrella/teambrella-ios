@@ -1044,13 +1044,14 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="facebook.com/jimmywong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="seq-A6-jmI" customClass="ChatTextLabel" customModule="Surilla" customModuleProvider="target">
-                                                                        <rect key="frame" x="44" y="33" width="169" height="17"/>
+                                                                        <rect key="frame" x="44" y="33" width="169" height="12"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                                 <constraints>
+                                                                    <constraint firstItem="seq-A6-jmI" firstAttribute="bottom" secondItem="d7O-F7-70w" secondAttribute="bottom" id="0xy-Gs-lo7"/>
                                                                     <constraint firstItem="seq-A6-jmI" firstAttribute="top" secondItem="cyg-GN-LRF" secondAttribute="centerY" id="A8S-2e-I8B"/>
                                                                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="seq-A6-jmI" secondAttribute="trailing" id="BBB-aT-qON"/>
                                                                     <constraint firstItem="d7O-F7-70w" firstAttribute="leading" secondItem="cyg-GN-LRF" secondAttribute="leading" id="Mvc-wT-4r9"/>
