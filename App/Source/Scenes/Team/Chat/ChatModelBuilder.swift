@@ -52,7 +52,9 @@ class ChatModelBuilder {
         for item in chatItems {
             let fragments = fragmentParser.parse(item: item)
             var isMy = false
-            service.session?.currentUserID.map { isMy = item.userID == $0 }
+            if let session = service.session {
+                isMy = item.userID == session.currentUserID
+            }
             
             let name: Name
             let avatar: Avatar?

@@ -23,12 +23,12 @@ import Foundation
 
 class Session {
     var isDemo: Bool
-    
+
     var currentTeam: TeamEntity?
     var teams: [TeamEntity] = []
     
     // TMP: my user properties
-    var currentUserID: String?
+    var currentUserID: String
     var currentUserTeammateID: Int? { return currentTeam?.teammateID }
     var currentUserName: Name?
     var currentUserAvatar: Avatar = Avatar.none
@@ -42,8 +42,31 @@ class Session {
     var myAvatarStringSmall: String { return myAvatarString + "/128" }
     var dataSource: HomeDataSource = HomeDataSource()
     
-    init(isDemo: Bool) {
+    init(teamsModel: TeamsModel, isDemo: Bool) {
+        self.currentUserID = teamsModel.userID
         self.isDemo = isDemo
+        self.teams = teamsModel.teams
+        /*
+         Selecting team that was used last time
+
+         Firstly we try to use teamID that comes from server (but it is not implemented yet)
+         Secondly we use a stored on device last used teamID
+         and lastly if everything fails we take the first team from the list
+         */
+        let lastTeamID: Int
+        if let receivedID = teamsModel.lastTeamID {
+            lastTeamID = receivedID
+        } else if let storedID = SimpleStorage().int(forKey: .teamID) {
+            lastTeamID = storedID
+        } else {
+            lastTeamID = teamsModel.teams.first?.teamID ?? 0
+        }
+        var currentTeam: TeamEntity?
+        for team in teamsModel.teams where team.teamID == lastTeamID {
+            currentTeam = team
+            break
+        }
+        self.currentTeam = currentTeam
     }
     
     @discardableResult

@@ -20,7 +20,6 @@
  */
 
 import Foundation
-import PKHUD
 
 fileprivate(set)var service = ServicesHandler.shared
 
@@ -63,41 +62,6 @@ final class ServicesHandler {
     var socket: SocketService?
     
     /// service to store current user state. Teams, names unread counts etc
-    var session: Session? {
-        didSet {
-            self.watch = WatchService()
-        }
-    }
-    
-    // MARK: Utilities
-    
-    /// gives the symbol of currency used in the current team (e.g. $)
-    var currencySymbol: String { return session?.currentTeam?.currencySymbol ?? "" }
-    
-    /// gives the name code of the currency used in the current team (e.g. USD)
-    var currencyName: String { return session?.currentTeam?.currency ?? "" }
-    
-    var myUserID: String { return session?.currentUserID ?? "" }
-    
-    private init() {
-        PKHUD.sharedHUD.gracePeriod = 0.5
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(cryptoMalfunction),
-                                               name: .cryptoKeyFailure, object: nil)
-    }
-
-    @objc
-    func cryptoMalfunction() {
-        keyStorage.deleteStoredKeys()
-        if let vc = service.router.frontmostViewController {
-            let message =  """
-            Private key that was stored is not a valid BTC key. It will be deleted from the app. Please restart.
-            """
-            let alert = UIAlertController(title: "Fatal Error", message: message, preferredStyle: .alert)
-            let cancel = UIAlertAction(title: "OK", style: .destructive, handler: nil)
-            alert.addAction(cancel)
-            vc.present(alert, animated: true, completion: nil)
-        }
-    }
+    var session: Session?
     
 }

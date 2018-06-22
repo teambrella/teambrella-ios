@@ -69,6 +69,9 @@ struct ReportCellBuilder {
                                  model: ReportCellModel,
                                  reportVC: ReportVC,
                                  indexPath: IndexPath) {
+        let session = service.session
+        let currencyName = session?.currentTeam?.currency ?? ""
+
         if let model = model as? NewClaimCellModel {
             cell.headerLabel.text = model.title
             cell.objectImageView.show(model.objectPhoto)
@@ -87,14 +90,14 @@ struct ReportCellBuilder {
             
             cell.expensesLabel.text = model.expensesTitle
             cell.currencyTextField.isUserInteractionEnabled = false
-            cell.currencyTextField.text = service.currencyName
+            cell.currencyTextField.text = currencyName
             cell.currencyTextField.layer.masksToBounds = true
             cell.currencyTextField.layer.cornerRadius = 3
             cell.currencyTextField.layer.borderWidth = 1
             cell.currencyTextField.layer.borderColor = #colorLiteral(red: 0.8078431373, green: 0.8470588235, blue: 0.8745098039, alpha: 1)
             cell.statsNumberBar.left?.titleLabel.text = model.deductibleTitle
             cell.statsNumberBar.left?.amountLabel.text = model.deductibleString
-            cell.statsNumberBar.left?.currencyLabel.text = service.currencyName
+            cell.statsNumberBar.left?.currencyLabel.text = currencyName
             cell.statsNumberBar.middle?.titleLabel.text = model.coverageTitle
             cell.statsNumberBar.middle?.amountLabel.text = model.coverageString
             cell.statsNumberBar.middle?.isCurrencyVisible = false
@@ -108,7 +111,7 @@ struct ReportCellBuilder {
             }
             cell.statsNumberBar.right?.titleLabel.text = model.amountTitle
             cell.statsNumberBar.right?.amountLabel.text = model.amountString
-            cell.statsNumberBar.right?.currencyLabel.text = service.currencyName
+            cell.statsNumberBar.right?.currencyLabel.text = currencyName
             cell.statsNumberBar.left?.isPercentVisible = false
             cell.statsNumberBar.left?.isCurrencyVisible = true
             cell.statsNumberBar.right?.isPercentVisible = false

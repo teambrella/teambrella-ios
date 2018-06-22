@@ -54,6 +54,8 @@ struct HomeCellBuilder {
     }
 
     static func populateHome(cell: HomeCollectionCell, model: HomeCardModel) {
+        let session = service.session
+
         switch model.itemType {
         case .claim:
             setupClaimCell(cell: cell, model: model)
@@ -64,7 +66,7 @@ struct HomeCellBuilder {
         }
         
         cell.leftNumberView.amountLabel.text = model.amount.formatted
-        cell.leftNumberView.currencyLabel.text = service.currencyName
+        cell.leftNumberView.currencyLabel.text = session?.currentTeam?.currency ?? ""
         cell.rightNumberView.titleLabel.text = "Team.Home.Card.teamVote".localized
         cell.rightNumberView.badgeLabel.text = "Team.Home.Card.voting".localized
         cell.textLabel.text = model.text.sane
@@ -112,6 +114,7 @@ struct HomeCellBuilder {
     }
 
     static private func setupClaimCell(cell: HomeCollectionCell, model: HomeCardModel) {
+        let session = service.session
         cell.titleLabel.text = model.itemName
         cell.ownerAvatarView.isHidden = false
         cell.ownerAvatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: model.userAvatar)))
@@ -119,7 +122,7 @@ struct HomeCellBuilder {
         cell.avatarView.show(model.smallPhoto)
         cell.avatarView.roundCorners(.allCorners, radius: 3)
         cell.leftNumberView.titleLabel.text = "Team.Home.Card.claimed".localized
-        cell.leftNumberView.currencyLabel.text = service.currencySymbol
+        cell.leftNumberView.currencyLabel.text = session?.currentTeam?.currencySymbol ?? ""
         cell.leftNumberView.isCurrencyVisible = true
         cell.leftNumberView.isPercentVisible = false
         let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
