@@ -106,7 +106,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Add Crashlytics in debug mode
         #if SURILLA
          Fabric.sharedSDK().debug = true
+
+        // Check how screen rendering is working
+        let link = CADisplayLink(target: self, selector: #selector(AppDelegate.update(link:)))
+        link.add(to: .main, forMode: .commonModes)
         #endif
+    }
+
+    var lastTime: TimeInterval = 0
+
+    @objc
+    private func update(link: CADisplayLink) {
+        if lastTime == 0 {
+            lastTime = link.timestamp
+        }
+
+        let currentTime = link.timestamp
+        let elapsedTime = floor((currentTime - lastTime) * 10_000) / 10
+
+        // less than 60 frames per second
+        if elapsedTime > 16.7 {
+            print("Dropped frames! elapsed time: \(elapsedTime) ms.")
+        }
+        lastTime = link.targetTimestamp
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
