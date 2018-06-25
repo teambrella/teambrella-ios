@@ -89,7 +89,7 @@ struct TeammateCellBuilder {
          }
          */
     }
-
+    
     private static func setVote(votingCell: VotingRiskCell,
                                 voting: TeammateLarge.VotingInfo,
                                 controller: TeammateProfileVC) {
@@ -127,7 +127,7 @@ struct TeammateCellBuilder {
         votingCell.timeLabel.text = prefix.uppercased() + " " +
             DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
     }
-
+    
     private static func setMyVote(votingCell: VotingRiskCell,
                                   myVote: Double,
                                   proxyName: String?,
@@ -186,7 +186,7 @@ struct TeammateCellBuilder {
                                        with teammate: TeammateLarge,
                                        controller: TeammateProfileVC) {
         let session = service.session
-
+        
         let type: CoverageType = service.session?.currentTeam?.coverageType ?? .other
         let localizer = CoverageLocalizer(type: type)
         if let me = service.session?.currentUserID, me == teammate.basic.id {
@@ -197,7 +197,7 @@ struct TeammateCellBuilder {
                 "General.posessiveFormat.her".localized(teammate.basic.name.first.uppercased())
             cell.titleLabel.text = "General.unitedFormat".localized(owner, localizer.coveredObject)
         }
-
+        
         let yearString = CoverageLocalizer(type: type).yearsString(year: teammate.object.year)
         cell.nameLabel.text = "\(teammate.object.model), \(yearString)"
         
@@ -229,8 +229,11 @@ struct TeammateCellBuilder {
             right.amountLabel.text = String(format: "%.2f", teammate.basic.risk)
             let avg = String.truncatedNumber(abs(teammate.basic.risk - teammate.basic.averageRisk) * 100)
             let sign = teammate.basic.risk - teammate.basic.averageRisk > 0 ? "+" : "-"
-//            right.badgeLabel.text
-            right.badgeLabel.text = "AVG " + sign + avg + "%"
+            if teammate.basic.risk - teammate.basic.averageRisk == 0 {
+                right.badgeLabel.text = "AVG " + avg + "%"
+            } else {
+                right.badgeLabel.text = "AVG " + sign + avg + "%"
+            }
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
             right.isCurrencyVisible = false
