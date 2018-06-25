@@ -206,6 +206,7 @@ struct TeammateCellBuilder {
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
+            left.currencyLabel.font = UIFont.teambrellaBold(size: 10)
             left.currencyLabel.text = session?.currentTeam?.currency ?? ""
             left.isCurrencyVisible = true
             left.isPercentVisible = false
@@ -217,6 +218,7 @@ struct TeammateCellBuilder {
                 Int(teammate.basic.totallyPaidAmount + 0.5) :
                 Int(teammate.basic.totallyPaidAmount - 0.5)
             middle.amountLabel.text = String(test)
+            middle.currencyLabel.font = UIFont.teambrellaBold(size: 10)
             middle.currencyLabel.text = session?.currentTeam?.currency ?? ""
             middle.isCurrencyVisible = true
             middle.isPercentVisible = false
