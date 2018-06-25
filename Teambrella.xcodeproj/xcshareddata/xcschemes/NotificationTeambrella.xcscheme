@@ -43,13 +43,23 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6D42CC9A20E133B300C2B146"
+               BuildableName = "TeambrellaUITests.xctest"
+               BlueprintName = "TeambrellaUITests"
+               ReferencedContainer = "container:Teambrella.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6DEFE3F12006544100615022"
-            BuildableName = "TeambrellaNotification.appex"
-            BlueprintName = "TeambrellaNotification"
+            BlueprintIdentifier = "6D05234B20A5D838000B3247"
+            BuildableName = "Teambrella.app"
+            BlueprintName = "Teambrella"
             ReferencedContainer = "container:Teambrella.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
