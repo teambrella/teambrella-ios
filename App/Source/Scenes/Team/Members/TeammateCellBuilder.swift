@@ -227,8 +227,10 @@ struct TeammateCellBuilder {
         if let right = cell.numberBar.right {
             right.titleLabel.text = "Team.TeammateCell.risk".localized
             right.amountLabel.text = String(format: "%.2f", teammate.basic.risk)
-            let avg = String.truncatedNumber(teammate.basic.averageRisk)
-            right.badgeLabel.text = avg + " AVG"
+            let avg = String.truncatedNumber(abs(teammate.basic.risk - teammate.basic.averageRisk) * 100)
+            let sign = teammate.basic.risk - teammate.basic.averageRisk > 0 ? "+" : "-"
+//            right.badgeLabel.text
+            right.badgeLabel.text = "AVG " + sign + avg + "%"
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
             right.isCurrencyVisible = false
