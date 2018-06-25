@@ -34,6 +34,7 @@ struct ClaimsCellBuilder {
         guard let cell = cell as? ClaimsCell else { return }
 
         let session = service.session
+        let currencySymbol = session?.currentTeam?.currencySymbol ?? ""
 
         cell.ownerAvatarView.show(claim.avatar)
         cell.titleLabel.text = claim.model
@@ -42,12 +43,12 @@ struct ClaimsCellBuilder {
         if let cell = cell as? ClaimsOpenCell {
             cell.avatarView.show(claim.smallPhoto)
             cell.button.setTitle("Team.ClaimsCell.viewToVote".localized, for: .normal)
-            cell.claimedAmountLabel.text = session?.currentTeam?.currencySymbol ?? "" + claim.claimAmount.formatted
+            cell.claimedAmountLabel.text = currencySymbol + claim.claimAmount.formatted
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
         } else if let cell = cell as? ClaimsVotedCell {
             //cell.avatarView.showAvatar(string: claim.smallPhoto)
             cell.avatarView.show(claim.smallPhoto)
-            cell.claimedAmountLabel.text = session?.currentTeam?.currencySymbol ?? "" + claim.claimAmount.formatted
+            cell.claimedAmountLabel.text = currencySymbol + claim.claimAmount.formatted
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
             if let vote = claim.myVote {
             cell.votedLabel.text = "Team.Claims.VotedCell.voted".localized
@@ -73,7 +74,7 @@ struct ClaimsCellBuilder {
                 cell.statusLabel.textColor = .blueyGray
                 cell.scaleBar.isLineHidden = false
             }
-            cell.amountLabel.text = session?.currentTeam?.currencySymbol ?? "" + claim.claimAmount.formatted
+            cell.amountLabel.text = currencySymbol + claim.claimAmount.formatted
             cell.scaleBar.value = CGFloat(claim.reimbursement.value)
         }
     }
