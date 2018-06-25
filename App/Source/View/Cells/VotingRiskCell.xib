@@ -134,8 +134,14 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K9q-SA-b4t">
-                                        <rect key="frame" x="286" y="77" width="261" height="20"/>
+                                        <rect key="frame" x="286" y="77" width="0.0" height="20"/>
                                         <subviews>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-Nv-AVa" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                                <rect key="frame" x="-306" y="-175" width="0.0" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="94E-S6-lnc" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                                                 <rect key="frame" x="-306" y="-175" width="20" height="20"/>
                                                 <constraints>
@@ -143,12 +149,6 @@
                                                     <constraint firstAttribute="width" constant="20" id="uwP-am-mCQ"/>
                                                 </constraints>
                                             </imageView>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-Nv-AVa" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="-306" y="-175" width="0.0" height="20"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufs-Z7-MdQ">
@@ -177,7 +177,7 @@
                                     <constraint firstItem="VE3-Bp-PEJ" firstAttribute="centerY" secondItem="Nx1-Yq-BkA" secondAttribute="centerY" id="JGi-Cu-SPO"/>
                                     <constraint firstItem="D29-8w-VUD" firstAttribute="top" secondItem="Nx1-Yq-BkA" secondAttribute="bottom" constant="2" id="LWK-uN-oW5"/>
                                     <constraint firstAttribute="trailing" secondItem="blN-yG-O3g" secondAttribute="trailing" id="LX5-ad-gaI"/>
-                                    <constraint firstAttribute="trailing" secondItem="K9q-SA-b4t" secondAttribute="trailing" constant="8" id="M9v-ly-du1"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="K9q-SA-b4t" secondAttribute="trailing" constant="8" id="M9v-ly-du1"/>
                                     <constraint firstItem="557-Va-QA6" firstAttribute="centerY" secondItem="D29-8w-VUD" secondAttribute="centerY" id="MXm-0C-tr4"/>
                                     <constraint firstItem="557-Va-QA6" firstAttribute="leading" secondItem="D29-8w-VUD" secondAttribute="trailing" constant="8" id="Nho-yr-Ngi"/>
                                     <constraint firstAttribute="height" constant="105" id="Piz-5C-SK1"/>

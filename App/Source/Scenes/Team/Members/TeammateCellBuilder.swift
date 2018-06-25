@@ -143,7 +143,7 @@ struct TeammateCellBuilder {
             if let avatar = proxyAvatar {
                 votingCell.proxyAvatarView.show(avatar)
             }
-            votingCell.proxyNameLabel.text = proxyName.uppercased()
+            votingCell.proxyNameLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
         } else {
             votingCell.layoutIfNeeded()
             votingCell.yourVoteValueLabel.alpha = 1
