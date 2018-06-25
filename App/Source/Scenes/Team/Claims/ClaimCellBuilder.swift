@@ -95,6 +95,8 @@ struct ClaimCellBuilder {
     
     // swiftlint:disable:next function_body_length
     static func populateClaimVote(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
+        let session = service.session
+
         guard let voting = claim.voting else {
             log("ClaimEntityLarge has no voting part. Can't populate ClaimVoteCell", type: .error)
             return
@@ -139,12 +141,12 @@ struct ClaimCellBuilder {
         cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         cell.yourVotePercentValue.alpha = 1
         cell.yourVoteAmount.alpha = 1
-        cell.yourVoteCurrency.text = service.currencyName
+        cell.yourVoteCurrency.text = session?.currentTeam?.currency ?? ""
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
         cell.teamVotePercentValue.text = String.truncatedNumber(voting.ratioVoted.percentage)
         cell.teamVoteAmount.text = String.truncatedNumber(voting.ratioVoted.fiat(from: claim.basic.claimAmount).value)
-        cell.teamVoteCurrency.text = service.currencyName
+        cell.teamVoteCurrency.text = session?.currentTeam?.currency ?? ""
         
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
         cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)
@@ -162,6 +164,8 @@ struct ClaimCellBuilder {
     }
     
     static func populateClaimDetails(cell: ClaimDetailsCell, with claim: ClaimEntityLarge) {
+        let session = service.session
+        
         cell.titleLabel.text = "Team.ClaimCell.claimDetails".localized
         
         cell.coverageLabel.text = "Team.ClaimCell.coverage".localized
@@ -178,7 +182,7 @@ struct ClaimCellBuilder {
         let deductible = String(format: "%.2f", claim.basic.deductible)
         cell.estimatedExpencesLabel.text = "Team.ClaimCell.estimatedExpences".localized
         let estimatedExpenses = String(format: "%.2f", claim.basic.estimatedExpenses)
-        let currency = service.currencySymbol
+        let currency = session?.currentTeam?.currencySymbol ?? ""
         cell.claimAmountValueLabel.text = currency + claimAmount
         cell.deductibleValueLabel.text = currency + deductible
         cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses

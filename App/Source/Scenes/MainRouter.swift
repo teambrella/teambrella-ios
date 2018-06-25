@@ -19,6 +19,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import PKHUD
 import UIKit
 import XLPagerTabStrip
 
@@ -29,7 +30,13 @@ import XLPagerTabStrip
  */
 final class MainRouter {
     let mainStoryboardName = "Main"
-    
+
+    // MARK: Services
+//    var session: Session?
+
+//    var teambrella: TeambrellaService?
+//    var error: ErrorPresenter?
+
     var navigator: Navigator? {
         let appDelegate  = UIApplication.shared.delegate as? AppDelegate
         let viewController = appDelegate?.window?.rootViewController as? Navigator
@@ -353,6 +360,15 @@ final class MainRouter {
      */
     
     // MARK: Other
+
+    func startNewSession(isDemo: Bool, teamsModel: TeamsModel) {
+        service.session = Session(teamsModel: teamsModel, isDemo: isDemo)
+
+        let socket = SocketService(dao: service.dao, url: nil)
+        service.socket = socket
+        service.teambrella.signToSockets(service: socket)
+        service.watch = WatchService()
+    }
     
     @discardableResult
     func logout() -> InitialVC? {
@@ -413,6 +429,27 @@ final class MainRouter {
         vc.delegate = delegate
         controller.present(vc, animated: true)
         return vc
+    }
+
+    /* private */ init() {
+        PKHUD.sharedHUD.gracePeriod = 0.5
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(cryptoMalfunction),
+                                               name: .cryptoKeyFailure, object: nil)
+    }
+
+    @objc
+    func cryptoMalfunction() {
+        service.keyStorage.deleteStoredKeys()
+        if let vc = frontmostViewController {
+            let message =  """
+            Private key that was stored is not a valid BTC key. It will be deleted from the app. Please restart.
+            """
+            let alert = UIAlertController(title: "Fatal Error", message: message, preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "OK", style: .destructive, handler: nil)
+            alert.addAction(cancel)
+            vc.present(alert, animated: true, completion: nil)
+        }
     }
     
 }

@@ -81,8 +81,10 @@ class CoverageVC: UIViewController, Routable {
         super.viewDidLoad()
         umbrellaView.startCurveCoeff = 1.1
         umbrellaView.fillColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+
+        let session = service.session
         
-        let currency = service.currencyName
+        let currency = session?.currentTeam?.currency ?? ""
         upperAmount.currencyLabel.text = currency
         centerAmount.currencyLabel.text = currency
         lowerAmount.currencyLabel.text = currency

@@ -145,39 +145,13 @@ final class InitialVC: UIViewController {
             Statistics.register(userID: teamsEntity.userID)
         }
 
-        service.session = Session(isDemo: isDemo)
+        service.router.startNewSession(isDemo: isDemo, teamsModel: teamsEntity)
+        
         service.teambrella.startUpdating(completion: { result in
             let description = result.rawValue == 0 ? "new data" : result.rawValue == 1 ? "no data" : "failed"
             log("Teambrella service get updates results: \(description)", type: .info)
         })
-        
-        /*
-         Selecting team that was used last time
-         
-         Firstly we try to use teamID that comes from server (but it is not implemented yet)
-         Secondly we use a stored on device last used teamID
-         and lastly if everything fails we take the first team from the list
-         */
-        let lastTeamID: Int
-        if let receivedID = teamsEntity.lastTeamID {
-            lastTeamID = receivedID
-        } else if let storedID = SimpleStorage().int(forKey: .teamID) {
-            lastTeamID = storedID
-        } else {
-            lastTeamID = teamsEntity.teams.first?.teamID ?? 0
-        }
-        var currentTeam: TeamEntity?
-        for team in teamsEntity.teams where team.teamID == lastTeamID {
-            currentTeam = team
-            break
-        }
-        service.session?.currentTeam = currentTeam ?? teamsEntity.teams.first
-        
-        service.session?.teams = teamsEntity.teams
-        service.session?.currentUserID = teamsEntity.userID
-        let socket = SocketService(dao: service.dao, url: nil)
-        service.socket = socket
-        service.teambrella.signToSockets(service: socket)
+
         SimpleStorage().store(bool: true, forKey: .didLogWithKey)
         HUD.hide()
         presentMasterTab()

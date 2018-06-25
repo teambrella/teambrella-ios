@@ -336,6 +336,9 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
+        let session = service.session
+        let currencyName = session?.currentTeam?.currency ?? ""
+
         guard let teammate = dataSource.teammateLarge else { return }
         
         if let view = view as? TeammateSummaryView {
@@ -358,7 +361,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 left.titleLabel.text = genderization
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amountsFormat(amount: amount)
-                left.currencyLabel.text = service.currencyName
+                left.currencyLabel.text = currencyName
                 left.isCurrencyVisible = true
                 left.isPercentVisible = false
             }
@@ -369,7 +372,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 right.titleLabel.text = genderization
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amountsFormat(amount: amount)
-                right.currencyLabel.text = service.currencyName
+                right.currencyLabel.text = currencyName
                 right.isCurrencyVisible = true
                 right.isPercentVisible = false
             }
@@ -395,7 +398,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 left.titleLabel.text = genderization
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amountsFormat(amount: amount)
-                left.currencyLabel.text = service.currencyName
+                left.currencyLabel.text = currencyName
                 left.isCurrencyVisible = true
                 left.isPercentVisible = false
             }
@@ -406,7 +409,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 right.titleLabel.text = genderization
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amountsFormat(amount: amount)
-                right.currencyLabel.text = service.currencyName
+                right.currencyLabel.text = currencyName
                 right.isCurrencyVisible = true
                 right.isPercentVisible = false
             }

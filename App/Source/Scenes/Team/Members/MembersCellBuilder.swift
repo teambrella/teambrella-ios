@@ -24,6 +24,8 @@ import UIKit
 
 struct MembersCellBuilder {
     static func populate(cell: UICollectionViewCell, with teammate: TeammateListEntity) {
+        let session = service.session
+
         let coverage = service.session?.currentTeam?.coverageType ?? .other
         let yearText = CoverageLocalizer(type: coverage).yearsString(year: teammate.year)
         if let cell = cell as? TeammateCandidateCell {
@@ -41,7 +43,7 @@ struct MembersCellBuilder {
             if let url: URL = URL(string: URLBuilder().avatarURLstring(for: teammate.avatar)) {
                 cell.avatarView.kf.setImage(with: url)
             }
-            let currency: String = service.currencySymbol
+            let currency: String = session?.currentTeam?.currencySymbol ?? ""
             let coeff = teammate.totallyPaid > 0.0 ? 0.5 : -0.5
             let amountText: String = currency + "\(abs(Int(teammate.totallyPaid + coeff)))"
             cell.amountLabel.text = amountText
