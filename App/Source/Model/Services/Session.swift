@@ -66,7 +66,7 @@ class Session {
             currentTeam = team
             break
         }
-        self.currentTeam = currentTeam
+        self.currentTeam = currentTeam ?? teams.first
     }
     
     @discardableResult
