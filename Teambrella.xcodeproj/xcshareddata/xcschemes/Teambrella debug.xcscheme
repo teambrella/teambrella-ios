@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Teambrella.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6D42CC9A20E133B300C2B146"
+               BuildableName = "TeambrellaUITests.xctest"
+               BlueprintName = "TeambrellaUITests"
+               ReferencedContainer = "container:Teambrella.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
