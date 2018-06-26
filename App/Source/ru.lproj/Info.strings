@@ -19,6 +19,8 @@
 "Info.codeCapture.title"              = "Просканировать адрес Ethereum";
 "Info.codeCapture.button.title"       = "Использовать";
 "Info.codeCapture.cancelButton.title" = "Отменить";
+"Info.codeCapture.infoLabel"       = "Наведи камеру на QR код приватного ключа. Приложение залогинится автоматически";
+"Info.codeCapture.title.privateKey"   = "Скан приватного ключа";
 
 "Info.OthersVoted.title"              = "Все голоса";
 "Info.OthersVoted.Cell.Weight"        = "Вес:";

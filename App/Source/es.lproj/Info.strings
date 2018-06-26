@@ -19,6 +19,8 @@
 "Info.codeCapture.title" = "Escanear Dirección de Ethereum";
 "Info.codeCapture.button.title" = "Usar";
 "Info.codeCapture.cancelButton.title" = "Cancelar";
+"Info.codeCapture.infoLabel"       = "Let camera focus on QR code of your private key. App will log in automatically";
+"Info.codeCapture.title.privateKey"   = "Scan Private Key";
 
 "Info.OthersVoted.title" = "Todos los votos";
 "Info.OthersVoted.Cell.Weight" = "Peso:";
