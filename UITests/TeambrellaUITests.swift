@@ -66,9 +66,12 @@ class TeambrellaUITests: XCTestCase {
         let collectionViewsQuery2 = app.scrollViews.otherElements.collectionViews
         collectionViewsQuery2.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
 
-        sleep(1)
-        collectionViewsQuery.sliders.element(boundBy: 0).adjust(toNormalizedSliderPosition: 0.66)
+        // make slider visible
+        let startCoord = app.collectionViews.element.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+        let endCoord = startCoord.withOffset(CGVector(dx: 0.0, dy: -48));
+        startCoord.press(forDuration: 0.01, thenDragTo: endCoord)
 
+        collectionViewsQuery.sliders.element(boundBy: 0).adjust(toNormalizedSliderPosition: 0.66)
         snapshot("1Claim")
 
         // tap Chat
