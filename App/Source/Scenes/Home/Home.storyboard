@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FCe-0y-OxV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FCe-0y-OxV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -137,7 +137,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OD5-cP-eZ5">
-                                                            <rect key="frame" x="0.0" y="34.5" width="325" height="54"/>
+                                                            <rect key="frame" x="0.0" y="48.5" width="325" height="54"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xle-t4-lRz" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="162" height="54"/>
@@ -169,13 +169,13 @@
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="255" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OCk-hp-xSl">
-                                                            <rect key="frame" x="16" y="90.5" width="293" height="50"/>
+                                                            <rect key="frame" x="16" y="104.5" width="293" height="36"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLa-Rg-RZk">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="253" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="253" height="36"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Just discovered a new garage in my neighborhood that is really good and i would like to buy it for sure" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTU-MO-gZV" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="253" height="43"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="253" height="36"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -190,7 +190,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UyN-7e-WUG" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                                                    <rect key="frame" x="258" y="14" width="22" height="22"/>
+                                                                    <rect key="frame" x="258" y="7" width="22" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="22" id="H9v-Ou-kgr"/>
                                                                         <constraint firstAttribute="width" secondItem="UyN-7e-WUG" secondAttribute="height" multiplier="1:1" id="Pfb-7M-5Lm"/>
@@ -206,7 +206,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="1RN-Vg-g5G">
-                                                                    <rect key="frame" x="285" y="18.5" width="8" height="13"/>
+                                                                    <rect key="frame" x="285" y="11.5" width="8" height="13"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="8" id="WKe-ei-NRG"/>
                                                                         <constraint firstAttribute="height" constant="13" id="oO8-pS-otp"/>
