@@ -52,6 +52,8 @@ class ChatObjectView: UIView, XIBInitable {
     @IBOutlet var imageViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet var voteStackViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet var voteButtonContainer: UIView!
+    @IBOutlet var voteStackViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var voteStackView: UIStackView!
     
     var contentView: UIView!
     
@@ -85,6 +87,8 @@ class ChatObjectView: UIView, XIBInitable {
     }
     
     func initialSetup() {
+        voteStackView.spacing = isSmallIPhone ? CGFloat(8) : CGFloat(13)
+        voteStackViewLeadingConstraint.constant = isSmallIPhone ? CGFloat(8) : CGFloat(13)
         clearLabels()
         chevronButton.isHidden = false
         voteContainer.isHidden = false
