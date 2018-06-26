@@ -203,6 +203,8 @@ struct TeammateCellBuilder {
         
         cell.statusLabel.text = "Team.TeammateCell.covered".localized
         cell.detailsLabel.text = localizer.coverageType
+        
+        cell.numberBar.stackView.spacing = isSmallIPhone ? CGFloat(1) : CGFloat(2)
         if let left = cell.numberBar.left {
             left.titleLabel.text = "Team.TeammateCell.limit".localized
             left.amountLabel.text = ValueToTextConverter.textFor(amount: teammate.object.claimLimit)
@@ -225,13 +227,19 @@ struct TeammateCellBuilder {
             middle.isBadgeVisible = false
         }
         if let right = cell.numberBar.right {
+            right.badgeLabel.leftInset = isSmallIPhone ? CGFloat(2) : CGFloat(4)
+            right.badgeLabel.rightInset = isSmallIPhone ? CGFloat(2) : CGFloat(4)
+            
             right.titleLabel.text = "Team.TeammateCell.risk".localized
-            right.amountLabel.text = String(format: "%.2f", teammate.basic.risk)
+            right.amountLabel.text = String(format: "%.1f", teammate.basic.risk)
             let avg = String.truncatedNumber(abs(teammate.basic.risk - teammate.basic.averageRisk) * 100)
-            let sign = teammate.basic.risk - teammate.basic.averageRisk > 0 ? "+" : "-"
+
             if teammate.basic.risk - teammate.basic.averageRisk == 0 {
-                right.badgeLabel.text = "AVG " + avg + "%"
+                right.badgeLabel.text = "AVG" // + avg + "%"
+                right.badgeLabel.leftInset = CGFloat(4)
+                right.badgeLabel.rightInset = CGFloat(4)
             } else {
+                let sign = (teammate.basic.risk - teammate.basic.averageRisk) * 100 > 0 ? "+" : "-"
                 right.badgeLabel.text = "AVG " + sign + avg + "%"
             }
             right.isBadgeVisible = true
