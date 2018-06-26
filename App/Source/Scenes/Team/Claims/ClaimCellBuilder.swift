@@ -51,6 +51,7 @@ struct ClaimCellBuilder {
     }
     
     static func populateImageGallery(cell: ImageGalleryCell, with claim: ClaimEntityLarge) {
+        cell.accessibilityIdentifier = "imageGalleryCell"
         let imageURLStrings = claim.basic.largePhotos.map { URLBuilder().urlString(string: $0) }
         log("\(imageURLStrings)", type: .info)
         service.dao.freshKey { key in

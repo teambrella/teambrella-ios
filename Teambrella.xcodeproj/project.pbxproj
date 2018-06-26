@@ -535,6 +535,7 @@
 		6D41416720AC537000F6B48E /* TimestampFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FD131FBC95CB006C0A2B /* TimestampFetcher.swift */; };
 		6D41416820AC538A00F6B48E /* TeambrellaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA475D81E8BBD2A00B56D9B /* TeambrellaError.swift */; };
 		6D42CC9E20E133B300C2B146 /* TeambrellaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D42CC9D20E133B300C2B146 /* TeambrellaUITests.swift */; };
+		6D42CCA820E1367000C2B146 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D42CCA720E1367000C2B146 /* SnapshotHelper.swift */; };
 		6D43291720D949490015C369 /* QRCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D43291620D949490015C369 /* QRCodeManager.swift */; };
 		6D43291820D94B250015C369 /* QRCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D43291620D949490015C369 /* QRCodeManager.swift */; };
 		6D49FDDC20209DD900A908D2 /* Ether.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDDA20209DD900A908D2 /* Ether.swift */; };
@@ -1339,6 +1340,7 @@
 		6D42CC9B20E133B300C2B146 /* TeambrellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeambrellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D42CC9D20E133B300C2B146 /* TeambrellaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeambrellaUITests.swift; sourceTree = "<group>"; };
 		6D42CC9F20E133B300C2B146 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D42CCA720E1367000C2B146 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		6D43291620D949490015C369 /* QRCodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRCodeManager.swift; path = Model/Services/QRCodeManager.swift; sourceTree = "<group>"; };
 		6D465F2D1F46E83B007AC28F /* ReportContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportContext.swift; path = Scenes/Me/Report/ReportContext.swift; sourceTree = "<group>"; };
 		6D465F2F1F46E85C007AC28F /* ReportStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportStrategy.swift; path = Scenes/Me/Report/ReportStrategy.swift; sourceTree = "<group>"; };
@@ -2223,6 +2225,7 @@
 		6D42CC9C20E133B300C2B146 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
+				6D42CCA720E1367000C2B146 /* SnapshotHelper.swift */,
 				6D42CC9D20E133B300C2B146 /* TeambrellaUITests.swift */,
 				6D42CC9F20E133B300C2B146 /* Info.plist */,
 			);
@@ -4473,6 +4476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D42CC9E20E133B300C2B146 /* TeambrellaUITests.swift in Sources */,
+				6D42CCA820E1367000C2B146 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

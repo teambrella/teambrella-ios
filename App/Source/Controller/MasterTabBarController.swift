@@ -27,8 +27,9 @@ class MasterTabBarController: UITabBarController {
         super.viewDidLoad()
         guard let items = tabBar.items else { return }
         
-        for item in items {
+        for (idx, item) in items.enumerated() {
             item.image = item.image?.withRenderingMode(.alwaysOriginal)
+            item.accessibilityIdentifier = "TabBarItem\(idx)"
         }
         
         UIImage.fetchImage(string: service.session?.myAvatarStringSmall ?? "") { [weak self] image, error in

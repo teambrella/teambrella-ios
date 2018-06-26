@@ -83,6 +83,8 @@ final class UniversalChatVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        collectionView.accessibilityIdentifier = "UniversalChatCollectionView"
         addGradientNavBar()
         addMuteButton()
         setMuteButtonImage(type: dataSource.notificationsType)

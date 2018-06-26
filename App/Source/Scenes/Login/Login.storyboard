@@ -176,13 +176,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teambrella-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="HaE-vq-3bd">
-                                <rect key="frame" x="57" y="180" width="262.66666666666669" height="52.666666666666657"/>
+                                <rect key="frame" x="56.333333333333343" y="180" width="262.33333333333326" height="52.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HaE-vq-3bd" secondAttribute="height" multiplier="5:1" id="Ki8-z6-kzM"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3C-eL-D90">
-                                <rect key="frame" x="16" y="247.66666666666663" width="343" height="22"/>
+                                <rect key="frame" x="16" y="247.33333333333337" width="343" height="22"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                 <color key="textColor" red="0.74117647058823533" green="0.76470588235294112" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -203,6 +203,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-0s-mhl">
                                 <rect key="frame" x="168" y="733" width="39" height="27"/>
+                                <accessibility key="accessibilityConfiguration" identifier="tryDemo"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
