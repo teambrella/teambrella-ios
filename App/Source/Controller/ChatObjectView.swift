@@ -187,6 +187,7 @@ class ChatObjectView: UIView, XIBInitable {
         currencyLabel.isHidden = true
         rightLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
         
+        voteValueLabel.font = isSmallIPhone ? UIFont.teambrellaBold(size: 14) : UIFont.teambrellaBold(size: 18)
         if let voting = voting {
             currencyLabel.text = nil
             voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
