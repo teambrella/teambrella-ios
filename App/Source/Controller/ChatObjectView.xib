@@ -65,7 +65,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YP-gL-Rik" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="82" y="43.5" width="23.5" height="11"/>
+                            <rect key="frame" x="82" y="43" width="23.5" height="11"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="9"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -179,8 +179,9 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="150" placeholder="YES" id="4Id-6H-d3o"/>
-                                <constraint firstItem="lI6-Lm-oQA" firstAttribute="top" secondItem="c1y-bp-9dQ" secondAttribute="top" constant="8" id="KCx-pK-76N"/>
-                                <constraint firstAttribute="bottom" secondItem="lI6-Lm-oQA" secondAttribute="bottom" constant="8" id="TUK-ZX-K7i"/>
+                                <constraint firstItem="lI6-Lm-oQA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="c1y-bp-9dQ" secondAttribute="top" constant="8" id="KCx-pK-76N"/>
+                                <constraint firstItem="lI6-Lm-oQA" firstAttribute="centerY" secondItem="c1y-bp-9dQ" secondAttribute="centerY" id="Nsl-1f-5Q5"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lI6-Lm-oQA" secondAttribute="bottom" constant="8" id="TUK-ZX-K7i"/>
                                 <constraint firstAttribute="trailing" secondItem="lI6-Lm-oQA" secondAttribute="trailing" constant="16" id="qIm-65-OH0"/>
                                 <constraint firstItem="lI6-Lm-oQA" firstAttribute="leading" secondItem="c1y-bp-9dQ" secondAttribute="leading" constant="13" id="wxd-Gi-dtb"/>
                             </constraints>
