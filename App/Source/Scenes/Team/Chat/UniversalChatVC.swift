@@ -437,9 +437,7 @@ private extension UniversalChatVC {
             let width = max(fragmentWidth + textInset * 2,
                             rightLabelWidth + leftLabelWidth + textInset * 3)
 
-            let verticalInset = ChatVariousContentCell.Constant.auxillaryLabelHeight * 2
-                + ChatVariousContentCell.Constant.textInset
-                + ChatVariousContentCell.Constant.timeInset
+            let verticalInset = verticalInsetForCloud(with: model)
             return CGSize(width: width,
                           height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset)
         } else if let model = dataSource[indexPath] as? ChatImageCellModel {
@@ -447,6 +445,22 @@ private extension UniversalChatVC {
                           height: model.totalFragmentsHeight + ChatImageCell.Constant.imageInset * 2)
         } else {
             return .zero
+        }
+    }
+
+    private func verticalInsetForCloud(with model: ChatTextCellModel) -> CGFloat {
+        if model.isSingleText {
+            if dataSource.isPrivateChat {
+                return ChatTextCell.Constant.auxillaryLabelHeight
+                    + ChatTextCell.Constant.labelToTextVerticalInset * 2
+            } else {
+                return ChatTextCell.Constant.auxillaryLabelHeight * 2
+                    + ChatTextCell.Constant.labelToTextVerticalInset * 2
+            }
+        } else {
+            return ChatVariousContentCell.Constant.auxillaryLabelHeight * 2
+                + ChatVariousContentCell.Constant.textInset
+                + ChatVariousContentCell.Constant.timeInset
         }
     }
 
@@ -540,7 +554,7 @@ private extension UniversalChatVC {
             default:
                 break
             }
-//             self.loadNewMessages()
+            //             self.loadNewMessages()
             return true
         }
     }
