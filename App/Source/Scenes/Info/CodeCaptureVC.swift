@@ -118,9 +118,10 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
     }
 
     private func setupPrivateKey() {
+        titleLabel.text = "Info.codeCapture.title.privateKey".localized
         cancelButton.setTitle("Info.codeCapture.cancelButton.title".localized, for: .normal)
         infoContainer.isHidden = false
-        infoLabel.text = "Let camera focus on QR code of your private key. It will log in automatically"
+        infoLabel.text = "Info.codeCapture.infoLabel".localized
     }
     
     private func setupCamera() {

@@ -6,10 +6,10 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Login.LoginBlueVC.centerLabel"                    = "Не страховка. А намного лучше.";
+"Login.LoginBlueVC.centerLabel"                    = "Не страховка. Намного лучше.";
 "Login.LoginBlueVC.continueWithFBButton"           = "Продолжить с Facebook";
 "Login.LoginBlueVC.tryDemoButton"                  = "Попробовать демо";
-"Login.LoginNoInviteVC.centerLabel"                = "Не страховка. А намного лучше.";
+"Login.LoginNoInviteVC.centerLabel"                = "Не страховка. Намного лучше.";
 "Login.LoginNoInviteVC.upperLabel"                 = "Доступ только по приглашениям!";
 
 "Login.LoginNoInviteVC.requestInvitationButton"    = "Запросить приглашение";
