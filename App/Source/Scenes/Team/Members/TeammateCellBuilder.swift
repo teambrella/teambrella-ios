@@ -132,7 +132,7 @@ struct TeammateCellBuilder {
                                   myVote: Double,
                                   proxyName: String?,
                                   proxyAvatar: Avatar?) {
-        if let proxyName = proxyName {
+        if proxyName != nil {
             votingCell.isProxyHidden = false
             votingCell.resetVoteButton.isHidden = true
             votingCell.layoutIfNeeded()
