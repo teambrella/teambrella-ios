@@ -52,6 +52,7 @@ struct ChatTextCellModel: ChatCellUserDataLike {
     var maxFragmentsWidth: CGFloat { return fragmentSizes.reduce(0) { return max($0, $1.width) } }
     var totalFragmentsHeight: CGFloat { return fragmentSizes.reduce(0) { $0 + $1.height } }
     var id: String { return entity.id }
+    var isSingleText: Bool { return fragments.count == 1 }
 }
 
 struct ChatImageCellModel: ChatCellUserDataLike {
