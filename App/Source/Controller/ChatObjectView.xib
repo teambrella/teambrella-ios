@@ -53,7 +53,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHo-BD-xhI">
-                            <rect key="frame" x="52" y="25.5" width="31" height="14"/>
+                            <rect key="frame" x="52" y="25.5" width="31" height="15"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
                             <color key="textColor" red="0.42352941179999998" green="0.44705882349999998" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -65,7 +65,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YP-gL-Rik" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="82" y="43" width="23.5" height="11"/>
+                            <rect key="frame" x="82" y="43.5" width="23.5" height="11"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="9"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -91,9 +91,9 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rK-LI-YhF">
-                            <rect key="frame" x="275" y="0.0" width="50" height="79"/>
+                            <rect key="frame" x="309" y="0.0" width="70" height="79"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="50" id="ED2-Ag-M51"/>
+                                <constraint firstAttribute="width" constant="70" id="ED2-Ag-M51"/>
                             </constraints>
                             <state key="normal" image="chevronUp"/>
                             <connections>
@@ -145,7 +145,7 @@
                                                         <action selector="tapRightButton:" destination="-1" eventType="touchUpInside" id="hqM-PE-usZ"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rMb-Z5-rkV" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="rMb-Z5-rkV" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="23" width="30" height="20.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -192,27 +192,28 @@
                         <constraint firstItem="MYB-G5-BbW" firstAttribute="leading" secondItem="8MY-cC-Bco" secondAttribute="leading" constant="16" id="12G-ef-882"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MYB-G5-BbW" secondAttribute="bottom" constant="5" id="15d-Pj-OnK"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="top" secondItem="8MY-cC-Bco" secondAttribute="top" constant="8" id="1Ub-ll-bXn"/>
+                        <constraint firstItem="8rK-LI-YhF" firstAttribute="width" relation="greaterThanOrEqual" secondItem="36L-C4-ED1" secondAttribute="width" id="1p3-Pw-SQM"/>
                         <constraint firstItem="kHo-BD-xhI" firstAttribute="top" secondItem="MYB-G5-BbW" secondAttribute="top" id="4U9-n4-Ygi"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7YP-gL-Rik" secondAttribute="trailing" constant="8" id="7MR-rt-lQ4"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kHo-BD-xhI" secondAttribute="trailing" constant="8" id="7yY-KF-xdU"/>
                         <constraint firstAttribute="trailing" secondItem="c1y-bp-9dQ" secondAttribute="trailing" id="8Hh-Gp-F8W"/>
                         <constraint firstItem="F9g-le-cSH" firstAttribute="centerY" secondItem="7YP-gL-Rik" secondAttribute="centerY" constant="-1" id="9uG-MP-zqe"/>
-                        <constraint firstItem="F9g-le-cSH" firstAttribute="bottom" secondItem="MYB-G5-BbW" secondAttribute="bottom" constant="2" id="9wa-ib-UY3"/>
+                        <constraint firstItem="F9g-le-cSH" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MYB-G5-BbW" secondAttribute="bottom" constant="2" id="9wa-ib-UY3"/>
                         <constraint firstItem="c1y-bp-9dQ" firstAttribute="top" secondItem="8MY-cC-Bco" secondAttribute="top" id="BxJ-FP-7I1"/>
                         <constraint firstAttribute="bottom" secondItem="c1y-bp-9dQ" secondAttribute="bottom" id="K6i-MX-Xmu"/>
-                        <constraint firstItem="8rK-LI-YhF" firstAttribute="centerX" secondItem="c1y-bp-9dQ" secondAttribute="centerX" id="Kby-Q8-H02"/>
                         <constraint firstItem="MYB-G5-BbW" firstAttribute="centerY" secondItem="8MY-cC-Bco" secondAttribute="centerY" id="Lpl-Hn-DL3"/>
                         <constraint firstAttribute="bottom" secondItem="vhP-W7-ibO" secondAttribute="bottom" constant="8" id="MRj-66-XS9"/>
                         <constraint firstItem="MYB-G5-BbW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8MY-cC-Bco" secondAttribute="top" constant="5" id="Pd4-vj-G1H"/>
-                        <constraint firstItem="kHo-BD-xhI" firstAttribute="bottom" secondItem="MYB-G5-BbW" secondAttribute="centerY" id="TIS-gl-pKm"/>
+                        <constraint firstItem="kHo-BD-xhI" firstAttribute="bottom" secondItem="MYB-G5-BbW" secondAttribute="centerY" constant="1" id="TIS-gl-pKm"/>
                         <constraint firstItem="8rK-LI-YhF" firstAttribute="centerY" secondItem="c1y-bp-9dQ" secondAttribute="centerY" id="TfO-wu-eKy"/>
                         <constraint firstItem="F9g-le-cSH" firstAttribute="leading" secondItem="MYB-G5-BbW" secondAttribute="trailing" constant="8" id="WOT-eE-08h"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="centerY" secondItem="8MY-cC-Bco" secondAttribute="centerY" id="dLX-Xv-jaU"/>
                         <constraint firstItem="kHo-BD-xhI" firstAttribute="leading" secondItem="MYB-G5-BbW" secondAttribute="trailing" constant="8" id="m9N-k5-Jqz"/>
-                        <constraint firstItem="F9g-le-cSH" firstAttribute="top" secondItem="kHo-BD-xhI" secondAttribute="bottom" id="pER-pT-PYf"/>
+                        <constraint firstItem="F9g-le-cSH" firstAttribute="top" secondItem="kHo-BD-xhI" secondAttribute="bottom" constant="-1" id="pER-pT-PYf"/>
                         <constraint firstItem="8rK-LI-YhF" firstAttribute="bottom" secondItem="c1y-bp-9dQ" secondAttribute="bottom" id="pdd-Eg-CVa"/>
                         <constraint firstItem="8rK-LI-YhF" firstAttribute="top" secondItem="c1y-bp-9dQ" secondAttribute="top" id="peY-P5-K1C"/>
                         <constraint firstItem="7YP-gL-Rik" firstAttribute="leading" secondItem="F9g-le-cSH" secondAttribute="trailing" constant="4" id="sJs-3j-qyH"/>
+                        <constraint firstItem="8rK-LI-YhF" firstAttribute="centerX" secondItem="36L-C4-ED1" secondAttribute="centerX" id="xMA-z7-EGi"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="trailing" secondItem="c1y-bp-9dQ" secondAttribute="leading" id="ymh-o5-NL1"/>
                     </constraints>
                     <connections>

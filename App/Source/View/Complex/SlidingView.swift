@@ -30,7 +30,7 @@ class SlidingView: UIView, XIBInitable {
     @IBOutlet var objectViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var votingViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var votingViewHeightConstraint: NSLayoutConstraint!
-
+    
     weak var delegate: SlidingViewDelegate?
     
     override init(frame: CGRect) {
@@ -65,8 +65,7 @@ class SlidingView: UIView, XIBInitable {
             self.objectView.showChevron()
         }
         delegate?.sliding(view: self,
-                          changeContentHeight: objectViewHeightConstraint.constant
-                            + votingViewHeightConstraint.constant)
+                          changeContentHeight: objectViewHeightConstraint.constant + votingViewHeightConstraint.constant)
     }
     
     func hideObjectView() {

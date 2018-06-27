@@ -21,8 +21,8 @@ protocol ChatObjectViewDelegate: class {
     func chatObjectWasTapped(view: ChatObjectView)
 }
 
-struct Constant {
-    static let smallImageViewSize: CGFloat = 28
+private struct Constant {
+    static let smallImageViewSize: CGFloat = 32
     static let normalImageViewSize: CGFloat = 38
     static let claimObjectViewCornerRadius: CGFloat = 3
     static let smallImageViewOffset: CGFloat = 12
@@ -95,7 +95,7 @@ class ChatObjectView: UIView, XIBInitable {
         chevronButton.alpha = 0
         voteContainer.alpha = 1
         chevronButton.imageView?.contentMode = .scaleAspectFit
-        chevronButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        chevronButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
     }
     
     func setup(with chatModel: ChatModel?) {
@@ -112,14 +112,16 @@ class ChatObjectView: UIView, XIBInitable {
                                     team: teamPart)
         }
     }
-    
+
     func showChevron() {
+        rightButton.isHidden = true
         chevronButton.alpha = 1
         voteContainer.alpha = 0
     }
-    
+
     func showVoteContainer() {
         voteContainer.alpha = 1
+        rightButton.isHidden = false
         chevronButton.alpha = 0
     }
     
