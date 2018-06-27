@@ -61,9 +61,7 @@ def pods_bundle
 end
 
 target 'Surilla' do
-
   pods_bundle
-
 end
 
 target 'Teambrella' do
@@ -73,19 +71,14 @@ target 'Teambrella' do
         inherit! :search_paths
 
     end
-
 end
 
 target 'SurillaNotification' do
-
   notification_swift_pods
-
 end
 
 target 'TeambrellaNotification' do
-
   notification_swift_pods
-
 end
 
 #post_install do |installer|

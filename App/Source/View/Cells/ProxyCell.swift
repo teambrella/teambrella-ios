@@ -31,8 +31,13 @@ class ProxyCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var leftBar: ScaleBar!
     @IBOutlet var middleBar: ScaleBar!
     @IBOutlet var rightBar: ScaleBar!
-    @IBOutlet var dragHandleView: DragHandleView!
-    
+    @IBOutlet var dragView: UIView!
+    lazy var panGesture: UIPanGestureRecognizer = {
+        let gesture = UIPanGestureRecognizer()
+        dragView.addGestureRecognizer(gesture)
+        return gesture
+    }()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         ViewDecorator.roundedEdges(for: self)
@@ -40,11 +45,6 @@ class ProxyCell: UICollectionViewCell, XIBInitableCell {
         numberLabel.layer.borderWidth = 1
         numberLabel.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         numberLabel.layer.cornerRadius = 7.5
-        
     }
 
-}
-
-class DragHandleView: UIImageView {
-    
 }
