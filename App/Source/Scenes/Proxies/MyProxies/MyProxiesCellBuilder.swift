@@ -24,6 +24,7 @@ import Foundation
 struct MyProxiesCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: ProxyCellModel) {
         if let cell = cell as? ProxyCell {
+
             cell.avatarView.showAvatar(string: model.avatarString)
             cell.nameLabel.text = model.name
             if let address = model.address {
