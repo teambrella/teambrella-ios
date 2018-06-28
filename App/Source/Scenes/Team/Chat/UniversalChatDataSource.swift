@@ -23,6 +23,19 @@ import Foundation
 
 enum UniversalChatType {
     case privateChat, application, claim, discussion
+
+    static func with(itemType: ItemType) -> UniversalChatType {
+        switch itemType {
+        case .claim:
+            return .claim
+        case .privateChat:
+            return .privateChat
+        case .teammate:
+            return .application
+        default:
+            return .discussion
+        }
+    }
 }
 
 final class UniversalChatDatasource {
@@ -126,6 +139,9 @@ final class UniversalChatDatasource {
             return .claim
         case is TeammateChatStrategy:
             return .application
+        case let strategy as FeedChatStrategy:
+            let type = strategy.feedEntity.itemType
+            return UniversalChatType.with(itemType: type)
         default:
             break
         }
