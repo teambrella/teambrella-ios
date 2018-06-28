@@ -240,8 +240,7 @@ struct TeammateCellBuilder {
                 right.badgeLabel.rightInset = CGFloat(4)
             } else {
                 let sign = (teammate.basic.risk - teammate.basic.averageRisk) * 100 > 0 ? "+" : "-"
-                right.badgeLabel.text = String(stringInterpolation: "Team.VotingRiskVC.avg".localized,
-                                               " ", "\(sign)", "\(avg)", "%")
+                right.badgeLabel.text = "Team.VotingRiskVC.avg".localized + " \(sign)\(avg)%"
             }
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
