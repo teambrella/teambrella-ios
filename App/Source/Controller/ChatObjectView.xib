@@ -58,7 +58,7 @@
                             <color key="textColor" red="0.42352941179999998" green="0.44705882349999998" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="F9g-le-cSH" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="F9g-le-cSH" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
                             <rect key="frame" x="52" y="39.5" width="25.5" height="16"/>
                             <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
                             <nil key="textColor"/>
@@ -100,7 +100,7 @@
                                 <action selector="tapChevron:" destination="-1" eventType="touchUpInside" id="lrG-4a-vHf"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="c1y-bp-9dQ">
+                        <view contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="753" translatesAutoresizingMaskIntoConstraints="NO" id="c1y-bp-9dQ">
                             <rect key="frame" x="225" y="0.0" width="150" height="79"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="lI6-Lm-oQA">

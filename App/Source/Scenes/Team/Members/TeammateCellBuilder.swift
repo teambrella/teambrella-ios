@@ -235,12 +235,12 @@ struct TeammateCellBuilder {
             let avg = String.truncatedNumber(abs(teammate.basic.risk - teammate.basic.averageRisk) * 100)
 
             if teammate.basic.risk - teammate.basic.averageRisk == 0 {
-                right.badgeLabel.text = "AVG" // + avg + "%"
+                right.badgeLabel.text = "Team.VotingRiskVC.avg".localized
                 right.badgeLabel.leftInset = CGFloat(4)
                 right.badgeLabel.rightInset = CGFloat(4)
             } else {
                 let sign = (teammate.basic.risk - teammate.basic.averageRisk) * 100 > 0 ? "+" : "-"
-                right.badgeLabel.text = "AVG " + sign + avg + "%"
+                right.badgeLabel.text = "Team.VotingRiskVC.avg".localized + " " + sign + avg + "%"
             }
             right.isBadgeVisible = true
             right.currencyLabel.text = nil

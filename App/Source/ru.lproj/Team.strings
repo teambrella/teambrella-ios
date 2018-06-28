@@ -212,3 +212,5 @@
 "Team.Chat.ClaimPaid.ShareText.car" = "Мы помогли участнику оплатить ремонт машины. Неплохо, да?";
 "Team.Chat.ClaimPaid.ShareText.bike" = "Мы возместили участнику стоимость украденного велосипеда. Неплохо, да?";
 "Team.Chat.ClaimPaidCell.buttonTitle" = "Поделиться с друзьями";
+
+"Team.VotingRiskVC.avg"                          = "средн.";

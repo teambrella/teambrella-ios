@@ -148,11 +148,11 @@ final class TeammateProfileVC: UIViewController, Routable {
             guard averageRisk != 0 else { return }
             
             let delta = risk - averageRisk
-            var text = "AVG\n"
+            var text = "Team.VotingRiskVC.avg".localized + "\n"
             text += delta > 0.0 ? "+" : ""
             let percent = 100 * delta / averageRisk
             let amount = String(format: "%.0f", percent)
-            label.text =  text + amount + "%"
+            label.text = text + amount + "%"
         }
         
         text(for: cell.yourVoteBadgeLabel, risk: risk)
