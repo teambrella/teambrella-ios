@@ -107,6 +107,7 @@ class InputAccessoryView: UIView {
         rightButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         rightButton.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         rightButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        rightButton.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor).isActive = true
         
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.leftAnchor.constraint(equalTo: leftButton.rightAnchor).isActive = true
