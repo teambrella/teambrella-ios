@@ -65,7 +65,8 @@ class SlidingView: UIView, XIBInitable {
             self.objectView.showChevron()
         }
         delegate?.sliding(view: self,
-                          changeContentHeight: objectViewHeightConstraint.constant + votingViewHeightConstraint.constant)
+                          changeContentHeight: objectViewHeightConstraint.constant
+                            + votingViewHeightConstraint.constant)
     }
     
     func hideObjectView() {
