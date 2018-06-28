@@ -300,7 +300,7 @@ class ChatVariousContentCell: UICollectionViewCell, ChatUserDataCell {
             rightLabel.text = rate
             rightLabel.sizeToFit()
             rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - Constant.timeInset,
-                                        y: leftLabel.frame.minY + rightLabel.frame.height / 2)
+                                        y: leftLabel.frame.maxY - rightLabel.frame.height / 2 - 0.5)
             if leftLabel.frame.maxX > rightLabel.frame.minX - 8 {
                 leftLabel.frame.size.width -= leftLabel.frame.maxX - (rightLabel.frame.minX - Constant.timeInset)
             }
