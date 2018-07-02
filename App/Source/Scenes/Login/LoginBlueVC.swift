@@ -31,8 +31,6 @@ final class LoginBlueVC: UIViewController {
     @IBOutlet var tryDemoButton: UIButton!
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var confetti: SKView!
-    
-    @IBOutlet var qrCodeView: UIImageView!
 
     var isEmitterAdded: Bool = false
     var didTapDemo: Bool = false
@@ -63,22 +61,6 @@ final class LoginBlueVC: UIViewController {
         centerLabel.addGestureRecognizer(secretRecognizer)
         continueWithFBButton.addGestureRecognizer(clearAllRecognizer)
         animateCenterLabel()
-        setupQRCodeView()
-    }
-
-    private func setupQRCodeView() {
-        let manager = QRCodeManager()
-        manager.size = qrCodeView.frame.size
-        qrCodeView.image = manager.code(from: "https://teambrella.com")
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapQRCode))
-        qrCodeView.addGestureRecognizer(tap)
-    }
-
-    @objc
-    private func tapQRCode() {
-        Statistics.log(event: .tapQRCodeLogin)
-        service.router.showCodeCapture(in: self, delegate: self, type: .privateKey)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -278,26 +260,5 @@ Are you sure you want to completely remove your private key from this device?
         service.keyStorage.setToRealUser()
         performSegue(withIdentifier: "unwindToInitial", sender: user)
     }
-
-    private func newPrivateKeySet(privateKey: String) {
-        service.keyStorage.saveNewPrivateKey(string: privateKey)
-        service.keyStorage.setToRealUser()
-        self.performSegue(withIdentifier: "unwindToInitial", sender: self)
-    }
     
-}
-
-extension LoginBlueVC: CodeCaptureDelegate {
-    func codeCapture(controller: CodeCaptureVC, didCapture: String, type: QRCodeType) {
-        if type == .bitcoinWiF {
-            controller.close(cancelled: false)
-            self.newPrivateKeySet(privateKey: didCapture)
-        } else {
-            print("Wrong type: \(type)")
-        }
-    }
-
-    func codeCaptureWillClose(controller: CodeCaptureVC, cancelled: Bool) {
-
-    }
 }

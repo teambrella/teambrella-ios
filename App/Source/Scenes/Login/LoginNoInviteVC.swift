@@ -30,6 +30,7 @@ final class LoginNoInviteVC: UIViewController {
     @IBOutlet private var tryDemoButton: UIButton!
     @IBOutlet private var supportButton: UIButton!
     @IBOutlet private var requestInviteButton: UIButton!
+    @IBOutlet var qrCodeButton: BorderedButton!
     
     var error: TeambrellaError?
     
@@ -44,6 +45,8 @@ final class LoginNoInviteVC: UIViewController {
         tryDemoButton.setTitle("Login.LoginNoInviteVC.tryDemoButton".localized, for: .normal)
         supportButton.setTitle("Login.LoginNoInviteVC.mailToSupport".localized, for: .normal)
         requestInviteButton.setTitle("Login.LoginNoInviteVC.requestInvitationButton".localized, for: .normal)
+
+        qrCodeButton.setTitle("Login.QRCodeButton".localized, for: .normal)
         
         guard let error = error else {
             inviteOnlySetup()
@@ -96,6 +99,11 @@ final class LoginNoInviteVC: UIViewController {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
+    @IBAction func tapQRCode(_ sender: UIButton) {
+        Statistics.log(event: .tapQRCodeLogin)
+        service.router.showCodeCapture(in: self, delegate: self, type: .privateKey)
+    }
+
     // MARK: Private
     
     private func inviteOnlySetup() {
@@ -122,6 +130,12 @@ final class LoginNoInviteVC: UIViewController {
         lowerLabel.text = "Login.LoginNoInviteVC.pendingApplication.details".localized
         supportButton.isHidden = false
     }
+
+    private func newPrivateKeySet(privateKey: String) {
+        service.keyStorage.saveNewPrivateKey(string: privateKey)
+        service.keyStorage.setToRealUser()
+        self.performSegue(withIdentifier: "unwindToInitial", sender: self)
+    }
     
 }
 
@@ -144,5 +158,21 @@ extension LoginNoInviteVC: MFMailComposeViewControllerDelegate {
         
         controller.dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: false)
+    }
+}
+
+// MARK: CodeCaptureDelegate
+extension LoginNoInviteVC: CodeCaptureDelegate {
+    func codeCapture(controller: CodeCaptureVC, didCapture: String, type: QRCodeType) {
+        if type == .bitcoinWiF {
+            controller.close(cancelled: false)
+            self.newPrivateKeySet(privateKey: didCapture)
+        } else {
+            print("Wrong type: \(type)")
+        }
+    }
+
+    func codeCaptureWillClose(controller: CodeCaptureVC, cancelled: Bool) {
+
     }
 }
