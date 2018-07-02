@@ -159,7 +159,7 @@ struct TeambrellaStyle {
         currencyNormal.textColor = .darkSkyBlue
         
         let badge = BadgeLabel.appearance()
-        badge.font = UIFont.teambrella(size: 10)
+        badge.font = UIFont.teambrella(size: 8)
         badge.textColor = .white
         badge.backgroundColor = .lightBlue
         
