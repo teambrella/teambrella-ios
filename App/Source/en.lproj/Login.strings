@@ -26,4 +26,4 @@
 
 "Login.LoginNoInviteVC.pendingApplication.title"   = "Your application is not complete";
 "Login.LoginNoInviteVC.pendingApplication.details" = "Please, check missing points and finalise it. We are waiting for you! Feel free to contact us if you have any questions.";
-
+"Login.QRCodeButton"                               = "Log with QR code";

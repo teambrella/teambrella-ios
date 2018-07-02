@@ -6,23 +6,24 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Login.LoginBlueVC.centerLabel"          = "No es un seguro. Es mucho mejor.";
-"Login.LoginBlueVC.continueWithFBButton" = "Continuar con Facebook";
-"Login.LoginBlueVC.tryDemoButton"        = "Probar Demo";
-"Login.LoginNoInviteVC.centerLabel"      = "No es un seguro. Es mucho mejor.";
-"Login.LoginNoInviteVC.upperLabel"       = "¡Actualmente Teambrella funciona sólo con invitación!";
-"Login.LoginNoInviteVC.lowerLabel"       = "¡Hola, actualmente Teambrella funciona sólo con invitación. Por favor, sigue un enlace de su invitacion para continuar, o prueba demo.";
-"Login.LoginNoInviteVC.tryDemoButton"    = "Probar Demo";
+"Login.LoginBlueVC.centerLabel"                    = "No es un seguro. Es mucho mejor.";
+"Login.LoginBlueVC.continueWithFBButton"           = "Continuar con Facebook";
+"Login.LoginBlueVC.tryDemoButton"                  = "Probar Demo";
+"Login.LoginNoInviteVC.centerLabel"                = "No es un seguro. Es mucho mejor.";
+"Login.LoginNoInviteVC.upperLabel"                 = "¡Actualmente Teambrella funciona sólo con invitación!";
+"Login.LoginNoInviteVC.lowerLabel"                 = "¡Hola, actualmente Teambrella funciona sólo con invitación. Por favor, sigue un enlace de su invitacion para continuar, o prueba demo.";
+"Login.LoginNoInviteVC.tryDemoButton"              = "Probar Demo";
 
-"Login.LoginNoInviteVC.requestInvitationButton" = "Solicitar una Invitación";
-"Login.LoginNoInviteVC.mailToSupport" = "Contactar con soporte";
+"Login.LoginNoInviteVC.requestInvitationButton"    = "Solicitar una Invitación";
+"Login.LoginNoInviteVC.mailToSupport"              = "Contactar con soporte";
 
-"Login.LoginNoInviteVC.almostReady.title" = "Hola de nuevo!";
-"Login.LoginNoInviteVC.almostReady.details" = "Estamos trabajando como burros para iniciar tu equipo. Muy pronto estará lista para funcionar.";
+"Login.LoginNoInviteVC.almostReady.title"          = "Hola de nuevo!";
+"Login.LoginNoInviteVC.almostReady.details"        = "Estamos trabajando como burros para iniciar tu equipo. Muy pronto estará lista para funcionar.";
 
-"Login.LoginNoInviteVC.accessDenied.title" = "Lo sentimos";
-"Login.LoginNoInviteVC.accessDenied.details" = "De momento no puedes connectar con Teambrella. Por favor, contacta con nuestro soporte";
+"Login.LoginNoInviteVC.accessDenied.title"         = "Lo sentimos";
+"Login.LoginNoInviteVC.accessDenied.details"       = "De momento no puedes connectar con Teambrella. Por favor, contacta con nuestro soporte";
 
-"Login.LoginNoInviteVC.pendingApplication.title" = "Tu solicitud todavía no está completa";
+"Login.LoginNoInviteVC.pendingApplication.title"   = "Tu solicitud todavía no está completa";
 "Login.LoginNoInviteVC.pendingApplication.details" = "Por favor, verifica las puntas que faltan y finalízala. Te esperamos! Contáctanos si tienes alguna pregunta.";
+"Login.QRCodeButton"                               = "iniciar sesión con código qr";
 
