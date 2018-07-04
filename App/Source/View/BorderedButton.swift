@@ -42,7 +42,7 @@ class BorderedButton: UIButton {
         }
     }
     
-    @IBInspectable var shadowColor: UIColor = #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) {
+    @IBInspectable var shadowColor: UIColor = #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 0.2) {
         didSet {
             setup()
         }
@@ -64,7 +64,7 @@ class BorderedButton: UIButton {
         layer.borderColor = borderColor.cgColor
         ViewDecorator.shadow(for: self,
                              color: shadowColor,
-                             opacity: 0.2,
+                             opacity: 1,
                              radius: 4,
                              offset: CGSize(width: 0, height: 4))
         if hasGradientBackground {
