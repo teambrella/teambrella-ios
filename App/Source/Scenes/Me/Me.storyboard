@@ -179,6 +179,7 @@
                                                     </label>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAH-4g-Hs4" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="134" width="343" height="40"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="V9i-9H-hTl"/>
                                                         </constraints>
@@ -656,6 +657,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgR-AT-FM0" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="20" y="103" width="303" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="eSZ-BL-z6d"/>
                                         </constraints>
@@ -759,6 +761,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5d-te-ToE" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="20" y="527" width="335" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DQZ-by-wx1"/>
                                 </constraints>
@@ -772,6 +775,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fG6-bC-DOX" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="20" y="587" width="335" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Pxr-QF-SHP"/>
                                 </constraints>
@@ -785,6 +789,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g03-1U-V3o" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="20" y="467" width="335" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="d7A-P2-cuy"/>
                                 </constraints>

@@ -42,6 +42,12 @@ class BorderedButton: UIButton {
         }
     }
     
+    @IBInspectable var shadowColor: UIColor = #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) {
+        didSet {
+            setup()
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
@@ -53,16 +59,21 @@ class BorderedButton: UIButton {
     }
     
     func setup() {
-        layer.masksToBounds = true
         layer.cornerRadius = 3
         layer.borderWidth = 1
         layer.borderColor = borderColor.cgColor
+        ViewDecorator.shadow(for: self,
+                             color: shadowColor,
+                             opacity: 0.2,
+                             radius: 4,
+                             offset: CGSize(width: 0, height: 4))
         if hasGradientBackground {
             let gradientView = GradientView(frame: self.bounds)
             gradientView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
             gradientView.topColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
             gradientView.bottomColor = #colorLiteral(red: 0.4078431373, green: 0.4549019608, blue: 0.9058823529, alpha: 1)
             layer.borderColor = #colorLiteral(red: 0.2862745098, green: 0.3490196078, blue: 0.9019607843, alpha: 1)
+            layer.masksToBounds = true
             gradientView.isUserInteractionEnabled = false
             insertSubview(gradientView, at: 0)
         }
