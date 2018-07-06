@@ -364,9 +364,13 @@ extension UniversalChatDatasource {
             models.append(model)
             return
         }
-        
+
+        // find the place in array where to insert new item
+        if !models.isEmpty && lastInsertionIndex >= models.count {
+            lastInsertionIndex = models.count - 1
+        }
+
         while lastInsertionIndex > 0
-            && lastInsertionIndex < models.count
             && models[lastInsertionIndex].date > model.date {
                 lastInsertionIndex -= 1
         }
@@ -374,7 +378,8 @@ extension UniversalChatDatasource {
             && models[lastInsertionIndex].date <= model.date {
                 lastInsertionIndex += 1
         }
-        
+
+        // insert new item in the array
         let previous = lastInsertionIndex > 0 ? models[lastInsertionIndex - 1] : nil
         let next = lastInsertionIndex < models.count ? models[lastInsertionIndex] : nil
         if let previous = previous, previous.id == model.id {
@@ -387,6 +392,7 @@ extension UniversalChatDatasource {
             models.append(model)
         }
         addSeparatorIfNeeded()
+
     }
     
     private func removeTemporaryIfNeeded() {
