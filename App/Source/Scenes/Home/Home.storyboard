@@ -80,7 +80,6 @@
                                 <rect key="frame" x="0.0" y="106.5" width="375" height="190"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" placeholder="YES" id="GSi-9C-tfC"/>
                                     <constraint firstAttribute="height" priority="250" constant="190" id="VlE-R6-cRX"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="24" minimumInteritemSpacing="24" id="S9y-Zs-4hp">
@@ -169,13 +168,13 @@
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OCk-hp-xSl">
-                                                            <rect key="frame" x="16" y="104.5" width="293" height="30"/>
+                                                            <rect key="frame" x="16" y="105.5" width="293" height="29"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLa-Rg-RZk">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="253" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="253" height="29"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Just discovered a new garage in my neighborhood that is really good and i would like to buy it for sure" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTU-MO-gZV" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="253" height="30"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="253" height="29"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -190,7 +189,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UyN-7e-WUG" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                                                    <rect key="frame" x="258" y="4" width="22" height="22"/>
+                                                                    <rect key="frame" x="258" y="3.5" width="22" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="22" id="H9v-Ou-kgr"/>
                                                                         <constraint firstAttribute="width" secondItem="UyN-7e-WUG" secondAttribute="height" multiplier="1:1" id="Pfb-7M-5Lm"/>
@@ -206,7 +205,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="1RN-Vg-g5G">
-                                                                    <rect key="frame" x="285" y="8.5" width="8" height="13"/>
+                                                                    <rect key="frame" x="285" y="8" width="8" height="13"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="8" id="WKe-ei-NRG"/>
                                                                         <constraint firstAttribute="height" constant="13" id="oO8-pS-otp"/>
@@ -224,7 +223,6 @@
                                                         <constraint firstAttribute="trailing" secondItem="OCk-hp-xSl" secondAttribute="trailing" constant="16" id="LDt-RP-DCZ"/>
                                                         <constraint firstAttribute="trailing" secondItem="OD5-cP-eZ5" secondAttribute="trailing" id="Nzl-ju-DM4"/>
                                                         <constraint firstItem="Xgi-6B-dc7" firstAttribute="leading" secondItem="dOc-vE-rr1" secondAttribute="leading" id="QKW-LL-s6J"/>
-                                                        <constraint firstItem="OCk-hp-xSl" firstAttribute="top" secondItem="OD5-cP-eZ5" secondAttribute="bottom" constant="2" placeholder="YES" id="WHY-fY-dYr"/>
                                                         <constraint firstItem="OD5-cP-eZ5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oDi-TS-IgV" secondAttribute="bottom" priority="750" constant="8" id="bxu-9W-0bZ"/>
                                                         <constraint firstItem="dOc-vE-rr1" firstAttribute="bottom" secondItem="oDi-TS-IgV" secondAttribute="centerY" id="cF4-oW-jZN"/>
                                                         <constraint firstItem="OCk-hp-xSl" firstAttribute="leading" secondItem="I7o-eI-ssZ" secondAttribute="leading" constant="16" id="d2X-iz-zEd"/>
