@@ -47,7 +47,6 @@ enum TeambrellaResponseType {
     case proxyRatingList(ProxyRatingEntity)
     
     case privateList([PrivateChatUser])
-    case privateChat([ChatEntity])
     case withdrawTransactions(WithdrawChunk)
     case mute(Bool)
     

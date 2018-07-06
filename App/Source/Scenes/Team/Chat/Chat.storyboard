@@ -11,21 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="2Qg-rY-GeS">
-            <objects>
-                <viewController id="54e-6U-Kgh" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="E6c-kY-263">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="imf-8U-BtX"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YO6-Uk-jgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1399" y="-610"/>
-        </scene>
         <!--Universal ChatVC-->
         <scene sceneID="6PN-ib-ZQ0">
             <objects>
@@ -86,21 +71,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KI2-CH-Jbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1383.2" y="118.29085457271366"/>
-        </scene>
-        <!--ChatVC-->
-        <scene sceneID="3nU-hc-6h4">
-            <objects>
-                <viewController storyboardIdentifier="ChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yTT-5r-fSD" customClass="ChatVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aOZ-YK-GOS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="Lev-pS-Gyc"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xrJ-lg-sBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-430" y="120"/>
         </scene>
         <!--MuteVC-->
         <scene sceneID="NdT-BP-BHG">

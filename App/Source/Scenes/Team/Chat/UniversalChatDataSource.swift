@@ -470,9 +470,6 @@ extension UniversalChatDatasource {
         switch response {
         case let .chat(model):
             processCommonChat(model: model, isPrevious: isPrevious)
-        case let .privateChat(messages):
-            processPrivateChat(messages: messages, isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
-            
         case let .newPost(post):
             let models = createCellModels(from: [post], isTemporary: true)
             addCellModels(models: models)
@@ -514,20 +511,6 @@ extension UniversalChatDatasource {
         isClaimPaidModelAdded = true
     }
 
-    private func processPrivateChat(messages: [ChatEntity], isPrevious: Bool, isMyNewMessage: Bool) {
-        if isMyNewMessage {
-            clear()
-        }
-        addModels(models: messages, isPrevious: isPrevious, chatModel: nil)
-        if messages.isEmpty {
-            if isPrevious {
-                hasPrevious = false
-            } else {
-                hasNext = false
-            }
-        }
-    }
-    
     private func createCellModels(from entities: [ChatEntity], isTemporary: Bool) -> [ChatCellModel] {
         cellModelBuilder.font = font
         cellModelBuilder.width = cloudWidth - labelHorizontalInset * 2
