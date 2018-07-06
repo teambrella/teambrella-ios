@@ -68,3 +68,4 @@
 "General.unitedFormat.my" = "%1$@ %2$@";
 
 "General.ok" = "OK";
+"General.longAgo" = "hace mucho tiempo";
