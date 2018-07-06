@@ -72,7 +72,7 @@ struct SODManager {
     private func isProperDateToShow(date: Date, sodForKey key: SimpleStorage.StorageKey) -> Bool {
         // no need to show notification more than once in 3 days
         if let lastShownDate = storage.date(forKey: key),
-            date < lastShownDate.add(components: [.day: 3]) {
+            date < lastShownDate.dateByAdding(3, .day).date {
             return false
         }
         return true
