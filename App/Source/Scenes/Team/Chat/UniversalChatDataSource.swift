@@ -364,9 +364,13 @@ extension UniversalChatDatasource {
             models.append(model)
             return
         }
-        
+
+        // find the place in array where to insert new item
+        if !models.isEmpty && lastInsertionIndex >= models.count {
+            lastInsertionIndex = models.count - 1
+        }
+
         while lastInsertionIndex > 0
-            && lastInsertionIndex < models.count
             && models[lastInsertionIndex].date > model.date {
                 lastInsertionIndex -= 1
         }
@@ -374,7 +378,8 @@ extension UniversalChatDatasource {
             && models[lastInsertionIndex].date <= model.date {
                 lastInsertionIndex += 1
         }
-        
+
+        // insert new item in the array
         let previous = lastInsertionIndex > 0 ? models[lastInsertionIndex - 1] : nil
         let next = lastInsertionIndex < models.count ? models[lastInsertionIndex] : nil
         if let previous = previous, previous.id == model.id {
@@ -387,6 +392,7 @@ extension UniversalChatDatasource {
             models.append(model)
         }
         addSeparatorIfNeeded()
+
     }
     
     private func removeTemporaryIfNeeded() {
@@ -464,9 +470,6 @@ extension UniversalChatDatasource {
         switch response {
         case let .chat(model):
             processCommonChat(model: model, isPrevious: isPrevious)
-        case let .privateChat(messages):
-            processPrivateChat(messages: messages, isPrevious: isPrevious, isMyNewMessage: isMyNewMessage)
-            
         case let .newPost(post):
             let models = createCellModels(from: [post], isTemporary: true)
             addCellModels(models: models)
@@ -508,20 +511,6 @@ extension UniversalChatDatasource {
         isClaimPaidModelAdded = true
     }
 
-    private func processPrivateChat(messages: [ChatEntity], isPrevious: Bool, isMyNewMessage: Bool) {
-        if isMyNewMessage {
-            clear()
-        }
-        addModels(models: messages, isPrevious: isPrevious, chatModel: nil)
-        if messages.isEmpty {
-            if isPrevious {
-                hasPrevious = false
-            } else {
-                hasNext = false
-            }
-        }
-    }
-    
     private func createCellModels(from entities: [ChatEntity], isTemporary: Bool) -> [ChatCellModel] {
         cellModelBuilder.font = font
         cellModelBuilder.width = cloudWidth - labelHorizontalInset * 2
