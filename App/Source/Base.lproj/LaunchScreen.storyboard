@@ -48,7 +48,7 @@
                         <constraints>
                             <constraint firstItem="273-Iy-hCT" firstAttribute="top" secondItem="M9w-1E-1gH" secondAttribute="top" id="0Ud-X0-8am"/>
                             <constraint firstAttribute="trailing" secondItem="273-Iy-hCT" secondAttribute="trailing" id="3ss-IV-5dA"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="273-Iy-hCT" secondAttribute="bottom" id="BGS-W7-INp"/>
+                            <constraint firstAttribute="bottom" secondItem="273-Iy-hCT" secondAttribute="bottom" id="BGS-W7-INp"/>
                             <constraint firstItem="fpr-22-1Jp" firstAttribute="leading" secondItem="M9w-1E-1gH" secondAttribute="leading" constant="16" id="DlS-ez-oYN"/>
                             <constraint firstItem="273-Iy-hCT" firstAttribute="leading" secondItem="M9w-1E-1gH" secondAttribute="leading" id="FZZ-Lk-qxc"/>
                             <constraint firstAttribute="trailing" secondItem="273-Iy-hCT" secondAttribute="trailing" id="YfW-te-SAz"/>
