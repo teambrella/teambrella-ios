@@ -251,7 +251,6 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         
         let indexPath = IndexPath(row: middleCellRow, section: 0)
         guard let cell = collectionView.cellForItem(at: indexPath) as? VotingChartCell else { return }
-        
         collectionView.visibleCells.forEach { cell in
             if let cell = cell as? VotingChartCell {
                 if cell.centerLabel.text == "" || cell.centerLabel.text == nil {
@@ -267,7 +266,6 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
                 cell.layoutIfNeeded()
             }
         }
-        
         cell.topLabel.isHidden = false
         cell.isCentered = true
         
@@ -356,6 +354,7 @@ extension VotingRiskCell: UICollectionViewDelegate {
             cell.topLabel.layer.cornerRadius = 3
             cell.topLabel.layer.borderWidth = 1
             cell.topLabel.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+            colorizeCenterCell()
             //cell.column.isHidden = model.heightCoefficient == 0
         }
     }

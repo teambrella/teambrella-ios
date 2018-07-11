@@ -560,6 +560,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         updateAverages(cell: cell, risk: changedRisk)
         cell.pieChart.setupWith(remainingMinutes: dataSource.teammateLarge?.voting?.remainingMinutes ?? 0)
         cell.showYourNoVote(risk: changedRisk)
+        cell.colorizeCenterCell()
 
         let kind = UICollectionElementKindSectionHeader
         guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
