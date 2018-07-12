@@ -30,7 +30,7 @@ class SlidingView: UIView, XIBInitable {
     @IBOutlet var objectViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var votingViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var votingViewHeightConstraint: NSLayoutConstraint!
-
+    
     weak var delegate: SlidingViewDelegate?
     
     override init(frame: CGRect) {

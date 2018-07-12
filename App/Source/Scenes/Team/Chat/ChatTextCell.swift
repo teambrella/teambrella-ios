@@ -27,6 +27,7 @@ class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
         static let avatarContainerInset: CGFloat = 12
         static let avatarCloudInset: CGFloat = 3.5
         static let textInset: CGFloat = 8
+        static let labelToTextVerticalInset: CGFloat = 4
         static let timeInset: CGFloat = 8
         static let auxillaryLabelHeight: CGFloat = 20
         static let leftLabelFont = UIFont.teambrella(size: 12)
@@ -103,11 +104,15 @@ class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
     }
 
     var cloudInsetX: CGFloat {
-        return isMy
-            ? Constant.avatarContainerInset + Constant.avatarCloudInset
-            : avatarView.isHidden
-            ? Constant.avatarContainerInset + Constant.avatarCloudInset
-            : Constant.avatarContainerInset + Constant.avatarWidth + Constant.avatarCloudInset
+        if isMy {
+            return avatarView.isHidden
+            ? Constant.avatarCloudInset
+            : Constant.avatarContainerInset + Constant.avatarCloudInset
+        } else {
+            return avatarView.isHidden
+                ? Constant.avatarCloudInset
+                : Constant.avatarContainerInset + Constant.avatarWidth + Constant.avatarCloudInset
+        }
     }
 
     var cloudBodyMinX: CGFloat {
@@ -294,11 +299,18 @@ class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
     }
 
     private func setupLeftLabel(name: Name, baseFrame: CGRect) {
+        if name.isEmpty {
+            leftLabel.text = nil
+            leftLabel.frame = .zero
+            leftLabel.center = CGPoint(x: cloudBodyMinX + Constant.textInset,
+                                       y: Constant.textInset - Constant.labelToTextVerticalInset)
+        } else {
         leftLabel.frame = baseFrame
         leftLabel.text = name.entire
         leftLabel.sizeToFit()
         leftLabel.center = CGPoint(x: cloudBodyMinX + leftLabel.frame.width / 2 + Constant.textInset,
                                    y: leftLabel.frame.height / 2 + Constant.textInset)
+        }
     }
 
     private func setupRightLabel(rateText: String?, baseFrame: CGRect) {
@@ -308,7 +320,7 @@ class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
             rightLabel.text = rate
             rightLabel.sizeToFit()
             rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - Constant.timeInset,
-                                        y: leftLabel.frame.minY + rightLabel.frame.height / 2)
+                                        y: leftLabel.frame.maxY - rightLabel.frame.height / 2 - 0.5)
             if leftLabel.frame.maxX > rightLabel.frame.minX - 8 {
                 leftLabel.frame.size.width -= leftLabel.frame.maxX - (rightLabel.frame.minX - Constant.timeInset)
             }
@@ -340,7 +352,7 @@ class ChatTextCell: UICollectionViewCell, ChatUserDataCell {
     }
 
     private func updateTextView(for text: String, size: CGSize) {
-        let verticalOffset: CGFloat = leftLabel.frame.maxY + Constant.textInset
+        let verticalOffset: CGFloat = leftLabel.frame.maxY + Constant.labelToTextVerticalInset
         textView.frame = CGRect(x: cloudBodyMinX + Constant.textInset,
                                 y: verticalOffset,
                                 width: size.width,

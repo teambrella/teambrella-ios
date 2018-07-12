@@ -227,25 +227,25 @@ struct TeammateCellBuilder {
             middle.isBadgeVisible = false
         }
         if let right = cell.numberBar.right {
-            right.badgeLabel.leftInset = isSmallIPhone ? CGFloat(2) : CGFloat(4)
-            right.badgeLabel.rightInset = isSmallIPhone ? CGFloat(2) : CGFloat(4)
             
             right.titleLabel.text = "Team.TeammateCell.risk".localized
             right.amountLabel.text = String(format: "%.1f", teammate.basic.risk)
             let avg = String.truncatedNumber(abs(teammate.basic.risk - teammate.basic.averageRisk) * 100)
 
             if teammate.basic.risk - teammate.basic.averageRisk == 0 {
-                right.badgeLabel.text = "AVG" // + avg + "%"
+                right.badgeLabel.text = "Team.VotingRiskVC.avg".localized
                 right.badgeLabel.leftInset = CGFloat(4)
                 right.badgeLabel.rightInset = CGFloat(4)
             } else {
                 let sign = (teammate.basic.risk - teammate.basic.averageRisk) * 100 > 0 ? "+" : "-"
-                right.badgeLabel.text = "AVG " + sign + avg + "%"
+                right.badgeLabel.text = "Team.VotingRiskVC.avg".localized + " \(sign)\(avg)%"
             }
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
             right.isCurrencyVisible = false
             right.isPercentVisible = false
+            right.badgeLabel.rightInset = isSmallIPhone ? CGFloat(2) : CGFloat(4)
+            right.badgeLabel.leftInset = isSmallIPhone ? CGFloat(2) : CGFloat(4)
         }
         
         if let imageString = teammate.object.largePhotos.first {

@@ -29,6 +29,8 @@ struct Name: Decodable {
     
     let components: [NameComponent]
     let hasLastName: Bool
+
+    var isEmpty: Bool { return entire == "" }
     
     var first: String { return components.first?.entire ?? "" }
     var last: String? { return hasLastName ? components.last?.entire : nil }

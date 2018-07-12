@@ -19,7 +19,7 @@
 "Team.ClaimCell.byProxy"                              = "por proxy";
 "Team.ClaimCell.teamVote"                             = "vota del equipo";
 "Team.ClaimCell.voteSubmitted"                        = "vota enviada";
-"Team.ClaimCell.resetVote"                            = "reiniciar votación";
+"Team.ClaimCell.resetVote"                            = "Reiniciar votación";
 "Team.ClaimCell.claimDetails"                         = "DETALLES DE RECLAMACIÓN";
 "Team.ClaimCell.claimAmount"                          = "Cantidad reclamado";
 "Team.ClaimCell.estimatedExpences"                    = "Gastos estimados";
@@ -208,3 +208,5 @@
 "Team.Chat.ClaimPaid.ShareText.car" = "We helped our teammate to pay for the car repair.  Pretty cool, huh?";
 "Team.Chat.ClaimPaid.ShareText.bike" = "We reimbursed our teammate his stolen bike. Pretty cool, huh?";
 "Team.Chat.ClaimPaidCell.buttonTitle" = "Share with friends";
+
+"Team.VotingRiskVC.avg"                          = "PROM";

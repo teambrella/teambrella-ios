@@ -26,6 +26,9 @@ class ChatModelBuilder {
     
     var showRate = false
     var showTheirAvatar = false
+
+    var isPrivateChat: Bool { return !showTheirAvatar }
+
     var font: UIFont = UIFont.teambrella(size: 14)
     var width: CGFloat = 0
     lazy var heightCalculator = ChatFragmentSizeCalculator(width: width, font: font)
@@ -59,7 +62,7 @@ class ChatModelBuilder {
             let name: Name
             let avatar: Avatar?
             if isMy == true {
-                name = Name(fullName: "General.you".localized)
+                name = isPrivateChat ? Name.empty : Name(fullName: "General.you".localized)
                 avatar = service.session?.currentUserAvatar ?? Avatar.none
             } else {
                 name = item.teammate?.name ?? Name.empty

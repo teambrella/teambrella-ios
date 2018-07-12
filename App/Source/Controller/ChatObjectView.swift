@@ -21,8 +21,8 @@ protocol ChatObjectViewDelegate: class {
     func chatObjectWasTapped(view: ChatObjectView)
 }
 
-struct Constant {
-    static let smallImageViewSize: CGFloat = 28
+private struct Constant {
+    static let smallImageViewSize: CGFloat = 32
     static let normalImageViewSize: CGFloat = 38
     static let claimObjectViewCornerRadius: CGFloat = 3
     static let smallImageViewOffset: CGFloat = 12
@@ -52,6 +52,8 @@ class ChatObjectView: UIView, XIBInitable {
     @IBOutlet var imageViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet var voteStackViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet var voteButtonContainer: UIView!
+    @IBOutlet var voteStackViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var voteStackView: UIStackView!
     
     var contentView: UIView!
     
@@ -85,13 +87,15 @@ class ChatObjectView: UIView, XIBInitable {
     }
     
     func initialSetup() {
+        voteStackView.spacing = isSmallIPhone ? CGFloat(8) : CGFloat(13)
+        voteStackViewLeadingConstraint.constant = isSmallIPhone ? CGFloat(8) : CGFloat(13)
         clearLabels()
         chevronButton.isHidden = false
         voteContainer.isHidden = false
         chevronButton.alpha = 0
         voteContainer.alpha = 1
         chevronButton.imageView?.contentMode = .scaleAspectFit
-        chevronButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        chevronButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
     }
     
     func setup(with chatModel: ChatModel?) {
@@ -108,14 +112,16 @@ class ChatObjectView: UIView, XIBInitable {
                                     team: teamPart)
         }
     }
-    
+
     func showChevron() {
+        rightButton.isHidden = true
         chevronButton.alpha = 1
         voteContainer.alpha = 0
     }
-    
+
     func showVoteContainer() {
         voteContainer.alpha = 1
+        rightButton.isHidden = false
         chevronButton.alpha = 0
     }
     
@@ -181,6 +187,7 @@ class ChatObjectView: UIView, XIBInitable {
         currencyLabel.isHidden = true
         rightLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
         
+        voteValueLabel.font = isSmallIPhone ? UIFont.teambrellaBold(size: 14) : UIFont.teambrellaBold(size: 18)
         if let voting = voting {
             currencyLabel.text = nil
             voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized

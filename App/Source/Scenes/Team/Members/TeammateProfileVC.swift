@@ -148,11 +148,11 @@ final class TeammateProfileVC: UIViewController, Routable {
             guard averageRisk != 0 else { return }
             
             let delta = risk - averageRisk
-            var text = "AVG\n"
+            var text = "Team.VotingRiskVC.avg".localized + "\n"
             text += delta > 0.0 ? "+" : ""
             let percent = 100 * delta / averageRisk
             let amount = String(format: "%.0f", percent)
-            label.text =  text + amount + "%"
+            label.text = text + amount + "%"
         }
         
         text(for: cell.yourVoteBadgeLabel, risk: risk)
@@ -560,6 +560,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         updateAverages(cell: cell, risk: changedRisk)
         cell.pieChart.setupWith(remainingMinutes: dataSource.teammateLarge?.voting?.remainingMinutes ?? 0)
         cell.showYourNoVote(risk: changedRisk)
+        cell.colorizeCenterCell()
 
         let kind = UICollectionElementKindSectionHeader
         guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {

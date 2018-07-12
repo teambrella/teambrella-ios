@@ -167,6 +167,9 @@ extension MyProxiesVC: UICollectionViewDelegate {
         MyProxiesCellBuilder.populate(cell: cell, with: dataSource[indexPath])
         if let cell = cell as? ProxyCell {
             cell.numberLabel.text = String(indexPath.row + 1)
+            
+            cell.panGesture.removeTarget(nil, action: nil)
+            cell.panGesture.addTarget(self, action: #selector(handleGesture(gesture:)))
         }
     }
     

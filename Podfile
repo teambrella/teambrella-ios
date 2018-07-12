@@ -33,6 +33,7 @@ def swift_frameworks_pods
   pod 'Starscream'
   pod 'SwiftDate'
   pod 'SwiftMessages'
+  pod 'MessengerKit', :git => 'https://github.com/steve228uk/MessengerKit.git'
 
   pod 'Fabric'
   pod 'Crashlytics'
