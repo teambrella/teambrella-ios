@@ -52,7 +52,7 @@ platform :ios do
   lane :release do
     # match(type: "appstore")
     # snapshot
-    gym(scheme: "Teambrella") # Build your app - more options available
+    gym(scheme: "Teambrella release") # Build your app - more options available
     deliver(force: true)
     # frameit
   end
