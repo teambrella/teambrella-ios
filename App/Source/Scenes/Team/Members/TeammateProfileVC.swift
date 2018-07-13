@@ -47,12 +47,12 @@ final class TeammateProfileVC: UIViewController, Routable {
         let visibleCells = collectionView.visibleCells
         return visibleCells.filter { $0 is VotingRiskCell }.first as? VotingRiskCell
     }
-
+    
     private var currentRiskVote: Double?
     
-//    var router: MainRouter!
-//    var session: Session!
-//    var currencyName: String!
+    //    var router: MainRouter!
+    //    var session: Session!
+    //    var currencyName: String!
     
     // MARK: Lifecycle
     
@@ -84,9 +84,9 @@ final class TeammateProfileVC: UIViewController, Routable {
             self.prepareLinearFunction()
             self.setTitle()
             self.collectionView.reloadData()
-            if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate && !self.dataSource.isMe
-            }
+            //if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            //flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate && !self.dataSource.isMe
+            //            }
             if self.scrollToVote, let index = self.dataSource.votingCellIndexPath {
                 self.scrollToVote = false
                 self.collectionView.scrollToItem(at: index, at: .top, animated: true)
@@ -116,19 +116,20 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     // MARK: Public
     
-    var userInfoHeader: CompactUserInfoHeader? {
-        let kind = UICollectionElementKindSectionHeader
-        return collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader
-    }
+    //    var userInfoHeader: CompactUserInfoHeader? {
+    //        let kind = UICollectionElementKindSectionHeader
+    //        return collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader
+    //    }
+    //
     
-    func updateAmounts(header: CompactUserInfoHeader, with risk: Double) {
+    func updateAmounts(in headerView: AmountUpdatable, with risk: Double) {
         guard let myRisk = dataSource.teammateLarge?.riskScale?.myRisk else { return }
         guard let heCoversMe = linearFunction?.value(at: risk) else { return }
         
         let theirAmount = heCoversMe
-        header.leftNumberView.amountLabel.text = amountsFormat(amount: theirAmount)
+        headerView.leftNumberView.amountLabel.text = amountsFormat(amount: theirAmount)
         let myAmount = heCoversMe * myRisk / risk
-        header.rightNumberView.amountLabel.text = amountsFormat(amount: myAmount)
+        headerView.rightNumberView.amountLabel.text = amountsFormat(amount: myAmount)
     }
     
     func amountsFormat(amount: Double) -> String {
@@ -143,7 +144,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     func updateAverages(cell: VotingRiskCell, risk: Double) {
         func text(for label: UILabel, risk: Double) {
-
+            
             guard let averageRisk = dataSource.teammateLarge?.voting?.averageRisk else { return }
             guard averageRisk != 0 else { return }
             
@@ -160,7 +161,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             text(for: cell.teamVoteBadgeLabel, risk: teamRisk)
         }
     }
-
+    
     func resetVote(cell: VotingRiskCell) {
         let vote = dataSource.teammateLarge?.voting?.myVote
         let proxyAvatar = dataSource.teammateLarge?.voting?.proxyAvatar
@@ -251,9 +252,6 @@ final class TeammateProfileVC: UIViewController, Routable {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
         collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
         collectionView.register(VotingRiskCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
-        collectionView.register(CompactUserInfoHeader.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                withReuseIdentifier: CompactUserInfoHeader.cellID)
         collectionView.register(TeammateSummaryView.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: TeammateSummaryView.cellID)
@@ -297,19 +295,17 @@ extension TeammateProfileVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            if dataSource.isNewTeammate {
-                return dataSource.isMe
-                    ? collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                      withReuseIdentifier: TeammateSummaryView.cellID,
-                                                                      for: indexPath)
-                    : collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                      withReuseIdentifier: CompactUserInfoHeader.cellID,
-                                                                      for: indexPath)
-            } else {
-                return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                       withReuseIdentifier: TeammateSummaryView.cellID,
-                                                                       for: indexPath)
-            }
+            //if dataSource.isNewTeammate {
+            //return dataSource.isMe
+            //? collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+            //withReuseIdentifier: TeammateSummaryView.cellID, for: indexPath)
+            //: collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+            //withReuseIdentifier: CompactUserInfoHeader.cellID, for: indexPath)
+            //} else {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                   withReuseIdentifier: TeammateSummaryView.cellID,
+                                                                   for: indexPath)
+            //}
         }
         if kind == UICollectionElementKindSectionFooter {
             return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
@@ -338,7 +334,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                         at indexPath: IndexPath) {
         let session = service.session
         let currencyName = session?.currentTeam?.currency ?? ""
-
+        
         guard let teammate = dataSource.teammateLarge else { return }
         
         if let view = view as? TeammateSummaryView {
@@ -356,9 +352,11 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             //cell.avatarView.kf.setImage(with: url)
             if let left = view.leftNumberView {
                 left.isHidden = dataSource.isMe
+                let votingGenderization = teammate.basic.gender == .male ? "Team.TeammateCell.HeWouldCoverMe".localized
+                    : "Team.TeammateCell.SheWouldCoverMe".localized
                 let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.heCoversMe".localized
                     : "Team.TeammateCell.sheCoversMe".localized
-                left.titleLabel.text = genderization
+                left.titleLabel.text = dataSource.isNewTeammate ? votingGenderization : genderization
                 let amount = teammate.basic.coversMeAmount
                 left.amountLabel.text = amountsFormat(amount: amount)
                 left.currencyLabel.text = currencyName
@@ -367,9 +365,11 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             }
             if let right = view.rightNumberView {
                 right.isHidden = dataSource.isMe
+                let votingGenderization = teammate.basic.gender == .male ? "Team.TeammateCell.wouldCoverHim".localized
+                    : "Team.TeammateCell.wouldCoverHer".localized
                 let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.coverHim".localized
                     : "Team.TeammateCell.coverHer".localized
-                right.titleLabel.text = genderization
+                right.titleLabel.text = dataSource.isNewTeammate ? votingGenderization : genderization
                 let amount = teammate.basic.iCoverThemAmount
                 right.amountLabel.text = amountsFormat(amount: amount)
                 right.currencyLabel.text = currencyName
@@ -385,39 +385,42 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 view.infoLabel.isHidden = false
                 view.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
             }
-        } else if let view = view as? CompactUserInfoHeader {
-            if dataSource.isMe {
-                view.radarView.color = .veryLightBlueThree
+            if dataSource.isNewTeammate, let risk = currentRiskVote {
+                updateAmounts(in: view, with: risk)
             }
-            view.radarView.centerY = -view.bounds.midY
-            ViewDecorator.shadow(for: view, opacity: 0.05, radius: 4)
-            view.avatarView.showAvatar(string: teammate.basic.avatar)
-            if let left = view.leftNumberView {
-                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.HeWouldCoverMe".localized
-                    : "Team.TeammateCell.SheWouldCoverMe".localized
-                left.titleLabel.text = genderization
-                let amount = teammate.basic.coversMeAmount
-                left.amountLabel.text = amountsFormat(amount: amount)
-                left.currencyLabel.text = currencyName
-                left.isCurrencyVisible = true
-                left.isPercentVisible = false
-            }
-            
-            if let right = view.rightNumberView {
-                let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.wouldCoverHim".localized
-                    : "Team.TeammateCell.wouldCoverHer".localized
-                right.titleLabel.text = genderization
-                let amount = teammate.basic.iCoverThemAmount
-                right.amountLabel.text = amountsFormat(amount: amount)
-                right.currencyLabel.text = currencyName
-                right.isCurrencyVisible = true
-                right.isPercentVisible = false
-            }
-
-            if let risk = currentRiskVote {
-                updateAmounts(header: view, with: risk)
-            }
-        }
+        } /*else if let view = view as? CompactUserInfoHeader {
+         if dataSource.isMe {
+         view.radarView.color = .veryLightBlueThree
+         }
+         view.radarView.centerY = -view.bounds.midY
+         ViewDecorator.shadow(for: view, opacity: 0.05, radius: 4)
+         view.avatarView.showAvatar(string: teammate.basic.avatar)
+         if let left = view.leftNumberView {
+         let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.HeWouldCoverMe".localized
+         : "Team.TeammateCell.SheWouldCoverMe".localized
+         left.titleLabel.text = genderization
+         let amount = teammate.basic.coversMeAmount
+         left.amountLabel.text = amountsFormat(amount: amount)
+         left.currencyLabel.text = currencyName
+         left.isCurrencyVisible = true
+         left.isPercentVisible = false
+         }
+         
+         if let right = view.rightNumberView {
+         let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.wouldCoverHim".localized
+         : "Team.TeammateCell.wouldCoverHer".localized
+         right.titleLabel.text = genderization
+         let amount = teammate.basic.iCoverThemAmount
+         right.amountLabel.text = amountsFormat(amount: amount)
+         right.currencyLabel.text = currencyName
+         right.isCurrencyVisible = true
+         right.isPercentVisible = false
+         }
+         
+         if let risk = currentRiskVote {
+         updateAmounts(in: view, with: risk)
+         }
+         }*/
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
             if let date = teammate.basic.dateJoined {
                 let dateString = Formatter.teambrellaShort.string(from: date)
@@ -463,7 +466,7 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: wdt, height: base + CGFloat(dataSource.socialItems.count) * cellHeight)
         case .dialog:
             return isSmallIPhone ? CGSize(width: collectionView.bounds.width, height: 105)
-            : CGSize(width: collectionView.bounds.width, height: 110)
+                : CGSize(width: collectionView.bounds.width, height: 110)
         case .me:
             return CGSize(width: collectionView.bounds.width, height: 215)
         case .voting:
@@ -478,20 +481,18 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         guard dataSource.teammateLarge != nil else { return CGSize.zero }
         
-        if dataSource.isNewTeammate {
-            return dataSource.isMe
-                ? CGSize(width: collectionView.bounds.width, height: 210)
-                : CGSize(width: collectionView.bounds.width, height: 60)
-        } else {
-            return CGSize(width: collectionView.bounds.width, height: 210)
-        }
+        //        if dataSource.isNewTeammate {
+        //            return dataSource.isMe ? CGSize(width: collectionView.bounds.width, height: 210)
+        //                : CGSize(width: collectionView.bounds.width, height: 60)
+        //        } else {
+        return CGSize(width: collectionView.bounds.width, height: 210)
+        //        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        return /*dataSource.isNewTeammate ?
-             CGSize(width: collectionView.bounds.width, height: 20) :*/
+        return /*dataSource.isNewTeammate ? CGSize(width: collectionView.bounds.width, height: 20) :*/
             CGSize(width: collectionView.bounds.width, height: 81)
     }
 }
@@ -561,12 +562,15 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         cell.pieChart.setupWith(remainingMinutes: dataSource.teammateLarge?.voting?.remainingMinutes ?? 0)
         cell.showYourNoVote(risk: changedRisk)
         cell.colorizeCenterCell()
-
+        
         let kind = UICollectionElementKindSectionHeader
-        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
+        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? TeammateSummaryView else {
             return
         }
-        updateAmounts(header: view, with: changedRisk)
+//        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
+//            return
+//        }
+        updateAmounts(in: view, with: changedRisk)
     }
     
     func votingRisk(cell: VotingRiskCell, stoppedOnRisk: Double) {
