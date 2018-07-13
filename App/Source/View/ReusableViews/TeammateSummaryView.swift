@@ -16,7 +16,7 @@
 
 import UIKit
 
-class TeammateSummaryView: UICollectionReusableView, XIBInitableCell {
+class TeammateSummaryView: UICollectionReusableView, XIBInitableCell, AmountUpdatable {
     @IBOutlet var avatarView: GalleryView!
     @IBOutlet var infoLabel: Label!
     @IBOutlet var leftNumberView: NumberView!

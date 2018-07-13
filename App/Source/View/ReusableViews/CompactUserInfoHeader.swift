@@ -21,7 +21,7 @@
 
 import UIKit
 
-class CompactUserInfoHeader: UICollectionReusableView, XIBInitableCell {
+class CompactUserInfoHeader: UICollectionReusableView, XIBInitableCell, AmountUpdatable {
     @IBOutlet var leftNumberView: NumberView!
     @IBOutlet var rightNumberView: NumberView!
     @IBOutlet var avatarView: RoundImageView!

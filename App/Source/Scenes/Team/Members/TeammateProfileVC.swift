@@ -84,8 +84,8 @@ final class TeammateProfileVC: UIViewController, Routable {
             self.prepareLinearFunction()
             self.setTitle()
             self.collectionView.reloadData()
-            //            if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            //                flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate && !self.dataSource.isMe
+            //if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            //flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate && !self.dataSource.isMe
             //            }
             if self.scrollToVote, let index = self.dataSource.votingCellIndexPath {
                 self.scrollToVote = false
@@ -121,17 +121,8 @@ final class TeammateProfileVC: UIViewController, Routable {
     //        return collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader
     //    }
     //
-    func updateAmounts(header: CompactUserInfoHeader, with risk: Double) {
-        guard let myRisk = dataSource.teammateLarge?.riskScale?.myRisk else { return }
-        guard let heCoversMe = linearFunction?.value(at: risk) else { return }
-        
-        let theirAmount = heCoversMe
-        header.leftNumberView.amountLabel.text = amountsFormat(amount: theirAmount)
-        let myAmount = heCoversMe * myRisk / risk
-        header.rightNumberView.amountLabel.text = amountsFormat(amount: myAmount)
-    }
     
-    func updateAmounts(in headerView: TeammateSummaryView, with risk: Double) {
+    func updateAmounts(in headerView: AmountUpdatable, with risk: Double) {
         guard let myRisk = dataSource.teammateLarge?.riskScale?.myRisk else { return }
         guard let heCoversMe = linearFunction?.value(at: risk) else { return }
         
@@ -336,7 +327,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         TeammateCellBuilder.populate(cell: cell, with: teammate, controller: self)
     }
     
-    /* swiftlint:disable:next function_body_length cyclomatic_complexity*/
+    // swiftlint:disable:next function_body_length cyclomatic_complexity
     func collectionView(_ collectionView: UICollectionView,
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
@@ -427,7 +418,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
          }
          
          if let risk = currentRiskVote {
-         updateAmounts(header: view, with: risk)
+         updateAmounts(in: view, with: risk)
          }
          }*/
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
