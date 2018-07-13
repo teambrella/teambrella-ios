@@ -84,9 +84,9 @@ final class TeammateProfileVC: UIViewController, Routable {
             self.prepareLinearFunction()
             self.setTitle()
             self.collectionView.reloadData()
-            if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate && !self.dataSource.isMe
-            }
+//            if let flow = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//                flow.sectionHeadersPinToVisibleBounds = self.dataSource.isNewTeammate && !self.dataSource.isMe
+//            }
             if self.scrollToVote, let index = self.dataSource.votingCellIndexPath {
                 self.scrollToVote = false
                 self.collectionView.scrollToItem(at: index, at: .top, animated: true)
@@ -116,11 +116,11 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     // MARK: Public
     
-    var userInfoHeader: CompactUserInfoHeader? {
-        let kind = UICollectionElementKindSectionHeader
-        return collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader
-    }
-    
+//    var userInfoHeader: CompactUserInfoHeader? {
+//        let kind = UICollectionElementKindSectionHeader
+//        return collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader
+//    }
+//
     func updateAmounts(header: CompactUserInfoHeader, with risk: Double) {
         guard let myRisk = dataSource.teammateLarge?.riskScale?.myRisk else { return }
         guard let heCoversMe = linearFunction?.value(at: risk) else { return }
@@ -251,9 +251,9 @@ final class TeammateProfileVC: UIViewController, Routable {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
         collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
         collectionView.register(VotingRiskCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
-        collectionView.register(CompactUserInfoHeader.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                withReuseIdentifier: CompactUserInfoHeader.cellID)
+//        collectionView.register(CompactUserInfoHeader.nib,
+//                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+//                                withReuseIdentifier: CompactUserInfoHeader.cellID)
         collectionView.register(TeammateSummaryView.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: TeammateSummaryView.cellID)
@@ -297,19 +297,19 @@ extension TeammateProfileVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            if dataSource.isNewTeammate {
-                return dataSource.isMe
-                    ? collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                      withReuseIdentifier: TeammateSummaryView.cellID,
-                                                                      for: indexPath)
-                    : collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                      withReuseIdentifier: CompactUserInfoHeader.cellID,
-                                                                      for: indexPath)
-            } else {
+//            if dataSource.isNewTeammate {
+//                return dataSource.isMe
+//                    ? collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+//                                                                      withReuseIdentifier: TeammateSummaryView.cellID,
+//                                                                      for: indexPath)
+//                    : collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+//                                                                      withReuseIdentifier: CompactUserInfoHeader.cellID,
+//                                                                      for: indexPath)
+//            } else {
                 return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
                                                                        withReuseIdentifier: TeammateSummaryView.cellID,
                                                                        for: indexPath)
-            }
+//            }
         }
         if kind == UICollectionElementKindSectionFooter {
             return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
@@ -331,7 +331,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
         TeammateCellBuilder.populate(cell: cell, with: teammate, controller: self)
     }
     
-    // swiftlint:disable:next function_body_length cyclomatic_complexity
+    /* swiftlint:disable:next function_body_length cyclomatic_complexity*/
     func collectionView(_ collectionView: UICollectionView,
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
@@ -385,7 +385,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 view.infoLabel.isHidden = false
                 view.infoLabel.text = "Team.TeammateCell.youAreProxy_format_s".localized(teammate.basic.name.entire)
             }
-        } else if let view = view as? CompactUserInfoHeader {
+        } /*else if let view = view as? CompactUserInfoHeader {
             if dataSource.isMe {
                 view.radarView.color = .veryLightBlueThree
             }
@@ -417,7 +417,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             if let risk = currentRiskVote {
                 updateAmounts(header: view, with: risk)
             }
-        }
+        }*/
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
             if let date = teammate.basic.dateJoined {
                 let dateString = Formatter.teambrellaShort.string(from: date)
@@ -478,13 +478,13 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         guard dataSource.teammateLarge != nil else { return CGSize.zero }
         
-        if dataSource.isNewTeammate {
-            return dataSource.isMe
-                ? CGSize(width: collectionView.bounds.width, height: 210)
-                : CGSize(width: collectionView.bounds.width, height: 60)
-        } else {
+//        if dataSource.isNewTeammate {
+//            return /*dataSource.isMe
+//                ? */CGSize(width: collectionView.bounds.width, height: 210)
+//                : CGSize(width: collectionView.bounds.width, height: 60)
+//        } else {
             return CGSize(width: collectionView.bounds.width, height: 210)
-        }
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -562,11 +562,11 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         cell.showYourNoVote(risk: changedRisk)
         cell.colorizeCenterCell()
 
-        let kind = UICollectionElementKindSectionHeader
-        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
-            return
-        }
-        updateAmounts(header: view, with: changedRisk)
+//        let kind = UICollectionElementKindSectionHeader
+//        guard let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? CompactUserInfoHeader else {
+//            return
+//        }
+//        updateAmounts(header: view, with: changedRisk)
     }
     
     func votingRisk(cell: VotingRiskCell, stoppedOnRisk: Double) {
