@@ -36,7 +36,9 @@ final class TeammateProfileVC: UIViewController, Routable {
     @IBOutlet var compactUserInfoHeader: CompactUserInfoHeader!
     @IBOutlet var compactUserInfoHeaderHeightConstraint: NSLayoutConstraint!
     
-    var teammateID: String?
+    var teammateID: String!
+    var teamID: Int!
+
     var dataSource: TeammateProfileDataSource!
     var linearFunction: PiecewiseFunction?
     var isRiskScaleUpdateNeeded = true
@@ -62,11 +64,11 @@ final class TeammateProfileVC: UIViewController, Routable {
         super.viewDidLoad()
         
         if let teammateID = teammateID, teammateID == service.session?.currentUserID {
-            dataSource = TeammateProfileDataSource(id: teammateID, isMe: true)
+            dataSource = TeammateProfileDataSource(id: teammateID, teamID: teamID, isMe: true)
         } else if let teammateID = teammateID {
-            dataSource = TeammateProfileDataSource(id: teammateID, isMe: false)
+            dataSource = TeammateProfileDataSource(id: teammateID, teamID: teamID, isMe: false)
         } else if let myID = service.session?.currentUserID {
-            dataSource = TeammateProfileDataSource(id: myID, isMe: true)
+            dataSource = TeammateProfileDataSource(id: myID, teamID: teamID, isMe: true)
         } else {
             fatalError("No valid info about teammate")
         }
@@ -86,6 +88,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             self.prepareLinearFunction()
             self.setTitle()
             self.collectionView.reloadData()
+
             if self.scrollToVote, let index = self.dataSource.votingCellIndexPath {
                 self.scrollToVote = false
                 self.collectionView.scrollToItem(at: index, at: .top, animated: true)
@@ -553,11 +556,9 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         cell.pieChart.setupWith(remainingMinutes: dataSource.teammateLarge?.voting?.remainingMinutes ?? 0)
         cell.showYourNoVote(risk: changedRisk)
         cell.colorizeCenterCell()
-
         guard let view = view as? AmountUpdatable else { return }
         
         updateAmounts(in: view, with: changedRisk)
-        
     }
     
     func votingRisk(cell: VotingRiskCell, stoppedOnRisk: Double) {

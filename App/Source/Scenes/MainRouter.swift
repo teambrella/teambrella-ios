@@ -173,10 +173,11 @@ final class MainRouter {
         return vc
     }
     
-    func getControllerMemberProfile(teammateID: String) -> TeammateProfileVC? {
+    func getControllerMemberProfile(teammateID: String, teamID: Int?) -> TeammateProfileVC? {
         let vc = TeammateProfileVC.instantiate() as? TeammateProfileVC
         
         vc?.teammateID = teammateID
+        vc?.teamID = teamID ?? service.session?.currentTeam?.teamID ?? 0
 //        vc?.currentUserID = service.session?.currentUserID
 //        vc?.router = self
 //        vc?.session = service.session
@@ -184,8 +185,13 @@ final class MainRouter {
         return vc
     }
     
-    func presentMemberProfile(teammateID: String, scrollToVote: Bool = false, animated: Bool = true) {
-        guard let vc = getControllerMemberProfile(teammateID: teammateID) else { fatalError("Error instantiating") }
+    func presentMemberProfile(teammateID: String,
+                              teamID: Int? = nil,
+                              scrollToVote: Bool = false,
+                              animated: Bool = true) {
+        guard let vc = getControllerMemberProfile(teammateID: teammateID, teamID: teamID) else {
+            fatalError("Error instantiating")
+        }
         
         vc.scrollToVote = scrollToVote
         push(vc: vc, animated: animated)

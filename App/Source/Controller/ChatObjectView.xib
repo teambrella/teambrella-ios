@@ -186,6 +186,13 @@
                                 <constraint firstItem="lI6-Lm-oQA" firstAttribute="leading" secondItem="c1y-bp-9dQ" secondAttribute="leading" constant="13" id="wxd-Gi-dtb"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXf-1N-9Gr" userLabel="Bottom Horizontal Separator">
+                            <rect key="frame" x="0.0" y="78" width="375" height="1"/>
+                            <color key="backgroundColor" red="0.84705882349999995" green="0.89411764709999997" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="yuh-g6-xEQ"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
@@ -224,8 +231,11 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LXf-1N-9Gr" secondAttribute="trailing" id="5t6-cC-4Al"/>
                 <constraint firstItem="8MY-cC-Bco" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="5yK-vU-dap"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8MY-cC-Bco" secondAttribute="bottom" id="Caz-qW-3Qx"/>
+                <constraint firstItem="LXf-1N-9Gr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="I2c-1n-gHo"/>
+                <constraint firstItem="LXf-1N-9Gr" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="TXs-bi-pN3"/>
                 <constraint firstItem="8MY-cC-Bco" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="cqa-lp-5uh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8MY-cC-Bco" secondAttribute="trailing" id="maJ-Zg-T5j"/>
                 <constraint firstItem="8MY-cC-Bco" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yZB-ni-Gla"/>

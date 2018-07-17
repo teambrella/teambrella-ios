@@ -73,7 +73,7 @@ protocol DAO {
                               offset: Int,
                               limit: Int,
                               isOrderedByRisk: Bool) -> Future<[TeammateListEntity]>
-    func requestTeammate(userID: String) -> Future<TeammateLarge>
+    func requestTeammate(userID: String, teamID: Int) -> Future<TeammateLarge>
 
     func requestChat(type: TeambrellaRequestType, body: RequestBody) -> Future<TeambrellaResponseType>
 
