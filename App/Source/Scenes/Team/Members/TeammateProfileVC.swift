@@ -34,7 +34,9 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     @IBOutlet var collectionView: UICollectionView!
     
-    var teammateID: String?
+    var teammateID: String!
+    var teamID: Int!
+
     var dataSource: TeammateProfileDataSource!
     var linearFunction: PiecewiseFunction?
     var isRiskScaleUpdateNeeded = true
@@ -60,11 +62,11 @@ final class TeammateProfileVC: UIViewController, Routable {
         super.viewDidLoad()
         
         if let teammateID = teammateID, teammateID == service.session?.currentUserID {
-            dataSource = TeammateProfileDataSource(id: teammateID, isMe: true)
+            dataSource = TeammateProfileDataSource(id: teammateID, teamID: teamID, isMe: true)
         } else if let teammateID = teammateID {
-            dataSource = TeammateProfileDataSource(id: teammateID, isMe: false)
+            dataSource = TeammateProfileDataSource(id: teammateID, teamID: teamID, isMe: false)
         } else if let myID = service.session?.currentUserID {
-            dataSource = TeammateProfileDataSource(id: myID, isMe: true)
+            dataSource = TeammateProfileDataSource(id: myID, teamID: teamID, isMe: true)
         } else {
             fatalError("No valid info about teammate")
         }
