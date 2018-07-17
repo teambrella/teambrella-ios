@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -143,7 +143,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iD-BV-Kqg" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="4" y="97" width="0.0" height="20"/>
+                                    <rect key="frame" x="37" y="97" width="0.0" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -231,6 +231,13 @@
                         <constraint firstAttribute="trailing" secondItem="feC-r0-f4c" secondAttribute="trailing" id="rdJ-V6-WXd"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Weo-82-wqN" userLabel="Bottom Horizontal Separator">
+                    <rect key="frame" x="0.0" y="666" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.84705882349999995" green="0.89411764709999997" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="cUl-Cz-jmd"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -239,9 +246,12 @@
                 <constraint firstItem="7ZZ-XL-Z1n" firstAttribute="top" secondItem="g5n-Tp-UuE" secondAttribute="bottom" id="4aZ-Mb-R3D"/>
                 <constraint firstItem="lav-mK-Hkd" firstAttribute="centerY" secondItem="g5n-Tp-UuE" secondAttribute="centerY" id="7AC-Dl-hDy"/>
                 <constraint firstItem="K5h-eA-Ctg" firstAttribute="height" secondItem="His-0B-pZh" secondAttribute="height" id="7js-gc-2f9"/>
+                <constraint firstItem="Weo-82-wqN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Edb-uo-U79"/>
                 <constraint firstItem="7ZZ-XL-Z1n" firstAttribute="trailing" secondItem="g5n-Tp-UuE" secondAttribute="trailing" id="Eqz-XH-9Ud"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Weo-82-wqN" secondAttribute="trailing" id="Qd7-52-NHI"/>
                 <constraint firstItem="g5n-Tp-UuE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="X3G-dY-KBj"/>
                 <constraint firstItem="7ZZ-XL-Z1n" firstAttribute="leading" secondItem="g5n-Tp-UuE" secondAttribute="leading" id="YQ4-h9-LVe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Weo-82-wqN" secondAttribute="bottom" id="ZGM-DF-jVT"/>
                 <constraint firstItem="lav-mK-Hkd" firstAttribute="centerX" secondItem="g5n-Tp-UuE" secondAttribute="centerX" id="gzc-9a-TXd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="g5n-Tp-UuE" secondAttribute="trailing" constant="16" id="hPh-XF-Bjo"/>
                 <constraint firstItem="K5h-eA-Ctg" firstAttribute="centerX" secondItem="His-0B-pZh" secondAttribute="centerX" id="hfC-R2-c4i"/>

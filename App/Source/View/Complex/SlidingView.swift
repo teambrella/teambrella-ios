@@ -47,7 +47,7 @@ class SlidingView: UIView, XIBInitable {
         super.awakeFromNib()
 
         ViewDecorator.shadow(for: votingView, opacity: 0.08, radius: 4)
-        ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
+        //ViewDecorator.shadow(for: objectView, opacity: 0.08, radius: 4)
     }
 
     func setupViews(with delegate: ChatObjectViewDelegate & ClaimVotingDelegate, session: Session?) {

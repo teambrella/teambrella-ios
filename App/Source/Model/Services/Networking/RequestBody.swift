@@ -32,13 +32,6 @@ struct RequestBodyFactory {
                            payload: payload)
     }
     
-    static func teammateBody(key: Key, id: String) -> RequestBody? {
-        let payload: [String: Any] = ["UserId": id,
-                                      "TeamId": service.session?.currentTeam?.teamID ?? 0,
-                                      "AfterVer": 0]
-        return RequestBody(key: key, payload: payload)
-    }
-    
     static func newPostBody(key: Key, topicID: String, text: String) -> RequestBody? {
         let payload: [String: Any] = ["TopicId": topicID,
                                       "Text": text]

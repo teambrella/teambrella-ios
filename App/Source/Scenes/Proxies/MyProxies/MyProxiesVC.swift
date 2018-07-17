@@ -184,7 +184,7 @@ extension MyProxiesVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = dataSource.items[indexPath.row]
-        service.router.presentMemberProfile(teammateID: item.userID)
+        service.router.presentMemberProfile(teammateID: item.userID, teamID: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView,

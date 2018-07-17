@@ -364,10 +364,14 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestTeammate(userID: String) -> Future<TeammateLarge> {
+    func requestTeammate(userID: String, teamID: Int) -> Future<TeammateLarge> {
         let promise = Promise<TeammateLarge>()
         freshKey { key in
-            let body = RequestBodyFactory.teammateBody(key: key, id: userID)
+            let body = RequestBody(key: key, payload: [
+                "UserId": userID,
+                "TeamId": teamID,
+                "AfterVer": 0
+                ])
             let request = TeambrellaRequest(type: .teammate, body: body, success: {response in
                 if case let .teammate(teammate) = response {
                     promise.resolve(with: teammate)
@@ -522,9 +526,9 @@ class ServerDAO: DAO {
         let promise = Promise<TeammateVotingResult>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeammateId": teammateID,
-                                             "MyVote": risk ?? NSNull(),
-                                             "Since": key.timestamp,
-                                             "ProxyAvatarSize": Constant.proxyAvatarSize])
+                                                       "MyVote": risk ?? NSNull(),
+                                                       "Since": key.timestamp,
+                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
             let request = TeambrellaRequest(type: .teammateVote, body: body, success: { response in
                 if case let .teammateVote(votingResult) = response {
                     promise.resolve(with: votingResult)
