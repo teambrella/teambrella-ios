@@ -556,9 +556,13 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         cell.pieChart.setupWith(remainingMinutes: dataSource.teammateLarge?.voting?.remainingMinutes ?? 0)
         cell.showYourNoVote(risk: changedRisk)
         cell.colorizeCenterCell()
-        guard let view = view as? AmountUpdatable else { return }
-        
-        updateAmounts(in: view, with: changedRisk)
+        let kind = UICollectionElementKindSectionHeader
+        if let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? TeammateSummaryView {
+            updateAmounts(in: view, with: changedRisk)
+        }
+        if let header = compactUserInfoHeader {
+            updateAmounts(in: header, with: changedRisk)
+        }
     }
     
     func votingRisk(cell: VotingRiskCell, stoppedOnRisk: Double) {
@@ -570,7 +574,9 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         currentRiskVote = risk
         dataSource.sendRisk(userID: teammateID, risk: risk) { [weak self] votingResult in
             self?.collectionView.reloadData()
-            self?.setupCompactInfoHeader()
+            guard let header = self?.compactUserInfoHeader else { return }
+
+            self?.updateAmounts(in: header, with: stoppedOnRisk)
         }
     }
     
@@ -609,7 +615,9 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             cell.yourVoteValueLabel.alpha = 0.5
             dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self] json in
                 self?.collectionView.reloadData()
-                self?.setupCompactInfoHeader()
+                guard let header = self?.compactUserInfoHeader, let risk = self?.currentRiskVote else { return }
+                
+                self?.updateAmounts(in: header, with: risk)
             }
         case cell.othersButton:
             guard let ranges = dataSource.teammateLarge?.riskScale?.ranges else {
