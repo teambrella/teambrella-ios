@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompactUserInfoHeader" customModule="Surilla" customModuleProvider="target">
+            <connections>
+                <outlet property="avatarView" destination="2Jo-rw-e7W" id="xyN-LL-BPU"/>
+                <outlet property="contentView" destination="2OS-O5-biE" id="nVd-ho-rN5"/>
+                <outlet property="leftNumberView" destination="i5u-nX-yax" id="Uy4-AE-Osc"/>
+                <outlet property="radarView" destination="2OS-O5-biE" id="Aq7-bb-CAa"/>
+                <outlet property="rightNumberView" destination="mYq-lw-WyA" id="Kc7-0g-AZq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="409" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2OS-O5-biE" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="409" height="100"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5u-nX-yax" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="183.5" height="100"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Jo-rw-e7W" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
+                            <rect key="frame" x="183.5" y="28.5" width="42" height="42"/>
+                            <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="E76-NN-J0X"/>
+                                <constraint firstAttribute="width" secondItem="2Jo-rw-e7W" secondAttribute="height" multiplier="1:1" id="lNd-FM-igI"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYq-lw-WyA" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
+                            <rect key="frame" x="225.5" y="0.0" width="183.5" height="100"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qdy-W4-7oW">
+                            <rect key="frame" x="0.0" y="99" width="409" height="1"/>
+                            <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="EbP-2N-j2N"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Qdy-W4-7oW" firstAttribute="leading" secondItem="2OS-O5-biE" secondAttribute="leading" id="2sj-va-a1C"/>
+                        <constraint firstAttribute="bottom" secondItem="mYq-lw-WyA" secondAttribute="bottom" id="AER-ub-0wE"/>
+                        <constraint firstItem="2Jo-rw-e7W" firstAttribute="centerX" secondItem="2OS-O5-biE" secondAttribute="centerX" id="ChT-vf-PhU"/>
+                        <constraint firstItem="2Jo-rw-e7W" firstAttribute="centerY" secondItem="2OS-O5-biE" secondAttribute="centerY" id="Iof-pM-Fjx"/>
+                        <constraint firstAttribute="trailing" secondItem="mYq-lw-WyA" secondAttribute="trailing" id="Lum-u0-e3D"/>
+                        <constraint firstItem="i5u-nX-yax" firstAttribute="top" secondItem="2OS-O5-biE" secondAttribute="top" id="NpB-cS-NID"/>
+                        <constraint firstItem="mYq-lw-WyA" firstAttribute="top" secondItem="2OS-O5-biE" secondAttribute="top" id="WdR-T6-eXj"/>
+                        <constraint firstItem="mYq-lw-WyA" firstAttribute="leading" secondItem="2Jo-rw-e7W" secondAttribute="trailing" id="WiM-XZ-ncu"/>
+                        <constraint firstAttribute="bottom" secondItem="i5u-nX-yax" secondAttribute="bottom" id="mfA-AA-PzG"/>
+                        <constraint firstItem="i5u-nX-yax" firstAttribute="leading" secondItem="2OS-O5-biE" secondAttribute="leading" id="nYR-e4-Knf"/>
+                        <constraint firstAttribute="bottom" secondItem="Qdy-W4-7oW" secondAttribute="bottom" id="pDa-M5-1c7"/>
+                        <constraint firstItem="2Jo-rw-e7W" firstAttribute="leading" secondItem="i5u-nX-yax" secondAttribute="trailing" id="qB8-fN-blO"/>
+                        <constraint firstAttribute="trailing" secondItem="Qdy-W4-7oW" secondAttribute="trailing" id="tUQ-iD-PyZ"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="segments">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="diameter">
+                            <real key="value" value="121"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="startWidth">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="coefficient">
+                            <real key="value" value="1.28"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                            <color key="value" red="0.87843137250000003" green="0.91764705879999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                            <real key="value" value="360"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2OS-O5-biE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="9Uu-38-LXK"/>
+                <constraint firstAttribute="bottom" secondItem="2OS-O5-biE" secondAttribute="bottom" id="XXG-TP-G63"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2OS-O5-biE" secondAttribute="trailing" id="e4Y-gf-bQ3"/>
+                <constraint firstItem="2OS-O5-biE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nMI-d6-QER"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="50.5" y="-230"/>
+        </view>
+    </objects>
+</document>
