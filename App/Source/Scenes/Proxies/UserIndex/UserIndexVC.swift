@@ -196,6 +196,8 @@ extension UserIndexVC: UICollectionViewDelegate {
         if let currentTeam = service.session?.currentTeam?.teamID, dataSource[indexPath].teams.contains(currentTeam) {
             service.router.presentMemberProfile(teammateID: dataSource[indexPath].userID)
         } else {
+            let teammate = dataSource[indexPath]
+            service.router.presentMemberProfile(teammateID: teammate.userID, teamID: teammate.teams.first)
             print("can't let u in! no teammate found")
         }
     }

@@ -109,6 +109,7 @@ final class UniversalChatVC: UIViewController, Routable {
             //                return
             //            }
             self.refresh(backward: backward, isFirstLoad: isFirstLoad)
+            self.input.allowInput(self.dataSource.isInputAllowed)
         }
         dataSource.onSendMessage = { [weak self] indexPath in
             guard let `self` = self else { return }
@@ -509,6 +510,7 @@ private extension UniversalChatVC {
                 }
             }
         }
+        input.allowInput(dataSource.isInputAllowed)
     }
 
     private func startListeningSockets() {
@@ -888,7 +890,9 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
         if let model = dataSource.chatModel, model.isClaimChat, let id = model.id {
             router.presentClaim(claimID: id)
         } else if let userID = dataSource.chatModel?.basic?.userID {
-            router.presentMemberProfile(teammateID: userID, scrollToVote: true)
+            router.presentMemberProfile(teammateID: userID,
+                                        teamID: dataSource.chatModel?.team?.teamID,
+                                        scrollToVote: true)
         }
     }
 }
