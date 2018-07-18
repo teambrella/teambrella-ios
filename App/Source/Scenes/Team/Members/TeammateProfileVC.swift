@@ -34,16 +34,17 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var compactUserInfoHeader: CompactUserInfoHeader!
-    @IBOutlet var compactUserInfoHeaderHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var compactHeaderBottomConstraint: NSLayoutConstraint!
     
     var teammateID: String!
     var teamID: Int!
-
+    
     var dataSource: TeammateProfileDataSource!
     var linearFunction: PiecewiseFunction?
     var isRiskScaleUpdateNeeded = true
     var isPeeking: Bool = false
     var scrollToVote: Bool = false
+    var summaryViewNumberBarOffset: CGFloat = 50
     
     var shouldAddGradientNavBar: Bool { return teammateID != nil }
     
@@ -75,6 +76,8 @@ final class TeammateProfileVC: UIViewController, Routable {
         addGradientNavBarIfNeeded()
         registerCells()
         HUD.show(.progress, onView: view)
+        
+        compactHeaderBottomConstraint.constant = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +91,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             self.prepareLinearFunction()
             self.setTitle()
             self.collectionView.reloadData()
-
+            
             if self.scrollToVote, let index = self.dataSource.votingCellIndexPath {
                 self.scrollToVote = false
                 self.collectionView.scrollToItem(at: index, at: .top, animated: true)
@@ -308,6 +311,22 @@ final class TeammateProfileVC: UIViewController, Routable {
             }
         }
     }
+    
+    private func showHeader(offset: CGFloat) {
+        if offset < 5 {
+            compactHeaderBottomConstraint.constant = 60
+            UIView.animate(withDuration: 0.5) {
+                self.compactUserInfoHeader.layoutIfNeeded()
+            }
+        }
+    }
+    
+    private func hideHeader() {
+        compactHeaderBottomConstraint.constant = 0
+        UIView.animate(withDuration: 0.5) {
+            self.compactUserInfoHeader.layoutIfNeeded()
+        }
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -415,9 +434,6 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             if dataSource.isNewTeammate, let risk = currentRiskVote {
                 updateAmounts(in: view, with: risk)
                 setupCompactInfoHeader()
-                compactUserInfoHeaderHeightConstraint.constant = 60
-            } else {
-                compactUserInfoHeaderHeightConstraint.constant = 0
             }
         }
         if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
@@ -488,6 +504,19 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
                         referenceSizeForFooterInSection section: Int) -> CGSize {
         return /*dataSource.isNewTeammate ? CGSize(width: collectionView.bounds.width, height: 20) :*/
             CGSize(width: collectionView.bounds.width, height: 81)
+    }
+}
+
+// MARK: UIScrollViewDelegate
+extension TeammateProfileVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let visibleViews = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader)
+        let summaryViews = visibleViews.filter { $0 is TeammateSummaryView }
+        guard let summary = summaryViews.first as? TeammateSummaryView else { return }
+        guard let numberView = summary.leftNumberView else { return }
+        
+        let rect = collectionView.convert(numberView.frame, to: collectionView.superview)
+        summaryViewNumberBarOffset = rect.origin.y - collectionView.frame.origin.y
     }
 }
 
@@ -575,8 +604,9 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         dataSource.sendRisk(userID: teammateID, risk: risk) { [weak self] votingResult in
             self?.collectionView.reloadData()
             guard let header = self?.compactUserInfoHeader else { return }
-
+            
             self?.updateAmounts(in: header, with: stoppedOnRisk)
+            self?.hideHeader()
         }
     }
     
@@ -615,9 +645,11 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             cell.yourVoteValueLabel.alpha = 0.5
             dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self] json in
                 self?.collectionView.reloadData()
-                guard let header = self?.compactUserInfoHeader, let risk = self?.currentRiskVote else { return }
+                guard let header = self?.compactUserInfoHeader, let risk = self?.currentRiskVote,
+                    let offset = self?.summaryViewNumberBarOffset else { return }
                 
                 self?.updateAmounts(in: header, with: risk)
+                self?.hideHeader()
             }
         case cell.othersButton:
             guard let ranges = dataSource.teammateLarge?.riskScale?.ranges else {
@@ -634,6 +666,11 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         default:
             log("VotingRiskCell unknown button pressed", type: [.error])
         }
+    }
+    
+    func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView) {
+        showHeader(offset: summaryViewNumberBarOffset)
+//        hideHeader()
     }
     
     func averageVotingRisk(cell: VotingRiskCell) -> Double {

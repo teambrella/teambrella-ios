@@ -27,6 +27,7 @@ protocol VotingRiskCellDelegate: class {
     func votingRisk(cell: VotingRiskCell, stoppedOnRisk: Double)
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int)
     func votingRisk(cell: VotingRiskCell, didTapButton button: UIButton)
+    func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView)
     func averageVotingRisk(cell: VotingRiskCell) -> Double
 }
 
@@ -383,6 +384,7 @@ extension VotingRiskCell: UICollectionViewDelegateFlowLayout {
 
 extension VotingRiskCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.votingRisk(cell: self, didScroll: scrollView)
         if shouldSilenceScroll == false {
             delegate?.votingRisk(cell: self, changedRisk: currentRisk)
             if swipeToVoteView.backView.alpha != 0 {

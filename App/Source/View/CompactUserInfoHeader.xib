@@ -25,17 +25,17 @@
             <rect key="frame" x="0.0" y="0.0" width="409" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2OS-O5-biE" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2OS-O5-biE" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="409" height="100"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5u-nX-yax" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5u-nX-yax" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="183.5" height="100"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Jo-rw-e7W" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Jo-rw-e7W" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
                             <rect key="frame" x="183.5" y="28.5" width="42" height="42"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -43,14 +43,14 @@
                                 <constraint firstAttribute="width" secondItem="2Jo-rw-e7W" secondAttribute="height" multiplier="1:1" id="lNd-FM-igI"/>
                             </constraints>
                         </imageView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYq-lw-WyA" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYq-lw-WyA" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
                             <rect key="frame" x="225.5" y="0.0" width="183.5" height="100"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isBadgeVisible" value="NO"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qdy-W4-7oW">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qdy-W4-7oW">
                             <rect key="frame" x="0.0" y="99" width="409" height="1"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
