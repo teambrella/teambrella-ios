@@ -296,6 +296,7 @@
                 <outlet property="teamVoteAmount" destination="zdI-Ys-bOX" id="HAL-1V-Bkb"/>
                 <outlet property="teamVoteCurrency" destination="NQq-XY-4kI" id="oHs-Fk-1Da"/>
                 <outlet property="teamVoteLabel" destination="lbW-W9-c1X" id="FUy-9t-fK2"/>
+                <outlet property="teamVotePercentSign" destination="MnD-tB-IfF" id="scS-Jq-Zwy"/>
                 <outlet property="teamVotePercentValue" destination="UdR-JP-qTp" id="5It-Rl-BMV"/>
                 <outlet property="titleLabel" destination="KVp-Aa-10c" id="kuQ-hj-Jz5"/>
                 <outlet property="yourVoteAmount" destination="wuP-CI-MHk" id="w7M-2W-6Dd"/>
