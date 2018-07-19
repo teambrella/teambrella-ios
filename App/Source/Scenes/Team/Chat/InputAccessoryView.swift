@@ -129,6 +129,12 @@ class InputAccessoryView: UIView {
     func adjustHeight() {
         invalidateIntrinsicContentSize()
     }
+
+    func allowInput(_ allow: Bool) {
+        leftButton.isEnabled = allow
+        rightButton.isEnabled = allow
+        textView.isUserInteractionEnabled = allow
+    }
     
 }
 

@@ -207,6 +207,19 @@ final class UniversalChatDatasource {
     
     var isPrivateChat: Bool { return strategy is PrivateChatStrategy }
     
+    var isInputAllowed: Bool {
+        if isPrivateChat { return true }
+        /*
+        guard let access = chatModel?.team?.accessLevel else { return false }
+
+        return access == .full
+ */
+        guard let teamID = chatModel?.team?.teamID,
+            let myTeamID = service.session?.currentTeam?.teamID else { return false }
+
+        return teamID == myTeamID
+    }
+    
     func mute(type: TopicMuteType, completion: @escaping (Bool) -> Void) {
         guard let topicID = chatModel?.discussion.topicID else { return }
         
