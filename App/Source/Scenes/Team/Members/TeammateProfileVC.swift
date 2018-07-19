@@ -28,6 +28,8 @@ import XLPagerTabStrip
 final class TeammateProfileVC: UIViewController, Routable {
     struct Constant {
         static let socialCellHeight: CGFloat = 68
+        static let votingHeaderTopOffset: CGFloat = 5
+        static let votingHeaderShowTime: TimeInterval = 2
     }
     
     static var storyboardName: String = "Team"
@@ -45,6 +47,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     var isPeeking: Bool = false
     var scrollToVote: Bool = false
     var summaryViewNumberBarOffset: CGFloat = 50
+    var lastScrollMoment = Date()
     
     var shouldAddGradientNavBar: Bool { return teammateID != nil }
     
@@ -69,6 +72,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         } else if let teammateID = teammateID {
             dataSource = TeammateProfileDataSource(id: teammateID, teamID: teamID, isMe: false)
         } else if let myID = service.session?.currentUserID {
+            teamID = service.session?.currentTeam?.teamID ?? 0
             dataSource = TeammateProfileDataSource(id: myID, teamID: teamID, isMe: true)
         } else {
             fatalError("No valid info about teammate")
@@ -313,19 +317,13 @@ final class TeammateProfileVC: UIViewController, Routable {
     }
     
     private func showHeader(offset: CGFloat) {
-        if offset < 5 {
+        if offset < Constant.votingHeaderTopOffset {
             compactHeaderBottomConstraint.constant = 60
-            UIView.animate(withDuration: 0.5) {
-                self.compactUserInfoHeader.layoutIfNeeded()
-            }
         }
     }
     
     private func hideHeader() {
         compactHeaderBottomConstraint.constant = 0
-        UIView.animate(withDuration: 0.5) {
-            self.compactUserInfoHeader.layoutIfNeeded()
-        }
     }
 }
 
@@ -606,7 +604,6 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             guard let header = self?.compactUserInfoHeader else { return }
             
             self?.updateAmounts(in: header, with: stoppedOnRisk)
-            self?.hideHeader()
         }
     }
     
@@ -645,11 +642,9 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             cell.yourVoteValueLabel.alpha = 0.5
             dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self] json in
                 self?.collectionView.reloadData()
-                guard let header = self?.compactUserInfoHeader, let risk = self?.currentRiskVote,
-                    let offset = self?.summaryViewNumberBarOffset else { return }
+                guard let header = self?.compactUserInfoHeader, let risk = self?.currentRiskVote else { return }
                 
                 self?.updateAmounts(in: header, with: risk)
-                self?.hideHeader()
             }
         case cell.othersButton:
             guard let ranges = dataSource.teammateLarge?.riskScale?.ranges else {
@@ -670,7 +665,14 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
     
     func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView) {
         showHeader(offset: summaryViewNumberBarOffset)
-//        hideHeader()
+        lastScrollMoment = Date()
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constant.votingHeaderShowTime) {
+            let now = Date()
+            if now.timeIntervalSince1970 - self.lastScrollMoment.timeIntervalSince1970 >
+                Constant.votingHeaderShowTime - 1 {
+                self.hideHeader()
+            }
+        }
     }
     
     func averageVotingRisk(cell: VotingRiskCell) -> Double {

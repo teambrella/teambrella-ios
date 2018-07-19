@@ -101,10 +101,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="2OS-O5-biE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="9Uu-38-LXK"/>
+                <constraint firstItem="2OS-O5-biE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="JQQ-M6-efc"/>
                 <constraint firstAttribute="bottom" secondItem="2OS-O5-biE" secondAttribute="bottom" id="XXG-TP-G63"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2OS-O5-biE" secondAttribute="trailing" id="e4Y-gf-bQ3"/>
                 <constraint firstItem="2OS-O5-biE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nMI-d6-QER"/>
+                <constraint firstAttribute="trailing" secondItem="2OS-O5-biE" secondAttribute="trailing" id="zpn-BL-CXl"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
