@@ -21,15 +21,30 @@
 
 import UIKit
 
-class CompactUserInfoHeader: UICollectionReusableView, XIBInitableCell, AmountUpdatable {
+class CompactUserInfoHeader: UIView, XIBInitable, AmountUpdatable {
+    @IBOutlet var contentView: UIView!
     @IBOutlet var leftNumberView: NumberView!
     @IBOutlet var rightNumberView: NumberView!
     @IBOutlet var avatarView: RoundImageView!
     @IBOutlet var radarView: RadarView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        xibSetup()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        xibSetup()
+        leftNumberView.badgeLabel.text = ""
+        leftNumberView.titleLabel.text = ""
+        leftNumberView.amountLabel.text = ""
+        leftNumberView.percentLabel.text = ""
+        leftNumberView.currencyLabel.text = ""
+        rightNumberView.badgeLabel.text = ""
+        rightNumberView.titleLabel.text = ""
+        rightNumberView.amountLabel.text = ""
+        rightNumberView.percentLabel.text = ""
+        rightNumberView.currencyLabel.text = ""
+    }
 }

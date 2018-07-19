@@ -14,6 +14,8 @@
 		1790BB3B20750A3F00FD1303 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1790BB3920750A3F00FD1303 /* Year.swift */; };
 		17AD149C20F90237007C7613 /* AmountUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD149B20F90237007C7613 /* AmountUpdatable.swift */; };
 		17AD149D20F90237007C7613 /* AmountUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD149B20F90237007C7613 /* AmountUpdatable.swift */; };
+		17AD149F20FE0BDA007C7613 /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AD149E20FE0BDA007C7613 /* CompactUserInfoHeader.xib */; };
+		17AD14A020FE0BDA007C7613 /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AD149E20FE0BDA007C7613 /* CompactUserInfoHeader.xib */; };
 		17BE300820D3C7EB005EA59C /* WalletQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */; };
 		17BE300920D3C7EB005EA59C /* WalletQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */; };
 		6D02945920DD3EFA00936664 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02945820DD3EF900936664 /* Connectivity.swift */; };
@@ -414,7 +416,6 @@
 		6D0524F020A5D838000B3247 /* NewDiscussionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17751AB02033568B00274F6A /* NewDiscussionCell.xib */; };
 		6D0524F120A5D838000B3247 /* MeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C89AFC1F0278FB00C6D8F7 /* MeCell.xib */; };
 		6D0524F220A5D838000B3247 /* NewClaimCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D106F08203AD4C70049E92E /* NewClaimCell.xib */; };
-		6D0524F320A5D838000B3247 /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */; };
 		6D0524F420A5D838000B3247 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AC1E8ABEE600B56D9B /* LaunchScreen.storyboard */; };
 		6D0524F520A5D838000B3247 /* WalletButtonsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */; };
 		6D0524F620A5D838000B3247 /* Claims.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D6DA24D1EE1B65000307C73 /* Claims.storyboard */; };
@@ -838,7 +839,6 @@
 		6D4E5D921F7AB6870020DEE2 /* ProxyForCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69D9FA1EFC07FF00DED5CE /* ProxyForCell.xib */; };
 		6D4E5D931F7AB6870020DEE2 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9CC62C1ED5EB23007F936E /* Me.storyboard */; };
 		6D4E5D941F7AB6870020DEE2 /* MeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C89AFC1F0278FB00C6D8F7 /* MeCell.xib */; };
-		6D4E5D961F7AB6870020DEE2 /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */; };
 		6D4E5D971F7AB6870020DEE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA475AC1E8ABEE600B56D9B /* LaunchScreen.storyboard */; };
 		6D4E5D981F7AB6870020DEE2 /* WalletButtonsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D69DA2C1EFD1A1E00DED5CE /* WalletButtonsCell.xib */; };
 		6D4E5D991F7AB6870020DEE2 /* Claims.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D6DA24D1EE1B65000307C73 /* Claims.storyboard */; };
@@ -1221,6 +1221,7 @@
 		17751AB02033568B00274F6A /* NewDiscussionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewDiscussionCell.xib; path = View/Cells/Report/NewDiscussionCell.xib; sourceTree = "<group>"; };
 		1790BB3920750A3F00FD1303 /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Year.swift; path = Model/Entities/Year.swift; sourceTree = "<group>"; };
 		17AD149B20F90237007C7613 /* AmountUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AmountUpdatable.swift; path = Scenes/Team/Members/AmountUpdatable.swift; sourceTree = "<group>"; };
+		17AD149E20FE0BDA007C7613 /* CompactUserInfoHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CompactUserInfoHeader.xib; path = View/CompactUserInfoHeader.xib; sourceTree = "<group>"; };
 		17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletQRCodeVC.swift; path = Scenes/Me/Wallet/WalletQRCodeVC.swift; sourceTree = "<group>"; };
 		1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.debug.xcconfig"; sourceTree = "<group>"; };
 		205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surilla/Pods-Surilla.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1318,7 +1319,6 @@
 		6D251C452035E8E0005081E4 /* SlidingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SlidingView.xib; path = View/Complex/SlidingView.xib; sourceTree = "<group>"; };
 		6D251C482035E9B3005081E4 /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SlidingView.swift; path = View/Complex/SlidingView.swift; sourceTree = "<group>"; };
 		6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompactUserInfoHeader.swift; path = View/ReusableViews/CompactUserInfoHeader.swift; sourceTree = "<group>"; };
-		6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompactUserInfoHeader.xib; path = View/ReusableViews/CompactUserInfoHeader.xib; sourceTree = "<group>"; };
 		6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionCompactCell.swift; path = Scenes/Team/Members/DiscussionCompactCell.swift; sourceTree = "<group>"; };
 		6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersCellBuilder.swift; path = Scenes/Team/Members/MembersCellBuilder.swift; sourceTree = "<group>"; };
 		6D2A57B01F698B8A00CE8841 /* EthereumProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumProcessor.swift; sourceTree = "<group>"; };
@@ -2105,6 +2105,8 @@
 		6D1683861F13BD6C002B52EE /* ComplexViews */ = {
 			isa = PBXGroup;
 			children = (
+				6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */,
+				17AD149E20FE0BDA007C7613 /* CompactUserInfoHeader.xib */,
 				94EA564F1F20FE04003B46CC /* AmountWithCurrency.xib */,
 				94EA56521F2101D4003B46CC /* AmountWithCurrency.swift */,
 				6D02AC991F06A6F800B01AAF /* LabeledRoundImageView.swift */,
@@ -2409,8 +2411,6 @@
 				6D69DA0A1EFC36C000DED5CE /* InfoHeader.xib */,
 				6D69DA351EFD6CED00DED5CE /* HeaderWithButton.swift */,
 				6D69DA361EFD6CED00DED5CE /* HeaderWithButton.xib */,
-				6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */,
-				6D2808C41F1A450C00EBBE3D /* CompactUserInfoHeader.xib */,
 				6D59F00C1F56F47B00C422EB /* ChatFooter.swift */,
 				6D59F00D1F56F47B00C422EB /* ChatFooter.xib */,
 				6DDC65521FB9F02400DE4E36 /* TeammateSummaryView.swift */,
@@ -3504,7 +3504,6 @@
 				6D0524F020A5D838000B3247 /* NewDiscussionCell.xib in Resources */,
 				6D0524F120A5D838000B3247 /* MeCell.xib in Resources */,
 				6D0524F220A5D838000B3247 /* NewClaimCell.xib in Resources */,
-				6D0524F320A5D838000B3247 /* CompactUserInfoHeader.xib in Resources */,
 				6D0524F420A5D838000B3247 /* LaunchScreen.storyboard in Resources */,
 				6D0524F520A5D838000B3247 /* WalletButtonsCell.xib in Resources */,
 				6D0524F620A5D838000B3247 /* Claims.storyboard in Resources */,
@@ -3551,6 +3550,7 @@
 				6D05252020A5D838000B3247 /* Me.strings in Resources */,
 				6D05252120A5D838000B3247 /* Team.strings in Resources */,
 				6D05252220A5D838000B3247 /* SwipeToVote.xib in Resources */,
+				17AD14A020FE0BDA007C7613 /* CompactUserInfoHeader.xib in Resources */,
 				6D05252320A5D838000B3247 /* JoinTeamGreetingCell.xib in Resources */,
 				6D05252420A5D838000B3247 /* ClaimOptionsCell.xib in Resources */,
 				6D05252520A5D838000B3247 /* Team.storyboard in Resources */,
@@ -3605,7 +3605,6 @@
 				17751AB42033568B00274F6A /* NewDiscussionCell.xib in Resources */,
 				6D4E5D941F7AB6870020DEE2 /* MeCell.xib in Resources */,
 				6D106F0D203AD4DD0049E92E /* NewClaimCell.xib in Resources */,
-				6D4E5D961F7AB6870020DEE2 /* CompactUserInfoHeader.xib in Resources */,
 				6D4E5D971F7AB6870020DEE2 /* LaunchScreen.storyboard in Resources */,
 				6D4E5D981F7AB6870020DEE2 /* WalletButtonsCell.xib in Resources */,
 				6D4E5D991F7AB6870020DEE2 /* Claims.storyboard in Resources */,
@@ -3652,6 +3651,7 @@
 				6D4E5DBF1F7AB6870020DEE2 /* Me.strings in Resources */,
 				6D4E5DC11F7AB6870020DEE2 /* Team.strings in Resources */,
 				9489C1261FF54D7100ECA3A4 /* SwipeToVote.xib in Resources */,
+				17AD149F20FE0BDA007C7613 /* CompactUserInfoHeader.xib in Resources */,
 				6D4E5DC21F7AB6870020DEE2 /* JoinTeamGreetingCell.xib in Resources */,
 				6D4E5DC31F7AB6870020DEE2 /* ClaimOptionsCell.xib in Resources */,
 				6D4E5DC41F7AB6870020DEE2 /* Team.storyboard in Resources */,
