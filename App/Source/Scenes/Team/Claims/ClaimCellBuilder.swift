@@ -133,7 +133,11 @@ struct ClaimCellBuilder {
         } else {
             cell.yourVotePercentValue.text = ". . ."
             cell.isYourVoteHidden = true
-            cell.slider.setValue(cell.slider.minimumValue, animated: true)
+            if let teamVote = voting.ratioVoted {
+                cell.slider.setValue(Float(teamVote.value), animated: true)
+            } else {
+                cell.slider.setValue(cell.slider.minimumValue, animated: true)
+            }
             cell.resetButton.isHidden = true
         }
         cell.proxyAvatar.isHidden = voting.proxyAvatar == nil || voting.myVote == nil
@@ -145,9 +149,14 @@ struct ClaimCellBuilder {
         cell.yourVoteCurrency.text = session?.currentTeam?.currency ?? ""
         
         cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
-        cell.teamVotePercentValue.text = String.truncatedNumber(voting.ratioVoted.percentage)
-        cell.teamVoteAmount.text = String.truncatedNumber(voting.ratioVoted.fiat(from: claim.basic.claimAmount).value)
-        cell.teamVoteCurrency.text = session?.currentTeam?.currency ?? ""
+        if let teamVote = voting.ratioVoted {
+            cell.teamVotePercentValue.text = String.truncatedNumber(teamVote.percentage)
+            cell.teamVoteAmount.text = String.truncatedNumber(teamVote.fiat(from: claim.basic.claimAmount).value)
+            cell.teamVoteCurrency.text = session?.currentTeam?.currency
+        } else {
+            cell.teamVotePercentValue.text = ". . ."
+            cell.isTeamVoteHidden = true
+        }
         
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
         cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)
