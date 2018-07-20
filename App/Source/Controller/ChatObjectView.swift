@@ -57,6 +57,8 @@ class ChatObjectView: UIView, XIBInitable {
     
     var contentView: UIView!
     
+    @IBOutlet var chevronImageView: UIImageView!
+    
     weak var delegate: ChatObjectViewDelegate?
     
     override init(frame: CGRect) {
@@ -91,11 +93,10 @@ class ChatObjectView: UIView, XIBInitable {
         voteStackViewLeadingConstraint.constant = isSmallIPhone ? CGFloat(8) : CGFloat(13)
         clearLabels()
         chevronButton.isHidden = false
+        chevronImageView.isHidden = false
         voteContainer.isHidden = false
-        chevronButton.alpha = 0
+        chevronImageView.alpha = 0
         voteContainer.alpha = 1
-        chevronButton.imageView?.contentMode = .scaleAspectFit
-        chevronButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
     }
     
     func setup(with chatModel: ChatModel?) {
@@ -115,14 +116,14 @@ class ChatObjectView: UIView, XIBInitable {
 
     func showChevron() {
         rightButton.isHidden = true
-        chevronButton.alpha = 1
+        chevronImageView.alpha = 1
         voteContainer.alpha = 0
     }
 
     func showVoteContainer() {
         voteContainer.alpha = 1
         rightButton.isHidden = false
-        chevronButton.alpha = 0
+        chevronImageView.alpha = 0
     }
     
     func resizeImageView() {
@@ -142,7 +143,6 @@ class ChatObjectView: UIView, XIBInitable {
             "Team.Chat.ObjectView.ClaimAmountLabel".localized + String(format: "%.2f", amount.value)
         }
         currencyLabel.text = team.currency
-        percentLabel.text = "%"
         rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
         
         imageView.image = #imageLiteral(resourceName: "imagePlaceholder")
@@ -158,9 +158,11 @@ class ChatObjectView: UIView, XIBInitable {
                     voteValueLabel.text = String(format: "%.f", vote * 100)
                     rightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
                 }
+                percentLabel.text = "%"
             } else {
                 rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
                 voteValueLabel.text = "..."
+                percentLabel.text = ""
             }
         } else if let reimbursement = basic.reimbursement {
             voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.team".localized
