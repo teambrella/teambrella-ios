@@ -24,6 +24,7 @@
             <connections>
                 <outlet property="amountLabel" destination="F9g-le-cSH" id="Ghp-3G-l4i"/>
                 <outlet property="chevronButton" destination="8rK-LI-YhF" id="pPL-3X-oML"/>
+                <outlet property="chevronImageView" destination="6Tu-uP-zZd" id="2C8-Bb-cza"/>
                 <outlet property="currencyLabel" destination="7YP-gL-Rik" id="Saa-Zl-qM3"/>
                 <outlet property="imageView" destination="MYB-G5-BbW" id="bdh-g9-fPW"/>
                 <outlet property="imageViewHeight" destination="ZsW-8O-Viv" id="rkR-Li-TQs"/>
@@ -90,12 +91,18 @@
                                 <constraint firstAttribute="width" constant="1" id="E5Z-AU-Reo"/>
                             </constraints>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevronUp" translatesAutoresizingMaskIntoConstraints="NO" id="6Tu-uP-zZd">
+                            <rect key="frame" x="336.5" y="-10.5" width="15" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="15" id="E21-2Z-Zog"/>
+                            </constraints>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rK-LI-YhF">
                             <rect key="frame" x="309" y="0.0" width="70" height="79"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="ED2-Ag-M51"/>
                             </constraints>
-                            <state key="normal" image="chevronUp"/>
                             <connections>
                                 <action selector="tapChevron:" destination="-1" eventType="touchUpInside" id="lrG-4a-vHf"/>
                             </connections>
@@ -201,6 +208,7 @@
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MYB-G5-BbW" secondAttribute="bottom" constant="5" id="15d-Pj-OnK"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="top" secondItem="8MY-cC-Bco" secondAttribute="top" constant="8" id="1Ub-ll-bXn"/>
                         <constraint firstItem="8rK-LI-YhF" firstAttribute="width" relation="greaterThanOrEqual" secondItem="36L-C4-ED1" secondAttribute="width" id="1p3-Pw-SQM"/>
+                        <constraint firstItem="6Tu-uP-zZd" firstAttribute="centerY" secondItem="8rK-LI-YhF" secondAttribute="centerY" id="3hh-AA-WKO"/>
                         <constraint firstItem="kHo-BD-xhI" firstAttribute="top" secondItem="MYB-G5-BbW" secondAttribute="top" id="4U9-n4-Ygi"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7YP-gL-Rik" secondAttribute="trailing" constant="8" id="7MR-rt-lQ4"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kHo-BD-xhI" secondAttribute="trailing" constant="8" id="7yY-KF-xdU"/>
@@ -216,6 +224,7 @@
                         <constraint firstItem="8rK-LI-YhF" firstAttribute="centerY" secondItem="c1y-bp-9dQ" secondAttribute="centerY" id="TfO-wu-eKy"/>
                         <constraint firstItem="F9g-le-cSH" firstAttribute="leading" secondItem="MYB-G5-BbW" secondAttribute="trailing" constant="8" id="WOT-eE-08h"/>
                         <constraint firstItem="vhP-W7-ibO" firstAttribute="centerY" secondItem="8MY-cC-Bco" secondAttribute="centerY" id="dLX-Xv-jaU"/>
+                        <constraint firstItem="6Tu-uP-zZd" firstAttribute="centerX" secondItem="8rK-LI-YhF" secondAttribute="centerX" id="lVu-CH-L8G"/>
                         <constraint firstItem="kHo-BD-xhI" firstAttribute="leading" secondItem="MYB-G5-BbW" secondAttribute="trailing" constant="8" id="m9N-k5-Jqz"/>
                         <constraint firstItem="F9g-le-cSH" firstAttribute="top" secondItem="kHo-BD-xhI" secondAttribute="bottom" constant="-1" id="pER-pT-PYf"/>
                         <constraint firstItem="8rK-LI-YhF" firstAttribute="bottom" secondItem="c1y-bp-9dQ" secondAttribute="bottom" id="pdd-Eg-CVa"/>
