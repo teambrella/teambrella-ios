@@ -24,6 +24,9 @@ import Foundation
 struct TeambrellaError: Error {
     let kind: TeambrellaErrorKind
     let description: String
+    var nsError: NSError {
+        return NSError(domain: "Teambrella.error", code: kind.rawValue, userInfo: ["description": description])
+    }
     
     enum TeambrellaErrorKind: Int {
         case unknownError               = -666
