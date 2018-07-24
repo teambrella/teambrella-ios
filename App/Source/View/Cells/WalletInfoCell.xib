@@ -42,19 +42,19 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GmJ-QL-Xzr" customClass="WalletAmountLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="32" y="16" width="50.5" height="180"/>
+                                <rect key="frame" x="32" y="16" width="50.5" height="130"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="88"/>
                                 <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnl-W0-IE9">
-                                <rect key="frame" x="90" y="159" width="14.5" height="19"/>
+                                <rect key="frame" x="90" y="109" width="14.5" height="19"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jKH-qP-Pq1">
-                                <rect key="frame" x="90" y="145" width="14.5" height="12"/>
+                                <rect key="frame" x="90" y="95" width="14.5" height="12"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
                                 <color key="textColor" red="0.4823529412" green="0.55294117649999996" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -65,6 +65,7 @@
                             <constraint firstItem="qnl-W0-IE9" firstAttribute="baseline" secondItem="GmJ-QL-Xzr" secondAttribute="baseline" id="1pg-Zb-Xa3"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qnl-W0-IE9" secondAttribute="trailing" constant="32" id="5bm-2S-MAM"/>
                             <constraint firstItem="qnl-W0-IE9" firstAttribute="leading" secondItem="GmJ-QL-Xzr" secondAttribute="trailing" constant="7" id="BbN-l8-pk2"/>
+                            <constraint firstAttribute="bottom" secondItem="GmJ-QL-Xzr" secondAttribute="bottom" constant="16" id="C8E-VS-rM6"/>
                             <constraint firstItem="O8K-Gs-yrl" firstAttribute="top" secondItem="H6q-Xe-MXf" secondAttribute="top" id="Heq-Sc-GeV"/>
                             <constraint firstItem="jKH-qP-Pq1" firstAttribute="leading" secondItem="qnl-W0-IE9" secondAttribute="leading" id="Rf4-AA-fSg"/>
                             <constraint firstItem="GmJ-QL-Xzr" firstAttribute="top" secondItem="H6q-Xe-MXf" secondAttribute="top" constant="16" id="TmJ-c3-ZFM"/>
@@ -73,7 +74,6 @@
                             <constraint firstAttribute="trailing" secondItem="O8K-Gs-yrl" secondAttribute="trailing" id="d5P-kK-w2T"/>
                             <constraint firstAttribute="bottom" secondItem="O8K-Gs-yrl" secondAttribute="bottom" id="ebf-fe-lvz"/>
                             <constraint firstItem="GmJ-QL-Xzr" firstAttribute="leading" secondItem="H6q-Xe-MXf" secondAttribute="leading" constant="32" id="m8V-dX-Uws"/>
-                            <constraint firstItem="qnl-W0-IE9" firstAttribute="bottom" secondItem="O8K-Gs-yrl" secondAttribute="bottom" constant="16" id="sen-Dy-iIp"/>
                             <constraint firstItem="O8K-Gs-yrl" firstAttribute="leading" secondItem="H6q-Xe-MXf" secondAttribute="leading" id="wsP-lg-u3H"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
