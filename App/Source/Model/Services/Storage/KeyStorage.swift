@@ -61,16 +61,22 @@ final class KeyStorage {
         let storage = SimpleStorage()
         storeLastUserType(type: .demo)
         guard let key = storage.string(forKey: .privateDemoKey) else {
-            let newKey = Key(timestamp: timestamp)
-            let privateKey = newKey.privateKey
-            storage.store(string: privateKey, forKey: .privateDemoKey)
-            return privateKey
+            return createNewDemoKey()
         }
 
         return key
     }
 
     private init() { }
+
+    @discardableResult
+    func createNewDemoKey() -> String {
+        let storage = SimpleStorage()
+        let newKey = Key(timestamp: timestamp)
+        let privateKey = newKey.privateKey
+        storage.store(string: privateKey, forKey: .privateDemoKey)
+        return privateKey
+    }
 
     func saveNewPrivateKey(string: String) {
         keychain.save(value: string, forKey: .privateKey)

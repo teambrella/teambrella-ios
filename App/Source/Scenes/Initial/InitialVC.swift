@@ -135,6 +135,9 @@ final class InitialVC: UIViewController {
             case let .value(teamsEntity):
                 self?.startSession(teamsEntity: teamsEntity, isDemo: isDemo)
             case let .error(error):
+                if isDemo {
+                    service.keyStorage.createNewDemoKey()
+                }
                 self?.failure(error: error)
             }
         }

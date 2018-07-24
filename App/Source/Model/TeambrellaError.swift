@@ -68,6 +68,10 @@ struct TeambrellaError: Error {
         case withdrawalAddressChecksum  = 710103
         
         case walletNotCreated           = 710013
+
+        case keyIsNotForDemo            = 901000
+        case demoNotDeductibleTeam      = 901001
+        case demoNotPetTeam             = 901002
         
         case serverTimeout              = -1001
         
