@@ -81,7 +81,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         registerCells()
         HUD.show(.progress, onView: view)
         
-        compactHeaderBottomConstraint.constant = 0
+        hideHeader()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -318,12 +318,24 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     private func showHeader(offset: CGFloat) {
         if offset < Constant.votingHeaderTopOffset {
-            compactHeaderBottomConstraint.constant = 60
+            UIViewPropertyAnimator(duration: 1, curve: .easeIn) {
+                self.compactUserInfoHeader.center = {
+                    let x = self.view.frame.midX
+                    let y = self.view.frame.minY + self.compactUserInfoHeader.frame.height / 2
+                    return CGPoint(x: x, y: y)
+                }()
+                }.startAnimation()
         }
     }
     
     private func hideHeader() {
-        compactHeaderBottomConstraint.constant = 0
+        UIViewPropertyAnimator(duration: 1, curve: .easeOut) {
+            self.compactUserInfoHeader.center = {
+                let x = self.view.frame.midX
+                let y = self.view.frame.minY - self.compactUserInfoHeader.frame.height / 2
+                return CGPoint(x: x, y: y)
+            }()
+            }.startAnimation()
     }
 }
 
