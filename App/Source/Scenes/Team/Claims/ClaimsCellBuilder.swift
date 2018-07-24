@@ -51,9 +51,9 @@ struct ClaimsCellBuilder {
             cell.claimedAmountLabel.text = currencySymbol + claim.claimAmount.formatted
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
             if let vote = claim.myVote {
-            cell.votedLabel.text = "Team.Claims.VotedCell.voted".localized
-                + String.truncatedNumber(vote.percentage)
-                + "%"
+                cell.votedLabel.text = "Team.Claims.VotedCell.voted".localized
+                    + String.truncatedNumber(vote.percentage)
+                    + "%"
             } else {
                 cell.votedLabel.text = ""
             }
@@ -65,17 +65,27 @@ struct ClaimsCellBuilder {
             }
         } else if let cell = cell as? ClaimsPaidCell {
             cell.avatarView.show(claim.smallPhoto)
-            if claim.state == .declined {
+            switch claim.state {
+            case .declined:
                 cell.statusLabel.text = "Team.ClaimsCell.declined".localized.uppercased()
                 cell.statusLabel.textColor = .red
                 cell.scaleBar.isLineHidden = true
-            } else {
+            case .inPayment:
                 cell.statusLabel.text = "Team.ClaimsCell.reimbursed".localized.uppercased()
                 cell.statusLabel.textColor = .blueyGray
                 cell.scaleBar.isLineHidden = false
+            default:
+                cell.statusLabel.text = "Team.ClaimsCell.reimbursed".localized.uppercased()
+                cell.statusLabel.textColor = .tealish
+                cell.scaleBar.isLineHidden = false
             }
+
             cell.amountLabel.text = currencySymbol + claim.claimAmount.formatted
-            cell.scaleBar.value = CGFloat(claim.reimbursement.value)
+            if let ratio = claim.paidRatio {
+                cell.scaleBar.value = CGFloat(ratio)
+            } else {
+                cell.scaleBar.value = 0
+            }
         }
     }
 }

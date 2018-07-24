@@ -32,8 +32,8 @@ struct ClaimEntity: Decodable {
         case state = "State"
         case claimAmount = "ClaimAmount"
         case reimbursement = "Reimbursement"
-//        case votingRes = "VotingRes_Crypto"
-//        case paymentRes = "PaymentRes_Crypto"
+        case votingRes = "VotingRes_Crypto"
+        case paymentRes = "PaymentRes_Crypto"
         case proxyAvatar = "ProxyAvatar"
         case proxyName = "ProxyName"
         case myVote = "MyVote"
@@ -49,8 +49,8 @@ struct ClaimEntity: Decodable {
     var state: ClaimState
     var claimAmount: Fiat
     var reimbursement: Fiat
-//    var votingRes: Double?
-//    var paymentRes: Double
+    var votingRes: Double?
+    var paymentRes: Double?
     var myVote: ClaimVote?
     
     var proxyAvatar: Avatar?
@@ -58,6 +58,12 @@ struct ClaimEntity: Decodable {
     
     var description: String {
         return "\(#file) \(id)"
+    }
+
+    var paidRatio: Double? {
+        guard let voted = votingRes, let paid = paymentRes else { return nil }
+
+        return paid / voted
     }
 
 }
