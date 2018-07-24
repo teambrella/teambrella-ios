@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,61 +42,30 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GmJ-QL-Xzr" customClass="WalletAmountLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="32" y="16" width="50.5" height="90"/>
+                                <rect key="frame" x="32" y="16" width="50.5" height="130"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="88"/>
                                 <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnl-W0-IE9">
-                                <rect key="frame" x="90" y="69" width="14.5" height="19"/>
+                                <rect key="frame" x="90" y="109" width="14.5" height="19"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jKH-qP-Pq1">
-                                <rect key="frame" x="90" y="55" width="14.5" height="12"/>
+                                <rect key="frame" x="90" y="95" width="14.5" height="12"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
                                 <color key="textColor" red="0.4823529412" green="0.55294117649999996" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pv-P1-cz8" customClass="NumberBar" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="35" y="106" width="190" height="40"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMK-fe-8FB">
-                                        <rect key="frame" x="72.5" y="4" width="1" height="32"/>
-                                        <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="1" id="YMg-Mx-mdz"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="190" id="A3l-wR-1QU"/>
-                                    <constraint firstAttribute="height" constant="40" id="N5H-ON-hAQ"/>
-                                    <constraint firstItem="rMK-fe-8FB" firstAttribute="top" secondItem="3Pv-P1-cz8" secondAttribute="top" constant="4" id="Y9k-Uj-fUn"/>
-                                    <constraint firstAttribute="bottom" secondItem="rMK-fe-8FB" secondAttribute="bottom" constant="4" id="aO7-5E-j5t"/>
-                                    <constraint firstItem="rMK-fe-8FB" firstAttribute="centerX" secondItem="3Pv-P1-cz8" secondAttribute="centerX" constant="-22" id="kPg-tV-Tii"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="count">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isBottomLineVisible" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="stackHeight">
-                                        <real key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="areVerticalLinesVisible" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qnl-W0-IE9" firstAttribute="baseline" secondItem="GmJ-QL-Xzr" secondAttribute="baseline" id="1pg-Zb-Xa3"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qnl-W0-IE9" secondAttribute="trailing" constant="32" id="5bm-2S-MAM"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3Pv-P1-cz8" secondAttribute="trailing" constant="32" id="9Lz-xx-OjB"/>
                             <constraint firstItem="qnl-W0-IE9" firstAttribute="leading" secondItem="GmJ-QL-Xzr" secondAttribute="trailing" constant="7" id="BbN-l8-pk2"/>
-                            <constraint firstItem="3Pv-P1-cz8" firstAttribute="leading" secondItem="GmJ-QL-Xzr" secondAttribute="leading" constant="3" id="EGD-Cd-8aR"/>
+                            <constraint firstAttribute="bottom" secondItem="GmJ-QL-Xzr" secondAttribute="bottom" constant="16" id="C8E-VS-rM6"/>
                             <constraint firstItem="O8K-Gs-yrl" firstAttribute="top" secondItem="H6q-Xe-MXf" secondAttribute="top" id="Heq-Sc-GeV"/>
                             <constraint firstItem="jKH-qP-Pq1" firstAttribute="leading" secondItem="qnl-W0-IE9" secondAttribute="leading" id="Rf4-AA-fSg"/>
                             <constraint firstItem="GmJ-QL-Xzr" firstAttribute="top" secondItem="H6q-Xe-MXf" secondAttribute="top" constant="16" id="TmJ-c3-ZFM"/>
@@ -104,9 +73,7 @@
                             <constraint firstItem="qnl-W0-IE9" firstAttribute="top" secondItem="jKH-qP-Pq1" secondAttribute="bottom" constant="2" id="bUc-Ew-ncD"/>
                             <constraint firstAttribute="trailing" secondItem="O8K-Gs-yrl" secondAttribute="trailing" id="d5P-kK-w2T"/>
                             <constraint firstAttribute="bottom" secondItem="O8K-Gs-yrl" secondAttribute="bottom" id="ebf-fe-lvz"/>
-                            <constraint firstAttribute="bottom" secondItem="3Pv-P1-cz8" secondAttribute="bottom" constant="16" id="jzA-Gm-Mip"/>
                             <constraint firstItem="GmJ-QL-Xzr" firstAttribute="leading" secondItem="H6q-Xe-MXf" secondAttribute="leading" constant="32" id="m8V-dX-Uws"/>
-                            <constraint firstItem="3Pv-P1-cz8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GmJ-QL-Xzr" secondAttribute="bottom" id="oW2-1s-02B"/>
                             <constraint firstItem="O8K-Gs-yrl" firstAttribute="leading" secondItem="H6q-Xe-MXf" secondAttribute="leading" id="wsP-lg-u3H"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -153,7 +120,6 @@
                 <outlet property="amount" destination="GmJ-QL-Xzr" id="EXW-Aa-Pld"/>
                 <outlet property="auxillaryAmount" destination="jKH-qP-Pq1" id="03b-8D-9zC"/>
                 <outlet property="currencyLabel" destination="qnl-W0-IE9" id="MJE-gk-A4z"/>
-                <outlet property="numberBar" destination="3Pv-P1-cz8" id="f9V-Mq-7Iz"/>
             </connections>
             <point key="canvasLocation" x="94" y="16"/>
         </collectionViewCell>
