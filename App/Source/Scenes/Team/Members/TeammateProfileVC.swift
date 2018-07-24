@@ -77,11 +77,11 @@ final class TeammateProfileVC: UIViewController, Routable {
         } else {
             fatalError("No valid info about teammate")
         }
-        addGradientNavBarIfNeeded()
+        // addGradientNavBarIfNeeded()
         registerCells()
         HUD.show(.progress, onView: view)
         
-        hideHeader()
+        hideHeader(animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -240,10 +240,15 @@ final class TeammateProfileVC: UIViewController, Routable {
     }
     
     // MARK: Private
-    
+
+    private var isGradientNavBarAdded = false
+
     private func addGradientNavBarIfNeeded() {
+        guard !isGradientNavBarAdded else { return }
+
         if !isPeeking && shouldAddGradientNavBar {
             addGradientNavBar()
+            isGradientNavBarAdded = true
             if !dataSource.isMe {
                 addPrivateMessageButton()
             }
@@ -315,27 +320,27 @@ final class TeammateProfileVC: UIViewController, Routable {
             }
         }
     }
-    
+
     private func showHeader(offset: CGFloat) {
         if offset < Constant.votingHeaderTopOffset {
-            UIViewPropertyAnimator(duration: 1, curve: .easeIn) {
-                self.compactUserInfoHeader.center = {
-                    let x = self.view.frame.midX
-                    let y = self.view.frame.minY + self.compactUserInfoHeader.frame.height / 2
-                    return CGPoint(x: x, y: y)
-                }()
-                }.startAnimation()
+            view.layoutIfNeeded()
+            self.compactHeaderBottomConstraint.constant = 60
+            let animator = UIViewPropertyAnimator(duration: 1, curve: .easeOut) {
+                self.view.layoutIfNeeded()
+            }
+            animator.startAnimation()
         }
     }
     
-    private func hideHeader() {
-        UIViewPropertyAnimator(duration: 1, curve: .easeOut) {
-            self.compactUserInfoHeader.center = {
-                let x = self.view.frame.midX
-                let y = self.view.frame.minY - self.compactUserInfoHeader.frame.height / 2
-                return CGPoint(x: x, y: y)
-            }()
-            }.startAnimation()
+    private func hideHeader(animated: Bool) {
+        view.layoutIfNeeded()
+        compactHeaderBottomConstraint.constant = 0
+        if animated {
+            let animator = UIViewPropertyAnimator(duration: 1, curve: .easeIn) {
+                self.view.layoutIfNeeded()
+            }
+            animator.startAnimation()
+        }
     }
 }
 
@@ -682,7 +687,8 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             let now = Date()
             if now.timeIntervalSince1970 - self.lastScrollMoment.timeIntervalSince1970 >
                 Constant.votingHeaderShowTime - 1 {
-                self.hideHeader()
+                self.hideHeader(animated: true)
+                self.lastScrollMoment = Date()
             }
         }
     }
