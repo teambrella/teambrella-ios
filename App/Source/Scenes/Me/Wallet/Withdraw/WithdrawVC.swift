@@ -21,7 +21,7 @@ import UIKit
 
 class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     struct Constant {
-        static let headerCellHeight: CGFloat = 150
+        static let headerCellHeight: CGFloat = 110
         static let withdrawCellHeight: CGFloat = 310
         static let txCellHeight: CGFloat = 72
         static let horizontalCellPadding: CGFloat = 16

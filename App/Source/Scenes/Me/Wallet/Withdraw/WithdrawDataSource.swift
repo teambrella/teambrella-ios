@@ -37,25 +37,24 @@ final class WithdrawDataSource {
         }
     }
     
-    lazy var detailsModel = { self.modelBuilder.detailsModel(maxAmount: MEth(maxEthAvailable).value) }()
-    lazy var infoModel = { self.modelBuilder.infoModel(amount: cryptoBalance,
-                                                       reserved: cryptoReserved,
-                                                       available: maxEthAvailable,
-                                                       currencyRate: currencyRate) }()
-    
+    lazy var detailsModel: WithdrawDetailsCellModel = { createDetailsModel() }()
+    lazy var infoModel: WalletInfoCellModel = { createInfoModel() }()
+
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
-    
+
     private var lastChunk: WithdrawChunk? {
         didSet {
             if let chunk = lastChunk {
                 transactions[0].removeAll()
                 transactions[1].removeAll()
                 transactions[2].removeAll()
-                
+
                 cryptoBalance = chunk.cryptoBalance
                 cryptoReserved = chunk.cryptoReserved
-                
+                detailsModel = createDetailsModel()
+                infoModel = createInfoModel()
+
                 for tx in chunk.txs {
                     let state = tx.serverTxState
                     if state.isQueued {
@@ -70,26 +69,26 @@ final class WithdrawDataSource {
             print(transactions)
         }
     }
-    
+
     private let modelBuilder = WithdrawModelBuilder()
     private var transactions: [[WithdrawTx]] = []
-    
+
     init(teamID: Int) {
         self.teamID = teamID
         for _ in 0..<3 {
             transactions.append([WithdrawTx]())
         }
     }
-    
+
     func rows(in section: Int) -> Int {
         guard section > 0 else { return 2 }
-        
+
         let filtered = transactions.filter { $0.isEmpty == false }
         guard section - 1 < filtered.count else { return 0 }
-        
+
         return filtered[section - 1].count
     }
-    
+
     func headerName(section: Int) -> String? {
         var headers = ["Me.Wallet.Withdraw.header.queued",
                        "Me.Wallet.Withdraw.header.inProgress",
@@ -104,7 +103,7 @@ final class WithdrawDataSource {
             return headers[section - 1].localized
         }
     }
-    
+
     func currencyName(section: Int) -> String? {
         switch section {
         case 0:
@@ -113,7 +112,7 @@ final class WithdrawDataSource {
             return "mETH"
         }
     }
-    
+
     func loadData() {
         isLoading = true
         service.dao.requestWithdrawTransactions(teamID: teamID).observe { [weak self] result in
@@ -127,11 +126,11 @@ final class WithdrawDataSource {
             self?.isLoading = false
         }
     }
-    
+
     func withdraw() {
         guard let amount = MEth(string: detailsModel.amountValue),
             let address = EthereumAddress(string: detailsModel.toValue) else { return }
-        
+
         isLoading = true
         service.dao.withdraw(teamID: teamID,
                              amount: Ether(amount).value,
@@ -146,36 +145,47 @@ final class WithdrawDataSource {
                                 self?.isLoading = false
         }
     }
-    
+
     func cleanWithdrawDetails() {
         detailsModel.amountValue = ""
         detailsModel.toValue = ""
     }
-    
+
     func createCellModels(with wallet: WalletEntity) {
         //walletInfo = WalletInfoCellModel(currencyRate: wallet.currencyRate)
     }
-    
+
     // MARK: Private
+
+    private func createDetailsModel() -> WithdrawDetailsCellModel {
+        return self.modelBuilder.detailsModel(maxAmount: MEth(maxEthAvailable).value)
+    }
+
+    private func createInfoModel() -> WalletInfoCellModel {
+        return self.modelBuilder.infoModel(amount: cryptoBalance,
+                                           reserved: cryptoReserved,
+                                           available: maxEthAvailable,
+                                           currencyRate: currencyRate)
+    }
     
     private func addQueued(transaction: WithdrawTx) {
         transactions[0].append(transaction)
     }
-    
+
     private func addProcessing(transaction: WithdrawTx) {
         transactions[1].append(transaction)
     }
-    
+
     private func addHistory(transaction: WithdrawTx) {
         transactions[2].append(transaction)
     }
-    
+
     // MARK: Subscripts
-    
+
     subscript(indexPath: IndexPath) -> WithdrawCellModel? {
         guard indexPath.section < sections else { return nil }
         guard indexPath.row < rows(in: indexPath.section) else { return nil }
-        
+
         if indexPath.section == 0 && indexPath.row == 0 {
             return infoModel
         } else if indexPath.section == 0 && indexPath.row == 1 {
