@@ -53,9 +53,7 @@ final class ServicesHandler {
     
     /// service to store private keys and last user logged in
     var keyStorage: KeyStorage { return KeyStorage.shared }
-    
-    // WIP!
-    // old analogue of cryptoWorker. Should be merged and deleted
+
     lazy var teambrella = TeambrellaService()
     
     /// socket messaging service

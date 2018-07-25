@@ -283,7 +283,9 @@ extension MembersVC: UIViewControllerPreviewingDelegate {
         guard let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
         
         let teammate = dataSource[indexPath]
-        guard let vc = service.router.getControllerMemberProfile(teammateID: teammate.userID) else { return nil }
+        guard let vc = service.router.getControllerMemberProfile(teammateID: teammate.userID, teamID: nil) else {
+            return nil
+        }
         
         vc.preferredContentSize = CGSize(width: view.bounds.width * 0.8, height: view.bounds.height * 0.9)
         previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)

@@ -76,16 +76,5 @@ class Teammate: NSManagedObject {
         }
         return nil
     }
-    
-//    var addressPrevious: CryptoAddress? {
-//        return addresses.filter { $0.status == UserAddressStatus.previous }.first
-//    }
-//
-//    var addressCurrent: CryptoAddress? {
-//        return addresses.filter { $0.status == UserAddressStatus.current }.first
-//    }
-//    
-//    var addressNext: CryptoAddress? {
-//        return addresses.filter { $0.status == UserAddressStatus.next }.first
-//    }
+
 }

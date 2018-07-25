@@ -107,8 +107,8 @@ public enum TransactionClientResolution: Int, EnumStringConvertible {
 public enum MultisigStatus: Int {
     case previous = 0
     case current  = 1
-    case next     = 3
-    case archive  = 4
+    case next     = 2
+    case archive  = 3
     case failed   = -400
 }
 

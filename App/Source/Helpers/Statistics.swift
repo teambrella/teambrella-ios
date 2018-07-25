@@ -39,7 +39,11 @@ class Statistics {
     }
 
     static func log(error: Error) {
+        if let error = error as? TeambrellaError {
+            Crashlytics.sharedInstance().recordError(error.nsError)
+        } else {
         Crashlytics.sharedInstance().recordError(error)
+        }
     }
 
     static func log(event: Event, dict: [String: Any]? = nil) {

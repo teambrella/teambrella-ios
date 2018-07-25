@@ -42,6 +42,7 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var teamVotePercentValue: UILabel!
     @IBOutlet var teamVoteAmount: UILabel!
     @IBOutlet var teamVoteCurrency: Label!
+    @IBOutlet var teamVotePercentSign: UILabel!
     @IBOutlet var avatarsStack: RoundImagesStack!
     
     @IBOutlet var slider: UISlider!
@@ -56,6 +57,14 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
             yourVoteAmount.isHidden = isYourVoteHidden
             yourVotePercentSign.isHidden = isYourVoteHidden
             yourVoteCurrency.isHidden = isYourVoteHidden
+        }
+    }
+    
+    var isTeamVoteHidden: Bool = false {
+        didSet {
+            teamVoteAmount.isHidden = isTeamVoteHidden
+            teamVotePercentSign.isHidden = isTeamVoteHidden
+            teamVoteCurrency.isHidden = isTeamVoteHidden
         }
     }
     

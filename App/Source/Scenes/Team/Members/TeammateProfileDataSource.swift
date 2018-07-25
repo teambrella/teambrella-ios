@@ -40,6 +40,7 @@ struct SocialItem {
 
 class TeammateProfileDataSource {
     let teammateID: String
+    let teamID: Int
     let isMe: Bool
     // let isVoting: Bool
     var isMyProxy: Bool {
@@ -63,9 +64,10 @@ class TeammateProfileDataSource {
         return nil
     }
     
-    init(id: String, isMe: Bool) {
+    init(id: String, teamID: Int, isMe: Bool) {
         self.teammateID = id
         self.isMe = isMe
+        self.teamID = teamID
     }
     
     var sections: Int = 1
@@ -80,7 +82,7 @@ class TeammateProfileDataSource {
     
     func loadEntireTeammate(completion: @escaping (TeammateLarge) -> Void,
                             failure: @escaping (Error) -> Void) {
-        service.dao.requestTeammate(userID: teammateID).observe { [weak self] result in
+        service.dao.requestTeammate(userID: teammateID, teamID: teamID).observe { [weak self] result in
             guard let `self` = self else { return }
 
             switch result {

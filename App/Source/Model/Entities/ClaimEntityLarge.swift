@@ -82,7 +82,7 @@ struct ClaimEntityLarge: Decodable, CustomStringConvertible {
     }
 
     struct VotingPart: Decodable {
-        let ratioVoted: ClaimVote
+        let ratioVoted: ClaimVote?
         let myVote: ClaimVote?
         let proxyAvatar: Avatar?
         let proxyName: Name?

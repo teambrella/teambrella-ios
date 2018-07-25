@@ -32,6 +32,7 @@ struct UserIndexCellModel: Decodable {
         case discussionFreq = "DiscussionFreq"
         case votingFreq = "VotingFreq"
         case position = "Position"
+        case teams = "Teams"
     }
     
     let userID: String
@@ -43,5 +44,6 @@ struct UserIndexCellModel: Decodable {
     let position: Int?
     let name: String
     let votingFreq: Int?
+    let teams: [Int]
     
 }

@@ -98,10 +98,8 @@ final class TeambrellaService: NSObject {
 
     private func update(completion: @escaping (Bool) -> Void) {
         log("Teambrella service begins updates", type: .crypto)
-        // let blockchain = BlockchainService(contentProvider: contentProvider, server: server)
         updateData { success in
             if success {
-                //  blockchain.updateData()
                 self.contentProvider.save()
             }
 
@@ -242,6 +240,7 @@ final class TeambrellaService: NSObject {
         let myPublicKey = key.publicKey
         let multisigsToCreate = contentProvider.multisigsToCreate(publicKey: myPublicKey)
         guard !multisigsToCreate.isEmpty else {
+            log("No multisigs to create", type: .cryptoDetails)
             completion(false)
             return
         }
@@ -295,6 +294,7 @@ final class TeambrellaService: NSObject {
                                                     success = true
                                                     group.leave()
                     }, failure: { error in
+                        log("\(String(describing: error))", type: [.cryptoDetails, .error])
                         completion(false)
                     })
                 }
@@ -302,6 +302,7 @@ final class TeambrellaService: NSObject {
             }
             completion(success)
         }) { error in
+             log("\(String(describing: error))", type: [.cryptoDetails, .error])
             completion(false)
         }
     }

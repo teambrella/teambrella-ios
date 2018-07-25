@@ -193,7 +193,13 @@ extension UserIndexVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        service.router.presentMemberProfile(teammateID: dataSource[indexPath].userID)
+        if let currentTeam = service.session?.currentTeam?.teamID, dataSource[indexPath].teams.contains(currentTeam) {
+            service.router.presentMemberProfile(teammateID: dataSource[indexPath].userID)
+        } else {
+            let teammate = dataSource[indexPath]
+            service.router.presentMemberProfile(teammateID: teammate.userID, teamID: teammate.teams.first)
+            print("can't let u in! no teammate found")
+        }
     }
     
 }
@@ -217,16 +223,16 @@ extension UserIndexVC: UICollectionViewDelegateFlowLayout {
 extension UserIndexVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         /*
-        let currentOffset = scrollView.contentOffset.y
-        let velocity = currentOffset - previousScrollOffset
-        previousScrollOffset = currentOffset
-        if velocity > Constant.scrollingVelocityThreshold {
-            shrinkTopContainer(true)
-        }
-        if velocity < -Constant.scrollingVelocityThreshold {
-            shrinkTopContainer(false)
-        }
- */
+         let currentOffset = scrollView.contentOffset.y
+         let velocity = currentOffset - previousScrollOffset
+         previousScrollOffset = currentOffset
+         if velocity > Constant.scrollingVelocityThreshold {
+         shrinkTopContainer(true)
+         }
+         if velocity < -Constant.scrollingVelocityThreshold {
+         shrinkTopContainer(false)
+         }
+         */
     }
 }
 

@@ -1244,12 +1244,22 @@
                                     <outlet property="delegate" destination="Gx7-ey-gPh" id="C6e-Uc-5e9"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLG-NN-ABI" customClass="CompactUserInfoHeader" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-40" width="375" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="fD1-Be-6Ea"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="iLG-NN-ABI" firstAttribute="leading" secondItem="KTz-Bt-B0f" secondAttribute="leading" id="8Lf-oV-TmQ"/>
                             <constraint firstItem="DOV-3b-s1w" firstAttribute="top" secondItem="yql-nn-JRw" secondAttribute="bottom" id="Gu2-aI-Y9j"/>
                             <constraint firstItem="DOV-3b-s1w" firstAttribute="trailing" secondItem="KTz-Bt-B0f" secondAttribute="trailing" id="WuD-CA-Wvc"/>
+                            <constraint firstItem="iLG-NN-ABI" firstAttribute="bottom" secondItem="yql-nn-JRw" secondAttribute="bottom" id="c59-mU-DXY"/>
                             <constraint firstItem="DOV-3b-s1w" firstAttribute="leading" secondItem="KTz-Bt-B0f" secondAttribute="leading" id="ffw-wx-LUD"/>
+                            <constraint firstAttribute="trailing" secondItem="iLG-NN-ABI" secondAttribute="trailing" id="hTd-fz-oMT"/>
                             <constraint firstAttribute="bottom" secondItem="DOV-3b-s1w" secondAttribute="bottom" id="xIn-hQ-ZF7"/>
                         </constraints>
                     </view>
@@ -1257,6 +1267,8 @@
                     <size key="freeformSize" width="375" height="2000"/>
                     <connections>
                         <outlet property="collectionView" destination="DOV-3b-s1w" id="hhJ-SV-fqk"/>
+                        <outlet property="compactHeaderBottomConstraint" destination="c59-mU-DXY" id="rvs-FC-gaL"/>
+                        <outlet property="compactUserInfoHeader" destination="iLG-NN-ABI" id="Ymw-mK-gty"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vA6-BJ-ARt" userLabel="First Responder" sceneMemberID="firstResponder"/>

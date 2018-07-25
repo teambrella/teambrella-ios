@@ -146,7 +146,7 @@ extension ClaimTransactionsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let model = dataSource[indexPath]
         if let userID = model.userID {
-            router.presentMemberProfile(teammateID: userID)
+            router.presentMemberProfile(teammateID: userID, teamID: nil)
         }
     }
 }

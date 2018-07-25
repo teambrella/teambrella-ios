@@ -109,6 +109,7 @@ final class UniversalChatVC: UIViewController, Routable {
             //                return
             //            }
             self.refresh(backward: backward, isFirstLoad: isFirstLoad)
+            self.input.allowInput(self.dataSource.isInputAllowed)
         }
         dataSource.onSendMessage = { [weak self] indexPath in
             guard let `self` = self else { return }
@@ -260,7 +261,7 @@ final class UniversalChatVC: UIViewController, Routable {
         let indexPath = IndexPath(row: view.tag, section: 0)
         if let model = dataSource[indexPath] as? ChatCellUserDataLike {
             let userID = model.entity.userID
-            router.presentMemberProfile(teammateID: userID)
+            router.presentMemberProfile(teammateID: userID, teamID: nil)
         }
     }
 
@@ -509,6 +510,7 @@ private extension UniversalChatVC {
                 }
             }
         }
+        input.allowInput(dataSource.isInputAllowed)
     }
 
     private func startListeningSockets() {
@@ -824,7 +826,9 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
         let cellLocation = collectionView.convert(updatedLocation, to: cell.avatarView)
         guard cell.avatarView.point(inside: cellLocation, with: nil) else { return nil }
         guard let model = dataSource[indexPath] as? ChatTextCellModel else { return nil }
-        guard let vc = router.getControllerMemberProfile(teammateID: model.entity.userID) else { return nil }
+        guard let vc = router.getControllerMemberProfile(teammateID: model.entity.userID, teamID: nil) else {
+            return nil
+        }
 
         vc.preferredContentSize = CGSize(width: view.bounds.width * 0.9, height: view.bounds.height * 0.9)
         previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)
@@ -886,7 +890,9 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
         if let model = dataSource.chatModel, model.isClaimChat, let id = model.id {
             router.presentClaim(claimID: id)
         } else if let userID = dataSource.chatModel?.basic?.userID {
-            router.presentMemberProfile(teammateID: userID, scrollToVote: true)
+            router.presentMemberProfile(teammateID: userID,
+                                        teamID: dataSource.chatModel?.team?.teamID,
+                                        scrollToVote: true)
         }
     }
 }

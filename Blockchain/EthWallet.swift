@@ -399,7 +399,7 @@ class EthWallet {
         let a4: [String] = values.map { value in hex.truncatePrefix(string: value) }
         let data = try hex.data(from: a0, a1, a2, a3, a4)
         log("hashForPaySignature values: \(values);\ndata: \(data.hexString))", type: .cryptoDetails)
-        return processor.sha3(data)
+        return try processor.sha3(data)
     }
 
     private func hashForMoveSignature(teamID: Int, opNum: Int, addresses: [String]) throws -> Data {
@@ -409,7 +409,7 @@ class EthWallet {
         let a2 = String(format: "%064x", opNum)
         let a3: [String] = addresses.map { address in hex.truncatePrefix(string: address) }
         let data = try hex.data(from: a0, a1, a2, a3)
-        return processor.sha3(data)
+        return try processor.sha3(data)
     }
 
     private  func publishMove(tx: Tx, completion: @escaping (String) -> Void, failure: @escaping (Error?) -> Void) {

@@ -177,6 +177,9 @@ class ClaimVotingView: UIView, XIBInitable {
             yourValueLabel.text = String.truncatedNumber(vote.percentage)
             yourAmountLabel.text = String.truncatedNumber(vote.fiat(from: claimAmount).value)
             slider.setValue(Float(vote.value), animated: true)
+        } else if let teamVote = teamVote {
+            isYourVoteHidden = true
+            slider.setValue(Float(teamVote.value), animated: true)
         }
 
         if yourVote != nil && proxyName != nil, let proxyAvatar = proxyAvatar {
@@ -191,7 +194,11 @@ class ClaimVotingView: UIView, XIBInitable {
         if yourVote == nil {
             yourValueLabel.text = ". . ."
             isYourVoteHidden = true
-            slider.setValue(slider.minimumValue, animated: true)
+            if let teamVote = teamVote {
+                slider.setValue(Float(teamVote.value), animated: true)
+            } else {
+                slider.setValue(slider.minimumValue, animated: true)
+            }
             resetVoteButton.isHidden = true
             proxyAvatarView.isHidden = true
             byProxyLabel.isHidden = true
