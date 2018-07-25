@@ -294,7 +294,7 @@ final class TeambrellaService: NSObject {
                                                     success = true
                                                     group.leave()
                     }, failure: { error in
-                        log("\(error)", type: [.cryptoDetails, .error])
+                        log("\(String(describing: error))", type: [.cryptoDetails, .error])
                         completion(false)
                     })
                 }
@@ -302,7 +302,7 @@ final class TeambrellaService: NSObject {
             }
             completion(success)
         }) { error in
-             log("\(error)", type: [.cryptoDetails, .error])
+             log("\(String(describing: error))", type: [.cryptoDetails, .error])
             completion(false)
         }
     }
