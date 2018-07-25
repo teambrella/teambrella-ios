@@ -21,7 +21,7 @@ enum TeambrellaRequestType: String {
     case initClient = "me/InitClient"
     case updates = "me/GetUpdates"
     case teams = "me/getTeams"
-    case demoTeams = "demo/getPetTeams"
+    case demoTeams = "demo/getTeams"
     case registerKey = "me/registerKey"
     case coverageForDate = "me/getCoverageForDate"
     case setLanguageEn = "me/setUiLang/en"

@@ -29,49 +29,54 @@ struct TeambrellaError: Error {
     }
     
     enum TeambrellaErrorKind: Int {
-        case unknownError               = -666
-        case wrongReply                 = -665
-        case malformedEthereumAddress   = -664
-        case malformedDate              = -663
-        case noPagingInfo               = -662
-        case emptyReply                 = -1
-        
-        case fatalError                 = 1
-        case brokenSignature            = 2
-        case permissionDenied           = 3
-        case keyAlreadyRegistered       = 5
-        case noTeamsYet                 = 6
-        case noTeamsApplicationPending  = 8
-        case noTeamsApplicationApproved = 9
-        case argumentOutOfRange         = 10
-        case unsupportedClientVersion   = 12
-        
-        case teamAlreadyJoined          = 5010
-        case teamJoinedAndProxyExists   = 5011
-        case teamRoutedToAddProxt       = 5012
-        
-        case badEmail                   = 701000
-        case teamNotExists              = 701011
-        case teamIsPrivate              = 701012
-        
-        case insuranseBasicNotExists    = 701020
-        
-        case teamsNotSelected           = 701021
-        
-        case teammateNoAccess           = 702001
-        case teammateNotExists          = 702011
-        
-        case claimNotExists             = 704011
-        
-        case withdrawalAddressEmpty     = 710101
-        case withdrawalAddressFormat    = 710102
-        case withdrawalAddressChecksum  = 710103
-        
-        case walletNotCreated           = 710013
-        
-        case serverTimeout              = -1001
-        
-        case malformedETCSignature      = -10001
+        case unknownError                = -666
+        case wrongReply                  = -665
+        case malformedEthereumAddress    = -664
+        case malformedDate               = -663
+        case noPagingInfo                = -662
+        case emptyReply                  = -1
+
+        case fatalError                  = 1
+        case brokenSignature             = 2
+        case permissionDenied            = 3
+        case keyAlreadyRegistered        = 5
+        case noTeamsYet                  = 6
+        case noTeamsApplicationPending   = 8
+        case noTeamsApplicationApproved  = 9
+        case argumentOutOfRange          = 10
+        case unsupportedClientVersion    = 12
+        case noTeamButApplicationStarted = 13
+
+        case teamAlreadyJoined           = 5010
+        case teamJoinedAndProxyExists    = 5011
+        case teamRoutedToAddProxt        = 5012
+
+        case badEmail                    = 701000
+        case teamNotExists               = 701011
+        case teamIsPrivate               = 701012
+
+        case insuranseBasicNotExists     = 701020
+
+        case teamsNotSelected            = 701021
+
+        case teammateNoAccess            = 702001
+        case teammateNotExists           = 702011
+
+        case claimNotExists              = 704011
+
+        case withdrawalAddressEmpty      = 710101
+        case withdrawalAddressFormat     = 710102
+        case withdrawalAddressChecksum   = 710103
+
+        case walletNotCreated            = 710013
+
+        case keyIsNotForDemo             = 901000
+        case demoNotDeductibleTeam       = 901001
+        case demoNotPetTeam              = 901002
+
+        case serverTimeout               = -1001
+
+        case malformedETCSignature       = -10001
     }
     
 }

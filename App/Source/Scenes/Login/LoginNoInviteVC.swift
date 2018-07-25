@@ -64,6 +64,8 @@ final class LoginNoInviteVC: UIViewController {
             almostReadySetup()
         case .noTeamsYet:
             inviteOnlySetup()
+        case .noTeamButApplicationStarted:
+            pendingApplicationSetup()
         default:
             inviteOnlySetup()
         }
