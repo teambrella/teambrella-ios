@@ -101,7 +101,6 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     var middleCellRow: Int = -1 {
         didSet {
             delegate?.votingRisk(cell: self, changedMiddleRowIndex: middleCellRow)
-            colorizeCenterCell()
         }
     }
     
@@ -252,32 +251,27 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         
         let indexPath = IndexPath(row: middleCellRow, section: 0)
         guard let cell = collectionView.cellForItem(at: indexPath) as? VotingChartCell else { return }
-        collectionView.visibleCells.forEach { cell in
-            if let cell = cell as? VotingChartCell {
-                if cell.centerLabel.text == "" || cell.centerLabel.text == nil {
-                    cell.topLabel.alpha = 0
-                }
-                if cell.isCentered {
-                    cell.column.setup(colors: [.lightPeriwinkleTwo, .lavender], locations: [0, 0.8])
-                    cell.topLabel.backgroundColor = UIColor.perrywinkle
-                    cell.isCentered = false
+        
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut) {
+            self.collectionView.visibleCells.forEach { cell in
+                if let cell = cell as? VotingChartCell {
+                    if cell.centerLabel.text == "" || cell.centerLabel.text == nil {
+                        cell.topLabel.alpha = 0
+                    }
+                    if cell.isCentered {
+                        cell.column.setup(colors: [.lightPeriwinkleTwo, .lavender], locations: [0, 0.8])
+                        cell.topLabel.backgroundColor = UIColor.perrywinkle
+                        cell.isCentered = false
+                    }
                 }
             }
-            UIView.performWithoutAnimation {
-                cell.layoutIfNeeded()
-            }
-        }
-        cell.topLabel.isHidden = false
-        cell.isCentered = true
-        
-        cell.column.setup(colors: [.blueWithAHintOfPurple, .perrywinkle], locations: [0, 0.8])
-        
-        UIView.animate(withDuration: 0.3, delay: 0, options: [.beginFromCurrentState], animations: {
+            cell.topLabel.isHidden = false
+            cell.isCentered = true
+            cell.column.setup(colors: [.blueWithAHintOfPurple, .perrywinkle], locations: [0, 0.8])
             cell.topLabel.alpha = 1
             cell.topLabel.backgroundColor = UIColor.blueWithAHintOfPurple
-        }) { finished in
-            
         }
+        animator.startAnimation()
     }
     
     @discardableResult
@@ -287,8 +281,6 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
             collectionView.scrollToItem(at: IndexPath(row: idx, section: 0),
                                         at: .centeredHorizontally,
                                         animated: animated)
-            
-            colorizeCenterCell()
             delegate?.votingRisk(cell: self, changedRisk: currentRisk)
             return true
         }
@@ -355,6 +347,7 @@ extension VotingRiskCell: UICollectionViewDelegate {
             cell.topLabel.layer.cornerRadius = 3
             cell.topLabel.layer.borderWidth = 1
             cell.topLabel.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+            
             colorizeCenterCell()
             //cell.column.isHidden = model.heightCoefficient == 0
         }
