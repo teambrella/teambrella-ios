@@ -34,6 +34,7 @@ struct EthereumProcessor {
         case noWIF
         case inconsistentTxData(String)
         case wrongNumber
+        case failedSHA3Hash(String)
     }
     
     /// creates a processor with the key that is stored for the current user
@@ -208,13 +209,24 @@ struct EthereumProcessor {
     }
     
     /// returns hash made by Keccak algorithm
-    func sha3(_ string: String) -> Data {
-        return GethHash(fromHex: string).getBytes()
+    func sha3(_ string: String) throws -> Data {
+        let hash = GethHash(fromHex: string)
+        guard let hashData = hash?.getBytes() else {
+            throw EthereumProcessorError.failedSHA3Hash(string)
+        }
+        return hashData
     }
     
     /// returns hash made by Keccak algorithm
-    func sha3(_ data: Data) -> Data {
-        return GethHash(fromBytes: data).getBytes()
+    func sha3(_ data: Data) throws -> Data {
+        let hash = GethHash(fromBytes: data)
+        guard let hashData = hash?.getBytes() else {
+            let string = data.hexString
+            log("Error getting sha3 hash from data: \(string)", type: [.crypto, .error])
+            return try sha3(string)
+        }
+
+        return hashData
     }
 
     func signHash(hash256: Data) throws -> Data {
