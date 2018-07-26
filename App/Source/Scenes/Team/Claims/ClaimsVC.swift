@@ -227,7 +227,7 @@ extension ClaimsVC: UICollectionViewDelegateFlowLayout {
         let size: CGSize!
         switch dataSource.cellType(for: indexPath) {
         case .open: size = CGSize(width: collectionView.bounds.width - 32, height: 128)
-        case .voted: size = CGSize(width: collectionView.bounds.width, height: 112)
+        case .voted: size = CGSize(width: collectionView.bounds.width, height: 94)
         case .paid, .fullyPaid: size = CGSize(width: collectionView.bounds.width, height: 72)
         }
         return size

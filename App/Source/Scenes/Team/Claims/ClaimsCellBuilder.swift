@@ -30,6 +30,7 @@ protocol ClaimsCell {
 }
 
 struct ClaimsCellBuilder {
+    // swiftlint:disable:next function_body_length
     static func populate(cell: UICollectionViewCell, with claim: ClaimEntity) {
         guard let cell = cell as? ClaimsCell else { return }
 
@@ -44,11 +45,15 @@ struct ClaimsCellBuilder {
             cell.avatarView.show(claim.smallPhoto)
             cell.button.setTitle("Team.ClaimsCell.viewToVote".localized, for: .normal)
             cell.claimedAmountLabel.text = currencySymbol + claim.claimAmount.formatted
+            cell.claimedAmountLabel.font = isSmallIPhone ?
+                UIFont.teambrellaBold(size: 16) : UIFont.teambrellaBold(size: 20)
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
         } else if let cell = cell as? ClaimsVotedCell {
             //cell.avatarView.showAvatar(string: claim.smallPhoto)
             cell.avatarView.show(claim.smallPhoto)
             cell.claimedAmountLabel.text = currencySymbol + claim.claimAmount.formatted
+            cell.claimedAmountLabel.font = isSmallIPhone ?
+                UIFont.teambrellaBold(size: 16) : UIFont.teambrellaBold(size: 20)
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
             if let vote = claim.myVote {
                 cell.votedLabel.text = "Team.Claims.VotedCell.voted".localized
@@ -81,6 +86,7 @@ struct ClaimsCellBuilder {
             }
 
             cell.amountLabel.text = currencySymbol + claim.claimAmount.formatted
+            cell.amountLabel.font = isSmallIPhone ? UIFont.teambrellaBold(size: 16) : UIFont.teambrellaBold(size: 20)
             if let ratio = claim.paidRatio {
                 cell.scaleBar.value = CGFloat(ratio)
             } else {
