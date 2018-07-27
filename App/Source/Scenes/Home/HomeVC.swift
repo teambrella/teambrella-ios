@@ -81,6 +81,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        submitClaimButton.isEnabled = false
         greetingsTitleLabel.text = " "
         clearScreen()
         setupTransparentNavigationBar()
@@ -232,7 +233,10 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         
         pageControl.numberOfPages = dataSource.cardsCount
         topBarVC.setPrivateMessages(unreadCount: model.unreadCount)
-        
+
+        if let accessLevel = service.session?.currentTeam?.teamAccessLevel {
+            submitClaimButton.isEnabled = accessLevel == .full
+        }
         HUD.hide()
     }
     

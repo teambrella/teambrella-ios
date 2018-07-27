@@ -124,6 +124,9 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         objectImageView.layer.masksToBounds = true
         objectImageView.layer.cornerRadius = 4
         reportButton.setTitle("Team.Claims.objectView.reportButton.title".localized, for: .normal)
+        if let accessLevel = service.session?.currentTeam?.teamAccessLevel {
+            reportButton.isEnabled = accessLevel == .full
+        }
     }
     
     func registerCells() {
