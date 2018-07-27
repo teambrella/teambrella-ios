@@ -34,7 +34,7 @@ final class LoginNoInviteVC: UIViewController {
     
     var error: TeambrellaError?
     
-    private var mailAddress: String = "support@teambrella.com"
+    private var mailAddress: String = "help@teambrella.com"
     
     // MARK: Lifecycle
     
@@ -117,7 +117,6 @@ final class LoginNoInviteVC: UIViewController {
     private func permissionDeniedSetup() {
         upperLabel.text = "Login.LoginNoInviteVC.accessDenied.title".localized
         lowerLabel.text = "Login.LoginNoInviteVC.accessDenied.details".localized
-        mailAddress = "help@teambrella.com"
         supportButton.isHidden = false
     }
     
@@ -130,7 +129,6 @@ final class LoginNoInviteVC: UIViewController {
     private func pendingApplicationSetup() {
         upperLabel.text = "Login.LoginNoInviteVC.pendingApplication.title".localized
         lowerLabel.text = "Login.LoginNoInviteVC.pendingApplication.details".localized
-        mailAddress = "help@teambrella.com"
         supportButton.isHidden = false
     }
 
