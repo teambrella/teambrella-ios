@@ -64,6 +64,7 @@ final class LoginBlueVC: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         centerLabel.alpha = 0
         gradientView.alpha = 0
