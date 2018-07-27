@@ -59,7 +59,7 @@ final class LoginNoInviteVC: UIViewController {
         case .keyAlreadyRegistered:
             permissionDeniedSetup()
         case .noTeamsApplicationPending:
-            pendingApplicationSetup()
+            almostReadySetup()
         case .noTeamsApplicationApproved:
             almostReadySetup()
         case .noTeamsYet:
@@ -130,6 +130,7 @@ final class LoginNoInviteVC: UIViewController {
     private func pendingApplicationSetup() {
         upperLabel.text = "Login.LoginNoInviteVC.pendingApplication.title".localized
         lowerLabel.text = "Login.LoginNoInviteVC.pendingApplication.details".localized
+        mailAddress = "help@teambrella.com"
         supportButton.isHidden = false
     }
 
