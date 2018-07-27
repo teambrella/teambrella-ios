@@ -557,9 +557,8 @@ extension TeammateProfileVC: UITableViewDelegate {
             let item = dataSource.socialItems[indexPath.row]
             cell.avatarView.image = item.icon
             cell.topLabel.text = item.name.uppercased()
-            if item.type == .facebook,
-                let cutString = item.address.split(separator: "/").last {
-                cell.bottomLabel.text = String(cutString)
+            if item.type == .facebook {
+                cell.bottomLabel.text = "https://m.facebook.com"
             } else {
                 cell.bottomLabel.text = item.address
             }
