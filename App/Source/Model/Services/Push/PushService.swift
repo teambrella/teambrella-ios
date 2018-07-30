@@ -158,7 +158,7 @@ final class PushService: NSObject {
                 })
             }
         }
-        guard command == nil else { return }
+        //guard command == nil else { return }
 
         prepareCommand(userInfo: userInfo)
         executeCommand()
@@ -213,7 +213,7 @@ final class PushService: NSObject {
             } else {
                 log("Active session found. Trying to switch to the new team", type: .push)
                 let router = service.router
-                router.logout {
+                router.logout(mode: .idle) {
                     router.login(teamID: payload.teamID)
                 }
             }

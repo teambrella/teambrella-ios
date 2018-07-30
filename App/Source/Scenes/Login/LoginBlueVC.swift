@@ -213,7 +213,6 @@ Are you sure you want to completely remove your private key from this device?
     
     private func logAsFacebookUser(user: FacebookUser?) {
         HUD.hide()
-        service.keyStorage.setToRealUser()
         performSegue(withIdentifier: "unwindToInitial", sender: user)
     }
     

@@ -32,10 +32,10 @@ final class MainRouter {
     let mainStoryboardName = "Main"
 
     // MARK: Services
-//    var session: Session?
+    //    var session: Session?
 
-//    var teambrella: TeambrellaService?
-//    var error: ErrorPresenter?
+    //    var teambrella: TeambrellaService?
+    //    var error: ErrorPresenter?
 
     var navigator: Navigator? {
         let appDelegate  = UIApplication.shared.delegate as? AppDelegate
@@ -49,6 +49,10 @@ final class MainRouter {
     
     var frontmostViewController: UIViewController? {
         return topViewController()
+    }
+
+    var initialVC: InitialVC? {
+        return navigator?.viewControllers.filter { $0 is InitialVC }.first as? InitialVC
     }
     
     private func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController)
@@ -178,10 +182,10 @@ final class MainRouter {
         
         vc?.teammateID = teammateID
         vc?.teamID = teamID ?? service.session?.currentTeam?.teamID ?? 0
-//        vc?.currentUserID = service.session?.currentUserID
-//        vc?.router = self
-//        vc?.session = service.session
-//        vc?.currencyName = service.currencyName
+        //        vc?.currentUserID = service.session?.currentUserID
+        //        vc?.router = self
+        //        vc?.session = service.session
+        //        vc?.currencyName = service.currencyName
         return vc
     }
     
@@ -200,7 +204,7 @@ final class MainRouter {
     func presentClaims(teammateID: Int? = nil, animated: Bool = true) {
         guard let vc = ClaimsVC.instantiate() as? ClaimsVC else { fatalError("Error instantiating") }
         
-//        vc.router = self
+        //        vc.router = self
         vc.teammateID = teammateID
         vc.isPresentedInStack = true
         push(vc: vc, animated: animated)
@@ -377,7 +381,7 @@ final class MainRouter {
     }
     
     @discardableResult
-    func logout(completion: (() -> Void)? = nil) -> InitialVC? {
+    func logout(mode: InitialVC.InitialVCMode = .login, completion: (() -> Void)? = nil) -> InitialVC? {
         guard let navigator = navigator else { return nil }
         
         PlistStorage().removeCache()
@@ -390,22 +394,20 @@ final class MainRouter {
         } catch {
             log("\(error)", type: [.crypto, .error])
         }
-        for vc in navigator.viewControllers {
-            if let vc = vc as? InitialVC {
-                navigator.popToViewController(vc, animated: true)
-                vc.mode = .login
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    completion?()
-                }
-                return vc
+        if let vc = initialVC {
+            navigator.popToViewController(vc, animated: true)
+            vc.mode = mode
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                completion?()
             }
+            return vc
         }
         completion?()
         return nil
     }
 
     func login(teamID: Int?) {
-
+        initialVC?.login(teamID: teamID)
     }
 
     func switchTeam() {
