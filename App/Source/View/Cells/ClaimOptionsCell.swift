@@ -37,8 +37,8 @@ class ClaimOptionsCell: UICollectionViewCell, XIBInitableCell {
         super.awakeFromNib()
         allVotesContainer.addGestureRecognizer(tapAllVotesRecognizer)
         allVotesContainer.isUserInteractionEnabled = true
-        cashFlowContainer.addGestureRecognizer(tapCashFlowRecognizer)
-        cashFlowContainer.isUserInteractionEnabled = true
+//        cashFlowContainer.addGestureRecognizer(tapCashFlowRecognizer)
+//        cashFlowContainer.isUserInteractionEnabled = true
         transactionsContainer.addGestureRecognizer(tapTransactionsRecognizer)
         transactionsContainer.isUserInteractionEnabled = true
     }
