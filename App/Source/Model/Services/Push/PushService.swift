@@ -209,12 +209,17 @@ final class PushService: NSObject {
         log("Trying to log in as a new member of: \(payload.teamNameValue) team", type: .push)
         if let session = service.session {
             if let currentTeamID = session.currentTeam?.teamID, currentTeamID == payload.teamIDValue {
-                log("Already logged in to the team. No action needed", type: .push)
+                log("Already logged into the team \(payload.teamNameValue). No action needed", type: .push)
             } else {
                 log("Active session found. Trying to switch to the new team", type: .push)
+                let router = service.router
+                router.logout {
+                    router.login(teamID: payload.teamID)
+                }
             }
         } else {
             log("First login initiated", type: .push)
+            service.router.login(teamID: payload.teamID)
         }
     }
 

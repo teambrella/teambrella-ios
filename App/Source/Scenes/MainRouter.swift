@@ -377,7 +377,7 @@ final class MainRouter {
     }
     
     @discardableResult
-    func logout() -> InitialVC? {
+    func logout(completion: (() -> Void)? = nil) -> InitialVC? {
         guard let navigator = navigator else { return nil }
         
         PlistStorage().removeCache()
@@ -394,12 +394,20 @@ final class MainRouter {
             if let vc = vc as? InitialVC {
                 navigator.popToViewController(vc, animated: true)
                 vc.mode = .login
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    completion?()
+                }
                 return vc
             }
         }
+        completion?()
         return nil
     }
-    
+
+    func login(teamID: Int?) {
+
+    }
+
     func switchTeam() {
         let initial = navigator?.viewControllers.filter { $0 is InitialVC }.first
         if let initial = initial {
