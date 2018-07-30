@@ -39,9 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         service.push.startPushKit()
 
         TeambrellaStyle.apply()
-        if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
-            service.push.remoteNotificationOnStart(in: application, userInfo: notification)
-        }
+//        if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
+//            service.push.remoteNotificationOnStart(in: application, userInfo: notification)
+//        }
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
 
         // Pull in case of emergency :)
