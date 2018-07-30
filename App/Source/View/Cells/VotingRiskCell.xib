@@ -71,13 +71,13 @@
                                             <action selector="tapYourVoteButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="O0N-S2-nzx"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H5F-fa-toM" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="38.5" width="266.5" height="30.5"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H5F-fa-toM" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="38.5" width="63.5" height="30.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="esR-N0-PHe" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="esR-N0-PHe" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="285.5" y="38.5" width="64.5" height="30.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
@@ -183,6 +183,7 @@
                                     <constraint firstAttribute="height" constant="105" id="Piz-5C-SK1"/>
                                     <constraint firstItem="uwK-ph-5aq" firstAttribute="top" secondItem="VE3-Bp-PEJ" secondAttribute="bottom" id="Pl5-Vw-jpr"/>
                                     <constraint firstItem="Nx1-Yq-BkA" firstAttribute="leading" secondItem="25q-2v-Cur" secondAttribute="leading" constant="8" id="QUQ-Cu-vlZ"/>
+                                    <constraint firstItem="H5F-fa-toM" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="25q-2v-Cur" secondAttribute="centerX" constant="-16" id="R0e-DJ-3ew"/>
                                     <constraint firstItem="qFN-q5-gOq" firstAttribute="leading" secondItem="D29-8w-VUD" secondAttribute="leading" id="RT0-zf-Xg7"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ufs-Z7-MdQ" secondAttribute="trailing" constant="8" id="T4q-SP-8wP"/>
                                     <constraint firstItem="esR-N0-PHe" firstAttribute="leading" secondItem="uwK-ph-5aq" secondAttribute="leading" id="TaU-kq-kFF"/>
@@ -198,7 +199,7 @@
                                     <constraint firstAttribute="bottom" secondItem="6qt-e2-WfN" secondAttribute="bottom" id="hRj-U1-Jzm"/>
                                     <constraint firstItem="blN-yG-O3g" firstAttribute="bottom" secondItem="uwK-ph-5aq" secondAttribute="bottom" id="hXf-bF-roU"/>
                                     <constraint firstItem="H5F-fa-toM" firstAttribute="leading" secondItem="D29-8w-VUD" secondAttribute="leading" id="ifM-uY-gXi"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="esR-N0-PHe" secondAttribute="trailing" constant="3" id="kJ7-G4-AoH"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="esR-N0-PHe" secondAttribute="trailing" constant="8" id="kJ7-G4-AoH"/>
                                     <constraint firstItem="K9q-SA-b4t" firstAttribute="leading" secondItem="VE3-Bp-PEJ" secondAttribute="leading" id="kjT-hO-s1p"/>
                                     <constraint firstItem="esR-N0-PHe" firstAttribute="centerY" secondItem="H5F-fa-toM" secondAttribute="centerY" id="lm5-Wh-Dse"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UyJ-PS-yxB" secondAttribute="trailing" constant="3" id="lxk-kw-bJb"/>
@@ -208,9 +209,9 @@
                                     <constraint firstItem="esR-N0-PHe" firstAttribute="centerY" secondItem="UyJ-PS-yxB" secondAttribute="centerY" id="oxj-qs-5hX"/>
                                     <constraint firstItem="VE3-Bp-PEJ" firstAttribute="leading" secondItem="25q-2v-Cur" secondAttribute="centerX" constant="8" id="pQP-xS-1Ye"/>
                                     <constraint firstItem="blN-yG-O3g" firstAttribute="bottom" secondItem="K9q-SA-b4t" secondAttribute="top" id="tzR-3d-zXz"/>
+                                    <constraint firstAttribute="centerX" secondItem="6qt-e2-WfN" secondAttribute="trailing" id="vFE-E7-smV"/>
                                     <constraint firstAttribute="bottom" secondItem="K9q-SA-b4t" secondAttribute="bottom" constant="8" id="xcr-pL-roC"/>
                                     <constraint firstItem="6qt-e2-WfN" firstAttribute="top" secondItem="25q-2v-Cur" secondAttribute="top" id="xoD-sn-Th7"/>
-                                    <constraint firstItem="H5F-fa-toM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="25q-2v-Cur" secondAttribute="centerX" constant="-3" id="yZo-8U-xqW"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="slashViewColor">

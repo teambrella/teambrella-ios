@@ -186,7 +186,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         yourVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
         yourVoteBadgeLabel.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
         
-        yourVoteHeaderLabelLeadingConstraint.constant = isSmallIPhone ? 12 : 30
+        yourVoteHeaderLabelLeadingConstraint.constant = isSmallIPhone ? 10 : 16
         othersLabelTrailingConstraint.constant = isSmallIPhone ? 4 : 8
         yourVoteAVGLeadingConstraint.constant = isSmallIPhone ? 2 : 8
         teamVoteAVGLeadingConstraint.constant = isSmallIPhone ? 2 : 8
