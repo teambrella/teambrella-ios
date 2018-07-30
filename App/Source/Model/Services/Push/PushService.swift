@@ -197,10 +197,25 @@ final class PushService: NSObject {
         case .newClaim:
             showTopic(details: command.topicDetails)
         //showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
+        case .approvedTeammate:
+            logAsApprovedMember(payload: command)
         default:
             break
         }
         self.command = nil
+    }
+
+    private func logAsApprovedMember(payload: RemotePayload) {
+        log("Trying to log in as a new member of: \(payload.teamNameValue) team", type: .push)
+        if let session = service.session {
+            if let currentTeamID = session.currentTeam?.teamID, currentTeamID == payload.teamIDValue {
+                log("Already logged in to the team. No action needed", type: .push)
+            } else {
+                log("Active session found. Trying to switch to the new team", type: .push)
+            }
+        } else {
+            log("First login initiated", type: .push)
+        }
     }
 
     private func clearNotificationsThread(id: String?) {

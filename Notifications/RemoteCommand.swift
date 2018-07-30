@@ -34,4 +34,6 @@ enum RemoteCommandType: Int {
     case newDiscussion = 9
     
     case topicMessage = 21
+
+    case approvedTeammate = 35
 }
